@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function componentSnapshotTest() {
-  describe('componentSnapshotTest', function () {
-    beforeEach(async function (done) {
+  describe('componentSnapshotTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("componentSnapshotTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/componentSnapshot/componentSnapshot",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/componentSnapshot/componentSnapshot",
       }
       try {
         router.clear();
@@ -50,7 +50,7 @@ export default function componentSnapshotTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('componentSnapshotTest_0010', 0, async function (done) {
+    it('componentSnapshotTest_0010', 0, async (done: Function) => {
       console.info('componentSnapshotTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -58,7 +58,7 @@ export default function componentSnapshotTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ComponentSnapshot_id');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[componentSnapshotTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('true');
       console.info('[componentSnapshotTest_0010] END');

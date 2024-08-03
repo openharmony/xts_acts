@@ -19,7 +19,7 @@ import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import testsuite from '../../../test/List.test'
 import { Callback } from '@ohos.base'
-import { MessageManager } from '../../../test/MessageManager';
+import { MessageManager } from '../../common/MessageManager';
 
 @Entry
 @Component
@@ -65,43 +65,43 @@ struct SliderExample {
   @State textFont: Font = { size: '16sp', weight: FontWeight.Normal }
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("search page state change called:" + JSON.stringify(eventData));
-    this.caretWidthNumber = eventData.data.caretWidthNumber;
-    this.caretWidthString = eventData.data.caretWidthString;
-    this.caretWidthResource = eventData.data.caretWidthResource;
-    this.caretColorColor = eventData.data.caretColorColor;
-    this.caretColorNumber = eventData.data.caretColorNumber;
-    this.caretColorString = eventData.data.caretColorString;
-    this.caretColorResource = eventData.data.caretColorResource;
-    this.leftSearchIconSizeNumber = eventData.data.leftSearchIconSizeNumber;
-    this.leftSearchIconSizeString = eventData.data.leftSearchIconSizeString;
-    this.leftSearchIconSizeResource = eventData.data.leftSearchIconSizeResource;
-    this.leftSearchIconColorColor = eventData.data.leftSearchIconColorColor;
-    this.leftSearchIconColorNumber = eventData.data.leftSearchIconColorNumber;
-    this.leftSearchIconColorString = eventData.data.leftSearchIconColorString;
-    this.leftSearchIconColorResource = eventData.data.leftSearchIconColorResource;
-    this.searchSrcPath = eventData.data.searchSrcPath;
-    this.searchSrcPathResource = eventData.data.searchSrcPathResource;
-    this.rightButtonStyleParam = eventData.data.rightButtonStyleParam;
-    this.rightCancelIconSizeNumber = eventData.data.rightCancelIconSizeNumber;
-    this.rightCancelIconSizeString = eventData.data.rightCancelIconSizeString;
-    this.rightCancelIconSizeResource = eventData.data.rightCancelIconSizeResource;
-    this.rightCancelIconColorColor = eventData.data.rightCancelIconColorColor;
-    this.rightCancelIconColorNumber = eventData.data.rightCancelIconColorNumber;
-    this.rightCancelIconColorString = eventData.data.rightCancelIconColorString;
-    this.rightCancelIconColorResource = eventData.data.rightCancelIconColorResource;
-    this.rightIconSrcPath = eventData.data.rightIconSrcPath;
-    this.rightIconSrcPathResource = eventData.data.rightIconSrcPathResource;
-    this.searchButtonFontSizeNumber = eventData.data.searchButtonFontSizeNumber;
-    this.searchButtonFontSizeString = eventData.data.searchButtonFontSizeString;
-    this.searchButtonFontSizeResource = eventData.data.searchButtonFontSizeResource;
-    this.searchButtonFontColorColor = eventData.data.searchButtonFontColorColor;
-    this.searchButtonFontColorNumber = eventData.data.searchButtonFontColorNumber;
-    this.searchButtonFontColorString = eventData.data.searchButtonFontColorString;
-    this.searchButtonFontColorResource = eventData.data.searchButtonFontColorResource;
-    this.textColorColor = eventData.data.textColorColor;
-    this.textColorNumber = eventData.data.textColorNumber;
-    this.textColorString = eventData.data.textColorString;
-    this.textColorResource = eventData.data.textColorResource;
+    this.caretWidthNumber = eventData.data?.caretWidthNumber;
+    this.caretWidthString = eventData.data?.caretWidthString;
+    this.caretWidthResource = eventData.data?.caretWidthResource;
+    this.caretColorColor = eventData.data?.caretColorColor;
+    this.caretColorNumber = eventData.data?.caretColorNumber;
+    this.caretColorString = eventData.data?.caretColorString;
+    this.caretColorResource = eventData.data?.caretColorResource;
+    this.leftSearchIconSizeNumber = eventData.data?.leftSearchIconSizeNumber;
+    this.leftSearchIconSizeString = eventData.data?.leftSearchIconSizeString;
+    this.leftSearchIconSizeResource = eventData.data?.leftSearchIconSizeResource;
+    this.leftSearchIconColorColor = eventData.data?.leftSearchIconColorColor;
+    this.leftSearchIconColorNumber = eventData.data?.leftSearchIconColorNumber;
+    this.leftSearchIconColorString = eventData.data?.leftSearchIconColorString;
+    this.leftSearchIconColorResource = eventData.data?.leftSearchIconColorResource;
+    this.searchSrcPath = eventData.data?.searchSrcPath;
+    this.searchSrcPathResource = eventData.data?.searchSrcPathResource;
+    this.rightButtonStyleParam = eventData.data?.rightButtonStyleParam;
+    this.rightCancelIconSizeNumber = eventData.data?.rightCancelIconSizeNumber;
+    this.rightCancelIconSizeString = eventData.data?.rightCancelIconSizeString;
+    this.rightCancelIconSizeResource = eventData.data?.rightCancelIconSizeResource;
+    this.rightCancelIconColorColor = eventData.data?.rightCancelIconColorColor;
+    this.rightCancelIconColorNumber = eventData.data?.rightCancelIconColorNumber;
+    this.rightCancelIconColorString = eventData.data?.rightCancelIconColorString;
+    this.rightCancelIconColorResource = eventData.data?.rightCancelIconColorResource;
+    this.rightIconSrcPath = eventData.data?.rightIconSrcPath;
+    this.rightIconSrcPathResource = eventData.data?.rightIconSrcPathResource;
+    this.searchButtonFontSizeNumber = eventData.data?.searchButtonFontSizeNumber;
+    this.searchButtonFontSizeString = eventData.data?.searchButtonFontSizeString;
+    this.searchButtonFontSizeResource = eventData.data?.searchButtonFontSizeResource;
+    this.searchButtonFontColorColor = eventData.data?.searchButtonFontColorColor;
+    this.searchButtonFontColorNumber = eventData.data?.searchButtonFontColorNumber;
+    this.searchButtonFontColorString = eventData.data?.searchButtonFontColorString;
+    this.searchButtonFontColorResource = eventData.data?.searchButtonFontColorResource;
+    this.textColorColor = eventData.data?.textColorColor;
+    this.textColorNumber = eventData.data?.textColorNumber;
+    this.textColorString = eventData.data?.textColorString;
+    this.textColorResource = eventData.data?.textColorResource;
   }
   messageManager: MessageManager = new MessageManager()
 

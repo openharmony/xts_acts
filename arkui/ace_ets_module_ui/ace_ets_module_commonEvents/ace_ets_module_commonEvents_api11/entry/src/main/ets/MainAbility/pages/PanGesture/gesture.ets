@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 import Log from '../../common/Log';
+import events_emitter from '@ohos.events.emitter';
 
 const TAG = 'ets_apiLack_add';
-import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -57,7 +57,7 @@ struct GestureSetDirection {
             console.info("setDirectionPanGesture onClick start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("setDirectionPanGesture onClick emit action state err: " + JSON.stringify(err.message))
+            console.info("setDirectionPanGesture onClick emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .width(100)
@@ -100,7 +100,7 @@ struct GestureSetDirection {
             console.info("onClick start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("onClick emit action state err: " + JSON.stringify(err.message))
+            console.info("onClick emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .width(100)
@@ -144,7 +144,7 @@ struct GestureSetDirection {
             console.info("onClick start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("onClick emit action state err: " + JSON.stringify(err.message))
+            console.info("onClick emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .width(100)

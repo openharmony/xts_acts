@@ -16,7 +16,7 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base'
-import Utils from '../../TestAbility/common/MyUtils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function CustomDialogMaskTest() {
 
@@ -54,7 +54,7 @@ export default function CustomDialogMaskTest() {
       let CASE: string = 'ArkUI_CustomDialog_Mask_0100'
       console.info(`${SUITE} ${CASE} START`);
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('CustomDialogMask_Button_Open_1', 10, "")
@@ -63,7 +63,7 @@ export default function CustomDialogMaskTest() {
       expect(JSON.parse(strObj).$attrs.visibility).assertEqual("Visibility.Visible");
       sendEventByKey('CustomDialogMask_Button_Close_1', 10, "")
       console.info(`${SUITE} ${CASE} END`);
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       done()
     });
 
@@ -75,7 +75,7 @@ export default function CustomDialogMaskTest() {
     it('ArkUI_CustomDialog_Mask0200', 0, async (done: Function) => {
       let CASE: string = 'ArkUI_CustomDialog_Mask0200'
       console.info(`${SUITE} ${CASE} START`);
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('CustomDialogMask_Button_Open_2', 10, "")
@@ -84,7 +84,7 @@ export default function CustomDialogMaskTest() {
       expect(JSON.parse(strObj).$attrs.visibility).assertEqual("Visibility.Visible");
       sendEventByKey('CustomDialogMask_Button_Close_1', 10, "")
       console.info(`${SUITE} ${CASE} END`);
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       done()
     });
 
@@ -104,7 +104,7 @@ export default function CustomDialogMaskTest() {
       expect(JSON.parse(strObj).$attrs.visibility).assertEqual("Visibility.Visible");
       sendEventByKey('CustomDialogMask_Button_Close_1', 10, "")
       console.info(`${SUITE} ${CASE} END`);
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       done()
     });
 
@@ -124,7 +124,7 @@ export default function CustomDialogMaskTest() {
       expect(JSON.parse(strObj).$attrs.visibility).assertEqual("Visibility.Visible");
       sendEventByKey('CustomDialogMask_Button_Close_1', 10, "")
       console.info(`${SUITE} ${CASE} END`);
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       done()
     });
 
@@ -144,7 +144,7 @@ export default function CustomDialogMaskTest() {
       expect(JSON.parse(strObj).$attrs.visibility).assertEqual("Visibility.Visible");
       sendEventByKey('CustomDialogMask_Button_Close_1', 10, "")
       console.info(`${SUITE} ${CASE} END`);
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       done()
     });
   })

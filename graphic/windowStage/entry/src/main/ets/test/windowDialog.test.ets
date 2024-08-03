@@ -203,5 +203,179 @@ export default function windowDialogTest(context: common.UIAbilityContext, windo
       });
       await subWin.destroyWindow();
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4570
+     * @tc.name      : testSetDialogBackGestureEnabled_Dialog_IllegalEntry
+     * @tc.desc      : Sets whether the modal window responds to gesture return events
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testSetDialogBackGestureEnabled_Dialog_IllegalEntry', 0, async function () {
+      let caseName = 'testSetDialogBackGestureEnabled_Dialog_IllegalEntry';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowConfig = {
+        name: "testSetDialogBackGestureEnabled_Dialog_IllegalEntry",
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let tempWnd;
+      tempWnd = await window.createWindow(windowConfig).catch((err) => {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      expect(!!tempWnd).assertTrue();
+      let enabled = 'false';
+      try{
+        await tempWnd.setDialogBackGestureEnabled(enabled).then(() => {
+          console.info(msgStr + 'Succeeded in setting dialog window to ignore back gesture.');
+          expect().assertFail();
+        }).catch(async (err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to set dialog window to ignore back gesture. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+      } catch (exception) {
+        console.error(msgStr +`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect(exception.code).assertEqual(401);
+      }
+      await tempWnd.destroyWindow();
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4580
+     * @tc.name      : testSetDialogBackGestureEnabled_Dialog_IllegalEntryNum
+     * @tc.desc      : Sets whether the modal window responds to gesture return events
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testSetDialogBackGestureEnabled_Dialog_IllegalEntryNum', 0, async function () {
+      let caseName = 'testSetDialogBackGestureEnabled_Dialog_IllegalEntryNum';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowConfig = {
+        name: "testSetDialogBackGestureEnabled_Dialog_IllegalEntryNum",
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let tempWnd;
+      tempWnd = await window.createWindow(windowConfig).catch((err) => {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      expect(!!tempWnd).assertTrue();
+      let enabled = 888888;
+      try{
+        await tempWnd.setDialogBackGestureEnabled(enabled).then(() => {
+          console.info(msgStr + 'Succeeded in setting dialog window to ignore back gesture.');
+          expect().assertFail();
+        }).catch(async (err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to set dialog window to ignore back gesture. Cause code: ${err.code}, message: ${err.message}`);
+            expect(err.code).assertEqual(401);
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+      } catch (exception) {
+        console.error(msgStr +`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect(exception.code).assertEqual(401);
+      }
+      await tempWnd.destroyWindow();
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4590
+     * @tc.name      : testSetDialogBackGestureEnabled_Null
+     * @tc.desc      : Sets whether the modal window responds to gesture return events
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testSetDialogBackGestureEnabled_Null', 0, async function () {
+      let caseName = 'testSetDialogBackGestureEnabled_Null';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowConfig = {
+        name: "testSetDialogBackGestureEnabled_Null",
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let tempWnd;
+      tempWnd = await window.createWindow(windowConfig).catch((err) => {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      expect(!!tempWnd).assertTrue();
+      try{
+        await tempWnd.setDialogBackGestureEnabled(null).then(() => {
+          console.info(msgStr + 'Succeeded in setting dialog window to ignore back gesture.');
+          expect().assertFail();
+        }).catch(async (err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to set dialog window to ignore back gesture. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+      } catch (exception) {
+        console.error(msgStr +`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect(exception.code).assertEqual(401);
+      }
+      await tempWnd.destroyWindow();
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4600
+     * @tc.name      : testSetDialogBackGestureEnabled_Undefined
+     * @tc.desc      : Sets whether the modal window responds to gesture return events
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testSetDialogBackGestureEnabled_Undefined', 0, async function () {
+      let caseName = 'testSetDialogBackGestureEnabled_Undefined';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowConfig = {
+        name: "testSetDialogBackGestureEnabled_Undefined",
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let tempWnd;
+      tempWnd = await window.createWindow(windowConfig).catch((err) => {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      expect(!!tempWnd).assertTrue();
+      try{
+        await tempWnd.setDialogBackGestureEnabled(undefined).then(() => {
+          console.info(msgStr + 'Succeeded in setting dialog window to ignore back gesture.');
+          expect().assertFail();
+        }).catch(async (err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to set dialog window to ignore back gesture. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+      } catch (exception) {
+        console.error(msgStr +`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect(exception.code).assertEqual(401);
+      }
+      await tempWnd.destroyWindow();
+    })
   })
 }

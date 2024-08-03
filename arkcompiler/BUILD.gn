@@ -17,6 +17,7 @@ group("arkcompiler") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "arkts_module_test:ActsArktsModuleTest",
       "ecmanewfeatures:ActsEcmaNewFeaturesTest",
       "esmodule:esmodule",
     ]

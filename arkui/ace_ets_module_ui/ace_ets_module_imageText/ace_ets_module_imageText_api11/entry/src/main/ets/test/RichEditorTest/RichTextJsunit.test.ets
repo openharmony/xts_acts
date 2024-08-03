@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function RichTextJsunit() {
-  describe('RichTextJsunit', function () {
-    beforeEach(async function (done) {
+  describe('RichTextJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("RichTextJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/RichEditor/RichTextPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RichEditor/RichTextPage',
       }
       try {
         router.clear();
@@ -43,12 +43,12 @@ export default function RichTextJsunit() {
       done();
     });
 
-    it('RichTextJsunit_0100', 0, async function (done) {
+    it('RichTextJsunit_0100', 0, async (done: Function) => {
       // Get the data of the RichText component
       console.info('[RichTextJsunit_0100] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('richText');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RichTextJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('<h1 style="text-align: center;">h1标题</h1>' +
   '<h1 style="text-align: center;"><i>h1斜体</i></h1>' +
@@ -64,7 +64,7 @@ export default function RichTextJsunit() {
       done();
     });
 
-    it('RichTextJsunit_0200', 0, async function (done) {
+    it('RichTextJsunit_0200', 0, async (done: Function) => {
       // Verify the onStart of the RichText component
       console.info('[RichTextJsunit_0200] START');
       await CommonFunc.sleep(1000);
@@ -77,7 +77,7 @@ export default function RichTextJsunit() {
       done();
     });
 
-    it('RichTextJsunit_0300', 0, async function (done) {
+    it('RichTextJsunit_0300', 0, async (done: Function) => {
       // Verify the onComplete of the RichText component
       console.info('[RichTextJsunit_0300] START');
       await CommonFunc.sleep(1000);
@@ -89,28 +89,28 @@ export default function RichTextJsunit() {
       done();
     });
 
-    it('RichTextJsunit_0400', 0, async function (done) {
+    it('RichTextJsunit_0400', 0, async (done: Function) => {
       // Modify data of the RichText component
       console.info('[RichTextJsunit_0400] START');
       globalThis.value.message.notify({name:'RichTextData',value:'<h1 style="text-align: center;">h1Test标题</h1>'})
       await CommonFunc.sleep(2000);
       // Get the value of the QRCode component
       let strJson = getInspectorByKey('richText');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RichTextJsunit_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('<h1 style="text-align: center;">h1Test标题</h1>');
       console.info('[RichTextJsunit_0400] END');
       done();
     });
 
-    it('RichTextJsunit_0500', 0, async function (done) {
+    it('RichTextJsunit_0500', 0, async (done: Function) => {
       // Illegal modification content of the RichText component
       console.info('[RichTextJsunit_0500] START');
       globalThis.value.message.notify({name:'RichTextData',value:1})
       await CommonFunc.sleep(2000);
       // Get the content of the RichText component
       let strJson = getInspectorByKey('richText');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RichTextJsunit_0500] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('<h1 style="text-align: center;">h1Test标题</h1>');
       console.info('[RichTextJsunit_0500] END');

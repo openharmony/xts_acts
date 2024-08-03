@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,40 +17,46 @@ import events_emitter from '@ohos.events.emitter'
 @Entry
 @Component
 struct Background3Example {
-  @State width: string = "200px";
-  @State height: string = "200px";
-  @State color: Array = [[0x080808], [0xEEEE00], [0xFF0000]];
+  @State widthValue: string = "200px";
+  @State heightValue: string = "200px";
+  @State colorValues: Array<number[]> = [[0x080808], [0xEEEE00], [0xFF0000]];
+  @State backgroundColorValue: string = '';
+  @State backgroundImageValue: string  =  '';
+  @State backgroundImageSizeValue: SizeOptions | ImageSize = ImageSize.Cover;
+  @State backgroundImagePositionValue: Position | Alignment =  Alignment.Center;
+  @State srcValue : string  =  '';
+
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("gauge page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.colorValues != null) {
-        this.colorValues = JSON.parse(eventData.data.colorValues);
+      if (eventData.data?.colorValues != null) {
+        this.colorValues = JSON.parse(eventData.data?.colorValues);
       }
-      if (eventData.data.width != null) {
-        this.width = eventData.data.width;
+      if (eventData.data?.width != null) {
+        this.widthValue = eventData.data?.width;
       }
-      if (eventData.data.height != null) {
-        this.height = eventData.data.height;
+      if (eventData.data?.height != null) {
+        this.heightValue = eventData.data?.height;
       }
-      if (eventData.data.srcValue != null) {
-        this.srcValue = eventData.data.srcValue;
+      if (eventData.data?.srcValue != null) {
+        this.srcValue = eventData.data?.srcValue;
       }
     }
   }
   private stateChangCallBackTwo = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Background page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.backgroundColor != null) {
-        this.backgroundColor = eventData.data.backgroundColor;
+      if (eventData.data?.backgroundColor != null) {
+        this.backgroundColorValue = eventData.data.backgroundColor;
       }
-      if (eventData.data.backgroundImage != null) {
-        this.backgroundImage = eventData.data.backgroundImage;
+      if (eventData.data?.backgroundImage != null) {
+        this.backgroundImageValue = eventData.data.backgroundImage;
       }
-      if (eventData.data.backgroundImageSize != null) {
-        this.backgroundImageSize = eventData.data.backgroundImageSize;
+      if (eventData.data?.backgroundImageSize != null) {
+        this.backgroundImageSizeValue = eventData.data.backgroundImageSize;
       }
-      if (eventData.data.backgroundImagePosition != null) {
-        this.backgroundImagePosition = eventData.data.backgroundImagePosition;
+      if (eventData.data?.backgroundImagePosition != null) {
+        this.backgroundImagePositionValue = eventData.data.backgroundImagePosition;
       }
     }
   }

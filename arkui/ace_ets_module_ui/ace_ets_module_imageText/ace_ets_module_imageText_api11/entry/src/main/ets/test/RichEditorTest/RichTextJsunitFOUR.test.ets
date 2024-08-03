@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
-import Utils from "../../MainAbility/common/Common";
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function richTextJsunitFOUR() {
   describe('richTextJsunitFOUR', () => {
@@ -30,7 +30,7 @@ export default function richTextJsunitFOUR() {
         if (!("richText" == pages.name)) {
           console.info("get richText state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push richText page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,15 +40,20 @@ export default function richTextJsunitFOUR() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("richText after each called");
     });
 
     it('testRichText01', 0, async (done: Function) => {
-      console.info('[testRichText01] START');
-      let strJson: string = getInspectorByKey('richText');
-      console.info('[testRichText01]' + strJson);
-      console.info('[testRichText01] END');
+      try {
+        console.info('[testRichText01] START');
+        let strJson: string = getInspectorByKey('richText');
+        console.info('[testRichText01]' + strJson);
+        console.info('[testRichText01] END');
+      } catch (err) {
+        console.error("[testRichText01] error: " + err);
+        expect().assertFail();
+      }
       done();
     });
   });

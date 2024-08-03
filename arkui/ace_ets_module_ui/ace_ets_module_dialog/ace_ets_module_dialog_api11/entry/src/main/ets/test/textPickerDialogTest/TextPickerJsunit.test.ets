@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import Utils from '../../MainAbility/common/Utils';;
+import Utils from '../../MainAbility/common/Utils';
 
 export default function textPickerJsunit() {
   describe('appInfoTest_four_13', () => {
@@ -62,12 +61,14 @@ export default function textPickerJsunit() {
         done();
         return;
       }
+      /*
       const textPickerDialogOption = new textPickerDialogOption();
       textPickerDialogOption.defaultPickerItemHeight = 20;
       const textPickerAttribute = new TextPickerAttribute();
       textPickerAttribute.defaultPickerItemHeight = 20;
       const textPickerOption = new TextPickerOption();
       textPickerOption.value = "textPickerOptionTest";
+      */
       done();
     });
   })

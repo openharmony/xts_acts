@@ -263,5 +263,37 @@ export default function displayManagerInterfaceTest() {
         done();
       }
     })
+    /**
+     * @tc.number : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5170
+     * @tc.name   : testGetAllDisplayPhysicalResolution
+     * @tc.desc   : get all display physical resolution
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 3
+     */
+    it('testGetAllDisplayPhysicalResolution', 0, (done: Function) => {
+      let caseName = 'TestGetAllDisplayPhysicalResolution';
+      display.getAllDisplayPhysicalResolution().then((resolutionObjects) => {
+        console.info(`${caseName} Obtaining physical resolution length: ${resolutionObjects.length}`);
+        for (let i = 0; i < resolutionObjects.length; i++) {
+          const resolutionObject = resolutionObjects[i];
+          console.info(`${caseName}: ${i} foldDisplayMode: ${resolutionObject.foldDisplayMode}, physicalWidth: ${resolutionObject.physicalWidth}, physicalHeight: ${resolutionObject.physicalHeight}`)
+          expect(resolutionObject !== null).assertTrue();
+          expect(resolutionObject.physicalWidth).assertLarger(0);
+          expect(resolutionObject.physicalHeight).assertLarger(0);
+          done();
+        }
+      }).catch((err: BusinessError) => {
+        if(err.code == 801) {
+          console.info(`${caseName}: The current device type does not support to setWindowSystemBarEnable`);
+          expect(true).assertTrue();
+          done();
+        } else {
+          console.error(`${caseName}: Failed to obtain physical resolution. Code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      });
+    })
   })
 }

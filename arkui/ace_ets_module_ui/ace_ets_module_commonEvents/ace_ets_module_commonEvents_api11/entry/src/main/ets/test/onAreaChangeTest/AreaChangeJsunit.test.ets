@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function areaChangeJsunit() {
   describe('areaChangeTest', async () => {
@@ -31,7 +31,7 @@ export default function areaChangeJsunit() {
         if (!("areaChange" == pages.name)) {
           console.info("get areaChange state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(1000);
+          await CommonFunc.sleep(1000);
           console.info("push areaChange page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,16 +41,16 @@ export default function areaChangeJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("areaChange after each called");
     });
 
     it('areaChangeTest_0300', 0, async (done: Function) => {
       console.info('areaChangeTest_0300 START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let callback = (backData: events_emitter.EventData) => {
         console.info("areaChangeTest_0300 get state result is: " + JSON.stringify(backData));
-        expect(backData.data.value).assertEqual('TextText');
+        expect(backData.data?.value).assertEqual('TextText');
         done()
       }
       let indexEvent: events_emitter.InnerEvent = {
@@ -64,10 +64,10 @@ export default function areaChangeJsunit() {
       }
 
       console.info('areaChangeTest_0400 START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let callback1 = (eventData: events_emitter.EventData) => {
         console.info("areaChangeTest_0400 get state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual(true);
+        expect(eventData.data?.ACTION).assertEqual(true);
       }
       let indexEvent1: events_emitter.InnerEvent = {
         eventId: 62,

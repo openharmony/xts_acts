@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function OnTouch2() {
-  describe('OnTouch2', function () {
-    beforeEach(async function (done) {
+  describe('OnTouch2', () => {
+    beforeEach(async (done: Function) => {
       console.info("OnTouch2 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/onTouch/OnTouch2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/onTouch/OnTouch2',
       }
       try {
         router.clear();
@@ -48,13 +48,13 @@ export default function OnTouch2() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('OnTouch2_0100', 0, async function (done) {
+    it('OnTouch2_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('OnTouch2_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Touch3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[OnTouch2_0100] component obj is: " + JSON.stringify(obj));
       console.info("[OnTouch2_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('PanGesture offset:X:10Y:20');
@@ -67,7 +67,7 @@ export default function OnTouch2() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('OnTouch2_0200', 0, async function (done) {
+    it('OnTouch2_0200', 0, async (done: Function) => {
       console.info('OnTouch2_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -75,7 +75,7 @@ export default function OnTouch2() {
       await Column.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Touch4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[OnTouch2_0200] component obj is: " + JSON.stringify(obj));
       console.info("[OnTouch2_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect((Number(obj.$attrs.content) - 100) < 10).assertEqual(true);

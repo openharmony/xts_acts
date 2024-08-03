@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function patternLockJsunit() {
-  describe('patternLockTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/patternLock',
+  describe('patternLockTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/patternLock',
       }
       try {
         router.clear();
@@ -30,9 +30,8 @@ export default function patternLockJsunit() {
         console.info("get patternLock state success " + JSON.stringify(pages));
         if (!("patternLock" == pages.name)) {
           console.info("get patternLock state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push patternLock page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push patternLock page error: " + err);
@@ -42,13 +41,13 @@ export default function patternLockJsunit() {
 
     /**
      * @tc.number patternLockTest_0001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set sideLength values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set sideLength values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('patternLockTest_0001', 0, async function (done) {
+    it('patternLockTest_0001', 0, async (done: Function) => {
       console.info('patternLockTest_0001 START');
       let strJsonNew = getInspectorByKey('patternLock');
       let objNew = JSON.parse(strJsonNew);
@@ -61,13 +60,13 @@ export default function patternLockJsunit() {
 
     /**
      * @tc.number patternLockTest_0002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set circleRadius values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set circleRadius values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('patternLockTest_0002', 0, async function (done) {
+    it('patternLockTest_0002', 0, async (done: Function) => {
       console.info('patternLockTest_0002 START');
       let strJsonNew = getInspectorByKey('patternLock');
       let objNew = JSON.parse(strJsonNew);
@@ -80,13 +79,13 @@ export default function patternLockJsunit() {
 
     /**
      * @tc.number patternLockTest_0003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectedColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectedColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('patternLockTest_0003', 0, async function (done) {
+    it('patternLockTest_0003', 0, async (done: Function) => {
       console.info('patternLockTest_0003 START');
       let strJsonNew = getInspectorByKey('patternLock');
       let objNew = JSON.parse(strJsonNew);
@@ -99,13 +98,13 @@ export default function patternLockJsunit() {
 
     /**
      * @tc.number patternLockTest_0004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set regularColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set regularColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('patternLockTest_0004', 0, async function (done) {
+    it('patternLockTest_0004', 0, async (done: Function) => {
       console.info('patternLockTest_0004 START');
       let strJsonNew = getInspectorByKey('patternLock');
       let objNew = JSON.parse(strJsonNew);
@@ -118,13 +117,13 @@ export default function patternLockJsunit() {
 
     /**
      * @tc.number patternLockTest_0005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set activeColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set activeColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('patternLockTest_0005', 0, async function (done) {
+    it('patternLockTest_0005', 0, async (done: Function) => {
       console.info('patternLockTest_0005 START');
       let strJsonNew = getInspectorByKey('patternLock');
       let objNew = JSON.parse(strJsonNew);
@@ -137,13 +136,13 @@ export default function patternLockJsunit() {
 
     /**
      * @tc.number patternLockTest_0006
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set pathColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set pathColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('patternLockTest_0006', 0, async function (done) {
+    it('patternLockTest_0006', 0, async (done: Function) => {
       console.info('patternLockTest_0006 START');
       let strJsonNew = getInspectorByKey('patternLock');
       let objNew = JSON.parse(strJsonNew);
@@ -156,13 +155,13 @@ export default function patternLockJsunit() {
 
     /**
      * @tc.number patternLockTest_0007
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set pathStrokeWidth values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set pathStrokeWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('patternLockTest_0007', 0, async function (done) {
+    it('patternLockTest_0007', 0, async (done: Function) => {
       console.info('patternLockTest_0007 START');
       let strJsonNew = getInspectorByKey('patternLock');
       let objNew = JSON.parse(strJsonNew);
@@ -175,13 +174,13 @@ export default function patternLockJsunit() {
 
     /**
      * @tc.number patternLockTest_0008
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set autoReset values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set autoReset values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('patternLockTest_0008', 0, async function (done) {
+    it('patternLockTest_0008', 0, async (done: Function) => {
       console.info('patternLockTest_0008 START');
       let strJsonNew = getInspectorByKey('patternLock');
       let objNew = JSON.parse(strJsonNew);
@@ -194,13 +193,13 @@ export default function patternLockJsunit() {
 
     /**
      * @tc.number patternLockTest_0009
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change sideLength values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change sideLength values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('patternLockTest_0009', 0, async function (done) {
+    it('patternLockTest_0009', 0, async (done: Function) => {
 
       console.info('patternLockTest_0009 START');
       let driver = Driver.create();

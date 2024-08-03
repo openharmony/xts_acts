@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils.ets'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function copyOptionJsunit() {
   describe('copyOptionTest', () => {
@@ -31,7 +31,7 @@ export default function copyOptionJsunit() {
         if (!("copyOption" == pages.name)) {
           console.info("get copyOption state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push copyOption page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,7 +41,7 @@ export default function copyOptionJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("copyOption after each called");
     });
 
@@ -52,7 +52,7 @@ export default function copyOptionJsunit() {
      */
     it('testcopyOption0001', 0, async (done: Function) => {
       console.info('hoverEffect testcopyOption0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('InAppText');
       console.info("[testcopyOption0001] component copyOption strJson:" + strJson);
       expect(JSON.parse(strJson).$type).assertEqual('Text');
@@ -68,7 +68,7 @@ export default function copyOptionJsunit() {
      */
     it('testcopyOption0002', 0, async (done: Function) => {
       console.info('hoverEffect testcopyOption0002 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('LocalDeviceText');
       console.info("[testcopyOption0002] component copyOption strJson:" + strJson);
       expect(JSON.parse(strJson).$type).assertEqual('Text');

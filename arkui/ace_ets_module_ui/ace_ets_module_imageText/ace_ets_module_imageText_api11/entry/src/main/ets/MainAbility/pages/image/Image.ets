@@ -55,10 +55,12 @@ struct image_textcase {
           .height(180)
           .width(180)
           .onComplete((msg) => {
-            this.myWidth = msg.width
-            this.myHeight = msg.height
-            console.info('Width ----' + this.myWidth)
-            console.info('height ----' + this.myHeight)
+            if (msg !== undefined) {
+              this.myWidth = msg.width
+              this.myHeight = msg.height
+              console.info('Width ----' + this.myWidth)
+              console.info('height ----' + this.myHeight)
+            }
           })
           .onError(() => {
             console.info('load image fail')

@@ -59,7 +59,7 @@ export default function FolderStackTest2() {
       await CommonFunc.sleep(2000);
 
       let strJson1 = getInspectorByKey('FolderStackTest2_text');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[FolderStackTest2_0100] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('AppRotation');

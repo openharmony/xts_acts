@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter'
 
 export default function dragPreviewJsSuit() {
-  describe('dragPreviewJsSuit', function () {
-    beforeEach(async function (done) {
+  describe('dragPreviewJsSuit', () => {
+    beforeEach(async (done: Function) => {
       console.info("dragPreviewJsSuit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/DragController/dragPreview',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/DragController/dragPreview',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function dragPreviewJsSuit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("overlay after each called");
     });
@@ -55,11 +55,11 @@ export default function dragPreviewJsSuit() {
      * @tc.size :
      */
 
-    it('dragPreviewJsSuit_0100', 0, async function (done) {
+    it('dragPreviewJsSuit_0100', 0, async (done: Function) => {
       console.info('[dragPreviewJsSuit_0100] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('imagepreview');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[dragPreviewJsSuit_0100] obj is: " + JSON.stringify(obj.$attrs.content));
       console.info("[dragPreviewJsSuit_0100] obj is: " + JSON.stringify(obj.$attrs.width));
       console.info("[dragPreviewJsSuit_0100] obj is: " + JSON.stringify(obj.$attrs.height));

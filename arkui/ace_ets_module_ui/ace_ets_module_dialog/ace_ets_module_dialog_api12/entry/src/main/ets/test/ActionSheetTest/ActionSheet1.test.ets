@@ -13,21 +13,21 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 import window from '@ohos.window';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import { BusinessError } from '@ohos.base';
 
 
 export default function ActionSheet1() {
-  describe('ActionSheet1', function () {
-    beforeEach(async function (done) {
+  describe('ActionSheet1', () => {
+    beforeEach(async (done: Function) => {
       console.info("ActionSheet1 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/ActionSheet/ActionSheet1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/ActionSheet/ActionSheet1',
       }
       try {
         router.clear();
@@ -51,7 +51,7 @@ export default function ActionSheet1() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('ActionSheet1_0100', 0, async function (done) {
+    it('ActionSheet1_0100', 0, async (done: Function) => {
       console.info('ActionSheet1_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -77,7 +77,7 @@ export default function ActionSheet1() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('ActionSheet1_0200', 0, async function (done) {
+    it('ActionSheet1_0200', 0, async (done: Function) => {
       console.info('ActionSheet1_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

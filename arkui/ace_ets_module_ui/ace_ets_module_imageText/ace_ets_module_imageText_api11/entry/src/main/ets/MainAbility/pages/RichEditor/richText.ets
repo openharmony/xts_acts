@@ -32,8 +32,8 @@ struct RichTextCreateComponent {
     console.info("[stateChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called:" + JSON.stringify(eventData));
-      if (eventData.data.data != null) {
-        this.data = eventData.data.data;
+      if (eventData.data?.data != null) {
+        this.data = eventData.data?.data;
       }
     }
   }

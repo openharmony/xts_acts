@@ -12,16 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 // import testsuite from '../../test/List.test'
 
+function asNumber(value: number | string | Resource) {
+  return value as number;
+}
+
 @Entry
 @Component
 struct textInputTest {
+  controller: TextInputController = new TextInputController()
+  text: string = ''
+
   aboutToAppear() {
     let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
     let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
@@ -74,7 +80,7 @@ struct textInputTest {
           .placeholderColor(Color.Grey)
           .placeholderFont({ size: 14, weight: 400 })
           .caretColor(Color.Blue)
-          .caretPosition("7")
+          .caretPosition(asNumber("7"))
           .margin(20)
           .fontSize(14)
           .fontColor(Color.Black)
@@ -86,7 +92,7 @@ struct textInputTest {
           .placeholderColor(Color.Grey)
           .placeholderFont({ size: 14, weight: 400 })
           .caretColor(Color.Blue)
-          .caretPosition($r("app.string.textInput_Size_test"))
+          .caretPosition(asNumber($r("app.string.textInput_Size_test")))
           .margin(20)
           .fontSize(14)
           .fontColor(Color.Black)
@@ -110,7 +116,7 @@ struct textInputTest {
           .placeholderColor(Color.Grey)
           .placeholderFont({ size: 14, weight: 400 })
           .caretColor(Color.Blue)
-          .caretPosition("")
+          .caretPosition(asNumber(""))
           .margin(20)
           .fontSize(14)
           .fontColor(Color.Black)

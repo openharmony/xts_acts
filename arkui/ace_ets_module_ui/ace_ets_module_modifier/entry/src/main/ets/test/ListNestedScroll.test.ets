@@ -16,25 +16,25 @@
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-import router from '@system.router';
+import router from '@ohos.router';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
+
 export default function listNestedScrollJsunit() {
-  describe('list_NestedScrollTest', function () {
-    beforeEach(async function (done) {
+  describe('list_NestedScrollTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("listNestedScroll beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/listNestedScroll',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/listNestedScroll',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get listNestedScroll state pages: " + JSON.stringify(pages));
         if (!("listNestedScroll" == pages.name)) {
           console.info("get listNestedScroll state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push listNestedScroll page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push listNestedScroll page error: " + err);
@@ -44,13 +44,13 @@ export default function listNestedScrollJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_listNestedScroll01
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set nestedScrol values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set nestedScrol values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_listNestedScroll01', 0, async function (done) {
+    it('ArkUI_Stage_listNestedScroll01', 0, async (done: Function) => {
       console.info('[ArkUI_Stage_listNestedScroll01] START');
       await Utils.sleep(2000)
       let webRect = Utils.getComponentRect('ColumnSize');

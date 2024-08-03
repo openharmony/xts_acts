@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function SpaceMainNumberJsunit() {
-  describe('SpaceMainNumberJsunit', function () {
-    beforeEach(async function (done) {
+  describe('SpaceMainNumberJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("space1 beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/Flex/SpaceMainNumber",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/Flex/SpaceMainNumber",
       }
       try {
         router.clear();
@@ -50,10 +50,10 @@ export default function SpaceMainNumberJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('space1Test_0010', 0, async function (done) {
+    it('space1Test_0010', 0, async (done: Function) => {
       console.info('space1Test_0010 START');
       let strJson = getInspectorByKey('flex_main_number_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[space1Test_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.space).assertEqual("10.00px");
       console.info('[space1Test_0010] END');
@@ -68,10 +68,10 @@ export default function SpaceMainNumberJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('space1Test_0020', 0, async function (done) {
+    it('space1Test_0020', 0, async (done: Function) => {
       console.info('space1Test_0020 START');
       let strJson = getInspectorByKey('flex_main_number_2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[space1Test_0020] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.space).assertEqual("0.00vp");
       console.info('[space1Test_0020] END');
@@ -86,10 +86,10 @@ export default function SpaceMainNumberJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('space1Test_0030', 0, async function (done) {
+    it('space1Test_0030', 0, async (done: Function) => {
       console.info('space1Test_0030 START');
       let strJson = getInspectorByKey('flex_main_number_3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[space1Test_0030] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.space).assertEqual("0.00px");
       console.info('[space1Test_0030] END');
@@ -104,10 +104,10 @@ export default function SpaceMainNumberJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('space1Test_0040', 0, async function (done) {
+    it('space1Test_0040', 0, async (done: Function) => {
       console.info('space1Test_0040 START');
       let strJson = getInspectorByKey('flex_main_number_4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[space1Test_0040] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.space).assertEqual("0.00px");
       console.info('[space1Test_0040] END');
@@ -122,10 +122,10 @@ export default function SpaceMainNumberJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('space1Test_0050', 0, async function (done) {
+    it('space1Test_0050', 0, async (done: Function) => {
       console.info('space1Test_0050 START');
       let strJson = getInspectorByKey('flex_main_number_5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[space1Test_0050] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.space).assertEqual("3276789.00px");
       console.info('[space1Test_0050] END');

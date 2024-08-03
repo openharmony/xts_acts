@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from './Utils.ets'
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
 export default function lineNeJsunit() {
-  describe('lineTest', function () {
-    beforeAll(async function (done) {
+  describe('lineTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/line',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/line',
       }
       try {
         router.clear();
@@ -31,9 +31,8 @@ export default function lineNeJsunit() {
         console.info("get line state success " + JSON.stringify(pages));
         if (!("line" == pages.name)) {
           console.info("get line state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push line page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push line page error: " + err);
@@ -43,49 +42,47 @@ export default function lineNeJsunit() {
 
     /**
      * @tc.number testLineNe00071
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set startPoint values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set startPoint values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testLineNe00071', 0, async function (done) {
+    it('testLineNe00071', 0, async (done: Function) => {
       console.info('lineNe testLineNe00071 START');
       let strJson = getInspectorByKey('LineKey1');
-      let obj = JSON.parse(strJson);
-      console.info("[testLineNe00071] obj value :" + obj.$attrs);
-      expect(obj.$attrs.startPoint[0]).assertEqual(0);
+      console.info("[testLineNe00071] obj value :" + JSON.parse(strJson).$attrs);
+      expect(JSON.parse(strJson).$attrs.startPoint[0]).assertEqual(0);
       console.info('lineNe testLineNe00071 END');
       done();
     });
 
     /**
      * @tc.number testLineNe00072
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set endPoint values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set endPoint values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testLineNe00072', 0, async function (done) {
+    it('testLineNe00072', 0, async (done: Function) => {
       console.info('lineNe testLineNe00072 START');
       let strJson = getInspectorByKey('LineKey1');
-      let obj = JSON.parse(strJson);
-      console.info("[testLineNe00072] obj value :" + obj.$attrs);
-      expect(obj.$attrs.endPoint[0]).assertEqual(200);
+      console.info("[testLineNe00072] obj value :" + JSON.parse(strJson).$attrs);
+      expect(JSON.parse(strJson).$attrs.endPoint[0]).assertEqual(200);
       console.info('lineNe testLineNe00072 END');
       done();
     });
 
     /**
      * @tc.number testLineNe00073
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change startPoint values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change startPoint values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testLineNe00073', 0, async function (done) {
+    it('testLineNe00073', 0, async (done: Function) => {
       console.info('testLineNe00073 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));
@@ -93,9 +90,8 @@ export default function lineNeJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('LineKey1'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testLineNe00073 component  is: " + JSON.stringify(objNew.$attrs));
-      expect(objNew.$attrs.startPoint[0]).assertEqual(1); //
+      console.info("testLineNe00073 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
+      expect(JSON.parse(strJsonNew).$attrs.startPoint[0]).assertEqual(1); //
       console.info('testLineNe00073 END');
       done();
     });

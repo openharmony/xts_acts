@@ -14,13 +14,13 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver} from '@ohos.UiTest';
 export default function aboutToAppearTest() {
-  describe('aboutToAppearTest', function () {
-    beforeEach(async function (done) {
+  describe('aboutToAppearTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("aboutToAppearTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/onAppear/aboutToAppear',
       }
       try {
@@ -39,7 +39,7 @@ export default function aboutToAppearTest() {
       console.info("aboutToAppearTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("aboutToAppearTest after each called");
     });
@@ -51,7 +51,7 @@ export default function aboutToAppearTest() {
      * @tc.type
     * @tc.size
      */
-    it('aboutToAppearTest_0100', 0, async function (done) {
+    it('aboutToAppearTest_0100', 0, async (done: Function) => {
       console.info('[aboutToAppearTest_0100] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('aboutToAppear'));
@@ -64,7 +64,7 @@ export default function aboutToAppearTest() {
       await driver.click(point.x, point.y)
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('aboutToAppear');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[aboutToAppearTest_0100] component obj is: " + JSON.stringify(obj));
       console.info("[aboutToAppearTest_0100] component obj is: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual("#FFFF0000");
@@ -80,7 +80,7 @@ export default function aboutToAppearTest() {
      * @tc.type
     * @tc.size
      */
-    it('aboutToAppearTest_0200', 0, async function (done) {
+    it('aboutToAppearTest_0200', 0, async (done: Function) => {
       console.info('[aboutToAppearTest_0200] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('aboutToAppear'));
@@ -93,7 +93,7 @@ export default function aboutToAppearTest() {
       await driver.click(point.x, point.y)
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('aboutToAppear');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[aboutToAppearTest_0200] component obj is: " + JSON.stringify(obj));
       console.info("[aboutToAppearTest_0200] component obj is: " + JSON.stringify(obj.$attrs.fontColor));
       expect(obj.$attrs.fontColor).assertEqual("#FF0000FF");

@@ -5916,7 +5916,6 @@ instanceOf(obj, Person);
       expect(value).assertEqual(0);
       done();
     });
-
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0434
      * @tc.name      JsvmTest0434
@@ -6532,3 +6531,4 @@ instanceOf(obj, Person);
     });
   });
 }
+

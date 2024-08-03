@@ -53,7 +53,7 @@ export default function TextAreaCallbackTest() {
 
 
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.isEditing).assertEqual(true);
+        expect(event.data?.isEditing).assertEqual(true);
         step2()
       }
       let event: events_emitter.InnerEvent = {
@@ -73,7 +73,7 @@ export default function TextAreaCallbackTest() {
 
 async function step2() {
   let callback = (event: events_emitter.EventData) => {
-    expect(event.data.isEditing).assertEqual(false);
+    expect(event.data?.isEditing).assertEqual(false);
   }
   let event: events_emitter.InnerEvent = {
     eventId: 60201,

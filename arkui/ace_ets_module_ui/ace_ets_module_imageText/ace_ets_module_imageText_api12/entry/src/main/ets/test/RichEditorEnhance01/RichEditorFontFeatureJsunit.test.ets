@@ -18,10 +18,10 @@ import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function RichEditorFontFeatureJsunit() {
-  describe('RichEditorFontFeatureJsunit', function () {
-    beforeEach(async function (done) {
+  describe('RichEditorFontFeatureJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("RichEditorFontFeatureJsunit beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/RichEditorEnhance01/RichEditorFontFeature',
       }
       try {
@@ -42,7 +42,7 @@ export default function RichEditorFontFeatureJsunit() {
       done();
     });
     
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await driver.delayMs(1000)
       console.info("RichEditorFontFeatureJsunit after each called");
@@ -56,7 +56,7 @@ export default function RichEditorFontFeatureJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('RichEditorFontFeatureJsunit_0100', 0, async function (done) {
+    it('RichEditorFontFeatureJsunit_0100', 0, async (done: Function) => {
       // Test stop
       console.info('[RichEditorFontFeatureJsunit_0100] START');
       let driver = Driver.create();
@@ -88,7 +88,7 @@ export default function RichEditorFontFeatureJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('RichEditorFontFeatureJsunit_0200', 0, async function (done) {
+    it('RichEditorFontFeatureJsunit_0200', 0, async (done: Function) => {
       // Test stop
       console.info('[RichEditorFontFeatureJsunit_0200] START');
       let driver = Driver.create();

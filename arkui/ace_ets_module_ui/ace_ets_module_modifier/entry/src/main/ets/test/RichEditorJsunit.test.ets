@@ -14,16 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function richEditorJsunit() {
-  describe('richEditorTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/richEditor',
+  describe('richEditorTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/richEditor',
       }
       try {
         router.clear();
@@ -31,9 +31,8 @@ export default function richEditorJsunit() {
         console.info("get richEditor state success " + JSON.stringify(pages));
         if (!("richEditor" == pages.name)) {
           console.info("get richEditor state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push richEditor page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push richEditor page error: " + err);
@@ -43,13 +42,13 @@ export default function richEditorJsunit() {
 
     /**
      * @tc.number richEditorTest_002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set copyOption values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set copyOption values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('richEditorTest_002', 0, async function (done) {
+    it('richEditorTest_002', 0, async (done: Function) => {
       console.info('richEditorTest_002 START');
       let strJsonNew = getInspectorByKey('richEditor');
       let objNew = JSON.parse(strJsonNew);
@@ -61,13 +60,13 @@ export default function richEditorJsunit() {
 
     /**
      * @tc.number richEditorTest_001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change copyOption values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change copyOption values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-     it('richEditorTest_001', 0, async function (done) {
+    it('richEditorTest_001', 0, async (done: Function) => {
       console.info('richEditorTest_001 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));
@@ -80,5 +79,5 @@ export default function richEditorJsunit() {
       console.info('richEditorTest_001 END');
       done();
     });
-    })
+  })
 }

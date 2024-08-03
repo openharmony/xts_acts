@@ -16,25 +16,25 @@
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-import router from '@system.router';
+import router from '@ohos.router';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
+
 export default function waterFlowNestedScrollJsunit() {
-  describe('waterFlow_NestedScrollTest', function () {
-    beforeEach(async function (done) {
+  describe('waterFlow_NestedScrollTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("waterFlowNestedScroll beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/waterFlowNestedScroll',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/waterFlowNestedScroll',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get waterFlowNestedScroll state pages: " + JSON.stringify(pages));
         if (!("waterFlowNestedScroll" == pages.name)) {
           console.info("get waterFlowNestedScroll state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push waterFlowNestedScroll page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push waterFlowNestedScroll page error: " + err);
@@ -44,13 +44,13 @@ export default function waterFlowNestedScrollJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_waterFlowNestedScroll01
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set nestedScroll values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set nestedScroll values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_waterFlowNestedScroll01', 0, async function (done) {
+    it('ArkUI_Stage_waterFlowNestedScroll01', 0, async (done: Function) => {
       console.info('[ArkUI_Stage_waterFlowNestedScroll01] START');
       await Utils.sleep(2000)
       let webRect = Utils.getComponentRect('ColumnSize');

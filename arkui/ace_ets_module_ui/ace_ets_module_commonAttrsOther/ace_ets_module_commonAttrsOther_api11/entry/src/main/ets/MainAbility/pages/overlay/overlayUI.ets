@@ -25,34 +25,34 @@ struct OverlayExample {
 
   onPageShow() {
     console.info('[overlay] page show called ');
-    let stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 143,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    let stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 1110,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[stateChangCallBack] stateChangCallBack ");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.align != null) {
-        this.alignment = eventData.data.align
+      if (eventData.data?.align != null) {
+        this.alignment = eventData.data?.align
       }
-      if (eventData.data.title != null) {
-        this.title = eventData.data.title
+      if (eventData.data?.title != null) {
+        this.title = eventData.data?.title
       }
-      if (eventData.data.x != null) {
-        this.x = eventData.data.x
+      if (eventData.data?.x != null) {
+        this.x = eventData.data?.x
       }
-      if (eventData.data.y != null) {
-        this.y = eventData.data.y
+      if (eventData.data?.y != null) {
+        this.y = eventData.data?.y
       }
 
     }

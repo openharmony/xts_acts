@@ -14,14 +14,14 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function TextArea_lineBreakStrategyTest() {
-  describe('TextArea_lineBreakStrategyTest', function () {
-    beforeEach(async function (done) {
+  describe('TextArea_lineBreakStrategyTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextArea_lineBreakStrategyTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/TextArea/TextAreaAPI/lineBreakStrategy",
       }
       try {
@@ -40,7 +40,7 @@ export default function TextArea_lineBreakStrategyTest() {
       console.info("TextArea_lineBreakStrategyTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("TextArea_lineBreakStrategyTest after each called");
     });
@@ -53,7 +53,7 @@ export default function TextArea_lineBreakStrategyTest() {
      * @tc.type
     * @tc.size
      */
-    it('TextArea_lineBreakStrategyTest_001', 0, async function (done) {
+    it('TextArea_lineBreakStrategyTest_001', 0, async (done: Function) => {
       console.info('[TextArea_lineBreakStrategyTest_001] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

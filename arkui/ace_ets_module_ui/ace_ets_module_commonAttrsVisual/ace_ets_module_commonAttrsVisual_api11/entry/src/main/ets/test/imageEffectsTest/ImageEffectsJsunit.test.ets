@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,13 +15,13 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 class ShadowValue {
-  radius: number
-  color: Color
-  offsetX: number
-  offsetY: number
+  radius: number = 0
+  color: Color | ColoringStrategy = Color.Gray
+  offsetX: number = 0
+  offsetY: number = 0
 }
 
 export default function imageEffectsJsunit() {
@@ -38,7 +37,7 @@ export default function imageEffectsJsunit() {
         if (!("imageEffects" == pages.name)) {
           console.info("get imageEffects state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push imageEffects page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -48,13 +47,13 @@ export default function imageEffectsJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       console.info("imageEffects after each called");
     });
 
     it('testImageEffects001', 0, async (done: Function) => {
       console.info('[testSizeSetting001] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow');
       console.info("[testImageEffects001] component strJson:" + strJson);
       expect(JSON.parse(strJson).$type).assertEqual('Text');
@@ -64,7 +63,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects002', 0, async (done: Function) => {
       console.info('[testImageEffects002] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -80,7 +79,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects002] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('centerRow');
 
       console.info("[testImageEffects002] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -90,7 +89,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects003', 0, async (done: Function) => {
       console.info('[testImageEffects003] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -106,7 +105,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects003] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('centerRow');
 
       console.info("[testImageEffects003] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -116,7 +115,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects004', 0, async (done: Function) => {
       console.info('[testImageEffects004] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -132,7 +131,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects004] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow');
 
       console.info("[testImageEffects004] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -142,7 +141,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects005', 0, async (done: Function) => {
       console.info('[testImageEffects005] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -158,7 +157,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects005] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow');
 
       console.info("[testImageEffects005] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -168,7 +167,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects006', 0, async (done: Function) => {
       console.info('[testImageEffects006] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow3');
       console.info("[testImageEffects006] component strJson:" + JSON.parse(strJson).$attrs.shadow);
       expect(JSON.parse(strJson).$attrs.shadow.radius).assertEqual("10.000000");
@@ -180,7 +179,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects007', 0, async (done: Function) => {
       console.info('[testImageEffects007] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let shadowValue: ShadowValue = {
         radius: 20, color: Color.Gray, offsetX: 10, offsetY: 10
       };
@@ -200,7 +199,7 @@ export default function imageEffectsJsunit() {
         console.log("[testImageEffects007] change component data error: " + err.message);
       }
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow3');
 
       console.info("[testImageEffects007] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -213,7 +212,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects008', 0, async (done: Function) => {
       console.info('[testImageEffects008] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let shadowValue: ShadowValue = {
         radius: 0x80000000, color: 0x80000000, offsetX: 0x80000000, offsetY: 0x80000000
       };
@@ -232,7 +231,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects008] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow3');
 
       console.info("[testImageEffects008] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -245,7 +244,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects009', 0, async (done: Function) => {
       console.info('[testImageEffects009] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let shadowValue: ShadowValue = {
         radius: 0x7FFFFFFF, color: 0x7FFFFFFF, offsetX: 0x7FFFFFFF, offsetY: 0x7FFFFFFF
       };
@@ -264,7 +263,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects009] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow3');
 
       console.info("[testImageEffects009] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -277,8 +276,8 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects010', 0, async (done: Function) => {
       console.info('[testImageEffects010] START');
-      await Utils.sleep(1000);
-      let shadowValue = {
+      await CommonFunc.sleep(1000);
+      let shadowValue: ESObject = {
         radius: 'error', color: 'error', offsetX: 'error', offsetY: 'error'
       };
       try {
@@ -296,7 +295,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects010] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow3');
 
       console.info("[testImageEffects010] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -309,7 +308,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects011', 0, async (done: Function) => {
       console.info('[testSizeSetting011] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow5');
       console.info("[testImageEffects011] component strJson:" + strJson);
       expect(JSON.parse(strJson).$attrs.brightness).assertEqual(20);
@@ -318,7 +317,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects012', 0, async (done: Function) => {
       console.info('[testImageEffects012] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -334,7 +333,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects012] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('centerRow5');
 
       console.info("[testImageEffects012] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -344,7 +343,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects013', 0, async (done: Function) => {
       console.info('[testImageEffects012] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -360,7 +359,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects013] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow5');
 
       console.info("[testImageEffects013] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -370,7 +369,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects014', 0, async (done: Function) => {
       console.info('[testImageEffects014] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -386,7 +385,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects014] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow5');
 
       console.info("[testImageEffects014] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -396,7 +395,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects015', 0, async (done: Function) => {
       console.info('[testImageEffects015] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -412,7 +411,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects015] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow5');
 
       console.info("[testImageEffects015] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -422,7 +421,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects016', 0, async (done: Function) => {
       console.info('[testImageEffects016] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow6');
       console.info("[testImageEffects016] component strJson:" + strJson);
       console.info("[testImageEffects016] component strJson:" + JSON.parse(strJson).$attrs.saturate);
@@ -432,7 +431,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects017', 0, async (done: Function) => {
       console.info('[testImageEffects017] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -448,7 +447,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects017] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow6');
 
       console.info("[testImageEffects017] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -458,7 +457,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects018', 0, async (done: Function) => {
       console.info('[testImageEffects018] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -474,7 +473,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects018] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow6');
 
       console.info("[testImageEffects018] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -484,7 +483,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects019', 0, async (done: Function) => {
       console.info('[testImageEffects019] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -500,7 +499,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects019] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow6');
 
       console.info("[testImageEffects019] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -510,7 +509,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects020', 0, async (done: Function) => {
       console.info('[testImageEffects020] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -526,7 +525,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects020] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow6');
 
       console.info("[testImageEffects020] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -536,7 +535,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects021', 0, async (done: Function) => {
       console.info('[testSizeSetting021] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow7');
       console.info("[testImageEffects021] component strJson:" + strJson);
       expect(JSON.parse(strJson).$attrs.contrast).assertEqual(20);
@@ -545,7 +544,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects022', 0, async (done: Function) => {
       console.info('[testImageEffects022] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -561,7 +560,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects022] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow7');
 
       console.info("[testImageEffects022] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -571,7 +570,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects023', 0, async (done: Function) => {
       console.info('[testImageEffects023] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -587,7 +586,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects023] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow7');
 
       console.info("[testImageEffects023] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -597,7 +596,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects024', 0, async (done: Function) => {
       console.info('[testImageEffects024] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -613,7 +612,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects024] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow7');
 
       console.info("[testImageEffects024] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -623,7 +622,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects025', 0, async (done: Function) => {
       console.info('[testImageEffects025] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -639,7 +638,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects025] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow7');
 
       console.info("[testImageEffects025] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -649,7 +648,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects026', 0, async (done: Function) => {
       console.info('[testSizeSetting0026] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow8');
       console.info("[testImageEffects026] component strJson:" + strJson);
       expect(JSON.parse(strJson).$attrs.invert).assertEqual(1);
@@ -658,7 +657,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects027', 0, async (done: Function) => {
       console.info('[testImageEffects027] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -674,7 +673,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects027] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow8');
 
       console.info("[testImageEffects027] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -684,7 +683,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects028', 0, async (done: Function) => {
       console.info('[testImageEffects028] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -700,7 +699,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects028] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow8');
 
       console.info("[testImageEffects028] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -710,7 +709,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects029', 0, async (done: Function) => {
       console.info('[testImageEffects029] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -726,7 +725,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects029] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow8');
 
       console.info("[testImageEffects029] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -736,7 +735,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects030', 0, async (done: Function) => {
       console.info('[testImageEffects030] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -752,7 +751,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects030] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow8');
 
       console.info("[testImageEffects030] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -762,7 +761,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects031', 0, async (done: Function) => {
       console.info('[testImageEffects031] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow9');
       console.info("[testImageEffects031] component strJson:" + strJson);
       console.info("[testImageEffects031] component strJson:" + JSON.parse(strJson).$attrs.shadow);
@@ -772,7 +771,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects032', 0, async (done: Function) => {
       console.info('[testImageEffects032] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -788,7 +787,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects032] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow9');
 
       console.info("[testImageEffects032] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -798,7 +797,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects033', 0, async (done: Function) => {
       console.info('[testImageEffects033] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -814,7 +813,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects033] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow9');
 
       console.info("[testImageEffects033] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -824,7 +823,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects034', 0, async (done: Function) => {
       console.info('[testImageEffects034] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -840,7 +839,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects034] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow9');
 
       console.info("[testImageEffects034] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -850,7 +849,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects035', 0, async (done: Function) => {
       console.info('[testImageEffects035] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -866,7 +865,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects035] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow9');
 
       console.info("[testImageEffects035] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -876,11 +875,11 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects036', 0, async (done: Function) => {
       console.info('[testImageEffects036] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "shadowStyleValue": ShadowStyle.OuterDefaultXS
+            "shadowStyleValue": ShadowStyle.OUTER_DEFAULT_XS
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -892,7 +891,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects036] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('shadowDefaultShadow');
 
       console.info("[testImageEffects036] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -902,11 +901,11 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects037', 0, async (done: Function) => {
       console.info('[testImageEffects037] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "shadowStyleValue": ShadowStyle.OuterDefaultSM
+            "shadowStyleValue": ShadowStyle.OUTER_DEFAULT_SM
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -918,7 +917,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects037] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJsonNew: string = getInspectorByKey('shadowDefaultShadow');
 
@@ -929,11 +928,11 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects038', 0, async (done: Function) => {
       console.info('[testImageEffects038] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "shadowStyleValue": ShadowStyle.OuterDefaultMD
+            "shadowStyleValue": ShadowStyle.OUTER_DEFAULT_MD
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -945,7 +944,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects038] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJsonNew: string = getInspectorByKey('shadowDefaultShadow');
 
@@ -956,11 +955,11 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects039', 0, async (done: Function) => {
       console.info('[testImageEffects039] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "shadowStyleValue": ShadowStyle.OuterDefaultLG
+            "shadowStyleValue": ShadowStyle.OUTER_DEFAULT_LG
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -972,7 +971,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects039] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJsonNew: string = getInspectorByKey('shadowDefaultShadow');
 
@@ -983,11 +982,11 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects040', 0, async (done: Function) => {
       console.info('[testImageEffects040] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "shadowStyleValue": ShadowStyle.OuterFloatingSM
+            "shadowStyleValue": ShadowStyle.OUTER_FLOATING_SM
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -999,7 +998,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects040] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJsonNew: string = getInspectorByKey('shadowDefaultShadow');
 
@@ -1010,11 +1009,11 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects041', 0, async (done: Function) => {
       console.info('[testImageEffects041] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "shadowStyleValue": ShadowStyle.OuterFloatingMD
+            "shadowStyleValue": ShadowStyle.OUTER_FLOATING_MD
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -1026,7 +1025,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects041] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJsonNew: string = getInspectorByKey('shadowDefaultShadow');
 
@@ -1037,7 +1036,7 @@ export default function imageEffectsJsunit() {
 
     it('testImageEffects042', 0, async (done: Function) => {
       console.info('[testImageEffects042] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let shadowValue: ShadowValue = {
         radius: 20, color: ColoringStrategy.AVERAGE, offsetX: 10, offsetY: 10
       };
@@ -1056,7 +1055,7 @@ export default function imageEffectsJsunit() {
       } catch (err) {
         console.log("[testImageEffects042] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('centerRow3');
 
       console.info("[testImageEffects042] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));

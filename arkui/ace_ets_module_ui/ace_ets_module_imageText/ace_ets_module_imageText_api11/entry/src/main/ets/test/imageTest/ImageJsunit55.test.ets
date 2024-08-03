@@ -14,7 +14,7 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
-import Utils from '../../MainAbility/common/Utils';;
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function imageJsunit55() {
   describe('imageText55', () => {
@@ -30,7 +30,7 @@ export default function imageJsunit55() {
         if (!("image55" == pages.name)) {
           console.info("get image state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push image page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,13 +40,13 @@ export default function imageJsunit55() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("image after each called");
     });
 
     it('imageTest_0100', 0, async (done: Function) => {
       console.info('imageTest_0100 START');
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJson: string = getInspectorByKey('text');
       console.info("imageTest_0100 component strJson:" + strJson);
       console.info("imageTest_0100 JSON.parse(strJson).$attrs.content is: " + JSON.parse(strJson).$attrs.content);
@@ -58,7 +58,7 @@ export default function imageJsunit55() {
 
     it('imageTest_0200', 0, async (done: Function) => {
       console.info('imageTest_0200 START');
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('image');
       console.info("imageTest_0200 component strJson:" + strJson);
       console.info("imageTest_0200 JSON.parse(strJson).$attrs.src is: " + JSON.parse(strJson).$attrs.src);

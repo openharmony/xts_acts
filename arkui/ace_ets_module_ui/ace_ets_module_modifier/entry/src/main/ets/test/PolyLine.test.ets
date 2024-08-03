@@ -13,28 +13,27 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
 export default function polyLineJsunit() {
-  describe('polyLineTest', function () {
-    beforeAll(async function (done) {
+  describe('polyLineTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/polyLine',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/polyLine',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get polyLine state success " + JSON.stringify(pages));
         if (!("polyLine" == pages.name)) {
           console.info("get polyLine state success " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push polyLine page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push polyLine page error: " + err);
@@ -44,13 +43,13 @@ export default function polyLineJsunit() {
 
     /**
      * @tc.number testpolyLine
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set points values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set points values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testpolyLine', 0, async function (done) {
+    it('testpolyLine', 0, async (done: Function) => {
       console.info('[testpolyLine] START');
       let strJson = getInspectorByKey('polyLine');
       let obj = JSON.parse(strJson);
@@ -70,13 +69,13 @@ export default function polyLineJsunit() {
 
     /**
      * @tc.number testpolyLine_001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change points values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change points values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testpolyLine_001', 0, async function (done) {
+    it('testpolyLine_001', 0, async (done: Function) => {
       console.info('testpolyLine_001 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

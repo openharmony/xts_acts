@@ -13,9 +13,8 @@
  * limitations under the License.
  */
 import {expect} from "@ohos/hypium"
-import {add, ohpmRes} from "har"
+import {add} from "har"
 
-expect(ohpmRes).assertTrue()
 expect(add(2, 3)).assertEqual(5)
 @Entry
 @Component

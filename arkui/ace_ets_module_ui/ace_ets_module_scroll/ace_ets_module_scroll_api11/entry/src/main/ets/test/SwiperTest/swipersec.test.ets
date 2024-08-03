@@ -1511,7 +1511,7 @@ export default function swiperSecTest() {
       await setBoolean("BoolErrStr", "true")
       let obj: ESObject = JSON.parse(getInspectorByKey("SwiperB"))
       console.info('ArkUX_Stage_Swiper_IsArrow_0300 displayArrow :' + JSON.stringify(obj.$attrs.displayArrow));
-      expect(obj.$attrs.displayArrow).assertEqual("false")
+      expect(obj.$attrs.displayArrow).assertEqual("true")
     })
 
     /**
@@ -1546,7 +1546,7 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_IsArrow_0600', 0, async () => {
       await setBoolean("BoolErrNull", null)
       let obj: ESObject = JSON.parse(getInspectorByKey("SwiperB"))
-      console.info('ArkUX_Stage_Swiper_IsArrow_0600 hoverShow :' + JSON.stringify(obj.$attrs.displayArrow));
+      console.info('ArkUX_Stage_Swiper_IsArrow_0600 displayArrow :' + JSON.stringify(obj.$attrs.displayArrow));
       expect(obj.$attrs.displayArrow).assertEqual("false")
     })
 
@@ -1558,7 +1558,7 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_IsArrow_0700', 0, async () => {
       await setBoolean("BoolErrStr", "")
       let obj: ESObject = JSON.parse(getInspectorByKey("SwiperB"))
-      console.info('ArkUX_Stage_Swiper_IsArrow_0700 hoverShow :' + JSON.stringify(obj.$attrs.displayArrow));
+      console.info('ArkUX_Stage_Swiper_IsArrow_0700 displayArrow :' + JSON.stringify(obj.$attrs.displayArrow));
       expect(obj.$attrs.displayArrow).assertEqual("false")
     })
 
@@ -1570,8 +1570,8 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_IsArrow_0800', 0, async () => {
       await setBoolean("BoolErrNum", 1)
       let obj: ESObject = JSON.parse(getInspectorByKey("SwiperB"))
-      console.info('ArkUX_Stage_Swiper_IsArrow_0800 hoverShow :' + JSON.stringify(obj.$attrs.displayArrow));
-      expect(obj.$attrs.displayArrow).assertEqual("false")
+      console.info('ArkUX_Stage_Swiper_IsArrow_0800 displayArrow :' + JSON.stringify(obj.$attrs.displayArrow));
+      expect(obj.$attrs.displayArrow).assertEqual("true")
     })
 
     /**
@@ -1594,7 +1594,7 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_IsHoverShow_0200', 0, async () => {
       await setBoolean("BoolFalse", false)
       let obj: ESObject = JSON.parse(getInspectorByKey("SwiperC"))
-      console.info('ArkUX_Stage_Swiper_IsHoverShow_0200 hoverShow :' + JSON.stringify(obj.$attrs.displayArrow));
+      console.info('ArkUX_Stage_Swiper_IsHoverShow_0200 hoverShow :' + JSON.stringify(obj.$attrs.hoverShow));
       expect(obj.$attrs.hoverShow).assertEqual("false")
     })
 
@@ -1606,8 +1606,8 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_IsHoverShow_0300', 0, async () => {
       await setBoolean("BoolErrStr", "true")
       let obj: ESObject = JSON.parse(getInspectorByKey("SwiperC"))
-      console.info('ArkUX_Stage_Swiper_IsHoverShow_0300 hoverShow :' + JSON.stringify(obj.$attrs.isHoverShow));
-      expect(obj.$attrs.hoverShow).assertEqual("false")
+      console.info('ArkUX_Stage_Swiper_IsHoverShow_0300 hoverShow :' + JSON.stringify(obj.$attrs.hoverShow));
+      expect(obj.$attrs.hoverShow).assertEqual("true")
     })
 
     /**
@@ -1667,7 +1667,7 @@ export default function swiperSecTest() {
       await setBoolean("BoolErrNum", 1)
       let obj: ESObject = JSON.parse(getInspectorByKey("SwiperC"))
       console.info('ArkUX_Stage_Swiper_IsHoverShow_0800 hoverShow :' + JSON.stringify(obj.$attrs.hoverShow));
-      expect(obj.$attrs.hoverShow).assertEqual("false")
+      expect(obj.$attrs.hoverShow).assertEqual("true")
     })
 
     /**

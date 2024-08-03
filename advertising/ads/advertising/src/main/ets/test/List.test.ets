@@ -12,8 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import adsTest from './Ads.test';
+import adsTestPart1 from './Ads.testPart2';
+import adsTestPart2 from './Ads.testPart1';
 
 export default function testsuite() {
-  adsTest();
+  adsTestPart1();
+  adsTestPart2();
 }

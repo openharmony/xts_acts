@@ -23,6 +23,5 @@
   "dependencies": {
     'hardephar': "file:../hardephar",
     'hardephsp': "file:../hardephsp",
-    "@ohos/crypto-js": "2.0.3-rc.0"
   }
 }

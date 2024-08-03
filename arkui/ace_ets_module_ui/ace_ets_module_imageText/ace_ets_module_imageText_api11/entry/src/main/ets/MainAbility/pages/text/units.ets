@@ -62,7 +62,7 @@ struct UnitsModuleName {
             console.info("ModuleName start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("ModuleName emit action state err: " + JSON.stringify(err.message))
+            console.info("ModuleName emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
 
@@ -98,7 +98,7 @@ struct UnitsModuleName {
             console.info("GlobalPosition start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("GlobalPosition emit action state err: " + JSON.stringify(err.message))
+            console.info("GlobalPosition emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
 

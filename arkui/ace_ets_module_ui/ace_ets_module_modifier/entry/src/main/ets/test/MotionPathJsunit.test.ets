@@ -14,15 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function motionPathJsunit() {
-  describe('common_motionPathTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/motionPath',
+  describe('common_motionPathTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/motionPath',
       }
       try {
         router.clear();
@@ -30,9 +30,8 @@ export default function motionPathJsunit() {
         console.info("get motionPath state success " + JSON.stringify(pages));
         if (!("motionPath" == pages.name)) {
           console.info("get motionPath state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push motionPath page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push motionPath page error: " + err);
@@ -40,20 +39,20 @@ export default function motionPathJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("motionPath after each called");
     });
 
     /**
      * @tc.number motionPathTest_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set attribute values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set attribute values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('motionPathTest_0100', 0, async function (done) {
+    it('motionPathTest_0100', 0, async (done: Function) => {
       console.info('motionPathTest_0100 START');
       await Utils.sleep(1500);
       let callback = (indexEvent) => {

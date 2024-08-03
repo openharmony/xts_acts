@@ -16,13 +16,13 @@
 import {describe, beforeAll, beforeEach, afterEach, it, expect} from "@ohos/hypium"
 import {UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function RotationGestureHandlerTest() {
 
-  describe('RotationGestureHandlerTest', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('RotationGestureHandlerTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/GestureHandler/RotationGestureHandler',
       }
       try {
@@ -42,7 +42,7 @@ export default function RotationGestureHandlerTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("RotationGestureHandler after each called");
     });
@@ -55,7 +55,7 @@ export default function RotationGestureHandlerTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RotationGestureHandler_0010', 0, async function (done) {
+    it('RotationGestureHandler_0010', 0, async (done: Function) => {
       console.info('RotationGestureHandler_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -63,7 +63,7 @@ export default function RotationGestureHandlerTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RotationGestureHandler1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('succ');
       console.info('[RotationGestureHandler_0010] END');
       done();

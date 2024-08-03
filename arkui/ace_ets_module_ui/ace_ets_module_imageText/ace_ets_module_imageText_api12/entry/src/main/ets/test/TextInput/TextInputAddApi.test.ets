@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function TextInputAddApi() {
-  describe('TextInputAddApi', function () {
-    beforeEach(async function (done) {
+  describe('TextInputAddApi', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextInputAddApi beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function TextInputAddApi() {
       console.info("TextInputAddApi foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("TextInputAddApi after each called");
     });
@@ -49,7 +49,7 @@ export default function TextInputAddApi() {
      * @tc.type
      */
 
-    it('TextInputAddApi_001', 0, async function (done) {
+    it('TextInputAddApi_001', 0, async (done: Function) => {
       console.info('[TextInputAddApi_001] START');
 
       await CommonFunc.sleep(1000);
@@ -59,7 +59,7 @@ export default function TextInputAddApi() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputText');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextInputAddApi_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -76,13 +76,13 @@ export default function TextInputAddApi() {
      * @tc.type
      */
 
-    it('TextInputAddApi_002', 0, async function (done) {
+    it('TextInputAddApi_002', 0, async (done: Function) => {
       console.info('[TextInputAddApi_002] START');
 
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputText2');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextInputAddApi_002] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 

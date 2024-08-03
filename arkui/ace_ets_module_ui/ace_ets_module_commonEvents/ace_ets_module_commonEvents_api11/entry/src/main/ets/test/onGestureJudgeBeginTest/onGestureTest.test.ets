@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function onGestureTest() {
-  describe('onGestureTest', function () {
-    beforeEach(async function (done) {
+  describe('onGestureTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("onGestureTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/onGestureJudgeBegin/onGesture',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/onGestureJudgeBegin/onGesture',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function onGestureTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onGestureTest_0100', 0, async function (done) {
+    it('onGestureTest_0100', 0, async (done: Function) => {
       console.info('onGestureTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -56,7 +56,7 @@ export default function onGestureTest() {
       await button.longClick();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('onGesture_Text');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[onGestureTest_0100] component obj is: " + JSON.stringify(obj));
       console.info("[onGestureTest_0100] component obj.$attrs is: " + JSON.stringify(obj.$attrs));
       console.info("[onGestureTest_0100] text: " + JSON.stringify(obj.$attrs.content));

@@ -12,9 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import hilog from '@ohos.hilog';
 import events_emitter from '@ohos.events.emitter';
+
+function asNumber(val: string | number | null | undefined) {
+  return val as number;
+}
+function asBoolean(value: string | number | boolean | null | undefined) {
+  return value as boolean;
+}
+function asResourceStr(value: string | number | boolean | null | undefined) {
+  return value as ResourceStr;
+}
 
 @Entry
 @Component
@@ -30,70 +39,70 @@ struct Index {
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("key==> page valueChangeCallBack");
-    if (eventData.data.type == "TextNum") {
+    if (eventData.data?.type == "TextNum") {
       console.info("valueChangeCallBack TextNum:" + JSON.stringify(eventData));
       this.flag = true
       this.isNum = true
-      this.textNum = Number(eventData.data.text)
+      this.textNum = Number(eventData.data?.text)
     }
-    if (eventData.data.type == "TextStr") {
+    if (eventData.data?.type == "TextStr") {
       console.info("valueChangeCallBack TextStr:" + JSON.stringify(eventData));
       this.flag = true
       this.isNum = false
-      this.textStr = eventData.data.text
+      this.textStr = eventData.data?.text
     }
-    if (eventData.data.type == "TextErr" && eventData.data.text == "null") {
+    if (eventData.data?.type == "TextErr" && eventData.data?.text == "null") {
       console.info("valueChangeCallBack TextNull:" + JSON.stringify(eventData));
       this.flag = false
       this.isNull = true
     }
-    if (eventData.data.type == "TextErr" && eventData.data.text == "undefined") {
+    if (eventData.data?.type == "TextErr" && eventData.data?.text == "undefined") {
       console.info("valueChangeCallBack TextErr:" + JSON.stringify(eventData));
       this.flag = false
       this.isNull = false
     }
 
 
-    if (eventData.data.type == "BoolTrue") {
+    if (eventData.data?.type == "BoolTrue") {
       console.info("valueChangeCallBack TextAreaShowCounterTrue:" + JSON.stringify(eventData));
       this.boolFlag = true
       this.bool = true
     }
-    if (eventData.data.type == "BoolFalse") {
+    if (eventData.data?.type == "BoolFalse") {
       console.info("valueChangeCallBack TextAreaShowCounterTrue:" + JSON.stringify(eventData));
       this.boolFlag = true
       this.bool = false
     }
-    if (eventData.data.type == "BoolErrNum") {
+    if (eventData.data?.type == "BoolErrNum") {
       console.info("valueChangeCallBack TextAreaMaxLengthStr:" + JSON.stringify(eventData));
       this.boolFlag = false
       this.boolIsNum = true
-      this.boolNum = Number(eventData.data.text)
+      this.boolNum = Number(eventData.data?.text)
     }
-    if (eventData.data.type == "BoolErrStr") {
+    if (eventData.data?.type == "BoolErrStr") {
       console.info("valueChangeCallBack TextAreaMaxLengthStr:" + JSON.stringify(eventData));
       this.boolFlag = false
       this.boolIsNum = false
       this.boolIsStr = true
-      this.boolStr = eventData.data.text
+      this.boolStr = eventData.data?.text
     }
-    if (eventData.data.type == "BoolErrNull") {
+    if (eventData.data?.type == "BoolErrNull") {
       console.info("valueChangeCallBack TextAreaMaxLengthStr:" + JSON.stringify(eventData));
       this.boolFlag = false
       this.boolIsNum = false
       this.boolIsStr = false
       this.boolIsNull = true
     }
-    if (eventData.data.type == "BoolErrUndefined") {
+    if (eventData.data?.type == "BoolErrUndefined") {
       console.info("valueChangeCallBack TextAreaMaxLengthStr:" + JSON.stringify(eventData));
       this.boolFlag = false
       this.boolIsNum = false
       this.boolIsStr = false
       this.boolIsNull = false
     }
-    if (eventData.data.type == "passWordIcon") {
+    if (eventData.data?.type == "passWordIcon") {
       console.info("valueChangeCallBack ResourceIcon:" + JSON.stringify(eventData));
-      this.passwordIcon = JSON.parse(eventData.data.icon)
+      this.passwordIcon = JSON.parse(eventData.data?.icon)
     }
 
   }
@@ -152,8 +161,8 @@ struct Index {
         .margin(20)
         .maxLength(5)
         .type(InputType.Password)
-        .showUnderline(this.boolFlag ? this.bool : (this.boolIsNum ? this.boolNum : (this.boolIsStr ? this.boolStr : (this.boolIsNull ? null : undefined))))
-        .showError(this.flag ? (this.isNum ? this.textNum : this.textStr) : (this.isNull ? null : undefined))
+        .showUnderline(asBoolean(this.boolFlag ? this.bool : (this.boolIsNum ? this.boolNum : (this.boolIsStr ? this.boolStr : (this.boolIsNull ? null : undefined)))))
+        .showError(asResourceStr(this.flag ? (this.isNum ? this.textNum : this.textStr) : (this.isNull ? null : undefined)))
         .passwordIcon(this.passwordIcon)
       TextInput({ text: 'input your password...' })
         .key("TextInputResources")
@@ -169,150 +178,150 @@ struct Index {
         .margin(20)
 
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(BarState.Off)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_barState_0100")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(BarState.Auto)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_barState_0200")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(BarState.On)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_barState_0300")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(BarState.Off)
         .barState(BarState.Auto)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_barState_0400")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(0)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_barState_0500")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(10)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_barState_0600")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
-        .barState("sfasf")
+        .barState(asNumber("sfasf"))
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_barState_0700")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
-        .barState("")
+        .barState(asNumber(""))
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_barState_0800")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(null)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_barState_0900")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(undefined)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_barState_1000")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(BarState.On)
         .barState(undefined)
         .key("ArkUX_Stage_TextInput_barState_1100")
         .style(TextInputStyle.Inline)
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(undefined)
         .barState(BarState.On)
         .key("ArkUX_Stage_TextInput_barState_1200")
         .style(TextInputStyle.Inline)
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .style(TextInputStyle.Inline)
         .key("TextInputInlineNO")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(BarState.On)
         .maxLines(10)
         .style(TextInputStyle.Default)
         .key("TextInputStyleDefault")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .maxLines(10)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_maxLines_0100")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .maxLines(0)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_maxLines_0200")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
-        .maxLines("123")
+        .maxLines(asNumber("123"))
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_maxLines_0300")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .maxLines(-5)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_maxLines_0400")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
-        .maxLines("")
+        .maxLines(asNumber(""))
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_maxLines_0500")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .maxLines(null)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_maxLines_0600")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .maxLines(undefined)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_maxLines_0700")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .maxLines(1)
         .maxLines(10)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_maxLines_0800")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .maxLines(10)
         .maxLines(undefined)
         .style(TextInputStyle.Inline)
         .key("ArkUX_Stage_TextInput_maxLines_0900")
       TextInput({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextInput
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .maxLines(undefined)
         .maxLines(10)

@@ -25,7 +25,7 @@ struct ClipAndMaskExample {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("shapeClipping page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.maskValue != null) {
+      if (eventData.data?.maskValue != null) {
         this.maskType = new Circle({ width: 280, height: 280 });
       }
     }
@@ -33,7 +33,7 @@ struct ClipAndMaskExample {
   private shapeChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("shapeClipping page shape change called:" + JSON.stringify(eventData));
-      if (eventData.data.clipValue != null) {
+      if (eventData.data?.clipValue != null) {
         this.clipType = new Rect({ width: 280, height: 280 });
       }
     }

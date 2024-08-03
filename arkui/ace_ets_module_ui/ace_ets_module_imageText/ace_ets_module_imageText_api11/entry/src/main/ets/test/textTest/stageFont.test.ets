@@ -16,7 +16,7 @@
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function stageFontTest() {
   describe('stageFontTest', () => {
@@ -28,7 +28,7 @@ export default function stageFontTest() {
     beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/text/stageFont',
+        url: 'MainAbility/pages/text/stageFont'
       }
       try {
         router.clear();
@@ -36,16 +36,16 @@ export default function stageFontTest() {
         console.info("get stageFont state success " + JSON.stringify(pages));
         if (!("stageFont" == pages.name)) {
           console.info("get stageFont state success " + JSON.stringify(pages.name));
-          let result = await router.pushUrl(options);
+          await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push stageFont page success " + JSON.stringify(result));
+          console.info("push stageFont page success");
         }
       } catch (err) {
         console.error("push stageFont page error: " + err);
       }
       done()
     });
-    afterEach(() => {
+    afterEach(async () => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.

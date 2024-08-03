@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -79,6 +78,12 @@ export default class Utils {
       x: downX,
       y: downY,
       type: TouchType.Down,
+      screenX: 0,
+      screenY: 0,
+      windowX: 0,
+      windowY: 0,
+      displayX: 0,
+      displayY: 0
     }
     console.info('down touch started: ' + JSON.stringify(downPoint))
     sendTouchEvent(downPoint);
@@ -92,6 +97,12 @@ export default class Utils {
         x: downX + (xStep * i),
         y: downY + (yStep * i),
         type: TouchType.Move,
+        screenX: 0,
+        screenY: 0,
+        windowX: 0,
+        windowY: 0,
+        displayX: 0,
+        displayY: 0
       }
       console.info('move touch started: ' + JSON.stringify(movePoint))
       ret = sendTouchEvent(movePoint)
@@ -109,6 +120,12 @@ export default class Utils {
       x: upX,
       y: upY,
       type: TouchType.Up,
+      screenX: 0,
+      screenY: 0,
+      windowX: 0,
+      windowY: 0,
+      displayX: 0,
+      displayY: 0
     }
     console.info('up touch started: ' + JSON.stringify(upPoint))
     sendTouchEvent(upPoint)

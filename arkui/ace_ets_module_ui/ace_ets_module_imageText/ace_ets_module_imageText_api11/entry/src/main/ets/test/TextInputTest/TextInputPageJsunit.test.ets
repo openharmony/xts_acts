@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, MouseButton} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function TextInputPageJsunit() {
-  describe('TextInputPageJsunit', function () {
-    beforeEach(async function (done) {
+  describe('TextInputPageJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextInputPageJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TextInput/TextInputPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TextInput/TextInputPage',
       }
       try {
         router.clear();
@@ -43,12 +43,12 @@ export default function TextInputPageJsunit() {
       done();
     });
 
-    it('TextInputPageJsunit_0100', 0, async function (done) {
+    it('TextInputPageJsunit_0100', 0, async (done: Function) => {
       // Get the information of the TextInput component
       console.info('[TextInputPageJsunit_0100] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('textInput');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextInputPageJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[TextInputPageJsunit_0100] placeholder: " + JSON.stringify(obj.$attrs.placeholder));
       console.info("[TextInputPageJsunit_0100] type: " + JSON.stringify(obj.$attrs.type));
@@ -76,12 +76,12 @@ export default function TextInputPageJsunit() {
       done();
     });
 
-    it('TextInputPageJsunit_0200', 0, async function (done) {
+    it('TextInputPageJsunit_0200', 0, async (done: Function) => {
       // Get default attributes of TextInput component
       console.info('[TextInputPageJsunit_0200] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('input');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextInputPageJsunit_0200] component obj1 is: " + JSON.stringify(obj));
       console.info("[TextInputPageJsunit_0200] placeholder: " + JSON.stringify(obj.$attrs.placeholder));
       console.info("[TextInputPageJsunit_0200] type: " + JSON.stringify(obj.$attrs.type));
@@ -106,7 +106,7 @@ export default function TextInputPageJsunit() {
       done();
     });
 
-    it('TextInputPageJsunit_0300', 0, async function (done) {
+    it('TextInputPageJsunit_0300', 0, async (done: Function) => {
       // Modify the properties of TextInput component 
       console.info('[TextInputPageJsunit_0300] START');
       globalThis.value.message.notify({name:'placeholder',value:'place input your word...'})
@@ -128,7 +128,7 @@ export default function TextInputPageJsunit() {
 
       // Get the propoties value of the TextInput component
       let strJson = getInspectorByKey('textInput');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextInputPageJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[TextInputPageJsunit_0300] placeholder: " + JSON.stringify(obj.$attrs.placeholder));
       console.info("[TextInputPageJsunit_0300] type: " + JSON.stringify(obj.$attrs.type));
@@ -150,7 +150,7 @@ export default function TextInputPageJsunit() {
       done();
     });
 
-    it('TextInputPageJsunit_0400', 0, async function (done) {
+    it('TextInputPageJsunit_0400', 0, async (done: Function) => {
       // Verify functions of TextInput component
       console.info('[TextInputPageJsunit_0400] START');
 
@@ -201,7 +201,7 @@ export default function TextInputPageJsunit() {
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('copy');
       await CommonFunc.sleep(3000);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextInputPageJsunit_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('onCopy:hello');
       console.info("[TextInputPageJsunit_0400] Verify copy succ !");
@@ -218,7 +218,7 @@ export default function TextInputPageJsunit() {
       await textComponent6.click()
       await CommonFunc.sleep(3000);
       let strJson1 = getInspectorByKey('cut');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[TextInputPageJsunit_0400] component obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('onCut:hello');
       console.info("[TextInputPageJsunit_0400] Verify cut succ !");
@@ -230,7 +230,7 @@ export default function TextInputPageJsunit() {
       await textComponent7.click()
       await CommonFunc.sleep(3000);
       let strJson2 = getInspectorByKey('paste');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[TextInputPageJsunit_0400] component obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.content).assertEqual('onPaste:hello');
       console.info("[TextInputPageJsunit_0400] Verify paste succ !");

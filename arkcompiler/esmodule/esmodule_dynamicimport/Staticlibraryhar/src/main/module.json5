@@ -18,7 +18,9 @@
     "name": "Staticlibraryhar",
     "type": "har",
     "deviceTypes": [
-      "default"
+      "default",
+      "tablet",
+      "2in1"
     ]
   }
 }

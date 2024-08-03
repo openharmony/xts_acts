@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function TextStyle() {
-  describe('TextStyle', function () {
-    beforeEach(async function (done) {
+  describe('TextStyle', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextStyle beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function TextStyle() {
       console.info("TextStyle foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("TextStyle after each called");
     });
@@ -49,7 +49,7 @@ export default function TextStyle() {
      * @tc.type
      */
 
-    it('TextStyle_001', 0, async function (done) {
+    it('TextStyle_001', 0, async (done: Function) => {
       console.info('[TextStyle_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -60,7 +60,7 @@ export default function TextStyle() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('textStyle1');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextStyle_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -77,7 +77,7 @@ export default function TextStyle() {
      * @tc.type
      */
 
-    it('TextStyle_002', 0, async function (done) {
+    it('TextStyle_002', 0, async (done: Function) => {
       console.info('[TextStyle_002] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -88,7 +88,7 @@ export default function TextStyle() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('textStyle1');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextStyle_002] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -105,7 +105,7 @@ export default function TextStyle() {
      * @tc.type
      */
 
-    it('TextStyle_003', 0, async function (done) {
+    it('TextStyle_003', 0, async (done: Function) => {
       console.info('[TextStyle_003] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -116,7 +116,7 @@ export default function TextStyle() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('textStyle2');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextStyle_003] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -133,7 +133,7 @@ export default function TextStyle() {
      * @tc.type
      */
 
-    it('TextStyle_004', 0, async function (done) {
+    it('TextStyle_004', 0, async (done: Function) => {
       console.info('[TextStyle_004] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -144,7 +144,7 @@ export default function TextStyle() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('textStyle2');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextStyle_004] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -161,7 +161,7 @@ export default function TextStyle() {
      * @tc.type
      */
 
-    it('TextStyle_005', 0, async function (done) {
+    it('TextStyle_005', 0, async (done: Function) => {
       console.info('[TextStyle_005] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -172,7 +172,7 @@ export default function TextStyle() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('textStyle2');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextStyle_005] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -189,7 +189,7 @@ export default function TextStyle() {
      * @tc.type
      */
 
-    it('TextStyle_006', 0, async function (done) {
+    it('TextStyle_006', 0, async (done: Function) => {
       console.info('[TextStyle_006] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -200,7 +200,7 @@ export default function TextStyle() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('textStyle2');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextStyle_006] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import router from '@ohos.router';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function onAttachTest() {
-  describe('onAttachTest', function () {
-    beforeEach(async function (done) {
+  describe('onAttachTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("onAttachTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/onAttach/onAttach',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/onAttach/onAttach',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function onAttachTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("onAttachTest after each called");
     });
@@ -54,7 +54,7 @@ export default function onAttachTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onAttachTest_0010', 0, async function (done) {
+    it('onAttachTest_0010', 0, async (done: Function) => {
       console.info('onAttachTest_0010 START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -62,7 +62,7 @@ export default function onAttachTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('OnAttach_text');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.content).assertEqual('onAttach succ');
       console.info('onAttachTest_0010 END');
       done();
@@ -76,7 +76,7 @@ export default function onAttachTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onDetachTest_0020', 0, async function (done) {
+    it('onDetachTest_0020', 0, async (done: Function) => {
       console.info('onDetachTest_0020 START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -84,7 +84,7 @@ export default function onAttachTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('OnAttach_text');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.content).assertEqual('onDetach succ');
       console.info('onDetachTest_0020 END');
       done();

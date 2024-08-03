@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 function sleep(time: number) {
   return new Promise<string>((resolve, reject) => {
     setTimeout(() => {
@@ -63,7 +63,7 @@ export default function textAreaUxTest() {
             console.info(`${SUITE} router.pushUrl success`);
 
           })
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
         console.error(`${SUITE} beforeEach error:` + JSON.stringify(err));

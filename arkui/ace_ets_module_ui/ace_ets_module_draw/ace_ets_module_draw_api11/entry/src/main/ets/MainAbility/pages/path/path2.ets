@@ -20,12 +20,6 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct PathNew {
-  private path = new Path({
-    width: 100,
-    height: 100,
-    commands: 'M150 0 L300 300 L0 300 Z'
-  })
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear PathNew start`)
   }

@@ -18,10 +18,10 @@ import CommonFunc from "../../../MainAbility/common/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function textInputApiTest() {
-  describe('textInputApiTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputApiTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputApiTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/TextInput/textInputApi/input_keytype',
       }
       try {
@@ -40,7 +40,7 @@ export default function textInputApiTest() {
       console.info("textInputApiTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("textInputApiTest after each called");
     });
@@ -51,10 +51,10 @@ export default function textInputApiTest() {
        * @tc.desc  : test the enterKeyType enum
        * @tc.level : Level 2
        */
-    it('textInputApiTest_001', 0, async function (done) {
+    it('textInputApiTest_001', 0, async (done: Function) => {
       // default
       let strJson = getInspectorByKey('textInputkeyN');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputApiTest] get inspector value is: " + JSON.stringify(obj));
       console.info("[textInput1] get inspector value is: " + JSON.stringify(obj.$attrs.enterKeyType));
       expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Done')

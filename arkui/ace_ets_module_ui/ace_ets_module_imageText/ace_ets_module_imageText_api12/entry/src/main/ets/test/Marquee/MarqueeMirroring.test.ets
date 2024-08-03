@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function MarqueeMirroringTest() {
-  describe('MarqueeMirroringTest', function () {
-    beforeEach(async function (done) {
+  describe('MarqueeMirroringTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("MarqueeMirroringTest beforeEach start");
       try {
         router.clear();
@@ -40,7 +40,7 @@ export default function MarqueeMirroringTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("MarqueeMirroringTest after each called");
     });
@@ -51,7 +51,7 @@ export default function MarqueeMirroringTest() {
      * @tc.level     Level 3
      * @tc.type
      */
-    it('MarqueeMirroringTest_001', 0, async function (done) {
+    it('MarqueeMirroringTest_001', 0, async (done: Function) => {
       console.info('[MarqueeMirroringTest_001] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -60,7 +60,7 @@ export default function MarqueeMirroringTest() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('MarqueeMirroring_onStart');
       await CommonFunc.sleep(1000);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[MarqueeMirroringTest_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('onStart succ');
@@ -74,7 +74,7 @@ export default function MarqueeMirroringTest() {
      * @tc.level     Level 3
      * @tc.type
      */
-    it('MarqueeMirroringTest_002', 0, async function (done) {
+    it('MarqueeMirroringTest_002', 0, async (done: Function) => {
       console.info('[MarqueeMirroringTest_002] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -84,7 +84,7 @@ export default function MarqueeMirroringTest() {
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('MarqueeMirroring_onBounce');
       await CommonFunc.sleep(1000);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[MarqueeMirroringTest_002] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('onBounce succ');
@@ -98,7 +98,7 @@ export default function MarqueeMirroringTest() {
      * @tc.level     Level 3
      * @tc.type
      */
-    it('MarqueeMirroringTest_003', 0, async function (done) {
+    it('MarqueeMirroringTest_003', 0, async (done: Function) => {
       console.info('[MarqueeMirroringTest_003] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -107,7 +107,7 @@ export default function MarqueeMirroringTest() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('MarqueeMirroring_onFinish');
       await CommonFunc.sleep(2000);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[MarqueeMirroringTest_003] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(2000);
       expect(obj.$attrs.content).assertEqual('onFinish succ');

@@ -62,8 +62,8 @@ export default function curvesStepsJsunit() {
       let callback  = (eventData:events_emitter.EventData) => {
         try {
           console.info("callback success");
-          console.info("curveApi eventData.data.curveApi result is: " + eventData.data.curveApi);
-          expect(eventData.data.curveApi).assertEqual("callBackSuccess");
+          console.info("curveApi eventData.data?.curveApi result is: " + eventData.data?.curveApi);
+          expect(eventData.data?.curveApi).assertEqual("callBackSuccess");
           console.info("curveApi end");
         } catch (err) {
           console.info("curveApi on events_emitter err : " + JSON.stringify(err));

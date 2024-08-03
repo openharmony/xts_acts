@@ -18,10 +18,10 @@ import CommonFunc from "../../../MainAbility/common/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function symbolSpanApi2Test() {
-  describe('symbolSpanApi2Test', function () {
-    beforeEach(async function (done) {
+  describe('symbolSpanApi2Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("symbolSpanApi2 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/symbolSpan/symbolSpanApi/symbolspan',
       }
       try {
@@ -40,7 +40,7 @@ export default function symbolSpanApi2Test() {
       console.info("symbolSpanApi2 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("symbolSpanApi2 after each called");
     });
@@ -53,13 +53,13 @@ export default function symbolSpanApi2Test() {
      * @tc.type
     * @tc.size
      */
-    it('symbolSpanApi2Test_0100', 0, async function (done) {
+    it('symbolSpanApi2Test_0100', 0, async (done: Function) => {
       console.info('[symbolSpanApi2Test_0100] START');
       await CommonFunc.sleep(2000);
 
       let symbolSpanApi = getInspectorByKey('singleSym');
       console.info("[symbolSpanApi2Test_0100]  " + JSON.parse(symbolSpanApi))
-      let Obj1 = JSON.parse(symbolSpanApi);
+      let Obj1: ESObject = JSON.parse(symbolSpanApi);
       expect(Obj1.$attrs.renderingStrategy).assertEqual('SymbolRenderingStrategy.SINGLE');
 
       console.info('[testRichEditor_0100] END');
@@ -74,13 +74,13 @@ export default function symbolSpanApi2Test() {
      * @tc.type
     * @tc.size
      */
-    it('lifeCycleTest_0200', 0, async function (done) {
+    it('lifeCycleTest_0200', 0, async (done: Function) => {
       console.info('[symbolSpanApi2Test_0200] START');
       await CommonFunc.sleep(2000);
 
       let obj2 = getInspectorByKey('lifecycle');
       console.info("[symbolSpanApi2Test_0200]  " + JSON.parse(obj2))
-      let Obj1 = JSON.parse(obj2);
+      let Obj1: ESObject = JSON.parse(obj2);
       expect(Obj1.$attrs.content).assertEqual('life test');
 
       console.info('[testRichEditor_0100] END');

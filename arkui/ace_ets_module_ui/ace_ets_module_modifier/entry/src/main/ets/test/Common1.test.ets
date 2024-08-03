@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,27 +13,26 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 
 export default function common1Jsunit() {
-  describe('common_part1Test', function () {
-    beforeEach(async function (done) {
+  describe('common_part1Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("Common1 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/common1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/common1',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Common1 state pages: " + JSON.stringify(pages));
         if (!("common1" == pages.name)) {
           console.info("get Common1 state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push Common1 page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push Common1 page error: " + err);
@@ -42,20 +40,20 @@ export default function common1Jsunit() {
       done();
     });
 
-    beforeEach(async function () {
+    beforeEach(async () => {
       await Utils.sleep(100);
       console.info("Common1 before each called");
     })
 
     /**
      * @tc.number Common001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set outlineRadius values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set outlineRadius values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1001', 0, async function (done) {
+    it('Common1001', 0, async (done: Function) => {
       console.info('[Common1001] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -70,13 +68,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set outlineStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set outlineStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1002', 0, async function (done) {
+    it('Common1002', 0, async (done: Function) => {
       console.info('[Common1002] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -91,13 +89,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set outlineWidth values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set outlineWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1003', 0, async function (done) {
+    it('Common1003', 0, async (done: Function) => {
       console.info('[Common1003] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -112,13 +110,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set outlineColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set outlineColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1004', 0, async function (done) {
+    it('Common1004', 0, async (done: Function) => {
       console.info('[Common1004] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -133,13 +131,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set align values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set align values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1005', 0, async function (done) {
+    it('Common1005', 0, async (done: Function) => {
       console.info('[Common1005] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -150,13 +148,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1006
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set direction values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set direction values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1006', 0, async function (done) {
+    it('Common1006', 0, async (done: Function) => {
       console.info('[Common1006] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -167,13 +165,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1007
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set backdropBlur values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set backdropBlur values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1007', 0, async function (done) {
+    it('Common1007', 0, async (done: Function) => {
       console.info('[Common1007] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -184,13 +182,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1008
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set invert values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set invert values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1008', 0, async function (done) {
+    it('Common1008', 0, async (done: Function) => {
       console.info('[Common1008] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -201,13 +199,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1009
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set blur values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set blur values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1009', 0, async function (done) {
+    it('Common1009', 0, async (done: Function) => {
       console.info('[Common1009] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -218,13 +216,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1010
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set outline values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set outline values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1010', 0, async function (done) {
+    it('Common1010', 0, async (done: Function) => {
       console.info('[Common1010] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -239,13 +237,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1011
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set useShadowBatching values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set useShadowBatching values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1011', 0, async function (done) {
+    it('Common1011', 0, async (done: Function) => {
       console.info('[Common1011] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -256,13 +254,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1012
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set obscured values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set obscured values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1012', 0, async function (done) {
+    it('Common1012', 0, async (done: Function) => {
       console.info('[Common1012] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -273,13 +271,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1013
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set shadow values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set shadow values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1013', 0, async function (done) {
+    it('Common1013', 0, async (done: Function) => {
       console.info('[Common1013] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -291,13 +289,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1014
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set renderFit values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set renderFit values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1014', 0, async function (done) {
+    it('Common1014', 0, async (done: Function) => {
       console.info('[Common1014] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -308,13 +306,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1015
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set clip values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set clip values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1015', 0, async function (done) {
+    it('Common1015', 0, async (done: Function) => {
       console.info('[Common1015] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -325,13 +323,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1016
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set radialGradient values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set radialGradient values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1016', 0, async function (done) {
+    it('Common1016', 0, async (done: Function) => {
       console.info('[Common1016] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -343,13 +341,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1017
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set sweepGradient values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set sweepGradient values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1017', 0, async function (done) {
+    it('Common1017', 0, async (done: Function) => {
       console.info('[Common1017] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -362,13 +360,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1018
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set mask values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set mask values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1018', 0, async function (done) {
+    it('Common1018', 0, async (done: Function) => {
       console.info('[Common1018] START');
       let strJsonNew = getInspectorByKey('common3');
       let objNew = JSON.parse(strJsonNew);
@@ -379,13 +377,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1019
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set id values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set id values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1019', 0, async function (done) {
+    it('Common1019', 0, async (done: Function) => {
       console.info('[Common1019] START');
       let strJsonNew = getInspectorByKey('testid');
       console.info("[Common1019] component Common1017 is: " + strJsonNew);
@@ -395,13 +393,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1020
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set key values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set key values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1020', 0, async function (done) {
+    it('Common1020', 0, async (done: Function) => {
       console.info('[Common1020] START');
       let strJsonNew = getInspectorByKey('testkey');
       expect(strJsonNew).assertNotNull;
@@ -410,13 +408,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1021
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set overlay values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set overlay values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1021', 0, async function (done) {
+    it('Common1021', 0, async (done: Function) => {
       console.info('[Common1021] START');
       let strJsonNew = getInspectorByKey('common3');
       let objNew = JSON.parse(strJsonNew);
@@ -427,13 +425,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1022
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set draggable values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set draggable values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1022', 0, async function (done) {
+    it('Common1022', 0, async (done: Function) => {
       console.info('[Common1022] START');
       let strJsonNew = getInspectorByKey('common3');
       let objNew = JSON.parse(strJsonNew);
@@ -444,13 +442,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1023
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set aspectRatio values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set aspectRatio values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1023', 0, async function (done) {
+    it('Common1023', 0, async (done: Function) => {
       console.info('[Common1023] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -461,13 +459,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1024
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set aspectRatio values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set aspectRatio values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1024', 0, async function (done) {
+    it('Common1024', 0, async (done: Function) => {
       console.info('[Common1024] START');
       let strJsonNew = getInspectorByKey('common3');
       let objNew = JSON.parse(strJsonNew);
@@ -478,13 +476,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1025
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set offset values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set offset values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1025', 0, async function (done) {
+    it('Common1025', 0, async (done: Function) => {
       console.info('[Common1025] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -495,14 +493,14 @@ export default function common1Jsunit() {
     });
 
     /**
-    * @tc.number Common1026
-    * @tc.name   Test the properties of components
-    * @tc.desc   Set markAnchor values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('Common1026', 0, async function (done) {
+     * @tc.number Common1026
+     * @tc.name Test the properties of components
+     * @tc.desc Set markAnchor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('Common1026', 0, async (done: Function) => {
       console.info('[Common1026] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -513,14 +511,14 @@ export default function common1Jsunit() {
     });
 
     /**
-    * @tc.number Common1027
-    * @tc.name   Test the properties of components
-    * @tc.desc   Set position values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('Common1027', 0, async function (done) {
+     * @tc.number Common1027
+     * @tc.name Test the properties of components
+     * @tc.desc Set position values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('Common1027', 0, async (done: Function) => {
       console.info('[Common1027] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -531,14 +529,14 @@ export default function common1Jsunit() {
     });
 
     /**
-    * @tc.number Common1028
-    * @tc.name   Test the properties of components
-    * @tc.desc   Set zIndex values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('Common1028', 0, async function (done) {
+     * @tc.number Common1028
+     * @tc.name Test the properties of components
+     * @tc.desc Set zIndex values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('Common1028', 0, async (done: Function) => {
       console.info('[Common1028] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -548,14 +546,14 @@ export default function common1Jsunit() {
     });
 
     /**
-    * @tc.number Common1029
-    * @tc.name   Test the properties of components
-    * @tc.desc   Set alignSelf values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('Common1029', 0, async function (done) {
+     * @tc.number Common1029
+     * @tc.name Test the properties of components
+     * @tc.desc Set alignSelf values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('Common1029', 0, async (done: Function) => {
       console.info('[Common1029] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -565,14 +563,14 @@ export default function common1Jsunit() {
     });
 
     /**
-    * @tc.number Common1030
-    * @tc.name   Test the properties of components
-    * @tc.desc   Set flexBasis values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('Common1030', 0, async function (done) {
+     * @tc.number Common1030
+     * @tc.name Test the properties of components
+     * @tc.desc Set flexBasis values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('Common1030', 0, async (done: Function) => {
       console.info('[Common1030] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -582,14 +580,14 @@ export default function common1Jsunit() {
     });
 
     /**
-    * @tc.number Common1031
-    * @tc.name   Test the properties of components
-    * @tc.desc   Set flexGrow values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('Common1031', 0, async function (done) {
+     * @tc.number Common1031
+     * @tc.name Test the properties of components
+     * @tc.desc Set flexGrow values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('Common1031', 0, async (done: Function) => {
       console.info('[Common1031] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -600,14 +598,14 @@ export default function common1Jsunit() {
 
 
     /**
-    * @tc.number Common1032
-    * @tc.name   Test the properties of components
-    * @tc.desc   Set flexShrink values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('Common1032', 0, async function (done) {
+     * @tc.number Common1032
+     * @tc.name Test the properties of components
+     * @tc.desc Set flexShrink values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('Common1032', 0, async (done: Function) => {
       console.info('[Common1032] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -617,14 +615,14 @@ export default function common1Jsunit() {
     });
 
     /**
-    * @tc.number Common1033
-    * @tc.name   Test the properties of components
-    * @tc.desc   Set displayPriority values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('Common1033', 0, async function (done) {
+     * @tc.number Common1033
+     * @tc.name Test the properties of components
+     * @tc.desc Set displayPriority values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('Common1033', 0, async (done: Function) => {
       console.info('[Common1033] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -635,13 +633,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1034
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set backgroundEffect values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set backgroundEffect values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1034', 0, async function (done) {
+    it('Common1034', 0, async (done: Function) => {
       console.info('[Common1034] START');
       let strJsonNew = getInspectorByKey('common3');
       let objNew = JSON.parse(strJsonNew);
@@ -652,13 +650,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1035
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set transform values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set transform values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1035', 0, async function (done) {
+    it('Common1035', 0, async (done: Function) => {
       console.info('[Common1035] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -669,13 +667,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1036
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set translate values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set translate values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1036', 0, async function (done) {
+    it('Common1036', 0, async (done: Function) => {
       console.info('[Common1036] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -687,13 +685,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1037
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set rotate values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set rotate values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1037', 0, async function (done) {
+    it('Common1037', 0, async (done: Function) => {
       console.info('[Common1037] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew = JSON.parse(strJsonNew);
@@ -704,13 +702,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1038
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set renderGroup values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set renderGroup values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1038', 0, async function (done) {
+    it('Common1038', 0, async (done: Function) => {
       console.info('[Common1038] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -722,13 +720,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1039
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set gridOffset values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set gridOffset values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1039', 0, async function (done) {
+    it('Common1039', 0, async (done: Function) => {
       console.info('[Common1039] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -739,13 +737,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1040
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set gridSpan values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set gridSpan values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1040', 0, async function (done) {
+    it('Common1040', 0, async (done: Function) => {
       console.info('[Common1040] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -756,13 +754,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1041
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set hueRotate values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set hueRotate values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1041', 0, async function (done) {
+    it('Common1041', 0, async (done: Function) => {
       console.info('[Common1041] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -773,13 +771,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1042
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set sepia values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set sepia values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1042', 0, async function (done) {
+    it('Common1042', 0, async (done: Function) => {
       console.info('[Common1042] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew = JSON.parse(strJsonNew);
@@ -790,13 +788,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1043
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set clickEffect values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set clickEffect values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1043', 0, async function (done) {
+    it('Common1043', 0, async (done: Function) => {
       console.info('[Common1043] START');
       let strJsonNew = getInspectorByKey('testbutton');
       let objNew = JSON.parse(strJsonNew);
@@ -809,13 +807,13 @@ export default function common1Jsunit() {
 
     /**
      * @tc.number Common1044
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set hoverEffect values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set hoverEffect values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('Common1044', 0, async function (done) {
+    it('Common1044', 0, async (done: Function) => {
       console.info('[Common1044] START');
       let strJsonNew = getInspectorByKey('testbutton');
       let objNew = JSON.parse(strJsonNew);
@@ -825,14 +823,14 @@ export default function common1Jsunit() {
     });
 
     /**
-    * @tc.number Common1046
-    * @tc.name   Test the properties of components
-    * @tc.desc   change zIndex values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('Common1046', 0, async function (done) {
+     * @tc.number Common1046
+     * @tc.name Test the properties of components
+     * @tc.desc change zIndex values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('Common1046', 0, async (done: Function) => {
       console.info('[Common1046] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

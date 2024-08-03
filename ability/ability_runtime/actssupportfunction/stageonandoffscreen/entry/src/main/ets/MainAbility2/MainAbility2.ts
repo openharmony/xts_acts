@@ -14,76 +14,77 @@
  */
 import Ability from '@ohos.app.ability.UIAbility';
 import commonEvent from '@ohos.commonEvent';
+import commonEventManager from '@ohos.commonEventManager';
 
 var TAG2 = 'StageOnAndOffScreen:MainAbility2:';
 var listPush2 = "StageOnAndOffScreen_MainAbility2_";
+
 export default class MainAbility2 extends Ability {
+  onCreate(want, launchParam) {
+    console.log(TAG2 + 'onCreate');
 
-    onCreate(want, launchParam) {
-        console.log(TAG2 + 'onCreate');
+    commonEventManager.publish(listPush2 + "onCreate", (err) => {
+      console.log(TAG2 + listPush2 + "onCreate");
+    });
+  }
 
-        commonEvent.publish(listPush2 + "onCreate", (err) => {
-            console.log(TAG2 + listPush2 + "onCreate");
-        });
-    }
+  onDestroy() {
+    console.log(TAG2 + 'onDestroy');
 
-    onDestroy() {
-        console.log(TAG2 + 'onDestroy');
+    commonEventManager.publish(listPush2 + "onDestroy", (err) => {
+      console.log(TAG2 + listPush2 + "onDestroy");
+    });
+  }
 
-        commonEvent.publish(listPush2 + "onDestroy", (err) => {
-            console.log(TAG2 + listPush2 + "onDestroy");
-        });
-    }
+  onWindowStageCreate(windowStage) {
+    console.log(TAG2 + 'onWindowStageCreate');
 
-    onWindowStageCreate(windowStage) {
-        console.log(TAG2 + 'onWindowStageCreate');
+    commonEventManager.publish(listPush2 + "onWindowStageCreate", (err) => {
+      console.log(TAG2 + listPush2 + "onWindowStageCreate");
+    });
 
-        commonEvent.publish(listPush2 + "onWindowStageCreate", (err) => {
-            console.log(TAG2 + listPush2 + "onWindowStageCreate");
-        });
+    windowStage.loadContent("pages/second", (err, data) => {
+      if (err.code) {
+        console.log(TAG2 + 'Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.log(TAG2 + 'Succeeded in loading the content. Data: ' + JSON.stringify(data));
+    });
+  }
 
-        windowStage.loadContent("pages/second", (err, data) => {
-            if (err.code) {
-                console.log(TAG2 + 'Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-            console.log(TAG2 + 'Succeeded in loading the content. Data: ' + JSON.stringify(data));
-        });
-    }
+  onWindowStageDestroy() {
+    console.log(TAG2 + 'onWindowStageDestroy');
 
-    onWindowStageDestroy() {
-        console.log(TAG2 + 'onWindowStageDestroy');
+    commonEventManager.publish(listPush2 + "onWindowStageDestroy", (err) => {
+      console.log(TAG2 + listPush2 + "onWindowStageDestroy");
+    });
+  }
 
-        commonEvent.publish(listPush2 + "onWindowStageDestroy", (err) => {
-            console.log(TAG2 + listPush2 + "onWindowStageDestroy");
-        });
-    }
+  onForeground() {
+    console.log(TAG2 + 'onForeground');
 
-    onForeground() {
-        console.log(TAG2 + 'onForeground');
+    commonEventManager.publish(listPush2 + "onForeground", (err) => {
+      console.log(TAG2 + listPush2 + "onForeground");
+    });
 
-        commonEvent.publish(listPush2 + "onForeground", (err) => {
-            console.log(TAG2 + listPush2 + "onForeground");
-        });
+    setTimeout(async () => {
+      let wantNum = {
+        bundleName: "ohos.acts.aafwk.test.stageonandoffscreen",
+        abilityName: "MainAbility3"
+      }
+      this.context.startAbility(wantNum).then((data) => {
+        console.log(TAG2 + "startAbility data = " + JSON.stringify(data));
+      }).catch((error) => {
+        console.log(TAG2 + "startAbility error = " + JSON.stringify(error));
+      })
+    }, 1000);
+  }
 
-        setTimeout(async () => {
-            let wantNum = {
-                bundleName: "ohos.acts.aafwk.test.stageonandoffscreen",
-                abilityName: "MainAbility3"
-            }
-            this.context.startAbility(wantNum).then((data) => {
-                console.log(TAG2 + "startAbility data = " + JSON.stringify(data));
-            }).catch((error) => {
-                console.log(TAG2 + "startAbility error = " + JSON.stringify(error));
-            })
-        }, 1000);
-    }
+  onBackground() {
+    console.log(TAG2 + 'onBackground');
 
-    onBackground() {
-        console.log(TAG2 + 'onBackground');
-
-        commonEvent.publish(listPush2 + "onBackground", (err) => {
-            console.log(TAG2 + listPush2 + "onBackground");
-        });
-    }
+    commonEventManager.publish(listPush2 + "onBackground", (err) => {
+      console.log(TAG2 + listPush2 + "onBackground");
+    });
+  }
 };

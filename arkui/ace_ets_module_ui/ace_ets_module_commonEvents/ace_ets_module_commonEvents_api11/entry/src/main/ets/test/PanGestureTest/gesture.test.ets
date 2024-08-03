@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -21,8 +21,8 @@ export default function gestureSetDirectionJsunit() {
   describe('gestureSetDirectionTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/PanGesture/gesture',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PanGesture/gesture',
       }
       try {
         router.clear();
@@ -53,9 +53,9 @@ export default function gestureSetDirectionJsunit() {
       console.info('gestureSetDirection testgestureSetDirection0001 START');
       await Utils.sleep(2000);
       try {
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("onClick_0001 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.STATUS).assertEqual(PanDirection.Vertical);
+          expect(indexEvent.data?.STATUS).assertEqual(PanDirection.Vertical);
         }
         let indexEvent: events_emitter.InnerEvent = {
           eventId: 60204,
@@ -79,9 +79,9 @@ export default function gestureSetDirectionJsunit() {
       console.info('gestureSetDistance testgestureSetDistance0002 START');
       await Utils.sleep(2000);
       try {
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("onClick_0002 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.STATUS).assertEqual(4.0);
+          expect(indexEvent.data?.STATUS).assertEqual(4.0);
         }
         let indexEvent: events_emitter.InnerEvent = {
           eventId: 60205,
@@ -105,9 +105,9 @@ export default function gestureSetDirectionJsunit() {
       console.info('gestureSetFingers testgestureSetFingers0003 START');
       await Utils.sleep(2000);
       try {
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("onClick_0003 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.STATUS).assertEqual(2);
+          expect(indexEvent.data?.STATUS).assertEqual(2);
         }
         let indexEvent: events_emitter.InnerEvent = {
           eventId: 60206,

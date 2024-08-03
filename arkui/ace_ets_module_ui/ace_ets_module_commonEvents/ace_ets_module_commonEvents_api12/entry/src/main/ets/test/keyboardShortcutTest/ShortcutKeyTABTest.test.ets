@@ -19,7 +19,7 @@ import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import input from '@ohos.multimodalInput.keyCode';
 import { BusinessError } from '@ohos.base';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 export default function ShortcutKeyTABTest() {
   describe('ShortcutKeyTABTest', () => {
     beforeEach(async () => {
@@ -53,8 +53,8 @@ export default function ShortcutKeyTABTest() {
       let CASE = 'ShortcutKeyTABTest_0100'
       console.info(`ShortcutKeyTABTest_0100 START`);
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.msg).assertEqual('CTRL+TAB');
-        console.info(`ShortcutKeyTABTest_0100 event.data.msg:` + event.data.msg);
+        expect(event.data?.msg).assertEqual('CTRL+TAB');
+        console.info(`ShortcutKeyTABTest_0100 event.data?.msg:` + event.data?.msg);
       }
       let event: events_emitter.InnerEvent = {
         eventId: 75000,

@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import display_test from './window.test.js'
 import window_test from './display.test.js'
 export default function testsuite() {

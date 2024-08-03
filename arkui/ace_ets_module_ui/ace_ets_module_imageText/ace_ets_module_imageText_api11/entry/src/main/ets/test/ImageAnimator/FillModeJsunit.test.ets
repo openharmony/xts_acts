@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function fillModeJsunit() {
   describe('fillModeTest', () => {
@@ -31,7 +31,7 @@ export default function fillModeJsunit() {
         if (!('fillMode' == pages.name)) {
           console.info('beforeEach get fillMode state pages.name:' + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info('beforeEach push fillMode page result:' + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,16 +41,16 @@ export default function fillModeJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('fillMode test after each called');
     });
 
     it('fillModeTest_0100', 0, async (done: Function) => {
       console.info('fillModeTest_0100 START');
-      await Utils.sleep(1500);
+      await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("fillModeTest_0100 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.fillMode).assertEqual(FillMode.Backwards);
+        expect(indexEvent.data?.fillMode).assertEqual(FillMode.Backwards);
       }
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 94,
@@ -62,17 +62,17 @@ export default function fillModeJsunit() {
         console.info("fillModeTest_0100 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("fillModeTest_0100 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('fillModeTest_0100 END');
       done();
     });
 
     it('fillModeTest_0200', 0, async (done: Function) => {
       console.info('fillModeTest_0200 START');
-      await Utils.sleep(1500);
+      await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("fillModeTest_0200 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.fillMode).assertEqual(FillMode.Both);
+        expect(indexEvent.data?.fillMode).assertEqual(FillMode.Both);
       }
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 95,
@@ -84,17 +84,17 @@ export default function fillModeJsunit() {
         console.info("fillModeTest_0200 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("fillModeTest_0200 click result is: " + JSON.stringify(sendEventByKey('button1', 10, "")));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('fillModeTest_0200 END');
       done();
     });
 
     it('fillModeTest_0300', 0, async (done: Function) => {
       console.info('fillModeTest_0300 START');
-      await Utils.sleep(1500);
+      await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("fillModeTest_0300 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.fillMode).assertEqual(FillMode.None);
+        expect(indexEvent.data?.fillMode).assertEqual(FillMode.None);
       }
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 96,
@@ -106,7 +106,7 @@ export default function fillModeJsunit() {
         console.info("fillModeTest_0300 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("fillModeTest_0300 click result is: " + JSON.stringify(sendEventByKey('button2', 10, "")));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('fillModeTest_0300 END');
       done();
     });

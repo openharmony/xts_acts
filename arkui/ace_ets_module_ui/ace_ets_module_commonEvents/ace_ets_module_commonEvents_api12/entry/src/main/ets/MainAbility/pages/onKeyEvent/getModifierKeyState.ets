@@ -23,11 +23,11 @@ struct getModifierKeyState1 {
     Column() {
       Button("" + this.baseEventState).id("getModifierKeyState_BaseEvent")
         .onClick((event:BaseEvent)=>{
-          this.baseEventState = event.getModifierKeyState(["getModifierKeyState_BaseEvent"])
+          this.baseEventState = event.getModifierKeyState?.(["getModifierKeyState_BaseEvent"]) || false
         })
       Button("" + this.DragEventState).id("getModifierKeyState_DragEvent")
         .onDragStart((event:DragEvent)=>{
-          this.DragEventState = event.getModifierKeyState(["getModifierKeyState_DragEvent"])
+          this.DragEventState = event.getModifierKeyState?.(["getModifierKeyState_DragEvent"]) || false
         })
     }
   }

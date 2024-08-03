@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, MouseButton, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function RelativeChain11() {
-  describe('RelativeChain11', function () {
-    beforeEach(async function (done) {
+  describe('RelativeChain11', () => {
+    beforeEach(async (done: Function) => {
       console.info("RelativeChain11 beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function RelativeChain11() {
       console.info("RelativeChain11 foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("RelativeChain11 after each called");
     });
@@ -50,7 +50,7 @@ export default function RelativeChain11() {
     * @tc.size
      */
 
-    it('RelativeChain11_001', 0, async function (done) {
+    it('RelativeChain11_001', 0, async (done: Function) => {
       console.info('[RelativeChain11_001] START');
 
       await CommonFunc.sleep(1000);
@@ -60,7 +60,7 @@ export default function RelativeChain11() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RelativeChain11Text');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RelativeChain11_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('');
@@ -78,7 +78,7 @@ export default function RelativeChain11() {
     * @tc.size
      */
 
-    it('RelativeChain11_002', 0, async function (done) {
+    it('RelativeChain11_002', 0, async (done: Function) => {
       console.info('[RelativeChain11_002] START');
 
       await CommonFunc.sleep(2000);

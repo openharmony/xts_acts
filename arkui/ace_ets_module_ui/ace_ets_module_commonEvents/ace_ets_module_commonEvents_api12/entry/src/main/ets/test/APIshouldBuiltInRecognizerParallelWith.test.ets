@@ -15,13 +15,13 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import router from '@system.router';
-import CommonFunc from '../MainAbility/utils/Common';
+import router from '@ohos.router';
+import CommonFunc from '../MainAbility/common/Common';
 export default function APIshouldBuiltInRecognizerParallelWith() {
-  describe('APIshouldBuiltInRecognizerParallelWith', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/APIshouldBuiltInRecognizerParallelWith',
+  describe('APIshouldBuiltInRecognizerParallelWith', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/APIshouldBuiltInRecognizerParallelWith',
       }
       try {
         router.clear();
@@ -40,7 +40,7 @@ export default function APIshouldBuiltInRecognizerParallelWith() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("APIshouldBuiltInRecognizerParallelWith after each called");
     });
@@ -53,11 +53,11 @@ export default function APIshouldBuiltInRecognizerParallelWith() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIshouldBuiltInRecognizerParallelWith_0100', 0, async function (done) {
+    it('APIshouldBuiltInRecognizerParallelWith_0100', 0, async (done: Function) => {
       console.info('APIshouldBuiltInRecognizerParallelWith_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIshouldBuiltInRecognizerParallelWith_Text01');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('APIshouldBuiltInRecognizerParallelWith_0100 obj',obj,obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('API_getTag');
       await CommonFunc.sleep(1000);
@@ -72,11 +72,11 @@ export default function APIshouldBuiltInRecognizerParallelWith() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIshouldBuiltInRecognizerParallelWith_0200', 0, async function (done) {
+    it('APIshouldBuiltInRecognizerParallelWith_0200', 0, async (done: Function) => {
       console.info('APIshouldBuiltInRecognizerParallelWith_0200 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIshouldBuiltInRecognizerParallelWith_Text02');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('APIshouldBuiltInRecognizerParallelWith_0200 obj',obj,obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('false');
       await CommonFunc.sleep(1000);
@@ -91,11 +91,11 @@ export default function APIshouldBuiltInRecognizerParallelWith() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIshouldBuiltInRecognizerParallelWith_0300', 0, async function (done) {
+    it('APIshouldBuiltInRecognizerParallelWith_0300', 0, async (done: Function) => {
       console.info('APIshouldBuiltInRecognizerParallelWith_0300 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIshouldBuiltInRecognizerParallelWith_Text03');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('APIshouldBuiltInRecognizerParallelWith_0300 obj',obj,obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('API_getEventTargetInfo');
       await CommonFunc.sleep(1000);
@@ -110,11 +110,11 @@ export default function APIshouldBuiltInRecognizerParallelWith() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIshouldBuiltInRecognizerParallelWith_0400', 0, async function (done) {
+    it('APIshouldBuiltInRecognizerParallelWith_0400', 0, async (done: Function) => {
       console.info('APIshouldBuiltInRecognizerParallelWith_0400 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIshouldBuiltInRecognizerParallelWith_Text04');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('APIshouldBuiltInRecognizerParallelWith_0400 obj',obj,obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('API_getPanGestureOptions');
       await CommonFunc.sleep(1000);

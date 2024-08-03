@@ -3,8 +3,6 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/APIshouldBuiltInRecognizerParallelWith",
         "MainAbility/pages/PanGesture/PanGestureExampleTemplate",
-        "MainAbility/pages/PinchGesture/PinchGestureTemplate",
-        "MainAbility/pages/RotationGesture/RotationGestureTemplate",
         "MainAbility/pages/TapGesture/TapGestureTemplate",
         "MainAbility/pages/LongPressGesture/LongPressGestureTemplate",
         "MainAbility/pages/SwipeGesture/SwipeGestureTemplate",

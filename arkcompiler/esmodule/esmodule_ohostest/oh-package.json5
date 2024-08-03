@@ -12,7 +12,9 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+
 {
+  "modelVersion": "5.0.0",
   "license": "",
   "devDependencies": {
     "@ohos/hypium": "1.0.6"
@@ -23,6 +25,5 @@
   "main": "",
   "version": "1.0.0",
   "dependencies": {
-    "leap-year": "^4.0.0"
   }
 }

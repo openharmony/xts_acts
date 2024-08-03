@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function buttonEnabledJsunit() {
-  describe('buttonEnabledJsunit', function () {
-    beforeEach(async function (done) {
+  describe('buttonEnabledJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("buttonEnabledJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/button/buttonEnabled',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/button/buttonEnabled',
       }
       try {
         router.clear();
@@ -43,7 +43,7 @@ export default function buttonEnabledJsunit() {
       done();
     });
 
-    it('buttonEnabledJsunit_0100', 0, async function (done) {
+    it('buttonEnabledJsunit_0100', 0, async (done: Function) => {
 
       console.info('buttonEnabledJsunit_0100 START');
       let driver = await UiDriver.create()
@@ -51,7 +51,7 @@ export default function buttonEnabledJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('btnEnd');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[buttonEnabledJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[buttonEnabledJsunit_0100] button1: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("点击事件已触发");
@@ -59,7 +59,7 @@ export default function buttonEnabledJsunit() {
       done();
     });
 
-    it('buttonEnabledJsunit_0200', 0, async function (done) {
+    it('buttonEnabledJsunit_0200', 0, async (done: Function) => {
 
       console.info('buttonEnabledJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -67,7 +67,7 @@ export default function buttonEnabledJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('btnEnd1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[buttonEnabledJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[buttonEnabledJsunit_0200] button1: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("onClick-禁用");
@@ -75,7 +75,7 @@ export default function buttonEnabledJsunit() {
       done();
     });
 
-    it('buttonEnabledJsunit_0300', 0, async function (done) {
+    it('buttonEnabledJsunit_0300', 0, async (done: Function) => {
 
       console.info('buttonEnabledJsunit_0300 START');
       let driver = await UiDriver.create()
@@ -83,7 +83,7 @@ export default function buttonEnabledJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('btnEnd2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[buttonEnabledJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[buttonEnabledJsunit_0300] button2: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("onTouch-禁用");
@@ -91,7 +91,7 @@ export default function buttonEnabledJsunit() {
       done();
     });
 
-    it('buttonEnabledJsunit_0400', 0, async function (done) {
+    it('buttonEnabledJsunit_0400', 0, async (done: Function) => {
 
       console.info('buttonEnabledJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -99,7 +99,7 @@ export default function buttonEnabledJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('btnEnd3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[buttonEnabledJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[buttonEnabledJsunit_0400] button3: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("onKeyEvent-禁用");
@@ -107,7 +107,7 @@ export default function buttonEnabledJsunit() {
       done();
     });
 
-    it('buttonEnabledJsunit_0500', 0, async function (done) {
+    it('buttonEnabledJsunit_0500', 0, async (done: Function) => {
 
       console.info('buttonEnabledJsunit_0500 START');
       let driver = await UiDriver.create()
@@ -115,7 +115,7 @@ export default function buttonEnabledJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('btnEnd4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[buttonEnabledJsunit_0500] component obj is: " + JSON.stringify(obj));
       console.info("[buttonEnabledJsunit_0500] button4: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("鼠标事件onHover-禁用");
@@ -123,7 +123,7 @@ export default function buttonEnabledJsunit() {
       done();
     });
 
-    it('buttonEnabledJsunit_0600', 0, async function (done) {
+    it('buttonEnabledJsunit_0600', 0, async (done: Function) => {
 
       console.info('buttonEnabledJsunit_0600 START');
       let driver = await UiDriver.create()
@@ -131,7 +131,7 @@ export default function buttonEnabledJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('btnEnd5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[buttonEnabledJsunit_0600] component obj is: " + JSON.stringify(obj));
       console.info("[buttonEnabledJsunit_0600] button5: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("鼠标事件onMouse-禁用");
@@ -139,7 +139,7 @@ export default function buttonEnabledJsunit() {
       done();
     });
 
-    it('buttonEnabledJsunit_0700', 0, async function (done) {
+    it('buttonEnabledJsunit_0700', 0, async (done: Function) => {
 
       console.info('buttonEnabledJsunit_0700 START');
       let driver = await UiDriver.create()
@@ -147,7 +147,7 @@ export default function buttonEnabledJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('btnEnd6');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[buttonEnabledJsunit_0700] component obj is: " + JSON.stringify(obj));
       console.info("[buttonEnabledJsunit_0700] button6: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("焦点事件-禁用");

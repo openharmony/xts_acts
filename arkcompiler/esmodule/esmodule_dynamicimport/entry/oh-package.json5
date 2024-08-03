@@ -14,6 +14,7 @@
  */
 
 {
+  "modelVersion": "5.0.0",
   "name": "entry",
   "version": "1.0.0",
   "description": "Please describe the basic information.",
@@ -23,8 +24,6 @@
   "dependencies": {
     'Sharelibraryhsp': "file:../Sharelibraryhsp",
     'Staticlibraryhar': "file:../Staticlibraryhar",
-    "@ohos/crypto-js": "2.0.3-rc.0",
-    "@yunkss/eftool": "1.0.8",
     "libentry.so": "file:./src/main/cpp/types/libentry",
 //        "json5": "1.0.2"
   }

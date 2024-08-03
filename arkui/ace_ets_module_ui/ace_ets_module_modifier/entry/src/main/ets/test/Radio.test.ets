@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from './Utils.ets'
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
 export default function radioGroupJsunit() {
-  describe('radioTest', function () {
-    beforeEach(async function (done) {
+  describe('radioTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/radio',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/radio',
       }
       try {
         router.clear();
@@ -31,9 +31,8 @@ export default function radioGroupJsunit() {
         console.info("get radio state success " + JSON.stringify(pages));
         if (!("radio" == pages.name)) {
           console.info("get radio state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push radio page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push radio page error: " + err);
@@ -43,13 +42,13 @@ export default function radioGroupJsunit() {
 
     /**
      * @tc.number testRadioGroup001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set radioStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set radioStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testRadioGroup001',0,async function (done){
+    it('testRadioGroup001', 0, async function (done) {
       console.info("[testRadioGroup001] START");
       let strJson = getInspectorByKey('RadioOne');
       let obj = JSON.parse(strJson);
@@ -65,13 +64,13 @@ export default function radioGroupJsunit() {
 
     /**
      * @tc.number testRadioGroup002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set checked values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set checked values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testRadioGroup002',0,async function (done){
+    it('testRadioGroup002', 0, async function (done) {
       console.info("[testRadioGroup002] START");
       let strJson = getInspectorByKey('RadioOne');
       let obj = JSON.parse(strJson);
@@ -84,13 +83,13 @@ export default function radioGroupJsunit() {
 
     /**
      * @tc.number testRadioGroup003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change checked values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change checked values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testRadioGroup003', 0, async function (done) {
+    it('testRadioGroup003', 0, async (done: Function) => {
       console.info('testRadioGroup003 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

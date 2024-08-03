@@ -16,13 +16,13 @@
 import {describe, beforeAll, beforeEach, afterEach, it, expect} from "@ohos/hypium"
 import {UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function UIContextDragControllerTest() {
 
-  describe('UIContextDragControllerTest', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('UIContextDragControllerTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/DragController/UIContextDragController',
       }
       try {
@@ -42,7 +42,7 @@ export default function UIContextDragControllerTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("UIContextDragController after each called");
     });
@@ -55,7 +55,7 @@ export default function UIContextDragControllerTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('UIContextDragController_0010', 0, async function (done) {
+    it('UIContextDragController_0010', 0, async (done: Function) => {
       console.info('UIContextDragController_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -64,7 +64,7 @@ export default function UIContextDragControllerTest() {
       await grid.dragTo(button);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('UIContextDragController2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[UIContextDragController_0010] dragPreviewOptions: " + JSON.stringify(obj));
       console.info("[UIContextDragController_0010] dragPreviewOptions: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.label).assertEqual('Drag Success');

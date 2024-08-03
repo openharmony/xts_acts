@@ -35,14 +35,14 @@ struct PathExample {
     console.info("[stateChangCallBack] stateChangCallBack ");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.commands != null) {
-        this.commandsOne = eventData.data.commands;
+      if (eventData.data?.commands != null) {
+        this.commandsOne = eventData.data?.commands;
       }
-      if (eventData.data.width != null) {
-        this.widthOne = eventData.data.width;
+      if (eventData.data?.width != null) {
+        this.widthOne = eventData.data?.width;
       }
-      if (eventData.data.height != null) {
-        this.heightOne = eventData.data.height;
+      if (eventData.data?.height != null) {
+        this.heightOne = eventData.data?.height;
       }
 
     }

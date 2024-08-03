@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function DatePickerDialogJsunit() {
-  describe('DatePickerDialogJsunit', function () {
-    beforeEach(async function (done) {
+  describe('DatePickerDialogJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("DatePickerDialogJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/datePickerDialog/DatePickerDialogOptions',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/datePickerDialog/DatePickerDialogOptions',
       }
       try {
         router.clear();
@@ -51,7 +51,7 @@ export default function DatePickerDialogJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('DatePickerDialogJsunit_0100', 0, async function (done) {
+    it('DatePickerDialogJsunit_0100', 0, async (done: Function) => {
 
       console.info('DatePickerDialogJsunit_0100 START');
 	    let driver = await UiDriver.create()
@@ -60,7 +60,7 @@ export default function DatePickerDialogJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('DatePickerDialog');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[DatePickerDialogJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual("DatePickerDialog");
       console.info('[DatePickerDialogJsunit_0100] END');

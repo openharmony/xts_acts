@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +36,7 @@ interface PriorityChild {
 @Component
 struct LayoutConstraints {
   private children: string[] = ['1', '2', '3', '4', '5', '6'];
-  @State aspectRatio: number = 1.5;
+  @State aspectRatioValue: number = 1.5;
   private container: ContainerInfo[] = [
     { label: 'Big container', size: '97%' },
     { label: 'Small container', size: '30%' }];
@@ -59,12 +58,12 @@ struct LayoutConstraints {
           Text(item)
             .backgroundColor(0xbbb2cb)
             .fontSize(20)
-            .aspectRatio(this.aspectRatio)
+            .aspectRatio(this.aspectRatioValue)
             .height(60)
           Text(item)
             .backgroundColor(0xbbb2cb)
             .fontSize(20)
-            .aspectRatio(this.aspectRatio)
+            .aspectRatio(this.aspectRatioValue)
             .width(60)
             .key('aspectRatio')
         }, (item: string) => item)
@@ -83,7 +82,7 @@ struct LayoutConstraints {
             Text(item)
               .backgroundColor(0xbbb2cb)
               .fontSize(40)
-              .aspectRatio(this.aspectRatio)
+              .aspectRatio(this.aspectRatioValue)
           }
         }, (item: string) => item)
       }
@@ -117,7 +116,7 @@ struct LayoutConstraints {
               .backgroundColor(0xbbb2cb)
               .displayPriority(item.priority)
           }
-        }, (item: priorityChild) => item.text)
+        }, (item: PriorityChild) => item.text)
       }
       .width(this.container[this.currentIndex].size)
       .backgroundColor(0xd2cab3)
@@ -147,11 +146,11 @@ struct LayoutConstraints {
   stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("LayoutConstraints page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData) {
-      if (eventData.data.aspectRatio) {
-        this.aspectRatio = eventData.data.aspectRatio;
-      } else if (eventData.data.displayPriority) {
+      if (eventData.data?.aspectRatio) {
+        this.aspectRatioValue = eventData.data?.aspectRatio;
+      } else if (eventData.data?.displayPriority) {
         let priority:PriorityChild[]= JSON.parse(JSON.stringify(this.priorityChildren));
-        priority[0].priority=eventData.data.displayPriority;
+        priority[0].priority = eventData.data?.displayPriority;
         this.priorityChildren = [];
         this.priorityChildren = priority;
       }
