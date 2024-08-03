@@ -844,7 +844,7 @@ export default function common9Jsunit() {
 
       console.info("[common_linearGradientBlur] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson)
         .$attrs));
-      expect(JSON.parse(strJson).$attrs.linearGradientBlur).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.linearGradientBlur.value).assertEqual('60.00px');
       console.info('[common_linearGradientBlur] END');
       done();
     });
