@@ -12,8 +12,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-export { add } from "./src/main/ets/utils/Calc"
-export { getModuleDescription } from "./src/main/ets/utils/BaseInfo"
-export { addtest } from "liblibrary.so"
-export { getDescFromLibrary2 } from "./src/main/ets/utils/MultiLevelDep" 
+
+export const add: (a: number, b: number) => number;

@@ -13,18 +13,8 @@
  * limitations under the License.
  */
  
-{
-  "module": {
-    "name": "library2",
-    "type": "shared",
-    "description": "$string:shared_desc",
-    "deviceTypes": [
-      "wearable",
-      "phone",
-      "tablet",
-      "2in1"
-    ],
-    "deliveryWithInstall": true,
-    "pages": "$profile:main_pages"
-  }
+import { getModuleDescription } from 'library2'
+
+export function getDescFromLibrary2(): string {
+  return getModuleDescription();
 }

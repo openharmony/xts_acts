@@ -14,17 +14,13 @@
  */
  
 {
-  "module": {
-    "name": "library2",
-    "type": "shared",
-    "description": "$string:shared_desc",
-    "deviceTypes": [
-      "wearable",
-      "phone",
-      "tablet",
-      "2in1"
-    ],
-    "deliveryWithInstall": true,
-    "pages": "$profile:main_pages"
+  "name": "har",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "Index.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "library": "file:../library"
   }
 }

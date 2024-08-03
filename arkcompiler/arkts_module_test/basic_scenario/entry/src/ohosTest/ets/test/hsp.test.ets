@@ -14,9 +14,10 @@
  */
 
 import { describe, it, expect } from '@ohos/hypium';
-import { add } from 'library';
-import { getModuleDescription as getDescFromLib2 } from 'library2';
+import { add, addtest, getDescFromLibrary2 } from 'library';
+import { getModuleDescription as getDescFromLib2 ,nativeAdd  } from 'library2';
 import { getModuleDescription as getDescFromLib3 } from 'library3';
+import { getDecoratorDesc } from 'har';
 
 export default function hspImport() {
   describe('HspTest', () => {
@@ -67,12 +68,68 @@ export default function hspImport() {
      */
     it('testMultiLevelHsp', 0, () => {
       let multiLevelHsp: string = '';
-      let a: string = getDescFromLib2();
+      let a: string = getDescFromLibrary2();
       if (a == 'This is library2') {
         multiLevelHsp = 'success';
         console.log('ModuleTest multi-level hsp import test success');
       }
       expect(multiLevelHsp).assertEqual('success');
     })
+
+    /**
+     * @tc.number    : SUB_ARKCOMPILER_ETSRUNTIME_BasicScenario_Hsp_0400
+     * @tc.name      : testHarImportLibrary
+     * @tc.desc      : Load Shared Library By Importing Static Library
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testHarImportLibrary', 0, () => {
+      let harImportLibrary: string = "";
+      let a: string = getDecoratorDesc();
+      if (a == '<From har>This is library') {
+        harImportLibrary = 'success';
+        console.log('ModuleTest harImportLibrary test success');
+      }
+      expect(harImportLibrary).assertEqual('success');
+    })
+    
+    /**
+     * @tc.number    : SUB_ARKCOMPILER_ETSRUNTIME_BasicScenario_Hsp_0500
+     * @tc.name      : testNativeso
+     * @tc.desc      : Import Native So
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testNativeso', 0, () => {
+      let nativeso: string = "";
+      let a: number = addtest(3, 5);
+      if (a == 8) {
+        nativeso = 'success';
+        console.log('ModuleTest native so test success');
+      }
+      expect(nativeso).assertEqual('success');
+    })
+
+    /**
+     * @tc.number    : SUB_ARKCOMPILER_ETSRUNTIME_BasicScenario_Hsp_0600
+     * @tc.name      : testNativeIsolationSo
+     * @tc.desc      : Import Native So Isolation
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testNativeIsolationSo', 0, () => {
+      let nativeIsolationSo: string = "";
+      let a: number = nativeAdd(3, 5);
+      if (a == 8) {
+        nativeIsolationSo = 'success';
+        console.log('ModuleTest native so Isolation test success');
+      }
+      expect(nativeIsolationSo).assertEqual('success');
+    })
   })
+
+    
 }
