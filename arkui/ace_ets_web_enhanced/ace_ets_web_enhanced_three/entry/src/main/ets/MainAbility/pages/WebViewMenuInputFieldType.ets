@@ -132,7 +132,6 @@ struct WebViewMenuInputFieldType {
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
-              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "emitInputFieldTypeText001": {
@@ -148,7 +147,6 @@ struct WebViewMenuInputFieldType {
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
-              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "emitInputFieldTypePassWord001": {
@@ -164,7 +162,6 @@ struct WebViewMenuInputFieldType {
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
-              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "emitInputFieldTypeTelephone001": {
@@ -180,7 +177,6 @@ struct WebViewMenuInputFieldType {
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
-              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "emitInputFieldTypeOther001": {
@@ -196,7 +192,6 @@ struct WebViewMenuInputFieldType {
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
-              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "onInterceptKeyboardAttach0100": {
@@ -217,7 +212,7 @@ struct WebViewMenuInputFieldType {
               await Utils.sleep(2000);
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
               await Utils.sleep(2000);
-              await driver.mouseMoveTo({x:0, y:0})
+              
               break;
             }
             case "onInterceptKeyboardAttach0200": {
@@ -238,7 +233,6 @@ struct WebViewMenuInputFieldType {
               await Utils.sleep(2000);
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
               await Utils.sleep(2000);
-              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "onInterceptKeyboardAttach0300": {
@@ -259,7 +253,6 @@ struct WebViewMenuInputFieldType {
               await Utils.sleep(2000);
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
               await Utils.sleep(2000);
-              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "onInterceptKeyboardAttach0400": {
@@ -280,7 +273,6 @@ struct WebViewMenuInputFieldType {
               await Utils.sleep(2000);
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
               await Utils.sleep(2000);
-              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "onInterceptKeyboardAttach0500": {
@@ -301,7 +293,7 @@ struct WebViewMenuInputFieldType {
               await Utils.sleep(2000);
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
               await Utils.sleep(2000);
-              await driver.mouseMoveTo({x:0, y:0})
+              
               break;
             }
             case "onInterceptKeyboardAttach0600": {
@@ -322,7 +314,6 @@ struct WebViewMenuInputFieldType {
               await Utils.sleep(2000);
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
               await Utils.sleep(2000);
-              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "onInterceptKeyboardAttach0700": {
@@ -343,7 +334,6 @@ struct WebViewMenuInputFieldType {
               await Utils.sleep(2000);
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
               await Utils.sleep(2000);
-              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "onInterceptKeyboardAttach0800": {
@@ -364,7 +354,6 @@ struct WebViewMenuInputFieldType {
               await Utils.sleep(2000);
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
               await Utils.sleep(2000);
-              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "onInterceptKeyboardAttach0900": {
@@ -385,7 +374,6 @@ struct WebViewMenuInputFieldType {
               await Utils.sleep(2000);
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
               await Utils.sleep(2000);
-              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
           }
