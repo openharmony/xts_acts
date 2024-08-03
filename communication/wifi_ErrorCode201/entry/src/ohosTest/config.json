@@ -13,6 +13,7 @@
     "name": ".entry_test",
     "mainAbility": ".MainAbility",
     "deviceType": [
+      "wearable",
       "tablet",
       "default",
       "phone",
