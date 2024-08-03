@@ -904,7 +904,6 @@ export default function PhotoAccessHelperTest() {
                 let photoHelper = getPhotoHelper(context)
                 releaseHelperCallback(photoHelper,done)
                 console.info('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0100 excute pass');
-                done();
             } catch(err){
                 console.error('getPhotoAccessHelper failed , catch err is  ' + err.message);
                 expect(false).assertTrue();
@@ -930,7 +929,6 @@ export default function PhotoAccessHelperTest() {
                 done();
             }
             console.info('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0200 excute pass');
-            done();
         })
 
         /* *
@@ -951,7 +949,6 @@ export default function PhotoAccessHelperTest() {
                 done();
             }
             console.info('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0210 excute pass');
-            done();
         })
 
         /* *
@@ -965,7 +962,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0300', 3, async function (done) {
             let photoHelper = getPhotoHelper(context)
             getAssetsForKeysCallback(photoHelper, fetchOptions, 'SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0300', done)
-            done();
         })
 
         /* *
@@ -979,7 +975,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0400', 3, async function (done) {
             let photoHelper = getPhotoHelper(context)
             getAssetsForKeysPromise(photoHelper, fetchOptions, done)
-            done();
         })
 
         /* *
@@ -994,7 +989,6 @@ export default function PhotoAccessHelperTest() {
             let photoHelper = getPhotoHelper(context)
             setArgGetAssetsCallback(photoHelper,[photoKeys.URI,photoKeys.DISPLAY_NAME,photoKeys.PHOTO_TYPE],
                 'SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0500',done)
-            done();
         })
 
         /* *
@@ -1009,7 +1003,6 @@ export default function PhotoAccessHelperTest() {
             let photoHelper = getPhotoHelper(context)
             setArgGetAssetsPromise(photoHelper,[photoKeys.URI,photoKeys.DISPLAY_NAME,photoKeys.PHOTO_TYPE],
                 'SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0510',done)
-            done();
         })
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0600
@@ -1022,7 +1015,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0600', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             createAssetWithSuffixesCallback1(photoHelper,imageType, 'jpg', options, photoExtensions, done)
-            done();
         })
 
         /* *
@@ -1036,7 +1028,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0700', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             createAssetWithSuffixesCallback1(photoHelper, videoType, 'mp4', options, videoExtensions, done)
-            done();
         })
 
         /* *
@@ -1050,7 +1041,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0800', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             createAssetWithSuffixesCallback2(photoHelper, imageType, 'jpg', photoExtensions, done)
-            done();
         })
 
         /* *
@@ -1064,7 +1054,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0900', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             createAssetWithSuffixesCallback2(photoHelper, videoType, 'mp4', videoExtensions, done)
-            done();
         })
 
         /* *
@@ -1078,7 +1067,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1000', 2, function (done) {
             let photoHelper = getPhotoHelper(context)
             createAssetWithSuffixesPromise(photoHelper, imageType, 'jpg', options, photoExtensions, done)
-            done();
         })
 
         /* *
@@ -1092,7 +1080,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1100', 2, function (done) {
             let photoHelper = getPhotoHelper(context)
             createAssetWithSuffixesPromise(photoHelper, videoType, 'mp4', options, videoExtensions, done)
-            done();
         })
 
         /* *
@@ -1109,7 +1096,6 @@ export default function PhotoAccessHelperTest() {
                 title: 'no'
             }
             createAssetWithSuffixesPromise(photoHelper, imageType, 'jpg', withoutOptions, photoExtensions, done)
-            done();
         })
 
         /* *
@@ -1126,7 +1112,6 @@ export default function PhotoAccessHelperTest() {
                 title: 'no'
             }
             createAssetWithSuffixesPromise(photoHelper, videoType, 'mp4', withoutOptions, videoExtensions, done)
-            done();
         })
 
         /* *
@@ -1143,7 +1128,6 @@ export default function PhotoAccessHelperTest() {
                 testError: 'testError'
             }
             createAssetWithSuffixesPromise(photoHelper, imageType, 'jpg', optionsErr, photoExtensions, done)
-            done();
         })
 
         /* *
@@ -1160,7 +1144,6 @@ export default function PhotoAccessHelperTest() {
                 testError: 'testError'
             }
             createAssetWithSuffixesPromise(photoHelper, videoType, 'mp4', optionsErr, videoExtensions, done)
-            done();
         })
 
         /* *
@@ -1175,7 +1158,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1600', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangePromise(true, true, photoHelper, true, done)
-            done();
         })
 
         /* *
@@ -1190,7 +1172,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1700', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangePromise(true, true, photoHelper, false, done)
-            done();
         })
 
         /* *
@@ -1205,7 +1186,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1800', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangePromise(true, false, photoHelper, true, done)
-            done();
         })
 
         /* *
@@ -1220,7 +1200,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1900', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangePromise(true, false, photoHelper, false, done)
-            done();
         })
 
         /* *
@@ -1235,7 +1214,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2000', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangePromise(false, true, photoHelper, true, done)
-            done();
         })
 
         /* *
@@ -1250,7 +1228,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2100', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangePromise(false, true, photoHelper, false, done)
-            done();
         })
 
         /* *
@@ -1265,7 +1242,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2200', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangePromise(false, false, photoHelper, true, done)
-            done();
         })
 
         /* *
@@ -1280,7 +1256,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2300', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangePromise(false, false, photoHelper, false, done)
-            done();
         })
 
         /* *
@@ -1295,7 +1270,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2400', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangeCallback(true, true, photoHelper, true, done)
-            done();
         })
 
         /* *
@@ -1310,7 +1284,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2500', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangeCallback(true, true, photoHelper, false, done)
-            done();
         })
 
         /* *
@@ -1325,7 +1298,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2600', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangeCallback(true, false, photoHelper, true, done)
-            done();
         })
 
         /* *
@@ -1340,7 +1312,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2700', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangeCallback(true, false, photoHelper, false, done)
-            done();
         })
 
         /* *
@@ -1355,7 +1326,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2800', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangeCallback(false, true, photoHelper, true, done)
-            done();
         })
 
         /* *
@@ -1370,7 +1340,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2900', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangeCallback(false, true, photoHelper, false, done)
-            done();
         })
 
         /* *
@@ -1385,7 +1354,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3000', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangeCallback(false, false, photoHelper, true, done)
-            done();
         })
 
         /* *
@@ -1400,7 +1368,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3100', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangeCallback(false, false, photoHelper, false, done)
-            done();
         })
 
         /* *
@@ -1414,7 +1381,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3400', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getPhotoAssetAttrsCallback(photoHelper,fetchOptions, done)
-            done();
         })
 
         /* *
@@ -1428,7 +1394,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3500', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getPhotoAssetAttrsPromise(photoHelper, fetchOptions, done)
-            done();
         })
 
         /* *
@@ -1442,7 +1407,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3600', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getPhotoAssetForKeysCallback(photoHelper, fetchOptions, done)
-            done();
         })
 
         /* *
@@ -1456,7 +1420,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3700', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getPhotoAssetForKeysPromise(photoHelper, fetchOptions, done)
-            done();
         })
 
         /* *
@@ -1470,7 +1433,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3800', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             setPhotoAssetTitleCallback(photoHelper, fetchOptions, done)
-            done();
         })
 
         /* *
@@ -1484,7 +1446,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3900', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             setPhotoAssetTitlePromise(photoHelper, fetchOptions, done)
-            done();
         })
 
         /* *
@@ -1498,7 +1459,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4000', 1, function (done) {
             let photoHelper = getPhotoHelper(context)
             commitModifyCallback(photoHelper, fetchOptions, done)
-            done();
         })
 
         /* *
@@ -1512,7 +1472,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4100', 1, function (done) {
             let photoHelper = getPhotoHelper(context)
             commitModifyPromise(photoHelper, fetchOptions, done)
-            done();
         })
 
         /* *
@@ -1526,7 +1485,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4200', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getReadOnlyFdCallback(photoHelper, fetchOptions, done)
-            done();
         })
 
         /* *
@@ -1540,7 +1498,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4300', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getReadOnlyFdPromise(photoHelper, fetchOptions, done)
-            done();
         })
 
         /* *
@@ -1554,7 +1511,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4400', 1, function (done) {
             let photoHelper = getPhotoHelper(context)
             getThumbnailCallback(photoHelper, fetchOptions_allocate_file, done)
-            done();
         })
 
         /* *
@@ -1568,7 +1524,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4500', 4, function (done) {
             let photoHelper = getPhotoHelper(context)
             getThumbnailCallbackWithSize(photoHelper, fetchOptions_allocate_file, done)
-            done();
         })
 
         /* *
@@ -1583,7 +1538,6 @@ export default function PhotoAccessHelperTest() {
             let photoHelper = getPhotoHelper(context)
             fetchOptions.fetchColumns = columns
             getThumbnailPromiseWithSize(photoHelper, fetchOptions_allocate_file, done)
-            done();
         })
 
         /* *
@@ -1597,7 +1551,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4700', 2, function (done) {
             let photoHelper = getPhotoHelper(context)
             getCount(photoHelper,fetchOptions,done)
-            done();
         })
 
         /* *
@@ -1611,7 +1564,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4800', 2, function (done) {
             let photoHelper = getPhotoHelper(context)
             checkIsAfterLast(photoHelper,fetchOptions,done)
-            done();
         })
 
         /* *
@@ -1625,7 +1577,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4900', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             closeFetchResult(photoHelper,fetchOptions,done)
-            done();
         })
 
         /* *
@@ -1639,7 +1590,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5000', 2, function (done) {
             let photoHelper = getPhotoHelper(context)
             getFirstObjectCallback(photoHelper,fetchOptions,done)
-            done();
         })
 
         /* *
@@ -1653,7 +1603,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5010', 2, function (done) {
             let photoHelper = getPhotoHelper(context)
             getFirstObjectPromise(photoHelper,fetchOptions,done)
-            done();
         })
 
         /* *
@@ -1667,7 +1616,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5100', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getNextObjectCallback(photoHelper,fetchOptions,done)
-            done();
         })
 
         /* *
@@ -1681,7 +1629,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5200', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getNextObjectPromise(photoHelper,fetchOptions,done)
-            done();
         })
 
         /* *
@@ -1695,7 +1642,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5300', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getLastObjectCallback(photoHelper,fetchOptions,done)
-            done();
         })
 
         /* *
@@ -1709,7 +1655,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5400', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getLastObjectPromise(photoHelper,fetchOptions,done)
-            done();
         })
 
         /* *
@@ -1723,7 +1668,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5500', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getObjectByPositionCallback(photoHelper,fetchOptions,done)
-            done();
         })
 
         /* *
@@ -1737,7 +1681,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5600', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getObjectByPositionPromise(photoHelper,fetchOptions,done)
-            done();
         })
 
         /* *
@@ -1751,7 +1694,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5700', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getAllObjectsCallback(photoHelper,fetchOptions,done)
-            done();
         })
 
         /* *
@@ -1765,7 +1707,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5800', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             getAllObjectsPromise(photoHelper,fetchOptions,done)
-            done();
         })
     })
 }
