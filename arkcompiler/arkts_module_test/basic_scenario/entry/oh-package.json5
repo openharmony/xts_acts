@@ -24,6 +24,7 @@
     "library": "file:../library",
     "library2": "file:../library2",
     "library3": "file:../library3",
-    "har": "file:../har"
+    "har": "file:../har",
+    "libentry.so": "file:./src/main/cpp/types/libentry"
   }
 }

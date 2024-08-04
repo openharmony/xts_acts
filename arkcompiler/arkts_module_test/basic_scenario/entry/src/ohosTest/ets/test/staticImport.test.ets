@@ -19,6 +19,10 @@ import { add as harAdd } from 'har';
 import { add as testAdd } from './test'
 import hilog from '@ohos.hilog';
 import systemApp from '@system.app';
+import { add as napiAdd } from 'libentry.so';
+import BigNumber from 'json-bigint';
+import { SUCCESS, Selector } from 'behaviortree';
+import myJson from './1.json';
 
 export default function staticImport() {
   describe('staticImportTest', () => {
@@ -58,15 +62,32 @@ export default function staticImport() {
       expect(staticLibraryRes).assertEqual('success');
     })
 
-    it('testSystemRes', 0, () => {
-      let systemRes: String = '';
-      if (systemApp.getInfo != undefined) {
-        systemRes = 'success';
-        console.log('ModuleTest @system.app test success');
+    /**
+     * @tc.number    : SUB_ARKCOMPILER_ETSRUNTIME_BasicScenario_StaticImport_0300
+     * @tc.name      : testRelativePathRes
+     * @tc.desc      : Import Relative Path
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testRelativePathRes', 0, () => {
+      let relativePathRes: String = '';
+      let a = testAdd(2, 3);
+      if (a == 5) {
+        relativePathRes = "success";
+        console.log("ModuleTest RelativePath test success");
       }
-      expect(systemRes).assertEqual('success');
+      expect(relativePathRes).assertEqual('success');
     })
 
+    /**
+     * @tc.number    : SUB_ARKCOMPILER_ETSRUNTIME_BasicScenario_StaticImport_0400
+     * @tc.name      : testOhosRes
+     * @tc.desc      : Import System Native Module
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('testOhosRes', 0, () => {
       let ohosRes: String = '';
       if (typeof hilog.info != undefined) {
@@ -76,6 +97,14 @@ export default function staticImport() {
       expect(ohosRes).assertEqual('success');
     })
 
+    /**
+     * @tc.number    : SUB_ARKCOMPILER_ETSRUNTIME_BasicScenario_StaticImport_0500
+     * @tc.name      : testSystemRes
+     * @tc.desc      : Import Native Module
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('testSystemRes', 0, () => {
       let systemRes: String = '';
       if (systemApp.getInfo != undefined) {
@@ -83,6 +112,75 @@ export default function staticImport() {
         console.log('ModuleTest @system.app test success');
       }
       expect(systemRes).assertEqual('success');
+    })
+    
+    /**
+     * @tc.number    : SUB_ARKCOMPILER_ETSRUNTIME_BasicScenario_StaticImport_0600
+     * @tc.name      : testNapiRes
+     * @tc.desc      : Import Hap's Native Module
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testNapiRes', 0, () => {
+      let napiRes: String = '';
+      let a = napiAdd(2, 3);
+      if (a == 5) {
+        napiRes = 'success';
+        console.log('ModuleTest Napi test success');
+      }
+      expect(napiRes).assertEqual('success');
+    })
+
+    /**
+     * @tc.number    : SUB_ARKCOMPILER_ETSRUNTIME_BasicScenario_StaticImport_0700
+     * @tc.name      : testOhpmImportOhpm
+     * @tc.desc      : Ohpm Import Ohpm
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testOhpmImportOhpm', 0, () => {
+      let ohpmImportOhpm: String = '';
+      if (BigNumber) {
+        ohpmImportOhpm = 'success';
+        console.log('ModuleTest Ohpm import Ohpm success');
+      }
+      expect(ohpmImportOhpm).assertEqual('success');
+    })
+
+    /**
+     * @tc.number    : SUB_ARKCOMPILER_ETSRUNTIME_BasicScenario_StaticImport_0800
+     * @tc.name      : testCjsDictionary
+     * @tc.desc      : Import Cjs DictionaryMode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testCjsDictionary', 0, () => {
+      let cjsDictionary: String = '';
+      if (SUCCESS && typeof Selector == 'function') {
+        cjsDictionary = 'success';
+        console.log('ModuleTest import cjsDictionary success');
+      }
+      expect(cjsDictionary).assertEqual('success');
+    })
+
+    /**
+     * @tc.number    : SUB_ARKCOMPILER_ETSRUNTIME_BasicScenario_StaticImport_0900
+     * @tc.name      : testImportJson
+     * @tc.desc      : Import Json File
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testImportJson', 0, () => {
+      let importJson: String = '';
+      if (myJson.name == "importJson") {
+        importJson = 'success';
+        console.log('ModuleTest import json success');
+      }
+      expect(importJson).assertEqual('success');
     })
   })
 }
