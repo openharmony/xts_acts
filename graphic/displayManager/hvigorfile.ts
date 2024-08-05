@@ -12,9 +12,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import displayManagerInterfaceTest from './displayManagerInterface.test'
-
-export default function testsuite() {
-  displayManagerInterfaceTest()
-}
+export { appTasks } from '@ohos/hvigor-ohos-plugin';
