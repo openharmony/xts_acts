@@ -339,13 +339,13 @@ describe('rdbStoreDistributedTest', function () {
         let predicates = new dataRdb.RdbPredicates("employee")
         let pr = predicates.inDevices(['12345678abcd']);
         console.info(TAG + "testRdbStoreDistributed0011" + pr);
-        await rdbStore.sync(data_Rdb.SyncMode.SYNC_MODE_PUSH, predicates).then(() => {
+        await rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates).then(() => {
             console.info(TAG + "sync push success");
         }).catch((err) => {
             console.info(TAG + "err.code:" + err.code + "err.msg:" + err.message)
             expect(err.code).assertEqual(14800000)
         });
-        await rdbStore.sync(data_Rdb.SyncMode.SYNC_MODE_PULL, predicates).then(() => {
+        await rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates).then(() => {
             console.info(TAG + "sync pull success");
         }).catch(() => {
             console.info(TAG + "err.code:" + err.code + "err.msg:" + err.message)
@@ -371,13 +371,13 @@ describe('rdbStoreDistributedTest', function () {
         let predicates = new dataRdb.RdbPredicates("employee")
         let pr = predicates.inDevices(['12345678abcd']);
         console.info(TAG + " testRdbStoreDistributedCallback0011 pr = " + pr);
-        await rdbStore.sync(data_Rdb.SyncMode.SYNC_MODE_PUSH, predicates, async (err,ret)=>{
+        await rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates, async (err,ret)=>{
             if(err){
                 console.info(TAG + "err.code:" + err.code + "err.msg:" + err.message)
                 expect(err.code).assertEqual(14800000)
             }
             console.info(TAG + "sync push success");
-            await rdbStore.sync(data_Rdb.SyncMode.SYNC_MODE_PULL, predicates,(err,ret)=>{
+            await rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates,(err,ret)=>{
                 if(err){
                     console.info(TAG + "err.code:" + err.code + "err.msg:" + err.message)
                     expect(err.code).assertEqual(14800000)

@@ -380,7 +380,7 @@ describe('relationalStoreDistributedTest', function () {
         });
         await rdbStore.sync(data_Rdb.SyncMode.SYNC_MODE_PULL, predicates).then(() => {
             console.info(TAG + "sync pull success");
-        }).catch(() => {
+        }).catch((err) => {
             console.info(TAG + "err.code:" + err.code + "err.msg:" + err.message)
             expect(err.code).assertEqual(14800000)
         });
