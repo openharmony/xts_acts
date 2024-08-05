@@ -17,12 +17,10 @@ import router from '@ohos.router';
 import { Theme, CustomTheme } from '@ohos.arkui.theme';
 import { BadgeKeys, badgeThemeProperty } from '../../MainAbility/pages/components/BadgePage';
 import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
-import { frameTime } from '../Utils';
+import { frameTime, sleep } from '../Utils';
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
-import { Driver, ON }  from '@ohos.UiTest';
 
 export default function badgeThemeTest() {
-  const driver: Driver = Driver.create();
   const SUITE: string = `badgeThemeTest`;
   const emptyCheck = 'emptyCheck';
   const emptyAttr = 'emptyAttr';
@@ -81,7 +79,7 @@ export default function badgeThemeTest() {
     it(`ActsBadgeThemeTest_0100`, 0, async () => {
       const CASE: string = `ActsBadgeThemeTest_0100`;
       console.info(`${SUITE} ${CASE} START`);
-      await driver.waitForComponent(ON.id(BadgeKeys.badgeKeysSystem), frameTime);
+      await sleep(frameTime);
       const badgeJson = getInspectorByKey(BadgeKeys.badgeKeysSystem);
       const badgeStyleJson: string = JSON.parse(badgeJson)?.$attrs?.style?.toString();
       const color: string = JSON.parse(badgeStyleJson)?.color?.toString();
@@ -103,10 +101,9 @@ export default function badgeThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsBadgeThemeTest_0200`, 0, async () => {
+    it(`ActsBadgeThemeTest_0200`, 0, () => {
       const CASE: string = `ActsBadgeThemeTest_0200`;
       console.info(`${SUITE} ${CASE} START`);
-      await driver.waitForComponent(ON.id(BadgeKeys.badgeKeysWithTheme), frameTime);
       const badgeJson = getInspectorByKey(BadgeKeys.badgeKeysWithTheme)
       const badgeStyleJson: string = JSON.parse(badgeJson)?.$attrs?.style?.toString();
       const color: string = JSON.parse(badgeStyleJson)?.color?.toString().toUpperCase();
@@ -134,7 +131,7 @@ export default function badgeThemeTest() {
     it(`ActsBadgeThemeTest_0300`, 0, async () => {
       const CASE: string = `ActsBadgeThemeTest_0300`;
       console.info(`${SUITE} ${CASE} START`);
-      await driver.waitForComponent(ON.id(BadgeKeys.badgeKeysSystem), frameTime);
+      await sleep(frameTime);
       const badgeJson = getInspectorByKey(BadgeKeys.badgeKeysWithTheme);
       const badgeStyleJson: string = JSON.parse(badgeJson)?.$attrs?.style?.toString();
       const color: string = JSON.parse(badgeStyleJson)?.color?.toString().toUpperCase();
