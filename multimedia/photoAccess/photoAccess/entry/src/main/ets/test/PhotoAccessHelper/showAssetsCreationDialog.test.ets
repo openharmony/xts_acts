@@ -123,7 +123,7 @@ export default function showAssetsCreationDialogTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("show_asset_create_dialog_001", 0, (done: Function) => {
+    it("show_asset_create_dialog_001", 0, async (done: Function) => {
       const testNum = "show_asset_create_dialog_001";
       let fileUriList: Array<string> = [
         "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/test_mov_1.jpg"
@@ -147,7 +147,7 @@ export default function showAssetsCreationDialogTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("show_asset_create_dialog_002", 0, (done: Function) => {
+    it("show_asset_create_dialog_002", 0, async (done: Function) => {
       const testNum = "show_asset_create_dialog_002";
       let fileUriList: Array<string> = [
         "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/test_mov_1.jpg"
