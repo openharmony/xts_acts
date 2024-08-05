@@ -347,7 +347,7 @@ describe('rdbStoreDistributedTest', function () {
         });
         await rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates).then(() => {
             console.info(TAG + "sync pull success");
-        }).catch(() => {
+        }).catch((err) => {
             console.info(TAG + "err.code:" + err.code + "err.msg:" + err.message)
             expect(err.code).assertEqual(14800000)
         });
@@ -383,9 +383,9 @@ describe('rdbStoreDistributedTest', function () {
                     expect(err.code).assertEqual(14800000)
                 }
                 console.info(TAG + "sync push success");
-                done();
             });
         });
+        done();
         console.info(TAG + "************* testRdbStoreDistributedCallback0011 end *************");
     })
 
