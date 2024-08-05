@@ -25,7 +25,6 @@ const TAG = "CameraXts CameraSessionExposureTest: ";
 
 let receiver: image.ImageReceiver;
 let mPhotoSurface: string;
-let mFileAsset: mediaLibrary.FileAsset;
 let mFdNumber: number;
 
 let mExposureBiasRangeArray: Array<cameraObj.exposureBias>;
