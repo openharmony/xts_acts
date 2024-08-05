@@ -15,23 +15,24 @@
 import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
-import { sliderThemeProperty } from '../../MainAbility/pages/components/SliderPage';
+import { sliderThemeProperty, SliderKeys } from '../../MainAbility/pages/components/SliderPage';
 import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
-import { frameTime, sleep } from '../Utils';
 import { Theme, CustomTheme } from '@ohos.arkui.theme';
 
 export default function sliderThemeTest() {
   const SUITE: string = `SliderThemeTest`;
+  const EMPTY_CHECK: string = 'emptyCheck';
+  const EMPTY_ATTR: string = 'emptyAttr';
 
-  const sliderKeys: string [] = [
-    `Slider_Out_Set_System`,
-    `Slider_In_Set_System`,
-    `Slider_Out_Set_Steps_System`,
-    `Slider_In_Set_Steps_System`,
-    `Slider_Out_Set_WithTheme`,
-    `Slider_In_Set_WithTheme`,
-    `Slider_Out_Set_Steps_WithTheme`,
-    `Slider_In_Set_Steps_WithTheme`
+  const sliderKeys: string[] = [
+    SliderKeys.sliderOutSetSystem,
+    SliderKeys.sliderInSetSystem,
+    SliderKeys.sliderOutSetStepsSystem,
+    SliderKeys.sliderInSetStepsSystem,
+    SliderKeys.sliderOutSetWithTheme,
+    SliderKeys.sliderInSetWithTheme,
+    SliderKeys.sliderOutSetStepsWithTheme,
+    SliderKeys.sliderInSetStepsWithTheme,
   ];
   let localTheme: CustomTheme | undefined;
   let changeTheme: boolean = false;
@@ -50,11 +51,11 @@ export default function sliderThemeTest() {
             console.info(`${SUITE} router.pushUrl success`);
           })
         }
-		colorValues = AppStorage.get(colorValuesKey);
+        colorValues = AppStorage.get(colorValuesKey);
       } catch (err) {
         console.error(`${SUITE} beforeAll error:` + JSON.stringify(err));
       }
-    })
+    });
 
     beforeEach(() => {
       if (!changeTheme) return
@@ -66,7 +67,7 @@ export default function sliderThemeTest() {
       }
       localTheme = AppStorage.get<Theme>(sliderThemeProperty);
       changeTheme = false;
-    })
+    });
 
     afterAll(() => {
       try {
@@ -74,7 +75,7 @@ export default function sliderThemeTest() {
       } catch (err) {
         console.error(`${SUITE} afterAll error:` + JSON.stringify(err));
       }
-    })
+    });
     /**
      * @tc.number    : ActsSliderThemeColors_0100
      * @tc.name      : ActsSliderThemeColors_0100
@@ -87,27 +88,27 @@ export default function sliderThemeTest() {
       const CASE: string = `ActsSliderThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       sliderKeys.forEach((key) => {
-        if (key.search(`WithTheme`) > 0) return
+        if (key.search(`WithTheme`) > 0) return;
         const sliderJSON = getInspectorByKey(key);
         const attrsSlider: SliderAttribute = JSON.parse(sliderJSON)?.$attrs;
 
-        const trackColor: string = attrsSlider?.trackColor.toString().toUpperCase();
-        const checkTrackColor = colorValues?.get(`compBackgroundSecondary`);
+        const trackColor: string = attrsSlider?.trackColor.toString().toUpperCase() ?? EMPTY_ATTR;
+        const checkTrackColor = colorValues?.get(`compBackgroundSecondary`)?.toString().toUpperCase() ?? EMPTY_CHECK;
         expect(trackColor).assertEqual(checkTrackColor);
 
-        const selectedColor: ResourceColor = attrsSlider?.selectedColor.toString();
-        const checkSelectedColor = colorValues?.get(`backgroundEmphasize`);
+        const selectedColor: ResourceColor = attrsSlider?.selectedColor.toString().toUpperCase() ?? EMPTY_ATTR;
+        const checkSelectedColor = colorValues?.get(`backgroundEmphasize`)?.toString().toUpperCase() ?? EMPTY_CHECK;
         expect(selectedColor).assertEqual(checkSelectedColor);
 
-        const blockColor: string = attrsSlider?.blockColor.toString();
-        const checkBlockColor = colorValues?.get(`compBackgroundPrimaryContrary`);
+        const blockColor: string = attrsSlider?.blockColor.toString().toUpperCase() ?? EMPTY_ATTR;
+        const checkBlockColor = colorValues?.get(`compBackgroundPrimaryContrary`)?.toString().toUpperCase() ?? EMPTY_CHECK;
         expect(blockColor).assertEqual(checkBlockColor);
 
-        const stepColor: string = attrsSlider?.stepColor.toString();
-        const checkStepColor = colorValues?.get(`compBackgroundSecondary`);
+        const stepColor: string = attrsSlider?.stepColor.toString().toUpperCase() ?? EMPTY_ATTR;
+        const checkStepColor = colorValues?.get(`compBackgroundSecondary`)?.toString().toUpperCase() ?? EMPTY_CHECK;
         expect(stepColor).assertEqual(checkStepColor);
       })
       console.info(`${SUITE} ${CASE} END`);
-    })
-  })
+    });
+  });
 }
