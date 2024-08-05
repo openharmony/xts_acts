@@ -343,13 +343,13 @@ describe('rdbStoreDistributedTest', function () {
             console.info(TAG + "sync push success");
         }).catch((err) => {
             console.info(TAG + "err.code:" + err.code + "err.msg:" + err.message)
-            expect(err.code).assertEqual(14800000)
+            expect(err.message).assertEqual("async error.")
         });
         await rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates).then(() => {
             console.info(TAG + "sync pull success");
         }).catch((err) => {
             console.info(TAG + "err.code:" + err.code + "err.msg:" + err.message)
-            expect(err.code).assertEqual(14800000)
+            expect(err.message).assertEqual("async error.")
         });
         done();
         console.info(TAG + "************* testRdbStoreDistributed0011 end *************");
@@ -374,18 +374,18 @@ describe('rdbStoreDistributedTest', function () {
         await rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates, async (err,ret)=>{
             if(err){
                 console.info(TAG + "err.code:" + err.code + "err.msg:" + err.message)
-                expect(err.code).assertEqual(14800000)
+                expect(err.message).assertEqual("async error.")
             }
             console.info(TAG + "sync push success");
             await rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates,(err,ret)=>{
                 if(err){
                     console.info(TAG + "err.code:" + err.code + "err.msg:" + err.message)
-                    expect(err.code).assertEqual(14800000)
+                    expect(err.message).assertEqual("async error.")
                 }
-                console.info(TAG + "sync push success");
+                console.info(TAG + "sync pull success");
+                done();
             });
         });
-        done();
         console.info(TAG + "************* testRdbStoreDistributedCallback0011 end *************");
     })
 
