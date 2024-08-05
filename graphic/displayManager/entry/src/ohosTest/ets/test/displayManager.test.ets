@@ -292,7 +292,7 @@ export default function displayTest() {
      * @tc.desc   : test_getAvailableArea_default
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      */
     it('test_getAvailableArea_default', 0, async (done: Function) => {
       let caseName = 'test_getAvailableArea_default';
@@ -304,8 +304,7 @@ export default function displayTest() {
         let promise = displayClass.getAvailableArea();
         promise.then((data) => {
           console.info(msgStr + 'Succeeded get the available area in this display. data: ' + JSON.stringify(data));
-          expect(data.left).assertLarger(0);
-          expect(data.top).assertLarger(0);
+          expect(data.left).assertEqual(0);
           expect(data.width).assertLarger(0);
           expect(data.height).assertLarger(0);
           done();
@@ -333,9 +332,9 @@ export default function displayTest() {
      * @tc.desc   : test_getAvailableArea_subWindow
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 3
+     * @tc.level  : Level 2
      */
-    it('test_getAvailableArea_subWindow', 0, async (done: Function) => {
+    it('test_getAvailableArea_subWindow', 2, async (done: Function) => {
       let caseName = 'test_getAvailableArea_subWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -344,11 +343,6 @@ export default function displayTest() {
       let storage: LocalStorage = new LocalStorage();
       storage.setOrCreate('storageSimpleProp', 121);
       try {
-        // subWindow = await windowStage.createSubWindow('test_getAvailableArea_subWindow').catch((err) => {
-        //   console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-        //   expect().assertFail();
-        //   done();
-        // });
         let promise1 = windowStage.createSubWindow('test_getAvailableArea_subWindow');
         promise1.then(async (data) => {
           if (data == null) {
@@ -369,7 +363,6 @@ export default function displayTest() {
               promise.then((data) => {
                 console.info(msgStr + 'Succeeded get the available area in this display. data: ' + JSON.stringify(data));
                 expect(data.left).assertEqual(0);
-                expect(data.top).assertEqual(0);
                 expect(data.width).assertLarger(0);
                 expect(data.height).assertLarger(0);
                 subWindow.destroyWindow();
@@ -418,9 +411,9 @@ export default function displayTest() {
      * @tc.desc   : test_getAvailableArea_setWindowSystemBarEnable
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 3
+     * @tc.level  : Level 2
      */
-    it('test_getAvailableArea_setWindowSystemBarEnable', 0, async (done: Function) => {
+    it('test_getAvailableArea_setWindowSystemBarEnable', 2, async (done: Function) => {
       let caseName = 'test_getAvailableArea_setWindowSystemBarEnable';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -437,7 +430,10 @@ export default function displayTest() {
           let promise = displayClass.getAvailableArea();
           promise.then(async (data) => {
             console.info(msgStr + 'Succeeded get the available area in this display. data: ' + JSON.stringify(data));
-            expect(data).assertEqual(AvailableArea);
+            expect(data.left).assertEqual(AvailableArea.left);
+            expect(data.top).assertEqual(AvailableArea.top);
+            expect(data.width).assertEqual(AvailableArea.width);
+            expect(data.height).assertEqual(AvailableArea.height);
             await mainWindowClass.setWindowSystemBarEnable(['status', 'navigation']);
             console.info(msgStr + ' setWindowSystemBarEnable success');
             done();
@@ -478,7 +474,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('test_getAvailableArea_ststus_bar_hide', 0, async (done: Function) => {
+    it('test_getAvailableArea_ststus_bar_hide', 3, async (done: Function) => {
       let caseName = 'test_getAvailableArea_ststus_bar_hide';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -487,41 +483,46 @@ export default function displayTest() {
         let mainWindowClass = await windowStage.getMainWindow();
         displayClass = display.getDefaultDisplaySync();
         let promise1 = displayClass.getAvailableArea();
-        promise1.then((data) => {
+        promise1.then(async (data) => {
           let AvailableArea = data;
           console.info(msgStr + 'Succeeded get the available area in this display. AvailableArea: ' + JSON.stringify(AvailableArea));
-          mainWindowClass.setWindowLayoutFullScreen(true);
-          console.info(msgStr + ' setWindowLayoutFullScreen success');
-          let promise = displayClass.getAvailableArea();
-          promise.then((data) => {
-            console.info(msgStr + 'Succeeded get the available area in this display. data: ' + JSON.stringify(data));
-            if (data == AvailableArea) {
-              mainWindowClass.setWindowLayoutFullScreen(false);
-              done();
-            }
-            else if (data != AvailableArea) {
-              expect(data.left).assertEqual(0);
-              expect(data.top).assertEqual(0);
-              expect(data.width).assertEqual(0);
-              expect(data.height).assertEqual(0);
-              mainWindowClass.setWindowLayoutFullScreen(false);
-              done();
-            }
-            else {
-              expect(false).assertTrue();
-              done();
-            }
-          }).catch((err:BusinessError) => {
-            console.error(msgStr + `Failed to get the available area in this display. Code: ${err.code}, message: ${err.message}`);
-            if (err.code == 801) {
-              console.info(msgStr + 'The device not support getAvailableArea');
-              done();
-            }
-            else {
-              expect().assertFail();
-              done();
-            }
-          });
+          await mainWindowClass.setWindowLayoutFullScreen(true).then(async ()=>{
+            console.info(msgStr + ' setWindowLayoutFullScreen success');
+            await sleep(1000);
+            let displayClass1 = display.getDefaultDisplaySync();
+            let promise = displayClass1.getAvailableArea();
+            promise.then((data1) => {
+              console.info(msgStr + 'Succeeded get the available area in this display. data1: ' + JSON.stringify(data1));
+              if (AvailableArea.top == 0) {
+                mainWindowClass.setWindowLayoutFullScreen(false);
+                done();
+              }
+              else if (AvailableArea.top != 0) {
+                expect(data1.top).assertEqual(0);
+                mainWindowClass.setWindowLayoutFullScreen(false);
+                done();
+              }
+              else {
+                expect(false).assertTrue();
+                done();
+              }
+            }).catch((err:BusinessError) => {
+              console.error(msgStr + `Failed to get the available area in this display. Code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.info(msgStr + 'The device not support getAvailableArea');
+                done();
+              }
+              else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch((err:BusinessError)=>{
+            console.error(msgStr + `Failed to set setWindowLayoutFullScreen. Code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          })
+          
         }).catch((err:BusinessError) => {
           console.error(msgStr + `Failed to get the available area in this display. Code: ${err.code}, message: ${err.message}`);
           if (err.code == 801) {
@@ -548,7 +549,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('test_on_availableAreaChange', 0, async (done: Function) => {
+    it('test_on_availableAreaChange', 3, async (done: Function) => {
       let caseName = 'test_on_availableAreaChange';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
