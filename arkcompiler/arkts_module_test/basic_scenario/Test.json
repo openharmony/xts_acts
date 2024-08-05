@@ -12,6 +12,8 @@
         {
             "test-file-name": [
                 "ActsArktsModuleBasicScenarioMainTest-library-default-signed.hsp",
+                "ActsArktsModuleBasicScenarioMainTest-library2-default-signed.hsp",
+                "ActsArktsModuleBasicScenarioMainTest-library3-default-signed.hsp",
                 "ActsArktsModuleBasicScenarioMainTest-entry-default-signed.hap",
                 "ActsArktsModuleBasicScenarioTest.hap"
             ],

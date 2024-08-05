@@ -21,6 +21,7 @@
     "description": "$string:phone_entry_dsc",
     "mainElement": "com.acts.stabilitystagecontext.MainAbility",
     "deviceTypes": [
+      "wearable",
       "default",
       "tablet",
       "2in1"

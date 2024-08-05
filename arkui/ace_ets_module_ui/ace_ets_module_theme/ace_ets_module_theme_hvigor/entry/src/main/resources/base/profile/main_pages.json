@@ -18,6 +18,10 @@
           "MainAbility/pages/components/MenuPage",
           "MainAbility/pages/components/PatternLockPage",
           "MainAbility/pages/components/QRCodePage",
-          "MainAbility/pages/components/SliderPage"
+          "MainAbility/pages/components/SliderPage",
+		  "MainAbility/pages/components/TextPage",
+          "MainAbility/pages/components/TextPickerPage",
+          "MainAbility/pages/components/TimePickerPage",
+          "MainAbility/pages/components/TogglePage"
     ]
 }

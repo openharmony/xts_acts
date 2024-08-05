@@ -13,5 +13,5 @@
  * limitations under the License.
  */
 
-export { add, addHarDepHar, addHarDepHsp,cryptoHapDepHar } from './src/main/ets/Calc'
+export { add, addHarDepHar, addHarDepHsp } from './src/main/ets/Calc'
 export { MainPage } from './src/main/ets/components/mainpage/MainPage'

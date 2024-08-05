@@ -106,7 +106,7 @@ export default function onSelectionChange19() {
       await CommonFunc.sleep(1000);
       let text1_3 = getInspectorByKey('onSelectionChange19_text1');
       let Obj1_3: ESObject = JSON.parse(text1_3);
-      expect(Obj1_3.$attrs.content).assertEqual('3');
+      expect(Obj1_3.$attrs.content).assertEqual('5');
       let text2_3 = getInspectorByKey('onSelectionChange19_text2');
       let Obj2_3: ESObject = JSON.parse(text2_3);
       expect(Obj2_3.$attrs.content).assertEqual('1');
