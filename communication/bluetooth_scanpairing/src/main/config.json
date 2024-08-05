@@ -16,8 +16,6 @@
         "package": "ohos.acts.communication.bluetooth.bluetoothhost",
         "name": ".entry",
         "deviceType": [
-      "tablet",
-      "default",
             "tablet",
             "default",
             "phone",
