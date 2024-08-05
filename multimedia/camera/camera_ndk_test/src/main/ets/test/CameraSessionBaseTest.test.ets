@@ -25,7 +25,6 @@ const TAG = "CameraXts CameraSessionBaseTest: ";
 
 let receiver: image.ImageReceiver;
 let mPhotoSurface: string;
-let mFileAsset: mediaLibrary.FileAsset;
 let mFdNumber: number;
 let mCameraInput: number;
 
