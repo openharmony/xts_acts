@@ -25,7 +25,6 @@ import { Camera_FlashMode, GlobalThis } from './Constants';
 const TAG = "CameraXts CameraSessionFlashTest: ";
 
 let mPhotoSurface: string;
-let mFileAsset: mediaLibrary.FileAsset;
 let mFdNumber: number;
 let mCameraNum: number;
 let mIsFlashModeSupportedArray: Array<boolean>;
