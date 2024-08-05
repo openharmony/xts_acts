@@ -114,7 +114,7 @@ async function getVideoSurfaceID() {
     console.error(`createAVRecorder call failed`);
   }
   console.info(TAG + 'createAVRecorder videoRecorder : ' + JSON.stringify(videoRecorder));
-  videoConfig.url = `fd://${await mediaUtil.createAndGetUriVideo(mediaLibrary.MediaType.VIDEO, mContext)}`;
+  videoConfig.url = `fd://${await mediaUtil.createAndGetUriVideo()}`;
   console.info(TAG + 'getVideoSurfaceID videoConfig.url : ' + JSON.stringify(videoConfig.url));
   videoConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES;
   console.info(TAG + 'getVideoSurfaceID videoConfig.videoSourceType : ' + videoConfig.videoSourceType);
