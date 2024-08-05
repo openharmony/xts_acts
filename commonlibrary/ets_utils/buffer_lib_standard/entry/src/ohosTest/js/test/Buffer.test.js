@@ -4632,9 +4632,10 @@ describe('BufferTest', function () {
     try {
       const buf = buffer.from(10);
     } catch (err) {
+      expect(err.code).assertEqual(401);
       expect(err.name).assertEqual('BusinessError');
       expect(err.message).assertEqual('Parameter error. The type of "value" must be Buffer or ArrayBuffer, Array, ' +
-                                      'Array-like. Received value is: string');
+                                      'Array-like. Received value is: number');
     }
   });
 
@@ -4801,7 +4802,7 @@ describe('BufferTest', function () {
    });
 
    /**
-    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30000
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28100
     * @tc.name: testLastIndexOf30000
     * @tc.desc: The index of the last occurrence of value in buf.
     * @tc.size: MediumTest
@@ -4815,7 +4816,7 @@ describe('BufferTest', function () {
    });
 
    /**
-    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30010
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28200
     * @tc.name: testIncludes30010
     * @tc.desc: Returns true if value was found in buf, false otherwise.
     * @tc.size: MediumTest
@@ -4829,7 +4830,7 @@ describe('BufferTest', function () {
    });
 
     /**
-    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30020
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28300
     * @tc.name: testIncludes30020
     * @tc.desc: Returns true if value was found in buf, false otherwise.
     * @tc.size: MediumTest
@@ -4843,7 +4844,7 @@ describe('BufferTest', function () {
    });
 
     /**
-    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30030
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28400
     * @tc.name: testIncludes30030
     * @tc.desc: Returns true if value was found in buf, false otherwise.
     * @tc.size: MediumTest
@@ -4857,7 +4858,7 @@ describe('BufferTest', function () {
    });
 
     /**
-    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30040
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28500
     * @tc.name: testAlloc30040
     * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
     * @tc.size: MediumTest
@@ -4870,7 +4871,7 @@ describe('BufferTest', function () {
    });
 
     /**
-    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30050
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28600
     * @tc.name: testAlloc30050
     * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
     * @tc.size: MediumTest
@@ -4883,7 +4884,7 @@ describe('BufferTest', function () {
    });
 
   /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30060
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28700
    * @tc.name: testIndexOf30060
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
@@ -4897,7 +4898,7 @@ describe('BufferTest', function () {
   });
 
   /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30070
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28800
    * @tc.name: testIndexOf30070
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
@@ -4911,7 +4912,7 @@ describe('BufferTest', function () {
   });
 
   /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30080
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28900
    * @tc.name: testIndexOf30080
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
@@ -4925,7 +4926,7 @@ describe('BufferTest', function () {
   });
 
   /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30090
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29000
    * @tc.name: testIndexOf30090
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
@@ -4939,7 +4940,7 @@ describe('BufferTest', function () {
   });
 
   /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29100
    * @tc.name: testIndexOf30100
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
@@ -4950,5 +4951,97 @@ describe('BufferTest', function () {
     let buf1 = buffer.from("This is a buffer");
     let index = buf1.indexOf("f", -20);
     expect(index).assertEqual(12);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29200
+   * @tc.name: testFrom30110
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testFrom30110", 0, function () {
+    try {
+      let buf1 = buffer.from(null);
+    } catch(err) {
+      let errStr = 'Parameter error. The type of "value" must be Buffer or ArrayBuffer, Array, Array-like, string, object. Received value is: null';
+      expect(err.code).assertEqual(401);
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual(errStr);
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29300
+   * @tc.name: testFrom30120
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testFrom30120", 0, function () {
+    try {
+      let buf1 = buffer.from(undefined);
+    } catch(err) {
+      let errStr = 'Parameter error. The type of "value" must be Buffer or ArrayBuffer, Array, Array-like, string, object. Received value is: undefined';
+      expect(err.code).assertEqual(401);
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual(errStr);
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29400
+   * @tc.name: testFrom30130
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testFrom30130", 0, function () {
+    let dateObj = new Date();
+    let buf1 = buffer.from(dateObj, 0, 5);
+    expect(buf1.length > 0).assertTrue();
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29500
+   * @tc.name: testFrom30140
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testFrom30140", 0, function () {
+    try {
+      let obj = new Map()
+      let buf1 = buffer.from(obj, 0, 5);
+    } catch(err) {
+      let errStr = 'Parameter error. The type of "value" must be Buffer or ArrayBuffer, Array, Array-like. Received value is: Map';
+      expect(err.code).assertEqual(401);
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual(errStr);
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29600
+   * @tc.name: testFrom30150
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testFrom30150", 0, function () {
+    try {
+      let arrBuf = new ArrayBuffer(10);
+      let buf1 = buffer.from(arrBuf, -1);
+    } catch(err) {
+      let errStr = 'The value of "byteOffset" is out of range. It must be >= 0 and <= 10. Received value is: -1';
+      expect(err.code).assertEqual(10200001);
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual(errStr);
+    }
   });
 })}
