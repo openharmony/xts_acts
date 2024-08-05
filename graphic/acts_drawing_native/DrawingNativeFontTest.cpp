@@ -365,6 +365,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetTypefaceNormal, TestSize.Level0) {
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateDefault();
     // 3. Call OH_Drawing_FontSetTypeface, and call OH_Drawing_FontGetTypeface to get the glyph object
     OH_Drawing_FontSetTypeface(font, typeface);
+    OH_Drawing_Typeface *typeface = OH_Drawing_FontGetTypeface(font);
     // 4. Release memory
     OH_Drawing_FontDestroy(font);
     OH_Drawing_TypefaceDestroy(typeface);
@@ -579,8 +580,21 @@ HWTEST_F(DrawingNativeFontTest, testFontCountTextNormal, TestSize.Level0) {
     };
     for (OH_Drawing_TextEncoding encode : encodes) {
         int count = OH_Drawing_FontCountText(font, str, strlen(str), encode);
-        if (encode == TEXT_ENCODING_UTF8) {
-            EXPECT_EQ(count, 11);
+        switch (encode) {
+            case TEXT_ENCODING_UTF8:
+                EXPECT_EQ(count, 11);
+                break;
+            case TEXT_ENCODING_UTF16:
+                EXPECT_EQ(count, 11);
+                break;
+            case TEXT_ENCODING_UTF32:
+                EXPECT_EQ(count, 11);
+                break;
+            case TEXT_ENCODING_GLYPH_ID:
+                EXPECT_EQ(count, 11);
+                break;
+            default:
+                break;
         }
     }
     // 3. Release memory

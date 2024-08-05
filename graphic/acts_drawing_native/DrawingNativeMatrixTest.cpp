@@ -179,11 +179,16 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateRotationMaximum, TestSize.Leve
  */
 HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateRotationMultipleCalls, TestSize.Level3) {
     // 1. Call OH_Drawing_MatrixCreateRotation 10 times, each time with different rotation angles and coordinate points
-    float degs[] = {0, 180, 360, -90, -180, -360, 45.5};
-    float x[] = {0, 10, 10.0f, 20, 20.0f, 30, 30.0f};
-    float y[] = {0, 10, 10.0f, 20, 20.0f, 30, 30.0f};
-    for (int i = 0; i < 7; i++) {
-        OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateRotation(degs[i], x[i], y[i]);
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> deg_dist(-360, 360);
+    std::uniform_real_distribution<float> x_dist(0.0f, 100.0f);
+    std::uniform_real_distribution<float> y_dist(0.0f, 100.0f);
+    for (int i = 0; i < 10; i++) {
+        float deg = deg_dist(gen);
+        float x = x_dist(gen);
+        float y = y_dist(gen);
+        OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateRotation(deg, x, y);
         EXPECT_NE(matrix, nullptr);
         OH_Drawing_MatrixDestroy(matrix);
     }
@@ -301,11 +306,15 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixNormal, TestSize.L
     float value[9];
     OH_Drawing_ErrorCode code = OH_Drawing_MatrixGetAll(matrix, value);
     EXPECT_EQ(code, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    OH_Drawing_ErrorCode code1 = OH_Drawing_MatrixGetValue(matrix, 0);
+    EXPECT_EQ(code1, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_MatrixSetMatrix with floating-point parameters, calling OH_Drawing_MatrixGetAll and
     // OH_Drawing_MatrixGetValue interfaces
     OH_Drawing_MatrixSetMatrix(matrix, 1.1, 0, 0, 0, -1.1, 0, 0, 0, 1.1);
     OH_Drawing_ErrorCode code2 = OH_Drawing_MatrixGetAll(matrix, value);
     EXPECT_EQ(code2, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    OH_Drawing_ErrorCode code3 = OH_Drawing_MatrixGetValue(matrix, 0);
+    EXPECT_EQ(code3, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
