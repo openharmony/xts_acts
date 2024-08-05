@@ -16,7 +16,6 @@
 import cameras from 'libentry.so'
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import MediaUtils from './MediaUtils';
 import { BusinessError } from '@ohos.base';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -50,7 +49,6 @@ let videoConfig: media.AVRecorderConfig = {
 }
 
 async function getVideoSurfaceID() {
-  let mContext = AppStorage.get('context') as Context;
   console.info(TAG + 'start getVideoSurfaceID ');
   try {
     videoRecorder = await media.createAVRecorder();
@@ -62,7 +60,7 @@ async function getVideoSurfaceID() {
     console.error(`createAVRecorder call failed`);
   }
   console.info(TAG + 'createAVRecorder videoRecorder : ' + JSON.stringify(videoRecorder));
-  videoConfig.url = `fd://${await mediaUtil.createAndGetUriVideo(mediaLibrary.MediaType.VIDEO, mContext)}`;
+  videoConfig.url = `fd://${await mediaUtil.createAndGetUriVideo()}`;
   console.info(TAG + 'getVideoSurfaceID videoConfig.url : ' + JSON.stringify(videoConfig.url));
   videoConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES;
   console.info(TAG + 'getVideoSurfaceID videoConfig.videoSourceType : ' + videoConfig.videoSourceType);
