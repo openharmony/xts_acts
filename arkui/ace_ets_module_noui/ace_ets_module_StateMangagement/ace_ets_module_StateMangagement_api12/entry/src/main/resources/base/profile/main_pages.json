@@ -38,8 +38,6 @@
         "MainAbility/pages/ComponentV2/LocalTest",
         "MainAbility/pages/ComponentV2/ComponentV2Test",
         "MainAbility/pages/ComponentV2/ParamTest",
-        "MainAbility/pages/ComponentV2/ParamTest1",
-        "MainAbility/pages/Storage/appStorageV2",
-        "MainAbility/pages/Storage/persistenceV2"
+        "MainAbility/pages/ComponentV2/ParamTest1"
     ]
 }

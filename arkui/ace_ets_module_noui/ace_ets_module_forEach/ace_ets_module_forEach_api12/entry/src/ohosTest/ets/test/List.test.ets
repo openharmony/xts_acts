@@ -17,10 +17,14 @@ import lazyChangeJsunit from './lazyforeachTest/lazyChangeJsunit.test';
 import lazyReloadJsunit from './lazyforeachTest/lazyReloadJsunit.test';
 import Prefetcher1 from './lazyforeachTest/Prefetcher1.test';
 import Prefetcher2 from './lazyforeachTest/Prefetcher2.test';
+import appStorageV2 from './StorageTest/appStorageV2.test';
+import persistenceV2 from './StorageTest/persistenceV2.test';
 export default function testsuite() {
   DataOperationTypeTest()
   lazyChangeJsunit()
   lazyReloadJsunit()
   Prefetcher1()
   Prefetcher2()
+  appStorageV2()
+  persistenceV2()
 }
