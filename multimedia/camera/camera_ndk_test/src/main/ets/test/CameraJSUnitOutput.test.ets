@@ -51,7 +51,6 @@ let videoConfig: media.AVRecorderConfig = {
 let surfaceId1: string;
 let cameraManager: number;
 let videoSurfaceId: string;
-let fileAsset: mediaLibrary.FileAsset;
 let fdNumber: number;
 let receiver: image.ImageReceiver;
 
