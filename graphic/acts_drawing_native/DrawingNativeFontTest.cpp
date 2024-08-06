@@ -364,7 +364,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetTypefaceNormal, TestSize.Level0) {
     // 2. OH_Drawing_TypefaceCreateDefault
     OH_Drawing_Typeface *typeface1 = OH_Drawing_TypefaceCreateDefault();
     // 3. Call OH_Drawing_FontSetTypeface, and call OH_Drawing_FontGetTypeface to get the glyph object
-    OH_Drawing_FontSetTypeface(font, typeface);
+    OH_Drawing_FontSetTypeface(font, typeface1);
     OH_Drawing_Typeface *typeface2 = OH_Drawing_FontGetTypeface(font);
     // 4. Release memory
     OH_Drawing_FontDestroy(font);
