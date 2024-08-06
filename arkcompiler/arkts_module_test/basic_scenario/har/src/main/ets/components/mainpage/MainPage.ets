@@ -1,3 +1,4 @@
+
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,18 +14,19 @@
  * limitations under the License.
  */
  
-{
-  "module": {
-    "name": "library2",
-    "type": "shared",
-    "description": "$string:shared_desc",
-    "deviceTypes": [
-      "wearable",
-      "phone",
-      "tablet",
-      "2in1"
-    ],
-    "deliveryWithInstall": true,
-    "pages": "$profile:main_pages"
+@Component
+export struct MainPage {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
   }
 }

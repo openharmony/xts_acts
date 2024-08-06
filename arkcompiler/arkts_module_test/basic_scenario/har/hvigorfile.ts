@@ -12,8 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-export { add } from "./src/main/ets/utils/Calc"
-export { getModuleDescription } from "./src/main/ets/utils/BaseInfo"
-export { addtest } from "liblibrary.so"
-export { getDescFromLibrary2 } from "./src/main/ets/utils/MultiLevelDep" 
+
+import { harTasks } from '@ohos/hvigor-ohos-plugin';
+
+export default {
+    system: harTasks,  /* Built-in plugin of Hvigor. It cannot be modified. */
+    plugins:[]         /* Custom plugin to extend the functionality of Hvigor. */
+}

@@ -12,19 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-{
-  "module": {
-    "name": "library2",
-    "type": "shared",
-    "description": "$string:shared_desc",
-    "deviceTypes": [
-      "wearable",
-      "phone",
-      "tablet",
-      "2in1"
-    ],
-    "deliveryWithInstall": true,
-    "pages": "$profile:main_pages"
-  }
+
+import { add } from 'liblibrary2.so'
+
+export function nativeAdd(a: number, b: number) {
+  return add(a, b);
 }
