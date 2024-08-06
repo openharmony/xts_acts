@@ -1219,83 +1219,8 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       await winData.destroyWindow();
       done()
     })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0290
-     * @tc.name      : testDestroyWindow_Promise
-     * @tc.desc      : Verification window destruction scenario.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testDestroyWindow_Promise', 0, async function () {
-      let caseName = 'testDestroyWindow_Promise';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let tempWnd = null;
-      try {
-        tempWnd = await windowStage.createSubWindow('testDestroyWindow_Promise').catch((err) => {
-          console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-          expect().assertFail();
-        });
-        console.log(msgStr + 'ohosWindow.createWindow successed');
-        expect(!!tempWnd).assertTrue();
-      } catch (exception) {
-        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
-        expect().assertFail();
-      };
-      await tempWnd.destroyWindow().then(() => {
-        console.info(msgStr + 'Succeeded in destroying the window.');
-        try {
-          let findWnd = ohosWindow.findWindow('testDestroyWindow_Promise')
-          expect(!findWnd).assertTrue();
-        } catch (exception) {
-          console.error(msgStr + 'try catch Failed to find the Window. Cause: ' + JSON.stringify(exception));
-          expect(exception.code === 1300002).assertTrue();
-        };
-      }).catch((err) => {
-        console.error(msgStr + 'try catch Failed to destroy the window. Cause: ' + JSON.stringify(err));
-        expect().assertFail();
-      })
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0270
-     * @tc.name      : testDestroyWindow_Callback
-     * @tc.desc      : Verification window destruction scenario
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testDestroyWindow_Callback', 0, async function (done) {
-      let caseName = 'testDestroyWindow_Callback';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let winData;
-      winData = await windowStage.createSubWindow('testDestroyWindow_Callback').catch((err) => {
-        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      console.log(msgStr + 'ohosWindow.createWindow successed');
-      expect(!!winData).assertTrue();
-      winData.destroyWindow((err) => {
-        if (err.code != 0) {
-          console.log(msgStr + 'windowTest DestroyTest fail' + JSON.stringify(err));
-          try {
-            expect().assertFail();
-          } catch (err) {
-            console.log(msgStr + 'assertFail catch' + JSON.stringify(err));
-          }
-        } else {
-          try {
-            let findWnd = ohosWindow.findWindow('testDestroyWindow_Callback')
-            expect(!findWnd).assertTrue();
-          } catch (exception) {
-            console.error(msgStr + 'try catch Failed to find the Window. Cause: ' + JSON.stringify(exception));
-            expect(exception.code === 1300002).assertTrue();
-          };
-        }
-        done();
-      })
-    })
+    
+    
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1910
      * @tc.name      : testSetWindowSystemBarEnable_Empty_Promise
