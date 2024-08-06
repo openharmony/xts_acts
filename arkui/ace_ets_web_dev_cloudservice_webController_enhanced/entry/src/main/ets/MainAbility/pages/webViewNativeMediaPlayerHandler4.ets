@@ -356,7 +356,7 @@ class NativeMediaPlayerImpl implements webview.NativeMediaPlayerBridge{
         this.web.node_controller = new MyNodeController(
             this.web, this.surfaceId, this.mediaHandler, this, NodeRenderType.RENDER_TYPE_TEXTURE)
         this.web.node_controller.rebuild()
-        this.web.show_native_media_player = true;
+        this.web.showNativeMediaPlayer = true;
 
         console.log('NativeMediaPlayerImpl.mediaSource : ' + this.mediaSource);
     }
@@ -409,7 +409,7 @@ class NativeMediaPlayerImpl implements webview.NativeMediaPlayerBridge{
         console.log('[BrowserShell] ===gpz=== MediaPlayer.release');
         isRelease = true
         this.nativePlayer?.release();
-        this.web.show_native_media_player = false;
+        this.web.showNativeMediaPlayer = false;
     }
     enterFullscreen() {
         console.log('[BrowserShell] ===gpz=== MediaPlayer.enterFullscreen');
@@ -430,8 +430,8 @@ enum SuspendType {
 }
 
 class AVPlayerListenerImpl implements AVPlayerListener {
-    handler: webview.NativeMediaPlayerHandler;
-    component: MyComponent;
+    public handler: webview.NativeMediaPlayerHandler;
+    public component: MyComponent;
 
     constructor(handler: webview.NativeMediaPlayerHandler, component: MyComponent) {
         this.handler = handler;
@@ -546,7 +546,7 @@ struct MyComponent {
     view_height: number = 0;
     video_width: number = 0;
     video_height: number = 0;
-
+    componentType:XComponentType = XComponentType.SURFACE;
     fullscreen: boolean = false;
 
     onSizeChanged(width: number, height: number) {
@@ -560,7 +560,8 @@ struct MyComponent {
     build() {
         Column() {
             Stack() {
-                XComponent({ id: 'video_player_id', type: XComponentType.SURFACE, controller: this.mXComponentController })
+                XComponent({ id: 'video_player_id', type: this.componentType,
+                    controller: this.mXComponentController })
                     .width(this.video_width_percent + '%')
                     .height(this.video_height_percent + '%')
                     .border({ width: 1, color: Color.Red })
@@ -716,7 +717,7 @@ struct WebComponent {
     node_controller?: MyNodeController
     nativeMediaPlayerHandlerImpl?: NativeMediaPlayerHandlerImpl
     mediaInfo?: webview.MediaInfo
-    @State show_native_media_player: boolean = false;
+    @State showNativeMediaPlayer: boolean = false;
     @State nodeWidth : number = 300;
     @State nodeHeight : number = 150;
     @State isShouldOverlay : boolean = true;
@@ -966,7 +967,7 @@ struct WebComponent {
                         this.area = newValue;
                     })
 
-                if (this.show_native_media_player) {
+                if (this.showNativeMediaPlayer) {
                     NodeContainer(this.node_controller)
                         .width(this.nodeWidth + 'px')
                         .height(this.nodeHeight + 'px')

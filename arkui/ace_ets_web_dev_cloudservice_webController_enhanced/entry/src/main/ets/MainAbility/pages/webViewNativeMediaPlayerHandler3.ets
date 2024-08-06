@@ -377,7 +377,7 @@ class NativeMediaPlayerImpl implements webview.NativeMediaPlayerBridge{
         this.web.node_controller = new MyNodeController(
             this.web, this.surfaceId, this.mediaHandler, this, NodeRenderType.RENDER_TYPE_TEXTURE)
         this.web.node_controller.rebuild()
-        this.web.show_native_media_player = true;
+        this.web.showNativeMediaPlayer = true;
 
         console.log('NativeMediaPlayerImpl.mediaSource : ' + this.mediaSource);
     }
@@ -449,7 +449,7 @@ class NativeMediaPlayerImpl implements webview.NativeMediaPlayerBridge{
         console.log('[BrowserShell] ===gpz=== MediaPlayer.release');
         isRelease = true
         this.nativePlayer?.release();
-        this.web.show_native_media_player = false;
+        this.web.showNativeMediaPlayer = false;
     }
     enterFullscreen() {
         console.log('[BrowserShell] ===gpz=== MediaPlayer.enterFullscreen');
@@ -470,8 +470,8 @@ enum SuspendType {
 }
 
 class AVPlayerListenerImpl implements AVPlayerListener {
-    handler: webview.NativeMediaPlayerHandler;
-    component: MyComponent;
+    public handler: webview.NativeMediaPlayerHandler;
+    public component: MyComponent;
 
     constructor(handler: webview.NativeMediaPlayerHandler, component: MyComponent) {
         this.handler = handler;
@@ -594,7 +594,7 @@ struct MyComponent {
     view_height: number = 0;
     video_width: number = 0;
     video_height: number = 0;
-
+    componentType:XComponentType = XComponentType.SURFACE;
     fullscreen: boolean = false;
 
     onSizeChanged(width: number, height: number) {
@@ -608,7 +608,7 @@ struct MyComponent {
     build() {
         Column() {
             Stack() {
-                XComponent({ id: 'video_player_id', type: XComponentType.SURFACE,
+                XComponent({ id: 'video_player_id', type: this.componentType,
                     controller: this.mXComponentController })
                     .width(this.video_width_percent + '%')
                     .height(this.video_height_percent + '%')
@@ -736,8 +736,8 @@ class MyNodeController extends NodeController {
         this.renderType_ = renderType
     }
 
-    makeNode(UIContext: UIContext): FrameNode | null {
-        this.rootNode = new BuilderNode(UIContext as UIContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
+    makeNode(uIContext: UIContext): FrameNode | null {
+        this.rootNode = new BuilderNode(uIContext as UIContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
         this.build()
         if (this.rootNode) {
             return this.rootNode.getFrameNode() as FrameNode;
@@ -764,7 +764,7 @@ struct WebComponent {
     node_controller?: MyNodeController
     nativeMediaPlayerHandlerImpl?: NativeMediaPlayerHandlerImpl
     mediaInfo?: webview.MediaInfo
-    @State show_native_media_player: boolean = false;
+    @State showNativeMediaPlayer: boolean = false;
     @State nodeWidth : number = 300;
     @State nodeHeight : number = 150;
     @State isShouldOverlay : boolean = true;
@@ -877,448 +877,448 @@ struct WebComponent {
                         return
                     }
                     switch (this.emitKey) {
-                        case 'emitWebViewNativeMediaPlayerSetPlayRateNegative1': {
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-                            await Utils.sleep(3000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(500)
-                            this.controller.runJavaScript('setPlaybackRate(3)', (error, result) => {
-                                console.log(`The setPlaybackRate(3) return value is: ${error}`);
-                                console.log(`The setPlaybackRate(3) return value is: ${result}`);
-                            })
-                            await Utils.sleep(500)
-                            this.controller.runJavaScript('setPlaybackRate(1.2)', (error, result) => {
-                                console.log(`The setPlaybackRate() return value is: ${result}`);
-                                console.log(`The setPlaybackRate() return value is: ${error}`);
-                            })
-                            await Utils.sleep(1000)
-                            await this.retryPlayingGen(this.emitKey)()
-                            this.controller.runJavaScript('setPlaybackRate(-1)', (error, result) => {
-                                console.log(`The setPlaybackRate() return value is: ${result}`);
-                                console.log(`The setPlaybackRate() return value is: ${error}`);
-                            })
-                            await Utils.sleep(1000)
-                            console.log('video is playing:' + isPlaying)
-                            if(rateList.indexOf(-1)>-1){
-                                Utils.emitEvent(false, 1805)
-                            }else{
-                                Utils.emitEvent(true, 1805)
-                            }
-                            break;
+                      case 'emitWebViewNativeMediaPlayerSetPlayRateNegative1': {
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
+                        await Utils.sleep(3000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(500)
+                        this.controller.runJavaScript('setPlaybackRate(3)', (error, result) => {
+                            console.log(`The setPlaybackRate(3) return value is: ${error}`);
+                            console.log(`The setPlaybackRate(3) return value is: ${result}`);
+                        })
+                        await Utils.sleep(500)
+                        this.controller.runJavaScript('setPlaybackRate(1.2)', (error, result) => {
+                            console.log(`The setPlaybackRate() return value is: ${result}`);
+                            console.log(`The setPlaybackRate() return value is: ${error}`);
+                        })
+                        await Utils.sleep(1000)
+                        await this.retryPlayingGen(this.emitKey)()
+                        this.controller.runJavaScript('setPlaybackRate(-1)', (error, result) => {
+                            console.log(`The setPlaybackRate() return value is: ${result}`);
+                            console.log(`The setPlaybackRate() return value is: ${error}`);
+                        })
+                        await Utils.sleep(1000)
+                        console.log('video is playing:' + isPlaying)
+                        if(rateList.indexOf(-1)>-1){
+                            Utils.emitEvent(false, 1805)
+                        }else{
+                            Utils.emitEvent(true, 1805)
                         }
-                        case 'emitWebViewNativeMediaPlayerSetPlayRate10': {
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-                            await Utils.sleep(3000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            this.controller.runJavaScript('setPlaybackRate(3)', (error, result) => {
-                                console.log(`The setPlaybackRate(3) return value is: ${error}`);
-                                console.log(`The setPlaybackRate(3) return value is: ${result}`);
-                            })
-                            await Utils.sleep(500)
-                            this.controller.runJavaScript('setPlaybackRate(2)', (error, result) => {
-                                console.log(`The setPlaybackRate(2) return value is: ${error}`);
-                                console.log(`The setPlaybackRate(2) return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            this.controller.runJavaScript('setPlaybackRate(10)', (error, result) => {
-                                console.log(`The setPlaybackRate(10) return value is: ${error}`);
-                                console.log(`The setPlaybackRate(10) return value is: ${result}`);
-                            })
-                            await Utils.sleep(2000)
-                            console.log('video is playing:' + isPlaying);
-                            if(handleRateList.indexOf(10)>-1){
-                                Utils.emitEvent(true, 1800)
-                            }else{
-                                Utils.emitEvent(false, 1800)
-                            }
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerSetPlayRate10': {
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
+                        await Utils.sleep(3000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(1000)
+                        this.controller.runJavaScript('setPlaybackRate(3)', (error, result) => {
+                            console.log(`The setPlaybackRate(3) return value is: ${error}`);
+                            console.log(`The setPlaybackRate(3) return value is: ${result}`);
+                        })
+                        await Utils.sleep(500)
+                        this.controller.runJavaScript('setPlaybackRate(2)', (error, result) => {
+                            console.log(`The setPlaybackRate(2) return value is: ${error}`);
+                            console.log(`The setPlaybackRate(2) return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        this.controller.runJavaScript('setPlaybackRate(10)', (error, result) => {
+                            console.log(`The setPlaybackRate(10) return value is: ${error}`);
+                            console.log(`The setPlaybackRate(10) return value is: ${result}`);
+                        })
+                        await Utils.sleep(2000)
+                        console.log('video is playing:' + isPlaying);
+                        if(handleRateList.indexOf(10)>-1){
+                            Utils.emitEvent(true, 1800)
+                        }else{
+                            Utils.emitEvent(false, 1800)
                         }
-                        case 'emitWebViewNativeMediaPlayerSetPlayRate2':
-                        case 'emitWebViewNativeMediaPlayerSetPlayRate2_handleRateChange': {
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-                            await Utils.sleep(2000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            this.controller.runJavaScript('setPlaybackRate(3)', (error, result) => {
-                                console.log(`The setPlaybackRate(3) return value is: ${error}`);
-                                console.log(`The setPlaybackRate(3) return value is: ${result}`);
-                            })
-                            await Utils.sleep(500)
-                            this.controller.runJavaScript('setPlaybackRate(2)', (error, result) => {
-                                console.log(`The setPlaybackRate(2) return value is: ${error}`);
-                                console.log(`The setPlaybackRate(2) return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            console.log('video is playing:' + isPlaying)
-                            if(rateList.indexOf(2)>-1){
-                                Utils.emitEvent(true, 1801)
-                            }
-                            if(handleRateList.indexOf(2)>-1){
-                                Utils.emitEvent(true, 1802)
-                            }
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerSetPlayRate2':
+                      case 'emitWebViewNativeMediaPlayerSetPlayRate2_handleRateChange': {
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
+                        await Utils.sleep(2000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(1000)
+                        this.controller.runJavaScript('setPlaybackRate(3)', (error, result) => {
+                            console.log(`The setPlaybackRate(3) return value is: ${error}`);
+                            console.log(`The setPlaybackRate(3) return value is: ${result}`);
+                        })
+                        await Utils.sleep(500)
+                        this.controller.runJavaScript('setPlaybackRate(2)', (error, result) => {
+                            console.log(`The setPlaybackRate(2) return value is: ${error}`);
+                            console.log(`The setPlaybackRate(2) return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        console.log('video is playing:' + isPlaying)
+                        if(rateList.indexOf(2)>-1){
+                            Utils.emitEvent(true, 1801)
                         }
-                        case 'emitWebViewNativeMediaPlayerSetPlayRate3':
-                        case 'emitWebViewNativeMediaPlayerSetPlayRate3_handleRateChange': {
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-                            await Utils.sleep(3000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            this.controller.runJavaScript('setPlaybackRate(1.2)', (error, result) => {
-                                console.log(`The setPlaybackRate(1.2) return value is: ${result}`);
-                                console.log(`The setPlaybackRate() return value is: ${error}`);
-                            })
-                            await Utils.sleep(500)
-                            this.controller.runJavaScript('setPlaybackRate(3)', (error, result) => {
-                                console.log(`The setPlaybackRate(3) return value is: ${result}`);
-                                console.log(`The setPlaybackRate() return value is: ${error}`);
-                            })
-                            await Utils.sleep(1000)
-                            console.log('video is playing:' + isPlaying)
-                            if(rateList.indexOf(3)>-1){
-                                Utils.emitEvent(true, 1803)
-                            }
-                            if(handleRateList.indexOf(3)>-1){
-                                Utils.emitEvent(true, 1804)
-                            }
-                            break;
+                        if(handleRateList.indexOf(2)>-1){
+                            Utils.emitEvent(true, 1802)
                         }
-                        case 'emitWebViewNativeMediaPlayerSetPlayRate1_point_2':
-                        case 'emitWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange': {
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-                            await Utils.sleep(3000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            this.controller.runJavaScript('setPlaybackRate(1.2)', (error, result) => {
-                                console.log(`The setPlaybackRate() return value is: ${error}`);
-                                console.log(`The setPlaybackRate() return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            console.log('video is playing:' + isPlaying)
-                            if(rateList.indexOf(1.2)>-1){
-                                Utils.emitEvent(true, 1806)
-                            }
-                            if(handleRateList.indexOf(1.2)>-1){
-                                Utils.emitEvent(true, 1807)
-                            }
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerSetPlayRate3':
+                      case 'emitWebViewNativeMediaPlayerSetPlayRate3_handleRateChange': {
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
+                        await Utils.sleep(3000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(1000)
+                        this.controller.runJavaScript('setPlaybackRate(1.2)', (error, result) => {
+                            console.log(`The setPlaybackRate(1.2) return value is: ${result}`);
+                            console.log(`The setPlaybackRate() return value is: ${error}`);
+                        })
+                        await Utils.sleep(500)
+                        this.controller.runJavaScript('setPlaybackRate(3)', (error, result) => {
+                            console.log(`The setPlaybackRate(3) return value is: ${result}`);
+                            console.log(`The setPlaybackRate() return value is: ${error}`);
+                        })
+                        await Utils.sleep(1000)
+                        console.log('video is playing:' + isPlaying)
+                        if(rateList.indexOf(3)>-1){
+                            Utils.emitEvent(true, 1803)
                         }
-                        case 'emitWebViewNativeMediaPlayerHandleVideoSizeChange': {
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-                            await Utils.sleep(5000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            this.controller.runJavaScript('resize()', (error, result) => {
-                                console.error(`The resize() return error is: ${error}`);
-                                console.log(`The resize() return value is: ${result}`);
-                            })
-                            console.log('video is playing:' + isPlaying)
-                            break;
+                        if(handleRateList.indexOf(3)>-1){
+                            Utils.emitEvent(true, 1804)
                         }
-                        case 'emitWebViewNativeMediaPlayerSeekNegative1': {
-                            this.controller.loadUrl($rawfile('multi_source_video_seek.html'))
-                            await Utils.sleep(5000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            this.controller.runJavaScript('setSeek(20)', (error, result) => {
-                                console.error(`The setSeek(20) return error is: ${error}`);
-                                console.log(`The setSeek(20) return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            this.controller.runJavaScript('setSeek(-1)', (error, result) => {
-                                console.error(`The setSeek(-1) return error is: ${error}`);
-                                console.log(`The setSeek(-1) return value is: ${result}`);
-                            })
-                            await Utils.sleep(2000)
-                            console.log('video is playing:' + isPlaying)
-                            if (seekList.indexOf(-1) > -1){
-                                Utils.emitEvent(false, 1810)
-                            }else {
-                                Utils.emitEvent(true, 1810)
-                            }
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerSetPlayRate1_point_2':
+                      case 'emitWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange': {
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
+                        await Utils.sleep(3000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(1000)
+                        this.controller.runJavaScript('setPlaybackRate(1.2)', (error, result) => {
+                            console.log(`The setPlaybackRate() return value is: ${error}`);
+                            console.log(`The setPlaybackRate() return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        console.log('video is playing:' + isPlaying)
+                        if(rateList.indexOf(1.2)>-1){
+                            Utils.emitEvent(true, 1806)
                         }
-                        case 'emitWebViewNativeMediaPlayerPreloadAuto': {
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
-                            await Utils.sleep(5000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(2000)
-                            console.log('video is playing:' + isPlaying)
-                            if (durationList.length > 0) {
-                                Utils.emitEvent(true, 1812)
-                            }
-                            break;
+                        if(handleRateList.indexOf(1.2)>-1){
+                            Utils.emitEvent(true, 1807)
                         }
-                        case 'emitWebViewNativeMediaPlayerTimeUpdate': {
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-                            await Utils.sleep(8000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(2000)
-                            if (timeUpdateList.length > 0) {
-                                Utils.emitEvent(true, 1813)
-                            }
-                            console.log('video is playing:' + isPlaying)
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerHandleVideoSizeChange': {
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
+                        await Utils.sleep(5000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(1000)
+                        this.controller.runJavaScript('resize()', (error, result) => {
+                            console.error(`The resize() return error is: ${error}`);
+                            console.log(`The resize() return value is: ${result}`);
+                        })
+                        console.log('video is playing:' + isPlaying)
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerSeekNegative1': {
+                        this.controller.loadUrl($rawfile('multi_source_video_seek.html'))
+                        await Utils.sleep(5000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(1000)
+                        this.controller.runJavaScript('setSeek(20)', (error, result) => {
+                            console.error(`The setSeek(20) return error is: ${error}`);
+                            console.log(`The setSeek(20) return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        this.controller.runJavaScript('setSeek(-1)', (error, result) => {
+                            console.error(`The setSeek(-1) return error is: ${error}`);
+                            console.log(`The setSeek(-1) return value is: ${result}`);
+                        })
+                        await Utils.sleep(2000)
+                        console.log('video is playing:' + isPlaying)
+                        if (seekList.indexOf(-1) > -1){
+                            Utils.emitEvent(false, 1810)
+                        }else {
+                            Utils.emitEvent(true, 1810)
                         }
-                        case 'emitWebViewNativeMediaPlayerBufferedEndTime': {
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-                            await Utils.sleep(8000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            console.log('video is playing:' + isPlaying)
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerPreloadAuto': {
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
+                        await Utils.sleep(5000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(2000)
+                        console.log('video is playing:' + isPlaying)
+                        if (durationList.length > 0) {
+                            Utils.emitEvent(true, 1812)
                         }
-                        case 'emitWebViewNativeMediaPlayerFormatError': {
-                            mediaErrorState = 2
-                            this.controller.loadUrl($rawfile('nativeMediaError.html'))
-                            await Utils.sleep(2000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            console.log(`The isRelease: ${isRelease}`);
-                            console.log(`The mediaErrorTypeList: ${mediaErrorTypeList}`);
-                            console.log(`The isError: ${isError}`);
-                            if (isError && isRelease && mediaErrorTypeList.indexOf(2) > -1) {
-                                Utils.emitEvent(true, 1815)
-                            }
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerTimeUpdate': {
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
+                        await Utils.sleep(8000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(2000)
+                        if (timeUpdateList.length > 0) {
+                            Utils.emitEvent(true, 1813)
                         }
-                        case 'emitWebViewNativeMediaPlayerNetError': {
-                            mediaErrorState = 1
-                            this.controller.loadUrl($rawfile('nativeMediaError.html'))
-                            await Utils.sleep(2000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            console.log(`The isRelease: ${isRelease}`);
-                            console.log(`The mediaErrorTypeList: ${mediaErrorTypeList}`);
-                            console.log(`The isError: ${isError}`);
-                            if (isError && isRelease && mediaErrorTypeList.indexOf(1) > -1) {
-                                Utils.emitEvent(true, 1816)
-                            }
-                            break;
+                        console.log('video is playing:' + isPlaying)
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerBufferedEndTime': {
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
+                        await Utils.sleep(8000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(1000)
+                        console.log('video is playing:' + isPlaying)
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerFormatError': {
+                        mediaErrorState = 2
+                        this.controller.loadUrl($rawfile('nativeMediaError.html'))
+                        await Utils.sleep(2000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        console.log(`The isRelease: ${isRelease}`);
+                        console.log(`The mediaErrorTypeList: ${mediaErrorTypeList}`);
+                        console.log(`The isError: ${isError}`);
+                        if (isError && isRelease && mediaErrorTypeList.indexOf(2) > -1) {
+                            Utils.emitEvent(true, 1815)
                         }
-                        case 'emitWebViewNativeMediaPlayerDecodeError': {
-                            mediaErrorState = 3
-                            this.controller.loadUrl($rawfile('nativeMediaError.html'))
-                            await Utils.sleep(2000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            console.log(`The isRelease: ${isRelease}`);
-                            console.log(`The mediaErrorTypeList: ${mediaErrorTypeList}`);
-                            console.log(`The isError: ${isError}`);
-                            if (isError && isRelease && mediaErrorTypeList.indexOf(3) > -1) {
-                                Utils.emitEvent(true, 1817)
-                            }
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerNetError': {
+                        mediaErrorState = 1
+                        this.controller.loadUrl($rawfile('nativeMediaError.html'))
+                        await Utils.sleep(2000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        console.log(`The isRelease: ${isRelease}`);
+                        console.log(`The mediaErrorTypeList: ${mediaErrorTypeList}`);
+                        console.log(`The isError: ${isError}`);
+                        if (isError && isRelease && mediaErrorTypeList.indexOf(1) > -1) {
+                            Utils.emitEvent(true, 1816)
                         }
-                        case 'emitWebViewNativeMediaPlayerNetworkStateLoading': {
-                            networkState = 2
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-                            await Utils.sleep(10000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            console.info('Loading networkStateList.indexOf(2) is: ' + networkStateList.indexOf(2))
-                            console.log('video is playing:' + isPlaying)
-                            if (networkStateList.indexOf(2) > -1){
-                                Utils.emitEvent(true, 1818)
-                            }else {
-                                Utils.emitEvent(false, 1818)
-                            }
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerDecodeError': {
+                        mediaErrorState = 3
+                        this.controller.loadUrl($rawfile('nativeMediaError.html'))
+                        await Utils.sleep(2000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        console.log(`The isRelease: ${isRelease}`);
+                        console.log(`The mediaErrorTypeList: ${mediaErrorTypeList}`);
+                        console.log(`The isError: ${isError}`);
+                        if (isError && isRelease && mediaErrorTypeList.indexOf(3) > -1) {
+                            Utils.emitEvent(true, 1817)
                         }
-                        case 'emitWebViewNativeMediaPlayerNetworkStateIdle': {
-                            networkState = 1
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-                            await Utils.sleep(8000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            console.log('video is playing:' + isPlaying)
-                            console.info('Idle networkStateList.indexOf(1) is: ' + networkStateList.indexOf(1))
-                            if (networkStateList.indexOf(1) > -1){
-                                Utils.emitEvent(true, 1819)
-                            }else {
-                                Utils.emitEvent(false, 1819)
-                            }
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerNetworkStateLoading': {
+                        networkState = 2
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
+                        await Utils.sleep(10000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(1000)
+                        console.info('Loading networkStateList.indexOf(2) is: ' + networkStateList.indexOf(2))
+                        console.log('video is playing:' + isPlaying)
+                        if (networkStateList.indexOf(2) > -1){
+                            Utils.emitEvent(true, 1818)
+                        }else {
+                            Utils.emitEvent(false, 1818)
                         }
-                        case 'emitWebViewNativeMediaPlayerNetworkStateError': {
-                            networkState = 3
-                            this.controller.loadUrl($rawfile('nativeMediaError.html'))
-                            await Utils.sleep(1000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            console.info('Error networkStateList.indexOf(3) is: ' + networkStateList.indexOf(3))
-                            if (networkStateList.indexOf(3) > -1){
-                                Utils.emitEvent(true, 1820)
-                            }else {
-                                Utils.emitEvent(false, 1820)
-                            }
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerNetworkStateIdle': {
+                        networkState = 1
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
+                        await Utils.sleep(8000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(1000)
+                        console.log('video is playing:' + isPlaying)
+                        console.info('Idle networkStateList.indexOf(1) is: ' + networkStateList.indexOf(1))
+                        if (networkStateList.indexOf(1) > -1){
+                            Utils.emitEvent(true, 1819)
+                        }else {
+                            Utils.emitEvent(false, 1819)
                         }
-                        case 'emitWebViewNativeMediaPlayerUpdateRect_1':
-                        case 'emitWebViewNativeMediaPlayerUpdateRect_2':
-                        case 'emitWebViewNativeMediaPlayerUpdateRect_3':
-                        case 'emitWebViewNativeMediaPlayerUpdateRect_4': {
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerUpdateRect.html'))
-                            await Utils.sleep(3000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(2000)
-                            await this.retryPlayingGen(this.emitKey)()
-                            this.controller.runJavaScript('setPlaybackRate(10)', (error, result) => {
-                                console.log(`The setPlaybackRate() return value is: ${error}`);
-                                console.log(`The setPlaybackRate() return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            this.controller.runJavaScript('setPlaybackRate(2)', (error, result) => {
-                                console.log(`The setPlaybackRate() return value is: ${error}`);
-                                console.log(`The setPlaybackRate() return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            console.log('video is playing:' + isPlaying)
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerNetworkStateError': {
+                        networkState = 3
+                        this.controller.loadUrl($rawfile('nativeMediaError.html'))
+                        await Utils.sleep(1000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        console.info('Error networkStateList.indexOf(3) is: ' + networkStateList.indexOf(3))
+                        if (networkStateList.indexOf(3) > -1){
+                            Utils.emitEvent(true, 1820)
+                        }else {
+                            Utils.emitEvent(false, 1820)
                         }
-                        case 'emitWebViewNativeMediaPlayerReadyState_1': {
-                            readyState = 1
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
-                            await Utils.sleep(8000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(2000)
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            console.log('emitWebViewNativeMediaPlayerReadyState_1 video is playing:' + isPlaying)
-                            if (readyStateList.indexOf(1) > -1){
-                                Utils.emitEvent(true, 1825)
-                            }else {
-                                Utils.emitEvent(false, 1825)
-                            }
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerUpdateRect_1':
+                      case 'emitWebViewNativeMediaPlayerUpdateRect_2':
+                      case 'emitWebViewNativeMediaPlayerUpdateRect_3':
+                      case 'emitWebViewNativeMediaPlayerUpdateRect_4': {
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerUpdateRect.html'))
+                        await Utils.sleep(3000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(2000)
+                        await this.retryPlayingGen(this.emitKey)()
+                        this.controller.runJavaScript('setPlaybackRate(10)', (error, result) => {
+                            console.log(`The setPlaybackRate() return value is: ${error}`);
+                            console.log(`The setPlaybackRate() return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        this.controller.runJavaScript('setPlaybackRate(2)', (error, result) => {
+                            console.log(`The setPlaybackRate() return value is: ${error}`);
+                            console.log(`The setPlaybackRate() return value is: ${result}`);
+                        })
+                        await Utils.sleep(1000)
+                        console.log('video is playing:' + isPlaying)
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerReadyState_1': {
+                        readyState = 1
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
+                        await Utils.sleep(8000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(2000)
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(1000)
+                        console.log('emitWebViewNativeMediaPlayerReadyState_1 video is playing:' + isPlaying)
+                        if (readyStateList.indexOf(1) > -1){
+                            Utils.emitEvent(true, 1825)
+                        }else {
+                            Utils.emitEvent(false, 1825)
                         }
-                        case 'emitWebViewNativeMediaPlayerReadyState_2': {
-                            readyState = 2
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
-                            await Utils.sleep(8000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(2000)
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            if (readyStateList.indexOf(2) > -1){
-                                Utils.emitEvent(true, 1826)
-                            }else {
-                                Utils.emitEvent(false, 1826)
-                            }
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerReadyState_2': {
+                        readyState = 2
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
+                        await Utils.sleep(8000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(2000)
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(1000)
+                        if (readyStateList.indexOf(2) > -1){
+                            Utils.emitEvent(true, 1826)
+                        }else {
+                            Utils.emitEvent(false, 1826)
                         }
-                        case 'emitWebViewNativeMediaPlayerReadyState_3': {
-                            readyState = 3
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
-                            await Utils.sleep(8000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(2000)
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            if (readyStateList.indexOf(3) > -1){
-                                Utils.emitEvent(true, 1827)
-                            }else {
-                                Utils.emitEvent(false, 1827)
-                            }
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerReadyState_3': {
+                        readyState = 3
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
+                        await Utils.sleep(8000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(2000)
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(1000)
+                        if (readyStateList.indexOf(3) > -1){
+                            Utils.emitEvent(true, 1827)
+                        }else {
+                            Utils.emitEvent(false, 1827)
                         }
-                        case 'emitWebViewNativeMediaPlayerReadyState_4': {
-                            readyState = 4
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
-                            await Utils.sleep(8000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await Utils.sleep(2000)
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            console.log(`The readyStateList.indexOf(4) is: ${readyStateList.indexOf(4)}`);
-                            if (readyStateList.indexOf(4) > -1){
-                                Utils.emitEvent(true, 1828)
-                            }else {
-                                Utils.emitEvent(false, 1828)
-                            }
-                            break;
+                        break;
+                      }
+                      case 'emitWebViewNativeMediaPlayerReadyState_4': {
+                        readyState = 4
+                        this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
+                        await Utils.sleep(8000)
+                        this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                            console.error(`The buttonPlay() return error is: ${error}`);
+                            console.log(`The buttonPlay() return value is: ${result}`);
+                        })
+                        await Utils.sleep(2000)
+                        await this.retryPlayingGen(this.emitKey)()
+                        await Utils.sleep(1000)
+                        console.log(`The readyStateList.indexOf(4) is: ${readyStateList.indexOf(4)}`);
+                        if (readyStateList.indexOf(4) > -1){
+                            Utils.emitEvent(true, 1828)
+                        }else {
+                            Utils.emitEvent(false, 1828)
                         }
+                        break;
+                      }
                     }
                 })
             }
@@ -1406,7 +1406,7 @@ struct WebComponent {
                         this.area = newValue;
                     })
 
-                if (this.show_native_media_player) {
+                if (this.showNativeMediaPlayer) {
                     NodeContainer(this.node_controller)
                         .width(this.nodeWidth + 'px')
                         .height(this.nodeHeight + 'px')
