@@ -352,10 +352,36 @@ export default function common9Jsunit() {
     it('common_border', 0, async (done: Function) => {
       console.info('[common_border] START');
       let strJson = getInspectorByKey('textModifier3');
-
+      let obj = JSON.parse(strJson);
       console.info("[common_border] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson).$attrs));
-      expect(JSON.parse(strJson).$attrs.border)
-        .assertEqual("{\"style\":{\"left\":\"BorderStyle.Dashed\",\"top\":\"BorderStyle.Solid\",\"right\":\"BorderStyle.Dotted\",\"bottom\":\"BorderStyle.Dashed\"},\"color\":{\"left\":\"#FF000000\",\"right\":\"#FF000000\",\"top\":\"#FF0F0F0F\",\"bottom\":\"#FFF0F0F0\"},\"width\":{\"left\":\"3.00vp\",\"top\":\"10.00vp\",\"right\":\"6.00vp\",\"bottom\":\"15.00vp\"},\"radius\":{\"topLeft\":\"10.00vp\",\"topRight\":\"20.00vp\",\"bottomLeft\":\"40.00vp\",\"bottomRight\":\"80.00vp\"},\"dashGap\":\"-1.00px\",\"dashWidth\":\"-1.00px\"}");
+      let border_obj =  JSON.parse(obj.$attrs.border);
+      console.info("[common_border] border_obj is : " + JSON.stringify(obj.$attrs.border));
+      
+      expect(border_obj.style.left).assertEqual("BorderStyle.Dashed");
+      expect(border_obj.style.right).assertEqual("BorderStyle.Dotted");
+      expect(border_obj.style.top).assertEqual("BorderStyle.Solid");
+      expect(border_obj.style.bottom).assertEqual("BorderStyle.Dashed");
+      
+      expect(border_obj.width.left).assertEqual("3.00vp");
+      expect(border_obj.width.right).assertEqual("6.00vp");
+      expect(border_obj.width.top).assertEqual("10.00vp");
+      expect(border_obj.width.bottom).assertEqual("15.00vp");
+      expect(border_obj.width.start).assertEqual("0.00vp");
+      expect(border_obj.width.end).assertEqual("0.00vp");
+
+      expect(border_obj.color.left).assertEqual('#FF000000');
+      expect(border_obj.color.right).assertEqual('#FF000000');
+      expect(border_obj.color.top).assertEqual('#FF0F0F0F');
+      expect(border_obj.color.bottom).assertEqual('#FFF0F0F0');
+      
+      expect(border_obj.radius.topLeft).assertEqual("10.00vp");
+      expect(border_obj.radius.topRight).assertEqual("20.00vp");
+      expect(border_obj.radius.bottomLeft).assertEqual("40.00vp");
+      expect(border_obj.radius.bottomRight).assertEqual("80.00vp");
+
+      expect(border_obj.dashGap).assertEqual("-1.00px");
+      expect(border_obj.dashWidth).assertEqual("-1.00px");
+      
       console.info('[common_border] END');
       done();
     });
