@@ -80,7 +80,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerUpdateRect_1', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerUpdateRect_1"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerUpdateRect_1", true, 1821, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_1", true, 1821,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -95,7 +98,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerUpdateRect_2', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerUpdateRect_2"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerUpdateRect_2", true, 1822, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_2", true, 1822,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -110,7 +116,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerSetPlayRateNegative1', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRateNegative1"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerSetPlayRateNegative1", true, 1805, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRateNegative1", true, 1805,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+        expect(backData?.data?.ACTION).assertEqual(expected);
+      });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -126,7 +135,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerSetPlayRate2', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate2"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerSetPlayRate2", true, 1801, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate2", true, 1801,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -141,7 +153,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerSetPlayRate2_handleRateChange', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate2_handleRateChange"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerSetPlayRate2_handleRateChange", true, 1802, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate2_handleRateChange", true, 1802,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -156,7 +171,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerSetPlayRate3', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate3"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerSetPlayRate3", true, 1803, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate3", true, 1803,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -171,7 +189,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerSetPlayRate3_handleRateChange', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate3_handleRateChange"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerSetPlayRate3_handleRateChange", true, 1804, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate3_handleRateChange", true, 1804,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
     
@@ -186,7 +207,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerSetPlayRate10', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate10"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerSetPlayRate10", true, 1800, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate10", true, 1800,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
     /*
@@ -200,7 +224,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerSetPlayRate1_point_2', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate1_point_2"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerSetPlayRate1_point_2", true, 1806, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate1_point_2", true, 1806,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -215,7 +242,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange", true, 1807, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange", true, 1807,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -230,7 +260,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerPreloadAuto', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerPreloadAuto"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerPreloadAuto", true, 1812, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerPreloadAuto", true, 1812,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
     /*
@@ -244,7 +277,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerTimeUpdate', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerTimeUpdate"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerTimeUpdate", true, 1813, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerTimeUpdate", true, 1813,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -259,7 +295,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerFormatError', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerFormatError"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerFormatError", true, 1815, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerFormatError", true, 1815,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -274,7 +313,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerNetError', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNetError"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerNetError", true, 1816, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetError", true, 1816,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -289,7 +331,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerDecodeError', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerDecodeError"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerDecodeError", true, 1817, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerDecodeError", true, 1817,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -304,7 +349,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerNetworkStateIdle', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNetworkStateIdle"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerNetworkStateIdle", true, 1819, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetworkStateIdle", true, 1819,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -319,7 +367,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerNetworkStateLoading', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNetworkStateLoading"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerNetworkStateLoading", true, 1818, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetworkStateLoading", true, 1818,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
     /*
@@ -333,7 +384,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerNetworkStateError', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNetworkStateError"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerNetworkStateError", true, 1820, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetworkStateError", true, 1820,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -350,7 +404,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerReadyState_2', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerReadyState_2"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerReadyState_2", true, 1826, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_2", true, 1826,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -365,7 +422,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerReadyState_3', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerReadyState_3"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerReadyState_3", true, 1827, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_3", true, 1827,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 
@@ -380,7 +440,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerUpdateRect_3', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerUpdateRect_3"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerUpdateRect_3", true, 1823, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_3", true, 1823,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
     /*
@@ -394,7 +457,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerReadyState_4', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerReadyState_4"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerReadyState_4", true, 1828, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_4", true, 1828,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
     /*
@@ -408,7 +474,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerUpdateRect_4', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerUpdateRect_4"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerUpdateRect_4", true, 1824, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_4", true, 1824,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
     /*
@@ -422,7 +491,10 @@ export default function webViewNativeMediaPlayerHandler3() {
     it('testWebViewNativeMediaPlayerReadyState_1', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerReadyState_1"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerReadyState_1", true, 1825, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_1", true, 1825,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
     })
 

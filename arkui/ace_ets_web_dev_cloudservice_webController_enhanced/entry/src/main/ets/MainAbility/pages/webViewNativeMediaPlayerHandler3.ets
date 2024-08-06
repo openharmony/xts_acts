@@ -53,15 +53,14 @@ interface AVPlayerListener {
 }
 
 class AVPlayerDemo {
-    private surfaceID: string = ''; // surfaceID用于播放画面展示，具体的值需要通过Xcomponent接口获取，相关文档链接见上面Xcomponent创建方法
-    private isSeek: boolean = true; // 用于区分模式是否支持seek操作
+    private surfaceID: string = '';
+    private isSeek: boolean = true;
     private fd: number = 0;
     private listener?: AVPlayerListener
     avPlayer?: media.AVPlayer;
 
-    setSurfaceID(surface_id: string) {
-        console.log('setSurfaceID : ' + surface_id)
-        this.surfaceID = surface_id;
+    setSfID(surfaceId: string) {
+        this.surfaceID = surfaceId;
     }
     // 注册avplayer回调函数
     setAVPlayerCallback(avPlayer: media.AVPlayer, listener: AVPlayerListener) {
@@ -84,42 +83,42 @@ class AVPlayerDemo {
         // 状态机变化回调函数
         avPlayer.on('stateChange', async (state: string, reason: media.StateChangeReason) => {
             switch (state) {
-                case 'idle': // 成功调用reset接口后触发该状态机上报
-                    console.info('AVPlayer state idle called.');
-                    avPlayer.release(); // 调用release接口销毁实例对象
-                    break;
-                case 'initialized': // avplayer 设置播放源后触发该状态上报
-                    console.info('AVPlayer state initialized called. ');
-                    avPlayer.surfaceId = this.surfaceID; // 设置显示画面，当播放的资源为纯音频时无需设置
-                    avPlayer.prepare();
-                    break;
-                case 'prepared': // prepare调用成功后上报该状态机
-                    isPlaying = true
-                    console.info('AVPlayer state prepared called.');
-                    break;
-                case 'playing': // play成功调用后触发该状态机上报
-                    isPlaying = true
-                    console.info('AVPlayer state playing called.');
-                    listener?.onPlaying();
-                    break;
-                case 'paused': // pause成功调用后触发该状态机上报
-                    console.info('AVPlayer state paused called.');
-                    listener?.onPaused();
-                    break;
-                case 'completed': // 播放结束后触发该状态机上报
-                    console.info('AVPlayer state completed called.');
-                    avPlayer.stop(); // 调用播放结束接口
-                    break;
-                case 'stopped': // stop接口成功调用后触发该状态机上报
-                    console.info('AVPlayer state stopped called.');
-                    listener?.onEnded();
-                    break;
-                case 'released':
-                    console.info('AVPlayer state released called.');
-                    break;
-                default:
-                    console.info('AVPlayer state unknown called.');
-                    break;
+              case 'idle': // 成功调用reset接口后触发该状态机上报
+                console.info('AVPlayer state idle called.');
+                avPlayer.release(); // 调用release接口销毁实例对象
+                break;
+              case 'initialized': // avplayer 设置播放源后触发该状态上报
+                console.info('AVPlayer state initialized called. ');
+                avPlayer.surfaceId = this.surfaceID; // 设置显示画面，当播放的资源为纯音频时无需设置
+                avPlayer.prepare();
+                break;
+              case 'prepared': // prepare调用成功后上报该状态机
+                isPlaying = true
+                console.info('AVPlayer state prepared called.');
+                break;
+              case 'playing': // play成功调用后触发该状态机上报
+                isPlaying = true
+                console.info('AVPlayer state playing called.');
+                listener?.onPlaying();
+                break;
+              case 'paused': // pause成功调用后触发该状态机上报
+                console.info('AVPlayer state paused called.');
+                listener?.onPaused();
+                break;
+              case 'completed': // 播放结束后触发该状态机上报
+                console.info('AVPlayer state completed called.');
+                avPlayer.stop(); // 调用播放结束接口
+                break;
+              case 'stopped': // stop接口成功调用后触发该状态机上报
+                console.info('AVPlayer state stopped called.');
+                listener?.onEnded();
+                break;
+              case 'released':
+                console.info('AVPlayer state released called.');
+                break;
+              default:
+                console.info('AVPlayer state unknown called.');
+                break;
             }
         })
         avPlayer.on('durationUpdate', (duration: number) => {
@@ -366,7 +365,6 @@ class NativeMediaPlayerImpl implements webview.NativeMediaPlayerBridge{
     nativePlayer?: AVPlayerDemo;
 
     constructor(web: WebComponent, handler: webview.NativeMediaPlayerHandler, videoInfo: webview.MediaInfo) {
-        console.log('NativeMediaPlayerImpl.constructor, surface_id[' + videoInfo.surfaceInfo.id + ']');
         this.web = web;
         this.mediaHandler = handler;
         this.surfaceId = videoInfo.surfaceInfo.id;
@@ -389,13 +387,8 @@ class NativeMediaPlayerImpl implements webview.NativeMediaPlayerBridge{
     }
 
     updateRect(x: number, y: number, width: number, height: number): void {
-        console.info('updateRect -->' + 'x:' + x + ',y:' + y + ',width:' + width + ',height:' + height)
-        // Utils.emitEvent(true, 1821)
-        // Utils.emitEvent(true, 1822)
-        // Utils.emitEvent(true, 1823)
-        // Utils.emitEvent(true, 1824)
-        this.web.node_width = width;
-        this.web.node_height = height;
+        this.web.nodeWidth = width;
+        this.web.nodeHeight = height;
     }
     play() {
         console.log('[BrowserShell] ===gpz=== MediaPlayer.play');
@@ -573,7 +566,7 @@ class AVPlayerListenerImpl implements AVPlayerListener {
 interface Params {
     text: string
     text2: string
-    web_tab: WebComponent
+    webTab: WebComponent
     handler: webview.NativeMediaPlayerHandler
     player: NativeMediaPlayerImpl
 }
@@ -608,15 +601,15 @@ struct MyComponent {
         this.video_width = width;
         this.video_height = height;
         let scale: number = this.view_width / width;
-        let scaled_video_height: number = scale * height;
-        this.video_height_percent = scaled_video_height / this.view_height * 100;
-        console.log('[BrowserShell] onSizeChanged(' + width + ',' + height + '), video_height_percent[' + this.video_height_percent + ']')
+        let scaledVideoHeight: number = scale * height;
+        this.video_height_percent = scaledVideoHeight / this.view_height * 100;
     }
 
     build() {
         Column() {
             Stack() {
-                XComponent({ id: 'video_player_id', type: XComponentType.SURFACE, controller: this.mXComponentController })
+                XComponent({ id: 'video_player_id', type: XComponentType.SURFACE,
+                    controller: this.mXComponentController })
                     .width(this.video_width_percent + '%')
                     .height(this.video_height_percent + '%')
                     .border({ width: 1, color: Color.Red })
@@ -625,12 +618,9 @@ struct MyComponent {
                             console.log('this.params is null');
                             return;
                         }
-                        console.log('[BrowserShell] MyComponent.onLoad, params[' + this.params
-                            + '], text[' + this.params.text + '], text2[' + this.params.text2
-                            + '], web_tab[' + this.params.web_tab + '], handler[' + this.params.handler + ']');
                         this.player = new AVPlayerDemo();
                         this.params.player?.setNativePlayer(this.player);
-                        this.player.setSurfaceID(this.mXComponentController.getXComponentSurfaceId());
+                        this.player.setSfID(this.mXComponentController.getXComponentSurfaceId());
                         this.player_changed = !this.player_changed;
 
                         this.player.avPlayerLiveDemo(
@@ -720,8 +710,8 @@ struct MyComponent {
             return HitTestMode.None
         })
         .onAreaChange((oldValue: Area, newValue: Area) => {
-            this.view_width = new Number(newValue.width).valueOf()
-            this.view_height = new Number(newValue.height).valueOf()
+            this.view_width = parseFloat(newValue.width.toString())
+            this.view_height = parseFloat(newValue.height.toString())
 
             this.onSizeChanged(this.video_width, this.video_height);
         })
@@ -732,22 +722,18 @@ class MyNodeController extends NodeController {
     private rootNode: BuilderNode<[Params]> | undefined;
     private surfaceId_: string;
     private renderType_: NodeRenderType
-    web_tab: WebComponent
-    listener: webview.NativeMediaPlayerHandler
-    player: NativeMediaPlayerImpl
+    public webTab: WebComponent
+    public listener: webview.NativeMediaPlayerHandler
+    public player: NativeMediaPlayerImpl
 
-    constructor(web_tab: WebComponent, surfaceId: string, listener: webview.NativeMediaPlayerHandler, player: NativeMediaPlayerImpl, renderType: NodeRenderType) {
+    constructor(webTab: WebComponent, surfaceId: string, listener: webview.NativeMediaPlayerHandler,
+        player: NativeMediaPlayerImpl, renderType: NodeRenderType) {
         super()
-        this.web_tab = web_tab;
+        this.webTab = webTab;
         this.listener = listener;
         this.player = player;
         this.surfaceId_ = surfaceId
         this.renderType_ = renderType
-        console.log('[BrowserShell] MyNodeController, rootNode[' + this.rootNode +
-            '], web_tab[' + web_tab +
-            '], listener[' + listener +
-            '], surfaceId[' + surfaceId +
-            ']')
     }
 
     makeNode(UIContext: UIContext): FrameNode | null {
@@ -761,7 +747,7 @@ class MyNodeController extends NodeController {
     build() {
         if (this.rootNode) {
             this.rootNode.build(new WrappedBuilder(MyComponent.ButtonBuilder),
-                {'text': 'play', 'text2': 'pause', web_tab:this.web_tab, handler: this.listener, player: this.player})
+                {'text': 'play', 'text2': 'pause', webTab:this.webTab, handler: this.listener, player: this.player})
         }
     }
 }
@@ -779,8 +765,8 @@ struct WebComponent {
     nativeMediaPlayerHandlerImpl?: NativeMediaPlayerHandlerImpl
     mediaInfo?: webview.MediaInfo
     @State show_native_media_player: boolean = false;
-    @State node_width : number = 300;
-    @State node_height : number = 150;
+    @State nodeWidth : number = 300;
+    @State nodeHeight : number = 150;
     @State isShouldOverlay : boolean = true;
     @State isCallback : boolean = true;
 
@@ -1057,34 +1043,6 @@ struct WebComponent {
                             console.log('video is playing:' + isPlaying)
                             break;
                         }
-                        case 'emitWebViewNativeMediaPlayerSeek500': {
-                            this.controller.loadUrl($rawfile('multi_source_video_seek.html'))
-                            await Utils.sleep(5000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            this.controller.runJavaScript('setSeek(20)', (error, result) => {
-                                console.error(`The setSeek(20) return error is: ${error}`);
-                                console.log(`The setSeek(20) return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            this.controller.runJavaScript('setSeek(500)', (error, result) => {
-                                console.error(`The setSeek(500) return error is: ${error}`);
-                                console.log(`The setSeek(500) return value is: ${result}`);
-                            })
-                            await Utils.sleep(1000)
-                            console.info('current video time: ' + videoTime)
-                            console.log('seekList is :' + seekList)
-                            if (videoTime > 0 && seekList.indexOf(videoTime) > -1){
-                                Utils.emitEvent(true, 1809)
-                            }else {
-                                Utils.emitEvent(false, 1809)
-                            }
-                            break;
-                        }
                         case 'emitWebViewNativeMediaPlayerSeekNegative1': {
                             this.controller.loadUrl($rawfile('multi_source_video_seek.html'))
                             await Utils.sleep(5000)
@@ -1109,28 +1067,6 @@ struct WebComponent {
                                 Utils.emitEvent(false, 1810)
                             }else {
                                 Utils.emitEvent(true, 1810)
-                            }
-                            break;
-                        }
-                        case 'emitWebViewNativeMediaPlayerSeek20': {
-                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-                            await Utils.sleep(5000)
-                            this.controller.runJavaScript('buttonPlay()', (error, result) => {
-                                console.error(`The buttonPlay() return error is: ${error}`);
-                                console.log(`The buttonPlay() return value is: ${result}`);
-                            })
-                            await this.retryPlayingGen(this.emitKey)()
-                            await Utils.sleep(1000)
-                            this.controller.runJavaScript('setSeek(20)', (error, result) => {
-                                console.error(`The setSeek(20) return error is: ${error}`);
-                                console.log(`The setSeek(20) return value is: ${result}`);
-                            })
-                            await Utils.sleep(2000)
-                            console.log('video is playing:' + isPlaying)
-                            if (seekList.indexOf(20) > -1){
-                                Utils.emitEvent(true, 1811)
-                            }else {
-                                Utils.emitEvent(false, 1811)
                             }
                             break;
                         }
@@ -1389,43 +1325,46 @@ struct WebComponent {
             Stack() {
                 Web({ src: '', controller: this.controller })
                     .enableNativeMediaPlayer({ enable: true, shouldOverlay: this.isShouldOverlay })
-                    .onPageBegin((event: PageBeginParam) => {
+                    .onPageBegin(async (event: PageBeginParam) => {
                         console.error('enter onPageBegin, url:' + event.url);
-                        console.error(' in onPageBegin, onCreateNativeMediaPlayer:' + this.controller.onCreateNativeMediaPlayer);
                         if (this.controller.onCreateNativeMediaPlayer) {
                             let callback: webview.CreateNativeMediaPlayerCallback =
                                 (handler: webview.NativeMediaPlayerHandler, mediaInfo: webview.MediaInfo) => {
                                     this.nativeMediaPlayerHandlerImpl = new NativeMediaPlayerHandlerImpl(handler)
                                     console.log('mediaInfo' + JSON.stringify(mediaInfo))
                                     this.isCallback = true
-
-                                    this.nativePlayer = new NativeMediaPlayerImpl(this, this.nativeMediaPlayerHandlerImpl, mediaInfo);
+                                    if (mediaInfo.preload === webview.Preload.AUTO){
+                                        Utils.emitEvent(true, 1812)
+                                    }
+                                    this.nativePlayer = new NativeMediaPlayerImpl(this,
+                                        this.nativeMediaPlayerHandlerImpl, mediaInfo);
                                     console.info('onPageBegin key==>' + this.emitKey)
                                     switch (this.emitKey) {
-                                        case 'emitWebViewNativeMediaPlayerUpdateRect_1':{
-                                            this.nativePlayer.updateRect(-1, 1, 1200, 800);
-                                            console.info('UpdateRect -1, 1, 1200, 800')
-                                            Utils.emitEvent(true, 1821)
-                                            break;
-                                        }
-                                        case 'emitWebViewNativeMediaPlayerUpdateRect_2':{
-                                            this.nativePlayer.updateRect(4, -2, 1200, 800);
-                                            console.info('UpdateRect 4, -2, 1200, 800')
-                                            Utils.emitEvent(true, 1822)
-                                            break;
-                                        }
-                                        case 'emitWebViewNativeMediaPlayerUpdateRect_3':{
-                                            this.nativePlayer.updateRect(8, 9, -5.2, 800);
-                                            console.info('UpdateRect 8, 9, -5.2, 800')
-                                            Utils.emitEvent(true, 1823)
-                                            break;
-                                        }
-                                        case 'emitWebViewNativeMediaPlayerUpdateRect_4':{
-                                            this.nativePlayer.updateRect(88, 12, 1200, -6);
-                                            console.info('UpdateRect 88, 12, 1200, -6')
-                                            Utils.emitEvent(true, 1824)
-                                            break;
-                                        }
+                                      case 'emitWebViewNativeMediaPlayerUpdateRect_1':{
+                                        this.nativePlayer.updateRect(-1, 1, 1200, 800);
+                                        console.info('UpdateRect -1, 1, 1200, 800')
+                                        Utils.emitEvent(true, 1821)
+                                        break;
+                                      }
+                                      case 'emitWebViewNativeMediaPlayerUpdateRect_2':{
+                                        this.nativePlayer.updateRect(4, -2, 1200, 800);
+                                        console.info('UpdateRect 4, -2, 1200, 800')
+                                        Utils.emitEvent(true, 1822)
+                                        break;
+                                      }
+                                      case 'emitWebViewNativeMediaPlayerUpdateRect_3':{
+                                        this.nativePlayer.updateRect(8, 9, -5.2, 800);
+                                        console.info('UpdateRect 8, 9, -5.2, 800')
+                                        Utils.emitEvent(true, 1823)
+                                        break;
+                                      }
+                                      case 'emitWebViewNativeMediaPlayerUpdateRect_4':{
+                                        this.nativePlayer.updateRect(88, 12, 1200, -6);
+                                        console.info('UpdateRect 88, 12, 1200, -6')
+                                        Utils.emitEvent(true, 1824)
+                                        break;
+                                      }
+
 
                                     }
 
@@ -1433,6 +1372,27 @@ struct WebComponent {
                                 }
 
                             this.controller.onCreateNativeMediaPlayer(callback);
+                        }
+                        switch (this.emitKey) {
+                            case 'emitWebViewNativeMediaPlayerSetPlayRate10':{
+                                await Utils.sleep(5000)
+                                this.nativeMediaPlayerHandlerImpl.handlePlaybackRateChanged(10)
+                            }
+                            case 'emitWebViewNativeMediaPlayerSetPlayRate2_handleRateChange':
+                            case 'emitWebViewNativeMediaPlayerSetPlayRate2':{
+                                await Utils.sleep(5000)
+                                this.nativeMediaPlayerHandlerImpl.handlePlaybackRateChanged(2)
+                            }
+                            case 'emitWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange':
+                            case 'emitWebViewNativeMediaPlayerSetPlayRate1_point_2':{
+                                await Utils.sleep(5000)
+                                this.nativeMediaPlayerHandlerImpl.handlePlaybackRateChanged(1.2)
+                            }
+                            case 'emitWebViewNativeMediaPlayerSetPlayRate3_handleRateChange':
+                            case 'emitWebViewNativeMediaPlayerSetPlayRate3':{
+                                await Utils.sleep(5000)
+                                this.nativeMediaPlayerHandlerImpl.handlePlaybackRateChanged(3)
+                            }
                         }
                         this.controller.pauseAllMedia();
                         console.error('exit onPageBegin');
@@ -1448,8 +1408,8 @@ struct WebComponent {
 
                 if (this.show_native_media_player) {
                     NodeContainer(this.node_controller)
-                        .width(this.node_width + 'px')
-                        .height(this.node_height + 'px')
+                        .width(this.nodeWidth + 'px')
+                        .height(this.nodeHeight + 'px')
                         .backgroundColor(Color.Transparent)
                         .border({ width: 2, color: Color.Orange })
                 }
