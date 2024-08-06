@@ -25,7 +25,6 @@ const TAG = "CameraXts cameraSessionVideoStabilizationTest: ";
 
 // Define global letiables
 let mPhotoSurface: string;
-let mFileAsset: mediaLibrary.FileAsset;
 let mFdNumber: number;
 let mIsVideoStabilizationModeSupportedArray: Array<boolean>;
 let receiver: image.ImageReceiver;
