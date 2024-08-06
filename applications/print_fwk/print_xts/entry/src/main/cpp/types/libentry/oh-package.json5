@@ -17,5 +17,5 @@
   "name": "libentry.so",
   "types": "./index.d.ts",
   "version": "",
-  "description": "print c-api xts test share library."
+  "description": "print and scan c-api xts test share library."
 }
