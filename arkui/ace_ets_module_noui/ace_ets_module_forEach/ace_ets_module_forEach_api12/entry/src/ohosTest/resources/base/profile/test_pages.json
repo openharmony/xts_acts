@@ -5,6 +5,8 @@
         "MainAbility/pages/lazyforeach/lazyChange",
         "MainAbility/pages/lazyforeach/lazyReload",
         "MainAbility/pages/lazyforeach/Prefetcher1",
-        "MainAbility/pages/lazyforeach/Prefetcher2"
+        "MainAbility/pages/lazyforeach/Prefetcher2",
+        "MainAbility/pages/Storage/appStorageV2",
+        "MainAbility/pages/Storage/persistenceV2"
     ]
 }
