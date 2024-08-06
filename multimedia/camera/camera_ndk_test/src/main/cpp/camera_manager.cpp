@@ -278,6 +278,16 @@ Camera_ErrorCode NDKCamera::GetSupportedCameras(void)
     return ret_;
 }
 
+Camera_ErrorCode NDKCamera::GetCameraOrientation(void)
+{
+    ret_ = OH_CameraDevice_GetCameraOrientation(&cameras_[cameraDeviceIndex_], &orientation_);
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS OH_CameraDevice_GetCameraOrientation failed.");
+        return CAMERA_SERVICE_FATAL_ERROR;
+    }
+    return ret_;
+}
+
 Camera_ErrorCode NDKCamera::GetSupportedOutputCapability(void)
 {
     if (cameraManager_ == nullptr) {
