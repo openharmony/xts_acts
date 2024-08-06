@@ -149,7 +149,7 @@ export default function imageExifGetModifyTest() {
         console.info(testTag + " create image source failed");
       } else {
         const result = await imageSourceApi.getImageProperty(key)
-        checkResult = result.includes(compareData)
+        checkResult = result.includes(compareData == undefined ? testTag : compareData)
         if(!checkResult){
           hilog.info(0x0000, testTag,
             `testGetIncludePromise error %{public}s %{public}s fileName: %{public}s result: %{public}s value: %{public}s`,
@@ -2646,7 +2646,7 @@ export default function imageExifGetModifyTest() {
         {name: "dng", fileName: "test_exif_v2.dng", value: 'HwMnoteCaptureMode:1,HwMnoteBurstNumber:2,' +
           'HwMnoteFrontCamera:' +
           '3,HwMnoteRollAngle:4,HwMnotePitchAngle:5,HwMnotePhysicalAperture:6,HwMnoteFocusMode:7,' +
-          'HwMnoteFacePointer:166,HwMnoteFaceVersion:1,' +
+          'HwMnoteWindSnapshotMode:8,HwMnoteFacePointer:166,HwMnoteFaceVersion:1,' +
           'HwMnoteFaceCount:2,HwMnoteFaceConf:3,HwMnoteFaceSmileScore:1 2 3 4 5 6 7 8,' +
           'HwMnoteFaceRect:1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8,HwMnoteFaceLeyeCenter:1 2 3 4,' +
           'HwMnoteFaceReyeCenter:5 6 7 8,' + 'HwMnoteFaceMouthCenter:1 2 3 4 5 6 7 8,HwMnoteScenePointer:300,' +
