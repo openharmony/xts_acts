@@ -530,15 +530,18 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         num++
         secondListenFlag = true
       });
+      await sleep(1000);
       await (tempWnd as ohosWindow.Window).setFullScreen(true).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setFullScreen(true)', TRUE_FLAG, done);
       });
+      await sleep(1000);
       await tempWnd.setWindowLayoutFullScreen(false).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(false) success');
+      await sleep(1000);
       await (tempWnd as ohosWindow.Window).setSystemBarEnable(['status']).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status])', TRUE_FLAG, done);
       });
