@@ -58,7 +58,7 @@
         ],
         "deviceType": [
                     "tablet",
-                    "default"
+                    "default",
 		    "phone",
 		    "tablet",
 		    "tv",
