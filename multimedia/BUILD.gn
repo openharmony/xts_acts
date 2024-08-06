@@ -62,6 +62,7 @@ group("multimedia") {
       "image/image_ets_standard/imageFormatTranscoding:image_formattranscoding_hap",
       "image/image_ets_standard/imageNdk:image_ndk_hap",
       "image/image_ets_standard/imagePackerExif:image_packer_exif_hap",
+      "image/image_ets_standard/imagePicture:image_picture_hap",
       "image/image_ets_standard/imagePixelMapSupportYuv:image_pixelmap_supportyuv_hap",
       "image/image_ets_standard/imageQualityEnhancement:image_quality_enhancement_hap",
       "image/image_js_standard/image:image_js_hap",
