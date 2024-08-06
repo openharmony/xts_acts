@@ -5012,6 +5012,16 @@ export const testArkUI085: () => number;
 
 export const testArkUI086: () => number;
 
+export const testArkUI087: () => number;
+
+export const testArkUI088: () => number;
+
+export const testArkUI089: () => number;
+
+export const testArkUI090: () => number;
+
+export const testArkUI091: () => number;
+
 export const testRelativeContaineAlignmentRuleOption001: () => number;
 
 export const testRelativeContaineAlignmentRuleOption002: () => number;
