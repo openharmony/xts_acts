@@ -338,10 +338,10 @@ class NativeMediaPlayerHandlerImpl implements webview.NativeMediaPlayerHandler {
 }
 class NativeMediaPlayerImpl implements webview.NativeMediaPlayerBridge{
     private surfaceId: string;
-    mediaSource: string;
+    public mediaSource: string;
     private mediaHandler: webview.NativeMediaPlayerHandler;
-    web: WebComponent;
-    nativePlayer?: AVPlayerDemo;
+    public web: WebComponent;
+    public nativePlayer?: AVPlayerDemo;
 
     constructor(web: WebComponent, handler: webview.NativeMediaPlayerHandler, videoInfo: webview.MediaInfo) {
         this.web = web;
@@ -353,9 +353,9 @@ class NativeMediaPlayerImpl implements webview.NativeMediaPlayerBridge{
             this.mediaSource = ''
         }
 
-        this.web.node_controller = new MyNodeController(
+        this.web.nodeController = new MyNodeController(
             this.web, this.surfaceId, this.mediaHandler, this, NodeRenderType.RENDER_TYPE_TEXTURE)
-        this.web.node_controller.rebuild()
+        this.web.nodeController.rebuild()
         this.web.showNativeMediaPlayer = true;
 
         console.log('NativeMediaPlayerImpl.mediaSource : ' + this.mediaSource);
@@ -714,7 +714,7 @@ interface PageBeginParam {
 struct WebComponent {
     controller: WebviewController = new webview.WebviewController();
     nativePlayer? : webview.NativeMediaPlayerBridge
-    node_controller?: MyNodeController
+    nodeController?: MyNodeController
     nativeMediaPlayerHandlerImpl?: NativeMediaPlayerHandlerImpl
     mediaInfo?: webview.MediaInfo
     @State showNativeMediaPlayer: boolean = false;
@@ -968,7 +968,7 @@ struct WebComponent {
                     })
 
                 if (this.showNativeMediaPlayer) {
-                    NodeContainer(this.node_controller)
+                    NodeContainer(this.nodeController)
                         .width(this.nodeWidth + 'px')
                         .height(this.nodeHeight + 'px')
                         .backgroundColor(Color.Transparent)
