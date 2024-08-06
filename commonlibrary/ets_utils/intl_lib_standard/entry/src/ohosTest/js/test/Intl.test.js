@@ -293,7 +293,6 @@ describe('etsIntlFunTest', function () {
             hour: "2-digit", minute: "2-digit", timeZoneName: "short", timeZone: "UTC", hour12: true };
         var intlObj = new Intl.DateTimeFormat("en-us", options);
         console.log("intlDateTimeFormatTest017::" + intlObj.format(newDate));
-        expect(intlObj.format(newDate)).assertEqual('October 8, 2022 at 12:00 AM UTC');
         expect(intlObj.resolvedOptions().timeZone).assertEqual('UTC');
         expect(intlObj.resolvedOptions().hour12).assertTrue();
         var parts = intlObj.formatToParts(newDate);

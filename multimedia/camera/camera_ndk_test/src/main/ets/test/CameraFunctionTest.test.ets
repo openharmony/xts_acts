@@ -48,7 +48,6 @@ const TAG = "CameraXts CameraFunctionTest: ";
 
 // 创建录像输出流
 let mPhotoSurface: string;
-let fileAsset: mediaLibrary.FileAsset;
 let fdNumber: number;
 let receiver: image.ImageReceiver;
 

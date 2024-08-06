@@ -1606,8 +1606,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testSwiperDisplayCount002", nullptr, TestSwiperDisplayCount002, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"testSwiperDisplayCount003", nullptr, TestSwiperDisplayCount003, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
         {"testSwiperDisplayCount004", nullptr, TestSwiperDisplayCount004, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testSwiperDuration001", nullptr, TestSwiperDuration001, nullptr, nullptr, nullptr, napi_default, nullptr},

@@ -24,7 +24,6 @@ import { Camera_FocusMode, GlobalThis } from './Constants';
 const TAG = "CameraXts CameraSessionFocusTest: ";
 
 let mPhotoSurface: string;
-let mFileAsset: mediaLibrary.FileAsset;
 let mFdNumber: number;
 
 let mPicWidthMax = 1;

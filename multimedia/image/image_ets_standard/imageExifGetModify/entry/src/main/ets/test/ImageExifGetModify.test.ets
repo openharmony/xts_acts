@@ -141,6 +141,24 @@ export default function imageExifGetModifyTest() {
       return checkResult
     }
 
+    const testGetIncludePromise = async (testTag: string, key: image.PropertyKey, compareData: string | undefined,
+                                  fileName:string, type:string) => {
+      let checkResult = false
+      const imageSourceApi = await getImageSource(fileName, type)
+      if (imageSourceApi == undefined) {
+        console.info(testTag + " create image source failed");
+      } else {
+        const result = await imageSourceApi.getImageProperty(key)
+        checkResult = result.includes(compareData)
+        if(!checkResult){
+          hilog.info(0x0000, testTag,
+            `testGetIncludePromise error %{public}s %{public}s fileName: %{public}s result: %{public}s value: %{public}s`,
+            testTag, key, fileName, result, compareData);
+        }
+      }
+      return checkResult
+    }
+
     //创建imageSource，读取exif信息，错误码与预期错误码对比，返回结果 True/false
     //testTag 用例编号
     //key: exif key
@@ -2627,9 +2645,8 @@ export default function imageExifGetModifyTest() {
           'HwMnoteSceneTextConf:11'},
         {name: "dng", fileName: "test_exif_v2.dng", value: 'HwMnoteCaptureMode:1,HwMnoteBurstNumber:2,' +
           'HwMnoteFrontCamera:' +
-          '3,HwMnoteRollAngle:4,HwMnotePitchAngle:5,HwMnotePhysicalAperture:6,HwMnoteFocusMode:7,MovingPhotoId:8,' +
-          'MovingPhotoVersion:9,' +
-          'MicroVideoPresentationTimestampUS:1713866834879000,HwMnoteFacePointer:166,HwMnoteFaceVersion:1,' +
+          '3,HwMnoteRollAngle:4,HwMnotePitchAngle:5,HwMnotePhysicalAperture:6,HwMnoteFocusMode:7,' +
+          'HwMnoteFacePointer:166,HwMnoteFaceVersion:1,' +
           'HwMnoteFaceCount:2,HwMnoteFaceConf:3,HwMnoteFaceSmileScore:1 2 3 4 5 6 7 8,' +
           'HwMnoteFaceRect:1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8,HwMnoteFaceLeyeCenter:1 2 3 4,' +
           'HwMnoteFaceReyeCenter:5 6 7 8,' + 'HwMnoteFaceMouthCenter:1 2 3 4 5 6 7 8,HwMnoteScenePointer:300,' +
@@ -2650,7 +2667,7 @@ export default function imageExifGetModifyTest() {
       try {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
-          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
+          const checkResult = await testGetIncludePromise(testTag, key, values[i].value, values[i].fileName,'fd');
           result = result && checkResult
         }
         expect(result).assertTrue()

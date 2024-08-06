@@ -40,7 +40,7 @@ struct scrollBy {
   build() {
     Column({ space: 5 }) {
       Grid(this.scroller) {
-        ForEach(this.Number, (day: string) => {
+        ForEach(this.Number, (item: string) => {
           ForEach(this.Number, (day: string) => {
             GridItem() {
               Text(day)
@@ -49,10 +49,10 @@ struct scrollBy {
                 .width('100%')
                 .height(70)
                 .textAlign(TextAlign.Center)
-                .key('content' + day)
+                .key('content' + day + item)
             }
           }, (day: string) => day)
-        }, (day: string) => day)
+        }, (item: string) => item)
       }
       .columnsTemplate('1fr')
       .columnsGap(10)
