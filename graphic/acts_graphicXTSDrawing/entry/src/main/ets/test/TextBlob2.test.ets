@@ -283,28 +283,5 @@ export default function textBlob2Test() {
       }
     });
 
-
-    // ===========================
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TEXTBLOB_XXXX
-     * @tc.name      : testXXXXXX
-     * @tc.desc      : TestXXXXXX
-     * @tc.size      : SmallTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    // it('TestXXXXXX', 3, () => {
-    //   const msg = 'TestXXXXXX';
-    //   let font = new drawing.Font();
-    //
-    //   try {
-    //     drawing.TextBlob.makeFromString("", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
-    //     console.info(msg + ' test succeeded.');
-    //   } catch (e) {
-    //     console.info(msg + ` test failed, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
-    //     expect().assertFail();
-    //   }
-    // });
-
   });
 }

@@ -218,12 +218,15 @@ export default function drawingTsPath3Test() {
       try {
         let path = new drawing.Path();
         let len = path.getLength(false);
+        expect(len).assertEqual(0);
 
         path.moveTo(0, 0);
         path.arcTo(20, 20, 180, 180, 180, 90);
         len = path.getLength(false);
+        expect(len).assertEqual(227.4411163330078);
 
         len = path.getLength(true);
+        expect(len).assertEqual(329.4215087890625);
 
         console.info(msg + 'test successes');
       } catch (e) {
@@ -247,7 +250,8 @@ export default function drawingTsPath3Test() {
       try {
         let path = new drawing.Path();
         for (let i = 0; i < 20; i += 1) {
-          path.getLength(true);
+          let len = path.getLength(true);
+          expect(len).assertEqual(0);
         }
 
         console.info(msg + 'test successes');
@@ -309,6 +313,7 @@ export default function drawingTsPath3Test() {
         }, {
           x: 200, y: 200
         });
+        expect(distance).assertEqual(0);
         path.moveTo(0, 0);
         path.lineTo(100, 100);
         distance = path.getPositionAndTangent(true, 30.1, {
@@ -316,21 +321,25 @@ export default function drawingTsPath3Test() {
         }, {
           x: 200.1, y: 200.1
         });
+        expect(distance).assertEqual(1);
         distance = path.getPositionAndTangent(true, 80, {
           x: -20.1, y: -20.1
         }, {
           x: 200.1, y: 200.1
         });
+        expect(distance).assertEqual(1);
         distance = path.getPositionAndTangent(true, 100, {
           x: 200.1, y: 200.1
         }, {
           x: -200.1, y: -200.1
         })
+        expect(distance).assertEqual(1);
         distance = path.getPositionAndTangent(true, -1, {
           x: 200.1, y: 200.1
         }, {
           x: 600.1, y: 600.1
         })
+        expect(distance).assertEqual(1);
         console.info(msg + 'test successes');
       } catch (e) {
         console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -572,16 +581,19 @@ export default function drawingTsPath3Test() {
 
       try {
         let path: drawing.Path = new drawing.Path();
-        let close = path.isClosed(false);
-        close = path.isClosed(true);
+        let close = path.isClosed();
+        expect(close).assertEqual(0);
+
         path.moveTo(0, 0);
         path.lineTo(0, 100);
         path.lineTo(200, 350);
-        close = path.isClosed(false);
-        close = path.isClosed(true);
+        close = path.isClosed();
+        expect(close).assertEqual(0);
+
         path.close();
-        close = path.isClosed(false);
-        close = path.isClosed(true);
+        close = path.isClosed();
+        expect(close).assertEqual(1);
+
       } catch (e) {
         console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
@@ -603,7 +615,8 @@ export default function drawingTsPath3Test() {
 
       try {
         for (let i = 0; i < 20; i += 1) {
-          let close = path.isClosed(true);
+          let close = path.isClosed();
+          expect(close).assertEqual(0);
         }
         console.info(msg + 'test successes');
       } catch (e) {

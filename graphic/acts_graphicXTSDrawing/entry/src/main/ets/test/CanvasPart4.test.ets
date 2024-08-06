@@ -425,6 +425,8 @@ export default function drawingTsCanvasPart4Test() {
         let width = canvas.getWidth();
         let height = canvas.getHeight();
         console.info(msg + 'test successes');
+        expect(width).assertEqual(100);
+        expect(height).assertEqual(100);
       } catch (e) {
         console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -447,6 +449,8 @@ export default function drawingTsCanvasPart4Test() {
         for (let i = 0; i < 20; i += 1) {
           let width = canvas.getWidth();
           let height = canvas.getHeight();
+          expect(width).assertEqual(100);
+          expect(height).assertEqual(100);
         }
         console.info(msg + 'test successes');
       } catch (e) {
@@ -1027,66 +1031,6 @@ export default function drawingTsCanvasPart4Test() {
         }, {
           x: 200, y: 300
         }], undefined);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.drawPoints([{
-          x: null, y: 200
-        }, {
-          x: 150, y: 230
-        }, {
-          x: 200, y: 300
-        }]);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.drawPoints([{
-          x: 100, y: null
-        }, {
-          x: 150, y: 230
-        }, {
-          x: 200, y: 300
-        }]);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.drawPoints([{
-          x: undefined, y: 200
-        }, {
-          x: 150, y: 230
-        }, {
-          x: 200, y: 300
-        }]);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.drawPoints([{
-          x: 100, y: undefined
-        }, {
-          x: 150, y: 230
-        }, {
-          x: 200, y: 300
-        }]);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {

@@ -57,14 +57,16 @@ export default function drawingTsPath4Test() {
         let matrix: drawing.Matrix;
         for (let i = 0; i < getEnumCount(drawing.PathMeasureMatrixFlags); i += 1) {
           matrix = new drawing.Matrix();
-          path.getMatrix(false, 10, matrix, i);
+          let flag = path.getMatrix(false, 10, matrix, i);
+          expect(flag).assertFalse();
         }
         // PathMeasureMatrixFlags枚举值覆盖验证
 
 
         for (let i = 0; i < getEnumCount(drawing.PathMeasureMatrixFlags); i += 1) {
           matrix = new drawing.Matrix();
-          path.getMatrix(true, 10.1, matrix, i);
+          let flag = path.getMatrix(true, 10.1, matrix, i);
+          expect(flag).assertFalse();
         }
         // PathMeasureMatrixFlags枚举值覆盖验证
 

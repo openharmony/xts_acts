@@ -1080,7 +1080,7 @@ export default function drawingTsCanvasPart5Test() {
       try {
         for (let i = 0; i < 20; i += 1) {
           let rectOne: common2D.Rect = {
-            left: 10, top: 100, right: 200, bottom: 300
+            left: 10 * Math.random(), top: 100 * Math.random(), right: 200 * Math.random(), bottom: 300 * Math.random()
           };
           let roundRect = new drawing.RoundRect(rectOne, 10, 10);
           canvas.drawRoundRect(roundRect);
@@ -1139,11 +1139,20 @@ export default function drawingTsCanvasPart5Test() {
 
       try {
         let rect: common2D.Rect = canvas.getLocalClipBounds();
+        expect(rect.left).assertEqual(0)
+        expect(rect.right).assertEqual(100)
+        expect(rect.top).assertEqual(0)
+        expect(rect.bottom).assertEqual(100)
 
         canvas.clipRect({
-          left: 10, right: 500, top: 300, bottom: 900
+          left: 10, right: 50, top: 30, bottom: 90
         }, drawing.ClipOp.DIFFERENCE, true);
         rect = canvas.getLocalClipBounds();
+
+        expect(rect.left).assertEqual(10)
+        expect(rect.right).assertEqual(50)
+        expect(rect.top).assertEqual(30)
+        expect(rect.bottom).assertEqual(90)
         console.info(msg + 'test successes');
       } catch (e) {
         console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -1189,8 +1198,17 @@ export default function drawingTsCanvasPart5Test() {
       const canvas = new drawing.Canvas(pixel);
 
       try {
-        let matrixResult = canvas.getTotalMatrix();
-        matrixResult = canvas.getTotalMatrix();
+        let matrix1 = new drawing.Matrix();
+        canvas.setMatrix(matrix1)
+        let matrixResult1 = canvas.getTotalMatrix();
+        expect(matrixResult1).assertDeepEquals(matrix1);
+
+        let matrix2 = new drawing.Matrix();
+        matrix2.setMatrix([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        canvas.setMatrix(matrix2);
+        let matrixResult2 = canvas.getTotalMatrix();
+        expect(matrixResult2).assertDeepEquals(matrix2);
+
         console.info(msg + 'test successes');
       } catch (e) {
         console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -1213,7 +1231,10 @@ export default function drawingTsCanvasPart5Test() {
 
       try {
         for (let i = 0; i < 20; i += 1) {
+          let matrix = new drawing.Matrix();
+          canvas.setMatrix(matrix)
           let matrixResult = canvas.getTotalMatrix();
+          expect(matrixResult).assertDeepEquals(matrix);
         }
         console.info(msg + 'test successes');
       } catch (e) {
