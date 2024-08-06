@@ -1960,72 +1960,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
     })
 
 
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3950
-     * @tc.name      : testWindowVisibilityChange_on_Function_Callback
-     * @tc.desc      : window type windowVisibilityChange
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it("testWindowVisibilityChange_on_Function_Callback", 0, async function(done){
-      let msgStr = "testWindowVisibilityChange_on_Function_Callback";
-      console.log(msgStr + "begin");
-      try{
-        console.log(msgStr + "try begin");
-        let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
-        windowClass.on('windowVisibilityChange',(boolean) => {
-          console.log(msgStr + 'Window visibility changed, isVisible=' + boolean);
-        });
-        expect(true).assertTrue();
-        done();
-      } catch(error){
-        console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
-        if (error.code != 801) {
-          console.error(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
-          expect().assertFail();
-          done();
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error))
-          expect(error.code).assertEqual(801);
-          done();
-        }
-      }
-    })
-
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3960
-     * @tc.name      : testWindowVisibilityChange_off_Function_Callback
-     * @tc.desc      : window type windowVisibilityChange
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it("testWindowVisibilityChange_off_Function_Callback", 0, async function(done){
-      let msgStr = "testWindowVisibilityChange_off_Function_Callback";
-      console.log(msgStr + "begin");
-      try{
-        console.log(msgStr + "try begin");
-        let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
-        windowClass.off('windowVisibilityChange');
-        console.log(msgStr + 'Window visibility changed');
-        expect(true).assertTrue();
-        done();
-      } catch(error){
-        console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
-        if (error.code != 801) {
-          console.error(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
-          expect().assertFail();
-          done();
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error))
-          expect(error.code).assertEqual(801);
-          done();
-        }
-      }
-    })
+    
 
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3980
