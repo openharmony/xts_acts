@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 
 export default function waterFlowView() {
-  describe('waterFlowTest', function () {
-    beforeEach(async function (done) {
+  describe('waterFlowTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("waterFlowViewJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/waterFlowView',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/waterFlowView',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get WaterFlowView state pages: " + JSON.stringify(pages));
         if (!("waterFlowView" == pages.name)) {
           console.info("get WaterFlowView state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push WaterFlowView page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push WaterFlowView page error: " + err);
@@ -43,13 +42,13 @@ export default function waterFlowView() {
 
     /**
      * @tc.number waterFlowViewJsunit_0200
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set friction values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set friction values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('waterFlowViewJsunit_0200', 0, async function (done) {
+    it('waterFlowViewJsunit_0200', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0200] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj = JSON.parse(strJson);
@@ -61,13 +60,13 @@ export default function waterFlowView() {
 
     /**
      * @tc.number waterFlowViewJsunit_0300
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set enableScrollInteraction values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set enableScrollInteraction values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('waterFlowViewJsunit_0300', 0, async function (done) {
+    it('waterFlowViewJsunit_0300', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0300] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj = JSON.parse(strJson);
@@ -79,13 +78,13 @@ export default function waterFlowView() {
 
     /**
      * @tc.number waterFlowViewJsunit_0400
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set columnsTemplate values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set columnsTemplate values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('waterFlowViewJsunit_0400', 0, async function (done) {
+    it('waterFlowViewJsunit_0400', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0400] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj = JSON.parse(strJson);
@@ -97,13 +96,13 @@ export default function waterFlowView() {
 
     /**
      * @tc.number waterFlowViewJsunit_0500
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set itemConstraintSize values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set itemConstraintSize values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('waterFlowViewJsunit_0500', 0, async function (done) {
+    it('waterFlowViewJsunit_0500', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0500] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj = JSON.parse(strJson);
@@ -116,13 +115,13 @@ export default function waterFlowView() {
 
     /**
      * @tc.number waterFlowViewJsunit_0600
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set columnsGap values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set columnsGap values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('waterFlowViewJsunit_0600', 0, async function (done) {
+    it('waterFlowViewJsunit_0600', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0600] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj = JSON.parse(strJson);
@@ -134,13 +133,13 @@ export default function waterFlowView() {
 
     /**
      * @tc.number waterFlowViewJsunit_0700
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set rowsTemplate values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set rowsTemplate values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('waterFlowViewJsunit_0700', 0, async function (done) {
+    it('waterFlowViewJsunit_0700', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0700] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj = JSON.parse(strJson);
@@ -152,13 +151,13 @@ export default function waterFlowView() {
 
     /**
      * @tc.number waterFlowViewJsunit_0800
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set rowsGap values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set rowsGap values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('waterFlowViewJsunit_0800', 0, async function (done) {
+    it('waterFlowViewJsunit_0800', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0800] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj = JSON.parse(strJson);
@@ -170,13 +169,13 @@ export default function waterFlowView() {
 
     /**
      * @tc.number waterFlowViewJsunit_0900
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set layoutDirection values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set layoutDirection values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('waterFlowViewJsunit_0900', 0, async function (done) {
+    it('waterFlowViewJsunit_0900', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0900] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj = JSON.parse(strJson);
@@ -187,14 +186,14 @@ export default function waterFlowView() {
     });
 
     /**
-    * @tc.number waterFlowViewJsunit_1000
-    * @tc.name   Test the properties of components
-    * @tc.desc   Change columnsGap values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('waterFlowViewJsunit_1000', 0, async function (done) {
+     * @tc.number waterFlowViewJsunit_1000
+     * @tc.name Test the properties of components
+     * @tc.desc Change columnsGap values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('waterFlowViewJsunit_1000', 0, async (done: Function) => {
       console.info('waterFlowViewJsunit_1000 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

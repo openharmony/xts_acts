@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function textMinFontSizeJsunit() {
   describe('textMinFontSizeTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/text/text6',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/text/text6',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function textMinFontSizeJsunit() {
         if (!("text" == pages.name)) {
           console.info("get text state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push text page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,7 +40,7 @@ export default function textMinFontSizeJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("textMinFontSize after each called");
     });
 
@@ -51,7 +51,7 @@ export default function textMinFontSizeJsunit() {
      */
     it('testtextMinFontSize0001', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0001] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function textMinFontSizeJsunit() {
      */
     it('testtextMinFontSize0002', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0002 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0002] component height strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -85,7 +85,7 @@ export default function textMinFontSizeJsunit() {
      */
     it('testtextMinFontSize0003', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0003 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0003] component fontSize strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -103,7 +103,7 @@ export default function textMinFontSizeJsunit() {
      */
     it('testtextMinFontSize0004', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0004 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0004] component opacity strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -120,7 +120,7 @@ export default function textMinFontSizeJsunit() {
      */
     it('testtextMinFontSize0005', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0005 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0005] component align strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -137,7 +137,7 @@ export default function textMinFontSizeJsunit() {
      */
     it('testtextMinFontSize0006', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0006 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0006] component fontColor strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -153,7 +153,7 @@ export default function textMinFontSizeJsunit() {
      */
     it('testtextMinFontSize0007', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0007 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0007] component lineHeight strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -169,7 +169,7 @@ export default function textMinFontSizeJsunit() {
      */
     it('testtextMinFontSize0009', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize009 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0009] component padding strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -186,7 +186,7 @@ export default function textMinFontSizeJsunit() {
      */
     it('testtextMinFontSize0010', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0010 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0010] component textAlign strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -198,7 +198,7 @@ export default function textMinFontSizeJsunit() {
 
     it('testtextMinFontSize0011', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0011 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0011] component minFontSize strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -210,7 +210,7 @@ export default function textMinFontSizeJsunit() {
 
     it('testtextCopyOptionText0001', 0, async () => {
       console.info('textMinFontSize testtextCopyOptionText0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('copyOptionText');
       console.info("[testtextCopyOptionText0001] component copyOption strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);

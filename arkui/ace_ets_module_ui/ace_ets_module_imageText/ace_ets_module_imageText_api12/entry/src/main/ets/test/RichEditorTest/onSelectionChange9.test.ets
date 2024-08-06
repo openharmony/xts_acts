@@ -14,14 +14,14 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function onSelectionChange9() {
-  describe('onSelectionChange9', function () {
-    beforeEach(async function (done) {
+  describe('onSelectionChange9', () => {
+    beforeEach(async (done: Function) => {
       console.info("onSelectionChange9 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/RichEditor/onSelectionChange9',
       }
       try {
@@ -40,7 +40,7 @@ export default function onSelectionChange9() {
       console.info("onSelectionChange9 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("onSelectionChange9 after each called");
     });
@@ -52,7 +52,7 @@ export default function onSelectionChange9() {
      * @tc.type
     * @tc.size
      */
-    it('onSelectionChange9_0100', 0, async function (done) {
+    it('onSelectionChange9_0100', 0, async (done: Function) => {
       console.info('[onSelectionChange9_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -64,13 +64,13 @@ export default function onSelectionChange9() {
       await CommonFunc.sleep(1000);
 
       let text0 = getInspectorByKey('onSelectionChange9_text1');
-      let Obj0 = JSON.parse(text0);
+      let Obj0: ESObject = JSON.parse(text0);
       expect(Obj0.$attrs.content).assertEqual('1');
 
       await driver.triggerKey(2049);
       await CommonFunc.sleep(1000);
       let text1 = getInspectorByKey('onSelectionChange9_text1');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('1');
 
       console.info('[onSelectionChange9_0100] END');

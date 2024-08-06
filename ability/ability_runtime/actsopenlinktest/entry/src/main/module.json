@@ -7,7 +7,8 @@
     "deviceTypes": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -42,7 +43,7 @@
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
         "launchType": "multiton",
-        "skills":[
+        "skills": [
           {
             "actions": [
               "action.system.home",
@@ -52,7 +53,7 @@
               "entity.system.home",
               "entity.system.browsable"
             ],
-            "uris":[
+            "uris": [
               {
                 "scheme": "example",
                 "host": "www.example.com"

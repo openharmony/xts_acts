@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import  CommonFunc from '../../MainAbility/utils/Common'
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/utils/Common'
 
 
 export default function PropEnumJsunit() {
-  describe('PropEnumJsunit', function () {
-    beforeEach(async function (done) {
+  describe('PropEnumJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("PropEnumJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/PropEnum',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/PropEnum',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function PropEnumJsunit() {
         console.info("get PropEnumJsunit state pages: " + JSON.stringify(pages));
         if (!("PropEnum" == pages.name)) {
           console.info("get PropEnumJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push PropEnumJsunit success: " + JSON.stringify(result));
         }
@@ -42,16 +55,16 @@ export default function PropEnumJsunit() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
-      await CommonFunc.sleep(500);      
+      await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('PropEnum_reset'));
       await button.click();
       console.log('reset button click succ')
       await CommonFunc.sleep(1000);
     });
 
-    it('PropEnumJsunit_0200', 0, async function (done) {
+    it('PropEnumJsunit_0200', 0, async (done: Function) => {
 
       console.info('PropEnumJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -74,7 +87,7 @@ export default function PropEnumJsunit() {
       done();
     });
 
-    it('PropEnumJsunit_0400', 0, async function (done) {
+    it('PropEnumJsunit_0400', 0, async (done: Function) => {
 
       console.info('PropEnumJsunit_0400 START');
       let driver = await UiDriver.create()

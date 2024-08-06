@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 export default function NavigationStack26Jsunit() {
-  describe('NavigationStack26Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('NavigationStack26Jsunit',  () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("NavigationStack26Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/NavigationStack26',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/NavigationStack26',
       }
       try {
         router.clear();
@@ -29,7 +29,7 @@ export default function NavigationStack26Jsunit() {
         console.info("get NavigationStack26Jsunit state pages:" + JSON.stringify(pages));
         if (!("NavigationStack26" == pages.name)) {
           console.info("get NavigationStack26Jsunit state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push NavigationStack26Jsunit success " + JSON.stringify(result));
           await CommonFunc.sleep(3000);
         }
@@ -45,7 +45,7 @@ export default function NavigationStack26Jsunit() {
     * @tc.desc  : In auto mode, the value of hideNavBar is changed from true to false.
     * @tc.level : Level 3
     */
-    it('NavigationStack26Jsunit_0100', 0, async function (done) {
+    it('NavigationStack26Jsunit_0100', 0, async  (done:Function) =>{
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       await CommonFunc.sleep(500);
@@ -56,9 +56,8 @@ export default function NavigationStack26Jsunit() {
       await YCbutton.click();
       await CommonFunc.sleep(2000);
       let textcontent = getInspectorByKey('NavigationStack26Blur');
-      let textobj = JSON.parse(textcontent);
-      console.info('NavigationStack26Jsunit_0100 component textobj is: ' + textobj.$attrs.content);
-      expect(textobj.$attrs.content).assertEqual('false');
+      console.info('NavigationStack26Jsunit_0100 component textobj is: ' + JSON.parse(textcontent).$attrs.content);
+      expect(JSON.parse(textcontent).$attrs.content).assertEqual('false');
       console.info('NavigationStack26Jsunit_0100 END')
       done();
     });

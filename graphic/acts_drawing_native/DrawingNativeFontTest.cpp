@@ -1715,7 +1715,44 @@ HWTEST_F(DrawingNativeFontTest, testFontGetMetricsMultipleCalls, TestSize.Level3
     // 3. Release memory
     OH_Drawing_FontDestroy(font);
 }
-
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_1703
+ * @tc.name: testFontMeasureSingleCharacter
+ * @tc.desc: test for testFontMeasureSingleCharacter.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(DrawingNativeFontTest, testFontMeasureSingleCharacter, TestSize.Level1)
+{
+    OH_Drawing_Font* font = OH_Drawing_FontCreate();
+    EXPECT_NE(font, nullptr);
+    OH_Drawing_FontSetTextSize(font, 50); // 50 means font text size
+    const char* strOne = "a";
+    const char* strTwo = "你好";
+    float textWidth = 0.f;
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_SUCCESS;
+    drawingErrorCode = OH_Drawing_FontMeasureSingleCharacter(nullptr, strOne, &textWidth);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(textWidth, 0.f);
+    drawingErrorCode = OH_Drawing_FontMeasureSingleCharacter(font, nullptr, &textWidth);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(textWidth, 0.f);
+    drawingErrorCode = OH_Drawing_FontMeasureSingleCharacter(font, strOne, nullptr);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(textWidth, 0.f);
+    const char* strThree = "";
+    drawingErrorCode = OH_Drawing_FontMeasureSingleCharacter(font, strThree, &textWidth);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(textWidth, 0.f);
+    drawingErrorCode = OH_Drawing_FontMeasureSingleCharacter(font, strOne, &textWidth);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
+    EXPECT_TRUE(textWidth > 0);
+    drawingErrorCode = OH_Drawing_FontMeasureSingleCharacter(font, strTwo, &textWidth);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
+    EXPECT_TRUE(textWidth > 0);
+    OH_Drawing_FontDestroy(font);
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

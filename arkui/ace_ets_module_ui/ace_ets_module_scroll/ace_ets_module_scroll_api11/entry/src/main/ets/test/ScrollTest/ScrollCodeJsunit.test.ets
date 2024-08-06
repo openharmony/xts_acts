@@ -64,7 +64,7 @@ export default function scrollCodeJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "scrollable": "ScrollDirection.Vertical"
+            "scrollable": "Vertical"
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -90,7 +90,7 @@ export default function scrollCodeJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "scrollBar": "BarState.Off"
+            "scrollBar": "Off"
           }
         }
         let innerEvent: events_emitter.InnerEvent = {

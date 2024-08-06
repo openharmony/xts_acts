@@ -20,6 +20,7 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
+      "wearable",
       "default",
       "phone",
       "tablet",

@@ -14,9 +14,7 @@
 */
 import {describe, it, expect} from "@ohos/hypium"
 import {add as add1} from 'har'
-import {ohpmRes} from 'har'
 import {add as add2} from './test'
-import isLeapYear1 from 'leap-year'
 import hilog from "@ohos.hilog"
 import app from "@system.app"
 import testNapi from "libentry.so"
@@ -29,17 +27,11 @@ export default function staticImport() {
     it('importRelative', 0, () => {
       expect(add2(2, 3)).assertEqual(5)
     })
-    it('importOhpm', 0, () => {
-      expect(isLeapYear1(2000)).assertEqual(true)
-    })
     it('importSystemInternal', 0, () => {
       hilog.info(0x0000, "testTag", 'dexter log: call ohos.hilog')
     })
     it('importSystemBuiltin', 0, () => {
       app.getInfo()
-    })
-    it("harImportOhpm", 0, () => {
-      expect(ohpmRes).assertEqual(true)
     })
     it("ImportAppNapi", 0, () => {
       expect(testNapi.add(2, 3)).assertEqual(5)

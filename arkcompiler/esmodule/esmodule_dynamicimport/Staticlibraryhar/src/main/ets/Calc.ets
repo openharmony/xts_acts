@@ -30,9 +30,3 @@ export async function addHarDepHsp(): Promise<number> {
   let c: number = lib.add(3,5)
   return c;
 }
-export async function cryptoHapDepHar(): Promise<string> {
-  let remoteName = '@ohos/crypto-js';
-  let lib: ESObject = await import (remoteName)
-  let c: string = lib.CryptoJS.MD5("123456").toString()
-  return c;
-}

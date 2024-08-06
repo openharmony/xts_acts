@@ -17,19 +17,18 @@ import router from '@ohos.router'
 @Entry
 @Component
 struct router_getStateByUrl2 {
-  @State str:string = ''
+  @State str: string = ''
 
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
 
       Button('pushUrl')
         .id('router_getStateByUrl2_btn')
-        .onClick(()=>{
-          router.pushUrl({url:'MainAbility/pages/router/router_getStateByUrl02', params:{age:18}})
+        .onClick(() => {
+          router.pushUrl({ url: 'MainAbility/pages/router/router_getStateByUrl02', params: { age: 18 } })
         })
 
     }.width('100%').height('100%')
-
 
   }
 }

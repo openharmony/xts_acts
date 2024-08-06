@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function ObjectLink1() {
-  describe('ObjectLink1', function () {
-    beforeEach(async function (done) {
+  describe('ObjectLink1', () => {
+    beforeEach(async (done: Function) => {
       console.info("ObjectLink1 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Zhuang/ObjectLink1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Zhuang/ObjectLink1',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function ObjectLink1() {
         console.info("get ObjectLink1 state pages: " + JSON.stringify(pages));
         if (!("ObjectLink1" == pages.name)) {
           console.info("get ObjectLink1 state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ObjectLink1 success: " + JSON.stringify(result));
         }
@@ -41,12 +54,12 @@ export default function ObjectLink1() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back()
     });
 
-    it('ObjectLink1_0100', 0, async function (done) {
+    it('ObjectLink1_0100', 0, async (done: Function) => {
       console.info('ObjectLink1_0100 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('oBtn1'));
@@ -62,7 +75,7 @@ export default function ObjectLink1() {
 
     });
 
-    it('ObjectLink1_0200', 0, async function (done) {
+    it('ObjectLink1_0200', 0, async (done: Function) => {
       console.info('ObjectLink1_0200 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('oBtn2'));
@@ -79,7 +92,7 @@ export default function ObjectLink1() {
     });
 
 
-    it('ObjectLink1_0300', 0, async function (done) {
+    it('ObjectLink1_0300', 0, async (done: Function) => {
       console.info('ObjectLink1_0300 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('oBtn3'));
@@ -95,7 +108,7 @@ export default function ObjectLink1() {
 
     });
 
-    it('ObjectLink1_0400', 0, async function (done) {
+    it('ObjectLink1_0400', 0, async (done: Function) => {
       console.info('ObjectLink1_0400 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('oBtn4'));
@@ -112,7 +125,7 @@ export default function ObjectLink1() {
     });
 
 
-    it('ObjectLink1_0500', 0, async function (done) {
+    it('ObjectLink1_0500', 0, async (done: Function) => {
       console.info('ObjectLink1_0500 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('zioBtn1'));
@@ -128,10 +141,10 @@ export default function ObjectLink1() {
 
     });
 
-    it('ObjectLink1_0600', 0, async function (done) {
+    it('ObjectLink1_0600', 0, async (done: Function) => {
       console.info('ObjectLink1_0600 START');
       let driver = await UiDriver.create()
-      await driver.swipe(100,500,100,100)
+      await driver.swipe(100, 500, 100, 100)
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(BY.key('zioBtn2'));
       await button.click();
@@ -147,10 +160,10 @@ export default function ObjectLink1() {
     });
 
 
-    it('ObjectLink1_0700', 0, async function (done) {
+    it('ObjectLink1_0700', 0, async (done: Function) => {
       console.info('ObjectLink1_0700 START');
       let driver = await UiDriver.create()
-      await driver.swipe(100,500,100,100)
+      await driver.swipe(100, 500, 100, 100)
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(BY.key('zioBtn3'));
       await button.click();
@@ -165,10 +178,10 @@ export default function ObjectLink1() {
 
     });
 
-    it('ObjectLink1_0800', 0, async function (done) {
+    it('ObjectLink1_0800', 0, async (done: Function) => {
       console.info('ObjectLink1_0800 START');
       let driver = await UiDriver.create()
-      await driver.swipe(100,500,100,100)
+      await driver.swipe(100, 500, 100, 100)
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(BY.key('zioBtn4'));
       await button.click();
@@ -182,7 +195,6 @@ export default function ObjectLink1() {
       done();
 
     });
-
 
 
   })

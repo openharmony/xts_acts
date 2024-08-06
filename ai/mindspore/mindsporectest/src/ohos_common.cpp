@@ -16,7 +16,26 @@
 #include "ohos_common.h"
 #include <numeric>
 #include <inttypes.h>
-
+#include <sys/time.h>
+#include <unistd.h>
+#include <cfloat>
+#include <climits>
+#include <cstdint>
+#include <cstdlib>
+#include <cstring>
+#include <string>
+#include <iostream>
+#include <functional>
+#include <ctime>
+#include <cstdio>
+#include <fstream>
+#include <vector>
+#include <map>
+#include <cmath>
+#include <regex>
+#include <sstream>
+#include <malloc.h>
+#include <numeric>
 /*
  * getDimInfo: get dim info from data file(int64_t)
  * param:
@@ -425,3 +444,30 @@ void PackNCHWToNHWCFp32(const char *src, char *dst, int batch, int plane, int ch
     }
     return;
 }
+
+
+uint64_t getTimeInUs() {
+    const uint64_t MICROSECONDS_PER_SECOND = 1000000;
+    uint64_t time;
+    struct timeval tv;
+    gettimeofday(&tv, nullptr);
+    time = static_cast<uint64_t>(tv.tv_sec) * MICROSECONDS_PER_SECOND + tv.tv_usec;
+    return time;
+}
+
+std::map<std::string, float> CalculateIntVector(std::vector<float> vec) {
+    float max = 0, min = FLT_MAX, sum = 0, avg;
+    for (auto v : vec) {
+        max = fmax(max, v);
+        min = fmin(min, v);
+        sum += v;
+    }
+    avg = vec.size() > 0 ? sum / vec.size() : 0;
+    std::map<std::string, float> result = {
+            {"MIN", min},
+            {"MAX", max},
+            {"AVG", avg},
+            {"SUM", sum}};
+    return result;
+}
+

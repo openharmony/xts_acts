@@ -14,14 +14,17 @@
  */
 
 #include "huks_derive_pbkdf_test.h"
-#include "huks_derive_pbkdf_test_common.h"
 
 #include <gtest/gtest.h>
 
+#include "huks_derive_pbkdf_test_common.h"
+
 using namespace testing::ext;
-namespace Unittest::Pbkdf2Derive {
-class HuksDerivePBKDFTest : public testing::Test {
-public:
+namespace Unittest::Pbkdf2Derive
+{
+class HuksDerivePBKDFTest : public testing::Test
+{
+   public:
     static void SetUpTestCase(void);
 
     static void TearDownTestCase(void);
@@ -31,102 +34,43 @@ public:
     void TearDown();
 };
 
-void HuksDerivePBKDFTest::SetUpTestCase(void)
-{
-}
+void HuksDerivePBKDFTest::SetUpTestCase(void) {}
 
-void HuksDerivePBKDFTest::TearDownTestCase(void)
-{
-}
+void HuksDerivePBKDFTest::TearDownTestCase(void) {}
 
-void HuksDerivePBKDFTest::SetUp()
-{
-    
-}
+void HuksDerivePBKDFTest::SetUp() {}
 
-void HuksDerivePBKDFTest::TearDown()
-{
-}
+void HuksDerivePBKDFTest::TearDown() {}
 
-uint8_t g_saltgen[16] = {
-    0x14, 0x10, 0x11, 0x3a, 0x27, 0x9e, 0xc8, 0x5f, 0xe0, 0xf3, 0x36, 0x17, 0x57, 0x42, 0x8e, 0xff
-};
+uint8_t g_saltgen[16] = {0x14, 0x10, 0x11, 0x3a, 0x27, 0x9e, 0xc8, 0x5f,
+                         0xe0, 0xf3, 0x36, 0x17, 0x57, 0x42, 0x8e, 0xff};
 
 static struct OH_Huks_Param g_genParams001[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_AES
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_DERIVE
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA256
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_ITERATION,
-        .uint32Param = 1000
-    }, {
-        .tag = OH_HUKS_TAG_SALT,
-        .blob = {
-            sizeof(g_saltgen),
-            (uint8_t *)g_saltgen
-        }
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_DERIVE},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_ITERATION, .uint32Param = 1000},
+    {.tag = OH_HUKS_TAG_SALT, .blob = {sizeof(g_saltgen), (uint8_t *)g_saltgen}},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_pbkdf2Params001[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_PBKDF2
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_DERIVE
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA256
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = 256
-    }, {
-        .tag = OH_HUKS_TAG_ITERATION,
-        .int32Param = DERIVE_ITERATION
-    }, {
-        .tag = OH_HUKS_TAG_SALT,
-        .blob = {
-            sizeof(g_saltgen),
-            (uint8_t *)g_saltgen
-        }
-    }, {
-        .tag = OH_HUKS_TAG_DERIVE_KEY_SIZE,
-        .uint32Param = DERIVE_KEY_SIZE_32
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_PBKDF2},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_DERIVE},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = 256},
+    {.tag = OH_HUKS_TAG_ITERATION, .int32Param = DERIVE_ITERATION},
+    {.tag = OH_HUKS_TAG_SALT, .blob = {sizeof(g_saltgen), (uint8_t *)g_saltgen}},
+    {.tag = OH_HUKS_TAG_DERIVE_KEY_SIZE, .uint32Param = DERIVE_KEY_SIZE_32},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_pbkdf2FinishParams001[] = {
-    {
-        .tag = OH_HUKS_TAG_KEY_STORAGE_FLAG,
-        .uint32Param = OH_HUKS_STORAGE_PERSISTENT
-    }, {
-        .tag = OH_HUKS_TAG_KEY_ALIAS,
-        .blob = {
-            strlen("HksPBKDF2DeriveKeyAliasTest001_2"),
-            (uint8_t *)"HksPBKDF2DeriveKeyAliasTest001_2"
-        }
-    }, {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_AES
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = 256
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_DERIVE
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA256
-    }
-};
+    {.tag = OH_HUKS_TAG_KEY_STORAGE_FLAG, .uint32Param = OH_HUKS_STORAGE_PERSISTENT},
+    {.tag = OH_HUKS_TAG_KEY_ALIAS,
+     .blob = {strlen("HksPBKDF2DeriveKeyAliasTest001_2"), (uint8_t *)"HksPBKDF2DeriveKeyAliasTest001_2"}},
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = 256},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_DERIVE},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 
 /**
  * @tc.name: HuksDerivePBKDFTest.Security_HUKS_NAPI_Derive_pbkdf_0100
@@ -135,8 +79,8 @@ static struct OH_Huks_Param g_pbkdf2FinishParams001[] = {
  */
 HWTEST_F(HuksDerivePBKDFTest, Security_HUKS_NAPI_Derive_pbkdf_0100, TestSize.Level0)
 {
-    struct OH_Huks_Blob keyAlias = { strlen("HksPBKDF2DeriveKeyAliasTest001_1"),
-        (uint8_t *)"HksPBKDF2DeriveKeyAliasTest001_1" };
+    struct OH_Huks_Blob keyAlias = {strlen("HksPBKDF2DeriveKeyAliasTest001_1"),
+                                    (uint8_t *)"HksPBKDF2DeriveKeyAliasTest001_1"};
     /* 1. Generate Key */
     struct OH_Huks_ParamSet *genParamSet = nullptr;
     OH_Huks_Result ret = InitParamSet(&genParamSet, g_genParams001, sizeof(g_genParams001) / sizeof(OH_Huks_Param));
@@ -149,7 +93,7 @@ HWTEST_F(HuksDerivePBKDFTest, Security_HUKS_NAPI_Derive_pbkdf_0100, TestSize.Lev
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
     // Finish paramset
     ret = InitParamSet(&pbkdf2FinishParamSet, g_pbkdf2FinishParams001,
-        sizeof(g_pbkdf2FinishParams001) / sizeof(OH_Huks_Param));
+                       sizeof(g_pbkdf2FinishParams001) / sizeof(OH_Huks_Param));
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
 
     // init-update-final
@@ -157,13 +101,13 @@ HWTEST_F(HuksDerivePBKDFTest, Security_HUKS_NAPI_Derive_pbkdf_0100, TestSize.Lev
     /* 3. Delete Key */
     ret = OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "DeleteKey failed.";
-    struct OH_Huks_Blob deleteKeyAlias = { .size = strlen("HksPBKDF2DeriveKeyAliasTest001_2"),
-        .data = (uint8_t *)"HksPBKDF2DeriveKeyAliasTest001_2"};
-    ret = OH_Huks_DeleteKeyItem(&deleteKeyAlias, NULL);
+    struct OH_Huks_Blob deleteKeyAlias = {.size = strlen("HksPBKDF2DeriveKeyAliasTest001_2"),
+                                          .data = (uint8_t *)"HksPBKDF2DeriveKeyAliasTest001_2"};
+    ret = OH_Huks_DeleteKeyItem(&deleteKeyAlias, pbkdf2FinishParamSet);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Delete Final Key failed.";
 
     OH_Huks_FreeParamSet(&genParamSet);
     OH_Huks_FreeParamSet(&pbkdf2ParamSet);
     OH_Huks_FreeParamSet(&pbkdf2FinishParamSet);
 }
-} // namespace Unittest::Pbkdf2Derive
+}  // namespace Unittest::Pbkdf2Derive

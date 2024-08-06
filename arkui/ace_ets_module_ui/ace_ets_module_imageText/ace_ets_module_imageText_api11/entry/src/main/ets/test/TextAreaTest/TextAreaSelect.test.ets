@@ -16,9 +16,9 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
-import { MessageManager, Callback } from '../MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 import { BusinessError } from '@ohos.base';
-import Utils from '../common/MyUtils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function TextAreaSelectTest() {
@@ -42,7 +42,7 @@ export default function TextAreaSelectTest() {
           }).catch((err: BusinessError) => {
             console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
-          await Utils.sleep(2000)
+          await CommonFunc.sleep(2000)
         }
       } catch (err) {
         console.error(`${SUITE} beforeEach error:` + JSON.stringify(err));
@@ -61,7 +61,7 @@ export default function TextAreaSelectTest() {
       let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('TextAreaSelect_Button_1', 10, "")
-      await Utils.sleep(5000)
+      await CommonFunc.sleep(5000)
       let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
       expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("0");
 
@@ -84,15 +84,15 @@ export default function TextAreaSelectTest() {
       globalThis.value.message.notify({
         name: 'requestFocus', value: ''
       });
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       globalThis.value.message.notify({
         name: 'Show selected (-1,0)', value: ''
       });
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       globalThis.value.message.notify({
         name: 'Show selected (-1,0)', value: ''
       });
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
       expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("0");
       await driver.delayMs(waitUiReadyMs)
@@ -117,7 +117,7 @@ export default function TextAreaSelectTest() {
       globalThis.value.message.notify({
         name: 'Show selected (0,3)', value: ''
       });
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
       expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("3");
       await driver.delayMs(waitUiReadyMs)
@@ -142,7 +142,7 @@ export default function TextAreaSelectTest() {
       globalThis.value.message.notify({
         name: 'Show selected (1,3)', value: ''
       });
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
       expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("3");
       await driver.delayMs(waitUiReadyMs)
@@ -166,7 +166,7 @@ export default function TextAreaSelectTest() {
       globalThis.value.message.notify({
         name: 'Show selected (-1,6)', value: ''
       });
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
       expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("6");
       await driver.delayMs(waitUiReadyMs)
@@ -190,7 +190,7 @@ export default function TextAreaSelectTest() {
       globalThis.value.message.notify({
         name: 'Show selected (0,6)', value: ''
       });
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
 
@@ -216,7 +216,7 @@ export default function TextAreaSelectTest() {
       globalThis.value.message.notify({
         name: 'Show selected (-1,8)', value: ''
       });
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
 
       expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("6");
@@ -241,7 +241,7 @@ export default function TextAreaSelectTest() {
       globalThis.value.message.notify({
         name: 'Show selected (0,8)', value: ''
       });
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
 
@@ -266,7 +266,7 @@ export default function TextAreaSelectTest() {
       globalThis.value.message.notify({
         name: 'Show selected (null,null)', value: ''
       });
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
 
@@ -291,7 +291,7 @@ export default function TextAreaSelectTest() {
       globalThis.value.message.notify({
         name: 'Show selected (null,undefined)', value: ''
       });
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
 
@@ -317,7 +317,7 @@ export default function TextAreaSelectTest() {
       globalThis.value.message.notify({
         name: 'Show selected (undefined,null)', value: ''
       });
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
 
@@ -343,7 +343,7 @@ export default function TextAreaSelectTest() {
       globalThis.value.message.notify({
         name: 'Show selected (undefined,undefined)', value: ''
       });
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
 

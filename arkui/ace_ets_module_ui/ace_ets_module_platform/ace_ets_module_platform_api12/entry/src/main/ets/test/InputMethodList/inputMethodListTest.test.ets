@@ -71,6 +71,9 @@ export default function inputMethodListTest() {
       console.info("[inputMethodListTest_0100] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('1');
 
+      await driver.triggerKey(2070);
+      await CommonFunc.sleep(2000);
+
       console.info('inputMethodListTest_0100 END');
       done();
     });

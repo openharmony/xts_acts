@@ -17,6 +17,7 @@ import { BusinessError } from '@ohos.base';
 import text from "@ohos.graphics.text"
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
+import image from '@ohos.multimedia.image'
 
 export default function graphicTextBTest() {
 
@@ -338,6 +339,105 @@ export default function graphicTextBTest() {
       } catch (err) {
         console.info(msg + ' Failed in fontCollection.getGlobalInstance.    Cause: ' + JSON.stringify(err));
         console.info(msg + ' Failed in fontCollection.getGlobalInstance.    Cause: ' + err);
+        expect().assertFail();
+        done()
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_062
+     * @tc.name      : testTextStyle_FontVariation
+     * @tc.desc      : To test interface loadFontSync of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextStyle_FontVariation', 2, async function (done) {
+      let msg = "====testTextStyle_FontVariation===="
+      console.info(msg + ' begin');
+      let myTextShadow: text.TextShadow = {
+        color: {
+          alpha: 255, red: 255, green: 0, blue: 0
+        },
+        point: {
+          x: 15, y: 20
+        },
+        blurRadius: 0.8
+      };
+      console.info(msg + ' myTextShadow ready go');
+      let myRectStyle: text.TextShadow = {
+        color: {
+          alpha: 255, red: 255, green: 0, blue: 0
+        },
+        leftTopRadius: 15,
+        rightTopRadius: 15,
+        rightBottomRadius: 15,
+        leftBottomRadius: 15
+      }
+      console.info(msg + ' myRectStyle ready go');
+      let myFontFeature: text.FontFeature = {
+        name: 'aabb',
+        value: 15
+      }
+      console.info(msg + ' myFontFeature ready go');
+      let myFontVariation: text.FontVariation = {
+        axis: 'KeyWord',
+        value: 26
+      }
+      console.info(msg + ' myFontVariation ready go');
+      try {   
+        console.info(msg + ' Details are ready, carried out!');
+        let myTextStyle : text.TextStyle = {
+          color: {
+            alpha: 255, red: 255, green: 0, blue: 0
+          },
+          fontWeight : text.FontWeight.W100,
+          fontStyle : text.FontStyle.ITALIC,
+          baseline : text.TextBaseline.ALPHABETIC,
+          fontFamilies : Array<string>("123"),
+          fontSize : 30,
+          letterSpacing : 20,
+          wordSpacing : 20,
+          heightScale : 20,
+          halfLeading : true,
+          heightOnly : true,
+          ellipsis : "456",
+          ellipsisMode : text.EllipsisMode.START,
+          locale : "789",
+          textShadows : myTextShadow,
+          backgroundRect: [myRectStyle],
+          baselineShift: 20,
+          fontFeatures: [myFontFeature],
+          fontVariations: [myFontVariation]
+        };
+        let myParagraphStyle: text.ParagraphStyle = {
+          textStyle: myTextStyle,
+          align: 3,
+        };
+        try {
+          let fontCollection = new text.FontCollection;
+          console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + JSON.stringify(fontCollection) )
+          console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + fontCollection )
+          try {
+            let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+            console.log(msg + ' Succeed in text.ParagraphBuilder, This case Pass !')
+            expect(true).assertTrue()
+            done()
+          } catch (err) {
+            console.info(msg + ' Failed in fontCollection.ParagraphBuilder.    Cause: ' + JSON.stringify(err));
+            console.info(msg + ' Failed in fontCollection.ParagraphBuilder.    Cause: ' + err);
+            expect().assertFail();
+            done()
+          }
+        } catch (err) {
+          console.info(msg + ' Failed in fontCollection.loadFontSync.    Cause: ' + JSON.stringify(err));
+          console.info(msg + ' Failed in fontCollection.loadFontSync.    Cause: ' + err);
+          expect().assertFail();
+          done()
+        }
+      } catch (err) {
+        console.info(msg + 'test TextStyle error ' + JSON.stringify(err));
+        console.info(msg + 'test TextStyle error ' + err);
         expect().assertFail();
         done()
       }

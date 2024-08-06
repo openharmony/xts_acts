@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 export default function scale() {
-  describe('scale', function () {
-    beforeEach(async function (done) {
+  describe('scale', () => {
+    beforeEach(async (done: Function) => {
       console.info("scale beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/RenderNode/renderNode001/scale',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RenderNode/renderNode001/scale',
       }
       try {
         router.clear();
@@ -47,7 +47,7 @@ export default function scale() {
      * @tc.type :
      * @tc.size :
      */
-    it('scale_0100', 0, async function (done) {
+    it('scale_0100', 0, async (done: Function) => {
       console.info('scale_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -55,7 +55,7 @@ export default function scale() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_getScale');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[scale_0100] component obj is: " + JSON.stringify(obj));
       console.info("[scale_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('0.5');
@@ -70,7 +70,7 @@ export default function scale() {
      * @tc.type :
      * @tc.size :
      */
-    it('scale_0200', 0, async function (done) {
+    it('scale_0200', 0, async (done: Function) => {
       console.info('scale_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -78,7 +78,7 @@ export default function scale() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_setScale');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[scale_0200] component obj is: " + JSON.stringify(obj));
       console.info("[scale_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('0.5');

@@ -14,14 +14,14 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function StyledString() {
-  describe('StyledString', function () {
-    beforeEach(async function (done) {
+  describe('StyledString', () => {
+    beforeEach(async (done: Function) => {
       console.info("StyledString beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Text/StyledString',
       }
       try {
@@ -40,7 +40,7 @@ export default function StyledString() {
       console.info("StyledString beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("StyledString after each called");
     });
@@ -52,7 +52,7 @@ export default function StyledString() {
      * @tc.type
     * @tc.size
      */
-    it('StyledString_0100', 0, async function (done) {
+    it('StyledString_0100', 0, async (done: Function) => {
       console.info('[StyledString_0100] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -61,29 +61,29 @@ export default function StyledString() {
       await CommonFunc.sleep(1000);
 
       let text1 = getInspectorByKey('gestureId');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('100');
       await CommonFunc.sleep(500);
 
 
       let text2 = getInspectorByKey('decorationId');
-      let Obj2 = JSON.parse(text2);
+      let Obj2: ESObject = JSON.parse(text2);
       expect(Obj2.$attrs.content).assertEqual('1');
       await CommonFunc.sleep(500);
 
       let text3 = getInspectorByKey('textShadowId');
-      let Obj3 = JSON.parse(text3);
+      let Obj3: ESObject = JSON.parse(text3);
       expect(Obj3.$attrs.content).assertEqual('4');
       await CommonFunc.sleep(500);
 
       let text4 = getInspectorByKey('baselineOffsetId');
-      let Obj4 = JSON.parse(text4);
+      let Obj4: ESObject = JSON.parse(text4);
       expect(Obj4.$attrs.content).assertEqual('2');
       await CommonFunc.sleep(500);
 
 
       let text5 = getInspectorByKey('letterSpacingId');
-      let Obj5 = JSON.parse(text5);
+      let Obj5: ESObject = JSON.parse(text5);
       expect(Obj5.$attrs.content).assertEqual('3');
       await CommonFunc.sleep(500);
       console.info('[StyledString_0100] END');

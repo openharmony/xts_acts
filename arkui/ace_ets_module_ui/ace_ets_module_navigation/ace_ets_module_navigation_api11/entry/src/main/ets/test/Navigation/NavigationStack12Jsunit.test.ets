@@ -13,15 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+
 export default function NavigationStack12Jsunit() {
-  describe('NavigationStack12Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('NavigationStack12Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavigationStack12Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/NavigationStack12',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/NavigationStack12',
       }
       try {
         router.clear();
@@ -29,7 +43,7 @@ export default function NavigationStack12Jsunit() {
         console.info("get NavigationStack12Jsunit state pages:" + JSON.stringify(pages));
         if (!("NavigationStack12" == pages.name)) {
           console.info("get NavigationStack12Jsunit state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push NavigationStack12Jsunit success " + JSON.stringify(result));
           await CommonFunc.sleep(3000);
         }
@@ -45,7 +59,7 @@ export default function NavigationStack12Jsunit() {
     * @tc.desc  : NavigationMode is auto single-column mode.
     * @tc.level : Level 3
     */
-    it('NavigationStack12Jsunit_0100', 0, async function (done) {
+    it('NavigationStack12Jsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       await CommonFunc.sleep(500);
@@ -59,9 +73,8 @@ export default function NavigationStack12Jsunit() {
       await buttoncontent.click();
       await CommonFunc.sleep(2000);
       let textcontent = getInspectorByKey('NavigationStack12TextCont');
-      let textobj = JSON.parse(textcontent);
-      console.info('NavigationStack12Jsunit_0100 component textobj is: ' + textobj.$attrs.content);
-      expect(textobj.$attrs.content).assertEqual('clicked1');
+      console.info('NavigationStack12Jsunit_0100 component textobj is: ' + JSON.parse(textcontent).$attrs.content);
+      expect(JSON.parse(textcontent).$attrs.content).assertEqual('clicked1');
       console.info('NavigationStack12Jsunit_0100 END')
       done();
     });

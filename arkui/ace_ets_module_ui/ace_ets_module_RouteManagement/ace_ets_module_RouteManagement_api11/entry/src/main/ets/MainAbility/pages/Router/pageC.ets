@@ -13,12 +13,11 @@
  * limitations under the License.
  */
 import router from '@ohos.router'
+
 @Entry
 @Component
 struct pageC {
   // @State page:RouterState = {index:1}
-
-
   build() {
     Row() {
       Column() {
@@ -30,8 +29,6 @@ struct pageC {
 
       }
       .width('100%')
-
-
     }
     .height('100%')
   }

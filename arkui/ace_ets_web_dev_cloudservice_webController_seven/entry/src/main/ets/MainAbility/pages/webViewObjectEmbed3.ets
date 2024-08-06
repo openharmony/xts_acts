@@ -53,7 +53,7 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_});
     if (this.isNode && this.rootNode) {
-      this.rootNode.build(wrapBuilder(buttonBuilder), { text: 'button1',
+      this.rootNode.build(new WrappedBuilder(MyComponent.buttonBuilder), { text: 'button1',
         text1: 'button2', width : this.width_, height : this.height_ })
       return this.rootNode.getFrameNode();
     } else {
@@ -80,11 +80,14 @@ struct MyComponent {
   @Prop params: Params
   @State bkColor: Color = Color.Red
   @State index: Boolean = false;
-
+  @Builder static buttonBuilder(params: Params) {
+    MyComponent({ params: params })
+      .backgroundColor(Color.Green)
+  }
   build() {
     Column({ space: 3 }) {
       Button(this.params.text)
-        .id('btn1')
+        .id('btnEmbed3')
         .height(100 + 'px')
         .width(400 + 'px')
         .border({ width: 2, color: Color.Red })
@@ -103,11 +106,7 @@ struct MyComponent {
   }
 }
 
-@Builder
-function buttonBuilder(params: Params) {
-  MyComponent({ params: params })
-    .backgroundColor(Color.Green)
-}
+
 
 @Entry
 @Component
@@ -159,6 +158,10 @@ struct webViewObjectEmbed3 {
             console.info('key==>' + this.emitKey)
             this.controller.refresh();
             await Utils.sleep(2000);
+            if ( Utils.isPC ( this.controller ) ) {
+              Utils.emitEvent('error', 8016);
+              return
+            }
             switch (this.emitKey) {
               case 'emitWebViewObjectEmbed03': {
                 try {
@@ -167,7 +170,7 @@ struct webViewObjectEmbed3 {
                   await Utils.sleep(2000);
                   if (this.isChange) {
                     Utils.emitEvent('success', 8016);
-                  } else {
+                    } else {
                     Utils.emitEvent('error', 8016);
                   }
                 } catch (error) {

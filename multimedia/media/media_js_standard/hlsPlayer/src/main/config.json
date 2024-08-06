@@ -50,7 +50,8 @@
             "tablet",
             "tv",
             "wearable",
-            "2in1"
+            "2in1",
+            "wearable"
         ],
         "mainAbility": "ohos.acts.multimedia.media.hlsplayer.MainAbility",
         "distro": {

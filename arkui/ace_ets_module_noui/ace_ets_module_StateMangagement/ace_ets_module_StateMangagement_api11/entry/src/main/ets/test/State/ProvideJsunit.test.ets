@@ -13,17 +13,31 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+
 const waitUiReadyMs = 1000;
 
 export default function ProvideJsunit() {
-  describe('ProvideJsunit', function () {
-    beforeEach(async function (done) {
+  describe('ProvideJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("Provide beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/Provide',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/Provide',
       }
       try {
         router.clear();
@@ -31,7 +45,7 @@ export default function ProvideJsunit() {
         console.info("get Provide state pages: " + JSON.stringify(pages));
         if (!("Provide" == pages.name)) {
           console.info("get Provide state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push Provide page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,16 +54,16 @@ export default function ProvideJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
-      await CommonFunc.sleep(500);      
+      await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('ProvideA_reset'));
       await button.click();
       console.log('reset button click succ')
       await CommonFunc.sleep(1000);
     });
 
-    it('ProvideJsunit_0001', 0, async function (done) {
+    it('ProvideJsunit_0001', 0, async (done: Function) => {
       console.info('[ProvideJsunit_0001] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -69,7 +83,7 @@ export default function ProvideJsunit() {
       let txt_ProvideB1 = await ProvideB1.getText()
       expect(txt_ProvideB1).assertEqual("reviewVotes 1")
       let ProvideB2 = await driver.findComponent(ON.id('ProvideB2'));
-      let txt_ProvideB2= await ProvideB2.getText()
+      let txt_ProvideB2 = await ProvideB2.getText()
       expect(txt_ProvideB2).assertEqual("descent same nickname dif name dif type 0")
       let ProvideB3 = await driver.findComponent(ON.id('ProvideB3'));
       let txt_ProvideB3 = await ProvideB3.getText()
@@ -86,7 +100,7 @@ export default function ProvideJsunit() {
       done();
     });
 
-    it('ProvideJsunit_0002', 0, async function (done) {
+    it('ProvideJsunit_0002', 0, async (done: Function) => {
       console.info('[ProvideJsunit_0002] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -106,7 +120,7 @@ export default function ProvideJsunit() {
       let txt_ProvideB1 = await ProvideB1.getText()
       expect(txt_ProvideB1).assertEqual("reviewVotes 0")
       let ProvideB2 = await driver.findComponent(ON.id('ProvideB2'));
-      let txt_ProvideB2= await ProvideB2.getText()
+      let txt_ProvideB2 = await ProvideB2.getText()
       expect(txt_ProvideB2).assertEqual("descent same nickname dif name dif type 1")
       let ProvideB3 = await driver.findComponent(ON.id('ProvideB3'));
       let txt_ProvideB3 = await ProvideB3.getText()
@@ -123,7 +137,7 @@ export default function ProvideJsunit() {
       done()
     });
 
-    it('ProvideJsunit_0003', 0, async function (done) {
+    it('ProvideJsunit_0003', 0, async (done: Function) => {
       console.info('[ProvideJsunit_0003] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -143,7 +157,7 @@ export default function ProvideJsunit() {
       let txt_ProvideB1 = await ProvideB1.getText()
       expect(txt_ProvideB1).assertEqual("reviewVotes 0")
       let ProvideB2 = await driver.findComponent(ON.id('ProvideB2'));
-      let txt_ProvideB2= await ProvideB2.getText()
+      let txt_ProvideB2 = await ProvideB2.getText()
       expect(txt_ProvideB2).assertEqual("descent same nickname dif name dif type 0")
       let ProvideB3 = await driver.findComponent(ON.id('ProvideB3'));
       let txt_ProvideB3 = await ProvideB3.getText()
@@ -160,7 +174,7 @@ export default function ProvideJsunit() {
       done()
     });
 
-    it('ProvideJsunit_0004', 0, async function (done) {
+    it('ProvideJsunit_0004', 0, async (done: Function) => {
       console.info('[ProvideJsunit_0004] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -180,7 +194,7 @@ export default function ProvideJsunit() {
       let txt_ProvideB1 = await ProvideB1.getText()
       expect(txt_ProvideB1).assertEqual("reviewVotes 0")
       let ProvideB2 = await driver.findComponent(ON.id('ProvideB2'));
-      let txt_ProvideB2= await ProvideB2.getText()
+      let txt_ProvideB2 = await ProvideB2.getText()
       expect(txt_ProvideB2).assertEqual("descent same nickname dif name dif type 0")
       let ProvideB3 = await driver.findComponent(ON.id('ProvideB3'));
       let txt_ProvideB3 = await ProvideB3.getText()
@@ -197,7 +211,7 @@ export default function ProvideJsunit() {
       done()
     });
 
-    it('ProvideJsunit_0005', 0, async function (done) {
+    it('ProvideJsunit_0005', 0, async (done: Function) => {
       console.info('[ProvideJsunit_0005] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -217,7 +231,7 @@ export default function ProvideJsunit() {
       let txt_ProvideB1 = await ProvideB1.getText()
       expect(txt_ProvideB1).assertEqual("reviewVotes 1")
       let ProvideB2 = await driver.findComponent(ON.id('ProvideB2'));
-      let txt_ProvideB2= await ProvideB2.getText()
+      let txt_ProvideB2 = await ProvideB2.getText()
       expect(txt_ProvideB2).assertEqual("descent same nickname dif name dif type 0")
       let ProvideB3 = await driver.findComponent(ON.id('ProvideB3'));
       let txt_ProvideB3 = await ProvideB3.getText()
@@ -234,7 +248,7 @@ export default function ProvideJsunit() {
       done()
     });
 
-    it('ProvideJsunit_0006', 0, async function (done) {
+    it('ProvideJsunit_0006', 0, async (done: Function) => {
       console.info('[ProvideJsunit_0006] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -254,7 +268,7 @@ export default function ProvideJsunit() {
       let txt_ProvideB1 = await ProvideB1.getText()
       expect(txt_ProvideB1).assertEqual("reviewVotes 0")
       let ProvideB2 = await driver.findComponent(ON.id('ProvideB2'));
-      let txt_ProvideB2= await ProvideB2.getText()
+      let txt_ProvideB2 = await ProvideB2.getText()
       expect(txt_ProvideB2).assertEqual("descent same nickname dif name dif type changed")
       let ProvideB3 = await driver.findComponent(ON.id('ProvideB3'));
       let txt_ProvideB3 = await ProvideB3.getText()
@@ -271,7 +285,7 @@ export default function ProvideJsunit() {
       done()
     });
 
-    it('ProvideJsunit_0007', 0, async function (done) {
+    it('ProvideJsunit_0007', 0, async (done: Function) => {
       console.info('[ProvideJsunit_0007] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -291,7 +305,7 @@ export default function ProvideJsunit() {
       let txt_ProvideB1 = await ProvideB1.getText()
       expect(txt_ProvideB1).assertEqual("reviewVotes 0")
       let ProvideB2 = await driver.findComponent(ON.id('ProvideB2'));
-      let txt_ProvideB2= await ProvideB2.getText()
+      let txt_ProvideB2 = await ProvideB2.getText()
       expect(txt_ProvideB2).assertEqual("descent same nickname dif name dif type 0")
       let ProvideB3 = await driver.findComponent(ON.id('ProvideB3'));
       let txt_ProvideB3 = await ProvideB3.getText()
@@ -308,7 +322,7 @@ export default function ProvideJsunit() {
       done()
     });
 
-    it('ProvideJsunit_0008', 0, async function (done) {
+    it('ProvideJsunit_0008', 0, async (done: Function) => {
       console.info('[ProvideJsunit_0008] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -328,7 +342,7 @@ export default function ProvideJsunit() {
       let txt_ProvideB1 = await ProvideB1.getText()
       expect(txt_ProvideB1).assertEqual("reviewVotes 0")
       let ProvideB2 = await driver.findComponent(ON.id('ProvideB2'));
-      let txt_ProvideB2= await ProvideB2.getText()
+      let txt_ProvideB2 = await ProvideB2.getText()
       expect(txt_ProvideB2).assertEqual("descent same nickname dif name dif type 1")
       let ProvideB3 = await driver.findComponent(ON.id('ProvideB3'));
       let txt_ProvideB3 = await ProvideB3.getText()
@@ -345,7 +359,7 @@ export default function ProvideJsunit() {
       done()
     });
 
-    it('ProvideJsunit_0009', 0, async function (done) {
+    it('ProvideJsunit_0009', 0, async (done: Function) => {
       console.info('[ProvideJsunit_0008] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -365,7 +379,7 @@ export default function ProvideJsunit() {
       let txt_ProvideB1 = await ProvideB1.getText()
       expect(txt_ProvideB1).assertEqual("reviewVotes 0")
       let ProvideB2 = await driver.findComponent(ON.id('ProvideB2'));
-      let txt_ProvideB2= await ProvideB2.getText()
+      let txt_ProvideB2 = await ProvideB2.getText()
       expect(txt_ProvideB2).assertEqual("descent same nickname dif name dif type 1")
       let ProvideB3 = await driver.findComponent(ON.id('ProvideB3'));
       let txt_ProvideB3 = await ProvideB3.getText()
@@ -382,7 +396,7 @@ export default function ProvideJsunit() {
       done()
     });
 
-    it('ProvideJsunit_0010', 0, async function (done) {
+    it('ProvideJsunit_0010', 0, async (done: Function) => {
       console.info('[ProvideJsunit_0010] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -402,7 +416,7 @@ export default function ProvideJsunit() {
       let txt_ProvideB1 = await ProvideB1.getText()
       expect(txt_ProvideB1).assertEqual("reviewVotes 0")
       let ProvideB2 = await driver.findComponent(ON.id('ProvideB2'));
-      let txt_ProvideB2= await ProvideB2.getText()
+      let txt_ProvideB2 = await ProvideB2.getText()
       expect(txt_ProvideB2).assertEqual("descent same nickname dif name dif type 0")
       let ProvideB3 = await driver.findComponent(ON.id('ProvideB3'));
       let txt_ProvideB3 = await ProvideB3.getText()
@@ -419,7 +433,7 @@ export default function ProvideJsunit() {
       done();
     });
 
-    it('ProvideJsunit_0011', 0, async function (done) {
+    it('ProvideJsunit_0011', 0, async (done: Function) => {
       console.info('[ProvideJsunit_0011] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -442,7 +456,7 @@ export default function ProvideJsunit() {
       let txt_ProvideB1 = await ProvideB1.getText()
       expect(txt_ProvideB1).assertEqual("reviewVotes 0")
       let ProvideB2 = await driver.findComponent(ON.id('ProvideB2'));
-      let txt_ProvideB2= await ProvideB2.getText()
+      let txt_ProvideB2 = await ProvideB2.getText()
       expect(txt_ProvideB2).assertEqual("descent same nickname dif name dif type changed1")
       let ProvideB3 = await driver.findComponent(ON.id('ProvideB3'));
       let txt_ProvideB3 = await ProvideB3.getText()
@@ -459,7 +473,7 @@ export default function ProvideJsunit() {
       done()
     });
 
-    it('ProvideJsunit_0012', 0, async function (done) {
+    it('ProvideJsunit_0012', 0, async (done: Function) => {
       console.info('[ProvideJsunit_0012] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -482,7 +496,7 @@ export default function ProvideJsunit() {
       let txt_ProvideB1 = await ProvideB1.getText()
       expect(txt_ProvideB1).assertEqual("reviewVotes 0")
       let ProvideB2 = await driver.findComponent(ON.id('ProvideB2'));
-      let txt_ProvideB2= await ProvideB2.getText()
+      let txt_ProvideB2 = await ProvideB2.getText()
       expect(txt_ProvideB2).assertEqual("descent same nickname dif name dif type 0")
       let ProvideB3 = await driver.findComponent(ON.id('ProvideB3'));
       let txt_ProvideB3 = await ProvideB3.getText()

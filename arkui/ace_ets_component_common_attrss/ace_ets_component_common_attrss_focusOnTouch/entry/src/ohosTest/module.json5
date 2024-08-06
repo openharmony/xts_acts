@@ -21,6 +21,7 @@
     "mainElement": "MainAbility",
     "srcEntry": "./ets/Application/AbilityStage.ts",
     "deviceTypes": [
+      "wearable",
       "tablet",
       "default",
       "2in1"

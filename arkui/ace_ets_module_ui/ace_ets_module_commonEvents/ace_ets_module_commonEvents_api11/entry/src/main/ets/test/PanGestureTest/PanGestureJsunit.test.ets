@@ -15,7 +15,7 @@
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function PanGesture3Jsunit() {
   describe('PanGesture3Jsunit', () => {
@@ -34,7 +34,7 @@ export default function PanGesture3Jsunit() {
         if (!("PanGesture" == pages.name)) {
           console.info("get PanGesture state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push PanGesture page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -44,7 +44,7 @@ export default function PanGesture3Jsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("PanGesture after each called");
     });
 
@@ -65,13 +65,13 @@ export default function PanGesture3Jsunit() {
       } catch (err) {
         console.log("[testPanGesture01] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('[testPanGesture01] END');
       done();
     });
 
     it('testPanGesture02', 0, async (done: Function) => {
-      let rect = Utils.getComponentRect('PanGesture')
+      let rect = CommonFunc.getComponentRect('PanGesture')
       console.info("[testPanGesture02] rectInfo is " + JSON.stringify(rect));
       x_value = rect.left + (rect.right - rect.left) / 10
       y_value = rect.top + (rect.bottom - rect.top) / 10
@@ -90,8 +90,8 @@ export default function PanGesture3Jsunit() {
       }
       let callbackTwo = (eventDataOne: events_emitter.EventData) => {
         console.info("[testPanGesture02] get event state result is: " + JSON.stringify(eventDataOne));
-        expect(eventDataOne.data.ACTION).assertEqual(true)
-        expect(eventDataOne.data.EVENT_TYPE).assertEqual('Move')
+        expect(eventDataOne.data?.ACTION).assertEqual(true)
+        expect(eventDataOne.data?.EVENT_TYPE).assertEqual('Move')
       }
       let innerEventTwo: events_emitter.InnerEvent = {
         eventId: 24,
@@ -103,7 +103,7 @@ export default function PanGesture3Jsunit() {
         console.info("[testPanGesture02] on events_emitter err : " + JSON.stringify(err));
       }
       console.info('[testPanGesture02] testSendTouchEvent ' + sendTouchEvent(point));
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       console.info('[testPanGesture02] END');
       done();
     });

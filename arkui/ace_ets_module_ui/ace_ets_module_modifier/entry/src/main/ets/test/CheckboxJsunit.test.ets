@@ -14,27 +14,26 @@
  */
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
 export default function checkboxJsunit() {
-  describe('checkboxTest', function () {
-    beforeEach(async function (done) {
+  describe('checkboxTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("checkboxJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/checkbox',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/checkbox',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get checkBox state pages: " + JSON.stringify(pages));
         if (!("checkbox" == pages.name)) {
           console.info("get checkBox state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push checkBox page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push checkBox page error: " + err);
@@ -44,21 +43,20 @@ export default function checkboxJsunit() {
 
     /**
      * @tc.number ArkUX_Stage_Checkbox_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set mark values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set mark values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Checkbox_0100', 0, async function (done) {
+    it('ArkUX_Stage_Checkbox_0100', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_0100 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('Checkbox_0100');
           console.info("ArkUX_Stage_Checkbox_0100 component strJson is: " + strJson);
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Checkbox_0100 component obj is: " + JSON.stringify(obj));
-          expect(JSON.parse(obj.$attrs.mark).size).assertEqual('50.00vp');
+          console.info("ArkUX_Stage_Checkbox_0100 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+          expect(JSON.parse(JSON.parse(strJson).$attrs.mark).size).assertEqual('50.00vp');
           console.info('ArkUX_Stage_Checkbox_0100 END ');
         } catch (err) {
           expect().assertFail();
@@ -70,20 +68,19 @@ export default function checkboxJsunit() {
 
     /**
      * @tc.number ArkUX_Stage_Checkbox_0400
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set unselectedColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set unselectedColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Checkbox_0400', 0, async function (done) {
+    it('ArkUX_Stage_Checkbox_0400', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_0400 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('Checkbox_0100');
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Checkbox_0400 component obj is: " + JSON.stringify(obj));
-          expect(obj.$attrs.unselectedColor).assertEqual("#FF00FF00");
+          console.info("ArkUX_Stage_Checkbox_0400 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+          expect(JSON.parse(strJson).$attrs.unselectedColor).assertEqual("#FF00FF00");
           console.info('ArkUX_Stage_Checkbox_0400 END ');
         } catch (err) {
           expect().assertFail();
@@ -96,21 +93,20 @@ export default function checkboxJsunit() {
 
     /**
      * @tc.number ArkUX_Stage_Checkbox_0300
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set select values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set select values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Checkbox_0300', 0, async function (done) {
+    it('ArkUX_Stage_Checkbox_0300', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_0300 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('Checkbox_0100');
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Checkbox_0300 component obj is: " + JSON.stringify(obj));
+          console.info("ArkUX_Stage_Checkbox_0300 component obj is: " + JSON.stringify(JSON.parse(strJson)));
 
-          expect(obj.$attrs.select).assertEqual("false");
+          expect(JSON.parse(strJson).$attrs.select).assertEqual("false");
 
           console.info('ArkUX_Stage_Checkbox_0300 END ');
         } catch (err) {
@@ -123,20 +119,19 @@ export default function checkboxJsunit() {
 
     /**
      * @tc.number ArkUX_Stage_Checkbox_attrs_0200
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectedColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectedColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Checkbox_attrs_0200', 0, async function (done) {
+    it('ArkUX_Stage_Checkbox_attrs_0200', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_attrs_0200 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('Checkbox_0100');
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Checkbox_attrs_0200 component obj is: " + JSON.stringify(obj));
-          expect(obj.$attrs.selectedColor).assertEqual("#FFED6F21");
+          console.info("ArkUX_Stage_Checkbox_attrs_0200 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+          expect(JSON.parse(strJson).$attrs.selectedColor).assertEqual("#FFED6F21");
           console.info('ArkUX_Stage_Checkbox_attrs_0200 END ');
         } catch (err) {
           expect().assertFail();
@@ -149,23 +144,22 @@ export default function checkboxJsunit() {
 
     /**
      * @tc.number ArkUX_Stage_Checkbox_attrs_0201
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change unselectedColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change unselectedColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Checkbox_attrs_0201', 0, async function (done) {
+    it('ArkUX_Stage_Checkbox_attrs_0201', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_attrs_0201 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));
       await button.click();
       await Utils.sleep(2000)
 
-      let strJsonNew = getInspectorByKey('Checkbox_0100'); 
-      let objNew = JSON.parse(strJsonNew);
-      console.info("ArkUX_Stage_Checkbox_attrs_0201 component  is: " + JSON.stringify(objNew.$attrs));
-      expect(objNew.$attrs.unselectedColor).assertEqual("#FFED6F21");
+      let strJsonNew = getInspectorByKey('Checkbox_0100');
+      console.info("ArkUX_Stage_Checkbox_attrs_0201 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
+      expect(JSON.parse(strJsonNew).$attrs.unselectedColor).assertEqual("#FFED6F21");
       console.info('ArkUX_Stage_Checkbox_attrs_0201 END');
       done();
     });

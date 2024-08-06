@@ -15,15 +15,15 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import router from '@system.router';
-import CommonFunc from '../MainAbility/utils/Common';
+import router from '@ohos.router';
+import CommonFunc from '../MainAbility/common/Common';
 
 export default function onHeightDidChange() {
 
-  describe('onHeightDidChange', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/onHeightDidChange',
+  describe('onHeightDidChange', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/onHeightDidChange',
       }
       try {
         router.clear();
@@ -42,7 +42,7 @@ export default function onHeightDidChange() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("onHeightDidChange after each called");
     });
@@ -57,7 +57,7 @@ export default function onHeightDidChange() {
      */
 
 
-    it('onHeightDidChange_0100', 0, async function (done) {
+    it('onHeightDidChange_0100', 0, async (done: Function) => {
       console.info('onHeightDidChange_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -68,7 +68,7 @@ export default function onHeightDidChange() {
       await button2.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('chaKan');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('onHeightDidChange success');
       await CommonFunc.sleep(1000);
       let button4 = await driver.findComponent(ON.id('closeModal1'));

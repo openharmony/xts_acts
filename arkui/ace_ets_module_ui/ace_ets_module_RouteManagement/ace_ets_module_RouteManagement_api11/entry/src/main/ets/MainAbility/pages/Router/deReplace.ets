@@ -18,10 +18,10 @@ import router from '@ohos.router'
 @Component
 struct routerReplace_getParams {
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
 
       Button('getParams')
-        .onClick(()=>{
+        .onClick(() => {
           router.getParams();
         })
 

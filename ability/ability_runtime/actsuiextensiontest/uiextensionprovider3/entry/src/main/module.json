@@ -8,7 +8,8 @@
     "deviceTypes": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -43,14 +44,16 @@
         "type": "service",
         "visible": true,
         "srcEntrance": "./ets/testServiceExtAbility/TestServiceExtAbility.ts"
-      },{
+      },
+      {
         "name": "SubServiceExtAbility",
         "icon": "$media:icon",
         "description": "service",
         "type": "service",
         "visible": true,
         "srcEntrance": "./ets/testServiceExtAbility/SubServiceExtAbility.ts"
-      },{
+      },
+      {
         "name": "MultipServiceExtAbility",
         "icon": "$media:icon",
         "description": "service",

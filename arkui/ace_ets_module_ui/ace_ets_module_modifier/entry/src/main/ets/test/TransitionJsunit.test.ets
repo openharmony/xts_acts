@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function transitionJsunit() {
-  describe('common_transitionTest', function () {
-    beforeEach(async function (done) {
+  describe('common_transitionTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("text beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/transition',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/transition',
       }
       try {
         router.clear();
@@ -30,9 +30,8 @@ export default function transitionJsunit() {
         console.info("get transition state pages:" + JSON.stringify(pages));
         if (!("transition" == pages.name)) {
           console.info("get transition state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push transition page result:" + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push transition page error:" + JSON.stringify(err));
@@ -40,20 +39,20 @@ export default function transitionJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("transition after each called");
     });
 
     /**
      * @tc.number transitionTest_0200
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set transition values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set transition values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('transitionTest_0200', 0, async function (done) {
+    it('transitionTest_0200', 0, async (done: Function) => {
       console.info('transitionTest_0200 START');
       let indexEvent = {
         eventId: 233,

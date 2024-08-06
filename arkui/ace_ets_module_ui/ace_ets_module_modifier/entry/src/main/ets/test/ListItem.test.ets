@@ -14,17 +14,17 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from './Utils.ets'
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
 export default function listItemJsunit() {
-  describe('listItemTest', function () {
-    beforeAll(async function (done) {
+  describe('listItemTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("listItemTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/listItem',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/listItem',
       }
       try {
         router.clear();
@@ -32,9 +32,8 @@ export default function listItemJsunit() {
         console.info("get list_item state success " + JSON.stringify(pages));
         if (!("listItem" == pages.name)) {
           console.info("get list_item state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push list_item page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push list_item page error: " + err);
@@ -44,13 +43,13 @@ export default function listItemJsunit() {
 
     /**
      * @tc.number testList_item00051
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selected values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selected values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testList_item00051', 0, async function (done) {
+    it('testList_item00051', 0, async (done: Function) => {
       console.info('select testList_item00051 START');
       let driver = Driver.create();
       let item = await driver.findComponent(ON.id('ListItemKey1'));
@@ -62,32 +61,31 @@ export default function listItemJsunit() {
 
     /**
      * @tc.number testList_item00052
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectable values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectable values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testList_item00052', 0, async function (done) {
+    it('testList_item00052', 0, async (done: Function) => {
       console.info('select testList_item00052 START');
       let strJson = getInspectorByKey('ListItemKey1');
-      let obj = JSON.parse(strJson);
-      console.info("[testList_item00052] obj " + JSON.stringify(obj.$attrs));
+      console.info("[testList_item00052] obj " + JSON.stringify(JSON.parse(strJson).$attrs));
 
-      expect(obj.$attrs.selectable).assertEqual(true);
+      expect(JSON.parse(strJson).$attrs.selectable).assertEqual(true);
       console.info('select testList_item00052 END');
       done();
     });
 
     /**
      * @tc.number testList_item00053
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change selectable values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change selectable values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testList_item00053', 0, async function (done) {
+    it('testList_item00053', 0, async (done: Function) => {
       console.info('testList_item00053 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));
@@ -95,9 +93,8 @@ export default function listItemJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('ListItemKey1'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testList_item00053 component  is: " + JSON.stringify(objNew.$attrs));
-      expect(objNew.$attrs.selectable).assertEqual(false);
+      console.info("testList_item00053 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
+      expect(JSON.parse(strJsonNew).$attrs.selectable).assertEqual(false);
       console.info('testList_item00053 END');
       done();
     });

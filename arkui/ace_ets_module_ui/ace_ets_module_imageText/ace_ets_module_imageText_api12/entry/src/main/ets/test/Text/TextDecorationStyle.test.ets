@@ -14,17 +14,17 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function typeNodeTextDecorationStyleTest() {
-  describe('typeNodeTextDecorationStyleTest', function () {
-    beforeEach(async function (done) {
+  describe('typeNodeTextDecorationStyleTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextDecorationStyleTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/Text/TextDecorationStyle",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/Text/TextDecorationStyle",
       }
       try {
         router.clear();
@@ -55,14 +55,14 @@ export default function typeNodeTextDecorationStyleTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextDecorationStyleTest_0100', 0, async function (done) {
+    it('TextDecorationStyleTest_0100', 0, async (done: Function) => {
       console.info('TextDecorationStyleTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TypeNode_TextDecorationStyleTest');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
       console.info("[ypeNodeTextDecorationStyleTest_0100] component obj is: " , JSON.stringify(obj.$attrs.decoration));
-      let c = JSON.parse(obj.$attrs.decoration).style
+      let c: string = JSON.parse(obj.$attrs.decoration).style
       console.info("[ypeNodeTextDecorationStyleTest_0100] component obj22222 is: " , c);
       expect(c).assertEqual('TextDecorationStyle.DOUBLE');
       console.info('[ypeNodeTextDecorationStyleTest_0100] END');

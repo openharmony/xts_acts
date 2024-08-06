@@ -20,29 +20,29 @@ import events_emitter from '@ohos.events.emitter';
 struct BorderExample {
   @State borderStyle1: BorderStyle | EdgeStyles = BorderStyle.Solid;
   @State borderRadius1: Length | BorderRadiuses = 70;
-  @State border1: BorderOptions = null;
-  @State borderWidth1: EdgeWidths | Length = null;
-  @State borderColor1: ResourceColor | EdgeColors = null;
+  @State border1?: BorderOptions | null = null;
+  @State borderWidth1: EdgeWidths | Length | null = null;
+  @State borderColor1: ResourceColor | EdgeColors| null = null;
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Border page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.border != null) {
-        this.border1 = eventData.data.border;
+      if (eventData.data?.border != null) {
+        this.border1 = eventData.data?.border;
       }
-      if (eventData.data.borderStyle != null) {
-        this.borderStyle1 = eventData.data.borderStyle;
+      if (eventData.data?.borderStyle != null) {
+        this.borderStyle1 = eventData.data?.borderStyle;
       }
-      if (eventData.data.borderWidth != null) {
-        this.borderWidth1 = eventData.data.borderWidth;
+      if (eventData.data?.borderWidth != null) {
+        this.borderWidth1 = eventData.data?.borderWidth;
       }
-      if (eventData.data.borderColor != null) {
-        this.borderColor1 = eventData.data.borderColor;
+      if (eventData.data?.borderColor != null) {
+        this.borderColor1 = eventData.data?.borderColor;
       }
-      if (eventData.data.borderRadius != null) {
-        this.borderRadius1 = eventData.data.borderRadius;
+      if (eventData.data?.borderRadius != null) {
+        this.borderRadius1 = eventData.data?.borderRadius;
       }
       console.info("Border borderStyle state change called:" + JSON.stringify(eventData));
-      switch (eventData.data.borderStyle) {
+      switch (eventData.data?.borderStyle) {
         case 'Dotted':
           this.borderStyle1 = BorderStyle.Dotted;
           break;

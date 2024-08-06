@@ -18,14 +18,13 @@ import { BusinessError } from '@ohos.base'
 @Entry
 @Component
 struct router_back08 {
-
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
       Text('back08')
 
       Button('back')
         .id('router_back08_btn')
-        .onClick(()=>{
+        .onClick(() => {
           try {
             router.showAlertBeforeBackPage({
               message: '确定要返回吗？'
@@ -35,11 +34,10 @@ struct router_back08 {
             let code = (err as BusinessError).code
             console.error(`Invoke showAlertBeforeBackPage failed, code is ${code}, message is ${message}`);
           }
-          router.back(2, {age:18})
+          router.back(2, { age: 18 })
         })
 
     }.width('100%').height('100%')
-
 
   }
 }

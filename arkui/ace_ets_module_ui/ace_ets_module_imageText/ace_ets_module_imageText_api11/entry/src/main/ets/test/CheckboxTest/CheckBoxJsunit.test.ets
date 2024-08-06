@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 const waitUiReadyMs = 1000;
 
 export default function checkBoxJsunit() {
-  describe('CheckBoxJsunit', function () {
-    beforeEach(async function (done) {
+  describe('CheckBoxJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("checkBoxJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/checkBox/checkBoxExample',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/checkBox/checkBoxExample',
       }
       try {
         router.clear();
@@ -42,12 +42,12 @@ export default function checkBoxJsunit() {
       done();
     });
 
-    it('checkBoxJsunit_0100', 0, async function (done) {
+    it('checkBoxJsunit_0100', 0, async (done: Function) => {
        console.info('checkBoxJsunit_0100 START');
        await CommonFunc.sleep(3000);
        // get the checkbox component and test attribute
        let strJson = getInspectorByKey('chek1');
-       let obj = JSON.parse(strJson);
+       let obj: ESObject = JSON.parse(strJson);
        console.info("[checkBoxJsunit_0100'] component obj is: " + JSON.stringify(obj.$attrs.select));
        expect(obj.$attrs.selectedColor).assertEqual('#FFED6F21');
        let driver = Driver.create();
@@ -60,7 +60,7 @@ export default function checkBoxJsunit() {
        done(); 
     });
 
-   it('checkBoxJsunit_0200', 0, async function (done) {
+   it('checkBoxJsunit_0200', 0, async (done: Function) => {
       console.info('checkBoxJsunit_0200 START');
       await CommonFunc.sleep(1000);
       // modify the attribute normal value of checkbox dynamically
@@ -75,13 +75,13 @@ export default function checkBoxJsunit() {
       await CommonFunc.sleep(4000);
       // check the value of changed attribute
       let strJson2 = getInspectorByKey('chek1');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[blankJsunit_0200'] component obj2 is: " + JSON.stringify(obj2.$attrs.selectedColor));
       expect(obj2.$attrs.selectedColor).assertEqual('#FFECAAFF');
       done();
     });
 
-    it('checkBoxJsunit_0300', 0, async function (done) {
+    it('checkBoxJsunit_0300', 0, async (done: Function) => {
       console.info('checkBoxJsunit_0300 START');
       await CommonFunc.sleep(2000);
       // modify the attribute illegal value of checkbox dynamically
@@ -89,13 +89,13 @@ export default function checkBoxJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('chek1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[blankJsunit_0300'] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.selectedColor).assertEqual('#EECCAAFF');
       done();
     });
 
-    it('checkBoxJsunit_0400', 0, async function (done) {
+    it('checkBoxJsunit_0400', 0, async (done: Function) => {
       console.info('checkBoxJsunit_0400 START');
       await CommonFunc.sleep(1000);
       // test the clicking event of checkbox
@@ -107,13 +107,13 @@ export default function checkBoxJsunit() {
       await driver.delayMs(waitUiReadyMs);
       // check the click event by selectedColor
       let strJson = getInspectorByKey('chek1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[blankJsunit_0400'] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.selectedColor).assertEqual('#FFFFFF21');
       done();
     });
     
-    it('checkBoxJsunit_0500', 0, async function (done) {
+    it('checkBoxJsunit_0500', 0, async (done: Function) => {
       console.info('checkBoxJsunit_0300 START');
       await CommonFunc.sleep(2000);
       // verify the enum color
@@ -121,13 +121,13 @@ export default function checkBoxJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('chek1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[blankJsunit_0500'] component obj is: " + JSON.stringify(obj.$attrs.selectedColor));
       expect(obj.$attrs.selectedColor).assertEqual('#FF008000');
       done();
     });
 
-    it('checkBoxJsunit_0600', 0, async function (done) {
+    it('checkBoxJsunit_0600', 0, async (done: Function) => {
       console.info('checkBoxJsunit_0600 START');
       await CommonFunc.sleep(2000);
       // verify the enum color of rgb
@@ -135,13 +135,13 @@ export default function checkBoxJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('chek1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[blankJsunit_0600'] component obj is: " + JSON.stringify(obj.$attrs.selectedColor));
       expect(obj.$attrs.selectedColor).assertEqual('#FFEE82EE');
       done();
     });
 
-    it('checkBoxJsunit_0700', 0, async function (done) {
+    it('checkBoxJsunit_0700', 0, async (done: Function) => {
       console.info('checkBoxJsunit_0700 START');
       await CommonFunc.sleep(1000);
       // more click
@@ -157,7 +157,7 @@ export default function checkBoxJsunit() {
       await driver.delayMs(waitUiReadyMs);
       // check the click event by selectedColor
       let strJson = getInspectorByKey('chek1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[blankJsunit_0700'] component obj is: " + JSON.stringify(obj.$attrs.selectedColor));
       expect(obj.$attrs.selectedColor).assertEqual('#FFFFFF21');
       done();

@@ -327,6 +327,19 @@ export default function TestArkUIAddApi() {
       done()
     })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_UIInputEvent_2400
+     * @tc.name       : TestArkUIAddApi024
+     * @tc.desc       : testing OH_ArkUI Api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('TestArkUIAddApi024', 0, async (done: Function) => {
+      expect(nativeFunc.TestArkUIAddApi024()).assertEqual(0)
+      done()
+    })
+
 
 
   })

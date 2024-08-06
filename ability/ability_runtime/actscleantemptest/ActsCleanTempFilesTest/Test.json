@@ -22,7 +22,12 @@
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
+                "param set persist.sys.abilityms.support.ecologicalrulemgrservice false",
                 "power-shell setmode 602"
+            ],
+            "teardown-command": [
+                "param set persist.sys.abilityms.support.ecologicalrulemgrservice true",
+                "power-shell setmode 601"
             ]
         }
     ]

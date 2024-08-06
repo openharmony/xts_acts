@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function columnJsunit() {
-  describe('columnTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/column',
+  describe('columnTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/column',
       }
       try {
         router.clear();
@@ -30,9 +30,8 @@ export default function columnJsunit() {
         console.info("get column state success " + JSON.stringify(pages));
         if (!("column" == pages.name)) {
           console.info("get column state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push column page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push column page error: " + err);
@@ -42,13 +41,13 @@ export default function columnJsunit() {
 
     /**
      * @tc.number columnTest_0001
-     * @tc.name   Test the properties of components
-     * @tc.desc   set justifyContent values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set justifyContent values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('columnTest_0001', 0, async function (done) {
+    it('columnTest_0001', 0, async (done: Function) => {
 
       console.info('columnTest_0001 START');
       let strJsonNew = getInspectorByKey('column');
@@ -62,13 +61,13 @@ export default function columnJsunit() {
 
     /**
      * @tc.number columnTest_0001
-     * @tc.name   Test the properties of components
-     * @tc.desc   set alignItems values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set alignItems values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('columnTest_0002', 0, async function (done) {
+    it('columnTest_0002', 0, async (done: Function) => {
 
       console.info('columnTest_0002 START');
 
@@ -83,13 +82,13 @@ export default function columnJsunit() {
 
     /**
      * @tc.number columnTest_0003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change justifyContent values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change justifyContent values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('columnTest_0003', 0, async function (done) {
+    it('columnTest_0003', 0, async (done: Function) => {
 
       console.info('columnTest_0003 START');
       let driver = Driver.create();

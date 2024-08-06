@@ -54,7 +54,8 @@
         "deviceType": [
             "default",
             "tablet",
-            "2in1"
+            "2in1",
+            "wearable"
         ],
         "mainAbility": "com.example.l3jsdemo.MainAbility",
         "distro": {

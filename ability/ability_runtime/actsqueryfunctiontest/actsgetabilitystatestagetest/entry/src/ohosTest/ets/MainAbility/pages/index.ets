@@ -16,12 +16,15 @@
 import router from '@ohos.router';
 import file from '@system.file';
 import testsuite from "../../test/List.test"
+
 @Entry
 @Component
 struct Index {
   aboutToAppear() {
   }
+
   @State message: string = 'Hello World'
+
   build() {
     Row() {
       Column() {
@@ -32,14 +35,15 @@ struct Index {
           Text('next page')
             .fontSize(20)
             .fontWeight(FontWeight.Bold)
-        }.type(ButtonType.Capsule)
+        }
+        .type(ButtonType.Capsule)
         .margin({
           top: 20
         })
         .backgroundColor('#0D9FFB')
         .width('35%')
         .height('5%')
-        .onClick(()=>{
+        .onClick(() => {
         })
       }
       .width('100%')

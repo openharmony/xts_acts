@@ -8,9 +8,14 @@
     "deviceTypes": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
-    "requestPermissions": [ {"name": "ohos.permission.INSTALL_BUNDLE"}],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.INSTALL_BUNDLE"
+      }
+    ],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",

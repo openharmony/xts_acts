@@ -16,12 +16,13 @@
     "package": "ohos.faultloggerjs.test",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "srcPath":"",
+    "srcPath": "",
     "deviceType": [
       "tablet",
       "default",
       "phone",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -30,7 +31,7 @@
     },
     "reqPermissions": [
       {
-          "name": "ohos.permission.READ_DFX_SYSEVENT"
+        "name": "ohos.permission.READ_DFX_SYSEVENT"
       }
     ],
     "abilities": [
@@ -56,8 +57,8 @@
         "type": "page",
         "visible": true,
         "launchType": "standard"
-    },
-    {
+      },
+      {
         "orientation": "unspecified",
         "formsEnabled": false,
         "name": ".TestAbility",
@@ -69,33 +70,33 @@
         "type": "page",
         "visible": true,
         "launchType": "standard"
-    }
-],
-"js": [
-  {
-    "pages": [
-      "pages/index/index"
+      }
     ],
-    "name": "default",
-    "window": {
-      "designWidth": 720,
-      "autoDesignWidth": false
-    }
-  },
-  {
-    "pages": [
-      "pages/index/index"
+    "js": [
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": "default",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": false
+        }
+      },
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": ".TestAbility",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": false
+        }
+      }
     ],
-    "name": ".TestAbility",
-    "window": {
-      "designWidth": 720,
-      "autoDesignWidth": false
+    "testRunner": {
+      "name": "OpenHarmonyTestRunner",
+      "srcPath": "TestRunner"
     }
   }
-],
-"testRunner": {
-    "name": "OpenHarmonyTestRunner",
-    "srcPath": "TestRunner"
-}
-}
 }

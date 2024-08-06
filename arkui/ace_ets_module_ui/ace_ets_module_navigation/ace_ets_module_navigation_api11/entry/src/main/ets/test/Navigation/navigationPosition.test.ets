@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function navigationPosition() {
-  describe('navigationPosition', function () {
-    beforeEach(async function (done) {
+  describe('navigationPosition',  () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("navigationPosition beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/navigationPosition',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/navigationPosition',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function navigationPosition() {
         console.info("get navigationPosition state pages: " + JSON.stringify(pages));
         if (!("navigationPosition" == pages.name)) {
           console.info("get navigationPosition state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push navigationPosition page result: " + JSON.stringify(result));
         }
@@ -49,17 +49,17 @@ export default function navigationPosition() {
        * @tc.desc  : Set navBarPosition to Start
        * @tc.level : Level 2
        */
-    it('navigationPosition_001', 0, async function (done) {
+    it('navigationPosition_001', 0, async  (done:Function) =>{
 
       console.info('[navigationPosition_001] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'navBarPositionIndex', value: 0 });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('navigationPosition');
-      let obj = JSON.parse(strJson);
-      console.info("[navigationPosition_001] component obj is: " + JSON.stringify(obj));
+      
+      console.info("[navigationPosition_001] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
-      expect(obj.$attrs.navBarPosition).assertEqual('NavBarPosition.Start');
+      expect(JSON.parse(strJson).$attrs.navBarPosition).assertEqual('NavBarPosition.Start');
 
       console.info('[navigationPosition_001] END');
       done();
@@ -71,16 +71,16 @@ export default function navigationPosition() {
        * @tc.desc  : Set navBarPosition to End
        * @tc.level : Level 2
        */
-    it('navigationPosition_002', 0, async function (done) {
+    it('navigationPosition_002', 0, async  (done:Function) =>{
 
       console.info('[navigationPosition_002] START');
       globalThis.value.message.notify({name:'navBarPositionIndex', value: 1 });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('navigationPosition');
-      let obj = JSON.parse(strJson);
-      console.info("[navigationPosition_002] component obj is: " + JSON.stringify(obj));
+      
+      console.info("[navigationPosition_002] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
-      expect(obj.$attrs.navBarPosition).assertEqual('NavBarPosition.End');
+      expect(JSON.parse(strJson).$attrs.navBarPosition).assertEqual('NavBarPosition.End');
 
       console.info('[navigationPosition_002] END');
       done();

@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,16 +18,18 @@ import router from '@ohos.router'
 @Entry
 @Component
 struct pushPageInit {
-  @State amount:string = '0'
-  @State page:number = 0
-  aboutToAppear(){
+  @State amount: string = '0'
+  @State page: number = 0
+
+  aboutToAppear() {
     this.amount = router.getLength()
     this.page = router.getState().index;
   }
+
   build() {
-    Column({space:5}) {
-      Text(this.amount).id('pushPageInit_amount').fontSize(20).margin({top:50})
-      Text(this.page + '').id('pushPageInit_page').fontSize(20).margin({top:50})
+    Column({ space: 5 }) {
+      Text(this.amount).id('pushPageInit_amount').fontSize(20).margin({ top: 50 })
+      Text(this.page + '').id('pushPageInit_page').fontSize(20).margin({ top: 50 })
       Button("跳转pageA")
         .type(ButtonType.Capsule)
         .id("pushPageInit")
@@ -39,7 +40,6 @@ struct pushPageInit {
         })
 
     }.width('100%').height('100%')
-
 
   }
 }

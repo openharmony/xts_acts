@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -31,8 +31,8 @@ export default function linkJsunit() {
 
   describe('linkTest', () => {
     beforeEach(async () => {
-      let options = {
-        uri: 'MainAbility/pages/Link/Link',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Link/Link',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function linkJsunit() {
         console.info("get Link state success " + JSON.stringify(pages));
         if (!("Link" == pages.name)) {
           console.info("get Link state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push Link page success " + JSON.stringify(result));
         }
       } catch (err) {

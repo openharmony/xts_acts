@@ -15,7 +15,8 @@
 #include "huks_three_stage_test_common.h"
 #ifndef HUKS_AGREE_ECDH_TEST_H
 #define HUKS_AGREE_ECDH_TEST_H
-namespace Unittest::EcdhAgree {
+namespace Unittest::EcdhAgree
+{
 int Security_HUKS_NAPI_Agree_ECDH_0100(void);
-} // namespace Unittest::EcdhAgree
-#endif // HUKS_AGREE_ECDH_TEST_H
+}  // namespace Unittest::EcdhAgree
+#endif  // HUKS_AGREE_ECDH_TEST_H

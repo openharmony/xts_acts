@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function HoverJsunit25() {
-  describe('HoverJsunit25', function () {
-   beforeEach(async function (done) {
+  describe('HoverJsunit25', () => {
+   beforeEach(async (done: Function) => {
      console.info("HoverJsunit beforeEach start");
-     let options = {
-       uri: 'MainAbility/pages/Hover/Hover25',
+     let options: router.RouterOptions = {
+       url: 'MainAbility/pages/Hover/Hover25',
      }
      try {
        router.clear();
@@ -43,12 +43,12 @@ export default function HoverJsunit25() {
      done();
    });
 
-    it('HoverJsunit_0100', 0, async function (done) {
+    it('HoverJsunit_0100', 0, async (done: Function) => {
       console.info('HoverJsunit_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('hover25');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[HoverJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[HoverJsunit25sun] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FF0000FF');
@@ -56,7 +56,7 @@ export default function HoverJsunit25() {
       done();
     });
 
-    it('HoverJsunit_0200', 0, async function (done) {
+    it('HoverJsunit_0200', 0, async (done: Function) => {
       console.info('HoverJsunit_0200 START');
       let driver = await Driver.create()
       let buttonCl = await driver.findComponent(ON.id('hover25'));
@@ -66,7 +66,7 @@ export default function HoverJsunit25() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('hover25');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[HoverJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[HoverJsunit_0200] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');

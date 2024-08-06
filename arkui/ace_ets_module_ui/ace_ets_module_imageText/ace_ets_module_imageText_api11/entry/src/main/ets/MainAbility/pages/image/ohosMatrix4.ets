@@ -51,20 +51,20 @@ struct ohosMatrix4 {
     console.info("transFormExample page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
       console.info("eventData value is");
-      if (eventData.data.matrix2 != null && eventData.data.matrix3 != null) {
-        let matrixV = Matrix4.identity().translate(eventData.data.matrix2);
+      if (eventData.data?.matrix2 != null && eventData.data?.matrix3 != null) {
+        let matrixV = Matrix4.identity().translate(eventData.data?.matrix2);
         if (matrixV != null) {
-          this.matrix2 = Matrix4.identity().translate(eventData.data.matrix2).copy();
-          this.matrix3 = Matrix4.identity().scale(eventData.data.matrix3).copy();
+          this.matrix2 = Matrix4.identity().translate(eventData.data?.matrix2).copy();
+          this.matrix3 = Matrix4.identity().scale(eventData.data?.matrix3).copy();
         }
       } else {
         console.info("this.matrix value is not");
       }
-      if (eventData.data.rotateValue != null) {
-        this.rotateValue = JSON.parse(eventData.data.rotateValue);
+      if (eventData.data?.rotateValue != null) {
+        this.rotateValue = JSON.parse(eventData.data?.rotateValue);
       }
-      if (eventData.data.scaleValue != null) {
-        this.scaleValue = JSON.parse(eventData.data.scaleValue);
+      if (eventData.data?.scaleValue != null) {
+        this.scaleValue = JSON.parse(eventData.data?.scaleValue);
       }
     }
   }
@@ -147,7 +147,7 @@ struct ohosMatrix4 {
             console.info("click to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("click action state err: " + JSON.stringify(err.message))
+            console.info("click action state err: " + JSON.stringify((err as Error)?.message))
           }
         }).backgroundColor(0x2788D9).key('rotate5')
       Image('/images/bg.jpg')

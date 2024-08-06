@@ -18,12 +18,13 @@
 #include <gtest/gtest.h>
 
 using namespace testing::ext;
-namespace Unittest::RsaSignVerify {
+namespace Unittest::RsaSignVerify
+{
 OH_Huks_Result HksTestSignVerify(struct OH_Huks_Blob *keyAlias, struct OH_Huks_ParamSet *paramSet,
-    const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData, bool isSign)
+                                 const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData, bool isSign)
 {
     uint8_t tmpHandle[sizeof(uint64_t)] = {0};
-    struct OH_Huks_Blob handle = { sizeof(uint64_t), tmpHandle };
+    struct OH_Huks_Blob handle = {sizeof(uint64_t), tmpHandle};
     OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, paramSet, &handle, nullptr);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Init failed.";
     if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
@@ -45,12 +46,13 @@ OH_Huks_Result HksTestSignVerify(struct OH_Huks_Blob *keyAlias, struct OH_Huks_P
     return ret;
 }
 
-OH_Huks_Result HksRsaSignVerifyTestNormalCase(struct OH_Huks_Blob keyAlias,
-    struct OH_Huks_ParamSet *genParamSet, struct OH_Huks_ParamSet *signParamSet, struct OH_Huks_ParamSet *verifyParamSet)
+OH_Huks_Result HksRsaSignVerifyTestNormalCase(struct OH_Huks_Blob keyAlias, struct OH_Huks_ParamSet *genParamSet,
+                                              struct OH_Huks_ParamSet *signParamSet,
+                                              struct OH_Huks_ParamSet *verifyParamSet)
 {
-    struct OH_Huks_Blob inData = { g_inData.length(), (uint8_t *)g_inData.c_str() };
+    struct OH_Huks_Blob inData = {g_inData.length(), (uint8_t *)g_inData.c_str()};
     uint8_t tmpIn[] = "tempIn";
-    struct OH_Huks_Blob finishInData = { 0, tmpIn };
+    struct OH_Huks_Blob finishInData = {0, tmpIn};
 
     /* 1. Generate Key */
     // Generate Key
@@ -60,7 +62,7 @@ OH_Huks_Result HksRsaSignVerifyTestNormalCase(struct OH_Huks_Blob keyAlias,
     /* 2. Sign Three Stage */
     // Init
     uint8_t handleS[sizeof(uint64_t)] = {0};
-    struct OH_Huks_Blob handleSign = { sizeof(uint64_t), handleS };
+    struct OH_Huks_Blob handleSign = {sizeof(uint64_t), handleS};
     ret = OH_Huks_InitSession(&keyAlias, signParamSet, &handleSign, nullptr);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Init failed.";
     // Update loop
@@ -68,26 +70,26 @@ OH_Huks_Result HksRsaSignVerifyTestNormalCase(struct OH_Huks_Blob keyAlias,
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Update failed.";
     // Finish
     uint8_t outDataS[RSA_COMMON_SIZE] = {0};
-    struct OH_Huks_Blob outDataSign = { RSA_COMMON_SIZE, outDataS };
+    struct OH_Huks_Blob outDataSign = {RSA_COMMON_SIZE, outDataS};
     ret = OH_Huks_FinishSession(&handleSign, signParamSet, &finishInData, &outDataSign);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Finish failed.";
 
     /* 3. Export Public Key */
     uint8_t pubKey[OH_HUKS_RSA_KEY_SIZE_1024] = {0};
-    struct OH_Huks_Blob publicKey = { OH_HUKS_RSA_KEY_SIZE_1024, pubKey };
+    struct OH_Huks_Blob publicKey = {OH_HUKS_RSA_KEY_SIZE_1024, pubKey};
     ret = OH_Huks_ExportPublicKeyItem(&keyAlias, genParamSet, &publicKey);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "ExportPublicKey failed.";
 
     /* 4. Import Key */
     char newKey[] = "RSA_Sign_Verify_Import_KeyAlias";
-    struct OH_Huks_Blob newKeyAlias = { .size = strlen(newKey), .data = (uint8_t *)newKey };
+    struct OH_Huks_Blob newKeyAlias = {.size = strlen(newKey), .data = (uint8_t *)newKey};
     ret = OH_Huks_ImportKeyItem(&newKeyAlias, verifyParamSet, &publicKey);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "ImportKey failed";
 
     /* 5. Verify Three Stage */
     // Init
     uint8_t handleV[sizeof(uint64_t)] = {0};
-    struct OH_Huks_Blob handleVerify = { sizeof(uint64_t), handleV };
+    struct OH_Huks_Blob handleVerify = {sizeof(uint64_t), handleV};
     ret = OH_Huks_InitSession(&newKeyAlias, verifyParamSet, &handleVerify, nullptr);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Init failed.";
     // Update loop
@@ -95,7 +97,7 @@ OH_Huks_Result HksRsaSignVerifyTestNormalCase(struct OH_Huks_Blob keyAlias,
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Update failed.";
     // Finish
     uint8_t temp[] = "out";
-    struct OH_Huks_Blob verifyOut = { sizeof(temp), temp };
+    struct OH_Huks_Blob verifyOut = {sizeof(temp), temp};
     ret = OH_Huks_FinishSession(&handleVerify, verifyParamSet, &outDataSign, &verifyOut);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Finish failed.";
 
@@ -106,14 +108,12 @@ OH_Huks_Result HksRsaSignVerifyTestNormalCase(struct OH_Huks_Blob keyAlias,
     return ret;
 }
 
-OH_Huks_Result HksRSASignVerifyTestAbnormalCase(struct OH_Huks_Blob keyAlias,
-    struct OH_Huks_ParamSet *genParamSet, struct OH_Huks_ParamSet *signParamSet, struct OH_Huks_ParamSet *verifyParamSet)
+OH_Huks_Result HksRSASignVerifyTestAbnormalCase(struct OH_Huks_Blob keyAlias, struct OH_Huks_ParamSet *genParamSet,
+                                                struct OH_Huks_ParamSet *signParamSet,
+                                                struct OH_Huks_ParamSet *verifyParamSet)
 {
-    struct OH_Huks_Blob inData = {
-        g_inData.length(),
-        (uint8_t *)g_inData.c_str()
-    };
-    struct OH_Huks_Blob finishInData = { 0, NULL };
+    struct OH_Huks_Blob inData = {g_inData.length(), (uint8_t *)g_inData.c_str()};
+    struct OH_Huks_Blob finishInData = {0, NULL};
 
     /* 1. Generate Key */
     // Generate Key
@@ -123,7 +123,7 @@ OH_Huks_Result HksRSASignVerifyTestAbnormalCase(struct OH_Huks_Blob keyAlias,
     /* 2. Sign Three Stage */
     // Init
     uint8_t handleS[sizeof(uint64_t)] = {0};
-    struct OH_Huks_Blob handleSign = { sizeof(uint64_t), handleS };
+    struct OH_Huks_Blob handleSign = {sizeof(uint64_t), handleS};
     ret = OH_Huks_InitSession(&keyAlias, signParamSet, &handleSign, nullptr);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Init failed.";
     // Update loop
@@ -131,7 +131,7 @@ OH_Huks_Result HksRSASignVerifyTestAbnormalCase(struct OH_Huks_Blob keyAlias,
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Update failed.";
     // Finish
     uint8_t outDataS[RSA_COMMON_SIZE] = {0};
-    struct OH_Huks_Blob outDataSign = { RSA_COMMON_SIZE, outDataS };
+    struct OH_Huks_Blob outDataSign = {RSA_COMMON_SIZE, outDataS};
     ret = OH_Huks_FinishSession(&handleSign, signParamSet, &finishInData, &outDataSign);
     EXPECT_NE(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Finish failed.";
     ret = OH_Huks_AbortSession(&handleSign, signParamSet);
@@ -139,20 +139,20 @@ OH_Huks_Result HksRSASignVerifyTestAbnormalCase(struct OH_Huks_Blob keyAlias,
 
     /* 3. Export Public Key */
     uint8_t pubKey[OH_HUKS_RSA_KEY_SIZE_1024] = {0};
-    struct OH_Huks_Blob publicKey = { OH_HUKS_RSA_KEY_SIZE_1024, pubKey };
+    struct OH_Huks_Blob publicKey = {OH_HUKS_RSA_KEY_SIZE_1024, pubKey};
     ret = OH_Huks_ExportPublicKeyItem(&keyAlias, genParamSet, &publicKey);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "ExportPublicKey failed.";
 
     /* 4. Import Key */
     char newKey[] = "RSA_Sign_Verify_Import_KeyAlias";
-    struct OH_Huks_Blob newKeyAlias = { .size = strlen(newKey), .data = (uint8_t *)newKey };
+    struct OH_Huks_Blob newKeyAlias = {.size = strlen(newKey), .data = (uint8_t *)newKey};
     ret = OH_Huks_ImportKeyItem(&newKeyAlias, verifyParamSet, &publicKey);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "ImportKey failed";
 
     /* 5. Verify Three Stage */
     // Init
     uint8_t handleV[sizeof(uint64_t)] = {0};
-    struct OH_Huks_Blob handleVerify = { sizeof(uint64_t), handleV };
+    struct OH_Huks_Blob handleVerify = {sizeof(uint64_t), handleV};
     ret = OH_Huks_InitSession(&newKeyAlias, verifyParamSet, &handleVerify, nullptr);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Init failed.";
     // Update loop
@@ -160,7 +160,7 @@ OH_Huks_Result HksRSASignVerifyTestAbnormalCase(struct OH_Huks_Blob keyAlias,
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Update failed.";
     // Finish
     uint8_t temp[] = "out";
-    struct OH_Huks_Blob verifyOut = { sizeof(temp), temp };
+    struct OH_Huks_Blob verifyOut = {sizeof(temp), temp};
     ret = OH_Huks_FinishSession(&handleVerify, verifyParamSet, &outDataSign, &verifyOut);
     EXPECT_NE(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Finish failed.";
     ret = OH_Huks_AbortSession(&handleVerify, verifyParamSet);
@@ -172,4 +172,4 @@ OH_Huks_Result HksRSASignVerifyTestAbnormalCase(struct OH_Huks_Blob keyAlias,
 
     return ret;
 }
-}
+}  // namespace Unittest::RsaSignVerify

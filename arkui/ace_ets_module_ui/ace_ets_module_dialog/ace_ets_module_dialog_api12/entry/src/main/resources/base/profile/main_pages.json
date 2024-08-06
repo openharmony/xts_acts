@@ -39,7 +39,6 @@
     "MainAbility/pages/CustomDialog/CustomDialogRouter",
     "MainAbility/pages/Menu/MenuApi1",
     "MainAbility/pages/Menu/menuItemDivider",
-
     "MainAbility/pages/Popup/PopupApi/PopupApi",
     "MainAbility/pages/Menu/MenuApi/IconApi",
     "MainAbility/pages/Popup/DismissReason",
@@ -52,6 +51,8 @@
     "MainAbility/pages/UIContext/openBindSheet",
     "MainAbility/pages/UIContext/openCustomDialog",
     "MainAbility/pages/UIContext/updateBindSheet",
-    "MainAbility/pages/UIContext/updateCustomDialog"
+    "MainAbility/pages/UIContext/updateCustomDialog",
+    "MainAbility/pages/Menu/MenuApi/subMenuExpandingMode_STACK_EXPAND",
+    "MainAbility/pages/Dialog/InterstitialDialogAction"
   ]
 }

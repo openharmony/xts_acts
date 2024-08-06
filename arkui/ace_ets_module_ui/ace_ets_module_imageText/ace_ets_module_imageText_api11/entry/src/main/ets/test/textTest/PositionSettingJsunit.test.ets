@@ -15,11 +15,11 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 class Data1 {
-  x: number | string;
-  y: number | string;
+  x: number | string = 0;
+  y: number | string = 0;
 }
 
 export default function positionSettingJsunit() {
@@ -36,7 +36,7 @@ export default function positionSettingJsunit() {
         if (!("positionSetting" == pages.name)) {
           console.info("get positionSetting state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push positionSetting page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -46,13 +46,13 @@ export default function positionSettingJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("positionSetting after each called");
     });
 
     it('testPositionSetting001', 0, async (done: Function) => {
       console.info('[testPositionSetting001] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textAlign');
       console.info("[testPositionSetting001] component strJson:" + strJson);
       console.info("[testPositionSetting001] textAlign: " + JSON.parse(strJson)
@@ -65,7 +65,7 @@ export default function positionSettingJsunit() {
 
     it('testPositionSetting002', 0, async (done: Function) => {
       console.info('[testPositionSetting002] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('rowDirection');
       console.info("[testPositionSetting002] component strJson:" + strJson);
       console.info("[testPositionSetting002] rowDirection: " + JSON.parse(strJson).$attrs.direction);
@@ -91,7 +91,7 @@ export default function positionSettingJsunit() {
       } catch (err) {
         console.log("[testPositionSetting003] change component data error: " + err.message);
       }
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJson: string = getInspectorByKey('textAlign');
       console.info("[testPositionSetting003] component strJson:" + strJson);
       console.info("[testPositionSetting003] textAlign: " + JSON.parse(strJson).$attrs.textAlign);
@@ -102,7 +102,7 @@ export default function positionSettingJsunit() {
 
     it('testPositionSetting004', 0, async (done: Function) => {
       console.info('[testPositionSetting004] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -118,7 +118,7 @@ export default function positionSettingJsunit() {
       } catch (err) {
         console.log("[testPositionSetting004] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('rowDirection');
       console.info("[testPositionSetting004] component strJson:" + strJson);
       console.info("[testPositionSetting004] rowDirection: " + JSON.parse(strJson).$attrs.direction);
@@ -129,7 +129,7 @@ export default function positionSettingJsunit() {
 
     it('testPositionSetting005', 0, async (done: Function) => {
       console.info('[testPositionSetting005] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('position1');
       console.info("[testPositionSetting005] component strJson:" + strJson);
       console.info("[testPositionSetting005] position: " + JSON.stringify(JSON.parse(strJson).$attrs.position));
@@ -146,7 +146,7 @@ export default function positionSettingJsunit() {
 
     it('testPositionSetting006', 0, async (done: Function) => {
       console.info('[testPositionSetting006] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let data: Data1 = {
           x: 10, y: 25
@@ -169,7 +169,7 @@ export default function positionSettingJsunit() {
       } catch (err) {
         console.log("[testPositionSetting006] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('position1');
       console.info("[testPositionSetting006] component strJson:" + strJson);
       console.info("[testPositionSetting006] position1: " + JSON.stringify(JSON.parse(strJson).$attrs.position));
@@ -185,7 +185,7 @@ export default function positionSettingJsunit() {
 
     it('testPositionSetting007', 0, async (done: Function) => {
       console.info('[testPositionSetting007] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('markAnchor');
       console.info("[testPositionSetting007] component strJson:" + strJson);
       console.info("[testPositionSetting007] position: " + JSON.stringify(JSON.parse(strJson).$attrs.markAnchor));
@@ -197,7 +197,7 @@ export default function positionSettingJsunit() {
 
     it('testPositionSetting008', 0, async (done: Function) => {
       console.info('[testPositionSetting008] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let data: Data1 = {
           x: 0, y: 0
@@ -216,7 +216,7 @@ export default function positionSettingJsunit() {
       } catch (err) {
         console.log("[testPositionSetting008] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('markAnchor');
       console.info("[testPositionSetting008] component strJson:" + strJson);
       console.info("[testPositionSetting008] markAnchor: " + JSON.stringify(JSON.parse(strJson).$attrs.markAnchor));
@@ -228,7 +228,7 @@ export default function positionSettingJsunit() {
 
     it('testPositionSetting009', 0, async (done: Function) => {
       console.info('[testPositionSetting009] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('offset');
       console.info("[testPositionSetting009] component strJson:" + strJson);
       console.info("[testPositionSetting009] offset: " + JSON.stringify(JSON.parse(strJson).$attrs.offset));
@@ -240,7 +240,7 @@ export default function positionSettingJsunit() {
 
     it('testPositionSetting010', 0, async (done: Function) => {
       console.info('[testPositionSetting010] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let data: Data1 = {
           x: 150, y: 10
@@ -259,7 +259,7 @@ export default function positionSettingJsunit() {
       } catch (err) {
         console.log("[testPositionSetting010] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('offset');
       console.info("[testPositionSetting010] component strJson:" + strJson);
       console.info("[testPositionSetting010] offset: " + JSON.stringify(JSON.parse(strJson).$attrs.offset));
@@ -271,7 +271,7 @@ export default function positionSettingJsunit() {
 
     it('testPositionSetting011', 0, async (done: Function) => {
       console.info('[testPositionSetting011] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('opacity');
       console.info("[testPositionSetting011] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.opacity).assertEqual(1);
@@ -296,7 +296,7 @@ export default function positionSettingJsunit() {
       } catch (err) {
         console.log("[testPositionSetting012] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('opacity');
       console.info("[testPositionSetting012] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.opacity).assertEqual(0.7);

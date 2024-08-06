@@ -19,7 +19,7 @@ import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import input from '@ohos.multimodalInput.keyCode';
 import { BusinessError } from '@ohos.base';
-import Utils from '../../TestAbility/common/MyUtils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 
@@ -83,7 +83,7 @@ export default function ShortcutKeyTest() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(2000)
+      await CommonFunc.sleep(2000)
     });
 
     /*
@@ -96,8 +96,8 @@ export default function ShortcutKeyTest() {
       console.info(`${SUITE} ${CASE} START`);
 
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.msg).assertEqual('Ctrl_B');
-        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
+        expect(event.data?.msg).assertEqual('Ctrl_B');
+        console.info(`${SUITE} ${CASE} event.data?.msg:` + event.data?.msg);
       }
       let event: events_emitter.InnerEvent = {
         eventId: baseEvent,
@@ -120,8 +120,8 @@ export default function ShortcutKeyTest() {
       console.info(`${SUITE} ${CASE} START`);
 
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.msg).assertEqual('Shift_1');
-        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
+        expect(event.data?.msg).assertEqual('Shift_1');
+        console.info(`${SUITE} ${CASE} event.data?.msg:` + event.data?.msg);
       }
       let event: events_emitter.InnerEvent = {
         eventId: 72002,
@@ -144,8 +144,8 @@ export default function ShortcutKeyTest() {
       console.info(`${SUITE} ${CASE} START`);
 
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.msg).assertEqual('Alt_Q');
-        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
+        expect(event.data?.msg).assertEqual('Alt_Q');
+        console.info(`${SUITE} ${CASE} event.data?.msg:` + event.data?.msg);
       }
       let event: events_emitter.InnerEvent = {
         eventId: 72003,
@@ -174,8 +174,8 @@ export default function ShortcutKeyTest() {
         let item = functionKey[i]
 
         let callback = (event: events_emitter.EventData) => {
-          expect(event.data.msg).assertEqual('Ctrl_' + FunctionKey[item]);
-          console.info(`${SUITE} ${CASE} event.data.msg:` + i + ',' + event.data.msg);
+          expect(event.data?.msg).assertEqual('Ctrl_' + FunctionKey[item]);
+          console.info(`${SUITE} ${CASE} event.data?.msg:` + i + ',' + event.data?.msg);
           if (i == end - 1) {
           }
         }

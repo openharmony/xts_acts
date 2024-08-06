@@ -17,21 +17,20 @@ import router from '@ohos.router'
 @Entry
 @Component
 struct router_getStateByUrl14a {
-  @State str:string = ''
+  @State str: string = ''
 
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
       Text('getStateByUrl14a')
 
       Button('go to next page')
         .id('router_getStateByUrl14a_btn')
-        .onClick(()=>{
-          router.pushUrl({url:'MainAbility/pages/router/router_getStateByUrl14b', params:{age:18}})
+        .onClick(() => {
+          router.pushUrl({ url: 'MainAbility/pages/router/router_getStateByUrl14b', params: { age: 18 } })
         })
 
 
     }.width('100%').height('100%')
-
 
   }
 }

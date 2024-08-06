@@ -15,22 +15,16 @@
 
 import {describe, it, expect} from '@ohos/hypium'
 import userAuthNorth from '@ohos.userIAM.userAuth'
-import deviceInfo from '@ohos.deviceInfo'
 
 let UserAuthKit = new userAuthNorth.UserAuth();
-
-let productSeriesInfo = deviceInfo.productSeries;
-console.info('the value of the deviceinfo productSeries is :' + productSeriesInfo);
-
-let productModelInfo = deviceInfo.productModel;
-console.info('the value of the deviceinfo productModel is :' + productModelInfo);
 
 export default function userauthTest() {
     describe('userauthTest', function () {
 
         /*
             * @tc.number    : Security_IAM_PIN_Kit_Func_0101
-            * @tc.name      : Kit interface get version
+            * @tc.name      : kit interface get version
+            * @tc.desc      : A normal response is expected
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -50,58 +44,58 @@ export default function userauthTest() {
 
         /*
             * @tc.number    : Security_IAM_PIN_Kit_Func_0102
-            * @tc.name      : Kit interface get AvailabeStatus
+            * @tc.name      : kit interface get AvailabeStatus
+            * @tc.desc      : Abnormal testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
         */
         it('Security_IAM_PIN_Kit_Func_0102', 0, async function (done) {
             console.info('testFace Security_IAM_PIN_Kit_Func_0102 start');
-            if (productSeriesInfo != "NOH" && productSeriesInfo != "HYM" && productSeriesInfo != "HXX") {
-                let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT];
-                let level = [userAuthNorth.AuthTrustLevel.ATL1, userAuthNorth.AuthTrustLevel.ATL2, userAuthNorth.AuthTrustLevel.ATL3];
-                let availabeStatus;
-                for (let idx0 = 0; idx0 < authType.length; idx0++) {
-                    for (let idx1 = 0; idx1 < level.length; idx1++) {
-                        try {
-                            console.info('Security_IAM_PIN_Kit_Func_0102 authtype:' + authType[idx0] + 'trustlevel:' + level[idx1])
-                            availabeStatus = UserAuthKit.getAvailableStatus(authType[idx0], level[idx1]);
-                            console.info(`Security_IAM_PIN_Kit_Func_0102 ${availabeStatus}`)
-                            expect(availabeStatus).assertEqual(userAuthNorth.ResultCode.NOT_ENROLLED);
-                        } catch (e) {
-                            console.info(`Security_IAM_PIN_Kit_Func_0102 e ${JSON.stringify(e)}`)
-                            console.log("Security_IAM_PIN_Kit_Func_0102 throw fail " + 'authType:' + authType[idx0] + 'trustlevel:' + level[idx1] + 'e.code:' + e.code);
-                            expect(e.code).assertEqual(userAuthNorth.ResultCode.NOT_ENROLLED);
-                        }
-                        done();
+            let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT];
+            let level = [userAuthNorth.AuthTrustLevel.ATL1, userAuthNorth.AuthTrustLevel.ATL2, userAuthNorth.AuthTrustLevel.ATL3];
+            let availabeStatus;
+            for (let idx0 = 0; idx0 < authType.length; idx0++) {
+                for (let idx1 = 0; idx1 < level.length; idx1++) {
+                    try {
+                        console.info('Security_IAM_PIN_Kit_Func_0102 authtype:' + authType[idx0] + 'trustlevel:' + level[idx1])
+                        availabeStatus = UserAuthKit.getAvailableStatus(authType[idx0], level[idx1]);
+                        console.info(`Security_IAM_PIN_Kit_Func_0102 ${availabeStatus}`)
+                        expect(availabeStatus).assertEqual(userAuthNorth.ResultCode.NOT_ENROLLED);
+                    } catch (e) {
+                        console.info(`Security_IAM_PIN_Kit_Func_0102 e ${JSON.stringify(e)}`)
+                        console.log("Security_IAM_PIN_Kit_Func_0102 throw fail " + 'authType:' + authType[idx0] + 'trustlevel:' + level[idx1] + 'e.code:' + e.code);
+                        expect(e.code).assertEqual(userAuthNorth.ResultCode.NOT_ENROLLED);
                     }
-                }
-                let authType1 = userAuthNorth.UserAuthType.FINGERPRINT;
-                let level1 = userAuthNorth.AuthTrustLevel.ATL4;
-                try {
-                    console.info('getAvailableStatusTest0102 authtype:' + authType1 + 'trustlevel:' + level1)
-                    userAuthNorth.getAvailableStatus(authType1, level1);
-                } catch (e) {
-                    console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType1 + 'trustlevel:' + level1 + 'e.code:' + e.code);
-                    expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);
                     done();
                 }
-                let authType2 = userAuthNorth.UserAuthType.FACE;
-                try {
-                    console.info('getAvailableStatusTest0102 authtype:' + authType2 + 'trustlevel:' + level1)
-                        userAuthNorth.getAvailableStatus(authType2, level1);
-                    } catch (e) {
-                        console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType2 + 'trustlevel:' + level1 + 'e.code:' + e.code);
-                        expect((e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)).assertTrue();
-                        done();
-                    }
             }
+            let authType1 = userAuthNorth.UserAuthType.FINGERPRINT;
+            let level1 = userAuthNorth.AuthTrustLevel.ATL4;
+            try {
+                console.info('getAvailableStatusTest0102 authtype:' + authType1 + 'trustlevel:' + level1)
+                userAuthNorth.getAvailableStatus(authType1, level1);
+            } catch (e) {
+                console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType1 + 'trustlevel:' + level1 + 'e.code:' + e.code);
+                expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);
+                done();
+            }
+            let authType2 = userAuthNorth.UserAuthType.FACE;
+            try {
+                console.info('getAvailableStatusTest0102 authtype:' + authType2 + 'trustlevel:' + level1)
+                    userAuthNorth.getAvailableStatus(authType2, level1);
+                } catch (e) {
+                    console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType2 + 'trustlevel:' + level1 + 'e.code:' + e.code);
+                    expect((e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)).assertTrue();
+                    done();
+                }
             done();
         })
 
         /*
             * @tc.number    : Security_IAM_PIN_Kit_Func_0112
-            * @tc.name      : Kit interface get AvailabeStatus invalid param
+            * @tc.name      : kit interface get AvailabeStatus invalid param
+            * @tc.desc      : Abnormal testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -179,7 +173,8 @@ export default function userauthTest() {
 
         /*
            * @tc.number    : Security_IAM_PIN_Kit_Func_0113
-           * @tc.name      : Kit interface auth & cancel auth
+           * @tc.name      : kit interface auth & cancel auth
+           * @tc.desc      : Abnormal testing
            * @tc.size      : MediumTest
            * @tc.type      : Function
            * @tc.level     : Level 0
@@ -238,7 +233,8 @@ export default function userauthTest() {
 
         /*
             * @tc.number    : Security_IAM_PIN_Kit_Func_0107
-            * @tc.name      : Kit interface enum ResultCode
+            * @tc.name      : kit interface enum ResultCode
+            * @tc.desc      : Enumeration testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0

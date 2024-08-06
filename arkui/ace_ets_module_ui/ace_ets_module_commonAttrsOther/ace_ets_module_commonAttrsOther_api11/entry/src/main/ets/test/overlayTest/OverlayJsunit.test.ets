@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function overLayJsunit() {
   describe('overLayTest', () => {
@@ -32,7 +32,7 @@ export default function overLayJsunit() {
         if (!("overlay" == pages.name)) {
           console.info("get overlay state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push overlay page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -42,13 +42,13 @@ export default function overLayJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("overlay after each called");
     });
 
     it('testOverlay01', 0, async (done: Function) => {
       console.info('[testOverlay01] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('overlay');
 
       console.info("[testOverlay01] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson).$attrs.overlay));
@@ -77,7 +77,7 @@ export default function overLayJsunit() {
       } catch (err) {
         console.log("[testOverlay02] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('overlay');
 
       console.info("[testOverlay02] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson).$attrs.overlay));
@@ -105,7 +105,7 @@ export default function overLayJsunit() {
       } catch (err) {
         console.log("[testOverlay03] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('overlay');
 
       console.info("[testOverlay03] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson).$attrs.overlay));
@@ -119,7 +119,7 @@ export default function overLayJsunit() {
 
     it('testOverlay04', 0, async (done: Function) => {
       console.info('[testOverlay04] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -135,7 +135,7 @@ export default function overLayJsunit() {
       } catch (err) {
         console.log("[testOverlay04] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('overlay');
 
       console.info("[testOverlay04] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson).$attrs.overlay));
@@ -161,7 +161,7 @@ export default function overLayJsunit() {
       } catch (err) {
         console.log("[testOverlay05] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('overlay');
 
       console.info("[testOverlay05] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson).$attrs.overlay));
@@ -188,7 +188,7 @@ export default function overLayJsunit() {
       } catch (err) {
         console.log("[testOverlay06] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('overlay');
 
       console.info("[testOverlay06] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson).$attrs.overlay));
@@ -215,7 +215,7 @@ export default function overLayJsunit() {
       } catch (err) {
         console.log("[testOverlay07] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('overlay');
 
       console.info("[testOverlay07] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson).$attrs.overlay));
@@ -241,7 +241,7 @@ export default function overLayJsunit() {
       } catch (err) {
         console.log("[testOverlay08] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('overlay');
       console.info("[testOverlay08] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson).$attrs.overlay));
       expect(JSON.parse(strJson).$attrs.overlay.options.offset.x).assertEqual('1111111111.00vp');

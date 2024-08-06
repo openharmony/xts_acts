@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function router_getStateByUrl5() {
-  describe('router_getStateByUrl5', function () {
-    beforeEach(async function (done) {
+  describe('router_getStateByUrl5', () => {
+    beforeEach(async (done: Function) => {
       console.info("router_getStateByUrl5 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/router/router_getStateByUrl5',
       }
       try {
@@ -30,7 +43,7 @@ export default function router_getStateByUrl5() {
         console.info("get router_getStateByUrl5 state pages:" + JSON.stringify(pages));
         if (!("router_getStateByUrl5" == pages.name)) {
           console.info("get router_getStateByUrl5 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push router_getStateByUrl5 page result:" + JSON.stringify(result));
         }
@@ -40,20 +53,20 @@ export default function router_getStateByUrl5() {
       console.info("router_getStateByUrl5 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("router_getStateByUrl5 after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_ABILITY_ROUTER_0080
-     * @tc.name      testGetStateByUrl
-     * @tc.desc      Retrieve the status information of the current page through the URL
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_ABILITY_ROUTER_0080
+     * @tc.name testGetStateByUrl
+     * @tc.desc Retrieve the status information of the current page through the URL
+     * @tc.level Level 3
      * @tc.type
      * @tc.size
      */
-    it('router_getStateByUrl5_0100', 0, async function (done) {
+    it('router_getStateByUrl5_0100', 0, async (done: Function) => {
       console.info('[router_getStateByUrl5_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -64,26 +77,22 @@ export default function router_getStateByUrl5() {
       await btn1.click();
       await CommonFunc.sleep(2000);
       console.info('[router_getStateByUrl5_0100] btn1');
-
       let text1 = getInspectorByKey('router_getStateByUrl5_text1');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('[]');
+      expect(JSON.parse(text1).$attrs.content).assertEqual('[]');
       console.info('[router_getStateByUrl5_0100] text1');
-
       console.info('[router_getStateByUrl5_0100] END');
       done();
     });
 
-
     /**
-     * @tc.number    SUB_ACE_UI_ABILITY_ROUTER_0090
-     * @tc.name      testGetStateByUrl
-     * @tc.desc      Retrieve the status information of the current page through the URL
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_ABILITY_ROUTER_0090
+     * @tc.name testGetStateByUrl
+     * @tc.desc Retrieve the status information of the current page through the URL
+     * @tc.level Level 3
      * @tc.type
      * @tc.size
      */
-    it('router_getStateByUrl5_0200', 0, async function (done) {
+    it('router_getStateByUrl5_0200', 0, async (done: Function) => {
       console.info('[router_getStateByUrl5_0200] START');
       await CommonFunc.sleep(1000);
 
@@ -94,26 +103,23 @@ export default function router_getStateByUrl5() {
       await btn1.click();
       await CommonFunc.sleep(2000);
       console.info('[router_getStateByUrl5_0200] btn1');
-
       let text1 = getInspectorByKey('router_getStateByUrl5_text2');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('[]');
+      expect(JSON.parse(text1).$attrs.content).assertEqual('[]');
       console.info('[router_getStateByUrl5_0200] text1');
-
       console.info('[router_getStateByUrl5_0200] END');
       done();
     });
 
 
     /**
-     * @tc.number    SUB_ACE_UI_ABILITY_ROUTER_0100
-     * @tc.name      testGetStateByUrl
-     * @tc.desc      Retrieve the status information of the current page through the URL
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_ABILITY_ROUTER_0100
+     * @tc.name testGetStateByUrl
+     * @tc.desc Retrieve the status information of the current page through the URL
+     * @tc.level Level 3
      * @tc.type
      * @tc.size
      */
-    it('router_getStateByUrl5_0300', 0, async function (done) {
+    it('router_getStateByUrl5_0300', 0, async (done: Function) => {
       console.info('[router_getStateByUrl5_0300] START');
       await CommonFunc.sleep(1000);
 
@@ -124,15 +130,11 @@ export default function router_getStateByUrl5() {
       await btn1.click();
       await CommonFunc.sleep(2000);
       console.info('[router_getStateByUrl5_0300] btn1');
-
       let text1 = getInspectorByKey('router_getStateByUrl5_text3');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('[]');
+      expect(JSON.parse(text1).$attrs.content).assertEqual('[]');
       console.info('[router_getStateByUrl5_0300] text1');
-
       console.info('[router_getStateByUrl5_0300] END');
       done();
     });
-
   })
 }

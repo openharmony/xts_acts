@@ -5,9 +5,10 @@
     "description": "$string:hap2_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
-        "default",
-        "tablet",
-        "2in1"
+      "default",
+      "tablet",
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -48,7 +49,7 @@
             ],
             "uris": [
               {
-                "scheme":"file"
+                "scheme": "file"
               }
             ]
           }

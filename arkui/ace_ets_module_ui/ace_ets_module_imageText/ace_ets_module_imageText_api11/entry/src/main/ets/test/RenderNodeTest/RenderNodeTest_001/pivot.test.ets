@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 export default function pivot() {
-  describe('pivot', function () {
-    beforeEach(async function (done) {
+  describe('pivot', () => {
+    beforeEach(async (done: Function) => {
       console.info("pivot beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/RenderNode/renderNode001/pivot',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RenderNode/renderNode001/pivot',
       }
       try {
         router.clear();
@@ -47,7 +47,7 @@ export default function pivot() {
      * @tc.type :
      * @tc.size :
      */
-    it('pivot_0100', 0, async function (done) {
+    it('pivot_0100', 0, async (done: Function) => {
       console.info('pivot_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -55,7 +55,7 @@ export default function pivot() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_getPivot');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[pivot_0100] component obj is: " + JSON.stringify(obj));
       console.info("[pivot_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('0.5');
@@ -70,7 +70,7 @@ export default function pivot() {
      * @tc.type :
      * @tc.size :
      */
-    it('pivot_0200', 0, async function (done) {
+    it('pivot_0200', 0, async (done: Function) => {
       console.info('pivot_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -78,7 +78,7 @@ export default function pivot() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_setPivot');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[pivot_0200] component obj is: " + JSON.stringify(obj));
       console.info("[pivot_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('0.5');

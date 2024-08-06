@@ -15,16 +15,18 @@
 import router from '@ohos.router'
 
 class innerParams {
-  data3:number[]
-  constructor(tuple:number[]) {
+  data3: number[]
+
+  constructor(tuple: number[]) {
     this.data3 = tuple
   }
 }
 
 class routerParams {
-  data1:string
-  data2:innerParams
-  constructor(str:string, tuple:number[]) {
+  data1: string
+  data2: innerParams
+
+  constructor(str: string, tuple: number[]) {
     this.data1 = str
     this.data2 = new innerParams(tuple)
   }
@@ -34,7 +36,7 @@ class routerParams {
 @Component
 struct RouterUrlError {
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
       Text('start').id('RouterUrlErrorText')
       Button("跳转pageB--参数异常")
         .type(ButtonType.Capsule)
@@ -42,11 +44,10 @@ struct RouterUrlError {
         .onClick(() => {
           router.pushUrl({
             url: 'ERROR',
-            params: new routerParams('message' ,[123,456,789])
+            params: new routerParams('message', [123, 456, 789])
           })
         })
     }.width('100%').height('100%')
-
 
   }
 }

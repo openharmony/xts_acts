@@ -8,8 +8,9 @@
       "default",
       "tablet",
       "phone",
-      "2in1"
-  ],
+      "2in1",
+      "wearable"
+    ],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",

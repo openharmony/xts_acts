@@ -12,18 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
+import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 // import Utils from '../../utils/Common'
 import CommonFunc from "../../MainAbility/common/Common";
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function ImageAttr() {
-  describe('NavigationAttr', function () {
-    beforeEach(async function (done) {
+  describe('NavigationAttr',  () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("NavigationAttr beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/NavigationAttr',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/NavigationAttr',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function ImageAttr() {
         console.info("get NavigationAttr state success " + JSON.stringify(pages));
         if (!("NavigationAttr" == pages.name)) {
           console.info("get NavigationAttr state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push NavigationAttr page success " + JSON.stringify(result));
         }
@@ -41,7 +41,7 @@ export default function ImageAttr() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async  () =>{
       await CommonFunc.sleep(1000);
       console.info("NavigationAttr after each called");
     });
@@ -52,7 +52,7 @@ export default function ImageAttr() {
      * @tc.desc        Navigation test
      * @tc.level       Level 2
      */
-    it('NavigationAttr_001', 0, async function (done) {
+    it('NavigationAttr_001', 0, async  (done:Function) =>{
       console.info('[NavigationAttr_001] START');
 
       await CommonFunc.sleep(1000);

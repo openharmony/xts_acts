@@ -18,12 +18,13 @@
 #include <gtest/gtest.h>
 
 using namespace testing::ext;
-namespace Unittest::EccSifnVerify {
+namespace Unittest::EccSifnVerify
+{
 OH_Huks_Result HksTestSignVerify(struct OH_Huks_Blob *keyAlias, struct OH_Huks_ParamSet *paramSet,
-    const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData, bool isSign)
+                                 const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData, bool isSign)
 {
     uint8_t tmpHandle[sizeof(uint64_t)] = {0};
-    struct OH_Huks_Blob handle = { sizeof(uint64_t), tmpHandle };
+    struct OH_Huks_Blob handle = {sizeof(uint64_t), tmpHandle};
     OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, paramSet, &handle, nullptr);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Init failed.";
     if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
@@ -44,13 +45,11 @@ OH_Huks_Result HksTestSignVerify(struct OH_Huks_Blob *keyAlias, struct OH_Huks_P
     return ret;
 }
 
-OH_Huks_Result HksEccSignVerifyTestNormalCase(struct OH_Huks_Blob keyAlias,
-    struct OH_Huks_ParamSet *genParamSet, struct OH_Huks_ParamSet *signParamSet, struct OH_Huks_ParamSet *verifyParamSet)
+OH_Huks_Result HksEccSignVerifyTestNormalCase(struct OH_Huks_Blob keyAlias, struct OH_Huks_ParamSet *genParamSet,
+                                              struct OH_Huks_ParamSet *signParamSet,
+                                              struct OH_Huks_ParamSet *verifyParamSet)
 {
-    struct OH_Huks_Blob inData = {
-        g_inData.length(),
-        (uint8_t *)g_inData.c_str()
-    };
+    struct OH_Huks_Blob inData = {g_inData.length(), (uint8_t *)g_inData.c_str()};
 
     /* 1. Generate Key */
     // Generate Key
@@ -59,19 +58,19 @@ OH_Huks_Result HksEccSignVerifyTestNormalCase(struct OH_Huks_Blob keyAlias,
 
     /* 2. Sign Three Stage */
     uint8_t outDataS[ECC_COMMON_SIZE] = {0};
-    struct OH_Huks_Blob outDataSign = { ECC_COMMON_SIZE, outDataS };
+    struct OH_Huks_Blob outDataSign = {ECC_COMMON_SIZE, outDataS};
     ret = HksTestSignVerify(&keyAlias, signParamSet, &inData, &outDataSign, true);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Sign failed.";
 
     /* 3. Export Public Key */
     uint8_t pubKey[OH_HUKS_ECC_KEY_SIZE_521] = {0};
-    struct OH_Huks_Blob publicKey = { OH_HUKS_ECC_KEY_SIZE_521, pubKey };
+    struct OH_Huks_Blob publicKey = {OH_HUKS_ECC_KEY_SIZE_521, pubKey};
     ret = OH_Huks_ExportPublicKeyItem(&keyAlias, genParamSet, &publicKey);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "ExportPublicKey failed.";
 
     /* 4. Import Key */
     char newKey[] = "ECC_Sign_Verify_Import_KeyAlias";
-    struct OH_Huks_Blob newKeyAlias = { .size = strlen(newKey), .data = (uint8_t *)newKey };
+    struct OH_Huks_Blob newKeyAlias = {.size = strlen(newKey), .data = (uint8_t *)newKey};
     ret = OH_Huks_ImportKeyItem(&newKeyAlias, verifyParamSet, &publicKey);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "ImportKey failed";
 
@@ -85,4 +84,4 @@ OH_Huks_Result HksEccSignVerifyTestNormalCase(struct OH_Huks_Blob keyAlias,
 
     return ret;
 }
-}
+}  // namespace Unittest::EccSifnVerify

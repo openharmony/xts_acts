@@ -18,10 +18,10 @@ import CommonFunc from "../../../MainAbility/common/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function richEditorApi3() {
-  describe('richEditorApi3', function () {
-    beforeEach(async function (done) {
+  describe('richEditorApi3', () => {
+    beforeEach(async (done: Function) => {
       console.info("richEditorApi3 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/RichEditor/richEditorApi/richEditorApi3',
       }
       try {
@@ -40,7 +40,7 @@ export default function richEditorApi3() {
       console.info("richEditorApi3 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("richEditorApi3 after each called");
     });
@@ -52,7 +52,7 @@ export default function richEditorApi3() {
      * @tc.type
     * @tc.size
      */
-    it('richEditorApi3_0100', 0, async function (done) {
+    it('richEditorApi3_0100', 0, async (done: Function) => {
       console.info('[richEditorApi3_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -67,7 +67,7 @@ export default function richEditorApi3() {
       await CommonFunc.sleep(1000);
 
       let text1 = getInspectorByKey('richEditorApi3_text1');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('{"textAlign":0,"leadingMargin":{"size":["16.00vp","0.00vp"]}}');
 
       console.info('[testRichEditor_0100] END');

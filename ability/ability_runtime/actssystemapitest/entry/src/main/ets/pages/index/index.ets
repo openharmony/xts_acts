@@ -17,11 +17,11 @@
 @Entry
 @Component
 struct Index {
-  aboutToAppear(){
+  aboutToAppear() {
   }
 
   build() {
-    Flex({ direction:FlexDirection.Column, alignItems:ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('MainAbility Hello World')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)

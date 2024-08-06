@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,6 +25,7 @@ export default function SubscribaleAbstractJsunit() {
     it('stateManagement_SubscribaleAbstract_addOwningProperty_0100', 0, (done:Function) =>{
       done();
       return;
+      /*
       console.info('[stateManagement_SubscribaleAbstract_addOwningProperty_0100] START');
       let subscriber = new IPropertySubscriber();
       let abstract = new SubscribaleAbstract();
@@ -37,6 +37,7 @@ export default function SubscribaleAbstractJsunit() {
       expect(true).assertTrue();
       console.info('[stateManagement_SubscribaleAbstract_addOwningProperty_0100] END');
       done();
+      */
     });
 
     /**
@@ -47,6 +48,7 @@ export default function SubscribaleAbstractJsunit() {
     it('stateManagement_ISinglePropertyChangeSubscriber_hasChanged_0100', 0, (done:Function) =>{
       done();
       return;
+      /*
       console.info('[stateManagement_ISinglePropertyChangeSubscriber_hasChanged_0100] START');
       let subscriber = new ISinglePropertyChangeSubscriber<string>(
         (data) => {
@@ -56,6 +58,7 @@ export default function SubscribaleAbstractJsunit() {
       expect(true).assertTrue();
       console.info('[stateManagement_ISinglePropertyChangeSubscriber_hasChanged_0100] END');
       done();
+      */
     });
 
     /**
@@ -66,6 +69,7 @@ export default function SubscribaleAbstractJsunit() {
     it('stateManagement_PersistentStorage_0100', 0, (done:Function) =>{
       done();
       return;
+      /*
       console.info('[stateManagement_PersistentStorage_0100] Start');
       let persistentStorage = new PersistentStorage(AppStorage, new Storage());
       persistentStorage.PersistProp<string>("key10", "value10");
@@ -81,6 +85,7 @@ export default function SubscribaleAbstractJsunit() {
       expect(true).assertTrue();
       console.info('[stateManagement_PersistentStorage_0100] END');
       done();
+      */
     });
 
     /**
@@ -91,6 +96,7 @@ export default function SubscribaleAbstractJsunit() {
     it('stateManagement_IPropertySubscriber_0100', 0, (done:Function) =>{
       done();
       return;
+      /*
       console.info('[stateManagement_IPropertySubscriber_0100] Start');
       let iPropertySubscriber =new IPropertySubscriber();
       let id = iPropertySubscriber.id();
@@ -98,6 +104,7 @@ export default function SubscribaleAbstractJsunit() {
       expect(true).assertTrue();
       console.info('[stateManagement_IPropertySubscriber_0100] END');
       done();
+      */
     });
     
     /**
@@ -108,6 +115,7 @@ export default function SubscribaleAbstractJsunit() {
     it('stateManagement_SyncedPropertyOneWay_0100', 0, (done:Function) =>{
       done();
       return;
+      /*
       console.info('[stateManagement_SyncedPropertyOneWay_0100] Start');
       let oneWay = new SyncedPropertyOneWay(new SubscribedAbstractProperty<string>());
       oneWay.set("key12");
@@ -119,6 +127,7 @@ export default function SubscribaleAbstractJsunit() {
       expect(true).assertTrue();
       console.info('[stateManagement_SyncedPropertyOneWay_0100] END');
       done();
+      */
     });
 
     /**
@@ -129,6 +138,7 @@ export default function SubscribaleAbstractJsunit() {
     it('stateManagement_SyncedPropertyTwoWay_0100', 0, (done:Function) =>{
       done();
       return;
+      /*
       console.info('[stateManagement_SyncedPropertyTwoWay_0100] Start');
       let twoWay = new SyncedPropertyTwoWay(new SubscribedAbstractProperty<string>());
       twoWay.set("key12");
@@ -140,6 +150,7 @@ export default function SubscribaleAbstractJsunit() {
       expect(true).assertTrue();
       console.info('[stateManagement_SyncedPropertyTwoWay_0100] END');
       done();
+      */
     });
   })
 }

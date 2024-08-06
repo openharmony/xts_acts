@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function navigation_pushDestinationByName7() {
-  describe('navigation_pushDestinationByName7', function () {
-    beforeEach(async function (done) {
+  describe('navigation_pushDestinationByName7',  () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("navigation_pushDestinationByName7 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation_pushResult/navigation_pushDestinationByName7',
       }
       try {
@@ -30,7 +30,7 @@ export default function navigation_pushDestinationByName7() {
         console.info("get navigation_pushDestinationByName7 state pages:" + JSON.stringify(pages));
         if (!("navigation_pushDestinationByName7" == pages.name)) {
           console.info("get navigation_pushDestinationByName7 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push navigation_pushDestinationByName7 page result:" + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function navigation_pushDestinationByName7() {
       console.info("navigation_pushDestinationByName7 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async  () =>{
       await CommonFunc.sleep(1000);
       console.info("navigation_pushDestinationByName7 after each called");
     });
@@ -51,7 +51,7 @@ export default function navigation_pushDestinationByName7() {
      * @tc.desc      Navigation pushDestinationByName result test
      * @tc.level     Level 1
      */
-    it('navigation_pushDestinationByName7_0100', 0, async function (done) {
+    it('navigation_pushDestinationByName7_0100', 0, async  (done:Function) =>{
       console.info('[navigation_pushDestinationByName7_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -62,8 +62,7 @@ export default function navigation_pushDestinationByName7() {
       await CommonFunc.sleep(2000);
 
       let text1 = getInspectorByKey('navigation_pushDestinationByName7_text_code');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('100005Builder function not registered.');
+      expect(JSON.parse(text1).$attrs.content).assertEqual('100005Builder function not registered.');
 
       console.info('[navigation_pushDestinationByName7_0100] END');
       done();

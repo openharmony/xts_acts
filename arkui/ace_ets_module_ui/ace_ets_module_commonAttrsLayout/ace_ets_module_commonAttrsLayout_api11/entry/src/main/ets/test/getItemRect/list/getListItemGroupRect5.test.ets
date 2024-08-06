@@ -15,16 +15,16 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
 
 
 export default function getListItemGroupRect5() {
-  describe('getListItemGroupRect5', () =>{
-    beforeEach(async (done:Function)=>{
+  describe('getListItemGroupRect5', () => {
+    beforeEach(async (done: Function) => {
       console.info("getListItemGroupRect5 beforeEach start");
-      let options :router.RouterOptions ={
-        url:  'MainAbility/pages/getItemRect/list/getListItemGroupRect5',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/getItemRect/list/getListItemGroupRect5',
       }
       try {
         router.clear();
@@ -42,7 +42,7 @@ export default function getListItemGroupRect5() {
       }
       done();
     });
-    afterEach(async () =>{
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back({url: 'MainAbility/pages/index/index'})
       console.info("BadgeFocus after each called");
@@ -54,7 +54,7 @@ export default function getListItemGroupRect5() {
     * @tc.desc  : set index to 0,set listDirection of list to Axis.Vertical
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect5_0100', 0, async (done:Function)=> {
+    it('getListItemGroupRect5_0100', 0, async (done: Function) => {
 
       console.info('[getListItemGroupRect5_0100] START');
       globalThis.value.message.notify({name:'index', value:0});
@@ -115,7 +115,7 @@ export default function getListItemGroupRect5() {
     * @tc.desc  : set index to 0,set listDirection of list to Axis.Horizontal
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect5_0200', 0, async (done:Function)=> {
+    it('getListItemGroupRect5_0200', 0, async (done: Function) => {
 
       console.info('[getListItemGroupRect5_0200] START');
       globalThis.value.message.notify({name:'index', value:0});

@@ -16,13 +16,13 @@
 import {describe, beforeAll, beforeEach, afterEach, it, expect} from "@ohos/hypium"
 import {UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function TapGestureHandlerTest() {
 
-  describe('TapGestureHandlerTest', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('TapGestureHandlerTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/GestureHandler/TapGestureHandler',
       }
       try {
@@ -42,7 +42,7 @@ export default function TapGestureHandlerTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("TapGestureHandler after each called");
     });
@@ -55,7 +55,7 @@ export default function TapGestureHandlerTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TapGestureHandler_0010', 0, async function (done) {
+    it('TapGestureHandler_0010', 0, async (done: Function) => {
       console.info('TapGestureHandler_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -63,7 +63,7 @@ export default function TapGestureHandlerTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TapGestureHandler1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('tap succ');
       console.info('[TapGestureHandler_0010] END');
       done();

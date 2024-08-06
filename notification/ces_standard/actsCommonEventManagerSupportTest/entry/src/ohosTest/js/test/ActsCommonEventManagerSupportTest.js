@@ -432,6 +432,18 @@ export default function ActsCommonEventManagerSupportTest() {
     })
 
     /*
+     * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300
+     * @tc.name      : commonEventManager.Support
+     * @tc.desc      : HWID common event
+     */
+    it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300', 0, async  function () {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300 START`)
+      expect(commonEventManager.Support.COMMON_EVENT_MINORSMODE_ON).assertEqual('usual.event.MINORSMODE_ON')
+      expect(commonEventManager.Support.COMMON_EVENT_MINORSMODE_OFF).assertEqual('usual.event.MINORSMODE_OFF')
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300 END`)
+    })
+
+    /*
      * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2400
      * @tc.name      : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2400
      * @tc.desc      : STK common event
@@ -444,18 +456,18 @@ export default function ActsCommonEventManagerSupportTest() {
       expect(commonEventManager.Support.COMMON_EVENT_DATA_SHARE_READY).assertEqual('usual.event.DATA_SHARE_READY')
       console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2400 END`)
     })
-    
+
     /*
-     * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300
+     * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2500
      * @tc.name      : commonEventManager.Support
-     * @tc.desc      : HWID common event
+     * @tc.desc      : enter/exit force sleep common event
      */
-    it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300', 0, async  function () {
-      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300 START`)
-      expect(commonEventManager.Support.COMMON_EVENT_MINORSMODE_ON).assertEqual('usual.event.MINORSMODE_ON')
-      expect(commonEventManager.Support.COMMON_EVENT_MINORSMODE_OFF).assertEqual('usual.event.MINORSMODE_OFF')
-      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300 END`)
-    })   
+    it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2500', 0, async  function () {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2500 START`)
+      expect(commonEventManager.Support.COMMON_EVENT_ENTER_FORCE_SLEEP).assertEqual('usual.event.ENTER_FORCE_SLEEP')
+      expect(commonEventManager.Support.COMMON_EVENT_EXIT_FORCE_SLEEP).assertEqual('usual.event.EXIT_FORCE_SLEEP')
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2500 END`)
+    })
 
     console.info(`${TAG} SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST END`)
   })

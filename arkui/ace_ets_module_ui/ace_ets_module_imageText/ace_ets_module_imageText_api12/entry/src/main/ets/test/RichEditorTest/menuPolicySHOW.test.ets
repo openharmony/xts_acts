@@ -14,14 +14,14 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function menuPolicySHOW() {
-  describe('menuPolicySHOW', function () {
-    beforeEach(async function (done) {
+  describe('menuPolicySHOW', () => {
+    beforeEach(async (done: Function) => {
       console.info("menuPolicySHOW beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/RichEditor/menuPolicySHOW',
       }
       try {
@@ -40,7 +40,7 @@ export default function menuPolicySHOW() {
       console.info("menuPolicySHOW beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("menuPolicySHOW after each called");
     });
@@ -52,7 +52,7 @@ export default function menuPolicySHOW() {
      * @tc.type
     * @tc.size
      */
-    it('menuPolicySHOW_0100', 0, async function (done) {
+    it('menuPolicySHOW_0100', 0, async (done: Function) => {
       console.info('[menuPolicySHOW_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -66,7 +66,7 @@ export default function menuPolicySHOW() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('menuPolicySHOWValue');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[menuPolicySHOW_0100] component obj is: " + JSON.stringify(obj));
       console.info("[menuPolicySHOW_0100] content: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("menuPolicy SHOW success");

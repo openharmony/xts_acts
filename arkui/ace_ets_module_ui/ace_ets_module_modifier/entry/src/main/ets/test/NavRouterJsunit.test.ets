@@ -13,18 +13,31 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import { MessageManager, Callback } from '../MainAbility/utils/MessageManager';
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 
 export default function navRouterJsunit() {
-  describe('navRouterTest', function () {
-    beforeEach(async function (done) {
+  describe('navRouterTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavRouter beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/navRouter',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/navRouter',
       }
       try {
         router.clear();
@@ -32,8 +45,7 @@ export default function navRouterJsunit() {
         console.info("get NavRouter state pages: " + JSON.stringify(pages));
         if (!("NavRouterPage" == pages.name)) {
           console.info("get NavRouter state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
-          console.info("push NavRouter page result: " + JSON.stringify(result));
+          await router.pushUrl(options);
         }
       } catch (err) {
         console.error("push NavRouter page error: " + err);
@@ -44,13 +56,13 @@ export default function navRouterJsunit() {
 
     /**
      * @tc.number NavRouterJsunit_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set mode values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set mode values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavRouterJsunit_0100', 0, async function (done) {
+    it('NavRouterJsunit_0100', 0, async (done: Function) => {
       console.info('[NavRouterJsunit_0100] START');
       let strJson = getInspectorByKey('NavRouter1');
       console.info("[NavRouterJsunit_0100] strJson mode is: " + strJson);
@@ -63,20 +75,20 @@ export default function navRouterJsunit() {
 
     /**
      * @tc.number NavRouterJsunit_0101
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change mode values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change mode values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavRouterJsunit_0101', 0, async function (done) {
+    it('NavRouterJsunit_0101', 0, async (done: Function) => {
       console.info('NavRouterJsunit_0101 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));
       await button.click();
       await Utils.sleep(2000)
 
-      let strJsonNew = getInspectorByKey('NavRouter1'); 
+      let strJsonNew = getInspectorByKey('NavRouter1');
       let objNew = JSON.parse(strJsonNew);
       console.info("NavRouterJsunit_0101 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.mode).assertEqual(undefined);

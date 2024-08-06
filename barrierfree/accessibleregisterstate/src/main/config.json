@@ -17,6 +17,7 @@
         "package": "com.example.accessibleregisterstate",
         "name": ".entry",
         "deviceType": [
+      "wearable",
       "tablet",
       "default",
             "phone",

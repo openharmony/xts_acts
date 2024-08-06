@@ -8,7 +8,8 @@
     "deviceTypes": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -33,7 +34,8 @@
             ]
           }
         ]
-      }, {
+      },
+      {
         "name": "EntryAbility",
         "srcEntrance": "./ets/TestAbility/EntryAbility.ts",
         "description": "$string:TestAbility_desc",

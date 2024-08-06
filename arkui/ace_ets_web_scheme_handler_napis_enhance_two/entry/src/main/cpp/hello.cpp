@@ -20,6 +20,7 @@
 #include <bits/alltypes.h>
 #include <web/arkweb_interface.h>
 #include <map>
+#include <string>
 
 #undef LOG_TAG
 #define LOG_TAG "ss-handler"

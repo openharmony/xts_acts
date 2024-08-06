@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {LengthUnit} from '@ohos.arkui.node'
+import { LengthUnit } from '@ohos.arkui.node'
 
 @Entry
 @Component

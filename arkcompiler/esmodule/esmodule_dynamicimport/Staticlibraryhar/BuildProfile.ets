@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 export default class BuildProfile { 
 	static readonly HAR_VERSION = '1.0.0';
-	static readonly BUILD_MODE_NAME = 'debug';
+	static readonly BUILD_MODE_NAME = 'release';
 	static readonly DEBUG = false;
 }

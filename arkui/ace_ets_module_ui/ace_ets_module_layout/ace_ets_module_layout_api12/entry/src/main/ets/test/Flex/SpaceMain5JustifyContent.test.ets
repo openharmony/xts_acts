@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function SpaceMain5JustifyContentJsunit() {
-  describe('SpaceMain5JustifyContentJsunit', function () {
-    beforeEach(async function (done) {
+  describe('SpaceMain5JustifyContentJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("SpaceMain5JustifyContent beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/Flex/SpaceMain5JustifyContent",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/Flex/SpaceMain5JustifyContent",
       }
       try {
         router.clear();
@@ -50,10 +50,10 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0010', 0, async function (done) {
+    it('SpaceMain5JustifyContentTest_0010', 0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0010 START');
       let strJson = getInspectorByKey('SpaceMain5NoWrap_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceMain5JustifyContentTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.wrap).assertEqual("FlexWrap.NoWrap");
       expect(obj.$attrs.space).assertEqual("5.00vp");            
@@ -69,10 +69,10 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0020', 0, async function (done) {
+    it('SpaceMain5JustifyContentTest_0020', 0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0020 START');
       let strJson = getInspectorByKey('SpaceMain5JustifyContent_Start');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceMain5JustifyContentTest_0020] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.justifyContent).assertEqual("FlexAlign.Start");
       expect(obj.$attrs.space).assertEqual("5.00vp");      
@@ -88,10 +88,10 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0030', 0, async function (done) {
+    it('SpaceMain5JustifyContentTest_0030', 0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0030 START');
       let strJson = getInspectorByKey('SpaceMain5JustifyContent_Center');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceMain5JustifyContentTest_0030] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.justifyContent).assertEqual("FlexAlign.Center");
       expect(obj.$attrs.space).assertEqual("5.00vp");      
@@ -107,10 +107,10 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0040', 0, async function (done) {
+    it('SpaceMain5JustifyContentTest_0040', 0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0040 START');
       let strJson = getInspectorByKey('SpaceMain5JustifyContent_End');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceMain5JustifyContentTest_0040] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.justifyContent).assertEqual("FlexAlign.End");
       expect(obj.$attrs.space).assertEqual("5.00vp");      
@@ -126,10 +126,10 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0050', 0, async function (done) {
+    it('SpaceMain5JustifyContentTest_0050', 0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0050 START');
       let strJson = getInspectorByKey('SpaceMain5JustifyContent_SpaceBetween');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceMain5JustifyContentTest_0050] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.justifyContent).assertEqual("FlexAlign.SpaceBetween");
       expect(obj.$attrs.space).assertEqual("5.00vp");  
@@ -145,10 +145,10 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0060', 0, async function (done) {
+    it('SpaceMain5JustifyContentTest_0060', 0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0060 START');
       let strJson = getInspectorByKey('SpaceMain5JustifyContent_SpaceAround');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceMain5JustifyContentTest_0060] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.justifyContent).assertEqual("FlexAlign.SpaceAround");
       expect(obj.$attrs.space).assertEqual("5.00vp");  
@@ -164,10 +164,10 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0070', 0, async function (done) {
+    it('SpaceMain5JustifyContentTest_0070', 0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0070 START');
       let strJson = getInspectorByKey('SpaceMain5JustifyContent_SpaceEvenly');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceMain5JustifyContentTest_0070] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.justifyContent).assertEqual("FlexAlign.SpaceEvenly");
       expect(obj.$attrs.space).assertEqual("5.00vp");

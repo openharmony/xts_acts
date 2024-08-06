@@ -21,6 +21,7 @@
     "srcEntry": "./ets/application/AbilityStage.ets",
     "mainElement": "TestAbility",
     "deviceTypes": [
+      "wearable",
       "default",
       "tablet"
     ],

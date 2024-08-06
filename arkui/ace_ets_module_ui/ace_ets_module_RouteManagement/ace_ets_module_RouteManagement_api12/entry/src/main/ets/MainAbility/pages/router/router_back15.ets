@@ -18,21 +18,19 @@ import { BusinessError } from '@ohos.base'
 @Entry
 @Component
 struct router_back15 {
-
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
 
       Text('back15')
 
       Button('go to next page')
         .id('router_back15_btn')
-        .onClick(()=>{
-          router.pushUrl({url:"MainAbility/pages/router/router_back15a"})
+        .onClick(() => {
+          router.pushUrl({ url: "MainAbility/pages/router/router_back15a" })
         })
 
 
     }.width('100%').height('100%')
-
 
   }
 }

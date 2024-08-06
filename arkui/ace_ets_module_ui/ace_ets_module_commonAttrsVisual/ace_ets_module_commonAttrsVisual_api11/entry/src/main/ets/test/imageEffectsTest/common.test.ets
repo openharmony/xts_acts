@@ -16,7 +16,7 @@
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils.ets'
+import Utils from '../../MainAbility/common/Utils'
 
 export default function commonColorModeJsunit() {
   describe('commonColorModeTest', () => {
@@ -185,7 +185,7 @@ export default function commonColorModeJsunit() {
         }
         let callback = (eventData: events_emitter.EventData) => {
           console.info("testCommonArea0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(320);
+          expect(eventData.data?.STATUS).assertEqual(320);
         }
         events_emitter.on(innerEvent, callback);
         console.info("testCommonArea0001 click result is: " + JSON.stringify(sendEventByKey('areaText', 10, "")));
@@ -211,7 +211,7 @@ export default function commonColorModeJsunit() {
         }
         let callback = (eventData: events_emitter.EventData) => {
           console.info("testCommonTouches0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(undefined);
+          expect(eventData.data?.STATUS).assertEqual(undefined);
 
         }
         events_emitter.on(innerEvent, callback);
@@ -238,7 +238,7 @@ export default function commonColorModeJsunit() {
         }
         let callback = (eventData: events_emitter.EventData) => {
           console.info("testCommonChangedTouches0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(undefined);
+          expect(eventData.data?.STATUS).assertEqual(undefined);
         }
         events_emitter.on(innerEvent, callback);
         console.info("changedTouches0001 click is: " + JSON.stringify(sendEventByKey('changedTouchesText', 10, "")));

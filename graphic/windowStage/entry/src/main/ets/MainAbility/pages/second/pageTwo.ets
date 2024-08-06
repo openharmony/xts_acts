@@ -18,7 +18,7 @@ struct PageTwo {
   private content: string = "Page two"
 
   build() {
-    Row() {
+    Row(){
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start }) {
         Text(`${this.content}`)
           .fontSize(50)
@@ -33,7 +33,7 @@ struct PageTwo {
         Button('点击按钮获取焦点')
           .focusable(true)
           .focusOnTouch(true)
-          .onClick(() => {
+          .onClick(() =>{
             console.log("click the button name: 点击按钮获取焦点")
           })
         TextInput()

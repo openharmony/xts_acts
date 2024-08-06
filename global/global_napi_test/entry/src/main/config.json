@@ -17,12 +17,12 @@
     "package": "ohos.global.napitest",
     "name": ".MyApplication",
     "mainAbility": "ohos.global.napitest.MainAbility",
-
     "deviceType": [
       "tablet",
       "default",
       "phone",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,

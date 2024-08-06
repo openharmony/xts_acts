@@ -14,33 +14,34 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
+import Want from '@ohos.app.ability.Want';
 
-const CASE_TIME_OUT=5000;
-var ACTS_StopServiceExtension = {
+const CASE_TIME_OUT = 5000;
+let ACTS_StopServiceExtension = {
   events: ["ACTS_StopEvent_First", "ACTS_StopEvent_Second", "ACTS_StopEvent_Third"]
 };
 
-function sleep(delay) {
-    let start = new Date().getTime();
-    while (true) {
-        if (new Date().getTime() - start > delay) {
-            break;
-        }
+function sleep(delay: number) {
+  let start = new Date().getTime();
+  while (true) {
+    if (new Date().getTime() - start > delay) {
+      break;
     }
+  }
 }
 
 export default function abilityTest() {
-  describe('ActsAbilityTest', function () {
+  describe('ActsAbilityTest', () => {
     /*
      * @tc.number: Acts_StopServiceExtension_0100
      * @tc.name: Distributed Component Support Remote Stop Extension
      * @tc.desc: Local device usage StopServiceExtensionAbility Stop the ServiceExtension application
      *           started by startAbility.
      */
-    it('Acts_StopServiceExtension_0100', 0, async function (done) {
-      let subscriber;
+    it('Acts_StopServiceExtension_0100', 0, async (done : Function) => {
+      let subscriber: ESObject;
       let flag = false;
-      let want = {
+      let want: Want = {
         bundleName: "com.acts.stopserviceextensiontest",
         abilityName: "ServiceAbility",
         action: "Acts_StopServiceExtension_0100"
@@ -56,7 +57,7 @@ export default function abilityTest() {
         })
       })
 
-      function subscribeCallBack(err, data) {
+      let subscribeCallBack = (err: ESObject, data: ESObject) => {
         console.info("====>Acts_StopServiceExtension_0100 subscribeCallBack data: " + JSON.stringify(data));
         if (data.event == "ACTS_StopEvent_First") {
           flag = true;
@@ -68,7 +69,7 @@ export default function abilityTest() {
         }
       }
 
-      function unSubscribeCallback() {
+      let unSubscribeCallback = () => {
         console.info("====>Acts_StopServiceExtension_0100 unSubscribeCallback");
         done();
       }
@@ -87,8 +88,8 @@ export default function abilityTest() {
      * @tc.desc: Local device usage StopServiceExtensionAbility Stop the ServiceExtension application
      *           started by startAbility.
      */
-    it('Acts_StopServiceExtension_0200', 0, async function (done) {
-      let subscriber;
+    it('Acts_StopServiceExtension_0200', 0, async (done : Function) => {
+      let subscriber: ESObject;
       let flag = false;
       let count = 0;
       console.info("====>Acts_StopServiceExtension_0200 start");
@@ -107,7 +108,7 @@ export default function abilityTest() {
         })
       })
 
-      function subscribeCallBack(err, data) {
+       let subscribeCallBack = (err: ESObject, data: ESObject) => {
         if (data.event == "ACTS_StopEvent_First") {
           console.info("====>Acts_StopServiceExtension_0200 subscribeCallBack First data: " + JSON.stringify(data));
           expect(data.parameters.message).assertEqual(0);
@@ -124,7 +125,7 @@ export default function abilityTest() {
         }
       }
 
-      function unSubscribeCallback() {
+      let unSubscribeCallback = () => {
         globalThis.abilityContext.stopServiceExtensionAbility({
           bundleName: "com.acts.stopserviceextensiontest",
           abilityName: "ServiceAbility"
@@ -150,10 +151,10 @@ export default function abilityTest() {
      * @tc.desc: Local device usage StopServiceExtensionAbility Stop the ServiceExtension application
      *           started by startServiceExtensionAbility.
      */
-    it('Acts_StopServiceExtension_0300', 0, async function (done) {
-      let subscriber;
+    it('Acts_StopServiceExtension_0300', 0, async (done : Function) => {
+      let subscriber: ESObject;
       let flag = false;
-      let want = {
+      let want: Want = {
         bundleName: "com.acts.stopserviceextensiontest",
         abilityName: "ServiceAbility",
         action: "Acts_StopServiceExtension_0300"
@@ -169,7 +170,7 @@ export default function abilityTest() {
         })
       })
 
-      function subscribeCallBack(err, data) {
+       let subscribeCallBack = (err: ESObject, data: ESObject) => {
         console.info("====>Acts_StopServiceExtension_0300 subscribeCallBack data: " + JSON.stringify(data));
         if (data.event == "ACTS_StopEvent_First") {
           flag = true;
@@ -182,7 +183,7 @@ export default function abilityTest() {
         }
       }
 
-      function unSubscribeCallback() {
+      let unSubscribeCallback = () => {
         console.info("====>Acts_StopServiceExtension_0300 unSubscribeCallback");
         done();
       }
@@ -201,8 +202,8 @@ export default function abilityTest() {
      * @tc.desc: Local device usage StopServiceExtensionAbility Stop the ServiceExtension application
      *           started by startServiceExtensionAbility.
      */
-    it('Acts_StopServiceExtension_0400', 0, async function (done) {
-      let subscriber;
+    it('Acts_StopServiceExtension_0400', 0, async (done : Function) => {
+      let subscriber: ESObject;
       let flag = false;
       let count = 0;
       console.info("====>Acts_StopServiceExtension_0400 start");
@@ -221,7 +222,7 @@ export default function abilityTest() {
         })
       })
 
-      function subscribeCallBack(err, data) {
+       let subscribeCallBack = (err: ESObject, data: ESObject) => {
         if (data.event == "ACTS_StopEvent_First") {
           console.info("====>Acts_StopServiceExtension_0400 subscribeCallBack First data: " + JSON.stringify(data));
           expect(data.parameters.message).assertEqual(0);
@@ -238,7 +239,7 @@ export default function abilityTest() {
         }
       }
 
-      function unSubscribeCallback() {
+      let unSubscribeCallback = () => {
         globalThis.abilityContext.stopServiceExtensionAbility({
           bundleName: "com.acts.stopserviceextensiontest",
           abilityName: "ServiceAbility"
@@ -264,28 +265,28 @@ export default function abilityTest() {
      * @tc.desc: Local device usage StopServiceExtensionAbility Stop the ServiceExtension application
      *           started by connectServiceExtensionAbility.
      */
-    it('Acts_StopServiceExtension_0500', 0, async function (done) {
-      let subscriber;
+    it('Acts_StopServiceExtension_0500', 0, async (done : Function) => {
+      let subscriber: ESObject;
       let flag = false;
       let disConnect = false;
-      let want = {
+      let want: Want = {
         bundleName: "com.acts.stopserviceextensiontest",
         abilityName: "ServiceAbility",
         action: "Acts_StopServiceExtension_0500"
       }
       let options = {
-        onConnect: async function (element: any, proxy: any) {
+        onConnect: async (element: ESObject, proxy: ESObject) => {
           console.info("Acts_StopServiceExtension_0500 service onConnect success!!!")
           console.info('Acts_StopServiceExtension_0500 service onConnect element : ' + JSON.stringify(element));
           console.info('Acts_StopServiceExtension_0500 service onConnect proxy : ' + JSON.stringify(proxy));
         },
-        onDisconnect: async function (element1: any) {
+        onDisconnect: async (element1: ESObject) => {
           disConnect = true;
           console.info("Acts_StopServiceExtension_0500 service onDisconnect success!!!")
           console.info('Acts_StopServiceExtension_0500 service onDisconnect ele : ' + JSON.stringify(element1));
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         },
-        onFailed: async function (code: any) {
+        onFailed: async (code: ESObject) => {
           console.info("Acts_StopServiceExtension_0500 service onFailed!!!")
           console.info('Acts_StopServiceExtension_0500 service onFailed errCode : ' + JSON.stringify(code));
         },
@@ -301,7 +302,7 @@ export default function abilityTest() {
         })
       })
 
-      function subscribeCallBack(err, data) {
+       let subscribeCallBack = (err: ESObject, data: ESObject) => {
         console.info("====>Acts_StopServiceExtension_0500 subscribeCallBack data: " + JSON.stringify(data));
         if (data.event == "ACTS_StopEvent_First") {
           flag = true;
@@ -312,7 +313,7 @@ export default function abilityTest() {
         }
       }
 
-      function unSubscribeCallback() {
+      let unSubscribeCallback = () => {
         console.info("====>Acts_StopServiceExtension_0500 unSubscribeCallback");
         expect(disConnect).assertTrue();
         done();
@@ -332,9 +333,9 @@ export default function abilityTest() {
      * @tc.desc: Local device usage StopServiceExtensionAbility Stop the ServiceExtension application
      *           started by connectServiceExtensionAbility.
      */
-    it('Acts_StopServiceExtension_0600', 0, async function (done) {
+    it('Acts_StopServiceExtension_0600', 0, async (done : Function) => {
       console.info("====>Acts_StopServiceExtension_0600 start");
-      let subscriber;
+      let subscriber: ESObject;
       let count = 0;
       commonEvent.createSubscriber(ACTS_StopServiceExtension).then(async (data) => {
         console.info("====>Acts_StopServiceExtension_0600 Create Subscribe");
@@ -351,7 +352,7 @@ export default function abilityTest() {
         })
       })
 
-      function subscribeCallBack(err, data) {
+       let subscribeCallBack = (err: ESObject, data: ESObject) => {
         if (data.event == "ACTS_StopEvent_First") {
           console.info("====>Acts_StopServiceExtension_0600 subscribeCallBack First data: " + JSON.stringify(data));
           expect(data.parameters.message).assertEqual(0);
@@ -372,7 +373,7 @@ export default function abilityTest() {
         }
       }
 
-      function unSubscribeCallback() {
+      let unSubscribeCallback = () => {
         globalThis.abilityContext.stopServiceExtensionAbility({
           bundleName: "com.acts.stopserviceextensiontest",
           abilityName: "ServiceAbility"
@@ -391,9 +392,9 @@ export default function abilityTest() {
      * @tc.desc: Calling stopServiceExtensionAbility to stop the remote device ServiceExtension application
      *           without distributed permissions returns an error value.
      */
-    it('Acts_StopServiceExtension_0700', 0, async function (done) {
+    it('Acts_StopServiceExtension_0700', 0, async (done : Function) => {
       console.info("====>Acts_StopServiceExtension_0700 start");
-      let want = {
+      let want: Want = {
         deviceId: "abcdefg12345678",
         bundleName: "com.acts.stopserviceextensiontest",
         abilityName: "ServiceAbility",
@@ -412,8 +413,8 @@ export default function abilityTest() {
      * @tc.desc: Calling stopServiceExtensionAbility to stop the remote device ServiceExtension application
      *           without distributed permissions returns an error value.
      */
-    it('Acts_StopServiceExtension_0800', 0, async function (done) {
-      let subscriber;
+    it('Acts_StopServiceExtension_0800', 0, async (done : Function) => {
+      let subscriber: ESObject;
       let flag = false;
       console.info("====>Acts_StopServiceExtension_0800 start");
       commonEvent.createSubscriber(ACTS_StopServiceExtension).then(async (data) => {
@@ -431,7 +432,7 @@ export default function abilityTest() {
         })
       })
 
-      function subscribeCallBack(err, data) {
+       let subscribeCallBack = (err: ESObject, data: ESObject) => {
         console.info("====>Acts_StopServiceExtension_0800 subscribeCallBack data: " + JSON.stringify(data));
         if (data.event == "ACTS_StopEvent_First") {
           expect(data.parameters.message).assertEqual(401);
@@ -439,7 +440,7 @@ export default function abilityTest() {
         }
       }
 
-      function unSubscribeCallback() {
+      let unSubscribeCallback = () => {
         globalThis.abilityContext.stopServiceExtensionAbility({
           bundleName: "com.acts.stopserviceextensiontest",
           abilityName: "ServiceAbility"
@@ -465,9 +466,9 @@ export default function abilityTest() {
      * @tc.desc: The local device does not have distributed permissions. The device ID is undefined. Call
      *           stopServiceExtensionAbility to stop the ServiceExtension application and return an error value.
      */
-    it('Acts_StopServiceExtension_1700', 0, async function (done) {
+    it('Acts_StopServiceExtension_1700', 0, async (done : Function) => {
       console.info("====>Acts_StopServiceExtension_1700 start");
-      let want = {
+      let want: Want = {
         deviceId: undefined,
         bundleName: "com.acts.stopserviceextensiontest",
         abilityName: "ServiceAbility",
@@ -486,8 +487,8 @@ export default function abilityTest() {
      * @tc.desc: The local device does not have distributed permissions. The device ID is undefined. Call
      *           stopServiceExtensionAbility to stop the ServiceExtension application and return an error value.
      */
-    it('Acts_StopServiceExtension_1800', 0, async function (done) {
-      let subscriber;
+    it('Acts_StopServiceExtension_1800', 0, async (done : Function) => {
+      let subscriber: ESObject;
       let flag = false;
       console.info("====>Acts_StopServiceExtension_1800 start");
       commonEvent.createSubscriber(ACTS_StopServiceExtension).then(async (data) => {
@@ -505,7 +506,7 @@ export default function abilityTest() {
         })
       })
 
-      function subscribeCallBack(err, data) {
+       let subscribeCallBack = (err: ESObject, data: ESObject) => {
         console.info("====>Acts_StopServiceExtension_1800 subscribeCallBack data: " + JSON.stringify(data));
         if (data.event == "ACTS_StopEvent_First") {
           expect(data.parameters.message).assertEqual(16000050);
@@ -513,7 +514,7 @@ export default function abilityTest() {
         }
       }
 
-      function unSubscribeCallback() {
+      let unSubscribeCallback = () => {
         globalThis.abilityContext.stopServiceExtensionAbility({
           bundleName: "com.acts.stopserviceextensiontest",
           abilityName: "ServiceAbility"

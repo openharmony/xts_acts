@@ -14,16 +14,16 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import bundle from '@ohos.bundle.bundleManager';
 
 export default function spanJsunit() {
-  describe('spanTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/span',
+  describe('spanTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/span',
       }
       try {
         router.clear();
@@ -31,9 +31,8 @@ export default function spanJsunit() {
         console.info("get span state success " + JSON.stringify(pages));
         if (!("span" == pages.name)) {
           console.info("get span pages success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push span page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push span page error: " + err);
@@ -43,13 +42,13 @@ export default function spanJsunit() {
 
     /**
      * @tc.number test_span_001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set lineHeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set lineHeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_span_001', 0, async function (done) {
+    it('test_span_001', 0, async (done: Function) => {
       console.info('[test_span_001] START');
       var strJson = getInspectorByKey('SpanKey1');
       var obj = JSON.parse(strJson);
@@ -61,13 +60,13 @@ export default function spanJsunit() {
 
     /**
      * @tc.number test_span_002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set textCase values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set textCase values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_span_002', 0, async function (done) {
+    it('test_span_002', 0, async (done: Function) => {
       console.info('[test_span_002] START');
       var strJson = getInspectorByKey('SpanKey1');
       var obj = JSON.parse(strJson);
@@ -78,14 +77,14 @@ export default function spanJsunit() {
     });
 
     /**
-       * @tc.number test_span_003
-       * @tc.name   Test the properties of components
-       * @tc.desc   Set letterSpacing values
-       * @tc.size   MediumTest
-       * @tc.type   Function
-       * @tc.level  0
-       */
-    it('test_span_003', 0, async function (done) {
+     * @tc.number test_span_003
+     * @tc.name Test the properties of components
+     * @tc.desc Set letterSpacing values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('test_span_003', 0, async (done: Function) => {
       console.info('[test_span_003] START');
       var strJson = getInspectorByKey('SpanKey1');
       var obj = JSON.parse(strJson);
@@ -97,13 +96,13 @@ export default function spanJsunit() {
 
     /**
      * @tc.number test_span_004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set decoration values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set decoration values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_span_004', 0, async function (done) {
+    it('test_span_004', 0, async (done: Function) => {
       console.info('[test_span_004] START');
       var strJson = getInspectorByKey('SpanKey1');
       var obj = JSON.parse(strJson);
@@ -116,13 +115,13 @@ export default function spanJsunit() {
 
     /**
      * @tc.number test_span_005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_span_005', 0, async function (done) {
+    it('test_span_005', 0, async (done: Function) => {
       console.info('[test_span_005] START');
       var strJson = getInspectorByKey('SpanKey1');
       var obj = JSON.parse(strJson);
@@ -134,13 +133,13 @@ export default function spanJsunit() {
 
     /**
      * @tc.number test_span_006
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set font values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set font values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_span_006', 0, async function (done) {
+    it('test_span_006', 0, async (done: Function) => {
       console.info('[test_span_006] START');
       var strJson = getInspectorByKey('SpanKey1');
       var obj = JSON.parse(strJson);
@@ -153,13 +152,13 @@ export default function spanJsunit() {
 
     /**
      * @tc.number test_span_007
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontFamily values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontFamily values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_span_007', 0, async function (done) {
+    it('test_span_007', 0, async (done: Function) => {
       console.info('[test_span_007] START');
       var strJson = getInspectorByKey('SpanKey2');
       var obj = JSON.parse(strJson);
@@ -171,13 +170,13 @@ export default function spanJsunit() {
 
     /**
      * @tc.number test_span_008
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontWeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontWeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_span_008', 0, async function (done) {
+    it('test_span_008', 0, async (done: Function) => {
       console.info('[test_span_008] START');
       var strJson = getInspectorByKey('SpanKey2');
       var obj = JSON.parse(strJson);
@@ -191,13 +190,13 @@ export default function spanJsunit() {
 
     /**
      * @tc.number test_span_009
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_span_009', 0, async function (done) {
+    it('test_span_009', 0, async (done: Function) => {
       console.info('[test_span_009] START');
       var strJson = getInspectorByKey('SpanKey2');
       var obj = JSON.parse(strJson);
@@ -209,13 +208,13 @@ export default function spanJsunit() {
 
     /**
      * @tc.number test_span_010
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontSize values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontSize values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_span_010', 0, async function (done) {
+    it('test_span_010', 0, async (done: Function) => {
       console.info('[test_span_010] START');
       var strJson = getInspectorByKey('SpanKey2');
       var obj = JSON.parse(strJson);
@@ -226,14 +225,14 @@ export default function spanJsunit() {
     });
 
     /**
-    * @tc.number test_span_011
-    * @tc.name   Test the properties of components
-    * @tc.desc   Change textCase values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('test_span_011', 0, async function (done) {
+     * @tc.number test_span_011
+     * @tc.name Test the properties of components
+     * @tc.desc Change textCase values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('test_span_011', 0, async (done: Function) => {
       console.info('test_span_011 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

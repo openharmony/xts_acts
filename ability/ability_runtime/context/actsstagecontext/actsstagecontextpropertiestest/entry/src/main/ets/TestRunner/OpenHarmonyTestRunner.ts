@@ -14,10 +14,7 @@
 */
 
 import TestRunner from '@ohos.application.testRunner'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
-
-let abilityDelegator = undefined
-let abilityDelegatorArguments = undefined
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 
 function translateParamsToString(parameters) {
     const keySet = new Set([
@@ -52,8 +49,8 @@ export default class OpenHarmonyTestRunner implements TestRunner {
 
     async onRun() {
         console.log('OpenHarmonyTestRunner onRun run')
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         globalThis.abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         let testAbilityName = abilityDelegatorArguments.bundleName + '.MainAbility'
         let lMonitor = {

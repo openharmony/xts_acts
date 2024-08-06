@@ -17,6 +17,7 @@
         "package": "com.example.accessiblecaptionconfiguration",
         "name": ".entry",
         "deviceType": [
+      "wearable",
       "tablet",
       "default",
             "phone",

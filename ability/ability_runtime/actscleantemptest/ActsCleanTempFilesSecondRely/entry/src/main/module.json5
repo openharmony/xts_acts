@@ -20,6 +20,7 @@
     "description": "$string:module_desc",
     "mainElement": "SecondAbility",
     "deviceTypes": [
+      "wearable",
       "default",
       "tablet",
       "2in1"

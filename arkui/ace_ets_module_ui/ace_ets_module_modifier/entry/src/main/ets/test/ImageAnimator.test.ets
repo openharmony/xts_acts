@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function imageAnimatorJsunit() {
-  describe('imageAnimatorTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/imageAnimator',
+  describe('imageAnimatorTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/imageAnimator',
       }
       try {
         router.clear();
@@ -30,9 +30,8 @@ export default function imageAnimatorJsunit() {
         console.info("get imageAnimator state success " + JSON.stringify(pages));
         if (!("imageAnimator" == pages.name)) {
           console.info("get imageAnimator state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push imageAnimator page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push imageAnimator page error: " + err);
@@ -42,146 +41,147 @@ export default function imageAnimatorJsunit() {
 
     /**
      * @tc.number imageAnimatorTest_0001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set iterations values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set iterations values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('imageAnimatorTest_0001', 0, async function (done) {
+    it('imageAnimatorTest_0001', 0, async (done: Function) => {
       console.info('imageAnimatorTest_0001 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("imageAnimatorTest_0001 component  is: " + JSON.stringify(objNew.$attrs));
+      
+      console.info("imageAnimatorTest_0001 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.iterations).assertEqual("1");
+      expect(JSON.parse(strJsonNew).$attrs.iterations).assertEqual("1");
       console.info('imageAnimatorTest_0001 END');
       done();
     });
 
     /**
      * @tc.number imageAnimatorTest_0002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fillMode values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fillMode values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('imageAnimatorTest_0002', 0, async function (done) {
+    it('imageAnimatorTest_0002', 0, async (done: Function) => {
       console.info('imageAnimatorTest_0002 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("imageAnimatorTest_0002 component  is: " + JSON.stringify(objNew.$attrs));
+      
+      console.info("imageAnimatorTest_0002 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.fillMode).assertEqual('FillMode.None');
+      expect(JSON.parse(strJsonNew).$attrs.fillMode).assertEqual('FillMode.None');
       console.info('imageAnimatorTest_0002 END');
       done();
     });
 
     /**
      * @tc.number imageAnimatorTest_0003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fixedSize values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fixedSize values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('imageAnimatorTest_0003', 0, async function (done) {
+    it('imageAnimatorTest_0003', 0, async (done: Function) => {
       console.info('imageAnimatorTest_0003 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("imageAnimatorTest_0003 component  is: " + JSON.stringify(objNew.$attrs));
+      
+      console.info("imageAnimatorTest_0003 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.fixedSize).assertEqual('true');
+      expect(JSON.parse(strJsonNew).$attrs.fixedSize).assertEqual('true');
       console.info('imageAnimatorTest_0003 END');
       done();
     });
 
     /**
      * @tc.number imageAnimatorTest_0004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set reverse values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set reverse values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('imageAnimatorTest_0004', 0, async function (done) {
+    it('imageAnimatorTest_0004', 0, async (done: Function) => {
       console.info('imageAnimatorTest_0004 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("imageAnimatorTest_0004 component  is: " + JSON.stringify(objNew.$attrs));
+      
+      console.info("imageAnimatorTest_0004 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.reverse).assertEqual('true');
+      expect(JSON.parse(strJsonNew).$attrs.reverse).assertEqual('true');
       console.info('imageAnimatorTest_0004 END');
       done();
     });
 
     /**
      * @tc.number imageAnimatorTest_0005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set duration values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set duration values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('imageAnimatorTest_0005', 0, async function (done) {
+    it('imageAnimatorTest_0005', 0, async (done: Function) => {
       console.info('imageAnimatorTest_0005 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("imageAnimatorTest_0005 component  is: " + JSON.stringify(objNew.$attrs));
+      
+      console.info("imageAnimatorTest_0005 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.duration).assertEqual("2000");
+      expect(JSON.parse(strJsonNew).$attrs.duration).assertEqual("2000");
       console.info('imageAnimatorTest_0005 END');
       done();
     });
 
     /**
      * @tc.number imageAnimatorTest_0006
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set state values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set state values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('imageAnimatorTest_0006', 0, async function (done) {
+    it('imageAnimatorTest_0006', 0, async (done: Function) => {
       console.info('imageAnimatorTest_0006 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("imageAnimatorTest_0006 component  is: " + JSON.stringify(objNew.$attrs));
+      
+      console.info("imageAnimatorTest_0006 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.state).assertEqual('AnimationStatus.Initial');
+      expect(JSON.parse(strJsonNew).$attrs.state).assertEqual('AnimationStatus.Initial');
       console.info('imageAnimatorTest_0006 END');
       done();
     });
 
     /**
      * @tc.number imageAnimatorTest_0007
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set images values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set images values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('imageAnimatorTest_0007', 0, async function (done) {
+    it('imageAnimatorTest_0007', 0, async (done: Function) => {
       console.info('imageAnimatorTest_0007 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("imageAnimatorTest_0007 component  is: " + JSON.stringify(objNew.$attrs));
+      
+      console.info("imageAnimatorTest_0007 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.images).assertEqual('[{\"src\":\"resource:///16777256.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"},{\"src\":\"resource:///16777257.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"},{\"src\":\"resource:///16777258.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"},{\"src\":\"resource:///16777259.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"}]');
+      expect(JSON.parse(strJsonNew).$attrs.images)
+        .assertEqual('[{\"src\":\"resource:///16777256.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"},{\"src\":\"resource:///16777257.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"},{\"src\":\"resource:///16777258.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"},{\"src\":\"resource:///16777259.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"}]');
       console.info('imageAnimatorTest_0007 END');
       done();
     });
 
     /**
      * @tc.number imageAnimatorTest_0008
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change iterations values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change iterations values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('imageAnimatorTest_0008', 0, async function (done) {
+    it('imageAnimatorTest_0008', 0, async (done: Function) => {
 
       console.info('imageAnimatorTest_0008 START');
       let driver = Driver.create();
@@ -190,10 +190,10 @@ export default function imageAnimatorJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('imageAnimator');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("imageAnimatorTest_0008 component  is: " + JSON.stringify(objNew.$attrs));
+      
+      console.info("imageAnimatorTest_0008 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.iterations).assertEqual("1");
+      expect(JSON.parse(strJsonNew).$attrs.iterations).assertEqual("1");
       console.info('imageAnimatorTest_0008 END');
       done();
     });

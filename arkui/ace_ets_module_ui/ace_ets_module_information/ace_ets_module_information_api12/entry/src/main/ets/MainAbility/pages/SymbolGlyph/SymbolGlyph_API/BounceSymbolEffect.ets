@@ -31,11 +31,13 @@ struct BounceSymbolEffect_Scope {
       Row({ space: 20 }) {
         SymbolGlyph(this.replaceFlag ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
           .fontSize(96)
-          .symbolEffect(new BounceSymbolEffect(this.BounceSymbolEffect_Scope, EffectDirection.DOWN), this.triggerValueReplace)
+          .symbolEffect(new BounceSymbolEffect(this.BounceSymbolEffect_Scope, EffectDirection.DOWN),
+            this.triggerValueReplace)
         SymbolGlyph(this.replaceFlag ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
           .fontSize(96)
           .symbolEffect(new ReplaceSymbolEffect(this.ReplaceSymbolEffect_Scope), this.triggerValueReplace)
       }
+
       Button('trigger').width('50%').onClick(() => {
         this.replaceFlag = !this.replaceFlag;
         this.triggerValueReplace = this.triggerValueReplace + 1;
@@ -43,8 +45,8 @@ struct BounceSymbolEffect_Scope {
         this.ReplaceSymbolEffectText = this.ReplaceSymbolEffect_Scope + ''
       }).id('btn')
     }.margin({
-      left:30,
-      top:50
+      left: 30,
+      top: 50
     })
   }
 }

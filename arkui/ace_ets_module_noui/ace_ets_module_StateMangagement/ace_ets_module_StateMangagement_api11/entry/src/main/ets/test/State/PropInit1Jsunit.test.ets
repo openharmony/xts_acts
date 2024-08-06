@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import  CommonFunc from '../../MainAbility/utils/Common'
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/utils/Common'
 
 
 export default function PropInit1Jsunit() {
-  describe('PropInit1Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('PropInit1Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("PropInit1Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/PropInit1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/PropInit1',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function PropInit1Jsunit() {
         console.info("get PropInit1Jsunit state pages: " + JSON.stringify(pages));
         if (!("PropInit1" == pages.name)) {
           console.info("get PropInit1Jsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push PropInit1Jsunit success: " + JSON.stringify(result));
         }
@@ -42,12 +55,14 @@ export default function PropInit1Jsunit() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = await UiDriver.create()
-      router.back({uri:"MainAbility/pages/index/index"});
+      router.back({
+        uri: "MainAbility/pages/index/index"
+      });
     });
 
-    it('PropInit1Jsunit_0200', 0, async function (done) {
+    it('PropInit1Jsunit_0200', 0, async (done: Function) => {
 
       console.info('PropInit1Jsunit_0200 START');
       let driver = await UiDriver.create()
@@ -69,7 +84,7 @@ export default function PropInit1Jsunit() {
       done();
     });
 
-    it('PropInit1Jsunit_0400', 0, async function (done) {
+    it('PropInit1Jsunit_0400', 0, async (done: Function) => {
 
       console.info('PropInit1Jsunit_0400 START');
       let driver = await UiDriver.create()

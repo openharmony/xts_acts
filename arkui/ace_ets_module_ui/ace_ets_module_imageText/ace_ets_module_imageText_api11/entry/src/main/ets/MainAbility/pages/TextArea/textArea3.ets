@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -59,20 +58,20 @@ struct TextAreaExample2 {
     console.info("fang--->A");
     if (eventData != null) {
       console.info("swiper page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.fontSize != null) {
-        this.fontSize = parseInt(eventData.data.fontSize);
+      if (eventData.data?.fontSize != null) {
+        this.fontSize = parseInt(eventData.data?.fontSize);
       }
-      if (eventData.data.fontColor != null) {
-        this.fontColor = eventData.data.fontColor;
+      if (eventData.data?.fontColor != null) {
+        this.fontColor = eventData.data?.fontColor;
       }
-      if (eventData.data.textAlign != null) {
-        this.textAlign = eventData.data.textAlign;
+      if (eventData.data?.textAlign != null) {
+        this.textAlign = eventData.data?.textAlign;
       }
-      if (eventData.data.text != null) {
-        this.text = eventData.data.text;
+      if (eventData.data?.text != null) {
+        this.text = eventData.data?.text;
       }
-      if (eventData.data.text2 != null) {
-        this.text2 = eventData.data.text2;
+      if (eventData.data?.text2 != null) {
+        this.text2 = eventData.data?.text2;
       }
     }
   }

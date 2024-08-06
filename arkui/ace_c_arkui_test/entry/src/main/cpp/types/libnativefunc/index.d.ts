@@ -1150,8 +1150,6 @@ export const testSwiperDisplayCount001: () => number;
 
 export const testSwiperDisplayCount002: () => number;
 
-export const testSwiperDisplayCount003: () => number;
-
 export const testSwiperDisplayCount004: () => number;
 
 export const testSwiperDuration001: () => number;
@@ -2925,10 +2923,6 @@ export const testTextPickerRange002: () => number;
 export const testTextPickerRange003: () => number;
 
 export const testTextPickerRange004: () => number;
-
-export const testTextPickerRange005: () => number;
-
-export const testTextPickerRange006: () => number;
 
 export const testTextInputAccessibilityDescription001: () => number;
 
@@ -4839,6 +4833,8 @@ export const TestArkUIAddApi022: () => number;
 
 export const TestArkUIAddApi023: () => number;
 
+export const TestArkUIAddApi024: () => number;
+
 export const testAnimation_001: () => number;
 export const testAnimation_002: () => number;
 export const testAnimation_003: () => number;
@@ -4993,6 +4989,38 @@ export const testArkUI073: () => number;
 export const testArkUI074: () => number;
 
 export const testArkUI075: () => number;
+
+export const testArkUI076: () => number;
+
+export const testArkUI077: () => number;
+
+export const testArkUI078: () => number;
+
+export const testArkUI079: () => number;
+
+export const testArkUI080: () => number;
+
+export const testArkUI081: () => number;
+
+export const testArkUI082: () => number;
+
+export const testArkUI083: () => number;
+
+export const testArkUI084: () => number;
+
+export const testArkUI085: () => number;
+
+export const testArkUI086: () => number;
+
+export const testArkUI087: () => number;
+
+export const testArkUI088: () => number;
+
+export const testArkUI089: () => number;
+
+export const testArkUI090: () => number;
+
+export const testArkUI091: () => number;
 
 export const testRelativeContaineAlignmentRuleOption001: () => number;
 

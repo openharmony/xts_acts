@@ -14,7 +14,7 @@
  */
 
 export const savePixelMapForPath: (path: string) => number;
-
+export const creatOutPixeMapForPath: (path: string) => number;
 export const OHEffectBufferInfoCreate: () => number;
 export const OHEffectBufferInfoSetAddr: (a: number) => number;
 export const OHEffectBufferInfoGetAddr: (a: number) => number;
@@ -45,7 +45,7 @@ export const OHEffectFilterLookupFilters: (a: number) => number;
 export const OHEffectFilterRegister: (a: number) => number;
 export const OHEffectFilterRelease: (a: number) => number;
 export const OHEffectFilterReleaseFilterNames: (a: number) => number;
-export const OHEffectFilterRender: () => number;
+export const OHEffectFilterRender: (a:number) => number;
 
 export const OHImageEffectCreate: (a: number) => number;
 export const OHImageEffectConfigure: (a: number) => number;

@@ -14,17 +14,30 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function StorageProp25Jsunit() {
-  describe('StorageProp25Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('StorageProp25Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("StorageProp25Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/StorageProp25',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/StorageProp25',
       }
       try {
         router.clear();
@@ -32,7 +45,7 @@ export default function StorageProp25Jsunit() {
         console.info("get StorageProp25Jsunit state pages: " + JSON.stringify(pages));
         if (!("StorageProp25" == pages.name)) {
           console.info("get StorageProp25Jsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push StorageProp25Jsunit page result: " + JSON.stringify(result));
         }
@@ -43,7 +56,7 @@ export default function StorageProp25Jsunit() {
       done();
     });
 
-    it('StorageProp25Jsunit_0100', 0, async function (done) {
+    it('StorageProp25Jsunit_0100', 0, async (done: Function) => {
 
       console.info('StorageProp25Jsunit_0100 START');
       let strJson1 = getInspectorByKey('lseA');
@@ -62,7 +75,7 @@ export default function StorageProp25Jsunit() {
       done();
     });
 
-    it('StorageProp25Jsunit_0200', 0, async function (done) {
+    it('StorageProp25Jsunit_0200', 0, async (done: Function) => {
 
       console.info('StorageProp25Jsunit_0200 START');
       let strJson1 = getInspectorByKey('lseB');
@@ -81,7 +94,7 @@ export default function StorageProp25Jsunit() {
       done();
     });
 
-    it('StorageProp25Jsunit_0300', 0, async function (done) {
+    it('StorageProp25Jsunit_0300', 0, async (done: Function) => {
 
       console.info('StorageProp25Jsunit_0300 START');
       let strJson1 = getInspectorByKey('lsePropB');
@@ -100,7 +113,7 @@ export default function StorageProp25Jsunit() {
       done();
     });
 
-    it('StorageProp25Jsunit_0400', 0, async function (done) {
+    it('StorageProp25Jsunit_0400', 0, async (done: Function) => {
 
       console.info('StorageProp25Jsunit_0400 START');
       let strJson1 = getInspectorByKey('sonPropC');
@@ -119,7 +132,7 @@ export default function StorageProp25Jsunit() {
       done();
     });
 
-    it('StorageProp25Jsunit_0500', 0, async function (done) {
+    it('StorageProp25Jsunit_0500', 0, async (done: Function) => {
 
       console.info('StorageProp25Jsunit_0500 START');
       let driver = await UiDriver.create()
@@ -142,7 +155,7 @@ export default function StorageProp25Jsunit() {
       done();
     });
 
-    it('StorageProp25Jsunit_0600', 0, async function (done) {
+    it('StorageProp25Jsunit_0600', 0, async (done: Function) => {
 
       console.info('StorageProp25Jsunit_0600 START');
       let driver = await UiDriver.create()
@@ -165,7 +178,7 @@ export default function StorageProp25Jsunit() {
       done();
     });
 
-    it('StorageProp25Jsunit_0700', 0, async function (done) {
+    it('StorageProp25Jsunit_0700', 0, async (done: Function) => {
 
       console.info('StorageProp25Jsunit_0700 START');
       let driver = await UiDriver.create()
@@ -188,7 +201,7 @@ export default function StorageProp25Jsunit() {
       done();
     });
 
-    it('StorageProp25Jsunit_0800', 0, async function (done) {
+    it('StorageProp25Jsunit_0800', 0, async (done: Function) => {
 
       console.info('StorageProp25Jsunit_0800 START');
       let driver = await UiDriver.create()

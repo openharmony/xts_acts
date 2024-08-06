@@ -40,7 +40,7 @@ export default function ActsBaseCallManagerTest() {
         /**
          * @tc.number  Telephony_CallManager_getCallState_Async_0100
          * @tc.name    To get the idle call status, call getCallState() to get the current call status.
-         *             call.CALL_STATE_IDLE is returned
+         *             call.CallState.CALL_STATE_IDLE is returned
          * @tc.desc    Function test
          */
         it('Telephony_CallManager_getCallState_Async_0100', 0, async function (done) {
@@ -51,7 +51,7 @@ export default function ActsBaseCallManagerTest() {
                     done();
                     return;
                 }
-                expect(data === call.CALL_STATE_IDLE).assertTrue();
+                expect(data === call.CallState.CALL_STATE_IDLE).assertTrue();
                 console.log(`Telephony_CallManager_getCallState_Async_0100 finish data = ${data}`);
                 done();
             });
@@ -60,13 +60,13 @@ export default function ActsBaseCallManagerTest() {
         /**
          * @tc.number  Telephony_CallManager_getCallState_Promise_0100
          * @tc.name    To get the idle call status, call getCallState() to get the current call status.
-         *             call.CALL_STATE_IDLE is returned
+         *             call.CallState.CALL_STATE_IDLE is returned
          * @tc.desc    Function test
          */
         it('Telephony_CallManager_getCallState_Promise_0100', 0, async function (done) {
             try {
                 var data = await call.getCallState();
-                expect(data === call.CALL_STATE_IDLE).assertTrue();
+                expect(data === call.CallState.CALL_STATE_IDLE).assertTrue();
                 console.log(`Telephony_CallManager_getCallState_Promise_0100 finish data = ${data}`);
                 done();
             } catch (err) {

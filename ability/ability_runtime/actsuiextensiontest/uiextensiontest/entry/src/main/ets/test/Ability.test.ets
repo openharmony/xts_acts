@@ -14,6 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import appManager from '@ohos.app.ability.appManager';
 import common from '@ohos.app.ability.common'
 import commonEventManager from '@ohos.commonEventManager'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
@@ -1042,6 +1043,158 @@ export default function abilityTest() {
     })
 
     /*
+     * @tc.number  : ACTS_UIExtension_StartAbilityByType001
+     * @tc.name    : test start UIExtensionAbility by type failed
+     * @tc.desc    : start UIExtensionAbility not configured in json
+     */
+    it('ACTS_UIExtension_StartAbilityByType001',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbilityByType001 == ';
+      console.log(TAG + "begin");
+      router.back()
+      await Utils.sleep(500);
+      let options = {
+        url: 'TestAbility/pages/p1',
+      }
+      let result;
+      try {
+        result = await router.pushUrl(options);
+        await Utils.sleep(500);
+        console.info(TAG + "push page result: " + JSON.stringify(result));
+      } catch (err) {
+        console.error(TAG + "push page error: " + err);
+      }
+
+      let processInfo = await appManager.getRunningProcessInfoByBundleName('com.example.uiextensiontest');
+      console.log(TAG + JSON.stringify(processInfo));
+      if (processInfo[0].state === appManager.ProcessState.STATE_FOREGROUND ||
+        processInfo[0].state === appManager.ProcessState.STATE_ACTIVE) {
+        let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+        let failStartAbilityByTypeEvent = 'ACTS_UIExtension_FailStartAbilityByType';
+        let startAbilityByTypeEvent001 = 'ACTS_UIExtension_StartAbilityByType001';
+        var subscriber;
+        var subscribeInfo = {
+          events: [appearEvent, failStartAbilityByTypeEvent]
+        }
+        await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+          console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+          globalscribe = data;
+          commonEventManager.subscribe(globalscribe, async (err, data) => {
+            console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+            if (data.event == appearEvent) {
+              commonEventManager.publish(startAbilityByTypeEvent001, (err) => {
+                if (err) {
+                  console.log(TAG + `publish startAbilityByTypeEvent failed, code is ${err.code}, message is ${err.message}`);
+                } else {
+                  console.log(TAG + 'publish startAbilityByTypeEvent success');
+                }
+              });
+            } else if (data.event == failStartAbilityByTypeEvent) {
+              done();
+            }
+          });
+        }).catch((error) => {
+          console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        })
+      } else {
+        console.log(TAG + 'Current app is not foreground');
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_StartAbilityByType002
+     * @tc.name    : test start UIExtensionAbility by type failed
+     * @tc.desc    : start UIExtensionAbility not configured in json
+     */
+    it('ACTS_UIExtension_StartAbilityByType002',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbilityByType002 == ';
+      console.log(TAG + "begin");
+      try {
+        let wantParam = {}
+        let abilityStartCallback = {
+          onError: (code, name, message) => {
+            console.log(TAG + "code:" + code + "name:" + name + "message:" + message);
+            expect(code).assertEqual(16000050);
+            done();
+          }
+        }
+        context.startAbilityByType("shareerror", wantParam, abilityStartCallback, (err) => {
+          if (err) {
+            console.error(TAG + "startAbilityByType002 fail, err:" + JSON.stringify(err));
+          } else {
+            console.log(TAG + "startAbilityByType002 success");
+          }
+        });
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_StartAbilityByType003
+     * @tc.name    : test start UIExtensionAbility by type failed
+     * @tc.desc    : start UIExtensionAbility not configured in json
+     */
+    it('ACTS_UIExtension_StartAbilityByType003',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbilityByType003 == ';
+      console.log(TAG + "begin");
+      try {
+        let wantParam = {}
+        let abilityStartCallback = {
+          onError: (code, name, message) => {
+            console.log(TAG + "code:" + code + "name:" + name + "message:" + message);
+            expect(code).assertEqual(16000050);
+            done();
+          }
+        }
+        context.startAbilityByType("shareerror", wantParam, abilityStartCallback).then(() => {
+            console.log(TAG + "startAbilityByType003 success");
+          }).catch((err)=> {
+            console.error(TAG + "startAbilityByType003 fail, err:" + JSON.stringify(err));
+          })
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_StartAbilityByType004
+     * @tc.name    : test start UIExtensionAbility by type failed
+     * @tc.desc    : start UIExtensionAbility not configured in json
+     */
+    it('ACTS_UIExtension_StartAbilityByType004',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbilityByType004 == ';
+      console.log(TAG + "begin");
+      try {
+        let wantParam = {}
+        let abilityStartCallback = {
+          onError: (code, name, message) => {
+            console.log(TAG + "code:" + code + "name:" + name + "message:" + message);
+            expect(code).assertEqual(16000050);
+            done();
+          },
+          onResult: (abilityResult: common.AbilityResult) => {
+            console.log(TAG + "abilityResult.resultCode:" + abilityResult.resultCode);
+            done();
+          }
+        }
+        context.startAbilityByType("shareerror", wantParam, abilityStartCallback).then(() => {
+            console.log(TAG + "startAbilityByType004 success");
+          }).catch((err)=> {
+            console.error(TAG + "startAbilityByType004 fail, err:" + JSON.stringify(err));
+          })
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /*
      * @tc.number  : ACTS_UIExtension_Device_01
      * @tc.name    : test UIExtension back to desktop
      * @tc.desc    : UIExtension connect service successful back to desktop
@@ -1151,136 +1304,6 @@ export default function abilityTest() {
         expect().assertFail();
         done();
       })
-    })
-
-    /*
-     * @tc.number  : ACTS_UIExtension_StartAbilityByType001
-     * @tc.name    : test start UIExtensionAbility by type failed
-     * @tc.desc    : start UIExtensionAbility not configured in json
-     */
-    it('ACTS_UIExtension_StartAbilityByType001',0, async function (done) {
-      TAG = 'ACTS_UIExtension_StartAbilityByType001 == ';
-      console.log(TAG + "begin");
-      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
-      let failStartAbilityByTypeEvent = 'ACTS_UIExtension_FailStartAbilityByType';
-      let startAbilityByTypeEvent001 = 'ACTS_UIExtension_StartAbilityByType001';
-      var subscriber;
-      var subscribeInfo = {
-        events: [appearEvent, failStartAbilityByTypeEvent]
-      }
-      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
-        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
-        globalscribe = data;
-        commonEventManager.subscribe(globalscribe, async (err, data) => {
-          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
-
-          if (data.event == appearEvent) {
-            commonEventManager.publish(startAbilityByTypeEvent001, (err) => {
-              if (err) {
-                console.log(TAG + `publish startAbilityByTypeEvent failed, code is ${err.code}, message is ${err.message}`);
-              } else {
-                console.log(TAG + 'publish startAbilityByTypeEvent success');
-              }
-            });
-          } else if (data.event == failStartAbilityByTypeEvent) {
-            done();
-          }
-        });
-      }).catch((error) => {
-        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
-        expect().assertFail();
-        done();
-      })
-    })
-
-    /*
-     * @tc.number  : ACTS_UIExtension_StartAbilityByType002
-     * @tc.name    : test start UIExtensionAbility by type failed
-     * @tc.desc    : start UIExtensionAbility not configured in json
-     */
-    it('ACTS_UIExtension_StartAbilityByType002',0, async function (done) {
-      TAG = 'ACTS_UIExtension_StartAbilityByType002 == ';
-      console.log(TAG + "begin");
-      try {
-        let wantParam = {}
-        let abilityStartCallback = {
-          onError: (code, name, message) => {
-            console.log(TAG + "code:" + code + "name:" + name + "message:" + message);
-            expect(code).assertEqual(16000050);
-            done();
-          }
-        }
-        context.startAbilityByType("shareerror", wantParam, abilityStartCallback, (err) => {
-          if (err) {
-            console.error(TAG + "startAbilityByType002 fail, err:" + JSON.stringify(err));
-          } else {
-            console.log(TAG + "startAbilityByType002 success");
-          }
-        });
-      } catch (error) {
-        expect().assertFail();
-        done();
-      }
-    })
-
-    /*
-     * @tc.number  : ACTS_UIExtension_StartAbilityByType003
-     * @tc.name    : test start UIExtensionAbility by type failed
-     * @tc.desc    : start UIExtensionAbility not configured in json
-     */
-    it('ACTS_UIExtension_StartAbilityByType003',0, async function (done) {
-      TAG = 'ACTS_UIExtension_StartAbilityByType003 == ';
-      console.log(TAG + "begin");
-      try {
-        let wantParam = {}
-        let abilityStartCallback = {
-          onError: (code, name, message) => {
-            console.log(TAG + "code:" + code + "name:" + name + "message:" + message);
-            expect(code).assertEqual(16000050);
-            done();
-          }
-        }
-        context.startAbilityByType("shareerror", wantParam, abilityStartCallback).then(() => {
-            console.log(TAG + "startAbilityByType003 success");
-          }).catch((err)=> {
-            console.error(TAG + "startAbilityByType003 fail, err:" + JSON.stringify(err));
-          })
-      } catch (error) {
-        expect().assertFail();
-        done();
-      }
-    })
-
-    /*
-     * @tc.number  : ACTS_UIExtension_StartAbilityByType004
-     * @tc.name    : test start UIExtensionAbility by type failed
-     * @tc.desc    : start UIExtensionAbility not configured in json
-     */
-    it('ACTS_UIExtension_StartAbilityByType004',0, async function (done) {
-      TAG = 'ACTS_UIExtension_StartAbilityByType004 == ';
-      console.log(TAG + "begin");
-      try {
-        let wantParam = {}
-        let abilityStartCallback = {
-          onError: (code, name, message) => {
-            console.log(TAG + "code:" + code + "name:" + name + "message:" + message);
-            expect(code).assertEqual(16000050);
-            done();
-          },
-          onResult: (abilityResult: common.AbilityResult) => {
-            console.log(TAG + "abilityResult.resultCode:" + abilityResult.resultCode);
-            done();
-          }
-        }
-        context.startAbilityByType("shareerror", wantParam, abilityStartCallback).then(() => {
-            console.log(TAG + "startAbilityByType004 success");
-          }).catch((err)=> {
-            console.error(TAG + "startAbilityByType004 fail, err:" + JSON.stringify(err));
-          })
-      } catch (error) {
-        expect().assertFail();
-        done();
-      }
     })
   })
 }

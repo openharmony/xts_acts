@@ -21,6 +21,7 @@
     "description": "$string:phone_entry_dsc",
     "mainElement": "MainAbility",
     "deviceTypes": [
+      "wearable",
       "tablet",
       "default",
       "phone",

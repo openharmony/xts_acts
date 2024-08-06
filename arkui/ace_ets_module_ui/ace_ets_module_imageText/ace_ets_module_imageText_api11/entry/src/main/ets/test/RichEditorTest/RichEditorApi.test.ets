@@ -14,7 +14,7 @@
  */
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
 
 export default function RichEditorApi() {
@@ -31,7 +31,7 @@ export default function RichEditorApi() {
         if (!("RichEditorApi" == pages.name)) {
           console.info("get RichEditorApi state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push RichEditorApi page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,7 +41,7 @@ export default function RichEditorApi() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("RichEditorApi after each called");
     });
 
@@ -53,10 +53,10 @@ export default function RichEditorApi() {
      */
     it('RichEditorApi_001', 0, async (done: Function) => {
       console.info('[RichEditorApi_001] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('RichEditorApi_text_hello');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("[RichEditorApi_001] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content).assertEqual('hello');
 
@@ -73,16 +73,16 @@ export default function RichEditorApi() {
      */
     it('RichEditorApi_002', 0, async (done: Function) => {
       console.info('[RichEditorApi_002] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('RichEditorApi_btn_getParagraphs'));
       await btn1.click()
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('RichEditorApi_text_spanParagraphs');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("[RichEditorApi_002] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content)
         .assertEqual('[{"style":{"textAlign":0,"leadingMargin":{"size":["5.00vp","0.00vp"]}},"range":[0,4]}]');
@@ -98,22 +98,22 @@ export default function RichEditorApi() {
      */
     it('RichEditorApi_003', 0, async (done: Function) => {
       console.info('[RichEditorApi_003] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('RichEditorApi_btn_updateParagraphStyle'));
       await btn1.click()
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       console.info('[RichEditorApi_003] btn1');
 
       let btn2 = await driver.findComponent(ON.id('RichEditorApi_btn_getParagraphs'));
       await btn2.click()
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       console.info('[RichEditorApi_003] btn2');
 
       let strJson = getInspectorByKey('RichEditorApi_text_spanParagraphs');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("[RichEditorApi_003] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content)
         .assertEqual('[{"style":{"textAlign":0,"leadingMargin":{"size":["10.00vp","0.00vp"]}},"range":[0,4]}]');
@@ -129,19 +129,19 @@ export default function RichEditorApi() {
     */
     it('RichEditorApi_004', 0, async (done: Function) => {
       console.info('[RichEditorApi_004] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await Utils.sleep(1000);
-      let RichEditor3 = Utils.getComponentRectOnScreen('RichEditorApi_RichEditor3')
+      await CommonFunc.sleep(1000);
+      let RichEditor3 = CommonFunc.getComponentRectOnScreen('RichEditorApi_RichEditor3')
       await driver.mouseClick({
         x: Math.round((RichEditor3.right - RichEditor3.left) * 0.5 + RichEditor3.left),
         y: Math.round((RichEditor3.bottom - RichEditor3.top) * 0.5 + RichEditor3.top)
       }, MouseButton.MOUSE_BUTTON_RIGHT)
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('RichEditorApi_text1');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("[RichEditorApi_004] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content).assertEqual('CustomMenuAppear');
       console.info('[RichEditorApi_004] END');
@@ -157,17 +157,17 @@ export default function RichEditorApi() {
     */
     it('RichEditorApi_005', 0, async (done: Function) => {
       console.info('[RichEditorApi_005] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await Utils.sleep(1000);
-      let RichEditor4 = Utils.getComponentRectOnScreen('RichEditorApi_RichEditor4')
+      await CommonFunc.sleep(1000);
+      let RichEditor4 = CommonFunc.getComponentRectOnScreen('RichEditorApi_RichEditor4')
       await driver.longClick(Math.round((RichEditor4.right - RichEditor4.left) * 0.5 + RichEditor4.left),
         Math.round((RichEditor4.bottom - RichEditor4.top) * 0.5 + RichEditor4.top))
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('RichEditorApi_text2');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("[RichEditorApi_005] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content).assertEqual('SecondMenuAppear');
       console.info('[RichEditorApi_005] END');

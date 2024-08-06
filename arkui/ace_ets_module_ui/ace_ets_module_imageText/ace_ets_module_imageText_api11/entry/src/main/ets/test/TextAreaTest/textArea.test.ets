@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function textAreaOnCutJsunit() {
   describe('textAreaOnCutTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TextArea/textArea6',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TextArea/textArea6',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function textAreaOnCutJsunit() {
         if (!("textArea" == pages.name)) {
           console.info("get textArea state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push textArea page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,7 +40,7 @@ export default function textAreaOnCutJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("textAreaOnCut after each called");
     });
 
@@ -51,7 +51,7 @@ export default function textAreaOnCutJsunit() {
      */
     it('testtextAreaOnCut0001', 0, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testtextAreaOnCut0001] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function textAreaOnCutJsunit() {
      */
     it('testtextAreaOnCut0002', 0, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0002 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testtextAreaOnCut0002] component height strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -85,7 +85,7 @@ export default function textAreaOnCutJsunit() {
      */
     it('testtextAreaOnCut0003', 0, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0003 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testtextAreaOnCut0003] component fontSize strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -102,7 +102,7 @@ export default function textAreaOnCutJsunit() {
      */
     it('testtextAreaOnCut0004', 0, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0004 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testtextAreaOnCut0004] component opacity strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -119,7 +119,7 @@ export default function textAreaOnCutJsunit() {
      */
     it('testtextAreaOnCut0005', 0, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0005 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testtextAreaOnCut0005] component align strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -136,7 +136,7 @@ export default function textAreaOnCutJsunit() {
      */
     it('testtextAreaOnCut0006', 0, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0006 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testtextAreaOnCut0006] component fontColor strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -153,7 +153,7 @@ export default function textAreaOnCutJsunit() {
      */
     it('testtextAreaOnCut0009', 0, async () => {
       console.info('textAreaOnCut testtextAreaOnCut009 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testtextAreaOnCut0009] component padding strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -170,7 +170,7 @@ export default function textAreaOnCutJsunit() {
      */
     it('testtextAreaOnCut0010', 0, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0010 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testtextAreaOnCut0010] component textAlign strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -187,7 +187,7 @@ export default function textAreaOnCutJsunit() {
      */
     it('testtextAreaCopyOption0011', 0, async () => {
       console.info('textAreaCopyOption testtextAreaCopyOption0011 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('textAreaCopyOptionText');
       console.info("[testtextAreaCopyOption0011] component copyOption strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);

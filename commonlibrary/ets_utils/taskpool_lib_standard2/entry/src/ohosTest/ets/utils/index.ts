@@ -271,6 +271,15 @@ function funDate(value1: object): void {
   taskpool.Task.sendData(value1);
 }
 
+function AdditionDelay(delay: number): number {
+  "use concurrent"
+  let start: number = new Date().getTime();
+  while (new Date().getTime() - start < delay) {
+    continue;
+  }
+  return delay;
+}
+
 export {
   add,
   addOne,
@@ -308,5 +317,6 @@ export {
   concurrentF,
   spileString,
   funArray,
-  funDate
+  funDate,
+  AdditionDelay
 }

@@ -13,19 +13,19 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 import drawing from "@ohos.graphics.drawing"
 
 
 export default function drawCanvas() {
-  describe('drawCanvas', function () {
-    beforeEach(async function (done) {
+  describe('drawCanvas', () => {
+    beforeEach(async (done: Function) => {
       console.info("drawCanvas beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Canvas/drawCanvas',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Canvas/drawCanvas',
       }
       try {
         router.clear();
@@ -33,7 +33,7 @@ export default function drawCanvas() {
         console.info("get drawCanvas state pages: " + JSON.stringify(pages));
         if (!("transform" == pages.name)) {
           console.info("get drawCanvas state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push drawCanvas success: " + JSON.stringify(result));
         }
@@ -52,7 +52,7 @@ export default function drawCanvas() {
      * @tc.type : 
      * @tc.size :
      */
-    it('drawCanvas_0100', 0, async function (done) {
+    it('drawCanvas_0100', 0, async  (done:Function)=> {
       console.info('drawCanvas_0100 START');
       await CommonFunc.sleep(1000);
       try {

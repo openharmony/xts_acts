@@ -18,9 +18,10 @@
     "name": ".FormStHostApp",
     "mainAbility": ".MainAbility",
     "deviceType": [
-        "default",
-        "tablet",
-        "2in1"
+      "default",
+      "tablet",
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -69,9 +70,9 @@
     ],
     "defPermissions": [
       {
-      "availableScope": [],
-      "grantMode": "system_grant",
-      "name": "FMS_FormDelete_commonEvent"
+        "availableScope": [],
+        "grantMode": "system_grant",
+        "name": "FMS_FormDelete_commonEvent"
       },
       {
         "availableScope": [],
@@ -116,6 +117,6 @@
       {
         "name": "ohos.permission.REQUIRE_FORM"
       }
-  ]
+    ]
   }
 }

@@ -42,11 +42,11 @@ struct EnabledExample {
     console.info("[stateChangCallBack] stateChangCallBack ");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.enabled != null) {
-        this.enabledd = eventData.data.enabled
+      if (eventData.data?.enabled != null) {
+        this.enabledd = eventData.data?.enabled
       }
-      if (eventData.data.text != null) {
-        this.text = eventData.data.text
+      if (eventData.data?.text != null) {
+        this.text = eventData.data?.text
       }
     }
   }
