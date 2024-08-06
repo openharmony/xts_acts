@@ -34,6 +34,10 @@ import menuItemThemeTest from './components/MenuItem.test';
 import patternLockThemeTest from './components/PatternLock.test';
 import qrCodeThemeTest from './components/QRCode.test';
 import sliderThemeTest from './components/Slider.test';
+import textThemeTest from './components/Text.test';
+import textPickerThemeTest from './components/TextPicker.test';
+import timePickerThemeTest from './components/TimePicker.test';
+import toggleThemeTest from './components/Toggle.test'
 
 export default function testsuite() {
   // global tests
@@ -58,4 +62,8 @@ export default function testsuite() {
   patternLockThemeTest();
   qrCodeThemeTest();
   sliderThemeTest();
+  textThemeTest();
+  textPickerThemeTest();
+  timePickerThemeTest();
+  toggleThemeTest();
 }
