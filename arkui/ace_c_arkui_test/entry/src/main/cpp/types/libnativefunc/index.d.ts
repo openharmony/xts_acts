@@ -1150,8 +1150,6 @@ export const testSwiperDisplayCount001: () => number;
 
 export const testSwiperDisplayCount002: () => number;
 
-export const testSwiperDisplayCount003: () => number;
-
 export const testSwiperDisplayCount004: () => number;
 
 export const testSwiperDuration001: () => number;

@@ -24,7 +24,6 @@ import featureAbility from '@ohos.ability.featureAbility'
 const TAG = "CameraXts cameraSessionZoomRatioTest: ";
 
 let mPhotoSurface: string;
-let mFileAsset: mediaLibrary.FileAsset;
 let mFdNumber: number;
 let mCameraNum: number;
 let mZoomRatioRangeArray: Array<number>;

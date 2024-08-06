@@ -19,6 +19,7 @@ import { Driver, ON } from '@ohos.UiTest';
 import systemDateTime from '@ohos.systemDateTime';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import fs from '@ohos.file.fs';
+import webview from '@ohos.web.webview';
 
 export default class Utils {
   static sleep(time: number) {
@@ -42,6 +43,20 @@ export default class Utils {
       } catch (error) {
           console.info("[deleteFile] error:" + error);
       }
+  }
+
+  static isPC(controller: webview.WebviewController) {
+    let userAgent: string = controller.getUserAgent();
+    console.info("userAgent" + userAgent);
+
+    try {
+      let isPc: boolean = userAgent.includes('PC') || userAgent.toLowerCase().includes('pc') || userAgent.includes("2in1")
+      console.log('device is pc:' + isPc)
+      return isPc
+    } catch (error) {
+      console.info("userAgent error:" + error);
+      return true
+    }
   }
   
   static deleteDir(dirPath: string) {

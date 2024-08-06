@@ -29,6 +29,10 @@
                     "value": "SP_daemon"
                 },
                 {
+                    "name": "shell",
+                    "value": "aa start -a MainAbility -b com.example.actsvalidator"
+                },
+                {
                     "name": "push",
                     "value": "picture->/storage/media/100/local/files/Pictures"
                 }
