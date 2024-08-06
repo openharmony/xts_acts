@@ -15,6 +15,7 @@ group("componentUxTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
+<<<<<<< HEAD
       "ace_ets_component_advancedcounter:ActsAceAdvancedCounterTest",
       "ace_ets_component_badge:ActsAcebadgeTest",
       "ace_ets_component_button:ActsAceButtonTest",
@@ -32,6 +33,25 @@ group("componentUxTest") {
       #"ace_ets_component_navigation:ActsAceNavigationTest",
       #"ace_ets_component_panel:ActsAcePanelTest",
       #"ace_ets_component_patternlock:ActsAcePatternLockTest",
+=======
+      #"ace_ets_component_advancedcounter:ActsAceAdvancedCounterTest",
+      #"ace_ets_component_badge:ActsAcebadgeTest",
+      #"ace_ets_component_button:ActsAceButtonTest",
+      #"ace_ets_component_calendarpicker:ActsAceCalendarPickerTest",
+      #"ace_ets_component_checkbox:ActsAceCheckboxTest",
+      #"ace_ets_component_clickeffect:ActsAceClickEffectTest",
+      #"ace_ets_component_datapanel:ActsAceDatapanelTest",
+      #"ace_ets_component_datepicker:ActsAceDatePickerTest",
+      "ace_ets_component_gauge:ActsAceGaugeTest",
+      "ace_ets_component_grid:ActsAceGridTest",
+      "ace_ets_component_indexer:ActsAlphabetIndexerTest",
+      "ace_ets_component_list:ActsAceListTest",
+      "ace_ets_component_menu:ActsAceMenuTest",
+      "ace_ets_component_navigation:ActsAceNavigationTest",
+      "ace_ets_component_panel:ActsAcePanelTest",
+      "ace_ets_component_patternlock:ActsAcePatternLockTest",
+
+>>>>>>> 94b2eae057 (The group 2 of ace_ets_components_ux has been converted to hvigor)
       #"ace_ets_component_popup:ActsAcePopupTest",
       #"ace_ets_component_progress:ActsAceProgressTest",
       #"ace_ets_component_radio:ActsAceRadioTest",
