@@ -755,7 +755,7 @@ static napi_value testArkUI090(napi_env env, napi_callback_info info) {
 }
 
 static napi_value testArkUI091(napi_env env, napi_callback_info info) {
-    auto ret = OH_ArkUI_AnimatorOption_GetKeyframeValue(nullptr,0);
+    auto ret = OH_ArkUI_AnimatorOption_GetKeyframeValue(nullptr, 0);
     ASSERT_EQ(ret, -1.0f);
     NAPI_END;
 }
