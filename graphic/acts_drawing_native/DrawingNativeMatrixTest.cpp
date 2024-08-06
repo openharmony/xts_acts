@@ -306,15 +306,15 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixNormal, TestSize.L
     float value[9];
     OH_Drawing_ErrorCode code = OH_Drawing_MatrixGetAll(matrix, value);
     EXPECT_EQ(code, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
-    OH_Drawing_ErrorCode code1 = OH_Drawing_MatrixGetValue(matrix, 0);
-    EXPECT_EQ(code1, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    OH_Drawing_MatrixGetValue(matrix, 0);
+    EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 0), 1);
     // 3. OH_Drawing_MatrixSetMatrix with floating-point parameters, calling OH_Drawing_MatrixGetAll and
     // OH_Drawing_MatrixGetValue interfaces
     OH_Drawing_MatrixSetMatrix(matrix, 1.1, 0, 0, 0, -1.1, 0, 0, 0, 1.1);
     OH_Drawing_ErrorCode code2 = OH_Drawing_MatrixGetAll(matrix, value);
     EXPECT_EQ(code2, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
-    OH_Drawing_ErrorCode code3 = OH_Drawing_MatrixGetValue(matrix, 0);
-    EXPECT_EQ(code3, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    OH_Drawing_MatrixGetValue(matrix, 1);
+    EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 1), 0);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
