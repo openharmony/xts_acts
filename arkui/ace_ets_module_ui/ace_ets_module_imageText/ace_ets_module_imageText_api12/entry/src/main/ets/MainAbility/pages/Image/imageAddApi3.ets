@@ -24,8 +24,19 @@ class MyNodeController11 extends NodeController {
     return this.rootNode;
   }
   addCommonEvent(frameNode: FrameNode) {
-    frameNode.commonEvent.setOnVisibleAreaApproximateChange({ ratios: [0.0, 1.0],expectedUpdateInterval: 1000 },undefined)
+    frameNode.commonEvent.setOnVisibleAreaApproximateChange(
+        { ratios: [0.0, 1.0],expectedUpdateInterval: 1000 },undefined)
   }
+}
+class StyledStringTest {
+  constructor(str: string) {
+    this.testStr = str
+  }
+
+  static convertHtmlToStyledString(input: string): Promise<StyledString> {
+    return StyledString.fromHtml(input)
+  }
+  testStr: string = ""
 }
 @Entry
 @Component
