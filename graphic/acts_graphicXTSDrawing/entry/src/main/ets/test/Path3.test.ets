@@ -582,17 +582,17 @@ export default function drawingTsPath3Test() {
       try {
         let path: drawing.Path = new drawing.Path();
         let close = path.isClosed();
-        expect(close).assertEqual(0);
+        expect(close).assertEqual(false);
 
         path.moveTo(0, 0);
         path.lineTo(0, 100);
         path.lineTo(200, 350);
         close = path.isClosed();
-        expect(close).assertEqual(0);
+        expect(close).assertEqual(false);
 
         path.close();
         close = path.isClosed();
-        expect(close).assertEqual(1);
+        expect(close).assertEqual(true);
 
       } catch (e) {
         console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -616,7 +616,7 @@ export default function drawingTsPath3Test() {
       try {
         for (let i = 0; i < 20; i += 1) {
           let close = path.isClosed();
-          expect(close).assertEqual(0);
+          expect(close).assertEqual(false);
         }
         console.info(msg + 'test successes');
       } catch (e) {
