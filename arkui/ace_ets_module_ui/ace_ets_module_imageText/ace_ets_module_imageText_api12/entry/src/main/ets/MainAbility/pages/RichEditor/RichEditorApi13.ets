@@ -15,7 +15,7 @@
 import { NodeController, BuilderNode, FrameNode, UIContext } from "@kit.ArkUI"
 
 class Params {
-  text: string = ""
+  text: string = ''
   constructor(text: string) {
     this.text = text;
   }
@@ -33,7 +33,7 @@ function buildText(params: Params) {
 
 class TextNodeController extends NodeController {
   private textNode: BuilderNode<[Params]> | null = null;
-  private message: string = "DEFAULT";
+  private message: string = 'DEFAULT';
 
   constructor(message: string) {
     super();
