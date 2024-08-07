@@ -20,7 +20,7 @@ struct MinFontScale1 {
   build() {
     Row() {
       Column() {
-        Text("minFontScale、maxFontScale")
+        Text('minFontScale、maxFontScale')
           .id('minFontScale_maxFontScale')
           .minFontScale(0.1)
           .maxFontScale(0.9)
