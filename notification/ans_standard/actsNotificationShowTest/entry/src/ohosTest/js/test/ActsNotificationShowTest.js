@@ -55,11 +55,11 @@ export default function ActsNotificationShowTest() {
       } catch (error) {
         console.error(`show fail: ${JSON.stringify(error)}`);
         expect(error.code).assertEqual(401)
+        done()
       }
       console.info(TAG + ' conteneTitle is number:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
       expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 002')
-      done()
     })
 
     /*
