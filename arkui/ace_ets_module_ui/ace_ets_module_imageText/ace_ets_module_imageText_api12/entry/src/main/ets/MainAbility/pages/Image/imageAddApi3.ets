@@ -36,7 +36,6 @@ class StyledStringTest {
   static convertHtmlToStyledString(input: string): Promise<StyledString> {
     return StyledString.fromHtml(input)
   }
-  testStr: string = ""
 }
 @Entry
 @Component
