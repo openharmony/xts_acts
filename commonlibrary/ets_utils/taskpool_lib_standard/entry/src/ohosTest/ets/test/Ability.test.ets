@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-import taskpool from '@ohos.taskpool'
+import { taskpool, collections } from '@kit.ArkTS'
 import worker from '@ohos.worker'
 import { BusinessError } from '@ohos.base'
 import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, setTransferListTest,
@@ -21,8 +21,10 @@ import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, set
   printArgsFunc, Sum, delaySum, Add, funcStrCat, arraySum, objectSum, Multi, AdditionDelay, WaitforRunner,
   errorTest, testCancelDelayed, dependend, hashMapTest, delay, randomTest, outerTaskFunc,
   isConcurrentTest1, isConcurrentTest2, sequenceRunnerTest, sequenceRunnerPriorityTest, CancelAndExecuteDelayed,
-  errorManageTest, dealHashMapTest, noUseConcurrentTest } from './testFunclist'
+  errorManageTest, dealHashMapTest, noUseConcurrentTest, sendDataTest, sendableClassTestFunc, Int8ArrayTestFunc,
+  SetTestFunc, MapTestFunc, simpleSendableClassTestFunc, Uint8ClampedArrayTestFunc } from './testFunclist'
 import { A, B, StrCat, printArgs } from './exportFunclist'
+import { SendableClass, SimpleSendable } from './sendable';
 import HashMap from '@ohos.util.HashMap';
 
 export default function TaskPoolTest() {
@@ -4248,6 +4250,184 @@ export default function TaskPoolTest() {
       taskGroup2.addTask(task2);
       await taskpool.execute(taskGroup2);
       expect(task2.isDone()).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0186
+     * @tc.name      : TaskPoolTestClass186
+     * @tc.desc      : taskpool support executeDelayed interface
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass186', 0, async (done: Function) => {
+      try {
+        let task: taskpool.Task = new taskpool.Task(printArgs, 100);
+        taskpool.executeDelayed(-100, task);
+      } catch(e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The delayTime is less than zero");
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0187
+     * @tc.name      : TaskPoolTestClass187
+     * @tc.desc      : taskpool support executePeriodically interface
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass187', 0, async (done: Function) => {
+      try {
+        let task = new taskpool.Task(dependend, 200);
+        taskpool.executePeriodically(-100, task);
+      } catch (e) {
+        expect(e.toString()).assertEqual("BusinessError: The period value is less than zero.");
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0188
+     * @tc.name      : TaskPoolTestClass188
+     * @tc.desc      : Set transfer list for the task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass188', 0, async (done: Function) => {
+      let arrayBuffer: ArrayBuffer = new ArrayBuffer(16);
+      let task: taskpool.Task = new taskpool.Task(setCloneListTest, arrayBuffer);
+      task.setTransferList([arrayBuffer]);
+      try {
+        task.setCloneList([arrayBuffer]);
+      } catch (e) {
+        expect(e.toString()).assertEqual("BusinessError: An ArrayBuffer cannot be set as both a transfer list and a clone list");
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0189
+     * @tc.name      : TaskPoolTestClass189
+     * @tc.desc      : taskpool support sendData and onReceiveData interface
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass189', 0, async (done: Function) => {
+      let res: number = 0;
+      let task: taskpool.Task = new taskpool.Task(sendDataTest, 1);
+      task.onReceiveData((data: number)=>{
+        res = data;
+      });
+      await taskpool.execute(task);
+      expect(res).assertEqual(10);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0190
+     * @tc.name      : TaskPoolTestClass190
+     * @tc.desc      : taskpool support SendableClass
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass190', 0, async (done: Function) => {
+      let testClass1 = new SendableClass(10);
+      let testClass2 = new SendableClass(20);
+      let task: taskpool.Task = new taskpool.Task(sendableClassTestFunc, testClass1, testClass2);
+      let res = await taskpool.execute(task);
+      expect(res).assertEqual(30);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0191
+     * @tc.name      : TaskPoolTestClass191
+     * @tc.desc      : taskpool support collections.Int8Array
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass191', 0, async (done: Function) => {
+      let int8Buffer: collections.Int8Array = new collections.Int8Array(3);
+      let task: taskpool.Task = new taskpool.Task(Int8ArrayTestFunc, int8Buffer);
+      let res: collections.Int8Array = await taskpool.execute(task) as collections.Int8Array;
+      expect(res.length).assertEqual(3);
+      expect(res.at(1)).assertEqual(1);
+      expect(res.at(2)).assertEqual(2);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0192
+     * @tc.name      : TaskPoolTestClass192
+     * @tc.desc      : taskpool support collections.Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass192', 0, async (done: Function) => {
+      let set: collections.Set<number> = new collections.Set([1, 2, 3]);
+      let task: taskpool.Task = new taskpool.Task(SetTestFunc, set);
+      let res: collections.Set<number> = await taskpool.execute(task) as collections.Set<number>;
+      expect(res.size).assertEqual(4);
+      expect(res.has(4)).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0193
+     * @tc.name      : TaskPoolTestClass193
+     * @tc.desc      : taskpool support collections.Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass193', 0, async (done: Function) => {
+      let map: collections.Map<number, number> = new collections.Map([[1, 2], [3, 4]]);
+      let task: taskpool.Task = new taskpool.Task(MapTestFunc, map);
+      let res: collections.Map<number, number> = await taskpool.execute(task) as collections.Map<number, number>;
+      expect(res.size).assertEqual(3);
+      expect(res.get(5)).assertEqual(6);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0194
+     * @tc.name      : TaskPoolTestClass194
+     * @tc.desc      : taskpool support SendableClass
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass194', 0, async (done: Function) => {
+      let testClass1 = new SimpleSendable(10);
+      let testClass2 = new SimpleSendable(20);
+      let task: taskpool.Task = new taskpool.Task(simpleSendableClassTestFunc, testClass1, testClass2);
+      let res = await taskpool.execute(task);
+      expect(res).assertEqual(30);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0195
+     * @tc.name      : TaskPoolTestClass195
+     * @tc.desc      : taskpool support collections.Uint8ClampedArray
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass195', 0, async (done: Function) => {
+      let arkTSTest : collections.Uint8ClampedArray = new collections.Uint8ClampedArray(3);
+      let task: taskpool.Task = new taskpool.Task(Uint8ClampedArrayTestFunc, arkTSTest);
+      let res: collections.Uint8ClampedArray = await taskpool.execute(task) as collections.Uint8ClampedArray;
+      expect(res.length).assertEqual(3);
+      expect(res.at(1)).assertEqual(1);
       done();
     })
   })
