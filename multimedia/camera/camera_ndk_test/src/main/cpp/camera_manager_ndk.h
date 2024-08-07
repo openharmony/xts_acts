@@ -215,5 +215,6 @@ private:
     static std::mutex mtx_;
     volatile bool valid_;
     uint32_t orientation_;
+    uint32_t cameraDeviceIndex_;
 };
 #endif  // CAMERA_NATIVE_CAMERA_H
