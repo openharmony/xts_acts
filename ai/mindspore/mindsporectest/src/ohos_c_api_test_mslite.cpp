@@ -4201,3 +4201,58 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0006, Function | MediumTest | Lev
     ASSERT_EQ(predict_ret2, OH_AI_STATUS_LITE_ERROR);
     OH_AI_ModelDestroy(&model2);
 }
+
+// 正常场景：多输入模型，测试ContextDestroy接口，Context在model释放之前释放
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextDestroy_0001, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========Build model==========\n");
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_headpose_pb2tflite.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    printf("==========build model return code:%d\n", ret);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_headpose_pb2tflite", false);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "ml_headpose_pb2tflite", 0.02, 0.02);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 异常场景：多输入模型，测试ContextDestroy接口，Context在model释放之后释放
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextDestroy_0002, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========Build model==========\n");
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_headpose_pb2tflite.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    printf("==========build model return code:%d\n", ret);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_headpose_pb2tflite", false);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "ml_headpose_pb2tflite", 0.02, 0.02);
+    OH_AI_ModelDestroy(&model);
+    OH_AI_ContextDestroy(&context);
+}
+
