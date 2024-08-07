@@ -14,15 +14,13 @@
  */
 
 
-import { describe, it, beforeAll, beforeEach, expect} from '@ohos/hypium';
-import { stringToUint8Array, checkSoftware } from '../../../../../../../utils/param/publicFunc';
+import { describe, it, beforeAll } from '@ohos/hypium';
+import { stringToUint8Array } from '../../../../../../../utils/param/publicFunc';
 import { HuksAgreeDH } from '../../../../../../../utils/param/agree/publicAgreeParam';
 import { publicAgreeFunc } from '../../../../../../../utils/param/agree/publicAgreePromise';
 import { HksTag } from '../../../../../../../utils/param/publicParam';
-import { checkAESChiper } from '../../../../../../../utils/param/checkAES';
 
 
-let useSoftware = true;
 
 let HuksOptions63kb = {
   properties: new Array(HuksAgreeDH.HuksKeyAlgDH, HuksAgreeDH.HuksKeyPurposeDH, HuksAgreeDH.HuksKeyDHSize2048),
@@ -31,7 +29,6 @@ let HuksOptions63kb = {
 export default function SecurityHuksAgreeDHBasicAbort63KBPromiseJsunit() {
   describe('SecurityHuksAgreeDHBasicAbort63KBPromiseJsunit', function () {
     beforeAll(async function (done) {
-      useSoftware = await checkSoftware();
       done();
     })
     it('Security_HUKS_Agree_API8_DH_102', 0, async function (done) {
@@ -53,9 +50,7 @@ export default function SecurityHuksAgreeDHBasicAbort63KBPromiseJsunit() {
           HuksAgreeDH.HuksKeyBLOCKMODEECB
         ),
       };
-      if (useSoftware) {
-        await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'abort');
-      };
+      await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'abort');
       done();
     });
   });
