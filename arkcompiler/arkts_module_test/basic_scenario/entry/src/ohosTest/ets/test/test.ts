@@ -12,20 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-{
-  "name": "runtime",
-  "version": "1.0.0",
-  "description": "Please describe the basic information.",
-  "main": "",
-  "author": "",
-  "license": "",
-  "dependencies": {
-  },
-  "devDependencies": {
-    "@ohos/hypium": "1.0.16",
-    "@ohos/hamock": "1.0.0",
-    "json-bigint": "1.0.0",
-    "behaviortree": "^3.0.0-beta.1"
-  }
+
+export function add(a: number, b: number) {
+  return a + b;
 }

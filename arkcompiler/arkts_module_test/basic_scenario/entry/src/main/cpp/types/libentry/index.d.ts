@@ -13,10 +13,4 @@
  * limitations under the License.
  */
 
-import hspImport from './hsp.test';
-import staticImport from './staticImport.test';
-
-export default function testsuite() {
-  hspImport();
-  staticImport();
-}
+export const add: (a: number, b: number) => number;
