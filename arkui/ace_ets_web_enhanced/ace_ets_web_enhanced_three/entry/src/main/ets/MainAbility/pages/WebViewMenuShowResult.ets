@@ -93,7 +93,7 @@ struct WebViewMenuShowResult {
               this.menuShowState = 'copyPaste'
               await Utils.sleep(2000);
               if ((this.userAgentPC).includes("PC")) {
-                await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 400 }, MouseButton.MOUSE_BUTTON_RIGHT)
+                await driver.mouseClick({ x: webRect.left + 120, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT)
               } else {
                 await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
               }
@@ -121,7 +121,7 @@ struct WebViewMenuShowResult {
               this.menuShowState = 'cutPaste'
               await Utils.sleep(2000);
               if ((this.userAgentPC).includes("PC")) {
-                await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 400 }, MouseButton.MOUSE_BUTTON_RIGHT)
+                await driver.mouseClick({ x: webRect.left + 120, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT)
               } else {
                 await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
               }
