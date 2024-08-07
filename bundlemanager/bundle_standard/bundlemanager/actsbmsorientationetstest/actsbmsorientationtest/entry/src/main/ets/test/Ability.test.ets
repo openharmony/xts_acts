@@ -34,8 +34,8 @@ export default function abilityTest() {
   describe('ActsAbilityTest', () => {
     /**
      * @tc.number     : Acts_OrientationTest_001
-     * @tc.name       : The provider hap install.
-     * @tc.desc       : install hap with orientation of follow_recent.
+     * @tc.name       : Install using the provided HAP
+     * @tc.desc       : Install the orientation to follow_decent for hap.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -74,8 +74,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number     : Acts_OrientationTest_002
-     * @tc.name       : The provider hap update.
-     * @tc.desc       : update hap orientation from follow_recent to follow_recent.
+     * @tc.name       : Update using the provided HAP
+     * @tc.desc       : update orientation from follow_recent to follow_recent.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -114,8 +114,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number     : Acts_OrientationTest_003
-     * @tc.name       : The provider hap update.
-     * @tc.desc       : update hap orientation from follow_recent to not follow_recent.
+     * @tc.name       : Update using the provided HAP
+     * @tc.desc       : update orientation from follow_recent to not follow_recent.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -154,8 +154,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number     : Acts_OrientationTest_004
-     * @tc.name       : The provider hap update.
-     * @tc.desc       : update hap orientation from not follow_recent to not follow_recent.
+     * @tc.name       : Update using the provided HAP
+     * @tc.desc       : update orientation from not follow_recent to not follow_recent.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -194,8 +194,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number     : Acts_OrientationTest_005
-     * @tc.name       : The provider hap update.
-     * @tc.desc       : update hap orientation from not follow_recent to follow_recent.
+     * @tc.name       : Update using the provided HAP
+     * @tc.desc       : update orientation from not follow_recent to follow_recent.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -234,8 +234,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number     : Acts_OrientationTest_006
-     * @tc.name       : The provider hap uninstall and install.
-     * @tc.desc       : test uninstall and install orientation not follow_recent.
+     * @tc.name       : Use the provided HAP to uninstall and install
+     * @tc.desc       : uninstall and install orientation to not follow_recent.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
