@@ -14,15 +14,15 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function RatingJsunit() {
-  describe('ratingTest', function () {
-    beforeEach(async function (done) {
+  describe('ratingTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("RatingJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/rating',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/rating',
       }
       try {
         router.clear();
@@ -30,8 +30,7 @@ export default function RatingJsunit() {
         console.info("get RatingJsunit state pages: " + JSON.stringify(pages));
         if (!("rating" == pages.name)) {
           console.info("get RatingJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
-          console.info("push RatingJsunit success: " + JSON.stringify(result));
+          await router.pushUrl(options);
         }
       } catch (err) {
         console.error("push RatingJsunit page error: " + err);
@@ -42,13 +41,13 @@ export default function RatingJsunit() {
 
     /**
      * @tc.number RatingJsunit_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set stars values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set stars values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('RatingJsunit_0100', 0, async function (done) {
+    it('RatingJsunit_0100', 0, async (done: Function) => {
       console.info('[RatingJsunit_0100] START');
       let strJson = getInspectorByKey('rating1');
       let obj = JSON.parse(strJson);
@@ -60,13 +59,13 @@ export default function RatingJsunit() {
 
     /**
      * @tc.number RatingJsunit_0200
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set stepSize values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set stepSize values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('RatingJsunit_0200', 0, async function (done) {
+    it('RatingJsunit_0200', 0, async (done: Function) => {
 
       console.info('[RatingJsunit_0200] START');
       let strJson = getInspectorByKey('rating1');
@@ -79,13 +78,13 @@ export default function RatingJsunit() {
 
     /**
      * @tc.number RatingJsunit_0300
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set starStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set starStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('RatingJsunit_0300', 0, async function (done) {
+    it('RatingJsunit_0300', 0, async (done: Function) => {
       console.info('[RatingJsunit_0300] START');
       let strJson = getInspectorByKey('rating1');
       let obj = JSON.parse(strJson);
@@ -99,13 +98,13 @@ export default function RatingJsunit() {
 
     /**
      * @tc.number RatingJsunit_0400
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set starStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set starStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('RatingJsunit_0400', 0, async function (done) {
+    it('RatingJsunit_0400', 0, async (done: Function) => {
       console.info('[RatingJsunit_0400] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

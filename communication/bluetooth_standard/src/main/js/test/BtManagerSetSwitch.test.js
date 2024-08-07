@@ -37,17 +37,28 @@ describe('btManagerSwitchTest', function() {
         }
     }
 
-    async function clickTheWindow() {
+    let OPEN_BT_TEXT = "开启";
+    let CLOSE_BT_TEXT = "关闭";
+
+    async function clickTheWindow(text) {
+        console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
         try {
-            console.info('[bluetooth_js] clickRequestPermission start');
-            let driver = Driver.create();
-            await driver.delayMs(3000);
-            let button = await driver.findComponent(ON.text("允许"));
+            let button = await driver.findComponent(ON.text(text));
             await button.click();
             await driver.delayMs(3000);
             console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed');
+            console.info('[bluetooth_js] click 关闭 failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
         }
     }
 
@@ -56,7 +67,7 @@ describe('btManagerSwitchTest', function() {
         switch (sta) {
             case 0:
                 bluetoothManager.enableBluetooth();
-                await clickTheWindow();
+                await clickTheWindow(OPEN_BT_TEXT);
                 await sleep(10000);
                 let sta1 = bluetoothManager.getState();
                 console.info('[bluetooth_js] bt turn off:' + JSON.stringify(sta1));
@@ -70,7 +81,7 @@ describe('btManagerSwitchTest', function() {
                 break;
             case 3:
                 bluetoothManager.enableBluetooth();
-                await clickTheWindow();
+                await clickTheWindow(OPEN_BT_TEXT);
                 await sleep(10000);
                 let sta2 = bluetoothManager.getState();
                 console.info('[bluetooth_js] bt turning off:' + JSON.stringify(sta2));
@@ -99,9 +110,10 @@ describe('btManagerSwitchTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_STATECHANGE_0100
-     * @tc.name Test On pair StateChange
+     * @tc.name testPairDevice
      * @tc.desc Test bondStateChange ON api
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_STATECHANGE_0100', 0, async function (done) {
@@ -125,9 +137,10 @@ describe('btManagerSwitchTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_STATECHANGE_0200
-     * @tc.name test EnableBluetooth and getState
+     * @tc.name testGetState
      * @tc.desc Test EnableBluetooth 
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BTMANAGER_STATECHANGE_0200', 0, async function (done) {
@@ -140,7 +153,7 @@ describe('btManagerSwitchTest', function() {
         console.info('[bluetooth_js] get bluetooth state001' + JSON.stringify(state));
         if (state != bluetoothManager.BluetoothState.STATE_ON) {
             let enable = bluetoothManager.enableBluetooth();
-            await clickTheWindow();
+            await clickTheWindow(OPEN_BT_TEXT);
             await sleep(10000);
             console.info('[bluetooth_js] bluetoothManager enable001' + JSON.stringify(enable));
             expect(enable).assertTrue();
@@ -157,9 +170,10 @@ describe('btManagerSwitchTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_STATECHANGE_0300
-     * @tc.name test disableBluetooth and getState
+     * @tc.name testGetState
      * @tc.desc Test disableBluetooth api 
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BTMANAGER_STATECHANGE_0300', 0, async function (done) {
@@ -174,7 +188,7 @@ describe('btManagerSwitchTest', function() {
         console.info('[bluetooth_js] get bluetooth state001' + JSON.stringify(state));
         if (state != bluetoothManager.BluetoothState.STATE_OFF) {
             let disable = bluetoothManager.disableBluetooth();
-            await clickTheWindow();
+            await clickTheWindow(CLOSE_BT_TEXT);
             await sleep(10000);
             console.info('[bluetooth_js] bluetoothManager disable001' + JSON.stringify(disable));
             expect(disable).assertTrue();

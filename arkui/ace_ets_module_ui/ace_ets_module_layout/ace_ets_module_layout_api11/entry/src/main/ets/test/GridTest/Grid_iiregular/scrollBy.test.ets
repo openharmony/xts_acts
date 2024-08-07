@@ -85,16 +85,16 @@ export default function scrollByJsunit() {
       await CommonFunc.sleep(1000);
 
 
-      let strJson2 = getInspectorByKey('content0');
-      console.info('[scrollByJsunit_0000] content0');
+      let strJson2 = getInspectorByKey('content00');
+      console.info('[scrollByJsunit_0000] content00');
 
       expect(JSON.parse(strJson2).$attrs.content).assertEqual('0');
 
 
       let ScrollBarItem: RectValue = CommonFunc.getComponentRect('scrollByPages');
       console.info('[scrollByJsunit_0000] scrollByPages');
-      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content0');
-      console.info('[scrollByJsunit_0000] content0');
+      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content00');
+      console.info('[scrollByJsunit_0000] content00');
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(ScrollBarItem.top) - Math.round(scrollTextItem.top)) <= 1).assertTrue();
 
@@ -124,12 +124,12 @@ export default function scrollByJsunit() {
       await CommonFunc.sleep(100);
 
 
-      let strJson2 = getInspectorByKey('content3');
+      let strJson2 = getInspectorByKey('content30');
 
       expect(JSON.parse(strJson2).$attrs.content).assertEqual('3');
 
       let ScrollBarItem: RectValue = CommonFunc.getComponentRect('scrollByPages');
-      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content3');
+      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content30');
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(ScrollBarItem.top) - Math.round(scrollTextItem.top)) <= 1).assertTrue();
 
@@ -161,12 +161,12 @@ export default function scrollByJsunit() {
       await CommonFunc.sleep(100);
 
 
-      let strJson2 = getInspectorByKey('content0');
+      let strJson2 = getInspectorByKey('content00');
 
       expect(JSON.parse(strJson2).$attrs.content).assertEqual('0');
 
       let ScrollBarItem: RectValue = CommonFunc.getComponentRect('scrollByPages');
-      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content0');
+      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content00');
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(ScrollBarItem.top) - Math.round(scrollTextItem.top)) <= 1).assertTrue();
       console.info('[scrollByJsunit_0003] END');
@@ -192,12 +192,12 @@ export default function scrollByJsunit() {
       await CommonFunc.sleep(100);
 
 
-      let strJson2 = getInspectorByKey('content1');
+      let strJson2 = getInspectorByKey('content12');
 
       expect(JSON.parse(strJson2).$attrs.content).assertEqual('1');
 
       let ScrollBarItem: RectValue = CommonFunc.getComponentRect('scrollByPages');
-      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content1');
+      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content12');
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(ScrollBarItem.top) - Math.round(scrollTextItem.top)) <= 1).assertTrue();
       console.info('[scrollByJsunit_0004] END');
@@ -223,12 +223,12 @@ export default function scrollByJsunit() {
       await CommonFunc.sleep(100);
 
 
-      let strJson2 = getInspectorByKey('content1');
+      let strJson2 = getInspectorByKey('content11');
 
       expect(JSON.parse(strJson2).$attrs.content).assertEqual('1');
 
       let ScrollBarItem: RectValue = CommonFunc.getComponentRect('scrollByPages');
-      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content1');
+      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content11');
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(ScrollBarItem.top) - Math.round(scrollTextItem.top)) <= 1).assertTrue();
 
@@ -258,11 +258,11 @@ export default function scrollByJsunit() {
       await CommonFunc.sleep(100);
 
 
-      let strJson2 = getInspectorByKey('content0');
+      let strJson2 = getInspectorByKey('content02');
 
       expect(JSON.parse(strJson2).$attrs.content).assertEqual('0');
       let ScrollBarItem: RectValue = CommonFunc.getComponentRect('scrollByPages');
-      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content0');
+      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content02');
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(ScrollBarItem.top) - Math.round(scrollTextItem.top)) <= 1).assertTrue();
 
@@ -291,12 +291,12 @@ export default function scrollByJsunit() {
       await CommonFunc.sleep(100);
 
 
-      let strJson2 = getInspectorByKey('content0');
+      let strJson2 = getInspectorByKey('content00');
 
       expect(JSON.parse(strJson2).$attrs.content).assertEqual('0');
 
       let ScrollBarItem: RectValue = CommonFunc.getComponentRect('scrollByPages');
-      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content0');
+      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content00');
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(ScrollBarItem.top) - Math.round(scrollTextItem.top)) <= 1).assertTrue();
 
@@ -324,13 +324,13 @@ export default function scrollByJsunit() {
       await CommonFunc.sleep(100);
 
 
-      let strJson2 = getInspectorByKey('content0');
+      let strJson2 = getInspectorByKey('content00');
 
       expect(JSON.parse(strJson2).$attrs.content).assertEqual('0');
 
 
       let ScrollBarItem: RectValue = CommonFunc.getComponentRect('scrollByPages');
-      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content0');
+      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content00');
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(ScrollBarItem.top) - Math.round(scrollTextItem.top)) <= 1).assertTrue();
 
@@ -358,12 +358,12 @@ export default function scrollByJsunit() {
       await CommonFunc.sleep(100);
 
 
-      let strJson2 = getInspectorByKey('content0');
+      let strJson2 = getInspectorByKey('content00');
 
       expect(JSON.parse(strJson2).$attrs.content).assertEqual('0');
 
       let ScrollBarItem: RectValue = CommonFunc.getComponentRect('scrollByPages');
-      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content0');
+      let scrollTextItem: RectValue = CommonFunc.getComponentRect('content00');
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(ScrollBarItem.top) - Math.round(scrollTextItem.top)) <= 1).assertTrue();
 

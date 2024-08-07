@@ -13,11 +13,22 @@
  * limitations under the License.
  */
 
-export const oHPrintInit: () => number;
-export const oHPrintListener: () => number;
-export const oHPrintDiscovery: () => number;
-export const oHPrintConnect: () => number;
-export const oHPrintJob: () => number;
-export const oHPrintList: () => number;
-export const oHPrintInfo: () => number;
-export const oHPrintProperty: () => number;
+export const oHPrintInit: () => Promise<number>;
+export const oHPrintListener: () => Promise<number>;
+export const oHPrintDiscovery: () => Promise<number>;
+export const oHPrintConnect: () => Promise<number>;
+export const oHPrintJob: () => Promise<number>;
+export const oHPrintList: () => Promise<number>;
+export const oHPrintInfo: () => Promise<number>;
+export const oHPrintProperty: () => Promise<number>;
+
+export const oHScanInit: () => Promise<number>;
+export const oHScanStartScannerDiscovery: () => Promise<number>;
+export const oHScanOpenScanner: () => Promise<number>;
+export const oHScanCloseScanner: () => Promise<number>;
+export const oHScanGetScannerParameter: () => Promise<number>;
+export const oHScanSetScannerParameter: () => Promise<number>;
+export const oHScanStartScan: () => Promise<number>;
+export const oHScanCancelScan: () => Promise<number>;
+export const oHScanGetPictureScanProgress: () => Promise<number>;
+export const oHScanExit: () => Promise<number>;

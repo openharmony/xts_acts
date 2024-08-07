@@ -13,18 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function motionBlurTest() {
-  describe('motionBlurTest', function () {
-    beforeEach(async function (done) {
+  describe('motionBlurTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("motionBlurTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/visualEffect/motionBlur',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/visualEffect/motionBlur',
       }
       try {
         router.clear();
@@ -32,7 +44,7 @@ export default function motionBlurTest() {
         console.info("get motionBlurTest state pages: " + JSON.stringify(pages));
         if (!("motionBlur" == pages.name)) {
           console.info("get motionBlurTest state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push motionBlurTest success: " + JSON.stringify(result));
         }
@@ -44,21 +56,20 @@ export default function motionBlurTest() {
     });
 
     /**
-     * @tc.number    motionBlurTest_0100
-     * @tc.name      motionBlurTest_0100
-     * @tc.desc      api: motionBlur
-     * @tc.level:    Level 2
+     * @tc.number motionBlurTest_0100
+     * @tc.name motionBlurTest_0100
+     * @tc.desc api: motionBlur
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('motionBlurTest_0100', 0, async function (done) {
+    it('motionBlurTest_0100', 0, async (done: Function) => {
       console.info('motionBlurTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('motionBlur_id');
-      let obj = JSON.parse(strJson);
-      console.log('motionBlurTest_0100', JSON.stringify(obj.$attrs))
-      console.log('motionBlurTest_0100', JSON.stringify(obj.$attrs.motionBlur))
-      expect(JSON.stringify(obj.$attrs.motionBlur)).assertEqual('{"radius":0,"anchor":{"x":0,"y":0}}');
+      console.log('motionBlurTest_0100', JSON.stringify(JSON.parse(strJson).$attrs))
+      console.log('motionBlurTest_0100', JSON.stringify(JSON.parse(strJson).$attrs.motionBlur))
+      expect(JSON.stringify(JSON.parse(strJson).$attrs.motionBlur)).assertEqual('{"radius":0,"anchor":{"x":0,"y":0}}');
       console.info('motionBlurTest_0100 END');
       done();
     });

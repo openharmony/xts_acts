@@ -12,6 +12,7 @@
     "package": "ohos.acts.hiviewdfx.hitracechain.function",
     "name": ".entry",
     "deviceType": [
+      "wearable",
       "tablet",
       "default",
       "phone",

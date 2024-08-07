@@ -55,17 +55,17 @@ struct Second {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("swiper page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.fontSize != null) {
-        this.fontSize = eventData.data.fontSize;
+      if (eventData.data?.fontSize != null) {
+        this.fontSize = eventData.data?.fontSize;
       }
-      if (eventData.data.fontColor != null) {
-        this.fontColor = eventData.data.fontColor;
+      if (eventData.data?.fontColor != null) {
+        this.fontColor = eventData.data?.fontColor;
       }
-      if (eventData.data.format != null) {
-        this.format = eventData.data.format;
+      if (eventData.data?.format != null) {
+        this.format = eventData.data?.format;
       }
-      if (eventData.data.onActionCalled != null) {
-        this.onActionCalled = eventData.data.onActionCalled;
+      if (eventData.data?.onActionCalled != null) {
+        this.onActionCalled = eventData.data?.onActionCalled;
       }
     }
   }
@@ -97,7 +97,7 @@ struct Second {
             console.info("onChange start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("onChange emit action state err: " + JSON.stringify(err.message))
+            console.info("onChange emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .margin(20)
@@ -126,7 +126,7 @@ struct Second {
             console.info("button2 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button2 emit action state err: " + JSON.stringify(err.message))
+            console.info("button2 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
     }

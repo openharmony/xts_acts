@@ -37,17 +37,27 @@ describe('btSwitchTest', function() {
         }
     }
 
-    async function clickTheWindow() {
+    let OPEN_BT_TEXT = "开启";
+
+    async function clickTheWindow(text) {
+        console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
         try {
-            console.info('[bluetooth_js] clickRequestPermission start');
-            let driver = Driver.create();
-            await driver.delayMs(3000);
-            let button = await driver.findComponent(ON.text("允许"));
+            let button = await driver.findComponent(ON.text(text));
             await button.click();
             await driver.delayMs(3000);
             console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed');
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
         }
     }
 
@@ -56,7 +66,7 @@ describe('btSwitchTest', function() {
         switch(sta){
             case 0:
                 bluetooth.enableBluetooth();
-                await clickTheWindow();
+                await clickTheWindow(OPEN_BT_TEXT);
                 await sleep(10000);
                 let sta1 = bluetooth.getState();
                 console.info('[bluetooth_js] Reacquire bt state:'+ JSON.stringify(sta1));
@@ -70,7 +80,7 @@ describe('btSwitchTest', function() {
                 break;
             case 3:
                 bluetooth.enableBluetooth();
-                await clickTheWindow();
+                await clickTheWindow(OPEN_BT_TEXT);
                 await sleep(10000);
                 let sta2 = bluetooth.getState();
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta2));
@@ -102,17 +112,18 @@ describe('btSwitchTest', function() {
      * @tc.name testEnableBluetooth
      * @tc.desc Test EnableBluetooth api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SWITCH_0300', 0, async function (done) {
         let enable = bluetooth.enableBluetooth();
-        await clickTheWindow();
+        await clickTheWindow(OPEN_BT_TEXT);
         let state = bluetooth.getState();
         console.info('[bluetooth_js] bt open state1 = '+ JSON.stringify(state));
         expect(state).assertEqual(bluetooth.BluetoothState.STATE_ON);
         if(state==bluetooth.BluetoothState.STATE_ON) {
             let enable1=bluetooth.enableBluetooth();
-            await clickTheWindow();
+            await clickTheWindow(OPEN_BT_TEXT);
             await sleep(10000);
             console.info('[bluetooth_js]enable1 :'+ JSON.stringify(enable1));
             expect(enable1).assertFalse();
@@ -127,9 +138,10 @@ describe('btSwitchTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_SWITCH_0100
-     * @tc.name testEnableBluetooth and getState
+     * @tc.name testEnableBluetooth
      * @tc.desc Test EnableBluetooth api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SWITCH_0100', 0, async function (done) {
@@ -142,7 +154,7 @@ describe('btSwitchTest', function() {
         if(state!=bluetooth.BluetoothState.STATE_ON)
         {
             let enable = bluetooth.enableBluetooth();
-            await clickTheWindow();
+            await clickTheWindow(OPEN_BT_TEXT);
             await sleep(10000);
             console.info('[bluetooth_js] bluetooth enable001'+JSON.stringify(enable));
             expect(enable).assertTrue();
@@ -155,9 +167,10 @@ describe('btSwitchTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_SwitchOff_0444
-     * @tc.name testEnableBluetooth and getState
+     * @tc.name testBluetoothState
      * @tc.desc Test EnableBluetooth api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SwitchOff_0444', 0, async function (done) {

@@ -50,6 +50,7 @@ function getListFile(dir): number {
     public listNum: number = 0;
     public filter: Filter = {};
   }
+
   let option = new ListFileOption();
   option.filter.displayName = ['temp_useless*'];
   let files = fs.listFileSync(dir, option);
@@ -69,17 +70,17 @@ function startAndTerminate(action): void {
           key: action
         }
       }, (err) => {
-        console.log(action + ' startAbility err: ' + JSON.stringify(err));
-        if (action !== 'Acts_CleanTempFiles_0203') {
-          setTimeout(() => {
-            currentContext.terminateSelf().then(() => {
-              console.log(action + 'rely terminateSelf end');
-            }).catch((err) => {
-              console.log(action + 'rely terminateSelf err: ' + JSON.stringify(err));
-            });
-          }, DELAY_TIME);
-        }
-      });
+      console.log(action + ' startAbility err: ' + JSON.stringify(err));
+      if (action !== 'Acts_CleanTempFiles_0203') {
+        setTimeout(() => {
+          currentContext.terminateSelf().then(() => {
+            console.log(action + 'rely terminateSelf end');
+          }).catch((err) => {
+            console.log(action + 'rely terminateSelf err: ' + JSON.stringify(err));
+          });
+        }, DELAY_TIME);
+      }
+    });
   }, DELAY_TIME);
 }
 
@@ -244,7 +245,8 @@ export default class EntryAbility extends UIAbility {
         commonEventData.parameters.message = readLen;
         let dir = tempDir.split('temp');
         commonEventData.parameters.files = getListFile(dir[0]);
-        let applicationFile = fs.openSync(applicationTempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        let applicationFile =
+          fs.openSync(applicationTempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
         let applicationReadLen = fs.readSync(applicationFile.fd, buf, {
           offset: OFFSETNUMBER
         });

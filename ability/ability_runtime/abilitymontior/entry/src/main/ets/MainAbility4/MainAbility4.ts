@@ -15,41 +15,41 @@
 import Ability from '@ohos.app.ability.UIAbility'
 
 export default class MainAbility4 extends Ability {
-    onCreate(want, launchParam) {
-        console.log("[Demo] MainAbility onCreate")
-        globalThis.abilityWant = want;
-        globalThis.abilityContext = this.context
-    }
+  onCreate(want, launchParam) {
+    console.log("[Demo] MainAbility onCreate")
+    globalThis.abilityWant = want;
+    globalThis.abilityContext = this.context
+  }
 
-    onDestroy() {
-        console.log("[Demo] MainAbility onDestroy")
-        globalThis.abilityContext = undefined;
-    }
+  onDestroy() {
+    console.log("[Demo] MainAbility onDestroy")
+    globalThis.abilityContext = undefined;
+  }
 
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.log("[Demo] MainAbility onWindowStageCreate")
+  onWindowStageCreate(windowStage) {
+    // Main window is created, set main page for this ability
+    console.log("[Demo] MainAbility onWindowStageCreate")
 
-        windowStage.setUIContent(this.context, "pages/index", null)
-        setTimeout(()=>{
-            globalThis.abilityContext.terminateSelf().then(()=>{
-                console.log("====>in terminateSelf====>");
-            })
-        },2000)
-    }
+    windowStage.setUIContent(this.context, "pages/index", null)
+    setTimeout(() => {
+      globalThis.abilityContext.terminateSelf().then(() => {
+        console.log("====>in terminateSelf====>");
+      })
+    }, 2000)
+  }
 
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.log("[Demo] MainAbility onWindowStageDestroy")
-    }
+  onWindowStageDestroy() {
+    // Main window is destroyed, release UI related resources
+    console.log("[Demo] MainAbility onWindowStageDestroy")
+  }
 
-    onForeground() {
-        // Ability has brought to foreground
-        console.log("[Demo] MainAbility onForeground")
-    }
+  onForeground() {
+    // Ability has brought to foreground
+    console.log("[Demo] MainAbility onForeground")
+  }
 
-    onBackground() {
-        // Ability has back to background
-        console.log("[Demo] MainAbility onBackground")
-    }
+  onBackground() {
+    // Ability has back to background
+    console.log("[Demo] MainAbility onBackground")
+  }
 };

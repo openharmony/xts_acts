@@ -14,30 +14,30 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect } from 'deccjsunit/index'
+import { describe, it, expect } from '@ohos/hypium'
 import { genRadomStr, photoType } from '../../../../../../../common';
 
 export default function createDeleteRequestTest() {
-  describe('createDeleteRequestTest', function () {
-    const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
+  describe('createDeleteRequestTest', () => {
+    const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext);
     const ERR_CODE_PARAMERTER_INVALID = 13900020;
 
-    const createFiles = async (count) => {
+    const createFiles = async (count: number) => {
+      const uriList: Array<string> = new Array();
       try {
-        const uriList: Array<string> = new Array();
         for (let i = 0; i < count; i++) {
-          let title = genRadomStr(10);
+          let title: string = genRadomStr(10);
           let asset = await helper.createAsset(title + '.jpg');
-          let fd = await asset.open('rw');
+          let fd: number = await asset.open('rw');
           await asset.close(fd);
           uriList.push(asset.uri);
         }
         return uriList;
       } catch (error) {
         console.info(`delete_popup createFiles error ${error}`);
+        return uriList;
       }
     };
-
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_CREATE_DELETE_REQUEST_0000
      * @tc.name      : createDeleteRequest_callback_000
@@ -46,11 +46,11 @@ export default function createDeleteRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createDeleteRequest_callback_000', 0, async function (done) {
+    it('createDeleteRequest_callback_000', 0, async (done: Function) => {
       const testNum = 'createDeleteRequest_callback_000';
       try {
         let uriList = await createFiles(1);
-        console.info(`${testNum} uriList: ${JSON.stringify(uriList)}`)
+        console.info(`${testNum} uriList: ${JSON.stringify(uriList)}`);
         helper.createDeleteRequest(uriList, (err) => {
           try {
             if (err) {
@@ -62,14 +62,13 @@ export default function createDeleteRequestTest() {
             console.info(`${testNum} error ${JSON.stringify(error)}`);
           }
           done();
-        })
+        });
         done();
       } catch (error) {
         expect(false).assertTrue();
         done();
       }
     });
-
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_DELETE_REQUEST_0000
      * @tc.name      : createDeleteRequest_promise_000
@@ -78,7 +77,7 @@ export default function createDeleteRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createDeleteRequest_promise_000', 0, async function (done) {
+    it('createDeleteRequest_promise_000', 0, async (done: Function) => {
       const testNum = 'createDeleteRequest_promise_000';
       try {
         let uriList = await createFiles(1);

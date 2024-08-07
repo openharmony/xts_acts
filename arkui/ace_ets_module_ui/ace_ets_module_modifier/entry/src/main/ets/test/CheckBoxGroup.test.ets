@@ -14,16 +14,16 @@
  */
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
 export default function checkBoxGroupTest() {
-  describe('checkBoxGroupTest', function () {
+  describe('checkBoxGroupTest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
-        uri: "MainAbility/pages/checkBoxGroup",
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/checkBoxGroup",
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function checkBoxGroupTest() {
         console.info("get CheckBoxGroup state success " + JSON.stringify(pages));
         if (!("checkBoxGroup" == pages.name)) {
           console.info("get CheckBoxGroup state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           await Utils.sleep(2000);
           console.info("push CheckBoxGroup page success " + JSON.stringify(result));
         }
@@ -43,22 +43,20 @@ export default function checkBoxGroupTest() {
 
     /**
      * @tc.number ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1000
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set mark values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set mark values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_CheckboxGroup_1000', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_1000', 0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_CheckboxGroup_1000 START');
         let strJson = getInspectorByKey('checkboxNO');
         console.info('ArkUX_Stage_CheckboxGroup_1000 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
-        let markObj = JSON.parse(obj.$attrs.mark);
-        expect(markObj.strokeWidth).assertEqual("15.00vp");
-        expect(markObj.size).assertEqual("10.00vp");
-        expect(markObj.strokeColor).assertEqual('#FFFF00FF');
+        expect(JSON.parse(JSON.parse(strJson).$attrs.mark).strokeWidth).assertEqual("15.00vp");
+        expect(JSON.parse(JSON.parse(strJson).$attrs.mark).size).assertEqual("10.00vp");
+        expect(JSON.parse(JSON.parse(strJson).$attrs.mark).strokeColor).assertEqual('#FFFF00FF');
         console.info('ArkUX_Stage_CheckboxGroup_1000 END ');
       } catch (err) {
         expect().assertFail();
@@ -69,19 +67,18 @@ export default function checkBoxGroupTest() {
 
     /**
      * @tc.number ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set unselectedColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set unselectedColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1001', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1001', 0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1001 START');
         let strJson = getInspectorByKey('checkboxNO');
         console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1001 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
-        expect(obj.$attrs.unselectedColor).assertEqual('#FF123456');
+        expect(JSON.parse(strJson).$attrs.unselectedColor).assertEqual('#FF123456');
         console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1001 END ');
       } catch (err) {
         expect().assertFail();
@@ -92,37 +89,35 @@ export default function checkBoxGroupTest() {
 
     /**
      * @tc.number ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectAll values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectAll values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1002', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1002', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1002 START');
       let strJson = getInspectorByKey('checkboxNO');
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1002 START  :' + JSON.stringify(strJson));
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.selectAll).assertEqual('false');
+      expect(JSON.parse(strJson).$attrs.selectAll).assertEqual('false');
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1002 END ');
       done();
     });
 
     /**
      * @tc.number ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectedColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectedColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1003', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1003', 0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1003 START');
         let strJson = getInspectorByKey('checkboxNO');
         console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1003 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
-        expect(obj.$attrs.selectedColor).assertEqual('#FF321456');
+        expect(JSON.parse(strJson).$attrs.selectedColor).assertEqual('#FF321456');
         console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1003 END ');
       } catch (err) {
         expect().assertFail();
@@ -133,13 +128,13 @@ export default function checkBoxGroupTest() {
 
     /**
      * @tc.number ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change unselectedColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change unselectedColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1004', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1004', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1004 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));
@@ -147,9 +142,9 @@ export default function checkBoxGroupTest() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('checkboxNO');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1004 component  is: " + JSON.stringify(objNew.$attrs));
-      expect(objNew.$attrs.unselectedColor).assertEqual('#FF121212');
+      console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1004 component  is: " + JSON.stringify(JSON.parse(strJsonNew)
+        .$attrs));
+      expect(JSON.parse(strJsonNew).$attrs.unselectedColor).assertEqual('#FF121212');
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1004 END');
       done();
     });

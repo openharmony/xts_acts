@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function NavRouterJsunit() {
-  describe('NavRouterJsunit', function () {
-    beforeEach(async function (done) {
+  describe('NavRouterJsunit',  () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("NavRouter beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/NavRouter/NavRouterPage',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/NavRouter/NavRouterPage',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function NavRouterJsunit() {
         console.info("get NavRouter state pages: " + JSON.stringify(pages));
         if (!("NavRouterPage" == pages.name)) {
           console.info("get NavRouter state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push NavRouter page result: " + JSON.stringify(result));
           await CommonFunc.sleep(2000);
         }
@@ -43,7 +43,7 @@ export default function NavRouterJsunit() {
       done();
     });
 
-    it('NavRouterJsunit_0100', 0, async function (done) {
+    it('NavRouterJsunit_0100', 0, async  (done:Function) =>{
       // Verify onStateChange function of the main title
       console.info('[NavRouterJsunit_0100] START');
       let driver = await UiDriver.create()

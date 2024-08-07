@@ -17,16 +17,20 @@
 #define HUKS_SIGNVERIFY_ECC_TEST_COMMON_H
 
 #include <string>
+
 #include "huks_three_stage_test_common.h"
-namespace Unittest::EccSifnVerify {
-static const std::string g_inData = "Hks_ECC_Sign_Verify_Test_0000000000000000000000000000000000000000000000000000000"
-                                    "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
-                                    "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
+namespace Unittest::EccSifnVerify
+{
+static const std::string g_inData =
+    "Hks_ECC_Sign_Verify_Test_0000000000000000000000000000000000000000000000000000000"
+    "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
 static const uint32_t ECC_COMMON_SIZE = 1024;
 
 OH_Huks_Result HksEccSignVerifyTestNormalCase(struct OH_Huks_Blob keyAlias, struct OH_Huks_ParamSet *genParamSet,
-    struct OH_Huks_ParamSet *signParamSet, struct OH_Huks_ParamSet *verifyParamSet);
-OH_Huks_Result HksTestSignVerify(struct OH_Huks_Blob *keyAlias, struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *inData,
-    struct OH_Huks_Blob *outData, bool isSign);
-} // namespace Unittest::EccSifnVerify
-#endif // HUKS_SIGNVERIFY_ECC_TEST_COMMON_H
+                                              struct OH_Huks_ParamSet *signParamSet,
+                                              struct OH_Huks_ParamSet *verifyParamSet);
+OH_Huks_Result HksTestSignVerify(struct OH_Huks_Blob *keyAlias, struct OH_Huks_ParamSet *paramSet,
+                                 const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData, bool isSign);
+}  // namespace Unittest::EccSifnVerify
+#endif  // HUKS_SIGNVERIFY_ECC_TEST_COMMON_H

@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsGzipDecompressionTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsGzipDecompressionTest"
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
 }
 
 ohos_app_scope("acts_gzipdecompression_profile") {

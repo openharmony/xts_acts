@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function SymbolGlyphApi() {
-  describe('SymbolGlyphApi', function () {
-    beforeEach(async function (done) {
+  describe('SymbolGlyphApi', () => {
+    beforeEach(async (done: Function) => {
       console.info("SymbolGlyphApi beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function SymbolGlyphApi() {
       console.info("SymbolGlyphApi foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("SymbolGlyphApi after each called");
     });
@@ -49,18 +49,143 @@ export default function SymbolGlyphApi() {
      * @tc.type
      */
 
-    it('SymbolGlyphApi_001', 0, async function (done) {
+    it('SymbolGlyphApi_001', 0, async (done: Function) => {
       console.info('[SymbolGlyphApi_001] START');
 
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SymbolGlyphApi');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(JSON.parse(strJson).$attrs.symbolEffect).isActive + '';
+      let obj: ESObject = JSON.parse(JSON.parse(strJson).$attrs.symbolEffect).isActive + '';
       console.info("[styledStringApi_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
       expect(obj).assertEqual('true');
       console.info('[styledStringApi_001] END');
+      done();
+
+    });
+
+    /**
+     * @tc.number    SUB_ACE_UI_COMPONENT_SymbolGlyph_002
+     * @tc.desc      symbolEffect test of SymbolGlyph
+     * @tc.desc       : affinity Test
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+
+    it('SymbolGlyphApi_002', 0, async (done: Function) => {
+      console.info('[SymbolGlyphApi_002] START');
+
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('SymbolGlyphApi1');
+      await CommonFunc.sleep(200);
+      let obj: ESObject = JSON.parse(JSON.parse(strJson).$attrs.symbolEffect).effectType + '';
+      console.info("[SymbolGlyphApi_002] component obj is: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+
+      expect(obj).assertEqual('7');
+      console.info('[SymbolGlyphApi_002] END');
+      done();
+
+    });
+
+    /**
+     * @tc.number    SUB_ACE_UI_COMPONENT_SymbolGlyph_003
+     * @tc.desc      symbolEffect test of SymbolGlyph
+     * @tc.desc       : affinity Test
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+
+    it('SymbolGlyphApi_003', 0, async (done: Function) => {
+      console.info('[SymbolGlyphApi_003] START');
+
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('SymbolGlyphApi2');
+      await CommonFunc.sleep(200);
+      let obj: ESObject = JSON.parse(JSON.parse(strJson).$attrs.symbolEffect).effectType + '';
+      console.info("[SymbolGlyphApi_003] component obj is: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+
+      expect(obj).assertEqual('1');
+      console.info('[SymbolGlyphApi_003] END');
+      done();
+
+    });
+
+    /**
+     * @tc.number    SUB_ACE_UI_COMPONENT_SymbolGlyph_004
+     * @tc.desc      symbolEffect test of SymbolGlyph
+     * @tc.desc       : affinity Test
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+
+    it('SymbolGlyphApi_004', 0, async (done: Function) => {
+      console.info('[SymbolGlyphApi_004] START');
+
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('SymbolGlyphApi3');
+      await CommonFunc.sleep(200);
+      let obj: ESObject = JSON.parse(JSON.parse(strJson).$attrs.symbolEffect).effectType + '';
+      console.info("[SymbolGlyphApi_004] component obj is: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+
+      expect(obj).assertEqual('3');
+      console.info('[SymbolGlyphApi_004] END');
+      done();
+
+    });
+
+    /**
+     * @tc.number    SUB_ACE_UI_COMPONENT_SymbolGlyph_005
+     * @tc.desc      symbolEffect test of SymbolGlyph
+     * @tc.desc       : affinity Test
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+
+    it('SymbolGlyphApi_005', 0, async (done: Function) => {
+      console.info('[SymbolGlyphApi_005] START');
+
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('SymbolGlyphApi4');
+      await CommonFunc.sleep(200);
+      let obj: ESObject = JSON.parse(JSON.parse(strJson).$attrs.symbolEffect).effectType + '';
+      console.info("[SymbolGlyphApi_005] component obj is: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+
+      expect(obj).assertEqual('4');
+      console.info('[SymbolGlyphApi_005] END');
+      done();
+
+    });
+
+    /**
+     * @tc.number    SUB_ACE_UI_COMPONENT_SymbolGlyph_006
+     * @tc.desc      symbolEffect test of SymbolGlyph
+     * @tc.desc       : affinity Test
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+
+    it('SymbolGlyphApi_006', 0, async (done: Function) => {
+      console.info('[SymbolGlyphApi_006] START');
+
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('SymbolGlyphApi5');
+      await CommonFunc.sleep(200);
+      let obj: ESObject = JSON.parse(JSON.parse(strJson).$attrs.symbolEffect).effectType + '';
+      console.info("[SymbolGlyphApi_006] component obj is: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+
+      expect(obj).assertEqual('5');
+      console.info('[SymbolGlyphApi_006] END');
       done();
 
     });

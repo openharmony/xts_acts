@@ -18,8 +18,8 @@ import events_emitter from '@ohos.events.emitter';
 @CustomDialog
 struct CustomDialogExample {
   controller: CustomDialogController
-  cancel: () => void
-  confirm: () => void
+  cancel: () => void = () => {}
+  confirm: () => void = () => {}
 
   build() {
     Column() {
@@ -117,7 +117,7 @@ struct CustomDialogUser {
             console.info("click to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("click action state err: " + JSON.stringify(err.message))
+            console.info("click action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .backgroundColor(0x317aff)

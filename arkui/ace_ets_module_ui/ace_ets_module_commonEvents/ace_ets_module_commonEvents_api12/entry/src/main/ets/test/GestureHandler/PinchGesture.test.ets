@@ -16,13 +16,13 @@
 import {describe, beforeAll, beforeEach, afterEach, it, expect} from "@ohos/hypium"
 import {UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function PinchGestureHandlerTest() {
 
-  describe('PinchGestureHandlerTest', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('PinchGestureHandlerTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/GestureHandler/PinchGestureHandler',
       }
       try {
@@ -42,7 +42,7 @@ export default function PinchGestureHandlerTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("PinchGestureHandler after each called");
     });
@@ -55,7 +55,7 @@ export default function PinchGestureHandlerTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('PinchGestureHandler_0010', 0, async function (done) {
+    it('PinchGestureHandler_0010', 0, async (done: Function) => {
       console.info('PinchGestureHandler_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -63,7 +63,7 @@ export default function PinchGestureHandlerTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PinchGestureHandler1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('succ');
       console.info('[PinchGestureHandler_0010] END');
       done();

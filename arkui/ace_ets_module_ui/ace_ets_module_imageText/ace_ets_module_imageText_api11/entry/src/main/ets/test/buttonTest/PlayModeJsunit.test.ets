@@ -15,7 +15,7 @@
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../../MainAbility/common/Utils';;
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function playModeJsunit() {
   describe('playModeTest', () => {
@@ -31,7 +31,7 @@ export default function playModeJsunit() {
         if (!("playMode" == pages.name)) {
           console.info("get playMode state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push playMode page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,20 +41,20 @@ export default function playModeJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("playMode after each called");
     });
 
     it('playModeTest_0100', 0, async (done: Function) => {
       console.info('playModeTest_0100 START');
-      await Utils.sleep(1500);
+      await CommonFunc.sleep(1500);
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 161,
         priority: events_emitter.EventPriority.LOW
       }
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("playModeTest_0100 get state result is: " + JSON.stringify(indexEvent))
-        expect(indexEvent.data.playMode).assertEqual(PlayMode.AlternateReverse)
+        expect(indexEvent.data?.playMode).assertEqual(PlayMode.AlternateReverse)
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -62,7 +62,7 @@ export default function playModeJsunit() {
         console.info("playModeTest_0100 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("playModeTest_0100 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       console.info('playModeTest_0100 END');
       done();
     });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 import ohosrouter from '@ohos.router';
@@ -24,8 +24,8 @@ export default function circleNewJsunit() {
   describe('circleNewTest', () => {
     beforeAll(async () => {
       console.info("circle beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Circle/circle',
+     let options:router.RouterOptions = {
+        url:'MainAbility/pages/Circle/circle',
       }
       try {
         router.clear();
@@ -33,7 +33,7 @@ export default function circleNewJsunit() {
         console.info("get circle state success " + JSON.stringify(pages));
         if (!("circle" == pages.name)) {
           console.info("get circle state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push circle page success " + JSON.stringify(result));
         }
@@ -58,7 +58,7 @@ export default function circleNewJsunit() {
       let strJson = getInspectorByKey('circle');
       console.info("[testcircleNew001] component textAlign strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Circle');
+      expect(JSON.parse(strJson).$type).assertEqual('Circle');
       expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00px");
       console.info("[testcircleNew001] width value :" + JSON.parse(strJson).$attrs.width);
 
@@ -75,7 +75,7 @@ export default function circleNewJsunit() {
       let strJson = getInspectorByKey('circle');
       console.info("[testcircleNew002] component textAlign strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Circle');
+      expect(JSON.parse(strJson).$type).assertEqual('Circle');
       expect(JSON.parse(strJson).$attrs.height).assertEqual("100.00px");
       console.info("[testcircleNew002] width value :" + JSON.parse(strJson).$attrs.width);
 
@@ -167,7 +167,7 @@ export default function circleNewJsunit() {
       }).then(() => {
         expect(true).assertTrue();
       })
-        .catch(err => {
+        .catch((err:BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
           expect().assertFail();
         })
@@ -242,11 +242,11 @@ export default function circleNewJsunit() {
         bundleName: "com.arkui.ace.draw",
         moduleName: "phone",
         id: $r('app.string.app_name').id,
-        params: null,
+        params: undefined,
         type: 0
       };
       try {
-        globalThis.abilityContext.resourceManager.getStringValue(resource, (error, value) => {
+        globalThis.abilityContext.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
           if (error != null) {
             console.log("error is " + error);
             expect().assertFail();

@@ -138,50 +138,30 @@ static napi_value Readlinkat_Chk_One(napi_env env, napi_callback_info info)
 
 extern "C" int __snprintf_chk(char *dest, size_t supplied_size, int flags, size_t dst_len_from_compiler,
                               const char *format, ...);
-extern "C" int Snprintf_Chk_Test(const char *format, ...);
-int Snprintf_Chk_Test(const char *format, ...)
-{
-    char dest[100] = {0};
-    va_list args;
-    va_start(args, format);
-    int ret = MPARAM_1;
-    ret = __snprintf_chk(dest, PARAM_50, PARAM_0, sizeof(dest), format, args);
-    if (ret > PARAM_0) {
-        ret = PARAM_1;
-    }
-    va_end(args);
-    return ret;
-}
 
 static napi_value Snprintf_Chk_One(napi_env env, napi_callback_info info)
 {
+    char dest[100] = {0};
     char src[] = "hello";
-    int ret = Snprintf_Chk_Test("%s", src);
+    int ret = __snprintf_chk(dest, PARAM_50, PARAM_0, sizeof(dest), "%s", src);
+    if (ret == PARAM_5 && strcmp(dest, src) == 0) {
+        ret = PARAM_1;
+    }
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
 extern "C" int __sprintf_chk(char *dest, int flags, size_t dst_len_from_compiler, const char *format, ...);
-extern "C" int Sprintf_Chk_Test(const char *format, ...);
-int Sprintf_Chk_Test(const char *format, ...)
-{
-    char dest[100] = {0};
-    va_list args;
-    va_start(args, format);
-    int ret = MPARAM_1;
-    ret = __sprintf_chk(dest, PARAM_0, sizeof(dest), format, args);
-    if (ret > PARAM_0) {
-        ret = PARAM_1;
-    }
-    va_end(args);
-    return ret;
-}
 
 static napi_value Sprintf_Chk_One(napi_env env, napi_callback_info info)
 {
+    char dest[100] = {0};
     char src[] = "hello";
-    int ret = Sprintf_Chk_Test("%s", src);
+    int ret = __sprintf_chk(dest, PARAM_0, sizeof(dest), "%s", src);
+    if (ret == PARAM_5 && strcmp(dest, src) == 0) {
+        ret = PARAM_1;
+    }
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;

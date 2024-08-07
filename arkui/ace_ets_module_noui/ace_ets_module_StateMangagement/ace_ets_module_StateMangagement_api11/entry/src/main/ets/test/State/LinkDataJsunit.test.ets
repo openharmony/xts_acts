@@ -13,18 +13,31 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 
 export default function LinkDataJsunit() {
-  describe('LinkDataJsunit', function () {
-    beforeEach(async function (done) {
+  describe('LinkDataJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("LinkDataJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/LinkData',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/LinkData',
       }
       try {
         router.clear();
@@ -32,7 +45,7 @@ export default function LinkDataJsunit() {
         console.info("get LinkDataJsunit state pages: " + JSON.stringify(pages));
         if (!("LinkData" == pages.name)) {
           console.info("get LinkDataJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push LinkDataJsunit success: " + JSON.stringify(result));
         }
@@ -43,7 +56,7 @@ export default function LinkDataJsunit() {
       done();
     });
 
-    it('LinkDataJsunit_0100', 0, async function (done) {
+    it('LinkDataJsunit_0100', 0, async (done: Function) => {
 
       console.info('LinkDataJsunit_0100 START');
       let strJson = getInspectorByKey('link_str');
@@ -55,7 +68,7 @@ export default function LinkDataJsunit() {
       done();
     });
 
-    it('LinkDataJsunit_0200', 0, async function (done) {
+    it('LinkDataJsunit_0200', 0, async (done: Function) => {
 
       console.info('LinkDataJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -71,7 +84,7 @@ export default function LinkDataJsunit() {
       done();
     });
 
-    it('LinkDataJsunit_0300', 0, async function (done) {
+    it('LinkDataJsunit_0300', 0, async (done: Function) => {
 
       console.info('LinkDataJsunit_0300 START');
       let strJson = getInspectorByKey('link_num');
@@ -83,7 +96,7 @@ export default function LinkDataJsunit() {
       done();
     });
 
-    it('LinkDataJsunit_0400', 0, async function (done) {
+    it('LinkDataJsunit_0400', 0, async (done: Function) => {
 
       console.info('LinkDataJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -99,7 +112,7 @@ export default function LinkDataJsunit() {
       done();
     });
 
-    it('LinkDataJsunit_0500', 0, async function (done) {
+    it('LinkDataJsunit_0500', 0, async (done: Function) => {
 
       console.info('LinkDataJsunit_0500 START');
       let strJson = getInspectorByKey('link_bon');
@@ -111,7 +124,7 @@ export default function LinkDataJsunit() {
       done();
     });
 
-    it('LinkDataJsunit_0600', 0, async function (done) {
+    it('LinkDataJsunit_0600', 0, async (done: Function) => {
 
       console.info('LinkDataJsunit_0600 START');
       let driver = await UiDriver.create()
@@ -127,7 +140,7 @@ export default function LinkDataJsunit() {
       done();
     });
 
-    it('LinkDataJsunit_0700', 0, async function (done) {
+    it('LinkDataJsunit_0700', 0, async (done: Function) => {
 
       console.info('LinkDataJsunit_0700 START');
       let strJson = getInspectorByKey('link_enum');
@@ -139,7 +152,7 @@ export default function LinkDataJsunit() {
       done();
     });
 
-    it('LinkDataJsunit_0800', 0, async function (done) {
+    it('LinkDataJsunit_0800', 0, async (done: Function) => {
 
       console.info('LinkDataJsunit_0800 START');
       let driver = await UiDriver.create()
@@ -155,7 +168,7 @@ export default function LinkDataJsunit() {
       done();
     });
 
-    it('LinkDataJsunit_0900', 0, async function (done) {
+    it('LinkDataJsunit_0900', 0, async (done: Function) => {
 
       console.info('LinkDataJsunit_0900 START');
       let strJson = getInspectorByKey('link_cla');
@@ -167,7 +180,7 @@ export default function LinkDataJsunit() {
       done();
     });
 
-    it('LinkDataJsunit_1000', 0, async function (done) {
+    it('LinkDataJsunit_1000', 0, async (done: Function) => {
 
       console.info('LinkDataJsunit_1000 START');
       let driver = await UiDriver.create()
@@ -183,7 +196,7 @@ export default function LinkDataJsunit() {
       done();
     });
 
-    it('LinkDataJsunit_1100', 0, async function (done) {
+    it('LinkDataJsunit_1100', 0, async (done: Function) => {
 
       console.info('LinkDataJsunit_1100 START');
       let strJson = getInspectorByKey('link_strArr');
@@ -195,7 +208,7 @@ export default function LinkDataJsunit() {
       done();
     });
 
-    it('LinkDataJsunit_1200', 0, async function (done) {
+    it('LinkDataJsunit_1200', 0, async (done: Function) => {
 
       console.info('LinkDataJsunit_1200 START');
       let driver = await UiDriver.create()

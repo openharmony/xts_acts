@@ -23,7 +23,7 @@ struct CanvasAPI {
   private context5: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
   private context6: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
   private img: ImageBitmap = new ImageBitmap("pages/images/img1.png")
-  private canvasPattern: CanvasPattern;
+  private canvasPattern: CanvasPattern | null = null;
   private path2Da: Path2D = new Path2D("M250 0 L350 0 L350 200 L250 200 L250 0")
   private path2Db: Path2D = new Path2D()
 
@@ -85,8 +85,8 @@ struct CanvasAPI {
   noTransform() {
     this.canvasPattern = this.context.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 0, 0)
-    this.canvasPattern.setTransform(matrix2d);
-    this.context.fillStyle = this.canvasPattern;
+    this.canvasPattern?.setTransform(matrix2d);
+    this.context.fillStyle = this.canvasPattern as CanvasPattern;
     this.context.fillRect(0, 0, 400, 350)
     this.path2Db.addPath(this.path2Da, matrix2d)
     this.context.stroke(this.path2Db)
@@ -95,8 +95,8 @@ struct CanvasAPI {
   transformByField1() {
     let canvasPattern = this.context.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 50, 0)
-    canvasPattern.setTransform(matrix2d);
-    this.context.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context.fillStyle = canvasPattern as CanvasPattern;
     this.context.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -108,8 +108,8 @@ struct CanvasAPI {
   transformByField2() {
     let canvasPattern = this.context3.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 0, 50)
-    canvasPattern.setTransform(matrix2d);
-    this.context3.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context3.fillStyle = canvasPattern as CanvasPattern;
     this.context3.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -120,8 +120,8 @@ struct CanvasAPI {
   transformByField3() {
     let canvasPattern = this.context4.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 50, 50)
-    canvasPattern.setTransform(matrix2d);
-    this.context4.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context4.fillStyle = canvasPattern as CanvasPattern;
     this.context4.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -132,8 +132,8 @@ struct CanvasAPI {
   scaleByField1() {
     let canvasPattern = this.context2.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1.5, 0, 0, 1, 0, 0)
-    canvasPattern.setTransform(matrix2d);
-    this.context2.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context2.fillStyle = canvasPattern as CanvasPattern;
     this.context2.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -144,8 +144,8 @@ struct CanvasAPI {
   scaleByField2() {
     let canvasPattern = this.context3.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1.5, 0, 0)
-    canvasPattern.setTransform(matrix2d);
-    this.context3.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context3.fillStyle = canvasPattern as CanvasPattern;
     this.context3.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -156,8 +156,8 @@ struct CanvasAPI {
   scaleByField3() {
     let canvasPattern = this.context4.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1.5, 0, 0, 1.5, 0, 0)
-    canvasPattern.setTransform(matrix2d);
-    this.context4.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context4.fillStyle = canvasPattern as CanvasPattern;
     this.context4.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -168,8 +168,8 @@ struct CanvasAPI {
   rotateByField1() {
     let canvasPattern = this.context2.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, -1, 0, 1, 0, 0)
-    canvasPattern.setTransform(matrix2d);
-    this.context2.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context2.fillStyle = canvasPattern as CanvasPattern;
     this.context2.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -180,8 +180,8 @@ struct CanvasAPI {
   rotateByField2() {
     let canvasPattern = this.context3.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 1, 0, 1, 0, 0)
-    canvasPattern.setTransform(matrix2d);
-    this.context3.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context3.fillStyle = canvasPattern as CanvasPattern;
     this.context3.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -192,8 +192,8 @@ struct CanvasAPI {
   rotateByField3() {
     let canvasPattern = this.context4.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, -1, 1, 0, 0)
-    canvasPattern.setTransform(matrix2d);
-    this.context4.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context4.fillStyle = canvasPattern as CanvasPattern;
     this.context4.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -204,8 +204,8 @@ struct CanvasAPI {
   rotateByField4() {
     let canvasPattern = this.context5.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 1, 1, 0, 0)
-    canvasPattern.setTransform(matrix2d);
-    this.context5.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context5.fillStyle = canvasPattern as CanvasPattern;
     this.context5.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -216,8 +216,8 @@ struct CanvasAPI {
   rotateByField5() {
     let canvasPattern = this.context6.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, -1, 1, 1, 0, 0)
-    canvasPattern.setTransform(matrix2d);
-    this.context6.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context6.fillStyle = canvasPattern as CanvasPattern;
     this.context6.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -228,8 +228,8 @@ struct CanvasAPI {
   transformByFunc1() {
     let canvasPattern = this.context.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 0, 0).translate(100);
-    canvasPattern.setTransform(matrix2d);
-    this.context.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context.fillStyle = canvasPattern as CanvasPattern;
     this.context.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -240,8 +240,8 @@ struct CanvasAPI {
   transformByFunc2() {
     let canvasPattern = this.context2.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 0, 0).translate(0, 100);
-    canvasPattern.setTransform(matrix2d);
-    this.context2.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context2.fillStyle = canvasPattern as CanvasPattern;
     this.context2.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -252,8 +252,8 @@ struct CanvasAPI {
   transformByFunc3() {
     let canvasPattern = this.context3.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 0, 0).translate(100, 100);
-    canvasPattern.setTransform(matrix2d);
-    this.context3.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context3.fillStyle = canvasPattern as CanvasPattern;
     this.context3.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -264,8 +264,8 @@ struct CanvasAPI {
   rotateByFunc1() {
     let canvasPattern = this.context.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 0, 0).rotate(45 * Math.PI / 180, 0, 0);
-    canvasPattern.setTransform(matrix2d);
-    this.context.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context.fillStyle = canvasPattern as CanvasPattern;
     this.context.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -276,8 +276,8 @@ struct CanvasAPI {
   rotateByFunc2() {
     let canvasPattern = this.context2.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 0, 0).rotate(-45 * Math.PI / 180, 0, 0);
-    canvasPattern.setTransform(matrix2d);
-    this.context2.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context2.fillStyle = canvasPattern as CanvasPattern;
     this.context2.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -288,8 +288,8 @@ struct CanvasAPI {
   rotateByFunc3() {
     let canvasPattern = this.context3.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 0, 0).rotate(45 * Math.PI / 180, 100, 0);
-    canvasPattern.setTransform(matrix2d);
-    this.context3.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context3.fillStyle = canvasPattern as CanvasPattern;
     this.context3.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -300,8 +300,8 @@ struct CanvasAPI {
   scaleByFunc1() {
     let canvasPattern = this.context.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 0, 0).scale(1.5);
-    canvasPattern.setTransform(matrix2d);
-    this.context.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context.fillStyle = canvasPattern as CanvasPattern;
     this.context.fillRect(0, 0, 400, 350);
 
     let path2Db = new Path2D()
@@ -312,8 +312,8 @@ struct CanvasAPI {
   scaleByFunc2() {
     let canvasPattern = this.context2.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 0, 0).scale(1, 1.5);
-    canvasPattern.setTransform(matrix2d);
-    this.context2.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context2.fillStyle = canvasPattern as CanvasPattern;
     this.context2.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -324,8 +324,8 @@ struct CanvasAPI {
   scaleByFunc3() {
     let canvasPattern = this.context3.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 0, 0).scale(1.5, 1.5);
-    canvasPattern.setTransform(matrix2d);
-    this.context3.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context3.fillStyle = canvasPattern as CanvasPattern;
     this.context3.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -338,8 +338,8 @@ struct CanvasAPI {
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, 0, 0).scale(1.5, 1.5);
 
     matrix2d = matrix2d.identity()
-    canvasPattern.setTransform(matrix2d);
-    this.context2.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context2.fillStyle = canvasPattern as CanvasPattern;
     this.context2.fillRect(0, 0, 400, 350);
     let path2Db = new Path2D()
     path2Db.addPath(this.path2Da, matrix2d)
@@ -351,8 +351,8 @@ struct CanvasAPI {
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, -75, -75);
 
     matrix2d = matrix2d.identity()
-    canvasPattern.setTransform(matrix2d);
-    this.context3.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context3.fillStyle = canvasPattern as CanvasPattern;
     this.context3.fillRect(0, 0, 400, 350);
     let path2Db = new Path2D()
     path2Db.addPath(this.path2Da, matrix2d)
@@ -364,8 +364,8 @@ struct CanvasAPI {
     let matrix2d = this.createMatrix2D(1.5, 1, 1, 1.5, -75, -75);
 
     matrix2d = matrix2d.identity()
-    canvasPattern.setTransform(matrix2d);
-    this.context6.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context6.fillStyle = canvasPattern as CanvasPattern;
     this.context6.fillRect(0, 0, 400, 350);
     let path2Db = new Path2D()
     path2Db.addPath(this.path2Da, matrix2d)
@@ -375,8 +375,8 @@ struct CanvasAPI {
   invert1() {
     let canvasPattern = this.context2.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, -75, -75);
-    canvasPattern.setTransform(matrix2d);
-    this.context2.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context2.fillStyle = canvasPattern as CanvasPattern;
     this.context2.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()
@@ -385,8 +385,8 @@ struct CanvasAPI {
 
     matrix2d = matrix2d.invert()
     let canvasPattern2 = this.context2.createPattern(this.img, 'no-repeat');
-    canvasPattern2.setTransform(matrix2d);
-    this.context2.fillStyle = canvasPattern2;
+    canvasPattern2?.setTransform(matrix2d);
+    this.context2.fillStyle = canvasPattern2 as CanvasPattern;
     this.context2.fillRect(0, 0, 400, 350);
     let path2Dc = new Path2D()
     path2Dc.addPath(this.path2Da, matrix2d)
@@ -397,8 +397,8 @@ struct CanvasAPI {
     let matrix2d = this.createMatrix2D(1, 1, 0, 1, 0, 0)
     matrix2d = matrix2d.invert()
     let canvasPattern = this.context4.createPattern(this.img, 'no-repeat');
-    canvasPattern.setTransform(matrix2d);
-    this.context4.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context4.fillStyle = canvasPattern as CanvasPattern;
     this.context4.fillRect(0, 0, 400, 350);
     let path2Dc = new Path2D()
     path2Dc.addPath(this.path2Da, matrix2d)
@@ -409,8 +409,8 @@ struct CanvasAPI {
     let canvasPattern = this.context6.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1.5, 0, 0, 1, 0, 0)
     matrix2d = matrix2d.invert()
-    canvasPattern.setTransform(matrix2d);
-    this.context6.fillStyle = canvasPattern;
+    canvasPattern?.setTransform(matrix2d);
+    this.context6.fillStyle = canvasPattern as CanvasPattern;
     this.context6.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()

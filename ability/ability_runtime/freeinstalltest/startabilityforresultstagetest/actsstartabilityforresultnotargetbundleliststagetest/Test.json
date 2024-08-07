@@ -23,6 +23,8 @@
             "run-command": [
                 "remount",
                 "mkdir /data/test/",
+                "param set persist.sys.abilityms.support.ecologicalrulemgrservice false",
+                "reboot",
                 "power-shell wakeup",
                 "power-shell setmode 602",
                 "uinput -T -m 300 2700 280 200"

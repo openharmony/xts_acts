@@ -14,16 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function searchJsunit() {
-  describe('searchTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/search',
+  describe('searchTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/search',
       }
       try {
         router.clear();
@@ -31,9 +31,8 @@ export default function searchJsunit() {
         console.info("get search state success " + JSON.stringify(pages));
         if (!("search" == pages.name)) {
           console.info("get search state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push search page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push search page error: " + err);
@@ -43,13 +42,13 @@ export default function searchJsunit() {
 
     /**
      * @tc.number searchTest_002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set copyOption values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set copyOption values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('searchTest_002', 0, async function (done) {
+    it('searchTest_002', 0, async (done: Function) => {
       console.info('searchTest_002 START');
       let strJsonNew = getInspectorByKey('search');
       let objNew = JSON.parse(strJsonNew);
@@ -61,13 +60,13 @@ export default function searchJsunit() {
 
     /**
      * @tc.number searchTest_003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('searchTest_003', 0, async function (done) {
+    it('searchTest_003', 0, async (done: Function) => {
       console.info('searchTest_003 START');
       let strJsonNew = getInspectorByKey('search');
       let objNew = JSON.parse(strJsonNew);
@@ -79,13 +78,13 @@ export default function searchJsunit() {
 
     /**
      * @tc.number searchTest_004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set placeholderColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set placeholderColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('searchTest_004', 0, async function (done) {
+    it('searchTest_004', 0, async (done: Function) => {
       console.info('searchTest_004 START');
       let strJsonNew = getInspectorByKey('search');
       let objNew = JSON.parse(strJsonNew);
@@ -97,13 +96,13 @@ export default function searchJsunit() {
 
     /**
      * @tc.number searchTest_005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set placeholderFont values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set placeholderFont values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('searchTest_005', 0, async function (done) {
+    it('searchTest_005', 0, async (done: Function) => {
       console.info('searchTest_005 START');
       let strJsonNew = getInspectorByKey('search');
       let objNew = JSON.parse(strJsonNew);
@@ -117,13 +116,13 @@ export default function searchJsunit() {
 
     /**
      * @tc.number searchTest_006
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set textFont values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set textFont values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('searchTest_006', 0, async function (done) {
+    it('searchTest_006', 0, async (done: Function) => {
       console.info('searchTest_006 START');
       let strJsonNew = getInspectorByKey('search');
       let objNew = JSON.parse(strJsonNew);
@@ -137,13 +136,13 @@ export default function searchJsunit() {
 
     /**
      * @tc.number searchTest_007
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set textAlign values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set textAlign values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('searchTest_007', 0, async function (done) {
+    it('searchTest_007', 0, async (done: Function) => {
       console.info('searchTest_007 START');
       let strJsonNew = getInspectorByKey('search');
       let objNew = JSON.parse(strJsonNew);
@@ -155,13 +154,13 @@ export default function searchJsunit() {
 
     /**
      * @tc.number searchTest_008
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set enableKeyboardOnFocus values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set enableKeyboardOnFocus values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('searchTest_008', 0, async function (done) {
+    it('searchTest_008', 0, async (done: Function) => {
       console.info('searchTest_008 START');
       let strJsonNew = getInspectorByKey('search');
       let objNew = JSON.parse(strJsonNew);
@@ -173,13 +172,13 @@ export default function searchJsunit() {
 
     /**
      * @tc.number searchTest_009
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectionMenuHidden values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectionMenuHidden values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('searchTest_009', 0, async function (done) {
+    it('searchTest_009', 0, async (done: Function) => {
       console.info('searchTest_009 START');
       let strJsonNew = getInspectorByKey('search');
       let objNew = JSON.parse(strJsonNew);
@@ -191,13 +190,13 @@ export default function searchJsunit() {
 
     /**
      * @tc.number searchTest_010
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set caretStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set caretStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('searchTest_010', 0, async function (done) {
+    it('searchTest_010', 0, async (done: Function) => {
       console.info('searchTest_010 START');
       let strJsonNew = getInspectorByKey('search');
       let objNew = JSON.parse(strJsonNew);
@@ -210,13 +209,13 @@ export default function searchJsunit() {
 
     /**
      * @tc.number searchTest_011
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set searchIcon values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set searchIcon values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('searchTest_011', 0, async function (done) {
+    it('searchTest_011', 0, async (done: Function) => {
       console.info('searchTest_011 START');
       let strJsonNew = getInspectorByKey('search');
       let objNew = JSON.parse(strJsonNew);
@@ -228,13 +227,13 @@ export default function searchJsunit() {
 
     /**
      * @tc.number searchTest_012
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set searchButton values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set searchButton values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('searchTest_012', 0, async function (done) {
+    it('searchTest_012', 0, async (done: Function) => {
       console.info('searchTest_012 START');
       let strJsonNew = getInspectorByKey('search');
       let objNew = JSON.parse(strJsonNew);
@@ -246,13 +245,13 @@ export default function searchJsunit() {
 
     /**
      * @tc.number searchTest_013
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set cancelButton values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set cancelButton values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('searchTest_013', 0, async function (done) {
+    it('searchTest_013', 0, async (done: Function) => {
       console.info('searchTest_013 START');
       let strJsonNew = getInspectorByKey('search');
       let objNew = JSON.parse(strJsonNew);
@@ -264,13 +263,13 @@ export default function searchJsunit() {
 
     /**
      * @tc.number searchTest_001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change copyOption values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change copyOption values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-     it('searchTest_001', 0, async function (done) {
+    it('searchTest_001', 0, async (done: Function) => {
       console.info('searchTest_001 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));
@@ -279,9 +278,9 @@ export default function searchJsunit() {
       let strJsonNew = getInspectorByKey('search'); //测试组件的key名称
       let objNew = JSON.parse(strJsonNew);
       console.info("searchTest_001 component  is: " + JSON.stringify(objNew.$attrs));
-      expect(objNew.$attrs.copyOption).assertEqual("CopyOptions.InApp"); 
+      expect(objNew.$attrs.copyOption).assertEqual("CopyOptions.InApp");
       console.info('searchTest_001 END');
       done();
     });
-    })
+  })
 }

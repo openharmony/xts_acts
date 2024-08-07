@@ -13,19 +13,19 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import window from '@ohos.window';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function openCustomDialog2() {
-  describe('openCustomDialog2', function () {
-    beforeEach(async function (done) {
+  describe('openCustomDialog2', () => {
+    beforeEach(async (done: Function) => {
       console.info("openCustomDialog2 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/openCustomDialog/openCustomDialog2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/openCustomDialog/openCustomDialog2',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function openCustomDialog2() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('openCustomDialog2_0100', 0, async function (done) {
+    it('openCustomDialog2_0100', 0, async (done: Function) => {
       console.info('openCustomDialog2_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

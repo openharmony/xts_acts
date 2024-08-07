@@ -48,14 +48,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_0100
-     * @tc.name       : DeviceManager_queryDevices_001
+     * @tc.name       : testDeviceManagerQueryDevices001
      * @tc.desc       : verify queryDevice result
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_queryDevices_001", 0, function () {
-        console.info('----------------------DeviceManager_queryDevices_001---------------------------');
+    it('testDeviceManagerQueryDevices001', 0, function () {
+        console.info('----------------------testDeviceManagerQueryDevices001---------------------------');
         try {
             var devices = deviceManager.queryDevices(deviceManager.BusType.USB);
             expect(devices != null).assertEqual(true);
@@ -70,14 +70,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_0200
-     * @tc.name       : DeviceManager_queryDevices_002
+     * @tc.name       : testDeviceManagerQueryDevices002
      * @tc.desc       : verify queryDevice no param result
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_queryDevices_002", 0, function () {
-        console.info('----------------------DeviceManager_queryDevices_002---------------------------');
+    it('testDeviceManagerQueryDevices002', 0, function () {
+        console.info('----------------------testDeviceManagerQueryDevices002---------------------------');
         try {
             var devices = deviceManager.queryDevices();
             expect(devices != null).assertEqual(true);
@@ -88,14 +88,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_0300
-     * @tc.name       : DeviceManager_bindDevices_003
+     * @tc.name       : testDeviceManagerBindDevices003
      * @tc.desc       : verify bindDevice invalid param
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_003", 0, async function (done) {
-        console.info('----------------------DeviceManager_bindDevices_003---------------------------');
+    it('testDeviceManagerBindDevices003', 0, async function (done) {
+        console.info('----------------------testDeviceManagerBindDevices003---------------------------');
         try {
             deviceManager.bindDevice('fakeid', (error, data) => {
                 expect(false).assertTrue();
@@ -114,14 +114,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_0400
-     * @tc.name       : DeviceManager_bindDevices_004
+     * @tc.name       : testDeviceManagerBindDevices004
      * @tc.desc       : verify bindDevice any device
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_004", 0, async function (done) {
-        console.info('----------------------DeviceManager_bindDevices_004---------------------------');
+    it('testDeviceManagerBindDevices004', 0, async function (done) {
+        console.info('----------------------testDeviceManagerBindDevices004---------------------------');
         try {
             deviceManager.bindDevice(12345, (error, data) => {
                 expect(false).assertTrue();
@@ -140,14 +140,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_0500
-     * @tc.name       : DeviceManager_bindDeviceDriver_005
+     * @tc.name       : testDeviceManagerBindDeviceDriver005
      * @tc.desc       : verify bindDeviceDriver any device
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDeviceDriver_005", 0, async function (done) {
-        console.info('----------------------DeviceManager_bindDeviceDriver_005---------------------------');
+    it('testDeviceManagerBindDeviceDriver005', 0, async function (done) {
+        console.info('----------------------testDeviceManagerBindDeviceDriver005---------------------------');
         try {
             deviceManager.bindDeviceDriver(12345, (error, data) => {
                 expect(false).assertTrue();
@@ -166,14 +166,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_0600
-     * @tc.name       : DeviceManager_bindDevices_006
+     * @tc.name       : testDeviceManagerBindDevices006
      * @tc.desc       : verify bindDevice invalid param count
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_006", 0, async function (done) {
-        console.info('----------------------DeviceManager_bindDevices_006---------------------------');
+    it('testDeviceManagerBindDevices006', 0, async function (done) {
+        console.info('----------------------testDeviceManagerBindDevices006---------------------------');
         try {
             deviceManager.bindDevice();
             expect(false).assertTrue();
@@ -186,14 +186,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_0700
-     * @tc.name       : DeviceManager_bindDevices_007
+     * @tc.name       : testDeviceManagerBindDevices007
      * @tc.desc       : verify bindDevice invalid param
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_007", 0, async function (done) {
-        console.info('----------------------DeviceManager_bindDevices_007---------------------------');
+    it('testDeviceManagerBindDevices007', 0, async function (done) {
+        console.info('----------------------testDeviceManagerBindDevices007---------------------------');
         try {
             deviceManager.bindDevice(12345);
             expect(false).assertTrue();
@@ -206,14 +206,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_0800
-     * @tc.name       : DeviceManager_bindDevices_008
+     * @tc.name       : testDeviceManagerBindDevices008
      * @tc.desc       : verify bindDevice invalid param
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_008", 0, async function (done) {
-        console.info('----------------------DeviceManager_bindDevices_008---------------------------');
+    it('testDeviceManagerBindDevices008', 0, async function (done) {
+        console.info('----------------------testDeviceManagerBindDevices008---------------------------');
         try {
             deviceManager.bindDevice(12345, 23456);
             expect(false).assertTrue();
@@ -226,14 +226,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_0900
-     * @tc.name       : DeviceManager_bindDevices_009
+     * @tc.name       : testDeviceManagerBindDevices009
      * @tc.desc       : verify bindDevice promise
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_009", 0, async function (done) {
-        console.info('----------------------DeviceManager_bindDevices_009---------------------------');
+    it('testDeviceManagerBindDevices009', 0, async function (done) {
+        console.info('----------------------testDeviceManagerBindDevices009---------------------------');
         try {
             deviceManager.bindDevice('fakeid', (error, data) => {
                 expect(false).assertTrue();
@@ -255,14 +255,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_1000
-     * @tc.name       : DeviceManager_bindDevices_010
+     * @tc.name       : testDeviceManagerBindDevices010
      * @tc.desc       : verify bindDevice promise
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_010", 0, async function (done) {
-        console.info('----------------------DeviceManager_bindDevices_010---------------------------');
+    it('testDeviceManagerBindDevices010', 0, async function (done) {
+        console.info('----------------------testDeviceManagerBindDevices010---------------------------');
         try {
             deviceManager.bindDevice(12345, (error, data) => {
                 expect(false).assertTrue();
@@ -284,14 +284,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_1100
-     * @tc.name       : DeviceManager_bindDeviceDriver_011
+     * @tc.name       : testDeviceManagerBindDeviceDriver011
      * @tc.desc       : verify bindDeviceDriver promise
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it("DeviceManager_bindDeviceDriver_011", 0, async function (done) {
-        console.info('----------------------DeviceManager_bindDeviceDriver_011---------------------------');
+     it('testDeviceManagerBindDeviceDriver011', 0, async function (done) {
+        console.info('----------------------testDeviceManagerBindDeviceDriver011---------------------------');
         try {
             deviceManager.bindDeviceDriver(12345, (error, data) => {
                 expect(data != null).assertTrue();
@@ -316,14 +316,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_1200
-     * @tc.name       : DeviceManager_unbindDevices_012
+     * @tc.name       : testDeviceManagerUnbindDevices012
      * @tc.desc       : verify unbindDevice any device
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it("DeviceManager_unbindDevices_012", 0, async function (done) {
-        console.info('----------------------DeviceManager_unbindDevices_012---------------------------');
+     it('testDeviceManagerUnbindDevices012', 0, async function (done) {
+        console.info('----------------------testDeviceManagerUnbindDevices012---------------------------');
         try {
             deviceManager.unbindDevice('fakeid', (error, data) => {
                 expect(false).assertTrue();
@@ -339,14 +339,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_1300
-     * @tc.name       : DeviceManager_unbindDevices_013
+     * @tc.name       : testDeviceManagerUnbindDevices013
      * @tc.desc       : verify unbindDevice any device
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_unbindDevices_013", 0, async function (done) {
-        console.info('----------------------DeviceManager_unbindDevices_013---------------------------');
+    it('testDeviceManagerUnbindDevices013', 0, async function (done) {
+        console.info('----------------------testDeviceManagerUnbindDevices013---------------------------');
         try {
             deviceManager.unbindDevice(12345, (error, data) => {
                 expect(false).assertTrue();
@@ -362,14 +362,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_1400
-     * @tc.name       : DeviceManager_unbindDevices_014
+     * @tc.name       : testDeviceManagerUnbindDevices014
      * @tc.desc       : verify unbindDevice invalid param
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it("DeviceManager_unbindDevices_014", 0, async function (done) {
-        console.info('----------------------DeviceManager_unbindDevices_014---------------------------');
+     it('testDeviceManagerUnbindDevices014', 0, async function (done) {
+        console.info('----------------------testDeviceManagerUnbindDevices014---------------------------');
         try {
             deviceManager.unbindDevice();
             expect(false).assertTrue();
@@ -382,14 +382,14 @@ describe("DeviceManagerJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_1500
-     * @tc.name       : DeviceManager_unbindDevices_015
+     * @tc.name       : testDeviceManagerUnbindDevices015
      * @tc.desc       : verify unbindDevice promise
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it("DeviceManager_unbindDevices_015", 0, async function (done) {
-        console.info('----------------------DeviceManager_unbindDevices_015---------------------------');
+     it('testDeviceManagerUnbindDevices015', 0, async function (done) {
+        console.info('----------------------testDeviceManagerUnbindDevices015---------------------------');
         try {
             deviceManager.unbindDevice(12345).then(data => {
                 expect(false).assertTrue();

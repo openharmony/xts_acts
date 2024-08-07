@@ -18,28 +18,19 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 let Btname = {
-    NUM_TEST :'012345678901234567890123456789012345678901234567890123'+
-    '45678901234567890123456789012345678901234567890123456789012345678901234567',
-    NUM_TEST1 :'0123456789012345678901234567890123456789012345678901'
-    +'23456789012345678901234567890123456789012345678901234567890123456789012345678012'
-    +'345678901234567890123456789012345678901234567890123456789012367890123456789012345568'
-    +'01234567890123456789012345678912',
-    LETTERS_TEST :'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    NUM_TEST :'012345678901234'+'456789012345678',
+    NUM_TEST1 :'01234567'+'234567890'+'3456789012'+'012',
+    LETTERS_TEST :'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     CHINESES_TEST :'测试蓝牙名称是否正常测试蓝牙名称是否试蓝牙',
     CHINESES_TEST2 :'测试蓝牙名称正常',
-    SYMBOL_TEST:'*^_^* 、。·ˉˇ¨〃々—～‖·‘’“”「『』〖❂【±×'
-    +'÷∶∧∨∑∏∪∩∈∷√⊥‖∠⌒⊙∫∮≡≌≈∽∝≠♂♀°℃＄¤￠￡‰§№☆★○●◎◇□■△※→←↑↓〓',
-    MIXES:'测试蓝牙名称是否正试蓝牙\'名称是否[666]aaw',
-    MIXES2:'——◎◇◆□■△▲测试蓝牙',
-    MIXES3:'78453-、、。。◎◇◆□■△▲',
-    MIXES4:'hhhfdf-、、。。◎◇◆□■△▲',
-    MIXES5:'#01-5@<?;:!@$%^&*(1[]{【+-；：‘’“”测试=》《\'[6]',
-    MIXES6:'#01-567890@<>?/;:5675ASDF012345678!@'
-    +'$%^&*()9012378901[]{}【】566~·67890blue',
-    MIXES7:'0123456789012345678901234567890123456789012345678901'
-    +'23456789012345678901234567890123456789012345678901234567890123456789012345678012'
-    +'345678901234567890123456789012345678901234567890123456789012367890123456789012345568'
-    +'012345678901234567890123456789123'
+    SYMBOL_TEST:'*^_^* 、。·ˉˇ¨〃々—',
+    MIXES:'测试蓝牙名称\'[6]aw',
+    MIXES2:'——◎◇◆□测试蓝牙',
+    MIXES3:'78453-、、。。◎◇',
+    MIXES4:'hhhfdf-、、。。◎◇',
+    MIXES5:'#01-5@<?;:’“”测试=\'[6]',
+    MIXES6:'#01-567890@<>?/;:5675ASDF0!@b',
+    MIXES7:'01234'+'23901'+'3456789'+'012345678'
 }
 export default function btLocalNameTest() {
 describe('btLocalNameTest', function() {
@@ -62,16 +53,24 @@ describe('btLocalNameTest', function() {
     }
 
     async function clickTheWindow() {
+        console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
         try {
-            console.info('[bluetooth_js] clickRequestPermission start');
-            let driver = Driver.create();
-            await driver.delayMs(3000);
-            let button = await driver.findComponent(ON.text("允许"));
+            let button = await driver.findComponent(ON.text("开启"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] clickRequestPermission end');
+            console.info('[bluetooth_js] click 开启 end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed');
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
         }
     }
 
@@ -122,9 +121,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0100
-     * @tc.name setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc Test setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1 
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0100', 0, async function (done) {
@@ -133,15 +133,16 @@ describe('btLocalNameTest', function() {
         await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_0100 NewName = '+ JSON.stringify(getNewName));
-        expect(true).assertEqual(Btname.LETTERS_TEST == getNewName);
+        expect(true).assertEqual('aaaaaaaaaaaaaaaaaaaaaaaaaaa...' == getNewName);
         done();
     })
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0200
-     * @tc.name setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc Test setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0200', 0, async function (done) {
@@ -156,9 +157,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0300
-     * @tc.name setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc Test setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0300', 0, async function (done) {
@@ -173,9 +175,10 @@ describe('btLocalNameTest', function() {
 
    /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0400
-     * @tc.name setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc Test setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0400', 0, async function (done) {
@@ -190,9 +193,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0500
-     * @tc.name setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc Test setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0500', 0, async function (done) {
@@ -208,9 +212,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0600
-     * @tc.name setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc Test setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0600', 0, async function (done) {
@@ -226,9 +231,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0700
-     * @tc.name TEST setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc TEST setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0700', 0, async function (done) {
@@ -244,9 +250,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0800
-     * @tc.name TEST setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc TEST setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
      it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0800', 0, async function (done) {
@@ -261,9 +268,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0900
-     * @tc.name TEST setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc TEST setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_0900', 0, async function (done) {
@@ -278,9 +286,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1000
-     * @tc.name TEST setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc TEST setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1000', 0, async function (done) {
@@ -295,9 +304,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1100
-     * @tc.name TEST setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc TEST setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1100', 0, async function (done) {
@@ -313,9 +323,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1200
-     * @tc.name TEST setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc TEST setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1200', 0, async function (done) {
@@ -331,9 +342,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1300
-     * @tc.name TEST setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc TEST setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
       it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1300', 0, async function (done) {
@@ -348,9 +360,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1400
-     * @tc.name TEST setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc TEST setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1400', 0, async function (done) {
@@ -366,9 +379,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1500
-     * @tc.name TEST setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc TEST setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1500', 0, async function (done) {
@@ -383,9 +397,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1600
-     * @tc.name TEST setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc TEST setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1600', 0, async function (done) {
@@ -400,9 +415,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1700
-     * @tc.name TEST setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc TEST setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1700', 0, async function (done) {
@@ -411,15 +427,16 @@ describe('btLocalNameTest', function() {
         await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_1700 NewName = '+ JSON.stringify(getNewName));
-        expect(false).assertEqual(Btname.MIXES7 == getNewName);
+        expect(true).assertEqual(Btname.MIXES7 == getNewName);
         done();
     })
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1800
-     * @tc.name TEST setLocalName
+     * @tc.name testSetLocalName
      * @tc.desc TEST setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1800', 0, async function (done) {
@@ -435,9 +452,10 @@ describe('btLocalNameTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1900
-     * @tc.name set LocalName
+     * @tc.name testSetLocalName
      * @tc.desc Test setLocalName api by promise.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_LOCALNAME_1900', 0, async function (done) {

@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function SwipeGesture2() {
-  describe('SwipeGesture2', function () {
-    beforeEach(async function (done) {
+  describe('SwipeGesture2', () => {
+    beforeEach(async (done: Function) => {
       console.info("SwipeGesture2 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/SwipeGesture/SwipeGesture2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/SwipeGesture/SwipeGesture2',
       }
       try {
         router.clear();
@@ -48,13 +48,13 @@ export default function SwipeGesture2() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('SwipeGesture2_0100', 0, async function (done) {
+    it('SwipeGesture2_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('SwipeGesture2_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Swipe3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SwipeGesture2_0100] component obj is: " + JSON.stringify(obj));
       console.info("[SwipeGesture2_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('PanGesture offset:X:20Y:10');
@@ -67,7 +67,7 @@ export default function SwipeGesture2() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('SwipeGesture2_0200', 0, async function (done) {
+    it('SwipeGesture2_0200', 0, async (done: Function) => {
       console.info('SwipeGesture2_0200 START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -76,7 +76,7 @@ export default function SwipeGesture2() {
       await driver.swipe(Math.round(globalThis.winLeft + 100), Math.round(top + 50), Math.round(globalThis.winLeft + 500), Math.round(top + 450))
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Swipe4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SwipeGesture2_0200] component obj is: " + JSON.stringify(obj));
       console.info("[SwipeGesture2_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect((Math.abs(Number(obj.$attrs.content)) - 92) < 10).assertEqual(true);

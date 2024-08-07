@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function router_back6() {
-  describe('router_back6', function () {
-    beforeEach(async function (done) {
+  describe('router_back6', () => {
+    beforeEach(async (done: Function) => {
       console.info("router_back6 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/router/router_back6',
       }
       try {
@@ -30,7 +43,7 @@ export default function router_back6() {
         console.info("get router_back6 state pages:" + JSON.stringify(pages));
         if (!("router_back6" == pages.name)) {
           console.info("get router_back6 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push router_back6 page result:" + JSON.stringify(result));
         }
@@ -40,37 +53,31 @@ export default function router_back6() {
       console.info("router_back6 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("router_back6 after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_ABILITY_ROUTER_0190
-     * @tc.name      router_back6_0100
-     * @tc.desc      Return specified page by index value
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_ABILITY_ROUTER_0190
+     * @tc.name router_back6_0100
+     * @tc.desc Return specified page by index value
+     * @tc.level Level 3
      * @tc.type
      * @tc.size
      */
-    it('router_back6_0100', 0, async function (done) {
+    it('router_back6_0100', 0, async (done: Function) => {
       console.info('[router_back6_0100] START');
       await CommonFunc.sleep(1000);
-
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
-
       let btn1 = await driver.findComponent(ON.id('router_back6_btn'));
       await btn1.click();
       await CommonFunc.sleep(2000);
-
       let text1 = getInspectorByKey('router_back6_text');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('back6');
-
+      expect(JSON.parse(text1).$attrs.content).assertEqual('back6');
       console.info('[router_back6_0100] END');
       done();
     });
-
   })
 }

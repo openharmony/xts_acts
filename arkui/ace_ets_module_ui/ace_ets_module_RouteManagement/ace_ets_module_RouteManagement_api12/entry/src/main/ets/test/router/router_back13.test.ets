@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function router_back13() {
-  describe('router_back13', function () {
-    beforeEach(async function (done) {
+  describe('router_back13', () => {
+    beforeEach(async (done: Function) => {
       console.info("router_back13 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/router/router_back13',
       }
       try {
@@ -30,7 +43,7 @@ export default function router_back13() {
         console.info("get router_back13 state pages:" + JSON.stringify(pages));
         if (!("router_back13" == pages.name)) {
           console.info("get router_back13 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push router_back13 page result:" + JSON.stringify(result));
         }
@@ -40,20 +53,20 @@ export default function router_back13() {
       console.info("router_back13 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("router_back13 after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_ABILITY_ROUTER_0340
-     * @tc.name      testBack
-     * @tc.desc      Return specified page by index value
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_ABILITY_ROUTER_0340
+     * @tc.name testBack
+     * @tc.desc Return specified page by index value
+     * @tc.level Level 3
      * @tc.type
      * @tc.size
      */
-    it('router_back13_0100', 0, async function (done) {
+    it('router_back13_0100', 0, async (done: Function) => {
       console.info('[router_back13_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -71,9 +84,8 @@ export default function router_back13() {
       console.info('[router_back13_0100] btn2');
 
       let text1 = getInspectorByKey('router_back13_text');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('back13');
-
+      expect(JSON.parse(text1).$attrs.content).assertEqual('back13');
+      JSON.parse(text1)
       console.info('[router_back13_0100] END');
       done();
     });

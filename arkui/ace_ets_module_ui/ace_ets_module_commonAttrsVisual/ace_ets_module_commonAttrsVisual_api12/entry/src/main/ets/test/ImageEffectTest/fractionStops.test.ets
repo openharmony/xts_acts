@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import router from '@system.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import router from '@ohos.router';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function fractionStops() {
 
-  describe('fractionStops', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: "MainAbility/pages/ImageEffect/fractionStops",
+  describe('fractionStops', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/ImageEffect/fractionStops",
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function fractionStops() {
         console.info("get fractionStops state pages: " + JSON.stringify(pages));
         if (!("fractionStops" == pages.name)) {
           console.info("get fractionStops state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push fractionStops success: " + JSON.stringify(result));
         }
@@ -42,28 +55,38 @@ export default function fractionStops() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("fractionStops after each called");
     });
 
     /**
-     * @tc.number    fractionStops_0100
-     * @tc.name      fractionStops_0100
-     * @tc.desc      test api of systemBarEffect
-     * @tc.level:    Level 2
+     * @tc.number fractionStops_0100
+     * @tc.name fractionStops_0100
+     * @tc.desc test api of systemBarEffect
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('fractionStops_0100', 0, async function (done) {
+    it('fractionStops_0100', 0, async (done: Function) => {
       console.info('fractionStops_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('fractionStops');
-      let obj = JSON.parse(strJson);
-      console.info("[fractionStops_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[fractionStops_0100] content obj is: " + JSON.stringify(obj.$attrs.linearGradientBlur));
-      console.info("[fractionStops_0100] content fractionStops is: " + JSON.stringify(obj.$attrs.linearGradientBlur.options.fractionStops));
-      expect(JSON.stringify(obj.$attrs.linearGradientBlur.options.fractionStops)).assertEqual('["0.000000,0.000000","0.000000,0.330000","1.000000,0.660000","1.000000,1.000000"]');
+      console.info("[fractionStops_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[fractionStops_0100] content obj is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .linearGradientBlur));
+      console.info("[fractionStops_0100] content fractionStops is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .linearGradientBlur
+        .options
+        .fractionStops));
+      expect(JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .linearGradientBlur
+        .options
+        .fractionStops))
+        .assertEqual('["0.000000,0.000000","0.000000,0.330000","1.000000,0.660000","1.000000,1.000000"]');
       console.info('[fractionStops_0100] END');
       done();
     });

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import router from '@ohos.router';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function PanGestureExampleTemplateTest() {
-  describe('PanGestureExampleTemplateTest', function () {
-    beforeEach(async function (done) {
+  describe('PanGestureExampleTemplateTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("PanGestureExampleTemplateTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/PanGesture/PanGestureExampleTemplate',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PanGesture/PanGestureExampleTemplate',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function PanGestureExampleTemplateTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("PanGestureExampleTemplateTest after each called");
     });
@@ -54,7 +54,7 @@ export default function PanGestureExampleTemplateTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('PanGestureExampleTemplateTest_0010', 0, async function (done) {
+    it('PanGestureExampleTemplateTest_0010', 0, async (done: Function) => {
       console.info('PanGestureExampleTemplateTest_0010 START');
       await CommonFunc.sleep(1000);
       let areaObj1 = CommonFunc.getComponentRectOnScreen('PanGestureExampleTemplate_Click');
@@ -70,10 +70,10 @@ export default function PanGestureExampleTemplateTest() {
       await CommonFunc.sleep(4000);
       let button = await driver.findComponent(ON.id('PanGestureExampleTemplate_template'));
       await button.click();
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(3000);
 
       let text1 = getInspectorByKey('PanGestureExampleTemplate_Text');
-      let obj1 = JSON.parse(text1);
+      let obj1: ESObject = JSON.parse(text1);
       console.log('PanGestureExampleTemplateTest_0010 obj1 $attrs content',obj1.$attrs.content,obj1)
       expect(obj1.$attrs.content).assertEqual('templateFlag:true');
       console.info('PanGestureExampleTemplateTest_0010 END');

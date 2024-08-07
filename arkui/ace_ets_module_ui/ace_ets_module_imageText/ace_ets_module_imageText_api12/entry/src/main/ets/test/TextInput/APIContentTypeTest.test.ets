@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function APIContentTypeTest() {
-  describe('APIContentTypeTest', function () {
-    beforeEach(async function (done) {
+  describe('APIContentTypeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("APIContentTypeTest beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function APIContentTypeTest() {
       console.info("APIContentTypeTest foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("APIContentTypeTest after each called");
     });
@@ -49,7 +49,7 @@ export default function APIContentTypeTest() {
      * @tc.type
      */
 
-    it('APIContentTypeTest_001', 0, async function (done) {
+    it('APIContentTypeTest_001', 0, async (done: Function) => {
       console.info('[APIContentTypeTest_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -58,7 +58,7 @@ export default function APIContentTypeTest() {
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('APIContentTypeText');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[APIContentTypeTest_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('TextContentType.VISIBLE_PASSWORD');
@@ -74,7 +74,7 @@ export default function APIContentTypeTest() {
     * @tc.type :
     * @tc.size :
     */
-    it('APIContentTypeTest_0200', 0, async function (done) {
+    it('APIContentTypeTest_0200', 0, async (done: Function) => {
       console.info('APIContentTypeTest_0200 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -83,7 +83,7 @@ export default function APIContentTypeTest() {
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('APIContentTypeText');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[APIContentTypeTest_0200] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('TextContentType.NICKNAME');
@@ -99,7 +99,7 @@ export default function APIContentTypeTest() {
     * @tc.type :
     * @tc.size :
     */
-    it('APIContentTypeTest_0300', 0, async function (done) {
+    it('APIContentTypeTest_0300', 0, async (done: Function) => {
       console.info('APIContentTypeTest_0300 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -108,7 +108,7 @@ export default function APIContentTypeTest() {
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('APIContentTypeText');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[APIContentTypeTest_0300] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('TextContentType.DETAIL_INFO_WITHOUT_STREET');
@@ -124,7 +124,7 @@ export default function APIContentTypeTest() {
     * @tc.type :
     * @tc.size :
     */
-    it('APIContentTypeTest_0400', 0, async function (done) {
+    it('APIContentTypeTest_0400', 0, async (done: Function) => {
       console.info('APIContentTypeTest_0400 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -133,7 +133,7 @@ export default function APIContentTypeTest() {
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('APIContentTypeText');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[APIContentTypeTest_0400] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('TextContentType.FORMAT_ADDRESS');

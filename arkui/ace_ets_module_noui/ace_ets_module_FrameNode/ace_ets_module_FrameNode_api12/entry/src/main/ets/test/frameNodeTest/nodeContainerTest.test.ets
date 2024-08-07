@@ -13,15 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
+
 export default function nodeContainerTest() {
-  describe('nodeContainerTest', function () {
-    beforeEach(async function (done) {
+  describe('nodeContainerTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("nodeContainerTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/frameNode/nodeContainer",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/frameNode/nodeContainer",
       }
       try {
         router.clear();
@@ -29,7 +43,7 @@ export default function nodeContainerTest() {
         console.info("get nodeContainerTest state pages: " + JSON.stringify(pages));
         if (!("nodeContainer" == pages.name)) {
           console.info("get nodeContainerTest state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push nodeContainerTest success: " + JSON.stringify(result));
         }
@@ -40,14 +54,14 @@ export default function nodeContainerTest() {
       done();
     });
     /**
-     * @tc.number    nodeContainer
-     * @tc.name      nodeContainerTest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number nodeContainer
+     * @tc.name nodeContainerTest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('nodeContainerTest_0100', 0, async function (done) {
+    it('nodeContainerTest_0100', 0, async (done: Function) => {
       console.info('nodeContainerTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -62,14 +76,14 @@ export default function nodeContainerTest() {
       done();
     });
     /**
-     * @tc.number    nodeContainer
-     * @tc.name      nodeContainerTest_0200
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number nodeContainer
+     * @tc.name nodeContainerTest_0200
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('nodeContainerTest_0200', 0, async function (done) {
+    it('nodeContainerTest_0200', 0, async (done: Function) => {
       console.info('nodeContainerTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -96,14 +110,14 @@ export default function nodeContainerTest() {
       done();
     });
     /**
-     * @tc.number    nodeContainer
-     * @tc.name      nodeContainerTest_0300
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number nodeContainer
+     * @tc.name nodeContainerTest_0300
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('nodeContainerTest_0300', 0, async function (done) {
+    it('nodeContainerTest_0300', 0, async (done: Function) => {
       console.info('nodeContainerTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -121,14 +135,14 @@ export default function nodeContainerTest() {
       done();
     });
     /**
-     * @tc.number    nodeContainer
-     * @tc.name      nodeContainerTest_0400
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number nodeContainer
+     * @tc.name nodeContainerTest_0400
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('nodeContainerTest_0400', 0, async function (done) {
+    it('nodeContainerTest_0400', 0, async (done: Function) => {
       console.info('nodeContainerTest_0400 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -143,14 +157,14 @@ export default function nodeContainerTest() {
       done();
     });
     /**
-     * @tc.number    nodeContainer
-     * @tc.name      nodeContainerTest_0500
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number nodeContainer
+     * @tc.name nodeContainerTest_0500
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('nodeContainerTest_0500', 0, async function (done) {
+    it('nodeContainerTest_0500', 0, async (done: Function) => {
       console.info('nodeContainerTest_0500 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

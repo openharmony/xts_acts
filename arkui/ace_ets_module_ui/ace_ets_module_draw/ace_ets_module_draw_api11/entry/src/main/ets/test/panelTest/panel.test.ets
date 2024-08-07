@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
@@ -22,8 +22,8 @@ export default function panelBackgroundMaskJsunit() {
   describe('panelBackgroundMaskTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/panel/panel',
+     let options:router.RouterOptions = {
+        url:'MainAbility/pages/panel/panel',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function panelBackgroundMaskJsunit() {
         console.info("get panel state success " + JSON.stringify(pages));
         if (!("panel" == pages.name)) {
           console.info("get panel state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push panel page success " + JSON.stringify(result));
         }
@@ -55,9 +55,9 @@ export default function panelBackgroundMaskJsunit() {
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('panel');
       let obj: Record<string, Object> = JSON.parse(strJson);
-      console.info("get inspector value is: " + JSON.stringify(obj));
-      console.log(JSON.stringify(obj.$type))
-      expect(obj.$type).assertEqual('Panel')
+      console.info("get inspector value is: " + JSON.stringify(JSON.parse(strJson)));
+      console.log(JSON.stringify(JSON.parse(strJson).$type))
+      expect(JSON.parse(strJson).$type).assertEqual('Panel')
       console.log('Panel‘s backgroundMask is ' + JSON.stringify(JSON.parse(strJson).$attrs.backgroundMask))
       expect(JSON.parse(strJson).$attrs.backgroundMask).assertEqual('#FF00FF00');
 
@@ -74,11 +74,11 @@ export default function panelBackgroundMaskJsunit() {
         eventId: 10111,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback1 = (backData) => {
-        console.info("testpanelOnHeightChange0002 backData.data.result is: " + backData.data.result);
+      let callback1 = (backData: events_emitter.EventData) => {
+        console.info("testpanelOnHeightChange0002 backData.data.result is: " + backData.data?.result);
         try {
           console.info("testpanelOnHeightChange0002 callback1 success");
-          expect(backData.data.result).assertEqual("success");
+          expect(backData.data?.result).assertEqual("success");
 
         } catch (err) {
           console.info("testpanelOnHeightChange0002 on events_emitter err : " + JSON.stringify(err));

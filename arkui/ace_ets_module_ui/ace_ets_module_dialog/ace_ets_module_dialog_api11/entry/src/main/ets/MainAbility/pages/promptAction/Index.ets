@@ -38,7 +38,7 @@ struct Index {
 
   @State textValue: string = '';
   @State inputValue: string = 'click me';
-  dialogController: CustomDialogController = new CustomDialogController({
+  dialogController: CustomDialogController | null = new CustomDialogController({
     builder: CustomDialogExample({
       cancel: this.onCancel,
       confirm: this.onAccept,
@@ -214,8 +214,8 @@ struct CustomDialogExample {
   @Link inputValue: string;
   controller: CustomDialogController;
   // 若尝试在CustomDialog中传入多个其他的Controller，以实现在CustomDialog中打开另一个或另一些CustomDialog，那么此处需要将指向自己的controller放在最后
-  cancel: () => void;
-  confirm: () => void;
+  cancel: () => void = () => {};
+  confirm: () => void = () => {};
 
   build() {
     Column() {

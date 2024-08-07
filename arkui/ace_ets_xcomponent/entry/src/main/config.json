@@ -17,12 +17,12 @@
     "package": "com.acts.ace.xcomponentetstest",
     "name": ".MyApplication",
     "mainAbility": "com.acts.ace.xcomponentetstest.MainAbility",
-
     "deviceType": [
       "tablet",
       "default",
       "phone",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,

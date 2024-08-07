@@ -6,33 +6,39 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
-      "tablet",
-      "default",
+            "tablet",
+            "default",
             "phone",
-            "2in1"
+            "2in1",
+            "wearable"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
-        "abilities": [{
-            "name": "com.example.myapplication.MainAbility",
-            "srcEntrance": "./ets/MainAbility/MainAbility.ts",
-            "description": "$string:phone_entry_main",
-            "icon": "$media:icon",
-            "label": "$string:entry_label",
-            "visible": true,
-            "orientation": "portrait",
-            "skills": [{
-                "actions": [
-                    "action.system.home"
-                ],
-                "entities": [
-                    "entity.system.home"
+        "abilities": [
+            {
+                "name": "com.example.myapplication.MainAbility",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "description": "$string:phone_entry_main",
+                "icon": "$media:icon",
+                "label": "$string:entry_label",
+                "visible": true,
+                "orientation": "portrait",
+                "skills": [
+                    {
+                        "actions": [
+                            "action.system.home"
+                        ],
+                        "entities": [
+                            "entity.system.home"
+                        ]
+                    }
                 ]
-            }]
-        }],
-        "requestPermissions": [{
+            }
+        ],
+        "requestPermissions": [
+            {
                 "name": "ohos.permission.SYSTEM_FLOAT_WINDOW",
                 "reason": "need use ohos.permission.SYSTEM_FLOAT_WINDOW"
             },
@@ -41,8 +47,8 @@
                 "reason": "need use ohos.permission.CAPTURE_SCREEN"
             },
             {
-              "name": "ohos.permission.PRIVACY_WINDOW",
-              "reason": "need use ohos.permission.PRIVACY_WINDOW"
+                "name": "ohos.permission.PRIVACY_WINDOW",
+                "reason": "need use ohos.permission.PRIVACY_WINDOW"
             }
         ]
     }

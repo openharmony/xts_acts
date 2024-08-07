@@ -58,6 +58,15 @@ import subMenuExpandingMode from './Menu/subMenuExpandingMode.test.ets';
 import SubMenuExpandingModeTest_SIDE from './MenuTest/MenuApiTest/SubMenuExpandingModeTest_SIDE.test';
 import SubMenuExpandingModeTest_EMBEDDED from './MenuTest/MenuApiTest/SubMenuExpandingModeTest_EMBEDDED.test';
 import DateTimeOptions from './TimePickerDialogTest/DateTimeOptions.test';
+import closeBindSheetTest from './UIContextTest/closeBindSheetTest.test'
+import openBindSheetTest from './UIContextTest/openBindSheetTest.test'
+import updateBindSheetTest from './UIContextTest/updateBindSheetTest.test'
+import closeCustomDialogTest from './UIContextTest/closeCustomDialogTest.test'
+import uiOpenCustomDialogTest from './UIContextTest/openCustomDialogTest.test'
+import updateCustomDialogTest from './UIContextTest/updateCustomDialogTest.test'
+import subMenuExpandingModeTest_STACK_EXPAND from './MenuTest/MenuApiTest/subMenuExpandingModeTest_STACK_EXPAND.test';
+import interstitialDialogActionTest from './Dialog/InterstitialDialogAction.test';
+
 
 export default function testsuite() {
   dialogApi();
@@ -105,4 +114,12 @@ export default function testsuite() {
   SubMenuExpandingModeTest_SIDE();
   SubMenuExpandingModeTest_EMBEDDED();
   DateTimeOptions();
+  closeBindSheetTest();
+  openBindSheetTest();
+  updateBindSheetTest();
+  closeCustomDialogTest();
+  uiOpenCustomDialogTest();
+  updateCustomDialogTest();
+  subMenuExpandingModeTest_STACK_EXPAND();
+  interstitialDialogActionTest();
 }

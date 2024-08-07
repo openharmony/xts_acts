@@ -28,8 +28,9 @@ class CustomModifier2 extends ButtonModifier {
   applyNormalAttribute(instance: ButtonAttribute): void {
     super.applyNormalAttribute?.(instance);
   }
+
   onChange1() {
-    this.labelStyle({overflow: TextOverflow.Clip})
+    this.labelStyle({ overflow: TextOverflow.Clip })
   }
 }
 
@@ -46,7 +47,7 @@ struct ButtonExample {
     .fontFamily('cursive')
     .fontStyle(FontStyle.Normal)
   @State buttonModifier2: ButtonModifier = new CustomModifier2()
-    .labelStyle({overflow: TextOverflow.Clip})
+    .labelStyle({ overflow: TextOverflow.Clip })
   @State buttonTypeValue: ButtonType = ButtonType.Normal;
   @State fontSizeValue: string = '20px';
   @State fontColorValue: Color = Color.Black;

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function sideBarContainerJsunit() {
-  describe('sideBarContainerTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/sideBarContainer',
+  describe('sideBarContainerTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/sideBarContainer',
       }
       try {
         router.clear();
@@ -30,9 +30,8 @@ export default function sideBarContainerJsunit() {
         console.info("get sideBarContainer state success " + JSON.stringify(pages));
         if (!("sideBarContainer" == pages.name)) {
           console.info("get sideBarContainer state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push sideBarContainer page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push sideBarContainer page error: " + err);
@@ -42,13 +41,13 @@ export default function sideBarContainerJsunit() {
 
     /**
      * @tc.number sideBarContainerTest_0002
-     * @tc.name   Test the properties of components
-     * @tc.desc   set divider values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set divider values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('sideBarContainerTest_0002', 0, async function (done) {
+    it('sideBarContainerTest_0002', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0002 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew = JSON.parse(strJsonNew);
@@ -62,14 +61,14 @@ export default function sideBarContainerJsunit() {
     });
 
     /**
-    * @tc.number sideBarContainerTest_0003
-    * @tc.name   Test the properties of components
-    * @tc.desc   set minContentWidth values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('sideBarContainerTest_0003', 0, async function (done) {
+     * @tc.number sideBarContainerTest_0003
+     * @tc.name Test the properties of components
+     * @tc.desc set minContentWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('sideBarContainerTest_0003', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0003 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew = JSON.parse(strJsonNew);
@@ -80,14 +79,14 @@ export default function sideBarContainerJsunit() {
     });
 
     /**
-    * @tc.number sideBarContainerTest_0004
-    * @tc.name   Test the properties of components
-    * @tc.desc   set sideBarWidth values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('sideBarContainerTest_0004', 0, async function (done) {
+     * @tc.number sideBarContainerTest_0004
+     * @tc.name Test the properties of components
+     * @tc.desc set sideBarWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('sideBarContainerTest_0004', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0004 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew = JSON.parse(strJsonNew);
@@ -98,14 +97,14 @@ export default function sideBarContainerJsunit() {
     });
 
     /**
-    * @tc.number sideBarContainerTest_0005
-    * @tc.name   Test the properties of components
-    * @tc.desc   set minSideBarWidth values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('sideBarContainerTest_0005', 0, async function (done) {
+     * @tc.number sideBarContainerTest_0005
+     * @tc.name Test the properties of components
+     * @tc.desc set minSideBarWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('sideBarContainerTest_0005', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0005 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew = JSON.parse(strJsonNew);
@@ -116,14 +115,14 @@ export default function sideBarContainerJsunit() {
     });
 
     /**
-    * @tc.number sideBarContainerTest_0006
-    * @tc.name   Test the properties of components
-    * @tc.desc   set maxSideBarWidth values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('sideBarContainerTest_0006', 0, async function (done) {
+     * @tc.number sideBarContainerTest_0006
+     * @tc.name Test the properties of components
+     * @tc.desc set maxSideBarWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('sideBarContainerTest_0006', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0006 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew = JSON.parse(strJsonNew);
@@ -134,14 +133,14 @@ export default function sideBarContainerJsunit() {
     });
 
     /**
-    * @tc.number sideBarContainerTest_0007
-    * @tc.name   Test the properties of components
-    * @tc.desc   set showSideBar values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('sideBarContainerTest_0007', 0, async function (done) {
+     * @tc.number sideBarContainerTest_0007
+     * @tc.name Test the properties of components
+     * @tc.desc set showSideBar values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('sideBarContainerTest_0007', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0007 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew = JSON.parse(strJsonNew);
@@ -152,14 +151,14 @@ export default function sideBarContainerJsunit() {
     });
 
     /**
-    * @tc.number sideBarContainerTest_0008
-    * @tc.name   Test the properties of components
-    * @tc.desc   set controlButton values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('sideBarContainerTest_0008', 0, async function (done) {
+     * @tc.number sideBarContainerTest_0008
+     * @tc.name Test the properties of components
+     * @tc.desc set controlButton values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('sideBarContainerTest_0008', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0008 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew = JSON.parse(strJsonNew);
@@ -173,14 +172,14 @@ export default function sideBarContainerJsunit() {
     });
 
     /**
-    * @tc.number sideBarContainerTest_0009
-    * @tc.name   Test the properties of components
-    * @tc.desc   set showControlButton values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('sideBarContainerTest_0009', 0, async function (done) {
+     * @tc.number sideBarContainerTest_0009
+     * @tc.name Test the properties of components
+     * @tc.desc set showControlButton values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('sideBarContainerTest_0009', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0009 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew = JSON.parse(strJsonNew);
@@ -191,14 +190,14 @@ export default function sideBarContainerJsunit() {
     });
 
     /**
-    * @tc.number sideBarContainerTest_0010
-    * @tc.name   Test the properties of components
-    * @tc.desc   set autoHide values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('sideBarContainerTest_0010', 0, async function (done) {
+     * @tc.number sideBarContainerTest_0010
+     * @tc.name Test the properties of components
+     * @tc.desc set autoHide values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('sideBarContainerTest_0010', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0010 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew = JSON.parse(strJsonNew);
@@ -209,14 +208,14 @@ export default function sideBarContainerJsunit() {
     });
 
     /**
-    * @tc.number sideBarContainerTest_0011
-    * @tc.name   Test the properties of components
-    * @tc.desc   set sideBarPosition values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('sideBarContainerTest_0011', 0, async function (done) {
+     * @tc.number sideBarContainerTest_0011
+     * @tc.name Test the properties of components
+     * @tc.desc set sideBarPosition values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('sideBarContainerTest_0011', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0011 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew = JSON.parse(strJsonNew);
@@ -227,14 +226,14 @@ export default function sideBarContainerJsunit() {
     });
 
     /**
-    * @tc.number sideBarContainerTest_0012
-    * @tc.name   Test the properties of components
-    * @tc.desc   Change autoHide values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('sideBarContainerTest_0012', 0, async function (done) {
+     * @tc.number sideBarContainerTest_0012
+     * @tc.name Test the properties of components
+     * @tc.desc Change autoHide values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('sideBarContainerTest_0012', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0012 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

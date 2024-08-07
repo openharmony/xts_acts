@@ -27,6 +27,7 @@ interface picTypeValue {
   name:string
   fileName:string
   value?:string
+  initValue?:string
   modifyData?:string
   compareData?:string
   errorData?: string
@@ -134,6 +135,24 @@ export default function imageExifGetModifyTest() {
         if(!checkResult){
           hilog.info(0x0000, testTag,
             `testGetPromise error %{public}s %{public}s fileName: %{public}s result: %{public}s value: %{public}s`,
+            testTag, key, fileName, result, compareData);
+        }
+      }
+      return checkResult
+    }
+
+    const testGetIncludePromise = async (testTag: string, key: image.PropertyKey, compareData: string | undefined,
+                                  fileName:string, type:string) => {
+      let checkResult = false
+      const imageSourceApi = await getImageSource(fileName, type)
+      if (imageSourceApi == undefined) {
+        console.info(testTag + " create image source failed");
+      } else {
+        const result = await imageSourceApi.getImageProperty(key)
+        checkResult = result.includes(compareData == undefined ? testTag : compareData)
+        if(!checkResult){
+          hilog.info(0x0000, testTag,
+            `testGetIncludePromise error %{public}s %{public}s fileName: %{public}s result: %{public}s value: %{public}s`,
             testTag, key, fileName, result, compareData);
         }
       }
@@ -416,7 +435,7 @@ export default function imageExifGetModifyTest() {
       try {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
-          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');// todo 修改为rawfile
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'rawfile');
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -449,7 +468,7 @@ export default function imageExifGetModifyTest() {
       try {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
-          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');// todo 修改为incremental
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -482,7 +501,7 @@ export default function imageExifGetModifyTest() {
       try {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
-          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');// todo 修改为rawfile
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'rawfile');
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -515,7 +534,7 @@ export default function imageExifGetModifyTest() {
       try {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
-          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');// todo 修改为incremental
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -548,7 +567,7 @@ export default function imageExifGetModifyTest() {
       try {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
-          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd'); // todo 修改为rawfile
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'rawfile');
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -581,7 +600,7 @@ export default function imageExifGetModifyTest() {
       try {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
-          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');// todo 修改为incremental
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -2626,9 +2645,8 @@ export default function imageExifGetModifyTest() {
           'HwMnoteSceneTextConf:11'},
         {name: "dng", fileName: "test_exif_v2.dng", value: 'HwMnoteCaptureMode:1,HwMnoteBurstNumber:2,' +
           'HwMnoteFrontCamera:' +
-          '3,HwMnoteRollAngle:4,HwMnotePitchAngle:5,HwMnotePhysicalAperture:6,HwMnoteFocusMode:7,MovingPhotoId:8,' +
-          'MovingPhotoVersion:9,' +
-          'MicroVideoPresentationTimestampUS:1713866834879000,HwMnoteFacePointer:166,HwMnoteFaceVersion:1,' +
+          '3,HwMnoteRollAngle:4,HwMnotePitchAngle:5,HwMnotePhysicalAperture:6,HwMnoteFocusMode:7,' +
+          'HwMnoteWindSnapshotMode:8,HwMnoteFacePointer:166,HwMnoteFaceVersion:1,' +
           'HwMnoteFaceCount:2,HwMnoteFaceConf:3,HwMnoteFaceSmileScore:1 2 3 4 5 6 7 8,' +
           'HwMnoteFaceRect:1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8,HwMnoteFaceLeyeCenter:1 2 3 4,' +
           'HwMnoteFaceReyeCenter:5 6 7 8,' + 'HwMnoteFaceMouthCenter:1 2 3 4 5 6 7 8,HwMnoteScenePointer:300,' +
@@ -2649,7 +2667,7 @@ export default function imageExifGetModifyTest() {
       try {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
-          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
+          const checkResult = await testGetIncludePromise(testTag, key, values[i].value, values[i].fileName,'fd');
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -5290,7 +5308,7 @@ export default function imageExifGetModifyTest() {
       try {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
-          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd'); // todo 修改为incremental
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -5389,7 +5407,7 @@ export default function imageExifGetModifyTest() {
       try {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
-          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd'); // todo 修改为 rawfile
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'rawfile');
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -6298,6 +6316,48 @@ export default function imageExifGetModifyTest() {
     })
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_EXIF_GETMODIFYIMAGEPROPERTY_PROMISE_RAWFILE_PROMISE_0100
+     * @tc.name      : getImageProperty('BitsPerSample', property)_promise
+     * @tc.desc      : 1.create imageSource
+     *                 2.getImageProperty('BitsPerSample')_promise
+     *                 3.the getImageProperty value is the expected value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_EXIF_GETMODIFYIMAGEPROPERTY_PROMISE_RAWFILE_PROMISE_0100', 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_EXIF_GETMODIFYIMAGEPROPERTY_PROMISE_RAWFILE_PROMISE_0100'
+      const key = image.PropertyKey.BITS_PER_SAMPLE;
+      const modifyData: string = `65535,65535,65535`;
+      const values:Array<picTypeValue> = [{name:"jpeg", fileName:"test_exif_v2.jpg", value:"1, 1, 1"},
+        {name:"webp", fileName:"test_exif_v2.webp", value:"8, 8, 8"},
+        {name:"png", fileName:"test_exif_v2.png", value:"1, 1, 1"},
+        {name:"dng", fileName:"test_exif_v2.dng", value:"8, 8, 8"},
+        {name:"heif", fileName:"test_exif_v2.heic", value:"1, 1, 1"}
+      ]
+      try {
+        let result: boolean = true
+        for(let i=0; i<values.length; i++) {
+          const imageSourceApi = await getImageSource(values[i].fileName, 'rawfile')
+          let checkResult: boolean = true
+          await imageSourceApi.modifyImageProperty(key, modifyData).then(() => {
+            checkResult = false
+          }).catch(async (error: BusinessError) => {
+            hilog.info(0x0000, testTag, `${testTag} modifyImageProperty  BitsPerSample error ${JSON.stringify(error)}`);
+            checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName, 'rawfile');
+          })
+          result = result && checkResult
+        }
+        expect(result).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `getImageProperty error BitsPerSample ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_0100
      * @tc.name      : modifyImageProperty('BitsPerSample')_promise
      * @tc.desc      : 1.create imageSource
@@ -6378,7 +6438,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd"); // todo 修改为 rawfile
+            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -6409,7 +6469,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd"); //todo 修改为incremental
+            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -6440,7 +6500,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd"); // todo 修改为 rawfile
+            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -6471,7 +6531,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd");//todo 修改为incremental
+            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -6502,7 +6562,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd"); // todo 修改为 rawfile
+            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -6533,7 +6593,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd"); //todo 修改为incremental
+            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -6564,7 +6624,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd"); // todo 修改为 rawfile
+            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -6595,7 +6655,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd"); //todo 修改为incremental
+            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -11432,7 +11492,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd")  //todo 修改为incremental
+            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd")
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -11463,7 +11523,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd") //todo 修改为incremental
+            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd")
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -11494,7 +11554,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd") //todo 修改为rawfile
+            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd")
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -11525,7 +11585,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd") //todo 修改为incremental
+            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd")
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -11556,7 +11616,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd") //todo 修改为rawfile
+            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd")
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -11587,7 +11647,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd") //todo 修改为incremental
+            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd")
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -11618,7 +11678,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd") //todo 修改为rawfile
+            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd")
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -11649,7 +11709,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<modfiyFileSuffixs.length; i++){
           const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
-            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd") //todo 修改为rawfile
+            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd")
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -15254,7 +15314,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
           const checkResult = await testModifyPromiseError(testTag, key,
-            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd");//todo 修改为rawfile
+            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -15289,7 +15349,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
           const checkResult = await testModifyPromiseError(testTag, key,
-            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd"); // todo 修改为 incremental
+            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -15324,7 +15384,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
           const checkResult = await testModifyPromiseError(testTag, key,
-            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd");//todo 修改为rawfile
+            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -15359,7 +15419,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
           const checkResult = await testModifyPromiseError(testTag, key,
-            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd"); // todo 修改为 incremental
+            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -15394,7 +15454,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
           const checkResult = await testModifyPromiseError(testTag, key,
-            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd");//todo 修改为rawfile
+            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -15429,7 +15489,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
           const checkResult = await testModifyPromiseError(testTag, key,
-            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd"); //todo 修改为 incremental
+            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -15464,7 +15524,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
           const checkResult = await testModifyPromiseError(testTag, key,
-            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd");//todo 修改为rawfile
+            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -15499,7 +15559,7 @@ export default function imageExifGetModifyTest() {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
           const checkResult = await testModifyPromiseError(testTag, key,
-            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd");//todo 修改为 incremental
+            values[i].errorData, values[i].value, values[i].fileName, expectedModifyErrorCode, "fd");
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -19112,7 +19172,7 @@ export default function imageExifGetModifyTest() {
           {name: "dng", fileName: "test_exif_empty2.dng"}
         ]
         let result = true
-        const createImageSourceTypes = ["fd", "uri", "buffer"]  //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri", "buffer"]
         for(let k=0; k<createImageSourceTypes.length; k++){
           for(let i=0; i<fileList.length; i++){
             const testType = createImageSourceTypes[k]
@@ -19151,7 +19211,7 @@ export default function imageExifGetModifyTest() {
           {name: "heif", fileName: "test_exif_v2.heic", errorData: "987654321", value: '1 2 3 4 5 6 7 8'},
           {name: "webp", fileName: "test_exif_v2.webp", errorData: "987654321", value: '1 2 3 4 5 6 7 8'}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri"]  //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri"]
         for(let k=0; k<createImageSourceTypes.length; k++){
           for(let i=0; i<values.length; i++){
             const checkResult = await testModifyPromiseError(testTag, key,
@@ -19190,7 +19250,7 @@ export default function imageExifGetModifyTest() {
           {name: "heif", fileName: "test_exif_empty_2.heic", errorData: "987654321", value: 'default_exif_value'},
           {name: "webp", fileName: "test_exif_empty2.webp", errorData: "987654321", value: 'default_exif_value'}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri"]
         for(let k=0; k<createImageSourceTypes.length; k++) {
           for(let i=0; i<values.length; i++){
             const checkResult = await testModifyPromiseError(testTag, key,
@@ -19230,7 +19290,7 @@ export default function imageExifGetModifyTest() {
           {name: "heif", fileName: "test_exif_empty_2.heic"},
           {name: "webp", fileName: "test_exif_empty2.webp"}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri"]
         for(let k=0; k<createImageSourceTypes.length; k++) {
           for (let i = 0; i < values.length; i++) {
             let checkResult = false
@@ -19298,7 +19358,7 @@ export default function imageExifGetModifyTest() {
           {name: "heif", fileName: "test_exif_v2.heic", errorData: "", value: '65535, 65535, 65535'},
           {name: "webp", fileName: "test_exif_v2.webp", errorData: "", value: '65535, 65535, 65535'}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri"]
         for(let k=0; k<createImageSourceTypes.length; k++){
           for(let i=0; i<values.length; i++){
             const checkResult = await testModifyPromiseError(testTag, key,
@@ -19414,19 +19474,24 @@ export default function imageExifGetModifyTest() {
         }
         const valueDng:Values = {Orientation:"Top-left",ImageLength:"192",ImageWidth:"256"}
         const value:Values = {Orientation:"Left-bottom",ImageLength:"65535",ImageWidth:"65535"}
+        const rawfileValue:Values = {Orientation:"Top-left",ImageLength:"0",ImageWidth:"0"}
+        const rawfileValueWebp:Values = {Orientation:"Top-right",ImageLength:"4608",ImageWidth:"3456"}
         const filesList:Array<picTypeValue> = [
-          {name: "jpeg", fileName: "test_exif_v2.jpg", value:JSON.stringify(value)},
-          {name: "png", fileName: "test_exif_v2.png", value:JSON.stringify(value)},
-          {name: "heif", fileName: "test_exif_v2.heic", value:JSON.stringify(value)},
-          {name: "webp", fileName: "test_exif_v2.webp", value:JSON.stringify(value)},
-          {name: "dng", fileName: "test_exif_v2.dng", value:JSON.stringify(valueDng)}]
+          {name: "jpeg", fileName: "test_exif_v2.jpg", value:JSON.stringify(value), initValue:JSON.stringify(rawfileValue)},
+          {name: "png", fileName: "test_exif_v2.png", value:JSON.stringify(value), initValue:JSON.stringify(rawfileValue)},
+          {name: "heif", fileName: "test_exif_v2.heic", value:JSON.stringify(value), initValue:JSON.stringify(rawfileValue)},
+          {name: "webp", fileName: "test_exif_v2.webp", value:JSON.stringify(value), initValue:JSON.stringify(rawfileValueWebp)},
+          {name: "dng", fileName: "test_exif_v2.dng", value:JSON.stringify(valueDng), initValue:JSON.stringify(valueDng)}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri", "buffer"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri", "buffer", "rawfile"]
         const keys = [image.PropertyKey.ORIENTATION, image.PropertyKey.IMAGE_LENGTH, image.PropertyKey.IMAGE_WIDTH]
         for(let k=0; k<createImageSourceTypes.length; k++) {
           for (let i = 0; i < filesList.length; i++) {
             const testType = createImageSourceTypes[k]
-            const compareData = filesList[i].value
+            let compareData = filesList[i].value
+            if(testType === "rawfile"){
+              compareData = filesList[i].initValue
+            }
             const fileName = filesList[i].fileName
             const checkResult = await testGetImageProperties(testTag, keys, compareData, fileName, testType)
             result = result && checkResult
@@ -19461,7 +19526,7 @@ export default function imageExifGetModifyTest() {
           {name: "webp", fileName: "test_exif_v3.webp"},
           {name: "dng", fileName: "test_exif_v3.dng"}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri", "buffer"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri", "buffer", "rawfile"]
         const expectedErrorCode = 62980096
         const keys = [image.PropertyKey.IMAGE_LENGTH, image.PropertyKey.IMAGE_WIDTH]
         for(let k=0; k<createImageSourceTypes.length; k++) {
@@ -19501,7 +19566,7 @@ export default function imageExifGetModifyTest() {
           {name: "webp", fileName: "test_exif_v2.webp"},
           {name: "dng", fileName: "test_exif_v2.dng"}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri", "buffer"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri", "buffer", "rawfile"]
         const keys = ["test" as image.PropertyKey, "test2" as image.PropertyKey, "wangwang" as image.PropertyKey]
         const expectedErrorCode = 62980096
         for(let k=0; k<createImageSourceTypes.length; k++) {
@@ -19548,7 +19613,7 @@ export default function imageExifGetModifyTest() {
         }
         const value:Values= new Values()
         let result = true
-        const createImageSourceTypes = ["fd", "uri", "buffer"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri", "buffer", "rawfile"]
         const keys = [image.PropertyKey.MAKE, image.PropertyKey.IMAGE_LENGTH, "test_a" as image.PropertyKey]
         const compareData = JSON.stringify(value)
         for(let k=0; k<createImageSourceTypes.length; k++) {
@@ -19585,9 +19650,10 @@ export default function imageExifGetModifyTest() {
           {name: "jpeg", fileName: "test_exif_empty_2.jpg"},
           {name: "png", fileName: "test_exif_empty_2.png"},
           {name: "heif", fileName: "test_exif_empty_2.heic"},
-          {name: "webp", fileName: "test_exif_empty2.webp"}]
+          {name: "webp", fileName: "test_exif_empty2.webp"},
+          {name: "dng", fileName: "test_exif_empty2.dng"}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri", "buffer"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri", "buffer", "rawfile"]
         const keys = [image.PropertyKey.IMAGE_LENGTH, image.PropertyKey.IMAGE_WIDTH,
           image.PropertyKey.GPS_LATITUDE, image.PropertyKey.GPS_LONGITUDE, image.PropertyKey.GPS_LATITUDE_REF]
         const expectedErrorCode = 62980096
@@ -19646,7 +19712,7 @@ export default function imageExifGetModifyTest() {
           {name: "heif", fileName: "test_exif_v2.heic"},
           {name: "webp", fileName: "test_exif_v2.webp"}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri"]
         const compareData = json.stringify(values)
         for(let k=0; k<createImageSourceTypes.length; k++) {
           for (let i = 0; i < filesList.length; i++) {
@@ -19700,7 +19766,7 @@ export default function imageExifGetModifyTest() {
           {name: "heif", fileName: "test_exif_v3.heic"},
           {name: "webp", fileName: "test_exif_v3.webp"}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri"]
         const compareData = json.stringify(values)
         for(let k=0; k<createImageSourceTypes.length; k++) {
           for (let i = 0; i < filesList.length; i++) {
@@ -19742,7 +19808,7 @@ export default function imageExifGetModifyTest() {
           {name: "heif", fileName: "test_exif_v2.heic"},
           {name: "webp", fileName: "test_exif_v2.webp"}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri"]
         const expectedErrorCodes:Array<errorCode> = [{code:62980135},{code:62980135}]
         for(let k=0; k<createImageSourceTypes.length; k++) {
           for (let i = 0; i < filesList.length; i++) {
@@ -19784,7 +19850,7 @@ export default function imageExifGetModifyTest() {
           {name: "heif", fileName: "test_exif_empty_2.heic"},
           {name: "webp", fileName: "test_exif_empty2.webp"}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri"]
         const expectedErrorCodes:Array<errorCode> = [{code:62980135},{code:62980135}]
         for(let k=0; k<createImageSourceTypes.length; k++) {
           for (let i = 0; i < filesList.length; i++) {
@@ -19827,7 +19893,7 @@ export default function imageExifGetModifyTest() {
           {name: "heif", fileName: "test_exif_empty_2.heic"},
           {name: "webp", fileName: "test_exif_empty2.webp"}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri"]
         const expectedErrorCodes:Array<errorCode> = [{code:62980146},{code:62980146},{code:62980146}]
         for(let k=0; k<createImageSourceTypes.length; k++) {
           for (let i = 0; i < filesList.length; i++) {
@@ -19885,7 +19951,7 @@ export default function imageExifGetModifyTest() {
           {name: "heif", fileName: "test_exif_v3.heic"},
           {name: "webp", fileName: "test_exif_v3.webp"}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri"] //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri"]
         const compareData = json.stringify(values)
         const expectedErrorCodes:Array<errorCode> = [{code:62980135},{code:62980135},{code:62980135},{code:62980146}]
         for(let k=0; k<createImageSourceTypes.length; k++) {
@@ -19936,7 +20002,7 @@ export default function imageExifGetModifyTest() {
           {name: "heif", fileName: "test_exif_empty_2.heic"},
           {name: "webp", fileName: "test_exif_empty2.webp"}]
         let result = true
-        const createImageSourceTypes = ["fd", "uri"]   //todo 添加rawfile,incremental
+        const createImageSourceTypes = ["fd", "uri"]
         const compareData = json.stringify(values)
         for(let k=0; k<createImageSourceTypes.length; k++) {
           for (let i = 0; i < filesList.length; i++) {

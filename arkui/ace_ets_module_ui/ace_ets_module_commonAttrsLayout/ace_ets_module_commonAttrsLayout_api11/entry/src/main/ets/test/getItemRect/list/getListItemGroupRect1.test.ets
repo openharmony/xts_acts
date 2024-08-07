@@ -28,8 +28,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 
 export default function getListItemGroupRect1() {
@@ -630,7 +630,7 @@ export default function getListItemGroupRect1() {
 
       console.log('assert position')
 
-      expect(Math.abs(Math.round(x) - Math.round(70)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(x) - Math.round(20)) <= 1).assertTrue();
       expect(Math.abs(Math.round(y) - Math.round(70)) <= 1).assertTrue();
 
       console.log('assert size')

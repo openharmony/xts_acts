@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function buttonControlTest() {
-  describe('buttonControlTest', function () {
-    beforeEach(async function (done) {
+  describe('buttonControlTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("buttonControlTest beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function buttonControlTest() {
       console.info("buttonControlSize beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("buttonControlSize after each called");
     });
@@ -50,11 +50,11 @@ export default function buttonControlTest() {
      * @tc.size
      */
 
-    it('buttonControlSize_0100', 0, async function (done) {
+    it('buttonControlSize_0100', 0, async (done: Function) => {
       console.info('[buttonControlSize_0100] START');
       await CommonFunc.sleep(2000);
       let json = getInspectorByKey('controlSizeBt');
-      let Obj1 = JSON.parse(json);
+      let Obj1: ESObject = JSON.parse(json);
       console.info("buttonControlSize_0100 json info " + JSON.stringify(json));
       expect(Obj1.$attrs.controlSize).assertEqual('ControlSize.SMALL');
       console.info('[buttonControlSize_0100] END');

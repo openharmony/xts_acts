@@ -14,14 +14,26 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 
 export default function ResourceString() {
-  describe('ResourceString', function () {
-    beforeEach(async function (done) {
+  describe('ResourceString', () => {
+    beforeEach(async (done: Function) => {
       console.info("ResourceString beforeEach start");
       let options = {
         uri: 'MainAbility/pages/Resource/ResourceString',
@@ -43,7 +55,7 @@ export default function ResourceString() {
       done();
     });
 
-    it('ResourceString_0100', 0, async function (done) {
+    it('ResourceString_0100', 0, async (done: Function) => {
       console.info('ResourceString_0100 START');
       let strJson = getInspectorByKey('string');
       let obj = JSON.parse(strJson);
@@ -54,7 +66,7 @@ export default function ResourceString() {
       done();
     });
 
-    it('ResourceString_0200', 0, async function (done) {
+    it('ResourceString_0200', 0, async (done: Function) => {
       console.info('ResourceString_0200 START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -69,7 +81,6 @@ export default function ResourceString() {
       console.info('[ResourceString_0200] END');
       done();
     });
-
 
 
   })

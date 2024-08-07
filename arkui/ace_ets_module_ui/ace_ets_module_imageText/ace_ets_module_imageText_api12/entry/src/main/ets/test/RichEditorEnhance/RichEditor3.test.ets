@@ -15,13 +15,14 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 
 export default function RichEditor3() {
-  describe('RichEditor3', function () {
-    beforeEach(async function (done) {
+  describe('RichEditor3', () => {
+    beforeEach(async (done: Function) => {
       console.info("RichEditor3 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/RichEditorEnhance/RichEditor3',
       }
       try {
@@ -41,7 +42,7 @@ export default function RichEditor3() {
       console.info("RichEditor3 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await driver.delayMs(1000)
       console.info("RichEditor3 after each called");
@@ -54,7 +55,7 @@ export default function RichEditor3() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('RichEditor3_0100', 0, async function (done) {
+    it('RichEditor3_0100', 0, async (done: Function) => {
       // Test stop
       console.info('[RichEditor3_0100] START');
       let driver = Driver.create();
@@ -81,7 +82,7 @@ export default function RichEditor3() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('RichEditor3_0200', 0, async function (done) {
+    it('RichEditor3_0200', 0, async (done: Function) => {
       // Test stop
       console.info('[RichEditor3_0200] START');
       let driver = Driver.create();
@@ -114,13 +115,19 @@ export default function RichEditor3() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('RichEditor3_0300', 0, async function (done) {
+    it('RichEditor3_0300', 0, async (done: Function) => {
       // Test stop
       console.info('[RichEditor3_0300] START');
       let driver = Driver.create();
       await driver.delayMs(1000)
-      let RichEditorGetAttribute = await driver.findComponent(ON.id("RichEditorGetAttribute"));
-      await RichEditorGetAttribute.doubleClick()
+      // doubleClick
+      let richEditor = await driver.findComponent(ON.id('RichEditorGetAttribute'));
+      let centerPoint = await richEditor.getBoundsCenter();
+      let point = `${centerPoint.x} ${centerPoint.y}`;
+      let cmd = `uinput -T -d ${point} -u ${point} -i 50 -d ${point} -u ${point}`;
+      let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+      abilityDelegator.executeShellCommand(cmd);
+      await driver.delayMs(500)
       let quanxuan = await driver.findComponent(ON.text("全选"));
       await quanxuan.click()
       let PSTextAlign = await driver.findComponent(ON.id("PSTextAlign"));
@@ -147,13 +154,14 @@ export default function RichEditor3() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('RichEditor3_0400', 0, async function (done) {
+    it('RichEditor3_0400', 0, async (done: Function) => {
       // Test stop
       console.info('[RichEditor3_0400] START');
       let driver = Driver.create();
       await driver.delayMs(1000)
       let getSelection = await driver.findComponent(ON.id("getSelection"));
       await getSelection.click()
+      await driver.delayMs(500)
       let PSTextAlign = await driver.findComponent(ON.id("PSTextAlign"));
       let PSLeadingMargin = await driver.findComponent(ON.id("PSLeadingMargin"));
       let LSBorderRadius = await driver.findComponent(ON.id("LSBorderRadius"));
@@ -178,7 +186,7 @@ export default function RichEditor3() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('RichEditor3_0500', 0, async function (done) {
+    it('RichEditor3_0500', 0, async (done: Function) => {
       // Test stop
       console.info('[RichEditor3_0500] START');
       let driver = Driver.create();

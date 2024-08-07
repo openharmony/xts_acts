@@ -2228,7 +2228,7 @@ function setAVPlayerPlay(src, avPlayer, done) {
                 done();
                 break;
             case AV_PLAYER_STATE.ERROR:
-                console.info(`case error called, AV_PLAYER_STATE.ERROR, ignore`);
+                expect().assertFail();
                 avPlayer.release().then(() => {
                 }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
                 break;
@@ -2238,11 +2238,7 @@ function setAVPlayerPlay(src, avPlayer, done) {
     });
     avPlayer.on('error', async (err) => {
         console.error(`case error called, errMessage is ${err.message}`);
-        if (error.code == media.AVErrorCode9.AVERR_UNSUPPORT_FORMAT){
-            console.info(`case error called, AVERR_UNSUPPORT_FORMAT, ignore`);
-        } else {
-            expect().assertFail();
-        }
+        expect().assertFail();
         await avPlayer.release().then(() => {
             avPlayer = null;
             done();

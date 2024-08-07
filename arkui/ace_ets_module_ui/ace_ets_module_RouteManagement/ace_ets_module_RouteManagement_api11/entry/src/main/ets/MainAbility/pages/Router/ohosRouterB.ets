@@ -20,12 +20,13 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct OhosRouterB {
   build() {
-    Flex({direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center}) {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('B Page')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
     }.width('100%').height('100%')
   }
+
   onPageShow() {
     let params = router.getParams();
     if (params && params.data) {
@@ -33,14 +34,15 @@ struct OhosRouterB {
       this.getRouterParams(params.data);
     }
   }
-  getRouterParams(data) {
+
+  getRouterParams(data: ESObject) {
     try {
-      let paramsData = {
+      let paramsData: events_emitter.EventData = {
         data: {
           "params": data,
         }
       }
-      let paramsEvent = {
+      let paramsEvent: events_emitter.InnerEvent = {
         eventId: 142,
         priority: events_emitter.EventPriority.LOW
       }

@@ -82,7 +82,7 @@ struct DragEvent {
           })
 
         Button('touch to execute drag')
-          .onTouch((event) => {
+          .onTouch((event: TouchEvent) => {
             if (event.type == TouchType.Down) {
               let text = new UDMF.Text()
               let unifiedData = new UDMF.UnifiedData(text)
@@ -91,10 +91,10 @@ struct DragEvent {
                 data: unifiedData,
                 extraParams: ''
               }
-              dragController.executeDrag(this.DraggingBuilder.bind(this), dragInfo, (err, {event, extraParams}) => {
-                if (event.getResult() == DragResult.DRAG_SUCCESSFUL) {
+              dragController.executeDrag(this.DraggingBuilder.bind(this), dragInfo, (err, eve) => {
+                if (eve.event?.getResult() == DragResult.DRAG_SUCCESSFUL) {
                   // ...
-                } else if (event.getResult() == DragResult.DRAG_FAILED) {
+                } else if (eve.event?.getResult() == DragResult.DRAG_FAILED) {
                   // ...
                 }
               })

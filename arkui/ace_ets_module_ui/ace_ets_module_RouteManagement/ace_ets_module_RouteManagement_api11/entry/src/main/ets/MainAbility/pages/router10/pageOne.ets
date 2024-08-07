@@ -17,7 +17,7 @@
 @Component
 struct pageOne {
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
       Text('pageOne')
 
     }.width('100%').height('100%')

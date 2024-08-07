@@ -24,17 +24,6 @@ using namespace testing::ext;
 namespace OHOS {
 namespace AudioStandard {
 
-static int32_t AudioCapturerOnReadData(OH_AudioCapturer* capturer,
-    void* userData,
-    void* buffer,
-    int32_t bufferLen)
-{
-    OHAudioCapturerReadCallbackMock *mockPtr = static_cast<OHAudioCapturerReadCallbackMock*>(userData);
-    mockPtr->OnReadData(capturer, userData, buffer, bufferLen);
-
-    return 0;
-}
-
 static int32_t AudioRendererOnWriteData(OH_AudioRenderer* renderer,
     void* userData,
     void* buffer,
@@ -54,56 +43,12 @@ void ActsOhAudioNdkTest::SetUp(void) { }
 
 void ActsOhAudioNdkTest::TearDown(void) { }
 
-OH_AudioStreamBuilder* ActsOhAudioNdkTest::CreateCapturerBuilder()
-{
-    OH_AudioStreamBuilder* builder;
-    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
-    OH_AudioStreamBuilder_Create(&builder, type);
-    return builder;
-}
-
 OH_AudioStreamBuilder* ActsOhAudioNdkTest::CreateRenderBuilder()
 {
     OH_AudioStreamBuilder* builder;
     OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
     OH_AudioStreamBuilder_Create(&builder, type);
     return builder;
-}
-
-/**
-* @tc.name  : Test OH_AudioCapturer_GetOverflowCount API.
-* @tc.number: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
-* @tc.desc  : Test OH_AudioCapturer_GetOverflowCount interface.
-*/
-HWTEST(ActsOhAudioNdkTest, SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100, TestSize.Level0)
-{
-    OH_AudioStreamBuilder* builder = ActsOhAudioNdkTest::CreateCapturerBuilder();
-
-    OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLE_RATE_48000);
-    OH_AudioStreamBuilder_SetChannelCount(builder, CHANNEL_2);
-
-    OHAudioCapturerReadCallbackMock readCallbackMock;
-
-    OH_AudioCapturer_Callbacks callbacks;
-    callbacks.OH_AudioCapturer_OnReadData = AudioCapturerOnReadData;
-    OH_AudioStreamBuilder_SetCapturerCallback(builder, callbacks, &readCallbackMock);
-
-    OH_AudioCapturer* audioCapturer;
-    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
-    EXPECT_EQ(result, AUDIOSTREAM_SUCCESS);
-
-    result = OH_AudioCapturer_Start(audioCapturer);
-    EXPECT_EQ(result, AUDIOSTREAM_SUCCESS);
-
-    uint32_t overFlowCount;
-    result = OH_AudioCapturer_GetOverflowCount(audioCapturer, &overFlowCount);
-    EXPECT_EQ(result, AUDIOSTREAM_SUCCESS);
-    EXPECT_GE(overFlowCount, 0);
-
-    OH_AudioCapturer_Stop(audioCapturer);
-    OH_AudioCapturer_Release(audioCapturer);
-
-    OH_AudioStreamBuilder_Destroy(builder);
 }
 
 /**

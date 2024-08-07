@@ -28,8 +28,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 export default function blendModeTest() {
   describe('blendModeTest', () => {
@@ -44,7 +44,7 @@ export default function blendModeTest() {
         console.info("get blendModeTest state pages: " + JSON.stringify(pages));
         if (!("blendMode" == pages.name)) {
           console.info("get blendModeTest state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push blendModeTest success: " + JSON.stringify(result));
         }

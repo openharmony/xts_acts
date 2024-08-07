@@ -19,7 +19,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -46,8 +47,8 @@
         "type": "data",
         "isVisible": "true",
         "launchType": "standard",
-        "language": "C++", 
-        "uri":"dataability://com.example.myapplication5"
+        "language": "C++",
+        "uri": "dataability://com.example.myapplication5"
       }
     ],
     "js": [
@@ -73,6 +74,6 @@
         "label": "BMS_PERMISSION_MUSIC permission"
       }
     ],
-    "description":"$string:entry_description"
+    "description": "$string:entry_description"
   }
 }

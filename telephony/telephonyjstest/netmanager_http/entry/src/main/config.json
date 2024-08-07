@@ -22,7 +22,8 @@
       "tablet",
       "default",
       "phone",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -69,13 +70,13 @@
       }
     ],
     "reqPermissions": [
-	    {
-        "name":"ohos.permission.GET_NETWORK_INFO",
-        "reason":"need use ohos.permission.GET_NETWORK_INFO"
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO",
+        "reason": "need use ohos.permission.GET_NETWORK_INFO"
       },
-	    {
-        "name":"ohos.permission.INTERNET",
-        "reason":"need use ohos.permission.INTERNET"
+      {
+        "name": "ohos.permission.INTERNET",
+        "reason": "need use ohos.permission.INTERNET"
       }
     ],
     "js": [
@@ -103,7 +104,6 @@
           "pages/Counter",
           "pages/Flex",
           "pages/GridContainer"
-
         ],
         "name": ".MainAbility",
         "window": {

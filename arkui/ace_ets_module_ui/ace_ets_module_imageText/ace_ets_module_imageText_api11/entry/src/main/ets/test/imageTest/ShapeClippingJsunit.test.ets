@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function shapeClippingJsunit() {
   describe('borderTest_five_4', () => {
@@ -31,7 +31,7 @@ export default function shapeClippingJsunit() {
         if (!("shapeClipping" == pages.name)) {
           console.info("get shapeClipping state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push shapeClipping page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,13 +41,13 @@ export default function shapeClippingJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("shapeClipping after each called");
     });
 
     it('testShapeClipping001', 0, async (done: Function) => {
       console.info('[testShapeClipping001] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('image_clip');
       console.info("[testShapeClipping001] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(JSON.parse(strJson).$attrs.clip).shape).assertEqual('Circle');
@@ -60,7 +60,7 @@ export default function shapeClippingJsunit() {
 
     it('testShapeClipping002', 0, async (done: Function) => {
       console.info('[testShapeClipping002] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('image_mask');
       console.info("[testShapeClipping002] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[testShapeClipping002] component mask obj is: " + JSON.stringify(JSON.parse(strJson).$attrs.mask));
@@ -87,7 +87,7 @@ export default function shapeClippingJsunit() {
       } catch (err) {
         console.log("[testShapeClipping003] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('image_mask');
       console.info("[testShapeClipping003] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       console.info("[testShapeClipping003] component mask obj is: " + JSON.stringify(JSON.parse(strJsonNew)
@@ -115,7 +115,7 @@ export default function shapeClippingJsunit() {
       } catch (err) {
         console.log("[testShapeClipping004] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('image_clip');
       console.info("[testShapeClipping004] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(JSON.parse(strJsonNew).$attrs.clip).shape).assertEqual('Rect');

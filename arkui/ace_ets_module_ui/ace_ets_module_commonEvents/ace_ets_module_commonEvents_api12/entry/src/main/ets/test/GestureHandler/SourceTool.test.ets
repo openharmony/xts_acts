@@ -16,13 +16,13 @@
 import {describe, beforeAll, beforeEach, afterEach, it, expect} from "@ohos/hypium"
 import {UiComponent, Component, Driver, ON, BY, MouseButton} from '@ohos.UiTest';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function SourceToolTest() {
 
-  describe('SourceToolTest', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('SourceToolTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/GestureHandler/SourceTool',
       }
       try {
@@ -42,7 +42,7 @@ export default function SourceToolTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("SourceTool after each called");
     });
@@ -55,11 +55,11 @@ export default function SourceToolTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SourceTool_0010', 0, async function (done) {
+    it('SourceTool_0010', 0, async (done: Function) => {
       console.info('SourceTool_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let colum = CommonFunc.getComponentRect('PanGestureSourceToolColumn');
+      let colum = CommonFunc.getComponentRectOnScreen('PanGestureSourceToolColumn');
       let top = colum.top
       let bottom = colum.bottom
       let left = colum.left
@@ -68,7 +68,7 @@ export default function SourceToolTest() {
         MouseButton.MOUSE_BUTTON_LEFT);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sourceTool1_id');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('7');
       console.info('[SourceTool_0010] END');
       done();
@@ -82,11 +82,11 @@ export default function SourceToolTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SourceTool_0020', 0, async function (done) {
+    it('SourceTool_0020', 0, async (done: Function) => {
       console.info('SourceTool_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let colum = CommonFunc.getComponentRect('PanGestureSourceToolColumn');
+      let colum = CommonFunc.getComponentRectOnScreen('PanGestureSourceToolColumn');
       let top = colum.top
       let bottom = colum.bottom
       let left = colum.left
@@ -95,7 +95,7 @@ export default function SourceToolTest() {
         Math.round(right - 20), Math.round((top + bottom) / 2));
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sourceTool1_id');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('1');
       console.info('[SourceTool_0020] END');
       done();
@@ -109,7 +109,7 @@ export default function SourceToolTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SourceTool_0030', 0, async function (done) {
+    it('SourceTool_0030', 0, async (done: Function) => {
       console.info('SourceTool_0030 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -117,7 +117,7 @@ export default function SourceToolTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sourceTool1_id');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('10');
       console.info('[SourceTool_0030] END');
       done();
@@ -131,11 +131,11 @@ export default function SourceToolTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('axisHorizontal_0040', 0, async function (done) {
+    it('axisHorizontal_0040', 0, async (done: Function) => {
       console.info('axisHorizontal_0040 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let colum = CommonFunc.getComponentRect('PanGestureSourceToolColumn');
+      let colum = CommonFunc.getComponentRectOnScreen('PanGestureSourceToolColumn');
       let top = colum.top
       let bottom = colum.bottom
       let left = colum.left
@@ -144,7 +144,7 @@ export default function SourceToolTest() {
         Math.round(right - 20), Math.round((top + bottom) / 2));
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('axisHorizontal_id');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('0');
       console.info('[axisHorizontal_0040] END');
       done();
@@ -158,11 +158,11 @@ export default function SourceToolTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('axisVertical_0050', 0, async function (done) {
+    it('axisVertical_0050', 0, async (done: Function) => {
       console.info('axisVertical_0050 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let colum = CommonFunc.getComponentRect('PanGestureSourceToolColumn');
+      let colum = CommonFunc.getComponentRectOnScreen('PanGestureSourceToolColumn');
       let top = colum.top
       let bottom = colum.bottom
       let left = colum.left
@@ -171,7 +171,7 @@ export default function SourceToolTest() {
         Math.round(right - 20), Math.round((top + bottom) / 2));
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('axisVertical_id');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('0');
       console.info('[axisVertical_0050] END');
       done();

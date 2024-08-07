@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import screen from '@ohos.screen';
+import { BusinessError } from '@ohos.base';
 import RectValue from './Rect';
 
 export default class CommonFunc {
@@ -22,7 +24,7 @@ export default class CommonFunc {
   static rect_value: RectValue;
 
   static sleep(time: number) {
-    return new Promise((resolve: (value: string) => void) => {
+    return new Promise<string>((resolve: (value: string) => void) => {
       setTimeout(() => {
         resolve("ok")
       }, time)
@@ -44,20 +46,35 @@ export default class CommonFunc {
     }
   }
 
-  static getComponentRectOnScreen(key: string) {
-    let strJson = getInspectorByKey(key);
-    let obj = JSON.parse(strJson);
-    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
-    let rectInfo = JSON.parse('[' + obj.$rect + ']');
-    console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
-    console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop );
-    this.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0] + globalThis.winLeft;
-    this.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1] + globalThis.winTop;
-    this.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0] + globalThis.winLeft;
-    this.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1] + globalThis.winTop;
-    return this.rect_value = {
-      "left": this.rect_left, "top": this.rect_top, "right": this.rect_right, "bottom": this.rect_bottom
+  static getComponentRectOnScreen(key: string): RectValue {
+    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(JSON.parse(getInspectorByKey(key))));
+    console.info("[getInspectorByKey] rectInfo is: " + JSON.parse('[' + JSON.parse(getInspectorByKey(key))
+      .$rect + ']'));
+    console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop);
+    CommonFunc.rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(getInspectorByKey(key))
+      .$rect + ']')[0] + ']')[0] + globalThis.winLeft;
+    CommonFunc.rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(getInspectorByKey(key))
+      .$rect + ']')[0] + ']')[1] + globalThis.winTop;
+    CommonFunc.rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(getInspectorByKey(key))
+      .$rect + ']')[1] + ']')[0] + globalThis.winLeft;
+    CommonFunc.rect_bottom = JSON.parse('[' + JSON.parse('[' + JSON.parse(getInspectorByKey(key))
+      .$rect + ']')[1] + ']')[1] + globalThis.winTop;
+    return CommonFunc.rect_value = {
+      left: CommonFunc.rect_left, top: CommonFunc.rect_top, right: CommonFunc.rect_right, bottom: CommonFunc.rect_bottom
     }
+  }
+
+  static setScreenOrientation(orientation: number) {
+    screen.getAllScreens().then(data => {
+        console.log('Succeeded in getting all screens. Data:'+ JSON.stringify(data));
+        return data[0];
+    }).then(screenClass => {
+        return screenClass.setOrientation(orientation);
+    }).then(() => {
+        console.log('Succeeded in setting the vertical orientation.');
+    }).catch((err: BusinessError) => {
+        console.error('Failed to set the vertical orientation. Cause: ' + err.toString());
+    });
   }
 }
 

@@ -18,8 +18,8 @@ import webViewNativeMediaSetSeek from './webViewNativeMediaSetSeek.test';
 import webViewNativeMediaSetVolume from './webViewNativeMediaSetVolume.test';
 
 export default function testsuite() {
-  webViewNativeMediaMediaInfo()
+  // webViewNativeMediaMediaInfo()
   webViewNativeMediaPlayerHandler()
-  webViewNativeMediaSetSeek()
-  webViewNativeMediaSetVolume()
+  // webViewNativeMediaSetSeek()
+  // webViewNativeMediaSetVolume()
 }

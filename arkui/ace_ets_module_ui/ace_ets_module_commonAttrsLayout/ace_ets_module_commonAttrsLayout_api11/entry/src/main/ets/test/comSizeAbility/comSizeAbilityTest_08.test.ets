@@ -14,7 +14,7 @@
  */
 import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe } from "@ohos/hypium"
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import componentUtils from '@ohos.arkui.componentUtils';
 import {
   PointerMatrix,

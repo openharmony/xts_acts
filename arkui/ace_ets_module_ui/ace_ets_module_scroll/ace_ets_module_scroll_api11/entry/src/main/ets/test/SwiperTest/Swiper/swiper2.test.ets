@@ -64,7 +64,7 @@ export default function swiper2() {
 
       let driver = await Driver.create();
       await CommonFunc.sleep(1000);
-      driver.swipe(Math.round(btLeft), Math.round(btBottom/2), Math.round(btRight)+40, Math.round(btBottom/2));
+      await driver.swipe(Math.round(btLeft), Math.round(btBottom/2), Math.round(btRight)+40, Math.round(btBottom/2));
       await CommonFunc.sleep(5000);
 
       let strJson = getInspectorByKey('swiperText2');

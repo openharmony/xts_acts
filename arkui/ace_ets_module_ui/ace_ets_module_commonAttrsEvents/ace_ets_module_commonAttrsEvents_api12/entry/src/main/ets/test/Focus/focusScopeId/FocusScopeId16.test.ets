@@ -89,6 +89,9 @@ export default function FocusScopeId16() {
       await driver.triggerKey(2049);
       await CommonFunc.sleep(1000);
 
+      await driver.triggerKey(2049);
+      await CommonFunc.sleep(1000);
+
       let btn1 = await driver.findComponent(ON.id('FocusScopeId16_button1'));
       let btn1_isFocusedValue = await btn1.isFocused()
       expect(btn1_isFocusedValue).assertEqual(true);

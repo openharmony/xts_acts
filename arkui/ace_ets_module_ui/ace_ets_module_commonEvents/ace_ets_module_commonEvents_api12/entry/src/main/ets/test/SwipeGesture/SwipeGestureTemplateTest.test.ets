@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import router from '@ohos.router';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function SwipeGestureTemplateTest() {
-  describe('SwipeGestureTemplateTest', function () {
-    beforeEach(async function (done) {
+  describe('SwipeGestureTemplateTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("SwipeGestureTemplateTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/SwipeGesture/SwipeGestureTemplate',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/SwipeGesture/SwipeGestureTemplate',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function SwipeGestureTemplateTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("SwipeGestureTemplateTest after each called");
     });
@@ -54,7 +54,7 @@ export default function SwipeGestureTemplateTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SwipeGestureTemplateTest_0010', 0, async function (done) {
+    it('SwipeGestureTemplateTest_0010', 0, async (done: Function) => {
       console.info('SwipeGestureTemplateTest_0010 START');
       await CommonFunc.sleep(1000);
       let areaObj1 = CommonFunc.getComponentRectOnScreen('SwipeGestureTemplate_Click');
@@ -65,19 +65,20 @@ export default function SwipeGestureTemplateTest() {
       console.log('SwipeGestureTemplateTest_0010 areaObj1 clicked end',Math.round(areaObj1.left + areaWidth1 * 0.8),Math.round(areaObj1.top + areaHeight1/2))
       let timeSpace:number = 3000
       let driver = Driver.create();
+      let speed = Math.floor(areaWidth1 * 0.6 / 0.016 / 1000) * 1000
       await CommonFunc.sleep(1000);
-      await driver.swipe(Math.round(areaObj1.left + areaWidth1 * 0.2),Math.round(areaObj1.top + areaHeight1/2),Math.round(areaObj1.left + areaWidth1 * 0.8),Math.round(areaObj1.top + areaHeight1/2),38000)
+      await driver.swipe(Math.round(areaObj1.left + areaWidth1 * 0.2),Math.round(areaObj1.top + areaHeight1/2),Math.round(areaObj1.left + areaWidth1 * 0.8),Math.round(areaObj1.top + areaHeight1/2),speed)
       await CommonFunc.sleep(timeSpace);
       let timeBefore:number = Date.now();
-      await driver.swipe(Math.round(areaObj1.left + areaWidth1 * 0.2),Math.round(areaObj1.top + areaHeight1/2),Math.round(areaObj1.left + areaWidth1 * 0.8),Math.round(areaObj1.top + areaHeight1/2),38000)
+      await driver.swipe(Math.round(areaObj1.left + areaWidth1 * 0.2),Math.round(areaObj1.top + areaHeight1/2),Math.round(areaObj1.left + areaWidth1 * 0.8),Math.round(areaObj1.top + areaHeight1/2),speed)
       let timeAfter:number = Date.now();
       await CommonFunc.sleep(3000);
       let text1 = getInspectorByKey('SwipeGestureTemplate_Text01');
-      let obj1 = JSON.parse(text1);
+      let obj1: ESObject = JSON.parse(text1);
       let time1:number = Number(obj1.$attrs.content)
       console.log('SwipeGestureTemplateTest_0010 obj1 $attrs content',obj1.$attrs.content,time1)
       let text2 = getInspectorByKey('SwipeGestureTemplate_Text02');
-      let obj2 = JSON.parse(text2);
+      let obj2: ESObject = JSON.parse(text2);
       let time2:number = Number(obj2.$attrs.content)
       console.log('SwipeGestureTemplateTest_0010 obj2 $attrs content',obj2.$attrs.content,time2)
       console.log('SwipeGestureTemplateTest_0010 obj2 time $attrs content',time1,time2);

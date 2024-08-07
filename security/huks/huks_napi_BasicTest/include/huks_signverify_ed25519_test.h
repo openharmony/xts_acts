@@ -17,163 +17,78 @@
 #define HUKS_SIGNVERIFY_ED25519_TEST_H
 
 #include <string>
+
 #include "huks_three_stage_test_common.h"
-namespace Unittest::Ed25519 {
-static const std::string tmpInData = "OH_HUKS_ED25519_Sign_Verify_Test_000000000000000000000000000000000000000000000000000"
-                                     "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
-                                     "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
-static const struct OH_Huks_Blob g_inData = { tmpInData.length(), (uint8_t *)tmpInData.c_str() };
+namespace Unittest::Ed25519
+{
+static const std::string tmpInData =
+    "OH_HUKS_ED25519_Sign_Verify_Test_000000000000000000000000000000000000000000000000000"
+    "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
+static const struct OH_Huks_Blob g_inData = {tmpInData.length(), (uint8_t *)tmpInData.c_str()};
 
 static const uint32_t ED25519_COMMON_SIZE = 1024;
 
 static struct OH_Huks_Param g_genParamsTest001[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ED25519
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN | OH_HUKS_KEY_PURPOSE_VERIFY
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA1
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ED25519},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN | OH_HUKS_KEY_PURPOSE_VERIFY},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA1},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_signParamsTest001[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ED25519
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA1
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ED25519},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA1},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_verifyParamsTest001[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ED25519
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA1
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ED25519},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA1},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 
 static struct OH_Huks_Param g_genParamsTest002[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ED25519
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN | OH_HUKS_KEY_PURPOSE_VERIFY
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA1
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ED25519},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN | OH_HUKS_KEY_PURPOSE_VERIFY},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA1},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_signParamsTest002[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ED25519
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA1
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ED25519},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA1},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_verifyParamsTest002[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ED25519
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA1
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ED25519},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA1},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_genParamsTest003[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ED25519
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN | OH_HUKS_KEY_PURPOSE_VERIFY
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA1
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ED25519},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN | OH_HUKS_KEY_PURPOSE_VERIFY},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA1},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_signParamsTest003[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ED25519
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA1
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ED25519},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA1},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 
 static struct OH_Huks_Param g_genParamsTest004[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ED25519
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN | OH_HUKS_KEY_PURPOSE_VERIFY
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA1
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ED25519},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN | OH_HUKS_KEY_PURPOSE_VERIFY},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA1},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_signParamsTest004[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ED25519
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256
-    }
-};
-} // namespace Unittest::Ed25519
-#endif // HUKS_SIGNVERIFY_ED25519_TEST_H
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ED25519},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
+}  // namespace Unittest::Ed25519
+#endif  // HUKS_SIGNVERIFY_ED25519_TEST_H

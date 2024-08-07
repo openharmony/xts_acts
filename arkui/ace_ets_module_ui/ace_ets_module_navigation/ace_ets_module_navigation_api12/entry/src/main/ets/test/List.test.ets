@@ -134,6 +134,8 @@ import MultiNavigation29 from './MultiNavigation/MultiNavigation29.test'
 import MultiNavigation30 from './MultiNavigation/MultiNavigation30.test'
 import MultiNavigation31 from './MultiNavigation/MultiNavigation31.test'
 import MultiNavigation32 from './MultiNavigation/MultiNavigation32.test'
+import NavigationLaunchMode from './Navigation/NavigationLaunchMode.test'
+import NavigationTitleTest1 from './Navigation/NavigationTitleTest1.test'
 
 export default function testsuite() {
   NavigationApi1();
@@ -257,5 +259,6 @@ export default function testsuite() {
   MultiNavigation30()
   MultiNavigation31()
   MultiNavigation32()
-
+  NavigationLaunchMode();
+  NavigationTitleTest1();
 }

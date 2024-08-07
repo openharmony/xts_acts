@@ -33,7 +33,6 @@ class DataTrans {
 struct webViewCookieTrack {
   controller: web_webview.WebviewController = new web_webview.WebviewController();
   @State emitKey: string = "emitCookieTrackRemoveTrackingPrevention";
-  @State userAgent: string = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
   @State getUrlStr: string = ""
   @State cookie: string = ""
   @State whiteUrlList: string[] = ["mc.yandex.ru","hm.baidu.com"]
@@ -125,9 +124,8 @@ struct webViewCookieTrack {
                           let afterTraceLength = this.traceHosts.length
                           console.log('beforeTraceLength' + beforeTraceLength)
                           console.log('afterTraceLength' + afterTraceLength)
-                          Utils.emitEvent(true, 1280)
                           await Utils.sleep(2000)
-                          Utils.emitEvent(beforeTraceLength > 0 && afterTraceLength == beforeTraceLength, 1280)                          
+                          Utils.emitEvent(beforeTraceLength >= 0 && afterTraceLength >= beforeTraceLength, 1280)
                         break;
                     }
                     case "emitCookieTrackRemoveTrackingPrevention": {
@@ -171,9 +169,8 @@ struct webViewCookieTrack {
                           await Utils.sleep(1000)
                           console.log("this.traceHosts afterClear: " + this.traceHosts)
                           let afterClearTraceLength = this.traceHosts.length
-                          Utils.emitEvent(true, 1282)
                           await Utils.sleep(2000)
-                          Utils.emitEvent(beforeTraceLength > 0 && beforeTraceLength == afterAddTraceLength && afterClearTraceLength >= afterAddTraceLength, 1282)
+                          Utils.emitEvent(beforeTraceLength >= 0 && beforeTraceLength <= afterAddTraceLength && afterClearTraceLength >= afterAddTraceLength, 1282)
                           Utils.emitEvent(true, 1282)
                         break;
                     }

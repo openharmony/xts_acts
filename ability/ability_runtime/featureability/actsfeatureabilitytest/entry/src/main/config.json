@@ -13,17 +13,17 @@
     }
   },
   "deviceConfig": {
-    "default": {
-    }
+    "default": {}
   },
   "module": {
     "package": "com.example.actsfeatureabilitytest",
     "name": ".MyApplication",
     "mainAbility": "com.example.actsfeatureabilitytest.MainAbility",
     "deviceType": [
-        "default",
-        "tablet",
-        "2in1"
+      "default",
+      "tablet",
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -55,29 +55,39 @@
         "label": "$string:app_name",
         "type": "page",
         "launchType": "singleton",
-        "permissions": ["ohos.permission.ACCELEROMETER"],
-        "deviceCapability": ["SystemCapability.Ability.AbilityBase"],
-        "uri": "uriTest",
-        "visible": true
+        "permissions": [
+          "ohos.permission.ACCELEROMETER"
+        ],
+        "deviceCapability": [
+          "SystemCapability.Ability.AbilityBase"
+        ],
+        "uri": "uriTest"
       },
       {
-          "orientation": "unspecified",
-          "formsEnabled": false,
-          "name": ".TestAbility",
-          "srcLanguage": "js",
-          "srcPath": "TestAbility",
-          "icon": "$media:icon",
-          "description": "$string:TestAbility_desc",
-          "label": "$string:TestAbility_label",
-          "type": "page",
-          "visible": true,
-          "launchType": "singleton",
-          "permissions": ["ohos.permission.ACCELEROMETER"],
-          "deviceCapability": ["SystemCapability.Ability.AbilityBase"],
-          "uri": "uriTest"
+        "orientation": "unspecified",
+        "formsEnabled": false,
+        "name": ".TestAbility",
+        "srcLanguage": "js",
+        "srcPath": "TestAbility",
+        "icon": "$media:icon",
+        "description": "$string:TestAbility_desc",
+        "label": "$string:TestAbility_label",
+        "type": "page",
+        "visible": true,
+        "launchType": "singleton",
+        "permissions": [
+          "ohos.permission.ACCELEROMETER"
+        ],
+        "deviceCapability": [
+          "SystemCapability.Ability.AbilityBase"
+        ],
+        "uri": "uriTest"
       }
     ],
-    "reqCapabilities": ["reqCapabilitiesTest1","reqCapabilitiesTest2"],
+    "reqCapabilities": [
+      "reqCapabilitiesTest1",
+      "reqCapabilitiesTest2"
+    ],
     "description": "descriptionTest",
     "defPermissions": [
       {
@@ -88,22 +98,24 @@
       {
         "name": "ohos.permission.CAMERA",
         "reason": "$string:permreason_camera",
-        "usedScene":
-        {
-          "ability": ["com.mycamera.Ability", "com.mycamera.AbilityBackground"],
+        "usedScene": {
+          "ability": [
+            "com.mycamera.Ability",
+            "com.mycamera.AbilityBackground"
+          ],
           "when": "always"
         }
       },
       {
         "name": "ohos.permission.ACCELEROMETER",
-        "reason":"need use ohos.permission.ACCELEROMETER"
+        "reason": "need use ohos.permission.ACCELEROMETER"
       },
       {
         "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
       },
       {
-        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
-        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+        "name": "ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+        "reason": "need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
       }
     ],
     "js": [
@@ -129,8 +141,8 @@
       }
     ],
     "testRunner": {
-        "name": "OpenHarmonyTestRunner",
-        "srcPath": "TestRunner"
+      "name": "OpenHarmonyTestRunner",
+      "srcPath": "TestRunner"
     }
   }
 }

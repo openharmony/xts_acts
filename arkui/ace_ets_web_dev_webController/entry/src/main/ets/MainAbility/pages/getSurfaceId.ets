@@ -149,9 +149,9 @@ struct getSurfaceId {
                 this.controller.setUrlTrustList(this.urltrustListFour);
                 await Utils.sleep(4000);
                 this.controller.loadUrl('http://www.163.com/test');
-                await Utils.sleep(5000);
+                await Utils.sleep(20000);
                 this.checkResult = 5;
-                await Utils.sleep(3000);
+                await Utils.sleep(10000);
                 this.controller.searchAllAsync('网易首页');
                 await Utils.sleep(2000);
                 this.controller.loadUrl('https://www.baidu.com');
@@ -170,9 +170,9 @@ struct getSurfaceId {
                 this.controller.setUrlTrustList(this.urltrustListFour);
                 await Utils.sleep(4000);
                 this.controller.loadUrl('https://www.163.com/test');
-                await Utils.sleep(5000);
+                await Utils.sleep(20000);
                 this.checkResult = 6;
-                await Utils.sleep(3000);
+                await Utils.sleep(10000);
                 this.controller.searchAllAsync('网易首页');
                 await Utils.sleep(2000);
               } catch (error) {
@@ -315,6 +315,9 @@ struct getSurfaceId {
           if (ret) {
             console.log("on search result receive:" + "[cur]" + ret.activeMatchOrdinal +
               "[total]" + ret.numberOfMatches + "[isDone]" + ret.isDoneCounting);
+            if(ret.isDoneCounting == false){
+              return;
+            }
             if(this.checkResult == 1) {
               console.log('check1')
               Utils.emitEvent(ret.numberOfMatches, 28931)

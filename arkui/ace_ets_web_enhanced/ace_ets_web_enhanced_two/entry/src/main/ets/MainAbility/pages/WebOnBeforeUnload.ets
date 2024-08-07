@@ -105,7 +105,9 @@ struct WebOnBeforeUnload {
         .onBeforeUnload((event) => {
           if (event) {
             Utils.emitEvent(event.url, this.firstId)
-            Utils.emitEvent(event.message, this.secondId)
+            if (event.message === "Is it OK to leave/reload this page?" || event.message === "系统可能不会保存您所做的更改。") {
+              Utils.emitEvent(true, this.secondId)
+            }
             console.log("event.url:" + event.url)
             console.log("event.message:" + event.message)
             console.log("event.result.handleCancel: " + event.result.handleCancel());

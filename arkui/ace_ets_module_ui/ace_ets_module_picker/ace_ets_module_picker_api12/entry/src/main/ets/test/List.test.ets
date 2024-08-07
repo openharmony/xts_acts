@@ -36,6 +36,8 @@ import triggerSelect from './select/triggerSelect.test'
 import slideRange from './SliderTest/slideRange.test'
 
 import SliderAttrs2 from './SliderTest/SliderAttrs2.test'
+import TimePickerAddApi from './TimePickerTest/TimePickerAddApi.test';
+import enableHapticFeedbackTest from './TimePickerTest/enableHapticFeedbackTest.test'
 export default function testsuite() {
     gradientHeight()
     dividerJsunit()
@@ -53,10 +55,12 @@ export default function testsuite() {
     SliderContentModifier();
     ToggleContentModifier();
     ToggleSwitchStyle();
+    TimePickerAddApi()
     ToggleContentIsOn();
     ToggleContentEnabled();
     selectApi1();
     triggerSelect()
     slideRange()
     SliderAttrs2();
+    enableHapticFeedbackTest();
 }

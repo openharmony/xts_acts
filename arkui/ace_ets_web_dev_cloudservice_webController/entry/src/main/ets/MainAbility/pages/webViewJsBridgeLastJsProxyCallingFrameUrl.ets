@@ -31,7 +31,6 @@ struct webViewJsBridgeLastJsProxyCallingFrameUrl {
   handler: FullScreenExitHandler = new FullScreenExitHandler();
   @State str: string = "emitJsBridgeLastJavascriptProxyCallingFrameUrl";
   @State webUrl: string = "loading_func_page.html";
-  @State userAgent: string = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
   @State check: string = "null";
   @State getUrlStr: string = "";
   

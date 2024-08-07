@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function router_getStateByUrl14() {
-  describe('router_getStateByUrl14', function () {
-    beforeEach(async function (done) {
+  describe('router_getStateByUrl14', () => {
+    beforeEach(async (done: Function) => {
       console.info("router_getStateByUrl14 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/router/router_getStateByUrl14',
       }
       try {
@@ -30,7 +43,7 @@ export default function router_getStateByUrl14() {
         console.info("get router_getStateByUrl14 state pages:" + JSON.stringify(pages));
         if (!("router_getStateByUrl14" == pages.name)) {
           console.info("get router_getStateByUrl14 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push router_getStateByUrl14 page result:" + JSON.stringify(result));
         }
@@ -40,20 +53,20 @@ export default function router_getStateByUrl14() {
       console.info("router_getStateByUrl14 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("router_getStateByUrl14 after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_ABILITY_ROUTER_0420
-     * @tc.name      testGetStateByUrl
-     * @tc.desc      Retrieve the status information of the current page through the URL
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_ABILITY_ROUTER_0420
+     * @tc.name testGetStateByUrl
+     * @tc.desc Retrieve the status information of the current page through the URL
+     * @tc.level Level 3
      * @tc.type
      * @tc.size
      */
-    it('router_getStateByUrl14_0100', 0, async function (done) {
+    it('router_getStateByUrl14_0100', 0, async (done: Function) => {
       console.info('[router_getStateByUrl14_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -69,15 +82,14 @@ export default function router_getStateByUrl14() {
       await btn2.click();
       await CommonFunc.sleep(2000);
       console.info('[router_getStateByUrl14_0100] btn2');
-
       let btn3 = await driver.findComponent(ON.id('router_getStateByUrl14b_btn'));
       await btn3.click();
       await CommonFunc.sleep(2000);
       console.info('[router_getStateByUrl14_0100] btn3');
 
       let text1 = getInspectorByKey('router_getStateByUrl14b_text');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('index=4;name=router_getStateByUrl14b;path=MainAbility/pages/router/;params={"age":18};');
+      expect(JSON.parse(text1).$attrs.content)
+        .assertEqual('index=4;name=router_getStateByUrl14b;path=MainAbility/pages/router/;params={"age":18};');
 
       console.info('[router_getStateByUrl14_0100] END');
       done();

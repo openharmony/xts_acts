@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 
 export default function textInput() {
-  describe('textInputTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/textInput',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/textInput',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInput state pages: " + JSON.stringify(pages));
         if (!("textInput" == pages.name)) {
           console.info("get textInput state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInput page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push textInput page error: " + err);
@@ -43,13 +42,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set maxLines values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set maxLines values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0100', 0, async function (done) {
+    it('textInputJsunit_0100', 0, async (done: Function) => {
       console.info('textInputJsunit_0100 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -61,13 +60,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0101
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set showUnderline values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set showUnderline values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0101', 0, async function (done) {
+    it('textInputJsunit_0101', 0, async (done: Function) => {
       console.info('textInputJsunit_0101 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -79,13 +78,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0102
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set showError values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set showError values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0102', 0, async function (done) {
+    it('textInputJsunit_0102', 0, async (done: Function) => {
       console.info('textInputJsunit_0102 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -97,13 +96,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0103
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set passwordIcon values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set passwordIcon values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0103', 0, async function (done) {
+    it('textInputJsunit_0103', 0, async (done: Function) => {
       console.info('textInputJsunit_0103 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -115,13 +114,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0104
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set style values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set style values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0104', 0, async function (done) {
+    it('textInputJsunit_0104', 0, async (done: Function) => {
       console.info('textInputJsunit_0104 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -133,13 +132,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0105
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectionMenuHidden values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectionMenuHidden values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0105', 0, async function (done) {
+    it('textInputJsunit_0105', 0, async (done: Function) => {
       console.info('textInputJsunit_0105 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -151,13 +150,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0106
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set barState values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set barState values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0106', 0, async function (done) {
+    it('textInputJsunit_0106', 0, async (done: Function) => {
       console.info('textInputJsunit_0106 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -169,13 +168,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0107
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set enableKeyboardOnFocus values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set enableKeyboardOnFocus values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0107', 0, async function (done) {
+    it('textInputJsunit_0107', 0, async (done: Function) => {
       console.info('textInputJsunit_0107 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -187,31 +186,32 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0109
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set caretStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set caretStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0109', 0, async function (done) {
+    it('textInputJsunit_0109', 0, async (done: Function) => {
       console.info('textInputJsunit_0109 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
       console.info("[textInputJsunit_0109] obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.caretStyle).assertEqual("{\"width\":\"12.00vp\"}");
+      let caretStyle_obj = JSON.parse(obj.$attrs.caretStyle);
+      expect(caretStyle_obj.width).assertEqual("12.00vp");
       console.info('textInputJsunit_0109 END');
       done();
     });
 
     /**
      * @tc.number textInputJsunit_0110
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectedBackgroundColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectedBackgroundColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0110', 0, async function (done) {
+    it('textInputJsunit_0110', 0, async (done: Function) => {
       console.info('textInputJsunit_0110 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -223,13 +223,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0111
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set caretPosition values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  textInputJsunit_0111
+     * @tc.name Test the properties of components
+     * @tc.desc Set caretPosition values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level textInputJsunit_0111
      */
-    it('textInputJsunit_0111', 0, async function (done) {
+    it('textInputJsunit_0111', 0, async (done: Function) => {
       console.info('textInputJsunit_0111 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -241,13 +241,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0112
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set caretColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set caretColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0112', 0, async function (done) {
+    it('textInputJsunit_0112', 0, async (done: Function) => {
       console.info('textInputJsunit_0112 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -259,13 +259,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0113
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set placeholderFont values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set placeholderFont values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0113', 0, async function (done) {
+    it('textInputJsunit_0113', 0, async (done: Function) => {
       console.info('textInputJsunit_0113 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -279,13 +279,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0114
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set placeholderColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set placeholderColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0114', 0, async function (done) {
+    it('textInputJsunit_0114', 0, async (done: Function) => {
       console.info('textInputJsunit_0114 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -297,13 +297,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0115
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set type values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set type values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0115', 0, async function (done) {
+    it('textInputJsunit_0115', 0, async (done: Function) => {
       console.info('textInputJsunit_0115 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -315,13 +315,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0116
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set enterKeyType values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set enterKeyType values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0116', 0, async function (done) {
+    it('textInputJsunit_0116', 0, async (done: Function) => {
       console.info('textInputJsunit_0116 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -333,13 +333,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0117
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set maxLength values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set maxLength values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0117', 0, async function (done) {
+    it('textInputJsunit_0117', 0, async (done: Function) => {
       console.info('textInputJsunit_0117 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -351,13 +351,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0118
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0118', 0, async function (done) {
+    it('textInputJsunit_0118', 0, async (done: Function) => {
       console.info('textInputJsunit_0118 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -370,13 +370,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0119
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontSize values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontSize values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0119', 0, async function (done) {
+    it('textInputJsunit_0119', 0, async (done: Function) => {
       console.info('textInputJsunit_0119 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -388,13 +388,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0120
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0120', 0, async function (done) {
+    it('textInputJsunit_0120', 0, async (done: Function) => {
       console.info('textInputJsunit_0120 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -406,13 +406,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0121
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontWeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontWeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0121', 0, async function (done) {
+    it('textInputJsunit_0121', 0, async (done: Function) => {
       console.info('textInputJsunit_0121 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -424,13 +424,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0122
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontFamily values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontFamily values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0122', 0, async function (done) {
+    it('textInputJsunit_0122', 0, async (done: Function) => {
       console.info('textInputJsunit_0122 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -442,13 +442,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0123
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set copyOption values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set copyOption values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0123', 0, async function (done) {
+    it('textInputJsunit_0123', 0, async (done: Function) => {
       console.info('textInputJsunit_0123 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -460,13 +460,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0124
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set showPasswordIcon values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set showPasswordIcon values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0124', 0, async function (done) {
+    it('textInputJsunit_0124', 0, async (done: Function) => {
       console.info('textInputJsunit_0124 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -478,13 +478,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0125
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set textAlign values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set textAlign values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0125', 0, async function (done) {
+    it('textInputJsunit_0125', 0, async (done: Function) => {
       console.info('textInputJsunit_0125 START');
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
@@ -496,13 +496,13 @@ export default function textInput() {
 
     /**
      * @tc.number textInputJsunit_0127
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change fontSize values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change fontSize values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputJsunit_0127', 0, async function (done) {
+    it('textInputJsunit_0127', 0, async (done: Function) => {
       console.info('textInputJsunit_0127 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

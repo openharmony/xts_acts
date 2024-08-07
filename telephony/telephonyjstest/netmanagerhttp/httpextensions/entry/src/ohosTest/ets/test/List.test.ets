@@ -14,7 +14,11 @@
  */
 
 import NetworkManagerHttpExtensionsTest from './NetworkManagerHttpExtensions.test';
+import NetworkManagerAppProxyTest from './NetworkManagerAppProxy.test';
+import NetworkManagerAddAPI11Test from './NetworkManagerAddAPI11.test';
 
 export default function testsuite() {
   NetworkManagerHttpExtensionsTest();
+  NetworkManagerAppProxyTest();
+  NetworkManagerAddAPI11Test();
 }

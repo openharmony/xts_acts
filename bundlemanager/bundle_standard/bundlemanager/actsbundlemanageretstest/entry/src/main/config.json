@@ -21,7 +21,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "reqPermissions": [
       {
@@ -138,6 +139,6 @@
         }
       }
     ],
-    "description":"$string:entry_description"
+    "description": "$string:entry_description"
   }
 }

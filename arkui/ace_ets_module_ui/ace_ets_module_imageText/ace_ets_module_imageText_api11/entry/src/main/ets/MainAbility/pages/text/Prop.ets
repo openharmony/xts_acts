@@ -65,7 +65,7 @@ struct prop {
 @Component
 struct CountDownComponent {
   @Prop count: number
-  private costOfOneAttempt: number
+  private costOfOneAttempt: number = 0
 
   build() {
     Column() {

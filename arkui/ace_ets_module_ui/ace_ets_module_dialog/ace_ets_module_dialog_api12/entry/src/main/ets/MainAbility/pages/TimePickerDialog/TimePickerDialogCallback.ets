@@ -30,12 +30,12 @@ struct TimePickerDialogExampleA {
             selectedTextStyle: { color: Color.Blue, font: { size: 30, weight: FontWeight.Bolder } },
 
             onWillAppear: () => {
-              var eventData = {
+              let eventData: events_emitter.EventData = {
                 data: {
                   "action": 'onWillAppear'
                 }
               }
-              let event = {
+              let event: events_emitter.InnerEvent = {
                 eventId: 50001,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -43,12 +43,12 @@ struct TimePickerDialogExampleA {
               console.info("TimePickerDialog: onWillAppear()")
             },
             onDidAppear: () => {
-              var eventData = {
+              let eventData: events_emitter.EventData = {
                 data: {
                   "action": 'onDidAppear'
                 }
               }
-              let event = {
+              let event: events_emitter.InnerEvent = {
                 eventId: 50002,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -56,12 +56,12 @@ struct TimePickerDialogExampleA {
               console.info("TimePickerDialog: onDidAppear()")
             },
             onWillDisappear: () => {
-              var eventData = {
+              let eventData: events_emitter.EventData = {
                 data: {
                   "action": 'onWillDisappear'
                 }
               }
-              let event = {
+              let event: events_emitter.InnerEvent = {
                 eventId: 50003,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -69,12 +69,12 @@ struct TimePickerDialogExampleA {
               console.info("TimePickerDialog: onWillDisappear()")
             },
             onDidDisappear: () => {
-              var eventData = {
+              let eventData: events_emitter.EventData = {
                 data: {
                   "action": 'onDidDisappear'
                 }
               }
-              let event = {
+              let event: events_emitter.InnerEvent = {
                 eventId: 50004,
                 priority: events_emitter.EventPriority.LOW
               }

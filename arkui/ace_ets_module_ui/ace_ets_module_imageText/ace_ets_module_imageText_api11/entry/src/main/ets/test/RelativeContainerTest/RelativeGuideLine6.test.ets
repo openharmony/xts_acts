@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function RelativeGuideLine6() {
-  describe('RelativeGuideLine6', function () {
-    beforeEach(async function (done) {
+  describe('RelativeGuideLine6', () => {
+    beforeEach(async (done: Function) => {
       console.info("RelativeGuideLine6 beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function RelativeGuideLine6() {
       console.info("RelativeGuideLine6 foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("RelativeGuideLine6 after each called");
     });
@@ -50,7 +50,7 @@ export default function RelativeGuideLine6() {
     * @tc.size
      */
 
-    it('RelativeGuideLine6_001', 0, async function (done) {
+    it('RelativeGuideLine6_001', 0, async (done: Function) => {
       console.info('[RelativeGuideLine6_001] START');
 
       await CommonFunc.sleep(1000);
@@ -81,7 +81,7 @@ export default function RelativeGuideLine6() {
     * @tc.size
      */
 
-    it('RelativeGuideLine6_002', 0, async function (done) {
+    it('RelativeGuideLine6_002', 0, async (done: Function) => {
       console.info('[RelativeGuideLine6_002] START');
 
       await CommonFunc.sleep(1000);

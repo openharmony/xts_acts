@@ -14,8 +14,21 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
+
 export default function NO_ANIMATION_APITest() {
   describe('NO_ANIMATION_APITest', () => {
     beforeEach(async (done: Function) => {
@@ -40,10 +53,10 @@ export default function NO_ANIMATION_APITest() {
       done();
     });
     /**
-     * @tc.number    NO_ANIMATION
-     * @tc.name      NO_ANIMATION_APITest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number NO_ANIMATION
+     * @tc.name NO_ANIMATION_APITest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
@@ -51,7 +64,8 @@ export default function NO_ANIMATION_APITest() {
       console.info('NO_ANIMATION_APITest_0100 START');
       await CommonFunc.sleep(1000);
       let NO_ANIMATION = getInspectorByKey('NO_ANIMATION');
-      console.info("[NO_ANIMATION_APITest_0100] Tabs animationMode attrs is: " + JSON.stringify(JSON.parse(NO_ANIMATION).$attrs));
+      console.info("[NO_ANIMATION_APITest_0100] Tabs animationMode attrs is: " +
+      JSON.stringify(JSON.parse(NO_ANIMATION).$attrs));
       expect(JSON.parse(NO_ANIMATION).$attrs.animationMode).assertEqual('AnimationMode.NO_ANIMATION');
       console.info('[NO_ANIMATION_APITest_0100] END');
       done();

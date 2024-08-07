@@ -34,5 +34,5 @@ export default function testsuite() {
   SingleKvStorePromiseTest();
   singleKvStoreEnumTest();
   queryTest();
-  schemaTest()；
+  schemaTest();
 }

@@ -14,8 +14,21 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
+
 export default function ACTION_FIRST_APITest() {
   describe('ACTION_FIRST_APITest', () => {
     beforeEach(async (done: Function) => {
@@ -40,10 +53,10 @@ export default function ACTION_FIRST_APITest() {
       done();
     });
     /**
-     * @tc.number    ACTION_FIRST
-     * @tc.name      ACTION_FIRST_APITest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number ACTION_FIRST
+     * @tc.name ACTION_FIRST_APITest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
@@ -51,7 +64,8 @@ export default function ACTION_FIRST_APITest() {
       console.info('ACTION_FIRST_APITest_0100 START');
       await CommonFunc.sleep(1000);
       let ACTION_FIRST = getInspectorByKey('ACTION_FIRST');
-      console.info("[ACTION_FIRST_APITest_0100] Tabs animationMode attrs is: " + JSON.stringify(JSON.parse(ACTION_FIRST).$attrs));
+      console.info("[ACTION_FIRST_APITest_0100] Tabs animationMode attrs is: " +
+      JSON.stringify(JSON.parse(ACTION_FIRST).$attrs));
       expect(JSON.parse(ACTION_FIRST).$attrs.animationMode).assertEqual('AnimationMode.ACTION_FIRST');
       console.info('[ACTION_FIRST_APITest_0100] END');
       done();

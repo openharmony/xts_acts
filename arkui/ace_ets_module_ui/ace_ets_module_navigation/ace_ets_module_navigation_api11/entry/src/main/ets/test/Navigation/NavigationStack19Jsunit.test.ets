@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 export default function NavigationStack19Jsunit() {
-  describe('NavigationStack19Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('NavigationStack19Jsunit',  () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("NavigationStack19Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/NavigationStack19',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/NavigationStack19',
       }
       try {
         router.clear();
@@ -29,7 +29,7 @@ export default function NavigationStack19Jsunit() {
         console.info("get NavigationStack19Jsunit state pages:" + JSON.stringify(pages));
         if (!("NavigationStack19" == pages.name)) {
           console.info("get NavigationStack19Jsunit state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push NavigationStack19Jsunit success " + JSON.stringify(result));
           await CommonFunc.sleep(3000);
         }
@@ -45,7 +45,7 @@ export default function NavigationStack19Jsunit() {
     * @tc.desc  : When NavigationMode is set to split, hideNavBar is dynamically changed to false.
     * @tc.level : Level 3
     */
-    it('NavigationStack19Jsunit_0100', 0, async function (done) {
+    it('NavigationStack19Jsunit_0100', 0, async  (done:Function) =>{
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       await CommonFunc.sleep(500);
@@ -62,13 +62,11 @@ export default function NavigationStack19Jsunit() {
       await buttoncontent.click();
       await CommonFunc.sleep(2000);
       let textcontent = getInspectorByKey('NavigationStack19TextCont');
-      let textobj = JSON.parse(textcontent);
-      console.info('NavigationStack19Jsunit_0100 component textobj is: ' + textobj.$attrs.content);
-      expect(textobj.$attrs.content).assertEqual('clicked1');
+      console.info('NavigationStack19Jsunit_0100 component textobj is: ' + JSON.parse(textcontent).$attrs.content);
+      expect(JSON.parse(textcontent).$attrs.content).assertEqual('clicked1');
       let textcontent1 = getInspectorByKey('NavigationStack19Navigation');
-      let textobj1 = JSON.parse(textcontent1);
-      console.info('NavigationStack19Jsunit_0100 component textobj is: ' + textobj1.$attrs.title);
-      expect(textobj1.$attrs.title).assertEqual('NavIndex');
+      console.info('NavigationStack19Jsunit_0100 component textobj is: ' + JSON.parse(textcontent1).$attrs.title);
+      expect(JSON.parse(textcontent1).$attrs.title).assertEqual('NavIndex');
       console.info('NavigationStack19Jsunit_0100 END')
       done();
     });

@@ -16,13 +16,13 @@
 import {describe, beforeAll, beforeEach, afterEach, it, expect} from "@ohos/hypium"
 import {UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function initializeModifierTest() {
 
-  describe('initializeModifierTest', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('initializeModifierTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/AttributeUpdater/initializeModifier',
       }
       try {
@@ -42,7 +42,7 @@ export default function initializeModifierTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("initializeModifier after each called");
     });
@@ -55,7 +55,7 @@ export default function initializeModifierTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('initializeModifier_0010', 0, async function (done) {
+    it('initializeModifier_0010', 0, async (done: Function) => {
       console.info('initializeModifier_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -63,7 +63,7 @@ export default function initializeModifierTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('initializeModifier_id');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('initializeModifier succ');
       console.info('[initializeModifier_0010] END');
       done();
@@ -77,7 +77,7 @@ export default function initializeModifierTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('attribute_0020', 0, async function (done) {
+    it('attribute_0020', 0, async (done: Function) => {
       console.info('attribute_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -85,7 +85,7 @@ export default function initializeModifierTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('initializeModifier_id');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.height).assertEqual("50.00vp");
       console.info('[attribute_0020] END');
       done();

@@ -14,17 +14,30 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function StorageProp21Jsunit() {
-  describe('StorageProp21Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('StorageProp21Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("StorageProp21Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/StorageProp21',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/StorageProp21',
       }
       try {
         router.clear();
@@ -32,7 +45,7 @@ export default function StorageProp21Jsunit() {
         console.info("get StorageProp21Jsunit state pages: " + JSON.stringify(pages));
         if (!("StorageProp21" == pages.name)) {
           console.info("get StorageProp21Jsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push StorageProp21Jsunit page result: " + JSON.stringify(result));
         }
@@ -43,7 +56,7 @@ export default function StorageProp21Jsunit() {
       done();
     });
 
-    it('StorageProp21Jsunit_0200', 0, async function (done) {
+    it('StorageProp21Jsunit_0200', 0, async (done: Function) => {
       console.info('[StorageProp21Jsunit_0200] START');
       let driver = await UiDriver.create()
       let button_son1 = await driver.findComponent(BY.key('button1'));
@@ -59,7 +72,7 @@ export default function StorageProp21Jsunit() {
       done();
     });
 
-    it('StorageProp21Jsunit_0300', 0, async function (done) {
+    it('StorageProp21Jsunit_0300', 0, async (done: Function) => {
       console.info('[StorageProp21Jsunit_0300] START');
       let driver = await UiDriver.create()
       let button_son1 = await driver.findComponent(BY.key('button2'));
@@ -75,7 +88,7 @@ export default function StorageProp21Jsunit() {
       done();
     });
 
-    it('StorageProp21Jsunit_0400', 0, async function (done) {
+    it('StorageProp21Jsunit_0400', 0, async (done: Function) => {
       console.info('[StorageProp21Jsunit_0400] START');
       let driver = await UiDriver.create()
       let button_son1 = await driver.findComponent(BY.key('button3'));
@@ -91,7 +104,7 @@ export default function StorageProp21Jsunit() {
       done();
     });
 
-    it('StorageProp21Jsunit_0500', 0, async function (done) {
+    it('StorageProp21Jsunit_0500', 0, async (done: Function) => {
       console.info('[StorageProp21Jsunit_0500] START');
       let driver = await UiDriver.create()
       let button_son1 = await driver.findComponent(BY.key('button4'));

@@ -31,9 +31,9 @@ describe('UriTest', function () {
         try {
             let that = new uri.URI('#http://username:password@host:8080/directory/file?foo=1&bar=2');
         } catch (err) {
-            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string");
+            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string: The #It can't be the first");
             expect(err.code).assertEqual(10200002)
-            expect(err.message).assertEqual("Syntax Error. Invalid Uri string");
+            expect(err.message).assertEqual("Syntax Error. Invalid Uri string: The #It can't be the first");
         }
     })
 
@@ -108,9 +108,9 @@ describe('UriTest', function () {
         try {
             let that = new uri.URI('http://username:password@host:8080/directory/file?foo^=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string");
+            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string: The Query does not conform to the rule");
             expect(err.code).assertEqual(10200002)
-            expect(err.message).assertEqual("Syntax Error. Invalid Uri string");
+            expect(err.message).assertEqual("Syntax Error. Invalid Uri string: The Query does not conform to the rule");
         }
     })
 
@@ -127,9 +127,9 @@ describe('UriTest', function () {
         try {
             let that = new uri.URI('1http://username:password@host:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string");
+            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string: The Scheme the first character must be a letter");
             expect(err.code).assertEqual(10200002)
-            expect(err.message).assertEqual("Syntax Error. Invalid Uri string");
+            expect(err.message).assertEqual("Syntax Error. Invalid Uri string: The Scheme the first character must be a letter");
         }
     })
 
@@ -146,9 +146,9 @@ describe('UriTest', function () {
         try {
             let that = new uri.URI('ht@tp://username:password@host:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string");
+            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string: The scheme does not conform to the rule");
             expect(err.code).assertEqual(10200002)
-            expect(err.message).assertEqual("Syntax Error. Invalid Uri string");
+            expect(err.message).assertEqual("Syntax Error. Invalid Uri string: The scheme does not conform to the rule");
         }
     })
 
@@ -165,9 +165,9 @@ describe('UriTest', function () {
         try {
             let that = new uri.URI('http://username:password@[::]:80r80/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string");
+            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string: The Prot does not conform to the rule");
             expect(err.code).assertEqual(10200002)
-            expect(err.message).assertEqual("Syntax Error. Invalid Uri string");
+            expect(err.message).assertEqual("Syntax Error. Invalid Uri string: The Prot does not conform to the rule");
         }
     })
 
@@ -184,9 +184,9 @@ describe('UriTest', function () {
         try {
             let that = new uri.URI('http://username:password@[::12:55:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string");
+            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string: The IPv6 is missing a closing bracket");
             expect(err.code).assertEqual(10200002)
-            expect(err.message).assertEqual("Syntax Error. Invalid Uri string");
+            expect(err.message).assertEqual("Syntax Error. Invalid Uri string: The IPv6 is missing a closing bracket");
         }
     })
 
@@ -203,9 +203,9 @@ describe('UriTest', function () {
         try {
             let that = new uri.URI('http://username:pa^ssword@[::12:55]:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string");
+            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string: The userInfo does not conform to the rule");
             expect(err.code).assertEqual(10200002)
-            expect(err.message).assertEqual("Syntax Error. Invalid Uri string");
+            expect(err.message).assertEqual("Syntax Error. Invalid Uri string: The userInfo does not conform to the rule");
         }
     })
 
@@ -222,9 +222,9 @@ describe('UriTest', function () {
         try {
             let that = new uri.URI('http://username:password@[::1你2:55]:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
-            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string");
+            expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string: The ipv6 does not conform to the rule");
             expect(err.code).assertEqual(10200002)
-            expect(err.message).assertEqual("Syntax Error. Invalid Uri string");
+            expect(err.message).assertEqual("Syntax Error. Invalid Uri string: The ipv6 does not conform to the rule");
         }
     })
 
@@ -2302,9 +2302,9 @@ describe('UriTest', function () {
       try {
         uri.URI.createFromParts("", "", "");
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string");
+        expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string: The Scheme the first character must be a letter");
         expect(err.code).assertEqual(10200002);
-        expect(err.message).assertEqual("Syntax Error. Invalid Uri string");
+        expect(err.message).assertEqual("Syntax Error. Invalid Uri string: The Scheme the first character must be a letter");
       }
       try {
         uri.URI.createFromParts(null, null, null);
@@ -3176,6 +3176,148 @@ describe('UriTest', function () {
       expect(newUri.host).assertEqual("www.bi an'|{}()$~,;*!_-+");
       expect(newUri.userInfo).assertEqual(null);
       expect(newUri.port).assertEqual("80");
+    })
+    // Check the Uri Port.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_17900
+     * @tc.name: testspecialPort001
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testspecialPort001', 0, function () {
+        let uriStr = "http://publickinfo:-1";
+        let newUri = new uri.URI(uriStr);
+        expect(newUri.toString()).assertEqual("http://publickinfo:-1");
+        expect(newUri.port).assertEqual("-1");
+        expect(newUri.host).assertEqual(null);
+        expect(newUri.authority).assertEqual("publickinfo:-1");
+    })
+    // Check the Uri Port.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_18000
+     * @tc.name: testspecialPort002
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testspecialPort002', 0, function () {
+        let uriStr = "http://publickinfo:2147483647";
+        let newUri = new uri.URI(uriStr);
+        expect(newUri.toString()).assertEqual("http://publickinfo:2147483647");
+        expect(newUri.port).assertEqual("2147483647");
+        expect(newUri.host).assertEqual('publickinfo');
+        expect(newUri.authority).assertEqual("publickinfo:2147483647");
+    })
+    // Check the Uri Port.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_18100
+     * @tc.name: testspecialPort003
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testspecialPort003', 0, function () {
+        let uriStr = "http://publickinfo:600000000332";
+        let newUri = new uri.URI(uriStr);
+        expect(newUri.toString()).assertEqual("http://publickinfo:600000000332");
+        expect(newUri.port).assertEqual("-1");
+        expect(newUri.host).assertEqual(null);
+        expect(newUri.authority).assertEqual("publickinfo:600000000332");
+    })
+    // Check the Uri Port.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_18200
+     * @tc.name: testspecialPort004
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testspecialPort004', 0, function () {
+        let uriStr = "http://publickinfo:0";
+        let newUri = new uri.URI(uriStr);
+        expect(newUri.toString()).assertEqual("http://publickinfo:0");
+        expect(newUri.port).assertEqual("0");
+        expect(newUri.host).assertEqual("publickinfo");
+        expect(newUri.authority).assertEqual("publickinfo:0");
+    })
+    // Check the UriConstruction.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_18300
+     * @tc.name: testUriConstruction032
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriConstruction032', 0, function () {
+        try {
+          let that = new uri.URI('ht/tp://username:pas sword@host:8080/di[rectory/file?foo=1&bar=2');
+        } catch (err) {
+          expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string: The SpecialPath does not conform to the rule");
+          expect(err.code).assertEqual(10200002)
+          expect(err.message).assertEqual("Syntax Error. Invalid Uri string: The SpecialPath does not conform to the rule");
+        }
+    })
+    // Check the UriConstruction.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_18400
+     * @tc.name: testUriConstruction033
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriConstruction033', 0, function () {
+        try {
+          let that = new uri.URI('http://username:password@[::]:8080/directory/file?Query#abc^de');
+        } catch (err) {
+          expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string: The Fragment does not conform to the rule");
+          expect(err.code).assertEqual(10200002)
+          expect(err.message).assertEqual("Syntax Error. Invalid Uri string: The Fragment does not conform to the rule");
+        }
+    })
+    // Check the UriConstruction.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_18500
+     * @tc.name: testUriConstruction034
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriConstruction034', 0, function () {
+        try {
+          let route = new uri.URI('content://com.test.uri/files/a^a');
+          let segments = route.getSegment();
+        } catch (err) {
+          expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string: The path does not conform to the rule");
+          expect(err.code).assertEqual(10200002);
+          expect(err.message).assertEqual("Syntax Error. Invalid Uri string: The path does not conform to the rule");
+        }
+    })
+    // Check the UriAddEncodedSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_18600
+     * @tc.name: testUriAddEncodedSegment004
+     * @tc.desc: Encode the path segment and add it to the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddEncodedSegment004', 0, function () {
+        try {
+          let route = new uri.URI('http://www.test.com/');
+          let newRoute = route.addEncodedSegment("my`files");
+        } catch (err) {
+          expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string: The path does not conform to the rule");
+          expect(err.code).assertEqual(10200002);
+          expect(err.message).assertEqual("Syntax Error. Invalid Uri string: The path does not conform to the rule");
+        }
     })
 })
 }

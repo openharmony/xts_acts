@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 import events_emitter from '@ohos.events.emitter'
 
 export default function dragPreviewOptionsJsSuit() {
-  describe('dragPreviewOptionsJsSuit', function () {
-    beforeEach(async function (done) {
+  describe('dragPreviewOptionsJsSuit', () => {
+    beforeEach(async (done: Function) => {
       console.info("dragPreviewJsSuit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/DragController/dragPreviewOptions',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/DragController/dragPreviewOptions',
       }
       try {
         router.clear();
@@ -42,7 +42,7 @@ export default function dragPreviewOptionsJsSuit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("overlay after each called");
     });
@@ -56,11 +56,11 @@ export default function dragPreviewOptionsJsSuit() {
      * @tc.size :
      */
 
-    it('dragPreviewOptionsJsSuit_0100', 0, async function (done) {
+    it('dragPreviewOptionsJsSuit_0100', 0, async (done: Function) => {
       console.info('[dragPreviewOptionsJsSuit_0100] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey("dragPreviewOption");
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[dragPreviewOptionsJsSuit_0100] obj is: " + JSON.stringify(obj.$attrs.height));
       expect(obj.$attrs.height=='150.00vp').assertTrue();
       console.info('[dragPreviewOptionsJsSuit_0100] END');

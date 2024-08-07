@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -21,8 +21,8 @@ export default function polygonNewJsunit() {
   describe('polygonNewJsunit', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/polygon/polygon2',
+     let options:router.RouterOptions = {
+        url:'MainAbility/pages/polygon/polygon2',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function polygonNewJsunit() {
         console.info("get polygon state success " + JSON.stringify(pages));
         if (!("polygon" == pages.name)) {
           console.info("get polygon state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push polygon page success " + JSON.stringify(result));
         }
@@ -55,7 +55,7 @@ export default function polygonNewJsunit() {
       let strJson = getInspectorByKey('Polygon');
       console.info("[testpolygonNe0001] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Polygon');
+      expect(JSON.parse(strJson).$type).assertEqual('Polygon');
       expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00px");
       console.info("[testpolygonNe0001] width value :" + JSON.parse(strJson).$attrs.width);
 
@@ -72,7 +72,7 @@ export default function polygonNewJsunit() {
       let strJson = getInspectorByKey('Polygon');
       console.info("[testpolygonNe0002] component height strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Polygon');
+      expect(JSON.parse(strJson).$type).assertEqual('Polygon');
       expect(JSON.parse(strJson).$attrs.height).assertEqual("100.00px");
       console.info("[testpolygonNe0002] height value :" + JSON.parse(strJson).$attrs.height);
 

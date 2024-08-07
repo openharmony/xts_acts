@@ -12,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
+import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function Image_QRCode_Api() {
-  describe('Image_QRCode_Api', function () {
-    beforeEach(async function (done) {
+  describe('Image_QRCode_Api', () => {
+    beforeEach(async (done: Function) => {
       console.info("Image_QRCode_Api beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/text/Image_QRCode_Api',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/text/Image_QRCode_Api',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function Image_QRCode_Api() {
         if (!("Image_QRCode_Api" == pages.name)) {
           console.info("get Image_QRCode_Api state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push Image_QRCode_Api page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,8 +40,8 @@ export default function Image_QRCode_Api() {
       done()
     });
 
-    afterEach(async function () {
-      await Utils.sleep(1000);
+    afterEach(async () => {
+      await CommonFunc.sleep(1000);
       console.info("Image_QRCode_Api after each called");
     });
 
@@ -51,13 +51,13 @@ export default function Image_QRCode_Api() {
      * @tc.desc        QRCode test
      * @tc.level       Level 2
      */
-    it('Image_QRCode_Api_001', 0, async function (done) {
+    it('Image_QRCode_Api_001', 0, async (done: Function) => {
       console.info('[Image_QRCode_Api_001] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('Image_QRCode_Api_QRCode1');
-      let obj = JSON.parse(strJson);
-      await Utils.sleep(1000);
+      let obj: ESObject = JSON.parse(strJson);
+      await CommonFunc.sleep(1000);
       console.info("[Image_QRCode_Api_001] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.opacity).assertEqual(0.5);
 
@@ -71,13 +71,13 @@ export default function Image_QRCode_Api() {
      * @tc.desc        Image test
      * @tc.level       Level 2
      */
-    it('Image_QRCode_Api_002', 0, async function (done) {
+    it('Image_QRCode_Api_002', 0, async (done: Function) => {
       console.info('[Image_QRCode_Api_002] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('Image_QRCode_Api_Image');
-      let obj = JSON.parse(strJson);
-      await Utils.sleep(1000);
+      let obj: ESObject = JSON.parse(strJson);
+      await CommonFunc.sleep(1000);
       console.info("[Image_QRCode_Api_002] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.enableAnalyzer).assertEqual('true');
 

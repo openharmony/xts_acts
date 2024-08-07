@@ -22,6 +22,8 @@ export default function btBleServiceTest() {
 describe('btBleServiceTest', function() {
     let gattServer: bluetooth.GattServer;
     let gattClient: bluetooth.GattClientDevice;
+    let PERMISSION_TEXT:string = "允许";
+    let OPEN_BT_TEXT:string = "开启";
     function sleep(delay) {
         return new Promise(resovle => setTimeout(resovle, delay))
     }
@@ -46,7 +48,7 @@ describe('btBleServiceTest', function() {
             case 0:
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
                 btAccess.enableBluetooth();
-                await clickRequestPermission();
+                await clickRequestPermission(OPEN_BT_TEXT);
                 await sleep(10000);
                 break;
             case 1:
@@ -59,7 +61,7 @@ describe('btBleServiceTest', function() {
             case 3:
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
                 btAccess.enableBluetooth();
-                await clickRequestPermission();
+                await clickRequestPermission(OPEN_BT_TEXT);
                 await sleep(10000);
                 break;
             default:
@@ -67,22 +69,30 @@ describe('btBleServiceTest', function() {
         }
     }
 
-    async function clickRequestPermission() {
+    async function clickRequestPermission(text:string) {
+        console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
         try {
-            console.info('[bluetooth_js] clickRequestPermission start');
-            let driver = Driver.create();
-            await driver.delayMs(3000);
-            let button = await driver.findComponent(ON.text("允许"));
+            let button = await driver.findComponent(ON.text(text));
             await button.click();
             await driver.delayMs(3000);
             console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed');
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
         }
     }
 
     beforeAll(async function (done) {
-        await clickRequestPermission();
+        await clickRequestPermission(PERMISSION_TEXT);
         await openPhone();
         await tryToEnableBt()
         gattServer = bluetooth.createGattServer();
@@ -112,9 +122,10 @@ describe('btBleServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_GATTSERCONNECT_0100
-     * @tc.name test Server connectStateChange
+     * @tc.name testConnectStateChange
      * @tc.desc Test on and off api10 .
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTSERCONNECT_0100', 0, async function (done) {
@@ -141,6 +152,7 @@ describe('btBleServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api10.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADDSERVICE_0100', 0, async function (done) {
@@ -176,6 +188,7 @@ describe('btBleServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test api10 401 - characteristics of service is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLE_ADDSERVICE_0200', 0, async function (done) { 
@@ -191,9 +204,10 @@ describe('btBleServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_NOTIFYCHARACTERISTIC_0100
-     * @tc.name testNotifyCharacteristicChanged callback
+     * @tc.name testNotifyCharacteristicChanged
      * @tc.desc Test NotifyCharacteristicChanged api10.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_NOTIFYCHARACTERISTIC_0100', 0, async function (done) {
@@ -244,9 +258,10 @@ describe('btBleServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_NOTIFYCHARACTERISTIC_0200
-     * @tc.name testNotifyCharacteristicChanged promise
+     * @tc.name testNotifyCharacteristicChanged
      * @tc.desc Test NotifyCharacteristicChanged api10.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_NOTIFYCHARACTERISTIC_0200', 0, async function (done) {
@@ -281,9 +296,10 @@ describe('btBleServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0100
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse api10.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0100', 0, async function (done) {
@@ -306,9 +322,10 @@ describe('btBleServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0200
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse api10.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0200', 0, async function (done) {
@@ -331,9 +348,10 @@ describe('btBleServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0300
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse 401 -null parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0300', 0, async function (done) {
@@ -351,9 +369,10 @@ describe('btBleServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0400
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse 401 -error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0400', 0, async function (done) {
@@ -376,9 +395,10 @@ describe('btBleServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLES_MTUCHANGE_0100
-     * @tc.name test gattserver on blemtuchange
+     * @tc.name testOnBLEMtuChange
      * @tc.desc test gattserver on blemtuchange api10.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLES_MTUCHANGE_0100', 0, async function (done) {
@@ -396,9 +416,10 @@ describe('btBleServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLES_MTUCHANGE_0200
-     * @tc.name test gattserver off blemtuchange
+     * @tc.name testOnBLEMtuChange
      * @tc.desc test gattserver off blemtuchange api10
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLES_MTUCHANGE_0200', 0, async function (done) {

@@ -15,7 +15,8 @@
 #include "huks_three_stage_test_common.h"
 #ifndef HKS_SIGNVERIFY_ECC_TEST_H
 #define HKS_SIGNVERIFY_ECC_TEST_H
-namespace Unittest::EccSignVerify {
+namespace Unittest::EccSignVerify
+{
 int Security_HUKS_NAPI_SignVerify_ECC_0100(void);
-} // namespace Unittest::AesCipher
-#endif // HKS_SIGNVERIFY_ECC_TEST_H
+}  // namespace Unittest::EccSignVerify
+#endif  // HKS_SIGNVERIFY_ECC_TEST_H

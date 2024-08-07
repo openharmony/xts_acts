@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,18 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import bundle from '@ohos.bundle.bundleManager';
 
 export default function formComponentJsunitJsunit() {
-  describe('formComponentTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/formComponent',
+  describe('formComponentTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/formComponent',
       }
       try {
         router.clear();
@@ -32,9 +31,8 @@ export default function formComponentJsunitJsunit() {
         console.info("get formComponentJsunit state success " + JSON.stringify(pages));
         if (!("formComponent" == pages.name)) {
           console.info("get formComponentJsunit pages success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push formComponentJsunit page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push formComponentJsunit page error: " + err);
@@ -44,107 +42,112 @@ export default function formComponentJsunitJsunit() {
 
     /**
      * @tc.number test_formComponentJsunit001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set allowUpdate values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set allowUpdate values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_formComponentJsunit001', 0, async function (done) {
+    it('test_formComponentJsunit001', 0, async (done: Function) => {
       console.info('[test_formComponentJsunit001] START');
-      var strJson = getInspectorByKey('FormComponentKey1');
-      var obj = JSON.parse(strJson);
-      console.info("[test_formComponentJsunit001] obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.allowUpdate).assertEqual(undefined);
+      let strJson = getInspectorByKey('FormComponentKey1');
+
+      console.info("[test_formComponentJsunit001] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs));
+      expect(JSON.parse(strJson).$attrs.allowUpdate).assertEqual(undefined);
       done();
     });
 
     /**
      * @tc.number test_formComponentJsunit002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set dimension values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set dimension values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_formComponentJsunit002', 0, async function (done) {
+    it('test_formComponentJsunit002', 0, async (done: Function) => {
       console.info('[test_formComponentJsunit002] START');
-      var strJson = getInspectorByKey('FormComponentKey1');
-      var obj = JSON.parse(strJson);
-      console.info("[test_formComponentJsunit002] obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.dimension).assertEqual(undefined);
+      let strJson = getInspectorByKey('FormComponentKey1');
+
+      console.info("[test_formComponentJsunit002] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs));
+      expect(JSON.parse(strJson).$attrs.dimension).assertEqual(undefined);
       console.info('[test_formComponentJsunit002] END');
       done();
     });
 
     /**
      * @tc.number test_formComponentJsunit003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set moduleName values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set moduleName values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_formComponentJsunit003', 0, async function (done) {
+    it('test_formComponentJsunit003', 0, async (done: Function) => {
       console.info('[test_formComponentJsunit003] START');
-      var strJson = getInspectorByKey('FormComponentKey1');
-      var obj = JSON.parse(strJson);
-      console.info("[test_formComponentJsunit003] obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.moduleName).assertEqual(undefined);
+      let strJson = getInspectorByKey('FormComponentKey1');
+
+      console.info("[test_formComponentJsunit003] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs));
+      expect(JSON.parse(strJson).$attrs.moduleName).assertEqual(undefined);
       console.info('[test_formComponentJsunit003] END');
       done();
     });
 
     /**
      * @tc.number test_formComponentJsunit004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set size values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set size values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_formComponentJsunit004', 0, async function (done) {
+    it('test_formComponentJsunit004', 0, async (done: Function) => {
       console.info('[test_formComponentJsunit004] START');
-      var strJson = getInspectorByKey('FormComponentKey1');
-      var obj = JSON.parse(strJson);
-      console.info("[test_formComponentJsunit004] obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.size?.width).assertEqual("200.00vp");
-      expect(obj.$attrs.size?.height).assertEqual("300.00vp");
+      let strJson = getInspectorByKey('FormComponentKey1');
+
+      console.info("[test_formComponentJsunit004] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs));
+      expect(JSON.parse(strJson).$attrs.size?.width).assertEqual("200.00vp");
+      expect(JSON.parse(strJson).$attrs.size?.height).assertEqual("300.00vp");
       console.info('[test_formComponentJsunit004] END');
       done();
     });
 
     /**
      * @tc.number test_formComponentJsunit005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set visibility values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set visibility values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_formComponentJsunit005', 0, async function (done) {
+    it('test_formComponentJsunit005', 0, async (done: Function) => {
       console.info('[test_formComponentJsunit005] START');
-      var strJson = getInspectorByKey('FormComponentKey1');
-      var obj = JSON.parse(strJson);
-      console.info("[test_formComponentJsunit005] obj is: " + JSON.stringify(obj.$attrs));
-      var strJson1 = getInspectorByKey('FormComponentKey2');
-      var obj1 = JSON.parse(strJson1);
-      console.info("[test_formComponentJsunit005] obj1 is: " + JSON.stringify(obj1.$attrs));
+      let strJson = getInspectorByKey('FormComponentKey1');
+
+      console.info("[test_formComponentJsunit005] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs));
+      let strJson1 = getInspectorByKey('FormComponentKey2');
+      console.info("[test_formComponentJsunit005] JSON.parse(strJson)1 is: " + JSON.stringify(JSON.parse(strJson1)
+        .$attrs));
       //得到json值与 设置不一致，与原生json返回做对比验证
-      expect(obj.$attrs.visibility).assertEqual(obj1.$attrs.visibility);
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual(JSON.parse(strJson1).$attrs.visibility);
       console.info('[test_formComponentJsunit005] END');
       done();
     });
 
     /**
      * @tc.number test_formComponentJsunit006
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change size values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change size values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-     it('test_formComponentJsunit006', 0, async function (done) {
+    it('test_formComponentJsunit006', 0, async (done: Function) => {
 
       console.info('test_formComponentJsunit006 START');
       let driver = Driver.create();
@@ -153,10 +156,9 @@ export default function formComponentJsunitJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('FormComponentKey1');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("test_formComponentJsunit006 component  is: " + JSON.stringify(objNew.$attrs));
-      expect(objNew.$attrs.size?.width).assertEqual("100.00vp");
-      expect(objNew.$attrs.size?.height).assertEqual("200.00vp");
+      console.info("test_formComponentJsunit006 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
+      expect(JSON.parse(strJsonNew).$attrs.size?.width).assertEqual("100.00vp");
+      expect(JSON.parse(strJsonNew).$attrs.size?.height).assertEqual("200.00vp");
       console.info('test_formComponentJsunit006 END ');
       done();
     });

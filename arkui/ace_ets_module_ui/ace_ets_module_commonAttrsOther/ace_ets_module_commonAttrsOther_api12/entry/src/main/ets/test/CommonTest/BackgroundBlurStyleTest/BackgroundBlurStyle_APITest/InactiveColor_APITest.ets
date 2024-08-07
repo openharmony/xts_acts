@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../../MainAbility/utils/Common';
+import CommonFunc from '../../../../MainAbility/common/Common';
 export default function InactiveColor_APITest() {
   describe('InactiveColor_APITest', () => {
     beforeEach(async (done: Function) => {
@@ -52,7 +52,7 @@ export default function InactiveColor_APITest() {
       await CommonFunc.sleep(1000);
       let inactiveColor = getInspectorByKey('inactiveColor');
       console.info("[InactiveColor_APITest_0100] Tabs animationMode attrs is: " + JSON.stringify(JSON.parse(inactiveColor).$attrs));
-      expect(JSON.parse(inactiveColor).$attrs.backgroundBlurStyle.options.inactiveColor).assertEqual('#21a1dd');
+      expect(JSON.parse(inactiveColor).$attrs.backgroundBlurStyle.options.inactiveColor).assertEqual('#FF21A1DD');
       console.info('[InactiveColor_APITest_0100] END');
       done();
     });

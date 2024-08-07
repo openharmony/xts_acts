@@ -14,13 +14,13 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import text from "@ohos.graphics.text"
 
 export default function styledStringChange() {
-  describe('styledStringChange', function () {
-    beforeEach(async function (done) {
+  describe('styledStringChange', () => {
+    beforeEach(async (done: Function) => {
       console.info("styledStringChange beforeEach start");
       try {
         router.clear();
@@ -38,7 +38,7 @@ export default function styledStringChange() {
       console.info("styledStringChange foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("styledStringChange after each called");
     });
@@ -52,7 +52,7 @@ export default function styledStringChange() {
      * @tc.level      : Level 3
      */
 
-    it('styledStringChange_001', 0, async function (done) {
+    it('styledStringChange_001', 0, async (done: Function) => {
       console.info('[styledStringChange_001] START');
       await CommonFunc.sleep(200);
       let driver: Driver = Driver.create();
@@ -69,7 +69,7 @@ export default function styledStringChange() {
 
       let strJson = getInspectorByKey('changeText');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[styledStringChange_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -87,7 +87,7 @@ export default function styledStringChange() {
      * @tc.level      : Level 3
      */
 
-    it('styledStringChange_002', 0, async function (done) {
+    it('styledStringChange_002', 0, async (done: Function) => {
       console.info('[styledStringChange_002] START');
       await CommonFunc.sleep(200);
       let driver: Driver = Driver.create();
@@ -111,7 +111,7 @@ export default function styledStringChange() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('changeText2');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[styledStringChange_002] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 

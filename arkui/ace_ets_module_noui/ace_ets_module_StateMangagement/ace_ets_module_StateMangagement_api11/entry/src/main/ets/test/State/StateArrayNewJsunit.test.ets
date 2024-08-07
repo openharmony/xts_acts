@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function StateArrayNewJsunit() {
-  describe('StateArrayNewJsunit', function () {
-    beforeEach(async function (done) {
+  describe('StateArrayNewJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("StateArrayNewJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/StateArrayNew',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/StateArrayNew',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function StateArrayNewJsunit() {
         console.info("get StateArrayNewJsunit state pages: " + JSON.stringify(pages));
         if (!("StateArrayNew" == pages.name)) {
           console.info("get StateArrayNewJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push StateArrayNewJsunit success: " + JSON.stringify(result));
         }
@@ -43,7 +56,7 @@ export default function StateArrayNewJsunit() {
     });
 
 
-    it('StateArrayNewJsunit_0200', 0, async function (done) {
+    it('StateArrayNewJsunit_0200', 0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_0200 START');
       let driver = await Driver.create()
@@ -59,7 +72,7 @@ export default function StateArrayNewJsunit() {
       done();
     });
 
-    it('StateArrayNewJsunit_0400', 0, async function (done) {
+    it('StateArrayNewJsunit_0400', 0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_0400 START');
       let driver = await Driver.create()
@@ -76,7 +89,7 @@ export default function StateArrayNewJsunit() {
     });
 
 
-    it('StateArrayNewJsunit_0600', 0, async function (done) {
+    it('StateArrayNewJsunit_0600', 0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_0600 START');
       let driver = await Driver.create()
@@ -93,7 +106,7 @@ export default function StateArrayNewJsunit() {
     });
 
 
-    it('StateArrayNewJsunit_0800', 0, async function (done) {
+    it('StateArrayNewJsunit_0800', 0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_0800 START');
       let driver = await Driver.create()
@@ -109,7 +122,7 @@ export default function StateArrayNewJsunit() {
       done();
     });
 
-    it('StateArrayNewJsunit_1000', 0, async function (done) {
+    it('StateArrayNewJsunit_1000', 0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_1000 START');
       let driver = await Driver.create()

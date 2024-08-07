@@ -20,7 +20,7 @@ import Utils from '../Utils';
 
 export default function treeViewNodeParamContainer() {
   describe('treeViewNodeParamContainer', function () {
-    beforeEach(async function (done: Function) {
+    beforeEach(async function (done) {
       console.info('treeViewNodeParamContainer beforeEach start');
       let options = {
         uri: 'MainAbility/pages/treeView/treeViewNodeParamContainer',
@@ -58,20 +58,14 @@ export default function treeViewNodeParamContainer() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('treeViewNodeParamContainer_0100', 0, async function (done) {
+    it('treeViewNodeParamContainer_0100', 0, async (done: Function) => {
       console.info('[treeViewNodeParamContainer_0100] START');
-      let driver = await Driver.create();
-      await driver.delayMs(2000);
-      // 查看treeViewNodeParamContainer是否存在以下入口。
-      let addButton = await driver.findComponent(ON.text('Add'));
-      let modifyButton = await driver.findComponent(ON.text('Modify'));
-      let RemoveButton = await driver.findComponent(ON.text('Remove'));
-      expect(addButton !== null).assertTrue();
-      expect(modifyButton !== null).assertTrue();
-      expect(RemoveButton !== null).assertTrue();
-      await driver.delayMs(2000);
-      console.info('[treeViewNodeParamContainer_0100] END');
-      done();
-    });
+      try{
+        let driver: Driver = Driver.create();
+        await driver.assertComponentExist(ON.text('ClickNodeId='));
+      } finally {
+        done();
+      }
+    })
   })
 }

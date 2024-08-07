@@ -18,14 +18,14 @@ import router from '@ohos.router'
 @Component
 struct router_push1 {
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
 
       Button('push')
         .id('router_push_btn1')
-        .onClick(()=>{
-          router.push({url:'MainAbility/pages/router10/pageOne'});
-          router.push({url:'MainAbility/pages/router10/pageTwo'});
-          router.push({url:'MainAbility/pages/router10/pageThree'});
+        .onClick(() => {
+          router.push({ url: 'MainAbility/pages/router10/pageOne' });
+          router.push({ url: 'MainAbility/pages/router10/pageTwo' });
+          router.push({ url: 'MainAbility/pages/router10/pageThree' });
         })
 
     }.width('100%').height('100%')

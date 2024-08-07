@@ -18,18 +18,17 @@ import router from '@ohos.router'
 @Component
 struct router_back1 {
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
 
       Button('back')
         .id('router_back_btn1')
-        .onClick(()=>{
-          router.back({url:'pages/detail',params:1});
+        .onClick(() => {
+          router.back({ url: 'pages/detail', params: 1 });
         })
 
       Text('back fail').key('router_back_text1')
 
     }.width('100%').height('100%')
-
 
   }
 }

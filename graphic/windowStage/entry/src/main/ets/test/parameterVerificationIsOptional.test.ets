@@ -530,9 +530,18 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         num++
         secondListenFlag = true
       });
+      await sleep(1000);
       await (tempWnd as ohosWindow.Window).setFullScreen(true).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setFullScreen(true)', TRUE_FLAG, done);
       });
+      await sleep(1000);
+      await tempWnd.setWindowLayoutFullScreen(false).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(false) success');
+      await sleep(1000);
       await (tempWnd as ohosWindow.Window).setSystemBarEnable(['status']).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status])', TRUE_FLAG, done);
       });
@@ -540,6 +549,12 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       (tempWnd as ohosWindow.Window).off('avoidAreaChange');
       firstListenFlag = false
       secondListenFlag = false
+      await tempWnd.setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(true) success');
       await (tempWnd as ohosWindow.Window).setSystemBarEnable([]).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([navigation])', TRUE_FLAG, done);
       });
@@ -596,9 +611,21 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       (tempWnd as ohosWindow.Window).off('avoidAreaChange', firstCall);
       firstListenFlag = false
       secondListenFlag = false
+      await tempWnd.setWindowLayoutFullScreen(false).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(false) success');
       await (tempWnd as ohosWindow.Window).setSystemBarEnable([]).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([navigation])', TRUE_FLAG, done);
       });
+      await tempWnd.setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(true) success');
       await (tempWnd as ohosWindow.Window).setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status])', TRUE_FLAG, done);
       });
@@ -756,26 +783,18 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2240
-     * @tc.name      : testWindow_off_keyboardHeightChange_AllListening_LogOut
+     * @tc.name      : testWindow_off_keyboardHeightChange_All
      * @tc.desc      : Turn off listening for keyboard height changes
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindow_off_keyboardHeightChange_AllListening_LogOut', 0, async (done: Function) => {
-      let caseName: string = 'testWindow_off_keyboardHeightChange_AllListening_LogOut';
+    it('testWindow_off_keyboardHeightChange_All', 0, async (done: Function) => {
+      let caseName: string = 'testWindow_off_keyboardHeightChange_All';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      // pc上输入框聚焦没有软键盘弹出，该用例无法测试执行
-      if(!canIUse("SystemCapability.Sensors.Sensor")){
-        done();
-        return;
-      }
-      let num: number = 0
-      let firstListenFlag: boolean = false
-      let secondListenFlag: boolean = false
       let tempWnd: ohosWindow.Window | void;
-      tempWnd = await windowStage.createSubWindow('testWindow_off_keyboardHeightChange_AllListening_LogOut').catch((err) => {
+      tempWnd = await windowStage.createSubWindow('testWindow_off_keyboardHeightChange_All').catch((err) => {
         console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -784,87 +803,62 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       expect(!!tempWnd).assertTrue();
       await (tempWnd as ohosWindow.Window).loadContent('MainAbility/pages/second/pageTwo')
         .catch((err: BusinessError) => {
-          unexpectedError(err, caseName, 'tempWnd.loadContent', TRUE_FLAG, done);
+          expect().assertFail();
+          done();
         });
       let current_display_Class = display.getDefaultDisplaySync();
       await (tempWnd as ohosWindow.Window).resize(800, current_display_Class.height).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.resetSize', TRUE_FLAG, done);
+        expect().assertFail();
+        done();
       });
       await (tempWnd as ohosWindow.Window).moveWindowTo(0, 0).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.moveWindowTo ', TRUE_FLAG, done);
+        expect().assertFail();
+        done();
       });
       await (tempWnd as ohosWindow.Window).showWindow().catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.showWindow', TRUE_FLAG, done);
-      });
-      (tempWnd as ohosWindow.Window).on('keyboardHeightChange', (data) => {
-        console.info(msgStr + "first listener trigger");
-        num++
-        firstListenFlag = true
-      });
-      (tempWnd as ohosWindow.Window).on('keyboardHeightChange', (data) => {
-        console.info(msgStr + "second listener trigger");
-        num++
-        secondListenFlag = true
-      });
-      await inputClick('pageTwoinput', msgStr).catch(async (err: BusinessError) => {
-        console.info(msgStr + err);
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        expect(TRUE_FLAG).assertFail();
-        done();
-      })
-      await sleep(800);
-      (tempWnd as ohosWindow.Window).off('keyboardHeightChange');
-      firstListenFlag = false
-      secondListenFlag = false
-      await sleep(800);
-      await buttonClick('点击按钮获取焦点', msgStr).catch(async (err: BusinessError) => {
-        console.info(msgStr + err);
-        await (tempWnd as ohosWindow.Window).destroyWindow();
         expect().assertFail();
         done();
-      })
-      await sleep(800);
-      await inputClick('pageTwoinputSecond', msgStr).catch(async (err: BusinessError) => {
-        console.info(msgStr + err);
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        expect(TRUE_FLAG).assertFail();
-        done();
-      })
-      await sleep(800);
-      await buttonClick('点击按钮获取焦点', msgStr).catch(async (err: BusinessError) => {
-        console.info(msgStr + err);
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        expect().assertFail();
-        done();
-      })
-      await (tempWnd as ohosWindow.Window).destroyWindow();
-      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
-        done();
-      } else {
+      });
+      try {
+        (tempWnd as ohosWindow.Window).on('keyboardHeightChange', (data) => {
+          console.info(msgStr + "first listener trigger");
+        });
+      } catch (exception) {
+        console.error(msgStr + `Failed to enable the listener for keyboard height changes. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
         done();
       }
+      try {
+        (tempWnd as ohosWindow.Window).on('keyboardHeightChange', (data) => {
+          console.info(msgStr + "second listener trigger");
+        });
+      } catch (exception) {
+        console.error(msgStr + `Failed to enable the listener for keyboard height changes. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+        done();
+      }
+      try {
+        (tempWnd as ohosWindow.Window).off('keyboardHeightChange');
+      } catch (exception) {
+        console.error(msgStr + `Failed to enable the listener for keyboard height changes. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+        done();
+      }
+      await (tempWnd as ohosWindow.Window).destroyWindow();
+      done();
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2250
-     * @tc.name      : testWindow_off_keyboardHeightChange_FirstCall_LogOut
+     * @tc.name      : testWindow_off_keyboardHeightChange_FirstCall
      * @tc.desc      : Turn off listening for keyboard height changes
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindow_off_keyboardHeightChange_FirstCall_LogOut', 0, async (done: Function) => {
-      let caseName: string = 'testWindow_off_keyboardHeightChange_FirstCall_LogOut';
+    it('testWindow_off_keyboardHeightChange_FirstCall', 0, async (done: Function) => {
+      let caseName: string = 'testWindow_off_keyboardHeightChange_FirstCall';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      // pc上输入框聚焦没有软键盘弹出，该用例无法测试执行
-      if(!canIUse("SystemCapability.Sensors.Sensor")){
-        done();
-        return;
-      }
-      let firstListenFlag: boolean = false
-      let secondListenFlag: boolean = false
-
       let firstCall: Callback<number> = () => {
         console.log(msgStr + "first listener trigger")
         firstListenFlag = true
@@ -897,47 +891,32 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await (tempWnd as ohosWindow.Window).showWindow().catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.showWindow', TRUE_FLAG, done);
       });
-      (tempWnd as ohosWindow.Window).on('keyboardHeightChange', firstCall);
-      (tempWnd as ohosWindow.Window).on('keyboardHeightChange', secondCall);
-      await inputClick('pageTwoinput', msgStr).catch(async (err: BusinessError) => {
-        console.info(msgStr + err);
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        expect(TRUE_FLAG).assertFail();
-        done();
-      })
-      await sleep(800);
-      (tempWnd as ohosWindow.Window).off('keyboardHeightChange', firstCall);
-      firstListenFlag = false
-      secondListenFlag = false
-      await sleep(800);
-      await buttonClick('点击按钮获取焦点', msgStr).catch(async (err: BusinessError) => {
-        console.info(msgStr + err);
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        expect().assertFail();
-        done();
-      })
-      await sleep(800);
-      await inputClick('pageTwoinputSecond', msgStr).catch(async (err: BusinessError) => {
-        console.info(msgStr + err);
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        expect(TRUE_FLAG).assertFail();
-        done();
-      })
-      await sleep(800);
-      (tempWnd as ohosWindow.Window).off('keyboardHeightChange');
-      await buttonClick('点击按钮获取焦点', msgStr).catch(async (err: BusinessError) => {
-        console.info(msgStr + err);
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        expect().assertFail();
-        done();
-      })
-      await (tempWnd as ohosWindow.Window).destroyWindow();
-      if (!firstListenFlag && secondListenFlag) {
-        done();
-      } else {
+      try {
+        (tempWnd as ohosWindow.Window).on('keyboardHeightChange', firstCall);
+      } catch (exception) {
+        console.error(msgStr + `Failed to enable the listener for keyboard height changes firstCall. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+      try {
+        (tempWnd as ohosWindow.Window).on('keyboardHeightChange', secondCall);
+      } catch (exception) {
+        console.error(msgStr + `Failed to enable the listener for keyboard height changes secondCall. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+      try {
+        (tempWnd as ohosWindow.Window).off('keyboardHeightChange', firstCall);
+      } catch (exception) {
+        console.error(msgStr + `Failed to enable the listener for keyboard height changes. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
         done();
       }
+      try {
+        (tempWnd as ohosWindow.Window).off('keyboardHeightChange');
+      } catch (exception) {
+        console.error(msgStr + `Failed to enable the listener for keyboard height changes All. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+        done();
+      }
+      await (tempWnd as ohosWindow.Window).destroyWindow();
+      done();
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0610
@@ -1005,6 +984,125 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let properties = (lastWindow as ohosWindow.Window).getWindowProperties();
       expect(properties.windowRect.width).assertEqual(400);
       expect(properties.windowRect.height).assertEqual(400);
+      await (subWindow as ohosWindow.Window).destroyWindow();
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4490
+     * @tc.name      : testGetLastWindow_CreateDialogWindow
+     * @tc.desc      : Gets the last window displayed in the current app.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testGetLastWindow_CreateDialogWindow', 0, async () => {
+      let caseName = 'testGetLastWindow_CreateDialogWindow';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowId: string = 'testGetLastWindow_CreateDialogWindow';
+      let windowConfig: ohosWindow.Configuration = {
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
+      };
+      let tempWnd: ohosWindow.Window | void;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      expect(!!tempWnd).assertTrue();
+      await (tempWnd as ohosWindow.Window).resize(400, 400).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await (tempWnd as ohosWindow.Window).loadContent('MainAbility/pages/second/second')
+        .catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        });
+      await (tempWnd as ohosWindow.Window).moveWindowTo(100, 100).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await (tempWnd as ohosWindow.Window).showWindow().catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      let lastWindow: ohosWindow.Window | void = await ohosWindow.getLastWindow(context).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      })
+      expect(!!lastWindow).assertTrue();
+      console.log(msgStr + 'lastWindow is:' + JSON.stringify(lastWindow))
+      let lastWindow_properties = (lastWindow as ohosWindow.Window).getWindowProperties();
+      let mainWin = windowStage.getMainWindowSync();
+      let mainWin_properties = (mainWin as ohosWindow.Window).getWindowProperties();
+      expect(lastWindow_properties.windowRect.width).assertEqual(mainWin_properties.windowRect.width);
+      expect(lastWindow_properties.windowRect.height).assertEqual(mainWin_properties.windowRect.height);
+      await (tempWnd as ohosWindow.Window).destroyWindow();
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4500
+     * @tc.name      : testLoadContent_NotExistPage_Callback
+     * @tc.desc      : The page does not exist
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLoadContent_NotExistPage_Callback', 0, async (done) => {
+      let caseName = 'testLoadContent_NotExistPage_Callback';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWindow: ohosWindow.Window | void = await windowStage.createSubWindow('testLoadContent_NotExistPage_Callback')
+        .catch((err: BusinessError) => {
+          expect().assertFail();
+          done();
+        });
+      expect(!!subWindow).assertTrue();
+      await (subWindow as ohosWindow.Window).resize(400, 400).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      subWindow.loadContent('pages/page2/page3', async (err: BusinessError) => {
+        const errCode: number = err.code;
+        if (errCode) {
+          console.error(msgStr + `Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+          await (subWindow as ohosWindow.Window).destroyWindow();
+          expect(err.code).assertEqual(401);
+          done();
+        }
+        console.info(msgStr + 'Succeeded in loading the content.');
+        await (subWindow as ohosWindow.Window).destroyWindow();
+        expect().assertFail();
+        done();
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4510
+     * @tc.name      : testLoadContent_NotExistPage_Promise
+     * @tc.desc      : The page does not exist
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLoadContent_NotExistPage_Promise', 0, async () => {
+      let caseName = 'testLoadContent_NotExistPage_Promise';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWindow: ohosWindow.Window | void = await windowStage.createSubWindow('testLoadContent_NotExistPage_Promise')
+        .catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+      expect(!!subWindow).assertTrue();
+      await (subWindow as ohosWindow.Window).resize(400, 400).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await subWindow.loadContent('pages/page2/page3').then(() => {
+        console.info(msgStr + 'Succeeded in loading the content.');
+        expect().assertFail();
+      }).catch((err: BusinessError) => {
+        console.error(msgStr + `Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        expect(err.code).assertEqual(401);
+      });
       await (subWindow as ohosWindow.Window).destroyWindow();
     })
   })

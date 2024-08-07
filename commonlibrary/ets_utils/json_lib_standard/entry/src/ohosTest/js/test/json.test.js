@@ -15,6 +15,14 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import JSON from "@ohos.util.json";
+
+const BigIntMode = {  
+  DEFAULT: 0,  
+  PARSE_AS_BIGINT: 1,  
+  ALWAYS_PARSE_AS_BIGINT: 2  
+};  
+Object.freeze(BigIntMode);
+
 export default function JsonTest() {
 describe('JsonTest', function () {
 
@@ -473,5 +481,243 @@ describe('JsonTest', function () {
       let name = e.name;
       expect(name).assertEqual('BusinessError');
     }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0030
+   * @tc.name: testparse0030
+   * @tc.desc: Parsing JSON strings supports BigInt
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0030", 0, function () {
+    let options = {
+      bigIntMode: BigIntMode.PARSE_AS_BIGINT,
+    }
+    let jsonText = '{"large":112233445566778899}';
+    let obj = JSON.parse(jsonText,undefined,options);
+    expect(obj["large"]).assertEqual(112233445566778899n);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0031
+   * @tc.name: testparse0031
+   * @tc.desc: Parsing JSON strings supports BigInt
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0031", 0, function () {
+    let options = {
+      bigIntMode: BigIntMode.ALWAYS_PARSE_AS_BIGINT,
+    }
+    let jsonText = '{"small":123}';
+    let obj = JSON.parse(jsonText,undefined,options);
+    expect(obj["small"]).assertEqual(123n);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0032
+   * @tc.name: testparse0032
+   * @tc.desc: Parsing JSON strings supports BigInt
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0032", 0, function () {
+    let options = {
+      bigIntMode: BigIntMode.PARSE_AS_BIGINT,
+    }
+    let jsonText = '{"deci":1234567890.0123456}';
+    let obj = JSON.parse(jsonText,undefined,options);
+    expect(obj["deci"]).assertEqual(1234567890.0123456);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0033
+   * @tc.name: testparse0033
+   * @tc.desc: Parsing JSON strings supports BigInt
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0033", 0, function () {
+    let options = {
+      bigIntMode: BigIntMode.DEFAULT,
+    }
+    let jsonText = '{"normal":511428}';
+    let obj = JSON.parse(jsonText,undefined,options);
+    expect(obj["normal"]).assertEqual(511428);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0034
+   * @tc.name: testparse0034
+   * @tc.desc: Parsing JSON strings supports BigInt
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0034", 0, function () {
+    let options = {
+      bigIntMode: BigIntMode.PARSE_AS_BIGINT,
+    }
+    let jsonText = '{"shortExp":1.79e+308}';
+    let obj = JSON.parse(jsonText,undefined,options);
+    expect(obj["shortExp"]).assertEqual(1.79e+308);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0035
+   * @tc.name: testparse0035
+   * @tc.desc: Parsing JSON strings supports BigInt
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0035", 0, function () {
+    let options = {
+      bigIntMode: BigIntMode.PARSE_AS_BIGINT,
+    }
+    let jsonText = '{"long":9007199254740900}';
+    let obj = JSON.parse(jsonText,undefined,options);
+    expect(obj["long"]).assertEqual(9007199254740900);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0036
+   * @tc.name: testparse0036
+   * @tc.desc: Parsing JSON strings supports BigInt
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0036", 0, function () {
+    let options = {
+      bigIntMode: BigIntMode.ALWAYS_PARSE_AS_BIGINT,
+    }
+    function reviverFunc(key, value) {
+      if (key === "number") {
+        return value + 1n;
+      }
+      return value;
+    }
+    let jsonText = '{"number":1122}';
+    let obj = JSON.parse(jsonText,reviverFunc,options);
+    expect(obj["number"]).assertEqual(1123n);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0037
+   * @tc.name: testparse0037
+   * @tc.desc: Parsing JSON strings supports BigInt
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0037", 0, function () {
+    let options = {
+      bigIntMode: BigIntMode.PARSE_AS_BIGINT,
+    }
+    function reviverFunc(key, value) {
+      if (key === "big") {
+        return value + 1n;
+      }
+      return value;
+    }
+    let jsonText = '{"big":112233445566778898}';
+    let obj = JSON.parse(jsonText,reviverFunc,options);
+    expect(obj["big"]).assertEqual(112233445566778899n);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0038
+   * @tc.name: teststringify0038
+   * @tc.desc: Convert a JavaScript object or value to a JSON string
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("teststringify0038", 0, function () {
+    let options = {
+      bigIntMode: BigIntMode.PARSE_AS_BIGINT,
+    }
+    function reviverFunc(key, value) {
+      if (key === "big") {
+        return value + 1n;
+      }
+      return value;
+    }
+    let jsonText = '{"big":112233445566778898}';
+    let obj = JSON.parse(jsonText,reviverFunc,options);
+    let jsonStr = JSON.stringify(obj);
+    expect(jsonStr).assertEqual('{"big":112233445566778899}');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0039
+   * @tc.name: teststringify0039
+   * @tc.desc: Convert a JavaScript object or value to a JSON string
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("teststringify0039", 0, function () {
+    let obj = JSON.stringify(null);
+    expect(obj).assertEqual('null');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0040
+   * @tc.name: teststringify0040
+   * @tc.desc: Convert a JavaScript object or value to a JSON string
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("teststringify0040", 0, function () {
+    let obj = JSON.stringify(undefined);
+    expect(obj).assertEqual(undefined);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0041
+   * @tc.name: teststringify0041
+   * @tc.desc: Convert a JavaScript object or value to a JSON string
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("teststringify0041", 0, function () {
+    let obj = JSON.stringify(123);
+    expect(obj).assertEqual('123');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0042
+   * @tc.name: teststringify0042
+   * @tc.desc: Convert a JavaScript object or value to a JSON string
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("teststringify0042", 0, function () {
+    let obj = JSON.stringify(-123);
+    expect(obj).assertEqual('-123');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0043
+   * @tc.name: teststringify0043
+   * @tc.desc: Convert a JavaScript object or value to a JSON string
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("teststringify0043", 0, function () {
+    let rst = " ";
+    let obj = JSON.stringify(rst);
+    expect(obj).assertEqual('" "');
   });
 })}

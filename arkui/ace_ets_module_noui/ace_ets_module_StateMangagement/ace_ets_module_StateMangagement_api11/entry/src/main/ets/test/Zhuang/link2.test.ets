@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function link2() {
-  describe('link2', function () {
-    beforeEach(async function (done) {
+  describe('link2', () => {
+    beforeEach(async (done: Function) => {
       console.info("link2 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Zhuang/link2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Zhuang/link2',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function link2() {
         console.info("get link2 state pages: " + JSON.stringify(pages));
         if (!("link2" == pages.name)) {
           console.info("get link2 state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push link2 success: " + JSON.stringify(result));
         }
@@ -41,12 +54,12 @@ export default function link2() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back()
     });
 
-    it('link2_0100', 0, async function (done) {
+    it('link2_0100', 0, async (done: Function) => {
       console.info('link2_0100 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('liBtn1'));
@@ -64,7 +77,7 @@ export default function link2() {
 
     });
 
-    it('link2_0200', 0, async function (done) {
+    it('link2_0200', 0, async (done: Function) => {
       console.info('link2_0200 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('liBtn2'));
@@ -83,7 +96,7 @@ export default function link2() {
     });
 
 
-    it('link2_0300', 0, async function (done) {
+    it('link2_0300', 0, async (done: Function) => {
       console.info('link2_0300 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('liBtn3'));
@@ -99,7 +112,7 @@ export default function link2() {
 
     });
 
-    it('link2_0400', 0, async function (done) {
+    it('link2_0400', 0, async (done: Function) => {
       console.info('link2_0400 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('liBtn4'));
@@ -116,7 +129,7 @@ export default function link2() {
     });
 
 
-    it('link2_0500', 0, async function (done) {
+    it('link2_0500', 0, async (done: Function) => {
       console.info('link2_0500 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('linkBtn1'));
@@ -134,7 +147,7 @@ export default function link2() {
 
     });
 
-    it('link2_0600', 0, async function (done) {
+    it('link2_0600', 0, async (done: Function) => {
       console.info('link2_0600 START');
       let driver = await UiDriver.create()
       // await driver.swipe(100,500,100,100)
@@ -155,7 +168,7 @@ export default function link2() {
     });
 
 
-    it('link2_0700', 0, async function (done) {
+    it('link2_0700', 0, async (done: Function) => {
       console.info('link2_0700 START');
       let driver = await UiDriver.create()
       // await driver.swipe(100,500,100,100)
@@ -173,7 +186,7 @@ export default function link2() {
 
     });
 
-    it('link2_0800', 0, async function (done) {
+    it('link2_0800', 0, async (done: Function) => {
       console.info('link2_0800 START');
       let driver = await UiDriver.create()
       // await driver.swipe(100,500,100,100)
@@ -190,7 +203,6 @@ export default function link2() {
       done();
 
     });
-
 
 
   })

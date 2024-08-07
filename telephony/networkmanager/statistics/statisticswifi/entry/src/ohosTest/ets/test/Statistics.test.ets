@@ -84,7 +84,7 @@ export default function NetStatisticsTest() {
         let netHandle: connection.NetHandle = connection.getDefaultNetSync();
         console.info(`${caseName}  ${JSON.stringify(netHandle)}`);
         let connectionproperties: connection.ConnectionProperties = connection.getConnectionPropertiesSync(netHandle);
-        let context: Context = AppStorage.get('context') as Context;
+        let context :Context = globalThis.abilityContext.getApplicationContext();
         await request.downloadFile(context, {
           url: testUrl
         });

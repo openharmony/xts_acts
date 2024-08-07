@@ -37,7 +37,7 @@ export default function textAreaEnabledTest() {
     it('testTextAreaEnabled001', 0, async (done: Function) => {
       await Utils.clickComponent('OnClickEnabledTextarea')
       await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnClickEnabledTextarea').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('OnClickEnabledTextarea').$attrs.backgroundColor).assertEqual('#FFFFFF00')
 
       focusControl.requestFocus('OnClickAbnormalTextarea')
       await Utils.sleep(1000)
@@ -85,7 +85,7 @@ export default function textAreaEnabledTest() {
     it('testTextAreaEnabled003', 0, async (done: Function) => {
       await Utils.clickComponent('OnClickAbnormalTextarea')
       await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnClickAbnormalTextarea').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('OnClickAbnormalTextarea').$attrs.backgroundColor).assertEqual('#FFFFFF00')
 
       focusControl.requestFocus('OnClickEnabledTextarea')
       await Utils.sleep(1000)

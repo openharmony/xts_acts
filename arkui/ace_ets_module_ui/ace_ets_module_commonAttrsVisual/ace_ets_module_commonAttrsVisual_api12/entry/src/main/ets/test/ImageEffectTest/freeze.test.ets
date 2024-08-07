@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import router from '@system.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import router from '@ohos.router';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function freezeTest() {
 
-  describe('freezeTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/ImageEffect/freeze',
+  describe('freezeTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/ImageEffect/freeze',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function freezeTest() {
         console.info("get freezeTest state pages: " + JSON.stringify(pages));
         if (!("freeze" == pages.name)) {
           console.info("get freezeTest state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push freezeTest success: " + JSON.stringify(result));
         }
@@ -42,24 +55,23 @@ export default function freezeTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("freezeTest after each called");
     });
 
     /**
-     * @tc.number    freezeTest_0100
-     * @tc.name      freezeTest_0100
-     * @tc.desc      test api of freeze
-     * @tc.level:    Level 2
+     * @tc.number freezeTest_0100
+     * @tc.name freezeTest_0100
+     * @tc.desc test api of freeze
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('freezeTest_0100', 0, async function (done) {
+    it('freezeTest_0100', 0, async (done: Function) => {
       console.info('freezeTest_0100 START');
       let strJson = getInspectorByKey('OffscreenCanvasFreeze_id');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.width).assertEqual("300.00vp");
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("300.00vp");
       console.info('[freezeTest_0100] END');
       done();
     });

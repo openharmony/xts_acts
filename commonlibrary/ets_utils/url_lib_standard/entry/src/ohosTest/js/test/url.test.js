@@ -5469,4 +5469,82 @@ describe('UrlFunTest', function () {
         expect(tiem[1]).assertEqual('a b =+c  =p&p%大!()~{}[]%大');
       }
     })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32700
+   * @tc.name: testUrlparseURL0061
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0061', 0, function () {
+        const object = Url.URL.parseURL('https://sssw.dasf');
+        object.params.sort();
+        expect(object.params.toString()).assertEqual('');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32800
+   * @tc.name: testUrlparseURL0062
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0062', 0, function () {
+        const object = Url.URL.parseURL('https://sssw.dasf?9995=sss');
+        object.params.sort();
+        expect(object.params.toString()).assertEqual('9995=sss');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32900
+   * @tc.name: testUrlparseURL0063
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0063', 0, function () {
+        const object = new Url.URLParams('key2=val&key')
+        object.sort();
+        expect(object.toString()).assertEqual('key=&key2=val');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_33000
+   * @tc.name: testUrlparseURL0064
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0064', 0, function () {
+        const object = new Url.URLSearchParams('')
+        object.sort();
+        expect(object.toString()).assertEqual('');
+        object.append('ket2', 'sc');
+        object.append('e%t2', 's@c');
+        object.sort();
+        expect(object.toString()).assertEqual('e%25t2=s%40c&ket2=sc');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_33100
+   * @tc.name: testUrlparseURL0065
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0065', 0, function () {
+        const object = Url.URL.parseURL('https://sssw.dasf?key2=val&key');
+        object.params.sort();
+        expect(object.toString()).assertEqual('https://sssw.dasf/?key=&key2=val');
+        object.params.delete('key2')
+        object.params.delete('key')
+        object.params.sort();
+        expect(object.toString()).assertEqual('https://sssw.dasf/');
+    })
 })}

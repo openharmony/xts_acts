@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@ts-nocheck
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
@@ -153,7 +152,7 @@ struct TextState {
       Text(this.message)
         .key('ArkUX_Stage_Text_TextShadow_2300')
         .height(20)
-        .textShadow({ radius: 1, color: Color.Red, offsetX: " ", offsetY: " " })
+        .textShadow({ radius: 1, color: Color.Red, offsetX: Number(" "), offsetY:  Number(" ") })
 
       Text(this.message)
         .key('ArkUX_Stage_Text_TextShadow_2400')
@@ -206,7 +205,7 @@ struct TextState {
         .key('ArkUX_Stage_Text_TextOverflow_0700')
         .height(20)
         .maxLines(1)
-        .textOverflow({ overflow: TextOverflow.Marquee })
+        .textOverflow({ overflow: TextOverflow.MARQUEE })
 
       Text(this.overMessage)
         .key('ArkUX_Stage_Text_TextOverflow_0800')
@@ -245,7 +244,7 @@ struct TextState {
       Text(this.message)
         .key('ArkUX_Stage_Text_TextAlign_0500')
         .height(20)
-        .textAlign(TextAlign.Justify)
+        .textAlign(TextAlign.JUSTIFY)
 
       Text(this.message)
         .key('ArkUX_Stage_Text_TextAlign_0600')

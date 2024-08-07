@@ -32,10 +32,28 @@ struct PanGestureExampleTemplate {
   private panOption: PanGestureOptions = new PanGestureOptions({ direction: PanDirection.Left | PanDirection.Right | PanDirection.All | PanDirection.Horizontal | PanDirection.Vertical})
   @State template_arr: number[] = []
   @State template_flag: boolean = false
+  @State startTime: number = 0
+  @State endTime: number = 0
+  @State cnt: number = 0
+  @State inputTemplate_arr: number[] = []
+
   build() {
     Column({space:10}) {
       Text('PanGesture').fontSize(20).width(240).height(80).margin({left:0,top:0}).padding({left:0,top:0}).backgroundColor(Color.Yellow).key('PanGestureExampleTemplate_Click')
         .translate({ x: this.offsetX, y: this.offsetY, z: 0 })
+        .onTouch((event:TouchEvent)=>{
+          let arr = event?.getHistoricalPoints()
+          for (let i = 0; i < arr?.length; i++) {
+            this.inputTemplate_arr.push(arr[i].timestamp);
+          }
+          if (event.type == TouchType.Down && this.startTime == 0) {
+            this.startTime = Date.now();
+          }
+          if (event.type == TouchType.Up && this.endTime == 0) {
+            this.endTime = Date.now();
+          }
+          this.cnt += event.getHistoricalPoints().length
+        })
         .gesture(
           PanGesture(this.panOption)
             .onActionUpdate((event: GestureEvent) => {
@@ -61,16 +79,22 @@ struct PanGestureExampleTemplate {
 
       Button('template').id('PanGestureExampleTemplate_template')
         .onClick(()=>{
-          if(this.template_arr.length > 2) {
-            let mid: number = Math.ceil(this.template_arr.length / 2)
-            let x: number = Math.abs(this.template_arr[1] - this.template_arr[0])
-            let y: number = Math.abs(this.template_arr[this.template_arr.length - mid + 1] - this.template_arr[this.template_arr.length - mid])
-            let z: number = Math.abs(this.template_arr[this.template_arr.length - 1] - this.template_arr[this.template_arr.length - 2])
-
-            if(x <= (16 * 1000000) && y <= (16 * 1000000) && z <= (16 * 1000000)) {
-              this.template_flag = true
+          if(this.template_arr.length > 0) {
+            this.template_flag = true
+            for(let i = 1; i <= this.template_arr.length - 2; i++) {
+              console.log('PanGestureExampleTemplate_template i is:',i)
+              if(this.template_arr[i] > 0) {
+                if(this.template_arr[i] > this.template_arr[i+1]) {
+                  console.log('PanGestureExampleTemplate_template template_arr[i] and template_arr[i+1] is:',this.template_arr[i],this.template_arr[i+1])
+                  this.template_flag = false
+                  break;
+                }
+              } else {
+                console.log('PanGestureExampleTemplate_template template_arr[1] is:',this.template_arr[i])
+                this.template_flag = false
+                break;
+              }
             }
-
           }
         })
       Text(`templateFlag:${this.template_flag}`).key('PanGestureExampleTemplate_Text')

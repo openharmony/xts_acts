@@ -39,8 +39,6 @@ ohos_shared_library("osaccountndk") {
     "./",
   ]
 
-  configs = [ "${account_coverage_config_path}:coverage_flags" ]
-
   deps = [
     "${os_account_innerkits_native_path}:os_account_innerkits",
     "${os_account_path}/interfaces/kits/capi/osaccount:libos_account_ndk",

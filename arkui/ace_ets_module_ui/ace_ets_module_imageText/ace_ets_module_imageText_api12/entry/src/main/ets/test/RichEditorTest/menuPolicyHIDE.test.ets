@@ -14,14 +14,14 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function menuPolicyHIDE() {
-  describe('menuPolicyHIDE', function () {
-    beforeEach(async function (done) {
+  describe('menuPolicyHIDE', () => {
+    beforeEach(async (done: Function) => {
       console.info("menuPolicyHIDE beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/RichEditor/menuPolicyHIDE',
       }
       try {
@@ -40,7 +40,7 @@ export default function menuPolicyHIDE() {
       console.info("menuPolicyHIDE beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("menuPolicyHIDE after each called");
     });
@@ -52,7 +52,7 @@ export default function menuPolicyHIDE() {
      * @tc.type
     * @tc.size
      */
-    it('menuPolicyHIDE_0100', 0, async function (done) {
+    it('menuPolicyHIDE_0100', 0, async (done: Function) => {
       console.info('[menuPolicyHIDE_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -66,7 +66,7 @@ export default function menuPolicyHIDE() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('menuPolicyHIDEValue');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[menuPolicyHIDE_0100] component obj is: " + JSON.stringify(obj));
       console.info("[menuPolicyHIDE_0100] content: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("menuPolicy HIDE success");

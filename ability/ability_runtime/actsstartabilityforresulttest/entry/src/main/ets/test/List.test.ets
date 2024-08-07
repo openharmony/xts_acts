@@ -15,5 +15,5 @@
 import startAbilityForResultTest from './StartAbilityForResultTest.test'
 
 export default function testsuite() {
-   startAbilityForResultTest()
+  startAbilityForResultTest()
 }

@@ -22,6 +22,7 @@ import interfaceSupportSessionManagerTest from './interfaceSupportSessionManager
 import windowVerificationProblem from './windowVerificationProblem.test'
 import windowAbnormalScenario from './windowAbnormalScenario.test'
 import windowRecoverTest from './windowRecover.test'
+import windowDialogTest from './windowDialog.test'
 
 export default function testsuite() {
   parameterVerificationIsOptional(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
@@ -34,4 +35,5 @@ export default function testsuite() {
   windowVerificationProblem(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowAbnormalScenario(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowRecoverTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
+  windowDialogTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
 }

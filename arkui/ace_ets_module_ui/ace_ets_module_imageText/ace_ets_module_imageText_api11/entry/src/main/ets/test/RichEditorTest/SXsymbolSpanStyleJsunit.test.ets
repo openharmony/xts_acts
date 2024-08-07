@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 export default function SXsymbolSpanStyleJsunit() {
-  describe('SXsymbolSpanStyleJsunit', function () {
-    beforeEach(async function (done) {
+  describe('SXsymbolSpanStyleJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("SXsymbolSpanStyleJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/RichEditor/SXsymbolSpanStyle',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RichEditor/SXsymbolSpanStyle',
       }
       try {
         router.clear();
@@ -39,7 +39,7 @@ export default function SXsymbolSpanStyleJsunit() {
       }
       done();
     });
-    it('SXsymbolSpanStyleJsunit_0100', 0, async function (done) {
+    it('SXsymbolSpanStyleJsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('SXsymbolSpanStyleJsunit_0100 START');
       let driver = Driver.create();
@@ -48,7 +48,7 @@ export default function SXsymbolSpanStyleJsunit() {
       await btn1.click();
       await CommonFunc.sleep(1000);
       let strcontent = getInspectorByKey('SXsymbolSpanStyleText');
-      let obj = JSON.parse(strcontent);
+      let obj: ESObject = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
       console.info('SXsymbolSpanStyleJsunit_0100 component obj is: ' + obj);
       console.info('SXsymbolSpanStyleJsunit_0100 component obj.$attrs is: ' + obj.$attrs);

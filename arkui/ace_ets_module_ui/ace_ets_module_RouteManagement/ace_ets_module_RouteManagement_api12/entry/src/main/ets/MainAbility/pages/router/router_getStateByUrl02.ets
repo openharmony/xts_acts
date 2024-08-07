@@ -17,28 +17,27 @@ import router from '@ohos.router'
 @Entry
 @Component
 struct router_getStateByUrl02 {
-  @State str:string = ''
+  @State str: string = ''
 
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
 
       Text(this.str).id('router_getStateByUrl02_text')
 
       Button('getStateByUrl')
         .id('router_getStateByUrl02_btn')
-        .onClick(()=>{
-          let options:Array<router.RouterState> = router.getStateByUrl('MainAbility/pages/router/router_getStateByUrl02')
+        .onClick(() => {
+          let options: Array<router.RouterState> = router.getStateByUrl('MainAbility/pages/router/router_getStateByUrl02')
           for (let i: number = 0; i < options.length; i++) {
             let index = 'index=' + options[i].index
             let name = 'name=' + options[i].name
             let path = 'path=' + options[i].path
             let params = 'params=' + JSON.stringify(options[i].params)
-            this.str = this.str + index + ';'+ name +';'+ path + ';'+params + ';'
+            this.str = this.str + index + ';' + name + ';' + path + ';' + params + ';'
           }
         })
 
     }.width('100%').height('100%')
-
 
   }
 }

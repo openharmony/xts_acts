@@ -18,43 +18,43 @@ import commonEvent from '@ohos.commonEvent'
 function publishCallBackOne() {
   console.debug("====MainAbility4 Publish CallBack GetCurrentTopAbility");
 }
+
 export default class MainAbility4 extends Ability {
+  onCreate(want, launchParam) {
+    console.log("MainAbility4 onCreate")
+  }
 
-    onCreate(want, launchParam) {
-        console.log("MainAbility4 onCreate")
-    }
+  onDestroy() {
+    // Ability is destroying, release resources for this ability
+    console.log("MainAbility4 onDestroy")
+  }
 
-    onDestroy() {
-        // Ability is destroying, release resources for this ability
-        console.log("MainAbility4 onDestroy")
-    }
+  onWindowStageCreate(windowStage) {
+    // Main window is created, set main page for this ability
+    console.log("MainAbility4 onWindowStageCreate");
+    windowStage.setUIContent(this.context, "pages/index", null);
+    globalThis.ability4Context = this.context;
+    windowStage.on('windowStageEvent', (data) => {
+      console.log(`ActsGetAbilityStatestAgeTest onWindwoStageMainAbilty4 is : ${JSON.stringify(data)}`);
+      if (data == 2) {
+        console.log(`ActsGetAbilityStatestAgeTest getWindowStageActiveMainAbility4 is sucess`);
+        commonEvent.publish("GetCurrentTopAbility", publishCallBackOne);
+      }
+    })
+  }
 
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.log("MainAbility4 onWindowStageCreate");
-        windowStage.setUIContent(this.context, "pages/index", null);
-        globalThis.ability4Context = this.context;
-        windowStage.on('windowStageEvent', (data) => {
-          console.log(`ActsGetAbilityStatestAgeTest onWindwoStageMainAbilty4 is : ${JSON.stringify(data)}`);
-          if (data == 2 ) {
-            console.log(`ActsGetAbilityStatestAgeTest getWindowStageActiveMainAbility4 is sucess`);
-            commonEvent.publish("GetCurrentTopAbility", publishCallBackOne);
-          }
-        })
-    }
+  onWindowStageDestroy() {
+    // Main window is destroyed, release UI related resources
+    console.log("MainAbility4 onWindowStageDestroy")
+  }
 
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.log("MainAbility4 onWindowStageDestroy")
-    }
+  onForeground() {
+    // Ability has brought to foreground
+    console.log("MainAbility4 onForeground")
+  }
 
-    onForeground() {
-        // Ability has brought to foreground
-        console.log("MainAbility4 onForeground")
-    }
-
-    onBackground() {
-        // Ability has back to background
-        console.log("MainAbility4 onBackground")
-    }
+  onBackground() {
+    // Ability has back to background
+    console.log("MainAbility4 onBackground")
+  }
 };

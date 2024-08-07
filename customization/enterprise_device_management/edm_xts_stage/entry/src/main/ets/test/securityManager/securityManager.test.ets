@@ -28,6 +28,18 @@ const PASSWORD_POLICY: securityManager.PasswordPolicy = {
   additionalDescription: '123'
 };
 
+const MAX_PASSWORD_POLICY: securityManager.PasswordPolicy = {
+  complexityRegex: 'g',
+  validityPeriod: 60 * 60 * 24 * 365 * 1000 * 1000,
+  additionalDescription: '123'
+};
+
+const OUT_OF_RANGE_PASSWORD_POLICY: securityManager.PasswordPolicy = {
+  complexityRegex: 'g',
+  validityPeriod: 60 * 60 * 24 * 365 * 1000 * 1000 + 1,
+  additionalDescription: '123'
+};
+
 const CERT_DATA_ARRAY: Uint8Array = new Uint8Array([0x30, 0x82, 0x04, 0x31, 0x30, 0x82, 0x03, 0x19, 0xa0, 0x03, 0x02, 0x01, 0x02, 0x02,
   0x01, 0x00, 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x01, 0x05, 0x05, 0x00, 0x30, 0x81,
   0x95, 0x31, 0x0b, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x47, 0x52, 0x31, 0x44, 0x30, 0x42, 0x06,
@@ -363,6 +375,49 @@ function testSetPasswordPolicy() {
       securityManager.setPasswordPolicy(SELFWANT, PASSWORD_POLICY);
     } catch (error) {
       expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_PASSWORD_POLICY_JS_0106
+   * @tc.name      : test_set_password_policy_0106
+   * @tc.desc      : test securityManager setPasswordPolicy with max validityPeriod
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_password_policy_0106", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setPasswordPolicy(SELFWANT, MAX_PASSWORD_POLICY);
+      let res = securityManager.getPasswordPolicy(SELFWANT);
+      console.log('res.validityPeriod:' + res.validityPeriod);
+      expect(res.validityPeriod === MAX_PASSWORD_POLICY.validityPeriod).assertTrue();
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_PASSWORD_POLICY_JS_0107
+   * @tc.name      : test_set_password_policy_0107
+   * @tc.desc      : test securityManager setPasswordPolicy with out of range validityPeriod
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_password_policy_0107", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setPasswordPolicy(SELFWANT, OUT_OF_RANGE_PASSWORD_POLICY);
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }

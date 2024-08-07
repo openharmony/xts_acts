@@ -12,8 +12,8 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import Ability from '@ohos.app.ability.UIAbility'
-import commonEvent from '@ohos.commonEvent'
+import Ability from '@ohos.app.ability.UIAbility';
+import commonEvent from '@ohos.commonEventManager';
 
 var callBackSeq = "";
 
@@ -40,16 +40,16 @@ async function startAbilityProcess(abilityContext, options, parameters) {
         abilityName: abilityName,
         parameters: parameters,
     }, options, (error, data) => {
-        console.log('startAbilityProcess result: ' + JSON.stringify(error) + ", " + JSON.stringify(data))
+        console.log('startAbilityProcess result: ' + JSON.stringify(error) + ", " + JSON.stringify(data));
     })
 }
 
 async function onShowProcess() {
-    var abilityWant = globalThis.abilityWant;
-    var callBackData = "actsspecifytesthap:"
+    let abilityWant = globalThis.abilityWant;
+    let callBackData = "actsspecifytesthap:"
     callBackData += callBackSeq;
 
-    var commonEventPublishData = {
+    let commonEventPublishData = {
         data: callBackData,
         parameters: {
             displayId: globalThis.abilityWant.parameters['ohos.aafwk.param.displayId'],
@@ -65,7 +65,7 @@ async function onShowProcess() {
     } else {
         commonEvent.publish("MultiInstanceStartNext", commonEventPublishData, () => {
             callBackSeq = "";
-            console.log('============>querytest success==========>>')
+            console.log('============>querytest success==========>>');
             startAbilityProcess(globalThis.abilityContext, globalThis.abilityWant.options, abilityWant.parameters);
         });
     }
@@ -74,33 +74,33 @@ async function onShowProcess() {
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
         // Ability is creating, initialize resources for this ability
-        console.log("actsspecifytesthap onCreate")
+        console.log("actsspecifytesthap onCreate");
         callBackSeq += "onCreate";
         globalThis.abilityWant = want;
     }
 
     onDestroy() {
         // Ability is destroying, release resources for this ability
-        console.log("actsspecifytesthap onDestroy")
+        console.log("actsspecifytesthap onDestroy");
     }
 
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
-        console.log("actsspecifytesthap onWindowStageCreate")
+        console.log("actsspecifytesthap onWindowStageCreate");
         //       callBackSeq += "onWindowStageCreate";
-        globalThis.abilityContext = this.context
-        windowStage.setUIContent(this.context, "pages/index/index", null)
-        console.log("actsspecifytesthap onWindowStageCreate finish")
+        globalThis.abilityContext = this.context;
+        windowStage.setUIContent(this.context, "pages/index/index", null);
+        console.log("actsspecifytesthap onWindowStageCreate finish");
     }
 
     onWindowStageDestroy() {
         // Main window is destroyed, release UI related resources
-        console.log("actsspecifytesthap onWindowStageDestroy")
+        console.log("actsspecifytesthap onWindowStageDestroy");
     }
 
     onForeground() {
         // Ability has brought to foreground
-        console.log("actsspecifytesthap onForeground")
+        console.log("actsspecifytesthap onForeground");
         callBackSeq += "onForeground";
         onShowProcess();
         setTimeout(()=>{
@@ -109,11 +109,11 @@ export default class MainAbility extends Ability {
           }).catch((err) => {
               console.info("actsspecifytesthap MainAbility terminateSelf err = " + JSON.stringify(err));
           });
-      }, 2000)
+      }, 2000);
     }
 
     onBackground() {
         // Ability has back to background
-        console.log("actsspecifytesthap onBackground")
+        console.log("actsspecifytesthap onBackground");
     }
 };

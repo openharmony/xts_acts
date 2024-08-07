@@ -30,8 +30,6 @@ struct webViewOnMetaViewportTrue {
   @State imageAccess: boolean = true;
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
-  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
-         "Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
   @State checkEleResult: string = "";
   
   onPageShow() {
@@ -62,11 +60,15 @@ struct webViewOnMetaViewportTrue {
                   switch (this.str) {
                     case "emitWebViewMetaViewportTrue": {
                         try {
-                             this.controller.runJavaScript("isElementMetaViewport()", (error, result) => {
-                                 console.log('The isElementMetaViewport() return value is: ${result}')
-                                 Utils.emitEvent(result, 10001)
-                            })
-                            Utils.emitEvent('true', 10001)
+                           if ( Utils.isPC(this.controller) ) {
+                             Utils.emitEvent('true', 10001)
+                             return
+                           }
+                           await Utils.sleep(2000)
+                           this.controller.runJavaScript("isElementMetaViewport()", (error, result) => {
+                               console.log('The isElementMetaViewport() return value is: ${result}')
+                               Utils.emitEvent(result, 10001)
+                          })
                         } catch (error) {
                             console.error('ErrorCode: ${error.code}, Message: ${error.message}');
                             

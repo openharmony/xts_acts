@@ -8,7 +8,8 @@
     "deviceTypes": [
       "tablet",
       "default",
-      "phone"
+      "phone",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

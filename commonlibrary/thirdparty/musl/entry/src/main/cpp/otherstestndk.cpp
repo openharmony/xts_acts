@@ -63,8 +63,10 @@
 #define NO_ERROR 0
 #define PARAM_0 0
 #define PARAM_1 1
-#define PARAM_5 5
 #define PARAM_2 2
+#define PARAM_3 3
+#define PARAM_4 4
+#define PARAM_5 5
 #define PARAM_32 32
 #define PARAM_64 64
 #define PARAM_10 10
@@ -734,102 +736,149 @@ static napi_value Pthreadcleanuppush(napi_env env, napi_callback_info info)
     return result;
 }
 
+static pthread_barrier_t g_barrier;
+
+void *ClientTask(void *arg)
+{
+    int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
+    pthread_barrier_wait(&g_barrier);
+    if (sock >= PARAM_0) {
+        struct sockaddr_in server = {PARAM_0};
+        server.sin_family = AF_INET;
+        server.sin_port = htons(PORT);
+        server.sin_addr.s_addr = inet_addr("127.0.0.1");
+        connect(sock, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&server)), sizeof(server));
+    }
+    close(sock);
+    return nullptr;
+}
+
+void *ClientTask4(void *arg)
+{
+    int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
+    pthread_barrier_wait(&g_barrier);
+    if (sock >= PARAM_0) {
+        struct sockaddr_in server = {PARAM_0};
+        server.sin_family = AF_INET;
+        server.sin_port = htons(PORT_2);
+        server.sin_addr.s_addr = inet_addr("127.0.0.1");
+        connect(sock, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&server)), sizeof(server));
+    }
+    close(sock);
+    return nullptr;
+}
+
+int ServerTask(int sockfd, pthread_t cli)
+{
+    pthread_barrier_wait(&g_barrier);
+    struct sockaddr_in clnAddr = {PARAM_0};
+    socklen_t clnAddrLen = sizeof(clnAddr);
+    int sClient = accept(sockfd,
+        reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen);
+    int rets = (sClient > 0) ? PARAM_0 : PARAM_1;
+    close(sClient);
+    close(sockfd);
+    pthread_join(cli, nullptr);
+    pthread_barrier_destroy(&g_barrier);
+    return rets;
+}
+
 static napi_value Accept(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    if (fork() == PARAM_0) {
-        int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
-        if (sockfd < PARAM_0) {
-            close(sockfd);
-        } else {
-            struct sockaddr_in local = {PARAM_0};
-            local.sin_family = AF_INET;
-            local.sin_port = htons(PORT);
-            local.sin_addr.s_addr = inet_addr("127.0.0.1");
-            bind(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&local)), sizeof(local));
-            listen(sockfd, PARAM_5);
-            struct sockaddr_in clnAddr = {PARAM_0};
-            socklen_t clnAddrLen = sizeof(clnAddr);
-            int sClient =
-                accept(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen);
-            close(sockfd);
-            close(sClient);
-        }
-        _exit(PARAM_0);
-    } else {
-        int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
-        int ret = PARAM_1;
-        if (sock >= PARAM_0) {
-            struct sockaddr_in server = {PARAM_0};
-            server.sin_family = AF_INET;
-            server.sin_port = htons(PORT);
-            server.sin_addr.s_addr = inet_addr("127.0.0.1");
-            while (ret) {
-                ret = connect(sock, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&server)),
-                              sizeof(server));
-            }
-        }
-        close(sock);
-        napi_create_int32(env, ret, &result);
+    int ret = PARAM_1;
+    int rets = pthread_barrier_init(&g_barrier, nullptr, PARAM_2);
+    if (rets != 0) {
+        napi_create_int32(env, PARAM_5, &result);
         return result;
     }
+    pid_t tid;
+    pthread_t cli;
+    rets = pthread_create(&cli, nullptr, ClientTask, &tid);
+    if (rets != 0) {
+        napi_create_int32(env, PARAM_5, &result);
+        return result;
+    }
+    int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
+    if (sockfd < PARAM_0) {
+        ret = PARAM_2;
+    } else {
+        struct sockaddr_in local = {PARAM_0};
+        local.sin_family = AF_INET;
+        local.sin_port = htons(PORT);
+        local.sin_addr.s_addr = inet_addr("127.0.0.1");
+        rets = bind(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&local)), sizeof(local));
+        if (rets != PARAM_0) {
+            ret = PARAM_3;
+        } else {
+            rets = listen(sockfd, PARAM_5);
+            if (rets != PARAM_0) {
+                ret = PARAM_4;
+            } else {
+                ret = ServerTask(sockfd, cli);
+                napi_create_int32(env, ret, &result);
+                return result;
+            }
+        }
+    }
+    close(sockfd);
+    pthread_barrier_wait(&g_barrier);
+    pthread_join(cli, nullptr);
+    pthread_barrier_destroy(&g_barrier);
+    napi_create_int32(env, ret, &result);
+    return result;
 }
 
 static napi_value Accept4(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    if (fork() == PARAM_0) {
-        const char *gLocalHost = "127.0.0.1";
-        int rets = MINUSONE;
-        int sListen = socket(AF_INET, SOCK_STREAM, PARAM_0);
-        if (sListen != MINUSONE) {
-            int flag = PARAM_1;
-            rets = setsockopt(sListen, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(int));
-            if (rets != PARAM_0) {
-                printf("[server] setsockopt fail, rets: %d!\n", rets);
-            }
+    int ret = PARAM_1;
+    int rets = pthread_barrier_init(&g_barrier, nullptr, PARAM_2);
+    if (rets != 0) {
+        napi_create_int32(env, PARAM_5, &result);
+        return result;
+    }
+    pid_t tid;
+    pthread_t cli;
+    rets = pthread_create(&cli, nullptr, ClientTask4, &tid);
+    if (rets != 0) {
+        napi_create_int32(env, PARAM_4, &result);
+        return result;
+    }
+    const char *gLocalHost = "127.0.0.1";
+    int sListen = socket(AF_INET, SOCK_STREAM, PARAM_0);
+    if (sListen != MINUSONE) {
+        int flag = PARAM_1;
+        rets = setsockopt(sListen, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(int));
+        if (rets != PARAM_0) {
+            ret = -PARAM_1;
+        } else {
             struct sockaddr_in srvAddr = {0};
             srvAddr.sin_family = AF_INET;
             srvAddr.sin_addr.s_addr = inet_addr(gLocalHost);
             srvAddr.sin_port = htons(PORT_2);
-            rets = bind(sListen, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&srvAddr)),
-                        sizeof(srvAddr));
+            rets = bind(sListen,
+                reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&srvAddr)), sizeof(srvAddr));
             if (rets != PARAM_0) {
-                close(sListen);
+                ret = PARAM_3;
             } else {
                 rets = listen(sListen, PARAM_2);
                 if (rets != PARAM_0) {
-                    close(sListen);
+                    ret = PARAM_2;
                 } else {
-                    struct sockaddr_in clnAddr = {0};
-                    socklen_t clnAddrLen = sizeof(clnAddr);
-                    int sClient = -PARAM_1;
-                    sClient =
-                        accept4(sListen, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)),
-                                &clnAddrLen, PARAM_0);
-                    close(sClient);
-                    close(sListen);
+                    ret = ServerTask(sListen, cli);
+                    napi_create_int32(env, ret, &result);
+                    return result;
                 }
             }
         }
-        _exit(PARAM_0);
-    } else {
-        int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
-        int ret = PARAM_1;
-        if (sock >= PARAM_0) {
-            struct sockaddr_in server = {PARAM_0};
-            server.sin_family = AF_INET;
-            server.sin_port = htons(PORT_2);
-            server.sin_addr.s_addr = inet_addr("127.0.0.1");
-            while (ret) {
-                ret = connect(sock, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&server)),
-                              sizeof(server));
-            }
-        }
-        close(sock);
-        napi_create_int32(env, ret, &result);
-        return result;
     }
+    close(sListen);
+    pthread_barrier_wait(&g_barrier);
+    pthread_join(cli, nullptr);
+    pthread_barrier_destroy(&g_barrier);
+    napi_create_int32(env, ret, &result);
+    return result;
 }
 
 static napi_value Deletemodule(napi_env env, napi_callback_info info)

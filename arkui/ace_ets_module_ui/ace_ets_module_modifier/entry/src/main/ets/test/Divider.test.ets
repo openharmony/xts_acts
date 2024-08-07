@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function dividerJsunit() {
-  describe('dividerTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/divider',
+  describe('dividerTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/divider',
       }
       try {
         router.clear();
@@ -30,9 +30,8 @@ export default function dividerJsunit() {
         console.info("get divider state success " + JSON.stringify(pages));
         if (!("divider" == pages.name)) {
           console.info("get divider state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push divider page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push divider page error: " + err);
@@ -42,89 +41,85 @@ export default function dividerJsunit() {
 
     /**
      * @tc.number dividerTest_0001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set lineCap values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set lineCap values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('dividerTest_0001', 0, async function (done) {
+    it('dividerTest_0001', 0, async (done: Function) => {
       console.info('dividerTest_0001 START');
       let strJsonNew = getInspectorByKey('divider');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("dividerTest_0001 component  is: " + JSON.stringify(objNew.$attrs));
+      console.info("dividerTest_0001 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.lineCap).assertEqual("ROUND");
+      expect(JSON.parse(strJsonNew).$attrs.lineCap).assertEqual("ROUND");
       console.info('dividerTest_0001 END');
       done();
     });
 
     /**
      * @tc.number dividerTest_0002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set strokeWidth values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set strokeWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('dividerTest_0002', 0, async function (done) {
+    it('dividerTest_0002', 0, async (done: Function) => {
       console.info('dividerTest_0002 START');
       let strJsonNew = getInspectorByKey('divider');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("dividerTest_0002 component  is: " + JSON.stringify(objNew.$attrs));
+      console.info("dividerTest_0002 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.strokeWidth).assertEqual("10.00vp");
+      expect(JSON.parse(strJsonNew).$attrs.strokeWidth).assertEqual("10.00vp");
       console.info('dividerTest_0002 END');
       done();
     });
 
     /**
      * @tc.number dividerTest_0003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set color values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set color values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('dividerTest_0003', 0, async function (done) {
+    it('dividerTest_0003', 0, async (done: Function) => {
       console.info('dividerTest_0003 START');
       let strJsonNew = getInspectorByKey('divider');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("dividerTest_0003 component  is: " + JSON.stringify(objNew.$attrs));
+      console.info("dividerTest_0003 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.color).assertEqual("#FF123456");
+      expect(JSON.parse(strJsonNew).$attrs.color).assertEqual("#FF123456");
       console.info('dividerTest_0003 END');
       done();
     });
 
     /**
      * @tc.number dividerTest_0004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set vertical values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set vertical values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('dividerTest_0004', 0, async function (done) {
+    it('dividerTest_0004', 0, async (done: Function) => {
       console.info('dividerTest_0004 START');
       let strJsonNew = getInspectorByKey('divider');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("dividerTest_0004 component  is: " + JSON.stringify(objNew.$attrs));
+      console.info("dividerTest_0004 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.vertical).assertEqual("false");
+      expect(JSON.parse(strJsonNew).$attrs.vertical).assertEqual("false");
       console.info('dividerTest_0004 END');
       done();
     });
 
     /**
      * @tc.number dividerTest_0005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change color values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change color values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('dividerTest_0005', 0, async function (done) {
+    it('dividerTest_0005', 0, async (done: Function) => {
 
       console.info('dividerTest_0005 START');
       let driver = Driver.create();
@@ -133,10 +128,9 @@ export default function dividerJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('divider');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("dividerTest_0005 component  is: " + JSON.stringify(objNew.$attrs));
+      console.info("dividerTest_0005 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.color).assertEqual("#FF654321");
+      expect(JSON.parse(strJsonNew).$attrs.color).assertEqual("#FF654321");
       console.info('dividerTest_0005 END');
       done();
     });

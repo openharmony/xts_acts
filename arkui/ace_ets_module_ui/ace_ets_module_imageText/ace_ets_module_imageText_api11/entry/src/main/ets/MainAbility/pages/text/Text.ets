@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router'
+import router from '@ohos.router';
 
 let paramInfo = router.getParams();
 console.info("cd paramInfo" + JSON.stringify(paramInfo))

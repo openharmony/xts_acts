@@ -13,9 +13,15 @@
  * limitations under the License.
  */
 
+import EmptyTest from './Empty.test';
 import NetStatisticsNoDataTest from './NetStatisticsNoDataTest.test';
 
 
 export default function testsuite() {
-  NetStatisticsNoDataTest();
+  if (canIUse("SystemCapability.Telephony.CellularData")){
+    NetStatisticsNoDataTest();
+  }else{
+    EmptyTest()
+  }
 }
+

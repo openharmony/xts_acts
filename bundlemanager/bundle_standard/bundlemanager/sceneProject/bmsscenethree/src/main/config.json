@@ -46,7 +46,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "moduleType": "feature",
@@ -78,6 +79,6 @@
         "label": "BMS_PERMISSION_MUSIC permission"
       }
     ],
-    "description":"$string:entry_description"
+    "description": "$string:entry_description"
   }
 }

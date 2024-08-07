@@ -16,6 +16,9 @@
 #include "gtest/gtest.h"
 #include "drawing_brush.h"
 #include "drawing_font.h"
+#include "drawing_point.h"
+#include "drawing_text_typography.h"
+#include "drawing_font_collection.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -335,6 +338,64 @@ HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText014, TestSize.Level1)
     EXPECT_EQ(textWidth, 254.0); // 254.0 is textWidth
 
     OH_Drawing_FontDestroy(font);
+}
+
+
+/*
+ * @tc.name: NativeFontTest_FontMeasureText015
+ * @tc.desc: test for the textbox.
+ * @tc.type: FUNC
+ */
+HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText015, TestSize.Level1)
+{
+    OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
+    OH_Drawing_TypographyCreate* handler = OH_Drawing_CreateTypographyHandler(typoStyle,
+        OH_Drawing_CreateFontCollection());
+    OH_Drawing_Typography* typography = OH_Drawing_CreateTypography(handler);
+    OH_Drawing_TextBox* textBox = OH_Drawing_TypographyGetRectsForPlaceholders(typography);
+    EXPECT_EQ(textBox == nullptr, false);
+    OH_Drawing_DestroyTypographyStyle(typoStyle);
+    OH_Drawing_DestroyTypographyHandler(handler);
+    OH_Drawing_DestroyTypography(typography);
+    OH_Drawing_TypographyDestroyTextBox(textBox);
+}
+
+/*
+ * @tc.name: NativeFontTest_FontMeasureText016
+ * @tc.desc: test for the textshadow.
+ * @tc.type: FUNC
+ */
+HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText016, TestSize.Level1)
+{
+    OH_Drawing_TextShadow* shadow = OH_Drawing_CreateTextShadow();
+    uint32_t color = 0;
+    OH_Drawing_Point* offset = OH_Drawing_PointCreate(0, 0);
+    double blurRadius = 0.0;
+    OH_Drawing_SetTextShadow(shadow, color, offset, blurRadius);
+    OH_Drawing_DestroyTextShadow(shadow);
+    OH_Drawing_PointDestroy(offset);
+    EXPECT_TRUE(shadow != nullptr);
+}
+
+/*
+ * @tc.name: NativeFontTest_FontMeasureText017
+ * @tc.desc: test for the fontVariation.
+ * @tc.type: FUNC
+ */
+HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText017, TestSize.Level1)
+{
+    OH_Drawing_TextStyle* txtStyle = OH_Drawing_CreateTextStyle();
+    EXPECT_EQ(txtStyle == nullptr, false);
+    const char* key = "宋体";
+    int value = 1;
+    OH_Drawing_TextStyleAddFontFeature(txtStyle, key, value);
+    OH_Drawing_TextStyleAddFontVariation(txtStyle, key, value);
+    EXPECT_EQ(OH_Drawing_TextStyleGetFontFeatureSize(txtStyle), 1);
+    OH_Drawing_FontCollection* fontCollection = OH_Drawing_CreateFontCollection();
+    OH_Drawing_ClearFontCaches(fontCollection);
+    EXPECT_EQ(fontCollection == nullptr, false);
+    OH_Drawing_DestroyFontCollection(fontCollection);
+    OH_Drawing_DestroyTextStyle(txtStyle);
 }
 
 } // namespace Drawing

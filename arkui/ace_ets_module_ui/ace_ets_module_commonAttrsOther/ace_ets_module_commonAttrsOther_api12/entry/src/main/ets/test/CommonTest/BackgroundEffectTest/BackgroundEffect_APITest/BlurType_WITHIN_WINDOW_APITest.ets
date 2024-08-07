@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../../MainAbility/utils/Common';
+import CommonFunc from '../../../../MainAbility/common/Common';
 export default function BlurType_WITHIN_WINDOW_APITest() {
   describe('BlurType_WITHIN_WINDOW_APITest', () => {
     beforeEach(async (done: Function) => {
@@ -52,7 +52,7 @@ export default function BlurType_WITHIN_WINDOW_APITest() {
       await CommonFunc.sleep(1000);
       let WITHIN_WINDOW = getInspectorByKey('WITHIN_WINDOW');
       console.info("[BlurType_WITHIN_WINDOW_APITest_0100] WITHIN_WINDOW attrs is: " + JSON.stringify(JSON.parse(WITHIN_WINDOW).$attrs));
-      expect(JSON.parse(WITHIN_WINDOW).$attrs.backgroundEffect.options.type).assertEqual('BlurType.WITHIN_WINDOW');
+      expect(JSON.parse(WITHIN_WINDOW).$attrs.backgroundEffect.options.type).assertEqual('WITHIN_WINDOW');
       console.info('[BlurType_WITHIN_WINDOW_APITest_0100] END');
       done();
     });

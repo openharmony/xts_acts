@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function textInputOnEditChangeJsunit() {
   describe('textInputOnEditChangeTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TextInput/textInput6',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TextInput/textInput6',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function textInputOnEditChangeJsunit() {
         if (!("textInput" == pages.name)) {
           console.info("get textInput state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push textInput page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,7 +40,7 @@ export default function textInputOnEditChangeJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("textInputOnEditChange after each called");
     });
 
@@ -51,7 +51,7 @@ export default function textInputOnEditChangeJsunit() {
      */
     it('testtextInputOnEditChange0001', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0001] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function textInputOnEditChangeJsunit() {
      */
     it('testtextInputOnEditChange0002', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0002 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0002] component height strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -85,7 +85,7 @@ export default function textInputOnEditChangeJsunit() {
      */
     it('testtextInputOnEditChange0003', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0003 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0003] component fontSize strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -102,7 +102,7 @@ export default function textInputOnEditChangeJsunit() {
      */
     it('testtextInputOnEditChange0004', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0004 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0004] component opacity strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -119,7 +119,7 @@ export default function textInputOnEditChangeJsunit() {
      */
     it('testtextInputOnEditChange0005', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0005 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0005] component align strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -136,7 +136,7 @@ export default function textInputOnEditChangeJsunit() {
      */
     it('testtextInputOnEditChange0006', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0006 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0006] component fontColor strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -153,7 +153,7 @@ export default function textInputOnEditChangeJsunit() {
      */
     it('testtextInputOnEditChange0009', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange009 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0009] component padding strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -170,7 +170,7 @@ export default function textInputOnEditChangeJsunit() {
      */
     it('testtextInputOnEditChange0010', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0010 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0010] component textAlign strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -182,7 +182,7 @@ export default function textInputOnEditChangeJsunit() {
 
     it('testtextInputCopyOption0001', 0, async () => {
       console.info('textInputCopyOption testtextInputCopyOption0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('textInputCopyOptionText');
       console.info("[testtextInputCopyOption0001] component copyOption strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -194,7 +194,7 @@ export default function textInputOnEditChangeJsunit() {
 
     it('testtextInputShowPasswordIcon0001', 0, async () => {
       console.info('textInputShowPasswordIcon testtextInputShowPasswordIcon0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('showPasswordIconText');
       console.info("[testtextInputShowPasswordIcon0001] component textAlign strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);

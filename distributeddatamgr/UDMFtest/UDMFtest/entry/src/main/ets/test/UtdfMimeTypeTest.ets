@@ -26,7 +26,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/msword"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0010', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0010 start');
@@ -41,7 +41,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-execl"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0020', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0020 start');
@@ -56,7 +56,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-powerpoint"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0030', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0030 start');
@@ -70,7 +70,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/wav"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0040', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0040 start');
@@ -84,7 +84,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/wave"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0050', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0050 start');
@@ -98,7 +98,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-ms-wm"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0060', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0060 start');
@@ -113,7 +113,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-ms-wmv"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0070', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0070 start');
@@ -128,7 +128,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-ms-wmp"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0080', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0080 start');
@@ -143,7 +143,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/x-ms-wma"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0090', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0090 start');
@@ -158,7 +158,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-ms-wmx"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0100', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0100 start');
@@ -173,7 +173,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-ms-wvx"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0110', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0110 start');
@@ -188,7 +188,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/x-ms-wax"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0120', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0120 start');
@@ -203,7 +203,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/pdf"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0130', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0130 start');
@@ -218,7 +218,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/postscript"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0140', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0140 start');
@@ -232,7 +232,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-photoshop"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0150', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0150 start');
@@ -247,7 +247,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/photoshop"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0160', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0160 start');
@@ -262,7 +262,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/psd"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0170', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0170 start');
@@ -277,7 +277,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/photoshop"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0180', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0180 start');
@@ -292,7 +292,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.microsoft.portable-executable"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0190', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0190 start');
@@ -307,7 +307,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/java-archive"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0200', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0200 start');
@@ -322,7 +322,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-gtar"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0210', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0210 start');
@@ -337,7 +337,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-gzip"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0220', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0220 start');
@@ -351,7 +351,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/gzip"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0230', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0230 start');
@@ -366,7 +366,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-mobipocket-ebook"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0240', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0240 start');
@@ -380,7 +380,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.amazon.ebook"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0250', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0250 start');
@@ -394,7 +394,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.amazon.mobi8-ebook"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0260', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0260 start');
@@ -409,7 +409,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-mobi8-ebook"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0270', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0270 start');
@@ -423,7 +423,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/targa"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0280', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0280 start');
@@ -437,7 +437,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/tga"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0290', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0290 start');
@@ -451,7 +451,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/tga"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0300', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0300 start');
@@ -465,7 +465,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/sgi"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0310', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0310 start');
@@ -479,7 +479,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/fpx"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0320', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0320 start');
@@ -493,7 +493,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.fpx"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0330', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0330 start');
@@ -507,7 +507,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/efax"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0340', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0340 start');
@@ -521,7 +521,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/vnd.rn-realaudio"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0350', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0350 start');
@@ -535,7 +535,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/x-pn-realaudio"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0360', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0360 start');
@@ -549,7 +549,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/smil"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0370', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0370 start');
@@ -563,7 +563,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-stuffit"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0380', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0380 start');
@@ -577,7 +577,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-sit"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0390', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0390 start');
@@ -591,7 +591,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/stuffit"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0400', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0400 start');
@@ -605,7 +605,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0410', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0410 start');
@@ -620,7 +620,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0420', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0420 start');
@@ -633,7 +633,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.openxmlformats-officedocument.presentationmal.presentation"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0430', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0430 start');
@@ -646,7 +646,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.oasis.opendocument.text"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0440', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0440 start');
@@ -659,7 +659,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.oasis.opendocument.spreadsheet"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0450', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0450 start');
@@ -672,7 +672,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.oasis.opendocument.presentation"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0460', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0460 start');
@@ -686,7 +686,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.oasis.opendocument.graphics"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0470', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0470 start');
@@ -701,7 +701,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.oasis.opendocument.formula"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0480', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0480 start');
@@ -716,7 +716,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/png"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0490', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0490 start');
@@ -730,7 +730,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/jpeg"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0500', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0500 start');
@@ -744,7 +744,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/tiff"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0510', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0510 start');
@@ -759,7 +759,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-quicktime"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0960', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0960 start');
@@ -773,7 +773,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/avi"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0520', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0520 start');
@@ -787,7 +787,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/msvideo"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0530', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0530 start');
@@ -801,7 +801,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-msvideo"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0540', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0540 start');
@@ -815,7 +815,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/mpg"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0550', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0550 start');
@@ -829,7 +829,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/mpeg"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0560', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0560 start');
@@ -843,7 +843,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-mpeg"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0570', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0570 start');
@@ -857,7 +857,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-mpg"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0580', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0580 start');
@@ -871,7 +871,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/mp4"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0590', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0590 start');
@@ -885,7 +885,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/mp4v"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0600', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0600 start');
@@ -899,7 +899,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/3gpp"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0720', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0720 start');
@@ -913,7 +913,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/3gpp2"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0610', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0610 start');
@@ -927,7 +927,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/ogg"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0620', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0620 start');
@@ -941,7 +941,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/aiff"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0630', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0630 start');
@@ -955,7 +955,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/pcm"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0640', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0640 start');
@@ -969,7 +969,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/flac"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0650', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0650 start');
@@ -983,7 +983,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/alac"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0660', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0660 start');
@@ -997,7 +997,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/mp3"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0670', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0670 start');
@@ -1011,7 +1011,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/aac"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0680', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0680 start');
@@ -1025,7 +1025,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/basic"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0690', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0690 start');
@@ -1039,7 +1039,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/au"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0700', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0700 start');
@@ -1053,7 +1053,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/snd"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0710', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0710 start');
@@ -1067,7 +1067,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/x-aiff"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0730', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0730 start');
@@ -1081,7 +1081,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-tar"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0740', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0740 start');
@@ -1095,7 +1095,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/tar"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0750', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0750 start');
@@ -1109,7 +1109,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/zip"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0760', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0760 start');
@@ -1124,7 +1124,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-bzip2"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0770', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0770 start');
@@ -1138,7 +1138,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/plain"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0780', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0780 start');
@@ -1153,7 +1153,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/html"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0790', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0790 start');
@@ -1167,7 +1167,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/xml"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0800', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0800 start');
@@ -1181,7 +1181,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/markdown"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0950', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0950 start');
@@ -1195,7 +1195,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-perl-script"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0810', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0810 start');
@@ -1209,7 +1209,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-python-script"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0820', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0820 start');
@@ -1223,7 +1223,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/ruby-script"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0830', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0830 start');
@@ -1237,7 +1237,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-php-script"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0840', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0840 start');
@@ -1251,7 +1251,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/php"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0850', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0850 start');
@@ -1265,7 +1265,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is"application/php"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0860', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0860 start');
@@ -1279,7 +1279,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/javascript"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0870', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0870 start');
@@ -1293,7 +1293,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/calendar"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0880', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0880 start');
@@ -1307,7 +1307,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/calendar"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0890', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0890 start');
@@ -1322,7 +1322,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/epub+zip"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0900', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0900 start');
@@ -1336,7 +1336,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "font/ttf"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0910', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0910 start');
@@ -1350,7 +1350,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "font/collection"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0920', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0920 start');
@@ -1364,7 +1364,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "font/otf"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0930', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0930 start');
@@ -1378,7 +1378,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/calendar"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0940', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0940 start');
@@ -1445,16 +1445,16 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1010
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1010
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/mpeg"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-ms-bmp"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1010', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1010 start');
-      let result = UTD.getUniformDataTypeByMIMEType("video/mpeg");
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-ms-bmp");
       console.log("typeId:" + result);
-      expect(result).assertEqual("general.mpeg");
+      expect(result).assertEqual("com.microsoft.bmp");
     });
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1020
@@ -1737,47 +1737,47 @@ export default function UtdfMimeTypeTest() {
       console.log("typeId:" + result);
       expect(result).assertEqual("general.psid");
     });
-    /**
-     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1280
+	/**
+	 * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1280
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1280
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/basic"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-icon"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1280', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1280 start');
-      let result = UTD.getUniformDataTypeByMIMEType("audio/basic");
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-icon");
       console.log("typeId:" + result);
-      expect(result).assertEqual("general.au-audio");
+      expect(result).assertEqual("com.microsoft.ico");
     });
-    /**
+    /**																			 
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1290
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1290
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/au"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-adobe-dng"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1290', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1290 start');
-      let result = UTD.getUniformDataTypeByMIMEType("audio/au");
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-adobe-dng");
       console.log("typeId:" + result);
-      expect(result).assertEqual("general.au-audio");
+      expect(result).assertEqual("com.adobe.dng-raw-image");
     });
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1300
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/snd"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-excel.template.macroEnabled.12"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1300', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1300 start');
-      let result = UTD.getUniformDataTypeByMIMEType("audio/snd");
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-excel.template.macroEnabled.12");
       console.log("typeId:" + result);
-      expect(result).assertEqual("general.au-audio");
+      expect(result).assertEqual("org.openxmlformats.spreadsheetml.template.macroenabled");
     });
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1320
@@ -1852,7 +1852,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1370
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1370
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-portable-bitmap"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-portable-graymap"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2048,16 +2048,16 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1520
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1520
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/plain"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.rar"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1520', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1520 start');
-      let result = UTD.getUniformDataTypeByMIMEType("text/plain");
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.rar");
       console.log("typeId:" + result);
-      expect(result).assertEqual("general.plain-text");
+      expect(result).assertEqual("com.rarlab.rar-archive");
     });
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1540
@@ -2244,16 +2244,16 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1690
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1690
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-gtar"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/rar"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1690', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1690 start');
-      let result = UTD.getUniformDataTypeByMIMEType("application/x-gtar");
+      let result = UTD.getUniformDataTypeByMIMEType("application/rar");
       console.log("typeId:" + result);
-      expect(result).assertEqual("org.gnu.gnu-tar-archive");
+      expect(result).assertEqual("com.rarlab.rar-archive");
     });
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1700
@@ -2692,45 +2692,45 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2010
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2010
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/msword"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/x-sd2"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2010', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2010 start');
-      let result = UTD.getUniformDataTypeByMIMEType("application/msword");
+      let result = UTD.getUniformDataTypeByMIMEType("audio/x-sd2");
       console.log("typeId:" + result);
-      expect(result).assertEqual("com.microsoft.word.doc");
+      expect(result).assertEqual("com.digidesign.sd2-audio");
     });
 
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2020
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2020
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-powerpoint"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is  "application/vnd.rn-realmedia"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2020', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2020 start');
-      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-powerpoint");
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.rn-realmedia");
       console.log("typeId:" + result);
-      expect(result).assertEqual("com.microsoft.powerpoint.ppt");
+      expect(result).assertEqual("com.real.realmedia");
     });
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2040
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2040
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-excel"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.cinderella"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2040', 0,  () => {
-      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2030 start');
-      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-excel");
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2040 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.cinderella");
       console.log("typeId:" + result);
-      expect(result).assertEqual("com.microsoft.excel.xls");
+      expect(result).assertEqual("de.cinderella.cdy");
     });
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2050
@@ -2931,16 +2931,16 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2190
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2190
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is application/vnd.sun.xml.impress.template"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-excel.addin.macroEnabled.12"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2190', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2190 start');
-      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.sun.xml.impress.template");
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-excel.addin.macroEnabled.12");
       console.log("typeId:" + result);
-      expect(result).assertEqual("org.openoffice.impress.template");
+      expect(result).assertEqual("org.openxmlformats.spreadsheetml.addin.macroenabled");
     });
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2200
@@ -2998,5 +2998,1518 @@ export default function UtdfMimeTypeTest() {
       console.log("typeId:" + result);
       expect(result).assertEqual("com.staroffice.impress");
     });
-  });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2240
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2240
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.stardivision.writer"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2240', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2240 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.writer");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.staroffice.writer");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2250
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2250
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.stardivision.chart"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2250', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2250 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.chart");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.staroffice.chart");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2260
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2260
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.stardivision.mail"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2260', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2260 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.mail");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.staroffice.mail");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2270
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2270
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.stardivision.writer-global"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2270', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2270 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.writer-global");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.staroffice.writer-global");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2280
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2280
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.stardivision.math"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2280', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2280 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.math");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.staroffice.math");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2290
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2290
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.stardivision.template"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2290', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2290 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.template");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.staroffice.template");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2300
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2300
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-bibtex"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2300', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2300 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/x-bibtex");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.tug.bib");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2310
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2310
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-tex"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2310', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2310 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/x-tex");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.tug.cls");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2320
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2320
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-coreldraw"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2320', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2310 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-coreldraw");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.coreldraw.cdr");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2340
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2340
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-latex"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2340', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2340 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-latex");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.latex-project.latex");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2350
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2350
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-ms-asf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2350', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2350 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/x-ms-asf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.advanced-systems-format");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2360
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2360
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-asf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2360', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2360 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-asf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.advanced-systems-format");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2380
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2380
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-matroska"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2380', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2380 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/x-matroska");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.matroska.mkv");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2400
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2400
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-sgi-movie"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2400', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2400 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/x-sgi-movie");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.sgi.movie");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2410
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2410
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/m4v"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2410', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2410 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/m4v");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.apple.m4v");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2420
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2420
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/webm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2420', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2420 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/webm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.webmproject.webm");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2430
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2430
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/quicktime"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2430', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2430 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/quicktime");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.apple.quicktime-movie");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2460
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2460
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-coreldrawtemplate"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2460', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2460 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-coreldrawtemplate");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.coreldraw.cdt");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2470
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2470
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-corelphotopaint"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2470', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2470 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-corelphotopaint");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.coreldraw.cpt");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2480
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2480
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-coreldrawpattern"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2480', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2480 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-coreldrawpattern");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.coreldraw.pat");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2490
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/ico"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2490', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2490 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/ico");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.ico");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2500
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2500
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-cmu-raster"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2500', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2500 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-cmu-raster");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.sun.raster");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2510
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2510
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/webp"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2510', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2510 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/webp");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.google.webp");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2520
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2520
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-koan"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2520', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2520 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-koan");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.sseyo.koan-audio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2530
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2530
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-moc"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2530', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2530 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/x-moc");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("io.qt.moc");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2540
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2540
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-font"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2540', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2540 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-font");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.ghostscript.font");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2560
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2560
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-font-pcf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2560', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2560 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-font-pcf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.x.pcf-font");
+    });
+    /**
+     * @tc.name      : StestUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2570
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2570
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-ms-wmd"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2570', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2570 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-ms-wmd");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.windows-media-wmd");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2580
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2580
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-ms-wmz"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2580', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2580 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-ms-wmz");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.windows-media-wmz");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2590
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2590
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-msi"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2590', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2590 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-msi");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.windows-installer");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2600
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2600
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-mspublisher"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2600', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2600 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-mspublisher");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.publisher.pub");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2610
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2610
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-wpl"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2610', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2610 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-wpl");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.windows-media-playlist");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2620
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2620
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/msaccess"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2620', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2620 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/msaccess");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.access.mdb");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2630
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2630
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-pki.stl"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2630', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2630 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-pki.stl");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.3dsystems.stereolithography");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2640
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2640
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.apple.mpegurl"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2640', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2640 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.apple.mpegurl");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.apple.media.playlist");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2650
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2650
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-abiword"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2650', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2650 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-abiword");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.abisource.word");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2660
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2660
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-maker"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2660', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2660 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-maker");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.adobe.framemaker");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2670
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2670
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-cdf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2670', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2670 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-cdf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.wolfram.cdf");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2690
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2690
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-director"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2690', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2690 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-director");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.adobe.dcr");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2710
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2710
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-gnumeric"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2710', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2710 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-gnumeric");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.gnumeric.spreadsheet");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2720
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2720
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-hdf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2720', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2720 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-hdf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.hdfgroup.hdf");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2730
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2730
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/mac-binhex40"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2730', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2730 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/mac-binhex40");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.apple.binhex-archive");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2740
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2740
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/hta"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2740', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2740 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/hta");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.hta");
+    });
+    /**
+     * @tc.name      :test SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2750
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2750
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-internet-signup"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2750', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2750 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-internet-signup");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.internet.ins");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2770
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2770
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/troff"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2770', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2770 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/troff");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.troff");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2780
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2780
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.mif"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2780', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2780 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.mif");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.adobe.framemaker.mif");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2790
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2790
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-freemind"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2790', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2790 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-freemind");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("io.sourceforge.freemind");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2810
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2810
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.smaf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2810', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2810 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.smaf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.yamaha.smaf");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2820
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2820
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/mathematica"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2820', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2820 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/mathematica");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.wolfram.mathematica.notebook");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2830
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2830
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/ogg"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2830', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2830 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/ogg");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.xiph.ogg");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2840
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2840
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-ns-proxy-autoconfig"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2840', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2840 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-ns-proxy-autoconfig");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.netscape.proxy-autoconfig");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2850
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2850
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-pkcs12"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2850', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2850 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-pkcs12");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.rsa.pkcs-12");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2860
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2860
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/pgp-signature"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2860', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2860 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/pgp-signature");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openpgp.signature");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2870
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2870
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-quicktimeplayer"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2870', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2870 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-quicktimeplayer");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.apple.quicktime-link");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2890
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2890
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.rar"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2890', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2890 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.rar");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.rarlab.rar-archive");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2900
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2900
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-7z-compressed"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2900', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2900 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-7z-compressed");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.7-zip.7-zip-archive");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2910
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2910
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-go-sgf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2910', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2910 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-go-sgf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.red-bean.sgf");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2920
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2920
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/x-wav"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2920', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2920 start');
+      let result = UTD.getUniformDataTypeByMIMEType("audio/x-wav");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.waveform-audio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2930
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2930
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/futuresplash"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2930', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2930 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/futuresplash");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.adobe.futuresplash");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2940
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2940
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-futuresplash"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2940', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2940 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-futuresplash");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.adobe.futuresplash");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2950
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2950
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-shockwave-flash"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2950', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2950 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-shockwave-flash");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.adobe.flash");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2960
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2960
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-texinfo"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2960', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2960 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-texinfo");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.gnu.texinfo");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2970
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2970
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-bittorrent"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2970', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2970 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-bittorrent");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.bittorrent.torrent");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2980
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2980
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is"application/x-doom"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2980', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2980 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-doom");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.idsoftware.doom");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2990
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2990
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-webarchive"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2990', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2990 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-webarchive");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.apple.webarchive");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3000
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3000
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-webarchive-xml"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3000', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3000 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-webarchive-xml");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.android.webarchive");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3010
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3010
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-xcf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3010', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3010 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-xcf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.gimp.xcf");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3020
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3020
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-xcf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3020', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3020 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-xcf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.gimp.xcf");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3030
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3030
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-eddx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3030', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3030 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-eddx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.edrawsoft.edrawmax");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3040
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3040
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-emmx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3040', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3040 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-emmx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.edrawsoft.edrawmind");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3050
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3050
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/caj"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3050', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3050 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/caj");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("net.cnki.caj");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3060
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3060
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/dbf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3060', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3060 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/dbf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.dbase.dbf");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3070
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3070
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/dbase"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3070', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3070 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/dbase");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.dbase.dbf");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3080
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3080
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/vnd.dwg"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3080', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3080 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/vnd.dwg");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.autodesk.dwg");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3090
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3090
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/vnd.dxf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3090', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3090 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/vnd.dxf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.autodesk.dxf");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3100
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3100
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "model/vnd.dwf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3100', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3100 start');
+      let result = UTD.getUniformDataTypeByMIMEType("model/vnd.dwf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.autodesk.dwf");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3110
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3110
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.hp-hpgl"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3110', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3110 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.hp-hpgl");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.hp.graphics-language");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3120
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3120
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/avif"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3120', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3120 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/avif");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.aomedia.avif-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3130
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3130
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/vnd-ms.dds"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3130', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3130 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/vnd-ms.dds");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.dds");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3140
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3140
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-ilbm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3140', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3140 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-ilbm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.ea.iff-ilbm");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3150
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3150
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-canon-cr2"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3150', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3150 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-canon-cr2");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.canon.cr2-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3160
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3160
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-canon-cr3"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3160', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3160 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-canon-cr3");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.canon.cr3-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3170
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3170
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-canon-crw"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3170', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3170 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-canon-crw");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.canon.crw-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3180
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3180
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-nikon-nef"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3180', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3180 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-nikon-nef");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.nikon.nef-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3190
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3190
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "message/rfc822"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3190', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3190 start');
+      let result = UTD.getUniformDataTypeByMIMEType("message/rfc822");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.email");
+    });
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3200
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3200
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-dvi"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3200', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3200 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/x-dvi");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.dvi");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3220
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3220
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-sony-arw"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3220', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3220 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-sony-arw");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.sony.arw-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3240
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3240
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-word.document.macroEnabled.12"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3240', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3240 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-word.document.macroEnabled.12");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.wordprocessingml.document.macroenabled");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3250
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3250
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-word.template.macroEnabled.12"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3250', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3240 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-word.template.macroEnabled.12");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.wordprocessingml.template.macroenabled");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3270
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3270
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3270', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3240 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-excel.sheet.binary.macroEnabled.12");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.spreadsheetml.binary.macroenabled");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3280
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3280
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-excel.sheet.macroEnabled.12"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3280', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3280 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-excel.sheet.macroEnabled.12");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.spreadsheetml.sheet.macroenabled");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3290
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3290
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-powerpoint.addin.macroEnabled.12"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3290', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3280 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-powerpoint.addin.macroEnabled.12");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.presentationml.addin.macroenabled");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3300
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3300
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-powerpoint.presentation.macroEnabled.12"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3300', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3300 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-powerpoint.presentation.macroEnabled.12");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.presentationml.presentation.macroenabled");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3310
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3310
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-powerpoint.slideshow.macroEnabled.12"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3310', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3310 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-powerpoint.slideshow.macroEnabled.12");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.presentationml.slideshow.macroenabled");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3320
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3320
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-powerpoint.template.macroEnabled.12"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3320', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3300 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-powerpoint.template.macroEnabled.12");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.presentationml.template.macroenabled");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3330
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3330
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-boo"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3330', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3300 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/x-boo");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.boo-source");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3340
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3340
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-dsrc"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3340', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3340 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/x-dsrc");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.d-source");
+    });
+    /**
+     * @tc.name      :test SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3350
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3350
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-component"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3350', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3350 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/x-component");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.html-component");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3360
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3360
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-pascal"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3360', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3360 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/x-pascal");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.pascal-source");
+    });
+	/**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3370
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3370
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-xbm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3370', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3370 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-xbm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.xbitmap-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3380
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3380
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-csh"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3380', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3380 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/x-csh");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.csh-script");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3390
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3390
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-csrc"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3390', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3390 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/x-csrc");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.c-source");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3400
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3400
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-shellscript"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3400', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3400 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/x-shellscript");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.shell-script");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3410
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3410
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-c++src"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3410', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3410 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/x-c++src");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.c-plus-plus-source");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3420
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3420
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-c++hdr"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3420', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3420 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/x-c++hdr");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.c-plus-plus-header");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3430
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3430
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-chdr"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3430', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3430 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/x-chdr");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.c-header");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3440
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3440
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/vcard"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3440', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3440 start');
+      let result = UTD.getUniformDataTypeByMIMEType("text/vcard");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.vcard");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3450
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3450
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/bmp"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3450', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3450 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/bmp");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.bmp");
+    });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																			 
+  });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														 
 }

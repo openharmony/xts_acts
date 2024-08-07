@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,45 +25,45 @@ export default class shadowValue {
 @Entry
 @Component
 struct ImageEffectsExample {
-  @State blurValue: string = 100;
-  @State backdropBlueValue: string = 30;
+  @State blurValue: number = 100;
+  @State backdropBlueValue: number = 30;
   @State shadowValue: shadowValue = { radius: 10, color: Color.Gray, offsetX: 5, offsetY: 5 }
-  @State shadowStyleValue: ShadowStyle = ShadowStyle.OuterDefaultXS;
-  @State grayscaleValue: string = 10;
-  @State brightnessValue: string = 20;
-  @State saturateValue: string = 50;
-  @State contrastValue: string = 20;
-  @State invertValue: string = 10;
-  @State hueRotateValue: string = 10
+  @State shadowStyleValue: ShadowStyle = ShadowStyle.OUTER_DEFAULT_XS;
+  @State grayscaleValue: number = 10;
+  @State brightnessValue: number = 20;
+  @State saturateValue: number = 50;
+  @State contrastValue: number = 20;
+  @State invertValue: number = 10;
+  @State hueRotateValue: number = 10
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("imageEffects page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.blurValue != null) {
-        this.blurValue = eventData.data.blurValue;
+      if (eventData.data?.blurValue != null) {
+        this.blurValue = Number(eventData.data?.blurValue) || 0;
       }
-      if (eventData.data.shadowValue != null) {
-        this.shadowValue = JSON.parse(eventData.data.shadowValue);
+      if (eventData.data?.shadowValue != null) {
+        this.shadowValue = JSON.parse(eventData.data?.shadowValue);
       }
-      if (eventData.data.shadowStyleValue != null) {
-        this.shadowStyleValue = eventData.data.shadowStyleValue;
+      if (eventData.data?.shadowStyleValue != null) {
+        this.shadowStyleValue = eventData.data?.shadowStyleValue;
       }
-      if (eventData.data.grayscaleValue != null) {
-        this.grayscaleValue = eventData.data.grayscaleValue;
+      if (eventData.data?.grayscaleValue != null) {
+        this.grayscaleValue = Number(eventData.data?.grayscaleValue) || 0;
       }
-      if (eventData.data.brightnessValue != null) {
-        this.brightnessValue = eventData.data.brightnessValue;
+      if (eventData.data?.brightnessValue != null) {
+        this.brightnessValue = Number(eventData.data?.brightnessValue) || 0;
       }
-      if (eventData.data.saturateValue != null) {
-        this.saturateValue = eventData.data.saturateValue;
+      if (eventData.data?.saturateValue != null) {
+        this.saturateValue = Number(eventData.data?.saturateValue) || 0;
       }
-      if (eventData.data.contrastValue != null) {
-        this.contrastValue = eventData.data.contrastValue;
+      if (eventData.data?.contrastValue != null) {
+        this.contrastValue = Number(eventData.data?.contrastValue) || 0;
       }
-      if (eventData.data.invertValue != null) {
-        this.invertValue = eventData.data.invertValue;
+      if (eventData.data?.invertValue != null) {
+        this.invertValue = Number(eventData.data?.invertValue) || 0;
       }
-      if (eventData.data.hueRotateValue != null) {
-        this.hueRotateValue = eventData.data.hueRotateValue;
+      if (eventData.data?.hueRotateValue != null) {
+        this.hueRotateValue = Number(eventData.data?.hueRotateValue) || 0;
       }
     }
   }
@@ -191,7 +190,7 @@ struct ImageEffectsExample {
       Image('/images/download.png')
         .width('90%')
         .height(40)
-        .grayscale(`${this.grayscaleValue}`)
+        .grayscale(this.grayscaleValue)
         .key('centerRow4')
 
       Text('brightness')

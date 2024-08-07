@@ -9,18 +9,19 @@
             "tablet",
             "default",
             "phone",
-            "2in1"
+            "2in1",
+            "wearable"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
-	"metadata": [
+        "metadata": [
             {
-              "name": "ArkTSPartialUpdate",
-              "value": "true"
+                "name": "ArkTSPartialUpdate",
+                "value": "true"
             }
-          ],
+        ],
         "abilities": [
             {
                 "name": "com.acts.inputmethodengine.test.MainAbility",
@@ -45,7 +46,7 @@
         ],
         "extensionAbilities": [
             {
-                "description": "\u8f93\u5165\u6cd5demoStage",
+                "description": "输入法demoStage",
                 "icon": "$media:icon",
                 "name": "inputStageService",
                 "srcEntrance": "./ets/InputMethodAbility/InputStageService.ts",
@@ -53,7 +54,7 @@
                 "visible": true
             },
             {
-                "description": "\u8f93\u5165\u6cd5Demo",
+                "description": "输入法Demo",
                 "icon": "$media:icon",
                 "name": "InputDemoService",
                 "srcEntrance": "./ets/InputMethodEngine/InputDemoService.ts",
@@ -66,7 +67,7 @@
                 "name": "InputKeyService",
                 "srcEntrance": "./ets/InputMethodEngineKey/InputKeyService.ts",
                 "type": "inputMethod",
-                "visible":true
+                "visible": true
             }
         ],
         "requestPermissions": [

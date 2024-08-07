@@ -14,13 +14,27 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
+
 export default function frameNodeGetInterfaceTest() {
-  describe('frameNodeGetInterfaceTest', function () {
-    beforeEach(async function (done) {
+  describe('frameNodeGetInterfaceTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("frameNodeTest beforeEach start");
-      let options : router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/frameNode/frameNodeTestGetInterface",
       }
       try {
@@ -40,14 +54,14 @@ export default function frameNodeGetInterfaceTest() {
       done();
     });
     /**
-     * @tc.number    frameNodeGetNodeType
-     * @tc.name      frameNodeGetInterfaceTest_0100
-     * @tc.desc      getNodeType Test
-     * @tc.level:    Level 2
+     * @tc.number frameNodeGetNodeType
+     * @tc.name frameNodeGetInterfaceTest_0100
+     * @tc.desc getNodeType Test
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeGetInterfaceTest_0100', 0, async function (done) {
+    it('frameNodeGetInterfaceTest_0100', 0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -64,14 +78,14 @@ export default function frameNodeGetInterfaceTest() {
       done();
     });
     /**
-     * @tc.number    frameNodeGetOpacity
-     * @tc.name      frameNodeGetInterfaceTest_0200
-     * @tc.desc      getOpacity test
-     * @tc.level:    Level 2
+     * @tc.number frameNodeGetOpacity
+     * @tc.name frameNodeGetInterfaceTest_0200
+     * @tc.desc getOpacity test
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeGetInterfaceTest_0200', 0, async function (done) {
+    it('frameNodeGetInterfaceTest_0200', 0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0200  START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -89,14 +103,14 @@ export default function frameNodeGetInterfaceTest() {
     });
 
     /**
-     * @tc.number    frameNodeGetVisible
-     * @tc.name      frameNodeGetInterfaceTest_0300
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number frameNodeGetVisible
+     * @tc.name frameNodeGetInterfaceTest_0300
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeGetInterfaceTest_0300', 0, async function (done) {
+    it('frameNodeGetInterfaceTest_0300', 0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -114,14 +128,14 @@ export default function frameNodeGetInterfaceTest() {
     });
 
     /**
-     * @tc.number    frameNodeIsClipToFrame
-     * @tc.name      frameNodeGetInterfaceTest_0400
-     * @tc.desc      testIsClipToFrame
-     * @tc.level:    Level 2
+     * @tc.number frameNodeIsClipToFrame
+     * @tc.name frameNodeGetInterfaceTest_0400
+     * @tc.desc testIsClipToFrame
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeGetInterfaceTest_0400', 0, async function (done) {
+    it('frameNodeGetInterfaceTest_0400', 0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -139,14 +153,14 @@ export default function frameNodeGetInterfaceTest() {
     });
 
     /**
-     * @tc.number    frameNodeIsAttached
-     * @tc.name      frameNodeGetInterfaceTest_0500
-     * @tc.desc      testIsIsAttached
-     * @tc.level:    Level 2
+     * @tc.number frameNodeIsAttached
+     * @tc.name frameNodeGetInterfaceTest_0500
+     * @tc.desc testIsIsAttached
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeGetInterfaceTest_0500', 0, async function (done) {
+    it('frameNodeGetInterfaceTest_0500', 0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0500 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -165,14 +179,14 @@ export default function frameNodeGetInterfaceTest() {
 
 
     /**
-     * @tc.number    frameNodeGetInspectorInfo
-     * @tc.name      frameNodeGetInterfaceTest_0600
-     * @tc.desc      testGetInspectorInfo
-     * @tc.level:    Level 2
+     * @tc.number frameNodeGetInspectorInfo
+     * @tc.name frameNodeGetInterfaceTest_0600
+     * @tc.desc testGetInspectorInfo
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeGetInterfaceTest_0600', 0, async function (done) {
+    it('frameNodeGetInterfaceTest_0600', 0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0600 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

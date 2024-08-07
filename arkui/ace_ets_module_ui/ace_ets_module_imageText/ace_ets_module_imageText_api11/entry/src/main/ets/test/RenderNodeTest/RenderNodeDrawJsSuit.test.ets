@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter'
 
 export default function RenderNodeDrawJsSuit() {
-  describe('RenderNodeDrawJsSuit', function () {
-    beforeEach(async function (done) {
+  describe('RenderNodeDrawJsSuit', () => {
+    beforeEach(async (done: Function) => {
       console.info("RenderNodeDrawJsSuit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/RenderNode/RenderNodeDraw',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RenderNode/RenderNodeDraw',
       }
       try {
         router.clear();
@@ -50,7 +50,7 @@ export default function RenderNodeDrawJsSuit() {
      * @tc.size :
      */
 
-    it('RenderNodeDrawJsSuit_0100', 0, async function (done) {
+    it('RenderNodeDrawJsSuit_0100', 0, async (done: Function) => {
       console.info('[RenderNodeDrawJsSuit_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -58,7 +58,7 @@ export default function RenderNodeDrawJsSuit() {
       await button_Bottom.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RenderNodeDraw_get');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RenderNodeDrawJsSuit_0100] obj is: " + JSON.stringify(obj));
       console.info("[RenderNodeDrawJsSuit_0100] obj content is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content=='Draw:0.5').assertTrue();

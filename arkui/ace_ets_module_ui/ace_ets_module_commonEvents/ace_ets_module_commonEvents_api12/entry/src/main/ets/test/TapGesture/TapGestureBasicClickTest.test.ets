@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import router from '@ohos.router';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function TapGestureBasicClickTest() {
-  describe('TapGestureBasicClickTest', function () {
-    beforeEach(async function (done) {
+  describe('TapGestureBasicClickTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("TapGestureBasicClickTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TapGesture/TapGestureBasicClick',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TapGesture/TapGestureBasicClick',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function TapGestureBasicClickTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("TapGestureBasicClickTest after each called");
     });
@@ -54,7 +54,7 @@ export default function TapGestureBasicClickTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TapGestureBasicClickTest_0010', 0, async function (done) {
+    it('TapGestureBasicClickTest_0010', 0, async (done: Function) => {
       console.info('TapGestureBasicClickTest_0010 START');
       await CommonFunc.sleep(1000);
       let FatherObj = CommonFunc.getComponentRectOnScreen('TapGestureBasicClick_Father');
@@ -73,163 +73,163 @@ export default function TapGestureBasicClickTest() {
       await driver.click(Math.round(areaObj.left + areaWidth/2),Math.round(areaObj.top + areaHeight/2));
       await CommonFunc.sleep(3000);
       let text1 = getInspectorByKey('TapGestureBasicClick_repeat');
-      let obj1 = JSON.parse(text1);
+      let obj1: ESObject = JSON.parse(text1);
       console.log('TapGestureBasicClickTest_0010 obj1 $attrs content',obj1.$attrs.content,obj1)
       expect(obj1.$attrs.content).assertEqual('repeat:false');
 
       await CommonFunc.sleep(200);
       let text2 = getInspectorByKey('TapGestureBasicClick_offsetX');
-      let obj2 = JSON.parse(text2);
+      let obj2: ESObject = JSON.parse(text2);
       console.log('TapGestureBasicClickTest_0010 obj2 $attrs content',obj2.$attrs.content,obj2)
       expect(obj2.$attrs.content).assertEqual('offsetX:0');
 
       await CommonFunc.sleep(200);
       let text3 = getInspectorByKey('TapGestureBasicClick_offsetY');
-      let obj3 = JSON.parse(text3);
+      let obj3: ESObject = JSON.parse(text3);
       console.log('TapGestureBasicClickTest_0010 obj3 $attrs content',obj3.$attrs.content,obj3)
       expect(obj3.$attrs.content).assertEqual('offsetY:0');
 
       await CommonFunc.sleep(200);
       let text4 = getInspectorByKey('TapGestureBasicClick_angle');
-      let obj4 = JSON.parse(text4);
+      let obj4: ESObject = JSON.parse(text4);
       console.log('TapGestureBasicClickTest_0010 obj4 $attrs content',obj4.$attrs.content,obj4)
       expect(obj4.$attrs.content).assertEqual('angle:0');
 
       await CommonFunc.sleep(200);
       let text5 = getInspectorByKey('TapGestureBasicClick_scale');
-      let obj5 = JSON.parse(text5);
+      let obj5: ESObject = JSON.parse(text5);
       console.log('TapGestureBasicClickTest_0010 obj5 $attrs content',obj5.$attrs.content,obj5)
       expect(obj5.$attrs.content).assertEqual('scale:1');
 
       await CommonFunc.sleep(200);
       let text6 = getInspectorByKey('TapGestureBasicClick_pinchCenterX');
-      let obj6 = JSON.parse(text6);
+      let obj6: ESObject = JSON.parse(text6);
       console.log('TapGestureBasicClickTest_0010 obj6 $attrs content',obj6.$attrs.content,obj6)
       expect(obj6.$attrs.content).assertEqual('pinchCenterX:0');
 
       await CommonFunc.sleep(200);
       let text7 = getInspectorByKey('TapGestureBasicClick_pinchCenterY');
-      let obj7 = JSON.parse(text7);
+      let obj7: ESObject = JSON.parse(text7);
       console.log('TapGestureBasicClickTest_0010 obj7 $attrs content',obj7.$attrs.content,obj7)
       expect(obj7.$attrs.content).assertEqual('pinchCenterY:0');
 
       await CommonFunc.sleep(200);
       let text8 = getInspectorByKey('TapGestureBasicClick_speed');
-      let obj8 = JSON.parse(text8);
+      let obj8: ESObject = JSON.parse(text8);
       console.log('TapGestureBasicClickTest_0010 obj8 $attrs content',obj8.$attrs.content,obj8)
       expect(obj8.$attrs.content).assertEqual('speed:0');
 
       await CommonFunc.sleep(200);
       let text9 = getInspectorByKey('TapGestureBasicClick_fingerList_id');
-      let obj9 = JSON.parse(text9);
+      let obj9: ESObject = JSON.parse(text9);
       console.log('TapGestureBasicClickTest_0010 obj9 $attrs content',obj9.$attrs.content,obj9)
       expect(obj9.$attrs.content).assertEqual('fingerList_id:0');
 
       await CommonFunc.sleep(200);
       let text10 = getInspectorByKey('TapGestureBasicClick_fingerList_globalX');
-      let obj10 = JSON.parse(text10);
+      let obj10: ESObject = JSON.parse(text10);
       console.log('TapGestureBasicClickTest_0010 obj10 $attrs content',obj10.$attrs.content,obj10)
       expect(Math.abs(Math.round((vp2px(Number(obj10.$attrs.content)))- (Math.round(areaObj.left + areaWidth/2)))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text11 = getInspectorByKey('TapGestureBasicClick_fingerList_globalY');
-      let obj11 = JSON.parse(text11);
+      let obj11: ESObject = JSON.parse(text11);
       console.log('TapGestureBasicClickTest_0010 obj11 $attrs content',obj11.$attrs.content,obj11)
       expect(Math.abs(Math.round((vp2px(Number(obj11.$attrs.content)))- (Math.round(areaObj.top + areaHeight/2)))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text12 = getInspectorByKey('TapGestureBasicClick_fingerList_localX');
-      let obj12 = JSON.parse(text12);
+      let obj12: ESObject = JSON.parse(text12);
       console.log('TapGestureBasicClickTest_0010 obj12 $attrs content',obj12.$attrs.content,obj12)
       expect(Math.abs(Math.round((vp2px(Number(obj12.$attrs.content)))- (Math.round(areaObj.left + areaWidth/2) - areaObj.left))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text13 = getInspectorByKey('TapGestureBasicClick_fingerList_localY');
-      let obj13 = JSON.parse(text13);
+      let obj13: ESObject = JSON.parse(text13);
       console.log('TapGestureBasicClickTest_0010 obj13 $attrs content',obj13.$attrs.content,obj13)
       expect(Math.abs(Math.round((vp2px(Number(obj13.$attrs.content)))- (Math.round(areaObj.top + areaHeight/2) - areaObj.top))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text16 = getInspectorByKey('TapGestureBasicClick_target_area_width');
-      let obj16 = JSON.parse(text16);
+      let obj16: ESObject = JSON.parse(text16);
       console.log('TapGestureBasicClickTest_0010 obj16 $attrs content',obj16.$attrs.content,obj16)
       expect(obj16.$attrs.content).assertEqual('target_area_width:240');
 
       await CommonFunc.sleep(200);
       let text17 = getInspectorByKey('TapGestureBasicClick_target_area_height');
-      let obj17 = JSON.parse(text17);
+      let obj17: ESObject = JSON.parse(text17);
       console.log('TapGestureBasicClickTest_0010 obj17 $attrs content',obj17.$attrs.content,obj17)
       expect(obj17.$attrs.content).assertEqual('target_area_height:80');
 
       await CommonFunc.sleep(200);
       let text18 = getInspectorByKey('TapGestureBasicClick_target_area_position_x');
-      let obj18 = JSON.parse(text18);
+      let obj18: ESObject = JSON.parse(text18);
       console.log('TapGestureBasicClickTest_0010 obj18 $attrs content',obj18.$attrs.content,obj18)
       expect(Math.abs(Math.round((vp2px(Number(obj18.$attrs.content)))- (areaObj.left-FatherObj.left))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text19 = getInspectorByKey('TapGestureBasicClick_target_area_position_y');
-      let obj19 = JSON.parse(text19);
+      let obj19: ESObject = JSON.parse(text19);
       console.log('TapGestureBasicClickTest_0010 obj19 $attrs content',obj19.$attrs.content,obj19)
       expect(Math.abs(Math.round((vp2px(Number(obj19.$attrs.content)))- (areaObj.top-FatherObj.top))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text20 = getInspectorByKey('TapGestureBasicClick_target_area_globalPosition_x');
-      let obj20 = JSON.parse(text20);
+      let obj20: ESObject = JSON.parse(text20);
       console.log('TapGestureBasicClickTest_0010 obj20 $attrs content',obj20.$attrs.content,obj20)
       expect(Math.abs(Math.round((vp2px(Number(obj20.$attrs.content)))- (areaObj.left))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text21 = getInspectorByKey('TapGestureBasicClick_target_area_globalPosition_y');
-      let obj21 = JSON.parse(text21);
+      let obj21: ESObject = JSON.parse(text21);
       console.log('TapGestureBasicClickTest_0010 obj21 $attrs content',obj21.$attrs.content,obj21)
       expect(Math.abs(Math.round((vp2px(Number(obj21.$attrs.content)))- (areaObj.top))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text22 = getInspectorByKey('TapGestureBasicClick_source');
-      let obj22 = JSON.parse(text22);
+      let obj22: ESObject = JSON.parse(text22);
       console.log('TapGestureBasicClickTest_0010 obj22 $attrs content',obj22.$attrs.content,obj22)
       expect(obj22.$attrs.content).assertEqual('source:2');
 
       await CommonFunc.sleep(200);
       let text23 = getInspectorByKey('TapGestureBasicClick_pressure');
-      let obj23 = JSON.parse(text23);
+      let obj23: ESObject = JSON.parse(text23);
       console.log('TapGestureBasicClickTest_0010 obj23 $attrs content',obj23.$attrs.content,obj23)
       expect(obj23.$attrs.content).assertEqual('pressure:0');
 
       await CommonFunc.sleep(200);
       let text24 = getInspectorByKey('TapGestureBasicClick_tiltX');
-      let obj24 = JSON.parse(text24);
+      let obj24: ESObject = JSON.parse(text24);
       console.log('TapGestureBasicClickTest_0010 obj24 $attrs content',obj24.$attrs.content,obj24)
       expect(obj24.$attrs.content).assertEqual('tiltX:0');
 
       await CommonFunc.sleep(200);
       let text25 = getInspectorByKey('TapGestureBasicClick_tiltY');
-      let obj25 = JSON.parse(text25);
+      let obj25: ESObject = JSON.parse(text25);
       console.log('TapGestureBasicClickTest_0010 obj25 $attrs content',obj25.$attrs.content,obj25)
       expect(obj25.$attrs.content).assertEqual('tiltY:0');
 
       await CommonFunc.sleep(200);
       let text26 = getInspectorByKey('TapGestureBasicClick_sourceTool');
-      let obj26 = JSON.parse(text26);
+      let obj26: ESObject = JSON.parse(text26);
       console.log('TapGestureBasicClickTest_0010 obj26 $attrs content',obj26.$attrs.content,obj26)
-      expect(obj26.$attrs.content).assertEqual('sourceTool:1');
+      expect(obj26.$attrs.content).assertEqual('sourceTool:FINGER');
 
       await CommonFunc.sleep(200);
       let text27 = getInspectorByKey('TapGestureBasicClick_velocityX');
-      let obj27 = JSON.parse(text27);
+      let obj27: ESObject = JSON.parse(text27);
       console.log('TapGestureBasicClickTest_0010 obj27 $attrs content',obj27.$attrs.content,obj27)
       expect(obj27.$attrs.content).assertEqual('velocityX:0');
 
       await CommonFunc.sleep(200);
       let text28 = getInspectorByKey('TapGestureBasicClick_velocityY');
-      let obj28 = JSON.parse(text28);
+      let obj28: ESObject = JSON.parse(text28);
       console.log('TapGestureBasicClickTest_0010 obj28 $attrs content',obj28.$attrs.content,obj28)
       expect(obj28.$attrs.content).assertEqual('velocityY:0');
 
       await CommonFunc.sleep(200);
       let text29 = getInspectorByKey('TapGestureBasicClick_velocity');
-      let obj29 = JSON.parse(text29);
+      let obj29: ESObject = JSON.parse(text29);
       console.log('TapGestureBasicClickTest_0010 obj29 $attrs content',obj29.$attrs.content,obj29)
       expect(obj29.$attrs.content).assertEqual('velocity:0');
       console.info('TapGestureBasicClickTest_0010 END');

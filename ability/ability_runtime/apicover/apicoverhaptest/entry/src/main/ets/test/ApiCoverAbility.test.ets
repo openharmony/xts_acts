@@ -1043,69 +1043,91 @@ export default function ApiCoverTest() {
       let lifeCallback:abilityLifecycleCallback = {
         onAbilityCreate:(ability)=>{
          console.log(`${tag} onAbilityCreate success, ability: ${JSON.stringify(ability)}`);
+         try{expect().assertFail()}catch{}
         },
         onAbilityWillCreate:(ability)=>{
            console.log(`${tag} onAbilityWillCreate success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageCreate:(ability, window)=>{
            console.log(`${tag} onWindowStageCreate success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageWillCreate:(ability, window)=>{
            console.log(`${tag} onWindowStageWillCreate success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWillNewWant:(ability)=>{
            console.log(`${tag} onWillNewWant success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onNewWant:(ability)=>{
            console.log(`${tag} onNewWant success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageActive:(ability, window)=>{
            console.log(`${tag} onWindowStageActive success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageInactive:(ability, window)=>{
            console.log(`${tag} onWindowStageInactive success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageDestroy:(ability, window)=>{
            console.log(`${tag} onWindowStageDestroy success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageWillDestroy:(ability, window)=>{
            console.log(`${tag} onWindowStageWillDestroy success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityDestroy:(ability, window)=>{
            console.log(`${tag} onAbilityDestroy success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityWillDestroy:(ability, window)=>{
            console.log(`${tag} onAbilityWillDestroy success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityForeground:(ability)=>{
            console.log(`${tag} onAbilityForeground success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityWillForeground:(ability)=>{
            console.log(`${tag} onAbilityWillForeground success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityBackground:(ability)=>{
            console.log(`${tag} onAbilityBackground success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityWillBackground:(ability)=>{
            console.log(`${tag} onAbilityWillBackground success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityContinue:(ability)=>{
            console.log(`${tag} onAbilityContinue success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityWillContinue:(ability)=>{
            console.log(`${tag} onAbilityWillContinue success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageWillRestore:(ability, window)=>{
            console.log(`${tag} onWindowStageWillRestore success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageRestore:(ability, window)=>{
            console.log(`${tag} onWindowStageRestore success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityWillSaveState:(ability)=>{
            console.log(`${tag} onAbilityWillSaveState success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilitySaveState:(ability)=>{
            console.log(`${tag} onAbilitySaveState success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         }
       }
       let id = AppStorage.get<common.ApplicationContext>("applicationContext").on('abilityLifecycle', lifeCallback);
@@ -1114,6 +1136,113 @@ export default function ApiCoverTest() {
         console.log(`${tag}, it end`);
         done();
       })
+    });
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_setSupportedProcessCache_0100
+     * @tc.name   : Test setSupportedProcessCache can not use in iphone.
+     * @tc.desc   : Uri Flag api cover
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : 1
+     */
+    it('SUB_Ability_AbilityRuntime_setSupportedProcessCache_0100', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_setSupportedProcessCache_0100`;
+      let capablity = canIUse("SystemCapability.Ability.AbilityRuntime.Core")
+      if(capablity){
+        try{
+          AppStorage.get<common.ApplicationContext>("applicationContext").setSupportedProcessCache(false)
+        }catch(e){
+          console.log(`${tag}, it end`);
+          expect(e?.code).assertEqual(801)
+        }
+        done();
+      }else{
+        try{
+          let result = AppStorage.get<common.ApplicationContext>("applicationContext").setSupportedProcessCache(false)
+          expect(result).assertEqual(undefined)
+        }catch(e){
+          console.log(`${tag}, it end`);
+          expect().assertFail()
+        }
+        done();
+      }
+      
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ProcessCache_0400
+     * @tc.name   : Call setSupportedProcessCache.
+     * @tc.desc   : The function call should return no permission error.
+     * @tc.size   : LargeTest
+     * @tc.type   : Function
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityRuntime_ProcessCache_0400', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ProcessCache_0400`;
+      console.log(`${tag}, test begin`);
+      let maxCacheNum = parseInt(systemParameterEnhance.getSync('persist.sys.abilityms.maxProcessCacheNum', '0'));
+      if (maxCacheNum > 0) {
+        console.log(`${tag}, ProcessCache support this device`);
+      } else {
+        try {
+          AppStorage.get<common.ApplicationContext>("applicationContext").setSupportedProcessCache(false);
+          expect().assertFail();
+        } catch(e) {
+          console.error(`${tag}, e.code: ${e.code}`);
+          expect(e.code).assertEqual(801);
+        }
+      }
+      console.log(`${tag}, test end`);
+      done();
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ProcessCache_0700
+     * @tc.name   : Call setSupportedProcessCache.
+     * @tc.desc   : The function call should return invalid permission error.
+     * @tc.size   : LargeTest
+     * @tc.type   : Function
+     * @tc.level  : 3
+     */
+     it('SUB_Ability_AbilityRuntime_ProcessCache_0700', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ProcessCache_0700`;
+      console.log(`${tag}, test begin`);
+      let maxCacheNum = parseInt(systemParameterEnhance.getSync('persist.sys.abilityms.maxProcessCacheNum', '0'));
+      if (maxCacheNum <= 0) {
+        console.log(`${tag}, ProcessCache not support this device`);
+      } else {
+        try {
+          AppStorage.get<common.ApplicationContext>("applicationContext").setSupportedProcessCache(undefined);
+          expect().assertFail();
+        } catch(e) {
+          console.error(`${tag}, e.code: ${e.code}`);
+          expect(e.code).assertEqual(401);
+        }
+      }
+      console.log(`${tag}, test end`);
+      done();
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ProcessCache_2000
+     * @tc.name   : Call setSupportedProcessCache.
+     * @tc.desc   : The function call should return invalid permission error.
+     * @tc.size   : LargeTest
+     * @tc.type   : Function
+     * @tc.level  : 3
+     */
+     it('SUB_Ability_AbilityRuntime_ProcessCache_2000', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ProcessCache_2000`;
+      console.log(`${tag}, test begin`);
+      let maxCacheNum = parseInt(systemParameterEnhance.getSync('persist.sys.abilityms.maxProcessCacheNum', '0'));
+      console.log(`${tag}, deviceType: ${deviceType} -- maxCacheNum: ${maxCacheNum} `);
+      if (deviceType === '2in1') {
+        expect(maxCacheNum > 0).assertTrue();
+      } else {
+        expect(maxCacheNum <= 0).assertTrue();
+      }
+      console.log(`${tag}, test end`);
+      done();
     });
   })
 }

@@ -8,7 +8,8 @@
       "phone",
       "tablet",
       "default",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -35,11 +36,11 @@
         ]
       }
     ],
-    "requestPermissions":[
+    "requestPermissions": [
       {
         "name": "ohos.permission.ACCESS_BLUETOOTH",
         "reason": ""
-    }
+      }
     ],
     "testRunner": {
       "name": "OpenHarmonyTestRunner",

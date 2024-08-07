@@ -66,7 +66,7 @@ export default function RichEditorStyledStringTest1() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('RichEditorStyledStringTest1_content');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[RichEditorStyledStringTest1_0100] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('contentstart');

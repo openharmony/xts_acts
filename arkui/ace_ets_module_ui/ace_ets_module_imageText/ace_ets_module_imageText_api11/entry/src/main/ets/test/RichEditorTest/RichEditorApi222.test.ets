@@ -14,7 +14,7 @@
  */
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from "../../MainAbility/common/Common";
+import CommonFunc from '../../MainAbility/common/Common';
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
 
 
@@ -32,7 +32,7 @@ export default function RichEditorApi222() {
         if (!("RichEditorApi2" == pages.name)) {
           console.info("get RichEditorApi2 state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push RichEditorApi2 page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -42,7 +42,7 @@ export default function RichEditorApi222() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("RichEditorApi2 after each called");
     });
 
@@ -55,11 +55,11 @@ export default function RichEditorApi222() {
     */
     it('RichEditorApi2_001', 0, async (done: Function) => {
       console.info('[RichEditorApi2_001] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await Utils.sleep(1000);
-      let RichEditor1 = Utils.getComponentRectOnScreen('RichEditorApi2_RichEditor1')
+      await CommonFunc.sleep(1000);
+      let RichEditor1 = CommonFunc.getComponentRectOnScreen('RichEditorApi2_RichEditor1')
       await driver.mouseDrag({
         x: Math.round((RichEditor1.right - RichEditor1.left) * 0.3 + RichEditor1.left),
         y: Math.round((RichEditor1.bottom - RichEditor1.top) * 0.5 + RichEditor1.top)
@@ -68,10 +68,10 @@ export default function RichEditorApi222() {
           x: Math.round((RichEditor1.right - RichEditor1.left) * 0.5 + RichEditor1.left),
           y: Math.round((RichEditor1.bottom - RichEditor1.top) * 0.5 + RichEditor1.top)
         })
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
 
       let strJson = getInspectorByKey('RichEditorApi2_text1');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("[RichEditorApi2_001] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content).assertEqual('SelectMenuAppear');
       console.info('[RichEditorApi2_001] END');
@@ -86,16 +86,16 @@ export default function RichEditorApi222() {
   */
     it('RichEditorApi2_002', 0, async (done: Function) => {
       console.info('[RichEditorApi2_002] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('RichEditorApi2_getSpans'));
       await btn1.click()
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('RichEditorApi2_text2');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("[RichEditorApi2_002] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content).assertEqual('renderingStrategy:0,effectStrategy:0');
       console.info('[RichEditorApi2_002] END');
