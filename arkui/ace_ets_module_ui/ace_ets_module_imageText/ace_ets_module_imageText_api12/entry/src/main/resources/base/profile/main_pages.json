@@ -37,7 +37,7 @@
     "MainAbility/pages/RichEditor/RichEditorApi13",
     "MainAbility/pages/Image/imageAddApi3",
     "MainAbility/pages/Text/minFontScale",
-    "MainAbility/pages/Image/onComplete",
+  "MainAbility/pages/Image/onComplete",
   "MainAbility/pages/Text/clearStyles",
   "MainAbility/pages/Text/removeStyles",
   "MainAbility/pages/Text/StyledString",
