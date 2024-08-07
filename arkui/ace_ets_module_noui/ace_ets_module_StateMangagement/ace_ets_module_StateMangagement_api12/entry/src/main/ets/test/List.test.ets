@@ -88,5 +88,5 @@ export default function testsuite() {
   LocalTestJsunit();
   ComponentV2TestJsunit();
   ParamTestJsunit();
-  ParamTestJsunit1()
+  ParamTestJsunit1();
 }
