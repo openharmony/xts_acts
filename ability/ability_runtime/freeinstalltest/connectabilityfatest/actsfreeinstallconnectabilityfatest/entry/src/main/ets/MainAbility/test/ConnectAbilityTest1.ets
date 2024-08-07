@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,107 +13,54 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium"
 import rpc from '@ohos.rpc';
 import featureAbility from '@ohos.ability.featureAbility';
 import wantConstant from '@ohos.ability.wantConstant'
 import Prompt from '@system.prompt';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
+import Want from '@ohos.app.ability.Want';
+import ability from '@ohos.ability.ability';
+import base from '@ohos.base';
 
 
 export default function ConnectAbilityTest1() {
-  var TAG = "";
-  var Tempassert = "";
-  var abilityDelegator = undefined;
+  let TAG = "";
+  let Tempassert = "";
+  let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
   let timeoutId = 0;
 
-  function sleep(time) {
-    return new Promise((resolve) => setTimeout(resolve, time))
-  }
-
-  describe('FreeInstall_FA_ConnectAbilityOne', function () {
-    beforeAll(async function (done) {
+  describe('FreeInstall_FA_ConnectAbilityOne', () => {
+    beforeAll(async (done: Function) => {
       console.info("FreeInstall_FA_ConnectAbility before all called");
-      abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-      var cmd = "bm install -p data/test/MockService.hap";
+      let cmd:string = "bm install -p data/test/MockService.hap";
       console.info("cmd : " + cmd)
       console.info(TAG + " abilityDelegator : " + JSON.stringify(abilityDelegator));
-      abilityDelegator.executeShellCommand(cmd, (err: any, d: any) => {
+      abilityDelegator.executeShellCommand(cmd, (err: base.BusinessError, d: ESObject) => {
         console.info("executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      var cmd1 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
-      abilityDelegator.executeShellCommand(cmd1, (err: any, d: any) => {
+      let cmd1 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
+      abilityDelegator.executeShellCommand(cmd1, (err: base.BusinessError, d: ESObject) => {
         console.info("executeShellCommand1 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      var cmd2 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
-      abilityDelegator.executeShellCommand(cmd2, (err: any, d: any) => {
+      let cmd2 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
+      abilityDelegator.executeShellCommand(cmd2, (err: base.BusinessError, d: ESObject) => {
         console.info("executeShellCommand2 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
         done();
       })
     });
 
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info("FreeInstall_FA_ConnectAbility after each called");
       Tempassert = ""
       if ("FreeInstall_FA_ConnectAbility_1600" === TAG) {
-        var cmd14 = "bm uninstall -n com.ohos.hag.famanager";
-        abilityDelegator.executeShellCommand(cmd14, (err: any, d: any) => {
+        let cmd14 = "bm uninstall -n com.ohos.hag.famanager";
+        abilityDelegator.executeShellCommand(cmd14, (err: base.BusinessError, d: ESObject) => {
           console.info("executeShellCommand14 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
         })
       }
       done();
     });
-
-    function tips(msg) {
-      Prompt.showToast({
-        message: msg,
-        duration: 2000,
-        bottom: '150px'
-      });
-    }
-
-    async function connectabillity(msg, request) {
-      console.info(msg + "START");
-      let options = {
-        onConnect: function (element, proxy) {
-          console.info("FreeInstall_FA_ConnectAbility onConnect success!!!")
-          console.info(msg + " onConnect success!!! ");
-          console.info(msg + " onConnect: " + JSON.stringify(element));
-          console.info(msg + " onConnect: " + JSON.stringify(proxy));
-          if (proxy == null) {
-            console.error("FreeInstall_FA_ConnectAbility proxy null");
-            return;
-          }
-          let option = new rpc.MessageOption();
-          let data = new rpc.MessageParcel();
-          let reply = new rpc.MessageParcel();
-          data.writeInterfaceToken("ohos.appexecfwk.IApplicationStateObserver");
-          proxy.sendRequest(0, data, reply, option);
-          Tempassert = "onConnect";
-          tips("连接成功");
-        },
-        onDisconnect: function (element) {
-          console.info("FreeInstall_FA_ConnectAbility onDisconnect success!!!")
-          console.info(msg + " onDisconnect success!!!");
-          console.info(msg + " onDisconnect: " + JSON.stringify(element));
-          Tempassert = "onDisconnect";
-          tips("连接断开");
-        },
-        onFailed: function (code) {
-          console.info("FreeInstall_FA_ConnectAbility onFailed!!!")
-          console.info(msg + " onFailed!!! ");
-          console.info(msg + " onFailed: " + JSON.stringify(code));
-          Tempassert = "onFailed";
-          tips("连接失败");
-        }
-      }
-      let connection = await featureAbility.connectAbility(request, options);
-      console.info(msg + "request：" + JSON.stringify(request));
-      console.info(msg + "options：" + JSON.stringify(options));
-      console.info(msg + "connection=" + JSON.stringify(connection));
-      console.info(msg + "END");
-    }
-
 
 
     /*
@@ -125,33 +70,34 @@ export default function ConnectAbilityTest1() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_1500", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_1500", 0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_1500-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1500";
-      var cmddif = "bm install -p data/test/ConnectDifferentApplication.hap";
-      abilityDelegator.executeShellCommand(cmddif, (err: any, d: any) => {
+      let cmddif = "bm install -p data/test/ConnectDifferentApplication.hap";
+      abilityDelegator.executeShellCommand(cmddif, (err: base.BusinessError, d: ESObject) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      var str = {
+      featureAbility.startAbility({
         "want": {
           "bundleName": "com.example.different.hmservice",
           "abilityName": "MainAbility",
         }
-      };
-      featureAbility.startAbility(str)
+      })
         .then((data) => {
           console.info(TAG + " startother successful. Data: " + JSON.stringify(data))
-        }).catch((error) => {
-          console.error(TAG + " startother  failed. Cause: " + JSON.stringify(error));
-        })
+        }).catch((error:base.BusinessError) => {
+        console.error(TAG + " startother  failed. Cause: " + JSON.stringify(error));
+      })
       timeoutId = setTimeout(async () => {
-        var request15 = {
+        let request15:Want = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication5.ServiceAbility5",
           "moduleName": "myapplication5",
           "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
         }
-        connectabillity(TAG, request15);
+        connectabillity(TAG, request15, (status: string) => {
+          Tempassert = status;
+        });
         setTimeout(() => {
           expect(Tempassert).assertEqual("onFailed");
         }, 500)
@@ -167,34 +113,35 @@ export default function ConnectAbilityTest1() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_1600", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_1600", 0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_1600-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1600";
-      var cmdmyapp4 = "bm install -p data/test/ConnectFaMyApplication4.hap";
-      abilityDelegator.executeShellCommand(cmdmyapp4, (err: any, d: any) => {
+      let cmdmyapp4 = "bm install -p data/test/ConnectFaMyApplication4.hap";
+      abilityDelegator.executeShellCommand(cmdmyapp4, (err: base.BusinessError, d: ESObject) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      var str = {
+      featureAbility.startAbility({
         "want": {
           "bundleName": "com.example.different.hmservice",
           "abilityName": "MainAbility",
         }
-      };
-      featureAbility.startAbility(str)
+      })
         .then((data) => {
           console.info(TAG + " startother successful. Data: " + JSON.stringify(data))
-        }).catch((error) => {
-          console.error(TAG + " startother  failed. Cause: " + JSON.stringify(error));
-        })
+        }).catch((error:base.BusinessError) => {
+        console.error(TAG + " startother  failed. Cause: " + JSON.stringify(error));
+      })
 
-      timeoutId = setTimeout(function () {
-        var request16 = {
+      timeoutId = setTimeout(() => {
+        let request16:Want = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication4.ServiceAbility4",
           "moduleName": "myapplication4",
           "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
         }
-        connectabillity(TAG, request16);
+        connectabillity(TAG, request16, (status: string) => {
+          Tempassert = status;
+        });
         setTimeout(() => {
           expect(Tempassert).assertEqual("onConnect");
         }, 500)
@@ -209,30 +156,30 @@ export default function ConnectAbilityTest1() {
     * @tc.desc    Function test
     * @tc.level   1
     */
-    it("FreeInstall_FA_ConnectAbility_1400", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_1400", 0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_1400-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1400";
-      var str = {
+      featureAbility.startAbility({
         "want": {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication2.MainAbility",
         }
-      }
-      console.info(TAG + " startmyapp2 str: " + JSON.stringify(str));
-      featureAbility.startAbility(str)
+      })
         .then((data) => {
           console.info(TAG + " startmyapp2 successful. Data: " + JSON.stringify(data))
-        }).catch((error) => {
-          console.error(TAG + " startmyapp2 failed. Cause: " + JSON.stringify(error));
-        })
+        }).catch((error:base.BusinessError) => {
+        console.error(TAG + " startmyapp2 failed. Cause: " + JSON.stringify(error));
+      })
       timeoutId = setTimeout(() => {
-        var request14 = {
+        let request14:Want = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication1.ServiceAbility_feature",
           "moduleName": "myapplication3",
           "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
         }
-        connectabillity(TAG, request14);
+        connectabillity(TAG, request14, (status: string) => {
+          Tempassert = status;
+        });
         setTimeout(async () => {
           expect(Tempassert).assertEqual("onFailed");
         }, 500);
@@ -247,20 +194,22 @@ export default function ConnectAbilityTest1() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_ConnectAbility_1700", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_1700", 0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_1700-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1700";
-      var cmddif = "bm install -p data/test/ConnectDifferentApplication.hap";
-      await abilityDelegator.executeShellCommand(cmddif, (err: any, d: any) => {
+      let cmddif = "bm install -p data/test/ConnectDifferentApplication.hap";
+      await abilityDelegator.executeShellCommand(cmddif, (err: base.BusinessError, d: ESObject) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
       timeoutId = setTimeout(() => {
-        var request17 = {
+        let request17:Want = {
           "bundleName": "com.example.different.hmservice",
           "abilityName": "com.example.different.ServiceAbility",
           "moduleName": "entry",
         }
-        connectabillity(TAG, request17);
+        connectabillity(TAG, request17, (status: string) => {
+          Tempassert = status;
+        });
         setTimeout(() => {
           expect(Tempassert).assertEqual("onConnect");
         }, 500);
@@ -275,18 +224,20 @@ export default function ConnectAbilityTest1() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_1800", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_1800", 0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_1800-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1800";
 
       timeoutId = setTimeout(async () => {
-        var request18 = {
+        let request18:Want = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication1.ServiceAbility_feature",
           "moduleName": "xxxxx",
           "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
         }
-        connectabillity(TAG, request18);
+        connectabillity(TAG, request18, (status: string) => {
+          Tempassert = status;
+        });
         setTimeout(() => {
           expect(Tempassert).assertEqual("onFailed");
         }, 500)
@@ -301,22 +252,24 @@ export default function ConnectAbilityTest1() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_1900", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_1900", 0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_1900-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1900";
-      var cmdmyapp5 = "cp data/test/ConnectFaMyApplication5.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +
+      let cmdmyapp5 = "cp data/test/ConnectFaMyApplication5.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +
         "haps/entry/files";
-      await abilityDelegator.executeShellCommand(cmdmyapp5, (err: any, d: any) => {
+      await abilityDelegator.executeShellCommand(cmdmyapp5, (err: base.BusinessError, d: ESObject) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
       timeoutId = setTimeout(async () => {
-        var request19 = {
+        let request19:Want = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication1.ServiceAbility_feature",
           "moduleName": "myapplication3",
           "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
         }
-        connectabillity(TAG, request19);
+        connectabillity(TAG, request19, (status: string) => {
+          Tempassert = status;
+        });
         setTimeout(() => {
           expect(Tempassert).assertEqual("onFailed");
         }, 500)
@@ -331,16 +284,16 @@ export default function ConnectAbilityTest1() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_ConnectAbility_2000", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_2000", 0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_2000-------------");
       TAG = "FreeInstall_FA_ConnectAbility_2000";
-      var cmdmyapp5 = "cp data/test/ConnectFaMyApplication5.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +
+      let cmdmyapp5 = "cp data/test/ConnectFaMyApplication5.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +
         "haps/entry/files";
-      abilityDelegator.executeShellCommand(cmdmyapp5, (err: any, d: any) => {
+      abilityDelegator.executeShellCommand(cmdmyapp5, (err: base.BusinessError, d: ESObject) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
       timeoutId = setTimeout(async () => {
-        var request20 = {
+        let request20:Want = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication5.ServiceAbility5",
           "moduleName": "myapplication5",
@@ -349,7 +302,9 @@ export default function ConnectAbilityTest1() {
             "name": 1111, "key1": "value1", "site": "nice to meet you!"
           },
         }
-        connectabillity(TAG, request20);
+        connectabillity(TAG, request20, (status: string) => {
+          Tempassert = status;
+        });
         setTimeout(() => {
           expect(Tempassert).assertEqual("onConnect");
         }, 500)
@@ -359,4 +314,58 @@ export default function ConnectAbilityTest1() {
     });
   }
   )
+}
+
+export function sleep(time:number):Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, time))
+}
+
+function tips(msg: string) {
+  Prompt.showToast({
+    message: msg,
+    duration: 2000,
+    bottom: '150px'
+  });
+}
+
+async function connectabillity(msg: string, request: Want,callback:(status:string)=>void) {
+  console.info(msg + "START");
+  let options: ability.ConnectOptions = {
+    onConnect: (element, proxy) => {
+      console.info("FreeInstall_FA_ConnectAbility onConnect success!!!")
+      console.info(msg + " onConnect success!!! ");
+      console.info(msg + " onConnect: " + JSON.stringify(element));
+      console.info(msg + " onConnect: " + JSON.stringify(proxy));
+      if (proxy == null) {
+        console.error("FreeInstall_FA_ConnectAbility proxy null");
+        return;
+      }
+      let option = new rpc.MessageOption();
+      let data = new rpc.MessageParcel();
+      let reply = new rpc.MessageParcel();
+      data.writeInterfaceToken("ohos.appexecfwk.IApplicationStateObserver");
+      proxy.sendRequest(0, data, reply, option);
+      callback("onConnect");
+      tips("连接成功");
+    },
+    onDisconnect: (element) => {
+      console.info("FreeInstall_FA_ConnectAbility onDisconnect success!!!")
+      console.info(msg + " onDisconnect success!!!");
+      console.info(msg + " onDisconnect: " + JSON.stringify(element));
+      callback("onDisconnect");
+      tips("连接断开");
+    },
+    onFailed: (code) => {
+      console.info("FreeInstall_FA_ConnectAbility onFailed!!!")
+      console.info(msg + " onFailed!!! ");
+      console.info(msg + " onFailed: " + JSON.stringify(code));
+      callback("onFailed");
+      tips("连接失败");
+    }
+  }
+  let connection = await featureAbility.connectAbility(request, options);
+  console.info(msg + "request：" + JSON.stringify(request));
+  console.info(msg + "options：" + JSON.stringify(options));
+  console.info(msg + "connection=" + JSON.stringify(connection));
+  console.info(msg + "END");
 }

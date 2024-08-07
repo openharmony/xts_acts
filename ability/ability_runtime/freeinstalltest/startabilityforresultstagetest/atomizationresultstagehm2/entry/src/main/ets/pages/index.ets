@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
 import wantConstant from '@ohos.ability.wantConstant'
-import bundleManager from '@ohos.bundle';
 import Prompt from '@system.prompt';
+import Want from '@ohos.app.ability.Want';
+import base from '@ohos.base';
 
 const BUNDLE_NAME = 'com.example.qianyiyingyong.hmservice';
 const ABILITY_NAME1 = 'hnm2MainAbility';
@@ -47,7 +47,7 @@ struct Index {
         top: $r('app.float.wh_value_15')
       })
       .onClick(() => {
-        var str = {
+        let str:Want = {
           'bundleName': BUNDLE_NAME,
           'abilityName': ABILITY_NAME1,
           'flags': wantConstant.Flags.FLAG_INSTALL_ON_DEMAND
@@ -69,11 +69,6 @@ struct Index {
         top: $r('app.float.wh_value_15')
       })
       .onClick(() => {
-        var str = {
-          'bundleName': BUNDLE_NAME,
-          'abilityName': ABILITY_NAME1,
-          'flags': wantConstant.Flags.FLAG_INSTALL_ON_DEMAND
-        };
         this.updateModuleUpgradeFlag('fAStartAbilityPromiseSameBundleName006','feature');
       })
 
@@ -95,7 +90,7 @@ struct Index {
     .height('100%')
   }
 
-  async updateModuleUpgradeFlag(tag, type1) {
+  async updateModuleUpgradeFlag(tag:string, type1:string) {
     console.info(tag + ' startAbility fAStartAbilityPromise START' + JSON.stringify(type1));
 //    await bundleManager.updateModuleUpgradeFlag("com.example.qianyiyingyong.hmservice", type1, true);
     console.info(tag + ' startAbility fAStartAbilityPromise END');
@@ -117,14 +112,14 @@ struct Index {
     console.info('fAStartAbilityForResultPromise terminateSelfWithResult END');
   }
 
-  async fAStartAbilityPromise(tag, str) {
+  async fAStartAbilityPromise(tag:string, str:Want) {
     console.info(tag + ' startAbility fAStartAbilityPromise START' + JSON.stringify(str));
-    let code;
+    let code:number | base.BusinessError;
     await globalThis.abilityContext.startAbility(str)
-      .then((data) => {
+      .then((data:number) => {
         console.info(tag + ' startAbility Operation successful. Promise Data: ' + JSON.stringify(data))
         code = data;
-      }).catch((error) => {
+      }).catch((error:base.BusinessError) => {
         console.info(tag + ' startAbility Operation failed. Promise Cause: ' + JSON.stringify(error));
         code = error;
       })
@@ -132,12 +127,12 @@ struct Index {
     if (code === 0) {
       this.tips('成功');
     } else {
-      this.tips('错误码：' + code.code);
+      this.tips('错误码：' + (code as base.BusinessError).code);
     }
     console.info(tag + ' startAbility fAStartAbilityPromise END');
   }
 
-  tips(msg) {
+  tips(msg:string) {
     Prompt.showToast({
       message: msg,
       duration: 2000,
