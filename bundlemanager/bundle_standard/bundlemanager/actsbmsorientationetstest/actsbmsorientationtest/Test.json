@@ -1,0 +1,37 @@
+{
+  "description": "Configuration for hjunit demo Tests",
+  "driver": {
+    "type": "OHJSUnitTest",
+    "test-timeout": "180000",
+    "bundle-name": "com.example.orientationtest",
+    "module-name": "entry_test",
+    "shell-timeout": "600000"
+  },
+  "kits": [
+    {
+      "type": "PushKit",
+      "push": [
+        "ActsBmsOrientationFollowRecentRelyHap.hap->/data/OrientationTest/ActsBmsOrientationFollowRecentRelyHap.hap",
+        "ActsBmsOrientationNotFollowRecentRelyHap.hap->/data/OrientationTest/ActsBmsOrientationNotFollowRecentRelyHap.hap"
+      ]
+    },
+    {
+      "test-file-name": [
+        "ActsBmsOrientationFollowRecentRelyHap.hap",
+        "ActsBmsOrientationNotFollowRecentRelyHap.hap",
+        "ActsBmsOrientationTest.hap"
+      ],
+      "type": "AppInstallKit",
+      "cleanup-apps": true
+    },
+    {
+      "type": "ShellKit",
+      "run-command": [
+        "power-shell wakeup",
+        "power-shell setmode 602",
+        "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
+        "setenforce 0"
+      ]
+    }
+  ]
+}
