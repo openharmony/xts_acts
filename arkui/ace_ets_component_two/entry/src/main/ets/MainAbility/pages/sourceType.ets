@@ -22,7 +22,11 @@ struct ClickExample {
 
   build() {
     Column() {
-      Button('Touch').backgroundColor(0x2788D9).width(100).height(500).fontSize(20)
+      Button('Touch')
+        .backgroundColor(0x2788D9)
+        .width(100)
+        .height(500)
+        .fontSize(20)
         .onTouch((event: TouchEvent) => {
           if (event.type === TouchType.Down) {
             this.eventType = 'Down'
@@ -44,12 +48,12 @@ struct ClickExample {
           }
           console.info(this.text = 'source：' + event.source);
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "event": JSON.stringify(event),
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 198,
               priority: events_emitter.EventPriority.LOW
             }
@@ -58,7 +62,8 @@ struct ClickExample {
           } catch (err) {
             console.info("sourceTypeTest_0100 emit action state err: " + JSON.stringify(err.message))
           }
-        }).key('button')
+        })
+        .key('button')
       Text(this.text).padding(15).fontSize(20).key('text')
     }.height(350).width('100%').padding(10)
   }

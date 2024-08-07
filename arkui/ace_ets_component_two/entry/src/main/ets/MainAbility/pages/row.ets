@@ -20,15 +20,14 @@ import events_emitter from '@ohos.events.emitter'
 struct RowTest {
   @State alignItems: VerticalAlign = VerticalAlign.Center
   @State justifyContent: FlexAlign = FlexAlign.Start
-
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("row page stateChangCallBack");
     if (eventData != null) {
       console.info("row page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.alignItems != null) {
+      if (eventData.data.alignItems != null) {
         this.alignItems = eventData.data.alignItems;
       }
-      if(eventData.data.justifyContent != null) {
+      if (eventData.data.justifyContent != null) {
         this.justifyContent = eventData.data.justifyContent;
       }
     }
@@ -36,7 +35,7 @@ struct RowTest {
 
   onPageShow() {
     console.info('row page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 182,
       priority: events_emitter.EventPriority.LOW
     }

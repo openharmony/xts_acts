@@ -30,7 +30,8 @@ struct WaterflowDemo {
     return (ret > this.minSize ? ret : this.minSize)
   }
 
-  @Builder itemFoot() {
+  @Builder
+  itemFoot() {
     Column() {
       Text(`Footer`)
         .fontSize(10)
@@ -57,7 +58,7 @@ struct WaterflowDemo {
           .height(this.getSize())
           .backgroundColor(this.colors[item % 5])
 
-        }, item => item)
+        }, (item: number) => item.toString())
       }
       .columnsTemplate("1fr 1fr 1fr 1fr")
       .itemConstraintSize({

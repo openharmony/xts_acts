@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function navigatorCodeJsunit() {
-  describe('NavigatorClickTest', function () {
-    beforeEach(async function (done) {
+  describe('NavigatorClickTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavigatorClick beforeEach start");
       let options = {
         uri: 'MainAbility/pages/NavigatorCode',
@@ -42,32 +42,32 @@ export default function navigatorCodeJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("NavigatorClick after each called");
     });
 
-    it('test_NavigatorClick_001', 0, async function (done) {
+    it('test_NavigatorClick_001', 0, async (done: Function) => {
       console.info('[test_NavigatorClick_001] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('NavigatorType');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_NavigatorClick_001] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.active).assertEqual('false');
       console.info('[test_NavigatorClick_001] END');
       done();
     });
 
-    it('test_NavigatorClick_002', 0, async function (done) {
+    it('test_NavigatorClick_002', 0, async (done: Function) => {
       console.info('[test_NavigatorClick_002] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": "NavigationType.Back"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 138,
           priority: events_emitter.EventPriority.LOW
         }
@@ -77,20 +77,20 @@ export default function navigatorCodeJsunit() {
         console.log("[test_NavigatorClick_002] change component error: " + err.message);
       }
       await Utils.sleep(2000);
-      var strJson = getInspectorByKey('NavigatorType');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('NavigatorType');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_NavigatorClick_002] component obj is: " + JSON.stringify(obj.$attrs.type));
       expect(obj.$attrs.type).assertEqual('NavigationType.Back');
       done();
     });
 
-    it('test_NavigatorClick_003', 0, async function (done) {
+    it('test_NavigatorClick_003', 0, async (done: Function) => {
       await Utils.sleep(1000)
-      var callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         console.info("[test_NavigatorClick_003] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual(10)
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 139,
         priority: events_emitter.EventPriority.LOW
       }

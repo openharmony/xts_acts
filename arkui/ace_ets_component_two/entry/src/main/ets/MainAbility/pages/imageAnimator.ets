@@ -25,9 +25,8 @@ struct ImageAnimatorExample {
   @State iterations: number = 1
   @State fixedSize: boolean = false
 
-
   build() {
-    Column({ space:5 }) {
+    Column({ space: 5 }) {
       ImageAnimator()
         .images([
           {
@@ -63,9 +62,15 @@ struct ImageAnimatorExample {
             left: 0
           }
         ])
-        .state(this.state).reverse(this.reverse).fixedSize(this.fixedSize).preDecode(this.preDecode)
-        .fillMode(this.fillMode).iterations(this.iterations).width(325).height(210)
-        .margin({top:100})
+        .state(this.state)
+        .reverse(this.reverse)
+        .fixedSize(this.fixedSize)
+        .preDecode(this.preDecode)
+        .fillMode(this.fillMode)
+        .iterations(this.iterations)
+        .width(325)
+        .height(210)
+        .margin({ top: 100 })
         .onStart(() => {
           console.info('Start')
         })
@@ -75,12 +80,12 @@ struct ImageAnimatorExample {
         .onRepeat(() => {
           console.info('Repeat')
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "string": "Repeat"
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 114,
               priority: events_emitter.EventPriority.LOW
             }
@@ -100,12 +105,12 @@ struct ImageAnimatorExample {
         Button('start').key('button_0').width(100).padding(5).onClick(() => {
           this.state = AnimationStatus.Running
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "state": this.state
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1150,
               priority: events_emitter.EventPriority.LOW
             }
@@ -118,13 +123,13 @@ struct ImageAnimatorExample {
         Button('pause').key('button1').width(100).padding(5).onClick(() => {
           this.state = AnimationStatus.Paused
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "state": this.state,
                 "fixedSize": this.fixedSize
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 116,
               priority: events_emitter.EventPriority.LOW
             }
@@ -137,13 +142,13 @@ struct ImageAnimatorExample {
         Button('stop').key('button2').width(100).padding(5).onClick(() => {
           this.state = AnimationStatus.Stopped
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "state": this.state,
                 "preDecode": this.preDecode
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 117,
               priority: events_emitter.EventPriority.LOW
             }
@@ -154,16 +159,17 @@ struct ImageAnimatorExample {
           }
         })
       }
+
       Row() {
         Button('reverse').key('button3').width(100).padding(5).onClick(() => {
           this.reverse = !this.reverse
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "fillMode": this.fillMode
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 118,
               priority: events_emitter.EventPriority.LOW
             }
@@ -176,12 +182,12 @@ struct ImageAnimatorExample {
         Button('once').key('button4').width(100).padding(5).onClick(() => {
           this.iterations = 1
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "iterations": this.iterations
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 119,
               priority: events_emitter.EventPriority.LOW
             }
@@ -194,12 +200,12 @@ struct ImageAnimatorExample {
         Button('iteration').key('button5').width(100).padding(5).onClick(() => {
           this.iterations = -1
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "preDecode": this.preDecode
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 120,
               priority: events_emitter.EventPriority.LOW
             }
@@ -212,16 +218,17 @@ struct ImageAnimatorExample {
       }
     }.width('100%').height('100%').backgroundColor(0xF1F3F5)
   }
+
   onPageShow() {
     console.info('imageAnimator page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 121,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("imageAnimator page state change called:" + JSON.stringify(eventData));
       if (eventData.data.preDecode != null) {
