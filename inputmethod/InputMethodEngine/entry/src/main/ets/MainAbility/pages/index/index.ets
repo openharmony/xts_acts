@@ -22,15 +22,16 @@ import testsuite from '../../../test/List.test'
 struct Index {
   @State message: string = 'Hello World';
   @State inputValue: string = 'inputMethodEngine1inputMethodEngine2inputMethodEngine3inputMethodEngine' +
-  'inputMethodEngine4inputMethodEngine5inputMethodEngine6inputMethodEngine7inputMethodEngine8inputMethodEn' +
-  'gine9inputMethodEngine10inputMethodEngine11inputMethodEngine12inputMethodEngine13inputMethodEngine14inputMet' +
-  'hodEngine15inputMethodEngine16inputMethodEngine17inputMethodEngine18inputMethodEngine19inputMethodEngine20input' +
-  'MethodEngine21inputMethodEngine22inputMethodEngine23inputMethodEngine24inputMethodEngine25inputMethodEngine26inp' +
-  'utMethodEngine27inputMethodEngine28inputMethodEngine29inputMethodEngine30inputMethodEngine31inputMethodEngine32i' +
-  'nputMethodEngine33inputMethodEngine34inputMethodEngine35inputMethodEngine36inputMethodEngine37inputMethodEngine3' +
-  '8inputMethodEngine39inputMethodEngine40inputMethodEngine41inputMethodEngine42inputMethodEngine43inputMethodEngine' +
-  '44inputMethodEngine45inputMethodEngine46inputMethodEngine47inputMethodEngine48inputMethodEngine49inputMethodEngi' +
-  'ne50';
+    'inputMethodEngine4inputMethodEngine5inputMethodEngine6inputMethodEngine7inputMethodEngine8inputMethodEn' +
+    'gine9inputMethodEngine10inputMethodEngine11inputMethodEngine12inputMethodEngine13inputMethodEngine14inputMet' +
+    'hodEngine15inputMethodEngine16inputMethodEngine17inputMethodEngine18inputMethodEngine19inputMethodEngine20input' +
+    'MethodEngine21inputMethodEngine22inputMethodEngine23inputMethodEngine24inputMethodEngine25inputMethodEngine26inp' +
+    'utMethodEngine27inputMethodEngine28inputMethodEngine29inputMethodEngine30inputMethodEngine31inputMethodEngine32i' +
+    'nputMethodEngine33inputMethodEngine34inputMethodEngine35inputMethodEngine36inputMethodEngine37inputMethodEngine3' +
+    '8inputMethodEngine39inputMethodEngine40inputMethodEngine41inputMethodEngine42inputMethodEngine43inputMethodEngine' +
+    '44inputMethodEngine45inputMethodEngine46inputMethodEngine47inputMethodEngine48inputMethodEngine49inputMethodEngi' +
+    'ne50';
+
   build() {
     Row() {
       Column() {
@@ -46,11 +47,9 @@ struct Index {
     .height('100%')
   }
 
-  aboutToAppear(){
-    let abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    let abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+  aboutToAppear() {
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     console.info('start run testcase!!!')
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
