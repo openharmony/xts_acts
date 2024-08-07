@@ -15,8 +15,11 @@
 import windowPromiseTest from './windowPromise.test';
 import windowMaximizeTest from './windowMaximize.test';
 import windowImmersiveTest from './windowImmersive.test';
+import windowPropertiesTest from './windowProperties.test';
+
 export default function testsuite() {
   windowPromiseTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
   windowMaximizeTest(globalThis.windowStage);
   windowImmersiveTest(globalThis.windowStage);
+  windowPropertiesTest(globalThis.windowStage);
 }
