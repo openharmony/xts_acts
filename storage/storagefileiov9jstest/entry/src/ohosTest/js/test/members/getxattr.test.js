@@ -71,7 +71,7 @@ describe('fileIO_test_getxattr', function () {
     
     try {
       let attrValue = fs.getxattrSync(fpath, attrKey);
-      console.log("test_FileIO_Getxattr_Async_002 the value is: " + attrValue);
+      console.log("test_FileIO_Getxattr_Sync_002 the value is: " + attrValue);
       expect(attrValue).assertEqual('Test file.');
     } catch (e) {
       console.log('test_FileIO_Getxattr_Sync_002 has failed for ' + e.message + ', code: ' + e.code);

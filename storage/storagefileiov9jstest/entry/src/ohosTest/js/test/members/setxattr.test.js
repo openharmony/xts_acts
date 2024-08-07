@@ -42,7 +42,7 @@ describe('fileIO_test_setxattr', function () {
         console.info("Set extended attribute successfully.");
         expect(true).assertTrue();
       }).catch((err) => {
-        console.error("Failed to set extended attribute with error message: " + err.message + ", error code: " + err.code);
+        console.error("test_FileIO_Setxattr_Async_001 Failed to set extended attribute: " + err.message + ", error code: " + err.code);
       });
       done();
     } catch (e) {
