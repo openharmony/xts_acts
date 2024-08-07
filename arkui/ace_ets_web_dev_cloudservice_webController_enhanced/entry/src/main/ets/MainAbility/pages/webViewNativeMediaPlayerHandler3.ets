@@ -57,7 +57,7 @@ class AVPlayerDemo {
     private isSeek: boolean = true;
     private fd: number = 0;
     private listener?: AVPlayerListener
-    avPlayer?: media.AVPlayer;
+    public avPlayer?: media.AVPlayer;
 
     setSfID(surfaceId: string) {
         this.surfaceID = surfaceId;
@@ -308,10 +308,6 @@ class NativeMediaPlayerHandlerImpl implements webview.NativeMediaPlayerHandler {
             Utils.emitEvent(true, 1828)
         }
         if (readyState > 0) {
-            console.log('HAVE_METADATA.toString():' + webview.ReadyState.HAVE_METADATA.toString())
-            console.log('HAVE_CURRENT_DATA.toString():' + webview.ReadyState.HAVE_CURRENT_DATA.toString())
-            console.log('HAVE_FUTURE_DATA.toString():' + webview.ReadyState.HAVE_FUTURE_DATA.toString())
-            console.log('HAVE_ENOUGH_DATA.toString():' + webview.ReadyState.HAVE_ENOUGH_DATA.toString())
             console.log('readyStateList is:' + readyStateList)
             this.rawHandler.handleReadyStateChanged(1);
             this.rawHandler.handleReadyStateChanged(2);
@@ -576,7 +572,7 @@ struct MyComponent {
     params?: Params
     @State bkColor: Color = Color.Red
     mXComponentController: XComponentController = new XComponentController();
-    @State player_changed: boolean = false;
+    @State playerChanged: boolean = false;
     @Builder static ButtonBuilder(params: Params) {
     MyComponent({ params: params })
         .backgroundColor(Color.Green)
@@ -586,23 +582,23 @@ struct MyComponent {
     }
     videoController: VideoController = new VideoController();
     player?: AVPlayerDemo
-    offset_x: number = 0
-    offset_y: number = 0
-    @State video_width_percent: number = 100;
-    @State video_height_percent: number = 100;
-    view_width: number = 0;
-    view_height: number = 0;
-    video_width: number = 0;
-    video_height: number = 0;
+    offsetX: number = 0
+    offsetY: number = 0
+    @State videoWidthPercent: number = 100;
+    @State videoHeightPercent: number = 100;
+    viewWidth: number = 0;
+    viewHeight: number = 0;
+    videoWidth: number = 0;
+    videoHeight: number = 0;
     componentType:XComponentType = XComponentType.SURFACE;
     fullscreen: boolean = false;
 
     onSizeChanged(width: number, height: number) {
-        this.video_width = width;
-        this.video_height = height;
-        let scale: number = this.view_width / width;
+        this.videoWidth = width;
+        this.videoHeight = height;
+        let scale: number = this.viewWidth / width;
         let scaledVideoHeight: number = scale * height;
-        this.video_height_percent = scaledVideoHeight / this.view_height * 100;
+        this.videoHeightPercent = scaledVideoHeight / this.viewHeight * 100;
     }
 
     build() {
@@ -610,8 +606,8 @@ struct MyComponent {
             Stack() {
                 XComponent({ id: 'video_player_id', type: this.componentType,
                     controller: this.mXComponentController })
-                    .width(this.video_width_percent + '%')
-                    .height(this.video_height_percent + '%')
+                    .width(this.videoWidthPercent + '%')
+                    .height(this.videoHeightPercent + '%')
                     .border({ width: 1, color: Color.Red })
                     .onLoad(() => {
                         if (!this.params) {
@@ -621,7 +617,7 @@ struct MyComponent {
                         this.player = new AVPlayerDemo();
                         this.params.player?.setNativePlayer(this.player);
                         this.player.setSfID(this.mXComponentController.getXComponentSurfaceId());
-                        this.player_changed = !this.player_changed;
+                        this.playerChanged = !this.playerChanged;
 
                         this.player.avPlayerLiveDemo(
                             this.params.player.mediaSource,
@@ -710,10 +706,10 @@ struct MyComponent {
             return HitTestMode.None
         })
         .onAreaChange((oldValue: Area, newValue: Area) => {
-            this.view_width = parseFloat(newValue.width.toString())
-            this.view_height = parseFloat(newValue.height.toString())
+            this.viewWidth = parseFloat(newValue.width.toString())
+            this.viewHeight = parseFloat(newValue.height.toString())
 
-            this.onSizeChanged(this.video_width, this.video_height);
+            this.onSizeChanged(this.videoWidth, this.videoHeight);
         })
     }
 }
