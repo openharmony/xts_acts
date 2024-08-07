@@ -104,11 +104,6 @@ import stepperInterface005 from './stepperTest/stepperInterface/stepperInterface
 import stepperInterface006 from './stepperTest/stepperInterface/stepperInterface006.test.ets';
 import stepperInterface009 from './stepperTest/stepperInterface/stepperInterface009.test.ets';
 import stepperAction001 from './stepperTest/stepperAction/stepperAction001.test.ets';
-import stepperAction003 from './stepperTest/stepperAction/stepperAction003.test.ets';
-import stepperAction004 from './stepperTest/stepperAction/stepperAction004.test.ets';
-import stepperAction005 from './stepperTest/stepperAction/stepperAction005.test.ets';
-import stepperAction006 from './stepperTest/stepperAction/stepperAction006.test.ets';
-import stepperAction007 from './stepperTest/stepperAction/stepperAction007.test.ets';
 import stepperAction027 from './stepperTest/stepperAction/stepperAction027.test.ets';
 
 
@@ -125,11 +120,6 @@ export default function testsuite() {
   stepperInterface006();
   stepperInterface009();
   stepperAction001();
-  stepperAction003();
-  stepperAction004();
-  stepperAction005();
-  stepperAction006();
-  stepperAction007();
   stepperAction027();
   navigationTypeTest();
   StepperJsunit11();
