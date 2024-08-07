@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { ComponentContent, LengthMetrics, ColorMetrics, LengthUnit} from "@ohos.arkui.node";
+import { ComponentContent, LengthMetrics, ColorMetrics, LengthUnit} from '@ohos.arkui.node';
 import {
 ArcButton,
 CommonArcButtonOptions,
@@ -48,14 +48,14 @@ struct ArcButtonDemo {
         Column() {
             Column(){
                 ArcButton({ options: this.options })
-                Button("Click Me First").onClick(()=>{
+                Button('Click Me First').onClick(()=>{
                   this.options.resourceText = '白色风车'
                 })
             }.width(200).borderWidth(5).key('ChipOnClick')
 
             Column(){
                 ArcButton({ options: this.options1 })
-                Button("Click Me Second")
+                Button('Click Me Second')
             }.width(200).borderWidth(5).key('ChipOnClick')
         }
     }

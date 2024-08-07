@@ -68,6 +68,13 @@ export default function Qrcode() {
             await button.click()
             await CommonFunc.sleep(2000);
             await driver.assertComponentExist(ON.text('二维码已过期，请刷新'))
+            let strJson1 = getInspectorByKey('qrcode01');
+            let obj1: Record<string, ESObject> = JSON.parse(strJson1);
+            await CommonFunc.sleep(1000);
+            console.info("[QrcodeJsunit_0100] height: " + JSON.stringify(obj1.$attrs.height));
+            console.info("[QrcodeJsunit_0100] width: " + JSON.stringify(obj1.$attrs.width));
+            expect(obj1.$attrs.height).assertEqual('125.00vp');
+            expect(obj1.$attrs.width).assertEqual('125.00vp');
             console.info('QrcodeJsunit_0100 click success');
             console.info('[QrcodeJsunit_0100] END');
             done();

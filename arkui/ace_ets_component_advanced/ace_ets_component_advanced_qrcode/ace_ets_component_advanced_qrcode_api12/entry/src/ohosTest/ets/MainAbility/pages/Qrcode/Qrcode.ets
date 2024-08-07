@@ -27,7 +27,7 @@ struct Index {
         options: this.qrOptions,
         value:this.value,
         state:this.state,
-      }).key("qrcode01")
+      }).key('qrcode01')
         .onClick(()=>{
           console.info('1111111111111111')
           this.state = QrcodeState.LOADING

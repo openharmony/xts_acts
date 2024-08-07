@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 import { UIContext } from '@ohos.arkui.UIContext';
-import { ComponentContent, LengthMetrics, ColorMetrics} from "@ohos.arkui.node";
+import { ComponentContent, LengthMetrics, ColorMetrics} from '@ohos.arkui.node';
 import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute } from '@ohos.arkui.ArcList';
 @Builder
 function buildText() {
   Stack() {
-    Text("head")
+    Text('head')
       .fontSize(80)
       .padding(0)
       .backgroundColor(0xF9CF93)
@@ -30,16 +30,16 @@ function buildText() {
 @Entry
 @Component
 struct ArcListPage {
-  @State listItemText01: string = "OpenharmonyTest1"
-  @State listItemText02: string = "OpenharmonyTest2"
-  @State listItemText03: string = "OpenharmonyTest3"
-  @State onScrollIndexText: string = "onScrollIndex"
-  @State onReachStartText: string = "onReachStart"
-  @State onReachEndText: string = "onReachEnd"
-  @State onScrollStartText: string = "onScrollStart"
-  @State onScrollStopText: string = "onScrollStop"
-  @State onDidScrollText: string = "onDidScroll"
-  @State onWillScrollText: string = "onWillScroll"
+  @State listItemText01: string = 'OpenharmonyTest1'
+  @State listItemText02: string = 'OpenharmonyTest2'
+  @State listItemText03: string = 'OpenharmonyTest3'
+  @State onScrollIndexText: string = 'onScrollIndex'
+  @State onReachStartText: string = 'onReachStart'
+  @State onReachEndText: string = 'onReachEnd'
+  @State onScrollStartText: string = 'onScrollStart'
+  @State onScrollStopText: string = 'onScrollStop'
+  @State onDidScrollText: string = 'onDidScroll'
+  @State onWillScrollText: string = 'onWillScroll'
   scroller: Scroller = new Scroller()
 
   onPageShow() {
@@ -62,9 +62,9 @@ struct ArcListPage {
           }
       }
       .height(300)
-      .width("90%")
+      .width('90%')
       .border({ width: 3, color: Color.Blue })
-      .key("arclistdefault")
+      .key('arclistdefault')
       ArcList({header: this.tabBar1 , scroller:this.scroller, initialIndex:5}) {
           ArcListItem() {
             Text(this.listItemText02)
@@ -104,9 +104,9 @@ struct ArcListPage {
       .chainAnimation(true)
       .fadingEdge(true)
       .height(300)
-      .width("90%")
+      .width('90%')
       .border({ width: 3, color: Color.Red })
-      .key("arclist01")
+      .key('arclist01')
       ArcList() {
           ArcListItem() {
             Text(this.listItemText01)
@@ -130,9 +130,9 @@ struct ArcListPage {
       .chainAnimation(false)
       .fadingEdge(false)
       .height(300)
-      .width("90%")
+      .width('90%')
       .border({ width: 3, color: Color.Red })
-      .key("arclist02")
+      .key('arclist02')
     }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
   }
 }

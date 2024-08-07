@@ -89,6 +89,10 @@ export default function ChipOnClose() {
             await button.click()
             await CommonFunc.sleep(2000);
             await driver.assertComponentExist(ON.text('白色风车'))
+            let strJson1 = getInspectorByKey('button01');
+            let obj1: Record<string, ESObject> = JSON.parse(strJson1);
+            await CommonFunc.sleep(1000);
+            expect(obj1.$attrs.height).assertEqual('5');
             console.info('arcButtonJsunit_0200 click success');
             console.info('[arcButtonJsunit_0200] END');
             done();

@@ -14,7 +14,8 @@
 group("componentQrcodeTest") {
   testonly = true
   if (is_standard_system) {
-    deps =
-        [ "ace_ets_component_advanced_qrcode_api12:ActsAceEtsComponentQrcodeTest" ]
+    deps = [
+      "ace_ets_component_advanced_qrcode_api12:ActsAceEtsComponentQrcodeTest",
+    ]
   }
 }

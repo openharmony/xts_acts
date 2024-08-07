@@ -14,7 +14,8 @@
 group("componentArcListTest") {
   testonly = true
   if (is_standard_system) {
-    deps =
-        [ "ace_ets_component_advanced_arclist_api12:ActsAceEtsComponentArcListTest" ]
+    deps = [
+      "ace_ets_component_advanced_arclist_api12:ActsAceEtsComponentArcListTest",
+    ]
   }
 }
