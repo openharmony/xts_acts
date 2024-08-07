@@ -52,7 +52,7 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_});
     if (this.isNode && this.rootNode) {
-      this.rootNode.build(wrapBuilder(ButtonBuilder), { text: 'button1',
+      this.rootNode.build(new WrappedBuilder(MyComponent.ButtonBuilder), { text: 'button1',
         text1: 'button2', width : this.width_, height : this.height_ })
       return this.rootNode.getFrameNode();
     } else {
@@ -79,7 +79,10 @@ struct MyComponent {
   @Prop params: Params
   @State bkColor: Color = Color.Red
   @State index: Boolean = false;
-
+  @Builder static ButtonBuilder(params: Params) {
+    MyComponent({ params: params })
+      .backgroundColor(Color.Green)
+  }
   build() {
     Column({ space: 3 }) {
       Button(this.params.text)
@@ -100,12 +103,6 @@ struct MyComponent {
     .width(this.params.width)
     .height(this.params.height)
   }
-}
-
-@Builder
-function ButtonBuilder(params: Params) {
-  MyComponent({ params: params })
-    .backgroundColor(Color.Green)
 }
 
 @Entry
@@ -156,6 +153,10 @@ struct webViewObjectPositionReport {
             switch (this.emitKey) {
               case 'emitWebViewObjectPositionReport': {
                 try {
+                  if ( Utils.isPC(this.controller) ) {
+                    Utils.emitEvent('success', 8018);
+                    return
+                  }
                   this.controller.runJavaScript('positionMove()')
                 } catch (error) {
                   let e:business_error.BusinessError = error as business_error.BusinessError;

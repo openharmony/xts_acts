@@ -457,6 +457,14 @@ struct MyComponent {
     video_height: number = 0;
     
     fullscreen: boolean = false;
+
+    @Builder static ButtonBuilder(params: Params) {
+        MyComponent({ params: params })
+            .backgroundColor(Color.Green)
+            .border({ width: 1, color: Color.Brown })
+            .width('100%')
+            .height('100%')
+    }
     
     onSizeChanged(width: number, height: number) {
         this.video_width = width;
@@ -582,15 +590,6 @@ struct MyComponent {
     }
 }
 
-@Builder
-function ButtonBuilder(params: Params) {
-    MyComponent({ params: params })
-        .backgroundColor(Color.Green)
-        .border({ width: 1, color: Color.Brown })
-        .width('100%')
-        .height('100%')
-}
-
 class MyNodeController extends NodeController {
     private rootNode: BuilderNode<[Params]> | undefined;
     private isRemove = false;
@@ -624,7 +623,7 @@ class MyNodeController extends NodeController {
     }
     build() {
         if (this.rootNode) {
-            this.rootNode.build(wrapBuilder(ButtonBuilder), 
+            this.rootNode.build(new WrappedBuilder(MyComponent.ButtonBuilder),
                                 {'text': 'play', 'text2': 'pause', web_tab:this.web_tab, handler: this.listener, player: this.player})
         }
     }
@@ -702,6 +701,15 @@ struct WebComponent {
                 isPlaying = false
                 this.isShouldOverlay = true
                 await Utils.sleep(2000)
+                if( Utils.isPC( this.controller ) ) {
+                    Utils.emitEvent(true, 1540)
+                    Utils.emitEvent(true, 1541)
+                    Utils.emitEvent(true, 1542)
+                    Utils.emitEvent(true, 1543)
+                    Utils.emitEvent(true, 1544)
+                    Utils.emitEvent(true, 1545)
+                    return true
+                }
                 switch (this.emitKey) {
                     case 'emitWebViewNativeMediaPlayerShouldOverlayFalse': {
                         this.isShouldOverlay = false
@@ -740,8 +748,6 @@ struct WebComponent {
                         if( this.nativeMediaPlayerHandlerImpl ) {
                             if (this.nativeMediaPlayerHandlerImpl.handleFullscreenChanged) {
                                 this.nativeMediaPlayerHandlerImpl.handleFullscreenChanged(true);
-                            } else {
-                                this.nativeMediaPlayerHandlerImpl['handleFullScreenChanged'](true);
                             }
                         }
                         await Utils.sleep(2000)
@@ -764,14 +770,10 @@ struct WebComponent {
                         if( this.nativeMediaPlayerHandlerImpl ) {
                             if (this.nativeMediaPlayerHandlerImpl.handleFullscreenChanged) {
                                 this.nativeMediaPlayerHandlerImpl.handleFullscreenChanged(true);
-                            } else {
-                                this.nativeMediaPlayerHandlerImpl['handleFullScreenChanged'](true);
                             }
                             await Utils.sleep(2000)
                             if (this.nativeMediaPlayerHandlerImpl.handleFullscreenChanged) {
                                 this.nativeMediaPlayerHandlerImpl.handleFullscreenChanged(false);
-                            } else {
-                                this.nativeMediaPlayerHandlerImpl['handleFullScreenChanged'](false);
                             }
                         }
                         await Utils.sleep(2000)

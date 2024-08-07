@@ -16,9 +16,12 @@
 import promptAction from '@ohos.promptAction';
 import router from '@ohos.router';
 import fs from '@ohos.file.fs';
-import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import data_preferences from '@ohos.data.preferences';
-import MediaUtils from '../model/MediaUtils'
+
+class TestCase {
+  public displayName : string;
+  public uri : string;
+}
 
 const TAG = 'ParseXML';
 let path = globalThis.dir;
@@ -35,12 +38,18 @@ struct videoNew {
   @State name: string = 'PlayerVideo';
   @State Vue: boolean = false;
   private current: number = undefined;
-  @State MediaLib: MediaUtils = new MediaUtils();
   @State count: number = 0;
   @State result: string = '';
   @State TEST: number = 0;
   @State Url: string = 'pages/Player/Player_index';
-  @State TestCaseList: Array<mediaLibrary.FileAsset> = [];
+  @State TestCaseList: TestCase[] = [
+      {
+        displayName: 'h264Mp3.mkv', uri: ''
+      },
+      {
+        displayName: 'h264Mp3.mp4', uri: ''
+      },
+    ];
   @State ColorObject: string[] = VarColor;
 
   async onPageShow() {
@@ -58,7 +67,11 @@ struct videoNew {
       Test = data;
       console.info("Succeeded in getting value of 'PlayerVideo'. Data: " + data);
     });
-    this.TestCaseList = await this.MediaLib.getFileAssetsAlbum('Videos/ValidatorData/');
+    for (let i = 0; i < this.TestCaseList.length; i++) {
+    	console.info("TestCaseList succeed");
+        let pathName = context.filesDir + '/' + this.TestCaseList[i].displayName;
+        this.TestCaseList[i].uri = 'file://' + pathName;
+      }
 
     if (Test != 1) {
       let fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
@@ -199,7 +212,7 @@ struct videoNew {
       .backgroundColor(Color.Black)
 
       List({ space: 5 }) {
-        ForEach(this.TestCaseList, (item: mediaLibrary.FileAsset, index) => {
+        ForEach(this.TestCaseList, (item, index) => {
           ListItem() {
             Row() {
               Text(item.displayName).fontSize(16).fontColor(Color.Black)
@@ -221,7 +234,7 @@ struct videoNew {
               })
             })
           }
-        }, item => item.title)
+        }, item => item.displayName)
       }.width('100%').height('80%')
 
       Row() {

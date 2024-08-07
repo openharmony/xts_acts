@@ -14,7 +14,9 @@
  */
 
 import hspImport from './hsp.test';
+import staticImport from './staticImport.test';
 
 export default function testsuite() {
   hspImport();
+  staticImport();
 }

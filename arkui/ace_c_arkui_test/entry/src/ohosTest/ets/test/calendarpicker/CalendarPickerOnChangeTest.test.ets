@@ -36,11 +36,8 @@ export default function calendarPickerOnChangeTest() {
     * @tc.level      : Level 1
     */
     it('testCalendarPickerOnChange001', 0, async (done: Function) => {
-      await Utils.clickComponent('calendarPickerOnChangeTest')
-      await Utils.sleep(2000)
-      await Utils.clickComponent('calendarPickerOnChangeTest')
-      await Utils.sleep(2000)
-      await Utils.clickLocation(300, 300)
+      let Rect = Utils.getComponentRect('calendarPickerOnChangeTest')
+      await Utils.clickLocation(Math.round(Rect.right-vp2px(5)) , Math.round(Rect.bottom-vp2px(5)))
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('calendarPickerOnChangeTest').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()

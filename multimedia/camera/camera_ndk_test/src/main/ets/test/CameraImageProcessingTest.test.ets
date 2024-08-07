@@ -30,7 +30,6 @@ const TAG = "CameraXts CameraImageProcessingTest: ";
 let mPreviewSurface: string;
 let mVideoSurface: string;
 let mVideoReceiver: image.ImageReceiver;
-let fileAsset: mediaLibrary.FileAsset;
 let fdNumber: number;
 let receiver: image.ImageReceiver;
 let ret: number;

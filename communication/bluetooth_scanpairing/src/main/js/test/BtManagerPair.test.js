@@ -38,16 +38,24 @@ describe('btManagerPairTest', function() {
     }
 
     async function clickTheWindow() {
+        console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
         try {
-            console.info('[bluetooth_js] clickRequestPermission start');
-            let driver = Driver.create();
-            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text("开启"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] clickRequestPermission end');
+            console.info('[bluetooth_js] click 开启 end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed');
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
         }
     }
 
@@ -98,9 +106,9 @@ describe('btManagerPairTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_PAIR_0100
-     * @tc.name Test pinRequired and setDevicePairing true
+     * @tc.name testPinRequiredOn
      * @tc.desc Test pinRequired off api
-     * @tc.size MEDIUM
+     * @tc.size MediumTest
      * @ since 8
      * @tc.type Function
      * @tc.level Level 3
@@ -115,6 +123,7 @@ describe('btManagerPairTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]PairDevice error, code is ${error.code}, 
             message is ${error.message}`);
+            expect(true).assertEqual(error != null);
         }
         done();
     })

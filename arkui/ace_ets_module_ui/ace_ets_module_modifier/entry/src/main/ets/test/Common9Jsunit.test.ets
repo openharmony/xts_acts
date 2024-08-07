@@ -844,7 +844,7 @@ export default function common9Jsunit() {
 
       console.info("[common_linearGradientBlur] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson)
         .$attrs));
-      expect(JSON.parse(strJson).$attrs.linearGradientBlur).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.linearGradientBlur.value).assertEqual('60.00px');
       console.info('[common_linearGradientBlur] END');
       done();
     });
@@ -880,7 +880,7 @@ export default function common9Jsunit() {
 
       console.info("[common_accessibilityLevel] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson)
         .$attrs));
-      expect(JSON.parse(strJson).$attrs.accessibilityLevel).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.accessibilityLevel).assertEqual("auto");
       console.info('[common_accessibilityLevel] END');
       done();
     });
@@ -898,7 +898,7 @@ export default function common9Jsunit() {
 
       console.info("[common_accessibilityDescription] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson)
         .$attrs));
-      expect(JSON.parse(strJson).$attrs.accessibilityDescription).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.accessibilityDescription).assertEqual("");
       console.info('[common_accessibilityDescription] END');
       done();
     });
@@ -916,7 +916,7 @@ export default function common9Jsunit() {
       let strJson = getInspectorByKey('rowModifier');
 
       console.info("[common_accessibilityText] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson).$attrs));
-      expect(JSON.parse(strJson).$attrs.accessibilityText).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.accessibilityText).assertEqual("");
       console.info('[common_accessibilityText] END');
       done();
     });
@@ -935,7 +935,7 @@ export default function common9Jsunit() {
 
       console.info("[common_accessibilityGroup] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson)
         .$attrs));
-      expect(JSON.parse(strJson).$attrs.accessibilityGroup).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.accessibilityGroup).assertEqual(false);
       console.info('[common_accessibilityGroup] END');
       done();
     });

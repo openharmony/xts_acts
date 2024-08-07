@@ -30,7 +30,6 @@ import featureAbility from '@ohos.ability.featureAbility'
 const TAG = "CameraXts CameraErrorCodeUsecaseTest: ";
 let mCameraSession: number;
 let mPhotoSurface: string;
-let fileAsset: mediaLibrary.FileAsset;
 let fdNumber: number;
 let receiver: image.ImageReceiver;
 let camera: cameraObj.cameraInfo;

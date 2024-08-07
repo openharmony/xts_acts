@@ -25,8 +25,9 @@ class Test {
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
+
   onDestroy() {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
   }
 }
 

@@ -17,7 +17,10 @@
     "name": "har",
     "type": "har",
     "deviceTypes": [
-      "default"
+      "wearable",
+      "default",
+      "tablet",
+      "2in1"
     ]
   }
 }

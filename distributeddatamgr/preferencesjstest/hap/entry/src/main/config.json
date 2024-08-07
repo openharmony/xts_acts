@@ -12,6 +12,7 @@
     "package": "ohos.acts.preferencesjstest",
     "name": ".entry",
     "deviceType": [
+      "wearable",
       "tablet",
       "default",
       "phone",

@@ -14,8 +14,11 @@
  */
 import windowPromiseTest from './windowPromise.test';
 import windowMaximize from './windowMaximize.test';
+import WindowLifecycle from './WindowLifecycle.test';
 
 export default function testsuite() {
+  WindowLifecycle(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowPromiseTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
   windowMaximize(globalThis.windowStage);
+  
 }

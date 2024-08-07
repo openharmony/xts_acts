@@ -19,12 +19,11 @@ import deviceInfo from '@ohos.deviceInfo';
 import fileio from '@ohos.fileio';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import Logger from '../model/Logger';
-import MediaUtils from '../model/MediaUtils';
 import prompt from '@ohos.prompt';
 import fs from '@ohos.file.fs';
 import screen from '@ohos.screen';
+import DateTimeUtil from '../model/DateTimeUtil';
 
 const CameraSize = {
   WIDTH: 1280,
@@ -34,7 +33,6 @@ const CameraSize = {
 class CameraService {
   private tag: string = 'qlw CameraService';
   private static instance: CameraService = new CameraService();
-  private mediaUtil = MediaUtils.getInstance();
   private cameraManager: camera.CameraManager = undefined;
   cameras: Array<camera.CameraDevice> = undefined;
   private cameraInput: camera.CameraInput = undefined;
@@ -43,7 +41,6 @@ class CameraService {
   private cameraOutputCapability: camera.CameraOutputCapability = undefined;
   private captureSession: camera.CaptureSession = undefined;
   private mReceiver: image.ImageReceiver = undefined;
-  private fileAsset: mediaLibrary.FileAsset = undefined;
   private fd: number = -1;
   private videoRecorder: media.VideoRecorder = undefined;
   private videoOutput: camera.VideoOutput = undefined;
@@ -138,18 +135,19 @@ class CameraService {
   async savePicture(buffer: ArrayBuffer, img: image.Image) {
     try {
       Logger.info(this.tag, 'savePicture');
-      let imgFileAsset = await this.mediaUtil.createAndGetUri(mediaLibrary.MediaType.IMAGE);
-      let imgPhotoUri = imgFileAsset.uri;
-      Logger.info(this.tag, `photoUri = ${imgPhotoUri}`);
-      let imgFd = await this.mediaUtil.getFdPath(imgFileAsset);
-      Logger.info(this.tag, `fd = ${imgFd}`);
-      await fileio.write(imgFd, buffer);
-      await imgFileAsset.close(imgFd);
+      let dateTimeUtil = new DateTimeUtil();
+      let filesDir = globalThis.abilityContext.filesDir;
+      let name = `${dateTimeUtil.getDate()}_${dateTimeUtil.getTime()}`
+      let path = filesDir + '/IMG_' + name + '.jpg';
+      Logger.info(this.tag, `getFileFd path : ${path}`);    
+      let Fd = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      fs.writeSync(Fd.fd, buffer);
+      if (Fd.fd) {
+        fs.closeSync(Fd.fd);
+        Logger.info(this.tag, `release Fd.fd success`);
+      }
       await img.release();
       Logger.info(this.tag, 'save image done');
-      if (this.handleTakePicture) {
-        this.handleTakePicture(imgPhotoUri);
-      }
     } catch (err) {
       Logger.info(this.tag, `save picture err ${err.message}`);
     }
@@ -462,10 +460,6 @@ class CameraService {
           await this.videoOutput.stop()
         }
         await this.videoOutput.release()
-      }
-      if (this.fileAsset) {
-        await this.fileAsset.close(this.fd)
-        return this.fileAsset
       }
       Logger.info(this.tag, `stopVideo success`)
     } catch (err) {

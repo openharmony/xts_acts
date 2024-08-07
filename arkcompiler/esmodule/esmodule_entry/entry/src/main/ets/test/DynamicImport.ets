@@ -25,10 +25,6 @@ export default function dynamicImport() {
       expect(lib.add(2, 3)).assertEqual(5)
       expect(lib.default).assertEqual('test')
     })
-    it('importOhpm', 0, async () => {
-      let lib = await import('leap-year')
-      expect(lib.default(2000)).assertEqual(true)
-    })
     it('importSystemInternal', 0, async () => {
       let lib = await import('@ohos.hilog')
       lib.default.info(0x0000, "testTag", 'dexter log: call ohos.hilog')

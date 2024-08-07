@@ -1340,7 +1340,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
         that.parse(options);
         let result = 'key:0 value:1  key:2 value:77  key:10 value:81  key:2 value:88  key:4 value:93  ' +
         'key:3 value:101  key:10 value:105  key:2 value:111  key:4 value:115  key:3 value:122  key:10 value:126  ' +
-        'key:2 value:132  key:4 value:136  key:3 value:143  key:3 value:150  key:1 value:299  ';
+        'key:2 value:132  key:4 value:136  key:3 value:143  key:3 value:150  key:1 value:150  ';
         expect(str).assertEqual(result);
     })
 

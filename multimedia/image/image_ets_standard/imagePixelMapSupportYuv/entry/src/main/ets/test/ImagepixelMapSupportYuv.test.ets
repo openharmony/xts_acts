@@ -1688,7 +1688,7 @@ export default function imagepixelMapSupportYuv() {
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg", "buffer", true);
         const checkResult = await pixelMapPacker(testTag, pixelMap_NV12, "packing", 'promise', 'image/webp', 100)
-        expect(checkResult).assertFalse()
+        expect(checkResult).assertTrue()
         done()
       }catch(error){
         hilog.info(0x0000, testTag, `${testTag} Test exception  ` + error);
@@ -1758,7 +1758,7 @@ export default function imagepixelMapSupportYuv() {
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg", "fd", true);
         const checkResult = await pixelMapPacker(testTag, pixelMap_NV12, "packToFile", 'callback', 'image/png', 98);
-        expect(checkResult).assertFalse()
+        expect(checkResult).assertTrue()
         done()
       }catch(error){
         hilog.info(0x0000, testTag, `${testTag} Test exception  ` + error);
@@ -2896,7 +2896,7 @@ export default function imagepixelMapSupportYuv() {
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg", "fd", true);
         const checkResult = await pixelMapPacker(testTag, pixelMap_NV21, "packing", 'promise', 'image/png', 22);
-        expect(checkResult).assertFalse()
+        expect(checkResult).assertTrue()
         done()
       }catch(error){
         hilog.info(0x0000, testTag, `${testTag} Test exception  ` + error);
@@ -2965,7 +2965,7 @@ export default function imagepixelMapSupportYuv() {
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_oto.jpeg", "fd", true);
         const checkResult = await pixelMapPacker(testTag, pixelMap_NV21, "packToFile", 'callback', 'image/webp', 100);
-        expect(checkResult).assertFalse()
+        expect(checkResult).assertTrue()
         done()
       }catch(error){
         hilog.info(0x0000, testTag, `${testTag} Test exception  ` + error);
