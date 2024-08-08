@@ -3360,7 +3360,7 @@ export default function UtdfMimeTypeTest() {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2540 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-font");
       console.log("typeId:" + result);
-      expect(result).assertEqual("com.ghostscript.font");
+      expect(result).assertEqual("com.adobe.postscript-pfb-font");
     });
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2560
