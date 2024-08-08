@@ -241,7 +241,7 @@ export default function OnAndOffScreenTest() {
           if (data.event == onForeground) {
             if (deviceType === '2in1') {
               setTimeout(async () => {
-                commonEvent.unsubscribe(subscriber, async (err, data) => {
+                commonEventManager.unsubscribe(subscriber, async (err, data) => {
                   console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
                   expect(status1).assertTrue();
                   done();
