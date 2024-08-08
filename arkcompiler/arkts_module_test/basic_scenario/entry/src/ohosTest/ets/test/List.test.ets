@@ -15,8 +15,10 @@
 
 import hspImport from './hsp.test';
 import staticImport from './staticImport.test';
+import dynamicImport from './dynamicImport.test';
 
 export default function testsuite() {
   hspImport();
   staticImport();
+  dynamicImport();
 }

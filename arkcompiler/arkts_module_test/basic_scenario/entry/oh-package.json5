@@ -25,6 +25,7 @@
     "library2": "file:../library2",
     "library3": "file:../library3",
     "har": "file:../har",
-    "libentry.so": "file:./src/main/cpp/types/libentry"
+    "libentry.so": "file:./src/main/cpp/types/libentry",
+    "@wolfx/json5": "^2.2.3-rc.1"
   }
 }
