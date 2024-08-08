@@ -12,8 +12,6 @@
 # limitations under the License.
 
 group("arkui") {
-    testonly = true
-    deps = [
-        "ace_ets_component_atomicservice_interstitialdialogaction:InterstitialDialogActionTest"
-    ]
+  testonly = true
+  deps = [ "ace_ets_component_atomicservice_interstitialdialogaction:InterstitialDialogActionTest" ]
 }

@@ -59,11 +59,11 @@ export default function InterstitialDialogActionTest() {
     });
 
     /*
-     *tc.number ArkUI_Swiper_0100
-     *tc.name   Set Swiper's nextMargin and prevMargin with negative
-     *tc.desc   Set Swiper's nextMargin and prevMargin with negative
+     *tc.number ArkUI_InterstitialDialogAction_0100
+     *tc.name   Set InterstitialDialogAction's bottom offset with OFFSET_FOR_BAR
+     *tc.desc   Set InterstitialDialogAction's bottom offset with OFFSET_FOR_BAR
      */
-    it('ArkUI_Swiper_0100', 0, async (done: Function) => {
+    it('ArkUI_InterstitialDialogAction_0100', 0, async (done: Function) => {
       let CASE = 'ArkUI_InterstitialDialogAction_0100'
       console.info(`${SUITE} ${CASE} START`);
 
