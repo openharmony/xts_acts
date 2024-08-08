@@ -28,6 +28,17 @@ class MyNodeController11 extends NodeController {
         { ratios: [0.0, 1.0],expectedUpdateInterval: 1000 },undefined)
   }
 }
+ class StyledStringTest {
+      testStr: string = ''
+      constructor(str: string) {
+        this.testStr = str
+      }
+
+      static convertHtmlToStyledString(input: string): Promise<StyledString> {
+        return StyledString.fromHtml(input)
+      }
+      
+    }
 @Entry
 @Component
 struct imageAddApi3 {
