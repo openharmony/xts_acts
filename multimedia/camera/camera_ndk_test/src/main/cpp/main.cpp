@@ -87,6 +87,17 @@ static napi_value GetSupportedCameras(napi_env env, napi_callback_info info)
     return cameraInfo;
 }
 
+static napi_value GetCameraOrientation(napi_env env, napi_callback_info info)
+{
+    ndkCamera_->GetCameraOrientation();
+
+    napi_value jsValue = nullptr;
+
+    napi_create_int32(env, ndkCamera_->GetCameraOrientation(), &jsValue);
+
+    return jsValue;
+}
+
 
 static napi_value CreateCameraInput(napi_env env, napi_callback_info info)
 {
@@ -909,6 +920,7 @@ static napi_value Init(napi_env env, napi_value exports)
         { "initCamera", nullptr, InitCamera, nullptr, nullptr, nullptr, napi_default, nullptr },
 
         { "getSupportedCameras", nullptr, GetSupportedCameras, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "getCameraOrientation", nullptr, GetCameraOrientation, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "createCameraInput", nullptr, CreateCameraInput, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "createCameraInputWithPositionAndType", nullptr, CreateCameraInputWithPositionAndType, nullptr, nullptr,
             nullptr, napi_default, nullptr },

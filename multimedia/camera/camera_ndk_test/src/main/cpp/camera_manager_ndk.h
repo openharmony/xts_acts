@@ -93,6 +93,7 @@ public:
     Camera_ErrorCode CameraInputClose(void);
     Camera_ErrorCode CameraInputRelease(void);
     Camera_ErrorCode GetSupportedCameras(void);
+    Camera_ErrorCode GetCameraOrientation(void);
     Camera_ErrorCode GetSupportedOutputCapability(void);
     Camera_ErrorCode CreatePreviewOutput(void);
     Camera_ErrorCode CreatePhotoOutput(char* photoSurfaceId);
@@ -213,5 +214,7 @@ private:
     static NDKCamera* ndkCamera_;
     static std::mutex mtx_;
     volatile bool valid_;
+    uint32_t orientation_;
+    uint32_t cameraDeviceIndex_;
 };
 #endif  // CAMERA_NATIVE_CAMERA_H
