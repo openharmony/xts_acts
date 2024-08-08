@@ -17,9 +17,9 @@ group("actsbmsorientationetstest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsbmsorientationtest:ActsBmsOrientationTest",
       "actsbmsorientationfollowrecentrelyhap:ActsBmsOrientationFollowRecentRelyHap",
       "actsbmsorientationnotfollowrecentrelyhap:ActsBmsOrientationNotFollowRecentRelyHap",
+      "actsbmsorientationtest:ActsBmsOrientationTest",
     ]
   }
 }
