@@ -14,14 +14,14 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function CloseCustomDialogTest() {
-  describe('CloseCustomDialogTest', function () {
-    beforeEach(async function (done) {
+  describe('CloseCustomDialogTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("CloseCustomDialogTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/CustomDialog/UIContext/CloseCustomDialog",
       }
       try {
@@ -40,7 +40,7 @@ export default function CloseCustomDialogTest() {
       console.info("CloseCustomDialogTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("CloseCustomDialogTest after each called");
     });
@@ -53,7 +53,7 @@ export default function CloseCustomDialogTest() {
      * @tc.type
     * @tc.size
      */
-    it('CloseCustomDialogTest_001', 0, async function (done) {
+    it('CloseCustomDialogTest_001', 0, async (done: Function) => {
       console.info('[CloseCustomDialogTest_001] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

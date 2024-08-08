@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function openCustomDialog() {
-  describe('openCustomDialog', function () {
-    beforeEach(async function (done) {
+  describe('openCustomDialog', () => {
+    beforeEach(async (done: Function) => {
       console.info("openCustomDialog beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/promptAction/openCustomDialog',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/promptAction/openCustomDialog',
       }
       try {
         router.clear();
@@ -51,7 +51,7 @@ export default function openCustomDialog() {
      * @tc.type : 
      * @tc.size :
      */
-    it('openCustomDialog_0100', 0, async function (done) {
+    it('openCustomDialog_0100', 0, async (done: Function) => {
       console.info('openCustomDialog_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -59,7 +59,7 @@ export default function openCustomDialog() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('openCustomDialog');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[openCustomDialog_0100] component obj is: " + JSON.stringify(obj));
       console.info("[openCustomDialog_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Custom dialog Message');

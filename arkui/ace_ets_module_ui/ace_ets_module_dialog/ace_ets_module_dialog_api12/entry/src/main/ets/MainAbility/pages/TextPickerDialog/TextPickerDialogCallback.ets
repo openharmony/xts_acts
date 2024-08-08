@@ -28,12 +28,12 @@ struct TextPickerDialogExampleA {
             TextPickerDialog.show({
               range: this.fruits,
               onWillAppear: () => {
-                var eventData = {
+                let eventData: events_emitter.EventData = {
                   data: {
                     "action": 'onWillAppear'
                   }
                 }
-                let event = {
+                let event: events_emitter.InnerEvent = {
                   eventId: 50001,
                   priority: events_emitter.EventPriority.LOW
                 }
@@ -41,12 +41,12 @@ struct TextPickerDialogExampleA {
                 console.info("TextPickerDialog: onWillAppear()")
               },
               onDidAppear: () => {
-                var eventData = {
+                let eventData: events_emitter.EventData = {
                   data: {
                     "action": 'onDidAppear'
                   }
                 }
-                let event = {
+                let event: events_emitter.InnerEvent = {
                   eventId: 50002,
                   priority: events_emitter.EventPriority.LOW
                 }
@@ -54,12 +54,12 @@ struct TextPickerDialogExampleA {
                 console.info("TextPickerDialog: onDidAppear()")
               },
               onWillDisappear: () => {
-                var eventData = {
+                let eventData: events_emitter.EventData = {
                   data: {
                     "action": 'onWillDisappear'
                   }
                 }
-                let event = {
+                let event: events_emitter.InnerEvent = {
                   eventId: 50003,
                   priority: events_emitter.EventPriority.LOW
                 }
@@ -67,12 +67,12 @@ struct TextPickerDialogExampleA {
                 console.info("TextPickerDialog: onWillDisappear()")
               },
               onDidDisappear: () => {
-                var eventData = {
+                let eventData: events_emitter.EventData = {
                   data: {
                     "action": 'onDidDisappear'
                   }
                 }
-                let event = {
+                let event: events_emitter.InnerEvent = {
                   eventId: 50004,
                   priority: events_emitter.EventPriority.LOW
                 }

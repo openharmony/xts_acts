@@ -28,8 +28,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function MeasureJsunit() {
@@ -67,10 +67,12 @@ export default function MeasureJsunit() {
 
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-
-      console.log("[measureJsunit_0100] component strJsonMaxLine2 is: " + JSON.stringify(JSON.parse(strJsonMaxLine2)));
-      console.log("[measureJsunit_0100] component strJsonMaxLine3 is: " + JSON.stringify(JSON.parse(strJsonMaxLine3)));
-      expect(JSON.parse(strJsonMaxLine2).$attrs.content).assertEqual(JSON.parse(strJsonMaxLine3).$attrs.content);
+      let strJsonMaxLine2Obj: ESObject = JSON.parse(strJsonMaxLine2);
+      let strJsonMaxLine3Obj: ESObject = JSON.parse(strJsonMaxLine3);
+      
+      console.log("[measureJsunit_0100] component strJsonMaxLine2 is: " + JSON.stringify(strJsonMaxLine2Obj));
+      console.log("[measureJsunit_0100] component strJsonMaxLine3 is: " + JSON.stringify(strJsonMaxLine3Obj));
+      expect(strJsonMaxLine2Obj.$attrs.content).assertEqual(strJsonMaxLine3Obj.$attrs.content);
       done();
     });
 
@@ -92,12 +94,12 @@ export default function MeasureJsunit() {
 
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-
-
-      console.log("[measureJsunit_0200] component strJsonMaxLine2 is: " + JSON.stringify(JSON.parse(strJsonMaxLine2)));
-      console.log("[measureJsunit_0200] component strJsonMaxLine3 is: " + JSON.stringify(JSON.parse(strJsonMaxLine3)));
-      expect(Number.parseInt(JSON.parse(strJsonMaxLine3).$attrs.content))
-        .assertLarger(Number.parseInt(JSON.parse(strJsonMaxLine2).$attrs.content));
+      let strJsonMaxLine2Obj: ESObject = JSON.parse(strJsonMaxLine2);
+      let strJsonMaxLine3Obj: ESObject = JSON.parse(strJsonMaxLine3);
+      
+      console.log("[measureJsunit_0200] component strJsonMaxLine2 is: " + JSON.stringify(strJsonMaxLine2Obj));
+      console.log("[measureJsunit_0200] component strJsonMaxLine3 is: " + JSON.stringify(strJsonMaxLine3Obj));
+      expect(Number.parseInt(strJsonMaxLine3Obj.$attrs.content)).assertLarger(Number.parseInt(strJsonMaxLine2Obj.$attrs.content));
       done();
     });
 
@@ -118,12 +120,13 @@ export default function MeasureJsunit() {
 
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-
-
-      console.log("[measureJsunit_0300] component strJsonMaxLine2 is: " + JSON.stringify(JSON.parse(strJsonMaxLine2)));
-      console.log("[measureJsunit_0300] component strJsonMaxLine3 is: " + JSON.stringify(JSON.parse(strJsonMaxLine3)));
-      expect(JSON.parse(strJsonMaxLine2).$attrs.content).assertEqual(JSON.parse(strJsonMaxLine3).$attrs.content);
-
+      let strJsonMaxLine2Obj: ESObject = JSON.parse(strJsonMaxLine2);
+      let strJsonMaxLine3Obj: ESObject = JSON.parse(strJsonMaxLine3);
+      
+      console.log("[measureJsunit_0300] component strJsonMaxLine2 is: " + JSON.stringify(strJsonMaxLine2Obj));
+      console.log("[measureJsunit_0300] component strJsonMaxLine3 is: " + JSON.stringify(strJsonMaxLine3Obj));
+      expect(strJsonMaxLine2Obj.$attrs.content).assertEqual(strJsonMaxLine3Obj.$attrs.content);
+      
       let testForWordBreakButton = await driver.findComponent(ON.id('testForWordBreak'));
       await CommonFunc.sleep(500);
       testForWordBreakButton.click();
@@ -157,11 +160,12 @@ export default function MeasureJsunit() {
 
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-
-
-      console.log("[measureJsunit_0400] component strJsonMaxLine2 is: " + JSON.stringify(JSON.parse(strJsonMaxLine2)));
-      console.log("[measureJsunit_0400] component strJsonMaxLine3 is: " + JSON.stringify(JSON.parse(strJsonMaxLine3)));
-      expect(JSON.parse(strJsonMaxLine2).$attrs.content).assertEqual(JSON.parse(strJsonMaxLine3).$attrs.content);
+      let strJsonMaxLine2Obj: ESObject = JSON.parse(strJsonMaxLine2);
+      let strJsonMaxLine3Obj: ESObject = JSON.parse(strJsonMaxLine3);
+      
+      console.log("[measureJsunit_0400] component strJsonMaxLine2 is: " + JSON.stringify(strJsonMaxLine2Obj));
+      console.log("[measureJsunit_0400] component strJsonMaxLine3 is: " + JSON.stringify(strJsonMaxLine3Obj));
+      expect(strJsonMaxLine2Obj.$attrs.content).assertEqual(strJsonMaxLine3Obj.$attrs.content);
       done();
     });
 
@@ -187,12 +191,12 @@ export default function MeasureJsunit() {
 
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-
-
-      console.log("[measureJsunit_0500] component strJsonMaxLine2 is: " + JSON.stringify(JSON.parse(strJsonMaxLine2)));
-      console.log("[measureJsunit_0500] component strJsonMaxLine3 is: " + JSON.stringify(JSON.parse(strJsonMaxLine3)));
-      expect(Number.parseInt(JSON.parse(strJsonMaxLine3).$attrs.content))
-        .assertLarger(Number.parseInt(JSON.parse(strJsonMaxLine2).$attrs.content));
+      let strJsonMaxLine2Obj: ESObject = JSON.parse(strJsonMaxLine2);
+      let strJsonMaxLine3Obj: ESObject = JSON.parse(strJsonMaxLine3);
+      
+      console.log("[measureJsunit_0500] component strJsonMaxLine2 is: " + JSON.stringify(strJsonMaxLine2Obj));
+      console.log("[measureJsunit_0500] component strJsonMaxLine3 is: " + JSON.stringify(strJsonMaxLine3Obj));
+      expect(Number.parseInt(strJsonMaxLine3Obj.$attrs.content)).assertLarger(Number.parseInt(strJsonMaxLine2Obj.$attrs.content));
       done();
     });
 

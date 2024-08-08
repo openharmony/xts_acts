@@ -21,6 +21,7 @@
     "description": "$string:entry_test_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
+      "wearable",
       "default",
       "tablet",
       "2in1"

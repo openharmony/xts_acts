@@ -352,10 +352,36 @@ export default function common9Jsunit() {
     it('common_border', 0, async (done: Function) => {
       console.info('[common_border] START');
       let strJson = getInspectorByKey('textModifier3');
-
+      let obj = JSON.parse(strJson);
       console.info("[common_border] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson).$attrs));
-      expect(JSON.parse(strJson).$attrs.border)
-        .assertEqual("{\"style\":{\"left\":\"BorderStyle.Dashed\",\"top\":\"BorderStyle.Solid\",\"right\":\"BorderStyle.Dotted\",\"bottom\":\"BorderStyle.Dashed\"},\"color\":{\"left\":\"#FF000000\",\"right\":\"#FF000000\",\"top\":\"#FF0F0F0F\",\"bottom\":\"#FFF0F0F0\"},\"width\":{\"left\":\"3.00vp\",\"top\":\"10.00vp\",\"right\":\"6.00vp\",\"bottom\":\"15.00vp\"},\"radius\":{\"topLeft\":\"10.00vp\",\"topRight\":\"20.00vp\",\"bottomLeft\":\"40.00vp\",\"bottomRight\":\"80.00vp\"}}");
+      let border_obj =  JSON.parse(obj.$attrs.border);
+      console.info("[common_border] border_obj is : " + JSON.stringify(obj.$attrs.border));
+      
+      expect(border_obj.style.left).assertEqual("BorderStyle.Dashed");
+      expect(border_obj.style.right).assertEqual("BorderStyle.Dotted");
+      expect(border_obj.style.top).assertEqual("BorderStyle.Solid");
+      expect(border_obj.style.bottom).assertEqual("BorderStyle.Dashed");
+      
+      expect(border_obj.width.left).assertEqual("3.00vp");
+      expect(border_obj.width.right).assertEqual("6.00vp");
+      expect(border_obj.width.top).assertEqual("10.00vp");
+      expect(border_obj.width.bottom).assertEqual("15.00vp");
+      expect(border_obj.width.start).assertEqual("0.00vp");
+      expect(border_obj.width.end).assertEqual("0.00vp");
+
+      expect(border_obj.color.left).assertEqual('#FF000000');
+      expect(border_obj.color.right).assertEqual('#FF000000');
+      expect(border_obj.color.top).assertEqual('#FF0F0F0F');
+      expect(border_obj.color.bottom).assertEqual('#FFF0F0F0');
+      
+      expect(border_obj.radius.topLeft).assertEqual("10.00vp");
+      expect(border_obj.radius.topRight).assertEqual("20.00vp");
+      expect(border_obj.radius.bottomLeft).assertEqual("40.00vp");
+      expect(border_obj.radius.bottomRight).assertEqual("80.00vp");
+
+      expect(border_obj.dashGap).assertEqual("-1.00px");
+      expect(border_obj.dashWidth).assertEqual("-1.00px");
+      
       console.info('[common_border] END');
       done();
     });
@@ -844,7 +870,7 @@ export default function common9Jsunit() {
 
       console.info("[common_linearGradientBlur] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson)
         .$attrs));
-      expect(JSON.parse(strJson).$attrs.linearGradientBlur).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.linearGradientBlur.value).assertEqual('60.00px');
       console.info('[common_linearGradientBlur] END');
       done();
     });
@@ -880,7 +906,7 @@ export default function common9Jsunit() {
 
       console.info("[common_accessibilityLevel] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson)
         .$attrs));
-      expect(JSON.parse(strJson).$attrs.accessibilityLevel).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.accessibilityLevel).assertEqual("auto");
       console.info('[common_accessibilityLevel] END');
       done();
     });
@@ -898,7 +924,7 @@ export default function common9Jsunit() {
 
       console.info("[common_accessibilityDescription] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson)
         .$attrs));
-      expect(JSON.parse(strJson).$attrs.accessibilityDescription).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.accessibilityDescription).assertEqual("");
       console.info('[common_accessibilityDescription] END');
       done();
     });
@@ -916,7 +942,7 @@ export default function common9Jsunit() {
       let strJson = getInspectorByKey('rowModifier');
 
       console.info("[common_accessibilityText] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson).$attrs));
-      expect(JSON.parse(strJson).$attrs.accessibilityText).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.accessibilityText).assertEqual("");
       console.info('[common_accessibilityText] END');
       done();
     });
@@ -935,7 +961,7 @@ export default function common9Jsunit() {
 
       console.info("[common_accessibilityGroup] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson)
         .$attrs));
-      expect(JSON.parse(strJson).$attrs.accessibilityGroup).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.accessibilityGroup).assertEqual(false);
       console.info('[common_accessibilityGroup] END');
       done();
     });

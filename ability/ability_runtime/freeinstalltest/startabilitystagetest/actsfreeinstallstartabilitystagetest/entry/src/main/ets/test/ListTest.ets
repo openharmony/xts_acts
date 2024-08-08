@@ -15,6 +15,6 @@
 
 import startAbilityTest from './StartAbilityTest'
 
-export default function testsuite(context) {
-  startAbilityTest(context)
+export default function testsuite() {
+  startAbilityTest()
 }

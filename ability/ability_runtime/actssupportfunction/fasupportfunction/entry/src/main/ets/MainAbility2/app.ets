@@ -15,10 +15,11 @@
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 
-var TAG1 = "Fa:SupportFunction:MainAbility2:";
-var listPush1 = "Fa_SupportFunction_MainAbility2_";
-var lifeList = [];
-var lifeListActive = [];
+const TAG1 = "Fa:SupportFunction:MainAbility2:";
+const listPush1 = "Fa_SupportFunction_MainAbility2_";
+let lifeList: string[] = [];
+let lifeListActive: string[] = [];
+
 export default {
   async onCreate() {
     console.log(TAG1 + 'onCreate');
@@ -52,6 +53,6 @@ export default {
   }
 }
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+function sleep(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
 }

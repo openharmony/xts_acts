@@ -15,37 +15,37 @@
 import Ability from '@ohos.app.ability.UIAbility'
 
 export default class MainAbility extends Ability {
-    onCreate(want, launchParam) {
-        // Ability is creating, initialize resources for this ability
-        console.log("ThirdCallTest MainAbility onCreate")
-        globalThis.abilityWant = want;
-        globalThis.callee = this.callee;
-    }
+  onCreate(want, launchParam) {
+    // Ability is creating, initialize resources for this ability
+    console.log("ThirdCallTest MainAbility onCreate")
+    globalThis.abilityWant = want;
+    globalThis.callee = this.callee;
+  }
 
-    onDestroy() {
-        // Ability is destroying, release resources for this ability
-        console.log("ThirdCallTest MainAbility onDestroy")
-    }
+  onDestroy() {
+    // Ability is destroying, release resources for this ability
+    console.log("ThirdCallTest MainAbility onDestroy")
+  }
 
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.log("ThirdCallTest MainAbility onWindowStageCreate")
-        globalThis.abilityContext = this.context
-        windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null)
-    }
+  onWindowStageCreate(windowStage) {
+    // Main window is created, set main page for this ability
+    console.log("ThirdCallTest MainAbility onWindowStageCreate")
+    globalThis.abilityContext = this.context
+    windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null)
+  }
 
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.log("ThirdCallTest MainAbility onWindowStageDestroy")
-    }
+  onWindowStageDestroy() {
+    // Main window is destroyed, release UI related resources
+    console.log("ThirdCallTest MainAbility onWindowStageDestroy")
+  }
 
-    onForeground() {
-        // Ability has brought to foreground
-        console.log("ThirdCallTest MainAbility onForeground")
-    }
+  onForeground() {
+    // Ability has brought to foreground
+    console.log("ThirdCallTest MainAbility onForeground")
+  }
 
-    onBackground() {
-        // Ability has back to background
-        console.log("ThirdCallTest MainAbility onBackground")
-    }
+  onBackground() {
+    // Ability has back to background
+    console.log("ThirdCallTest MainAbility onBackground")
+  }
 };

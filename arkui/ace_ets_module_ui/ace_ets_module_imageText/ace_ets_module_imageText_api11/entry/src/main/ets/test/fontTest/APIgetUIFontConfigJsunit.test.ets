@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 export default function APIgetUIFontConfigJsunit() {
-  describe('APIgetUIFontConfigJsunit', function () {
-    beforeEach(async function (done) {
+  describe('APIgetUIFontConfigJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("APIgetUIFontConfigJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/font/APIgetUIFontConfig',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/font/APIgetUIFontConfig',
       }
       try {
         router.clear();
@@ -39,7 +39,7 @@ export default function APIgetUIFontConfigJsunit() {
       }
       done();
     });
-    it('APIgetUIFontConfigJsunit_0100', 0, async function (done) {
+    it('APIgetUIFontConfigJsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('APIgetUIFontConfigJsunit_0100 START');
       let driver = Driver.create();
@@ -48,7 +48,7 @@ export default function APIgetUIFontConfigJsunit() {
       await btn1.click();
       await CommonFunc.sleep(1000);
       let strcontent = getInspectorByKey('APIgetUIFontConfigText');
-      let obj = JSON.parse(strcontent);
+      let obj: ESObject = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
       console.info('APIgetUIFontConfigJsunit_0100 component obj is: ' + obj);
       console.info('APIgetUIFontConfigJsunit_0100 component obj.$attrs.content is: ' + obj.$attrs.content);

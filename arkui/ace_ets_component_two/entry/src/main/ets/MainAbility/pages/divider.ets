@@ -19,6 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct DividerExample {
   @State color: Color = 0xCCCCCC
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
       Text('Horizontal divider').fontSize(9).fontColor(0xCCCCCC)
@@ -48,16 +49,16 @@ struct DividerExample {
     .width('100%').height(350).padding({ left: 35, right: 35, top: 35 })
   }
 
-    onPageShow() {
+  onPageShow() {
     console.info('divider page show called');
-    var stateChangeEvent = {
-    eventId: 85,
-    priority: events_emitter.EventPriority.LOW
-  }
-  events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+    let stateChangeEvent: events_emitter.InnerEvent = {
+      eventId: 85,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("divider page state change called:" + JSON.stringify(eventData));
       if (eventData.data.color != null) {

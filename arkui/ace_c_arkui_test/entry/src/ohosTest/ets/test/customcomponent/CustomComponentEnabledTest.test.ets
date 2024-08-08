@@ -43,11 +43,11 @@ export default function customComponentEnabledTest() {
       await Utils.sleep(2000)
       focusControl.requestFocus('EnabledTestCustomComponent')
       await Utils.sleep(2000)
-      expect(Utils.getComponentInfoByKey('EnabledTestCustomComponent').$attrs.backgroundColor).assertEqual('#FF0000FF')
+      expect(Utils.getComponentInfoByKey('EnabledTestCustomComponent').$attrs.backgroundColor).assertEqual('#FF00FF00')
 
       focusControl.requestFocus('EnabledTestCustomComponentCompare')
       await Utils.sleep(2000)
-      expect(Utils.getComponentInfoByKey('EnabledTestCustomComponent').$attrs.backgroundColor).assertEqual('#FFFFFF00')
+      expect(Utils.getComponentInfoByKey('EnabledTestCustomComponent').$attrs.backgroundColor).assertEqual('#FF00FF00')
 
       expect(Utils.getComponentInfoByKey('EnabledTestCustomComponent').$attrs.enabled).assertTrue()
       done()

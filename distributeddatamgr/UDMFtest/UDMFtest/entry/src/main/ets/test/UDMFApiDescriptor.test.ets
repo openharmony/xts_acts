@@ -266,7 +266,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("general.source-code");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.plain-text");
+      expect(typeObj.belongingToTypes[0]).assertEqual("general.text");
       expect(typeObj.description).assertEqual("Generic source code.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
@@ -662,7 +662,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".java,.jav");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/x-java");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2000 end");
     });
     /**
@@ -4129,11 +4129,11 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("general.markdown");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.plain-text");
+      expect(typeObj.belongingToTypes[0]).assertEqual("general.text");
       expect(typeObj.description).assertEqual("Markdown format.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".md");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".md,.markdown,.markdn,.mdown");
       expect(typeObj.mimeTypes.toString()).assertEqual("text/markdown");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0220 end");
     });
@@ -5182,7 +5182,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".pfb");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-font");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0640 end");
     });
 
@@ -5211,7 +5211,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".pfa");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-font");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0650 end");
     });
 

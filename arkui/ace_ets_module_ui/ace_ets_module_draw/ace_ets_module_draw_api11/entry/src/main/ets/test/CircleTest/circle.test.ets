@@ -242,11 +242,11 @@ export default function circleNewJsunit() {
         bundleName: "com.arkui.ace.draw",
         moduleName: "phone",
         id: $r('app.string.app_name').id,
-        params: null,
+        params: undefined,
         type: 0
       };
       try {
-        globalThis.abilityContext.resourceManager.getStringValue(resource, (error:BusinessError, value:ESObject) => {
+        globalThis.abilityContext.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
           if (error != null) {
             console.log("error is " + error);
             expect().assertFail();

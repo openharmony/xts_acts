@@ -31,10 +31,12 @@ struct DragControllerPage {
   private arr: number[] = [0, 1, 2]
 
   aboutToAppear(): void {
-    try {
-      loadNativeModule('global')
-    } catch {
-      console.log('loadNativeModule error')
+    if(this.pixmap){
+      try {
+        loadNativeModule('global')
+      } catch {
+        console.log('loadNativeModule error')
+      }
     }
   }
 
@@ -64,7 +66,7 @@ struct DragControllerPage {
         .margin(10)
         .onDragEnter(() => {
           try {
-            let uiContext: UIContext = storages.get<UIContext>('uiContext') as UIContext;
+            let uiContext: UIContext = this.getUIContext();
             let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
             let foregroundColor: ResourceColor = Color.Green;
 

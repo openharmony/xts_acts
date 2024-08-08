@@ -15,7 +15,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter';
 
 export default function marqueeJsunit() {
@@ -31,7 +31,7 @@ export default function marqueeJsunit() {
         if (!("marquee" == pages.name)) {
           console.info("get marquee state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(4000);
+          await CommonFunc.sleep(4000);
           console.info("push marquee page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,17 +41,17 @@ export default function marqueeJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("marquee after each called");
     });
 
 
     it('testMarquee_0100', 0, async (done: Function) => {
       console.info('testMarquee_0100 START');
-      await Utils.sleep(1500);
+      await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testMarquee_0100 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.start).assertEqual(true);
+        expect(indexEvent.data?.start).assertEqual(true);
         done()
       }
       let indexEvent: events_emitter.InnerEvent = {
@@ -64,10 +64,10 @@ export default function marqueeJsunit() {
         console.info("testMarquee_0100 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("testMarquee_0100 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let callback1 = (eventData: events_emitter.EventData) => {
         console.info("testMarquee_0100 get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.fontColor).assertEqual(Color.Blue);
+        expect(eventData.data?.fontColor).assertEqual(Color.Blue);
         done()
       }
       let innerEventOne: events_emitter.InnerEvent = {
@@ -85,10 +85,10 @@ export default function marqueeJsunit() {
 
     it('testMarquee_0200', 0, async (done: Function) => {
       console.info('testMarquee_0200 START');
-      await Utils.sleep(1500);
+      await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testMarquee_0200 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.start).assertEqual(true);
+        expect(indexEvent.data?.start).assertEqual(true);
         done()
       }
       let indexEvent: events_emitter.InnerEvent = {
@@ -101,10 +101,10 @@ export default function marqueeJsunit() {
         console.info("testMarquee_0200 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("testMarquee_0200 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let callback1 = (eventData: events_emitter.EventData) => {
         console.info("testMarquee_0200 get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.fontSize).assertEqual(50);
+        expect(eventData.data?.fontSize).assertEqual(50);
         done()
       }
       let innerEventOne: events_emitter.InnerEvent = {
@@ -121,10 +121,10 @@ export default function marqueeJsunit() {
 
     it('testMarquee_0300', 0, async (done: Function) => {
       console.info('testMarquee_0300 START');
-      await Utils.sleep(1500);
+      await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testMarquee_0300 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.start).assertEqual(true);
+        expect(indexEvent.data?.start).assertEqual(true);
         done()
       }
       let indexEvent: events_emitter.InnerEvent = {
@@ -137,10 +137,10 @@ export default function marqueeJsunit() {
         console.info("testMarquee_0300 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("testMarquee_0300 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let callback1 = (eventData: events_emitter.EventData) => {
         console.info("testMarquee_0300 get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual(true);
+        expect(eventData.data?.ACTION).assertEqual(true);
         done()
       }
       let innerEventOne: events_emitter.InnerEvent = {

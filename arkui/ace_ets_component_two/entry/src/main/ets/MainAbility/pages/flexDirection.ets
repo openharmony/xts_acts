@@ -26,12 +26,12 @@ struct flexDirectionExample {
     Column() {
       Column({ space: 5 }) {
         Text('direction:Row').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction:FlexDirection.Row }) {
+        Flex({ direction: FlexDirection.Row }) {
           Text('1').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
           Text('2').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
           Text('3').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
           Text('4').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
-          .key('Row')
+            .key('Row')
         }.height(70).width('90%').padding(10).backgroundColor(0xAFEEEE)
 
         Text('direction:Column').fontSize(9).fontColor(0xCCCCCC).width('90%')
@@ -40,7 +40,7 @@ struct flexDirectionExample {
           Text('2').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
           Text('3').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
           Text('4').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
-          .key('Column')
+            .key('Column')
         }
         .height(160)
         .width('90%')
@@ -53,7 +53,7 @@ struct flexDirectionExample {
           Text('2').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
           Text('3').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
           Text('4').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
-          .key('ColumnReverse')
+            .key('ColumnReverse')
         }
         .height(160)
         .width('90%')
@@ -62,26 +62,27 @@ struct flexDirectionExample {
       }.width('100%').margin({ top: 5 })
     }.width('100%')
   }
+
   onPageShow() {
     console.info('flexDirection page show called');
-    var stateChangeEvent1 = {
+    let stateChangeEvent1: events_emitter.InnerEvent = {
       eventId: 97,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent1, this.stateChangCallBack)
-    var stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 98,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent2, this.stateChangCallBack)
-    var stateChangeEvent3 = {
+    let stateChangeEvent3: events_emitter.InnerEvent = {
       eventId: 99,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent3, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("swiper page state change called:" + JSON.stringify(eventData));
       if (eventData.data.width != null) {

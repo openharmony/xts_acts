@@ -51,11 +51,11 @@ export default function APIremoveGestureByTag() {
      * @tc.type :    Column
      * @tc.size :
      */
-    it('APIremoveGestureByTag_0100', 0, async function (done) {
+    it('APIremoveGestureByTag_0100', 0, async (done: Function) => {
       console.info('APIremoveGestureByTag_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIremoveGestureByTag_Text01');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[APIremoveGestureByTag_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('init');
       console.info('[APIremoveGestureByTag_0100] END');

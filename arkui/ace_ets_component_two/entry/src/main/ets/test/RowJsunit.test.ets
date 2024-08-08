@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
 import Utils from './Utils';
 
 export default function rowJsunit() {
-  describe('rowTest', function () {
-    beforeEach(async function (done) {
+  describe('rowTest', () => {
+    beforeEach(async (done: Function) => {
       let options = {
         uri: 'MainAbility/pages/row',
       }
@@ -40,71 +40,71 @@ export default function rowJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("row after each called");
     });
 
-    it('testRow_100', 0, async function (done) {
+    it('testRow_100', 0, async (done: Function) => {
       console.info('[testRow_100] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Row');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("testRow_100 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.align).assertEqual("Alignment.Center");
       console.info('testRow_100 END');
       done();
     });
 
-    it('testRow_200', 0, async function (done) {
+    it('testRow_200', 0, async (done: Function) => {
       console.info('[testRow_200] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Row');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("testRow_200 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.direction).assertEqual("Direction.Auto");
       console.info('testRow_200 END');
       done();
     });
 
-    it('testRow_300', 0, async function (done) {
+    it('testRow_300', 0, async (done: Function) => {
       console.info('[testRow_300] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Row');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("testRow_300 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.width).assertEqual("90.00%");
       console.info('testRow_300 END');
       done();
     });
 
-    it('testRow_400', 0, async function (done) {
+    it('testRow_400', 0, async (done: Function) => {
       console.info('[testRow_400] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Row');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("testRow_400 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Auto");
       console.info('testRow_400 END');
       done();
     });
 
-    it('testRow_500', 0, async function (done) {
+    it('testRow_500', 0, async (done: Function) => {
       console.info('[testRow_500] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Row');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("testRow_500 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.height).assertEqual("107.00vp");
       console.info('testRow_500 END');
       done();
     });
 
-    it('testRow_600', 0, async function (done) {
+    it('testRow_600', 0, async (done: Function) => {
       console.info('[testRow_600] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Row');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("testRow_600 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.borderStyle).assertEqual("BorderStyle.Solid");
       console.info('testRow_600 END');

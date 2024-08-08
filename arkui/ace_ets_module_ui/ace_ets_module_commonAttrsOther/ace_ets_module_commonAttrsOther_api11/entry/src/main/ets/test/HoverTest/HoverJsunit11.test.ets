@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function HoverJsunit11() {
-  describe('HoverJsunit11', function () {
-    beforeEach(async function (done) {
+  describe('HoverJsunit11', () => {
+    beforeEach(async (done: Function) => {
       console.info("HoverJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Hover/Hover11',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Hover/Hover11',
       }
       try {
         router.clear();
@@ -44,7 +44,7 @@ export default function HoverJsunit11() {
     });
 
 
-    it('HoverJsunit_0100', 0, async function (done) {
+    it('HoverJsunit_0100', 0, async (done: Function) => {
 
       console.info('HoverJsunit_0200 START');
       let driver = await Driver.create()
@@ -52,7 +52,7 @@ export default function HoverJsunit11() {
       await driver.mouseMoveTo({x: globalThis.winLeft + vp2px(100), y:globalThis.winTop + vp2px(100)})
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('hover11');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[HoverJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[HoverJsunit_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('AtrueBfalse');
@@ -60,7 +60,7 @@ export default function HoverJsunit11() {
       done();
     });
 
-    it('HoverJsunit_0200', 0, async function (done) {
+    it('HoverJsunit_0200', 0, async (done: Function) => {
 
       console.info('HoverJsunit_0200 START');
       let driver = await Driver.create()
@@ -70,7 +70,7 @@ export default function HoverJsunit11() {
       await driver.mouseMoveTo({x:point.x , y:point.y})
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('hover11');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[HoverJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[HoverJsunit_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('AfalseBtrue');
@@ -78,7 +78,7 @@ export default function HoverJsunit11() {
       done();
     });
 
-    it('HoverJsunit_0300', 0, async function (done) {
+    it('HoverJsunit_0300', 0, async (done: Function) => {
 
       console.info('HoverJsunit_0300 START');
       let driver = await Driver.create()
@@ -91,7 +91,7 @@ export default function HoverJsunit11() {
       await driver.mouseMoveTo({x:Math.round((left + right) / 2), y:Math.round((top + bottom) / 2)})
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('hover11');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[HoverJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[HoverJsunit_0300] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('AfalseBtrue');

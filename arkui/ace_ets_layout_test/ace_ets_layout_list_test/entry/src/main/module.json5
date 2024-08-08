@@ -21,6 +21,7 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
+      "wearable",
         "tablet",
         "default",
         "2in1"

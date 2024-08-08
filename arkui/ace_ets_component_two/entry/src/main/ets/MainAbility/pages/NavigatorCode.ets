@@ -22,9 +22,9 @@ struct NavigatorCode {
   @State active: boolean = false;
   @State Text: string = 'news';
   @State typeValue: NavigationType = NavigationType.Back;
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
-      var navigationTypeValue = eventData.data.typeValue;
+      let navigationTypeValue: ESObject = eventData.data.typeValue;
       console.info("navigationTypeValue:" + navigationTypeValue);
       if (navigationTypeValue != null) {
         this.typeValue = navigationTypeValue;
@@ -39,17 +39,17 @@ struct NavigatorCode {
 
   onPageShow() {
     console.info('navigatorCode page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 137,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEvent = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 138,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+    events_emitter.on(stateChangeEvent2, this.stateChangCallBack)
   }
 
   build() {

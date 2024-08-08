@@ -15,7 +15,7 @@
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../../MainAbility/common/Utils';;
+import Utils from '../../MainAbility/common/Utils';
 
 export default function ohosPromptJsunit() {
   describe('appInfoTest_four_3', () => {
@@ -49,7 +49,7 @@ export default function ohosPromptJsunit() {
       await Utils.sleep(1000)
       let callback = (eventData: events_emitter.EventData) => {
         console.info("[test_OhosPrompt_001] get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.matrix1).assertEqual("[100, 10]")
+        expect(eventData.data?.matrix1).assertEqual("[100, 10]")
       }
       let innerEvent: events_emitter.InnerEvent = {
         eventId: 142,

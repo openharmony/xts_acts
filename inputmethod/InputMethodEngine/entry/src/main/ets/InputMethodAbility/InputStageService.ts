@@ -20,7 +20,7 @@ export default class InputDemoService extends InputMethodExtensionAbility {
 
   onCreate(want) {
     this.keyboardDelegate = new KeyboardDelegate(this.context);
-    this.keyboardDelegate.onCreate();  // 初始化窗口
+    this.keyboardDelegate.onCreate(); // 初始化窗口
   }
 
   onDestroy() {

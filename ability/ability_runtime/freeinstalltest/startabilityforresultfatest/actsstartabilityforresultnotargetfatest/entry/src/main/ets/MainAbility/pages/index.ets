@@ -12,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import router from '@system.router';
+ import router from '@ohos.router';
  
 async function routePage() {
-  let options = {
-    uri: 'pages/second'
+  let options:router.RouterOptions = {
+    url: 'pages/second'
   }
   try {
-    await router.push(options)
+    await router.pushUrl(options)
   } catch (err) {
     console.error(`fail callback, code: ${err.code}, msg: ${err.msg}`)
   }

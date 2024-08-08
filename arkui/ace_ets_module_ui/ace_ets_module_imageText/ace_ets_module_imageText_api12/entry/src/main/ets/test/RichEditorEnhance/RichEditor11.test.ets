@@ -18,10 +18,10 @@ import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern
 
 
 export default function RichEditor11() {
-  describe('RichEditor11', function () {
-    beforeEach(async function (done) {
+  describe('RichEditor11', () => {
+    beforeEach(async (done: Function) => {
       console.info("RichEditor11 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/RichEditorEnhance/RichEditor11',
       }
       try {
@@ -41,7 +41,7 @@ export default function RichEditor11() {
       console.info("RichEditor11 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await driver.delayMs(1000)
       console.info("RichEditor11 after each called");
@@ -54,7 +54,7 @@ export default function RichEditor11() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('RichEditor11_0100', 0, async function (done) {
+    it('RichEditor11_0100', 0, async (done: Function) => {
       // Test stop
       console.info('[RichEditor11_0100] START');
       let driver = Driver.create();

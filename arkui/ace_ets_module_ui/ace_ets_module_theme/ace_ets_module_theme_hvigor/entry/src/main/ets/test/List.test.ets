@@ -33,7 +33,15 @@ import menuThemeTest from './components/Menu.test';
 import menuItemThemeTest from './components/MenuItem.test';
 import patternLockThemeTest from './components/PatternLock.test';
 import qrCodeThemeTest from './components/QRCode.test';
+import radioThemeTest from './components/Radio.test';
+import searchThemeTest from './components/Search.test';
 import sliderThemeTest from './components/Slider.test';
+import swiperThemeTest from './components/Swiper.test';
+import textThemeTest from './components/Text.test';
+import textClockThemeTest from './components/TextClock.test';
+import textPickerThemeTest from './components/TextPicker.test';
+import timePickerThemeTest from './components/TimePicker.test';
+import toggleThemeTest from './components/Toggle.test'
 
 export default function testsuite() {
   // global tests
@@ -57,5 +65,13 @@ export default function testsuite() {
   menuItemThemeTest();
   patternLockThemeTest();
   qrCodeThemeTest();
+  radioThemeTest();
+  searchThemeTest();
   sliderThemeTest();
+  swiperThemeTest();
+  textThemeTest();
+  textClockThemeTest();
+  textPickerThemeTest();
+  timePickerThemeTest();
+  toggleThemeTest();
 }

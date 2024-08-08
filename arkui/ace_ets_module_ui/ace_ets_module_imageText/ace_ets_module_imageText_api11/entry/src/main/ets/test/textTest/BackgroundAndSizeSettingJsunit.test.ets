@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function backgroundAndSizeSettingJsunit() {
   describe('backgroundAndSizeSettingTest', () => {
@@ -31,7 +31,7 @@ export default function backgroundAndSizeSettingJsunit() {
         if (!("backgroundAndSizeSetting" == pages.name)) {
           console.info("get backgroundAndSizeSetting state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push backgroundAndSizeSetting page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,13 +41,13 @@ export default function backgroundAndSizeSettingJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("backgroundAndSizeSetting after each called");
     });
 
     it('testBackgroundAndSizeSetting_0100', 0, async (done: Function) => {
       console.info('testBackgroundAndSizeSetting_0100 START');
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJson: string = getInspectorByKey('fontColor');
       console.info("testBackgroundAndSizeSetting_0100 component strJson:" + strJson);
       console.info("testBackgroundAndSizeSetting_0100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -58,7 +58,7 @@ export default function backgroundAndSizeSettingJsunit() {
 
     it('testBackgroundAndSizeSetting_0200', 0, async (done: Function) => {
       console.info('testBackgroundAndSizeSetting_0200 START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -74,7 +74,7 @@ export default function backgroundAndSizeSettingJsunit() {
       } catch (err) {
         console.log("testBackgroundAndSizeSetting_0200 change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('backgroundColor');
       console.info("testBackgroundAndSizeSetting_0200 component strJson:" + strJson);
       console.info("testBackgroundAndSizeSetting_0200 rowDirection: " + JSON.parse(strJson).$attrs.direction);
@@ -84,7 +84,7 @@ export default function backgroundAndSizeSettingJsunit() {
 
     it('testBackgroundAndSizeSetting_0300', 0, async (done: Function) => {
       console.info('testBackgroundAndSizeSetting_0300 START');
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJson: string = getInspectorByKey('backgroundColor');
       console.info("testBackgroundAndSizeSetting_0300 component strJson:" + strJson);
       console.info("testBackgroundAndSizeSetting_0300 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -95,7 +95,7 @@ export default function backgroundAndSizeSettingJsunit() {
 
     it('testBackgroundAndSizeSetting_0400', 0, async (done: Function) => {
       console.info('[testBackgroundAndSizeSetting_0400] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('centerRow');
       console.info("[testBackgroundAndSizeSetting_0400] component strJson:" + strJson);
       expect(JSON.parse(strJson).$attrs.width).assertEqual('80.00vp');
@@ -108,7 +108,7 @@ export default function backgroundAndSizeSettingJsunit() {
 
     it('testBackgroundAndSizeSetting_0500', 0, async (done: Function) => {
       console.info('[testBackgroundAndSizeSetting_0500] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('innerRow');
       console.info("[testBackgroundAndSizeSetting_0500] component strJson:" + strJson);
       expect(JSON.parse(strJson).$attrs.width).assertEqual('100.00%');
@@ -137,7 +137,7 @@ export default function backgroundAndSizeSettingJsunit() {
       } catch (err) {
         console.log("[testBackgroundAndSizeSetting_0600] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('centerRow');
       console.info("[testBackgroundAndSizeSetting_0600] component strJson:" + strJson);
       expect(JSON.parse(strJson).$attrs.width).assertEqual('200.00vp');
@@ -150,7 +150,7 @@ export default function backgroundAndSizeSettingJsunit() {
 
     it('testBackgroundAndSizeSetting_0700', 0, async (done: Function) => {
       console.info('[testBackgroundAndSizeSetting_0700] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -167,7 +167,7 @@ export default function backgroundAndSizeSettingJsunit() {
       } catch (err) {
         console.log("[testBackgroundAndSizeSetting_0700] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('innerRow');
       console.info("[testBackgroundAndSizeSetting_0700] component strJson:" + strJson);
       expect(JSON.parse(strJson).$attrs.width).assertEqual('80.00%');
@@ -178,7 +178,7 @@ export default function backgroundAndSizeSettingJsunit() {
 
     it('testBackgroundAndSizeSetting_0800', 0, async (done: Function) => {
       console.info('[testBackgroundAndSizeSetting_0800] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('layoutWeight1');
       console.info("[testBackgroundAndSizeSetting_0800] component strJson:" + strJson);
       expect(JSON.parse(strJson).$attrs.layoutWeight).assertEqual(1);
@@ -188,7 +188,7 @@ export default function backgroundAndSizeSettingJsunit() {
 
     it('testBackgroundAndSizeSetting_0900', 0, async (done: Function) => {
       console.info('[testBackgroundAndSizeSetting_0900] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -204,7 +204,7 @@ export default function backgroundAndSizeSettingJsunit() {
       } catch (err) {
         console.log("[testBackgroundAndSizeSetting_0900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('layoutWeight1');
       console.info("[testBackgroundAndSizeSetting_0900] component strJson:" + strJson);
       expect(JSON.parse(strJson).$attrs.layoutWeight).assertEqual(3);

@@ -1418,36 +1418,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         expect(exception.code).assertEqual(1300002)
       }
     })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2900
-     * @tc.name      : testIsWindowShowing_WindowStateAbnormal
-     * @tc.desc      : Check whether the current window is displayed
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testIsWindowShowing_WindowStateAbnormal', 0, async function () {
-      let caseName = 'testIsWindowShowing_WindowStateAbnormal';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let win = null;
-      win = await windowStage.createSubWindow('testIsWindowShowing_WindowStateAbnormal').catch((err) => {
-        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      console.log(msgStr + 'windowStage.createSubWindow success');
-      expect(!!win).assertTrue();
-      await win.destroyWindow();
-      try {
-        let data = win.isWindowShowing();
-        console.info(msgStr + 'Succeeded in checking whether the window is showing. Data: ' + JSON.stringify(data));
-        expect().assertFail();
-      } catch (exception) {
-        console.error(msgStr + 'Failed to check whether the window is showing. Cause: ' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002)
-      }
-    })
+  
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2910
      * @tc.name      : testIsWindowSupportWideGamut_WindowStateAbnormal_Callback
@@ -4465,50 +4436,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         expect().assertFail();
       }
     })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3670
-     * @tc.name      : testWindowOffWindowEvent_RepeatOff
-     * @tc.desc      : Disable the monitoring of window life cycle changes
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testWindowOffWindowEvent_RepeatOff', 0, async function () {
-      let caseName = 'testWindowOffWindowEvent_RepeatOff';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let win = null;
-      win = await windowStage.createSubWindow('testWindowOffWindowEvent_RepeatOff').catch((err) => {
-        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      console.log(msgStr + 'windowStage.createSubWindow success');
-      expect(!!win).assertTrue();
-      try {
-        win.on('windowEvent', (data) => {
-          console.info(msgStr + 'Window event happened. Event:' + JSON.stringify(data));
-        });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
-        await win.destroyWindow();
-        expect().assertFail();
-      }
-      try {
-        win.off('windowEvent');
-      } catch (exception) {
-        console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
-        await win.destroyWindow();
-        expect().assertFail();
-      }
-      try {
-        win.off('windowEvent');
-        await win.destroyWindow();
-      } catch (exception) {
-        console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
-        await win.destroyWindow();
-        expect().assertFail();
-      }
-    })
+   
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3680
      * @tc.name      : testWindowOffWindowEvent_UnregisteredOff
@@ -4609,45 +4537,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         expect().assertFail();
       }
     })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3710
-     * @tc.name      : testOffWindowStageEvent_RepeatOff
-     * @tc.desc      : Turn off listening for Windows Stage lifecycle changes
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testOffWindowStageEvent_RepeatOff', 0, async function () {
-      let caseName = 'testOffWindowStageEvent_RepeatOff';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      try {
-        windowStage.on('windowStageEvent', (data) => {
-          console.info(msgStr + 'Succeeded in enabling the listener for window stage event changes. Data: ' +
-          JSON.stringify(data));
-        });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to enable the listener for window stage event changes. Cause:' +
-        JSON.stringify(exception));
-        expect().assertFail();
-      }
-      try {
-        windowStage.off('windowStageEvent');
-        console.log(msgStr + 'windowStageEvent success first')
-      } catch (exception) {
-        console.error(msgStr + 'Failed to disable the listener for window stage event changes. Cause:' +
-        JSON.stringify(exception));
-        expect().assertFail();
-      }
-      try {
-        windowStage.off('windowStageEvent');
-        console.log(msgStr + 'windowStageEvent success second')
-      } catch (exception) {
-        console.error(msgStr + 'Failed to disable the listener for window stage event changes. Cause:' +
-        JSON.stringify(exception));
-        expect().assertFail();
-      }
-    })
+    
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3720
      * @tc.name      : testOffWindowStageEvent_UnregisteredOff

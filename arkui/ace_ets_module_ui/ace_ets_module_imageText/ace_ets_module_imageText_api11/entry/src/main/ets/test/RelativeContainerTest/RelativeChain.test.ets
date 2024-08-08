@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function RelativeChain() {
-  describe('RelativeChain', function () {
-    beforeEach(async function (done) {
+  describe('RelativeChain', () => {
+    beforeEach(async (done: Function) => {
       console.info("RelativeChain beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function RelativeChain() {
       console.info("RelativeChain foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("RelativeChain after each called");
     });
@@ -50,7 +50,7 @@ export default function RelativeChain() {
     * @tc.size
      */
 
-    it('RelativeChain_001', 0, async function (done) {
+    it('RelativeChain_001', 0, async (done: Function) => {
       console.info('[RelativeChain_001] START');
 
       await CommonFunc.sleep(1000);
@@ -77,7 +77,7 @@ export default function RelativeChain() {
     * @tc.size
      */
 
-    it('RelativeChain_002', 0, async function (done) {
+    it('RelativeChain_002', 0, async (done: Function) => {
       console.info('[RelativeChain_002] START');
 
       await CommonFunc.sleep(1000);
@@ -110,7 +110,7 @@ export default function RelativeChain() {
     * @tc.size
      */
 
-    it('RelativeChain_003', 0, async function (done) {
+    it('RelativeChain_003', 0, async (done: Function) => {
       console.info('[RelativeChain_003] START');
 
       await CommonFunc.sleep(1000);

@@ -18,10 +18,11 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct PositionExample {
-  @State direction:Direction = Direction.Ltr
+  @State direction: Direction = Direction.Ltr
+
   build() {
     Column() {
-      Column({space: 10}) {
+      Column({ space: 10 }) {
         Text('align').fontSize(9).fontColor(0xCCCCCC).width('90%')
         Text('top start')
           .align(Alignment.TopStart)
@@ -46,20 +47,20 @@ struct PositionExample {
 
   onPageShow() {
     console.info('direction2 page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 1082,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
 
-    var stateChangeEventOne = {
+    let stateChangeEventOne: events_emitter.InnerEvent = {
       eventId: 1083,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("direction2 page state change called:" + JSON.stringify(eventData));
       if (eventData.data.direction != null) {

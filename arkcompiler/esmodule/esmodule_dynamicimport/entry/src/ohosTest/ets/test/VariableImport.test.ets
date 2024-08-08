@@ -16,20 +16,20 @@
 import { describe, it, expect } from '@ohos/hypium';
 import { varibleWithinHsp } from 'Sharelibraryhsp/src/main/ets/pages/Index';
 import { varibleWithinHarPath} from 'Staticlibraryhar/src/main/ets/components/mainpage/MainPage';
-import { variableImportOhpm, variableImportRemoteHar, varibleWithinHap } from '../../../main/ets/pages/Index';
+import { varibleWithinHap } from '../../../main/ets/pages/Index';
 
 export default function variableImport() {
   describe('ActVariableImport', () => {
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_variableImport_0001
-     * @tc.name      : variableHspName
+     * @tc.name      : testVariableHspName
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('variableHspName', 0, async () => {
+    it('testVariableHspName', 0, async () => {
       let packageName = 'Sharelibraryhsp'
       let lib: ESObject= await import(packageName)
       expect(lib.add(2,3)).assertEqual(5)
@@ -38,13 +38,13 @@ export default function variableImport() {
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_variableImport_0002
-     * @tc.name      : variableHarName
+     * @tc.name      : testVariableHarName
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('variableHarName', 0, async () => {
+    it('testVariableHarName', 0, async () => {
       let packageName = 'Staticlibraryhar'
       let lib: ESObject= await import(packageName)
       expect(lib.add(2,3)).assertEqual(5)
@@ -52,41 +52,14 @@ export default function variableImport() {
     })
 
     /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_variableImport_0003
-     * @tc.name      : variableImportRemoteHar
-     * @tc.desc      : add name of task for taskpool
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-    */
-    it('variableImportRemoteHar', 0, async () => {
-      let res = await variableImportRemoteHar()
-      expect(res).assertTrue()
-      console.info("-------------variableImportRemoteHar-------------")
-    })
-
-    /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_variableImport_0004
-     * @tc.name      : variableImportOhpm
-     * @tc.desc      : add name of task for taskpool
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-    */
-    it('variableImportOhpm', 0, async () => {
-      let res = await variableImportOhpm()
-      expect(res).assertTrue()
-    })
-
-    /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_variableImport_0005
-     * @tc.name      : varibleWithinHspPath
+     * @tc.name      : testVaribleWithinHspPath
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('varibleWithinHspPath', 0, async () => {
+    it('testVaribleWithinHspPath', 0, async () => {
       let res = await varibleWithinHsp()
       expect(res).assertTrue()
       console.info("-------------varibleWithinHspPath-------------")
@@ -94,13 +67,13 @@ export default function variableImport() {
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_variableImport_0006
-     * @tc.name      : varibleWithinHapPath
+     * @tc.name      : testVaribleWithinHapPath
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('varibleWithinHapPath', 0, async () => {
+    it('testVaribleWithinHapPath', 0, async () => {
       let res = await varibleWithinHap()
       expect(res).assertTrue()
       console.info("-------------varibleWithinHapPath-------------")
@@ -108,13 +81,13 @@ export default function variableImport() {
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_variableImport_0007
-     * @tc.name      : varibleWithinHarPath
+     * @tc.name      : testVaribleWithinHarPath
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('varibleWithinHarPath', 0, async () => {
+    it('testVaribleWithinHarPath', 0, async () => {
       let res = await varibleWithinHarPath()
       expect(res).assertTrue()
       console.info("-------------varibleWithinHarPath-------------")

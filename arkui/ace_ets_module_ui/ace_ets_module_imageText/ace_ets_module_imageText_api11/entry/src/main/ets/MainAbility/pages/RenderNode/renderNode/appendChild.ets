@@ -51,14 +51,16 @@ struct appendChild1{
           const child =new RenderNode()
           child.size = {width:50,height:50}
           const renderNode1 = renderNode.appendChild(child)
-          this.width1 = renderNode.getChild(0).size.width
+          this.width1 = Number(renderNode.getChild(0)?.size.width)
         })
       Button('在最后添加子节点')
         .key('insertChildAfter_1')
         .onClick(()=>{
           const child1 =new RenderNode()
           const sibling=renderNode.getChild(0)
-          sibling.size = {width:40,height:40}
+          if (sibling !== null) {
+            sibling.size = {width:40,height:40}
+          }
           renderNode.insertChildAfter(child1,sibling)
           const sibling1 = renderNode.getChild(1)
           if(sibling1 != null) {

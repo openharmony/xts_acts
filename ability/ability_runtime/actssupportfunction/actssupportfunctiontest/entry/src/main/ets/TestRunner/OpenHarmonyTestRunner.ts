@@ -15,59 +15,60 @@
 import TestRunner from '@ohos.application.testRunner';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
-var abilityDelegator = undefined
-var abilityDelegatorArguments = undefined
-var TAG = "SupportFunctionTest == "
+let abilityDelegator = undefined
+let abilityDelegatorArguments = undefined
+const TAG = "SupportFunctionTest == "
+
 function translateParamsToString(parameters) {
-    const keySet = new Set([
-        '-s class', '-s notClass', '-s suite', '-s it',
-        '-s level', '-s testType', '-s size', '-s timeout'
-    ])
-    let targetParams = '';
-    for (const key in parameters) {
-        if (keySet.has(key)) {
-            targetParams = `${targetParams} ${key} ${parameters[key]}`
-        }
+  const keySet = new Set([
+    '-s class', '-s notClass', '-s suite', '-s it',
+    '-s level', '-s testType', '-s size', '-s timeout'
+  ])
+  let targetParams = '';
+  for (const key in parameters) {
+    if (keySet.has(key)) {
+      targetParams = `${targetParams} ${key} ${parameters[key]}`
     }
-    return targetParams.trim()
+  }
+  return targetParams.trim()
 }
 
 async function onAbilityCreateCallback() {
-    console.log(TAG + "onAbilityCreateCallback");
+  console.log(TAG + "onAbilityCreateCallback");
 }
 
 async function addAbilityMonitorCallback(err: any) {
-    console.log(TAG + "addAbilityMonitorCallback : " + JSON.stringify(err))
+  console.log(TAG + "addAbilityMonitorCallback : " + JSON.stringify(err))
 }
 
 export default class OpenHarmonyTestRunner implements TestRunner {
-    constructor() {
-    }
+  constructor() {
+  }
 
-    onPrepare() {
-        console.log(TAG + "OpenHarmonyTestRunner OnPrepare ")
-    }
+  onPrepare() {
+    console.log(TAG + "OpenHarmonyTestRunner OnPrepare ")
+  }
 
-    async onRun() {
-        console.log(TAG + 'OpenHarmonyTestRunner onRun run')
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        globalThis.abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        var MainAbilityName = 'MainAbility'
-        let lMonitor = {
-            abilityName: MainAbilityName,
-            onAbilityCreate: onAbilityCreateCallback,
-        };
-        abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
-        var cmd = 'aa start -d 0 -a MainAbility' + ' -b ' + abilityDelegatorArguments.bundleName
-        cmd += ' '+translateParamsToString(abilityDelegatorArguments.parameters)
-        console.log(TAG + 'cmd : '+cmd)
-        abilityDelegator.executeShellCommand(cmd,
-            (err: any, d: any) => {
-                console.log(TAG + 'executeShellCommand : err : ' + JSON.stringify(err));
-                console.log(TAG + 'executeShellCommand : data : ' + d.stdResult);
-                console.log(TAG + 'executeShellCommand : data : ' + d.exitCode);
-            })
-        console.log(TAG + 'OpenHarmonyTestRunner onRun end')
-    }
+  async onRun() {
+    console.log(TAG + 'OpenHarmonyTestRunner onRun run')
+    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    globalThis.abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    var MainAbilityName = 'MainAbility'
+    let lMonitor = {
+      abilityName: MainAbilityName,
+      onAbilityCreate: onAbilityCreateCallback,
+    };
+    abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
+    var cmd = 'aa start -d 0 -a MainAbility' + ' -b ' + abilityDelegatorArguments.bundleName
+    cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters)
+    console.log(TAG + 'cmd : ' + cmd)
+    abilityDelegator.executeShellCommand(cmd,
+      (err: any, d: any) => {
+        console.log(TAG + 'executeShellCommand : err : ' + JSON.stringify(err));
+        console.log(TAG + 'executeShellCommand : data : ' + d.stdResult);
+        console.log(TAG + 'executeShellCommand : data : ' + d.exitCode);
+      })
+    console.log(TAG + 'OpenHarmonyTestRunner onRun end')
+  }
 };

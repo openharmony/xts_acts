@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, MouseButton, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function RelativeChain12() {
-  describe('RelativeChain12', function () {
-    beforeEach(async function (done) {
+  describe('RelativeChain12', () => {
+    beforeEach(async (done: Function) => {
       console.info("RelativeChain12 beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function RelativeChain12() {
       console.info("RelativeChain12 foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("RelativeChain12 after each called");
     });
@@ -50,7 +50,7 @@ export default function RelativeChain12() {
     * @tc.size
      */
 
-    it('RelativeChain12_001', 0, async function (done) {
+    it('RelativeChain12_001', 0, async (done: Function) => {
       console.info('[RelativeChain12_001] START');
 
       await CommonFunc.sleep(2000);
@@ -84,7 +84,7 @@ export default function RelativeChain12() {
     * @tc.size
      */
 
-    it('RelativeChain12_002', 0, async function (done) {
+    it('RelativeChain12_002', 0, async (done: Function) => {
       console.info('[RelativeChain12_002] START');
 
       await CommonFunc.sleep(1000);
@@ -94,7 +94,7 @@ export default function RelativeChain12() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RelativeChain12Text');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RelativeChain11_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('');

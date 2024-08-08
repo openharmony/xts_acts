@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function appearJsunit() {
   describe('appearTest', () => {
@@ -32,7 +32,7 @@ export default function appearJsunit() {
         if (!("appear" == pages.name)) {
           console.info("get appear state pages.name: " + JSON.stringify(pages.name));
           await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
         console.error("push appear page error: " + err);
@@ -41,17 +41,17 @@ export default function appearJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("appear after each called");
     })
 
     it('testAppear01', 0, async (done: Function) => {
       console.info('[testAppear01] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let callBackAppear1 = (backData: events_emitter.EventData) => {
           console.info("testAppear01 get appearEvent result is: " + JSON.stringify(backData));
-          expect(backData.data.ACTION).assertEqual(false);
+          expect(backData.data?.ACTION).assertEqual(false);
           done()
         }
         let appearEvent1: events_emitter.InnerEvent = {
@@ -63,15 +63,15 @@ export default function appearJsunit() {
         console.info("testAppear01 on appearEvent err : " + JSON.stringify(err));
       }
       console.info("testAppear01 click result is: " + JSON.stringify(sendEventByKey('appear', 10, "")));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('[testAppear01] END');
 
       console.info('[testAppear02] START');
       try {
         let callBackDisAppear = (backData1: events_emitter.EventData) => {
           console.info("testAppear02 get disAppearEvent result is: " + JSON.stringify(backData1));
-          console.info("testAppear02 get backData1.data.ACTION result is: " + backData1.data.ACTION);
-          expect(backData1.data.ACTION).assertEqual(true);
+          console.info("testAppear02 get backData1.data.ACTION result is: " + backData1.data?.ACTION);
+          expect(backData1.data?.ACTION).assertEqual(true);
           done()
         }
         let disAppearEvent: events_emitter.InnerEvent = {
@@ -83,12 +83,12 @@ export default function appearJsunit() {
         console.info("testAppear02 on disAppearEvent err : " + JSON.stringify(err));
       }
 
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('[testAppear03] START');
       let callBackAppear2 = (backData2: events_emitter.EventData) => {
         console.info("testAppear03 get appearEvent result is: " + JSON.stringify(backData2));
-        console.info("testAppear03 get backData2.data.APPEAR: " + backData2.data.APPEAR);
-        expect(backData2.data.APPEAR).assertEqual("appearStatusOn");
+        console.info("testAppear03 get backData2.data.APPEAR: " + backData2.data?.APPEAR);
+        expect(backData2.data?.APPEAR).assertEqual("appearStatusOn");
         done()
       }
       let appearEvent2: events_emitter.InnerEvent = {

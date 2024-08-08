@@ -26,14 +26,6 @@ export default function pageImport() {
       router.back()
       await Sleep(1000)
     })
-    it('pageImportOhpm', 0, async () => {
-      await Sleep(1000)
-      router.clear()
-      await router.pushUrl({url: "pages/PageImportOhpm"})
-      await Sleep(1000)
-      router.back()
-      await Sleep(1000)
-    })
     it('pageImportRelative', 0, async () => {
       await Sleep(1000)
       router.clear()

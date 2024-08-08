@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, MouseButton} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 export default function textAreaBC1Jsunit() {
-  describe('textAreaBC1Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('textAreaBC1Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("textAreaBC1Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TextArea/textAreaBC1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TextArea/textAreaBC1',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function textAreaBC1Jsunit() {
     * @tc.desc  : Move the cursor out of the TextArea component
     * @tc.level : Level 3
     */
-    it('textAreaBC1Jsunit_0100', 0, async function (done) {
+    it('textAreaBC1Jsunit_0100', 0, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0100 START');
       let driver = await UiDriver.create()
       await CommonFunc.sleep(1000);
@@ -60,7 +60,7 @@ export default function textAreaBC1Jsunit() {
       await CommonFunc.sleep(1000);
       console.info('textAreaBC1Jsunit_0100 Storage12Button1 clicked');
       let strJsont = getInspectorByKey('isEdit');
-      let objt = JSON.parse(strJsont);
+      let objt: ESObject = JSON.parse(strJsont);
       console.info('textAreaBC1Jsunit_0100 objt is: ' + objt.$attrs.content);
       await CommonFunc.sleep(1000);
       expect(objt.$attrs.content).assertEqual('Nodoing');
@@ -72,7 +72,7 @@ export default function textAreaBC1Jsunit() {
    * @tc.desc  : In the TextArea, delete and add the text content verification effect in the TextArea
    * @tc.level : Level 3
    */
-    it('textAreaBC1Jsunit_0200', 0, async function (done) {
+    it('textAreaBC1Jsunit_0200', 0, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0200 START');
       let driver = UiDriver.create();
       await CommonFunc.sleep(1000);
@@ -81,22 +81,22 @@ export default function textAreaBC1Jsunit() {
       await text.inputText('123');
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('change');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info('textAreaBC1Jsunit_0200 obj1 is: ' + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertEqual('123');
       let strJsont = getInspectorByKey('isEdit');
-      let objt = JSON.parse(strJsont);
+      let objt: ESObject = JSON.parse(strJsont);
       console.info('textAreaBC1Jsunit_0200 objt is: ' + objt.$attrs.content);
       expect(objt.$attrs.content).assertEqual('doing');
       await CommonFunc.sleep(2000);
       await text.inputText('123456');
       await CommonFunc.sleep(2000);
       let strJson2 = getInspectorByKey('change');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info('textAreaBC1Jsunit_0200 obj2 is: ' + obj2.$attrs.content);
       expect(obj2.$attrs.content).assertEqual('123456');
       let strJsont1 = getInspectorByKey('isEdit');
-      let objt1 = JSON.parse(strJsont1);
+      let objt1: ESObject = JSON.parse(strJsont1);
       console.info('textAreaBC1Jsunit_0200 objt1 is: ' + objt1.$attrs.content);
       expect(objt1.$attrs.content).assertEqual('doing');
       done();
@@ -107,7 +107,7 @@ export default function textAreaBC1Jsunit() {
   * @tc.desc  : Set the text color and text size
   * @tc.level : Level 3
   */
-    it('textAreaBC1Jsunit_0300', 0, async function (done) {
+    it('textAreaBC1Jsunit_0300', 0, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0300 START');
       let driver = UiDriver.create();
       await CommonFunc.sleep(1000);
@@ -115,7 +115,7 @@ export default function textAreaBC1Jsunit() {
       await text.inputText('444');
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('change');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info('textAreaBC1Jsunit_0300 obj1 is: ' + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertEqual('444');
       await CommonFunc.sleep(1000);
@@ -127,7 +127,7 @@ export default function textAreaBC1Jsunit() {
       globalThis.value.message.notify({name:'fontSize',value:12})
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('textArea1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
       console.info('textAreaBC1Jsunit_0300 lala: ' + obj.$attrs);
       console.info('textAreaBC1Jsunit_0300 obj is: ' + obj.$attrs.placeholderColor + '--' + obj.$attrs.fontColor);
@@ -135,7 +135,7 @@ export default function textAreaBC1Jsunit() {
       expect(obj.$attrs.fontColor).assertEqual('#FF66DD00');
       expect(obj.$attrs.fontSize).assertEqual('12.00fp');
       let strJsontw = getInspectorByKey('isEdit');
-      let objtw = JSON.parse(strJsontw);
+      let objtw: ESObject = JSON.parse(strJsontw);
       console.info('textAreaBC1Jsunit_0300 objtw is: ' + objtw.$attrs.content);
       expect(objtw.$attrs.content).assertEqual('doing');
       done();
@@ -146,7 +146,7 @@ export default function textAreaBC1Jsunit() {
     * @tc.desc  : Activate the handle inside the textArea component to verify the effect
     * @tc.level : Level 3
     */
-    it('textAreaBC1Jsunit_0400', 0, async function (done) {
+    it('textAreaBC1Jsunit_0400', 0, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0400 START');
       let driver = await UiDriver.create()
       let Storage12Button1 = await driver.findComponent(BY.key('textArea1'));
@@ -157,12 +157,12 @@ export default function textAreaBC1Jsunit() {
       await text.inputText('rrr');
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('change');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info('textAreaBC1Jsunit_0400 obj1 is: ' + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertEqual('rrr');
       await CommonFunc.sleep(1000);
       let strJsont = getInspectorByKey('isEdit');
-      let objt = JSON.parse(strJsont);
+      let objt: ESObject = JSON.parse(strJsont);
       console.info('textAreaBC1Jsunit_0400 objt is: ' + objt.$attrs.content);
       expect(objt.$attrs.content).assertEqual('doing');
       done();
@@ -173,7 +173,7 @@ export default function textAreaBC1Jsunit() {
     * @tc.desc  : View the default in the TextArea component
     * @tc.level : Level 3
     */
-    it('textAreaBC1Jsunit_0500', 0, async function (done) {
+    it('textAreaBC1Jsunit_0500', 0, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0500 START');
       let driver = await UiDriver.create()
       let Storage12Button1 = await driver.findComponent(BY.key('textArea1'));
@@ -182,7 +182,7 @@ export default function textAreaBC1Jsunit() {
       await Storage12Button1.click();
       await CommonFunc.sleep(1000);
       let strJsont = getInspectorByKey('isEdit');
-      let objt = JSON.parse(strJsont);
+      let objt: ESObject = JSON.parse(strJsont);
       console.info('textAreaBC1Jsunit_0500 objt is: ' + objt.$attrs.content);
       expect(objt.$attrs.content).assertEqual('doing');
       done();
@@ -193,7 +193,7 @@ export default function textAreaBC1Jsunit() {
     * @tc.desc  : Raise the handle in the TextArea component and copy and paste the text
     * @tc.level : Level 3
     */
-    it('textAreaBC1Jsunit_0600', 0, async function (done) {
+    it('textAreaBC1Jsunit_0600', 0, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0600 START');
       await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
@@ -247,7 +247,7 @@ export default function textAreaBC1Jsunit() {
     * @tc.desc  : Cut text in the TextArea component
     * @tc.level : Level 3
     */
-    it('textAreaBC1Jsunit_0700', 0, async function (done) {
+    it('textAreaBC1Jsunit_0700', 0, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0700 START');
       await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
@@ -286,13 +286,13 @@ export default function textAreaBC1Jsunit() {
     * @tc.desc  : Move position within the textArea by hand keyboard and mouse in the TextArea component
     * @tc.level : Level 2
     */
-    it('textAreaBC1Jsunit_0800', 0, async function (done) {
+    it('textAreaBC1Jsunit_0800', 0, async (done: Function) => {
       let driver = await UiDriver.create()
       let text = await driver.findComponent(BY.key('textArea1'));
       await text.inputText('ee');
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('change');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info('textAreaBC1Jsunit_0800 obj1 is: ' + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertEqual('ee');
       await CommonFunc.sleep(1000);
@@ -300,7 +300,7 @@ export default function textAreaBC1Jsunit() {
       await y.click();
       await CommonFunc.sleep(1000);
       let strJsont = getInspectorByKey('isEdit');
-      let objt = JSON.parse(strJsont);
+      let objt: ESObject = JSON.parse(strJsont);
       console.info('textAreaBC1Jsunit_0800 objt is: ' + objt.$attrs.content);
       expect(objt.$attrs.content).assertEqual('doing');
       done();
@@ -311,7 +311,7 @@ export default function textAreaBC1Jsunit() {
    * @tc.desc  : Move position inside the textArea by hand keyboard and mouse outside the TextArea component
    * @tc.level : Level 3
    */
-    it('textAreaBC1Jsunit_0900', 0, async function (done) {
+    it('textAreaBC1Jsunit_0900', 0, async (done: Function) => {
       let driver = await UiDriver.create()
       let text = await driver.findComponent(BY.key('textArea2'));
       await text.inputText('yy');
@@ -320,7 +320,7 @@ export default function textAreaBC1Jsunit() {
       await y.click();
       await CommonFunc.sleep(1000);
       let strJsont = getInspectorByKey('isEdit');
-      let objt = JSON.parse(strJsont);
+      let objt: ESObject = JSON.parse(strJsont);
       console.info('textAreaBC1Jsunit_0900 objt is: ' + objt.$attrs.content);
       expect(objt.$attrs.content).assertEqual('Nodoing');
       done();

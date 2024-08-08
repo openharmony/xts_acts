@@ -20,6 +20,7 @@ import events_emitter from '@ohos.events.emitter';
 struct DatePickerExample01 {
   private selectedDate: Date = new Date('2021-08-08')
   @State useMilitaryTime: boolean = true
+
   build() {
     Column() {
       DatePicker({
@@ -34,12 +35,12 @@ struct DatePickerExample01 {
         .onChange((date: DatePickerResult) => {
           console.info('select current date is: ' + JSON.stringify(date));
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
-                "useMilitaryTime" : this.useMilitaryTime,
+                "useMilitaryTime": this.useMilitaryTime,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 80,
               priority: events_emitter.EventPriority.LOW
             }
@@ -54,14 +55,14 @@ struct DatePickerExample01 {
 
   onPageShow() {
     console.info('DatePicker page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 81,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("DatePicker page state change called:" + JSON.stringify(eventData));
       if (eventData.data.useMilitaryTime != null) {

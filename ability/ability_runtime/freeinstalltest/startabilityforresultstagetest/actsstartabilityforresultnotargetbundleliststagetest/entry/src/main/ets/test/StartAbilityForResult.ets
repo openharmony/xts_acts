@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,53 +14,55 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import ability from '@ohos.app.ability.UIAbility'
 import rpc from '@ohos.rpc';
 import wantConstant from '@ohos.ability.wantConstant'
 import Prompt from '@system.prompt';
+import ability from '@ohos.ability.ability';
+import base from '@ohos.base';
+import Want from '@ohos.app.ability.Want';
+import StartOptions from '@ohos.app.ability.StartOptions';
 
+function sleep(time:number):Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, time))
+}
 
-export default function StartAbilityForResult(abilityContext) {
-    var TAG = "";
+export default function StartAbilityForResult() {
+    let TAG = "";
 
-    function sleep(time) {
-        return new Promise((resolve) => setTimeout(resolve, time))
-    }
-
-    describe('StartAbilityForResult', function () {
-        beforeAll(async function (done) {
+    describe('StartAbilityForResult', ()=> {
+        beforeAll(async (done:Function) => {
             console.info("StartAbilityForResult before all called");
-            var cmd = "bm install -p data/test/MockService.hap";
+            let cmd = "bm install -p data/test/MockService.hap";
             console.info("cmd : "+cmd)
-            globalThis.delegator.executeShellCommand(cmd, (err: any, d: any) => {
+            globalThis.delegator.executeShellCommand(cmd, (err: base.BusinessError, d: ESObject) => {
                 console.info("executeShellCommand : err : " + JSON.stringify(err)," data : " + JSON.stringify(d));})
             await sleep(500);
-            var cmd1 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
-            globalThis.delegator.executeShellCommand(cmd1, (err: any, d: any) => {
+            let cmd1 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
+            globalThis.delegator.executeShellCommand(cmd1, (err: base.BusinessError, d: ESObject) => {
                 console.info("executeShellCommand1 : err : " + JSON.stringify(err)," data : " + JSON.stringify(d));})
             await sleep(500);
-            var cmd2 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
-            globalThis.delegator.executeShellCommand(cmd2, (err: any, d: any) => {
+            let cmd2 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
+            globalThis.delegator.executeShellCommand(cmd2, (err: base.BusinessError, d: ESObject) => {
                 console.info("executeShellCommand2 : err : " + JSON.stringify(err)," data : " + JSON.stringify(d));})
             await sleep(500);
-            var cmd3 ="cp data/test/AtomizationResultStageEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
-            globalThis.delegator.executeShellCommand(cmd3, (err: any, d: any) => {
+            let cmd3 ="cp data/test/AtomizationResultStageEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
+            globalThis.delegator.executeShellCommand(cmd3, (err: base.BusinessError, d: ESObject) => {
                 console.info("executeShellCommand3 : err : " + JSON.stringify(err)," data : " + JSON.stringify(d));
                 done();
             })
         });
 
-        afterEach(async function (done) {
+        afterEach(async (done:Function) => {
             console.info("StartAbilityForResult after each called");
             if ("FreeInstall_Stage_StartAbilityForResult_2500") {
-                var cmd4 = "bm uninstall -n com.example.qianyiyingyong.hmservice";
-                globalThis.delegator.executeShellCommand(cmd4, (err: any, d: any) => {
+                let cmd4 = "bm uninstall -n com.example.qianyiyingyong.hmservice";
+                globalThis.delegator.executeShellCommand(cmd4, (err: base.BusinessError, d: ESObject) => {
                     console.info("executeShellCommand4 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
                 })
                 await sleep(500);
             }
-            var cmd5 = "bm uninstall -n com.ohos.hag.famanager";
-            globalThis.delegator.executeShellCommand(cmd5, (err: any, d: any) => {
+            let cmd5 = "bm uninstall -n com.ohos.hag.famanager";
+            globalThis.delegator.executeShellCommand(cmd5, (err: base.BusinessError, d: ESObject) => {
                 console.info("executeShellCommand5 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
             })
             await sleep(500);
@@ -74,26 +75,26 @@ export default function StartAbilityForResult(abilityContext) {
          * @tc.desc: Function test
          * @tc.level   0
          */
-        it("FreeInstall_Stage_StartAbilityForResult_2500", 0, async function (done) {
+        it("FreeInstall_Stage_StartAbilityForResult_2500", 0, async (done:Function) => {
             console.log("------------start FreeInstall_Stage_StartAbilityForResult_2500-------------");
             TAG = "FreeInstall_Stage_StartAbilityForResult_2500";
-            var cmd6 = "bm install -p data/test/AtomizationResultStageEntry.hap";
-            globalThis.delegator.executeShellCommand(cmd6, (err: any, d: any) => {
+            let cmd6 = "bm install -p data/test/AtomizationResultStageEntry.hap";
+            globalThis.delegator.executeShellCommand(cmd6, (err: base.BusinessError, d: ESObject) => {
                 console.info("executeShellCommand6: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
             })
             await sleep(500);
-            let details;
-            var str = {
+            let details:ability.AbilityResult;
+            let str:Want = {
                 "bundleName": "com.example.qianyiyingyong.hmservice",
                 "abilityName": "com.example.qianyiyingyong.MainAbility",
                 "moduleName": "entry",
                 "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
             }
             await globalThis.abilityContext.startAbilityForResult(str)
-                .then((data) => {
+                .then((data:ability.AbilityResult) => {
                     details = data;
                     console.info(TAG + ' StartAbilityForResultPromise successful. Data: ' + JSON.stringify(data))
-                }).catch((error) => {
+                }).catch((error:base.BusinessError) => {
                     console.info(TAG + ' StartAbilityForResultPromise failed. Cause: ' + JSON.stringify(error));
                 })
             await sleep(2000);

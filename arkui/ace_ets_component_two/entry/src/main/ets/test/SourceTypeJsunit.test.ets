@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function sourceTypeJsunit() {
-  describe('appInfoTest_two_9', function () {
-    beforeEach(async function (done) {
+  describe('appInfoTest_two_9', () => {
+    beforeEach(async (done: Function) => {
       console.info("sourceType beforeEach start");
       let options = {
         uri: 'MainAbility/pages/sourceType',
@@ -41,12 +41,12 @@ export default function sourceTypeJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("sourceType after each called");
     });
 
-    it('sourceTypeTest_0100', 0, async function (done) {
+    it('sourceTypeTest_0100', 0, async (done: Function) => {
       await Utils.sleep(1000)
       let rect = await Utils.getComponentRect('button')
       console.info("sourceTypeTest_0100 rectInfo is " + JSON.stringify(rect));
@@ -54,14 +54,17 @@ export default function sourceTypeJsunit() {
       let y_value = rect.top + (rect.bottom - rect.top) / 2
       console.info("sourceTypeTest_0100 onTouch location is: " + "[x]=== " + x_value + "   [y]===" + y_value);
       let point: TouchObject = {
-        id: 1, x: x_value, y: y_value, type: TouchType.Down,
+        id: 1,
+        x: x_value,
+        y: y_value,
+        type: TouchType.Down,
       }
-      var callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         console.info("sourceTypeTest_0100 get event state result is: " + JSON.stringify(eventData));
-        let event = JSON.parse(eventData.data.event);
+        let event: ESObject = JSON.parse(eventData.data.event);
         expect(event.source).assertEqual(0)
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 198,
         priority: events_emitter.EventPriority.LOW
       }

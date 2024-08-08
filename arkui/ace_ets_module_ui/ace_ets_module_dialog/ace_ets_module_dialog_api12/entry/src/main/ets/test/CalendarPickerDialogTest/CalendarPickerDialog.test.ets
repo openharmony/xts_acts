@@ -17,10 +17,10 @@ import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 export default function CalendarPickerDialog() {
-  describe('CalendarPickerDialog', function () {
-    beforeEach(async function (done) {
+  describe('CalendarPickerDialog', () => {
+    beforeEach(async (done: Function) => {
       console.info("CalendarPickerDialog beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/CalendarPickerDialog/CalendarPickerDialog",
       }
       try {
@@ -39,7 +39,7 @@ export default function CalendarPickerDialog() {
       console.info("CalendarPickerDialog beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("CalendarPickerDialog after each called");
     });
@@ -51,7 +51,7 @@ export default function CalendarPickerDialog() {
      * @tc.type
      * @tc.size
      */
-    it('CalendarPickerDialog_001', 0, async function (done) {
+    it('CalendarPickerDialog_001', 0, async (done: Function) => {
       console.info('[CalendarPickerDialog_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

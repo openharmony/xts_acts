@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 const waitUiReadyMs = 1000;
 
 export default function buttonJsunit() {
-  describe('buttonJsunit', function () {
-    beforeEach(async function (done) {
+  describe('buttonJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("buttonJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/button/buttonExample',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/button/buttonExample',
       }
       try {
         router.clear();
@@ -42,12 +42,12 @@ export default function buttonJsunit() {
       done();
     });
 
-    it('buttonJsunit_0100', 0, async function (done) {
+    it('buttonJsunit_0100', 0, async (done: Function) => {
       console.info('buttonJsunitUITest_0100 START');
       await CommonFunc.sleep(1000);
       // 获取button组件的信息
       let strJson = getInspectorByKey('btok');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[buttonJsunit_0100'] component obj is: " + obj);
       expect(obj.$type).assertEqual('Button');
       expect(obj.$attrs.type).assertEqual('ButtonType.Normal');
@@ -60,32 +60,32 @@ export default function buttonJsunit() {
       done();
     });
 
-    it('buttonJsunit_0200', 0, async function (done) {
+    it('buttonJsunit_0200', 0, async (done: Function) => {
       console.info('buttonJsunitUITest_0200 START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'stateEffect', value:false});
       await CommonFunc.sleep(200);
       let strJson2 = getInspectorByKey('btok');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[buttonJsunit_0200'] component2 obj is: " + obj2.$attrs.stateEffect);
       expect(obj2.$attrs.stateEffect).assertEqual('false');
       done();
     });
 
-    it('buttonJsunit_0300', 0, async function (done) {
+    it('buttonJsunit_0300', 0, async (done: Function) => {
        console.info('buttonJsunitUITest_0300 START');
        await CommonFunc.sleep(1000);
        // 动态修改Button组件的属性,设置为非法值
        globalThis.value.message.notify({name:'bttype', value:'5'});
        await CommonFunc.sleep(500);
        let strJson = getInspectorByKey('btok');
-       let obj = JSON.parse(strJson);
+       let obj: ESObject = JSON.parse(strJson);
        console.info("[buttonJsunit_0300'] component obj is: " + obj.$attrs.type);
        expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
        done();
     });
 
-    it('buttonJsunit_0400', 0, async function (done) {
+    it('buttonJsunit_0400', 0, async (done: Function) => {
        console.info('buttonJsunitUITest_0400 START');
        // check the button is click
        let driver = Driver.create();
@@ -97,7 +97,7 @@ export default function buttonJsunit() {
        done();
     });
 
-     it('buttonJsunit_0500', 0, async function (done) {
+     it('buttonJsunit_0500', 0, async (done: Function) => {
        console.info('buttonJsunitUITest_0500 START');
        // 判断按钮的点击事件,通过按钮的文本可以判断
        let driver = Driver.create();
@@ -112,7 +112,7 @@ export default function buttonJsunit() {
        done();
     });
 
-    it('buttonJsunit_0600', 0, async function (done) {
+    it('buttonJsunit_0600', 0, async (done: Function) => {
       // buton 通用字体属性判断
        console.info('buttonJsunitUITest_0600 START');
        await CommonFunc.sleep(1000);
@@ -127,7 +127,7 @@ export default function buttonJsunit() {
        globalThis.value.message.notify({name:'fontWeight',value:FontWeight.Bold});
        await CommonFunc.sleep(200);
        let strJson = getInspectorByKey('btok');
-       let obj = JSON.parse(strJson);
+       let obj: ESObject = JSON.parse(strJson);
        console.info("[buttonJsunit_0600'] component obj is: " + obj);
        expect(obj.$attrs.fontSize).assertEqual('13.00fp');
        expect(obj.$attrs.fontColor).assertEqual('#FF008000');
@@ -137,7 +137,7 @@ export default function buttonJsunit() {
        done();
     });
 
-    it('buttonJsunit_0700', 0, async function (done) {
+    it('buttonJsunit_0700', 0, async (done: Function) => {
       // buton 通用字体非法属性判断
        console.info('buttonJsunitUITest_0700 START');
        await CommonFunc.sleep(1000);
@@ -152,7 +152,7 @@ export default function buttonJsunit() {
        globalThis.value.message.notify({name:'fontWeight',value:'-20'});
        await CommonFunc.sleep(200);
        let strJson = getInspectorByKey('btok');
-       let obj = JSON.parse(strJson);
+       let obj: ESObject = JSON.parse(strJson);
        console.info("[buttonJsunit_0700'] component obj is: " + obj.$attrs.fontSize + obj.$attrs.fontColor + obj.$attrs.fontFamily + obj.$attrs.fontStyle + obj.$attrs.fontWeight);
        expect(obj.$attrs.fontSize).assertEqual('16.00fp');
        expect(obj.$attrs.fontColor).assertEqual('#FFFFFFFF');
@@ -162,14 +162,14 @@ export default function buttonJsunit() {
        done();
     });
 
-    it('buttonJsunit_0800', 0, async function (done) {
+    it('buttonJsunit_0800', 0, async (done: Function) => {
       console.info('buttonJsunitUITest_0800 START');
       await CommonFunc.sleep(1000);
       // 动态修改Button组件的属性
       globalThis.value.message.notify({name:'bttype',value:ButtonType.Capsule});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('btok');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[buttonJsunit_0800'] component obj is: " + obj.$attrs.type);
       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
       done();

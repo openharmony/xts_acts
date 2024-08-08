@@ -87,6 +87,7 @@
     "pages/Screen/Screen_index",
     "pages/Screen/VirtualScreen",
     "pages/Screen/Brightness",
+    "pages/Screen/ScreenPick",
     "pages/MultimodalInput/MultimodalInput_index",
     "pages/MultimodalInput/InputMonitor",
     "pages/MultimodalInput/KeyBoard",

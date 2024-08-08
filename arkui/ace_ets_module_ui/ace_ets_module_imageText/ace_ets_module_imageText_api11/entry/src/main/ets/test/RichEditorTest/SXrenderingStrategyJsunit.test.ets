@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 export default function SXrenderingStrategyJsunit() {
-  describe('SXrenderingStrategyJsunit', function () {
-    beforeEach(async function (done) {
+  describe('SXrenderingStrategyJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("SXrenderingStrategyJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/RichEditor/SXrenderingStrategy',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RichEditor/SXrenderingStrategy',
       }
       try {
         router.clear();
@@ -39,7 +39,7 @@ export default function SXrenderingStrategyJsunit() {
       }
       done();
     });
-    it('SXrenderingStrategyJsunit_0100', 0, async function (done) {
+    it('SXrenderingStrategyJsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('SXrenderingStrategyJsunit_0100 START');
       let driver = Driver.create();
@@ -48,7 +48,7 @@ export default function SXrenderingStrategyJsunit() {
       await btn1.click();
       await CommonFunc.sleep(1000);
       let strcontent = getInspectorByKey('SXrenderingStrategyText');
-      let obj = JSON.parse(strcontent);
+      let obj: ESObject = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
       console.info('SXrenderingStrategyJsunit_0100 component obj is: ' + obj);
       console.info('SXrenderingStrategyJsunit_0100 component obj.$attrs is: ' + obj.$attrs);

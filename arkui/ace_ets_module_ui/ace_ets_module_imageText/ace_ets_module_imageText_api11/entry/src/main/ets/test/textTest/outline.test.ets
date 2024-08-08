@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function outline() {
-  describe('outline', function () {
-    beforeEach(async function (done) {
+  describe('outline', () => {
+    beforeEach(async (done: Function) => {
       console.info("outline beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/text/outline',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/text/outline',
       }
       try {
         router.clear();
@@ -51,11 +51,11 @@ export default function outline() {
      * @tc.type : 
      * @tc.size :
      */
-    it('outlineStyle_0100', 0, async function (done) {
+    it('outlineStyle_0100', 0, async (done: Function) => {
       console.info('outlineStyle_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('outline');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[outlineStyle_0100] component obj is: " + JSON.stringify(obj));
       console.info("[outlineStyle_0100] title: " + JSON.stringify(obj.$attrs.outlineStyle));
       expect(obj.$attrs.outlineStyle).assertEqual('OutlineStyle.DASHED');
@@ -71,11 +71,11 @@ export default function outline() {
      * @tc.type :
      * @tc.size :
      */
-    it('outlineWidth_0200', 0, async function (done) {
+    it('outlineWidth_0200', 0, async (done: Function) => {
       console.info('outlineWidth_0200 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('outline');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[outlineWidth_0200] component obj is: " + JSON.stringify(obj));
       console.info("[outlineWidth_0200] title: " + JSON.stringify(obj.$attrs.outlineWidth));
       expect(obj.$attrs.outlineWidth).assertEqual('5.00vp');
@@ -91,11 +91,11 @@ export default function outline() {
      * @tc.type :
      * @tc.size :
      */
-    it('outlineColor_0300', 0, async function (done) {
+    it('outlineColor_0300', 0, async (done: Function) => {
       console.info('outlineColor_0300 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('outline');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[outlineColor_0300] component obj is: " + JSON.stringify(obj));
       console.info("[outlineColor_0300] title: " + JSON.stringify(obj.$attrs.outlineColor));
       expect(obj.$attrs.outlineColor).assertEqual('#FFAFEEEE');
@@ -111,11 +111,11 @@ export default function outline() {
      * @tc.type :
      * @tc.size :
      */
-    it('outlineRadius_0400', 0, async function (done) {
+    it('outlineRadius_0400', 0, async (done: Function) => {
       console.info('outlineRadius_0400 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('outline');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[outlineRadius_0400] component obj is: " + JSON.stringify(obj));
       console.info("[outlineRadius_0400] title: " + JSON.stringify(obj.$attrs.outlineRadius));
       expect(obj.$attrs.outlineRadius).assertEqual('10.00vp');

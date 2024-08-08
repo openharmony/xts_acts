@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function TextInputEvent2() {
-  describe('TextInputEvent2', function () {
-    beforeEach(async function (done) {
+  describe('TextInputEvent2', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextInputEvent2 beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function TextInputEvent2() {
       console.info("TextInputEvent2 foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("TextInputEvent2 after each called");
     });
@@ -51,7 +51,7 @@ export default function TextInputEvent2() {
      * @tc.level      : Level 3
      */
 
-    it('TextInputEvent2_001', 0, async function (done) {
+    it('TextInputEvent2_001', 0, async (done: Function) => {
       console.info('[TextInputEvent2_001] START');
 
       await CommonFunc.sleep(1000);
@@ -64,8 +64,8 @@ export default function TextInputEvent2() {
       let strJson = getInspectorByKey('TextInputEvent2Text')
       let strJson2 = getInspectorByKey('TextInputEvent2Text2');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      let obj2 = JSON.parse(strJson2);
+      let obj: ESObject = JSON.parse(strJson);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[TextInputEvent2_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -85,7 +85,7 @@ export default function TextInputEvent2() {
      * @tc.level      : Level 3
      */
 
-    it('TextInputEvent2_002', 0, async function (done) {
+    it('TextInputEvent2_002', 0, async (done: Function) => {
       console.info('[TextInputEvent2_002] START');
 
       await CommonFunc.sleep(1000);
@@ -98,8 +98,8 @@ export default function TextInputEvent2() {
       let strJson = getInspectorByKey('TextInputEvent2Text')
       let strJson2 = getInspectorByKey('TextInputEvent2Text2');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      let obj2 = JSON.parse(strJson2);
+      let obj: ESObject = JSON.parse(strJson);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[TextInputEvent2_002] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -119,7 +119,7 @@ export default function TextInputEvent2() {
      * @tc.level      : Level 3
      */
 
-    it('TextInputEvent2_003', 0, async function (done) {
+    it('TextInputEvent2_003', 0, async (done: Function) => {
       console.info('[TextInputEvent2_003] START');
 
       await CommonFunc.sleep(1000);
@@ -132,8 +132,8 @@ export default function TextInputEvent2() {
       let strJson = getInspectorByKey('TextInputEvent2Text3')
       let strJson2 = getInspectorByKey('TextInputEvent2Text4');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      let obj2 = JSON.parse(strJson2);
+      let obj: ESObject = JSON.parse(strJson);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[TextInputEvent2_003] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -153,7 +153,7 @@ export default function TextInputEvent2() {
      * @tc.level      : Level 3
      */
 
-    it('TextInputEvent2_004', 0, async function (done) {
+    it('TextInputEvent2_004', 0, async (done: Function) => {
       console.info('[TextInputEvent2_004] START');
 
       await CommonFunc.sleep(1000);
@@ -166,8 +166,8 @@ export default function TextInputEvent2() {
       let strJson = getInspectorByKey('TextInputEvent2Text3')
       let strJson2 = getInspectorByKey('TextInputEvent2Text4');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      let obj2 = JSON.parse(strJson2);
+      let obj: ESObject = JSON.parse(strJson);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[TextInputEvent2_004] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -187,7 +187,7 @@ export default function TextInputEvent2() {
      * @tc.level      : Level 3
      */
 
-    it('TextInputEvent2_005', 0, async function (done) {
+    it('TextInputEvent2_005', 0, async (done: Function) => {
       console.info('[TextInputEvent2_005] START');
 
       await CommonFunc.sleep(1000);
@@ -202,7 +202,7 @@ export default function TextInputEvent2() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputEvent2Text5')
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextInputEvent2_005] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -221,7 +221,7 @@ export default function TextInputEvent2() {
      * @tc.level      : Level 3
      */
 
-    it('TextInputEvent2_006', 0, async function (done) {
+    it('TextInputEvent2_006', 0, async (done: Function) => {
       console.info('[TextInputEvent2_006] START');
 
       await CommonFunc.sleep(1000);
@@ -236,7 +236,7 @@ export default function TextInputEvent2() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputEvent2Text5')
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextInputEvent2_006] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -255,7 +255,7 @@ export default function TextInputEvent2() {
      * @tc.level      : Level 3
      */
 
-    it('TextInputEvent2_007', 0, async function (done) {
+    it('TextInputEvent2_007', 0, async (done: Function) => {
       console.info('[TextInputEvent2_007] START');
 
       await CommonFunc.sleep(1000);
@@ -267,7 +267,7 @@ export default function TextInputEvent2() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputEvent2Text5')
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextInputEvent2_007] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 

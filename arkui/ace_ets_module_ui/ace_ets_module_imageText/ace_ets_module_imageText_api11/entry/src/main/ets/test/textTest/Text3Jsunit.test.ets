@@ -15,7 +15,7 @@
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function text3Jsunit() {
   describe('text3Jsunit', () => {
@@ -31,7 +31,7 @@ export default function text3Jsunit() {
         if (!("text3" == pages.name)) {
           console.info("get text state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push text page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,7 +41,7 @@ export default function text3Jsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("text after each called");
     });
 
@@ -83,7 +83,7 @@ export default function text3Jsunit() {
       } catch (err) {
         console.log("testText_0300 change component data error: " + err.message);
       }
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
 
       console.info("testText_0300 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -120,7 +120,7 @@ export default function text3Jsunit() {
       } catch (err) {
         console.log("testText_0500 change component data error: " + err.message);
       }
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
 
       console.info("testText_0500 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -157,7 +157,7 @@ export default function text3Jsunit() {
       } catch (err) {
         console.log("testText_0700 change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJsonNew = getInspectorByKey('text');
       console.info("testText_0700 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.textAlign).assertEqual('TextAlign.Center');
@@ -193,7 +193,7 @@ export default function text3Jsunit() {
       } catch (err) {
         console.log("testText_0900 change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJsonNew = getInspectorByKey('text');
 
       console.info("testText_0900 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -234,7 +234,7 @@ export default function text3Jsunit() {
       } catch (err) {
         console.log("testText_1200 change component data error: " + err.message);
       }
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
 
       console.info("testText_1200 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)
@@ -262,7 +262,7 @@ export default function text3Jsunit() {
       } catch (err) {
         console.log("testText_1300 change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJsonNew = getInspectorByKey('text');
 
       console.info("testText_1300 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)
@@ -290,7 +290,7 @@ export default function text3Jsunit() {
       } catch (err) {
         console.log("testText_1400 change component data error: " + err.message);
       }
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
 
       console.info("testText_1400 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)

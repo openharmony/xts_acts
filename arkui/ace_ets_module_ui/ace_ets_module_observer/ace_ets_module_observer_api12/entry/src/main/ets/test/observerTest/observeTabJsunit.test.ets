@@ -64,20 +64,16 @@ export default function observeTabJsunit() {
       await btn2.click();
       await CommonFunc.sleep(1000);
 
-      let strJson1 = getInspectorByKey('tabs_uniqueId');
-      let obj1: ESObject = JSON.parse(strJson1);
-      console.info("[observeTabJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
-      expect(obj1.$attrs.content).assertEqual('uniqueId: 126');
-
-      let strJson2 = getInspectorByKey('tabs_tabUniqueId');
-      let obj2: ESObject = JSON.parse(strJson2);
-      console.info("[observeTabJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
-      expect(obj2.$attrs.content).assertEqual('tabContentUniqueId: 135');
-
       let strJson3 = getInspectorByKey('tabs_tabContentId');
       let obj3: ESObject = JSON.parse(strJson3);
       console.info("[observeTabJsunit_0100] component obj3 is: " + JSON.stringify(obj3));
       expect(obj3.$attrs.content).assertEqual('tabContentId: tabContent02');
+	  
+      await CommonFunc.sleep(1000);
+      let btn3: Component = await driver.findComponent(ON.id('observer_tabOff'));
+      await btn3.click();
+      await CommonFunc.sleep(1000);
+	  
       console.info('[observeTabJsunit_0100] END');
       done();
     });

@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function borderJsunit() {
   describe('borderTest_five_1', () => {
@@ -31,7 +31,7 @@ export default function borderJsunit() {
         if (!("border" == pages.name)) {
           console.info("get border state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push border page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,13 +41,13 @@ export default function borderJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("border after each called");
     });
 
     it('testBorder_0100', 0, async (done: Function) => {
       console.info('testBorder_0100 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('borderWidth');
       console.info("testBorder_0100 component strJson:" + strJson);
       console.info("testBorder_0100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -58,7 +58,7 @@ export default function borderJsunit() {
 
     it('testBorder_0200', 0, async (done: Function) => {
       console.info('testBorder_0200 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('borderColor');
       console.info("testBorder_0200 component strJson:" + strJson);
       console.info("testBorder_0200 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -69,7 +69,7 @@ export default function borderJsunit() {
 
     it('testBorder_0300', 0, async (done: Function) => {
       console.info('testBorder_0300 START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -85,7 +85,7 @@ export default function borderJsunit() {
       } catch (err) {
         console.log("[testBorder_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('borderRadius');
       console.info("testBorder_0300 component strJson:" + strJson);
 

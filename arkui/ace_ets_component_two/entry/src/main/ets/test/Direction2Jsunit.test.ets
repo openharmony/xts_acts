@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
-export default function direction2Jsunit(){
-  describe('direction2Test', function (){
-    beforeEach(async function (done) {
+export default function direction2Jsunit() {
+  describe('direction2Test', () => {
+    beforeEach(async (done: Function) => {
       let options = {
         uri: 'MainAbility/pages/direction2',
       }
@@ -40,20 +40,20 @@ export default function direction2Jsunit(){
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("direction after each called");
     });
 
-    it('direction2Test_0200', 0, async function (done) {
+    it('direction2Test_0200', 0, async (done: Function) => {
       console.info('direction2Test_0200 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "direction": Direction.Rtl,
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 1082,
           priority: events_emitter.EventPriority.LOW
         }
@@ -64,32 +64,32 @@ export default function direction2Jsunit(){
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('direction_2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("direction2Test_0200 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.direction).assertEqual('Direction.Rtl');
       console.info('direction2Test_0200 END');
       done();
     });
 
-   it('direction2Test_0100', 0, async function (done) {
+    it('direction2Test_0100', 0, async (done: Function) => {
       console.info('direction2Test_0100 START');
       let strJson = getInspectorByKey('direction_2');
       console.info("direction2Test_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("direction2Test_0100 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.direction).assertEqual("Direction.Rtl");
       done();
     });
 
-    it('direction2Test_0300', 0, async function (done) {
+    it('direction2Test_0300', 0, async (done: Function) => {
       console.info('direction2Test_0300 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
-            "direction":  Direction.Auto,
+            "direction": Direction.Auto,
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 1083,
           priority: events_emitter.EventPriority.LOW
         }
@@ -100,7 +100,7 @@ export default function direction2Jsunit(){
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('direction_2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("direction2Test_0300 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.direction).assertEqual('Direction.Auto');
       console.info('direction2Test_0300 END');

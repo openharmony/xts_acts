@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function getOverlayManager() {
-  describe('getOverlayManager', function () {
-    beforeEach(async function (done) {
+  describe('getOverlayManager', () => {
+    beforeEach(async (done: Function) => {
       console.info("getOverlayManager beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/UIContext/getOverlayManager",
       }
       try {
@@ -40,7 +40,7 @@ export default function getOverlayManager() {
       console.info("getOverlayManager beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("getOverlayManager after each called");
     });
@@ -53,7 +53,7 @@ export default function getOverlayManager() {
      * @tc.type
     * @tc.size
      */
-    it('getOverlayManager_001', 0, async function (done) {
+    it('getOverlayManager_001', 0, async (done: Function) => {
       console.info('[getOverlayManager_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

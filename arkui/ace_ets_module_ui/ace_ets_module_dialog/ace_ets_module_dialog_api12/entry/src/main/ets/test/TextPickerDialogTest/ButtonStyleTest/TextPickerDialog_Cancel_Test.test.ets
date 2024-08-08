@@ -18,10 +18,10 @@ import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
 
 export default function TextPickerDialog_Cancel_Test() {
-  describe('TextPickerDialog_Cancel_Test', function () {
-    beforeEach(async function (done) {
+  describe('TextPickerDialog_Cancel_Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextPickerDialog_Cancel_Test beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/TextPickerDialog/ButtonStyle/Text_cancel",
       }
       try {
@@ -40,7 +40,7 @@ export default function TextPickerDialog_Cancel_Test() {
       console.info("TextPickerDialog_Cancel_Test beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("TextPickerDialog_Cancel_Test after each called");
     });
@@ -53,7 +53,7 @@ export default function TextPickerDialog_Cancel_Test() {
      * @tc.type
     * @tc.size
      */
-    it('TextPickerDialog_Cancel_Test_001', 0, async function (done) {
+    it('TextPickerDialog_Cancel_Test_001', 0, async (done: Function) => {
       console.info('[TextPickerDialog_Cancel_Test_001] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

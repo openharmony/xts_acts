@@ -16,6 +16,7 @@
                 "chmod -R 777 /data/local/tmp/*",
                 "rm -rf /data/local/tmp/*.qpa",
                 "rm -rf /data/local/tmp/*.xml",
+                "mkdir -p /data/storage/shader_cache/local",
                 "mkdir /data/local/tmp/vulkan",
                 "tar zxvf /data/local/tmp/vulkandata.tar.gz -C /data/local/tmp/vulkan",
                 "chmod -R 777 /data/local/tmp/vulkan/vk-default/*",

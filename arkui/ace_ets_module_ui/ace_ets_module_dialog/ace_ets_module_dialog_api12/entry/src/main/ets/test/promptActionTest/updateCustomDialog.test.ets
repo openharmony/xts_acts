@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 import window from '@ohos.window';
 
 export default function updateCustomDialog() {
-  describe('updateCustomDialog', function () {
-    beforeEach(async function (done) {
+  describe('updateCustomDialog', () => {
+    beforeEach(async (done: Function) => {
       console.info("updateCustomDialog beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/promptAction/updateCustomDialog',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/promptAction/updateCustomDialog',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function updateCustomDialog() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('updateCustomDialog_0100', 0, async function (done) {
+    it('updateCustomDialog_0100', 0, async (done: Function) => {
       console.info('updateCustomDialog_0100 START');
       let driver = await Driver.create()
       let button = await driver.findComponent(ON.id('updateCustomDialogXTS'));
@@ -57,7 +57,7 @@ export default function updateCustomDialog() {
       await driver.triggerKey(2070);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('updateCustomDialogMessage');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[updateCustomDialog_0100] component obj is: " + JSON.stringify(obj));
       console.info("[updateCustomDialog_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("updateCustomDialog success");

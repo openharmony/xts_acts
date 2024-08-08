@@ -1,4 +1,3 @@
-//@ts-nocheck
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-struct ResponseType {
+struct ResponseTypePage {
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear ResponseType start`);
   }
@@ -81,7 +80,7 @@ struct ResponseType {
       .key("TestColumn")
       .width('100%')
       .margin({ top: 5 })
-      .bindContextMenu(this.MenuBuilder, ResponseType.RightClick)
+      .bindContextMenu(this.ContextMenuBuilder(), ResponseType.RightClick)
     }
     .width("100%")
     .height("100%")

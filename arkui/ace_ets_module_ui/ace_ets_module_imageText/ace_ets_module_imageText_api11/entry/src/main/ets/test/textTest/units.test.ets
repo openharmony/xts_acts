@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils.ets'
+import CommonFunc from '../../MainAbility/common/Common'
 import events_emitter from '@ohos.events.emitter';
 
 export default function unitsModuleNameJsunit() {
@@ -32,7 +32,7 @@ export default function unitsModuleNameJsunit() {
         if (!("units" == pages.name)) {
           console.info("get units state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push units page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -42,7 +42,7 @@ export default function unitsModuleNameJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("unitsModuleName after each called");
     });
 
@@ -53,10 +53,10 @@ export default function unitsModuleNameJsunit() {
      */
     it('testunitsModuleName0001', 0, async (done: Function) => {
       console.info('unitsModuleName testunitsModuleName0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       try {
         console.info("testunitsModuleName0001 click result is: " + JSON.stringify(sendEventByKey('moduleNameText', 10, "")));
-        await Utils.sleep(2000);
+        await CommonFunc.sleep(2000);
         let innerEvent: events_emitter.InnerEvent = {
           eventId: 60310,
           priority: events_emitter.EventPriority.LOW
@@ -64,7 +64,7 @@ export default function unitsModuleNameJsunit() {
         let callback = (eventData: events_emitter.EventData) => {
           console.info("testunitsModuleName0001 get event state result is: " + JSON.stringify(eventData));
           try {
-            expect(eventData.data.ModuleName).assertFalse();
+            expect(eventData.data?.ModuleName).assertFalse();
           } catch (err) {
             console.info("testunitsModuleName0001 get event state result is: " + JSON.stringify(err));
           }
@@ -85,7 +85,7 @@ export default function unitsModuleNameJsunit() {
      */
     it('testunitsGlobalPosition0001', 0, async (done: Function) => {
       console.info('unitsModuleName testunitsGlobalPosition0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       try {
         console.info("testunitsGlobalPosition0001 click result is: " + JSON.stringify(sendEventByKey('globalPositionText', 10, "")));
         let innerEvent: events_emitter.InnerEvent = {
@@ -94,7 +94,7 @@ export default function unitsModuleNameJsunit() {
         }
         let callback = (eventData: events_emitter.EventData) => {
           console.info("testunitsGlobalPosition0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual(true);
+          expect(eventData.data?.Result).assertEqual(true);
         }
         events_emitter.on(innerEvent, callback);
       } catch (err) {
@@ -111,7 +111,7 @@ export default function unitsModuleNameJsunit() {
      */
     it('testunitsMinWidth0001', 0, async (done: Function) => {
       console.info('unitsModuleName testunitsMinWidth0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('minWidthText');
       console.info("[testunitsMinWidth0001] component constraintSize strJson:" + strJson);
       expect(JSON.parse(strJson).$type).assertEqual('Text');
@@ -128,7 +128,7 @@ export default function unitsModuleNameJsunit() {
      */
     it('testunitsMinWidth0002', 0, async (done: Function) => {
       console.info('unitsModuleName testunitsMinWidth0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('minWidthText');
       console.info("[testunitsMinWidth0002] component constraintSize strJson:" + strJson);
       expect(JSON.parse(strJson).$type).assertEqual('Text');

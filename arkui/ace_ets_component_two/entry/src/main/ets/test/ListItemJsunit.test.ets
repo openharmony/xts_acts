@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function listItemJsunit() {
-  describe('listItemTest', function () {
-    beforeEach(async function (done) {
+  describe('listItemTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("listItem beforeEach start");
       let options = {
         uri: 'MainAbility/pages/listItem',
@@ -41,31 +41,31 @@ export default function listItemJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("listItem after each called");
     });
 
-    it('testListItem01', 0, async function (done) {
+    it('testListItem01', 0, async (done: Function) => {
       console.info('[testListItem01] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('ListItem');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testListItem01] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.sticky).assertEqual('Sticky.Normal');
       console.info('testListItem01 END');
       done();
     });
 
-    it('testListItem02', 0, async function (done) {
+    it('testListItem02', 0, async (done: Function) => {
       console.info('[testListItem02] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "sticky": Sticky.None
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 122,
           priority: events_emitter.EventPriority.LOW
         }
@@ -76,33 +76,33 @@ export default function listItemJsunit() {
       }
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('ListItem');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testListItem02] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.sticky).assertEqual('Sticky.None');
       console.info('testListItem02 END');
       done();
     });
 
-    it('testListItem03', 0, async function (done) {
+    it('testListItem03', 0, async (done: Function) => {
       console.info('[testListItem03] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('List');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testListItem03] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.editMode).assertTrue();
       console.info('testListItem03 END');
       done();
     });
 
-    it('testListItem04', 0, async function (done) {
+    it('testListItem04', 0, async (done: Function) => {
       console.info('[testEllipse03] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "editMode": false
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 123,
           priority: events_emitter.EventPriority.LOW
         }
@@ -113,7 +113,7 @@ export default function listItemJsunit() {
       }
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('List');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testListItem04] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.editMode).assertFalse();
       console.info('testListItem04 END');

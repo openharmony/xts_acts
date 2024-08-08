@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import router from '@system.router'
+import router from '@ohos.router';
 import { Driver, ON } from '@ohos.UiTest'
 import CommonFunc from "../../MainAbility/common/Common";
 
 export default function abilityTest() {
   const SUITE = 'SegmentButton'
-  describe('ActsAceSegmentButtonTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: "MainAbility/pages/SegmentButton/SegmentButtonIndex",
+  describe('ActsAceSegmentButtonTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/SegmentButton/SegmentButtonIndex",
       }
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function abilityTest() {
       }
       done()
     })
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       let driver = Driver.create()
       await driver.delayMs(2);
       done()
@@ -48,7 +48,7 @@ export default function abilityTest() {
     *tc.name   single select SegmentButton UI test
     *tc.desc   Test single select SegmentButton UI
     */
-    it('Advanced_ui_SegmentButton_0100', 0, async function (done) {
+    it('Advanced_ui_SegmentButton_0100', 0, async (done: Function) => {
       let driver = Driver.create()
       let singleTextSegmentButton = await driver.findComponent(ON.text('单选文字1'))
       let singleTextSegmentButtonIsEnabled = await singleTextSegmentButton.isEnabled()
@@ -82,7 +82,7 @@ export default function abilityTest() {
     *tc.name   multiple select SegmentButton UI test
     *tc.desc   Test multiple SegmentButton UI
     */
-    it('Advanced_ui_SegmentButton_0200', 0, async function (done) {
+    it('Advanced_ui_SegmentButton_0200', 0, async (done: Function) => {
       let driver = Driver.create()
       let multipleTextSegmentButton = await driver.findComponent(ON.text('多选文字1'))
       let multipleTextSegmentButtonType = await multipleTextSegmentButton.getType()
@@ -108,7 +108,7 @@ export default function abilityTest() {
     *tc.name   tab SegmentButton UI test
     *tc.desc   Test tab SegmentButton UI
     */
-    it('Advanced_ui_SegmentButton_0300', 0, async function (done) {
+    it('Advanced_ui_SegmentButton_0300', 0, async (done: Function) => {
       let driver = Driver.create()
       let tabSegmentButton = await driver.findComponent(ON.text('页签1'))
       let tabSegmentButtonType = await tabSegmentButton.getType()

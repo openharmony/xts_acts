@@ -22,8 +22,8 @@ import {
   albumSubtype,
 } from '../../../../../../../common'
 
-export default function getAlbumsTest () {
-  describe('getAlbumsTest', function () {
+export default function groupAlbumsTest () {
+  describe('groupAlbumsTest', function () {
     const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
 
     /**

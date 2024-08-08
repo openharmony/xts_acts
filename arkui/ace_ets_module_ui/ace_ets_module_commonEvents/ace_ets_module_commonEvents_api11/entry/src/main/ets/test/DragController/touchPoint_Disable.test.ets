@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function previewOptions() {
-  describe('previewOptions', function () {
-    beforeEach(async function (done) {
+  describe('previewOptions', () => {
+    beforeEach(async (done: Function) => {
       console.info("previewOptions beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/DragController/touchPoint_Disable',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/DragController/touchPoint_Disable',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function previewOptions() {
      * @tc.type :
      * @tc.size :
      */
-    it('previewOptions_0100', 0, async function (done) {
+    it('previewOptions_0100', 0, async (done: Function) => {
       console.info('previewOptions_0100 START');
       let driver: Driver = Driver.create();
       let button: Component = await driver.findComponent(ON.id('custom_id'));
@@ -57,7 +57,7 @@ export default function previewOptions() {
       await button.dragTo(text);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('disable_id');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[previewOptions_0100] component obj is: " + JSON.stringify(obj));
       console.info("[previewOptions_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('{"mode":2}');

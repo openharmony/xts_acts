@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function typeNodeGestureTest() {
-  describe('typeNodeGestureTest', function () {
-    beforeEach(async function (done) {
+  describe('typeNodeGestureTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("GestureTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/PanGesture/Gesture",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/PanGesture/Gesture",
       }
       try {
         router.clear();
@@ -50,7 +50,7 @@ export default function typeNodeGestureTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('GestureTest_0100', 0, async function (done) {
+    it('GestureTest_0100', 0, async (done: Function) => {
       console.info('GestureTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -58,7 +58,7 @@ export default function typeNodeGestureTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('gesture');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GestureTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('2');
       console.info('[GestureTest_0100] END');

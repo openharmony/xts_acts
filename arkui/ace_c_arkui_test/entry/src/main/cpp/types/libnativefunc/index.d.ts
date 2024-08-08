@@ -1150,8 +1150,6 @@ export const testSwiperDisplayCount001: () => number;
 
 export const testSwiperDisplayCount002: () => number;
 
-export const testSwiperDisplayCount003: () => number;
-
 export const testSwiperDisplayCount004: () => number;
 
 export const testSwiperDuration001: () => number;
@@ -5013,6 +5011,16 @@ export const testArkUI084: () => number;
 export const testArkUI085: () => number;
 
 export const testArkUI086: () => number;
+
+export const testArkUI087: () => number;
+
+export const testArkUI088: () => number;
+
+export const testArkUI089: () => number;
+
+export const testArkUI090: () => number;
+
+export const testArkUI091: () => number;
 
 export const testRelativeContaineAlignmentRuleOption001: () => number;
 

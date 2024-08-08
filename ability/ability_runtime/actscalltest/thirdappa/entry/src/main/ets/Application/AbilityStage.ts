@@ -17,7 +17,7 @@ import AbilityStage from "@ohos.app.ability.AbilityStage"
 var onAcceptWantCalledSeq;
 
 export default class MyAbilityStage extends AbilityStage {
-    onCreate() {
-        console.log("SystemCallTest MyAbilityStage onCreate")
-    }
+  onCreate() {
+    console.log("SystemCallTest MyAbilityStage onCreate")
+  }
 }

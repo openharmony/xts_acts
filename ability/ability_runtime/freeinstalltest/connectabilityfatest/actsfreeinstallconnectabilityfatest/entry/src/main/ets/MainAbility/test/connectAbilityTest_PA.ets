@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,137 +15,60 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import featureAbility from '@ohos.ability.featureAbility';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
-import commonEvent from '@ohos.commonEvent';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
+import commonEvent from '@ohos.commonEventManager';
+import base from '@ohos.base';
+import ability from '@ohos.ability.ability';
 
+let subscriber:commonEvent.CommonEventSubscriber;
+let dataAssert = "";
 export default function connectAbilityTest_PA() {
-  var TAG = "";
-  var dataAssert = "";
-  var abilityDelegator = undefined
-  var subscriber;
+  let TAG = "";
+  let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
   let timeoutId = 0;
-  var subscribeInfo = {
+  let subscribeInfo:commonEvent.CommonEventSubscribeInfo = {
     events: ["service_event", "service2_event", "service3_event", "service4_event", "service5_event",
       "service6_event", "service7_event", "service8_event", "service9_event", "service10_event", "service11_event"]
   };
 
-  function sleep(time) {
-    return new Promise((resolve) => setTimeout(resolve, time))
-  }
 
-  async function startService(msg, str) {
-    console.info(msg + ' startService successful. str: ' + JSON.stringify(str));
-    featureAbility.startAbility(str)
-      .then((data) => {
-        console.info(msg + ' startService successful. Data: ' + JSON.stringify(data));
-      }).catch((error) => {
-        console.error(msg + ' startService  failed. Cause: ' + JSON.stringify(error));
-      })
-  }
-
-  function checkParameters(msg1, data) {
-    for (var key in data.parameters) {
-      console.info(msg1 + " data.parameters is : " + data.parameters[key])
-      if (data.parameters[key] === "onFailed") {
-        dataAssert = "onFailed";
-      } else if (data.parameters[key] === "onDisconnect") {
-        dataAssert = "onDisconnect";
-      } else if (data.parameters[key] === "onConnect") {
-        dataAssert = "onConnect";
-      }
-    }
-  }
-
-  function SubscribeCallBack(err, data) {
-    if (err.code) {
-      console.error("commonEvent subscribe failed " + JSON.stringify(err));
-    } else {
-      if (data.event === "service_event") {
-        console.info("commonEvent subscribe service " + JSON.stringify(data));
-        checkParameters("commonEvent service", data)
-      } else if (data.event === "service2_event") {
-        console.info("commonEvent subscribe service2 " + JSON.stringify(data));
-        checkParameters("commonEvent service2", data)
-      } else if (data.event === "service3_event") {
-        console.info("commonEvent subscribe service3 " + JSON.stringify(data));
-        checkParameters("commonEvent service3", data)
-      } else if (data.event === "service4_event") {
-        console.info("commonEvent subscribe service4 " + JSON.stringify(data));
-        checkParameters("commonEvent service4", data)
-      } else if (data.event === "service5_event") {
-        console.info("commonEvent subscribe service5 " + JSON.stringify(data));
-        checkParameters("commonEvent service5", data)
-      } else if (data.event === "service6_event") {
-        console.info("commonEvent subscribe service6 " + JSON.stringify(data));
-        checkParameters("commonEvent service6", data)
-      } else if (data.event === "service7_event") {
-        console.info("commonEvent subscribe service7 " + JSON.stringify(data));
-        checkParameters("commonEvent service7", data)
-      } else if (data.event === "service8_event") {
-        console.info("commonEvent subscribe service8 " + JSON.stringify(data));
-        checkParameters("commonEvent service8", data)
-      } else if (data.event === "service9_event") {
-        console.info("commonEvent subscribe service9 " + JSON.stringify(data));
-        checkParameters("commonEvent service9", data)
-      } else if (data.event === "service10_event") {
-        console.info("commonEvent subscribe service10 " + JSON.stringify(data));
-        checkParameters("commonEvent service10", data)
-      } else if (data.event === "service11_event") {
-        console.info("commonEvent subscribe service11 " + JSON.stringify(data));
-        checkParameters("commonEvent service11", data)
-      }
-    }
-  }
-
-
-  function CreateSubscriberCallBack(err, commonEventSubscriber) {
-    if (err.code) {
-      console.error("commonEvent createSubscriber failed " + JSON.stringify(err));
-    } else {
-      console.info("----commonEvent createSubscriber------");
-      subscriber = commonEventSubscriber;
-      commonEvent.subscribe(subscriber, SubscribeCallBack);
-    }
-  }
-
-  describe('FreeInstall_FA_ConnectAbility_PA', function () {
-    beforeAll(async function (done) {
+  describe('FreeInstall_FA_ConnectAbility_PA', ()=> {
+    beforeAll(async (done:Function) => {
       console.info("FreeInstall_FA_ConnectAbility_PA before all called");
       console.info("FreeInstall_FA_ConnectAbility_PA commonEvent.createSubscriber start!!!");
       commonEvent.createSubscriber(subscribeInfo, CreateSubscriberCallBack);
       await sleep(2000);
-      abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-      var cmd = "bm install -p data/test/MockService.hap";
+      let cmd = "bm install -p data/test/MockService.hap";
       console.info("cmd : " + cmd)
-      abilityDelegator.executeShellCommand(cmd, (err: any, d: any) => {
+      abilityDelegator.executeShellCommand(cmd, (err: base.BusinessError, d: ESObject) => {
         console.info("executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
       await sleep(500);
-      var cmd1 = "mkdir -p /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
-      abilityDelegator.executeShellCommand(cmd1, (err: any, d: any) => {
+      let cmd1 = "mkdir -p /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
+      abilityDelegator.executeShellCommand(cmd1, (err: base.BusinessError, d: ESObject) => {
         console.info("executeShellCommand1 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
       await sleep(500);
-      var cmd2 = "mkdir -p /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
-      abilityDelegator.executeShellCommand(cmd2, (err: any, d: any) => {
+      let cmd2 = "mkdir -p /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
+      abilityDelegator.executeShellCommand(cmd2, (err: base.BusinessError, d: ESObject) => {
         console.info("executeShellCommand2 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
 
       })
       await sleep(500);
-      var cmdum = "bm uninstall -n com.example.different.hmservice";
-      abilityDelegator.executeShellCommand(cmdum, (err: any, d: any) => {
+      let cmdum = "bm uninstall -n com.example.different.hmservice";
+      abilityDelegator.executeShellCommand(cmdum, (err: base.BusinessError, d: ESObject) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
         done();
       })
     });
 
-    afterEach(async function (done) {
+    afterEach(async (done:Function) => {
       console.info("FreeInstall_FA_ConnectAbility_PA after each called");
       dataAssert = ""
       await sleep(1000);
       if ("FreeInstall_FA_ConnectAbility_PA_1100" === TAG) {
-        var cmd14 = "bm uninstall -n com.ohos.hag.famanager";
-        abilityDelegator.executeShellCommand(cmd14, (err: any, d: any) => {
+        let cmd14 = "bm uninstall -n com.ohos.hag.famanager";
+        abilityDelegator.executeShellCommand(cmd14, (err: base.BusinessError, d: ESObject) => {
           console.info("executeShellCommand14 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
         })
       }
@@ -161,16 +83,16 @@ export default function connectAbilityTest_PA() {
     * @tc.desc    Function test
     * @tc.level   0
     */
-    it("FreeInstall_FA_ConnectAbility_PA_0100", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_PA_0100", 0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0100-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0100";
-      var cmdmyapp7 = "cp data/test/ConnectFaMyApplication7.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +
+      let cmdmyapp7 = "cp data/test/ConnectFaMyApplication7.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +
         "haps/entry/files";
-      abilityDelegator.executeShellCommand(cmdmyapp7, (err: any, d: any) => {
+      abilityDelegator.executeShellCommand(cmdmyapp7, (err: base.BusinessError, d: ESObject) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
       timeoutId = setTimeout(async () => {
-        var str1 = {
+        let str1:ability.StartAbilityParameter = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
             "abilityName": "com.example.myapplication.ServiceAbility",
@@ -190,15 +112,15 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0200", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_PA_0200", 0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0200-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0200";
-      var cmdapp9 = "bm install -p data/test/ConnectFaMyApplication9.hap";
-      abilityDelegator.executeShellCommand(cmdapp9, (err: any, d: any) => {
+      let cmdapp9 = "bm install -p data/test/ConnectFaMyApplication9.hap";
+      abilityDelegator.executeShellCommand(cmdapp9, (err: base.BusinessError, d: ESObject) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
       timeoutId = setTimeout(async () => {
-        var str2 = {
+        let str2:ability.StartAbilityParameter = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
             "abilityName": "com.example.myapplication.ServiceAbility2",
@@ -218,11 +140,11 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0300", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_PA_0300", 0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0300-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0300";
       timeoutId = setTimeout(async () => {
-        var str3 = {
+        let str3:ability.StartAbilityParameter = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
             "abilityName": "com.example.myapplication.ServiceAbility3",
@@ -242,11 +164,11 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0400", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_PA_0400", 0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0400-------------");
       timeoutId = setTimeout(async () => {
         TAG = "FreeInstall_FA_ConnectAbility_PA_0400";
-        var str4 = {
+        let str4:ability.StartAbilityParameter = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
             "abilityName": "com.example.myapplication.ServiceAbility4",
@@ -266,15 +188,15 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0500", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_PA_0500", 0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0500-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0500";
-      var cmdin = "bm install -p data/test/ConnectDifferentApplication.hap";
-      abilityDelegator.executeShellCommand(cmdin, (err: any, d: any) => {
+      let cmdin = "bm install -p data/test/ConnectDifferentApplication.hap";
+      abilityDelegator.executeShellCommand(cmdin, (err: base.BusinessError, d: ESObject) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
       timeoutId = setTimeout(async () => {
-        var str5 = {
+        let str5:ability.StartAbilityParameter = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
             "abilityName": "com.example.myapplication.ServiceAbility5",
@@ -294,11 +216,11 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0600", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_PA_0600", 0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0600-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0600";
       timeoutId = setTimeout(async () => {
-        var str6 = {
+        let str6:ability.StartAbilityParameter = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
             "abilityName": "com.example.myapplication.ServiceAbility6",
@@ -318,12 +240,12 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0700", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_PA_0700", 0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0700-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0700";
 
       timeoutId = setTimeout(async () => {
-        var str7 = {
+        let str7:ability.StartAbilityParameter = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
             "abilityName": "com.example.myapplication.ServiceAbility7",
@@ -343,12 +265,12 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0800", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_PA_0800", 0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0800-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0800";
 
       timeoutId = setTimeout(async () => {
-        var str8 = {
+        let str8:ability.StartAbilityParameter = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
             "abilityName": "com.example.myapplication.ServiceAbility8",
@@ -368,17 +290,17 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0900", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_PA_0900", 0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0900-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0900";
-      var cmdrm = "rm -r /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files/*";
-      abilityDelegator.executeShellCommand(cmdrm, (err: any, d: any) => {
+      let cmdrm = "rm -r /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files/*";
+      abilityDelegator.executeShellCommand(cmdrm, (err: base.BusinessError, d: ESObject) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
 
       timeoutId = setTimeout(async () => {
         await sleep(500);
-        var str9 = {
+        let str9:ability.StartAbilityParameter = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
             "abilityName": "com.example.myapplication.ServiceAbility9",
@@ -398,12 +320,12 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_1000", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_PA_1000", 0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_1000-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_1000";
 
       timeoutId = setTimeout(async () => {
-        var str10 = {
+        let str10:ability.StartAbilityParameter = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
             "abilityName": "com.example.myapplication.ServiceAbility10",
@@ -423,17 +345,17 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_ConnectAbility_PA_1100", 0, async function (done) {
+    it("FreeInstall_FA_ConnectAbility_PA_1100", 0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_1100-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_1100";
-      var cmdmyapp8 = "cp data/test/ConnectFaMyApplication8.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +
+      let cmdmyapp8 = "cp data/test/ConnectFaMyApplication8.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +
         "haps/entry/files";
-      abilityDelegator.executeShellCommand(cmdmyapp8, (err: any, d: any) => {
+      abilityDelegator.executeShellCommand(cmdmyapp8, (err: base.BusinessError, d: ESObject) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
 
       timeoutId = setTimeout(async () => {
-        var str11 = {
+        let str11:ability.StartAbilityParameter = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
             "abilityName": "com.example.myapplication.ServiceAbility11",
@@ -450,3 +372,78 @@ export default function connectAbilityTest_PA() {
   )
 }
 
+export function sleep(time:number):Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, time))
+}
+
+async function startService(msg:string, str:ability.StartAbilityParameter) {
+  console.info(msg + ' startService successful. str: ' + JSON.stringify(str));
+  featureAbility.startAbility(str)
+    .then((data) => {
+      console.info(msg + ' startService successful. Data: ' + JSON.stringify(data));
+    }).catch((error:base.BusinessError) => {
+    console.error(msg + ' startService  failed. Cause: ' + JSON.stringify(error));
+  })
+}
+
+function checkParameters(msg1:string, data:commonEvent.CommonEventData) {
+  if (data.parameters['assertData'] === "onFailed") {
+    dataAssert = "onFailed";
+  } else if (data.parameters['assertData'] === "onDisconnect") {
+    dataAssert = "onDisconnect";
+  } else if (data.parameters['assertData'] === "onConnect") {
+    dataAssert = "onConnect";
+  }
+}
+
+function SubscribeCallBack(err:base.BusinessError, data:commonEvent.CommonEventData) {
+  if (err.code) {
+    console.error("commonEvent subscribe failed " + JSON.stringify(err));
+  } else {
+    if (data.event === "service_event") {
+      console.info("commonEvent subscribe service " + JSON.stringify(data));
+      checkParameters("commonEvent service", data)
+    } else if (data.event === "service2_event") {
+      console.info("commonEvent subscribe service2 " + JSON.stringify(data));
+      checkParameters("commonEvent service2", data)
+    } else if (data.event === "service3_event") {
+      console.info("commonEvent subscribe service3 " + JSON.stringify(data));
+      checkParameters("commonEvent service3", data)
+    } else if (data.event === "service4_event") {
+      console.info("commonEvent subscribe service4 " + JSON.stringify(data));
+      checkParameters("commonEvent service4", data)
+    } else if (data.event === "service5_event") {
+      console.info("commonEvent subscribe service5 " + JSON.stringify(data));
+      checkParameters("commonEvent service5", data)
+    } else if (data.event === "service6_event") {
+      console.info("commonEvent subscribe service6 " + JSON.stringify(data));
+      checkParameters("commonEvent service6", data)
+    } else if (data.event === "service7_event") {
+      console.info("commonEvent subscribe service7 " + JSON.stringify(data));
+      checkParameters("commonEvent service7", data)
+    } else if (data.event === "service8_event") {
+      console.info("commonEvent subscribe service8 " + JSON.stringify(data));
+      checkParameters("commonEvent service8", data)
+    } else if (data.event === "service9_event") {
+      console.info("commonEvent subscribe service9 " + JSON.stringify(data));
+      checkParameters("commonEvent service9", data)
+    } else if (data.event === "service10_event") {
+      console.info("commonEvent subscribe service10 " + JSON.stringify(data));
+      checkParameters("commonEvent service10", data)
+    } else if (data.event === "service11_event") {
+      console.info("commonEvent subscribe service11 " + JSON.stringify(data));
+      checkParameters("commonEvent service11", data)
+    }
+  }
+}
+
+
+function CreateSubscriberCallBack(err:base.BusinessError, commonEventSubscriber:commonEvent.CommonEventSubscriber) {
+  if (err !=null && err.code) {
+    console.error("commonEvent createSubscriber failed " + JSON.stringify(err));
+  } else {
+    console.info("----commonEvent createSubscriber------");
+    subscriber = commonEventSubscriber;
+    commonEvent.subscribe(subscriber, SubscribeCallBack);
+  }
+}

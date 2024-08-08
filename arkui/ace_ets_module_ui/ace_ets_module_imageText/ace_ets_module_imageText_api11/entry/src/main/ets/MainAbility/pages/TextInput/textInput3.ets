@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,12 +13,6 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
-
-class CaretOffset {
-  index: number;
-  x: number;
-  y: number;
-}
 
 @Entry
 @Component
@@ -46,23 +39,23 @@ struct TextAreaExample2 {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("swiper page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.fontSize != null) {
-        this.fontSize = parseInt(eventData.data.fontSize);
+      if (eventData.data?.fontSize != null) {
+        this.fontSize = parseInt(eventData.data?.fontSize);
       }
-      if (eventData.data.fontColor != null) {
-        this.fontColor = eventData.data.fontColor;
+      if (eventData.data?.fontColor != null) {
+        this.fontColor = eventData.data?.fontColor;
       }
-      if (eventData.data.textAlign != null) {
-        this.textAlign = eventData.data.textAlign;
+      if (eventData.data?.textAlign != null) {
+        this.textAlign = eventData.data?.textAlign;
       }
-      if (eventData.data.type != null) {
-        this.inputType = eventData.data.type;
+      if (eventData.data?.type != null) {
+        this.inputType = eventData.data?.type;
       }
-      if (eventData.data.Text != null) {
-        this.text = eventData.data.text;
+      if (eventData.data?.Text != null) {
+        this.text = eventData.data?.text;
       }
-      if (eventData.data.text2 != null) {
-        this.text2 = eventData.data.text2;
+      if (eventData.data?.text2 != null) {
+        this.text2 = eventData.data?.text2;
       }
     }
   }
@@ -120,7 +113,7 @@ struct TextAreaExample2 {
         })
         .key('caretOffsetBtn2')
 
-      Text("Index" + this.caretIndex)
+      Text("Index" + this.caretIndex.toString())
         .key('caretOffsetText2')
     }
   }

@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function setFrameRateRangeTest() {
-  describe('setFrameRateRangeTest', function () {
-    beforeEach(async function (done) {
+  describe('setFrameRateRangeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("setFrameRateRangeTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/UIContext/setFrameRateRange",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/UIContext/setFrameRateRange",
       }
       try {
         router.clear();
@@ -50,11 +50,11 @@ export default function setFrameRateRangeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('requireDynamicSyncSceneTest_0010', 0, async function (done) {
+    it('requireDynamicSyncSceneTest_0010', 0, async (done: Function) => {
       console.info('requireDynamicSyncSceneTest_0010 START');
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('requireDynamicSyncScene_id');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[requireDynamicSyncSceneTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('requireDynamicSyncScene succ');
       console.info('[requireDynamicSyncSceneTest_0010] END');

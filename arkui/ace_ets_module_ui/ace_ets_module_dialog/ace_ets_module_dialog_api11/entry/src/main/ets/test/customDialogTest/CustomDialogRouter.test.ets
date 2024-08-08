@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeEach, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {Driver, ON} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';;
+import CommonFunc from '../../MainAbility/common/Common';;
 
 export default function CustomDialogRouter() {
-  describe('CustomDialogRouter', function () {
-    beforeEach(async function (done) {
+  describe('CustomDialogRouter', () => {
+    beforeEach(async (done: Function) => {
       console.info("CustomDialogRouter beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/customDialog/CustomDialogRouter',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/customDialog/CustomDialogRouter',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function CustomDialogRouter() {
      * @tc.type :
      * @tc.size :
      */
-    it('CustomDialogRouter_0100', 0, async function (done) {
+    it('CustomDialogRouter_0100', 0, async (done: Function) => {
       console.info('CustomDialogRouter_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

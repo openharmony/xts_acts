@@ -18,7 +18,8 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct Index {
-  @State direction:FlexDirection = FlexDirection.Column
+  @State direction: FlexDirection = FlexDirection.Column
+
   build() {
     Flex({ direction: this.direction, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('Hello World')
@@ -37,14 +38,14 @@ struct Index {
 
   onPageShow() {
     console.info('direction page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 84,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("direction page state change called:" + JSON.stringify(eventData));
       if (eventData.data.direction != null) {

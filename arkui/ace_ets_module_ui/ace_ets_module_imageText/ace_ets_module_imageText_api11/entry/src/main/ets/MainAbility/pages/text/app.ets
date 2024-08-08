@@ -62,7 +62,7 @@ struct AppVersionCode {
             console.info("versionCode start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("versionCode emit action state err: " + JSON.stringify(err.message))
+            console.info("versionCode emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
 

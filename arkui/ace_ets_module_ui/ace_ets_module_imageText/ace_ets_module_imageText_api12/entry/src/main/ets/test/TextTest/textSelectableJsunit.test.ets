@@ -15,12 +15,12 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 export default function textSelectableJsunit() {
-  describe('textSelectableJsunit', function () {
-    beforeEach(async function (done) {
+  describe('textSelectableJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("textSelectableJsunit beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Text/textSelectable',
@@ -42,7 +42,7 @@ export default function textSelectableJsunit() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info(" textSelectableJsunit after each called");
     });
@@ -55,11 +55,11 @@ export default function textSelectableJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('textSelectableJsunit_0100', 0, async function (done) {
+    it('textSelectableJsunit_0100', 0, async (done: Function) => {
       console.info('textSelectableJsunit_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('textSelectable_mess');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textSelectableJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[textSelectableJsunit_0100] textSelectable: " + JSON.stringify(obj.$attrs.textSelectable));
       expect(obj.$attrs.textSelectable).assertEqual('selectable-focusable');

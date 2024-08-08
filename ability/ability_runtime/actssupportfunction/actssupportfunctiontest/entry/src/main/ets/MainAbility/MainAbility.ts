@@ -16,48 +16,50 @@ import Ability from '@ohos.app.ability.UIAbility';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../test/List.test';
+import common from '@ohos.app.ability.common';
 
-var TAG1 = 'SupportFunction:TestAbility:';
+const TAG1 = 'SupportFunction:TestAbility:';
+
 export default class MainAbility extends Ability {
-    onCreate(want, launchParam) {
-        console.log(TAG1 + 'onCreate');
+  onCreate(want, launchParam) {
+    console.log(TAG1 + 'onCreate');
+    AppStorage.setOrCreate<common.UIAbilityContext>("abilityTestContext", this.context);
+    globalThis.abilityTestContext = this.context;
+    globalThis.abilityWant = want;
+    globalThis.abilityWant.parameters.timeout = 15000;
+    var abilityDelegator: any
+    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    var abilityDelegatorArguments: any
+    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    console.log('start run testcase!!!')
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+  }
 
-        globalThis.abilityTestContext = this.context;
-        globalThis.abilityWant = want;
-        globalThis.abilityWant.parameters.timeout = 15000;
-        var abilityDelegator: any
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        var abilityDelegatorArguments: any
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        console.log('start run testcase!!!')
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-    }
+  onDestroy() {
+    console.log(TAG1 + 'onDestroy');
+  }
 
-    onDestroy() {
-        console.log(TAG1 + 'onDestroy');
-    }
+  onWindowStageCreate(windowStage) {
+    console.log(TAG1 + 'onWindowStageCreate');
 
-    onWindowStageCreate(windowStage) {
-        console.log(TAG1 + 'onWindowStageCreate');
+    windowStage.loadContent("pages/index", (err, data) => {
+      if (err.code) {
+        console.log(TAG1 + 'Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.log(TAG1 + 'Succeeded in loading the content. Data: ' + JSON.stringify(data));
+    });
+  }
 
-        windowStage.loadContent("pages/index", (err, data) => {
-            if (err.code) {
-                console.log(TAG1 + 'Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-            console.log(TAG1 + 'Succeeded in loading the content. Data: ' + JSON.stringify(data));
-        });
-    }
+  onWindowStageDestroy() {
+    console.log(TAG1 + 'onWindowStageDestroy');
+  }
 
-    onWindowStageDestroy() {
-        console.log(TAG1 + 'onWindowStageDestroy');
-    }
+  onForeground() {
+    console.log(TAG1 + 'onForeground');
+  }
 
-    onForeground() {
-        console.log(TAG1 + 'onForeground');
-    }
-
-    onBackground() {
-        console.log(TAG1 + 'onBackground');
-    }
+  onBackground() {
+    console.log(TAG1 + 'onBackground');
+  }
 };

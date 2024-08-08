@@ -421,7 +421,7 @@ export default function ActsRichEditorTest() {
           let RichEditorTextSpanResult: RichEditorTextSpanResult = {
             spanPosition: {
               spanIndex: 10, spanRange: [10, 10]
-            }, value: "aaaaa", textStyle: (null), offsetInSpan: [10, 100]
+            }, value: "aaaaa", textStyle: (null!), offsetInSpan: [10, 100]
           }
           let RichEditorImageSpanStyleResult: RichEditorImageSpanStyleResult = {
             size: [10, 10], verticalAlign: (ImageSpanAlignment.BASELINE), objectFit: (ImageFit.Cover)
@@ -430,7 +430,7 @@ export default function ActsRichEditorTest() {
             spanPosition: {
               spanIndex: 10, spanRange: [10, 10]
             },
-            valuePixelMap: (null),
+            valuePixelMap: (null!),
             valueResourceStr: ("aaa"),
             imageStyle: {
               size: [10, 10], verticalAlign: (ImageSpanAlignment.TOP), objectFit: (ImageFit.Auto)
@@ -455,13 +455,13 @@ export default function ActsRichEditorTest() {
             }
           }
           let RichEditorSelection: RichEditorSelection = {
-            selection: [10, 10], spans: (null)
+            selection: [10, 10], spans: (null!)
           }
           let RichEditorDeleteValue: RichEditorDeleteValue = {
-            offset: 10, direction: (0), length: 10, richEditorDeleteSpans: (null)
+            offset: 10, direction: (0), length: 10, richEditorDeleteSpans: (null!)
           }
           let RichEditorDeleteValue1: RichEditorDeleteValue = {
-            offset: 10, direction: (1), length: 10, richEditorDeleteSpans: (null)
+            offset: 10, direction: (1), length: 10, richEditorDeleteSpans: (null!)
           }
           console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorInsertValue))
           console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorSpanPosition))
@@ -527,7 +527,7 @@ export default function ActsRichEditorTest() {
           let RichEditorTextSpanResult: RichEditorTextSpanResult = {
             spanPosition: {
               spanIndex: 10, spanRange: [10, 10]
-            }, value: "aaaaa", textStyle: (null), offsetInSpan: [10, 100]
+            }, value: "aaaaa", textStyle: (null!), offsetInSpan: [10, 100]
           }
           let RichEditorSpanPosition: RichEditorSpanPosition = {
             spanIndex: 20, spanRange: [20, 20]
@@ -559,10 +559,10 @@ export default function ActsRichEditorTest() {
       setTimeout(() => {
         try {
           let RichEditorDeleteValue: RichEditorDeleteValue = {
-            offset: 10, direction: (0), length: 10, richEditorDeleteSpans: (null)
+            offset: 10, direction: (0), length: 10, richEditorDeleteSpans: (null!)
           }
           let RichEditorDeleteValue1: RichEditorDeleteValue = {
-            offset: 10, direction: (1), length: 10, richEditorDeleteSpans: (null)
+            offset: 10, direction: (1), length: 10, richEditorDeleteSpans: (null!)
           }
           console.info("Stage_RichEditor_Test_2400 InsertValue is: " + JSON.stringify(RichEditorDeleteValue))
           console.info("Stage_RichEditor_Test_2400 InsertValue is: " + JSON.stringify(RichEditorDeleteValue1))
@@ -585,7 +585,7 @@ export default function ActsRichEditorTest() {
       setTimeout(() => {
         try {
           let RichEditorSelection: RichEditorSelection = {
-            selection: [10, 10], spans: (null)
+            selection: [10, 10], spans: (null!)
           }
           console.info("Stage_RichEditor_Test_2500 InsertValue is: " + JSON.stringify(RichEditorSelection))
           expect(typeof RichEditorSelection).assertEqual("object")
@@ -609,7 +609,7 @@ export default function ActsRichEditorTest() {
             spanPosition: {
               spanIndex: 10, spanRange: [10, 10]
             },
-            valuePixelMap: (null),
+            valuePixelMap: (null!),
             valueResourceStr: ("aaa"),
             imageStyle: {
               size: [10, 10], verticalAlign: (ImageSpanAlignment.TOP), objectFit: (ImageFit.Auto)

@@ -15,91 +15,91 @@
 import Ability from '@ohos.app.ability.UIAbility';
 import commonEvent from '@ohos.commonEvent';
 
-var TAG1 = 'StageSupportFunction:MainAbility:';
-var listPush1 = "Stage_SupportFunction_MainAbility_";
-var status1 = undefined;
+const TAG1 = 'StageSupportFunction:MainAbility:';
+const listPush1 = "Stage_SupportFunction_MainAbility_";
+let status1 = undefined;
 let status2 = undefined;
-var lifeList = [];
+let lifeList: string[] = [];
+
 export default class MainAbility extends Ability {
+  onCreate(want, launchParam) {
+    console.log(TAG1 + 'onCreate : status1 : ' + status1 + ' ,ifeList : ' + JSON.stringify(lifeList));
+    status1 = this.context.isTerminating();
+    lifeList.push('onCreate');
 
-    onCreate(want, launchParam) {
-        console.log(TAG1 + 'onCreate : status1 : ' + status1 + ' ,ifeList : ' + JSON.stringify(lifeList));
-        status1 = this.context.isTerminating();
-        lifeList.push('onCreate');
+    commonEvent.publish(listPush1 + "onCreate", (err) => {
+      console.log(TAG1 + listPush1 + "onCreate");
+    });
 
-        commonEvent.publish(listPush1 + "onCreate", (err) => {
-            console.log(TAG1 + listPush1 + "onCreate");
-        });
-
-        setTimeout(() => {
-            if (want.parameters.number == 1) {
-                this.context.terminateSelf().then((data) => {
-                    console.log(TAG1 + "terminateSelfWithResult data = " + JSON.stringify(data));
-                }).catch((error) => {
-                    console.log(TAG1 + "terminateSelfWithResult error = " + JSON.stringify(error));
-                })
-            }
-            if (want.parameters.number == 2) {
-                let wantNum = {
-                    want: {
-                        bundleName: "ohos.acts.aafwk.test.stagesupportfunction",
-                        abilityName:"MainAbility"
-                    },
-                    resultCode: 12120
-                }
-                this.context.terminateSelfWithResult(wantNum).then((data) => {
-                    console.log(TAG1 + "terminateSelfWithResult data = " + JSON.stringify(data));
-                }).catch((error) => {
-                    console.log(TAG1 + "terminateSelfWithResult error = " + JSON.stringify(error));
-                })
-            }
-        }, 2000);
-    }
-
-    onDestroy() {
-        console.log(TAG1 + 'onDestroy');
-        lifeList.push('onDestroy');
-        status2 = this.context.isTerminating();
-        let options = {
-            parameters: {
-                isTerminating1: status1,
-                isTerminating2: status2,
-                lifeList: lifeList
-            }
+    setTimeout(() => {
+      if (want.parameters.number == 1) {
+        this.context.terminateSelf().then((data) => {
+          console.log(TAG1 + "terminateSelfWithResult data = " + JSON.stringify(data));
+        }).catch((error) => {
+          console.log(TAG1 + "terminateSelfWithResult error = " + JSON.stringify(error));
+        })
+      }
+      if (want.parameters.number == 2) {
+        let wantNum = {
+          want: {
+            bundleName: "ohos.acts.aafwk.test.stagesupportfunction",
+            abilityName: "MainAbility"
+          },
+          resultCode: 12120
         }
-        commonEvent.publish(listPush1 + "onDestroy", options, (err) => {
-            console.log(TAG1 + listPush1 + "onDestroy");
-        });
-    }
+        this.context.terminateSelfWithResult(wantNum).then((data) => {
+          console.log(TAG1 + "terminateSelfWithResult data = " + JSON.stringify(data));
+        }).catch((error) => {
+          console.log(TAG1 + "terminateSelfWithResult error = " + JSON.stringify(error));
+        })
+      }
+    }, 2000);
+  }
 
-    onWindowStageCreate(windowStage) {
-        console.log(TAG1 + 'onWindowStageCreate');
-        lifeList.push('onWindowStageCreate');
-
-        windowStage.loadContent("pages/index", (err, data) => {
-            if (err.code) {
-                console.log(TAG1 + 'Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-            console.log(TAG1 + 'Succeeded in loading the content. Data: ' + JSON.stringify(data));
-        });
+  onDestroy() {
+    console.log(TAG1 + 'onDestroy');
+    lifeList.push('onDestroy');
+    status2 = this.context.isTerminating();
+    let options = {
+      parameters: {
+        isTerminating1: status1,
+        isTerminating2: status2,
+        lifeList: lifeList
+      }
     }
+    commonEvent.publish(listPush1 + "onDestroy", options, (err) => {
+      console.log(TAG1 + listPush1 + "onDestroy");
+    });
+  }
 
-    onWindowStageDestroy() {
-        console.log(TAG1 + 'onWindowStageDestroy');
-    }
+  onWindowStageCreate(windowStage) {
+    console.log(TAG1 + 'onWindowStageCreate');
+    lifeList.push('onWindowStageCreate');
 
-    onForeground() {
-        console.log(TAG1 + 'onForeground');
-        lifeList.push('onForeground');
-    }
+    windowStage.loadContent("pages/index", (err, data) => {
+      if (err.code) {
+        console.log(TAG1 + 'Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.log(TAG1 + 'Succeeded in loading the content. Data: ' + JSON.stringify(data));
+    });
+  }
 
-    onBackground() {
-        console.log(TAG1 + 'onBackground');
-    }
+  onWindowStageDestroy() {
+    console.log(TAG1 + 'onWindowStageDestroy');
+  }
 
-    onBackPressed(): boolean {
-        console.log(TAG1 + 'onBackPressed');
-        return false;
-    }
+  onForeground() {
+    console.log(TAG1 + 'onForeground');
+    lifeList.push('onForeground');
+  }
+
+  onBackground() {
+    console.log(TAG1 + 'onBackground');
+  }
+
+  onBackPressed(): boolean {
+    console.log(TAG1 + 'onBackPressed');
+    return false;
+  }
 };

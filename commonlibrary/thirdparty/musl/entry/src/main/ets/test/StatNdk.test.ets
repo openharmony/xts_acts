@@ -123,6 +123,7 @@ export default function statNdkTest() {
       expect(result).assertEqual(resultTrue);
       done()
     });
+
     /**
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKFIFOAT_0200
      * @tc.name     : testMuslStatMkFifoAt002

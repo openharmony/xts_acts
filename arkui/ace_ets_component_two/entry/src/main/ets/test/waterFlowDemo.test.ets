@@ -15,13 +15,12 @@
 
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
 import Utils from './Utils.ets'
 
-
 export default function waterFlowDemoJsunit() {
-  describe('waterFlowDemoTest', function () {
-    beforeAll(async function (done) {
+  describe('waterFlowDemoTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("waterFlow beforeEach start");
       let options = {
         uri: 'MainAbility/pages/WaterflowDemo',
@@ -42,7 +41,7 @@ export default function waterFlowDemoJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("waterflowDemo after each called");
     });
@@ -52,12 +51,12 @@ export default function waterFlowDemoJsunit() {
      * @tc.name         waterflowTest0001
      * @tc.desic        'waterflowTest0001
      */
-    it('waterflowTest0001', 0, async function (done) {
+    it('waterflowTest0001', 0, async (done: Function) => {
       console.info('waterflowDemo testalphabetIndexerWidth0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('waterFlow');
       console.info("[waterflowTest0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('WaterFlow');
       done();
     });

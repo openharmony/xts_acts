@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function OverlayManagerTest_001() {
-  describe('OverlayManagerTest_001', function () {
-    beforeEach(async function (done) {
+  describe('OverlayManagerTest_001', () => {
+    beforeEach(async (done: Function) => {
       console.info("OverlayManagerTest_001 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/UIContext/OverlayManager_001",
       }
       try {
@@ -40,7 +40,7 @@ export default function OverlayManagerTest_001() {
       console.info("OverlayManagerTest_001 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("OverlayManagerTest_001 after each called");
     });
@@ -53,7 +53,7 @@ export default function OverlayManagerTest_001() {
      * @tc.type
     * @tc.size
      */
-    it('addComponentContent_001', 0, async function (done) {
+    it('addComponentContent_001', 0, async (done: Function) => {
       console.info('[addComponentContent_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

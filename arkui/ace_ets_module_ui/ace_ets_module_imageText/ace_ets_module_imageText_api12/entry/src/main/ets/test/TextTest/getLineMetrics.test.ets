@@ -15,12 +15,12 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 export default function getLineMetrics() {
-  describe('getLineMetrics', function () {
-    beforeEach(async function (done) {
+  describe('getLineMetrics', () => {
+    beforeEach(async (done: Function) => {
       console.info("getLineMetrics beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Text/getLineMetrics',
@@ -42,7 +42,7 @@ export default function getLineMetrics() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info(" getLineMetrics after each called");
     });
@@ -67,7 +67,7 @@ export default function getLineMetrics() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('lineMetrics_mess');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
       console.info("[getLineMetrics_0100] obj is: " + JSON.stringify(obj));
       console.info("[getLineMetrics_0200] startIndex: " + JSON.stringify(obj.$attrs.content));

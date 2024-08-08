@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function onKeyPreImeTest() {
-  describe('onKeyPreImeTest', function () {
-    beforeEach(async function (done) {
+  describe('onKeyPreImeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("onKeyPreImeTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/onKeyEvent/OnKeyPreIme",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/onKeyEvent/OnKeyPreIme",
       }
       try {
         router.clear();
@@ -50,7 +50,7 @@ export default function onKeyPreImeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onKeyPreImeTest_0010', 0, async function (done) {
+    it('onKeyPreImeTest_0010', 0, async (done: Function) => {
       console.info('onKeyPreImeTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -58,7 +58,7 @@ export default function onKeyPreImeTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('onKeyPreIme_id');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[onKeyPreImeTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.height).assertEqual('40.00vp');
       console.info('[onKeyPreImeTest_0010] END');
@@ -73,7 +73,7 @@ export default function onKeyPreImeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onKeyPreImeTest_0020', 0, async function (done) {
+    it('onKeyPreImeTest_0020', 0, async (done: Function) => {
       console.info('onKeyPreImeTest_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -81,7 +81,7 @@ export default function onKeyPreImeTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('state_button');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[onKeyPreImeTest_0020] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('true');
       console.info('[onKeyPreImeTest_0020] END');

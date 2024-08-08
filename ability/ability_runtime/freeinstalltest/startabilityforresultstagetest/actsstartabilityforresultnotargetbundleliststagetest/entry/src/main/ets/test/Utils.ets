@@ -14,14 +14,8 @@
  */
 
 export default class Utils {
-  static sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(reject)
-      }, time)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
+  static sleep(time:number):Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, time))
   }
 
   static getNowTime() {
@@ -33,10 +27,10 @@ export default class Utils {
    * @param startTime 接口调用开始时间
    * @param endTime 接口调用结束时间
    */
-  static getDurationTime(msg, startTime, endTime) {
+  static getDurationTime(msg:string, startTime:number, endTime:number) {
     console.info(msg + 'Get Interface startTime: ' + startTime);
     console.info(msg + 'Get Interface endTime: ' + endTime);
-    var duration = (endTime - startTime)
+    let duration = (endTime - startTime)
     console.info(msg + 'Get Interface Duration: ' + duration);
     return duration;
   }

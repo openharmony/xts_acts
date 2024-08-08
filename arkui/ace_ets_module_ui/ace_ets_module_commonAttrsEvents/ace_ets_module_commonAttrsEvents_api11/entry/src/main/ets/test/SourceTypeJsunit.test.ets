@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -62,10 +61,16 @@ export default function sourceTypeJsunit() {
         x: x_value,
         y: y_value,
         type: TouchType.Down,
+        screenX: 0,
+        screenY: 0,
+        windowX: 0,
+        windowY: 0,
+        displayX: 0,
+        displayY: 0
       }
-      let callback = (indexData: emitter.EventData) => {
+      let callback = (indexData: events_emitter.EventData) => {
         console.info("sourceTypeTest_0100 get event state result is: " + JSON.stringify(indexData));
-        expect(JSON.parse(indexData.data.event).source).assertEqual(0)
+        expect(JSON.parse(indexData.data?.event).source).assertEqual(0)
       }
       let innerEvent: events_emitter.InnerEvent = {
         eventId: 198,

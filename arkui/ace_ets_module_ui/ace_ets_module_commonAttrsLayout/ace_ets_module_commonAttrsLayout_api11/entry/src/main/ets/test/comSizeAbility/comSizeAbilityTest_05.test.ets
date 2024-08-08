@@ -28,14 +28,14 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import componentUtils from '@ohos.arkui.componentUtils';
 
 export default function comSizeAbilityTest_05() {
   describe('comSizeAbilityTest_05', () => {
     beforeEach(async (done: Function) => {
       console.info("comSizeAbilityTest_05 beforeEach start")
-      let options :router.RouterOptions= {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_05'
       }
       try {

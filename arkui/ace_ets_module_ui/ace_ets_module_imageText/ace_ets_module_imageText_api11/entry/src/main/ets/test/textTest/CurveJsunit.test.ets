@@ -15,8 +15,8 @@
 
 import router from '@ohos.router';
 import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
-import { GlobalContext } from '../../MainAbility/utils/GlobalContext';
-import Utils from './Utils';
+import { GlobalContext } from '../../MainAbility/common/GlobalContext';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function CurveJsunit() {
   describe('CurveTest', () => {
@@ -32,7 +32,7 @@ export default function CurveJsunit() {
         if (!("curve" == pages.name)) {
           console.info("get curve state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push curve page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -42,7 +42,7 @@ export default function CurveJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("curve after each called");
     });
 
