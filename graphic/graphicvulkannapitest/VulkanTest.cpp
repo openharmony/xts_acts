@@ -143,11 +143,10 @@ void VulkanLoaderUnitTest::TrytoCreateVkInstance()
     std::cout << "instance_ ptr: " << instance_ << std::endl;
     if (result != VK_SUCCESS || instance_ == nullptr) {
         isSupportedVulkan_ = false;
-        std::cout << "set isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     } else {
         isSupportedVulkan_ = true;
-        std::cout << "set isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     }
+    std::cout << "set isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     std::cout << "TrytoCreateVkInstance result: " << result << std::endl;
 }
 
