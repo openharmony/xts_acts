@@ -1,4 +1,21 @@
+/**
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 #include "napi/native_api.h"
+
+constexpr const int32_t charSize = 50;
 
 static napi_value Add(napi_env env, napi_callback_info info)
 {
@@ -6,7 +23,7 @@ static napi_value Add(napi_env env, napi_callback_info info)
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     napi_valuetype valuetype0;
     napi_typeof(env, args[0], &valuetype0);
@@ -24,32 +41,29 @@ static napi_value Add(napi_env env, napi_callback_info info)
     napi_create_double(env, value0 + value1, &sum);
 
     return sum;
-
 }
 
 static napi_value loadModuleWithInfo(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
-
     napi_status status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    
     if (status != napi_ok) {
         return nullptr;
     }
-    
+
     napi_value path_c = args[1];
     napi_value name_c = args[0];
-    char name[50] = {0};
+    char name[charSize] = {0};
     size_t len = 0;
-    napi_get_value_string_utf8(env, name_c, name, 50, &len);
-    char path[50] = {0};
+    napi_get_value_string_utf8(env, name_c, name, charSize, &len);
+    char path[charSize] = {0};
     size_t pathLen = 0;
-    napi_get_value_string_utf8(env, path_c, path, 50, &pathLen);
-    
+    napi_get_value_string_utf8(env, path_c, path, charSize, &pathLen);
+
     napi_value result;
     if (pathLen == 0) {
-        status = napi_load_module_with_info(env, name, "", &result);
+        status = napi_load_module_with_info(env, name, nullptr, &result);
     } else {
         status = napi_load_module_with_info(env, name, path, &result);
     }
