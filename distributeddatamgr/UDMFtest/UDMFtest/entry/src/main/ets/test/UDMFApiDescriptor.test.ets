@@ -662,7 +662,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".java,.jav");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/x-java");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2000 end");
     });
     /**
@@ -5182,7 +5182,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".pfb");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-font");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0640 end");
     });
 
@@ -5211,7 +5211,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".pfa");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-font");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0650 end");
     });
 
