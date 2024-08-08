@@ -1,0 +1,12 @@
+{
+  "name": "hsptwo",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "Index.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "packageType": "InterfaceHar",
+  "dependencies": {
+    "libhsptwo.so": "file:./src/main/cpp/types/libhsptwo"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "entry",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "libentry.so": "file:./src/main/cpp/types/libentry",
+    "harOne": "file:../harOne",
+    "harTwo": "file:../harTwo",
+    "hspOne": "file:../hspOne",
+    "hspTwo": "file:../hspTwo",
+    "productHar": "file:./src/main/resources/base/profile/productHar.har"
+  }
+}
