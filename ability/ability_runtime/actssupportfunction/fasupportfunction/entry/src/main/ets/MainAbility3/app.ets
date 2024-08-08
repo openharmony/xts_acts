@@ -16,10 +16,11 @@ import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 import bundle from '@ohos.bundle';
 
-var TAG1 = "Fa:SupportFunction:MainAbility3:";
-var listPush1 = "Fa_SupportFunction_MainAbility3_";
-var lifeList = [];
+const TAG1 = "Fa:SupportFunction:MainAbility3:";
+const listPush1 = "Fa_SupportFunction_MainAbility3_";
+let lifeList: string[] = [];
 let setDisplayOrientation1 = 0;
+
 export default {
   onCreate() {
     console.log(TAG1 + 'onCreate');
