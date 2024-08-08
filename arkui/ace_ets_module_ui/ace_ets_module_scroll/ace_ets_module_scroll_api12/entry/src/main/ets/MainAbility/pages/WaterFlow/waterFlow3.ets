@@ -15,14 +15,14 @@
 import { WaterFlowDataSource } from './WaterFlowDataSource'
 @Entry
 @Component
-struct layoutModeWaterFlow {
+struct WaterFlow3 {
   @State minSize: number = 80
   @State maxSize: number = 180
   @State num: number = 0
   scroller: Scroller = new Scroller()
   @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F]
   dataSource: WaterFlowDataSource = new WaterFlowDataSource()
-  @State layoutMode1: WaterFlowLayoutMode = WaterFlowLayoutMode.ALWAYS_TOP_DOWN
+  @State layoutdir1: FlexDirection = FlexDirection.ColumnReverse
   private itemWidthArray: number[] = []
   private itemHeightArray: number[] = []
 
@@ -47,28 +47,32 @@ struct layoutModeWaterFlow {
   build() {
     Column({ space: 5 }) {
       Column(){
-        Text('yOffset: ' + Math.round(this.num))
-          .id('layoutMode_yOffset')
+        Text('length: ' + this.num)
+          .id('flow_length_3')
+         
+        Button('layoutDirection')
+          .id('flow_layoutdir_3')
+          .onClick(()=>{
+            this.layoutdir1 = FlexDirection.Column
+          })
+        Row(){
+          Button('delete3')
+            .id('flow_delete_3')
+            .onClick(()=>{
+              this.dataSource.deleteItem(2)
+              this.num = this.dataSource.totalCount()
+            })
+          Button('add')
+            .id('flow_add_3')
+            .onClick(()=>{
+              this.dataSource.addItem(2)
+              this.num = this.dataSource.totalCount()
+            })
+        }
 
-        Button('layoutMode_ALWAYS')
-          .id('layoutMode_1')
-          .onClick(()=>{
-            this.layoutMode1 = WaterFlowLayoutMode.ALWAYS_TOP_DOWN
-          })
-        Button('layoutMode_SLIDING')
-          .id('layoutMode_2')
-          .onClick(()=>{
-            this.layoutMode1 = WaterFlowLayoutMode.SLIDING_WINDOW
-          })
-        Button('scroll 100')
-          .id('layout_scroll')
-          .onClick(()=>{
-            this.scroller.scrollTo({ xOffset: 0, yOffset: 100 })
-            this.num = this.scroller.currentOffset().yOffset
-          })
       }.height('20%')
 
-      WaterFlow({scroller: this.scroller, layoutMode: this.layoutMode1 }) {
+      WaterFlow({scroller: this.scroller }) {
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
@@ -80,15 +84,13 @@ struct layoutModeWaterFlow {
           .backgroundColor(this.colors[item % 5])
         }, (item: string) => item)
       }
-      .columnsTemplate('1fr 1fr')
-      .columnsGap(10)
-      .rowsGap(5)
+      .layoutDirection(this.layoutdir1)
+      .direction(Direction.Rtl)
       .scrollBar(BarState.On)
       .scrollBarWidth(20)
       .backgroundColor(0xFAEEE0)
       .width('100%')
       .height('60%')
-
     }
   }
 }

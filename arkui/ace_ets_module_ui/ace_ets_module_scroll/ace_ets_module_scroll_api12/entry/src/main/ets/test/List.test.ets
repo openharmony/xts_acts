@@ -36,6 +36,12 @@ import waterFlowLayoutMode from './WaterFlowTest/waterFlowLayoutMode.test';
 import ListAddApi from './ListTest/ListAddApi.test';
 import listOffsetJsunit from './ListTest/listOffsetJsunit.test';
 import swiperSyncType from './SwiperTest/swiperSyncType.test';
+import waterFlow1Jsunit from './WaterFlowTest/waterFlow1Jsunit.test';
+import waterFlow2Jsunit from './WaterFlowTest/waterFlow2Jsunit.test';
+import waterFlow3Jsunit from './WaterFlowTest/waterFlow3Jsunit.test';
+import waterFlow4Jsunit from './WaterFlowTest/waterFlow4Jsunit.test';
+import waterFlow5Jsunit from './WaterFlowTest/waterFlow5Jsunit.test';
+import waterFlow6Jsunit from './WaterFlowTest/waterFlow6Jsunit.test';
 
 export default function testsuite() {
   ListScrollTest1()
@@ -62,4 +68,10 @@ export default function testsuite() {
   ListAddApi()
   listOffsetJsunit()
   swiperSyncType()
+  waterFlow1Jsunit()
+  waterFlow2Jsunit()
+  waterFlow3Jsunit()
+  waterFlow4Jsunit();
+  waterFlow5Jsunit();
+  waterFlow6Jsunit();
 }
