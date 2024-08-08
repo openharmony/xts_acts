@@ -34,8 +34,6 @@
 		"MainAbility/pages/ComponentV2/Monitor2",
 		"MainAbility/pages/ComponentV2/Monitor3",
 		"MainAbility/pages/ComponentV2/Monitor4",
-		"MainAbility/pages/Repeat/repeatCount",
-        "MainAbility/pages/Storage/appStorageV2",
-        "MainAbility/pages/Storage/persistenceV2"
+		"MainAbility/pages/Repeat/repeatCount"
     ]
 }
