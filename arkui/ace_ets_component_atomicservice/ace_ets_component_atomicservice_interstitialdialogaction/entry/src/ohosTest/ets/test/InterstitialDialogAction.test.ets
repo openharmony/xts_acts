@@ -62,7 +62,7 @@ export default function InterstitialDialogActionTest() {
      * @tc.number    : ArkUI_InterstitialDialogAction_0001
      * @tc.name      : test initial state
      * @tc.desc      : expect dialog at 88vp to bottom
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
