@@ -7,7 +7,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("show dialog")
+        Text('show dialog')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
