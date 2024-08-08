@@ -111,16 +111,16 @@ export default function continuationManagerTest() {
         * @tc.type:   Function
         * @tc.level   Level3
         */
-        it('SUM_DMS_AbilityConstant_0100', 0 , async function (done) {
-            console.log("----------------------SUM_DMS_AbilityConstant_0100 start----------------------");
+        it('SUB_DMS_AbilityConstant_0100', 0 , async (done) => {
+            console.log("----------------------SUB_DMS_AbilityConstant_0100 start----------------------");
             try {
-                console.log("----------------------SUM_DMS_AbilityConstant_0100----------------------" + abilityConstant.LaunchParam.PREPARE_CONTINUATION);
-                expect(10).assertEqual(abilityConstant.LaunchParam.PREPARE_CONTINUATION);
+                console.log("--------------------PREPARE_CONTINUATION--------------------" + abilityConstant.LaunchReason.PREPARE_CONTINUATION);
+                expect(10).assertEqual(abilityConstant.LaunchReason.PREPARE_CONTINUATION);
             } catch (error) {
-                console.log("----------------------SUM_DMS_AbilityConstant_0100----------------------"" + error);  
+                console.log("----------------------SUB_DMS_AbilityConstant_0100----------------------" + error);  
             }
-            console.log("----------------------SUM_DMS_AbilityConstant_0100 end----------------------");
-			done();
+            console.log("----------------------SUB_DMS_AbilityConstant_0100 end----------------------");
+            done();
         })
 
         /*
