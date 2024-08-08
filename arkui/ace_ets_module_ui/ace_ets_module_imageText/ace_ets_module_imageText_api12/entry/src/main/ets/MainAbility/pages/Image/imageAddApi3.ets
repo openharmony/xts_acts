@@ -29,7 +29,7 @@ class MyNodeController11 extends NodeController {
   }
 }
  class StyledStringTest {
-      testStr: string = ''
+      private testStr: string = ''
       constructor(str: string) {
         this.testStr = str
       }
@@ -38,7 +38,7 @@ class MyNodeController11 extends NodeController {
         return StyledString.fromHtml(input)
       }
       
-    }
+}
 @Entry
 @Component
 struct imageAddApi3 {
