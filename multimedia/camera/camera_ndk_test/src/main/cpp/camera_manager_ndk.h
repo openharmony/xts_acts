@@ -56,7 +56,13 @@ typedef enum CameraCallbackCode {
     CameraManager_Status = 16,
     NoReceived = 10086,
 } CameraCallbackCode;
-
+typedef enum UseCaseCode {
+    PARAMETER_OK = 0,     // 参数正常
+    PARAMETER1_ERROR = 1, // 参数1异常
+    PARAMETER2_ERROR = 2, // 参数2异常
+    PARAMETER3_ERROR = 3, // 参数3异常
+    PARAMETER4_ERROR = 4, // 参数4异常
+} UseCaseCode;
 class NDKCamera {
 public:
     ~NDKCamera(void);
@@ -82,7 +88,14 @@ public:
     Camera_VideoStabilizationMode videoMode_;
     Camera_Device* cameras_;
     Camera_OutputCapability* cameraOutputCapability_;
-
+    bool isAddInput_;       // 能否添加输入
+    Camera_Device *camera_;                            // 相机设备
+    Camera_SceneMode *sceneModes_;                     // 记录支持的Camera_SceneMode列表
+    Camera_SceneMode sceneMode_;                       // 相机模式
+    uint64_t secureSeqId_;                             // 安全输出的序列标识
+    bool canPreconfig_;      // 是否支持预配置。
+    uint32_t sceneModesSize_; // 记录支持的Camera_SceneMode列表大小。
+    
     //callback
     static CameraCallbackCode cameraCallbackCode_;
 
@@ -172,6 +185,7 @@ public:
     Camera_ErrorCode VideoOutputRegisterCallback(void);
     Camera_ErrorCode MetadataOutputRegisterCallback(void);
     Camera_ErrorCode CaptureSessionRegisterCallback(void);
+    Camera_ErrorCode CaptureSessionRegisterCallback(int useCaseCode);
 
     // UnRegisterCallback
     Camera_ErrorCode CameraManagerUnRegisterCallback(void);
@@ -181,6 +195,7 @@ public:
     Camera_ErrorCode VideoOutputUnRegisterCallback(void);
     Camera_ErrorCode MetadataOutputUnRegisterCallback(void);
     Camera_ErrorCode CaptureSessionUnRegisterCallback(void);
+    Camera_ErrorCode CaptureSessionUnRegisterCallback(int useCaseCode);
 
     // Get callback
     CameraManager_Callbacks* GetCameraManagerListener(void);
@@ -190,6 +205,46 @@ public:
     VideoOutput_Callbacks* GetVideoOutputListener(void);
     MetadataOutput_Callbacks* GetMetadataOutputListener(void);
     CaptureSession_Callbacks* GetCaptureSessionRegister(void);
+
+    // RegisterCallback_On,测试不同类型on依次为空
+    Camera_ErrorCode CaptureSessionRegisterCallbackOn(int useCaseCode);    // 注册拍照会话事件回调
+
+    // UnregisterCallback_Off,测试不同类型off依次为空
+    Camera_ErrorCode CaptureSessionUnregisterCallbackOff(int useCaseCode); // 注销拍照会话事件回调
+
+    // Get callback, 测试不同监听依次为空
+    CaptureSession_Callbacks* GetCaptureSessionRegister(int useCaseCode); // 获取拍照会话的回调函数
+
+    Camera_ErrorCode GetSupportedSceneModes(int useCaseCode);                          // 获取相机设备支持的相机模式列表
+    Camera_ErrorCode DeleteSceneModes(int useCaseCode);                                // 删除相机设备支持的相机模式列表
+    Camera_ErrorCode GetSupportedCameraOutputCapabilityWithSceneMode(int useCaseCode); // 获取特定相机设备在特定相机模式
+                                                                                       // 下的输出功能
+    Camera_ErrorCode SetSessionMode(int useCaseCode);                                  // 设置会话为指定模式
+    Camera_ErrorCode CanAddInput(int useCaseCode);                                     // 判断能否向会话添加输入
+    Camera_ErrorCode CanAddPreviewOutput(int useCaseCode);                             // 判断能否向会话添加预览输出
+    Camera_ErrorCode CanAddPhotoOutput(int useCaseCode);                               // 判断能否向会话添加拍照输出
+    Camera_ErrorCode CanAddVideoOutput(int useCaseCode);                               // 判断能否向会话添加录像输出
+    Camera_ErrorCode AddSecureOutput(int useCaseCode);                                 // 将一个预览输出添加为安全输出
+    Camera_ErrorCode OpenSecureCamera(int useCaseCode);                                // 打开安全输入
+
+    Camera_ErrorCode CreatePreviewOutputUsedInPreconfig(int useCaseCode);          // 创建预配置中使用的预览输出实例
+    Camera_ErrorCode CreatePhotoOutputUsedInPreconfig(char *photoSurfaceId, int useCaseCode); // 创建预配置中使用的照片输出实例。
+    Camera_ErrorCode CreateVideoOutputUsedInPreconfig(char *videoId, int useCaseCode);        // 创建预配置中使用的视频输出实例。
+    Camera_ErrorCode VideoOutputGetActiveProfile(int useCaseCode);                // 获取活动视频输出配置文件。
+    Camera_ErrorCode VideoOutputDeleteProfile(int useCaseCode);                   // 删除视频配置文件实例。
+    Camera_ErrorCode SessionCanPreconfig(uint32_t mode, int useCaseCode);         // 检查是否支持预配置
+    Camera_ErrorCode SessionCanPreconfigWithRatio(uint32_t mode, uint32_t mode2, int useCaseCode); // 检查是否支持带比率的预配置类型
+    Camera_ErrorCode SessionPreconfig(uint32_t mode, int useCaseCode);                          // 设置预配置类型
+    Camera_ErrorCode SessionPreconfigWithRatio(uint32_t mode, uint32_t mode2, int useCaseCode); // 使用比率设置预配置类型
+    Camera_ErrorCode PreviewOutputGetActiveProfile(int useCaseCode);                            // 获取活动预览输出配置文件
+    Camera_ErrorCode PreviewOutputDeleteProfile(int useCaseCode);                               // 删除预览配置文件实例
+    Camera_ErrorCode PhotoOutputGetActiveProfile(int useCaseCode);                              // 获取活动照片输出配置文件
+    Camera_ErrorCode PhotoOutputDeleteProfile(int useCaseCode);                                 // 删除照片配置文件实例
+
+    // 非测试接口， 辅助测试
+    Camera_ErrorCode SetSceneMode(int useCaseCode);                // 设置sceneMode_的值
+    Camera_ErrorCode GetCameraFromCameras(Camera_Device* cameras,
+        Camera_Device** camera);                                   // 从支持的相机设备列表中获取一个相机设备
 
 private:
     NDKCamera(const NDKCamera&) = delete;
@@ -208,6 +263,8 @@ private:
     Camera_Input* cameraInput_;
     bool* isCameraMuted_;
     char* previewSurfaceId_;
+    Camera_Profile *cameraProfile_;
+    Camera_VideoProfile *videoActiveProfile_;
     Camera_ErrorCode ret_;
     float step_;
 
