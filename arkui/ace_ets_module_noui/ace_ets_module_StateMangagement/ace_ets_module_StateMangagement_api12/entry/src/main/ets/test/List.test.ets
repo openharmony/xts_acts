@@ -50,6 +50,14 @@ import LocalTestJsunit from './ComponentV2Test/LocalTestJsunit.test';
 import ComponentV2TestJsunit from './ComponentV2Test/ComponentV2TestJsunit.test';
 import ParamTestJsunit from './ComponentV2Test/ParamTestJsunit.test';
 import ParamTestJsunit1 from './ComponentV2Test/ParamTestJsunit1.test';
+import Provider1Test from './ProviderTest/Provider1.test';
+import Provider2Test from './ProviderTest/Provider2.test';
+import Provider3Test from './ProviderTest/Provider3.test';
+import Provider4Test from './ProviderTest/Provider4.test';
+import Provider5Test from './ProviderTest/Provider5.test';
+import Provider14Test from './ProviderTest/Provider14.test';
+import Provider15Test from './ProviderTest/Provider15.test';
+import Provider18Test from './ProviderTest/Provider18.test';
 export default function testsuite() {
   ExtendTrackTest();
   NestTrackTest();
@@ -89,4 +97,12 @@ export default function testsuite() {
   ComponentV2TestJsunit();
   ParamTestJsunit();
   ParamTestJsunit1();
+  Provider1Test();
+  Provider2Test();
+  Provider3Test();
+  Provider4Test();
+  Provider5Test();
+  Provider14Test();
+  Provider15Test();
+  Provider18Test();
 }
