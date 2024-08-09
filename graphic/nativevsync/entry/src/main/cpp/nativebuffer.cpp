@@ -27,7 +27,7 @@
 #define FAIL (-1)
 #define PARAM_0 0
 #define TIMEOUT_FIVE 10
-
+#define NUMBER_500 500
 static bool g_flag = false;
 static void OnVSync(long long timestamp, void *data) { g_flag = true; }
 
@@ -250,16 +250,17 @@ static napi_value OHNativeVSyncCreateMuch(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     char name[] = "testcase";
     unsigned int length = strlen(name);
-    for (uint32_t i = 0; i < 500; i++) {
-        OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    OH_NativeVSync *nativeVSync = nullptr;
+    for (uint32_t i = 0; i < NUMBER_500; i++) {
+        nativeVSync = OH_NativeVSync_Create(name, length);
         if (nativeVSync == nullptr) {
             napi_create_int32(env, FAIL, &result);
             break;
         } else {
             napi_create_int32(env, SUCCESS, &result);
         }
-        OH_NativeVSync_Destroy(nativeVSync);
     }
+    OH_NativeVSync_Destroy(nativeVSync);
     return result;
 }
 

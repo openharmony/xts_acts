@@ -295,6 +295,7 @@ export default function nativeBufferTest() {
       console.info("testNativeBufferFromNativeWindowBufferNormal result: " + result)
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
+      // 第三步返回应该为非0
       expect(result[2]).assertEqual(0);
       done();
     });
@@ -340,8 +341,7 @@ export default function nativeBufferTest() {
     it('testNativeBufferGetSeqNumNullptr', 0, async (done: Function) => {
       let result: number = nativebuffer.oHNativeBufferGetSeqNumNullptr();
       console.info('testNativeBufferGetSeqNumNullptr result: ' + result);
-      // expect(result).assertEqual(40001000);
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(40001000);
       done();
     });
 
@@ -417,7 +417,6 @@ export default function nativeBufferTest() {
     it('testNativeBufferMapPlanesNormal', 0, async (done: Function) => {
       let result: Array<number> = nativebuffer.oHNativeBufferMapPlanesNormal();
       console.info('testNativeBufferMapPlanesNormal result: ' + result);
-      // expect(result[0]).assertEqual(50001999);
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
       expect(result[2]).assertEqual(50001999);
@@ -607,11 +606,9 @@ export default function nativeBufferTest() {
       let result: Array<number> = nativebuffer.oHNativeBufferGetColorSpaceNullptr();
       console.info('testNativeBufferGetColorSpaceNullptr result: ' + result);
       expect(result[0]).assertEqual(0);
-      // expect(result[0]).assertEqual(50102000);
       expect(result[1]).assertEqual(40001000);
       expect(result[2]).assertEqual(40001000);
       expect(result[3]).assertEqual(0);
-      // expect(result[3]).assertEqual(50102000);
       done();
     });
 
@@ -626,7 +623,6 @@ export default function nativeBufferTest() {
     it('testNativeBufferGetMetadataValueFirst', 0, async (done: Function) => {
       let result: number = nativebuffer.oHNativeBufferGetMetadataValueFirst();
       console.info('testNativeBufferGetMetadataValueFirst result: ' + result);
-      // expect(result).assertEqual(50102000);
       expect(result).assertEqual(50002000);
       done();
     });
@@ -643,26 +639,26 @@ export default function nativeBufferTest() {
       let result: Array<number> = nativebuffer.oHNativeBufferSetDynamicMetadataValue();
       console.info('testNativeBufferSetDynamicMetadataValue result: ' + result)
 
-      // expect(result[0]).assertEqual(40001000);
-      // expect(result[1]).assertEqual(50002000);
-      // expect(result[2]).assertEqual(40001000);
-      // expect(result[3]).assertEqual(50002000);
-      // expect(result[4]).assertEqual(0);
-      // expect(result[5]).assertEqual(0);
-      // expect(result[6]).assertEqual(0);
-      // expect(result[7]).assertEqual(0);
-      // expect(result[8]).assertEqual(0);
-      // expect(result[9]).assertEqual(0);
-      // expect(result[10]).assertEqual(0);
-      // expect(result[11]).assertEqual(0);
-      // expect(result[12]).assertEqual(0);
-      // expect(result[13]).assertEqual(0);
-      // expect(result[14]).assertEqual(0);
-      // expect(result[15]).assertEqual(0);
-      // expect(result[16]).assertEqual(40001000);
-      // expect(result[17]).assertEqual(50002000);
-      // expect(result[18]).assertEqual(40001000);
-      // expect(result[19]).assertEqual(50002000);
+      expect(result[0]).assertEqual(40001000);
+      expect(result[1]).assertEqual(50002000);
+      expect(result[2]).assertEqual(40001000);
+      expect(result[3]).assertEqual(50002000);
+      expect(result[4]).assertEqual(0);
+      expect(result[5]).assertEqual(0);
+      expect(result[6]).assertEqual(0);
+      expect(result[7]).assertEqual(0);
+      expect(result[8]).assertEqual(0);
+      expect(result[9]).assertEqual(0);
+      expect(result[10]).assertEqual(0);
+      expect(result[11]).assertEqual(0);
+      expect(result[12]).assertEqual(0);
+      expect(result[13]).assertEqual(0);
+      expect(result[14]).assertEqual(0);
+      expect(result[15]).assertEqual(0);
+      expect(result[16]).assertEqual(40001000);
+      expect(result[17]).assertEqual(50002000);
+      expect(result[18]).assertEqual(40001000);
+      expect(result[19]).assertEqual(50002000);
       done();
     });
 
@@ -693,26 +689,26 @@ export default function nativeBufferTest() {
       let result: Array<number> = nativebuffer.oHNativeBufferSetStaticMetadataValue();
       console.info('testNativeBufferSetStaticMetadataValue result: ' + result)
 
-      // expect(result[0]).assertEqual(40001000);
-      // expect(result[1]).assertEqual(50002000);
-      // expect(result[2]).assertEqual(40001000);
-      // expect(result[3]).assertEqual(50002000);
-      // expect(result[4]).assertEqual(0);
-      // expect(result[5]).assertEqual(0);
-      // expect(result[6]).assertEqual(0);
-      // expect(result[7]).assertEqual(0);
-      // expect(result[8]).assertEqual(0);
-      // expect(result[9]).assertEqual(0);
-      // expect(result[10]).assertEqual(0);
-      // expect(result[11]).assertEqual(0);
-      // expect(result[12]).assertEqual(0);
-      // expect(result[13]).assertEqual(0);
-      // expect(result[14]).assertEqual(0);
-      // expect(result[15]).assertEqual(0);
-      // expect(result[16]).assertEqual(40001000);
-      // expect(result[17]).assertEqual(50002000);
-      // expect(result[18]).assertEqual(40001000);
-      // expect(result[19]).assertEqual(50002000);
+      expect(result[0]).assertEqual(40001000);
+      expect(result[1]).assertEqual(50002000);
+      expect(result[2]).assertEqual(40001000);
+      expect(result[3]).assertEqual(50002000);
+      expect(result[4]).assertEqual(0);
+      expect(result[5]).assertEqual(0);
+      expect(result[6]).assertEqual(0);
+      expect(result[7]).assertEqual(0);
+      expect(result[8]).assertEqual(0);
+      expect(result[9]).assertEqual(0);
+      expect(result[10]).assertEqual(0);
+      expect(result[11]).assertEqual(0);
+      expect(result[12]).assertEqual(0);
+      expect(result[13]).assertEqual(0);
+      expect(result[14]).assertEqual(0);
+      expect(result[15]).assertEqual(0);
+      expect(result[16]).assertEqual(40001000);
+      expect(result[17]).assertEqual(50002000);
+      expect(result[18]).assertEqual(40001000);
+      expect(result[19]).assertEqual(50002000);
       done();
     });
 
@@ -728,26 +724,26 @@ export default function nativeBufferTest() {
       let result: Array<number> = nativebuffer.oHNativeBufferSetMetadataValue();
       console.info('testNativeBufferSetMetadataValue result: ' + result)
 
-      // expect(result[0]).assertEqual(40001000);
-      // expect(result[1]).assertEqual(50002000);
-      // expect(result[2]).assertEqual(40001000);
-      // expect(result[3]).assertEqual(50002000);
-      // expect(result[4]).assertEqual(0);
-      // expect(result[5]).assertEqual(0);
-      // expect(result[6]).assertEqual(0);
-      // expect(result[7]).assertEqual(0);
-      // expect(result[8]).assertEqual(0);
-      // expect(result[9]).assertEqual(0);
-      // expect(result[10]).assertEqual(0);
-      // expect(result[11]).assertEqual(0);
-      // expect(result[12]).assertEqual(0);
-      // expect(result[13]).assertEqual(0);
-      // expect(result[14]).assertEqual(0);
-      // expect(result[15]).assertEqual(0);
-      // expect(result[16]).assertEqual(40001000);
-      // expect(result[17]).assertEqual(50002000);
-      // expect(result[18]).assertEqual(40001000);
-      // expect(result[19]).assertEqual(50002000);
+      expect(result[0]).assertEqual(40001000);
+      expect(result[1]).assertEqual(50002000);
+      expect(result[2]).assertEqual(40001000);
+      expect(result[3]).assertEqual(50002000);
+      expect(result[4]).assertEqual(0);
+      expect(result[5]).assertEqual(0);
+      expect(result[6]).assertEqual(0);
+      expect(result[7]).assertEqual(0);
+      expect(result[8]).assertEqual(0);
+      expect(result[9]).assertEqual(0);
+      expect(result[10]).assertEqual(0);
+      expect(result[11]).assertEqual(0);
+      expect(result[12]).assertEqual(0);
+      expect(result[13]).assertEqual(0);
+      expect(result[14]).assertEqual(0);
+      expect(result[15]).assertEqual(0);
+      expect(result[16]).assertEqual(40001000);
+      expect(result[17]).assertEqual(50002000);
+      expect(result[18]).assertEqual(40001000);
+      expect(result[19]).assertEqual(50002000);
       done();
     });
 

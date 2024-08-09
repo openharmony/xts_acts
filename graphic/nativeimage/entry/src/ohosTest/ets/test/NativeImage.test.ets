@@ -310,7 +310,8 @@ export default function nativeImageTest() {
      * @tc.level      : Level 3
      */
     it('testNativeImageDetachContextNullptr', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: number = nativeimage.oHNativeImageDetachContextNullptr();
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -323,7 +324,9 @@ export default function nativeImageTest() {
      * @tc.level      : Level 0
      */
     it('testNativeImageAttachContextNormal', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: Array<number> = nativeimage.oHNativeImageAttachContextNormal();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(-1);
       done();
     });
 
@@ -336,7 +339,10 @@ export default function nativeImageTest() {
      * @tc.level      : Level 0
      */
     it('testNativeImageDetachContextNormal', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: Array<number> = nativeimage.oHNativeImageDetachContextNormal();
+      expect(result[0]).assertEqual(-1);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
       done();
     });
 
@@ -349,7 +355,9 @@ export default function nativeImageTest() {
      * @tc.level      : Level 3
      */
     it('testNativeImageGetSurfaceIdNullptr', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: Array<number> = nativeimage.oHNativeImageGetSurfaceIdNullptr();
+      expect(result[0]).assertEqual(-1);
+      expect(result[1]).assertEqual(-1);
       done();
     });
 
@@ -362,7 +370,8 @@ export default function nativeImageTest() {
      * @tc.level      : Level 0
      */
     it('testNativeGetSurfaceIdNormal', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: number = nativeimage.oHNativeGetSurfaceIdNormal();
+      expect(result).assertEqual(0);
       done();
     });
 
@@ -375,7 +384,8 @@ export default function nativeImageTest() {
      * @tc.level      : Level 3
      */
     it('testNativeImageUpdateSurfaceImageNullptr', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: number = nativeimage.oHNativeImageUpdateSurfaceImageNullptr();
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -388,7 +398,8 @@ export default function nativeImageTest() {
      * @tc.level      : Level 3
      */
     it('testNativeImageGetTimestampNullptr', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: number = nativeimage.oHNativeImageGetTimestampNullptr();
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -401,7 +412,9 @@ export default function nativeImageTest() {
      * @tc.level      : Level 3
      */
     it('testNativeImageGetTransformMatrixNullptr', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: Array<number> = nativeimage.oHNativeImageGetTransformMatrixNullptr();
+      expect(result[0]).assertEqual(-1);
+      expect(result[1]).assertEqual(-1);
       done();
     });
 
@@ -414,7 +427,9 @@ export default function nativeImageTest() {
      * @tc.level      : Level 3
      */
     it('testNativeImageGetTransformMatrixV2Nullptr', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: Array<number> = nativeimage.oHNativeImageGetTransformMatrixV2Nullptr();
+      expect(result[0]).assertEqual(-1);
+      expect(result[1]).assertEqual(-1);
       done();
     });
 
@@ -427,7 +442,8 @@ export default function nativeImageTest() {
      * @tc.level      : Level 0
      */
     it('testNativeImageUpdateSurfaceImageNormal', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: number = nativeimage.oHNativeImageUpdateSurfaceImageNormal();
+      expect(result).assertEqual(0);
       done();
     });
 
@@ -440,7 +456,10 @@ export default function nativeImageTest() {
      * @tc.level      : Level 0
      */
     it('testNativeImageGetTimestampNormal', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: Array<number> = nativeimage.oHNativeImageGetTimestampNormal();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
       done();
     });
 
@@ -453,7 +472,9 @@ export default function nativeImageTest() {
      * @tc.level      : Level 0
      */
     it('testNativeImageGetTransformMatrixNormal', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: Array<number> = nativeimage.oHNativeImageGetTransformMatrixNormal();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
       done();
     });
 
@@ -466,7 +487,9 @@ export default function nativeImageTest() {
      * @tc.level      : Level 0
      */
     it('testNativeImageGetTransformMatrixV2Normal', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: Array<number> = nativeimage.oHNativeImageGetTransformMatrixV2Normal();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
       done();
     });
 
@@ -479,7 +502,8 @@ export default function nativeImageTest() {
      * @tc.level      : Level 3
      */
     it('testNativeImageSetOnFrameAvailableListenerNullptr', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: number = nativeimage.oHNativeImageSetOnFrameAvailableListenerNullptr();
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -492,7 +516,8 @@ export default function nativeImageTest() {
      * @tc.level      : Level 3
      */
     it('testNativeImageUnSetOnFrameAvailableListenerNullptr', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: number = nativeimage.oHNativeImageUnSetOnFrameAvailableListenerNullptr();
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -505,7 +530,11 @@ export default function nativeImageTest() {
      * @tc.level      : Level 0
      */
     it('testNativeImageSetOnFrameAvailableListenerNormal', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: Array<number> = nativeimage.oHNativeImageSetOnFrameAvailableListenerNormal();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(-1);
+      expect(result[3]).assertEqual(0);
       done();
     });
 
@@ -518,7 +547,10 @@ export default function nativeImageTest() {
      * @tc.level      : Level 0
      */
     it('testNativeImageUnsetOnFrameAvailableListenerNormal', 0, async (done: Function) => {
-      expect().assertEqual(0);
+      let result: Array<number> = nativeimage.oHNativeImageUnsetOnFrameAvailableListenerNormal();
+      expect(result[0]).assertEqual(-1);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
       done();
     });
   })
