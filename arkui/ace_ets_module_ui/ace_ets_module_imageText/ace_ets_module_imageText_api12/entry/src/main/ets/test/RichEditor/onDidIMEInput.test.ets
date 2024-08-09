@@ -60,7 +60,7 @@ export default function onDidIMEInputTest() {
       await RichEditor.inputText('123');
       await CommonFunc.sleep(1000);
       let onDidIMEInputTest_1 = getInspectorByKey('OnDidIMEInput_id');
-      expect(JSON.parse(onDidIMEInputTest_1).$attrs.content).assertEqual("onDidIMEInput succ");
+      expect(JSON.parse(onDidIMEInputTest_1).$attrs.content + "").assertEqual("onDidIMEInput succ");
       console.info('onDidIMEInputTest_0010 END');
       done();
     });

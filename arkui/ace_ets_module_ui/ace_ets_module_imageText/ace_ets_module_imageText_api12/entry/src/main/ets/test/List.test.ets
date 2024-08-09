@@ -136,7 +136,7 @@ import StyledStringKeyTest1 from './StyledString/StyledStringKeyTest1.test'
 import RichEditorAddApi from './RichEditor/RichEditorAddApi.test'
 import editMeunOptionsTest from './Text/editMeunOptions.test'
 import RichEditorApi13 from './RichEditor/RichEditorApi13.test'
-import onDidIMEInputTest from './RichEditor/onDidIMEInput.test'
+import onDidIMEInputTest from './RichEditor/onDidIMEInput.test';
 
 export default function testsuite() {
   APIContentTypeTest();
