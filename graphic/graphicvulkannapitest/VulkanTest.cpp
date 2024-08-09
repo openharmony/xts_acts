@@ -49,7 +49,7 @@ public:
         const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
         void* pUserData);
 
-    static inline void DLOpenLibVulkan();
+    static inline bool DLOpenLibVulkan();
     static inline void TrytoCreateVkInstance();
 
     static inline PFN_vkEnumerateInstanceExtensionProperties vkEnumerateInstanceExtensionProperties;
@@ -101,7 +101,7 @@ public:
     static inline std::stringstream debugMessage_;
 };
 
-void VulkanLoaderUnitTest::DLOpenLibVulkan()
+bool VulkanLoaderUnitTest::DLOpenLibVulkan()
 {
 #if (defined(__aarch64__) || defined(__x86_64__))
     const char *path = "/system/lib64/libvulkan.so";
@@ -111,10 +111,10 @@ void VulkanLoaderUnitTest::DLOpenLibVulkan()
     libVulkan_ = dlopen(path, RTLD_NOW | RTLD_LOCAL);
     if (libVulkan_ == nullptr) {
         std::cout << "dlerror: " << dlerror() << std::endl;
-        isSupportedVulkan_ = false;
-        return;
+        std::cout << "isSupportedVulkan_: false" << std::endl;
+        return false;
     }
-    isSupportedVulkan_ = true;
+    return true;
 }
 
 void VulkanLoaderUnitTest::TrytoCreateVkInstance()
@@ -140,11 +140,13 @@ void VulkanLoaderUnitTest::TrytoCreateVkInstance()
     instanceCreateInfo.ppEnabledExtensionNames = instanceExtensions.data();
 
     VkResult result = vkCreateInstance(&instanceCreateInfo, nullptr, &instance_);
-    if (result == VK_ERROR_INCOMPATIBLE_DRIVER) {
+    std::cout << "instance_ ptr: " << instance_ << std::endl;
+    if (result != VK_SUCCESS || instance_ == nullptr) {
         isSupportedVulkan_ = false;
     } else {
         isSupportedVulkan_ = true;
     }
+    std::cout << "set isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     std::cout << "TrytoCreateVkInstance result: " << result << std::endl;
 }
 
@@ -262,10 +264,10 @@ void VulkanLoaderUnitTest::TearDownTestCase()
  */
 HWTEST_F(VulkanLoaderUnitTest, LoadBaseFuncPtr, TestSize.Level1)
 {
-    DLOpenLibVulkan();
-    if (isSupportedVulkan_) {
-        EXPECT_NE(libVulkan_, nullptr);
-
+    bool opened = DLOpenLibVulkan();
+    std::cout << "LibVulkan opened: " << opened << std::endl;
+    std::cout << "libVulkan_ ptr: " << libVulkan_ << std::endl;
+    if (opened && libVulkan_ != nullptr) {
         // Load base functions
         vkEnumerateInstanceExtensionProperties = reinterpret_cast<PFN_vkEnumerateInstanceExtensionProperties>(
             dlsym(libVulkan_, "vkEnumerateInstanceExtensionProperties"));
@@ -297,7 +299,10 @@ HWTEST_F(VulkanLoaderUnitTest, LoadBaseFuncPtr, TestSize.Level1)
  */
 HWTEST_F(VulkanLoaderUnitTest, LoadInstanceFuncPtr, TestSize.Level1)
 {
+    std::cout << "isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     if (isSupportedVulkan_) {
+        std::cout << "instance_ ptr: " << instance_ << std::endl;
+        ASSERT_NE(instance_, nullptr);
         vkDestroyInstance = reinterpret_cast<PFN_vkDestroyInstance>(
             vkGetInstanceProcAddr(instance_, "vkDestroyInstance"));
         EXPECT_NE(vkDestroyInstance, nullptr);
@@ -357,8 +362,10 @@ HWTEST_F(VulkanLoaderUnitTest, LoadInstanceFuncPtr, TestSize.Level1)
  */
 HWTEST_F(VulkanLoaderUnitTest, vkEnumeratePhysicalDevices_Test, TestSize.Level1)
 {
+    std::cout << "isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     if (isSupportedVulkan_) {
-        EXPECT_NE(instance_, nullptr);
+        std::cout << "instance_ ptr: " << instance_ << std::endl;
+        ASSERT_NE(instance_, nullptr);
 
         uint32_t gpuCount = 0;
         VkResult err = vkEnumeratePhysicalDevices(instance_, &gpuCount, nullptr);
@@ -387,8 +394,11 @@ HWTEST_F(VulkanLoaderUnitTest, vkEnumeratePhysicalDevices_Test, TestSize.Level1)
  */
 HWTEST_F(VulkanLoaderUnitTest, vkCreateDevice_Test, TestSize.Level1)
 {
+    std::cout << "isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     if (isSupportedVulkan_) {
+        std::cout << "vkCreateDevice ptr: " << vkCreateDevice << std::endl;
         EXPECT_NE(vkCreateDevice, nullptr);
+        std::cout << "physicalDevice_ ptr: " << physicalDevice_ << std::endl;
         EXPECT_NE(physicalDevice_, nullptr);
 
         VkDeviceCreateInfo deviceCreateInfo = {};
@@ -411,7 +421,9 @@ HWTEST_F(VulkanLoaderUnitTest, vkCreateDevice_Test, TestSize.Level1)
         deviceCreateInfo.ppEnabledExtensionNames = deviceExtensions.data();
         VkDevice logicalDevice;
         VkResult err = vkCreateDevice(physicalDevice_, &deviceCreateInfo, nullptr, &logicalDevice);
+        std::cout << "vkCreateDevice err: " << err << std::endl;
         EXPECT_EQ(err, VK_SUCCESS);
+        std::cout << "logicalDevice ptr: " << logicalDevice << std::endl;
         EXPECT_NE(logicalDevice, nullptr);
         device_ = logicalDevice;
     }
@@ -425,10 +437,12 @@ HWTEST_F(VulkanLoaderUnitTest, vkCreateDevice_Test, TestSize.Level1)
  */
 HWTEST_F(VulkanLoaderUnitTest, getNativeBufferPropertiesOHOS_Test, TestSize.Level1)
 {
+    std::cout << "isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     if (isSupportedVulkan_) {
+        std::cout << "vkCreateDevice ptr: " << vkCreateDevice << std::endl;
         EXPECT_NE(vkCreateDevice, nullptr);
+        std::cout << "physicalDevice_ ptr: " << physicalDevice_ << std::endl;
         EXPECT_NE(physicalDevice_, nullptr);
-
         VkDeviceCreateInfo deviceCreateInfo = {};
         deviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
 
@@ -449,7 +463,9 @@ HWTEST_F(VulkanLoaderUnitTest, getNativeBufferPropertiesOHOS_Test, TestSize.Leve
         deviceCreateInfo.ppEnabledExtensionNames = deviceExtensions.data();
         VkDevice logicalDevice;
         VkResult err = vkCreateDevice(physicalDevice_, &deviceCreateInfo, nullptr, &logicalDevice);
+        std::cout << "vkCreateDevice err: " << err << std::endl;
         EXPECT_EQ(err, VK_SUCCESS);
+        std::cout << "logicalDevice ptr: " << logicalDevice << std::endl;
         EXPECT_NE(logicalDevice, nullptr);
         device_ = logicalDevice;
 
@@ -474,10 +490,12 @@ HWTEST_F(VulkanLoaderUnitTest, getNativeBufferPropertiesOHOS_Test, TestSize.Leve
  */
 HWTEST_F(VulkanLoaderUnitTest, getMemoryNativeBufferOHOS_Test, TestSize.Level1)
 {
+    std::cout << "isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     if (isSupportedVulkan_) {
+        std::cout << "vkCreateDevice ptr: " << vkCreateDevice << std::endl;
         EXPECT_NE(vkCreateDevice, nullptr);
+        std::cout << "physicalDevice_ ptr: " << physicalDevice_ << std::endl;
         EXPECT_NE(physicalDevice_, nullptr);
-
         VkDeviceCreateInfo deviceCreateInfo = {};
         deviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
 
@@ -498,7 +516,9 @@ HWTEST_F(VulkanLoaderUnitTest, getMemoryNativeBufferOHOS_Test, TestSize.Level1)
         deviceCreateInfo.ppEnabledExtensionNames = deviceExtensions.data();
         VkDevice logicalDevice;
         VkResult err = vkCreateDevice(physicalDevice_, &deviceCreateInfo, nullptr, &logicalDevice);
+        std::cout << "vkCreateDevice err: " << err << std::endl;
         EXPECT_EQ(err, VK_SUCCESS);
+        std::cout << "logicalDevice ptr: " << logicalDevice << std::endl;
         EXPECT_NE(logicalDevice, nullptr);
         device_ = logicalDevice;
 

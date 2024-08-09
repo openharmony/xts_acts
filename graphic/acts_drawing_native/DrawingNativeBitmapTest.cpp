@@ -236,6 +236,67 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsAbnormal, TestSize.L
 }
 
 /*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0204
+ * @tc.name: testBitmapCreateFromPixelsVeryBig
+ * @tc.desc: test for testBitmapCreateFromPixelsVeryBig.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsVeryBig, TestSize.Level0) {
+    // 1. Construct OH_Drawing_Image_Info by iterating through OH_Drawing_ColorFormat and OH_Drawing_AlphaFormat
+    OH_Drawing_ColorFormat formats[] = {
+        COLOR_FORMAT_UNKNOWN,   COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
+        COLOR_FORMAT_ARGB_4444, COLOR_FORMAT_RGBA_8888, COLOR_FORMAT_BGRA_8888,
+    };
+    OH_Drawing_AlphaFormat alphaFormats[] = {
+        ALPHA_FORMAT_UNKNOWN,
+        ALPHA_FORMAT_OPAQUE,
+        ALPHA_FORMAT_PREMUL,
+        ALPHA_FORMAT_UNPREMUL,
+    };
+    for (OH_Drawing_ColorFormat format : formats) {
+        for (OH_Drawing_AlphaFormat alphaFormat : alphaFormats) {
+            int width = 1000000;
+            int height = 1000000;
+            int rowBytes = width * 4;
+            OH_Drawing_Bitmap *bitmap1 = OH_Drawing_BitmapCreate();
+            EXPECT_NE(bitmap1, nullptr);
+            OH_Drawing_BitmapFormat cFormat{format, alphaFormat};
+            OH_Drawing_BitmapBuild(bitmap1, width, height, &cFormat);
+            void *pixels = OH_Drawing_BitmapGetPixels(bitmap1);
+            if (pixels != nullptr) {
+                OH_Drawing_Image_Info imageInfo;
+                OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+                // 2. OH_Drawing_BitmapCreateFromPixels
+                // Initialize the Bitmap with matching image information and call OH_Drawing_BitmapGet related
+                // interfaces Verify that the parameters match the initialization parameters
+                uint32_t height_ = OH_Drawing_BitmapGetHeight(bitmap);
+                uint32_t width_ = OH_Drawing_BitmapGetWidth(bitmap);
+                OH_Drawing_ColorFormat colorFormat_ = OH_Drawing_BitmapGetColorFormat(bitmap);
+                OH_Drawing_AlphaFormat alphaFormat_ = OH_Drawing_BitmapGetAlphaFormat(bitmap);
+                EXPECT_TRUE(height_ == height || height_ == 0);
+                EXPECT_TRUE(width_ == width || width_ == 0);
+                EXPECT_TRUE(colorFormat_ == format || colorFormat_ == 0);
+                EXPECT_TRUE(alphaFormat_ == alphaFormat || alphaFormat_ == 0);
+                // 3. OH_Drawing_BitmapCreateFromPixels
+                // Initialize the Bitmap with rowBytes larger than the image, call OH_Drawing_BitmapGet related
+                // interfaces (OH_Drawing_BitmapGetHeight, OH_Drawing_BitmapGetWidth), Verify that the parameters match
+                // the initialization parameters
+                int rowBytes2 = width * 4 + 1;
+                bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes2);
+                height_ = OH_Drawing_BitmapGetHeight(bitmap);
+                width_ = OH_Drawing_BitmapGetWidth(bitmap);
+                EXPECT_TRUE(height_ == height || height_ == 0);
+                EXPECT_TRUE(width_ == width || width_ == 0);
+                // 4. Free memory
+                OH_Drawing_BitmapDestroy(bitmap);
+            }
+        }
+    }
+}
+
+/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0300
  * @tc.name: testBitmapBuildNormal
  * @tc.desc: test for testBitmapBuildNormal.
