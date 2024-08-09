@@ -16,9 +16,11 @@
 import hspImport from './hsp.test';
 import staticImport from './staticImport.test';
 import dynamicImport from './dynamicImport.test';
+import workerImport from './workerImport.test';
 
 export default function testsuite() {
   hspImport();
   staticImport();
   dynamicImport();
+  workerImport();
 }

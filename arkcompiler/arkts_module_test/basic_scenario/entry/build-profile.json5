@@ -21,6 +21,15 @@
       "arguments": "",
       "cppFlags": "",
       "abiFilters": ["arm64-v8a", "armeabi-v7a", "x86_64"],
+    },
+    "sourceOption": {
+      "workers": [
+        './src/ohosTest/ets/test/workers/workerImportLibrary.ets',
+        './src/ohosTest/ets/test/workers/workerImportHar.ets',
+        './src/ohosTest/ets/test/workers/workerRelativePath.ets',
+        './src/ohosTest/ets/test/workers/workerSystem.ets',
+        './src/ohosTest/ets/test/workers/workerTestNapi.ets'
+      ]
     }
   },
   "buildOptionSet": [
