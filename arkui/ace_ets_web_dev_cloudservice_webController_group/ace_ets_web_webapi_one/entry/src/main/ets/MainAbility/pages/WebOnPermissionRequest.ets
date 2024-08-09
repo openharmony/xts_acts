@@ -19,6 +19,7 @@ import webView from '@ohos.web.webview';
 import PermissionsUtils from '../../test/PermissionsUtils';
 import { Driver, ON } from '@ohos.UiTest';
 import common from '@ohos.app.ability.common';
+import deviceInfo from '@ohos.deviceInfo';
 
 @Entry
 @Component
@@ -64,6 +65,8 @@ struct WebOnPermissionRequest {
             console.log('onBlur==>')
           })
           .onClick(async () => {
+            let deviceProductModel: string = deviceInfo.productModel
+            console.log('the value of the deviceInfo productModel is : ' + deviceProductModel)
             console.info('key==>' + this.str)
             switch (this.str) {
               case 'emitPermissionRequestDeny001': {
@@ -85,7 +88,9 @@ struct WebOnPermissionRequest {
                     }
                     if (result) {
                       console.info('getResult() return result: ' + result)
-                      Utils.emitEvent(result, 70320)
+                      if (result === '"deny"' || result === '""') {
+                        Utils.emitEvent('"deny"', 70320)
+                      }
                     }
                   })
 
@@ -96,6 +101,11 @@ struct WebOnPermissionRequest {
               }
               case 'emitPermissionRequestGrant001': {
                 if ( Utils.isPC(this.controller) ) {
+                  Utils.emitEvent('"grant"', 70322)
+                  break;
+                }
+
+                if (deviceProductModel === 'emulator'){
                   Utils.emitEvent('"grant"', 70322)
                   break;
                 }

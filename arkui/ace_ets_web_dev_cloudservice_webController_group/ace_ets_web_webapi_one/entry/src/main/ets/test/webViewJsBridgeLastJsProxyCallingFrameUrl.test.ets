@@ -81,7 +81,10 @@ export default function webViewJsBridgeLastJsProxyCallingFrameUrl() {
     it('testJsBridgeGetLastJavascriptProxyCallingFrameUrl', 0, async (done: Function) => {
       let emitKey = "emitJsBridgeGetLastJavascriptProxyCallingFrameUrl";
       Utils.emitEvent(emitKey, 10)
-      Utils.registerEvent("testJsBridgeGetLastJavascriptProxyCallingFrameUrl", "success", 1277, done);
+      Utils.registerBaseEvent("testJsBridgeGetLastJavascriptProxyCallingFrameUrl", "success", 1277,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewJsBridgeLastJsProxyCallingFrameUrl', 10, '');
     })
   })

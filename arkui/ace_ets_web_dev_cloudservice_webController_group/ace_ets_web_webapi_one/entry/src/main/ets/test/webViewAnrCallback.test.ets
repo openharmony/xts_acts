@@ -81,7 +81,10 @@ export default function ActsAceWebViewAnrCallback() {
     it('testWebViewOnRenderProcessResponding', 0, async (done: Function) => {
         emitKey = "emitWebViewOnRenderProcessResponding"
         Utils.emitEvent(emitKey, 10);
-        Utils.registerEvent("testWebViewOnRenderProcessResponding", true, 1336, done);
+        Utils.registerBaseEvent("testWebViewOnRenderProcessResponding", true, 1336,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
         sendEventByKey('webViewAnrCallback', 10, '');
     })
 
@@ -96,7 +99,10 @@ export default function ActsAceWebViewAnrCallback() {
     it('testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT', 0, async (done: Function) => {
         emitKey = "emitWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT"
         Utils.emitEvent(emitKey, 10);
-        Utils.registerEvent("testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT", true, 1338, done);
+        Utils.registerBaseEvent("testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT", true, 1338,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
         sendEventByKey('webViewAnrCallback', 10, '');
     })
   })

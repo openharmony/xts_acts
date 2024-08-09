@@ -64,7 +64,10 @@ export default function webOnPermissionRequest() {
     it('testPermissionRequestDeny001', 0, async (done: Function) => {
       Utils.emitEvent("emitPermissionRequestDeny001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testPermissionRequestDeny001", '"deny"', 70320, done);
+      Utils.registerBaseEvent("testPermissionRequestDeny001", '"deny"', 70320,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebOnPermissionRequestTestButton', 10, '');
     })
 
@@ -79,7 +82,10 @@ export default function webOnPermissionRequest() {
     it('testPermissionRequestGrant001', 0, async (done: Function) => {
       Utils.emitEvent("emitPermissionRequestGrant001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testPermissionRequestGrant001", '"grant"', 70322, done);
+      Utils.registerBaseEvent("testPermissionRequestGrant001", '"grant"', 70322,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebOnPermissionRequestTestButton', 10, '');
     })
   })

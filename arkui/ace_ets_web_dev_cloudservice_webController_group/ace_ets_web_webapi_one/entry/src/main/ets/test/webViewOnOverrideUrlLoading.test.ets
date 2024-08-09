@@ -79,7 +79,10 @@ export default function webViewOnOverrideUrlLoading() {
      *@tc.level 1
      */
     it('testWebViewwebViewOnOverrideUrlLoading', 0, async (done: Function) => {
-        Utils.registerEvent("emitWebViewwebViewOnOverrideUrlLoading", "true", 10007, done);
+        Utils.registerBaseEvent("emitWebViewwebViewOnOverrideUrlLoading", "true", 10007,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
         sendEventByKey('webViewOnOverrideUrlLoading', 10, '');
     })
   })

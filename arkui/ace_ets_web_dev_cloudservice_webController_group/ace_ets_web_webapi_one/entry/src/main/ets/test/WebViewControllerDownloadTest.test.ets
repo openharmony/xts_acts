@@ -65,7 +65,10 @@ export default function webViewControllerDownloadTest() {
     it('testSetDownloadDelegate001', 0, async (done: Function) => {
       Utils.emitEvent("testSetDownloadDelegate001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testSetDownloadDelegate001", true, 79520, done);
+      Utils.registerBaseEvent("testSetDownloadDelegate001", true, 79520,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -80,7 +83,10 @@ export default function webViewControllerDownloadTest() {
     it('testStartDownload001', 0, async (done: Function) => {
       Utils.emitEvent("testStartDownload001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testStartDownload001", true, 79530, done);
+      Utils.registerBaseEvent("testStartDownload001", true, 79530,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -95,7 +101,10 @@ export default function webViewControllerDownloadTest() {
     it('testWebDownloadState001', 0, async (done: Function) => {
       Utils.emitEvent("testWebDownloadState001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebDownloadState001", webView.WebDownloadState.IN_PROGRESS, 79540, done);
+      Utils.registerBaseEvent("testWebDownloadState001", webView.WebDownloadState.IN_PROGRESS, 79540,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -110,7 +119,10 @@ export default function webViewControllerDownloadTest() {
     it('testWebDownloadState002', 0, async (done: Function) => {
       Utils.emitEvent("testWebDownloadState002", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebDownloadState002", webView.WebDownloadState.COMPLETED, 79542, done);
+      Utils.registerBaseEvent("testWebDownloadState002", webView.WebDownloadState.COMPLETED, 79542,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -125,7 +137,10 @@ export default function webViewControllerDownloadTest() {
     it('testWebDownloadState003', 0, async (done: Function) => {
       Utils.emitEvent("testWebDownloadState003", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebDownloadState003", webView.WebDownloadState.CANCELED, 79544, done);
+      Utils.registerBaseEvent("testWebDownloadState003", webView.WebDownloadState.CANCELED, 79544,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -140,7 +155,10 @@ export default function webViewControllerDownloadTest() {
     it('testWebDownloadState004', 0, async (done: Function) => {
       Utils.emitEvent("testWebDownloadState004", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebDownloadState004", webView.WebDownloadState.INTERRUPTED, 79546, done);
+      Utils.registerBaseEvent("testWebDownloadState004", webView.WebDownloadState.INTERRUPTED, 79546,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -155,7 +173,10 @@ export default function webViewControllerDownloadTest() {
     it('testWebDownloadState005', 0, async (done: Function) => {
       Utils.emitEvent("testWebDownloadState005", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebDownloadState005", webView.WebDownloadState.PENDING, 79548, done);
+      Utils.registerBaseEvent("testWebDownloadState005", webView.WebDownloadState.PENDING, 79548,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -171,7 +192,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetGuid001', 0, async (done: Function) => {
       Utils.emitEvent("testGetGuid001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetGuid001", true, 79650, done);
+      Utils.registerBaseEvent("testGetGuid001", true, 79650,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -186,7 +210,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetGuid002', 0, async (done: Function) => {
       Utils.emitEvent("testGetGuid002", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetGuid002", true, 79652, done);
+      Utils.registerBaseEvent("testGetGuid002", true, 79652,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -201,7 +228,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetCurrentSpeed001', 0, async (done: Function) => {
       Utils.emitEvent("testGetCurrentSpeed001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetCurrentSpeed001", true, 79654, done);
+      Utils.registerBaseEvent("testGetCurrentSpeed001", true, 79654,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -216,7 +246,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetPercentComplete001', 0, async (done: Function) => {
       Utils.emitEvent("testGetPercentComplete001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetPercentComplete001", true, 79656, done);
+      Utils.registerBaseEvent("testGetPercentComplete001", true, 79656,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -231,7 +264,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetPercentComplete002', 0, async (done: Function) => {
       Utils.emitEvent("testGetPercentComplete002", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetPercentComplete002", true, 79658, done);
+      Utils.registerBaseEvent("testGetPercentComplete002", true, 79658,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -246,7 +282,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetTotalBytes001', 0, async (done: Function) => {
       Utils.emitEvent("testGetTotalBytes001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetTotalBytes001", true, 79660, done);
+      Utils.registerBaseEvent("testGetTotalBytes001", true, 79660,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -261,7 +300,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetMethod001', 0, async (done: Function) => {
       Utils.emitEvent("testGetMethod001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetMethod001", true, 79662, done);
+      Utils.registerBaseEvent("testGetMethod001", true, 79662,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -276,7 +318,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetMimeType001', 0, async (done: Function) => {
       Utils.emitEvent("testGetMimeType001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetMimeType001", true, 79664, done);
+      Utils.registerBaseEvent("testGetMimeType001", true, 79664,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -291,7 +336,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetMimeType002', 0, async (done: Function) => {
       Utils.emitEvent("testGetMimeType002", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetMimeType002", true, 79666, done);
+      Utils.registerBaseEvent("testGetMimeType002", true, 79666,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -306,7 +354,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetMimeType003', 0, async (done: Function) => {
       Utils.emitEvent("testGetMimeType003", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetMimeType003", true, 79668, done);
+      Utils.registerBaseEvent("testGetMimeType003", true, 79668,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -321,7 +372,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetUrl001', 0, async (done: Function) => {
       Utils.emitEvent("testGetUrl001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetUrl001", true, 79670, done);
+      Utils.registerBaseEvent("testGetUrl001", true, 79670,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -336,7 +390,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetSuggestedFileName001', 0, async (done: Function) => {
       Utils.emitEvent("testGetSuggestedFileName001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetSuggestedFileName001", true, 79672, done);
+      Utils.registerBaseEvent("testGetSuggestedFileName001", true, 79672,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -351,7 +408,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetReceivedBytes001', 0, async (done: Function) => {
       Utils.emitEvent("testGetReceivedBytes001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetReceivedBytes001", true, 79674, done);
+      Utils.registerBaseEvent("testGetReceivedBytes001", true, 79674,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -366,7 +426,10 @@ export default function webViewControllerDownloadTest() {
     it('testGetFullPath001', 0, async (done: Function) => {
       Utils.emitEvent("testGetFullPath001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetFullPath001", true, 79676, done);
+      Utils.registerBaseEvent("testGetFullPath001", true, 79676,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -381,7 +444,10 @@ export default function webViewControllerDownloadTest() {
     it('testSerialize001', 0, async (done: Function) => {
       Utils.emitEvent("testSerialize001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testSerialize001", true, 79678, done);
+      Utils.registerBaseEvent("testSerialize001", true, 79678,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -396,7 +462,10 @@ export default function webViewControllerDownloadTest() {
     it('testDeserialize001', 0, async (done: Function) => {
       Utils.emitEvent("testDeserialize001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testDeserialize001", true, 79680, done);
+      Utils.registerBaseEvent("testDeserialize001", true, 79680,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -412,7 +481,10 @@ export default function webViewControllerDownloadTest() {
     it('testOnBeforeDownload001', 0, async (done: Function) => {
       Utils.emitEvent("testOnBeforeDownload001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testOnBeforeDownload001", true, 79700, done);
+      Utils.registerBaseEvent("testOnBeforeDownload001", true, 79700,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -427,8 +499,10 @@ export default function webViewControllerDownloadTest() {
     it('testOnDownloadUpdated001', 0, async (done: Function) => {
       Utils.emitEvent("testOnDownloadUpdated001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testOnDownloadUpdated001", true, 79702, done);
-      expect(1,1)
+      Utils.registerBaseEvent("testOnDownloadUpdated001", true, 79702,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -443,7 +517,10 @@ export default function webViewControllerDownloadTest() {
     it('testOnDownloadFinish001', 0, async (done: Function) => {
       Utils.emitEvent("testOnDownloadFinish001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testOnDownloadFinish001", true, 79704, done);
+      Utils.registerBaseEvent("testOnDownloadFinish001", true, 79704,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
 
@@ -458,7 +535,10 @@ export default function webViewControllerDownloadTest() {
     it('testWebDownloadManagerSetDownloadDelegate001', 0, async (done: Function) => {
       Utils.emitEvent("testWebDownloadManagerSetDownloadDelegate001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebDownloadManagerSetDownloadDelegate001", true, 79750, done);
+      Utils.registerBaseEvent("testWebDownloadManagerSetDownloadDelegate001", true, 79750,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('WebViewControllerDownloadTestButton', 10, '');
     })
   })

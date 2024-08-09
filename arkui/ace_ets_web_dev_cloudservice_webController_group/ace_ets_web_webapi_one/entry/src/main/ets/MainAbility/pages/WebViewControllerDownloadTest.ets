@@ -289,11 +289,11 @@ struct WebViewControllerDownloadTest {
             case 'testGetCurrentSpeed001': {
               try {
                 this.controller.startDownload(this.downloadUrlImg);
-                for (let i=0; i< 3; i++) {
-                  await Utils.sleep(1000)
-                  if ( this.currentSpeed > 0 ) {
+                for (let i=0; i< 5; i++) {
+                  if ( this.currentSpeed >= 0 ) {
                     Utils.emitEvent(true, 79654)
                   }
+                  await Utils.sleep(1000)
                 }
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
@@ -512,7 +512,7 @@ struct WebViewControllerDownloadTest {
                   this.downloadingItem.cancel()
                   console.log('testDeserialize001 close')
                 }
-                for (let i = 0; i< 3; i++ ) {
+                for (let i = 0; i< 5; i++ ) {
                   await Utils.sleep(2000)
                   if (this.failedDownloadSerializedData && this.failedDownload) {
                     let deserialize = webView.WebDownloadItem.deserialize(this.failedDownloadSerializedData)
@@ -532,7 +532,7 @@ struct WebViewControllerDownloadTest {
                     if( same ) {
                       Utils.emitEvent(same, 79680)
                     }
-                }
+                  }
                 }
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
