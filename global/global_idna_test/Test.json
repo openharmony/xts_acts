@@ -10,8 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsDemoNdkStageTest.hap",
-                "ActsDemoMainTest.hap"
+                "ActsDemoIdnaStageTest.hap",
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
