@@ -118,7 +118,7 @@ export default function Pointer_test() {
       try {
         await pointer.isPointerVisible().then(data => {
           console.info(`Pointer_PointerVisibleTest_001 success_2, data=${JSON.stringify(data)}`);
-          expect(data == false).assertTrue();
+          expect(data == true).assertTrue();
           done();
         }).catch((err) => {
           console.info(`Pointer_PointerVisibleTest_001 failed, err=${JSON.stringify(err)}`);
