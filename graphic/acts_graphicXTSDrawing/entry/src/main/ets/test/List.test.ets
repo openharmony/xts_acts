@@ -37,7 +37,7 @@ import drawingTsRegionTest from './Region.test';
 import drawingTsMatrixTest from './Matrix.test';
 import drawingTsMatrixTestPart2 from './MatrixPart2.test';
 import roundRectTest from './RoundRect.test';
-import shadowEffectTest from './ShaderEffect.test';
+import shadowEffectTest from './ShaderEffect.test'
 
 export default function testsuite() {
   samplingOptionsTest();
