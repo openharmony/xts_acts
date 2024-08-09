@@ -1024,8 +1024,11 @@ export default function requestDownloadJSUnit() {
       try {
         let task = await request.agent.create(globalThis.abilityContext, config);
         let task1 = await request.agent.getTask(globalThis.abilityContext, task.tid);
-        expect(typeof(task1.tid) === 'string').assertTrue();
-        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Succeeded in querying a download task: " + task);
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Succeeded in querying a download task: " + JSON.stringify(task));
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Succeeded in querying a download task1: " + JSON.stringify(task1));
+        let taskStr1 = JSON.stringify(task);
+        let taskStr2 = JSON.stringify(task1);
+        expect(taskStr1 === taskStr2).assertTrue();
         try {
           await request.agent.remove(task1.tid);
           console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 remove success: " + task);
@@ -1034,12 +1037,10 @@ export default function requestDownloadJSUnit() {
         }
         done();
       } catch (err) {
-        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Failed to query a upload task : " + JSON.stringify(err));
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Failed: " + JSON.stringify(err));
         expect().assertFail();
         done();
       }
-      console.info("-----------------------SUB_REQUEST_Agent_GetTask_Promise_0100 end-----------------------");
-      done();
     });
 
   });

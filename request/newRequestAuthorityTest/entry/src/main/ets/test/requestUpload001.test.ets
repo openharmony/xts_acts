@@ -1671,7 +1671,7 @@ export default function requestUploadOnetJSUnitTest() {
                 console.info("====>SUB_Misc_REQUEST_On_Upload_Failed_0030  err: " + JSON.stringify(err));
                 done();
               }
-            }, 500); 
+            }, 3000);
             await task.start();
           } catch (err) {
             console.info("====>SUB_Misc_REQUEST_On_Upload_Failed_0030 catch err: " + JSON.stringify(err));
