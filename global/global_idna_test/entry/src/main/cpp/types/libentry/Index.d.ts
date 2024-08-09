@@ -1,0 +1,10 @@
+export const testuidna_openUTS46: () => Boolean;
+export const testuidna_close: () => Boolean;
+export const testuidna_labelToASCII: () => Boolean;
+export const testuidna_labelToUnicode: () => Boolean;
+export const testuidna_nameToASCII: () => Boolean;
+export const testuidna_nameToUnicode: () => Boolean;
+export const testuidna_labelToASCLL_UTF8: () => Boolean;
+export const testuidna_labelToUnicodeUTF8: () => Boolean;
+export const testuidna_nameToASCII_UTF8: () => Boolean;
+export const testuidna_nameToUnicodeUTF8: () => Boolean;
