@@ -19,3 +19,17 @@ export const oHNativeVSyncRequestFrameFOne: () => number;
 export const oHNativeVSyncRequestFrameFTwo: () => number;
 export const oHNativeVSyncGetPeriod: () => number;
 export const oHNativeVSyncGetPeriodFOne: () => number;
+export const oHNativeVSyncCreateNull: () => number;
+export const oHNativeVSyncCreateNotEq: () => number;
+export const oHNativeVSyncCreateNormal: () => Array<number>;
+export const oHNativeVSyncCreateAbnormal: () => number;
+export const oHNativeVSyncCreateDifLenth: () => Array<number>;
+export const oHNativeVSyncCreateMuch: () => number;
+export const oHNativeVSyncGetPeriodNullptr: () => number;
+export const oHNativeVSyncDestroyAbnormal: () => number;
+export const oHNativeVSyncDestroyNormal: () => Array<number>;
+export const oHNativeVSyncRequestFrameNullptr: () => Array<number>;
+export const oHNativeVSyncRequestFrameNormal: () => number;
+export const oHNativeVSyncRequestFrameParamErr: () => number;
+//
+
