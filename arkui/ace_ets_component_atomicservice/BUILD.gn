@@ -13,5 +13,9 @@
 
 group("componentAtomicserviceTest") {
   testonly = true
-  deps = [ "ace_ets_component_atomicservice_interstitialdialogaction:ActsAceEtsInterstitialDialogActionTest" ]
+  deps = [
+    "ace_ets_component_atomicservice_interstitialdialogaction:ActsAceEtsInterstitialDialogActionTest",
+    "ace_ets_component_atomicservice_interstitialdialogaction:ActsAceEtsNavigationTest",
+    "ace_ets_component_atomicservice_interstitialdialogaction:ActsAceEtsWebTest"
+  ]
 }
