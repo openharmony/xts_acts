@@ -16,12 +16,15 @@
 #include "napi/native_api.h"
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
+#include <GLES3/gl3.h>
 #include <GLES3/gl32.h>
+#include <bits/alltypes.h>
 #include <cstring>
 #include <native_buffer/native_buffer.h>
 #include <native_image/native_image.h>
 #include <native_window/external_window.h>
 #include <sys/mman.h>
+#include <chrono>
 
 #define SUCCESS 0
 #define PARAM_0 0
@@ -45,8 +48,7 @@ EGLContext eglContext_ = EGL_NO_CONTEXT;
 EGLDisplay eglDisplay_ = EGL_NO_DISPLAY;
 static inline EGLConfig config_;
 
-static bool CheckEglExtension(const char *extensions, const char *extension)
-{
+static bool CheckEglExtension(const char *extensions, const char *extension) {
     size_t extlen = strlen(extension);
     const char *end = extensions + strlen(extensions);
 
@@ -364,8 +366,491 @@ static napi_value OHNativeImageDestroy(napi_env env, napi_callback_info info)
     if (image == nullptr) {
         backInfo = SUCCESS;
     }
+    
     napi_value result = nullptr;
     napi_create_int32(env, backInfo, &result);
+    return result;
+}
+
+static napi_value OHNativeImageCreateNormal(napi_env env, napi_callback_info info) 
+{
+    int backInfo = FAIL;
+    OH_NativeImage *image = nullptr;
+    InitEGLEnv();
+    GLuint textureId;
+    glGenTextures(PARAM_1, &textureId);
+    GLuint textureTarget = GL_TEXTURE_2D;
+    image = OH_NativeImage_Create(textureId, textureTarget);
+    if (image != nullptr) {
+        backInfo = SUCCESS;
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, backInfo, &result);
+    return result;
+}
+
+static napi_value OHNativeImageCreateAbnormal(napi_env env, napi_callback_info info) {
+    
+    int backInfo = FAIL;
+    typedef struct {
+        uint32_t textureId;     
+        uint32_t textureTarget;
+    } TestParams;
+//    TestParams testParams[] = {
+//        {NULL, NULL},  // (NULL, NULL)
+//        {1, NULL},  // (1, NULL)
+//        {NULL, 1},  // (NULL, 1)
+//        {-(1ULL << 32), 1}, // (-2^32, 1)
+//        {-1, 1}, // (-(2^32-1), 1) 注意：这里和上一个测试用例相同，因为无法表示负数
+//        {-10000, 1}, {0, 1}, {10000, 1}, {4294967295, 1}, // (2^32-1, 1)
+//        {1, -1}, // (1, -2^32) 注意：这里和下一个测试用例相同，因为无法表示负数
+//        {1, -1}, // (1, -(2^32-1))
+//        {1, -10000}, {1, 0}, {1, 10000}, {1, 4294967295}, // (1, 2^32-1)
+//        {1, 1} // (1, 2^32) 注意：这个值无法表示，因为我们使用0代替NULL
+//    };
+
+//    for (int i = 0; i < sizeof(testParams) / sizeof(testParams[0]); i++) {
+//        TestParams params = testParams[i];
+//        OH_NativeImage *image = OH_NativeImage_Create(params.textureId, params.textureTarget);
+        
+    OH_NativeImage *image = OH_NativeImage_Create(-10000, 1);
+    if (image != nullptr) {
+        backInfo = SUCCESS;
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, backInfo, &result);
+    return result;
+}
+
+static napi_value OHNativeImageDestroy1(napi_env env, napi_callback_info info) {
+    int backInfo = FAIL;
+    OH_NativeImage *image = nullptr;
+    GLenum nativeImageTexId_;
+    GLuint GL_TEXTURE_EXTERNAL_OES;
+    glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
+    image = OH_NativeImage_Create(nativeImageTexId_, GL_TEXTURE_EXTERNAL_OES);
+    if (image != nullptr) {
+        OH_NativeImage_Destroy(&image);
+        if (image == nullptr) {
+            backInfo = SUCCESS;
+        }
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, backInfo, &result);
+    return result;
+}
+
+static napi_value OHNativeImageCreateMuch(napi_env env, napi_callback_info info) {
+    int backInfo = FAIL;
+    const int count = 500;
+    OH_NativeImage *imageArray[500] = {nullptr};
+    for (int i = 0; i < count; ++i) {
+        GLuint GL_TEXTURE_EXTERNAL_OES;
+        glBindTexture(GL_TEXTURE_EXTERNAL_OES, 1);
+        imageArray[i] = OH_NativeImage_Create(1, GL_TEXTURE_EXTERNAL_OES);
+        if (imageArray[i] == nullptr) {
+            backInfo = FAIL;
+            break;
+        }
+    }
+
+    for (int i = 0; i < count; ++i) {
+        if (imageArray[i] != nullptr) {
+            OH_NativeImage_Destroy(&imageArray[i]); // 销毁单个图像
+            if (imageArray[i] != nullptr) {
+                backInfo = FAIL;
+                break;
+            }
+        }
+    }
+    
+    napi_value result = nullptr;
+    if (backInfo == FAIL) {
+        napi_create_int32(env, backInfo, &result);
+    } else {
+        napi_create_int32(env, SUCCESS, &result);
+    }
+
+    return result;
+}
+
+static napi_value OHNativeImageAcquireNativeWindowNullptr(napi_env env, napi_callback_info info) {
+    int backInfo = FAIL;
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = OH_NativeImage_AcquireNativeWindow(nullptr);
+    if (nativeWindow != nullptr) {
+        backInfo = SUCCESS;
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, backInfo, &result);
+    return result;
+}
+
+static napi_value OHNativeImageAcquireNativeWindowNormal(napi_env env, napi_callback_info info) {
+    int backInfo = FAIL;
+    OHNativeWindow *nativeWindow1 = nullptr;
+    OHNativeWindow *nativeWindow2 = nullptr;
+    OH_NativeImage *nativeImage = getNativeImage();
+    nativeWindow1 = OH_NativeImage_AcquireNativeWindow(nativeImage);
+    if (nativeWindow1 != nullptr) {
+        nativeWindow2 = OH_NativeImage_AcquireNativeWindow(nativeImage);
+        if (nativeWindow1 == nativeWindow2) {
+            backInfo = SUCCESS;
+        }
+    }
+    
+    napi_value result = nullptr;
+    napi_create_int32(env, backInfo, &result);
+    return result;
+}
+
+static napi_value OHNativeImageAttachContextNullptr(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = getNativeImage();
+    InitEGLEnv();
+    GLuint textureId;
+    glGenTextures(PARAM_1, &textureId);
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, 2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    int res1 = OH_NativeImage_AttachContext(nullptr, textureId);
+    if (res1 != 0) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 0, result1);
+
+    int res2 = OH_NativeImage_AttachContext(nativeImage, NULL);
+    if (res2 != 0) {
+        napi_create_int32(env, FAIL, &result2);
+    } else {
+        napi_create_int32(env, SUCCESS, &result2);
+    }
+    napi_set_element(env, result, 1, result2);
+    
+    return result;
+}
+
+static napi_value OHNativeImageDetachContextNullptr(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = getNativeImage();
+    InitEGLEnv();
+    GLuint textureId;
+    glGenTextures(PARAM_1, &textureId);
+    napi_value result = nullptr;
+    int res = OH_NativeImage_DetachContext(nullptr);
+    if (res != 0) { 
+        napi_create_int32(env, FAIL, &result); 
+    } else {
+        napi_create_int32(env, SUCCESS, &result);
+    }
+    return result;
+}
+
+static napi_value OHNativeImageAttachContextNormal(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = getNativeImage();
+    InitEGLEnv();
+    GLuint textureId;
+    glGenTextures(PARAM_1, &textureId);
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, 2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    int res1 = OH_NativeImage_AcquireNativeWindow(nativeImage);
+    if (res1 != 0) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 0, result1);
+
+    int res2 = OH_NativeImage_AttachContext(nativeImage, NULL);
+    if (res2 != 0) {
+        napi_create_int32(env, FAIL, &result2);
+    } else {
+        napi_create_int32(env, SUCCESS, &result2);
+    }
+
+    OH_NativeImage_Destroy(&nativeImage);
+    return result;
+}
+
+static napi_value OHNativeImageDetachContextNormal(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = getNativeImage();
+    InitEGLEnv();
+    GLuint textureId;
+    glGenTextures(PARAM_1, &textureId);
+    napi_value result = nullptr;
+    int res = OH_NativeImage_DetachContext(nativeImage);
+    if (res != 0) {
+        napi_create_int32(env, FAIL, &result);
+    } else {
+        napi_create_int32(env, SUCCESS, &result);
+    }
+    return result;
+}
+
+static napi_value OHNativeImageGetSurfaceIdNullptr(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = getNativeImage();
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, 2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    uint64_t surfaceId =99999;
+    int res1 = OH_NativeImage_GetSurfaceId(nullptr,&surfaceId);
+    if (res1 != 0 && surfaceId == 99999) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 0, result1);
+    
+    int res2 = OH_NativeImage_GetSurfaceId(nullptr, NULL);
+    if (res2 != 0 && surfaceId == 99999) {
+        napi_create_int32(env, FAIL, &result2);
+    } else {
+        napi_create_int32(env, SUCCESS, &result2);
+    }
+    napi_set_element(env, result, 1, result2);
+
+    return result;
+}
+
+static napi_value OHNativeGetSurfaceIdNormal(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = getNativeImage();
+    napi_value result = nullptr;
+    uint64_t surfaceId = 99999;
+    int res = OH_NativeImage_GetSurfaceId(nativeImage, &surfaceId);
+    if (res == 0 && surfaceId != 99999) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+
+    return result;
+}
+
+static napi_value OHNativeImageUpdateSurfaceImageNullptr(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = getNativeImage();
+    napi_value result = nullptr;
+    int res = OH_NativeImage_UpdateSurfaceImage(nullptr);
+    if (res != 0) {
+        napi_create_int32(env, FAIL, &result);
+    } else {
+        napi_create_int32(env, SUCCESS, &result);
+    }
+
+    return result;
+}
+
+static napi_value OHNativeImageGetTimestampNullptr(napi_env env, napi_callback_info info) {
+    std::chrono::
+    
+    OH_NativeImage *nativeImage = getNativeImage();
+    napi_value result = nullptr;
+    int64_t timestamp = 0;
+    timestamp = OH_NativeImage_GetTimestamp(nullptr);
+    if (timestamp == 0) {
+        napi_create_int32(env, FAIL, &result);
+    } else {
+        napi_create_int32(env, SUCCESS, &result);
+    }
+
+    return result;
+}
+
+static napi_value OHNativeImageGetTransformMatrixNullptr(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = getNativeImage();
+    napi_value result = nullptr;
+    uint64_t surfaceId = 99999;
+    float matrix[16];
+    int res1 = OH_NativeImage_GetTransformMatrix(nullptr, matrix);
+    if (res1 == 0 && surfaceId != 99999) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    int res2 = OH_NativeImage_GetTransformMatrix(nativeImage, NULL);
+    return result;
+}
+
+static napi_value OHNativeImageGetTransformMatrixV2Nullptr(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = getNativeImage();
+    napi_value result = nullptr;
+    uint64_t surfaceId = 99999;
+    float matrix[16];
+    int res1 = OH_NativeImage_GetTransformMatrixV2(nullptr, matrix);
+    if (res1 == 0 && surfaceId != 99999) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    int res2 = OH_NativeImage_GetTransformMatrixV2(nativeImage, NULL);
+    return result;
+}
+
+static napi_value OHNativeImageUpdateSurfaceImageNormal(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = nullptr;
+    napi_value result = nullptr;
+    GLenum nativeImageTexId_;
+    GLuint GL_TEXTURE_EXTERNAL_OES;
+    glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
+    nativeImage = OH_NativeImage_Create(nativeImageTexId_, GL_TEXTURE_EXTERNAL_OES);
+    int res = OH_NativeImage_UpdateSurfaceImage(nativeImage);
+    if (res == 0 ) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+
+    return result;
+}
+
+static napi_value OHNativeImageGetTimestampNormal(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = nullptr;
+    napi_value result = nullptr;
+    GLenum nativeImageTexId_;
+    GLuint GL_TEXTURE_EXTERNAL_OES;
+    glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
+    int64_t timestamp = 0;
+    nativeImage = OH_NativeImage_Create(nativeImageTexId_, GL_TEXTURE_EXTERNAL_OES);
+    int res = OH_NativeImage_UpdateSurfaceImage(nativeImage);
+    int64_t time = OH_NativeImage_GetTimestamp(nativeImage);
+    if (res == 0) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+
+    return result;
+}
+
+static napi_value OHNativeImageGetTransformMatrixNormal(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = nullptr;
+    napi_value result = nullptr;
+    GLenum nativeImageTexId_;
+    GLuint GL_TEXTURE_EXTERNAL_OES;
+    glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
+    nativeImage = OH_NativeImage_Create(nativeImageTexId_, GL_TEXTURE_EXTERNAL_OES);
+    float matrix[16];
+    float matrixV2[16];
+    OH_NativeImage_UpdateSurfaceImage(nativeImage);
+    OH_NativeImage_GetTransformMatrix(nativeImage,matrix);
+    if (matrix == NULL) { napi_create_int32(env, SUCCESS, &result); }
+    else {
+        napi_create_int32(env, FAIL, &result);
+    }
+
+    return result;
+}
+
+static napi_value OHNativeImageGetTransformMatrixV2Normal(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = nullptr;
+    napi_value result = nullptr;
+    GLenum nativeImageTexId_;
+    GLuint GL_TEXTURE_EXTERNAL_OES;
+    glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
+    nativeImage = OH_NativeImage_Create(nativeImageTexId_, GL_TEXTURE_EXTERNAL_OES);
+    float matrix[16];
+    float matrixV2[16];
+    OH_NativeImage_UpdateSurfaceImage(nativeImage);
+    OH_NativeImage_GetTransformMatrixV2(nativeImage, matrixV2);
+    if (matrix == NULL) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+
+    return result;
+}
+
+
+
+static napi_value OHNativeImageSetOnFrameAvailableListenerNullptr(napi_env env, napi_callback_info info) {
+    class NativeImageAdaptor {
+        public:
+        ~NativeImageAdaptor();
+        static NativeImageAdaptor *GetInstance();
+        static void OnFrameAvailable(void *context);
+    };
+    OH_NativeImage *nativeImage = nullptr;
+    napi_value result = nullptr;
+    OH_OnFrameAvailableListener listener;
+    listener.context = static_cast<void *>(nativeImage);
+    listener.onFrameAvailable = NativeImageAdaptor::OnFrameAvailable;
+    OH_NativeImage_SetOnFrameAvailableListener(nullptr,listener);
+
+    return result;
+}
+
+static napi_value OHNativeImageUnSetOnFrameAvailableListenerNullptr(napi_env env, napi_callback_info info) {
+    OH_NativeImage *nativeImage = nullptr;
+    napi_value result = nullptr;
+    OH_NativeImage_UnsetOnFrameAvailableListener(nullptr);
+
+    return result;
+}
+
+static napi_value OHNativeImageSetOnFrameAvailableListenerNormal(napi_env env, napi_callback_info info) {
+    class NativeImageAdaptor {
+    public:
+        ~NativeImageAdaptor();
+        static NativeImageAdaptor *GetInstance();
+        static void OnFrameAvailable(void *context);
+    };
+    OH_NativeImage *nativeImage = nullptr;
+    OH_OnFrameAvailableListener listener1;
+    listener1.context = static_cast<void *>(nativeImage);
+    listener1.onFrameAvailable = NativeImageAdaptor::OnFrameAvailable;
+
+    OH_OnFrameAvailableListener listener2;
+    listener2.context = static_cast<void *>(nativeImage);
+    listener2.onFrameAvailable = NativeImageAdaptor::OnFrameAvailable;
+    
+
+    napi_value result = nullptr;
+    GLenum nativeImageTexId_;
+    GLuint GL_TEXTURE_EXTERNAL_OES;
+    glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
+    nativeImage = OH_NativeImage_Create(nativeImageTexId_, GL_TEXTURE_EXTERNAL_OES);
+    int res = OH_NativeImage_UpdateSurfaceImage(nativeImage);
+    if (res == 0) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+
+    return result;
+}
+
+static napi_value OHNativeImageUnsetOnFrameAvailableListenerNormal(napi_env env, napi_callback_info info) {
+    class NativeImageAdaptor {
+    public:
+        ~NativeImageAdaptor();
+        static NativeImageAdaptor *GetInstance();
+        static void OnFrameAvailable(void *context);
+    };
+    OH_NativeImage *nativeImage = nullptr;
+    OH_OnFrameAvailableListener listener1;
+    listener1.context = static_cast<void *>(nativeImage);
+    listener1.onFrameAvailable = NativeImageAdaptor::OnFrameAvailable;
+
+    OH_OnFrameAvailableListener listener2;
+    listener2.context = static_cast<void *>(nativeImage);
+    listener2.onFrameAvailable = NativeImageAdaptor::OnFrameAvailable;
+    
+    napi_value result = nullptr;
+    GLenum nativeImageTexId_;
+    GLuint GL_TEXTURE_EXTERNAL_OES;
+    glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
+    nativeImage = OH_NativeImage_Create(nativeImageTexId_, GL_TEXTURE_EXTERNAL_OES);
+    int res = OH_NativeImage_UpdateSurfaceImage(nativeImage);
+    if (res == 0) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+
     return result;
 }
 
@@ -397,6 +882,52 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHNativeImageGetTransformMatrixAbnormal", nullptr, OHNativeImageGetTransformMatrixAbnormal, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"oHNativeImageDestroy", nullptr, OHNativeImageDestroy, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeImageCreateNormal", nullptr, OHNativeImageCreateNormal, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeImageCreateAbnormal", nullptr, OHNativeImageCreateAbnormal, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeImageDestroy1", nullptr, OHNativeImageDestroy1, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeImageCreateMuch", nullptr, OHNativeImageCreateMuch, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeImageAcquireNativeWindowNullptr", nullptr, OHNativeImageAcquireNativeWindowNullptr, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeImageAcquireNativeWindowNormal", nullptr, OHNativeImageAcquireNativeWindowNormal, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeImageAttachContextNullptr", nullptr, OHNativeImageAttachContextNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeImageDetachContextNullptr", nullptr, OHNativeImageDetachContextNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeImageAttachContextNormal", nullptr, OHNativeImageAttachContextNormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeImageDetachContextNormal", nullptr, OHNativeImageDetachContextNormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeImageGetSurfaceIdNullptr", nullptr, OHNativeImageGetSurfaceIdNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeGetSurfaceIdNormal", nullptr, OHNativeGetSurfaceIdNormal, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeImageUpdateSurfaceImageNullptr", nullptr, OHNativeImageUpdateSurfaceImageNullptr, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeImageGetTimestampNullptr", nullptr, OHNativeImageGetTimestampNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeImageGetTransformMatrixNullptr", nullptr, OHNativeImageGetTransformMatrixNullptr, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeImageGetTransformMatrixV2Nullptr", nullptr, OHNativeImageGetTransformMatrixV2Nullptr, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeImageUpdateSurfaceImageNormal", nullptr, OHNativeImageUpdateSurfaceImageNormal, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeImageGetTimestampNormal", nullptr, OHNativeImageGetTimestampNormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeImageGetTransformMatrixNormal", nullptr, OHNativeImageGetTransformMatrixNormal, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeImageGetTransformMatrixV2Normal", nullptr, OHNativeImageGetTransformMatrixV2Normal, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeImageSetOnFrameAvailableListenerNullptr", nullptr, OHNativeImageSetOnFrameAvailableListenerNullptr,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeImageUnSetOnFrameAvailableListenerNullptr", nullptr,
+         OHNativeImageUnSetOnFrameAvailableListenerNullptr, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeImageSetOnFrameAvailableListenerNormal", nullptr, OHNativeImageSetOnFrameAvailableListenerNormal,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeImageUnsetOnFrameAvailableListenerNormal", nullptr, OHNativeImageUnsetOnFrameAvailableListenerNormal,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

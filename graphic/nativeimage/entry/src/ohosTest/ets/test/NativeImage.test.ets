@@ -200,5 +200,326 @@ export default function nativeImageTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0100
+     * @tc.name       : testNativeImageCreateNormal
+     * @tc.desc       : test OH_NativeImage_Create
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeImageCreateNormal', 0, async (done: Function) => {
+      let result: number = nativeimage.oHNativeImageCreateNormal();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0101
+     * @tc.name       : testNativeImageCreateAbnormal
+     * @tc.desc       : test OH_NativeImage_Create
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeImageCreateAbnormal', 0, async (done: Function) => {
+      let result: number = nativeimage.oHNativeImageCreateAbnormal();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0102
+     * @tc.name       : testNativeImageDestroy
+     * @tc.desc       : test OH_NativeImage_Create
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeImageDestroy', 0, async (done: Function) => {
+      let result: number = nativeimage.oHNativeImageDestroy1();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0103
+     * @tc.name       : testNativeImageCreateMuch
+     * @tc.desc       : test OH_NativeImage_Create
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeImageCreateMuch', 0, async (done: Function) => {
+      let result: number = nativeimage.oHNativeImageCreateMuch();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0200
+     * @tc.name       : testNativeImageAcquireNativeWindowNullptr
+     * @tc.desc       : test OH_NativeImage_AcquireNativeWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeImageAcquireNativeWindowNullptr', 0, async (done: Function) => {
+      let result: number = nativeimage.oHNativeImageAcquireNativeWindowNullptr();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0201
+     * @tc.name       : testNativeImageAcquireNativeWindowNormal
+     * @tc.desc       : test OH_NativeImage_AcquireNativeWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeImageAcquireNativeWindowNormal', 0, async (done: Function) => {
+      let result: number = nativeimage.oHNativeImageAcquireNativeWindowNormal();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0300
+     * @tc.name       : testNativeImageAttachContextNullptr
+     * @tc.desc       : test OH_NativeImage_AttachContext
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeImageAttachContextNullptr', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHNativeImageAttachContextNullptr();
+      console.info("testNativeImageAttachContextNullptr result:" + result)
+      expect(result[0]).assertEqual(-1);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0301
+     * @tc.name       : testNativeImageDetachContextNullptr
+     * @tc.desc       : test OH_NativeImage_DetachContext
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeImageDetachContextNullptr', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0302
+     * @tc.name       : testNativeImageAttachContextNormal
+     * @tc.desc       : test OH_NativeImage_AcquireNativeWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeImageAttachContextNormal', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0303
+     * @tc.name       : testNativeImageDetachContextNormal
+     * @tc.desc       : test OH_NativeImage_DetachContext
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeImageDetachContextNormal', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0400
+     * @tc.name       : testNativeImageGetSurfaceIdNullptr
+     * @tc.desc       : test OH_NativeImage_GetSurfaceId
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeImageGetSurfaceIdNullptr', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0401
+     * @tc.name       : testNativeGetSurfaceIdNormal
+     * @tc.desc       : test OH_NativeImage_GetSurfaceId
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeGetSurfaceIdNormal', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0500
+     * @tc.name       : testNativeImageUpdateSurfaceImageNullptr
+     * @tc.desc       : test OH_NativeImage_UpdateSurfaceImage
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeImageUpdateSurfaceImageNullptr', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0501
+     * @tc.name       : testNativeImageGetTimestampNullptr
+     * @tc.desc       : test OH_NativeImage_GetTimestamp
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeImageGetTimestampNullptr', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0502
+     * @tc.name       : testNativeImageGetTransformMatrixNullptr
+     * @tc.desc       : test OH_NativeImage_GetTransformMatrix
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeImageGetTransformMatrixNullptr', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0503
+     * @tc.name       : testNativeImageGetTransformMatrixV2Nullptr
+     * @tc.desc       : test OH_NativeImage_GetTransformMatrixV2
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeImageGetTransformMatrixV2Nullptr', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0504
+     * @tc.name       : testNativeImageUpdateSurfaceImageNormal
+     * @tc.desc       : test OH_NativeImage_UpdateSurfaceImage
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeImageUpdateSurfaceImageNormal', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0505
+     * @tc.name       : testNativeImageGetTimestampNormal
+     * @tc.desc       : test OH_NativeImage_UpdateSurfaceImage
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeImageGetTimestampNormal', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0507
+     * @tc.name       : testNativeImageGetTransformMatrixNormal
+     * @tc.desc       : test OH_NativeImage_UpdateSurfaceImage
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeImageGetTransformMatrixNormal', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0508
+     * @tc.name       : testNativeImageGetTransformMatrixV2Normal
+     * @tc.desc       : test OH_NativeImage_UpdateSurfaceImage
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeImageGetTransformMatrixV2Normal', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0600
+     * @tc.name       : testNativeImageSetOnFrameAvailableListenerNullptr
+     * @tc.desc       : test OH_NativeImage_SetOnFrameAvailableListener
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeImageSetOnFrameAvailableListenerNullptr', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0601
+     * @tc.name       : testNativeImageUnSetOnFrameAvailableListenerNullptr
+     * @tc.desc       : test OH_NativeImage_UnsetOnFrameAvailableListener
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeImageUnSetOnFrameAvailableListenerNullptr', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0602
+     * @tc.name       : testNativeImageSetOnFrameAvailableListenerNormal
+     * @tc.desc       : test OH_NativeImage_SetOnFrameAvailableListener
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeImageSetOnFrameAvailableListenerNormal', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0603
+     * @tc.name       : testNativeImageUnsetOnFrameAvailableListenerNormal
+     * @tc.desc       : test OH_NativeImage_UnsetOnFrameAvailableListener
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeImageUnsetOnFrameAvailableListenerNormal', 0, async (done: Function) => {
+      expect().assertEqual(0);
+      done();
+    });
   })
 }
