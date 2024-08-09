@@ -14,8 +14,13 @@
  */
 
 #include "napi/native_api.h"
+#include <GLES2/gl2.h>
+#include <bits/alltypes.h>
 #include <native_buffer/native_buffer.h>
 #include <climits>
+#include <native_image/native_image.h>
+#include <sys/types.h>
+#include <vector>
 
 #define SUCCESS 0
 #define FAIL (-1)
@@ -203,6 +208,1072 @@ static napi_value OHNativeBufferGetSeqNumAbnormal(napi_env env, napi_callback_in
     napi_create_int32(env, backInfo, &result);
     return result;
 }
+
+static napi_value OHNativeBufferAllocNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer *ptr = OH_NativeBuffer_Alloc(nullptr);
+    if (ptr == nullptr) {
+        napi_create_int32(env, FAIL, &result);
+    } else {
+        napi_create_int32(env, SUCCESS, &result);
+    }
+    return result;
+}
+static napi_value OHNativeBufferAllocNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, 7, &result);
+    std::vector<OH_NativeBuffer_Config> nativeBufferConfigArr = {
+        {
+            .width = 0x100,
+            .height = 0x100,
+            .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+            .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+        },{
+            .width = 0x7FFFFFFF,
+            .height = 0x100,
+            .format = NATIVEBUFFER_PIXEL_FMT_RGBA_5658,
+            .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+        },{
+            .width = 0,
+            .height = 0x100,
+            .format = NATIVEBUFFER_PIXEL_FMT_BGRA_5551,
+            .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+        },{
+            .width = 0x7FFFFFFE,
+            .height = 0x100,
+            .format = NATIVEBUFFER_PIXEL_FMT_YUV_422_I,
+            .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+            .stride = 0,
+        },{
+            .width = 0x100,
+            .height = 0x7FFFFFFF,
+            .format = NATIVEBUFFER_PIXEL_FMT_CLUT4,
+            .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+            .stride = 1,
+        },{
+            .width = 0x100,
+            .height = 0,
+            .format = NATIVEBUFFER_PIXEL_FMT_BGRA_8888,
+            .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+            .stride = 0x7FFFFFFF,
+        },{
+            .width = 0x100,
+            .height = 0x7FFFFFFE,
+            .format = NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP,
+            .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+        }
+    };
+    
+    for (uint32_t index = 0; index < 7; index++) {
+        OH_NativeBuffer *ptr = OH_NativeBuffer_Alloc(&nativeBufferConfigArr[index]);
+        napi_value resultIndex = nullptr;
+        if (ptr == NULL) {
+            napi_create_int32(env, FAIL, &resultIndex);
+        } else {
+            napi_create_int32(env, SUCCESS, &result);
+        }
+        napi_set_element(env, result, index, resultIndex);
+    }
+    return result;
+}
+static napi_value OHNativeBufferAllocAbormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, 7, &result);
+    std::vector<OH_NativeBuffer_Config> nativeBufferConfigArr = {
+        {
+            .width = - 0x100,
+            .height = 0x100,
+            .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+            .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+        },
+//     {
+//             .width = 0x80000000,
+//             .height = 0x100,
+//             .format = NATIVEBUFFER_PIXEL_FMT_RGBA_5658,
+//             .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+//         },
+    {
+            .width = 0x100,
+            .height = 0x100,
+            .format = NATIVEBUFFER_PIXEL_FMT_BGRA_5551,
+            .usage = -1,
+        }, {
+            .width = 0x100,
+            .height = 0x100,
+            .format = -1,
+            .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+        }, {
+            .width = 0x100,
+            .height = -0x100,
+            .format = NATIVEBUFFER_PIXEL_FMT_CLUT4,
+            .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+        },
+//     {
+//             .width = 0x100,
+//             .height = 0x80000000,
+//             .format = NATIVEBUFFER_PIXEL_FMT_BGRA_8888,
+//             .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+//         },
+    {
+            .width = 0x100, .height = 0x100, 
+            .format = NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP,
+            .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+            .stride = -100,
+        }
+    };
+
+    for (uint32_t index = 0; index < nativeBufferConfigArr.size(); index++) {
+        OH_NativeBuffer *ptr = OH_NativeBuffer_Alloc(&nativeBufferConfigArr[index]);
+        napi_value resultIndex = nullptr;
+        if (ptr == NULL) {
+            napi_create_int32(env, FAIL, &resultIndex);
+        } else {
+            napi_create_int32(env, SUCCESS, &result);
+        }
+        napi_set_element(env, result, index, resultIndex);
+    }
+    return result;
+}
+
+static napi_value OHNativeBufferAllocMuch(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width =0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    for (uint32_t index = 0; index < 500; index++) {
+        OH_NativeBuffer *ptr = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+        if (ptr == NULL) {
+            napi_create_int32(env, FAIL, &result);
+            break;
+        } else {
+            napi_create_int32(env, SUCCESS, &result);
+        }
+    }
+    return result;
+}
+
+static napi_value OHNativeBufferFromNativeWindowBufferNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, 2, &result);
+    napi_value result1 = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *buffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    int32_t ret = OH_NativeBuffer_FromNativeWindowBuffer(nullptr, &buffer);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 0, result1);
+    OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
+    GLuint textureId;
+    glGenTextures(1, &textureId);
+    auto _image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
+    OHNativeWindow *nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
+    int code = SET_BUFFER_GEOMETRY;
+    int32_t width_ = 0x100;
+    int32_t height_ = 0x100;
+    ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, width_, height_);
+    code = SET_USAGE;
+    int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
+    ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, usage);
+    int fenceFd = -1;
+    int ret0 = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
+    
+    ret = OH_NativeBuffer_FromNativeWindowBuffer(nativeWindowBuffer, nullptr);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 1, result1);
+    return result;
+}
+
+// 失败
+static napi_value OHNativeBufferFromNativeWindowBufferNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, 3, &result);
+    napi_value result1 = nullptr;
+    OH_NativeBuffer *buffer = nullptr;
+    OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
+
+    GLuint textureId;
+    glGenTextures(1, &textureId);
+    auto _image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
+    OHNativeWindow *nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
+    int code = SET_BUFFER_GEOMETRY;
+    int32_t width_ = 0x100;
+    int32_t height_ = 0x100;
+    int32_t ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, width_, height_);
+    code = SET_USAGE;
+    int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
+    ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, usage);
+    int fenceFd = -1;
+    int ret0 = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
+    ret = OH_NativeBuffer_FromNativeWindowBuffer(nativeWindowBuffer, &buffer);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 0, result1);
+    
+    // nativeWindowBuffer和nativeBuffer是否一致 一致返回success,失败返回fail
+    if (buffer != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, 1, result1);
+
+    // 第二次执行 接口执行失败，返回错误码应该非0，但实际为0
+    ret = OH_NativeBuffer_FromNativeWindowBuffer(nativeWindowBuffer, &buffer);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 2, result1);
+    
+    return result;
+}
+
+static napi_value OHNativeBufferGetConfigNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+
+    OH_NativeBuffer_Config *nativeBufferConfig = nullptr;
+    OH_NativeBuffer_GetConfig(nullptr, nativeBufferConfig);
+    // 怎么做判断？
+    if (nativeBufferConfig != nullptr) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+   
+    return result;
+}
+
+static napi_value OHNativeBufferGetConfigNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_Config nativeBufferConfig2;
+    OH_NativeBuffer_GetConfig(nativeBuffer, &nativeBufferConfig2);
+
+    // 手动比较 nativeBufferConfig 和 nativeBufferConfig2 的成员
+    bool areEqual = true;
+    if (nativeBufferConfig.width != nativeBufferConfig2.width) {
+        areEqual = false;
+    } else if (nativeBufferConfig.height != nativeBufferConfig2.height) {
+        areEqual = false;
+    } else if (nativeBufferConfig.format != nativeBufferConfig2.format) {
+        areEqual = false;
+    } else if (nativeBufferConfig.usage != nativeBufferConfig2.usage) {
+        areEqual = false;
+    }
+
+    if (areEqual) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    
+    return result;
+}
+
+static napi_value OHNativeBufferGetSeqNumNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    uint32_t ret = OH_NativeBuffer_GetSeqNum(nullptr);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNativeBufferGetSeqNumNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    uint32_t ret = 0;
+    ret = OH_NativeBuffer_GetSeqNum(nativeBuffer);
+    if (ret > 0 && ret != UINT_MAX) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
+static napi_value OHNativeBuffeMapNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    uint32_t ret = OH_NativeBuffer_Map(nullptr, nullptr);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNativeBufferMapNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    //
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    void *virAddr = nullptr;
+    uint32_t ret = OH_NativeBuffer_Map(nativeBuffer, &virAddr);
+    if (virAddr != nullptr) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
+static napi_value OHNativeBuffeMapPlanesNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_create_array_with_length(env, 2, &result);
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    void *virAddr = nullptr;
+    OH_NativeBuffer_Planes outPlanes;
+    int32_t ret = OH_NativeBuffer_MapPlanes(nullptr, &virAddr, &outPlanes);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 0, result1);
+    ret = OH_NativeBuffer_MapPlanes(nativeBuffer, &virAddr, nullptr);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 1, result1);
+    return result;
+}
+
+static napi_value OHNativeBufferMapPlanesNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_create_array_with_length(env, 3, &result);
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    void *virAddr = nullptr;
+    OH_NativeBuffer_Planes outPlanes;
+    int32_t ret = OH_NativeBuffer_MapPlanes(nativeBuffer, &virAddr, &outPlanes);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 0, result1);
+    // 步骤2
+    if (virAddr != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, 1, result1);
+    ret = OH_NativeBuffer_MapPlanes(nativeBuffer, &virAddr, &outPlanes);
+    // 步骤3
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 2, result1);
+    return result;
+}
+
+static napi_value OHNativeBuffeReferenceNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    int32_t ret = OH_NativeBuffer_Reference(nullptr);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNativeBuffeUnreferenceNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    int32_t ret = OH_NativeBuffer_Unreference(nullptr);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNativeBufferReferenceNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    int32_t ret = OH_NativeBuffer_Reference(nativeBuffer);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNativeBufferReferenceMax(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    for (uint32_t index = 0; index < 1000; index++) {
+        int32_t ret = OH_NativeBuffer_Reference(nativeBuffer);
+        napi_create_int32(env, ret, &result);
+        if (ret != 0) {
+            break;
+        }
+    }
+    return result;
+}
+
+static napi_value OHNativeBufferUnreferenceNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    int32_t ret = OH_NativeBuffer_Unreference(nativeBuffer);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNativeBuffeUnmapNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    int32_t ret = OH_NativeBuffer_Unmap(nullptr);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNativeBufferUnmapNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    int32_t ret = OH_NativeBuffer_Unmap(nativeBuffer);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNativeBufferGetColorSpaceFirst(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_ColorSpace colorSpace = OH_NativeBuffer_ColorSpace::OH_COLORSPACE_ADOBERGB_LIMIT;
+    int32_t ret = OH_NativeBuffer_GetColorSpace(nativeBuffer, &colorSpace);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNativeBufferSetColorSpaceNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_create_array_with_length(env, 3, &result);
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    for (uint32_t index = 0; index < 32; index++) {
+        OH_NativeBuffer_ColorSpace colorSpace = (OH_NativeBuffer_ColorSpace)index;
+        int32_t ret = OH_NativeBuffer_SetColorSpace(nativeBuffer, colorSpace);
+        napi_create_int32(env, ret, &result1);
+        napi_set_element(env, result, 0, result1);
+        if (ret != 0) {
+            napi_create_int32(env, FAIL, &result1);
+            napi_set_element(env, result, 1, result1);
+            napi_set_element(env, result, 2, result1);
+            break;
+        }
+        OH_NativeBuffer_ColorSpace colorSpaceGet;
+        ret = OH_NativeBuffer_GetColorSpace(nativeBuffer, &colorSpaceGet);
+        napi_create_int32(env, ret, &result1);
+        napi_set_element(env, result, 1, result1);
+        if (ret != 0) {
+            napi_create_int32(env, FAIL, &result1);
+            napi_set_element(env, result, 2, result1);
+            break;
+        }
+        if (colorSpaceGet != colorSpace) {
+            napi_create_int32(env, FAIL, &result1);
+            napi_set_element(env, result, 2, result1);
+            break;
+        } else {
+            napi_create_int32(env, SUCCESS, &result1);
+        }
+        napi_set_element(env, result, 2, result1);
+    }
+
+//     OH_NativeBuffer_ColorSpace colorSpace = OH_NativeBuffer_ColorSpace::OH_COLORSPACE_ADOBERGB_LIMIT;
+//     int32_t ret = OH_NativeBuffer_SetColorSpace(nativeBuffer, colorSpace);
+//     napi_create_int32(env, ret, &result1);
+//     napi_set_element(env, result, 0, result1);
+//     OH_NativeBuffer_ColorSpace colorSpaceGet;
+//     ret = OH_NativeBuffer_GetColorSpace(nativeBuffer, &colorSpaceGet);
+//     napi_create_int32(env, ret, &result1);
+//     napi_set_element(env, result, 1, result1);
+//     if (colorSpaceGet != colorSpace) {
+//         napi_create_int32(env, FAIL, &result1);
+//     } else {
+//         napi_create_int32(env, SUCCESS, &result1);
+//     }
+//     napi_set_element(env, result, 2, result1);
+    return result;
+}
+
+static napi_value OHNativeBufferSetColorSpaceNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer_ColorSpace colorSpace = OH_NativeBuffer_ColorSpace::OH_COLORSPACE_ADOBERGB_LIMIT;
+    int32_t ret = OH_NativeBuffer_SetColorSpace(nullptr, colorSpace);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNativeBufferSetColorSpaceAbnormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_ColorSpace colorSpace = (OH_NativeBuffer_ColorSpace)(-10);
+    int32_t ret = OH_NativeBuffer_SetColorSpace(nativeBuffer, colorSpace);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNativeBufferGetColorSpaceNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_create_array_with_length(env, 4, &result);
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_ColorSpace colorSpace = OH_NativeBuffer_ColorSpace::OH_COLORSPACE_ADOBERGB_LIMIT;
+    int32_t ret = OH_NativeBuffer_SetColorSpace(nativeBuffer, colorSpace);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 0, result1);
+    ret = OH_NativeBuffer_GetColorSpace(nullptr, &colorSpace);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 1, result1);
+    ret = OH_NativeBuffer_GetColorSpace(nativeBuffer, nullptr);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 2, result1);
+    OH_NativeBuffer_ColorSpace colorSpaceGet;
+    ret = OH_NativeBuffer_GetColorSpace(nativeBuffer, &colorSpaceGet);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 3, result1);
+    return result;
+}
+
+static napi_value OHNativeBufferGetMetadataValueFirst(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_DYNAMIC_METADATA;
+    int32_t size = 0;
+    uint8_t *metadata = nullptr;
+    int32_t ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNativeBufferSetDynamicMetadataValue(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_create_array_with_length(env, 20, &result);
+//     std::vector<int32_t> sizeFalse = {-1,0,3001,100000000};
+//     std::vector<int32_t> sizeTrue = { 1, 60, 2999, 3000 };
+    std::vector<int32_t> sizes = {-1,0,1,60,2999,3000,3001,100000000};
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_DYNAMIC_METADATA;
+    uint8_t metadata = 2;
+    
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[0], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 0, result1);
+    int32_t size = 1;
+    uint8_t *metadata2 = nullptr;
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 1, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[1], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 2, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 3, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[2], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 4, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 5, result1);
+    if (sizes[2] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 6, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[3], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 7, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 8, result1);
+    if (sizes[3] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 9, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[4], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 10, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 11, result1);
+    if (sizes[4] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 12, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[5], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 13, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 14, result1);
+    if (sizes[5] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 15, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[6], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 16, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 17, result1);
+
+
+    //     ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizeFalse[7], &metadata);
+    //     napi_create_int32(env, ret, &result1);
+    //     napi_set_element(env, result, 18, result1);
+    //     ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    //     napi_create_int32(env, ret, &result1);
+    //     napi_set_element(env, result, 19, result1);
+    
+    return result;
+}
+
+static napi_value OHNativeBufferSetMetadataValueTimes(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_DYNAMIC_METADATA;
+    int32_t size = 60;
+    uint8_t metadata = 2;
+    for (uint32_t index = 0; index < 50; index++) {
+        int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, size, &metadata);
+        if (ret != 0) {
+            napi_create_int32(env, ret, &result);
+            break;
+        }
+        int32_t size2 = 0;
+        uint8_t *metadata2 = nullptr;
+        ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size2, &metadata2);
+        if (ret != 0) {
+            napi_create_int32(env, ret, &result);
+            break;
+        }
+        if (size != size2) {
+            napi_create_int32(env, FAIL, &result);
+            break;
+        } else {
+            napi_create_int32(env, SUCCESS, &result);
+        }
+    }
+
+    return result;
+}
+
+static napi_value OHNativeBufferSetStaticMetadataValue(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_create_array_with_length(env, 20, &result);
+    std::vector<int32_t> sizes = {-1, 0, 1, 60, 2999, 3000, 3001, 100000000};
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_STATIC_METADATA;
+    uint8_t metadata = 2;
+
+//     std::vector<int32_t> sizeFalse = {-1, 0, 3001};
+//     std::vector<int32_t> sizeTrue = {1, 60, 2999, 3000};
+//     // 正常情况的测试
+//     for (uint32_t index = 0; index < sizeTrue.size(); index++) {
+//         int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizeTrue[index], &metadata);
+//         napi_create_int32(env, ret, &result1);
+//         napi_set_element(env, result, index, result1);
+//         int32_t size = 1;
+//         uint8_t *metadata2 = nullptr;
+//         ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+//         napi_create_int32(env, ret, &result1);
+//         napi_set_element(env, result, index + 1, result1);
+//         if (sizeTrue[index] != size) {
+//             napi_create_int32(env, FAIL, &result1);
+//         } else {
+//             napi_create_int32(env, SUCCESS, &result1);
+//         }
+//         napi_set_element(env, result, index + 2, result1);
+//         // index = index + 3;
+//     }
+//     // 异常情况的测试
+//     for (uint32_t index = 0; index < sizeFalse.size() * 2;) {
+//         int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizeFalse[index], &metadata);
+//         napi_create_int32(env, ret, &result1);
+//         napi_set_element(env, result, index +  sizeTrue.size() * 2, result1);
+//         int32_t size = 1;
+//         uint8_t *metadata2 = nullptr;
+//         ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+//         napi_create_int32(env, ret, &result1);
+//         napi_set_element(env, result, index + 1 + sizeTrue.size() * 2, result1);
+//         index = index + 2;
+//     }
+    
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[0], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 0, result1);
+    int32_t size = 1;
+    uint8_t *metadata2 = nullptr;
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 1, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[1], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 2, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 3, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[2], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 4, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 5, result1);
+    if (sizes[2] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 6, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[3], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 7, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 8, result1);
+    if (sizes[3] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 9, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[4], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 10, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 11, result1);
+    if (sizes[4] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 12, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[5], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 13, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 14, result1);
+    if (sizes[5] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 15, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[6], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 16, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 17, result1);
+    
+    return result;
+}
+
+static napi_value OHNativeBufferSetMetadataValue(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_create_array_with_length(env, 20, &result);
+    std::vector<int32_t> sizes = {-1, 0, 1, 60, 2999, 3000, 3001, 100000000};
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_METADATA_TYPE;
+    uint8_t metadata = 2;
+
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[0], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 0, result1);
+    int32_t size = 1;
+    uint8_t *metadata2 = nullptr;
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 1, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[1], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 2, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 3, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[2], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 4, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 5, result1);
+    if (sizes[2] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 6, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[3], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 7, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 8, result1);
+    if (sizes[3] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 9, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[4], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 10, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 11, result1);
+    if (sizes[4] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 12, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[5], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 13, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 14, result1);
+    if (sizes[5] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 15, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[6], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 16, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 17, result1);
+
+    return result;
+}
+
+static napi_value OHNativeBufferSetNullMetadataValue(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_MetadataKey metadataKey = (OH_NativeBuffer_MetadataKey)(-1);
+    int32_t size = 60;
+    uint8_t metadata = 2;
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, size, &metadata);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNativeBufferSetMetadataValueNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_create_array_with_length(env, 2, &result);
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_METADATA_TYPE;
+    int32_t size = 60;
+    uint8_t metadata = 2;
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nullptr, metadataKey, size, &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result,0, result1);
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, size, nullptr);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 1, result1);
+    return result;
+}
+
+static napi_value OHNativeBufferGetMetadataValueAbnormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_create_array_with_length(env, 2, &result);
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_METADATA_TYPE;
+    int32_t size = 60;
+    uint8_t *metadata = nullptr;
+    int32_t ret = OH_NativeBuffer_GetMetadataValue(nullptr, metadataKey, &size, &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 0, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, nullptr);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 1, result1);
+    return result;
+}
+
+static napi_value OHNativeBufferGetMetadataValueNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_create_array_with_length(env, 6, &result);
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_METADATA_TYPE;
+    int32_t size = 60;
+    uint8_t metadata = 2;
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, size, &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 0, result1);
+
+    int32_t sizeGet = 0;
+    uint8_t *metadataGet = nullptr;
+    ret = OH_NativeBuffer_GetMetadataValue(nullptr, metadataKey, &sizeGet, &metadataGet);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 1, result1);
+
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, nullptr, &metadataGet);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 2, result1);
+
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &sizeGet, nullptr);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 3, result1);
+
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &sizeGet, &metadataGet);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, 4, result1);
+    
+    if (size != sizeGet) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 5, result1);
+
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -227,6 +1298,74 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"oHNativeBufferGetSeqNumAbnormal", nullptr, OHNativeBufferGetSeqNumAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        //
+        {"oHNativeBufferAllocNullptr", nullptr, OHNativeBufferAllocNullptr, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeBufferAllocNormal", nullptr, OHNativeBufferAllocNormal, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeBufferAllocAbormal", nullptr, OHNativeBufferAllocAbormal, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeBufferAllocMuch", nullptr, OHNativeBufferAllocMuch, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBufferFromNativeWindowBufferNullptr", nullptr, OHNativeBufferFromNativeWindowBufferNullptr, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBufferFromNativeWindowBufferNormal", nullptr, OHNativeBufferFromNativeWindowBufferNormal, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBufferGetConfigNullptr", nullptr, OHNativeBufferGetConfigNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferGetConfigNormal", nullptr, OHNativeBufferGetConfigNormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferGetSeqNumNullptr", nullptr, OHNativeBufferGetSeqNumNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferGetSeqNumNormal", nullptr, OHNativeBufferGetSeqNumNormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBuffeMapNullptr", nullptr, OHNativeBuffeMapNullptr, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBufferMapNormal", nullptr, OHNativeBufferMapNormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBuffeMapPlanesNullptr", nullptr, OHNativeBuffeMapPlanesNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferMapPlanesNormal", nullptr, OHNativeBufferMapPlanesNormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBuffeReferenceNullptr", nullptr, OHNativeBuffeReferenceNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBuffeUnreferenceNullptr", nullptr, OHNativeBuffeUnreferenceNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferReferenceNormal", nullptr, OHNativeBufferReferenceNormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferReferenceMax", nullptr, OHNativeBufferReferenceMax, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeBufferUnreferenceNormal", nullptr, OHNativeBufferUnreferenceNormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBuffeUnmapNullptr", nullptr, OHNativeBuffeUnmapNullptr, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeBufferUnmapNormal", nullptr, OHNativeBufferUnmapNormal, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeBufferGetColorSpaceFirst", nullptr, OHNativeBufferGetColorSpaceFirst, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferSetColorSpaceNormal", nullptr, OHNativeBufferSetColorSpaceNormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferSetColorSpaceNullptr", nullptr, OHNativeBufferSetColorSpaceNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferSetColorSpaceAbnormal", nullptr, OHNativeBufferSetColorSpaceAbnormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferGetColorSpaceNullptr", nullptr, OHNativeBufferGetColorSpaceNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferGetMetadataValueFirst", nullptr, OHNativeBufferGetMetadataValueFirst, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBufferSetDynamicMetadataValue", nullptr, OHNativeBufferSetDynamicMetadataValue, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBufferSetMetadataValueTimes", nullptr, OHNativeBufferSetMetadataValueTimes, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBufferSetStaticMetadataValue", nullptr, OHNativeBufferSetStaticMetadataValue, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBufferSetMetadataValue", nullptr, OHNativeBufferSetMetadataValue, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBufferSetNullMetadataValue", nullptr, OHNativeBufferSetNullMetadataValue, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBufferSetMetadataValueNullptr", nullptr, OHNativeBufferSetMetadataValueNullptr, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBufferGetMetadataValueAbnormal", nullptr, OHNativeBufferGetMetadataValueAbnormal, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBufferGetMetadataValueNullptr", nullptr, OHNativeBufferGetMetadataValueNullptr, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
 
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
