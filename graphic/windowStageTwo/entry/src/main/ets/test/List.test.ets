@@ -16,8 +16,10 @@ import windowPromiseTest from './windowPromise.test';
 import windowMaximizeTest from './windowMaximize.test';
 import windowImmersiveTest from './windowImmersive.test';
 import windowPropertiesTest from './windowProperties.test';
+import WindowLifecycleTest from './WindowLifecycle.test';
 
 export default function testsuite() {
+  WindowLifecycleTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowPromiseTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
   windowMaximizeTest(globalThis.windowStage);
   windowImmersiveTest(globalThis.windowStage);
