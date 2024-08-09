@@ -15,6 +15,8 @@ include_directories(
 )
 
 add_library(imageEffect SHARED
+    napi_init.cpp
+    effect_filter_test.cpp
     imageEffect.cpp
     utils/common_utils.cpp
     utils/pixelmap_helper.cpp
