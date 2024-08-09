@@ -20,6 +20,6 @@ ohos_js_app_suite("ActsDemoIdna") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsDemoIdnaNdkStageTest"
 
-  part_name = "idna"
+  part_name = "global_idna"
   subsystem_name = "global"
 }

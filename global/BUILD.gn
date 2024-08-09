@@ -19,10 +19,10 @@ group("global") {
     deps = [
       "crossplatform/i18netstest:ActsCrossplatformI18nTest",
       "crossplatform/resourcemanageretstest:ActsCrossplatformResourceManagerTest",
+      "global_idna:ActsDemoIdna",
       "global_napi_test:ActsGlobalNapiTest",
       "global_stage:global_stage_hap",
       "i18n_standard/intljs:intljs_test",
-      "idna:ActsDemoIdna",
       "perf/perfjs:perfjs_test",
       "resmgr_standard/resmgrjs:resmgrjs_test",
     ]
