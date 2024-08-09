@@ -13,9 +13,15 @@
  * limitations under the License.
  */
 
+#include <iostream>
+#include <stdexcept>
 #include "napi/native_api.h"
+#include <bits/alltypes.h>
 #include <ctime>
 #include <native_vsync/native_vsync.h>
+#include <stdexcept>
+#include <stdio.h>
+#include <zconf.h>
 
 #define SUCCESS 0
 #define FAIL (-1)
@@ -112,8 +118,8 @@ static napi_value OHNativeVSyncGetPeriod(napi_env env, napi_callback_info info)
         time_t curTime = time(PARAM_0);
         diffTime = difftime(curTime, startTime);
     }
-    long long period = 0;
-    int ret = OH_NativeVSync_GetPeriod(nativeVSync, &period);
+    long long *period;
+    int ret = OH_NativeVSync_GetPeriod(nativeVSync, period);
     if (ret == SUCCESS) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
@@ -128,13 +134,228 @@ static napi_value OHNativeVSyncGetPeriod(napi_env env, napi_callback_info info)
 static napi_value OHNativeVSyncGetPeriodFOne(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    long long period = 0;
-    int ret = OH_NativeVSync_GetPeriod(nullptr, &period);
+    long long *period;
+    int ret = OH_NativeVSync_GetPeriod(nullptr, period);
     if (ret != SUCCESS) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
     }
+    return result;
+}
+
+static napi_value OHNativeVSyncCreateNull(napi_env env, napi_callback_info info) 
+{
+    napi_value result = nullptr;
+    unsigned int length = 0;
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(nullptr, length);
+    if (nativeVSync == nullptr) {
+        napi_create_int32(env, FAIL, &result);
+    } else {
+        napi_create_int32(env, SUCCESS, &result);
+    }
+    return result;
+}
+
+static napi_value OHNativeVSyncCreateNotEq(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    char name[] = "testCase";
+    unsigned int length = 2;
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    if (nativeVSync == nullptr) {
+        napi_create_int32(env, FAIL, &result);
+    } else {
+        napi_create_int32(env, SUCCESS, &result);
+    }
+    return result;
+}
+
+static napi_value OHNativeVSyncCreateNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    char name[] = "testCase";
+    unsigned int length = strlen(name);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    napi_create_array_with_length(env, 2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    if (nativeVSync == nullptr) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 0, result1);
+    
+    nativeVSync = OH_NativeVSync_Create(name, length);
+    if (nativeVSync == nullptr) {
+        napi_create_int32(env, FAIL, &result2);
+    } else {
+        napi_create_int32(env, SUCCESS, &result2);
+    }
+    
+    napi_set_element(env, result, 1, result2);
+    OH_NativeVSync_Destroy(nativeVSync);
+    return result;
+}
+
+static napi_value OHNativeVSyncCreateAbnormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(NULL,0);
+    if (nativeVSync == nullptr) {
+        napi_create_int32(env, FAIL, &result);
+    } else {
+        napi_create_int32(env, SUCCESS, &result);
+        return result;
+    }
+    nativeVSync = OH_NativeVSync_Create(0, 0);
+    if (nativeVSync == nullptr) {
+        napi_create_int32(env, FAIL, &result);
+    } else {
+        napi_create_int32(env, SUCCESS, &result);
+        return result;
+    }
+    return result;
+}
+
+static napi_value OHNativeVSyncCreateDifLenth(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    std::vector<std::string> myArray = {
+        "0",
+        "a",
+        "你",
+        "!@#￥%^&*()_+",
+        " ",
+        "  ",
+        "这里有好多好多字符qazwsxedcrfvtgbyhnujqazwsxedcrfvtgbyhnujqazwsxedcrfvtgbyhnujqazwsxedcrfvtgbyhnuj",
+        "ab_cdefghijklmnopqrstuvwxyz",
+        "abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde"};
+    napi_create_array_with_length(env, myArray.size(), &result);
+
+    for (uint32_t index = 0; index < myArray.size(); index++){
+        unsigned int len = strlen(myArray[index].c_str());
+        napi_value resultIndex = nullptr;         
+        OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(myArray[index].c_str(), len);
+        if (nativeVSync != nullptr) {
+            // 第二个参数怎么传值？
+            long long *period;
+            int ret = OH_NativeVSync_GetPeriod(nativeVSync, period);
+            napi_create_int32(env, ret, &resultIndex);
+            napi_set_element(env, result, index, resultIndex);
+        }
+        OH_NativeVSync_Destroy(nativeVSync);
+    }
+    return result;
+}
+
+static napi_value OHNativeVSyncCreateMuch(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    char name[] = "testcase";
+    unsigned int length = strlen(name);
+    for (uint32_t i = 0; i < 500; i++) {
+        OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+        if (nativeVSync == nullptr) {
+            napi_create_int32(env, FAIL, &result);
+            break;
+        } else {
+            napi_create_int32(env, SUCCESS, &result);
+        }
+        OH_NativeVSync_Destroy(nativeVSync);
+    }
+    return result;
+}
+
+static napi_value OHNativeVSyncGetPeriodNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    long long *period;
+    int res = OH_NativeVSync_GetPeriod(nullptr, period);
+    napi_create_int32(env, res, &result);
+    return result;
+}
+
+static napi_value OHNativeVSyncDestroyAbnormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    // 没有返回值
+    OH_NativeVSync_Destroy(nullptr);
+
+    char name[] = "testcase";
+    unsigned int length = strlen(name);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    OH_NativeVSync_Destroy(nativeVSync);
+
+    // 没有返回值
+    OH_NativeVSync_Destroy(nativeVSync);
+    
+    return result;
+}
+
+static napi_value OHNativeVSyncDestroyNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, 2, &result);
+    char name[] = "testcase";
+    unsigned int length = strlen(name);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    // 第二个参数不知道怎么赋值
+    long long *period;
+    int res = OH_NativeVSync_GetPeriod(nativeVSync, period);
+    napi_value result1 = nullptr;
+    napi_create_int32(env, res, &result1);
+    napi_set_element(env, result, 0, result1);
+    // 没有返回值
+    OH_NativeVSync_Destroy(nativeVSync);
+    // 销毁指针之后 再次调用会出现cppcrash
+    try {
+        OH_NativeVSync_GetPeriod(nativeVSync, period);
+    } catch (nullptr_t) {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, 1, result1);
+    return result;
+}
+
+void myFrameCallback(long long timestamp, void *data) {
+    int *myData = static_cast<int *>(data);
+    std::cout << "Frame callback called at timestamp: " << timestamp << ", with data: " << *myData << std::endl;
+}
+static napi_value OHNativeVSyncRequestFrameNullptr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    char name[] = "testcase";
+    unsigned int length = strlen(name);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    napi_create_array_with_length(env, 3, &result);
+    napi_value result1 = nullptr;
+    int param = 0;
+    int res = OH_NativeVSync_RequestFrame(nullptr, myFrameCallback, &param);
+    napi_create_int32(env, res, &result1);
+    napi_set_element(env, result, 0, result1);
+
+    res = OH_NativeVSync_RequestFrame(nativeVSync, nullptr, &param);
+    napi_create_int32(env, res, &result1);
+    napi_set_element(env, result, 1, result1);
+    
+    res = OH_NativeVSync_RequestFrame(nativeVSync, myFrameCallback, nullptr);
+    napi_create_int32(env, res, &result1);
+    napi_set_element(env, result, 2, result1);
+    return result;
+}
+
+static napi_value OHNativeVSyncRequestFrameNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    char name[] = "testcase";
+    unsigned int length = strlen(name);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    int param = 0;
+    int res = OH_NativeVSync_RequestFrame(nativeVSync, myFrameCallback, &param);
+    napi_create_int32(env, res, &result);
+    return result;
+}
+
+static napi_value OHNativeVSyncRequestFrameParamErr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    char name[] = "testcase";
+    unsigned int length = strlen(name);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    char param[] = "test";
+    int res = OH_NativeVSync_RequestFrame(nativeVSync, myFrameCallback, &param);
+    napi_create_int32(env, res, &result);
     return result;
 }
 
@@ -153,6 +374,28 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHNativeVSyncGetPeriod", nullptr, OHNativeVSyncGetPeriod, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeVSyncGetPeriodFOne", nullptr, OHNativeVSyncGetPeriodFOne, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"oHNativeVSyncCreateNull", nullptr, OHNativeVSyncCreateNull, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncCreateNotEq", nullptr, OHNativeVSyncCreateNotEq, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeVSyncCreateNormal", nullptr, OHNativeVSyncCreateNormal, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeVSyncCreateAbnormal", nullptr, OHNativeVSyncCreateAbnormal, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeVSyncCreateDifLenth", nullptr, OHNativeVSyncCreateDifLenth, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeVSyncCreateMuch", nullptr, OHNativeVSyncCreateMuch, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncGetPeriodNullptr", nullptr, OHNativeVSyncGetPeriodNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeVSyncDestroyAbnormal", nullptr, OHNativeVSyncDestroyAbnormal, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeVSyncDestroyNormal", nullptr, OHNativeVSyncDestroyNormal, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHNativeVSyncRequestFrameNullptr", nullptr, OHNativeVSyncRequestFrameNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeVSyncRequestFrameNormal", nullptr, OHNativeVSyncRequestFrameNormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeVSyncRequestFrameParamErr", nullptr, OHNativeVSyncRequestFrameParamErr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
