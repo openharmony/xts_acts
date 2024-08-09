@@ -217,6 +217,9 @@ import textAreaJsunit3 from './TextAreaTest/TextAreaJsunit3.test';
 import textInputJsunit3 from './TextInputTest/TextInputJsunit3.test';
 import textObscuredTest from './textTest/textObscuredTest.test';
 import textSpanFontTest from './textTest/textSpanFont.test';
+import search_gesture from './SearchTest/search_gesture.test';
+import text_drag from './textTest/text_drag.test';
+import textAreaOnCaretAndKeyboardTest from './TextAreaTest/textAreaOnCaretAndKeyboard.test';
 
 export default function testsuite() {
   ToggleJsunit();
@@ -424,4 +427,7 @@ export default function testsuite() {
   textObscuredTest();
   textSpanFontTest();
   textArea_bottom();
+  search_gesture();
+  text_drag();
+  textAreaOnCaretAndKeyboardTest();
 }
