@@ -21,8 +21,8 @@ group("global") {
       "crossplatform/resourcemanageretstest:ActsCrossplatformResourceManagerTest",
       "global_napi_test:ActsGlobalNapiTest",
       "global_stage:global_stage_hap",
-      "idna:ActsDemoIdna",
       "i18n_standard/intljs:intljs_test",
+      "idna:ActsDemoIdna",
       "perf/perfjs:perfjs_test",
       "resmgr_standard/resmgrjs:resmgrjs_test",
     ]

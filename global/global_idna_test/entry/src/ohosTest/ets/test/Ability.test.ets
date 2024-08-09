@@ -22,143 +22,133 @@ export default function abilityTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('assertContain', 0, () => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
-      let a = 'abc';
-      let b = 'b';
-      // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
-      expect(a).assertContain(b);
-      expect(a).assertEqual(a);
-    })
-
 
     /* *
     * @tc.number    : SUB_GLOBAL_uidna_openUTS46_NDK_0100
-    * @tc.name      : testuidna_openUTS46
+    * @tc.name      : testuidna_openUTS46_0100
     * @tc.desc      : uidna_openUTS46 with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-    it('testuidna_openUTS46',0,() =>{
+    it('testuidna_openUTS46_0100',0,() =>{
       expect(testNapi.testuidna_openUTS46()).assertTrue()
     })
 
 
     /* *
     * @tc.number    : SUB_GLOBAL_uidna_close_NDK_0100
-    * @tc.name      : testuidna_close
+    * @tc.name      : testuidna_close_0100
     * @tc.desc      : uidna_close with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-    it('testuidna_close',0,() =>{
+    it('testuidna_close_0100',0,() =>{
       expect(testNapi.testuidna_close()).assertTrue()
     })
 
 
     /* *
     * @tc.number    : SUB_GLOBAL_uidna_labelToASCII_NDK_0100
-    * @tc.name      : testuidna_labelToASCII
+    * @tc.name      : testuidna_labelToASCII_0100
     * @tc.desc      : uidna_labelToASCII with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-    it('testuidna_labelToASCII',0,() =>{
+    it('testuidna_labelToASCII_0100',0,() =>{
       expect(testNapi.testuidna_labelToASCII()).assertTrue()
     })
 
 
     /* *
     * @tc.number    : SUB_GLOBAL_uidna_labelToUnicode_NDK_0100
-    * @tc.name      : testuidna_labelToUnicode
+    * @tc.name      : testuidna_labelToUnicode_0100
     * @tc.desc      : uidna_labelToUnicode with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-    it('testuidna_labelToUnicode',0,() =>{
+    it('testuidna_labelToUnicode_0100',0,() =>{
       expect(testNapi.testuidna_labelToUnicode()).assertTrue()
     })
 
 
     /* *
     * @tc.number    : SUB_GLOBAL_uidna_nameToASCII_NDK_0100
-    * @tc.name      : testuidna_nameToASCII
+    * @tc.name      : testuidna_nameToASCII_0100
     * @tc.desc      : uidna_nameToASCII with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-    it('testuidna_nameToASCII',0,() =>{
+    it('testuidna_nameToASCII_0100',0,() =>{
       expect(testNapi.testuidna_nameToASCII()).assertTrue()
     })
 
 
     /* *
     * @tc.number    : SUB_GLOBAL_uidna_nameToASCII_NDK_0100
-    * @tc.name      : testuidna_nameToASCII
+    * @tc.name      : testuidna_nameToASCII_0100
     * @tc.desc      : uidna_nameToASCII with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-    it('testuidna_nameToUnicode',0,() =>{
+    it('testuidna_nameToUnicode_0100',0,() =>{
       expect(testNapi.testuidna_nameToUnicode()).assertTrue()
     })
 
 
     /* *
     * @tc.number    : SUB_GLOBAL_uidna_labelToASCLL_UTF8_NDK_0100
-    * @tc.name      : testuidna_labelToASCLL_UTF8
+    * @tc.name      : testuidna_labelToASCLL_UTF8_0100
     * @tc.desc      : uidna_labelToASCLL_UTF8 with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-    it('testuidna_labelToASCLL_UTF8',0,() =>{
+    it('testuidna_labelToASCLL_UTF8_0100',0,() =>{
       expect(testNapi.testuidna_labelToASCLL_UTF8()).assertTrue()
     })
 
 
     /* *
     * @tc.number    : SUB_GLOBAL_uidna_labelToUnicodeUTF8_NDK_0100
-    * @tc.name      : testuidna_labelToUnicodeUTF8
+    * @tc.name      : testuidna_labelToUnicodeUTF8_0100
     * @tc.desc      : uidna_labelToUnicodeUTF8 with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-    it('testuidna_labelToUnicodeUTF8',0,() =>{
+    it('testuidna_labelToUnicodeUTF8_0100',0,() =>{
       expect(testNapi.testuidna_labelToUnicodeUTF8()).assertTrue()
     })
 
 
     /* *
     * @tc.number    : SUB_GLOBAL_uidna_nameToASCII_UTF8_NDK_0100
-    * @tc.name      : testuidna_nameToASCII_UTF8
+    * @tc.name      : testuidna_nameToASCII_UTF8_0100
     * @tc.desc      : uidna_nameToASCII_UTF8 with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-    it('testuidna_nameToASCII_UTF8',0,() =>{
+    it('testuidna_nameToASCII_UTF8_0100',0,() =>{
       expect(testNapi.testuidna_nameToASCII_UTF8()).assertTrue()
     })
 
 
     /* *
     * @tc.number    : SUB_GLOBAL_uidna_nameToUnicodeUTF8_NDK_0100
-    * @tc.name      : testuidna_nameToUnicodeUTF8
+    * @tc.name      : testuidna_nameToUnicodeUTF8_0100
     * @tc.desc      : uidna_nameToUnicodeUTF8 with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-    it('testuidna_nameToUnicodeUTF8',0,() =>{
+    it('testuidna_nameToUnicodeUTF8_0100',0,() =>{
       expect(testNapi.testuidna_nameToUnicodeUTF8()).assertTrue()
     })
 
