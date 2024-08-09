@@ -98,7 +98,7 @@ Note:If the text contains special characters, please escape them according to th
                 <filteritem type="filename" name="*.srt" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.ts" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.m3u8" desc="all bin file have check"/>
-                <filteritem type="filename" name="*.acc" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.aac" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.h264" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.h265" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.pcm" desc="all bin file have check"/>
