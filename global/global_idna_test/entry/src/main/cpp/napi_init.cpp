@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 #include "napi/native_api.h"
 #include <unicode/uidna.h>
 
@@ -31,7 +46,7 @@ static napi_value testUidna_labelToASCII(napi_env env, napi_callback_info)
     UChar dest16[10];
     UIDNAInfo info1 = UIDNA_INFO_INITIALIZER;
     int32_t capacity = 10;
-    uidna_labelToASCII(uts46, sharps16, -1, dest16 , capacity, &info1, &errorCode);
+    uidna_labelToASCII(uts46, sharps16, -1, dest16, capacity, &info1, &errorCode);
     bool flagA = (uts46 != NULL);
     bool flag = (flagA & U_SUCCESS(errorCode));
     napi_value result = nullptr;
