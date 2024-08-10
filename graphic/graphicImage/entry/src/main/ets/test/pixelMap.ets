@@ -23,7 +23,7 @@ import { abilityAccessCtrl } from '@ohos.abilityAccessCtrl';
 
 export default function imagePixelMapTest(context, windowStage, abilityStorage) {
   describe('imagePixelMapTest', function () {
-    beforeAll(async function () {
+    beforeAll(async function (done) {
       console.info("Component3DTest beforeEach start");
       done();
     });
