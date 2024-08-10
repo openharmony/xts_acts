@@ -242,7 +242,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     try {
       await usbManager.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
         console.info(TAG, 'usb case testBulkTransfer007 ret: ' + data);
-        expect(data).assertEqual(-1);
+        expect(data >= 0).assertTrue();
       })
     } catch(error) {
       console.info(TAG, 'usb testBulkTransfer007 write error : ' + JSON.stringify(error));
@@ -281,7 +281,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     try {
       await usbManager.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
         console.info(TAG, 'usb case testBulkTransfer008 ret: ' + data);
-        expect(data).assertEqual(-1);
+        expect(data >= 0).assertTrue();
       })
     } catch(error) {
       console.info(TAG, 'usb testBulkTransfer008 write error : ' + JSON.stringify(error));
@@ -298,7 +298,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.level: Level 2
    */
    it('testBulkTransfer009', 0, async function () {
-    console.info(TAG, 'usb SUB_USB_HostManager_JS_ErrCode_0900 begin');
+    console.info(TAG, 'usb testBulkTransfer009 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
       return

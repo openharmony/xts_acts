@@ -49,7 +49,7 @@ describe('UsbCoreJsFunctionsTest', function () {
     // version > 17  host currentMode = 2 device currentMode = 1
     usbPortList = usbManager.getPortList();
     gDeviceList = usbManager.getDevices();
-    console.info(TAG, 'usb case gDeviceList.length return: ' + gDeviceList.length);
+    console.info(TAG, 'usb case gDeviceList.length return: ' + JSON.stringify(gDeviceList));
     isDeviceConnected = deviceConnected();
     if (isDeviceConnected) {
       if (usbPortList.length > 0) {

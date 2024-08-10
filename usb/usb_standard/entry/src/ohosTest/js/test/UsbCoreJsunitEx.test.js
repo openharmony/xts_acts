@@ -562,8 +562,8 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it('testHasRight004', 0, function () {
-    console.info(TAG, 'usb testHasRight004 begin');
+  it('testHasRight005', 0, function () {
+    console.info(TAG, 'usb testHasRight005 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
       return
@@ -571,10 +571,10 @@ describe('UsbCoreJsFunctionsTestEx', function () {
 
     try {
       var maskCode = usbManager.hasRight();
-      console.info(TAG, 'usb testHasRight004 case hasRight return: ' + maskCode);
+      console.info(TAG, 'usb testHasRight005 case hasRight return: ' + maskCode);
       expect(maskCode === null).assertTrue();
     } catch (err) {
-      console.info(TAG, 'usb testHasRight004 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testHasRight005 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
     }
   })
