@@ -71,14 +71,14 @@ function moveElementRightDom(id) {
 }
 function moveElementDown() {
     var element = document.getElementById('bodyId');
-    element.style.marginTop = computeNum(element.style.marginTop) + 10 + 'px'
+    element.style.marginTop = computeNum(element.style.marginTop) + 10 + 'px';
 }
 function moveElementUp() {
     var element = document.getElementById('bodyId');
-    element.style.marginTop = computeNum(element.style.marginTop) - 10 + 'px'
+    element.style.marginTop = computeNum(element.style.marginTop) - 10 + 'px';
 }
 function computeNum(value) {
-    if(!value || value === '') {
+    if (!value || value === '') {
         return 0;
     } else {
         return parseFloat(value);
@@ -122,7 +122,7 @@ function fullScreenDom(id) {
     }
     function jumpToEnd() {
         let durationTime = getVideo('bodyId').duration;
-        if(durationTime>0) {
+        if (durationTime>0) {
             getVideo('bodyId').currentTime = durationTime - 2;
         }
 
@@ -146,7 +146,9 @@ function fullScreenDom(id) {
     }
 
     function switchVideo(n) {
-        if (n >= videos.length) n = 0;
+        if (n >= videos.length) {
+            n = 0;
+        }
 
         var mp4 = document.getElementById('mp4');
         var parent = mp4.parentNode;

@@ -1308,7 +1308,7 @@ struct WebComponent {
                           let callback: webview.CreateNativeMediaPlayerCallback =
                           (handler: webview.NativeMediaPlayerHandler, mediaInfo: webview.MediaInfo) => {
                               this.nativeMediaPlayerHandlerImpl = new NativeMediaPlayerHandlerImpl(handler)
-                              console.log("mediaInfo" + JSON.stringify(mediaInfo))
+                              console.log('mediaInfo' + JSON.stringify(mediaInfo))
                               this.isCallback = true
                               Utils.emitEvent(true, 1539)
                               Utils.emitEvent(true, 1540)
