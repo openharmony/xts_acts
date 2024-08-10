@@ -55,32 +55,33 @@ export default function drawingTsPath4Test() {
       try {
         const path = new drawing.Path();
         let matrix: drawing.Matrix;
+        let flag: boolean;
         for (let i = 0; i < getEnumCount(drawing.PathMeasureMatrixFlags); i += 1) {
           matrix = new drawing.Matrix();
           let flag = path.getMatrix(false, 10, matrix, i);
           expect(flag).assertFalse();
         }
-        // PathMeasureMatrixFlags枚举值覆盖验证
-
 
         for (let i = 0; i < getEnumCount(drawing.PathMeasureMatrixFlags); i += 1) {
           matrix = new drawing.Matrix();
           let flag = path.getMatrix(true, 10.1, matrix, i);
           expect(flag).assertFalse();
         }
-        // PathMeasureMatrixFlags枚举值覆盖验证
 
         matrix = new drawing.Matrix();
         matrix.setMatrix([5, 0, 0, 0, 1, 2, 0, 0, 1]);
-        path.getMatrix(false, 10, matrix, drawing.PathMeasureMatrixFlags.GET_POSITION_MATRIX);
+        flag = path.getMatrix(false, 10, matrix, drawing.PathMeasureMatrixFlags.GET_POSITION_MATRIX);
+        expect(flag).assertTrue();
 
         matrix = new drawing.Matrix();
         matrix.setMatrix([5, 0, 0, 0, 1, 2, 0, 0, 1]);
-        path.getMatrix(true, 0, matrix, drawing.PathMeasureMatrixFlags.GET_POSITION_MATRIX);
+        flag = path.getMatrix(true, 0, matrix, drawing.PathMeasureMatrixFlags.GET_POSITION_MATRIX);
+        expect(flag).assertTrue();
 
         matrix = new drawing.Matrix();
         matrix.setMatrix([5, 0, 0, 0, 1, 2, 0, 0, 1]);
-        path.getMatrix(true, -1, matrix, drawing.PathMeasureMatrixFlags.GET_POSITION_MATRIX);
+        flag = path.getMatrix(true, -1, matrix, drawing.PathMeasureMatrixFlags.GET_POSITION_MATRIX);
+        expect(flag).assertTrue();
 
         console.info(msg + 'reset successes');
       } catch (e) {
@@ -1552,28 +1553,6 @@ export default function drawingTsPath4Test() {
         expect(e.code).assertEqual(401);
       }
     })
-
-
-    // ===============================================
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_0XXX
-     * @tc.name      : testXXX
-     * @tc.desc      : testXXX
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    // it('testXXX', 3, () => {
-    //   const msg = 'testXXX';
-    //   const path = new drawing.Path();
-    //
-    //   try {
-    //     console.info(msg + 'reset successes');
-    //   } catch (e) {
-    //     console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-    //     expect().assertFail()
-    //   }
-    // })
 
   })
 }

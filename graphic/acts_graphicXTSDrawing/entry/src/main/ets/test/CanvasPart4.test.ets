@@ -289,15 +289,6 @@ export default function drawingTsCanvasPart4Test() {
         expect(e.code).assertEqual(401);
       }
 
-      // try {
-      //   canvas.clear({});
-      //   console.info(msg + `test error`);
-      //   expect().assertFail()
-      // } catch (e) {
-      //   console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-      //   expect(e.code).assertEqual(401);
-      // }
-
     })
 
 
@@ -647,14 +638,6 @@ export default function drawingTsCanvasPart4Test() {
         expect(e.code).assertEqual(401);
       }
 
-      // try {
-      //   canvas.drawOval({});
-      //   console.info(msg + `test error`);
-      //   expect().assertFail()
-      // } catch (e) {
-      //   console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-      //   expect(e.code).assertEqual(401);
-      // }
     })
 
 
@@ -842,15 +825,6 @@ export default function drawingTsCanvasPart4Test() {
         console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
-
-      // try {
-      //   canvas.drawArc({}, 90, 180);
-      //   console.info(msg + `test error`);
-      //   expect().assertFail()
-      // } catch (e) {
-      //   console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-      //   expect(e.code).assertEqual(401);
-      // }
 
       try {
         canvas.drawArc({

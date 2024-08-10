@@ -641,7 +641,9 @@ export default function drawingTsPath3Test() {
       try {
         path.buildFromSvgString('');
         let svgStr: string = "M150 100 L75 300 L225 300 Z";
-        path.buildFromSvgString(svgStr);
+        let flag = path.buildFromSvgString(svgStr);
+        expect(flag).assertTrue();
+
         console.info(msg + 'test successes');
       } catch (e) {
         console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -665,7 +667,8 @@ export default function drawingTsPath3Test() {
       try {
         for (let i = 0; i < 20; i += 1) {
           let svgStr: string = "M150 100 L75 300 L225 300 Z";
-          path.buildFromSvgString(svgStr);
+          let flag = path.buildFromSvgString(svgStr);
+          expect(flag).assertTrue();
         }
         console.info(msg + 'test successes');
       } catch (e) {
