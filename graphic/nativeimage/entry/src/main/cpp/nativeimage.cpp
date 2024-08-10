@@ -399,17 +399,15 @@ static napi_value OHNativeImageCreateNormal(napi_env env, napi_callback_info inf
 
 static napi_value OHNativeImageCreateAbnormal(napi_env env, napi_callback_info info)
 {
-    
     int backInfo = FAIL;
     typedef struct {
-        uint32_t textureId;     
+        uint32_t textureId;
         uint32_t textureTarget;
     } TestParams;
     TestParams testParams[] = {
-        {NULL, NULL},{1, NULL},
-        {NULL, 1},{0, 1},
-        {10000, 1}, {2^32-1, 1}, {2^32, 1},
-        {1, 0}, {1, 10000}, {1, 2^32-1},{1, 2^32}
+        {NULL, NULL}, {1, NULL}, {NULL, 1}, {0, 1},
+        {10000, 1}, {2^32-1, 1}, {2^32, 1}, {1, 0},
+        {1, 10000}, {1, 2^32-1},{1, 2^32}
     };
 
     for (int i = 0; i < sizeof(testParams) / sizeof(testParams[0]); i++) {
@@ -549,8 +547,8 @@ static napi_value OHNativeImageDetachContextNullptr(napi_env env, napi_callback_
     glGenTextures(PARAM_1, &textureId);
     napi_value result = nullptr;
     int res = OH_NativeImage_DetachContext(nullptr);
-    if (res != 0) { 
-        napi_create_int32(env, FAIL, &result); 
+    if (res != 0) {
+        napi_create_int32(env, FAIL, &result);
     } else {
         napi_create_int32(env, SUCCESS, &result);
     }
@@ -707,7 +705,7 @@ static napi_value OHNativeImageGetTransformMatrixNullptr(napi_env env, napi_call
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
     int res1 = OH_NativeImage_GetTransformMatrix(nullptr, matrix);
-    if (res1 == 0 ) {
+    if (res1 == 0) {
         napi_create_int32(env, SUCCESS, &result1);
     } else {
         napi_create_int32(env, FAIL, &result1);
@@ -763,7 +761,7 @@ static napi_value OHNativeImageUpdateSurfaceImageNormal(napi_env env, napi_callb
     glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
     nativeImage = OH_NativeImage_Create(nativeImageTexId_, GL_TEXTURE_EXTERNAL_OES);
     int res = OH_NativeImage_UpdateSurfaceImage(nativeImage);
-    if (res == 0 ) {
+    if (res == 0) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
@@ -800,7 +798,7 @@ static napi_value OHNativeImageGetTimestampNormal(napi_env env, napi_callback_in
         napi_create_int32(env, SUCCESS, &result1);
     } else {
         napi_create_int32(env, FAIL, &result1);
-    }    
+    }
     napi_set_element(env, result, ARR_NUMBER_0, result1);
     
     if (timestamp == time) {
@@ -912,13 +910,11 @@ static napi_value OHNativeImageSetOnFrameAvailableListenerNullptr(napi_env env, 
     listener.context = static_cast<void *>(nativeImage);
     listener.onFrameAvailable = NativeImageAdaptor::OnFrameAvailable;
     int res = OH_NativeImage_SetOnFrameAvailableListener(nullptr, listener);
-    
     if (res == 0) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
     }
-    
     return result;
 }
 
@@ -926,7 +922,6 @@ static napi_value OHNativeImageUnSetOnFrameAvailableListenerNullptr(napi_env env
 {
     napi_value result = nullptr;
     int res =  OH_NativeImage_UnsetOnFrameAvailableListener(nullptr);
-
     if (res == 0) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
@@ -958,7 +953,7 @@ static napi_value OHNativeImageSetOnFrameAvailableListenerNormal(napi_env env, n
         napi_create_int32(env, SUCCESS, &result1);
     } else {
         napi_create_int32(env, FAIL, &result1);
-    }    
+    }
     napi_set_element(env, result, ARR_NUMBER_0, result1);
 
     napi_value result2 = nullptr;
@@ -969,8 +964,7 @@ static napi_value OHNativeImageSetOnFrameAvailableListenerNormal(napi_env env, n
         napi_create_int32(env, FAIL, &result2);
     }
     napi_set_element(env, result, ARR_NUMBER_1, result2);
-
-
+    
     OH_NativeImage *nativeImage2 = getNativeImage();
     OH_OnFrameAvailableListener listener2;
     listener2.context = static_cast<void *>(nativeImage2);
@@ -992,8 +986,6 @@ static napi_value OHNativeImageSetOnFrameAvailableListenerNormal(napi_env env, n
         napi_create_int32(env, FAIL, &result4);
     }
     napi_set_element(env, result, ARR_NUMBER_3, result4);
-    
-    
     return result;
 }
 

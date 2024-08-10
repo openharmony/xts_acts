@@ -20,13 +20,14 @@
 #include <ctime>
 #include <native_vsync/native_vsync.h>
 #include <stdexcept>
-#include <stdio.h>
+#include <cstdio>
 #include <zconf.h>
 
 #define SUCCESS 0
 #define FAIL (-1)
 #define PARAM_0 0
 #define NUMBER_2 2
+#define NUMBER_3 3
 #define TIMEOUT_FIVE 10
 #define NUMBER_500 500
 static bool g_flag = false;
@@ -203,7 +204,7 @@ static napi_value OHNativeVSyncCreateNormal(napi_env env, napi_callback_info inf
 static napi_value OHNativeVSyncCreateAbnormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(NULL,0);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(NULL, 0);
     if (nativeVSync == nullptr) {
         napi_create_int32(env, FAIL, &result);
     } else {
@@ -235,9 +236,9 @@ static napi_value OHNativeVSyncCreateDifLenth(napi_env env, napi_callback_info i
         "abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde"};
     napi_create_array_with_length(env, myArray.size(), &result);
 
-    for (uint32_t index = 0; index < myArray.size(); index++){
+    for (uint32_t index = 0; index < myArray.size(); index++) {
         unsigned int len = strlen(myArray[index].c_str());
-        napi_value resultIndex = nullptr;         
+        napi_value resultIndex = nullptr;
         OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(myArray[index].c_str(), len);
         if (nativeVSync != nullptr) {
             // 第二个参数怎么传值？
@@ -332,7 +333,7 @@ static napi_value OHNativeVSyncRequestFrameNullptr(napi_env env, napi_callback_i
     char name[] = "testcase";
     unsigned int length = strlen(name);
     OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
-    napi_create_array_with_length(env, 3, &result);
+    napi_create_array_with_length(env, NUMBER_3, &result);
     napi_value result1 = nullptr;
     int param = 0;
     int res = OH_NativeVSync_RequestFrame(nullptr, myFrameCallback, &param);

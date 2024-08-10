@@ -282,7 +282,7 @@ static napi_value OHNativeBufferAllocNormal(napi_env env, napi_callback_info inf
             .format = NATIVEBUFFER_PIXEL_FMT_BGRA_8888,
             .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
             .stride = 0x7FFFFFFF,
-        },{
+        }, {
             .width = 0x100,
             .height = 0x7FFFFFFE,
             .format = NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP,
@@ -342,7 +342,8 @@ static napi_value OHNativeBufferAllocAbormal(napi_env env, napi_callback_info in
 //             .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
 //         },
     {
-            .width = 0x100, .height = 0x100, 
+            .width = 0x100,
+            .height = 0x100,
             .format = NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP,
             .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
             .stride = -100,
@@ -848,7 +849,7 @@ static napi_value OHNativeBufferSetDynamicMetadataValue(napi_env env, napi_callb
     napi_create_array_with_length(env, NUMBER_20, &result);
 //     std::vector<int32_t> sizeFalse = {-1,0,3001,100000000};
 //     std::vector<int32_t> sizeTrue = { 1, 60, 2999, 3000 };
-    std::vector<int32_t> sizes = {-1,0,1,60,2999,3000,3001,100000000};
+    std::vector<int32_t> sizes = {-1, 0, 1, 60, 2999, 3000, 3001, 100000000};
     OH_NativeBuffer_Config nativeBufferConfig = {
         .width = 0x100,
         .height = 0x100,
