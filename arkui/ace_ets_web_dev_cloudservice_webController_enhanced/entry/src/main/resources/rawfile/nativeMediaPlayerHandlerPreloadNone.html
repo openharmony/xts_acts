@@ -33,10 +33,10 @@
     <button onclick="hideProps('props')">隐藏属性</button>
 
 </div>
-<video  id="bodyId" controls preload="none" muted autoplay
-        poster="https://www.runoob.com/try/demo_source/smiley-2.gif">
+<video  id='bodyId' controls preload='none' muted autoplay
+        poster='https://www.runoob.com/try/demo_source/smiley-2.gif'>
     <source id='mp4'
-            src="https://www.runoob.com/try/demo_source/movie.mp4"
+            src='https://www.runoob.com/try/demo_source/movie.mp4'
             type='video/mp4'>
 </video>
 
@@ -45,109 +45,104 @@
 <script>
 
 function myFunction() {
-var element = document.getElementById("bodyId");
-element.remove();
+    var element = document.getElementById('bodyId');
+    element.remove();
 }
 function resize() {
-    resizeDom("bodyId");
-    console.log('resizeDom')
-    return 'resizeDom'
+    resizeDom('bodyId');
+    return 'resizeDom';
 }
-function resizeDom(id){
+function resizeDom(id) {
     var element = document.getElementById(id);
-    element.style.width = "180px";
-    element.style.height = "190px";
+    element.style.width = '180px';
+    element.style.height = '190px';
 }
 
-function deleteDom(id){
+function deleteDom(id) {
     var element = document.getElementById(id);
     element.remove();
 }
-function moveElementRight(){
-    moveElementRightDom("bodyId")
+function moveElementRight() {
+    moveElementRightDom('bodyId');
 }
-function moveElementRightDom(id){
+function moveElementRightDom(id) {
     var element = document.getElementById(id);
-    element.style.marginLeft =  computeNum(element.style.marginLeft) + 10 + 'px'
+    element.style.marginLeft = computeNum(element.style.marginLeft) + 10 + 'px';
 }
-function moveElementDown(){
-    var element = document.getElementById("bodyId");
-    element.style.marginTop =  computeNum(element.style.marginTop) + 10 + 'px'
+function moveElementDown() {
+    var element = document.getElementById('bodyId');
+    element.style.marginTop = computeNum(element.style.marginTop) + 10 + 'px';
 }
-function moveElementUp(){
-    var element = document.getElementById("bodyId");
-    element.style.marginTop =  computeNum(element.style.marginTop) - 10 + 'px'
+function moveElementUp() {
+    var element = document.getElementById('bodyId');
+    element.style.marginTop = computeNum(element.style.marginTop) - 10 + 'px';
 }
-function computeNum(value){
-
-    if(!value || value === ''){
-    return 0
+function computeNum(value) {
+    if(!value || value === '') {
+        return 0;
     } else {
-    return parseFloat(value)
+        return parseFloat(value);
     }
 }
 function myFunction4() {
-fullScreenDom("cameraTest")
+    fullScreenDom('cameraTest');
 }
-function fullScreenDom(id){
-    const cameraTest = document.getElementById(id)
-    cameraTest.requestFullscreen()
+function fullScreenDom(id) {
+    const cameraTest = document.getElementById(id);
+    cameraTest.requestFullscreen();
 }
 
 </script>
 <script>
-    function getVideo(id){
-        return document.getElementById(id)
+    function getVideo(id) {
+        return document.getElementById(id);
     }
-    function buttonLoad(){
-        getVideo('bodyId').load()
-        return true
+    function buttonLoad() {
+        getVideo('bodyId').load();
+        return true;
     }
-     function buttonPlay(){
-      document.getElementById('playButton').click()
-        return 'play'
+     function buttonPlay() {
+      document.getElementById('playButton').click();
+        return 'play';
     }
-     function buttonPause(){
-        getVideo('bodyId').pause()
-        return 'pause'
+     function buttonPause() {
+        getVideo('bodyId').pause();
+        return 'pause';
     }
-    function setVolume(){
-        // getVideo('bodyId').volume+=0.5
-        getVideo('bodyId').muted = false
-        getVideo('bodyId').volume = 0.5
-        return 'volume h5'
+    function setVolume() {
+        getVideo('bodyId').muted = false;
+        getVideo('bodyId').volume = 0.5;
+        return 'volume h5';
     }
 
-    function setVolumeNumber(number){
-        getVideo('bodyId').muted = false
-        getVideo('bodyId').volume = number
-        return 'volume: ' + number
+    function setVolumeNumber(number) {
+        getVideo('bodyId').muted = false;
+        getVideo('bodyId').volume = number;
+        return 'volume: ' + number;
     }
-    function jumpToEnd(){
-        let durationTime = getVideo('bodyId').duration
-        if(durationTime>0){
-            console.log("durationTime:" + durationTime)
-            console.log("durationTime:" + (durationTime - 2))
-            getVideo('bodyId').currentTime = durationTime - 2
+    function jumpToEnd() {
+        let durationTime = getVideo('bodyId').duration;
+        if(durationTime > 0) {
+            getVideo('bodyId').currentTime = durationTime - 2;
         }
 
     }
-     function setCurrentTime(){
-        getVideo('bodyId').currentTime=1
+     function setCurrentTime() {
+        getVideo('bodyId').currentTime = 1;
     }
-    function setMutedFalse(){
-        getVideo('bodyId').muted = false
-        getVideo('bodyId').volume = 0.5
-        getVideo('bodyId').muted = true
-        return 'setMuted'
+    function setMutedFalse() {
+        getVideo('bodyId').muted = false;
+        getVideo('bodyId').volume = 0.5;
+        getVideo('bodyId').muted = true;
+        return 'setMuted';
     }
-     function setSeek(){
-        getVideo('bodyId').currentTime=50
-        return 'setSeek'
+     function setSeek() {
+        getVideo('bodyId').currentTime = 50;
+        return 'setSeek';
     }
-     function setPlayBackRate(){
-        getVideo('bodyId').playbackRate = 2
-        return 'setPlayBackRate'
+     function setPlayBackRate() {
+        getVideo('bodyId').playbackRate = 2;
+        return 'setPlayBackRate';
     }
 
     function switchVideo(n) {
@@ -173,11 +168,11 @@ function fullScreenDom(id){
         document._video.height = 0;
         document._video.load();
     }
-    function showProps(id){
-        document.getElementById(id).style.display = 'initial'
+    function showProps(id) {
+        document.getElementById(id).style.display = 'initial';
     }
     function hideProps(id) {
-        document.getElementById(id).style.display = 'none'
+        document.getElementById(id).style.display = 'none';
     }
 
 </script>

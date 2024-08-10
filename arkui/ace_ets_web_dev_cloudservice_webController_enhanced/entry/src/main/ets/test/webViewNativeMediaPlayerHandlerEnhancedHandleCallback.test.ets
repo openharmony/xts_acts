@@ -81,7 +81,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerPostUrl', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerPostUrl"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerPostUrl", true, 1573, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerPostUrl", true, 1573,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -96,7 +99,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerMediaListSource', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerMediaListSource"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerMediaListSource", true, 1574, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerMediaListSource", true, 1574,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
 
@@ -112,7 +118,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerMediaListFormat', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerMediaListFormat"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerMediaListFormat", true, 1575, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerMediaListFormat", true, 1575,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -127,7 +136,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerSurfaceInfoId', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSurfaceInfoId"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerSurfaceInfoId", true, 1576, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSurfaceInfoId", true, 1576,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -142,7 +154,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerSurfaceInfoRect', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSurfaceInfoRect"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerSurfaceInfoRect", true, 1577, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSurfaceInfoRect", true, 1577,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -157,7 +172,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayer_controlShownTrue', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerControlShownTrue"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerControlShownTrue", true, 1578, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerControlShownTrue", true, 1578,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -172,7 +190,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerControlShownFalse', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerControlShownFalse"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerControlShownFalse", true, 1579, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerControlShownFalse", true, 1579,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -187,7 +208,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerControlListNodownload', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerControlListNodownload"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerControlListNodownload", true, 1580, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerControlListNodownload", true, 1580,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -202,7 +226,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerControlListNofullscreen', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerControlListNofullscreen"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerControlListNofullscreen", true, 1581, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerControlListNofullscreen", true, 1581,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -217,7 +244,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerNoremoteplayback', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNoremoteplayback"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerNoremoteplayback", true, 1582, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerNoremoteplayback", true, 1582,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -232,7 +262,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerNodownloadNoremoteplaybackNoremoteplayback', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNodownloadNoremoteplaybackNoremoteplayback"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerNodownloadNoremoteplaybackNoremoteplayback", true, 1583, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerNodownloadNoremoteplaybackNoremoteplayback", true, 1583,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -247,7 +280,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerMutedTrue', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerMutedTrue"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerMutedTrue", true, 1584, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerMutedTrue", true, 1584,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -262,7 +298,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerMutedFalse', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerMutedFalse"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerMutedFalse", true, 1585, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerMutedFalse", true, 1585,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -277,7 +316,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerHeaders', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerHeaders"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerHeaders", true, 1586, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerHeaders", true, 1586,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
 
@@ -293,7 +335,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerAttributes', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerAttributes"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerAttributes", true, 1587, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerAttributes", true, 1587,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
 
@@ -309,7 +354,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerPreloadNone', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerPreloadNone"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerPreloadNone", true, 1588, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerPreloadNone", true, 1588,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
 
@@ -325,7 +373,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerPreloadMetadata', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerPreloadMetadata"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerPreloadMetadata", true, 1589, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerPreloadMetadata", true, 1589,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
 
@@ -341,7 +392,10 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
     it('testWebViewNativeMediaPlayerPreloadAuto', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerPreloadAuto"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerPreloadAuto", true, 1590, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerPreloadAuto", true, 1590,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
   })

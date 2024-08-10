@@ -18,26 +18,25 @@
 </body>
 </html>
 <script>
-    function getVideo(id){
-        return document.getElementById(id)
+    function getVideo(id) {
+        return document.getElementById(id);
     }
-    function buttonLoad(){
-        getVideo('bodyId').load()
-        return true
+    function buttonLoad() {
+        getVideo('bodyId').load();
+        return true;
     }
-     function buttonPlay(){
-      document.getElementById('playButton').click()
-        return 'play'
+     function buttonPlay() {
+        document.getElementById('playButton').click();
+        return 'play';
     }
-     function buttonPause(){
-        getVideo('bodyId').pause()
-        return 'pause'
+     function buttonPause() {
+        getVideo('bodyId').pause();
+        return 'pause';
     }
-    function setVolume(){
-        // getVideo('bodyId').volume+=0.5
-        getVideo('bodyId').muted = false
-        getVideo('bodyId').volume = 0.5
-        return 'volume h5'
+    function setVolume() {
+        getVideo('bodyId').muted = false;
+        getVideo('bodyId').volume = 0.5;
+        return 'volume h5';
     }
 </script>
 

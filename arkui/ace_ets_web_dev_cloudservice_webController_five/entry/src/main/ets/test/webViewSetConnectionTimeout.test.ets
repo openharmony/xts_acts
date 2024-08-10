@@ -126,5 +126,20 @@ export default function ActsAceWebViewSetConnectionTimeout() {
       Utils.registerEvent("testWebViewSetConnectionTimeoutTenSeconds", 'Time_out', 8005, done);
       sendEventByKey('webViewSetConnectionTimeoutButton', 10, '');
     })
+
+    /*
+    *@tc.number SUB_ACE_WEB_SETCONNECTIONTIMEOUT_API_0006
+    *@tc.name testWebViewSetConnectionTimeout
+    *@tc.desc test setConnectionTimeout_aboutAppear_five_seconds
+    *@tc.size MediumTest
+    *@tc.type Function
+    *@tc.level 1
+    */
+    it('testWebViewSetConnectionAboutAppearTimeoutFiveSeconds', 0, async (done: Function) => {
+      emitKey = "emitWebViewSetConnectionAboutAppearTimeoutFiveSeconds"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerEvent("testWebViewSetConnectionAboutAppearTimeoutFiveSeconds", 'Time_out', 24801, done);
+      sendEventByKey('webViewSetConnectionTimeoutButton', 10, '');
+    })
   })
 }

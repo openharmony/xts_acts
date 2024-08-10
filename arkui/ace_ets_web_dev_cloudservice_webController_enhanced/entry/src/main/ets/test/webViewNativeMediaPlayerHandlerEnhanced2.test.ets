@@ -83,7 +83,10 @@ export default function webViewNativeMediaPlayerHandlerEnhanced2() {
     it('testWebViewNativeMediaPlayerEnableTrueShouldOverlayTrue', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerEnableTrueShouldOverlayTrue"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerEnableTrueShouldOverlayTrue", true, 1561, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerEnableTrueShouldOverlayTrue", true, 1561,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -97,7 +100,10 @@ export default function webViewNativeMediaPlayerHandlerEnhanced2() {
     it('testWebViewNativeMediaPlayerAudio', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerAudio"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerAudio", true, 1562, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerAudio", true, 1562,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
@@ -111,7 +117,42 @@ export default function webViewNativeMediaPlayerHandlerEnhanced2() {
     it('testWebViewNativeMediaPlayerMediaSrcUrl', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerMediaSrcUrl"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewNativeMediaPlayerMediaSrcUrl", true, 1563, done);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerMediaSrcUrl", true, 1563,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
+      sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
+    })
+    /*
+     *@tc.number SUB_ACE_WEB_HandleStatusChange_API_0001
+     *@tc.name testWebViewNativeMediaPlayerMediaSrcUrl
+     *@tc.desc test NativeMediaPlayerMediaSrcUrl
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testWebViewNativeMediaPlayerHandleStatusChangedPause', 0, async (done: Function) => {
+      emitKey = "emitWebViewNativeMediaPlayerHandleStatusChangedPause"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerHandleStatusChangedPause", true, 15642, done, (backData: events_emitter.EventData, expected: Object) => {
+        expect(backData?.data?.ACTION).assertEqual(expected);
+      });
+      sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
+    })
+    /*
+     *@tc.number SUB_ACE_WEB_HandleStatusChange_API_0001
+     *@tc.name testWebViewNativeMediaPlayerMediaSrcUrl
+     *@tc.desc test NativeMediaPlayerMediaSrcUrl
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testWebViewNativeMediaPlayerHandleStatusChangedPlaying', 0, async (done: Function) => {
+      emitKey = "emitWebViewNativeMediaPlayerHandleStatusChangedPause"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerHandleStatusChangedPlaying", true, 15643, done, (backData: events_emitter.EventData, expected: Object) => {
+        expect(backData?.data?.ACTION).assertEqual(expected);
+      });
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
   })

@@ -96,15 +96,18 @@ class AVPlayerDemo {
                     break;
                 case 'prepared': // prepare调用成功后上报该状态机
                     isPlaying = true
+                    Utils.emitEvent(true, 15643)
                     console.info('AVPlayer state prepared called.');
                     break;
                 case 'playing': // play成功调用后触发该状态机上报
                     isPlaying = true
+                    Utils.emitEvent(true, 15643)
                     console.info('AVPlayer state playing called.');
                     listener?.onPlaying();
                     break;
                 case 'paused': // pause成功调用后触发该状态机上报
                     console.info('AVPlayer state paused called.');
+                    Utils.emitEvent(true, 15642)
                     listener?.onPaused();
                     break;
                 case 'completed': // 播放结束后触发该状态机上报
@@ -184,6 +187,7 @@ class AVPlayerDemo {
     }
     pause() {
         console.info('AVPlayer.pause()');
+        Utils.emitEvent(true, 15642)
         this.avPlayer?.pause()
     }
     release() {
@@ -349,6 +353,7 @@ class NativeMediaPlayerImpl implements webview.NativeMediaPlayerBridge{
     play() {
         console.log('[BrowserShell] ===gpz=== MediaPlayer.play');
         this.nativePlayer?.play();
+        Utils.emitEvent(true, 15643)
     }
     pause() {
         console.log('[BrowserShell] ===gpz=== MediaPlayer.pause');
@@ -427,6 +432,7 @@ class AVPlayerListenerImpl implements AVPlayerListener {
     onPlaying() {
         console.log('[BrowserShell] onPlaying, handler[' + this.handler + ']')
         this.handler.handleStatusChanged(webview.PlaybackStatus.PLAYING);
+        Utils.emitEvent(true, 15643)
     }
     onSeeking() {
         console.log('[BrowserShell] onSeeking, handler[' + this.handler + ']')
@@ -439,6 +445,7 @@ class AVPlayerListenerImpl implements AVPlayerListener {
     onPaused() {
         console.log('[BrowserShell] onPaused, handler[' + this.handler + ']')
         this.handler.handleStatusChanged(webview.PlaybackStatus.PAUSED);
+        Utils.emitEvent(true, 15642)
         console.log('[BrowserShell] end onPaused');
     }
     onDurationChanged(duration: number) {
@@ -815,6 +822,8 @@ struct WebComponent {
                       Utils.emitEvent(true, 1592)
                       Utils.emitEvent(true, 1593)
                       Utils.emitEvent(true, 1594)
+                      Utils.emitEvent(true, 15642)
+                      Utils.emitEvent(true, 15643)
                   }
                   switch (this.emitKey) {
                       case 'emitWebViewNativeMediaPlayerShouldOverlayFalse': {
@@ -1263,6 +1272,26 @@ struct WebComponent {
                           })
                           this.nativePlayer?.setMuted(false)
                           this.nativeMediaPlayerHandlerImpl?.handleMutedChanged(false)
+                          break;
+                      }
+
+                      case 'emitWebViewNativeMediaPlayerHandleStatusChangedPause': {
+                          this.controller.loadUrl($rawfile('nativeMediaPlayerHandler.html'))
+                          await Utils.sleep(2000)
+                          this.controller.runJavaScript('buttonPause()', (error, result) => {
+                              console.error('The play() return error is: ${error}');
+                              console.log('The play() return value is: ${result}');
+                          })
+                          this.nativePlayer?.pause()
+                          break;
+                      }       case 'emitWebViewNativeMediaPlayerHandleStatusChangedPause': {
+                          this.controller.loadUrl($rawfile('nativeMediaPlayerHandler.html'))
+                          await Utils.sleep(2000)
+                          this.controller.runJavaScript('buttonPlay()', (error, result) => {
+                              console.error('The play() return error is: ${error}');
+                              console.log('The play() return value is: ${result}');
+                          })
+                          this.nativePlayer?.play()
                           break;
                       }
                   }
