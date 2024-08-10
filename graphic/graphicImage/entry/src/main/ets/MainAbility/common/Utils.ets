@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 export default class Utils {
-  static rect_left;
+  static rectLeft;
   static rect_top;
-  static rect_right;
-  static rect_bottom;
-  static rect_value;
+  static rectRight;
+  static rectBottom;
+  static rectValue;
 
   static sleep(time) {
     return new Promise((resolve, reject) => {
@@ -35,12 +35,12 @@ export default class Utils {
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
     let rectInfo = JSON.parse('[' + obj.$rect + ']')
     console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
-    this.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0]
+    this.rectLeft = JSON.parse('[' + rectInfo[0] + ']')[0]
     this.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1]
-    this.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0]
-    this.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1]
-    return this.rect_value = {
-      "left": this.rect_left, "top": this.rect_top, "right": this.rect_right, "bottom": this.rect_bottom
+    this.rectRight = JSON.parse('[' + rectInfo[1] + ']')[0]
+    this.rectBottom = JSON.parse('[' + rectInfo[1] + ']')[1]
+    return this.rectValue = {
+      "left": this.rectLeft, "top": this.rect_top, "right": this.rectRight, "bottom": this.rectBottom
     }
   }
 

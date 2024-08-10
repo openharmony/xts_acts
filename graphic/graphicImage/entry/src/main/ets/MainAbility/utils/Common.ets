@@ -25,7 +25,7 @@ export default class CommonFunc {
   static sleep(time){
         return new Promise((resolve,reject)=>{
             setTimeout(()=>{
-                resolve("ok")
+                resolve('ok')
             },time)
         }).then(()=>{
             console.info(`sleep ${time} over...`)

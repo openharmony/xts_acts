@@ -21,7 +21,7 @@ function onPushListener(source, template, data, extraData) {
     console.log("request_callback1:source json object" + jsonObject);
     var jsonArry = jsonObject.ExternalComponent;
     for (var i in jsonArry) {
-        console.log(jsonArry[i])
+        console.log(jsonArry[i]);
     }
     console.log("onPushListener:source json object" + jsonObject);
     console.log("onPushListener:source json string" + JSON.stringify(jsonObject));
@@ -40,8 +40,8 @@ function onRequestListener(source, name, data)
 export default {
     //register listener
     onListener() {
-        pluginComponentManager.on("push", onPushListener);
-        pluginComponentManager.on("request", onRequestListener);
+        pluginComponentManager.on('push', onPushListener);
+        pluginComponentManager.on('request', onRequestListener);
     },
     Push() {
         // 组件提供方主动发送事件
@@ -54,15 +54,15 @@ export default {
                         DIMENSION_KEY: FormDimension.Dimension_1_2
                     }
                 },
-                name: "plugintemplate",
+                name: 'plugintemplate',
                 data: {
-                    "key_1": "plugin component test",
+                    "key_1": 'plugin component test',
                     "key_2": 34234
                 },
                 extraData: {
-                    "extra_str": "this is push event"
+                    "extra_str": 'this is push event'
                 },
-                jsonPath: "",
+                jsonPath: '',
             },
             (err, data) => {
                 console.log('push_callback: push ok!');
@@ -76,9 +76,9 @@ export default {
                 bundleName: "com.example.myapplication",
                 abilityName: "com.example.myapplication.MainAbility",
             },
-            name: "plugintemplate",
+            name: 'plugintemplate',
             data: {
-                "key_1": "plugin component test",
+                "key_1": 'plugin component test',
                 "key_2": 34234
             },
             jsonPath: "",

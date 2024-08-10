@@ -21,8 +21,8 @@ import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 import { BusinessError } from '@ohos.base';
 import { abilityAccessCtrl } from '@ohos.abilityAccessCtrl';
 
-export default function graphicImagePixelMapTest(context, windowStage, abilityStorage) {
-  describe('graphicImagePixelMapTest', function () {
+export default function imagePixelMapTest(context, windowStage, abilityStorage) {
+  describe('imagePixelMapTest', function () {
     beforeAll(async function () {
       console.info("Component3DTest beforeEach start");
       done();

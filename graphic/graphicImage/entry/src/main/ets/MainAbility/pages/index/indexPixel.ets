@@ -60,8 +60,8 @@ struct Index {
           this.Demo(this.surfaceId)
         })
       XComponent({
-        id:"componentId",
-        type:"surface",
+        id:'componentId',
+        type:'surface',
         controller:this.mXComponentController
       })
       .width('100%')

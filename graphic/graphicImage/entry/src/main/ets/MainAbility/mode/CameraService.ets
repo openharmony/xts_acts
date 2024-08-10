@@ -71,16 +71,16 @@ class CameraService {
     return previewProfiles[0]
   }
 
-  getPhotoProfile(CameraOutputCapability: camera.CameraOutputCapability): camera.Profile | undefined {
-    let photoProfiles = CameraOutputCapability.photoProfiles
+  getPhotoProfile(cameraOutputCapability: camera.CameraOutputCapability): camera.Profile | undefined {
+    let photoProfiles = cameraOutputCapability.photoProfiles
     if (photoProfiles.length < 1) {
       return undefined
     }
     return photoProfiles[0]
   }
 
-  isSupportedSceneMode(CameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): boolean {
-    let sceneModes = CameraManager.getSupportedSceneModes(cameraDevice)
+  isSupportedSceneMode(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): boolean {
+    let sceneModes = cameraManager.getSupportedSceneModes(cameraDevice)
     if (sceneModes === undefined) {
       return false
     }
@@ -114,7 +114,7 @@ class CameraService {
         return
       }
       console.info('www data 3')
-      let cameraOutputCapability = this.cameraManager.getSupportedOutputCapability(this.curCameraDevice, this.curSceneMode)
+     let cameraOutputCapability=this.cameraManager.getSupportedOutputCapability(this.curCameraDevice,this.curSceneMode)
       let previewProfile = this.getPreviewProfile(cameraOutputCapability)
       if (previewProfile === undefined) {
         return
@@ -264,7 +264,8 @@ class CameraService {
   }
 
   //创建previewOutput输出对象
-  createPreviewOutputFn(cameraManager: camera.CameraManager, previewProfileObj: camera.Profile, surfaceId: string): camera.PreviewOutput | undefined {
+  createPreviewOutputFn(cameraManager: camera.CameraManager, previewProfileObj: camera.Profile, surfaceId: string): 
+  camera.PreviewOutput | undefined {
     let previewOutput: camera.PreviewOutput | undefined = undefined
     try {
       previewOutput = cameraManager.createPreviewOutput(previewProfileObj, surfaceId)
@@ -275,7 +276,8 @@ class CameraService {
   }
 
   //创建photoOutput输出对象
-  createPhotoOutputFn(cameraManager: camera.CameraManager, photoProfileObj: camera.Profile): camera.PhotoOutput | undefined {
+  createPhotoOutputFn(cameraManager: camera.CameraManager, photoProfileObj: camera.Profile): 
+  camera.PhotoOutput | undefined {
     let photoOutput: camera.PhotoOutput | undefined = undefined
     try {
       photoOutput = cameraManager.createPhotoOutput(photoProfileObj)
@@ -286,7 +288,8 @@ class CameraService {
   }
 
   //创建cameraInput输出对象
-  createCameraInputFn(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): camera.CameraInput | undefined {
+  createCameraInputFn(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): 
+  camera.CameraInput | undefined {
     let cameraInput: camera.CameraInput | undefined = undefined
     try {
       cameraInput = cameraManager.createCameraInput(cameraDevice)
