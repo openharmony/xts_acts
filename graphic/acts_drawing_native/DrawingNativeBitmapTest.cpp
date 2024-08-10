@@ -241,9 +241,9 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsAbnormal, TestSize.L
  * @tc.desc: test for testBitmapCreateFromPixelsVeryBig.
  * @tc.size  : SmallTest
  * @tc.type  : Function
- * @tc.level : Level 0
+ * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsVeryBig, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsVeryBig, TestSize.Level3) {
     // 1. Construct OH_Drawing_Image_Info by iterating through OH_Drawing_ColorFormat and OH_Drawing_AlphaFormat
     OH_Drawing_ColorFormat formats[] = {
         COLOR_FORMAT_UNKNOWN,   COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
@@ -259,6 +259,68 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsVeryBig, TestSize.Le
         for (OH_Drawing_AlphaFormat alphaFormat : alphaFormats) {
             int width = 1000000;
             int height = 1000000;
+            int rowBytes = width * 4;
+            OH_Drawing_Bitmap *bitmap1 = OH_Drawing_BitmapCreate();
+            EXPECT_NE(bitmap1, nullptr);
+            OH_Drawing_BitmapFormat cFormat{format, alphaFormat};
+            OH_Drawing_BitmapBuild(bitmap1, width, height, &cFormat);
+            void *pixels = OH_Drawing_BitmapGetPixels(bitmap1);
+            if (pixels != nullptr) {
+                OH_Drawing_Image_Info imageInfo;
+                OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+                // 2. OH_Drawing_BitmapCreateFromPixels
+                // Initialize the Bitmap with matching image information and call OH_Drawing_BitmapGet related
+                // interfaces Verify that the parameters match the initialization parameters
+                uint32_t height_ = OH_Drawing_BitmapGetHeight(bitmap);
+                uint32_t width_ = OH_Drawing_BitmapGetWidth(bitmap);
+                OH_Drawing_ColorFormat colorFormat_ = OH_Drawing_BitmapGetColorFormat(bitmap);
+                OH_Drawing_AlphaFormat alphaFormat_ = OH_Drawing_BitmapGetAlphaFormat(bitmap);
+                EXPECT_TRUE(height_ == height || height_ == 0);
+                EXPECT_TRUE(width_ == width || width_ == 0);
+                EXPECT_TRUE(colorFormat_ == format || colorFormat_ == 0);
+                EXPECT_TRUE(alphaFormat_ == alphaFormat || alphaFormat_ == 0);
+                // 3. OH_Drawing_BitmapCreateFromPixels
+                // Initialize the Bitmap with rowBytes larger than the image, call OH_Drawing_BitmapGet related
+                // interfaces (OH_Drawing_BitmapGetHeight, OH_Drawing_BitmapGetWidth), Verify that the parameters match
+                // the initialization parameters
+                int rowBytes2 = width * 4 + 1;
+                bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes2);
+                height_ = OH_Drawing_BitmapGetHeight(bitmap);
+                width_ = OH_Drawing_BitmapGetWidth(bitmap);
+                EXPECT_TRUE(height_ == height || height_ == 0);
+                EXPECT_TRUE(width_ == width || width_ == 0);
+                // 4. Free memory
+                OH_Drawing_BitmapDestroy(bitmap);
+            }
+        }
+    }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0205
+ * @tc.name: testBitmapCreateFromPixelsBoundary
+ * @tc.desc: test for testBitmapCreateFromPixelsBoundary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsBoundary, TestSize.Level0) {
+    // 1. Construct OH_Drawing_Image_Info by iterating through OH_Drawing_ColorFormat and OH_Drawing_AlphaFormat
+    OH_Drawing_ColorFormat formats[] = {
+        COLOR_FORMAT_UNKNOWN,   COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
+        COLOR_FORMAT_ARGB_4444, COLOR_FORMAT_RGBA_8888, COLOR_FORMAT_BGRA_8888,
+    };
+    OH_Drawing_AlphaFormat alphaFormats[] = {
+        ALPHA_FORMAT_UNKNOWN,
+        ALPHA_FORMAT_OPAQUE,
+        ALPHA_FORMAT_PREMUL,
+        ALPHA_FORMAT_UNPREMUL,
+    };
+    for (OH_Drawing_ColorFormat format : formats) {
+        for (OH_Drawing_AlphaFormat alphaFormat : alphaFormats) {
+            // 4K screen resolutionp
+            int width = 4096;
+            int height = 2160;
             int rowBytes = width * 4;
             OH_Drawing_Bitmap *bitmap1 = OH_Drawing_BitmapCreate();
             EXPECT_NE(bitmap1, nullptr);
@@ -437,6 +499,51 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildMultipleCalls, TestSize.Level3)
 }
 
 /*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0303
+ * @tc.name: testBitmapBuildBoundary
+ * @tc.desc: test for testBitmapBuildBoundary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildBoundary, TestSize.Level0) {
+    // 4K screen resolutionp
+    const unsigned int width = 4096;
+    const unsigned int height = 2160;
+    OH_Drawing_ColorFormat formats[] = {
+        COLOR_FORMAT_UNKNOWN,   COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
+        COLOR_FORMAT_ARGB_4444, COLOR_FORMAT_RGBA_8888, COLOR_FORMAT_BGRA_8888,
+    };
+
+    OH_Drawing_AlphaFormat alphaFormats[] = {
+        ALPHA_FORMAT_UNKNOWN,
+        ALPHA_FORMAT_OPAQUE,
+        ALPHA_FORMAT_PREMUL,
+        ALPHA_FORMAT_UNPREMUL,
+    };
+    OH_Drawing_AlphaFormat alphaFormat_;
+
+    // step 1
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+
+    // step 2
+    for (int i = 1; i < 4; i++) {
+        OH_Drawing_BitmapFormat bitmapFormat = {formats[3], alphaFormats[i]};
+        OH_Drawing_BitmapBuild(bitmap, width, height, &bitmapFormat);
+        if (bitmap == nullptr) {
+            alphaFormat_ = OH_Drawing_BitmapGetAlphaFormat(bitmap);
+            EXPECT_EQ(alphaFormat_, alphaFormats[0]);
+        } else {
+            alphaFormat_ = OH_Drawing_BitmapGetAlphaFormat(bitmap);
+            EXPECT_EQ(alphaFormat_, alphaFormats[i]);
+        }
+    }
+
+    // step 3
+    OH_Drawing_BitmapDestroy(bitmap);
+}
+
+/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0400
  * @tc.name: testBitmapGetXXNormal
  * @tc.desc: test for testBitmapGetXXNormal.
@@ -544,6 +651,59 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXNull, TestSize.Level3) {
  */
 HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXInputDestroyed, TestSize.Level3) {
     // Deprecated
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0403
+ * @tc.name: testBitmapGetXXBoundary
+ * @tc.desc: test for testBitmapGetXXBoundary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXBoundary, TestSize.Level0) {
+    OH_Drawing_Bitmap *cBitmap = OH_Drawing_BitmapCreate();
+    EXPECT_NE(cBitmap, nullptr);
+    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    uint32_t width = 4096;
+    uint32_t height = 2160;
+    OH_Drawing_BitmapBuild(cBitmap, width, height, &cFormat);
+
+    OH_Drawing_Image_Info imageInfo1{width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
+    void *pixels1 = new uint32_t[width * height];
+
+    // step 1
+    bool res = OH_Drawing_BitmapReadPixels(cBitmap, &imageInfo1, pixels1, width * 4, 0, 0);
+    EXPECT_EQ(res, true);
+
+    // step 2
+    uint32_t w = OH_Drawing_BitmapGetWidth(cBitmap);
+    EXPECT_EQ(w, width);
+
+    // step 3
+    uint32_t h = OH_Drawing_BitmapGetHeight(cBitmap);
+    EXPECT_EQ(h, height);
+
+    // step 5
+    OH_Drawing_ColorFormat colorFormat_ = OH_Drawing_BitmapGetColorFormat(cBitmap);
+    EXPECT_EQ(colorFormat_, COLOR_FORMAT_RGBA_8888);
+
+    // step 5
+    OH_Drawing_AlphaFormat alphaFormat_ = OH_Drawing_BitmapGetAlphaFormat(cBitmap);
+    EXPECT_EQ(alphaFormat_, ALPHA_FORMAT_OPAQUE);
+
+    // step 6
+    void *pixels = OH_Drawing_BitmapGetPixels(cBitmap);
+    EXPECT_NE(pixels, nullptr);
+
+    // step 7
+    OH_Drawing_Image_Info *imageInfo = new OH_Drawing_Image_Info();
+    OH_Drawing_BitmapGetImageInfo(cBitmap, imageInfo);
+    EXPECT_EQ(width, imageInfo->width);
+    EXPECT_EQ(height, imageInfo->height);
+
+    // step 8
+    OH_Drawing_BitmapDestroy(cBitmap);
 }
 
 /*
@@ -690,6 +850,38 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsMismatch, TestSize.Level3)
     OH_Drawing_Image_Info imageInfo6{width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
     res = OH_Drawing_BitmapReadPixels(bitmap, &imageInfo6, pixels, width * 4, 0, 1000);
     EXPECT_EQ(res, false);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0504
+ * @tc.name: testBitmapReadPixelsBoundary
+ * @tc.desc: test for OH_Drawing_BitmapBuild.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsBoundary, TestSize.Level0) {
+    const unsigned int width = 4096;
+    const unsigned int height = 2160;
+
+    // step 1
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    OH_Drawing_BitmapFormat bitmapFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
+
+    // step 2
+    OH_Drawing_BitmapBuild(bitmap, width, height, &bitmapFormat);
+    OH_Drawing_Image_Info imageInfo{width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
+    void *pixels = new uint32_t[width * height];
+
+    // step 3
+    bool res = OH_Drawing_BitmapReadPixels(bitmap, &imageInfo, pixels, width * 4, 0, 0);
+    EXPECT_EQ(res, true);
+
+    // step 4
+    // don't know how to test
+
+    // step 5
+    OH_Drawing_BitmapDestroy(bitmap);
 }
 
 } // namespace Drawing
