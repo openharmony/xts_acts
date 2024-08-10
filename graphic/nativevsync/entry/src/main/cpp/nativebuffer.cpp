@@ -26,6 +26,7 @@
 #define SUCCESS 0
 #define FAIL (-1)
 #define PARAM_0 0
+#define NUMBER_2 2
 #define TIMEOUT_FIVE 10
 #define NUMBER_500 500
 static bool g_flag = false;
@@ -144,7 +145,7 @@ static napi_value OHNativeVSyncGetPeriodFOne(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value OHNativeVSyncCreateNull(napi_env env, napi_callback_info info) 
+static napi_value OHNativeVSyncCreateNull(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     unsigned int length = 0;
@@ -157,10 +158,11 @@ static napi_value OHNativeVSyncCreateNull(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OHNativeVSyncCreateNotEq(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncCreateNotEq(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     char name[] = "testCase";
-    unsigned int length = 2;
+    unsigned int length = NUMBER_2;
     OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
     if (nativeVSync == nullptr) {
         napi_create_int32(env, FAIL, &result);
@@ -170,12 +172,13 @@ static napi_value OHNativeVSyncCreateNotEq(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value OHNativeVSyncCreateNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncCreateNormal(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     char name[] = "testCase";
     unsigned int length = strlen(name);
     OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
-    napi_create_array_with_length(env, 2, &result);
+    napi_create_array_with_length(env, NUMBER_2, &result);
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
     if (nativeVSync == nullptr) {
@@ -197,7 +200,8 @@ static napi_value OHNativeVSyncCreateNormal(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value OHNativeVSyncCreateAbnormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncCreateAbnormal(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(NULL,0);
     if (nativeVSync == nullptr) {
@@ -216,7 +220,8 @@ static napi_value OHNativeVSyncCreateAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value OHNativeVSyncCreateDifLenth(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncCreateDifLenth(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     std::vector<std::string> myArray = {
         "0",
@@ -246,7 +251,8 @@ static napi_value OHNativeVSyncCreateDifLenth(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value OHNativeVSyncCreateMuch(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncCreateMuch(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     char name[] = "testcase";
     unsigned int length = strlen(name);
@@ -264,7 +270,8 @@ static napi_value OHNativeVSyncCreateMuch(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OHNativeVSyncGetPeriodNullptr(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncGetPeriodNullptr(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     long long *period;
     int res = OH_NativeVSync_GetPeriod(nullptr, period);
@@ -272,7 +279,8 @@ static napi_value OHNativeVSyncGetPeriodNullptr(napi_env env, napi_callback_info
     return result;
 }
 
-static napi_value OHNativeVSyncDestroyAbnormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncDestroyAbnormal(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     // 没有返回值
     OH_NativeVSync_Destroy(nullptr);
@@ -288,9 +296,10 @@ static napi_value OHNativeVSyncDestroyAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value OHNativeVSyncDestroyNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncDestroyNormal(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
-    napi_create_array_with_length(env, 2, &result);
+    napi_create_array_with_length(env, NUMBER_2, &result);
     char name[] = "testcase";
     unsigned int length = strlen(name);
     OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
@@ -312,11 +321,13 @@ static napi_value OHNativeVSyncDestroyNormal(napi_env env, napi_callback_info in
     return result;
 }
 
-void myFrameCallback(long long timestamp, void *data) {
+void myFrameCallback(long long timestamp, void *data)
+{
     int *myData = static_cast<int *>(data);
     std::cout << "Frame callback called at timestamp: " << timestamp << ", with data: " << *myData << std::endl;
 }
-static napi_value OHNativeVSyncRequestFrameNullptr(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncRequestFrameNullptr(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     char name[] = "testcase";
     unsigned int length = strlen(name);
@@ -334,11 +345,12 @@ static napi_value OHNativeVSyncRequestFrameNullptr(napi_env env, napi_callback_i
     
     res = OH_NativeVSync_RequestFrame(nativeVSync, myFrameCallback, nullptr);
     napi_create_int32(env, res, &result1);
-    napi_set_element(env, result, 2, result1);
+    napi_set_element(env, result, NUMBER_2, result1);
     return result;
 }
 
-static napi_value OHNativeVSyncRequestFrameNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncRequestFrameNormal(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     char name[] = "testcase";
     unsigned int length = strlen(name);
@@ -349,7 +361,8 @@ static napi_value OHNativeVSyncRequestFrameNormal(napi_env env, napi_callback_in
     return result;
 }
 
-static napi_value OHNativeVSyncRequestFrameParamErr(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncRequestFrameParamErr(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     char name[] = "testcase";
     unsigned int length = strlen(name);

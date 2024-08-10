@@ -55,7 +55,8 @@ EGLContext eglContext_ = EGL_NO_CONTEXT;
 EGLDisplay eglDisplay_ = EGL_NO_DISPLAY;
 static inline EGLConfig config_;
 
-static bool CheckEglExtension(const char *extensions, const char *extension) {
+static bool CheckEglExtension(const char *extensions, const char *extension)
+{
     size_t extlen = strlen(extension);
     const char *end = extensions + strlen(extensions);
 
@@ -379,7 +380,7 @@ static napi_value OHNativeImageDestroy(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OHNativeImageCreateNormal(napi_env env, napi_callback_info info) 
+static napi_value OHNativeImageCreateNormal(napi_env env, napi_callback_info info)
 {
     int backInfo = FAIL;
     OH_NativeImage *image = nullptr;
@@ -396,7 +397,8 @@ static napi_value OHNativeImageCreateNormal(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value OHNativeImageCreateAbnormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageCreateAbnormal(napi_env env, napi_callback_info info)
+{
     
     int backInfo = FAIL;
     typedef struct {
@@ -423,7 +425,8 @@ static napi_value OHNativeImageCreateAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value OHNativeImageDestroy1(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageDestroy1(napi_env env, napi_callback_info info)
+{
     int backInfo = FAIL;
     OH_NativeImage *image = nullptr;
     GLenum nativeImageTexId_;
@@ -442,7 +445,8 @@ static napi_value OHNativeImageDestroy1(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHNativeImageCreateMuch(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageCreateMuch(napi_env env, napi_callback_info info)
+{
     int backInfo = SUCCESS;
     const int count = NUMBER_500;
     OH_NativeImage *imageArray[500] = {nullptr};
@@ -476,7 +480,8 @@ static napi_value OHNativeImageCreateMuch(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OHNativeImageAcquireNativeWindowNullptr(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageAcquireNativeWindowNullptr(napi_env env, napi_callback_info info)
+{
     int backInfo = FAIL;
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = OH_NativeImage_AcquireNativeWindow(nullptr);
@@ -488,7 +493,8 @@ static napi_value OHNativeImageAcquireNativeWindowNullptr(napi_env env, napi_cal
     return result;
 }
 
-static napi_value OHNativeImageAcquireNativeWindowNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageAcquireNativeWindowNormal(napi_env env, napi_callback_info info)
+{
     int backInfo = FAIL;
     OHNativeWindow *nativeWindow1 = nullptr;
     OHNativeWindow *nativeWindow2 = nullptr;
@@ -506,7 +512,8 @@ static napi_value OHNativeImageAcquireNativeWindowNormal(napi_env env, napi_call
     return result;
 }
 
-static napi_value OHNativeImageAttachContextNullptr(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageAttachContextNullptr(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = getNativeImage();
     InitEGLEnv();
     GLuint textureId;
@@ -534,7 +541,8 @@ static napi_value OHNativeImageAttachContextNullptr(napi_env env, napi_callback_
     return result;
 }
 
-static napi_value OHNativeImageDetachContextNullptr(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageDetachContextNullptr(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = getNativeImage();
     InitEGLEnv();
     GLuint textureId;
@@ -549,7 +557,8 @@ static napi_value OHNativeImageDetachContextNullptr(napi_env env, napi_callback_
     return result;
 }
 
-static napi_value OHNativeImageAttachContextNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageAttachContextNormal(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = getNativeImage();
     InitEGLEnv();
     GLuint textureId;
@@ -578,7 +587,8 @@ static napi_value OHNativeImageAttachContextNormal(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value OHNativeImageDetachContextNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageDetachContextNormal(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = getNativeImage();
     InitEGLEnv();
     GLuint textureId;
@@ -616,7 +626,8 @@ static napi_value OHNativeImageDetachContextNormal(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value OHNativeImageGetSurfaceIdNullptr(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageGetSurfaceIdNullptr(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = getNativeImage();
     napi_value result = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_2, &result);
@@ -643,7 +654,8 @@ static napi_value OHNativeImageGetSurfaceIdNullptr(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value OHNativeGetSurfaceIdNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeGetSurfaceIdNormal(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = getNativeImage();
     napi_value result = nullptr;
     uint64_t surfaceId = NUMBER_99999;
@@ -657,7 +669,8 @@ static napi_value OHNativeGetSurfaceIdNormal(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value OHNativeImageUpdateSurfaceImageNullptr(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageUpdateSurfaceImageNullptr(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = getNativeImage();
     napi_value result = nullptr;
     int res = OH_NativeImage_UpdateSurfaceImage(nullptr);
@@ -670,7 +683,8 @@ static napi_value OHNativeImageUpdateSurfaceImageNullptr(napi_env env, napi_call
     return result;
 }
 
-static napi_value OHNativeImageGetTimestampNullptr(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageGetTimestampNullptr(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = getNativeImage();
     napi_value result = nullptr;
     int64_t timestamp = 0;
@@ -684,7 +698,8 @@ static napi_value OHNativeImageGetTimestampNullptr(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value OHNativeImageGetTransformMatrixNullptr(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageGetTransformMatrixNullptr(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = getNativeImage();
     napi_value result = nullptr;
     float matrix[16];
@@ -711,7 +726,8 @@ static napi_value OHNativeImageGetTransformMatrixNullptr(napi_env env, napi_call
     return result;
 }
 
-static napi_value OHNativeImageGetTransformMatrixV2Nullptr(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageGetTransformMatrixV2Nullptr(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = getNativeImage();
     napi_value result = nullptr;
     float matrix[16];
@@ -738,7 +754,8 @@ static napi_value OHNativeImageGetTransformMatrixV2Nullptr(napi_env env, napi_ca
     return result;
 }
 
-static napi_value OHNativeImageUpdateSurfaceImageNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageUpdateSurfaceImageNormal(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = nullptr;
     napi_value result = nullptr;
     GLenum nativeImageTexId_;
@@ -755,7 +772,8 @@ static napi_value OHNativeImageUpdateSurfaceImageNormal(napi_env env, napi_callb
     return result;
 }
 
-static napi_value OHNativeImageGetTimestampNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageGetTimestampNormal(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = nullptr;
     napi_value result = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_3, &result);
@@ -814,7 +832,8 @@ static napi_value OHNativeImageGetTimestampNormal(napi_env env, napi_callback_in
     return result;
 }
 
-static napi_value OHNativeImageGetTransformMatrixNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageGetTransformMatrixNormal(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = nullptr;
     GLenum nativeImageTexId_;
     GLuint GL_TEXTURE_EXTERNAL_OES;
@@ -846,7 +865,8 @@ static napi_value OHNativeImageGetTransformMatrixNormal(napi_env env, napi_callb
     return result;
 }
 
-static napi_value OHNativeImageGetTransformMatrixV2Normal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageGetTransformMatrixV2Normal(napi_env env, napi_callback_info info)
+{
     OH_NativeImage *nativeImage = nullptr;
     GLenum nativeImageTexId_;
     GLuint GL_TEXTURE_EXTERNAL_OES;
@@ -878,7 +898,8 @@ static napi_value OHNativeImageGetTransformMatrixV2Normal(napi_env env, napi_cal
     return result;
 }
 
-static napi_value OHNativeImageSetOnFrameAvailableListenerNullptr(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageSetOnFrameAvailableListenerNullptr(napi_env env, napi_callback_info info)
+{
     class NativeImageAdaptor {
         public:
         ~NativeImageAdaptor();
@@ -901,7 +922,8 @@ static napi_value OHNativeImageSetOnFrameAvailableListenerNullptr(napi_env env, 
     return result;
 }
 
-static napi_value OHNativeImageUnSetOnFrameAvailableListenerNullptr(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageUnSetOnFrameAvailableListenerNullptr(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     int res =  OH_NativeImage_UnsetOnFrameAvailableListener(nullptr);
 
@@ -914,7 +936,8 @@ static napi_value OHNativeImageUnSetOnFrameAvailableListenerNullptr(napi_env env
     return result;
 }
 
-static napi_value OHNativeImageSetOnFrameAvailableListenerNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageSetOnFrameAvailableListenerNormal(napi_env env, napi_callback_info info)
+{
     class NativeImageAdaptor {
     public:
         ~NativeImageAdaptor();
@@ -974,7 +997,8 @@ static napi_value OHNativeImageSetOnFrameAvailableListenerNormal(napi_env env, n
     return result;
 }
 
-static napi_value OHNativeImageUnsetOnFrameAvailableListenerNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeImageUnsetOnFrameAvailableListenerNormal(napi_env env, napi_callback_info info)
+{
     class NativeImageAdaptor {
     public:
         ~NativeImageAdaptor();
