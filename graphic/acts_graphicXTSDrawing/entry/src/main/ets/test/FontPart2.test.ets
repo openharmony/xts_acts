@@ -976,6 +976,7 @@ export default function fontPart2Test() {
       for ( let i = 0 ; i < 20 ; i ++ ) {
         try {
           let subpixel: boolean = font.isSubpixel();
+          expect(subpixel == false).assertTrue();
           console.info(msg + ' isSubpixel successed,isSubpixel:' + subpixel);
         } catch( e ) {
           console.info(msg + ` isSubpixel errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
@@ -1053,6 +1054,7 @@ export default function fontPart2Test() {
       for ( let i = 0 ; i < 20 ; i ++ ) {
         try {
           let linearMetrics: boolean = font.isLinearMetrics();
+          expect(linearMetrics == false).assertTrue();
           console.info(msg + ' isLinearMetrics successed,linearMetrics:' + linearMetrics);
         } catch( e ) {
           console.info(msg + ` isLinearMetrics errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
@@ -1130,6 +1132,7 @@ export default function fontPart2Test() {
       for ( let i = 0 ; i < 20 ; i ++ ) {
         try {
           let embolden: boolean = font.isEmbolden();
+          expect(embolden == false).assertTrue();
           console.info(msg + ' isEmbolden successed,embolden:' + embolden);
         } catch( e ) {
           console.info(msg + ` isEmbolden errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
@@ -1311,7 +1314,7 @@ export default function fontPart2Test() {
 
       try {
         let baselineSnap: boolean = font.isBaselineSnap();
-        expect(baselineSnap == true || baselineSnap == false).assertTrue();
+        expect(baselineSnap == true).assertTrue();
         console.info(msg + ' setAndIsBaselineSnap successed,baselineSnap:' + baselineSnap);
       } catch( e ) {
         console.info(msg + ` setAndIsBaselineSnap errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
@@ -1473,7 +1476,7 @@ export default function fontPart2Test() {
 
       try {
         let forceAutoHinting: boolean = font.isForceAutoHinting();
-        expect(forceAutoHinting == true || forceAutoHinting == false).assertTrue();
+        expect(forceAutoHinting == false).assertTrue();
         console.info(msg + ' SetAndIsForceAutoHinting successed,isForceAutoHinting:' + forceAutoHinting);
       } catch( e ) {
         console.info(msg + ` SetAndIsForceAutoHinting errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
@@ -1634,7 +1637,8 @@ export default function fontPart2Test() {
       let font = new drawing.Font();
 
       try {
-        font.isEmbeddedBitmaps();
+        let embeddedBitmaps: boolean = font.isEmbeddedBitmaps();
+        expect(embeddedBitmaps == false).assertTrue();
         console.info(msg + ' isEmbeddedBitmaps successed');
       } catch( e ) {
         console.info(msg + ` isEmbeddedBitmaps errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);

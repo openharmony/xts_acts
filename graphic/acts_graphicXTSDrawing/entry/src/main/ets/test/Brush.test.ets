@@ -1433,6 +1433,7 @@ export default function brushTest() {
 
       try {
         let alpha = brush.getAlpha();
+        expect(alpha == 255).assertTrue();
         console.info(msg + ' getAlpha successed,alpha:' + alpha);
       } catch( e ) {
         console.info(msg + ` getAlpha errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
@@ -1442,6 +1443,7 @@ export default function brushTest() {
       try {
         brush.setAlpha(128);
         let alpha = brush.getAlpha();
+        expect(alpha == 128).assertTrue();
         console.info(msg + ' getAlpha successed,alpha:' + alpha);
       } catch( e ) {
         console.info(msg + ` getAlpha errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
@@ -1451,6 +1453,7 @@ export default function brushTest() {
       try {
         brush.setAlpha(255.1);
         let alpha = brush.getAlpha();
+        expect(alpha == 255).assertTrue();
         console.info(msg + ' getAlpha successed,alpha:' + alpha);
       } catch( e ) {
         console.info(msg + ` getAlpha errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
@@ -1494,6 +1497,7 @@ export default function brushTest() {
       for ( let i = 0 ; i < 20 ; i ++ ) {
         try {
           let alpha = brush.getAlpha();
+          expect(alpha == 255).assertTrue();
           console.info(msg + ' getAlpha successed,alpha:' + alpha);
         } catch( e ) {
           console.info(msg + ` getAlpha errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
@@ -1516,6 +1520,7 @@ export default function brushTest() {
 
       try {
         let isAntiAlias = brush.isAntiAlias();
+        expect(isAntiAlias == false).assertTrue();
         console.info(msg + ' isAntiAlias successed,isAntiAlias:' + isAntiAlias);
       } catch( e ) {
         console.info(msg + ` isAntiAlias errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
@@ -1579,6 +1584,7 @@ export default function brushTest() {
       for ( let i = 0 ; i < 20 ; i ++ ) {
         try {
           let isAntiAlias = brush.isAntiAlias();
+          expect(isAntiAlias == false).assertTrue();
           console.info(msg + ' isAntiAlias successed,isAntiAlias:' + isAntiAlias);
         } catch( e ) {
           console.info(msg + ` isAntiAlias errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);

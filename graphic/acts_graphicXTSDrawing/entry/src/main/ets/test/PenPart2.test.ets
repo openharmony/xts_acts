@@ -233,8 +233,9 @@ export default function penPart2Test() {
       let pathDst: drawing.Path = new drawing.Path();
 
       try {
-        pen.getFillPath(pathSrc, pathDst);
-        console.info(msg + ' getFillPath successed');
+        let fillPath = pen.getFillPath(pathSrc, pathDst);
+        expect(fillPath == false).assertTrue();
+        console.info(msg + ' getFillPath successed,fillPath:'+ fillPath);
       } catch( e ) {
         console.info(msg + ` getFillPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
@@ -243,8 +244,9 @@ export default function penPart2Test() {
       try {
         pathSrc.moveTo(0, 0);
         pathSrc.lineTo(100, 100);
-        pen.getFillPath(pathSrc, pathDst);
-        console.info(msg + ' getFillPath successed');
+        let fillPath = pen.getFillPath(pathSrc, pathDst);
+        expect(fillPath == false).assertTrue();
+        console.info(msg + ' getFillPath successed,fillPath:'+ fillPath);
       } catch( e ) {
         console.info(msg + ` getFillPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
@@ -353,8 +355,9 @@ export default function penPart2Test() {
         let pathSrc: drawing.Path = new drawing.Path();
         let pathDst: drawing.Path = new drawing.Path();
         try {
-          pen.getFillPath(pathSrc, pathDst);
-          console.info(msg + ' getFillPath succeeded');
+          let fillPath = pen.getFillPath(pathSrc, pathDst);
+          expect(fillPath == false).assertTrue();
+          console.info(msg + ' getFillPath successed,fillPath:'+ fillPath);
         } catch( e ) {
           console.info(msg + ` getFillPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
           expect().assertFail();
@@ -583,7 +586,7 @@ export default function penPart2Test() {
 
       try {
         let isAntiAlias = pen.isAntiAlias();
-        expect(isAntiAlias == true || isAntiAlias == false).assertTrue();
+        expect(isAntiAlias == false).assertTrue();
         console.info(msg + ' isAntiAlias successed,isAntiAlias:' + isAntiAlias);
       } catch( e ) {
         console.info(msg + ` isAntiAlias errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
@@ -647,6 +650,7 @@ export default function penPart2Test() {
       for ( let i = 0 ; i < 20 ; i ++ ) {
         try {
           let isAntiAlias = pen.isAntiAlias();
+          expect(isAntiAlias == false).assertTrue();
           console.info(msg + ' isAntiAlias successed,isAntiAlias:' + isAntiAlias);
         } catch( e ) {
           console.info(msg + ` isAntiAlias errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
@@ -824,6 +828,7 @@ export default function penPart2Test() {
       for ( let i = 0 ; i < 20 ; i ++ ) {
         try {
           let width = pen.getWidth();
+          expect(width == 0).assertTrue();
           console.info(msg + ' getWidth successed,width:' + width);
         } catch( e ) {
           console.info(msg + ` getWidth errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
