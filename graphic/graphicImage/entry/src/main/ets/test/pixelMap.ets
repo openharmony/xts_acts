@@ -19,7 +19,7 @@ import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayR
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 import { BusinessError } from '@ohos.base';
-import { abilityAccessCtrl } from '@ohos.abilityAccessCtrl';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 
 export default function imagePixelMapTest(context, windowStage, abilityStorage) {
   describe('imagePixelMapTest', function () {
@@ -37,7 +37,7 @@ export default function imagePixelMapTest(context, windowStage, abilityStorage) 
      * @tc.size :
      */
     it("ImagePixelMapTest_0100", 0, async function (done) {
-      let atManager = abilityAccessCtrl.createAtManager()
+      let atManager = abilityAccessCtrl.createAtManager();
       atManager.requestPermissionsFromUser(getContext(), [
         'ohos.permission.CAMERA',
         'ohos.permission.MICROPHONE'
