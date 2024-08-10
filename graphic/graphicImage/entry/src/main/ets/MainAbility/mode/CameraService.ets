@@ -254,7 +254,7 @@ class CameraService {
 
   //获取支持指定的相机设备对象
   getSupportedCamerasFn(cameraManager: camera.CameraManager): Array<camera.CameraDevice> {
-    let supportedCameras: Array<camera.CameraDevice> = []
+    let supportedCameras: camera.CameraDevice[] = []
     try {
       supportedCameras = cameraManager.getSupportedCameras()
     } catch (error) {

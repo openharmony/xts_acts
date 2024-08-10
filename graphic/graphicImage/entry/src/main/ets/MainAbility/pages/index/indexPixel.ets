@@ -29,8 +29,8 @@ struct Index {
   private defaultCameraDeviceIndex = 0
 
   async Demo(surfaceId: string) {
-    cameraManager = camera.getCameraManager(GlobalContext.get().getCameraSettingContext());
-    let supportedCameras: Array<camera.CameraDevice> = [];
+    let cameraManager = camera.getCameraManager(GlobalContext.get().getCameraSettingContext());
+    let supportedCameras: camera.CameraDevice[] = [];
     supportedCameras = cameraManager.getSupportedCameras();
 
     if(supportedCameras.length < 1 || supportedCameras.length < this.defaultCameraDeviceIndex + 1){
@@ -66,7 +66,7 @@ struct Index {
       })
       .width('100%')
       .height('50%')
-      .border({widht:2, color: Color.Red})
+      .border({width:2, color: Color.Red})
       .onLoad(async ()=>{
         this.surfaceId=this.mXComponentController.getXComponentSurfaceId();
         await CameraService.initCamera(this.surfaceId,this.defaultCameraDeviceIndex);

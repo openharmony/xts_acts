@@ -14,16 +14,16 @@
  */
 
 export default class CommonFunc {
-  static rect_left: any;
-  static rect_top: any;
-  static rect_right: any;
-  static rect_bottom: any;
-  static rect_value: any;
+  static rectLeft: any;
+  static rectTop: any;
+  static rectRight: any;
+  static rectBottom: any;
+  static rectValue: any;
 
   static sleep(time: number){
     return new Promise((resolve,reject)=>{
       setTimeout(()=>{
-        resolve("ok")
+        resolve('ok')
       },time)
     }).then(()=>{
       console.info(`sleep ${time} over...`)
@@ -35,14 +35,14 @@ export default class CommonFunc {
     let obj = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
     let rectInfo = JSON.parse('[' + obj.$rect + ']');
-    this.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0];
-    this.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1];
-    this.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0];
-    this.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1];
-    this.rect_value = {
-      "left": this.rect_left, "top": this.rect_top, "right": this.rect_right, "bottom": this.rect_bottom
+    this.rectLeft = JSON.parse('[' + rectInfo[0] + ']')[0];
+    this.rectTop = JSON.parse('[' + rectInfo[0] + ']')[1];
+    this.rectRight = JSON.parse('[' + rectInfo[1] + ']')[0];
+    this.rectBottom = JSON.parse('[' + rectInfo[1] + ']')[1];
+    this.rectValue = {
+      "left": this.rectLeft, "top": this.rectTop, "right": this.rectRight, "bottom": this.rectBottom
     };
-    console.info(JSON.stringify(this.rect_value));
-    return this.rect_value;
+    console.info(JSON.stringify(this.rectValue));
+    return this.rectValue;
   }
 }
