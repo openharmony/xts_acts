@@ -20,6 +20,7 @@
     "MainAbility/pages/swipeRefresher/swipeRefresherPageTest",
     "MainAbility/pages/tabTitleBar/tabTitleBarPageTest",
     "MainAbility/pages/toolBar/toolBarItemState",
+    "MainAbility/pages/toolBar/toolBarModifierPage",
     "MainAbility/pages/toolBar/toolBarPageTest",
     "MainAbility/pages/treeView/treeViewNodeParamContainer",
     "MainAbility/pages/dialog/alertDialogTest",
