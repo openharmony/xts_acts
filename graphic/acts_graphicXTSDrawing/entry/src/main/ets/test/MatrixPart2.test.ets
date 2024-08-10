@@ -19,8 +19,8 @@ import { getEnumCount } from './utils';
 import common2D from '@ohos.graphics.common2D';
 const loop_times = 20;
 
-export default function drawingTsMatrixTestPart2() {
-  describe('drawingTsMatrixTestPart2', () => {
+export default function drawingTsMatrixPart2Test() {
+  describe('drawingTsMatrixPart2Test', () => {
     const DEFAULT = 0;
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
