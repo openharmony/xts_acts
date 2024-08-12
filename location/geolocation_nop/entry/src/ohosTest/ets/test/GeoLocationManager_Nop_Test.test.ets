@@ -63,7 +63,7 @@ export default function geoLocationManager_nop_test() {
             action: "action1"
           }
         ],
-        operationType: wantAgent.OperationType.START_ABILITY,
+        actionType: wantAgent.OperationType.START_ABILITY,
         requestCode: 0,
         wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       };
@@ -108,7 +108,7 @@ export default function geoLocationManager_nop_test() {
             action: "action1"
           }
         ],
-        operationType: wantAgent.OperationType.START_ABILITY,
+        actionType: wantAgent.OperationType.START_ABILITY,
         requestCode: 0,
         wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       };
