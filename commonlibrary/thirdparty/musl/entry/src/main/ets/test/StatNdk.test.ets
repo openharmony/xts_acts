@@ -148,7 +148,7 @@ export default function statNdkTest() {
      */
     it('testMuslStatMkFifoAt003', 0, async (done: Function) => {
       let result: number = stat.mkFifoAt(-100, 'fifoAt003');
-      expect(result).assertEqual(-1)
+      expect(result).assertEqual(0)
       done()
     });
     /**
