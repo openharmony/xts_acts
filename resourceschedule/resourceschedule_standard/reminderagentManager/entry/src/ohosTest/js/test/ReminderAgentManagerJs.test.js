@@ -263,12 +263,12 @@ export default function ReminderAgentManagerTest() {
                     }
                 ],
                 wantAgent: {
-                    pkgName: "ohos.acts.resourceschedule.reminderagentMgr.js.function",
-                    abilityName: "ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility"
+                    pkgName: "com.ohos.acts.reminderagentMgrTest",
+                    abilityName: "com.ohos.acts.reminderagentMgrTest.MainAbility"
                 },
                 maxScreenWantAgent: {
-                    pkgName: "ohos.acts.resourceschedule.reminderagentMgr.js.function",
-                    abilityName: "ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility"
+                    pkgName: "com.ohos.acts.reminderagentMgrTest",
+                    abilityName: "com.ohos.acts.reminderagentMgrTest.MainAbility"
                 },
                 ringDuration: 2,
                 snoozeTimes: 1,
@@ -328,12 +328,12 @@ export default function ReminderAgentManagerTest() {
                     }
                 ],
                 wantAgent: {
-                    pkgName: "ohos.acts.resourceschedule.reminderagentMgr.js.function",
-                    abilityName: "ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility"
+                    pkgName: "com.ohos.acts.reminderagentMgrTest",
+                    abilityName: "com.ohos.acts.reminderagentMgrTest.MainAbility"
                 },
                 maxScreenWantAgent: {
-                    pkgName: "ohos.acts.resourceschedule.reminderagentMgr.js.function",
-                    abilityName: "ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility"
+                    pkgName: "com.ohos.acts.reminderagentMgrTest",
+                    abilityName: "com.ohos.acts.reminderagentMgrTest.MainAbility"
                 },
                 ringDuration: 10,
                 snoozeTimes: 3,
@@ -656,8 +656,8 @@ export default function ReminderAgentManagerTest() {
                     type:reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
                 }],
                 wantAgent:{
-                    pkgName:"ohos.acts.resourceschedule.reminderagentMgr.js.function",
-                    abilityName:"ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility",
+                    pkgName:"com.ohos.acts.reminderagentMgrTest",
+                    abilityName:"com.ohos.acts.reminderagentMgrTest.MainAbility",
                     parameters:{"aa":"aaa"},
                     uri:"#"
                 }
@@ -770,12 +770,12 @@ export default function ReminderAgentManagerTest() {
                     }
                 ],
                 wantAgent: {
-                    pkgName: "ohos.acts.resourceschedule.reminderagentMgr.js.function",
-                    abilityName: "ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility"
+                    pkgName: "com.ohos.acts.reminderagentMgrTest",
+                    abilityName: "com.ohos.acts.reminderagentMgrTest.MainAbility"
                 },
                 maxScreenWantAgent: {
-                    pkgName: "ohos.acts.resourceschedule.reminderagentMgr.js.function",
-                    abilityName: "ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility"
+                    pkgName: "com.ohos.acts.reminderagentMgrTest",
+                    abilityName: "com.ohos.acts.reminderagentMgrTest.MainAbility"
                 },
                 ringDuration: 2,
                 snoozeTimes: 1,

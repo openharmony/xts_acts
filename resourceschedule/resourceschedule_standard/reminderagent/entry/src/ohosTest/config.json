@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "ohos.acts.resourceschedule.reminderagent.js.function",
+    "bundleName": "com.ohos.acts.reminderagenttest",
     "vendor": "acts",
     "version": {
       "code": 1000000,
@@ -13,7 +13,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "ohos.acts.resourceschedule.reminderagent.js.function",
+    "package": "com.ohos.acts.reminderagenttest",
     "name": ".entry_test",
     "mainAbility": ".TestAbility",
     "deviceType": [
