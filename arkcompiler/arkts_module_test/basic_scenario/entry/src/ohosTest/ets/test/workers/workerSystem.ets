@@ -12,21 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-{
-  "name": "runtime",
-  "version": "1.0.0",
-  "description": "Please describe the basic information.",
-  "main": "",
-  "author": "",
-  "license": "",
-  "dependencies": {
-  },
-  "devDependencies": {
-    "@ohos/hypium": "1.0.16",
-    "@ohos/hamock": "1.0.0",
-    "json-bigint": "1.0.0",
-    "behaviortree": "^3.0.0-beta.1",
-    "@wolfx/json5": "^2.2.3-rc.1"
-  }
+
+import worker from '@ohos.worker'
+import Network from '@system.network'
+
+let a = Network.getType();
+console.log("ModuleTest worker import system");
+
+let workerPort = worker.workerPort;
+workerPort.onmessage = () => {
+  console.log('ModuleTest system');
+  workerPort.postMessage("ModuleTest receive data from main thread");
 }

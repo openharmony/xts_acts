@@ -4,3 +4,4 @@ function add(a: number, b: number) {
   return a + b;
 }
 export { add };
+export { npmRes } from './src/main/ets/npm';

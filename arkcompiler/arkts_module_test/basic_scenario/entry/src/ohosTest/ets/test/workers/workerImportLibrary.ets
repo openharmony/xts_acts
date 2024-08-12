@@ -13,8 +13,13 @@
  * limitations under the License.
  */
  
-export { add } from "./src/main/ets/utils/Calc"
-export { getModuleDescription } from "./src/main/ets/utils/BaseInfo"
-export { addtest } from "liblibrary.so"
-export { getDescFromLibrary2 } from "./src/main/ets/utils/MultiLevelDep"
-export let A = 10
+import { worker } from '@kit.ArkTS';
+import { A } from 'library'
+
+let workerPort = worker.workerPort;
+workerPort.onmessage = () => {
+  if (A == 10) {
+    console.log('ModuleTest library');
+    workerPort.postMessage('ModuleTest receive data from main thread');
+  }
+}
