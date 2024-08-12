@@ -109,7 +109,7 @@ describe('btAccessTest', () => {
             await sleep(10000);
         } catch (error) {
             console.error(`[bluetooth_js] enable StateChange error, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
         }
         let openSt = bluetooth.getState();
         console.info('[bluetooth_js] bluetooth enable state ='+ JSON.stringify(openSt));
@@ -144,7 +144,7 @@ describe('btAccessTest', () => {
             await sleep(10000);
         } catch (error) {
             console.error(`[bluetooth_js] disable StateChange error, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
         }
         let closeSt = bluetooth.getState();
         console.info('[bluetooth_js] bluetooth disable state ='+ JSON.stringify(closeSt));
@@ -166,7 +166,7 @@ describe('btAccessTest', () => {
             expect(state >= 0 && state <= 6).assertTrue();
         } catch (error) {
             console.error("[bluetooth_js] bluetooth getState errCode:" + error.code + ",bluetooth getState errMessage:" + error.message);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
         }
         done();
     })
@@ -194,7 +194,7 @@ describe('btAccessTest', () => {
         }
     } catch (error) {
         console.error(`[bluetooth_js]enable StateChange error, code is ${error.code},message is ${error.message}`);
-        expect(error.code).assertEqual(2900099);
+        expect(Number(error.code)).assertEqual(2900099);
     }    
     bluetooth.off('stateChange', onReceiveEvent);
     done();
@@ -225,7 +225,7 @@ describe('btAccessTest', () => {
         }
     } catch (error) {
         console.error(`[bluetooth_js]disable StateChange error, code is ${error.code},message is ${error.message}`);
-        expect(error.code).assertEqual(2900099);
+        expect(Number(error.code)).assertEqual(2900099);
     }    
     done();
     })

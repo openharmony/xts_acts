@@ -129,7 +129,7 @@ describe('btA2dpTest', () => {
             expect(true).assertEqual(state == bluetooth.PlayingState.STATE_NOT_PLAYING || state == bluetooth.PlayingState.STATE_PLAYING);
         } catch (err) {
             console.info("bluetooth a2dp getPlayingState errCode:" + err.code + ",bluetooth a2dp getPlayingState errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })

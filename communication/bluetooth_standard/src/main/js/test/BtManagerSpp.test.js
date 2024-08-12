@@ -227,7 +227,7 @@ describe('btManagerSppTest', function() {
             bluetoothManager.off('sppRead', clientNumber);
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(401).assertEqual(err.code);
+            expect(Number(err.code)).assertEqual(401);
         }
         done();
     })

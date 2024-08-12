@@ -129,7 +129,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]getBtConnectionState error.code:'
             +JSON.stringify(error.code)+ 'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }  
     })
@@ -150,7 +150,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]pairDevice error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }  
     })
@@ -173,7 +173,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]getRemoteDeviceName error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }  
     })
@@ -197,7 +197,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]getRemoteDeviceClass error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -219,7 +219,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]getPairedDevices error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -241,7 +241,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]getProfileConnState error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -262,7 +262,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]setDevicePairingConfirmation error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -284,7 +284,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]setLocalName error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -305,7 +305,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]setBluetoothScanMode error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -327,7 +327,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]getBluetoothScanMode error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -348,7 +348,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]startBluetoothDiscovery error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -369,7 +369,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]stopBluetoothDiscovery error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -392,7 +392,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]getConnectionDevices error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -415,7 +415,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]getDeviceState error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -437,7 +437,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]A2DPconnect error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -460,7 +460,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]A2DPdisconnect error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -484,7 +484,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]getPlayingState error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -507,7 +507,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]HFPconnect error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -530,7 +530,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]HFPdisconnect error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -562,7 +562,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]startBLEScan error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -583,7 +583,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]startBLEScan error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
     })
@@ -640,7 +640,7 @@ describe('btManagerError003Test', function() {
           }catch(error) {
                console.error('[bluetooth_js]startAdvertising error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-               expect(error.code).assertEqual(2900003);
+               expect(Number(error.code)).assertEqual(2900003);
           }
           await sleep(2000);
           done();
@@ -693,7 +693,7 @@ describe('btManagerError003Test', function() {
           }catch(error) {
                console.error('[bluetooth_js]stopAdvertising error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-               expect(error.code).assertEqual(2900003);
+               expect(Number(error.code)).assertEqual(2900003);
           }
           done();
      })
@@ -732,7 +732,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]AddService failed, code is ${error.code},
                   message is ${error.message}`);
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }       
     })
@@ -753,7 +753,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]removeService failed, code is ${error.code},
                   message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -774,7 +774,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]close failed, code is ${error.code},
                   message is ${error.message}`);
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }       
     })
@@ -800,7 +800,7 @@ describe('btManagerError003Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]sendResponse failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
             done()
         }
         
@@ -822,7 +822,7 @@ describe('btManagerError003Test', function() {
         } catch(error) {
             console.error(`[bluetooth_js]connect failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
         }
         done()
     })
@@ -842,7 +842,7 @@ describe('btManagerError003Test', function() {
           } catch(error) {
             console.error(`[bluetooth_js]disconnect failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
         }
         done()
     })
@@ -862,7 +862,7 @@ describe('btManagerError003Test', function() {
           } catch(error) {
             console.error(`[bluetooth_js]gattClient close failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
         }
         done()
     })
@@ -903,14 +903,13 @@ describe('btManagerError003Test', function() {
                 }
             );
             await sleep(1000);
-            // expect(true).assertFalse();
             console.info('[bluetooth_js] BLE scan off8');
             bluetoothManager.BLE.stopBLEScan();
             done();
         } catch (error) {
             console.error('[bluetooth_js]Scan_0800 error.code:'+JSON.stringify(error.code)+
             'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900003);
+            expect(Number(error.code)).assertEqual(2900003);
         }
         console.info('[bluetooth_js] BLE BLEDeviceFind off start!');
         bluetoothManager.BLE.off('BLEDeviceFind', onReceiveEvent);
