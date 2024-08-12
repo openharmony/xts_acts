@@ -886,7 +886,7 @@ export default function buttonTest() {
     /**
      * @tc.number ArkUX_Stage_Button_LabelStyle_3000
      * @tc.name Tests the labelStyle property of the button component
-     * @tc.desc Set labelStyle Set the labelStyle parameter overflow to TextOverflow.Race",maxLines to 1,
+     * @tc.desc Set labelStyle Set the labelStyle parameter overflow to TextOverflow.Ellipsis",maxLines to 1,
      *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.maxLines,set the font parameter
      *               size to 15, weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */

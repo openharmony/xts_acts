@@ -14,7 +14,7 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
+import Utils from './Utils';
 
 export default function calendarpicker() {
   describe('ActsAceCalendarPickerTest', () => {
@@ -53,7 +53,7 @@ export default function calendarpicker() {
      * @tc.desc         set textStyle then get the value
      */
     it('ArkUI_Stage_CalendarPicker_textStyle_0200', 0, async (done: Function) => {
-      let value = {
+      let value: CalendarPickerTextStyle = {
         color: '#ff0000', font: {
           size: '1px', weight: '700'
         }
@@ -97,7 +97,7 @@ export default function calendarpicker() {
      * @tc.desc         set textStyle then get the value
      */
     it('ArkUI_Stage_CalendarPicker_textStyle_0300', 0, async (done: Function) => {
-      let value = {
+      let value: CalendarPickerTextStyle = {
         color: Color.Green, font: {
           size: 30, weight: 450
         }
@@ -141,7 +141,7 @@ export default function calendarpicker() {
      * @tc.desc         set textStyle then get the value
      */
     it('ArkUI_Stage_CalendarPicker_textStyle_0400', 0, async (done: Function) => {
-      let value = {
+      let value: CalendarPickerTextStyle = {
         color: '#80808g', font: {
           size: -1, weight: 1000
         }
@@ -194,7 +194,7 @@ export default function calendarpicker() {
      * @tc.desc         set textStyle then get the value
      */
     it('ArkUI_Stage_CalendarPicker_textStyle_0500', 0, async (done: Function) => {
-      let value = {
+      let value: CalendarPickerTextStyle = {
         color: 'xxx', font: {
           size: 'xxx', weight: FontWeight.Bold
         }
@@ -247,7 +247,7 @@ export default function calendarpicker() {
      * @tc.desc         set textStyle then get the value
      */
     it('ArkUI_Stage_CalendarPicker_textStyle_0600', 0, async (done: Function) => {
-      let value = {
+      let value: CalendarPickerTextStyle = {
         color: 'rgb(138,43,226)', font: {
           size: '20vp', weight: 900
         }
@@ -290,7 +290,7 @@ export default function calendarpicker() {
      * @tc.desc         set textStyle then get the value
      */
     it('ArkUI_Stage_CalendarPicker_textStyle_0700', 0, async (done: Function) => {
-      let value = {
+      let value: CalendarPickerTextStyle = {
         color: 'rgb(138,43,226)', font: {
           size: '15lpx', weight: 90
         }
@@ -584,3 +584,6 @@ export default function calendarpicker() {
 
   })
 }
+
+interface CalendarPickerFont { size: string|number, weight: string|number }
+interface CalendarPickerTextStyle { color: string|Color, font: CalendarPickerFont }

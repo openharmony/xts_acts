@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router';
 
@@ -20,7 +19,7 @@ export default function checkBoxGroupTest() {
   describe('ActsCheckBoxGroupTest', () => {
 
     beforeEach(async (done: Function) => {
-      let options: router.routerOptions = {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/CheckBoxGroup",
       }
       try {

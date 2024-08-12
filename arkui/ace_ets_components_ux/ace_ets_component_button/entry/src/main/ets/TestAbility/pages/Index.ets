@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@ts-nocheck
 import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
@@ -80,7 +79,7 @@ struct textInputTest {
                 overflow: TextOverflow.Clip,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_0100")
@@ -92,7 +91,7 @@ struct textInputTest {
                 overflow: TextOverflow.Clip,
                 maxLines: 3,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_0200")
@@ -104,7 +103,7 @@ struct textInputTest {
                 overflow: TextOverflow.Clip,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MinFontSize,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_0300")
@@ -116,7 +115,7 @@ struct textInputTest {
                 overflow: TextOverflow.Clip,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MinFontSize,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST,
                 font: { weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Normal }
               })
               .key("ArkUX_Stage_Button_LabelStyle_0400")
@@ -128,7 +127,7 @@ struct textInputTest {
                 overflow: TextOverflow.Clip,
                 maxLines: 3,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.LayoutConstraint,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_0500")
@@ -140,7 +139,7 @@ struct textInputTest {
                 overflow: TextOverflow.Ellipsis,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_0600")
@@ -152,7 +151,7 @@ struct textInputTest {
                 overflow: TextOverflow.Ellipsis,
                 maxLines: 3,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_0700")
@@ -164,7 +163,7 @@ struct textInputTest {
                 overflow: TextOverflow.Ellipsis,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MinFontSize,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_0800")
@@ -176,7 +175,7 @@ struct textInputTest {
                 overflow: TextOverflow.Ellipsis,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MinFontSize,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST,
                 font: { weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Normal }
               })
               .key("ArkUX_Stage_Button_LabelStyle_0900")
@@ -188,7 +187,7 @@ struct textInputTest {
                 overflow: TextOverflow.Ellipsis,
                 maxLines: 3,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.LayoutConstraint,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_1000")
@@ -200,7 +199,7 @@ struct textInputTest {
                 overflow: TextOverflow.None,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_1100")
@@ -212,7 +211,7 @@ struct textInputTest {
                 overflow: TextOverflow.None,
                 maxLines: 3,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_1200")
@@ -224,7 +223,7 @@ struct textInputTest {
                 overflow: TextOverflow.None,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MinFontSize,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_1300")
@@ -236,7 +235,7 @@ struct textInputTest {
                 overflow: TextOverflow.None,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MinFontSize,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST,
                 font: { weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Normal }
               })
               .key("ArkUX_Stage_Button_LabelStyle_1400")
@@ -248,7 +247,7 @@ struct textInputTest {
                 overflow: TextOverflow.None,
                 maxLines: 3,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.LayoutConstraint,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_1500")
@@ -271,7 +270,7 @@ struct textInputTest {
             Button(this.txtR)
               .width(this.widthShortSize)
               .labelStyle({ overflow: TextOverflow.Ellipsis,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST
               })
               .key("ArkUX_Stage_Button_LabelStyle_1800")
 
@@ -292,7 +291,7 @@ struct textInputTest {
             Button(this.txtU)
               .width(this.widthShortSize)
               .labelStyle({ maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
               .key("ArkUX_Stage_Button_LabelStyle_2100")
 
@@ -308,7 +307,7 @@ struct textInputTest {
                 overflow: TextOverflow.Clip,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_2300")
@@ -320,7 +319,7 @@ struct textInputTest {
                 overflow: TextOverflow.Ellipsis,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_2400")
@@ -332,7 +331,7 @@ struct textInputTest {
                 overflow: TextOverflow.None,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_2500")
@@ -349,7 +348,7 @@ struct textInputTest {
                 overflow: null,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_2700")
@@ -361,7 +360,7 @@ struct textInputTest {
                 overflow: 0,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_2800")
@@ -373,7 +372,7 @@ struct textInputTest {
                 overflow: TextOverflow.Clip,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_2900")
@@ -382,10 +381,10 @@ struct textInputTest {
             Button(this.txtd)
               .width(this.widthShortSize)
               .labelStyle({
-                overflow: TextOverflow.Race,
+                overflow: TextOverflow.Ellipsis,
                 maxLines: 1,
                 minFontSize: 5,
-                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MAX_LINES_FIRST,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_3000")

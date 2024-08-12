@@ -28,13 +28,13 @@ struct CalendarPickerExample {
     font: { size: $r("sys.float.ohos_id_text_size_body1"), weight: FontWeight.Lighter }
   }
   private selectedDate: Date = new Date('2026-02-11')
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("select page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.textStyle != null) {
+      if (eventData.data?.textStyle != null) {
         this.textStyle = JSON.parse(eventData.data.textStyle);
       }
-      if (eventData.data.edgeAlign != null) {
+      if (eventData.data?.edgeAlign != null) {
         this.edgeAlign = eventData.data.edgeAlign;
         console.info("eventData.data.edgeAlign:" + this.edgeAlign);
       }

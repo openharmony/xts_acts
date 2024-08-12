@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- //@ts-nocheck
 import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
@@ -32,11 +31,11 @@ struct DatapanelTest {
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
 
-  public color1: Color[] = ["#FFFF0000", "#FF00FF00", "#FF0000FF", "#FF000000"];
-  public color2: Color[] = ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(0,0,0)']
+  public color1: ResourceColor[] = ["#FFFF0000", "#FF00FF00", "#FF0000FF", "#FF000000"];
+  public color2: ResourceColor[] = ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(0,0,0)']
   public color3: Color[] = [Color.Red, Color.Green, Color.Blue, Color.Black]
-  public color4: Color[] = ["#FFFF0000", "#FF00FF00", "#FF0000FF", "#FF000000"]
-  public color5: Color[] = ["#FF000000", "#FFFF0000", "#FF00FF00"]
+  public color4: ResourceColor[] = ["#FFFF0000", "#FF00FF00", "#FF0000FF", "#FF000000"]
+  public color5: ResourceColor[] = ["#FF000000", "#FFFF0000", "#FF00FF00"]
   public color6: LinearGradient = new LinearGradient([{ color: "#FFA500", offset: 0 }, {
     color: "#FFFFFF00", offset: 1 }])
   public color7: LinearGradient = new LinearGradient([{ color: "#FFC0CB", offset: 0 }, {
@@ -55,16 +54,16 @@ struct DatapanelTest {
     color: Color.Green, offset: 1 }])
   public color14: LinearGradient = new LinearGradient([{ color: Color.Blue, offset: 0 }, {
     color: Color.Red, offset: 1 }])
-  public color15: Color[] = ["#01FFA500", "#4CFFFF00", "#9AFFC0CB", "#FF00FF00"]
-  public color16: Color[] = ['rgba(255,165,0,0)', 'rgba(255,255,0,0)', 'rgba(255,192,203,0)', 'rgba(0,128,0,0)']
+  public color15: ResourceColor[] = ["#01FFA500", "#4CFFFF00", "#9AFFC0CB", "#FF00FF00"]
+  public color16: ResourceColor[] = ['rgba(255,165,0,0)', 'rgba(255,255,0,0)', 'rgba(255,192,203,0)', 'rgba(0,128,0,0)']
   public color17: Color[] = [Color.Orange, Color.Yellow, Color.Pink, Color.Green]
-  public color18: Color[] = ["#01FFA500", "#4C800080", "#9AFFFF00", "#FF00FF00"]
+  public color18: ResourceColor[] = ["#01FFA500", "#4C800080", "#9AFFFF00", "#FF00FF00"]
   public color19: LinearGradient = new LinearGradient([{ color: "#01FFA500", offset: 0 }, {
     color: "#01FFFF00", offset: 1 }])
   public color39: LinearGradient = new LinearGradient([{ color: "#01FFC0CB", offset: 0 }, {
     color: "#0100FF00", offset: 1 }])
-  public color20: Color[] = ["#FFFF0000", "#FFFFFF00", "#FF00FF00"]
-  public color21: Color[] = ['rgb(255,0,0)', 'rgb(255,255,0)', 'rgb(0,255,0)']
+  public color20: ResourceColor[] = ["#FFFF0000", "#FFFFFF00", "#FF00FF00"]
+  public color21: ResourceColor[] = ['rgb(255,0,0)', 'rgb(255,255,0)', 'rgb(0,255,0)']
   public color22: Color[] = [Color.Red, Color.Yellow, Color.Green]
   public color23: LinearGradient = new LinearGradient([{ color: "#FFA500", offset: 0 }, {
     color: "#FFFFFF00", offset: 1 }])
@@ -84,10 +83,10 @@ struct DatapanelTest {
     color: Color.Green, offset: 1 }])
   public color31: LinearGradient = new LinearGradient([{ color: Color.Blue, offset: 0 }, {
     color: Color.Red, offset: 1 }])
-  public color32: Color = "#FF0000FF"
+  public color32: ResourceColor = "#FF0000FF"
   public color33: LinearGradient = new LinearGradient([{ color: "#FFA500", offset: 0 }, {
     color: "#FFC0CB", offset: 1 }])
-  public color34: Color = 'rgb(255,0,0)'
+  public color34: ResourceColor = 'rgb(255,0,0)'
   public color35: LinearGradient = new LinearGradient([{ color: 'rgb(255,165,0)', offset: 0 }, {
     color: 'rgb(255,192,203)', offset: 1 }])
   public color36: Color = Color.Red
@@ -159,7 +158,7 @@ struct DatapanelTest {
             DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
               .width(200)
               .height(200)
-              .valueColors('rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(0,0,0)')
+              .valueColors(['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(0,0,0)'])
               .valueColors(undefined)
               .key("ArkUX_Stage_DataPanel_ValueColors_0900")
 
@@ -208,9 +207,11 @@ struct DatapanelTest {
             DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
               .width(200)
               .height(200)
-              .valueColors(([{ color: 'rgb(255,165,0)', offset: 0 }, { color: 'rgb(255,255,0)', offset: 1 }],
-                [{ color: 'rgb(255,192,203)', offset: 0 }, { color: 'rgb(0,128,0)', offset: 1 }],
-                [{ color: 'rgb(0,0,255)', offset: 0 },{ color: 'rgb(255,0,0)', offset: 1 }]))
+              .valueColors([
+                new LinearGradient([{ color: 'rgb(255,165,0)', offset: 0 }, { color: 'rgb(255,255,0)', offset: 1 }]),
+                new LinearGradient([{ color: 'rgb(255,192,203)', offset: 0 }, { color: 'rgb(0,128,0)', offset: 1 }]),
+                new LinearGradient([{ color: 'rgb(0,0,255)', offset: 0 },{ color: 'rgb(255,0,0)', offset: 1 }])
+              ])
               .valueColors(undefined)
               .key("ArkUX_Stage_DataPanel_ValueColors_1600")
 
@@ -258,7 +259,7 @@ struct DatapanelTest {
             DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
               .width(200)
               .height(200)
-              .valueColors('')
+              .valueColors(toFakeColors(''))
               .key("ArkUX_Stage_DataPanel_ValueColors_2300")
 
             DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
@@ -283,7 +284,7 @@ struct DatapanelTest {
             DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
               .width(200)
               .height(200)
-              .valueColors('color')
+              .valueColors(toFakeColors('color'))
               .key("ArkUX_Stage_DataPanel_ValueColors_2700")
 
             DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
@@ -425,7 +426,7 @@ struct DatapanelTest {
             DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
               .width(200)
               .height(200)
-              .trackShadow({ radius: '' })
+              .trackShadow({ radius: toFakeNumber('') })
               .key("ArkUX_Stage_DataPanel_TrackShadow_0300")
 
             DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
@@ -455,7 +456,7 @@ struct DatapanelTest {
             DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
               .width(200)
               .height(200)
-              .trackShadow({ offsetX: '' })
+              .trackShadow({ offsetX: toFakeNumber('') })
               .key("ArkUX_Stage_DataPanel_TrackShadow_0800")
 
             DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
@@ -485,7 +486,7 @@ struct DatapanelTest {
             DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
               .width(200)
               .height(200)
-              .trackShadow({ offsetY: '' })
+              .trackShadow({ offsetY: toFakeNumber('') })
               .key("ArkUX_Stage_DataPanel_TrackShadow_1300")
 
             DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
@@ -580,4 +581,12 @@ struct DatapanelTest {
     }
   .height('100%')
 }
+}
+
+function toFakeNumber(value: string|number): number {
+  return value as number;
+}
+
+function toFakeColors(value: string|Array<ResourceColor|LinearGradient>): Array<ResourceColor|LinearGradient> {
+  return value as Array<ResourceColor|LinearGradient>;
 }

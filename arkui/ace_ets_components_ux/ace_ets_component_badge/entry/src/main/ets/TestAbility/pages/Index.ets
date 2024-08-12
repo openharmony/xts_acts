@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@ts-nocheck
 import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
@@ -293,7 +292,6 @@ struct badgeTest {
             fontSize: 16,
             badgeSize: 20,
             badgeColor: Color.Red,
-            fontWeight: 200,
             fontWeight: 500
           }
         }) {
@@ -314,8 +312,7 @@ struct badgeTest {
             fontSize: 16,
             badgeSize: 20,
             badgeColor: Color.Red,
-            fontWeight: 500,
-            fontWeight: null
+            fontWeight: null!
           }
         }) {
           Button("test")
@@ -529,7 +526,6 @@ struct badgeTest {
             fontSize: 16,
             badgeSize: 20,
             badgeColor: Color.Red,
-            borderColor: "rgb(138,43,226)",
             borderColor: Color.Pink
           }
         }) {
@@ -552,7 +548,6 @@ struct badgeTest {
             fontSize: 16,
             badgeSize: 20,
             badgeColor: Color.Red,
-            borderColor: "rgb(138,43,226)",
             borderColor: undefined
           }
         }) {
@@ -755,7 +750,6 @@ struct badgeTest {
             fontSize: 16,
             badgeSize: 20,
             badgeColor: Color.Red,
-            borderWidth: 5,
             borderWidth: "7fp"
           }
         }) {
@@ -778,7 +772,6 @@ struct badgeTest {
             fontSize: 16,
             badgeSize: 20,
             badgeColor: Color.Red,
-            borderWidth: 5,
             borderWidth: undefined
           }
         }) {

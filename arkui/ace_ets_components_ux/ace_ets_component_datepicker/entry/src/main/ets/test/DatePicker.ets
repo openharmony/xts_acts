@@ -12,13 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
+import Utils from './Utils';
 
-class Value {
-  color: Color;
+interface Value {
+  color: Color|string;
   font: ESObject;
 }
 
@@ -62,7 +61,7 @@ export default function datepicker() {
         console.info("[datePicker_afterEach] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[selectTest_afterEach] change component data error: " + err.message);
+        console.log("[selectTest_afterEach] change component data error: " + (err as Error).message);
       }
       done();
     })
@@ -117,7 +116,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datePicker_disappearTextStyle_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_disappearTextStyle_0200] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_disappearTextStyle_0200] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('datePicker');
@@ -164,7 +164,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datePicker_disappearTextStyle_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_disappearTextStyle_0300] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_disappearTextStyle_0300] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -211,7 +212,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datePicker_disappearTextStyle_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_disappearTextStyle_0400] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_disappearTextStyle_0400] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -258,7 +260,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datePicker_disappearTextStyle_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_disappearTextStyle_0500] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_disappearTextStyle_0500] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -305,7 +308,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datePicker_disappearTextStyle_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_disappearTextStyle_0600] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_disappearTextStyle_0600] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -360,7 +364,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datePicker_disappearTextStyle_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_disappearTextStyle_0700] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_disappearTextStyle_0700] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -415,7 +420,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_dataPicker_disappearTextStyle_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_dataPicker_disappearTextStyle_0800] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_dataPicker_disappearTextStyle_0800] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('datePicker');
@@ -458,7 +464,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_dataPicker_disappearTextStyle_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_dataPicker_disappearTextStyle_0900] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_dataPicker_disappearTextStyle_0900] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('datePicker');
@@ -527,7 +534,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datePicker_textStyle_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_textStyle_0200] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_textStyle_0200] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('datePicker');
@@ -574,7 +582,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datePicker_textStyle_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_textStyle_0300] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_textStyle_0300] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -621,7 +630,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datePicker_textStyle_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_textStyle_0400] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_textStyle_0400] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -668,7 +678,7 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datePicker_textStyle_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_textStyle_0500] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_textStyle_0500] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -715,7 +725,7 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datepicker_textStyle_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_textStyle_0600] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_textStyle_0600] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -770,7 +780,7 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datePicker_textStyle_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_textStyle_0700] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_textStyle_0700] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -824,7 +834,7 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datePicker_textStyle_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_textStyle_0800] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_textStyle_0800] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('datePicker');
@@ -867,7 +877,7 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datePicker_textStyle_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datePicker_textStyle_0900] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datePicker_textStyle_0900] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('datePicker');
@@ -936,7 +946,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0200] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0200] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('datePicker');
@@ -983,7 +994,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0300] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0300] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -1030,7 +1042,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0400] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0400] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -1077,7 +1090,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0500] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0500] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -1124,7 +1138,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0600] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0600] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -1180,7 +1195,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0700] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0700] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('datePicker');
@@ -1235,7 +1251,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0800] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0800] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('datePicker');
@@ -1278,7 +1295,8 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0900] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0900] change component data error: "
+          + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('datePicker');
@@ -1307,6 +1325,7 @@ export default function datepicker() {
       console.info('testDialog START');
       await Utils.sleep(3000);
       try {
+        let eventData = undefined;
         let innerEvent: events_emitter.InnerEvent = {
           eventId: 185,
           priority: events_emitter.EventPriority.LOW
@@ -1314,7 +1333,7 @@ export default function datepicker() {
         console.info("[ArkUI_Stage_datepicker_dialog_0100] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_datepicker_dialog_0100] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_datepicker_dialog_0100] change component data error: " + (err as Error).message);
       }
       done();
     });
