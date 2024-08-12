@@ -4,14 +4,15 @@
         "type": "OHJSUnitTest",
         "test-timeout": "18000000",
         "bundle-name": "com.acts.arkui.component.common.attrs.test",
-        "module-name": "phone",
+        "module-name": "entry_test",
         "shell-timeout": "60000000",
         "testcase-timeout": 6000000
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsAceEtsModuleTextInputApi12Test.hap"
+                "ActsAceEtsModuleTextInputApi12Test.hap",
+                "ActsAceEtsModuleTextInputApi12TestMain.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
