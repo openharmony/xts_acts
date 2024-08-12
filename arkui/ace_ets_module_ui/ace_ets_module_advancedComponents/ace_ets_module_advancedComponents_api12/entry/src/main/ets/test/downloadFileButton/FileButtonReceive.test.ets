@@ -35,13 +35,13 @@ export default function FileButtonReceiveTest() {
 
     /**
      * @tc.number FileButtonReceiveTest
-     * @tc.name   FileButtonReceiveTest
+     * @tc.name   FileButtonReceiveTest_0100
      * @tc.desc   Test FileButtonReceiveTest
      * @tc.size   MediumTest
      * @tc.type   Function
      * @tc.level  0
      */
-    it('FileButtonReceiveTest', 0, async function (done) {
+    it('FileButtonReceiveTest_0100', 0, async function (done) {
       console.info('[FileButtonReceiveTest] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

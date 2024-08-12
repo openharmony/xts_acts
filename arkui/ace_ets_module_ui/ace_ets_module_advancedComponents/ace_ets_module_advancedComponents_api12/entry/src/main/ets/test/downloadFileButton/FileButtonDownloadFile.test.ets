@@ -35,13 +35,13 @@ export default function FileButtonDownloadFileTest() {
 
     /**
      * @tc.number FileButtonDownloadFileTest
-     * @tc.name   FileButtonDownloadFileTest
+     * @tc.name   FileButtonDownloadFileTest_0100
      * @tc.desc   Test FileButtonDownloadFileTest
      * @tc.size   MediumTest
      * @tc.type   Function
      * @tc.level  0
      */
-    it('FileButtonDownloadFileTest', 0, async function (done) {
+    it('FileButtonDownloadFileTest_0100', 0, async function (done) {
       console.info('[FileButtonDownloadFileTest] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

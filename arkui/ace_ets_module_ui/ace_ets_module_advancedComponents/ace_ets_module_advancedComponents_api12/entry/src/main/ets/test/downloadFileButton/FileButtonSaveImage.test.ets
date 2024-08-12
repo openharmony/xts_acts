@@ -35,13 +35,13 @@ export default function FileButtonSaveImageTest() {
 
     /**
      * @tc.number FileButtonSaveImageTest
-     * @tc.name   FileButtonSaveImageTest
+     * @tc.name   FileButtonSaveImageTest_0100
      * @tc.desc   Test FileButtonSaveImageTest
      * @tc.size   MediumTest
      * @tc.type   Function
      * @tc.level  0
      */
-    it('FileButtonSaveImageTest', 0, async function (done) {
+    it('FileButtonSaveImageTest_0100', 0, async function (done) {
       console.info('[FileButtonSaveImageTest] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
