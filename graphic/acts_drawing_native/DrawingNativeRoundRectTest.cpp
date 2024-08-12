@@ -366,33 +366,33 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNormal, TestSize.Level0)
     OH_Drawing_RoundRectDestroy(roundRect3);
 }
 
-// /*
-//  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_ROUND_RECT_0401
-//  * @tc.name: testRoundRectOffsetNull
-//  * @tc.desc: test for testRoundRectOffsetNull.
-//  * @tc.size  : SmallTest
-//  * @tc.type  : Function
-//  * @tc.level : Level 3
-//  */
-// HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNull, TestSize.Level3) {
-//     // 1. Call OH_Drawing_RoundRectOffset with nullptr as the first parameter, check the error code using
-//     // OH_Drawing_ErrorCodeGet
-//     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
-//     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
-//     OH_Drawing_RoundRectOffset(nullptr, 1.0f, 1.0f);
-//     EXPECT_EQ(OH_Drawing_ErrorCodeGet(),OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-//     // 2. Call OH_Drawing_RoundRectOffset with nullptr as the second parameter, check the error code using
-//     // OH_Drawing_ErrorCodeGet
-//     OH_Drawing_ErrorCode OH_Drawing_RoundRectOffset(roundRect, nullptr, 1.0f);
-//     EXPECT_EQ(OH_Drawing_ErrorCodeGet(),OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-//     // 3. Call OH_Drawing_RoundRectOffset with nullptr as the third parameter, check the error code using
-//     // OH_Drawing_ErrorCodeGet    
-//     OH_Drawing_RoundRectOffset(roundRect, 1.0f, nullptr);
-//     EXPECT_EQ(OH_Drawing_ErrorCodeGet(),OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-//     //4. free memory
-//     OH_Drawing_RoundRectDestroy(roundRect);
-//     OH_Drawing_RectDestroy(rect);
-// }
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_ROUND_RECT_0401
+ * @tc.name: testRoundRectOffsetNull
+ * @tc.desc: test for testRoundRectOffsetNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNull, TestSize.Level3) {
+    // 1. Call OH_Drawing_RoundRectOffset with nullptr as the first parameter, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    OH_Drawing_RoundRectOffset(nullptr, 1.0f, 1.0f);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(),OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 2. Call OH_Drawing_RoundRectOffset with 0 as the second parameter, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_RoundRectOffset(roundRect, 0, 1.0f);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(),OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. Call OH_Drawing_RoundRectOffset with 0 as the third parameter, check the error code using
+    // OH_Drawing_ErrorCodeGet    
+    OH_Drawing_RoundRectOffset(roundRect, 1.0f, 0);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(),OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    //4. free memory
+    OH_Drawing_RoundRectDestroy(roundRect);
+    OH_Drawing_RectDestroy(rect);
+}
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_ROUND_RECT_0402
