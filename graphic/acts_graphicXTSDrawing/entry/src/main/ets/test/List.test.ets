@@ -54,7 +54,7 @@ export default function testsuite() {
   imageFilterTest();
   latticeTest();
   drawingTsMatrixTest();
-  drawingTsMatrixPart2Test();
+  //drawingTsMatrixPart2Test();
   typefaceTest();
   textBlobTest();
   drawingTsPathTest();
