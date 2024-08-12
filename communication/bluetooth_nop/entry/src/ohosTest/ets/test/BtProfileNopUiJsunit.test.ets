@@ -47,7 +47,7 @@ export default function btProfileNopUiJsunit() {
     })
     /**
      * @tc.number: testGetConnectionStateNop
-     * @tc.name: testGetConnectionStateNop
+     * @tc.name: testGetConnectionState
      * @tc.desc: test getConnectionState without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -67,7 +67,7 @@ export default function btProfileNopUiJsunit() {
     })
     /**
      * @tc.number: testGetConnectedDevicesNop
-     * @tc.name: testGetConnectedDevicesNop
+     * @tc.name: testGetConnectedDevices
      * @tc.desc: test getConnectedDevices without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -87,7 +87,7 @@ export default function btProfileNopUiJsunit() {
     })
     /**
      * @tc.number: testGetPlayingStateNop
-     * @tc.name: testGetPlayingStateNop
+     * @tc.name: testGetPlayingState
      * @tc.desc: test getPlayingState without permission
      * @tc.size: LargeTest
      * @tc.type: Function
