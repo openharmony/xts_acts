@@ -91,7 +91,7 @@ export default function btBleNopUiJsunit() {
     });
     /**
      * @tc.number: testStopAdvertisingNop
-     * @tc.name: testStopAdvertisingNop
+     * @tc.name: testStopAdvertising
      * @tc.desc: test stopAdvertising by promise without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -110,7 +110,7 @@ export default function btBleNopUiJsunit() {
     })
     /**
      * @tc.number: testStopAdvertisingAsyncCallbackNop
-     * @tc.name: testStopAdvertisingAsyncCallbackNop
+     * @tc.name: testStopAdvertising
      * @tc.desc: test stopAdvertising by async callback without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -141,7 +141,7 @@ export default function btBleNopUiJsunit() {
     })
     /**
      * @tc.number: testEnableAdvertisingNop
-     * @tc.name: testEnableAdvertisingNop
+     * @tc.name: testEnableAdvertising
      * @tc.desc: test enableAdvertising by promise without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -163,7 +163,7 @@ export default function btBleNopUiJsunit() {
     })
     /**
      * @tc.number: testEnableAdvertisingAsyncCallbackNop
-     * @tc.name: testEnableAdvertisingAsyncCallbackNop
+     * @tc.name: testEnableAdvertising
      * @tc.desc: test enableAdvertising by async callback without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -197,7 +197,7 @@ export default function btBleNopUiJsunit() {
     })
     /**
      * @tc.number: testStartAdvertisingNop
-     * @tc.name: testStartAdvertisingNop
+     * @tc.name: testStartAdvertising
      * @tc.desc: test startAdvertising by promise without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -216,7 +216,7 @@ export default function btBleNopUiJsunit() {
     })
     /**
      * @tc.number: testStartAdvertisingAsyncCallbackNop
-     * @tc.name: testStartAdvertisingAsyncCallbackNop
+     * @tc.name: testStartAdvertising
      * @tc.desc: test startAdvertising by async callback without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -246,7 +246,7 @@ export default function btBleNopUiJsunit() {
     })
     /**
      * @tc.number: testDisableAdvertisingNop
-     * @tc.name: testDisableAdvertisingNop
+     * @tc.name: testDisableAdvertising
      * @tc.desc: test disableAdvertising by promise without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -269,7 +269,7 @@ export default function btBleNopUiJsunit() {
     })
     /**
      * @tc.number: testDisableAdvertisingAsyncCallbackNop
-     * @tc.name: testDisableAdvertisingAsyncCallbackNop
+     * @tc.name: testDisableAdvertising
      * @tc.desc: test disableAdvertising by async callback without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -303,7 +303,7 @@ export default function btBleNopUiJsunit() {
     })
     /**
      * @tc.number: testStopBLEScanNop
-     * @tc.name: testStopBLEScanNop
+     * @tc.name: testStopBLEScan
      * @tc.desc: test stopBLEScan without permission
      * @tc.size: LargeTest
      * @tc.type: Function
