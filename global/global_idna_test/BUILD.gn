@@ -19,6 +19,6 @@ ohos_js_app_suite("ActsDemoIdnaStageTest") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsDemoIdnaStageTest"
 
-  subsystem_name = "thirdparty"
+  subsystem_name = "third_party"
   part_name = "icu"
 }
