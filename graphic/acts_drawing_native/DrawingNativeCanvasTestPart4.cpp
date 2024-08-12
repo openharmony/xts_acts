@@ -1595,7 +1595,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointNormal, TestSize.Level0) {
     }
     //4. free memory
     OH_Drawing_CanvasDestroy(canvas);
- }
+}
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4301
@@ -1792,7 +1792,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyNormal, TestSize.Level0) 
     }
     //4. OH_Drawing_CanvasIsClipEmpty
     bool isClipEmpty[] = {true, false};
-    for (int i = 0; i <2; i++) {
+    for (int i = 0; i < 2; i++) {
         OH_Drawing_CanvasIsClipEmpty(canvas, &isClipEmpty[i]);
     }
     //5. free memory
@@ -1823,7 +1823,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyNull, TestSize.Level3) {
     }
     //4. OH_Drawing_CanvasIsClipEmpty with the first parameter as null
     bool isClipEmpty[] = {true, false};
-    for (int i = 0; i <2; i++) {
+    for (int i = 0; i < 2; i++) {
         OH_Drawing_CanvasIsClipEmpty(nullptr, &isClipEmpty[i]);
     }
     //5. OH_Drawing_CanvasIsClipEmpty with the second parameter as null
@@ -1856,13 +1856,13 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyMultipleCalls, TestSize.L
     }
     //4. Call OH_Drawing_CanvasIsClipEmpty 10 times
     bool isClipEmpty[] = {true, false};
-    for (int i = 0; i <2; i++) {
+    for (int i = 0; i < 2; i++) {
         OH_Drawing_CanvasIsClipEmpty(nullptr, &isClipEmpty[i]);
     }
-    for (int i = 0; i <2; i++) {
+    for (int i = 0; i < 2; i++) {
         OH_Drawing_CanvasIsClipEmpty(nullptr, &isClipEmpty[i]);
     }
-    for (int i = 0; i <2; i++) {
+    for (int i = 0; i < 2; i++) {
         OH_Drawing_CanvasIsClipEmpty(canvas, &isClipEmpty[i]);
     }
     for (int i = 0; i < 2; i++) {
