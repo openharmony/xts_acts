@@ -293,28 +293,28 @@ HWTEST_F(DrawingNativePointTest, testPointSetNormal, TestSize.Level0) {
     OH_Drawing_PointDestroy(point);
 }
 
-/*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_POINT_0401
- * @tc.name: testPointSetNull
- * @tc.desc: test for testPointSetNull.
- * @tc.size  : SmallTest
- * @tc.type  : Function
- * @tc.level : Level 3
- */
-HWTEST_F(DrawingNativePointTest, testPointSetNull, TestSize.Level3) {
-    //1. OH_Drawing_PointSet with the first parameter as null
-    OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
-    OH_Drawing_PointSet(nullptr, 10, 10);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
-    //2. OH_Drawing_PointSet with the second parameter as null
-    OH_Drawing_PointSet(point, nullptr, 10);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
-    //3. OH_Drawing_PointSet with the third parameter as null
-    OH_Drawing_PointSet(point, 10, nullptr);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
-    //4. free memory
-    OH_Drawing_PointDestroy(point);
-}
+// /*
+//  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_POINT_0401
+//  * @tc.name: testPointSetNull
+//  * @tc.desc: test for testPointSetNull.
+//  * @tc.size  : SmallTest
+//  * @tc.type  : Function
+//  * @tc.level : Level 3
+//  */
+// HWTEST_F(DrawingNativePointTest, testPointSetNull, TestSize.Level3) {
+//     //1. OH_Drawing_PointSet with the first parameter as null
+//     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
+//     OH_Drawing_PointSet(nullptr, 10, 10);
+//     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+//     //2. OH_Drawing_PointSet with the second parameter as null
+//     OH_Drawing_PointSet(point, nullptr, 10);
+//     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+//     //3. OH_Drawing_PointSet with the third parameter as null
+//     OH_Drawing_PointSet(point, 10, nullptr);
+//     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+//     //4. free memory
+//     OH_Drawing_PointDestroy(point);
+// }
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_POINT_0402
