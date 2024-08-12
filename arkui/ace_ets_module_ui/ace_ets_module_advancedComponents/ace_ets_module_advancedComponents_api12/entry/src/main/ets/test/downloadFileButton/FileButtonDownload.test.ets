@@ -33,6 +33,14 @@ export default function FileButtonDownloadTest() {
       console.info('FileButtonDownloadTest after each called');
     })
 
+    /**
+     * @tc.number FileButtonDownloadTest
+     * @tc.name   FileButtonDownloadTest
+     * @tc.desc   Test FileButtonDownloadTest
+     * @tc.size   MediumTest
+     * @tc.type   Function
+     * @tc.level  0
+     */
     it('FileButtonDownloadTest', 0, async function (done) {
       console.info('[FileButtonDownloadTest] START');
       let driver = await Driver.create();

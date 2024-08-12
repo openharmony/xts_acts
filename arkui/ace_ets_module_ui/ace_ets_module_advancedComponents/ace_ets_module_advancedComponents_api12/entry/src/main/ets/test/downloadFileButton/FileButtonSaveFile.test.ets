@@ -33,6 +33,14 @@ export default function FileButtonSaveFileTest() {
       console.info('FileButtonSaveFileTest after each called');
     })
 
+    /**
+     * @tc.number FileButtonSaveFileTest
+     * @tc.name   FileButtonSaveFileTest
+     * @tc.desc   Test FileButtonSaveFileTest
+     * @tc.size   MediumTest
+     * @tc.type   Function
+     * @tc.level  0
+     */
     it('FileButtonSaveFileTest', 0, async function (done) {
       console.info('[FileButtonSaveFileTest] START');
       let driver = await Driver.create();
