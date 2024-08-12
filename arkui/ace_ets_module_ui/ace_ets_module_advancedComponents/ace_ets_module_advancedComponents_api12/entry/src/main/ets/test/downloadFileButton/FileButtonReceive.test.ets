@@ -3,44 +3,44 @@ import { Driver, ON } from '@ohos.UiTest';
 import router from '@system.router';
 
 
-export default function downloadFileButtonTest7() {
+export default function FileButtonReceiveTest() {
 
-  describe('downloadFileButtonTest7', function () {
+  describe('FileButtonReceiveTest', function () {
     beforeEach(async function (done) {
-      console.info('downloadFileButtonTest7 beforeEach start');
+      console.info('FileButtonReceiveTest beforeEach start');
       let options = {
-        uri: 'MainAbility/pages/downloadFileButton/Index7',
+        uri: 'MainAbility/pages/downloadFileButton/FileButtonReceive',
       }
       let result;
       try {
         router.clear();
         let pages = router.getState();
-        if (!('downloadFileButtonTest7' == pages.name)) {
+        if (!('FileButtonReceive' == pages.name)) {
           result = await router.push(options);
           await Utils.sleep(2000);
         }
       } catch (err) {
-        console.error('push downloadFileButtonTest7 page error: ' + err);
+        console.error('push FileButtonReceive page error: ' + err);
       }
 
       await Utils.sleep(1000);
-      console.info('downloadFileButtonTest7 beforeEach end');
+      console.info('FileButtonReceiveTest beforeEach end');
       done();
     });
 
     afterEach(async function () {
       await Utils.sleep(1000);
-      console.info('downloadFileButtonTest7 after each called');
+      console.info('FileButtonReceiveTest after each called');
     })
 
-    it('downloadFileButtonTest7', 0, async function (done) {
-      console.info('[downloadFileButtonTest7] START');
+    it('FileButtonReceiveTest', 0, async function (done) {
+      console.info('[FileButtonReceiveTest] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
-      let title = await driver.findComponent(ON.text('保存图片'));
+      let title = await driver.findComponent(ON.text('接收'));
       expect(title !== null).assertTrue();
       await driver.delayMs(1000);
-      console.info('[downloadFileButtonTest7] END');
+      console.info('[FileButtonReceiveTest] END');
       done();
     });
   })

@@ -49,19 +49,14 @@ import counterDirectionTest from './counter/counterDirection.test';
 import popupDirectionTest from './popup/popupDirectionTest.test';
 import segmentButtonDirectionTest from './segmenButton/segmentbuttonDirection.test';
 
-import downloadFileButtonTest1 from './downloadFileButton/downloadFileButtonTest1.test.ets';
-import downloadFileButtonTest2 from './downloadFileButton/downloadFileButtonTest2.test.ets';
-import downloadFileButtonTest3 from './downloadFileButton/downloadFileButtonTest3.test.ets';
-import downloadFileButtonTest4 from './downloadFileButton/downloadFileButtonTest4.test.ets';
-import downloadFileButtonTest5 from './downloadFileButton/downloadFileButtonTest5.test.ets';
-import downloadFileButtonTest6 from './downloadFileButton/downloadFileButtonTest6.test.ets';
-import downloadFileButtonTest7 from './downloadFileButton/downloadFileButtonTest7.test.ets';
-import downloadFileButtonTest8 from './downloadFileButton/downloadFileButtonTest8.test.ets';
-import downloadFileButtonTest9 from './downloadFileButton/downloadFileButtonTest9.test.ets';
-import downloadFileButtonTest10 from './downloadFileButton/downloadFileButtonTest10.test.ets';
-import downloadFileButtonTest11 from './downloadFileButton/downloadFileButtonTest11.test.ets';
-import downloadFileButtonTest12 from './downloadFileButton/downloadFileButtonTest12.test.ets';
-import downloadFileButtonTest13 from './downloadFileButton/downloadFileButtonTest13.test.ets';
+import FileButtonContinueToReceiveTest from './downloadFileButton/FileButtonContinueToReceiveTest.test.ets';
+import FileButtonDownloadTest from './downloadFileButton/FileButtonDownloadTest.test.ets';
+import FileButtonDownloadAndShareTest from './downloadFileButton/FileButtonDownloadAndShareTest.test.ets';
+import FileButtonDownloadFileTest from './downloadFileButton/FileButtonDownloadFileTest.test.ets';
+import FileButtonReceiveTest from './downloadFileButton/FileButtonReceiveTest.test.ets';
+import FileButtonSaveTest from './downloadFileButton/FileButtonSaveTest.test.ets';
+import FileButtonSaveFileTest from './downloadFileButton/FileButtonSaveFileTest.test.ets';
+import FileButtonSaveImageTest from './downloadFileButton/FileButtonSaveImageTest.test.ets';
 
 
 export default function testsuite() {
@@ -101,17 +96,12 @@ export default function testsuite() {
   subHeaderIconGroup();
   subHeaderTextArrow();
 
-  downloadFileButtonTest1();
-  downloadFileButtonTest2();
-  downloadFileButtonTest3();
-  downloadFileButtonTest4();
-  downloadFileButtonTest5();
-  downloadFileButtonTest6();
-  downloadFileButtonTest7();
-  downloadFileButtonTest8();
-  downloadFileButtonTest9();
-  downloadFileButtonTest10();
-  downloadFileButtonTest11();
-  downloadFileButtonTest12();
-  downloadFileButtonTest13();
+  FileButtonContinueToReceiveTest();
+  FileButtonDownloadTest();
+  FileButtonDownloadAndShareTest();
+  FileButtonDownloadFileTest();
+  FileButtonReceiveTest();
+  FileButtonSaveTest();
+  FileButtonSaveFileTest();
+  FileButtonSaveImageTest();
 }
