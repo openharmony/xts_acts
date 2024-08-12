@@ -1,4 +1,4 @@
-import { DownloadDescription, DownloadFileButton, DownloadIconStyle, DownloadLayoutDirection } from '@kit.ArkUI'
+import { DownloadDescription, DownloadFileButton, DownloadIconStyle, DownloadLayoutDirection } from '@kit.ArkUI.advanced.DownloadFileButton'
 
 @Entry
 @Component
