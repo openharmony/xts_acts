@@ -216,7 +216,7 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-   it('testClosePipe001', 0, function () {
+  it('testClosePipe001', 0, function () {
     console.info(TAG, 'usb testClosePipe001 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();

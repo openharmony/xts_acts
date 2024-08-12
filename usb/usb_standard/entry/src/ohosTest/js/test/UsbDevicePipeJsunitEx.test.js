@@ -297,7 +297,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-   it('testBulkTransfer009', 0, async function () {
+  it('testBulkTransfer009', 0, async function () {
     console.info(TAG, 'usb testBulkTransfer009 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -393,7 +393,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-   it('testBulkTransfer012', 0, async function () {
+  it('testBulkTransfer012', 0, async function () {
     console.info(TAG, 'usb testBulkTransfer012 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -1340,7 +1340,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-   it('testSetInterface009', 0, function () {
+  it('testSetInterface009', 0, function () {
     console.info(TAG, 'usb testSetInterface009 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -1553,7 +1553,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-   it('testSetConfiguration009', 0, function () {
+  it('testSetConfiguration009', 0, function () {
     console.info(TAG, 'usb testSetConfiguration009 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
