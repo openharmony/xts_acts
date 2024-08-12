@@ -19,6 +19,7 @@ import backgroundTaskManager from '@ohos.resourceschedule.backgroundTaskManager'
 import { BusinessError } from '@ohos.base'
 import fs from '@ohos.file.fs';
 import wantAgent from '@ohos.app.ability.wantAgent'
+import ohosWantAgent from '@ohos.wantAgent'
 import AVSessionManager from '@ohos.multimedia.avsession';
 import common from '@ohos.app.ability.common'
 import Want from '@ohos.app.ability.Want'
@@ -124,7 +125,7 @@ struct Index {
         } as Want
       ],
       requestCode: 0,
-      operationType: wantAgent.OperationType.START_ABILITIES,
+      operationType: ohosWantAgent.OperationType.START_ABILITIES,
       wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
     }
     try {

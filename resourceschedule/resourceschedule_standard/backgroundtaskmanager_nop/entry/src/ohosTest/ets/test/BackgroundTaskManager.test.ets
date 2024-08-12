@@ -15,6 +15,7 @@
 
 import { BusinessError } from '@kit.BasicServicesKit'
 import { WantAgent, wantAgent, UIAbility } from '@kit.AbilityKit'
+import ohosWantAgent from '@ohos.wantAgent'
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit'
 import { abilityDelegatorRegistry } from '@kit.TestKit'
 import hilog from '@ohos.hilog';
@@ -39,7 +40,7 @@ export default function BackgroundTaskManagerTest() {
             abilityName: "ohos.acts.resourceschedule.taskmgr.nop.function.TestAbility"
           }
         ],
-        operationType: wantAgent.OperationType.START_ABILITY,
+        operationType: ohosWantAgent.OperationType.START_ABILITY,
         requestCode: 0,
         wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       };
