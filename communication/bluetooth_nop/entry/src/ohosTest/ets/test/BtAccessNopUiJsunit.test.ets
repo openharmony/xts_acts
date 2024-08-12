@@ -46,7 +46,7 @@ export default function btAccessNopUiJsunit() {
     })
     /**
      * @tc.number: testGetStateNop
-     * @tc.name: testGetStateNop
+     * @tc.name: testGetState
      * @tc.desc: test getState without permission
      * @tc.size: LargeTest
      * @tc.type: Function
