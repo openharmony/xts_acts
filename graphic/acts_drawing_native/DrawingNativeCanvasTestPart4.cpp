@@ -1495,6 +1495,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacter, TestSize.Level1
     OH_Drawing_FontDestroy(font);
     OH_Drawing_CanvasDestroy(canvas);
 }
+
+
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
