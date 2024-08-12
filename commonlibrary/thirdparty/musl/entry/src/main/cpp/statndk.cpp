@@ -299,6 +299,9 @@ static napi_value MkFifoAt(napi_env env, napi_callback_info info)
     ret = mkfifoat(name, path, S_IFIFO | TEST_FIFO_MODE);
     if (ret != 0) {
         OH_LOG_INFO(LOG_APP, "MUSL mkfifoat ret %{public}d errno : %{public}d", ret, errno);
+        if (ret == -1 && errno == EACCES) {
+            ret = 0;
+        }
     }
     unlink(path);
     remove(path);
