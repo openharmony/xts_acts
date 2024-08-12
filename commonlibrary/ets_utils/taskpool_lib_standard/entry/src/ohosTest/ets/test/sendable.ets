@@ -13,11 +13,13 @@
  * limitations under the License.
  */
 
-import { lang } from '@kit.ArkTS'
+import { collections, lang } from '@kit.ArkTS'
+'use shared'
 
 @Sendable
 export class SendableClass {
   num: number;
+  para: undefined;
   constructor(num: number) {
     this.num = num;
   }

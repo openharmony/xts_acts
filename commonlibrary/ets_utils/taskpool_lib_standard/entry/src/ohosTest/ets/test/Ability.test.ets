@@ -4342,6 +4342,7 @@ export default function TaskPoolTest() {
       let task: taskpool.Task = new taskpool.Task(sendableClassTestFunc, testClass1, testClass2);
       let res = await taskpool.execute(task);
       expect(res).assertEqual(30);
+      expect(testClass1.para).assertEqual(undefined);
       done();
     })
 
