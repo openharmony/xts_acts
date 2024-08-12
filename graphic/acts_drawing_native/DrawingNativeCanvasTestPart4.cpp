@@ -1615,7 +1615,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointNull, TestSize.Level3) {
     OH_Drawing_CanvasDrawPoint(canvas, nullptr);
     //4.free memory
     OH_Drawing_CanvasDestroy(canvas);
- }
+}
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4302
