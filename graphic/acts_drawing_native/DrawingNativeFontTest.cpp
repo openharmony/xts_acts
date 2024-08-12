@@ -1880,7 +1880,7 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasuretextMultipleCalls, TestSize.Level
         TEXT_ENCODING_GLYPH_ID,
     };
     for (int i = 0; i < 4; i++) {
-          OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
+        OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
     }
     text = "abb";
     for (int i = 0; i < 4; i++) {
@@ -1889,7 +1889,7 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasuretextMultipleCalls, TestSize.Level
     text = "acc";
     for (int i = 0; i < 2; i++) {
         OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
-    }   
+    }
     //3. free memory
     OH_Drawing_FontDestroy(font);
 }

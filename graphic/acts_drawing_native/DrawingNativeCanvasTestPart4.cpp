@@ -1567,7 +1567,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacterNull, TestSize.Le
     OH_Drawing_CanvasDestroy(canvas);
     OH_Drawing_BrushDestroy(brush);
     OH_Drawing_FontDestroy(font);
- }
+}
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4300
@@ -1593,10 +1593,6 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointNormal, TestSize.Level0) {
     for (int i = 0; i < 3; i++) {
         (void)texs_vertices[i];
     }
-    // for (int i = 0; i < 3; i++) {
-    //     OH_Drawing_CanvasDrawVertices(canvas, mode[i], 3, points_vertices, texs_vertices, colors, 3, indices,
-    //                                   BLEND_MODE_COLOR);
-    // }
     //4. free memory
     OH_Drawing_CanvasDestroy(canvas);
  }
@@ -1913,7 +1909,6 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoNormal, TestSize.Level0)
     OH_Drawing_CanvasDestroy(canvas);
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_BitmapDestroy(frompixels);
-
 }
 
 /*
