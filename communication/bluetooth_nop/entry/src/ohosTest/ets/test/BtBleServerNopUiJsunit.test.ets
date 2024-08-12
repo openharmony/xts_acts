@@ -47,7 +47,7 @@ export default function btBleServerNopUiJsunit() {
     });
     /**
      * @tc.number: testGattServerSendResponseNop
-     * @tc.name: testGattServerSendResponseNop
+     * @tc.name: testSendResponse
      * @tc.desc: test gatt server sendResponse without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -77,7 +77,7 @@ export default function btBleServerNopUiJsunit() {
     })
     /**
      * @tc.number: testGattServerNotifyCharacteristicChangedNop
-     * @tc.name: testGattServerNotifyCharacteristicChangedNop
+     * @tc.name: tesNotifyCharacteristicChanged
      * @tc.desc: test gatt server notifyCharacteristicChanged by promise without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -105,7 +105,7 @@ export default function btBleServerNopUiJsunit() {
     })
     /**
      * @tc.number: testGattServerNotifyCharacteristicChangedAsyncCallbackNop
-     * @tc.name: testGattServerNotifyCharacteristicChangedAsyncCallbackNop
+     * @tc.name: testNotifyCharacteristicChanged
      * @tc.desc: test gatt server notifyCharacteristicChanged by async callback without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -145,7 +145,7 @@ export default function btBleServerNopUiJsunit() {
     })
     /**
      * @tc.number: testGattServerCloseNop
-     * @tc.name: testGattServerCloseNop
+     * @tc.name: testClose
      * @tc.desc: test gatt server close without permission
      * @tc.size: LargeTest
      * @tc.type: Function
