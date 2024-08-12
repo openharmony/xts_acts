@@ -95,6 +95,10 @@
     {
       "name": "MainAbility_label",
       "value": "MainAbility_label"
+    },
+    {
+      "name": "Caretwidth001",
+      "value": "5vp"
     }
   ]
 }
