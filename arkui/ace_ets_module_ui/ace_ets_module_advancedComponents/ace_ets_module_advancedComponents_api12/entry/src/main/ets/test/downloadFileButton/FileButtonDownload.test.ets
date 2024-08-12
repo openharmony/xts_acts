@@ -3,44 +3,44 @@ import { Driver, ON } from '@ohos.UiTest';
 import router from '@system.router';
 
 
-export default function downloadFileButtonTest1() {
+export default function FileButtonDownloadTest() {
 
-  describe('downloadFileButtonTest1', function () {
+  describe('FileButtonDownloadTest', function () {
     beforeEach(async function (done) {
-      console.info('downloadFileButtonTest1 beforeEach start');
+      console.info('FileButtonDownloadTest beforeEach start');
       let options = {
-        uri: 'MainAbility/pages/downloadFileButton/Index',
+        uri: 'MainAbility/pages/downloadFileButton/FileButtonDownload',
       }
       let result;
       try {
         router.clear();
         let pages = router.getState();
-        if (!('downloadFileButtonTest1' == pages.name)) {
+        if (!('FileButtonDownload' == pages.name)) {
           result = await router.push(options);
           await Utils.sleep(2000);
         }
       } catch (err) {
-        console.error('push downloadFileButtonTest1 page error: ' + err);
+        console.error('push FileButtonDownload page error: ' + err);
       }
 
       await Utils.sleep(1000);
-      console.info('downloadFileButtonTest1 beforeEach end');
+      console.info('FileButtonDownloadTest beforeEach end');
       done();
     });
 
     afterEach(async function () {
       await Utils.sleep(1000);
-      console.info('downloadFileButtonTest1 after each called');
+      console.info('FileButtonDownloadTest after each called');
     })
 
-    it('downloadFileButtonTest1', 0, async function (done) {
-      console.info('[downloadFileButtonTest1] START');
+    it('FileButtonDownloadTest', 0, async function (done) {
+      console.info('[FileButtonDownloadTest] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
       let title = await driver.findComponent(ON.text('下载'));
       expect(title !== null).assertTrue();
       await driver.delayMs(1000);
-      console.info('[downloadFileButtonTest1] END');
+      console.info('[FileButtonDownloadTest] END');
       done();
     });
   })

@@ -3,44 +3,44 @@ import { Driver, ON } from '@ohos.UiTest';
 import router from '@system.router';
 
 
-export default function downloadFileButtonTest4() {
+export default function FileButtonDownloadFileTest() {
 
-  describe('downloadFileButtonTest4', function () {
+  describe('FileButtonDownloadFileTest', function () {
     beforeEach(async function (done) {
-      console.info('downloadFileButtonTest4 beforeEach start');
+      console.info('FileButtonDownloadFileTest beforeEach start');
       let options = {
-        uri: 'MainAbility/pages/downloadFileButton/Index4',
+        uri: 'MainAbility/pages/downloadFileButton/FileButtonDownloadFile',
       }
       let result;
       try {
         router.clear();
         let pages = router.getState();
-        if (!('downloadFileButtonTest4' == pages.name)) {
+        if (!('FileButtonDownloadFile' == pages.name)) {
           result = await router.push(options);
           await Utils.sleep(2000);
         }
       } catch (err) {
-        console.error('push downloadFileButtonTest4 page error: ' + err);
+        console.error('push FileButtonDownloadFileTest page error: ' + err);
       }
 
       await Utils.sleep(1000);
-      console.info('downloadFileButtonTest4 beforeEach end');
+      console.info('FileButtonDownloadFileTest beforeEach end');
       done();
     });
 
     afterEach(async function () {
       await Utils.sleep(1000);
-      console.info('downloadFileButtonTest4 after each called');
+      console.info('FileButtonDownloadFileTest after each called');
     })
 
-    it('downloadFileButtonTest4', 0, async function (done) {
-      console.info('[downloadFileButtonTest4] START');
+    it('FileButtonDownloadFileTest', 0, async function (done) {
+      console.info('[FileButtonDownloadFileTest] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
       let title = await driver.findComponent(ON.text('下载文件'));
       expect(title !== null).assertTrue();
       await driver.delayMs(1000);
-      console.info('[downloadFileButtonTest4] END');
+      console.info('[FileButtonDownloadFileTest] END');
       done();
     });
   })
