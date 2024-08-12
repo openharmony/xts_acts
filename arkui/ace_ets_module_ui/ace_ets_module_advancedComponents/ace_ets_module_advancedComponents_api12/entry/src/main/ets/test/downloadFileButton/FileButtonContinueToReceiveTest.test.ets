@@ -35,13 +35,13 @@ export default function FileButtonContinueToReceiveTest() {
 
     /**
      * @tc.number FileButtonContinueToReceiveTest
-     * @tc.name   FileButtonContinueToReceiveTest
+     * @tc.name   FileButtonContinueToReceiveTest_0100
      * @tc.desc   Test FileButtonContinueToReceiveTest
      * @tc.size   MediumTest
      * @tc.type   Function
      * @tc.level  0
      */
-    it('FileButtonContinueToReceiveTest', 0, async function (done) {
+    it('FileButtonContinueToReceiveTest_0100', 0, async function (done) {
       console.info('[FileButtonContinueToReceiveTest] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
