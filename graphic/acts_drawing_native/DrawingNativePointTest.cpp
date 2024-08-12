@@ -202,7 +202,7 @@ HWTEST_F(DrawingNativePointTest, testPointGetXMultipleCalls, TestSize.Level3) {
     std::uniform_real_distribution<float> dis(0, 100);
     float x;
     OH_Drawing_Point *point = nullptr;
-    for(int i = 0; i < 10; i++) {
+    for (int i = 0; i < 10; i++) {
         point = OH_Drawing_PointCreate(dis(gen), dis(gen));
         OH_Drawing_PointGetX(point, &x);
     }
@@ -267,7 +267,7 @@ HWTEST_F(DrawingNativePointTest, testPointGetYMultipleCalls, TestSize.Level3) {
     std::uniform_real_distribution<float> dis(0, 100);
     float y;
     OH_Drawing_Point *point = nullptr;
-    for(int i = 0; i < 10; i++) {
+    for (int i = 0; i < 10; i++) {
         OH_Drawing_Point *point = OH_Drawing_PointCreate(dis(gen), dis(gen));
         OH_Drawing_PointGetX(point, &y);
     }
@@ -330,7 +330,7 @@ HWTEST_F(DrawingNativePointTest, testPointSetMultipleCalls, TestSize.Level3) {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<float> dis(0, 100);
-    for(int i = 0; i < 10; i++) {
+    for (int i = 0; i < 10; i++) {
         OH_Drawing_PointSet(point, dis(gen), dis(gen));
     }
     //2. free memory

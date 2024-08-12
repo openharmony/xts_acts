@@ -1728,11 +1728,13 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasureSingleCharacterNormal, TestSize.L
 {
     //1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
-    //2. All OH_Drawing_FontMeasureSingleCharacter parameters are entered normally, including str single character, UTF8 encoded Chinese/English characters
+    //2. All OH_Drawing_FontMeasureSingleCharacter parameters are entered normally, including str single character,
+    // UTF8 encoded Chinese/English characters
     float textWidth = 0.f;
     const char* strOne = "a";
     OH_Drawing_FontMeasureSingleCharacter(font, strOne, &textWidth);
-    //3. All OH_Drawing_FontMeasureSingleCharacter parameters are entered normally, including str multi-character, UTF8 encoded Chinese/English characters
+    //3. All OH_Drawing_FontMeasureSingleCharacter parameters are entered normally, including str multi-character,
+    // UTF8 encoded Chinese/English characters
     const char* strTwo = "你好";
     OH_Drawing_FontMeasureSingleCharacter(font, strTwo, &textWidth);
     //4. free memory
@@ -1780,7 +1782,7 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasureSingleCharacterMultipleCalls, Tes
         "a", "b", "c", "d", "e", "f", "g", "h", "i", "j"
     };
     float textWidth = 0.f;
-    for(int i = 0; i < 10; i++) {
+    for (int i = 0; i < 10; i++) {
         OH_Drawing_FontMeasureSingleCharacter(font, str[i], &textWidth);
     }
     //3. free memory
@@ -1810,7 +1812,7 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasuretextNormal, TestSize.Level0)
         TEXT_ENCODING_UTF32,
         TEXT_ENCODING_GLYPH_ID,
     };
-    for(int i = 0; i <4; i++) {
+    for (int i = 0; i < 4; i++) {
         OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
     }
     //3. OH_Drawing_FontMeasureText with the fifth parameter as null(normally)
@@ -1877,16 +1879,16 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasuretextMultipleCalls, TestSize.Level
         TEXT_ENCODING_UTF32,
         TEXT_ENCODING_GLYPH_ID,
     };
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
           OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
     }
     text = "abb";
-    for(int i = 0; i < 4; i++) {
-          OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
-    }  
+    for (int i = 0; i < 4; i++) {
+        OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
+    }
     text = "acc";
-    for(int i = 0; i < 2; i++) {
-          OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
+    for (int i = 0; i < 2; i++) {
+        OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
     }   
     //3. free memory
     OH_Drawing_FontDestroy(font);

@@ -386,7 +386,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNull, TestSize.Level3) {
     OH_Drawing_RoundRectOffset(roundRect, 0, 1.0f);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(),OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Call OH_Drawing_RoundRectOffset with 0 as the third parameter, check the error code using
-    // OH_Drawing_ErrorCodeGet    
+    // OH_Drawing_ErrorCodeGet  
     OH_Drawing_RoundRectOffset(roundRect, 1.0f, 0);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(),OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     //4. free memory
