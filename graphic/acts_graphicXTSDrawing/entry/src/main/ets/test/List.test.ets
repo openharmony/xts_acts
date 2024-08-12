@@ -35,7 +35,6 @@ import drawingTsCanvasPart3Test from './CanvasPart3.test';
 import drawingTsCanvasPart4Test from './CanvasPart4.test';
 import drawingTsRegionTest from './Region.test';
 import drawingTsMatrixTest from './Matrix.test';
-import drawingTsMatrixPart2Test from './MatrixPart2.test';
 import roundRectTest from './RoundRect.test';
 import shadowEffectTest from './ShaderEffect.test'
 
@@ -54,7 +53,6 @@ export default function testsuite() {
   imageFilterTest();
   latticeTest();
   drawingTsMatrixTest();
-  //drawingTsMatrixPart2Test();
   typefaceTest();
   textBlobTest();
   drawingTsPathTest();
