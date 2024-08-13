@@ -58,7 +58,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
           try {
             let data = await usbManager.setPortRoleTypes(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST);
             console.info(TAG, 'usb case setPortRoleTypesEx return: ' + data);
-          } catch(error) {
+          } catch (error) {
             console.info(TAG, 'usb case setPortRoleTypesEx error : ' + error);
           }
           CheckEmptyUtils.sleep(4000);
@@ -601,7 +601,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         let hasRight = await usbManager.requestRight(deviceName);
         console.info(TAG, 'usb testRequestRight002 ret :' + hasRight);
         expect(hasRight).assertFalse();
-      } catch(error) {
+      } catch (error) {
         console.info(TAG, 'usb testRequestRight002 error: ' + error);
         expect(error !== null).assertFalse();
       }
@@ -631,7 +631,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         let hasRight = await usbManager.requestRight(deviceName);
         console.info(TAG, 'usb testRequestRight003 ret :' + hasRight);
         expect(hasRight).assertFalse();
-      } catch(error) {
+      } catch (error) {
         console.info(TAG, 'usb testRequestRight003 error: ' + error);
         expect(error !== null).assertFalse();
       }

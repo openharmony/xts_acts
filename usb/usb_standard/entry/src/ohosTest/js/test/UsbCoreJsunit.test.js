@@ -98,13 +98,13 @@ describe('UsbCoreJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Func_0500
-   * @tc.name: testGetDevices001
-   * @tc.desc: Positive test: Get device list
-   * @tc.desc: 【C-ALL-HARDWARE-0502】必须支持连接标准 USB 外围设备
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Func_0500
+   * @tc.name     : testGetDevices001
+   * @tc.desc     : Positive test: Get device list
+   * @tc.desc     : 【C-ALL-HARDWARE-0502】必须支持连接标准 USB 外围设备
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testGetDevices001', 0, function (done) {
     console.info(TAG, 'usb testGetDevices001 begin');
@@ -119,12 +119,12 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Func_0900
-   * @tc.name: testHasRight001
-   * @tc.desc: Positive test: Permission query
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Func_0900
+   * @tc.name     : testHasRight001
+   * @tc.desc     : Positive test: Permission query
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testHasRight001', 0, function (done) {
     console.info(TAG, 'usb testHasRight001 begin');

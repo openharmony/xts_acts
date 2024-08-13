@@ -56,7 +56,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
           try {
             let data = await usbManager.setPortRoleTypes(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST);
             console.info(TAG, 'usb case setPortRoleTypesEx  return: ' + data);
-          } catch(error) {
+          } catch (error) {
             console.info(TAG, 'usb case setPortRoleTypes error : ' + error);
           }
           CheckEmptyUtils.sleep(4000);
@@ -198,7 +198,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info(TAG, 'usb case readData tmpUint8Array buffer : ' + CheckEmptyUtils.ab2str(tmpUint8Array));
       console.info(TAG, 'usb case readData ret: ' + data);
       expect(data >= 0).assertTrue();
-    } catch(error) {
+    } catch (error) {
       console.info(TAG, 'usb case testBulkTransfer001 error : ' + error);
       expect(error === null).assertTrue();
     }
@@ -245,7 +245,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info(TAG, 'usb case testBulkTransfer002 ret: ' + data);
       console.info(TAG, 'usb case testBulkTransfer002 send data: ' + testParam.sendData);
       expect(data > 0).assertTrue();
-    } catch(error) {
+    } catch (error) {
       console.info(TAG, 'usb testBulkTransfer002 write error : ' + error);
       expect(error === null).assertTrue();
     }
@@ -292,7 +292,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info(TAG, 'usb case testBulkTransfer003 ret: ' + data);
       console.info(TAG, 'usb case testBulkTransfer003 send data: ' + testParam.sendData);
       expect(data > 0).assertTrue();
-    } catch(error) {
+    } catch (error) {
       console.info(TAG, 'usb testBulkTransfer003 write error : ' + JSON.stringify(error));
       expect(error === null).assertTrue();
     }
@@ -337,7 +337,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info(TAG, 'usb case testBulkTransfer004 ret: ' + data);
       console.info(TAG, 'usb case testBulkTransfer004 send data: ' + testParam.sendData);
       expect(data > 0).assertTrue();
-    }).catch(error => {
+    }).catch (error => {
       console.info(TAG, 'usb testBulkTransfer004 write error : ' + JSON.stringify(error));
       expect(error === null).assertTrue();
     });
@@ -383,7 +383,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info(TAG, 'usb case testBulkTransfer005 ret: ' + data);
       console.info(TAG, 'usb case testBulkTransfer005 send data: ' + testParam.sendData);
       expect(data > 0).assertTrue();
-    }).catch(error => {
+    }).catch (error => {
       console.info(TAG, 'usb testBulkTransfer005 write error : ' + JSON.stringify(error));
       expect(error === null).assertTrue();
     });
@@ -706,7 +706,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info(TAG, 'usb controlTransfer ret data : ' + data + ' ' + caseName);
       console.info(TAG, 'usb controlTransfer controlParam.data buffer : ' + controlParam.data + ' ' + caseName);
       expect(data >= 0).assertTrue();
-    }).catch(error => {
+    }).catch (error => {
       console.info(TAG, 'usb ' + caseName + ' controlTransfer error : ' + JSON.stringify(error));
       expect(error === null).assertTrue();
     });
@@ -862,7 +862,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info(TAG, 'usb controlTransfer controlParam.data buffer : ',
         controlParam.data, ' ', 'testControlTransfer005 GetStatus');
       expect(data >= 0).assertTrue();
-    }).catch(error => {
+    }).catch (error => {
       console.info(TAG, 'usb testControlTransfer005 controlTransfer error : ' + JSON.stringify(error));
       expect(error === null).assertTrue();
     });
