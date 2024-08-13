@@ -18,8 +18,13 @@ import pathEffectTest from './PathEffect.test';
 import shadowLayerTest from './ShadowLayer.test';
 import colorFilterTest from './ColorFilter.test';
 import penTest from './Pen.test';
+import penPart2Test from './PenPart2.test'
 import brushTest from './Brush.test';
 import fontTest from './Font.test';
+import fontPart2Test from './FontPart2.test'
+import fontPart3Test from './FontPart3.test'
+import latticeTest from './Lattice.test'
+import imageFilterTest from './ImageFilter.test'
 import typefaceTest from './Typeface.test';
 import textBlobTest from './TextBlob.test';
 import drawingTsPathTest from './Path.test';
@@ -28,7 +33,10 @@ import drawingTsCanvasTest from './Canvas.test';
 import drawingTsCanvasPart2Test from './CanvasPart2.test';
 import drawingTsCanvasPart3Test from './CanvasPart3.test';
 import drawingTsCanvasPart4Test from './CanvasPart4.test';
-import drawingTsRegionTest from './Region.test'
+import drawingTsRegionTest from './Region.test';
+import drawingTsMatrixTest from './Matrix.test';
+import roundRectTest from './RoundRect.test';
+import shadowEffectTest from './ShaderEffect.test'
 
 export default function testsuite() {
   samplingOptionsTest();
@@ -37,15 +45,23 @@ export default function testsuite() {
   shadowLayerTest();
   colorFilterTest();
   penTest();
+  penPart2Test();
   brushTest();
   fontTest();
+  fontPart2Test();
+  fontPart3Test();
+  imageFilterTest();
+  latticeTest();
+  drawingTsMatrixTest();
   typefaceTest();
   textBlobTest();
   drawingTsPathTest();
   drawingTsPath3Test();
   drawingTsCanvasTest();
   drawingTsCanvasPart2Test();
-  drawingTsCanvasPart3Test(); 
-  drawingTsCanvasPart4Test(); 
+  drawingTsCanvasPart3Test();
+  drawingTsCanvasPart4Test();
   drawingTsRegionTest();
+  roundRectTest();
+  shadowEffectTest();
 }
