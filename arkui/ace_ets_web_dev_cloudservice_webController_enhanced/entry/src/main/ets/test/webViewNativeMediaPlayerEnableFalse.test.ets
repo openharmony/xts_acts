@@ -81,7 +81,27 @@ export default function webViewNativeMediaPlayerEnableFalse() {
     it('testWebViewNativeMediaPlayerEnableFalse', 0, async (done: Function) => {
         emitKey = "emitWebViewNativeMediaPlayerEnableFalse"
         Utils.emitEvent(emitKey, 10);
-        Utils.registerEvent("testWebViewNativeMediaPlayerEnableFalse", true, 1539, done);
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerEnableFalse", true, 1539,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
+        sendEventByKey('webViewNativeMediaPlayerEnableFalse', 10, '');
+    })
+    /*
+     *@tc.number SUB_ACE_WEB_NativeMediaPlayerEnableFalseShouldOverlayFalse_API_0001
+     *@tc.name testWebViewNativeMediaPlayerEnableFalseShouldOverlayFalse
+     *@tc.desc test NativeMediaPlayerEnableFalseShouldOverlayFalse
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testWebViewNativeMediaPlayerEnableFalseShouldOverlayFalse', 0, async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerEnableFalseShouldOverlayFalse"
+        Utils.emitEvent(emitKey, 10);
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerEnableFalseShouldOverlayFalse", true, 15392,
+        done, (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
         sendEventByKey('webViewNativeMediaPlayerEnableFalse', 10, '');
     })
   })

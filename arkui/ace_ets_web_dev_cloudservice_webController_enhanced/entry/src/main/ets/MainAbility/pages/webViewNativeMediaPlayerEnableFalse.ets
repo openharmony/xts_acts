@@ -635,6 +635,7 @@ struct WebComponent {
   @State node_width : number = 300;
   @State node_height : number = 150;
   @State isNoCallback : boolean = true;
+  @State shouldOverlay : boolean = true;
   //@State node_offset : Position = {x: 0, y: 0};
   
   area?: Area
@@ -692,9 +693,19 @@ struct WebComponent {
                 switch (this.emitKey) {
                     case 'emitWebViewNativeMediaPlayerEnableFalse': {
                         this.isNoCallback = true
+                        this.shouldOverlay = true
                         await Utils.sleep(2000)
                         if( this.isNoCallback ) {
                             Utils.emitEvent(true, 1539)
+                        }
+                        break;
+                    }
+                    case 'emitWebViewNativeMediaPlayerEnableFalseShouldOverlayFalse': {
+                        this.isNoCallback = true
+                        this.shouldOverlay = false
+                        await Utils.sleep(2000)
+                        if( this.isNoCallback ) {
+                            Utils.emitEvent(true, 15392)
                         }
                         break;
                     }
@@ -703,7 +714,7 @@ struct WebComponent {
           }
           Stack() {
               Web({ src: this.page_url, controller: this.controller })
-                .enableNativeMediaPlayer({ enable: false, shouldOverlay: true })
+                .enableNativeMediaPlayer({ enable: false, shouldOverlay: this.shouldOverlay })
                 .onPageBegin((event: PageBeginParam) => {
                     console.error('enter onPageBegin, url:' + event.url);
                     console.error(' in onPageBegin, onCreateNativeMediaPlayer:' + this.controller.onCreateNativeMediaPlayer);

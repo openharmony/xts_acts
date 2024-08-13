@@ -33,8 +33,8 @@
     <button onclick="hideProps('props')">隐藏属性</button>
 
 </div>
-<video  id='bodyId' controls preload='auto' muted autoplay
-        poster='https://www.runoob.com/try/demo_source/smiley-2.gif'>
+<video  id='bodyId' controls preload='none' muted autoplay
+        controlslist='noremoteplayback'>
     <source id='mp4'
             src='https://www.runoob.com/try/demo_source/movie.mp4'
             type='video/mp4'>
@@ -127,9 +127,6 @@ function fullScreenDom(id) {
         }
 
     }
-     function setCurrentTime() {
-        getVideo('bodyId').currentTime = 1;
-    }
     function setMutedFalse() {
         getVideo('bodyId').muted = false;
         getVideo('bodyId').volume = 0.5;
@@ -149,7 +146,6 @@ function fullScreenDom(id) {
         if (n >= videos.length) {
             n = 0;
         }
-
         var mp4 = document.getElementById('mp4');
         var parent = mp4.parentNode;
 
