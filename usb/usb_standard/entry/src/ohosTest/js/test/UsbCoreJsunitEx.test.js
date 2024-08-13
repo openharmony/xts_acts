@@ -22,1133 +22,846 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 export default function UsbCoreJsFunctionsTestEx() {
 describe('UsbCoreJsFunctionsTestEx', function () {
 
-  var gDeviceList
-  var portCurrentMode
-  var invalidCode = 0;
+  let gDeviceList;
+  let gPipe;
+  let usbPortList;
+  let devices;
+  let isDeviceConnected;
+  const TAG = "[UsbCoreJsFunctionsTestEx]";
+  const PARAM_INVALIDCODE = 123;
+  const PARAM_INVALID = "invalid";
+
+  function deviceConnected() {
+    if (usbPortList === undefined) {
+      console.info(TAG, "Test USB device is not supported");
+      return false;
+    }
+    if (gDeviceList.length > 0) {
+        console.info(TAG, "Test USB device is connected");
+        return true;
+    }
+    console.info(TAG, "Test USB device is not connected");
+    return false;
+  }
 
   beforeAll(async function () {
-    console.log('*************Usb Unit UsbCoreJsFunctionsTestEx Begin*************');
-    var Version = usbManager.getVersion()
-    console.info('begin test getversion :' + Version)
+    console.log(TAG, '*************Usb Unit UsbCoreJsFunctionsTestEx Begin*************');
+    var Version = usbManager.getVersion();
+    console.info(TAG, 'begin test getversion :' + Version)
     // version > 17  host currentMode = 2 device currentMode = 1
-    var usbPortList = usbManager.getPorts()
-    if (usbPortList == undefined) {
-      portCurrentMode = 1;
-      return
-    }
+    usbPortList = usbManager.getPortList();
     gDeviceList = usbManager.getDevices();
-    if (usbPortList.length > 0) {
-      if (gDeviceList.length > 0) {
+    isDeviceConnected = deviceConnected();
+    if (isDeviceConnected) {
+      if (usbPortList.length > 0) {
         if (usbPortList[0].status.currentMode == 1) {
-          await usbManager.setPortRoleTypes(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
-            portCurrentMode = 2
-            console.info('usb case setPortRoleTypesEx return: ' + data);
-          }).catch(error => {
-            console.info('usb case setPortRoleTypesEx error : ' + error);
-          });
+          try {
+            let data = await usbManager.setPortRoleTypes(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST);
+            console.info(TAG, 'usb case setPortRoleTypesEx return: ' + data);
+          } catch (error) {
+            console.info(TAG, 'usb case setPortRoleTypesEx error : ' + error);
+          }
           CheckEmptyUtils.sleep(4000);
-          console.log('*************Usb Unit Begin switch to host*************');
+          console.log(TAG, '*************Usb Unit Begin switch to host*************');
         }
-      } else {
-        portCurrentMode = 1
       }
     }
   })
   beforeEach(function () {
-    console.info('beforeEach: *************Usb Unit Test CaseEx*************');
+    console.info(TAG, 'beforeEach: *************Usb Unit Test CaseEx*************');
+    gDeviceList = usbManager.getDevices();
+    if (isDeviceConnected) {
+      devices = gDeviceList[0];
+      console.info(TAG, 'beforeEach return devices : ' + JSON.stringify(devices));
+    }
   })
   afterEach(function () {
-    console.info('afterEach: *************Usb Unit Test CaseEx*************');
+    console.info(TAG, 'afterEach: *************Usb Unit Test CaseEx*************');
+    devices = null;
+    gPipe = null;
+    console.info(TAG, 'afterEach return devices : ' + JSON.stringify(devices));
+    console.info(TAG, 'afterEach return gPipe : ' + JSON.stringify(gPipe));
   })
   afterAll(function () {
-    console.log('*************Usb Unit UsbCoreJsFunctionsTestEx End*************');
+    console.log(TAG, '*************Usb Unit UsbCoreJsFunctionsTestEx End*************');
   })
 
+  function getPipe(testCaseName) {
+    gPipe = usbManager.connectDevice(devices);
+    console.info(TAG, `usb ${testCaseName} connectDevice getPipe ret: ${JSON.stringify(gPipe)}`);
+    expect(gPipe !== null).assertTrue();
+  }
 
-  /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_0100
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, error devAddress
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it('SUB_USB_HostManager_JS_Compatibility_0100', 0, async function () {
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0100 begin');
-    console.info('*****SUB_USB_HostManager_JS_Compatibility_0100 portCurrentMode**** ret : ' + portCurrentMode)
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-      }).catch(error => {
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_0100 requestRight error:' + error);
-      });
-      console.info('usb SUB_USB_HostManager_JS_Compatibility_0100 requestRight end:');
-    }
-
-    var device = JSON.parse(JSON.stringify(gDeviceList[0]));
-    device.devAddress = 2 + 10000
-    try {
-      var usbDevicePipe = usbManager.connectDevice(device)
-    } catch (err) {
-      expect(true).assertTrue();
-      console.info('usb connectDevice fail：' + err);
-    }
-    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) +
-      ' devAddress ' + device.devAddress);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertTrue();
-
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0100 :  PASS');
-  })
-
-  /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_0200
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, error busNum
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it('SUB_USB_HostManager_JS_Compatibility_0200', 0, async function () {
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0200 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-      }).catch(error => {
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_0200 requestRight error:' + error);
-      });
-      console.info('usb SUB_USB_HostManager_JS_Compatibility_0200 requestRight end:');
-    }
-
-    var device = JSON.parse(JSON.stringify(gDeviceList[0]));
-    device.busNum = 2 + 1000
-    try {
-      var usbDevicePipe = usbManager.connectDevice(device)
-    } catch (err) {
-      expect(true).assertTrue();
-      console.info('usb connectDevice fail：' + err);
-    }
-    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) +
-      ' busNum ' + device.busNum);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertTrue();
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0200 :  PASS');
-  })
-
-  /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_0300
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, error serial
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it('SUB_USB_HostManager_JS_Compatibility_0300', 0, async function () {
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0300 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-      }).catch(error => {
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_0300 requestRight error:' + error);
-      });
-      console.info('usb SUB_USB_HostManager_JS_Compatibility_0300 requestRight end:');
-    }
-
-    var device = JSON.parse(JSON.stringify(gDeviceList[0]));
-    device.serial = 'asdfsd'
-    try {
-      var usbDevicePipe = usbManager.connectDevice(device)
-    } catch (err) {
-      expect(true).assertTrue();
-      console.info('usb connectDevice fail：' + err);
-    }
-    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) +
-      ' serial ' + device.serial);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertFalse();
-    var isPipClose = usbManager.closePipe(usbDevicePipe);
-    console.info('usb case closePipe ret: ' + isPipClose);
+  function toClosePipe(testCaseName) {
+    let isPipClose = usbManager.closePipe(gPipe);
+    console.info(TAG, `usb ${testCaseName} closePipe getPipe ret: ${isPipClose}`);
     expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0300 :  PASS');
+  }
+
+  /**
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_0100
+   * @tc.name     : testConnectDevice002
+   * @tc.desc     : Negative test: open device, error devAddress 2+10000
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
+   */
+  it('testConnectDevice002', 0, async function () {
+    console.info(TAG, 'usb SUB_USB_HostManager_JS_Compatibility_0100 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
+      return
+    }
+
+    var device = JSON.parse(JSON.stringify(devices));
+    device.devAddress = 2 + 10000;
+    try {
+      gPipe = usbManager.connectDevice(device);
+      console.info(TAG, 'usb case testConnectDevice002 ret: ' + JSON.stringify(gPipe));
+      expect(CheckEmptyUtils.isEmpty(gPipe)).assertTrue();
+    } catch (err) {
+      console.info(TAG, 'usb testConnectDevice002 fail: ' + err);
+      expect(err !== null).assertTrue();
+    }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_0400
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, error name
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_0200
+   * @tc.name     : testConnectDevice003
+   * @tc.desc     : Negative test: open device, error busNum 2+1000
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_Compatibility_0400', 0, async function () {
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0400 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testConnectDevice003', 0, async function () {
+    console.info(TAG, 'usb testConnectDevice003 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-      }).catch(error => {
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_0400 requestRight error:' + error);
-      });
-      console.info('usb SUB_USB_HostManager_JS_Compatibility_0400 requestRight end:');
     }
 
-    var device = JSON.parse(JSON.stringify(gDeviceList[0]));
-    device.name = 2 + 10000
+    var device = JSON.parse(JSON.stringify(devices));
+    device.busNum = 2 + 1000;
     try {
-      var usbDevicePipe = usbManager.connectDevice(device)
+      gPipe = usbManager.connectDevice(device);
+      console.info(TAG, 'usb case testConnectDevice003 ret: ' + JSON.stringify(gPipe));
+      expect(CheckEmptyUtils.isEmpty(gPipe)).assertTrue();
     } catch (err) {
-      expect(true).assertTrue();
-      console.info('usb connectDevice fail：' + err);
+      console.info(TAG, 'usb testConnectDevice003 fail: ' + err);
+      expect(err !== null).assertTrue();
     }
-    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) + ' name ' + device.name);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertTrue();
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0400 :  PASS');
+    
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_0500
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, error manufacturerName
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_0300
+   * @tc.name     : testConnectDevice004
+   * @tc.desc     : Negative test: open device, error serial 'asdfsd'
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_Compatibility_0500', 0, async function () {
-    console.info('usb connect_device_06 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testConnectDevice004', 0, async function () {
+    console.info(TAG, 'usb testConnectDevice004 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-      }).catch(error => {
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_0500 requestRight error:' + error);
-      });
-      console.info('usb SUB_USB_HostManager_JS_Compatibility_0500 requestRight end:');
     }
 
-    var device = JSON.parse(JSON.stringify(gDeviceList[0]));
-    device.manufacturerName = 2 + 10000
+    var device = JSON.parse(JSON.stringify(devices));
+    device.serial = 'asdfsd';
     try {
-      var usbDevicePipe = usbManager.connectDevice(device)
+      gPipe = usbManager.connectDevice(device);
+      console.info(TAG, 'usb case testConnectDevice004 ret: ' + JSON.stringify(gPipe));
+      expect(CheckEmptyUtils.isEmpty(gPipe)).assertFalse();
     } catch (err) {
-      expect(true).assertTrue();
-      console.info('usb connectDevice fail：' + err);
+      console.info(TAG, 'usb testConnectDevice004 fail: ' + err);
+      expect(err !== null).assertTrue();
     }
-    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) +
-      ' manufacturerName ' + device.manufacturerName);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertTrue();
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0500 :  PASS');
+    toClosePipe('testConnectDevice004');
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_0600
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, error productName
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_0400
+   * @tc.name     : testConnectDevice005
+   * @tc.desc     : Negative test: open device, error name 2+10000
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_Compatibility_0600', 0, async function () {
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0600 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testConnectDevice005', 0, async function () {
+    console.info(TAG, 'usb testConnectDevice005 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-      }).catch(error => {
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_0600 requestRight error:' + error);
-      });
-      console.info('usb SUB_USB_HostManager_JS_Compatibility_0600 requestRight end:');
     }
 
-    var device = JSON.parse(JSON.stringify(gDeviceList[0]));
-    device.productName = 'sdfsdfe'
+    var device = JSON.parse(JSON.stringify(devices));
+    device.name = 2 + 10000;
     try {
-      var usbDevicePipe = usbManager.connectDevice(device)
+      gPipe = usbManager.connectDevice(device);
+      console.info(TAG, 'usb case testConnectDevice005 ret: ' + JSON.stringify(gPipe));
+      expect(gPipe !== null).assertFalse();
     } catch (err) {
-      expect(true).assertTrue();
-      console.info('usb connectDevice fail：' + err);
-    }
-    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) +
-      ' productName ' + device.productName);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertFalse();
-    var isPipClose = usbManager.closePipe(usbDevicePipe);
-    console.info('usb case closePipe ret: ' + isPipClose);
-    expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0600 :  PASS');
-  })
-
-  /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_0700
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, error version
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it('SUB_USB_HostManager_JS_Compatibility_0700', 0, async function () {
-    console.info('usb connect_device_08 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-      }).catch(error => {
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_0700 requestRight error:' + error);
-      });
-      console.info('usb SUB_USB_HostManager_JS_Compatibility_0700 requestRight end:');
-    }
-
-    var device = JSON.parse(JSON.stringify(gDeviceList[0]));
-    device.version = 'gwefsdf'
-    try {
-      var usbDevicePipe = usbManager.connectDevice(device)
-    } catch (err) {
-      expect(true).assertTrue();
-      console.info('usb connectDevice fail：' + err);
-    }
-    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) +
-      ' version ' + device.version);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertFalse();
-    var isPipClose = usbManager.closePipe(usbDevicePipe);
-    console.info('usb case closePipe ret: ' + isPipClose);
-    expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0700 :  PASS');
-  })
-
-  /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_0800
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, error vendorId
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it('SUB_USB_HostManager_JS_Compatibility_0800', 0, async function () {
-    console.info('usb connect_device_09 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-      }).catch(error => {
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_0800 requestRight error:' + error);
-      });
-      console.info('usb SUB_USB_HostManager_JS_Compatibility_0800 requestRight end:');
-    }
-
-    var device = JSON.parse(JSON.stringify(gDeviceList[0]));
-    device.vendorId = 2 + 10000
-    try {
-      var usbDevicePipe = usbManager.connectDevice(device)
-    } catch (err) {
-      expect(true).assertTrue();
-      console.info('usb connectDevice fail：' + err);
-    }
-    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) +
-      ' vendorId ' + device.vendorId);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertFalse();
-    var isPipClose = usbManager.closePipe(usbDevicePipe);
-    console.info('usb case closePipe ret: ' + isPipClose);
-    expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0800 :  PASS');
-  })
-
-  /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_0900
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, error productId
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it('SUB_USB_HostManager_JS_Compatibility_0900', 0, async function () {
-    console.info('usb connect_device_10 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-      }).catch(error => {
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_0900 requestRight error:' + error);
-      });
-      console.info('usb SUB_USB_HostManager_JS_Compatibility_0900 requestRight end:');
-    }
-
-    var device = JSON.parse(JSON.stringify(gDeviceList[0]));
-    device.productId = 2 + 10000
-    try {
-      var usbDevicePipe = usbManager.connectDevice(device)
-    } catch (err) {
-      expect(true).assertTrue();
-      console.info('usb connectDevice fail：' + err);
-    }
-    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) +
-      ' productId ' + device.productId);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertFalse();
-    var isPipClose = usbManager.closePipe(usbDevicePipe);
-    console.info('usb case closePipe ret: ' + isPipClose);
-    expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_0900 :  PASS');
-  })
-
-  /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_1000
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, error clazz
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it('SUB_USB_HostManager_JS_Compatibility_1000', 0, async function () {
-    console.info('usb connect_device_11 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-      }).catch(error => {
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_1000 requestRight error:' + error);
-      });
-      console.info('usb SUB_USB_HostManager_JS_Compatibility_1000 requestRight end:');
-    }
-
-    var device = JSON.parse(JSON.stringify(gDeviceList[0]));
-    device.clazz = 2 + 10000
-    try {
-      var usbDevicePipe = usbManager.connectDevice(device)
-    } catch (err) {
-      expect(true).assertTrue();
-      console.info('usb connectDevice fail：' + err);
-    }
-    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) + ' clazz ' + device.clazz);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertFalse();
-    var isPipClose = usbManager.closePipe(usbDevicePipe);
-    console.info('usb case closePipe ret: ' + isPipClose);
-    expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_1000 :  PASS');
-  })
-
-  /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_1100
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, error subClass
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it('SUB_USB_HostManager_JS_Compatibility_1100', 0, async function () {
-    console.info('usb connect_device_12 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_1100 requestRight hasRight: ' + hasRight);
-      }).catch(error => {
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_1100 requestRight error:' + error);
-      });
-      console.info('usb SUB_USB_HostManager_JS_Compatibility_1100 requestRight end');
-    }
-
-    var device = JSON.parse(JSON.stringify(gDeviceList[0]));
-    device.subClass = 2 + 10000
-    try {
-      var usbDevicePipe = usbManager.connectDevice(device)
-    } catch (err) {
-      expect(true).assertTrue();
-      console.info('usb connectDevice fail：' + err);
-    }
-    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) + ' subClass ' + device.subClass);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertFalse();
-    var isPipClose = usbManager.closePipe(usbDevicePipe);
-    console.info('usb case closePipe ret: ' + isPipClose);
-    expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_1100 :  PASS');
-  })
-
-  /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_1200
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, error protocol
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it('SUB_USB_HostManager_JS_Compatibility_1200', 0, async function () {
-    console.info('usb connect_device_13 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-      }).catch(error => {
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_1200 requestRight error:' + error);
-      });
-      console.info('usb SUB_USB_HostManager_JS_Compatibility_1200 requestRight end:');
-    }
-
-    var device = JSON.parse(JSON.stringify(gDeviceList[0]));
-    device.protocol = 2 + 10000
-    try {
-      var usbDevicePipe = usbManager.connectDevice(device)
-    } catch (err) {
-      expect(true).assertTrue();
-      console.info('usb connectDevice fail：' + err);
-    }
-    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) + ' protocol ' + device.protocol);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertFalse();
-    var isPipClose = usbManager.closePipe(usbDevicePipe);
-    console.info('usb case closePipe ret: ' + isPipClose);
-    expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_1200 :  PASS');
-  })
-
-  /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_0400
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, parameter type error
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it('SUB_USB_HostManager_JS_ErrCode_0400', 0, async function () {
-    console.info('usb SUB_USB_HostManager_JS_ErrCode_0400 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-        console.info('usb HostManager_JS_ErrCode_0400 requestRight hasRight:' + hasRight);
-      }).catch(error => {
-        console.info('usb HostManager_JS_ErrCode_0400 requestRight error:' + error);
-      });
-    }
-    try {
-      var maskCode = usbManager.connectDevice("invalid");
-      console.info('usb HostManager_JS_ErrCode_0400 case connectDevice return: ' + maskCode);
-      expect(false).assertTrue();
-    } catch (err) {
-      console.info('usb HostManager_JS_ErrCode_0400 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testConnectDevice005 fail: ' + err);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_HostManager_JS_ErrCode_0400 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_1700
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, parameter number exception, necessary parameters not input
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_0500
+   * @tc.name     : testConnectDevice006
+   * @tc.desc     : Negative test: open device, error manufacturerName 2+10000
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_ErrCode_1700', 0, async function () {
-    console.info('usb SUB_USB_HostManager_JS_ErrCode_1700 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testConnectDevice006', 0, async function () {
+    console.info(TAG, 'usb testConnectDevice006 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
+    
+    var device = JSON.parse(JSON.stringify(devices));
+    device.manufacturerName = 2 + 10000;
+    try {
+      gPipe = usbManager.connectDevice(device);
+      console.info(TAG, 'usb case testConnectDevice006 ret: ' + JSON.stringify(gPipe));
+      expect(gPipe !== null).assertFalse();
+    } catch (err) {
+      console.info(TAG, 'usb testConnectDevice006 fail: ' + err);
+      expect(err.code).assertEqual(401);
+    }
+  })
+
+  /**
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_0600
+   * @tc.name     : testConnectDevice007
+   * @tc.desc     : Negative test: open device, error productName 'sdfsdfe'
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
+   */
+  it('testConnectDevice007', 0, async function () {
+    console.info(TAG, 'usb testConnectDevice007 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
-    var isRight = usbManager.hasRight(gDeviceList[0].name);
-    if (!isRight) {
-      await usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-        console.info('usb HostManager_JS_ErrCode_1700 requestRight hasRight:' + hasRight);
-      }).catch(error => {
-        console.info('usb HostManager_JS_ErrCode_1700 requestRight error:' + error);
-      });
+
+    var device = JSON.parse(JSON.stringify(devices));
+    device.productName = 'sdfsdfe';
+    try {
+      gPipe = usbManager.connectDevice(device);
+      console.info(TAG, 'usb case testConnectDevice007 ret: ' + JSON.stringify(gPipe));
+      expect(CheckEmptyUtils.isEmpty(gPipe)).assertFalse();
+    } catch (err) {
+      console.info(TAG, 'usb testConnectDevice007 fail: ' + err);
+      expect(err !== null).assertTrue();
     }
+    toClosePipe('testConnectDevice007');
+  })
+
+  /**
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_0700
+   * @tc.name     : testConnectDevice008
+   * @tc.desc     : Negative test: open device, error version 'gwefsdf'
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
+   */
+  it('testConnectDevice008', 0, async function () {
+    console.info(TAG, 'usb connect_device_08 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
+      return
+    }
+
+    var device = JSON.parse(JSON.stringify(devices));
+    device.version = 'gwefsdf';
+    try {
+      gPipe = usbManager.connectDevice(device);
+      console.info(TAG, 'usb case testConnectDevice008 ret: ' + JSON.stringify(gPipe));
+      expect(CheckEmptyUtils.isEmpty(gPipe)).assertFalse();
+    } catch (err) {
+      console.info(TAG, 'usb testConnectDevice008 fail: ' + err);
+      expect(err !== null).assertTrue();
+    }
+    toClosePipe('testConnectDevice008');
+  })
+
+  /**
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_0800
+   * @tc.name     : testConnectDevice009
+   * @tc.desc     : Negative test: open device, error vendorId 2+10000
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
+   */
+  it('testConnectDevice009', 0, async function () {
+    console.info(TAG, 'usb testConnectDevice009 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
+      return
+    }
+
+    var device = JSON.parse(JSON.stringify(devices));
+    device.vendorId = 2 + 10000;
+    try {
+      gPipe = usbManager.connectDevice(device);
+      console.info(TAG, 'usb case testConnectDevice009 ret: ' + JSON.stringify(gPipe));
+      expect(CheckEmptyUtils.isEmpty(gPipe)).assertFalse();
+    } catch (err) {
+      console.info(TAG, 'usb testConnectDevice009 fail: ' + err);
+      expect(err !== null).assertTrue();
+    }
+    toClosePipe('testConnectDevice009');
+  })
+
+  /**
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_0900
+   * @tc.name     : testConnectDevice010
+   * @tc.desc     : Negative test: open device, error productId 2+10000
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
+   */
+  it('testConnectDevice010', 0, async function () {
+    console.info(TAG, 'usb testConnectDevice010 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
+      return
+    }
+
+    var device = JSON.parse(JSON.stringify(devices));
+    device.productId = 2 + 10000;
+    try {
+      gPipe = usbManager.connectDevice(device);
+      console.info(TAG, 'usb case testConnectDevice010 ret: ' + JSON.stringify(gPipe));
+      expect(CheckEmptyUtils.isEmpty(gPipe)).assertFalse();
+    } catch (err) {
+      console.info(TAG, 'usb testConnectDevice010 fail: ' + err);
+      expect(err !== null).assertTrue();
+    }
+    toClosePipe('testConnectDevice010');
+  })
+
+  /**
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_1000
+   * @tc.name     : testConnectDevice011
+   * @tc.desc     : Negative test: open device, error clazz 2+10000
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
+   */
+  it('testConnectDevice011', 0, async function () {
+    console.info(TAG, 'usb connect_device_11 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
+      return
+    }
+
+    var device = JSON.parse(JSON.stringify(devices));
+    device.clazz = 2 + 10000;
+    try {
+      gPipe = usbManager.connectDevice(device);
+      console.info(TAG, 'usb case testConnectDevice011 ret: ' + JSON.stringify(gPipe));
+      expect(CheckEmptyUtils.isEmpty(gPipe)).assertFalse();
+    } catch (err) {
+      console.info(TAG, 'usb testConnectDevice011 fail: ' + err);
+      expect(err !== null).assertTrue();
+    }
+    toClosePipe('testConnectDevice011');
+  })
+
+  /**
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_1100
+   * @tc.name     : testConnectDevice012
+   * @tc.desc     : Negative test: open device, error subClass 2+10000
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
+   */
+  it('testConnectDevice012', 0, async function () {
+    console.info(TAG, 'usb connect_device_12 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
+      return
+    }
+
+    var device = JSON.parse(JSON.stringify(devices));
+    device.subClass = 2 + 10000;
+    try {
+      gPipe = usbManager.connectDevice(device);
+      console.info(TAG, 'usb case testConnectDevice012 ret: ' + JSON.stringify(gPipe));
+      expect(CheckEmptyUtils.isEmpty(gPipe)).assertFalse();
+    } catch (err) {
+      console.info(TAG, 'usb testConnectDevice012 fail: ' + err);
+      expect(err !== null).assertTrue();
+    }
+    toClosePipe('testConnectDevice012');
+  })
+
+  /**
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_1200
+   * @tc.name     : testConnectDevice013
+   * @tc.desc     : Negative test: open device, error protocol 2+10000
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
+   */
+  it('testConnectDevice013', 0, async function () {
+    console.info(TAG, 'usb testConnectDevice013 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
+      return
+    }
+
+    var device = JSON.parse(JSON.stringify(devices));
+    device.protocol = 2 + 10000;
+    try {
+      gPipe = usbManager.connectDevice(device);
+      console.info(TAG, 'usb case testConnectDevice013 ret: ' + JSON.stringify(gPipe));
+      expect(CheckEmptyUtils.isEmpty(gPipe)).assertFalse();
+    } catch (err) {
+      console.info(TAG, 'usb testConnectDevice013 fail: ' + err);
+      expect(err !== null).assertTrue();
+    }
+    toClosePipe('testConnectDevice013');
+  })
+
+  /**
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_0400
+   * @tc.name     : testConnectDevice014
+   * @tc.desc     : Negative test: open device, parameter type error PARAM_INVALID
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
+   */
+  it('testConnectDevice014', 0, async function () {
+    console.info(TAG, 'usb testConnectDevice014 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
+      return
+    }
+
+    try {
+      var maskCode = usbManager.connectDevice(PARAM_INVALID);
+      console.info(TAG, 'usb testConnectDevice014 case connectDevice return: ' + maskCode);
+      expect(maskCode === null).assertTrue();
+    } catch (err) {
+      console.info(TAG, 'usb testConnectDevice014 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+    }
+  })
+
+  /**
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_1700
+   * @tc.name     : testConnectDevice015
+   * @tc.desc     : Negative test: open device, parameter number exception, necessary parameters not input
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
+   */
+  it('testConnectDevice015', 0, async function () {
+    console.info(TAG, 'usb testConnectDevice015 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
+      return
+    }
+
     try {
       var maskCode = usbManager.connectDevice();
-      console.info('usb HostManager_JS_ErrCode_1700 case connectDevice return: ' + maskCode);
-      expect(false).assertTrue();
+      console.info(TAG, 'usb testConnectDevice015 case connectDevice return: ' + maskCode);
+      expect(maskCode === null).assertTrue();
     } catch (err) {
-      console.info('usb HostManager_JS_ErrCode_1700 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testConnectDevice015 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_HostManager_JS_ErrCode_1700 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_3400
-   * @tc.name: hasRight
-   * @tc.desc: Negative test: parameters exception, error deviceName
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_3400
+   * @tc.name     : testHasRight002
+   * @tc.desc     : Negative test: parameters exception, error deviceName add '$#'
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_Compatibility_3400', 0, function () {
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_3400 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
+  it('testHasRight002', 0, function () {
+    console.info(TAG, 'usb testHasRight002 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
 
     for (var i = 0; i < gDeviceList.length; i++) {
-      var deviceName = gDeviceList[i].name
-      deviceName = deviceName + '$#'
-      var hasRight = usbManager.hasRight(deviceName)
-      console.info('usb has_right ret :' + hasRight);
+      var deviceName = gDeviceList[i].name;
+      deviceName = deviceName + '$#';
+      var hasRight = usbManager.hasRight(deviceName);
+      console.info(TAG, 'usb testHasRight002 ret :' + hasRight);
       expect(hasRight).assertFalse();
     }
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_3400 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_3500
-   * @tc.name: hasRight
-   * @tc.desc: Negative test: parameters exception, the device a letter name
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_3500
+   * @tc.name     : testHasRight003
+   * @tc.desc     : Negative test: parameters exception, the device add 'abcdg'
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_Compatibility_3500', 0, function () {
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_3500 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
+  it('testHasRight003', 0, function () {
+    console.info(TAG, 'usb testHasRight003 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
 
     for (var i = 0; i < gDeviceList.length; i++) {
-      var deviceName = gDeviceList[i].name
-      deviceName = deviceName + 'abcdg'
-      var hasRight = usbManager.hasRight(deviceName)
-      console.info('usb hasRight ret :' + hasRight);
+      var deviceName = gDeviceList[i].name;
+      deviceName = deviceName + 'abcdg';
+      var hasRight = usbManager.hasRight(deviceName);
+      console.info(TAG, 'usb testHasRight003 ret :' + hasRight);
       expect(hasRight).assertFalse();
     }
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_3500 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_0200
-   * @tc.name: hasRight
-   * @tc.desc: Negative test: Permission query, parameter type error
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_0200
+   * @tc.name     : testHasRight004
+   * @tc.desc     : Negative test: Permission query, parameter type error
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_ErrCode_0200', 0, function () {
-    console.info('usb SUB_USB_HostManager_JS_ErrCode_0200 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testHasRight004', 0, function () {
+    console.info(TAG, 'usb testHasRight004 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
+
     try {
-      var maskCode = usbManager.hasRight(invalidCode);
-      console.info('usb HostManager_JS_ErrCode_0200 case hasRight return: ' + maskCode);
-      expect(false).assertTrue();
+      var maskCode = usbManager.hasRight(PARAM_INVALIDCODE);
+      console.info(TAG, 'usb testHasRight004 case hasRight return: ' + maskCode);
+      expect(maskCode === null).assertTrue();
     } catch (err) {
-      console.info('usb HostManager_JS_ErrCode_0200 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testHasRight004 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_HostManager_JS_ErrCode_0200 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_1800
-   * @tc.name: hasRight
-   * @tc.desc: Negative test: Permission query, parameter number exception, necessary parameters not input
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_1800
+   * @tc.name     : testHasRight005
+   * @tc.desc     : Negative test: Permission query, parameter number exception, necessary parameters not input
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_ErrCode_1800', 0, function () {
-    console.info('usb SUB_USB_HostManager_JS_ErrCode_1800 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testHasRight005', 0, function () {
+    console.info(TAG, 'usb testHasRight005 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
+
     try {
       var maskCode = usbManager.hasRight();
-      console.info('usb HostManager_JS_ErrCode_1800 case hasRight return: ' + maskCode);
-      expect(false).assertTrue();
+      console.info(TAG, 'usb testHasRight005 case hasRight return: ' + maskCode);
+      expect(maskCode === null).assertTrue();
     } catch (err) {
-      console.info('usb HostManager_JS_ErrCode_1800 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testHasRight005 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_HostManager_JS_ErrCode_1800 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_3200
-   * @tc.name: requestRight
-   * @tc.desc: Negative test: Request permission, error deviceName
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_3200
+   * @tc.name     : testRequestRight002
+   * @tc.desc     : Negative test: Request permission, error deviceName add '@#'
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_Compatibility_3200', 0, async function () {
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_3200 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
+  it('testRequestRight002', 0, async function () {
+    console.info(TAG, 'usb testRequestRight002 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
 
     for (var i = 0; i < gDeviceList.length; i++) {
-      var deviceName = gDeviceList[i].name
-      deviceName = deviceName + '@#'
-      await usbManager.requestRight(deviceName).then(hasRight => {
-        console.info('usb request_right ret :' + hasRight);
+      var deviceName = gDeviceList[i].name;
+      deviceName = deviceName + '@#';
+      try {
+        let hasRight = await usbManager.requestRight(deviceName);
+        console.info(TAG, 'usb testRequestRight002 ret :' + hasRight);
         expect(hasRight).assertFalse();
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_3200 :  PASS');
-      }).catch(error => {
-        expect(error).assertFalse();
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_3200 error: ' + error);
-      });
+      } catch (error) {
+        console.info(TAG, 'usb testRequestRight002 error: ' + error);
+        expect(error !== null).assertFalse();
+      }
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_3300
-   * @tc.name: requestRight
-   * @tc.desc: Negative test: Request permission, the device name is a number
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_3300
+   * @tc.name     : testRequestRight003
+   * @tc.desc     : Negative test: Request permission, the device name is a number
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_Compatibility_3300', 0, async function () {
-    console.info('usb SUB_USB_HostManager_JS_Compatibility_3300 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
+  it('testRequestRight003', 0, async function () {
+    console.info(TAG, 'usb testRequestRight003 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
 
     for (var i = 0; i < gDeviceList.length; i++) {
-      var deviceName = gDeviceList[i].name
-      deviceName = deviceName + '123'
-      await usbManager.requestRight(deviceName).then(hasRight => {
-        console.info('usb request_right ret :' + hasRight);
+      var deviceName = gDeviceList[i].name;
+      deviceName = deviceName + '123';
+
+      try {
+        let hasRight = await usbManager.requestRight(deviceName);
+        console.info(TAG, 'usb testRequestRight003 ret :' + hasRight);
         expect(hasRight).assertFalse();
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_3300 :  PASS');
-      }).catch(error => {
-        expect(error).assertFalse();
-        console.info('usb SUB_USB_HostManager_JS_Compatibility_3300 error: ' + error);
-      });
+      } catch (error) {
+        console.info(TAG, 'usb testRequestRight003 error: ' + error);
+        expect(error !== null).assertFalse();
+      }
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_0300
-   * @tc.name: requestRight
-   * @tc.desc: Negative test: Request permission, parameter type error
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_0300
+   * @tc.name     : testRequestRight004
+   * @tc.desc     : Negative test: Request permission, parameter type error
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_ErrCode_0300', 0, function () {
-    console.info('usb SUB_USB_HostManager_JS_ErrCode_0300 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testRequestRight004', 0, function () {
+    console.info(TAG, 'usb testRequestRight004 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
+
     try {
-      var maskCode = usbManager.requestRight(invalidCode);
-      console.info('usb HostManager_JS_ErrCode_0300 case requestRight return: ' + maskCode);
-      expect(false).assertTrue();
+      var maskCode = usbManager.requestRight(PARAM_INVALIDCODE);
+      console.info(TAG, 'usb testRequestRight004 case requestRight return: ' + maskCode);
+      expect(maskCode === null).assertTrue();
     } catch (err) {
-      console.info('usb HostManager_JS_ErrCode_0300 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testRequestRight004 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_HostManager_JS_ErrCode_0300 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_1900
-   * @tc.name: requestRight
-   * @tc.desc: Negative test: Request permission, parameter number exception, necessary parameters not input
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_1900
+   * @tc.name     : testRequestRight005
+   * @tc.desc     : Negative test: Request permission, parameter number exception, necessary parameters not input
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_ErrCode_1900', 0, function () {
-    console.info('usb SUB_USB_HostManager_JS_ErrCode_1900 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testRequestRight005', 0, function () {
+    console.info(TAG, 'usb testRequestRight005 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
+
     try {
       var maskCode = usbManager.requestRight();
-      console.info('usb HostManager_JS_ErrCode_1900 case requestRight return: ' + maskCode);
-      expect(false).assertTrue();
+      console.info(TAG, 'usb testRequestRight005 case requestRight return: ' + maskCode);
+      expect(maskCode === null).assertTrue();
     } catch (err) {
-      console.info('usb HostManager_JS_ErrCode_1900 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testRequestRight005 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_HostManager_JS_ErrCode_1900 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_0100
-   * @tc.name: getDevices
-   * @tc.desc: Negative test: Get device list, parameters exception(parameter transfer without parameter interface)
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_0100
+   * @tc.name     : testGetDevices002
+   * @tc.desc     : Negative test: Get device list, parameters exception(parameter transfer without parameter interface)
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_ErrCode_0100', 0, function () {
-    console.info('usb SUB_USB_HostManager_JS_ErrCode_0100 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testGetDevices002', 0, function () {
+    console.info(TAG, 'usb testGetDevices002 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
     try {
-      var maskCode = usbManager.getDevices("invalid");
-      console.info('usb HostManager_JS_ErrCode_0100 case getDevices return: ' + maskCode);
-      expect(false).assertTrue();
+      var maskCode = usbManager.getDevices(PARAM_INVALID);
+      console.info(TAG, 'usb testGetDevices002 case getDevices return: ' + maskCode);
+      expect(maskCode === null).assertTrue();
     } catch (err) {
-      console.info('usb HostManager_JS_ErrCode_0100 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testGetDevices002 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_HostManager_JS_ErrCode_0100 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_0500
-   * @tc.name: closePipe
-   * @tc.desc: Negative test: close device, parameter type error
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_0500
+   * @tc.name     : testClosePipe005
+   * @tc.desc     : Negative test: close device, parameter type error PARAM_INVALID
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_ErrCode_0500', 0, function () {
-    console.info('usb SUB_USB_HostManager_JS_ErrCode_0500 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testClosePipe005', 0, function () {
+    console.info(TAG, 'usb testClosePipe005 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
+
     try {
-      var maskCode = usbManager.closePipe("invalid");
-      console.info('usb HostManager_JS_ErrCode_0500 case closePipe return: ' + maskCode);
-      expect(false).assertTrue();
+      var maskCode = usbManager.closePipe(PARAM_INVALID);
+      console.info(TAG, 'usb testClosePipe005 case closePipe return: ' + maskCode);
+      expect(maskCode === null).assertTrue();
     } catch (err) {
-      console.info('usb HostManager_JS_ErrCode_0500 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testClosePipe005 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_HostManager_JS_ErrCode_0500 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_2000
-   * @tc.name: closePipe
-   * @tc.desc: Negative test: close device, parameter number exception, necessary parameters not input
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_2000
+   * @tc.name     : testClosePipe006
+   * @tc.desc     : Negative test: close device, parameter number exception, necessary parameters not input
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_ErrCode_2000', 0, function () {
-    console.info('usb SUB_USB_HostManager_JS_ErrCode_2000 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testClosePipe006', 0, function () {
+    console.info(TAG, 'usb SUB_USB_HostManager_JS_ErrCode_2000 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
+
     try {
       var maskCode = usbManager.closePipe();
-      console.info('usb HostManager_JS_ErrCode_2000 case closePipe return: ' + maskCode);
-      expect(false).assertTrue();
+      console.info(TAG, 'usb testClosePipe006 case closePipe return: ' + maskCode);
+      expect(maskCode === null).assertTrue();
     } catch (err) {
-      console.info('usb HostManager_JS_ErrCode_2000 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testClosePipe006 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_HostManager_JS_ErrCode_2000 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_0600
-   * @tc.name: getRawDescriptor
-   * @tc.desc: Negative test: Get the original USB descriptor, parameter type error
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_0600
+   * @tc.name     : testGetRawDescriptor002
+   * @tc.desc     : Negative test: Get the original USB descriptor, parameter type error PARAM_INVALID
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_ErrCode_0600', 0, function () {
-    console.info('usb SUB_USB_HostManager_JS_ErrCode_0600 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testGetRawDescriptor002', 0, function () {
+    console.info(TAG, 'usb testGetRawDescriptor002 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
+
     try {
-      var maskCode = usbManager.getRawDescriptor("invalid");
-      console.info('usb HostManager_JS_ErrCode_0600 case getRawDescriptor return: ' + maskCode);
-      expect(false).assertTrue();
+      var maskCode = usbManager.getRawDescriptor(PARAM_INVALID);
+      console.info(TAG, 'usb testGetRawDescriptor002 case getRawDescriptor return: ' + maskCode);
+      expect(maskCode === null).assertTrue();
     } catch (err) {
-      console.info('usb HostManager_JS_ErrCode_0600 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testGetRawDescriptor002 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_HostManager_JS_ErrCode_0600 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_2100
-   * @tc.name: getRawDescriptor
-   * @tc.desc: Negative test: Get the original USB descriptor, parameter number exception,
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_2100
+   * @tc.name     : testGetRawDescriptor003
+   * @tc.desc     : Negative test: Get the original USB descriptor, parameter number exception,
    *           necessary parameters not input
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_ErrCode_2100', 0, function () {
-    console.info('usb SUB_USB_HostManager_JS_ErrCode_2100 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testGetRawDescriptor003', 0, function () {
+    console.info(TAG, 'usb testGetRawDescriptor003 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
+
     try {
       var maskCode = usbManager.getRawDescriptor();
-      console.info('usb HostManager_JS_ErrCode_2100 case getRawDescriptor return: ' + maskCode);
-      expect(false).assertTrue();
+      console.info(TAG, 'usb testGetRawDescriptor003 case getRawDescriptor return: ' + maskCode);
+      expect(maskCode === null).assertTrue();
     } catch (err) {
-      console.info('usb HostManager_JS_ErrCode_2100 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testGetRawDescriptor003 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_HostManager_JS_ErrCode_2100 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_0800
-   * @tc.name: removeRight
-   * @tc.desc: Negative test: Remove Permissions, parameter type error
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_0800
+   * @tc.name     : testRemoveRight002
+   * @tc.desc     : Negative test: Remove Permissions, parameter type error
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_ErrCode_0800', 0, function () {
-    console.info('usb SUB_USB_HostManager_JS_ErrCode_0800 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testRemoveRight002', 0, function () {
+    console.info(TAG, 'usb testRemoveRight002 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
+
     try {
-      var maskCode = usbManager.removeRight(invalidCode);
-      console.info('usb HostManager_JS_ErrCode_0800 case removeRight return: ' + maskCode);
-      expect(false).assertTrue();
+      var maskCode = usbManager.removeRight(PARAM_INVALIDCODE);
+      console.info(TAG, 'usb testRemoveRight002 case removeRight return: ' + maskCode);
+      expect(maskCode === null).assertTrue();
     } catch (err) {
-      console.info('usb HostManager_JS_ErrCode_0800 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testRemoveRight002 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_HostManager_JS_ErrCode_0800 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_2200
-   * @tc.name: removeRight
-   * @tc.desc: Negative test: Remove Permissions, parameter number exception, necessary parameters not input
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_2200
+   * @tc.name     : testRemoveRight003
+   * @tc.desc     : Negative test: Remove Permissions, parameter number exception, necessary parameters not input
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
-  it('SUB_USB_HostManager_JS_ErrCode_2200', 0, function () {
-    console.info('usb SUB_USB_HostManager_JS_ErrCode_2200 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
+  it('testRemoveRight003', 0, function () {
+    console.info(TAG, 'usb testRemoveRight003 begin');
+    if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       return
     }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
+
     try {
       var maskCode = usbManager.removeRight();
-      console.info('usb HostManager_JS_ErrCode_2200 case removeRight return: ' + maskCode);
-      expect(false).assertTrue();
+      console.info(TAG, 'usb testRemoveRight003 case removeRight return: ' + maskCode);
+      expect(maskCode === null).assertTrue();
     } catch (err) {
-      console.info('usb HostManager_JS_ErrCode_2200 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info(TAG, 'usb testRemoveRight003 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_HostManager_JS_ErrCode_2200 :  PASS');
     }
   })
+
 })
 }
