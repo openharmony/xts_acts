@@ -36,6 +36,14 @@
     "MainAbility/pages/chip/ChipDirection",
     "MainAbility/pages/counter/CounterDirection",
     "MainAbility/pages/popup/PopupDirection",
-    "MainAbility/pages/segmentButton/SegmentButtonDirection"
+    "MainAbility/pages/segmentButton/SegmentButtonDirection",
+    "MainAbility/pages/downloadFileButton/FileButtonContinueToReceive",
+    "MainAbility/pages/downloadFileButton/FileButtonDownload",
+    "MainAbility/pages/downloadFileButton/FileButtonDownloadAndShare",
+    "MainAbility/pages/downloadFileButton/FileButtonDownloadFile",
+    "MainAbility/pages/downloadFileButton/FileButtonReceive",
+    "MainAbility/pages/downloadFileButton/FileButtonSave",
+    "MainAbility/pages/downloadFileButton/FileButtonSaveFile",
+    "MainAbility/pages/downloadFileButton/FileButtonSaveImage"
   ]
 }
