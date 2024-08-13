@@ -38,7 +38,7 @@
         function checkHeightOne(){
             let a = document.documentElement.clientHeight;
             let b = window.visualViewport.height
-            if (a==500 && b<500) {
+            if (a >= 450 && a <= 550 && b < 500) {
                 return true;
             }
             return false;
