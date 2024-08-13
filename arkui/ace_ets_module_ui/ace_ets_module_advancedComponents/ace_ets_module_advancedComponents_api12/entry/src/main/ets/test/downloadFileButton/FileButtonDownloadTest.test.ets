@@ -12,7 +12,7 @@ export default function FileButtonDownloadTest() {
         let pages = router.getState();
         if (!("FileButtonDownload" == pages.name)) {
           await router.push({
-            uri: 'MainAbility/pages/downloadFileButton/FileButtonDownload',
+            url: 'MainAbility/pages/downloadFileButton/FileButtonDownload',
           });
           await CommonFunc.sleep(2000);
         }

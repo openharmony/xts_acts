@@ -12,7 +12,7 @@ export default function FileButtonSaveFileTest() {
         let pages = router.getState();
         if (!("FileButtonSaveFile" == pages.name)) {
           await router.push({
-            uri: 'MainAbility/pages/downloadFileButton/FileButtonSaveFile',
+            url: 'MainAbility/pages/downloadFileButton/FileButtonSaveFile',
           });
           await CommonFunc.sleep(2000);
         }
