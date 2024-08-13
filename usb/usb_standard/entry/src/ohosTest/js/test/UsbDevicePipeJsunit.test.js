@@ -168,12 +168,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranFunc_1000
-   * @tc.name: testBulkTransfer001
-   * @tc.desc: Positive test: bulk transfer, receive data
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranFunc_1000
+   * @tc.name     : testBulkTransfer001
+   * @tc.desc     : Positive test: bulk transfer, receive data
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testBulkTransfer001', 0, async function () {
     console.info(TAG, 'usb testBulkTransfer001 begin');
@@ -208,12 +208,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranFunc_1100
-   * @tc.name: testBulkTransfer002
-   * @tc.desc: Positive test: bulk transfer, send data
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranFunc_1100
+   * @tc.name     : testBulkTransfer002
+   * @tc.desc     : Positive test: bulk transfer, send data
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testBulkTransfer002', 0, async function () {
     console.info(TAG, 'usb testBulkTransfer002 begin');
@@ -255,12 +255,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranCompatibility_0400
-   * @tc.name: testBulkTransfer003
-   * @tc.desc: Undefined option arguments, use default options.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_0400
+   * @tc.name     : testBulkTransfer003
+   * @tc.desc     : Undefined option arguments, use default options.
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testBulkTransfer003', 0, async function () {
     console.info(TAG, 'usb testBulkTransfer003 begin');
@@ -302,12 +302,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranCompatibility_0500
-   * @tc.name: testBulkTransfer004
-   * @tc.desc: Null option arguments, use default options.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_0500
+   * @tc.name     : testBulkTransfer004
+   * @tc.desc     : Null option arguments, use default options.
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testBulkTransfer004', 0, async function () {
     console.info(TAG, 'usb testBulkTransfer004 begin');
@@ -347,12 +347,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranCompatibility_0600
-   * @tc.name: testBulkTransfer005
-   * @tc.desc: Ignore option arguments, use default options.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_0600
+   * @tc.name     : testBulkTransfer005
+   * @tc.desc     : Ignore option arguments, use default options.
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testBulkTransfer005', 0, async function () {
     console.info(TAG, 'usb testBulkTransfer005 begin');
@@ -393,12 +393,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Func_0400
-   * @tc.name: testClaimInterface001
-   * @tc.desc: Positive test: Get interface, and release
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Func_0400
+   * @tc.name     : testClaimInterface001
+   * @tc.desc     : Positive test: Get interface, and release
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testClaimInterface001', 0, function () {
     console.info(TAG, 'usb testClaimInterface001 begin');
@@ -430,12 +430,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_4000
-   * @tc.name: testClaimInterface002
-   * @tc.desc: Negative test: Get interface, parameter force type error, use default options
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_4000
+   * @tc.name     : testClaimInterface002
+   * @tc.desc     : Negative test: Get interface, parameter force type error, use default options
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testClaimInterface002', 0, function () {
     console.info(TAG, 'usb testClaimInterface002 begin');
@@ -465,12 +465,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_2100
-   * @tc.name: testClaimInterface003
-   * @tc.desc: Test the claimInterface() interface. Undefined option arguments, use default options.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_2100
+   * @tc.name     : testClaimInterface003
+   * @tc.desc     : Test the claimInterface() interface. Undefined option arguments, use default options.
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testClaimInterface003', 0, function () {
     console.info(TAG, 'usb testClaimInterface003 begin');
@@ -502,12 +502,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_2200
-   * @tc.name: testClaimInterface004
-   * @tc.desc: Test the claimInterface() interface. Null option arguments, use default options.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_2200
+   * @tc.name     : testClaimInterface004
+   * @tc.desc     : Test the claimInterface() interface. Null option arguments, use default options.
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testClaimInterface004', 0, function () {
     console.info(TAG, 'usb testClaimInterface004 begin');
@@ -539,12 +539,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_2300
-   * @tc.name: testClaimInterface005
-   * @tc.desc: Test the claimInterface() interface. Ignore option arguments, use default options.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_2300
+   * @tc.name     : testClaimInterface005
+   * @tc.desc     : Test the claimInterface() interface. Ignore option arguments, use default options.
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testClaimInterface005', 0, function () {
     console.info(TAG, 'usb testClaimInterface005 begin');
@@ -594,12 +594,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Func_1000
-   * @tc.name: testSetConfiguration001
-   * @tc.desc: Positive test: Set Device Configuration
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Func_1000
+   * @tc.name     : testSetConfiguration001
+   * @tc.desc     : Positive test: Set Device Configuration
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testSetConfiguration001', 0, function () {
     console.info(TAG, 'usb testSetConfiguration001 begin');
@@ -622,12 +622,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_3600
-   * @tc.name: testSetConfiguration002
-   * @tc.desc: Negative test: Set Device Configuration, USBConfig id error 255
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_3600
+   * @tc.name     : testSetConfiguration002
+   * @tc.desc     : Negative test: Set Device Configuration, USBConfig id error 255
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testSetConfiguration002', 0, function () {
     console.info(TAG, 'usb testSetConfiguration002 begin');
@@ -646,12 +646,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Func_1100
-   * @tc.name: testSetInterface001
-   * @tc.desc: Positive test: Set device interface
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Func_1100
+   * @tc.name     : testSetInterface001
+   * @tc.desc     : Positive test: Set device interface
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testSetInterface001', 0, function () {
     console.info(TAG, 'usb testSetInterface001 begin');
@@ -673,12 +673,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_Compatibility_4100
-   * @tc.name: testSetInterface002
-   * @tc.desc: Negative test: Set device interface, error tmpInterface.id 234
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_Compatibility_4100
+   * @tc.name     : testSetInterface002
+   * @tc.desc     : Negative test: Set device interface, error tmpInterface.id 234
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testSetInterface002', 0, function () {
     console.info(TAG, 'usb testSetInterface002 begin');
@@ -713,12 +713,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranFunc_0100
-   * @tc.name: testControlTransfer001
-   * @tc.desc: Positive test: control transfer, GetDescriptor: cmd 6 target 2 reqType 128 value 512 index 0
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranFunc_0100
+   * @tc.name     : testControlTransfer001
+   * @tc.desc     : Positive test: control transfer, GetDescriptor: cmd 6 target 2 reqType 128 value 512 index 0
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer001', 0, async function () {
     console.info(TAG, 'usb testControlTransfer001 begin');
@@ -743,12 +743,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranFunc_0200
-   * @tc.name: testControlTransfer002
-   * @tc.desc: Positive test: control transfer, GetStatus: cmd 0 target 0 reqType 128 value 0 index 0
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranFunc_0200
+   * @tc.name     : testControlTransfer002
+   * @tc.desc     : Positive test: control transfer, GetStatus: cmd 0 target 0 reqType 128 value 0 index 0
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer002', 0, async function () {
     console.info(TAG, 'usb testControlTransfer002 begin');
@@ -773,13 +773,13 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranCompatibility_0100
-   * @tc.name: testControlTransfer003
-   * @tc.desc: Test the bulkTransfer interface
+   * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_0100
+   * @tc.name     : testControlTransfer003
+   * @tc.desc     : Test the bulkTransfer interface
    * Undefined option arguments, use default options.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer003', 0, async function () {
     console.info(TAG, 'usb testControlTransfer003 begin');
@@ -803,12 +803,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranCompatibility_0200
-   * @tc.name: testControlTransfer004
-   * @tc.desc: Test the bulkTransfer interface. Null option arguments, use default options.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_0200
+   * @tc.name     : testControlTransfer004
+   * @tc.desc     : Test the bulkTransfer interface. Null option arguments, use default options.
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer004', 0, async function () {
     console.info(TAG, 'usb testControlTransfer004 begin');
@@ -832,12 +832,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranCompatibility_0300
-   * @tc.name: testControlTransfer005
-   * @tc.desc: Test the bulkTransfer interface. Ignore option arguments, use default options.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_0300
+   * @tc.name     : testControlTransfer005
+   * @tc.desc     : Test the bulkTransfer interface. Ignore option arguments, use default options.
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer005', 0, async function () {
     console.info(TAG, 'usb testControlTransfer005 begin');
@@ -869,12 +869,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranFunc_0300
-   * @tc.name: testControlTransfer006
-   * @tc.desc: Positive test: control transfer, GetConfiguration: cmd 8 target 0 reqType 128 value 0 index 0
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranFunc_0300
+   * @tc.name     : testControlTransfer006
+   * @tc.desc     : Positive test: control transfer, GetConfiguration: cmd 8 target 0 reqType 128 value 0 index 0
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer006', 0, async function () {
     console.info(TAG, 'usb testControlTransfer006 begin');
@@ -898,12 +898,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranFunc_0400
-   * @tc.name: testControlTransfer007
-   * @tc.desc: Positive test: control transfer, GetInterface: cmd 10 target 0 reqType 129 value 0 index 1
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranFunc_0400
+   * @tc.name     : testControlTransfer007
+   * @tc.desc     : Positive test: control transfer, GetInterface: cmd 10 target 0 reqType 129 value 0 index 1
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer007', 0, async function () {
     console.info(TAG, 'usb testControlTransfer007 begin');
@@ -928,12 +928,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranFunc_0500
-   * @tc.name: testControlTransfer008
-   * @tc.desc: Positive test: control transfer, ClearFeature: cmd 1 target 0 reqType 0 value 0 index 0
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranFunc_0500
+   * @tc.name     : testControlTransfer008
+   * @tc.desc     : Positive test: control transfer, ClearFeature: cmd 1 target 0 reqType 0 value 0 index 0
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer008', 0, async function () {
     console.info(TAG, 'usb testControlTransfer008 begin');
@@ -957,12 +957,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranFunc_0600
-   * @tc.name: testControlTransfer009
-   * @tc.desc: Positive test: control transfer, ClearFeature: cmd 255 target 1 reqType 129 value 512 index 0
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranFunc_0600
+   * @tc.name     : testControlTransfer009
+   * @tc.desc     : Positive test: control transfer, ClearFeature: cmd 255 target 1 reqType 129 value 512 index 0
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer009', 0, async function () {
     console.info(TAG, 'usb testControlTransfer009 begin');
@@ -986,12 +986,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranFunc_0700
-   * @tc.name: testControlTransfer010
-   * @tc.desc: Positive test: control transfer, ClearFeature: cmd 255 target 2 reqType 34 value 512 index 0
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranFunc_0700
+   * @tc.name     : testControlTransfer010
+   * @tc.desc     : Positive test: control transfer, ClearFeature: cmd 255 target 2 reqType 34 value 512 index 0
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer010', 0, async function () {
     console.info(TAG, 'usb testControlTransfer010 begin');
@@ -1015,12 +1015,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranFunc_0800
-   * @tc.name: testControlTransfer011
-   * @tc.desc: Positive test: control transfer, ClearFeature: cmd 255 target 3 reqType 67 value 512 index 0
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranFunc_0800
+   * @tc.name     : testControlTransfer011
+   * @tc.desc     : Positive test: control transfer, ClearFeature: cmd 255 target 3 reqType 67 value 512 index 0
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer011', 0, async function () {
     console.info(TAG, 'usb testControlTransfer011 begin');
@@ -1044,12 +1044,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_TranFunc_0900
-   * @tc.name: testControlTransfer012
-   * @tc.desc: Positive test: control transfer, ClearFeature: cmd 255 target 3 reqType 35 value 0 index 0
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_TranFunc_0900
+   * @tc.name     : testControlTransfer012
+   * @tc.desc     : Positive test: control transfer, ClearFeature: cmd 255 target 3 reqType 35 value 0 index 0
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer012', 0, async function () {
     console.info(TAG, 'usb testControlTransfer012 begin');
@@ -1080,12 +1080,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_1300
-   * @tc.name: testControlTransfer013
-   * @tc.desc: Negative test: control transfer, parameter number exception, input a parameter
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_1300
+   * @tc.name     : testControlTransfer013
+   * @tc.desc     : Negative test: control transfer, parameter number exception, input a parameter
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer013', 0, async function () {
     console.info(TAG, 'usb testControlTransfer013 begin');
@@ -1113,12 +1113,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_2300
-   * @tc.name: testControlTransfer014
-   * @tc.desc: Negative test: control transfer, parameter number exception, necessary parameters not input
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_2300
+   * @tc.name     : testControlTransfer014
+   * @tc.desc     : Negative test: control transfer, parameter number exception, necessary parameters not input
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer014', 0, async function () {
     console.info(TAG, 'usb testControlTransfer014 begin');
@@ -1145,12 +1145,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_3200
-   * @tc.name: testControlTransfer015
-   * @tc.desc: Negative test: control transfer, parameter pipe type error
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_3200
+   * @tc.name     : testControlTransfer015
+   * @tc.desc     : Negative test: control transfer, parameter pipe type error
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer015', 0, async function () {
     console.info(TAG, 'usb testControlTransfer015 begin');
@@ -1179,13 +1179,13 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_4400
-   * @tc.name: testControlTransfer016
-   * @tc.desc: Negative test: control transfer,
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_4400
+   * @tc.name     : testControlTransfer016
+   * @tc.desc     : Negative test: control transfer,
    * parameter contrlparam type error(The controlParam should have the data property)
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer016', 0, async function () {
     console.info(TAG, 'usb testControlTransfer016 begin');
@@ -1211,12 +1211,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_HostManager_JS_ErrCode_2900
-   * @tc.name: testControlTransfer017
-   * @tc.desc: Negative test: control transfer, parameter timeout type error, use default options.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.number   : SUB_USB_HostManager_JS_ErrCode_2900
+   * @tc.name     : testControlTransfer017
+   * @tc.desc     : Negative test: control transfer, parameter timeout type error, use default options.
+   * @tc.size     : MediumTest
+   * @tc.type     : Function
+   * @tc.level    : Level 2
    */
   it('testControlTransfer017', 0, async function () {
     console.info(TAG, 'usb testControlTransfer017 begin');
