@@ -16,4 +16,6 @@ ohos_js_app_suite("ActsAceEtsComponentCommonAttrsWidthTest") {
   testonly = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAceEtsComponentCommonAttrsWidthTest"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
 }
