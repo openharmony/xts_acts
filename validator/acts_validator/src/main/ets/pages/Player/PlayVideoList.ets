@@ -16,7 +16,9 @@
 import promptAction from '@ohos.promptAction';
 import router from '@ohos.router';
 import fs from '@ohos.file.fs';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import data_preferences from '@ohos.data.preferences';
+import MediaUtils from '../model/MediaUtils'
 
 const TAG = 'ParseXML';
 let path = globalThis.dir;
@@ -33,11 +35,12 @@ struct videoNew {
   @State name: string = 'PlayerVideo';
   @State Vue: boolean = false;
   private current: number = undefined;
+  @State MediaLib: MediaUtils = new MediaUtils();
   @State count: number = 0;
   @State result: string = '';
   @State TEST: number = 0;
   @State Url: string = 'pages/Player/Player_index';
-  @State TestCaseList: Array<string> = [];
+  @State TestCaseList: Array<mediaLibrary.FileAsset> = [];
   @State ColorObject: string[] = VarColor;
 
   async onPageShow() {
@@ -55,11 +58,7 @@ struct videoNew {
       Test = data;
       console.info("Succeeded in getting value of 'PlayerVideo'. Data: " + data);
     });
-    this.TestCaseList = fs.listFileSync('Videos/ValidatorData/');
-    console.info("listFile succeed");
-    for (let i = 0; i < TestCaseList.length; i++) {
-      console.info("TestCaseList: %s", TestCaseList[i]);
-    }
+    this.TestCaseList = await this.MediaLib.getFileAssetsAlbum('Videos/ValidatorData/');
 
     if (Test != 1) {
       let fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
@@ -200,7 +199,7 @@ struct videoNew {
       .backgroundColor(Color.Black)
 
       List({ space: 5 }) {
-        ForEach(this.TestCaseList, (item: String, index) => {
+        ForEach(this.TestCaseList, (item: mediaLibrary.FileAsset, index) => {
           ListItem() {
             Row() {
               Text(item.displayName).fontSize(16).fontColor(Color.Black)
