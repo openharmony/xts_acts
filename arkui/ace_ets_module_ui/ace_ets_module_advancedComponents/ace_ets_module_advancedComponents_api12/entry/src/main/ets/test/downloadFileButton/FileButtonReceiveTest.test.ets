@@ -13,7 +13,7 @@ export default function FileButtonReceiveTest() {
         let pages = router.getState();
         if (!("FileButtonReceive" == pages.name)) {
           await router.push({
-            uri: 'MainAbility/pages/downloadFileButton/FileButtonReceive',
+            url: 'MainAbility/pages/downloadFileButton/FileButtonReceive',
           });
           await CommonFunc.sleep(2000);
         }

@@ -11,7 +11,7 @@ export default function FileButtonContinueToReceiveTest() {
         let pages = router.getState();
         if (!("FileButtonContinueToReceive" == pages.name)) {
           await router.push({
-            uri: 'MainAbility/pages/downloadFileButton/FileButtonContinueToReceive',
+            url: 'MainAbility/pages/downloadFileButton/FileButtonContinueToReceive',
           });
           await CommonFunc.sleep(2000);
         }
