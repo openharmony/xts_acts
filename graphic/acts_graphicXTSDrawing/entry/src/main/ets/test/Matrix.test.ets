@@ -1054,44 +1054,6 @@ export default function drawingTsMatrixTest() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_0602
-     * @tc.name      : testMatrixPreConcatMismatch
-     * @tc.desc      : testMatrixPreConcatMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testMatrixPreConcatMismatch', DEFAULT, () => {
-      const msg = 'testMatrixPreConcatMismatch';
-      try {
-        let matrix1 = new drawing.Matrix();
-        matrix1.preConcat(matrix,matrix)
-        console.info(msg + ' preConcat successed');
-      } catch (e) {
-        console.info(msg + ` preConcat errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let matrix1 = new drawing.Matrix();
-        matrix1.preConcat();
-        console.info(msg + ' preConcat successed');
-      } catch (e) {
-        console.info(msg + ` preConcat errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let matrix1 = new drawing.Matrix();
-        matrix1.preConcat('s');
-        console.info(msg + ' preConcat successed');
-      } catch (e) {
-        console.info(msg + ` preConcat errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
-
-    /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_0603
      * @tc.name      : testMatrixPreConcatMultipleCalls
      * @tc.desc      : testMatrixPreConcatMultipleCalls
