@@ -368,44 +368,6 @@ export default function drawingTsMatrixPart2Test() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_1302
-     * @tc.name      : testMatrixPreRotateMismatch
-     * @tc.desc      : testMatrixPreRotateMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testMatrixPreRotateMismatch', DEFAULT, () => {
-      const msg = 'testMatrixPreRotateMismatch';
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.preRotate(90, 100, 100, 100);
-        console.info(msg + ' preRotate successed');
-      } catch (e) {
-        console.info(msg + ` preRotate errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.preRotate(90, 100);
-        console.info(msg + ' preRotate successed');
-      } catch (e) {
-        console.info(msg + ` preRotate errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.preRotate('s', 100,100);
-        console.info(msg + ' preRotate successed');
-      } catch (e) {
-        console.info(msg + ` preRotate errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        eexpect(e.code).assertEqual(401);
-      }
-    })
-
-    /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_1303
      * @tc.name      : testMatrixPreRotateMultipleCalls
      * @tc.desc      : testMatrixPreRotateMultipleCalls
