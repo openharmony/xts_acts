@@ -15,7 +15,7 @@
 import { WaterFlowDataSource } from './WaterFlowDataSource'
 @Entry
 @Component
-struct layoutModeWaterFlow {
+struct WaterFlow1 {
   @State minSize: number = 80
   @State maxSize: number = 180
   @State num: number = 0
@@ -47,25 +47,24 @@ struct layoutModeWaterFlow {
   build() {
     Column({ space: 5 }) {
       Column(){
-        Text('yOffset: ' + Math.round(this.num))
-          .id('layoutMode_yOffset')
+        Text('length: ' + this.num)
+          .id('flow_length_1')
 
-        Button('layoutMode_ALWAYS')
-          .id('layoutMode_1')
-          .onClick(()=>{
-            this.layoutMode1 = WaterFlowLayoutMode.ALWAYS_TOP_DOWN
-          })
-        Button('layoutMode_SLIDING')
-          .id('layoutMode_2')
-          .onClick(()=>{
-            this.layoutMode1 = WaterFlowLayoutMode.SLIDING_WINDOW
-          })
-        Button('scroll 100')
-          .id('layout_scroll')
-          .onClick(()=>{
-            this.scroller.scrollTo({ xOffset: 0, yOffset: 100 })
-            this.num = this.scroller.currentOffset().yOffset
-          })
+        Row(){
+          Button('delete')
+            .id('flow_delete_1')
+            .onClick(()=>{
+              this.dataSource.deleteItem(2)
+              this.num = this.dataSource.totalCount()
+            })
+          Button('add')
+            .id('flow_add_1')
+            .onClick(()=>{
+              this.dataSource.addItem(2)
+              this.num = this.dataSource.totalCount()
+            })
+        }
+
       }.height('20%')
 
       WaterFlow({scroller: this.scroller, layoutMode: this.layoutMode1 }) {
@@ -80,7 +79,8 @@ struct layoutModeWaterFlow {
           .backgroundColor(this.colors[item % 5])
         }, (item: string) => item)
       }
-      .columnsTemplate('1fr 1fr')
+      .rowsTemplate('1fr 1fr 1fr')
+      .direction(Direction.Rtl)
       .columnsGap(10)
       .rowsGap(5)
       .scrollBar(BarState.On)
