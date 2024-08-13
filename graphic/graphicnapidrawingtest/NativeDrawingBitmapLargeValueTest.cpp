@@ -109,7 +109,8 @@ HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bi
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bitmapCreateFromPixels005, TestSize.Level1)
+HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bitmapCreateFromPixels005,
+ TestSize.Level1)
 {
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();

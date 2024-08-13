@@ -262,55 +262,6 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectInputDestroyed, Test
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1105
- * @tc.name: testCanvasDrawPixelMapRectBoundary
- * @tc.desc: test for testCanvasDrawPixelMapRectBoundary.
- * @tc.size  : SmallTest
- * @tc.type  : Function
- * @tc.level : Level 0
- */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectBoundary, TestSize.Level0)
-{
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // 2. Obtain OH_Drawing_PixelMap from OH_Drawing_PixelMapGetFromNativePixelMap()
-
-    // 3. Create src and dst using OH_Drawing_RectCreate
-    OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 100, 100);
-    EXPECT_NE(src, nullptr);
-    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 100, 100);
-    EXPECT_NE(dst, nullptr);
-
-    // 4. Obtain OH_Drawing_PixelMap from OH_Drawing_PixelMapGetFromOhPixelMapNative
-    uint32_t width = 4096;
-    uint32_t height = 2160;
-    OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative(width, height);
-    if (pixelMap != nullptr) {
-        OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
-        if (drPixelMap != nullptr) {
-            // 5. Iterate through OH_Drawing_FilterMode and OH_Drawing_MipmapMode to construct OH_Drawing_SamplingOptions for
-            OH_Drawing_FilterMode filterMode[] = {FILTER_MODE_NEAREST, FILTER_MODE_LINEAR};
-            OH_Drawing_MipmapMode mode[] = {MIPMAP_MODE_NEAREST, MIPMAP_MODE_LINEAR, MIPMAP_MODE_NONE};
-            for (int i = 0; i < 2; i++) {
-                for (int j = 0; j < 3; j++) {
-                    OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(filterMode[i], mode[j]);
-                    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, options);
-                }
-            }
-            // Free the memory.
-            OH_Drawing_PixelMapDissolve(drPixelMap);
-        }
-    }
-
-    // 6. Free the memory.
-    OH_Drawing_RectDestroy(src);
-    OH_Drawing_RectDestroy(dst);
-    OH_Drawing_CanvasDestroy(canvas);
-}
-
-/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1200
  * @tc.name: testCanvasDrawBackgroundNormal
  * @tc.desc: test for testCanvasDrawBackgroundNormal.

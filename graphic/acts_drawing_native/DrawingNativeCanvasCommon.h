@@ -15,8 +15,8 @@
 #ifndef DRAWING_NATIVE_CANVAS_COMMON_H
 #define DRAWING_NATIVE_CANVAS_COMMON_H
 
-#include "image/pixelmap_native.h"
 #include "gtest/gtest.h"
+#include "image/pixelmap_native.h"
 
 namespace OHOS {
 namespace Rosen {
