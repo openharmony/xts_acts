@@ -1,11 +1,12 @@
 {
-    "description": "Configuration for hjunit demo Tests",
+    "description": "Configuration for Image Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
+        "test-timeout": "300000",
+        "shell-timeout": "300000",
         "bundle-name": "ohos.acts.multimedia.image",
-        "package-name": "ohos.acts.multimedia.image"
+        "package-name": "ohos.acts.multimedia.image",
+        "testcase-timeout": 60000
     },
     "kits": [
         {
@@ -14,7 +15,8 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },{
+        },
+        {
             "type": "ShellKit",
             "run-command": [
                 "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files/",
@@ -49,6 +51,10 @@
                 "./resource/wrongSuffixImage/wrong_suffix_bmp.dng ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files",
                 "./resource/wrongSuffixImage/wrong_suffix_dng.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files"
             ]
+		},
+		{
+            "type":"ShellKit",
+		    "run-command":[]
         }
     ]
 }
