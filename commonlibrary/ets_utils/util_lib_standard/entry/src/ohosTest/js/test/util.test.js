@@ -9335,5 +9335,95 @@ describe('TextEncoderTest', function () {
       asp.replaceAsync('123');
       expect(asp.replaceAsync.constructor.name).assertEqual('AsyncFunction');
     })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0001
+     * @tc.name: testTextencoderencoding_001
+     * @tc.desc: Encoding format test gB2313.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testTextencoderencoding_001', 0, function () {
+      let that = new util.TextEncoder('gB2312')
+      let str = that.encoding
+      expect(str).assertEqual('gB2312')
+
+      that = new util.TextEncoder('Gb2312')
+      str = that.encoding;
+      expect(str).assertEqual('Gb2312')
+    })
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0002
+   * @tc.name: testTextencoderencoding_002
+   * @tc.desc: Encoding format test utf-16le.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it('testTextencoderencoding_002', 0, function () {
+    let that = new util.TextEncoder('utf-16le')
+    let str = that.encoding
+    expect(str).assertEqual('utf-16le')
+
+    that = new util.TextEncoder('Utf-16le')
+    str = that.encoding;
+    expect(str).assertEqual('Utf-16le')
+  })
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0003
+   * @tc.name: testTextencoderencoding_003
+   * @tc.desc: Encoding format test GbK.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it('testTextencoderencoding_003', 0, function () {
+    let that = new util.TextEncoder('GbK')
+    let str = that.encoding
+    expect(str).assertEqual('GbK')
+
+    that = new util.TextEncoder('GBK')
+    str = that.encoding;
+    expect(str).assertEqual('GBK')
+  })
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0004
+   * @tc.name: testTextencoderencoding_004
+   * @tc.desc: Encoding format test UTF-16le.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it('testTextencoderencoding_004', 0, function () {
+    let that = new util.TextEncoder('UTF-16le')
+    let str = that.encoding
+    expect(str).assertEqual('UTF-16le')
+
+    that = new util.TextEncoder('Utf-16le')
+    str = that.encoding;
+    expect(str).assertEqual('Utf-16le')
+  })
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0005
+   * @tc.name: testTextencoderencoding_005
+   * @tc.desc: Encoding format test ISO-8859-3/IBM866.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it('testTextencoderencoding_005', 0, function () {
+    let that = new util.TextEncoder('ISO-8859-3')
+    let str = that.encoding
+    expect(str).assertEqual('ISO-8859-3')
+
+    that = new util.TextEncoder('IBM866')
+    str = that.encoding;
+    expect(str).assertEqual('IBM866')
+  })
   })
 }
