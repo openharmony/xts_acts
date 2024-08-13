@@ -1,5 +1,4 @@
-import { DownloadDescription, DownloadFileButton, DownloadIconStyle, DownloadLayoutDirection } from '@kit.ArkUI.advanced.DownloadFileButton'
-
+import { DownloadDescription, DownloadFileButton, DownloadIconStyle, DownloadLayoutDirection } from '@ohos.arkui.advanced.DownloadFileButton'
 @Entry
 @Component
 struct FileButtonSaveImage {
