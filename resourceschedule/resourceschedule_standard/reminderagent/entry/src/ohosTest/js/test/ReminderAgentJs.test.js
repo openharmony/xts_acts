@@ -129,7 +129,7 @@ export default function ReminderAgentTest() {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
                 triggerTimeInSeconds: 4,
                 wantAgent: {
-                    pkgName: "ohos.acts.resourceschedule.reminderagent.js.function",
+                    pkgName: "com.ohos.acts.reminderagenttest",
                     abilityName: "ohos.samples.jshelloworld.MainAbility"
                 },
             };
@@ -2160,7 +2160,7 @@ export default function ReminderAgentTest() {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
                 triggerTimeInSeconds: 20,
                 wantAgent: {
-                    pkgName: "ohos.acts.resourceschedule.reminderagent.js.function",
+                    pkgName: "com.ohos.acts.reminderagenttest",
                     abilityName: "com.oh.phone.MainAbility"
                 }
             }
@@ -2192,7 +2192,7 @@ export default function ReminderAgentTest() {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
                 triggerTimeInSeconds: 20,
                 wantAgent: {
-                    pkgName: "ohos.acts.resourceschedule.reminderagent.js.function",
+                    pkgName: "com.ohos.acts.reminderagenttest",
                     abilityName: "com.oh.phone.MainAbility"
                 }
             }
@@ -2224,7 +2224,7 @@ export default function ReminderAgentTest() {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
                 triggerTimeInSeconds: 20,
                 wantAgent: {
-                    pkgName: "ohos.acts.resourceschedule.reminderagent.js.function",
+                    pkgName: "com.ohos.acts.reminderagenttest",
                     abilityName: ""
                 }
             }
@@ -2257,7 +2257,7 @@ export default function ReminderAgentTest() {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
                 triggerTimeInSeconds: 20,
                 wantAgent: {
-                    pkgName: "ohos.acts.resourceschedule.reminderagent.js.function",
+                    pkgName: "com.ohos.acts.reminderagenttest",
                     abilityName: 1243
                 }
             }
