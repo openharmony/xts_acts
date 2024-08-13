@@ -7473,6 +7473,454 @@ describe('DecodeEncodeTest', function () {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING001
+     * @tc.name: decodeTostring001
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring001', 0, function () {
+        let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:true});
+        let uint8 = new Uint8Array([0xEF,0xBB,0xBF,228,189,160,0,0,229,165,189,0]);
+        let resStr = textDecoder.decodeToString(uint8);
+        expect(resStr).assertEqual('你\u0000\u0000好\u0000');
+        expect(resStr.length).assertEqual(5);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING002
+     * @tc.name: decodeTostring002
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring002', 0, function () {
+        let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:false});
+        let uint8 = new Uint8Array([0xEF,0xBB,0xBF,228,189,160,0,0,229,165,189,0]);
+        let resStr = textDecoder.decodeToString(uint8);
+        expect(resStr).assertEqual('\uFEFF你\u0000\u0000好\u0000');
+        expect(resStr.length).assertEqual(6);
+    })
+
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING003
+     * @tc.name: decodeTostring003
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring003', 0, function () {
+        let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:true});
+        let uint8 = new Uint8Array([228,189,160,0,0,229,165,189,0]);
+        let resStr = textDecoder.decodeToString(uint8);
+        expect(resStr).assertEqual('你\u0000\u0000好\u0000');
+        expect(resStr.length).assertEqual(5);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING004
+     * @tc.name: decodeTostring004
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring004', 0, function () {
+        let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:false});
+        let uint8 = new Uint8Array([228,189,160,0,0,229,165,189,0]);
+        let resStr = textDecoder.decodeToString(uint8);
+        expect(resStr).assertEqual('你\u0000\u0000好\u0000');
+        expect(resStr.length).assertEqual(5);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING005
+     * @tc.name: decodeTostring005
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring005', 0, function () {
+        let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:false});
+        let uint8 = new Uint8Array([228,189,160,229]);
+        let retStr = textDecoder.decodeToString(uint8, {stream: true});
+        expect(retStr).assertEqual('你');
+        let uint8arr = new Uint8Array([165,189]);
+        let resStr = textDecoder.decodeToString(uint8arr, {stream: true});
+        expect(resStr).assertEqual('好');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING006
+     * @tc.name: decodeTostring006
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring006', 0, function () {
+        let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:false});
+        let uint8 = new Uint8Array();
+        let resStr = textDecoder.decodeToString(uint8);
+        expect(resStr).assertEqual('');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING007
+     * @tc.name: decodeTostring007
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring007', 0, function () {
+        let textDecoder = util.TextDecoder.create('utf-8', {ignoreBOM:false});
+        let resStr = textDecoder.decodeToString(undefined);
+        expect(resStr).assertEqual('');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING008
+     * @tc.name: decodeTostring008
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring008', 0, function () {
+        let that = new util.TextEncoder('gb18030');
+        let result = that.encodeInto('abc哈哈熠熠');
+        let textDecode = util.TextDecoder.create('gb18030', {ignoreBOM : true});
+        let res = textDecode.decodeToString(result);
+        expect(res).assertEqual('abc哈哈熠熠')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING009
+     * @tc.name: decodeTostring009
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring009', 0, function () {
+        let that = new util.TextEncoder('big5');
+        let result = that.encodeInto('abc哈哈熠熠');
+        let textDecode = util.TextDecoder.create('big5', {ignoreBOM : true});
+        let res = textDecode.decodeToString(result);
+        expect(res).assertEqual('abc哈哈熠熠')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0010
+     * @tc.name: decodeTostring0010
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0010', 0, function () {
+        let that = new util.TextEncoder('shift_jis');
+        let result = that.encodeInto('こんにちは');
+        let textDecode = util.TextDecoder.create('shift_jis');
+        let res = textDecode.decodeToString(result);
+        expect(res).assertEqual('こんにちは')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0011
+     * @tc.name: decodeTostring0011
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0011', 0, function () {
+        let that = new util.TextEncoder('iso-2022-jp');
+        let result = that.encodeInto('こんにちは');
+        let textDecode = util.TextDecoder.create('iso-2022-jp', {ignoreBOM : true});
+        let res = textDecode.decodeToString(result);
+        expect(res).assertEqual('こんにちは')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0012
+     * @tc.name: decodeTostring0012
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0012', 0, function () {
+        let that = new util.TextEncoder('ibm866');
+        let result = that.encodeInto('Здравствуйте');
+        let textDecode = util.TextDecoder.create('ibm866');
+        let res = textDecode.decodeToString(result);
+        expect(res).assertEqual('Здравствуйте');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0013
+     * @tc.name: decodeTostring0013
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0013', 0, function () {
+        let that = new util.TextEncoder('GBK');
+        let result = that.encodeInto('abc哈熠');
+        let textDecode = util.TextDecoder.create('GBK', {ignoreBOM : true});
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('abc哈熠');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0014
+     * @tc.name: decodeTostring0014
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0014', 0, function () {
+        let that = new util.TextEncoder('GB2312');
+        let result = that.encodeInto('abc哈熠');
+        let textDecode = util.TextDecoder.create('GBK');
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('abc哈熠');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0015
+     * @tc.name: decodeTostring0015
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0015', 0, function () {
+        let that = new util.TextEncoder('iso-8859-2');
+        let result = that.encodeInto('Szia');
+        let textDecode = util.TextDecoder.create('iso-8859-2');
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('Szia');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0016
+     * @tc.name: decodeTostring0016
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0016', 0, function () {
+        let that = new util.TextEncoder('iso-8859-4');
+        let result = that.encodeInto('Tavaliselt tere päeval');
+        let textDecode = util.TextDecoder.create('iso-8859-4', {ignoreBOM : true});
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('Tavaliselt tere päeval');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0017
+     * @tc.name: decodeTostring0017
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0017', 0, function () {
+        let that = new util.TextEncoder('iso-8859-5');
+        let result = that.encodeInto('Здравствуйте');
+        let textDecode = util.TextDecoder.create('iso-8859-5', {ignoreBOM : false});
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('Здравствуйте');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0018
+     * @tc.name: decodeTostring0018
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0018', 0, function () {
+        let that = new util.TextEncoder('iso-8859-6');
+        let result = that.encodeInto('مرحبا');
+        let textDecode = util.TextDecoder.create('iso-8859-6');
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('مرحبا');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0019
+     * @tc.name: decodeTostring0019
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0019', 0, function () {
+        let that = new util.TextEncoder('iso-8859-7');
+        let result = that.encodeInto('Γεια σου');
+        let textDecode = util.TextDecoder.create('iso-8859-7');
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('Γεια σου');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0020
+     * @tc.name: decodeTostring0020
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0020', 0, function () {
+        let that = new util.TextEncoder('iso-8859-8');
+        let result = that.encodeInto('שלום');
+        let textDecode = util.TextDecoder.create('iso-8859-8', {ignoreBOM : true});
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('שלום');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0021
+     * @tc.name: decodeTostring0021
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0021', 0, function () {
+        let that = new util.TextEncoder('iso-8859-8');
+        let result = that.encodeInto('שלום');
+        let textDecode = util.TextDecoder.create('iso-8859-8', {ignoreBOM : true});
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('שלום')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0022
+     * @tc.name: decodeTostring0022
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0022', 0, function () {
+        let that = new util.TextEncoder('iso-8859-8-i');
+        let result = that.encodeInto('שלום');
+        let textDecode = util.TextDecoder.create('iso-8859-8-i', {ignoreBOM : true});
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('שלום');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0023
+     * @tc.name: decodeTostring0023
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0023', 0, function () {
+        let that = new util.TextEncoder('iso-8859-10');
+        let result = that.encodeInto('Hei');
+        let textDecode = util.TextDecoder.create('iso-8859-10', {ignoreBOM : true});
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('Hei');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0024
+     * @tc.name: decodeTostring0024
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+     it('decodeTostring0024', 0, function () {
+        let that = new util.TextEncoder('iso-8859-13');
+        let result = that.encodeInto('Sveiki');
+        let textDecode = util.TextDecoder.create('iso-8859-13');
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('Sveiki');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0025
+     * @tc.name: decodeTostring0025
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0025', 0, function () {
+        let that = new util.TextEncoder('iso-8859-14');
+        let result = that.encodeInto('Diolch');
+        let textDecode = util.TextDecoder.create('iso-8859-14', {ignoreBOM : true});
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('Diolch');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0026
+     * @tc.name: decodeTostring0026
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0026', 0, function () {
+        let that = new util.TextEncoder('iso-8859-15');
+        let result = that.encodeInto('Hola');
+        let textDecode = util.TextDecoder.create('iso-8859-15');
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('Hola');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0027
+     * @tc.name: decodeTostring0027
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0027', 0, function () {
+        let that = new util.TextEncoder('koi8-r');
+        let result = that.encodeInto('Привет, мир!');
+        let textDecode = util.TextDecoder.create('koi8-r', {ignoreBOM : true});
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('Привет, мир!');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DEOCDETOSTRING0028
+     * @tc.name: decodeTostring0028
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0028', 0, function () {
+        let that = new util.TextEncoder('koi8-u');
+        let result = that.encodeInto('Привіт, світ');
+        let textDecode = util.TextDecoder.create('koi8-u', {ignoreBOM : true});
+        let data= textDecode.decodeToString(result);
+        expect(data).assertEqual('Привіт, світ');
+    })
+
+    /**
      * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_001
      * @tc.name: testEncodeInto001
      * @tc.desc: Returns the result of encoder.

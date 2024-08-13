@@ -23,7 +23,7 @@ class ClassB {
 
 @ComponentV2
 struct Child {
-  @Param childParamMsg = 'childParamMsg'
+  @Param childParamMsg: string = 'childParamMsg'
 
   build() {
     Column() {

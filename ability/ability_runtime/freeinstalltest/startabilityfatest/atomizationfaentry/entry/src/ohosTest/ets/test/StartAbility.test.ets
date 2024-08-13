@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,51 +17,53 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import Utils from './Utils';
 import featureAbility from "@ohos.ability.featureAbility";
 import wantConstant from '@ohos.ability.wantConstant';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import ability from '@ohos.ability.ability';
+import base from '@ohos.base';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 
 export default function StartAbilityTest() {
-  var TAG = "";
+  let TAG = "";
 
-  describe('StartAbilityTest', function () {
-    var delegator = AbilityDelegatorRegistry.getAbilityDelegator();
-    beforeAll(async function (done) {
+  describe('StartAbilityTest', () => {
+    let delegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    beforeAll(async (done: Function) => {
       console.info("StartAbilityTest before all called");
-      var cmd = "bm install -p data/test/MockService.hap";
+      let cmd = "bm install -p data/test/MockService.hap";
       console.info("cmd : " + cmd)
-      delegator.executeShellCommand(cmd, (err: any, d: any) => {
+      delegator.executeShellCommand(cmd, (err: base.BusinessError, d: ESObject) => {
         console.info("executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
       await Utils.sleep(500);
-      var cmd1 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
-      delegator.executeShellCommand(cmd1, (err: any, d: any) => {
+      let cmd1 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
+      delegator.executeShellCommand(cmd1, (err: base.BusinessError, d: ESObject) => {
         console.info("executeShellCommand1 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
       await Utils.sleep(500);
-      var cmd2 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
-      delegator.executeShellCommand(cmd2, (err: any, d: any) => {
+      let cmd2 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
+      delegator.executeShellCommand(cmd2, (err: base.BusinessError, d: ESObject) => {
         console.info("executeShellCommand2 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
       await Utils.sleep(500);
-      var cmd3 = "cp data/test/AtomizationFaEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/" +
+      let cmd3 = "cp data/test/AtomizationFaEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/" +
         "entry/files";
-      delegator.executeShellCommand(cmd3, (err: any, d: any) => {
+      delegator.executeShellCommand(cmd3, (err: base.BusinessError, d: ESObject) => {
         console.info("executeShellCommand3 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
         done();
       })
     });
 
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info("StartAbilityTest after each called");
       if ("FreeInstall_FA_StartAbility_2800" === TAG || "FreeInstall_FA_StartAbility_3900") {
-        var cmd5 = "bm uninstall -n com.example.qianyiyingyong.hmservice";
-        delegator.executeShellCommand(cmd5, (err: any, d: any) => {
+        let cmd5 = "bm uninstall -n com.example.qianyiyingyong.hmservice";
+        delegator.executeShellCommand(cmd5, (err: base.BusinessError, d: ESObject) => {
           console.info("executeShellCommand5: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
         })
       }
       await Utils.sleep(500);
       if ("FreeInstall_FA_StartAbility_3900" === TAG) {
-        var cmd4 = "bm uninstall -n com.ohos.hag.famanager";
-        delegator.executeShellCommand(cmd4, (err: any, d: any) => {
+        let cmd4 = "bm uninstall -n com.ohos.hag.famanager";
+        delegator.executeShellCommand(cmd4, (err: base.BusinessError, d: ESObject) => {
           console.info("executeShellCommand4: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
         })
       }
@@ -77,12 +77,12 @@ export default function StartAbilityTest() {
      * @tc.desc: Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_StartAbility_2600", 0, async function (done) {
+    it("FreeInstall_FA_StartAbility_2600", 0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_StartAbility_2600-------------");
       TAG = "FreeInstall_FA_StartAbility_2600";
       setTimeout(async () => {
-        let details;
-        var str = {
+        let details: number = -1;
+        let str: ability.StartAbilityParameter = {
           'want': {
             "deviceId": "",
             "bundleName": "com.example.qianyiyingyong.hmservice",
@@ -94,7 +94,7 @@ export default function StartAbilityTest() {
         await featureAbility.startAbility(str).then((data) => {
           details = data;
           console.info(TAG + ' StartAbility successful. Data: ' + JSON.stringify(data))
-        }).catch((error) => {
+        }).catch((error: base.BusinessError) => {
           console.info(TAG + ' StartAbility failed. error: ' + JSON.stringify(error));
         })
         expect(details).assertEqual(0);
@@ -108,16 +108,16 @@ export default function StartAbilityTest() {
      * @tc.desc: Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_StartAbility_2700", 0, async function (done) {
+    it("FreeInstall_FA_StartAbility_2700", 0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_StartAbility_2700-------------");
       TAG = "FreeInstall_FA_StartAbility_2700";
-      var cmd6 = "bm install -p data/test/AtomizationFaEntry.hap";
-      delegator.executeShellCommand(cmd6, (err: any, d: any) => {
+      let cmd6 = "bm install -p data/test/AtomizationFaEntry.hap";
+      delegator.executeShellCommand(cmd6, (err: base.BusinessError, d: ESObject) => {
         console.info("executeShellCommand6: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
       setTimeout(async () => {
-        let details;
-        var str = {
+        let details = -1;
+        let str: ability.StartAbilityParameter = {
           'want': {
             "deviceId": "",
             "bundleName": "com.example.qianyiyingyong.hmservice",
@@ -129,7 +129,7 @@ export default function StartAbilityTest() {
         await featureAbility.startAbility(str).then((data) => {
           details = data;
           console.info(TAG + ' StartAbility2700 successful. Data: ' + JSON.stringify(data))
-        }).catch((error) => {
+        }).catch((error: base.BusinessError) => {
           console.info(TAG + ' StartAbility2700 failed. error: ' + JSON.stringify(error));
         })
         expect(details).assertEqual(0);

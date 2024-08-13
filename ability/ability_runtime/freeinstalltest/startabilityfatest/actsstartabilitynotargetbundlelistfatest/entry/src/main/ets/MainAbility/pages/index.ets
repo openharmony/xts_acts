@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
@@ -17,7 +16,7 @@
 
 import router from '@system.router';
 import file from '@system.file';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
 import testsuite from "../test/List.test";
 import featureAbility from "@ohos.ability.featureAbility";
@@ -38,9 +37,9 @@ async function routePage() {
 struct Index {
   aboutToAppear() {
     console.info("aboutToAppear start!!!!")
-    //var abilityDelegator: any
+    //let abilityDelegator: any
     //abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    //var abilityDelegatorArguments: any
+    //let abilityDelegatorArguments: any
     //abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     //console.info('start run testcase!!!')
     //Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)

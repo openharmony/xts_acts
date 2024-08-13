@@ -16,4 +16,5 @@
 export { add } from "./src/main/ets/utils/Calc"
 export { getModuleDescription } from "./src/main/ets/utils/BaseInfo"
 export { addtest } from "liblibrary.so"
-export { getDescFromLibrary2 } from "./src/main/ets/utils/MultiLevelDep" 
+export { getDescFromLibrary2 } from "./src/main/ets/utils/MultiLevelDep"
+export let A = 10

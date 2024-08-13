@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +13,7 @@
  * limitations under the License.
  */
 
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../test/ListTest'
 import file from '@system.file';
@@ -26,10 +24,8 @@ struct Index {
   @State message: string = 'StartAbility NoTargetBundleList Test'
   aboutToAppear() {
     console.info("start run testcase!!!!")
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     console.info('start run testcase!!!')
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }

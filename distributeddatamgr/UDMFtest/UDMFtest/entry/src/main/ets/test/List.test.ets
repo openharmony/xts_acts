@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import UDMFApiCallback from './UDMFApiCallback.test'
 import UDMFApiPromise from './UDMFApiPromise.test'
 import UDMFApiTest from './UDMF.test'
@@ -33,5 +33,4 @@ export default function testsuite() {
   UtdfileNameTest()
   UDMFApiDataStructTest()
   UDMFSupportClipboardApiTest()
-  
 }

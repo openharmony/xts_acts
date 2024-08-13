@@ -19,32 +19,32 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct promptExample {
-  build(){
-    Column(){
+  build() {
+    Column() {
       Button('click')
-      .key('button_c')
-      .backgroundColor('#FF0B8FE2')
-      .fontSize(20)
-      .margin({top: 20})
-        .onClick(()=>{
+        .key('button_c')
+        .backgroundColor('#FF0B8FE2')
+        .fontSize(20)
+        .margin({ top: 20 })
+        .onClick(() => {
           console.info('button is start');
           let localeInfo = Configuration.getLocale();
           console.info('localeInfo result is' + JSON.stringify(localeInfo));
-          try{
-            var backData = {
+          try {
+            let backData: events_emitter.EventData = {
               data: {
                 "COUNTRY": localeInfo.countryOrRegion,
-                "DIR":localeInfo.dir
+                "DIR": localeInfo.dir
               }
             }
             console.log("backData is" + JSON.stringify(backData.data));
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 78,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("confituration start to emit action state");
             events_emitter.emit(backEvent, backData);
-          }catch{
+          } catch {
             console.info("confituration emit action state err: " + JSON.stringify(err.message));
           }
         })

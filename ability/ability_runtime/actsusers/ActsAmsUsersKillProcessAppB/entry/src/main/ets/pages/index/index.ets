@@ -17,7 +17,6 @@ import file from '@system.file';
 @Entry
 @Component
 struct Index {
-
   aboutToAppear() {
     console.info("start run testcase!!!!")
   }
@@ -27,9 +26,9 @@ struct Index {
       Text('hello')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
-      .margin({
-        top: 20
-      })
+        .margin({
+          top: 20
+        })
     }
     .width('100%')
     .height('100%')

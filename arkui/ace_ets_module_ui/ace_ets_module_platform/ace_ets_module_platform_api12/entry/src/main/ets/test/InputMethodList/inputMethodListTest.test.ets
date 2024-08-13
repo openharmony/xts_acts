@@ -16,7 +16,17 @@
 import CommonFunc from '../../MainAbility/common/Common';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function inputMethodListTest() {
   describe('inputMethodListTest', () => {
@@ -49,10 +59,10 @@ export default function inputMethodListTest() {
 
 
     /**
-     * @tc.number    inputMethodListTest_0100
-     * @tc.name      inputMethodListTest_0100
-     * @tc.desc      Test defaultSelected
-     * @tc.level     Level 2
+     * @tc.number inputMethodListTest_0100
+     * @tc.name inputMethodListTest_0100
+     * @tc.desc Test defaultSelected
+     * @tc.level Level 2
      */
     it('inputMethodListTest_0100', 0, async (done: Function) => {
       console.info('inputMethodListTest_0100 START');
@@ -66,10 +76,9 @@ export default function inputMethodListTest() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('inputMethodListTest_text');
-      let obj1 = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[inputMethodListTest_0100] obj1 is: " + JSON.stringify(obj1));
-      expect(obj1.$attrs.content).assertEqual('1');
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('1');
 
       await driver.triggerKey(2070);
       await CommonFunc.sleep(2000);
@@ -77,8 +86,5 @@ export default function inputMethodListTest() {
       console.info('inputMethodListTest_0100 END');
       done();
     });
-
-
-
   })
 }

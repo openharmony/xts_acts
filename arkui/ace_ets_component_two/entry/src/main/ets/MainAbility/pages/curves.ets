@@ -20,14 +20,15 @@ import Curves from '@ohos.curves'
 struct ImageComponent {
   @State widthSize: number = 200
   @State heightSize: number = 200
+
   build() {
     Column() {
       Text()
-        .margin({top:100})
+        .margin({ top: 100 })
         .width(this.widthSize)
         .height(this.heightSize)
         .backgroundColor(Color.Red)
-        .onClick(()=> {
+        .onClick(() => {
           let curve = Curves.cubicBezier(0.25, 0.1, 0.25, 1.0);
           let curve1 = Curves.init();
           let curve2 = Curves.Curve.EaseIn(0.42, 0.0, 1.0, 1.0);
@@ -44,7 +45,7 @@ struct ImageComponent {
           this.widthSize = curve.interpolate(0.5) * this.widthSize;
           this.heightSize = curve.interpolate(0.5) * this.heightSize;
         })
-        .animation({duration: 2000 , curve: Curves.spring(0.25, 0.1, 0.25, 1.0)})
+        .animation({ duration: 2000, curve: Curves.spring(0.25, 0.1, 0.25, 1.0) })
     }.width("100%").height("100%")
   }
 }

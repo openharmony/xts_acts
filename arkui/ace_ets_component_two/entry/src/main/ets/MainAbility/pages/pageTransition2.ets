@@ -20,13 +20,15 @@ struct AExample {
   @State scale: number = 1
   @State opacity: number = 1
   @State active: boolean = false
+
   build() {
     Column() {
-      Navigator({ target: 'pages/pageTransition' ,type: NavigationType.Push}) {
+      Navigator({ target: 'pages/pageTransition', type: NavigationType.Push }) {
         Image($rawfile('ic_health_heart.png')).width("100%").height("100%")
       }
     }.height("100%").width("100%").scale({ x: this.scale }).opacity(this.opacity)
   }
+
   pageTransition() {
     PageTransitionEnter({ duration: 1200, curve: Curve.Linear })
       .onEnter((type: RouteType, progress: number) => {

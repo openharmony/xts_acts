@@ -13,30 +13,78 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import commonEvent from '@ohos.commonEvent'
+import commonEvent from '@ohos.commonEventManager'
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
+import ability from '@ohos.ability.ability';
+import base from '@ohos.base';
+import Want from '@ohos.app.ability.Want';
+
+let TAG = "";
+let tempCallbackId;
+let subscriber:commonEvent.CommonEventSubscriber;
+let MainAbility1onCreate = "com.example.windowstagelifecycle_xts.MainAbility1.onCreate";
+let MainAbility1onDestroy = "com.example.windowstagelifecycle_xts.MainAbility1.onDestroy";
+let MainAbility1onForeground = "com.example.windowstagelifecycle_xts.MainAbility1.onForeground";
+let MainAbility2onCreate = "com.example.windowstagelifecycle_xts.MainAbility2.onCreate";
+let MainAbility2onDestroy = "com.example.windowstagelifecycle_xts.MainAbility2.onDestroy";
+let MainAbility3onCreate = "com.example.windowstagelifecycle_xts.MainAbility3.onCreate";
+let MainAbility3onDestroy = "com.example.windowstagelifecycle_xts.MainAbility3.onDestroy";
+let MainAbility5onCreate = "com.example.windowstagelifecycle_xts.MainAbility5.onCreate";
+let MainAbility5onDestroy = "com.example.windowstagelifecycle_xts.MainAbility5.onDestroy";
+let MainAbility6onForeground = "com.example.windowstagelifecycle_xts.MainAbility6.onForeground";
+let MainAbility9onForeground = "com.example.windowstagelifecycle_xts.MainAbility9.onForeground";
+let MainAbility11onCreate = "com.example.windowstagelifecycle_xts.MainAbility11.onCreate";
+let MainAbility11onDestroy = "com.example.windowstagelifecycle_xts.MainAbility11.onDestroy";
+let MainAbility12onCreate = "com.example.windowstagelifecycle_xts.MainAbility12.onCreate";
+let MainAbility12onDestroy = "com.example.windowstagelifecycle_xts.MainAbility12.onDestroy";
+let Hap1MainAbility1onDestroy = "com.example.windowstagelifecycle_xts.Hap1MainAbility1.onDestroy";
+let Hap1MainAbility2onDestroy = "com.example.windowstagelifecycle_xts.Hap1MainAbility2.onDestroy";
+let actsEvents = [
+  MainAbility1onCreate,
+  MainAbility1onDestroy,
+  MainAbility1onForeground,
+  MainAbility2onCreate,
+  MainAbility2onDestroy,
+  MainAbility3onCreate,
+  MainAbility3onDestroy,
+  MainAbility5onCreate,
+  MainAbility5onDestroy,
+  MainAbility6onForeground,
+  MainAbility9onForeground,
+  MainAbility11onCreate,
+  MainAbility11onDestroy,
+  MainAbility12onCreate,
+  MainAbility12onDestroy,
+  Hap1MainAbility1onDestroy,
+  Hap1MainAbility2onDestroy
+];
+
+function sleep(time: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, time))
+}
 
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
-export default function lifecycleTest() {
-  describe('LifeCycleTest', function () {
 
-    beforeEach(async function (done) {
+export default function lifecycleTest() {
+  describe('LifeCycleTest', () => {
+
+    beforeEach(async (done: Function) => {
       console.info('LifeCycleTest before each called');
       await sleep(2000);
       done()
     });
 
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info('LifeCycleTest after each called');
       if (subscriber) {
-        commonEvent.unsubscribe(subscriber, (err)=>{
+        commonEvent.unsubscribe(subscriber, (err) => {
           console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
         });
       }
       if ("Singlehap_WindowStageLifeCycleTest_0200" === TAG || "Singlehap_WindowStageLifeCycleTest_0300" === TAG
         || "Singlehap_WindowStageLifeCycleTest_0500" === TAG || "Singlehap_WindowStageLifeCycleTest_0600" === TAG
         || "Singlehap_WindowStageLifeCycleTest_0700" === TAG) {
-        let para = {
+        let para: ability.AbilityResult = {
           resultCode: 2,
           want: {
             "abilityName": "MainAbility1",
@@ -45,30 +93,34 @@ export default function lifecycleTest() {
         }
         console.log("LifeCycleTest terminateSelfwithresult para: " + JSON.stringify(para));
         await globalThis.ability1context.terminateSelfWithResult(para)
-          .then((data) => {
+          .then((data: ESObject) => {
             console.log(TAG + "LifeCycleTest terminateSelfwithresult successful data: " + JSON.stringify(data));
             done();
-          }).catch((error) => {
+          }).catch((error: base.BusinessError) => {
             console.log(TAG + "LifeCycleTest terminateSelfwithresult error: " + JSON.stringify(error));
             done();
           });
       } else if ("Singlehap_WindowStageLifeCycleTest_1200" === TAG) {
-        function subscribeCallBack(err, data) {
+
+        let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
           console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
           if (data.event == MainAbility12onDestroy) {
-            commonEvent.unsubscribe(subscriber, (err)=>{
+            commonEvent.unsubscribe(subscriber, (err) => {
               console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
               subscriber = undefined;
             });
             done();
           }
         }
-        commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+
+        commonEvent.createSubscriber({
+          events: actsEvents
+        }).then((data) => {
           console.info(TAG + ' createSubscriber successful. ');
           subscriber = data;
           commonEvent.subscribe(subscriber, subscribeCallBack);
         })
-        let para1 = {
+        let para1: ability.AbilityResult = {
           resultCode: 2,
           want: {
             "abilityName": "MainAbility12",
@@ -77,9 +129,9 @@ export default function lifecycleTest() {
         }
         console.log("LifeCycleTest terminateSelfwithresult para: " + JSON.stringify(para1));
         await globalThis.ability12.terminateSelfWithResult(para1)
-          .then((data) => {
+          .then((data: ESObject) => {
             console.log(TAG + "LifeCycleTest terminateSelfwithresult successful data: " + JSON.stringify(data));
-          }).catch((error) => {
+          }).catch((error: base.BusinessError) => {
             console.log(TAG + "LifeCycleTest terminateSelfwithresult error: " + JSON.stringify(error));
           });
       } else {
@@ -87,49 +139,6 @@ export default function lifecycleTest() {
       }
     });
 
-    let TAG = "";
-    let tempCallbackId;
-    let subscriber = undefined;
-    let MainAbility1onCreate = "com.example.windowstagelifecycle_xts.MainAbility1.onCreate";
-    let MainAbility1onDestroy = "com.example.windowstagelifecycle_xts.MainAbility1.onDestroy";
-    let MainAbility1onForeground = "com.example.windowstagelifecycle_xts.MainAbility1.onForeground";
-    let MainAbility2onCreate = "com.example.windowstagelifecycle_xts.MainAbility2.onCreate";
-    let MainAbility2onDestroy = "com.example.windowstagelifecycle_xts.MainAbility2.onDestroy";
-    let MainAbility3onCreate = "com.example.windowstagelifecycle_xts.MainAbility3.onCreate";
-    let MainAbility3onDestroy = "com.example.windowstagelifecycle_xts.MainAbility3.onDestroy";
-    let MainAbility5onCreate = "com.example.windowstagelifecycle_xts.MainAbility5.onCreate";
-    let MainAbility5onDestroy = "com.example.windowstagelifecycle_xts.MainAbility5.onDestroy";
-    let MainAbility6onForeground = "com.example.windowstagelifecycle_xts.MainAbility6.onForeground";
-    let MainAbility9onForeground = "com.example.windowstagelifecycle_xts.MainAbility9.onForeground";
-    let MainAbility11onCreate = "com.example.windowstagelifecycle_xts.MainAbility11.onCreate";
-    let MainAbility11onDestroy = "com.example.windowstagelifecycle_xts.MainAbility11.onDestroy";
-    let MainAbility12onCreate = "com.example.windowstagelifecycle_xts.MainAbility12.onCreate";
-    let MainAbility12onDestroy = "com.example.windowstagelifecycle_xts.MainAbility12.onDestroy";
-    let Hap1MainAbility1onDestroy = "com.example.windowstagelifecycle_xts.Hap1MainAbility1.onDestroy";
-    let Hap1MainAbility2onDestroy = "com.example.windowstagelifecycle_xts.Hap1MainAbility2.onDestroy";
-    let actsEvents = [
-      MainAbility1onCreate,
-      MainAbility1onDestroy,
-      MainAbility1onForeground,
-      MainAbility2onCreate,
-      MainAbility2onDestroy,
-      MainAbility3onCreate,
-      MainAbility3onDestroy,
-      MainAbility5onCreate,
-      MainAbility5onDestroy,
-      MainAbility6onForeground,
-      MainAbility9onForeground,
-      MainAbility11onCreate,
-      MainAbility11onDestroy,
-      MainAbility12onCreate,
-      MainAbility12onDestroy,
-      Hap1MainAbility1onDestroy,
-      Hap1MainAbility2onDestroy
-    ];
-
-    function sleep(time) {
-      return new Promise((resolve) => setTimeout(resolve, time))
-    }
 
     /*
      * @tc.number  Singlehap_WindowStageLifeCycleTest_0100
@@ -137,13 +146,14 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0100", 0, async function (done) {
+    it("Singlehap_WindowStageLifeCycleTest_0100", 0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0100 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0100";
-      function subscribeCallBack(err, data) {
+
+      let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility2onDestroy) {
-          commonEvent.unsubscribe(subscriber, (err)=>{
+          commonEvent.unsubscribe(subscriber, (err) => {
             console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
             subscriber = undefined;
           });
@@ -158,30 +168,33 @@ export default function lifecycleTest() {
           expect(listTemp.indexOf("MainAbility2 onWindowStageInactive") !== -1).assertTrue();
           expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
           globalThis.applicationContext
-          .unregisterAbilityLifecycleCallback(tempCallbackId, (error, data) => {
-            console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
-            expect(error.code).assertEqual(0);
-            console.log("------------Singlehap_WindowStageLifeCycleTest_0100 END-------------");
-            done();
-          });
+            .unregisterAbilityLifecycleCallback(tempCallbackId, (error: base.BusinessError, data: ESObject) => {
+              console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
+                ",data: " + JSON.stringify(data));
+              expect(error.code).assertEqual(0);
+              console.log("------------Singlehap_WindowStageLifeCycleTest_0100 END-------------");
+              done();
+            });
         }
       }
-      commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+
+      commonEvent.createSubscriber({
+        events: actsEvents
+      }).then((data) => {
         console.info(TAG + ' createSubscriber successful. ');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
       })
-      let str = {
+      let str: Want = {
         "bundleName": "com.example.windowstagelifecycle_xts",
         "abilityName": "MainAbility2",
       }
-      globalThis.abilityContext.startAbility(str).then((data) => {
-          console.info(TAG + ' start successful. Data: ' + data);
-        }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-          expect().assertFail();
-          done();
+      globalThis.abilityContext.startAbility(str).then((data: ESObject) => {
+        console.info(TAG + ' start successful. Data: ' + data);
+      }).catch((error: base.BusinessError) => {
+        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+        expect().assertFail();
+        done();
       })
     })
 
@@ -191,26 +204,27 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0200", 0, async function (done) {
+    it("Singlehap_WindowStageLifeCycleTest_0200", 0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0200 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0200";
-      function subscribeCallBack(err, data) {
+
+      let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility1onCreate) {
-          let str1 = {
+          let str1: Want = {
             "bundleName": "com.example.windowstagelifecycle_xts",
             "abilityName": "MainAbility2",
           }
           globalThis.abilityContext.startAbility(str1)
-            .then((data) => {
+            .then((data: ESObject) => {
               console.info(TAG + ' start successful. Data: ' + data);
-            }).catch((error) => {
-              console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-              expect().assertFail();
-              done();
+            }).catch((error: base.BusinessError) => {
+            console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+            expect().assertFail();
+            done();
           })
         } else if (data.event == MainAbility2onDestroy) {
-          commonEvent.unsubscribe(subscriber, (err)=>{
+          commonEvent.unsubscribe(subscriber, (err) => {
             console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
             subscriber = undefined;
           });
@@ -228,30 +242,33 @@ export default function lifecycleTest() {
           expect(listTemp.indexOf("MainAbility2 onWindowStageInactive") !== -1).assertTrue();
           expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
           globalThis.applicationContext1
-          .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
-            console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
-            expect(error.code).assertEqual(0);
-            done();
-          })
+            .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error: base.BusinessError, data: ESObject) => {
+              console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
+                ",data: " + JSON.stringify(data));
+              expect(error.code).assertEqual(0);
+              done();
+            })
         }
       }
-      commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+
+      commonEvent.createSubscriber({
+        events: actsEvents
+      }).then((data) => {
         console.info(TAG + ' createSubscriber successful. ');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
       })
-      let str = {
+      let str: Want = {
         "bundleName": "com.example.windowstagelifecycle_xts",
         "abilityName": "MainAbility1",
       }
       globalThis.abilityContext.startAbility(str)
-        .then((data) => {
+        .then((data: ESObject) => {
           console.info(TAG + ' start successful. Data: ' + data);
-        }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-          expect().assertFail();
-          done();
+        }).catch((error: base.BusinessError) => {
+        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+        expect().assertFail();
+        done();
       })
     });
 
@@ -261,7 +278,7 @@ export default function lifecycleTest() {
     * @tc.desc    Function test
     * @tc.level   0
     */
-    it("Singlehap_WindowStageLifeCycleTest_0300", 0, async function (done) {
+    it("Singlehap_WindowStageLifeCycleTest_0300", 0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0300 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0300";
       if (deviceType === '2in1') {
@@ -269,25 +286,26 @@ export default function lifecycleTest() {
         return;
       }
       let mainAbility2onCreate = false;
-      function subscribeCallBack(err, data) {
+
+      let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility1onCreate) {
-          let str1 = {
+          let str1: Want = {
             "bundleName": "com.example.windowstagelifecycle_xts",
             "abilityName": "MainAbility2",
           }
           globalThis.abilityContext.startAbility(str1)
-            .then((data) => {
+            .then((data: ESObject) => {
               console.info(TAG + ' start successful. Data: ' + data);
-            }).catch((error) => {
-              console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-              expect().assertFail();
-              done();
+            }).catch((error: base.BusinessError) => {
+            console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+            expect().assertFail();
+            done();
           })
         } else if (data.event == MainAbility2onCreate) {
-            mainAbility2onCreate = true;
+          mainAbility2onCreate = true;
         } else if (data.event == MainAbility1onForeground && mainAbility2onCreate) {
-          commonEvent.unsubscribe(subscriber, (err)=>{
+          commonEvent.unsubscribe(subscriber, (err) => {
             console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
             subscriber = undefined;
           });
@@ -303,33 +321,36 @@ export default function lifecycleTest() {
           expect(listTemp.indexOf("MainAbility2 onWindowStageInactive") !== -1).assertTrue();
           expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
           globalThis.applicationContext1
-          .unregisterAbilityLifecycleCallback(globalThis.callbackid1)
-          .then((error, data) => {
-            console.info(TAG + ' unregisterAbilityLifecycleCallback successful. Data: ' + data);
-            done();
-          }).catch((error) => {
+            .unregisterAbilityLifecycleCallback(globalThis.callbackid1)
+            .then((error: base.BusinessError, data: ESObject) => {
+              console.info(TAG + ' unregisterAbilityLifecycleCallback successful. Data: ' + data);
+              done();
+            }).catch((error: base.BusinessError) => {
             console.error(TAG + ' unregisterAbilityLifecycleCallback failed. Cause: ' + JSON.stringify(error));
             expect().assertFail();
             done();
           })
         }
       }
-      commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+
+      commonEvent.createSubscriber({
+        events: actsEvents
+      }).then((data) => {
         console.info(TAG + ' createSubscriber successful. ');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
       })
-      let str = {
+      let str: Want = {
         "bundleName": "com.example.windowstagelifecycle_xts",
         "abilityName": "MainAbility1",
       }
       globalThis.abilityContext.startAbility(str)
-        .then((data) => {
+        .then((data: ESObject) => {
           console.info(TAG + ' start successful. Data: ' + data);
-        }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-          expect().assertFail();
-          done();
+        }).catch((error: base.BusinessError) => {
+        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+        expect().assertFail();
+        done();
       })
     });
 
@@ -339,26 +360,27 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0400", 0, async function (done) {
+    it("Singlehap_WindowStageLifeCycleTest_0400", 0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0400 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0400";
-      function subscribeCallBack(err, data) {
+
+      let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility3onCreate) {
-          let str1 = {
+          let str1: Want = {
             "bundleName": "com.example.windowstagelifecycle_xts",
             "abilityName": "MainAbility2",
           }
           globalThis.abilityContext.startAbility(str1)
-            .then((data) => {
+            .then((data: ESObject) => {
               console.info(TAG + ' start successful. Data: ' + data);
-            }).catch((error) => {
-              console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-              expect().assertFail();
-              done();
+            }).catch((error: base.BusinessError) => {
+            console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+            expect().assertFail();
+            done();
           })
         } else if (data.event == MainAbility2onDestroy) {
-          let para = {
+          let para: ability.AbilityResult = {
             resultCode: 1,
             want: {
               "abilityName": "MainAbility3",
@@ -366,21 +388,21 @@ export default function lifecycleTest() {
             }
           }
           console.log(TAG + " terminateSelfwithresult para: " + JSON.stringify(para));
-          globalThis.ability3.terminateSelfWithResult(para).then((data) => {
-              console.log(TAG + " terminateSelfwithresult successful data: " + JSON.stringify(data));
-          }).catch((error) => {
+          globalThis.ability3.terminateSelfWithResult(para).then((data: ESObject) => {
+            console.log(TAG + " terminateSelfwithresult successful data: " + JSON.stringify(data));
+          }).catch((error: base.BusinessError) => {
             console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
           });
         } else if (data.event == MainAbility3onDestroy) {
-          commonEvent.unsubscribe(subscriber, (err)=>{
+          commonEvent.unsubscribe(subscriber, (err) => {
             console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
             subscriber = undefined;
           });
           globalThis.applicationContext3
-          .unregisterAbilityLifecycleCallback(globalThis.callbackid3, (error, data) => {
-            console.log(TAG + ": unregisterAbilityLifecycleCallback3 success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
-          })
+            .unregisterAbilityLifecycleCallback(globalThis.callbackid3, (error: base.BusinessError, data: ESObject) => {
+              console.log(TAG + ": unregisterAbilityLifecycleCallback3 success, err: " + JSON.stringify(error) +
+                ",data: " + JSON.stringify(data));
+            })
           console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list3));
           console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid3));
           let listTemp = JSON.stringify(globalThis.list3);
@@ -399,19 +421,21 @@ export default function lifecycleTest() {
         }
       }
 
-      commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+      commonEvent.createSubscriber({
+        events: actsEvents
+      }).then((data) => {
         console.info(TAG + ' createSubscriber successful. ');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
       })
 
-      let str = {
+      let str: Want = {
         "bundleName": "com.example.windowstagelifecycle_xts",
         "abilityName": "MainAbility3",
       }
-      globalThis.abilityContext.startAbility(str).then((data) => {
+      globalThis.abilityContext.startAbility(str).then((data: ESObject) => {
         console.info(TAG + ' start3 successful. Data: ' + data);
-      }).catch((error) => {
+      }).catch((error: base.BusinessError) => {
         console.error(TAG + ' start3 failed. Cause: ' + JSON.stringify(error));
         expect().assertFail();
         done();
@@ -424,7 +448,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0500", 0, async function (done) {
+    it("Singlehap_WindowStageLifeCycleTest_0500", 0, async (done: Function) => {
       await sleep(500);
       console.log("------------Singlehap_WindowStageLifeCycleTest_0500 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0500";
@@ -432,32 +456,33 @@ export default function lifecycleTest() {
         done();
         return;
       }
-      function subscribeCallBack(err, data) {
+
+      let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility1onCreate) {
-          let str1 = {
+          let str1: Want = {
             "bundleName": "com.example.windowstagelifecycle_xts",
             "abilityName": "MainAbility5",
           }
-          globalThis.abilityContext.startAbility(str1).then((data) => {
+          globalThis.abilityContext.startAbility(str1).then((data: ESObject) => {
             console.info(TAG + ' start5 successful. Data: ' + data);
-          }).catch((error) => {
+          }).catch((error: base.BusinessError) => {
             console.error(TAG + ' start5 failed. Cause: ' + JSON.stringify(error));
             expect().assertFail();
             done();
           })
         } else if (data.event == MainAbility5onCreate) {
-          let str2 = {
+          let str2: Want = {
             "bundleName": "com.example.windowstagelifecycle_xts",
             "abilityName": "MainAbility2",
           }
-          globalThis.abilityContext.startAbility(str2).then((data) => {
+          globalThis.abilityContext.startAbility(str2).then((data: ESObject) => {
             console.info(TAG + ' start2 successful. Data: ' + data);
-          }).catch((error) => {
+          }).catch((error: base.BusinessError) => {
             console.error(TAG + ' start2 failed. Cause: ' + JSON.stringify(error));
           })
         } else if (data.event == MainAbility5onDestroy) {
-          commonEvent.unsubscribe(subscriber, (err)=>{
+          commonEvent.unsubscribe(subscriber, (err) => {
             console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
             subscriber = undefined;
           });
@@ -473,28 +498,30 @@ export default function lifecycleTest() {
           expect(listTemp.indexOf("MainAbility2 onWindowStageInactive") !== -1).assertTrue();
           expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
           globalThis.applicationContext1
-          .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
-            console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
-          })
+            .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error: base.BusinessError, data: ESObject) => {
+              console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
+                ",data: " + JSON.stringify(data));
+            })
           console.log("------------Singlehap_WindowStageLifeCycleTest_0500 END-------------");
           done();
         }
       }
 
-      commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+      commonEvent.createSubscriber({
+        events: actsEvents
+      }).then((data) => {
         console.info(TAG + ' createSubscriber successful. ');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
       })
 
-      let str = {
+      let str: Want = {
         "bundleName": "com.example.windowstagelifecycle_xts",
         "abilityName": "MainAbility1",
       }
-      globalThis.abilityContext.startAbility(str).then((data) => {
+      globalThis.abilityContext.startAbility(str).then((data: ESObject) => {
         console.info(TAG + ' start1 successful. Data: ' + data);
-      }).catch((error) => {
+      }).catch((error: base.BusinessError) => {
         console.error(TAG + ' start1 failed. Cause: ' + JSON.stringify(error));
       })
     });
@@ -505,7 +532,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0600", 0, async function (done) {
+    it("Singlehap_WindowStageLifeCycleTest_0600", 0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0600 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0600";
       if (deviceType === '2in1') {
@@ -513,23 +540,24 @@ export default function lifecycleTest() {
         return;
       }
       let mainAbility2onDestroy = 0
-      function subscribeCallBack(err, data) {
+
+      let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility1onCreate) {
-          let str1 = {
+          let str1: Want = {
             "bundleName": "com.example.windowstagelifecycle_xts",
             "abilityName": "MainAbility2",
           }
-          globalThis.abilityContext.startAbility(str1).then((data) => {
+          globalThis.abilityContext.startAbility(str1).then((data: ESObject) => {
             console.info(TAG + ' start successful. Data: ' + data);
-          }).catch((error) => {
+          }).catch((error: base.BusinessError) => {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
           })
         }
         if (data.event == MainAbility2onDestroy) {
           mainAbility2onDestroy++;
           if (mainAbility2onDestroy == 3) {
-            commonEvent.unsubscribe(subscriber, (err)=>{
+            commonEvent.unsubscribe(subscriber, (err) => {
               console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
               subscriber = undefined;
             });
@@ -545,40 +573,42 @@ export default function lifecycleTest() {
             expect(listTemp.split("MainAbility2 onWindowStageInactive").length - 1).assertEqual(3);
             expect(listTemp.split("MainAbility2 onWindowStageDestroy").length - 1).assertEqual(3);
             globalThis.applicationContext1
-              .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
+              .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error: base.BusinessError, data: ESObject) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
+                  ",data: " + JSON.stringify(data));
                 console.log("------------Singlehap_WindowStageLifeCycleTest_0600 END-------------");
                 done();
               });
           } else {
-            let str1 = {
+            let str1: Want = {
               "bundleName": "com.example.windowstagelifecycle_xts",
               "abilityName": "MainAbility2",
             }
-            globalThis.abilityContext.startAbility(str1).then((data) => {
+            globalThis.abilityContext.startAbility(str1).then((data: ESObject) => {
               console.info(TAG + ' start successful. Data: ' + data);
-            }).catch((error) => {
+            }).catch((error: base.BusinessError) => {
               console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
             })
           }
         }
       }
 
-      commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+      commonEvent.createSubscriber({
+        events: actsEvents
+      }).then((data) => {
         console.info(TAG + ' createSubscriber successful. ');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
       })
 
-      let str = {
+      let str: Want = {
         "bundleName": "com.example.windowstagelifecycle_xts",
         "abilityName": "MainAbility1",
       }
       globalThis.abilityContext.startAbility(str)
-        .then((data) => {
+        .then((data: ESObject) => {
           console.info(TAG + ' start successful. Data: ' + data);
-        }).catch((error) => {
+        }).catch((error: base.BusinessError) => {
         console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
       })
     });
@@ -589,7 +619,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0700", 0, async function (done) {
+    it("Singlehap_WindowStageLifeCycleTest_0700", 0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0700 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0700";
       if (deviceType === '2in1') {
@@ -597,23 +627,24 @@ export default function lifecycleTest() {
         return;
       }
       let mainAbility2onDestroy = 0
-      function subscribeCallBack(err, data) {
+
+      let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility1onCreate) {
-          let str1 = {
+          let str1: Want = {
             "bundleName": "com.example.windowstagelifecycle_xts",
             "abilityName": "MainAbility2",
           }
-          globalThis.abilityContext.startAbility(str1).then((data) => {
+          globalThis.abilityContext.startAbility(str1).then((data: ESObject) => {
             console.info(TAG + ' start successful. Data: ' + data);
-          }).catch((error) => {
+          }).catch((error: base.BusinessError) => {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
           })
         }
         if (data.event == MainAbility2onDestroy) {
           mainAbility2onDestroy++;
           if (mainAbility2onDestroy == 2) {
-            commonEvent.unsubscribe(subscriber, (err)=>{
+            commonEvent.unsubscribe(subscriber, (err) => {
               console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
               subscriber = undefined;
             });
@@ -629,41 +660,43 @@ export default function lifecycleTest() {
             expect(listTemp.split("MainAbility2 onWindowStageInactive").length - 1).assertEqual(2);
             expect(listTemp.split("MainAbility2 onWindowStageDestroy").length - 1).assertEqual(2);
             globalThis.applicationContext1
-            .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
-              console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
-              console.log("------------Singlehap_WindowStageLifeCycleTest_0700 END-------------");
-              done();
-            });
+              .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error: base.BusinessError, data: ESObject) => {
+                console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
+                  ",data: " + JSON.stringify(data));
+                console.log("------------Singlehap_WindowStageLifeCycleTest_0700 END-------------");
+                done();
+              });
           } else {
             console.log(TAG + " start MainAbility2");
-            let str1 = {
+            let str1: Want = {
               "bundleName": "com.example.windowstagelifecycle_xts",
               "abilityName": "MainAbility2",
             }
-            globalThis.abilityContext.startAbility(str1).then((data) => {
+            globalThis.abilityContext.startAbility(str1).then((data: ESObject) => {
               console.info(TAG + ' start successful. Data: ' + data);
-            }).catch((error) => {
+            }).catch((error: base.BusinessError) => {
               console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
             })
           }
         }
       }
 
-      commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+      commonEvent.createSubscriber({
+        events: actsEvents
+      }).then((data) => {
         console.info(TAG + ' createSubscriber successful. ');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
       })
 
-      let str = {
+      let str: Want = {
         "bundleName": "com.example.windowstagelifecycle_xts",
         "abilityName": "MainAbility1",
       }
       globalThis.abilityContext.startAbility(str)
-        .then((data) => {
+        .then((data: ESObject) => {
           console.info(TAG + ' start successful. Data: ' + data);
-        }).catch((error) => {
+        }).catch((error: base.BusinessError) => {
         console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
       })
     });
@@ -674,7 +707,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0800", 0, async function (done) {
+    it("Singlehap_WindowStageLifeCycleTest_0800", 0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0800 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0800";
       if (deviceType === '2in1') {
@@ -683,34 +716,34 @@ export default function lifecycleTest() {
       }
       let id1 = -1;
 
-      function subscribeCallBack(err, data) {
+      let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility6onForeground) {
-          let id = globalThis.callbackid6;
+          let id:number = globalThis.callbackid6;
           if (id1 == -1) {
             id1 = id;
-            let str1 = {
+            let str1: Want = {
               "bundleName": "com.example.windowstagelifecycle_xts",
               "abilityName": "MainAbility2",
             }
-            globalThis.abilityContext.startAbility(str1).then((data) => {
+            globalThis.abilityContext.startAbility(str1).then((data: ESObject) => {
               console.info(TAG + ' start successful. Data: ' + data);
-            }).catch((error) => {
+            }).catch((error: base.BusinessError) => {
               console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
             })
           } else {
-            commonEvent.unsubscribe(subscriber, (err)=>{
+            commonEvent.unsubscribe(subscriber, (err) => {
               console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
               subscriber = undefined;
             });
             expect(id1 + 1).assertEqual(id);
-            globalThis.applicationContext6.unregisterAbilityLifecycleCallback(id1, (error, data) => {
+            globalThis.applicationContext6.unregisterAbilityLifecycleCallback(id1, (error: base.BusinessError, data: ESObject) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+                ",data: " + JSON.stringify(data));
             });
-            globalThis.applicationContext6.unregisterAbilityLifecycleCallback(id, (error, data) => {
+            globalThis.applicationContext6.unregisterAbilityLifecycleCallback(id, (error: base.BusinessError, data: ESObject) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+                ",data: " + JSON.stringify(data));
             });
             globalThis.ability6.terminateSelf();
             console.log("------------Singlehap_WindowStageLifeCycleTest_0800 END-------------");
@@ -719,20 +752,22 @@ export default function lifecycleTest() {
         }
       }
 
-      commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+      commonEvent.createSubscriber({
+        events: actsEvents
+      }).then((data) => {
         console.info(TAG + ' createSubscriber successful. ');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
       })
 
-      let str = {
+      let str: Want = {
         "bundleName": "com.example.windowstagelifecycle_xts",
         "abilityName": "MainAbility6",
       }
       globalThis.abilityContext.startAbility(str)
-        .then((data) => {
+        .then((data: ESObject) => {
           console.info(TAG + ' start successful. Data: ' + data);
-        }).catch((error) => {
+        }).catch((error: base.BusinessError) => {
         console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
       })
     });
@@ -743,12 +778,12 @@ export default function lifecycleTest() {
     * @tc.desc    Function test
     * @tc.level   0
     */
-    it("Singlehap_WindowStageLifeCycleTest_0900", 0, async function (done) {
+    it("Singlehap_WindowStageLifeCycleTest_0900", 0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0900 start-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0900";
       let mainAbility9onDestroy = 0;
 
-      function subscribeCallBack(err, data) {
+      let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility9onForeground) {
           globalThis.abilityContext.startAbility({
@@ -759,7 +794,7 @@ export default function lifecycleTest() {
         if (data.event == Hap1MainAbility1onDestroy) {
           mainAbility9onDestroy++;
           if (mainAbility9onDestroy == 3) {
-            commonEvent.unsubscribe(subscriber, (err)=>{
+            commonEvent.unsubscribe(subscriber, (err) => {
               console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
             });
             let listTemp = JSON.stringify(globalThis.mainAbility9ListKey);
@@ -771,9 +806,9 @@ export default function lifecycleTest() {
             expect(listTemp.indexOf("Hap1MainAbility1 onWindowStageInactive") !== -1).assertTrue();
             expect(listTemp.indexOf("Hap1MainAbility1 onWindowStageDestroy") !== -1).assertTrue();
             globalThis.applicationContext9
-              .unregisterAbilityLifecycleCallback(globalThis.mainAbility9CallBackId, (error, data) => {
+              .unregisterAbilityLifecycleCallback(globalThis.mainAbility9CallBackId, (error: base.BusinessError, data: ESObject) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
+                  ",data: " + JSON.stringify(data));
               });
             globalThis.context9.terminateSelf()
             console.log("------------Singlehap_WindowStageLifeCycleTest_0900 end-------------");
@@ -784,10 +819,12 @@ export default function lifecycleTest() {
               abilityName: "Hap1MainAbility1"
             });
           }
-        } 
+        }
       }
 
-      commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+      commonEvent.createSubscriber({
+        events: actsEvents
+      }).then((data) => {
         console.info(TAG + ' createSubscriber successful. ');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
@@ -796,9 +833,9 @@ export default function lifecycleTest() {
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.windowstagelifecycle_xts",
         abilityName: "MainAbility9"
-      }, (error, data) => {
+      }, (error: base.BusinessError, data: ESObject) => {
         console.log(TAG + ": MainAbility9 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
     });
 
@@ -808,7 +845,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_1000", 0, async function (done) {
+    it("Singlehap_WindowStageLifeCycleTest_1000", 0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_1000 start-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_1000";
       if (deviceType === '2in1') {
@@ -816,13 +853,14 @@ export default function lifecycleTest() {
         return;
       }
       let mainAbility9onForeground = 0;
-      function subscribeCallBack(err, data) {
+
+      let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility9onForeground) {
           mainAbility9onForeground++;
           console.log(TAG + "mainAbility9onForeground is :" + mainAbility9onForeground);
           if (mainAbility9onForeground == 3) {
-            commonEvent.unsubscribe(subscriber, (err)=>{
+            commonEvent.unsubscribe(subscriber, (err) => {
               console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
             });
             let listTemp = JSON.stringify(globalThis.mainAbility9ListKey);
@@ -833,9 +871,9 @@ export default function lifecycleTest() {
             expect(listTemp.split("Hap1MainAbility2 onWindowStageInactive").length - 1).assertEqual(2);
             expect(listTemp.split("Hap1MainAbility2 onWindowStageDestroy").length - 1).assertEqual(2);
             globalThis.applicationContext9
-              .unregisterAbilityLifecycleCallback(globalThis.mainAbility9CallBackId, (error, data) => {
+              .unregisterAbilityLifecycleCallback(globalThis.mainAbility9CallBackId, (error: base.BusinessError, data: ESObject) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
+                  ",data: " + JSON.stringify(data));
                 done();
               });
             globalThis.context9.terminateSelf()
@@ -848,10 +886,12 @@ export default function lifecycleTest() {
               abilityName: "Hap1MainAbility2"
             });
           }
-        } 
+        }
       }
 
-      commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+      commonEvent.createSubscriber({
+        events: actsEvents
+      }).then((data) => {
         console.info(TAG + ' createSubscriber successful. ');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
@@ -869,14 +909,14 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_1100", 0, async function (done) {
+    it("Singlehap_WindowStageLifeCycleTest_1100", 0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_1100 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_1100";
-      let id1;
-      let id2;
+      let id1 = -1;
+      let id2 = -1;
       let mainAbility11onDestory = 0;
 
-      function subscribeCallBack(err, data) {
+      let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility11onCreate) {
           if (mainAbility11onDestory == 0) {
@@ -900,7 +940,7 @@ export default function lifecycleTest() {
               "abilityName": "MainAbility11",
             })
           } else {
-            commonEvent.unsubscribe(subscriber, (err)=>{
+            commonEvent.unsubscribe(subscriber, (err) => {
               console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
             });
             if (deviceType !== '2in1') {
@@ -915,14 +955,14 @@ export default function lifecycleTest() {
             expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
 
             globalThis.applicationContext11
-              .unregisterAbilityLifecycleCallback(id1, (error, data) => {
+              .unregisterAbilityLifecycleCallback(id1, (error: base.BusinessError, data: ESObject) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
+                  ",data: " + JSON.stringify(data));
               });
             globalThis.applicationContext11
-              .unregisterAbilityLifecycleCallback(id2, (error, data) => {
+              .unregisterAbilityLifecycleCallback(id2, (error: base.BusinessError, data: ESObject) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
+                  ",data: " + JSON.stringify(data));
               });
             console.log("------------Singlehap_WindowStageLifeCycleTest_1100 END-------------");
             done();
@@ -930,20 +970,22 @@ export default function lifecycleTest() {
         }
       }
 
-      commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+      commonEvent.createSubscriber({
+        events: actsEvents
+      }).then((data) => {
         console.info(TAG + ' createSubscriber successful. ');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
       })
-            
-      let str = {
+
+      let str: Want = {
         "bundleName": "com.example.windowstagelifecycle_xts",
         "abilityName": "MainAbility11",
       }
       globalThis.abilityContext.startAbility(str)
-      .then((data) => {
-        console.info(TAG + ' start successful. Data: ' + data);
-      }).catch((error) => {
+        .then((data: ESObject) => {
+          console.info(TAG + ' start successful. Data: ' + data);
+        }).catch((error: base.BusinessError) => {
         console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
       })
     });
@@ -954,13 +996,14 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_1200", 0, async function (done) {
+    it("Singlehap_WindowStageLifeCycleTest_1200", 0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_1200 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_1200";
-      let id1;
-      let id2;
+      let id1 = -1;
+      let id2 = -1;
       let isMainAbility2FirstTerminateSelf = true;
-      function subscribeCallBack(err, data) {
+
+      let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility12onCreate) {
           if (isMainAbility2FirstTerminateSelf) {
@@ -978,14 +1021,14 @@ export default function lifecycleTest() {
           globalThis.abilityContext.startAbility({
             "bundleName": "com.example.windowstagelifecycle_xts",
             "abilityName": "MainAbility12",
-          }).then((data) => {
+          }).then((data: ESObject) => {
             console.info(TAG + ' start successful. Data: ' + data);
-          }).catch((error) => {
+          }).catch((error: base.BusinessError) => {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
           })
         } else if (data.event == MainAbility2onDestroy) {
           if (isMainAbility2FirstTerminateSelf) {
-            let para = {
+            let para :ability.AbilityResult= {
               resultCode: 2000,
               want: {
                 "abilityName": "MainAbility12",
@@ -993,13 +1036,13 @@ export default function lifecycleTest() {
               }
             }
             console.log(TAG + " terminateSelfwithresult para: " + JSON.stringify(para));
-            globalThis.ability12.terminateSelfWithResult(para).then((data) => {
+            globalThis.ability12.terminateSelfWithResult(para).then((data: ESObject) => {
               console.log(TAG + " terminateSelfwithresult successful data: " + JSON.stringify(data));
-            }).catch((error) => {
+            }).catch((error: base.BusinessError) => {
               console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
             });
           } else {
-            commonEvent.unsubscribe(subscriber, (err)=>{
+            commonEvent.unsubscribe(subscriber, (err) => {
               console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
             });
             let listTemp = JSON.stringify(globalThis.list12);
@@ -1014,14 +1057,14 @@ export default function lifecycleTest() {
             expect(listTemp.indexOf("MainAbility2 onWindowStageInactive") !== -1).assertTrue();
             expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
             globalThis.applicationContext12
-              .unregisterAbilityLifecycleCallback(id1, (error, data) => {
+              .unregisterAbilityLifecycleCallback(id1, (error: base.BusinessError, data: ESObject) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
+                  ",data: " + JSON.stringify(data));
               });
             globalThis.applicationContext12
-              .unregisterAbilityLifecycleCallback(id2, (error, data) => {
+              .unregisterAbilityLifecycleCallback(id2, (error: base.BusinessError, data: ESObject) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
+                  ",data: " + JSON.stringify(data));
               });
             console.log("------------Singlehap_WindowStageLifeCycleTest_1200 END-------------");
             done()
@@ -1030,20 +1073,22 @@ export default function lifecycleTest() {
         }
       }
 
-      commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+      commonEvent.createSubscriber({
+        events: actsEvents
+      }).then((data) => {
         console.info(TAG + ' createSubscriber successful. ');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
       })
 
-      let str = {
+      let str: Want = {
         "bundleName": "com.example.windowstagelifecycle_xts",
         "abilityName": "MainAbility12",
       }
       globalThis.abilityContext.startAbility(str)
-        .then((data) => {
+        .then((data: ESObject) => {
           console.info(TAG + ' start successful. Data: ' + data);
-        }).catch((error) => {
+        }).catch((error: base.BusinessError) => {
         console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
       })
     });
@@ -1055,7 +1100,7 @@ export default function lifecycleTest() {
     * @tc.desc    Function test
     * @tc.level   0
     */
-    it("Singlehap_WindowStageLifeCycleTest_1300", 0, async function (done) {
+    it("Singlehap_WindowStageLifeCycleTest_1300", 0, async (done: Function) => {
       await sleep(500);
       console.log("------------Singlehap_WindowStageLifeCycleTest_1300 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_1300";
@@ -1063,13 +1108,14 @@ export default function lifecycleTest() {
         done();
         return;
       }
-      let id1;
-      let id2;
-      let id3;
-      let id4;
-      
+      let id1 = -1;
+      let id2 = -1;
+      let id3 = -1;
+      let id4 = -1;
+
       let isMainAbility2FirstTerminateSelf = true;
-      function subscribeCallBack(err, data) {
+
+      let subscribeCallBack = (err: base.BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility1onCreate) {
           if (isMainAbility2FirstTerminateSelf) {
@@ -1082,18 +1128,18 @@ export default function lifecycleTest() {
           globalThis.ability1context.startAbility({
             "bundleName": "com.example.windowstagelifecycle_xts",
             "abilityName": "MainAbility12",
-          }, (error, data) => {
-             console.log(TAG + ": MainAbility12 startAbility success, err: " + JSON.stringify(error) +
-             ",data: " + JSON.stringify(data));
-           })
+          }, (error: base.BusinessError, data: ESObject) => {
+            console.log(TAG + ": MainAbility12 startAbility success, err: " + JSON.stringify(error) +
+              ",data: " + JSON.stringify(data));
+          })
         } else if (data.event == MainAbility1onDestroy) {
-          let str = {
+          let str: Want = {
             "bundleName": "com.example.windowstagelifecycle_xts",
             "abilityName": "MainAbility1",
           }
-          globalThis.abilityContext.startAbility(str).then((data) => {
+          globalThis.abilityContext.startAbility(str).then((data: ESObject) => {
             console.info(TAG + ' start successful. Data: ' + data);
-          }).catch((error) => {
+          }).catch((error: base.BusinessError) => {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
           })
         } else if (data.event == MainAbility12onCreate) {
@@ -1107,13 +1153,13 @@ export default function lifecycleTest() {
           globalThis.ability1context.startAbility({
             "bundleName": "com.example.windowstagelifecycle_xts",
             "abilityName": "MainAbility2",
-          }).then((data) => {
+          }).then((data: ESObject) => {
             console.info(TAG + ' start successful. Data: ' + data);
-          }).catch((error) => {
+          }).catch((error: base.BusinessError) => {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
           })
         } else if (data.event == MainAbility12onDestroy) {
-          let para = {
+          let para :ability.AbilityResult= {
             resultCode: 2100,
             want: {
               "abilityName": "MainAbility1",
@@ -1121,27 +1167,27 @@ export default function lifecycleTest() {
             }
           }
           console.log(TAG + " terminateSelfwithresult para: " + JSON.stringify(para));
-          globalThis.ability1context.terminateSelfWithResult(para).then((data) => {
+          globalThis.ability1context.terminateSelfWithResult(para).then((data: ESObject) => {
             console.log(TAG + " terminateSelfwithresult successful data: " + JSON.stringify(data));
-          }).catch((error) => {
+          }).catch((error: base.BusinessError) => {
             console.log(TAG + " ability1 terminateSelfwithresult error: " + JSON.stringify(error));
           });
         } else if (data.event == MainAbility2onDestroy) {
           if (isMainAbility2FirstTerminateSelf) {
-            let para = {
+            let para:ability.AbilityResult= {
               resultCode: 2100,
               want: {
                 "abilityName": "MainAbility12",
                 "bundleName": "com.example.windowstagelifecycle_xts"
               }
             }
-            globalThis.ability12.terminateSelfWithResult(para).then((data) => {
+            globalThis.ability12.terminateSelfWithResult(para).then((data: ESObject) => {
               console.log(TAG + " ability12 terminateSelfwithresult successful data: " + JSON.stringify(data));
-            }).catch((error) => {
+            }).catch((error: base.BusinessError) => {
               console.log(TAG + " ability12 terminateSelfwithresult error: " + JSON.stringify(error));
             });
           } else {
-            commonEvent.unsubscribe(subscriber, (err)=>{
+            commonEvent.unsubscribe(subscriber, (err) => {
               console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
             });
             let listTemp = JSON.stringify(globalThis.list1);
@@ -1150,33 +1196,34 @@ export default function lifecycleTest() {
             console.log(TAG + " listTemp1 is :" + listTemp1);
             expect(id1 + 1).assertEqual(id2);
             expect(id3 + 1).assertEqual(id4);
-            expect(listTemp.indexOf("MainAbility12 onWindowStageCreate")!=-1).assertTrue();
-            expect(listTemp.indexOf("MainAbility12 onWindowStageActive")!=-1).assertTrue();
-            expect(listTemp.indexOf("MainAbility12 onWindowStageInactive")!=-1).assertTrue();
-            expect(listTemp.indexOf("MainAbility12 onWindowStageActive")!=-1).assertTrue();
-            expect(listTemp.indexOf("MainAbility2 onWindowStageCreate")!=-1).assertTrue();;
-            expect(listTemp.indexOf("MainAbility2 onWindowStageActive")!=-1).assertTrue();
-            expect(listTemp.indexOf("MainAbility2 onWindowStageInactive")!=-1).assertTrue();
-            expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy")!=-1).assertTrue();
+            expect(listTemp.indexOf("MainAbility12 onWindowStageCreate") != -1).assertTrue();
+            expect(listTemp.indexOf("MainAbility12 onWindowStageActive") != -1).assertTrue();
+            expect(listTemp.indexOf("MainAbility12 onWindowStageInactive") != -1).assertTrue();
+            expect(listTemp.indexOf("MainAbility12 onWindowStageActive") != -1).assertTrue();
+            expect(listTemp.indexOf("MainAbility2 onWindowStageCreate") != -1).assertTrue();
+            ;
+            expect(listTemp.indexOf("MainAbility2 onWindowStageActive") != -1).assertTrue();
+            expect(listTemp.indexOf("MainAbility2 onWindowStageInactive") != -1).assertTrue();
+            expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") != -1).assertTrue();
             globalThis.applicationContext1
-              .unregisterAbilityLifecycleCallback(id1, (error, data) => {
+              .unregisterAbilityLifecycleCallback(id1, (error: base.BusinessError, data: ESObject) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
+                  ",data: " + JSON.stringify(data));
               });
             globalThis.applicationContext1
-              .unregisterAbilityLifecycleCallback(id3, (error, data) => {
+              .unregisterAbilityLifecycleCallback(id3, (error: base.BusinessError, data: ESObject) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
+                  ",data: " + JSON.stringify(data));
               });
             globalThis.applicationContext12
-              .unregisterAbilityLifecycleCallback(id2, (error, data) => {
+              .unregisterAbilityLifecycleCallback(id2, (error: base.BusinessError, data: ESObject) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
+                  ",data: " + JSON.stringify(data));
               });
             globalThis.applicationContext12
-              .unregisterAbilityLifecycleCallback(id4, (error, data) => {
+              .unregisterAbilityLifecycleCallback(id4, (error: base.BusinessError, data: ESObject) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
+                  ",data: " + JSON.stringify(data));
               });
             console.log("------------Singlehap_WindowStageLifeCycleTest_1300 END-------------");
             done()
@@ -1185,20 +1232,22 @@ export default function lifecycleTest() {
         }
       }
 
-      commonEvent.createSubscriber({ events: actsEvents }).then((data)=>{
+      commonEvent.createSubscriber({
+        events: actsEvents
+      }).then((data) => {
         console.info(TAG + ' createSubscriber successful. ');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
       })
 
-      let str = {
+      let str: Want = {
         "bundleName": "com.example.windowstagelifecycle_xts",
         "abilityName": "MainAbility1",
       }
       globalThis.abilityContext.startAbility(str)
-        .then((data) => {
+        .then((data: ESObject) => {
           console.info(TAG + ' start ability1 successful. Data: ' + data);
-        }).catch((error) => {
+        }).catch((error: base.BusinessError) => {
         console.error(TAG + ' start ability1 failed. Cause: ' + JSON.stringify(error));
       })
     });

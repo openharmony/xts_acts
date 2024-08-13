@@ -4161,10 +4161,11 @@ export default function TCPSocketTest() {
           } else {
             console.info(`${caseName} success data:${JSON.stringify(data)}`);
             expectEqual(data.isBound as boolean, false);
-            expectEqual(data.isClose as boolean, true);
+            expectEqual(data.isClose as boolean, false);
             expectEqual(data.isConnected as boolean, false);
           }
           console.info(`${caseName} test end`);
+          tcp.close();
           done();
         });
       } catch (err) {
@@ -4326,8 +4327,9 @@ export default function TCPSocketTest() {
         tcp.getState().then((data: socket.SocketStateBase) => {
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectEqual(data.isBound as boolean, false);
-          expectEqual(data.isClose as boolean, true);
+          expectEqual(data.isClose as boolean, false);
           expectEqual(data.isConnected as boolean, false);
+          tcp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} fail err:${JSON.stringify(err)}`);

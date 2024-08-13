@@ -14,8 +14,8 @@
  */
 import StartAbilityForResult from './StartAbilityForResult'
 
-export default function List(context) {
+export default function List() {
 
-    StartAbilityForResult(context)
+    StartAbilityForResult()
 
 }

@@ -4632,9 +4632,10 @@ describe('BufferTest', function () {
     try {
       const buf = buffer.from(10);
     } catch (err) {
+      expect(err.code).assertEqual(401);
       expect(err.name).assertEqual('BusinessError');
       expect(err.message).assertEqual('Parameter error. The type of "value" must be Buffer or ArrayBuffer, Array, ' +
-                                      'Array-like. Received value is: string');
+                                      'Array-like. Received value is: number');
     }
   });
 
@@ -4801,7 +4802,7 @@ describe('BufferTest', function () {
    });
 
    /**
-    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30000
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28100
     * @tc.name: testLastIndexOf30000
     * @tc.desc: The index of the last occurrence of value in buf.
     * @tc.size: MediumTest
@@ -4815,7 +4816,7 @@ describe('BufferTest', function () {
    });
 
    /**
-    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30010
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28200
     * @tc.name: testIncludes30010
     * @tc.desc: Returns true if value was found in buf, false otherwise.
     * @tc.size: MediumTest
@@ -4829,7 +4830,7 @@ describe('BufferTest', function () {
    });
 
     /**
-    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30020
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28300
     * @tc.name: testIncludes30020
     * @tc.desc: Returns true if value was found in buf, false otherwise.
     * @tc.size: MediumTest
@@ -4843,7 +4844,7 @@ describe('BufferTest', function () {
    });
 
     /**
-    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30030
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28400
     * @tc.name: testIncludes30030
     * @tc.desc: Returns true if value was found in buf, false otherwise.
     * @tc.size: MediumTest
@@ -4857,7 +4858,7 @@ describe('BufferTest', function () {
    });
 
     /**
-    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30040
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28500
     * @tc.name: testAlloc30040
     * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
     * @tc.size: MediumTest
@@ -4870,7 +4871,7 @@ describe('BufferTest', function () {
    });
 
     /**
-    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30050
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28600
     * @tc.name: testAlloc30050
     * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
     * @tc.size: MediumTest
@@ -4883,7 +4884,7 @@ describe('BufferTest', function () {
    });
 
   /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30060
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28700
    * @tc.name: testIndexOf30060
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
@@ -4897,7 +4898,7 @@ describe('BufferTest', function () {
   });
 
   /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30070
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28800
    * @tc.name: testIndexOf30070
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
@@ -4911,7 +4912,7 @@ describe('BufferTest', function () {
   });
 
   /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30080
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28900
    * @tc.name: testIndexOf30080
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
@@ -4925,7 +4926,7 @@ describe('BufferTest', function () {
   });
 
   /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30090
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29000
    * @tc.name: testIndexOf30090
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
@@ -4939,7 +4940,7 @@ describe('BufferTest', function () {
   });
 
   /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29100
    * @tc.name: testIndexOf30100
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
@@ -4950,5 +4951,412 @@ describe('BufferTest', function () {
     let buf1 = buffer.from("This is a buffer");
     let index = buf1.indexOf("f", -20);
     expect(index).assertEqual(12);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29200
+   * @tc.name: testFrom30110
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testFrom30110", 0, function () {
+    try {
+      let buf1 = buffer.from(null);
+    } catch(err) {
+      let errStr = 'Parameter error. The type of "value" must be Buffer or ArrayBuffer, Array, Array-like, string, object. Received value is: null';
+      expect(err.code).assertEqual(401);
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual(errStr);
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29300
+   * @tc.name: testFrom30120
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testFrom30120", 0, function () {
+    try {
+      let buf1 = buffer.from(undefined);
+    } catch(err) {
+      let errStr = 'Parameter error. The type of "value" must be Buffer or ArrayBuffer, Array, Array-like, string, object. Received value is: undefined';
+      expect(err.code).assertEqual(401);
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual(errStr);
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29400
+   * @tc.name: testFrom30130
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testFrom30130", 0, function () {
+    let dateObj = new Date();
+    let buf1 = buffer.from(dateObj, 0, 5);
+    expect(buf1.length > 0).assertTrue();
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29500
+   * @tc.name: testFrom30140
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testFrom30140", 0, function () {
+    try {
+      let obj = new Map()
+      let buf1 = buffer.from(obj, 0, 5);
+    } catch(err) {
+      let errStr = 'Parameter error. The type of "value" must be Buffer or ArrayBuffer, Array, Array-like. Received value is: Map';
+      expect(err.code).assertEqual(401);
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual(errStr);
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29600
+   * @tc.name: testFrom30150
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testFrom30150", 0, function () {
+    try {
+      let arrBuf = new ArrayBuffer(10);
+      let buf1 = buffer.from(arrBuf, -1);
+    } catch(err) {
+      let errStr = 'The value of "byteOffset" is out of range. It must be >= 0 and <= 10. Received value is: -1';
+      expect(err.code).assertEqual(10200001);
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual(errStr);
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29700
+   * @tc.name: testCopy0147
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0147", 0, function () {
+    let uint8array = new Uint8Array(10).fill(0);
+    let buf = buffer.from([1, 2, 3, 4, 5, 6, 7]);
+    let num = buf.copy(uint8array, 8);
+    expect(num).assertEqual(2);
+    let str = uint8array.toString();
+    expect(str).assertEqual("0,0,0,0,0,0,0,0,1,2");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29800
+   * @tc.name: testCopy0148
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0148", 0, function () {
+    let uint8array = new Uint8Array(10).fill(0);
+    let buf = buffer.from([1, 2, 3, 4, 5, 6, 7]);
+    let num = buf.copy(uint8array, 0, 3);
+    expect(num).assertEqual(4);
+    let str = uint8array.toString();
+    expect(str).assertEqual("4,5,6,7,0,0,0,0,0,0");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_29900
+   * @tc.name: testCopy0149
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0149", 0, function () {
+    let uint8array = new Uint8Array(10).fill(0);
+    let buf = buffer.from([1, 2, 3, 4, 5, 6, 7]);
+    let num = buf.copy(uint8array, 0, 3, 255);
+    expect(num).assertEqual(4);
+    let str = uint8array.toString();
+    expect(str).assertEqual("4,5,6,7,0,0,0,0,0,0");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30000
+   * @tc.name: testCopy0150
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0150", 0, function () {
+    let uint8array = new Uint8Array(10).fill(0);
+    let buf = buffer.from([1, 2, 3, 4, 5, 6, 7]);
+    let num = buf.copy(uint8array, 100, 3, 255);
+    expect(num).assertEqual(0);
+    let str = uint8array.toString();
+    expect(str).assertEqual("0,0,0,0,0,0,0,0,0,0");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30100
+   * @tc.name: testCopy0151
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0151", 0, function () {
+    try {
+      let uint8array = new Uint8Array(10).fill(0);
+      const buf = buffer.from([1,2,3,4,5,6,7]);
+      let num = buf.copy(uint8array, -1, 3, 100);
+    } catch (err) {
+        expect(err.code).assertEqual(10200001);
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30200
+   * @tc.name: testCopy0152
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0152", 0, function () {
+    let uint8array = new Uint8Array(10).fill(0);
+    let buf = buffer.from([1, 2, 3, 4, 5, 6, 7]);
+    let num = buf.copy(uint8array, 0, 9, 1);
+    expect(num).assertEqual(0);
+    let str = uint8array.toString();
+    expect(str).assertEqual("0,0,0,0,0,0,0,0,0,0");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30300
+   * @tc.name: testCopy0153
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0153", 0, function () {
+    let uint8array = new Uint8Array(10).fill(0);
+    let buf = buffer.from([1, 2, 3, 4, 5, 6, 7]);
+    let num = buf.copy(uint8array, 9, 1, 5);
+    expect(num).assertEqual(1);
+    let str = uint8array.toString();
+    expect(str).assertEqual("0,0,0,0,0,0,0,0,0,2");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30400
+   * @tc.name: testCopy0154
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0154", 0, function () {
+    try {
+      let uint8array = new Uint8Array(10).fill(0);
+      const buf = buffer.from([1,2,3,4,5,6,7]);
+      let num = buf.copy(uint8array, 2, 3, -1);
+    } catch (err) {
+        expect(err.code).assertEqual(10200001);
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30500
+   * @tc.name: testCopy0155
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0155", 0, function () {
+    let uint8array = new Uint8Array(10).fill(9);
+    const buf = buffer.from([1,2,3,4,5,6,7]);
+    let num = buf.copy(uint8array, 9, 1, undefined);
+    expect(num).assertEqual(1);
+    let str = uint8array.toString();
+    expect(str).assertEqual("9,9,9,9,9,9,9,9,9,2");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30600
+   * @tc.name: testCopy0156
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0156", 0, function () {
+    let buf1 = buffer.alloc(1024);
+    let buf2 = buffer.alloc(512);
+    let cntr = 0;
+    // copy 512 bytes, from 0 to 512.
+    buf1.fill(++cntr);
+    buf2.fill(++cntr);
+    let copied = buf1.copy(buf2, 0, 0, 1024);
+    expect(copied).assertEqual(512);
+    for (let i = 0; i < buf2.length; i++) {
+      if(cntr - 1 != buf2[i]) {
+        expect(copied).assertEqual(0);
+      }
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30700
+   * @tc.name: testCopy0157
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0157", 0, function () {
+    let buf = buffer.alloc(10);
+    let buf1 = buffer.alloc(10).fill('!');
+    for (let i = 0; i < 10; i++) {
+      buf[i] = i + 97;
+    }
+    let len = buf.copy(buf1, 0, 4, 10);
+    expect(len).assertEqual(6);
+    expect(buf1.toString()).assertEqual('efghij!!!!');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30800
+   * @tc.name: testCopy0158
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0158", 0, function () {
+    let buf = buffer.alloc(10);
+    for (let i = 0; i < 10; i++) {
+      buf[i] = i + 97;
+    }
+    let len = buf.copy(buf, 0, 4, 10);
+    expect(len).assertEqual(6);
+    expect(buf.toString()).assertEqual('efghijghij');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30900
+   * @tc.name: testCopy0159
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0159", 0, function () {
+    let buf = buffer.alloc(10);
+    for (let i = 0; i < 10; i++) {
+      buf[i] = i + 97;
+    }
+    let len = buf.copy(buf, 2, 4);
+    expect(len).assertEqual(6);
+    expect(buf.toString()).assertEqual('abefghijij');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31000
+   * @tc.name: testCopy0160
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0160", 0, function () {
+    let buf = buffer.alloc(10);
+    for (let i = 0; i < 10; i++) {
+      buf[i] = i + 97;
+    }
+    let len = buf.copy(buf, 2);
+    expect(len).assertEqual(8);
+    expect(buf.toString()).assertEqual('ababcdefgh');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31100
+   * @tc.name: testCopy0161
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testCopy0161", 0, function () {
+    let buf = buffer.alloc(10);
+    for (let i = 0; i < 10; i++) {
+      buf[i] = i + 97;
+    }
+    let len = buf.copy(buf, 8);
+    expect(len).assertEqual(2);
+    expect(buf.toString()).assertEqual('abcdefghab');
   });
 })}

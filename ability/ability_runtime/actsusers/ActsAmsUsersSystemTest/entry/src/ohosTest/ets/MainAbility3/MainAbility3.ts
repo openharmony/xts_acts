@@ -15,45 +15,45 @@
 import Ability from '@ohos.app.ability.UIAbility'
 
 export default class MainAbility3 extends Ability {
-    onCreate(want,launchParam){
-        // Ability is creating, initialize resources for this ability
-        console.log("MainAbility3 onCreate")
-    }
+  onCreate(want, launchParam) {
+    // Ability is creating, initialize resources for this ability
+    console.log("MainAbility3 onCreate")
+  }
 
-    onDestroy() {
-        // Ability is destroying, release resources for this ability
-        console.log("MainAbility3 onDestroy")
-    }
+  onDestroy() {
+    // Ability is destroying, release resources for this ability
+    console.log("MainAbility3 onDestroy")
+  }
 
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.log("MainAbility3 onWindowStageCreate")
-        globalThis.abilityContext3 = this.context
-        windowStage.setUIContent(this.context, "MainAbility/pages/index/second", null)
-        globalThis.abilityContext3.terminateSelfWithResult(
-          {
-            resultCode:1,
-            want:{
-              action:'ACTION'
-            }
-          },()=>{
-          console.debug("====>terminateSelfWithResult succese====>")
-        });
-        console.debug("====>terminateSelf end====>")
-    }
+  onWindowStageCreate(windowStage) {
+    // Main window is created, set main page for this ability
+    console.log("MainAbility3 onWindowStageCreate")
+    globalThis.abilityContext3 = this.context
+    windowStage.setUIContent(this.context, "MainAbility/pages/index/second", null)
+    globalThis.abilityContext3.terminateSelfWithResult(
+      {
+        resultCode: 1,
+        want: {
+          action: 'ACTION'
+        }
+      }, () => {
+      console.debug("====>terminateSelfWithResult succese====>")
+    });
+    console.debug("====>terminateSelf end====>")
+  }
 
-    onWindowStageDestroy() {
-        //Main window is destroyed, release UI related resources
-        console.log("MainAbility3 onWindowStageDestroy")
-    }
+  onWindowStageDestroy() {
+    //Main window is destroyed, release UI related resources
+    console.log("MainAbility3 onWindowStageDestroy")
+  }
 
-    onForeground() {
-        // Ability has brought to foreground
-        console.log("MainAbility3 onForeground")
-    }
+  onForeground() {
+    // Ability has brought to foreground
+    console.log("MainAbility3 onForeground")
+  }
 
-    onBackground() {
-        // Ability has back to background
-        console.log("MainAbility3 onBackground")
-    }
+  onBackground() {
+    // Ability has back to background
+    console.log("MainAbility3 onBackground")
+  }
 };

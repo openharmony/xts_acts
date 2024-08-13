@@ -25,9 +25,16 @@ import CameraImageProcessingTest from './CameraImageProcessingTest.test';
 import CameraErrorCodeUsecaseTest from './CameraErrorCodeUsecaseTest.test';
 import cameraJSUnitOutput from './CameraJSUnitOutput.test';
 import call from  '@ohos.telephony.call'
+import CameraManagerTest from './CameraManager.test';
+import SessionTest from './Session.test';
+import SecureCameraTest from './SecureCamera.test';
+
 let voice = call.hasVoiceCapability()
 
 export default function testsuite() {
+    SecureCameraTest();
+    CameraManagerTest();
+    SessionTest();
     if (voice){
           CameraSessionExposureTest();
           CameraSessionBaseTest();

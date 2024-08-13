@@ -118,7 +118,7 @@ describe('btPairTest', function() {
             await sleep(3000);
         } catch(err) {
             console.error("pairDevice errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })
@@ -285,7 +285,7 @@ describe('btPairTest', function() {
             bluetooth.BLE.off('pinRequired', PinRequiredParam);
         } catch(err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })
@@ -311,7 +311,7 @@ describe('btPairTest', function() {
             bluetooth.BLE.off('pinRequired', PinRequiredParam);
         } catch(err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })

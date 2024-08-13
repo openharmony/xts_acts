@@ -30,14 +30,15 @@ struct Index {
             Text('MainAbility1_setWakeUpScreen')
               .fontSize(20)
               .fontWeight(FontWeight.Bold)
-          }.type(ButtonType.Capsule)
+          }
+          .type(ButtonType.Capsule)
           .margin({
             top: 20
           })
           .backgroundColor('#0D9FFB')
           .width('30%')
           .height('5%')
-          .onClick(()=>{
+          .onClick(() => {
             let wntNum = {
               want: {
                 bundleName: "ohos.acts.aafwk.test.fasupportfunction",
@@ -45,9 +46,9 @@ struct Index {
               }
             }
             ability_featureAbility.startAbility(wntNum).then((data) => {
-                console.log('Fa:Auxiliary:MainAbility: ACTS_SerivceAbilityServer startAbility data:' + JSON.stringify(data));
+              console.log('Fa:Auxiliary:MainAbility: ACTS_SerivceAbilityServer startAbility data:' + JSON.stringify(data));
             }).catch((error) => {
-                console.log('Fa:Auxiliary:MainAbility: ACTS_SerivceAbilityServer startAbility error:' + JSON.stringify(error));
+              console.log('Fa:Auxiliary:MainAbility: ACTS_SerivceAbilityServer startAbility error:' + JSON.stringify(error));
             });
           })
         }

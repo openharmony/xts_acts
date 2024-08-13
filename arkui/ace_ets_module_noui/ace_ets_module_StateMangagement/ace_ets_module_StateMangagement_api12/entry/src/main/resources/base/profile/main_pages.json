@@ -38,6 +38,14 @@
         "MainAbility/pages/ComponentV2/LocalTest",
         "MainAbility/pages/ComponentV2/ComponentV2Test",
         "MainAbility/pages/ComponentV2/ParamTest",
-        "MainAbility/pages/ComponentV2/ParamTest1"
+        "MainAbility/pages/ComponentV2/ParamTest1",
+        "MainAbility/pages/Provider/Provider1",
+        "MainAbility/pages/Provider/Provider2",
+        "MainAbility/pages/Provider/Provider3",
+        "MainAbility/pages/Provider/Provider4",
+        "MainAbility/pages/Provider/Provider5",
+        "MainAbility/pages/Provider/Provider14",
+        "MainAbility/pages/Provider/Provider15",
+        "MainAbility/pages/Provider/Provider18"
     ]
 }

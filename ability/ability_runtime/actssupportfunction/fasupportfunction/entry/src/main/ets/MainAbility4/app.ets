@@ -16,9 +16,10 @@ import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 import bundle from '@ohos.bundle';
 
-var TAG1 = "Fa:SupportFunction:MainAbility4:";
-var listPush1 = "Fa_SupportFunction_MainAbility4_";
-var lifeList = [];
+const TAG1 = "Fa:SupportFunction:MainAbility4:";
+const listPush1 = "Fa_SupportFunction_MainAbility4_";
+let lifeList: string[] = [];
+
 export default {
   onCreate() {
     console.log(TAG1 + 'onCreate');
@@ -51,13 +52,13 @@ export default {
     }).catch((error) => {
       console.log(TAG1 + "getWant error = " + JSON.stringify(error));
     })
-    if(number == 1) {
+    if (number == 1) {
       orientation = bundle.DisplayOrientation.LANDSCAPE;
     }
-    if(number == 2) {
+    if (number == 2) {
       orientation = bundle.DisplayOrientation.PORTRAIT;
     }
-    if(number == 3) {
+    if (number == 3) {
       orientation = bundle.DisplayOrientation.LANDSCAPE;
       wantNum = {
         want: {
@@ -66,7 +67,7 @@ export default {
         }
       }
     }
-    if(number == 4) {
+    if (number == 4) {
       orientation = bundle.DisplayOrientation.PORTRAIT;
       wantNum = {
         want: {
@@ -75,7 +76,7 @@ export default {
         }
       }
     }
-    if(number == 5) {
+    if (number == 5) {
       orientation = bundle.DisplayOrientation.LANDSCAPE;
       wantNum = {
         want: {
@@ -84,7 +85,7 @@ export default {
         }
       }
     }
-    if(number == 6) {
+    if (number == 6) {
       orientation = bundle.DisplayOrientation.PORTRAIT;
       wantNum = {
         want: {
@@ -93,7 +94,7 @@ export default {
         }
       }
     }
-    if(number == 7) {
+    if (number == 7) {
       orientation = bundle.DisplayOrientation.LANDSCAPE;
       wantNum = {
         want: {
@@ -103,7 +104,7 @@ export default {
       }
 
     }
-    if(number == 8) {
+    if (number == 8) {
       orientation = bundle.DisplayOrientation.PORTRAIT;
       wantNum = {
         want: {

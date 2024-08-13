@@ -1495,6 +1495,508 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacter, TestSize.Level1
     OH_Drawing_FontDestroy(font);
     OH_Drawing_CanvasDestroy(canvas);
 }
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4200
+ * @tc.name: testCanvasDrawSingleCharacterNormal
+ * @tc.desc: test for testCanvasDrawSingleCharacterNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacterNormal, TestSize.Level0) {
+    //1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    //2. OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    //3. OH_Drawing_BrushSetColor
+    OH_Drawing_BrushSetColor(brush, 0xFFFFFFFF);
+    //4. OH_Drawing_FontCreate
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    //5. OH_Drawing_FontSetTextSize
+    const float textSize = 10.f;
+    OH_Drawing_FontSetTextSize(font, textSize);
+    //6. OH_Drawing_CanvasDrawSingleCharacter parameter is normal, where str is a single character,UTF-8 encoded, and
+    // Chinese/English characters are passed
+    float x = 0.f;
+    float y = 0.f;
+    const char* str = "a";
+    const char* str1 = "我";
+    OH_Drawing_CanvasDrawSingleCharacter(canvas, str, font, x, y);
+    OH_Drawing_CanvasDrawSingleCharacter(canvas, str1, font, x, y);
+    //7. OH_Drawing_CanvasDrawSingleCharacter parameters are entered normally, where str is a multi-character, UTF-8
+    // encoded, and English/Chinese characters are in
+    str = "abc";
+    str1 = "你是谁";
+    OH_Drawing_CanvasDrawSingleCharacter(canvas, str, font, x, y);
+    OH_Drawing_CanvasDrawSingleCharacter(canvas, str1, font, x, y);
+    //8. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_BrushDestroy(brush);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4201
+ * @tc.name: testCanvasDrawSingleCharacterNull
+ * @tc.desc: test for testCanvasDrawSingleCharacterNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacterNull, TestSize.Level3) {
+    //1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    //2. OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    //3. OH_Drawing_BrushSetColor
+    OH_Drawing_BrushSetColor(brush, 0xFFFFFFFF);
+    //4. OH_Drawing_FontCreate
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    //5. OH_Drawing_FontSetTextSize
+    const float textSize = 10.f;
+    OH_Drawing_FontSetTextSize(font, textSize);
+    //6. OH_Drawing_CanvasDrawSingleCharacter parameter canvas is empty
+    float x = 0.f;
+    float y = 0.f;
+    const char *str = "0";
+    OH_Drawing_CanvasDrawSingleCharacter(nullptr, str, font, x, y);
+    //7. OH_Drawing_CanvasDrawSingleCharacter parameter str is empty
+    str = "";
+    OH_Drawing_CanvasDrawSingleCharacter(canvas, str, font, x, y);
+    //8. OH_Drawing_CanvasDrawSingleCharacter parameter font is empty
+    OH_Drawing_CanvasDrawSingleCharacter(canvas, str, nullptr, x, y);
+    //9. OH_Drawing_CanvasDrawSingleCharacter parameter str to 0 characters
+    OH_Drawing_CanvasDrawSingleCharacter(canvas, str, font, x, y);
+    //10.free memory
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_BrushDestroy(brush);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4300
+ * @tc.name: testCanvasDrawPointNormal
+ * @tc.desc: test for testCanvasDrawPointNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointNormal, TestSize.Level0) {
+    //1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    //2. OH_Drawing_Point2D create an array of points
+    OH_Drawing_Point2D texs_one = {0.0f, 0.0f};
+    OH_Drawing_Point2D texs_two = {1.0f, 1.0f};
+    OH_Drawing_Point2D texs_three = {2.0f, 2.0f};
+    OH_Drawing_Point2D point_vertices[1] = {texs_one};
+    for (int i = 0; i < 1; i++) {
+        OH_Drawing_CanvasDrawPoint(canvas, &point_vertices[i]);
+    }
+    //3. OH_Drawing_Point2D create an array of multiple points
+    OH_Drawing_Point2D texs_vertices[3] = {texs_one, texs_two, texs_three};
+    for (int i = 0; i < 3; i++) {
+        OH_Drawing_CanvasDrawPoint(canvas, &texs_vertices[i]);
+    }
+    //4. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4301
+ * @tc.name: testCanvasDrawPointNull
+ * @tc.desc: test for testCanvasDrawPointNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointNull, TestSize.Level3) {
+    //1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    //2. OH_Drawing_CanvasDrawPoint the first parameter is empty
+    const OH_Drawing_Point2D point = {0.0f, 0.0f};
+    OH_Drawing_CanvasDrawPoint(nullptr, &point);
+    //3. OH_Drawing_CanvasDrawPoint the second parameter is empty
+    OH_Drawing_CanvasDrawPoint(canvas, nullptr);
+    //4.free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4302
+ * @tc.name: testCanvasDrawPointMultipleCalls
+ * @tc.desc: test for testCanvasDrawPointMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointMultipleCalls, TestSize.Level3) {
+    //1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    //2. Call OH_Drawing_CanvasDrawPoint 10 times
+    OH_Drawing_Point2D point1 = {0.0f, 0.0f};
+    OH_Drawing_CanvasDrawPoint (canvas, &point1);
+    OH_Drawing_Point2D point2 = {1.0f, 1.0f};
+    OH_Drawing_CanvasDrawPoint (canvas, &point2);
+    OH_Drawing_Point2D point3 = {2.0f, 2.0f};
+    OH_Drawing_CanvasDrawPoint (canvas, &point3);
+    OH_Drawing_Point2D point4 = {3.0f, 3.0f};
+    OH_Drawing_CanvasDrawPoint (canvas, &point4);
+    OH_Drawing_Point2D point5 = {4.0f, 4.0f};
+    OH_Drawing_CanvasDrawPoint (canvas, &point5);
+    OH_Drawing_Point2D point6 = {5.0f, 5.0f};
+    OH_Drawing_CanvasDrawPoint (canvas, &point6);
+    OH_Drawing_Point2D point7 = {6.0f, 6.0f};
+    OH_Drawing_CanvasDrawPoint (canvas, &point7);
+    OH_Drawing_Point2D point8 = {7.0f, 7.0f};
+    OH_Drawing_CanvasDrawPoint (canvas, &point8);
+    OH_Drawing_Point2D point9 = {8.0f, 8.0f};
+    OH_Drawing_CanvasDrawPoint (canvas, &point9);
+    OH_Drawing_Point2D point10 = {9.0f, 9.0f};
+    OH_Drawing_CanvasDrawPoint (canvas, &point10);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4400
+ * @tc.name: testCanvasDrawColorNormal
+ * @tc.desc: test for testCanvasDrawColorNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorNormal, TestSize.Level0) {
+    //1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    //2. OH_Drawing_CanvasDrawColor enumeration traversal
+    uint32_t color[3] = {0xFFFF0000, 0xFFFF0000, 0xFFFF0000};
+    OH_Drawing_BlendMode blendMode[] = {
+        BLEND_MODE_CLEAR,      BLEND_MODE_SRC,        BLEND_MODE_DST,         BLEND_MODE_SRC_OVER,
+        BLEND_MODE_DST_OVER,   BLEND_MODE_SRC_IN,     BLEND_MODE_DST_IN,      BLEND_MODE_SRC_OUT,
+        BLEND_MODE_DST_OUT,    BLEND_MODE_SRC_ATOP,   BLEND_MODE_DST_ATOP,    BLEND_MODE_XOR,
+        BLEND_MODE_PLUS,       BLEND_MODE_MODULATE,   BLEND_MODE_SCREEN,      BLEND_MODE_OVERLAY,
+        BLEND_MODE_DARKEN,     BLEND_MODE_LIGHTEN,    BLEND_MODE_COLOR_DODGE, BLEND_MODE_COLOR_BURN,
+        BLEND_MODE_HARD_LIGHT, BLEND_MODE_SOFT_LIGHT, BLEND_MODE_DIFFERENCE,  BLEND_MODE_EXCLUSION,
+        BLEND_MODE_MULTIPLY,   BLEND_MODE_HUE,        BLEND_MODE_SATURATION,  BLEND_MODE_COLOR,
+        BLEND_MODE_LUMINOSITY,
+    };
+    for (int i = 0; i < 29; i++) {
+        for (int j = 0; j < 3; j++) {
+            OH_Drawing_CanvasDrawColor(canvas, color[j], blendMode[i]);
+        }
+    }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4401
+ * @tc.name: testCanvasDrawColorNull
+ * @tc.desc: test for testCanvasDrawColorNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorNull, TestSize.Level3) {
+    //1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    //2. OH_Drawing_CanvasDrawColor with the first parameter as nullptr
+    OH_Drawing_BlendMode blendMode[] = {
+        BLEND_MODE_CLEAR,      BLEND_MODE_SRC,        BLEND_MODE_DST,         BLEND_MODE_SRC_OVER,
+        BLEND_MODE_DST_OVER,   BLEND_MODE_SRC_IN,     BLEND_MODE_DST_IN,      BLEND_MODE_SRC_OUT,
+        BLEND_MODE_DST_OUT,    BLEND_MODE_SRC_ATOP,   BLEND_MODE_DST_ATOP,    BLEND_MODE_XOR,
+        BLEND_MODE_PLUS,       BLEND_MODE_MODULATE,   BLEND_MODE_SCREEN,      BLEND_MODE_OVERLAY,
+        BLEND_MODE_DARKEN,     BLEND_MODE_LIGHTEN,    BLEND_MODE_COLOR_DODGE, BLEND_MODE_COLOR_BURN,
+        BLEND_MODE_HARD_LIGHT, BLEND_MODE_SOFT_LIGHT, BLEND_MODE_DIFFERENCE,  BLEND_MODE_EXCLUSION,
+        BLEND_MODE_MULTIPLY,   BLEND_MODE_HUE,        BLEND_MODE_SATURATION,  BLEND_MODE_COLOR,
+        BLEND_MODE_LUMINOSITY,
+    };
+    uint32_t color = 0xFFFF0000;
+    for (int i = 0; i < 29; i++) {
+    OH_Drawing_CanvasDrawColor(nullptr, color, blendMode[i]);
+    }
+    //3. OH_Drawing_CanvasDrawColor with the first parameter as 0
+    for (int i = 0; i < 29; i++) {
+    OH_Drawing_CanvasDrawColor(canvas, 0, blendMode[i]);
+    }
+    //4. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4402
+ * @tc.name: testCanvasDrawColorMaximum
+ * @tc.desc: test for testCanvasDrawColorMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorMaximum, TestSize.Level3) {
+    //1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    //2. OH_Drawing_CanvasDrawColor with the second parameter set to the maximum value
+    OH_Drawing_BlendMode blendMode[] = {
+        BLEND_MODE_CLEAR,      BLEND_MODE_SRC,        BLEND_MODE_DST,         BLEND_MODE_SRC_OVER,
+        BLEND_MODE_DST_OVER,   BLEND_MODE_SRC_IN,     BLEND_MODE_DST_IN,      BLEND_MODE_SRC_OUT,
+        BLEND_MODE_DST_OUT,    BLEND_MODE_SRC_ATOP,   BLEND_MODE_DST_ATOP,    BLEND_MODE_XOR,
+        BLEND_MODE_PLUS,       BLEND_MODE_MODULATE,   BLEND_MODE_SCREEN,      BLEND_MODE_OVERLAY,
+        BLEND_MODE_DARKEN,     BLEND_MODE_LIGHTEN,    BLEND_MODE_COLOR_DODGE, BLEND_MODE_COLOR_BURN,
+        BLEND_MODE_HARD_LIGHT, BLEND_MODE_SOFT_LIGHT, BLEND_MODE_DIFFERENCE,  BLEND_MODE_EXCLUSION,
+        BLEND_MODE_MULTIPLY,   BLEND_MODE_HUE,        BLEND_MODE_SATURATION,  BLEND_MODE_COLOR,
+        BLEND_MODE_LUMINOSITY,
+    };
+    uint32_t color = 0x00000000;
+    for (int i = 0; i < 29; i++) {
+        OH_Drawing_CanvasDrawColor(nullptr, color, blendMode[i]);
+    }
+    //3. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4403
+ * @tc.name: testCanvasDrawColorMultipleCalls
+ * @tc.desc: test for testCanvasDrawColorMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorMultipleCalls, TestSize.Level3) {
+    //1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    //2. Call OH_Drawing_CanvasDrawColor 10 times
+    uint32_t color = 0xFFFF0000;
+    OH_Drawing_BlendMode blendMode[] = {
+        BLEND_MODE_CLEAR,      BLEND_MODE_SRC,        BLEND_MODE_DST,         BLEND_MODE_SRC_OVER,
+        BLEND_MODE_DST_OVER,   BLEND_MODE_SRC_IN,     BLEND_MODE_DST_IN,      BLEND_MODE_SRC_OUT,
+        BLEND_MODE_DST_OUT,    BLEND_MODE_SRC_ATOP,
+    };
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_CanvasDrawColor(canvas, color, blendMode[i]);
+    }
+    //3. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4500
+ * @tc.name: testCanvasIsClipEmptyNormal
+ * @tc.desc: test for testCanvasIsClipEmptyNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyNormal, TestSize.Level0) {
+    //1. OH_Drawing_RectCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_Rect  *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    //2. OH_Drawing_RoundRectCreate
+    OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 1.0f, 1.0f);
+    //3. OH_Drawing_CanvasClipRoundRect with the parameter clipOp set DIFFERENCE
+    OH_Drawing_CanvasClipOp clipOp = {OH_Drawing_CanvasClipOp::DIFFERENCE};
+    bool doAntiAlias[] = {true, false};
+    for (int i = 0; i < 2; i++) {
+        OH_Drawing_CanvasClipRoundRect(canvas, roundRect, clipOp, doAntiAlias[i]);
+    }
+    //4. OH_Drawing_CanvasIsClipEmpty
+    bool isClipEmpty[] = {true, false};
+    for (int i = 0; i < 2; i++) {
+        OH_Drawing_CanvasIsClipEmpty(canvas, &isClipEmpty[i]);
+    }
+    //5. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RoundRectDestroy(roundRect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4501
+ * @tc.name: testCanvasIsClipEmptyNull
+ * @tc.desc: test for testCanvasIsClipEmptyNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyNull, TestSize.Level3) {
+    //1. OH_Drawing_RectCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_Rect  *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    //2. OH_Drawing_RoundRectCreate
+    OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 1.0f, 1.0f);
+    //3. OH_Drawing_CanvasClipRoundRect with the parameter clipOp set DIFFERENCE
+    OH_Drawing_CanvasClipOp clipOp = {OH_Drawing_CanvasClipOp::DIFFERENCE};
+    bool doAntiAlias[] = {true, false};
+    for (int i = 0; i < 2; i++) {
+        OH_Drawing_CanvasClipRoundRect(canvas, roundRect, clipOp, doAntiAlias[i]);
+    }
+    //4. OH_Drawing_CanvasIsClipEmpty with the first parameter as null
+    bool isClipEmpty[] = {true, false};
+    for (int i = 0; i < 2; i++) {
+        OH_Drawing_CanvasIsClipEmpty(nullptr, &isClipEmpty[i]);
+    }
+    //5. OH_Drawing_CanvasIsClipEmpty with the second parameter as null
+    OH_Drawing_CanvasIsClipEmpty(canvas, nullptr);
+    //6. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RoundRectDestroy(roundRect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4502
+ * @tc.name: testCanvasIsClipEmptyMultipleCalls
+ * @tc.desc: test for testCanvasIsClipEmptyMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyMultipleCalls, TestSize.Level3) {
+    //1. OH_Drawing_RectCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_Rect  *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    //2. OH_Drawing_RoundRectCreate
+    OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 1.0f, 1.0f);
+    //3. OH_Drawing_CanvasClipRoundRect with the parameter clipOp set DIFFERENCE
+    OH_Drawing_CanvasClipOp clipOp = {OH_Drawing_CanvasClipOp::DIFFERENCE};
+    bool doAntiAlias[] = {true, false};
+    for (int i = 0; i < 2; i++) {
+        OH_Drawing_CanvasClipRoundRect(canvas, roundRect, clipOp, doAntiAlias[i]);
+    }
+    //4. Call OH_Drawing_CanvasIsClipEmpty 10 times
+    bool isClipEmpty[] = {true, false};
+    for (int i = 0; i < 2; i++) {
+        OH_Drawing_CanvasIsClipEmpty(nullptr, &isClipEmpty[i]);
+    }
+    for (int i = 0; i < 2; i++) {
+        OH_Drawing_CanvasIsClipEmpty(nullptr, &isClipEmpty[i]);
+    }
+    for (int i = 0; i < 2; i++) {
+        OH_Drawing_CanvasIsClipEmpty(canvas, &isClipEmpty[i]);
+    }
+    for (int i = 0; i < 2; i++) {
+        OH_Drawing_CanvasIsClipEmpty(canvas, &isClipEmpty[i]);
+    }
+    OH_Drawing_CanvasIsClipEmpty(canvas, nullptr);
+    OH_Drawing_CanvasIsClipEmpty(canvas, nullptr);
+    //5. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RoundRectDestroy(roundRect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4600
+ * @tc.name: testCanvasGetImageInfoNormal
+ * @tc.desc: test for testCanvasGetImageInfoNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoNormal, TestSize.Level0) {
+    //1. OH_Drawing_BitmapCreate
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    //2. OH_Drawing_BitmapGetPixels
+    void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
+    //3. OH_Drawing_BitmapBuild
+    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    constexpr uint32_t width = 200;
+    constexpr uint32_t height = 200;
+    OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+    //4. OH_Drawing_BitmapCreateFromPixels
+    const uint32_t bytesPerPixel = 3;
+    const uint32_t padding = 32;
+    const uint32_t rowBytes = width * bytesPerPixel + padding;
+    OH_Drawing_Image_Info imageInfo;
+    OH_Drawing_Bitmap *frompixels = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    //5. OH_Drawing_CanvasBind
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_CanvasBind(canvas, bitmap);
+    //6. OH_Drawing_CanvasGetImageInfo
+    OH_Drawing_CanvasGetImageInfo(canvas, &imageInfo);
+    //7. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_BitmapDestroy(bitmap);
+    OH_Drawing_BitmapDestroy(frompixels);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4601
+ * @tc.name: testCanvasGetImageInfoNull
+ * @tc.desc: test for testCanvasGetImageInfoNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoNull, TestSize.Level3) {
+    //1. OH_Drawing_BitmapCreate
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    //2. OH_Drawing_BitmapGetPixels
+    void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
+    //3. OH_Drawing_BitmapBuild
+    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    constexpr uint32_t width = 200;
+    constexpr uint32_t height = 200;
+    OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+    //4. OH_Drawing_BitmapCreateFromPixels
+    const uint32_t bytesPerPixel = 3;
+    const uint32_t padding = 32;
+    const uint32_t rowBytes = width * bytesPerPixel + padding;
+    OH_Drawing_Image_Info imageInfo;
+    OH_Drawing_Bitmap *frompixels = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    //5. OH_Drawing_CanvasBind
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_CanvasBind(canvas, bitmap);
+    //6. OH_Drawing_CanvasGetImageInfo with the first parameter as null
+    OH_Drawing_CanvasGetImageInfo(nullptr, &imageInfo);
+    //7. OH_Drawing_CanvasGetImageInfo with the second parameter as null
+    OH_Drawing_CanvasGetImageInfo(canvas, nullptr);
+    //8. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_BitmapDestroy(bitmap);
+    OH_Drawing_BitmapDestroy(frompixels);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4602
+ * @tc.name: testCanvasGetImageInfoMultipleCalls
+ * @tc.desc: test for testCanvasGetImageInfoMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoMultipleCalls, TestSize.Level3) {
+    //1. OH_Drawing_BitmapCreate
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    //2. OH_Drawing_BitmapGetPixels
+    void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
+    //3. OH_Drawing_BitmapBuild
+    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    constexpr uint32_t width = 200;
+    constexpr uint32_t height = 200;
+    OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+    //4. OH_Drawing_BitmapCreateFromPixels
+    const uint32_t bytesPerPixel = 3;
+    const uint32_t padding = 32;
+    const uint32_t rowBytes = width * bytesPerPixel + padding;
+    OH_Drawing_Image_Info imageInfo;
+    OH_Drawing_Bitmap *frompixels = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    //5. OH_Drawing_CanvasBind
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_CanvasBind(canvas, bitmap);
+    //6. Call OH_Drawing_CanvasGetImageInfo 10 times
+    OH_Drawing_CanvasGetImageInfo(canvas, &imageInfo);
+    OH_Drawing_CanvasGetImageInfo(canvas, &imageInfo);
+    OH_Drawing_CanvasGetImageInfo(canvas, &imageInfo);
+    OH_Drawing_CanvasGetImageInfo(canvas, &imageInfo);
+    OH_Drawing_CanvasGetImageInfo(nullptr, &imageInfo);
+    OH_Drawing_CanvasGetImageInfo(nullptr, &imageInfo);
+    OH_Drawing_CanvasGetImageInfo(nullptr, &imageInfo);
+    OH_Drawing_CanvasGetImageInfo(canvas, nullptr);
+    OH_Drawing_CanvasGetImageInfo(canvas, nullptr);
+    OH_Drawing_CanvasGetImageInfo(canvas, nullptr);
+    //7. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_BitmapDestroy(bitmap);
+    OH_Drawing_BitmapDestroy(frompixels);
+}
+
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

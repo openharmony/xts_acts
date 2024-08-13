@@ -170,7 +170,7 @@ describe('bluetoothAdvertisingTest', function() {
             });
         } catch (err) {
             console.info("06errCode:" + err.code + ",06errMessage:" + err.message);
-            expect(err.code).assertEqual(401);
+            expect(Number(err.code)).assertEqual(401);
         }
         await sleep(2000);
         done();
@@ -204,7 +204,7 @@ describe('bluetoothAdvertisingTest', function() {
             });
         } catch (err) {
             console.info("08errCode:" + err.code + ",08errMessage:" + err.message);
-            expect(err.code).assertEqual(401);
+            expect(Number(err.code)).assertEqual(401);
         }
         await sleep(2000);
         done();

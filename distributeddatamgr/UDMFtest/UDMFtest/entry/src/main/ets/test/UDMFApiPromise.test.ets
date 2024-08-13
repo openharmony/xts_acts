@@ -15,14 +15,14 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import unifiedDataChannel from '@ohos.data.unifiedDataChannel';
-import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor'; 
+import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor';
 
 const TAG = '[ttt]'
 
 export default function UDMFApiPromise() {
-  describe('UDMFApiPromise', function () {
+  describe('UDMFApiPromise', () => {
 
-    beforeEach(async function () {
+    beforeEach(async () => {
       console.info(TAG + "beforeEach")
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
@@ -45,7 +45,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0100', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0100', 0, (done: Function) => {
       let Options = {}
       let plainText = new unifiedDataChannel.PlainText();
       plainText.textContent = 'this is textContent';
@@ -60,8 +60,7 @@ export default function UDMFApiPromise() {
           expect(err !== null).assertFail();
           done();
         })
-      }
-      catch (error) {
+      } catch (error) {
         console.error(TAG, `Failed to insertData0100 code is ${error.code},message is ${error.message} `);
         expect(error.code).assertEqual('401');
         done();
@@ -76,7 +75,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0200', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0200', 0, (done: Function) => {
       let Options = {
         intention: undefined
       }
@@ -93,8 +92,7 @@ export default function UDMFApiPromise() {
           expect(err !== null).assertFail();
           done();
         })
-      }
-      catch (error) {
+      } catch (error) {
         console.error(TAG, `Failed to insertData0200 code is ${error.code},message is ${error.message} `);
         expect(error.code).assertEqual('401');
         done();
@@ -109,9 +107,9 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0300', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0300', 0, (done: Function) => {
       let Options = {
-        intention:null
+        intention: null
       }
       let plainText = new unifiedDataChannel.PlainText();
       plainText.textContent = 'this is textContent';
@@ -126,8 +124,7 @@ export default function UDMFApiPromise() {
           expect(err !== null).assertFail();
           done();
         })
-      }
-      catch (error) {
+      } catch (error) {
         console.error(TAG, `Failed to insertData0300 code is ${error.code},message is ${error.message} `);
         expect(error.code).assertEqual('401');
         done();
@@ -142,7 +139,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0400', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0400', 0, (done: Function) => {
       let Options = {
         intention: undefined,
         key: undefined
@@ -160,8 +157,7 @@ export default function UDMFApiPromise() {
           expect(err !== null).assertFail();
           done();
         })
-      }
-      catch (error) {
+      } catch (error) {
         console.error(TAG, `Failed to insertData0400 code is ${error.code},message is ${error.message} `);
         expect(error.code).assertEqual('401');
         done();
@@ -176,7 +172,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0500', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0500', 0, (done: Function) => {
       let Options = {
         key: null
       }
@@ -193,8 +189,7 @@ export default function UDMFApiPromise() {
           expect(err !== null).assertFail();
           done();
         })
-      }
-      catch (error) {
+      } catch (error) {
         console.error(TAG, `Failed to insertData0500 code is ${error.code},message is ${error.message} `);
         expect(error.code).assertEqual('401');
         done();
@@ -209,14 +204,14 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0600', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0600', 0, (done: Function) => {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
       let plainText = new unifiedDataChannel.PlainText();
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
-      try{
+      try {
         unifiedDataChannel.insertData(options, unifiedData).then((data) => {
           console.info(TAG + `data = ${data}, options = ${options}`);
           expect(data !== null).assertTrue();
@@ -226,7 +221,7 @@ export default function UDMFApiPromise() {
           expect(err !== null).assertFail();
           done();
         });
-      }catch(error){
+      } catch (error) {
         console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
         expect(error !== null).assertFail();
       }
@@ -240,21 +235,23 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1000', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1000', 0, (done: Function) => {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
       let plainText = new unifiedDataChannel.PlainText();
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
-      try{
-        unifiedDataChannel.insertData(options, unifiedData, function (e, data) {
+      try {
+        unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(TAG, ` Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
           }
           console.info(TAG + `insertData0100 success; data = ${data}, options = ${options}`);
-          unifiedDataChannel.updateData({key: data}, unifiedData).then((ret) => {
+          unifiedDataChannel.updateData({
+            key: data
+          }, unifiedData).then((ret) => {
             console.info(TAG + `updateData success; data = ${ret}, options = ${options}`);
             expect(ret !== null).assertTrue();
             done();
@@ -265,7 +262,7 @@ export default function UDMFApiPromise() {
           });
 
         });
-      }catch(error){
+      } catch (error) {
         console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
         expect(error !== null).assertFail();
         done();
@@ -280,7 +277,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0800', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0800', 0, (done: Function) => {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
@@ -288,14 +285,16 @@ export default function UDMFApiPromise() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options, unifiedData, function (e, data) {
+        unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(TAG, ` Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
           }
           console.info(TAG + `insertData0200 success; data = ${data}, options = ${options}`);
-          try{
-            unifiedDataChannel.updateData({key: undefined}, unifiedData).then((ret) => {
+          try {
+            unifiedDataChannel.updateData({
+              key: undefined
+            }, unifiedData).then((ret) => {
               console.info(TAG + `updateData success; data = ${ret}, options = ${options}`);
               expect().assertFail()
               done();
@@ -304,7 +303,7 @@ export default function UDMFApiPromise() {
               expect(err !== null).assertFail();
               done();
             });
-          }catch(errInfo){
+          } catch (errInfo) {
             console.info(`UpdateData2222 failed. code is ${errInfo.code},message is ${errInfo.message} `);
             expect(errInfo.code).assertEqual('401');
             done();
@@ -325,7 +324,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0900', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0900', 0, (done: Function) => {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
@@ -333,14 +332,16 @@ export default function UDMFApiPromise() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options, unifiedData, function (e, data) {
+        unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(TAG, ` Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
           }
           console.info(TAG + `insertData0300 success; data = ${data}, options = ${options}`);
-          try{
-            unifiedDataChannel.updateData({key: null}, unifiedData).then((ret) => {
+          try {
+            unifiedDataChannel.updateData({
+              key: null
+            }, unifiedData).then((ret) => {
               console.info(TAG + `updateData success; data = ${ret}, options = ${options}`);
               expect().assertFail()
               done();
@@ -349,7 +350,7 @@ export default function UDMFApiPromise() {
               expect(err !== null).assertFail();
               done();
             });
-          }catch(errInfo){
+          } catch (errInfo) {
             console.info(`UpdateData failed. code is ${errInfo.code},message is ${errInfo.message} `);
             expect(errInfo.code).assertEqual('401');
             done();
@@ -372,7 +373,7 @@ export default function UDMFApiPromise() {
      * @tc.level     : Level 3
      */
 
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0700', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0700', 0, (done: Function) => {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB,
         key: undefined
@@ -380,14 +381,14 @@ export default function UDMFApiPromise() {
       let plainText = new unifiedDataChannel.PlainText();
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
-      try{
-        unifiedDataChannel.insertData(options, unifiedData, function (e, data) {
+      try {
+        unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(TAG, ` Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
           }
           console.info(TAG + `insertData0100 success; data = ${data}, options = ${options}`);
-          try{
+          try {
             unifiedDataChannel.updateData({}, unifiedData).then((ret) => {
               console.info(TAG + `updateData success; data = ${ret}, options = ${options}`);
               expect(ret !== null).assertTrue();
@@ -397,14 +398,14 @@ export default function UDMFApiPromise() {
               expect(err !== null).assertFail();
               done();
             });
-          }catch(errInfo){
+          } catch (errInfo) {
             console.info(`UpdateData failed. code is ${errInfo.code},message is ${errInfo.message} `);
             expect(errInfo.code).assertEqual('401');
             done();
           }
 
         });
-      }catch(error){
+      } catch (error) {
         console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
         expect(error !== null).assertFail();
         done();
@@ -419,7 +420,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1100', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1100', 0, (done: Function) => {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -427,7 +428,7 @@ export default function UDMFApiPromise() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options, unifiedData, function (e, data) {
+        unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
@@ -436,7 +437,7 @@ export default function UDMFApiPromise() {
           unifiedDataChannel.queryData(options).then((ret) => {
             let size = ret.length;
             console.info(TAG, ` data.size = ${size}`);
-            for (let  i = 0; i < size; i++) {
+            for (let i = 0; i < size; i++) {
               let records = ret[i].getRecords();
               let size = records.length;
               for (let j = 0; j < size; j++) {
@@ -469,7 +470,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1200', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1200', 0, (done: Function) => {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -477,13 +478,15 @@ export default function UDMFApiPromise() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options, unifiedData, function (e, data) {
+        unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
           }
           console.info(TAG + `insertData0100 success; data = ${data}, options = ${options}`);
-          unifiedDataChannel.queryData({key: data}).then((ret) => {
+          unifiedDataChannel.queryData({
+            key: data
+          }).then((ret) => {
             let size = ret.length;
             console.info(TAG, ` data.size = ${size}`);
             for (let i = 0; i < size; i++) {
@@ -519,7 +522,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1300', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1300', 0, (done: Function) => {
       let options1 = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -527,7 +530,7 @@ export default function UDMFApiPromise() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options1, unifiedData, function (e, data) {
+        unifiedDataChannel.insertData(options1, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
@@ -573,7 +576,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1400', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1400', 0, (done: Function) => {
       let options1 = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -581,7 +584,7 @@ export default function UDMFApiPromise() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options1, unifiedData, function (e, data) {
+        unifiedDataChannel.insertData(options1, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
@@ -591,7 +594,7 @@ export default function UDMFApiPromise() {
             intention: unifiedDataChannel.Intention.DATA_HUB,
             key: 'data'
           };
-          try{
+          try {
             unifiedDataChannel.queryData(options2).then((ret) => {
               let size = ret.length;
               console.info(TAG, ` data.size = ${size}`);
@@ -612,7 +615,7 @@ export default function UDMFApiPromise() {
               expect(err !== null).assertFail();
               done();
             });
-          }catch(errInfo){
+          } catch (errInfo) {
             console.info(`Failed to queryData. code is ${errInfo.code},message is ${errInfo.message} `);
             expect(errInfo.code).assertEqual('401');
             done();
@@ -633,7 +636,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1500', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1500', 0, (done: Function) => {
       let options1 = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -641,7 +644,7 @@ export default function UDMFApiPromise() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options1, unifiedData, function (e, data) {
+        unifiedDataChannel.insertData(options1, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
@@ -687,7 +690,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1600', 0, function (done) {
+    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1600', 0, (done: Function) => {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -695,13 +698,13 @@ export default function UDMFApiPromise() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options, unifiedData, function (e, data) {
+        unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
           }
           console.info(TAG + `insertData0100 success; data = ${data}, options = ${options}`);
-          unifiedDataChannel.queryData(options, function (errInfo, ret) {
+          unifiedDataChannel.queryData(options, (errInfo, ret) => {
             if (errInfo !== undefined) {
               console.info(`Failed to queryData. code is ${errInfo.code},message is ${errInfo.message} `);
               return;
@@ -744,7 +747,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1700', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1700', 0, (done: Function) => {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -752,19 +755,21 @@ export default function UDMFApiPromise() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options, unifiedData, function (e, data) {
+        unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
           }
           console.info(TAG + `insertData0200 success; data = ${data}, options = ${options}`);
-          unifiedDataChannel.queryData(options, function (errInfo, ret) {
+          unifiedDataChannel.queryData(options, (errInfo, ret) => {
             if (errInfo !== undefined) {
               console.info(`Failed to queryData. code is ${errInfo.code},message is ${errInfo.message} `);
               return;
             }
             console.info(TAG, ` queryData size = ${ret.length}`);
-            unifiedDataChannel.deleteData({key: data}).then((row) => {
+            unifiedDataChannel.deleteData({
+              key: data
+            }).then((row) => {
               let size = row.length;
               console.info(TAG, ` deleteData size = ${size}`);
               for (let i = 0; i < size; i++) {
@@ -801,7 +806,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1800', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1800', 0, (done: Function) => {
       let options1 = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -809,13 +814,13 @@ export default function UDMFApiPromise() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options1, unifiedData, function (e, data) {
+        unifiedDataChannel.insertData(options1, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
           }
           console.info(TAG + `insertData0100 success; data = ${data}, options = ${options1}`);
-          unifiedDataChannel.queryData(options1, function (errInfo, ret) {
+          unifiedDataChannel.queryData(options1, (errInfo, ret) => {
             if (errInfo !== undefined) {
               console.info(`Failed to queryData. code is ${errInfo.code},message is ${errInfo.message} `);
               return;
@@ -862,7 +867,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1900', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1900', 0, (done: Function) => {
       let options1 = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -870,13 +875,13 @@ export default function UDMFApiPromise() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options1, unifiedData, function (e, data) {
+        unifiedDataChannel.insertData(options1, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
           }
           console.info(TAG + `insertData0100 success; data = ${data}, options = ${options1}`);
-          unifiedDataChannel.queryData(options1, function (errInfo, ret) {
+          unifiedDataChannel.queryData(options1, (errInfo, ret) => {
             if (errInfo !== undefined) {
               console.info(`Failed to queryData. code is ${errInfo.code},message is ${errInfo.message} `);
               return;
@@ -886,7 +891,7 @@ export default function UDMFApiPromise() {
               intention: unifiedDataChannel.Intention.DATA_HUB,
               key: 'data'
             };
-            try{
+            try {
               unifiedDataChannel.deleteData(options2).then((row) => {
                 let size = row.length;
                 console.info(TAG, ` deleteData size = ${size}`);
@@ -907,7 +912,7 @@ export default function UDMFApiPromise() {
                 expect(err !== null).assertFail();
                 done();
               });
-            }catch(errInfo){
+            } catch (errInfo) {
               console.info(`Failed to deleteData. code is ${errInfo.code},message is ${errInfo.message} `);
               expect(errInfo.code).assertEqual('401');
               done();
@@ -929,7 +934,7 @@ export default function UDMFApiPromise() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_2000', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_2000', 0, (done: Function) => {
       let options1 = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -937,13 +942,13 @@ export default function UDMFApiPromise() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options1, unifiedData, function (e, data) {
+        unifiedDataChannel.insertData(options1, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
           }
           console.info(TAG + `insertData0100 success; data = ${data}, options = ${options1}`);
-          unifiedDataChannel.queryData(options1, function (errInfo, ret) {
+          unifiedDataChannel.queryData(options1, (errInfo, ret) => {
             if (errInfo !== undefined) {
               console.info(`Failed to queryData. code is ${errInfo.code},message is ${errInfo.message} `);
               return;

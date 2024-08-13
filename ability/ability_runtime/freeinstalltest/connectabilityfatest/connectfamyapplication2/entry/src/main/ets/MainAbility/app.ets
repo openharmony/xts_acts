@@ -17,7 +17,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 export default {
   onCreate() {
     console.info('Application onCreate')
-    setTimeout(function () {
+    setTimeout(()=> {
       featureAbility.terminateSelf()
         .then((data) => {
           console.info('[Demo] myapp2 terminateself succeeded: ' + data);

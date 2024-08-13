@@ -14,15 +14,83 @@
  */
 
 import hilog from '@ohos.hilog';
+import base from '@ohos.base';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 const TAG: string = 'ActsAbilityRunTimeLifeCycleTest';
 let deviceType = '';
+const TEST_SUITE_NAME: string = 'ActsLifeCycleTest'
+function sleep(time:number):Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, time))
+}
+
+function startAbilityTest(abilityName: string, tag: string) {
+  globalThis.abilityContext.startAbility({
+    bundleName: "com.ohos.actslifecycle",
+    abilityName: abilityName
+  }, (error:base.BusinessError, data:ESObject) => {
+    hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${tag} ${abilityName} startAbility success, err:${JSON.stringify(error)}`);
+  });
+}
+
+function getAbilityLifeCycleFilter(abilityName: string, TEST_CASE_NAME: string, listKey?: []) {
+  hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} ${abilityName} list :${JSON.stringify(listKey)}`);
+  let listKeyTemp:string[] = [];
+  let temListKey = listKey
+  if (!temListKey) {
+    temListKey = globalThis.mainAbilityAListKey
+  }
+  for (let i = 0; i < temListKey.length; i++) {
+    let item: string = temListKey[i]
+    if (item.includes(abilityName)) {
+      let index = listKeyTemp.indexOf(item);
+      if (index === -1) {
+        listKeyTemp.push(item);
+      }
+    }
+  }
+  hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} ${abilityName} list :${JSON.stringify(listKeyTemp)}`);
+  return listKeyTemp
+}
+
+function clearAbilityLifeCycle(listKey?: []) {
+  let temListKey = listKey
+  if (!temListKey) {
+    temListKey = globalThis.mainAbilityAListKey
+  }
+  temListKey.splice(0, temListKey.length)
+}
+
+function getStageLifeCycleFilter(abilityName: string, TEST_CASE_NAME: string) {
+  let listKeyTemp:string[] = [];
+  for (let i = 0; i < globalThis.mainAbilityStageListKey.length; i++) {
+    let item: string = globalThis.mainAbilityStageListKey[i]
+    if (item.includes(abilityName)) {
+      let index = listKeyTemp.indexOf(item);
+      if (index === -1) {
+        listKeyTemp.push(item);
+      }
+    }
+  }
+  hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} ${abilityName} Stage list :${JSON.stringify(listKeyTemp)}`);
+  return listKeyTemp
+}
+
+
+function getAbilityLastLifeCycle(abilityName: string) {
+  for (let i = globalThis.mainAbilityAListKey.length - 1; i >= 0; i--) {
+    let item: string = globalThis.mainAbilityAListKey[i]
+    if (item.includes(abilityName)) {
+      return item
+    }
+  }
+  return ""
+}
 
 export default function abilityTest() {
-  describe('ActsAbilityTest', function () {
-    const TEST_SUITE_NAME: string = 'ActsLifeCycleTest'
+  describe('ActsAbilityTest', ()=> {
+ 
     let TEST_CASE_NAME: string = '';
     let isTerminateSelfMainAbilityA = false;
     let isTerminateSelfMainAbilityB = false;
@@ -31,11 +99,7 @@ export default function abilityTest() {
     let isTerminateSelfMultitonA = false;
     let isTerminateSelfMainAbility3Multition = false;
 
-    function sleep(time) {
-      return new Promise((resolve) => setTimeout(resolve, time))
-    }
-
-    beforeEach(async function (done) {
+    beforeEach(async (done:Function) => {
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} beforeEach...`);
       deviceType = systemParameterEnhance.getSync('const.product.devicetype');
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} devicetype...${deviceType}`);
@@ -43,7 +107,7 @@ export default function abilityTest() {
       done()
     })
 
-    afterEach(async function (done) {
+    afterEach(async (done:Function) => {
       if (isTerminateSelfMainAbilityA) {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} abilityAContext terminateSelf start `);
         await globalThis.abilityAContext.terminateSelf()
@@ -90,69 +154,6 @@ export default function abilityTest() {
       done()
     });
 
-    function startAbilityTest(abilityName: string, tag: string) {
-      globalThis.abilityContext.startAbility({
-        bundleName: "com.ohos.actslifecycle",
-        abilityName: abilityName
-      }, (error, data) => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${tag} ${abilityName} startAbility success, err:${JSON.stringify(error)}`);
-      });
-    }
-
-    function getAbilityLifeCycleFilter(abilityName: string, TEST_CASE_NAME: string, listKey?: []) {
-      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} ${abilityName} list :${JSON.stringify(listKey)}`);
-      let listKeyTemp = [];
-      let temListKey = listKey
-      if (!temListKey) {
-        temListKey = globalThis.mainAbilityAListKey
-      }
-      for (let i = 0; i < temListKey.length; i++) {
-        let item: string = temListKey[i]
-        if (item.includes(abilityName)) {
-          let index = listKeyTemp.indexOf(item);
-          if (index === -1) {
-            listKeyTemp.push(item);
-          }
-        }
-      }
-      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} ${abilityName} list :${JSON.stringify(listKeyTemp)}`);
-      return listKeyTemp
-    }
-
-    function clearAbilityLifeCycle(listKey?: []) {
-      let temListKey = listKey
-      if (!temListKey) {
-        temListKey = globalThis.mainAbilityAListKey
-      }
-      temListKey.splice(0, temListKey.length)
-    }
-
-    function getStageLifeCycleFilter(abilityName: string, TEST_CASE_NAME: string) {
-      let listKeyTemp = [];
-      for (let i = 0; i < globalThis.mainAbilityStageListKey.length; i++) {
-        let item: string = globalThis.mainAbilityStageListKey[i]
-        if (item.includes(abilityName)) {
-          let index = listKeyTemp.indexOf(item);
-          if (index === -1) {
-            listKeyTemp.push(item);
-          }
-        }
-      }
-      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} ${abilityName} Stage list :${JSON.stringify(listKeyTemp)}`);
-      return listKeyTemp
-    }
-
-
-    function getAbilityLastLifeCycle(abilityName: string) {
-      for (let i = globalThis.mainAbilityAListKey.length - 1; i >= 0; i--) {
-        let item: string = globalThis.mainAbilityAListKey[i]
-        if (item.includes(abilityName)) {
-          return item
-        }
-      }
-      return ""
-    }
-
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0100
      * @tc.name      : Register listening in Ability
@@ -161,7 +162,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0100', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0100', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0100';
 
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
@@ -192,7 +193,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0500', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0500', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0500';
 
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
@@ -203,7 +204,7 @@ export default function abilityTest() {
       let callBackIdB = globalThis.mainAbilityBCallBackId
       await sleep(1000);
       globalThis.ApplicationContextB
-        .unregisterAbilityLifecycleCallback(globalThis.callBackIdB, (error, data) => {
+        .unregisterAbilityLifecycleCallback(globalThis.callBackIdB, (error:base.BusinessError, data:ESObject) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} unregisterAbilityLifecycleCallback success,
             err:  ${JSON.stringify(error)} ",data: ${JSON.stringify(data)}`);
         });
@@ -231,9 +232,9 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0600', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0600', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0600';
-      let listKeyTemp = [];
+      let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
 
@@ -283,9 +284,9 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0700', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0700', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0700';
-      let listKeyTemp = [];
+      let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
       listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME);
@@ -321,12 +322,12 @@ export default function abilityTest() {
 
       isTerminateSelfMainAbilityA = true;
       globalThis.ApplicationContextA
-        .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId, (error, data) => {
+        .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId, (error:base.BusinessError, data:ESObject) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} unregisterAbilityLifecycleCallback success,
             err:  ${JSON.stringify(error)} ",data: ${JSON.stringify(data)}`);
           expect(error.code).assertEqual(0);
           globalThis.ApplicationContextA
-            .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId, (error, data) => {
+            .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId, (error:base.BusinessError, data:ESObject) => {
               hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} unregisterAbilityLifecycleCallback success,
                 err:  ${JSON.stringify(error)} ",data: ${JSON.stringify(data)}`);
               expect(error.code).assertEqual(1);
@@ -343,9 +344,9 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0800', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0800', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0800';
-      let listKeyTemp = [];
+      let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
       listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME)
@@ -382,7 +383,7 @@ export default function abilityTest() {
       await sleep(3000);
       globalThis.abilityAContext.terminateSelf()
       globalThis.ApplicationContextA
-        .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId, (error, data) => {
+        .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId, (error:base.BusinessError, data:ESObject) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} unregisterAbilityLifecycleCallback success,
             err:  ${JSON.stringify(error)} ",data: ${JSON.stringify(data)}`);
           expect(error.code).assertEqual(0);
@@ -398,9 +399,9 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0900', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0900', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0900';
-      let listKeyTemp = [];
+      let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
       listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME)
@@ -436,12 +437,12 @@ export default function abilityTest() {
 
       isTerminateSelfMainAbilityA = true;
       globalThis.ApplicationContextA
-        .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId, (error, data) => {
+        .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId, (error:base.BusinessError, data:ESObject) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} unregisterAbilityLifecycleCallback success,
             err:  ${JSON.stringify(error)} ",data: ${JSON.stringify(data)}`);
           expect(error.code).assertEqual(0);
           globalThis.ApplicationContextA
-            .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId, (error, data) => {
+            .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId, (error:base.BusinessError, data:ESObject) => {
               hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} unregisterAbilityLifecycleCallback success,
                 err:  ${JSON.stringify(error)} ",data: ${JSON.stringify(data)}`);
               done()
@@ -457,9 +458,9 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1000', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1000', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1000';
-      let listKeyTemp = [];
+      let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
       listKeyTemp = getStageLifeCycleFilter("MainAbilityA", TEST_CASE_NAME)
@@ -477,7 +478,7 @@ export default function abilityTest() {
       expect(transferStr0.indexOf("MainAbilityA onAbilityDestroy") != -1).assertTrue();
 
       globalThis.ApplicationContextStage
-        .unregisterAbilityLifecycleCallback(globalThis.mainAbilityStageCallBackId, (error, data) => {
+        .unregisterAbilityLifecycleCallback(globalThis.mainAbilityStageCallBackId, (error:base.BusinessError, data:ESObject) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} unregisterAbilityLifecycleCallback success,
             err:  ${JSON.stringify(error)} ",data: ${JSON.stringify(data)}`);
           expect(error.code).assertEqual(0);
@@ -493,7 +494,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1100', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1100', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1100';
       if (deviceType != '2in1') {
         startAbilityTest("MainAbilityA", TEST_CASE_NAME)
@@ -530,7 +531,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1200', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1200', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1200';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
@@ -577,11 +578,11 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1300', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1300', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1300';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
-      let listKeyTemp = [];
+      let listKeyTemp :string[] = [];
       startAbilityTest("MainAbilitySingle1", TEST_CASE_NAME)
       await sleep(1000);
       listKeyTemp = getAbilityLifeCycleFilter("MainAbilitySingle1", TEST_CASE_NAME)
@@ -607,11 +608,11 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1400', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1400', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1400';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
-      let listKeyTemp = [];
+      let listKeyTemp :string[] = [];
       startAbilityTest("MainAbility3", TEST_CASE_NAME)
       await sleep(1000);
       listKeyTemp = getAbilityLifeCycleFilter("MainAbility3", TEST_CASE_NAME)
@@ -640,11 +641,11 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1500', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1500', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1500';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
-      let listKeyTemp = [];
+      let listKeyTemp:string[] = [];
       let callBackId1 = globalThis.mainAbilityACallBackId
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} MainAbilityA callBackId1:${callBackId1}`);
       startAbilityTest("MainAbilityB", TEST_CASE_NAME)
@@ -687,11 +688,11 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1600', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1600', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1600';
       startAbilityTest("MainAbilityMultitonA", TEST_CASE_NAME)
       await sleep(1000);
-      let listKeyTemp = [];
+      let listKeyTemp :string[] = [];
       let callBackId1 = globalThis.mainMultitonAbilityACallBackId
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} MainAbilityA callBackId1:${callBackId1}`);
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
@@ -744,11 +745,11 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1700', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1700', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1700';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
-      let listKeyTemp = [];
+      let listKeyTemp:string[] = [];
       let curCallBackId = globalThis.mainAbilityACallBackId
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} MainAbilityA callBackId:${curCallBackId}`);
       startAbilityTest("MainAbilityB", TEST_CASE_NAME)
@@ -830,7 +831,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1800', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1800', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1800';
 
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
@@ -857,7 +858,7 @@ export default function abilityTest() {
       await applicationContext.unregisterAbilityLifecycleCallback(callBackId2).then((data) => {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} unregisterAbilityLifecycleCallback success,
           callBackId:  ${callBackId} ",data: ${JSON.stringify(data)}`);
-      }).catch((error) => {
+      }).catch((error:base.BusinessError) => {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} unregisterAbilityLifecycleCallback
           error callBackId:  ${JSON.stringify(callBackId)} ",error: ${JSON.stringify(error)}`);
         expect().assertFail()
@@ -875,14 +876,14 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1900', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1900', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1900';
 
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
       await sleep(1000);
       isTerminateSelfMainAbilityC = true;
       globalThis.abilityCContext.getApplicationContext()
-        .unregisterAbilityLifecycleCallback(100, (error, data) => {
+        .unregisterAbilityLifecycleCallback(100, (error:base.BusinessError, data:ESObject) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} unregisterAbilityLifecycleCallback success,
             err:  ${JSON.stringify(error)} ",data: ${JSON.stringify(data)}`);
           expect(error.code).assertEqual(1);
@@ -898,14 +899,14 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2000', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2000', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2000';
 
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
       await sleep(1000);
       isTerminateSelfMainAbilityC = true;
       globalThis.abilityCContext.getApplicationContext()
-        .unregisterAbilityLifecycleCallback("", (error, data) => {
+        .unregisterAbilityLifecycleCallback("", (error:base.BusinessError, data:ESObject) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} unregisterAbilityLifecycleCallback success,
             err:  ${JSON.stringify(error)} ",data: ${JSON.stringify(data)}`);
           expect(error.code).assertEqual(1);
@@ -921,14 +922,14 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2100', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2100', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2100';
 
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
       await sleep(1000);
       isTerminateSelfMainAbilityC = true;
       globalThis.abilityCContext.getApplicationContext()
-        .unregisterAbilityLifecycleCallback(-1, (error, data) => {
+        .unregisterAbilityLifecycleCallback(-1, (error:base.BusinessError, data:ESObject) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} unregisterAbilityLifecycleCallback success,
             err:  ${JSON.stringify(error)} ",data: ${JSON.stringify(data)}`);
           expect(error.code).assertEqual(1);
@@ -944,14 +945,14 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2200', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2200', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2200';
 
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
       await sleep(1000);
       isTerminateSelfMainAbilityC = true;
       globalThis.abilityCContext.getApplicationContext()
-        .unregisterAbilityLifecycleCallback("test", (error, data) => {
+        .unregisterAbilityLifecycleCallback("test", (error:base.BusinessError, data:ESObject) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} unregisterAbilityLifecycleCallback success, err:
             ${JSON.stringify(error)} ",data: ${JSON.stringify(data)}`);
           expect(error.code).assertEqual(1);
@@ -967,7 +968,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2300', 3, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2300', 3, async (done:Function) => {
       let templeStr = globalThis.willAbilityStageListKey.join(',');
       expect(templeStr.indexOf("MainAbilityA onAbilityWillCreate") != -1).assertTrue();
       expect(templeStr.indexOf("MainAbilityA onWindowStageWillCreate") != -1).assertTrue();

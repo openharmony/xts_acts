@@ -16,17 +16,20 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
+import AbilityLifecycleCallback from '@ohos.app.ability.AbilityLifecycleCallback';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 const TEST_TAG = "TAG_MainAbilityA"
 
 export default class MainAbilityA extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want:Want, launchParam:AbilityConstant.LaunchParam) {
     hilog.info(0x0000, TEST_TAG, `MainAbilityA onCreate`);
     globalThis.abilityWant = want;
 
-    let listKey = [];
+    let listKey:string[] = [];
     let abilityName = "";
-    let AbilityLifecycleCallback = {
+    let AbilityLifecycleCallback:AbilityLifecycleCallback = {
       onAbilityCreate(ability) {
         abilityName = ability.context.abilityInfo.name;
         listKey.push(abilityName + " onAbilityCreate");

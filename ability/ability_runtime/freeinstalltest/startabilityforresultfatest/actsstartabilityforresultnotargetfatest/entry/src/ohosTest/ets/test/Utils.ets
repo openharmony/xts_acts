@@ -12,13 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import HashMap from '@ohos.util.HashMap';
 
 export default class Utils {
   static rect_left = 0;
   static rect_top = 0;
   static rect_right = 0;
   static rect_bottom = 0;
-  static rect_value:Map<string, number> = new Map<string, number>;
+  static rect_value = new HashMap<string, number>();
 
   static sleep(time:number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, time))
@@ -35,11 +36,13 @@ export default class Utils {
     Utils.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0]
     Utils.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1]
 
-    return Utils.rect_value = new Map<string, number>([
-      ["left", Utils.rect_left],
-      ["top", Utils.rect_top],
-      ["right", Utils.rect_right],
-      ["bottom", Utils.rect_bottom]]);
+    Utils.rect_value.clear();
+    Utils.rect_value.set("left", Utils.rect_left);
+    Utils.rect_value.set("top", Utils.rect_top);
+    Utils.rect_value.set("right", Utils.rect_right);
+    Utils.rect_value.set("bottom", Utils.rect_bottom);
+
+    return Utils.rect_value;
   }
 
   static async swipe (downX:number, downY:number, upX:number, upY:number, steps:number) {

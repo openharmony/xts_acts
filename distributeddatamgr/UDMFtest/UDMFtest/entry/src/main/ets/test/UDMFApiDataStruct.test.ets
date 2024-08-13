@@ -29,15 +29,15 @@ export default function UDMFApiDataStructTest() {
      */
     it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0100', 0, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0100 start');
-      let plainTextDetails : Record<string, string> = {
+      let plainTextDetails: Record<string, string> = {
         'attr1': 'value1',
         'attr2': 'value2',
       }
-      let plainText : uniformDataStruct.PlainText = {
+      let plainText: uniformDataStruct.PlainText = {
         uniformDataType: 'general.plain-text',
-        textContent : 'This is plainText textContent example',
-        abstract : 'this is abstract',
-        details : plainTextDetails,
+        textContent: 'This is plainText textContent example',
+        abstract: 'this is abstract',
+        details: plainTextDetails,
       }
       let obj = plainText;
       expect(obj.uniformDataType).assertEqual(plainText.uniformDataType)
@@ -57,15 +57,15 @@ export default function UDMFApiDataStructTest() {
      */
     it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0200', 0, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0200 start');
-      let hyperlinkDetails : Record<string, string> = {
+      let hyperlinkDetails: Record<string, string> = {
         'attr1': 'value1',
         'attr2': 'value2',
       }
-      let hyperlink : uniformDataStruct.Hyperlink = {
-        uniformDataType:'general.hyperlink',
-        url : 'www.XXX.com',
-        description : 'This is the description of this hyperlink',
-        details : hyperlinkDetails,
+      let hyperlink: uniformDataStruct.Hyperlink = {
+        uniformDataType: 'general.hyperlink',
+        url: 'www.XXX.com',
+        description: 'This is the description of this hyperlink',
+        details: hyperlinkDetails,
       }
       let obj = hyperlink;
       expect(obj.uniformDataType).assertEqual(hyperlink.uniformDataType)
@@ -85,15 +85,15 @@ export default function UDMFApiDataStructTest() {
      */
     it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0300', 0, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0300 start');
-      let htmlObjDetails : Record<string, string> = {
+      let htmlObjDetails: Record<string, string> = {
         'attr1': 'value1',
         'attr2': 'value2',
       }
-      let htmlObj : uniformDataStruct.HTML = {
-        uniformDataType :'general.html',
-        htmlContent : '<div><p>标题</p></div>',
-        plainContent : 'this is plainContent',
-        details : htmlObjDetails,
+      let htmlObj: uniformDataStruct.HTML = {
+        uniformDataType: 'general.html',
+        htmlContent: '<div><p>标题</p></div>',
+        plainContent: 'this is plainContent',
+        details: htmlObjDetails,
       }
       let obj = htmlObj;
       expect(obj.uniformDataType).assertEqual(htmlObj.uniformDataType)
@@ -114,20 +114,20 @@ export default function UDMFApiDataStructTest() {
     it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0400', 0, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0400 start');
       let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-      let appItemDetails : Record<string, number | string | Uint8Array> = {
+      let appItemDetails: Record<string, number | string | Uint8Array> = {
         'appItemKey1': 123,
         'appItemKey2': 'appItemValue',
         'appItemKey3': u8Array,
       }
-      let appItem : uniformDataStruct.OpenHarmonyAppItem = {
-        uniformDataType:'openharmony.app-item',
-        appId : 'MyAppId',
-        appName : 'MyAppName',
-        appIconId : 'MyAppIconId',
-        appLabelId : 'MyAppLabelId',
-        bundleName : 'MyBundleName',
-        abilityName : 'MyAbilityName',
-        details : appItemDetails,
+      let appItem: uniformDataStruct.OpenHarmonyAppItem = {
+        uniformDataType: 'openharmony.app-item',
+        appId: 'MyAppId',
+        appName: 'MyAppName',
+        appIconId: 'MyAppIconId',
+        appLabelId: 'MyAppLabelId',
+        bundleName: 'MyBundleName',
+        abilityName: 'MyAbilityName',
+        details: appItemDetails,
       }
       let obj = appItem;
       expect(obj.uniformDataType).assertEqual(appItem.uniformDataType)
