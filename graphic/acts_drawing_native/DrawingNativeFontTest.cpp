@@ -1715,6 +1715,186 @@ HWTEST_F(DrawingNativeFontTest, testFontGetMetricsMultipleCalls, TestSize.Level3
     // 3. Release memory
     OH_Drawing_FontDestroy(font);
 }
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_1800
+ * @tc.name: testFontMeasureSingleCharacterNormal
+ * @tc.desc: test for testFontMeasureSingleCharacterNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeFontTest, testFontMeasureSingleCharacterNormal, TestSize.Level0)
+{
+    //1. OH_Drawing_FontCreate
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    //2. All OH_Drawing_FontMeasureSingleCharacter parameters are entered normally, including str single character,
+    // UTF8 encoded Chinese/English characters
+    float textWidth = 0.f;
+    const char* strOne = "a";
+    OH_Drawing_FontMeasureSingleCharacter(font, strOne, &textWidth);
+    //3. All OH_Drawing_FontMeasureSingleCharacter parameters are entered normally, including str multi-character,
+    // UTF8 encoded Chinese/English characters
+    const char* strTwo = "你好";
+    OH_Drawing_FontMeasureSingleCharacter(font, strTwo, &textWidth);
+    //4. free memory
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_1801
+ * @tc.name: testFontMeasureSingleCharacterNull
+ * @tc.desc: test for testFontMeasureSingleCharacterNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontTest, testFontMeasureSingleCharacterNull, TestSize.Level3)
+{
+    //1. OH_Drawing_FontCreate
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    //2. OH_Drawing_FontMeasureSingleCharacter with the parameter font as null
+    float textWidth = 0.f;
+    const char *strOne = "a";
+    OH_Drawing_FontMeasureSingleCharacter(nullptr, strOne, &textWidth);
+    //3. OH_Drawing_FontMeasureSingleCharacter with the parameter str as null
+    OH_Drawing_FontMeasureSingleCharacter(font, nullptr, &textWidth);
+    //4. OH_Drawing_FontMeasureSingleCharacter with the parameter textWidth as null
+    OH_Drawing_FontMeasureSingleCharacter(font, strOne, nullptr);
+    //5. free memory
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_1802
+ * @tc.name: testFontMeasureSingleCharacterMultipleCalls
+ * @tc.desc: test for testFontMeasureSingleCharacterMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontTest, testFontMeasureSingleCharacterMultipleCalls, TestSize.Level3)
+{
+    //1. OH_Drawing_FontCreate
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    //2. OH_Drawing_FontMeasureSingleCharacter API is called 10 times as a normal input parameter
+    const char *str[] = {
+        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j"
+    };
+    float textWidth = 0.f;
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_FontMeasureSingleCharacter(font, str[i], &textWidth);
+    }
+    //3. free memory
+    OH_Drawing_FontDestroy(font);
+}
+
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_1900
+ * @tc.name: testFontMeasuretextNormal
+ * @tc.desc: test for testFontMeasuretextNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeFontTest, testFontMeasuretextNormal, TestSize.Level0)
+{
+    //1. OH_Drawing_FontCreate
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    //2. OH_Drawing_FontMeasureText enumeration traversal
+    const void *text = "abc";
+    const size_t byteLength = 3;
+    float textWidth = 0.f;
+    OH_Drawing_TextEncoding encodes[] = {
+        TEXT_ENCODING_UTF8,
+        TEXT_ENCODING_UTF16,
+        TEXT_ENCODING_UTF32,
+        TEXT_ENCODING_GLYPH_ID,
+    };
+    for (int i = 0; i < 4; i++) {
+        OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
+    }
+    //3. OH_Drawing_FontMeasureText with the fifth parameter as null(normally)
+    OH_Drawing_FontMeasureText(font, text, byteLength, TEXT_ENCODING_UTF8, NULL, &textWidth);
+    //4. free memory
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_1901
+ * @tc.name: testFontMeasuretextNull
+ * @tc.desc: test for testFontMeasuretextNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontTest, testFontMeasuretextNull, TestSize.Level3)
+{
+    //1. OH_Drawing_FontCreate
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    // 2. Call OH_Drawing_FontMeasureText with nullptr as the first parameter, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    const void *text = "abc";
+    const size_t byteLength = 3;
+    float textWidth = 0.f;
+    OH_Drawing_FontMeasureText(nullptr, text, byteLength, TEXT_ENCODING_UTF8, NULL, &textWidth);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. Call OH_Drawing_FontMeasureText with nullptr as the second parameter, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_FontMeasureText(font, nullptr, byteLength, TEXT_ENCODING_UTF8, NULL, &textWidth);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 4. Call OH_Drawing_FontMeasureText with nullptr or 0 as the third parameter, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_FontMeasureText(font, text, 0, TEXT_ENCODING_UTF8, NULL, &textWidth);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 5. Call OH_Drawing_FontMeasureText with nullptr as the sixth parameter, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_FontMeasureText(font, text, byteLength, TEXT_ENCODING_UTF8, NULL, nullptr);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 6. free memory
+    OH_Drawing_FontDestroy(font);
+}
+
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_1902
+ * @tc.name: testFontMeasuretextMultipleCalls
+ * @tc.desc: test for testFontMeasuretextMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontTest, testFontMeasuretextMultipleCalls, TestSize.Level3)
+{
+    //1. OH_Drawing_FontCreate
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    //2. Call OH_Drawing_FontMeasureText 10 times
+    const void *text = "abc";
+    const size_t byteLength = 3;
+    float textWidth = 0.f;
+    OH_Drawing_TextEncoding encodes[] = {
+        TEXT_ENCODING_UTF8,
+        TEXT_ENCODING_UTF16,
+        TEXT_ENCODING_UTF32,
+        TEXT_ENCODING_GLYPH_ID,
+    };
+    for (int i = 0; i < 4; i++) {
+        OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
+    }
+    text = "abb";
+    for (int i = 0; i < 4; i++) {
+        OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
+    }
+    text = "acc";
+    for (int i = 0; i < 2; i++) {
+        OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
+    }
+    //3. free memory
+    OH_Drawing_FontDestroy(font);
+}
+
+
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_1703
  * @tc.name: testFontMeasureSingleCharacter
@@ -1753,6 +1933,8 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasureSingleCharacter, TestSize.Level1)
     EXPECT_TRUE(textWidth > 0);
     OH_Drawing_FontDestroy(font);
 }
+
+
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
