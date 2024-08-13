@@ -23,7 +23,7 @@ import IsMyCardTest from './IsMyCard.test';
 import ContactTest from './Contact.test';
 import QueryGroupsTest from './QueryGroups.test';
 import EmptyTest from './Empty.test';
-import ContactTests from './contacttest.test';
+import ContactsTest from './Contacts.test';
 
 export default function testsuite() {
   if (canIUse("SystemCapability.Applications.Contacts")){
@@ -36,7 +36,7 @@ export default function testsuite() {
     QueryGroupsTest();
     IsMyCardTest();
     ContactTest();
-    ContactTests()
+    ContactsTest()
   }else{
     EmptyTest()
   }

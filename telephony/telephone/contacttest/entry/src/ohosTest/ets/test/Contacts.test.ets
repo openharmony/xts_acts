@@ -471,6 +471,7 @@ export default function AddContactTest() {
             if (keyErr) {
               console.info(`${caseName} queryKey: err->${JSON.stringify(keyErr)}`);
               ExpectFail();
+              expect().assertFail()
               done();
             } else {
               console.info(`${caseName} queryKey: success data->${JSON.stringify(keyData)}`);
@@ -489,12 +490,14 @@ export default function AddContactTest() {
           })
         }).catch((error: BusinessError) => {
           console.info(`${caseName} Failed to addContact. Code:${JSON.stringify(error)}`)
-          expectEqual(error.code, 401)
+          // expectEqual(error.code, 401)
+          expect(error.code).assertEqual(401)
           done()
         })
       } catch (error) {
         console.info(`${caseName} catch error ${JSON.stringify(error)}`);
-        ExpectFail();
+        // ExpectFail();
+        expect().assertFail()
         console.info(`${caseName} test end`);
         done()
       }
