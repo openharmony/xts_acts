@@ -22,7 +22,8 @@ import UpdateContactTest from './UpdateContact.test';
 import IsMyCardTest from './IsMyCard.test';
 import ContactTest from './Contact.test';
 import QueryGroupsTest from './QueryGroups.test';
-import EmptyTest from './Empty.test'
+import EmptyTest from './Empty.test';
+import ContactTests from './contacttest.test';
 
 export default function testsuite() {
   if (canIUse("SystemCapability.Applications.Contacts")){
@@ -35,6 +36,7 @@ export default function testsuite() {
     QueryGroupsTest();
     IsMyCardTest();
     ContactTest();
+    ContactTests()
   }else{
     EmptyTest()
   }
