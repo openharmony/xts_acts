@@ -1521,11 +1521,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacterNormal, TestSize.
     float x = 0.f;
     float y = 0.f;
     const char* str = "a";
+    const char* str1 = "我";
     OH_Drawing_CanvasDrawSingleCharacter(canvas, str, font, x, y);
+    OH_Drawing_CanvasDrawSingleCharacter(canvas, str1, font, x, y);
     //7. OH_Drawing_CanvasDrawSingleCharacter parameters are entered normally, where str is a multi-character, UTF-8
     // encoded, and English/Chinese characters are in
     str = "abc";
+    str1 = "你是谁";
     OH_Drawing_CanvasDrawSingleCharacter(canvas, str, font, x, y);
+    OH_Drawing_CanvasDrawSingleCharacter(canvas, str1, font, x, y);
     //8. free memory
     OH_Drawing_CanvasDestroy(canvas);
     OH_Drawing_BrushDestroy(brush);
@@ -1558,7 +1562,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacterNull, TestSize.Le
     const char *str = "0";
     OH_Drawing_CanvasDrawSingleCharacter(nullptr, str, font, x, y);
     //7. OH_Drawing_CanvasDrawSingleCharacter parameter str is empty
-    OH_Drawing_CanvasDrawSingleCharacter(canvas, nullptr, font, x, y);
+    str = "";
+    OH_Drawing_CanvasDrawSingleCharacter(canvas, str, font, x, y);
     //8. OH_Drawing_CanvasDrawSingleCharacter parameter font is empty
     OH_Drawing_CanvasDrawSingleCharacter(canvas, str, nullptr, x, y);
     //9. OH_Drawing_CanvasDrawSingleCharacter parameter str to 0 characters
@@ -1586,12 +1591,12 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointNormal, TestSize.Level0) {
     OH_Drawing_Point2D texs_three = {2.0f, 2.0f};
     OH_Drawing_Point2D point_vertices[1] = {texs_one};
     for (int i = 0; i < 1; i++) {
-        (void)point_vertices[i];
+        OH_Drawing_CanvasDrawPoint(canvas, &point_vertices[i]);
     }
     //3. OH_Drawing_Point2D create an array of multiple points
     OH_Drawing_Point2D texs_vertices[3] = {texs_one, texs_two, texs_three};
     for (int i = 0; i < 3; i++) {
-        (void)texs_vertices[i];
+        OH_Drawing_CanvasDrawPoint(canvas, &texs_vertices[i]);
     }
     //4. free memory
     OH_Drawing_CanvasDestroy(canvas);
@@ -1709,7 +1714,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorNull, TestSize.Level3) {
     }
     //3. OH_Drawing_CanvasDrawColor with the first parameter as 0
     for (int i = 0; i < 29; i++) {
-    OH_Drawing_CanvasDrawColor(0, color, blendMode[i]);
+    OH_Drawing_CanvasDrawColor(canvas, 0, blendMode[i]);
     }
     //4. free memory
     OH_Drawing_CanvasDestroy(canvas);
@@ -1737,7 +1742,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorMaximum, TestSize.Level3) {
         BLEND_MODE_MULTIPLY,   BLEND_MODE_HUE,        BLEND_MODE_SATURATION,  BLEND_MODE_COLOR,
         BLEND_MODE_LUMINOSITY,
     };
-    uint32_t color = 0xFFFFFFFF;
+    uint32_t color = 0x00000000;
     for (int i = 0; i < 29; i++) {
         OH_Drawing_CanvasDrawColor(nullptr, color, blendMode[i]);
     }
@@ -1764,7 +1769,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorMultipleCalls, TestSize.Lev
         BLEND_MODE_DST_OUT,    BLEND_MODE_SRC_ATOP,
     };
     for (int i = 0; i < 10; i++) {
-        OH_Drawing_CanvasDrawColor(nullptr, color, blendMode[i]);
+        OH_Drawing_CanvasDrawColor(canvas, color, blendMode[i]);
     }
     //3. free memory
     OH_Drawing_CanvasDestroy(canvas);
