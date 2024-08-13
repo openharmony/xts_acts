@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,17 +17,11 @@ import UsbDevicePipeJsFunctionsTest from './UsbDevicePipeJsunit.test.js'
 import UsbDevicePipeJsFunctionsTestEx from './UsbDevicePipeJsunitEx.test.js'
 import UsbCoreJsFunctionsTest from './UsbCoreJsunit.test.js'
 import UsbCoreJsFunctionsTestEx from './UsbCoreJsunitEx.test.js'
-import UsbApiParamExceJsunitTest from './UsbApiParamExceJsunit.test.js'
-import UsbApiParamTypeErrJsunitTest from './UsbApiParamTypeErrJsunit.test.js'
-import UsbApiTransferCompatJsunitTest from './UsbApiTransferCompatJsunitTest.test.js'
 
 /* host test case */
 export default function testsuite() {
-// UsbCoreJsFunctionsTest()
-// UsbCoreJsFunctionsTestEx()
-// UsbDevicePipeJsFunctionsTest()
-// UsbDevicePipeJsFunctionsTestEx()
-UsbApiParamExceJsunitTest()
-UsbApiParamTypeErrJsunitTest()
-UsbApiTransferCompatJsunitTest()
+UsbCoreJsFunctionsTest()
+UsbCoreJsFunctionsTestEx()
+UsbDevicePipeJsFunctionsTest()
+UsbDevicePipeJsFunctionsTestEx()
 }
