@@ -27,5 +27,6 @@ class DrawingNativeCanvasTest : public testing::Test {};
 } // namespace OHOS
 
 OH_PixelmapNative *GET_OH_PixelmapNative();
+OH_PixelmapNative *GET_OH_PixelmapNative(uint32_t width, uint32_t height);
 
 #endif // DRAWING_NATIVE_CANVAS_COMMON_H

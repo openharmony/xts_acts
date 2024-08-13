@@ -265,6 +265,53 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightInputDest
 }
 
 /*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_3004
+ * @tc.name: testCanvasGetWidthtestCanvasGetHeightMultipleCallsBoudary
+ * @tc.desc: test for testCanvasGetWidthtestCanvasGetHeightMultipleCallsBoudary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightMultipleCallsBoudary, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. Switch the binding to a bitmap canvas with different widths and heights 10 times, and verify the canvas
+    // information by calling OH_Drawing_CanvasGetHeight and OH_Drawing_CanvasGetWidth after each switch
+    constexpr uint32_t width = 4096;
+    constexpr uint32_t height = 2160;
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+        OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+        OH_Drawing_CanvasBind(canvas, bitmap);
+        int32_t canvasWidth = OH_Drawing_CanvasGetWidth(canvas);
+        int32_t canvasHeight = OH_Drawing_CanvasGetHeight(canvas);
+        EXPECT_EQ(canvasWidth, width);
+        EXPECT_EQ(canvasHeight, height);
+        OH_Drawing_BitmapDestroy(bitmap);
+    }
+    // 3. Switch the binding to different widths and heights of bitmap canvas 10 times
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+        OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+        OH_Drawing_CanvasBind(canvas, bitmap);
+        OH_Drawing_BitmapDestroy(bitmap);
+    }
+
+    // 4. Call OH_Drawing_CanvasGetHeight and OH_Drawing_CanvasGetWidth 10 times to verify the canvas
+    for (int i = 0; i < 10; i++) {
+        int32_t canvasWidth = OH_Drawing_CanvasGetWidth(canvas);
+        int32_t canvasHeight = OH_Drawing_CanvasGetHeight(canvas);
+        EXPECT_EQ(canvasWidth, width);
+        EXPECT_EQ(canvasHeight, height);
+    }
+
+    // 5. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_3100
  * @tc.name: testCanvasGetLocalClipBoundsNormal
  * @tc.desc: test for testCanvasGetLocalClipBoundsNormal.
@@ -424,6 +471,52 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsMultipleCalls, Tes
  */
 HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsInputDestroyed, TestSize.Level3) {
     // Deprecated
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_3105
+ * @tc.name: testCanvasGetLocalClipBoundsMultipleCallsBoundary
+ * @tc.desc: test for testCanvasGetLocalClipBoundsMultipleCallsBoundary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsMultipleCallsBoundary, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. Switch the binding to a bitmap canvas with different widths and heights 10 times, and verify the canvas
+    // information by calling OH_Drawing_CanvasGetLocalClipBounds after each switch
+    uint32_t width = 4096;
+    uint32_t height = 2160;
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+        OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+        OH_Drawing_CanvasBind(canvas, bitmap);
+        OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, width, height);
+        OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
+        OH_Drawing_RectDestroy(rect);
+        OH_Drawing_BitmapDestroy(bitmap);
+    }
+    // 3. Switch the binding to different widths and heights of bitmap canvas 10 times
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+        OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+        OH_Drawing_CanvasBind(canvas, bitmap);
+        OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, width, height);
+        OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
+        OH_Drawing_RectDestroy(rect);
+        OH_Drawing_BitmapDestroy(bitmap);
+    }
+    // 4. Call OH_Drawing_CanvasGetLocalClipBounds 10 times to verify the canvas
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
+    }
+    // 5. Free memory
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_CanvasDestroy(canvas);
 }
 
 /*
@@ -1375,6 +1468,31 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsMaximum, TestSize.Level3) 
     // 4. Call OH_Drawing_CanvasReadPixels with the sixth parameter as the maximum value 0x7FFFFFFF
     OH_Drawing_CanvasReadPixels(canvas, &imageInfo, pixels, 0, 0, 0x7FFFFFFF);
     // 5. Free memory
+    OH_Drawing_BitmapDestroy(bitmap);
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4005
+ * @tc.name: testCanvasReadPixelsBoundary
+ * @tc.desc: test for testCanvasReadPixelsBoundary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsBoundary, TestSize.Level0) {
+    // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. Call OH_Drawing_CanvasReadPixels
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    constexpr uint32_t width = 4096;
+    constexpr uint32_t height = 2160;
+    OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+    void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
+    OH_Drawing_Image_Info imageInfo;
+    OH_Drawing_CanvasReadPixels(canvas, &imageInfo, pixels, 0, 0, 0);
+    // 3. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
 }

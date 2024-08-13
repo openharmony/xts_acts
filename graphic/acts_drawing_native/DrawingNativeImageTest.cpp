@@ -151,6 +151,28 @@ HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapMultipleCalls, TestSize
 }
 
 /*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_IMAGE_0203
+ * @tc.name: testImageBuildFromBitmapMultipleCallsBoundary
+ * @tc.desc: Test for multiple calls of building an boundary value image from a bitmap.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapMultipleCallsBoundary, TestSize.Level3) {
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+        OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+        uint32_t width = 4096;
+        uint32_t height = 2160;
+        OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+        OH_Drawing_ImageBuildFromBitmap(image, bitmap);
+        OH_Drawing_ImageDestroy(image);
+        OH_Drawing_BitmapDestroy(bitmap);
+    }
+}
+
+/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_IMAGE_0300
  * @tc.name: testImageGetWidthHeightNormal
  * @tc.desc: Test for getting width and height of an image with normal parameters.
@@ -223,6 +245,34 @@ HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightMultipleCalls, TestSize.
         EXPECT_EQ(width_, 200 + i * 10);
         int32_t height_ = OH_Drawing_ImageGetHeight(image);
         EXPECT_EQ(height_, 200 + i * 10);
+        OH_Drawing_ImageDestroy(image);
+        OH_Drawing_BitmapDestroy(bitmap);
+    }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_IMAGE_0302
+ * @tc.name: testImageGetWidthHeightMultipleCallsBoundary
+ * @tc.desc: Test for multiple calls of getting width and height of an boundary value image.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightMultipleCallsBoundary, TestSize.Level3) {
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+        OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+        uint32_t width = 4096;
+        uint32_t height = 2160;
+        OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+        EXPECT_NE(bitmap, nullptr);
+        OH_Drawing_ImageBuildFromBitmap(image, bitmap);
+        EXPECT_NE(image, nullptr);
+        int32_t width_ = OH_Drawing_ImageGetWidth(image);
+        EXPECT_EQ(width_, 4096);
+        int32_t height_ = OH_Drawing_ImageGetHeight(image);
+        EXPECT_EQ(height_, 2160);
         OH_Drawing_ImageDestroy(image);
         OH_Drawing_BitmapDestroy(bitmap);
     }
@@ -367,6 +417,32 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoMaximum, TestSize.Level3) 
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
     OH_Drawing_ImageGetImageInfo(image, &imageInfo);
+    // 3. Free memory
+    OH_Drawing_ImageDestroy(image);
+    OH_Drawing_BitmapDestroy(bitmap);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_IMAGE_0405
+ * @tc.name: testImageGetImageInfoBoundary
+ * @tc.desc: Test for getting image info with Boundary value.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoBoundary, TestSize.Level3) {
+    // 1. OH_Drawing_ImageCreate
+    OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // 2. OH_Drawing_ImageGetImageInfo creates OH_Drawing_Image_Info with width=maximum value and height=maximum value
+    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    uint32_t width = 4096;
+    uint32_t height = 2160;
+    OH_Drawing_Image_Info imageInfo;
+    OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+    EXPECT_NE(bitmap, nullptr);
+    OH_Drawing_ImageGetImageInfo(image, &imageInfo);
+    EXPECT_NE(image, nullptr);
     // 3. Free memory
     OH_Drawing_ImageDestroy(image);
     OH_Drawing_BitmapDestroy(bitmap);

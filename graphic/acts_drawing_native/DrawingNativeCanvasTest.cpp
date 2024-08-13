@@ -191,6 +191,34 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasBindMultipleCalls, TestSize.Level0) 
 }
 
 /*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_0204
+ * @tc.name: testCanvasBindBoundaryMultipleCallsBoundary
+ * @tc.desc: test for testCanvasBindBoundaryl.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasBindBoundaryMultipleCallsBoundary, TestSize.Level0) {
+    // step 1
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    EXPECT_NE(canvas, nullptr);
+
+    // step 2
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+        uint32_t width = 4096;
+        uint32_t height = 2160;
+        OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+        OH_Drawing_CanvasBind(canvas, bitmap);
+        OH_Drawing_BitmapDestroy(bitmap);
+    }
+
+    // step 3
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_0300
  * @tc.name: testCanvasAttachPenDetachPenNormal
  * @tc.desc: test for testCanvasAttachPenDetachPenNormal.
@@ -342,6 +370,41 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDetachPenOnly, TestSize.Level3) {
 }
 
 /*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_0305
+ * @tc.name: testCanvasAttachPenDetachPenBoundary
+ * @tc.desc: test for testCanvasAttachPenDetachPenBounday.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasAttachPenDetachPenBoundary, TestSize.Level0) {
+    // step 1
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    EXPECT_NE(canvas, nullptr);
+
+    // step 2
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    constexpr uint32_t width = 4096;
+    constexpr uint32_t height = 2160;
+    OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+    OH_Drawing_CanvasBind(canvas, bitmap);
+
+    // step 3
+    OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
+    EXPECT_NE(pen, nullptr);
+    OH_Drawing_CanvasAttachPen(canvas, pen);
+
+    // step 4
+    OH_Drawing_CanvasDetachPen(canvas);
+
+    // step 5
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_BitmapDestroy(bitmap);
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_0400
  * @tc.name: testCanvasAttachBrushDetachBrushNormal
  * @tc.desc: test for testCanvasAttachBrushDetachBrushNormal.
@@ -489,6 +552,41 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDetachBrushOnly, TestSize.Level3) {
 
     // step 3
     OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_0405
+ * @tc.name: testCanvasAttachBrushDetachBrushBoudary
+ * @tc.desc: test for testCanvasAttachBrushDetachBrushBoudary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasAttachBrushDetachBrushBoudary, TestSize.Level3) {
+    // step 1
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    EXPECT_NE(canvas, nullptr);
+
+    // step 2
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    constexpr uint32_t width = 4096;
+    constexpr uint32_t height = 2160;
+    OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+    OH_Drawing_CanvasBind(canvas, bitmap);
+
+    // step 3
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    EXPECT_NE(brush, nullptr);
+    OH_Drawing_CanvasAttachBrush(canvas, brush);
+
+    // step 4
+    OH_Drawing_CanvasDetachBrush(canvas);
+
+    // step 5
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_BrushDestroy(brush);
+    OH_Drawing_BitmapDestroy(bitmap);
 }
 
 /*
