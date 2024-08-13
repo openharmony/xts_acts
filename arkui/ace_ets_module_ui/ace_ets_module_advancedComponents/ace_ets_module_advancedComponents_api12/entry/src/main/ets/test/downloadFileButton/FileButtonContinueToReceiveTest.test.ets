@@ -1,35 +1,28 @@
 import { describe,  beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
-
+import router from '@ohos.router';
 
 export default function FileButtonContinueToReceiveTest() {
 
-  describe('FileButtonContinueToReceiveTest', function () {
-    beforeEach(async function (done) {
-      console.info('FileButtonContinueToReceiveTest beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/downloadFileButton/FileButtonContinueToReceive',
-      }
-      let result;
+  describe('FileButtonContinueToReceiveTest', () => {
+    beforeEach(async (done: function) => {
       try {
         router.clear();
         let pages = router.getState();
-        if (!('FileButtonContinueToReceive' == pages.name)) {
-          result = await router.push(options);
-          await Utils.sleep(2000);
+        if (!("FileButtonContinueToReceive" == pages.name)) {
+          await router.push({
+            uri: 'MainAbility/pages/downloadFileButton/FileButtonContinueToReceive',
+          });
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
         console.error('push FileButtonContinueToReceive page error: ' + err);
       }
-
-      await Utils.sleep(1000);
       console.info('FileButtonContinueToReceiveTest beforeEach end');
       done();
     });
 
-    afterEach(async function () {
-      await Utils.sleep(1000);
+    afterEach(async () => {
       console.info('FileButtonContinueToReceiveTest after each called');
     })
 
@@ -41,7 +34,7 @@ export default function FileButtonContinueToReceiveTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('FileButtonContinueToReceiveTest_0100', 0, async function (done) {
+    it('FileButtonContinueToReceiveTest_0100', 0, async (done: function) => {
       console.info('[FileButtonContinueToReceiveTest] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

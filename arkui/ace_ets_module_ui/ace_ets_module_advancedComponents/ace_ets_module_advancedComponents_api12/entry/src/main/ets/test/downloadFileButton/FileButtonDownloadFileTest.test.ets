@@ -1,47 +1,41 @@
-import { describe,  beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 
 
 export default function FileButtonDownloadFileTest() {
-
-  describe('FileButtonDownloadFileTest', function () {
-    beforeEach(async function (done) {
+  describe('FileButtonDownloadFileTest', () => {
+    beforeEach(async (done: function) => {
       console.info('FileButtonDownloadFileTest beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/downloadFileButton/FileButtonDownloadFile',
-      }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
-        if (!('FileButtonDownloadFile' == pages.name)) {
-          result = await router.push(options);
-          await Utils.sleep(2000);
+        if (!("FileButtonDownloadFile" == pages.name)) {
+          await router.push({
+            uri: 'MainAbility/pages/downloadFileButton/FileButtonDownloadFile',
+          });
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
         console.error('push FileButtonDownloadFileTest page error: ' + err);
       }
-
-      await Utils.sleep(1000);
       console.info('FileButtonDownloadFileTest beforeEach end');
       done();
     });
 
-    afterEach(async function () {
-      await Utils.sleep(1000);
+    afterEach(async () => {
       console.info('FileButtonDownloadFileTest after each called');
     })
 
     /**
      * @tc.number FileButtonDownloadFileTest
-     * @tc.name   FileButtonDownloadFileTest_0100
-     * @tc.desc   Test FileButtonDownloadFileTest
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name FileButtonDownloadFileTest_0100
+     * @tc.desc Test FileButtonDownloadFileTest
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('FileButtonDownloadFileTest_0100', 0, async function (done) {
+    it('FileButtonDownloadFileTest_0100', 0, async (done: function) => {
       console.info('[FileButtonDownloadFileTest] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
