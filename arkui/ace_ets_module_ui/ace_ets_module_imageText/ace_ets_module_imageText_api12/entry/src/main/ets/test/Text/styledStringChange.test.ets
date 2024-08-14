@@ -103,7 +103,7 @@ export default function styledStringChange() {
       await CommonFunc.sleep(1000);
       await input.click()
       await CommonFunc.sleep(1000);
-      await input.doubleClick();
+      await input.click();
       await CommonFunc.sleep(1000);
 
       let paste = await driver.findComponent(ON.text('粘贴'));
