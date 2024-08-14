@@ -22,12 +22,14 @@ import composeListItemOperateItemRadio from './composeListItem/composeListItemOp
 import composeListItemOperateItemSubIcon from './composeListItem/composeListItemOperateItemSubIcon.test.ets';
 import composeListItemOperateItemSwitch from './composeListItem/composeListItemOperateItemSwitch.test.ets';
 import composeListItemPageTest from './composeListItem/composeListItemPageTest.test.ets';
+import composeTitleBarTest from './composeTitleBar/composeTitleBarTest.test.ets';
 import exceptionPromptTest from './exceptionPrompt/exceptionPromptTest.test.ets';
 import exceptionPromptTestTwo from './exceptionPrompt/exceptionPromptTestTwo.test.ets';
 import filterTest from './filter/filterTest.test.ets';
 import filterTestTwo from './filter/filterTestTwo.test.ets';
 import gridObjectSortComponentTest from './gridObjectSortComponent/gridObjectSortComponentTest.test.ets';
 import progressButtonTest from './progressButton/progressButtonTest.test.ets';
+import splitLayoutTest from './splitLayout/splitLayoutTest.test.ets';
 import selectTitleBarTest from './selectTitleBar/selectTitleBarTest.test.ets';
 import swipeRefresherPageTest from './swipeRefresher/swipeRefresherPageTest.test.ets';
 import tabTitleBarPageTest from './tabTitleBar/tabTitleBarPageTest.test.ets';
@@ -65,6 +67,7 @@ export default function testsuite() {
   counterDirectionTest();
   popupDirectionTest();
   segmentButtonDirectionTest();
+  composeTitleBarTest();
   composeListItemIconType();
   composeListItemOperateItemArrow();
   composeListItemOperateItemButton();
@@ -80,6 +83,7 @@ export default function testsuite() {
   filterTestTwo();
   gridObjectSortComponentTest();
   progressButtonTest();
+  splitLayoutTest();
   selectTitleBarTest();
   swipeRefresherPageTest();
   tabTitleBarPageTest();
