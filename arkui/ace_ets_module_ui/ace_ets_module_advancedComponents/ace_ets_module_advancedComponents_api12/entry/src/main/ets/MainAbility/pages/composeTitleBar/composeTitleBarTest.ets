@@ -53,20 +53,20 @@ struct composeTitleBarTest {
       Column() {
         Divider().height(2).color(0xCCCCCC)
         ComposeTitleBar({
-          title: '标题A',
-          subtitle: '副标题A',
+          title: 'titleA',
+          subtitle: 'subtitleA',
           menuItems: this.menuItems.slice(0, 1),
         })
         Divider().height(2).color(0xCCCCCC)
         ComposeTitleBar({
-          title: '标题B',
-          subtitle: '副标题B',
+          title: 'titleB',
+          subtitle: 'subtitleB',
           menuItems: this.menuItems.slice(0, 2),
         })
         Divider().height(2).color(0xCCCCCC)
         ComposeTitleBar({
-          title: '标题C',
-          subtitle: '副标题C',
+          title: 'titleC',
+          subtitle: 'subtitleC',
           menuItems: this.menuItems,
         })
         Divider().height(2).color(0xCCCCCC)
@@ -74,8 +74,8 @@ struct composeTitleBarTest {
           menuItems: [{ isEnabled: true, value: $r('app.media.ic_public_save'),
             action: () => promptAction.showToast({ message: "show toast index 1" })
           }],
-          title: '标题D',
-          subtitle: '副标题D',
+          title: 'titleD',
+          subtitle: 'subtitleD',
           item: { isEnabled: true, value: $r('app.media.icon') }
         })
         Divider().height(2).color(0xCCCCCC)

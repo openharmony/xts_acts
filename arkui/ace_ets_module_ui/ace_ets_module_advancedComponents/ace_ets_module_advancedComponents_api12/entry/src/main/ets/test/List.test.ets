@@ -29,7 +29,7 @@ import filterTest from './filter/filterTest.test.ets';
 import filterTestTwo from './filter/filterTestTwo.test.ets';
 import gridObjectSortComponentTest from './gridObjectSortComponent/gridObjectSortComponentTest.test.ets';
 import progressButtonTest from './progressButton/progressButtonTest.test.ets';
-import splitLayoutTest from './splitLayout/splitLayoutTest/splitLayoutTest.test.ets';
+import splitLayoutTest from './splitLayout/splitLayoutTest.test.ets';
 import selectTitleBarTest from './selectTitleBar/selectTitleBarTest.test.ets';
 import swipeRefresherPageTest from './swipeRefresher/swipeRefresherPageTest.test.ets';
 import tabTitleBarPageTest from './tabTitleBar/tabTitleBarPageTest.test.ets';

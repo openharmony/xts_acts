@@ -67,15 +67,15 @@ export default function composeTitleBarTest() {
       await driver.delayMs(2000);
 
     //查询ComposeTitleBar是否存在 以下信息的文本文字
-      let  ComposeTitleBarItem1 = await driver.findComponent(ON.text('标题A'));
-      let  ComposeTitleBarItem2 = await driver.findComponent(ON.text('副标题A'));
-      let  ComposeTitleBarItem3 = await driver.findComponent(ON.text('标题B'));
-      let  ComposeTitleBarItem4 = await driver.findComponent(ON.text('副标题B'));
+      let  ComposeTitleBarItem1 = await driver.findComponent(ON.text('titleA'));
+      let  ComposeTitleBarItem2 = await driver.findComponent(ON.text('subtitleA'));
+      let  ComposeTitleBarItem3 = await driver.findComponent(ON.text('titleB'));
+      let  ComposeTitleBarItem4 = await driver.findComponent(ON.text('subtitleB'));
 
-      expect(ComposeTitleBar1!== null).assertTrue();
-      expect(ComposeTitleBar2!== null).assertTrue();
-      expect(ComposeTitleBar3!== null).assertTrue();
-      expect(ComposeTitleBar4!== null).assertTrue();
+      expect(ComposeTitleBarItem1!== null).assertTrue();
+      expect(ComposeTitleBarItem2!== null).assertTrue();
+      expect(ComposeTitleBarItem3!== null).assertTrue();
+      expect(ComposeTitleBarItem4!== null).assertTrue();
       console.info('[testComposeTitleBar_0100] END');
       done();
     });
@@ -93,16 +93,16 @@ export default function composeTitleBarTest() {
       let driver = await Driver.create();
       await driver.delayMs(2000);
 
-      let  ComposeTitleBarItem5 = await driver.findComponent(ON.text('标题C'));
-      let  ComposeTitleBarItem6 = await driver.findComponent(ON.text('副标题C'));
-      let  ComposeTitleBarItem7 = await driver.findComponent(ON.text('标题D'));
-      let  ComposeTitleBarItem8 = await driver.findComponent(ON.text('副标题D'));
+      let  ComposeTitleBarItem5 = await driver.findComponent(ON.text('titleC'));
+      let  ComposeTitleBarItem6 = await driver.findComponent(ON.text('subtitleC'));
+      let  ComposeTitleBarItem7 = await driver.findComponent(ON.text('titleD'));
+      let  ComposeTitleBarItem8 = await driver.findComponent(ON.text('subtitleD'));
 
-      expect(ComposeTitleBar5!== null).assertTrue();
-      expect(ComposeTitleBar6!== null).assertTrue();
-      expect(ComposeTitleBar7!== null).assertTrue();
-      expect(ComposeTitleBar8!== null).assertTrue();
-      console.info('[testComposeTitleBar_0100] END');
+      expect(ComposeTitleBarItem5!== null).assertTrue();
+      expect(ComposeTitleBarItem6!== null).assertTrue();
+      expect(ComposeTitleBarItem7!== null).assertTrue();
+      expect(ComposeTitleBarItem8!== null).assertTrue();
+      console.info('[testComposeTitleBar_0200] END');
       done();
     });
   })
