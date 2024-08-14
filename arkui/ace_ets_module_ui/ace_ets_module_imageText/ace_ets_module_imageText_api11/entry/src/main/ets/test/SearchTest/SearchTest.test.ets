@@ -149,6 +149,7 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_CaretStyle_0100]: " + JSON.stringify(obj.$attrs.caretStyle));
       console.info("[ArkUI_Stage_Search_CaretStyle_0100]: " + JSON.stringify(obj.$attrs.caretStyle.width));
       expect(obj.$attrs.caretStyle.width).assertEqual("2.00vp");
+      expect(obj.$attrs.caretStyle.color).assertEqual("#FF007DFF");
       console.info("[ArkUI_Stage_Search_CaretStyle_0100] end");
       done();
     });
@@ -844,6 +845,189 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_CaretStyle_2000]: " + JSON.stringify(obj.$attrs.caretStyle.color));
       expect(obj.$attrs.caretStyle.color).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Search_CaretStyle_2000] end");
+      done();
+    });
+
+    /**
+     * @tc.number ArkUI_Stage_Search_CaretStyle_2100
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of caretStyle.color as rgb(0, 0, 255)
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2100', 0, async (done: Function) => {
+      console.info("[ArkUI_Stage_Search_CaretStyle_2100] start");
+      let newJson = getInspectorByKey('searchTestString');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2100]: " + JSON.stringify(newJson));
+
+      let caretColorString = 'rgb(0, 0, 255)';
+      try {
+        let eventData: events_emitter.EventData = {
+          data: {
+            "caretColorString": caretColorString
+          }
+        }
+        let innerEvent: events_emitter.InnerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Search_CaretStyle_2100] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Search_CaretStyle_2100] change component data error: " + err.message);
+      }
+      await CommonFunc.sleep(2000);
+
+      let strJson = getInspectorByKey('searchTestString');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2100]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2100]: " + JSON.stringify(obj.$attrs.caretStyle));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2100]: " + JSON.stringify(obj.$attrs.caretStyle.color));
+      expect(obj.$attrs.caretStyle.color).assertEqual("#FF0000FF");
+      console.info("[ArkUI_Stage_Search_CaretStyle_2100] end");
+      done();
+    });
+
+    /**
+     * @tc.number ArkUI_Stage_Search_CaretStyle_2200
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of caretStyle.color as rgba(0, 255, 0, 0)
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2200', 0, async (done: Function) => {
+      console.info("[ArkUI_Stage_Search_CaretStyle_2200] start");
+      let newJson = getInspectorByKey('searchTestString');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2200]: " + JSON.stringify(newJson));
+
+      let caretColorString = 'rgba(0, 255, 0, 0)';
+      try {
+        let eventData: events_emitter.EventData = {
+          data: {
+            "caretColorString": caretColorString
+          }
+        }
+        let innerEvent: events_emitter.InnerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Search_CaretStyle_2200] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Search_CaretStyle_2200] change component data error: " + err.message);
+      }
+      await CommonFunc.sleep(2000);
+
+      let strJson = getInspectorByKey('searchTestString');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2200]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2200]: " + JSON.stringify(obj.$attrs.caretStyle));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2200]: " + JSON.stringify(obj.$attrs.caretStyle.color));
+      expect(obj.$attrs.caretStyle.color).assertEqual("#0000FF00");
+      console.info("[ArkUI_Stage_Search_CaretStyle_2200] end");
+      done();
+    });
+
+    /*
+     *tc.number ArkUI_Stage_Search_CaretStyle_2300
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of caretStyle.color as $r('app.color.Caretcolor')
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2300', 0, async (done: Function) => {
+      console.info('ArkUI_Stage_Search_CaretStyle_2300 START');
+      let strJson = getInspectorByKey('searchTestDefaultapp');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2300]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2300]: " + JSON.stringify(obj.$attrs.caretStyle));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2300]: " + JSON.stringify(obj.$attrs.caretStyle.color));
+      expect(obj.$attrs.caretStyle.color).assertEqual("#FFFF0000");
+      console.info("[ArkUI_Stage_Search_CaretStyle_2300] end");
+      done();
+    });
+
+    /*
+     *tc.number ArkUI_Stage_Search_CaretStyle_2400
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of caretStyle.color as $r('app.float.Caretwidth')
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2400', 0, async (done: Function) => {
+      console.info('ArkUI_Stage_Search_CaretStyle_2400 START');
+      let strJson = getInspectorByKey('searchTestDefaultapp');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2400]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2400]: " + JSON.stringify(obj.$attrs.caretStyle));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2400]: " + JSON.stringify(obj.$attrs.caretStyle.width));
+      expect(obj.$attrs.caretStyle.width).assertEqual("10.00vp");
+      console.info("[ArkUI_Stage_Search_CaretStyle_2400] end");
+      done();
+    });
+
+    /*
+     *tc.number ArkUI_Stage_Search_CaretStyle_2500
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of caretStyle.color as $r('app.string.Caretwidth001')
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2500', 0, async (done: Function) => {
+      console.info('ArkUI_Stage_Search_CaretStyle_2500 START');
+      let strJson = getInspectorByKey('searchTestDefaultapp001');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2500]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2500]: " + JSON.stringify(obj.$attrs.caretStyle));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2500]: " + JSON.stringify(obj.$attrs.caretStyle.width));
+      expect(obj.$attrs.caretStyle.width).assertEqual("5.00vp");
+      console.info("[ArkUI_Stage_Search_CaretStyle_2500] end");
+      done();
+    });
+
+    /*
+     *tc.number ArkUI_Stage_Search_CaretStyle_2600
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of caretStyle.color as $r('app.integer.Caretwidth')
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2600', 0, async (done: Function) => {
+      console.info('ArkUI_Stage_Search_CaretStyle_2600 START');
+      let strJson = getInspectorByKey('searchTestDefaultapp002');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2600]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2600]: " + JSON.stringify(obj.$attrs.caretStyle));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2600]: " + JSON.stringify(obj.$attrs.caretStyle.width));
+      expect(obj.$attrs.caretStyle.width).assertEqual("10.00vp");
+      console.info("[ArkUI_Stage_Search_CaretStyle_2600] end");
+      done();
+    });
+
+    /*
+     *tc.number ArkUI_Stage_Search_CaretStyle_2700
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of fontcolor as 0xff0000, assert caretStyle.caretColor
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2700', 0, async (done: Function) => {
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700] start");
+      let newJson = getInspectorByKey('searchTestfontcaretcolor');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700]: " + JSON.stringify(newJson));
+
+      let textColorNumber = 0xff0000;
+      try {
+        let eventData: events_emitter.EventData = {
+          data: {
+            "textColorNumber": textColorNumber
+          }
+        }
+        let innerEvent: events_emitter.InnerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Search_CaretStyle_2700] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Search_CaretStyle_2700] change component data error: " + err.message);
+      }
+      await CommonFunc.sleep(2000);
+
+      let strJson = getInspectorByKey('searchTestfontcaretcolor');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700]: " + JSON.stringify(obj.$attrs.fontColor));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700]: " + JSON.stringify(obj.$attrs.caretStyle.color));
+      expect(obj.$attrs.fontColor).assertEqual("#FFFF0000");
+      expect(obj.$attrs.caretStyle.color).assertEqual("#FF007DFF");
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700] end");
       done();
     });
 

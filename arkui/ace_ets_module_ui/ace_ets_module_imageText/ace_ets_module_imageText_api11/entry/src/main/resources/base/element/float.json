@@ -15,6 +15,10 @@
     {
       "name": "textShadowOffset",
       "value": "5.0"
+    },
+    {
+      "name": "Caretwidth",
+      "value": "10.0"
     }
   ]
 }
