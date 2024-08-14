@@ -3089,7 +3089,6 @@ static napi_value testSecondOperations(napi_env env1, napi_callback_info info) {
     OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
     uint16_t num = 9229;
     OH_JSVM_OpenInspector(env, "localhost", num);
-    OH_JSVM_WaitForDebugger(env, false);
     JSVM_EnvScope envScope;
     OH_JSVM_OpenEnvScope(env, &envScope);
     JSVM_HandleScope handlescope;
