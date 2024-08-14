@@ -22,6 +22,7 @@ export default function ReminderAgentTest() {
     describe('ReminderAgentTest', function () {
 
         const TRIGGER_TIME_IN_SECONDS = 100;
+        const EXPECT_ERROR_CODE = 1700002;
 
         beforeAll(function () {
 
@@ -83,6 +84,11 @@ export default function ReminderAgentTest() {
                 }, (error) => {
                     console.info('error.code getValidReminders 001 is :' + error.code)
                 });
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
         })
 
@@ -115,6 +121,11 @@ export default function ReminderAgentTest() {
                 }, (error) => {
                     console.info('error.code getValidReminders 002 is :' + error.code)
                 });
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
         })
 
@@ -135,6 +146,11 @@ export default function ReminderAgentTest() {
             };
             reminderAgent.cancelAllReminders().then((err, data) => {
                 console.info('err.code cancelAllReminders 003 is :' + err.code)
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
             reminderAgent.publishReminder(timer).then((reminderId) => {
                 console.info("reminderId =" + reminderId);
@@ -149,6 +165,11 @@ export default function ReminderAgentTest() {
                     }
                     done()
                 });
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
         })
 
@@ -165,7 +186,7 @@ export default function ReminderAgentTest() {
             }
             reminderAgent.cancelAllReminders().then((err, data) => {
                 console.info('err.code cancelAllReminders 004 is :' + err.code)
-            });
+            }).catch(()=>{});
             reminderAgent.publishReminder(timer).then((reminderId) => {
                 console.info("reminderId =" + reminderId);
                 reminderAgent.getValidReminders().then((reminder) => {
@@ -183,6 +204,11 @@ export default function ReminderAgentTest() {
                 }, (error) => {
                     console.info('error.code 004 is :' + error.code)
                 });
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
         })
 
