@@ -18,6 +18,7 @@ import image from '@ohos.multimedia.image';
 import {BusinessError} from '@ohos.base';
 import hilog from '@ohos.hilog';
 import WantAgent, { WantAgent as _WantAgent} from '@ohos.app.ability.wantAgent';
+import ohosWantAgent from '@ohos.wantAgent'
 import Notification from '@ohos.notification';
 import Want from '@ohos.app.ability.Want';
 import base from '@ohos.base';
@@ -1407,7 +1408,7 @@ export default function ActsNotificationSystemLiveViewTest() {
               }
             } as Want
           ],
-          operationType: WantAgent.OperationType.START_ABILITIES,
+          operationType: ohosWantAgent.OperationType.START_ABILITIES,
           requestCode: 0,
           wantAgentFlags:[WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
           actionType : WantAgent.OperationType.START_ABILITY,
@@ -1520,7 +1521,7 @@ export default function ActsNotificationSystemLiveViewTest() {
               }
             } as Want
           ],
-          operationType: WantAgent.OperationType.START_ABILITIES,
+          operationType: ohosWantAgent.OperationType.START_ABILITIES,
           requestCode: 0,
           wantAgentFlags:[WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
           actionType : WantAgent.OperationType.START_ABILITY,
@@ -1643,7 +1644,7 @@ export default function ActsNotificationSystemLiveViewTest() {
               }
             } as Want
           ],
-          operationType: WantAgent.OperationType.START_ABILITIES,
+          operationType: ohosWantAgent.OperationType.START_ABILITIES,
           requestCode: 0,
           wantAgentFlags:[WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
           actionType : WantAgent.OperationType.START_ABILITY,

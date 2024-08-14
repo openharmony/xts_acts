@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import wantAgent from '@ohos.app.ability.wantAgent'
+import ohosWantAgent from '@ohos.wantAgent'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 export default function ActsNotificationWantAgentNewTest() {
@@ -46,7 +47,7 @@ export default function ActsNotificationWantAgentNewTest() {
           }
         }
       ],
-      operationType: wantAgent.OperationType,
+      operationType: ohosWantAgent.OperationType,
       requestCode: 0,
       wantAgentFlags: [wantAgent.WantAgentFlags],
       extraInfo: {
@@ -68,7 +69,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_3600', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3600 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.UNKNOWN_TYPE
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.UNKNOWN_TYPE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.ONE_TIME_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -92,7 +93,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_3650', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3650 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.NO_BUILD_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -116,7 +117,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_3700', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3700 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITIES
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITIES
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.CANCEL_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -140,7 +141,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_3750', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3750 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_SERVICE
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_SERVICE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -164,7 +165,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_3800', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3800 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.SEND_COMMON_EVENT
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.SEND_COMMON_EVENT
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.CONSTANT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -188,7 +189,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_3850', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3850 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.UNKNOWN_TYPE
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.UNKNOWN_TYPE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_ELEMENT]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -212,7 +213,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_3900', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3900 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_ACTION]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -236,7 +237,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_3950', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3950 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITIES
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITIES
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_URI]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -260,7 +261,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4000', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4000 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_SERVICE
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_SERVICE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_ENTITIES]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -284,7 +285,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4050', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4050 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.SEND_COMMON_EVENT
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.SEND_COMMON_EVENT
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_BUNDLE]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -308,7 +309,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4100', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4100 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.UNKNOWN_TYPE
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.UNKNOWN_TYPE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.ONE_TIME_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -330,7 +331,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4150', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4150 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.NO_BUILD_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -353,7 +354,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4200', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4200 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITIES
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITIES
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.CANCEL_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -375,7 +376,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4250', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4250 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_SERVICE
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_SERVICE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -397,7 +398,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4300', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4300 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.SEND_COMMON_EVENT
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.SEND_COMMON_EVENT
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.CONSTANT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -419,7 +420,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4350', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4350 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.UNKNOWN_TYPE
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.UNKNOWN_TYPE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_ELEMENT]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -441,7 +442,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4400', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4400 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_ACTION]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -463,7 +464,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4450', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4450 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITIES
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITIES
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_URI]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -485,7 +486,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4500', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4500 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_SERVICE
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_SERVICE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_ENTITIES]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -507,7 +508,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4550', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4550 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.SEND_COMMON_EVENT
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.SEND_COMMON_EVENT
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_BUNDLE]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -529,7 +530,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4600', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4600 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -562,7 +563,7 @@ export default function ActsNotificationWantAgentNewTest() {
      */
     it('Sub_Notification_Ans_WantAgent_Create_4650', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4650 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -591,7 +592,7 @@ export default function ActsNotificationWantAgentNewTest() {
       */
     it('Sub_Notification_Ans_WantAgent_Create_4700', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4700 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -624,7 +625,7 @@ export default function ActsNotificationWantAgentNewTest() {
       */
     it('Sub_Notification_Ans_WantAgent_Create_4750', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4750 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -655,7 +656,7 @@ export default function ActsNotificationWantAgentNewTest() {
       */
     it('Sub_Notification_Ans_WantAgent_Create_4800', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4800 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -688,7 +689,7 @@ export default function ActsNotificationWantAgentNewTest() {
       */
     it('Sub_Notification_Ans_WantAgent_Create_4850', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4850 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -717,7 +718,7 @@ export default function ActsNotificationWantAgentNewTest() {
       */
     it('Sub_Notification_Ans_WantAgent_Create_4900', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4900 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -751,7 +752,7 @@ export default function ActsNotificationWantAgentNewTest() {
       */
     it('Sub_Notification_Ans_WantAgent_Create_4950', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4950 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -783,7 +784,7 @@ export default function ActsNotificationWantAgentNewTest() {
       */
     it('Sub_Notification_Ans_WantAgent_Create_5000', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_5000 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -816,7 +817,7 @@ export default function ActsNotificationWantAgentNewTest() {
       */
     it('Sub_Notification_Ans_WantAgent_Create_5050', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_5050 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
@@ -847,7 +848,7 @@ export default function ActsNotificationWantAgentNewTest() {
       */
     it('Sub_Notification_Ans_WantAgent_Create_5100', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_5100 START`)
-      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.operationType = ohosWantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
@@ -937,7 +938,7 @@ export default function ActsNotificationWantAgentNewTest() {
             }
           }
         ],
-        operationType: wantAgent.OperationType.START_ABILITY,
+        operationType: ohosWantAgent.OperationType.START_ABILITY,
         requestCode: 0,
         wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
         extraInfos: {
@@ -1031,7 +1032,7 @@ export default function ActsNotificationWantAgentNewTest() {
             }
           }
         ],
-        operationType: wantAgent.OperationType.START_ABILITY,
+        operationType: ohosWantAgent.OperationType.START_ABILITY,
         requestCode: 0,
         wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
         extraInfo: {
