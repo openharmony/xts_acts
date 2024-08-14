@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 class MyButtonStyle implements ContentModifier<ButtonConfiguration> {
   x: number = 0
   y: number = 0
@@ -30,9 +30,9 @@ class MyButtonStyle implements ContentModifier<ButtonConfiguration> {
 }
 
 @Builder function buildButton1(config: ButtonConfiguration) {
-  Column({space:30}) {
+  Column() {
     Text(config.label).id('ButtonApi2_text1')
-    Circle({ width: 50, height: 50 })
+    Circle({ width: 150, height: 150 })
       .fill(config.pressed ? (config.contentModifier as MyButtonStyle).selectedColor : Color.Black)
       .gesture(
         TapGesture({count:1}).onAction((event: GestureEvent)=>{
