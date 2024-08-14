@@ -56,7 +56,7 @@ export default function routerStandardJsunit() {
         }
         let callback1 = (eventData: events_emitter.EventData) => {
           console.info("testrouterStandard_0011 get event data is: " + JSON.stringify(eventData));
-          expect(eventData.data.ArrayData).assertEqual("45");
+          expect(eventData.data?.ArrayData).assertEqual("45");
 
         }
         events_emitter.on(standardEvent, callback1);
@@ -81,7 +81,7 @@ export default function routerStandardJsunit() {
         }
         let callback2 = (eventData: events_emitter.EventData) => {
           console.info("testrouterSingle_0001 get event data is: " + JSON.stringify(eventData));
-          expect(eventData.data.ArrayData).assertEqual("46");
+          expect(eventData.data?.ArrayData).assertEqual("46");
         }
         events_emitter.on(singleEvent, callback2);
         console.info("testrouterSingle_0001 click result1 is: " + JSON.stringify(sendEventByKey('SingleText', 10, "")));

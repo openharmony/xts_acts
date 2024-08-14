@@ -124,7 +124,7 @@ export default function stageRouterTest() {
         }, router.RouterMode.Standard)
           .then(() => {
           })
-          .catch(err => {
+          .catch((err: BusinessError) => {
             console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         expect(typeof (result)).assertEqual('object');
@@ -245,7 +245,7 @@ export default function stageRouterTest() {
           params: {
             data1: 'message'
           }
-        }, router.RouterMode.Standard, (err) => {
+        }, router.RouterMode.Standard, (err: BusinessError) => {
           if (err) {
             console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
             return;
@@ -444,7 +444,7 @@ export default function stageRouterTest() {
           .then(() => {
           })
           .catch((err: BusinessError) => {
-            console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+            console.error(`replaceUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
           })
         expect(typeof (result)).assertEqual('object');
         console.info("push button page success " + JSON.stringify(result));

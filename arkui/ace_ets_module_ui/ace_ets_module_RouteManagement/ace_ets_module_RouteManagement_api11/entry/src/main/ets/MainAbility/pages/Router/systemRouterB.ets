@@ -51,7 +51,7 @@ struct SystemRouterB {
       console.info("[SystemRouterB] start to emit params");
       events_emitter.emit(paramsEvent, paramsData);
     } catch (err) {
-      console.info("[SystemRouterB] emit params err: " + JSON.stringify(err.message));
+      console.info("[SystemRouterB] emit params err: " + JSON.stringify((err as Error).message));
     }
   }
 }
