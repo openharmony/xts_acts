@@ -913,7 +913,6 @@ export default function drawingTsCanvasPart4Test() {
         }, {
           x: 200, y: -300
         }]);
-        canvas.drawPoints([]);
         console.info(msg + 'test successes');
       } catch (e) {
         console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -1034,6 +1033,14 @@ export default function drawingTsCanvasPart4Test() {
         }, {
           x: 200, y: 300
         }], 10);
+        console.info(msg + `test error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        canvas.drawPoints([]);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {

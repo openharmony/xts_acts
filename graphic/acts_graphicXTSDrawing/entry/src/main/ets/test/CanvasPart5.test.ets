@@ -1139,20 +1139,20 @@ export default function drawingTsCanvasPart5Test() {
 
       try {
         let rect: common2D.Rect = canvas.getLocalClipBounds();
-        expect(rect.left).assertEqual(0)
-        expect(rect.right).assertEqual(100)
-        expect(rect.top).assertEqual(0)
-        expect(rect.bottom).assertEqual(100)
+        expect(rect.left).assertEqual(-1)
+        expect(rect.right).assertEqual(101)
+        expect(rect.top).assertEqual(-1)
+        expect(rect.bottom).assertEqual(101)
 
         canvas.clipRect({
           left: 10, right: 50, top: 30, bottom: 90
         }, drawing.ClipOp.DIFFERENCE, true);
         rect = canvas.getLocalClipBounds();
 
-        expect(rect.left).assertEqual(10)
-        expect(rect.right).assertEqual(50)
-        expect(rect.top).assertEqual(30)
-        expect(rect.bottom).assertEqual(90)
+        expect(rect.left).assertEqual(-1)
+        expect(rect.right).assertEqual(101)
+        expect(rect.top).assertEqual(-1)
+        expect(rect.bottom).assertEqual(101)
         console.info(msg + 'test successes');
       } catch (e) {
         console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -1176,6 +1176,10 @@ export default function drawingTsCanvasPart5Test() {
       try {
         for (let i = 0; i < 20; i += 1) {
           let rect: common2D.Rect = canvas.getLocalClipBounds();
+          expect(rect.left).assertEqual(-1)
+          expect(rect.right).assertEqual(101)
+          expect(rect.top).assertEqual(-1)
+          expect(rect.bottom).assertEqual(101)
         }
         console.info(msg + 'test successes');
       } catch (e) {
