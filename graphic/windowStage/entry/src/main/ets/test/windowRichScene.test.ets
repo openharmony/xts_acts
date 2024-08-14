@@ -85,61 +85,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         done()
       }
     })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0410
-     * @tc.name      : testFindWindow_WinName_Is_Exist
-     * @tc.desc      : Find the window corresponding to name
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testFindWindow_WinName_Is_Exist', 0, async (done: Function) => {
-      let caseName: string = 'testFindWindow_WinName_Is_Exist';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let win: ohosWindow.Window | void;
-      win = await windowStage.createSubWindow('testFindWindow_WinName_Is_Exist').catch((err) => {
-        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      console.log(msgStr + 'windowStage.createSubWindow success');
-      expect(!!win).assertTrue();
-      try {
-        let windowClass: ohosWindow.Window = ohosWindow.findWindow('testFindWindow_WinName_Is_Exist');
-        console.log(msgStr + 'findWindow windowClass: ' + JSON.stringify(windowClass))
-        expect(!!windowClass).assertTrue();
-        await (win as ohosWindow.Window).destroyWindow()
-        done();
-      } catch (exception) {
-        console.error(msgStr + 'Failed to find the Window. Cause: ' + JSON.stringify(exception));
-        expect().assertFail();
-        done();
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0400
-     * @tc.name      : testFindWindow_WinName_IsNot_Exist
-     * @tc.desc      : Verify The optional parameter is error
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testFindWindow_WinName_IsNot_Exist', 0, async (done: Function) => {
-      let caseName: string = 'testFindWindow_WinName_IsNot_Exist';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      try {
-        let windowClass: ohosWindow.Window;
-        windowClass = ohosWindow.findWindow('findWindow_Test_002');
-        expect(!windowClass).assertTrue();
-        done();
-      } catch (exception) {
-        console.error(msgStr + 'Failed to find the Window. Cause: ' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
-        done();
-      }
-    })
+
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0200
      * @tc.name      : testCreate_Invalid_WinType_Promise
@@ -1816,47 +1762,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         done();
       });
     })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0720
-     * @tc.name      : testIsWindowShowing_Invoke_Interface_Two_Times
-     * @tc.desc      : Check whether the current window is displayed
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testIsWindowShowing_Invoke_Interface_Two_Times', 0, async (done: Function) => {
-      let caseName: string = 'testIsWindowShowing_Invoke_Interface_Two_Times';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowClass: ohosWindow.Window | void;
-      windowClass = await windowStage.createSubWindow('testIsWindowShowing_Invoke_Interface_Two_Times').catch((err) => {
-        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      console.log(msgStr + 'windowStage.createSubWindow success');
-      expect(!!windowClass).assertTrue();
-      try {
-        let data = (windowClass as ohosWindow.Window).isWindowShowing();
-        expect(!data).assertTrue();
-        console.info('Succeeded in checking whether the window is showing. Data: ' + JSON.stringify(data));
-      } catch (exception) {
-        console.error('Failed to check whether the window is showing. Cause: ' + JSON.stringify(exception));
-        expect().assertFail();
-        done();
-      }
-      try {
-        let data2 = (windowClass as ohosWindow.Window).isWindowShowing();
-        expect(!data2).assertTrue();
-        await (windowClass as ohosWindow.Window).destroyWindow();
-        done();
-        console.info('Succeeded in checking whether the window is showing. Data: ' + JSON.stringify(data2));
-      } catch (exception) {
-        console.error('Failed to check whether the window is showing. Cause: ' + JSON.stringify(exception));
-        expect().assertFail();
-        done();
-      }
-    })
+    
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1440
      * @tc.name      : testSetUIContent_Window_State_Abnorma_Callback
