@@ -50,7 +50,7 @@ export default function RatingJsunit() {
     it('RatingJsunit_0100', 0, async (done: Function) => {
       console.info('[RatingJsunit_0100] START');
       let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RatingJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.stars).assertEqual('5');
       console.info('[RatingJsunit_0100] END');
@@ -69,7 +69,7 @@ export default function RatingJsunit() {
 
       console.info('[RatingJsunit_0200] START');
       let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RatingJsunit_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.stepSize).assertEqual('0.500000');
       console.info('[RatingJsunit_0200] END');
@@ -87,7 +87,7 @@ export default function RatingJsunit() {
     it('RatingJsunit_0300', 0, async (done: Function) => {
       console.info('[RatingJsunit_0300] START');
       let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RatingJsunit_0300] component obj is: " + JSON.stringify(obj));
       expect(JSON.parse(obj.$attrs.starStyle).backgroundUri).assertEqual("resources/base/media/star_1.png");
       expect(JSON.parse(obj.$attrs.starStyle).foregroundUri).assertEqual("resources/base/media/star_2.png");
@@ -111,7 +111,7 @@ export default function RatingJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RatingJsunit_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.stepSize).assertEqual('0.400000');
       console.info('[RatingJsunit_0400] END');

@@ -52,10 +52,10 @@ export default function rectJsunit() {
     it('testrect_radiusHeight', 0, async (done: Function) => {
       console.info('[testrect_radiusHeight] START');
       let strJson = getInspectorByKey('Rect1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testrect_radiusHeight] obj is : " + JSON.stringify(obj.$attrs));
       let strJson1 = getInspectorByKey('Rect11');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[testrect_radiusHeight] obj1 is : " + JSON.stringify(obj1.$attrs));
       //json返回值与设置值不统一，所以使用与原生返回做对比验证
       expect(obj.$attrs.radiusHeight).assertEqual(obj1.$attrs.radiusHeight);
@@ -74,10 +74,10 @@ export default function rectJsunit() {
     it('testrect_radius', 0, async (done: Function) => {
       console.info('[testrect_radius] START');
       let strJson = getInspectorByKey('Rect2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testrect_radius] obj2 is : " + JSON.stringify(obj.$attrs));
       let strJson1 = getInspectorByKey('Rect22');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[testrect_radius] obj22 is : " + JSON.stringify(obj1.$attrs));
       //json返回值与设置值不统一，所以使用与原生返回做对比验证
       expect(obj.$attrs.radius).assertEqual(obj1.$attrs.radius);
@@ -96,10 +96,10 @@ export default function rectJsunit() {
     it('testrect_radiusWidth', 0, async (done: Function) => {
       console.info('[testrect_radiusWidth] START');
       let strJson = getInspectorByKey('Rect3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testrect_radiusWidth] obj is : " + JSON.stringify(obj.$attrs));
       let strJson1 = getInspectorByKey('Rect33');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[testrect_radiusWidth] obj1 is : " + JSON.stringify(obj1.$attrs));
       //json返回值与设置值不统一，所以使用与原生返回做对比验证
       expect(obj.$attrs.radiusWidth).assertEqual(obj1.$attrs.radiusWidth);
@@ -123,9 +123,9 @@ export default function rectJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew1 = getInspectorByKey('Rect1');
-      let objNew1 = JSON.parse(strJsonNew1);
+      let objNew1: ESObject = JSON.parse(strJsonNew1);
       let strJsonNew3 = getInspectorByKey('Rect44');
-      let objNew3 = JSON.parse(strJsonNew3);
+      let objNew3: ESObject = JSON.parse(strJsonNew3);
       console.info("testrect__001 component objNew1  is: " + JSON.stringify(objNew1.$attrs));
       console.info("testrect__001 component objNew3  is: " + JSON.stringify(objNew3.$attrs));
       expect(objNew1.$attrs.radiusHeight).assertEqual(objNew3.$attrs.radiusHeight);

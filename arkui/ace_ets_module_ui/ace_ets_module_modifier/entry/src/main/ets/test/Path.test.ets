@@ -48,11 +48,11 @@ export default function pathNewTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testPathNe0004', 0, async function (done) {
+    it('testPathNe0004', 0, async (done: Function) => {
       console.info('pathNe testPathNe0004 START');
       let strJson = getInspectorByKey('PathKey1');
       console.info("[testPathNe0004] component fontSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testPathNe0004] commands value :" + obj.$attrs.commands);
       expect(obj.$attrs.commands).assertEqual("M100 0 L0 100 L50 200 L150 200 L200 100 Z");
       console.info('pathNe testPathNe0004 END');
@@ -75,7 +75,7 @@ export default function pathNewTest() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('PathKey1'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("testPathNe0005 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.commands).assertEqual("M100 0 L0 100 L50 200 L150 200 L200 200 Z"); //
 

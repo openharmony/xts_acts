@@ -53,7 +53,7 @@ export default function navDestinationJsunit() {
       console.info('[testNavDestination] START');
       let strJson = getInspectorByKey('NavDestination1');
       console.info("[testNavDestination] strJson is : " + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testNavDestination] obj is : " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.hideTitleBar).assertEqual(undefined);
       console.info('[testNavDestination] END');
@@ -76,7 +76,7 @@ export default function navDestinationJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('NavDestination1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("testNavDestination_01 component  is: " + JSON.stringify(objNew.$attrs));
       //expect(objNew.$attrs.hideTitleBar).assertEqual('false'); 
       expect(objNew.$attrs.hideTitleBar).assertEqual(undefined);

@@ -60,7 +60,7 @@ export default function geometryTransitionJsunit() {
       await Utils.sleep(1000);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("geometryTransitionTest_0100 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.btn1).assertEqual(false);
+        expect(indexEvent.data?.btn1).assertEqual(false);
         done();
       }
       try {

@@ -51,7 +51,7 @@ export default function stackJsunit() {
     it('stackTest_002', 0, async (done: Function) => {
       console.info('stackTest_002 START');
       let strJsonNew = getInspectorByKey('stack');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("stackTest_002 component  is: " + JSON.stringify(objNew.$attrs.alignContent));
       expect(objNew.$attrs.alignContent).assertEqual("Alignment.Center");
       console.info('stackTest_002 END');
@@ -73,7 +73,7 @@ export default function stackJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('stack');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("stackTest_001 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.alignContent).assertEqual("Alignment.Top");
       console.info('stackTest_001 END');

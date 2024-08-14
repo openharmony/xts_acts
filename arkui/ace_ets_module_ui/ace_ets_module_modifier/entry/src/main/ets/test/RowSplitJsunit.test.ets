@@ -49,7 +49,7 @@ export default function rowSplitJsunit() {
      */
     it('rowSplitTest_0001', 0, async (done: Function) => {
       let strJsonNew = getInspectorByKey('rowSplit');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("rowSplitTest_0001 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.resizeable).assertEqual("false");
       console.info('rowSplitTest_0001 END');
@@ -71,7 +71,7 @@ export default function rowSplitJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('rowSplit');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("rowSplitTest_0002 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.resizeable).assertEqual("true");
       console.info('rowSplitTest_0002 END');

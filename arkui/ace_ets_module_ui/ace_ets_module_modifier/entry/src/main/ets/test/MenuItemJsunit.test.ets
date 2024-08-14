@@ -52,7 +52,7 @@ export default function menuItemJsunit() {
     it('menuItemJsunit01', 0, async (done: Function) => {
       console.info('[menuItemJsunit01] START');
       let strJson = getInspectorByKey('menuItem_options1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[menuItemJsunit01] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.contentFont.size).assertEqual("10.00fp");
       console.info('[menuItemJsunit01] END');
@@ -70,7 +70,7 @@ export default function menuItemJsunit() {
     it('menuItemJsunit02', 0, async (done: Function) => {
       console.info('[menuItemJsunit02] START');
       let strJson = getInspectorByKey('menuItem_options1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[menuItemJsunit02] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.contentFontColor).assertEqual("#FF0000FF");
       console.info('[menuItemJsunit02] END');
@@ -88,7 +88,7 @@ export default function menuItemJsunit() {
     it('menuItemJsunit03', 0, async (done: Function) => {
       console.info('[menuItemJsunit03] START');
       let strJson = getInspectorByKey('menuItem_options1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[menuItemJsunit03] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.labelFont?.size).assertEqual("15.00fp");
       console.info('[menuItemJsunit03] END');
@@ -106,7 +106,7 @@ export default function menuItemJsunit() {
     it('menuItemJsunit04', 0, async (done: Function) => {
       console.info('[menuItemJsunit04] START');
       let strJson = getInspectorByKey('menuItem_options1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[menuItemJsunit04] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.labelFontColor).assertEqual("#FFFF0000");
       console.info('[menuItemJsunit04] END');
@@ -142,7 +142,7 @@ export default function menuItemJsunit() {
     it('menuItemJsunit06', 0, async (done: Function) => {
       console.info('[menuItemJsunit06] START');
       let strJson = getInspectorByKey('menuItem_options1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[menuItemJsunit06] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.selectIcon).assertEqual("true");
       console.info('[menuItemJsunit06] END');
@@ -166,7 +166,7 @@ export default function menuItemJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('menuItem_options1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("menuItemJsunit07 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.labelFontColor).assertEqual("#FFFFA500");
       console.info('menuItemJsunit07 END');

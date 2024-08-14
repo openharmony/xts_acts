@@ -352,9 +352,9 @@ export default function common9Jsunit() {
     it('common_border', 0, async (done: Function) => {
       console.info('[common_border] START');
       let strJson = getInspectorByKey('textModifier3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[common_border] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson).$attrs));
-      let border_obj =  JSON.parse(obj.$attrs.border);
+      let border_obj: ESObject =  JSON.parse(obj.$attrs.border);
       console.info("[common_border] border_obj is : " + JSON.stringify(obj.$attrs.border));
       
       expect(border_obj.style.left).assertEqual("BorderStyle.Dashed");
@@ -441,7 +441,7 @@ export default function common9Jsunit() {
       let strJson = getInspectorByKey('rowModifier');
 
       console.info("[common_backgroundImage] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson).$attrs));
-      expect(JSON.parse(strJson).$attrs.backgroundImage).assertEqual("resource:///16777260.png, ImageRepeat.X");
+      expect(JSON.parse(strJson).$attrs.backgroundImage).assertEqual("resource:///16777261.png, ImageRepeat.X");
       console.info('[common_backgroundImage] END');
       done();
     });

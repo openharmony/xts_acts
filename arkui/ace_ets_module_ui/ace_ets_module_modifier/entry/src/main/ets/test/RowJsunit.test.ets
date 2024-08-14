@@ -50,7 +50,7 @@ export default function rowJsunit() {
     it('rowTest_0001', 0, async (done: Function) => {
       console.info('rowTest_0001 START');
       let strJsonNew = getInspectorByKey('row');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("rowTest_0001 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.alignItems).assertEqual('VerticalAlign.Center');
       console.info('rowTest_0001 END');
@@ -68,7 +68,7 @@ export default function rowJsunit() {
     it('rowTest_0002', 0, async (done: Function) => {
       console.info('rowTest_0002 START');
       let strJsonNew = getInspectorByKey('row');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("rowTest_0002 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.justifyContent).assertEqual('FlexAlign.Start');
       console.info('rowTest_0002 END');
@@ -90,7 +90,7 @@ export default function rowJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('row');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("rowTest_0003 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.alignItems).assertEqual('VerticalAlign.Top');
       console.info('rowTest_0003 END');

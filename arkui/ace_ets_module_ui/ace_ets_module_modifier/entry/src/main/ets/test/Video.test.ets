@@ -50,7 +50,7 @@ export default function videoJsunit() {
     it('videoTest_0001', 0, async (done: Function) => {
       console.info('videoTest_0001 START');
       let strJsonNew = getInspectorByKey('video');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("videoTest_0001 component  is: " + JSON.stringify(objNew.$attrs));
       // expect(objNew.$attrs.muted).assertEqual(false);
       expect(objNew.$attrs.muted).assertEqual(undefined);
@@ -69,7 +69,7 @@ export default function videoJsunit() {
     it('videoTest_0002', 0, async (done: Function) => {
       console.info('videoTest_0002 START');
       let strJsonNew = getInspectorByKey('video');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("videoTest_0002 component  is: " + JSON.stringify(objNew.$attrs));
       // expect(objNew.$attrs.autoPlay).assertEqual(false);
       expect(objNew.$attrs.autoPlay).assertEqual(undefined);
@@ -88,7 +88,7 @@ export default function videoJsunit() {
     it('videoTest_0003', 0, async (done: Function) => {
       console.info('videoTest_0003 START');
       let strJsonNew = getInspectorByKey('video');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("videoTest_0003 component  is: " + JSON.stringify(objNew.$attrs));
       // expect(objNew.$attrs.controls).assertEqual(true);
       expect(objNew.$attrs.controls).assertEqual(undefined);
@@ -107,7 +107,7 @@ export default function videoJsunit() {
     it('videoTest_0004', 0, async (done: Function) => {
       console.info('videoTest_0004 START');
       let strJsonNew = getInspectorByKey('video');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("videoTest_0004 component  is: " + JSON.stringify(objNew.$attrs));
       // expect(objNew.$attrs.loop).assertEqual(false);
       expect(objNew.$attrs.loop).assertEqual(undefined);
@@ -126,7 +126,7 @@ export default function videoJsunit() {
     it('videoTest_0005', 0, async (done: Function) => {
       console.info('videoTest_0005 START');
       let strJsonNew = getInspectorByKey('video');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("videoTest_0005 component  is: " + JSON.stringify(objNew.$attrs));
       // expect(objNew.$attrs.objectFit).assertEqual(ImageFit.Cover);
       expect(objNew.$attrs.objectFit).assertEqual(undefined);
@@ -149,7 +149,7 @@ export default function videoJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('video');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("videoTest_0006 component  is: " + JSON.stringify(objNew.$attrs));
       // expect(objNew.$attrs.muted).assertEqual(true);
       expect(objNew.$attrs.muted).assertEqual(undefined);
