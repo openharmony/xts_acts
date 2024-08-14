@@ -14,6 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
+import base from '@ohos.base';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import backgroundTaskManager from '@ohos.resourceschedule.backgroundTaskManager';
@@ -32,46 +33,46 @@ async function requestSuspendDelay() {
     'requestSuspendDelay actualDelayTime is ' + delayInfo.actualDelayTime);
 }
 
-function sleep(time) {
-  return new Promise((resolve, reject) => {
+function sleep(time:number) {
+  return new Promise((resolve: (value: string) => void) => {
     setTimeout(() => {
-      resolve(null);
+      resolve("ok");
     }, time)
   });
 }
 
 export default function actsDebuggableAaProcessTest() {
 
-  describe('ActsDebuggableAaProcessTest', function () {
-    beforeAll(async function () {
+  describe('ActsDebuggableAaProcessTest', ()=> {
+    beforeAll(async ()=> {
       await abilityDelegator.executeShellCommand('aa start -b com.example.timeout -a EntryAbility').then(data => {
         hilog.info(0x0000, 'debuggabletest', '%{public}s', 'beforeAll aa start  data is: ' + data.stdResult);
-      }).catch(err => {
+      }).catch((err:base.BusinessError) => {
         hilog.info(0x0000, 'debuggabletest', '%{public}s', 'beforeAll err is: ' + JSON.stringify(err));
       });
       await sleep(2000);
       await requestSuspendDelay();
     })
 
-    beforeEach(async function () {
+    beforeEach(async ()=> {
       await abilityDelegator.executeShellCommand('hilog -r').then(data => {
         hilog.info(0x0000, 'debuggabletest', '%{public}s',
           'beforeEach ActsDebuggableAaProcessTest hilog -r data is: ' + JSON.stringify(data));
-      }).catch(err => {
+      }).catch((err:base.BusinessError) => {
         hilog.info(0x0000, 'debuggabletest', '%{public}s',
           'beforeEach ActsDebuggableAaProcessTest hilog -r err is: ' + JSON.stringify(err));
       });
       await sleep(2000);
     })
 
-    afterEach(function () {
+    afterEach(()=> {
     })
 
-    afterAll(async function () {
+    afterAll(async ()=> {
       await abilityDelegator.executeShellCommand('aa force-stop com.example.timeout').then(data => {
         hilog.info(0x0000, 'debuggabletest', '%{public}s',
           'afterAll force-stop data is: ' + JSON.stringify(data));
-      }).catch(err => {
+      }).catch((err:base.BusinessError) => {
         hilog.info(0x0000, 'debuggabletest', '%{public}s',
           'afterAll force-stop err is: ' + JSON.stringify(err));
       });
@@ -84,14 +85,14 @@ export default function actsDebuggableAaProcessTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_AMS_Debuggable_1700', 1, async function (done) {
-      let res = undefined;
+    it('SUB_AA_AMS_Debuggable_1700', 1, async (done:Function) => {
+      let res = '';
       await abilityDelegator.executeShellCommand('aa process -b com.example.timeout -a EntryAbility -m entry -S -p')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s',
             'SUB_AA_AMS_Debuggable_1700 aa process data is: ' + data.stdResult);
           res = data.stdResult;
-        }).catch(err => {
+        }).catch((err:base.BusinessError) => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s',
             'SUB_AA_AMS_Debuggable_1700 aa process err is: ' + JSON.stringify(err));
         });
@@ -106,14 +107,14 @@ export default function actsDebuggableAaProcessTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_AMS_Debuggable_2400',1, async function (done) {
-      let res = undefined;
+    it('SUB_AA_AMS_Debuggable_2400',1, async (done:Function) => {
+      let res = '';
       await abilityDelegator.executeShellCommand('aa process -b com.example.timeout -a EntryAbility -m entry -S -D')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s',
             'SUB_AA_AMS_Debuggable_2400 aa process data is: ' + data.stdResult);
           res = data.stdResult;
-        }).catch(err => {
+        }).catch((err:base.BusinessError) => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s',
             'SUB_AA_AMS_Debuggable_2400 aa process err is: ' + JSON.stringify(err));
         });
@@ -128,13 +129,13 @@ export default function actsDebuggableAaProcessTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_AMS_Debuggable_2500',1, async function (done) {
-      let res = undefined;
+    it('SUB_AA_AMS_Debuggable_2500',1, async (done:Function) => {
+      let res = '';
       await abilityDelegator.executeShellCommand('aa process -h').then(data => {
         hilog.info(0x0000, 'debuggabletest', '%{public}s',
           'SUB_AA_AMS_Debuggable_2500 aa process data is: ' + data.stdResult);
         res = data.stdResult;
-      }).catch(err => {
+      }).catch((err:base.BusinessError) => {
         hilog.info(0x0000, 'debuggabletest', '%{public}s',
           'SUB_AA_AMS_Debuggable_2500 aa process err is: ' + JSON.stringify(err));
       });

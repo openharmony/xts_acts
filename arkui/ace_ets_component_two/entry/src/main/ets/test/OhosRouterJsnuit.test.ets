@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function OhosRouterJsunit() {
-  describe('ohosRouterTest', function () {
-    beforeEach(async function (done) {
+  describe('ohosRouterTest', () => {
+    beforeEach(async (done: Function) => {
       let options = {
         uri: 'MainAbility/pages/ohosRouterA',
       }
@@ -40,12 +40,12 @@ export default function OhosRouterJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("ohosRouter after each called");
     });
 
-    it('ohosRouterTest001', 0, async function (done) {
+    it('ohosRouterTest001', 0, async (done: Function) => {
       console.info('[ohosRouterTest001] START');
       let options = {
         uri: 'pages/ohosRouterA',
@@ -65,7 +65,7 @@ export default function OhosRouterJsunit() {
       done();
     });
 
-    it('ohosRouterTest002', 0, async function (done) {
+    it('ohosRouterTest002', 0, async (done: Function) => {
       console.info('[ohosRouterTest002] START');
       let options = {
         uri: 'pages/ohosRouterA'
@@ -77,11 +77,11 @@ export default function OhosRouterJsunit() {
         console.error("[ohosRouterTest002] push page error " + JSON.stringify(result));
       }
       await Utils.sleep(1500);
-      let callback = (paramsEvent) => {
+      let callback = (paramsEvent: events_emitter.EventData) => {
         console.info("[ohosRouterTest002] get state result is: " + JSON.stringify(paramsEvent));
         expect(paramsEvent.data.params).assertEqual('B Page');
       }
-      let paramsEvent = {
+      let paramsEvent: events_emitter.InnerEvent = {
         eventId: 142,
         priority: events_emitter.EventPriority.LOW
       }
@@ -91,14 +91,14 @@ export default function OhosRouterJsunit() {
         console.info("[ohosRouterTest002] on events_emitter err : " + JSON.stringify(err));
       }
       console.info("[ohosRouterTest002] click push button result is: "
-      + JSON.stringify(sendEventByKey('pushButtonA', 10, "")));
+        + JSON.stringify(sendEventByKey('pushButtonA', 10, "")));
       await Utils.sleep(1000);
       router.back();
       await Utils.sleep(1000);
       done();
     });
 
-    it('ohosRouterTest003', 0, async function (done) {
+    it('ohosRouterTest003', 0, async (done: Function) => {
       console.info('[ohosRouterTest003] START');
       await Utils.sleep(1000);
       router.clear();
@@ -110,7 +110,7 @@ export default function OhosRouterJsunit() {
       done();
     });
 
-    it('ohosRouterTest004', 0, async function (done) {
+    it('ohosRouterTest004', 0, async (done: Function) => {
       console.info('[ohosRouterTest004] START');
       router.clear();
       await Utils.sleep(1000);
@@ -140,7 +140,7 @@ export default function OhosRouterJsunit() {
       done();
     });
 
-    it('ohosRouterTest005', 0, async function(done) {
+    it('ohosRouterTest005', 0, async (done: Function) => {
       console.info('[ohosRouterTest005] START');
       let options = {
         uri: 'pages/ohosRouterA'
@@ -154,11 +154,11 @@ export default function OhosRouterJsunit() {
       await Utils.sleep(1000);
       router.clear();
       await Utils.sleep(1500);
-      let callback = (paramsEvent) => {
+      let callback = (paramsEvent: events_emitter.EventData) => {
         console.info("[ohosRouterTest005] get state result is: " + JSON.stringify(paramsEvent));
         expect(paramsEvent.data.params).assertEqual('B Page');
       }
-      let paramsEvent = {
+      let paramsEvent: events_emitter.InnerEvent = {
         eventId: 142,
         priority: events_emitter.EventPriority.LOW
       }
@@ -168,7 +168,7 @@ export default function OhosRouterJsunit() {
         console.info("[ohosRouterTest005] on events_emitter err : " + JSON.stringify(err));
       }
       console.info("[ohosRouterTest005] click replace button result is: "
-      + JSON.stringify(sendEventByKey('ReplaceButtonA', 10, "")));
+        + JSON.stringify(sendEventByKey('ReplaceButtonA', 10, "")));
       done();
     });
   });

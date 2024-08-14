@@ -14,10 +14,10 @@
  */
 
 import TestRunner from '@ohos.application.testRunner'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 
-var abilityDelegator = undefined
-var abilityDelegatorArguments = undefined
+let abilityDelegator = undefined
+let abilityDelegatorArguments = undefined
 
 function translateParamsToString(parameters) {
     const keySet = new Set([
@@ -53,13 +53,13 @@ export default class OpenHarmonyTestRunner implements TestRunner {
         console.log('OpenHarmonyTestRunner onRun run')
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        var testAbilityName = abilityDelegatorArguments.bundleName + '.MainAbility'
+        let testAbilityName = abilityDelegatorArguments.bundleName + '.MainAbility'
         let lMonitor = {
             abilityName: testAbilityName,
             onAbilityCreate: onAbilityCreateCallback,
         };
         abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
-        var cmd = 'aa start -a' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName
+        let cmd = 'aa start -a' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName
         cmd += ' '+translateParamsToString(abilityDelegatorArguments.parameters)
         console.info('cmd : '+cmd)
         abilityDelegator.executeShellCommand(cmd,

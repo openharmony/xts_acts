@@ -654,6 +654,84 @@ export default function imageEffectTest() {
     });
 
     /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTBUFFERINFOSETTIMESTAMP_0100
+     * @tc.name   : testOHEffectBufferInfoSetTimestamp001
+     * @tc.desc   : Set the image timestamp.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHEffectBufferInfoSetTimestamp001', 0, () => {
+      let result: number = testNapi.OHEffectBufferInfoSetTimestamp(CASE_INDEX_1);
+      expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTBUFFERINFOSETTIMESTAMP_0200
+     * @tc.name   : testOHEffectBufferInfoSetTimestamp002
+     * @tc.desc   : Set the image timestamp.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHEffectBufferInfoSetTimestamp002', 0, () => {
+      let result: number = testNapi.OHEffectBufferInfoSetTimestamp(CASE_INDEX_2);
+      expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTBUFFERINFOSETTIMESTAMP_0300
+     * @tc.name   : testOHEffectBufferInfoSetTimestamp003
+     * @tc.desc   : Set the image timestamp.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHEffectBufferInfoSetTimestamp003', 0, () => {
+      let result: number = testNapi.OHEffectBufferInfoSetTimestamp(CASE_INDEX_3);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTBUFFERINFOGETTIMESTAMP_0100
+     * @tc.name   : testOHEffectBufferInfoGetTimestamp001
+     * @tc.desc   : Obtain image timestamp.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHEffectBufferInfoGetTimestamp001', 0, () => {
+      let result: number = testNapi.OHEffectBufferInfoGetTimestamp(CASE_INDEX_1);
+      expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTBUFFERINFOGETTIMESTAMP_0200
+     * @tc.name   : testOHEffectBufferInfoGetTimestamp002
+     * @tc.desc   : Obtain image timestamp.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHEffectBufferInfoGetTimestamp002', 0, () => {
+      let result: number = testNapi.OHEffectBufferInfoGetTimestamp(CASE_INDEX_2);
+      expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTBUFFERINFOGETTIMESTAMP_0300
+     * @tc.name   : testOHEffectBufferInfoGetTimestamp003
+     * @tc.desc   : Obtain image timestamp.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHEffectBufferInfoGetTimestamp003', 0, () => {
+      let result: number = testNapi.OHEffectBufferInfoGetTimestamp(CASE_INDEX_3);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
      * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTBUFFERINFORELEASE_0100
      * @tc.name   : testOHEffectBufferInfoRelease001
      * @tc.desc   : Destroy the OH-EffectBufferInfo instance.
@@ -1515,6 +1593,45 @@ export default function imageEffectTest() {
     });
 
     /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTADDFILTERBYFILTER_0100
+     * @tc.name   : testOHImageEffectAddFilterByFilter001
+     * @tc.desc   : Add filters.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectAddFilterByFilter001', 0, () => {
+      let result: number = testNapi.OHImageEffectAddFilterByFilter(CASE_INDEX_1);
+      expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTADDFILTERBYFILTER_0200
+     * @tc.name   : testOHImageEffectAddFilterByFilter002
+     * @tc.desc   : Add filters.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectAddFilterByFilter002', 0, () => {
+      let result: number = testNapi.OHImageEffectAddFilterByFilter(CASE_INDEX_2);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTADDFILTERBYFILTER_0300
+     * @tc.name   : testOHImageEffectAddFilterByFilter003
+     * @tc.desc   : Add filters.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectAddFilterByFilter003', 0, () => {
+      let result: number = testNapi.OHImageEffectAddFilterByFilter(CASE_INDEX_3);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
      * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTGETFILTER_0100
      * @tc.name   : testOHImageEffectGetFilter001
      * @tc.desc   : Filter has been added to the query.
@@ -1671,6 +1788,162 @@ export default function imageEffectTest() {
     });
 
     /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTINSERTFILTERBYFILTER_0100
+     * @tc.name   : testOHImageEffectInsertFilterByFilter001
+     * @tc.desc   : Insert the filter by filter.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectInsertFilterByFilter001', 0, () => {
+      let result: number = testNapi.OHImageEffectInsertFilterByFilter(CASE_INDEX_1);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTINSERTFILTERRBYFILTER_0200
+     * @tc.name   : testOHImageEffectInsertFilterByFilter002
+     * @tc.desc   : Insert the filter by filter.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectInsertFilterByFilter002', 0, () => {
+      let result: number = testNapi.OHImageEffectInsertFilterByFilter(CASE_INDEX_2);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTINSERTFILTERRBYFILTER_0300
+     * @tc.name   : testOHImageEffectInsertFilterByFilter003
+     * @tc.desc   : Insert the filter by filter.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectInsertFilterByFilter003', 0, () => {
+      let result: number = testNapi.OHImageEffectInsertFilterByFilter(CASE_INDEX_3);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTINSERTFILTERRBYINDEX_0400
+     * @tc.name   : testOHImageEffectInsertFilterByFilter004
+     * @tc.desc   : Insert the filter by filter.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectInsertFilterByFilter004', 0, () => {
+      let result: number = testNapi.OHImageEffectInsertFilterByFilter(CASE_INDEX_4);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTREPLACEFILTER_0100
+     * @tc.name   : testOHImageEffectReplaceFilter001
+     * @tc.desc   : Replace the filter.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectReplaceFilter001', 0, () => {
+      let result: number = testNapi.OHImageEffectReplaceFilter(CASE_INDEX_1);
+      expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTREPLACEFILTER_0200
+     * @tc.name   : testOHImageEffectReplaceFilter002
+     * @tc.desc   : Replace the filter.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectReplaceFilter002', 0, () => {
+      let result: number = testNapi.OHImageEffectReplaceFilter(CASE_INDEX_2);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTREPLACEFILTER_0300
+     * @tc.name   : testOHImageEffectReplaceFilter003
+     * @tc.desc   : Replace the filter.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectReplaceFilter003', 0, () => {
+      let result: number = testNapi.OHImageEffectReplaceFilter(CASE_INDEX_3);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTREPLACEFILTER_0400
+     * @tc.name   : testOHImageEffectReplaceFilter004
+     * @tc.desc   : Replace the filter.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectReplaceFilter004', 0, () => {
+      let result: number = testNapi.OHImageEffectReplaceFilter(CASE_INDEX_4);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTREPLACEFILTERBYFILTER_0100
+     * @tc.name   : testOHImageEffectReplaceFilterByFilter001
+     * @tc.desc   : Replace the filter by filter.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectReplaceFilterByFilter001', 0, () => {
+      let result: number = testNapi.OHImageEffectReplaceFilterByFilter(CASE_INDEX_1);
+      expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTREPLACEFILTERRBYFILTER_0200
+     * @tc.name   : testOHImageEffectReplaceFilterByFilter002
+     * @tc.desc   : Replace the filter by filter.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectReplaceFilterByFilter002', 0, () => {
+      let result: number = testNapi.OHImageEffectReplaceFilterByFilter(CASE_INDEX_2);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTREPLACEFILTERRBYFILTER_0300
+     * @tc.name   : testOHImageEffectReplaceFilterByFilter003
+     * @tc.desc   : Replace the filter by filter.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectReplaceFilterByFilter003', 0, () => {
+      let result: number = testNapi.OHImageEffectReplaceFilterByFilter(CASE_INDEX_3);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTREPLACEFILTERRBYINDEX_0400
+     * @tc.name   : testOHImageEffectReplaceFilterByFilter004
+     * @tc.desc   : Replace the filter by filter.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectReplaceFilterByFilter004', 0, () => {
+      let result: number = testNapi.OHImageEffectReplaceFilterByFilter(CASE_INDEX_4);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
      * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTRELEASE_0100
      * @tc.name   : testOHImageEffectRelease001
      * @tc.desc   : Release OH-ImageEffect instance resources.
@@ -1732,6 +2005,45 @@ export default function imageEffectTest() {
      */
     it('testOHImageEffectRemoveFilter003', 0, () => {
       let result: number = testNapi.OHImageEffectRemoveFilter(CASE_INDEX_3);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTREMOVEFILTERBYINDEX_0100
+     * @tc.name   : testOHImageEffectRemoveFilterByIndex001
+     * @tc.desc   : Remove the filter by index.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectRemoveFilterByIndex001', 0, () => {
+      let result: number = testNapi.OHImageEffectRemoveFilterByIndex(CASE_INDEX_1);
+      expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTREMOVEFILTERBYINDEX_0200
+     * @tc.name   : testOHImageEffectRemoveFilterByIndex002
+     * @tc.desc   : Remove the filter by index.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectRemoveFilterByIndex002', 0, () => {
+      let result: number = testNapi.OHImageEffectRemoveFilterByIndex(CASE_INDEX_2);
+      expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTREMOVEFILTERBYINDEX_0300
+     * @tc.name   : testOHImageEffectRemoveFilterByIndex003
+     * @tc.desc   : Remove the filter by index.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectRemoveFilterByIndex003', 0, () => {
+      let result: number = testNapi.OHImageEffectRemoveFilterByIndex(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
 

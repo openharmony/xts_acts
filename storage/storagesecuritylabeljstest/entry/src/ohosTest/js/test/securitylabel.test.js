@@ -73,7 +73,7 @@ describe('security_label', function () {
   /**
    * @tc.number SUB_DF_SECURITYLABEL_SET_SECURITY_LABEL_SYNC_0200
    * @tc.name securitylabel_test_set_security_label_sync_002
-   * @tc.desc Test the setSecurityLabelSync() interface, when the path does not exist. 
+   * @tc.desc Test the setSecurityLabelSync() interface, when the path does not exist.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -93,7 +93,7 @@ describe('security_label', function () {
   /**
    * @tc.number SUB_DF_SECURITYLABEL_SET_SECURITY_LABEL_SYNC_0300
    * @tc.name securitylabel_test_set_security_label_sync_003
-   * @tc.desc Test the setSecurityLabelSync() interface, when the dataLevel type is wrong. 
+   * @tc.desc Test the setSecurityLabelSync() interface, when the dataLevel type is wrong.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -116,7 +116,7 @@ describe('security_label', function () {
   /**
    * @tc.number SUB_DF_SECURITYLABEL_SET_SECURITY_LABEL_SYNC_0400
    * @tc.name securitylabel_test_set_security_label_sync_004
-   * @tc.desc Test the setSecurityLabelSync() interface, when there is no datalevel parameter. 
+   * @tc.desc Test the setSecurityLabelSync() interface, when there is no datalevel parameter.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -135,6 +135,30 @@ describe('security_label', function () {
       expect(e.code == 13900020 && e.message == "Invalid argument").assertTrue();
     }
   });
+
+    /**
+   * @tc.number SUB_DF_SECURITYLABEL_SET_SECURITY_LABEL_SYNC_0500
+   * @tc.name securitylabel_test_set_security_label_sync_005
+   * @tc.desc Test the setSecurityLabelSync() interface, return false when the securitylabel is lower than before.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+    it('securitylabel_test_set_security_label_sync_005', 0, async function () {
+      let fpath = await nextFileName("test5.txt");
+      fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
+
+      try {
+        securityLabel.setSecurityLabelSync(fpath, 's4');
+        securityLabel.setSecurityLabelSync(fpath, 's3');
+        expect(false).assertTrue();
+      } catch (e) {
+        fileio.unlinkSync(fpath);
+        console.log('securitylabel_test_set_security_label_sync_005 has failed for ' + e.message + ', code: ' + e.code);
+        expect(e.code == 13900020 && e.message == "Invalid argument").assertTrue();
+      }
+    });
 
   /**
    * @tc.number SUB_DF_SECURITYLABEL_SET_SECURITY_LABEL_0000
@@ -478,6 +502,33 @@ describe('security_label', function () {
     }
   });
 
+    /**
+   * @tc.number SUB_DF_SECURITYLABEL_SET_SECURITY_LABEL_1300
+   * @tc.name securitylabel_test_set_security_label_async_013
+   * @tc.desc Test setSecurityLabel() interfaces, return false when the securitylabel is lower than before.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+    it('securitylabel_test_set_security_label_async_013', 0, async function (done) {
+      let fpath = await nextFileName('test13.txt');
+      fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
+
+      try {
+        securityLabel.setSecurityLabelSync(fpath, 's4');
+        securityLabel.setSecurityLabel(fpath, 's3', (err) => {
+          if (err) {
+            expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
+            done();
+          }
+        });
+      } catch (e) {
+        console.log('securitylabel_test_set_security_label_async_006 has failed for ' + e.message + ', code: ' + e.code);
+        expect(false).assertTrue();
+      }
+    });
+
   /**
    * @tc.number SUB_DF_SECURITYLABEL_GET_SECURITY_LABEL_SYNC_0000
    * @tc.name securitylabel_test_get_security_label_sync_000
@@ -491,7 +542,7 @@ describe('security_label', function () {
 
     try {
       let dataLevel = securityLabel.getSecurityLabelSync('');
-      expect(dataLevel == '').assertTrue();
+      expect(dataLevel == 's3').assertTrue();
     } catch (e) {
       console.log('securitylabel_test_get_security_label_sync_000 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
@@ -511,7 +562,7 @@ describe('security_label', function () {
 
     try {
       let dataLevel = securityLabel.getSecurityLabelSync('/data/test.txt');
-      expect(dataLevel == '').assertTrue();
+      expect(dataLevel == 's3').assertTrue();
     } catch (e) {
       console.log('securitylabel_test_get_security_label_sync_001 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
@@ -592,14 +643,14 @@ describe('security_label', function () {
 
     try {
       let dataLevel = await securityLabel.getSecurityLabel('/data/test.txt');
-      expect(dataLevel == '').assertTrue();
+      expect(dataLevel == 's3').assertTrue();
       done();
     } catch (e) {
       console.log('securitylabel_test_get_security_label_async_001 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
-    
+
 
   /**
    * @tc.number SUB_DF_SECURITYLABEL_GET_SECURITY_LABEL_0200

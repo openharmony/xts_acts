@@ -87,6 +87,8 @@ import setLabelTest from './renderNode/setLabel.test';
 import setMarkNodeGroupTest from './renderNode/setMarkNodeGroup.test';
 import setShapeClipTest from './renderNode/setShapeClip.test';
 import attachNodeAdapterTest from './FrameNodeTest/attachNodeAdapter.test';
+import updateConfigurationTest1 from './BuilderNodeTest/updateConfigurationTest1';
+import updateConfigurationTest2 from './ComponentContentTest/updateConfigurationTest2';
 export default function testsuite() {
   APIdisposeTreeTest();
   RenderNodeDemo01Test();
@@ -148,4 +150,6 @@ export default function testsuite() {
   setMarkNodeGroupTest();
   setShapeClipTest();
   attachNodeAdapterTest();
+  updateConfigurationTest1();
+  updateConfigurationTest2();
 }

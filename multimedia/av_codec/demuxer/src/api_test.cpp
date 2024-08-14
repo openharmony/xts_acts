@@ -100,6 +100,17 @@ using namespace OHOS::Media;
 using namespace testing::ext;
 
 /**
+ * @tc.number    : OH_AVSource_CreateWithDataSource_0100
+ * @tc.name      : OH_AVSource_CreateWithDataSource para error
+ * @tc.desc      : api test
+ */
+HWTEST_F(DemuxerApiNdkTest, OH_AVSource_CreateWithDataSource_0100, TestSize.Level2)
+{
+    source = OH_AVSource_CreateWithDataSource(nullptr);
+    ASSERT_EQ(nullptr, source);
+}
+
+/**
  * @tc.number    : DEMUXER_ILLEGAL_PARA_0100
  * @tc.name      : OH_AVSource_CreateWithURI para error
  * @tc.desc      : api test

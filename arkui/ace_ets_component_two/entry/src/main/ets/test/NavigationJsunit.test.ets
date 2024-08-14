@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function navigationJsunit() {
-  describe('appInfoTest_two_5', function () {
-    beforeEach(async function (done) {
+  describe('appInfoTest_two_5', () => {
+    beforeEach(async (done: Function) => {
       console.info("navigation beforeEach start");
       let options = {
         uri: 'MainAbility/pages/navigation',
@@ -41,31 +41,31 @@ export default function navigationJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("navigation after each called");
     });
 
-    it('testNavigation_100', 0, async function (done) {
+    it('testNavigation_100', 0, async (done: Function) => {
       console.info('[testNavigation_100] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Navigation');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testNavigation_100] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.width).assertEqual("100.00%");
       console.info('[testNavigation_100] END');
       done();
     });
 
-    it('testNavigation_200', 0, async function (done) {
+    it('testNavigation_200', 0, async (done: Function) => {
       console.info('testNavigation_200 START');
       await Utils.sleep(1000);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testNavigation_200 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(false);
         done();
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 1366,
         priority: events_emitter.EventPriority.LOW
       }
@@ -74,27 +74,28 @@ export default function navigationJsunit() {
       } catch (err) {
         console.info("testNavigation_200 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("testNavigation_200 click result is: " + JSON.stringify(sendEventByKey('NavigationContent1',10,"")));
+      console.info("testNavigation_200 click result is: " +
+      JSON.stringify(sendEventByKey('NavigationContent1', 10, "")));
       await Utils.sleep(2000);
       console.info('testNavigation_200 END');
     });
 
-    it('testNavigation_300', 0, async function (done) {
+    it('testNavigation_300', 0, async (done: Function) => {
       console.info('[testNavigation_300] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Navigation');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testNavigation_300] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.height).assertEqual("300.00vp");
       console.info('[testNavigation_300] END');
       done();
     });
 
-    it('testNavigation_400', 0, async function (done) {
+    it('testNavigation_400', 0, async (done: Function) => {
       console.info('[testNavigation_400] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Navigation');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testNavigation_400] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.align).assertEqual("Alignment.Center");
       console.info('[testNavigation_400] END');

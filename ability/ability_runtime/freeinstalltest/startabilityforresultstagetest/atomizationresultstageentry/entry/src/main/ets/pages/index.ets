@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 
 @Entry
 @Component
@@ -66,12 +66,12 @@ struct Index {
   }
 }
 
-async function routePage(page) {
-  let options = {
-    uri: page
+async function routePage(page:string) {
+  let options:router.RouterOptions = {
+    url: page
   }
   try {
-    await router.push(options)
+    await router.pushUrl(options)
   } catch (err) {
     console.error(`fail callback, code: ${err.code}, msg: ${err.msg}`)
   }

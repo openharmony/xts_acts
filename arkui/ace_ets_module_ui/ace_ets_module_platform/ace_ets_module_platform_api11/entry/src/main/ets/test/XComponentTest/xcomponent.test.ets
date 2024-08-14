@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 import events_emitter from '@ohos.events.emitter';
@@ -22,8 +22,8 @@ export default function xcomponentGetXComponentContextJsunit() {
   describe('xcomponentGetXComponentContextTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/XComponent/Xcomponent',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/XComponent/Xcomponent',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function xcomponentGetXComponentContextJsunit() {
         console.info("get xcomponent state success " + JSON.stringify(pages));
         if (!("xcomponent" == pages.name)) {
           console.info("get xcomponent state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push xcomponent page success " + JSON.stringify(result));
         }
@@ -58,7 +58,7 @@ export default function xcomponentGetXComponentContextJsunit() {
           eventId: 60228,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback1 = (eventData) => {
+        let callback1 = (eventData: events_emitter.EventData) => {
           console.info("onRequestPopupData_0010 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual("callBackSuccess");
         }

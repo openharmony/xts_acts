@@ -17,7 +17,7 @@ import router from '@system.router';
 import featureAbility from '@ohos.ability.featureAbility';
 import wantConstant from '@ohos.ability.wantConstant'
 import Prompt from '@system.prompt';
-import RemoteDeviceModel from '../model/getRemoteDeviceModel.ets';
+import RemoteDeviceModel from '../model/getRemoteDeviceModel';
 import bundleManager from '@ohos.bundle';
 import freeInstall from '@ohos.bundle.freeInstall';
 import { BusinessError } from '@ohos.base';

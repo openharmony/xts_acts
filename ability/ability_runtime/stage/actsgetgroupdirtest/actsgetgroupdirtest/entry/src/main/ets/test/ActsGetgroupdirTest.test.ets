@@ -19,36 +19,38 @@ import commonEvent from '@ohos.commonEventManager'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs';
 import common from '@ohos.app.ability.common';
+import base from '@ohos.base';
 
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-let TAG;
-let abilityContext;
+let abilityContext: common.UIAbilityContext;
 
-var ACTS_GetGroupFunction = {
+let ACTS_GetGroupFunction: commonEvent.CommonEventSubscribeInfo = {
   events: ['ACTS_GETGROUP1_EVENT', 'ACTS_GETGROUP2_EVENT', 'ACTS_INPUTMETHOD_GETGROUP_EVENT']
 };
 
 export default function ActsGetgroupdirTest() {
-  describe('ActsGetgroupdirTest', function () {
-    beforeAll(function () {
+  describe('ActsGetgroupdirTest', () => {
+    beforeAll(() => {
       abilityContext = AppStorage.get<common.UIAbilityContext>("getGroupDirContext");
     })
-    beforeEach(function () {})
-    afterEach(function () {})
-    afterAll(function () {})
+    beforeEach(() => {
+    })
+    afterEach(() => {
+    })
+    afterAll(() => {
+    })
     /*
      * @tc.number  AMS_getGroupDir_001
      * @tc.name    getGroupDir
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_001',0, async function (done) {
+    it('AMS_getGroupDir_001', 0, async (done: Function) => {
       console.log("start AMS_getGroupDir_001 =====>");
-      let res;
       await abilityContext.getGroupDir("context_test1").then(data => {
         console.error("getGroupDir AMS_getGroupDir_001 ====> result data" + data);
         expect(data).assertContain("/data/storage/el2/group");
-      }).catch((error) => {
+      }).catch((error: base.BusinessError) => {
         console.error("getGroupDir AMS_getGroupDir_001 ====> result err" + JSON.stringify(error));
         expect().assertFail();
       });
@@ -61,12 +63,12 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_002',0, async function (done) {
+    it('AMS_getGroupDir_002', 0, async (done: Function) => {
       console.log("start AMS_getGroupDir_002 =====>");
       await abilityContext.getGroupDir("111").then(data => {
         console.error("getGroupDir AMS_getGroupDir_002 ====> result data" + data);
         expect(data).assertEqual("");
-      }).catch((error) => {
+      }).catch((error: base.BusinessError) => {
         console.error("getGroupDir AMS_getGroupDir_002 ====> result err" + JSON.stringify(error));
         expect().assertFail();
       });
@@ -79,12 +81,12 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_003',0, async function (done) {
+    it('AMS_getGroupDir_003', 0, async (done: Function) => {
       console.log("start AMS_getGroupDir_003 =====>");
       await abilityContext.getGroupDir("context_hap1").then(data => {
         console.error("getGroupDir AMS_getGroupDir_003 ====> result data" + data);
         expect(data).assertEqual("");
-      }).catch((error) => {
+      }).catch((error: base.BusinessError) => {
         console.error("getGroupDir AMS_getGroupDir_003 ====> result err" + JSON.stringify(error));
         expect().assertFail();
       });
@@ -97,7 +99,7 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_004',0, async function (done) {
+    it('AMS_getGroupDir_004', 0, async (done: Function) => {
       console.log("start AMS_getGroupDir_004 =====>");
       await abilityContext.getGroupDir("context_test1", (err, data) => {
         console.error("AMS_getGroupDir_004 ====> result data" + data);
@@ -114,7 +116,7 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_005',0, async function (done) {
+    it('AMS_getGroupDir_005', 0, async (done: Function) => {
       console.log("start AMS_getGroupDir_005 =====>");
       await abilityContext.getGroupDir("", (err, data) => {
         console.error("AMS_getGroupDir_005 ====> result data" + data);
@@ -131,7 +133,7 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_006',0, async function (done) {
+    it('AMS_getGroupDir_006', 0, async (done: Function) => {
       console.log("start AMS_getGroupDir_006 =====>");
       await abilityContext.getGroupDir("context_hap1", (err, data) => {
         console.error("AMS_getGroupDir_006 ====> result data" + data);
@@ -148,9 +150,9 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_007',0, async function (done) {
-      var subscriber;
-      var res;
+    it('AMS_getGroupDir_007', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
+      let res = '';
       console.log("start AMS_getGroupDir_007 =====>");
       commonEvent.createSubscriber(ACTS_GetGroupFunction).then(async (data) => {
         console.debug('====>AMS_getGroupDir_007 Create Subscribe');
@@ -162,16 +164,16 @@ export default function ActsGetgroupdirTest() {
           expect(err).assertNull();
         })
         abilityContext.startAbility({
-            bundleName: 'com.example.getgroupdirhap2',
-            abilityName: 'EntryAbility',
-            moduleName: 'entry',
-          },(err) => {
+          bundleName: 'com.example.getgroupdirhap2',
+          abilityName: 'EntryAbility',
+          moduleName: 'entry',
+        }, (err) => {
           console.debug('====>AMS_getGroupDir_007 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
       })
 
-      function subscribeCallBack(err, data) {
+      let subscribeCallBack = (err:base.BusinessError, data:commonEvent.CommonEventData) => {
         console.debug('====>AMS_getGroupDir_007 subscribeCallBack data:' + JSON.stringify(data));
         if (data.event === 'ACTS_GETGROUP1_EVENT') {
           expect(data.parameters.res).assertContain("/data/storage/el2/group");
@@ -179,7 +181,7 @@ export default function ActsGetgroupdirTest() {
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
-      function unSubscribeCallback() {
+      let unSubscribeCallback = () => {
         console.debug('====>AMS_getGroupDir_007 unSubscribeCallback');
         done();
       }
@@ -191,9 +193,9 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_008',0, async function (done) {
-      var subscriber;
-      var res;
+    it('AMS_getGroupDir_008', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
+      let res = '';
       console.log("start AMS_getGroupDir_008 =====>");
       commonEvent.createSubscriber(ACTS_GetGroupFunction).then(async (data) => {
         console.debug('====>AMS_getGroupDir_008 Create Subscribe');
@@ -205,16 +207,16 @@ export default function ActsGetgroupdirTest() {
           expect(err).assertNull();
         })
         abilityContext.startAbility({
-            bundleName: 'com.example.getgroupdirhap2',
-            abilityName: 'EntryAbility2',
-            moduleName: 'entry',
-          },(err) => {
+          bundleName: 'com.example.getgroupdirhap2',
+          abilityName: 'EntryAbility2',
+          moduleName: 'entry',
+        }, (err) => {
           console.debug('====>AMS_getGroupDir_008 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
       })
 
-      function subscribeCallBack(err, data) {
+      let subscribeCallBack = (err:base.BusinessError, data:commonEvent.CommonEventData) => {
         console.debug('====>AMS_getGroupDir_008 subscribeCallBack data:' + JSON.stringify(data));
         if (data.event === 'ACTS_GETGROUP2_EVENT') {
           expect(data.parameters.res).assertContain("/data/storage/el2/group");
@@ -222,7 +224,8 @@ export default function ActsGetgroupdirTest() {
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
-      function unSubscribeCallback() {
+
+      let unSubscribeCallback = () => {
         console.debug('====>AMS_getGroupDir_008 unSubscribeCallback');
         done();
       }

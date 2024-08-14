@@ -17,7 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import Utils from './Utils';
 import featureAbility from "@ohos.ability.featureAbility";
 import wantConstant from '@ohos.ability.wantConstant';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import { BusinessError } from '@ohos.base';
 import Want from '@ohos.app.ability.Want';
 import ability from '@ohos.ability.ability';

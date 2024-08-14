@@ -82,3 +82,23 @@ export class Camera_VideoStabilizationMode {
   static readonly STABILIZATION_MODE_HIGH = 3;
   static readonly STABILIZATION_MODE_AUTO = 4;
 }
+
+export class Camera_PreconfigType {
+  static readonly EXCEPTION_ENUMERATION_VALUE = -1;
+  static readonly PRECONFIG_720P = 0;
+  static readonly PRECONFIG_1080P = 1;
+  static readonly PRECONFIG_4K = 2;
+  static readonly PRECONFIG_HIGH_QUALITY = 3;
+}
+
+export class Camera_PreconfigRatio {
+  static readonly EXCEPTION_ENUMERATION_VALUE = -1;
+  static readonly PRECONFIG_RATIO_1 = 0;
+  static readonly PRECONFIG_RATIO_4 = 1;
+  static readonly PRECONFIG_RATIO_16 = 2;
+}
+
+export class Camera_MediaType {
+  static readonly IMAGE = 0;
+  static readonly VIDEO = 1;
+}

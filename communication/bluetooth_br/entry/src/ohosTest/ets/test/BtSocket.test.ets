@@ -194,7 +194,7 @@ describe('btSocketTest', () =>  {
             bluetooth.sppAccept(serverNumber, acceptClientSocket);
         } catch (error) {
             console.error(`[bluetooth_js]SPPAccept error, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
         done();
     })
@@ -261,7 +261,7 @@ describe('btSocketTest', () =>  {
             bluetooth.off('sppRead', clientNumber);
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(401);
+            expect(Number(err.code)).assertEqual(401);
         }
         done();
     })
@@ -293,7 +293,7 @@ describe('btSocketTest', () =>  {
             bluetooth.off('sppRead', clientNumber);
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(401);
+            expect(Number(err.code)).assertEqual(401);
         }
         done();
     })
@@ -351,7 +351,7 @@ describe('btSocketTest', () =>  {
             bluetooth.sppCloseClientSocket(clientNumber);
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(401);
+            expect(Number(err.code)).assertEqual(401);
         }
         done();
     })
@@ -385,7 +385,7 @@ describe('btSocketTest', () =>  {
             bluetooth.sppWrite(clientNumber, arrayBuffer);
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(401);
+            expect(Number(err.code)).assertEqual(401);
         }
         done();
     })

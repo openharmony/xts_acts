@@ -13,13 +13,54 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import commonEvent from '@ohos.commonEvent';
+import commonEvent from '@ohos.commonEventManager';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
+import ability from '@ohos.ability.ability';
+import base from '@ohos.base';
 
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+
+
+let TAG = 'AbilityTest';
+let intervalId:number = -1;
+let subscriber:commonEvent.CommonEventSubscriber;
+
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function handlerMessage(callback:(str:string)=>void) :number{
+  if (intervalId != -1) {
+    clearInterval(intervalId);
+  }
+  intervalId = setInterval(()=>{
+    let event:string[] = globalThis.testEvent;
+    globalThis.testEvent = [];
+    if (event && event.length > 0) {
+      event.forEach(str => {
+        callback(str);
+      })
+    }
+  }, 100);
+  return intervalId;
+}
+
+function handlerMessageDelayed(event: string, longTime:number) :void{
+  if (event == undefined || event === '') {
+    return;
+  }
+  if (longTime == 0) {
+    globalThis.testEvent.push(event);
+    return;
+  }
+  setTimeout(()=>{
+    globalThis.testEvent.push(event);
+  }, longTime);
+}
+
 export default function abilityTest() {
 
-  describe('AbilityTest', function () {
+  describe('AbilityTest', ()=> {
 
     console.info("-----------------LifecycleTest is start----------------")
 
@@ -76,19 +117,19 @@ export default function abilityTest() {
       }
     })
 
-    beforeEach(async function (done) {
+    beforeEach(async (done:Function) => {
       console.info('LifeCycleTest before each called');
       await sleep(1000);
       done()
     });
 
-    afterEach(async function (done) {
+    afterEach(async (done:Function) => {
       console.info(TAG + ' LifeCycleTest after each called');
       if (!("Multihap_LifecycleTest_007" == TAG ||
         "Multihap_LifecycleTest_011" == TAG ||
         "Multihap_LifecycleTest_006" == TAG)) {
         console.info(TAG + ' LifeCycleTest in after each terminateSelfwithresult MainAbility4');
-        function eventCallback (event: string){
+        let eventCallback =(event: string)=>{
           console.log(TAG + " eventCallback, event is :" + event);
           if (event === 'MainAbility4onDestroy') {
             clearInterval(intervalId);
@@ -96,7 +137,7 @@ export default function abilityTest() {
           }
         }
         handlerMessage(eventCallback);
-        let para = {
+        let para:ability.AbilityResult = {
           resultCode: 2,
           want: {
             "abilityName": "MainAbility4",
@@ -105,9 +146,9 @@ export default function abilityTest() {
         }
         console.log("LifeCycleTest terminateSelfwithresult para: " + JSON.stringify(para));
         await globalThis.ability4context.terminateSelfWithResult(para)
-          .then((data) => {
-            console.log("LifeCycleTest terminateSelfwithresult successful data: " + JSON.stringify(data));
-          }).catch((error) => {
+          .then(() => {
+            console.log("LifeCycleTest terminateSelfwithresult successful");
+          }).catch((error:base.BusinessError) => {
             console.log("LifeCycleTest terminateSelfwithresult error: " + JSON.stringify(error));
           });
       } else {
@@ -117,42 +158,7 @@ export default function abilityTest() {
       }
     });
 
-    let TAG;
-    let intervalId:number = -1;
-    let subscriber = undefined
 
-    function sleep(time) {
-      return new Promise((resolve) => setTimeout(resolve, time))
-    }
-
-    function handlerMessage(callback) :number{
-      if (intervalId != -1) {
-        clearInterval(intervalId);
-      }
-      intervalId = setInterval(()=>{
-        let event:Array<string> = globalThis.testEvent;
-        globalThis.testEvent = [];
-        if (event && event.length > 0) {
-          event.forEach(str => {
-            callback(str);
-          })
-        }
-      }, 100);
-      return intervalId;
-    }
-
-    function handlerMessageDelayed(event: string, longTime:number) :void{
-      if (event == undefined || event === '') {
-        return;
-      }
-      if (longTime == 0) {
-        globalThis.testEvent.push(event);
-        return;
-      }
-      setTimeout(()=>{
-        globalThis.testEvent.push(event);
-      }, longTime);
-    }
 
     /*
      * @tc.number  Multihap_LifecycleTest_001
@@ -160,11 +166,11 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_001", 0, async (done) => {
+    it("Multihap_LifecycleTest_001", 0, async (done:Function) => {
       console.info("---------------Multihap_LifecycleTest_001 is start---------------")
       TAG = "Multihap_LifecycleTest_001";
       let isSecondOnForegroundCount:boolean = false;
-      function eventCallback (event: string){
+      let eventCallback =  (event: string)=>{
         console.log(TAG + " eventCallback, event is :" + event);
         if (event === 'MainAbility4onForeground') {
           if (!isSecondOnForegroundCount) {
@@ -172,9 +178,8 @@ export default function abilityTest() {
             globalThis.abilityContext.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap2MainAbility3"
-            }, (error, data)=>{
-              console.log(TAG + ": Hap2MainAbility3 startAbility success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+            }, (error:base.BusinessError, data:ESObject) => {
+              console.log(TAG + ": Hap2MainAbility3 startAbility success, err: " + JSON.stringify(error));
             })
           }
         } else if (event === 'Hap2MainAbility3onDestroy'){
@@ -190,7 +195,7 @@ export default function abilityTest() {
           expect(listTemp.indexOf("Hap2MainAbility3 onAbilityDestroy") !== -1).assertTrue();
           console.info(TAG + "globalThis.ApplicationContext4 is :" + JSON.stringify(globalThis.ApplicationContext4));
           globalThis.ApplicationContext4
-            .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
+            .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
               expect(error.code).assertEqual(0);
@@ -202,7 +207,7 @@ export default function abilityTest() {
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
-      }, (error, data) => {
+      }, (error:base.BusinessError, data:ESObject) => {
         console.log(TAG + ": MainAbility4 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
@@ -215,11 +220,11 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_002", 0, async function (done) {
+    it("Multihap_LifecycleTest_002", 0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_002 start-------------");
       TAG = "Multihap_LifecycleTest_002";
       let isSecondOnForegroundCount:boolean = false;
-      function eventCallback (event: string){
+      let eventCallback =  (event: string)=>{
         console.log(TAG + " eventCallback, event is :" + event);
         if (event === 'MainAbility4onForeground') {
           if (!isSecondOnForegroundCount) {
@@ -231,7 +236,7 @@ export default function abilityTest() {
           globalThis.abilityContext.startAbility({
             bundleName: "com.example.lifecycletest",
             abilityName: "Hap2MainAbility4"
-          }, (error, data) => {
+          }, (error:base.BusinessError, data:ESObject) => {
             console.log(TAG + ":first Hap2MainAbility4 startAbility success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
           });
@@ -247,7 +252,7 @@ export default function abilityTest() {
           expect(listTemp.indexOf("Hap2MainAbility4 onWindowStageDestroy") !== -1).assertTrue();
           expect(listTemp.indexOf("Hap2MainAbility4 onAbilityDestroy") !== -1).assertTrue();
           globalThis.ApplicationContext4
-            .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
+            .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
               expect(error.code).assertEqual(0);
@@ -260,7 +265,7 @@ export default function abilityTest() {
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
-      }, (error, data) => {
+      }, (error:base.BusinessError, data:ESObject) => {
         console.log(TAG + ": MainAbility4 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
@@ -273,12 +278,12 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_003", 0, async function (done) {
+    it("Multihap_LifecycleTest_003", 0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_003 start-------------");
       TAG = "Multihap_LifecycleTest_003";
       let isSecondOnForegroundCount:boolean = false;
       let hap2MainAbility5Count = 0;
-      function eventCallback (event: string){
+      let eventCallback =  (event: string)=>{
         console.log(TAG + " eventCallback, event is :" + event);
         if (event === 'MainAbility4onForeground') {
           if (!isSecondOnForegroundCount) {
@@ -290,7 +295,7 @@ export default function abilityTest() {
           globalThis.abilityContext.startAbility({
             bundleName: "com.example.lifecycletest",
             abilityName: "Hap2MainAbility5"
-          }, (error, data) => {
+          }, (error:base.BusinessError, data:ESObject) => {
             console.log(TAG + ": Hap2MainAbility5 startAbility success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
           });
@@ -309,7 +314,7 @@ export default function abilityTest() {
           expect(listTemp.split("Hap2MainAbility5 onWindowStageDestroy").length - 1).assertEqual(2);
           expect(listTemp.split("Hap2MainAbility5 onAbilityDestroy").length - 1).assertEqual(2);
           globalThis.ApplicationContext4
-            .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
+            .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
               expect(error.code).assertEqual(0);
@@ -323,7 +328,7 @@ export default function abilityTest() {
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
-      }, (error, data) => {
+      }, (error:base.BusinessError, data:ESObject) => {
         console.log(TAG + ": MainAbility4 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
@@ -336,12 +341,12 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_004", 0, async function (done) {
+    it("Multihap_LifecycleTest_004", 0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_004 start-------------");
       TAG = "Multihap_LifecycleTest_004";
       let isStartedHap2MainAbility6:boolean = false;
       let isStartedHap3MainAbility2:boolean = false;
-      function eventCallback (event: string){
+      let eventCallback =  (event: string)=>{
         console.log(TAG + " eventCallback, event is :" + event);
         if (event === 'MainAbility4onForeground') {
           if (!isStartedHap2MainAbility6) {
@@ -349,7 +354,7 @@ export default function abilityTest() {
             globalThis.abilityContext.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap2MainAbility6"
-            }, (error, data) => {
+            }, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ":first Hap2MainAbility6 startAbility success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
             });
@@ -358,7 +363,7 @@ export default function abilityTest() {
             globalThis.abilityContext.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap3MainAbility2"
-            }, (error, data) => {
+            }, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ": second Hap3MainAbility2 startAbility success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
             })
@@ -381,7 +386,7 @@ export default function abilityTest() {
           expect(listTemp.indexOf("Hap3MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
           expect(listTemp.indexOf("Hap3MainAbility2 onAbilityDestroy") !== -1).assertTrue();
           globalThis.ApplicationContext4
-            .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
+            .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
               expect(error.code).assertEqual(0);
@@ -394,7 +399,7 @@ export default function abilityTest() {
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
-      }, (error, data) => {
+      }, (error:base.BusinessError, data:ESObject) => {
         console.log(TAG + ": MainAbility4 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
@@ -407,12 +412,12 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_005", 0, async function (done) {
+    it("Multihap_LifecycleTest_005", 0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_005 start-------------");
       TAG = "Multihap_LifecycleTest_005";
       let isStartedHap2MainAbility6:boolean = false;
       let isStartedHap2MainAbility7:boolean = false;
-      function eventCallback (event: string){
+      let eventCallback =  (event: string)=>{
         console.log(TAG + " eventCallback, event is :" + event);
         if (event === 'MainAbility4onForeground') {
           if (!isStartedHap2MainAbility6) {
@@ -420,7 +425,7 @@ export default function abilityTest() {
             globalThis.abilityContext.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap2MainAbility6"
-            }, (error, data) => {
+            }, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ":first Hap2MainAbility6 startAbility success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
             });
@@ -429,7 +434,7 @@ export default function abilityTest() {
             globalThis.abilityContext.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap2MainAbility7"
-            }, (error, data) => {
+            }, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ": second Hap2MainAbility7 startAbility success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
             })
@@ -451,7 +456,7 @@ export default function abilityTest() {
           expect(listTemp.indexOf("Hap2MainAbility7 onWindowStageDestroy") !== -1).assertTrue();
           expect(listTemp.indexOf("Hap2MainAbility7 onAbilityDestroy") !== -1).assertTrue();
           globalThis.ApplicationContext4
-            .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
+            .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
               expect(error.code).assertEqual(0);
@@ -466,7 +471,7 @@ export default function abilityTest() {
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
-      }, (error, data) => {
+      }, (error:base.BusinessError, data:ESObject) => {
         console.log(TAG + ": MainAbility4 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
@@ -480,12 +485,12 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_006", 0, async function (done) {
+    it("Multihap_LifecycleTest_006", 0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_006 start-------------");
       TAG = "Multihap_LifecycleTest_006";
       let isOneStartedHap2MainAbility8:boolean = false;
       let ids:Array<number> = []
-      function eventCallback (event: string){
+      let eventCallback =  (event: string)=>{
         console.log(TAG + " eventCallback, event is :" + event);
         if (event === 'MainAbility7onForeground') {
           console.log(TAG + "MainAbility7 is onForeground, callBackId is :" + globalThis.mainAbility7CallBackId);
@@ -513,7 +518,7 @@ export default function abilityTest() {
             globalThis.abilityContext.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap2MainAbility8"
-            }, (error, data) => {
+            }, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ": first Hap2MainAbility8 startAbility success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
             });
@@ -526,7 +531,7 @@ export default function abilityTest() {
           globalThis.abilityContext.startAbility({
             bundleName: "com.example.lifecycletest",
             abilityName: "MainAbility7"
-          }, (error, data) => {
+          }, (error:base.BusinessError, data:ESObject) => {
             console.log(TAG + ": second MainAbility7 startAbility success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
           });
@@ -537,7 +542,7 @@ export default function abilityTest() {
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility7"
-      }, (error, data) => {
+      }, (error:base.BusinessError, data:ESObject) => {
         console.log(TAG + ": first MainAbility7 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
@@ -551,20 +556,20 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_007", 0, async function (done) {
+    it("Multihap_LifecycleTest_007", 0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_007 start-------------");
       TAG = "Multihap_LifecycleTest_007";
       let isMainAbility6SecondOnForeground:boolean = false;
       let callBackId1 = -1;
       let callBackId2 = -1;
-      function eventCallback (event: string){
+      let eventCallback =  (event: string)=>{
         console.log(TAG + " eventCallback, event is :" + event);
         if (event === 'StartMainAbility6') {
           isMainAbility6SecondOnForeground = false;
           globalThis.abilityContext.startAbility({
             bundleName: "com.example.lifecycletest",
             abilityName: "MainAbility6"
-          }, (error, data) => {
+          }, (error:base.BusinessError, data:ESObject) => {
             console.log(TAG + ": MainAbility6 startAbility success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
           });
@@ -573,7 +578,7 @@ export default function abilityTest() {
             globalThis.abilityContext6.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap2MainAbility9"
-            }, (error, data) => {
+            }, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ": Hap2MainAbility9 startAbility success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
             });
@@ -597,7 +602,7 @@ export default function abilityTest() {
             expect(listTemp.indexOf("Hap2MainAbility9 onWindowStageDestroy") !== -1).assertTrue();
             expect(listTemp.indexOf("Hap2MainAbility9 onAbilityDestroy") !== -1).assertTrue();
             globalThis.ApplicationContext6
-              .unregisterAbilityLifecycleCallback(callBackId1, (error, data) => {
+              .unregisterAbilityLifecycleCallback(callBackId1,(error:base.BusinessError, data:ESObject) => {
                 console.log(TAG + ": first unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
                 ",data: " + JSON.stringify(data));
                 expect(error.code).assertEqual(0);
@@ -623,7 +628,7 @@ export default function abilityTest() {
             expect(listTemp1.indexOf("Hap2MainAbility9 onWindowStageDestroy") !== -1).assertTrue();
             expect(listTemp1.indexOf("Hap2MainAbility9 onAbilityDestroy") !== -1).assertTrue()
             globalThis.ApplicationContext6
-              .unregisterAbilityLifecycleCallback(callBackId2, (error, data) => {
+              .unregisterAbilityLifecycleCallback(callBackId2,(error:base.BusinessError, data:ESObject) => {
                 console.log(TAG + ": second unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
                 ",data: " + JSON.stringify(data));
                 expect(error.code).assertEqual(0);
@@ -645,18 +650,18 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_008", 0, async function (done) {
+    it("Multihap_LifecycleTest_008", 0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_008 start-------------");
       TAG = "Multihap_LifecycleTest_008";
 
       let isSecondMainAbility4onForeground = false;
-      function eventCallback (event: string){
+      let eventCallback =  (event: string)=>{
         console.log(TAG + " eventCallback, event is :" + event);
         if (event === 'StartMainAbility4') {
           globalThis.abilityContext.startAbility({
             bundleName: "com.example.lifecycletest",
             abilityName: "MainAbility4"
-          }, (error, data) => {
+          }, (error:base.BusinessError, data:ESObject) => {
             console.log(TAG + ": MainAbility4 startAbility success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
           });
@@ -673,12 +678,12 @@ export default function abilityTest() {
             expect(listTemp.indexOf("Hap2MainAbility6 onWindowStageDestroy") !== -1).assertTrue();
             expect(listTemp.indexOf("Hap2MainAbility6 onAbilityDestroy") !== -1).assertTrue();
             globalThis.ApplicationContext4
-              .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
+              .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error:base.BusinessError, data:ESObject) => {
                 console.log(TAG + ": first unregisterAbilityLifecycleCallback, err: " + JSON.stringify(error) +
                 ",data: " + JSON.stringify(data));
                 expect(error.code).assertEqual(0);
                 globalThis.ApplicationContext4
-                  .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
+                  .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId,(error:base.BusinessError, data:ESObject) => {
                     console.log(TAG + ": second unregisterAbilityLifecycleCallback, err: " + JSON.stringify(error) +
                     ",data: " + JSON.stringify(data));
                     expect(error.code).assertEqual(1);
@@ -689,7 +694,7 @@ export default function abilityTest() {
             globalThis.abilityContext.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap2MainAbility6"
-            }, (error, data) => {
+            }, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ": Hap2MainAbility6 startAbility success, err: " +
               JSON.stringify(error) + ",data: " + JSON.stringify(data));
             })
@@ -708,19 +713,19 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('Multihap_LifecycleTest_010', 0, async function (done) {
+    it('Multihap_LifecycleTest_010', 0, async (done:Function) => {
       console.info("---------------Multihap_LifecycleTest_010 is start---------------")
       TAG = "Multihap_LifecycleTest_010";
       let hap3MainAbility3onForegroundCount:number = 0;
       let isFirstMainAbility4onForeground = true;
-      function eventCallback (event: string){
+      let eventCallback =  (event: string)=>{
         console.log(TAG + " eventCallback, event is :" + event);
         if (event === 'MainAbility4onForeground' && isFirstMainAbility4onForeground){
           isFirstMainAbility4onForeground = false;
           globalThis.abilityContext.startAbility({
             bundleName: "com.example.lifecycletest",
             abilityName: "Hap2MainAbility10",
-          }, (error, data) => {
+          }, (error:base.BusinessError, data:ESObject) => {
             console.log(TAG + ": first Hap2MainAbility10 startAbility success, err: " +
             JSON.stringify(error) + ",data: " + JSON.stringify(data));
           })
@@ -728,7 +733,7 @@ export default function abilityTest() {
           globalThis.abilityContext.startAbility({
             bundleName: "com.example.lifecycletest",
             abilityName: "Hap3MainAbility3",
-          }, (error, data) => {
+          }, (error:base.BusinessError, data:ESObject) => {
             console.log(TAG + ": second Hap3MainAbility3 startAbility success, err: " +
             JSON.stringify(error) + ",data: " + JSON.stringify(data));
           })
@@ -753,14 +758,14 @@ export default function abilityTest() {
             expect(listTemp.split("Hap3MainAbility3 onAbilityBackground").length - 1).assertEqual(2);
 
             globalThis.ApplicationContext4
-              .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
+              .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error:base.BusinessError, data:ESObject) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
                 ",data: " + JSON.stringify(data));
                 expect(error.code).assertEqual(0);
                 globalThis.abilityContext.startAbility({
                   bundleName: "com.example.lifecycletest",
                   abilityName: "com.example.lifecycletest.MainAbility",
-                }, (error, data) => {
+                }, (error:base.BusinessError, data:ESObject) => {
                   console.log(TAG + ": first Hap2MainAbility10 startAbility success, err: " +
                   JSON.stringify(error) + ",data: " + JSON.stringify(data));
                 })
@@ -770,7 +775,7 @@ export default function abilityTest() {
             globalThis.abilityContext.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap2MainAbility10",
-            }, (error, data) => {
+            }, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ": first Hap2MainAbility10 startAbility success, err: " +
               JSON.stringify(error) + ",data: " + JSON.stringify(data));
             })
@@ -782,7 +787,7 @@ export default function abilityTest() {
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4",
-      }, (error, data) => {
+      }, (error:base.BusinessError, data:ESObject) => {
         console.log(TAG + ": MainAbility4 startAbility success, err: " +
         JSON.stringify(error) + ",data: " + JSON.stringify(data));
       })
@@ -796,17 +801,17 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('Multihap_LifecycleTest_011', 0, async function (done) {
+    it('Multihap_LifecycleTest_011', 0, async (done:Function) => {
       console.info("---------------Multihap_LifecycleTest_011 is start---------------")
       TAG = "Multihap_LifecycleTest_011";
       let listKeyTemp = [];
-      function eventCallback (event: string){
+      let eventCallback =  (event: string)=>{
         console.log(TAG + " eventCallback, event is :" + event);
         if (event === 'MainAbility2onForeground'){
           globalThis.abilityContext.startAbility({
             bundleName: "com.example.lifecycletest",
             abilityName: "Hap4MainAbility1",
-          }, (error, data) => {
+          }, (error:base.BusinessError, data:ESObject) => {
             console.log(TAG + ": Hap4MainAbility1 startAbility result, err: " +
             JSON.stringify(error) + ",data: " + JSON.stringify(data));
             handlerMessageDelayed('doAssert', 1000)
@@ -823,7 +828,7 @@ export default function abilityTest() {
           expect(listKeyTemp.length).assertEqual(0);
 
           globalThis.ApplicationContext2
-            .unregisterAbilityLifecycleCallback(globalThis.mainAbility2CallBackId, (error, data) => {
+            .unregisterAbilityLifecycleCallback(globalThis.mainAbility2CallBackId, (error:base.BusinessError, data:ESObject) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
               expect(error.code).assertEqual(0);
@@ -836,7 +841,7 @@ export default function abilityTest() {
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility2",
-      }, (error, data) => {
+      }, (error:base.BusinessError, data:ESObject) => {
         console.log(TAG + ": Hap1MainAbility2 startAbility success, err: " +
         JSON.stringify(error) + ",data: " + JSON.stringify(data));
       })

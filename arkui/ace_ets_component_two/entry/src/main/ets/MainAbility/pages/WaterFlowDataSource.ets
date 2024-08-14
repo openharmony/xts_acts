@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 export class WaterFlowDataSource implements IDataSource {
-
   private dataArray: number[] = []
   private listeners: DataChangeListener[] = []
 
@@ -24,7 +23,7 @@ export class WaterFlowDataSource implements IDataSource {
   }
 
   // 获取索引对应的数据
-  public getData(index: number): any {
+  public getData(index: number): ESObject {
     return this.dataArray[index]
   }
 
@@ -92,7 +91,7 @@ export class WaterFlowDataSource implements IDataSource {
   // 在数据尾部增加一个元素
   public AddLastItem(): void {
     this.dataArray.splice(this.dataArray.length, 0, this.dataArray.length)
-    this.notifyDataAdd(this.dataArray.length-1)
+    this.notifyDataAdd(this.dataArray.length - 1)
   }
 
   // 在指定索引位置增加一个元素

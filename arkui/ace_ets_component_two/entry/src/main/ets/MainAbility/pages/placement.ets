@@ -27,22 +27,29 @@ struct PlacementExample {
   @State placementTwo: Placement = Placement.BottomLeft
   @State placementThree: Placement = Placement.BottomRight
 
-  @Builder popupBuilder() {
+  @Builder
+  popupBuilder() {
     Row({ space: 2 }) {
       Text('Custom Popup').fontSize(12)
     }.width(100).height(50).backgroundColor(Color.White).key('image')
   }
-  @Builder popupBuilderOne() {
+
+  @Builder
+  popupBuilderOne() {
     Row({ space: 2 }) {
       Text('Custom PopupOne').fontSize(12)
     }.width(100).height(50).backgroundColor(Color.White).key('image1')
   }
-  @Builder popupBuilderTwo() {
+
+  @Builder
+  popupBuilderTwo() {
     Row({ space: 2 }) {
       Text('Custom PopupTwo').fontSize(12)
     }.width(100).height(50).backgroundColor(Color.White).key('image2')
   }
-  @Builder popupBuilderThree() {
+
+  @Builder
+  popupBuilderThree() {
     Row({ space: 2 }) {
       Text('Custom PopupThree').fontSize(12)
     }.width(100).height(50).backgroundColor(Color.White).key('image3')
@@ -54,19 +61,19 @@ struct PlacementExample {
         .key('button')
         .onClick(() => {
           this.customPopup = !this.customPopup
-          try{
-            var backData = {
-              data:{
-                "placement":this.placement
+          try {
+            let backData: events_emitter.EventData = {
+              data: {
+                "placement": this.placement
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 157,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("PlacementExample button start to emit action state")
             events_emitter.emit(backEvent, backData)
-          }catch(err){
+          } catch (err) {
             console.info("button emit action state err: " + JSON.stringify(err.message))
           }
         })
@@ -88,19 +95,19 @@ struct PlacementExample {
         .key('button1')
         .onClick(() => {
           this.customPopupOne = !this.customPopupOne
-          try{
-            var backDataOne = {
-              data:{
-                "placement":this.placementOne
+          try {
+            let backDataOne: events_emitter.EventData = {
+              data: {
+                "placement": this.placementOne
               }
             }
-            var backEventOne = {
+            let backEventOne: events_emitter.InnerEvent = {
               eventId: 158,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("custom popupOne button1 start to emit action state")
             events_emitter.emit(backEventOne, backDataOne)
-          }catch(err){
+          } catch (err) {
             console.info("button1 emit action state err: " + JSON.stringify(err.message))
           }
         })
@@ -122,19 +129,19 @@ struct PlacementExample {
         .key('button2')
         .onClick(() => {
           this.customPopupTwo = !this.customPopupTwo
-          try{
-            var backDataTwo = {
-              data:{
-                "placement":this.placementTwo
+          try {
+            let backDataTwo: events_emitter.EventData = {
+              data: {
+                "placement": this.placementTwo
               }
             }
-            var backEventTwo = {
+            let backEventTwo: events_emitter.InnerEvent = {
               eventId: 159,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button2 start to emit action state")
             events_emitter.emit(backEventTwo, backDataTwo)
-          }catch(err){
+          } catch (err) {
             console.info("button2 emit action state err: " + JSON.stringify(err.message))
           }
         })
@@ -156,19 +163,19 @@ struct PlacementExample {
         .key('button3')
         .onClick(() => {
           this.customPopupThree = !this.customPopupThree
-          try{
-            var backDataThree = {
-              data:{
-                "placement":this.placementThree
+          try {
+            let backDataThree: events_emitter.EventData = {
+              data: {
+                "placement": this.placementThree
               }
             }
-            var backEventThree = {
+            let backEventThree: events_emitter.InnerEvent = {
               eventId: 160,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button3 start to emit action state")
             events_emitter.emit(backEventThree, backDataThree)
-          }catch(err){
+          } catch (err) {
             console.info("button3 emit action state err: " + JSON.stringify(err.message))
           }
         })

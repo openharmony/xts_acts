@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import CommonEventManager from '@ohos.commonEventManager'
 import rpc from '@ohos.rpc'
 import Want from '@ohos.app.ability.Want';
@@ -29,7 +29,7 @@ let thirdCallTestSecondAbilityName = "com.example.thirdcalltest.SecondAbility";
 let thirdCallTestThirdAbilityName = "com.example.thirdcalltest.ThirdAbility";
 let thirdCallTestForthAbilityName = "com.example.thirdcalltest.ForthAbility";
 let thirdCallTestFifthAbilityName = "com.example.thirdcalltest.FifthAbility";
-let subscriberInfo:CommonEventManager.CommonEventSubscribeInfo = {
+let subscriberInfo: CommonEventManager.CommonEventSubscribeInfo = {
   events: ["CallTest"],
 };
 
@@ -38,26 +38,26 @@ class MySequenceable {
   str: string = "default";
   result: string = "default";
 
-  constructor(num:number, string:string, result:string) {
+  constructor(num: number, string: string, result: string) {
     this.num = num;
     this.str = string;
     this.result = result;
   }
 
-  setMySequence(num:number, string:string, result:string) {
+  setMySequence(num: number, string: string, result: string) {
     this.num = num;
     this.str = string;
     this.result = result;
   }
 
-  marshalling(messageParcel:rpc.MessageParcel) {
+  marshalling(messageParcel: rpc.MessageParcel) {
     messageParcel.writeInt(this.num);
     messageParcel.writeString(this.str);
     messageParcel.writeString(this.result);
     return true;
   }
 
-  unmarshalling(messageParcel:rpc.MessageParcel) {
+  unmarshalling(messageParcel: rpc.MessageParcel) {
     this.num = messageParcel.readInt();
     this.str = messageParcel.readString();
     this.result = messageParcel.readString();
@@ -65,24 +65,26 @@ class MySequenceable {
   }
 }
 
-function delay(time:number) {
-  let delta:number = 0;
+function delay(time: number) {
+  let delta: number = 0;
   if (typeof time != 'number' || time <= 0) {
     delta = 100;
   } else {
     delta = Math.round(time);
   }
-  for (let start = Date.now(); Date.now() - start <= delta; );
+  for (let start = Date.now(); Date.now() - start <= delta; ) {
+    ;
+  }
 }
 
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
 
-    beforeEach(async (done:Function) => {
+    beforeEach(async (done: Function) => {
       done();
     })
 
-    afterEach(async (done:Function) => {
+    afterEach(async (done: Function) => {
       setTimeout(() => {
         done();
       }, 500)
@@ -93,9 +95,9 @@ export default function abilityTest() {
      * @tc.name: The thirdApp is not allowed to startAbilityByCall.
      * @tc.desc: Verify that the thirdApp is not allowed to startAbilityByCall.
      */
-    it('ACTS_CommonComponent_Call_1100', 0, async (done:Function) =>  {
+    it('ACTS_CommonComponent_Call_1100', 0, async (done: Function) => {
       console.log('ACTS_CommonComponent_Call_1100 begin');
-      let want:Want = {
+      let want: Want = {
         bundleName: thirdCallTestBundleName,
         abilityName: thirdCallTestForthAbilityName,
       }
@@ -116,14 +118,14 @@ export default function abilityTest() {
      * @tc.name: The thirdApp is not allowed to startAbilityByCall.
      * @tc.desc: Verify that the thirdApp is not allowed to startAbilityByCall.
      */
-    it('ACTS_CommonComponent_Call_1500', 0, async (done:Function) =>  {
+    it('ACTS_CommonComponent_Call_1500', 0, async (done: Function) => {
       console.log('ACTS_CommonComponent_Call_1500 begin');
-      let want:Want = {
+      let want: Want = {
         bundleName: systemAppCalleeABundleName,
         abilityName: systemAppCalleeAMainAbilityName,
       }
       globalThis.abilityContext.startAbilityByCall(want)
-        .then(()=> {
+        .then(() => {
           console.info(`ACTS_CommonComponent_Call_1500 startAbilityByCall SUCCESS`);
           expect().assertFail();
           done();
@@ -139,9 +141,9 @@ export default function abilityTest() {
      * @tc.name: The thirdApp is not allowed to startAbilityByCall.
      * @tc.desc: Verify that the thirdApp is not allowed to startAbilityByCall.
      */
-    it('ACTS_CommonComponent_Call_1600', 0, async (done:Function) =>  {
+    it('ACTS_CommonComponent_Call_1600', 0, async (done: Function) => {
       console.log('ACTS_CommonComponent_Call_1600 begin');
-      let want:Want = {
+      let want: Want = {
         bundleName: thirdAppABundleName,
         abilityName: thirdAppAMainAbilityName,
       }

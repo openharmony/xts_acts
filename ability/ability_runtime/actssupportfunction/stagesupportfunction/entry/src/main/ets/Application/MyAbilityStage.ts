@@ -14,9 +14,10 @@
  */
 import AbilityStage from "@ohos.app.ability.AbilityStage";
 
-var TAG0 = 'StageSupportFunction:AbilityStage:';
+const TAG0 = 'StageSupportFunction:AbilityStage:';
+
 export default class MyAbilityStage extends AbilityStage {
-    onCreate() {
-        console.log(TAG0 + "onCreate")
-    }
+  onCreate() {
+    console.log(TAG0 + "onCreate")
+  }
 }
