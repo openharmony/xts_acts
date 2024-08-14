@@ -11,11 +11,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsEffectKitTest") {
+ohos_js_app_suite("ActsNotificationSecondaryDirectoryTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsEffectKitTest"
-  part_name = "graphic_2d"
-  subsystem_name = "graphic"
+  hap_name = "ActsNotificationSecondaryDirectoryTest"
+  part_name = "notification"
+  subsystem_name = "distributed_notification_service"
 }
