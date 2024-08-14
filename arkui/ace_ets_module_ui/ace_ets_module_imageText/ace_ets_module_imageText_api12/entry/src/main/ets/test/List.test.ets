@@ -135,6 +135,7 @@ import TextAddApi1 from './Text/TextAddApi1.test'
 import StyledStringKeyTest1 from './StyledString/StyledStringKeyTest1.test'
 import RichEditorAddApi from './RichEditor/RichEditorAddApi.test'
 import editMeunOptionsTest from './Text/editMeunOptions.test'
+import onDidIMEInputTest from './RichEditor/onDidIMEInput.test';
 import RichEditorApi13 from './RichEditor/RichEditorApi13.test'
 import imageAddApi3 from './ImageTest/imageAddApi3.test'
 
@@ -256,4 +257,5 @@ export default function testsuite() {
   StyledStringKeyTest1();
   RichEditorAddApi();
   editMeunOptionsTest();
+  onDidIMEInputTest();
 }
