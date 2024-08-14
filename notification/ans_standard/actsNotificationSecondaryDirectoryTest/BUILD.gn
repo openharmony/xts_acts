@@ -16,6 +16,6 @@ ohos_js_app_suite("ActsNotificationSecondaryDirectoryTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsNotificationSecondaryDirectoryTest"
-  part_name = "notification"
-  subsystem_name = "distributed_notification_service"
+  part_name = "distributed_notification_service"
+  subsystem_name = "notification"
 }
