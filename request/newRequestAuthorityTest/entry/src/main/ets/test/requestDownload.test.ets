@@ -105,6 +105,16 @@ export default function requestDownloadJSUnit() {
         expect(request.agent.Faults.PROTOCOL).assertEqual(32);
         console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.FSIO: " + request.agent.Faults.FSIO);
         expect(request.agent.Faults.FSIO).assertEqual(64);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.PARAM: " + request.agent.Faults.PARAM);
+        expect(request.agent.Faults.PARAM).assertEqual(48);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.DNS: " + request.agent.Faults.DNS);
+        expect(request.agent.Faults.DNS).assertEqual(80);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.TCP: " + request.agent.Faults.TCP);
+        expect(request.agent.Faults.TCP).assertEqual(96);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.SSL: " + request.agent.Faults.SSL);
+        expect(request.agent.Faults.SSL).assertEqual(112);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.REDIRECT: " + request.agent.Faults.REDIRECT);
+        expect(request.agent.Faults.REDIRECT).assertEqual(128);
       } catch (err) {
         console.error("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 error: " + err);
         expect().assertFail();
