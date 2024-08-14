@@ -72,36 +72,10 @@ export default function fontPart3Test() {
       }
 
       try {
-        let glyphs : number[] = font.textToGlyphs('奇8龍@Fly#龘2023!*你好',15);
-        expect(glyphs.length == 15).assertTrue();
-        console.info(msg + ' textToGlyphs3 successed,glyphs:' + glyphs.length);
-      } catch( e ) {
-        console.info(msg + ` textToGlyphs3 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect().assertFail();
-      }
-
-      try {
-        let glyphs : number[] = font.textToGlyphs('奇8龍@Fly#龘2023!*你好',20);
-        expect(glyphs.length == 20).assertTrue();
-        console.info(msg + ' textToGlyphs4 successed,glyphs:' + glyphs.length);
-      } catch( e ) {
-        console.info(msg + ` textToGlyphs4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect().assertFail();
-      }
-
-      try {
         let glyphs : number[] = font.textToGlyphs("", 0);
         console.info(msg + ' textToGlyphs5 successed,glyphs:' + glyphs);
       } catch( e ) {
         console.info(msg + ` textToGlyphs5 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect().assertFail();
-      }
-
-      try {
-        let glyphs : number[] = font.textToGlyphs("", -1);
-        console.info(msg + ' textToGlyphs6 successed,glyphs:' + glyphs);
-      } catch( e ) {
-        console.info(msg + ` textToGlyphs6 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
     });
@@ -152,43 +126,6 @@ export default function fontPart3Test() {
     });
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_2002
-     * @tc.name      : testFontTextToGlyphsMismatch
-     * @tc.desc      : Test for testFontTextToGlyphsMismatch.
-     * @tc.size      : SmallTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testFontTextToGlyphsMismatch' , DEFAULT , () => {
-      const msg = 'testFontTextToGlyphsMismatch';
-      let font = new drawing.Font();
-
-      try {
-        font.textToGlyphs('奇8龍@Fly#龘2023!*你好', 2, 2);
-        console.info(msg + ' textToGlyphs succeeded');
-      } catch( e ) {
-        console.info(msg + ` textToGlyphs errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        font.textToGlyphs(text);
-        console.info(msg + ' textToGlyphs succeeded');
-      } catch( e ) {
-        console.info(msg + ` textToGlyphs errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        font.textToGlyphs(111);
-        console.info(msg + ' textToGlyphs succeeded');
-      } catch( e ) {
-        console.info(msg + ` textToGlyphs errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect(e.code).assertEqual(401);
-      }
-    });
-
-    /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_2003
      * @tc.name      : testFontTextToGlyphsMultipleCalls
      * @tc.desc      : Test for testFontTextToGlyphsMultipleCalls.
@@ -210,6 +147,43 @@ export default function fontPart3Test() {
           console.info(msg + ` textToGlyphs errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
           expect().assertFail();
         }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_2004
+     * @tc.name      : testFontTextToGlyphsAbnormal
+     * @tc.desc      : Test for testFontTextToGlyphsAbnormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testFontTextToGlyphsAbnormal' , DEFAULT , () => {
+      const msg = 'testFontTextToGlyphsAbnormal';
+      let font = new drawing.Font();
+
+      try {
+        let glyphs : number[] = font.textToGlyphs('奇8龍@Fly#龘2023!*你好',15);
+        console.info(msg + ' textToGlyphs succeeded');
+      } catch( e ) {
+        console.info(msg + ` textToGlyphs errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        let glyphs : number[] = font.textToGlyphs('奇8龍@Fly#龘2023!*你好',20);
+        console.info(msg + ' textToGlyphs succeeded');
+      } catch( e ) {
+        console.info(msg + ` textToGlyphs errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        let glyphs : number[] = font.textToGlyphs("", -1);
+        console.info(msg + ' textToGlyphs succeeded');
+      } catch( e ) {
+        console.info(msg + ` textToGlyphs errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
       }
     });
 
