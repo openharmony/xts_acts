@@ -38,6 +38,7 @@
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
+        "orientation": "portrait",
         "skills": [
           {
             "entities": [
@@ -56,7 +57,7 @@
         "reason": "$string:description_application",
         "usedScene": {
           "abilities": [
-            "MainAbility"
+            "EntryAbility"
           ],
           "when": "always"
         }
