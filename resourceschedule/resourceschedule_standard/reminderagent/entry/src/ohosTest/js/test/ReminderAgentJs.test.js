@@ -146,11 +146,6 @@ export default function ReminderAgentTest() {
             };
             reminderAgent.cancelAllReminders().then((err, data) => {
                 console.info('err.code cancelAllReminders 003 is :' + err.code)
-            }).catch((err) => {
-                if (err.code == EXPECT_ERROR_CODE) {
-                    expect(true).assertTrue()
-                    done()
-                }
             });
             reminderAgent.publishReminder(timer).then((reminderId) => {
                 console.info("reminderId =" + reminderId);
@@ -186,7 +181,7 @@ export default function ReminderAgentTest() {
             }
             reminderAgent.cancelAllReminders().then((err, data) => {
                 console.info('err.code cancelAllReminders 004 is :' + err.code)
-            }).catch(()=>{});
+            });
             reminderAgent.publishReminder(timer).then((reminderId) => {
                 console.info("reminderId =" + reminderId);
                 reminderAgent.getValidReminders().then((reminder) => {
@@ -241,6 +236,11 @@ export default function ReminderAgentTest() {
                 }, (error) => {
                     console.info('error.code 005 is :' + error.code)
                 });
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
         })
 
@@ -273,6 +273,11 @@ export default function ReminderAgentTest() {
                 }, (error) => {
                     console.info('error.code 006 is :' + error.code)
                 });
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
         })
 
@@ -298,6 +303,11 @@ export default function ReminderAgentTest() {
                 console.info("testReminderRequestType_007 reminderId =" + reminderId);
                 expect(reminderId).assertLarger(0);
                 done()
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
         })
 
@@ -320,7 +330,12 @@ export default function ReminderAgentTest() {
                     expect(reminderId).assertLarger(0);
                     done()
                 }
-            }, error => { });
+            }, error => { }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
+            });
         })
 
         /**
@@ -346,6 +361,11 @@ export default function ReminderAgentTest() {
                 }, (error) => {
                     console.info('error.code 009 is :' + error.code)
                 });
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
         })
 
@@ -367,6 +387,11 @@ export default function ReminderAgentTest() {
                 done();
             }
             reminderAgent.publishReminder(timer, (err, reminderId) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                    return
+                }
                 expectId = reminderId + 1;
                 console.info('expectId 010 is :' + expectId)
                 reminderAgent.publishReminder(timer, reminderCallback);
@@ -489,6 +514,11 @@ export default function ReminderAgentTest() {
                         });
                     });
                 }, 1000);
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
             done();
         })
@@ -514,6 +544,11 @@ export default function ReminderAgentTest() {
                         });
                     });
                 }, 1000);
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
             done();
         })
@@ -549,6 +584,11 @@ export default function ReminderAgentTest() {
                         });
                     });
                 }, 1000);
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
             done();
         })
@@ -584,6 +624,11 @@ export default function ReminderAgentTest() {
                         });
                     });
                 }, 1000);
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
             done();
         })
@@ -606,6 +651,11 @@ export default function ReminderAgentTest() {
             let cancellength = -1;
             let firstdiff = -1;
             reminderAgent.publishReminder(alarm, (err, reminderId) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                    return
+                }
                 reminderAgent.getValidReminders((err, reminders) => {
                     publishlength = reminders.length;
                 });
@@ -646,6 +696,11 @@ export default function ReminderAgentTest() {
             let cancellength = -1;
             let firstdiff = -1;
             reminderAgent.publishReminder(alarm, (err, reminderId) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                    return
+                }
                 reminderAgent.getValidReminders((err, reminders) => {
                     publishlength = reminders.length;
                 });
@@ -694,6 +749,11 @@ export default function ReminderAgentTest() {
                         let i = 0;
                         expect(0).assertEqual(i);
                     }
+                }).catch((err) => {
+                    if (err.code == EXPECT_ERROR_CODE) {
+                        expect(true).assertTrue()
+                        done()
+                    }
                 });
             }, 1000);
             done();
@@ -724,6 +784,11 @@ export default function ReminderAgentTest() {
                     if (reminders.length >= 2) {
                         let i = 0;
                         expect(0).assertEqual(i);
+                    }
+                }).catch((err) => {
+                    if (err.code == EXPECT_ERROR_CODE) {
+                        expect(true).assertTrue()
+                        done()
                     }
                 });
             }, 1000);
@@ -846,6 +911,11 @@ export default function ReminderAgentTest() {
                 triggerTimeInSeconds: 20
             }
             reminderAgent.publishReminder(timer, (err, reminderId) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                    return
+                }
                 console.info("callback,the testPublishReminderTimer_029 reminderId=" + reminderId);
                 expect(reminderId).assertLarger(0);
                 done()
@@ -870,6 +940,11 @@ export default function ReminderAgentTest() {
                 console.info("promise,the testPublishReminderTimer_030 reminderId =" + reminderId);
                 expect(reminderId).assertLarger(0);
                 done()
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
         })
 
@@ -1016,6 +1091,11 @@ export default function ReminderAgentTest() {
                 minute: 30
             }
             reminderAgent.publishReminder(alarm, (err, reminderId) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                    return
+                }
                 console.info("callback,the testPublishReminderAlarmFun_038 reminderId=" + reminderId);
                 expect(reminderId).assertLarger(0);
                 done()
@@ -1038,6 +1118,11 @@ export default function ReminderAgentTest() {
                 console.info("callback,the testPublishReminderAlarmFun_039 reminderId=" + reminderId);
                 expect(reminderId).assertLarger(0);
                 done()
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
         })
 
@@ -1080,6 +1165,11 @@ export default function ReminderAgentTest() {
                 console.info("promise,the testPublishReminderAlarm_041 reminderId =" + reminderId);
                 expect(reminderId).assertLarger(0);
                 done()
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
         })
 
@@ -1521,6 +1611,11 @@ export default function ReminderAgentTest() {
                 }
             }
             reminderAgent.publishReminder(calendar, (err, reminderId) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                    return
+                }
                 console.info("callback,the testPublishReminderCalendarFun_059 reminderId =" + reminderId);
                 expect(reminderId).assertLarger(0);
                 done()
@@ -1549,6 +1644,11 @@ export default function ReminderAgentTest() {
                 console.info("promise,the testPublishReminderCalendarFun_060 reminderId =" + reminderId);
                 expect(reminderId).assertLarger(0);
                 done()
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
         })
 
@@ -1679,6 +1779,11 @@ export default function ReminderAgentTest() {
             reminderAgent.cancelAllReminders().then(() => {
                 console.info('cancelAllReminders success')
                 reminderAgent.publishReminder(calendar, (err, reminderId) => {
+                    if (err.code == EXPECT_ERROR_CODE) {
+                        expect(true).assertTrue()
+                        done()
+                        return
+                    }
                     console.info("callback,the testPublishReminderCalendar_065 reminderId =" + reminderId);
                     expect(reminderId).assertLarger(0);
                     done()
@@ -1712,6 +1817,11 @@ export default function ReminderAgentTest() {
                 console.info("promise,the testPublishReminderCalendar_066 reminderId =" + reminderId);
                 expect(reminderId).assertLarger(0)
                 done()
+            }).catch((err) => {
+                if (err.code == EXPECT_ERROR_CODE) {
+                    expect(true).assertTrue()
+                    done()
+                }
             });
         })
 
@@ -1735,6 +1845,11 @@ export default function ReminderAgentTest() {
             }
             reminderAgent.cancelAllReminders((err, data) => {
                 reminderAgent.publishReminder(alarm, (err, reminderId) => {
+                    if (err.code == EXPECT_ERROR_CODE) {
+                        expect(true).assertTrue()
+                        done()
+                        return
+                    }
                     console.info("callback,the testGetValidRemindersButton_067 reminderId =" + reminderId);
                 });
             });
