@@ -5359,4 +5359,194 @@ describe('BufferTest', function () {
     expect(len).assertEqual(2);
     expect(buf.toString()).assertEqual('abcdefghab');
   });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31200
+   * @tc.name: testfrom0788
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testfrom0788", 0, function () {
+    let sharedArr = new SharedArrayBuffer(20)
+    let uint8Arr = new Uint8Array(sharedArr);
+    uint8Arr[16] = 9;
+    let bufObj = buffer.from(sharedArr, 0, 20);
+    uint8Arr[15] = 10;
+    expect(bufObj.length).assertEqual(20);
+    expect(JSON.stringify(bufObj)).assertEqual('{"type":"Buffer","data":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,9,0,0,0]}');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31300
+   * @tc.name: testfrom0789
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testfrom0789", 0, function () {
+    let sharedArr = new SharedArrayBuffer(10)
+    let uint8Arr = new Uint8Array(sharedArr);
+    uint8Arr[9] = 9;
+    let bufObj = buffer.from(sharedArr, 5, 5);
+    uint8Arr[1] = 10;
+    expect(bufObj.length).assertEqual(5);
+    expect(JSON.stringify(bufObj)).assertEqual('{"type":"Buffer","data":[0,0,0,0,9]}');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31400
+   * @tc.name: testfrom0790
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testfrom0790", 0, function () {
+    let sharedArr = new SharedArrayBuffer(1000)
+    let bufObj = buffer.from(sharedArr, 5, undefined);
+    expect(bufObj.length).assertEqual(995);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31500
+   * @tc.name: testfrom0791
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testfrom0791", 0, function () {
+    let sharedArr = new SharedArrayBuffer(10)
+    let bufObj = buffer.from(sharedArr, undefined, 6);
+    expect(bufObj.length).assertEqual(6);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31600
+   * @tc.name: testfrom0792
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testfrom0792", 0, function () {
+    let bufObj = buffer.from([-1000000, -500, -256 ,-255, -1, 0, 1, 255, 256, 1000000]);
+    expect(bufObj.length).assertEqual(10);
+    expect(JSON.stringify(bufObj)).assertEqual('{"type":"Buffer","data":[192,12,0,1,255,0,1,255,0,64]}');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31700
+   * @tc.name: testfrom0793
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testfrom0793", 0, function () {
+    let bufObj = buffer.from([269, -1, -9, -9999999, 9999999, -8, 555, 3, -256]);
+    expect(bufObj.length).assertEqual(9);
+    expect(JSON.stringify(bufObj)).assertEqual('{"type":"Buffer","data":[13,255,247,129,127,248,43,3,0]}');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31800
+   * @tc.name: testfrom0794
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testfrom0794", 0, function () {
+    let bufObj = buffer.from([1, 2, 3, 4, 5, 6, 7, -1, -2, -3, -256, -255]);
+    expect(bufObj.length).assertEqual(12);
+    expect(JSON.stringify(bufObj)).assertEqual('{"type":"Buffer","data":[1,2,3,4,5,6,7,255,254,253,0,1]}');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31900
+   * @tc.name: testfrom0795
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testfrom0795", 0, function () {
+    let bufObj = buffer.from([-0x11, -0x22, -0x33, -0x44, -0x55, -0x66, 0x62]);
+    expect(JSON.stringify(bufObj)).assertEqual('{"type":"Buffer","data":[239,222,205,188,171,154,98]}');
+    expect(bufObj.toString('hex')).assertEqual('efdecdbcab9a62');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32000
+   * @tc.name: testfrom0796
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testfrom0796", 0, function () {
+    let bufObj = buffer.from([1, 3, 255, 256, 257, -1, -2, -255]);
+    expect(bufObj.readInt8(0)).assertEqual(1);
+    expect(bufObj.readInt8(1)).assertEqual(3);
+    expect(bufObj.readInt8(2)).assertEqual(-1);
+    expect(bufObj.readInt8(3)).assertEqual(0);
+    expect(bufObj.readInt8(4)).assertEqual(1);
+    expect(bufObj.readInt8(5)).assertEqual(-1);
+    expect(bufObj.readInt8(6)).assertEqual(-2);
+    expect(bufObj.readInt8(7)).assertEqual(1);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32100
+   * @tc.name: testfrom0797
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testfrom0797", 0, function () {
+    let bufObj = buffer.from([1, 3, -99999999, 256, 9999999, -1, -2, -255]);
+    expect(bufObj.readUInt8(0)).assertEqual(1);
+    expect(bufObj.readUInt8(1)).assertEqual(3);
+    expect(bufObj.readUInt8(2)).assertEqual(1);
+    expect(bufObj.readUInt8(3)).assertEqual(0);
+    expect(bufObj.readUInt8(4)).assertEqual(127);
+    expect(bufObj.readUInt8(5)).assertEqual(255);
+    expect(bufObj.readUInt8(6)).assertEqual(254);
+    expect(bufObj.readUInt8(7)).assertEqual(1);
+  });
 })}
