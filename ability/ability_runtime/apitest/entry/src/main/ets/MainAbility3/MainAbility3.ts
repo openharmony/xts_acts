@@ -12,61 +12,50 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
-import Ability from '@ohos.app.ability.UIAbility';
-import commonEvent from '@ohos.commonEvent';
-import Want from '@ohos.app.ability.Want';
-import AbilityConstant from '@ohos.app.ability.AbilityConstant';
-import common from '@ohos.app.ability.common';
-import window from '@ohos.window';
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import UIAbility from '@ohos.app.ability.UIAbility';
-
+import Ability from '@ohos.app.ability.UIAbility'
+import commonEvent from '@ohos.commonEvent'
 function PublishCallBackOne() {
-  console.debug("====>Publish CallBack ACTS_DoAbilityForeground_0300_Event====>");
-  AppStorage.get<common.UIAbilityContext>("abilityContextMainAbility3")!.terminateSelf()
-    .then(() => {
-      console.debug("====>MainAbility3 terminateSelf====>");
+    console.debug("====>Publish CallBack ACTS_DoAbilityForeground_0300_Event====>");
+    globalThis.abilityContextMainAbility3.terminateSelf().then(()=>{
+        console.debug("====>MainAbility3 terminateSelf====>");
     });
 }
-
 export default class MainAbility3 extends Ability {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log("[Demo] MainAbility3 onCreate");
-    AppStorage.setOrCreate<common.UIAbilityContext>("abilityContextMainAbility3", this.context);
-  }
+    onCreate(want, launchParam) {
+        console.log("[Demo] MainAbility3 onCreate")
+        globalThis.abilityContextMainAbility3 = this.context
+    }
 
-  onDestroy() {
-    console.log("[Demo] MainAbility3 onDestroy");
-  }
+    onDestroy() {
+        console.log("[Demo] MainAbility3 onDestroy")
+    }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    console.log("[Demo] MainAbility3 onWindowStageCreate");
+    onWindowStageCreate(windowStage) {
+        // Main window is created, set main page for this ability
+        console.log("[Demo] MainAbility3 onWindowStageCreate")
 
-    windowStage.loadContent("pages/index", null);
-  }
+        windowStage.setUIContent(this.context, "pages/index", null)
+    }
 
-  onWindowStageDestroy() {
-    // Main window is destroyed, release UI related resources
-    console.log("[Demo] MainAbility3 onWindowStageDestroy");
-  }
+    onWindowStageDestroy() {
+        // Main window is destroyed, release UI related resources
+        console.log("[Demo] MainAbility3 onWindowStageDestroy")
+    }
 
-  onForeground() {
-    // Ability has brought to foreground
-    console.log("[Demo] MainAbility3 onForeground");
-    setTimeout(() => {
-      AppStorage.get<abilityDelegatorRegistry.AbilityDelegator>("abilitydelegator")!.getCurrentTopAbility()
-        .then((data: UIAbility) => {
-          AppStorage.setOrCreate<UIAbility>("ability3", data);
-          console.debug("====>MainAbility getCurrentTopAbility:====>" + JSON.stringify(AppStorage.get<UIAbility>("ability3")!));
-          commonEvent.publish("ACTS_DoAbility_Event", PublishCallBackOne);
+    onForeground() {
+        // Ability has brought to foreground
+        console.log("[Demo] MainAbility3 onForeground");
+        setTimeout(() => {
+          globalThis.abilitydelegator.getCurrentTopAbility().then((data)=>{
+            globalThis.ability3 = data
+            console.debug("====>MainAbility getCurrentTopAbility:====>" + JSON.stringify(globalThis.ability3));
+            commonEvent.publish("ACTS_DoAbility_Event", PublishCallBackOne);
         })
-    }, 1000);
-  }
+        }, 1000);
+    }
 
-  onBackground() {
-    // Ability has back to background
-    console.log("[Demo] MainAbility3 onBackground");
-  }
-}
+    onBackground() {
+        // Ability has back to background
+        console.log("[Demo] MainAbility3 onBackground")
+    }
+};
