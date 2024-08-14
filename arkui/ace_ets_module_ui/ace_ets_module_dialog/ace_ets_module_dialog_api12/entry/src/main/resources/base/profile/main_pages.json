@@ -53,6 +53,7 @@
     "MainAbility/pages/UIContext/updateBindSheet",
     "MainAbility/pages/UIContext/updateCustomDialog",
     "MainAbility/pages/Menu/MenuApi/subMenuExpandingMode_STACK_EXPAND",
-    "MainAbility/pages/Dialog/InterstitialDialogAction"
+    "MainAbility/pages/Dialog/InterstitialDialogAction",
+    "MainAbility/pages/promptAction/showToast"
   ]
 }
