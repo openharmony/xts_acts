@@ -51,6 +51,7 @@ import chipDirectionTest from './chip/chipDirection.test';
 import counterDirectionTest from './counter/counterDirection.test';
 import popupDirectionTest from './popup/popupDirectionTest.test';
 import segmentButtonDirectionTest from './segmenButton/segmentbuttonDirection.test';
+import composeTitleBarTest from './composeTitleBar/composeTitleBar.test';
 
 import FileButtonContinueToReceiveTest from './downloadFileButton/FileButtonContinueToReceiveTest.test.ets';
 import FileButtonDownloadTest from './downloadFileButton/FileButtonDownloadTest.test.ets';
@@ -101,6 +102,7 @@ export default function testsuite() {
   subHeaderButton();
   subHeaderIconGroup();
   subHeaderTextArrow();
+  composeTitleBarTest();
 
   FileButtonContinueToReceiveTest();
   FileButtonDownloadTest();
