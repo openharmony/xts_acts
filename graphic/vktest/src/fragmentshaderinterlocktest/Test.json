@@ -40,24 +40,22 @@
             "type": "PushKit"
         },
         {
-            "type": "CommandKit",
-            "teardown": [
-                {
-                    "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanFragmentshaderinterlockTest.qpa->ActsVulkanFragmentshaderinterlockTest.qpa"
-                }
-            ]
+        "type": "CommandKit",
+        "teardown": [{
+        "name": "pull",
+        "value": "/data/local/tmp/ActsVulkanFragmentshaderinterlockTest.qpa->ActsVulkanFragmentshaderinterlockTest.qpa"
+        }]
         },
         {
-            "type": "ShellKit",
-            "run-command": [
-                "remount",
-                "mkdir /data/test",
-                "cd /data/local/tmp"
-            ],
-            "teardown-localcommand": [
-                "python testcases/vulkandata/genlocal.py ActsVulkanFragmentshaderinterlockTest fragment-shader-interlock.txt"
-            ]
+          "type": "ShellKit",
+          "run-command": [
+              "remount",
+              "mkdir /data/test",
+              "cd /data/local/tmp"
+          ],
+          "teardown-localcommand": [
+          "python testcases/vulkandata/genlocal.py ActsVulkanFragmentshaderinterlockTest fragment-shader-interlock.txt"
+          ]
         }
 
     ]
