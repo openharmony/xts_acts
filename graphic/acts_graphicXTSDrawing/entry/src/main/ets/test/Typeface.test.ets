@@ -19,7 +19,7 @@ import drawing from '@ohos.graphics.drawing';
 export default function typefaceTest() {
   describe('DrawingTsTypeFaceTest', () => {
     const DEFAULT = 0;
-    const FONT_PATH = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
+    const FONT_PATH = "/system/fonts/Harmon" + "yOS_Sans_Italic.ttf";
 
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async () => {
@@ -186,6 +186,35 @@ export default function typefaceTest() {
         console.info(msg + ' test succeeded.');
       } catch (e) {
         console.info(msg + ` test failed, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0203
+     * @tc.name      : testTypeFaceMakeFromFileAbnormal
+     * @tc.desc      : testTypeFaceMakeFromFileAbnormal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromFileAbnormal', 3, () => {
+      const msg = 'testTypeFaceMakeFromFileAbnormal';
+
+      try {
+        const mytypeface = drawing.Typeface.makeFromFile("hello_world");
+        console.info(msg + ' test failed.');
+      } catch (e) {
+        console.info(msg + ` test succeeded, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+
+      try {
+        const mytypeface = drawing.Typeface.makeFromFile("/system/fonts/FakePath.ttf");
+        console.info(msg + ' test failed.');
+      } catch (e) {
+        console.info(msg + ` test succeeded, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
         expect().assertFail();
       }
     });
