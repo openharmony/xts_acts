@@ -10,11 +10,11 @@
     },
     "kits": [
         {
-            "test-file-name": [
+        "test-file-name": [
                 "ActsNotificationSecondaryDirectoryTest.hap"
-            ],
-            "type": "AppInstallKit",
-            "cleanup-apps": true
+        ],
+        "type": "AppInstallKit",
+        "cleanup-apps": true
         },
         {
             "type":"ShellKit",
@@ -22,6 +22,6 @@
                 "anm setting -e com.example.secondaryDirectory:0:1"
             ],
             "cleanup-apps":true
-        }
+}
     ] 
 }
