@@ -2073,7 +2073,7 @@ export default function windowPropertiesTest(windowStage: ohosWindow.WindowStage
         done();
       } catch (exception) {
         console.error(`${caseName} Failed to set the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
-        expect(exception.code).assertEqual(1300002);
+        expect(exception.code).assertEqual(1300004);
         done();
       }
     })
