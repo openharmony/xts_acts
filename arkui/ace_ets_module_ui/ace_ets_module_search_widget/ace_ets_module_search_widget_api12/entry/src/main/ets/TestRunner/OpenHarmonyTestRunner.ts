@@ -19,16 +19,6 @@ var abilityDelegator = undefined
 var abilityDelegatorArguments = undefined
 
 
-function sleep(time){
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            resolve("ok")
-        },time)
-    }).then(()=>{
-        console.info(`sleep ${time} over...`)
-    })
-}
-
 function translateParamsToString(parameters) {
     const keySet = new Set([
         '-s class', '-s notClass', '-s suite', '-s it',
@@ -78,14 +68,6 @@ export default class OpenHarmonyTestRunner implements TestRunner {
             cmd += ' -D'
         }
         console.info('cmd : '+cmd)
-        var cmdIn = "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100"
-        abilityDelegator.executeShellCommand(cmdIn,
-            (err: any, d: any) => {
-                console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                console.info('executeShellCommand : data : ' + d.stdResult);
-                console.info('executeShellCommand : data : ' + d.exitCode);
-            })
-        await sleep(500)
         abilityDelegator.executeShellCommand(cmd,
             (err: any, d: any) => {
                 console.info('executeShellCommand : err : ' + JSON.stringify(err));
