@@ -47,7 +47,7 @@ export default function btBleServerNopUiJsunit() {
     });
     /**
      * @tc.number: testGattServerSendResponseNop
-     * @tc.name: testGattServerSendResponseNop
+     * @tc.name: testSendResponse
      * @tc.desc: test gatt server sendResponse without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -71,13 +71,13 @@ export default function btBleServerNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `gattServer sendResponse error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testGattServerNotifyCharacteristicChangedNop
-     * @tc.name: testGattServerNotifyCharacteristicChangedNop
+     * @tc.name: tesNotifyCharacteristicChanged
      * @tc.desc: test gatt server notifyCharacteristicChanged by promise without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -99,13 +99,13 @@ export default function btBleServerNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `gattServer notifyCharacteristicChanged error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testGattServerNotifyCharacteristicChangedAsyncCallbackNop
-     * @tc.name: testGattServerNotifyCharacteristicChangedAsyncCallbackNop
+     * @tc.name: testNotifyCharacteristicChanged
      * @tc.desc: test gatt server notifyCharacteristicChanged by async callback without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -139,13 +139,13 @@ export default function btBleServerNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `callback gattServer notifyCharacteristicChanged error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testGattServerCloseNop
-     * @tc.name: testGattServerCloseNop
+     * @tc.name: testClose
      * @tc.desc: test gatt server close without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -159,7 +159,7 @@ export default function btBleServerNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `gattServer close error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })

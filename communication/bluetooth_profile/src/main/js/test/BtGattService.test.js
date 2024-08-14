@@ -41,16 +41,24 @@ describe('btGattServiceTest', function() {
     }
 
     async function clickTheWindow() {
+        console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
         try {
-            console.info('[bluetooth_js] clickRequestPermission start');
-            let driver = Driver.create();
-            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text("开启"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] clickRequestPermission end');
+            console.info('[bluetooth_js] click 开启 end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed');
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
         }
     }
 
@@ -110,9 +118,10 @@ describe('btGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_GATTSERCONNECT_0100
-     * @tc.name test Server connectStateChange
+     * @tc.name testConnectStateChange
      * @tc.desc Test on and off api .
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTSERCONNECT_0100', 0, async function (done) {
@@ -127,7 +136,7 @@ describe('btGattServiceTest', function() {
             gattClient.connect();
         } catch (error) {
             console.error(`[bluetooth_js]code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
         }
         await gattServer.off("connectStateChange");
         done();
@@ -138,6 +147,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_ADDSERVICE_0100', 0, async function (done) {
@@ -167,6 +177,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_ADDSERVICE_0200', 0, async function (done) {
@@ -193,7 +204,7 @@ describe('btGattServiceTest', function() {
             console.info('[bluetooth_js] bluetooth addService a characteristics result : ' + ret);
         } catch (error) {
             console.error(`[bluetooth_js] failed, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
         done();
     })
@@ -203,6 +214,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_ADDSERVICE_0300', 0, async function (done) {
@@ -244,6 +256,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_ADDSERVICE_0400', 0, async function (done) {
@@ -259,6 +272,7 @@ describe('btGattServiceTest', function() {
         characteristics:characteristics, includeServices:[]};
         let ret = gattServer.addService(gattService);
         console.info('[bluetooth_js] bluetooth addService not descriptors result : ' + ret);
+        expect(true).assertEqual(ret != null);
         done();
     })
  
@@ -267,6 +281,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_ADDSERVICE_0500', 0, async function (done) {
@@ -290,6 +305,7 @@ describe('btGattServiceTest', function() {
         characteristics:characteristics, includeServices:[]};
         let ret = gattServer.addService(gattService);
         console.info('[bluetooth_js] bluetooth addService a descriptors result : ' + ret);
+        expect(true).assertEqual(ret != null);
         done();
     })
 
@@ -298,6 +314,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_ADDSERVICE_0600', 0, async function (done) {
@@ -327,6 +344,7 @@ describe('btGattServiceTest', function() {
         characteristics:characteristics, includeServices:[]};
         let ret = gattServer.addService(gattService);
         console.info('[bluetooth_js] bluetooth addService more descriptors result : ' + ret);
+        expect(true).assertEqual(ret != null);
         done();
     })
 
@@ -335,6 +353,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_ADDSERVICE_0700', 0, async function (done) {
@@ -358,6 +377,7 @@ describe('btGattServiceTest', function() {
         characteristics:characteristics, includeServices:[]};
         let ret = gattServer.addService(gattService);
         console.info('[bluetooth_js] bluetooth addService isPrimary result : ' + ret);
+        expect(true).assertEqual(ret != null);
         done();
     })
 
@@ -366,6 +386,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_ADDSERVICE_0800', 0, async function (done) {
@@ -389,6 +410,7 @@ describe('btGattServiceTest', function() {
         characteristics:characteristics, includeServices:[]};
         let ret = gattServer.addService(gattService);
         console.info('[bluetooth_js] bluetooth addService isNotPrimary result : ' + ret);
+        expect(true).assertEqual(ret != null);
         done();
     })
 
@@ -397,6 +419,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_ADDSERVICE_0900', 0, async function (done) {
@@ -420,6 +443,7 @@ describe('btGattServiceTest', function() {
         characteristics:characteristics, includeServices:[]};
         let ret = gattServer.addService(gattService);
         console.info('[bluetooth_js] bluetooth addService null serviceUuid result : ' + ret);
+        expect(true).assertEqual(ret != null);
         done();
     })
 
@@ -428,6 +452,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_ADDSERVICE_1000', 0, async function (done) {
@@ -451,6 +476,7 @@ describe('btGattServiceTest', function() {
         characteristics:characteristics, includeServices:[]};
         let ret = gattServer.addService(gattService);
         console.info('[bluetooth_js] bluetooth addService invalid serviceUuid result : ' + ret);
+        expect(true).assertEqual(ret != null);
         done();
     })
 
@@ -459,6 +485,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_ADDSERVICE_1100', 0, async function (done) {
@@ -481,6 +508,7 @@ describe('btGattServiceTest', function() {
         characteristics:characteristics, includeServices:[]};
         let ret = gattServer.addService(gattService);
         console.info('[bluetooth_js] bluetooth addService null characteristicValue result : ' + ret);
+        expect(true).assertEqual(ret != null);
         done();
     })
 
@@ -489,6 +517,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_ADDSERVICE_1200', 0, async function (done) {
@@ -521,6 +550,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testRemoveService
      * @tc.desc Test RemoveService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_REMOVESERVICE_0200', 0, async function (done) {
@@ -535,6 +565,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testRemoveService
      * @tc.desc Test RemoveService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_REMOVESERVICE_0300', 0, async function (done) {
@@ -563,6 +594,7 @@ describe('btGattServiceTest', function() {
             let ret = gattServer.removeService('00001810-0000-1000-8000-00805F9B21HZ');
             await sleep(1000);
             console.info('[bluetooth_js]removeService ret:'+ret);
+            expect(ret).assertFalse();
         } catch (error) {
             console.error(`[bluetooth_js]Connect_0100 failed, code is ${error.code},message is ${error.message}`);
         }
@@ -574,6 +606,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testNotifyCharacteristicChanged
      * @tc.desc Test NotifyCharacteristicChanged api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_NOTIFYCHARACTERISTIC_0100', 0, async function (done) {
@@ -594,6 +627,7 @@ describe('btGattServiceTest', function() {
           characteristic.characteristicValue, confirm: false};
         let ret = gattServer.notifyCharacteristicChanged('00:11:22:33:44:55', NotifyCharacteristic);
         console.info('[bluetooth_js] notifyCharacteristicChanged ret : ' + ret);
+        expect(ret).assertFalse();
         done();
     })
 
@@ -602,6 +636,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testNotifyCharacteristicChanged
      * @tc.desc Test NotifyCharacteristicChanged api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_NOTIFYCHARACTERISTIC_0200', 0, async function (done) {
@@ -622,6 +657,7 @@ describe('btGattServiceTest', function() {
           characteristic.characteristicValue, confirm: false};
         let ret = gattServer.notifyCharacteristicChanged('00:11:22:33:44:55', notifyCharacteristic);
         console.info('[bluetooth_js] notifyCharacteristicChanged ret : ' + ret);
+        expect(ret).assertFalse();
         done();
     })
 
@@ -630,6 +666,7 @@ describe('btGattServiceTest', function() {
      * @tc.name testNotifyCharacteristicChanged
      * @tc.desc Test NotifyCharacteristicChanged api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_NOTIFYCHARACTERISTIC_0300', 0, async function (done) {
@@ -642,9 +679,10 @@ describe('btGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_SENDRESPONSE_0100
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SENDRESPONSE_0100', 0, async function (done) {
@@ -661,9 +699,10 @@ describe('btGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_SENDRESPONSE_0200
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SENDRESPONSE_0200', 0, async function (done) {

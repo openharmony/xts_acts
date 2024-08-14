@@ -41,16 +41,24 @@ describe('btManagerGattServiceTest', function() {
     }
 
     async function clickTheWindow() {
+        console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
         try {
-            console.info('[bluetooth_js] clickRequestPermission start');
-            let driver = Driver.create();
-            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text("开启"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] clickRequestPermission end');
+            console.info('[bluetooth_js] click 开启 end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed');
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
         }
     }
 
@@ -106,9 +114,10 @@ describe('btManagerGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_GATTSERCONNECT_0100
-     * @tc.name test Server connectStateChange
+     * @tc.name testConnectStateChange
      * @tc.desc Test on and off api .
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_GATTSERCONNECT_0100', 0, async function (done) {
@@ -125,7 +134,7 @@ describe('btManagerGattServiceTest', function() {
             gattServer.off("connectStateChange");
         } catch (error) {
             console.error(`[bluetooth_js]Connect_0100 failed, code is ${error.code},message is ${error.message}`);
-              expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
         }
         done();
     })
@@ -135,6 +144,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test api 401 - characteristics of service is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_0100', 0, async function (done) { 
@@ -150,7 +160,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]AddService1 failed, error.code:'+JSON.stringify(error.code)
             +'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
     })
@@ -160,6 +170,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_0200', 0, async function (done) {
@@ -190,7 +201,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]AddService2 failed, code is ${error.code},
                   message is ${error.message}`);
-            expect(error.code).assertEqual(401);  
+                  expect(Number(error.code)).assertEqual(401);  
             done()
         }       
     })
@@ -200,6 +211,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_0300', 0, async function (done) {
@@ -234,7 +246,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]AddService3 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);  
+            expect(Number(error.code)).assertEqual(401);  
             done()
         }
        
@@ -245,6 +257,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_0400', 0, async function (done) {
@@ -268,7 +281,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]AddService4 failed, error.code:'+JSON.stringify(error.code)
             +'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
        
@@ -279,6 +292,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_0500', 0, async function (done) {
@@ -309,7 +323,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]AddService5 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);  
+            expect(Number(error.code)).assertEqual(401);  
             done()
         }
        
@@ -320,6 +334,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_0600', 0, async function (done) {
@@ -356,7 +371,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]AddService6 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);  
+            expect(Number(error.code)).assertEqual(401);  
             done()
         }      
     })
@@ -366,6 +381,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_0700', 0, async function (done) {
@@ -396,7 +412,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]AddService7 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);  
+            expect(Number(error.code)).assertEqual(401);  
             done()
         }
         
@@ -407,6 +423,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_0800', 0, async function (done) {
@@ -437,7 +454,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]AddService8 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);  
+            expect(Number(error.code)).assertEqual(401);  
             done()
         }
         
@@ -448,6 +465,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_0900', 0, async function (done) {
@@ -479,7 +497,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]AddService9 failed, error.code:'+JSON.stringify(error.code)
             +'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
         
@@ -490,6 +508,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_1000', 0, async function (done) {
@@ -521,7 +540,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]AddService10 failed, error.code:'+JSON.stringify(error.code)
             +'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
         
@@ -532,6 +551,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_1100', 0, async function (done) {
@@ -561,7 +581,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]AddService11 failed, error.code:'+JSON.stringify(error.code)
             +'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
         
@@ -572,6 +592,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_1200', 0, async function (done) {
@@ -602,7 +623,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]AddService12 failed, error.code:'+JSON.stringify(error.code)
             +'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
        
@@ -613,6 +634,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test api 401 - null gattService parameters.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_2000', 0, async function (done) {
@@ -624,7 +646,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]addService20 error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+                   expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -634,6 +656,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test api 401 -  parameters is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_2100', 0, async function (done) {
@@ -645,7 +668,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]addService21 error.code:'+JSON.stringify(error.code)+
             'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -655,6 +678,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test api 401 - serviceUuid of gattService is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_2200', 0, async function (done) {
@@ -686,7 +710,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]addService22 error.code:'+JSON.stringify(error.code)+
             'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -696,6 +720,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test api 401 - serviceUuid of gattService is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_2300', 0, async function (done) {
@@ -727,7 +752,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]addService23 error.code:'+JSON.stringify(error.code)+
             'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -737,6 +762,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test api 401 - isPrimary of gattService is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_2400', 0, async function (done) {
@@ -768,7 +794,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]addService24 error.code:'+JSON.stringify(error.code)+
             'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -778,6 +804,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test api 401 - isPrimary of gattService is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_2500', 0, async function (done) {
@@ -809,7 +836,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]addService25 error.code:'+JSON.stringify(error.code)+
             'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -819,6 +846,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test api 401 - characteristics of gattService is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_ADDSERVICE_2600', 0, async function (done) {
@@ -834,7 +862,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]addService26 error.code:'+JSON.stringify(error.code)+
             'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -844,6 +872,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testRemoveService
      * @tc.desc Test RemoveService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_REMOVESERVICE_0100', 0, async function (done) {
@@ -877,7 +906,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]removeService1 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
         
@@ -888,6 +917,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testRemoveService
      * @tc.desc Test RemoveService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_REMOVESERVICE_0200', 0, async function (done) {
@@ -898,7 +928,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]removeService2 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
        
@@ -909,6 +939,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testRemoveService
      * @tc.desc Test RemoveService api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_REMOVESERVICE_0300', 0, async function (done) {
@@ -941,7 +972,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]removeService3 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
     })
@@ -951,6 +982,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testRemoveService
      * @tc.desc Test RemoveService 401-null parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
       it('SUB_COMMUNICATION_BTMANAGER_REMOVESERVICE_0400', 0, async function (done) {
@@ -961,7 +993,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]removeService4 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
        
@@ -972,6 +1004,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testRemoveService
      * @tc.desc Test RemoveService 401-error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_REMOVESERVICE_0500', 0, async function (done) {
@@ -982,7 +1015,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]removeService5 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }   
     })
@@ -992,6 +1025,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testNotifyCharacteristicChanged
      * @tc.desc Test NotifyCharacteristicChanged api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_NOTIFYCHARACTERISTIC_0100', 0, async function (done) {
@@ -1017,7 +1051,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]notifyCharacteristicChanged1 failed, code:'
             +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
         
@@ -1028,6 +1062,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testNotifyCharacteristicChanged
      * @tc.desc Test NotifyCharacteristicChanged api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_NOTIFYCHARACTERISTIC_0200', 0, async function (done) {
@@ -1053,7 +1088,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]notifyCharacteristicChanged2 failed, code:'
             +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
         
@@ -1064,6 +1099,7 @@ describe('btManagerGattServiceTest', function() {
      * @tc.name testNotifyCharacteristicChanged
      * @tc.desc Test NotifyCharacteristicChanged api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_NOTIFYCHARACTERISTIC_0300', 0, async function (done) {
@@ -1075,7 +1111,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]notifyCharacteristicChanged3 failed, code:'
             +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);  
+            expect(Number(error.code)).assertEqual(401);  
             done()
         }
        
@@ -1083,9 +1119,10 @@ describe('btManagerGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SENDRESPONSE_0100
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SENDRESPONSE_0100', 0, async function (done) {
@@ -1101,7 +1138,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]sendResponse1 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
             done()
         }
         
@@ -1109,9 +1146,10 @@ describe('btManagerGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SENDRESPONSE_0200
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SENDRESPONSE_0200', 0, async function (done) {
@@ -1127,7 +1165,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]sendResponse2 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
             done()
         }
         
@@ -1135,9 +1173,10 @@ describe('btManagerGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SENDRESPONSE_0300
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse 401 -null parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SENDRESPONSE_0300', 0, async function (done) {
@@ -1148,7 +1187,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]sendResponse3 error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+                   expect(Number(error.code)).assertEqual(401);
             done()
         }
         
@@ -1156,9 +1195,10 @@ describe('btManagerGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SENDRESPONSE_0400
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse 401 -error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SENDRESPONSE_0400', 0, async function (done) {
@@ -1174,7 +1214,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]sendResponse4 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
         
@@ -1182,9 +1222,10 @@ describe('btManagerGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0333
-     * @tc.name testSendResponse success
+     * @tc.name testBluetoothState
      * @tc.desc Test SendResponse 401 -error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0333', 0, async function (done) {
@@ -1215,9 +1256,10 @@ describe('btManagerGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0555
-     * @tc.name testSendResponse success
+     * @tc.name testScanMode
      * @tc.desc Test SendResponse 401 -error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0555', 0, async function (done) {
@@ -1250,9 +1292,10 @@ describe('btManagerGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0666
-     * @tc.name testSendResponse success
+     * @tc.name testProfileConnectionState
      * @tc.desc Test SendResponse 401 -error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0666', 0, async function (done) {
@@ -1273,9 +1316,10 @@ describe('btManagerGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0777
-     * @tc.name testSendResponse success
+     * @tc.name testScanDuty
      * @tc.desc Test SendResponse 401 -error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0777', 0, async function (done) {
@@ -1294,9 +1338,10 @@ describe('btManagerGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0888
-     * @tc.name testSendResponse success
+     * @tc.name testProfileId
      * @tc.desc Test SendResponse 401 -error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0888', 0, async function (done) {
@@ -1318,9 +1363,10 @@ describe('btManagerGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0999
-     * @tc.name testSendResponse success
+     * @tc.name testPlayingState
      * @tc.desc Test SendResponse 401 -error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0999', 0, async function (done) {
@@ -1339,9 +1385,10 @@ describe('btManagerGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1111
-     * @tc.name testSendResponse success
+     * @tc.name testMajorClass
      * @tc.desc Test SendResponse 401 -error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1111', 0, async function (done) {
@@ -1383,9 +1430,10 @@ describe('btManagerGattServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1112
-     * @tc.name testSendResponse success
+     * @tc.name testMajorMinorClass
      * @tc.desc Test SendResponse 401 -error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1112', 0, async function (done) {
