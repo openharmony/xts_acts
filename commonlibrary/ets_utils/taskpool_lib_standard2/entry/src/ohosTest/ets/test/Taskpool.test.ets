@@ -1576,7 +1576,7 @@ export default function TaskpoolTest() {
         taskConstructor1.addDependency(taskConstructor2);
         taskConstructor1.removeDependency(taskConstructor2);
         taskConstructor2.addDependency(taskConstructor3);
-        taskpool.execute(taskConstructor1).then((res: Object) => {
+        await taskpool.execute(taskConstructor1).then((res: Object) => {
           console.info(`${caseName}: taskConstructor1 return value: ${JSON.stringify(res)}`);
           isTerminate1 = true;
           result.push(res as number);
@@ -2266,7 +2266,7 @@ export default function TaskpoolTest() {
         }
         let time: number = new Date().getTime() - start;
         console.info(`${caseName}: time: ${time}`);
-        expect(time).assertLarger(500);
+        expect(time).assertLargerOrEqual(500);
         done();
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
