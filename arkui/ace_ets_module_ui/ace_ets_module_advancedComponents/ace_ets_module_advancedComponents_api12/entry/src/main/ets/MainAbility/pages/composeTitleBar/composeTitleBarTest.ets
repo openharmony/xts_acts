@@ -72,7 +72,7 @@ struct composeTitleBarTest {
         Divider().height(2).color(0xCCCCCC)
         ComposeTitleBar({
           menuItems: [{ isEnabled: true, value: $r('app.media.ic_public_save'),
-            action: () => promptAction.showToast({ message: "show toast index 1" })
+            action: () => promptAction.showToast({ message: 'show toast index 1' })
           }],
           title: 'titleD',
           subtitle: 'subtitleD',
