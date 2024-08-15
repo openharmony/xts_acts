@@ -5549,4 +5549,79 @@ describe('BufferTest', function () {
     expect(bufObj.readUInt8(6)).assertEqual(254);
     expect(bufObj.readUInt8(7)).assertEqual(1);
   });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32200
+   * @tc.name: testfrom0270
+   * @tc.desc: Create a new buffer containing parameter is non integer
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+       it("testfrom0270", 0, function () {
+        let ab = new ArrayBuffer(100);
+        let buf = buffer.from(ab, 1.2, 1.2);
+        let res = buf.toString('hex');
+        expect(res).assertEqual('00');
+    });
+  
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32300
+     * @tc.name: testfrom0271
+     * @tc.desc: Create a new buffer containing parameter is non integer
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testfrom0271", 0, function () {
+        let ab = new ArrayBuffer(100);
+        let buf = buffer.from(ab, 1, 1.2);
+        let res = buf.toString('hex');
+        expect(res).assertEqual('00');
+    });
+  
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32400
+     * @tc.name: testfrom0272
+     * @tc.desc: Create a new buffer containing parameter is non integer
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+       it("testfrom0272", 0, function () {
+        let ab = new ArrayBuffer(100);
+        let buf = buffer.from(ab, 1.2, 1);
+        let res = buf.toString('hex');
+        expect(res).assertEqual('00');
+    });
+  
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32500
+     * @tc.name: testfrom0273
+     * @tc.desc: Create a new buffer containing parameter is non integer
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testfrom0273", 0, function () {
+        let ab = new ArrayBuffer(100);
+        let buf = buffer.from(ab, 9.9, 9.9);
+        let res = buf.toString('hex');
+        expect(res).assertEqual('000000000000000000');
+    });
+  
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32600
+     * @tc.name: testfrom0274
+     * @tc.desc: Create a new buffer containing parameter is non integer
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+     it("testfrom0274", 0, function () {
+      let ab = new ArrayBuffer(100);
+      let buf = buffer.from(ab, 2.9, 2.9);
+      let res = buf.toString('hex');
+      expect(res).assertEqual('0000');
+    });
 })}
