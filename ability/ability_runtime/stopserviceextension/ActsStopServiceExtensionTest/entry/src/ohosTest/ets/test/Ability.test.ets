@@ -14,10 +14,15 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
+import { BusinessError } from '@ohos.base';
+import commonEventManager from '@ohos.commonEventManager';
 import Want from '@ohos.app.ability.Want';
+import common from '@ohos.app.ability.common';
+import bundleManager from '@ohos.bundle.bundleManager';
+import rpc from '@ohos.rpc';
 
 const CASE_TIME_OUT = 5000;
-let ACTS_StopServiceExtension = {
+let ACTS_StopServiceExtension:commonEventManager.CommonEventSubscribeInfo = {
   events: ["ACTS_StopEvent_First", "ACTS_StopEvent_Second", "ACTS_StopEvent_Third"]
 };
 
@@ -51,7 +56,7 @@ export default function abilityTest() {
         console.info("====>Acts_StopServiceExtension_0100 Create Subscribe");
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
-        globalThis.abilityContext.startAbility(want, (err) => {
+        globalThis.abilityContext.startAbility(want, (err:BusinessError) => {
           console.info("====>Acts_StopServiceExtension_0100 startAbility err: " + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -61,7 +66,7 @@ export default function abilityTest() {
         console.info("====>Acts_StopServiceExtension_0100 subscribeCallBack data: " + JSON.stringify(data));
         if (data.event == "ACTS_StopEvent_First") {
           flag = true;
-          globalThis.abilityContext.stopServiceExtensionAbility(want, (err) => {
+          globalThis.abilityContext.stopServiceExtensionAbility(want, (err:BusinessError) => {
             console.info("====>Acts_StopServiceExtension_0100 stopServiceExtensionAbility err: " + JSON.stringify(err));
             expect(err.code).assertEqual(0);
             commonEvent.unsubscribe(subscriber, unSubscribeCallback);
@@ -102,7 +107,7 @@ export default function abilityTest() {
             bundleName: "com.acts.stopserviceextensiontest",
             abilityName: "ServiceAbility",
             action: "Acts_StopServiceExtension_0200"
-          }, (err) => {
+          }, (err:BusinessError) => {
           console.info("====>Acts_StopServiceExtension_0200 startAbility err: " + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -129,7 +134,7 @@ export default function abilityTest() {
         globalThis.abilityContext.stopServiceExtensionAbility({
           bundleName: "com.acts.stopserviceextensiontest",
           abilityName: "ServiceAbility"
-        }, (err) => {
+        }, (err:BusinessError) => {
           console.info("====>Acts_StopServiceExtension_0200 stop ServiceAbility err: " + JSON.stringify(err));
           expect(err.code).assertEqual(0);
           console.info("====>Acts_StopServiceExtension_0200 unSubscribeCallback");
@@ -164,7 +169,7 @@ export default function abilityTest() {
         console.info("====>Acts_StopServiceExtension_0300 Create Subscribe");
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
-        globalThis.abilityContext.startServiceExtensionAbility(want, (err) => {
+        globalThis.abilityContext.startServiceExtensionAbility(want, (err:BusinessError) => {
           console.info("====>Acts_StopServiceExtension_0300 startAbility err: " + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -174,7 +179,7 @@ export default function abilityTest() {
         console.info("====>Acts_StopServiceExtension_0300 subscribeCallBack data: " + JSON.stringify(data));
         if (data.event == "ACTS_StopEvent_First") {
           flag = true;
-          globalThis.abilityContext.stopServiceExtensionAbility(want, (err) => {
+          globalThis.abilityContext.stopServiceExtensionAbility(want, (err:BusinessError) => {
             console.info("====>Acts_StopServiceExtension_0300 stopServiceExtensionAbility err: " +
             JSON.stringify(err));
             expect(err.code).assertEqual(0);
@@ -216,7 +221,7 @@ export default function abilityTest() {
             bundleName: "com.acts.stopserviceextensiontest",
             abilityName: "ServiceAbility",
             action: "Acts_StopServiceExtension_0400"
-          }, (err) => {
+          }, (err:BusinessError) => {
           console.info("====>Acts_StopServiceExtension_0400 startAbility err: " + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -243,7 +248,7 @@ export default function abilityTest() {
         globalThis.abilityContext.stopServiceExtensionAbility({
           bundleName: "com.acts.stopserviceextensiontest",
           abilityName: "ServiceAbility"
-        }, (err) => {
+        }, (err:BusinessError) => {
           console.info("====>Acts_StopServiceExtension_0400 stop ServiceAbility err: " + JSON.stringify(err));
           expect(err.code).assertEqual(0);
           console.info("====>Acts_StopServiceExtension_0400 unSubscribeCallback");
@@ -274,7 +279,7 @@ export default function abilityTest() {
         abilityName: "ServiceAbility",
         action: "Acts_StopServiceExtension_0500"
       }
-      let options = {
+      let options:common.ConnectOptions = {
         onConnect: async (element: ESObject, proxy: ESObject) => {
           console.info("Acts_StopServiceExtension_0500 service onConnect success!!!")
           console.info('Acts_StopServiceExtension_0500 service onConnect element : ' + JSON.stringify(element));
@@ -296,7 +301,7 @@ export default function abilityTest() {
         console.info("====>Acts_StopServiceExtension_0500 Create Subscribe");
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
-        globalThis.abilityContext.connectServiceExtensionAbility(want, options, (err) => {
+        globalThis.abilityContext.connectServiceExtensionAbility(want, options, (err:BusinessError) => {
           console.info("====>Acts_StopServiceExtension_0500 startAbility err: " + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -306,7 +311,7 @@ export default function abilityTest() {
         console.info("====>Acts_StopServiceExtension_0500 subscribeCallBack data: " + JSON.stringify(data));
         if (data.event == "ACTS_StopEvent_First") {
           flag = true;
-          globalThis.abilityContext.stopServiceExtensionAbility(want, (err) => {
+          globalThis.abilityContext.stopServiceExtensionAbility(want, (err:BusinessError) => {
             console.info("====>Acts_StopServiceExtension_0500 stopServiceExtensionAbility err: " + JSON.stringify(err));
             expect(err.code).assertEqual(0);
           })
@@ -346,7 +351,7 @@ export default function abilityTest() {
             bundleName: "com.acts.stopserviceextensiontest",
             abilityName: "ServiceAbility",
             action: "Acts_StopServiceExtension_0600"
-          }, (err) => {
+          }, (err:BusinessError) => {
           console.info("====>Acts_StopServiceExtension_0600 startAbility err: " + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -377,7 +382,7 @@ export default function abilityTest() {
         globalThis.abilityContext.stopServiceExtensionAbility({
           bundleName: "com.acts.stopserviceextensiontest",
           abilityName: "ServiceAbility"
-        }, (err) => {
+        }, (err:BusinessError) => {
           console.info("====>Acts_StopServiceExtension_0600 stop ServiceAbility err: " + JSON.stringify(err));
           expect(err.code).assertEqual(0);
           console.info("====>Acts_StopServiceExtension_0600 unSubscribeCallback");
@@ -400,7 +405,7 @@ export default function abilityTest() {
         abilityName: "ServiceAbility",
         action: "Acts_StopServiceExtension_0700"
       }
-      globalThis.abilityContext.stopServiceExtensionAbility(want, (err) => {
+      globalThis.abilityContext.stopServiceExtensionAbility(want, (err:BusinessError) => {
         console.info("====>Acts_StopServiceExtension_0700 stopServiceExtensionAbility err: " + JSON.stringify(err));
         expect(err.code).assertEqual(401);
         done();
@@ -426,7 +431,7 @@ export default function abilityTest() {
             bundleName: "com.acts.stopserviceextensiontest",
             abilityName: "ServiceAbility",
             action: "Acts_StopServiceExtension_0800"
-          }, (err) => {
+          }, (err:BusinessError) => {
           console.info("====>Acts_StopServiceExtension_0800 startAbility err: " + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -444,7 +449,7 @@ export default function abilityTest() {
         globalThis.abilityContext.stopServiceExtensionAbility({
           bundleName: "com.acts.stopserviceextensiontest",
           abilityName: "ServiceAbility"
-        }, (err) => {
+        }, (err:BusinessError) => {
           console.info("====>Acts_StopServiceExtension_0800 stop ServiceAbility err: " + JSON.stringify(err));
           expect(err.code).assertEqual(0);
           console.info("====>Acts_StopServiceExtension_0800 unSubscribeCallback");
@@ -474,7 +479,7 @@ export default function abilityTest() {
         abilityName: "ServiceAbility",
         action: "Acts_StopServiceExtension_1700"
       }
-      globalThis.abilityContext.stopServiceExtensionAbility(want, (err) => {
+      globalThis.abilityContext.stopServiceExtensionAbility(want, (err:BusinessError) => {
         console.info("====>Acts_StopServiceExtension_1700 stopServiceExtensionAbility err: " + JSON.stringify(err));
         expect(err.code).assertEqual(16000050);
         done();
@@ -500,7 +505,7 @@ export default function abilityTest() {
             bundleName: "com.acts.stopserviceextensiontest",
             abilityName: "ServiceAbility",
             action: "Acts_StopServiceExtension_1800"
-          }, (err) => {
+          }, (err:BusinessError) => {
           console.info("====>Acts_StopServiceExtension_1800 startAbility err: " + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -518,7 +523,7 @@ export default function abilityTest() {
         globalThis.abilityContext.stopServiceExtensionAbility({
           bundleName: "com.acts.stopserviceextensiontest",
           abilityName: "ServiceAbility"
-        }, (err) => {
+        }, (err:BusinessError) => {
           console.info("====>Acts_StopServiceExtension_1800 stop ServiceAbility err: " + JSON.stringify(err));
           expect(err.code).assertEqual(0);
           console.info("====>Acts_StopServiceExtension_1800 unSubscribeCallback");
