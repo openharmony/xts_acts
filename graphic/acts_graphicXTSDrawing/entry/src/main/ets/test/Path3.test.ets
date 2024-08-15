@@ -548,23 +548,23 @@ export default function drawingTsPath3Test() {
     it('testPathConstructorToNull', DEFAULT, () => {
       const msg = 'testPathConstructorToNull';
 
-      // try {
-      //   new drawing.Path(null);
-      //   console.info(msg + `test error`);
-      //   expect().assertFail()
-      // } catch (e) {
-      //   console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-      //   expect(e.code).assertEqual(401);
-      // }
-      //
-      // try {
-      //   new drawing.Path(undefined);
-      //   console.info(msg + `test error`);
-      //   expect().assertFail()
-      // } catch (e) {
-      //   console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-      //   expect(e.code).assertEqual(401);
-      // }
+      try {
+        new drawing.Path(null);
+        console.info(msg + `test error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        new drawing.Path(undefined);
+        console.info(msg + `test error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
     })
 
 
