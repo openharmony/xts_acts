@@ -23,6 +23,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import Want from '@ohos.app.ability.Want';
 import ability from '@ohos.ability.ability';
+import common from '@ohos.app.ability.common';
 
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 
@@ -41,7 +42,7 @@ export default function UriPermissionTest() {
       done()
     });
 
-    let abilityContext = globalThis.abilityContext;
+    let abilityContext:common.UIAbilityContext = globalThis.abilityContext;
     afterEach(async (done: Function) => {
       console.info('UriPermissionTest after each called');
       let wantInfo: Want = {
@@ -1099,7 +1100,7 @@ export default function UriPermissionTest() {
       }
       await abilityContext.startAbilityForResult(want).then((result: ability.AbilityResult) => {
         console.info(TAG8 + ' startAbilityForResult succeed');
-        let uri: string = result.want.uri;
+        let uri : string | undefined = result.want!.uri;
         if (uri == null || uri == undefined) {
           console.info(TAG8 + " uri is invalid");
           expect().assertFail();
