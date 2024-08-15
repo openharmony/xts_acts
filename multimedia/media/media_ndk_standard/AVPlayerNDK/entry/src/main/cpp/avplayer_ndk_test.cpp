@@ -44,7 +44,7 @@
 #define KNUMBER5 5
 
 #include <thread>
-static int32_t g_gPlaytime = 100;
+static int32_t g_gPlaytime = 1;
 static int32_t av_info_type_state_change = INITSUCCESS;
 
 std::string PREPATH = "/data/storage/el2/base/files/";
