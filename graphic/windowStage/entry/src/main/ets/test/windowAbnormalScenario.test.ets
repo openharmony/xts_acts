@@ -106,18 +106,18 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let mainWin = windowStage.getMainWindowSync();
       expect(!!mainWin).assertTrue();
       try {
-      mainWin.setAspectRatio(null, (err: BusinessError) => {
-        const errCode: number = err.code;
-        if (errCode) {
-          console.error(msgStr + 'Failed to set the aspect ratio of window. Cause:' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+        mainWin.setAspectRatio(null, (err: BusinessError) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(msgStr + 'Failed to set the aspect ratio of window. Cause:' + JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            done();
+            return;
+          }
+          console.info(msgStr + 'Succeeded in setting the aspect ratio of window.');
+          expect().assertFail();
           done();
-          return;
-        }
-        console.info(msgStr + 'Succeeded in setting the aspect ratio of window.');
-        expect().assertFail();
-        done();
-      });
+        });
       } catch (exception) {
         console.error(msgStr + 'Failed to set the aspect ratio of window. Cause: ' + JSON.stringify(exception));
         expect(exception.code).assertEqual(401);
@@ -319,6 +319,40 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
         expect(exception.code).assertEqual(1300002);
         done()
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4520
+     * @tc.name      : testMoveWindowToAsync_WindowStateAbnormal
+     * @tc.desc      : Move window windowStateAbnormal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testMoveWindowToAsync_WindowStateAbnormal', 0, async function () {
+      let caseName = 'testMoveWindowToAsync_WindowStateAbnormal';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let win = null;
+      win = await windowStage.createSubWindow('testMoveWindowToAsync_WindowStateAbnormal').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!win).assertTrue();
+      await win.destroyWindow();
+      try {
+        await win.moveWindowToAsync(300, 300).then(() => {
+          console.info(msgStr + 'Succeeded in moving the window.');
+          expect().assertFail();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(1300002);
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(1300002);
       }
     })
     /**
@@ -651,6 +685,189 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       }
     })
     /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4530
+     * @tc.name      : testMoveWindowToAsync_DecimalScene_ParamesOne
+     * @tc.desc      : Move window Verify decimal scene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testMoveWindowToAsync_DecimalScene_ParamesOne', 0, async function () {
+      let caseName = 'testMoveWindowToAsync_DecimalScene_ParamesOne';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let win = null;
+      win = await windowStage.createSubWindow('testMoveWindowToAsync_DecimalScene_ParamesOne').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!win).assertTrue();
+      await win.resizeAsync(500, 500).then(async () => {
+        console.info(msgStr + 'Succeeded in changing the window size.');
+      }).catch(async(exception: BusinessError) => {
+        console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      });
+      await win.loadContent('MainAbility/pages/second/second').catch((err) => {
+        console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await win.showWindow().catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await win.moveWindowToAsync(100.5555, 100).then(async () => {
+        console.info(msgStr + 'Succeeded in moving the window.');
+        let properties = win.getWindowProperties();
+        console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
+        expect(properties.windowRect.left).assertEqual(100)
+        expect(properties.windowRect.top).assertEqual(100)
+        await win.destroyWindow();
+      }).catch(async (err: BusinessError) => {
+        console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
+        await win.destroyWindow();
+        if (err.code != 801) {
+          console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(err))
+          expect(err.code).assertEqual(801);
+        }
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4540
+     * @tc.name      : testMoveWindowToAsync_DecimalScene_ParamesTwo
+     * @tc.desc      : Move window Verify decimal scene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testMoveWindowToAsync_DecimalScene_ParamesTwo', 0, async function () {
+      let caseName = 'testMoveWindowToAsync_DecimalScene_ParamesTwo';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let win = null;
+      win = await windowStage.createSubWindow('testMoveWindowToAsync_DecimalScene_ParamesTwo').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!win).assertTrue();
+      await win.resizeAsync(500, 500).then(async () => {
+        console.info(msgStr + 'Succeeded in changing the window size.');
+      }).catch(async(exception: BusinessError) => {
+        console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      });
+      await win.loadContent('MainAbility/pages/second/second').catch((err) => {
+        console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await win.showWindow().catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await win.moveWindowToAsync(205.56, 10.25).then(async () => {
+        console.info(msgStr + 'Succeeded in moving the window.');
+        let properties = win.getWindowProperties();
+        console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
+        expect(properties.windowRect.left).assertEqual(205)
+        expect(properties.windowRect.top).assertEqual(10)
+        await win.destroyWindow();
+      }).catch(async(err: BusinessError) => {
+        console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
+        await win.destroyWindow();
+        if (err.code != 801) {
+          console.error(msgStr + 'Failed to move the window.out  Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(err))
+          expect(err.code).assertEqual(801);
+        }
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4550
+     * @tc.name      : testMoveWindowToAsync_DecimalScene_ParamesThree
+     * @tc.desc      : Move window Verify decimal scene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testMoveWindowToAsync_DecimalScene_ParamesThree', 0, async function () {
+      let caseName = 'testMoveWindowToAsync_DecimalScene_ParamesThree';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let win = null;
+      win = await windowStage.createSubWindow('testMoveWindowToAsync_DecimalScene_ParamesThree').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!win).assertTrue();
+      await win.resizeAsync(500, 500).then(async () => {
+        console.info(msgStr + 'Succeeded in changing the window size.');
+      }).catch(async(exception: BusinessError) => {
+        console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      });
+      await win.loadContent('MainAbility/pages/second/second').catch((err) => {
+        console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await win.showWindow().catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await win.moveWindowToAsync(-105.2, -1056.2).then(async () => {
+        console.info(msgStr + 'Succeeded in moving the window.');
+        let properties = win.getWindowProperties();
+        console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
+        expect(properties.windowRect.left).assertEqual(-105)
+        expect(properties.windowRect.top).assertEqual(-1056)
+        await win.destroyWindow();
+      }).catch(async(err: BusinessError) => {
+        console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
+        await win.destroyWindow();
+        if (err.code != 801) {
+          console.error(msgStr + 'Failed to move the window  Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(err))
+          expect(err.code).assertEqual(801);
+        }
+      });
+    })
+    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2470
      * @tc.name      : testResize_WindowStateAbnormal_Promise
      * @tc.desc      : Change the current window size
@@ -727,6 +944,40 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         console.error(msgStr + 'Failed to change the window size. Cause:' + JSON.stringify(exception));
         expect(exception.code).assertEqual(1300002);
         done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4560
+     * @tc.name      : testresizeAsync_WindowStateAbnormal
+     * @tc.desc      : Change the current window size
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testresizeAsync_WindowStateAbnormal', 0, async function () {
+      let caseName = 'testresizeAsync_WindowStateAbnormal';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let win = null;
+      win = await windowStage.createSubWindow('testresizeAsync_WindowStateAbnormal').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!win).assertTrue();
+      await win.destroyWindow();
+      try {
+        await win.resizeAsync(500, 1000).then(() => {
+          console.info(msgStr + 'Succeeded in changing the window size.');
+          expect().assertFail();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(1300002);
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(1300002);
       }
     })
     /**
@@ -870,6 +1121,188 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           expect(err.code).assertEqual(401)
         });
         await sleep(800)
+        let properties = win.getWindowProperties();
+        console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
+        expect(properties.windowRect.width).assertEqual(0)
+        expect(properties.windowRect.height).assertEqual(0)
+        await win.destroyWindow();
+      } catch (exception) {
+        console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(401)
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4570
+     * @tc.name      : testResizeAsync_DecimalScene_ParamesOne
+     * @tc.desc      : resize window Verify decimal scene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testResizeAsync_DecimalScene_ParamesOne', 0, async function () {
+      let caseName = 'testResizeAsync_DecimalScene_ParamesOne';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let win = null;
+      win = await windowStage.createSubWindow('testResizeAsync_DecimalScene_ParamesOne').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!win).assertTrue();
+      await win.loadContent('MainAbility/pages/second/second').catch((err) => {
+        console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await win.moveWindowToAsync(0, 0).then(async () => {
+        console.info(msgStr + 'Succeeded in moving the window.');
+      }).catch(async(err: BusinessError) => {
+        console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
+        if (err.code != 801) {
+          console.error(msgStr + 'Failed to move the window  Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(err))
+          expect(err.code).assertEqual(801);
+        }
+      });
+      await win.showWindow().catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await win.resizeAsync(1000.5555, 1000).then(async () => {
+        console.info(msgStr + 'Succeeded in changing the window size.');
+        let properties = win.getWindowProperties();
+        console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
+        expect(properties.windowRect.width).assertEqual(1000)
+        expect(properties.windowRect.height).assertEqual(1000)
+        await win.destroyWindow();
+      }).catch(async(exception: BusinessError) => {
+        console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4580
+     * @tc.name      : testResizeAsync_DecimalScene_ParamesTwo
+     * @tc.desc      : resize window Verify decimal scene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testResizeAsync_DecimalScene_ParamesTwo', 0, async function () {
+      let caseName = 'testResizeAsync_DecimalScene_ParamesTwo';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let win = null;
+      win = await windowStage.createSubWindow('testResizeAsync_DecimalScene_ParamesTwo').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!win).assertTrue();
+      await win.loadContent('MainAbility/pages/second/second').catch((err) => {
+        console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await win.moveWindowToAsync(0, 0).then(async () => {
+        console.info(msgStr + 'Succeeded in moving the window.');
+      }).catch(async(err: BusinessError) => {
+        console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
+        if (err.code != 801) {
+          console.error(msgStr + 'Failed to move the window  Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(err))
+          expect(err.code).assertEqual(801);
+        }
+      });
+      await win.showWindow().catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await win.resizeAsync(1005.56, 1000.25).then(async () => {
+        console.info(msgStr + 'Succeeded in changing the window size.');
+        let properties = win.getWindowProperties();
+        console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
+        expect(properties.windowRect.width).assertEqual(1005)
+        expect(properties.windowRect.height).assertEqual(1000)
+        await win.destroyWindow();
+      }).catch(async(exception: BusinessError) => {
+        console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4590
+     * @tc.name      : testResizeAsync_DecimalScene_ParamesThree
+     * @tc.desc      : resize window Verify decimal scene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testResizeAsync_DecimalScene_ParamesThree', 0, async function () {
+      let caseName = 'testResizeAsync_DecimalScene_ParamesThree';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let win = null;
+      win = await windowStage.createSubWindow('testResizeAsync_DecimalScene_ParamesThree').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!win).assertTrue();
+      await win.loadContent('MainAbility/pages/second/second').catch((err) => {
+        console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await win.moveWindowToAsync(0, 0).then(async () => {
+        console.info(msgStr + 'Succeeded in moving the window.');
+      }).catch(async(err: BusinessError) => {
+        console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
+        if (err.code != 801) {
+          console.error(msgStr + 'Failed to move the window  Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(err))
+          expect(err.code).assertEqual(801);
+        }
+      });
+      await win.showWindow().catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      try {
+        await win.resizeAsync(-105.2, -1056.2).then(async () => {
+          console.info(msgStr + 'Succeeded in changing the window size.');
+          await win.destroyWindow();
+          expect().assertFail();
+        }).catch((err: BusinessError) => {
+          console.error('Failed to change the window size. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(401)
+        });
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width).assertEqual(0)
@@ -1418,7 +1851,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         expect(exception.code).assertEqual(1300002)
       }
     })
-  
+
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2910
      * @tc.name      : testIsWindowSupportWideGamut_WindowStateAbnormal_Callback
@@ -1432,11 +1865,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let win = null;
-      win = await windowStage.createSubWindow('testIsWindowSupportWideGamut_WindowStateAbnormal_Callback').catch((err) => {
-        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
+      win = await windowStage.createSubWindow('testIsWindowSupportWideGamut_WindowStateAbnormal_Callback')
+        .catch((err) => {
+          console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        });
       console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
@@ -1472,11 +1906,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let win = null;
-      win = await windowStage.createSubWindow('testIsWindowSupportWideGamut_WindowStateAbnormal_Promise').catch((err) => {
-        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
+      win = await windowStage.createSubWindow('testIsWindowSupportWideGamut_WindowStateAbnormal_Promise')
+        .catch((err) => {
+          console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        });
       console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
@@ -2596,8 +3031,8 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-        expect(properties.windowRect.width==1000).assertEqual(true)
-        expect(properties.windowRect.height==1000).assertEqual(true)
+        expect(properties.windowRect.width == 1000).assertEqual(true)
+        expect(properties.windowRect.height == 1000).assertEqual(true)
         await win.destroyWindow();
       } catch (exception) {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
@@ -2646,8 +3081,8 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-        expect(properties.windowRect.width==1005).assertEqual(true)
-        expect(properties.windowRect.height==1000).assertEqual(true)
+        expect(properties.windowRect.width == 1005).assertEqual(true)
+        expect(properties.windowRect.height == 1000).assertEqual(true)
         await win.destroyWindow();
       } catch (exception) {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
@@ -2750,8 +3185,8 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-          expect(properties.windowRect.width==1000).assertEqual(true)
-          expect(properties.windowRect.height==1000).assertEqual(true)
+          expect(properties.windowRect.width == 1000).assertEqual(true)
+          expect(properties.windowRect.height == 1000).assertEqual(true)
           await win.destroyWindow();
           done();
         });
@@ -2810,8 +3245,8 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-          expect(properties.windowRect.width==1005).assertEqual(true)
-          expect(properties.windowRect.height==1000).assertEqual(true)
+          expect(properties.windowRect.width == 1005).assertEqual(true)
+          expect(properties.windowRect.height == 1000).assertEqual(true)
           await win.destroyWindow();
           done();
         });
@@ -3356,7 +3791,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let win = null;
-      win =await windowStage.createSubWindow('testGetColorSpace_WinStateAb_Callback').catch((err) => {
+      win = await windowStage.createSubWindow('testGetColorSpace_WinStateAb_Callback').catch((err) => {
         console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -4018,7 +4453,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let win = null;
-      win =  await windowStage.createSubWindow('testWindowOffWindowSizeChange_RepeatOff').catch((err) => {
+      win = await windowStage.createSubWindow('testWindowOffWindowSizeChange_RepeatOff').catch((err) => {
         console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
@@ -4060,7 +4495,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let win = null;
-      win =  await windowStage.createSubWindow('testWindowOffWindowSizeChange_UnregisteredOff').catch((err) => {
+      win = await windowStage.createSubWindow('testWindowOffWindowSizeChange_UnregisteredOff').catch((err) => {
         console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
@@ -4229,7 +4664,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let win = null;
-      win =  await windowStage.createSubWindow('testWindowOffTouchOutside_RepeatOff').catch((err) => {
+      win = await windowStage.createSubWindow('testWindowOffTouchOutside_RepeatOff').catch((err) => {
         console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
@@ -4301,7 +4736,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let win = null;
-      win =  await windowStage.createSubWindow('testWindowOffScreenshot_RepeatOff').catch((err) => {
+      win = await windowStage.createSubWindow('testWindowOffScreenshot_RepeatOff').catch((err) => {
         console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
@@ -4436,7 +4871,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         expect().assertFail();
       }
     })
-   
+
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3680
      * @tc.name      : testWindowOffWindowEvent_UnregisteredOff
@@ -4537,7 +4972,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         expect().assertFail();
       }
     })
-    
+
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3720
      * @tc.name      : testOffWindowStageEvent_UnregisteredOff
