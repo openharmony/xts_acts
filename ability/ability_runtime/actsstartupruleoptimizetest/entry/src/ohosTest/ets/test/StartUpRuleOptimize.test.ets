@@ -18,13 +18,18 @@ import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
 import CommonEventManager from '@ohos.commonEventManager';
+import { BusinessError } from '@ohos.base';
 
 const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
 const TEST_SUITE_NAME: string = 'ActsStartUpRuleOptimizeTest'
 let TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_LaunchRule_StartUpRuleOptimizeTest';
 
-export default function abilityTest(abilityContext) {
-  describe('ActsStartUpRuleOptimizeTest', function () {
+function sleep(time: number) {
+  return new Promise<void>((resolve) => setTimeout(resolve, time))
+}
+
+export default function abilityTest(abilityContext:common.UIAbilityContext) {
+  describe('ActsStartUpRuleOptimizeTest', () => {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_LaunchRule_StartUpRuleOptimizeTest_0700
      * @tc.name  : Ability Allows startAbility in the process of scheduling to the foreground
@@ -37,7 +42,7 @@ export default function abilityTest(abilityContext) {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_LaunchRule_StartUpRuleOptimizeTest_0700', 1, async function (done) {
+    it('SUB_Ability_AbilityRuntime_LaunchRule_StartUpRuleOptimizeTest_0700', 1, async (done:Function) => {
       try {
         TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LaunchRule_StartUpRuleOptimizeTest_0700';
         let isStartAbility = false
@@ -63,7 +68,7 @@ export default function abilityTest(abilityContext) {
     /**
      * @param call: the callback of function startAbilityForResult is executed
      */
-    async function testFlow(call) {
+    let testFlow = async (call:Function):Promise<void> => {
       try {
         //1.TestDemo's Ability to call startAbilityForResult to pull up the assistant Demo
         let want: Want = {
@@ -71,7 +76,7 @@ export default function abilityTest(abilityContext) {
           bundleName: bundleName,
           abilityName: 'AssistantAbility'
         };
-        abilityContext.startAbilityForResult(want, (err: any, result: common.AbilityResult) => {
+        abilityContext.startAbilityForResult(want, (err: BusinessError, result: common.AbilityResult) => {
           if (err.code) {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
             expect().assertFail();
@@ -82,7 +87,7 @@ export default function abilityTest(abilityContext) {
         });
         await sleep(2000);
         //3.TestDemo  send "terminateAssistantAbility" event
-        function publishCallback(err) {
+        let publishCallback = (err:BusinessError):void => {
           if (err) {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} start successful`);
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} publish failed, code is ${err.code}, message is ${err.message}`);
@@ -93,17 +98,13 @@ export default function abilityTest(abilityContext) {
         try {
           CommonEventManager.publish("event_100001", publishCallback);
         } catch (error) {
-          let err = error;
+          let err:BusinessError = error;
           console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} publish failed, code is ${err.code}, message is ${err.message}`);
         }
         await sleep(2000);
       } catch (err) {
         console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}: ${JSON.stringify(err)}`);
       }
-    }
-
-    function sleep(time) {
-      return new Promise((resolve) => setTimeout(resolve, time));
     }
   })
 }

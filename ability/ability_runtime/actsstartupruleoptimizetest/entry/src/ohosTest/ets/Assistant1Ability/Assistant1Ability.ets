@@ -16,11 +16,14 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
+import common from '@ohos.app.ability.common';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
 
 const TAG = "launchRule:Assistant1Ability"
 
 export default class Assistant1Ability extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.log(TAG, 'AssistantAbility onCreate');
     console.log(TAG, 'want param:' + JSON.stringify(want) ?? '');
     console.log(TAG, 'launchParam:' + JSON.stringify(launchParam) ?? '');

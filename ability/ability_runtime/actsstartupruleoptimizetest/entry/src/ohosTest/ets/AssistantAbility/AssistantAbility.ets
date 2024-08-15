@@ -22,51 +22,49 @@ import commonEvent from '@ohos.commonEvent'
 import CommonEventManager from '@ohos.commonEventManager';
 import Want from '@ohos.app.ability.Want';
 import common from '@ohos.app.ability.common';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import { BusinessError } from '@ohos.base';
 
 const TAG = "launchRule:AssistantTag"
 
 export default class AssistantAbility extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.log(TAG, 'AssistantAbility onCreate');
     console.log(TAG, 'want param:' + JSON.stringify(want) ?? '');
     console.log(TAG, 'launchParam:' + JSON.stringify(launchParam) ?? '');
     globalThis.context = this.context;
-    let subscriber;
-    let subscribeInfo = {
+    let subscriber:CommonEventManager.CommonEventSubscriber;
+    let subscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
       events: ["event_100001"]
     };
-    CommonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber) => {
+    CommonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber:CommonEventManager.CommonEventSubscriber) => {
       console.log(TAG, "createSubscriber");
       subscriber = commonEventSubscriber;
-      CommonEventManager.subscribe(subscriber, subscribeCallback);
-    }).catch((err) => {
+      CommonEventManager.subscribe(subscriber, (err, data) => {
+        if (err) {
+          console.error(TAG, `subscribe failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          let want: Want = {
+            bundleName: 'com.example.launchrule',
+            abilityName: 'AssistantAbility'
+          };
+          let resultCode = 100;
+          let abilityResult: common.AbilityResult = {
+            want,
+            resultCode
+          };
+          //2.Assistant Ability registered "terminateAssistantAbility" event, call terminateAbilityWithResult received after the event
+          globalThis.context.terminateSelfWithResult(abilityResult, (err:BusinessError) => {
+            CommonEventManager.unsubscribe(subscriber, () => {
+              console.log(TAG, "====>UnSubscribe CallBack====>");
+            });
+            console.log(TAG, 'terminateSelfWithResult succeed');
+          });
+        }
+      });
+    }).catch((err:BusinessError) => {
       console.error(TAG, ` createSubscriber failed, code is ${err.code}, message is ${err.message}`);
     });
-
-    function subscribeCallback(err, data) {
-      if (err) {
-        console.error(TAG, `subscribe failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        let want: Want = {
-          bundleName: 'com.example.launchrule',
-          abilityName: 'AssistantAbility'
-        };
-        let resultCode = 100;
-        let abilityResult: common.AbilityResult = {
-          want,
-          resultCode
-        };
-        //2.Assistant Ability registered "terminateAssistantAbility" event, call terminateAbilityWithResult received after the event
-        globalThis.context.terminateSelfWithResult(abilityResult, (err) => {
-          CommonEventManager.unsubscribe(subscriber, UnSubscribeCallback);
-          console.log(TAG, 'terminateSelfWithResult succeed');
-        });
-      }
-    }
-
-    function UnSubscribeCallback() {
-      console.log(TAG, "====>UnSubscribe CallBack====>");
-    }
   }
 
   onDestroy() {
