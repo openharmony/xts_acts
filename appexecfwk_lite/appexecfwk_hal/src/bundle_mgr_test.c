@@ -15,6 +15,7 @@
 
 #include <string.h>
 #include <unistd.h>
+#include <semaphore.h>
 
 #include "adapter.h"
 #include "hctest.h"
@@ -24,6 +25,32 @@
 #include "want.h"
 
 #define nullptr NULL
+#define DIR_PATH_MAX 256
+#define PREPARED_APP_BUNDLE_NAME  "com.example.testdemo1"
+#define PREPARED_APP_ABILITY_NAME "entry_MainAbility"
+#define INSTALL_APP_BUNDLE_NAME   "com.example.testdemo2"
+#define PREPARED_APP_BIN_NAME     "/user/testdemo1.bin"
+#define INSTALL_APP_BIN_NAME      "/user/testdemo2.bin"
+
+const uint8_t OPERATION_DOING = 200;
+static uint8_t g_errCode = 0;
+static sem_t g_sem;
+
+/* *
+ * @brief  install/uninstall callback function
+ * @param  resultCode - install/unsintall result code
+ * @param  resultMessage - install/unsintall result message
+ */
+static void TestInstallerCallback(const uint8_t resultCode, const void *resultMessage)
+{
+    printf("----TestInstallerCallback resultCode: %u\n", (uint32_t)resultCode);
+
+    if (resultCode == OPERATION_DOING) {
+        return;
+    }
+    g_errCode = resultCode;
+    sem_post(&g_sem);
+}
 
 /**
 * @brief  register a test suit named BundleMgrTestSuite
@@ -36,11 +63,35 @@ LITE_TEST_SUIT(appexecfwk, bundlemgr, BundleMgrTestSuite);
 static BOOL BundleMgrTestSuiteSetUp(void)
 {
     printf("----------test case with BundleMgrTest start-------------\n");
+
+    char hapFile[DIR_PATH_MAX] = {0};
+    errno_t err = strcpy_s(hapFile, sizeof(hapFile), PREPARED_APP_BIN_NAME);
+    TEST_ASSERT_EQUAL(err, EOK);
+    printf("start to install bin: %s\n", hapFile);
+
+    InstallParam installParam = {
+        .installLocation = 1,
+        .keepData = false
+    };
+    sem_init(&g_sem, 0, 0);
+    bool ret = Install(hapFile, &installParam, TestInstallerCallback);
+    sem_wait(&g_sem);
+    printf("install testdemo1 result is %d err %u\n", ret, g_errCode);
+
     return TRUE;
 }
 
 static BOOL BundleMgrTestSuiteTearDown(void)
 {
+    InstallParam installParam = {
+        .installLocation = 1,
+        .keepData = false
+    };
+    sem_init(&g_sem, 0, 0);
+    bool ret = Uninstall(PREPARED_APP_BUNDLE_NAME, &installParam, TestInstallerCallback);
+    sem_wait(&g_sem);
+    printf("uninstall testdemo1 result is %d err %u\n", ret, g_errCode);
+
     printf("----------test case with BundleMgrTest end-------------\n");
     return TRUE;
 }
@@ -52,7 +103,7 @@ static BOOL BundleMgrTestSuiteTearDown(void)
  */
 LITE_TEST_CASE(BundleMgrTestSuite, testClearAbilityInfoLegal, Function | MediumTest | Level2)
 {
-    printf("------start testClearAbilityInfo------\n");
+    printf("------start testClearAbilityInfoLegal------\n");
     AbilityInfo abilityInfo;
     int result = memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
     TEST_ASSERT_TRUE(result == 0);
@@ -65,7 +116,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearAbilityInfoLegal, Function | MediumT
     TEST_ASSERT_EQUAL_STRING(abilityInfo.bundleName, name);
     ClearAbilityInfo(&abilityInfo);
     TEST_ASSERT_EQUAL_STRING(abilityInfo.bundleName, NULL);
-    printf("------end testClearAbilityInfo------\n");
+    printf("------end testClearAbilityInfoLegal------\n");
 }
 
 /**
@@ -98,7 +149,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearAbilityInfoIllegal, Function | Mediu
  */
 LITE_TEST_CASE(BundleMgrTestSuite, testClearBundleInfoLegal, Function | MediumTest | Level2)
 {
-    printf("------start testClearBundleInfo------\n");
+    printf("------start testClearBundleInfoLegal------\n");
     BundleInfo bundleInfo = { 0 };
     int result = memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
     TEST_ASSERT_TRUE(result == 0);
@@ -111,7 +162,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearBundleInfoLegal, Function | MediumTe
     TEST_ASSERT_EQUAL_STRING(bundleInfo.bundleName, name);
     ClearBundleInfo(&bundleInfo);
     TEST_ASSERT_EQUAL_STRING(bundleInfo.bundleName, NULL);
-    printf("------end testClearBundleInfo------\n");
+    printf("------end testClearBundleInfoLegal------\n");
 }
 
 /**
@@ -144,7 +195,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearBundleInfoIllegal, Function | Medium
  */
 LITE_TEST_CASE(BundleMgrTestSuite, testClearModuleInfoLegal, Function | MediumTest | Level1)
 {
-    printf("------start testClearModuleInfo------\n");
+    printf("------start testClearModuleInfoLegal------\n");
     ModuleInfo moduleInfo = { 0 };
     int result = memset_s(&moduleInfo, sizeof(moduleInfo), 0, sizeof(moduleInfo));
     TEST_ASSERT_TRUE(result == 0);
@@ -157,7 +208,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearModuleInfoLegal, Function | MediumTe
     TEST_ASSERT_EQUAL_STRING(moduleInfo.moduleName, name);
     ClearModuleInfo(&moduleInfo);
     TEST_ASSERT_EQUAL_STRING(moduleInfo.moduleName, NULL);
-    printf("------end testClearModuleInfo------\n");
+    printf("------end testClearModuleInfoLegal------\n");
 }
 
 /**
@@ -190,7 +241,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearModuleInfoIllegal, Function | Medium
  */
 LITE_TEST_CASE(BundleMgrTestSuite, testSetElementAbilityNameLegal, Function | MediumTest | Level0)
 {
-    printf("------start testSetElementAbilityName------\n");
+    printf("------start testSetElementAbilityNameLegal------\n");
     Want want = { 0 };
     ElementName element = { 0 };
     SetElementAbilityName(&element, "SecondAbility");
@@ -199,7 +250,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testSetElementAbilityNameLegal, Function | Me
     TEST_ASSERT_EQUAL_STRING(want.element->abilityName, aName);
     ClearElement(&element);
     ClearWant(&want);
-    printf("------end testSetElementAbilityName------\n");
+    printf("------end testSetElementAbilityNameLegal------\n");
 }
 
 /**
@@ -233,7 +284,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testSetElementAbilityNameIllegal, Function | 
  */
 LITE_TEST_CASE(BundleMgrTestSuite, testSetElementBundleNameLegal, Function | MediumTest | Level0)
 {
-    printf("------start testSetElementBundleName------\n");
+    printf("------start testSetElementBundleNameLegal------\n");
     Want want = { 0 };
     ElementName element = { 0 };
     SetElementBundleName(&element, "com.openharmony.testjsdemo");
@@ -242,7 +293,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testSetElementBundleNameLegal, Function | Med
     TEST_ASSERT_EQUAL_STRING(want.element->bundleName, bName);
     ClearElement(&element);
     ClearWant(&want);
-    printf("------end testSetElementBundleName------\n");
+    printf("------end testSetElementBundleNameLegal------\n");
 }
 
 /**
@@ -275,7 +326,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testSetElementBundleNameIllegal, Function | M
  */
 LITE_TEST_CASE(BundleMgrTestSuite, testSetElementDeviceIDLegal, Function | MediumTest | Level0)
 {
-    printf("------start testSetElementDeviceID------\n");
+    printf("------start testSetElementDeviceIDLegal------\n");
     Want want = { 0 };
     ElementName element = { 0 };
     SetElementDeviceID(&element, "0001000");
@@ -284,7 +335,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testSetElementDeviceIDLegal, Function | Mediu
     TEST_ASSERT_EQUAL_STRING(want.element->deviceId, dID);
     ClearElement(&element);
     ClearWant(&want);
-    printf("------end testSetElementDeviceID------\n");
+    printf("------end testSetElementDeviceIDLegal------\n");
 }
 
 /**
@@ -356,6 +407,301 @@ LITE_TEST_CASE(BundleMgrTestSuite, testGetBundleInfosIllegal, Function | MediumT
     printf("ret is %d \n", ret);
     TEST_ASSERT_TRUE(ret == 2);
     printf("------end testGetBundleInfosIllegal------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_0015
+ * @tc.name      : TestGetBundleInfoLegal
+ * @tc.desc      : GetBundleInfo parameter legal test
+ */
+LITE_TEST_CASE(BundleMgrTestSuite, TestGetBundleInfoLegal, Function | MediumTest | Level2)
+{
+    printf("------start TestGetBundleInfoLegal------\n");
+    BundleInfo bundleInfo;
+    int result = memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    TEST_ASSERT_TRUE(result == 0);
+
+    int flags = 0;
+    const char *bundleName = PREPARED_APP_BUNDLE_NAME;
+    uint8_t ret = GetBundleInfo(PREPARED_APP_BUNDLE_NAME, flags, &bundleInfo);
+    TEST_ASSERT_TRUE(ret == 0);
+    TEST_ASSERT_EQUAL_STRING(bundleInfo.bundleName, bundleName);
+
+    printf("------end TestGetBundleInfoLegal------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_0016
+ * @tc.name      : TestQueryAbilityInfoLegal
+ * @tc.desc      : QueryAbilityInfo parameter legal test
+ */
+LITE_TEST_CASE(BundleMgrTestSuite, TestQueryAbilityInfoLegal, Function | MediumTest | Level0)
+{
+    printf("------start TestQueryAbilityInfoLegal------\n");
+    Want want = { 0 };
+    ElementName element = { 0 };
+    SetElementAbilityName(&element, PREPARED_APP_ABILITY_NAME);
+    SetElementBundleName(&element, PREPARED_APP_BUNDLE_NAME);
+    SetWantElement(&want, element);
+
+    AbilityInfo abilityInfo;
+    int32_t ret = memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    TEST_ASSERT_TRUE(ret == 0);
+    uint8_t result = QueryAbilityInfo(&want, &abilityInfo);
+    printf("QueryAbilityInfo result is %d \n", result);
+    printf("abilityInfo.bundleName is %s \n", abilityInfo.bundleName);
+    TEST_ASSERT_TRUE(result == 1);
+
+    ClearAbilityInfo(&abilityInfo);
+    ClearElement(&element);
+    ClearWant(&want);
+    printf("------end TestQueryAbilityInfoLegal------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_0017
+ * @tc.name      : TestQueryAbilityInfoWithNullptr
+ * @tc.desc      : QueryAbilityInfo parameter nullptr test
+ */
+LITE_TEST_CASE(BundleMgrTestSuite, TestQueryAbilityInfoWithNullptr, Function | MediumTest | Level2)
+{
+    printf("------start TestQueryAbilityInfoWithNullptr------\n");
+
+    AbilityInfo abilityInfo;
+    int32_t ret = memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    TEST_ASSERT_TRUE(ret == 0);
+
+    // want is nullptr
+    uint8_t result = QueryAbilityInfo(nullptr, &abilityInfo);
+    printf("when want is null, query ability info result is %u\n", (uint32_t)result);
+    TEST_ASSERT_TRUE(result == 1);
+
+    Want want = { 0 };
+    ElementName element = {0};
+    SetElementAbilityName(&element, PREPARED_APP_ABILITY_NAME);
+    SetElementBundleName(&element, PREPARED_APP_BUNDLE_NAME);
+    SetWantElement(&want, element);
+    SetWantData(&want, "test", 4);
+
+    // abilityInfo is nullptr
+    result = QueryAbilityInfo(&want, nullptr);
+    printf("when abilityInfo is null, query ability info result is %u\n", (uint32_t)result);
+    TEST_ASSERT_TRUE(result == 1);
+
+    ClearElement(&element);
+    ClearWant(&want);
+    printf("------end TestQueryAbilityInfoWithNullptr------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_0018
+ * @tc.name      : TestQueryAbilityInfoIllegal
+ * @tc.desc      : QueryAbilityInfo parameter illegal test
+ */
+LITE_TEST_CASE(BundleMgrTestSuite, TestQueryAbilityInfoIllegal, Function | MediumTest | Level2)
+{
+    printf("------start testQueryAbilityInfoIllegal------\n");
+
+    // content of want is null string
+    Want want = {0};
+    ElementName element = {0};
+    SetElementBundleName(&element, "");
+    SetElementAbilityName(&element, "");
+    SetWantElement(&want, element);
+
+    AbilityInfo abilityInfo;
+    uint8_t result = QueryAbilityInfo(&want, &abilityInfo);
+    printf("query ability info result is %u\n", (uint32_t)result);
+    TEST_ASSERT_TRUE(result == 0);
+
+    ClearElement(&element);
+    ClearWant(&want);
+    printf("------end TestQueryAbilityInfoIllegal------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_0019
+ * @tc.name      : TestInstallWithNullptr
+ * @tc.desc      : Install parameter nullptr test
+ */
+LITE_TEST_CASE(BundleMgrTestSuite, TestInstallWithNullptr, Function | MediumTest | Level2)
+{
+    printf("------start TestInstallWithNullptr------\n");
+
+    InstallParam installParam = {
+        .installLocation = 1,
+        .keepData = false
+    };
+    bool isInstallSuccess = Install(nullptr, &installParam, TestInstallerCallback);
+    TEST_ASSERT_FALSE(isInstallSuccess);
+    printf("install result is %d\n", isInstallSuccess);
+
+    printf("------end TestInstallWithNullptr------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_0020
+ * @tc.name      : TestInstallWithErrorPath
+ * @tc.desc      : Install parameter illegal path test
+ */
+LITE_TEST_CASE(BundleMgrTestSuite, TestInstallWithErrorPath, Function | MediumTest | Level2)
+{
+    printf("------start TestInstallWithErrorPath------\n");
+
+    InstallParam installParam = {
+        .installLocation = 1,
+        .keepData = false
+    };
+    sem_init(&g_sem, 0, 0);
+    bool ret = Install("/user/nothishap.bin", &installParam, TestInstallerCallback);
+    sem_wait(&g_sem);
+
+    bool isInstallSuccess = (g_errCode == 0) ? true : false;
+    TEST_ASSERT_FALSE(isInstallSuccess);
+    printf("install nothishap result is %d err %u\n", ret, g_errCode);
+
+    printf("------end TestInstallWithErrorPath------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_0021
+ * @tc.name      : TestInstallWithEmptyPath
+ * @tc.desc      : Install parameter illegal path test
+ */
+LITE_TEST_CASE(BundleMgrTestSuite, TestInstallWithEmptyPath, Function | MediumTest | Level2)
+{
+    printf("------start TestInstallWithEmptyPath------\n");
+
+    InstallParam installParam = {
+        .installLocation = 1,
+        .keepData = false
+    };
+    sem_init(&g_sem, 0, 0);
+    bool ret = Install("", &installParam, TestInstallerCallback);
+    sem_wait(&g_sem);
+
+    bool isInstallSuccess = (g_errCode == 0) ? true : false;
+    TEST_ASSERT_FALSE(isInstallSuccess);
+    printf("install result is %d err %u\n", ret, g_errCode);
+
+    printf("------end TestInstallWithEmptyPath------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_0022
+ * @tc.name      : TestInstallLegal
+ * @tc.desc      : Install parameter legal test
+ */
+LITE_TEST_CASE(BundleMgrTestSuite, TestInstallLegal, Function | MediumTest | Level0)
+{
+    printf("------start TestInstallLegal------\n");
+
+    char hapFile[DIR_PATH_MAX] = {0};
+    errno_t err = strcpy_s(hapFile, sizeof(hapFile), INSTALL_APP_BIN_NAME);
+    TEST_ASSERT_EQUAL(err, EOK);
+    printf("start to install hap: %s\n", hapFile);
+
+    InstallParam installParam = {
+        .installLocation = 1,
+        .keepData = false
+    };
+    sem_init(&g_sem, 0, 0);
+    bool ret = Install(hapFile, &installParam, TestInstallerCallback);
+    sem_wait(&g_sem);
+
+    bool isInstallSuccess = (g_errCode == 0) ? true : false;
+    TEST_ASSERT_TRUE(isInstallSuccess);
+    printf("install testdemo2 result is %d err %u\n", ret, g_errCode);
+
+    sleep(1);
+    sem_init(&g_sem, 0, 0);
+    ret = Uninstall(INSTALL_APP_BUNDLE_NAME, &installParam, TestInstallerCallback);
+    sem_wait(&g_sem);
+    printf("uninstall testdemo2 result is %d err %u\n", ret, g_errCode);
+
+    printf("------end TestInstallLegal------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_0023
+ * @tc.name      : TestUninstallNullBundleName
+ * @tc.desc      : Uninstall parameter illegal test that bundleName is null
+ */
+LITE_TEST_CASE(BundleMgrTestSuite, TestUninstallNullBundleName, Function | MediumTest | Level2)
+{
+    printf("------start TestUninstallNullBundleName------\n");
+
+    InstallParam installParam = {
+        .installLocation = 1,
+        .keepData = false
+    };
+    bool isSuccess = Uninstall(nullptr, &installParam, TestInstallerCallback);
+    TEST_ASSERT_FALSE(isSuccess);
+    printf("uninstall result is %d err %u\n", isSuccess, g_errCode);
+
+    printf("------end TestUninstallNullBundleName------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_0024
+ * @tc.name      : TestUninstallErrBundleName
+ * @tc.desc      : Uninstall parameter illegal test that bundleName is wrong
+ */
+LITE_TEST_CASE(BundleMgrTestSuite, TestUninstallErrBundleName, Function | MediumTest | Level2)
+{
+    printf("------start TestUninstallErrBundleName------\n");
+
+    InstallParam installParam = {
+        .installLocation = 1,
+        .keepData = false
+    };
+    sem_init(&g_sem, 0, 0);
+    bool ret = Uninstall("com.openharmony.nothisBundleName", &installParam, TestInstallerCallback);
+    sem_wait(&g_sem);
+
+    bool isUninstallSuccess = (g_errCode == 0) ? true : false;
+    TEST_ASSERT_FALSE(isUninstallSuccess);
+    printf("uninstall nothisBundleName result is %d err %u\n", ret, g_errCode);
+
+    printf("------end TestUninstallErrBundleName------\n");
+}
+
+/**
+ * @tc.number    : SUB_APPEXECFWK_0025
+ * @tc.name      : TestUninstallLegal
+ * @tc.desc      : Uninstall parameter legal test
+ */
+LITE_TEST_CASE(BundleMgrTestSuite, TestUninstallLegal, Function | MediumTest | Level0)
+{
+    printf("------start TestUninstallLegal------\n");
+
+    char hapFile[DIR_PATH_MAX] = {0};
+    errno_t err = strcpy_s(hapFile, sizeof(hapFile), INSTALL_APP_BIN_NAME);
+    TEST_ASSERT_EQUAL(err, EOK);
+    printf("start to install hap: %s\n", hapFile);
+
+    InstallParam installParam = {
+        .installLocation = 1,
+        .keepData = false
+    };
+    sem_init(&g_sem, 0, 0);
+    bool ret = Install(hapFile, &installParam, TestInstallerCallback);
+    sem_wait(&g_sem);
+
+    bool isInstallSuccess = (g_errCode == 0) ? true : false;
+    TEST_ASSERT_TRUE(isInstallSuccess);
+    printf("install testdemo2 result is %d err %u\n", ret, g_errCode);
+
+    sleep(1);
+    sem_init(&g_sem, 0, 0);
+    ret = Uninstall(INSTALL_APP_BUNDLE_NAME, &installParam, TestInstallerCallback);
+    sem_wait(&g_sem);
+
+    bool isUninstallSuccess = (g_errCode == 0) ? true : false;
+    TEST_ASSERT_TRUE(isUninstallSuccess);
+    printf("uninstall testdemo2 result is %d err %u\n", ret, g_errCode);
+
+    printf("------end TestUninstallLegal------\n");
 }
 
 RUN_TEST_SUITE(BundleMgrTestSuite);
