@@ -23,7 +23,5 @@
   "description": "Please describe the basic information.",
   "main": "",
   "version": "1.0.0",
-  "dependencies": {
-    "@types/libentry.so": "file:./src/main/cpp/types/libentry"
-  }
+  "dependencies": {}
 }

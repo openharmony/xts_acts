@@ -10,7 +10,8 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsDemoIdnaStageTest.hap"
+                "ActsDemoIdnaStageTest.hap",
+                "ActsDemoIdnaStageMainTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
