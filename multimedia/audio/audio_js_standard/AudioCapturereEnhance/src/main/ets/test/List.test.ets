@@ -17,11 +17,9 @@ import getCurrentInputDevices from './GetCurrentInputDevices.test.ets'
 import onOffAudioCapturerChange from './OnOffAudioCapturerChange.test.ets'
 import onOffInputDeviceChange from './OnOffInputDeviceChange.test.ets'
 
-
 export default function testsuite() {
   getCurrentInputDevices();
   getCurrentAudioCapturerChangeInfo();
   onOffInputDeviceChange();
   onOffAudioCapturerChange();
- 
 }
