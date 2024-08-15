@@ -203,6 +203,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     try {
       await usbManager.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
         console.info(TAG, 'usb case testBulkTransfer006 ret: ' + data);
+        console.info(TAG, 'usb case testBulkTransfer006 send data: ' + CheckEmptyUtils.ab2str(tmpUint8Array));
         expect(data).assertEqual(-1);
       })
     } catch(error) {
@@ -242,7 +243,8 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     try {
       await usbManager.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
         console.info(TAG, 'usb case testBulkTransfer007 ret: ' + data);
-        expect(data >= 0).assertTrue();
+        console.info(TAG, 'usb case testBulkTransfer007 send data: ' + CheckEmptyUtils.ab2str(tmpUint8Array));
+        expect(data > 0).assertTrue();
       })
     } catch(error) {
       console.info(TAG, 'usb testBulkTransfer007 write error : ' + JSON.stringify(error));
@@ -281,7 +283,8 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     try {
       await usbManager.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
         console.info(TAG, 'usb case testBulkTransfer008 ret: ' + data);
-        expect(data >= 0).assertTrue();
+        console.info(TAG, 'usb case testBulkTransfer008 send data: ' + CheckEmptyUtils.ab2str(tmpUint8Array));
+        expect(data > 0).assertTrue();
       })
     } catch(error) {
       console.info(TAG, 'usb testBulkTransfer008 write error : ' + JSON.stringify(error));
@@ -521,31 +524,23 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     var testParam = getTransferTestParam();
     if (testParam.interface == null || testParam.inEndpoint == null) {
       console.info(TAG, 'usb case testParam_interface and testParam_inEndpoint is null');
-      expect(false).assertTrue();
+      expect(testParam.interface == null).assertFalse();
+      expect(testParam.inEndpoint == null).assertFalse();
       return
     }
 
     testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
-    console.info(TAG, 'usb case sendData begin');
-    testParam.sendData = 'send default';
-    try {
-      testParam.sendData = parameter.getSync('test_usb', 'default');
-      console.log('usb parameter ' + JSON.stringify(testParam.sendData));
-    } catch (err) {
-      console.log('usb parameter getSync unexpected error: ' + err);
-      expect(err === null).assertTrue();
-    }
-
-    var tmpTimeOut = "invalid";
-    var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
+    console.info(TAG, 'usb case testBulkTransfer015 readData begin');
+    let tmpTimeOut = "invalid";
+    let tmpUint8Array = new Uint8Array(testParam.maxInSize);
     await usbManager.bulkTransfer(testParam.pip, testParam.inEndpoint, tmpUint8Array, tmpTimeOut).then(data => {
       console.info(TAG, 'usb case testBulkTransfer015 ret: ' + data);
-      console.info(TAG, 'usb case testBulkTransfer015 send data: ' + testParam.sendData);
-      expect(data > 0).assertTrue();
+      console.info(TAG, 'usb case testBulkTransfer015 readData: ' + CheckEmptyUtils.ab2str(tmpUint8Array));
+      expect(data >= 0).assertTrue();
     }).catch(error => {
-      console.info(TAG, 'usb testBulkTransfer015 write error : ' + JSON.stringify(error));
+      console.info(TAG, 'usb testBulkTransfer015 readData error : ' + JSON.stringify(error));
       expect(error === null).assertTrue();
     });
   })
