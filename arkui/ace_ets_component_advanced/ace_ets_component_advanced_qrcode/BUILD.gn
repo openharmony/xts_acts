@@ -11,15 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("componentAdvancedTest") {
+group("componentQrcodeTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ace_ets_component_advanced_arcalphabetindexer:componentArcAlphabetIndexerTest",
-      "ace_ets_component_advanced_arcbutton:componentArcButtonTest",
-      "ace_ets_component_advanced_arclist:componentArcListTest",
-      "ace_ets_component_advanced_chip:componentChipTest",
-      "ace_ets_component_advanced_qrcode:componentQrcodeTest",
+      "ace_ets_component_advanced_qrcode_api12:ActsAceEtsComponentQrcodeTest",
     ]
   }
 }
