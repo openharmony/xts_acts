@@ -92,8 +92,35 @@ import pageRouteTest from './pageRouteTest/pageRoute.test'
 import searchOnCutJsunit from './SearchTest/search.test'
 import navigationJsunittt from './Navigation/NavigationJsunittt.test.ets';
 import navigatorCodeJsunit from './Navigation/NavigatorCodeJsunit.test.ets';
+import stepperLayout001 from './stepperTest/stepperLayout/stepperLayout001.test.ets';
+import stepperLayout002 from './stepperTest/stepperLayout/stepperLayout002.test.ets';
+import stepperLayout003 from './stepperTest/stepperLayout/stepperLayout003.test.ets';
+import stepperLayout004 from './stepperTest/stepperLayout/stepperLayout004.test.ets';
+import stepperInterface001 from './stepperTest/stepperInterface/stepperInterface001.test.ets';
+import stepperInterface002 from './stepperTest/stepperInterface/stepperInterface002.test.ets';
+import stepperInterface003 from './stepperTest/stepperInterface/stepperInterface003.test.ets';
+import stepperInterface004 from './stepperTest/stepperInterface/stepperInterface004.test.ets';
+import stepperInterface005 from './stepperTest/stepperInterface/stepperInterface005.test.ets';
+import stepperInterface006 from './stepperTest/stepperInterface/stepperInterface006.test.ets';
+import stepperInterface009 from './stepperTest/stepperInterface/stepperInterface009.test.ets';
+import stepperAction001 from './stepperTest/stepperAction/stepperAction001.test.ets';
+import stepperAction027 from './stepperTest/stepperAction/stepperAction027.test.ets';
+
 
 export default function testsuite() {
+  stepperLayout001();
+  stepperLayout002();
+  stepperLayout003();
+  stepperLayout004();
+  stepperInterface001();
+  stepperInterface002();
+  stepperInterface003();
+  stepperInterface004();
+  stepperInterface005();
+  stepperInterface006();
+  stepperInterface009();
+  stepperAction001();
+  stepperAction027();
   navigationTypeTest();
   StepperJsunit11();
   NavigationParamTest();
