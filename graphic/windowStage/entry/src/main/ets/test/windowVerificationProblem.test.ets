@@ -297,6 +297,115 @@ export default function windowVerificationProblemTest(context, windowStage, abil
       });
     })
     /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4600
+     * @tc.name      : testResizeAsync_FullScreen
+     * @tc.desc      : Verify the full screen window resize
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testResizeAsync_FullScreen', 0, async function () {
+      let caseName = 'testResizeAsync_FullScreen';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let win = windowStage.getMainWindowSync();
+      expect(!!win).assertTrue();
+      console.log(msgStr + 'getMainWindowSync success');
+      await (win as ohosWindow.Window).showWindow().catch((err: BusinessError) => {
+        console.log(msgStr + 'tempWnd.showWindow failed');
+        expect().assertFail();
+      });
+      await (win as ohosWindow.Window).setWindowLayoutFullScreen(true).then(() => {
+        console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+      }).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      let names: Array<'status' | 'navigation'> = [];
+      try {
+        await (win as ohosWindow.Window).setWindowSystemBarEnable(names).then(() => {
+          console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+          expect().assertFail();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
+        expect().assertFail();
+      }
+      await (win as ohosWindow.Window).resizeAsync(707, 707).then(() => {
+        console.info(msgStr + 'Succeeded in changing the window size.');
+        expect().assertFail();
+      }).catch((exception: BusinessError) => {
+        if (exception.code == 801) {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        } else if (exception.code == 1300010) {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          expect(exception.code).assertEqual(1300010);
+        } else {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        }
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4610
+     * @tc.name      : testMoveWindowToAsync_FullScreen
+     * @tc.desc      : Verify the full screen window move
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testMoveWindowToAsync_FullScreen', 0, async function () {
+      let caseName = 'testMoveWindowToAsync_FullScreen';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let win = windowStage.getMainWindowSync();
+      expect(!!win).assertTrue();
+      console.log(msgStr + 'getMainWindowSync success');
+      await (win as ohosWindow.Window).showWindow().catch((err: BusinessError) => {
+        console.log(msgStr + 'tempWnd.showWindow failed');
+        expect().assertFail();
+      });
+      await (win as ohosWindow.Window).setWindowLayoutFullScreen(true).then(() => {
+        console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+      }).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      let names: Array<'status' | 'navigation'> = [];
+      try {
+        await (win as ohosWindow.Window).setWindowSystemBarEnable(names).then(() => {
+          console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+          expect().assertFail();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
+        expect().assertFail();
+      }
+      await (win as ohosWindow.Window).moveWindowToAsync(808, 808).then(() => {
+        console.info(msgStr + 'Succeeded in changing the window size.');
+        expect().assertFail();
+      }).catch((exception: BusinessError) => {
+        if (exception.code == 801) {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+        else if (exception.code == 1300010) {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          expect(exception.code).assertEqual(1300010);
+        } else {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        }
+      });
+    })
+    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4110
      * @tc.name      : testSetAspectRatio_Max_Value_Promise
      * @tc.desc      : Validate the scenario where the content layout proportion of the main window is abnormal
@@ -550,7 +659,7 @@ export default function windowVerificationProblemTest(context, windowStage, abil
       await mainWin.setPreferredOrientation(ohosWindow.Orientation.AUTO_ROTATION_UNSPECIFIED).then(() => {
         console.log(msgStr + 'success set window.setPreferredOrientation : AUTO_ROTATION_UNSPECIFIED');
       }).catch((err: BusinessError) => {
-        console.log(msgStr + 'window.setPreferredOrientation failed set error:'+JSON.stringify(err));
+        console.log(msgStr + 'window.setPreferredOrientation failed set error:' + JSON.stringify(err));
         expect().assertFail();
       });
       try {
@@ -561,7 +670,7 @@ export default function windowVerificationProblemTest(context, windowStage, abil
         expect().assertFail();
       }
       await mainWin.setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED).catch((err: BusinessError) => {
-        console.log(msgStr + 'window.setPreferredOrientation failed set error:'+JSON.stringify(err));
+        console.log(msgStr + 'window.setPreferredOrientation failed set error:' + JSON.stringify(err));
         expect().assertFail();
       });
     })
@@ -586,7 +695,7 @@ export default function windowVerificationProblemTest(context, windowStage, abil
       await mainWin.setPreferredOrientation(ohosWindow.Orientation.USER_ROTATION_PORTRAIT).then(() => {
         console.log(msgStr + 'success set window.setPreferredOrientation : USER_ROTATION_PORTRAIT');
       }).catch((err: BusinessError) => {
-        console.log(msgStr + 'window.setPreferredOrientation failed set error:'+JSON.stringify(err));
+        console.log(msgStr + 'window.setPreferredOrientation failed set error:' + JSON.stringify(err));
         expect().assertFail();
       });
       try {
@@ -597,7 +706,7 @@ export default function windowVerificationProblemTest(context, windowStage, abil
         expect().assertFail();
       }
       await mainWin.setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED).catch((err: BusinessError) => {
-        console.log(msgStr + 'window.setPreferredOrientation failed set error:'+JSON.stringify(err));
+        console.log(msgStr + 'window.setPreferredOrientation failed set error:' + JSON.stringify(err));
         expect().assertFail();
       });
     })
