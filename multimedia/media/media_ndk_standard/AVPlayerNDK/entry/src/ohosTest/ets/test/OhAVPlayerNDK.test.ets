@@ -202,6 +202,7 @@ export default function OhAVPlayerNDKTest() { // L2
       try {
         let re: number = await avplayer.OhAvPlayerPrepare();
         expect(re).assertEqual(0);
+        Utils.sleep(sleep1000);
         let player :number = await avplayer.OhAvPlayerPlay();
         expect(player).assertEqual(AV_ERR_OK);
         Utils.sleep(sleep500);
@@ -535,6 +536,7 @@ export default function OhAVPlayerNDKTest() { // L2
       console.info(`testOHAVPlayerSelectBitRate002 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
+        await Utils.sleep(sleep1000);
         let player : number = await avplayer.OhAvPlayerSelectBitRate(25000);
         expect(player).assertEqual(AV_ERR_OK);
         hilog.info(0x0000, 'testTag', '%{public}s', `testOHAVPlayerSelectBitRate002:${player}`);
@@ -579,6 +581,7 @@ export default function OhAVPlayerNDKTest() { // L2
       try {
         let player: number = await avplayer.OhAvPlayerPrepare();
         expect(player).assertEqual(AV_ERR_OK);
+        await Utils.sleep(sleep1000);
         player  = await avplayer.OhAvPlayerSelectBitRate(1000);
         expect(player).assertEqual(AV_ERR_OK);
         hilog.info(0x0000, 'testTag', '%{public}s', `testOHAVPlayerSelectBitRate004:${player}`);
@@ -602,6 +605,7 @@ export default function OhAVPlayerNDKTest() { // L2
       try {
         let player: number = await avplayer.OhAvPlayerPrepare();
         expect(player).assertEqual(AV_ERR_OK);
+        await Utils.sleep(sleep1000);
         player = await avplayer.OhAvPlayerSelectBitRate(10000);
         expect(player).assertEqual(AV_ERR_OK);
         hilog.info(0x0000, 'testTag', '%{public}s', `testOHAVPlayerSelectBitRate005:${player}`);

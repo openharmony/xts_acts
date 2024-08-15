@@ -2869,6 +2869,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = await avplayer.OhAvPlayerPlay();
       expect(result).assertEqual(AV_ERR_OK);
