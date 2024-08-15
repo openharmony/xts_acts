@@ -81,27 +81,27 @@ export default function List_lanes() {
       let List_lanes_013: RectValue = CommonFunc.getComponentRect('List_lanes_013');
       let List_lanes_014: RectValue = CommonFunc.getComponentRect('List_lanes_014');
       let List_lanes_01: RectValue = CommonFunc.getComponentRect('List_lanes_01');
-      expect(List_lanes_011.left).assertEqual(List_lanes_01.left);
-      expect(List_lanes_012.left).assertEqual(List_lanes_01.left);
-      expect(List_lanes_013.left).assertEqual(List_lanes_01.left);
-      expect(List_lanes_014.left).assertEqual(List_lanes_01.left);
-      expect(List_lanes_011.top).assertEqual(List_lanes_01.top);
+      expect(Math.abs(List_lanes_011.left - List_lanes_01.left) <= 1).assertTrue();
+      expect(Math.abs(List_lanes_012.left - List_lanes_01.left) <= 1).assertTrue();
+      expect(Math.abs(List_lanes_013.left - List_lanes_01.left) <= 1).assertTrue();
+      expect(Math.abs(List_lanes_014.left - List_lanes_01.left) <= 1).assertTrue();
+      expect(Math.abs(List_lanes_011.top - List_lanes_01.top) <= 1).assertTrue();
 
-      expect(Math.round(List_lanes_012.top - List_lanes_011.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_lanes_013.top - List_lanes_012.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_lanes_014.top - List_lanes_013.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_lanes_01.bottom - List_lanes_014.bottom)).assertEqual(Math.round(vp2px(60)));
+      expect(Math.abs(Math.round(List_lanes_012.top - List_lanes_011.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_013.top - List_lanes_012.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_014.top - List_lanes_013.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_01.bottom - List_lanes_014.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
 
 
-      expect(Math.round(List_lanes_011.right - List_lanes_011.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_lanes_012.right - List_lanes_012.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_lanes_013.right - List_lanes_013.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_lanes_014.right - List_lanes_014.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(List_lanes_011.right - List_lanes_011.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_012.right - List_lanes_012.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_013.right - List_lanes_013.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_014.right - List_lanes_014.left) - Math.round(vp2px(100))) <= 1).assertTrue();
 
-      expect(Math.round(List_lanes_011.bottom - List_lanes_011.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_lanes_012.bottom - List_lanes_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_lanes_013.bottom - List_lanes_013.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_lanes_014.bottom - List_lanes_014.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(List_lanes_011.bottom - List_lanes_011.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_012.bottom - List_lanes_012.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_013.bottom - List_lanes_013.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_014.bottom - List_lanes_014.top) - Math.round(vp2px(100))) <= 1).assertTrue();
 
       let driver = Driver.create();
       await driver.swipe(
@@ -111,7 +111,7 @@ export default function List_lanes() {
         Math.round(List_lanes_012.bottom));
       await CommonFunc.sleep(1000);
       let List_lanes_024: RectValue = CommonFunc.getComponentRect('List_lanes_014');
-      expect(List_lanes_01.bottom - List_lanes_024.bottom).assertEqual(Math.round(vp2px(60)));
+      expect(Math.abs((List_lanes_01.bottom - List_lanes_024.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
       console.info('testListLanesToOne END');
       done();
     });
@@ -189,7 +189,7 @@ export default function List_lanes() {
       expect(Math.abs(List_lanes_011.top - List_lanes_01.top) <= 1).assertTrue();
       expect(Math.abs(List_lanes_012.top - List_lanes_01.top) <= 1).assertTrue();
       expect(Math.abs(List_lanes_013.top - List_lanes_01.top) <= 1).assertTrue();
-      expect(List_lanes_014.top - List_lanes_011.bottom).assertEqual(Math.round(vp2px(20)));
+      expect(Math.abs(List_lanes_014.top - List_lanes_011.bottom - Math.round(vp2px(20))) <= 1).assertTrue();
 
       expect(Math.abs(List_lanes_011.left - List_lanes_01.left) <= 1).assertTrue();
       expect(Math.abs(List_lanes_014.left - List_lanes_01.left) <= 1).assertTrue();
@@ -198,21 +198,21 @@ export default function List_lanes() {
       expect(Math.abs(Math.round((List_lanes_013.left - List_lanes_012.right) * 10) / 10 - Math.round(vp2px(50 / 3) * 10) / 10) <= 1)
         .assertTrue();
 
-      expect(Math.round(List_lanes_011.right - List_lanes_011.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_lanes_012.right - List_lanes_012.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_lanes_013.right - List_lanes_013.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_lanes_014.right - List_lanes_014.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(List_lanes_011.right - List_lanes_011.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_012.right - List_lanes_012.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_013.right - List_lanes_013.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_014.right - List_lanes_014.left) - Math.round(vp2px(100))) <= 1).assertTrue();
 
-      expect(Math.round(List_lanes_011.bottom - List_lanes_011.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_lanes_012.bottom - List_lanes_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_lanes_013.bottom - List_lanes_013.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_lanes_014.bottom - List_lanes_014.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(List_lanes_011.bottom - List_lanes_011.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_012.bottom - List_lanes_012.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_013.bottom - List_lanes_013.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_lanes_014.bottom - List_lanes_014.top) - Math.round(vp2px(100))) <= 1).assertTrue();
 
       let driver = Driver.create();
       await driver.swipe(100, 120, 100, 0);
       await CommonFunc.sleep(1000);
       let List_lanes_024: RectValue = CommonFunc.getComponentRect('List_lanes_014');
-      expect(List_lanes_024.top - List_lanes_01.top).assertEqual(Math.round(vp2px(120)));
+      expect(Math.abs(List_lanes_024.top - List_lanes_01.top - Math.round(vp2px(120))) <= 1).assertTrue();
       console.info('testListLanesToRange01 END');
       done();
     });

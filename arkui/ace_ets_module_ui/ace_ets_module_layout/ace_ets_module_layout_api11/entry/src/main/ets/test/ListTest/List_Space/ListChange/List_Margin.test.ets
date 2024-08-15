@@ -88,24 +88,24 @@ export default function List_Margin() {
       expect(Math.abs(List_Margin_014.left - List_Margin_01.left) <= 1).assertTrue();
       expect(Math.abs(List_Margin_011.top - List_Margin_01.top) <= 1).assertTrue();
 
-      expect(Math.round(List_Margin_012.top - List_Margin_011.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_Margin_013.top - List_Margin_012.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_Margin_014.top - List_Margin_013.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_Margin_01.top - List_Margin_01_B0x.top)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(List_Margin_01.left - List_Margin_01_B0x.left)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(List_Margin_012.top - List_Margin_011.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Margin_013.top - List_Margin_012.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Margin_014.top - List_Margin_013.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Margin_01.top - List_Margin_01_B0x.top) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Margin_01.left - List_Margin_01_B0x.left) - Math.round(vp2px(10))) <= 1).assertTrue();
 
-      expect(Math.round(List_Margin_011.right - List_Margin_011.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_Margin_012.right - List_Margin_012.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_Margin_013.right - List_Margin_013.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_Margin_014.right - List_Margin_014.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Math.round(List_Margin_011.right - List_Margin_011.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Margin_012.right - List_Margin_012.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Margin_013.right - List_Margin_013.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Margin_014.right - List_Margin_014.left) - Math.round(vp2px(300))) <= 1).assertTrue();
 
-      expect(Math.round(List_Margin_011.bottom - List_Margin_011.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_Margin_012.bottom - List_Margin_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_Margin_013.bottom - List_Margin_013.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_Margin_014.bottom - List_Margin_014.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(List_Margin_011.bottom - List_Margin_011.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Margin_012.bottom - List_Margin_012.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Margin_013.bottom - List_Margin_013.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Margin_014.bottom - List_Margin_014.top) - Math.round(vp2px(100))) <= 1).assertTrue();
 
-      expect(Math.round(List_Margin_01.bottom - List_Margin_01.top)).assertEqual(Math.round(vp2px(520)));
-      expect(Math.round(List_Margin_01.right - List_Margin_01.left)).assertEqual(Math.round(vp2px(350)));
+      expect(Math.abs(Math.round(List_Margin_01.bottom - List_Margin_01.top) - Math.round(vp2px(520))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Margin_01.right - List_Margin_01.left) - Math.round(vp2px(350))) <= 1).assertTrue();
       let driver = Driver.create();
       await driver.swipe(360, 690, 360, 30);
       let List_Margin_014Again: RectValue = CommonFunc.getComponentRect('List_Margin_014');

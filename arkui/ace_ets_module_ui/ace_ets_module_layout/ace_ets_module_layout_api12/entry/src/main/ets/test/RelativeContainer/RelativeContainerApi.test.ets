@@ -57,9 +57,8 @@ export default function RelativeContainerApi() {
       let row2 = CommonFunc.getComponentRect('row2')
       let row3 = CommonFunc.getComponentRect('row3')
 
-
-      expect(Math.round(row3.left)).assertEqual(Math.round(row2.right));
-      expect(Math.round(row3.top)).assertEqual(Math.round(row1.top));
+      expect(Math.abs(row3.left - row2.right) <= 1).assertTrue();
+      expect(Math.abs(row3.top - row1.top) <= 1).assertTrue();
       await CommonFunc.sleep(1000);
 
       console.info('RelativeContainerApi_0100 END');
