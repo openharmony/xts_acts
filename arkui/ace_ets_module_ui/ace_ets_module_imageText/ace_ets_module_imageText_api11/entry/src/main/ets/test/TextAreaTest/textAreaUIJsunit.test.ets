@@ -251,5 +251,54 @@ export default function textAreaUIJsunit() {
       expect(text).assertEqual('cut');
       done();     
     });
+
+    it('textAreaUIJsunit_1100', 0, async (done: Function) => {
+      console.info('textAreaUIJsunit_1100 START');
+      // modify the Color attribute normal value of textArea dynamically
+      globalThis.value.message.notify({name:'caretColor',value:'rgba(0, 255, 0, 1)'})
+      await CommonFunc.sleep(2000);
+      // check the value of changed parameter
+      let strJson = getInspectorByKey('textArea');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info('textAreaUIJsunit_1100 component obj is: ' + obj.$attrs.placeholderColor + '--' + obj.$attrs.caretColor);
+      expect(obj.$attrs.caretColor).assertEqual('#FF00FF00');
+      done();
+    });
+
+    it('textAreaUIJsunit_1200', 0, async (done: Function) => {
+      console.info('textAreaUIJsunit_1200 START');
+      // modify the Color attribute normal value of textArea dynamically
+      globalThis.value.message.notify({name:'caretColor',value:0xffc0cb})
+      await CommonFunc.sleep(2000);
+      // check the value of changed parameter
+      let strJson = getInspectorByKey('textArea');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info('textAreaUIJsunit_1200 component obj is: ' + obj.$attrs.placeholderColor + '--' + obj.$attrs.caretColor);
+      expect(obj.$attrs.caretColor).assertEqual('#FFFFC0CB');
+      done(); 
+    });
+
+    it('textAreaUIJsunit_1300', 0, async (done: Function) => {
+      console.info("[textAreaUIJsunit_1300] start");
+      let newJson = getInspectorByKey('textArea');
+      console.info("[textAreaUIJsunit_1300]: " + JSON.stringify(newJson));
+
+      let caretColor = $r('sys.color.ohos_id_color_connected');
+      globalThis.value.message.notify({
+        name: 'caretColor', value: caretColor
+      });
+      await CommonFunc.sleep(2000);
+
+      let strJson = getInspectorByKey('textArea');
+      let strJson2 = getInspectorByKey('textAreaResource');
+      console.info("[textAreaUIJsunit_1300]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      let obj2: ESObject = JSON.parse(strJson2);
+      console.info("[textAreaUIJsunit_1300111]: " + JSON.stringify(obj.$attrs.caretColor));
+      console.info("[textAreaUIJsunit_1300111]: " + JSON.stringify(obj2.$attrs.caretColor));
+      expect(obj.$attrs.caretColor).assertEqual(obj2.$attrs.caretColor);
+      console.info("[textAreaUIJsunit_1300] end");
+      done();
+    });
   })
 }
