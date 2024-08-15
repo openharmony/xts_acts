@@ -73,7 +73,7 @@ export default function abilityTest() {
     it('UriPermissionTest_0100', 0, async (done: Function) => {
       log("========================= UriPermissionTest_0100 Begin ===================");
       log("step1. createBundleNameFile...");
-      abilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext");
+      abilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext")!;
       let uri: string = createBundleNameFile(abilityContext);
       if (uri === "") {
         expect().assertFail();
@@ -157,7 +157,7 @@ export default function abilityTest() {
     it('UriPermissionTest_0200', 0, async (done: Function) => {
       log("========================= UriPermissionTest_0200 Begin ===================");
       log("step1. createBundleNameFile...");
-      abilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext");
+      abilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext")!;
       let uri: string = createBundleNameFile(abilityContext);
       if (uri === "") {
         expect().assertFail();
@@ -259,7 +259,7 @@ export default function abilityTest() {
     it('UriPermissionTest_0300', 0, async (done: Function) => {
       log("========================= UriPermissionTest_0300 Begin ===================");
       log("step1. Create bundleName file.");
-      abilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext");
+      abilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext")!;
       let uri: string = createBundleNameFile(abilityContext);
       if (uri === "") {
         expect().assertFail();
