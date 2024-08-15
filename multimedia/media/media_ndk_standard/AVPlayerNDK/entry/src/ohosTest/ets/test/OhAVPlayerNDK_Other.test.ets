@@ -674,6 +674,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
@@ -2322,6 +2323,7 @@ export default function OhAVPlayerNDKOtherTest() {
       for (let i: number = 0; i < 3; i++) {
         result = avplayer.OhAvPlayerPrepare();
         expect(result).assertEqual(AV_ERR_OK);
+        await Utils.sleep(sleep1000);
 
         result = avplayer.OhAvPlayerStop();
         expect(result).assertEqual(AV_ERR_OK);
@@ -2578,6 +2580,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
         result = avplayer.OhAvPlayerPrepare();
         expect(result).assertEqual(AV_ERR_OK);
+        await Utils.sleep(sleep1000);
 
         result = avplayer.OhAvPlayerStop();
         expect(result).assertEqual(AV_ERR_OK);
@@ -2708,6 +2711,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
@@ -2723,6 +2727,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
@@ -2774,6 +2779,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
@@ -2872,6 +2878,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
 
@@ -2911,12 +2918,14 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
 
@@ -3588,6 +3597,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
@@ -3667,6 +3677,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
@@ -3772,6 +3783,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
@@ -4166,6 +4178,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
@@ -4219,6 +4232,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
@@ -4342,6 +4356,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
@@ -4412,6 +4427,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);
@@ -4426,6 +4442,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       result = avplayer.OhAvPlayerPrepare();
       expect(result).assertEqual(AV_ERR_OK);
+      await Utils.sleep(sleep1000);
 
       result = avplayer.OhAvPlayerStop();
       expect(result).assertEqual(AV_ERR_OK);

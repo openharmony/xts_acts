@@ -1011,6 +1011,7 @@ export default function OhAVPlayerNDKTest() { // L2
       console.info(`testOhAvPlayerStop001 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
+        await Utils.sleep(sleep1000);
         let player : number = await avplayer.OhAvPlayerStop();
         expect(player).assertEqual(AV_ERR_OK);
         hilog.info(0x0000, 'testTag', '%{public}s', `testOhAvPlayerStop001:${player}`);
