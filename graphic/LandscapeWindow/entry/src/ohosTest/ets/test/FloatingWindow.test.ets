@@ -16,9 +16,7 @@ import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import window from '@ohos.window';
 import {GlobalContext} from './GlobalContext.test'
-// @ts-ignore
 import { BusinessError } from '@ohos.base';
-
 
 export default function FloatingWindowTest() {
   describe('FloatingWindowTest', () => {
@@ -52,12 +50,12 @@ export default function FloatingWindowTest() {
             console.info(tag+'Succeeded in making multi-window become not landscape.');
             expect(true).assertTrue();
             done();
-          }).catch((err) => {
+          }).catch((err:BusinessError) => {
             console.error(tag+'Failed to make multi-window become not landscape. Cause: ' + JSON.stringify(err));
             expect(false).assertTrue();
             done();
           });
-        }).catch((err) => {
+        }).catch((err:BusinessError) => {
           console.error(tag+'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
           expect(false).assertTrue();
           done();
