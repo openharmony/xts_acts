@@ -16,9 +16,7 @@
 import promptAction from '@ohos.promptAction';
 import router from '@ohos.router';
 import fs from '@ohos.file.fs';
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import data_preferences from '@ohos.data.preferences';
-import MediaUtils from '../model/MediaUtils';
 
 const TAG: string = 'ParseXML';
 let path: string = globalThis.dir;
