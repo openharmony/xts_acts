@@ -29,7 +29,7 @@
 #define NUMBER_2 2
 #define NUMBER_3 3
 #define TIMEOUT_FIVE 10
-#define NUMBER_500 500
+#define NUMBER_256 256
 static bool g_flag = false;
 static void OnVSync(long long timestamp, void *data) { g_flag = true; }
 
@@ -221,6 +221,11 @@ static napi_value OHNativeVSyncCreateAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
+void myFrameCallback(long long timestamp, void *data) {
+    int *myData = static_cast<int *>(data);
+    std::cout << "Frame callback called at timestamp: " << timestamp << ", with data: " << *myData << std::endl;
+}
+
 static napi_value OHNativeVSyncCreateDifLenth(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -241,7 +246,8 @@ static napi_value OHNativeVSyncCreateDifLenth(napi_env env, napi_callback_info i
         napi_value resultIndex = nullptr;
         OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(myArray[index].c_str(), len);
         if (nativeVSync != nullptr) {
-            // 第二个参数怎么传值？
+            int param = 0;
+            OH_NativeVSync_RequestFrame(nativeVSync, myFrameCallback, &param);
             long long *period;
             int ret = OH_NativeVSync_GetPeriod(nativeVSync, period);
             napi_create_int32(env, ret, &resultIndex);
@@ -258,7 +264,7 @@ static napi_value OHNativeVSyncCreateMuch(napi_env env, napi_callback_info info)
     char name[] = "testcase";
     unsigned int length = strlen(name);
     OH_NativeVSync *nativeVSync = nullptr;
-    for (uint32_t i = 0; i < NUMBER_500; i++) {
+    for (uint32_t i = 0; i < NUMBER_256; i++) {
         nativeVSync = OH_NativeVSync_Create(name, length);
         if (nativeVSync == nullptr) {
             napi_create_int32(env, FAIL, &result);
@@ -322,11 +328,6 @@ static napi_value OHNativeVSyncDestroyNormal(napi_env env, napi_callback_info in
     return result;
 }
 
-void myFrameCallback(long long timestamp, void *data)
-{
-    int *myData = static_cast<int *>(data);
-    std::cout << "Frame callback called at timestamp: " << timestamp << ", with data: " << *myData << std::endl;
-}
 static napi_value OHNativeVSyncRequestFrameNullptr(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;

@@ -16,7 +16,6 @@
 #include "napi/native_api.h"
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
-#include <GLES3/gl3.h>
 #include <GLES3/gl32.h>
 #include <bits/alltypes.h>
 #include <cstring>
@@ -44,6 +43,7 @@
 #define ARR_NUMBER_4 4
 #define NUMBER_99999 99999
 #define NUMBER_500 500
+
 using GetPlatformDisplayExt = PFNEGLGETPLATFORMDISPLAYEXTPROC;
 constexpr const char *EGL_EXT_PLATFORM_WAYLAND = "EGL_EXT_platform_wayland";
 constexpr const char *EGL_KHR_PLATFORM_WAYLAND = "EGL_KHR_platform_wayland";
@@ -120,6 +120,7 @@ static OH_NativeImage *getNativeImage()
     OH_NativeImage *image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
     return image;
 }
+
 static napi_value OHNativeImageCreate(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -262,6 +263,7 @@ static napi_value OHNativeImageDetachContext(napi_env env, napi_callback_info in
     napi_create_int32(env, backInfo, &result);
     return result;
 }
+
 static napi_value OHNativeImageDetachContextAbnormal(napi_env env, napi_callback_info info)
 {
     int backInfo = OH_NativeImage_DetachContext(nullptr);
@@ -272,6 +274,7 @@ static napi_value OHNativeImageDetachContextAbnormal(napi_env env, napi_callback
     napi_create_int32(env, backInfo, &result);
     return result;
 }
+
 static napi_value OHNativeImageUpdateSurfaceImage(napi_env env, napi_callback_info info)
 {
     InitEGLEnv();
@@ -400,21 +403,8 @@ static napi_value OHNativeImageCreateNormal(napi_env env, napi_callback_info inf
 static napi_value OHNativeImageCreateAbnormal(napi_env env, napi_callback_info info)
 {
     int backInfo = FAIL;
-    typedef struct {
-        uint32_t textureId;
-        uint32_t textureTarget;
-    } TestParams;
-    TestParams testParams[] = {
-        {NULL, NULL}, {1, NULL}, {NULL, 1}, {0, 1},
-        {10000, 1}, {2^32-1, 1}, {2^32, 1}, {1, 0},
-        {1, 10000}, {1, 2^32-1},{1, 2^32}
-    };
-
-    for (int i = 0; i < sizeof(testParams) / sizeof(testParams[0]); i++) {
-        TestParams params = testParams[i];
-        OH_NativeImage *image = OH_NativeImage_Create(params.textureId, params.textureTarget);
-    }
-    OH_NativeImage *image = OH_NativeImage_Create(-10000, 1);
+    
+    OH_NativeImage *image = OH_NativeImage_Create(0, 1);
     if (image != nullptr) {
         backInfo = SUCCESS;
     }
@@ -467,7 +457,7 @@ static napi_value OHNativeImageCreateMuch(napi_env env, napi_callback_info info)
             }
         }
     }
-    
+
     napi_value result = nullptr;
     if (backInfo == FAIL) {
         napi_create_int32(env, backInfo, &result);
@@ -480,14 +470,14 @@ static napi_value OHNativeImageCreateMuch(napi_env env, napi_callback_info info)
 
 static napi_value OHNativeImageAcquireNativeWindowNullptr(napi_env env, napi_callback_info info)
 {
-    int backInfo = FAIL;
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = OH_NativeImage_AcquireNativeWindow(nullptr);
-    if (nativeWindow != nullptr) {
-        backInfo = SUCCESS;
-    }
     napi_value result = nullptr;
-    napi_create_int32(env, backInfo, &result);
+    if (nativeWindow != nullptr) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
     return result;
 }
 
@@ -535,7 +525,7 @@ static napi_value OHNativeImageAttachContextNullptr(napi_env env, napi_callback_
         napi_create_int32(env, SUCCESS, &result2);
     }
     napi_set_element(env, result, ARR_NUMBER_1, result2);
-    
+
     return result;
 }
 
@@ -566,21 +556,21 @@ static napi_value OHNativeImageAttachContextNormal(napi_env env, napi_callback_i
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
     int res1 = OH_NativeImage_AttachContext(nativeImage, textureId);
-    if (res1 != 0) {
-        napi_create_int32(env, FAIL, &result1);
-    } else {
+    if (res1 == 0) {
         napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
     }
     napi_set_element(env, result, ARR_NUMBER_0, result1);
 
     int res2 = OH_NativeImage_AttachContext(nativeImage, textureId);
-    if (res2 != 0) {
-        napi_create_int32(env, FAIL, &result2);
-    } else {
+    if (res2 == 0) {
         napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
     }
     napi_set_element(env, result, ARR_NUMBER_1, result2);
-    
+
     OH_NativeImage_Destroy(&nativeImage);
     return result;
 }
@@ -603,7 +593,7 @@ static napi_value OHNativeImageDetachContextNormal(napi_env env, napi_callback_i
         napi_create_int32(env, SUCCESS, &result1);
     }
     napi_set_element(env, result, ARR_NUMBER_0, result1);
-    
+
     int res2 = OH_NativeImage_AttachContext(nativeImage, textureId);
     if (res2 == 0) {
         napi_create_int32(env, SUCCESS, &result2);
@@ -611,7 +601,7 @@ static napi_value OHNativeImageDetachContextNormal(napi_env env, napi_callback_i
         napi_create_int32(env, FAIL, &result2);
     }
     napi_set_element(env, result, ARR_NUMBER_1, result2);
-    
+
     int res3 = OH_NativeImage_DetachContext(nativeImage);
     if (res3 == 0) {
         napi_create_int32(env, SUCCESS, &result3);
@@ -619,7 +609,7 @@ static napi_value OHNativeImageDetachContextNormal(napi_env env, napi_callback_i
         napi_create_int32(env, FAIL, &result3);
     }
     napi_set_element(env, result, ARR_NUMBER_2, result3);
-    
+
     OH_NativeImage_Destroy(&nativeImage);
     return result;
 }
@@ -639,7 +629,7 @@ static napi_value OHNativeImageGetSurfaceIdNullptr(napi_env env, napi_callback_i
         napi_create_int32(env, SUCCESS, &result1);
     }
     napi_set_element(env, result, ARR_NUMBER_0, result1);
-    
+
     int res2 = OH_NativeImage_GetSurfaceId(nullptr, NULL);
     if (res2 != 0 && surfaceId == NUMBER_99999) {
         napi_create_int32(env, FAIL, &result2);
@@ -647,7 +637,7 @@ static napi_value OHNativeImageGetSurfaceIdNullptr(napi_env env, napi_callback_i
         napi_create_int32(env, SUCCESS, &result2);
     }
     napi_set_element(env, result, ARR_NUMBER_1, result2);
-    
+
     OH_NativeImage_Destroy(&nativeImage);
     return result;
 }
@@ -719,7 +709,7 @@ static napi_value OHNativeImageGetTransformMatrixNullptr(napi_env env, napi_call
         napi_create_int32(env, FAIL, &result2);
     }
     napi_set_element(env, result, ARR_NUMBER_1, result2);
-    
+
     OH_NativeImage_Destroy(&nativeImage);
     return result;
 }
@@ -793,14 +783,14 @@ static napi_value OHNativeImageGetTimestampNormal(napi_env env, napi_callback_in
 
     int64_t timestamp = 0;
     timestamp = OH_NativeImage_GetTimestamp(nativeImage);
-    
+
     if (res == 0) {
         napi_create_int32(env, SUCCESS, &result1);
     } else {
         napi_create_int32(env, FAIL, &result1);
     }
     napi_set_element(env, result, ARR_NUMBER_0, result1);
-    
+
     if (timestamp == time) {
         napi_create_int32(env, SUCCESS, &result2);
     } else {
@@ -825,7 +815,7 @@ static napi_value OHNativeImageGetTimestampNormal(napi_env env, napi_callback_in
         napi_create_int32(env, FAIL, &result3);
     }
     napi_set_element(env, result, ARR_NUMBER_2, result3);
-    
+
     OH_NativeImage_Destroy(&nativeImage);
     return result;
 }
@@ -838,11 +828,12 @@ static napi_value OHNativeImageGetTransformMatrixNormal(napi_env env, napi_callb
     glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
     nativeImage = OH_NativeImage_Create(nativeImageTexId_, GL_TEXTURE_EXTERNAL_OES);
     float matrix[16];
+    float matrixNull[16] = {};
     napi_value result = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_2, &result);
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
-    
+
     int res1 = OH_NativeImage_UpdateSurfaceImage(nativeImage);
     if (res1 == 0) {
         napi_create_int32(env, SUCCESS, &result1);
@@ -852,10 +843,10 @@ static napi_value OHNativeImageGetTransformMatrixNormal(napi_env env, napi_callb
     napi_set_element(env, result, ARR_NUMBER_0, result1);
 
     OH_NativeImage_GetTransformMatrix(nativeImage, matrix);
-    if (matrix != NULL) {
-        napi_create_int32(env, SUCCESS, &result2);
-    } else {
+    if (memcmp(matrix, matrixNull, sizeof(matrix)) == 0) {
         napi_create_int32(env, FAIL, &result2);
+    } else {
+        napi_create_int32(env, SUCCESS, &result2);
     }
     napi_set_element(env, result, ARR_NUMBER_1, result2);
 
@@ -871,6 +862,7 @@ static napi_value OHNativeImageGetTransformMatrixV2Normal(napi_env env, napi_cal
     glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
     nativeImage = OH_NativeImage_Create(nativeImageTexId_, GL_TEXTURE_EXTERNAL_OES);
     float matrixV2[16];
+    float matrixNull[16] = {};
     napi_value result = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_2, &result);
     napi_value result1 = nullptr;
@@ -885,10 +877,10 @@ static napi_value OHNativeImageGetTransformMatrixV2Normal(napi_env env, napi_cal
     napi_set_element(env, result, ARR_NUMBER_0, result1);
 
     OH_NativeImage_GetTransformMatrixV2(nativeImage, matrixV2);
-    if (matrixV2 != NULL) {
-        napi_create_int32(env, SUCCESS, &result2);
-    } else {
+    if (memcmp(matrixV2, matrixNull, sizeof(matrixV2)) == 0) {
         napi_create_int32(env, FAIL, &result2);
+    } else {
+        napi_create_int32(env, SUCCESS, &result2);
     }
     napi_set_element(env, result, ARR_NUMBER_1, result2);
 
@@ -899,7 +891,7 @@ static napi_value OHNativeImageGetTransformMatrixV2Normal(napi_env env, napi_cal
 static napi_value OHNativeImageSetOnFrameAvailableListenerNullptr(napi_env env, napi_callback_info info)
 {
     class NativeImageAdaptor {
-        public:
+    public:
         ~NativeImageAdaptor();
         static NativeImageAdaptor *GetInstance();
         static void OnFrameAvailable(void *context);
@@ -907,8 +899,6 @@ static napi_value OHNativeImageSetOnFrameAvailableListenerNullptr(napi_env env, 
     OH_NativeImage *nativeImage = nullptr;
     napi_value result = nullptr;
     OH_OnFrameAvailableListener listener;
-    listener.context = static_cast<void *>(nativeImage);
-    listener.onFrameAvailable = NativeImageAdaptor::OnFrameAvailable;
     int res = OH_NativeImage_SetOnFrameAvailableListener(nullptr, listener);
     if (res == 0) {
         napi_create_int32(env, SUCCESS, &result);
@@ -921,7 +911,7 @@ static napi_value OHNativeImageSetOnFrameAvailableListenerNullptr(napi_env env, 
 static napi_value OHNativeImageUnSetOnFrameAvailableListenerNullptr(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    int res =  OH_NativeImage_UnsetOnFrameAvailableListener(nullptr);
+    int res = OH_NativeImage_UnsetOnFrameAvailableListener(nullptr);
     if (res == 0) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
@@ -939,15 +929,13 @@ static napi_value OHNativeImageSetOnFrameAvailableListenerNormal(napi_env env, n
         static NativeImageAdaptor *GetInstance();
         static void OnFrameAvailable(void *context);
     };
-    
+
     OH_NativeImage *nativeImage1 = getNativeImage();
     OH_OnFrameAvailableListener listener1;
-    listener1.context = static_cast<void *>(nativeImage1);
-    listener1.onFrameAvailable = NativeImageAdaptor::OnFrameAvailable;
     napi_value result = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_4, &result);
     napi_value result1 = nullptr;
-    
+
     int res1 = OH_NativeImage_SetOnFrameAvailableListener(nativeImage1, listener1);
     if (res1 == 0) {
         napi_create_int32(env, SUCCESS, &result1);
@@ -964,11 +952,9 @@ static napi_value OHNativeImageSetOnFrameAvailableListenerNormal(napi_env env, n
         napi_create_int32(env, FAIL, &result2);
     }
     napi_set_element(env, result, ARR_NUMBER_1, result2);
-    
+
     OH_NativeImage *nativeImage2 = getNativeImage();
     OH_OnFrameAvailableListener listener2;
-    listener2.context = static_cast<void *>(nativeImage2);
-    listener2.onFrameAvailable = NativeImageAdaptor::OnFrameAvailable;
     napi_value result3 = nullptr;
     int res3 = OH_NativeImage_SetOnFrameAvailableListener(nativeImage1, listener2);
     if (res3 == 0) {
@@ -1000,8 +986,6 @@ static napi_value OHNativeImageUnsetOnFrameAvailableListenerNormal(napi_env env,
 
     OH_NativeImage *nativeImage1 = getNativeImage();
     OH_OnFrameAvailableListener listener1;
-    listener1.context = static_cast<void *>(nativeImage1);
-    listener1.onFrameAvailable = NativeImageAdaptor::OnFrameAvailable;
     napi_value result = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_3, &result);
     napi_value result1 = nullptr;

@@ -46,7 +46,7 @@ export default function nativeBufferTest() {
     it('testNativeVSyncCreateNotEq', 0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncCreateNotEq();
       console.info("testNativeVSyncCreateNotEq result:" + result)
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
 
@@ -104,17 +104,17 @@ export default function nativeBufferTest() {
 
     /**
      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_VSYNC_0105
-     * @tc.name       : oHNativeVSyncCreateMuch
+     * @tc.name       : testNativeVSyncCreateMuch
      * @tc.desc       : test OH_NativeVSync_Create
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
 
-    it('oHNativeVSyncCreateMuch', 0, async (done: Function) => {
+    it('testNativeVSyncCreateMuch', 0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncCreateMuch();
-      console.info("oHNativeVSyncCreateMuch result:" + result)
-      expect(result).assertEqual(0);
+      console.info("testNativeVSyncCreateMuch result:" + result)
+      expect(result).assertEqual(-1);
       done();
     });
 

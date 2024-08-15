@@ -557,10 +557,6 @@ export default function nativeBufferTest() {
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
       expect(result[2]).assertEqual(0);
-
-      // expect(result[0]).assertEqual(50102000);
-      // expect(result[1]).assertEqual(50102000);
-      // expect(result[2]).assertEqual(-1);
       done();
     });
 
