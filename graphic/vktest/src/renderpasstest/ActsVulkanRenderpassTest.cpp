@@ -42,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanRenderpassTest, TestVulkanRenderpassTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanRenderpassTest------\n");
-        if(canIUse("SystemCapability.Graphic.Vulkan")){
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
             system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
                 "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/renderpass.txt "
                 "--deqp-log-filename=ActsVulkanRenderpassTest.qpa");

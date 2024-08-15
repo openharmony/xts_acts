@@ -42,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanMemorymodelTest, TestVulkanMemory_modelTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanMemorymodelTest------\n");
-        if(canIUse("SystemCapability.Graphic.Vulkan")){
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
             system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
                 "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/memory-model.txt "
                 "--deqp-log-filename=ActsVulkanMemorymodelTest.qpa");

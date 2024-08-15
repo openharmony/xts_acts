@@ -42,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanFastlinkedLibraryTest, TestVulkanFastlinkedLibraryTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanFastlinkedLibraryTest------\n");
-        if(canIUse("SystemCapability.Graphic.Vulkan")){
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
             system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
                 "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/pipeline/fast-linked-library.txt "
                 "--deqp-log-filename=ActsVulkanFastlinkedLibraryTest.qpa");

@@ -42,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanFragmentshadingrateTest, TestVulkanFragment_shading_rateTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanFragmentshadingrateTest------\n");
-        if(canIUse("SystemCapability.Graphic.Vulkan")){
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
             system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
                 "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/fragment-shading-rate.txt "
                 "--deqp-log-filename=ActsVulkanFragmentshadingrateTest.qpa");

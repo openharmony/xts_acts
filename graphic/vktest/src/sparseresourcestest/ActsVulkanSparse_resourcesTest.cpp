@@ -42,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanSparse_resourcesTest, TestVulkanSparse_resourcesTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanSparseresourcesTest------\n");
-        if(canIUse("SystemCapability.Graphic.Vulkan")){
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
             system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
                 "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/sparse-resources.txt "
                 "--deqp-log-filename=ActsVulkanSparseresourcesTest.qpa");

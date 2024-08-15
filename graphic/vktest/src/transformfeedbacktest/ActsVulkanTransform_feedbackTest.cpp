@@ -42,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanTransformfeedbackTest, TestVulkanTransform_feedbackTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanTransformfeedbackTest------\n");
-        if(canIUse("SystemCapability.Graphic.Vulkan")){
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
             system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
                 "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/transform-feedback.txt "
                 "--deqp-log-filename=ActsVulkanTransformfeedbackTest.qpa");

@@ -42,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanGeometryTest, TestVulkanGeometryTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanGeometryTest------\n");
-        if(canIUse("SystemCapability.Graphic.Vulkan")){
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
             system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
                 "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/geometry.txt "
                 "--deqp-log-filename=ActsVulkanGeometryTest.qpa");

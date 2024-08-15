@@ -42,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanDynamicrenderingTest, TestVulkanDynamic_renderingTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanDynamicrenderingTest------\n");
-        if(canIUse("SystemCapability.Graphic.Vulkan")){
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
             system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
                 "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/dynamic-rendering.txt "
                 "--deqp-log-filename=ActsVulkanDynamicrenderingTest.qpa");

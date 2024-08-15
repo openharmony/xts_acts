@@ -42,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanMonolithicTest, TestVulkanMonolithicTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanMonolithicTest------\n");
-        if(canIUse("SystemCapability.Graphic.Vulkan")){
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
             system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
                 "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/pipeline/monolithic.txt "
                 "--deqp-log-filename=ActsVulkanMonolithicTest.qpa");

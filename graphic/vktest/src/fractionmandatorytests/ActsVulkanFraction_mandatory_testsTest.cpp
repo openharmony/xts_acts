@@ -42,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanFraction_mandatory_testsTest, TestVulkanFraction_mandatory_testsTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanFractionmandatorytestsTest------\n");
-        if(canIUse("SystemCapability.Graphic.Vulkan")){
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
             system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
                 "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/fraction-mandatory-tests.txt "
                 "--deqp-log-filename=ActsVulkanFractionmandatorytestsTest.qpa");

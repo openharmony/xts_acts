@@ -42,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanBinding_modelTest, TestVulkanBing_modelTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanBindingmodelTest------\n");
-        if(canIUse("SystemCapability.Graphic.Vulkan")){
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
             system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
                 "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/binding-model.txt "
                 "--deqp-log-filename=ActsVulkanBindingmodelTest.qpa");

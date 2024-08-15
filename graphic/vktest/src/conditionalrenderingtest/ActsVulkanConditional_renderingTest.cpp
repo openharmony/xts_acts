@@ -42,8 +42,8 @@ namespace OHOS {
     HWTEST_F(ActsVulkanConditional_renderingTest, TestVulkanConditional_renderingTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanConditionalrenderingTest------\n");
-        if(canIUse("SystemCapability.Graphic.Vulkan")){
-            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute " 
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
                 "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/conditional-rendering.txt "
                 "--deqp-log-filename=ActsVulkanConditionalrenderingTest.qpa");
         }

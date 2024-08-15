@@ -42,7 +42,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanFragmentshaderinterlockTest, TestVulkanFragment_shader_interlockTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanFragmentshaderinterlockTest------\n");
-        if(canIUse("SystemCapability.Graphic.Vulkan")){
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
             system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
                 "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/fragment-shader-interlock.txt "
                 "--deqp-log-filename=ActsVulkanFragmentshaderinterlockTest.qpa");
