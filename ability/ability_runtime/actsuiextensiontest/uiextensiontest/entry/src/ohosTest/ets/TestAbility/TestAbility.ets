@@ -16,9 +16,11 @@
 import hilog from '@ohos.hilog';
 import Ability from '@ohos.app.ability.UIAbility'
 import Window from '@ohos.window'
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
 
 export default class TestAbility extends Ability {
-    onCreate(want, launchParam) {
+    onCreate(want:Want, launchParam: AbilityConstant.LaunchParam) {
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onCreate');
         hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
@@ -62,7 +64,7 @@ export default class TestAbility extends Ability {
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onBackground');
     }
 
-    onNewWant(want, launchParam) {
+    onNewWant(want:Want, launchParam: AbilityConstant.LaunchParam) {
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onNewWant');
     }

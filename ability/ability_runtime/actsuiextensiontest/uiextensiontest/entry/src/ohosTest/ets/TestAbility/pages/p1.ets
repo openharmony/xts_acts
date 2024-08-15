@@ -34,7 +34,7 @@ struct P1 {
         }).width('100%').height('35%')
           .onResult((data)=>{
             let onResultEvent = 'ACTS_UIExtension_OnResult';
-            let options = {
+            let options:commonEventManager.CommonEventPublishData = {
               parameters: {
                 'result': data
               }
@@ -45,7 +45,7 @@ struct P1 {
           })
           .onReceive((data)=>{
             let onReceiveEvent = 'ACTS_UIExtension_OnReceive';
-            let options = {
+            let options:commonEventManager.CommonEventPublishData = {
               parameters: {
                 'result': data
               }
