@@ -15,23 +15,29 @@
 import { describe, beforeAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
+import common from '@ohos.app.ability.common';
+import Want from '@ohos.app.ability.Want';
+import CommonEventManager from '@ohos.commonEventManager';
+import { BusinessError } from '@ohos.base';
+import UIAbility from '@ohos.app.ability.UIAbility';
 
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
-var subscriberInfo_MainAbility = {
+let subscriberInfo_MainAbility:CommonEventManager.CommonEventSubscribeInfo = {
   events: ["ACTS_DoAbility_Event"]
 };
-var mainability
+let mainability:UIAbility
 const START_ABILITY_TIMEOUT = 10000;
 const START_ABILITY_TIMEOUT_TWO_THOUSAND = 2000;
 const START_ABILITY_TIMEOUT_THOUSAND = 1000;
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+function sleep(time: number) {
+  return new Promise<void>((resolve) => setTimeout(resolve, time))
 }
+
 export default function abilityTest() {
 
-  describe('ActsChangeAbilityStagetest', function () {
-    beforeAll(async function (done) {
+  describe('ActsChangeAbilityStagetest', () => {
+    beforeAll(async (done:Function) => {
       console.info('beforeAll called')
       let delay = 3000;
       let start = new Date().getTime();
@@ -45,7 +51,7 @@ export default function abilityTest() {
             break;
         }
     }
-      await globalThis.abilitydelegator.getCurrentTopAbility().then((data) => {
+      await globalThis.abilitydelegator.getCurrentTopAbility().then((data:UIAbility) => {
         mainability = data
         done()
       })
@@ -57,39 +63,39 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to foreground
      * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground.(callback)
      */
-    it('ACTS_DoAbilityForeground_0100', 0, async function (done) {
+    it('ACTS_DoAbilityForeground_0100', 0, async (done:Function) => {
       console.log("====>in ACTS_DoAbilityForeground_0100====>");
-      var Subscriber
-      var flag = true
-      var ability
-      function UnSubscribeCallback() {
+      let Subscriber:CommonEventManager.CommonEventSubscriber
+      let flag = true
+      let ability:UIAbility
+      let UnSubscribeCallback = ():void => {
         console.log("====>UnSubscribeCallback====>");
         flag = false
         setTimeout(() => {
           done();
         }, START_ABILITY_TIMEOUT_TWO_THOUSAND)
       }
-      function SubscribeCallBack(err, data) {
+      let SubscribeCallBack = (err:BusinessError, data:CommonEventManager.CommonEventData):void => {
         expect(data.event == "ACTS_DoAbility_Event").assertTrue();
         console.log("====>0100 Subscribe CallBack data:====>" + JSON.stringify(data));
-        globalThis.abilitydelegator.doAbilityForeground(ability, (err) => {
+        globalThis.abilitydelegator.doAbilityForeground(ability, (err:BusinessError) => {
           console.log("====>ACTS_DoAbilityForeground_0100 data:====>" + JSON.stringify(err));
           expect(err.code).assertEqual(0);
           setTimeout(() => {
-            var num = globalThis.abilitydelegator.getAbilityState(ability)
+            let num:number = globalThis.abilitydelegator.getAbilityState(ability)
             console.log("====>ACTS_DoAbilityForeground_0100 getAbilityState:====>" + JSON.stringify(num));
             expect(num).assertEqual(2);
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
           }, START_ABILITY_TIMEOUT_THOUSAND)
         })
       }
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data) => {
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data:CommonEventManager.CommonEventSubscriber) => {
         console.log("====>Create Subscriber====>");
         data.getSubscribeInfo().then((SubscribeInfo) => {
           console.log("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
-          globalThis.abilitydelegator.getCurrentTopAbility().then((data) => {
+          globalThis.abilitydelegator.getCurrentTopAbility().then((data:UIAbility) => {
             ability = data
             console.log("===>SubscribeInfo is====>" + JSON.stringify(ability));
             console.log("====>start startAbility====>");
@@ -103,7 +109,7 @@ export default function abilityTest() {
           })
         })
       })
-      function timeout() {
+      let timeout= ():void => {
         if (flag == true) {
           try {
             expect().assertFail();
@@ -123,17 +129,17 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to foreground
      * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground.(callback)
      */
-    it('ACTS_DoAbilityForeground_0200', 0, async function (done) {
-      var ability
-      globalThis.abilitydelegator.getCurrentTopAbility().then((data) => {
+    it('ACTS_DoAbilityForeground_0200', 0, async (done:Function) => {
+      let ability:UIAbility
+      globalThis.abilitydelegator.getCurrentTopAbility().then((data:UIAbility) => {
         ability = data
         expect(JSON.stringify(data) == JSON.stringify(mainability)).assertTrue();
         console.log("====>getCurrentTopAbility ability data:====>" + JSON.stringify(ability));
-        globalThis.abilitydelegator.doAbilityForeground(ability, (err) => {
+        globalThis.abilitydelegator.doAbilityForeground(ability, (err:BusinessError) => {
           console.log("====>ACTS_DoAbilityForeground_0200 data:====>" + JSON.stringify(err));
           expect(err.code).assertEqual(0);
           setTimeout(() => {
-            var num = globalThis.abilitydelegator.getAbilityState(ability)
+            let num:number = globalThis.abilitydelegator.getAbilityState(ability)
             console.log("====>ACTS_DoAbilityForeground_0200 getAbilityState:====>" + JSON.stringify(num));
             expect(num).assertEqual(2);
           }, START_ABILITY_TIMEOUT_THOUSAND)
@@ -149,38 +155,38 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to foreground
      * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground.(promise)
      */
-    it('ACTS_DoAbilityForeground_0400', 0, async function (done) {
-      var Subscriber
-      var flag = true
-      var ability
-      function UnSubscribeCallback() {
+    it('ACTS_DoAbilityForeground_0400', 0, async (done:Function) => {
+      let Subscriber:CommonEventManager.CommonEventSubscriber
+      let flag = true
+      let ability:UIAbility
+      let UnSubscribeCallback = ():void => {
         console.log("====>UnSubscribeCallback====>");
         flag = false
         setTimeout(() => {
           done();
         }, START_ABILITY_TIMEOUT_TWO_THOUSAND)
       }
-      function SubscribeCallBack(err, data) {
+      let SubscribeCallBack = (err:BusinessError, data:CommonEventManager.CommonEventData):void => {
         expect(data.event == "ACTS_DoAbility_Event").assertTrue();
         console.log("====>0400 Subscribe CallBack data:====>" + JSON.stringify(data));
         globalThis.abilitydelegator.doAbilityForeground(ability).then(() => {
           console.log("====>ACTS_DoAbilityForeground_0400 data:====>");
           expect(true).assertTrue();
           setTimeout(() => {
-            var num = globalThis.abilitydelegator.getAbilityState(ability)
+            let num:number = globalThis.abilitydelegator.getAbilityState(ability)
             console.log("====>ACTS_DoAbilityForeground_0400 getAbilityState:====>" + JSON.stringify(num));
             expect(num).assertEqual(2);
           }, START_ABILITY_TIMEOUT_THOUSAND)
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         })
       }
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data) => {
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data:CommonEventManager.CommonEventSubscriber) => {
         console.log("====>Create Subscriber====>");
         data.getSubscribeInfo().then((SubscribeInfo) => {
           console.log("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
-          globalThis.abilitydelegator.getCurrentTopAbility().then((data) => {
+          globalThis.abilitydelegator.getCurrentTopAbility().then((data:UIAbility) => {
             ability = data
             console.log("====>ability data:====>" + JSON.stringify(ability));
             console.log("====>start startAbility====>");
@@ -194,7 +200,7 @@ export default function abilityTest() {
           })
         })
       })
-      function timeout() {
+      let timeout= ():void => {
         if (flag == true) {
           expect().assertFail();
           console.log('ACTS_DoAbilityForeground_0400 - timeout');
@@ -209,10 +215,10 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to foreground
      * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground.(promise)
      */
-    it('ACTS_DoAbilityForeground_0500', 0, async function (done) {
-      var ability
+    it('ACTS_DoAbilityForeground_0500', 0, async (done:Function) => {
+      let ability:UIAbility
       setTimeout(() => {
-        globalThis.abilitydelegator.getCurrentTopAbility().then((data) => {
+        globalThis.abilitydelegator.getCurrentTopAbility().then((data:UIAbility) => {
           ability = data
           console.log("====>getCurrentTopAbility  data:====>" + JSON.stringify(data));
           console.log("====>getCurrentTopAbility  mainability:====>" + JSON.stringify(mainability));
@@ -222,7 +228,7 @@ export default function abilityTest() {
             console.log("====>ACTS_DoAbilityForeground_0500 data:====>");
             expect(true).assertTrue();
             setTimeout(() => {
-              var num = globalThis.abilitydelegator.getAbilityState(ability)
+              let num:number = globalThis.abilitydelegator.getAbilityState(ability)
               console.log("====>ACTS_DoAbilityForeground_0500 getAbilityState:====>" + JSON.stringify(num));
               expect(num).assertEqual(2);
             }, START_ABILITY_TIMEOUT_THOUSAND)
@@ -240,31 +246,31 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to background
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background.(callback)
      */
-    it('ACTS_DoAbilityBackground_0100', 0, async function (done) {
-      var Subscriber
-      var flag = true
-      function UnSubscribeCallback() {
+    it('ACTS_DoAbilityBackground_0100', 0, async (done:Function) => {
+      let Subscriber:CommonEventManager.CommonEventSubscriber
+      let flag = true
+      let UnSubscribeCallback = ():void => {
         console.log("====>UnSubscribeCallback====>");
         flag = false
         setTimeout(() => {
           done();
         }, 5000)
       }
-      function SubscribeCallBack(err, data) {
+      let SubscribeCallBack = (err:BusinessError, data:CommonEventManager.CommonEventData):void => {
         expect(data.event == "ACTS_DoAbility_Event").assertTrue();
         console.log("====>0100 Subscribe CallBack data:====>" + JSON.stringify(data));
-        globalThis.abilitydelegator.getCurrentTopAbility().then((ability) => {
+        globalThis.abilitydelegator.getCurrentTopAbility().then((ability:UIAbility) => {
           console.log("====>getCurrentTopAbility ability data:====>" + JSON.stringify(ability));
           if (deviceType === '2in1') {
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
             done();
             return;
           }
-          globalThis.abilitydelegator.doAbilityBackground(ability, (err) => {
+          globalThis.abilitydelegator.doAbilityBackground(ability, (err:BusinessError) => {
             console.log("====>ACTS_DoAbilityBackground_0100 data:====>");
             expect(err.code).assertEqual(0);
             setTimeout(() => {
-              var num = globalThis.abilitydelegator.getAbilityState(ability)
+              let num:number = globalThis.abilitydelegator.getAbilityState(ability)
               console.log("====>ACTS_DoAbilityBackground_0100 getAbilityState:====>" + JSON.stringify(num));
               expect(num).assertEqual(3);
             }, START_ABILITY_TIMEOUT_THOUSAND)
@@ -272,14 +278,14 @@ export default function abilityTest() {
           })
         })
       }
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data) => {
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data:CommonEventManager.CommonEventSubscriber) => {
         console.log("====>Create Subscriber====>");
         data.getSubscribeInfo().then((SubscribeInfo) => {
           console.log("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.log("====>start startAbility====>");
-          globalThis.abilitydelegator.getCurrentTopAbility().then((data) => {
+          globalThis.abilitydelegator.getCurrentTopAbility().then((data:CommonEventManager.CommonEventSubscriber) => {
             console.log("====>getCurrentTopAbility ability data:====>" + JSON.stringify(data));
             globalThis.abilitydelegator.startAbility(
               {
@@ -291,7 +297,7 @@ export default function abilityTest() {
           })
         })
       })
-      function timeout() {
+      let timeout= ():void => {
         if (flag == true) {
           expect().assertFail();
           console.log('ACTS_DoAbilityBackground_0100 - timeout');
@@ -306,30 +312,30 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to background
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background.(promise)
      */
-    it('ACTS_DoAbilityBackground_0500', 0, async function (done) {
+    it('ACTS_DoAbilityBackground_0500', 0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;
       }
-      var Subscriber
-      var flag = true
-      function UnSubscribeCallback() {
+      let Subscriber:CommonEventManager.CommonEventSubscriber
+      let flag = true
+      let UnSubscribeCallback = ():void => {
         console.log("====>UnSubscribeCallback====>");
         flag = false
         setTimeout(() => {
           done();
         }, START_ABILITY_TIMEOUT_TWO_THOUSAND)
       }
-      function SubscribeCallBack(err, data) {
+      let SubscribeCallBack = (err:BusinessError, data:CommonEventManager.CommonEventData):void => {
         expect(data.event == "ACTS_DoAbility_Event").assertTrue();
         console.log("====>0500 Subscribe CallBack data:====>" + JSON.stringify(data));
-        globalThis.abilitydelegator.getCurrentTopAbility().then((ability2) => {
+        globalThis.abilitydelegator.getCurrentTopAbility().then((ability2:UIAbility) => {
           console.log("====>getCurrentTopAbility ability2 data:====>" + JSON.stringify(ability2));
           globalThis.abilitydelegator.doAbilityBackground(ability2).then(() => {
             console.log("====>ACTS_DoAbilityBackground_0500 data:====>");
             expect(true).assertTrue();
             setTimeout(() => {
-              var num = globalThis.abilitydelegator.getAbilityState(ability2)
+              let num:number = globalThis.abilitydelegator.getAbilityState(ability2)
               console.log("====>ACTS_DoAbilityBackground_0500 getAbilityState:====>" + JSON.stringify(num));
               expect(num).assertEqual(3);
             }, START_ABILITY_TIMEOUT_THOUSAND)
@@ -337,7 +343,7 @@ export default function abilityTest() {
           })
         })
       }
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data) => {
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data:CommonEventManager.CommonEventSubscriber) => {
         console.log("====>Create Subscriber====>");
         data.getSubscribeInfo().then((SubscribeInfo) => {
           console.log("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
@@ -353,7 +359,7 @@ export default function abilityTest() {
             })
         })
       })
-      function timeout() {
+      let timeout= ():void => {
         if (flag == true) {
           expect().assertFail();
           console.log('ACTS_DoAbilityBackground_0500 - timeout');
@@ -368,26 +374,26 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to background
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background.(promise)
      */
-    it('ACTS_DoAbilityBackground_0700', 0, async function (done) {
+    it('ACTS_DoAbilityBackground_0700', 0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;
       }
-      var Subscriber
-      var flag = true
-      var num1 = 0
-      var num2 = 0
-      function UnSubscribeCallback() {
+      let Subscriber:CommonEventManager.CommonEventSubscriber
+      let flag = true
+      let num1 = 0
+      let num2 = 0
+      let UnSubscribeCallback = ():void => {
         console.log("====>ACTS_DoAbilityBackground_0700 UnSubscribeCallback====>");
         flag = false
         setTimeout(()=>{
         done();
         }, START_ABILITY_TIMEOUT_TWO_THOUSAND)
       }
-      function SubscribeCallBack(err, data) {
+      let SubscribeCallBack = (err:BusinessError, data:CommonEventManager.CommonEventData):void => {
         expect(data.event == "ACTS_DoAbility_Event").assertTrue();
         console.log("====>0700 Subscribe CallBack data:====>" + JSON.stringify(data));
-        globalThis.abilitydelegator.getCurrentTopAbility().then((ability2) => {
+        globalThis.abilitydelegator.getCurrentTopAbility().then((ability2:UIAbility) => {
           console.log("====>getCurrentTopAbility ability2 data:====>" + JSON.stringify(ability2));
           console.log("====>0700newabilityname:====>" + JSON.stringify(ability2.context.abilityInfo.name));
           globalThis.abilitydelegator.doAbilityBackground(ability2).then(() => {
@@ -397,7 +403,7 @@ export default function abilityTest() {
               num1 = globalThis.abilitydelegator.getAbilityState(ability2)
               console.log("====>ACTS_DoAbilityBackground_0700 getAbilityState1:====>" + " " + JSON.stringify(num1));
               expect(num1).assertEqual(3);
-              globalThis.abilitydelegator.doAbilityForeground(ability2, (err) => {
+              globalThis.abilitydelegator.doAbilityForeground(ability2, (err:BusinessError) => {
                 console.log("====>doAbilityForeground data:====>" + JSON.stringify(err));
                 expect(err.code).assertEqual(0);
                 setTimeout(() => {
@@ -413,7 +419,7 @@ export default function abilityTest() {
                       console.log("====>ACTS_DoAbilityBackground_0700 getAbilityState1:====>" +
                         " " + JSON.stringify(num1));
                       expect(num1).assertEqual(3);
-                      globalThis.abilitydelegator.doAbilityForeground(ability2, (err) => {
+                      globalThis.abilitydelegator.doAbilityForeground(ability2, (err:BusinessError) => {
                         console.log("====>doAbilityForeground data:====>");
                         expect(err.code).assertEqual(0);
                         setTimeout(() => {
@@ -432,7 +438,7 @@ export default function abilityTest() {
           })
         })
       }
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data) => {
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data:CommonEventManager.CommonEventSubscriber) => {
         console.log("====>Create Subscriber====>");
         data.getSubscribeInfo().then((SubscribeInfo) => {
           console.log("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
@@ -448,7 +454,7 @@ export default function abilityTest() {
             })
         })
       })
-      function timeout() {
+      let timeout= ():void => {
         if (flag == true) {
           expect().assertFail();
           console.log('ACTS_DoAbilityBackground_0700 - timeout');
@@ -463,29 +469,29 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to background
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background failed.(promise)
      */
-    it('ACTS_DoAbilityBackground_0800', 0, async function (done) {
+    it('ACTS_DoAbilityBackground_0800', 0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;
       }
-      var Subscriber
-      var flag = true
-      var num1 = 0
-      var num2 = 0
-      function UnSubscribeCallback() {
+      let Subscriber:CommonEventManager.CommonEventSubscriber
+      let flag = true
+      let num1 = 0
+      let num2 = 0
+      let UnSubscribeCallback = ():void => {
         console.log("====>ACTS_DoAbilityBackground_0800 UnSubscribeCallback====>");
         flag = false
         setTimeout(()=>{
         done();
         }, START_ABILITY_TIMEOUT_TWO_THOUSAND)
       }
-      function SubscribeCallBack(err, data) {
+      let SubscribeCallBack = (err:BusinessError, data:CommonEventManager.CommonEventData):void => {
         expect(data.event == "ACTS_DoAbility_Event").assertTrue();
         console.log("====>0800 Subscribe CallBack data:====>" + JSON.stringify(data));
-        globalThis.abilitydelegator.getCurrentTopAbility().then((ability2) => {
+        globalThis.abilitydelegator.getCurrentTopAbility().then((ability2:UIAbility) => {
           console.log("====>getCurrentTopAbility ability2 data:====>" + JSON.stringify(ability2));
           console.log("====>0800newabilityname:====>" + JSON.stringify(ability2.context.abilityInfo.name));
-          globalThis.abilitydelegator.doAbilityBackground(ability2, (err) => {
+          globalThis.abilitydelegator.doAbilityBackground(ability2, (err:BusinessError) => {
             console.log("====>doAbilityBackground data1:====>" + JSON.stringify(err));
             expect(err.code).assertEqual(0);
             setTimeout(() => {
@@ -500,7 +506,7 @@ export default function abilityTest() {
                   console.log("====>ACTS_DoAbilityBackground_0800 getAbilityState2:====>" +
                     " " + JSON.stringify(num2));
                   expect(num2).assertEqual(2);
-                  globalThis.abilitydelegator.doAbilityBackground(ability2, (err) => {
+                  globalThis.abilitydelegator.doAbilityBackground(ability2, (err:BusinessError) => {
                     console.log("====>doAbilityBackground data1:====>" + JSON.stringify(err));
                     expect(err.code).assertEqual(0);
                     setTimeout(() => {
@@ -527,7 +533,7 @@ export default function abilityTest() {
           })
         })
       }
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data) => {
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data:CommonEventManager.CommonEventSubscriber) => {
         console.log("====>Create Subscriber====>");
         data.getSubscribeInfo().then((SubscribeInfo) => {
           console.log("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
@@ -543,7 +549,7 @@ export default function abilityTest() {
             })
         })
       })
-      function timeout() {
+      let timeout= ():void => {
         if (flag == true) {
           expect().assertFail();
           console.log('ACTS_DoAbilityBackground_0800 - timeout');
@@ -558,28 +564,28 @@ export default function abilityTest() {
    * @tc.name    : change abilitystage to foreground
    * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground failed.(callback)
    */
-    it('ACTS_DoAbilityForeground_0300', 0, async function (done) {
+    it('ACTS_DoAbilityForeground_0300', 0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;
       }
-      var Subscriber
-      var result = null
-      var flag = true
-      function UnSubscribeCallback() {
+      let Subscriber:CommonEventManager.CommonEventSubscriber
+      let result = null
+      let flag = true
+      let UnSubscribeCallback = ():void => {
         console.log("====>UnSubscribeCallback====>");
         flag = false
         setTimeout(() => {
           done();
         }, START_ABILITY_TIMEOUT_TWO_THOUSAND)
       }
-      function SubscribeCallBack(err, data) {
+      let SubscribeCallBack = (err:BusinessError, data:CommonEventManager.CommonEventData):void => {
         expect(data.event == "ACTS_DoAbility_Event").assertTrue();
         console.log("====>0300 Subscribe CallBack data:====>" + JSON.stringify(data));
         console.log("====>0300 Subscribe CallBack globalThis.ability3:====>" + JSON.stringify(globalThis.ability3));
         console.log("====>0300 ability3 name:====>" + JSON.stringify(globalThis.ability3.context.abilityInfo.name));
         setTimeout(() => {
-          result = globalThis.abilitydelegator.doAbilityForeground(globalThis.ability3, (err) => {
+          result = globalThis.abilitydelegator.doAbilityForeground(globalThis.ability3, (err:BusinessError) => {
             console.log("====>ACTS_DoAbilityForeground_0300 data:====>" + JSON.stringify(err));
             expect(err.code).assertEqual(0);
           })
@@ -588,7 +594,7 @@ export default function abilityTest() {
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }, START_ABILITY_TIMEOUT_THOUSAND)
       }
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data) => {
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data:CommonEventManager.CommonEventSubscriber) => {
         console.log("====>Create Subscriber====>");
         data.getSubscribeInfo().then((SubscribeInfo) => {
           console.log("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
@@ -604,7 +610,7 @@ export default function abilityTest() {
             })
         })
       })
-      function timeout() {
+      let timeout= ():void => {
         if (flag == true) {
           expect().assertFail();
           console.log('ACTS_DoAbilityForeground_0300 - timeout');
@@ -619,22 +625,22 @@ export default function abilityTest() {
  * @tc.name    : change abilitystage to foreground
  * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground failed.(promise)
  */
-    it('ACTS_DoAbilityForeground_0600', 0, async function (done) {
+    it('ACTS_DoAbilityForeground_0600', 0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;
       }
-      var Subscriber
-      var flag = true
-      var result = null
-      function UnSubscribeCallback() {
+      let Subscriber:CommonEventManager.CommonEventSubscriber
+      let flag = true
+      let result = null
+      let UnSubscribeCallback = ():void => {
         console.log("====>UnSubscribeCallback====>");
         flag = false
         setTimeout(() => {
           done();
         }, START_ABILITY_TIMEOUT_TWO_THOUSAND)
       }
-      function SubscribeCallBack(err, data) {
+      let SubscribeCallBack = (err:BusinessError, data:CommonEventManager.CommonEventData):void => {
         expect(data.event == "ACTS_DoAbility_Event").assertTrue();
         console.log("====>0600 Subscribe CallBack data:====>" + JSON.stringify(data));
         setTimeout(() => {
@@ -644,7 +650,7 @@ export default function abilityTest() {
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }, START_ABILITY_TIMEOUT_THOUSAND)
       }
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data) => {
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data:CommonEventManager.CommonEventSubscriber) => {
         console.log("====>Create Subscriber====>");
         data.getSubscribeInfo().then((SubscribeInfo) => {
           console.log("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
@@ -660,7 +666,7 @@ export default function abilityTest() {
             })
         })
       })
-      function timeout() {
+      let timeout= ():void => {
         if (flag == true) {
           expect().assertFail();
           console.log('ACTS_DoAbilityForeground_0600 - timeout');
@@ -675,26 +681,26 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to background
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background failed.(callback)
      */
-    it('ACTS_DoAbilityBackground_0300', 0, async function (done) {
+    it('ACTS_DoAbilityBackground_0300', 0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;
       }
-      var Subscriber
-      var flag = true
-      var result = null
-      function UnSubscribeCallback() {
+      let Subscriber:CommonEventManager.CommonEventSubscriber
+      let flag = true
+      let result = null
+      let UnSubscribeCallback = ():void => {
         console.log("====>UnSubscribeCallback====>");
         flag = false
         setTimeout(() => {
           done();
         }, START_ABILITY_TIMEOUT_TWO_THOUSAND)
       }
-      function SubscribeCallBack(err, data) {
+      let SubscribeCallBack = (err:BusinessError, data:CommonEventManager.CommonEventData):void => {
         expect(data.event == "ACTS_DoAbility_Event").assertTrue();
         console.log("====>0300 Subscribe CallBack data:====>" + JSON.stringify(data));
         setTimeout(() => {
-          result = globalThis.abilitydelegator.doAbilityBackground(globalThis.ability3, (err) => {
+          result = globalThis.abilitydelegator.doAbilityBackground(globalThis.ability3, (err:BusinessError) => {
             console.log("====>ACTS_DoAbilityBackground_0300 data:====>" + JSON.stringify(err));
             expect(err.code).assertEqual(0);
           })
@@ -703,7 +709,7 @@ export default function abilityTest() {
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }, START_ABILITY_TIMEOUT_THOUSAND)
       }
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data) => {
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data:CommonEventManager.CommonEventSubscriber) => {
         console.log("====>Create Subscriber====>");
         data.getSubscribeInfo().then((SubscribeInfo) => {
           console.log("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
@@ -719,7 +725,7 @@ export default function abilityTest() {
             })
         })
       })
-      function timeout() {
+      let timeout= ():void => {
         if (flag == true) {
           expect().assertFail();
           console.log('ACTS_DoAbilityBackground_0300 - timeout');
@@ -734,22 +740,22 @@ export default function abilityTest() {
  * @tc.name    : change abilitystage to background
  * @tc.desc    : Use doAbilityBackground to change the abilitystage to background failed.(promise)
  */
-    it('ACTS_DoAbilityBackground_0600', 0, async function (done) {
+    it('ACTS_DoAbilityBackground_0600', 0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;
       }
-      var Subscriber
-      var flag = true
-      var result = null
-      function UnSubscribeCallback() {
+      let Subscriber:CommonEventManager.CommonEventSubscriber
+      let flag = true
+      let result = null
+      let UnSubscribeCallback = ():void => {
         console.log("====>UnSubscribeCallback====>");
         flag = false
         setTimeout(() => {
           done();
         }, START_ABILITY_TIMEOUT_TWO_THOUSAND)
       }
-      function SubscribeCallBack(err, data) {
+      let SubscribeCallBack = (err:BusinessError, data:CommonEventManager.CommonEventData):void => {
         expect(data.event == "ACTS_DoAbility_Event").assertTrue();
         console.log("====>0600 Subscribe CallBack data:====>" + JSON.stringify(data));
         setTimeout(() => {
@@ -759,7 +765,7 @@ export default function abilityTest() {
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }, START_ABILITY_TIMEOUT_THOUSAND)
       }
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data) => {
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data:CommonEventManager.CommonEventSubscriber) => {
         console.log("====>Create Subscriber====>");
         data.getSubscribeInfo().then((SubscribeInfo) => {
           console.log("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
@@ -775,7 +781,7 @@ export default function abilityTest() {
             })
         })
       })
-      function timeout() {
+      let timeout= ():void => {
         if (flag == true) {
           expect().assertFail();
           console.log('ACTS_DoAbilityBackground_0600 - timeout');
