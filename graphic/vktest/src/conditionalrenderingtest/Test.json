@@ -41,12 +41,10 @@
         },
         {
             "type": "CommandKit",
-            "teardown": [
-                {
-                    "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanConditional_renderingTest.qpa->ActsVulkanConditional_renderingTest.qpa"
-                }
-            ]
+            "teardown": [{
+              "name": "pull",
+              "value": "/data/local/tmp/ActsVulkanConditionalrenderingTest.qpa->ActsVulkanConditionalrenderingTest.qpa"
+            }]
         },
         {
             "type": "ShellKit",
@@ -56,7 +54,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/vulkandata/genlocal.py ActsVulkanConditional_renderingTest conditional-rendering.txt"
+                "python testcases/vulkandata/genlocal.py ActsVulkanConditionalrenderingTest conditional-rendering.txt"
             ]
         }
     ]

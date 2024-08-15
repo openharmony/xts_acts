@@ -43,8 +43,8 @@
             "type": "CommandKit",
             "teardown": [
                 {
-                    "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanDescriptorindexingTest.qpa->ActsVulkanDescriptorindexingTest.qpa"
+                  "name": "pull",
+                  "value": "/data/local/tmp/ActsVulkanDescriptorindexingTest.qpa->ActsVulkanDescriptorindexingTest.qpa"
                 }
             ]
         },

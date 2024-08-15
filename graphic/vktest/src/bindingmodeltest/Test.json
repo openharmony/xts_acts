@@ -44,7 +44,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanBinding_modelTest.qpa->ActsVulkanBinding_modelTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanBindingmodelTest.qpa->ActsVulkanBindingmodelTest.qpa"
                 }
             ]
         },
@@ -56,7 +56,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/vulkandata/genlocal.py ActsVulkanBinding_modelTest binding-model.txt"
+                "python testcases/vulkandata/genlocal.py ActsVulkanBindingmodelTest binding-model.txt"
             ]
         }
     ]
