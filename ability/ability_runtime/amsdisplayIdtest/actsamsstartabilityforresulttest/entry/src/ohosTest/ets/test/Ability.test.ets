@@ -60,7 +60,7 @@ export default function abilityTest() {
             console.info('====> ACTS_startAbilityForResult_0800 start success=====>');
             clearTimeout(id);
             console.info('====> ACTS_startAbilityForResult_0800=====>');
-            expect(data.parameters['displayId']).assertEqual(displayClassId);
+            expect(data.parameters!['displayId']).assertEqual(displayClassId);
             commonEvent.unsubscribe(subscriber, () => {
               console.debug("====>UnSubscribe0800 CallBack====>");
             });
@@ -105,7 +105,7 @@ export default function abilityTest() {
             console.info('====> ACTS_startAbilityForResult_0900 start success=====>');
             clearTimeout(id);
             console.info('====> ACTS_startAbilityForResult_0900=====>');
-            expect(data.parameters['displayId']).assertEqual(0);
+            expect(data.parameters!['displayId']).assertEqual(0);
             commonEvent.unsubscribe(subscriber, () => {
               console.debug("====>ACTS_startAbilityForResult_0900 UnSubscribe CallBack====>");
             });
@@ -152,7 +152,7 @@ export default function abilityTest() {
             console.info('====> ACTS_startAbilityForResult_1000 start success=====>');
             clearTimeout(id);
             console.info('====> ACTS_startAbilityForResult_1000=====>');
-            expect(data.parameters['displayId']).assertEqual(0);
+            expect(data.parameters!['displayId']).assertEqual(0);
 
             commonEvent.unsubscribe(subscriber, () => {
               console.debug("====>ACTS_startAbilityForResult_1000 UnSubscribe CallBack====>");
