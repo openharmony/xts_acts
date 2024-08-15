@@ -66,8 +66,8 @@ async function startAbility(want: Want, display: ESObject = undefined) {
 
 export default function StartAbilityGetDisplayIdTest() {
 
-  describe('ActsAbilityTest', function () {
-    afterEach(async function (done) {
+  describe('ActsAbilityTest', () => {
+    afterEach(async (done:Function) => {
       await abilityDelegator.executeShellCommand('aa start -b com.ohos.startabilitygetdisplayidtest -a TestAbility');
       done();
     });
@@ -91,7 +91,7 @@ export default function StartAbilityGetDisplayIdTest() {
           .then((subscriber) => {
             commonEvent.subscribe(subscriber, (err, commonEventData) => {
               console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 500=====> data: ${JSON.stringify(commonEventData)}`);
-              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              expect(commonEventData.parameters![displayId]).assertEqual(0);
               commonEvent.unsubscribe(subscriber, (err, data) => {
                 done();
               });
@@ -132,7 +132,7 @@ export default function StartAbilityGetDisplayIdTest() {
           .then((subscriber) => {
             commonEvent.subscribe(subscriber, (err, commonEventData) => {
               console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 600=====> data: ${JSON.stringify(commonEventData)}`);
-              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              expect(commonEventData.parameters![displayId]).assertEqual(0);
               commonEvent.unsubscribe(subscriber, (err, data) => {
                 done();
               });
@@ -170,7 +170,7 @@ export default function StartAbilityGetDisplayIdTest() {
         commonEvent.createSubscriber(commonEventSubscribeInfo)
           .then((subscriber) => {
             commonEvent.subscribe(subscriber, (err, commonEventData) => {
-              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              expect(commonEventData.parameters![displayId]).assertEqual(0);
               commonEvent.unsubscribe(subscriber, (err, data) => {
                 done();
               });
@@ -213,7 +213,7 @@ export default function StartAbilityGetDisplayIdTest() {
             commonEvent.subscribe(subscriber, (err, commonEventData) => {
               console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 300=====> data: ${JSON.stringify(commonEventData)}`);
 
-              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              expect(commonEventData.parameters![displayId]).assertEqual(0);
               commonEvent.unsubscribe(subscriber, (err, data) => {
                 done();
               });
@@ -252,7 +252,7 @@ export default function StartAbilityGetDisplayIdTest() {
           .then((subscriber) => {
             commonEvent.subscribe(subscriber, (err, commonEventData) => {
               console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 200=====> data: ${JSON.stringify(commonEventData)}`);
-              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              expect(commonEventData.parameters![displayId]).assertEqual(0);
               commonEvent.unsubscribe(subscriber, (err, data) => {
                 done();
               });
@@ -291,7 +291,7 @@ export default function StartAbilityGetDisplayIdTest() {
           .then((subscriber) => {
             commonEvent.subscribe(subscriber, (err, commonEventData) => {
               console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 100=====> data: ${JSON.stringify(commonEventData)}`);
-              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              expect(commonEventData.parameters![displayId]).assertEqual(0);
               commonEvent.unsubscribe(subscriber, (err, data) => {
                 done();
               });
@@ -332,7 +332,7 @@ export default function StartAbilityGetDisplayIdTest() {
           .then((subscriber) => {
             commonEvent.subscribe(subscriber, (err, commonEventData) => {
               console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 400=====> data: ${JSON.stringify(commonEventData)}`);
-              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              expect(commonEventData.parameters![displayId]).assertEqual(0);
               commonEvent.unsubscribe(subscriber, (err, data) => {
                 done();
               });
