@@ -4215,13 +4215,19 @@ export default function UDMFDragBigDataJsApiTest() {
       console.info(TAG, 'start');
       try {
         let text = new unifiedDataChannel.SystemDefinedPixelMap();
+        console.info(TAG, 'start22');
         let LONG_U8_ARRAY = new Uint8Array(Math.pow(2, 21));
+        console.info(TAG, 'start33');
         LONG_U8_ARRAY.fill(0);
+        console.info(TAG, 'start44');
         text.rawData = LONG_U8_ARRAY;
+        console.info(TAG, 'start55');
         text.details = {
           recordKey1: 's',
         };
+        console.info(TAG, 'start66');
         let unifiedData = new unifiedDataChannel.UnifiedData(text);
+        console.info(TAG, 'start77');
         console.info(TAG, `insert success. The key: ` +
           (LONG_U8_ARRAY.toString().length + (text.details.recordKey1).toString().length));
         unifiedDataChannel.insertData(optionsValid, unifiedData).then((data) => {
