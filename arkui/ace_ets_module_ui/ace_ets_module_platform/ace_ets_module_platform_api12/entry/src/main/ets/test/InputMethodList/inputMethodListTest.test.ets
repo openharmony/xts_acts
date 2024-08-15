@@ -77,7 +77,7 @@ export default function inputMethodListTest() {
 
       let strJson1 = getInspectorByKey('inputMethodListTest_text');
       await CommonFunc.sleep(1000);
-      console.info("[inputMethodListTest_0100] obj1 is: " + JSON.stringify(obj1));
+      console.info("[inputMethodListTest_0100] obj1 is: " + JSON.stringify(strJson1));
       expect(JSON.parse(strJson1).$attrs.content).assertEqual('1');
 
       await driver.triggerKey(2070);

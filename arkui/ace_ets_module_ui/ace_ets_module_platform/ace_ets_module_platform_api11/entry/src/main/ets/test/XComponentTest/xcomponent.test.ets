@@ -60,7 +60,7 @@ export default function xcomponentGetXComponentContextJsunit() {
         }
         let callback1 = (eventData: events_emitter.EventData) => {
           console.info("onRequestPopupData_0010 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual("callBackSuccess");
+          expect(eventData.data?.STATUS).assertEqual("callBackSuccess");
         }
         events_emitter.on(innerEventOne, callback1);
         await Utils.sleep(1000);

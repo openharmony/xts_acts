@@ -38,14 +38,14 @@ struct VideoCreateComponent {
     console.info("[stateChangCallBack] video stateChangCallBack");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called:" + JSON.stringify(eventData));
-      if (eventData.data.progressRates != null) {
+      if (eventData.data?.progressRates != null) {
         this.currentProgressRates = eventData.data.progressRates;
         console.info("currentProgressRates " + this.currentProgressRates)
       }
-      if (eventData.data.isStared != null) {
+      if (eventData.data?.isStared != null) {
         this.myVideoController.start();
       }
-      if (eventData.data.isStopped != null) {
+      if (eventData.data?.isStopped != null) {
         this.myVideoController.stop();
       }
     }
