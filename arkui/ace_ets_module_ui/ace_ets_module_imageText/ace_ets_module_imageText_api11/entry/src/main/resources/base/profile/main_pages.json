@@ -206,6 +206,9 @@
         "MainAbility/pages/span/span3",
         "MainAbility/pages/text/text3",
         "MainAbility/pages/ImageAnimator/imageAnimator2",
-        "MainAbility/pages/Progress/loadingProgress2"
+        "MainAbility/pages/Progress/loadingProgress2",
+        "MainAbility/pages/Search/SearchGesture",
+        "MainAbility/pages/text/TextDrag",
+        "MainAbility/pages/TextArea/textAreaOnCaretAndKeyboard"
     ]
 }
