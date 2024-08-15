@@ -704,9 +704,18 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       });
       console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
-      await win.resize(500, 500).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
-        expect().assertFail();
+      await win.resizeAsync(500, 500).then(async () => {
+        console.info(msgStr + 'Succeeded in changing the window size.');
+      }).catch(async(exception: BusinessError) => {
+        console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
       });
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -756,9 +765,18 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       });
       console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
-      await win.resize(500, 500).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
-        expect().assertFail();
+      await win.resizeAsync(500, 500).then(async () => {
+        console.info(msgStr + 'Succeeded in changing the window size.');
+      }).catch(async(exception: BusinessError) => {
+        console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
       });
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -808,9 +826,18 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       });
       console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
-      await win.resize(500, 500).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
-        expect().assertFail();
+      await win.resizeAsync(500, 500).then(async () => {
+        console.info(msgStr + 'Succeeded in changing the window size.');
+      }).catch(async(exception: BusinessError) => {
+        console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
       });
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -1128,9 +1155,18 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
         expect().assertFail();
       });
-      await win.moveWindowTo(0, 0).catch((err: BusinessError) => {
+      await win.moveWindowToAsync(0, 0).then(async () => {
+        console.info(msgStr + 'Succeeded in moving the window.');
+      }).catch(async(err: BusinessError) => {
         console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
-        expect().assertFail();
+        if (err.code != 801) {
+          console.error(msgStr + 'Failed to move the window  Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(err))
+          expect(err.code).assertEqual(801);
+        }
       });
       await win.showWindow().catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -1180,9 +1216,18 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
         expect().assertFail();
       });
-      await win.moveWindowTo(0, 0).catch((err: BusinessError) => {
+      await win.moveWindowToAsync(0, 0).then(async () => {
+        console.info(msgStr + 'Succeeded in moving the window.');
+      }).catch(async(err: BusinessError) => {
         console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
-        expect().assertFail();
+        if (err.code != 801) {
+          console.error(msgStr + 'Failed to move the window  Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(err))
+          expect(err.code).assertEqual(801);
+        }
       });
       await win.showWindow().catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -1232,9 +1277,18 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
         expect().assertFail();
       });
-      await win.moveWindowTo(0, 0).catch((err: BusinessError) => {
+      await win.moveWindowToAsync(0, 0).then(async () => {
+        console.info(msgStr + 'Succeeded in moving the window.');
+      }).catch(async(err: BusinessError) => {
         console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
-        expect().assertFail();
+        if (err.code != 801) {
+          console.error(msgStr + 'Failed to move the window  Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(err))
+          expect(err.code).assertEqual(801);
+        }
       });
       await win.showWindow().catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
