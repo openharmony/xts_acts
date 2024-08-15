@@ -66,7 +66,7 @@ import uiOpenCustomDialogTest from './UIContextTest/openCustomDialogTest.test'
 import updateCustomDialogTest from './UIContextTest/updateCustomDialogTest.test'
 import subMenuExpandingModeTest_STACK_EXPAND from './MenuTest/MenuApiTest/subMenuExpandingModeTest_STACK_EXPAND.test';
 import interstitialDialogActionTest from './Dialog/InterstitialDialogAction.test';
-
+import showToastTest from './promptActionTest/showToast.test';
 
 export default function testsuite() {
   dialogApi();
@@ -122,4 +122,5 @@ export default function testsuite() {
   updateCustomDialogTest();
   subMenuExpandingModeTest_STACK_EXPAND();
   interstitialDialogActionTest();
+  showToastTest();
 }
