@@ -18,6 +18,7 @@
         "srcEntry": "./ets/testability/TestAbility.ets",
         "description": "$string:TestAbility_desc",
         "icon": "$media:icon",
+        "orientation": "follow_recent",
         "label": "$string:TestAbility_label",
         "exported": true,
         "startWindowIcon": "$media:icon",
@@ -32,17 +33,6 @@
             ]
           }
         ]
-      }
-    ],
-    "requestPermissions": [
-      {
-        "name": "ohos.permission.GET_BUNDLE_INFO"
-      },
-      {
-        "name": "ohos.permission.INSTALL_BUNDLE"
-      },
-      {
-        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
       }
     ]
   }

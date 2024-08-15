@@ -15,13 +15,10 @@
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, it, expect } from '@ohos/hypium';
 import bundleManager from '@ohos.bundle.bundleManager';
-import Want from '@ohos.app.ability.Want';
 
 const TAG = '[Orientation]';
 const DOMAIN = 0x0000;
 const BUNDLE = 'Acts_OrientationTest_';
-let testHapBundleName: string = "com.example.orientationtesthap";
-let testHapActivityName: string = "EntryAbility";
 
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
@@ -35,23 +32,18 @@ export default function abilityTest() {
      */
     it('Acts_OrientationTest_001', 0, async (done: Function) => {
       hilog.info(DOMAIN, TAG, BUNDLE + '001 begin');
-      let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
-      let userId = 100;
-      let want: Want = {
-        bundleName: testHapBundleName,
-        abilityName: testHapActivityName
-      };
-      try {
-        await bundleManager.queryAbilityInfo(want, abilityFlags, userId).then(data => {
-          expect(data[0].orientation).assertEqual(bundleManager.DisplayOrientation.FOLLOW_RECENT);
-        });
-        hilog.info(DOMAIN, TAG, BUNDLE + 'QueryAbilityInfo successfully');
+      await bundleManager.getBundleInfoForSelf(
+        bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY
+      ).then(data => {
+        hilog.info(DOMAIN, TAG, BUNDLE + 'getBundleInfoForSelf: ' + JSON.stringify(data));
+        expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation)
+          .assertEqual(bundleManager.DisplayOrientation.FOLLOW_RECENT);
         done();
-      } catch (err) {
-        expect().assertFail();
-        hilog.info(DOMAIN, TAG, BUNDLE + 'QueryAbilityInfo failed');
+      }).catch((err: BusinessError) => {
+        hilog.info(DOMAIN, TAG, BUNDLE + 'getBundleInfoForSelf fail' + JSON.stringify(err));
+        expect(err).assertFail();
         done();
-      }
+      })
       hilog.info(DOMAIN, TAG, BUNDLE + '001 end');
     })
   })

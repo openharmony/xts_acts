@@ -10,7 +10,6 @@
   "kits": [
     {
       "test-file-name": [
-        "ActsBmsOrientationFollowRecentRelyHap.hap",
         "ActsBmsOrientationTest.hap"
       ],
       "type": "AppInstallKit",
