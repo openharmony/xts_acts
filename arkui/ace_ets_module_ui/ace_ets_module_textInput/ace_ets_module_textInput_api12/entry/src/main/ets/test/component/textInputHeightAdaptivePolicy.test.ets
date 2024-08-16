@@ -60,7 +60,7 @@ export default function textInputHeightAdaptivePolicy() {
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_textInput_heightAdaptivePolicy_001');
-      let obj = JSON.parse(strJsonNew);
+      let obj: Record<string, ESObject> = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] 123123: ' + strJsonNew);
       console.info('[' + tagName + '] TextInput heightAdaptivePolicy is: ' + JSON.stringify(obj.$attrs.heightAdaptivePolicy));
 
