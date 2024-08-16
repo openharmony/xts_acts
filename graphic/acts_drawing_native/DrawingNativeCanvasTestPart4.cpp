@@ -1969,7 +1969,9 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoMultipleCalls, TestSize.
     for (int i = 0; i < 10; i++) {
         canvases[i]= OH_Drawing_CanvasCreate();
     }
-    for (int i = 0; i <10; i++) { OH_Drawing_CanvasGetImageInfo(canvases[i], &imageInfo); }
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_CanvasGetImageInfo(canvases[i], &imageInfo);
+    }
     //7. free memory
     OH_Drawing_CanvasDestroy(canvas);
     for (int i = 0; i < 10; i++) {
