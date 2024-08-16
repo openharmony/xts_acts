@@ -50,8 +50,7 @@ export default function HttpCertificatePinTest() {
         let httpRequest = http.createHttp();
         let requestOptions: http.HttpRequestOptions = {
           usingProtocol: http.HttpProtocol.HTTP1_1,
-          header: { 'content-type': 'application/json' },
-          certificatePinning: { publicKeyHash: baiduPinWrong, hashAlgorithm: 'SHA-256' }
+          header: { 'content-type': 'application/json' }
         }
         httpRequest.on("headersReceive", (data: Object) => {
           console.info("Rcv headers");
@@ -93,8 +92,7 @@ export default function HttpCertificatePinTest() {
         let httpRequest = http.createHttp();
         let requestOptions: http.HttpRequestOptions = {
           usingProtocol: http.HttpProtocol.HTTP1_1,
-          header: { 'content-type': 'application/json' },
-          certificatePinning: {publicKeyHash: baiduPinRight, hashAlgorithm: 'SHA-256'},
+          header: { 'content-type': 'application/json' }
         }
 
         httpRequest.on("headersReceive", (data: Object) => {
