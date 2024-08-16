@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils.ets'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function progressScaleCountJsunit() {
   describe('progressScaleCountTest', () => {
@@ -31,7 +31,7 @@ export default function progressScaleCountJsunit() {
         if (!("progress" == pages.name)) {
           console.info("get progress state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push progress page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,7 +41,7 @@ export default function progressScaleCountJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("progressScaleCount after each called");
     });
 
@@ -52,7 +52,7 @@ export default function progressScaleCountJsunit() {
      */
     it('testprogressScaleCount0001', 0, async (done: Function) => {
       console.info('progressScaleCount testprogressScaleCount0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('progressStyleOptions');
       console.info("[testprogressScaleCount0001] component width strJson:" + strJson);
       expect(JSON.parse(strJson).$type).assertEqual('Progress');
@@ -68,7 +68,7 @@ export default function progressScaleCountJsunit() {
      */
     it('testprogressScaleCount0002', 0, async (done: Function) => {
       console.info('progressScaleCount testprogressScaleCount0002 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('progressStyleOptions');
       console.info("[testprogressScaleCount0002] component height strJson:" + strJson);
       expect(JSON.parse(strJson).$type).assertEqual('Progress');

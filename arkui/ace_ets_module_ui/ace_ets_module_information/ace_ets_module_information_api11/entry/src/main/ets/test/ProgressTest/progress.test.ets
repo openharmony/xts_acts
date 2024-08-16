@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import Utils from '../../MainAbility/common/Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 import router from '@ohos.router';
 
 export default function progressTest() {
@@ -32,7 +32,7 @@ export default function progressTest() {
         if (!("Progress" == pages.name)) {
           console.info("get ActsProgressTest state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push ActsProgressTest page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -42,7 +42,7 @@ export default function progressTest() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("ActsProgressTest after each called");
     });
 

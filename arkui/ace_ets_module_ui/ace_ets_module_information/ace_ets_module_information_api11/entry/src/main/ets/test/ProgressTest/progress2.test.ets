@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function progressStyleJsunit() {
   describe('progressStyleTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Progress/progress2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Progress/progress2',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function progressStyleJsunit() {
         if (!("progress2" == pages.name)) {
           console.info("get progress state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push progress page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,7 +40,7 @@ export default function progressStyleJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("progressStyle after each called");
     });
 
@@ -51,7 +51,7 @@ export default function progressStyleJsunit() {
      */
     it('testprogressStyle0001', 0, async () => {
       console.info('progressStyle testprogressStyle0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Progress');
       console.info("[testprogressStyle0001] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function progressStyleJsunit() {
      */
     it('testprogressStyle0002', 0, async () => {
       console.info('progressStyle testprogressStyle0002 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Progress');
       console.info("[testprogressStyle0002] component color strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -85,7 +85,7 @@ export default function progressStyleJsunit() {
      */
     it('testprogressStyle0003', 0, async () => {
       console.info('progressStyle testprogressStyle0003 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Progress');
       console.info("[testprogressStyle0003] component value strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -102,7 +102,7 @@ export default function progressStyleJsunit() {
      */
     it('testprogressStyle0004', 0, async () => {
       console.info('progressStyle testprogressStyle0004 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Progress');
       console.info("[testprogressStyle0004] component style strokeWidth strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -120,7 +120,7 @@ export default function progressStyleJsunit() {
      */
     it('testprogressStyle0005', 0, async () => {
       console.info('progressStyle testprogressStyle0005 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Progress');
       console.info("[testprogressStyle0005] component style scaleCount strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -137,7 +137,7 @@ export default function progressStyleJsunit() {
      */
     it('testprogressStyle0006', 0, async () => {
       console.info('progressStyle testprogressStyle0006 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Progress');
       console.info("[testprogressStyle0006] component style scaleWidth strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);

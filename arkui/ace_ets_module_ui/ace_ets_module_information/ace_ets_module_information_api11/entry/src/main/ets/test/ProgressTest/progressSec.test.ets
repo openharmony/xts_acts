@@ -15,7 +15,7 @@
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../../MainAbility/common/Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 import router from '@ohos.router';
 
 let emitKey = "emitUserAgent";
@@ -41,7 +41,7 @@ export default function progressSecTest() {
         console.error("push ActsProgressSecTest page error: " + err);
       }
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       console.info("ActsProgressSecTest beforeEach start");
       done()
     });
@@ -98,8 +98,8 @@ export default function progressSecTest() {
       }, {
         color: $r('sys.color.ohos_id_color_background'), offset: 1
       }])
-      let progress_ring_color_linear_null: LinearGradient = null
-      let progress_ring_color_linear_undefined: LinearGradient = undefined
+      let progress_ring_color_linear_null: LinearGradient | null = null
+      let progress_ring_color_linear_undefined: LinearGradient | undefined = undefined
       let progress_ring_enableScanEffect_boolean: boolean = false
       let progress_ring_enableSmoothEffect_boolean: boolean = false
 
@@ -166,7 +166,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.info("ActsProgressSecTest afterEach start to publish change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       done();
     })
 
@@ -292,7 +292,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200]: " + JSON.stringify(strJson))
@@ -330,7 +330,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300]: " + JSON.stringify(strJson))
@@ -355,7 +355,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_capsule_borderWidth_resource', value: progress_capsule_borderWidth_resource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('progress_capsule_resource');
       let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(strJson))
@@ -394,7 +394,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500]: " + JSON.stringify(strJson))
@@ -432,7 +432,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600]: " + JSON.stringify(strJson))
@@ -470,7 +470,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700]: " + JSON.stringify(strJson))
@@ -508,7 +508,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800]: " + JSON.stringify(strJson))
@@ -546,7 +546,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900]: " + JSON.stringify(strJson))
@@ -584,7 +584,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
@@ -624,7 +624,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100]: " + JSON.stringify(strJson))
@@ -662,7 +662,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
@@ -702,7 +702,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
@@ -781,7 +781,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0200]: " + JSON.stringify(strJson))
@@ -819,7 +819,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0300]: " + JSON.stringify(strJson))
@@ -857,7 +857,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0400]: " + JSON.stringify(strJson))
@@ -883,7 +883,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_capsule_borderColor_resource', value: progress_capsule_borderColor_resource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_resource');
       let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
@@ -923,7 +923,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0600] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
@@ -983,7 +983,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
@@ -1043,7 +1043,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
@@ -1124,7 +1124,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200]: " + JSON.stringify(strJson))
@@ -1163,7 +1163,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300]: " + JSON.stringify(strJson))
@@ -1190,7 +1190,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_capsule_fontSize_resource', value: progress_capsule_fontSize_resource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_resource');
       let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
@@ -1231,7 +1231,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500]: " + JSON.stringify(strJson))
@@ -1270,7 +1270,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0600] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600]: " + JSON.stringify(strJson))
@@ -1309,7 +1309,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700]: " + JSON.stringify(strJson))
@@ -1348,7 +1348,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800]: " + JSON.stringify(strJson))
@@ -1387,7 +1387,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900]: " + JSON.stringify(strJson))
@@ -1426,7 +1426,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_1000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
@@ -1467,7 +1467,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_1100] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100]: " + JSON.stringify(strJson))
@@ -1506,7 +1506,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_1200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
@@ -1547,7 +1547,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_1300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
@@ -1607,7 +1607,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200]: " + JSON.stringify(strJson))
@@ -1646,7 +1646,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300]: " + JSON.stringify(strJson))
@@ -1685,7 +1685,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400]: " + JSON.stringify(strJson))
@@ -1724,7 +1724,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500]: " + JSON.stringify(strJson))
@@ -1763,7 +1763,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600]: " + JSON.stringify(strJson))
@@ -1802,7 +1802,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700]: " + JSON.stringify(strJson))
@@ -1841,7 +1841,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800]: " + JSON.stringify(strJson))
@@ -1880,7 +1880,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900]: " + JSON.stringify(strJson))
@@ -1919,7 +1919,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000]: " + JSON.stringify(strJson))
@@ -1958,7 +1958,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100]: " + JSON.stringify(strJson))
@@ -1997,7 +1997,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200]: " + JSON.stringify(strJson))
@@ -2036,7 +2036,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300]: " + JSON.stringify(strJson))
@@ -2075,7 +2075,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400]: " + JSON.stringify(strJson))
@@ -2133,7 +2133,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Style_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200]: " + JSON.stringify(strJson))
@@ -2172,7 +2172,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Style_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300]: " + JSON.stringify(strJson))
@@ -2211,7 +2211,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Style_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400]: " + JSON.stringify(strJson))
@@ -2250,7 +2250,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Font_Style_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500]: " + JSON.stringify(strJson))
@@ -2309,7 +2309,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0200]: " + JSON.stringify(strJson))
@@ -2347,7 +2347,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0300]: " + JSON.stringify(strJson))
@@ -2385,7 +2385,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0400]: " + JSON.stringify(strJson))
@@ -2412,7 +2412,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_capsule_fontColor_resource', value: progress_capsule_fontColor_resource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_resource');
       let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
@@ -2452,7 +2452,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0600] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
@@ -2492,7 +2492,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
@@ -2532,7 +2532,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
@@ -2590,7 +2590,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Content_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0200]: " + JSON.stringify(strJson))
@@ -2628,7 +2628,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Content_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0300]: " + JSON.stringify(strJson))
@@ -2666,7 +2666,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Content_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0400]: " + JSON.stringify(strJson))
@@ -2704,7 +2704,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Content_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0500]: " + JSON.stringify(strJson))
@@ -2742,7 +2742,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Content_0600] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0600]: " + JSON.stringify(strJson))
@@ -2782,7 +2782,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Content_0700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0700]: " + JSON.stringify(strJson))
@@ -2822,7 +2822,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_Content_0800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0800]: " + JSON.stringify(strJson))
@@ -2878,7 +2878,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200]: " + JSON.stringify(strJson))
@@ -2916,7 +2916,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300]: " + JSON.stringify(strJson))
@@ -2954,7 +2954,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400]: " + JSON.stringify(strJson))
@@ -2992,7 +2992,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500]: " + JSON.stringify(strJson))
@@ -3048,7 +3048,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200]: " + JSON.stringify(strJson))
@@ -3086,7 +3086,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300]: " + JSON.stringify(strJson))
@@ -3124,7 +3124,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400]: " + JSON.stringify(strJson))
@@ -3162,7 +3162,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500]: " + JSON.stringify(strJson))
@@ -3242,7 +3242,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0200]: " + JSON.stringify(strJson))
@@ -3280,7 +3280,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_string');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0300]: " + JSON.stringify(strJson))
@@ -3307,7 +3307,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_ring_strokeWidth_resource', value: progress_ring_strokeWidth_resource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_resource');
       let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
@@ -3347,7 +3347,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_string');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0500]: " + JSON.stringify(strJson))
@@ -3385,7 +3385,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0600] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_string');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0600]: " + JSON.stringify(strJson))
@@ -3423,7 +3423,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_string');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0700]: " + JSON.stringify(strJson))
@@ -3461,7 +3461,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_string');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0800]: " + JSON.stringify(strJson))
@@ -3499,7 +3499,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0900]: " + JSON.stringify(strJson))
@@ -3537,7 +3537,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_1000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1000]: " + JSON.stringify(strJson))
@@ -3575,7 +3575,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_1100] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1100]: " + JSON.stringify(strJson))
@@ -3613,7 +3613,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_1200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1200]: " + JSON.stringify(strJson))
@@ -3651,7 +3651,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_1300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1300]: " + JSON.stringify(strJson))
@@ -3707,7 +3707,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Shadow_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0200]: " + JSON.stringify(strJson))
@@ -3745,7 +3745,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Shadow_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0300]: " + JSON.stringify(strJson))
@@ -3783,7 +3783,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Shadow_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0400]: " + JSON.stringify(strJson))
@@ -3821,7 +3821,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Shadow_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0500]: " + JSON.stringify(strJson))
@@ -3877,7 +3877,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Status_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Status_0200]: " + JSON.stringify(strJson))
@@ -3915,7 +3915,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Status_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Status_0300]: " + JSON.stringify(strJson))
@@ -3953,7 +3953,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Status_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Status_0400]: " + JSON.stringify(strJson))
@@ -3991,7 +3991,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Status_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Status_0500]: " + JSON.stringify(strJson))
@@ -4052,7 +4052,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0200]: " + JSON.stringify(strJson))
@@ -4081,7 +4081,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_ring_color_linear_number', value: progress_ring_color_linear_number
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_linear_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0300]: " + JSON.stringify(strJson))
@@ -4111,7 +4111,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_ring_color_linear_string', value: progress_ring_color_linear_string
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
 
       let strJson = getInspectorByKey('progress_ring_linear_string');
@@ -4142,7 +4142,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_ring_color_linear_color', value: progress_ring_color_linear_color
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_linear_color');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0500]: " + JSON.stringify(strJson))
@@ -4172,7 +4172,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_ring_color_linear_resource', value: progress_ring_color_linear_resource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_linear_resource');
       let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
@@ -4214,7 +4214,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_0700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_linear_null');
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
@@ -4258,7 +4258,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_0800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_linear_undefined');
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
@@ -4325,7 +4325,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_1200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1200]: " + JSON.stringify(strJson))
@@ -4355,7 +4355,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_ring_color_linear_number', value: progress_ring_color_linear_number
       })
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_linear_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1300]: " + JSON.stringify(strJson))
@@ -4385,7 +4385,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_ring_color_linear_string', value: progress_ring_color_linear_string
       })
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_linear_string');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1400]: " + JSON.stringify(strJson))
@@ -4415,7 +4415,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_ring_color_linear_color', value: progress_ring_color_linear_color
       })
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_linear_color');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1500]: " + JSON.stringify(strJson))
@@ -4445,7 +4445,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_ring_color_linear_resource', value: progress_ring_color_linear_resource
       })
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
 
       let strJson = getInspectorByKey('progress_linear_color_linear_resource');
@@ -4488,7 +4488,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_1700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_linear_null');
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
@@ -4532,7 +4532,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_1800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_linear_undefined');
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
@@ -4599,7 +4599,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_2200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2200]: " + JSON.stringify(strJson))
@@ -4629,7 +4629,7 @@ export default function progressSecTest() {
         name: 'progress_ring_color_linear_number', value: progress_ring_color_linear_number
       });
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2300]: " + JSON.stringify(strJson))
@@ -4660,7 +4660,7 @@ export default function progressSecTest() {
         name: 'progress_ring_color_linear_string', value: progress_ring_color_linear_string
       });
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_string');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2400]: " + JSON.stringify(strJson))
@@ -4691,7 +4691,7 @@ export default function progressSecTest() {
         name: 'progress_ring_color_linear_color', value: progress_ring_color_linear_color
       });
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_color');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2500]: " + JSON.stringify(strJson))
@@ -4723,7 +4723,7 @@ export default function progressSecTest() {
         name: 'progress_ring_color_linear_resource', value: progress_ring_color_linear_resource
       });
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_resource');
@@ -4766,7 +4766,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_2700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_null');
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
@@ -4810,7 +4810,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_2800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_undefined');
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
@@ -4877,7 +4877,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_3200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3200]: " + JSON.stringify(strJson))
@@ -4908,7 +4908,7 @@ export default function progressSecTest() {
         name: 'progress_ring_color_linear_number', value: progress_ring_color_linear_number
       });
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3300]: " + JSON.stringify(strJson))
@@ -4940,7 +4940,7 @@ export default function progressSecTest() {
         name: 'progress_ring_color_linear_string', value: progress_ring_color_linear_string
       });
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_string');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3400]: " + JSON.stringify(strJson))
@@ -4971,7 +4971,7 @@ export default function progressSecTest() {
         name: 'progress_ring_color_linear_color', value: progress_ring_color_linear_color
       });
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_color');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3500]: " + JSON.stringify(strJson))
@@ -5004,7 +5004,7 @@ export default function progressSecTest() {
       });
 
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_resource');
       let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
@@ -5046,7 +5046,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_3700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_null');
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
@@ -5090,7 +5090,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_3800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_undefined');
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
@@ -5157,7 +5157,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_4200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4200]: " + JSON.stringify(strJson))
@@ -5187,7 +5187,7 @@ export default function progressSecTest() {
         name: 'progress_ring_color_linear_number', value: progress_ring_color_linear_number
       });
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4300]: " + JSON.stringify(strJson))
@@ -5217,7 +5217,7 @@ export default function progressSecTest() {
       globalThis.value.message.notify({
         name: 'progress_ring_color_linear_string', value: progress_ring_color_linear_string
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_string');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4400]: " + JSON.stringify(strJson))
@@ -5248,7 +5248,7 @@ export default function progressSecTest() {
         name: 'progress_ring_color_linear_color', value: progress_ring_color_linear_color
       });
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_color');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4500]: " + JSON.stringify(strJson))
@@ -5279,7 +5279,7 @@ export default function progressSecTest() {
         name: 'progress_ring_color_linear_resource', value: progress_ring_color_linear_resource
       });
 
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_resource');
       let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
@@ -5321,7 +5321,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_4700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_null');
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
@@ -5365,7 +5365,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_Color_4800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_undefined');
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
@@ -5427,7 +5427,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200]: " + JSON.stringify(strJson))
@@ -5465,7 +5465,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300]: " + JSON.stringify(strJson))
@@ -5503,7 +5503,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400]: " + JSON.stringify(strJson))
@@ -5541,7 +5541,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500]: " + JSON.stringify(strJson))
@@ -5597,7 +5597,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200]: " + JSON.stringify(strJson))
@@ -5635,7 +5635,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300]: " + JSON.stringify(strJson))
@@ -5673,7 +5673,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400]: " + JSON.stringify(strJson))
@@ -5711,7 +5711,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500]: " + JSON.stringify(strJson))
@@ -5766,7 +5766,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
@@ -5803,7 +5803,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
@@ -5840,7 +5840,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
@@ -5877,7 +5877,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
@@ -5931,7 +5931,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
@@ -5968,7 +5968,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
@@ -6005,7 +6005,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
@@ -6042,7 +6042,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
@@ -6096,7 +6096,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
@@ -6133,7 +6133,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
@@ -6170,7 +6170,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
@@ -6207,7 +6207,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
@@ -6261,7 +6261,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
@@ -6298,7 +6298,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
@@ -6335,7 +6335,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
@@ -6372,7 +6372,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
@@ -6426,7 +6426,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
@@ -6463,7 +6463,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
@@ -6500,7 +6500,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
@@ -6537,7 +6537,7 @@ export default function progressSecTest() {
       } catch (err) {
         console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))

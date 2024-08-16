@@ -15,7 +15,7 @@
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 import bundle from '@ohos.bundle.bundleManager';
 
 export default function qrCodeJsunit() {
@@ -31,7 +31,7 @@ export default function qrCodeJsunit() {
         if (!("QrCode3" == pages.name)) {
           console.info("get QrCode pages success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push QrCode page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,17 +41,17 @@ export default function qrCodeJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       console.info("QrCode after each called");
     });
 
     it('test_qrCode_001', 0, async (done: Function) => {
       console.info('[test_qrCode_001] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('QrCodeColor');
 
       console.info("[test_qrCode_001] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual('#FF008000');
       expect(JSON.parse(strJson).$attrs.color).assertEqual('#FF0000FF');
       done();
@@ -59,7 +59,7 @@ export default function qrCodeJsunit() {
 
     it('test_qrCode_002', 0, async (done: Function) => {
       console.info('[test_qrCode_002] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -75,7 +75,7 @@ export default function qrCodeJsunit() {
       } catch (err) {
         console.log("[test_qrCode_002] change component color error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('QrCodeColor');
 
       console.info("[test_qrCode_002] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
@@ -87,7 +87,7 @@ export default function qrCodeJsunit() {
 
     it('test_qrCode_003', 0, async (done: Function) => {
       console.info('[test_qrCode_003] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -103,7 +103,7 @@ export default function qrCodeJsunit() {
       } catch (err) {
         console.log("[test_qrCode_003] change component color error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('QrCodeBackgroundColor');
 
       console.info("[test_qrCode_003] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
@@ -115,7 +115,7 @@ export default function qrCodeJsunit() {
 
     it('test_qrCode_004', 0, async (done: Function) => {
       console.info('[test_qrCode_004] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -131,7 +131,7 @@ export default function qrCodeJsunit() {
       } catch (err) {
         console.log("[test_qrCode_004] change component color error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('QrCodeColor');
       let strJsonDefault = getInspectorByKey('QrCodeDefault');
       console.info("[test_qrCode_004] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -147,7 +147,7 @@ export default function qrCodeJsunit() {
 
     it('test_qrCode_005', 0, async (done: Function) => {
       console.info('[test_qrCode_005] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -163,7 +163,7 @@ export default function qrCodeJsunit() {
       } catch (err) {
         console.log("[test_qrCode_005] change component color error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('QrCodeColor');
       console.info("[test_qrCode_005] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.color).assertEqual('#FF00014C');
@@ -172,7 +172,7 @@ export default function qrCodeJsunit() {
 
     it('test_qrCode_006', 0, async (done: Function) => {
       console.info('[test_qrCode_006] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -188,7 +188,7 @@ export default function qrCodeJsunit() {
       } catch (err) {
         console.log("[test_qrCode_006] change component color error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('QrCodeColor');
       let strJsonDefault = getInspectorByKey('QrCodeDefault');
 
@@ -207,7 +207,7 @@ export default function qrCodeJsunit() {
 
     it('test_qrCode_007', 0, async (done: Function) => {
       console.info('[test_qrCode_007] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -223,7 +223,7 @@ export default function qrCodeJsunit() {
       } catch (err) {
         console.log("[test_qrCode_007] change component color error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('QrCodeColor');
 
       console.info("[test_qrCode_007] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
