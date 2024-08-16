@@ -19,8 +19,12 @@ ohos_moduletest_suite("ActsVulkanGeometryTest") {
   part_name = "graphic_2d"
   sources = [ "ActsVulkanGeometryTest.cpp" ]
 
-  include_dirs = [ "src" ]
+  include_dirs = [
+    "src",
+    "../../../../../../../base/startup/init/interfaces/kits/syscap/include",
+  ]
   deps = [
+    "../../../../../../../base/startup/init/interfaces/kits/syscap:deviceinfo_ndk",
     "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan:deqp_vk_execute",
   ]
   cflags = [ "-Wno-error" ]

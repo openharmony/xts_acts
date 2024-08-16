@@ -2063,7 +2063,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("BZip2 archive.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_compress");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".bz2");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".bz2,.bzip2");
       expect(typeObj.mimeTypes.toString()).assertEqual("application/x-bzip2");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7000 end");
     });

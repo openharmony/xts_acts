@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <stdlib.h>
 #include "ActsVulkanRay_tracing_pipelineTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -40,9 +41,13 @@ namespace OHOS {
 
     HWTEST_F(ActsVulkanRay_tracing_pipelineTest, TestVulkanRay_tracing_pipelineTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanRay_tracing_pipelineTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/ray-tracing-pipeline.txt --deqp-log-filename=ActsVulkanRay_tracing_pipelineTest.qpa");
+        printf("------start ActsVulkanRaytracingpipelineTest------\n");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/ray-tracing-pipeline.txt "
+                "--deqp-log-filename=ActsVulkanRaytracingpipelineTest.qpa");
+        }
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanRay_tracing_pipelineTest------\n");
+        printf("------end ActsVulkanRaytracingpipelineTest------\n");
     }
 }

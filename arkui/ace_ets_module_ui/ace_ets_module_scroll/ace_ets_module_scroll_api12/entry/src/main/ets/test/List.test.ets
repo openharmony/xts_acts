@@ -16,6 +16,7 @@ import ListScrollTest1 from './ScrollTest/ListScroll.test';
 import PopupAlphaTest from './AlphabetIndexerTest/PopupAlpha.test';
 import ListMainChildrenTest from './ListTest/ListMainChildren.test';
 import refreshOffsetJsunit from './RefreshTest/refreshOffsetJsunit.test';
+import refreshOffsetChangeJsunit from './RefreshTest/refreshOffsetChangeJsunit.test';
 import listVisibleJsunit from './ListTest/listVisibleJsunit.test';
 import scrollOffsetJsunit from './ScrollTest/scrollOffsetJsunit.test';
 import swiperCustomJsunit from './SwiperTest/swiperCustomJsunit.test';
@@ -26,11 +27,14 @@ import ScrollSource from './ScrollTest/ScrollSource.test';
 import offsetRemain from './ScrollTest/offsetRemain.test';
 import TabsAp1 from './TabsTest/TabsAp1.test'
 import ScrollApi1 from './ScrollTest/ScrollApi1.test'
+import scrollXOffsetJsunit from './ScrollTest/scrollXOffsetJsunit.test';
 import SwiperApi from './SwiperTest/SwiperApi.test';
 import tabsAnimationMode from './TabsTest/tabsAnimationMode.test'
+import tabsAnimationDuration from './TabsTest/tabsAnimationDuration.test'
 import setTest from './ListTest/childrenMainSizeTest/setTest.test'
 import getTest from './ListTest/childrenMainSizeTest/getTest.test'
 import alphabetEnableJsunit from './AlphabetIndexerTest/alphabetEnableJsunit.test';
+import alphabetBorderRadiusTest from './AlphabetIndexerTest/alphabetBorderRadius.test';
 import swiperCountJsunit from './SwiperTest/swiperCountJsunit.test';
 import waterFlowLayoutMode from './WaterFlowTest/waterFlowLayoutMode.test';
 import ListAddApi from './ListTest/ListAddApi.test';
@@ -48,6 +52,7 @@ export default function testsuite() {
   PopupAlphaTest()
   ListMainChildrenTest()
   refreshOffsetJsunit();
+  refreshOffsetChangeJsunit();
   listVisibleJsunit();
   scrollOffsetJsunit();
   swiperCustomJsunit();
@@ -58,11 +63,14 @@ export default function testsuite() {
   offsetRemain()
   TabsAp1()
   ScrollApi1()
+  scrollXOffsetJsunit();
   SwiperApi()
   tabsAnimationMode()
+  tabsAnimationDuration()
   setTest();
   getTest();
   alphabetEnableJsunit()
+  alphabetBorderRadiusTest()
   swiperCountJsunit()
   waterFlowLayoutMode()
   ListAddApi()

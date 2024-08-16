@@ -2424,17 +2424,17 @@ export default function nativeApiStringJsunit() {
     it('aceNapiTest0160', 0, async (done: Function) => {
       console.info('aceNapiTest0160 START');
       class Class {
-        constructor() {
-        }
+        constructor() {}
       }
       class SendableClass {
         constructor() {
           'use sendable';
         }
       }
-      let value = napitest.NapiIsSendable(Class, SendableClass);
-      console.info('aceNapiTest0160 testString result is: ' + value + '--' + JSON.stringify(value));
-      expect(value).assertEqual(0);
+      let value = napitest.NapiIsSendable(Class);
+      expect(value).assertEqual(false);
+      let value0 = napitest.NapiIsSendable(SendableClass);
+      expect(value0).assertEqual(true);
       done();
     });
 
@@ -2446,8 +2446,13 @@ export default function nativeApiStringJsunit() {
     it('aceNapiTest0161', 0, async (done: Function) => {
       console.info('aceNapiTest0161 START');
       let value = napitest.NapiDefineSendableClass();
-      console.info('aceNapiTest0161 testString result is: ' + value + "--" + JSON.stringify(value));
-      expect(value).assertEqual(0);
+      expect(napitest.NapiIsSendable(value)).assertEqual(true);
+      expect(value.staticStr).assertEqual('static str');
+      expect(value.staticFunc()).assertEqual('static func');
+      let instance = new value();
+      expect(napitest.NapiIsSendable(instance)).assertEqual(true);
+      expect(instance.str).assertEqual('instance str');
+      expect(instance.func()).assertEqual('instance func');
       done();
     });
 
