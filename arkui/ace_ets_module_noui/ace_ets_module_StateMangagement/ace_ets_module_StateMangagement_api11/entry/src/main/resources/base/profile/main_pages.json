@@ -118,6 +118,8 @@
         "MainAbility/pages/stateMangagement/ObjectLinkMap",
         "MainAbility/pages/stateMangagement/ObjectLinkSet",
         "MainAbility/pages/stateMangagement/stateManagement",
-        "MainAbility/pages/stateMangagement/stateManagementNew"
+        "MainAbility/pages/stateMangagement/stateManagementNew",
+        "MainAbility/pages/twoWayBind/twoWayBind",
+        "MainAbility/pages/Watch/Watch"
     ]
 }
