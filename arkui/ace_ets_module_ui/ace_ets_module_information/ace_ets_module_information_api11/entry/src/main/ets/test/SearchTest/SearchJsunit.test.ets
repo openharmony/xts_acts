@@ -262,7 +262,7 @@ export default function searchJsunit() {
       let strJson = getInspectorByKey('search');
       console.info("[testSearch009] component strJson:" + strJson);
       let obj9: ESObject = JSON.parse(strJson);
-      expect(obj9.$attrs.copyOption).assertEqual('CopyOptions.LocalDevice');
+      expect(obj9.$attrs.copyOption).assertEqual('CopyOptions.Local');
       done();
     });
 
