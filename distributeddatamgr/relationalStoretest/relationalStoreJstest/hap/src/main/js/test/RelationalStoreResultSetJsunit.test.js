@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -121,7 +121,7 @@ describe('relationalStoreResultSetTest', function () {
     }
 
     /**
-     * @tc.name resultSet getBlob normal test
+     * @tc.name testGetBlob0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0100
      * @tc.desc resultSet getBlob normal test
      * @tc.size MediumTest
@@ -153,7 +153,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getBlob normal test
+     * @tc.name testGetBlob0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0200
      * @tc.desc resultSet getBlob normal test
      * @tc.size MediumTest
@@ -186,7 +186,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getBlob normal test
+     * @tc.name testGetBlob0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0300
      * @tc.desc resultSet getBlob normal test
      * @tc.size MediumTest
@@ -217,7 +217,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isStarted normal test
+     * @tc.name testIsStarted0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0400
      * @tc.desc resultSet isStarted normal test
      * @tc.size MediumTest
@@ -239,7 +239,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isStarted normal test
+     * @tc.name testIsStarted0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0500
      * @tc.desc resultSet isStarted normal test
      * @tc.size MediumTest
@@ -262,7 +262,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isStarted normal test
+     * @tc.name testIsStarted0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0600
      * @tc.desc resultSet isStarted normal test
      * @tc.size MediumTest
@@ -288,7 +288,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isStarted with no result test
+     * @tc.name testIsStarted0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0700
      * @tc.desc resultSet isStarted with no result test
      * @tc.size MediumTest
@@ -313,7 +313,7 @@ describe('relationalStoreResultSetTest', function () {
 
 
     /**
-     * @tc.name resultSet isEnded normal test
+     * @tc.name testIsEnded0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0800
      * @tc.desc resultSet isEnded normal test
      * @tc.size MediumTest
@@ -336,7 +336,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isEnded normal test
+     * @tc.name testIsEnded0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0900
      * @tc.desc resultSet isEnded normal test
      * @tc.size MediumTest
@@ -359,7 +359,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isEnded normal test
+     * @tc.name testIsEnded0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1000
      * @tc.desc resultSet isEnded normal test
      * @tc.size MediumTest
@@ -382,7 +382,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isEnded normal test
+     * @tc.name testIsEnded0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1100
      * @tc.desc resultSet isEnded normal test
      * @tc.size MediumTest
@@ -406,7 +406,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet rowCount normal test
+     * @tc.name testRowCount0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1200
      * @tc.desc resultSet rowCount normal test
      * @tc.size MediumTest
@@ -428,7 +428,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet rowCount with no result test
+     * @tc.name testRowCount0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1300
      * @tc.desc resultSet rowCount with no result test
      * @tc.size MediumTest
@@ -451,7 +451,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet rowCount test
+     * @tc.name testRowCount0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1400
      * @tc.desc resultSet rowCount test
      * @tc.size MediumTest
@@ -474,7 +474,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet rowCount test
+     * @tc.name testRowCount0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1500
      * @tc.desc resultSet rowCount test
      * @tc.size MediumTest
@@ -498,7 +498,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getLong test
+     * @tc.name testGetLong0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1600
      * @tc.desc resultSet getLong test
      * @tc.size MediumTest
@@ -528,7 +528,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getLong test
+     * @tc.name testGetLong0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1700
      * @tc.desc resultSet getLong test
      * @tc.size MediumTest
@@ -557,7 +557,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getLong test
+     * @tc.name testGetLong0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1800
      * @tc.desc resultSet getLong test
      * @tc.size MediumTest
@@ -586,7 +586,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getString test
+     * @tc.name testGetString0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1900
      * @tc.desc resultSet getString test
      * @tc.size MediumTest
@@ -608,7 +608,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getString test
+     * @tc.name testGetString0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2000
      * @tc.desc resultSet getString test
      * @tc.size MediumTest
@@ -630,7 +630,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getString test
+     * @tc.name testGetString0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2100
      * @tc.desc resultSet getString test
      * @tc.size MediumTest
@@ -653,7 +653,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getString test
+     * @tc.name testGetString0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2200
      * @tc.desc resultSet getString test
      * @tc.size MediumTest
@@ -681,7 +681,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isClosed test
+     * @tc.name testIsClosed0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2300
      * @tc.desc resultSet isClosed test
      * @tc.size MediumTest
@@ -703,7 +703,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isClosed with not close test
+     * @tc.name testIsClosed0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2400
      * @tc.desc resultSet isClosed with not close test
      * @tc.size MediumTest
@@ -722,7 +722,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isClosed with not close test
+     * @tc.name testIsClosed0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2500
      * @tc.desc resultSet isClosed with not close test
      * @tc.size MediumTest
@@ -742,7 +742,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet columnCount test
+     * @tc.name testColumnCount0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2600
      * @tc.desc resultSet columnCount test
      * @tc.size MediumTest
@@ -762,7 +762,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet columnCount test
+     * @tc.name testColumnCount0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2700
      * @tc.desc resultSet columnCount test
      * @tc.size MediumTest
@@ -783,7 +783,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet rowIndex test
+     * @tc.name testRowIndex0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2800
      * @tc.desc resultSet rowIndex test
      * @tc.size MediumTest
@@ -807,7 +807,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet rowIndex at last row test
+     * @tc.name testRowIndex0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2900
      * @tc.desc resultSet rowIndex at last row test
      * @tc.size MediumTest
@@ -831,7 +831,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToFirstRow normal test
+     * @tc.name testGoToFirstRow0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3000
      * @tc.desc resultSet goToFirstRow normal test
      * @tc.size MediumTest
@@ -855,7 +855,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToFirstRow with no result test
+     * @tc.name testGoToFirstRow0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3100
      * @tc.desc resultSet goToFirstRow with no result test
      * @tc.size MediumTest
@@ -879,7 +879,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToFirstRow test
+     * @tc.name testGoToFirstRow0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3200
      * @tc.desc resultSet goToFirstRow test
      * @tc.size MediumTest
@@ -904,7 +904,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToLastRow test
+     * @tc.name testGoToLastRow0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3300
      * @tc.desc resultSet goToFirstRow test
      * @tc.size MediumTest
@@ -926,7 +926,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToLastRow with no result test
+     * @tc.name testGoToLastRow0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3400
      * @tc.desc resultSet goToLastRow with no result test
      * @tc.size MediumTest
@@ -949,7 +949,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToLastRow test
+     * @tc.name testGoToLastRow0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3500
      * @tc.desc resultSet goToLastRow test
      * @tc.size MediumTest
@@ -973,7 +973,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToNextRow test
+     * @tc.name testGoToNextRow0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3600
      * @tc.desc resultSet goToNextRow test
      * @tc.size MediumTest
@@ -995,7 +995,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToNextRow with no result test
+     * @tc.name testGoToNextRow0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3700
      * @tc.desc resultSet goToNextRow with no result test
      * @tc.size MediumTest
@@ -1018,7 +1018,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToNextRow test
+     * @tc.name testGoToNextRow0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3800
      * @tc.desc resultSet goToNextRow test
      * @tc.size MediumTest
@@ -1043,7 +1043,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToNextRow after last row test
+     * @tc.name testGoToNextRow0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3900
      * @tc.desc resultSet goToNextRow after last row test
      * @tc.size MediumTest
@@ -1066,7 +1066,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToPreviousRow test
+     * @tc.name testGoToPreviousRow0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4000
      * @tc.desc resultSet goToPreviousRow test
      * @tc.size MediumTest
@@ -1088,7 +1088,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToPreviousRow with no result test
+     * @tc.name testGoToPreviousRow0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4100
      * @tc.desc resultSet goToPreviousRow with no result test
      * @tc.size MediumTest
@@ -1111,7 +1111,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToPreviousRow test
+     * @tc.name testGoToPreviousRow0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4200
      * @tc.desc resultSet goToPreviousRow test
      * @tc.size MediumTest
@@ -1135,7 +1135,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToPreviousRow after last row test
+     * @tc.name testGoToPreviousRow0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4300
      * @tc.desc resultSet goToPreviousRow after last row test
      * @tc.size MediumTest
@@ -1158,7 +1158,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goTo test
+     * @tc.name testGoTo0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4400
      * @tc.desc resultSet goTo test
      * @tc.size MediumTest
@@ -1182,7 +1182,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goTo with no result test
+     * @tc.name testGoTo0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4500
      * @tc.desc resultSet goTo with no result test
      * @tc.size MediumTest
@@ -1206,7 +1206,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goTo test
+     * @tc.name testGoTo0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4600
      * @tc.desc resultSet goTo test
      * @tc.size MediumTest
@@ -1231,7 +1231,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goTo after last row test
+     * @tc.name testGoTo0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4700
      * @tc.desc resultSet goTo after last row test
      * @tc.size MediumTest
@@ -1255,7 +1255,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToRow test
+     * @tc.name testGoToRow0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_480
      * @tc.desc resultSet goToRow test
      * @tc.size MediumTest
@@ -1279,7 +1279,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToRow with no result test
+     * @tc.name testGoToRow0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4900
      * @tc.desc resultSet goToRow with no result test
      * @tc.size MediumTest
@@ -1303,7 +1303,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToRow test
+     * @tc.name testGoToRow0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5000
      * @tc.desc resultSet goToRow test
      * @tc.size MediumTest
@@ -1329,7 +1329,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet goToRow after last row test
+     * @tc.name testGoToRow0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5100
      * @tc.desc resultSet goToRow after last row test
      * @tc.size MediumTest
@@ -1353,7 +1353,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isAtFirstRow test
+     * @tc.name testIsAtFirstRow0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5200
      * @tc.desc resultSet isAtFirstRow test
      * @tc.size MediumTest
@@ -1376,7 +1376,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isAtFirstRow with no result test
+     * @tc.name testIsAtFirstRow0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5300
      * @tc.desc resultSet isAtFirstRow with no result test
      * @tc.size MediumTest
@@ -1399,7 +1399,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isAtFirstRow test
+     * @tc.name testIsAtFirstRow0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5400
      * @tc.desc resultSet isAtFirstRow test
      * @tc.size MediumTest
@@ -1423,7 +1423,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isAtFirstRow after last row test
+     * @tc.name testIsAtFirstRow0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5500
      * @tc.desc resultSet isAtFirstRow after last row test
      * @tc.size MediumTest
@@ -1446,7 +1446,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isAtFirstRow test
+     * @tc.name testIsAtFirstRow0005
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5600
      * @tc.descresultSet isAtFirstRow test
      * @tc.size MediumTest
@@ -1470,7 +1470,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isAtFirstRow test
+     * @tc.name testIsAtFirstRow0006
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5700
      * @tc.descresultSet isAtFirstRow test
      * @tc.size MediumTest
@@ -1494,7 +1494,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isAtLastRow test
+     * @tc.name testIsAtLastRow0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5800
      * @tc.desc resultSet isAtLastRow test
      * @tc.size MediumTest
@@ -1517,7 +1517,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isAtLastRow with no result test
+     * @tc.name testIsAtLastRow0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5900
      * @tc.desc resultSet isAtLastRow with no result test
      * @tc.size MediumTest
@@ -1540,7 +1540,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isAtLastRow test
+     * @tc.name testIsAtLastRow0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6000
      * @tc.desc resultSet isAtLastRow test
      * @tc.size MediumTest
@@ -1564,7 +1564,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isAtLastRow after last row test
+     * @tc.name testIsAtLastRow0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6100
      * @tc.desc resultSet isAtLastRow after last row test
      * @tc.size MediumTest
@@ -1587,7 +1587,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isAtLastRow test
+     * @tc.name testIsAtLastRow0005
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6200
      * @tc.desc resultSet isAtLastRow test
      * @tc.size MediumTest
@@ -1611,7 +1611,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getDouble test
+     * @tc.name testGetDouble0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6300
      * @tc.desc resultSet getDouble test
      * @tc.size MediumTest
@@ -1635,7 +1635,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getDouble test
+     * @tc.name testGetDouble0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6400
      * @tc.desc resultSet getDouble test
      * @tc.size MediumTest
@@ -1659,7 +1659,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getDouble test
+     * @tc.name testGetDouble0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6500
      * @tc.desc resultSet getDouble test
      * @tc.size MediumTest
@@ -1683,7 +1683,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getDouble test
+     * @tc.name testGetDouble0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6600
      * @tc.desc resultSet getDouble test
      * @tc.size MediumTest
@@ -1707,7 +1707,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isColumnNull test
+     * @tc.name testIsColumnNull0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6700
      * @tc.desc resultSet isColumnNull test
      * @tc.size MediumTest
@@ -1733,7 +1733,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isColumnNull test
+     * @tc.name testIsColumnNull0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6800
      * @tc.desc resultSet isColumnNull test
      * @tc.size MediumTest
@@ -1759,7 +1759,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet isColumnNull test
+     * @tc.name testIsColumnNull0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6900
      * @tc.desc resultSet isColumnNull test
      * @tc.size MediumTest
@@ -1783,7 +1783,7 @@ describe('relationalStoreResultSetTest', function () {
         }
     })
     /**
-     * @tc.name resultSet isColumnNull test
+     * @tc.name testIsColumnNull0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7000
      * @tc.desc resultSet isColumnNull test
      * @tc.size MediumTest
@@ -1806,7 +1806,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getColumnIndex test
+     * @tc.name testGetColumnIndex0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7100
      * @tc.desc resultSet getColumnIndex test
      * @tc.size MediumTest
@@ -1828,7 +1828,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getColumnIndex test
+     * @tc.name testGetColumnIndex0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7200
      * @tc.desc resultSet getColumnIndex test
      * @tc.size MediumTest
@@ -1850,7 +1850,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getColumnIndex test
+     * @tc.name testGetColumnIndex0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7300
      * @tc.desc resultSet getColumnIndex test
      * @tc.size MediumTest
@@ -1871,7 +1871,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getColumnIndex test
+     * @tc.name testGetColumnIndex0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7400
      * @tc.desc resultSet getColumnIndex test
      * @tc.size MediumTest
@@ -1897,7 +1897,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getColumnName test
+     * @tc.name testGetColumnName0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7500
      * @tc.desc resultSet getColumnName test
      * @tc.size MediumTest
@@ -1920,7 +1920,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getColumnName test
+     * @tc.name testGetColumnName0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7600
      * @tc.desc resultSet getColumnName test
      * @tc.size MediumTest
@@ -1944,7 +1944,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getColumnName test
+     * @tc.name testGetColumnName0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7700
      * @tc.desc resultSet getColumnName test
      * @tc.size MediumTest
@@ -1966,7 +1966,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet getColumnName test
+     * @tc.name testGetColumnName0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7800
      * @tc.desc resultSet getColumnName test
      * @tc.size MediumTest
@@ -1989,7 +1989,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet close test
+     * @tc.name testClose0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7900
      * @tc.desc resultSet close test
      * @tc.size MediumTest
@@ -2012,7 +2012,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet close test
+     * @tc.name testClose0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_8000
      * @tc.desc resultSet close test
      * @tc.size MediumTest
@@ -2035,7 +2035,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name resultSet columnNames test
+     * @tc.name testcolumnNames0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_8100
      * @tc.desc resultSet columnNames test
      * @tc.size MediumTest
@@ -2059,7 +2059,7 @@ describe('relationalStoreResultSetTest', function () {
     })
 
     /**
-     * @tc.name big resultSet data test
+     * @tc.name testBigData0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_8200
      * @tc.desc big resultSet data test
      * @tc.size MediumTest
