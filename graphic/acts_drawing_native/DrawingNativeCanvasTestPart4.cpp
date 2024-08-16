@@ -2004,6 +2004,32 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRegionNormal, TestSize.Level0) {
     OH_Drawing_RegionDestroy(region);
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4701
+ * @tc.name: testCanvasClipRegionNull
+ * @tc.desc: test for testCanvasClipRegionNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRegionNull, TestSize.Level3) {
+    //1. OH_Drawing_RectCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_CanvasClipOp clipOp = {OH_Drawing_CanvasClipOp::DIFFERENCE};
+    //2. OH_Drawing_RegionCreate
+    OH_Drawing_Region *region = OH_Drawing_RegionCreate();
+    //3. OH_Drawing_RegionSetRect
+    OH_Drawing_RegionSetRect(region, rect);
+    //4. OH_Drawing_CanvasClipRegion with the first parameter as nullptr
+    OH_Drawing_CanvasClipRegion(nullptr, region, clipOp);
+    //5. OH_Drawing_CanvasClipRegion with the second parameter as nullptr
+    OH_Drawing_CanvasClipRegion(canvas, nullptr, clipOp);
+    //6. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RegionDestroy(region);
+}
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4702
