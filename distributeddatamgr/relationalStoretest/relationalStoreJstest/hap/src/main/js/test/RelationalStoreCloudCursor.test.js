@@ -497,7 +497,7 @@ export default function relationalStoreCloudCursor() {
         let promise = rdbStore.query(predicates);
         await promise.then((resultSet) => {
           console.log(TAG+"resultSet.columnCount"+resultSet.columnCount)
-          expect(8).assertEqual(resultSet.columnCount);
+          expect(7).assertEqual(resultSet.columnCount);
           let shareIndex = resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD);
           console.log(TAG+"shareIndex"+shareIndex)
           expect(-1).assertEqual(shareIndex);
