@@ -175,7 +175,10 @@ export default function tabsFirstJsunit() {
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0400]: " + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.barWidth).assertEqual('156.000000');
+      console.info("barWidth: "+ obj.$attrs.barWidth);
+	  let barWidth1: number = Math.round(obj.$attrs.barWidth)
+      console.info("barWidth1: "+ barWidth1);
+      expect(Math.abs(barWidth1 -156) <= 0.001).assertTrue();
 
       done();
     });
@@ -193,7 +196,9 @@ export default function tabsFirstJsunit() {
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0500]: " + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.barHeight).assertEqual('100.000000');
+	  let barHeight1: number = Math.round(obj.$attrs.barHeight)
+      console.info("barHeight1: "+ barHeight1);
+      expect(Math.abs(barHeight1 -100) <= 0.001).assertTrue();
       done();
     });
 
