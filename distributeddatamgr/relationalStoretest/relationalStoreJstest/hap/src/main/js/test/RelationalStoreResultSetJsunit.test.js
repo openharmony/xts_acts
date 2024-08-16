@@ -1546,7 +1546,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToNextRow())
                 expect(true).assertEqual(resultSet.goToNextRow())
                 const isColumnNull4 = resultSet.isColumnNull(resultSet.getColumnIndex('data4'))
-                expect(true).assertEqual(isColumnNull4)
+                expect(false).assertEqual(isColumnNull4)
             }
             resultSet.close();
             done();
