@@ -46,6 +46,12 @@
         "MainAbility/pages/Provider/Provider5",
         "MainAbility/pages/Provider/Provider14",
         "MainAbility/pages/Provider/Provider15",
-        "MainAbility/pages/Provider/Provider18"
+        "MainAbility/pages/Provider/Provider18",
+        "MainAbility/pages/getTarget/getTarget1",
+        "MainAbility/pages/getTarget/getTarget2",
+        "MainAbility/pages/getTarget/getTarget3",
+        "MainAbility/pages/getTarget/getTarget4",
+        "MainAbility/pages/getTarget/getTarget5",
+        "MainAbility/pages/getTarget/getTarget6"
     ]
 }
