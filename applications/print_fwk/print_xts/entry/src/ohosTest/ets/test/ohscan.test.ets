@@ -144,9 +144,8 @@ export default function oHScanTest() {
      * @tc.level      : Level 1
      */
     it('testOHScan010', 0, async () => {
-      await entry.oHScanExit().then((result) => {
-        expect(result).assertEqual(0);
-      });
+      let result: number = await entry.oHScanExit();
+      expect(result).assertEqual(0);
     });
   })
 }
