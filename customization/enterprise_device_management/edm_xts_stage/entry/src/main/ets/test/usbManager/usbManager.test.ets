@@ -18,6 +18,10 @@ import { ENTINFO1, SELFWANT, SELFHAPNAME } from '../commom';
 
 import adminManager from '@ohos.enterprise.adminManager';
 import usbManager from '@ohos.enterprise.usbManager';
+import restrictions from '@ohos.enterprise.restrictions';
+
+const DISALLOWED_USB_DEVICES_MAX_SIZE = 200;
+const LABEL_USB = 'usb';
 
 export default function usbManagerTest() {
   describe('usbManager_test', () => {
@@ -26,6 +30,9 @@ export default function usbManagerTest() {
     testGetAllowedUsbDevices();
     testSetUsbStorageDeviceAccessPolicy();
     testGetUsbStorageDeviceAccessPolicy();
+    testAddDisallowedUsbDevices();
+    testRemoveDisallowedUsbDevices();
+    testGetDisallowedUsbDevices();
   })
 }
 
@@ -366,6 +373,1058 @@ function testGetUsbStorageDeviceAccessPolicy() {
       expect(error.code == 9200002).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+}
+
+function testAddDisallowedUsbDevices() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0001
+   * @tc.name      : test_add_disallowed_usb_devices_0001
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with inactive admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0002
+   * @tc.name      : test_add_disallowed_usb_devices_0002
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0003
+   * @tc.name      : test_add_disallowed_usb_devices_0003
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with null admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0003", Level.LEVEL2, async (done: Function) => {
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(null, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0004
+   * @tc.name      : test_add_disallowed_usb_devices_0004
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin for multiple types
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      let ret: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret.length == devices.length).assertTrue();
+      usbManager.removeDisallowedUsbDevices(SELFWANT, ret);
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0005
+   * @tc.name      : test_add_disallowed_usb_devices_0005
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin for single type
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0005", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      let ret: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret.length == devices.length).assertTrue();
+      usbManager.removeDisallowedUsbDevices(SELFWANT, ret);
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0006
+   * @tc.name      : test_add_disallowed_usb_devices_0006
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin twice with all types different
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0006", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices1: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices1);
+      let ret1: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret1.length == devices1.length).assertTrue();
+
+      let devices2: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices2);
+      let ret2: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret2.length == (devices1.length + devices2.length)).assertTrue();
+
+      usbManager.removeDisallowedUsbDevices(SELFWANT, ret1);
+      usbManager.removeDisallowedUsbDevices(SELFWANT, ret2);
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0007
+   * @tc.name      : test_add_disallowed_usb_devices_0007
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin twice with part of same types
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0007", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices1: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 8, subClass: 7, protocol: 6, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices1);
+      let ret1: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret1.length == devices1.length).assertTrue();
+
+      let devices2: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 8, subClass: 7, protocol: 6, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices2);
+      let ret2: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret2.length == (devices1.length + devices2.length - 1)).assertTrue();
+
+      usbManager.removeDisallowedUsbDevices(SELFWANT, ret1);
+      usbManager.removeDisallowedUsbDevices(SELFWANT, ret2);
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0008
+   * @tc.name      : test_add_disallowed_usb_devices_0008
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin and boundary value
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0008", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+        {baseClass: 255, subClass: 255, protocol: 255, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      let ret: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret.length == devices.length).assertTrue();
+      usbManager.removeDisallowedUsbDevices(SELFWANT, ret);
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0009
+   * @tc.name      : test_add_disallowed_usb_devices_0009
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin and baseClass out of boundary value
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0009", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: -1, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 256, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0010
+   * @tc.name      : test_add_disallowed_usb_devices_0010
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin and subClass out of boundary value
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0010", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: -1, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: 256, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0011
+   * @tc.name      : test_add_disallowed_usb_devices_0011
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin and protocol out of boundary value
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0011", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: 0, protocol: -1, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: 0, protocol: 256, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0012
+   * @tc.name      : test_add_disallowed_usb_devices_0012
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin and size out of boundary value
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0012", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices1: Array<usbManager.UsbDeviceType> = [];
+      for (let i = 0; i < DISALLOWED_USB_DEVICES_MAX_SIZE; i++) {
+        let temp: usbManager.UsbDeviceType = {
+          baseClass: 0,
+          subClass: 0,
+          protocol: i,
+          descriptor: usbManager.Descriptor.INTERFACE
+        };
+        devices1.push(temp);
+      }
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices1);
+      let ret1: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret1.length == DISALLOWED_USB_DEVICES_MAX_SIZE).assertTrue();
+    } catch (error) {
+      expect(error == null).assertTrue();
+    }
+    try {
+      let devices2: Array<usbManager.UsbDeviceType> =
+        [{baseClass: 8, subClass: 7, protocol: 6, descriptor: usbManager.Descriptor.INTERFACE}];
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices2);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      let ret2: Array<usbManager.UsbDeviceIds> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      usbManager.removeDisallowedUsbDevices(SELFWANT, ret2);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0013
+   * @tc.name      : test_add_disallowed_usb_devices_0013
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin and disableUsb has been set
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0013", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_USB, true);
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200010).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0014
+   * @tc.name      : test_add_disallowed_usb_devices_0014
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin and allowedDevices has been set
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0014", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let allowedDevices: Array<usbManager.UsbDeviceIds> = [
+        {vendorId: 1, productId: 1},
+      ]
+      usbManager.addAllowedUsbDevices(SELFWANT, allowedDevices);
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200010).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0015
+   * @tc.name      : test_add_disallowed_usb_devices_0015
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin and then set disableUsb
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0015", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_USB, true);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200010).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0016
+   * @tc.name      : test_add_disallowed_usb_devices_0016
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin and then set allowed devices
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0016", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      let allowedDevices: Array<usbManager.UsbDeviceIds> = [
+        {vendorId: 1, productId: 1},
+      ]
+      usbManager.addAllowedUsbDevices(SELFWANT, allowedDevices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200010).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0017
+   * @tc.name      : test_add_disallowed_usb_devices_0017
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin and then set storage device read only
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0017", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 8, subClass: 7, protocol: 6, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      usbManager.setUsbStorageDeviceAccessPolicy(SELFWANT, usbManager.UsbPolicy.READ_ONLY);
+      let ret: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret.length == 1).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200010).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0018
+   * @tc.name      : test_add_disallowed_usb_devices_0018
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin and then set storage device read write
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0018", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 8, subClass: 7, protocol: 6, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      usbManager.setUsbStorageDeviceAccessPolicy(SELFWANT, usbManager.UsbPolicy.READ_WRITE);
+      let ret: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret.length == 1).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200010).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0019
+   * @tc.name      : test_add_disallowed_usb_devices_0019
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin and then set storage device disabled
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0019", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 8, subClass: 7, protocol: 6, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      usbManager.setUsbStorageDeviceAccessPolicy(SELFWANT, usbManager.UsbPolicy.DISABLED);
+      let ret: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret.length == 1).assertTrue();
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_USB_DEVICES_JS_0020
+   * @tc.name      : test_add_disallowed_usb_devices_0020
+   * @tc.desc      : test usbManager addDisallowedUsbDevices with super admin and storage device has been set disabled
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_usb_devices_0020", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      usbManager.setUsbStorageDeviceAccessPolicy(SELFWANT, usbManager.UsbPolicy.DISABLED);
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 8, subClass: 7, protocol: 6, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, devices);
+      let ret: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret.length == 1).assertTrue();
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testRemoveDisallowedUsbDevices() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_USB_DEVICES_JS_0001
+   * @tc.name      : test_remove_disallowed_usb_devices_0001
+   * @tc.desc      : test usbManager removeDisallowedUsbDevices with inactive admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_usb_devices_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_USB_DEVICES_JS_0002
+   * @tc.name      : test_remove_disallowed_usb_devices_0002
+   * @tc.desc      : test usbManager removeDisallowedUsbDevices with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_usb_devices_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_USB_DEVICES_JS_0003
+   * @tc.name      : test_remove_disallowed_usb_devices_0003
+   * @tc.desc      : test usbManager removeDisallowedUsbDevices with null admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_usb_devices_0003", Level.LEVEL2, async (done: Function) => {
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.removeDisallowedUsbDevices(null, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_USB_DEVICES_JS_0004
+   * @tc.name      : test_remove_disallowed_usb_devices_0004
+   * @tc.desc      : test usbManager removeDisallowedUsbDevices with super admin for multiple types
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_usb_devices_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      // add
+      let addDevices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, addDevices);
+      // remove
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices);
+      // get
+      let ret: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret.length == (addDevices.length - devices.length)).assertTrue();
+      usbManager.removeDisallowedUsbDevices(SELFWANT, ret);
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_USB_DEVICES_JS_0005
+   * @tc.name      : test_remove_disallowed_usb_devices_0005
+   * @tc.desc      : test usbManager removeDisallowedUsbDevices with super admin for single type
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_usb_devices_0005", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      // add
+      let addDevices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, addDevices);
+      // remove
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices);
+      // get
+      let ret: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret.length == (addDevices.length - devices.length)).assertTrue();
+      usbManager.removeDisallowedUsbDevices(SELFWANT, ret);
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_USB_DEVICES_JS_0006
+   * @tc.name      : test_remove_disallowed_usb_devices_0006
+   * @tc.desc      : test usbManager removeDisallowedUsbDevices with super admin twice with all types different
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_usb_devices_0006", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      // add
+      let addDevices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+        {baseClass: 8, subClass: 7, protocol: 6, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 0, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, addDevices);
+      // remove 1
+      let devices1: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices1);
+      let ret1: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret1.length == (addDevices.length - devices1.length)).assertTrue();
+      // remove 2
+      let devices2: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 8, subClass: 7, protocol: 6, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices2);
+      let ret2: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret2.length == (addDevices.length - devices1.length - devices2.length)).assertTrue();
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_USB_DEVICES_JS_0007
+   * @tc.name      : test_remove_disallowed_usb_devices_0007
+   * @tc.desc      : test usbManager removeDisallowedUsbDevices with super admin twice with part of same types
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_usb_devices_0007", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      // add
+      let addDevices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+        {baseClass: 8, subClass: 7, protocol: 6, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 0, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, addDevices);
+      // remove 1
+      let devices1: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices1);
+      let ret1: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret1.length == (addDevices.length - devices1.length)).assertTrue();
+      // remove 2
+      let devices2: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 8, subClass: 7, protocol: 6, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices2);
+      let ret2: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret2.length == (addDevices.length - devices1.length - devices2.length + 1)).assertTrue();
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_USB_DEVICES_JS_0008
+   * @tc.name      : test_remove_disallowed_usb_devices_0008
+   * @tc.desc      : test usbManager removeDisallowedUsbDevices with super admin for removing a device not in list
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_usb_devices_0008", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      // add
+      let addDevices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.addDisallowedUsbDevices(SELFWANT, addDevices);
+      // remove
+      let devices1: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 8, subClass: 7, protocol: 6, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices1);
+      let ret: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret.length == addDevices.length).assertTrue();
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_USB_DEVICES_JS_0009
+   * @tc.name      : test_remove_disallowed_usb_devices_0009
+   * @tc.desc      : test usbManager removeDisallowedUsbDevices with super admin for empty list
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_usb_devices_0009", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices1: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 8, subClass: 7, protocol: 6, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices1);
+      let ret: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret.length == 0).assertTrue();
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_USB_DEVICES_JS_0010
+   * @tc.name      : test_remove_disallowed_usb_devices_0010
+   * @tc.desc      : test usbManager removeDisallowedUsbDevices with super admin and boundary value
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_usb_devices_0010", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+        {baseClass: 255, subClass: 255, protocol: 255, descriptor: usbManager.Descriptor.INTERFACE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices);
+      let ret: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(SELFWANT);
+      expect(ret.length == 0).assertTrue();
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_USB_DEVICES_JS_0011
+   * @tc.name      : test_remove_disallowed_usb_devices_0011
+   * @tc.desc      : test usbManager removeDisallowedUsbDevices with super admin and baseClass out of boundary value
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_usb_devices_0011", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: -1, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 256, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_USB_DEVICES_JS_0012
+   * @tc.name      : test_remove_disallowed_usb_devices_0012
+   * @tc.desc      : test usbManager removeDisallowedUsbDevices with super admin and subClass out of boundary value
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_usb_devices_0012", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: -1, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: 256, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_USB_DEVICES_JS_0013
+   * @tc.name      : test_remove_disallowed_usb_devices_0013
+   * @tc.desc      : test usbManager removeDisallowedUsbDevices with super admin and protocol out of boundary value
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_usb_devices_0013", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: 0, protocol: -1, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 0, subClass: 0, protocol: 256, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.removeDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testGetDisallowedUsbDevices() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_DISALLOWED_USB_DEVICES_JS_0001
+   * @tc.name      : test_get_disallowed_usb_devices_0001
+   * @tc.desc      : test usbManager getDisallowedUsbDevices with inactive admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_disallowed_usb_devices_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.getDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_DISALLOWED_USB_DEVICES_JS_0002
+   * @tc.name      : test_get_disallowed_usb_devices_0002
+   * @tc.desc      : test usbManager getDisallowedUsbDevices with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_disallowed_usb_devices_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.getDisallowedUsbDevices(SELFWANT, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_DISALLOWED_USB_DEVICES_JS_0003
+   * @tc.name      : test_get_disallowed_usb_devices_0003
+   * @tc.desc      : test usbManager getDisallowedUsbDevices with null admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_disallowed_usb_devices_0003", Level.LEVEL2, async (done: Function) => {
+    try {
+      let devices: Array<usbManager.UsbDeviceType> = [
+        {baseClass: 3, subClass: 1, protocol: 2, descriptor: usbManager.Descriptor.INTERFACE},
+        {baseClass: 9, subClass: 0, protocol: 0, descriptor: usbManager.Descriptor.DEVICE},
+      ]
+      usbManager.getDisallowedUsbDevices(null, devices);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
     }
     done();
   });
