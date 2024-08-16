@@ -43,19 +43,19 @@ struct MotionPath7Example {
           this.rotatable = true;
           console.info('button rotate current action state is:' + this.rotatable);
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "ACTION": this.rotatable,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 132,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button emit action state err: " + JSON.stringify(err.message))
+            console.info("button emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           animateTo({ duration: 4000, curve: Curve.Linear }, () => {
             this.toggle = !this.toggle;
@@ -66,20 +66,20 @@ struct MotionPath7Example {
         .key('button1')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "fromX": this.fromX,
                 "toY": this.toY
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 133,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button1 position start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button1 position emit action state err: " + JSON.stringify(err.message))
+            console.info("button1 position emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
     }
@@ -89,21 +89,21 @@ struct MotionPath7Example {
 
   onPageShow() {
     console.info('motionPath page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 134,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangeCallBack)
   }
 
-  private stateChangeCallBack = (eventData) => {
+  private stateChangeCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info('motionPath page state change called:' + JSON.stringify(eventData));
-      if (eventData.data.fromX != null) {
-        this.fromX == parseInt(eventData.data.fromX);
+      if (eventData.data?.fromX != null) {
+        this.fromX == parseInt(eventData.data?.fromX);
       }
-      if (eventData.data.toY != null) {
-        this.toY == parseInt(eventData.data.toY);
+      if (eventData.data?.toY != null) {
+        this.toY == parseInt(eventData.data?.toY);
       }
     }
   }

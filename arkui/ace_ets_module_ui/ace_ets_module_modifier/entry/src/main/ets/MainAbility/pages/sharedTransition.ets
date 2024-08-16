@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +17,6 @@ import events_emitter from '@ohos.events.emitter'
 @Entry
 @Component
 struct SharedTransition7Example {
-  @State opacity: number = 1
   @State active: boolean = false
   @State duration: number = 1000
   @State delay: number = 0
@@ -38,21 +36,21 @@ struct SharedTransition7Example {
             this.active = true
             console.info('SharedTransition current action state is: ' + this.active);
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "duration": this.duration,
                   "delay": this.delay,
                   "type": this.type
                 }
               }
-              var backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 193,
                 priority: events_emitter.EventPriority.LOW
               }
               console.info("SharedTransition start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("SharedTransition emit action state err: " + JSON.stringify(err.message))
+              console.info("SharedTransition emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
 
@@ -64,24 +62,24 @@ struct SharedTransition7Example {
 
   onPageShow() {
     console.info('sharedTransition page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 194,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("sharedTransition page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.duration != null) {
-        this.duration = eventData.data.duration;
+      if (eventData.data?.duration != null) {
+        this.duration = eventData.data?.duration;
       }
-      if (eventData.data.delay != null) {
-        this.delay = eventData.data.delay;
+      if (eventData.data?.delay != null) {
+        this.delay = eventData.data?.delay;
       }
-      if (eventData.data.type != null) {
-        this.type = eventData.data.type;
+      if (eventData.data?.type != null) {
+        this.type = eventData.data?.type;
       }
     }
   }

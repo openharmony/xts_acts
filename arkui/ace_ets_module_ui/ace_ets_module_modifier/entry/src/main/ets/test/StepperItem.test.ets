@@ -54,7 +54,7 @@ export default function stepperItem() {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('nextLabel1');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_StepperItem_0100 is" + JSON.stringify(obj.$attrs.nextLabel));
           expect(obj.$attrs.nextLabel).assertEqual("textLabel");
           done();
@@ -81,7 +81,7 @@ export default function stepperItem() {
       await button.click();
       await Utils.sleep(2000)
       let strJson = getInspectorByKey('nextLabel1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("----ArkUX_Stage_StepperItem_0200 is" + JSON.stringify(obj.$attrs.nextLabel));
       expect(obj.$attrs.nextLabel).assertEqual("textLabel2");
       done();

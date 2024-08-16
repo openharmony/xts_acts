@@ -15,6 +15,7 @@
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../test/Utils';
 import { ScrollModifier } from "@ohos.arkui.modifier";
+import { BusinessError } from '@ohos.base';
 
 class CustomModifier extends ScrollModifier {
 	applyNormalAttribute(instance: ScrollAttribute): void {
@@ -59,7 +60,7 @@ struct ScrollNestedScroll {
 							console.info("scroll NestedScrollOptionsScroll emit action state err: " + JSON.stringify(err));
 						}
 					} catch (error) {
-						console.error(`scroll NestedScrollOptionsScroll ErrorCode: ${error.code},  Message: ${error.message}`);
+						console.error(`scroll NestedScrollOptionsScroll ErrorCode: ${(error as BusinessError)?.code},  Message: ${(error as Error)?.message}`);
 					}
 					console.info("scroll NestedScrollOptionsScroll  onClick end ");
 				})

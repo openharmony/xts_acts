@@ -133,7 +133,7 @@ export default function gaugeJsunit() {
 
       console.info("[testGauge0125] JSON.parse(strJsonNew) testGauge0125JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)
         .$attrs));
-      expect(JSON.parse(strJsonNew).$attrs.colors).assertEqual('[["#FF000001",1],["#FF000002",2]]');
+      expect(JSON.parse(strJsonNew).$attrs.colors).assertEqual('[[[["#FF123456","0.000000"]],1],[[["#FF654321","0.000000"]],2]]');
 
       console.info('[testGauge0125] END');
       done();
@@ -153,7 +153,9 @@ export default function gaugeJsunit() {
 
       console.info("[testGauge0126] JSON.parse(strJsonNew) testGauge0126JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)
         .$attrs));
-      expect(JSON.parse(strJsonNew).$attrs.indicator).assertEqual(undefined);
+      let indicator: ESObject = JSON.parse(strJsonNew).$attrs.indicator;
+      expect(indicator?.icon).assertEqual("abc");
+      expect(indicator?.space).assertEqual("15.00px");
       console.info('[testGauge0126] END');
       done();
     });
@@ -172,8 +174,10 @@ export default function gaugeJsunit() {
 
       console.info("[testGauge0127] JSON.parse(strJsonNew) testGauge0127JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)
         .$attrs));
-
-      expect(JSON.parse(strJsonNew).$attrs.trackShadow).assertEqual(undefined);
+      let trackShadow: ESObject = JSON.parse(strJsonNew).$attrs.trackShadow;
+      expect(Number(trackShadow?.radius)).assertEqual(5);
+      expect(Number(trackShadow?.offsetX)).assertEqual(15);
+      expect(Number(trackShadow?.offsetY)).assertEqual(15);
       console.info('[testGauge0127] END');
       done();
     });

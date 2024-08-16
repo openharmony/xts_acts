@@ -50,7 +50,7 @@ export default function textJsunit() {
     it('textTest_0001', 0, async (done: Function) => {
       console.info('textTest_0001 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0001 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.textAlign).assertEqual("TextAlign.Center")
       console.info('textTest_0001 END');
@@ -68,7 +68,7 @@ export default function textJsunit() {
     it('textTest_0002', 0, async (done: Function) => {
       console.info('textTest_0002 START');
       let strJsonNew = getInspectorByKey('text2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0002 component is: " + JSON.stringify(objNew.$attrs));
       expect(JSON.parse(objNew.$attrs.font)?.size).assertEqual("12.00fp")
       expect(JSON.parse(objNew.$attrs.font)?.weight).assertEqual("FontWeight.Normal")
@@ -87,7 +87,7 @@ export default function textJsunit() {
     it('textTest_0003', 0, async (done: Function) => {
       console.info('textTest_0003 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0003 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.lineHeight).assertEqual("20.00fp")
       console.info('textTest_0003 END');
@@ -105,7 +105,7 @@ export default function textJsunit() {
     it('textTest_0004', 0, async (done: Function) => {
       console.info('textTest_0004 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0004 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontColor).assertEqual("#FF000000")
       console.info('textTest_0004 END');
@@ -123,7 +123,7 @@ export default function textJsunit() {
     it('textTest_0005', 0, async (done: Function) => {
       console.info('textTest_0005 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0005 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.textOverflow).assertEqual("TextOverflow.None")
       console.info('textTest_0005 END');
@@ -141,7 +141,7 @@ export default function textJsunit() {
     it('textTest_0006', 0, async (done: Function) => {
       console.info('textTest_0006 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0006 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontSize).assertEqual("10.00fp")
       console.info('textTest_0006 END');
@@ -159,7 +159,7 @@ export default function textJsunit() {
     it('textTest_0007', 0, async (done: Function) => {
       console.info('textTest_0007 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0007 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.maxLines).assertEqual("10")
       console.info('textTest_0007 END');
@@ -177,7 +177,7 @@ export default function textJsunit() {
     it('textTest_0008', 0, async (done: Function) => {
       console.info('textTest_0008 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0008 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.textShadow.radius).assertEqual("10.000000")
       expect(objNew.$attrs.textShadow.color).assertEqual("#FF0000FF")
@@ -199,7 +199,7 @@ export default function textJsunit() {
     it('textTest_0009', 0, async (done: Function) => {
       console.info('textTest_0009 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0009 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.heightAdaptivePolicy).assertEqual("TextHeightAdaptivePolicy.MAX_LINES_FIRST")
       console.info('textTest_0009 END');
@@ -217,7 +217,7 @@ export default function textJsunit() {
     it('textTest_0010', 0, async (done: Function) => {
       console.info('textTest_0010 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0010 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.wordBreak).assertEqual("normal")
       console.info('textTest_0010 END');
@@ -235,7 +235,7 @@ export default function textJsunit() {
     it('textTest_0011', 0, async (done: Function) => {
       console.info('textTest_0011 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0011 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.textCase).assertEqual("TextCase.Normal")
       console.info('textTest_0011 END');
@@ -253,7 +253,7 @@ export default function textJsunit() {
     it('textTest_0012', 0, async (done: Function) => {
       console.info('textTest_0012 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0012 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.draggable).assertEqual(undefined)
       console.info('textTest_0012 END');
@@ -271,7 +271,7 @@ export default function textJsunit() {
     it('textTest_0013', 0, async (done: Function) => {
       console.info('textTest_0013 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0013 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.textIndent).assertEqual(undefined)
       console.info('textTest_0013 END');
@@ -289,7 +289,7 @@ export default function textJsunit() {
     it('textTest_0014', 0, async (done: Function) => {
       console.info('textTest_0014 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0014 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontStyle).assertEqual("FontStyle.Normal")
       console.info('textTest_0014 END');
@@ -307,7 +307,7 @@ export default function textJsunit() {
     it('textTest_0015', 0, async (done: Function) => {
       console.info('textTest_0015 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0015 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.copyOption).assertEqual("CopyOptions.None")
       console.info('textTest_0015 END');
@@ -325,7 +325,7 @@ export default function textJsunit() {
     it('textTest_0016', 0, async (done: Function) => {
       console.info('textTest_0016 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0016 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontWeight).assertEqual("FontWeight.Lighter")
       console.info('textTest_0016 END');
@@ -343,7 +343,7 @@ export default function textJsunit() {
     it('textTest_0017', 0, async (done: Function) => {
       console.info('textTest_0017 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0017 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontFamily).assertEqual('fontFamily')
       console.info('textTest_0017 END');
@@ -361,7 +361,7 @@ export default function textJsunit() {
     it('textTest_0018', 0, async (done: Function) => {
       console.info('textTest_0018 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0018 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.minFontSize).assertEqual("5.00fp")
       console.info('textTest_0018 END');
@@ -379,7 +379,7 @@ export default function textJsunit() {
     it('textTest_0019', 0, async (done: Function) => {
       console.info('textTest_0019 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0019 component is: " + JSON.stringify(objNew.$attrs));
       expect(JSON.parse(objNew.$attrs.decoration)?.type).assertEqual("TextDecorationType.None")
       expect(JSON.parse(objNew.$attrs.decoration)?.color).assertEqual("#FF000000")
@@ -398,7 +398,7 @@ export default function textJsunit() {
     it('textTest_0020', 0, async (done: Function) => {
       console.info('textTest_0020 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0020 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.maxFontSize).assertEqual("30.00fp")
       console.info('textTest_0020 END');
@@ -416,7 +416,7 @@ export default function textJsunit() {
     it('textTest_0021', 0, async (done: Function) => {
       console.info('textTest_00061 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0021 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.letterSpacing).assertEqual("10.00fp")
       console.info('textTest_0021 END');
@@ -434,7 +434,7 @@ export default function textJsunit() {
     it('textTest_0022', 0, async (done: Function) => {
       console.info('textTest_0022 START');
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0022 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.baselineOffset).assertEqual("100")
       console.info('textTest_0022 END');
@@ -457,7 +457,7 @@ export default function textJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('text1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTest_0011 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.wordBreak).assertEqual("break-all")
       console.info('textTest_0011 END');

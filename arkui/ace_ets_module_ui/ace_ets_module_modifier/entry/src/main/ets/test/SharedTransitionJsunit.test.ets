@@ -55,14 +55,14 @@ export default function sharedTransitionJsunit() {
     it('sharedTransitionTest_0100', 0, async (done: Function) => {
       console.info('sharedTransitionTest_0100 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "duration": 2000,
             "delay": 5,
             "type": SharedTransitionEffectType.Exchange
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 194,
           priority: events_emitter.EventPriority.LOW
         }
@@ -71,18 +71,18 @@ export default function sharedTransitionJsunit() {
       } catch (err) {
         console.log("sharedTransitionTest_0100 change component data error: " + err.message);
       }
-      let callback = (indexEventOne) => {
+      let callback = (indexEventOne: events_emitter.EventData) => {
         console.info("sharedTransitionTest_0100 get state result is: " + JSON.stringify(indexEventOne));
         try {
-          expect(indexEventOne.data.duration).assertEqual(2000);
-          expect(indexEventOne.data.delay).assertEqual(5);
-          expect(indexEventOne.data.type).assertEqual(SharedTransitionEffectType.Exchange);
+          expect(indexEventOne.data?.duration).assertEqual(2000);
+          expect(indexEventOne.data?.delay).assertEqual(5);
+          expect(indexEventOne.data?.type).assertEqual(SharedTransitionEffectType.Exchange);
         } catch (err) {
           console.info("sharedTransitionTest_0100 error: " + err.message);
         }
 
       }
-      let indexEventOne = {
+      let indexEventOne: events_emitter.InnerEvent = {
         eventId: 193,
         priority: events_emitter.EventPriority.LOW
       }

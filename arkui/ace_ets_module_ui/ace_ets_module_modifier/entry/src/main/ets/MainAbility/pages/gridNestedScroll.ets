@@ -15,6 +15,7 @@
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../test/Utils';
 import { GridModifier } from "@ohos.arkui.modifier";
+import { BusinessError } from '@ohos.base';
 
 class CustomModifier extends GridModifier {
   applyNormalAttribute(instance: GridAttribute): void {
@@ -67,7 +68,7 @@ struct GridNestedScroll {
               console.info("Grid NestedScrollOptionsScroll emit action state err: " + JSON.stringify(err));
             }
           } catch (error) {
-            console.error(`Grid NestedScrollOptionsScroll ErrorCode: ${error.code},  Message: ${error.message}`);
+            console.error(`Grid NestedScrollOptionsScroll ErrorCode: ${(error as BusinessError)?.code},  Message: ${(error as Error)?.message}`);
           }
           console.info("Grid NestedScrollOptionsScroll  onClick end ");
         })

@@ -50,7 +50,7 @@ export default function patternLockJsunit() {
     it('patternLockTest_0001', 0, async (done: Function) => {
       console.info('patternLockTest_0001 START');
       let strJsonNew = getInspectorByKey('patternLock');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("patternLockTest_0001 component  is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.sideLength).assertEqual("0.00vp");
@@ -69,7 +69,7 @@ export default function patternLockJsunit() {
     it('patternLockTest_0002', 0, async (done: Function) => {
       console.info('patternLockTest_0002 START');
       let strJsonNew = getInspectorByKey('patternLock');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("patternLockTest_0002 component  is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.circleRadius).assertEqual("10.00vp");
@@ -88,7 +88,7 @@ export default function patternLockJsunit() {
     it('patternLockTest_0003', 0, async (done: Function) => {
       console.info('patternLockTest_0003 START');
       let strJsonNew = getInspectorByKey('patternLock');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("patternLockTest_0003 component  is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.selectedColor).assertEqual("#FF123456");
@@ -107,7 +107,7 @@ export default function patternLockJsunit() {
     it('patternLockTest_0004', 0, async (done: Function) => {
       console.info('patternLockTest_0004 START');
       let strJsonNew = getInspectorByKey('patternLock');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("patternLockTest_0004 component  is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.regularColor).assertEqual("#FF123456");
@@ -126,7 +126,7 @@ export default function patternLockJsunit() {
     it('patternLockTest_0005', 0, async (done: Function) => {
       console.info('patternLockTest_0005 START');
       let strJsonNew = getInspectorByKey('patternLock');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("patternLockTest_0005 component  is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.activeColor).assertEqual("#FF123456");
@@ -145,7 +145,7 @@ export default function patternLockJsunit() {
     it('patternLockTest_0006', 0, async (done: Function) => {
       console.info('patternLockTest_0006 START');
       let strJsonNew = getInspectorByKey('patternLock');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("patternLockTest_0006 component  is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.pathColor).assertEqual("#FF123456");
@@ -164,7 +164,7 @@ export default function patternLockJsunit() {
     it('patternLockTest_0007', 0, async (done: Function) => {
       console.info('patternLockTest_0007 START');
       let strJsonNew = getInspectorByKey('patternLock');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("patternLockTest_0007 component  is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.pathStrokeWidth).assertEqual("12.00vp");
@@ -183,7 +183,7 @@ export default function patternLockJsunit() {
     it('patternLockTest_0008', 0, async (done: Function) => {
       console.info('patternLockTest_0008 START');
       let strJsonNew = getInspectorByKey('patternLock');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("patternLockTest_0008 component  is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.autoReset).assertEqual("true");
@@ -208,7 +208,7 @@ export default function patternLockJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('patternLock');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("patternLockTest_0009 component  is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.sideLength).assertEqual("0.00vp");

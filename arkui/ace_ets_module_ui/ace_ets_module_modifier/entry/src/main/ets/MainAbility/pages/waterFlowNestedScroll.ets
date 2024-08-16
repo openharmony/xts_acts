@@ -15,6 +15,7 @@
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../test/Utils';
 import { WaterFlowModifier } from "@ohos.arkui.modifier";
+import { BusinessError } from '@ohos.base';
 class CustomModifier extends WaterFlowModifier {
   applyNormalAttribute(instance: WaterFlowAttribute): void {
     super.applyNormalAttribute?.(instance);
@@ -67,7 +68,7 @@ struct WaterflowNestedScroll {
               console.info("WaterFlow NestedScrollOptionsScroll emit action state err: " + JSON.stringify(err));
             }
           } catch (error) {
-            console.error(`WaterFlow NestedScrollOptionsScroll ErrorCode: ${error.code},  Message: ${error.message}`);
+            console.error(`WaterFlow NestedScrollOptionsScroll ErrorCode: ${(error as BusinessError)?.code},  Message: ${(error as Error)?.message}`);
           }
           console.info("WaterFlow NestedScrollOptionsScroll  onClick end ");
         })
