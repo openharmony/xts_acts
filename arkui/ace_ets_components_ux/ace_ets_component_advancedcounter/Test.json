@@ -11,7 +11,8 @@
     "kits": [
         {
         "test-file-name": [
-            "ActsAceAdvancedCounterTest.hap"
+            "ActsAceAdvancedCounterTest.hap",
+            "ActsAceAdvancedCounterTestMain.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

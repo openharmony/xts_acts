@@ -4,13 +4,14 @@
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "bundle-name": "com.example.acecalendarpickertest",
-        "module-name": "phone",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": 70000
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceCalendarPickerTest.hap"
+            "ActsAceCalendarPickerTest.hap",
+            "ActsAceCalendarPickerTestMain.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
