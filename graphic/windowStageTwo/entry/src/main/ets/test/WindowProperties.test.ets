@@ -2236,7 +2236,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0500
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7100
      * @tc.name      : testGetDestroyedDialogWindowStatus
      * @tc.desc      : get the window status of current window
      * @tc.size      : MediumTest
@@ -2274,7 +2274,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0600
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7200
      * @tc.name      : testGetSubWindowStatus
      * @tc.desc      : get the sub window status of current window
      * @tc.size      : MediumTest
@@ -2310,7 +2310,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0700
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7300
      * @tc.name      : testGetDestroyedSubWindowStatus
      * @tc.desc      : get the sub window status of current window
      * @tc.size      : MediumTest
@@ -2342,7 +2342,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0800
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7400
      * @tc.name      : testGetSubWindowFocused
      * @tc.desc      : get the sub window focused of current window
      * @tc.size      : MediumTest
@@ -2375,7 +2375,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0900
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7500
      * @tc.name      : testGetDialogWindowFocused
      * @tc.desc      : get the window focused of current window
      * @tc.size      : MediumTest
@@ -2413,7 +2413,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1000
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7600
      * @tc.name      : testGetTopSubWindowFocused
      * @tc.desc      : get the top sub window focused of current window
      * @tc.size      : MediumTest
@@ -2447,7 +2447,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1100
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7700
      * @tc.name      : testGetShiftWindowFocused
      * @tc.desc      : get the main window focused by shift from sub window
      * @tc.size      : MediumTest
@@ -2489,7 +2489,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1200
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7800
      * @tc.name      : testGetDestroyedSubWindowFocused
      * @tc.desc      : get the sub window focused of current window
      * @tc.size      : MediumTest
