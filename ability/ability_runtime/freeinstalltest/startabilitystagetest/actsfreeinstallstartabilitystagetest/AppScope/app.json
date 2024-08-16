@@ -11,9 +11,6 @@
     "keepAlive": true,
     "singleUser": true,
     "minAPIVersion": 9,
-    "targetAPIVersion": 9, 
-    "targetBundleList": [
-      "com.example.qianyiyingyong.hmservice"
-    ]
+    "targetAPIVersion": 9
   }
 }
