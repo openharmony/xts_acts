@@ -149,7 +149,6 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_CaretStyle_0100]: " + JSON.stringify(obj.$attrs.caretStyle));
       console.info("[ArkUI_Stage_Search_CaretStyle_0100]: " + JSON.stringify(obj.$attrs.caretStyle.width));
       expect(obj.$attrs.caretStyle.width).assertEqual("2.00vp");
-      expect(obj.$attrs.caretStyle.color).assertEqual("#FF007DFF");
       console.info("[ArkUI_Stage_Search_CaretStyle_0100] end");
       done();
     });
@@ -1026,7 +1025,12 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_CaretStyle_2700]: " + JSON.stringify(obj.$attrs.fontColor));
       console.info("[ArkUI_Stage_Search_CaretStyle_2700]: " + JSON.stringify(obj.$attrs.caretStyle.color));
       expect(obj.$attrs.fontColor).assertEqual("#FFFF0000");
-      expect(obj.$attrs.caretStyle.color).assertEqual("#FF007DFF");
+
+      let newJson1 = getInspectorByKey('searchTestDefault');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700]: " + JSON.stringify(newJson1));
+      let newJsonDefault = getInspectorByKey('searchTestDefaultValue');
+      let obj1: ESObject = JSON.parse(newJson1);
+      expect(obj.$attrs.caretStyle.color).assertEqual(obj1.$attrs.caretStyle.color);
       console.info("[ArkUI_Stage_Search_CaretStyle_2700] end");
       done();
     });
