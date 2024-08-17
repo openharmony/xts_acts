@@ -34,6 +34,22 @@
         "MainAbility/pages/WaterFlow/waterFlow3",
         "MainAbility/pages/WaterFlow/waterFlow4",
         "MainAbility/pages/WaterFlow/waterFlow5",
-        "MainAbility/pages/WaterFlow/waterFlow6"
+        "MainAbility/pages/WaterFlow/waterFlow6",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperAttribute_1",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperAttribute_2",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperAttribute_3",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperAttribute_4",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperAttribute_5",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperAttribute_6",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperAttribute_7",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperAttribute_8",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperAttribute_9",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperMargin_1",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperMargin_2",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperMargin_3",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperAutoPlay_1",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperAutoPlay_2",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperDisplayCount",
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperLoopFalse"
     ]
 }
