@@ -523,7 +523,7 @@ describe("LightWeightSetTest", function () {
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
       expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "minimumCapacity" must be number. Received value is: qwe`);
+      expect(err.message).assertEqual(`The type of "minimumCapacity" must be small integer. Received value is: qwe`);
     }
   });
               

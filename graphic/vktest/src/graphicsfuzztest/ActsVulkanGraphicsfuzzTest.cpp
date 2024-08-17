@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <stdlib.h>
 #include "ActsVulkanGraphicsfuzzTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -41,7 +42,11 @@ namespace OHOS {
     HWTEST_F(ActsVulkanGraphicsfuzzTest, TestVulkanGraphicsfuzzTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanGraphicsfuzzTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/graphicsfuzz.txt --deqp-log-filename=ActsVulkanGraphicsfuzzTest.qpa");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/graphicsfuzz.txt "
+                "--deqp-log-filename=ActsVulkanGraphicsfuzzTest.qpa");
+        }
         EXPECT_TRUE(true);
         printf("------end ActsVulkanGraphicsfuzzTest------\n");
     }

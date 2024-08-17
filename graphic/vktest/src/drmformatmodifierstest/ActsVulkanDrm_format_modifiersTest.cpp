@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <stdlib.h>
 #include "ActsVulkanDrm_format_modifiersTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -41,7 +42,11 @@ namespace OHOS {
     HWTEST_F(ActsVulkanDrmformatmodifiersTest, TestVulkanDrm_format_modifiersTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanDrmformatmodifiersTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/drm-format-modifiers.txt --deqp-log-filename=ActsVulkanDrmformatmodifiersTest.qpa");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/drm-format-modifiers.txt "
+                "--deqp-log-filename=ActsVulkanDrmformatmodifiersTest.qpa");
+        }
         EXPECT_TRUE(true);
         printf("------end ActsVulkanDrmformatmodifiersTest------\n");
     }

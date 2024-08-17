@@ -201,7 +201,7 @@ export default function MultimodalInputNdkTest() {
       let caseName = 'SUB_MMI_Api_Input_GetKeyPressed_0100';
       console.info(`${caseName} start to test OH_Input_GetKeyPressed`);
       try {
-        let data = input.GetKeyPressed(22);
+        let data = input.GetKeyPressed(2012);
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
         if (data == 1) {
           console.info(`${caseName} get keyPressed success`);
@@ -232,7 +232,7 @@ export default function MultimodalInputNdkTest() {
       let caseName = 'SUB_MMI_Api_Input_GetKeySwitch_0100';
       console.info(`${caseName} start to test OH_Input_GetKeySwitch`);
       try {
-        let data = input.GetKeySwitch(22);
+        let data = input.GetKeySwitch(2012);
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
         if (data == 1) {
           console.info(`${caseName} get keySwitch success`);
@@ -263,7 +263,7 @@ export default function MultimodalInputNdkTest() {
       let caseName = 'SUB_MMI_Api_Input_GetKeyState_0100';
       console.info(`${caseName} start to test OH_Input_GetKeyState`);
       try {
-        let data = input.GetKeyState(22);
+        let data = input.GetKeyState(2012);
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
         if (data == 1) {
           console.info(`${caseName} get keyState success`);
