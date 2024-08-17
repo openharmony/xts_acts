@@ -425,6 +425,76 @@ struct Index {
                 break;
               }
 
+              case "testGetAccessibleGeolocationErrorMess006": {
+                try {
+                  webView.GeolocationPermissions.getAccessibleGeolocation(',htt://')
+                    .then(result => {
+                      console.log('result: ' + result);
+                      Utils.emitEvent(this.no_error, 11826)
+                    }).catch((error: business_error.BusinessError) => {
+                    console.log('error: ' + JSON.stringify(error));
+                    console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                    Utils.emitEvent(String(error.message), 11826)
+                  });
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  Utils.emitEvent(String(e.message), 11826)
+                }
+                break;
+              }
+
+              case "testGetAccessibleGeolocationErrorMess007": {
+                try {
+                  webView.GeolocationPermissions.getAccessibleGeolocation('ww.OpenHarmony.cn')
+                    .then(result => {
+                      Utils.emitEvent(this.no_error, 11828)
+                      console.log('result: ' + result);
+                    }).catch((error: business_error.BusinessError) => {
+                    console.log('error: ' + JSON.stringify(error));
+                    console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                    Utils.emitEvent(String(error.message), 11828)
+                  });
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  Utils.emitEvent(String(e.message), 11828)
+                }
+                break;
+              }
+
+              case "testGetAccessibleGeolocationErrorMess008": {
+                try {
+                  webView.GeolocationPermissions.getAccessibleGeolocation('123')
+                    .then(result => {
+                      console.log('result: ' + result);
+                      Utils.emitEvent(this.no_error, 11830)
+                    }).catch((error: business_error.BusinessError) => {
+                    console.log('error: ' + JSON.stringify(error));
+                    console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                    Utils.emitEvent(String(error.message), 11830)
+                  });
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  Utils.emitEvent(String(e.message), 11830)
+                }
+                break;
+              }
+
+              case "testDeleteGeolocationErrorMess001": {
+                try {
+                  console.log('bxb'+ProtectedResourceType.SENSOR)
+                  webView.GeolocationPermissions.deleteGeolocation('');
+                  Utils.emitEvent(this.no_error, 11832)
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  Utils.emitEvent(e.message, 11832)
+                }
+                break;
+              }
+
             }
           })
       }

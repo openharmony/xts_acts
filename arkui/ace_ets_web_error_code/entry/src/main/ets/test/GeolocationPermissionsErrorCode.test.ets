@@ -368,5 +368,65 @@ export default function geolocationPermissionsErrorCode() {
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
     })
 
+    /*
+    * @tc.number     : SUB_WEB_ERRORCODE_GETACCESSIBLEGEOLOCATION_MESS_0600
+    * @tc.name       : testGetAccessibleGeolocationErrorMess006
+    * @tc.desc       : test accessibleGeolocation error
+    * @tc.size       : MEDIUM
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('testGetAccessibleGeolocationErrorMess006', 0, async (done: Function) => {
+      Utils.emitEvent("testGetAccessibleGeolocationErrorMess006", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testGetAccessibleGeolocationErrorMess006", 'Invalid origin', 11826, done);
+      sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ERRORCODE_GETACCESSIBLEGEOLOCATION_MESS_0700
+    * @tc.name       : testGetAccessibleGeolocationErrorMess007
+    * @tc.desc       : test accessibleGeolocation error
+    * @tc.size       : MEDIUM
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('testGetAccessibleGeolocationErrorMess007', 0, async (done: Function) => {
+      Utils.emitEvent("testGetAccessibleGeolocationErrorMess007", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testGetAccessibleGeolocationErrorMess007", 'Invalid origin', 11828, done);
+      sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ERRORCODE_GETACCESSIBLEGEOLOCATION_MESS_0800
+    * @tc.name       : testGetAccessibleGeolocationErrorMess008
+    * @tc.desc       : test accessibleGeolocation error
+    * @tc.size       : MEDIUM
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('testGetAccessibleGeolocationErrorMess008', 0, async (done: Function) => {
+      Utils.emitEvent("testGetAccessibleGeolocationErrorMess008", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testGetAccessibleGeolocationErrorMess008", 'Invalid origin', 11830, done);
+      sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ERRORCODE_DELETEGEOLOCATIONMESS_0100
+    * @tc.name       : testDeleteGeolocationErrorMess001
+    * @tc.desc       : test deleteGeolocation error
+    * @tc.size       : MEDIUM
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('testDeleteGeolocationErrorMess001', 0, async (done: Function) => {
+      Utils.emitEvent("testDeleteGeolocationErrorMess001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testDeleteGeolocationErrorMess001", 'Invalid origin', 11832, done);
+      sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
+    })
+
   })
 }
