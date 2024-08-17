@@ -244,8 +244,20 @@ static napi_value OHNativeBufferAllocNullptr(napi_env env, napi_callback_info in
     }
     return result;
 }
-static napi_value OHNativeBufferAllocNormal(napi_env env, napi_callback_info info)
+void nativeBufferConfigArrTest(napi_env &env, napi_value &result, std::vector<OH_NativeBuffer_Config> &nativeBufferConfigArr)
 {
+    for (uint32_t index = 0; index < NUMBER_7; index++) {
+        OH_NativeBuffer *ptr = OH_NativeBuffer_Alloc(&nativeBufferConfigArr[index]);
+        napi_value resultIndex = nullptr;
+        if (ptr == NULL) {
+            napi_create_int32(env, FAIL, &resultIndex);
+        } else {
+            napi_create_int32(env, SUCCESS, &result);
+        }
+        napi_set_element(env, result, index, resultIndex);
+    }
+}
+static napi_value OHNativeBufferAllocNormal(napi_env env, napi_callback_info info) {
     napi_value result = nullptr;
     napi_create_array_with_length(env, NUMBER_7, &result);
     std::vector<OH_NativeBuffer_Config> nativeBufferConfigArr = {
@@ -289,17 +301,8 @@ static napi_value OHNativeBufferAllocNormal(napi_env env, napi_callback_info inf
             .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
         }
     };
-    
-    for (uint32_t index = 0; index < NUMBER_7; index++) {
-        OH_NativeBuffer *ptr = OH_NativeBuffer_Alloc(&nativeBufferConfigArr[index]);
-        napi_value resultIndex = nullptr;
-        if (ptr == NULL) {
-            napi_create_int32(env, FAIL, &resultIndex);
-        } else {
-            napi_create_int32(env, SUCCESS, &result);
-        }
-        napi_set_element(env, result, index, resultIndex);
-    }
+
+    nativeBufferConfigArrTest(env, result, nativeBufferConfigArr);
     return result;
 }
 static napi_value OHNativeBufferAllocAbormal(napi_env env, napi_callback_info info)
@@ -312,7 +315,7 @@ static napi_value OHNativeBufferAllocAbormal(napi_env env, napi_callback_info in
             .height = 0x100,
             .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
             .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
-        },{
+        }, {
             .width = 0x100,
             .height = 0x100,
             .format = NATIVEBUFFER_PIXEL_FMT_BGRA_5551,
@@ -327,7 +330,7 @@ static napi_value OHNativeBufferAllocAbormal(napi_env env, napi_callback_info in
             .height = -0x100,
             .format = NATIVEBUFFER_PIXEL_FMT_CLUT4,
             .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
-        },{
+        }, {
             .width = 0x100,
             .height = 0x100,
             .format = NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP,
@@ -814,39 +817,48 @@ static napi_value OHNativeBufferGetMetadataValueFirst(napi_env env, napi_callbac
     napi_create_int32(env, ret, &result);
     return result;
 }
-static napi_value OHNativeBufferSetDynamicMetadataValue(napi_env env, napi_callback_info info)
+void OHNativeBufferSetDynamicMetadataValueTest2(napi_env &env, napi_value &result, std::vector<int32_t> &sizes, OH_NativeBuffer *&nativeBuffer)
 {
-    napi_value result = nullptr;
     napi_value result1 = nullptr;
-    napi_create_array_with_length(env, NUMBER_20, &result);
-    std::vector<int32_t> sizes = {-1, 0, 1, 60, 2999, 3000, 3001, 100000000};
-    OH_NativeBuffer_Config nativeBufferConfig = {
-        .width = 0x100,
-        .height = 0x100,
-        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
-        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
-    };
-    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
     OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_DYNAMIC_METADATA;
     uint8_t metadata = 2;
-    
-    int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_0], &metadata);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_0, result1);
     int32_t size = 1;
     uint8_t *metadata2 = nullptr;
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_5], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_13, result1);
     ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
     napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_1, result1);
+    napi_set_element(env, result, NUMBER_14, result1);
+    if (sizes[NUMBER_5] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, NUMBER_15, result1);
 
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_1], &metadata);
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_6], &metadata);
     napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_2, result1);
+    napi_set_element(env, result, NUMBER_16, result1);
     ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
     napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_3, result1);
+    napi_set_element(env, result, NUMBER_17, result1);
 
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_2], &metadata);
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_7], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_18, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_19, result1);
+}
+void OHNativeBufferSetDynamicMetadataValueTest1(napi_env &env, napi_value &result, std::vector<int32_t> &sizes,
+                                                OH_NativeBuffer *&nativeBuffer) {
+    napi_value result1 = nullptr;
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_DYNAMIC_METADATA;
+    uint8_t metadata = 2;
+    int32_t size = 1;
+    uint8_t *metadata2 = nullptr;
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_2], &metadata);
     napi_create_int32(env, ret, &result1);
     napi_set_element(env, result, NUMBER_4, result1);
     ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
@@ -884,36 +896,46 @@ static napi_value OHNativeBufferSetDynamicMetadataValue(napi_env env, napi_callb
         napi_create_int32(env, SUCCESS, &result1);
     }
     napi_set_element(env, result, NUMBER_12, result1);
+}
 
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_5], &metadata);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_13, result1);
-    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_14, result1);
-    if (sizes[NUMBER_5] != size) {
-        napi_create_int32(env, FAIL, &result1);
-    } else {
-        napi_create_int32(env, SUCCESS, &result1);
-    }
-    napi_set_element(env, result, NUMBER_15, result1);
-
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_6], &metadata);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_16, result1);
-    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_17, result1);
-
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_7], &metadata);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_18, result1);
-    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_19, result1);
+static napi_value OHNativeBufferSetDynamicMetadataValue(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_create_array_with_length(env, NUMBER_20, &result);
+    std::vector<int32_t> sizes = {-1, 0, 1, 60, 2999, 3000, 3001, 100000000};
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_DYNAMIC_METADATA;
+    uint8_t metadata = 2;
     
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_0], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_0, result1);
+    int32_t size = 1;
+    uint8_t *metadata2 = nullptr;
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_1, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_1], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_2, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_3, result1);
+
+    OHNativeBufferSetDynamicMetadataValueTest1(env, result, sizes, nativeBuffer);
+
+    OHNativeBufferSetDynamicMetadataValueTest2(env, result, sizes, nativeBuffer);
+
     return result;
 }
+
 static napi_value OHNativeBufferSetMetadataValueTimes(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -950,6 +972,76 @@ static napi_value OHNativeBufferSetMetadataValueTimes(napi_env env, napi_callbac
 
     return result;
 }
+
+void OHNativeBufferSetStaticMetadataValueTest2(napi_env &env, napi_value &result, std::vector<int32_t> &sizes, OH_NativeBuffer *&nativeBuffer)
+{
+    napi_value result1 = nullptr;
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_STATIC_METADATA;
+    uint8_t metadata = 2;
+    int32_t size = 1;
+    uint8_t *metadata2 = nullptr;
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_5], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_13, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_14, result1);
+    if (sizes[NUMBER_5] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, NUMBER_15, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_6], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_16, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_17, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_7], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_18, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_19, result1);
+}
+
+void OHNativeBufferSetStaticMetadataValueTest1(napi_env &env, napi_value &result, std::vector<int32_t> &sizes, OH_NativeBuffer *&nativeBuffer)
+{
+    napi_value result1 = nullptr;
+    int32_t size = 1;
+    uint8_t *metadata2 = nullptr;
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_STATIC_METADATA;
+    uint8_t metadata = 2;
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_3], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_7, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_8, result1);
+    if (sizes[NUMBER_3] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, NUMBER_9, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_4], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_10, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_11, result1);
+    if (sizes[NUMBER_4] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, NUMBER_12, result1);
+}
+
 static napi_value OHNativeBufferSetStaticMetadataValue(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -965,7 +1057,7 @@ static napi_value OHNativeBufferSetStaticMetadataValue(napi_env env, napi_callba
     OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
     OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_STATIC_METADATA;
     uint8_t metadata = 2;
-    
+
     int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_0], &metadata);
     napi_create_int32(env, ret, &result1);
     napi_set_element(env, result, NUMBER_0, result1);
@@ -983,6 +1075,66 @@ static napi_value OHNativeBufferSetStaticMetadataValue(napi_env env, napi_callba
     napi_set_element(env, result, NUMBER_3, result1);
 
     ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_2], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_4, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_5, result1);
+    if (sizes[NUMBER_2] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, NUMBER_6, result1);
+
+    OHNativeBufferSetStaticMetadataValueTest1(env, result, sizes, nativeBuffer);
+
+    OHNativeBufferSetStaticMetadataValueTest2(env, result, sizes, nativeBuffer);
+
+    return result;
+}
+void OHNativeBufferSetMetadataValueTest2(napi_env &env, napi_value &result, std::vector<int32_t> &sizes,
+                                         OH_NativeBuffer *&nativeBuffer) {
+    napi_value result1 = nullptr;
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_METADATA_TYPE;
+    uint8_t metadata = 2;
+    int32_t size = 1;
+    uint8_t *metadata2 = nullptr;
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_5], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_13, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_14, result1);
+    if (sizes[NUMBER_5] != size) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, NUMBER_15, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_6], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_16, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_17, result1);
+
+    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_7], &metadata);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_18, result1);
+    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, NUMBER_19, result1);
+}
+void OHNativeBufferSetMetadataValueTest1(napi_env &env, napi_value &result, std::vector<int32_t> &sizes,
+                                         OH_NativeBuffer *&nativeBuffer) {
+    napi_value result1 = nullptr;
+    OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_METADATA_TYPE;
+    uint8_t metadata = 2;
+    int32_t size = 1;
+    uint8_t *metadata2 = nullptr;
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_2], &metadata);
     napi_create_int32(env, ret, &result1);
     napi_set_element(env, result, NUMBER_4, result1);
     ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
@@ -1020,35 +1172,6 @@ static napi_value OHNativeBufferSetStaticMetadataValue(napi_env env, napi_callba
         napi_create_int32(env, SUCCESS, &result1);
     }
     napi_set_element(env, result, NUMBER_12, result1);
-
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_5], &metadata);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_13, result1);
-    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_14, result1);
-    if (sizes[NUMBER_5] != size) {
-        napi_create_int32(env, FAIL, &result1);
-    } else {
-        napi_create_int32(env, SUCCESS, &result1);
-    }
-    napi_set_element(env, result, NUMBER_15, result1);
-
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_6], &metadata);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_16, result1);
-    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_17, result1);
-
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_7], &metadata);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_18, result1);
-    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_19, result1);
-
-    return result;
 }
 static napi_value OHNativeBufferSetMetadataValue(napi_env env, napi_callback_info info)
 {
@@ -1082,71 +1205,9 @@ static napi_value OHNativeBufferSetMetadataValue(napi_env env, napi_callback_inf
     napi_create_int32(env, ret, &result1);
     napi_set_element(env, result, NUMBER_3, result1);
 
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_2], &metadata);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_4, result1);
-    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_5, result1);
-    if (sizes[NUMBER_2] != size) {
-        napi_create_int32(env, FAIL, &result1);
-    } else {
-        napi_create_int32(env, SUCCESS, &result1);
-    }
-    napi_set_element(env, result, NUMBER_6, result1);
+    OHNativeBufferSetMetadataValueTest1(env, result, sizes, nativeBuffer);
 
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_3], &metadata);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_7, result1);
-    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_8, result1);
-    if (sizes[NUMBER_3] != size) {
-        napi_create_int32(env, FAIL, &result1);
-    } else {
-        napi_create_int32(env, SUCCESS, &result1);
-    }
-    napi_set_element(env, result, NUMBER_9, result1);
-
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_4], &metadata);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_10, result1);
-    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_11, result1);
-    if (sizes[NUMBER_4] != size) {
-        napi_create_int32(env, FAIL, &result1);
-    } else {
-        napi_create_int32(env, SUCCESS, &result1);
-    }
-    napi_set_element(env, result, NUMBER_12, result1);
-
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_5], &metadata);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_13, result1);
-    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_14, result1);
-    if (sizes[NUMBER_5] != size) {
-        napi_create_int32(env, FAIL, &result1);
-    } else {
-        napi_create_int32(env, SUCCESS, &result1);
-    }
-    napi_set_element(env, result, NUMBER_15, result1);
-
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_6], &metadata);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_16, result1);
-    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_17, result1);
-
-    ret = OH_NativeBuffer_SetMetadataValue(nativeBuffer, metadataKey, sizes[NUMBER_7], &metadata);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_18, result1);
-    ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata2);
-    napi_create_int32(env, ret, &result1);
-    napi_set_element(env, result, NUMBER_19, result1);
+    OHNativeBufferSetMetadataValueTest2(env, result, sizes, nativeBuffer);
 
     return result;
 }
@@ -1260,9 +1321,7 @@ static napi_value OHNativeBufferGetMetadataValueNullptr(napi_env env, napi_callb
     return result;
 }
 
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
-{
+napi_value NativeBufferInit(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
         {"oHNativeBufferAlloc", nullptr, OHNativeBufferAlloc, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeBufferReference", nullptr, OHNativeBufferReference, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1309,6 +1368,16 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"oHNativeBufferMapPlanesNormal", nullptr, OHNativeBufferMapPlanesNormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(napi_property_descriptor), desc);
+    return exports;
+}
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    NativeBufferInit(env, exports);
+    napi_property_descriptor desc[] = {
         {"oHNativeBuffeReferenceNullptr", nullptr, OHNativeBuffeReferenceNullptr, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"oHNativeBuffeUnreferenceNullptr", nullptr, OHNativeBuffeUnreferenceNullptr, nullptr, nullptr, nullptr,
@@ -1351,7 +1420,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"oHNativeBufferGetMetadataValueNullptr", nullptr, OHNativeBufferGetMetadataValueNullptr, nullptr,
          nullptr, nullptr, napi_default, nullptr},
-
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

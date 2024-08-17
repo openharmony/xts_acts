@@ -1019,8 +1019,7 @@ static napi_value OHNativeImageUnsetOnFrameAvailableListenerNormal(napi_env env,
     return result;
 }
 
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
+napi_value NativeImageInit(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         {"oHNativeImageCreate", nullptr, OHNativeImageCreate, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1053,6 +1052,16 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"oHNativeImageDestroy1", nullptr, OHNativeImageDestroy1, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeImageCreateMuch", nullptr, OHNativeImageCreateMuch, nullptr, nullptr, nullptr, napi_default, nullptr},
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(napi_property_descriptor), desc);
+    return exports;
+}
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    NativeImageInit(env, exports);
+    napi_property_descriptor desc[] = {
         {"oHNativeImageAcquireNativeWindowNullptr", nullptr, OHNativeImageAcquireNativeWindowNullptr, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"oHNativeImageAcquireNativeWindowNormal", nullptr, OHNativeImageAcquireNativeWindowNormal, nullptr, nullptr,
