@@ -407,5 +407,50 @@ export default function webViewControllerPart2() {
       sendEventByKey('WebViewControllerPart2Button', 10, '');
     })
 
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_PROTECTEDRESOURCETYPE_0100
+    * @tc.name       : testProtectedResourceType001
+    * @tc.desc       : test ProtectedResourceType
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testProtectedResourceType001', 0, async (done: Function) => {
+      Utils.emitEvent("testProtectedResourceType001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testProtectedResourceType001", 'TYPE_SENSOR', 37020, done);
+      sendEventByKey('WebViewControllerPart2Button', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_NATIVEEMBEDSTATUS_0100
+    * @tc.name       : testNativeEmbedStatus001
+    * @tc.desc       : test NativeEmbedStatus
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testNativeEmbedStatus001', 0, async (done: Function) => {
+      Utils.emitEvent("testNativeEmbedStatus001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testNativeEmbedStatus001", 3, 37021, done);
+      sendEventByKey('WebViewControllerPart2Button', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_NATIVEEMBEDSTATUS_0200
+    * @tc.name       : testNativeEmbedStatus002
+    * @tc.desc       : test NativeEmbedStatus
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testNativeEmbedStatus002', 0, async (done: Function) => {
+      Utils.emitEvent("testNativeEmbedStatus002", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testNativeEmbedStatus002", 4, 37022, done);
+      sendEventByKey('WebViewControllerPart2Button', 10, '');
+    })
+
   })
 }
