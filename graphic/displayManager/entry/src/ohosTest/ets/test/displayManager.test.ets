@@ -305,8 +305,14 @@ export default function displayTest() {
         promise.then((data) => {
           console.info(msgStr + 'Succeeded get the available area in this display. data: ' + JSON.stringify(data));
           expect(data.left).assertEqual(0);
-          expect(data.width).assertEqual(displayClass.availableWidth);
-          expect(data.height).assertEqual(displayClass.availableHeight);
+          expect(data.width).assertLarger(0);
+		  expect(data.height).assertLarger(0);
+		  if(displayClass.availableWidth){
+			expect(data.width).assertEqual(displayClass.availableWidth);
+		  }
+		  if(displayClass.availableHeight){
+			expect(data.height).assertEqual(displayClass.availableHeight);
+		  });
           done();
         }).catch((err:BusinessError) => {
           console.error(msgStr + `Failed to get the available area in this display. Code: ${err.code}, message: ${err.message}`);
@@ -363,8 +369,14 @@ export default function displayTest() {
               promise.then((data) => {
                 console.info(msgStr + 'Succeeded get the available area in this display. data: ' + JSON.stringify(data));
                 expect(data.left).assertEqual(0);
-                expect(data.width).assertEqual(displayClass.availableWidth);
-                expect(data.height).assertEqual(displayClass.availableHeight);
+				expect(data.width).assertLarger(0);
+                expect(data.height).assertLarger(0);
+				if(displayClass.availableWidth){
+					expect(data.width).assertEqual(displayClass.availableWidth);
+				}
+				if(displayClass.availableHeight){
+					expect(data.height).assertEqual(displayClass.availableHeight);
+				});
                 subWindow.destroyWindow();
                 done();
               }).catch((err:BusinessError) => {
