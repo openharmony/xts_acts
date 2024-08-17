@@ -433,6 +433,36 @@ struct webViewControllerPart2 {
               break;
             }
 
+            case "testProtectedResourceType001": {
+              try {
+                console.log('testProtectedResourceType001 :'+ProtectedResourceType.SENSOR)
+                Utils.emitEvent(ProtectedResourceType.SENSOR, 37020);
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+              }
+              break;
+            }
+
+            case "testNativeEmbedStatus001": {
+              try {
+                console.log('testNativeEmbedStatus001 :'+NativeEmbedStatus.ENTER_BFCACHE)
+                Utils.emitEvent(NativeEmbedStatus.ENTER_BFCACHE, 37021);
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+              }
+              break;
+            }
+
+            case "testNativeEmbedStatus002": {
+              try {
+                console.log('testNativeEmbedStatus002 :'+NativeEmbedStatus.LEAVE_BFCACHE)
+                Utils.emitEvent(NativeEmbedStatus.LEAVE_BFCACHE, 37022);
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+              }
+              break;
+            }
+
           }
         })
       }
