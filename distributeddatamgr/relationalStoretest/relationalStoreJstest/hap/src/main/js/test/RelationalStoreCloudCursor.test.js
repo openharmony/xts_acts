@@ -100,7 +100,7 @@ export default function relationalStoreCloudCursor() {
         })
         console.log(TAG + "*************Unit Test Begin*************");
         /**
-         * @tc.name query with cursor
+         * @tc.name testRdbQueryWithCursor0001
          * @tc.number  SUB_DistributedData_RelationalStore_SDK_CloudCursorJsAPITest_0100
          * @tc.desc query with cursor, and get all columns.
          * @tc.size MediumTest
@@ -118,7 +118,7 @@ export default function relationalStoreCloudCursor() {
             }
             let promise = rdbStore.query(predicates);
             await promise.then((resultSet) => {
-                expect(6).assertEqual(resultSet.columnCount);
+                expect(7).assertEqual(resultSet.columnCount);
                 let deletedIndex = resultSet.getColumnIndex(relationalStore.Field.DELETED_FLAG_FIELD);
                 expect(5).assertEqual(deletedIndex);
                 let cursorIndex = resultSet.getColumnIndex(relationalStore.Field.CURSOR_FIELD);
@@ -135,7 +135,7 @@ export default function relationalStoreCloudCursor() {
         })
     
         /**
-         * @tc.name query with cursor
+         * @tc.name testRdbQueryWithCursor0002
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudCursorJsAPITest_0200
          * @tc.desc query with cursor, and specific columns.
          * @tc.size MediumTest
@@ -156,7 +156,7 @@ export default function relationalStoreCloudCursor() {
             }
             let promise = rdbStore.query(predicates, ["data", "uuid"]);
             await promise.then((resultSet) => {
-                expect(4).assertEqual(resultSet.columnCount);
+                expect(5).assertEqual(resultSet.columnCount);
                 expect(true).assertEqual(resultSet.goToFirstRow());
                 expect(true).assertEqual(resultSet.goToNextRow());
                 let cursor = resultSet.getLong(resultSet.getColumnIndex(relationalStore.Field.CURSOR_FIELD));
@@ -173,7 +173,7 @@ export default function relationalStoreCloudCursor() {
         })
     
         /**
-         * @tc.name query with cursor
+         * @tc.name testRdbQueryWithCursor0003
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudCursorJsAPITest_0300
          * @tc.desc update data, and query with cursor.
          * @tc.size MediumTest
@@ -220,7 +220,7 @@ export default function relationalStoreCloudCursor() {
         })
     
         /**
-         * @tc.name query with cursor
+         * @tc.name testRdbQueryWithCursor0004
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudCursorJsAPITest_0400
          * @tc.desc delete data, and query with cursor.
          * @tc.size MediumTest
@@ -257,7 +257,7 @@ export default function relationalStoreCloudCursor() {
         })
     
         /**
-         * @tc.name query with cursor
+         * @tc.name testRdbQueryWithCursor0005
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudCursorJsAPITest_0500
          * @tc.desc query with cursor and origin.
          * @tc.size MediumTest
@@ -295,7 +295,7 @@ export default function relationalStoreCloudCursor() {
             console.log(TAG + "************* testRdbQueryWithCursor0005 end *************");
         })
         /**
-         * @tc.name clean retain data with specified cursor.
+         * @tc.name testRdbCleanDirtyData0001
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudCursorJsAPITest_0600
          * @tc.desc clean retain data with specified cursor promise.
          * @tc.size MediumTest
@@ -323,7 +323,7 @@ export default function relationalStoreCloudCursor() {
         })
     
         /**
-         * @tc.name clean retain data
+         * @tc.name testRdbCleanDirtyData0002
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudCursorJsAPITest_0700
          * @tc.desc clean retain data promise.
          * @tc.size MediumTest
@@ -350,7 +350,7 @@ export default function relationalStoreCloudCursor() {
         })
 
         /**
-         * @tc.name clean retain data
+         * @tc.name testRdbCleanDirtyData0003
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudCursorJsAPITest_0800
          * @tc.desc clean retain data callback.
          * @tc.size MediumTest
@@ -377,7 +377,7 @@ export default function relationalStoreCloudCursor() {
         })
 
         /**
-         * @tc.name clean retain data with specified cursor.
+         * @tc.name testRdbCleanDirtyData0004
          * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudCursorJsAPITest_0900
          * @tc.desc clean retain data with specified cursor callback.
          * @tc.size MediumTest
@@ -404,7 +404,7 @@ export default function relationalStoreCloudCursor() {
             console.log(TAG + "************* testRdbCleanDirtyData0004 end *************");
         })
     /**
-     * @tc.name query with cursor
+     * @tc.name testRdbQueryWithCursor0006
      * @tc.number  SUB_DistributedData_RelationalStore_SDK_CloudCursorJsAPITest_1000
      * @tc.desc query with cursor and get all columns_OWNER_FIELD
      * @tc.size MediumTest
@@ -423,7 +423,7 @@ export default function relationalStoreCloudCursor() {
         let promise = rdbStore.query(predicates);
         await promise.then((resultSet) => {
           console.log(TAG+"resultSet.columnCount"+resultSet.columnCount)
-          expect(6).assertEqual(resultSet.columnCount);
+          expect(7).assertEqual(resultSet.columnCount);
           let ownerIndex = resultSet.getColumnIndex(relationalStore.Field.OWNER_FIELD);
           console.log(TAG+"ownerIndex"+ownerIndex)
           expect(-1).assertEqual(ownerIndex);
@@ -441,7 +441,7 @@ export default function relationalStoreCloudCursor() {
         console.log(TAG + "************* testRdbQueryWithCursor0006 end *************");
       })
       /**
-       * @tc.name query with cursor
+       * @tc.name testRdbQueryWithCursor0007
        * @tc.number  SUB_DistributedData_RelationalStore_SDK_CloudCursorJsAPITest_1100
        * @tc.desc query with cursor and get all columns_PRIVILEGE_FIELD
        * @tc.size MediumTest
@@ -460,7 +460,7 @@ export default function relationalStoreCloudCursor() {
         let promise = rdbStore.query(predicates);
         await promise.then((resultSet) => {
           console.log(TAG+"resultSet.columnCount"+resultSet.columnCount)
-          expect(6).assertEqual(resultSet.columnCount);
+          expect(7).assertEqual(resultSet.columnCount);
           let privilegeIndex = resultSet.getColumnIndex(relationalStore.Field.PRIVILEGE_FIELD);
           console.log(TAG+"ownerIndex"+privilegeIndex)
           expect(-1).assertEqual(privilegeIndex);
@@ -478,7 +478,7 @@ export default function relationalStoreCloudCursor() {
         console.log(TAG + "************* testRdbQueryWithCursor0007 end *************");
       })
       /**
-       * @tc.name query with cursor
+       * @tc.name testRdbQueryWithCursor0008
        * @tc.number  SUB_DistributedData_RelationalStore_SDK_CloudCursorJsAPITest_1200
        * @tc.desc query with cursor and get all columns_SHARING_RESOURCE_FIELD
        * @tc.size MediumTest
@@ -497,7 +497,7 @@ export default function relationalStoreCloudCursor() {
         let promise = rdbStore.query(predicates);
         await promise.then((resultSet) => {
           console.log(TAG+"resultSet.columnCount"+resultSet.columnCount)
-          expect(6).assertEqual(resultSet.columnCount);
+          expect(7).assertEqual(resultSet.columnCount);
           let shareIndex = resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD);
           console.log(TAG+"shareIndex"+shareIndex)
           expect(-1).assertEqual(shareIndex);
