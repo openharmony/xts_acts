@@ -90,23 +90,23 @@ export default function listItemGroup_Space_Percentage() {
       let ListItem22: RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_22');
       let ListItem23: RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_23');
 
-	  expect(Math.abs(Math.round(ListItem11.right - ListItem11.left) - Math.round(vp2px(300))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(ListItem11.bottom - ListItem11.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem11.right - ListItem11.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem11.bottom - ListItem11.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
       console.log('assert the spacing between ListItem11 and ListItem12')
-	  expect(Math.abs(Math.round(ListItem12.top - ListItem11.bottom) - Math.round(vp2px(52))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(ListItem12.right - ListItem12.left) - Math.round(vp2px(300))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(ListItem12.bottom - ListItem12.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem12.top - ListItem11.bottom) - Math.round(vp2px(52))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem12.right - ListItem12.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem12.bottom - ListItem12.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
       console.log('assert the spacing between ListItem12 and ListItem13')
       expect(Math.abs(Math.round(ListItem13.top - ListItem12.bottom) - Math.round(vp2px(52))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(ListItem13.right - ListItem13.left) - Math.round(vp2px(300))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(ListItem13.bottom - ListItem13.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem13.right - ListItem13.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem13.bottom - ListItem13.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
       console.log('assert the spacing between ListItemGroup_1 and ListItemGroup_2')
       expect(Math.abs(Math.round(ListItemGroup_2.top - ListItemGroup_1.bottom) - Math.round(vp2px(52))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(ListItem21.right - ListItem21.left) - Math.round(vp2px(300))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(ListItem21.bottom - ListItem21.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem21.right - ListItem21.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem21.bottom - ListItem21.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_listItemGroup_Space_Percentage_0100] END');
       done();
