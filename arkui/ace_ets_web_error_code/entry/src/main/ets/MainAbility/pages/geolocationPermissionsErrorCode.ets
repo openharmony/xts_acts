@@ -495,6 +495,90 @@ struct Index {
                 break;
               }
 
+              case "testDeleteGeolocationErrorMess002": {
+                try {
+                  webView.GeolocationPermissions.deleteGeolocation(',htt://');
+                  Utils.emitEvent(this.no_error, 11834)
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  Utils.emitEvent(e.message, 11834)
+                }
+                break;
+              }
+
+              case "testDeleteGeolocationErrorMess003": {
+                try {
+                  webView.GeolocationPermissions.deleteGeolocation('ww.OpenHarmony.cn');
+                  Utils.emitEvent(this.no_error, 11836)
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  Utils.emitEvent(e.message, 11836)
+                }
+                break;
+              }
+
+              case "testDeleteGeolocationErrorMess004": {
+                try {
+                  webView.GeolocationPermissions.deleteGeolocation('123');
+                  Utils.emitEvent(this.no_error, 11838)
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  Utils.emitEvent(e.message, 11838)
+                }
+                break;
+              }
+
+              case "testAllowGeolocationErrorMess001": {
+                try {
+                  webView.GeolocationPermissions.allowGeolocation('');
+                  Utils.emitEvent(this.no_error, 11840)
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  Utils.emitEvent(e.message, 11840)
+                }
+                break;
+              }
+
+              case "testAllowGeolocationErrorMess002": {
+                try {
+                  webView.GeolocationPermissions.allowGeolocation(',htt://');
+                  Utils.emitEvent(this.no_error, 11842)
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  Utils.emitEvent(e.message, 11842)
+                }
+                break;
+              }
+
+              case "testAllowGeolocationErrorMess003": {
+                try {
+                  webView.GeolocationPermissions.allowGeolocation('ww.OpenHarmony.cn');
+                  Utils.emitEvent(this.no_error, 11844)
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  Utils.emitEvent(e.message, 11844)
+                }
+                break;
+              }
+
+              case "testAllowGeolocationErrorMess004": {
+                try {
+                  webView.GeolocationPermissions.allowGeolocation('123');
+                  Utils.emitEvent(this.no_error, 11846)
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  Utils.emitEvent(e.message, 11846)
+                }
+                break;
+              }
+
             }
           })
       }
