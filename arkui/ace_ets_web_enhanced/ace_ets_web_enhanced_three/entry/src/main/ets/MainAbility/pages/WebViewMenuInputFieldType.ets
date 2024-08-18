@@ -41,6 +41,7 @@ struct WebViewMenuInputFieldType {
   @State inputValue: string = ""
   @State curKeyboardType: EKeyboardType = EKeyboardType.NUMERIC;
   @State userAgentPC: string = "";
+  @State i: number = 0;
   webKeyboardController: WebKeyboardController = new WebKeyboardController()
   inputAttributeMap: Map<string, number> = new Map([
       ['UNSPECIFIED', inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED],
@@ -376,6 +377,27 @@ struct WebViewMenuInputFieldType {
               await Utils.sleep(2000);
               break;
             }
+            case "onInterceptKeyboardAttach1000": {
+              this.ResultKey = 10
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(true, 2893)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach.html")
+              }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(10000);
+              Utils.emitEvent(this.i, 2882)
+              break;
+            }
           }
         })
       }
@@ -404,6 +426,10 @@ struct WebViewMenuInputFieldType {
           return true
         })
         .onInterceptKeyboardAttach((KeyboardCallbackInfo) => {
+        if(this.ResultKey == 10){
+          this.i=this.i + 1;
+          console.log('count'+this.i)
+        }
         let option: WebKeyboardOptions = {
           useSystemKeyboard: true,
         };
