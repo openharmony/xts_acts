@@ -197,8 +197,8 @@ describe('display_test', function () {
         console.info('displayTestGetDisplayByIdSyncTest1 begin');
         try {
             var displayId = display.getDefaultDisplaySync().id;
-            var dsp = display.GetDisplayByIdSync(displayId);
-            console.info('displayTest GetDisplayByIdSyncTest1: ' + JSON.stringify(dsp));
+            var dsp = display.getDisplayByIdSync(displayId);
+            console.info('displayTest getDisplayByIdSyncTest1: ' + JSON.stringify(dsp));
             expect(dsp.id != null).assertTrue();
             expect(dsp.refreshRate != null).assertTrue();
             expect(dsp.width != null).assertTrue();
@@ -214,7 +214,7 @@ describe('display_test', function () {
             expect(dsp.yDPI != null).assertTrue();
             done();
         } catch (err) {
-            console.error('getDefaultDisplaySyncTest1 error ' + JSON.stringify(err));
+            console.error('getDisplayByIdSyncTest1 error ' + JSON.stringify(err));
             expect.assertFail();
             done();
         }
