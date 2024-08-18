@@ -253,5 +253,20 @@ export default function webViewMenuInputFieldType() {
       Utils.registerEvent("onInterceptKeyboardAttach0900", 0, 2881, done);
       sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
     })
+
+    /*
+    * @tc.number     : SUB_WEB_ONINTERCEPTKEYBOARDATTACH_1000
+    * @tc.name       : testOnInterceptKeyboardAttach1000
+    * @tc.desc       : test onInterceptKeyboardAttach
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('onInterceptKeyboardAttach1000', 0, async (done: Function) => {
+      Utils.emitEvent("onInterceptKeyboardAttach1000", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("onInterceptKeyboardAttach1000", 1, 2882, done);
+      sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
+    })
   })
 }
