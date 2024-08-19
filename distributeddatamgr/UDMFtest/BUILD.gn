@@ -16,9 +16,9 @@ import("//test/xts/tools/build/suite.gni")
 group("UDMFtest") {
   testonly = true
   if (is_standard_system) {
-    deps = [ 
+    deps = [
+      "UDMFnapitest:ActsUdmfNapiEtsTest",
       "UDMFtest:UDMF_ets_test",
-      "UDMFnapitest:ActsUdmfNapiEtsTest"
-       ]
+    ]
   }
 }
