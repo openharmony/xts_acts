@@ -259,14 +259,6 @@ export default function drawingTsPath2Test() {
       } catch (e) {
         console.info(msg + 'reset successes');
       }
-
-      // try {
-      //   path.addArc({}, 90, 180);
-      //   console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-      //   expect().assertFail()
-      // } catch (e) {
-      //   console.info(msg + 'reset successes');
-      // }
     })
 
 
@@ -584,17 +576,6 @@ export default function drawingTsPath2Test() {
         expect(e.code).assertEqual(401);
       }
 
-      // try {
-      //   path.addOval({
-      //     left: 10, undefined: 400, top: 100, bottom: 300
-      //   }, 5, null);
-      //   console.info(msg + `reset error`);
-      //   expect().assertFail()
-      // } catch (e) {
-      //   console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-      //   expect(e.code).assertEqual(401);
-      // }
-
       try {
         path.addOval({
           left: null, right: 400, top: 100, bottom: 300
@@ -682,14 +663,6 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
-
-      // try {
-      //   path.addOval({}, 5);
-      //   console.info(msg + `reset error`);
-      //   expect().assertFail()
-      // } catch (e) {
-      //   console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-      // }
     })
 
 
@@ -943,15 +916,6 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
-
-      // try {
-      //   path.addRect({}, 5);
-      //   console.info(msg + `reset error`);
-      //   expect().assertFail()
-      // } catch (e) {
-      //   console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-      //   expect(e.code).assertEqual(401);
-      // }
     })
 
 
