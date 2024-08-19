@@ -74,12 +74,14 @@ struct progressSecTest {
   @State progress_eclipse_enableSmoothEffect_boolean: boolean = false
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("progress page state change called:" + JSON.stringify(eventData));
-    console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: callback " + eventData.data?.progress_capsule_borderWidth_resource);
+    console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: callback " 
+      + eventData.data?.progress_capsule_borderWidth_resource);
 
     this.progress_capsule_borderWidth_number = eventData.data?.progress_capsule_borderWidth_number;
     this.progress_capsule_borderWidth_string = eventData.data?.progress_capsule_borderWidth_string;
     this.progress_capsule_borderWidth_resource = eventData.data?.progress_capsule_borderWidth_resource;
-    console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: callback2 " + this.progress_capsule_borderWidth_resource);
+    console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: callback2 " 
+      + this.progress_capsule_borderWidth_resource);
     this.progress_capsule_borderColor_number = eventData.data?.progress_capsule_borderColor_number;
     this.progress_capsule_borderColor_string = eventData.data?.progress_capsule_borderColor_string;
     this.progress_capsule_borderColor_color = eventData.data?.progress_capsule_borderColor_color;
@@ -97,7 +99,8 @@ struct progressSecTest {
     this.progress_capsule_fontColor_resource = eventData.data?.progress_capsule_fontColor_resource;
     this.progress_capsule_content_string = eventData.data?.progress_capsule_content_string;
     this.progress_capsule_enableScanEffect_boolean = eventData.data?.progress_capsule_enableScanEffect_boolean;
-    this.progress_capsule_showDefaultPercentage_boolean = eventData.data?.progress_capsule_showDefaultPercentage_boolean;
+    this.progress_capsule_showDefaultPercentage_boolean = 
+      eventData.data?.progress_capsule_showDefaultPercentage_boolean;
     this.progress_capsule_enableSmoothEffect_boolean = eventData.data?.progress_capsule_enableSmoothEffect_boolean;
 
     this.progress_ring_strokeWidth_number = eventData.data?.progress_ring_strokeWidth_number;
