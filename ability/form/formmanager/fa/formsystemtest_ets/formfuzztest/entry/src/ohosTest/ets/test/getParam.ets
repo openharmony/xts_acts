@@ -17,38 +17,42 @@ export const REPEAT_COUNT = 2;
 
 export const DATA_TYPE_LIST = ['ARRAY', 'NUMBER', 'BOOLEAN', 'FUNCTION', 'STRING', 'OBJECT', 'NULL', 'UNDEFINED'];
 
-var RANDOM_BEGIN_POSITION = 0;
-var RANDOM_BEGIN_POSITION_A = 2;
-var STRING_RANDOM_LENGTH = 2064;
-var BOOLEAN_RANDOM_LENGTH = 2;
-var ARRAY_RANDOM_LENGTH = 10;
-var ARRAY_RANDOM_TYPE_LENGTH = 3;
-var OBJECT_RANDOM_LENGTH = 2;
-var FUNCTION_RANDOM_LENGTH = 2;
+interface ObjectType { 
+  id?: string 
+}
+
+let RANDOM_BEGIN_POSITION = 0;
+let RANDOM_BEGIN_POSITION_A = 2;
+let STRING_RANDOM_LENGTH = 2064;
+let BOOLEAN_RANDOM_LENGTH = 2;
+let ARRAY_RANDOM_LENGTH = 10;
+let ARRAY_RANDOM_TYPE_LENGTH = 3;
+let OBJECT_RANDOM_LENGTH = 2;
+let FUNCTION_RANDOM_LENGTH = 2;
 
 //string ascii
-var STRING_RANDOM_LENGTH_A = 48;
-var STRING_RANDOM_LENGTH_B = 58;
-var STRING_RANDOM_LENGTH_C = 65;
-var STRING_RANDOM_LENGTH_D = 91;
-var STRING_RANDOM_LENGTH_E = 97;
-var STRING_RANDOM_LENGTH_F = 122;
+let STRING_RANDOM_LENGTH_A = 48;
+let STRING_RANDOM_LENGTH_B = 58;
+let STRING_RANDOM_LENGTH_C = 65;
+let STRING_RANDOM_LENGTH_D = 91;
+let STRING_RANDOM_LENGTH_E = 97;
+let STRING_RANDOM_LENGTH_F = 122;
 
 // Return integer random, the range is: [iStart, iEnd)
-function getIntegerRandom(iStart, iEnd) {
-  var decimal = iStart + (iEnd - iStart) * Math.random();
+function getIntegerRandom(iStart:number, iEnd:number) {
+  let decimal:number = iStart + (iEnd - iStart) * Math.random();
   return Math.floor(decimal);
 }
 
 // return string random, the string length is: [0, 2064)
-const stringTest = function () {
+function stringTest():string {
   // string
-  var res = '';
+  let res = '';
 
   // string length
-  var iNumber = getIntegerRandom(RANDOM_BEGIN_POSITION, STRING_RANDOM_LENGTH);
-  for (var iAsciiToChar = RANDOM_BEGIN_POSITION; iAsciiToChar < iNumber; iAsciiToChar++) {
-    var iNumberString = getIntegerRandom(RANDOM_BEGIN_POSITION, RANDOM_BEGIN_POSITION_A);
+  let iNumber = getIntegerRandom(RANDOM_BEGIN_POSITION, STRING_RANDOM_LENGTH);
+  for (let iAsciiToChar = RANDOM_BEGIN_POSITION; iAsciiToChar < iNumber; iAsciiToChar++) {
+    let iNumberString = getIntegerRandom(RANDOM_BEGIN_POSITION, RANDOM_BEGIN_POSITION_A);
 
     switch (iNumberString) {
       case 0:
@@ -66,7 +70,7 @@ const stringTest = function () {
         break;
     }
     // from ascii to char
-    var asciiToChar = String.fromCharCode(iNumber);
+    let asciiToChar = String.fromCharCode(iNumber);
     res += asciiToChar;
   }
   console.log('The stringTest of this fuzzTest random:' + res);
@@ -74,37 +78,37 @@ const stringTest = function () {
 };
 
 // return number random, the number length is: [Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]
-const numberTest = function () {
+function numberTest():number {
   const res = getIntegerRandom(Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER + 1);
   console.log('The numberTest of this fuzzTest random:' + res);
   return res;
 };
 
 // return boolean random, the boolean value is: 0->(false), 1->(true)
-const booleanTest = function () {
+function booleanTest():boolean {
   console.log('The booleanTest of this fuzzTest random');
   return Boolean(getIntegerRandom(RANDOM_BEGIN_POSITION, BOOLEAN_RANDOM_LENGTH));
 };
 
 // null
-const nullTest = function () {
+function nullTest() {
   console.log('The nullTest of this fuzzTest random');
   return null;
 };
 
 // undefined
-const undefinedTest = function () {
+function undefinedTest() {
   console.log('The undefinedTest of this fuzzTest random');
   return undefined;
 };
 
 // return array random, the array value is: string,number,bool
-const arrayTest = function () {
-  var arrValue = [];
+function arrayTest(): string[] | number[] | boolean[] {
+  let arrValue :string[] | number[] | boolean[] = [];
 
   // array length
-  var iNumber = getIntegerRandom(RANDOM_BEGIN_POSITION, ARRAY_RANDOM_LENGTH);
-  for (var iArrNumber = 0; iArrNumber < iNumber; iArrNumber++) {
+  let iNumber = getIntegerRandom(RANDOM_BEGIN_POSITION, ARRAY_RANDOM_LENGTH);
+  for (let iArrNumber = 0; iArrNumber < iNumber; iArrNumber++) {
     // string,number,bool
     iNumber = getIntegerRandom(RANDOM_BEGIN_POSITION, ARRAY_RANDOM_TYPE_LENGTH);
     switch (iNumber) {
@@ -126,19 +130,21 @@ const arrayTest = function () {
 };
 
 // return objectTest random, the objectTest value is: null, not null
-const objectTest = function () {
-  var objectA = {};
-  var objectb = { id: 'objectTest' };
-  var objectB = Object.create(objectb);
+function objectTest() {
+  let objectA : ObjectType = {};
+  let objectb : ObjectType = { id: 'objectTest' };
+  let objectB: ObjectType = {
+    id: objectb.id
+  };
 
   console.log('The objectTest of this fuzzTest random');
   return getIntegerRandom(RANDOM_BEGIN_POSITION, OBJECT_RANDOM_LENGTH) ? objectA : objectB;
 };
 
 // return functionTest random, the functionTest value is: null, not null
-const functionTest = function () {
-  var functionA = {};
-  var functionB = { id: 'functionTest' };
+function functionTest():ObjectType {
+  let functionA : ObjectType = {};
+  let functionB : ObjectType= { id: 'functionTest' };
 
   console.log('The functionTest of this fuzzTest random');
   return getIntegerRandom(RANDOM_BEGIN_POSITION, FUNCTION_RANDOM_LENGTH) ? functionA : functionB;
@@ -148,29 +154,37 @@ const functionTest = function () {
 const getFuzzData = (datatype: string) => {
   switch (datatype) {
     case 'ARRAY':
-      let array1 = arrayTest();
-      let array2 = array1
+      let array1:string[] | number[] | boolean[] = arrayTest();
+      let array2:string[] | number[] | boolean[] = array1
       if (isNaN(Number(array1.join("")))) {
         return array2;
       } else {
         getFuzzData(DATA_TYPE_LIST[0]);
       }
     case 'BOOLEAN':
-      return booleanTest();
+      let res1 = booleanTest()
+      return res1;
     case 'FUNCTION':
-      return functionTest();
+      let res2 = functionTest()
+      return res2;
     case 'NULL':
-      return nullTest();
+      let res3 = nullTest()
+      return res3;
     case 'NUMBER':
-      return numberTest();
+      let res4 = numberTest()
+      return res4;
     case 'OBJECT':
-      return objectTest();
+      let res5 = objectTest()
+      return res5;
     case 'STRING':
-      return stringTest();
+      let res6 = stringTest()
+      return res6;
     case 'UNDEFINED':
-      return undefinedTest();
+      let res7 = undefinedTest()
+      return res7;
     default:
-      return stringTest();
+      let res = stringTest()
+      return res;
   }
 };
 

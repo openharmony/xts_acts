@@ -17,7 +17,7 @@ import formProvider from '@ohos.application.formProvider';
 import { describe, expect, it } from '@ohos/hypium'
 import { DATA_TYPE_LIST, getFuzzData } from './getParam.ets';
 
-export const setFormNextRefreshTimeFuzzTest = (describeName, filterParameter) => {
+export const setFormNextRefreshTimeFuzzTest = (describeName:string, filterParameter:number) => {
   const ERR_COMMON_CODE = 1;
   const ERR_COMMON = `internal error`;
   const ERR_ADD_INVALID_PARAM_CODE = 7;
@@ -28,7 +28,7 @@ export const setFormNextRefreshTimeFuzzTest = (describeName, filterParameter) =>
   describe(`${describeName}`, () => {
     const callbackName = `FMS_fuzzTest_setnexttime`;
     const promiseName = `FMS_fuzzTest_setnexttime`;
-    const length = DATA_TYPE_LIST.length;
+    const length:number = DATA_TYPE_LIST.length;
 
     for (let i = 0; i < length; ++i) {
       const tcNumber = `0${(i + 1) * 100}`;
@@ -37,9 +37,9 @@ export const setFormNextRefreshTimeFuzzTest = (describeName, filterParameter) =>
        * @tc.number FMS_fuzzTest_setnexttime_0100 ~ FMS_fuzzTest_setnexttime_0800
        * @tc.desc Check whether the setFormNextRefreshTime interface can pass the fuzzy test (by AsyncCallback)
        */
-      it(`${callbackName}_${tcNumber}`, filterParameter, async (done) => {
-        const dataType = DATA_TYPE_LIST[i];
-        const formId = getFuzzData(dataType);
+      it(`${callbackName}_${tcNumber}`, filterParameter, async (done:Function) => {
+        const dataType:string = DATA_TYPE_LIST[i];
+        const formId:string = getFuzzData(dataType) as string;
         const nextTime = 5;
         console.log(`${callbackName} ${tcNumber} formId typeof: ${typeof formId}`);
         console.log(`${callbackName} ${tcNumber} nextTime typeof: ${typeof nextTime}`);
@@ -60,16 +60,16 @@ export const setFormNextRefreshTimeFuzzTest = (describeName, filterParameter) =>
     }
 
     for (let i = 0; i < length; ++i) {
-      let tcNumber: any = (i + 1 + length) * 100;
+      let tcNumber: string | number = (i + 1 + length) * 100;
       tcNumber = tcNumber < 1000 ? `0${tcNumber}` : tcNumber;
       /**
        * @tc.name fuzzTest
        * @tc.number FMS_fuzzTest_setnexttime_0900 ~ FMS_fuzzTest_setnexttime_1600
        * @tc.desc Check whether the setFormNextRefreshTime interface can pass the fuzzy test (by Promise)
        */
-      it(`${promiseName}_${tcNumber}`, filterParameter, async (done) => {
-        const dataType = DATA_TYPE_LIST[i];
-        const formId = getFuzzData(dataType);
+      it(`${promiseName}_${tcNumber}`, filterParameter, async (done:Function) => {
+        const dataType:string = DATA_TYPE_LIST[i];
+        const formId:string = getFuzzData(dataType) as string;
         const nextTime = 5;
         console.log(`${promiseName} ${tcNumber} formId typeof: ${typeof formId}`);
         console.log(`${promiseName} ${tcNumber} nextTime typeof: ${typeof nextTime}`);
@@ -88,16 +88,16 @@ export const setFormNextRefreshTimeFuzzTest = (describeName, filterParameter) =>
     }
 
     for (let i = 0; i < length; ++i) {
-      const tcNumber: any = (i + 1 + length * 2) * 100;
+      const tcNumber: number = (i + 1 + length * 2) * 100;
       /**
       * @tc.name fuzzTest
       * @tc.number FMS_fuzzTest_setnexttime_1700 ~ FMS_fuzzTest_setnexttime_2400
       * @tc.desc Check whether the setFormNextRefreshTime interface can pass the fuzzy test (by AsyncCallback)
       */
-      it(`${callbackName}_${tcNumber}`, filterParameter, async (done) => {
-        const dataType = DATA_TYPE_LIST[i];
-        const formId = `${tcNumber}`;
-        const nextTime = getFuzzData(dataType);
+      it(`${callbackName}_${tcNumber}`, filterParameter, async (done:Function) => {
+        const dataType:string = DATA_TYPE_LIST[i];
+        const formId:string = `${tcNumber}`;
+        const nextTime:number = getFuzzData(dataType) as number;
         console.log(`${callbackName} ${tcNumber} formId typeof: ${typeof formId}`);
         console.log(`${callbackName} ${tcNumber} nextTime typeof: ${typeof nextTime}`);
         try {
@@ -128,16 +128,16 @@ export const setFormNextRefreshTimeFuzzTest = (describeName, filterParameter) =>
     }
 
     for (let i = 0; i < length; ++i) {
-      const tcNumber: any = (i + 1 + length * 3) * 100;
+      const tcNumber: number = (i + 1 + length * 3) * 100;
       /**
        * @tc.name fuzzTest
        * @tc.number FMS_fuzzTest_setnexttime_2500 ~ FMS_fuzzTest_setnexttime_3200
        * @tc.desc Check whether the setFormNextRefreshTime interface can pass the fuzzy test (by Promise)
        */
-      it(`${promiseName}_${tcNumber}`, filterParameter, async (done) => {
-        const dataType = DATA_TYPE_LIST[i];
-        const formId = `${tcNumber}`;
-        const nextTime = getFuzzData(dataType);
+      it(`${promiseName}_${tcNumber}`, filterParameter, async (done:Function) => {
+        const dataType:string = DATA_TYPE_LIST[i];
+        const formId:string = `${tcNumber}`;
+        const nextTime:number = getFuzzData(dataType) as number;
         console.log(`${promiseName} ${tcNumber} formId typeof: ${typeof formId}`);
         console.log(`${promiseName} ${tcNumber} nextTime typeof: ${typeof nextTime}`);
         try {

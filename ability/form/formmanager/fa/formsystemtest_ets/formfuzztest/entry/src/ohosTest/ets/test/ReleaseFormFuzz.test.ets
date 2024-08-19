@@ -17,7 +17,7 @@ import formHost from '@ohos.application.formHost';
 import { describe, expect, it } from '@ohos/hypium'
 import { DATA_TYPE_LIST, getFuzzData } from './getParam.ets';
 
-export const releaseFormFuzzTest = (describeName, filterParameter) => {
+export const releaseFormFuzzTest = (describeName:string, filterParameter:number) => {
   const ERR_COMMON_CODE = 1;
   const ERR_COMMON = `internal error`;
   const ERR_ADD_INVALID_PARAM_CODE = 7;
@@ -28,7 +28,7 @@ export const releaseFormFuzzTest = (describeName, filterParameter) => {
   describe(`${describeName}`, () => {
     const callbackName = `FMS_fuzzTest_releaseform`;
     const promiseName = `FMS_fuzzTest_releaseform`;
-    const length = DATA_TYPE_LIST.length;
+    const length:number = DATA_TYPE_LIST.length;
 
     for (let i = 0; i < length; ++i) {
       const tcNumber = `0${(i + 1) * 100}`;
@@ -37,9 +37,9 @@ export const releaseFormFuzzTest = (describeName, filterParameter) => {
        * @tc.number FMS_fuzzTest_releaseform_0100 ~ FMS_fuzzTest_releaseform_0800
        * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by AsyncCallback)
        */
-      it(`${callbackName}_${tcNumber}`, filterParameter, async (done) => {
-        const dataType = DATA_TYPE_LIST[i];
-        const formId = getFuzzData(dataType);
+      it(`${callbackName}_${tcNumber}`, filterParameter, async (done:Function) => {
+        const dataType:string = DATA_TYPE_LIST[i];
+        const formId:string = getFuzzData(dataType) as string;
         console.log(`${callbackName} ${tcNumber} formId typeof: ${typeof formId}`);
         try {
           formHost.releaseForm(formId, (error, data) => {
@@ -58,16 +58,16 @@ export const releaseFormFuzzTest = (describeName, filterParameter) => {
     }
 
     for (let i = 0; i < length; ++i) {
-      let tcNumber: any = (i + 1 + length) * 100;
+      let tcNumber: string | number = (i + 1 + length) * 100;
       tcNumber = tcNumber < 1000 ? `0${tcNumber}` : tcNumber;
       /**
        * @tc.name fuzzTest
        * @tc.number FMS_fuzzTest_releaseform_0900 ~ FMS_fuzzTest_releaseform_1600
        * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by Promise)
        */
-      it(`${promiseName}_${tcNumber}`, filterParameter, async (done) => {
-        const dataType = DATA_TYPE_LIST[i];
-        const formId = getFuzzData(dataType);
+      it(`${promiseName}_${tcNumber}`, filterParameter, async (done:Function) => {
+        const dataType:string = DATA_TYPE_LIST[i];
+        const formId:string = getFuzzData(dataType) as string;
         console.log(`${promiseName} ${tcNumber} ${describeName} formId typeof: ${typeof formId}`);
         try {
           const data = await formHost.releaseForm(formId);
@@ -89,15 +89,15 @@ export const releaseFormFuzzTest = (describeName, filterParameter) => {
     }
 
     for (let i = 0; i < length; ++i) {
-      const tcNumber: any = (i + 1 + length * 2) * 100;
+      const tcNumber: number = (i + 1 + length * 2) * 100;
       /**
        * @tc.name fuzzTest
        * @tc.number FMS_fuzzTest_releaseform_1700 ~ FMS_fuzzTest_releaseform_2400
        * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by AsyncCallback)
        */
-      it(`${callbackName}_${tcNumber}`, filterParameter, async (done) => {
-        const dataType = DATA_TYPE_LIST[i];
-        const formId = getFuzzData(dataType);
+      it(`${callbackName}_${tcNumber}`, filterParameter, async (done:Function) => {
+        const dataType:string = DATA_TYPE_LIST[i];
+        const formId:string = getFuzzData(dataType) as string;
         const isReleaseCache = true;
         console.log(`${callbackName} ${tcNumber} formId typeof: ${typeof formId}`);
         console.log(`${callbackName} ${tcNumber} isReleaseCache typeof: ${typeof isReleaseCache}`);
@@ -118,15 +118,15 @@ export const releaseFormFuzzTest = (describeName, filterParameter) => {
     }
 
     for (let i = 0; i < length; ++i) {
-      const tcNumber: any = (i + 1 + length * 3) * 100;
+      const tcNumber: number = (i + 1 + length * 3) * 100;
       /**
        * @tc.name fuzzTest
        * @tc.number FMS_fuzzTest_releaseform_2500 ~ FMS_fuzzTest_releaseform_3200
        * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by Promise)
        */
-      it(`${promiseName}_${tcNumber}`, filterParameter, async (done) => {
-        const dataType = DATA_TYPE_LIST[i];
-        const formId = getFuzzData(dataType);
+      it(`${promiseName}_${tcNumber}`, filterParameter, async (done:Function) => {
+        const dataType:string = DATA_TYPE_LIST[i];
+        const formId:string = getFuzzData(dataType) as string;
         const isReleaseCache = true;
         console.log(`${promiseName} ${tcNumber} ${describeName} formId typeof: ${typeof formId}`);
         console.log(`${promiseName} ${tcNumber} ${describeName} isReleaseCache typeof: ${typeof isReleaseCache}`);
@@ -150,16 +150,16 @@ export const releaseFormFuzzTest = (describeName, filterParameter) => {
     }
 
     for (let i = 0; i < length; ++i) {
-      const tcNumber: any = (i + 1 + length * 4) * 100;
+      const tcNumber: number = (i + 1 + length * 4) * 100;
       /**
        * @tc.name fuzzTest
        * @tc.number FMS_fuzzTest_releaseform_3300 ~ FMS_fuzzTest_releaseform_4000
        * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by AsyncCallback)
        */
-      it(`${callbackName}_${tcNumber}`, filterParameter, async (done) => {
-        const dataType = DATA_TYPE_LIST[i];
-        const formId = `${tcNumber}`;
-        const isReleaseCache = getFuzzData(dataType);
+      it(`${callbackName}_${tcNumber}`, filterParameter, async (done:Function) => {
+        const dataType:string = DATA_TYPE_LIST[i];
+        const formId:string = `${tcNumber}`;
+        const isReleaseCache:boolean = getFuzzData(dataType) as boolean;
         console.log(`${callbackName} ${tcNumber} formId typeof: ${typeof formId}`);
         console.log(`${callbackName} ${tcNumber} isReleaseCache typeof: ${typeof isReleaseCache}`);
         try {
@@ -184,16 +184,16 @@ export const releaseFormFuzzTest = (describeName, filterParameter) => {
     }
 
     for (let i = 0; i < length; ++i) {
-      const tcNumber: any = (i + 1 + length * 5) * 100;
+      const tcNumber: number = (i + 1 + length * 5) * 100;
       /**
        * @tc.name fuzzTest
        * @tc.number FMS_fuzzTest_releaseform_4100 ~ FMS_fuzzTest_releaseform_4800
        * @tc.desc Check whether the releaseForm interface can pass the fuzzy test (by Promise)
        */
-      it(`${promiseName}_${tcNumber}`, filterParameter, async (done) => {
-        const dataType = DATA_TYPE_LIST[i];
+      it(`${promiseName}_${tcNumber}`, filterParameter, async (done:Function) => {
+        const dataType:string = DATA_TYPE_LIST[i];
         const formId = `${tcNumber}`;
-        const isReleaseCache = getFuzzData(dataType);
+        const isReleaseCache:boolean = getFuzzData(dataType) as boolean;
         console.log(`${promiseName} ${tcNumber} ${describeName} formId typeof: ${typeof formId}`);
         console.log(`${promiseName} ${tcNumber} ${describeName} isReleaseCache typeof: ${typeof isReleaseCache}`);
         try {
