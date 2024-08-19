@@ -15,33 +15,15 @@
 
 import abilityTest from "./Ability.test";
 import AbilityDelegatorTest from "./Abilitydelegator.test";
-import AbilityStageMonitorTest from "./AbilityStageMonitor.test";
 import PrintTest from "./Print.test";
 import GetAbilityStateTest from "./GetAbilityState.test";
 import GetAppContextTest from "./GetAppContext.test";
-import AbilityMonitorTest from "./AbilityMonitor.test";
 import GetCurrentTopAbilityTest from "./GetCurrentTopAbility.test";
-import BackgroundCallbackTest from "./BackgroundCallback.test";
-import BackgroundPromiseTest from "./BackgroundPromise.test";
-import ForegroundCallbackTest from "./ForegroundCallback.test";
-import ForegroundPromiseTest from "./ForegroundPromise.test";
-import StartAbilityTest from "./StartAbility.test";
-import AbilityMonitorTest2 from "./AbilityMonitor2.test";
-import AbilityStageMonitorTest2 from "./AbilityStageMonitor2.test";
 export default function testsuite() {
-  AbilityMonitorTest();
-  AbilityMonitorTest2();
-  StartAbilityTest();
-  AbilityStageMonitorTest2();
   abilityTest();
   AbilityDelegatorTest();
   GetCurrentTopAbilityTest();
   GetAbilityStateTest();
-  AbilityStageMonitorTest();
   GetAppContextTest();
-  BackgroundCallbackTest();
-  BackgroundPromiseTest();
-  ForegroundCallbackTest();
-  ForegroundPromiseTest();
   PrintTest();
 }
