@@ -211,7 +211,7 @@ export default function abilityTest() {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_0400]';
       expect(contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT).assertEqual(1);
       expect(contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM).assertEqual(2);
-      //expect(contextConstant.ProcessMode.ATTACH_TO_STATUS_BAR_ITEM).assertEqual(3);
+      expect(contextConstant.ProcessMode.ATTACH_TO_STATUS_BAR_ITEM).assertEqual(3);
       expect(contextConstant.StartupVisibility.STARTUP_HIDE).assertEqual(0);
       expect(contextConstant.StartupVisibility.STARTUP_SHOW).assertEqual(1);
       if (functionEnable === 'true') {
