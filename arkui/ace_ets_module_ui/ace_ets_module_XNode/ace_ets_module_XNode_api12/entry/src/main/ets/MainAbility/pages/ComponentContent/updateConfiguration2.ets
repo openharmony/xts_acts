@@ -52,7 +52,8 @@ class MyNodeController extends NodeController {
 
 function updateColorMode() {
   componentContentMap.forEach((value, index) => {
-    value.updateConfiguration();
+    interface ComponentContentWithUpdateConfiguration { updateConfiguration?: () => void }
+    (value as ComponentContentWithUpdateConfiguration).updateConfiguration?.();
   })
 }
 
