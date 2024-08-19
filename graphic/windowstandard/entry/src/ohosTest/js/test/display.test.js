@@ -189,6 +189,38 @@ describe('display_test', function () {
     })
 
     /**
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0240
+     * @tc.name			testGetDisplayByIdSync_SyncFunction
+     * @tc.desc			To test the sync function of obtaining the target display by id
+     */
+    it('testGetDisplayByIdSync_SyncFunction', 0, async function (done) {
+        console.info('displayTestGetDisplayByIdSyncTest1 begin');
+        try {
+            var displayId = display.getDefaultDisplaySync().id;
+            var dsp = display.getDisplayByIdSync(displayId);
+            console.info('displayTest getDisplayByIdSyncTest1: ' + JSON.stringify(dsp));
+            expect(dsp.id != null).assertTrue();
+            expect(dsp.refreshRate != null).assertTrue();
+            expect(dsp.width != null).assertTrue();
+            expect(dsp.height != null).assertTrue();
+            expect(dsp.rotation != null).assertTrue();
+            expect(dsp.densityDPI != null).assertTrue();
+            expect(dsp.name != null).assertTrue();
+            expect(dsp.alive).assertTrue();
+            expect(dsp.state != null).assertTrue();
+            expect(dsp.densityPixels != null).assertTrue();
+            expect(dsp.scaledDensity !=null).assertTrue();
+            expect(dsp.xDPI != null).assertTrue();
+            expect(dsp.yDPI != null).assertTrue();
+            done();
+        } catch (err) {
+            console.error('getDisplayByIdSyncTest1 error ' + JSON.stringify(err));
+            expect.assertFail();
+            done();
+        }
+    })
+
+    /**
      * @tc.number	SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0070
      * @tc.name	    testDisplayState_Enum_Value
      * @tc.desc		To test the enum value of WindowDisplayState.
