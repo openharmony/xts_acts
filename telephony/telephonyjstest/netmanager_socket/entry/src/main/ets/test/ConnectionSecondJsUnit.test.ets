@@ -428,6 +428,7 @@ export default function connectionSecondJsUnit() {
         console.log("Telephony_connection_NetBearType_1100 NetBearType: " + connection.NetBearType);
         expect(0).assertEqual(connection.NetBearType.BEARER_CELLULAR);
         expect(1).assertEqual(connection.NetBearType.BEARER_WIFI);
+        expect(2).assertEqual(connection.NetBearType.BEARER_BLUETOOTH);
         expect(3).assertEqual(connection.NetBearType.BEARER_ETHERNET);
         console.log("-----------------------Telephony NetBearType Properties Test end-----------------------");
         done();

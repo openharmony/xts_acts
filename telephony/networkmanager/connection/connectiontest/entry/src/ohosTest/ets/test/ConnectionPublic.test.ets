@@ -6568,6 +6568,30 @@ export default function ConnectionPublicTest() {
       }
     });
 
+
+    /**
+     * @tc.number     : SUB_NetworkMgr_Connection_NetCap_04500
+     * @tc.name       : testNetworkMgrConnectionNetCap0500
+     * @tc.desc       : Specific network capabilities .
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNetworkMgrConnectionNetCap0400', 0, async (done: Function) => {
+      const caseName: string = "testNetworkMgrConnectionNetCap0500";
+      console.info(`${caseName} test start`);
+      try {
+        ExpectTrue(connection.NetCap.NET_CAPABILITY_CHECKING_CONNECTIVITY == 31);
+        console.info(`${caseName}---End`);
+        done();
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        console.info(`${caseName}---End`);
+        done();
+      }
+    });
+
     /**
      * @tc.number     : SUB_NetworkMgr_Connection_NetCap_0500
      * @tc.name       : testNetworkMgrConnectionNetCap0500
