@@ -65,12 +65,12 @@ export default class Utils {
   static async flingComponent(key: string, isHorizontal: boolean, isForward: boolean) {
     let driver = Driver.create();
     let rect = Utils.getComponentRect(key);
-    let centerX = Utils.getRectHorizontalCenterX(rect)
-    let centerY = Utils.getRectVerticalCenterY(rect)
-    let X1 = centerX - 100;
-    let X2 = centerX + 100;
-    let Y1 = centerY - 100;
-    let Y2 = centerY + 100;
+    let centerX = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect))
+    let centerY = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect))
+    let X1 =  Math.round(centerX - vp2px(66.67));
+    let X2 =  Math.round(centerX + vp2px(66.67));
+    let Y1 = Math.round(centerY - vp2px(66.67));
+    let Y2 = Math.round(centerY + vp2px(66.67));
     let stepLen = 20;
     let speed = 10000;
     if (isHorizontal) {
@@ -141,10 +141,10 @@ export default class Utils {
 
   static async fingerZoom(key: string, isOut: boolean) {
     let rect = Utils.getComponentRect(key);
-    let centerX = Utils.getRectHorizontalCenterX(rect)
-    let centerY = Utils.getRectVerticalCenterY(rect)
-    let fingerUpCenterY = centerY - 100;
-    let fingerDownCenterY = centerY + 100;
+    let centerX =  Math.round(globalThis.winLeft +  Utils.getRectHorizontalCenterX(rect))
+    let centerY =  Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect))
+    let fingerUpCenterY = Math.round(centerY - vp2px(66.67));
+    let fingerDownCenterY = Math.round(centerY + vp2px(66.67));
     let driver: Driver = Driver.create();
     let pointers: PointerMatrix = PointerMatrix.create(2, 3);
     pointers.setPoint(0, 0, {
