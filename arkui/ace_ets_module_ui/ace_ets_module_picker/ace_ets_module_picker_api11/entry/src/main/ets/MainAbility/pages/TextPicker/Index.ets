@@ -39,7 +39,7 @@ struct TextPickerExample {
   }
   @State selectedTextStyleDefault: PickerTextStyle = {
     color: $r("sys.color.ohos_id_color_text_primary_activated"),
-    font: { size: $r("sys.float.ohos_id_text_size_headline8"), weight: FontWeight.Bold }
+    font: { size: $r("sys.float.ohos_id_text_size_dialog_tittle"), weight: FontWeight.Bold }
   }
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("select page state change called:" + JSON.stringify(eventData));
