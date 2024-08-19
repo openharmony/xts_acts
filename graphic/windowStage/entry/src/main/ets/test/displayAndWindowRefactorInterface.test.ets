@@ -454,6 +454,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           expect(data.dimBehindValue).assertEqual(0);
           expect(data.isRoundCorner != null).assertTrue();
           expect(data.isPrivacyMode != null).assertTrue();
+          expect(data.displayId != null).assertTrue();
           done();
         } catch (exception) {
           console.error(msgStr + 'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
