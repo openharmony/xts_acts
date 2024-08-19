@@ -26,8 +26,7 @@
 #define PARAM_1 1
 
 // 1. PlainText=================================================
-
-static napi_value OH_UdsPlainText_Create_0100(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsPlainText_Create_0100(napi_env env, napi_callback_info info)
 {
     OH_UdsPlainText* plainText = nullptr;
     plainText = OH_UdsPlainText_Create();
@@ -39,7 +38,7 @@ static napi_value OH_UdsPlainText_Create_0100(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value OH_UdsPlainText_Destroy_0100(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsPlainText_Destroy_0100(napi_env env, napi_callback_info info)
 {
     OH_UdsPlainText* plainText = nullptr;
     plainText = OH_UdsPlainText_Create();
@@ -50,7 +49,7 @@ static napi_value OH_UdsPlainText_Destroy_0100(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value OH_UdsPlainText_GetType_0100(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsPlainText_GetType_0100(napi_env env, napi_callback_info info)
 {
     OH_UdsPlainText* plainText = nullptr;
     plainText = OH_UdsPlainText_Create();
@@ -63,7 +62,7 @@ static napi_value OH_UdsPlainText_GetType_0100(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value OH_UdsPlainText_SetContent_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsPlainText_SetContent_001(napi_env env, napi_callback_info info)
 {
     OH_UdsPlainText* plainText = nullptr;
     plainText = OH_UdsPlainText_Create();
@@ -75,7 +74,7 @@ static napi_value OH_UdsPlainText_SetContent_001(napi_env env, napi_callback_inf
     return result;
 }
 
-static napi_value OH_UdsPlainText_GetContent_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsPlainText_GetContent_001(napi_env env, napi_callback_info info)
 {
     OH_UdsPlainText* plainText = nullptr;
     plainText = OH_UdsPlainText_Create();
@@ -88,7 +87,7 @@ static napi_value OH_UdsPlainText_GetContent_001(napi_env env, napi_callback_inf
     return result;
 }
 
-static napi_value OH_UdsPlainText_SetAbstract_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsPlainText_SetAbstract_001(napi_env env, napi_callback_info info)
 {
     OH_UdsPlainText* plainText = nullptr;
     plainText = OH_UdsPlainText_Create();
@@ -100,7 +99,7 @@ static napi_value OH_UdsPlainText_SetAbstract_001(napi_env env, napi_callback_in
     return result;
 }
 
-static napi_value OH_UdsPlainText_GetAbstract_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsPlainText_GetAbstract_001(napi_env env, napi_callback_info info)
 {
     OH_UdsPlainText* plainText = nullptr;
     plainText = OH_UdsPlainText_Create();
@@ -114,10 +113,8 @@ static napi_value OH_UdsPlainText_GetAbstract_001(napi_env env, napi_callback_in
     return result;
 }
 
-
 // 2. Hyperlink ========================================================
-
-static napi_value OH_UdsHyperlink_Create_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHyperlink_Create_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHyperlink* pHyperlink = nullptr;
     pHyperlink = OH_UdsHyperlink_Create();
@@ -128,7 +125,7 @@ static napi_value OH_UdsHyperlink_Create_001(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value OH_UdsHyperlink_Destroy_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHyperlink_Destroy_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHyperlink* pHyperlink = nullptr;
     pHyperlink = OH_UdsHyperlink_Create();
@@ -139,7 +136,7 @@ static napi_value OH_UdsHyperlink_Destroy_001(napi_env env, napi_callback_info i
     
     return result;
 }
-static napi_value OH_UdsHyperlink_GetType_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHyperlink_GetType_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHyperlink* pHyperlink = nullptr;
     pHyperlink = OH_UdsHyperlink_Create();
@@ -151,7 +148,7 @@ static napi_value OH_UdsHyperlink_GetType_001(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value OH_UdsHyperlink_SetUrl_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHyperlink_SetUrl_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHyperlink* pHyperlink = nullptr;
     pHyperlink = OH_UdsHyperlink_Create();
@@ -163,7 +160,7 @@ static napi_value OH_UdsHyperlink_SetUrl_001(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value OH_UdsHyperlink_GetUrl_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHyperlink_GetUrl_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHyperlink* pHyperlink = nullptr;
     pHyperlink = OH_UdsHyperlink_Create();
@@ -176,7 +173,7 @@ static napi_value OH_UdsHyperlink_GetUrl_001(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value OH_UdsHyperlink_SetDescription_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHyperlink_SetDescription_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHyperlink* pHyperlink = nullptr;
     pHyperlink = OH_UdsHyperlink_Create();
@@ -188,7 +185,7 @@ static napi_value OH_UdsHyperlink_SetDescription_001(napi_env env, napi_callback
     return result;
 }
 
-static napi_value OH_UdsHyperlink_GetDescription_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHyperlink_GetDescription_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHyperlink* pHyperlink = nullptr;
     pHyperlink = OH_UdsHyperlink_Create();
@@ -201,9 +198,8 @@ static napi_value OH_UdsHyperlink_GetDescription_001(napi_env env, napi_callback
     return result;
 }
 
-
 // 3.html ========================================================
-static napi_value OH_UdsHtml_Create_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHtml_Create_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHtml* html = nullptr;
     html = OH_UdsHtml_Create();
@@ -214,7 +210,7 @@ static napi_value OH_UdsHtml_Create_001(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OH_UdsHtml_Destroy_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHtml_Destroy_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHtml* html = nullptr;
     html = OH_UdsHtml_Create();
@@ -226,7 +222,7 @@ static napi_value OH_UdsHtml_Destroy_001(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OH_UdsHtml_GetType_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHtml_GetType_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHtml* html = nullptr;
     html = OH_UdsHtml_Create();
@@ -238,7 +234,7 @@ static napi_value OH_UdsHtml_GetType_001(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OH_UdsHtml_SetContent_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHtml_SetContent_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHtml* html = nullptr;
     html = OH_UdsHtml_Create();
@@ -249,7 +245,7 @@ static napi_value OH_UdsHtml_SetContent_001(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value OH_UdsHtml_GetContent_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHtml_GetContent_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHtml* html = nullptr;
     html = OH_UdsHtml_Create();
@@ -262,7 +258,7 @@ static napi_value OH_UdsHtml_GetContent_001(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value OH_UdsHtml_SetPlainContent_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHtml_SetPlainContent_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHtml* html = nullptr;
     html = OH_UdsHtml_Create();
@@ -274,7 +270,7 @@ static napi_value OH_UdsHtml_SetPlainContent_001(napi_env env, napi_callback_inf
     return result;
 }
 
-static napi_value OH_UdsHtml_GetPlainContent_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsHtml_GetPlainContent_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHtml* html = nullptr;
     html = OH_UdsHtml_Create();
@@ -288,7 +284,7 @@ static napi_value OH_UdsHtml_GetPlainContent_001(napi_env env, napi_callback_inf
 }
 
 // 4. AppItem ========================================================
-static napi_value OH_UdsAppItem_Create_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsAppItem_Create_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
     appItem = OH_UdsAppItem_Create();
@@ -299,18 +295,17 @@ static napi_value OH_UdsAppItem_Create_001(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value OH_UdsAppItem_Destroy_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsAppItem_Destroy_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
     appItem = OH_UdsAppItem_Create();
     OH_UdsAppItem_Destroy(appItem);
     napi_value result = nullptr;
     napi_create_int32(env, appItem != nullptr, &result);
-
     return result;
 }
 
-static napi_value OH_UdsAppItem_GetType_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsAppItem_GetType_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
     appItem = OH_UdsAppItem_Create();
@@ -322,7 +317,7 @@ static napi_value OH_UdsAppItem_GetType_001(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value OH_UdsAppItem_SetId_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsAppItem_SetId_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
     appItem = OH_UdsAppItem_Create();
@@ -334,7 +329,7 @@ static napi_value OH_UdsAppItem_SetId_001(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OH_UdsAppItem_GetId_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsAppItem_GetId_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
     appItem = OH_UdsAppItem_Create();
@@ -347,7 +342,7 @@ static napi_value OH_UdsAppItem_GetId_001(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OH_UdsAppItem_SetName_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsAppItem_SetName_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
     appItem = OH_UdsAppItem_Create();
@@ -359,7 +354,7 @@ static napi_value OH_UdsAppItem_SetName_001(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value OH_UdsAppItem_GetName_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsAppItem_GetName_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
     appItem = OH_UdsAppItem_Create();
@@ -370,7 +365,6 @@ static napi_value OH_UdsAppItem_GetName_001(napi_env env, napi_callback_info inf
     napi_create_int32(env, strcmp(pu, "OH") == PARAM_0, &result);
     OH_UdsAppItem_Destroy(appItem);
     return result;
-
 }
 
 static napi_value OH_UdsAppItem_SetIconId_001(napi_env env, napi_callback_info info)
@@ -399,7 +393,7 @@ static napi_value OH_UdsAppItem_GetIconId_001(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value OH_UdsAppItem_SetLabelId_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsAppItem_SetLabelId_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
     appItem = OH_UdsAppItem_Create();
@@ -412,7 +406,7 @@ static napi_value OH_UdsAppItem_SetLabelId_001(napi_env env, napi_callback_info 
 }
 
 
-static napi_value OH_UdsAppItem_GetLabelId_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsAppItem_GetLabelId_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
     appItem = OH_UdsAppItem_Create();
@@ -426,7 +420,7 @@ static napi_value OH_UdsAppItem_GetLabelId_001(napi_env env, napi_callback_info 
 }
 
 
-static napi_value OH_UdsAppItem_SetBundleName_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsAppItem_SetBundleName_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
     appItem = OH_UdsAppItem_Create();
@@ -439,7 +433,7 @@ static napi_value OH_UdsAppItem_SetBundleName_001(napi_env env, napi_callback_in
 }
 
 
-static napi_value OH_UdsAppItem_GetBundleName_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsAppItem_GetBundleName_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
     appItem = OH_UdsAppItem_Create();
@@ -452,7 +446,7 @@ static napi_value OH_UdsAppItem_GetBundleName_001(napi_env env, napi_callback_in
     return result;
 }
 
-static napi_value OH_UdsAppItem_SetAbilityName_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsAppItem_SetAbilityName_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
     appItem = OH_UdsAppItem_Create();
@@ -465,7 +459,7 @@ static napi_value OH_UdsAppItem_SetAbilityName_001(napi_env env, napi_callback_i
 }
 
 
-static napi_value OH_UdsAppItem_GetAbilityName_001(napi_env env, napi_callback_info info) 
+static napi_value OH_UdsAppItem_GetAbilityName_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
     appItem = OH_UdsAppItem_Create();

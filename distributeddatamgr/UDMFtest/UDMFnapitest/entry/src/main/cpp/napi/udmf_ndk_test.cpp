@@ -23,7 +23,7 @@
 #include "utd.h"
 
 //OH_UdmfProperty
-static napi_value OH_Udmf_CreatePropertiesFromUnifiedData001(napi_env env, napi_callback_info info) 
+static napi_value OH_Udmf_CreatePropertiesFromUnifiedData001(napi_env env, napi_callback_info info)
 {
     OH_UdmfData *data = OH_UdmfData_Create();
     OH_UdmfProperty *properties = OH_UdmfProperty_Create(data);
@@ -36,7 +36,7 @@ static napi_value OH_Udmf_CreatePropertiesFromUnifiedData001(napi_env env, napi_
     return result;
 }
 
-static napi_value OH_Udmf_SetPropertiesTag001(napi_env env, napi_callback_info info) 
+static napi_value OH_Udmf_SetPropertiesTag001(napi_env env, napi_callback_info info)
 {
     OH_UdmfData *data = OH_UdmfData_Create();
     OH_UdmfProperty *properties = OH_UdmfProperty_Create(data);
