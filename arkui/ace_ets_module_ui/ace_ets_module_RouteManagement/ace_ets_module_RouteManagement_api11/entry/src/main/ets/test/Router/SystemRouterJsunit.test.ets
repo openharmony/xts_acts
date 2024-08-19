@@ -54,7 +54,7 @@ export default function systemRouterJsunit() {
       await Utils.sleep(1500);
       let callback = (paramsEvent: events_emitter.EventData) => {
         console.info("[systemRouterTest002] get state result is: " + JSON.stringify(paramsEvent));
-        expect(paramsEvent.data.params).assertEqual('B Page');
+        expect(paramsEvent.data?.params).assertEqual('B Page');
       }
       let paramsEvent: events_emitter.InnerEvent = {
         eventId: 211,
@@ -131,7 +131,7 @@ export default function systemRouterJsunit() {
       await Utils.sleep(1500);
       let callback = (paramsEvent: events_emitter.EventData) => {
         console.info("[systemRouterTest005] get state result is: " + JSON.stringify(paramsEvent));
-        expect(paramsEvent.data.params).assertEqual('B Page');
+        expect(paramsEvent.data?.params).assertEqual('B Page');
 
       }
       let paramsEvent: events_emitter.InnerEvent = {
