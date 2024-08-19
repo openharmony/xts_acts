@@ -221,7 +221,8 @@ static napi_value OHNativeVSyncCreateAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-void myFrameCallback(long long timestamp, void *data) {
+void myFrameCallback(long long timestamp, void *data)
+{
     int *myData = static_cast<int *>(data);
     std::cout << "Frame callback called at timestamp: " << timestamp << ", with data: " << *myData << std::endl;
 }

@@ -244,7 +244,8 @@ static napi_value OHNativeBufferAllocNullptr(napi_env env, napi_callback_info in
     }
     return result;
 }
-void nativeBufferConfigArrTest(napi_env &env, napi_value &result, std::vector<OH_NativeBuffer_Config> &nativeBufferConfigArr)
+void nativeBufferConfigArrTest(napi_env &env, napi_value &result, 
+    std::vector<OH_NativeBuffer_Config> &nativeBufferConfigArr)
 {
     for (uint32_t index = 0; index < NUMBER_7; index++) {
         OH_NativeBuffer *ptr = OH_NativeBuffer_Alloc(&nativeBufferConfigArr[index]);
@@ -257,7 +258,8 @@ void nativeBufferConfigArrTest(napi_env &env, napi_value &result, std::vector<OH
         napi_set_element(env, result, index, resultIndex);
     }
 }
-static napi_value OHNativeBufferAllocNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeBufferAllocNormal(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     napi_create_array_with_length(env, NUMBER_7, &result);
     std::vector<OH_NativeBuffer_Config> nativeBufferConfigArr = {
@@ -266,29 +268,29 @@ static napi_value OHNativeBufferAllocNormal(napi_env env, napi_callback_info inf
             .height = 0x100,
             .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
             .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
-        },{
+        }, {
             .width = 0x7FFFFFFF,
             .height = 0x100,
             .format = NATIVEBUFFER_PIXEL_FMT_RGBA_5658,
             .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
-        },{
+        }, {
             .width = 0,
             .height = 0x100,
             .format = NATIVEBUFFER_PIXEL_FMT_BGRA_5551,
             .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
-        },{
+        }, {
             .width = 0x7FFFFFFE,
             .height = 0x100,
             .format = NATIVEBUFFER_PIXEL_FMT_YUV_422_I,
             .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
             .stride = 0,
-        },{
+        }, {
             .width = 0x100,
             .height = 0x7FFFFFFF,
             .format = NATIVEBUFFER_PIXEL_FMT_CLUT4,
             .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
             .stride = 1,
-        },{
+        }, {
             .width = 0x100,
             .height = 0,
             .format = NATIVEBUFFER_PIXEL_FMT_BGRA_8888,
@@ -817,7 +819,8 @@ static napi_value OHNativeBufferGetMetadataValueFirst(napi_env env, napi_callbac
     napi_create_int32(env, ret, &result);
     return result;
 }
-void OHNativeBufferSetDynamicMetadataValueTest2(napi_env &env, napi_value &result, std::vector<int32_t> &sizes, OH_NativeBuffer *&nativeBuffer)
+void OHNativeBufferSetDynamicMetadataValueTest2(napi_env &env, napi_value &result, std::vector<int32_t> &sizes, 
+    OH_NativeBuffer *&nativeBuffer)
 {
     napi_value result1 = nullptr;
     OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_DYNAMIC_METADATA;
@@ -852,7 +855,8 @@ void OHNativeBufferSetDynamicMetadataValueTest2(napi_env &env, napi_value &resul
     napi_set_element(env, result, NUMBER_19, result1);
 }
 void OHNativeBufferSetDynamicMetadataValueTest1(napi_env &env, napi_value &result, std::vector<int32_t> &sizes,
-                                                OH_NativeBuffer *&nativeBuffer) {
+    OH_NativeBuffer *&nativeBuffer)
+{
     napi_value result1 = nullptr;
     OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_DYNAMIC_METADATA;
     uint8_t metadata = 2;
@@ -898,7 +902,8 @@ void OHNativeBufferSetDynamicMetadataValueTest1(napi_env &env, napi_value &resul
     napi_set_element(env, result, NUMBER_12, result1);
 }
 
-static napi_value OHNativeBufferSetDynamicMetadataValue(napi_env env, napi_callback_info info) {
+static napi_value OHNativeBufferSetDynamicMetadataValue(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     napi_value result1 = nullptr;
     napi_create_array_with_length(env, NUMBER_20, &result);
@@ -973,7 +978,8 @@ static napi_value OHNativeBufferSetMetadataValueTimes(napi_env env, napi_callbac
     return result;
 }
 
-void OHNativeBufferSetStaticMetadataValueTest2(napi_env &env, napi_value &result, std::vector<int32_t> &sizes, OH_NativeBuffer *&nativeBuffer)
+void OHNativeBufferSetStaticMetadataValueTest2(napi_env &env, napi_value &result, std::vector<int32_t> &sizes,
+    OH_NativeBuffer *&nativeBuffer)
 {
     napi_value result1 = nullptr;
     OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_STATIC_METADATA;
@@ -1008,7 +1014,8 @@ void OHNativeBufferSetStaticMetadataValueTest2(napi_env &env, napi_value &result
     napi_set_element(env, result, NUMBER_19, result1);
 }
 
-void OHNativeBufferSetStaticMetadataValueTest1(napi_env &env, napi_value &result, std::vector<int32_t> &sizes, OH_NativeBuffer *&nativeBuffer)
+void OHNativeBufferSetStaticMetadataValueTest1(napi_env &env, napi_value &result, std::vector<int32_t> &sizes,
+    OH_NativeBuffer *&nativeBuffer)
 {
     napi_value result1 = nullptr;
     int32_t size = 1;
@@ -1094,7 +1101,8 @@ static napi_value OHNativeBufferSetStaticMetadataValue(napi_env env, napi_callba
     return result;
 }
 void OHNativeBufferSetMetadataValueTest2(napi_env &env, napi_value &result, std::vector<int32_t> &sizes,
-                                         OH_NativeBuffer *&nativeBuffer) {
+    OH_NativeBuffer *&nativeBuffer)
+{
     napi_value result1 = nullptr;
     OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_METADATA_TYPE;
     uint8_t metadata = 2;
@@ -1127,8 +1135,8 @@ void OHNativeBufferSetMetadataValueTest2(napi_env &env, napi_value &result, std:
     napi_create_int32(env, ret, &result1);
     napi_set_element(env, result, NUMBER_19, result1);
 }
-void OHNativeBufferSetMetadataValueTest1(napi_env &env, napi_value &result, std::vector<int32_t> &sizes,
-                                         OH_NativeBuffer *&nativeBuffer) {
+void OHNativeBufferSetMetadataValueTest1(napi_env &env, napi_value &result, std::vector<int32_t> &sizes, OH_NativeBuffer *&nativeBuffer)
+{
     napi_value result1 = nullptr;
     OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_METADATA_TYPE;
     uint8_t metadata = 2;
@@ -1321,7 +1329,8 @@ static napi_value OHNativeBufferGetMetadataValueNullptr(napi_env env, napi_callb
     return result;
 }
 
-napi_value NativeBufferInit(napi_env env, napi_value exports) {
+napi_value NativeBufferInit(napi_env env, napi_value exports) 
+{
     napi_property_descriptor desc[] = {
         {"oHNativeBufferAlloc", nullptr, OHNativeBufferAlloc, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeBufferReference", nullptr, OHNativeBufferReference, nullptr, nullptr, nullptr, napi_default, nullptr},
