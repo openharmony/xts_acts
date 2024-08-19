@@ -458,7 +458,6 @@ static napi_value OH_UdsAppItem_SetAbilityName_001(napi_env env, napi_callback_i
     return result;
 }
 
-
 static napi_value OH_UdsAppItem_GetAbilityName_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
@@ -472,25 +471,25 @@ static napi_value OH_UdsAppItem_GetAbilityName_001(napi_env env, napi_callback_i
     return result;
 }
 
-
-EXTERN_C_START static napi_value Init(napi_env env, napi_value exports) {
-    napi_property_descriptor desc[] = {       
+EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
         {"OH_UdsPlainText_Create_0100", nullptr, OH_UdsPlainText_Create_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_Destroy_0100", nullptr, OH_UdsPlainText_Destroy_0100, nullptr, nullptr, nullptr, napi_default, nullptr},        
-        {"OH_UdsPlainText_GetType_0100", nullptr, OH_UdsPlainText_GetType_0100, nullptr, nullptr, nullptr, napi_default, nullptr},     
-        {"OH_UdsPlainText_SetContent_001", nullptr, OH_UdsPlainText_SetContent_001, nullptr, nullptr, nullptr, napi_default, nullptr},          
-        {"OH_UdsPlainText_GetContent_001", nullptr, OH_UdsPlainText_GetContent_001, nullptr, nullptr, nullptr, napi_default, nullptr},  
-        {"OH_UdsPlainText_SetAbstract_001", nullptr, OH_UdsPlainText_SetAbstract_001, nullptr, nullptr, nullptr, napi_default, nullptr},         
-        {"OH_UdsPlainText_GetAbstract_001", nullptr, OH_UdsPlainText_GetAbstract_001, nullptr, nullptr, nullptr, napi_default, nullptr}, 
-        {"OH_UdsHyperlink_Create_001", nullptr, OH_UdsHyperlink_Create_001, nullptr, nullptr, nullptr, napi_default, nullptr},  
-        {"OH_UdsHyperlink_Destroy_001", nullptr, OH_UdsHyperlink_Destroy_001, nullptr, nullptr, nullptr, napi_default, nullptr},                       
+        {"OH_UdsPlainText_Destroy_0100", nullptr, OH_UdsPlainText_Destroy_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_GetType_0100", nullptr, OH_UdsPlainText_GetType_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_SetContent_001", nullptr, OH_UdsPlainText_SetContent_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_GetContent_001", nullptr, OH_UdsPlainText_GetContent_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_SetAbstract_001", nullptr, OH_UdsPlainText_SetAbstract_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_GetAbstract_001", nullptr, OH_UdsPlainText_GetAbstract_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsHyperlink_Create_001", nullptr, OH_UdsHyperlink_Create_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsHyperlink_Destroy_001", nullptr, OH_UdsHyperlink_Destroy_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsHyperlink_GetType_001", nullptr, OH_UdsHyperlink_GetType_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsHyperlink_SetUrl_001", nullptr, OH_UdsHyperlink_SetUrl_001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsHyperlink_GetUrl_001", nullptr, OH_UdsHyperlink_GetUrl_001, nullptr, nullptr, nullptr, napi_default, nullptr},                 
+        {"OH_UdsHyperlink_GetUrl_001", nullptr, OH_UdsHyperlink_GetUrl_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsHyperlink_SetDescription_001", nullptr, OH_UdsHyperlink_SetDescription_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsHyperlink_GetDescription_001", nullptr, OH_UdsHyperlink_GetDescription_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsHtml_Create_001", nullptr, OH_UdsHtml_Create_001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsHtml_Destroy_001", nullptr, OH_UdsHtml_Destroy_001, nullptr, nullptr, nullptr, napi_default, nullptr},        
+        {"OH_UdsHtml_Destroy_001", nullptr, OH_UdsHtml_Destroy_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsHtml_GetType_001", nullptr, OH_UdsHtml_GetType_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsHtml_SetContent_001", nullptr, OH_UdsHtml_SetContent_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsHtml_GetContent_001", nullptr, OH_UdsHtml_GetContent_001, nullptr, nullptr, nullptr, napi_default, nullptr},
