@@ -244,7 +244,7 @@ static napi_value OHNativeBufferAllocNullptr(napi_env env, napi_callback_info in
     }
     return result;
 }
-void nativeBufferConfigArrTest(napi_env &env, napi_value &result, 
+void nativeBufferConfigArrTest(napi_env &env, napi_value &result,
     std::vector<OH_NativeBuffer_Config> &nativeBufferConfigArr)
 {
     for (uint32_t index = 0; index < NUMBER_7; index++) {
@@ -819,7 +819,7 @@ static napi_value OHNativeBufferGetMetadataValueFirst(napi_env env, napi_callbac
     napi_create_int32(env, ret, &result);
     return result;
 }
-void OHNativeBufferSetDynamicMetadataValueTest2(napi_env &env, napi_value &result, std::vector<int32_t> &sizes, 
+void OHNativeBufferSetDynamicMetadataValueTest2(napi_env &env, napi_value &result, std::vector<int32_t> &sizes,
     OH_NativeBuffer *&nativeBuffer)
 {
     napi_value result1 = nullptr;
@@ -1135,7 +1135,8 @@ void OHNativeBufferSetMetadataValueTest2(napi_env &env, napi_value &result, std:
     napi_create_int32(env, ret, &result1);
     napi_set_element(env, result, NUMBER_19, result1);
 }
-void OHNativeBufferSetMetadataValueTest1(napi_env &env, napi_value &result, std::vector<int32_t> &sizes, OH_NativeBuffer *&nativeBuffer)
+void OHNativeBufferSetMetadataValueTest1(napi_env &env, napi_value &result, std::vector<int32_t> &sizes,
+    OH_NativeBuffer *&nativeBuffer)
 {
     napi_value result1 = nullptr;
     OH_NativeBuffer_MetadataKey metadataKey = OH_NativeBuffer_MetadataKey::OH_HDR_METADATA_TYPE;
@@ -1329,7 +1330,7 @@ static napi_value OHNativeBufferGetMetadataValueNullptr(napi_env env, napi_callb
     return result;
 }
 
-napi_value NativeBufferInit(napi_env env, napi_value exports) 
+napi_value NativeBufferInit(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         {"oHNativeBufferAlloc", nullptr, OHNativeBufferAlloc, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1356,6 +1357,13 @@ napi_value NativeBufferInit(napi_env env, napi_value exports)
          nullptr},
         {"oHNativeBufferAllocNormal", nullptr, OHNativeBufferAllocNormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(napi_property_descriptor), desc);
+    return exports;
+}
+
+napi_value NativeBufferInit2(napi_env env, napi_value exports) {
+    napi_property_descriptor desc[] = {
         {"oHNativeBufferAllocAbormal", nullptr, OHNativeBufferAllocAbormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"oHNativeBufferAllocMuch", nullptr, OHNativeBufferAllocMuch, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1377,16 +1385,6 @@ napi_value NativeBufferInit(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"oHNativeBufferMapPlanesNormal", nullptr, OHNativeBufferMapPlanesNormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(napi_property_descriptor), desc);
-    return exports;
-}
-
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
-{
-    NativeBufferInit(env, exports);
-    napi_property_descriptor desc[] = {
         {"oHNativeBuffeReferenceNullptr", nullptr, OHNativeBuffeReferenceNullptr, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"oHNativeBuffeUnreferenceNullptr", nullptr, OHNativeBuffeUnreferenceNullptr, nullptr, nullptr, nullptr,
@@ -1397,6 +1395,17 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"oHNativeBufferUnreferenceNormal", nullptr, OHNativeBufferUnreferenceNormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(napi_property_descriptor), desc);
+    return exports;
+}
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    NativeBufferInit(env, exports);
+    NativeBufferInit2(env, exports);
+    napi_property_descriptor desc[] = {
         {"oHNativeBuffeUnmapNullptr", nullptr, OHNativeBuffeUnmapNullptr, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"oHNativeBufferUnmapNormal", nullptr, OHNativeBufferUnmapNormal, nullptr, nullptr, nullptr, napi_default,
@@ -1411,24 +1420,24 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"oHNativeBufferGetColorSpaceNullptr", nullptr, OHNativeBufferGetColorSpaceNullptr, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"oHNativeBufferGetMetadataValueFirst", nullptr, OHNativeBufferGetMetadataValueFirst, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"oHNativeBufferSetDynamicMetadataValue", nullptr, OHNativeBufferSetDynamicMetadataValue, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"oHNativeBufferSetMetadataValueTimes", nullptr, OHNativeBufferSetMetadataValueTimes, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"oHNativeBufferSetStaticMetadataValue", nullptr, OHNativeBufferSetStaticMetadataValue, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"oHNativeBufferSetMetadataValue", nullptr, OHNativeBufferSetMetadataValue, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"oHNativeBufferSetNullMetadataValue", nullptr, OHNativeBufferSetNullMetadataValue, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"oHNativeBufferSetMetadataValueNullptr", nullptr, OHNativeBufferSetMetadataValueNullptr, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"oHNativeBufferGetMetadataValueAbnormal", nullptr, OHNativeBufferGetMetadataValueAbnormal, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"oHNativeBufferGetMetadataValueNullptr", nullptr, OHNativeBufferGetMetadataValueNullptr, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeBufferGetMetadataValueFirst", nullptr, OHNativeBufferGetMetadataValueFirst, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferSetDynamicMetadataValue", nullptr, OHNativeBufferSetDynamicMetadataValue, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeBufferSetMetadataValueTimes", nullptr, OHNativeBufferSetMetadataValueTimes, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferSetStaticMetadataValue", nullptr, OHNativeBufferSetStaticMetadataValue, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeBufferSetMetadataValue", nullptr, OHNativeBufferSetMetadataValue, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferSetNullMetadataValue", nullptr, OHNativeBufferSetNullMetadataValue, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferSetMetadataValueNullptr", nullptr, OHNativeBufferSetMetadataValueNullptr, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeBufferGetMetadataValueAbnormal", nullptr, OHNativeBufferGetMetadataValueAbnormal, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeBufferGetMetadataValueNullptr", nullptr, OHNativeBufferGetMetadataValueNullptr, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

@@ -221,7 +221,7 @@ static napi_value OHNativeVSyncCreateAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-void myFrameCallback(long long timestamp, void *data)
+void MyFrameCallback(long long timestamp, void *data)
 {
     int *myData = static_cast<int *>(data);
     std::cout << "Frame callback called at timestamp: " << timestamp << ", with data: " << *myData << std::endl;
@@ -248,7 +248,7 @@ static napi_value OHNativeVSyncCreateDifLenth(napi_env env, napi_callback_info i
         OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(myArray[index].c_str(), len);
         if (nativeVSync != nullptr) {
             int param = 0;
-            OH_NativeVSync_RequestFrame(nativeVSync, myFrameCallback, &param);
+            OH_NativeVSync_RequestFrame(nativeVSync, MyFrameCallback, &param);
             long long *period;
             int ret = OH_NativeVSync_GetPeriod(nativeVSync, period);
             napi_create_int32(env, ret, &resultIndex);
@@ -338,7 +338,7 @@ static napi_value OHNativeVSyncRequestFrameNullptr(napi_env env, napi_callback_i
     napi_create_array_with_length(env, NUMBER_3, &result);
     napi_value result1 = nullptr;
     int param = 0;
-    int res = OH_NativeVSync_RequestFrame(nullptr, myFrameCallback, &param);
+    int res = OH_NativeVSync_RequestFrame(nullptr, MyFrameCallback, &param);
     napi_create_int32(env, res, &result1);
     napi_set_element(env, result, 0, result1);
 
@@ -346,7 +346,7 @@ static napi_value OHNativeVSyncRequestFrameNullptr(napi_env env, napi_callback_i
     napi_create_int32(env, res, &result1);
     napi_set_element(env, result, 1, result1);
     
-    res = OH_NativeVSync_RequestFrame(nativeVSync, myFrameCallback, nullptr);
+    res = OH_NativeVSync_RequestFrame(nativeVSync, MyFrameCallback, nullptr);
     napi_create_int32(env, res, &result1);
     napi_set_element(env, result, NUMBER_2, result1);
     return result;
@@ -359,7 +359,7 @@ static napi_value OHNativeVSyncRequestFrameNormal(napi_env env, napi_callback_in
     unsigned int length = strlen(name);
     OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
     int param = 0;
-    int res = OH_NativeVSync_RequestFrame(nativeVSync, myFrameCallback, &param);
+    int res = OH_NativeVSync_RequestFrame(nativeVSync, MyFrameCallback, &param);
     napi_create_int32(env, res, &result);
     return result;
 }
@@ -371,7 +371,7 @@ static napi_value OHNativeVSyncRequestFrameParamErr(napi_env env, napi_callback_
     unsigned int length = strlen(name);
     OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
     char param[] = "test";
-    int res = OH_NativeVSync_RequestFrame(nativeVSync, myFrameCallback, &param);
+    int res = OH_NativeVSync_RequestFrame(nativeVSync, MyFrameCallback, &param);
     napi_create_int32(env, res, &result);
     return result;
 }
