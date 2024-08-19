@@ -40,26 +40,6 @@
                         "name": "ohos.ability.form",
                         "value": "",
                         "resource": "$profile:shortcuts_config"
-                    },
-                    {
-                        "name": "ohos.ability.form1",
-                        "value": "",
-                        "resource": "$profile:form_config"
-                    },
-                    {
-                        "name": "ohos.ability.form2",
-                        "value": "",
-                        "resource": "@profile:form_config"
-                    },
-                    {
-                        "name": "ohos.ability.form3",
-                        "value": "",
-                        "resource": "$profile:form_config1"
-                    },
-                    {
-                        "name": "ohos.ability.form4",
-                        "value": "",
-                        "resource": "$profile:invalid"
                     }
                 ]
             },
@@ -186,26 +166,6 @@
                         "name": "ohos.extension.form",
                         "value": "",
                         "resource": "$profile:shortcuts_config"
-                    },
-                    {
-                        "name": "ohos.extension.form1",
-                        "value": "",
-                        "resource": "$profile:form_config"
-                    },
-                    {
-                        "name": "ohos.extension.form2",
-                        "value": "",
-                        "resource": "@profile:form_config"
-                    },
-                    {
-                        "name": "ohos.extension.form3",
-                        "value": "",
-                        "resource": "$profile:form_config1"
-                    },
-                    {
-                        "name": "ohos.extension.form4",
-                        "value": "",
-                        "resource": "$profile:invalid"
                     }
                 ],
                 "name": "Form",
