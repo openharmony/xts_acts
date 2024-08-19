@@ -47,7 +47,7 @@ export default function AudioRendererInterruptUnitTest() {
         usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
         rendererFlags: 0,
       },
-      'VOICE_CALL': {
+      'VOICE_COMMUNICATION': {
         content: audio.ContentType.CONTENT_TYPE_SPEECH,
         usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
         rendererFlags: 0
@@ -257,7 +257,7 @@ export default function AudioRendererInterruptUnitTest() {
       })
       await start(render1, done)
 
-      let render2 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['48000'],done)
+      let render2 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render2, done)
       await sleep(500)
@@ -471,14 +471,14 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1100
-     * @tc.name      : AudioRender  MUSIC INTERRUPT VOICE_CALL
-     * @tc.desc      : AudioRender  MUSIC INTERRUPT VOICE_CALL
+     * @tc.name      : AudioRender  MUSIC INTERRUPT VOICE_COMMUNICATION
+     * @tc.desc      : AudioRender  MUSIC INTERRUPT VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1100', 0, async function (done) {
-      let render1 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['44100'],done)
+      let render1 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render1, done)
 
@@ -505,32 +505,46 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1200
-     * @tc.name      : AudioRender  VOICE_CALL INTERRUPT VOICE_CALL
-     * @tc.desc      : AudioRender  VOICE_CALL INTERRUPT VOICE_CALL
+     * @tc.name      : AudioRender  VOICE_COMMUNICATION INTERRUPT VOICE_COMMUNICATION
+     * @tc.desc      : AudioRender  VOICE_COMMUNICATION INTERRUPT VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1200', 0, async function (done) {
-      let render1 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['44100'],done)
+      let render1 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+      render1.on("audioInterrupt", async (eventAction) => {
+        console.log("1200.eventAction=" + JSON.stringify(eventAction))
+
+        if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_PAUSE)
+        } else {
+          console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1200 fail")
+          expect(false).assertTrue();
+        }
+      })
       await start(render1, done)
 
-      let render2 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['48000'],done)
+      let render2 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
-      await startFail(render2, done, render1)
+      await start(render2, done)
+      await sleep(500)
+      await release(render1, done)
+      await release(render2, done)
+      done()
     })
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1300
-     * @tc.name      : AudioRender  RINGTONE INTERRUPT VOICE_CALL
-     * @tc.desc      : AudioRender  RINGTONE INTERRUPT VOICE_CALL
+     * @tc.name      : AudioRender  RINGTONE INTERRUPT VOICE_COMMUNICATION
+     * @tc.desc      : AudioRender  RINGTONE INTERRUPT VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1300', 0, async function (done) {
-      let render1 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['44100'],done)
+      let render1 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render1, done)
 
@@ -541,14 +555,14 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1400
-     * @tc.name      : AudioRender  VOICE_ASSISTANT INTERRUPT VOICE_CALL
-     * @tc.desc      : AudioRender  VOICE_ASSISTANT INTERRUPT VOICE_CALL
+     * @tc.name      : AudioRender  VOICE_ASSISTANT INTERRUPT VOICE_COMMUNICATION
+     * @tc.desc      : AudioRender  VOICE_ASSISTANT INTERRUPT VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1400', 0, async function (done) {
-      let render1 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['44100'],done)
+      let render1 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render1, done)
 
@@ -561,14 +575,14 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1600
-     * @tc.name      : AudioRender  ALARM INTERRUPT VOICE_CALL
-     * @tc.desc      : AudioRender  ALARM INTERRUPT VOICE_CALL
+     * @tc.name      : AudioRender  ALARM INTERRUPT VOICE_COMMUNICATION
+     * @tc.desc      : AudioRender  ALARM INTERRUPT VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1600', 0, async function (done) {
-      let render1 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['44100'],done)
+      let render1 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render1, done)
 
@@ -592,14 +606,14 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1700
-     * @tc.name      : AudioRender  ACCESSIBILITY INTERRUPT VOICE_CALL
-     * @tc.desc      : AudioRender  ACCESSIBILITY INTERRUPT VOICE_CALL
+     * @tc.name      : AudioRender  ACCESSIBILITY INTERRUPT VOICE_COMMUNICATION
+     * @tc.desc      : AudioRender  ACCESSIBILITY INTERRUPT VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1700', 0, async function (done) {
-      let render1 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['44100'],done)
+      let render1 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       render1.on("audioInterrupt", async (eventAction) => {
         console.log("14.eventAction=" + JSON.stringify(eventAction))
@@ -623,14 +637,14 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1800
-     * @tc.name      : AudioRender  SPEECH INTERRUPT VOICE_CALL
-     * @tc.desc      : AudioRender  SPEECH INTERRUPT VOICE_CALL
+     * @tc.name      : AudioRender  SPEECH INTERRUPT VOICE_COMMUNICATION
+     * @tc.desc      : AudioRender  SPEECH INTERRUPT VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1800', 0, async function (done) {
-      let render1 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['44100'],done)
+      let render1 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render1, done)
 
@@ -656,14 +670,14 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1900
-     * @tc.name      : AudioRender  MOVIE INTERRUPT VOICE_CALL
-     * @tc.desc      : AudioRender  MOVIE INTERRUPT VOICE_CALL
+     * @tc.name      : AudioRender  MOVIE INTERRUPT VOICE_COMMUNICATION
+     * @tc.desc      : AudioRender  MOVIE INTERRUPT VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1900', 0, async function (done) {
-      let render1 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['44100'],done)
+      let render1 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render1, done)
 
@@ -689,14 +703,14 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_2000
-     * @tc.name      : AudioRender  UNKNOW INTERRUPT VOICE_CALL
-     * @tc.desc      : AudioRender  UNKNOW INTERRUPT VOICE_CALL
+     * @tc.name      : AudioRender  UNKNOW INTERRUPT VOICE_COMMUNICATION
+     * @tc.desc      : AudioRender  UNKNOW INTERRUPT VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_2000', 0, async function (done) {
-      let render1 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['44100'],done)
+      let render1 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render1, done)
 
@@ -754,8 +768,8 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_2200
-     * @tc.name      : AudioRender  VOICE_CALL INTERRUPT RINGTONE
-     * @tc.desc      : AudioRender  VOICE_CALL INTERRUPT RINGTONE
+     * @tc.name      : AudioRender  VOICE_COMMUNICATION INTERRUPT RINGTONE
+     * @tc.desc      : AudioRender  VOICE_COMMUNICATION INTERRUPT RINGTONE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -769,7 +783,7 @@ export default function AudioRendererInterruptUnitTest() {
       })
       await start(render1, done)
 
-      let render2 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['48000'],done)
+      let render2 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render2, done)
       await sleep(500)
@@ -825,21 +839,29 @@ export default function AudioRendererInterruptUnitTest() {
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_2600', 0, async function (done) {
+      let flag1 = false;
+      let flag2 = false;
       let render1 = await createAudioRenderer(renderInfo['RINGTONE'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render1, done)
+      render1.on("audioInterrupt", async (eventAction) => {
+        console.log("26 render1.eventAction:" + JSON.stringify(eventAction))
+        flag2 = true;
+      })
 
       let render2 = await createAudioRenderer(renderInfo['ALARM'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       render2.on("audioInterrupt", async (eventAction) => {
-        console.log("26_2.eventAction=" + JSON.stringify(eventAction))
-        if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_PAUSE)
-        } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_RESUME)
-        } else { }
+        console.log("26 render2.eventAction:" + JSON.stringify(eventAction))
+        flag2 = true;
       })
-      await startFail(render2, done, render1)
+      await start(render2, done)
+
+      await sleep(500)
+      await release(render1, done)
+      await release(render2, done)
+      expect(flag1 == false && flag2 == false).assertTrue()
+      done()
     })
 
     /**
@@ -995,8 +1017,8 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_3200
-     * @tc.name      : AudioRender  VOICE_CALL INTERRUPT VOICE_ASSISTANT
-     * @tc.desc      : AudioRender  VOICE_CALL INTERRUPT VOICE_ASSISTANT
+     * @tc.name      : AudioRender  VOICE_COMMUNICATION INTERRUPT VOICE_ASSISTANT
+     * @tc.desc      : AudioRender  VOICE_COMMUNICATION INTERRUPT VOICE_ASSISTANT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -1010,7 +1032,7 @@ export default function AudioRendererInterruptUnitTest() {
       })
       await start(render1, done)
 
-      let render2 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['48000'],done)
+      let render2 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render2, done)
       await sleep(500)
@@ -1230,8 +1252,8 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_5200
-     * @tc.name      : AudioRender  VOICE_CALL INTERRUPT ALARM
-     * @tc.desc      : AudioRender  VOICE_CALL INTERRUPT ALARM
+     * @tc.name      : AudioRender  VOICE_COMMUNICATION INTERRUPT ALARM
+     * @tc.desc      : AudioRender  VOICE_COMMUNICATION INTERRUPT ALARM
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -1245,7 +1267,7 @@ export default function AudioRendererInterruptUnitTest() {
       })
       await start(render1, done)
 
-      let render2 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['48000'],done)
+      let render2 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render2, done)
       await sleep(500)
@@ -1477,8 +1499,8 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_6200
-     * @tc.name      : AudioRender  VOICE_CALL INTERRUPT ACCESSIBILITY
-     * @tc.desc      : AudioRender  VOICE_CALL INTERRUPT ACCESSIBILITY
+     * @tc.name      : AudioRender  VOICE_COMMUNICATION INTERRUPT ACCESSIBILITY
+     * @tc.desc      : AudioRender  VOICE_COMMUNICATION INTERRUPT ACCESSIBILITY
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -1488,7 +1510,7 @@ export default function AudioRendererInterruptUnitTest() {
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render1, done)
 
-      let render2 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['48000'],done)
+      let render2 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       render2.on("audioInterrupt", async (eventAction) => {
         console.log("44_2.eventAction=" + JSON.stringify(eventAction))
@@ -1548,11 +1570,26 @@ export default function AudioRendererInterruptUnitTest() {
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_6400', 0, async function (done) {
       let render1 = await createAudioRenderer(renderInfo['ACCESSIBILITY'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+      render1.on("audioInterrupt", async (eventAction) => {
+        console.log("64.eventAction=" + JSON.stringify(eventAction))
+        if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
+        } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK)
+        } else {
+        }
+      })
       await start(render1, done)
+
 
       let render2 = await createAudioRenderer(renderInfo['VOICE_ASSISTANT'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
-      await startFail(render2, done, render1)
+      await start(render2, done)
+
+      await sleep(500)
+      await release(render1, done)
+      await release(render2, done)
+      done()
     })
 
 
@@ -1735,8 +1772,8 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_7200
-     * @tc.name      : AudioRender  VOICE_CALL INTERRUPT SPEECH
-     * @tc.desc      : AudioRender  VOICE_CALL INTERRUPT SPEECH
+     * @tc.name      : AudioRender  VOICE_COMMUNICATION INTERRUPT SPEECH
+     * @tc.desc      : AudioRender  VOICE_COMMUNICATION INTERRUPT SPEECH
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -1754,7 +1791,7 @@ export default function AudioRendererInterruptUnitTest() {
       })
       await start(render1, done)
 
-      let render2 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['48000'],done)
+      let render2 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render2, done)
       await sleep(500)
@@ -1996,8 +2033,8 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_8200
-     * @tc.name      : AudioRender  VOICE_CALL INTERRUPT MOVIE
-     * @tc.desc      : AudioRender  VOICE_CALL INTERRUPT MOVIE
+     * @tc.name      : AudioRender  VOICE_COMMUNICATION INTERRUPT MOVIE
+     * @tc.desc      : AudioRender  VOICE_COMMUNICATION INTERRUPT MOVIE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -2015,7 +2052,7 @@ export default function AudioRendererInterruptUnitTest() {
       })
       await start(render1, done)
 
-      let render2 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['48000'],done)
+      let render2 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render2, done)
       await sleep(500)
@@ -2275,7 +2312,7 @@ export default function AudioRendererInterruptUnitTest() {
       })
       await start(render1, done)
 
-      let render2 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['48000'],done)
+      let render2 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render2, done)
       await sleep(500)
@@ -2599,8 +2636,8 @@ export default function AudioRendererInterruptUnitTest() {
     })
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_7100
-     * @tc.name      : AudioRender  VOICE_CALL INTERRUPT VOICE_MESSAGE
-     * @tc.desc      : AudioRender  VOICE_CALL INTERRUPT VOICE_MESSAGE
+     * @tc.name      : AudioRender  VOICE_COMMUNICATION INTERRUPT VOICE_MESSAGE
+     * @tc.desc      : AudioRender  VOICE_COMMUNICATION INTERRUPT VOICE_MESSAGE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -2614,7 +2651,7 @@ export default function AudioRendererInterruptUnitTest() {
       })
       await start(render1, done)
 
-      let render2 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['48000'],done)
+      let render2 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render2, done)
       await sleep(500)
@@ -2827,12 +2864,7 @@ export default function AudioRendererInterruptUnitTest() {
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       render1.on("audioInterrupt", async (eventAction) => {
         console.log("21.eventAction=" + JSON.stringify(eventAction))//1
-        if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
-        } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK)
-        } else {
-        }
+        expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_STOP)
       })
       await start(render1, done)
 
@@ -2856,11 +2888,20 @@ export default function AudioRendererInterruptUnitTest() {
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_18100', 0, async function (done) {
       let render1 = await createAudioRenderer(renderInfo['VOICE_MESSAGE'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+      render1.on("audioInterrupt", async (eventAction) => {
+        console.log("181.eventAction=" + JSON.stringify(eventAction))//1
+        expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
+      })
       await start(render1, done)
 
       let render2 = await createAudioRenderer(renderInfo['NOTIFICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
-      await startFail(render2, done, render1)
+      await start(render2, done)
+
+      await sleep(500)
+      await release(render1, done)
+      await release(render2, done)
+      done()
     })
 
 
@@ -2927,8 +2968,8 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_14400
-     * @tc.name      : AudioRender  VOICE_CALL INTERRUPT GAME
-     * @tc.desc      : AudioRender  VOICE_CALL INTERRUPT GAME
+     * @tc.name      : AudioRender  VOICE_COMMUNICATION INTERRUPT GAME
+     * @tc.desc      : AudioRender  VOICE_COMMUNICATION INTERRUPT GAME
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -2946,7 +2987,7 @@ export default function AudioRendererInterruptUnitTest() {
       })
       await start(render1, done)
 
-      let render2 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['48000'],done)
+      let render2 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render2, done)
       await sleep(500)
@@ -3267,8 +3308,8 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_12700
-     * @tc.name      : AudioRender  VOICE_CALL INTERRUPT NAVIGATION
-     * @tc.desc      : AudioRender  VOICE_CALL INTERRUPT NAVIGATION
+     * @tc.name      : AudioRender  VOICE_COMMUNICATION INTERRUPT NAVIGATION
+     * @tc.desc      : AudioRender  VOICE_COMMUNICATION INTERRUPT NAVIGATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -3287,7 +3328,7 @@ export default function AudioRendererInterruptUnitTest() {
       })
       await start(render1, done)
 
-      let render2 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['48000'],done)
+      let render2 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render2, done)
       await sleep(500)
@@ -3635,8 +3676,8 @@ export default function AudioRendererInterruptUnitTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_16700
-     * @tc.name      : AudioRender  VOICE_CALL INTERRUPT NOTIFICATION
-     * @tc.desc      : AudioRender  VOICE_CALL INTERRUPT NOTIFICATION
+     * @tc.name      : AudioRender  VOICE_COMMUNICATION INTERRUPT NOTIFICATION
+     * @tc.desc      : AudioRender  VOICE_COMMUNICATION INTERRUPT NOTIFICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -3650,7 +3691,7 @@ export default function AudioRendererInterruptUnitTest() {
       })
       await start(render1, done)
 
-      let render2 = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['48000'],done)
+      let render2 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render2, done)
       await sleep(500)
