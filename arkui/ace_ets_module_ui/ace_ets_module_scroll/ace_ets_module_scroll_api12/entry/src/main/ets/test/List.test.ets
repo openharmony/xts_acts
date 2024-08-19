@@ -15,8 +15,12 @@
 import ListScrollTest1 from './ScrollTest/ListScroll.test';
 import PopupAlphaTest from './AlphabetIndexerTest/PopupAlpha.test';
 import ListMainChildrenTest from './ListTest/ListMainChildren.test';
+import ListLevel1Test from './ListTest/ListLevel1.test';
+import ListLevel1HorizontalTest from './ListTest/ListLevel1Horizontal.test';
 import refreshOffsetJsunit from './RefreshTest/refreshOffsetJsunit.test';
 import refreshOffsetChangeJsunit from './RefreshTest/refreshOffsetChangeJsunit.test';
+import refreshResourceTest from './RefreshTest/refreshResource.test';
+import refreshStringTest from './RefreshTest/refreshString.test';
 import listVisibleJsunit from './ListTest/listVisibleJsunit.test';
 import scrollOffsetJsunit from './ScrollTest/scrollOffsetJsunit.test';
 import swiperCustomJsunit from './SwiperTest/swiperCustomJsunit.test';
@@ -67,8 +71,12 @@ export default function testsuite() {
   ListScrollTest1()
   PopupAlphaTest()
   ListMainChildrenTest()
+  ListLevel1Test()
+  ListLevel1HorizontalTest()
   refreshOffsetJsunit();
   refreshOffsetChangeJsunit();
+  refreshResourceTest();
+  refreshStringTest();
   listVisibleJsunit();
   scrollOffsetJsunit();
   swiperCustomJsunit();
