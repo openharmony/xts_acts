@@ -6568,7 +6568,6 @@ export default function ConnectionPublicTest() {
       }
     });
 
-
     /**
      * @tc.number     : SUB_NetworkMgr_Connection_NetCap_0500
      * @tc.name       : testNetworkMgrConnectionNetCap0500
