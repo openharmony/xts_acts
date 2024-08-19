@@ -55,7 +55,17 @@ typedef enum CameraCallbackCode {
     Session_OnError = 15,
     CameraManager_Status = 16,
     NoReceived = 10086,
+    PHOTO_ON_PHOTO_AVAILABLE = 17,
+    PHOTO_ON_PHOTO_ASSET_AVAILABLE = 18,
 } CameraCallbackCode;
+
+typedef enum UseCaseCode {
+    PARAMETER_OK = 0,
+    PARAMETER1_ERROR = 1,
+    PARAMETER2_ERROR = 2,
+    PARAMETER3_ERROR = 3,
+    PARAMETER4_ERROR = 4,
+} UseCaseCode;
 
 class NDKCamera {
 public:
@@ -82,7 +92,19 @@ public:
     Camera_VideoStabilizationMode videoMode_;
     Camera_Device* cameras_;
     Camera_OutputCapability* cameraOutputCapability_;
-
+    bool isAddInput_;
+    Camera_Device *camera_;
+    Camera_SceneMode *sceneModes_;
+    Camera_SceneMode sceneMode_;
+    uint64_t secureSeqId_;
+    bool canPreconfig_;
+    uint32_t sceneModesSize_;
+    bool isMovingPhotoSupported_;
+    inline static bool isCalledPhotoAvailable_ = false;
+    inline static bool isCalledPhotoAssetAvailable_ = false;
+    inline static OH_PhotoNative *photoNative_ = nullptr;
+    OH_ImageNative *mainImage_;
+    
     //callback
     static CameraCallbackCode cameraCallbackCode_;
 
@@ -171,6 +193,7 @@ public:
     Camera_ErrorCode VideoOutputRegisterCallback(void);
     Camera_ErrorCode MetadataOutputRegisterCallback(void);
     Camera_ErrorCode CaptureSessionRegisterCallback(void);
+    Camera_ErrorCode CaptureSessionRegisterCallback(int useCaseCode);
 
     // UnRegisterCallback
     Camera_ErrorCode CameraManagerUnRegisterCallback(void);
@@ -180,6 +203,7 @@ public:
     Camera_ErrorCode VideoOutputUnRegisterCallback(void);
     Camera_ErrorCode MetadataOutputUnRegisterCallback(void);
     Camera_ErrorCode CaptureSessionUnRegisterCallback(void);
+    Camera_ErrorCode CaptureSessionUnRegisterCallback(int useCaseCode);
 
     // Get callback
     CameraManager_Callbacks* GetCameraManagerListener(void);
@@ -189,6 +213,58 @@ public:
     VideoOutput_Callbacks* GetVideoOutputListener(void);
     MetadataOutput_Callbacks* GetMetadataOutputListener(void);
     CaptureSession_Callbacks* GetCaptureSessionRegister(void);
+
+    // RegisterCallback_On
+    Camera_ErrorCode CaptureSessionRegisterCallbackOn(int useCaseCode);
+
+    // UnregisterCallback_Off
+    Camera_ErrorCode CaptureSessionUnregisterCallbackOff(int useCaseCode);
+
+    // Get callback
+    CaptureSession_Callbacks* GetCaptureSessionRegister(int useCaseCode);
+
+    Camera_ErrorCode GetSupportedSceneModes(int useCaseCode);
+    Camera_ErrorCode DeleteSceneModes(int useCaseCode);
+    Camera_ErrorCode GetSupportedCameraOutputCapabilityWithSceneMode(int useCaseCode);
+
+    Camera_ErrorCode SetSessionMode(int useCaseCode);
+    Camera_ErrorCode CanAddInput(int useCaseCode);
+    Camera_ErrorCode CanAddPreviewOutput(int useCaseCode);
+    Camera_ErrorCode CanAddPhotoOutput(int useCaseCode);
+    Camera_ErrorCode CanAddVideoOutput(int useCaseCode);
+    Camera_ErrorCode AddSecureOutput(int useCaseCode);
+    Camera_ErrorCode OpenSecureCamera(int useCaseCode);
+
+    Camera_ErrorCode CreatePreviewOutputUsedInPreconfig(int useCaseCode);
+    Camera_ErrorCode CreatePhotoOutputUsedInPreconfig(char *photoSurfaceId, int useCaseCode);
+    Camera_ErrorCode CreateVideoOutputUsedInPreconfig(char *videoId, int useCaseCode);
+    Camera_ErrorCode VideoOutputGetActiveProfile(int useCaseCode);
+    Camera_ErrorCode VideoOutputDeleteProfile(int useCaseCode);
+    Camera_ErrorCode SessionCanPreconfig(uint32_t mode, int useCaseCode);
+    Camera_ErrorCode SessionCanPreconfigWithRatio(uint32_t mode, uint32_t mode2, int useCaseCode);
+    Camera_ErrorCode SessionPreconfig(uint32_t mode, int useCaseCode);
+    Camera_ErrorCode SessionPreconfigWithRatio(uint32_t mode, uint32_t mode2, int useCaseCode);
+    Camera_ErrorCode PreviewOutputGetActiveProfile(int useCaseCode);
+    Camera_ErrorCode PreviewOutputDeleteProfile(int useCaseCode);
+    Camera_ErrorCode PhotoOutputGetActiveProfile(int useCaseCode);
+    Camera_ErrorCode PhotoOutputDeleteProfile(int useCaseCode);
+
+    Camera_ErrorCode SetSceneMode(int useCaseCode);
+    Camera_ErrorCode GetCameraFromCameras(Camera_Device* cameras, Camera_Device** camera);
+
+    Camera_ErrorCode RegisterPhotoAvailableCallback(int useCaseCode);
+    Camera_ErrorCode UnregisterPhotoAvailableCallback(int useCaseCode);
+    Camera_ErrorCode RegisterPhotoAssetAvailableCallback(int useCaseCode);
+    Camera_ErrorCode UnregisterPhotoAssetAvailableCallback(int useCaseCode);
+    Camera_ErrorCode IsMovingPhotoSupported(int useCaseCode);
+    Camera_ErrorCode EnableMovingPhoto(int useCaseCode);
+    Camera_ErrorCode GetMainImage(int useCaseCode);
+    Camera_ErrorCode PhotoNativeRelease(int useCaseCode);
+    Camera_ErrorCode CreatePhotoOutputWithoutSurface(int useCaseCode);
+
+    Camera_ErrorCode Capture(void);
+    static void PhotoOutputOnPhotoAvailable(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo);
+    static void PhotoOutputOnPhotoAssetAvailable(Camera_PhotoOutput* photoOutput, OH_MediaAsset* photoAsset);
 
 private:
     NDKCamera(const NDKCamera&) = delete;
@@ -207,6 +283,8 @@ private:
     Camera_Input* cameraInput_;
     bool* isCameraMuted_;
     char* previewSurfaceId_;
+    Camera_Profile *cameraProfile_;
+    Camera_VideoProfile *videoActiveProfile_;
     Camera_ErrorCode ret_;
     float step_;
 

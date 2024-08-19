@@ -6,7 +6,7 @@
 	    "bundle-name": "com.example.camerandk",
         "module-name": "entry_test",
         "shell-timeout": "600000",
-	    "testcase-timeout": 70000
+	    "testcase-timeout": 700000
     },
     "kits": [
         {

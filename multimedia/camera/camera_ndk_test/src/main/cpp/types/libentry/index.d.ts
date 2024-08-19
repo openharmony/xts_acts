@@ -51,6 +51,46 @@ interface Capture_Setting {
   altitude: number;
 }
 
+interface canPreconfig {
+  errorCode: number;
+  canPreconfig: boolean;
+}
+
+interface supportedSceneModes{
+  errorCode:number;
+  sceneModesSize: number;
+}
+
+interface canAddInput{
+  errorCode:number;
+  isAddInput:boolean;
+}
+
+interface canAddPreviewOutput{
+  errorCode:number;
+  isAddPreviewOutput:boolean;
+}
+
+interface canAddPhotoOutput{
+  errorCode:number;
+  isAddPhotoOutput:boolean;
+}
+
+interface canAddVideoOutput{
+  errorCode:number;
+  isAddVideoOutput:boolean;
+}
+
+interface movingPhoto {
+  errorCode: number;
+  isMovingPhotoSupported: boolean;
+}
+
+interface isCalledPhotoOutput {
+  isCalledPhotoAvailable: boolean;
+  isCalledPhotoAssetAvailable: boolean;
+}
+
 export const initCamera: (surfaceId: string) => number;
 
 export const getSupportedCameras: () => cameraInfo;
@@ -182,3 +222,46 @@ export const sessionGetVideoStabilizationMode: () => number; // return VideoStab
 export const sessionSetVideoStabilizationMode: (a: number) => number;
 
 export const getCameraCallbackCode: () => number;
+
+export const oHCaptureSessionRegisterCallback: (index:number) => number;
+export const oHCaptureSessionUnregisterCallback: (index:number) => number;
+export const oHCameraManagerGetSupportedSceneModes: (index:number) => supportedSceneModes;
+export const oHCameraManagerDeleteSceneModes: (index:number) => number;
+export const oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode: (index:number) => number;
+export const oHCaptureSessionSetSessionMode: (index:number) => number;
+export const oHCaptureSessionCanAddInput: (index:number) => canAddInput;
+export const oHCaptureSessionCanAddPreviewOutput: (index:number) => canAddPreviewOutput;
+export const oHCaptureSessionCanAddPhotoOutput: (index:number) => canAddPhotoOutput;
+export const oHCaptureSessionCanAddVideoOutput: (index:number) => canAddVideoOutput;
+export const oHCaptureSessionAddSecureOutput: (index:number) => number;
+export const oHCameraInputOpenSecureCamera: (index:number) => number;
+export const oHCameraManagerSetSceneMode: (index:number) => number;
+export const oHCaptureSessionRegisterCallbackOn: (index:number) => number;
+export const oHCaptureSessionUnregisterCallbackOff: (index:number) => number;
+export const oHCameraManagerCreateVideoOutputUsedInPreconfig: (videoId: string,index:number) => number;
+export const oHCameraManagerCreatePreviewOutputUsedInPreconfig: (index:number) => number;
+export const oHCameraManagerCreatePhotoOutputUsedInPreconfig: (surfaceId: string,index:number) => number;
+export const oHCaptureSessionCanPreconfig: (a: number,index:number) => canPreconfig;
+export const oHCaptureSessionCanPreconfigWithRatio: (a: number,b: number,index:number) => canPreconfig;
+export const oHCaptureSessionPreconfig: (a: number,index:number) => number;
+export const oHCaptureSessionPreconfigWithRatio: (a: number,b: number,index:number) => number;
+export const oHVideoOutputGetActiveProfile: (index:number) => number;
+export const oHVideoOutputDeleteProfile: (index:number) => number;
+export const oHPreviewOutputGetActiveProfile: (index:number) => number;
+export const oHPreviewOutputDeleteProfile: (index:number) => number;
+export const oHPhotoOutputGetActiveProfile: (index:number) => number;
+export const oHPhotoOutputDeleteProfile: (index:number) => number;
+
+export const oHPhotoOutputRegisterPhotoAvailableCallback: (index:number) => number;
+export const oHPhotoOutputUnregisterPhotoAvailableCallback: (index:number) => number;
+export const oHPhotoOutputRegisterPhotoAssetAvailableCallback: (index:number) => number;
+export const oHPhotoOutputUnregisterPhotoAssetAvailableCallback: (index:number) => number;
+export const oHPhotoOutputIsMovingPhotoSupported: (index:number) => movingPhoto;
+export const oHPhotoOutputEnableMovingPhoto: (index:number) => number;
+export const oHPhotoNativeGetMainImage: (index:number) => number;
+export const oHPhotoNativeRelease: (index:number) => number;
+export const oHCameraManagerCreatePhotoOutputWithoutSurface: (index:number) => number;
+
+export const callDeconstructFunction:() => boolean;
+export const takePicture: () => number;
+export const isCalledPhotoOutputRegisterCallback: () => isCalledPhotoOutput;
