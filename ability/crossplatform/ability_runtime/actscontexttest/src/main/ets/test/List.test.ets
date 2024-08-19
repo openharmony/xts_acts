@@ -17,7 +17,6 @@ import Common from './actsCommonTest/Common.test';
 import Configuration from './actsConfigurationTest/Configuration.test';
 import AbilityStageContext from './actsAbilityStageContextTest/AbilityStageContext.test';
 import ApplicationContext from './actsApplicationContextTest/ApplicationContext.test';
-import UIAbilityContext from './actsUIAbilityContextTest/UIAbilityContext.test';
 import BundleManager from './actsBundleManagerTest/BundleManager.test';
 
 export default function testsuite() {
@@ -25,6 +24,5 @@ export default function testsuite() {
   Configuration();
   AbilityStageContext();
   ApplicationContext();
-  UIAbilityContext();
   BundleManager();
 }

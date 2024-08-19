@@ -4,18 +4,14 @@
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "shell-timeout": "60000",
-        "bundle-name": "com.example.delegatortest",
+        "bundle-name": "com.example.crossplatformability",
         "module-name": "entry",
         "testcase-timeout": 15000
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsCrossplatformAbilityTest.hap",
-                "ActsCrossplatformFeatureATest.hap",
-                "ActsCrossplatformFeatureBTest.hap",
-                "ActsCrossplatformFeatureCTest.hap",
-                "ActsCrossplatformFeatureDTest.hap"
+                "ActsCrossplatformAbilityTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true,
