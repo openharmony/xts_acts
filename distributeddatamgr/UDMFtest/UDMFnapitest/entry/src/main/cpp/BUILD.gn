@@ -32,12 +32,8 @@ ohos_shared_library("UdmfNdk") {
   subsystem_name = "distributeddatamgr"
   part_name = "udmf"
 
-  include_dirs = [
-    "${udmf_interfaces_path}/ndk/data",
-  ]
-  sources = [
-    "./napi/udmf_ndk_test.cpp",
-  ]
+  include_dirs = [ "${udmf_interfaces_path}/ndk/data" ]
+  sources = [ "./napi/udmf_ndk_test.cpp" ]
 
   configs = [ ":config" ]
   deps = [ "${udmf_interfaces_path}/ndk:libudmf" ]
@@ -51,12 +47,8 @@ ohos_shared_library("UdsNdk") {
   subsystem_name = "distributeddatamgr"
   part_name = "udmf"
 
-  include_dirs = [
-    "${udmf_interfaces_path}/ndk/data",
-  ]
-  sources = [
-    "./napi/uds_ndk_test.cpp",
-  ]
+  include_dirs = [ "${udmf_interfaces_path}/ndk/data" ]
+  sources = [ "./napi/uds_ndk_test.cpp" ]
 
   configs = [ ":config" ]
   deps = [ "${udmf_interfaces_path}/ndk:libudmf" ]
