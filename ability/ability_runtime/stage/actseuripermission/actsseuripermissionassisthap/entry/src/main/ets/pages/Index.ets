@@ -19,15 +19,14 @@ export function log(info: string) {
   console.error("[ServiceExtApp]:: ", info);
 }
 
-function readUri(uri: string) {
+function readUri(uri: string | undefined) {
   try {
     log(`uri = ${uri}`);
     let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
     log(`open file successfully!`);
     let buf = new ArrayBuffer(1024);
     let readLen = fs.readSync(file.fd, buf, { offset: 0 });
-    let fileContent = String.fromCharCode.apply(null, new Uint8Array(buf.slice(0, readLen)));
-    log("read ok!" + fileContent);
+    log("read ok!" + readLen);
     fs.closeSync(file);
     return "read ok!";
   } catch (e) {
@@ -40,7 +39,7 @@ function readUri(uri: string) {
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  uri: string = "";
+  uri: string | undefined = "";
 
   aboutToAppear() {
     this.uri = AppStorage.get<string>("uri");
