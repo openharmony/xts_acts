@@ -137,6 +137,63 @@ import MultiNavigation32 from './MultiNavigation/MultiNavigation32.test'
 import NavigationLaunchMode from './Navigation/NavigationLaunchMode.test'
 import NavigationTitleTest1 from './Navigation/NavigationTitleTest1.test'
 
+import navigation_add1_1 from './Navigation/navigation_add/navigation_add1_1.test'
+import navigation_add1_2 from './Navigation/navigation_add/navigation_add1_2.test'
+import navigation_add2_1 from './Navigation/navigation_add/navigation_add2_1.test'
+import navigation_add2_2 from './Navigation/navigation_add/navigation_add2_2.test'
+import navigation_add3_1 from './Navigation/navigation_add/navigation_add3_1.test'
+import navigation_add3_2 from './Navigation/navigation_add/navigation_add3_2.test'
+import navigation_add4_1 from './Navigation/navigation_add/navigation_add4_1.test'
+import queryNavigationInfoTest from './Navigation/queryNavigationInfoTest.test'
+import StepperTest1 from './Stepper/StepperTest1.test'
+
+import Navigation_L0_1 from './Navigation/Navigation_L0/Navigation_L0_1.test'
+import Navigation_L0_2 from './Navigation/Navigation_L0/Navigation_L0_2.test'
+import Navigation_L0_3 from './Navigation/Navigation_L0/Navigation_L0_3.test'
+import Navigation_L0_4 from './Navigation/Navigation_L0/Navigation_L0_4.test'
+import Navigation_L0_5_1 from './Navigation/Navigation_L0/Navigation_L0_5_1.test'
+import Navigation_L0_5_2 from './Navigation/Navigation_L0/Navigation_L0_5_2.test'
+import Navigation_L0_6 from './Navigation/Navigation_L0/Navigation_L0_6.test'
+import Navigation_L0_7 from './Navigation/Navigation_L0/Navigation_L0_7.test'
+import Navigation_L0_8 from './Navigation/Navigation_L0/Navigation_L0_8.test'
+import Navigation_L0_9 from './Navigation/Navigation_L0/Navigation_L0_9.test'
+import Navigation_L0_10 from './Navigation/Navigation_L0/Navigation_L0_10.test'
+import Navigation_L0_11 from './Navigation/Navigation_L0/Navigation_L0_11.test'
+import Navigation_L0_12 from './Navigation/Navigation_L0/Navigation_L0_12.test'
+import Navigation_L0_13 from './Navigation/Navigation_L0/Navigation_L0_13.test'
+import Navigation_L0_14 from './Navigation/Navigation_L0/Navigation_L0_14.test'
+import Navigation_L0_15 from './Navigation/Navigation_L0/Navigation_L0_15.test'
+import Navigation_L0_16 from './Navigation/Navigation_L0/Navigation_L0_16.test'
+import Navigation_L0_17 from './Navigation/Navigation_L0/Navigation_L0_17.test'
+import Navigation_L0_18 from './Navigation/Navigation_L0/Navigation_L0_18.test'
+import Navigation_L0_19 from './Navigation/Navigation_L0/Navigation_L0_19.test'
+import Navigation_L0_20 from './Navigation/Navigation_L0/Navigation_L0_20.test'
+import Navigation_L0_21_1 from './Navigation/Navigation_L0/Navigation_L0_21_1.test'
+import Navigation_L0_21_2 from './Navigation/Navigation_L0/Navigation_L0_21_2.test'
+
+import NavigationLevelTest1 from './Navigation/NavigationLevel/NavigationLevelTest1.test'
+import NavigationLevelTest2 from './Navigation/NavigationLevel/NavigationLevelTest2.test'
+import NavigationLevelTest3 from './Navigation/NavigationLevel/NavigationLevelTest3.test'
+import NavigationLevelTest4 from './Navigation/NavigationLevel/NavigationLevelTest4.test'
+import NavigationLevelTest5 from './Navigation/NavigationLevel/NavigationLevelTest5.test'
+import NavigationLevelTest6 from './Navigation/NavigationLevel/NavigationLevelTest6.test'
+import NavigationLevelTest7 from './Navigation/NavigationLevel/NavigationLevelTest7.test'
+import NavigationLevelTest8 from './Navigation/NavigationLevel/NavigationLevelTest8.test'
+import NavigationLevelTest9 from './Navigation/NavigationLevel/NavigationLevelTest9.test'
+import NavigationLevelTest10 from './Navigation/NavigationLevel/NavigationLevelTest10.test'
+import NavigationLevelTest11 from './Navigation/NavigationLevel/NavigationLevelTest11.test'
+import NavigationLevelTest12 from './Navigation/NavigationLevel/NavigationLevelTest12.test'
+import NavigationLevelTest13 from './Navigation/NavigationLevel/NavigationLevelTest13.test'
+import NavigationLevelTest14 from './Navigation/NavigationLevel/NavigationLevelTest14.test'
+import NavigationLevelTest15 from './Navigation/NavigationLevel/NavigationLevelTest15.test'
+import NavigationLevelTest16 from './Navigation/NavigationLevel/NavigationLevelTest16.test'
+import NavigationLevelTest17 from './Navigation/NavigationLevel/NavigationLevelTest17.test'
+import NavigationLevelTest18 from './Navigation/NavigationLevel/NavigationLevelTest18.test'
+import NavigationLevelTest19 from './Navigation/NavigationLevel/NavigationLevelTest19.test'
+import NavigationLevelTest20 from './Navigation/NavigationLevel/NavigationLevelTest20.test'
+import NavigationLevelTest21 from './Navigation/NavigationLevel/NavigationLevelTest21.test'
+import NavigationLevelTest22 from './Navigation/NavigationLevel/NavigationLevelTest22.test'
+import NavigationLevelTest23 from './Navigation/NavigationLevel/NavigationLevelTest23.test'
 export default function testsuite() {
   NavigationApi1();
   NavigationApi2();
@@ -261,4 +318,63 @@ export default function testsuite() {
   MultiNavigation32()
   NavigationLaunchMode();
   NavigationTitleTest1();
+
+  navigation_add1_1()
+  navigation_add1_2()
+  navigation_add2_1()
+  navigation_add2_2()
+  navigation_add3_1()
+  navigation_add3_2()
+  navigation_add4_1()
+  queryNavigationInfoTest()
+  StepperTest1()
+
+  Navigation_L0_1()
+  Navigation_L0_2()
+  Navigation_L0_3()
+  Navigation_L0_4()
+  Navigation_L0_5_1()
+  Navigation_L0_5_2()
+  Navigation_L0_6()
+  Navigation_L0_7()
+  Navigation_L0_8()
+  Navigation_L0_9()
+  Navigation_L0_10()
+  Navigation_L0_11()
+  Navigation_L0_12()
+  Navigation_L0_13()
+  Navigation_L0_14()
+  Navigation_L0_15()
+  Navigation_L0_16()
+  Navigation_L0_17()
+  Navigation_L0_18()
+  Navigation_L0_19()
+  Navigation_L0_20()
+  Navigation_L0_21_1()
+  Navigation_L0_21_2()
+
+  NavigationLevelTest1();
+  NavigationLevelTest2();
+  NavigationLevelTest3();
+  NavigationLevelTest4();
+  NavigationLevelTest5();
+  NavigationLevelTest6();
+  NavigationLevelTest7();
+  NavigationLevelTest8();
+  NavigationLevelTest9();
+  NavigationLevelTest10();
+  NavigationLevelTest11();
+  NavigationLevelTest12();
+  NavigationLevelTest13();
+  NavigationLevelTest14();
+  NavigationLevelTest15();
+  NavigationLevelTest16();
+  NavigationLevelTest17();
+  NavigationLevelTest18();
+  NavigationLevelTest19();
+  NavigationLevelTest20();
+  NavigationLevelTest21();
+  NavigationLevelTest22();
+  NavigationLevelTest23();
+
 }
