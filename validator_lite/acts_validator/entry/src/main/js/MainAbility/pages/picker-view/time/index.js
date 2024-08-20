@@ -13,68 +13,68 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
-        defaultTime: "",
-        time: "",
-        str: "",
-        title: "picker-view;",
-        txtName: "compent.txt",
-        pass: "true ;",
-        fail: "false;"
+        defaultTime: '',
+        time: '',
+        str: '',
+        title: 'picker-view;',
+        txtName: 'compent.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
     onInit() {
-        console.info('onInit')
+        console.info('onInit');
         this.defaultTime = this.now();
-        this.time = this.defaultTime
+        this.time = this.defaultTime;
     },
 
     handleChange(data) {
-        this.time = this.concat(data.hour,data.minute)
+        this.time = this.concat(data.hour, data.minute);
     },
 
     onDestroy() {
-        console.info('onDestroy')
+        console.info('onDestroy');
 
     },
 
     now() {
-        const date = new Date()
+        const date = new Date();
         const hours = date.getHours();
         const minutes = date.getMinutes();
-        console.log("now hours:"+hours+" minutes:"+minutes);
+        console.log('now hours:' + hours + ' minutes:' + minutes);
         return this.concat(hours,minutes);
     },
 
     fill(value) {
-        return (value > 9 ? "":"0") + value;
+        return (value > 9 ? '' : '0') + value;
     },
 
     concat(hours, minutes) {
-        return this.fill(hours) + ":" + this.fill(minutes)
+        return this.fill(hours) + ':' + this.fill(minutes);
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：滑动选择器修改选择时间",
-                result: "预期结果：红色字体的时间跟随滑动选择器变化，时间并保持一致",
-                url: "pages/picker-view/time/index"
+                step: '操作步骤：滑动选择器修改选择时间',
+                result: '预期结果：红色字体的时间跟随滑动选择器变化，时间并保持一致',
+                url: 'pages/picker-view/time/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-compent/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-compent/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 };

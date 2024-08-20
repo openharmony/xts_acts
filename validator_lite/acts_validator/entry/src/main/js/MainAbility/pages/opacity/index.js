@@ -13,35 +13,35 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../common/js/saveData";
+import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
-        str: "",
-        title: "opacity;",
-        txtName: "compent.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'opacity;',
+        txtName: 'compent.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：观察三张图片透明度",
-                result: "预期结果：第一张图片不透明，第二张图片半透明，第三张图片更透明",
-                url: "pages/opacity/index"
+                step: '操作步骤：观察三张图片透明度',
+                result: '预期结果：第一张图片不透明，第二张图片半透明，第三张图片更透明',
+                url: 'pages/opacity/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-compent/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-compent/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 };

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import brightness from '@system.brightness';
 
@@ -22,75 +22,74 @@ export default {
         value: 0,
         get_value : 0,
 
-        str: "",
-        title: "brightness(value);",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'brightness(value);',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
-    onInit(){
-        console.info('onInit')
+    onInit() {
+        console.info('onInit');
     },
 
     getBrightnessValue() {
-        let obj = this
+        let obj = this;
         brightness.getValue({
             success: function (data) {
-                obj.get_value = data.value
-                this.value = this.get_value
-                console.info('success get brightness value:' + data.value)
+                obj.get_value = data.value;
+                this.value = this.get_value;
+                console.info('success get brightness value:' + data.value);
             },
             fail: function (data, code) {
-                console.info('get brightness fail, code: ' + code + ', data: ' + data)
+                console.info('get brightness fail, code: ' + code + ', data: ' + data);
             }
-        })
+        });
     },
 
     clickSlider() {
-        this.setBrightness(this.value)
+        this.setBrightness(this.value);
     },
 
     valueChange(value) {
         this.value = value.progress;
-        this.setBrightness(this.value)
+        this.setBrightness(this.value);
     },
 
-    setBrightness(value){
-        let obj = this
+    setBrightness(value) {
+        let obj = this;
         brightness.setValue({
             value: value,
             success: function () {
-                console.info('set brightness success value: ' + value)
-                // obj.getBrightnessValue()
+                console.info('set brightness success value: ' + value);
             },
             fail: function (data, code) {
-                console.error('set brightness success value fail, code: ' + code + ', data: ' + data)
+                console.error('set brightness success value fail, code: ' + code + ', data: ' + data);
             }
-        })
+        });
     },
 
-    onDestroy(){
-        console.info('onDestroy')
+    onDestroy() {
+        console.info('onDestroy');
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击获取亮度、拖动滑动条",
-                result: "预期结果：获取亮度时显示当前屏幕的亮度值，调节滑动条时看到屏幕有明暗变化",
-                url: "pages/brightness/value/index"
+                step: '操作步骤：点击获取亮度、拖动滑动条',
+                result: '预期结果：获取亮度时显示当前屏幕的亮度值，调节滑动条时看到屏幕有明暗变化',
+                url: 'pages/brightness/value/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 };

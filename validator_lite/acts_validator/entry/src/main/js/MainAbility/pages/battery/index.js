@@ -13,58 +13,58 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../common/js/saveData";
+import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 import battery from '@system.battery';
 
 export default {
     data: {
         level: 0,
-        str: "",
-        title: "battery;",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'battery;',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
-    onInit(){
-        console.info('onInit')
+    onInit() {
+        console.info('onInit');
     },
 
-    onDestroy(){
-        console.info('onDestroy')
+    onDestroy() {
+        console.info('onDestroy');
     },
 
     getInfo() {
-        let obj = this
+        let obj = this;
         battery.getStatus({
             success: function (data) {
-                obj.level = data.level * 100
-                console.info('success get battery level:' + data.level)
+                obj.level = data.level * 100;
+                console.info('success get battery level:' + data.level);
             },
             fail: function (data, code) {
-                console.info('Subscription faild. code: ' + code + "; Data: " + data)
+                console.info('Subscription faild. code: ' + code + '; Data: ' + data);
             }
-        })
+        });
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击获取电量",
-                result: "预期结果：显示当前设备的电量实际百分值",
-                url: "pages/battery/index"
+                step: '操作步骤：点击获取电量',
+                result: '预期结果：显示当前设备的电量实际百分值',
+                url: 'pages/battery/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 };

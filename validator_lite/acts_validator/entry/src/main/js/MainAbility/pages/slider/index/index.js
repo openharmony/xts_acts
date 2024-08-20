@@ -13,48 +13,48 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
-        sliderValue: "",
+        sliderValue: '',
         dynamicValue: 150,
-        str: "",
-        title: "slider;",
-        txtName: "compent.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'slider;',
+        txtName: 'compent.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
     clickSlider() {
-        console.log("onClick called...");
-        this.sliderValue = "slider clicked";
+        console.log('onClick called...');
+        this.sliderValue = 'slider clicked';
     },
 
     valueChange(value) {
-        console.log("valueChange called... this.dynamicValue = " + this.dynamicValue);
-        this.sliderValue = "slider changed";
+        console.log('valueChange called... this.dynamicValue = ' + this.dynamicValue);
+        this.sliderValue = 'slider changed';
         this.dynamicValue = value.progress;
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：拖动或点击滑动条",
-                result: "预期结果：滑动条值跟随变化并显示操作状态",
-                url: "pages/slider/index/index"
+                step: '操作步骤：拖动或点击滑动条',
+                result: '预期结果：滑动条值跟随变化并显示操作状态',
+                url: 'pages/slider/index/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-compent/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-compent/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 }

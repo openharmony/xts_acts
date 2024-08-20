@@ -13,49 +13,60 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../common/js/saveData";
+import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 import device from '@system.device';
 
 export default {
     data: {
-        str: "",
-        title: "deviceInfo;",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;",
+        str: '',
+        title: 'deviceInfo;',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;',
 
         todolist:[{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
+            title: ''
+        },
+        {
+            title: ''
+        },
+        {
+            title: ''
+        },
+        {
+            title: ''
+        },
+        {
+            title: ''
+        },
+        {
+            title: ''
+        },
+        {
+            title: ''
+        },
+        {
+            title: ''
+        },
+        {
+            title: ''
+        },
+        {
+            title: ''
+        },
+        {
+            title: ''
+        },
+        {
+            title: ''
         }
         ],
     },
 
     clickAction:function(){
         let obj = this;
-        console.info("clickAction")
+        console.info('clickAction');
         device.getInfo({
             success:function(data){
 
@@ -71,34 +82,34 @@ export default {
                 obj.todolist[9].title = 'screenShape:' + data.screenShape;
                 obj.todolist[10].title = 'apiVersion:' + data.apiVersion;
                 obj.todolist[11].title = 'deviceType:' + data.deviceType;
-                console.log("get device info success, data:"+ JSON.stringify(data));
+                console.log('get device info success, data:'+ JSON.stringify(data));
             },
             fail:function(data,code){
-                obj.brand = "get device info failed, errorcode:"+code;
-                console.log("get device info failed");
+                obj.brand = 'get device info failed, errorcode:'+code;
+                console.log('get device info failed');
             },
             complete:function(){
-                console.log("get device info completed");
+                console.log('get device info completed');
             }
         });
     },
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击获取信息按钮",
-                result: "预期结果：屏幕上显示设备信息，滑动看到所有信息",
-                url: "pages/deviceInfo/index"
+                step: '操作步骤：点击获取信息按钮',
+                result: '预期结果：屏幕上显示设备信息，滑动看到所有信息',
+                url: 'pages/deviceInfo/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 }

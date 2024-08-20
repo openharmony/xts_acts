@@ -13,42 +13,42 @@
  * limitations under the License.
  */
 
-import {commonFunc, dataCommon} from "../../../common/js/event"
-import { saveTxtData } from "../../../common/js/saveData";
+import {commonFunc, dataCommon} from '../../../common/js/event'
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
   data: {
     ...dataCommon,
-    str: "",
-    title: "longpress;",
-    txtName: "compent.txt",
-    pass: "true ;",
-    fail: "false;"
+    str: '',
+    title: 'longpress;',
+    txtName: 'compent.txt',
+    pass: 'true ;',
+    fail: 'false;'
   },
   longPressEvent(e) {
-    console.info("press start");
+    console.info('press start');
     commonFunc(this, e);
-    console.info("press stop");
+    console.info('press stop');
   },
 
   help() {
     router.replace({
-      uri: "pages/help/index",
+      uri: 'pages/help/index',
       params: {
-        step: "操作步骤：长按彩色区域",
-        result: "预期结果：x、y、timeStamp、彩色区颜色随长按事件变化而变化",
-        url: "pages/event/longpress/index"
+        step: '操作步骤：长按彩色区域',
+        result: '预期结果：x、y、timeStamp、彩色区颜色随长按事件变化而变化',
+        url: 'pages/event/longpress/index'
       }
     });
   },
 
   back() {
-    console.info("onclick back ")
-    router.replace({ uri: "pages/second-compent/index" });
+    console.info('onclick back ');
+    router.replace({ uri: 'pages/second-compent/index' });
   },
 
   changeResult(result) {
-    saveTxtData(this, result)
+    saveTxtData(this, result);
   },
 };

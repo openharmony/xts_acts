@@ -13,39 +13,37 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../common/js/saveData";
+import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
-        animationName: "animationTest",
-        animationName2: "animation2",
-
-        str: "",
-        title: "transition;",
-        txtName: "compent.txt",
-        pass: "true ;",
-        fail: "false;"
+        animationName: 'animationTest',
+        animationName2: 'animation2',
+        str: '',
+        title: 'transition;',
+        txtName: 'compent.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
     help() {
-        console.info("11111")
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：观察界面变化",
-                result: "预期结果：界面上元素平移后还原",
-                url: "pages/transition/index"
+                step: '操作步骤：观察界面变化',
+                result: '预期结果：界面上元素平移后还原',
+                url: 'pages/transition/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-compent/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-compent/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 };

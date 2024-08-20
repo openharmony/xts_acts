@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 var index = 0;
@@ -21,16 +21,16 @@ export default {
     data:{
         index:0,
         intervalID: -1,
-        str: "",
-        title: "timer(interval);",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'timer(interval);',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
     onDestroy() {
-        console.info("onDestroy")
-        this.clearInterval()
+        console.info('onDestroy');
+        this.clearInterval();
     },
 
     startInterval:function() {
@@ -43,26 +43,26 @@ export default {
     },
 
     clearInterval() {
-        clearInterval(this.intervalID)
+        clearInterval(this.intervalID);
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击startInterval、clearInterval",
-                result: "预期结果：点击startInterval每过1s数字加1，在点clearInterval时数字停止增加",
-                url: "pages/timer/setInterval02/index"
+                step: '操作步骤：点击startInterval、clearInterval',
+                result: '预期结果：点击startInterval每过1s数字加1，在点clearInterval时数字停止增加',
+                url: 'pages/timer/setInterval02/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 }

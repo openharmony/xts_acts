@@ -20,114 +20,114 @@ export default {
     todolist: [
       {
         id: 0,
-        title: "应用上下文",
-        url: "pages/app/index"
+        title: '应用上下文',
+        url: 'pages/app/index'
       },
       {
         id: 1,
-        title: "应用配置",
-        url: "pages/configuration/index"
+        title: '应用配置',
+        url: 'pages/configuration/index'
       },
       {
         id: 2,
-        title: "定时器(timeout)",
-        url: "pages/timer/setTimeout01/index"
+        title: '定时器(timeout)',
+        url: 'pages/timer/setTimeout01/index'
       },
       {
         id: 3,
-        title: "定时器(interval)",
-        url: "pages/timer/setInterval02/index"
+        title: '定时器(interval)',
+        url: 'pages/timer/setInterval02/index'
       },
       {
         id: 4,
-        title: "数据存储",
-        url: "pages/storage/storage01/index"
+        title: '数据存储',
+        url: 'pages/storage/storage01/index'
       },
       {
         id: 5,
-        title: "文件存储",
-        url: "pages/file/index/index"
+        title: '文件存储',
+        url: 'pages/file/index/index'
       },
       {
         id: 8,
-        title: "振动",
-        url: "pages/vibrator/index"
+        title: '振动',
+        url: 'pages/vibrator/index'
       },
       {
         id: 9,
-        title: "传感器(计步)",
-        url: "pages/sensor/stepCounter/index"
+        title: '传感器(计步)',
+        url: 'pages/sensor/stepCounter/index'
       },
       {
         id: 10,
-        title: "传感器(气压)",
-        url: "pages/sensor/barometer/index"
+        title: '传感器(气压)',
+        url: 'pages/sensor/barometer/index'
       },
       {
         id: 11,
-        title: "传感器(心率)",
-        url: "pages/sensor/heartRate/index"
+        title: '传感器(心率)',
+        url: 'pages/sensor/heartRate/index'
       },
       {
         id: 12,
-        title: "传感器(佩戴)",
-        url: "pages/sensor/onBodyState/index"
+        title: '传感器(佩戴)',
+        url: 'pages/sensor/onBodyState/index'
       },
       {
         id: 13,
-        title: "传感器(加速度)",
-        url: "pages/sensor/accelerometer/index"
+        title: '传感器(加速度)',
+        url: 'pages/sensor/accelerometer/index'
       },
       {
         id: 14,
-        title: "传感器(陀螺仪)",
-        url: "pages/sensor/gyroscope/index"
+        title: '传感器(陀螺仪)',
+        url: 'pages/sensor/gyroscope/index'
       },
       {
         id: 15,
-        title: "地理位置(info)",
-        url: "pages/location/info/index"
+        title: '地理位置(info)',
+        url: 'pages/location/info/index'
       },
       {
         id: 16,
-        title: "地理位置(订阅)",
-        url: "pages/location/subscribe/index"
+        title: '地理位置(订阅)',
+        url: 'pages/location/subscribe/index'
       },
       {
         id: 17,
-        title: "设备信息",
-        url: "pages/deviceInfo/index"
+        title: '设备信息',
+        url: 'pages/deviceInfo/index'
       },
       {
         id: 18,
-        title: "屏幕亮度(value)",
-        url: "pages/brightness/value/index"
+        title: '屏幕亮度(value)',
+        url: 'pages/brightness/value/index'
       },
       {
         id: 19,
-        title: "屏幕亮度(Mode)",
-        url: "pages/brightness/mode/index"
+        title: '屏幕亮度(Mode)',
+        url: 'pages/brightness/mode/index'
       },
       {
         id: 20,
-        title: "电量信息",
-        url: "pages/battery/index"
+        title: '电量信息',
+        url: 'pages/battery/index'
       },
       {
         id: 21,
-        title: "NFC卡片",
-        url: "pages/nfc/index"
+        title: 'NFC卡片',
+        url: 'pages/nfc/index'
       },
       {
         id: 22,
-        title: "返回首页",
-        url: "pages/index/index"
+        title: '返回首页',
+        url: 'pages/index/index'
       }
     ]
   },
 
   clickChange(url) {
-    console.info("onclick url: " + url)
+    console.info('onclick url: ' + url);
     router.replace({ uri: url });
   },
 

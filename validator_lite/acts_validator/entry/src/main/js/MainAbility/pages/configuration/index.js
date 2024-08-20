@@ -12,64 +12,68 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { saveTxtData } from "../../common/js/saveData";
+
+import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 import configuration from '@system.configuration';
 
 export default {
     data: {
-        localeInfo: "",
-        str: "",
-        title: "configuration;",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;",
+        localeInfo: '',
+        str: '',
+        title: 'configuration;',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;',
         todolist:[{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
+            title: ''
+        },
+        {
+            title: ''
+        },
+        {
+            title: ''
+        },
+        {
+            title: ''
         }
         ],
     },
 
-    onInit(){
-        console.info('onInit')
+    onInit() {
+        console.info('onInit');
     },
 
-    onDestroy(){
-        console.info('onDestroy')
+    onDestroy() {
+        console.info('onDestroy');
     },
 
     getInfo() {
-        var info = configuration.getLocale()
-        console.log(JSON.stringify(info))
-        this.todolist[0].title = "语言: " + info.language
-        this.todolist[1].title = "国家: " + info.countryOrRegion
-        this.todolist[2].title = "文字布局方向: " + info.dir
+        var info = configuration.getLocale();
+        console.log(JSON.stringify(info));
+        this.todolist[0].title = '语言: ' + info.language;
+        this.todolist[1].title = '国家: ' + info.countryOrRegion;
+        this.todolist[2].title = '文字布局方向: ' + info.dir;
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击获取信息",
-                result: "预期结果：获取信息按钮正确显示应用当前的语言和地区",
-                url: "pages/configuration/index"
+                step: '操作步骤：点击获取信息',
+                result: '预期结果：获取信息按钮正确显示应用当前的语言和地区',
+                url: 'pages/configuration/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 
 };

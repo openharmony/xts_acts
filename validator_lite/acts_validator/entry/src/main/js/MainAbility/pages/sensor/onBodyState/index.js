@@ -13,40 +13,40 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import sensor from '@system.sensor';
 
 export default {
     data: {
         value: 0,
-        str: "",
-        title: "onBodyState;",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'onBodyState;',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
-    onInit(){
-        console.info('onInit')
+    onInit() {
+        console.info('onInit');
     },
 
-    onDestroy(){
-        console.info('unsubscribeOnBodyState')
-        this.unsubscribeOnBodyState()
+    onDestroy() {
+        console.info('unsubscribeOnBodyState');
+        this.unsubscribeOnBodyState();
     },
 
     subscribeOnBodyState() {
-        let obj = this
+        let obj = this;
         sensor.subscribeOnBodyState({
             success: function (ret) {
-                obj.value = ret.value
-                console.info('get on-body state value:' + ret.value)
+                obj.value = ret.value;
+                console.info('get on-body state value:' + ret.value);
             },
             fail: function (data, code) {
-                console.info('Subscription faild. code: ' + code + "; Data: " + data)
+                console.info('Subscription faild. code: ' + code + '; Data: ' + data);
             }
-        })
+        });
     },
 
     unsubscribeOnBodyState() {
@@ -54,35 +54,35 @@ export default {
     },
 
     getOnBodyState() {
-        let obj = this
+        let obj = this;
         sensor.getOnBodyState({
             success: function (ret) {
-                obj.value = ret.value
-                console.info('on body state:' + ret.value)
+                obj.value = ret.value;
+                console.info('on body state:' + ret.value);
             },
             fail: function (data, code) {
-                console.info('Subscription faild. code: ' + code + "; Data: " + data)
+                console.info('Subscription faild. code: ' + code + '; Data: ' + data);
             }
-        })
+        });
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击订阅佩戴和取消订阅，佩戴状态",
-                result: "预期结果：订阅佩戴会实时更新当前佩戴状态，取消订阅后佩戴状态不再更新，佩戴状态显示当前的佩戴状态",
-                url: "pages/sensor/onBodyState/index"
+                step: '操作步骤：点击订阅佩戴和取消订阅，佩戴状态',
+                result: '预期结果：订阅佩戴会实时更新当前佩戴状态，取消订阅后佩戴状态不再更新，佩戴状态显示当前的佩戴状态',
+                url: 'pages/sensor/onBodyState/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 };

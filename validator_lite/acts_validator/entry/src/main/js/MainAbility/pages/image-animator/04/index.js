@@ -12,19 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { imageFrames as frames } from "../../../common/js/general";
-import { saveTxtData } from "../../../common/js/saveData";
+
+import { imageFrames as frames } from '../../../common/js/general';
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
   data: {
     frames,
     state: null,
-    str: "",
-    title: "char-bar;",
-    txtName: "compent.txt",
-    pass: "true ;",
-    fail: "false;",
+    str: '',
+    title: 'char-bar;',
+    txtName: 'compent.txt',
+    pass: 'true ;',
+    fail: 'false;',
   },
 
   onShow() {
@@ -52,26 +53,26 @@ export default {
     this.state = animator.getState();
   },
   logStop() {
-    console.log("Stopped");
+    console.log('Stopped');
   },
 
   help() {
     router.replace({
-      uri: "pages/help/index",
+      uri: 'pages/help/index',
       params: {
-        step: "操作步骤：点击播放，暂停，恢复，停止按钮",
-        result: "预期结果：动画随操作步骤播放或停止，播放状态随之对应变化",
-        url: "pages/image-animator/04/index"
+        step: '操作步骤：点击播放，暂停，恢复，停止按钮',
+        result: '预期结果：动画随操作步骤播放或停止，播放状态随之对应变化',
+        url: 'pages/image-animator/04/index'
       }
     });
   },
 
   back() {
-    console.info("onclick back ")
-    router.replace({ uri: "pages/second-compent/index" });
+    console.info('onclick back ');
+    router.replace({ uri: 'pages/second-compent/index' });
   },
 
   changeResult(result) {
-    saveTxtData(this, result)
+    saveTxtData(this, result);
   },
 };

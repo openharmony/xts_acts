@@ -13,35 +13,35 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default{
     data: {
-        str: "",
-        title: "input;",
-        txtName: "compent.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'input;',
+        txtName: 'compent.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：复选框，单选，图片按钮均可点击",
-                result: "预期结果：复选框可反复点击，单选框只能点击一次，图片按钮点击时有变化",
-                url: "pages/input/CheckboxImage31/index"
+                step: '操作步骤：复选框，单选，图片按钮均可点击',
+                result: '预期结果：复选框可反复点击，单选框只能点击一次，图片按钮点击时有变化',
+                url: 'pages/input/CheckboxImage31/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-compent/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-compent/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 }

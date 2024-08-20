@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import sensor from '@system.sensor';
 
@@ -23,39 +23,39 @@ export default {
         speedY: 0,
         speedZ: 0,
         states: '',
-        str: "",
-        title: "gyroscope;",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'gyroscope;',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
-    onInit(){
-        console.info('onInit')
+    onInit() {
+        console.info('onInit');
     },
 
-    onDestroy(){
-        console.info('onDestroy')
-        this.unsubscribeGyroscope()
+    onDestroy() {
+        console.info('onDestroy');
+        this.unsubscribeGyroscope();
     },
 
     subscribeGyroscope() {
-        let obj = this
-        this.states = 'normal'
+        let obj = this;
+        this.states = 'normal';
         sensor.subscribeGyroscope({
             interval: 'normal',
             success: function (ret) {
-                obj.speedX = ret.x
-                obj.speedY = ret.y
-                obj.speedZ = ret.z
-                console.info('X-axis data:' + ret.x)
-                console.info('Y-axis data:' + ret.y)
-                console.info('Z-axis data:' + ret.z)
+                obj.speedX = ret.x;
+                obj.speedY = ret.y;
+                obj.speedZ = ret.z;
+                console.info('X-axis data:' + ret.x);
+                console.info('Y-axis data:' + ret.y);
+                console.info('Z-axis data:' + ret.z);
             },
             fail: function (data, code) {
-                console.info('Subscription faild. code: ' + code + "; Data: " + data)
+                console.info('Subscription faild. code: ' + code + '; Data: ' + data);
             }
-        })
+        });
     },
 
     unsubscribeGyroscope() {
@@ -64,21 +64,21 @@ export default {
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击订阅陀螺仪和取消订阅",
-                result: "预期结果：订阅陀螺仪后会实时更新当前x,y,z值，取消订阅后数据不再更新",
-                url: "pages/sensor/gyroscope/index"
+                step: '操作步骤：点击订阅陀螺仪和取消订阅',
+                result: '预期结果：订阅陀螺仪后会实时更新当前x,y,z值，取消订阅后数据不再更新',
+                url: 'pages/sensor/gyroscope/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 };

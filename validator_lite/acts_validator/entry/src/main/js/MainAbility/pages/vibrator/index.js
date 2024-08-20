@@ -13,74 +13,74 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../common/js/saveData";
+import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 import Vibrator from '@system.vibrator'
 
 export default {
     data: {
-        strStates: ["短振动", "长振动"],
-        state: "",
-        str: "",
-        title: "vibrator;",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;"
+        strStates: ['短振动', '长振动'],
+        state: '',
+        str: '',
+        title: 'vibrator;',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
     clickActionShort:function(){
-        console.info('vibrate short')
-        let obj = this
+        console.info('vibrate short');
+        let obj = this;
         Vibrator.vibrate({
             mode: 'short',
             success: function(ret) {
-                obj.state = this.strStates[0]
-                console.info('vibrate is successful')
+                obj.state = this.strStates[0];
+                console.info('vibrate is successful');
             },
             fail: function(ret) {
-                console.info('vibrate is failed')
+                console.info('vibrate is failed');
             },
             complete: function(ret) {
-                console.info('vibrate is completed')
+                console.info('vibrate is completed');
             }
-        })
+        });
     },
 
     clickActionLong:function(){
-        console.info('vibrate long')
-        let obj = this
+        console.info('vibrate long');
+        let obj = this;
         Vibrator.vibrate({
             mode: 'long',
             success: function(ret) {
-                obj.state = this.strStates[1]
-                console.info('vibrate is successful')
+                obj.state = this.strStates[1];
+                console.info('vibrate is successful');
             },
             fail: function(ret) {
-                console.info('vibrate is failed')
+                console.info('vibrate is failed');
             },
             complete: function(ret) {
-                console.info('vibrate is completed')
+                console.info('vibrate is completed');
             }
-        })
+        });
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击短振动、长振动按钮",
-                result: "预期结果：状态信息显示正确并且在点击短振动按钮设备振动一下，点击长振动按钮设备振动较长时间",
-                url: "pages/vibrator/index"
+                step: '操作步骤：点击短振动、长振动按钮',
+                result: '预期结果：状态信息显示正确并且在点击短振动按钮设备振动一下，点击长振动按钮设备振动较长时间',
+                url: 'pages/vibrator/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 }

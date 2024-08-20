@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
-        str: "",
-        title: "char-bar;",
-        txtName: "compent.txt",
-        pass: "true ;",
-        fail: "false;",
+        str: '',
+        title: 'char-bar;',
+        txtName: 'compent.txt',
+        pass: 'true ;',
+        fail: 'false;',
         barData: [
             {
                 fillColor: '#f07826',
@@ -63,18 +63,18 @@ export default {
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：无需操作",
-                result: "预期结果：柱状图正常显示",
-                url: "pages/chart/bar/index"
+                step: '操作步骤：无需操作',
+                result: '预期结果：柱状图正常显示',
+                url: 'pages/chart/bar/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-compent/index" });
+        console.info('onclick back ')
+        router.replace({ uri: 'pages/second-compent/index' });
     },
 
     changeResult(result) {

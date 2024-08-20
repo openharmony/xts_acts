@@ -13,38 +13,37 @@
  * limitations under the License.
  */
 
-import {showPage} from "../../../common/js/swiper";
-import { saveTxtData } from "../../../common/js/saveData";
+import {showPage} from '../../../common/js/swiper';
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
         index: 0,
-        str: "",
-        title: "swiper;",
-        txtName: "compent.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'swiper;',
+        txtName: 'compent.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
     showPage: showPage,
     help() {
-        console.info("11111")
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：在方框内上下滑动",
-                result: "预期结果：方框中的页面随滑动切换",
-                url: "pages/swiper/SwiperA10/index"
+                step: '操作步骤：在方框内上下滑动',
+                result: '预期结果：方框中的页面随滑动切换',
+                url: 'pages/swiper/SwiperA10/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-compent/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-compent/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 }

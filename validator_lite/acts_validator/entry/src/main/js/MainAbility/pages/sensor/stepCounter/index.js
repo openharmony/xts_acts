@@ -13,40 +13,40 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import sensor from '@system.sensor';
 
 export default {
     data: {
         steps: 0,
-        str: "",
-        title: "stepCounter;",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'stepCounter;',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
-    onInit(){
-        console.info('subscribeStepCounter')
+    onInit() {
+        console.info('subscribeStepCounter');
     },
 
-    onDestroy(){
-        console.info('unsubscribeStepCounter')
-        this.unsubscribeStep()
+    onDestroy() {
+        console.info('unsubscribeStepCounter');
+        this.unsubscribeStep();
     },
 
     subscribeStep() {
-        let obj = this
+        let obj = this;
         sensor.subscribeStepCounter({
             success: function (ret) {
-                obj.steps = ret.steps
-                console.info('get step value:' + ret.steps)
+                obj.steps = ret.steps;
+                console.info('get step value:' + ret.steps);
             },
             fail: function (data, code) {
-                console.info('Subscription faild. code: ' + code + "; Data: " + data)
+                console.info('Subscription faild. code: ' + code + '; Data: ' + data);
             }
-        })
+        });
     },
 
     unsubscribeStep() {
@@ -55,21 +55,21 @@ export default {
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击订阅计步和取消订阅",
-                result: "预期结果：订阅计步后会实时更新当前步数，取消订阅后步数不再更新",
-                url: "pages/sensor/stepCounter/index"
+                step: '操作步骤：点击订阅计步和取消订阅',
+                result: '预期结果：订阅计步后会实时更新当前步数，取消订阅后步数不再更新',
+                url: 'pages/sensor/stepCounter/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 };

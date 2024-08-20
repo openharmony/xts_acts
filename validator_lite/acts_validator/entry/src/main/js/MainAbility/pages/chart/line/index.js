@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
-        str: "",
-        title: "char-line;",
-        txtName: "compent.txt",
-        pass: "true ;",
-        fail: "false;",
+        str: '',
+        title: 'char-line;',
+        txtName: 'compent.txt',
+        pass: 'true ;',
+        fail: 'false;',
         lineData: [
             {
                 strokeColor: '#0081ff',
@@ -44,11 +44,11 @@ export default {
             },
             series: {
                 lineStyle: {
-                    width: "5px",
+                    width: '5px',
                     smooth: true,
                 },
                 headPoint: {
-                    shape: "circle",
+                    shape: 'circle',
                     size: 10,
                     strokeWidth: 5,
                     fillColor: '#ffffff',
@@ -64,36 +64,35 @@ export default {
     },
 
     onInit() {
-        console.info('onInit')
+        console.info('onInit');
     },
 
     addData() {
         this.$refs.linechart.append({
             serial: 0,
             data: [Math.floor(Math.random() * 400) + 400]
-        })
+        });
     },
 
     onDestroy() {
-        console.info('onDestroy')
+        console.info('onDestroy');
 
     },
 
     help() {
-        console.info("11111")
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击Add data按钮",
-                result: "预期结果：折线会随之变化",
-                url: "pages/chart/line/index"
+                step: '操作步骤：点击Add data按钮',
+                result: '预期结果：折线会随之变化',
+                url: 'pages/chart/line/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-compent/index" });
+        console.info('onclick back ')
+        router.replace({ uri: 'pages/second-compent/index' });
     },
 
     changeResult(result) {

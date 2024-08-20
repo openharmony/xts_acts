@@ -13,146 +13,149 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
-import storage from "@system.storage";
+import storage from '@system.storage';
 
 export default {
   data: {
-    str: "",
-    title: "storage;",
-    txtName: "api.txt",
-    pass: "true ;",
-    fail: "false;",
+    str: '',
+    title: 'storage;',
+    txtName: 'api.txt',
+    pass: 'true ;',
+    fail: 'false;',
     todolist:[{
-      title: ""
-    },{
-      title: ""
-    },{
-      title: ""
-    },{
-      title: ""
+      title: ''
+    },
+    {
+      title: ''
+    },
+    {
+      title: ''
+    },
+    {
+      title: ''
     }
     ],
   },
   checkStorage() {
-    this.storageSet()
+    this.storageSet();
   },
 
   storageSet: function() {
-    let obj = this
+    let obj = this;
     storage.set({
-      key: "Storage1",
-      value: "Info1",
+      key: 'Storage1',
+      value: 'Info1',
       success: function() {
-        console.log("storageSet call success, key = Storage1, value = Info1");
-        obj.todolist[0].title = "set success. "
-        obj.storageGet()
+        console.log('storageSet call success, key = Storage1, value = Info1');
+        obj.todolist[0].title = 'set success. ';
+        obj.storageGet();
       },
       fail: function(data, code) {
-        console.log("storageSet call fail, key = Storage1, value = Info1");
-        obj.todolist[0].title = "set fail. "
-        obj.storageGet()
+        console.log('storageSet call fail, key = Storage1, value = Info1');
+        obj.todolist[0].title = 'set fail. ';
+        obj.storageGet();
       },
       complete: function() {
-        console.log("storageSet call complete")
+        console.log('storageSet call complete');
       }
-    })
+    });
   },
 
   storageGet: function() {
     var obj = this;
     storage.get({
-      key: "Storage1",
+      key: 'Storage1',
       success: function(data) {
-        console.log("storageGet call success, key = Storage1, expected value = Info1");
-        obj.todolist[1].title = "get success. "
-        obj.storageDelete()
+        console.log('storageGet call success, key = Storage1, expected value = Info1');
+        obj.todolist[1].title = 'get success. ';
+        obj.storageDelete();
       },
       fail: function(data, code) {
-        console.log("storageGet call fail, key = Storage1");
-        obj.todolist[1].title = "get fail. "
-        obj.storageDelete()
+        console.log('storageGet call fail, key = Storage1');
+        obj.todolist[1].title = 'get fail. ';
+        obj.storageDelete();
       },
       complete: function() {
-        console.log("storageGet call complete")
+        console.log('storageGet call complete');
       }
-    })
+    });
   },
   storageDelete: function() {
-    let obj = this
+    let obj = this;
     storage.delete({
-      key: "Storage1",
+      key: 'Storage1',
       success: function(data) {
-        console.log("storageDelete call success, key = Storage1");
-        obj.todolist[2].title = "delete success. "
-        obj.storageSet2()
+        console.log('storageDelete call success, key = Storage1');
+        obj.todolist[2].title = 'delete success. ';
+        obj.storageSet2();
       },
       fail: function(data, code) {
-        console.log("storageDelete call fail, key = Storage1");
-        obj.todolist[2].title = "delete fail. "
-        obj.storageSet2()
+        console.log('storageDelete call fail, key = Storage1');
+        obj.todolist[2].title = 'delete fail. ';
+        obj.storageSet2();
       },
       complete: function() {
-        console.log("storageDelete call complete")
+        console.log('storageDelete call complete');
       }
-    })
+    });
   },
 
   storageSet2: function() {
-    let obj = this
+    let obj = this;
     storage.set({
-      key: "Storage2",
-      value: "Info2",
+      key: 'Storage2',
+      value: 'Info2',
       success: function() {
-        console.log("storageSet call success, key = Storage1, value = Info1");
-        obj.storageClear()
+        console.log('storageSet call success, key = Storage1, value = Info1');
+        obj.storageClear();
       },
       fail: function(data, code) {
-        console.log("storageSet call fail, key = Storage1, value = Info1");
-        obj.storageClear()
+        console.log('storageSet call fail, key = Storage1, value = Info1');
+        obj.storageClear();
       },
       complete: function() {
-        console.log("storageSet call complete")
+        console.log('storageSet call complete');
       }
-    })
+    });
   },
 
   storageClear: function() {
-    var obj = this
+    var obj = this;
     storage.clear({
       success: function(data) {
-        console.log("storageClear call success");
-        obj.todolist[3].title = "clear success. "
+        console.log('storageClear call success');
+        obj.todolist[3].title = 'clear success. ';
       },
       fail: function(data, code) {
-        console.log("storageClear call fail");
-        obj.todolist[3].title = "clear fail. "
+        console.log('storageClear call fail');
+        obj.todolist[3].title = 'clear fail. ';
       },
       complete: function() {
-        console.log("storageClear call complete")
+        console.log('storageClear call complete');
       }
-    })
+    });
   },
 
 
   help() {
     router.replace({
-      uri: "pages/help/index",
+      uri: 'pages/help/index',
       params: {
-        step: "操作步骤：点击测试storage按钮",
-        result: "预期结果：屏幕上显示各接口的测试结果",
-        url: "pages/storage/storage01/index"
+        step: '操作步骤：点击测试storage按钮',
+        result: '预期结果：屏幕上显示各接口的测试结果',
+        url: 'pages/storage/storage01/index'
       }
     });
   },
 
   back() {
-    console.info("onclick back ")
-    router.replace({ uri: "pages/second-api/index" });
+    console.info('onclick back ');
+    router.replace({ uri: 'pages/second-api/index' });
   },
 
   changeResult(result) {
-    saveTxtData(this, result)
+    saveTxtData(this, result);
   },
 }

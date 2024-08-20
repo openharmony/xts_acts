@@ -13,42 +13,42 @@
  * limitations under the License.
  */
 
-import {swipeFunc, dataCommon} from "../../../common/js/event"
-import { saveTxtData } from "../../../common/js/saveData";
+import {swipeFunc, dataCommon} from '../../../common/js/event'
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
   data: {
     ...dataCommon,
-    str: "",
-    title: "swipe;",
-    txtName: "compent.txt",
-    pass: "true ;",
-    fail: "false;"
+    str: '',
+    title: 'swipe;',
+    txtName: 'compent.txt',
+    pass: 'true ;',
+    fail: 'false;'
   },
   swipe(e) {
-      console.log("touch end start");
+      console.log('touch end start');
       swipeFunc(this, e);
-      console.log("touch end stop");
+      console.log('touch end stop');
     },
 
   help() {
     router.replace({
-      uri: "pages/help/index",
+      uri: 'pages/help/index',
       params: {
-        step: "操作步骤：在彩色区域滑动",
-        result: "预期结果：方向、距离、timeStamp、彩色区颜色随滑动事件变化而变化",
-        url: "pages/event/swipe/index"
+        step: '操作步骤：在彩色区域滑动',
+        result: '预期结果：方向、距离、timeStamp、彩色区颜色随滑动事件变化而变化',
+        url: 'pages/event/swipe/index'
       }
     });
   },
 
   back() {
-    console.info("onclick back ")
-    router.replace({ uri: "pages/second-compent/index" });
+    console.info('onclick back ');
+    router.replace({ uri: 'pages/second-compent/index' });
   },
 
   changeResult(result) {
-    saveTxtData(this, result)
+    saveTxtData(this, result);
   },
 };

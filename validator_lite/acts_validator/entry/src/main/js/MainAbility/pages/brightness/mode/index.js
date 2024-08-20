@@ -13,90 +13,89 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import brightness from '@system.brightness';
 
 export default {
     data: {
-        modeType: "",
-        modeStr: ["手动调", "自动调"],
+        modeType: '',
+        modeStr: ['手动调', '自动调'],
         keepScreen: true,
-        str: "",
-        title: "brightness(value);",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'brightness(value);',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
-    onInit(){
+    onInit() {
         console.info('onInit')
     },
 
     getBrightnessMode() {
-        let obj = this
+        let obj = this;
         brightness.getMode({
             success: function (data) {
-                obj.modeType = obj.modeStr[data.mode]
-                console.info('success get brightness mode:' + data.mode)
+                obj.modeType = obj.modeStr[data.mode];
+                console.info('success get brightness mode:' + data.mode);
             },
             fail: function (data, code) {
-                console.info('get brightness fail, code: ' + code + ', data: ' + data)
+                console.info('get brightness fail, code: ' + code + ', data: ' + data);
             }
-        })
+        });
     },
 
     setBrightnessMode(mode) {
-        // this.modeType = this.modeStr[mode]
-        let obj = this
+        let obj = this;
         brightness.setMode({
             mode: mode,
             success() {
-                console.info('set mode success mode: ' + mode)
-                obj.getBrightnessMode()
+                console.info('set mode success mode: ' + mode);
+                obj.getBrightnessMode();
             },
             fail(data, code) {
-                console.error('set brightness success value fail, code: ' + code + ', data: ' + data)
+                console.error('set brightness success value fail, code: ' + code + ', data: ' + data);
             }
-        })
+        });
     },
 
     keepScreenChange() {
-        this.keepScreen = !this.keepScreen
-        let obj = this
+        this.keepScreen = !this.keepScreen;
+        let obj = this;
         brightness.setKeepScreenOn({
             keepScreenOn: obj.keepScreen,
             success() {
-                console.info('set keep screen on success')
+                console.info('set keep screen on success');
             },
             fail(data, code) {
-                console.error('set brightness success value fail, code: ' + code + ', data: ' + data)
+                console.error('set brightness success value fail, code: ' + code + ', data: ' + data);
             }
-        })
+        });
     },
 
-    onDestroy(){
-        console.info('onDestroy')
+    onDestroy() {
+        console.info('onDestroy');
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击获取模式、模式类型，常亮开关",
-                result: "预期结果：显示亮度模式，切换模式后亮度模式随之变化，常亮开关开启屏幕常亮",
-                url: "pages/brightness/mode/index"
+                step: '操作步骤：点击获取模式、模式类型，常亮开关',
+                result: '预期结果：显示亮度模式，切换模式后亮度模式随之变化，常亮开关开启屏幕常亮',
+                url: 'pages/brightness/mode/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 
 };

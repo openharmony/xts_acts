@@ -12,14 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { routePage } from "../../common/js/general";
+
+import { routePage } from '../../common/js/general';
 import app from '@system.app';
 
 export default {
   changeQuit() {
-    console.info("quit app")
+    console.info('quit app')
     app.terminate();
   },
-  changeCompent: routePage("pages/second-compent/index").changePage,
-  changeAPI: routePage("pages/second-api/index").changePage,
+  changeCompent: routePage('pages/second-compent/index').changePage,
+  changeAPI: routePage('pages/second-api/index').changePage,
 };

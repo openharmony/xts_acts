@@ -12,54 +12,55 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { saveTxtData } from "../../../common/js/saveData";
+
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
   data: {
     listData: [],
-    str: "",
-    title: "list-item;",
-    txtName: "compent.txt",
-    pass: "true ;",
-    fail: "false;"
+    str: '',
+    title: 'list-item;',
+    txtName: 'compent.txt',
+    pass: 'true ;',
+    fail: 'false;'
   },
   onInit() {
     for (var i = 0; i < 100; i++) {
-      this.listData.push("common/left.png");
-      this.listData.push("common/right.png");
-      this.listData.push("common/music_prev.png");
-      this.listData.push("common/music_next.png");
-      this.listData.push("common/music_play.png");
-      this.listData.push("common/goAhead.png");
+      this.listData.push('common/left.png');
+      this.listData.push('common/right.png');
+      this.listData.push('common/music_prev.png');
+      this.listData.push('common/music_next.png');
+      this.listData.push('common/music_play.png');
+      this.listData.push('common/goAhead.png');
     }
   },
   help() {
     router.replace({
-      uri: "pages/help/index",
+      uri: 'pages/help/index',
       params: {
-        step: "操作步骤：在方框内上下滑动",
-        result: "预期结果：方框中的元素随滑动变化",
-        url: "pages/list-item/item5/item5"
+        step: '操作步骤：在方框内上下滑动',
+        result: '预期结果：方框中的元素随滑动变化',
+        url: 'pages/list-item/item5/item5'
       }
     });
   },
 
   back() {
-    console.info("onclick back ")
-    router.replace({ uri: "pages/second-compent/index" });
+    console.info('onclick back ');
+    router.replace({ uri: 'pages/second-compent/index' });
   },
 
   changeResult(result) {
-    saveTxtData(this, result)
+    saveTxtData(this, result);
   },
 
   scrollEnd(endState, endComponentIndex) {
     console.log(
-      "list onscrollend is triggered, end component index=" + endComponentIndex
+      'list onscrollend is triggered, end component index=' + endComponentIndex
     );
   },
   listClick() {
-    console.log("list onclick is triggered");
+    console.log('list onclick is triggered');
   }
 };

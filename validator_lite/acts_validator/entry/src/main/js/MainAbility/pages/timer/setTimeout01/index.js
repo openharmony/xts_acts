@@ -13,45 +13,45 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data:{
-        value:"show",
+        value:'show',
         timeoutId: -1,
-        str: "",
-        title: "timer(timeout);",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'timer(timeout);',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
     startTimer:function() {
-        this.value = "show"
-        this.timeoutId = setTimeout(()=> {this.value = "once_timer success"}, 3000);
+        this.value = 'show';
+        this.timeoutId = setTimeout(()=> {this.value = 'once_timer success'}, 3000);
     },
 
     clearTimer() {
-        clearTimeout(this.timeoutId)
+        clearTimeout(this.timeoutId);
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：startTimer、clearTimer",
-                result: "预期结果：点击startTimer过3s后show变成once_timer success，在点startTimer时文字显示show时点clearTimer，show不会再变化",
-                url: "pages/timer/setTimeout01/index"
+                step: '操作步骤：startTimer、clearTimer',
+                result: '预期结果：点击startTimer过3s后show变成once_timer success，在点startTimer时文字显示show时点clearTimer，show不会再变化',
+                url: 'pages/timer/setTimeout01/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 }

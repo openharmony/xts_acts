@@ -13,19 +13,19 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
-        qr_col: '#87ceeb',
-        qr_bcol: '#f0ffff',
-        qr_value: 'value',
-        str: "",
-        title: "qrcode;",
-        txtName: "compent.txt",
-        pass: "true ;",
-        fail: "false;"
+        qrColor: '#87ceeb',
+        qrBackgroundColor: '#f0ffff',
+        qrValue: 'value',
+        str: '',
+        title: 'qrcode;',
+        txtName: 'compent.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
     clickAction:function(){
         console.log('trigger click');
@@ -35,45 +35,45 @@ export default {
     },
 
     changeColor() {
-        if (this.qr_col == '#87ceeb') {
-            this.qr_col = '#fa8072';
+        if (this.qrColor === '#87ceeb') {
+            this.qrColor = '#fa8072';
         } else {
-            this.qr_col = '#87ceeb';
+            this.qrColor = '#87ceeb';
         }
     },
     changeBackgroundColor() {
-        if (this.qr_bcol == '#f0ffff') {
-            this.qr_bcol = '#fff000';
+        if (this.qrBackgroundColor === '#f0ffff') {
+            this.qrBackgroundColor = '#fff000';
         } else {
-            this.qr_bcol = '#f0ffff';
+            this.qrBackgroundColor = '#f0ffff';
         }
     },
     changeValue() {
-        console.info("change value")
-        if (this.qr_value != 'value') {
-            this.qr_value = 'value';
+        console.info('change value');
+        if (this.qrValue !== 'value') {
+            this.qrValue = 'value';
         } else {
-            this.qr_value += 'qrcode';
+            this.qrValue += 'qrcode';
         }
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击修改值，修改颜色，修改背景色按钮",
-                result: "预期结果：修改值时二维码会变化，修改颜色时二维码颜色变化，修改背景色时背景颜色变化",
-                url: "pages/qrcode/index/index"
+                step: '操作步骤：点击修改值，修改颜色，修改背景色按钮',
+                result: '预期结果：修改值时二维码会变化，修改颜色时二维码颜色变化，修改背景色时背景颜色变化',
+                url: 'pages/qrcode/index/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-compent/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-compent/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 }

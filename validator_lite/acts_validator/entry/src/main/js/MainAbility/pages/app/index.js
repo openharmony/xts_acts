@@ -13,43 +13,46 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../common/js/saveData";
+import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 import app from '@system.app';
 
 export default {
     data: {
-        str: "",
-        title: "app;",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;",
+        str: '',
+        title: 'app;',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;',
         todolist:[{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
-        },{
-            title: ""
+            title: ''
+        }, 
+        {
+            title: ''
+        }, 
+        {
+            title: ''
+        }, 
+        {
+            title: ''
         }
         ],
     },
 
     onInit() {
-        console.info('onInit')
+        console.info('onInit');
     },
 
     onDestroy() {
-        console.info('onDestroy')
+        console.info('onDestroy');
     },
 
     getInfo() {
         var info = app.getInfo()
-        console.log(JSON.stringify(info))
-        this.todolist[0].title = "名称: " + info.appName
-        this.todolist[1].title = "版本名称: " + info.versionName
-        this.todolist[2].title = "版本号: " + info.versionCode
+        console.log(JSON.stringify(info));
+        this.todolist[0].title = '名称: ' + info.appName;
+        this.todolist[1].title = '版本名称: ' + info.versionName;
+        this.todolist[2].title = '版本号: ' + info.versionCode;
     },
 
     exitApp() {
@@ -58,21 +61,21 @@ export default {
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击获取信息、退出应用按钮",
-                result: "预期结果：获取信息按钮正确显示应用信息，退出应用按钮可以退出应用",
-                url: "pages/app/index"
+                step: '操作步骤：点击获取信息、退出应用按钮',
+                result: '预期结果：获取信息按钮正确显示应用信息，退出应用按钮可以退出应用',
+                url: 'pages/app/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 };

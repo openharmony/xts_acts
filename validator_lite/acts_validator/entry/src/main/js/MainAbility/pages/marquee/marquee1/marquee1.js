@@ -13,19 +13,19 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
   data: {
-    text: "Hello JS, we are friends.",
+    text: 'Hello JS, we are friends.',
     speed: 1,
     flag: true,
-    str: "",
-    title: "marquee;",
-    txtName: "compent.txt",
-    pass: "true ;",
-    fail: "false;"
+    str: '',
+    title: 'marquee;',
+    txtName: 'compent.txt',
+    pass: 'true ;',
+    fail: 'false;'
   },
   changeSpeed() {
     if (this.flag) {
@@ -39,18 +39,18 @@ export default {
 
   help() {
     router.replace({
-      uri: "pages/help/index",
+      uri: 'pages/help/index',
       params: {
-        step: "操作步骤：点击红色的跑马灯",
-        result: "预期结果：红色跑马灯速度发生变化",
-        url: "pages/marquee/marquee1/marquee1"
+        step: '操作步骤：点击红色的跑马灯',
+        result: '预期结果：红色跑马灯速度发生变化',
+        url: 'pages/marquee/marquee1/marquee1'
       }
     });
   },
 
   back() {
-    console.info("onclick back ")
-    router.replace({ uri: "pages/second-compent/index" });
+    console.info('onclick back ')
+    router.replace({ uri: 'pages/second-compent/index' });
   },
 
   changeResult(result) {

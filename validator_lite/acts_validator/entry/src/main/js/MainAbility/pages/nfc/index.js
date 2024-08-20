@@ -13,62 +13,62 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../common/js/saveData";
+import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 import cardEmulation from '@ohos.nfc.cardEmulation';
 
 export default {
     data: {
         hceService: null,
-        value: "",
-        str: "",
-        title: "nfc;",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;"
+        value: '',
+        str: '',
+        title: 'nfc;',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
-    onInit(){
-        console.info('onInit')
+    onInit() {
+        console.info('onInit');
     },
 
-    onDestroy(){
-        console.info('onDestroy')
-        this.hceService.stopHCE()
+    onDestroy() {
+        console.info('onDestroy');
+        this.hceService.stopHCE();
     },
 
     nfcOperate() {
-        console.info('nfcOperate')
-        this.value = ""
+        console.info('nfcOperate');
+        this.value = '';
         this.hceService = new cardEmulation.HceService();
         this.hceService.startHCE([
-            "F0010203040506", "A0000000041010"
-        ])
-        this.hceService.on("hceCmd", (res) => {
-            this.value = "success"
+            'F0010203040506', 'A0000000041010'
+        ]);
+        this.hceService.on('hceCmd', (res) => {
+            this.value = 'success';
             console.info('callback => Operation hceCmd succeeded. Data: ' + res);
             this.hceService.sendResponse([0x00, 0xa4, 0x04, 0x00, 0x0e, 0x32, 0x50, 0x41, 0x59,
                 0x2e, 0x53, 0x59, 0x53, 0x2e, 0x44, 0x44, 0x46, 0x30, 0x31, 0x00]);
-        })
+        });
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击读卡按钮(接口中已有模拟卡片数据)",
-                result: "预期结果：显示读卡：success",
-                url: "pages/nfc/index"
+                step: '操作步骤：点击读卡按钮(接口中已有模拟卡片数据)',
+                result: '预期结果：显示读卡：success',
+                url: 'pages/nfc/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 };

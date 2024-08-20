@@ -19,7 +19,7 @@ limitations under the License.
         <input type="button" value="?" class="backBtnHelp" onclick="help" />
     </div>
 
-    <qrcode onclick="clickAction" onswipe="swipeAction" style="width: 200px; height: 200px; color: {{qr_col}}; background-color: {{qr_bcol}};" value="{{qr_value}}">
+    <qrcode onclick="clickAction" onswipe="swipeAction" style="width: 200px; height: 200px; color: {{qrColor}}; background-color: {{qrBackgroundColor}};" value="{{qrValue}}">
     </qrcode>
 
     <div class="container-div">

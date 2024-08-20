@@ -17,13 +17,13 @@ import router from '@system.router';
 
 export default {
   data: {
-    step: "",
-    result: "",
-    url: ""
+    step: '',
+    result: '',
+    url: ''
   },
 
   back() {
-    console.info("onclick back url : " + this.url)
+    console.info('onclick back url : ' + this.url);
     router.replace({ uri: this.url });
   },
 };

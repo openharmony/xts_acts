@@ -13,52 +13,52 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../common/js/saveData";
+import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
-        state: "",
+        state: '',
         isChecked: false,
-        str: "",
-        title: "switch;",
-        txtName: "compent.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'switch;',
+        txtName: 'compent.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
     onInit() {
-        console.info('onInit')
-        this.state = this.isChecked == true ? "on" : "off"
+        console.info('onInit');
+        this.state = this.isChecked === true ? 'on' : 'off';
     },
 
     onDestroy() {
-        console.info('onDestroy')
+        console.info('onDestroy');
     },
 
     switchChange(e) {
-        console.log("checked " + e.checked)
-        this.isChecked = e.checked
-        this.state = this.isChecked == true ? "on" : "off"
+        console.log('checked ' + e.checked);
+        this.isChecked = e.checked;
+        this.state = this.isChecked === true ? 'on' : 'off';
     },
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击开关选择器",
-                result: "预期结果：开关状态随之变化",
-                url: "pages/switch/index"
+                step: '操作步骤：点击开关选择器',
+                result: '预期结果：开关状态随之变化',
+                url: 'pages/switch/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-compent/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-compent/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 };

@@ -16,8 +16,8 @@
 import file from '@system.file';
 
 export const saveTxtData = function (obj, str) {
-    let writeData = function  () {
-        console.info("write  obj.str: " + obj.str);
+    let writeData = () => {
+        console.info('write  obj.str: ' + obj.str);
         file.writeText({
             uri: 'internal://app/'+obj.txtName,
             text: obj.str,
@@ -27,19 +27,19 @@ export const saveTxtData = function (obj, str) {
             fail: function(data, code) {
                 console.error('write call fail callback fail, code: ' + code + ', data: ' + data);
             },
-        })
+        });
     }
 
-    let checkStr = function () {
-        console.info("checkStr obj.str: "+ obj.str +", obj.title: " + obj.title)
-        if (obj.str != "" && obj.str.includes(obj.title)) {
-            if (obj.str.includes(obj.title + "true;")) {
-                if (str == "false;") {
-                    obj.str.replace(obj.title + "true ;", obj.title + "false;")
+    let checkStr = () => {
+        console.info('checkStr obj.str: '+ obj.str +', obj.title: ' + obj.title)
+        if (obj.str != '' && obj.str.includes(obj.title)) {
+            if (obj.str.includes(obj.title + 'true;')) {
+                if (str === 'false;') {
+                    obj.str.replace(obj.title + 'true ;', obj.title + 'false;')
                 }
-            } else if (obj.str.includes(obj.title + "false;")) {
-                if (str == "true ;") {
-                    obj.str.replace(obj.title + "false;", obj.title + "true ;")
+            } else if (obj.str.includes(obj.title + 'false;')) {
+                if (str === 'true ;') {
+                    obj.str.replace(obj.title + 'false;', obj.title + 'true ;')
                 }
             }
         } else {

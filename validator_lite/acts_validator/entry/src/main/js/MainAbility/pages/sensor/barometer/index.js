@@ -13,40 +13,40 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from "../../../common/js/saveData";
+import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import sensor from '@system.sensor';
 
 export default {
     data: {
         pressure: 0,
-        str: "",
-        title: "barometer;",
-        txtName: "api.txt",
-        pass: "true ;",
-        fail: "false;"
+        str: '',
+        title: 'barometer;',
+        txtName: 'api.txt',
+        pass: 'true ;',
+        fail: 'false;'
     },
 
-    onInit(){
-        console.info('subscribeBarometer')
+    onInit() {
+        console.info('subscribeBarometer');
     },
 
-    onDestroy(){
-        console.info('unsubscribeBarometer')
-        this.unsubscribeBarometer()
+    onDestroy() {
+        console.info('unsubscribeBarometer');
+        this.unsubscribeBarometer();
     },
 
     subscribeBarometer() {
-        let obj = this
+        let obj = this;
         sensor.subscribeBarometer({
             success: function (ret) {
-                obj.pressure = ret.pressure
-                console.info('get pressure value:' + ret.pressure)
+                obj.pressure = ret.pressure;
+                console.info('get pressure value:' + ret.pressure);
             },
             fail: function (data, code) {
-                console.info('Subscription faild. code: ' + code + "; Data: " + data)
+                console.info('Subscription faild. code: ' + code + '; Data: ' + data);
             }
-        })
+        });
     },
 
     unsubscribeBarometer() {
@@ -55,21 +55,21 @@ export default {
 
     help() {
         router.replace({
-            uri: "pages/help/index",
+            uri: 'pages/help/index',
             params: {
-                step: "操作步骤：点击订阅气压和取消订阅",
-                result: "预期结果：订阅计步后会实时更新当前气压，取消订阅后气压值不再更新",
-                url: "pages/sensor/barometer/index"
+                step: '操作步骤：点击订阅气压和取消订阅',
+                result: '预期结果：订阅计步后会实时更新当前气压，取消订阅后气压值不再更新',
+                url: 'pages/sensor/barometer/index'
             }
         });
     },
 
     back() {
-        console.info("onclick back ")
-        router.replace({ uri: "pages/second-api/index" });
+        console.info('onclick back ');
+        router.replace({ uri: 'pages/second-api/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 };
