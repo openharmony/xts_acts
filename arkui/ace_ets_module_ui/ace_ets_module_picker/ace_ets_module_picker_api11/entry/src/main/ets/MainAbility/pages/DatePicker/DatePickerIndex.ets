@@ -28,7 +28,7 @@ struct DatePickerExample {
 
     @State disappearTextStyleDefault: PickerTextStyle = {color:$r("sys.color.ohos_id_color_text_primary"),font:{size:$r("sys.float.ohos_id_text_size_sub_title3"),weight:FontWeight.Lighter}}
     @State textStyleDefault: PickerTextStyle = {color:$r("sys.color.ohos_id_color_text_primary"),font:{size:$r("sys.float.ohos_id_text_size_sub_title2"),weight:FontWeight.Normal}}
-    @State selectedTextStyleDefault: PickerTextStyle ={color:$r("sys.color.ohos_id_color_text_primary_activated"),font:{size:$r("sys.float.ohos_id_text_size_headline8"),weight:FontWeight.Bold}}
+    @State selectedTextStyleDefault: PickerTextStyle ={color:$r("sys.color.ohos_id_color_text_primary_activated"),font:{size:$r("sys.float.ohos_id_text_size_dialog_tittle"),weight:FontWeight.Bold}}
 
     private stateChangCallBack = (eventData) => {
         console.info("select page state change called:" + JSON.stringify(eventData));
