@@ -56,6 +56,7 @@ ohos_shared_library("UdsNdk") {
 
   output_extension = "so"
 }
+
 ## UtdNdk ###############################################################
 ohos_shared_library("UtdNdk") {
   subsystem_name = "distributeddatamgr"
