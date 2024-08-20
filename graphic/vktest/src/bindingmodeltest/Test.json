@@ -7,7 +7,7 @@
         "runtime-hint": "100s",
         "type": "CppTest"
     },
-    "kits": [:
+    "kits": [
         {
             "pre-push" : [
             ],
