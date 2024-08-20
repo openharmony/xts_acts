@@ -12,9 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import brightness from '@system.brightness';
+
 import { saveTxtData } from "../../../common/js/saveData";
 import router from '@system.router';
+import brightness from '@system.brightness';
 
 export default {
     data: {

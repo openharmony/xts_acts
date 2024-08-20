@@ -12,9 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import battery from '@system.battery';
+
 import { saveTxtData } from "../../common/js/saveData";
 import router from '@system.router';
+import battery from '@system.battery';
 
 export default {
     data: {

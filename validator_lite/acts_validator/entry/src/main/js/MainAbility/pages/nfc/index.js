@@ -12,9 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import cardEmulation from '@ohos.nfc.cardEmulation';
+
 import { saveTxtData } from "../../common/js/saveData";
 import router from '@system.router';
+import cardEmulation from '@ohos.nfc.cardEmulation';
 
 export default {
     data: {
