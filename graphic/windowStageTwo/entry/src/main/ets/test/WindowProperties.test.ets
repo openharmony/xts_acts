@@ -2,7 +2,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { BusinessError } from '@ohos.base';
 import window from '@ohos.window';
 import ohosWindow from '@ohos.window';
-import deviceInfo from '@ohos.deviceInfo';
 
 export default function windowPropertiesTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage) {
   describe('windowProperties_test', () => {
@@ -2119,17 +2118,27 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       let caseName = 'TestGetWindowStatusInDefault';
       try {
         let windowClass = windowStage.getMainWindowSync();
+        await windowClass.setFullScreen(true);
         console.info(`${caseName} Succeeded in enabling the full-screen mode.`);
-        const windowStatus = windowClass.getWindowStatus();
-        console.info(`${caseName} windowStatus is: ${windowStatus}`);
-        let devType = deviceInfo.deviceType;
-        if (devType == 'phone'){
-          expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
-          done();
-        } else {
+        //user recover API to distinguish device type
+        windowClass.recover().then(() => {
+          // 2in1
+          const windowStatus = windowClass.getWindowStatus();
+          console.info(`${caseName} windowStatus is: ${windowStatus}`);
           expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
           done();
-        }
+        }).catch((err: BusinessError) => {
+          if (err.code === 801) {
+            console.info(`${caseName} The current device type does not support: ${err.message}`);
+            done();
+            return;
+          }
+          // phone
+          const windowStatus = windowClass.getWindowStatus();
+          console.info(`${caseName} windowStatus is: ${windowStatus}`);
+          expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
+          done();
+        });
       } catch (exception) {
         if(exception.code == 801) {
           console.info(`${caseName}: The current device type does not support: ${exception.message}`);
@@ -2334,6 +2343,9 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       } catch (exception) {
         if (exception.code === 1300002) {
           console.error(`${caseName} This window state is abnormal.`);
+          done();
+        } else if (exception.code === 801) {
+          console.error(`${caseName}: The current device type does not support: ${exception.message}.`);
           done();
         } else {
           console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
