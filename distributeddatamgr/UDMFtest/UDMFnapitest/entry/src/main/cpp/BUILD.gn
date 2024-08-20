@@ -56,3 +56,18 @@ ohos_shared_library("UdsNdk") {
 
   output_extension = "so"
 }
+
+## UtdNdk ###############################################################
+ohos_shared_library("UtdNdk") {
+  subsystem_name = "distributeddatamgr"
+  part_name = "udmf"
+
+  include_dirs = [ "${udmf_interfaces_path}/ndk/data" ]
+  sources = [ "./napi/utd_ndk_test.cpp" ]
+
+  configs = [ ":config" ]
+  deps = [ "${udmf_interfaces_path}/ndk:libudmf" ]
+  external_deps = [ "napi:ace_napi" ]
+
+  output_extension = "so"
+}
