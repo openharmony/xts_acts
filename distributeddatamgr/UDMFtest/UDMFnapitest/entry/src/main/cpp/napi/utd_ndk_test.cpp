@@ -26,6 +26,8 @@
 #define PARAM_0 0
 #define PARAM_1 1
 
+const char *REFERENCE_URL = "https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-data-uniformTypeDescriptor.md#uniformdatatype";
+
 static napi_value OH_Utd_Create_0001(napi_env env, napi_callback_info info)
 {
     auto utd = OH_Utd_Create(UDMF_META_ENTITY);
@@ -808,7 +810,8 @@ static napi_value OH_Utd_Create_0089(napi_env env, napi_callback_info info)
     OH_Utd_Destroy(utd);
     return returnCode;
 }
-static napi_value OH_Utd_Create_0090(napi_env env, napi_callback_info info) {
+static napi_value OH_Utd_Create_0090(napi_env env, napi_callback_info info)
+{
     auto utd = OH_Utd_Create(UDMF_META_VCARD);
     const char* result =  OH_Utd_GetTypeId(utd);
     napi_value returnCode;
@@ -1245,7 +1248,7 @@ static napi_value OH_Utd_Create_0138(napi_env env, napi_callback_info info)
     auto utd = OH_Utd_Create(UDMF_META_OPENHARMONY_HINOTE);
     const char* result =  OH_Utd_GetTypeId(utd);
     napi_value returnCode;
-    napi_create_int32(env, strcmp(result, "openharmony.hinote") == PARAM_0 , &returnCode);
+    napi_create_int32(env, strcmp(result, "openharmony.hinote") == PARAM_0, &returnCode);
     OH_Utd_Destroy(utd);
     return returnCode;
 }
@@ -1271,13 +1274,16 @@ static napi_value OH_Utd_Create_0140(napi_env env, napi_callback_info info)
 static napi_value OH_Utd_Create_Test0100(napi_env env, napi_callback_info info)
 {
     OH_Utd*  utd  = OH_Utd_Create("general.plain-text");
-    const char* result= OH_Utd_GetTypeId(utd);
+    const char* result = OH_Utd_GetTypeId(utd);
     unsigned int count = 0;
     auto belongingToTypes = OH_Utd_GetBelongingToTypes(utd, &count);
     const char* belongingToType(belongingToTypes[0]);
     const char* result_description = OH_Utd_GetDescription(utd);
     napi_value returnCode;
-    napi_create_int32(env, (strcmp(result, "general.plain-text") == PARAM_0) && (strcmp(belongingToType, UDMF_META_TEXT) == PARAM_0) && (1 == count) && (strcmp(result_description, "Text of unspecified encoding, with no markup.") == PARAM_0), &returnCode);
+    napi_create_int32(env, (strcmp(result, "general.plain-text") == PARAM_0) && 
+      (strcmp(belongingToType, UDMF_META_TEXT) == PARAM_0) && (1 == count) 
+       && (strcmp(result_description, "Text of unspecified encoding, with no markup.") 
+       == PARAM_0), &returnCode);
     OH_Utd_Destroy(utd);
     return returnCode;
 }
@@ -1319,7 +1325,8 @@ static napi_value OH_Utd_GetDescription0100(napi_env env, napi_callback_info inf
     OH_Utd*  utd  = OH_Utd_Create(UDMF_META_PLAIN_TEXT);
     const char* description(OH_Utd_GetDescription(utd));
     napi_value returnCode;
-    napi_create_int32(env, strcmp(description, "Text of unspecified encoding, with no markup.") == PARAM_0, &returnCode);
+    napi_create_int32(env, strcmp(description, "Text of unspecified encoding, with no markup.")
+     == PARAM_0, &returnCode);
     OH_Utd_Destroy(utd);
     return returnCode;
 }
@@ -1367,7 +1374,7 @@ static napi_value OH_Utd_GetIconFile_001(napi_env env, napi_callback_info info)
 static napi_value OH_Utd_GetIconFile_002(napi_env env, napi_callback_info info)
 {
     OH_Utd*  utd  = nullptr;
-    const char* iconFileNullptr = OH_Utd_GetIconFile(utd);   
+    const char* iconFileNullptr = OH_Utd_GetIconFile(utd); 
     napi_value returnCode;
     napi_create_int32(env, iconFileNullptr == nullptr, &returnCode);
     return returnCode;
@@ -1379,7 +1386,7 @@ static napi_value OH_Utd_GetBelongingToTypes_001(napi_env env, napi_callback_inf
     unsigned int count = 0;
     auto belongingToTypes = OH_Utd_GetBelongingToTypes(utd, &count);
     const char* belongingToType(belongingToTypes[0]);
-    napi_value returnCode; 
+    napi_value returnCode;
     napi_create_int32(env, strcmp(belongingToType, UDMF_META_TEXT) == PARAM_0 && (1 == count), &returnCode);
     OH_Utd_Destroy(utd);
     return returnCode;
@@ -1388,7 +1395,7 @@ static napi_value OH_Utd_GetBelongingToTypes_002(napi_env env, napi_callback_inf
 {
     OH_Utd*  utd  = nullptr;
     unsigned int count = 0;
-    auto belongingToTypeNullptr = OH_Utd_GetBelongingToTypes(utd, &count);   
+    auto belongingToTypeNullptr = OH_Utd_GetBelongingToTypes(utd, &count);
     napi_value returnCode;
     napi_create_int32(env, belongingToTypeNullptr == nullptr, &returnCode);
     return returnCode;
@@ -1398,9 +1405,10 @@ static napi_value OH_Utd_GetFilenameExtensions_001(napi_env env, napi_callback_i
     OH_Utd*  utd  = OH_Utd_Create(UDMF_META_PLAIN_TEXT);
     unsigned int count = 0;
     auto filenameExtensions = OH_Utd_GetFilenameExtensions(utd, &count);
-    const char* filenameExtension(filenameExtensions[0]);   
+    const char* filenameExtension(filenameExtensions[0]);
     napi_value returnCode;
-    napi_create_int32(env, strcmp(filenameExtension, ".txt") == PARAM_0 && (2 == count), &returnCode);
+    int num = 2;
+    napi_create_int32(env, strcmp(filenameExtension, ".txt") == PARAM_0 && (num == count), &returnCode);
     OH_Utd_Destroy(utd);
     return returnCode;
 }
@@ -1440,7 +1448,7 @@ static napi_value OH_Utd_GetMimeTypes_002(napi_env env, napi_callback_info info)
 {
     OH_Utd* utdNullptr = nullptr;
     unsigned int count = 0;
-    auto mimeTypeNullptr = OH_Utd_GetMimeTypes(utdNullptr, &count); 
+    auto mimeTypeNullptr = OH_Utd_GetMimeTypes(utdNullptr, &count);
     napi_value returnCode;
     napi_create_int32(env, mimeTypeNullptr == nullptr, &returnCode);
     return returnCode;
@@ -1490,7 +1498,7 @@ static napi_value OH_Utd_GetTypesByMimeType_001(napi_env env, napi_callback_info
 {
     unsigned int count = 0;
     auto typeIds = OH_Utd_GetTypesByMimeType("text/plain", &count);
-    const char* typeId(typeIds[0]);   
+    const char* typeId(typeIds[0]);
     napi_value returnCode;
     napi_create_int32(env, strcmp(typeId, UDMF_META_PLAIN_TEXT) == PARAM_0 && (1 == count), &returnCode);
     OH_Utd_DestroyStringList(typeIds, count);
@@ -1501,7 +1509,7 @@ static napi_value OH_Utd_GetTypesByMimeType_002(napi_env env, napi_callback_info
 {
     const char* extensionNullptr = nullptr;
     unsigned int count = 0;
-    auto typeIdsNullptr = OH_Utd_GetTypesByMimeType(extensionNullptr, &count);  
+    auto typeIdsNullptr = OH_Utd_GetTypesByMimeType(extensionNullptr, &count);
     napi_value returnCode;
     napi_create_int32(env, typeIdsNullptr == nullptr, &returnCode);
     return returnCode;
@@ -1510,7 +1518,7 @@ static napi_value OH_Utd_GetTypesByMimeType_002(napi_env env, napi_callback_info
 static napi_value OH_Utd_GetTypesByMimeType_003(napi_env env, napi_callback_info info)
 {
     unsigned int* countNullptr = nullptr;
-    auto typeIdsNullptr = OH_Utd_GetTypesByMimeType("text/plain", countNullptr); 
+    auto typeIdsNullptr = OH_Utd_GetTypesByMimeType("text/plain", countNullptr);
     napi_value returnCode;
     napi_create_int32(env, typeIdsNullptr == nullptr, &returnCode);
     return returnCode;
@@ -1519,11 +1527,10 @@ static napi_value OH_Utd_GetTypesByMimeType_003(napi_env env, napi_callback_info
 static napi_value OH_Utd_BelongsTo_001(napi_env env, napi_callback_info info)
 {
     int errcode = 0;
-    auto result = OH_Utd_BelongsTo("general.plain-text","general.text");
-    if (result == true){
+    auto result = OH_Utd_BelongsTo("general.plain-text", "general.text");
+    if (result == true)
+    {
         errcode = 1;
-    }else{
-        errcode = 0;
     }
     napi_value returnCode;
     napi_create_int32(env, errcode, &returnCode);
@@ -1566,7 +1573,8 @@ static napi_value OH_Utd_IsLower_001(napi_env env, napi_callback_info info)
 {
     int errcode = 0;
     bool result = OH_Utd_IsLower(UDMF_META_PLAIN_TEXT, UDMF_META_TEXT);
-    if (result){
+    if (result)
+    {
         errcode = 1 ;
     }
     napi_value returnCode;
@@ -1623,7 +1631,7 @@ static napi_value OH_Utd_Equals_001(napi_env env, napi_callback_info info)
     return returnCode;
 }
 
-static napi_value OH_Utd_Equals_002(napi_env env, napi_callback_info info) 
+static napi_value OH_Utd_Equals_002(napi_env env, napi_callback_info info)
 {
     auto utd = OH_Utd_Create(UDMF_META_PLAIN_TEXT);
     bool result = OH_Utd_Equals(utd, nullptr);
@@ -1636,7 +1644,7 @@ static napi_value OH_Utd_Equals_002(napi_env env, napi_callback_info info)
 static napi_value OH_Utd_Equals_003(napi_env env, napi_callback_info info)
 {
     auto utd = OH_Utd_Create(UDMF_META_PLAIN_TEXT);
-    bool result = OH_Utd_Equals(nullptr,utd);
+    bool result = OH_Utd_Equals(nullptr, utd);
     napi_value returnCode;
     napi_create_int32(env, result == false, &returnCode);
     OH_Utd_Destroy(utd);
@@ -1646,7 +1654,7 @@ static napi_value OH_Utd_Equals_003(napi_env env, napi_callback_info info)
 static napi_value OH_Utd_Equals_004(napi_env env, napi_callback_info info)
 {
     auto utd = OH_Utd_Create(UDMF_META_PLAIN_TEXT);
-    bool result = OH_Utd_Equals(utd,nullptr);
+    bool result = OH_Utd_Equals(utd, nullptr);
     napi_value returnCode;
     napi_create_int32(env, result == false, &returnCode);
     OH_Utd_Destroy(utd);
@@ -1655,7 +1663,7 @@ static napi_value OH_Utd_Equals_004(napi_env env, napi_callback_info info)
 
 static napi_value OH_Utd_Equals_005(napi_env env, napi_callback_info info)
 {
-    bool result = OH_Utd_Equals(nullptr,nullptr);
+    bool result = OH_Utd_Equals(nullptr, nullptr);
     napi_value returnCode;
     napi_create_int32(env, result == false, &returnCode);
     return returnCode;
@@ -1664,9 +1672,9 @@ static napi_value OH_Utd_Equals_005(napi_env env, napi_callback_info info)
 static napi_value OH_Utd_IsHigher_001(napi_env env, napi_callback_info info)
 {
     int errcode = 0;
-    
-    bool result = OH_Utd_IsHigher(UDMF_META_TEXT,UDMF_META_PLAIN_TEXT);
-    if (result == true){
+    bool result = OH_Utd_IsHigher(UDMF_META_TEXTUDMF_META_PLAIN_TEXT);
+    if (result == true)
+    {
         errcode = 1 ;
     }
     napi_value returnCode;
@@ -1854,26 +1862,41 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
         {"OH_Utd_Create_Test0300", nullptr, OH_Utd_Create_Test0300, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_GetTypeId0100", nullptr, OH_Utd_GetTypeId0100, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_GetTypeId0200", nullptr, OH_Utd_GetTypeId0200, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetDescription0100", nullptr, OH_Utd_GetDescription0100, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetDescription0200", nullptr, OH_Utd_GetDescription0200, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetReferenceUrl_001", nullptr, OH_Utd_GetReferenceUrl_001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetReferenceUrl_002", nullptr, OH_Utd_GetReferenceUrl_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_Utd_GetDescription0100", nullptr, OH_Utd_GetDescription0100, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Utd_GetDescription0200", nullptr, OH_Utd_GetDescription0200, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Utd_GetReferenceUrl_001", nullptr, OH_Utd_GetReferenceUrl_001, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Utd_GetReferenceUrl_002", nullptr, OH_Utd_GetReferenceUrl_002, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
         {"OH_Utd_GetIconFile_001", nullptr, OH_Utd_GetIconFile_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_GetIconFile_002", nullptr, OH_Utd_GetIconFile_002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetBelongingToTypes_001", nullptr, OH_Utd_GetBelongingToTypes_001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetBelongingToTypes_002", nullptr, OH_Utd_GetBelongingToTypes_002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetFilenameExtensions_001", nullptr, OH_Utd_GetFilenameExtensions_001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetFilenameExtensions_002", nullptr, OH_Utd_GetFilenameExtensions_002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetFilenameExtensions_003", nullptr, OH_Utd_GetFilenameExtensions_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_Utd_GetBelongingToTypes_001", nullptr, OH_Utd_GetBelongingToTypes_001, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Utd_GetBelongingToTypes_002", nullptr, OH_Utd_GetBelongingToTypes_002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"OH_Utd_GetFilenameExtensions_001", nullptr, OH_Utd_GetFilenameExtensions_001, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Utd_GetFilenameExtensions_002", nullptr, OH_Utd_GetFilenameExtensions_002, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Utd_GetFilenameExtensions_003", nullptr, OH_Utd_GetFilenameExtensions_003, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
         {"OH_Utd_GetMimeTypes_001", nullptr, OH_Utd_GetMimeTypes_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_GetMimeTypes_002", nullptr, OH_Utd_GetMimeTypes_002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_GetMimeTypes_003", nullptr, OH_Utd_GetMimeTypes_003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetTypesByFilenameExtension_001", nullptr, OH_Utd_GetTypesByFilenameExtension_001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetTypesByFilenameExtension_002", nullptr, OH_Utd_GetTypesByFilenameExtension_002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetTypesByFilenameExtension_003", nullptr, OH_Utd_GetTypesByFilenameExtension_003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetTypesByMimeType_001", nullptr, OH_Utd_GetTypesByMimeType_001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetTypesByMimeType_002", nullptr, OH_Utd_GetTypesByMimeType_002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_GetTypesByMimeType_003", nullptr, OH_Utd_GetTypesByMimeType_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_Utd_GetTypesByFilenameExtension_001", nullptr, OH_Utd_GetTypesByFilenameExtension_001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"OH_Utd_GetTypesByFilenameExtension_002", nullptr, OH_Utd_GetTypesByFilenameExtension_002, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Utd_GetTypesByFilenameExtension_003", nullptr, OH_Utd_GetTypesByFilenameExtension_003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"OH_Utd_GetTypesByMimeType_001", nullptr, OH_Utd_GetTypesByMimeType_001, nullptr, nullptr, nullptr,
+          napi_default, nullptr},
+        {"OH_Utd_GetTypesByMimeType_002", nullptr, OH_Utd_GetTypesByMimeType_002, nullptr, nullptr, nullptr,
+          napi_default, nullptr},
+        {"OH_Utd_GetTypesByMimeType_003", nullptr, OH_Utd_GetTypesByMimeType_003, nullptr, nullptr, nullptr, 
+          napi_default, nullptr},
         {"OH_Utd_BelongsTo_001", nullptr, OH_Utd_BelongsTo_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_BelongsTo_002", nullptr, OH_Utd_BelongsTo_002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_BelongsTo_003", nullptr, OH_Utd_BelongsTo_003, nullptr, nullptr, nullptr, napi_default, nullptr},
