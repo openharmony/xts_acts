@@ -58,7 +58,7 @@ export default function attachNodeAdapterTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('onCreateChild_id');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[onCreateChildTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('onCreateChild succ');
       console.info('[onCreateChildTest_0010] END');
@@ -84,7 +84,7 @@ export default function attachNodeAdapterTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('onDisposeChild_id');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[onDisposeChildTest_0020] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('onDisposeChild succ');
       console.info('[onDisposeChildTest_0020] END');
@@ -110,7 +110,7 @@ export default function attachNodeAdapterTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('onUpdateChild_id');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[onUpdateChildTest_0030] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('onUpdateChild succ');
       console.info('[onUpdateChildTest_0030] END');
@@ -133,7 +133,7 @@ export default function attachNodeAdapterTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('attachNodeAdapter_id');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[attachNodeAdapterTest_0040] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('50');
       console.info('[attachNodeAdapterTest_0040] END');
@@ -156,7 +156,7 @@ export default function attachNodeAdapterTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('detachNodeAdapter_id');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[detachNodeAdapterTest_0050] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('0');
       console.info('[detachNodeAdapterTest_0050] END');

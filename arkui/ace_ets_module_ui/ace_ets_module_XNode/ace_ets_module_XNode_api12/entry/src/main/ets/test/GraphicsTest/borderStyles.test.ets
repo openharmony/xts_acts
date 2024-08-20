@@ -59,7 +59,7 @@ export default function borderStyles() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('borderStylesValue');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[borderStyles_0100] component obj is: " + JSON.stringify(obj));
       console.info("[borderStyles_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('borderStyleValue:2');

@@ -59,7 +59,7 @@ export default function setRectShape() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('setRectShape');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[setRectShape_0100] component obj is: " + JSON.stringify(obj));
       console.info("[setRectShape_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('setRectShape:150');

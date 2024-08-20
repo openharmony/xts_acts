@@ -58,7 +58,7 @@ export default function expectedUpdateInterval() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('expectedUpdateIntervalValue');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[expectedUpdateInterval_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('expectedUpdateInterval : 2000');
       console.info('[expectedUpdateInterval_0100] END');

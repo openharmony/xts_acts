@@ -58,7 +58,7 @@ export default function typeNodeDividerTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TypeNode_Divider');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[DividerTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('Divider');
       console.info('[DividerTest_0100] END');

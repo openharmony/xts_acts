@@ -57,7 +57,7 @@ export default function getAttrsTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('FrameNode_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAttrsTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content != '{"x":0,"y":0}').assertTrue();
       console.info('[getAttrsTest_0100] END');
@@ -80,7 +80,7 @@ export default function getAttrsTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('FrameNode_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAttrsTest_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content != '{"x":0,"y":0}').assertTrue();
       console.info('[getAttrsTest_0200] END');
@@ -103,7 +103,7 @@ export default function getAttrsTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('FrameNode_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAttrsTest_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content != '{"width":300,"height":50}').assertTrue();
       console.info('[getAttrsTest_0300] END');
@@ -126,7 +126,7 @@ export default function getAttrsTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('FrameNode_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAttrsTest_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content != '{"x":0,"y":0}').assertTrue();
       console.info('[getAttrsTest_0400] END');
@@ -149,7 +149,7 @@ export default function getAttrsTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('FrameNode_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAttrsTest_0500] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('{"top":{"unit":1,"value":3},"right":{"unit":1,"value":3},"bottom":{"unit":1,"value":3},"left":{"unit":1,"value":3}}');
       console.info('[getAttrsTest_0500] END');
@@ -172,7 +172,7 @@ export default function getAttrsTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('FrameNode_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAttrsTest_0600] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('{"top":{"unit":1,"value":10},"right":{"unit":1,"value":10},"bottom":{"unit":1,"value":10},"left":{"unit":1,"value":10}}');
       console.info('[getAttrsTest_0600] END');
@@ -195,7 +195,7 @@ export default function getAttrsTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('FrameNode_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAttrsTest_0700] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('{"top":{"unit":1,"value":20},"right":{"unit":1,"value":20},"bottom":{"unit":1,"value":20},"left":{"unit":1,"value":20}}');
       console.info('[getAttrsTest_0700] END');
@@ -218,7 +218,7 @@ export default function getAttrsTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('FrameNode_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAttrsTest_0800] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('{"width":{"unit":1,"value":300},"height":{"unit":1,"value":50}}');
       console.info('[getAttrsTest_0800] END');
@@ -241,7 +241,7 @@ export default function getAttrsTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('FrameNode_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAttrsTest_0900] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content != "0").assertTrue();
       console.info('[getAttrsTest_0900] END');
@@ -264,7 +264,7 @@ export default function getAttrsTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('FrameNode_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAttrsTest_1000] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual("undefined");
       console.info('[getAttrsTest_1000] END');
@@ -287,7 +287,7 @@ export default function getAttrsTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('FrameNode_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAttrsTest_1100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual("undefined");
       console.info('[getAttrsTest_1100] END');

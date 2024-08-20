@@ -56,7 +56,7 @@ export default function RenderNodeDemo03Test() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeDemo03_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeDemo03Test_0100] component obj is: ",JSON.stringify(obj),obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('false');
       console.info('[RenderNodeDemo03Test_0100] END');

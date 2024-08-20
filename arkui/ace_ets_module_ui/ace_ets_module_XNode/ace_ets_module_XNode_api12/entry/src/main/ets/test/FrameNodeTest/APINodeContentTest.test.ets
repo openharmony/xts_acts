@@ -61,7 +61,7 @@ export default function APINodeContentTest() {
       await button2.click();
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('APINodeContent_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[APINodeContentTest_0100] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('1');
       console.info('[APINodeContentTest_0100] END');
@@ -93,7 +93,7 @@ export default function APINodeContentTest() {
       await button9.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('APINodeContent_Text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[APINodeContentTest_0200] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('0');
       await CommonFunc.sleep(500);

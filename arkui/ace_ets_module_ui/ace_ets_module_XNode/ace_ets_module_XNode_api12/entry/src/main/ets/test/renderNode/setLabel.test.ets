@@ -58,7 +58,7 @@ export default function setLabelTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('SetLabel_text');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[setLabelTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('customRenderChildNode');
       console.info('[setLabelTest_0010] END');

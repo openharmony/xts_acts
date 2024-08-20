@@ -58,7 +58,7 @@ export default function typeNodeSwiperTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TypeNode_Swiper');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[SwiperTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('Swiper');
       console.info('[SwiperTest_0100] END');

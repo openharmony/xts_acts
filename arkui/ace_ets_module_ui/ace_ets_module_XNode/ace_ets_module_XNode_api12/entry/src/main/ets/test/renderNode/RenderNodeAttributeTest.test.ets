@@ -51,7 +51,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderWidth_left');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('8');
       console.info('[RenderNodeAttributeTest_0100] END');
@@ -70,7 +70,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_0200 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderWidth_top');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('8');
       console.info('[RenderNodeAttributeTest_0200] END');
@@ -89,7 +89,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_0300 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderWidth_bottom');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('8');
       console.info('[RenderNodeAttributeTest_0300] END');
@@ -108,7 +108,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_0400 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderWidth_right');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('8');
       console.info('[RenderNodeAttributeTest_0400] END');
@@ -127,7 +127,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_0500 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderColor_left');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_0500] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('true');
       console.info('[RenderNodeAttributeTest_0500] END');
@@ -146,7 +146,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_0600 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderColor_right');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_0600] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('true');
       console.info('[RenderNodeAttributeTest_0600] END');
@@ -165,7 +165,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_0700 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderColor_top');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_0700] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('true');
       console.info('[RenderNodeAttributeTest_0700] END');
@@ -184,7 +184,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_0800 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderColor_bottom');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_0800] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('true');
       console.info('[RenderNodeAttributeTest_0800] END');
@@ -203,7 +203,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_0900 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderStyle_left');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_0900] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('0');
       console.info('[RenderNodeAttributeTest_0900] END');
@@ -222,7 +222,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_1000 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderStyle_right');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_1000] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('1');
       console.info('[RenderNodeAttributeTest_1000] END');
@@ -241,7 +241,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_1100 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderStyle_top');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_1100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('2');
       console.info('[RenderNodeAttributeTest_1100] END');
@@ -260,7 +260,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_1200 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderStyle_bottom');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_1200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('0');
       console.info('[RenderNodeAttributeTest_1200] END');
@@ -279,7 +279,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_1300 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderRadius_topRight');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_1300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('32');
       console.info('[RenderNodeAttributeTest_1300] END');
@@ -298,7 +298,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_1400 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderRadius_topLeft');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_1400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('32');
       console.info('[RenderNodeAttributeTest_1400] END');
@@ -317,7 +317,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_1500 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderRadius_bottomLeft');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_1500] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('32');
       console.info('[RenderNodeAttributeTest_1500] END');
@@ -336,7 +336,7 @@ export default function RenderNodeAttributeTest() {
       console.info('RenderNodeAttributeTest_1600 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderRadius_bottomRight');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeAttributeTest_1600] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('32');
       console.info('[RenderNodeAttributeTest_1600] END');

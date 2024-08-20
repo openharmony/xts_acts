@@ -57,7 +57,7 @@ export default function setLayout() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('setLayoutValue');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[setLayout_0100] component obj is: " + JSON.stringify(obj));
       expect(Math.floor(obj.$attrs.content)).assertEqual(0);
       console.info('[setLayout_0100] END');

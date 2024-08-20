@@ -57,7 +57,7 @@ export default function getPosition() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('getPositionToScreenValue');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getPosition_0100] component obj is: " + JSON.stringify(obj));
       expect(Math.floor(obj.$attrs.content)).assertEqual(0);
       console.info('[getPosition_0100] END');
@@ -80,7 +80,7 @@ export default function getPosition() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('getPositionToParentWithTransformValue');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getPosition_0200] component obj is: " + JSON.stringify(obj));
       expect(Math.floor(obj.$attrs.content)).assertEqual(0);
       console.info('[getPosition_0200] END');
@@ -103,7 +103,7 @@ export default function getPosition() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('getPositionToWindowWithTransformValue');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getPosition_0300] component obj is: " + JSON.stringify(obj));
       expect(Math.floor(obj.$attrs.content)).assertEqual(0);
       console.info('[getPosition_0300] END');
@@ -126,7 +126,7 @@ export default function getPosition() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('getPositionToScreenWithTransformValue');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getPosition_0400] component obj is: " + JSON.stringify(obj));
       expect(Math.floor(obj.$attrs.content)).assertEqual(0);
       console.info('[getPosition_0400] END');

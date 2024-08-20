@@ -54,7 +54,7 @@ export default function APIPanGestureisisBeginTest() {
       let driver = await Driver.create()
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('APIPanGestureisisBegin_Text01');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[APIPanGestureisisBeginTest_0100] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('true');
       console.info('[APIPanGestureisisBeginTest_0100] END');
@@ -73,7 +73,7 @@ export default function APIPanGestureisisBeginTest() {
       let driver = await Driver.create()
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('APIPanGestureisisBegin_Text02');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[APIPanGestureisisBeginTest_0200] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('true');
       console.info('[APIPanGestureisisBeginTest_0200] END');

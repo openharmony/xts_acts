@@ -54,7 +54,7 @@ export default function getRed() {
     it('getRed_0100', 0, async (done: Function) => {
       console.info('getRed_0100 START');
       let strJson: string = getInspectorByKey('getRed');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getRed_0100] component obj is: " + JSON.stringify(obj));
       console.info("[getRed_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual("#FF0000FF");

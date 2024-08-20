@@ -58,7 +58,7 @@ export default function typeNodeProgressTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TypeNode_Progress');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ProgressTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('Progress');
       console.info('[ProgressTest_0100] END');
@@ -81,7 +81,7 @@ export default function typeNodeProgressTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TypeNode_initialize');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[initializeTest_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('{"top":{"unit":1,"value":10},"right":{"unit":1,"value":10},"bottom":{"unit":1,"value":10},"left":{"unit":1,"value":10}}');
       console.info('[initializeTest_0200] END');
@@ -104,7 +104,7 @@ export default function typeNodeProgressTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TypeNode_attribute');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[attributeTest_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('{"top":{"unit":1,"value":5},"right":{"unit":1,"value":5},"bottom":{"unit":1,"value":5},"left":{"unit":1,"value":5}}');
       console.info('[attributeTest_0300] END');

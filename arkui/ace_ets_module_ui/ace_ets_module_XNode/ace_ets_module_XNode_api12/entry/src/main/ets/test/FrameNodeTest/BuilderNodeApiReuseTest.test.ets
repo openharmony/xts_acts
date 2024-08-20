@@ -55,7 +55,7 @@ export default function BuilderNodeApiReuseTest() {
       let driver = await Driver.create()
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('BuilderNodeApiReuse_item1');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[BuilderNodeApiReuseTest_0100] component obj is: ",obj, obj.$attrs.fontSize);
       expect(obj.$attrs.fontSize).assertEqual('50.00fp');
       console.info('[BuilderNodeApiReuseTest_0100] END');

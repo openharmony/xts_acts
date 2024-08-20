@@ -54,7 +54,7 @@ export default function resourceColor() {
     it('resourceColor_0100', 0, async (done: Function) => {
       console.info('resourceColor_0100 START');
       let strJson: string = getInspectorByKey('resourceColor');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[resourceColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[resourceColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual("#FFFFA500");

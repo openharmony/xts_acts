@@ -55,7 +55,7 @@ export default function BuilderNodeApiRecycleTest() {
       let driver = await Driver.create()
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('BuilderNodeApiRecycle_item1');
-      let obj: Array<string> = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[BuilderNodeApiRecycleTest_0100] component obj is: ",obj, obj.$attrs.fontSize);
       expect(obj.$attrs.fontSize).assertEqual('50.00fp');
       console.info('[BuilderNodeApiRecycleTest_0100] END');
