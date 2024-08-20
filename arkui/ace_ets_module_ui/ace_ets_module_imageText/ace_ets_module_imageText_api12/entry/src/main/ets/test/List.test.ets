@@ -137,8 +137,10 @@ import RichEditorAddApi from './RichEditor/RichEditorAddApi.test'
 import editMeunOptionsTest from './Text/editMeunOptions.test'
 import RichEditorApi13 from './RichEditor/RichEditorApi13.test'
 import onDidIMEInputTest from './RichEditor/onDidIMEInput.test';
+import TextHalfLeading from './Text/TextHalfLeading.test'
 
 export default function testsuite() {
+  TextHalfLeading();
   APIContentTypeTest();
   APIUnderlineColorTest();
   TextInputAddApi();
