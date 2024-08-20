@@ -162,16 +162,17 @@ export default function imagepixelMapSupportYuv() {
     //pixelMap: 需要测试的pixelMap
     //testNum 用例编号
     //type:接口调用方式，包含 promise、callback、sync，默认为sync
+    //writeBuffer/readBuffer 36 = 24(Y:4(height) * 6(width)) + 12(UV:24 * 0.5)
     const testWriteBufferToPixels = async (testNum:string, pixelMap:image.PixelMap, type:string) =>{
 
       let region: image.Region = { x: 0, y: 0, size: { height: 4, width: 6 } };
       await pixelMap.crop(region)
-      const writeBuffer: ArrayBuffer = new ArrayBuffer(96);
+      const writeBuffer: ArrayBuffer = new ArrayBuffer(36);
       let bufferArr: Uint8Array = new Uint8Array(writeBuffer);
       for (let i = 0; i < bufferArr.length; i++) {
         bufferArr[i] = i + 1;
       }
-      let readBuffer = new ArrayBuffer(96)
+      let readBuffer = new ArrayBuffer(36)
       let result = false
       if(type == "promise"){
         await pixelMap.writeBufferToPixels(writeBuffer)
