@@ -33,7 +33,7 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     let atManager: abilityAccessCtrl.AtManager  = abilityAccessCtrl.createAtManager();
-    AtManager.requestPermissionsFromUser(this.context, [
+    atManager.requestPermissionsFromUser(this.context, [
       'ohos.permission.CAPTURE_SCREEN']).then(() => {
     });
 
