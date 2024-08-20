@@ -31,7 +31,7 @@ struct Animation3Example {
     globalThis.value = {
       name: 'messageManager', message: this.messageManager
     }
-    let callback: Callback = (message: any) => {
+    let callback: Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'duration') {
         this.duration = message.value
@@ -154,7 +154,7 @@ struct Animation3Example {
                 "curve": this.curve,
               }
             }
-            let backEventOne = {
+            let backEventOne: events_emitter.InnerEvent = {
               eventId: 52,
               priority: events_emitter.EventPriority.LOW
             }
@@ -182,7 +182,7 @@ struct Animation3Example {
                 "iterations": this.iteration,
               }
             }
-            let backEventTwo = {
+            let backEventTwo: events_emitter.InnerEvent = {
               eventId: 53,
               priority: events_emitter.EventPriority.LOW
             }
@@ -210,7 +210,7 @@ struct Animation3Example {
                 "iterations": this.iteration,
               }
             }
-            let backEventTwo = {
+            let backEventTwo: events_emitter.InnerEvent = {
               eventId: 153,
               priority: events_emitter.EventPriority.LOW
             }
@@ -238,7 +238,7 @@ struct Animation3Example {
                 "tempo": this.tempo
               }
             }
-            let backEventThree = {
+            let backEventThree: events_emitter.InnerEvent = {
               eventId: 54,
               priority: events_emitter.EventPriority.LOW
             }

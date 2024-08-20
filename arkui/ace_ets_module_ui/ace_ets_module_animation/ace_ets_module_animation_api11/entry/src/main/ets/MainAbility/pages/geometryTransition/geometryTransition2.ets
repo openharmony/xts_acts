@@ -55,7 +55,7 @@ struct geometryTransitionExample {
         })
       if (this.btn1) {
         Button() {
-          Image($rawfile('ic_health_heart.png'))
+          Image($rawfile('test.png'))
             .width("80%")
             .height(300)
         }.geometryTransition('geometryTransition')
