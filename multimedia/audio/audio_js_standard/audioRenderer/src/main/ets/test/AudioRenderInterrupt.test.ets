@@ -3320,10 +3320,9 @@ export default function AudioRendererInterruptUnitTest() {
       render1.on("audioInterrupt", async (eventAction) => {
         console.log("21.eventAction=" + JSON.stringify(eventAction))//1
         if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
-        } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK)
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_STOP)
         } else {
+            expect(false).assertTrue()
         }
       })
       await start(render1, done)
