@@ -69,7 +69,7 @@ static napi_value OH_Utd_Create_0005(napi_env env, napi_callback_info info)
     auto utd = OH_Utd_Create(UDMF_META_PLAIN_TEXT);
     const char* result =  OH_Utd_GetTypeId(utd);
     napi_value returnCode;
-    napi_create_int32(env, strcmp(result, "general.plain-text") == PARAM_0 , &returnCode);
+    napi_create_int32(env, strcmp(result, "general.plain-text") == PARAM_0, &returnCode);
     OH_Utd_Destroy(utd);
     return returnCode;
 }
@@ -88,7 +88,7 @@ static napi_value OH_Utd_Create_0007(napi_env env, napi_callback_info info)
     auto utd = OH_Utd_Create(UDMF_META_HYPERLINK);
     const char* result =  OH_Utd_GetTypeId(utd);
     napi_value returnCode;
-    napi_create_int32(env, strcmp(result, "general.hyperlink")== PARAM_0 , &returnCode);
+    napi_create_int32(env, strcmp(result, "general.hyperlink")== PARAM_0, &returnCode);
     OH_Utd_Destroy(utd);
     return returnCode;
 }
@@ -194,7 +194,7 @@ static napi_value OH_Utd_Create_0019(napi_env env, napi_callback_info info)
     auto utd = OH_Utd_Create(UDMF_META_JAVA_SCRIPT);
     const char* result =  OH_Utd_GetTypeId(utd);
     napi_value returnCode;
-    napi_create_int32(env, strcmp(result, "general.java-script")== PARAM_0 , &returnCode);
+    napi_create_int32(env, strcmp(result, "general.java-script")== PARAM_0, &returnCode);
     OH_Utd_Destroy(utd);
     return returnCode;
 }
@@ -217,7 +217,7 @@ static napi_value OH_Utd_Create_0021(napi_env env, napi_callback_info info)
     return returnCode;
 }
 static napi_value OH_Utd_Create_0022(napi_env env, napi_callback_info info)
-{;
+{
     auto utd = OH_Utd_Create(UDMF_META_C_PLUS_PLUS_HEADER);
     const char* result =  OH_Utd_GetTypeId(utd);
     napi_value returnCode;
@@ -285,7 +285,7 @@ static napi_value OH_Utd_Create_0031(napi_env env, napi_callback_info info)
     auto utd = OH_Utd_Create(UDMF_META_KFX);
     const char* result =  OH_Utd_GetTypeId(utd);
     napi_value returnCode;
-    napi_create_int32(env, strcmp(result,"com.amazon.kfx")== PARAM_0, &returnCode);
+    napi_create_int32(env, strcmp(result, "com.amazon.kfx") == PARAM_0, &returnCode);
     OH_Utd_Destroy(utd);
     return returnCode;
 }
@@ -349,7 +349,7 @@ static napi_value OH_Utd_Create_0038(napi_env env, napi_callback_info info)
     auto utd = OH_Utd_Create(UDMF_META_TIFF);
     const char* result =  OH_Utd_GetTypeId(utd);
     napi_value returnCode;
-    napi_create_int32(env, strcmp(result,"general.tiff") == PARAM_0, &returnCode);
+    napi_create_int32(env, strcmp(result, "general.tiff") == PARAM_0, &returnCode);
     OH_Utd_Destroy(utd);
     return returnCode;
 }
@@ -404,7 +404,7 @@ static napi_value OH_Utd_Create_0044(napi_env env, napi_callback_info info)
     auto utd = OH_Utd_Create(UDMF_META_EXCEL);
     const char* result =  OH_Utd_GetTypeId(utd);
     napi_value returnCode;
-    napi_create_int32(env, strcmp(result,"com.microsoft.excel.xls") == PARAM_0, &returnCode);
+    napi_create_int32(env, strcmp(result, "com.microsoft.excel.xls") == PARAM_0, &returnCode);
     OH_Utd_Destroy(utd);
     return returnCode;
 }
@@ -590,7 +590,7 @@ static napi_value OH_Utd_Create_0064(napi_env env, napi_callback_info info)
 static napi_value OH_Utd_Create_0065(napi_env env, napi_callback_info info)
 {
     auto utd = OH_Utd_Create(UDMF_META_OGG);
-    const char* result =  OH_Utd_GetTypeId(utd);;
+    const char* result =  OH_Utd_GetTypeId(utd);
     napi_value returnCode;
     napi_create_int32(env, strcmp(result, "general.ogg") == PARAM_0, &returnCode);
     OH_Utd_Destroy(utd);
@@ -619,7 +619,7 @@ static napi_value OH_Utd_Create_0068(napi_env env, napi_callback_info info)
     auto utd = OH_Utd_Create(UDMF_META_WAVEFORM_AUDIO);
     const char* result =  OH_Utd_GetTypeId(utd);
     napi_value returnCode;
-    napi_create_int32(env, strcmp(result,"com.microsoft.waveform-audio") == PARAM_0, &returnCode);
+    napi_create_int32(env, strcmp(result, "com.microsoft.waveform-audio") == PARAM_0, &returnCode);
     OH_Utd_Destroy(utd);
     return returnCode;
 }
@@ -673,7 +673,7 @@ static napi_value OH_Utd_Create_0074(napi_env env, napi_callback_info info)
     auto utd = OH_Utd_Create(UDMF_META_FOLDER);
     const char* result =  OH_Utd_GetTypeId(utd);
     napi_value returnCode;
-    napi_create_int32(env, strcmp(result, "general.folder") == PARAM_0 , &returnCode);
+    napi_create_int32(env, strcmp(result, "general.folder") == PARAM_0, &returnCode);
     OH_Utd_Destroy(utd);
     return returnCode;
 }
@@ -782,7 +782,8 @@ static napi_value OH_Utd_Create_0085(napi_env env, napi_callback_info info)
     return returnCode;
 }
 
-EXTERN_C_START static napi_value Init(napi_env env, napi_value exports) {
+EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
+{
     napi_property_descriptor desc[] = {
         {"OH_Utd_Create_0001", nullptr, OH_Utd_Create_0001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_Create_0002", nullptr, OH_Utd_Create_0002, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -819,7 +820,7 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports) {
         {"OH_Utd_Create_0036", nullptr, OH_Utd_Create_0036, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_Create_0037", nullptr, OH_Utd_Create_0037, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_Create_0038", nullptr, OH_Utd_Create_0038, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Utd_Create_0039", nullptr, OH_Utd_Create_0039, nullptr, nullptr, nullptr, napi_default, nullptr}, 
+        {"OH_Utd_Create_0039", nullptr, OH_Utd_Create_0039, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_Create_0040", nullptr, OH_Utd_Create_0040, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_Create_0041", nullptr, OH_Utd_Create_0041, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_Create_0042", nullptr, OH_Utd_Create_0042, nullptr, nullptr, nullptr, napi_default, nullptr},
