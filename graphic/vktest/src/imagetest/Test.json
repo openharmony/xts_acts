@@ -56,7 +56,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/vulkandata/genlocal.py ActsVulkanImageTest image.txt"
+                "python testcases/vulkandata/genlocal.py ActsVulkanImageTest image/extended-usage-bit-compatibility.txt"
             ]
         }
 

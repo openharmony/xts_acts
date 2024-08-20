@@ -22,6 +22,8 @@
                 "description": "$string:phone_entry_main",
                 "icon": "$media:icon",
                 "label": "$string:entry_label",
+                "startWindowBackground": "#FFFFFF",
+                "startWindowIcon": "$media:icon",
                 "orientation": "portrait",
                 "visible": true,
                 "skills": [
@@ -38,12 +40,14 @@
             {
                 "name": "MainAbility",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "startWindowBackground": "#FFFFFF",
                 "startWindowIcon": "$media:icon"
             },
             {
                 "name": "MainAbility1",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
                 "startWindowIcon": "$media:icon",
+                "startWindowBackground": "#FFFFFF",
                 "orientation": "unspecified",
                 "supportWindowMode": [
                     "fullscreen"
@@ -53,6 +57,7 @@
                 "name": "MainAbility2",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
                 "startWindowIcon": "$media:icon",
+                "startWindowBackground": "#FFFFFF",
                 "orientation": "landscape",
                 "supportWindowMode": [
                     "split"
@@ -62,6 +67,7 @@
                 "name": "MainAbility3",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
                 "startWindowIcon": "$media:icon",
+                "startWindowBackground": "#FFFFFF",
                 "orientation": "portrait",
                 "supportWindowMode": [
                     "floating"

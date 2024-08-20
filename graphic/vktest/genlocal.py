@@ -70,6 +70,7 @@ if __name__ == '__main__':
         timelist = latestpath.split("\\")
         curtime = timelist[1].replace("\n", "")
     testcaselist = []
+    testcaselist1 = []
     mustpasslist = []
     total = 0
     passcnt = 0
@@ -82,42 +83,46 @@ if __name__ == '__main__':
     print("mustfile line:", len(mustpasslist))
     #读取最近的tasklog文件
     print("tasklogpath :", tasklogpath)
-    with open(tasklogpath) as tasklogbuf:
+    with open(tasklogpath, errors = 'ignore') as tasklogbuf:
         #从tasklog文件中获取运行的testcase的信息
         casename = ""
         testbegin = 0
         testresult = 0
         for tasklogline in tasklogbuf:
-            # if "[Start test suite [" in tasklogline:
-            #     suitelist = tasklogline.split("[Start test suite [")
-            #     suiteitem = suitelist[1].split("]")
-            #     suitename = suiteitem[0]
             if "#beginTestCaseResult " in tasklogline:
                 freslist = tasklogline.split("#beginTestCaseResult ")
                 casename = freslist[1]
                 testbegin = 1
-            if "#endTestCaseResult" in tasklogline:
+                continue
+            elif "#endTestCaseResult" in tasklogline:
                 if testbegin == 1 and testresult == 0:
                     total += 1
                     failcnt += 1
                     testcaselist.append(casename+"@@@false@@@run")
+                    testcaselist1.append(casename.strip("\n"))
                 testbegin = 0
                 testresult = 0
-            if "<Result StatusCode=\"Pass\">" in tasklogline:
+                continue
+            elif "<Result StatusCode=\"Pass\">" in tasklogline:
                 total +=1
                 passcnt += 1
                 testresult = 1
                 testcaselist.append(casename+"@@@true@@@run")
-            if "<Result StatusCode=\"NotSupported\">" in tasklogline:
+                testcaselist1.append(casename.strip("\n"))
+                continue
+            elif "<Result StatusCode=\"NotSupported\">" in tasklogline:
                 total +=1
                 passcnt += 1
                 testresult = 1
                 testcaselist.append(casename+"@@@true@@@run")
-            if "<Result StatusCode=\"Fail\">" in tasklogline:
+                testcaselist1.append(casename.strip("\n"))
+                continue
+            elif "<Result StatusCode=\"Fail\">" in tasklogline:
                 total +=1
                 failcnt += 1
                 testresult = 1
                 testcaselist.append(casename+"@@@false@@@run")
+                testcaselist1.append(casename.strip("\n"))
                 #print("tasklogfile line:", caseline[0], caseline[1])
     
     i = 0
@@ -125,11 +130,11 @@ if __name__ == '__main__':
     notfindlist = []
     while i < len(mustpasslist):
         isfind = False
-        j = 0
-        while j < len(testcaselist):
-            if mustpasslist[i] in testcaselist[j]:
-                isfind = True
-                break
+        #j = 0
+        #while j < len(testcaselist):
+        if mustpasslist[i] in testcaselist1:
+            isfind = True
+            #break
             j += 1
         if isfind == False:
             notfindlist.append(f"{mustpasslist[i]}@@@false@@@run")
