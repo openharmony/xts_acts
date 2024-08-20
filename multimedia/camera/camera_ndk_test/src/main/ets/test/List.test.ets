@@ -28,13 +28,11 @@ import call from  '@ohos.telephony.call'
 import CameraManagerTest from './CameraManager.test';
 import SessionTest from './Session.test';
 import SecureCameraTest from './SecureCamera.test';
+import PhotoTest from './PhotoTest.test';
 
 let voice = call.hasVoiceCapability()
 
 export default function testsuite() {
-    SecureCameraTest();
-    CameraManagerTest();
-    SessionTest();
     if (voice){
           CameraSessionExposureTest();
           CameraSessionBaseTest();
@@ -49,4 +47,8 @@ export default function testsuite() {
           CameraFunctionTest();
           CameraInputTest();
     }
+    SessionTest();
+    PhotoTest();
+    SecureCameraTest();
+    CameraManagerTest();
 }

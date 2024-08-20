@@ -28,7 +28,7 @@ CameraCallbackCode NDKCamera::cameraCallbackCode_ = NoReceived;
 NDKCamera::NDKCamera(char* str)
     : cameras_(nullptr), cameraOutputCapability_(nullptr),
       isAddInput_(false), camera_(nullptr), sceneModes_(nullptr), sceneMode_(NORMAL_PHOTO),
-      secureSeqId_(0), canPreconfig_(false), sceneModesSize_(0),
+      secureSeqId_(0), canPreconfig_(false), sceneModesSize_(0), isMovingPhotoSupported_(false),
       captureSession_(nullptr), size_(0),
       profile_(nullptr), previewOutput_(nullptr), photoOutput_(nullptr), videoOutput_(nullptr),
       metaDataObjectType_(nullptr), metadataOutput_(nullptr), cameraInput_(nullptr),
@@ -1446,10 +1446,10 @@ Camera_ErrorCode NDKCamera::GetSupportedSceneModes(int useCaseCode)
         for (decltype(sceneModesSize_) index = 0; index < sceneModesSize_; index++) {
             switch (sceneModes_[index]) {
                 case NORMAL_PHOTO:
-                    isNormalPhoto = true;                   
+                    isNormalPhoto = true;
                     break;
                 case NORMAL_VIDEO:
-                    isNormalVideo = true;                   
+                    isNormalVideo = true;
                     break;
                 case SECURE_PHOTO:
                     isSecurePhoto = true;
@@ -1836,6 +1836,173 @@ Camera_ErrorCode NDKCamera::PhotoOutputDeleteProfile(int useCaseCode)
         ret_ = OH_PhotoOutput_DeleteProfile(cameraProfile_);
     } else {
         ret_ = OH_PhotoOutput_DeleteProfile(nullptr);
+    }
+    return ret_;
+}
+
+void NDKCamera::PhotoOutputOnPhotoAvailable(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo)
+{
+    // NDKCamera::LogOnPhotoAvailable();
+    NDKCamera::isCalledPhotoAvailable_ = true;
+    NDKCamera::cameraCallbackCode_ = PHOTO_ON_PHOTO_AVAILABLE;
+
+    LOG("PhotoOutputOnPhotoAvailable is called.");
+}
+
+Camera_ErrorCode NDKCamera::RegisterPhotoAvailableCallback(int useCaseCode)
+{
+    NDKCamera::isCalledPhotoAvailable_ = false;
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput_, NDKCamera::PhotoOutputOnPhotoAvailable);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        ret_ = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput_, nullptr);
+    } else {
+        ret_ = OH_PhotoOutput_RegisterPhotoAvailableCallback(nullptr, NDKCamera::PhotoOutputOnPhotoAvailable);
+    }
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_PhotoOutput_RegisterPhotoAvailableCallback failed. %d", ret_);
+    }
+    return ret_;
+}
+Camera_ErrorCode NDKCamera::UnregisterPhotoAvailableCallback(int useCaseCode)
+{
+    NDKCamera::isCalledPhotoAvailable_ = false;
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_PhotoOutput_UnregisterPhotoAvailableCallback(photoOutput_, NDKCamera::PhotoOutputOnPhotoAvailable);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        ret_ = OH_PhotoOutput_UnregisterPhotoAvailableCallback(photoOutput_, nullptr);
+    } else {
+        ret_ = OH_PhotoOutput_UnregisterPhotoAvailableCallback(nullptr, NDKCamera::PhotoOutputOnPhotoAvailable);
+    }
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_PhotoOutput_UnregisterPhotoAvailableCallback failed. %d", ret_);
+    }
+    return ret_;
+}
+void NDKCamera::PhotoOutputOnPhotoAssetAvailable(Camera_PhotoOutput* photoOutput, OH_MediaAsset* photoAsset)
+{
+    NDKCamera::isCalledPhotoAssetAvailable_ = true;
+    NDKCamera::cameraCallbackCode_ = PHOTO_ON_PHOTO_ASSET_AVAILABLE;
+    LOG("PhotoOutputOnPhotoAssetAvailable is called.");
+}
+Camera_ErrorCode NDKCamera::RegisterPhotoAssetAvailableCallback(int useCaseCode)
+{
+    NDKCamera::isCalledPhotoAssetAvailable_ = false;
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(photoOutput_,
+            NDKCamera::PhotoOutputOnPhotoAssetAvailable);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        ret_ = OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(photoOutput_, nullptr);
+    } else {
+        ret_ = OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(nullptr,
+            NDKCamera::PhotoOutputOnPhotoAssetAvailable);
+    }
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_PhotoOutput_RegisterPhotoAssetAvailableCallback failed. %d", ret_);
+    }
+    return ret_;
+}
+Camera_ErrorCode NDKCamera::UnregisterPhotoAssetAvailableCallback(int useCaseCode)
+{
+    NDKCamera::isCalledPhotoAssetAvailable_ = false;
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(photoOutput_,
+            NDKCamera::PhotoOutputOnPhotoAssetAvailable);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        ret_ = OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(photoOutput_, nullptr);
+    } else {
+        ret_ = OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(nullptr,
+            NDKCamera::PhotoOutputOnPhotoAssetAvailable);
+    }
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback failed. %d", ret_);
+    }
+    return ret_;
+}
+Camera_ErrorCode NDKCamera::IsMovingPhotoSupported(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_PhotoOutput_IsMovingPhotoSupported(photoOutput_, &isMovingPhotoSupported_);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        ret_ = OH_PhotoOutput_IsMovingPhotoSupported(photoOutput_, nullptr);
+    } else {
+        ret_ = OH_PhotoOutput_IsMovingPhotoSupported(nullptr, &isMovingPhotoSupported_);
+    }
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_PhotoOutput_IsMovingPhotoSupported failed. %d", ret_);
+    } else {
+        LOG("OH_PhotoOutput_IsMovingPhotoSupported successful. %d", ret_);
+        if (isMovingPhotoSupported_ != true) {
+            LOG("moving photo is not supported.");
+        } else {
+            LOG("moving photo is supported.");
+        }
+    }
+    return ret_;
+}
+Camera_ErrorCode NDKCamera::EnableMovingPhoto(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_PhotoOutput_EnableMovingPhoto(photoOutput_, false);
+    } else if (useCaseCode == PARAMETER1_ERROR) {
+        ret_ = OH_PhotoOutput_EnableMovingPhoto(photoOutput_, true);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        ret_ = OH_PhotoOutput_EnableMovingPhoto(nullptr, true);
+    }
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_PhotoOutput_EnableMovingPhoto failed. %d", ret_);
+    }
+    return ret_;
+}
+Camera_ErrorCode NDKCamera::GetMainImage(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_PhotoNative_GetMainImage(photoNative_, mainImage_);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        ret_ = OH_PhotoNative_GetMainImage(photoNative_, nullptr);
+    } else {
+        ret_ = OH_PhotoNative_GetMainImage(nullptr, mainImage_);
+    }
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_PhotoNative_GetMainImage failed. %d", ret_);
+    }
+    return ret_;
+}
+Camera_ErrorCode NDKCamera::PhotoNativeRelease(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_PhotoNative_Release(photoNative_);
+    } else {
+        ret_ = OH_PhotoNative_Release(nullptr);
+    }
+    if (ret_ != CAMERA_OK || !photoNative_) {
+        LOG("OH_PhotoNative_Release failed. %d", ret_);
+    }
+    return ret_;
+}
+Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurface(int useCaseCode)
+{
+    profile_ = cameraOutputCapability_->previewProfiles[0];
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager_, profile_, &photoOutput_);
+    } else if (useCaseCode == PARAMETER3_ERROR) {
+        ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager_, profile_, nullptr);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager_, nullptr, &photoOutput_);
+    } else {
+        ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(nullptr, profile_, &photoOutput_);
+    }
+    if (ret_ != CAMERA_OK || !photoOutput_) {
+        ret_ = CAMERA_INVALID_ARGUMENT;
+        LOG("OH_CameraManager_CreatePhotoOutputWithoutSurface failed. %d", ret_);
+    }
+    return ret_;
+}
+Camera_ErrorCode NDKCamera::Capture()
+{
+    ret_ = OH_PhotoOutput_Capture(photoOutput_);
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_PhotoOutput_Capture failed. %d", ret_);
     }
     return ret_;
 }
