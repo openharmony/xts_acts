@@ -57,7 +57,7 @@ export default function createNodeGrid() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('createNodeGridText');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[createNodeGrid_0100] component obj is: " + JSON.stringify(obj));
       console.info("[createNodeGrid_0100] content obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('"GridRow"');

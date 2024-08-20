@@ -61,7 +61,7 @@ export default function typeNodechildrenMainSizeTest() {
       await button2.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('ChildernMainSize_');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[childrenMainSizeTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('100');
       console.info('[childrenMainSizeTest_0100] END');
@@ -87,7 +87,7 @@ export default function typeNodechildrenMainSizeTest() {
       await button2.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('ChildernMainSize_');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[childrenMainSizeTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('100');
       console.info('[childrenMainSizeTest_0100] END');

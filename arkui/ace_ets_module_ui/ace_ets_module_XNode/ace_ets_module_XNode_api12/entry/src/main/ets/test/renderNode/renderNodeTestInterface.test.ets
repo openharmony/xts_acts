@@ -57,7 +57,7 @@ export default function renderNodeGetInterfaceTest() {
       await CommonFunc.sleep(1000);
       // test the getBorderRadius data
       let strJson: string = getInspectorByKey('bRadiusValue');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[renderNodeGetInterfaceTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('bRadiusValue:20');
       console.info('[renderNodeGetInterfaceTest_0100] END');
@@ -81,7 +81,7 @@ export default function renderNodeGetInterfaceTest() {
       await CommonFunc.sleep(1000);
       // test the getBorderRadius data
       let strJson: string = getInspectorByKey('bColor');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[renderNodeGetInterfaceTest_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('bColor:4278255598');//10进制
       console.info('[renderNodeGetInterfaceTest_0200] END');
@@ -106,7 +106,7 @@ export default function renderNodeGetInterfaceTest() {
       await CommonFunc.sleep(1000);
       // test the getBorderWidth data
       let strJson: string = getInspectorByKey('bWidth');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[renderNodeGetInterfaceTest_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('bWidth:40');
       console.info('[renderNodeGetInterfaceTest_0300] END');
@@ -131,7 +131,7 @@ export default function renderNodeGetInterfaceTest() {
       await CommonFunc.sleep(1000);
       // test the getBorderWidth data
       let strJson: string = getInspectorByKey('bStyle');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[renderNodeGetInterfaceTest_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('bStyle:1');
       console.info('[renderNodeGetInterfaceTest_0400] END');

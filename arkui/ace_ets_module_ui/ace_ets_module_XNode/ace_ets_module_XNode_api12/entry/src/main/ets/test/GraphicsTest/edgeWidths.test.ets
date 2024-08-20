@@ -59,7 +59,7 @@ export default function edgeWidths() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('edgeWidthsValue');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[edgeWidths_0100] component obj is: " + JSON.stringify(obj));
       console.info("[edgeWidths_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('edgeWidthsValue:5');//0xFF0000FF转换为十进制

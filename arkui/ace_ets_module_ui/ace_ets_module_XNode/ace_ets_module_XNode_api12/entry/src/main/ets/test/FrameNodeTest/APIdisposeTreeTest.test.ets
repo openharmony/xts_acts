@@ -63,7 +63,7 @@ export default function APIdisposeTreeTest() {
       await button3.click();
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('APIdisposeTree_Text');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[APIdisposeTreeTest_0100] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('start700');
       console.info('[APIdisposeTreeTest_0100] END');

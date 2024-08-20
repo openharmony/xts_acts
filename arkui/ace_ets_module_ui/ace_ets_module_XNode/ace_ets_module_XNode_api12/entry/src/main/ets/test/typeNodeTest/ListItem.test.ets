@@ -59,7 +59,7 @@ export default function typeNodeListItemTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TypeNode_ListItem');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[ListItemTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('ListItem');
       console.info('[ListItemTest_0100] END');

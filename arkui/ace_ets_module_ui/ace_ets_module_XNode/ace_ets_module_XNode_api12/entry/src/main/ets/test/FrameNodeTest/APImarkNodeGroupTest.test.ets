@@ -54,7 +54,7 @@ export default function APImarkNodeGroupTest() {
       let driver = await Driver.create()
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('APImarkNodeGroup_Text');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[APImarkNodeGroupTest_0100] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('true');
       console.info('[APImarkNodeGroupTest_0100] END');

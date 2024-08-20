@@ -58,7 +58,7 @@ export default function setCircleShapeTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('setCircleShape_text');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[setCircleShapeTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('setCircleShape succ');
       console.info('[setCircleShapeTest_0010] END');

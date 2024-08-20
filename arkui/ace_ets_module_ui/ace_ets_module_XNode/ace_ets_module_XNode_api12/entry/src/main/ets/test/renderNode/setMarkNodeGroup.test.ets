@@ -58,7 +58,7 @@ export default function setMarkNodeGroupTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('SetMarkNodeGroup_id');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[setMarkNodeGroupTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('true');
       console.info('[setMarkNodeGroupTest_0010] END');

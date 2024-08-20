@@ -54,7 +54,7 @@ export default function getAlpha() {
     it('getAlpha_0100', 0, async (done: Function) => {
       console.info('getAlpha_0100 START');
       let strJson: string = getInspectorByKey('getAlpha');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[getAlpha_0100] component obj is: " + JSON.stringify(obj));
       console.info("[getAlpha_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual("#FF00007F");

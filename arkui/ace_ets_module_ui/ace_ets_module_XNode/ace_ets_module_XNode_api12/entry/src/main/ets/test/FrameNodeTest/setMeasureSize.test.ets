@@ -58,7 +58,7 @@ export default function setMeasureSizeTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('getMeasuredSize_id');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[setMeasureSizeTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('105');
       console.info('[setMeasureSizeTest_0010] END');
@@ -81,7 +81,7 @@ export default function setMeasureSizeTest() {
       await button.click();
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('APIsetOnDraw');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[setMeasureSizeTest_0020] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('onDraw succ');
       console.info('[setMeasureSizeTest_0020] END');

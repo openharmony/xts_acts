@@ -56,7 +56,7 @@ export default function graphicGetInterfaceTest() {
       await CommonFunc.sleep(1000);
       // get the data
       let strJson: string = getInspectorByKey('overLay');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[graphicTestInterfaceTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('150.00vp');
       let strJson2 = getInspectorByKey('overLay2');

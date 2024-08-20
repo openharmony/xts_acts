@@ -53,7 +53,7 @@ export default function onAppear() {
       console.info('onAppear_0100 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('setOnAppear');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[onAppear_0100] component obj is: " + JSON.stringify(obj));
       console.info("[onAppear_0100] content obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("setOnAppear success");
@@ -77,7 +77,7 @@ export default function onAppear() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('setOnAppear');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[onAppear_0200] component obj is: " + JSON.stringify(obj));
       console.info("[onAppear_0200] content obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("setOnDisappear success");

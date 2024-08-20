@@ -54,7 +54,7 @@ export default function getNumeric() {
     it('getNumeric_0100', 0, async (done: Function) => {
       console.info('getNumeric_0100 START');
       let strJson: string = getInspectorByKey('getNumeric');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[getNumeric_0100] component obj is: " + JSON.stringify(obj));
       console.info("[getNumeric_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual("#FFFF0000");

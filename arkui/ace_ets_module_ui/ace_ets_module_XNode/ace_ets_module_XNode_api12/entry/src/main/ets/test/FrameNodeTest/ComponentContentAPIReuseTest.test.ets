@@ -58,7 +58,7 @@ export default function ComponentContentAPIReuseTest() {
       await button.click();
       await CommonFunc.sleep(2500);
       let strJson: string = getInspectorByKey('ComponentContentAPIReuse_Text');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[ComponentContentAPIReuseTest_0100] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('hello');
       await CommonFunc.sleep(500);

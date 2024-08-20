@@ -54,7 +54,7 @@ export default function getBlendColor() {
     it('getBlendColor_0100', 0, async (done: Function) => {
       console.info('getBlendColor_0100 START');
       let strJson: string = getInspectorByKey('getBlendColor');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: Array<string> = JSON.parse(strJson);
       console.info("[getBlendColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[getBlendColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual("#FFE6E600");
