@@ -2120,24 +2120,28 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         let windowClass = windowStage.getMainWindowSync();
         await windowClass.setFullScreen(true);
         console.info(`${caseName} Succeeded in enabling the full-screen mode.`);
-        //user recover API to distinguish device type
+        await sleep(1000);
         windowClass.recover().then(() => {
-          // 2in1
           const windowStatus = windowClass.getWindowStatus();
           console.info(`${caseName} windowStatus is: ${windowStatus}`);
           expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
           done();
         }).catch((err: BusinessError) => {
-          if (err.code === 801) {
-            console.info(`${caseName} The current device type does not support: ${err.message}`);
+          try {
+            const windowStatus = windowClass.getWindowStatus();
+            console.info(`${caseName} windowStatus is: ${windowStatus}`);
+            expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
             done();
-            return;
+          } catch (exception) {
+            if(exception.code == 801) {
+              console.info(`${caseName}: The current device type does not support to get window status`);
+              done();
+            } else {
+              console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+              expect().assertFail();
+              done();
+            }
           }
-          // phone
-          const windowStatus = windowClass.getWindowStatus();
-          console.info(`${caseName} windowStatus is: ${windowStatus}`);
-          expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
-          done();
         });
       } catch (exception) {
         if(exception.code == 801) {
