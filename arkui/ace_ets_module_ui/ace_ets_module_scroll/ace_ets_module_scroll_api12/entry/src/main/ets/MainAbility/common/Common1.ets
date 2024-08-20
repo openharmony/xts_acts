@@ -37,7 +37,7 @@ export default class CommonFunc {
     });
   }
 
-  static getComponentRect(key: string) {
+  static getComponentRect(key: string): RectValue {
     let strJson = getInspectorByKey(key);
     let obj: Record<string, Object> = JSON.parse(strJson);
     let rectInfo: Array<string> = JSON.parse('[' + obj.$rect + ']');
@@ -52,7 +52,7 @@ export default class CommonFunc {
     return CommonFunc.rect_value;
   }
 
-  static getComponentRectOnScreen(key) {
+  static getComponentRectOnScreen(key: string): RectValue {
     let strJson = getInspectorByKey(key);
     let obj: Record<string, Object> = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
