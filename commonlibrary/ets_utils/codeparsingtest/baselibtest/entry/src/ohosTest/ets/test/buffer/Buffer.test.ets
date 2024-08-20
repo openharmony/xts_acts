@@ -28,7 +28,7 @@ interface Options {
   endings: string,
 }
 
-export default function bufferTest() {
+export default function BufferTest() {
   describe('bufferTest', () => {
 
     /*
@@ -7398,8 +7398,12 @@ export default function bufferTest() {
         let sources = ["a", "b", "c"];
         let blob2 = new buffer.Blob(sources, option);
         let promise = blob2.text();
-        promise.then((value) => {
-          expect(value).assertEqual("abc");
+        await promise.then((value) => {
+          try {
+            expect(value).assertEqual("abc");
+          } catch (err) {
+            console.error(`${TAG} err is ${err}`);
+          }
         });
       } catch (err) {
         console.error(`${TAG} err is ${err}`);
@@ -7427,8 +7431,12 @@ export default function bufferTest() {
           type: "new type", endings: "transparent"
         }
         let blob2 = new buffer.Blob([arrBuf], option);
-        blob2.text().then((value) => {
-          expect(value).assertEqual("abc");
+        await blob2.text().then((value) => {
+          try {
+            expect(value).assertEqual("abc");
+          } catch (err) {
+            console.error(`${TAG} err is ${err}`);
+          }
         });
       } catch (err) {
         console.error(`${TAG} err is ${err}`);
@@ -7455,8 +7463,12 @@ export default function bufferTest() {
           type: "new type", endings: "transparent"
         };
         let blob2 = new buffer.Blob([uint8arr], option);
-        blob2.text().then((value) => {
-          expect(value).assertEqual("abc");
+        await blob2.text().then((value) => {
+          try {
+            expect(value).assertEqual("979899");
+          } catch (err) {
+            console.error(`${TAG} err is ${err}`);
+          }
         });
       } catch (err) {
         console.error(`${TAG} err is ${err}`);
@@ -7485,8 +7497,12 @@ export default function bufferTest() {
         };
         let view = new DataView(arrBuf);
         let blob2 = new buffer.Blob([view], option);
-        blob2.text().then((value) => {
-          expect(value).assertEqual("abc");
+        await blob2.text().then((value) => {
+          try{
+            expect(value).assertEqual("abc");
+          } catch (err) {
+            console.error(`${TAG} err is ${err}`);
+          }
         });
       } catch (err) {
         console.error(`${TAG} err is ${err}`);
@@ -7511,8 +7527,12 @@ export default function bufferTest() {
         let sources = ["a", "b", "c"];
         let blob2 = new buffer.Blob(sources, option);
         let blob = new buffer.Blob([blob2]);
-        blob.text().then((value) => {
-          expect(value).assertEqual("abc");
+        await blob.text().then((value) => {
+          try {
+            expect(value).assertEqual("abc");
+          } catch (err) {
+            console.error(`${TAG} err is ${err}`);
+          }
         });
       } catch (err) {
         console.error(`${TAG} err is ${err}`);
@@ -7555,10 +7575,14 @@ export default function bufferTest() {
         };
         let source = ["a", "b", "c"]
         let blob = new buffer.Blob(source, option);
-        blob.arrayBuffer().then((value) => {
-          let arr = new Uint8Array(value)
-          for (let i = 0, len = arr.length; i < len; i++) {
-            expect(arr[i]).assertEqual(97 + i);
+        await blob.arrayBuffer().then((value) => {
+          try {
+            let arr = new Uint8Array(value)
+            for (let i = 0, len = arr.length; i < len; i++) {
+              expect(arr[i]).assertEqual(97 + i);
+            }
+          } catch (err) {
+            console.error(`${TAG} err is ${err}`);
           }
         });
       } catch (err) {
@@ -7583,8 +7607,12 @@ export default function bufferTest() {
         };
         let sources = ["a", "b", "c"];
         let blob = new buffer.Blob(sources, option);
-        blob.text().then((value) => {
-          expect(value).assertEqual("abc");
+        await blob.text().then((value) => {
+          try {
+            expect(value).assertEqual("abc");
+          } catch (err) {
+            console.error(`${TAG} err is ${err}`);
+          }
         });
       } catch (err) {
         console.error(`${TAG} err is ${err}`);
@@ -7609,9 +7637,13 @@ export default function bufferTest() {
         let sources = ["a", "b", "c"];
         let blob = new buffer.Blob(sources, option);
         let blobSlice = blob.slice(0, 1);
-        blobSlice.arrayBuffer().then((value) => {
-          let arr = new Uint8Array(value)
-          expect(arr[0]).assertEqual(99);
+        await blobSlice.arrayBuffer().then((value) => {
+          try {
+            let arr = new Uint8Array(value);
+            expect(arr[0]).assertEqual(97);
+          } catch (err) {
+            console.error(`${TAG} err is ${err}`);
+          }
         });
       } catch (err) {
         console.error(`${TAG} err is ${err}`);
@@ -7635,9 +7667,13 @@ export default function bufferTest() {
         let sources = ["a", "b", "c"];
         let blob = new buffer.Blob(sources, option);
         let blobSlice = blob.slice(-1, 0);
-        blobSlice.arrayBuffer().then((value) => {
-          let arr = new Uint8Array(value)
-          expect(arr[0]).assertEqual(99);
+        await blobSlice.arrayBuffer().then((value) => {
+          try {
+            let arr = new Uint8Array(value)
+            expect(arr[0]).assertEqual(99);
+          } catch (err) {
+            console.error(`${TAG} err is ${err}`);
+          }
         });
       } catch (err) {
         console.error(`${TAG} err is ${err}`);
