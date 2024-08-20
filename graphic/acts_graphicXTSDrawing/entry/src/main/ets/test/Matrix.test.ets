@@ -713,7 +713,6 @@ export default function drawingTsMatrixTest() {
       const msg = 'testMatrixSetAndGetMatrixNormal';
       try {
         let matrix = new drawing.Matrix();
-        // matrix.getValue(0);
         let widths : number[] = matrix.getAll();
         expect(widths.length == 9).assertTrue();
         expect(matrix != null).assertTrue();
