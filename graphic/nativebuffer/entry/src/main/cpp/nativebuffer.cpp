@@ -1362,7 +1362,8 @@ napi_value NativeBufferInit(napi_env env, napi_value exports)
     return exports;
 }
 
-napi_value NativeBufferInit2(napi_env env, napi_value exports) {
+napi_value NativeBufferInit2(napi_env env, napi_value exports)
+{
     napi_property_descriptor desc[] = {
         {"oHNativeBufferAllocAbormal", nullptr, OHNativeBufferAllocAbormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
