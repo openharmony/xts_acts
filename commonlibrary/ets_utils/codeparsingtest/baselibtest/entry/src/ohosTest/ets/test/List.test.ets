@@ -12,10 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import bufferTest from './buffer/buffer.test'
-import processTest from './process/process.test'
+import bufferTest from './buffer/Buffer.test';
+import processTest from './process/Process.test';
+import uriTest from './uri/Uri.test';
+import urlTest from './url/Url.test';
+import utilTest from './util/Util.test';
+import timerTest from './timer/Timer.test';
+
 
 export default function testsuite() {
-  bufferTest()
-  processTest()
+  bufferTest();
+  processTest();
+  uriTest();
+  urlTest();
+  utilTest();
+  timerTest();
 }
