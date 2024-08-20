@@ -52,6 +52,10 @@
         "MainAbility/pages/getTarget/getTarget3",
         "MainAbility/pages/getTarget/getTarget4",
         "MainAbility/pages/getTarget/getTarget5",
-        "MainAbility/pages/getTarget/getTarget6"
+        "MainAbility/pages/getTarget/getTarget6",
+        "MainAbility/pages/Param/Param",
+        "MainAbility/pages/Computed/computed",
+        "MainAbility/pages/makeObserved/makeObserved",
+        "MainAbility/pages/twoWayBind/bind"
     ]
 }
