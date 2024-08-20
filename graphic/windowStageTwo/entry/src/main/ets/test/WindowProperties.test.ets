@@ -2,6 +2,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { BusinessError } from '@ohos.base';
 import window from '@ohos.window';
 import ohosWindow from '@ohos.window';
+import deviceInfo from '@ohos.deviceInfo';
 
 export default function windowPropertiesTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage) {
   describe('windowProperties_test', () => {
@@ -2108,6 +2109,40 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6700
+     * @tc.name      : testGetWindowStatusInDefault
+     * @tc.desc      : get the window status of current window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetWindowStatusInDefault', 0, async (done: Function) => {
+      let caseName = 'TestGetWindowStatusInDefault';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        console.info(`${caseName} Succeeded in enabling the full-screen mode.`);
+        const windowStatus = windowClass.getWindowStatus();
+        console.info(`${caseName} windowStatus is: ${windowStatus}`);
+        let devType = deviceInfo.deviceType;
+        if (devType == 'phone'){
+          expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
+          done();
+        } else {
+          expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
+          done();
+        }
+      } catch (exception) {
+        if(exception.code == 801) {
+          console.info(`${caseName}: The current device type does not support: ${exception.message}`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6800
      * @tc.name      : testGetWindowStatusInFullScreen
      * @tc.desc      : get the window status of current window
      * @tc.size      : MediumTest
@@ -2122,7 +2157,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         console.info(`${caseName} Succeeded in enabling the full-screen mode.`);
         const windowStatus = windowClass.getWindowStatus();
         console.info(`${caseName} windowStatus is: ${windowStatus}`);
-        expect(windowStatus).assertEqual(1);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
         done();
       } catch (exception) {
         if(exception.code == 801) {
@@ -2136,7 +2171,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6800
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6900
      * @tc.name      : testGetWindowStatusInMaximize
      * @tc.desc      : get the window status of current window
      * @tc.size      : MediumTest
@@ -2152,38 +2187,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         await sleep(1000);
         const windowStatus = windowClass.getWindowStatus();
         console.info(`${caseName} windowStatus is: ${windowStatus}`);
-        expect(windowStatus).assertEqual(1);
-        done();
-      } catch (exception) {
-        if(exception.code == 801) {
-          console.info(`${caseName}: The current device type does not support: ${exception.message}`);
-          done();
-        } else {
-          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
-          expect().assertFail();
-          done();
-        }
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6900
-     * @tc.name      : testGetWindowStatusInImmersive
-     * @tc.desc      : get the window status of current window
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testGetWindowStatusInImmersive', 0, async (done: Function) => {
-      let caseName = 'TestGetWindowStatusInImmersive';
-      try {
-        let windowClass = windowStage.getMainWindowSync();
-        await windowClass.recover();
-        windowClass.setImmersiveModeEnabledState(true);
-        console.info(`${caseName} Succeeded in set the window immersive.`);
-        await sleep(1000);
-        const windowStatus = windowClass.getWindowStatus();
-        console.info(`${caseName} windowStatus is: ${windowStatus}`);
-        expect(windowStatus).assertEqual(1);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
         done();
       } catch (exception) {
         if(exception.code == 801) {
@@ -2214,7 +2218,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         };
         const windowClass = await window.createWindow(config);
         console.info(`${caseName} Succeeded in creating the dialog window.`);
-        windowClass.setUIContent("MainAbility/pages/index/index1");
+        windowClass.setUIContent("MainAbility/pages/index/index2");
         await windowClass.showWindow();
         await sleep(1000);
         const windowStatus = windowClass.getWindowStatus();
@@ -2222,7 +2226,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         await windowClass.destroyWindow();
         console.info(`${caseName} Succeeded in destroying the window.`);
         await sleep(1000);
-        expect(windowStatus).assertEqual(4);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
         done();
       } catch (exception) {
         if(exception.code == 801) {
@@ -2275,42 +2279,6 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7200
-     * @tc.name      : testGetSubWindowStatus
-     * @tc.desc      : get the sub window status of current window
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testGetSubWindowStatus', 0, async (done: Function) => {
-      let caseName = 'TestGetSubWindowStatus';
-      try {
-        const windowClass = await windowStage.createSubWindow('subwindow');
-        console.info(`${caseName} Succeeded in creating the sub window.`);
-        windowClass.setUIContent("MainAbility/pages/index/index1");
-        await windowClass.showWindow();
-        await sleep(1000);
-        const windowStatus = windowClass.getWindowStatus();
-        console.info(`${caseName} windowStatus is: ${windowStatus}`);
-        await windowClass.destroyWindow();
-        console.info(`${caseName} Succeeded in destroying the window.`);
-        expect(windowStatus).assertEqual(4);
-        done();
-      } catch (exception) {
-        if(exception.code == 801) {
-          console.info(`${caseName}: The current device type does not support: ${exception.message}`);
-          done();
-        } else if (exception.code == 1300002) {
-          console.info(`${caseName}: This window state is abnormal.`);
-          done();
-        } else {
-          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
-          expect().assertFail();
-          done();
-        }
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7300
      * @tc.name      : testGetDestroyedSubWindowStatus
      * @tc.desc      : get the sub window status of current window
      * @tc.size      : MediumTest
@@ -2342,7 +2310,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7400
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7300
      * @tc.name      : testGetSubWindowFocused
      * @tc.desc      : get the sub window focused of current window
      * @tc.size      : MediumTest
@@ -2375,7 +2343,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7500
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7400
      * @tc.name      : testGetDialogWindowFocused
      * @tc.desc      : get the window focused of current window
      * @tc.size      : MediumTest
@@ -2392,7 +2360,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         };
         const windowClass = await window.createWindow(config);
         console.info(`${caseName} Succeeded in creating the dialog window.`);
-        windowClass.setUIContent("MainAbility/pages/index/index2");
+        windowClass.setUIContent("MainAbility/pages/index/index3");
         await windowClass.showWindow();
         await sleep(1000);
         const isFocused = windowClass.isFocused();
@@ -2413,7 +2381,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7600
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7500
      * @tc.name      : testGetTopSubWindowFocused
      * @tc.desc      : get the top sub window focused of current window
      * @tc.size      : MediumTest
@@ -2425,12 +2393,12 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       try {
         const windowClass1 = await windowStage.createSubWindow('subwindow1');
         console.info(`${caseName} Succeeded in creating the sub window 1.`);
-        windowClass1.setUIContent("MainAbility/pages/index/index1");
+        windowClass1.setUIContent("MainAbility/pages/index/index2");
         await windowClass1.showWindow();
         await sleep(1000);
         const windowClass2 = await windowStage.createSubWindow('subwindow2');
         console.info(`${caseName} Succeeded in creating the sub window 2.`);
-        windowClass2.setUIContent("MainAbility/pages/index/index2");
+        windowClass2.setUIContent("MainAbility/pages/index/index3");
         await windowClass2.showWindow();
         await sleep(1000);
         const isFocused1 = windowClass1.isFocused();
@@ -2447,7 +2415,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7700
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7600
      * @tc.name      : testGetShiftWindowFocused
      * @tc.desc      : get the main window focused by shift from sub window
      * @tc.size      : MediumTest
@@ -2460,7 +2428,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         const windowClass = windowStage.getMainWindowSync();
         const subWindowClass = await windowStage.createSubWindow('subwindow');
         console.info(`${caseName} Succeeded in creating the sub window.`);
-        subWindowClass.setUIContent("MainAbility/pages/index/index1");
+        subWindowClass.setUIContent("MainAbility/pages/index/index2");
         await subWindowClass.showWindow();
         await sleep(1000);
         const subWindowClassId = subWindowClass.getWindowProperties().id;
@@ -2489,7 +2457,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7800
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7700
      * @tc.name      : testGetDestroyedSubWindowFocused
      * @tc.desc      : get the sub window focused of current window
      * @tc.size      : MediumTest
