@@ -49,11 +49,6 @@
                         "resource": "$profile:form_config"
                     },
                     {
-                        "name": "ohos.ability.form2",
-                        "value": "",
-                        "resource": "@profile:form_config"
-                    },
-                    {
                         "name": "ohos.ability.form3",
                         "value": "",
                         "resource": "$profile:form_config1"
@@ -193,11 +188,6 @@
                         "name": "ohos.extension.form1",
                         "value": "",
                         "resource": "$profile:form_config"
-                    },
-                    {
-                        "name": "ohos.extension.form2",
-                        "value": "",
-                        "resource": "@profile:form_config"
                     },
                     {
                         "name": "ohos.extension.form3",
