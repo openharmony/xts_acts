@@ -1875,7 +1875,7 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
             napi_default, nullptr},
         {"OH_Utd_GetFilenameExtensions_001", nullptr, OH_Utd_GetFilenameExtensions_001, nullptr, nullptr,
             nullptr, napi_default, nullptr},
-        {"OH_Utd_GetFilenameExtensions_002", nullptr, OH_Utd_GetFilenameExtensions_002, nullptr, nullptr, 
+        {"OH_Utd_GetFilenameExtensions_002", nullptr, OH_Utd_GetFilenameExtensions_002, nullptr, nullptr,
            nullptr, napi_default, nullptr},
         {"OH_Utd_GetFilenameExtensions_003", nullptr, OH_Utd_GetFilenameExtensions_003, nullptr, nullptr, nullptr,
          napi_default, nullptr},
