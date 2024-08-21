@@ -15,29 +15,28 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 
 
 export default function composeTitleBarTest() {
-  describe('composeTitleBarTest', function () {
-    beforeEach(async function (done) {
+  describe('composeTitleBarTest', () => {
+    beforeEach(async (done: Function) => {
       console.info('composeTitleBarTest beforeEach start');
-      let opt = {
-        uri: 'MainAbility/pages/composeTitleBar/composeTitleBarTest',
+      let opt: router.RouterOptions = {
+        url: 'MainAbility/pages/composeTitleBar/composeTitleBarTest',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info(`get composeTitleBarTest state pages: ${JSON.stringify(pages)}`);
         if('composeTitleBarTest'!== pages.name) {
           console.info(`get composeTitleBarTest pages.name: ${JSON.stringify(pages.name)}`);
-          result = await router.push(opt);
+          await router.pushUrl(opt);
           await Utils.sleep(2000);
-          console.info(`push composeTitleBarTest page result:${JSON.stringify(result)}`);
+          console.info(`push composeTitleBarTest page result successful`);
         }
       } catch (err) {
         console.error(`push composeTitleBarTest page error: ${err}`);
@@ -48,7 +47,7 @@ export default function composeTitleBarTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('composeTitleBarTest after each called');
     })
@@ -61,7 +60,7 @@ export default function composeTitleBarTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testComposeTitleBar_0100', 0, async function (done) {
+    it('testComposeTitleBar_0100', 0, async (done: Function) => {
       console.info('[testComposeTitleBar_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
@@ -88,7 +87,7 @@ export default function composeTitleBarTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testComposeTitleBar_0200', 0, async function (done) {
+    it('testComposeTitleBar_0200', 0, async (done: Function) => {
       console.info('[testComposeTitleBar_0200] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

@@ -35,7 +35,7 @@ export default function chipDirectionTest() {
           console.info("get chipDirectionTest pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push chipDirectionTest page result: " + JSON.stringify(result));
+          console.info("push chipDirectionTest page result successful");
         }
       }
       catch (err) {

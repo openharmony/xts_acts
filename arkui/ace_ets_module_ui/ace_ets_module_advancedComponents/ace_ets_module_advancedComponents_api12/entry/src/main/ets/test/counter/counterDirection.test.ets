@@ -35,7 +35,7 @@ export default function counterDirectionTest() {
           console.info("get counterDirectionTest pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push counterDirectionTest page result: " + JSON.stringify(result));
+          console.info("push counterDirectionTest page result successful");
         }
       }
       catch (err) {
