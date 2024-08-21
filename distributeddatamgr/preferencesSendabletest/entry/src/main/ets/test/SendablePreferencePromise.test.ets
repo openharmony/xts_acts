@@ -101,6 +101,7 @@ export default function sendablePreferencesPromiseTest() {
         expect(data === value_string).assertTrue()
       }).catch((err: BusinessError) => {
         console.error(TAG + `Failed to get value of KEY_STRING. code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
       })
       done();
     });
@@ -126,6 +127,7 @@ export default function sendablePreferencesPromiseTest() {
         expect(data === value_boolen).assertTrue()
       }).catch((err: BusinessError) => {
         console.error(TAG + `Failed to get value of KEY_BOOLEAN. code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
       })
       done();
     });
@@ -150,6 +152,7 @@ export default function sendablePreferencesPromiseTest() {
         expect(data === value_bigint).assertTrue()
       }).catch((err: BusinessError) => {
         console.error(TAG + `Failed to get value of KEY_BIGINT. code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
       })
       done();
     });
@@ -174,6 +177,7 @@ export default function sendablePreferencesPromiseTest() {
         expect(data === value_long).assertTrue()
       }).catch((err: BusinessError) => {
         console.error(TAG + `Failed to get value of KEY_LONG. code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
       })
       done();
     });
@@ -202,6 +206,7 @@ export default function sendablePreferencesPromiseTest() {
         }
       }).catch((err: BusinessError) => {
         console.error(TAG + `Failed to get value of KEY_ARRAY_NUMBER. code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
       })
       done();
     });
@@ -226,6 +231,7 @@ export default function sendablePreferencesPromiseTest() {
         }
       }).catch((err: BusinessError) => {
         console.error(TAG + `Failed to get value of KEY_ARRAY_STRING. code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
       })
       done();
     });
@@ -254,6 +260,7 @@ export default function sendablePreferencesPromiseTest() {
         }
       }).catch((err: BusinessError) => {
         console.error(TAG + `Failed to get value of KEY_ARRAY_BOOL. code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
       })
       done();
     });
@@ -280,6 +287,7 @@ export default function sendablePreferencesPromiseTest() {
         }
       }).catch((err: BusinessError) => {
         console.error(TAG + `Failed to get all key-values. code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
       })
       done();
     })
@@ -310,6 +318,7 @@ export default function sendablePreferencesPromiseTest() {
         }
       }).catch((err: BusinessError) => {
         console.error(TAG + `Failed to check the key KEY_BIGINT. code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
       })
       done();
     })
@@ -572,6 +581,7 @@ export default function sendablePreferencesPromiseTest() {
         mPreferences.off('dataChange', keys, observer);
       }).catch((err: BusinessError) => {
         console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
       });
       done()
     })

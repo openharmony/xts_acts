@@ -253,6 +253,7 @@ export default function rdbStoreSendableTest() {
         }
       } catch (err) {
         console.log(TAG + "catch err: failed, err: code=" + err.code + " message=" + err.message);
+        expect().assertFail();
       }
       done();
       console.log(TAG + "************* testRdbStoreSendable0002 end *************");
