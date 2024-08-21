@@ -32,8 +32,8 @@ struct TapGestureExample {
               this.value = JSON.stringify(event.fingerList[0])
             }
           })
-      ).key("interfaceTestKey")
-      Text(this.value).key("valueKey")
+      ).key('interfaceTestKey')
+      Text(this.value).key('valueKey')
     }
     .height(200)
     .width(300)

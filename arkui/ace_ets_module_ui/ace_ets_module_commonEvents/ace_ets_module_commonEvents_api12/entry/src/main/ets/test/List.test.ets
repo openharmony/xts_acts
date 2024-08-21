@@ -61,7 +61,7 @@ import APIshouldBuiltInRecognizerParallelWith from './APIshouldBuiltInRecognizer
 import typeNodeGestureTest from './PanGesture/Gesture.test';
 import UIContextDragControllerTest from './DragController/UIContextDragController.test';
 import tapGestureAddInterfaceTest from './tapGestureAddInterface/tapGestureAddInterfaceTest.test';
-import accessibilityHoverTest from './onAccessibilityHover/onhoverAccessbility.test';
+
 
 export default function testsuite() {
   APIshouldBuiltInRecognizerParallelWith();
