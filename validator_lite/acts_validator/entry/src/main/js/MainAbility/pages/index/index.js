@@ -18,7 +18,7 @@ import app from '@system.app';
 
 export default {
   changeQuit() {
-    console.info('quit app')
+    console.info('quit app');
     app.terminate();
   },
   changeCompent: routePage('pages/second-compent/index').changePage,

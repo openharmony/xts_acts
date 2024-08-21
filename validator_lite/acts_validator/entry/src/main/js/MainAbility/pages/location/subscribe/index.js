@@ -42,25 +42,25 @@ export default {
     },
 
     onInit() {
-        console.info('onInit')
+        console.info('onInit');
     },
 
     subscribe() {
         let obj = this;
         geolocation.subscribe({
-            success: function (data) {
+            success: function(data) {
                 obj.todolist[0].title = '经 - 度: ' + data.longitude;
                 obj.todolist[1].title = '纬 - 度: ' + data.latitude;
                 obj.todolist[2].title = '海 - 拔: ' + data.altitude;
                 obj.todolist[3].title = '精确度: ' + data.accuracy;
-                obj.todolist[4].title =  '时 - 间: ' + data.time;
+                obj.todolist[4].title = '时 - 间: ' + data.time;
                 console.info('success get location data.latitude:' + data.longitude);
                 console.info('success get location data.latitude:' + data.latitude);
                 console.info('success get location data.altitude:' + data.altitude);
                 console.info('success get location data.accuracy:' + data.accuracy);
                 console.info('success get location data.time:' + data.time);
             },
-            fail: function (data, code) {
+            fail: function(data, code) {
                 console.info('fail to subscribe code:' + code + ', data: ' + data);
             }
         });

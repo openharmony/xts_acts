@@ -19,7 +19,7 @@ export const saveTxtData = function (obj, str) {
     let writeData = () => {
         console.info('write  obj.str: ' + obj.str);
         file.writeText({
-            uri: 'internal://app/'+obj.txtName,
+            uri: 'internal://app/' + obj.txtName,
             text: obj.str,
             success: function() {
                 console.log('call writeText success.');
@@ -31,19 +31,17 @@ export const saveTxtData = function (obj, str) {
     }
 
     let checkStr = () => {
-        console.info('checkStr obj.str: '+ obj.str +', obj.title: ' + obj.title)
-        if (obj.str != '' && obj.str.includes(obj.title)) {
-            if (obj.str.includes(obj.title + 'true;')) {
-                if (str === 'false;') {
-                    obj.str.replace(obj.title + 'true ;', obj.title + 'false;')
-                }
-            } else if (obj.str.includes(obj.title + 'false;')) {
-                if (str === 'true ;') {
-                    obj.str.replace(obj.title + 'false;', obj.title + 'true ;')
-                }
-            }
-        } else {
+        console.info('checkStr obj.str: ' + obj.str  + ', obj.title: ' + obj.title);
+        if (!obj.str.includes(obj.title)) {
             obj.str += obj.title + str;
+        } else {
+            return;
+        }
+
+        if (str === 'false;') {
+            obj.str.replace(obj.title + 'true ;', obj.title + 'false;')
+        } else if (str === 'true ;') {
+            obj.str.replace(obj.title + 'false;', obj.title + 'true ;')
         }
     }
 
@@ -53,12 +51,12 @@ export const saveTxtData = function (obj, str) {
             obj.str = data.text
             console.log('call readText success: ' + data.text);
             checkStr();
-            writeData()
+            writeData();
         },
         fail: function(data, code) {
             console.error('read call fail callback fail, code: ' + code + ', data: ' + data);
             checkStr();
-            writeData()
+            writeData();
         },
     });
 };

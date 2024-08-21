@@ -26,7 +26,7 @@ export default {
         pass: 'true ;',
         fail: 'false;'
     },
-    startTimer:function() {
+    startTimer() {
         this.value = 'show';
         this.timeoutId = setTimeout(()=> {this.value = 'once_timer success'}, 3000);
     },

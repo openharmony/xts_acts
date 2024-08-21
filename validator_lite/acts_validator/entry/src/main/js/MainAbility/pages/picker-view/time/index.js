@@ -47,7 +47,7 @@ export default {
         const hours = date.getHours();
         const minutes = date.getMinutes();
         console.log('now hours:' + hours + ' minutes:' + minutes);
-        return this.concat(hours,minutes);
+        return this.concat(hours, minutes);
     },
 
     fill(value) {

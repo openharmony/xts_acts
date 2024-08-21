@@ -20,7 +20,7 @@ limitations under the License.
     </div>
 
     <div class="content">
-        <text class="content-info"> 当前亮度值: {{get_value}}</text>
+        <text class="content-info"> 当前亮度值: {{getValue}}</text>
         <text class="content-info"> 调节屏幕亮度 </text>
         <slider
                 class="sliderStyle"

@@ -263,12 +263,12 @@ export default {
             success: function(uri) {
                 console.log('copy call success :' + uri);
                 obj.todolist[9].title = 'copy success. ';
-                obj.fileDel()
+                obj.fileDel();
             },
             fail: function(data, code) {
                 console.log('copy call fail');
                 obj.todolist[9].title = 'copy fail. ';
-                obj.fileDel()
+                obj.fileDel();
             },
             complete: function() {
                 console.log('copy call complete');

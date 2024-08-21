@@ -33,7 +33,7 @@ export default {
         this.clearInterval();
     },
 
-    startInterval:function() {
+    startInterval() {
         this.index = 0;
         this.intervalID = setInterval(()=> {
 

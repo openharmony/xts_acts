@@ -20,17 +20,17 @@ export const commonFunc = function(obj, e) {
     obj.color = 32768;
     obj.flag = true;
   }
-  console.info("click" + JSON.stringify(e))
+  console.info('click' + JSON.stringify(e));
   obj.pointX = e.globalX;
   obj.pointY = e.globalY;
   obj.timeStamp = e.timestamp;
 };
 export const dataCommon = {
-  color: "#5265ef",
+  color: '#5265ef',
   flag: false,
   pointX: 0,
   pointY: 0,
-  direction: "",
+  direction: '',
   distance: 0,
   timeStamp: 0,
 };
@@ -42,10 +42,10 @@ export const swipeFunc = function(obj, e) {
     obj.color = 32768;
     obj.flag = true;
   }
-  console.info("swipe" + JSON.stringify(e))
+  console.info('swipe' + JSON.stringify(e));
   obj.direction = e.direction
   obj.distance = e.distance
   obj.pointX = e.globalX;
   obj.pointY = e.globalY;
   obj.timeStamp = e.timestamp;
-}
+};

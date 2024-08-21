@@ -27,10 +27,10 @@ export default {
         pass: 'true ;',
         fail: 'false;'
     },
-    clickAction:function(){
+    clickAction() {
         console.log('trigger click');
     },
-    swipeAction:function(){
+    swipeAction() {
         console.log('trigger swipe');
     },
 

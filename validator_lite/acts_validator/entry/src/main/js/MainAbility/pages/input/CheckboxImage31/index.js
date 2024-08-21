@@ -16,7 +16,7 @@
 import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
-export default{
+export default {
     data: {
         str: '',
         title: 'input;',

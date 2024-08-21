@@ -64,11 +64,11 @@ export default {
         ],
     },
 
-    clickAction:function(){
+    clickAction() {
         let obj = this;
         console.info('clickAction');
         device.getInfo({
-            success:function(data){
+            success: function(data) {
 
                 obj.todolist[0].title = 'band:' + data.brand;
                 obj.todolist[1].title = 'manufacturer:' + data.manufacturer;
@@ -84,11 +84,11 @@ export default {
                 obj.todolist[11].title = 'deviceType:' + data.deviceType;
                 console.log('get device info success, data:'+ JSON.stringify(data));
             },
-            fail:function(data,code){
-                obj.brand = 'get device info failed, errorcode:'+code;
+            fail: function(data, code) {
+                obj.brand = 'get device info failed, errorcode:' + code;
                 console.log('get device info failed');
             },
-            complete:function(){
+            complete: function() {
                 console.log('get device info completed');
             }
         });

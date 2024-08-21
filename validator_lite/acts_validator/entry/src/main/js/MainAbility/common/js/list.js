@@ -14,19 +14,19 @@
  */
 export const addData = function() {
   for (var i = 0; i < 50; i++) {
-    this.listData.push("common/left.png");
-    this.listData.push("common/right.png");
-    this.listData.push("common/music_prev.png");
-    this.listData.push("common/music_next.png");
-    this.listData.push("common/music_play.png");
-    this.listData.push("common/goAhead.png");
+    this.listData.push('common/left.png');
+    this.listData.push('common/right.png');
+    this.listData.push('common/music_prev.png');
+    this.listData.push('common/music_next.png');
+    this.listData.push('common/music_play.png');
+    this.listData.push('common/goAhead.png');
   }
 };
 export const resource = [
-  "common/left.png",
-  "common/right.png",
-  "common/music_prev.png",
-  "common/music_next.png",
-  "common/music_play.png",
-  "common/goAhead.png"
+  'common/left.png',
+  'common/right.png',
+  'common/music_prev.png',
+  'common/music_next.png',
+  'common/music_play.png',
+  'common/goAhead.png'
 ];

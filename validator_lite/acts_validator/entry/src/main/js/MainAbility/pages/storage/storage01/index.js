@@ -42,7 +42,7 @@ export default {
     this.storageSet();
   },
 
-  storageSet: function() {
+  storageSet() {
     let obj = this;
     storage.set({
       key: 'Storage1',
@@ -63,7 +63,7 @@ export default {
     });
   },
 
-  storageGet: function() {
+  storageGet() {
     var obj = this;
     storage.get({
       key: 'Storage1',
@@ -82,7 +82,7 @@ export default {
       }
     });
   },
-  storageDelete: function() {
+  storageDelete() {
     let obj = this;
     storage.delete({
       key: 'Storage1',
@@ -102,7 +102,7 @@ export default {
     });
   },
 
-  storageSet2: function() {
+  storageSet2() {
     let obj = this;
     storage.set({
       key: 'Storage2',
@@ -121,7 +121,7 @@ export default {
     });
   },
 
-  storageClear: function() {
+  storageClear() {
     var obj = this;
     storage.clear({
       success: function(data) {

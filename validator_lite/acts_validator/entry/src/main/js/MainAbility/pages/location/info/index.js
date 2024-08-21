@@ -48,7 +48,7 @@ export default {
     },
 
     onInit() {
-        console.info('onInit')
+        console.info('onInit');
     },
 
     getLocationInfo() {

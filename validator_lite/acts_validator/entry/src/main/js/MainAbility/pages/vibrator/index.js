@@ -28,7 +28,7 @@ export default {
         fail: 'false;'
     },
 
-    clickActionShort:function(){
+    clickActionShort() {
         console.info('vibrate short');
         let obj = this;
         Vibrator.vibrate({
@@ -46,7 +46,7 @@ export default {
         });
     },
 
-    clickActionLong:function(){
+    clickActionLong() {
         console.info('vibrate long');
         let obj = this;
         Vibrator.vibrate({

@@ -12,40 +12,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from "@system.router";
+
+import router from '@system.router';
 
 export const backPage = function(superiorUri) {
   return {
     // back to main page
     backMain() {
-      console.info("back home")
-      router.replace({ uri: "/pages/index/index" });
+      console.info('back home');
+      router.replace({ uri: '/pages/index/index' });
     },
     // back to superior page
     backSuperior() {
-      console.info("toto new")
+      console.info('toto new');
       router.replace({ uri: superiorUri });
     }
   };
 };
 export const imageFrames = [
-  { src: "/common/A094_051.png" },
-  { src: "/common/A094_052.png" },
-  { src: "/common/A094_053.png" },
-  { src: "/common/A094_054.png" },
-  { src: "/common/A094_055.png" },
-  { src: "/common/A094_056.png" },
-  { src: "/common/A094_057.png" },
-  { src: "/common/A094_058.png" },
-  { src: "/common/A094_059.png" },
-  { src: "/common/A094_060.png" },
-  { src: "/common/A094_061.png" },
-  { src: "/common/A094_062.png" },
-  { src: "/common/A094_063.png" },
-  { src: "/common/A094_064.png" },
-  { src: "/common/A094_065.png" },
-  { src: "/common/A094_066.png" },
-  { src: "/common/A094_067.png" }
+  { src: '/common/A094_051.png' },
+  { src: '/common/A094_052.png' },
+  { src: '/common/A094_053.png' },
+  { src: '/common/A094_054.png' },
+  { src: '/common/A094_055.png' },
+  { src: '/common/A094_056.png' },
+  { src: '/common/A094_057.png' },
+  { src: '/common/A094_058.png' },
+  { src: '/common/A094_059.png' },
+  { src: '/common/A094_060.png' },
+  { src: '/common/A094_061.png' },
+  { src: '/common/A094_062.png' },
+  { src: '/common/A094_063.png' },
+  { src: '/common/A094_064.png' },
+  { src: '/common/A094_065.png' },
+  { src: '/common/A094_066.png' },
+  { src: '/common/A094_067.png' }
 ];
 export const pageRoute = function(prevUri, nextUri) {
   return {
@@ -53,19 +54,19 @@ export const pageRoute = function(prevUri, nextUri) {
       router.replace({
         uri: prevUri
       });
-      console.info("pageRoute changePrev")
+      console.info('pageRoute changePrev');
     },
     backMain() {
       router.replace({
-        uri: "pages/index/index"
+        uri: 'pages/index/index'
       });
-      console.info("pageRoute backMain")
+      console.info('pageRoute backMain');
     },
     changeNext() {
       router.replace({
         uri: nextUri
       });
-      console.info("pageRoute changeNext")
+      console.info('pageRoute changeNext');
     }
   };
 };
@@ -74,7 +75,7 @@ export const routePage = function(uri) {
   return {
     changePage() {
       router.replace({ uri: uri });
-      console.info("routePage")
+      console.info("routePage");
     }
   };
 };
@@ -83,11 +84,11 @@ export const goPage = function(prevUri) {
   return {
     goHome() {
       router.replace({ uri: "pages/index/index" });
-      console.info("goHome")
+      console.info("goHome");
     },
     goPrevious() {
       router.replace({ uri: prevUri });
-      console.info("goPrevious")
+      console.info("goPrevious");
     }
   };
 };

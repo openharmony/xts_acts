@@ -91,11 +91,11 @@ export default {
     },
 
     back() {
-        console.info('onclick back ')
+        console.info('onclick back ');
         router.replace({ uri: 'pages/second-compent/index' });
     },
 
     changeResult(result) {
-        saveTxtData(this, result)
+        saveTxtData(this, result);
     },
 };
