@@ -34,7 +34,7 @@ describe('UsbApiParamErrJsunitTest', function () {
         busNum: null,
         devAddress: null
     };
-    let controlParam;
+    let requestparam;
     let isDeviceConnected;
     function deviceConnected() {
         if (usbPortList == undefined) {
@@ -74,9 +74,7 @@ describe('UsbApiParamErrJsunitTest', function () {
                 }
             }
 
-            controlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0);
+            requestparam = getControlTransferParam(0x80, 0x06, (0x01 << 8 | 0), 0, 18);
         }
 
         
@@ -101,22 +99,18 @@ describe('UsbApiParamErrJsunitTest', function () {
         console.log(TAG, '*************Usb Unit UsbApiParamErrJsunitTest End*************');
     })
 
-    function getTransferParam(iCmd, iReqTarType, iReqType, iValue, iIndex) {
-        var tmpUint8Array = new Uint8Array(512);
-        var requestCmd = iCmd;
-        var requestTargetType = iReqTarType;
-        var requestType = iReqType;
-        var value = iValue;
-        var index = iIndex;
-        let controlParam = {
-          request: requestCmd,
-          target: requestTargetType,
-          reqType: requestType,
-          value: value,
-          index: index,
-          data: tmpUint8Array
+    function getControlTransferParam(iReqType, iReq, iValue, iIndex, iLength) {
+        let tmpUint8Array = new Uint8Array(512);
+
+        let requestparam = {
+            bmRequestType: iReqType,
+            bRequest: iReq,
+            wValue: iValue,
+            wIndex: iIndex,
+            wLength: iLength,
+            data: tmpUint8Array
         }
-        return controlParam;
+        return requestparam;
     }
 
     function getPipe(testCaseName) {
@@ -7327,161 +7321,161 @@ describe('UsbApiParamErrJsunitTest', function () {
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2030
-     * @tc.name     : testControlTransferParamErr001
+     * @tc.name     : testUsbControlTransferParamErr001
      * @tc.desc     : Negative test: Param is null
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr001', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr001 begin');
+    it('testUsbControlTransferParamErr001', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
         }
         try {
-            let ret = usbManager.controlTransfer(PARAM_NULL);
-            console.info(TAG, 'usb [param:null] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(PARAM_NULL);
+            console.info(TAG, 'usb [param:null] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr001 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr001 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2040
-     * @tc.name     : testControlTransferParamErr002
+     * @tc.name     : testUsbControlTransferParamErr002
      * @tc.desc     : Negative test: Param is undefined
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr002', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr002 begin');
+    it('testUsbControlTransferParamErr002', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
         }
         try {
-            let ret = usbManager.controlTransfer(PARAM_UNDEFINED);
-            console.info(TAG, 'usb [param:undefined] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(PARAM_UNDEFINED);
+            console.info(TAG, 'usb [param:undefined] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr002 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr002 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2050
-     * @tc.name     : testControlTransferParamErr003
+     * @tc.name     : testUsbControlTransferParamErr003
      * @tc.desc     : Negative test: Param is ""
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr003', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr003 begin');
+    it('testUsbControlTransferParamErr003', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
         }
         try {
-            let ret = usbManager.controlTransfer(PARAM_NULLSTRING);
-            console.info(TAG, 'usb [param:""] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(PARAM_NULLSTRING);
+            console.info(TAG, 'usb [param:""] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr003 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr003 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2060
-     * @tc.name     : testControlTransferParamErr004
+     * @tc.name     : testUsbControlTransferParamErr004
      * @tc.desc     : Negative test: pipe is null
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr004', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr004 begin');
+    it('testUsbControlTransferParamErr004', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
         }
         try {
             let timeout = 5000;
-            let ret = usbManager.controlTransfer(PARAM_NULL, controlParam, timeout);
-            console.info(TAG, 'usb [pipe:null] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(PARAM_NULL, requestparam, timeout);
+            console.info(TAG, 'usb [pipe:null] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr004 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr004 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2070
-     * @tc.name     : testControlTransferParamErr005
+     * @tc.name     : testUsbControlTransferParamErr005
      * @tc.desc     : Negative test: pipe is undefined
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr005', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr005 begin');
+    it('testUsbControlTransferParamErr005', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
         }
         try {
             let timeout = 5000;
-            let ret = usbManager.controlTransfer(PARAM_UNDEFINED, controlParam, timeout);
-            console.info(TAG, 'usb [pipe:undefined] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(PARAM_UNDEFINED, requestparam, timeout);
+            console.info(TAG, 'usb [pipe:undefined] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr005 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr005 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2080
-     * @tc.name     : testControlTransferParamErr006
+     * @tc.name     : testUsbControlTransferParamErr006
      * @tc.desc     : Negative test: pipe is ""
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr006', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr006 begin');
+    it('testUsbControlTransferParamErr006', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
         }
         try {
             let timeout = 5000;
-            let ret = usbManager.controlTransfer(PARAM_NULLSTRING, controlParam, timeout);
-            console.info(TAG, 'usb [pipe:""] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(PARAM_NULLSTRING, requestparam, timeout);
+            console.info(TAG, 'usb [pipe:""] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr006 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr006 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2090
-     * @tc.name     : testControlTransferParamErr007
-     * @tc.desc     : Negative test: controlparam is null
+     * @tc.name     : testUsbControlTransferParamErr007
+     * @tc.desc     : Negative test: requestparam is null
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr007', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr007 begin');
+    it('testUsbControlTransferParamErr007', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7490,25 +7484,25 @@ describe('UsbApiParamErrJsunitTest', function () {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
             let timeout = 5000;
-            let ret = usbManager.controlTransfer(gPipe, PARAM_NULL, timeout);
-            console.info(TAG, 'usb [controlparam:null] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, PARAM_NULL, timeout);
+            console.info(TAG, 'usb [requestparam:null] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr007 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr007 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2110
-     * @tc.name     : testControlTransferParamErr008
-     * @tc.desc     : Negative test: controlparam is undefined
+     * @tc.name     : testUsbControlTransferParamErr008
+     * @tc.desc     : Negative test: requestparam is undefined
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr008', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr008 begin');
+    it('testUsbControlTransferParamErr008', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7517,25 +7511,25 @@ describe('UsbApiParamErrJsunitTest', function () {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
             let timeout = 5000;
-            let ret = usbManager.controlTransfer(gPipe, PARAM_UNDEFINED, timeout);
-            console.info(TAG, 'usb [controlparam:undefined] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, PARAM_UNDEFINED, timeout);
+            console.info(TAG, 'usb [requestparam:undefined] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr008 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr008 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2120
-     * @tc.name     : testControlTransferParamErr009
-     * @tc.desc     : Negative test: controlparam is ""
+     * @tc.name     : testUsbControlTransferParamErr009
+     * @tc.desc     : Negative test: requestparam is ""
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr009', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr009 begin');
+    it('testUsbControlTransferParamErr009', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7544,25 +7538,25 @@ describe('UsbApiParamErrJsunitTest', function () {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
             let timeout = 5000;
-            let ret = usbManager.controlTransfer(gPipe, PARAM_NULLSTRING, timeout);
-            console.info(TAG, 'usb [controlparam:""] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, PARAM_NULLSTRING, timeout);
+            console.info(TAG, 'usb [requestparam:""] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr009 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr009 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2130
-     * @tc.name     : testControlTransferParamErr010
+     * @tc.name     : testUsbControlTransferParamErr010
      * @tc.desc     : Negative test: pipe busNum is null
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr010', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr010 begin');
+    it('testUsbControlTransferParamErr010', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7571,25 +7565,25 @@ describe('UsbApiParamErrJsunitTest', function () {
             gPipe.busNum = PARAM_NULL;
             gPipe.devAddress = devices.devAddress;
             let timeout = 5000;
-            let ret = usbManager.controlTransfer(gPipe, controlParam, timeout);
-            console.info(TAG, 'usb [busNum:null] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, requestparam, timeout);
+            console.info(TAG, 'usb [busNum:null] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr010 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr010 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2140
-     * @tc.name     : testControlTransferParamErr011
+     * @tc.name     : testUsbControlTransferParamErr011
      * @tc.desc     : Negative test: pipe busNum is undefined
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr011', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr011 begin');
+    it('testUsbControlTransferParamErr011', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7598,25 +7592,25 @@ describe('UsbApiParamErrJsunitTest', function () {
             gPipe.busNum = PARAM_UNDEFINED;
             gPipe.devAddress = devices.devAddress;
             let timeout = 5000;
-            let ret = usbManager.controlTransfer(gPipe, controlParam, timeout);
-            console.info(TAG, 'usb [busNum:undefined] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, requestparam, timeout);
+            console.info(TAG, 'usb [busNum:undefined] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr011 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr011 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2150
-     * @tc.name     : testControlTransferParamErr012
+     * @tc.name     : testUsbControlTransferParamErr012
      * @tc.desc     : Negative test: pipe busNum is ""
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr012', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr012 begin');
+    it('testUsbControlTransferParamErr012', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr012 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7625,25 +7619,25 @@ describe('UsbApiParamErrJsunitTest', function () {
             gPipe.busNum = PARAM_NULLSTRING;
             gPipe.devAddress = devices.devAddress;
             let timeout = 5000;
-            let ret = usbManager.controlTransfer(gPipe, controlParam, timeout);
-            console.info(TAG, 'usb [busNum:""] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, requestparam, timeout);
+            console.info(TAG, 'usb [busNum:""] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr012 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr012 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2160
-     * @tc.name     : testControlTransferParamErr013
+     * @tc.name     : testUsbControlTransferParamErr013
      * @tc.desc     : Negative test: pipe devAddress is null
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr013', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr013 begin');
+    it('testUsbControlTransferParamErr013', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr013 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7652,25 +7646,25 @@ describe('UsbApiParamErrJsunitTest', function () {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = PARAM_NULL;
             let timeout = 5000;
-            let ret = usbManager.controlTransfer(gPipe, controlParam, timeout);
-            console.info(TAG, 'usb [devAddress:null] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, requestparam, timeout);
+            console.info(TAG, 'usb [devAddress:null] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr013 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr013 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2170
-     * @tc.name     : testControlTransferParamErr014
+     * @tc.name     : testUsbControlTransferParamErr014
      * @tc.desc     : Negative test: pipe devAddress is undefined
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr014', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr014 begin');
+    it('testUsbControlTransferParamErr014', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr014 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7679,25 +7673,25 @@ describe('UsbApiParamErrJsunitTest', function () {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = PARAM_UNDEFINED;
             let timeout = 5000;
-            let ret = usbManager.controlTransfer(gPipe, controlParam, timeout);
-            console.info(TAG, 'usb [devAddress:undefined] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, requestparam, timeout);
+            console.info(TAG, 'usb [devAddress:undefined] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr014 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr014 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2180
-     * @tc.name     : testControlTransferParamErr015
+     * @tc.name     : testUsbControlTransferParamErr015
      * @tc.desc     : Negative test: pipe devAddress is ""
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr015', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr015 begin');
+    it('testUsbControlTransferParamErr015', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr015 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7706,25 +7700,25 @@ describe('UsbApiParamErrJsunitTest', function () {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = PARAM_NULLSTRING;
             let timeout = 5000;
-            let ret = usbManager.controlTransfer(gPipe, controlParam, timeout);
-            console.info(TAG, 'usb [devAddress:""] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, requestparam, timeout);
+            console.info(TAG, 'usb [devAddress:""] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr015 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr015 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2190
-     * @tc.name     : testControlTransferParamErr016
-     * @tc.desc     : Negative test: controlparam request is null
+     * @tc.name     : testUsbControlTransferParamErr016
+     * @tc.desc     : Negative test: requestparam bmRequestType is null
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr016', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr016 begin');
+    it('testUsbControlTransferParamErr016', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr016 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7732,30 +7726,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(PARAM_NULL, usbManager.USB_REQUEST_TARGET_DEVICE,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0);
+            let tmpRequestparam = getControlTransferParam(PARAM_NULL, 0x06, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.request:null] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.bmRequestType:null] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr016 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr016 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2210
-     * @tc.name     : testControlTransferParamErr017
-     * @tc.desc     : Negative test: controlparam request is undefined
+     * @tc.name     : testUsbControlTransferParamErr017
+     * @tc.desc     : Negative test: requestparam bmRequestType is undefined
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr017', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr017 begin');
+    it('testUsbControlTransferParamErr017', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr017 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7763,30 +7755,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(PARAM_UNDEFINED, usbManager.USB_REQUEST_TARGET_DEVICE,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0);
+            let tmpRequestparam = getControlTransferParam(PARAM_UNDEFINED, 0x06, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.request:undefined] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.bmRequestType:undefined] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr017 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr017 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2220
-     * @tc.name     : testControlTransferParamErr018
-     * @tc.desc     : Negative test: controlparam request is ""
+     * @tc.name     : testUsbControlTransferParamErr018
+     * @tc.desc     : Negative test: requestparam bmRequestType is ""
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr018', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr018 begin');
+    it('testUsbControlTransferParamErr018', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr018 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7794,30 +7784,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(PARAM_NULLSTRING, usbManager.USB_REQUEST_TARGET_DEVICE,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0);
+            let tmpRequestparam = getControlTransferParam(PARAM_NULLSTRING, 0x06, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.request:""] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.bmRequestType:""] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr018 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr018 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2230
-     * @tc.name     : testControlTransferParamErr019
-     * @tc.desc     : Negative test: controlparam target is null
+     * @tc.name     : testUsbControlTransferParamErr019
+     * @tc.desc     : Negative test: requestparam bRequest is null
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr019', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr019 begin');
+    it('testUsbControlTransferParamErr019', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr019 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7825,30 +7813,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, PARAM_NULL,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0);
+            let tmpRequestparam = getControlTransferParam(0x80, PARAM_NULL, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.target:null] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.bRequest:null] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr019 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr019 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2240
-     * @tc.name     : testControlTransferParamErr020
-     * @tc.desc     : Negative test: controlparam target is undefined
+     * @tc.name     : testUsbControlTransferParamErr020
+     * @tc.desc     : Negative test: requestparam bRequest is undefined
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr020', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr020 begin');
+    it('testUsbControlTransferParamErr020', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr020 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7856,30 +7842,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, PARAM_UNDEFINED,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0);
+            let tmpRequestparam = getControlTransferParam(0x80, PARAM_UNDEFINED, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.request:undefined] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.bRequest:undefined] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr020 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr020 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2250
-     * @tc.name     : testControlTransferParamErr021
-     * @tc.desc     : Negative test: controlparam target is ""
+     * @tc.name     : testUsbControlTransferParamErr021
+     * @tc.desc     : Negative test: requestparam bRequest is ""
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr021', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr021 begin');
+    it('testUsbControlTransferParamErr021', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr021 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7887,30 +7871,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, PARAM_NULLSTRING,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0);
+            let tmpRequestparam = getControlTransferParam(0x80, PARAM_NULLSTRING, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.target:""] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.bRequest:""] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr021 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr021 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2260
-     * @tc.name     : testControlTransferParamErr022
-     * @tc.desc     : Negative test: controlparam reqType is null
+     * @tc.name     : testUsbControlTransferParamErr022
+     * @tc.desc     : Negative test: requestparam wValue is null
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr022', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr022 begin');
+    it('testUsbControlTransferParamErr022', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr022 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7918,29 +7900,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
-                PARAM_NULL, (2 << 8), 0);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_NULL, 0, 18);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.reqType:null] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.wValue:null] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr022 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr022 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2270
-     * @tc.name     : testControlTransferParamErr023
-     * @tc.desc     : Negative test: controlparam reqType is undefined
+     * @tc.name     : testUsbControlTransferParamErr023
+     * @tc.desc     : Negative test: requestparam wValue is undefined
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr023', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr023 begin');
+    it('testUsbControlTransferParamErr023', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr023 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7948,29 +7929,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
-                PARAM_UNDEFINED, (2 << 8), 0);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_UNDEFINED, 0, 18);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.reqType:undefined] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.wValue:undefined] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr023 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr023 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2280
-     * @tc.name     : testControlTransferParamErr024
-     * @tc.desc     : Negative test: controlparam reqType is ""
+     * @tc.name     : testUsbControlTransferParamErr024
+     * @tc.desc     : Negative test: requestparam wValue is ""
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr024', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr024 begin');
+    it('testUsbControlTransferParamErr024', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr024 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -7978,29 +7958,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
-                PARAM_NULLSTRING, (2 << 8), 0);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, PARAM_NULLSTRING, 0, 18);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.request:""] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.wValue:""] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr024 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr024 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2290
-     * @tc.name     : testControlTransferParamErr025
-     * @tc.desc     : Negative test: controlparam value is null
+     * @tc.name     : testUsbControlTransferParamErr025
+     * @tc.desc     : Negative test: requestparam wIndex is null
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr025', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr025 begin');
+    it('testUsbControlTransferParamErr025', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr025 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -8008,30 +7987,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), PARAM_NULL, 0);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), PARAM_NULL, 0);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.value:null] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.wIndex:null] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr025 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr025 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2310
-     * @tc.name     : testControlTransferParamErr026
-     * @tc.desc     : Negative test: controlparam value is undefined
+     * @tc.name     : testUsbControlTransferParamErr026
+     * @tc.desc     : Negative test: requestparam wIndex is undefined
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr026', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr026 begin');
+    it('testUsbControlTransferParamErr026', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr026 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -8039,30 +8016,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), PARAM_UNDEFINED, 0);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), PARAM_UNDEFINED, 0);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.value:undefined] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.wIndex:undefined] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr026 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr026 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2320
-     * @tc.name     : testControlTransferParamErr027
-     * @tc.desc     : Negative test: controlparam value is ""
+     * @tc.name     : testUsbControlTransferParamErr027
+     * @tc.desc     : Negative test: requestparam wIndex is ""
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr027', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr027 begin');
+    it('testUsbControlTransferParamErr027', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr027 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -8070,30 +8045,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), PARAM_NULLSTRING, 0);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), PARAM_NULLSTRING, 0);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.value:""] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.wIndex:""] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr027 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr027 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2330
-     * @tc.name     : testControlTransferParamErr028
-     * @tc.desc     : Negative test: controlparam index is null
+     * @tc.name     : testUsbControlTransferParamErr028
+     * @tc.desc     : Negative test: requestparam wLength is null
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr028', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr028 begin');
+    it('testUsbControlTransferParamErr028', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr028 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -8101,30 +8074,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), PARAM_NULL);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, PARAM_NULL);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.index:null] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.wLength:null] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr028 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr028 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2340
-     * @tc.name     : testControlTransferParamErr029
-     * @tc.desc     : Negative test: controlparam index is undefined
+     * @tc.name     : testUsbControlTransferParamErr029
+     * @tc.desc     : Negative test: requestparam wLength is undefined
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr029', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr029 begin');
+    it('testUsbControlTransferParamErr029', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr029 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -8132,30 +8103,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), PARAM_UNDEFINED);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, PARAM_UNDEFINED);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.index:undefined] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.wLength:undefined] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr029 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr029 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2350
-     * @tc.name     : testControlTransferParamErr030
-     * @tc.desc     : Negative test: controlparam index is ""
+     * @tc.name     : testUsbControlTransferParamErr030
+     * @tc.desc     : Negative test: requestparam wLength is ""
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr030', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr030 begin');
+    it('testUsbControlTransferParamErr030', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr030 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -8163,30 +8132,28 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), PARAM_NULLSTRING);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, PARAM_NULLSTRING);
             let timeout = 5000;
 
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.index:""] controlTransfer ret : ', ret);
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.wLength:""] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr030 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr030 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2360
-     * @tc.name     : testControlTransferParamErr031
-     * @tc.desc     : Negative test: controlparam data is null
+     * @tc.name     : testUsbControlTransferParamErr031
+     * @tc.desc     : Negative test: requestparam data is null
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr031', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr031 begin');
+    it('testUsbControlTransferParamErr031', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr031 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -8194,31 +8161,29 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
-            tmpControlParam.data = PARAM_NULL;
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.data:null] controlTransfer ret : ', ret);
+            tmpRequestparam.data = PARAM_NULL;
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.data:null] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr031 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr031 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2370
-     * @tc.name     : testControlTransferParamErr032
-     * @tc.desc     : Negative test: controlparam data is undefined
+     * @tc.name     : testUsbControlTransferParamErr032
+     * @tc.desc     : Negative test: requestparam data is undefined
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr032', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr032 begin');
+    it('testUsbControlTransferParamErr032', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr032 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -8226,31 +8191,29 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
-            tmpControlParam.data = PARAM_UNDEFINED;
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.data:undefined] controlTransfer ret : ', ret);
+            tmpRequestparam.data = PARAM_UNDEFINED;
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.data:undefined] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr032 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr032 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
 
     /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamErr_2380
-     * @tc.name     : testControlTransferParamErr033
-     * @tc.desc     : Negative test: controlparam data is ""
+     * @tc.name     : testUsbControlTransferParamErr033
+     * @tc.desc     : Negative test: requestparam data is ""
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testControlTransferParamErr033', 0, function () {
-        console.info(TAG, 'usb testControlTransferParamErr033 begin');
+    it('testUsbControlTransferParamErr033', 0, function () {
+        console.info(TAG, 'usb testUsbControlTransferParamErr033 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
             return
@@ -8258,17 +8221,15 @@ describe('UsbApiParamErrJsunitTest', function () {
         try {
             gPipe.busNum = devices.busNum;
             gPipe.devAddress = devices.devAddress;
-            let tmpControlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
-                (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
-                | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0);
+            let tmpRequestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, 18);
             let timeout = 5000;
 
-            tmpControlParam.data = PARAM_NULLSTRING;
-            let ret = usbManager.controlTransfer(gPipe, tmpControlParam, timeout);
-            console.info(TAG, 'usb [controlparam.data:""] controlTransfer ret : ', ret);
+            tmpRequestparam.data = PARAM_NULLSTRING;
+            let ret = usbManager.usbControlTransfer(gPipe, tmpRequestparam, timeout);
+            console.info(TAG, 'usb [requestparam.data:""] usbControlTransfer ret : ', ret);
             expect(ret !== null).assertFalse();
         } catch (err) {
-            console.info(TAG, 'testControlTransferParamErr033 catch err code: ', err.code, ', message: ', err.message);
+            console.info(TAG, 'testUsbControlTransferParamErr033 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PARAM_ERRCODE);
         }
     })
