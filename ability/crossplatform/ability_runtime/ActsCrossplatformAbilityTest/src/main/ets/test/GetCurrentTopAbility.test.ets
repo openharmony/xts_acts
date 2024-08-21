@@ -26,7 +26,7 @@ export default function GetCurrentTopAbilityTest() {
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       abilityDelegator.startAbility({
         abilityName: "MainAbility",
-        bundleName: "com.example.delegatortest",
+        bundleName: "com.example.crossplatformability",
         moduleName: "entry",
       });
     });
@@ -46,7 +46,7 @@ export default function GetCurrentTopAbilityTest() {
       setTimeout(() => {
         abilityDelegator.startAbility({
           abilityName: "Main4Ability",
-          bundleName: "com.example.delegatortest",
+          bundleName: "com.example.crossplatformability",
           moduleName: "entry",
         }, () => {
           setTimeout(() => {
@@ -90,7 +90,7 @@ export default function GetCurrentTopAbilityTest() {
       );
       abilityDelegator.startAbility({
         abilityName: "Main3Ability",
-        bundleName: "com.example.delegatortest",
+        bundleName: "com.example.crossplatformability",
         moduleName: "entry",
       });
       setTimeout(() => {
