@@ -13,22 +13,10 @@
  * limitations under the License.
  */
 
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { Hypium } from '@ohos/hypium';
-import testsuite from '../../test/List.test';
-
 @Entry
 @Component
 struct Index {
-  @State message: string = 'MainAbility';
-
-  aboutToAppear() {
-    console.info("start run testcase!!!!");
-    let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-    let abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
-    console.info('start run testcase!!!');
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
-  }
+  @State message: string = 'Hello World'
 
   build() {
     Row() {
@@ -36,6 +24,8 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+          })
       }
       .width('100%')
     }
