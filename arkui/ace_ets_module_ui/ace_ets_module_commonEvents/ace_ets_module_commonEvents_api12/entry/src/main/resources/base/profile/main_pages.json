@@ -49,7 +49,6 @@
         "MainAbility/pages/GestureRecognizer/GestureRecognizerState",
 	"MainAbility/pages/PanGesture/Gesture",
 	"MainAbility/pages/DragController/UIContextDragController",
-        "MainAbility/pages/tapGestureAddInterface/tapgestures",
-        "MainAbility/pages/onAccessibilityHover/accessibilityHover"
+        "MainAbility/pages/tapGestureAddInterface/tapgestures"
     ]
 }

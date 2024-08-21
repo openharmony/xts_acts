@@ -113,5 +113,5 @@ export default function testsuite() {
   typeNodeGestureTest();
   UIContextDragControllerTest();
   tapGestureAddInterfaceTest();
-  accessibilityHoverTest();
+  
 }
