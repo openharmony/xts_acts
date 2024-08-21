@@ -39,20 +39,6 @@
           },
         ]
       },
-    ],
-    "requestPermissions": [
-      {
-        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
-      },
-      {
-        "name": "ohos.permission.INSTALL_BUNDLE",
-      },
-      {
-        "name":  "ohos.permission.INSTALL_ENTERPRISE_BUNDLE",
-      },
-      {
-        "name":  "ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE"
-      }
     ]
   },
 }
