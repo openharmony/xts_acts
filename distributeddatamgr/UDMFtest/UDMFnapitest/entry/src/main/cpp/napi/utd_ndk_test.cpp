@@ -26,7 +26,7 @@
 #define PARAM_0 0
 #define PARAM_1 1
 
-const char *REFERENCE_URL = 
+const char *REFERENCE_URL =
     "https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis\
     /js-apis-data-uniformTypeDescriptor.md#uniformdatatype";
 
