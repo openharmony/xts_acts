@@ -19,7 +19,16 @@ import { BusinessError } from '@ohos.base';
 export default function windowLayoutTest(context, windowStage, abilityStorage) {
   describe('window_layout_test', function () {
     console.log('describe window_focus_test start!!!')
-
+    async function sleep(time) {
+      let timeoutId = null;
+      let promise = new Promise(resolve => {
+        timeoutId = setTimeout(() => {
+          resolve('sleep finished');
+        }, time);
+      })
+      let result = await promise;
+      clearTimeout(timeoutId)
+    }
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5090
      * @tc.name      : testSetAspectRatio_DialogWindow
@@ -885,6 +894,296 @@ export default function windowLayoutTest(context, windowStage, abilityStorage) {
           expect(exception.code).assertEqual(801);
         }
       }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5600
+     * @tc.name      : testSetAspectRatio_SubWindowWithOptions
+     * @tc.desc      : Verify the scenario of creating the application type window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetAspectRatio_SubWindowWithOptions', 0, async function () {
+      let caseName = 'testSetAspectRatio_SubWindowWithOptions';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'testSetAspectRatio_SubWindowWithOptions',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testSetAspectRatio_SubWindowWithOptions', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          try {
+            let ratio = 1.0;
+            await subWin.setAspectRatio(ratio).then(() => {
+              console.info(msgStr + 'Succeeded in setting aspect ratio of window.');
+              expect().assertFail();
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set the aspect ratio of window. Cause code: ${err.code}, message: ${err.message}`);
+              expect(err.code).assertEqual(1300004);
+            });
+          } catch (exception) {
+            console.error(msgStr + `Failed to set the aspect ratio of window. Cause code: ${exception.code}, message: ${exception.message}`);
+            expect(exception.code).assertEqual(1300004);
+          }
+          await subWin.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5610
+     * @tc.name      : testResetAspectRatio_SubWindowWithOptions
+     * @tc.desc      : Unset the proportion of the window content layout
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testResetAspectRatio_SubWindowWithOptions', 0, async function () {
+      let caseName = 'testResetAspectRatio_SubWindowWithOptions';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'testSetAspectRatio_SubWindowWithOptions',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testResetAspectRatio_SubWindowWithOptions', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          try {
+            await subWin.resetAspectRatio().then(() => {
+              console.info(msgStr + 'Succeeded in resetting aspect ratio of window.');
+              expect().assertFail();
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to reset the aspect ratio of window. Cause code: ${err.code}, message: ${err.message}`);
+              expect(err.code).assertEqual(1300004);
+            });
+          } catch (exception) {
+            console.error(msgStr + `Failed to reset the aspect ratio of window. Cause code: ${exception.code}, message: ${exception.message}`);
+            expect(exception.code).assertEqual(1300004);
+          }
+          await subWin.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5620
+     * @tc.name      : testGetWindowLimits_SubWindowWithOptions
+     * @tc.desc      : Gets the size limit for the current application window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetWindowLimits_SubWindowWithOptions', 0, async function () {
+      let caseName = 'testGetWindowLimits_SubWindowWithOptions';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'testGetWindowLimits_SubWindowWithOptions',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testGetWindowLimits_SubWindowWithOptions', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          try {
+            let windowLimits = subWin.getWindowLimits();
+            console.info(msgStr + 'Succeeded in getWindowLimits ' + JSON.stringify(windowLimits));
+            expect(!!windowLimits).assertTrue();
+          } catch (exception) {
+            if (exception.code != 801) {
+              console.error(msgStr + `Failed to obtain the window limits of window. Cause code: ${exception.code}, message: ${exception.message}`);
+              expect().assertFail();
+            } else {
+              console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+              console.log(msgStr + JSON.stringify(exception))
+              expect(exception.code).assertEqual(801);
+            }
+          }
+          await subWin.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5630
+     * @tc.name      : testSetWindowLimits_SubWindowWithOptions
+     * @tc.desc      : Gets the size limit for the current application window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetWindowLimits_SubWindowWithOptions', 0, async function () {
+      let caseName = 'testSetWindowLimits_SubWindowWithOptions';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'testGetWindowLimits_SubWindowWithOptions',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testSetWindowLimits_SubWindowWithOptions', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          try {
+            let get_windowLimits_initValue = subWin.getWindowLimits();
+            console.info(msgStr + 'Succeeded in getWindowLimits ' + JSON.stringify(get_windowLimits_initValue));
+            expect(!!get_windowLimits_initValue).assertTrue();
+            let set_windowLimits: window.WindowLimits = {
+              maxWidth: get_windowLimits_initValue.maxWidth - 1,
+              maxHeight: get_windowLimits_initValue.maxHeight - 1,
+              minWidth: get_windowLimits_initValue.minWidth + 1,
+              minHeight: get_windowLimits_initValue.minHeight + 1
+            };
+            await subWin.setWindowLimits(set_windowLimits).then((data) => {
+              expect(get_windowLimits_initValue.maxWidth - 1).assertEqual(data.maxWidth);
+              expect(get_windowLimits_initValue.maxHeight - 1).assertEqual(data.maxHeight);
+              expect(get_windowLimits_initValue.minWidth + 1).assertEqual(data.minWidth);
+              expect(get_windowLimits_initValue.minHeight + 1).assertEqual(data.minHeight);
+            }).catch((exception: BusinessError) => {
+              if (exception.code != 801) {
+                console.error(msgStr + `Failed to change the window limits. Cause code: ${err.code}, message: ${err.message}`);
+                expect().assertFail();
+              } else {
+                console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+                console.log(msgStr + JSON.stringify(exception))
+                expect(exception.code).assertEqual(801);
+              }
+            });
+          } catch (exception) {
+            if (exception.code != 801) {
+              console.error(msgStr + `Failed to get the window limits of window. Cause code: ${exception.code}, message: ${exception.message}`);
+              expect().assertFail();
+            } else {
+              console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+              console.log(msgStr + JSON.stringify(exception))
+              expect(exception.code).assertEqual(801);
+            }
+          }
+          await subWin.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5640
+     * @tc.name      : testOnOffWindowStatusChange_OnSubWindowWithOptions
+     * @tc.desc      : Enable listening for window mode changes
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testOnOffWindowStatusChange_OnSubWindowWithOptions', 0, async function () {
+      let caseName = 'testOnOffWindowStatusChange_OnSubWindowWithOptions';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'testOnOffWindowStatusChange_OnSubWindowWithOptions',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testOnOffWindowStatusChange_OnSubWindowWithOptions', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          const callback = (windowStatusType: window.WindowStatusType) => {
+            console.info(msgStr + 'Succeeded in enabling the listener for window status changes. Data: ' + JSON.stringify(WindowStatusType));
+          }
+          try {
+            subWin.on('windowStatusChange', callback);
+            console.info(msgStr + 'Succeeded in enabling the listener for window status changes.');
+          } catch (exception) {
+            if (exception.code != 801) {
+              console.error(msgStr + `Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+              expect().assertFail();
+            } else {
+              console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+              console.log(msgStr + JSON.stringify(exception))
+              expect(exception.code).assertEqual(801);
+            }
+          }
+          try {
+            subWin.off('windowStatusChange', callback);
+            console.info(msgStr + 'Succeeded in unregister for window status changes.');
+          } catch (exception) {
+            if (exception.code != 801) {
+              console.error(msgStr + `Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+              expect().assertFail();
+            } else {
+              console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+              console.log(msgStr + JSON.stringify(exception))
+              expect(exception.code).assertEqual(801);
+            }
+          }
+          try {
+            subWin.off('windowStatusChange');
+            console.info(msgStr + 'Succeeded in unregister all for window status changes');
+          } catch (exception) {
+            if (exception.code != 801) {
+              console.error(msgStr + `Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+              expect().assertFail();
+            } else {
+              console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+              console.log(msgStr + JSON.stringify(exception))
+              expect(exception.code).assertEqual(801);
+            }
+          }
+          await subWin.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
     })
   })
 }

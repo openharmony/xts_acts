@@ -734,5 +734,472 @@ export default function windowEventTest(context, windowStage, abilityStorage) {
         done();
       }
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5480
+     * @tc.name      : testTouchOutside_OnSubWindowWithOps_ClickMainWindow
+     * @tc.desc      : Enable listening for click events outside this window area.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testTouchOutside_OnSubWindowWithOps_ClickMainWindow', 0, async function (done) {
+      let caseName = 'testTouchOutside_OnSubWindowWithOps_ClickMainWindow';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'testTouchOutside_OnSubWindowWithOps_ClickMainWindow',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testTouchOutside_OnSubWindowWithOps_ClickMainWindow', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          await subWin.resize(500, 500);
+          await subWin.setUIContent("MainAbility/pages/second/pageOne");
+          await subWin.showWindow();
+          await subWin.moveWindowTo(1000, 1000);
+          let mainWin = windowStage.getMainWindowSync();
+          try {
+            subWin.on('touchOutside', async () => {
+              console.info(msgStr + 'touch outside');
+              subWin.off('touchOutside');
+              await subWin.destroyWindow();
+              await sleep(800)
+              done();
+            });
+            console.info(msgStr + 'register touch outside listener successed');
+          } catch (exception) {
+            console.error(msgStr + `Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+            expect().assertFail();
+            done();
+          }
+          await sleep(800)
+          await buttonClick('MainPageButton', msgStr).catch(async (err: BusinessError) => {
+            console.info(msgStr + err);
+            await (subWin as ohosWindow.Window).destroyWindow();
+            expect().assertFail();
+            done();
+          })
+        })
+        .catch(async(err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5490
+     * @tc.name      : testTouchOutside_OnMainWindow_ClickSubWindowWithOps
+     * @tc.desc      : Enable listening for click events outside this window area.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testTouchOutside_OnMainWindow_ClickSubWindowWithOps', 0, async function (done) {
+      let caseName = 'testTouchOutside_OnMainWindow_ClickSubWindowWithOps';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'testTouchOutside_OnMainWindow_ClickSubWindowWithOps',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testTouchOutside_OnMainWindow_ClickSubWindowWithOps', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          await subWin.resize(500, 500);
+          await subWin.setUIContent("MainAbility/pages/second/second");
+          await subWin.showWindow();
+          await subWin.moveWindowTo(10, 10);
+          let mainWin = windowStage.getMainWindowSync();
+          try {
+            mainWin.on('touchOutside', async () => {
+              console.info(msgStr + 'touch outside');
+              mainWin.off('touchOutside');
+              await subWin.destroyWindow();
+              await sleep(800)
+              done();
+            });
+            console.info(msgStr + 'register touch outside listener successed');
+          } catch (exception) {
+            console.error(msgStr + `Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+            expect().assertFail();
+            done();
+          }
+          await sleep(800)
+          await buttonClick('secondPage_BackToIndex', msgStr).catch(async (err: BusinessError) => {
+            console.info(msgStr + err);
+            await (subWin as ohosWindow.Window).destroyWindow();
+            expect().assertFail();
+            done();
+          })
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5500
+     * @tc.name      : testDialogTargetTouch_OnSubWindowWithOps_ClickSubWinOps
+     * @tc.desc      : Enables listening for click or touch events for Windows covered by modal Windows
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testDialogTargetTouch_OnSubWindowWithOps_ClickSubWinOps', 0, async function (done) {
+      let caseName = 'testDialogTargetTouch_OnSubWindowWithOps_ClickSubWinOps';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowConfig = {
+        name: "testDialogTargetTouch_OnSubWindowWithOps_ClickSubWinOps",
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let tempWnd;
+      tempWnd = await window.createWindow(windowConfig).catch((err) => {
+        console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      expect(!!tempWnd).assertTrue();
+      await tempWnd.resize(500, 500);
+      await tempWnd.setUIContent("MainAbility/pages/second/second");
+      await tempWnd.showWindow();
+      await tempWnd.moveWindowTo(900, 900);
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'testDialogTargetTouch_OnSubWindowWithOps',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testDialogTargetTouch_OnSubWindowWithOps_Sub', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          await subWin.resize(500, 500);
+          await subWin.setUIContent("MainAbility/pages/second/pageOne");
+          await subWin.showWindow();
+          await subWin.moveWindowTo(10, 10);
+          // The listener must be registered on the modal window or it is invalid
+          try {
+            subWin.on('dialogTargetTouch', async () => {
+              console.info(msgStr + 'touch dialog target');
+              subWin.off('dialogTargetTouch');
+              await subWin.destroyWindow();
+              await tempWnd.destroyWindow();
+              expect().assertFail();
+              done();
+            });
+            console.info(msgStr + 'register dialogTargetTouch listener successed');
+          } catch (exception) {
+            console.error(msgStr + `Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+            expect().assertFail();
+            done();
+          }
+          await buttonClick('点击pageOne', msgStr).catch(async (err: BusinessError) => {
+            console.info(msgStr + err);
+            await (tempWnd as ohosWindow.Window).destroyWindow();
+            await (subWin as ohosWindow.Window).destroyWindow();
+            expect().assertFail();
+            done();
+          })
+          await sleep(800)
+          await subWin.destroyWindow();
+          await tempWnd.destroyWindow();
+          done();
+        })
+        .catch(async(err: BusinessError) => {
+          await tempWnd.destroyWindow();
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5510
+     * @tc.name      : testDialogTargetTouch_OnDialogWindow_ClickSubWinOps
+     * @tc.desc      : Enables listening for click or touch events for Windows covered by modal Windows
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testDialogTargetTouch_OnDialogWindow_ClickSubWinOps', 0, async function (done) {
+      let caseName = 'testDialogTargetTouch_OnDialogWindow_ClickSubWinOps';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'testDialogTargetTouch_OnDialogWindow_ClickSubWinOps',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testDialogTargetTouch_OnDialogWindow_ClickSubWinOps_Sub', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          await subWin.resize(500, 500);
+          await subWin.setUIContent("MainAbility/pages/second/pageOne");
+          await subWin.showWindow();
+          await subWin.moveWindowTo(10, 10);
+          let windowConfig = {
+            name: "testDialogTargetTouch_OnDialogWindow_ClickSubWinOps_WithOps",
+            windowType: window.WindowType.TYPE_DIALOG,
+            ctx: context,
+          };
+          let tempWnd;
+          tempWnd = await window.createWindow(windowConfig).catch((err) => {
+            console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          });
+          expect(!!tempWnd).assertTrue();
+          await tempWnd.resize(500, 500);
+          await tempWnd.setUIContent("MainAbility/pages/second/second");
+          await tempWnd.showWindow();
+          await tempWnd.moveWindowTo(900, 900);
+          try {
+            tempWnd.on('dialogTargetTouch', async () => {
+              console.info(msgStr + 'touch dialog target');
+              tempWnd.off('dialogTargetTouch');
+              await subWin.destroyWindow();
+              await tempWnd.destroyWindow();
+              await sleep(800)
+              done();
+            });
+            console.info(msgStr + 'register dialogTargetTouch listener successed');
+          } catch (exception) {
+            console.error(msgStr + `Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+            expect().assertFail();
+            done();
+          }
+          await buttonClick('点击pageOne', msgStr).catch(async (err: BusinessError) => {
+            console.info(msgStr + err);
+            await (tempWnd as ohosWindow.Window).destroyWindow();
+            await (subWin as ohosWindow.Window).destroyWindow();
+            expect().assertFail();
+            done();
+          })
+          await sleep(800)
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5520
+     * @tc.name      : testNoInteractionDetected_OnSubWindowWithOps
+     * @tc.desc      : Enables this window to not listen for interactive events within a specified timeout period
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testNoInteractionDetected_OnSubWindowWithOps', 0, async function (done) {
+      let caseName = 'testNoInteractionDetected_OnSubWindowWithOps';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'testNoInteractionDetected_OnSubWindowWithOps',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testNoInteractionDetected_OnSubWindowWithOps', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          await subWin.resize(500, 500);
+          await subWin.setUIContent("MainAbility/pages/second/pageOne");
+          await subWin.showWindow();
+          await subWin.moveWindowTo(10, 10);
+          try {
+            subWin.on('noInteractionDetected', 1, async () => {
+              console.info(msgStr + 'no interaction in 10s');
+              subWin.off('noInteractionDetected');
+              await subWin.destroyWindow();
+              done();
+            });
+            console.info(msgStr + ' register noInteractionDetected successed');
+          } catch (exception) {
+            if (exception.code != 801) {
+              console.error(msgStr + `Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+              expect().assertFail();
+              done();
+            } else {
+              console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+              console.log(msgStr + JSON.stringify(exception))
+              expect(exception.code).assertEqual(801);
+              done();
+            }
+          }
+          await sleep(500)
+          await sleep(500)
+          await sleep(500)
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5530
+     * @tc.name      : testSetWindowTouchable_SubWindowWithOps_Promise
+     * @tc.desc      : Sets whether the window is touchable
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testSetWindowTouchable_SubWindowWithOps_Promise', 0, async function (done) {
+      let caseName = 'testSetWindowTouchable_SubWindowWithOps_Promise';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'testSetWindowTouchable_SubWindowWithOps_Promise',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testSetWindowTouchable_SubWindowWithOps_Promise', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          await subWin.resize(500, 500);
+          await subWin.setUIContent("MainAbility/pages/second/second");
+          await subWin.showWindow();
+          await subWin.moveWindowTo(10, 10);
+          let isTouchable: boolean = true;
+          try {
+            await subWin.setWindowTouchable(isTouchable).then(() => {
+              console.info(msgStr + 'Succeeded in setting the window to be touchable.');
+              let properties = subWin.getWindowProperties();
+              console.info(msgStr + 'getWindowProperties: ' + JSON.stringify(properties));
+              expect(properties.touchable).assertEqual(isTouchable);
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
+              expect().assertFail();
+            });
+          } catch (exception) {
+            console.error(msgStr + `Failed to set the window to be touchable. Cause code: ${exception.code}, message: ${exception.message}`);
+            expect().assertFail();
+          }
+          await subWin.destroyWindow();
+          done();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5540
+     * @tc.name      : testSetWindowTouchable_SubWindowWithOps_Callback
+     * @tc.desc      : Sets whether the window is touchable
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testSetWindowTouchable_SubWindowWithOps_Callback', 0, async function (done) {
+      let caseName = 'testSetWindowTouchable_SubWindowWithOps_Callback';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'testSetWindowTouchable_SubWindowWithOps_Callback',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testSetWindowTouchable_SubWindowWithOps_Callback', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          await subWin.resize(500, 500);
+          await subWin.setUIContent("MainAbility/pages/second/second");
+          await subWin.showWindow();
+          await subWin.moveWindowTo(10, 10);
+          let isTouchable: boolean = true;
+          try {
+            subWin.setWindowTouchable(isTouchable, async (err: BusinessError) => {
+              const errCode: number = err.code;
+              if (errCode) {
+                console.error(msgStr + `Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
+                await subWin.destroyWindow();
+                expect().assertFail();
+                done();
+                return;
+              }
+              console.info(msgStr + 'Succeeded in setting the window to be touchable.');
+              let properties = subWin.getWindowProperties();
+              console.info(msgStr + 'getWindowProperties: ' + JSON.stringify(properties));
+              expect(properties.touchable).assertEqual(isTouchable);
+              await subWin.destroyWindow();
+              done();
+            });
+          } catch (exception) {
+            console.error(msgStr + `Failed to set the window to be touchable. Cause code: ${exception.code}, message: ${exception.message}`);
+            await subWin.destroyWindow();
+            expect().assertFail();
+            done();
+          }
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        });
+    })
   })
 }
