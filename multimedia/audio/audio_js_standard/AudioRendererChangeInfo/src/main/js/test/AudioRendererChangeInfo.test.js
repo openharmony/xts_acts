@@ -1357,6 +1357,13 @@ describe('audioRendererChange', function () {
         }).catch((err) => {
             console.info(`${Tag} : AudioRender Created : ERROR :   ${err.message}`);
         });
+        await audioRen.start().then(function () {
+            console.info(`${Tag} : renderInstant started :SUCCESS`);
+        }).catch((err) => {
+            console.info(`${Tag} : renderInstant start :ERROR :   ${err.message}`);
+        });
+        
+   
 
         await sleep(100);
 
