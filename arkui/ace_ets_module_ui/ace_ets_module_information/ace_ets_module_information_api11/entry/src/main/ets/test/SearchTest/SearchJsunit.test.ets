@@ -17,6 +17,7 @@ import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
+import { BusinessError } from '@ohos.base';
 
 export default function searchJsunit() {
   describe('searchJsunit', () => {
@@ -71,7 +72,7 @@ export default function searchJsunit() {
         console.info("[testSearch002] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testSearch002] change component data error: " + err.message);
+        console.log("[testSearch002] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('search');
@@ -117,7 +118,7 @@ export default function searchJsunit() {
         console.info("[testSearch004] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testSearch004] change component data error: " + err.message);
+        console.log("[testSearch004] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('search');
@@ -148,7 +149,7 @@ export default function searchJsunit() {
         console.info("[testSearch005] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testSearch005] change component data error: " + err.message);
+        console.log("[testSearch005] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('search');
@@ -179,7 +180,7 @@ export default function searchJsunit() {
         console.info("[testSearch006] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testSearch006] change component data error: " + err.message);
+        console.log("[testSearch006] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('search');
@@ -210,7 +211,7 @@ export default function searchJsunit() {
         console.info("[testSearch007] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testSearch007] change component data error: " + err.message);
+        console.log("[testSearch007] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('search');
@@ -241,7 +242,7 @@ export default function searchJsunit() {
         console.info("[testSearch008] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testSearch008] change component data error: " + err.message);
+        console.log("[testSearch008] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('search');
@@ -287,7 +288,7 @@ export default function searchJsunit() {
         console.info("[testSearch0010] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testSearch0010] change component data error: " + err.message);
+        console.log("[testSearch0010] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('search');
@@ -318,7 +319,7 @@ export default function searchJsunit() {
         console.info("[testSearch0011] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testSearch0011] change component data error: " + err.message);
+        console.log("[testSearch0011] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('search');
@@ -368,7 +369,7 @@ export default function searchJsunit() {
         console.info("[testSearch100] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testSearch100] change component data error: " + err.message);
+        console.log("[testSearch100] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let driver = UiDriver.create();
@@ -403,7 +404,7 @@ export default function searchJsunit() {
         console.info("[testSearch101] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testSearch101] change component data error: " + err.message);
+        console.log("[testSearch101] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let driver = UiDriver.create();

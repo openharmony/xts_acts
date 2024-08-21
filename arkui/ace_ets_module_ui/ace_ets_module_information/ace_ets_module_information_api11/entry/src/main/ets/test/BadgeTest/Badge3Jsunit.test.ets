@@ -16,6 +16,7 @@ import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import CommonFunc from '../../MainAbility/common/Common';
+import { BusinessError } from '@ohos.base';
 
 export default function badge3Jsunit() {
   describe('badge3Jsunit', () => {
@@ -73,7 +74,7 @@ export default function badge3Jsunit() {
         console.info("[testBadge03] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge03] change component data error: " + err.message);
+        console.log("[testBadge03] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge');
@@ -100,7 +101,7 @@ export default function badge3Jsunit() {
         console.info("[testBadge02] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge02] change component data error: " + err.message);
+        console.log("[testBadge02] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge');
@@ -126,7 +127,7 @@ export default function badge3Jsunit() {
         console.info("[testBadge04] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge04] change component data error: " + err.message);
+        console.log("[testBadge04] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge');
@@ -151,7 +152,7 @@ export default function badge3Jsunit() {
         console.info("[testBadge05] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge05] change component data error: " + err.message);
+        console.log("[testBadge05] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge');
@@ -201,7 +202,7 @@ export default function badge3Jsunit() {
         console.info("[testBadge08] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge08] change component data error: " + err.message);
+        console.log("[testBadge08] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge2');
@@ -226,7 +227,7 @@ export default function badge3Jsunit() {
         console.info("[testBadge09] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge09] change component data error: " + err.message);
+        console.log("[testBadge09] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge2');
@@ -251,7 +252,7 @@ export default function badge3Jsunit() {
         console.info("[testBadge10] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge10] change component data error: " + err.message);
+        console.log("[testBadge10] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge2');
@@ -276,7 +277,7 @@ export default function badge3Jsunit() {
         console.info("[testBadge11] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge11] change component data error: " + err.message);
+        console.log("[testBadge11] change component data error: " + (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge2');
