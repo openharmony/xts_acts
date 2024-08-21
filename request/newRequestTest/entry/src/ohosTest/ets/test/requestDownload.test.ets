@@ -18,34 +18,34 @@ import fileio from '@ohos.fileio';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function requestDownloadJSUnit() {
-  describe('requestDownloadJSUnit', function () {
+  describe('requestDownloadJSUnit', () => {
     console.info('====>################################request download Test start');
 
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
-    beforeAll(function () {
+    beforeAll(() => {
       console.info('====>beforeAll: Prerequisites are executed.');
     });
 
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
      */
-    beforeEach(function () {
+    beforeEach(() => {
       console.info('====>beforeEach: Prerequisites is executed.');
     });
 
     /**
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
-    afterEach(function () {
+    afterEach(() => {
       console.info('====>afterEach: Test case-level clearance conditions is executed.');
     });
 
     /**
      * afterAll: Test suite-level cleanup condition, which is executed after the test suite is executed.
      */
-    afterAll(function () {
+    afterAll(() => {
       console.info('====>afterAll: Test suite-level cleanup condition is executed');
     });
 
@@ -57,7 +57,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MISC_REQUEST_DOWNLOAD_removeNormal_promise_0010', 0, async function (done) {
+    it('SUB_MISC_REQUEST_DOWNLOAD_removeNormal_promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_removeNormal_promise_0010 is starting-----------------------");
       try {
         console.info("====>SUB_MISC_REQUEST_DOWNLOAD_removeNormal_promise_0010 remove");
@@ -79,7 +79,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0010', 0, async function (done) {
+    it('SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0010 is starting-----------------------");
       request.agent.remove("1234567", (err) => {
         try {
