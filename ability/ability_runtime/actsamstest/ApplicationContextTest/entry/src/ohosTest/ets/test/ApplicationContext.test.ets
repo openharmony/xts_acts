@@ -98,6 +98,8 @@ export default function applicationContextTest() {
       try {
         let applicationContext: common.ApplicationContext = testAbilityContext?.getApplicationContext();
         applicationContext.setLanguage(null);
+        expect().assertFail();
+        done();
       } catch (error) {
         hilog.error(0x0000, 'applicationContextTag', '%{public}s',
           'TestAbilityAbilityRuntimeConfigrationApplicationContextSetLanguage0100 failed ' + JSON.stringify(error));
@@ -109,7 +111,7 @@ export default function applicationContextTest() {
     /*
      * @tc.number:SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetLanguage_0200
      * @tc.name: TestAbilityAbilityRuntimeConfigrationApplicationContextSetLanguage0200
-     * @tc.desc:Using the on method set color mode and check the result
+     * @tc.desc:Application call interface to set language
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
@@ -143,7 +145,7 @@ export default function applicationContextTest() {
     /*
      * @tc.number:SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetLanguage_0300
      * @tc.name: TestAbilityAbilityRuntimeConfigrationApplicationContextSetLanguageMode0300
-     * @tc.desc:Using the on method set color mode
+     * @tc.desc: The application parameter is undefined calling the interface to set the language
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
