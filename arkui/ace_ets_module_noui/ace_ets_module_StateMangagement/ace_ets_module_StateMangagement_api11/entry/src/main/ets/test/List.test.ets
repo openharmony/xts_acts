@@ -130,6 +130,15 @@ import stateManagementDARKJsunit from './stateMangagementTest/stateManagement.te
 import stateManagementGetSharedJsunit from './stateMangagementTest/stateManagementNew.test';
 import WatchTest from './Watch/Watch.test';
 import twoWayBindTest from './twoWayBindTest/twoWayBind.test';
+import bindContentCoverTest from './twoWayBindTest/bindContentCover.test';
+import bindSheetTest from './twoWayBindTest/bindSheet.test';
+import checkboxTest from './twoWayBindTest/checkbox.test';
+import checkboxGroupTest from './twoWayBindTest/checkboxGroup.test';
+import MenuItemTest from './twoWayBindTest/MenuItem.test';
+import swiperTest from './twoWayBindTest/swiper.test';
+import textAreaTest from './twoWayBindTest/textArea.test';
+import textInputTest from './twoWayBindTest/textInput.test';
+import toggleTest from './twoWayBindTest/toggle.test';
 
 export default function testsuite() {
   allowOverride();
@@ -248,4 +257,13 @@ export default function testsuite() {
   stateManagementGetSharedJsunit();
   WatchTest();
   twoWayBindTest();
+  bindContentCoverTest();
+  bindSheetTest();
+  checkboxTest();
+  checkboxGroupTest();
+  MenuItemTest();
+  swiperTest();
+  textAreaTest();
+  textInputTest();
+  toggleTest();
 }
