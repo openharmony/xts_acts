@@ -28,7 +28,7 @@ struct TextHalfLeading {
         .borderWidth(1)
         .width('80%')
       Text("This is the text without the halfLeading set.")
-        .key("TextHalfLeading2")
+        .key('TextHalfLeading2')
         .lineHeight(60)
         .halfLeading(false)
         .borderWidth(1)
