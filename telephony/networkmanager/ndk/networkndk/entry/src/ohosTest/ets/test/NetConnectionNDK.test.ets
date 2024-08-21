@@ -26,6 +26,8 @@ const NETCONNECTION_OK = 0;
 const ERROR_CODE_401 = 401;
 // 无法连接到服务
 const ERROR_CODE_2100002 = 2100002;
+// 回调不存在
+const ERROR_CODE_2101007 = 2101007;
 
 export default function NetConnectionNDKTest() {
 
@@ -553,6 +555,244 @@ export default function NetConnectionNDKTest() {
      */
     it('testOHNetConnBindSocket_0400', 0, async (done: Function) => {
       let re: number = ncAPI.OHNetConnBindSocket(CASE_INDEX_4);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterNetConnCallback_0100
+     * @tc.name   ：TestOHNetConnRegisterNetConnCallback_0100
+     * @tc.desc   ：Register net connection callback with invalid arg.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterNetConnCallback_0100', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterNetConnCallback(CASE_INDEX_1);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterNetConnCallback_0200
+     * @tc.name   ：TestOHNetConnRegisterNetConnCallback_0200
+     * @tc.desc   ：Register net connection callback with invalid arg.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterNetConnCallback_0200', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterNetConnCallback(CASE_INDEX_2);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterNetConnCallback_0300
+     * @tc.name   ：TestOHNetConnRegisterNetConnCallback_0300
+     * @tc.desc   ：Register net connection callback with invalid arg.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterNetConnCallback_0300', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterNetConnCallback(CASE_INDEX_3);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterNetConnCallback_0400
+     * @tc.name   ：TestOHNetConnRegisterNetConnCallback_0400
+     * @tc.desc   ：Register net connection callback.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterNetConnCallback_0400', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterNetConnCallback(CASE_INDEX_4);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterDefaultNetConnCallback_0100
+     * @tc.name   ：TestOHNetConnRegisterDefaultNetConnCallback_0100
+     * @tc.desc   ：Register net connection callback with invalid arg.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterDefaultNetConnCallback_0100', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterDefaultNetConnCallback(CASE_INDEX_1);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterDefaultNetConnCallback_0200
+     * @tc.name   ：TestOHNetConnRegisterDefaultNetConnCallback_0200
+     * @tc.desc   ：Register net connection callback with invalid arg.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterDefaultNetConnCallback_0200', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterDefaultNetConnCallback(CASE_INDEX_2);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterDefaultNetConnCallback_0300
+     * @tc.name   ：TestOHNetConnRegisterDefaultNetConnCallback_0300
+     * @tc.desc   ：Register net connection callback.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterDefaultNetConnCallback_0300', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterDefaultNetConnCallback(CASE_INDEX_3);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnUnregisterNetConnCallback_0100
+     * @tc.name   ：TestOHNetConnUnregisterNetConnCallback_0100
+     * @tc.desc   ：Unregister net connection callback with invalid arg.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnUnregisterNetConnCallback_0100', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnUnregisterNetConnCallback(CASE_INDEX_1);
+      expect(re).assertEqual(ERROR_CODE_2101007);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnUnregisterNetConnCallback_0200
+     * @tc.name   ：TestOHNetConnUnregisterNetConnCallback_0200
+     * @tc.desc   ：Unregister net connection callback.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnUnregisterNetConnCallback_0200', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnUnregisterNetConnCallback(CASE_INDEX_2);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNSETAPPHTTPPROXY_0100
+     * @tc.name   ：OHNetConnSetAppHttpProxy_0100
+     * @tc.desc   ：Sets http proxy information to current application.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnSetAppHttpProxy_0100', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnSetAppHttpProxy(CASE_INDEX_1);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNSETAPPHTTPPROXY_0200
+     * @tc.name   ：OHNetConnSetAppHttpProxy_0200
+     * @tc.desc   ：Sets http proxy information to current application.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnSetAppHttpProxy_0200', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnSetAppHttpProxy(CASE_INDEX_2);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+    
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNREGISTERAPPHTTPPROXYCALLBACK_0100
+     * @tc.name   ：OHOSNetConnRegisterAppHttpProxyCallback_0100
+     * @tc.desc   ：Registers callback to listen for changes to the application-level http proxy.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHOSNetConnRegisterAppHttpProxyCallback_0100', 0, async (done: Function) => {
+      let re: number = ncAPI.OHOSNetConnRegisterAppHttpProxyCallback(CASE_INDEX_1);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNREGISTERAPPHTTPPROXYCALLBACK_0200
+     * @tc.name   ：OHOSNetConnRegisterAppHttpProxyCallback_0200
+     * @tc.desc   ：Registers callback to listen for changes to the application-level http proxy.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHOSNetConnRegisterAppHttpProxyCallback_0200', 0, async (done: Function) => {
+      let re: number = ncAPI.OHOSNetConnRegisterAppHttpProxyCallback(CASE_INDEX_2);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNREGISTERAPPHTTPPROXYCALLBACK_0300
+     * @tc.name   ：OHOSNetConnRegisterAppHttpProxyCallback_0300
+     * @tc.desc   ：Registers callback to listen for changes to the application-level http proxy.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHOSNetConnRegisterAppHttpProxyCallback_0300', 0, async (done: Function) => {
+      let re: number = ncAPI.OHOSNetConnRegisterAppHttpProxyCallback(CASE_INDEX_3);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNREGISTERAPPHTTPPROXYCALLBACK_0400
+     * @tc.name   ：OHOSNetConnRegisterAppHttpProxyCallback_0400
+     * @tc.desc   ：Registers callback to listen for changes to the application-level http proxy.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHOSNetConnRegisterAppHttpProxyCallback_0400', 0, async (done: Function) => {
+      let re: number = ncAPI.OHOSNetConnRegisterAppHttpProxyCallback(CASE_INDEX_4);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNUNREGISTERAPPHTTPPROXYCALLBACK_0100
+     * @tc.name   ：OHOSNetConnUnregisterAppHttpProxyCallback_0100
+     * @tc.desc   ：Unregisters a callback function that listens for application-level proxy changes.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHOSNetConnUnregisterAppHttpProxyCallback_0100', 0, async (done: Function) => {
+      let re: number = ncAPI.OHOSNetConnUnregisterAppHttpProxyCallback(CASE_INDEX_1);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNUNREGISTERAPPHTTPPROXYCALLBACK_0200
+     * @tc.name   ：OHOSNetConnUnregisterAppHttpProxyCallback_0200
+     * @tc.desc   ：Unregisters a callback function that listens for application-level proxy changes.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHOSNetConnUnregisterAppHttpProxyCallback_0200', 0, async (done: Function) => {
+      let re: number = ncAPI.OHOSNetConnUnregisterAppHttpProxyCallback(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
