@@ -53,11 +53,11 @@ export default {
     },
 
     onInit() {
-        console.info('onInit')
+        console.info('onInit');
     },
 
     onDestroy() {
-        console.info('onDestroy')
+        console.info('onDestroy');
 
     },
 

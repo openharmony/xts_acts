@@ -75,7 +75,7 @@ export const routePage = function(uri) {
   return {
     changePage() {
       router.replace({ uri: uri });
-      console.info("routePage");
+      console.info('routePage');
     }
   };
 };
@@ -83,28 +83,28 @@ export const routePage = function(uri) {
 export const goPage = function(prevUri) {
   return {
     goHome() {
-      router.replace({ uri: "pages/index/index" });
-      console.info("goHome");
+      router.replace({ uri: 'pages/index/index' });
+      console.info('goHome');
     },
     goPrevious() {
       router.replace({ uri: prevUri });
-      console.info("goPrevious");
+      console.info('goPrevious');
     }
   };
 };
 export const lifeCycleFunc = function() {
   return {
     onInit() {
-      console.log("onInit called...");
+      console.log('onInit called...');
     },
     onReady() {
-      console.log("onReady called...");
+      console.log('onReady called...');
     },
     onShow() {
-      console.log("onShow called...");
+      console.log('onShow called...');
     },
     onDestroy() {
-      console.log("onDestroy called...");
+      console.log('onDestroy called...');
     }
   };
 };

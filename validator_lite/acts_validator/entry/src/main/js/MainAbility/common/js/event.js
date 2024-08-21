@@ -43,8 +43,8 @@ export const swipeFunc = function(obj, e) {
     obj.flag = true;
   }
   console.info('swipe' + JSON.stringify(e));
-  obj.direction = e.direction
-  obj.distance = e.distance
+  obj.direction = e.direction;
+  obj.distance = e.distance;
   obj.pointX = e.globalX;
   obj.pointY = e.globalY;
   obj.timeStamp = e.timestamp;

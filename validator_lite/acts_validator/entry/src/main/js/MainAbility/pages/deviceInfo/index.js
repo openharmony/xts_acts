@@ -82,7 +82,7 @@ export default {
                 obj.todolist[9].title = 'screenShape:' + data.screenShape;
                 obj.todolist[10].title = 'apiVersion:' + data.apiVersion;
                 obj.todolist[11].title = 'deviceType:' + data.deviceType;
-                console.log('get device info success, data:'+ JSON.stringify(data));
+                console.log('get device info success, data:' + JSON.stringify(data));
             },
             fail: function(data, code) {
                 obj.brand = 'get device info failed, errorcode:' + code;

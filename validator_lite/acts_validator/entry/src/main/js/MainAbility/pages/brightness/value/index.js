@@ -20,7 +20,7 @@ import brightness from '@system.brightness';
 export default {
     data: {
         value: 0,
-        get_value : 0,
+        getValue : 0,
 
         str: '',
         title: 'brightness(value);',
@@ -37,8 +37,8 @@ export default {
         let obj = this;
         brightness.getValue({
             success: function (data) {
-                obj.get_value = data.value;
-                this.value = this.get_value;
+                obj.getValue = data.value;
+                this.value = this.getValue;
                 console.info('success get brightness value:' + data.value);
             },
             fail: function (data, code) {

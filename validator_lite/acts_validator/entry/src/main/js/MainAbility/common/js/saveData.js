@@ -28,10 +28,10 @@ export const saveTxtData = function (obj, str) {
                 console.error('write call fail callback fail, code: ' + code + ', data: ' + data);
             },
         });
-    }
+    };
 
     let checkStr = () => {
-        console.info('checkStr obj.str: ' + obj.str  + ', obj.title: ' + obj.title);
+        console.info('checkStr obj.str: ' + obj.str + ', obj.title: ' + obj.title);
         if (!obj.str.includes(obj.title)) {
             obj.str += obj.title + str;
         } else {
@@ -43,12 +43,12 @@ export const saveTxtData = function (obj, str) {
         } else if (str === 'true ;') {
             obj.str.replace(obj.title + 'false;', obj.title + 'true ;')
         }
-    }
+    };
 
     file.readText({
         uri: 'internal://app/' + obj.txtName,
         success: function(data) {
-            obj.str = data.text
+            obj.str = data.text;
             console.log('call readText success: ' + data.text);
             checkStr();
             writeData();
