@@ -5334,3 +5334,7 @@ export const native_011: () => number;
 export const native_012: () => number;
 export const native_013: () => number;
 export const native_014: () => number;
+
+export const DialogModelTest_001: () => number;
+export const DialogModelTest_002: () => number;
+export const DialogModelTest_003: () => number;
