@@ -76,4 +76,4 @@ export default {
     changeResult(result) {
         saveTxtData(this, result);
     },
-}
+};
