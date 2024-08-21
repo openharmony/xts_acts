@@ -28,6 +28,7 @@ ohos_js_hap_suite("ActsUdmfNapiEtsTest") {
   shared_libraries = [
     "./entry/src/main/cpp:UdmfNdk",
     "./entry/src/main/cpp:UdsNdk",
+    "./entry/src/main/cpp:UtdNdk",
   ]
 }
 

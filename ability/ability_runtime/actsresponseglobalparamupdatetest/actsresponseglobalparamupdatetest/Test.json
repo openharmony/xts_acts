@@ -1,0 +1,36 @@
+{
+    "description": "Configuration for aceceshi Tests",
+    "driver": {
+        "type": "OHJSUnitTest",
+        "test-timeout": "600000",
+        "bundle-name": "com.example.actsresponseglobalparamupdatetest",
+        "module-name": "entry_test",
+        "shell-timeout": "600000",
+        "testcase-timeout":"30000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsResponseGlobalParamUpdateRelyA.hap",
+                "ActsResponseGlobalParamUpdateRelyB.hap",
+                "ActsResponseGlobalParamUpdateRelyC.hap",
+                "ActsResponseGlobalParamUpdateRelyD.hap",
+                "ActsResponseGlobalParamUpdateRelyE.hap",
+                "ActsResponseGlobalParamUpdateTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+          "type": "ShellKit",
+          "run-command": [
+              "power-shell wakeup",
+              "power-shell setmode 602",
+              "hilog -Q pidoff",
+              "hilog -Q domainoff",
+              "hilog -b D",
+              "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100"
+          ]
+        }
+    ]
+}

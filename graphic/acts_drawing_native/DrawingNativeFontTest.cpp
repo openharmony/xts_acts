@@ -1733,9 +1733,13 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasureSingleCharacterNormal, TestSize.L
     float textWidth = 0.f;
     const char* strOne = "a";
     OH_Drawing_FontMeasureSingleCharacter(font, strOne, &textWidth);
+    strOne = "我";
+    OH_Drawing_FontMeasureSingleCharacter(font, strOne, &textWidth);
     //3. All OH_Drawing_FontMeasureSingleCharacter parameters are entered normally, including str multi-character,
     // UTF8 encoded Chinese/English characters
     const char* strTwo = "你好";
+    OH_Drawing_FontMeasureSingleCharacter(font, strTwo, &textWidth);
+    strTwo = "baby";
     OH_Drawing_FontMeasureSingleCharacter(font, strTwo, &textWidth);
     //4. free memory
     OH_Drawing_FontDestroy(font);
@@ -1802,6 +1806,8 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasuretextNormal, TestSize.Level0)
 {
     //1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_Rect *bounds = OH_Drawing_RectCreate(0, 0, 100, 100);
     //2. OH_Drawing_FontMeasureText enumeration traversal
     const void *text = "abc";
     const size_t byteLength = 3;
@@ -1813,12 +1819,14 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasuretextNormal, TestSize.Level0)
         TEXT_ENCODING_GLYPH_ID,
     };
     for (int i = 0; i < 4; i++) {
-        OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
+        OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], bounds, &textWidth);
     }
     //3. OH_Drawing_FontMeasureText with the fifth parameter as null(normally)
-    OH_Drawing_FontMeasureText(font, text, byteLength, TEXT_ENCODING_UTF8, NULL, &textWidth);
+    OH_Drawing_FontMeasureText(font, text, byteLength, TEXT_ENCODING_UTF8, bounds, &textWidth);
     //4. free memory
     OH_Drawing_FontDestroy(font);
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RectDestroy(bounds);
 }
 
 /*
@@ -1833,27 +1841,31 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasuretextNull, TestSize.Level3)
 {
     //1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_Rect *bounds = OH_Drawing_RectCreate(0, 0, 100, 100);
     // 2. Call OH_Drawing_FontMeasureText with nullptr as the first parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
     const void *text = "abc";
     const size_t byteLength = 3;
     float textWidth = 0.f;
-    OH_Drawing_FontMeasureText(nullptr, text, byteLength, TEXT_ENCODING_UTF8, NULL, &textWidth);
+    OH_Drawing_FontMeasureText(nullptr, text, byteLength, TEXT_ENCODING_UTF8, bounds, &textWidth);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Call OH_Drawing_FontMeasureText with nullptr as the second parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
-    OH_Drawing_FontMeasureText(font, nullptr, byteLength, TEXT_ENCODING_UTF8, NULL, &textWidth);
+    OH_Drawing_FontMeasureText(font, nullptr, byteLength, TEXT_ENCODING_UTF8, bounds, &textWidth);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 4. Call OH_Drawing_FontMeasureText with nullptr or 0 as the third parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
-    OH_Drawing_FontMeasureText(font, text, 0, TEXT_ENCODING_UTF8, NULL, &textWidth);
+    OH_Drawing_FontMeasureText(font, text, 0, TEXT_ENCODING_UTF8, bounds, &textWidth);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 5. Call OH_Drawing_FontMeasureText with nullptr as the sixth parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
-    OH_Drawing_FontMeasureText(font, text, byteLength, TEXT_ENCODING_UTF8, NULL, nullptr);
+    OH_Drawing_FontMeasureText(font, text, byteLength, TEXT_ENCODING_UTF8, bounds, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 6. free memory
     OH_Drawing_FontDestroy(font);
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RectDestroy(bounds);
 }
 
 
@@ -1868,30 +1880,25 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasuretextNull, TestSize.Level3)
 HWTEST_F(DrawingNativeFontTest, testFontMeasuretextMultipleCalls, TestSize.Level3)
 {
     //1. OH_Drawing_FontCreate
-    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_Font *fonts[10];
+    for (int i = 0; i < 10; i++) {
+        fonts[i] = OH_Drawing_FontCreate();
+    }
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_Rect *bounds = OH_Drawing_RectCreate(0, 0, 100, 100);
     //2. Call OH_Drawing_FontMeasureText 10 times
     const void *text = "abc";
     const size_t byteLength = 3;
     float textWidth = 0.f;
-    OH_Drawing_TextEncoding encodes[] = {
-        TEXT_ENCODING_UTF8,
-        TEXT_ENCODING_UTF16,
-        TEXT_ENCODING_UTF32,
-        TEXT_ENCODING_GLYPH_ID,
-    };
-    for (int i = 0; i < 4; i++) {
-        OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
-    }
-    text = "abb";
-    for (int i = 0; i < 4; i++) {
-        OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
-    }
-    text = "acc";
-    for (int i = 0; i < 2; i++) {
-        OH_Drawing_FontMeasureText(font, text, byteLength, encodes[i], NULL, &textWidth);
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_FontMeasureText(fonts[i], text, byteLength, TEXT_ENCODING_UTF8, bounds, &textWidth);
     }
     //3. free memory
-    OH_Drawing_FontDestroy(font);
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_FontDestroy(fonts[i]);
+    }
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RectDestroy(bounds);
 }
 
 
@@ -1933,8 +1940,6 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasureSingleCharacter, TestSize.Level1)
     EXPECT_TRUE(textWidth > 0);
     OH_Drawing_FontDestroy(font);
 }
-
-
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

@@ -607,14 +607,8 @@ describe("TreeSetTest", function () {
    */  
   it('testGetLowerValue041', 0, function () {
     let  treeSet = new TreeSet();
-    try {
-      treeSet.getLowerValue(null);
-      expect(true).assertEqual(false);
-    } catch (err) {
-      expect(err.name).assertEqual("BusinessError");
-      expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "key" must be not null. Received value is: null`);
-    }
+    let res = treeSet.getLowerValue(null);
+    expect(res).assertEqual(undefined);
   });
 
   /**
@@ -624,14 +618,8 @@ describe("TreeSetTest", function () {
    */  
   it('testGetHigherValue042', 0, function () {
     let  treeSet = new TreeSet();
-    try {
-      treeSet.getHigherValue(null);
-      expect(true).assertEqual(false);
-    } catch (err) {
-      expect(err.name).assertEqual("BusinessError");
-      expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "key" must be not null. Received value is: null`);
-    }
+    let res = treeSet.getHigherValue(null);
+    expect(res).assertEqual(undefined);
   });
 
   /**

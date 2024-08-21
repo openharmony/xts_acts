@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import windowPromiseTest from './windowPromise.test';
-import windowMaximizeTest from './windowMaximize.test';
-import windowImmersiveTest from './windowImmersive.test';
-import windowPropertiesTest from './windowProperties.test';
+import windowPromiseTest from './WindowPromise.test';
+import windowMaximizeTest from './WindowMaximize.test';
+import windowImmersiveTest from './WindowImmersive.test';
+import windowPropertiesTest from './WindowProperties.test';
 import WindowLifecycleTest from './WindowLifecycle.test';
 
 export default function testsuite() {
@@ -23,5 +23,5 @@ export default function testsuite() {
   windowPromiseTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
   windowMaximizeTest(globalThis.windowStage);
   windowImmersiveTest(globalThis.windowStage);
-  windowPropertiesTest(globalThis.windowStage);
+  windowPropertiesTest(globalThis.abilityContext,globalThis.windowStage);
 }

@@ -64,6 +64,10 @@ import getTarget3Test from './getTargetTest/getTarget3.test';
 import getTarget4Test from './getTargetTest/getTarget4.test';
 import getTarget5Test from './getTargetTest/getTarget5.test';
 import getTarget6Test from './getTargetTest/getTarget6.test';
+import ComputedTest from './ComputedTest/Computed.test';
+import makeObservedTest from './makeObservedTest/makeObserved.test';
+import ParamTest from './ParamTest/Param.test';
+import twoWayBindTest from './twoWayBindTest/twoWayBind.test';
 export default function testsuite() {
   ExtendTrackTest();
   NestTrackTest();
@@ -117,4 +121,8 @@ export default function testsuite() {
   getTarget4Test();
   getTarget5Test();
   getTarget6Test();
+  ComputedTest();
+  makeObservedTest();
+  ParamTest();
+  twoWayBindTest();
 }

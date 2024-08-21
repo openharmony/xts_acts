@@ -128,6 +128,8 @@ import ObjectLinkSet from './stateMangagementTest/ObjectLinkSet.test';
 import stateManagementDARKJsunit from './stateMangagementTest/stateManagement.test';
 
 import stateManagementGetSharedJsunit from './stateMangagementTest/stateManagementNew.test';
+import WatchTest from './Watch/Watch.test';
+import twoWayBindTest from './twoWayBindTest/twoWayBind.test';
 
 export default function testsuite() {
   allowOverride();
@@ -242,6 +244,8 @@ export default function testsuite() {
   LinkSet();
   ObjectLinkMap();
   ObjectLinkSet();
-  stateManagementDARKJsunit()
-  stateManagementGetSharedJsunit()
+  stateManagementDARKJsunit();
+  stateManagementGetSharedJsunit();
+  WatchTest();
+  twoWayBindTest();
 }

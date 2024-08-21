@@ -15,8 +15,10 @@
 
 import UdmfNdkTest from './UdmfNdkTest'
 import UdsNdkTest from './UdsNdkTest'
+import UtdNdkTest from './UtdNdkTest'
 
 export default function testsuite() {
     UdmfNdkTest()
     UdsNdkTest()
+    UtdNdkTest()
 }
