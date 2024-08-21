@@ -17,7 +17,7 @@ import { Constants } from '../../constants/Constants';
 import events_emitter from '@ohos.events.emitter';
 
 export class AttrsManager {
-  callBack: (value: ESObject) => void = (value: ESObject) => {};
+  private callBack: (value: ESObject) => void = (value: ESObject) => {};
   
   static change(caseName:string, setValue:ESObject) {
     let eventData: events_emitter.EventData = { data: { src: JSON.stringify({ value: setValue }) } }
