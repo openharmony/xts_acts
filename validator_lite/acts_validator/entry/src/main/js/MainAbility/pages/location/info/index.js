@@ -59,7 +59,7 @@ export default {
                 obj.todolist[1].title = '纬 - 度: ' + data.latitude;
                 obj.todolist[2].title = '海 - 拔: ' + data.altitude;
                 obj.todolist[3].title = '精确度: ' + data.accuracy;
-                obj.todolist[4].title =  '时 - 间: ' + data.time;
+                obj.todolist[4].title = '时 - 间: ' + data.time;
             },
             fail: function (data, code) {
                 console.info('fail to get location code:' + code + ', data: ' + data);

@@ -39,9 +39,9 @@ export const saveTxtData = function (obj, str) {
         }
 
         if (str === 'false;') {
-            obj.str.replace(obj.title + 'true ;', obj.title + 'false;')
+            obj.str.replace(obj.title + 'true ;', obj.title + 'false;');
         } else if (str === 'true ;') {
-            obj.str.replace(obj.title + 'false;', obj.title + 'true ;')
+            obj.str.replace(obj.title + 'false;', obj.title + 'true ;');
         }
     };
 

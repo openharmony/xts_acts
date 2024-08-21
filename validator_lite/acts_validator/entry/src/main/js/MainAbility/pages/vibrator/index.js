@@ -15,7 +15,7 @@
 
 import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
-import Vibrator from '@system.vibrator'
+import Vibrator from '@system.vibrator';
 
 export default {
     data: {
