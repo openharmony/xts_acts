@@ -122,6 +122,7 @@
     "MainAbility/pages/RichEditor/RichEditorAddApi",
     "MainAbility/pages/StyledString/StyledStringKeyTest1",
     "MainAbility/pages/Text/editMeunOptions",
-    "MainAbility/pages/RichEditor/onDidIMEInput"
+    "MainAbility/pages/RichEditor/onDidIMEInput",
+    "MainAbility/pages/Image/ImageResizable"
   ]
 }

@@ -66,6 +66,7 @@ import SwiperAutoPlay_1 from './SwiperTest/SwiperAttributeTest/SwiperAutoPlay_1.
 import SwiperAutoPlay_2 from './SwiperTest/SwiperAttributeTest/SwiperAutoPlay_2.test';
 import SwiperDisplayCount from './SwiperTest/SwiperAttributeTest/SwiperDisplayCount.test';
 import SwiperLoopFalse from './SwiperTest/SwiperAttributeTest/SwiperLoopFalse.test';
+import RefreshingContent from './RefreshTest/RefreshingContent.test';
 
 export default function testsuite() {
   ListScrollTest1()
@@ -122,4 +123,5 @@ export default function testsuite() {
   SwiperAutoPlay_2()
   SwiperDisplayCount()
   SwiperLoopFalse()
+  RefreshingContent()
 }
