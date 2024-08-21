@@ -13,17 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("relationalStoretest") {
+ohos_js_app_suite("relationalstoreSendable_ets_test") {
+  hap_name = "ActsRelationalStoreSendableTest"
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "RdbJstest/hap:rdb_js_test",
-      "rdbnapitest:ActsRdbNapiEtsTest",
-      "relationalStoreEtstest:ActsRelationalStoreEtsTest",
-      "relationalStoreJstest/hap:relationalstore_js_test",
-      "relationalStoreNdktest:ActsRelationalStoreNdkTest",
-      "relationalStoreSendabletest:relationalstoreSendable_ets_test",
-      "relationalStoreStagetest:relationalstore_ets_test",
-    ]
-  }
+  part_name = "relational_store"
+  subsystem_name = "distributeddatamgr"
+  certificate_profile = "signature/openharmony_sx.p7b"
 }
