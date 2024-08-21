@@ -39,7 +39,7 @@ parse_target_subsystem()
         fi
         # 仓名映射target名
         jq_cmd="cat $target_subsystem_config | jq -r '.[] | select( .name == \"${repo}\") | .buildTarget'"
-        xts_target=`eval $jq_cmd`
+        xts_target=$(eval $jq_cmd)
         if [[ -z "${xts_target}" ]];then
             match_status=false
         fi
