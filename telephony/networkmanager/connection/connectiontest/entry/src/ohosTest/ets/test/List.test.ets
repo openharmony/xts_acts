@@ -14,7 +14,9 @@
  */
 
 import connectionPublicTest from './ConnectionPublic.test';
+import ConnectionTest from './Connection.test';
 
 export default function testsuite() {
   connectionPublicTest();
+  ConnectionTest();
 }
