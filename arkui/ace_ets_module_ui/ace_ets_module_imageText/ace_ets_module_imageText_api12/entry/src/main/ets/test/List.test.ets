@@ -140,7 +140,6 @@ import onDidIMEInputTest from './RichEditor/onDidIMEInput.test';
 import TextHalfLeading from './Text/TextHalfLeading.test'
 
 export default function testsuite() {
-  TextHalfLeading();
   APIContentTypeTest();
   APIUnderlineColorTest();
   TextInputAddApi();
@@ -258,4 +257,5 @@ export default function testsuite() {
   RichEditorAddApi();
   editMeunOptionsTest();
   onDidIMEInputTest();
+  TextHalfLeading();
 }
