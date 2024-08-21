@@ -27,8 +27,8 @@
 #define PARAM_1 1
 
 const char *REFERENCE_URL =
-    "https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis\
-    /js-apis-data-uniformTypeDescriptor.md#uniformdatatype";
+    "https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/"
+    "apis/js-apis-data-uniformTypeDescriptor.md#uniformdatatype";
 
 static napi_value OH_Utd_Create_0001(napi_env env, napi_callback_info info)
 {
