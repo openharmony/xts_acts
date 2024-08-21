@@ -6529,6 +6529,62 @@ instanceOf(obj, Person);
         expect(rst).assertEqual(true);
       done();
     });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0477
+     * @tc.name      JsvmTest0477
+     * @tc.desc      Test the function of ArrayBuffer interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0477', 0, async function (done) {
+        let rst = napitest.testArrayBuffer();
+        console.info('JsvmTest0477 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0478
+     * @tc.name      JsvmTest0478
+     * @tc.desc      Test the function of ArrayBuffer interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0478', 0, async function (done) {
+        let rst = napitest.testArrayBuffer2();
+        console.info('JsvmTest0478 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0479
+     * @tc.name      JsvmTest0479
+     * @tc.desc      Test the function of ArrayBuffer interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0479', 0, async function (done) {
+        let rst = napitest.testArrayBuffer3();
+        console.info('JsvmTest0479 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0480
+     * @tc.name      JsvmTest0480
+     * @tc.desc      Test the function of WasmOperator interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0480', 0, async function (done) {
+        let rst = napitest.testWasmOperator();
+        console.info('JsvmTest0480 testString result is:' + JSON.stringify(rst));
+        expect(value).assertEqual(0);
+      done();
+    });
   });
 }
 
