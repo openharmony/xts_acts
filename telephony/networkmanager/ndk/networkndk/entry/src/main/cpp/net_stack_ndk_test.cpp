@@ -383,6 +383,231 @@ static napi_value OHWebSocketClientDestroy(napi_env env, napi_callback_info info
     return result;
 }
 
+static int32_t TestCaseGetPinSetForHostName(uint32_t index, const char *hostname)
+{
+    NetStack_CertificatePinning certPin;
+    
+    int32_t ret = -1;
+    if (index == CASE_INDEX_1) {
+        ret = OH_NetStack_GetPinSetForHostName(hostname, &certPin);
+    } else if (index == CASE_INDEX_2) {
+        ret = OH_NetStack_GetPinSetForHostName(nullptr, &certPin);
+    } else if (index == CASE_INDEX_3) {
+        ret = OH_NetStack_GetPinSetForHostName(hostname, nullptr);
+    } else if (index == CASE_INDEX_4) {
+        ret = OH_NetStack_GetPinSetForHostName(nullptr, nullptr);
+    }
+    
+    if (ret == 0) {
+        OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+            "certPin: %{public}s, %{public}d, %{public}d", certPin.publicKeyHash, certPin.kind, certPin.hashAlgorithm);
+
+        if (certPin.publicKeyHash != nullptr) {
+            free(certPin.publicKeyHash);
+        }
+    }
+
+    return ret;
+}
+
+static napi_value OHNetStackGetPinSetForHostName(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+    char *hostname = nullptr;
+    size_t hostnameSize = 0;
+    napi_get_value_string_utf8(env, args[1], hostname, 0, &hostnameSize);
+    if (hostnameSize > 0) {
+        hostname = reinterpret_cast<char *>(malloc(hostnameSize + 1)); // 加一用于存储字符串结束符
+        napi_get_value_string_utf8(env, args[1], hostname, hostnameSize + 1, nullptr);
+        OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                     "OHNetStackGetPinSetForHostName: %{public}s", hostname);
+    }
+
+    int32_t ret = -1;
+    ret = TestCaseGetPinSetForHostName(index, hostname);
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static int32_t TestCaseGetCertificatesForHostName(uint32_t index, const char *hostname)
+{
+    NetStack_Certificates certs;
+    
+    int32_t ret = -1;
+    if (index == CASE_INDEX_1) {
+        ret = OH_NetStack_GetCertificatesForHostName(hostname, &certs);
+    } else if (index == CASE_INDEX_2) {
+        ret = OH_NetStack_GetCertificatesForHostName(nullptr, &certs);
+    } else if (index == CASE_INDEX_3) {
+        ret = OH_NetStack_GetCertificatesForHostName(hostname, nullptr);
+    } else if (index == CASE_INDEX_4) {
+        ret = OH_NetStack_GetCertificatesForHostName(nullptr, nullptr);
+    }
+    
+    if (ret == 0) {
+        OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+            "length: %{public}zu", certs.length);
+        for (size_t i = 0; i < certs.length; ++i) {
+            OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                "certPin: %{public}s",
+                certs.content[i]);
+        }
+        
+        OH_Netstack_DestroyCertificatesContent(&certs);
+    }
+    return ret;
+}
+
+static napi_value OHNetStackGetCertificatesForHostName(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+    char *hostname = nullptr;
+    size_t hostnameSize = 0;
+    napi_get_value_string_utf8(env, args[1], hostname, 0, &hostnameSize);
+    if (hostnameSize > 0) {
+        hostname = reinterpret_cast<char *>(malloc(hostnameSize + 1)); // 加一用于存储字符串结束符
+        napi_get_value_string_utf8(env, args[1], hostname, hostnameSize + 1, nullptr);
+        OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                     "OHNetStackGetCertificatesForHostName: %{public}s, %{public}d", hostname, index);
+    }
+
+    int32_t ret = -1;
+    ret = TestCaseGetCertificatesForHostName(index, hostname);
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OHNetStackGetPinSetForHostName2(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1] = {};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    char *hostname = nullptr;
+    size_t hostnameSize = 0;
+    status = napi_get_value_string_utf8(env, args[0], hostname, 0, &hostnameSize);
+    if (status != napi_ok) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                     "Failed to get UTF-8 string");
+        return nullptr;
+    }
+    if (hostnameSize > 0) {
+        hostname = reinterpret_cast<char *>(malloc(hostnameSize + 1)); // 加一用于存储字符串结束符
+        status = napi_get_value_string_utf8(env, args[0], hostname, hostnameSize + 1, nullptr);
+        if (status != napi_ok) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                         "Failed to get UTF-8 string");
+            return nullptr;
+        }
+    }
+
+    NetStack_CertificatePinning pin;
+    int32_t ret = OH_NetStack_GetPinSetForHostName(hostname, &pin);
+    if (ret != 0) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                     "OH_NetStack_GetPinSetForHostName error, %{public}d", ret);
+        return nullptr;
+    }
+    
+    const char *pinContent = pin.publicKeyHash;
+    if (pin.publicKeyHash == nullptr) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                     "get empty pin");
+        return nullptr;
+    }
+    OH_LOG_Print(LOG_APP, LOG_ERROR, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                 "pin.kind = %{public}d, pin.hashAlgorithm = %{public}d", pin.kind, pin.hashAlgorithm);
+    size_t length = strlen(pinContent);
+    napi_value result = nullptr;
+    napi_create_string_utf8(env, pinContent, length, &result);
+    free(pin.publicKeyHash);
+    
+    return result;
+}
+
+static napi_value OHNetStackGetCertificatesForHostName2(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value args[1] = {};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    char *hostname = nullptr;
+    size_t hostnameSize = 0;
+    napi_get_value_string_utf8(env, args[0], hostname, 0, &hostnameSize);
+    if (hostnameSize > 0) {
+        hostname = reinterpret_cast<char *>(malloc(hostnameSize + 1)); // 加一用于存储字符串结束符
+        napi_get_value_string_utf8(env, args[0], hostname, hostnameSize + 1, nullptr);
+    }
+
+    NetStack_Certificates certs;
+    int32_t ret = OH_NetStack_GetCertificatesForHostName(hostname, &certs);
+    if (ret != 0) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                     "OH_NetStack_GetCertificatesForHostName error, %{public}d", ret);
+        return nullptr;
+    }
+    if (certs.length == 0) {
+        OH_LOG_Print(LOG_APP, LOG_INFO, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                     "certs.length == 0");
+        return nullptr;
+    }
+    
+    napi_value jsArray = nullptr;
+    status = napi_create_array_with_length(env, certs.length, &jsArray);
+    if (status != napi_ok) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                     "Failed to create array");
+        return nullptr;
+    }
+    const char *content = nullptr;
+    napi_value result = nullptr;
+    for (uint32_t i = 0; i < certs.length; ++i) {
+            content = certs.content[i];
+            napi_create_string_utf8(env, content, strlen(content), &result);
+            napi_set_element(env, jsArray, i, result);
+    }
+    
+    OH_Netstack_DestroyCertificatesContent(&certs);
+    
+    return jsArray;
+}
+
+static napi_value OHNetStackDestroyCertificatesContent(napi_env env, napi_callback_info info)
+{
+    const char *hostname = nullptr;
+    
+    hostname = "getonecert.com";
+    NetStack_Certificates certs;
+    OH_NetStack_GetCertificatesForHostName(hostname, &certs);
+    OH_LOG_Print(LOG_APP, LOG_INFO, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                 "before destroy: content = %{public}p, length = %{public}zu", certs.content, certs.length);
+    OH_Netstack_DestroyCertificatesContent(&certs);
+    OH_LOG_Print(LOG_APP, LOG_INFO, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                 "after destroy: content = %{public}p, length = %{public}zu", certs.content, certs.length);
+
+    hostname = "notexit.com";
+    OH_NetStack_GetCertificatesForHostName(hostname, &certs);
+    OH_LOG_Print(LOG_APP, LOG_INFO, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                 "before destroy: content = %{public}p, length = %{public}zu", certs.content, certs.length);
+    OH_Netstack_DestroyCertificatesContent(&certs);
+    OH_Netstack_DestroyCertificatesContent(&certs);
+    OH_Netstack_DestroyCertificatesContent(&certs);
+    OH_LOG_Print(LOG_APP, LOG_INFO, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG,
+                 "after destroy: content = %{public}p, length = %{public}zu", certs.content, certs.length);
+    return nullptr;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -399,6 +624,16 @@ static napi_value Init(napi_env env, napi_value exports)
         {"OHWebSocketClientClose", nullptr, OHWebSocketClientClose, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OHWebSocketClientDestroy", nullptr, OHWebSocketClientDestroy, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"OHNetStackGetPinSetForHostName", nullptr, OHNetStackGetPinSetForHostName, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"OHNetStackGetCertificatesForHostName", nullptr, OHNetStackGetCertificatesForHostName, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OHNetStackGetPinSetForHostName2", nullptr, OHNetStackGetPinSetForHostName2, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OHNetStackGetCertificatesForHostName2", nullptr, OHNetStackGetCertificatesForHostName2, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OHNetStackDestroyCertificatesContent", nullptr, OHNetStackDestroyCertificatesContent, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
