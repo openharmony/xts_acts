@@ -30,7 +30,10 @@ struct P1 {
       Column() {
         UIExtensionComponent({
           bundleName: 'com.acts.uiextensionprovider',
-          abilityName: 'UIExtAbility'
+          abilityName: 'UIExtAbility',
+          parameters:{
+            'ability.want.params.uiExtensionType': 'sys/commonUI'
+          }
         }).width('100%').height('35%')
           .onResult((data)=>{
             let onResultEvent = 'ACTS_UIExtension_OnResult';

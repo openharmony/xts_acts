@@ -22,7 +22,10 @@ struct Index {
   @StorageLink('want') want: Want = {
     action: "AsyncCallback_0200",
     bundleName: 'com.example.forresulttestsecond',
-    abilityName: 'UIExtAbility'
+    abilityName: 'UIExtAbility',
+    parameters:{
+      'ability.want.params.uiExtensionType': 'sys/commonUI'
+    }
   };
 
   build() {
