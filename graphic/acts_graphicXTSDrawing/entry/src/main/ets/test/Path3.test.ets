@@ -313,7 +313,7 @@ export default function drawingTsPath3Test() {
         }, {
           x: 200, y: 200
         });
-        expect(distance).assertEqual(0);
+        expect(distance).assertEqual(false);
         path.moveTo(0, 0);
         path.lineTo(100, 100);
         distance = path.getPositionAndTangent(true, 30.1, {
@@ -321,25 +321,25 @@ export default function drawingTsPath3Test() {
         }, {
           x: 200.1, y: 200.1
         });
-        expect(distance).assertEqual(1);
+        expect(distance).assertEqual(true);
         distance = path.getPositionAndTangent(true, 80, {
           x: -20.1, y: -20.1
         }, {
           x: 200.1, y: 200.1
         });
-        expect(distance).assertEqual(1);
+        expect(distance).assertEqual(true);
         distance = path.getPositionAndTangent(true, 100, {
           x: 200.1, y: 200.1
         }, {
           x: -200.1, y: -200.1
         })
-        expect(distance).assertEqual(1);
+        expect(distance).assertEqual(true);
         distance = path.getPositionAndTangent(true, -1, {
           x: 200.1, y: 200.1
         }, {
           x: 600.1, y: 600.1
         })
-        expect(distance).assertEqual(1);
+        expect(distance).assertEqual(true);
         console.info(msg + 'test successes');
       } catch (e) {
         console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
