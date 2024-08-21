@@ -21,7 +21,7 @@ export default function NavigationApi3() {
   describe('NavigationApi3',  () =>{
     beforeEach(async  (done:Function) =>{
       console.info("NavigationApi3 beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation/NavigationApi3',
       }
       try {

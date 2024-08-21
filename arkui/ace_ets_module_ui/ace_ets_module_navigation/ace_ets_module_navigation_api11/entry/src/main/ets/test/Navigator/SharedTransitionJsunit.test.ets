@@ -47,7 +47,7 @@ export default function sharedTransitionJsunit() {
 
     it('sharedTransitionTest_0100', 0, async (done: Function) => {
       console.info('sharedTransitionTest_0100 START');
-      let strJson = getInspectorByKey('Navigator');
+      let strJson: string = getInspectorByKey('Navigator');
 
       console.info("sharedTransitionTest_0100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$type).assertEqual('Navigator')
@@ -57,7 +57,7 @@ export default function sharedTransitionJsunit() {
 
     it('sharedTransitionTest_0200', 0, async (done: Function) => {
       console.info('sharedTransitionTest_0200 START');
-      let strJson = getInspectorByKey('Navigator');
+      let strJson: string = getInspectorByKey('Navigator');
 
       console.info("sharedTransitionTest_0200 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$type).assertEqual('Navigator')
@@ -68,7 +68,7 @@ export default function sharedTransitionJsunit() {
 
     it('sharedTransitionTest_0300', 0, async (done: Function) => {
       console.info('sharedTransitionTest_0300 START');
-      let strJson = getInspectorByKey('Navigator');
+      let strJson: string = getInspectorByKey('Navigator');
 
       console.info("sharedTransitionTest_0300 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$type).assertEqual('Navigator')
@@ -99,9 +99,9 @@ export default function sharedTransitionJsunit() {
       let callback = (indexEventOne: events_emitter.EventData) => {
         console.info("sharedTransitionTest_0400 get state result is: " + JSON.stringify(indexEventOne));
         try {
-          expect(indexEventOne.data.duration).assertEqual(2000);
-          expect(indexEventOne.data.delay).assertEqual(5);
-          expect(indexEventOne.data.type).assertEqual(SharedTransitionEffectType.Exchange);
+          expect(indexEventOne.data?.duration).assertEqual(2000);
+          expect(indexEventOne.data?.delay).assertEqual(5);
+          expect(indexEventOne.data?.type).assertEqual(SharedTransitionEffectType.Exchange);
         } catch (err) {
           console.info("sharedTransitionTest_0400 error: " + err.message);
         }

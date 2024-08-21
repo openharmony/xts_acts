@@ -14,7 +14,7 @@
  */
 
 
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 
 @Entry
@@ -55,7 +55,7 @@ struct PageRouteExample {
         .onClick(() => {
           console.info('to next page')
           router.push({
-            uri: 'pages/index'
+            url: 'pages/index'
           })
         })
     }

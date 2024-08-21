@@ -23,7 +23,7 @@ export default function navigationNavbar02() {
   describe('navigationNavbar02',  () =>{
     beforeEach(async  (done:Function) =>{
       console.info("navigationNavbar02 beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation/navigationNavbar02',
       }
       try {
@@ -54,7 +54,7 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_001] START');
       globalThis.value.message.notify({name:'navBarWidth', value: -2 });
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('navigationNavbar');
+      let strJson: string = getInspectorByKey('navigationNavbar');
       
       console.info("[navigationNavbar02_001] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
@@ -74,7 +74,7 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_002] START');
       globalThis.value.message.notify({name:'navBarWidth', value: 0 });
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('navigationNavbar');
+      let strJson: string = getInspectorByKey('navigationNavbar');
       
       console.info("[navigationNavbar02_002] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
@@ -95,7 +95,7 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_003] START');
       globalThis.value.message.notify({name:'navBarWidth', value: 260 });
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('navigationNavbar');
+      let strJson: string = getInspectorByKey('navigationNavbar');
       
       console.info("[navigationNavbar02_003] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
@@ -116,7 +116,7 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_004] START');
       globalThis.value.message.notify({name:'navModeIndex', value: 1 });
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('navigationNavbar');
+      let strJson: string = getInspectorByKey('navigationNavbar');
       
       console.info("[navigationNavbar02_004] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
@@ -137,7 +137,7 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_005] START');
       globalThis.value.message.notify({name:'hideNavBar', value: true });
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('navigationNavbar');
+      let strJson: string = getInspectorByKey('navigationNavbar');
       
       console.info("[navigationNavbar02_005] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
@@ -158,7 +158,7 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_006] START');
       globalThis.value.message.notify({name:'minContentWidth', value: -2 });
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('navigationNavbar');
+      let strJson: string = getInspectorByKey('navigationNavbar');
       
       console.info("[navigationNavbar02_006] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
@@ -179,7 +179,7 @@ export default function navigationNavbar02() {
     //   console.info('[navigationNavbar02_007] START');
     //   globalThis.value.message.notify({name:'minContentWidth', value: 0 });
     //   await CommonFunc.sleep(1000);
-    //   let strJson = getInspectorByKey('navigationNavbar');
+    //   let strJson: string = getInspectorByKey('navigationNavbar');
     //   
     //   console.info("[navigationNavbar02_007] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
     //   await CommonFunc.sleep(1000);
@@ -200,7 +200,7 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_008] START');
       globalThis.value.message.notify({name:'minContentWidth', value: 360 });
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('navigationNavbar');
+      let strJson: string = getInspectorByKey('navigationNavbar');
       
       console.info("[navigationNavbar02_008] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
@@ -221,7 +221,7 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_011] START');
       globalThis.value.message.notify({name:'navModeIndex', value: 0 });
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('navigationNavbar');
+      let strJson: string = getInspectorByKey('navigationNavbar');
       
       console.info("[navigationNavbar02_011] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
@@ -242,7 +242,7 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_012] START');
       globalThis.value.message.notify({name:'navModeIndex', value: 2 });
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('navigationNavbar');
+      let strJson: string = getInspectorByKey('navigationNavbar');
       
       console.info("[navigationNavbar02_012] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);

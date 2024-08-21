@@ -92,7 +92,7 @@ export default function StepperJsunit11() {
         name: 'index', value: -558038585
       })
       await Utils.sleep(2000);
-      let strJsonNew = getInspectorByKey('stepper');
+      let strJsonNew: string = getInspectorByKey('stepper');
       console.info("stepperTest_0400 component objNew is: " + JSON.parse(strJsonNew).$attrs.index);
       expect(JSON.parse(strJsonNew).$attrs.index).assertEqual('0');
       console.info('stepperTest_0400 END');

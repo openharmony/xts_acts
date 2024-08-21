@@ -20,7 +20,7 @@ export default function NavigationStack25Jsunit() {
   describe('NavigationStack25Jsunit',  () =>{
     beforeEach(async  (done:Function) =>{
       console.info("NavigationStack25Jsunit beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation/NavigationStack25',
       }
       try {

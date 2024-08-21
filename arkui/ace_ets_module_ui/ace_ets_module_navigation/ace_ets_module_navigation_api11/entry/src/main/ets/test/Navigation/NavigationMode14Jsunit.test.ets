@@ -20,7 +20,7 @@ export default function NavigationMode14Jsunit() {
   describe('NavigationMode14Jsunit',  () =>{
     beforeEach(async  (done:Function) =>{
       console.info("NavigationMode14Jsunit beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation/NavigationModel14',
       }
       try {

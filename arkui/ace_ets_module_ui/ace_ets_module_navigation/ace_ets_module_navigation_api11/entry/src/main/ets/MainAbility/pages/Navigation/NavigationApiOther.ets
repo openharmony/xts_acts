@@ -13,11 +13,6 @@
  * limitations under the License.
  */
 
-interface Age {
-  age
-}
-
-
 @Entry
 @Component
 struct NavigationApiOther {

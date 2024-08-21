@@ -32,10 +32,10 @@ struct RouterEnableAlertBeforeBackPage {
 
     router2.enableAlertBeforeBackPage({
       message: 'Message Info',
-      success: function () {
+      success: () => {
         console.log('success')
       },
-      cancel: function () {
+      cancel: () => {
         console.log('fail')
       },
     })

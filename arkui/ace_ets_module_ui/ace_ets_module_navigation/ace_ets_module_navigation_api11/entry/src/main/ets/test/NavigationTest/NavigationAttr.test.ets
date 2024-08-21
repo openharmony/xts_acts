@@ -22,7 +22,7 @@ export default function ImageAttr() {
   describe('NavigationAttr',  () =>{
     beforeEach(async  (done:Function) =>{
       console.info("NavigationAttr beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation/NavigationAttr',
       }
       try {
@@ -63,13 +63,13 @@ export default function ImageAttr() {
 
       let strJson1 = getInspectorByKey('finishTransitionTest_api');
       await CommonFunc.sleep(200);
-      let obj1 = JSON.parse(strJson1);
+      let obj1: Record<string, ESObject> = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('444');
 
       let strJson2 = getInspectorByKey('customNavContentTransitionTest_api');
       await CommonFunc.sleep(200);
-      let obj2 = JSON.parse(strJson2);
+      let obj2: Record<string, ESObject> = JSON.parse(strJson2);
       await CommonFunc.sleep(1000);
       expect(obj2.$attrs.content).assertEqual('222');
 

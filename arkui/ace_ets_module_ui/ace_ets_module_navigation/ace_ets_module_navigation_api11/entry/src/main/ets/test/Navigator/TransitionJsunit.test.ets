@@ -47,7 +47,7 @@ export default function transitionJsunit() {
 
     it('transitionTest_0100', 0, async (done: Function) => {
       console.info('transitionTest_0100 START');
-      let strJson = getInspectorByKey('button');
+      let strJson: string = getInspectorByKey('button');
       console.info("transitionTest_0100 component strJson:" + strJson);
 
       console.info("transitionTest_0100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -66,7 +66,7 @@ export default function transitionJsunit() {
       await Utils.sleep(1000);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("transitionTest_0200 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.btn1).assertEqual(false);
+        expect(indexEvent.data?.btn1).assertEqual(false);
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -97,7 +97,7 @@ export default function transitionJsunit() {
         console.log("transitionTest_0300 change component data error: " + err.message);
       }
       await Utils.sleep(4000);
-      let strJsonNew = getInspectorByKey('button');
+      let strJsonNew: string = getInspectorByKey('button');
       console.info("transitionTest_0300 component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       //非法入参默认初始值
       expect(JSON.parse(strJsonNew).$attrs.opacity).assertEqual(1);
@@ -123,7 +123,7 @@ export default function transitionJsunit() {
         console.log("transitionTest_0400 change component data error: " + err.message);
       }
       await Utils.sleep(4000);
-      let strJsonNew = getInspectorByKey('button');
+      let strJsonNew: string = getInspectorByKey('button');
       console.info("transitionTest_040 component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.opacity).assertEqual(null);
       console.info('transitionTest_0400 END');

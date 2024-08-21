@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function NavigationJsunit() {
-  describe('NavigationJsunit', function () {
-    beforeEach(async function (done) {
+  describe('NavigationJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavigationJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/NavigationPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/NavigationPage',
       }
       try {
         router.clear();
@@ -43,12 +43,12 @@ export default function NavigationJsunit() {
       done();
     });
 
-    it('NavigationJsunit_0100', 0, async function (done) {
+    it('NavigationJsunit_0100', 0, async (done: Function) => {
       // Get the information of the Navigation component
       console.info('[NavigationJsunit_0100] START');
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('navigation');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('navigation');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[NavigationJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[NavigationJsunit_0100] titleMode: " + obj.$attrs.titleMode);
       console.info("[NavigationJsunit_0100] toolBar: " + obj.$attrs.toolBar);
@@ -74,33 +74,33 @@ export default function NavigationJsunit() {
       done();
     });
 
-    it('NavigationJsunit_0300', 0, async function (done) {
+    it('NavigationJsunit_0300', 0, async (done: Function) => {
       // Verify onTitleModeChange event of Navigation component
       console.info('[NavigationJsunit_0300] START');
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('titleModeChange');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('titleModeChange');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[NavigationJsunit_0300] content is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('TitleModeChange:');
       console.info('[NavigationJsunit_0300] END');
       done();
     });
 
-    it('NavigationJsunit_0400', 0, async function (done) {
+    it('NavigationJsunit_0400', 0, async (done: Function) => {
       // Verify onNavBarStateChange event of Navigation component
       console.info('[NavigationJsunit_0400] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'hideNavBar',value:'true'})
       await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('navBarStateChange');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('navBarStateChange');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[NavigationJsunit_0400] content is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('NavBarStateChange:succ');
       console.info('[NavigationJsunit_0400] END');
       done();
     });
 
-    it('NavigationJsunit_0600', 0, async function (done) {
+    it('NavigationJsunit_0600', 0, async (done: Function) => {
       // Modify atrributes of Navigation component 
       console.info('[NavigationJsunit_0600] START');
       globalThis.value.message.notify({name:'hideToolBar',value:true})
@@ -119,8 +119,8 @@ export default function NavigationJsunit() {
       await CommonFunc.sleep(2000);
 
       // Get the propoties value of the Navigation component
-      let strJson = getInspectorByKey('navigation');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('navigation');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[NavigationJsunit_0600] component obj is: " + JSON.stringify(obj));
       console.info("[NavigationJsunit_0600] hideToolBar: " + obj.$attrs.hideToolBar);
       console.info("[NavigationJsunit_0600] hideTitleBar: " + obj.$attrs.hideTitleBar);
@@ -140,47 +140,47 @@ export default function NavigationJsunit() {
       done();
     });
 
-    it('NavigationJsunit_0700', 0, async function (done) {
+    it('NavigationJsunit_0700', 0, async (done: Function) => {
       // Modify the titleMode of Navigation component 
       console.info('[NavigationJsunit_0700] START');
       globalThis.value.message.notify({name:'titleMode',value:NavigationTitleMode.Mini})
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('navigation');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('navigation');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[NavigationJsunit_0700] titleMode is: " + obj.$attrs.titleMode);
       expect(obj.$attrs.titleMode).assertEqual('NavigationTitleMode.Mini');
 
       globalThis.value.message.notify({name:'titleMode',value:NavigationTitleMode.Full})
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('navigation');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: Record<string, ESObject> = JSON.parse(strJson1);
       console.info("[NavigationJsunit_0700] titleMode1 is: " + obj1.$attrs.titleMode);
       expect(obj1.$attrs.titleMode).assertEqual('NavigationTitleMode.Full');
       console.info('[NavigationJsunit_0700] END');
       done();
     });
 
-    it('NavigationJsunit_0800', 0, async function (done) {
+    it('NavigationJsunit_0800', 0, async (done: Function) => {
       // Modify the mode of Navigation component 
       console.info('[NavigationJsunit_0800] START');
       globalThis.value.message.notify({name:'mode',value:NavigationMode.Auto})
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('navigation');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('navigation');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[NavigationJsunit_0800] mode is: " + obj.$attrs.mode);
       //expect(obj.$attrs.mode).assertEqual('NavigationMode.Auto');
 
       globalThis.value.message.notify({name:'mode',value:NavigationMode.Stack})
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('navigation');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: Record<string, ESObject> = JSON.parse(strJson1);
       console.info("[NavigationJsunit_0800] mode1 is: " + obj1.$attrs.mode);
       expect(obj1.$attrs.mode).assertEqual('NavigationMode.STACK');
       console.info('[NavigationJsunit_0800] END');
       done();
     });
 
-    it('NavigationJsunit_0900', 0, async function (done) {
+    it('NavigationJsunit_0900', 0, async (done: Function) => {
       // Illegal modification of properties of Navigation component
       console.info('[NavigationJsunit_0900] START');
       globalThis.value.message.notify({name:'titleMode',value:123})
@@ -203,8 +203,8 @@ export default function NavigationJsunit() {
       await CommonFunc.sleep(2000); 
 
       // Get the propoties value of the Navigation component
-      let strJson = getInspectorByKey('navigation');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('navigation');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[NavigationJsunit_0900] component obj is: " + JSON.stringify(obj));
       console.info("[NavigationJsunit_0900] titleMode: " + obj.$attrs.titleMode);
       console.info("[NavigationJsunit_0900] hideToolBar: " + obj.$attrs.hideToolBar);

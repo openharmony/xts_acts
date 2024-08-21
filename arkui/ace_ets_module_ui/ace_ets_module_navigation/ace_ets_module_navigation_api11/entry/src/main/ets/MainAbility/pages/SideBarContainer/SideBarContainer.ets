@@ -37,57 +37,57 @@ struct SideBarTest {
   @State startMarginRes: Resource = $r('app.string.Divider_startMargin')
   @State endMarginRes: Resource = $r('app.string.Divider_endMargin')
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("sideBar page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.dividerColorStr != null) {
+      if (eventData.data?.dividerColorStr != null) {
         this.dividerColorStr = eventData.data.dividerColorStr;
       }
-      if (eventData.data.strokeWidthStr != null) {
+      if (eventData.data?.strokeWidthStr != null) {
         this.strokeWidthStr = eventData.data.strokeWidthStr;
       }
-      if (eventData.data.startMarginStr != null) {
+      if (eventData.data?.startMarginStr != null) {
         this.startMarginStr = eventData.data.startMarginStr;
       }
-      if (eventData.data.endMarginStr != null) {
+      if (eventData.data?.endMarginStr != null) {
         this.endMarginStr = eventData.data.endMarginStr;
       }
-      if (eventData.data.nullFlag != null) {
+      if (eventData.data?.nullFlag != null) {
         this.nullFlag = eventData.data.nullFlag;
       }
-      if (eventData.data.dividerColor != null) {
+      if (eventData.data?.dividerColor != null) {
         this.dividerColor = eventData.data.dividerColor;
       }
-      if (eventData.data.strokeWidthNum != null) {
+      if (eventData.data?.strokeWidthNum != null) {
         this.strokeWidthNum = eventData.data.strokeWidthNum;
       }
-      if (eventData.data.dividerColorNum != null) {
+      if (eventData.data?.dividerColorNum != null) {
         this.dividerColorNum = eventData.data.dividerColorNum;
       }
-      if (eventData.data.startMarginNum != null) {
+      if (eventData.data?.startMarginNum != null) {
         this.startMarginNum = eventData.data.startMarginNum;
       }
-      if (eventData.data.endMarginNum != null) {
+      if (eventData.data?.endMarginNum != null) {
         this.endMarginNum = eventData.data.endMarginNum;
       }
 
-      if (eventData.data.dividerColorRes != null) {
+      if (eventData.data?.dividerColorRes != null) {
         this.dividerColorRes = eventData.data.dividerColorRes;
       }
-      if (eventData.data.strokeWidthRes != null) {
+      if (eventData.data?.strokeWidthRes != null) {
         this.strokeWidthRes = eventData.data.strokeWidthRes;
       }
-      if (eventData.data.startMarginRes != null) {
+      if (eventData.data?.startMarginRes != null) {
         this.startMarginRes = eventData.data.startMarginRes;
       }
-      if (eventData.data.endMarginRes != null) {
+      if (eventData.data?.endMarginRes != null) {
         this.endMarginRes = eventData.data.endMarginRes;
       }
     }
   }
 
   aboutToAppear(){
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 183,
       priority: events_emitter.EventPriority.LOW
     }

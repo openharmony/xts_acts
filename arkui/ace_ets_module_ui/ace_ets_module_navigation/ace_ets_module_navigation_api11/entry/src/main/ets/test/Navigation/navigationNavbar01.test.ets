@@ -23,7 +23,7 @@ export default function navigationNavbar01() {
   describe('navigationNavbar01',  () =>{
     beforeEach(async  (done:Function) =>{
       console.info("navigationNavbar01 beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation/navigationNavbar01',
       }
       try {

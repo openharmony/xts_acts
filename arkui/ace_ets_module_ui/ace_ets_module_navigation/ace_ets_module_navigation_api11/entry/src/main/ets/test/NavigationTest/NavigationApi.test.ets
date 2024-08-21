@@ -21,7 +21,7 @@ export default function NavigationApi() {
   describe('NavigationApi',  () =>{
     beforeEach(async  (done:Function) =>{
       console.info("NavigationApi beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation/NavigationApi',
       }
       try {
@@ -72,7 +72,7 @@ export default function NavigationApi() {
       await Utils.sleep(2000);
       console.info("[NavigationApi_001] btn3")
 
-      let strJson = getInspectorByKey('NavigationApi_text_Navigation');
+      let strJson: string = getInspectorByKey('NavigationApi_text_Navigation');
       await Utils.sleep(1000);
       console.info("[NavigationApi_001] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content).assertEqual('Navigation');

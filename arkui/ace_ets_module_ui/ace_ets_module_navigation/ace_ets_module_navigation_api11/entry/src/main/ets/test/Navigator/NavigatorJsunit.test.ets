@@ -31,7 +31,7 @@ export default function navigatorJsunit() {
 
   describe('navigatorTest', () => {
     beforeEach(async () => {
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigator/Navigator',
       }
       try {
@@ -63,7 +63,7 @@ export default function navigatorJsunit() {
     it('navigatorTest001', 0, async () => {
       console.info('++++++++++++++++ Navigator TestCase 1 START ++++++++++++++++');
       await sleep(1)
-      let strJson = getInspectorByKey('navigator');
+      let strJson: string = getInspectorByKey('navigator');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
@@ -89,7 +89,7 @@ export default function navigatorJsunit() {
     it('navigatorTest002', 0, async () => {
       console.info('++++++++++++++++ Navigator TestCase 2 START ++++++++++++++++');
       await sleep(1)
-      let strJson = getInspectorByKey('navigator2');
+      let strJson: string = getInspectorByKey('navigator2');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
@@ -107,7 +107,7 @@ export default function navigatorJsunit() {
     it('navigatorTest003', 0, async () => {
       console.info('++++++++++++++++ Navigator TestCase 3 START ++++++++++++++++');
       await sleep(1)
-      let strJson = getInspectorByKey('navigator3');
+      let strJson: string = getInspectorByKey('navigator3');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
