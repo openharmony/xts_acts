@@ -147,6 +147,19 @@ export default function AvPlayerEnumTest() {
             expect(media.PlaybackSpeed.SPEED_FORWARD_0_125_X).assertEqual(9);
             done();
         })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0800
+         * @tc.name      : AVPlayer
+         * @tc.desc      : AVPlayer Enumeration test
+         * @tc.size      : MediumTest
+         * @tc.type      : Function test
+         * @tc.level     : Level0
+         */
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0800', 0, async function (done) {
+            expect(media.PlaybackSpeed.SPEED_FORWARD_3_00_X).assertEqual(7);
+            done();
+        })
     })
 }
 

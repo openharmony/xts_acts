@@ -608,6 +608,32 @@ static napi_value OhAvPlayerSetPlaybackSpeedAbnormalOne(napi_env env, napi_callb
     return result;
 }
 
+static napi_value OhAvPlayerSetPlaybackSpeedNormalThree(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int backParam = FAIL;
+    OH_AVPlayer *player = GetPrepareAVPlayer();
+    OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackSpeed(player, AV_SPEED_FORWARD_3_00_X);
+    if (errCode == AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OhAvPlayerSetPlaybackSpeedAbnormalThree(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int backParam = FAIL;
+    OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackSpeed(nullptr, AV_SPEED_FORWARD_3_00_X);
+    if (errCode != AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
 static napi_value OhAvPlayerGetPlaybackSpeed(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -625,6 +651,35 @@ static napi_value OhAvPlayerGetPlaybackSpeed(napi_env env, napi_callback_info in
 }
 
 static napi_value OhAvPlayerGetPlaybackSpeedAbnormalOne(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int backParam = FAIL;
+    AVPlaybackSpeed speed;
+    OH_AVErrCode errCode = OH_AVPlayer_GetPlaybackSpeed(nullptr, &speed);
+    if (errCode != AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OhAvPlayerGetPlaybackSpeedNormalThree(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int backParam = FAIL;
+    OH_AVPlayer *player = GetPrepareAVPlayer();
+    OH_AVPlayer_SetPlaybackSpeed(player, AV_SPEED_FORWARD_3_00_X);
+    AVPlaybackSpeed speed;
+    OH_AVErrCode errCode = OH_AVPlayer_GetPlaybackSpeed(player, &speed);
+    if (errCode == AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OhAvPlayerGetPlaybackSpeedAbnormalThree(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     int backParam = FAIL;
@@ -1126,7 +1181,15 @@ static napi_value Init(napi_env env, napi_value exports)
         {"AvPlayerSetAudioInterruptMode", nullptr, OhAvPlayerSetAudioInterruptMode, nullptr, nullptr, nullptr,
             napi_default, nullptr},
         {"AvPlayerSetAudioEffectMode", nullptr, OhAvPlayerSetAudioEffectMode, nullptr, nullptr, nullptr,
-            napi_default, nullptr}
+            napi_default, nullptr},
+        {"AvPlayerSetPlaybackSpeedNormalThree", nullptr, OhAvPlayerSetPlaybackSpeedNormalThree, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerSetPlaybackSpeedAbnormalThree", nullptr, OhAvPlayerSetPlaybackSpeedAbnormalThree, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerGetPlaybackSpeedNormalThree", nullptr, OhAvPlayerGetPlaybackSpeedNormalThree, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerGetPlaybackSpeedAbnormalThree", nullptr, OhAvPlayerGetPlaybackSpeedAbnormalThree, nullptr,
+            nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
