@@ -44,7 +44,6 @@
         "MainAbility/pages/webViewSetAudioMuted",
         "MainAbility/pages/webViewGetAccessibleGeolocation",
         "MainAbility/pages/webViewOnAudioStateChanged",
-        "MainAbility/pages/webViewMediaOption",
-        "MainAbility/pages/scrollBar"
+        "MainAbility/pages/webViewMediaOption"
     ]
 }
