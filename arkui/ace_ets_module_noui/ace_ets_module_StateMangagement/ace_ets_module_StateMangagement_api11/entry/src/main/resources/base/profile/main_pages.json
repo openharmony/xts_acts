@@ -120,6 +120,15 @@
         "MainAbility/pages/stateMangagement/stateManagement",
         "MainAbility/pages/stateMangagement/stateManagementNew",
         "MainAbility/pages/twoWayBind/twoWayBind",
-        "MainAbility/pages/Watch/Watch"
+        "MainAbility/pages/Watch/Watch",
+        "MainAbility/pages/twoWayBind/bindContentCover",
+        "MainAbility/pages/twoWayBind/bindSheet",
+        "MainAbility/pages/twoWayBind/checkbox",
+        "MainAbility/pages/twoWayBind/checkboxGroup",
+        "MainAbility/pages/twoWayBind/MenuItem",
+        "MainAbility/pages/twoWayBind/swiper",
+        "MainAbility/pages/twoWayBind/textArea",
+        "MainAbility/pages/twoWayBind/textInput",
+        "MainAbility/pages/twoWayBind/toggle"
     ]
 }
