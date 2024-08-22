@@ -12,15 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import hilog from '@ohos.hilog';
+import abilityTest from './Ability.test'
 
-class Test {
-  onCreate() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Application onCreate');
-  }
-  onDestroy() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
-  }
+export default function testsuite() {
+  abilityTest()
 }
-
-export default new Test()
