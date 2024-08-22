@@ -15,26 +15,25 @@
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from '../Utils';
 
 export default function composeListItemIconType() {
-  describe('composeListItemIconType', function () {
-    beforeEach(async function (done) {
+  describe('composeListItemIconType', () => {
+    beforeEach(async (done: Function) => {
       console.info('composeListItemIconType beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/composeListItem/composeListItemIconType',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/composeListItem/composeListItemIconType',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get composeListItemIconType state pages: ' + JSON.stringify(pages));
         if (!('composeListItemIconType' == pages.name)) {
           console.info('get composeListItemIconType pages.name: ' + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push composeListItemIconType page result: ' + JSON.stringify(result));
+          console.info('push composeListItemIconType page result successful');
         }
       } catch (err) {
         console.error('push composeListItemIconType page error: ' + err);
@@ -45,7 +44,7 @@ export default function composeListItemIconType() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('composeListItemIconType after each called');
     })
@@ -58,7 +57,7 @@ export default function composeListItemIconType() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('composeListItemIconType_0100', 0, async function (done) {
+    it('composeListItemIconType_0100', 0, async (done: Function) => {
       console.info('[composeListItemIconType_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
