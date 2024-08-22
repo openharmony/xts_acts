@@ -28,7 +28,7 @@
 
 const char *REFERENCE_URL =
     "https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/"
-    "apis/js-apis-data-uniformTypeDescriptor.md#uniformdatatype";						   
+    "apis/js-apis-data-uniformTypeDescriptor.md#uniformdatatype";
 static napi_value OH_Utd_Create_0001(napi_env env, napi_callback_info info)
 {
     auto utd = OH_Utd_Create(UDMF_META_ENTITY);
