@@ -839,9 +839,16 @@ export default function sendableImageSource() {
           let size = img.size
           let timestamp = img.timestamp
           console.info(`0x0000 ${tag} img attributes ${JSON.stringify(clipRect)} ${JSON.stringify(size)} ${format} ${timestamp}`)
-          img.getComponent(4).then((Component: image.Component) => {
+          let componentType = image.ComponentType.JPEG
+          img.getComponent(componentType).then((Component: image.Component) => {
             console.info(`0x0000 ${tag} img.getComponent succeeded`)
             expect(isEmpty(Component)).assertFalse()
+            console.info(`0x0000 ${tag} componentType is: ${Component.componentType}`)
+            console.info(`0x0000 ${tag} rowStride is: ${Component.rowStride}`)
+            console.info(`0x0000 ${tag} pixelStride is: ${Component.pixelStride}`)
+            console.info(`0x0000 ${tag} byteBuffer is: ${Component.byteBuffer}`)
+            expect(Component.componentType).assertEqual(4)
+            expect(isEmpty(Component.byteBuffer)).assertFalse()
             done()
           })
         }).catch((error: BusinessError) => {
@@ -910,8 +917,14 @@ export default function sendableImageSource() {
         let img = await receiver.readNextImage()
         let task1: taskpool.Task = new taskpool.Task(getImgs, img);
         taskpool.execute(task1).then((res: Object) => {
+          let Component: ESObject = res
           console.info(`0x0000 ${tag} task1 return value: ${JSON.stringify(res)}`)
           expect(isEmpty(res)).assertFalse()
+          console.info(`0x0000 ${tag} componentType is: ${Component.componentType}`)
+          console.info(`0x0000 ${tag} rowStride is: ${Component.rowStride}`)
+          console.info(`0x0000 ${tag} pixelStride is: ${Component.pixelStride}`)
+          console.info(`0x0000 ${tag} byteBuffer is: ${Component.byteBuffer}`)
+          expect(isEmpty(Component.byteBuffer)).assertFalse()
           done()
         }).catch((error: BusinessError) => {
           console.info(`0x0000 ${tag} task1 catch error: ${JSON.stringify(error)}`)
@@ -943,10 +956,11 @@ export default function sendableImageSource() {
         console.info(`onImageArrival receiver.on start`)
         let img = await receiver.readNextImage()
         const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('../workers/worker')
+        console.info(`workerInstance: img ${JSON.stringify(img.clipRect)}`)
         workerInstance.postMessageWithSharedSendable(img);
         workerInstance.onmessage = (e: MessageEvents): void => {
           console.info(`0x0000 ${tag} workerInstance receive data: ${JSON.stringify(e.data)}`)
-          expect('success').assertEqual(e.data)
+          expect(e.data).assertTrue()
           done()
         }
         workerInstance.onmessageerror = (e: MessageEvents) => {
@@ -976,12 +990,11 @@ export default function sendableImageSource() {
       console.info(`0x0000 ${tag} onImageArrival start`)
       receiver.on('imageArrival', () => {
         console.info(`onImageArrival receiver.on start`)
-        receiver.readNextImage().then((img: image.Image) => {
-          img.release().then(() => {
-            console.info(`0x0000 ${tag} img.release succeeded`)
-            expect(isEmpty(img.clipRect)).assertTrue()
-            done()
-          })
+        receiver.readNextImage().then(async (img: image.Image) => {
+          let result = await img.release()
+          console.info(`0x0000 ${tag} img.release succeeded`)
+          expect(isEmpty(result)).assertTrue()
+          done()
         }).catch((error: BusinessError) => {
           console.error(`0x0000 ${tag} failed ${error}`)
           expect().assertFail()
