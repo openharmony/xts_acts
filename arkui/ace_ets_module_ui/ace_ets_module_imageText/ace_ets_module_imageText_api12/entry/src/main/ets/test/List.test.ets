@@ -137,7 +137,7 @@ import RichEditorAddApi from './RichEditor/RichEditorAddApi.test'
 import editMeunOptionsTest from './Text/editMeunOptions.test'
 import onDidIMEInputTest from './RichEditor/onDidIMEInput.test';
 import RichEditorApi13 from './RichEditor/RichEditorApi13.test'
-import imageAddApi3 from './ImageTest/imageAddApi3.test',
+import imageAddApi3 from './ImageTest/imageAddApi3.test'
 import TextHalfLeading from './Text/TextHalfLeading.test'
 
 export default function testsuite() {
