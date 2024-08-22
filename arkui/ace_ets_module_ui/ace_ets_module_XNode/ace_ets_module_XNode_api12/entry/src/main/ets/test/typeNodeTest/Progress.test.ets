@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function typeNodeProgressTest() {
-  describe('typeNodeProgressTest', function () {
-    beforeEach(async function (done) {
+  describe('typeNodeProgressTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("ProgressTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/typeNode/Progress",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/typeNode/Progress",
       }
       try {
         router.clear();
@@ -50,15 +50,15 @@ export default function typeNodeProgressTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ProgressTest_0100', 0, async function (done) {
+    it('ProgressTest_0100', 0, async (done: Function) => {
       console.info('ProgressTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('TypeNode_Progress'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('TypeNode_Progress');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('TypeNode_Progress');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ProgressTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('Progress');
       console.info('[ProgressTest_0100] END');
@@ -73,15 +73,15 @@ export default function typeNodeProgressTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('initializeTest_0200', 0, async function (done) {
+    it('initializeTest_0200', 0, async (done: Function) => {
       console.info('initializeTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('TypeNode_initialize'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('TypeNode_initialize');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('TypeNode_initialize');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[initializeTest_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('{"top":{"unit":1,"value":10},"right":{"unit":1,"value":10},"bottom":{"unit":1,"value":10},"left":{"unit":1,"value":10}}');
       console.info('[initializeTest_0200] END');
@@ -96,15 +96,15 @@ export default function typeNodeProgressTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('attributeTest_0300', 0, async function (done) {
+    it('attributeTest_0300', 0, async (done: Function) => {
       console.info('attributeTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('TypeNode_attribute'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('TypeNode_attribute');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('TypeNode_attribute');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[attributeTest_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('{"top":{"unit":1,"value":5},"right":{"unit":1,"value":5},"bottom":{"unit":1,"value":5},"left":{"unit":1,"value":5}}');
       console.info('[attributeTest_0300] END');

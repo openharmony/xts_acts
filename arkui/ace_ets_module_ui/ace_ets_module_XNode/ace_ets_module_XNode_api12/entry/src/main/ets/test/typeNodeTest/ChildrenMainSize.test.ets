@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function typeNodechildrenMainSizeTest() {
-  describe('typeNodechildrenMainSizeTest', function () {
-    beforeEach(async function (done) {
+  describe('typeNodechildrenMainSizeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("childrenMainSizeTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/typeNode/ChildrenMainSize",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/typeNode/ChildrenMainSize",
       }
       try {
         router.clear();
@@ -50,7 +50,7 @@ export default function typeNodechildrenMainSizeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('childrenMainSizeTest_0100', 0, async function (done) {
+    it('childrenMainSizeTest_0100', 0, async (done: Function) => {
       console.info('childrenMainSizeTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -60,8 +60,8 @@ export default function typeNodechildrenMainSizeTest() {
       let button2 = await driver.findComponent(ON.id('ChildernMainSize_'));
       await button2.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('ChildernMainSize_');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('ChildernMainSize_');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[childrenMainSizeTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('100');
       console.info('[childrenMainSizeTest_0100] END');
@@ -76,7 +76,7 @@ export default function typeNodechildrenMainSizeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('childrenMainSizeTest_0200', 0, async function (done) {
+    it('childrenMainSizeTest_0200', 0, async (done: Function) => {
       console.info('childrenMainSizeTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -86,8 +86,8 @@ export default function typeNodechildrenMainSizeTest() {
       let button2 = await driver.findComponent(ON.id('ChildernMainSize_'));
       await button2.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('ChildernMainSize_');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('ChildernMainSize_');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[childrenMainSizeTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('100');
       console.info('[childrenMainSizeTest_0100] END');

@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function attachNodeAdapterTest() {
-  describe('attachNodeAdapterTest', function () {
-    beforeEach(async function (done) {
+  describe('attachNodeAdapterTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("attachNodeAdapterTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/FrameNode/attachNodeAdapter",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/FrameNode/attachNodeAdapter",
       }
       try {
         router.clear();
@@ -50,15 +50,15 @@ export default function attachNodeAdapterTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onCreateChildTest_0010', 0, async function (done) {
+    it('onCreateChildTest_0010', 0, async (done: Function) => {
       console.info('onCreateChildTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('onCreateChild_id'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('onCreateChild_id');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('onCreateChild_id');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[onCreateChildTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('onCreateChild succ');
       console.info('[onCreateChildTest_0010] END');
@@ -73,7 +73,7 @@ export default function attachNodeAdapterTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onDisposeChildTest_0020', 0, async function (done) {
+    it('onDisposeChildTest_0020', 0, async (done: Function) => {
       console.info('onDisposeChildTest_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -83,8 +83,8 @@ export default function attachNodeAdapterTest() {
       let button1 = await driver.findComponent(ON.id('onDisposeChild_id'));
       await button1.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('onDisposeChild_id');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('onDisposeChild_id');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[onDisposeChildTest_0020] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('onDisposeChild succ');
       console.info('[onDisposeChildTest_0020] END');
@@ -99,7 +99,7 @@ export default function attachNodeAdapterTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onUpdateChildTest_0030', 0, async function (done) {
+    it('onUpdateChildTest_0030', 0, async (done: Function) => {
       console.info('onUpdateChildTest_0030 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -109,8 +109,8 @@ export default function attachNodeAdapterTest() {
       let button1 = await driver.findComponent(ON.id('onUpdateChild_id'));
       await button1.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('onUpdateChild_id');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('onUpdateChild_id');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[onUpdateChildTest_0030] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('onUpdateChild succ');
       console.info('[onUpdateChildTest_0030] END');
@@ -125,15 +125,15 @@ export default function attachNodeAdapterTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('attachNodeAdapterTest_0040', 0, async function (done) {
+    it('attachNodeAdapterTest_0040', 0, async (done: Function) => {
       console.info('attachNodeAdapterTest_0040 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
       let button1 = await driver.findComponent(ON.id('attachNodeAdapter_id'));
       await button1.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('attachNodeAdapter_id');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('attachNodeAdapter_id');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[attachNodeAdapterTest_0040] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('50');
       console.info('[attachNodeAdapterTest_0040] END');
@@ -148,15 +148,15 @@ export default function attachNodeAdapterTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('detachNodeAdapterTest_0050', 0, async function (done) {
+    it('detachNodeAdapterTest_0050', 0, async (done: Function) => {
       console.info('detachNodeAdapterTest_0050 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
       let button1 = await driver.findComponent(ON.id('detachNodeAdapter_id'));
       await button1.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('detachNodeAdapter_id');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('detachNodeAdapter_id');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[detachNodeAdapterTest_0050] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('0');
       console.info('[detachNodeAdapterTest_0050] END');

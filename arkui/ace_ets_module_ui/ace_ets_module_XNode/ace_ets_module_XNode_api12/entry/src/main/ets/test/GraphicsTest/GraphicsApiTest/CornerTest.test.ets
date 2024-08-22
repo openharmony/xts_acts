@@ -18,10 +18,10 @@ import CommonFunc from "../../../MainAbility/utils/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from "@ohos.UiTest";
 
 export default function CornerTest() {
-  describe("CornerTest", function () {
-    beforeEach(async function (done) {
+  describe("CornerTest", () => {
+    beforeEach(async (done: Function) => {
       console.info("CornerTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Graphics/GraphicsApi/Corner",
       }
       try {
@@ -40,7 +40,7 @@ export default function CornerTest() {
       console.info("CornerTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("CornerTest after each called");
     });
@@ -53,7 +53,7 @@ export default function CornerTest() {
      * @tc.type
     * @tc.size
      */
-    it("CornerTest_001", 0, async function (done) {
+    it("CornerTest_001", 0, async (done: Function) => {
       console.info("[CornerTest_001] START");
       await CommonFunc.sleep(1000);
       let corners_x = getInspectorByKey("corners_x");

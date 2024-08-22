@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function APIdisposeTreeTest() {
-  describe('APIdisposeTreeTest', function () {
-    beforeEach(async function (done) {
+  describe('APIdisposeTreeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("APIdisposeTreeTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/FrameNode/APIdisposeTree",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/FrameNode/APIdisposeTree",
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function APIdisposeTreeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIdisposeTreeTest_0100', 0, async function (done) {
+    it('APIdisposeTreeTest_0100', 0, async (done: Function) => {
       console.info('APIdisposeTreeTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -62,8 +62,8 @@ export default function APIdisposeTreeTest() {
       let button3 = await driver.findComponent(ON.id('APIdisposeTree_Text'));
       await button3.click();
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('APIdisposeTree_Text');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('APIdisposeTree_Text');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[APIdisposeTreeTest_0100] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('start700');
       console.info('[APIdisposeTreeTest_0100] END');

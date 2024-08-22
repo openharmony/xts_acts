@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function getNumeric() {
-  describe('getNumeric', function () {
-    beforeEach(async function (done) {
+  describe('getNumeric', () => {
+    beforeEach(async (done: Function) => {
       console.info("getNumeric beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Graphics/getNumeric',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Graphics/getNumeric',
       }
       try {
         router.clear();
@@ -51,10 +51,10 @@ export default function getNumeric() {
      * @tc.type : 
      * @tc.size :
      */
-    it('getNumeric_0100', 0, async function (done) {
+    it('getNumeric_0100', 0, async (done: Function) => {
       console.info('getNumeric_0100 START');
-      let strJson = getInspectorByKey('getNumeric');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('getNumeric');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getNumeric_0100] component obj is: " + JSON.stringify(obj));
       console.info("[getNumeric_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual("#FFFF0000");

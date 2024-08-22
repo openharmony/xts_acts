@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function typeNodeBlankTest() {
-  describe('typeNodeBlankTest', function () {
-    beforeEach(async function (done) {
+  describe('typeNodeBlankTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("BlankTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/typeNode/Blank",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/typeNode/Blank",
       }
       try {
         router.clear();
@@ -50,15 +50,15 @@ export default function typeNodeBlankTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('BlankTest_0100', 0, async function (done) {
+    it('BlankTest_0100', 0, async (done: Function) => {
       console.info('BlankTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('TypeNode_Blank'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('TypeNode_Blank');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('TypeNode_Blank');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[BlankTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('Blank');
       console.info('[BlankTest_0100] END');

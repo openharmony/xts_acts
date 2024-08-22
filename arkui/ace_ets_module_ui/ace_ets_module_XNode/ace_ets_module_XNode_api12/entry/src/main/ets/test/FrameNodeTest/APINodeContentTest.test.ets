@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function APINodeContentTest() {
-  describe('APINodeContentTest', function () {
-    beforeEach(async function (done) {
+  describe('APINodeContentTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("APINodeContentTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/FrameNode/APINodeContent",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/FrameNode/APINodeContent",
       }
       try {
         router.clear();
@@ -50,7 +50,7 @@ export default function APINodeContentTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APINodeContentTest_0100', 0, async function (done) {
+    it('APINodeContentTest_0100', 0, async (done: Function) => {
       console.info('APINodeContentTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -60,8 +60,8 @@ export default function APINodeContentTest() {
       let button2 = await driver.findComponent(ON.id('APINodeContent_Button_get'));
       await button2.click();
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('APINodeContent_Text');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('APINodeContent_Text');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[APINodeContentTest_0100] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('1');
       console.info('[APINodeContentTest_0100] END');
@@ -76,7 +76,7 @@ export default function APINodeContentTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APINodeContentTest_0200', 0, async function (done) {
+    it('APINodeContentTest_0200', 0, async (done: Function) => {
       console.info('APINodeContentTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -92,8 +92,8 @@ export default function APINodeContentTest() {
       let button9 = await driver.findComponent(ON.id('APINodeContent_Button_get'));
       await button9.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('APINodeContent_Text');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('APINodeContent_Text');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[APINodeContentTest_0200] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('0');
       await CommonFunc.sleep(500);
@@ -107,7 +107,7 @@ export default function APINodeContentTest() {
       await button8.click();
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('APINodeContent_Text');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[APINodeContentTest_0200] component obj is: ",obj2, obj2.$attrs.content);
       expect(obj2.$attrs.content).assertEqual('2');
       console.info('[APINodeContentTest_0200] END');

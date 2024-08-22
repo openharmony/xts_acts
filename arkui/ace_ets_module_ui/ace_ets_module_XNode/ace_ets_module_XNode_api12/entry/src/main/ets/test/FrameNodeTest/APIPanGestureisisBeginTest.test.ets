@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function APIPanGestureisisBeginTest() {
-  describe('APIPanGestureisisBeginTest', function () {
-    beforeEach(async function (done) {
+  describe('APIPanGestureisisBeginTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("APIPanGestureisisBeginTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/FrameNode/APIPanGestureisisBegin",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/FrameNode/APIPanGestureisisBegin",
       }
       try {
         router.clear();
@@ -49,12 +49,12 @@ export default function APIPanGestureisisBeginTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPanGestureisisBeginTest_0100', 0, async function (done) {
+    it('APIPanGestureisisBeginTest_0100', 0, async (done: Function) => {
       console.info('APIPanGestureisisBeginTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('APIPanGestureisisBegin_Text01');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('APIPanGestureisisBegin_Text01');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[APIPanGestureisisBeginTest_0100] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('true');
       console.info('[APIPanGestureisisBeginTest_0100] END');
@@ -68,12 +68,12 @@ export default function APIPanGestureisisBeginTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPanGestureisisBeginTest_0200', 0, async function (done) {
+    it('APIPanGestureisisBeginTest_0200', 0, async (done: Function) => {
       console.info('APIPanGestureisisBeginTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('APIPanGestureisisBegin_Text02');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('APIPanGestureisisBegin_Text02');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[APIPanGestureisisBeginTest_0200] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('true');
       console.info('[APIPanGestureisisBeginTest_0200] END');

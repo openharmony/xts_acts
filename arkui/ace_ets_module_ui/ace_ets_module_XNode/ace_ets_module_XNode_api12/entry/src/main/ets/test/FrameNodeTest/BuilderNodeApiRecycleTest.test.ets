@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function BuilderNodeApiRecycleTest() {
-  describe('BuilderNodeApiRecycleTest', function () {
-    beforeEach(async function (done) {
+  describe('BuilderNodeApiRecycleTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("BuilderNodeApiRecycleTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/FrameNode/BuilderNodeApiRecycle",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/FrameNode/BuilderNodeApiRecycle",
       }
       try {
         router.clear();
@@ -50,12 +50,12 @@ export default function BuilderNodeApiRecycleTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('BuilderNodeApiRecycleTest_0100', 0, async function (done) {
+    it('BuilderNodeApiRecycleTest_0100', 0, async (done: Function) => {
       console.info('BuilderNodeApiRecycleTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('BuilderNodeApiRecycle_item1');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('BuilderNodeApiRecycle_item1');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[BuilderNodeApiRecycleTest_0100] component obj is: ",obj, obj.$attrs.fontSize);
       expect(obj.$attrs.fontSize).assertEqual('50.00fp');
       console.info('[BuilderNodeApiRecycleTest_0100] END');

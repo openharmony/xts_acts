@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function setMarkNodeGroupTest() {
-  describe('setMarkNodeGroupTest', function () {
-    beforeEach(async function (done) {
+  describe('setMarkNodeGroupTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("setMarkNodeGroupTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/renderNode/setMarkNodeGroup",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/renderNode/setMarkNodeGroup",
       }
       try {
         router.clear();
@@ -50,15 +50,15 @@ export default function setMarkNodeGroupTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('setMarkNodeGroupTest_0010', 0, async function (done) {
+    it('setMarkNodeGroupTest_0010', 0, async (done: Function) => {
       console.info('setMarkNodeGroupTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('SetMarkNodeGroup_id'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('SetMarkNodeGroup_id');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('SetMarkNodeGroup_id');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[setMarkNodeGroupTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('true');
       console.info('[setMarkNodeGroupTest_0010] END');

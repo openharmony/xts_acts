@@ -21,7 +21,7 @@ struct TestComponent {
     Column() {
       Text(`start${this.text}`).id('APIdisposeTree_Text')
         .onClick(()=>{
-          let strJson = getInspectorByKey('APIdisposeTree_Text');
+          let strJson: string = getInspectorByKey('APIdisposeTree_Text');
           this.text = JSON.parse(strJson).$attrs.fontWeight + ''
         })
         .fontSize(36)

@@ -13,19 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {UiComponent, Driver, Component, UiWindow, On, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import { On, ON } from '@ohos.UiTest';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function setRectShape() {
-  describe('setRectShape', function () {
-    beforeEach(async function (done) {
+  describe('setRectShape', () => {
+    beforeEach(async (done: Function) => {
       console.info("setRectShape beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Graphics/setRectShape',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Graphics/setRectShape',
       }
       try {
         router.clear();
@@ -52,15 +51,15 @@ export default function setRectShape() {
      * @tc.type : 
      * @tc.size :
      */
-    it('setRectShape_0100', 0, async function (done) {
+    it('setRectShape_0100', 0, async (done: Function) => {
       console.info('setRectShape_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('setRectShapeClick'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('setRectShape');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('setRectShape');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[setRectShape_0100] component obj is: " + JSON.stringify(obj));
       console.info("[setRectShape_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('setRectShape:150');

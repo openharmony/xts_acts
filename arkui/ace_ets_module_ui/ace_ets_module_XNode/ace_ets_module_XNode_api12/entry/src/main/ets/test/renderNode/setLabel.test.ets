@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function setLabelTest() {
-  describe('setLabelTest', function () {
-    beforeEach(async function (done) {
+  describe('setLabelTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("setLabelTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/renderNode/setLabel",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/renderNode/setLabel",
       }
       try {
         router.clear();
@@ -50,15 +50,15 @@ export default function setLabelTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('setLabelTest_0010', 0, async function (done) {
+    it('setLabelTest_0010', 0, async (done: Function) => {
       console.info('setLabelTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('SetLabel_text'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('SetLabel_text');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('SetLabel_text');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[setLabelTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('customRenderChildNode');
       console.info('[setLabelTest_0010] END');

@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function setShapeClipTest() {
-  describe('setShapeClipTest', function () {
-    beforeEach(async function (done) {
+  describe('setShapeClipTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("setShapeClipTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/renderNode/setShapeClip",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/renderNode/setShapeClip",
       }
       try {
         router.clear();
@@ -50,15 +50,15 @@ export default function setShapeClipTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('setShapeClipTest_0010', 0, async function (done) {
+    it('setShapeClipTest_0010', 0, async (done: Function) => {
       console.info('setShapeClipTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('SetShapeClip_id'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('SetShapeClip_id');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('SetShapeClip_id');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[setShapeClipTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('{"rect":{"left":0,"right":150,"top":0,"bottom":150},"roundRect":null,"circle":null,"oval":null,"path":null}');
       console.info('[setShapeClipTest_0010] END');
