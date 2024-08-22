@@ -16,7 +16,7 @@
 import formHost from '@ohos.application.formHost';
 import { describe, expect, it } from '@ohos/hypium'
 
-export const getFormsInfoTest = (describeName, filterParameter) => {
+export const getFormsInfoTest = (describeName:string, filterParameter:number) => {
   const ERR_PERMISSION_DENY_CODE = 2;
   const ERR_PERMISSION_DENY = `does not have permission to use forms`;
 
@@ -34,7 +34,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number: FMS_getFormsInfo_0800
      * @tc.desc: Query specific form configuration information by bundle name without permission (by AsyncCallback)
      */
-    it(`${callbackName}`, filterParameter, async (done) => {
+    it(`${callbackName}`, filterParameter, async (done:Function) => {
       console.log(`==========${callbackName} ${describeName} start==========`);
 
       try {
@@ -57,7 +57,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number FMS_getFormsInfo_0800
      * @tc.desc: Query specific form configuration information by bundle name without permission (by Promise)
      */
-    it(`${promiseName}`, filterParameter, async (done) => {
+    it(`${promiseName}`, filterParameter, async (done:Function) => {
       console.log(`==========${promiseName} ${describeName} start==========`);
 
       try {
@@ -79,7 +79,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number: FMS_getFormsInfo_1300
      * @tc.desc: Query specific form configuration information by bundle name and module name without permission (by AsyncCallback)
      */
-    it(`${callbackName1}`, filterParameter, async (done) => {
+    it(`${callbackName1}`, filterParameter, async (done:Function) => {
       console.log(`==========${callbackName1} ${describeName} start==========`);
 
       try {
@@ -102,7 +102,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number FMS_getFormsInfo_1300
      * @tc.desc: Query specific form configuration information by bundle name and module name without permission (by Promise)
      */
-    it(`${promiseName1}`, filterParameter, async (done) => {
+    it(`${promiseName1}`, filterParameter, async (done:Function) => {
       console.log(`==========${promiseName1} ${describeName} start==========`);
 
       try {

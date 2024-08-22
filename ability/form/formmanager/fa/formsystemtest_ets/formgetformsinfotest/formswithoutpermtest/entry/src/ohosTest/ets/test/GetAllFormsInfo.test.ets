@@ -16,7 +16,7 @@
 import formHost from '@ohos.application.formHost';
 import { describe, expect, it } from '@ohos/hypium'
 
-export const getAllFormsInfoTest = (describeName, filterParameter) => {
+export const getAllFormsInfoTest = (describeName:string, filterParameter:number) => {
   const ERR_OK_CODE = 2;
   const ERR_OK = `success`;
 
@@ -29,7 +29,7 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number: FMS_getFormsInfo_0200
      * @tc.desc: Query all form configuration information without permission (by AsyncCallback)
      */
-    it(`${callbackName}`, filterParameter, async (done) => {
+    it(`${callbackName}`, filterParameter, async (done:Function) => {
       console.log(`==========${callbackName} ${describeName} start==========`);
 
       try {
@@ -52,7 +52,7 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number FMS_getFormsInfo_0200
      * @tc.desc: Query all form configuration information without permission (by Promise)
      */
-    it(`${promiseName}`, filterParameter, async (done) => {
+    it(`${promiseName}`, filterParameter, async (done:Function) => {
       console.log(`==========${promiseName} ${describeName} start==========`);
 
       try {
