@@ -12,13 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import windowPromiseTest from './windowPromise.test';
-import windowMaximize from './windowMaximize.test';
-import WindowLifecycle from './WindowLifecycle.test';
+import windowPromiseTest from './WindowPromise.test';
+import windowMaximizeTest from './WindowMaximize.test';
+import windowImmersiveTest from './WindowImmersive.test';
+import windowPropertiesTest from './WindowProperties.test';
+import WindowLifecycleTest from './WindowLifecycle.test';
 
 export default function testsuite() {
-  WindowLifecycle(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
+  WindowLifecycleTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowPromiseTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
-  windowMaximize(globalThis.windowStage);
-  
+  windowMaximizeTest(globalThis.windowStage);
+  windowImmersiveTest(globalThis.windowStage);
+  windowPropertiesTest(globalThis.abilityContext,globalThis.windowStage);
 }
