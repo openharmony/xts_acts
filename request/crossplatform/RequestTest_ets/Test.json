@@ -6,7 +6,7 @@
         "shell-timeout": "60000",
         "testcase-timeout": 15000,
         "bundle-name": "ohos.acts.request.crossplatform.request",
-        "module-name": "crossplatform_request_test_ets"
+        "module-name": "entry_test"
     },
     "kits": [
         {

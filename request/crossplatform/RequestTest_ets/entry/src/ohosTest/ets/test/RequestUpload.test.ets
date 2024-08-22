@@ -17,7 +17,7 @@ import request from "@ohos.request";
 import fileIO from "@ohos.file.fs";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 
-function prepareFile(fpath, content) {
+function prepareFile(fpath:string, content:string) {
   try {
     let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
     fileIO.truncateSync(file.fd);
@@ -33,13 +33,13 @@ function prepareFile(fpath, content) {
 
 export default function requestUploadCrossplatformJSUnit() {
   let testFilePath = '';
-  describe('requestUploadCrossplatformTest', function () {
+  describe('requestUploadCrossplatformTest', () => {
     console.info('====>################################request upload Test start');
 
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
-    beforeAll(function () {
+    beforeAll(() => {
       console.info('====>beforeAll: Prerequisites are executed.');
       testFilePath = globalThis.abilityContext.cacheDir + '/test.txt';
       console.log('testFilePath: ' + testFilePath)
@@ -49,38 +49,38 @@ export default function requestUploadCrossplatformJSUnit() {
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
      */
-    beforeEach(function () {
+    beforeEach(() => {
       console.info('====>beforeEach: Prerequisites is executed.');
     });
 
     /**
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
-    afterEach(function () {
+    afterEach(() => {
       console.info('====>afterEach: Test case-level clearance conditions is executed.');
     });
 
     /**
      * afterAll: Test suite-level cleanup condition, which is executed after the test suite is executed.
      */
-    afterAll(function () {
+    afterAll(() => {
       console.info('====>afterAll: Test suite-level cleanup condition is executed');
     });
 
-    let uploadTask;
-    let RequestData = {
+    let uploadTask:request.UploadTask;
+    let RequestData:request.RequestData = {
       name: 'name',
       value: '123'
     }
 
-    let File = {
+    let File:request.File = {
       filename: 'test',
       name: 'test',
       uri: 'internal://cache/test.txt',
       type: 'txt'
     }
 
-    let uploadConfig = {
+    let uploadConfig:request.UploadConfig = {
       url: 'http://127.0.0.1',
       header: {
         headers: 'http'
@@ -98,7 +98,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0001', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0001', 0, async (done:Function) => {
       console.info("====>-----------------------SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0001 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0001 request.NETWORK_MOBILE:" + request.NETWORK_MOBILE);
@@ -125,7 +125,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0002', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0002', 0, async (done:Function) => {
       console.info("====>-----------------------SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0002 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0002 request.ERROR_FILE_ALREADY_EXISTS:" + request.ERROR_FILE_ALREADY_EXISTS);
@@ -152,7 +152,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0003', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0003', 0, async (done:Function) => {
       console.info("====>-----------------------SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0003 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0003 request.ERROR_TOO_MANY_REDIRECTS:" + request.ERROR_TOO_MANY_REDIRECTS);
@@ -179,7 +179,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0004', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0004', 0, async (done:Function) => {
       console.info("====>-----------------------SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0004 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0004 request.PAUSED_UNKNOWN:" + request.PAUSED_UNKNOWN);
@@ -206,7 +206,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0005', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0005', 0, async (done:Function) => {
       console.info("====>-----------------------SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0005 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0005 request.SESSION_FAILED:" + request.SESSION_FAILED);
@@ -235,7 +235,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0006', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0006', 0, async (done:Function) => {
       console.info("====>-----------------------SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0006 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0006 request.EXCEPTION_PERMISSION:" + request.EXCEPTION_PERMISSION);
@@ -272,7 +272,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_CALLBACK_0001', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_CALLBACK_0001', 0, async (done:Function) => {
       console.info("====>-----------------------SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_CALLBACK_0001 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_CALLBACK_0001 uploadConfig = " + JSON.stringify(uploadConfig));
@@ -310,7 +310,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_PROMISE_0001', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_PROMISE_0001', 0, async (done:Function) => {
       console.info("====>-----------------------SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_PROMISE_0001 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_PROMISE_0001 UploadConfig = " + JSON.stringify(uploadConfig));
@@ -348,7 +348,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0007', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0007', 0, async (done:Function) => {
       console.info("====>-----------------------SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0007 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0007 UploadConfig = " + JSON.stringify(uploadConfig));
@@ -385,7 +385,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0008', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0008', 0, async (done:Function) => {
       console.info("====>-----------------------SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0008 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_0008 UploadConfig = " + JSON.stringify(uploadConfig));
@@ -420,7 +420,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_CROSSPLATFORM_uploadFile_STAGE_API_CALLBACK_0001', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_uploadFile_STAGE_API_CALLBACK_0001', 0, async (done:Function) => {
       console.info("-----------------------SUB_REQUEST_CROSSPLATFORM_uploadFile_STAGE_API_CALLBACK_0001 is starting-----------------------");
       try {
         request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask)=>{
@@ -448,7 +448,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_CROSSPLATFORM_uploadFile_STAGE_API_PROMISE_0001', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_uploadFile_STAGE_API_PROMISE_0001', 0, async (done:Function) => {
       console.info("-----------------------SUB_REQUEST_CROSSPLATFORM_uploadFile_STAGE_API_PROMISE_0001 is starting-----------------------");
       try{
         request.uploadFile(globalThis.abilityContext, uploadConfig).then(uploadTask => {
@@ -458,7 +458,7 @@ export default function requestUploadCrossplatformJSUnit() {
           }catch(e){
             console.info("====>SUB_REQUEST_CROSSPLATFORM_uploadFile_STAGE_API_PROMISE_0001 except error: " + e);
           }
-        }).catch(err => {
+        }).catch((err:Error) => {
           console.error("====>SUB_REQUEST_CROSSPLATFORM_uploadFile_STAGE_API_PROMISE_0001 error: " + err);
           expect().assertFail();
         })
@@ -479,7 +479,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_DELETE_0001', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_DELETE_0001', 0, async (done:Function) => {
       console.info("====>-----------------------SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_DELETE_0001 is starting-----------------------");
       request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask) => {
         try{
@@ -515,7 +515,7 @@ export default function requestUploadCrossplatformJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_DELETE_0002', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_DELETE_0002', 0, async (done:Function) => {
       console.info("====>-----------------------SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_DELETE_0002 is starting-----------------------");
       request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask) => {
         console.info("====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_DELETE_0002 uploadTask: " + uploadTask);
@@ -525,7 +525,7 @@ export default function requestUploadCrossplatformJSUnit() {
             console.info('====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_DELETE_0002 delete data:' + JSON.stringify(data));
             expect(data).assertEqual(true);
             done();
-          }).catch((err) => {
+          }).catch((err:Error) => {
             console.info('====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_DELETE_0002 Failed to delete the uploadTask task.');
             expect().assertFail();
             done();
