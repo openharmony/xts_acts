@@ -15,9 +15,10 @@
 
 import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import featureAbility from '@ohos.ability.featureAbility'
 
+export default function imageExif() {
 describe('imageExif', function () {
     let filePath;
     let fdNumber;
@@ -952,3 +953,4 @@ describe('imageExif', function () {
         }
     })
 })
+}
