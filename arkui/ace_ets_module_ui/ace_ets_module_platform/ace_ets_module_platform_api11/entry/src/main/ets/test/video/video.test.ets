@@ -204,11 +204,11 @@ export default function videoOnFullscreenChangeJsunit() {
         eventId: 60227,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         try {
           console.info("callback success");
-          console.info("eventData.data.result result is: " + eventData.data.result);
-          expect(eventData.data.result).assertEqual("success");
+          console.info("eventData.data.result result is: " + eventData.data?.result);
+          expect(eventData.data?.result).assertEqual("success");
           console.info("video_101 end: ");
         } catch (err) {
           console.info("video_101 on events_emitter err : " + JSON.stringify(err));

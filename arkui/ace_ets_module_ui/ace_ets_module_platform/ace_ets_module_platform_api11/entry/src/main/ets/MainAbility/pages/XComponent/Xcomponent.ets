@@ -14,6 +14,7 @@
  */
 import Log from './Log';
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 const TAG = 'ets_apiLack_add';
 
@@ -62,7 +63,7 @@ struct XcomponentGetXComponentContext {
             console.info("xcomponentController start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("xcomponentController emit action state err: " + JSON.stringify((err as Error)?.message))
+            console.info("xcomponentController emit action state err: " + JSON.stringify((err as BusinessError)?.message))
           }
         })
 

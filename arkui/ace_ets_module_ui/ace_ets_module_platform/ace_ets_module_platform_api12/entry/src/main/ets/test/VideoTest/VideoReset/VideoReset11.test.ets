@@ -66,7 +66,7 @@ export default function VideoReset11() {
       await CommonFunc.sleep(18000);
 
       let strJson = getInspectorByKey('VideoReset11_text3');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
       console.info("[VideoReset11_0100] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('onFinish');

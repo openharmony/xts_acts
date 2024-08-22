@@ -16,6 +16,7 @@ import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../../MainAbility/common/Utils';
+import { BusinessError } from '@ohos.base';
 
 ;
 
@@ -71,7 +72,7 @@ export default function videoJsunit2() {
         console.info("[testVideo02] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testVideo02] change component data error: " + err.message);
+        console.log("[testVideo02] change component data error: " + JSON.stringify((err as BusinessError)?.message));
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
@@ -95,7 +96,7 @@ export default function videoJsunit2() {
         console.info("[testVideo03] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testVideo03] change component data error: " + err.message);
+        console.log("[testVideo03] change component data error: " + JSON.stringify((err as BusinessError)?.message));
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
@@ -119,7 +120,7 @@ export default function videoJsunit2() {
         console.info("[testVideo04] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testVideo04] change component data error: " + err.message);
+        console.log("[testVideo04] change component data error: " + JSON.stringify((err as BusinessError)?.message));
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
@@ -143,7 +144,7 @@ export default function videoJsunit2() {
         console.info("[testVideo05] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testVideo05] change component data error: " + err.message);
+        console.log("[testVideo05] change component data error: " + JSON.stringify((err as BusinessError)?.message));
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
@@ -168,7 +169,7 @@ export default function videoJsunit2() {
         console.info("[testVideo06] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testVideo06] change component data error: " + err.message);
+        console.log("[testVideo06] change component data error: " + JSON.stringify((err as BusinessError)?.message));
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
@@ -193,7 +194,7 @@ export default function videoJsunit2() {
         console.info("[testVideo07] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testVideo07] change component data error: " + err.message);
+        console.log("[testVideo07] change component data error: " + JSON.stringify((err as BusinessError)?.message));
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
