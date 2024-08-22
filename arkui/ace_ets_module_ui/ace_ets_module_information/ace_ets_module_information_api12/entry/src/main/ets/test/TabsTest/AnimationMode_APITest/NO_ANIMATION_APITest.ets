@@ -27,7 +27,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 
 export default function NO_ANIMATION_APITest() {
   describe('NO_ANIMATION_APITest', () => {

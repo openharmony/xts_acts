@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +15,8 @@
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
+import { BusinessError } from '@ohos.base';
 
 export default function badge3Jsunit() {
   describe('badge3Jsunit', () => {
@@ -32,7 +32,7 @@ export default function badge3Jsunit() {
         if (!("badge3" == pages.name)) {
           console.info("get badge state pages.name: " + JSON.stringify(pages.name));
           await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
         console.error("push badge page error: " + err);
@@ -41,13 +41,13 @@ export default function badge3Jsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("badge after each called");
     })
 
     it('testBadge01', 0, async (done: Function) => {
       console.info('[testBadge01] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('badge');
 
       console.info("[testBadge01] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
@@ -60,7 +60,7 @@ export default function badge3Jsunit() {
 
     it('testBadge03', 0, async (done: Function) => {
       console.info('[testBadge03] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -74,9 +74,9 @@ export default function badge3Jsunit() {
         console.info("[testBadge03] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge03] change component data error: " + err.message);
+        console.log("[testBadge03] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge');
       console.info("[testBadge03] component objNew is: " + JSON.parse(JSON.parse(strJsonNew)
         .$attrs
@@ -87,7 +87,7 @@ export default function badge3Jsunit() {
 
     it('testBadge02', 0, async (done: Function) => {
       console.info('[testBadge02] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -101,9 +101,9 @@ export default function badge3Jsunit() {
         console.info("[testBadge02] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge02] change component data error: " + err.message);
+        console.log("[testBadge02] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge');
       console.info("[testBadge02] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(JSON.parse(strJsonNew).$attrs.style).fontSize).assertEqual('30.00fp');
@@ -113,7 +113,7 @@ export default function badge3Jsunit() {
 
     it('testBadge04', 0, async (done: Function) => {
       console.info('[testBadge04] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -127,9 +127,9 @@ export default function badge3Jsunit() {
         console.info("[testBadge04] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge04] change component data error: " + err.message);
+        console.log("[testBadge04] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge');
       console.info("[testBadge04] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(JSON.parse(strJsonNew).$attrs.style).fontSize).assertEqual('121212121.00fp');
@@ -138,7 +138,7 @@ export default function badge3Jsunit() {
 
     it('testBadge05', 0, async (done: Function) => {
       console.info('[testBadge05] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -152,9 +152,9 @@ export default function badge3Jsunit() {
         console.info("[testBadge05] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge05] change component data error: " + err.message);
+        console.log("[testBadge05] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge');
       console.info("[testBadge05] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       console.info("[testBadge05] component style is: " + JSON.stringify(JSON.parse(JSON.parse(strJsonNew)
@@ -166,7 +166,7 @@ export default function badge3Jsunit() {
 
     it('testBadge06', 0, async (done: Function) => {
       console.info('[testBadge06] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('badge2');
 
       console.info("[testBadge06] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -177,7 +177,7 @@ export default function badge3Jsunit() {
 
     it('testBadge07', 0, async (done: Function) => {
       console.info('[testBadge07] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('badge2');
 
       console.info("[testBadge07] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -188,7 +188,7 @@ export default function badge3Jsunit() {
 
     it('testBadge08', 0, async (done: Function) => {
       console.info('[testBadge08] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -202,9 +202,9 @@ export default function badge3Jsunit() {
         console.info("[testBadge08] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge08] change component data error: " + err.message);
+        console.log("[testBadge08] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge2');
       console.info("[testBadge08] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(JSON.parse(strJsonNew).$attrs.style).color).assertEqual('#FF0000FF');
@@ -213,7 +213,7 @@ export default function badge3Jsunit() {
 
     it('testBadge09', 0, async (done: Function) => {
       console.info('[testBadge09] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -227,9 +227,9 @@ export default function badge3Jsunit() {
         console.info("[testBadge09] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge09] change component data error: " + err.message);
+        console.log("[testBadge09] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge2');
       console.info("[testBadge09] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.value).assertEqual('test');
@@ -238,11 +238,11 @@ export default function badge3Jsunit() {
 
     it('testBadge10', 0, async (done: Function) => {
       console.info('[testBadge10] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "colorValue": ab88,
+            "colorValue": undefined,
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -252,9 +252,9 @@ export default function badge3Jsunit() {
         console.info("[testBadge10] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge10] change component data error: " + err.message);
+        console.log("[testBadge10] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge2');
       console.info("[testBadge10] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(JSON.parse(strJsonNew).$attrs.style).color).assertEqual('#FF0000FF');
@@ -263,7 +263,7 @@ export default function badge3Jsunit() {
 
     it('testBadge11', 0, async (done: Function) => {
       console.info('[testBadge11] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -277,9 +277,9 @@ export default function badge3Jsunit() {
         console.info("[testBadge11] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBadge11] change component data error: " + err.message);
+        console.log("[testBadge11] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('badge2');
       console.info("[testBadge11] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(JSON.parse(strJsonNew).$attrs.style).color).assertEqual('#FFFFFED4');

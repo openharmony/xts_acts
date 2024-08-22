@@ -15,7 +15,7 @@
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../../MainAbility/common/Utils';;
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function patternLockJsunit() {
   describe('appInfoTest_four_5', () => {
@@ -31,7 +31,7 @@ export default function patternLockJsunit() {
         if (!("button" == pages.name)) {
           console.info("get patternLock state pages.name: " + JSON.stringify(pages.name));
           await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
         console.error("push patternLock page error: " + err);
@@ -40,16 +40,16 @@ export default function patternLockJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("patternLock after each called");
     })
 
     it('testPatternLock_01', 0, async (done: Function) => {
       console.info('testPatternLock_01 START');
-      await Utils.sleep(1500);
+      await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testPatternLock_01 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.ACTION).assertEqual(true);
+        expect(indexEvent.data?.ACTION).assertEqual(true);
       }
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 153,
@@ -61,7 +61,7 @@ export default function patternLockJsunit() {
         console.info("testPatternLock_01 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("testPatternLock_01 click result is: " + JSON.stringify(sendEventByKey('button1', 10, "")));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('testPatternLock_01 END');
       done();
     });
