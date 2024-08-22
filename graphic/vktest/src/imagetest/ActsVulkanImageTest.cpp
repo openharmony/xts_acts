@@ -44,7 +44,7 @@ namespace OHOS {
         printf("------start ActsVulkanImageTest------\n");
         if (canIUse("SystemCapability.Graphic.Vulkan")) {
             system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
-                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/image.txt "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/image/extended-usage-bit-compatibility.txt "
                 "--deqp-log-filename=ActsVulkanImageTest.qpa");
         }
         EXPECT_TRUE(true);

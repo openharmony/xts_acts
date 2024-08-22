@@ -71,10 +71,12 @@ import requestVideoTest from './MediaAssetManager/requestVideo'
 import groupAlbumsTest from './PhotoAccessHelper/groupAlbums'
 import handleCameraPhotoTest from './MediaAssetChangeRequest/handleCameraPhoto.test'
 import showAssetsCreationDialogTest from './PhotoAccessHelper/showAssetsCreationDialog.test'
+import photoAccessHelperTest from './photoAccessHelperTest/PhotoAccessHelper.test'
 
 export default function testsuite () {
   provisionResourcesTest()
   getPhotoAccessHelperTest()
+  photoAccessHelperTest()
   checkAlbumAttrTest()
   albumGetAssetsTest()
   addAssetsTest()

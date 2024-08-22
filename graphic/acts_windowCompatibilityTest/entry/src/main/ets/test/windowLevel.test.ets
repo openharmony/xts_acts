@@ -19,7 +19,16 @@ import { BusinessError, Callback } from '@ohos.base';
 export default function windowLevelTest(context, windowStage,abilityStorage) {
   describe('window_level_test', function () {
     console.log('describe window_event_test start!!!')
-
+    async function sleep(time) {
+      let timeoutId = null;
+      let promise = new Promise(resolve => {
+        timeoutId = setTimeout(() => {
+          resolve('sleep finished');
+        }, time);
+      })
+      let result = await promise;
+      clearTimeout(timeoutId)
+    }
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5280
      * @tc.name      : testGetLastWindow_SubWindow_Promise

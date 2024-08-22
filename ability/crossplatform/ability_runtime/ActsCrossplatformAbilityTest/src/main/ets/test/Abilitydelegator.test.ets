@@ -58,7 +58,7 @@ export default function AbilityDelegatorTest() {
         "GET_ARGUMENTS_0001 moduleName: " + moduleName
       );
       abilityDelegator.printSync("GET_ARGUMENTS_0001 timeout: " + timeout);
-      expect(bundleName).assertEqual("com.example.delegatortest");
+      expect(bundleName).assertEqual("com.example.crossplatformability");
       expect(testRunnerClassName).assertEqual("OpenHarmonyTestRunner");
       expect(moduleName == null).assertFalse();
       expect(timeout).assertEqual(undefined);
