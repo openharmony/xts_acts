@@ -54,6 +54,7 @@
         "MainAbility/pages/Swiper/SwiperAttribute/SwiperAutoPlay_1",
         "MainAbility/pages/Swiper/SwiperAttribute/SwiperAutoPlay_2",
         "MainAbility/pages/Swiper/SwiperAttribute/SwiperDisplayCount",
-        "MainAbility/pages/Swiper/SwiperAttribute/SwiperLoopFalse"
+        "MainAbility/pages/Swiper/SwiperAttribute/SwiperLoopFalse",
+        "MainAbility/pages/Refresh/RefreshingContent"
     ]
 }
