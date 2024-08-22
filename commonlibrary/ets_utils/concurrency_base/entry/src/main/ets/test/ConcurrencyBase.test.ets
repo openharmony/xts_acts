@@ -32,11 +32,15 @@ export default function ConcurrencyBaseTest() {
         })
 
         /**
-         * @tc.name: SendableDataSimple0
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_SIMPLE_001
+         * @tc.name: testSendableDateSimple001
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: maksim-khramov
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 1
          */
-        it('SendableDateSimple0', 0, async (done: Function) => {
+        it('testSendableDateSimple001', 0, async (done: Function) => {
           let input: Date = new Date();
 
           let task = new taskpool.Task(taskDateFunction, input);
