@@ -1442,6 +1442,188 @@ static napi_value OHCaptureSessionUnregisterCallbackOff(napi_env env, napi_callb
     napi_create_int32(env, code, &result);
     return result;
 }
+static napi_value OHPhotoOutputRegisterPhotoAvailableCallback(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->RegisterPhotoAvailableCallback(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value OHPhotoOutputUnregisterPhotoAvailableCallback(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->UnregisterPhotoAvailableCallback(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value OHPhotoOutputRegisterPhotoAssetAvailableCallback(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->RegisterPhotoAssetAvailableCallback(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value OHPhotoOutputUnregisterPhotoAssetAvailableCallback(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->UnregisterPhotoAssetAvailableCallback(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value OHPhotoOutputIsMovingPhotoSupported(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->IsMovingPhotoSupported(index);
+
+    napi_value movingPhoto = nullptr;
+    napi_create_object(env, &movingPhoto);
+    napi_value jsValue = nullptr;
+
+    bool isMovingPhoto = ndkCamera_->isMovingPhotoSupported_;
+    napi_get_boolean(env, isMovingPhoto, &jsValue);
+    napi_set_named_property(env, movingPhoto, "isMovingPhotoSupported", jsValue);
+
+    napi_create_int32(env, code, &jsValue);
+    napi_set_named_property(env, movingPhoto, "errorCode", jsValue);
+
+    return movingPhoto;
+}
+static napi_value OHPhotoOutputEnableMovingPhoto(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->EnableMovingPhoto(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value OHPhotoNativeGetMainImage(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->GetMainImage(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value OHPhotoNativeRelease(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->PhotoNativeRelease(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value OHCameraManagerCreatePhotoOutputWithoutSurface(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->CreatePhotoOutputWithoutSurface(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value CallDeconstructFunction(napi_env env, napi_callback_info info)
+{
+    ndkCamera_->~NDKCamera();
+    return 0;
+}
+static napi_value TakePicture(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Camera_ErrorCode code = ndkCamera_->Capture();
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value IsCalledPhotoOutputRegisterCallback(napi_env env, napi_callback_info info)
+{
+    napi_value isCalledPhotoOutput = nullptr;
+    napi_create_object(env, &isCalledPhotoOutput);
+    napi_value jsValue = nullptr;
+
+    bool result = ndkCamera_->isCalledPhotoAvailable_;
+    napi_get_boolean(env, result, &jsValue);
+    napi_set_named_property(env, isCalledPhotoOutput, "isCalledPhotoAvailable", jsValue);
+    
+    result = ndkCamera_->isCalledPhotoAssetAvailable_;
+    napi_get_boolean(env, result, &jsValue);
+    napi_set_named_property(env, isCalledPhotoOutput, "isCalledPhotoAssetAvailable", jsValue);
+
+    return isCalledPhotoOutput;
+}
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1598,9 +1780,34 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHPhotoOutputDeleteProfile", nullptr, OHPhotoOutputDeleteProfile, nullptr, nullptr, nullptr, napi_default,
             nullptr},
     };
+napi_property_descriptor desc4[] = {
+    {"oHPhotoOutputRegisterPhotoAvailableCallback", nullptr, OHPhotoOutputRegisterPhotoAvailableCallback,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"oHPhotoOutputUnregisterPhotoAvailableCallback", nullptr, OHPhotoOutputUnregisterPhotoAvailableCallback,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"oHPhotoOutputRegisterPhotoAssetAvailableCallback", nullptr, OHPhotoOutputRegisterPhotoAssetAvailableCallback,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"oHPhotoOutputUnregisterPhotoAssetAvailableCallback", nullptr, OHPhotoOutputUnregisterPhotoAssetAvailableCallback,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"oHPhotoOutputIsMovingPhotoSupported", nullptr, OHPhotoOutputIsMovingPhotoSupported, nullptr, nullptr, nullptr,
+        napi_default, nullptr},
+    {"oHPhotoOutputEnableMovingPhoto", nullptr, OHPhotoOutputEnableMovingPhoto, nullptr, nullptr, nullptr,
+        napi_default, nullptr},
+    {"oHPhotoNativeGetMainImage", nullptr, OHPhotoNativeGetMainImage, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+    {"oHPhotoNativeRelease", nullptr, OHPhotoNativeRelease, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+    {"oHCameraManagerCreatePhotoOutputWithoutSurface", nullptr, OHCameraManagerCreatePhotoOutputWithoutSurface,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"callDeconstructFunction", nullptr, CallDeconstructFunction, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"takePicture", nullptr, TakePicture, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"isCalledPhotoOutputRegisterCallback", nullptr, IsCalledPhotoOutputRegisterCallback, nullptr, nullptr, nullptr,
+        napi_default, nullptr},
+};
     size_t mergedLength = sizeof(desc) / sizeof(desc[0]) +
                           sizeof(desc1) / sizeof(desc1[0]) +
-                          sizeof(desc2) / sizeof(desc2[0]);
+                          sizeof(desc2) / sizeof(desc2[0]) +
+                          sizeof(desc4) / sizeof(desc4[0]);
     napi_property_descriptor mergedArray[mergedLength];
     for (size_t i = 0; i < sizeof(desc) / sizeof(desc[0]); ++i) {
         mergedArray[i] = desc[i];
@@ -1610,6 +1817,10 @@ static napi_value Init(napi_env env, napi_value exports)
     }
     for (size_t i = 0; i < sizeof(desc2) / sizeof(desc2[0]); ++i) {
         mergedArray[sizeof(desc) / sizeof(desc[0]) + sizeof(desc1) / sizeof(desc1[0]) + i] = desc2[i];
+    }
+    for (size_t i = 0; i < sizeof(desc4) / sizeof(desc4[0]); ++i) {
+        mergedArray[sizeof(desc) / sizeof(desc[0]) + sizeof(desc1) / sizeof(desc1[0]) +
+                    sizeof(desc2) / sizeof(desc2[0]) + i] = desc4[i];
     }
     napi_define_properties(env, exports, mergedLength, mergedArray);
     return exports;

@@ -81,6 +81,16 @@ interface canAddVideoOutput{
   isAddVideoOutput:boolean;
 }
 
+interface movingPhoto {
+  errorCode: number;
+  isMovingPhotoSupported: boolean;
+}
+
+interface isCalledPhotoOutput {
+  isCalledPhotoAvailable: boolean;
+  isCalledPhotoAssetAvailable: boolean;
+}
+
 export const initCamera: (surfaceId: string) => number;
 
 export const getSupportedCameras: () => cameraInfo;
@@ -243,3 +253,17 @@ export const oHPreviewOutputGetActiveProfile: (index:number) => number;
 export const oHPreviewOutputDeleteProfile: (index:number) => number;
 export const oHPhotoOutputGetActiveProfile: (index:number) => number;
 export const oHPhotoOutputDeleteProfile: (index:number) => number;
+
+export const oHPhotoOutputRegisterPhotoAvailableCallback: (index:number) => number;
+export const oHPhotoOutputUnregisterPhotoAvailableCallback: (index:number) => number;
+export const oHPhotoOutputRegisterPhotoAssetAvailableCallback: (index:number) => number;
+export const oHPhotoOutputUnregisterPhotoAssetAvailableCallback: (index:number) => number;
+export const oHPhotoOutputIsMovingPhotoSupported: (index:number) => movingPhoto;
+export const oHPhotoOutputEnableMovingPhoto: (index:number) => number;
+export const oHPhotoNativeGetMainImage: (index:number) => number;
+export const oHPhotoNativeRelease: (index:number) => number;
+export const oHCameraManagerCreatePhotoOutputWithoutSurface: (index:number) => number;
+
+export const callDeconstructFunction:() => boolean;
+export const takePicture: () => number;
+export const isCalledPhotoOutputRegisterCallback: () => isCalledPhotoOutput;
