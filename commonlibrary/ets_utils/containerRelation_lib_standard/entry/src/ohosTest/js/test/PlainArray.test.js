@@ -323,7 +323,7 @@ describe("PlainArrayTest", function () {
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
       expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "size" must be number. Received value is: a`);
+      expect(err.message).assertEqual(`The type of "size" must be small integer. Received value is: a`);
     }
   });
                     
@@ -460,7 +460,7 @@ describe("PlainArrayTest", function () {
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
       expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "key" must be number. Received value is: a`);
+      expect(err.message).assertEqual(`The type of "key" must be small integer. Received value is: a`);
     }
   });
                       
@@ -571,7 +571,7 @@ describe("PlainArrayTest", function () {
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
       expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+      expect(err.message).assertEqual(`The type of "index" must be small integer. Received value is: a`);
     }
   });
                       
@@ -692,7 +692,7 @@ describe("PlainArrayTest", function () {
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
       expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "key" must be number. Received value is: a`);
+      expect(err.message).assertEqual(`The type of "key" must be small integer. Received value is: a`);
     }
     let res = plainArray.get(-2);
     expect(res).assertEqual("b");
@@ -752,7 +752,7 @@ describe("PlainArrayTest", function () {
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
       expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "key" must be number. Received value is: b`);
+      expect(err.message).assertEqual(`The type of "key" must be small integer. Received value is: b`);
     }
     let res = plainArray.get(-2);
     expect(res).assertEqual("b");
@@ -775,7 +775,7 @@ describe("PlainArrayTest", function () {
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
       expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "key" must be number. Received value is: a`);
+      expect(err.message).assertEqual(`The type of "key" must be small integer. Received value is: a`);
     }
   });
 
@@ -796,7 +796,7 @@ describe("PlainArrayTest", function () {
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
       expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "key" must be number. Received value is: a`);
+      expect(err.message).assertEqual(`The type of "key" must be small integer. Received value is: a`);
     }
   });
 
@@ -818,7 +818,7 @@ describe("PlainArrayTest", function () {
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
       expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "key" must be number. Received value is: a`);
+      expect(err.message).assertEqual(`The type of "key" must be small integer. Received value is: a`);
     }
   });
 
@@ -840,7 +840,7 @@ describe("PlainArrayTest", function () {
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
       expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+      expect(err.message).assertEqual(`The type of "index" must be small integer. Received value is: a`);
     }
   });
 

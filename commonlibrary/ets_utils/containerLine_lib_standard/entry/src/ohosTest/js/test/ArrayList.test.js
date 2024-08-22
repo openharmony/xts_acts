@@ -1030,7 +1030,7 @@ describe("ArraylistTest", function () {
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
       expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: b`);
+      expect(err.message).assertEqual(`The type of "index" must be small integer. Received value is: b`);
     }
   });
 
@@ -1052,7 +1052,7 @@ describe("ArraylistTest", function () {
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
       expect(err.code).assertEqual(401);
-      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+      expect(err.message).assertEqual(`The type of "index" must be small integer. Received value is: a`);
     }
   });
 
