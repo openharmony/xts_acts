@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {commonFunc, dataCommon} from '../../../common/js/event'
+import {commonFunc, dataCommon} from '../../../common/js/event';
 import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
