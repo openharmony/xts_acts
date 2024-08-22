@@ -784,7 +784,7 @@ struct WebComponent {
     <video  id='video' controls preload='none' muted autoplay
             controlslist='noremoteplayback'>
         <source id='mp4'
-                src='https://www-file.huawei.com/-/media/corp2020/videos/giv/2030/1/intelligent-2030-cn-720.mp4'
+                src='https://www.w3cschool.cn/statics/demosource/movie.mp4'
                 type='video/mp4'>
     </video>
     </body>
@@ -902,7 +902,7 @@ struct WebComponent {
           this.isShouldOverlay = true
           this.isCallback = false
           await Utils.sleep(2000)
-          if (Utils.isPC(this.controller) ) {
+          if (Utils.isPC(this.controller) || Utils.isEmulator()) {
             Utils.emitEvent('success', 24082)
             Utils.emitEvent('success', 24083)
             return

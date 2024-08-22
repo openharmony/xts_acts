@@ -764,7 +764,7 @@ struct WebComponent {
       <a href="https://www.baidu.com">搜索链接</a>
 
       <video controls onplay="handlePlay(0);" onended="handleEnded(0);" id="video" autoplay muted>
-          <source src="https://www-file.huawei.com/-/media/corp2020/event/2023/has/videos/analyst/dan-cnen-720.mp4" type='video/mp4'>
+          <source src="https://www.w3cschool.cn/statics/demosource/movie.mp4" type='video/mp4'>
           <p>Your user agent does not support the HTML5 Video element.</p>
       </video>
       <button onclick="handleBack()">后退</button>
@@ -845,43 +845,43 @@ struct WebComponent {
       <a href="https://www.baidu.com">搜索链接</a>
 
       <video id='video0' muted controls onplay="handlePlay(0);" onended="handleEnded(0);">
-          <source src="https://www-file.huawei.com/-/media/corp2020/videos/giv/2030/1/intelligent-2030-cn-720.mp4" type='video/mp4'>
+          <source src="https://www.w3cschool.cn/statics/demosource/movie.mp4" type='video/mp4'>
           <p>Your user agent does not support the HTML5 Video element.</p>
       </video>
       <video id='video1' muted controls onplay="handlePlay(1);" onended="handleEnded(1);">
-          <source src="https://www-file.huawei.com/-/media/corp2020/event/2023/has/videos/analyst/dan-cnen-720.mp4" type='video/mp4'>
+          <source src="https://www.w3cschool.cn/statics/demosource/movie.mp4" type='video/mp4'>
           <p>Your user agent does not support the HTML5 Video element.</p>
       </video>
       <video id='video2' muted controls onplay="handlePlay(2);" onended="handleEnded(2);">
-          <source src="https://www-file.huawei.com/-/media/corp2020/videos/giv/2030/green-ict/green-ict-cn-1080p.mp4" type='video/mp4'>
+          <source src="https://www.w3cschool.cn/statics/demosource/movie.mp4" type='video/mp4'>
           <p>Your user agent does not support the HTML5 Video element.</p>
       </video>
       <video id='video3' muted controls onplay="handlePlay(3);" onended="handleEnded(3);">
-          <source src="https://www-file.huawei.com/-/media/corp2020/media-center/video3/tech-for-better-planet-cn-1080.mp4" type='video/mp4'>
+          <source src="https://www.w3cschool.cn/statics/demosource/movie.mp4" type='video/mp4'>
           <p>Your user agent does not support the HTML5 Video element.</p>
       </video>
       <video id='video4' muted controls onplay="handlePlay(4);" onended="handleEnded(4);">
-          <source src="https://www-file.huawei.com/-/media/corp2020/videos/corporate-information/20230505-who-is-huawei-cn-720.mp4" type='video/mp4'>
+          <source src="https://www.w3cschool.cn/statics/demosource/movie.mp4" type='video/mp4'>
           <p>Your user agent does not support the HTML5 Video element.</p>
       </video>
       <video id='video5' muted controls onplay="handlePlay(5);" onended="handleEnded(5);">
-          <source src="https://www-file.huawei.com/-/media/corp2020/videos/tech-insights/techtalks/highly-stable-core-network-luoxuan-1080p.mp4" type='video/mp4'>
+          <source src="https://www.w3cschool.cn/statics/demosource/movie.mp4" type='video/mp4'>
           <p>Your user agent does not support the HTML5 Video element.</p>
       </video>
       <video id='video6' muted controls onplay="handlePlay(6);" onended="handleEnded(6);">
-          <source src="https://www-file.huawei.com/-/media/corp2020/videos/tech-insights/has24-analyst-viewpoint/6-has24-net5-5g-forrester-cn-1080p.mp4" type='video/mp4'>
+          <source src="https://www.w3cschool.cn/statics/demosource/movie.mp4" type='video/mp4'>
           <p>Your user agent does not support the HTML5 Video element.</p>
       </video>
       <video id='video7' muted controls onplay="handlePlay(7);" onended="handleEnded(7);">
-          <source src="https://www-file.huawei.com/-/media/corp2020/videos/tech-insights/techtalks-2/has24-intelligent-computing-integration-ai-540p-2.mp4" type='video/mp4'>
+          <source src="https://www.w3cschool.cn/statics/demosource/movie.mp4" type='video/mp4'>
           <p>Your user agent does not support the HTML5 Video element.</p>
       </video>
       <video id='video8' muted controls onplay="handlePlay(8);" onended="handleEnded(8);">
-          <source src="https://www-file.huawei.com/-/media/corp2020/videos/tech-insights/has24-analyst-viewpoint/3-has24-ai-and-cybersecurity-tanxiaosheng-cn-1080p.mp4" type='video/mp4'>
+          <source src="https://www.w3cschool.cn/statics/demosource/movie.mp4" type='video/mp4'>
           <p>Your user agent does not support the HTML5 Video element.</p>
       </video>
       <video id='video9' muted controls onplay="handlePlay(9);" onended="handleEnded(9);">
-          <source src="https://www-file.huawei.com/-/media/corp2020/videos/tech-insights/techtalks-2/has24-genai-managed-infrastructure-services-globaldata-andy-1080-2.mp4" type='video/mp4'>
+          <source src="https://www.w3cschool.cn/statics/demosource/movie.mp4" type='video/mp4'>
           <p>Your user agent does not support the HTML5 Video element.</p>
       </video>
       </body>
@@ -981,7 +981,7 @@ struct WebComponent {
           isPlaying = false
           haveCallBack = false
           await Utils.sleep(2000)
-          if (Utils.isPC(this.controller) ) {
+          if (Utils.isPC(this.controller) || Utils.isEmulator() ) {
             Utils.emitEvent('success', 10001)
             Utils.emitEvent('success', 10002)
             Utils.emitEvent('success', 10003)
@@ -998,7 +998,6 @@ struct WebComponent {
                 console.log(`The buttonPlay() return value is: ${result}`);
               })
               await Utils.sleep(2000)
-              console.log("video is playing: " + isPlaying)
               this.controller.loadUrl('https://www.openharmony.cn/')
               await Utils.sleep(6000)
               if (haveCallBack === false) {
