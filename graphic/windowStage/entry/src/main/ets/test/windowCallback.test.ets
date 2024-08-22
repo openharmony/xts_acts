@@ -372,7 +372,6 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         expect().assertFail()
         done();
       });
-      await sleep(800)
       await setSystemBarEnableT(mainWnd).catch((err: BusinessError) => {
         console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
         expect().assertFail();
@@ -681,7 +680,6 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         expect().assertFail();
         done();
       });
-      await sleep(800);
       let loopCount: number = commonNUMBERColorArr.length
       for (let i = 0; i < loopCount; i++) {
         console.log(msgStr + 'tempWnd.setSystemBarEnable i:' + i);
@@ -746,7 +744,6 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         expect().assertFail();
         done();
       });
-      await sleep(800);
       let loopCount: number = commonRGBColorArr.length
       for (let i = 0; i < loopCount; i++) {
         let tempColor: string = commonKEYColorArr[i];
@@ -904,7 +901,6 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
         expect().assertFail();
       });
-      await sleep(800)
       await tempWnd.setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
         expect().assertFail();
@@ -1482,7 +1478,6 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
 
       expect(!!mainWin).assertTrue();
-      await sleep(500);
       (mainWin as ohosWindow.Window).snapshot((err, data) => {
         if (err && err.code) {
           console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));

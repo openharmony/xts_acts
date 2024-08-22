@@ -61,7 +61,6 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
         expect().assertFail();
         done();
       });
-      await sleep(800);
       for (let i = 0; i < commonRGBColorArr.length; i++) {
         console.info('setWindowSystemBarPropertiesTest1 begin step:' + i);
         let tempColor: string = commonRGBColorArr[i];
@@ -115,7 +114,6 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
         expect().assertFail();
         done();
       });
-      await sleep(800);
       for (let i = 0; i < commonNUMBERColorArr.length; i++) {
         console.info('setWindowSystemBarPropertiesTest2 begin step:' + i);
         let tempColor = commonNUMBERColorArr[i];
@@ -168,7 +166,6 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
         expect().assertFail();
         done();
       });
-      await sleep(900);
       for (let i = 0; i < commonKEYColorArr.length; i++) {
         console.info('setWindowSystemBarPropertiesTest3 begin step:' + i);
         let tempColor = commonKEYColorArr[i];
