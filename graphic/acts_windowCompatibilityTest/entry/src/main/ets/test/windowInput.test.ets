@@ -122,5 +122,53 @@ export default function windowInputTest(context, windowStage, abilityStorage) {
         }
       }
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5590
+     * @tc.name      : testKeepKeyboardOnFocus_SubWindowWithOps
+     * @tc.desc      : The soft keyboard created by other Windows is retained when the window is in focus
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testKeepKeyboardOnFocus_SubWindowWithOps', 0, async function () {
+      let caseName = 'testKeepKeyboardOnFocus_SubWindowWithOps';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'testKeepKeyboardOnFocus_SubWindowWithOps',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testKeepKeyboardOnFocus_SubWindowWithOps', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          try {
+            subWin.keepKeyboardOnFocus(true);
+            console.log(msgStr + 'window keepKeyboardOnFocus successed');
+          } catch (exception) {
+            if (exception.code != 801) {
+              console.error(msgStr + `Failed to keep keyboard onFocus. Cause code: ${exception.code}, message: ${exception.message}`);
+              expect().assertFail();
+            } else {
+              console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+              console.log(msgStr + JSON.stringify(exception))
+              expect(exception.code).assertEqual(801);
+            }
+          }
+          await subWin.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+    })
+
   })
 }

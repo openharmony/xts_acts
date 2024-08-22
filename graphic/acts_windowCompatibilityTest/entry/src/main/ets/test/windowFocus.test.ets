@@ -468,5 +468,241 @@ export default function windowFocusTest(context, windowStage, abilityStorage) {
       }
       await subWin.destroyWindow();
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5550
+     * @tc.name      : testShiftAppWindowFocus_SubWindowWithOptions_SourceWinFocus
+     * @tc.desc      : Verify the scenario of creating the application type window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testShiftAppWindowFocus_SubWindowWithOptions_SourceWinFocus', 0, async function () {
+      let caseName = 'testShiftAppWindowFocus_SubWindowWithOptions_SourceWinFocus';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'SetPreOrie_SubWinOpt',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testShiftAppWindowFocus_SubWindowWithOptions_SourceWinFocus', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          await subWin.resize(500, 500);
+          await subWin.setUIContent("MainAbility/pages/second/pageTwo");
+          await subWin.showWindow();
+          await sleep(500)
+          await sleep(500)
+          await sleep(500)
+          let mainWin = windowStage.getMainWindowSync();
+          let mainWinId = mainWin.getWindowProperties().id;
+          let subWinId = subWin.getWindowProperties().id;
+          try {
+            await window.shiftAppWindowFocus(subWinId, mainWinId).then(() => {
+              console.info(msgStr + 'Succeeded in shifting app window focus');
+            }).catch((err: BusinessError) => {
+              if (err.code != 801) {
+                console.error(msgStr + `Failed to shift app window focus. Cause code: ${err.code}, message: ${err.message}`);
+                expect().assertFail();
+              } else {
+                console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+                console.log(msgStr + JSON.stringify(err))
+                expect(err.code).assertEqual(801);
+              }
+            });
+          } catch (err) {
+            if (err.code != 801) {
+              console.error(msgStr + `Failed to shift app window focus. out catch Cause code: ${err.code}, message: ${err.message}`);
+              expect().assertFail();
+            } else {
+              console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+              console.log(msgStr + JSON.stringify(err))
+              expect(err.code).assertEqual(801);
+            }
+          }
+          await subWin.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5560
+     * @tc.name      : testShiftAppWindowFocus_SubWindowWithOptions_SourceWinNotFocus
+     * @tc.desc      : Verify the scenario of creating the application type window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testShiftAppWindowFocus_SubWindowWithOptions_SourceWinNotFocus', 0, async function () {
+      let caseName = 'testShiftAppWindowFocus_SubWindowWithOptions_SourceWinNotFocus';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'SetPreOrie_SubWinOptTwo',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testShiftAppWindowFocus_SubWindowWithOptions_SourceWinNotFocus', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          await subWin.resize(500, 500);
+          await subWin.setUIContent("MainAbility/pages/second/pageTwo");
+          await subWin.showWindow();
+          await sleep(500)
+          await sleep(500)
+          let mainWin = windowStage.getMainWindowSync();
+          let mainWinId = mainWin.getWindowProperties().id;
+          let subWinId = subWin.getWindowProperties().id;
+          try {
+            await window.shiftAppWindowFocus(mainWinId, subWinId).then(() => {
+              console.info(msgStr + 'Succeeded in shifting app window focus');
+              expect().assertFail();
+            }).catch((err: BusinessError) => {
+              if (err.code != 801) {
+                console.error(msgStr + `Failed to shift app window focus. Cause code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(1300002);
+              } else {
+                console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+                console.log(msgStr + JSON.stringify(err))
+                expect(err.code).assertEqual(801);
+              }
+            });
+          } catch (err) {
+            if (err.code != 801) {
+              console.error(msgStr + `Failed to shift app window focus. out catch Cause code: ${err.code}, message: ${err.message}`);
+              expect().assertFail();
+            } else {
+              console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+              console.log(msgStr + JSON.stringify(err))
+              expect(err.code).assertEqual(801);
+            }
+          }
+          await subWin.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+    })
+
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5570
+     * @tc.name      : testSetWindowFocusable_SubWindowWithOps_Callback
+     * @tc.desc      : Set whether the window supports switching from the focus window before the click to the window when clicking or other methods are used to focus the window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetWindowFocusable_SubWindowWithOps_Callback', 0, async function (done) {
+      let caseName = 'testSetWindowFocusable_SubWindowWithOps_Callback';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let options: window.SubWindowOptions = {
+        title: 'testSetWindowFocusable_SubWindowWithOps_Callback',
+        decorEnabled: true
+      };
+      let subWin;
+      await windowStage.createSubWindowWithOptions('testSetWindowFocusable_SubWindowWithOps_Callback', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          let isFocusable: boolean = true;
+          try {
+            subWin.setWindowFocusable(isFocusable, async (err: BusinessError) => {
+              const errCode: number = err.code;
+              if (errCode) {
+                console.error(msgStr + `Failed to set the window to be focusable. Cause code: ${err.code}, message: ${err.message}`);
+                await subWin.destroyWindow();
+                expect().assertFail();
+                done();
+                return;
+              }
+              console.info(msgStr + 'Succeeded in setting the window to be focusable.');
+              await subWin.destroyWindow();
+              done();
+            });
+          } catch (exception) {
+            console.error(msgStr + `Failed to set the window to be focusable. out Cause code: ${exception.code}, message: ${exception.message}`);
+            await subWin.destroyWindow();
+            expect().assertFail();
+            done();
+          }
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5580
+     * @tc.name      : testSetWindowFocusable_SubWindowWithOps_Promise
+     * @tc.desc      : Set whether the window supports switching from the focus window before the click to the window when clicking or other methods are used to focus the window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetWindowFocusable_SubWindowWithOps_Promise', 0, async function () {
+      let caseName = 'testSetWindowFocusable_SubWindowWithOps_Promise';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let options: window.SubWindowOptions = {
+        title: 'testSetWindowFocusable_SubWindowWithOps_Promise',
+        decorEnabled: true
+      };
+      let subWin;
+      await windowStage.createSubWindowWithOptions('testSetWindowFocusable_SubWindowWithOps_Promise', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          let isFocusable: boolean = true;
+          try {
+            await subWin.setWindowFocusable(isFocusable).then(() => {
+              console.info(msgStr + 'Succeeded in setting the window to be focusable.');
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set the window to be focusable. Cause code: ${err.code}, message: ${err.message}`);
+              expect().assertFail();
+            });
+          } catch (exception) {
+            console.error(msgStr + `Failed to set the window to be focusable. out Cause code: ${exception.code}, message: ${exception.message}`);
+            expect().assertFail();
+          }
+          await subWin.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+    })
   })
 }

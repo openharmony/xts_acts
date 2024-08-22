@@ -721,5 +721,379 @@ export default function specialWindowTest(context, windowStage, abilityStorage) 
       }
       await subWin.destroyWindow();
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5400
+     * @tc.name      : testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Callback
+     * @tc.desc      : Gets all the child Windows under the WindowStage instance
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Callback', 0, async (done) => {
+      let caseName = 'testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Callback';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWinFirst;
+      subWinFirst = await windowStage.createSubWindow('testGetSubWindow_subWindow')
+        .catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      expect(!!subWinFirst).assertTrue();
+      let windowConfig = {
+        name: "testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Callback",
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let tempWnd;
+      tempWnd = await window.createWindow(windowConfig).catch((err) => {
+        console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      expect(!!tempWnd).assertTrue();
+      let subWinWithOPsCreateSuccessed = false;
+      let subWinWithOPs;
+      let options: window.SubWindowOptions = {
+        title: 'testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Callback_Sub',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Callback_Sub', options)
+        .then(async (data) => {
+          subWinWithOPs = data;
+          expect(!!subWinWithOPs).assertTrue();
+          subWinWithOPsCreateSuccessed = true;
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+      let windowArray: window.Window[] = [];
+      windowStage.getSubWindow(async (err: BusinessError, data) => {
+        const errCode: number = err.code;
+        if (errCode) {
+          console.error(msgStr + `Failed to obtain the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          await subWinFirst.destroyWindow();
+          await tempWnd.destroyWindow();
+          if (subWinWithOPsCreateSuccessed) {
+            await subWinWithOPs.destroyWindow();
+          }
+          expect().assertFail();
+          done();
+          return;
+        }
+        windowArray = data;
+        console.info(msgStr + 'Succeeded in obtaining the subwindow. Data: ' + JSON.stringify(data));
+        let windowArrayLength = windowArray.length;
+        if (subWinWithOPsCreateSuccessed) {
+          expect(windowArrayLength).assertEqual(2);
+          await subWinWithOPs.destroyWindow();
+        } else {
+          expect(windowArrayLength).assertEqual(1);
+        }
+        await subWinFirst.destroyWindow();
+        await tempWnd.destroyWindow();
+        done();
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5410
+     * @tc.name      : testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Promise
+     * @tc.desc      : Gets all the child Windows under the WindowStage instance
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Promise', 0, async (done) => {
+      let caseName = 'testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Promise';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWinFirst;
+      subWinFirst = await windowStage.createSubWindow('testGetSubWindow_subWindow_Promise')
+        .catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      expect(!!subWinFirst).assertTrue();
+      let windowConfig = {
+        name: "testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Promise",
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let tempWnd;
+      tempWnd = await window.createWindow(windowConfig).catch((err) => {
+        console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      expect(!!tempWnd).assertTrue();
+      let subWinWithOPsCreateSuccessed = false;
+      let subWinWithOPs;
+      let options: window.SubWindowOptions = {
+        title: 'testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Promise_Sub',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Promise_Sub', options)
+        .then(async (data) => {
+          subWinWithOPs = data;
+          expect(!!subWinWithOPs).assertTrue();
+          subWinWithOPsCreateSuccessed = true;
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+      let windowArray: window.Window[] = [];
+      await windowStage.getSubWindow().then(async (data) => {
+        windowArray = data;
+        console.info(msgStr + 'Succeeded in obtaining the subwindow. Data: ' + JSON.stringify(data));
+        let windowArrayLength = windowArray.length;
+        if (subWinWithOPsCreateSuccessed) {
+          expect(windowArrayLength).assertEqual(2);
+          await subWinWithOPs.destroyWindow();
+        } else {
+          expect(windowArrayLength).assertEqual(1);
+        }
+        await subWinFirst.destroyWindow();
+        await tempWnd.destroyWindow();
+        done();
+      }).catch(async (err: BusinessError) => {
+        console.error(msgStr + `Failed to obtain the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+        await subWinFirst.destroyWindow();
+        await tempWnd.destroyWindow();
+        if (subWinWithOPsCreateSuccessed) {
+          await subWinWithOPs.destroyWindow();
+        }
+        expect().assertFail();
+        done();
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5420
+     * @tc.name      : testCreateSubWindowWithOptions_Normal
+     * @tc.desc      : Create a child window under the WindowStage instance
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCreateSubWindowWithOptions_Normal', 0, async () => {
+      let caseName = 'testCreateSubWindowWithOptions_Normal';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let options: window.SubWindowOptions = {
+        title: 'testCreateSubWindowWithOptions_Normal',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testCreateSubWindowWithOptions_Normal', options)
+        .then(async (data) => {
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await data.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5430
+     * @tc.name      : testCreateSubWindowWithOptions_isModalIsUndefined
+     * @tc.desc      : Create a child window under the WindowStage instance
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCreateSubWindowWithOptions_isModalIsUndefined', 0, async () => {
+      let caseName = 'testCreateSubWindowWithOptions_isModalIsUndefined';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let options: window.SubWindowOptions = {
+        title: 'testCreateSubWindowWithOptions_isModalIsUndefined',
+        decorEnabled: true,
+        isModal: undefined
+      };
+      await windowStage.createSubWindowWithOptions('testCreateSubWindowWithOptions_isModalIsUndefined', options)
+        .then(async (data) => {
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await data.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5440
+     * @tc.name      : testCreateSubWindowWithOptions_isModalIsNull
+     * @tc.desc      : Create a child window under the WindowStage instance
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCreateSubWindowWithOptions_isModalIsNull', 0, async () => {
+      let caseName = 'testCreateSubWindowWithOptions_isModalIsNull';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let options: window.SubWindowOptions = {
+        title: 'testCreateSubWindowWithOptions_isModalIsNull',
+        decorEnabled: false,
+        isModal: null
+      };
+      await windowStage.createSubWindowWithOptions('testCreateSubWindowWithOptions_isModalIsNull', options)
+        .then(async (data) => {
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await data.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5450
+     * @tc.name      : testCreateSubWindowWithOptions_TitleIsNotStr
+     * @tc.desc      : Create a child window under the WindowStage instance
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCreateSubWindowWithOptions_TitleIsNotStr', 0, async () => {
+      let caseName = 'testCreateSubWindowWithOptions_TitleIsNotStr';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try {
+        let options: window.SubWindowOptions = {
+          title: false,
+          decorEnabled: false,
+        };
+        await windowStage.createSubWindowWithOptions('testCreateSubWindowWithOptions_TitleIsNotStr', options)
+          .then(async (data) => {
+            console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+            await data.destroyWindow();
+            expect().assertFail();
+          })
+          .catch((err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect(err.code).assertEqual(401);
+          });
+      } catch (exception) {
+        console.error(msgStr + `Failed to create the subwindow. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect(exception.code).assertEqual(401);
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5460
+     * @tc.name      : testCreateSubWindowWithOptions_decorEnabledIsNotBoolen
+     * @tc.desc      : Create a child window under the WindowStage instance
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCreateSubWindowWithOptions_decorEnabledIsNotBoolen', 0, async () => {
+      let caseName = 'testCreateSubWindowWithOptions_decorEnabledIsNotBoolen';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try {
+        let options: window.SubWindowOptions = {
+          title: 'testCreateSubWindowWithOptions_decorEnabledIsNotBoolen',
+          decorEnabled: 'false',
+        };
+        await windowStage.createSubWindowWithOptions('testCreateSubWindowWithOptions_decorEnabledIsNotBoolen', options)
+          .then(async (data) => {
+            console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+            await data.destroyWindow();
+          })
+          .catch((err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect(err.code).assertEqual(401);
+          });
+      } catch (exception) {
+        console.error(msgStr + `Failed to create the subwindow. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect(exception.code).assertEqual(401);
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5470
+     * @tc.name      : testSetSubWindowModal_SubWindowWithOps
+     * @tc.desc      : Sets whether the modal properties of the subwindow are enabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testSetSubWindowModal_SubWindowWithOps', 0, async () => {
+      let caseName = 'testSetSubWindowModal_SubWindowWithOps';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let options: window.SubWindowOptions = {
+        title: 'testSetSubWindowModal_SubWindowWithOps',
+        decorEnabled: true
+      };
+      let subWin;
+      await windowStage.createSubWindowWithOptions('testSetSubWindowModal_SubWindowWithOps', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          try {
+            await subWin.setSubWindowModal(false).then(() => {
+              console.info(msgStr + 'Succeeded in setting subwindow modal');
+            }).catch((err: BusinessError) => {
+              if (err.code != 801) {
+                console.error(msgStr + `Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+                expect().assertFail();
+              } else {
+                console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+                console.log(msgStr + JSON.stringify(err))
+                expect(err.code).assertEqual(801);
+              }
+            });
+          } catch (exception) {
+            console.error(msgStr + `Failed to create the subWindow. out Cause code: ${exception.code}, message: ${exception.message}`);
+          }
+          await subWin.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+    })
   })
 }

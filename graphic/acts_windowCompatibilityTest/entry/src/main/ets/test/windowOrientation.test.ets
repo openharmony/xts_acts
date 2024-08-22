@@ -18,6 +18,16 @@ import window from '@ohos.window';
 export default function windowOrientationTest(context, windowStage, abilityStorage) {
   describe('window_orientation_test', function () {
     console.log('describe window_orientation_test start!!!')
+    async function sleep(time) {
+      let timeoutId = null;
+      let promise = new Promise(resolve => {
+        timeoutId = setTimeout(() => {
+          resolve('sleep finished');
+        }, time);
+      })
+      let result = await promise;
+      clearTimeout(timeoutId)
+    }
 
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5340
@@ -242,6 +252,160 @@ export default function windowOrientationTest(context, windowStage, abilityStora
         expect().assertFail();
       }
       await subWin.destroyWindow();
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5650
+     * @tc.name      : testSetPreferredOrientation_SubWindowWithOptions_Promise
+     * @tc.desc      : Verify the scenario of creating the application type window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetPreferredOrientation_SubWindowWithOptions_Promise', 0, async function () {
+      let caseName = 'testSetPreferredOrientation_SubWindowWithOptions_Promise';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'SetPreOrie_SubWinOpt',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testSetPreferredOrientation_SubWindowWithOptions_Promise', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          let orientation = window.Orientation.AUTO_ROTATION;
+          // Calling the interface on a non-primary window succeeded but did not take effect
+          try {
+            await subWin.setPreferredOrientation(orientation).then(() => {
+              console.info(msgStr + 'Succeeded in setting the window orientation.');
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set the window orientation. Cause code: ${err.code}, message: ${err.message}`);
+              expect().assertFail();
+            });
+          } catch (exception) {
+            console.error(msgStr + `Failed to set window orientation. catch Cause code: ${exception.code}, message: ${exception.message}`);
+            expect().assertFail();
+          }
+          await subWin.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5660
+     * @tc.name      : testSetPreferredOrientation_SubWindowWithOptions_Callback
+     * @tc.desc      : Verify the scenario of creating the application type window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetPreferredOrientation_SubWindowWithOptions_Callback', 0, async function (done) {
+      let caseName = 'testSetPreferredOrientation_SubWindowWithOptions_Callback';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'SetPreOrie_SubWinOpt',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testSetPreferredOrientation_SubWindowWithOptions_Callback', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          let orientation = window.Orientation.AUTO_ROTATION;
+          // Calling the interface on a non-primary window succeeded but did not take effect
+          try {
+            subWin.setPreferredOrientation(orientation, async (err: BusinessError) => {
+              const errCode: number = err.code;
+              if (errCode) {
+                console.error(msgStr + `Failed to set window orientation. Cause code: ${err.code}, message: ${err.message}`);
+                await subWin.destroyWindow();
+                expect().assertFail();
+                done();
+                return;
+              }
+              console.info(msgStr + 'Succeeded in setting window orientation.');
+              await subWin.destroyWindow();
+              done();
+            });
+          } catch (exception) {
+            console.error(msgStr + `Failed to set window orientation. Cause code: ${exception.code}, message: ${exception.message}`);
+            await subWin.destroyWindow();
+            expect().assertFail();
+            done();
+          }
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5670
+     * @tc.name      : testGetPreferredOrientation_SubWindowWithOptions
+     * @tc.desc      : Verify the scenario of creating the application type window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetPreferredOrientation_SubWindowWithOptions', 0, async function () {
+      let caseName = 'testGetPreferredOrientation_SubWindowWithOptions';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWin;
+      let options: window.SubWindowOptions = {
+        title: 'SetPreOrie_SubWinOpt',
+        decorEnabled: true
+      };
+      await windowStage.createSubWindowWithOptions('testGetPreferredOrientation_SubWindowWithOptions', options)
+        .then(async (data) => {
+          subWin = data;
+          expect(!!subWin).assertTrue();
+          let orientation = window.Orientation.AUTO_ROTATION;
+          // Calling the interface on a non-primary window succeeded but did not take effect
+          try {
+            await subWin.setPreferredOrientation(orientation).then(() => {
+              console.info(msgStr + 'Succeeded in setting the window orientation.');
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set the window orientation. Cause code: ${err.code}, message: ${err.message}`);
+              expect().assertFail();
+            });
+          } catch (exception) {
+            console.error(msgStr + `Failed to set window orientation. catch Cause code: ${exception.code}, message: ${exception.message}`);
+            expect().assertFail();
+          }
+          await subWin.destroyWindow();
+        })
+        .catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
     })
   })
 }
