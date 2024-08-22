@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {swipeFunc, dataCommon} from '../../../common/js/event'
+import {swipeFunc, dataCommon} from '../../../common/js/event';
 import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
