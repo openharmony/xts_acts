@@ -514,6 +514,39 @@ export default function relationalStoreCloudCursor() {
         });
         console.log(TAG + "************* testRdbQueryWithCursor0008 end *************");
       })
+
+        /**
+         * @tc.name query with cursor
+         * @tc.number  SUB_DistributedData_RelationalStore_SDK_CloudCursorJsAPITest_0900
+         * @tc.desc query with cursor, and get all columns，and DATA_STATUS_FIELD
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 3
+         */
+        it('testRdbQueryWithCursor0009', 0, async function (done) {
+        console.log(TAG + "************* testRdbQueryWithCursor0009 start *************");
+        let predicates = new relationalStore.RdbPredicates("query_tb");
+        predicates.greaterThan(relationalStore.Field.CURSOR_FIELD, 0);
+        if (rdbStore == undefined) {
+            console.log(TAG + "testRdbQueryWithCursor0009 rdbStore == undefined");
+            expect().assertFail();
+            return;
+        }
+        let promise = rdbStore.query(predicates);
+        await promise.then((resultSet) => {
+            expect(7).assertEqual(resultSet.columnCount);
+            let dataIndex = resultSet.getColumnIndex(relationalStore.Field.DATA_STATUS_FIELD);
+            expect(6).assertEqual(dataIndex);
+            resultSet.close();
+            expect(true).assertEqual(resultSet.isClosed);
+            done();
+        }).catch((err) => {
+            console.log(TAG + `testRdbQueryWithCursor0009 query cursor fail, errcode:${JSON.stringify(err)}.`);
+            expect().assertFail();
+            done();
+        });
+        console.log(TAG + "************* testRdbQueryWithCursor0009 end *************");
+        })
         console.log(TAG + "*************Unit Test End*************");
     })
 }
