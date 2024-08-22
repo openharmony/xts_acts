@@ -76,5 +76,101 @@ export default function graphicImagePixelMapTest(context, windowStage, abilitySt
           }
       })
     });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_030
+     * @tc.name      : testSetTransferDetached_1
+     * @tc.desc      :  1.create PixelMap
+                        2.use SetTransferDetached
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testSetTransferDetached_1", 0, async function (done) {
+      let msg = '=====testSetTransferDetached_1====='
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      let horizontal: boolean = true;
+      let vertical: boolean = false;
+      let pixelMap: image.PixelMap | undefined = undefined;
+
+      await image.createPixelMap(color, opts).then((pixelMapOK: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMapOK.');
+        pixelMap = pixelMapOK
+      }).catch((error: BusinessError) => {
+        console.error( msg + ` Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+        expect().assertFail();
+        done();
+      })
+      try{
+        pixelMap.rotate(60)
+        console.info( msg + ' Succeeded in rotate pixelMap.');
+        try{
+          pixelMap.setTransferDetached(true)
+          console.info( msg + ' Succeeded in setTransferDetached pixelMap.');
+          pixelMap.rotate(180)
+          console.info( msg + ' Succeeded in rotate pixelMap.');
+          console.log(msg + ' The main process can still invoke pixelmap attributes. Counterexamples end !')
+          expect(true).assertTrue();
+          done();
+        }catch(error: BusinessError){
+          console.error( msg + ` Failed to setTransferDetached pixelMap. code is ${error.code}, message is ${error.message}`);
+          expect().assertFail();
+          done();
+        }
+      }catch(error: BusinessError){
+        console.error( msg + ` Failed to rotate pixelMap. code is ${error.code}, message is ${error.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_031
+     * @tc.name      : testSetTransferDetached_2
+     * @tc.desc      :  1.create PixelMap
+                        2.use SetTransferDetached
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testSetTransferDetached_2", 0, async function (done) {
+      let msg = '=====testSetTransferDetached_2====='
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      let horizontal: boolean = true;
+      let vertical: boolean = false;
+      let pixelMap: image.PixelMap | undefined = undefined;
+
+      await image.createPixelMap(color, opts).then((pixelMapOK: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMapOK.');
+        pixelMap = pixelMapOK
+      }).catch((error: BusinessError) => {
+        console.error( msg + ` Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+        expect().assertFail();
+        done();
+      })
+      try{
+        pixelMap.rotate(60)
+        console.info( msg + ' Succeeded in rotate pixelMap.');
+        try{
+          pixelMap.setTransferDetached(false)
+          console.info( msg + ' Succeeded in setTransferDetached pixelMap.');
+          pixelMap.rotate(180)
+          console.info( msg + ' Succeeded in rotate pixelMap.');
+          console.log(msg + ' The main process can still invoke pixelmap attributes. Counterexamples end !')
+          expect(true).assertTrue();
+          done();
+        }catch(error: BusinessError){
+          console.error( msg + ` Failed to setTransferDetached pixelMap. code is ${error.code}, message is ${error.message}`);
+          expect().assertFail();
+          done();
+        }
+      }catch(error: BusinessError){
+        console.error( msg + ` Failed to rotate pixelMap. code is ${error.code}, message is ${error.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
   })
 }
