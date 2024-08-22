@@ -37,6 +37,22 @@
                     "entity.system.home"
                 ]
             }]
+        },{
+            "name": "com.example.myapplication.MainAbility2",
+            "srcEntrance": "./ets/MainAbility/MainAbility2.ts",
+            "description": "$string:phone_entry_main",
+            "icon": "$media:icon",
+            "label": "$string:entry_label",
+            "visible": true,
+            "orientation": "portrait",
+            "skills": [{
+                "actions": [
+                    "action.system.home"
+                ],
+                "entities": [
+                    "entity.system.home"
+                ]
+            }]
         }],
         "requestPermissions": [
 	    {

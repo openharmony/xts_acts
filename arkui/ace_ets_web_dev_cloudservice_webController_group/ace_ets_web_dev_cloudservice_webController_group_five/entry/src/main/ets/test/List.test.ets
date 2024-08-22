@@ -13,7 +13,15 @@
  * limitations under the License.
  */
 import ActsAceWebSetResponse from './webSetResponse.test'
+import ActsAceWebviewEnableBackForwardCache from './webviewEnableBackForwardCache.test'
+import ActsAceWebviewSetBackForwardCacheOptions from './webviewSetBackForwardCacheOptions.test'
+import ActsAceWebviewBFCacheResumeAndSuspendPlayer from './webviewBFCacheResumeAndSuspendPlayer.test'
+import ActsAceWebviewBFCacheSuspendPlayer from './webviewBFCacheSuspendPlayer.test'
 
 export default function testsuite() {
   ActsAceWebSetResponse()
+  ActsAceWebviewEnableBackForwardCache()
+  ActsAceWebviewSetBackForwardCacheOptions()
+  ActsAceWebviewBFCacheResumeAndSuspendPlayer()
+  ActsAceWebviewBFCacheSuspendPlayer()
 }
