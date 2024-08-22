@@ -772,5 +772,159 @@ export default function colorFilterTest() {
       }
     });
 
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_COLORFILTER_0600
+     * @tc.name      : testColorFilterCreateMatrixColorFilterNormal
+     * @tc.desc      : Test for testColorFilterCreateMatrixColorFilterNormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testColorFilterCreateMatrixColorFilterNormal' , DEFAULT , () => {
+      const msg = 'testColorFilterCreateMatrixColorFilterNormal';
+      const matrix_ = [
+        1, 0, 0, 0, 0, // 红色通道
+        0, 1, 0, 0, 0, // 绿色通道
+        0, 0, 1, 0, 0, // 蓝色通道
+        0, 0, 0, 1, 0// 透明度通道
+      ];
+      try {
+        let colorFilter = drawing.ColorFilter.createMatrixColorFilter(matrix_);
+        expect(colorFilter != null || colorFilter != undefined).assertTrue()
+        console.info(msg + ' createMatrixColorFilter successed,colorFilter:' + colorFilter);
+      } catch( e ) {
+        console.info(msg + ` createMatrixColorFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_COLORFILTER_0601
+     * @tc.name      : testColorFilterCreateMatrixColorFilterNull
+     * @tc.desc      : Test for testColorFilterCreateMatrixColorFilterNull.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testColorFilterCreateMatrixColorFilterNull' , DEFAULT , () => {
+      const msg = 'testColorFilterCreateMatrixColorFilterNull';
+      try {
+        drawing.ColorFilter.createMatrixColorFilter(null);
+        console.info(msg + ' createMatrixColorFilter successed');
+      } catch( e ) {
+        console.info(msg + ` createMatrixColorFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ColorFilter.createMatrixColorFilter(undefined);
+        console.info(msg + ' createMatrixColorFilter successed');
+      } catch( e ) {
+        console.info(msg + ` createMatrixColorFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_COLORFILTER_0602
+     * @tc.name      : testColorFilterCreateMatrixColorFilterMismatch
+     * @tc.desc      : Test for testColorFilterCreateMatrixColorFilterMismatch.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testColorFilterCreateMatrixColorFilterMismatch' , DEFAULT , () => {
+      const msg = 'testColorFilterCreateMatrixColorFilterMismatch';
+      const matrix_ = [
+        1, 0, 0, 0, 0, // 红色通道
+        0, 1, 0, 0, 0, // 绿色通道
+        0, 0, 1, 0, 0, // 蓝色通道
+        0, 0, 0, 1, 0// 透明度通道
+      ];
+      try {
+        drawing.ColorFilter.createMatrixColorFilter(matrix_ , matrix_);
+        console.info(msg + ' createMatrixColorFilter successed');
+      } catch( e ) {
+        console.info(msg + ` createMatrixColorFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ColorFilter.createMatrixColorFilter();
+        console.info(msg + ' createMatrixColorFilter successed');
+      } catch( e ) {
+        console.info(msg + ` createMatrixColorFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ColorFilter.createMatrixColorFilter('s');
+        console.info(msg + ' createMatrixColorFilter successed');
+      } catch( e ) {
+        console.info(msg + ` createMatrixColorFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_COLORFILTER_0603
+     * @tc.name      : testColorFilterCreateMatrixColorFilterMultipleCalls
+     * @tc.desc      : Test for testColorFilterCreateMatrixColorFilterMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testColorFilterCreateMatrixColorFilterMultipleCalls' , DEFAULT , () => {
+      const msg = 'testColorFilterCreateMatrixColorFilterMultipleCalls';
+      for ( let i = 0 ; i < 20 ; i ++ ) {
+        const matrix: number[] = Array(20).fill(0).map(() => Math.random() * 10 - 5);
+        try {
+          let colorFilter = drawing.ColorFilter.createMatrixColorFilter(matrix);
+          expect(colorFilter != null || colorFilter != undefined).assertTrue()
+          console.info(msg + ' createMatrixColorFilter successed,colorFilter:' + colorFilter);
+        } catch( e ) {
+          console.info(msg + ` createMatrixColorFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+          expect().assertFail();
+        }
+      }
+
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_COLORFILTER_0604
+     * @tc.name      : testColorFilterCreateMatrixColorFilterAbnormal
+     * @tc.desc      : Test for testColorFilterCreateMatrixColorFilterAbnormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testColorFilterCreateMatrixColorFilterAbnormal' , DEFAULT , () => {
+      const msg = 'testColorFilterCreateMatrixColorFilterAbnormal';
+      try {
+        drawing.ColorFilter.createMatrixColorFilter([]);
+        console.info(msg + ' createMatrixColorFilter successed');
+      } catch( e ) {
+        console.info(msg + ` createMatrixColorFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        const matrix: number[] = Array(19).fill(0).map(() => Math.random() * 10 - 5);
+        drawing.ColorFilter.createMatrixColorFilter(matrix);
+        console.info(msg + ' createMatrixColorFilter successed');
+      } catch( e ) {
+        console.info(msg + ` createMatrixColorFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        const matrix: number[] = Array(21).fill(0).map(() => Math.random() * 10 - 5);
+        drawing.ColorFilter.createMatrixColorFilter(matrix);
+        console.info(msg + ' createMatrixColorFilter successed');
+      } catch( e ) {
+        console.info(msg + ` createMatrixColorFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+    });
   });
 }
