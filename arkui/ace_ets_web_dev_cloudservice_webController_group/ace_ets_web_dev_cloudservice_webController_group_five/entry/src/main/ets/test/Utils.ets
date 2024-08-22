@@ -61,7 +61,21 @@ export default class Utils {
           console.info("[deleteFile] error:" + error);
       }
   }
-  
+
+  static isPC(controller: webview.WebviewController) {
+    let userAgent: string = controller.getUserAgent();
+    console.info("userAgent" + userAgent);
+
+    try {
+      let isPc: boolean = userAgent.includes('PC') || userAgent.toLowerCase().includes('pc') || userAgent.includes("2in1")
+      console.log('device is pc:' + isPc)
+      return isPc
+    } catch (error) {
+      console.info("userAgent error:" + error);
+      return true
+    }
+  }
+
   static deleteDir(dirPath: string) {
       console.info("[deleteFile] dirPath:" + dirPath);
       try {

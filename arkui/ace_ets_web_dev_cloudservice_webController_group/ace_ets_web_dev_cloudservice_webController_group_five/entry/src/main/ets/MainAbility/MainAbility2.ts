@@ -13,26 +13,11 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility';
-import { GlobalContext } from '../test/GlobalContext';
 import webview from '@ohos.web.webview';
 
-export default class MainAbility extends Ability {
+export default class MainAbility2 extends Ability {
   onCreate(want, launchParam) {
     // Ability is creating, initialize resources for this ability
-    let features = new webview.BackForwardCacheSupportedFeatures();
-    features.nativeEmbed = true;
-    features.mediaTakeOver = true;
-    // 如果一个页面同时使用了同层渲染和视频托管的能力，需要 nativeEmbed 和
-    // mediaTakeOver 同时设置为 true，该页面才可以进入前进后退缓存中。
-    webview.WebviewController.enableBackForwardCache(features);
-    webview.WebviewController.initializeWebEngine();
-    GlobalContext.getContext().setObject('enableBackForwardCache', true)
-    GlobalContext.getContext().setObject('nativeEmbed', true)
-    GlobalContext.getContext().setObject('mediaTakeOver', true)
-    console.log('GlobalContext enableBackForwardCache===>'+GlobalContext.getContext().getObject('enableBackForwardCache'))
-    globalThis.enableBackForwardCache = true
-    globalThis.nativeEmbed = true
-    globalThis.mediaTakeOver = true
     console.log("[Demo] MainAbility onCreate");
     globalThis.abilityWant = want;
   }
@@ -47,7 +32,7 @@ export default class MainAbility extends Ability {
     console.log("[Demo] MainAbility onWindowStageCreate windowStage=" + windowStage);
     globalThis.windowStage = windowStage;
     globalThis.abilityContext = this.context;
-    windowStage.setUIContent(this.context, "MainAbility/pages/Index", null);
+    windowStage.setUIContent(this.context, "MainAbility/pages/Index2", null);
   }
 
   onWindowStageDestroy() {
