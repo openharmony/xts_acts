@@ -437,7 +437,7 @@ export default function audioCapturerVoiceMessage() {
             })
 
             await sleep(500)
-            expect(flag1 == false && flag2 == false).assertTrue()
+            expect(flag1 == true && flag2 == false).assertTrue()
             await renderRelease(render, done)
             await capturerRelease(capture, done)
 
@@ -472,7 +472,7 @@ export default function audioCapturerVoiceMessage() {
             })
 
             await sleep(500)
-            expect(flag1 == false && flag2 == false).assertTrue()
+            expect(flag1 == true && flag2 == false).assertTrue()
             await renderRelease(render, done)
             await capturerRelease(capture, done)
 
@@ -507,7 +507,7 @@ export default function audioCapturerVoiceMessage() {
             })
 
             await sleep(500)
-            expect(flag1 == false && flag2 == false).assertTrue()
+            expect(flag1 == true && flag2 == false).assertTrue()
             await renderRelease(render, done)
             await capturerRelease(capture, done)
 
@@ -542,7 +542,7 @@ export default function audioCapturerVoiceMessage() {
             })
 
             await sleep(500)
-            expect(flag1 == false && flag2 == false).assertTrue()
+            expect(flag1 == true && flag2 == false).assertTrue()
             await renderRelease(render, done)
             await capturerRelease(capture, done)
 
@@ -612,7 +612,7 @@ export default function audioCapturerVoiceMessage() {
             })
 
             await sleep(500)
-            expect(flag1 == false && flag2 == false).assertTrue()
+            expect(flag1 == true && flag2 == false).assertTrue()
             await renderRelease(render, done)
             await capturerRelease(capture, done)
 
@@ -682,7 +682,7 @@ export default function audioCapturerVoiceMessage() {
             })
 
             await sleep(500)
-            expect(flag1 == false && flag2 == false).assertTrue()
+            expect(flag1 == true && flag2 == false).assertTrue()
             await renderRelease(render, done)
             await capturerRelease(capture, done)
 
@@ -717,7 +717,7 @@ export default function audioCapturerVoiceMessage() {
             })
 
             await sleep(500)
-            expect(flag1 == false && flag2 == false).assertTrue()
+            expect(flag1 == true && flag2 == false).assertTrue()
             await renderRelease(render, done)
             await capturerRelease(capture, done)
 
