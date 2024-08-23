@@ -1169,7 +1169,9 @@ export default function relationalStoreCloudSyncTest() {
         let predicates = new relationalStore.RdbPredicates("cloud_text")
         predicates.in("num", ["1","2"]);
         try {
-            await rdbStore.lockCloudContainer()
+            let time = await rdbStore.lockCloudContainer();
+            console.info("testRdbCloudlockCloudContainer0001 lockCloudContainer succeeded time:" + time);
+            expect(time != null).assertFail();
         } catch (err) {
             console.log(TAG + `relationalStore.RdbPredicates fail, errcode:${JSON.stringify(err)}.`);
             expect("202").assertEqual(err.code);
@@ -1188,7 +1190,9 @@ export default function relationalStoreCloudSyncTest() {
         let predicates = new relationalStore.RdbPredicates("cloud_text")
         predicates.in("num", ["1","2"]);
         try {
-            await rdbStore.unlockCloudContainer()
+            let time = await rdbStore.unlockCloudContainer();
+            console.info("testRdbCloudUnlockCloudContainer0001 unlockCloudContainer succeeded time:" + time);
+            expect(time != null).assertFail();
         } catch (err) {
             console.log(TAG + `rdbStore.unlockCloudContainer fail, errcode:${JSON.stringify(err)}.`);
             expect("202").assertEqual(err.code);
