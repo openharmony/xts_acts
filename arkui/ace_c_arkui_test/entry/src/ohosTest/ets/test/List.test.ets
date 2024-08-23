@@ -17,6 +17,8 @@ import buttonBackgroundColorTest from './button/ButtonBackgroundColorTest.test'
 import buttonFontColorTest from './button/ButtonFontColorTest.test'
 import buttonFontSizeTest from './button/ButtonFontSizeTest.test'
 import buttonFontWeightTest from './button/ButtonFontWeightTest.test'
+import buttonLabelTest from './button/ButtonLabelTest.test'
+import buttonTypeTest from './button/ButtonTypeTest.test'
 import checkboxOnChangeTest from './checkbox/CheckboxOnChangeTest.test'
 import checkboxSelectTest from './checkbox/CheckboxSelectTest.test'
 import checkboxSelectedColorTest from './checkbox/CheckboxSelectedColorTest.test'
@@ -231,6 +233,7 @@ import textBorderColorTest from './text/TextBorderColorTest.test'
 import textBorderRadiusTest from './text/TextBorderRadiusTest.test'
 import textBorderWidthTest from './text/TextBorderWidthTest.test'
 import textClipTest from './text/TextClipTest.test'
+import textContentTest from './text/TextContentTest.test'
 import textCopyOptionTest from './text/TextCopyOptionTest.test'
 import textDecorationTest from './text/TextDecorationTest.test'
 import textFontColorTest from './text/TextFontColorTest.test'
@@ -464,8 +467,15 @@ import textPickerWidthTest from './textpicker/TextPickerWidthTest.test'
 import textPickerHeightTest from './textpicker/TextPickerHeightTest.test'
 import flexWidthTest from './flex/FlexWidthTest.test'
 import flexHeightTest from './flex/FlexHeightTest.test'
+import flexOptionTest from './flex/FlexOptionTest.test'
 import xComponentWidthTest from './xcomponent/XComponentWidthTest.test'
 import xComponentHeightTest from './xcomponent/XComponentHeightTest.test'
+import textAreaBlurOnSubmitTest from './textarea/TextAreaBlurOnSubmitTest.test'
+import textAreaSelectionMenuHiddenTest from './textarea/TextAreaSelectionMenuHiddenTest.test'
+import textAreaShowCounterTest from './textarea/TextAreaShowCounterTest.test'
+import textAreaSelectedBackgroundColorTest from './textarea/TextAreaSelectedBackgroundColorTest.test'
+import textAreaPlaceholderTest from './textarea/TextAreaPlaceholderTest.test'
+import textAreaTypeTest from './textarea/TextAreaTypeTest.test'
 import textAreaWidthTest from './textarea/TextAreaWidthTest.test'
 import textAreaHeightTest from './textarea/TextAreaHeightTest.test'
 import textAreaPositionTest from './textarea/TextAreaPositionTest.test'
@@ -482,6 +492,7 @@ import textInputOnChangeTest from './textinput/TextInputOnChangeTest.test'
 import textInputEnterKeyTypeTest from './textinput/TextInputEnterKeyTypeTest.test'
 import textInputEnableKeyboardOnFocusTest from './textinput/TextInputEnableKeyboardOnFocusTest.test'
 import calendarPickerEnabledTest from './calendarpicker/CalendarPickerEnabledTest.test'
+import calendarPickerHintRadiusTest from './calendarpicker/CalendarPickerHintRadiusTest.test'
 import datePickerEnabledTest from './datepicker/DatePickerEnabledTest.test'
 import spanDecorationTest from './span/SpanDecorationTest.test'
 import spanTextCaseTest from './span/SpanTextCaseTest.test'
@@ -491,6 +502,7 @@ import spanFontColorTest from './span/SpanFontColorTest.test'
 import spanFontSizeTest from './span/SpanFontSizeTest.test'
 import spanFontStyleTest from './span/SpanFontStyleTest.test'
 import spanFontWeightTest from './span/SpanFontWeightTest.test'
+import spanContentTest from './span/SpanContentTest.test'
 import loadingProgressColorTest from './loadingprogress/LoadingProgressColorTest'
 import loadingProgressEnableLoadingTest from './loadingprogress/LoadingProgressEnableLoadingTest'
 import progressColorTest from './progress/ProgressColorTest'
@@ -526,6 +538,12 @@ import textAreaKeyTest from './textarea/TextAreaKeyTest'
 import textInputKeyTest from './textinput/TextInputKeyTest'
 import textAreaOnChangeTest from './textarea/TextAreaOnChangeTest'
 import progressStyleTest from './progress/ProgressStyleTest'
+import progressTotalTest from './progress/ProgressTotalTest.test'
+import progressValueTest from './progress/ProgressValueTest.test'
+import refreshOffsetTest from './refresh/RefreshOffsetTest.test'
+import refreshPullDownRatioTest from './refresh/RefreshPullDownRatioTest.test'
+import refreshPullToRefreshTest from './refresh/RefreshPullToRefreshTest.test'
+import refreshRefreshingTest from './refresh/RefreshRefreshingTest.test'
 import sliderOnChangeTest from './slider/SliderOnChangeTest.test'
 import sliderBlockColorTest from './slider/SliderBlockColorTest.test'
 import sliderBlockStyleTest from './slider/SliderBlockStyleTest.test'
@@ -538,6 +556,7 @@ import sliderShowStepsTest from './slider/SliderShowStepsTest.test'
 import sliderStepTest from './slider/SliderStepTest.test'
 import sliderStyleTest from './slider/SliderStyleTest.test'
 import sliderTrackColorTest from './slider/SliderTrackColorTest.test'
+import sliderTrackThicknessTest from './slider/SliderTrackThicknessTest.test'
 import sliderValueTest from './slider/SliderValueTest.test'
 import textInputStopEditingTest from './textinput/TextInputStopEditingTest.test'
 import textInputLineHeightTest from './textinput/TextInputLineHeightTest.test'
@@ -607,6 +626,8 @@ export default function testsuite() {
   buttonFontColorTest()
   buttonFontWeightTest()
   buttonBackgroundColorTest()
+  buttonLabelTest()
+  buttonTypeTest()
   checkboxSelectTest()
   checkboxSelectedColorTest()
   checkboxUnselectedColorTest()
@@ -623,6 +644,7 @@ export default function testsuite() {
   sliderStepTest()
   sliderStyleTest()
   sliderTrackColorTest()
+  sliderTrackThicknessTest()
   sliderValueTest()
   textInputStopEditingTest()
   textInputLineHeightTest()
@@ -650,6 +672,12 @@ export default function testsuite() {
   textInputMaxLengthTest()
   textInputPlaceholderColorTest()
   progressStyleTest()
+  progressTotalTest()
+  progressValueTest()
+  refreshOffsetTest()
+  refreshPullDownRatioTest()
+  refreshPullToRefreshTest()
+  refreshRefreshingTest()
   textInputBackgroundColorTest()
   textInputBackgroundImageTest()
   textInputCaretColorTest()
@@ -943,6 +971,7 @@ export default function testsuite() {
   textBorderRadiusTest()
   textBorderWidthTest()
   textClipTest()
+  textContentTest()
   textCopyOptionTest()
   textDecorationTest()
   textFontColorTest()
@@ -995,13 +1024,21 @@ export default function testsuite() {
   spanFontSizeTest()
   spanFontStyleTest()
   spanFontWeightTest()
+  spanContentTest()
   calendarPickerWidthTest()
   checkboxWidthTest()
   checkboxHeightTest()
   flexWidthTest()
   flexHeightTest()
+  flexOptionTest()
   xComponentWidthTest()
   xComponentHeightTest()
+  textAreaBlurOnSubmitTest()
+  textAreaSelectionMenuHiddenTest()
+  textAreaShowCounterTest()
+  textAreaSelectedBackgroundColorTest()
+  textAreaPlaceholderTest()
+  textAreaTypeTest()
   textAreaWidthTest()
   textAreaHeightTest()
   textAreaPositionTest()
@@ -1061,6 +1098,7 @@ export default function testsuite() {
   textInputEnabledTest()
   textInputOnChangeTest()
   calendarPickerEnabledTest()
+  calendarPickerHintRadiusTest()
   checkboxEnabledTest()
   sliderEnabledTest()
   datePickerEnabledTest()
