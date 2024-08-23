@@ -73,6 +73,7 @@ import handleCameraPhotoTest from './MediaAssetChangeRequest/handleCameraPhoto.t
 import showAssetsCreationDialogTest from './PhotoAccessHelper/showAssetsCreationDialog.test'
 import PhotoAccessHelperNativeTest from './PhotoAccessHelper/photoAccessHelperNative'
 import photoAccessHelperTest from './photoAccessHelperTest/PhotoAccessHelper.test'
+import getBurstAssetsTest from './PhotoAccessHelper/getBurstAssets.test';
 
 export default function testsuite () {
   provisionResourcesTest()
@@ -136,4 +137,5 @@ export default function testsuite () {
   handleCameraPhotoTest()
   showAssetsCreationDialogTest()
   PhotoAccessHelperNativeTest()
+  getBurstAssetsTest()
 }

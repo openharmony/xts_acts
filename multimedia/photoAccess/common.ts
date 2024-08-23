@@ -101,6 +101,7 @@ export function photoFetchOption(testNum, key, value) : photoAccessHelper.FetchO
       photoKeys.DATE_MODIFIED_MS,
       photoKeys.DYNAMIC_RANGE_TYPE,
       photoKeys.COVER_POSITION,
+      photoKeys.BURST_KEY,
       'all_exif',
     ],
     predicates: predicates
