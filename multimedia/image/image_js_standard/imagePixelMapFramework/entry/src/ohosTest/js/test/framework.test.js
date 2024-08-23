@@ -19,6 +19,9 @@ import { base64Image, scale2x1, translate3x1, rotate90, flipH, testBmp, testGif,
 import { testPng, testJpg } from './testImg'
 import fs from "@ohos.file.fs";
 import featureAbility from '@ohos.ability.featureAbility'
+import hdrCapability from '@ohos.graphics.hdrCapability';
+import display from '@ohos.display';
+
 export default function imagePixelMapFramework() {
     describe('imagePixelMapFramework', function () {
         let globalpixelmap;
@@ -92,6 +95,7 @@ export default function imagePixelMapFramework() {
                 }
             }
         }
+
         function fNumber(num) {
             if (num > 99) {
                 return "" + num;
@@ -101,6 +105,7 @@ export default function imagePixelMapFramework() {
             }
             return " " + num;
         }
+
         function dumpArray(logger, arr, row) {
             var tmpS = ''
             for (var i = 0; i < arr.length; i++) {
@@ -161,7 +166,6 @@ export default function imagePixelMapFramework() {
             }
         }
 
-
         async function checkAlphaPixelmap(done, logger, alphaPixelMap) {
             logger.log("AlphaPixelMap " + alphaPixelMap);
             if (alphaPixelMap != undefined) {
@@ -176,6 +180,7 @@ export default function imagePixelMapFramework() {
                 done();
             }
         }
+
         async function createAlphaPixelmapTest(done, testNum, type, imageData) {
             let logger = loger(testNum)
             try {
@@ -234,6 +239,7 @@ export default function imagePixelMapFramework() {
                 done();
             }
         }
+
         async function createStridePixelmapTest(done, testNum, imageData) {
             let logger = loger(testNum);
             try {
@@ -563,7 +569,7 @@ export default function imagePixelMapFramework() {
             const bufferRead = new ArrayBuffer(fileSize)
             fs.readSync(file.fd, bufferRead)
             return bufferRead;
-          }
+        }
         
         async function createPixelMapByFormat(expectFormat) {
             let opts = {
@@ -588,6 +594,7 @@ export default function imagePixelMapFramework() {
             }
             return image.createPixelMap(buffer, opts);
         }
+
         async function testConvertPixelFormat(done, testNum, srcPixelFormat, dstPixelFormat) {
             let logger = loger(testNum);
             try {
@@ -636,6 +643,11 @@ export default function imagePixelMapFramework() {
                 expect(error.code == CONVERTPIXELFOMAT_ERRORCODE).assertTrue();
                 done();
             }
+        }
+
+        const isSupportHdr = () => {
+            return !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
+              display.getDefaultDisplaySync().hdrFormats.length != 0
         }
 
         /**
@@ -2218,13 +2230,20 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0100', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0100",
-                RGBA_1010102,
-                NV21
-            );
-        });
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0100')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+              await testConvertPixelFormat(
+                  done,
+                  "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0100",
+                  RGBA_1010102,
+                  NV21
+              );
+            }
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200
@@ -2237,12 +2256,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200",
-                RGBA_1010102,
-                NV12
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200",
+                    RGBA_1010102,
+                    NV12
+                );
+            }
         });
 
         /**
@@ -2256,12 +2282,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0300', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0300",
-                RGBA_1010102,
-                YCRCB_P010
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0300')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0300",
+                    RGBA_1010102,
+                    YCRCB_P010
+                );
+            }
         });
 
         /**
@@ -2275,12 +2308,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0400', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0400",
-                RGBA_1010102,
-                YCBCR_P010
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0400')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0400",
+                    RGBA_1010102,
+                    YCBCR_P010
+                );
+            }
         });
 
         /**
@@ -2294,12 +2334,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0500', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0500",
-                YCBCR_P010,
-                RGB_565
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0500')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0500",
+                    YCBCR_P010,
+                    RGB_565
+                );
+            }
         });
 
         /**
@@ -2313,12 +2360,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0600', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0600",
-                YCBCR_P010,
-                RGBA_8888
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0600')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0600",
+                    YCBCR_P010,
+                    RGBA_8888
+                );
+            }
         });
 
         /**
@@ -2332,12 +2386,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0700', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0700",
-                YCBCR_P010,
-                BGRA_8888
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0700')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0700",
+                    YCBCR_P010,
+                    BGRA_8888
+                );
+            }
         });
 
         /**
@@ -2351,12 +2412,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0800', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0800",
-                YCBCR_P010,
-                RGB_888
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0800')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0800",
+                    YCBCR_P010,
+                    RGB_888
+                );
+            }
         });
 
         /**
@@ -2370,12 +2438,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0900', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0900",
-                YCBCR_P010,
-                RGBA_F16
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0900')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0900",
+                    YCBCR_P010,
+                    RGBA_F16
+                );
+            }
         });
 
         /**
@@ -2389,12 +2464,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1000', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1000",
-                YCRCB_P010,
-                RGB_565
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1000')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1000",
+                    YCRCB_P010,
+                    RGB_565
+                );
+            }
         });
 
         /**
@@ -2408,12 +2490,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1100', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1100",
-                YCRCB_P010,
-                RGBA_8888
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1100')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1100",
+                    YCRCB_P010,
+                    RGBA_8888
+                );
+            }
         });
 
         /**
@@ -2427,12 +2516,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1200', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1200",
-                YCRCB_P010,
-                BGRA_8888
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1200')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1200",
+                    YCRCB_P010,
+                    BGRA_8888
+                );
+            }
         });
 
         /**
@@ -2446,12 +2542,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1300', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1300",
-                YCRCB_P010,
-                RGB_888
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1300')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1300",
+                    YCRCB_P010,
+                    RGB_888
+                );
+            }
         });
 
         /**
@@ -2465,12 +2568,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1400', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1400",
-                YCRCB_P010,
-                RGBA_F16
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1400')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1400",
+                    YCRCB_P010,
+                    RGBA_F16
+                );
+            }
         });
 
         /**
@@ -2484,12 +2594,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500",
-                NV21,
-                RGBA_1010102
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500",
+                    NV21,
+                    RGBA_1010102
+                );
+            }
         });
 
         /**
@@ -2503,12 +2620,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600",
-                NV12,
-                RGBA_1010102
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600",
+                    NV12,
+                    RGBA_1010102
+                );
+            }
         });
 
         /**
@@ -2522,12 +2646,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700",
-                YCRCB_P010,
-                RGBA_1010102
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700",
+                    YCRCB_P010,
+                    RGBA_1010102
+                );
+            }
         });
 
         /**
@@ -2541,12 +2672,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800",
-                YCBCR_P010,
-                RGBA_1010102
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800",
+                    YCBCR_P010,
+                    RGBA_1010102
+                );
+            }
         });
 
         /**
@@ -2560,12 +2698,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900",
-                RGB_565,
-                YCBCR_P010
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900",
+                    RGB_565,
+                    YCBCR_P010
+                );
+            }
         });
 
         /**
@@ -2579,12 +2724,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000",
-                RGBA_8888,
-                YCBCR_P010
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000",
+                    RGBA_8888,
+                    YCBCR_P010
+                );
+            }
         });
 
         /**
@@ -2598,12 +2750,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100",
-                BGRA_8888,
-                YCBCR_P010
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100",
+                    BGRA_8888,
+                    YCBCR_P010
+                );
+            }
         });
 
         /**
@@ -2617,12 +2776,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200",
-                RGB_888,
-                YCBCR_P010
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200",
+                    RGB_888,
+                    YCBCR_P010
+                );
+            }
         });
 
         /**
@@ -2636,12 +2802,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300",
-                RGBA_F16,
-                YCBCR_P010
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300",
+                    RGBA_F16,
+                    YCBCR_P010
+                );
+            }
         });
 
         /**
@@ -2655,12 +2828,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400",
-                RGB_565,
-                YCRCB_P010
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400",
+                    RGB_565,
+                    YCRCB_P010
+                );
+            }
         });
 
         /**
@@ -2674,12 +2854,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500",
-                RGBA_8888,
-                YCRCB_P010
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500",
+                    RGBA_8888,
+                    YCRCB_P010
+                );
+            }
         });
 
         /**
@@ -2693,12 +2880,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600",
-                BGRA_8888,
-                YCRCB_P010
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600",
+                    BGRA_8888,
+                    YCRCB_P010
+                );
+            }
         });
 
         /**
@@ -2712,12 +2906,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700",
-                RGB_888,
-                YCRCB_P010
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700",
+                    RGB_888,
+                    YCRCB_P010
+                );
+            }
         });
 
         /**
@@ -2731,12 +2932,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800', 0, async function (done) {
-            await testConvertPixelFormat(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800",
-                RGBA_F16,
-                YCRCB_P010
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800",
+                    RGBA_F16,
+                    YCRCB_P010
+                );
+            }
         });
 
         /**
@@ -2750,12 +2958,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0100', 0, async function (done) {
-            await testConvertPixelFormatErr(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0100",
-                RGBA_1010102,
-                RGB_565
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0100')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0100",
+                    RGBA_1010102,
+                    RGB_565
+                );
+            }
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200
@@ -2768,12 +2983,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200', 0, async function (done) {
-            await testConvertPixelFormatErr(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200",
-                RGBA_1010102,
-                RGBA_8888
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200",
+                    RGBA_1010102,
+                    RGBA_8888
+                );
+            }
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300
@@ -2786,12 +3008,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300', 0, async function (done) {
-            await testConvertPixelFormatErr(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300",
-                RGBA_1010102,
-                BGRA_8888
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300",
+                    RGBA_1010102,
+                    BGRA_8888
+                );
+            }
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400
@@ -2804,12 +3033,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400', 0, async function (done) {
-            await testConvertPixelFormatErr(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400",
-                RGBA_1010102,
-                RGB_888
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400",
+                    RGBA_1010102,
+                    RGB_888
+                );
+            }
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500
@@ -2822,12 +3058,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500', 0, async function (done) {
-            await testConvertPixelFormatErr(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500",
-                RGBA_1010102,
-                RGBA_F16
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500",
+                    RGBA_1010102,
+                    RGBA_F16
+                );
+            }
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600
@@ -2840,12 +3083,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600', 0, async function (done) {
-            await testConvertPixelFormatErr(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600",
-                YCBCR_P010,
-                NV21
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600",
+                    YCBCR_P010,
+                    NV21
+                );
+            }
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700
@@ -2858,12 +3108,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700', 0, async function (done) {
-            await testConvertPixelFormatErr(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700",
-                YCBCR_P010,
-                NV12
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700",
+                    YCBCR_P010,
+                    NV12
+                );
+            }
         });
          /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800
@@ -2876,12 +3133,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
          it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800', 0, async function (done) {
-            await testConvertPixelFormatErr(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800",
-                YCRCB_P010,
-                NV21
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800",
+                    YCRCB_P010,
+                    NV21
+                );
+            }
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900
@@ -2894,12 +3158,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900', 0, async function (done) {
-            await testConvertPixelFormatErr(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900",
-                YCRCB_P010,
-                NV12
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900",
+                    YCRCB_P010,
+                    NV12
+                );
+            }
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000
@@ -2912,12 +3183,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000', 0, async function (done) {
-            await testConvertPixelFormatErr(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000",
-                YCRCB_P010,
-                YCBCR_P010
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000",
+                    YCRCB_P010,
+                    YCBCR_P010
+                );
+            }
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1100
@@ -2930,12 +3208,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1100', 0, async function (done) {
-            await testConvertPixelFormatErr(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1100",
-                RGBA_1010102,
-                ALPHA_8
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1100')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1100",
+                    RGBA_1010102,
+                    ALPHA_8
+                );
+            }
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1200
@@ -2948,12 +3233,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1200', 0, async function (done) {
-            await testConvertPixelFormatErr(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1200",
-                YCBCR_P010,
-                ALPHA_8
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1200')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1200",
+                    YCBCR_P010,
+                    ALPHA_8
+                );
+            }
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1300
@@ -2966,12 +3258,19 @@ export default function imagePixelMapFramework() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1300', 0, async function (done) {
-            await testConvertPixelFormatErr(
-                done,
-                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1300",
-                YCRCB_P010,
-                ALPHA_8
-            );
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1300')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1300",
+                    YCRCB_P010,
+                    ALPHA_8
+                );
+            }
         });
     })
 }
