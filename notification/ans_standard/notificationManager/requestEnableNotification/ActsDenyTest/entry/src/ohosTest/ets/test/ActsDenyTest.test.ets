@@ -14,7 +14,7 @@
 */
 
 import notificationManager from '@ohos.notificationManager';
-
+import Base from '@ohos.base';
 import { Driver, ON } from '@ohos.UiTest';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it } from '@ohos/hypium';
 import { logGenerator, succeedGenerator, exitGenerator, sleep, exitSpecialGenerator } from '../common/utils';
@@ -37,10 +37,10 @@ export default function ActsDenyTest() {
         let fn = async (resolve: () => void, reject: (arg1: Error) => void): Promise<void> => {
           let succeed = succeedGenerator(TAG, resolve, done);
           let exit = exitGenerator(TAG, reject);
-          let ctx: common.UIAbilityContext = AppStorage.get('ctx');
+          let ctx: common.UIAbilityContext = globalThis.context;
           notificationManager.requestEnableNotification(ctx).then(() => {
             exit(`requestEnableNotification should failed`);
-          }).catch((err) => {
+          }).catch((err: Base.BusinessError) => {
             if (err.code !== 1600004) {
               exit(`requestEnableNotification err: JSON.stringify(err)`);
               return;
