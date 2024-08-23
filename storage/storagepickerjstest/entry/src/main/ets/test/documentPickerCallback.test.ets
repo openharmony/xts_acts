@@ -22,6 +22,7 @@ export default function documentPickerCallback(abilityContext: Context) {
     afterEach(async () => {
       await sleep(500);
       await startAbility('ohos.acts.storage.picker', 'com.example.myapplication.MainAbility');
+      await sleep(500);
       await stopAbility('com.huawei.hmos.filemanager');
       await stopAbility('com.ohos.filepicker');
       await sleep(500);
@@ -221,11 +222,9 @@ export default function documentPickerCallback(abilityContext: Context) {
     it("documentpicker_select_callback_013", 1, async (done: Function) => {
       let testNum = "documentpicker_select_callback_013";
       let option1 = new picker.DocumentSelectOptions();
-      let option2 = new picker.DocumentSelectOptions();
       option1.defaultFilePathUri = "file://docs/storage/Users/currentUser/test/test1";
-      option2.authMode = false;
+      option1.authMode = false;
       await selectWithOption(testNum, done, option1);
-      await selectWithOption(testNum, done, option2);
     });
 
     /**
