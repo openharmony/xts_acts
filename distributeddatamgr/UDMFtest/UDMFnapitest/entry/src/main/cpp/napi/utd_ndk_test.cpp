@@ -1565,7 +1565,7 @@ static napi_value OH_Utd_BelongsTo_005(napi_env env, napi_callback_info info)
 {
     bool result = OH_Utd_BelongsTo(UDMF_META_PLAIN_TEXT, UDMF_META_PLAIN_TEXT);
     napi_value returnCode;
-    napi_create_int32(env, result == false, &returnCode);
+    napi_create_int32(env, result == true, &returnCode);
     return returnCode;
 }
 
