@@ -22,8 +22,8 @@ export default function fileIOGetxattr() {
 describe('fileIO_test_getxattr', function () {
 
   /**
-   * @tc.number SUB_BASIC_FM_FileAPI_FileIo_GETXATTR_Async_0100
-   * @tc.name test_FileIO_Getxattr_Async_001
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIo_GETXATTR_Sync_0100
+   * @tc.name test_FileIO_Getxattr_Sync_001
    * @tc.desc Test getxattr() interface.
    * This interface shall work properly in normal case.
    * @tc.size MediumTest
@@ -31,39 +31,8 @@ describe('fileIO_test_getxattr', function () {
    * @tc.level Level 3
    * @tc.require
    */  
-  it('test_FileIO_Getxattr_Async_001', 3, async function (done) {
-    let fpath = await nextFileName('test_FileIO_Getxattr_Async_001');
-    let attrKey = 'user.comment';
-    let attrValue = 'Test file1.';
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    await fs.setxattr(fpath, attrKey, attrValue);
-    
-    try {
-      fs.getxattr(fpath, attrKey).then((attrValue) => {
-        console.log("test_FileIO_Getxattr_Async_001 the value is: " + attrValue);
-        expect(attrValue).assertEqual('Test file1.');
-      }).catch((err) => {
-        console.error("test_FileIO_Getxattr_Async_001 Failed to get extended attribute: " + err.message + ", error code: " + err.code);
-      });
-      done();
-    } catch (e) {
-      console.log('test_FileIO_Getxattr_Async_001 has failed for ' + e.message + ', code: ' + e.code);
-      expect(false).assertTrue();
-    }
-   });
-
-  /**
-   * @tc.number SUB_BASIC_FM_FileAPI_FileIo_GETXATTR_Sync_0200
-   * @tc.name test_FileIO_Getxattr_Sync_002
-   * @tc.desc Test getxattr() interface.
-   * This interface shall work properly in normal case.
-   * @tc.size MediumTest
-   * @tc.type Function
-   * @tc.level Level 3
-   * @tc.require
-   */  
-  it('test_FileIO_Getxattr_Sync_002', 3, async function () {
-    let fpath = await nextFileName('test_FileIO_Getxattr_Sync_002');
+  it('test_FileIO_Getxattr_Sync_001', 3, async function () {
+    let fpath = await nextFileName('test_FileIO_Getxattr_Sync_001');
     let attrKey = 'user.comment';
     let attrValue = 'Test file.';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -71,10 +40,10 @@ describe('fileIO_test_getxattr', function () {
     
     try {
       let attrValue = fs.getxattrSync(fpath, attrKey);
-      console.log("test_FileIO_Getxattr_Sync_002 the value is: " + attrValue);
+      console.log("test_FileIO_Getxattr_Sync_001 the value is: " + attrValue);
       expect(attrValue).assertEqual('Test file.');
     } catch (e) {
-      console.log('test_FileIO_Getxattr_Sync_002 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('test_FileIO_Getxattr_Sync_001 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
    });
