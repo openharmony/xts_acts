@@ -77,6 +77,7 @@ struct ScrollNestedScroll {
 					Scroll(this.scroller) {
 						Text("Scroll  Area 2")
 							.fontSize(56)
+							.width('100%')
 							.textAlign(TextAlign.Center)
 							.backgroundColor(1234).height('150%')
 					}
