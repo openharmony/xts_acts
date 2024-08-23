@@ -61,6 +61,7 @@ import APIshouldBuiltInRecognizerParallelWith from './APIshouldBuiltInRecognizer
 import typeNodeGestureTest from './PanGesture/Gesture.test';
 import UIContextDragControllerTest from './DragController/UIContextDragController.test';
 import tapGestureAddInterfaceTest from './tapGestureAddInterface/tapGestureAddInterfaceTest.test';
+import accessibilityHoverTest from './onAccessibilityHover/onhoverAccessbility.test';
 
 import btnMonoLongPress from './customGestureTest/btnMonoLongPress.test'
 import btnMonoTouch from './customGestureTest/btnMonoTouch.test'
@@ -135,4 +136,6 @@ export default function testsuite() {
   gestureDefine3();
   gestureDefine4();
   gestureDefine6();
+  
+  accessibilityHoverTest();
 }
