@@ -1148,7 +1148,7 @@ export default function UtdNdkTest() {
       expect(result).assertEqual(1);
       hilog.info(0x0000, TAG, TAG + 'SUB_DistributedData_UDMF_SDK_UtdNdkAPITest_4840 key is : '+ result , 'aa');
     })
-	/**
+    /**
      * @tc.number: SUB_DistributedData_UDMF_SDK_UtdNdkAPITest_4850
      * @tc.name OH_Utd_Create_0086
      * @tc.desc OH_Utd_Create_0086

@@ -29,6 +29,7 @@
 const char *REFERENCE_URL =
     "https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/"
     "apis/js-apis-data-uniformTypeDescriptor.md#uniformdatatype";
+
 static napi_value OH_Utd_Create_0001(napi_env env, napi_callback_info info)
 {
     auto utd = OH_Utd_Create(UDMF_META_ENTITY);
@@ -1564,7 +1565,7 @@ static napi_value OH_Utd_BelongsTo_005(napi_env env, napi_callback_info info)
 {
     bool result = OH_Utd_BelongsTo(UDMF_META_PLAIN_TEXT, UDMF_META_PLAIN_TEXT);
     napi_value returnCode;
-    napi_create_int32(env, result == false, &returnCode);
+    napi_create_int32(env, result == true, &returnCode);
     return returnCode;
 }
 
@@ -1716,7 +1717,6 @@ static napi_value OH_Utd_IsHigher_006(napi_env env, napi_callback_info info)
     napi_create_int32(env, result == false, &returnCode);
     return returnCode;
 }
-
 EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
@@ -1917,6 +1917,7 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
         {"OH_Utd_IsHigher_004", nullptr, OH_Utd_IsHigher_004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_IsHigher_005", nullptr, OH_Utd_IsHigher_005, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Utd_IsHigher_006", nullptr, OH_Utd_IsHigher_006, nullptr, nullptr, nullptr, napi_default, nullptr},
+
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
