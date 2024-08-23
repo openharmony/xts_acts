@@ -597,5 +597,48 @@ export default function ffrtTest() {
       expect(flag).assertEqual(0);
     })
 
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_9100
+     *@tc.name: ffrt_attr_stack_size_0001
+     *@tc.desc: test ffrt_attr_stack_size api
+     */
+    it('ffrt_attr_stack_size_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_attr_stack_size_0001();
+      expect(flag).assertEqual(0);
+    })
+
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_9200
+     *@tc.name: ffrt_task_handle_ref_0001
+     *@tc.desc: test ffrt_task_handle_ref api
+     */
+    it('ffrt_task_handle_ref_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_task_handle_ref_0001();
+      expect(flag).assertEqual(0);
+    })
+
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_9300
+     *@tc.name: recursiveMutexAbnormalParamTest001
+     *@tc.desc: test recursiveMutexAbnormalParamTest api
+     */
+    it('recursiveMutexAbnormalParamTest001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.recursiveMutexAbnormalParamTest001();
+      expect(flag).assertEqual(0);
+    })
+
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_9400
+     *@tc.name: recursiveMutexAbnormalInvalidParamTest001
+     *@tc.desc: test recursiveMutexAbnormalInvalidParamTest api
+     */
+    it('recursiveMutexAbnormalInvalidParamTest001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.recursiveMutexAbnormalInvalidParamTest001();
+      expect(flag).assertEqual(0);
+    })
   })
 }
