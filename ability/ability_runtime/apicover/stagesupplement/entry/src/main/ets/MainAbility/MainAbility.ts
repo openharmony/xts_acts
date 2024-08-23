@@ -27,7 +27,13 @@ let lastRequestWant;
 export default class MainAbility extends Ability {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info(printLog1 + "onCreate");
-
+    if (want.action === 'SUB_Ability_AbilityRuntime_ProcessCache_3000') {
+      this.context.getApplicationContext().killAllProcesses().then(data => {
+        console.log('killAllProcesses success',JSON.stringify(data));
+      }).catch(err => {
+        console.log('killAllProcesses fail',JSON.stringify(err.code));
+      });
+    };
     launchWant = this.launchWant
     lastRequestWant = this.lastRequestWant
     commonEvent.publish(listPush1 + "onCreate", (err) => {
