@@ -136,6 +136,7 @@ import MultiNavigation31 from './MultiNavigation/MultiNavigation31.test'
 import MultiNavigation32 from './MultiNavigation/MultiNavigation32.test'
 import NavigationLaunchMode from './Navigation/NavigationLaunchMode.test'
 import NavigationTitleTest1 from './Navigation/NavigationTitleTest1.test'
+import removeByNavDestinationIdTest from './Navigation/removeByNavDestinationIdTest.test'
 
 export default function testsuite() {
   NavigationApi1();
@@ -261,4 +262,5 @@ export default function testsuite() {
   MultiNavigation32()
   NavigationLaunchMode();
   NavigationTitleTest1();
+  removeByNavDestinationIdTest();
 }
