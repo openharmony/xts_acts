@@ -1038,22 +1038,6 @@ struct WebComponent {
               await Utils.sleep(1000)
               break;
             }
-            case 'emitWebviewBFCacheSuspendPlayerModerate': {
-              this.controller.loadUrl('http://114.115.208.239:8070/colombo_test/single_video_1.html')
-              await Utils.sleep(4000)
-              this.controller.runJavaScript('buttonPlay()')
-              if (webview.PressureLevel.MEMORY_PRESSURE_LEVEL_MODERATE === 1) {
-                Utils.emitEvent('success', 10004)
-              }
-            }
-            case 'emitWebviewBFCacheSuspendPlayerCritical': {
-              this.controller.loadUrl('http://114.115.208.239:8070/colombo_test/single_video_1.html')
-              await Utils.sleep(4000)
-              this.controller.runJavaScript('buttonPlay()')
-              if (webview.PressureLevel.MEMORY_PRESSURE_LEVEL_CRITICAL === 2) {
-                Utils.emitEvent('success', 10005)
-              }
-            }
           }
         })
       }

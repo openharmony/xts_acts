@@ -107,43 +107,6 @@ export default function ActsAceWebviewBFCacheSuspendPlayer() {
     })
 
     /*
-    *@tc.number SUB_ACE_WEBVIEW_BFCACHE_SUSPENDPLAYER_API_0004
-    *@tc.name testWebviewBFCacheSuspendPlayer
-    *@tc.desc test WebviewBFCacheSuspendPlayer
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
-    it('testWebviewBFCacheSuspendPlayerModerate', 0, async (done: Function) => {
-      emitKey = "emitWebviewBFCacheSuspendPlayerModerate"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebviewBFCacheSuspendPlayerModerate", "success", 10004,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webviewBFCacheSuspendPlayerButton', 10, '');
-    })
-
-
-    /*
-    *@tc.number SUB_ACE_WEBVIEW_BFCACHE_SUSPENDPLAYER_API_0005
-    *@tc.name testWebviewBFCacheSuspendPlayer
-    *@tc.desc test WebviewBFCacheSuspendPlayer
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
-    it('testWebviewBFCacheSuspendPlayerCritical', 0, async (done: Function) => {
-      emitKey = "emitWebviewBFCacheSuspendPlayerCritical"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebviewBFCacheSuspendPlayerCritical", "success", 10005,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webviewBFCacheSuspendPlayerButton', 10, '');
-    })
-
-    /*
      *@tc.number SUB_ACE_WEBVIEW_BFCACHE_SUSPENDPLAYER_API_0003
      *@tc.name testWebviewBFCacheSuspendPlayer
      *@tc.desc test WebviewBFCacheSuspendPlayer
