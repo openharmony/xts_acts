@@ -1158,5 +1158,47 @@ export default function relationalStoreCloudSyncTest() {
         }
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0005 end *************");
     })
+
+    /**
+     * @tc.name lockCloudContainer with RdbPredicates, SyncMode is relationalStore.RdbPredicates and promise method
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4600
+     * @tc.desc lockCloudContainer with RdbPredicates, SyncMode is relationalStore.RdbPredicates and promise method
+     */
+    it('testRdbCloudlockCloudContainer0001', 0, async function (done) {
+        console.log(TAG + "************* testRdbCloudlockCloudContainer0001 start *************");
+        let predicates = new relationalStore.RdbPredicates("cloud_text")
+        predicates.in("num", ["1","2"]);
+        try {
+            let time = await rdbStore.lockCloudContainer();
+            console.info("testRdbCloudlockCloudContainer0001 lockCloudContainer succeeded time:" + time);
+            expect(time != null).assertFail();
+        } catch (err) {
+            console.log(TAG + `relationalStore.RdbPredicates fail, errcode:${JSON.stringify(err)}.`);
+            expect("202").assertEqual(err.code);
+            done();
+        }
+        console.log(TAG + "************* testRdbCloudlockCloudContainer0001 end *************");
+    })
+    
+    /**
+     * @tc.name unlockCloudContainer with RdbPredicates, relationalStore.RdbPredicates promise method
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4700
+     * @tc.desc unlockCloudContainer RdbPredicates, relationalStore.RdbPredicates and promise method
+     */
+     it('testRdbCloudUnlockCloudContainer0001', 0, async function (done) {
+        console.log(TAG + "************* testRdbCloudUnlockCloudContainer0001 start *************");
+        let predicates = new relationalStore.RdbPredicates("cloud_text")
+        predicates.in("num", ["1","2"]);
+        try {
+            let time = await rdbStore.unlockCloudContainer();
+            console.info("testRdbCloudUnlockCloudContainer0001 unlockCloudContainer succeeded time:" + time);
+            expect(time != null).assertFail();
+        } catch (err) {
+            console.log(TAG + `rdbStore.unlockCloudContainer fail, errcode:${JSON.stringify(err)}.`);
+            expect("202").assertEqual(err.code);
+            done();
+        }
+        console.log(TAG + "************* testRdbCloudUnlockCloudContainer0001 end *************");
+    }) 
     console.log(TAG + "*************Unit Test End*************");
 })}
