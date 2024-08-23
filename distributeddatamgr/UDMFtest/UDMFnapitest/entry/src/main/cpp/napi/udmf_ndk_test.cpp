@@ -538,8 +538,7 @@ static napi_value OH_Udmf_GetPropertiesExtrasStringParam001(napi_env env, napi_c
     return result;
 }
 
-EXTERN_C_START 
-static napi_value Init(napi_env env, napi_value exports)
+EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         {"OH_Udmf_CreatePropertiesFromUnifiedData001", nullptr, OH_Udmf_CreatePropertiesFromUnifiedData001, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -547,7 +546,7 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"OH_Udmf_AddRecordToUnifiedData001", nullptr, OH_Udmf_AddRecordToUnifiedData001, nullptr,
          nullptr, nullptr, napi_default, nullptr},
-        {"OH_Udmf_CreateUnifiedData001", nullptr, OH_Udmf_CreateUnifiedData001, nullptr,nullptr, nullptr,
+        {"OH_Udmf_CreateUnifiedData001", nullptr, OH_Udmf_CreateUnifiedData001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"OH_Udmf_HasUnifiedDataType001", nullptr, OH_Udmf_HasUnifiedDataType001, nullptr, nullptr,
          nullptr, napi_default, nullptr},
