@@ -37,7 +37,7 @@ export default function ActsCallbackTest() {
         let fn = async (resolve: () => void, reject: (arg1: Error) => void): Promise<void> => {
           let succeed = succeedGenerator(TAG, resolve, done);
           let exit = exitGenerator(TAG, reject);
-          let ctx: common.UIAbilityContext = AppStorage.get('ctx');
+          let ctx: common.UIAbilityContext = globalThis.context
           notificationManager.requestEnableNotification(ctx, (err) => {
             if (err) {
               exit(`requestEnableNotification err: JSON.stringify(err)`);
