@@ -12,10 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
+/*// @ts-nocheck*/
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
+import Utils from './Utils';
+import  { BusinessError } from '@ohos.base';
 
 export default function select() {
   describe('ActsAceBasicSelectTest', () => {
@@ -31,7 +32,7 @@ export default function select() {
           data: {
             "spaceValue": 8,
             "arrowPosition": ArrowPosition.END,
-            "spaceValueString": spaceValueString
+            "spaceValueString": '50.00vp'
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -41,7 +42,7 @@ export default function select() {
         console.info("[selectTest_afterEach] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[selectTest_afterEach] change component data error: " + err.message);
+        console.log("[selectTest_afterEach] change component data error: " +(err as BusinessError).message);
       }
       done();
     })
@@ -86,7 +87,8 @@ export default function select() {
         console.info("[ArkUI_Stage_Select_Layout_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Select_Layout_0200] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_Select_Layout_0200] change component data error: " + (err as BusinessError).message);
+
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('selectTest');
@@ -119,7 +121,8 @@ export default function select() {
         console.info("[ArkUI_Stage_Select_Layout_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Select_Layout_0300] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_Select_Layout_0300] change component data error: " + (err as BusinessError).message);
+
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('selectTest');
@@ -152,7 +155,8 @@ export default function select() {
         console.info("[ArkUI_Stage_Select_Layout_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Select_Layout_0400] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_Select_Layout_0400] change component data error: " + (err as BusinessError).message);
+
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('selectTest');
@@ -202,7 +206,8 @@ export default function select() {
         console.info("[ArkUI_Stage_Select_Space_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Select_Space_0200] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_Select_Space_0200] change component data error: " + (err as BusinessError).message);
+
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('selectTest');
@@ -235,7 +240,8 @@ export default function select() {
         console.info("[ArkUI_Stage_Select_Space_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Select_Space_0300] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_Select_Space_0300] change component data error: " + (err as BusinessError).message);
+
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('selectTest2');
@@ -268,7 +274,8 @@ export default function select() {
         console.info("[ArkUI_Stage_Select_Space_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Select_Space_0400] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_Select_Space_0400] change component data error: " + (err as BusinessError).message);
+
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('selectTest');
@@ -301,7 +308,8 @@ export default function select() {
         console.info("[ArkUI_Stage_Select_Space_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Select_Space_0500] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_Select_Space_0500] change component data error: " + (err as BusinessError).message);
+
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('selectTest');
@@ -334,7 +342,8 @@ export default function select() {
         console.info("[ArkUI_Stage_Select_Space_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Select_Space_0600] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_Select_Space_0600] change component data error: " + (err as BusinessError).message);
+
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('selectTest3');
@@ -367,7 +376,8 @@ export default function select() {
         console.info("[ArkUI_Stage_Select_Space_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Select_Space_0700] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_Select_Space_0700] change component data error: " + (err as BusinessError).message);
+
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('selectTest2');
@@ -401,7 +411,8 @@ export default function select() {
         console.info("[ArkUI_Stage_Select_Space_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Select_Space_0800] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_Select_Space_0800] change component data error: " + (err as BusinessError).message);
+
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('selectTest2');
@@ -434,7 +445,8 @@ export default function select() {
         console.info("[ArkUI_Stage_Select_Space_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Select_Space_0900] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_Select_Space_0900] change component data error: " + (err as BusinessError).message);
+
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('selectTest2');

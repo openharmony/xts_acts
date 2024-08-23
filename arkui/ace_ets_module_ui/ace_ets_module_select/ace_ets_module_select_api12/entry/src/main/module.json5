@@ -28,7 +28,7 @@
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
-    "pages": "$profile:main_pages",
+    "pages": "$profile:test_pages",
     "metadata": [
       {
         "name": "ArkTSPartialUpdate",
