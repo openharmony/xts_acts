@@ -23,7 +23,7 @@ struct ButtonTouch {
   build() {
     Column({space:20}) {
       Text(this.logMsg2 + ';' + this.logMsg1)
-        .id("buttonText")
+        .id('buttonText')
         .fontSize(16)
         .fontColor(Color.Pink)
         .margin(10)
@@ -34,16 +34,16 @@ struct ButtonTouch {
         .monopolizeEvents(this.monopolize)
         .onTouch((event:TouchEvent)=>{
           if (event.type == TouchType.Down) {
-            this.logMsg1 = "onTouch1 success"
+            this.logMsg1 = 'onTouch1 success'
           }
         })
       Button("button2")
-        .id("button2")
+        .id('button2')
         .width(100)
         .height(80)
         .onTouch((event:TouchEvent)=>{
           if (event.type == TouchType.Down) {
-            this.logMsg2 = "onTouch2 success"
+            this.logMsg2 = 'onTouch2 success'
           }
         })
       Text(this.message)

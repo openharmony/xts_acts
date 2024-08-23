@@ -24,19 +24,19 @@ struct gestureDefine1 {
       Text(this.message1+'--'+this.message2)
         .fontSize(18)
         .margin(10)
-        .id("gesture_click_text")
+        .id('gesture_click_text')
       Button("button")
         .id("gesture_click_button")
         .width(100)
         .height(80)
         .onClick((event)=>{
           if(event){
-            this.message1 = "点击事件成功响应"
+            this.message1 = '点击事件成功响应'
           }
         })
         .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
           if (gestureInfo.type == GestureControl.GestureType.CLICK) {
-            this.message2 = "GestureType为CLICK"
+            this.message2 = 'GestureType为CLICK'
           }else{
             return GestureJudgeResult.REJECT;
           }

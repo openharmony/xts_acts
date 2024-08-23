@@ -23,7 +23,7 @@ struct ButtonLongPress {
   build() {
     Column({space:20}) {
       Text(this.logMsg1)
-        .id("button1Text")
+        .id('button1Text')
         .fontSize(20)
         .fontColor(Color.Pink)
         .margin(10)
@@ -32,7 +32,7 @@ struct ButtonLongPress {
         .fontColor(Color.Blue)
         .margin(10)
       Button("button1")
-        .id("button1")
+        .id('button1')
         .width(100)
         .height(80)
         .monopolizeEvents(this.monopolize)
@@ -40,19 +40,19 @@ struct ButtonLongPress {
           LongPressGesture()
             .onAction((event: GestureEvent) => {
               if (event) {
-                this.logMsg1 = "LongPressGesture start"
+                this.logMsg1 = 'LongPressGesture start'
               }
             })
         )
       Button("button2")
-        .id("button2")
+        .id('button2')
         .width(100)
         .height(80)
         .gesture(
           TapGesture({ count: 1 })
             .onAction((event: GestureEvent) => {
               if (event) {
-                this.logMsg2 = "TapGesture start"
+                this.logMsg2 = 'TapGesture start'
               }
             })
         )

@@ -23,9 +23,9 @@ struct gestureDefine3 {
       Text("isSystem is" + " " + this.isSystemGesture)
         .fontSize(18)
         .margin(10)
-        .id("dragIsSystemBtn2")
+        .id('dragIsSystemBtn2')
       Button("button")
-        .id("dragIsSystemBtn1")
+        .id('dragIsSystemBtn1')
         .width(100)
         .height(80)
         .onDragStart(() => {

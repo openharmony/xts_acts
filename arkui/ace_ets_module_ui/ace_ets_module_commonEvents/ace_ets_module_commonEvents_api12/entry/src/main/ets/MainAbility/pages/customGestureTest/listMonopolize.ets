@@ -23,7 +23,7 @@ struct ListGesture {
   build() {
     Column({space:20}) {
       Text(this.logMsg2)
-        .id("listText")
+        .id('listText')
         .fontSize(20)
         .fontColor(Color.Blue)
         .margin(10)
@@ -46,7 +46,7 @@ struct ListGesture {
       .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 }) // 每行之间的分界线
       .onScroll(event=>{
         if (event) {
-          this.logMsg1 = "OnScroll start"
+          this.logMsg1 = 'OnScroll start'
         }
       })
 
@@ -59,7 +59,7 @@ struct ListGesture {
         TapGesture({ count: 1 })
           .onAction((event: GestureEvent) => {
             if (event) {
-              this.logMsg2 = "TapGesture onActionEnd success"
+              this.logMsg2 = 'TapGesture onActionEnd success'
             }
           })
       )

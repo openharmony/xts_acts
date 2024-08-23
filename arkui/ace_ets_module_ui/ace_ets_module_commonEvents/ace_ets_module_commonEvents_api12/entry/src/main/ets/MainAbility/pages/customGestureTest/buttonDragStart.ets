@@ -24,10 +24,10 @@ struct gestureDefine2 {
       Text(this.message1 + '--' + this.message2)
         .fontSize(18)
         .margin(10)
-        .id("buttonDrag_2")
+        .id('buttonDrag_2')
       Button("button")
-        .id("buttonDarg_1")
-        .key("bttonDrag_key1")
+        .id('buttonDarg_1')
+        .key('bttonDrag_key1')
         .width(100)
         .height(80)
         .onDragStart(() => {
@@ -35,7 +35,7 @@ struct gestureDefine2 {
         })
         .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
           if (gestureInfo.type == GestureControl.GestureType.DRAG) {
-            this.message2 = "GestureControl.GestureType.DRAG is true"
+            this.message2 = 'GestureControl.GestureType.DRAG is true'
           }else{
             return GestureJudgeResult.REJECT;
           }

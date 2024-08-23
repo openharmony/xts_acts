@@ -25,12 +25,12 @@ struct ColumnGesture2 {
         .fontSize(20)
         .margin(10)
       Text(this.logMsg1 + ";" + this.logMsg2)
-        .id("columnTextFalse")
+        .id('columnTextFalse')
         .fontSize(20)
         .fontColor(Color.Pink)
         .margin(10)
       Column(){}
-      .id("columnLongPress1")
+      .id('columnLongPress1')
       .width(100)
       .height(80)
       .backgroundColor(Color.Pink)
@@ -39,12 +39,12 @@ struct ColumnGesture2 {
         LongPressGesture()
           .onAction((event: GestureEvent) => {
             if (event) {
-              this.logMsg1 = "LongPressGesture onAction success"
+              this.logMsg1 = 'LongPressGesture onAction success'
             }
           })
       )
       Column(){}
-      .id("columnClick2")
+      .id('columnClick2')
       .backgroundColor(Color.Blue)
       .width(100)
       .height(80)
@@ -57,7 +57,7 @@ struct ColumnGesture2 {
           })
       )
       Button('change monopolize')
-        .id("buttonFalse1")
+        .id('buttonFalse1')
         .width(200)
         .height(80)
         .margin(10)
@@ -66,14 +66,6 @@ struct ColumnGesture2 {
           this.logMsg2 = ''
           this.monopolize = !this.monopolize
         })
-      // Button('clean')
-      //   .id("button_clean_false")
-      //   .width(200)
-      //   .height(80)
-      //   .margin(10)
-      //   .onClick(()=>{
-      //
-      //   })
     }.height('100%').width('100%').justifyContent(FlexAlign.Center)
   }
 }

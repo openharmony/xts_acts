@@ -9,11 +9,11 @@ struct GestureGroupExample_2 {
   build() {
     Column(){
       Text(this.message1)
-        .id("tapGestureMsg")
+        .id('tapGestureMsg')
         .fontSize(18)
         .margin(10)
       Text(this.message2)
-        .id("longPressMsg")
+        .id('longPressMsg')
         .fontSize(18)
         .margin(10)
       Column() {
@@ -21,8 +21,8 @@ struct GestureGroupExample_2 {
           .fontSize(18)
           .fontColor(Color.Pink)
       }
-      .id("columnParallel1")
-      .key("parallelGestureKey")
+      .id('columnParallel1')
+      .key('parallelGestureKey')
       .height(200)
       .width(400)
       .padding(20)

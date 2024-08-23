@@ -25,12 +25,12 @@ struct ColumnGesture1 {
         .fontSize(20)
         .margin(10)
       Text(this.logMsg1 + ";" + this.logMsg2)
-        .id("columnText")
+        .id('columnText')
         .fontSize(20)
         .fontColor(Color.Pink)
         .margin(10)
       Column(){}
-      .id("column1")
+      .id('column1')
       .width(100)
       .height(80)
       .backgroundColor(Color.Pink)
@@ -39,13 +39,13 @@ struct ColumnGesture1 {
         LongPressGesture()
           .onAction((event: GestureEvent) => {
             if (event) {
-              console.info("长按触发")
-              this.logMsg1 = "LongPressGesture onAction success"
+              console.info('长按触发')
+              this.logMsg1 = 'LongPressGesture onAction success'
             }
           })
       )
       Column(){}
-      .id("column2")
+      .id('column2')
       .backgroundColor(Color.Blue)
       .width(100)
       .height(80)
@@ -53,22 +53,22 @@ struct ColumnGesture1 {
         TapGesture({ count: 1 })
           .onAction((event: GestureEvent) => {
             if (event) {
-              console.info("tap触发")
-              this.logMsg2 = "TapGesture success"
+              console.info('tap触发')
+              this.logMsg2 = 'TapGesture success'
             }
           })
       )
       Button('change monopolize')
-        .id("buttonBoolean")
+        .id('buttonBoolean')
         .width(200)
         .height(80)
         .margin(10)
         .onClick(()=>{
-          console.info("按钮触发")
+          console.info('按钮触发')
           this.monopolize = !this.monopolize
         })
       Button('clean')
-        .id("button_clean")
+        .id('button_clean')
         .width(200)
         .height(80)
         .margin(10)

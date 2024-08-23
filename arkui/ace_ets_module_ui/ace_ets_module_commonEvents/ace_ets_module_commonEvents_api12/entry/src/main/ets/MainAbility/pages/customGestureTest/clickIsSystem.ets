@@ -23,9 +23,9 @@ struct gestureDefine4 {
       Text("isSystem is" +" " + this.isSystemGesture)
         .fontSize(18)
         .margin(10)
-        .id("clickIsSystemBtn2")
+        .id('clickIsSystemBtn2')
       Button("button")
-        .key("clickButtonIsSystem")
+        .key('clickButtonIsSystem')
         .width(100)
         .height(80)
         .onClick(() => {
