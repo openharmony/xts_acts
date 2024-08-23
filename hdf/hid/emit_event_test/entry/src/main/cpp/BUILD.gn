@@ -39,9 +39,6 @@ ohos_shared_library("hidemiteventndk") {
 
   include_dirs = [
     "${ext_mgr_path}/interfaces/ddk/hid/",
-
-    # "${ext_mgr_path}/interfaces/innerkits/",
-    # "${ext_mgr_path}/services/zidl/include",
     "./",
   ]
 
@@ -50,11 +47,8 @@ ohos_shared_library("hidemiteventndk") {
   deps = [ "${ext_mgr_path}/frameworks/ddk/hid:hid" ]
 
   external_deps = [
-    "c_utils:utils",
     "hilog:libhilog",
-    "ipc:ipc_single",
     "napi:ace_napi",
-    "samgr:samgr_proxy",
   ]
 
   output_extension = "so"
