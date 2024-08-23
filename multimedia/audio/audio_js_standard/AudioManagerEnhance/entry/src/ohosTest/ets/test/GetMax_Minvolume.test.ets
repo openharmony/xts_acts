@@ -89,7 +89,7 @@ export default function audioManagerTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUME_0100', 0, async (done: Function) => {
       try {
-        let maxvol1 = new ArrayList<Number>();
+        let maxvol1 = new ArrayList<number>();
         let maxvol2 = [15,20];
         for (let index = 0; index < env.AudioVolumeType.length; index++) {
           let maxvol = await audioVolumeGroupManager.getMaxVolume(env.AudioVolumeType[index]);
@@ -118,7 +118,7 @@ export default function audioManagerTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMINVOLUME_0100', 0, async (done: Function) => {
       try {
-        let minvol1 = new ArrayList<Number>();
+        let minvol1 = new ArrayList<number>();
         let minvol2 = [1, 0, 0, 1, 1, 1];
         for (let index = 0; index < env.AudioVolumeType.length; index++) {
           let minvol = await audioVolumeGroupManager.getMinVolume(env.AudioVolumeType[index]);
