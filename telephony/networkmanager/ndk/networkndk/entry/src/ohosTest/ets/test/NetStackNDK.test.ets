@@ -48,6 +48,8 @@ const ERROR_CODE_1012 = 1012;
 const ERROR_CODE_1017 = 1017;
 // websocket客户端没有连接上下文。
 const ERROR_CODE_1018 = 1018;
+// 参数错误。
+const ERROR_CODE_401 = 401;
 
 let pemPath : string = '';
 let derPath : string = '';
@@ -251,6 +253,109 @@ export default function NetStackNDKTest() {
       expect(result === ERROR_CODE_2305001 || result === ERROR_CODE_2305069 ).assertTrue();
     });
 
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETPINSETFORHOSTNAME_0100
+     * @tc.name   : testOHNetStackGetPinSetForHostName_0100
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetPinSetForHostName_0100',0, () => {
+      let result : number = wsAPI.OHNetStackGetPinSetForHostName(CASE_INDEX_1, "www.example.com".toString());
+      expect(result).assertEqual(WEBSOCKET_OK);
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETPINSETFORHOSTNAME_0200
+     * @tc.name   : testOHNetStackGetPinSetForHostName_0200
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetPinSetForHostName_0200',0, () => {
+      let result : number = wsAPI.OHNetStackGetPinSetForHostName(CASE_INDEX_2, "www.example.com".toString());
+      expect(result).assertEqual(ERROR_CODE_401);
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETPINSETFORHOSTNAME_0300
+     * @tc.name   : testOHNetStackGetPinSetForHostName_0300
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetPinSetForHostName_0300',0, () => {
+      let result : number = wsAPI.OHNetStackGetPinSetForHostName(CASE_INDEX_3, "www.example.com".toString());
+      expect(result).assertEqual(ERROR_CODE_401);
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETPINSETFORHOSTNAME_0400
+     * @tc.name   : testOHNetStackGetPinSetForHostName_0400
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetPinSetForHostName_0400',0, () => {
+      let result : number = wsAPI.OHNetStackGetPinSetForHostName(CASE_INDEX_4, "www.example.com".toString());
+      expect(result).assertEqual(ERROR_CODE_401);
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETCERTIFICATESFORHOSTNAME_0100
+     * @tc.name   : testOHNetStackGetCertificatesForHostName_0100
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetCertificatesForHostName_0100',0, () => {
+      let result : number = wsAPI.OHNetStackGetCertificatesForHostName(CASE_INDEX_1, "www.example.com".toString());
+      expect(result).assertEqual(WEBSOCKET_OK);
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETCERTIFICATESFORHOSTNAME_0200
+     * @tc.name   : testOHNetStackGetCertificatesForHostName_0200
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetCertificatesForHostName_0200',0, () => {
+      let result : number = wsAPI.OHNetStackGetCertificatesForHostName(CASE_INDEX_2, "www.example.com".toString());
+      expect(result).assertEqual(ERROR_CODE_401);
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETCERTIFICATESFORHOSTNAME_0300
+     * @tc.name   : testOHNetStackGetCertificatesForHostName_0300
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetCertificatesForHostName_0300',0, () => {
+      let result : number = wsAPI.OHNetStackGetCertificatesForHostName(CASE_INDEX_3, "www.example.com".toString());
+      expect(result).assertEqual(ERROR_CODE_401);
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETCERTIFICATESFORHOSTNAME_0400
+     * @tc.name   : testOHNetStackGetCertificatesForHostName_0400
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetCertificatesForHostName_0400',0, () => {
+      let result : number = wsAPI.OHNetStackGetCertificatesForHostName(CASE_INDEX_4, "www.example.com".toString());
+      expect(result).assertEqual(ERROR_CODE_401);
+    });
 
     /**
      * @tc.number : SUB_NETWORK_WEBSOCKET_OHWEBSOCKETCLIENTCONSTRUCT_0100
