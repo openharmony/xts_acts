@@ -21,23 +21,23 @@ NDKMediaLibrary::NDKMediaLibrary() : ret_(MEDIA_LIBRARY_OK)
     mediaAsset_ = nullptr;
     manager_ = OH_MediaAssetManager_Create();
     if (manager_ == nullptr) {
-        DEBUG_LOG("创建mediaAssetManager实例 失败");
+        DEBUG_LOG("create mediaAssetManager instance failed");
     }
     
-    OH_MediaAssetChangeRequest* changeRequest_ = OH_MediaAssetChangeRequest_Create(mediaAsset_);
+    changeRequest_ = OH_MediaAssetChangeRequest_Create(mediaAsset_);
     if (changeRequest_== nullptr) {
-        DEBUG_LOG("创建OH_MediaAssetChangeRequest实例 失败");
+        DEBUG_LOG("create OH_MediaAssetChangeRequest instance failed");
     }
 }
 
 /*-----media asset start-----*/
 MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetUri(int useCaseCode)
 {
-    if (useCaseCode == PARAMETER_OK) {
+    if (useCaseCode == TEST_PARAMETER_OK) {
         ret_ = OH_MediaAsset_GetUri(mediaAsset_, &uri_);
-    } else if (useCaseCode == PARAMETER1_ERROR) {
+    } else if (useCaseCode == TEST_FIRST_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetUri(nullptr, &uri_);
-    } else if (useCaseCode == PARAMETER2_ERROR) {
+    } else if (useCaseCode == TEST_SECOND_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetUri(mediaAsset_, nullptr);
     }
 
@@ -47,11 +47,11 @@ MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetUri(int useCaseCode)
 
 MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetDisplayName(int useCaseCode)
 {
-    if (useCaseCode == PARAMETER_OK) {
+    if (useCaseCode == TEST_PARAMETER_OK) {
         ret_ = OH_MediaAsset_GetDisplayName(mediaAsset_, &displayName_);
-    } else if (useCaseCode == PARAMETER1_ERROR) {
+    } else if (useCaseCode == TEST_FIRST_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetDisplayName(nullptr, &displayName_);
-    } else if (useCaseCode == PARAMETER2_ERROR) {
+    } else if (useCaseCode == TEST_SECOND_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetDisplayName(mediaAsset_, nullptr);
     }
 
@@ -60,11 +60,11 @@ MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetDisplayName(int useCaseCode
 
 MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetSize(int useCaseCode)
 {
-    if (useCaseCode == PARAMETER_OK) {
+    if (useCaseCode == TEST_PARAMETER_OK) {
         ret_ = OH_MediaAsset_GetSize(mediaAsset_, &size_);
-    } else if (useCaseCode == PARAMETER1_ERROR) {
+    } else if (useCaseCode == TEST_FIRST_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetSize(nullptr, &size_);
-    } else if (useCaseCode == PARAMETER2_ERROR) {
+    } else if (useCaseCode == TEST_SECOND_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetSize(mediaAsset_, nullptr);
     }
 
@@ -74,11 +74,11 @@ MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetSize(int useCaseCode)
 
 MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetDateModifiedMs(int useCaseCode)
 {
-    if (useCaseCode == PARAMETER_OK) {
+    if (useCaseCode == TEST_PARAMETER_OK) {
         ret_ = OH_MediaAsset_GetDateModifiedMs(mediaAsset_, &dateModifiedMs_);
-    } else if (useCaseCode == PARAMETER1_ERROR) {
+    } else if (useCaseCode == TEST_FIRST_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetDateModifiedMs(nullptr, &dateModifiedMs_);
-    } else if (useCaseCode == PARAMETER2_ERROR) {
+    } else if (useCaseCode == TEST_SECOND_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetDateModifiedMs(mediaAsset_, nullptr);
     }
 
@@ -87,11 +87,11 @@ MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetDateModifiedMs(int useCaseC
 
 MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetWidth(int useCaseCode)
 {
-    if (useCaseCode == PARAMETER_OK) {
+    if (useCaseCode == TEST_PARAMETER_OK) {
         ret_ = OH_MediaAsset_GetWidth(mediaAsset_, &width_);
-    } else if (useCaseCode == PARAMETER1_ERROR) {
+    } else if (useCaseCode == TEST_FIRST_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetWidth(nullptr, &width_);
-    } else if (useCaseCode == PARAMETER2_ERROR) {
+    } else if (useCaseCode == TEST_SECOND_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetWidth(mediaAsset_, nullptr);
     }
 
@@ -100,11 +100,11 @@ MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetWidth(int useCaseCode)
 
 MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetHeight(int useCaseCode)
 {
-    if (useCaseCode == PARAMETER_OK) {
+    if (useCaseCode == TEST_PARAMETER_OK) {
         ret_ = OH_MediaAsset_GetHeight(mediaAsset_, &height_);
-    } else if (useCaseCode == PARAMETER1_ERROR) {
+    } else if (useCaseCode == TEST_FIRST_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetHeight(nullptr, &height_);
-    } else if (useCaseCode == PARAMETER2_ERROR) {
+    } else if (useCaseCode == TEST_SECOND_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetHeight(mediaAsset_, nullptr);
     }
 
@@ -113,11 +113,11 @@ MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetHeight(int useCaseCode)
 
 MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetOrientation(int useCaseCode)
 {
-    if (useCaseCode == PARAMETER_OK) {
+    if (useCaseCode == TEST_PARAMETER_OK) {
         ret_ = OH_MediaAsset_GetOrientation(mediaAsset_, &orientation_);
-    } else if (useCaseCode == PARAMETER1_ERROR) {
+    } else if (useCaseCode == TEST_FIRST_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetOrientation(nullptr, &orientation_);
-    } else if (useCaseCode == PARAMETER2_ERROR) {
+    } else if (useCaseCode == TEST_SECOND_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_GetOrientation(mediaAsset_, nullptr);
     }
 
@@ -126,23 +126,40 @@ MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetGetOrientation(int useCaseCode
 
 MediaLibrary_ErrorCode NDKMediaLibrary::MediaAssetRelease(int useCaseCode)
 {
-    if (useCaseCode == PARAMETER_OK) {
+    if (useCaseCode == TEST_PARAMETER_OK) {
         ret_ = OH_MediaAsset_Release(mediaAsset_);
-    } else if (useCaseCode == PARAMETER1_ERROR) {
+    } else if (useCaseCode == TEST_FIRST_PARAMETER_ERROR) {
         ret_ = OH_MediaAsset_Release(nullptr);
     }
 
     return ret_;
 }
 
-
 MediaLibrary_ErrorCode NDKMediaLibrary::ChangeRequestAddResourceWithBuffer(int useCaseCode)
 {
     uint32_t length = 1024;
     uint8_t* buffer = new uint8_t[length];
-    if (useCaseCode == PARAMETER_OK) {
+    if (useCaseCode == TEST_PARAMETER_OK) {
         ret_ = OH_MediaAssetChangeRequest_AddResourceWithBuffer(changeRequest_,
             MediaLibrary_ResourceType::MEDIA_LIBRARY_IMAGE_RESOURCE, buffer, length);
+    } else if (useCaseCode == TEST_FIRST_PARAMETER_ERROR) {
+        ret_ = OH_MediaAssetChangeRequest_AddResourceWithBuffer(nullptr,
+            MediaLibrary_ResourceType::MEDIA_LIBRARY_IMAGE_RESOURCE, buffer, length);
+    } else if (useCaseCode == TEST_SECOND_PARAMETER_ERROR) {
+        ret_ = OH_MediaAssetChangeRequest_AddResourceWithBuffer(changeRequest_,
+            static_cast<MediaLibrary_ResourceType>(-1), buffer, length);
+    } else if (useCaseCode == TEST_THIRD_PARAMETER_ERROR) {
+        ret_ = OH_MediaAssetChangeRequest_AddResourceWithBuffer(changeRequest_,
+            MediaLibrary_ResourceType::MEDIA_LIBRARY_IMAGE_RESOURCE, nullptr, length);
+    } else if (useCaseCode == TEST_FOURTH_PARAMETER_ERROR) {
+        ret_ = OH_MediaAssetChangeRequest_AddResourceWithBuffer(changeRequest_,
+            MediaLibrary_ResourceType::MEDIA_LIBRARY_IMAGE_RESOURCE, buffer, 0);
+    } else if (useCaseCode == TEST_FIRST_ENUM_PARAMETER) {
+        ret_ = OH_MediaAssetChangeRequest_AddResourceWithBuffer(changeRequest_,
+            MediaLibrary_ResourceType::MEDIA_LIBRARY_IMAGE_RESOURCE, buffer, length);
+    } else if (useCaseCode == TEST_SECOND_ENUM_PARAMETER) {
+        ret_ = OH_MediaAssetChangeRequest_AddResourceWithBuffer(changeRequest_,
+            MediaLibrary_ResourceType::MEDIA_LIBRARY_VIDEO_RESOURCE, buffer, length);
     }
 
     if (ret_== MEDIA_LIBRARY_OK) {
@@ -156,14 +173,17 @@ MediaLibrary_ErrorCode NDKMediaLibrary::ChangeRequestAddResourceWithBuffer(int u
 
 MediaLibrary_ErrorCode NDKMediaLibrary::ChangeRequestSaveCameraPhoto(int useCaseCode)
 {
-    if (useCaseCode == PARAMETER_OK) {
+    if (useCaseCode == TEST_PARAMETER_OK) {
         ret_ = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest_,
             MediaLibrary_ImageFileType::MEDIA_LIBRARY_IMAGE_JPEG);
-    } else if (useCaseCode == PARAMETER1_ERROR) {
+    } else if (useCaseCode == TEST_FIRST_PARAMETER_ERROR) {
         ret_ = OH_MediaAssetChangeRequest_SaveCameraPhoto(nullptr,
             MediaLibrary_ImageFileType::MEDIA_LIBRARY_IMAGE_JPEG);
+    } else if (useCaseCode == TEST_SECOND_PARAMETER_ERROR) {
+        ret_ = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest_,
+            static_cast<MediaLibrary_ImageFileType>(-1));
     }
-requestOptions_.deliveryMode = MediaLibrary_DeliveryMode::MEDIA_LIBRARY_FAST_MODE;
+
     if (ret_== MEDIA_LIBRARY_OK) {
         DEBUG_LOG("ChangeRequestSaveCameraPhoto success");
         ret_ = OH_MediaAccessHelper_ApplyChanges(changeRequest_);
@@ -174,12 +194,10 @@ requestOptions_.deliveryMode = MediaLibrary_DeliveryMode::MEDIA_LIBRARY_FAST_MOD
 
 MediaLibrary_ErrorCode NDKMediaLibrary::ChangeRequestDiscardCameraPhoto(int useCaseCode)
 {
-    if (useCaseCode == PARAMETER_OK) {
-        ret_ = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest_,
-            MediaLibrary_ImageFileType::MEDIA_LIBRARY_IMAGE_JPEG);
-    } else if (useCaseCode == PARAMETER1_ERROR) {
-        ret_ = OH_MediaAssetChangeRequest_SaveCameraPhoto(nullptr,
-            MediaLibrary_ImageFileType::MEDIA_LIBRARY_IMAGE_JPEG);
+    if (useCaseCode == TEST_PARAMETER_OK) {
+        ret_ = OH_MediaAssetChangeRequest_DiscardCameraPhoto(changeRequest_);
+    } else if (useCaseCode == TEST_FIRST_PARAMETER_ERROR) {
+        ret_ = OH_MediaAssetChangeRequest_DiscardCameraPhoto(nullptr);
     }
 
     if (ret_== MEDIA_LIBRARY_OK) {
@@ -192,9 +210,9 @@ MediaLibrary_ErrorCode NDKMediaLibrary::ChangeRequestDiscardCameraPhoto(int useC
 
 MediaLibrary_ErrorCode NDKMediaLibrary::ChangeRequestRelease(int useCaseCode)
 {
-    if (useCaseCode == PARAMETER_OK) {
+    if (useCaseCode == TEST_PARAMETER_OK) {
         ret_ = OH_MediaAssetChangeRequest_Release(changeRequest_);
-    } else if (useCaseCode == PARAMETER1_ERROR) {
+    } else if (useCaseCode == TEST_FIRST_PARAMETER_ERROR) {
         ret_ = OH_MediaAssetChangeRequest_Release(nullptr);
     }
 
@@ -204,12 +222,25 @@ MediaLibrary_ErrorCode NDKMediaLibrary::ChangeRequestRelease(int useCaseCode)
 MediaLibrary_ErrorCode NDKMediaLibrary::ManagerRequestImage(int useCaseCode)
 {
     requestOptions_.deliveryMode = MediaLibrary_DeliveryMode::MEDIA_LIBRARY_FAST_MODE;
-    if (useCaseCode == PARAMETER_OK) {
+    if (useCaseCode == TEST_PARAMETER_OK) {
         ret_ = OH_MediaAssetManager_RequestImage(manager_, mediaAsset_,
             requestOptions_, &requestId_, callback_);
-    } else if (PARAMETER2_ERROR) {
+    } else if (TEST_FIRST_PARAMETER_ERROR) {
+        ret_ = OH_MediaAssetManager_RequestImage(nullptr, mediaAsset_,
+            requestOptions_, &requestId_, callback_);
+    } else if (TEST_SECOND_PARAMETER_ERROR) {
         ret_ = OH_MediaAssetManager_RequestImage(manager_, nullptr,
             requestOptions_, &requestId_, callback_);
+    } else if (TEST_THIRD_PARAMETER_ERROR) {
+        requestOptions_.deliveryMode = static_cast<MediaLibrary_DeliveryMode>(-1);
+        ret_ = OH_MediaAssetManager_RequestImage(manager_, mediaAsset_,
+            requestOptions_, &requestId_, callback_);
+    } else if (TEST_FOURTH_PARAMETER_ERROR) {
+        ret_ = OH_MediaAssetManager_RequestImage(manager_, mediaAsset_,
+            requestOptions_, nullptr, callback_);
+    } else if (TEST_FIFTH_PARAMETER_ERROR) {
+        ret_ = OH_MediaAssetManager_RequestImage(manager_, mediaAsset_,
+            requestOptions_, &requestId_, nullptr);
     }
 
     return ret_;
@@ -218,7 +249,7 @@ MediaLibrary_ErrorCode NDKMediaLibrary::ManagerRequestImage(int useCaseCode)
 /*-----media access helper start-----*/
 MediaLibrary_ErrorCode NDKMediaLibrary::MediaAccessHelperApplyChanges(int useCaseCode)
 {
-    if (useCaseCode == PARAMETER1_ERROR) {
+    if (useCaseCode == TEST_FIRST_PARAMETER_ERROR) {
         ret_ = OH_MediaAccessHelper_ApplyChanges(nullptr);
     }
 
