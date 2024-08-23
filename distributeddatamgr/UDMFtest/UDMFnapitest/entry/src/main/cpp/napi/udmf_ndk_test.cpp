@@ -79,11 +79,11 @@ static napi_value OH_Udmf_GetUnifiedDataTypes001(napi_env env, napi_callback_inf
     OH_UdsHyperlink *hyperlink = OH_UdsHyperlink_Create();
     OH_UdmfRecord_AddHyperlink(record1, hyperlink);
     OH_UdmfData_AddRecord(unifiedData, record1);
-
+    int num = 2;
     unsigned int count1 = 0;
     char **types1 = OH_UdmfData_GetTypes(unifiedData, &count1);
     NAPI_ASSERT(env, types1 != nullptr, "OH_UdmfData_GetTypes is fail.");
-    NAPI_ASSERT(env, count1 == 2, "OH_UdmfData_GetTypes is fail.");
+    NAPI_ASSERT(env, count1 == num, "OH_UdmfData_GetTypes is fail.");
 
     char **types2 = OH_UdmfData_GetTypes(unifiedData, &count1);
     NAPI_ASSERT(env, types1 == types2, "OH_UdmfData_GetTypes is fail.");
@@ -147,7 +147,6 @@ static napi_value OH_Udmf_SetAndGetUnifiedData001(napi_env env, napi_callback_in
     NAPI_ASSERT(env, setRes == UDMF_E_OK, "OH_Udmf_SetUnifiedData is fail.");
     NAPI_ASSERT(env, key[0] != '\0', "OH_Udmf_SetUnifiedData is fail.");
 
-
     OH_UdmfData *readUnifiedData = OH_UdmfData_Create();
     int getRes = OH_Udmf_GetUnifiedData(key, intention, readUnifiedData);
     NAPI_ASSERT(env, getRes == UDMF_E_OK, "OH_Udmf_GetUnifiedData is fail.");
@@ -200,7 +199,6 @@ static napi_value OH_Udmf_SetAndGetUnifiedData002(napi_env env, napi_callback_in
     const char *getContent = OH_UdsPlainText_GetContent(getPlainText);
     NAPI_ASSERT(env, strcmp(getContent, content) == 0, "OH_UdsPlainText_GetContent is fail.");
 
-
     napi_value result;
     napi_create_int32(env, 1, &result);
 
@@ -228,9 +226,9 @@ static napi_value OH_Udmf_GetRecords002(napi_env env, napi_callback_info info)
     OH_UdmfRecord **records1 = OH_UdmfData_GetRecords(unifiedData, &count);
 
     OH_UdmfRecord **records2 = OH_UdmfData_GetRecords(unifiedData, &count);
-
+    int num = 2;
     napi_value result;
-    napi_create_int32(env, (count == 2) &&(records1 != nullptr) && (count == 2)
+    napi_create_int32(env, (count == num) &&(records1 != nullptr) && (count == num)
          && (records2 != nullptr) && (records2 == records1), &result);
 
     OH_UdsPlainText_Destroy(plainText);
@@ -259,7 +257,7 @@ static napi_value OH_Udmf_AddAndGetGeneralEntry001(napi_env env, napi_callback_i
     napi_value result;
     napi_create_int32(env, (addRes1 == UDMF_E_OK) &&(getRes == UDMF_E_OK) && (getCount == count)
          && (std::memcmp(getEntry, entry, getCount) == 0) && (getEntry1 == getEntry)
-         && (getRes1 == UDMF_E_OK), &result); 
+         && (getRes1 == UDMF_E_OK), &result);
 
     OH_UdmfRecord_Destroy(record);
 
@@ -540,13 +538,17 @@ static napi_value OH_Udmf_GetPropertiesExtrasStringParam001(napi_env env, napi_c
     return result;
 }
 
-EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
+EXTERN_C_START 
+static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         {"OH_Udmf_CreatePropertiesFromUnifiedData001", nullptr, OH_Udmf_CreatePropertiesFromUnifiedData001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Udmf_SetPropertiesTag001", nullptr, OH_Udmf_SetPropertiesTag001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Udmf_AddRecordToUnifiedData001", nullptr, OH_Udmf_AddRecordToUnifiedData001, nullptr,nullptr, nullptr, napi_default, nullptr},
-        {"OH_Udmf_CreateUnifiedData001", nullptr, OH_Udmf_CreateUnifiedData001, nullptr,nullptr, nullptr, napi_default, nullptr},
+        {"OH_Udmf_SetPropertiesTag001", nullptr, OH_Udmf_SetPropertiesTag001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"OH_Udmf_AddRecordToUnifiedData001", nullptr, OH_Udmf_AddRecordToUnifiedData001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_Udmf_CreateUnifiedData001", nullptr, OH_Udmf_CreateUnifiedData001, nullptr,nullptr, nullptr,
+         napi_default, nullptr},
         {"OH_Udmf_HasUnifiedDataType001", nullptr, OH_Udmf_HasUnifiedDataType001, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"OH_Udmf_GetUnifiedDataTypes001", nullptr, OH_Udmf_GetUnifiedDataTypes001, nullptr, nullptr,
@@ -555,7 +557,8 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"OH_Udmf_GetRecords001", nullptr, OH_Udmf_GetRecords001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"OH_Udmf_SetAndGetUnifiedData001", nullptr, OH_Udmf_SetAndGetUnifiedData001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_Udmf_SetAndGetUnifiedData001", nullptr, OH_Udmf_SetAndGetUnifiedData001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
         {"OH_Udmf_GetRecords002", nullptr, OH_Udmf_GetRecords002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Udmf_AddAndGetGeneralEntry001", nullptr, OH_Udmf_AddAndGetGeneralEntry001, nullptr, nullptr,
          nullptr, napi_default, nullptr},
@@ -569,7 +572,8 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"OH_Udmf_BuildAndGetAppItemFromRecord001", nullptr, OH_Udmf_BuildAndGetAppItemFromRecord001, nullptr,
          nullptr, nullptr, napi_default, nullptr},
-        {"OH_Udmf_GetPropertiesTag001", nullptr, OH_Udmf_GetPropertiesTag001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_Udmf_GetPropertiesTag001", nullptr, OH_Udmf_GetPropertiesTag001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"OH_Udmf_SetPropertiesShareOption001", nullptr, OH_Udmf_SetPropertiesShareOption001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"OH_Udmf_GetPropertiesShareOption001", nullptr, OH_Udmf_GetPropertiesShareOption001, nullptr, nullptr, nullptr,
