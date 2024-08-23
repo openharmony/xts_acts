@@ -323,6 +323,176 @@ static napi_value OHNetConnBindSocket(napi_env env, napi_callback_info info)
     return result;
 }
 
+// 注册监听网络状态变化的回调。
+static napi_value OHNetConnRegisterNetConnCallback(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t index;
+    napi_get_value_int32(env, args[PARAM_INDEX_0], &index);
+
+    int ret = -1;
+    if (index == CASE_INDEX_1) {
+        NetConn_NetConnCallback netConnCallback{};
+        uint32_t callbackId;
+        ret = OH_NetConn_RegisterNetConnCallback(nullptr, &netConnCallback, 0, &callbackId);
+    } else if (index == CASE_INDEX_2) {
+        NetConn_NetSpecifier specifier{};
+        uint32_t callbackId;
+        ret = OH_NetConn_RegisterNetConnCallback(&specifier, nullptr, 0, &callbackId);
+    } else if (index == CASE_INDEX_3) {
+        NetConn_NetConnCallback netConnCallback{};
+        NetConn_NetSpecifier specifier{};
+        ret = OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, 0, nullptr);
+    } else if (index == CASE_INDEX_4) {
+        NetConn_NetSpecifier specifier{};
+        NetConn_NetConnCallback netConnCallback{};
+        uint32_t callbackId;
+        NetConn_NetHandle netHandle;
+        OH_NetConn_GetDefaultNet(&netHandle);
+        OH_NetConn_GetNetCapabilities(&netHandle, &specifier.caps);
+        ret = OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, 0, &callbackId);
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+// 注册监听默认网络状态变化的回调。
+static napi_value OHNetConnRegisterDefaultNetConnCallback(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t index;
+    napi_get_value_int32(env, args[PARAM_INDEX_0], &index);
+
+    int ret = -1;
+    if (index == CASE_INDEX_1) {
+        uint32_t callbackId;
+        ret = OH_NetConn_RegisterDefaultNetConnCallback(nullptr, &callbackId);
+    } else if (index == CASE_INDEX_2) {
+        NetConn_NetConnCallback netConnCallback{};
+        ret = OH_NetConn_RegisterDefaultNetConnCallback(&netConnCallback, nullptr);
+    } else if (index == CASE_INDEX_3) {
+        NetConn_NetConnCallback netConnCallback{};
+        uint32_t callbackId;
+        ret = OH_NetConn_RegisterDefaultNetConnCallback(&netConnCallback, &callbackId);
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+// 注销监听网络状态变化的回调。
+static napi_value OHNetConnUnregisterNetConnCallback(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t index;
+    napi_get_value_int32(env, args[PARAM_INDEX_0], &index);
+
+    int ret = -1;
+    if (index == CASE_INDEX_1) {
+        const uint32_t callbackId = 99999;
+        ret = OH_NetConn_UnregisterNetConnCallback(callbackId);
+    } else if (index == CASE_INDEX_2) {
+        NetConn_NetConnCallback netConnCallback{};
+        uint32_t callbackId;
+        (void)OH_NetConn_RegisterDefaultNetConnCallback(&netConnCallback, &callbackId);
+        ret = OH_NetConn_UnregisterNetConnCallback(callbackId);
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+// 设置应用代理配置信息。
+static napi_value OHNetConnSetAppHttpProxy(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t index;
+    napi_get_value_int32(env, args[PARAM_INDEX_0], &index);
+
+    int ret = -1;
+    if (index == CASE_INDEX_1) {
+        NetConn_HttpProxy httpProxy;
+        OH_NetConn_GetDefaultHttpProxy(&httpProxy);
+        ret = OH_NetConn_SetAppHttpProxy(&httpProxy);
+    } else if (index == CASE_INDEX_2) {
+        ret = OH_NetConn_SetAppHttpProxy(nullptr);
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+// 自定义 应用代理信息变化 回调。
+void HandleHttpProxyChange(NetConn_HttpProxy *proxy)
+{
+    return;
+}
+
+// 注册自定义 代理配置信息变化 回调。
+static napi_value OHOSNetConnRegisterAppHttpProxyCallback(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t index;
+    napi_get_value_int32(env, args[PARAM_INDEX_0], &index);
+
+    int ret = -1;
+    if (index == CASE_INDEX_1) {
+        OH_NetConn_AppHttpProxyChange proxyChange = HandleHttpProxyChange;
+        uint32_t callbackId;
+        ret = OH_NetConn_RegisterAppHttpProxyCallback(proxyChange, &callbackId);
+    } else if (index == CASE_INDEX_2) {
+        OH_NetConn_AppHttpProxyChange proxyChange = HandleHttpProxyChange;
+        ret = OH_NetConn_RegisterAppHttpProxyCallback(proxyChange, nullptr);
+    } else if (index == CASE_INDEX_3) {
+        uint32_t callbackId;
+        ret = OH_NetConn_RegisterAppHttpProxyCallback(nullptr, &callbackId);
+    } else if (index == CASE_INDEX_4) {
+        ret = OH_NetConn_RegisterAppHttpProxyCallback(nullptr, nullptr);
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+// 注销自定义 代理配置信息变化 回调。
+static napi_value OHOSNetConnUnregisterAppHttpProxyCallback(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t index;
+    napi_get_value_int32(env, args[PARAM_INDEX_0], &index);
+
+    int ret = -1;
+    if (index == CASE_INDEX_1) {
+        OH_NetConn_AppHttpProxyChange proxyChange = HandleHttpProxyChange;
+        uint32_t callbackId;
+        ret = OH_NetConn_RegisterAppHttpProxyCallback(proxyChange, &callbackId);
+        OH_NetConn_UnregisterAppHttpProxyCallback(callbackId);
+    } else if (index == CASE_INDEX_2) {
+        uint32_t callbackId;
+        ret = OH_NetConn_RegisterAppHttpProxyCallback(nullptr, &callbackId);
+        OH_NetConn_UnregisterAppHttpProxyCallback(callbackId);
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -346,6 +516,18 @@ static napi_value Init(napi_env env, napi_value exports)
         {"OHOSNetConnUnregisterDnsResolver", nullptr, OHOSNetConnUnregisterDnsResolver, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"OHNetConnBindSocket", nullptr, OHNetConnBindSocket, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnSetAppHttpProxy", nullptr, OHNetConnSetAppHttpProxy, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"OHOSNetConnRegisterAppHttpProxyCallback", nullptr, OHOSNetConnRegisterAppHttpProxyCallback, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OHOSNetConnUnregisterAppHttpProxyCallback", nullptr, OHOSNetConnUnregisterAppHttpProxyCallback, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnRegisterNetConnCallback", nullptr, OHNetConnRegisterNetConnCallback, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"OHNetConnRegisterDefaultNetConnCallback", nullptr, OHNetConnRegisterDefaultNetConnCallback, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnUnregisterNetConnCallback", nullptr, OHNetConnUnregisterNetConnCallback, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
