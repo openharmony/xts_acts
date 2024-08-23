@@ -21,7 +21,7 @@ struct PromptActionShowMode {
   build() {
     Column({ space: 5 }) {
 	  Button(this.message)
-	    .id("mess_mode")
+	    .id('mess_mode')
       Button('DEFAULT').key('ShowMode_p1')
         .onClick(() => {
 		  this.message = 'Message DEFAULT'
