@@ -29,9 +29,9 @@ HiCollie_DetectionParam param {.sampleStackTriggerTime = 150, .reserved = 0};
 int64_t lastWatchTime = 0;
 const int64_t CHECK_INTERNAL_TIME = 3000;
 std::shared_ptr<std::atomic<bool>> isReport = std::make_shared<std::atomic<bool>>(true);
-int count = 0;
-bool needReport = true;
-int initResult_ = -1;
+int g_count = 0;
+bool g_needReport = true;
+int g_initResult = -1;
 
 void InitBeginFunc(const char* eventName)
 {
@@ -81,10 +81,10 @@ bool ReportEvent()
 
 void TestTask()
 {
-    if (needReport && ReportEvent()) {
+    if (g_needReport && ReportEvent()) {
         bool temp = isReport->load();
         int reportResult = OH_HiCollie_Report(&temp);
-        needReport = false;
+        g_needReport = false;
     }
     int64_t now = GetCurrentTime();
     if ((now - lastWatchTime) >= (CHECK_INTERNAL_TIME / 2)) { //as of 2
@@ -95,10 +95,10 @@ void TestTask()
 int  TestStuckDetection()
 {
     int initResult = -1;
-    if (count == 0) {
+    if (g_count == 0) {
         initResult = OH_HiCollie_Init_StuckDetection(TestTask);
         TestTask();
-        count++;
+        g_count++;
     }
     return initResult;
 }
@@ -140,7 +140,7 @@ static napi_value TestReportCMThread(napi_env env, napi_callback_info info)
 
 void Test001()
 {
-    initResult_ = OH_HiCollie_Init_JankDetection(nullptr, &endFunc_, param);
+    g_initResult = OH_HiCollie_Init_JankDetection(nullptr, &endFunc_, param);
 }
 
 static napi_value TestJankCerr401(napi_env env, napi_callback_info info)
@@ -148,7 +148,7 @@ static napi_value TestJankCerr401(napi_env env, napi_callback_info info)
     napi_value sum;
     std::thread threadObj(Test001);
     threadObj.join();
-    napi_create_int32(env, initResult_, &sum);
+    napi_create_int32(env, g_initResult, &sum);
     return sum;
 }
 
