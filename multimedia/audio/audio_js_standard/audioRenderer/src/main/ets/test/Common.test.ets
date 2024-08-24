@@ -2,17 +2,6 @@
  * Copyright (c) Huawei Technologies Co., Ltd. 2023-2024. All rights reserved.
  */
 
-// 枚举，音频状态
-export class AudioState {
-  static readonly STATE_INVALID: number = -1; //无效状态。
-  static readonly STATE_NEW: number = 0; //创建新实例状态
-  static readonly STATE_PREPARED: number = 1; //准备状态
-  static readonly STATE_RUNNING: number = 2; //运行状态
-  static readonly STATE_STOPPED: number = 3; //停止状态
-  static readonly STATE_RELEASED: number = 4; //释放状态
-  static readonly STATE_PAUSED: number = 5; //暂停状态
-}
-
 // 枚举，音频并发模式
 export class AudioConcurrencyMode {
   static readonly CONCURRENCY_DEFAULT: number = 0; //默认模式
