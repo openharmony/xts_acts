@@ -43,7 +43,7 @@ struct PanelExample {
       .fullHeight(500)
       .halfHeight(250)
       .miniHeight(100)
-      .onChange((value: any) => {
+      .onChange((value: ESObject) => {
         console.info(`width:${value.width},height:${value.height},mode:${value.mode}`)
       })
 
@@ -61,7 +61,7 @@ struct PanelExample {
       .fullHeight(500)
       .halfHeight(250)
       .miniHeight(100)
-      .onChange((value: any) => {
+      .onChange((value: ESObject) => {
         console.info(`width:${value.width},height:${value.height},mode:${value.mode}`)
       })
 
@@ -79,7 +79,7 @@ struct PanelExample {
       .fullHeight(500)
       .halfHeight(250)
       .miniHeight(100)
-      .onChange((value: any) => {
+      .onChange((value: ESObject) => {
         console.info(`width:${value.width},height:${value.height},mode:${value.mode}`)
       })
     }.width('100%').height('50%').backgroundColor(0xDCDCDC).padding({ top: 5 })

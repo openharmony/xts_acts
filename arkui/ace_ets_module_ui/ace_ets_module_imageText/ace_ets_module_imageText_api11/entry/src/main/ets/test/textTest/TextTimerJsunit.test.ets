@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import Utils from '../../MainAbility/common/Utils';;
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function textTimerJsunit() {
   describe('appInfoTest_four_14', () => {
@@ -31,7 +30,7 @@ export default function textTimerJsunit() {
         if (!("textTimer" == pages.name)) {
           console.info("get textTimer state pages.name: " + JSON.stringify(pages.name));
           await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
         console.error("push textTimer page error: " + err);
@@ -40,13 +39,13 @@ export default function textTimerJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("textPickerDialog after each called");
     })
 
     it('textTimer0100', 0, async (done: Function) => {
       console.info('[textTimer0100] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textTimer');
       console.info("[textTimer0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[textTimer0100] expect(obj.$type) is: " + (JSON.parse(strJson).$type));
@@ -55,13 +54,13 @@ export default function textTimerJsunit() {
         done();
         return;
       }
-      expect(obj.$type).assertEqual('TextTimer');
+      expect(JSON.parse(strJson).$type).assertEqual('TextTimer');
       done();
     });
 
     it('textTimer0200', 0, async (done: Function) => {
       console.info('[textTimer0100] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textTimer');
       if (true) {
         done();
@@ -73,7 +72,7 @@ export default function textTimerJsunit() {
 
     it('textTimer0300', 0, async (done: Function) => {
       console.info('[textTimer0300] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textTimer');
       if (true) {
         done();

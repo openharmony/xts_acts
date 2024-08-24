@@ -20,7 +20,7 @@
 namespace ArkUICapiTest {
 
 #define TEXT_INPUT_ON_PASTE_TEST_STRING "X"
-
+#define TEXT_INPUT_DISABLE_ON_PASTE_TEST_STRING "Y"
 static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI)
 {
     auto nodeHandle = nodeAPI->createNode(ARKUI_NODE_TEXT_INPUT);
@@ -125,6 +125,9 @@ napi_value TextInputOnPasteTest::CreateNativeNode(napi_env env, napi_callback_in
     ArkUI_AttributeItem text_item = {};
     text_item.string = TEXT_INPUT_ON_PASTE_TEST_STRING;
     nodeAPI->setAttribute(textInput, NODE_TEXT_INPUT_TEXT, &text_item);
+    
+    text_item.string = TEXT_INPUT_DISABLE_ON_PASTE_TEST_STRING;
+    nodeAPI->setAttribute(textInputDisable, NODE_TEXT_INPUT_TEXT, &text_item);
 
     nodeAPI->addChild(row, textInput);
     nodeAPI->addChild(row, textInputDisable);

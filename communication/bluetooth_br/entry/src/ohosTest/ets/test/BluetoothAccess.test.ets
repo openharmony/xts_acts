@@ -39,16 +39,24 @@ import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPatter
     let CLOSE_BT_TEXT:string = "关闭";
 
     async function clickRequestPermission(text:string) {
+        console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
         try {
-            console.info('[bluetooth_js] clickRequestPermission start');
-            let driver = Driver.create();
-            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text(text));
             await button.click();
             await driver.delayMs(3000);
             console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed');
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
         }
     }
     function onReceiveEvent(data : bluetooth.BluetoothState) {
@@ -76,9 +84,10 @@ describe('btAccessTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0100
-     * @tc.name test enableBluetooth
+     * @tc.name testEnableBluetooth
      * @tc.desc Test enableBluetooth api10
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
      it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0100', 0, async (done : Function) =>  {
@@ -100,7 +109,7 @@ describe('btAccessTest', () => {
             await sleep(10000);
         } catch (error) {
             console.error(`[bluetooth_js] enable StateChange error, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
         }
         let openSt = bluetooth.getState();
         console.info('[bluetooth_js] bluetooth enable state ='+ JSON.stringify(openSt));
@@ -110,9 +119,10 @@ describe('btAccessTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0200
-     * @tc.name test disableBluetooth
+     * @tc.name testDisableBluetooth
      * @tc.desc Test disableBluetooth api10
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
      it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0200', 0, async (done : Function) =>  {
@@ -134,7 +144,7 @@ describe('btAccessTest', () => {
             await sleep(10000);
         } catch (error) {
             console.error(`[bluetooth_js] disable StateChange error, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
         }
         let closeSt = bluetooth.getState();
         console.info('[bluetooth_js] bluetooth disable state ='+ JSON.stringify(closeSt));
@@ -144,9 +154,10 @@ describe('btAccessTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0300
-     * @tc.name test getState
+     * @tc.name testGetState
      * @tc.desc Test getState api10
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
      it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0300', 0, async (done : Function) =>  {
@@ -155,16 +166,17 @@ describe('btAccessTest', () => {
             expect(state >= 0 && state <= 6).assertTrue();
         } catch (error) {
             console.error("[bluetooth_js] bluetooth getState errCode:" + error.code + ",bluetooth getState errMessage:" + error.message);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
         }
         done();
     })
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0400
-     * @tc.name test on 'stateChange'
+     * @tc.name testOnStateChange
      * @tc.desc Test on 'stateChange' api10
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0400', 0, async (done : Function) =>  {
@@ -182,7 +194,7 @@ describe('btAccessTest', () => {
         }
     } catch (error) {
         console.error(`[bluetooth_js]enable StateChange error, code is ${error.code},message is ${error.message}`);
-        expect(error.code).assertEqual(2900099);
+        expect(Number(error.code)).assertEqual(2900099);
     }    
     bluetooth.off('stateChange', onReceiveEvent);
     done();
@@ -190,9 +202,10 @@ describe('btAccessTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0500
-     * @tc.name test off 'stateChange'
+     * @tc.name testOnStateChange
      * @tc.desc Test off 'stateChange' api10
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0500', 0, async (done : Function) =>  {
@@ -212,16 +225,17 @@ describe('btAccessTest', () => {
         }
     } catch (error) {
         console.error(`[bluetooth_js]disable StateChange error, code is ${error.code},message is ${error.message}`);
-        expect(error.code).assertEqual(2900099);
+        expect(Number(error.code)).assertEqual(2900099);
     }    
     done();
     })
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0600
-     * @tc.name test BluetoothState
+     * @tc.name testBluetoothState
      * @tc.desc Test BluetoothState api10
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
      it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0600', 0, async (done : Function) =>  {

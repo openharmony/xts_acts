@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -60,9 +59,9 @@ struct CanvasExample {
               this.quadraticCurveTo();
               this.arcTo();
               this.rect();
-              this.transform();
+              this.doTransform();
               this.setTransform();
-              this.translate();
+              this.doTranslate();
               this.drawImage();
               this.createImageData();
               this.createImageDataByImageData();
@@ -82,7 +81,7 @@ struct CanvasExample {
               this.fill();
               this.textMetrics();
               this.getBitImageSize();
-              this.rotate();
+              this.doRotate();
               this.getPixelMap();
             })
             .key('canvas1')
@@ -250,7 +249,7 @@ struct CanvasExample {
     this.resetShadow(false);
   }
 
-  resetShadow(isX) {
+  resetShadow(isX: boolean) {
     this.context.shadowBlur = 0;
     if (isX) {
       this.context.shadowOffsetX = 0;
@@ -267,7 +266,7 @@ struct CanvasExample {
 
   imageSmoothingQuality() {
     let img = new ImageBitmap('/images/img.jpeg');
-    this.context.imageSmoothingQuality('high');
+    this.context.imageSmoothingQuality = 'high';
     this.context.drawImage(img, 30, 950, 160, 100);
   }
 
@@ -322,7 +321,7 @@ struct CanvasExample {
   createPattern() {
     let img = new ImageBitmap('/images/ic_health_heart.png');
     let pattern = this.context.createPattern(img, 'repeat');
-    this.context.fillStyle = pattern;
+    this.context.fillStyle = pattern as CanvasPattern;
     this.context.fillRect(140, 1300, 250, 100);
   }
 
@@ -354,13 +353,13 @@ struct CanvasExample {
     this.context.stroke();
   }
 
-  rotate() {
+  doRotate() {
     this.context.rotate(45 * Math.PI / 180);
     this.context.fillRect(180, 20, 50, 50);
     this.context.rotate(-45 * Math.PI / 180);
   }
 
-  transform() {
+  doTransform() {
     this.context.fillStyle = 'rgb(0,0,0)';
     this.context.fillRect(250, 1500, 100, 100);
     this.context.transform(1, 0.1, 0.01, 1, 10, 10);
@@ -389,7 +388,7 @@ struct CanvasExample {
     this.context.resetTransform();
   }
 
-  translate() {
+  doTranslate() {
     this.context.fillRect(180, 1650, 50, 50);
     this.context.translate(50, 50);
     this.context.fillRect(180, 1650, 50, 50);
@@ -431,7 +430,7 @@ struct CanvasExample {
 
   putImageData() {
     let imageData = this.context.createImageData(80, 80);
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255;
       imageData.data[i + 1] = 0;
       imageData.data[i + 2] = 255;
@@ -502,8 +501,8 @@ struct CanvasExample {
     this.context.fill('nonzero');
   }
 
-  direction() {
-    this.context.direction('inherit');
+  doDirection() {
+    this.context.direction = 'inherit';
   }
 
   textMetrics() {
@@ -521,7 +520,7 @@ struct CanvasExample {
 
   filter() {
     let img = new ImageBitmap('/images/img.jpeg');
-    this.context.filter('grayscale(50%)');
+    this.context.filter = 'grayscale(50%)';
     this.context.drawImage(img, 0, 0, 500, 500, 0, 2200, 200, 100);
   }
 

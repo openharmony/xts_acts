@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function search_maxLength() {
-  describe('search_maxLength', function () {
-    beforeEach(async function (done) {
+  describe('search_maxLength', () => {
+    beforeEach(async (done: Function) => {
       console.info("search_caret beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Search/search_maxLength',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Search/search_maxLength',
       }
       try {
         router.clear();
@@ -62,7 +62,7 @@ export default function search_maxLength() {
       console.info('SearchMaxLength_001 click success');
 
       let strJson1 = getInspectorByKey('SearchMaxLength');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[SearchMaxLength_001] component obj is: " + JSON.stringify(JSON.parse(strJson1)));
       expect(obj1.$attrs.value).assertEqual('123456');
@@ -90,7 +90,7 @@ export default function search_maxLength() {
       console.info('SearchMaxLength_003 click success');
 
       let strJson1 = getInspectorByKey('SearchMaxLength');
-      let obj3 = JSON.parse(strJson1);
+      let obj3: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[SearchMaxLength_003] component obj is: " + JSON.stringify(JSON.parse(strJson1)));
       expect(obj3.$attrs.value).assertEqual('1234');

@@ -55,6 +55,8 @@ struct webViewGetAndSetRenderProcessMode {
               .key('webViewGetAndSetRenderProcessModeButton')
               .onClick(async () => {
                   console.info('key==>' + this.emitKey)
+                  webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.SINGLE);
+                  this.controller.refresh();
                   await Utils.sleep(2000);
                   switch (this.emitKey) {
                     case 'emitWebViewGetAndSetRenderProcessMode01': {

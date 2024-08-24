@@ -374,10 +374,9 @@ export default function relationalStoreTest() {
         await promise.then(async (rdbStore) => {
           store = rdbStore;
           console.info(`testRdbStore0012 Get RdbStore successfully.`);
-          expect().assertFail();
         }).catch((err) => {
           console.error(`testRdbStore0012 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code).assertEqual(14800017);
+          expect().assertFail();
         })
       } catch (error) {
         console.error(`testRdbStore0012 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
@@ -412,10 +411,9 @@ export default function relationalStoreTest() {
         await promise.then(async (rdbStore) => {
           store = rdbStore;
           console.info(`testRdbStore0013 Get RdbStore successfully.`);
-          expect().assertFail();
         }).catch((err) => {
           console.error(`testRdbStore0013 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code).assertEqual(14800017);
+          expect().assertFail();
         })
       } catch (error) {
         console.error(`testRdbStore0013 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
@@ -450,10 +448,9 @@ export default function relationalStoreTest() {
         await promise.then(async (rdbStore) => {
           store = rdbStore;
           console.info(`testRdbStore0014 Get RdbStore successfully.`);
-          expect().assertFail();
         }).catch((err) => {
           console.error(`testRdbStore0014 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code).assertEqual(14800017);
+          expect().assertFail();
         })
       } catch (error) {
         console.error(`testRdbStore0014 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
@@ -488,10 +485,9 @@ export default function relationalStoreTest() {
         await promise.then(async (rdbStore) => {
           store = rdbStore;
           console.info(`testRdbStore0015 Get RdbStore successfully.`);
-          expect().assertFail();
         }).catch((err) => {
           console.error(`testRdbStore0015 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code).assertEqual(14800017);
+          expect().assertFail();
         })
       } catch (error) {
         console.error(`testRdbStore0015 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
@@ -527,10 +523,9 @@ export default function relationalStoreTest() {
         await promise.then(async (rdbStore) => {
           store = rdbStore;
           console.info(`testRdbStore0016 Get RdbStore successfully.`);
-          expect().assertFail();
         }).catch((err) => {
           console.error(`testRdbStore0016 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code).assertEqual(14800017);
+          expect().assertFail();
         })
       } catch (error) {
         console.error(`testRdbStore0016 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);

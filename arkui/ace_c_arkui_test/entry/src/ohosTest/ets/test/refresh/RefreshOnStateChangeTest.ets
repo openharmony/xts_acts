@@ -34,7 +34,7 @@ export default function refreshOnStateChangeTest() {
       await Utils.pushPage(`refresh/${PAGE_TAG}`);
       await Utils.sleep(2000)
       let driver = Driver.create();
-      await driver.swipe(200, 150, 200, 200);
+      await driver.swipe(200, 350, 200, 400);
       await Utils.sleep(2000);
       expect(Utils.getComponentInfoByKey('RefreshOnStateChange').$attrs.backgroundColor).assertEqual('#FFFFFF00');
       done();

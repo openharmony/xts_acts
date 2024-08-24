@@ -22,7 +22,7 @@ function publishCallBack(): void {
 }
 
 export default class MainAbility5 extends Ability {
-  onCreate(want, launchParam): void {
+  onCreate(want, launchParam) {
     console.log('[Demo] MainAbility5 onCreate');
     globalThis.abilityWant = want;
     globalThis.abilityContext = this.context;
@@ -38,7 +38,7 @@ export default class MainAbility5 extends Ability {
     globalThis.abilityContext = undefined;
   }
 
-  onWindowStageCreate(windowStage): void {
+  onWindowStageCreate(windowStage) {
     // Main window is created, set main page for this ability
     console.log('[Demo] MainAbility5 onWindowStageCreate');
 

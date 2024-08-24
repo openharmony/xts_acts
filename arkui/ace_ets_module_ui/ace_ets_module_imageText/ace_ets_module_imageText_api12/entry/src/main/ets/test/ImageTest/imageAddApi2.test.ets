@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function imageAddApi2() {
-  describe('imageAddApi2', function () {
-    beforeEach(async function (done) {
+  describe('imageAddApi2', () => {
+    beforeEach(async (done: Function) => {
       console.info("imageAddApi2 beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function imageAddApi2() {
       console.info("imageAddApi2 foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("imageAddApi2 after each called");
     });
@@ -51,13 +51,13 @@ export default function imageAddApi2() {
      * @tc.level      : Level 3
      */
 
-    it('imageAddApi2_001', 0, async function (done) {
+    it('imageAddApi2_001', 0, async (done: Function) => {
       console.info('[imageAddApi2_001] START');
 
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('imageAddApi2');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[imageAddApi2_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 

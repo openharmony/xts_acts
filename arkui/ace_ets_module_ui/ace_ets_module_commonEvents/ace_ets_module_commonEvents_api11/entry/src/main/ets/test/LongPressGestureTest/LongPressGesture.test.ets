@@ -15,7 +15,7 @@
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function longPressGestureJsunit() {
   describe('longPressGestureJsunit', () => {
@@ -31,7 +31,7 @@ export default function longPressGestureJsunit() {
         if (!("longPressGesture" == pages.name)) {
           console.info("get longPressGesture state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push longPressGesture page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,16 +41,16 @@ export default function longPressGestureJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("longPressGesture after each called");
     });
 
     it('testLongPressGesture01', 0, async (done: Function) => {
       console.info('[testLongPressGesture01] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let callback = (eventData: events_emitter.EventData) => {
         console.info("testLongPressGesture01 get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual('onAction')
+        expect(eventData.data?.ACTION).assertEqual('onAction')
         done();
       }
       let innerEvent: events_emitter.InnerEvent = {
@@ -64,17 +64,17 @@ export default function longPressGestureJsunit() {
         console.info("testLongPressGesture01 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("testLongPressGesture01 sendEventByKey result: " + JSON.stringify(sendEventByKey('flex', 11, "")));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('testLongPressGesture01 END');
       done();
     });
 
     it('testLongPressGesture02', 0, async (done: Function) => {
       console.info('[testLongPressGesture02] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let callback = (eventData: events_emitter.EventData) => {
         console.info("testLongPressGesture02 get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual('onActionEnd')
+        expect(eventData.data?.ACTION).assertEqual('onActionEnd')
         done();
       }
       let innerEvent: events_emitter.InnerEvent = {
@@ -88,7 +88,7 @@ export default function longPressGestureJsunit() {
         console.info("testLongPressGesture02 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("testLongPressGesture02 sendEventByKey result: " + JSON.stringify(sendEventByKey('flex', 11, "")));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('testLongPressGesture02 END');
     });
   })

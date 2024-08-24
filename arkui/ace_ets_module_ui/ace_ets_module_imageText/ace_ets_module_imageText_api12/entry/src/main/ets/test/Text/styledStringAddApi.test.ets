@@ -14,13 +14,13 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import text from "@ohos.graphics.text"
 
 export default function styledStringAddApi() {
-  describe('styledStringAddApi', function () {
-    beforeEach(async function (done) {
+  describe('styledStringAddApi', () => {
+    beforeEach(async (done: Function) => {
       console.info("styledStringAddApi beforeEach start");
       try {
         router.clear();
@@ -38,7 +38,7 @@ export default function styledStringAddApi() {
       console.info("styledStringAddApi foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("styledStringAddApi after each called");
     });
@@ -52,7 +52,7 @@ export default function styledStringAddApi() {
      * @tc.level      : Level 3
      */
 
-    it('styledStringAddApi_001', 0, async function (done) {
+    it('styledStringAddApi_001', 0, async (done: Function) => {
       console.info('[styledStringAddApi_001] START');
       let driver: Driver = Driver.create();
       let text: Component = await driver.findComponent(ON.id('styledStringAddApi'));
@@ -62,7 +62,7 @@ export default function styledStringAddApi() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('styledStringText');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[styledStringAddApi_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -80,7 +80,7 @@ export default function styledStringAddApi() {
      * @tc.level      : Level 3
      */
 
-    it('styledStringAddApi_002', 7, async function () {
+    it('styledStringAddApi_002', 7, async () => {
       let msg = 'testPositionWithAffinity'
       console.info(msg + 'begin');
       try {

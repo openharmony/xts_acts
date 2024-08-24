@@ -15,15 +15,25 @@
  */
 import events_emitter from '@ohos.events.emitter';
 
+interface PositionNum {
+  x: number;
+  y: number;
+}
+
+interface PositionStr {
+  x: string;
+  y: string;
+}
+
 @Entry
 @Component
 struct PositionSetting {
   @State alignT: Alignment = Alignment.TopStart;
   @State directionT: Direction = Direction.Rtl;
-  @State position1: {x: number, y: number} = {x: 25, y: 15};
-  @State position2: {x: string, y: string} = {x: '50%', y: '70%'};
-  @State anchor: {x: number, y: number} = {x: 25, y: 25};
-  @State offsetT: {x: number, y: number} = {x: 10, y: 15};
+  @State position1: PositionNum = {x: 25, y: 15};
+  @State position2: PositionStr = {x: '50%', y: '70%'};
+  @State anchor: PositionNum = {x: 25, y: 25};
+  @State offsetT: PositionNum = {x: 10, y: 15};
   @State opacityValue: number = 1;
 
   build() {
@@ -107,52 +117,52 @@ struct PositionSetting {
     .width('100%').margin({ top: 5 })
   }
   onPageShow() {
-    let stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 25,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    let directionChangeEvent = {
+    let directionChangeEvent: events_emitter.InnerEvent = {
       eventId: 26,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(directionChangeEvent, this.stateChangCallBack);
 
-    let positionChangeEvent = {
+    let positionChangeEvent: events_emitter.InnerEvent = {
       eventId: 27,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(positionChangeEvent, this.stateChangCallBack);
 
-    let markAnchorChangeEvent = {
+    let markAnchorChangeEvent: events_emitter.InnerEvent = {
       eventId: 28,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(markAnchorChangeEvent, this.stateChangCallBack);
 
-    let offsetChangeEvent = {
+    let offsetChangeEvent: events_emitter.InnerEvent = {
       eventId: 29,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(offsetChangeEvent, this.stateChangCallBack);
   }
-  stateChangCallBack = (eventData) => {
+  stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("position page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData) {
-      if (eventData.data.textAlign) {
+      if (eventData.data?.textAlign) {
         this.alignT = Alignment.BottomEnd;
-      } else if (eventData.data.direction) {
-        this.directionT = eventData.data.direction;
-      } else if (eventData.data.position1) {
-        this.position1 = JSON.parse(eventData.data.position1);
-        this.position2 = JSON.parse(eventData.data.position2);
-      } else if (eventData.data.markAnchor) {
-        this.anchor = JSON.parse(eventData.data.markAnchor);
-      } else if (eventData.data.offset) {
-        this.offsetT = JSON.parse(eventData.data.offset);
-      } else if (eventData.data.opacityValue) {
-        this.opacityValue = eventData.data.opacityValue;
+      } else if (eventData.data?.direction) {
+        this.directionT = eventData.data?.direction;
+      } else if (eventData.data?.position1) {
+        this.position1 = JSON.parse(eventData.data?.position1);
+        this.position2 = JSON.parse(eventData.data?.position2);
+      } else if (eventData.data?.markAnchor) {
+        this.anchor = JSON.parse(eventData.data?.markAnchor);
+      } else if (eventData.data?.offset) {
+        this.offsetT = JSON.parse(eventData.data?.offset);
+      } else if (eventData.data?.opacityValue) {
+        this.opacityValue = eventData.data?.opacityValue;
       }
     }
   }

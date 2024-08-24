@@ -13,28 +13,27 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 
 export default function navDestinationJsunit() {
-  describe('navDestinationTest', function () {
-    beforeAll(async function (done) {
+  describe('navDestinationTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("NavDestination beforeAll start");
-      let options = {
-        uri: 'MainAbility/pages/navDestination',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/navDestination',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get NavDestination state success " + JSON.stringify(pages));
         if (!("navDestination" == pages.name)) {
           console.info("get NavDestination state success " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push NavDestination page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push NavDestination page error: " + err);
@@ -44,13 +43,13 @@ export default function navDestinationJsunit() {
 
     /**
      * @tc.number testNavDestination
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set hideTitleBar values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set hideTitleBar values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testNavDestination', 0, async function (done) {
+    it('testNavDestination', 0, async (done: Function) => {
       console.info('[testNavDestination] START');
       let strJson = getInspectorByKey('NavDestination1');
       console.info("[testNavDestination] strJson is : " + strJson);
@@ -63,13 +62,13 @@ export default function navDestinationJsunit() {
 
     /**
      * @tc.number testNavDestination_01
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change hideTitleBar values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change hideTitleBar values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testNavDestination_01', 0, async function (done) {
+    it('testNavDestination_01', 0, async (done: Function) => {
       console.info('testNavDestination_01 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

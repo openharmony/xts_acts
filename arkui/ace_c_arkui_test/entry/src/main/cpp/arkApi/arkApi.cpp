@@ -15,6 +15,7 @@
 #include <arkui/native_gesture.h>
 #include <arkui/native_node_napi.h>
 #include <arkui/native_type.h>
+#include <arkui/native_animate.h>
 #include "common/common.h"
 #include <ace/xcomponent/native_interface_xcomponent.h>
 #define VALUE_0 10
@@ -233,5 +234,30 @@ static napi_value TestArkUIAddApi023(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
+static napi_value TestArkUIAddApi024(napi_env env, napi_callback_info info)
+{
+    auto nodeContentEvent = [](ArkUI_NodeContentEvent *event) {
+        ArkUI_NodeContentHandle content = OH_ArkUI_NodeContentEvent_GetNodeContentHandle(event);
+    };
+    OH_ArkUI_NodeContent_SetUserData(nullptr, nullptr);
+    auto userData2 = OH_ArkUI_NodeContent_GetUserData(nullptr);
+    OH_ArkUI_GetNodeContentFromNapiValue(nullptr, nullptr, nullptr);
+    int32_t index = 0;
+    ArkUI_NumberValue value[] = {{.f32 = 10.0f}};
+    OH_ArkUI_NodeEvent_GetNumberValue(nullptr, index, value);
+    int32_t size = 0;
+    char* value1[size];
+    OH_ArkUI_NodeEvent_GetStringValue(nullptr, index, value1, &size);
+    int32_t size3 = 1;
+    ArkUI_NumberValue value3[] = {{.i32 = 10}};
+    OH_ArkUI_NodeEvent_SetReturnNumberValue(nullptr, value3, size3);
+    OH_ArkUI_GestureEvent_GetNode(nullptr);
+    auto ret = OH_ArkUI_AnimatorOption_Create(0);
+    OH_ArkUI_KeyframeAnimateOption_Create(0);
+    OH_ArkUI_AnimatorOption_SetKeyframe(ret, 0.0, 0.0, 0);
+    OH_ArkUI_AnimatorOption_GetKeyframeTime(ret, 0);
+    OH_ArkUI_AnimatorOption_GetKeyframeValue(ret, 0);
+    NAPI_END;
+}
 
 }

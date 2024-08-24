@@ -49,6 +49,16 @@ import counterDirectionTest from './counter/counterDirection.test';
 import popupDirectionTest from './popup/popupDirectionTest.test';
 import segmentButtonDirectionTest from './segmenButton/segmentbuttonDirection.test';
 
+import FileButtonContinueToReceiveTest from './downloadFileButton/FileButtonContinueToReceiveTest.test.ets';
+import FileButtonDownloadTest from './downloadFileButton/FileButtonDownloadTest.test.ets';
+import FileButtonDownloadAndShareTest from './downloadFileButton/FileButtonDownloadAndShareTest.test.ets';
+import FileButtonDownloadFileTest from './downloadFileButton/FileButtonDownloadFileTest.test.ets';
+import FileButtonReceiveTest from './downloadFileButton/FileButtonReceiveTest.test.ets';
+import FileButtonSaveTest from './downloadFileButton/FileButtonSaveTest.test.ets';
+import FileButtonSaveFileTest from './downloadFileButton/FileButtonSaveFileTest.test.ets';
+import FileButtonSaveImageTest from './downloadFileButton/FileButtonSaveImageTest.test.ets';
+
+
 export default function testsuite() {
   chipDirectionTest();
   counterDirectionTest();
@@ -85,4 +95,13 @@ export default function testsuite() {
   subHeaderButton();
   subHeaderIconGroup();
   subHeaderTextArrow();
+
+  FileButtonContinueToReceiveTest();
+  FileButtonDownloadTest();
+  FileButtonDownloadAndShareTest();
+  FileButtonDownloadFileTest();
+  FileButtonReceiveTest();
+  FileButtonSaveTest();
+  FileButtonSaveFileTest();
+  FileButtonSaveImageTest();
 }

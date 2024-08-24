@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function RelativeGuideLine5() {
-  describe('RelativeGuideLine5', function () {
-    beforeEach(async function (done) {
+  describe('RelativeGuideLine5', () => {
+    beforeEach(async (done: Function) => {
       console.info("RelativeGuideLine5 beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function RelativeGuideLine5() {
       console.info("RelativeGuideLine5 foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("RelativeGuideLine5 after each called");
     });
@@ -50,12 +50,12 @@ export default function RelativeGuideLine5() {
     * @tc.size
      */
 
-    it('RelativeGuideLine5_001', 0, async function (done) {
+    it('RelativeGuideLine5_001', 0, async (done: Function) => {
       console.info('[RelativeGuideLine5_001] START');
 
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey("RelButton5");
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
       console.info("[RelativeGuideLine5_001] obj is: " + JSON.stringify(obj.$attrs.height) + JSON.stringify(obj.$attrs.width));
       expect(obj.$attrs.height=='100.00vp').assertTrue();

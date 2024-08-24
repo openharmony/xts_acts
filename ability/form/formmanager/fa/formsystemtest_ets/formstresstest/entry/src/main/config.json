@@ -20,7 +20,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -51,17 +52,17 @@
         "launchType": "standard"
       },
       {
-          "orientation": "unspecified",
-          "formsEnabled": false,
-          "name": ".TestAbility",
-          "srcLanguage": "ets",
-          "srcPath": "TestAbility",
-          "icon": "$media:icon",
-          "description": "$string:TestAbility_desc",
-          "label": "$string:TestAbility_label",
-          "type": "page",
-          "visible": true,
-          "launchType": "singleton"
+        "orientation": "unspecified",
+        "formsEnabled": false,
+        "name": ".TestAbility",
+        "srcLanguage": "ets",
+        "srcPath": "TestAbility",
+        "icon": "$media:icon",
+        "description": "$string:TestAbility_desc",
+        "label": "$string:TestAbility_label",
+        "type": "page",
+        "visible": true,
+        "launchType": "singleton"
       }
     ],
     "defPermissions": [
@@ -146,8 +147,8 @@
         "reason": "need use ohos.permission.CLEAN_BACKGROUND_PROCESSES"
       },
       {
-        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
-        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+        "name": "ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+        "reason": "need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
       }
     ],
     "js": [

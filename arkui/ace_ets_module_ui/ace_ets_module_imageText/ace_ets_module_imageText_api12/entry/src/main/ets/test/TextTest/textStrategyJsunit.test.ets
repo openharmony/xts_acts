@@ -15,12 +15,12 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 export default function textStrategyJsunit() {
-  describe('textStrategyJsunit', function () {
-    beforeEach(async function (done) {
+  describe('textStrategyJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("textStrategyJsunit beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Text/textStrategy',
@@ -50,21 +50,21 @@ export default function textStrategyJsunit() {
     * @tc.type:
     * @tc.size:
     */
-    it('textStrategyJsunit_0100', 0, async function (done) {
+    it('textStrategyJsunit_0100', 0, async (done: Function) => {
       console.info('textStrategyJsunit_0100 START');
 
       let strJson = getInspectorByKey('text_Strategy_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textStrategyJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.lineBreakStrategy).assertEqual("greedy");
 
       let strJson2 = getInspectorByKey('text_Strategy_2');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[textStrategyJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.lineBreakStrategy).assertEqual("high-quality");
 
       let strJson3 = getInspectorByKey('text_Strategy_3');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[textStrategyJsunit_0100] component obj3 is: " + JSON.stringify(obj3));
       expect(obj3.$attrs.lineBreakStrategy).assertEqual("balanced");
       console.info('[textStrategyJsunit_0100] END');

@@ -15,16 +15,16 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
 
 
 export default function getListItemRect6() {
-  describe('getListItemRect6', () =>{
-    beforeEach(async (done:Function)=> {
+  describe('getListItemRect6', () => {
+    beforeEach(async (done: Function) => {
       console.info("getListItemRect6 beforeEach start");
-      let options :router.RouterOptions ={
-        url:  'MainAbility/pages/getItemRect/list/getListItemRect6',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/getItemRect/list/getListItemRect6',
       }
       try {
         router.clear();
@@ -42,7 +42,7 @@ export default function getListItemRect6() {
       }
       done();
     });
-    afterEach(async () =>{
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back({url: 'MainAbility/pages/index/index'})
       console.info("BadgeFocus after each called");
@@ -54,7 +54,7 @@ export default function getListItemRect6() {
     * @tc.desc  : set index to 3,Delete listItem3
     * @tc.level : Level 2,Delete listItem3
     */
-    it('getListItemRect6_0100', 0, async (done:Function)=> {
+    it('getListItemRect6_0100', 0, async (done: Function) => {
 
       console.info('[getListItemRect6_0100] START');
       globalThis.value.message.notify({name:'index', value:3});

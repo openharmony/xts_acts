@@ -41,6 +41,7 @@ function getListFile(dir): number {
     public listNum: number = 0;
     public filter: Filter = {};
   }
+
   let option = new ListFileOption();
   option.filter.displayName = ['temp_useless*'];
   let files = fs.listFileSync(dir, option);

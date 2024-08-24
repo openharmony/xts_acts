@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import Curves from '@ohos.curves';
-import { GlobalContext } from '../../utils/GlobalContext';
+import { GlobalContext } from '../../common/GlobalContext';
 
 @Entry
 @Component

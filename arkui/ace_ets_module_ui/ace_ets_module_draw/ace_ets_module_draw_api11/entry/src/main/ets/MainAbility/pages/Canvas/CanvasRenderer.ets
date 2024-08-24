@@ -28,13 +28,13 @@ struct CanvasRenderer1 {
         .height('100%')
         .backgroundColor('#ffff00')
         .onReady(() =>{
-          var offContext = this.offCanvas.getContext("2d", this.settings)
+          let offContext = this.offCanvas.getContext("2d", this.settings)
           let offctx = offContext
           offctx.imageSmoothingEnabled = true
           offctx.imageSmoothingQuality = 'high'
           offctx.drawImage(this.img, 0, 0, 400, 200)
 
-          var image = this.offCanvas.transferToImageBitmap()
+          let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
         })
 
@@ -43,13 +43,13 @@ struct CanvasRenderer1 {
         .height('100%')
         .backgroundColor('#ffff00')
         .onReady(() =>{
-          var offContext = this.offCanvas.getContext("2d", this.settings)
+          let offContext = this.offCanvas.getContext("2d", this.settings)
           let offctx = offContext
           offctx.imageSmoothingEnabled = true
           offctx.imageSmoothingQuality = 'medium'
           offctx.drawImage(this.img, 0, 300, 400, 500)
 
-          var image = this.offCanvas.transferToImageBitmap()
+          let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
         })
 
@@ -58,13 +58,13 @@ struct CanvasRenderer1 {
         .height('100%')
         .backgroundColor('#ffff00')
         .onReady(() =>{
-          var offContext = this.offCanvas.getContext("2d", this.settings)
+          let offContext = this.offCanvas.getContext("2d", this.settings)
           let offctx = offContext
           offctx.imageSmoothingEnabled = true
           offctx.imageSmoothingQuality = 'low'
           offctx.drawImage(this.img, 0, 600, 400, 800)
 
-          var image = this.offCanvas.transferToImageBitmap()
+          let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
         })
     }

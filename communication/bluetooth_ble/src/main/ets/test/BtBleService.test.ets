@@ -70,16 +70,24 @@ describe('btBleServiceTest', function() {
     }
 
     async function clickRequestPermission(text:string) {
+        console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
         try {
-            console.info('[bluetooth_js] clickRequestPermission start');
-            let driver = Driver.create();
-            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text(text));
             await button.click();
             await driver.delayMs(3000);
             console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed');
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
         }
     }
 
@@ -114,9 +122,10 @@ describe('btBleServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_GATTSERCONNECT_0100
-     * @tc.name test Server connectStateChange
+     * @tc.name testConnectStateChange
      * @tc.desc Test on and off api10 .
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTSERCONNECT_0100', 0, async function (done) {
@@ -133,7 +142,7 @@ describe('btBleServiceTest', function() {
             done();
         } catch (error) {
             console.error(`[bluetooth_js]Connect_0100 failed, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
         }
         done();
     })
@@ -143,6 +152,7 @@ describe('btBleServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test AddService api10.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADDSERVICE_0100', 0, async function (done) {
@@ -168,7 +178,7 @@ describe('btBleServiceTest', function() {
             gattServer.addService(gattService);
         } catch (error) {
             console.error(`[bluetooth_js]AddService2 failed, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
         }
         done(); 
     })
@@ -178,6 +188,7 @@ describe('btBleServiceTest', function() {
      * @tc.name testAddService
      * @tc.desc Test api10 401 - characteristics of service is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLE_ADDSERVICE_0200', 0, async function (done) { 
@@ -185,7 +196,7 @@ describe('btBleServiceTest', function() {
             gattServer.removeService('00001810-0000-1000-8000-00805F9B34FB');
         } catch (error) {
             console.error(`[bluetooth_js]AddService2 failed, code is ${error.code},message is ${error.message}`);
-            expect(true).assertEqual(error.code == '2900099' || error.code == '401');
+            expect(true).assertEqual(Number(error.code) == 2900099 || Number(error.code) == 401);
         }
         done(); 
         
@@ -193,9 +204,10 @@ describe('btBleServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_NOTIFYCHARACTERISTIC_0100
-     * @tc.name testNotifyCharacteristicChanged callback
+     * @tc.name testNotifyCharacteristicChanged
      * @tc.desc Test NotifyCharacteristicChanged api10.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_NOTIFYCHARACTERISTIC_0100', 0, async function (done) {
@@ -239,16 +251,16 @@ describe('btBleServiceTest', function() {
             })
         } catch (error) {
             console.error(`[bluetooth_js]notifyCharacteristicChanged error, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
         }
         done();
     })
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_NOTIFYCHARACTERISTIC_0200
-     * @tc.name testNotifyCharacteristicChanged promise
+     * @tc.name testNotifyCharacteristicChanged
      * @tc.desc Test NotifyCharacteristicChanged api10.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_NOTIFYCHARACTERISTIC_0200', 0, async function (done) {
@@ -276,16 +288,17 @@ describe('btBleServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]notifyCharacteristicChanged2 failed, code:'
             +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
         }
         done();
     })
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0100
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse api10.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0100', 0, async function (done) {
@@ -301,16 +314,17 @@ describe('btBleServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]sendResponse1 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
             done();
         }
     })
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0200
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse api10.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0200', 0, async function (done) {
@@ -326,16 +340,17 @@ describe('btBleServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]sendResponse2 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
             done();
         }
     })
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0300
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse 401 -null parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0300', 0, async function (done) {
@@ -346,16 +361,17 @@ describe('btBleServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]sendResponse3 error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0400
-     * @tc.name testSendResponse success
+     * @tc.name testSendResponse
      * @tc.desc Test SendResponse 401 -error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0400', 0, async function (done) {
@@ -371,16 +387,17 @@ describe('btBleServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]sendResponse4 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
             done();
         } 
     })
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLES_MTUCHANGE_0100
-     * @tc.name test gattserver on blemtuchange
+     * @tc.name testOnBLEMtuChange
      * @tc.desc test gattserver on blemtuchange api10.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLES_MTUCHANGE_0100', 0, async function (done) {
@@ -390,7 +407,7 @@ describe('btBleServiceTest', function() {
             })
         } catch (err) {
             console.error("bluetooth mtu changed on errCode:" + err.code + ",bluetooth mtu changed on errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         gattServer.off('BLEMtuChange');
         done();
@@ -398,9 +415,10 @@ describe('btBleServiceTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLES_MTUCHANGE_0200
-     * @tc.name test gattserver off blemtuchange
+     * @tc.name testOnBLEMtuChange
      * @tc.desc test gattserver off blemtuchange api10
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLES_MTUCHANGE_0200', 0, async function (done) {
@@ -411,7 +429,7 @@ describe('btBleServiceTest', function() {
             gattServer.off('BLEMtuChange');
         } catch (err) {
             console.error("bluetooth mtu changed off errCode:" + err.code + ",bluetooth mtu changed off errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })

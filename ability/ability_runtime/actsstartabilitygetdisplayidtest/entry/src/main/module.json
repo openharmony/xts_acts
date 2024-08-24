@@ -7,7 +7,8 @@
     "deviceTypes": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -32,7 +33,8 @@
             ]
           }
         ]
-      },{
+      },
+      {
         "name": "MainAbility1",
         "srcEntry": "./ets/mainAbility1/MainAbility1.ets",
         "description": "$string:TestAbility_desc",

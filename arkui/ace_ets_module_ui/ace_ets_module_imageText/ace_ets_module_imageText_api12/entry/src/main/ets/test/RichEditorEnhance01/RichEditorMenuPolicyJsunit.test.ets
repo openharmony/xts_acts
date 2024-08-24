@@ -18,10 +18,10 @@ import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function RichEditorMenuPolicyJsunit() {
-  describe('RichEditorMenuPolicyJsunit', function () {
-    beforeEach(async function (done) {
+  describe('RichEditorMenuPolicyJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("RichEditorMenuPolicyJsunit beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/RichEditorEnhance01/RichEditorMenuPolicy',
       }
       try {
@@ -42,7 +42,7 @@ export default function RichEditorMenuPolicyJsunit() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await driver.delayMs(1000)
       console.info("RichEditorMenuPolicyJsunit after each called");
@@ -56,7 +56,7 @@ export default function RichEditorMenuPolicyJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('RichEditorMenuPolicyJsunit_0100', 0, async function (done) {
+    it('RichEditorMenuPolicyJsunit_0100', 0, async (done: Function) => {
       console.info('[RichEditorMenuPolicyJsunit_0100] START');
       let driver = Driver.create();
       await driver.delayMs(1000)
@@ -86,7 +86,7 @@ export default function RichEditorMenuPolicyJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('RichEditorMenuPolicyJsunit_0200', 0, async function (done) {
+    it('RichEditorMenuPolicyJsunit_0200', 0, async (done: Function) => {
       console.info('[RichEditorMenuPolicyJsunit_0200] START');
       let driver = Driver.create();
       await driver.delayMs(1000)

@@ -105,6 +105,16 @@ export default function requestDownloadJSUnit() {
         expect(request.agent.Faults.PROTOCOL).assertEqual(32);
         console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.FSIO: " + request.agent.Faults.FSIO);
         expect(request.agent.Faults.FSIO).assertEqual(64);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.PARAM: " + request.agent.Faults.PARAM);
+        expect(request.agent.Faults.PARAM).assertEqual(48);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.DNS: " + request.agent.Faults.DNS);
+        expect(request.agent.Faults.DNS).assertEqual(80);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.TCP: " + request.agent.Faults.TCP);
+        expect(request.agent.Faults.TCP).assertEqual(96);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.SSL: " + request.agent.Faults.SSL);
+        expect(request.agent.Faults.SSL).assertEqual(112);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.REDIRECT: " + request.agent.Faults.REDIRECT);
+        expect(request.agent.Faults.REDIRECT).assertEqual(128);
       } catch (err) {
         console.error("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 error: " + err);
         expect().assertFail();
@@ -1024,8 +1034,11 @@ export default function requestDownloadJSUnit() {
       try {
         let task = await request.agent.create(globalThis.abilityContext, config);
         let task1 = await request.agent.getTask(globalThis.abilityContext, task.tid);
-        expect(typeof(task1.tid) === 'string').assertTrue();
-        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Succeeded in querying a download task: " + task);
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Succeeded in querying a download task: " + JSON.stringify(task));
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Succeeded in querying a download task1: " + JSON.stringify(task1));
+        let taskStr1 = JSON.stringify(task);
+        let taskStr2 = JSON.stringify(task1);
+        expect(taskStr1 === taskStr2).assertTrue();
         try {
           await request.agent.remove(task1.tid);
           console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 remove success: " + task);
@@ -1034,12 +1047,10 @@ export default function requestDownloadJSUnit() {
         }
         done();
       } catch (err) {
-        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Failed to query a upload task : " + JSON.stringify(err));
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Failed: " + JSON.stringify(err));
         expect().assertFail();
         done();
       }
-      console.info("-----------------------SUB_REQUEST_Agent_GetTask_Promise_0100 end-----------------------");
-      done();
     });
 
   });

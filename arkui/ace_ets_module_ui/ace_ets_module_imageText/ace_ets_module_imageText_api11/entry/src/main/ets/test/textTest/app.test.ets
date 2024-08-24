@@ -16,7 +16,7 @@
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../../MainAbility/common/Utils.ets'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function appVersionCodeJsunit() {
   describe('appVersionCodeTest', () => {
@@ -32,7 +32,7 @@ export default function appVersionCodeJsunit() {
         if (!("app" == pages.name)) {
           console.info("get app state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push app page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -42,13 +42,13 @@ export default function appVersionCodeJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("appVersionCode after each called");
     });
 
     it('testappVersionCode0011', 0, async (done: Function) => {
       console.info('appVersionCode testappVersionCode0011 START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let innerEvent: events_emitter.InnerEvent = {
           eventId: 60302,
@@ -56,7 +56,7 @@ export default function appVersionCodeJsunit() {
         }
         let callback = (eventData: events_emitter.EventData) => {
           console.info("testappVersionCode_0011 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Code).assertEqual(1000000);
+          expect(eventData.data?.Code).assertEqual(1000000);
         }
         console.info("testappVersion click result is: " + JSON.stringify(sendEventByKey('versionCodeText', 10, "")));
         events_emitter.on(innerEvent, callback);

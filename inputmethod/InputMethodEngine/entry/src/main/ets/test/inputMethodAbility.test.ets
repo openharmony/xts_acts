@@ -514,6 +514,21 @@ export default function inputMethodAbility() {
     });
 
     /*
+    * @tc.number  inputMethodEngine_test_029
+    * @tc.name   inputMethodEngine_test_029
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('inputMethodEngine_test_029', 0, async (done: Function) => {
+      let keyType = inputMethodEngine.ENTER_KEY_TYPE_NEWLINE;
+      console.info("====>inputMethodEngine_test_029 result:" + keyType);
+      expect(keyType).assertEqual(8);
+      done();
+    });
+
+    /*
     * @tc.number  Sub_Misc_inputMethodEngine_ExtendAction_0100
     * @tc.name   Sub_Misc_inputMethodEngine_ExtendAction_0100
     * @tc.desc    Function test

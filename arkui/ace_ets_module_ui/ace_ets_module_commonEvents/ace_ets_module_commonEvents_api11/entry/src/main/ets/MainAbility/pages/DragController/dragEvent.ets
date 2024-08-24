@@ -77,7 +77,7 @@ struct DragExample {
               console.info("apple start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("apple emit action state err: " + JSON.stringify(err.message))
+              console.info("apple emit action state err: " + JSON.stringify((err as Error)?.message))
             }
             return this.pixelMapBuilder
           })
@@ -187,7 +187,7 @@ struct DragExample {
           console.info("onDragEnter start to emit action state")
           events_emitter.emit(backEvent, backData)
         } catch (err) {
-          console.info("onDragEnter emit action state err: " + JSON.stringify(err.message))
+          console.info("onDragEnter emit action state err: " + JSON.stringify((err as Error)?.message))
         }
       })
       .onDragMove((event: DragEvent, extraParams: string) => {
@@ -205,7 +205,7 @@ struct DragExample {
           console.info("onDragMove start to emit action state")
           events_emitter.emit(backEvent, backData)
         } catch (err) {
-          console.info("onDragMove emit action state err: " + JSON.stringify(err.message))
+          console.info("onDragMove emit action state err: " + JSON.stringify((err as Error)?.message))
         }
       })
       .onDragLeave((event: DragEvent, extraParams: string) => {
@@ -223,7 +223,7 @@ struct DragExample {
           console.info("onDragLeave start to emit action state")
           events_emitter.emit(backEvent, backData)
         } catch (err) {
-          console.info("onDragLeave emit action state err: " + JSON.stringify(err.message))
+          console.info("onDragLeave emit action state err: " + JSON.stringify((err as Error)?.message))
         }
       })
       .onDrop((event: DragEvent, extraParams: string) => {
@@ -241,7 +241,7 @@ struct DragExample {
           console.info("onDrop start to emit action state")
           events_emitter.emit(backEvent, backData)
         } catch (err) {
-          console.info("onDrop emit action state err: " + JSON.stringify(err.message))
+          console.info("onDrop emit action state err: " + JSON.stringify((err as Error)?.message))
         }
         if (this.bool) {
           this.numbers.splice(JSON.parse(extraParams).insertIndex, 0, this.text)

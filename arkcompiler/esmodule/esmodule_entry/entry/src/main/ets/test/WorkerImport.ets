@@ -18,16 +18,6 @@ import {Sleep} from './Util'
 
 export default function workerImport() {
   describe("WorkerImportTest", () => {
-    it('importOhpm', 0, async () => {
-      let workerImportOhpm = 'failed'
-      let threadWorker = new worker.ThreadWorker('entry/ets/workers/workerImportOhpm')
-      threadWorker.postMessage("ModuleTest host to worker")
-      threadWorker.onmessage = () => {
-        workerImportOhpm = 'success';
-      }
-      await Sleep(2000)
-      expect(workerImportOhpm).assertEqual('success')
-    })
     it('importRelative', 0, async () => {
       let workerImportRelative = 'failed'
       let threadWorker = new worker.ThreadWorker('entry/ets/workers/workerImportRelative')

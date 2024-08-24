@@ -53,7 +53,7 @@ struct RichEditorApi10 {
           })
           .onWillChange((value:RichEditorChangeValue) => {
             value.replacedSymbolSpans.forEach(item => {
-              this.text = String(item.value)
+              this.text = String(item.symbolSpanStyle?.fontSize)
             });
             return true
           })

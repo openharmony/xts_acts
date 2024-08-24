@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 import window from '@ohos.window';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import { BusinessError } from '@ohos.base';
@@ -24,11 +24,11 @@ import { BusinessError } from '@ohos.base';
 
 
 export default function AlertDialog() {
-  describe('AlertDialog', function () {
-    beforeEach(async function (done) {
+  describe('AlertDialog', () => {
+    beforeEach(async (done: Function) => {
       console.info("AlertDialog beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/AlertDialog/AlertDialog1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AlertDialog/AlertDialog1',
       }
       try {
         router.clear();
@@ -55,7 +55,7 @@ export default function AlertDialog() {
      * @tc.type :
      * @tc.size :
      */
-    it('AlertDialog_0100', 0, async function (done) {
+    it('AlertDialog_0100', 0, async (done: Function) => {
       console.info('AlertDialog_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

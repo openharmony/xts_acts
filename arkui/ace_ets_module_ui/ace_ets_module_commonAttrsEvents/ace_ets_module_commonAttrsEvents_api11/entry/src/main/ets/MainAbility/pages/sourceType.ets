@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,6 +19,8 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct ClickExample {
   @State text: string = '';
+  sourceType: string = '';
+  eventType?: string;
 
   build() {
     Column() {
@@ -39,13 +40,13 @@ struct ClickExample {
             this.eventType = 'Move'
           }
           if (event.source === SourceType.Unknown) {
-            this.SourceType = 'Unknown'
+            this.sourceType = 'Unknown'
           }
           if (event.source === SourceType.Mouse) {
-            this.SourceType = 'Mouse'
+            this.sourceType = 'Mouse'
           }
-          if (event.type === SourceType.TouchScreen) {
-            this.SourceType = 'TouchScreen'
+          if (event.source === SourceType.TouchScreen) {
+            this.sourceType = 'TouchScreen'
           }
           console.info(this.text = 'source：' + event.source);
           try {
@@ -61,7 +62,7 @@ struct ClickExample {
             console.info("sourceTypeTest_0100 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("sourceTypeTest_0100 emit action state err: " + JSON.stringify(err.message))
+            console.info("sourceTypeTest_0100 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .key('button')

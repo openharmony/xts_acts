@@ -2555,7 +2555,7 @@ export default function nativeApiStringJsunit() {
       console.info('aceNapiTest0168 START');
       let value = napitest.createSendableTypedArrayTest();
       console.info('aceNapiTest0168 testString result is: ' + value + "--" + JSON.stringify(value));
-      expect(value instanceof SharedInt32Array).assertTrue();
+      expect(value instanceof SendableInt32Array).assertTrue();
       expect(value.length).assertEqual(4);
       done();
     });

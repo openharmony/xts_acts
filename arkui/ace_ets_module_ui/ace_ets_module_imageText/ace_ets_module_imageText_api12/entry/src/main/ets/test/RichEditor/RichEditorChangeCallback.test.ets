@@ -14,7 +14,7 @@
  */
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 
@@ -32,7 +32,7 @@ export default function RichEditorChangeCallback() {
         if (!("RichEditorChangeCallback" == pages.name)) {
           console.info("get RichEditorChangeCallback state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push RichEditorChangeCallback page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -42,7 +42,7 @@ export default function RichEditorChangeCallback() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("RichEditorChangeCallback after each called");
     });
 
@@ -55,17 +55,17 @@ export default function RichEditorChangeCallback() {
     */
     it('RichEditorChangeCallback_001', 0, async (done: Function) => {
       console.info('[RichEditorChangeCallback_001] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('RichEditorChangeCallback_text');
-      let obj1 = JSON.parse(strJson1);
-      await Utils.sleep(1000);
+      let obj1: ESObject = JSON.parse(strJson1);
+      await CommonFunc.sleep(1000);
       console.info("[RichEditorChangeCallback_001] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('onWillChangeonDidChange');
 
       let strJson2 = getInspectorByKey('RichEditorChangeCallback_text2');
-      let obj2 = JSON.parse(strJson2);
-      await Utils.sleep(1000);
+      let obj2: ESObject = JSON.parse(strJson2);
+      await CommonFunc.sleep(1000);
       console.info("[RichEditorChangeCallback_001] obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.content).assertEqual('test');
 

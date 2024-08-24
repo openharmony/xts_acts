@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import router from '@ohos.router';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function TapGestureTemplateTest() {
-  describe('TapGestureTemplateTest', function () {
-    beforeEach(async function (done) {
+  describe('TapGestureTemplateTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("TapGestureTemplateTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TapGesture/TapGestureTemplate',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TapGesture/TapGestureTemplate',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function TapGestureTemplateTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("TapGestureTemplateTest after each called");
     });
@@ -54,7 +54,7 @@ export default function TapGestureTemplateTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TapGestureTemplateTest_0010', 0, async function (done) {
+    it('TapGestureTemplateTest_0010', 0, async (done: Function) => {
       console.info('TapGestureTemplateTest_0010 START');
       await CommonFunc.sleep(1000);
       let FatherObj = CommonFunc.getComponentRectOnScreen('TapGestureTemplate_Father');
@@ -77,11 +77,11 @@ export default function TapGestureTemplateTest() {
       let timeAfter:number = Date.now();
       await CommonFunc.sleep(3000);
       let text1 = getInspectorByKey('TapGestureTemplate_Text01');
-      let obj1 = JSON.parse(text1);
+      let obj1: ESObject = JSON.parse(text1);
       let time1: number = Number(obj1.$attrs.content)
       console.log('TapGestureTemplateTest_0010 obj1 $attrs content',obj1.$attrs.content,time1)
       let text2 = getInspectorByKey('TapGestureTemplate_Text02');
-      let obj2 = JSON.parse(text2);
+      let obj2: ESObject = JSON.parse(text2);
       let time2: number = Number(obj2.$attrs.content);
       console.log('TapGestureTemplateTest_0010 obj2 time $attrs content',time1,time2);
       console.log('TapGestureTemplateTest_0010 obj2 time time2-time1',time2 - time1);

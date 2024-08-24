@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function dialogApi() {
-  describe('dialogApi', function () {
-    beforeEach(async function (done) {
+  describe('dialogApi', () => {
+    beforeEach(async (done: Function) => {
       console.info("dialogApi beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function dialogApi() {
       console.info("dialogApi foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("dialogApi after each called");
     });
@@ -49,7 +49,7 @@ export default function dialogApi() {
      * @tc.type
      */
 
-    it('dialogApi_0100', 0, async function (done) {
+    it('dialogApi_0100', 0, async (done: Function) => {
 
       console.info('dialogApi_0100 START');
       let driver = await Driver.create();
@@ -57,7 +57,7 @@ export default function dialogApi() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('dialogApiBt');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[dialogApi_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual("dialogApi");
       console.info('[dialogApi_0100] END');

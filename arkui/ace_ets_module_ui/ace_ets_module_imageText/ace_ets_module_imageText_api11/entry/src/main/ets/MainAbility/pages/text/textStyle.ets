@@ -103,16 +103,16 @@ struct TextStyle {
   textStyleChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("textStyle page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData && eventData.data) {
-      if (eventData.data.fontColor) {
-        this.fontColor = eventData.data.fontColor;
-      } else if (eventData.data.fontSize) {
-        this.fontSize = eventData.data.fontSize;
-      } else if (eventData.data.fontWeight) {
-        this.fontWeight = eventData.data.fontWeight;
-      } else if (eventData.data.fontFamily) {
-        this.fontFamily = eventData.data.fontFamily;
+      if (eventData.data?.fontColor) {
+        this.fontColor = eventData.data?.fontColor;
+      } else if (eventData.data?.fontSize) {
+        this.fontSize = eventData.data?.fontSize;
+      } else if (eventData.data?.fontWeight) {
+        this.fontWeight = eventData.data?.fontWeight;
+      } else if (eventData.data?.fontFamily) {
+        this.fontFamily = eventData.data?.fontFamily;
       } else {
-        this.fontStyle = eventData.data.fontStyle;
+        this.fontStyle = eventData.data?.fontStyle;
       }
     }
   }

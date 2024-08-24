@@ -18,7 +18,7 @@ struct PageOne {
   private content: string = "Page one"
 
   build() {
-    Row() {
+    Row(){
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Text(`${this.content}`)
           .fontSize(50)

@@ -19,7 +19,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -46,7 +47,8 @@
         "form": {
           "formEntity": [
             "homeScreen",
-            "searchbox"],
+            "searchbox"
+          ],
           "defaultHeight": 100,
           "defaultWidth": 200,
           "minHeight": 50,
@@ -56,7 +58,10 @@
           {
             "colorMode": "light",
             "description": " JS4A Form",
-            "supportDimensions": [ "2*4", "4*4" ],
+            "supportDimensions": [
+              "2*4",
+              "4*4"
+            ],
             "type": "JS",
             "jsComponentName": "JS_name4A",
             "metaData": {
@@ -78,7 +83,11 @@
           {
             "colorMode": "light",
             "description": " JS4B Form",
-            "supportDimensions": [ "1*2", "2*2" , "2*4"],
+            "supportDimensions": [
+              "1*2",
+              "2*2",
+              "2*4"
+            ],
             "type": "JS",
             "jsComponentName": "JS_name4B",
             "metaData": {
@@ -108,8 +117,8 @@
         "label": "$string:app_name",
         "intents": [
           {
-            "targetClass":"com.example.third4A.MainAbility",
-            "targetBundle":"com.example.third4A"
+            "targetClass": "com.example.third4A.MainAbility",
+            "targetBundle": "com.example.third4A"
           }
         ]
       },

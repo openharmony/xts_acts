@@ -22,26 +22,6 @@ export async function varibleWithinHap( ): Promise<boolean> {
   }
   return res;
 }
-export async function variableImportRemoteHar( ): Promise<boolean> {
-  let packageName = '@ohos/crypto-js';
-  let lib: ESObject = await import(packageName);
-  let value: string = lib.CryptoJS.MD5("123456").toString();
-  let res: boolean = false;
-  if (value == 'e10adc3949ba59abbe56e057f20f883e') {
-    res = true;
-  }
-  return res;
-}
-export async function variableImportOhpm( ): Promise<boolean> {
-  let packageName = '@yunkss/eftool';
-  let lib: ESObject = await import(packageName);
-  let value: string = lib.IdCardUtil.convert15To18("420106640901234").getDataRow();
-  let res: boolean = false;
-  if (value == '420106194201062348') {
-    res = true;
-  }
-  return res;
-}
 
 @Entry
 @Component

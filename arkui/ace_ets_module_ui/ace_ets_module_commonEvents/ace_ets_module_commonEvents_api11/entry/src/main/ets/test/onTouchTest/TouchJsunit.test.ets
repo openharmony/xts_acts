@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function touchJsunit() {
   describe('touchTest', () => {
@@ -32,7 +32,7 @@ export default function touchJsunit() {
         if (!("touch" == pages.name)) {
           console.info("get touch state pages.name: " + JSON.stringify(pages.name));
           await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
         console.error("push touch page error: " + err);
@@ -41,18 +41,18 @@ export default function touchJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("touch after each called");
     })
 
     it('testTouch01', 0, async (done: Function) => {
       console.info('[testTouch01] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let callBackTouch = (backData: events_emitter.EventData) => {
           console.info("testTouch01 get backEvent result is: " + JSON.stringify(backEvent));
-          console.info("testTouch01 get flag result is: " + JSON.stringify(backData.data.ACTION));
-          expect(backData.data.ACTION).assertEqual(true);
+          console.info("testTouch01 get flag result is: " + JSON.stringify(backData.data?.ACTION));
+          expect(backData.data?.ACTION).assertEqual(true);
           done()
         }
         let backEvent: events_emitter.InnerEvent = {

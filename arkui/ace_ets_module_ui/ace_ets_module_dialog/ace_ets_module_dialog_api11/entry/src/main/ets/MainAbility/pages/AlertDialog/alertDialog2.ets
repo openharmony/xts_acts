@@ -92,7 +92,7 @@ struct AlertDialogCenterStart {
             console.info("CenterStart start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("CenterStart emit action state err: " + JSON.stringify(err.message))
+            console.info("CenterStart emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .backgroundColor(0x317aff)
@@ -135,7 +135,7 @@ struct AlertDialogCenterStart {
             console.info("CenterEnd start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("CenterEnd emit action state err: " + JSON.stringify(err.message))
+            console.info("CenterEnd emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         }).backgroundColor(0x317aff)
 

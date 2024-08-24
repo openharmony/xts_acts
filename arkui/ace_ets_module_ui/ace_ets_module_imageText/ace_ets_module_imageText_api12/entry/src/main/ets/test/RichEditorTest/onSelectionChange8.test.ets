@@ -14,14 +14,14 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function onSelectionChange8() {
-  describe('onSelectionChange8', function () {
-    beforeEach(async function (done) {
+  describe('onSelectionChange8', () => {
+    beforeEach(async (done: Function) => {
       console.info("onSelectionChange8 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/RichEditor/onSelectionChange8',
       }
       try {
@@ -40,7 +40,7 @@ export default function onSelectionChange8() {
       console.info("onSelectionChange8 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("onSelectionChange8 after each called");
     });
@@ -52,7 +52,7 @@ export default function onSelectionChange8() {
      * @tc.type
     * @tc.size
      */
-    it('onSelectionChange8_0100', 0, async function (done) {
+    it('onSelectionChange8_0100', 0, async (done: Function) => {
       console.info('[onSelectionChange8_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -64,20 +64,20 @@ export default function onSelectionChange8() {
       await CommonFunc.sleep(1000);
 
       let text0 = getInspectorByKey('onSelectionChange8_text1');
-      let Obj0 = JSON.parse(text0);
+      let Obj0: ESObject = JSON.parse(text0);
       expect(Obj0.$attrs.content).assertEqual('1');
 
       let btn1 = await driver.findComponent(ON.id('onSelectionChange8_btn1'));
       await btn1.click();
       await CommonFunc.sleep(1000);
       let text1 = getInspectorByKey('onSelectionChange8_text1');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('2');
       let text2 = getInspectorByKey('onSelectionChange8_text2');
-      let Obj2 = JSON.parse(text2);
+      let Obj2: ESObject = JSON.parse(text2);
       expect(Obj2.$attrs.content).assertEqual('0');
       let text3 = getInspectorByKey('onSelectionChange8_text3');
-      let Obj3 = JSON.parse(text3);
+      let Obj3: ESObject = JSON.parse(text3);
       expect(Obj3.$attrs.content).assertEqual('10');
 
       console.info('[onSelectionChange8_0100] END');

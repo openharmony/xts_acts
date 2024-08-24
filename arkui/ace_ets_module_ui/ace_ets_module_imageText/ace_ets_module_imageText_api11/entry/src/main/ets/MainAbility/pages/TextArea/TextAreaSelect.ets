@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { MessageManager, Callback } from '../../../test/MessageManager';
+import { MessageManager, Callback } from '../../common/MessageManager';
 
 @Entry
 @Component
@@ -29,7 +29,7 @@ struct TextAreaSelect {
     globalThis.value = {
       name: 'messageManager', message: this.messageManager
     }
-    let callback: Callback = (message: any) => {
+    let callback: Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'Show selected (-2,-1)') {
         this.controller.setTextSelection(-2, -1)

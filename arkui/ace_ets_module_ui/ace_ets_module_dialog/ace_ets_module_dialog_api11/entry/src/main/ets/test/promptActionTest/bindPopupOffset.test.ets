@@ -63,7 +63,7 @@ export default function bindPopupOffsetTest() {
         }
         let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0100 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({
+          expect(indexEvent.data?.offset).assertEqual({
             x: 10, y: 10
           });
           done();
@@ -92,7 +92,7 @@ export default function bindPopupOffsetTest() {
         }
         let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0200 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({
+          expect(indexEvent.data?.offset).assertEqual({
             x: 10, y: 10
           });
           done();
@@ -121,7 +121,7 @@ export default function bindPopupOffsetTest() {
         }
         let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0300 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({
+          expect(indexEvent.data?.offset).assertEqual({
             x: 0, y: 0
           });
           done();
@@ -150,7 +150,7 @@ export default function bindPopupOffsetTest() {
         }
         let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0400 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({
+          expect(indexEvent.data?.offset).assertEqual({
             x: 0, y: 50
           });
           done();
@@ -179,7 +179,7 @@ export default function bindPopupOffsetTest() {
         }
         let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0500 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual(null);
+          expect(indexEvent.data?.offset).assertEqual(null);
           done();
         }
         try {
@@ -205,7 +205,7 @@ export default function bindPopupOffsetTest() {
         }
         let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0600 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({
+          expect(indexEvent.data?.offset).assertEqual({
             x: -10, y: -10
           });
           done();
@@ -234,7 +234,7 @@ export default function bindPopupOffsetTest() {
         }
         let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0700 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({
+          expect(indexEvent.data?.offset).assertEqual({
             x: -10, y: -10
           });
           done();
@@ -263,7 +263,7 @@ export default function bindPopupOffsetTest() {
         }
         let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0800 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({
+          expect(indexEvent.data?.offset).assertEqual({
             x: 0, y: 0
           });
           done();
@@ -292,7 +292,7 @@ export default function bindPopupOffsetTest() {
         }
         let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0900 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({
+          expect(indexEvent.data?.offset).assertEqual({
             x: 0, y: 50
           });
           done();
@@ -321,7 +321,7 @@ export default function bindPopupOffsetTest() {
         }
         let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_1000 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual(null);
+          expect(indexEvent.data?.offset).assertEqual(null);
           done();
         }
         try {

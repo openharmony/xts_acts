@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import Log from '../common/Log.ets';
+import Log from '../common/Log';
 import inputEventClient from '@ohos.multimodalInput.inputEventClient';
 
 const TAG = 'ets_apiLack_add';

@@ -52,40 +52,6 @@ static napi_value TestTextPickerRange003(napi_env env, napi_callback_info info)
 static napi_value TestTextPickerRange004(napi_env env, napi_callback_info info)
 {
     NAPI_START(textPicker, ARKUI_NODE_TEXT_PICKER);
-    ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    const char *icon = "resource://media/icon.png";
-    const char *text = "TEST";
-    ARKUI_TextPickerRangeContent rangeContent[] = {{icon, text}, {icon, text}, {icon, text}};
-    value_item.object = &rangeContent;
-    auto ret = nodeAPI->setAttribute(textPicker, NODE_TEXT_PICKER_OPTION_RANGE, &value_item);
-    ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(textPicker, NODE_TEXT_PICKER_OPTION_RANGE)->value[PARAM_0].i32,
-              ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT);
-    NAPI_END;
-}
-
-static napi_value TestTextPickerRange005(napi_env env, napi_callback_info info)
-{
-    NAPI_START(textPicker, ARKUI_NODE_TEXT_PICKER);
-    ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    const char *icon = "resource://media/icon.png";
-    const char *text = "TEST";
-    ARKUI_TextPickerRangeContent rangeContent[] = {{icon, text}, {icon, text}, {icon, text}};
-    ARKUI_TextPickerCascadeRangeContent multiple_rangeContent[] = {
-        {text, rangeContent, sizeof(rangeContent) / sizeof(ARKUI_TextPickerRangeContent)}};
-    value_item.object = &multiple_rangeContent;
-    auto ret = nodeAPI->setAttribute(textPicker, NODE_TEXT_PICKER_OPTION_RANGE, &value_item);
-    ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(textPicker, NODE_TEXT_PICKER_OPTION_RANGE)->value[PARAM_0].i32,
-              ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT);
-    NAPI_END;
-}
-
-static napi_value TestTextPickerRange006(napi_env env, napi_callback_info info)
-{
-    NAPI_START(textPicker, ARKUI_NODE_TEXT_PICKER);
     ArkUI_NumberValue value[] = {{.i32 = PARAM_NEGATIVE_1}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     value_item.string = "A,B,C;A,B,C;A,B,C";

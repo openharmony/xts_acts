@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function TextTimerJsunit() {
-  describe('TextTimerJsunit', function () {
-    beforeEach(async function (done) {
+  describe('TextTimerJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextTimer beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TextTimer/TextTimerPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TextTimer/TextTimerPage',
       }
       try {
         router.clear();
@@ -43,11 +43,11 @@ export default function TextTimerJsunit() {
       done();
     });
 
-    it('TextTimerJsunit_0100', 0, async function (done) {
+    it('TextTimerJsunit_0100', 0, async (done: Function) => {
       // Get the information of TextTimer component
       console.info('[TextTimerJsunit_0100] START');
       let strJson = getInspectorByKey('textTimer');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextTimerJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[TextTimerJsunit_0100] isCountDown: " + JSON.stringify(obj.$attrs.isCountDown));
       console.info("[TextTimerJsunit_0100] count: " + JSON.stringify(obj.$attrs.count));
@@ -59,7 +59,7 @@ export default function TextTimerJsunit() {
 
       // Get default attributes of TextTimer component
       let strJson1 = getInspectorByKey('default');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[TextTimerJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[TextTimerJsunit_0100] isCountDown1: " + JSON.stringify(obj1.$attrs.isCountDown));
       console.info("[TextTimerJsunit_0100] count1: " + JSON.stringify(obj1.$attrs.count));
@@ -72,7 +72,7 @@ export default function TextTimerJsunit() {
       done();
     });
 
-    it('TextTimerJsunit_0200', 0, async function (done) {
+    it('TextTimerJsunit_0200', 0, async (done: Function) => {
       // Modify the attribute of TextTimer component
       console.info('[TextTimerJsunit_0200] START');
       globalThis.value.message.notify({name:'isCountDown',value:'false'})
@@ -84,7 +84,7 @@ export default function TextTimerJsunit() {
 
       // Get the attribute of TextTimer component
       let strJson = getInspectorByKey('textTimer');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextTimerJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[TextTimerJsunit_0200] isCountDown: " + JSON.stringify(obj.$attrs.isCountDown));
       console.info("[TextTimerJsunit_0200] count: " + JSON.stringify(obj.$attrs.count));
@@ -97,7 +97,7 @@ export default function TextTimerJsunit() {
       done();
     });
 
-    it('TextTimerJsunit_0300', 0, async function (done) {
+    it('TextTimerJsunit_0300', 0, async (done: Function) => {
       // Verify start function of TextTimer component
       console.info('[TextTimerJsunit_0300] START');
       let driver = await UiDriver.create()
@@ -125,7 +125,7 @@ export default function TextTimerJsunit() {
       done();
     });
 
-    it('TextTimerJsunit_0400', 0, async function (done) {
+    it('TextTimerJsunit_0400', 0, async (done: Function) => {
       // Verify pause function of TextTimer component
       console.info('[TextTimerJsunit_0400] START');
       let driver = await UiDriver.create()
@@ -166,7 +166,7 @@ export default function TextTimerJsunit() {
       done();
     });
 
-    it('TextTimerJsunit_0500', 0, async function (done) {
+    it('TextTimerJsunit_0500', 0, async (done: Function) => {
       // Verify reset function of TextTimer component
       console.info('[TextTimerJsunit_0500] START');
       let driver = await UiDriver.create()
@@ -202,7 +202,7 @@ export default function TextTimerJsunit() {
       done();
     });
 
-    it('TextTimerJsunit_0600', 0, async function (done) {
+    it('TextTimerJsunit_0600', 0, async (done: Function) => {
       // Illegal modification of properties of TextTimer component
       console.info('[TextTimerJsunit_0600] START');
       globalThis.value.message.notify({name:'isCountDown',value:123})
@@ -214,7 +214,7 @@ export default function TextTimerJsunit() {
 
       // Get the attribute of TextTimer component
       let strJson = getInspectorByKey('textTimer');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextTimerJsunit_0600] component obj is: " + JSON.stringify(obj));
       console.info("[TextTimerJsunit_0600] isCountDown: " + JSON.stringify(obj.$attrs.isCountDown));
       console.info("[TextTimerJsunit_0600] count: " + JSON.stringify(obj.$attrs.count));

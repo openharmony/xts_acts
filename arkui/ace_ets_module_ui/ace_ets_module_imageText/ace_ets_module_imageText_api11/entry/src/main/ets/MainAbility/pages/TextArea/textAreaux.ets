@@ -12,9 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import hilog from '@ohos.hilog';
 import events_emitter from '@ohos.events.emitter';
+
+function asNumber(val: string | number | null | undefined) {
+  return val as number;
+}
+function asBoolean(val: boolean | string | number | null | undefined) {
+  return val as boolean;
+}
 
 @Entry
 @Component
@@ -30,61 +36,61 @@ struct textAreaUx {
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("key==> page valueChangeCallBack");
-    if (eventData.data.type == "TextNum") {
+    if (eventData.data?.type == "TextNum") {
       console.info("valueChangeCallBack TextNum:" + JSON.stringify(eventData));
       this.flag = true
       this.isNum = true
-      this.textNum = Number(eventData.data.text)
+      this.textNum = Number(eventData.data?.text)
     }
-    if (eventData.data.type == "TextStr") {
+    if (eventData.data?.type == "TextStr") {
       console.info("valueChangeCallBack TextStr:" + JSON.stringify(eventData));
       this.flag = true
       this.isNum = false
-      this.textStr = eventData.data.text
+      this.textStr = eventData.data?.text
     }
-    if (eventData.data.type == "TextErr" && eventData.data.text == "null") {
+    if (eventData.data?.type == "TextErr" && eventData.data?.text == "null") {
       console.info("valueChangeCallBack TextNull:" + JSON.stringify(eventData));
       this.flag = false
       this.isNull = true
     }
-    if (eventData.data.type == "TextErr" && eventData.data.text == "undefined") {
+    if (eventData.data?.type == "TextErr" && eventData.data?.text == "undefined") {
       console.info("valueChangeCallBack TextErr:" + JSON.stringify(eventData));
       this.flag = false
       this.isNull = false
     }
 
 
-    if (eventData.data.type == "BoolTrue") {
+    if (eventData.data?.type == "BoolTrue") {
       console.info("valueChangeCallBack TextAreaShowCounterTrue:" + JSON.stringify(eventData));
       this.boolFlag = true
       this.bool = true
     }
-    if (eventData.data.type == "BoolFalse") {
+    if (eventData.data?.type == "BoolFalse") {
       console.info("valueChangeCallBack TextAreaShowCounterTrue:" + JSON.stringify(eventData));
       this.boolFlag = true
       this.bool = false
     }
-    if (eventData.data.type == "BoolErrNum") {
+    if (eventData.data?.type == "BoolErrNum") {
       console.info("valueChangeCallBack TextAreaMaxLengthStr:" + JSON.stringify(eventData));
       this.boolFlag = false
       this.boolIsNum = true
-      this.boolNum = Number(eventData.data.text)
+      this.boolNum = Number(eventData.data?.text)
     }
-    if (eventData.data.type == "BoolErrStr") {
+    if (eventData.data?.type == "BoolErrStr") {
       console.info("valueChangeCallBack TextAreaMaxLengthStr:" + JSON.stringify(eventData));
       this.boolFlag = false
       this.boolIsNum = false
       this.boolIsStr = true
-      this.boolStr = eventData.data.text
+      this.boolStr = eventData.data?.text
     }
-    if (eventData.data.type == "BoolErrNull") {
+    if (eventData.data?.type == "BoolErrNull") {
       console.info("valueChangeCallBack TextAreaMaxLengthStr:" + JSON.stringify(eventData));
       this.boolFlag = false
       this.boolIsNum = false
       this.boolIsStr = false
       this.boolIsNull = true
     }
-    if (eventData.data.type == "BoolErrUndefined") {
+    if (eventData.data?.type == "BoolErrUndefined") {
       console.info("valueChangeCallBack TextAreaMaxLengthStr:" + JSON.stringify(eventData));
       this.boolFlag = false
       this.boolIsNum = false
@@ -145,9 +151,9 @@ struct textAreaUx {
         .height(56)
         .margin(20)
         .fontSize(16)
-        .maxLength(this.flag ? (this.isNum ? this.textNum : this.textStr) : (this.isNull ? null : undefined))
-        .showCounter(this.boolFlag ? this.bool : (this.boolIsNum ? this.boolNum : (this.boolIsStr ? this.boolStr :
-          (this.boolIsNull ? null : undefined))))
+        .maxLength(asNumber(this.flag ? (this.isNum ? this.textNum : this.textStr) : (this.isNull ? null : undefined)))
+        .showCounter(asBoolean(this.boolFlag ? this.bool : (this.boolIsNum ? this.boolNum :
+          (this.boolIsStr ? this.boolStr : (this.boolIsNull ? null : undefined)))))
         .backgroundColor('#FFFFFF')
         .onChange((value: string) => {
           this.text = value
@@ -167,144 +173,144 @@ struct textAreaUx {
           this.text = value
         })
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(BarState.Off)
         .style(TextContentStyle.INLINE)
         .key("ArkUX_Stage_TextArea_barState_0100")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(BarState.Auto)
         .style(TextContentStyle.INLINE)
         .key("ArkUX_Stage_TextArea_barState_0200")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(BarState.On)
         .style(TextContentStyle.INLINE)
         .key("ArkUX_Stage_TextArea_barState_0300")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(BarState.Off)
         .barState(BarState.Auto)
         .style(TextContentStyle.INLINE)
         .key("ArkUX_Stage_TextArea_barState_0400")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(0)
         .style(TextContentStyle.INLINE)
         .key("ArkUX_Stage_TextArea_barState_0500")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(10)
         .style(TextContentStyle.INLINE)
         .key("ArkUX_Stage_TextArea_barState_0600")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
-        .barState("sfasf")
+        .barState(asNumber("sfasf"))
         .style(TextContentStyle.INLINE)
         .key("ArkUX_Stage_TextArea_barState_0700")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
-        .barState("")
+        .barState(asNumber(""))
         .style(TextContentStyle.INLINE)
         .key("ArkUX_Stage_TextArea_barState_0800")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(null)
         .style(TextContentStyle.INLINE)
         .key("ArkUX_Stage_TextArea_barState_0900")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(undefined)
         .style(TextContentStyle.INLINE)
         .key("ArkUX_Stage_TextArea_barState_1000")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(BarState.On)
         .barState(undefined)
         .key("ArkUX_Stage_TextArea_barState_1100")
         .style(TextContentStyle.INLINE)
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(undefined)
         .barState(BarState.On)
         .key("ArkUX_Stage_TextArea_barState_1200")
         .style(TextContentStyle.INLINE)
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .style(TextContentStyle.INLINE)
         .key("TextAreaNO")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .barState(BarState.On)
         .key("TextAreaStyleDefault")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .style(TextContentStyle.DEFAULT)
         .key("ArkUX_Stage_TextArea_Style_0100")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .style(TextContentStyle.INLINE)
         .key("ArkUX_Stage_TextArea_Style_0200")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .style(0)
         .key("ArkUX_Stage_TextArea_Style_0300")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .style(10)
         .key("ArkUX_Stage_TextArea_Style_0400")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
-        .style("10")
+        .style(asNumber("10"))
         .key("ArkUX_Stage_TextArea_Style_0500")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
-        .style("")
+        .style(asNumber(""))
         .key("ArkUX_Stage_TextArea_Style_0600")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .style(null)
         .key("ArkUX_Stage_TextArea_Style_0700")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .style(undefined)
         .key("ArkUX_Stage_TextArea_Style_0800")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .style(TextContentStyle.DEFAULT)
         .style(TextContentStyle.INLINE)
         .key("ArkUX_Stage_TextArea_Style_0900")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .style(undefined)
         .style(TextContentStyle.INLINE)
         .key("ArkUX_Stage_TextArea_Style_1000")
       TextArea({
-        text: "test", placeholder: 'input your word...', controller: this.controllerTextArea
+        text: "test", placeholder: 'input your word...', controller: this.controller
       })
         .style(TextContentStyle.INLINE)
         .style(undefined)

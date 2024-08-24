@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function relativeCTest() {
-  describe('relativeCTest', function () {
-    beforeEach(async function (done) {
+  describe('relativeCTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("relativeCTest beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function relativeCTest() {
       console.info("relativeCTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("relativeCTest after each called");
     });
@@ -50,7 +50,7 @@ export default function relativeCTest() {
      * @tc.size
      */
 
-    it('relativeCTest_0100', 0, async function (done) {
+    it('relativeCTest_0100', 0, async (done: Function) => {
       console.info('[relativeCTest_0100] START');
       await CommonFunc.sleep(2000);
       let json = getInspectorByKey('row2common');
@@ -60,7 +60,7 @@ export default function relativeCTest() {
       let btleft1 = CommonFunc.getComponentRect('row2common');
       let left1 = btleft1.left
       let diff = Math.round(left1 - right)
-      expect(Math.abs((diff + "") - (vp2px(100)+ "")) <= 1).assertTrue();
+      expect(Math.abs((diff + Number("")) - (vp2px(100)+ Number(""))) <= 1).assertTrue();
       done();
     });
 

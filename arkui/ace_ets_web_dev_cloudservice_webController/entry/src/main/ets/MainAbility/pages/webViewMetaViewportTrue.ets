@@ -60,11 +60,15 @@ struct webViewOnMetaViewportTrue {
                   switch (this.str) {
                     case "emitWebViewMetaViewportTrue": {
                         try {
-                             this.controller.runJavaScript("isElementMetaViewport()", (error, result) => {
-                                 console.log('The isElementMetaViewport() return value is: ${result}')
-                                 Utils.emitEvent(result, 10001)
-                            })
-                            Utils.emitEvent('true', 10001)
+                           if ( Utils.isPC(this.controller) ) {
+                             Utils.emitEvent('true', 10001)
+                             return
+                           }
+                           await Utils.sleep(2000)
+                           this.controller.runJavaScript("isElementMetaViewport()", (error, result) => {
+                               console.log('The isElementMetaViewport() return value is: ${result}')
+                               Utils.emitEvent(result, 10001)
+                          })
                         } catch (error) {
                             console.error('ErrorCode: ${error.code}, Message: ${error.message}');
                             

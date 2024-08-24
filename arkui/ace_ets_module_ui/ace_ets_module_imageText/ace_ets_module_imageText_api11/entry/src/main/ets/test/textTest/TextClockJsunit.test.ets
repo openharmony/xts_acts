@@ -15,7 +15,7 @@
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../../MainAbility/common/Utils';;
+import CommonFunc from '../../MainAbility/common/Common';;
 
 export default function textClockJsunit() {
   describe('appInfoTest_four_11', () => {
@@ -31,7 +31,7 @@ export default function textClockJsunit() {
         if (!("text" == pages.name)) {
           console.info("get text state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push text page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,23 +41,23 @@ export default function textClockJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("text after each called");
     });
 
     it('textClockTest01', 0, async (done: Function) => {
       console.info('textClockTest01 START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textClock');
       console.info("textClockTest01 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.fontSize).assertEqual('30.00fp');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       done();
     });
 
     it('textClockTest02', 0, async (done: Function) => {
       console.info('[textClockTest02] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -73,7 +73,7 @@ export default function textClockJsunit() {
       } catch (err) {
         console.log("[textClockTest02] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('textClock');
       console.info("[textClockTest02] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.fontSize).assertEqual('30.00fp');
@@ -82,7 +82,7 @@ export default function textClockJsunit() {
 
     it('textClockTest03', 0, async (done: Function) => {
       console.info('[textClockTest03] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('textClock');
       console.info("[textClockTest03] component strJson:" + strJson);
 
@@ -108,7 +108,7 @@ export default function textClockJsunit() {
       } catch (err) {
         console.log("[textClockTest04] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('textClock');
       console.info("[textClockTest04] component strJson:" + strJson);
 
@@ -119,7 +119,7 @@ export default function textClockJsunit() {
 
     it('textClockTest05', 0, async (done: Function) => {
       console.info('[textClockTest05] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textClock');
 
       console.info("[textClockTest05] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -145,7 +145,7 @@ export default function textClockJsunit() {
       } catch (err) {
         console.log("[textClockTest06] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textClock');
 
       console.info("[textClockTest06] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));

@@ -7,14 +7,15 @@
     "deviceTypes": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",
-    "metadata":[
+    "metadata": [
       {
-        "name":"test_metadata"
+        "name": "test_metadata"
       }
     ],
     "abilities": [

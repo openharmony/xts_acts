@@ -783,7 +783,7 @@ export default function getTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_7000
      * @tc.name      : get_image_dynamic_range_type_001
-     * @tc.desc      : video get photoKeys.DYNAMIC_RANGE_TYPE
+     * @tc.desc      : image get photoKeys.DYNAMIC_RANGE_TYPE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -794,6 +794,42 @@ export default function getTest () {
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
       await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.DYNAMIC_RANGE_TYPE;
+      const value = 0;
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_7001
+     * @tc.name      : get_image_cover_position_001
+     * @tc.desc      : common image get photoKeys.COVER_POSITION
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_image_cover_position_001', 1, async function (done) {
+      const testNum = 'get_image_cover_position_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      const key = photoKeys.COVER_POSITION;
+      const value = 0;
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_7002
+     * @tc.name      : get_video_cover_position_001
+     * @tc.desc      : video get photoKeys.COVER_POSITION
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_video_cover_position_001', 1, async function (done) {
+      const testNum = 'get_video_cover_position_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      const key = photoKeys.COVER_POSITION;
       const value = 0;
       await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });

@@ -15,7 +15,7 @@
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 import router from '@ohos.router';
 
 let emitKey = "emitUserAgent";
@@ -24,7 +24,7 @@ export default function search() {
   describe('ActsAceSearchTest', () => {
     beforeEach(async (done: Function) => {
       console.info("search beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Search/SearchTest',
       }
       try {
@@ -34,7 +34,7 @@ export default function search() {
         if (!("SearchTest" == pages.name)) {
           console.info("get SearchTest pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push SearchTest page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -131,7 +131,7 @@ export default function search() {
       } catch (err) {
         console.info("search afterEach start to publish change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       done();
     })
 
@@ -179,7 +179,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_0200]: " + JSON.stringify(strJson))
@@ -217,7 +217,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CaretStyle_0300]: " + JSON.stringify(strJson))
@@ -255,7 +255,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CaretStyle_0400]: " + JSON.stringify(strJson))
@@ -293,7 +293,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CaretStyle_0500]: " + JSON.stringify(strJson))
@@ -319,7 +319,7 @@ export default function search() {
       globalThis.value.message.notify({
         name: 'caretWidthResource', value: caretWidthResource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_CaretStyle_0600]: " + JSON.stringify(strJson))
@@ -357,7 +357,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_0700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_0700]: " + JSON.stringify(strJson))
@@ -395,7 +395,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_0800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_0800]: " + JSON.stringify(strJson))
@@ -433,7 +433,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_0900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_0900]: " + JSON.stringify(strJson))
@@ -471,7 +471,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_1000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_1000]: " + JSON.stringify(strJson))
@@ -509,7 +509,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_1100] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_1100]: " + JSON.stringify(strJson))
@@ -567,7 +567,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_1300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_1300]: " + JSON.stringify(strJson))
@@ -605,7 +605,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_1400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestColor');
       console.info("[ArkUI_Stage_Search_CaretStyle_1400]: " + JSON.stringify(strJson))
@@ -643,7 +643,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_1500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CaretStyle_1500]: " + JSON.stringify(strJson))
@@ -669,7 +669,7 @@ export default function search() {
       globalThis.value.message.notify({
         name: 'caretColorResource', value: caretColorResource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
       let strJson2 = getInspectorByKey('searchTestResource2');
@@ -709,7 +709,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_1700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -749,7 +749,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_1800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -789,7 +789,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_1900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -832,7 +832,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CaretStyle_2000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_2000]: " + JSON.stringify(strJson))
@@ -893,7 +893,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_0200]: " + JSON.stringify(strJson))
@@ -933,14 +933,16 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchIcon_0300]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchIcon_0300]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_0300]: " + JSON.stringify(obj.$attrs.searchIcon.size));
-      expect(obj.$attrs.searchIcon.size).assertEqual("50.00px");
+      let result: string = px2vp(50) > 32 ? vp2px(32).toFixed(2) + "px" : '50.00px' ;
+      console.info("[ArkUI_Stage_Search_SearchIcon_0300]: " + result);
+      expect(obj.$attrs.searchIcon.size).assertEqual(result);
       console.info("[ArkUI_Stage_Search_SearchIcon_0300] end");
       done();
     });
@@ -971,14 +973,14 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchIcon_0400]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchIcon_0400]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_0400]: " + JSON.stringify(obj.$attrs.searchIcon.size));
-      let result: number = 50;
+      let result: number = 32;
       console.info("[ArkUI_Stage_Search_SearchIcon_0400]: " + fp2px(result).toFixed(2));
       expect(obj.$attrs.searchIcon.size).assertEqual(fp2px(result).toFixed(2) + "px");
       console.info("[ArkUI_Stage_Search_SearchIcon_0400] end");
@@ -1011,16 +1013,16 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchIcon_0500]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchIcon_0500]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_0500]: " + JSON.stringify(obj.$attrs.searchIcon.size));
-      let result: number = 50;
-      console.info("[ArkUI_Stage_Search_SearchIcon_0500]: " + lpx2px(result).toFixed(2));
-      expect(Math.abs(Number((obj.$attrs.searchIcon.size).slice(0,-3)) - Number(lpx2px(result).toFixed(2))) <= 1).assertTrue();
+      let result = px2vp(lpx2px(50)) > 32 ? vp2px(32).toFixed(2) : lpx2px(50).toFixed(2) ;
+      console.info("[ArkUI_Stage_Search_SearchIcon_0500]: " + result);
+      expect(Math.abs(Number((obj.$attrs.searchIcon.size).slice(0,-3)) - Number(result)) <= 1).assertTrue();
       expect((obj.$attrs.searchIcon.size).slice(-2)).assertEqual("px");
       console.info("[ArkUI_Stage_Search_SearchIcon_0500] end");
       done();
@@ -1052,7 +1054,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_0600] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_SearchIcon_0600]: " + JSON.stringify(strJson))
@@ -1092,14 +1094,14 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_0700] change component data error: " + err.message);
       }
-      await Utils.sleep(5000);
+      await CommonFunc.sleep(5000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_0700]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchIcon_0700]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_0700]: " + JSON.stringify(obj.$attrs.searchIcon.size));
-      let result: number = 40;
+      let result: number = 32;
       console.info("[ArkUI_Stage_Search_SearchIcon_0700]: " + vp2px(result).toFixed(2));
       expect(obj.$attrs.searchIcon.size).assertEqual(vp2px(result).toFixed(2) + "px");
       console.info("[ArkUI_Stage_Search_SearchIcon_0700] end");
@@ -1132,7 +1134,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_0800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_0800]: " + JSON.stringify(strJson))
@@ -1172,7 +1174,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_0900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -1212,14 +1214,14 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_1000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_1000]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchIcon_1000]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_1000]: " + JSON.stringify(obj.$attrs.searchIcon.size));
-      let result: number = 10000;
+      let result: number = 32;
       console.info("[ArkUI_Stage_Search_SearchIcon_1000]: " + vp2px(result).toFixed(2));
       expect(obj.$attrs.searchIcon.size).assertEqual(vp2px(result).toFixed(2) + "px");
       console.info("[ArkUI_Stage_Search_SearchIcon_1000] end");
@@ -1252,7 +1254,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_1100] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -1292,7 +1294,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_1200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -1352,7 +1354,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_1400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_1400]: " + JSON.stringify(strJson))
@@ -1390,7 +1392,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_1500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestColor');
       console.info("[ArkUI_Stage_Search_SearchIcon_1500]: " + JSON.stringify(strJson))
@@ -1428,7 +1430,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_1600] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchIcon_1600]: " + JSON.stringify(strJson))
@@ -1454,7 +1456,7 @@ export default function search() {
       globalThis.value.message.notify({
         name: 'leftSearchIconColorResource', value: leftSearchIconColorResource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
       let strJson2 = getInspectorByKey('searchTestResource2');
@@ -1494,7 +1496,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_1800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -1534,7 +1536,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_1900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -1574,7 +1576,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_2000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -1617,7 +1619,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_2100] change component data error: " + err.message);
       }
-      await Utils.sleep(2100);
+      await CommonFunc.sleep(2100);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2100]: " + JSON.stringify(strJson))
@@ -1678,7 +1680,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_2300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2300]: " + JSON.stringify(strJson))
@@ -1716,7 +1718,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_2400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2400]: " + JSON.stringify(strJson))
@@ -1754,7 +1756,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_2500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2500]: " + JSON.stringify(strJson))
@@ -1780,7 +1782,7 @@ export default function search() {
       globalThis.value.message.notify({
         name: 'searchSrcPathResource', value: searchSrcPathResource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_SearchIcon_2600]: " + JSON.stringify(strJson))
@@ -1818,7 +1820,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_2700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2700]: " + JSON.stringify(strJson))
@@ -1856,7 +1858,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_2800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2800]: " + JSON.stringify(strJson))
@@ -1894,7 +1896,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_2900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2900]: " + JSON.stringify(strJson))
@@ -1932,7 +1934,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchIcon_3000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_3000]: " + JSON.stringify(strJson))
@@ -1988,7 +1990,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_0200]: " + JSON.stringify(strJson))
@@ -2026,7 +2028,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_0300]: " + JSON.stringify(strJson))
@@ -2064,7 +2066,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_0400]: " + JSON.stringify(strJson))
@@ -2102,7 +2104,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_0500]: " + JSON.stringify(strJson))
@@ -2160,7 +2162,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_0700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_0700]: " + JSON.stringify(strJson))
@@ -2200,14 +2202,16 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_0800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CancelButton_0800]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_CancelButton_0800]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_0800]: " + JSON.stringify(obj.$attrs.cancelButton.icon.size));
-      expect(obj.$attrs.cancelButton.icon.size).assertEqual("50.00px");
+      let result: string = px2vp(50) > 32 ? vp2px(32).toFixed(2) + "px" : '50.00px' ;
+      console.info("[ArkUI_Stage_Search_CancelButton_0800]: " + result);
+      expect(obj.$attrs.cancelButton.icon.size).assertEqual(result);
       console.info("[ArkUI_Stage_Search_CancelButton_0800] end");
       done();
     });
@@ -2238,14 +2242,14 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_0900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CancelButton_0900]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_CancelButton_0900]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_0900]: " + JSON.stringify(obj.$attrs.cancelButton.icon.size));
-      let result: number = 50;
+      let result: number = 32;
       console.info("[ArkUI_Stage_Search_CancelButton_0900]: " + fp2px(result).toFixed(2));
       expect(obj.$attrs.cancelButton.icon.size).assertEqual(fp2px(result).toFixed(2) + "px");
       console.info("[ArkUI_Stage_Search_CancelButton_0900] end");
@@ -2278,16 +2282,16 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_1000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CancelButton_1000]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_CancelButton_1000]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_1000]: " + JSON.stringify(obj.$attrs.cancelButton.icon.size));
-      let result: number = 50;
-      console.info("[ArkUI_Stage_Search_CancelButton_1000]: " + lpx2px(result).toFixed(2));
-      expect(Math.abs(Number((obj.$attrs.cancelButton.icon.size).slice(0,-3)) - Number(lpx2px(result).toFixed(2))) <= 1).assertTrue();
+      let result = px2vp(lpx2px(50)) > 32 ? vp2px(32).toFixed(2) : lpx2px(50).toFixed(2) ;
+      console.info("[ArkUI_Stage_Search_CancelButton_1000]: " + result);
+      expect(Math.abs(Number((obj.$attrs.cancelButton.icon.size).slice(0,-3)) - Number(result)) <= 1).assertTrue();
       expect((obj.$attrs.cancelButton.icon.size).slice(-2)).assertEqual("px");
       console.info("[ArkUI_Stage_Search_CancelButton_1000] end");
       done();
@@ -2319,7 +2323,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_1100] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_CancelButton_1100]: " + JSON.stringify(strJson))
@@ -2359,14 +2363,14 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_1200] change component data error: " + err.message);
       }
-      await Utils.sleep(5000);
+      await CommonFunc.sleep(5000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_1200]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_CancelButton_1200]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_1200]: " + JSON.stringify(obj.$attrs.cancelButton.icon.size));
-      let result: number = 40;
+      let result: number = 32;
       console.info("[ArkUI_Stage_Search_CancelButton_1200]: " + vp2px(result).toFixed(2));
       expect(obj.$attrs.cancelButton.icon.size).assertEqual(vp2px(result).toFixed(2) + "px");
       console.info("[ArkUI_Stage_Search_CancelButton_1200] end");
@@ -2399,7 +2403,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_1300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -2439,7 +2443,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_1400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -2479,14 +2483,14 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_1500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_1500]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_CancelButton_1500]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_1500]: " + JSON.stringify(obj.$attrs.cancelButton.icon.size));
-      let result: number = 10000;
+      let result: number = 32;
       console.info("[ArkUI_Stage_Search_CancelButton_1500]: " + vp2px(result).toFixed(2));
       expect(obj.$attrs.cancelButton.icon.size).assertEqual(vp2px(result).toFixed(2) + "px");
       console.info("[ArkUI_Stage_Search_CancelButton_1500] end");
@@ -2519,7 +2523,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_1600] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -2559,7 +2563,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_1700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -2619,7 +2623,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_1900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_1900]: " + JSON.stringify(strJson))
@@ -2657,7 +2661,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_2000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestColor');
       console.info("[ArkUI_Stage_Search_CancelButton_2000]: " + JSON.stringify(strJson))
@@ -2695,7 +2699,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_2100] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CancelButton_2100]: " + JSON.stringify(strJson))
@@ -2721,7 +2725,7 @@ export default function search() {
       globalThis.value.message.notify({
         name: 'rightCancelIconColorResource', value: rightCancelIconColorResource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
       let strJson2 = getInspectorByKey('searchTestResource2');
@@ -2761,7 +2765,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_2300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -2801,7 +2805,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_2400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -2841,7 +2845,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_2500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -2884,7 +2888,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_2600] change component data error: " + err.message);
       }
-      await Utils.sleep(2700);
+      await CommonFunc.sleep(2700);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_2600]: " + JSON.stringify(strJson))
@@ -2945,7 +2949,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_2800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_2800]: " + JSON.stringify(strJson))
@@ -2983,7 +2987,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_2900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_2900]: " + JSON.stringify(strJson))
@@ -3021,7 +3025,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_3000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_3000]: " + JSON.stringify(strJson))
@@ -3047,7 +3051,7 @@ export default function search() {
       globalThis.value.message.notify({
         name: 'rightIconSrcPathResource', value: rightIconSrcPathResource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_CancelButton_3100]: " + JSON.stringify(strJson))
@@ -3085,7 +3089,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_3200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_3200]: " + JSON.stringify(strJson))
@@ -3123,7 +3127,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_3300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_3300]: " + JSON.stringify(strJson))
@@ -3161,7 +3165,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_3400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_3400]: " + JSON.stringify(strJson))
@@ -3199,7 +3203,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_CancelButton_3500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_3500]: " + JSON.stringify(strJson))
@@ -3257,7 +3261,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_0200]: " + JSON.stringify(strJson))
@@ -3295,7 +3299,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_0300]: " + JSON.stringify(strJson))
@@ -3333,7 +3337,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchButton_0400]: " + JSON.stringify(strJson))
@@ -3371,7 +3375,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_0500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_0500]: " + JSON.stringify(strJson))
@@ -3409,7 +3413,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_0600] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_0600]: " + JSON.stringify(strJson))
@@ -3435,7 +3439,7 @@ export default function search() {
       globalThis.value.message.notify({
         name: 'searchButtonFontSizeResource', value: searchButtonFontSizeResource
       });
-      await Utils.sleep(5000);
+      await CommonFunc.sleep(5000);
 
       let strJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_SearchButton_0700]: " + JSON.stringify(strJson))
@@ -3473,7 +3477,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_0800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_0800]: " + JSON.stringify(strJson))
@@ -3511,7 +3515,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_0900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_0900]: " + JSON.stringify(strJson))
@@ -3549,7 +3553,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_1000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_1000]: " + JSON.stringify(strJson))
@@ -3587,7 +3591,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_1100] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_1100]: " + JSON.stringify(strJson))
@@ -3625,7 +3629,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_1200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_1200]: " + JSON.stringify(strJson))
@@ -3683,7 +3687,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_1400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchButton_1400]: " + JSON.stringify(strJson))
@@ -3721,7 +3725,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_1500] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestColor');
       console.info("[ArkUI_Stage_Search_SearchButton_1500]: " + JSON.stringify(strJson))
@@ -3759,7 +3763,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_1600] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_1600]: " + JSON.stringify(strJson))
@@ -3785,7 +3789,7 @@ export default function search() {
       globalThis.value.message.notify({
         name: 'searchButtonFontColorResource', value: searchButtonFontColorResource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
       let strJson2 = getInspectorByKey('searchTestResource2');
@@ -3825,7 +3829,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_1800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -3865,7 +3869,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_1900] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -3905,7 +3909,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_2000] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -3948,7 +3952,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_SearchButton_2100] change component data error: " + err.message);
       }
-      await Utils.sleep(2100);
+      await CommonFunc.sleep(2100);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchButton_2100]: " + JSON.stringify(strJson))
@@ -4008,7 +4012,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_FontColor_0200] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_FontColor_0200]: " + JSON.stringify(strJson))
@@ -4045,7 +4049,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_FontColor_0300] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestColor');
       console.info("[ArkUI_Stage_Search_FontColor_0300]: " + JSON.stringify(strJson))
@@ -4082,7 +4086,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_FontColor_0400] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_FontColor_0400]: " + JSON.stringify(strJson))
@@ -4107,7 +4111,7 @@ export default function search() {
       globalThis.value.message.notify({
         name: 'textColorResource', value: textColorResource
       });
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
       let strJson2 = getInspectorByKey('searchTestResource2');
@@ -4146,7 +4150,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_FontColor_0600] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestString');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -4185,7 +4189,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_FontColor_0700] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -4224,7 +4228,7 @@ export default function search() {
       } catch (err) {
         console.log("[ArkUI_Stage_Search_FontColor_0800] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
       let strJson2 = getInspectorByKey('searchTestDefaultValue');

@@ -17,6 +17,7 @@
 #include <BasicServicesKit/ohprint.h>
 
 #define TEST_PRINTER "testPrinter"
+
 static void PrinterDiscoveryCallback(Print_DiscoveryEvent event, const Print_PrinterInfo *printerInfo)
 {
 }
@@ -118,33 +119,3 @@ static napi_value OHPrintProperty(napi_env env, napi_callback_info info)
     napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
     return result;
 }
-
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
-{
-    napi_property_descriptor desc[] = {
-        { "oHPrintInit", nullptr, OHPrintInit, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "oHPrintListener", nullptr, OHPrintListener, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "oHPrintDiscovery", nullptr, OHPrintDiscovery, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "oHPrintConnect", nullptr, OHPrintConnect, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "oHPrintJob", nullptr, OHPrintJob, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "oHPrintList", nullptr, OHPrintList, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "oHPrintInfo", nullptr, OHPrintInfo, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "oHPrintProperty", nullptr, OHPrintProperty, nullptr, nullptr, nullptr, napi_default, nullptr }
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-EXTERN_C_END
-
-static napi_module demoModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "entry",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
-};
-
-extern "C" __attribute__((constructor)) void RegisterModule(void) { napi_module_register(&demoModule); };

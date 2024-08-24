@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function columnSplitJsunit() {
-  describe('columnSplitTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/columnSplit',
+  describe('columnSplitTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/columnSplit',
       }
       try {
         router.clear();
@@ -30,9 +30,8 @@ export default function columnSplitJsunit() {
         console.info("get columnSplit state success " + JSON.stringify(pages));
         if (!("columnSplit" == pages.name)) {
           console.info("get columnSplit state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push columnSplit page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push columnSplit page error: " + err);
@@ -41,55 +40,53 @@ export default function columnSplitJsunit() {
     });
 
     /**
-    * @tc.number columnSplitTest_0001
-    * @tc.name   Test the properties of components
-    * @tc.desc   set divider values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('columnSplitTest_0001', 0, async function (done) {
+     * @tc.number columnSplitTest_0001
+     * @tc.name Test the properties of components
+     * @tc.desc set divider values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('columnSplitTest_0001', 0, async (done: Function) => {
 
       console.info('columnSplitTest_0001 START');
       let strJsonNew = getInspectorByKey('columnSplit');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("columnSplitTest_0001 component is: " + JSON.stringify(objNew.$attrs));
+      console.info("columnSplitTest_0001 component is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.divider?.startMargin).assertEqual('10.00px');
-      expect(objNew.$attrs.divider?.endMargin).assertEqual('10.00px');
+      expect(JSON.parse(strJsonNew).$attrs.divider?.startMargin).assertEqual('10.00px');
+      expect(JSON.parse(strJsonNew).$attrs.divider?.endMargin).assertEqual('10.00px');
       console.info('columnSplitTest_0001 END');
       done();
     });
 
     /**
      * @tc.number columnSplitTest_0002
-     * @tc.name   Test the properties of components
-     * @tc.desc   set resizeable values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set resizeable values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('columnSplitTest_0002', 0, async function (done) {
+    it('columnSplitTest_0002', 0, async (done: Function) => {
 
       console.info('columnSplitTest_0002 START');
       let strJsonNew = getInspectorByKey('columnSplit');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("columnSplitTest_0002 component is: " + JSON.stringify(objNew.$attrs));
+      console.info("columnSplitTest_0002 component is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.resizeable).assertEqual("false");
+      expect(JSON.parse(strJsonNew).$attrs.resizeable).assertEqual("false");
       console.info('columnSplitTest_0002 END');
       done();
     });
 
     /**
      * @tc.number columnSplitTest_0003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change resizeable values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change resizeable values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('columnSplitTest_0003', 0, async function (done) {
+    it('columnSplitTest_0003', 0, async (done: Function) => {
 
       console.info('columnSplitTest_0003 START');
       let driver = Driver.create();
@@ -98,10 +95,9 @@ export default function columnSplitJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('columnSplit');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("columnSplitTest_0003 component is: " + JSON.stringify(objNew.$attrs));
+      console.info("columnSplitTest_0003 component is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.resizeable).assertEqual("true");
+      expect(JSON.parse(strJsonNew).$attrs.resizeable).assertEqual("true");
       console.info('columnSplitTest_0003 END');
       done();
     });

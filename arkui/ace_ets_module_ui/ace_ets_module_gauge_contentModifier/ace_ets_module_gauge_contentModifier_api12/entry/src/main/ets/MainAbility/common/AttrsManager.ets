@@ -55,8 +55,8 @@ export class AttrsManager {
     console.info('[stateChangCallBack] stateChangCallBack ');
     if (eventData != null) {
       console.info('[stateChangCallBack] state change called: ' + JSON.stringify(eventData));
-      if (eventData.data.src != null) {
-         this.callBack(JSON.parse(eventData.data.src).value);
+      if (eventData.data?.src != null) {
+         this.callBack(JSON.parse(eventData.data?.src).value);
       }
     }
   }

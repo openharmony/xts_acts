@@ -14,7 +14,7 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter';
 
 export default function progressJsunit() {
@@ -30,7 +30,7 @@ export default function progressJsunit() {
         if (!("progress3" == pages.name)) {
           console.info("get progress state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push progress page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,13 +40,13 @@ export default function progressJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       console.info("progress after each called");
     });
 
     it('testProgress_100', 0, async (done: Function) => {
       console.info('testProgress_100 START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('LPValue');
       console.info("testProgress_100 component objLP is: " + JSON.parse(strJson1).$attrs.value);
       try {
@@ -64,7 +64,7 @@ export default function progressJsunit() {
       } catch (err) {
         console.log("testProgress_100 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('LPValue');
       console.info("testProgress_100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
         .$attrs
@@ -76,7 +76,7 @@ export default function progressJsunit() {
 
     it('testProgress_200', 0, async (done: Function) => {
       console.info('[testProgress_200] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LPValue');
       console.info("testProgress_200 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.width).assertEqual("200.00vp");
@@ -88,7 +88,7 @@ export default function progressJsunit() {
       console.info('testProgress_300 START');
       let strJson1 = getInspectorByKey('EPValue');
       console.info("testProgress_300 component objEP is: " + JSON.parse(strJson1).$attrs.value);
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -104,7 +104,7 @@ export default function progressJsunit() {
       } catch (err) {
         console.log("testProgress_300 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('EPValue');
 
       console.info("testProgress_300 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -115,7 +115,7 @@ export default function progressJsunit() {
 
     it('testProgress_400', 0, async (done: Function) => {
       console.info('[testProgress_400] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LPValue');
       console.info("testProgress_400 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.width).assertEqual("200.00vp");
@@ -127,7 +127,7 @@ export default function progressJsunit() {
       console.info('testProgress_500 START');
       let strJson1 = getInspectorByKey('CPValue');
       console.info("testProgress_500 component objCP is: " + JSON.parse(strJson1).$attrs.value);
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -143,7 +143,7 @@ export default function progressJsunit() {
       } catch (err) {
         console.log("testProgress_500 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('EPValue');
 
       console.info("testProgress_500 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -154,7 +154,7 @@ export default function progressJsunit() {
 
     it('testProgress_600', 0, async (done: Function) => {
       console.info('[testProgress_600] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('CPValue');
       console.info("testProgress_600 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00vp");
@@ -166,7 +166,7 @@ export default function progressJsunit() {
       console.info('testProgress_700 START');
       let strJson1 = getInspectorByKey('LPValue');
       console.info("testProgress_700 component objLP is: " + JSON.parse(strJson1).$attrs.value);
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -182,7 +182,7 @@ export default function progressJsunit() {
       } catch (err) {
         console.log("testProgress_700 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('LPValue');
 
       console.info("testProgress_700 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -195,7 +195,7 @@ export default function progressJsunit() {
       console.info('testProgress_800 START');
       let strJson1 = getInspectorByKey('EPValue');
       console.info("testProgress_800 component objEP is: " + JSON.parse(strJson1).$attrs.value);
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -211,7 +211,7 @@ export default function progressJsunit() {
       } catch (err) {
         console.log("testProgress_800 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('EPValue');
 
       console.info("testProgress_800 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -224,7 +224,7 @@ export default function progressJsunit() {
       console.info('testProgress_900 START');
       let strJson1 = getInspectorByKey('CPValue');
       console.info("testProgress_900 component objCP is: " + JSON.parse(strJson1).$attrs.value);
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -240,7 +240,7 @@ export default function progressJsunit() {
       } catch (err) {
         console.log("testProgress_900 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('EPValue');
 
       console.info("testProgress_900 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -253,7 +253,7 @@ export default function progressJsunit() {
       console.info('testProgress_1000 START');
       let strJson1 = getInspectorByKey('LPValue');
       console.info("testProgress_1000 component objLP is: " + JSON.parse(strJson1).$attrs.value);
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -269,7 +269,7 @@ export default function progressJsunit() {
       } catch (err) {
         console.log("testProgress_1000 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('LPValue');
 
       console.info("testProgress_1000 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -283,7 +283,7 @@ export default function progressJsunit() {
       console.info('testProgress_1100 START');
       let strJson1 = getInspectorByKey('LPValue');
       console.info("testProgress_1100 component objLP is: " + JSON.parse(strJson1).$attrs.value);
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -299,7 +299,7 @@ export default function progressJsunit() {
       } catch (err) {
         console.log("testProgress_1100 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('LPValue');
 
       console.info("testProgress_1100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));

@@ -18,10 +18,10 @@ import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern
 
 
 export default function TextInputTextAreaSearch() {
-  describe('TextInputTextAreaSearch', function () {
-    beforeEach(async function (done) {
+  describe('TextInputTextAreaSearch', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextInputTextAreaSearch beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/RichEditorEnhance/TextInputTextAreaSearch',
       }
       try {
@@ -41,7 +41,7 @@ export default function TextInputTextAreaSearch() {
       console.info("TextInputTextAreaSearch beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await driver.delayMs(1000)
       console.info("TextInputTextAreaSearch after each called");
@@ -54,7 +54,7 @@ export default function TextInputTextAreaSearch() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TextInputTextAreaSearch_0100', 0, async function (done) {
+    it('TextInputTextAreaSearch_0100', 0, async (done: Function) => {
       // Test stop
       console.info('[TextInputTextAreaSearch_0100] START');
       let driver = Driver.create();
@@ -80,7 +80,7 @@ export default function TextInputTextAreaSearch() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TextInputTextAreaSearch_0200', 0, async function (done) {
+    it('TextInputTextAreaSearch_0200', 0, async (done: Function) => {
       // Test stop
       console.info('[TextInputTextAreaSearch_0200] START');
       let driver = Driver.create();
@@ -105,7 +105,7 @@ export default function TextInputTextAreaSearch() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TextInputTextAreaSearch_0300', 0, async function (done) {
+    it('TextInputTextAreaSearch_0300', 0, async (done: Function) => {
       // Test stop
       console.info('[TextInputTextAreaSearch_0300] START');
       let driver = Driver.create();

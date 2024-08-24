@@ -17,11 +17,11 @@
     "package": "com.actsbundle.napitest",
     "name": ".MyApplication",
     "mainAbility": "com.actsbundle.napitest.MainAbility",
-
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,

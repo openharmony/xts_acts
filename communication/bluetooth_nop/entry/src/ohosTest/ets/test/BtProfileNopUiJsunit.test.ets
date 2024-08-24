@@ -47,7 +47,7 @@ export default function btProfileNopUiJsunit() {
     })
     /**
      * @tc.number: testGetConnectionStateNop
-     * @tc.name: testGetConnectionStateNop
+     * @tc.name: testGetConnectionState
      * @tc.desc: test getConnectionState without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -61,13 +61,13 @@ export default function btProfileNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `getConnectionState error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PARAM_ERROR_CODE);
+        expect(Number(error.code)).assertEqual(PARAM_ERROR_CODE);
       }
       done();
     })
     /**
      * @tc.number: testGetConnectedDevicesNop
-     * @tc.name: testGetConnectedDevicesNop
+     * @tc.name: testGetConnectedDevices
      * @tc.desc: test getConnectedDevices without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -81,13 +81,13 @@ export default function btProfileNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `getConnectedDevices error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testGetPlayingStateNop
-     * @tc.name: testGetPlayingStateNop
+     * @tc.name: testGetPlayingState
      * @tc.desc: test getPlayingState without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -101,7 +101,7 @@ export default function btProfileNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `getPlayingState error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PARAM_ERROR_CODE);
+        expect(Number(error.code)).assertEqual(PARAM_ERROR_CODE);
       }
       done();
     })

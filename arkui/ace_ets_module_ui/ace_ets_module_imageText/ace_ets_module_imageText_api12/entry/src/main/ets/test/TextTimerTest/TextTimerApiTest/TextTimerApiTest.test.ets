@@ -14,14 +14,14 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from "@ohos.router";
-import CommonFunc from "../../../MainAbility/utils/Common";
+import CommonFunc from "../../../MainAbility/common/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from "@ohos.UiTest";
 
 export default function TextTimerApiTest() {
-  describe("TextTimerApiTest", function () {
-    beforeEach(async function (done) {
+  describe("TextTimerApiTest", () => {
+    beforeEach(async (done: Function) => {
       console.info("TextTimerApiTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/TextTimer/TextTimerApi/TextTimerApi",
       }
       try {
@@ -40,7 +40,7 @@ export default function TextTimerApiTest() {
       console.info("TextTimerApiTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("TextTimerApiTest after each called");
     });
@@ -53,7 +53,7 @@ export default function TextTimerApiTest() {
      * @tc.type
      * @tc.size
      */
-    it("TextTimerApiTest_001", 0, async function (done) {
+    it("TextTimerApiTest_001", 0, async (done: Function) => {
       console.info("[TextTimerApiTest_001] START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

@@ -20,7 +20,7 @@ import CanvasShaderTest from './CanvasTest/CanvasShader.test'
 import CanvasColorTest from './CanvasTest/CanvasColor.test'
 import OffScreenCanvasTest from './OffScreenCanvasTest/OffScreenCanvas.test'
 import drawCanvas from './CanvasTest/drawCanvas.test'
-import ParticlePropertyJsunit from './ParticleTest/ParticlePropertyJsunit.test.ets'
+import ParticlePropertyJsunit from './ParticleTest/ParticlePropertyJsunit.test'
 import canvasJsunit from './CanvasTest/CanvasJsunit.test';
 import canvas2Jsunit from './CanvasTest/Canvas2Jsunit.test';
 import shapeJsunit from './ShapeTest/ShapeJsunit.test';

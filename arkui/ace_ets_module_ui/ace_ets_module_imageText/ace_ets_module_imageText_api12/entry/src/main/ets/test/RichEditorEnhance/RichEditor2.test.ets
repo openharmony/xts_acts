@@ -18,10 +18,10 @@ import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern
 
 
 export default function RichEditor2() {
-  describe('RichEditor2', function () {
-    beforeEach(async function (done) {
+  describe('RichEditor2', () => {
+    beforeEach(async (done: Function) => {
       console.info("RichEditor2 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/RichEditorEnhance/RichEditor2',
       }
       try {
@@ -41,7 +41,7 @@ export default function RichEditor2() {
       console.info("RichEditor2 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await driver.delayMs(1000)
       console.info("RichEditor2 after each called");
@@ -54,7 +54,7 @@ export default function RichEditor2() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('RichEditor2_0100', 0, async function (done) {
+    it('RichEditor2_0100', 0, async (done: Function) => {
       // Test stop
       console.info('[RichEditor2_0100] START');
       let driver = Driver.create();

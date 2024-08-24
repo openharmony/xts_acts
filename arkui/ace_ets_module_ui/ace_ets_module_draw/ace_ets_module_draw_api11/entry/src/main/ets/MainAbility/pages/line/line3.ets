@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +17,8 @@ import events_emitter from '@ohos.events.emitter'
 @Entry
 @Component
 struct LineExample {
-  @State startPoint: Point = [0, 0]
-  @State endPoint: Point = [50, 100]
+  @State startPoint: Array<Length> = [0, 0]
+  @State endPoint: Array<Length> = [50, 100]
 
   build() {
     Column() {
@@ -28,27 +27,27 @@ struct LineExample {
     }.margin({ top: 5 })
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData:events_emitter.EventData) => {
     if (eventData != null) {
       console.info("line page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.startPoint != null) {
-        this.startPoint[0] = eventData.data.startPoint;
+      if (eventData.data?.startPoint != null) {
+        this.startPoint[0] = eventData.data?.startPoint;
       }
-      if (eventData.data.startPointOne != null) {
-        this.startPoint[1] = eventData.data.startPointOne;
+      if (eventData.data?.startPointOne != null) {
+        this.startPoint[1] = eventData.data?.startPointOne;
       }
-      if (eventData.data.endPointOne != null) {
-        this.endPoint[1] = eventData.data.endPointOne;
+      if (eventData.data?.endPointOne != null) {
+        this.endPoint[1] = eventData.data?.endPointOne;
       }
-      if (eventData.data.endPoint != null) {
-        this.endPoint[0] = eventData.data.endPoint;
+      if (eventData.data?.endPoint != null) {
+        this.endPoint[0] = eventData.data?.endPoint;
       }
     }
   }
 
   onPageShow() {
     console.info('line page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent:events_emitter.InnerEvent = {
       eventId: 131,
       priority: events_emitter.EventPriority.LOW
     }

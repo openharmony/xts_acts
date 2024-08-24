@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -21,8 +21,8 @@ export default function rectNeJsunit() {
   describe('rectNeTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Rect/rect',
+     let options:router.RouterOptions = {
+        url:'MainAbility/pages/Rect/rect',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function rectNeJsunit() {
         console.info("get rect state success " + JSON.stringify(pages));
         if (!("rect" == pages.name)) {
           console.info("get rect state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push rect page success " + JSON.stringify(result));
         }
@@ -55,7 +55,7 @@ export default function rectNeJsunit() {
       let strJson = getInspectorByKey('Rect');
       console.info("[testrectNe0001] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Rect');
+      expect(JSON.parse(strJson).$type).assertEqual('Rect');
       expect(JSON.parse(strJson).$attrs.width).assertEqual("90.00%");
       console.info("[testrectNe0001] width value :" + JSON.parse(strJson).$attrs.width);
 
@@ -72,7 +72,7 @@ export default function rectNeJsunit() {
       let strJson = getInspectorByKey('Rect');
       console.info("[testrectNe0002] component height strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Rect');
+      expect(JSON.parse(strJson).$type).assertEqual('Rect');
       expect(JSON.parse(strJson).$attrs.height).assertEqual("50.00px");
       console.info("[testrectNe0002] height value :" + JSON.parse(strJson).$attrs.height);
 

@@ -19,10 +19,10 @@ import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function SpaceCross5AlignItemsJsunit() {
-  describe('SpaceCross5AlignItemsJsunit', function () {
-    beforeEach(async function (done) {
+  describe('SpaceCross5AlignItemsJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("SpaceCross5AlignItems beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Flex/SpaceCross5AlignItems",
       }
       try {
@@ -50,10 +50,10 @@ export default function SpaceCross5AlignItemsJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceCross5AlignItemsTest_0010', 0, async function (done) {
+    it('SpaceCross5AlignItemsTest_0010', 0, async (done: Function) => {
       console.info('SpaceCross5AlignItemsTest_0010 START');
       let strJson = getInspectorByKey('SpaceCross5AlignItems_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceCross5AlignItemsTest_0010] component obj is: " + JSON.stringify(obj.$attrs.space.cross));
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Column");
       expect(obj.$attrs.constructor.wrap).assertEqual("FlexWrap.NoWrap");
@@ -70,10 +70,10 @@ export default function SpaceCross5AlignItemsJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceCross5AlignItemsTest_0020', 0, async function (done) {
+    it('SpaceCross5AlignItemsTest_0020', 0, async (done: Function) => {
       console.info('SpaceCross5AlignItemsTest_0020 START');
       let strJson = getInspectorByKey('SpaceCross5AlignItems_Start');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceCross5AlignItemsTest_0020] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.ColumnReverse");
       expect(obj.$attrs.constructor.alignItems).assertEqual("ItemAlign.Start");
@@ -90,10 +90,10 @@ export default function SpaceCross5AlignItemsJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceCross5AlignItemsTest_0030', 0, async function (done) {
+    it('SpaceCross5AlignItemsTest_0030', 0, async (done: Function) => {
       console.info('SpaceCross5AlignItemsTest_0030 START');
       let strJson = getInspectorByKey('SpaceCross5AlignItems_Center');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceCross5AlignItemsTest_0030] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.alignItems).assertEqual("ItemAlign.Center");
       expect(obj.$attrs.space).assertEqual("0.00px");
@@ -109,10 +109,10 @@ export default function SpaceCross5AlignItemsJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceCross5AlignItemsTest_0040', 0, async function (done) {
+    it('SpaceCross5AlignItemsTest_0040', 0, async (done: Function) => {
       console.info('SpaceCross5AlignItemsTest_0040 START');
       let strJson = getInspectorByKey('SpaceCross5AlignItems_End');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceCross5AlignItemsTest_0040] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.alignItems).assertEqual("ItemAlign.End");
       expect(obj.$attrs.space).assertEqual("0.00px");
@@ -128,10 +128,10 @@ export default function SpaceCross5AlignItemsJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceCross5AlignItemsTest_0050', 0, async function (done) {
+    it('SpaceCross5AlignItemsTest_0050', 0, async (done: Function) => {
       console.info('SpaceCross5AlignItemsTest_0050 START');
       let strJson = getInspectorByKey('SpaceCross5AlignItems_Stretch');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceCross5AlignItemsTest_0050] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.alignItems).assertEqual("ItemAlign.Stretch");
       expect(obj.$attrs.space).assertEqual("0.00px");
@@ -147,10 +147,10 @@ export default function SpaceCross5AlignItemsJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceCross5AlignItemsTest_0060', 0, async function (done) {
+    it('SpaceCross5AlignItemsTest_0060', 0, async (done: Function) => {
       console.info('SpaceCross5AlignItemsTest_0060 START');
       let strJson = getInspectorByKey('SpaceCross5AlignItems_Baseline');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceCross5AlignItemsTest_0060] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.alignItems).assertEqual("ItemAlign.Baseline");
       expect(obj.$attrs.space).assertEqual("0.00px");
@@ -166,10 +166,10 @@ export default function SpaceCross5AlignItemsJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceCross5AlignItemsTest_0070', 0, async function (done) {
+    it('SpaceCross5AlignItemsTest_0070', 0, async (done: Function) => {
       console.info('SpaceCross5AlignItemsTest_0070 START');
       let strJson = getInspectorByKey('SpaceCross5AlignItems_main5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SpaceCross5AlignItemsTest_0070] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.padding).assertEqual("10.00vp");
       expect(obj.$attrs.space).assertEqual("5.00vp");

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {MessageManager,Callback} from '../../utils/MessageManager';
+import {MessageManager,Callback} from '../../common/MessageManager';
 @Entry
 @Component
 struct DialogPage {
@@ -31,7 +31,7 @@ struct DialogPage {
       name: 'messageManager', message: this.messageManager
     }
 
-    let callback: Callback = (message: any) => {
+    let callback: Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'autoCancel') {
         this.autoCancel = message.value

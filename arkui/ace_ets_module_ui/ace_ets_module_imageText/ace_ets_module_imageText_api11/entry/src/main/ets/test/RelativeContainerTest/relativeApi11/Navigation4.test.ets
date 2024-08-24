@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 
 export default function Navigation4() {
-  describe('Navigation4', function () {
-    beforeEach(async function (done) {
+  describe('Navigation4', () => {
+    beforeEach(async (done: Function) => {
       console.info("appendChildTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/RelativeContainer/relativeApi11/Navigation4',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RelativeContainer/relativeApi11/Navigation4',
       }
       try {
         router.clear();
@@ -50,7 +50,7 @@ export default function Navigation4() {
      * @tc.type :
      * @tc.size :
      */
-    it('Navigation4_0100', 0, async function (done) {
+    it('Navigation4_0100', 0, async (done: Function) => {
       console.info('Navigation4_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -64,7 +64,7 @@ export default function Navigation4() {
 
 
       let strJson = getInspectorByKey('NavigationTwo');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.content).assertEqual('two');
       await CommonFunc.sleep(1000);
       console.info('[Navigation4_0100] END');

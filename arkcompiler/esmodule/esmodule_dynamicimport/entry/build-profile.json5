@@ -25,9 +25,7 @@
         "packages": [
           'Sharelibraryhsp',
           'Staticlibraryhar',
-          '@ohos/crypto-js',
           'libentry.so',
-          "@yunkss/eftool"
         ]
       }
     },

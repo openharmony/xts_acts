@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import router from '@ohos.router';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function LongPressGestureTemplateTest() {
-  describe('LongPressGestureTemplateTest', function () {
-    beforeEach(async function (done) {
+  describe('LongPressGestureTemplateTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("LongPressGestureTemplateTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/LongPressGesture/LongPressGestureTemplate',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/LongPressGesture/LongPressGestureTemplate',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function LongPressGestureTemplateTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("LongPressGestureTemplateTest after each called");
     });
@@ -54,7 +54,7 @@ export default function LongPressGestureTemplateTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('LongPressGestureTemplateTest_0010', 0, async function (done) {
+    it('LongPressGestureTemplateTest_0010', 0, async (done: Function) => {
       console.info('LongPressGestureTemplateTest_0010 START');
       await CommonFunc.sleep(1000);
       let FatherObj = CommonFunc.getComponentRectOnScreen('LongPressGestureTemplate_Father');
@@ -82,11 +82,11 @@ export default function LongPressGestureTemplateTest() {
       let timeD:number = Date.now();
       await CommonFunc.sleep(4000);
       let text1 = getInspectorByKey('LongPressGestureTemplate_Text01');
-      let obj1 = JSON.parse(text1);
+      let obj1: ESObject = JSON.parse(text1);
       let time1:number = Number(obj1.$attrs.content)
       console.log('LongPressGestureTemplateTest_0010 obj1 $attrs content',obj1.$attrs.content,time1)
       let text2 = getInspectorByKey('LongPressGestureTemplate_Text02');
-      let obj2 = JSON.parse(text2);
+      let obj2: ESObject = JSON.parse(text2);
       let time2:number = Number(obj2.$attrs.content)
       console.log('LongPressGestureTemplateTest_0010 obj2 $attrs content',obj2.$attrs.content,time2)
       console.log('LongPressGestureTemplateTest_0010 obj2 time $attrs content',time1,time2);

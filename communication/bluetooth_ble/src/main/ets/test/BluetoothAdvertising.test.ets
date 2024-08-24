@@ -43,17 +43,25 @@ export default function bluetoothAdvertisingTest() {
     let CLOSE_BT_TEXT:string = "关闭";
 
     async function clickRequestPermission(text:string) {
-      try {
-        console.info('[bluetooth_js] clickRequestPermission start');
+      console.info('[bluetooth_js] clickRequestPermission start');
         let driver = Driver.create();
         await driver.delayMs(3000);
-        let button = await driver.findComponent(ON.text(text));
-        await button.click();
-        await driver.delayMs(3000);
-        console.info('[bluetooth_js] clickRequestPermission end');
-      } catch (err) {
-        console.info('[bluetooth_js] clickRequestPermission failed');
-      }
+        try {
+            let button = await driver.findComponent(ON.text(text));
+            await button.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] clickRequestPermission end');
+        } catch (err) {
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
+        }
     }
 
     async function tryToEnableBt() {
@@ -139,9 +147,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0100
-     * @tc.name start/stopAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0100', 0, async function (done) {
@@ -204,9 +213,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0200
-     * @tc.name test start/stopAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0200', 0, async function (done) {
@@ -252,9 +262,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0300
-     * @tc.name test start/stopAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0300', 0, async function (done) {
@@ -285,9 +296,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0400
-     * @tc.name test start/stopAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0400', 0, async function (done) {
@@ -310,7 +322,7 @@ export default function bluetoothAdvertisingTest() {
         });
       } catch (err) {
         console.info("04errCode:" + err.code + ",04errMessage:" + err.message);
-        expect(err.code).assertEqual(401);
+        expect(Number(err.code)).assertEqual(401);
       }
       await sleep(2000);
       done();
@@ -318,9 +330,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0500
-     * @tc.name test start/stopAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0500', 0, async function (done) {
@@ -343,7 +356,7 @@ export default function bluetoothAdvertisingTest() {
         });
       } catch (err) {
         console.info("05errCode:" + err.code + ",05errMessage:" + err.message);
-        expect(err.code).assertEqual(401);
+        expect(Number(err.code)).assertEqual(401);
       }
       await sleep(2000);
       done();
@@ -351,9 +364,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0700
-     * @tc.name test start/stopAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0700', 0, async function (done) {
@@ -376,7 +390,7 @@ export default function bluetoothAdvertisingTest() {
         });
       } catch (err) {
         console.info("07errCode:" + err.code + ",07errMessage:" + err.message);
-        expect(err.code).assertEqual(401);
+        expect(Number(err.code)).assertEqual(401);
       }
       await sleep(2000);
       done();
@@ -384,9 +398,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0900
-     * @tc.name test start/stopAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0900', 0, async function (done) {
@@ -416,9 +431,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1000
-     * @tc.name test start/stopAdvertising enable/disableAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1000', 0, async (done) => {
@@ -479,9 +495,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1100
-     * @tc.name test start/stopAdvertising enable/disableAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1100', 0, async (done) => {
@@ -543,9 +560,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1200
-     * @tc.name test start/stopAdvertising enable/disableAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1200', 0, async (done) => {
@@ -573,7 +591,7 @@ export default function bluetoothAdvertisingTest() {
       }
       catch (err) {
         console.info("12errCode:" + err.code + ",12errMessage:" + err.message);
-        expect(err.code).assertEqual(401);
+        expect(Number(err.code)).assertEqual(401);
       }
       await bluetooth.stopAdvertising(advHandle).then((data) => {
         console.info('[bluetooth_js] stopAdvertising promise result:' + JSON.stringify(data));
@@ -584,9 +602,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1300
-     * @tc.name test start/stopAdvertising enable/disableAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1300', 0, async (done) => {
@@ -631,9 +650,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1400
-     * @tc.name test start/stopAdvertising enable/disableAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1400', 0, async (done) => {
@@ -692,9 +712,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1500
-     * @tc.name test start/stopAdvertising enable/disableAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1500', 0, async (done) => {
@@ -728,7 +749,7 @@ export default function bluetoothAdvertisingTest() {
       }
       catch (err) {
         console.info("15errCode:" + err.code + ",15errMessage:" + err.message);
-        expect(err.code).assertEqual(2900003);
+        expect(Number(err.code)).assertEqual(2900003);
       }
       await sleep(2000);
       done();
@@ -736,9 +757,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1600
-     * @tc.name test start/stopAdvertising enable/disableAdvertising callback/promise
+     * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1600', 0, async (done) => {
@@ -752,7 +774,7 @@ export default function bluetoothAdvertisingTest() {
           console.info('[bluetooth_js] enableAdvertising promise result16:' + JSON.stringify(data));
         }).catch(err => {
           console.info('bluetooth enableAdvertising has error: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(2900099);
+          expect(Number(err.code)).assertEqual(2900099);
         });
         await bluetooth.stopAdvertising(advHandle).then((data) => {
           console.info('[bluetooth_js] stopAdvertising promise result16:' + JSON.stringify(data));
@@ -767,9 +789,10 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1700
-     * @tc.name test AdvertisingState
-     * @tc.desc Test AdvertisingState constant api11
+     * @tc.name testStartAdvertising
+     * @tc.desc Test bluetoothBle api11
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1700', 0, async (done) => {

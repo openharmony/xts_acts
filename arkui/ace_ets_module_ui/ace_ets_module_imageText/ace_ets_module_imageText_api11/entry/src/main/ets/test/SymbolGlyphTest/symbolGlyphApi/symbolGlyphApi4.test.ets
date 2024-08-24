@@ -18,10 +18,10 @@ import CommonFunc from "../../../MainAbility/common/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function symbolGlyphApi4() {
-  describe('symbolGlyphApi4', function () {
-    beforeEach(async function (done) {
+  describe('symbolGlyphApi4', () => {
+    beforeEach(async (done: Function) => {
       console.info("symbolGlyphApi4 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/SymbolGlyph/symbolGlyphApi/symbolGlyphApi4',
       }
       try {
@@ -40,7 +40,7 @@ export default function symbolGlyphApi4() {
       console.info("symbolGlyphApi4 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("symbolGlyphApi4 after each called");
     });
@@ -52,7 +52,7 @@ export default function symbolGlyphApi4() {
      * @tc.type
     * @tc.size
      */
-    it('symbolGlyphApi4_0100', 0, async function (done) {
+    it('symbolGlyphApi4_0100', 0, async (done: Function) => {
       console.info('[symbolGlyphApi4_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -60,7 +60,7 @@ export default function symbolGlyphApi4() {
       // await CommonFunc.sleep(300);
 
       let symbolGlyphApi4 = getInspectorByKey('symbolGlyphApi4');
-      let Obj1 = JSON.parse(symbolGlyphApi4);
+      let Obj1: ESObject = JSON.parse(symbolGlyphApi4);
       expect(Obj1.$attrs.effectStrategy).assertEqual('SymbolEffectStrategy.SCALE');
       console.info('[testRichEditor_0100] END');
       done();

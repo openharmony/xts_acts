@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {PointerMatrix, UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import CommonFunc from '../../MainAbility/common/Common';
+import {PointerMatrix, UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode} from '@ohos.UiTest';
 
 export default function RotationGestureTemplateTest() {
-  describe('RotationGestureTemplateTest', function () {
-    beforeEach(async function (done) {
+  describe('RotationGestureTemplateTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("RotationGestureTemplateTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/RotationGesture/RotationGestureTemplate',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RotationGesture/RotationGestureTemplate',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function RotationGestureTemplateTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("RotationGestureTemplateTest after each called");
     });
@@ -54,7 +54,7 @@ export default function RotationGestureTemplateTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RotationGestureTemplateTest_0010', 0, async function (done) {
+    it('RotationGestureTemplateTest_0010', 0, async (done: Function) => {
       console.info('RotationGestureTemplateTest_0010 START');
       await CommonFunc.sleep(1000);
       let areaObj1 = CommonFunc.getComponentRectOnScreen('RotationGestureTemplate_Click');
@@ -81,7 +81,7 @@ export default function RotationGestureTemplateTest() {
       await button.click();
       await CommonFunc.sleep(3000);
       let text1 = getInspectorByKey('RotationGestureTemplate_Text');
-      let obj1 = JSON.parse(text1);
+      let obj1: ESObject = JSON.parse(text1);
       console.log('RotationGestureTemplateTest_0010 obj1 $attrs content',obj1.$attrs.content,obj1)
       expect(obj1.$attrs.content).assertEqual('templateFlag:true');
       console.info('RotationGestureTemplateTest_0010 END');

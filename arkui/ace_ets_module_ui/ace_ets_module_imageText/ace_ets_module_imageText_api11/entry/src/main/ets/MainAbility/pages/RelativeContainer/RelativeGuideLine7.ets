@@ -12,10 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-interface linePosition2 {
-  start?:Dimension,
-  end?:Dimension
-}
+
 @Entry
 @Component
 struct RelativeGuideLine7 {

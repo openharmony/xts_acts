@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function getModifierKeyStateTest() {
-  describe('getModifierKeyStateTest', function () {
-    beforeEach(async function (done) {
+  describe('getModifierKeyStateTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("getModifierKeyStateTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/onKeyEvent/getModifierKeyState",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/onKeyEvent/getModifierKeyState",
       }
       try {
         router.clear();
@@ -50,10 +50,10 @@ export default function getModifierKeyStateTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getModifierKeyStateTest_0010', 0, async function (done) {
+    it('getModifierKeyStateTest_0010', 0, async (done: Function) => {
       console.info('getModifierKeyStateTest_0010 START');
       let strJson = getInspectorByKey('getModifierKeyState_BaseEvent');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[getModifierKeyStateTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('false');
       console.info('[getModifierKeyStateTest_0010] END');
@@ -68,7 +68,7 @@ export default function getModifierKeyStateTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getModifierKeyStateTest_0020', 0, async function (done) {
+    it('getModifierKeyStateTest_0020', 0, async (done: Function) => {
       console.info('getModifierKeyStateTest_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -76,7 +76,7 @@ export default function getModifierKeyStateTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('getModifierKeyState_DragEvent');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[getModifierKeyStateTest_0020] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('true');
       console.info('[getModifierKeyStateTest_0020] END');

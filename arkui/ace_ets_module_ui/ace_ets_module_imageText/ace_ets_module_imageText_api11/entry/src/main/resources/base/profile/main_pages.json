@@ -27,7 +27,6 @@
         "MainAbility/pages/button/buttonControlSize",
         "MainAbility/pages/button/getcomponent",
         "MainAbility/pages/button/getcomponentadd",
-        "MainAbility/pages/RichEditor/RichEditor/RichEditor",
         "MainAbility/pages/text/textObscured",
         "MainAbility/pages/text/textSpanFont",
         "MainAbility/pages/image/imageObscuredTest",
@@ -142,7 +141,7 @@
         "MainAbility/pages/TextInput/TextinputIndex",
         "MainAbility/pages/TextInput/TextinputSec",
         "MainAbility/pages/SegmentButton/SegmentButtonIndex",
-	"MainAbility/pages/Search/search_caret",
+        "MainAbility/pages/Search/search_caret",
         "MainAbility/pages/Search/search_maxLength",
         "MainAbility/pages/Search/search_maxLength2",
         "MainAbility/pages/Search/search_top",
@@ -185,7 +184,7 @@
         "MainAbility/pages/font/fontAdd",
         "MainAbility/pages/RenderNode/RenderFit",
         "MainAbility/pages/image/aboutToRecycleiamge",
-	"MainAbility/pages/button/focus",
+        "MainAbility/pages/button/focus",
         "MainAbility/pages/image/image55",
         "MainAbility/pages/button/playMode",
         "MainAbility/pages/RichEditor/richText",
@@ -206,7 +205,7 @@
         "MainAbility/pages/button/button3",
         "MainAbility/pages/span/span3",
         "MainAbility/pages/text/text3",
-	"MainAbility/pages/ImageAnimator/imageAnimator2",
+        "MainAbility/pages/ImageAnimator/imageAnimator2",
         "MainAbility/pages/Progress/loadingProgress2"
     ]
 }

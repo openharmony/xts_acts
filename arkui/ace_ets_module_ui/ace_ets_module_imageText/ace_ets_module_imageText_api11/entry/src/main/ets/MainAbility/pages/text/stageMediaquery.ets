@@ -68,7 +68,7 @@ struct stageMediaquery {
               console.info("onSelect start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("onSelect emit action state err: " + JSON.stringify(err.message))
+              console.info("onSelect emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
         })
@@ -101,7 +101,7 @@ struct stageMediaquery {
             console.info("onSelect start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("onSelect emit action state err: " + JSON.stringify(err.message))
+            console.info("onSelect emit action state err: " + JSON.stringify((err as Error)?.message))
           }
 
         })

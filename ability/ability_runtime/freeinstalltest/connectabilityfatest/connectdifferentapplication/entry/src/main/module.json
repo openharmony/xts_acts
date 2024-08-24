@@ -8,7 +8,8 @@
     "deviceTypes": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": true,
@@ -22,7 +23,7 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
         "visible": true,
-		"orientation": "portrait",
+        "orientation": "portrait",
         "skills": [
           {
             "entities": [
