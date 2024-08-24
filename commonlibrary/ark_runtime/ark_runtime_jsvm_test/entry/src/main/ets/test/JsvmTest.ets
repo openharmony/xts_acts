@@ -6585,6 +6585,34 @@ instanceOf(obj, Person);
         expect(value).assertEqual(0);
       done();
     });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0481
+     * @tc.name      JsvmTest0481
+     * @tc.desc      Test the function of WebAssembly interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0481', 0, async function (done) {
+        let rst = napitest.wasmTest();
+        console.info('JsvmTest0481 testString result is:' + JSON.stringify(rst));
+        expect(value).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0482
+     * @tc.name      JsvmTest0482
+     * @tc.desc      Test the function of ArrayBuffer backing store interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0482', 0, async function (done) {
+        let rst = napitest.arrayBufferBackingStoreTest();
+        console.info('JsvmTest0482 testString result is:' + JSON.stringify(rst));
+        expect(value).assertEqual(0);
+      done();
+    });
   });
 }
 
