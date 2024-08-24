@@ -515,6 +515,10 @@
 #include "drag/drag_getDragEvent.cpp"
 #include "drag/drag_getDataTypes.cpp"
 #include "drag/drag_setGetUdmfData.cpp"
+#include "drag/drag_setDragEventStrictReport.cpp"
+#include "drag/drag_allowDropDataTypes.cpp"
+#include "drag/drag_setNodeDragPreview.cpp"
+#include "drag/drag_dragPreviewOption.cpp"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -4870,6 +4874,41 @@ static napi_value Init(napi_env env, napi_value exports)
         {"drag_setGetUdmfData_001", nullptr, drag_setGetUdmfData_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"drag_setGetUdmfData_002", nullptr, drag_setGetUdmfData_002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"drag_setGetUdmfData_003", nullptr, drag_setGetUdmfData_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"drag_setDragEventStrictReportWidthNode_001", nullptr, drag_setDragEventStrictReportWidthNode_001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"drag_setDragEventStrictReportWidthNode_002", nullptr, drag_setDragEventStrictReportWidthNode_002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"drag_setDragEventStrictReportWidthContext_003", nullptr, drag_setDragEventStrictReportWidthContext_003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"drag_setDragEventStrictReportWidthContext_004", nullptr, drag_setDragEventStrictReportWidthContext_004,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"drag_setNodeAllowedDropDataTypes_001", nullptr, drag_setNodeAllowedDropDataTypes_001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"drag_disallowNodeAnyDropDataTypes_002", nullptr, drag_disallowNodeAnyDropDataTypes_002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"drag_allowNodeAllDropDataTypes_003", nullptr, drag_allowNodeAllDropDataTypes_003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"drag_setNodeDraggable_004", nullptr, drag_setNodeDraggable_004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"drag_SetNodeDragPreview_001", nullptr, drag_SetNodeDragPreview_001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"drag_DragPreviewOption_Dispose_001", nullptr, drag_DragPreviewOption_Dispose_001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"drag_DragPreviewOption_SetScaleMode_002", nullptr, drag_DragPreviewOption_SetScaleMode_002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"drag_DragPreviewOption_SetDefaultShadowEnabled_003", nullptr,
+         drag_DragPreviewOption_SetDefaultShadowEnabled_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"drag_DragPreviewOption_SetDefaultRadiusEnabled_004", nullptr,
+         drag_DragPreviewOption_SetDefaultRadiusEnabled_004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"drag_DragPreviewOption_SetNumberBadgeEnabled_005", nullptr,
+         drag_DragPreviewOption_SetNumberBadgeEnabled_005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"drag_DragPreviewOption_SetBadgeNumber_006", nullptr, drag_DragPreviewOption_SetBadgeNumber_006,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"drag_DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled_007", nullptr,
+         drag_DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled_007, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"drag_DragPreviewOption_SetNodeDragPreviewOption_008", nullptr,
+         drag_DragPreviewOption_SetNodeDragPreviewOption_008, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

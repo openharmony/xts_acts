@@ -250,3 +250,8 @@ export const setDragResultTest: (a: string) => void;
 export const getDataTypesCountTest: (a: string) => void;
 
 export const getDragResultTest: (a: string) => void;
+export const getXYTest: (a: string) => void;
+
+export const getWidthHeightTest: (a: string) => void;
+
+export const getModifierKeyStatesTest: (a: string) => void;

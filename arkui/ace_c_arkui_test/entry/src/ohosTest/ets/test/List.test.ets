@@ -592,6 +592,13 @@ import DragEventSetDragResultTest from "./drag/DragEventSetDragResult.test"
 import DragEventGetDataTypesCountTest from "./drag/DragEventGetDataTypesCount.test"
 import DragEventGetDragResultTest from "./drag/DragEventGetDragResult.test"
 import DragSetGetUdmfDataTest from "./drag/DragSetGetUdmfData.test"
+import DragEventGetXYTest from "./drag/DragEventGetXY.test"
+import DragEventGetWidthHeightTest from "./drag/DragEventGetWidthHeight.test"
+import DragEventGetModifierKeyStatesTest from "./drag/DragEventGetModifierKeyStates.test"
+import DragSetDragEventStrictReportTest from "./drag/DragSetDragEventStrictReport.test"
+import DragAllowDropDataTypesTest from "./drag/DragAllowDropDataTypes.test"
+import DragSetNodeDragPreviewTest from "./drag/DragSetNodeDragPreview.test"
+import DragDragPreviewOptionTest from "./drag/DragDragPreviewOption.test"
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
@@ -1174,4 +1181,12 @@ export default function testsuite() {
   DragEventGetDataTypesCountTest()
   DragEventGetDragResultTest()
   DragSetGetUdmfDataTest()
+  DragEventGetXYTest()
+  DragEventGetWidthHeightTest()
+  DragEventGetModifierKeyStatesTest()
+  DragSetDragEventStrictReportTest()
+  DragAllowDropDataTypesTest()
+  DragSetNodeDragPreviewTest()
+  DragDragPreviewOptionTest()
+
 }

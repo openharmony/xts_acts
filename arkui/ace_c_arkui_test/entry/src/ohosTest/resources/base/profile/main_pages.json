@@ -115,6 +115,9 @@
     "MainAbility/pages/drag/DragEventSetSuggestedDropOperationTest",
     "MainAbility/pages/drag/DragEventSetDragResultTest",
     "MainAbility/pages/drag/DragEventGetDataTypesCountTest",
-    "MainAbility/pages/drag/DragEventGetDragResultTest"
+    "MainAbility/pages/drag/DragEventGetDragResultTest",
+    "MainAbility/pages/drag/DragEventGetXYTest",
+    "MainAbility/pages/drag/DragEventGetWidthHeightTest",
+    "MainAbility/pages/drag/DragEventGetModifierKeyStatesTest"
   ]
 }
