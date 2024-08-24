@@ -17,7 +17,6 @@ import avSession from '@ohos.multimedia.avsession';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import ohosWantAgent from '@ohos.wantAgent';
-// import WantAgent from '@ohos.wantAgent';
 import WantAgent from '@ohos.app.ability.wantAgent';
 import featureAbility from '@ohos.ability.featureAbility';
 
