@@ -109,6 +109,12 @@
     "MainAbility/pages/textinput/TextInputOnFocusTest",
     "MainAbility/pages/textinput/TextInputOnSubmitTest",
     "MainAbility/pages/textinput/TextInputOnCutTest",
-    "MainAbility/pages/textinput/TextInputOnPasteTest"
+    "MainAbility/pages/textinput/TextInputOnPasteTest",
+    "MainAbility/pages/drag/DragEventDisableDefaultDropAnimationTest",
+    "MainAbility/pages/drag/DragGetPreDragStatusTest",
+    "MainAbility/pages/drag/DragEventSetSuggestedDropOperationTest",
+    "MainAbility/pages/drag/DragEventSetDragResultTest",
+    "MainAbility/pages/drag/DragEventGetDataTypesCountTest",
+    "MainAbility/pages/drag/DragEventGetDragResultTest"
   ]
 }

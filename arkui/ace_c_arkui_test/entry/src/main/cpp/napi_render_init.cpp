@@ -91,6 +91,12 @@
 #include "textinput/textinput_onpaste_test.h"
 #include "gesture/gesture_test.h"
 #include "customcomponent/customcomponent_event_test.h"
+#include "drag/drag_setSuggestedDropOperation.h"
+#include "drag/drag_disableDefaultDropAnimation.h"
+#include "drag/drag_getPreDragStatus.h"
+#include "drag/drag_setDragResult.h"
+#include "drag/drag_getDataTypesCount.h"
+#include "drag/drag_getDragResult.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -332,6 +338,18 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"interruptGestureTest", nullptr, GestureTest::CreateInterruptNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"disableDefaultDropAnimationTest", nullptr, DisableDefaultDropAnimationTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"getPreDragStatusTest", nullptr, GetPreDragStatusTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"setSuggestedDropOperationTest", nullptr, SetSuggestedDropOperationTest::CreateNativeNode, nullptr, nullptr,
+		 nullptr, napi_default, nullptr},
+        {"setDragResultTest", nullptr, SetDragResultTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"getDataTypesCountTest", nullptr, GetDataTypesCountTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"getDragResultTest", nullptr, GetDragResultTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
