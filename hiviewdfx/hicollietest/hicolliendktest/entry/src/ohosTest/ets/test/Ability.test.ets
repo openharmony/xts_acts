@@ -58,7 +58,7 @@ export default function abilityTest() {
      * @tc.level      : Level 1
      */
     it('testHiCollieC003', 0, async (done: Function) => {
-      let result:number = testNapi.testHiCollieJankCMainThread();
+      let result:number = testNapi.testJankCMThread();
       expect(result).assertEqual(29800001);
       done();
     });
@@ -72,7 +72,7 @@ export default function abilityTest() {
      * @tc.level      : Level 1
      */
     it('testHiCollieC004', 0, async (done: Function) => {
-      let result:number = testNapi.testHiCollieStuckCMainThread();
+      let result:number = testNapi.testStuckCMThread();
       expect(result).assertEqual(29800001);
       done();
     });
@@ -86,7 +86,7 @@ export default function abilityTest() {
      * @tc.level      : Level 1
      */
     it('testHiCollieC005', 0, async (done: Function) => {
-      let result:number = testNapi.testHiCollieReportCMainThread();
+      let result:number = testNapi.testReportCMThread();
       expect(result).assertEqual(29800001);
       done();
     });
@@ -100,7 +100,7 @@ export default function abilityTest() {
      * @tc.level      : Level 1
      */
     it('testHiCollieC006', 0, async (done: Function) => {
-      let result:number = testNapi.testHiCollieJankCerr401();
+      let result:number = testNapi.testJankCerr401();
       expect(result).assertEqual(401);
       done();
     });

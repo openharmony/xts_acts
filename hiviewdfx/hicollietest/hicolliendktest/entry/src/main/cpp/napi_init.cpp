@@ -25,7 +25,7 @@
 
 static OH_HiCollie_BeginFunc beginFunc_;
 static OH_HiCollie_EndFunc endFunc_;
-HiCollie_DetectionParam param {.sampleStackTriggerTime = 150,.reserved = 0};
+HiCollie_DetectionParam param {.sampleStackTriggerTime = 150, .reserved = 0};
 int64_t lastWatchTime = 0;
 const int64_t CHECK_INTERNAL_TIME = 3000;
 std::shared_ptr<std::atomic<bool>> isReport = std::make_shared<std::atomic<bool>>(true);
@@ -47,12 +47,12 @@ void TestJankDetection()
     beginFunc_ = InitBeginFunc;
     endFunc_ = InitEndFunc;
     int initResult = OH_HiCollie_Init_JankDetection(&beginFunc_, &endFunc_, param);
-    int count = 0;
-    while (count < 2) {
+    int initcount = 2;
+    while (initcount < 2) {
         beginFunc_("TestBegin");
-        usleep(350 * 1000);
+        usleep(350 * 1000);//ms和us转换
         endFunc_("TestEnd");
-        count++;
+        initcount++;
     }
 }
 
@@ -73,7 +73,9 @@ int64_t GetCurrentTime()
 
 bool ReportEvent()
 {
-    if ((GetCurrentTime() - lastWatchTime) > CHECK_INTERNAL_TIME) {return true;
+    if ((GetCurrentTime() - lastWatchTime) > CHECK_INTERNAL_TIME)
+    {
+        return true;
     }
     return true;
 }
@@ -94,7 +96,7 @@ void TestTask()
 int  TestStuckDetection()
 {
     int initResult = -1;
-    if(count == 0) {
+    if (count == 0) {
         initResult = OH_HiCollie_Init_StuckDetection(TestTask);
         TestTask();
         count++;
@@ -111,7 +113,7 @@ static napi_value TestHiCollieStuckC(napi_env env, napi_callback_info info)
     return sum;
 }
 
-static napi_value TestHiCollieStuckCMainThread(napi_env env, napi_callback_info info)
+static napi_value TestStuckCMThread(napi_env env, napi_callback_info info)
 {
     napi_value sum;
     int initResult = OH_HiCollie_Init_StuckDetection(nullptr);
@@ -119,16 +121,16 @@ static napi_value TestHiCollieStuckCMainThread(napi_env env, napi_callback_info 
     return sum;
 }
 
-static napi_value TestHiCollieJankCMainThread(napi_env env, napi_callback_info info)
+static napi_value TestJankCMThread(napi_env env, napi_callback_info info)
 {
     napi_value sum;
-    int initResult = OH_HiCollie_Init_JankDetection(nullptr ,&endFunc_,param);
+    int initResult = OH_HiCollie_Init_JankDetection(nullptr, &endFunc_, param);
     napi_create_int32(env, initResult, &sum);
     return sum;
 }
 
 
-static napi_value TestHiCollieReportCMainThread(napi_env env, napi_callback_info info)
+static napi_value TestReportCMThread(napi_env env, napi_callback_info info)
 {
     napi_value sum;
     int initResult = OH_HiCollie_Report(nullptr);
@@ -139,10 +141,10 @@ static napi_value TestHiCollieReportCMainThread(napi_env env, napi_callback_info
 
 void Test001()
 {
-    initResult_ = OH_HiCollie_Init_JankDetection(nullptr ,&endFunc_,param);
+    initResult_ = OH_HiCollie_Init_JankDetection(nullptr, &endFunc_,param);
 }
 
-static napi_value TestHiCollieJankCerr401(napi_env env, napi_callback_info info)
+static napi_value TestJankCerr401(napi_env env, napi_callback_info info)
 {
     napi_value sum;
     std::thread threadObj(Test001);
@@ -157,7 +159,7 @@ static napi_value Add(napi_env env, napi_callback_info info)
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     napi_valuetype valuetype0;
     napi_typeof(env, args[0], &valuetype0);
@@ -183,10 +185,10 @@ static napi_value Init(napi_env env, napi_value exports)
         { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testHiCollieJankC", nullptr, TestHiCollieJankC, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testHiCollieStuckC", nullptr, TestHiCollieStuckC, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testHiCollieJankCMainThread", nullptr, TestHiCollieJankCMainThread, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testHiCollieStuckCMainThread", nullptr, TestHiCollieStuckCMainThread, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testHiCollieReportCMainThread", nullptr, TestHiCollieReportCMainThread, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testHiCollieJankCerr401", nullptr,  TestHiCollieJankCerr401, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testJankCMThread", nullptr, TestJankCMThread, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testStuckCMThread", nullptr, TestStuckCMThread, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testReportCMThread", nullptr, TestReportCMThread, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testJankCerr401", nullptr,  TestJankCerr401, nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
