@@ -121,6 +121,18 @@
         "reason": "need use ENTERPRISE_INSTALL_BUNDLE"
       },
       {
+        "name": "ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE",
+        "reason": "need use INSTALL_ENTERPRISE_NORMAL_BUNDLE"
+      },
+      {
+        "name": "ohos.permission.UNINSTALL_BUNDLE",
+        "reason": "need use UNINSTALL_BUNDLE"
+      },
+      {
+        "name": "ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE",
+        "reason": "need use INSTALL_ENTERPRISE_MDM_BUNDLE"
+      },
+      {
         "name": "ohos.permission.ENTERPRISE_RESTRICT_POLICY",
         "reason": "need use ENTERPRISE_RESTRICT_POLICY"
       },
