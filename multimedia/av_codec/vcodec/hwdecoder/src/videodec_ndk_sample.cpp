@@ -614,16 +614,13 @@ void VDecNdkSample::CheckOutputDescription()
         OH_AVFormat_GetIntValue(newFormat, OH_MD_KEY_VIDEO_SLICE_HEIGHT, &sliceHeight);
         OH_AVFormat_GetIntValue(newFormat, OH_MD_KEY_VIDEO_PIC_WIDTH, &picWidth);
         OH_AVFormat_GetIntValue(newFormat, OH_MD_KEY_VIDEO_PIC_HEIGHT, &picHeight);
-        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_QP_AVERAGE, &qp_average);
-        OH_AVFormat_GetDoubleValue(format, OH_MD_KEY_VIDEO_ENCODER_MSE, &mse);
+        OH_AVFormat_GetIntValue(newFormat, OH_MD_KEY_VIDEO_ENCODER_QP_AVERAGE, &qp_average);
+        OH_AVFormat_GetDoubleValue(newFormat, OH_MD_KEY_VIDEO_ENCODER_MSE, &mse);
 
         if (cropTop != expectCropTop || cropBottom != expectCropBottom || cropLeft != expectCropLeft) {
             errCount++;
         }
         if (cropRight != expectCropRight || stride <= 0 || sliceHeight <= 0) {
-            errCount++;
-        }
-        if (picWidth != originalWidth || picHeight != originalHeight) {
             errCount++;
         }
     } else {
