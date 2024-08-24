@@ -47,10 +47,10 @@ void TestJankDetection()
     beginFunc_ = InitBeginFunc;
     endFunc_ = InitEndFunc;
     int initResult = OH_HiCollie_Init_JankDetection(&beginFunc_, &endFunc_, param);
-    int initcount = 2;
-    while (initcount < 2) {
+    int initcount = 0;
+    while (initcount < 2) { //as of 2
         beginFunc_("TestBegin");
-        usleep(350 * 1000);//ms和us转换
+        usleep(350 * 1000); //350ms转换为350*1000微秒
         endFunc_("TestEnd");
         initcount++;
     }
@@ -73,8 +73,7 @@ int64_t GetCurrentTime()
 
 bool ReportEvent()
 {
-    if ((GetCurrentTime() - lastWatchTime) > CHECK_INTERNAL_TIME)
-    {
+    if ((GetCurrentTime() - lastWatchTime) > CHECK_INTERNAL_TIME) {
         return true;
     }
     return true;
@@ -88,7 +87,7 @@ void TestTask()
         needReport = false;
     }
     int64_t now = GetCurrentTime();
-    if ((now - lastWatchTime) >= (CHECK_INTERNAL_TIME / 2)) {
+    if ((now - lastWatchTime) >= (CHECK_INTERNAL_TIME / 2)) { //as of 2
         lastWatchTime = now;
     }
 }
@@ -141,7 +140,7 @@ static napi_value TestReportCMThread(napi_env env, napi_callback_info info)
 
 void Test001()
 {
-    initResult_ = OH_HiCollie_Init_JankDetection(nullptr, &endFunc_,param);
+    initResult_ = OH_HiCollie_Init_JankDetection(nullptr, &endFunc_, param);
 }
 
 static napi_value TestJankCerr401(napi_env env, napi_callback_info info)
