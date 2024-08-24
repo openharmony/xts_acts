@@ -372,9 +372,6 @@ export default function AVSessionCallback() {
                 } else if (value.mediaImage === metadata7.mediaImage) {
                     console.info('TestLog: Get mediaImage Successfully');
                     expect(true).assertTrue();
-                } else if (value.mediaImage !== null) {
-                    console.info('TestLog: Get mediaImage Successfully not null');
-                    expect(true).assertTrue();
                 }else {
                     console.info(`TestLog: Get mediaImage failed:${value}`);
                     expect(false).assertTrue();
