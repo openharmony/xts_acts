@@ -1130,6 +1130,7 @@ export default function CameraErrorCodeUsecaseTest() {
      */
      it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_ORIENTATION_0100', 0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_ORIENTATION_0100--------------");
+      cameraObj.createSession();
       let ret = cameraObj.getCameraOrientation();
       if (ret != 0) {
         console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_ORIENTATION_0100 FAILED");
