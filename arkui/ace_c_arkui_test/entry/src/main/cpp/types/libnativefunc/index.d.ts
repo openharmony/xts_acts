@@ -5354,3 +5354,11 @@ export const testRegisterSystemFontStyleChangeEvent_003: () => number;
 export const testUnregisterSystemFontStyleChangeEvent_004: () => number;
 export const testSystemFontStyleEvent_GetFontSizeScale_005: () => number;
 export const testSystemFontStyleEvent_GetFontWeightScale_006: () => number;
+
+export const drag_getDragEvent_001: () => number;
+
+export const drag_getDataTypes_001: () => number;
+
+export const drag_setGetUdmfData_001: () => number;
+export const drag_setGetUdmfData_002: () => number;
+export const drag_setGetUdmfData_003: () => number;

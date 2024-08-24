@@ -567,6 +567,15 @@ import pointerEventTest from './pointerevent/PointerEventTest.test'
 import nativeTest from './native/nativeTest.test'
 import DialogDismissEventTest from './Dialog/DialogDismissEvent.test'
 import SystemColorFontChangeTest from "./system/SystemColorFontChange.test"
+import DragGetDragEventTest from "./drag/DragGetDragEvent.test"
+import DragEventGetDataTypesTest from "./drag/DragEventGetDataTypes.test"
+import DragEventDisableDefaultDropAnimationTest from "./drag/DragEventDisableDefaultDropAnimation.test"
+import DragGetPreDragStatusTest from "./drag/DragGetPreDragStatus.test"
+import DragEventSetSuggestedDropOperationTest from "./drag/DragEventSetSuggestedDropOperation.test"
+import DragEventSetDragResultTest from "./drag/DragEventSetDragResult.test"
+import DragEventGetDataTypesCountTest from "./drag/DragEventGetDataTypesCount.test"
+import DragEventGetDragResultTest from "./drag/DragEventGetDragResult.test"
+import DragSetGetUdmfDataTest from "./drag/DragSetGetUdmfData.test"
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
@@ -1123,4 +1132,13 @@ export default function testsuite() {
   nativeTest()
   DialogDismissEventTest()
   SystemColorFontChangeTest()
+  DragGetDragEventTest()
+  DragEventGetDataTypesTest()
+  DragEventDisableDefaultDropAnimationTest()
+  DragGetPreDragStatusTest()
+  DragEventSetSuggestedDropOperationTest()
+  DragEventSetDragResultTest()
+  DragEventGetDataTypesCountTest()
+  DragEventGetDragResultTest()
+  DragSetGetUdmfDataTest()
 }
