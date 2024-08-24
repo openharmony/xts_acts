@@ -24,18 +24,23 @@ import audioEnCoderNdkTest from './AudioEnCoderNdk.test';
 import mediaAvSourceNdkTest from './MediaAvSourceNdk.test';
 import audioDecoderAvBufferTest from './AudioDecAvBufferNdk.test';
 import audioEncoderAvBufferTest from './AudioEncAvBufferNdk.test';
+import call from '@ohos.telephony.call';
+let voice = call.hasVoiceCapability();
 
 export default function testsuite() {
-  videoEnCoderNdkTest();
-  videoDeCoderNdkTest();
-  multimediaCore();
-  mediaCodecBaseXdlNdkTest();
-  nativeNdkTest();
-  nativeavdemuxerNdkTest();
-  nativeavmuxerNdkTest();
-  audioEnCoderNdkTest();
-  audioDeCoderNdkTest();
-  mediaAvSourceNdkTest();
-  audioDecoderAvBufferTest();
-  audioEncoderAvBufferTest();
+  if (voice){
+    videoEnCoderNdkTest();
+    videoDeCoderNdkTest();
+    multimediaCore();
+    mediaCodecBaseXdlNdkTest();
+    nativeavdemuxerNdkTest();
+    nativeavmuxerNdkTest();
+    audioEnCoderNdkTest();
+    audioDeCoderNdkTest();
+    mediaAvSourceNdkTest();
+    audioDecoderAvBufferTest();
+    audioEncoderAvBufferTest();
+  } else {
+    nativeNdkTest();
+  }
 }
