@@ -24,7 +24,10 @@ ohos_js_hap_suite("photoAccess_js_hap") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsPhotoAccessTest"
-  shared_libraries = [ "./entry/src/main/cpp:mediaAssetManager" ]
+  shared_libraries = [
+    "./entry/src/main/cpp:photoAccessHelperTest",
+    "./entry/src/main/cpp:mediaAssetManager",
+  ]
   part_name = "media_library"
   subsystem_name = "multimedia"
 }
