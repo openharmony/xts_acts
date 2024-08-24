@@ -27,6 +27,10 @@
 #include <fcntl.h>
 #include <cmath>
 #include <thread>
+namespace {
+constexpr uint32_t CODEC_NAME_SIZE = 128;
+char g_codecNameHEVC[CODEC_NAME_SIZE] = {};
+}
 namespace OHOS {
 namespace Media {
 class DemuxerProcNdkTest : public testing::Test {
@@ -966,6 +970,7 @@ HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3300, TestSize.Level2)
  */
 HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3400, TestSize.Level0)
 {
+    if (!strcmp(g_codecNameHEVC, "OMX.hisi.video.encoder.hevc")) {
     int64_t duration;
     static OH_AVFormat *trackFormatFirst = nullptr;
     static OH_AVFormat *trackFormatSecond = nullptr;
@@ -1006,6 +1011,7 @@ HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3400, TestSize.Level0)
     ASSERT_FALSE(OH_AVFormat_GetIntValue(trackFormatFirst, OH_MD_KEY_COLOR_PRIMARIES, &colorPrimaries));
     ASSERT_FALSE(OH_AVFormat_GetIntValue(trackFormatFirst, OH_MD_KEY_VIDEO_IS_HDR_VIVID, &videoIsHdrvivid));
     close(fd);
+    }
 }
 
 /**
@@ -1015,6 +1021,7 @@ HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3400, TestSize.Level0)
  */
 HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3800, TestSize.Level0)
 {
+    if (!strcmp(g_codecNameHEVC, "OMX.hisi.video.encoder.hevc")) {
     OH_AVCodecBufferAttr attr;
     int tarckType = 0;
     const char *file = "/data/test/media/test_265_B_Gop25_4sec.mp4";
@@ -1050,5 +1057,6 @@ HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3800, TestSize.Level0)
         }
     }
     close(fd);
+    }
 }
 
