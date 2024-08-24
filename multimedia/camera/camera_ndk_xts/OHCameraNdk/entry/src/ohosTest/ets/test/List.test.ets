@@ -19,13 +19,18 @@ import SessionTest2 from './Session22.test';
 import VideoTest from './Video.test';
 import PhotoTest from './PhotoTest.test';
 import Demo from './Demo1.test';
+import call from  '@ohos.telephony.call';
+let voice = call.hasVoiceCapability();
 
 export default function testsuite() {
-  CameraManagerTest();
-  CameraInputTest();
-  SessionTest();
-  SessionTest2();
-  VideoTest();
-  PhotoTest();
-  Demo();
+  if (!voice){
+    CameraManagerTest();
+    SessionTest2();
+    VideoTest();
+    Demo();
+  } else {
+    CameraInputTest();
+    SessionTest();
+    PhotoTest();
+  }
 }
