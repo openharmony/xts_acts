@@ -15,7 +15,7 @@ ohos_js_app_suite("AACommandImplicitStartTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "AACommandImplicitStartTest"
+  hap_name = "ActsAACommandImplicitStartTest"
   part_name = "ability_runtime"
   subsystem_name = "ability"
 }
