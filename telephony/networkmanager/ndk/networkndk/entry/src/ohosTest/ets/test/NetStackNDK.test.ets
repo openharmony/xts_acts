@@ -306,6 +306,58 @@ export default function NetStackNDKTest() {
     });
 
     /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETPINSETFORHOSTNAME_0500
+     * @tc.name   : testOHNetStackGetPinSetForHostName_0500
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetPinSetForHostName_0500',0, () => {
+      let result : string = wsAPI.OHNetStackGetPinSetForHostName2("notexit.com".toString());
+      expect(result).assertEqual(undefined);
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETPINSETFORHOSTNAME_0600
+     * @tc.name   : testOHNetStackGetPinSetForHostName_0600
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetPinSetForHostName_0600',0, () => {
+      let result : string = wsAPI.OHNetStackGetPinSetForHostName2("getonepin.com".toString());
+      expect(result).assertEqual("sha256//FEDCBA987654321");
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETPINSETFORHOSTNAME_0700
+     * @tc.name   : testOHNetStackGetPinSetForHostName_0700
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetPinSetForHostName_0700',0, () => {
+      let result : string = wsAPI.OHNetStackGetPinSetForHostName2("getmultipin.com".toString());
+      expect(result).assertEqual("sha256//FEDCBA987654321;sha256//ABCDEF987654321;sha256//FEDCBA123456789");
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETPINSETFORHOSTNAME_0800
+     * @tc.name   : testOHNetStackGetPinSetForHostName_0800
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetPinSetForHostName_0800',0, () => {
+      let result : string = wsAPI.OHNetStackGetPinSetForHostName2("getoverduepin.com".toString());
+      expect(result).assertEqual(undefined);
+    });
+
+    /**
      * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETCERTIFICATESFORHOSTNAME_0100
      * @tc.name   : testOHNetStackGetCertificatesForHostName_0100
      * @tc.desc   ：Get certificate interface.
@@ -355,6 +407,57 @@ export default function NetStackNDKTest() {
     it('testOHNetStackGetCertificatesForHostName_0400',0, () => {
       let result : number = wsAPI.OHNetStackGetCertificatesForHostName(CASE_INDEX_4, "www.example.com".toString());
       expect(result).assertEqual(ERROR_CODE_401);
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETCERTIFICATESFORHOSTNAME_0500
+     * @tc.name   : testOHNetStackGetCertificatesForHostName_0500
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetCertificatesForHostName_0500',0, () => {
+      let result : Array<string> = wsAPI.OHNetStackGetCertificatesForHostName2("notexit.com".toString());
+      expect(result).assertEqual(undefined);
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETCERTIFICATESFORHOSTNAME_0600
+     * @tc.name   : testOHNetStackGetCertificatesForHostName_0600
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetCertificatesForHostName_0600',0, () => {
+      let result : Array<string> = wsAPI.OHNetStackGetCertificatesForHostName2("getonecert.com".toString());
+      expect(result.length).assertEqual(1);
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKGETCERTIFICATESFORHOSTNAME_0700
+     * @tc.name   : testOHNetStackGetCertificatesForHostName_0700
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackGetCertificatesForHostName_0700',0, () => {
+      let result : Array<string> = wsAPI.OHNetStackGetCertificatesForHostName2("getmulticert.com".toString());
+      expect(result.length).assertEqual(3);
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETSTACKDESTROYCERTIFICATESCONTENT_0100
+     * @tc.name   : testOHNetStackDestroyCertificatesContent_0100
+     * @tc.desc   ：Get certificate interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetStackDestroyCertificatesContent_0100',0, () => {
+      wsAPI.OHNetStackDestroyCertificatesContent();
     });
 
     /**
