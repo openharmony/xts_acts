@@ -519,6 +519,7 @@
 #include "drag/drag_allowDropDataTypes.cpp"
 #include "drag/drag_setNodeDragPreview.cpp"
 #include "drag/drag_dragPreviewOption.cpp"
+#include "drag/drag_dragAction.cpp"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -4909,6 +4910,26 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"drag_DragPreviewOption_SetNodeDragPreviewOption_008", nullptr,
          drag_DragPreviewOption_SetNodeDragPreviewOption_008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"drag_DragAction_Dispose_001", nullptr, drag_DragAction_Dispose_001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"drag_DragAction_SetPointerId_002", nullptr, drag_DragAction_SetPointerId_002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"drag_DragAction_SetPixelMaps_003", nullptr, drag_DragAction_SetPixelMaps_003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"drag_DragAction_SetTouchPointX_004", nullptr, drag_DragAction_SetTouchPointX_004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"drag_DragAction_SetTouchPointY_005", nullptr, drag_DragAction_SetTouchPointY_005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"drag_DragAction_SetDragPreviewOption_006", nullptr, drag_DragAction_SetDragPreviewOption_006, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"drag_DragAction_RegisterStatusListener_007", nullptr, drag_DragAction_RegisterStatusListener_007, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"drag_DragAction_UnregisterStatusListener_008", nullptr, drag_DragAction_UnregisterStatusListener_008, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"drag_DragAction_StartDrag_009", nullptr, drag_DragAction_StartDrag_009, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"drag_DragAction_DragAndDropInfo_0010", nullptr, drag_DragAction_DragAndDropInfo_0010, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
