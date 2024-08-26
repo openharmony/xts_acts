@@ -42,6 +42,7 @@ const uint64_t UNIT_STACK_SIZE = 2 * 1024 * 1024;
 const uint64_t UNIT_TASK_DELAY = 200000;
 const uint32_t TASK_SUBMIT_REF = 2;
 const uint32_t TASK_RELEASE_REF = 3;
+const uint32_t TASK_DELAY_TIME = 5000;
 
 void OnePlusForTest(void* arg)
 {
@@ -3065,10 +3066,9 @@ static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
     }
     int result3 = 0;
     std::function<void()>&& basicFunc3 = [&result3]() {result3 += addnum;};
-    const uint32_t taskDelayTime = 5000;
     ffrt_task_attr_t taskAttr;
     (void)ffrt_task_attr_init(&taskAttr);
-    ffrt_task_attr_set_delay(&taskAttr, taskDelayTime);
+    ffrt_task_attr_set_delay(&taskAttr, TASK_DELAY_TIME);
     ffrt_task_handle_t task3 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc3,
         ffrt_function_kind_queue), &taskAttr);
     int ret = ffrt_queue_cancel(task3);
@@ -3100,10 +3100,9 @@ static napi_value ffrt_loop_0002(napi_env env, napi_callback_info info)
     int result1 = 0;
     const int addTen = 10;
     std::function<void()>&& basicFunc1 = [&result1]() {result1 += addTen;};
-    const uint32_t taskDelayTime = 5000;
     ffrt_task_attr_t taskAttr;
     (void)ffrt_task_attr_init(&taskAttr);
-    ffrt_task_attr_set_delay(&taskAttr, taskDelayTime);
+    ffrt_task_attr_set_delay(&taskAttr, TASK_DELAY_TIME);
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc1,
         ffrt_function_kind_queue), &taskAttr);
     int result = 0;
@@ -3117,7 +3116,7 @@ static napi_value ffrt_loop_0002(napi_env env, napi_callback_info info)
     std::function<void()>&& basicFunc2 = [&result2]() {result2 += addTwenty;};
     ffrt_task_attr_t taskAttr2;
     (void)ffrt_task_attr_init(&taskAttr2);
-    ffrt_task_attr_set_delay(&taskAttr2, taskDelayTime);
+    ffrt_task_attr_set_delay(&taskAttr2, TASK_DELAY_TIME);
     ffrt_task_handle_t task2 = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(basicFunc2, ffrt_function_kind_queue), &taskAttr2);
     int ret2 = ffrt_queue_cancel(task2);
@@ -3429,7 +3428,7 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
     std::function<void()> &&SubFunc = [&res] () {SubForTest((void *)(&res));};
     std::function<void()> &&TwoPlusFunc = [&res] () {TwoPlusForTest((void *)(&res));};
     std::function<void()> &&TwoSubFunc = [&res] () {TwoSubForTest((void *)(&res));};
-    std::function<void()> &&SleepFunc = [&res] () {sleep(1);};
+    std::function<void()> &&SleepFunc = [] () {sleep(1);};
 
     const int taskCnt = 6;
     ffrt_task_attr_t task_attr[taskCnt];
