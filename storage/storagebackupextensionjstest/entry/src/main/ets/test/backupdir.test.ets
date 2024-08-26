@@ -52,6 +52,12 @@ export default class MyBackupExtAbility extends BackupExtensionAbility {
     let info = "app diy info";
     return info;
   }
+
+   async onProcess() {
+      console.log(`onProcess ok`);
+      let info = "app diy info";
+      return info;
+   }
 }
 
 export default function backupdirTest(){
@@ -59,14 +65,14 @@ describe('backupdir_js_test',async function(){
 
    /**
    * @tc.number SUB_BASIC_FM_FileAPI_BackupDir_0100
-   * @tc.name backup_backupdir_001
+   * @tc.name test_Backup_Backupdir_001
    * @tc.desc Test backupdir() interfaces
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
-   it("backup_backupdir_001", 0, () => {
+   it("test_Backup_Backupdir_001", 0, () => {
       try {
          let backupdir = new MyBackupExtAbility();
          backupdir.onBackup();
@@ -75,49 +81,70 @@ describe('backupdir_js_test',async function(){
          console.log('backup-onRestore run ok');
          expect(true).assertTrue();
       } catch (error) {
-         console.info(`backupextension_backup_backupdir_001 error: ${JSON.stringify(error)}`);
+         console.info(`test_Backup_Backupdir_001 error: ${JSON.stringify(error)}`);
          expect(false).assertTrue();
       }
    });
 
    /**
    * @tc.number SUB_BASIC_FM_FileAPI_BackupDir_0200
-   * @tc.name backup_onBackupEx_001
+   * @tc.name test_Backup_OnBackupEx_001
    * @tc.desc Test onBackupEx() interfaces
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 3
    * @tc.require
    */
-   it("backup_onBackupEx_001", 3, () => {
+   it("test_Backup_OnBackupEx_001", 3, () => {
       try {
          let BackupExtensionAbility = new MyBackupExtAbility();
          BackupExtensionAbility.onBackupEx();
          console.log('backup-onBackupEx run ok');
          expect(true).assertTrue();
       } catch (error) {
-         console.info(`backup_onBackupEx_001 error: ${JSON.stringify(error)}`);
+         console.info(`test_Backup_OnBackupEx_001 error: ${JSON.stringify(error)}`);
          expect(false).assertTrue();
       }
    });
 
    /**
    * @tc.number SUB_BASIC_FM_FileAPI_BackupDir_0200
-   * @tc.name backup_onRestoreEx_001
+   * @tc.name test_Backup_OnRestoreEx_001
    * @tc.desc Test onRestoreEx() interfaces
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 3
    * @tc.require
    */
-   it("backup_onRestoreEx_001", 3, () => {
+   it("test_Backup_OnRestoreEx_001", 3, () => {
       try {
          let BackupExtensionAbility = new MyBackupExtAbility();
          BackupExtensionAbility.onRestoreEx();
          console.log('backup-onRestoreEx run ok');
          expect(true).assertTrue();
       } catch (error) {
-         console.info(`backup_onRestoreEx_001 error: ${JSON.stringify(error)}`);
+         console.info(`test_Backup_OnRestoreEx_001 error: ${JSON.stringify(error)}`);
+         expect(false).assertTrue();
+      }
+   });
+
+   /**
+    * @tc.number SUB_BASIC_FM_FileAPI_BackupDir_0300
+    * @tc.name test_Backup_OnProcess_001
+    * @tc.desc Test onRestoreEx() interfaces
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 3
+    * @tc.require
+    */
+   it("test_Backup_OnProcess_001", 3, () => {
+      try {
+         let BackupExtensionAbility = new MyBackupExtAbility();
+         BackupExtensionAbility.onProcess();
+         console.log('backup-onProcess run ok');
+         expect(true).assertTrue();
+      } catch (error) {
+         console.info(`test_Backup_OnProcess_001 error: ${JSON.stringify(error)}`);
          expect(false).assertTrue();
       }
    });
