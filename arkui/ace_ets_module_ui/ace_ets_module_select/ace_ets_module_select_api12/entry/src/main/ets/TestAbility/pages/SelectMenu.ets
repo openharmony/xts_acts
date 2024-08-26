@@ -310,9 +310,9 @@ struct SelectMenuTest {
 }
 
 interface Font {
-  size;
-  weight;
-  family;
-  style;
+  size: number;
+  weight: number;
+  family: string;
+  style: FontStyle;
 }
  
