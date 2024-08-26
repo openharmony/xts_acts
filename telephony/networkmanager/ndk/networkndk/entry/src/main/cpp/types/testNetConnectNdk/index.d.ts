@@ -29,5 +29,6 @@ export const OHNetConnSetAppHttpProxy: (a: number) => number;
 export const OHOSNetConnRegisterAppHttpProxyCallback: (a: number) => number;
 export const OHOSNetConnUnregisterAppHttpProxyCallback: (a: number) => number;
 export const OHNetConnRegisterNetConnCallback: (a: number) => number;
+export const OHNetConnRegisterNetConnCallbackTimeout: (a: number) => number;
 export const OHNetConnRegisterDefaultNetConnCallback: (a: number) => number;
 export const OHNetConnUnregisterNetConnCallback: (a: number) => number;

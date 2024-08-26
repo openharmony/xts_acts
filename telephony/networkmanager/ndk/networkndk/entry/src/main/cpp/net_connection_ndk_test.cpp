@@ -17,6 +17,7 @@
 #include <hilog/log.h>
 #include <network/netmanager/net_connection.h>
 #include <network/netmanager/net_connection_type.h>
+#include <cstdint>
 
 #define NETWORK_LOG_TAG "LogTagNetwork"
 #define NETWORK_LOG_DOMAIN 0x0000
@@ -29,6 +30,9 @@
 #define CASE_INDEX_2 2
 #define CASE_INDEX_3 3
 #define CASE_INDEX_4 4
+#define CASE_INDEX_5 5
+#define CASE_INDEX_6 6
+#define TIMEOUT_3000 3000
 
 // 通过netId获取DNS结果。
 static napi_value OHNetConnGetAddrInfo(napi_env env, napi_callback_info info)
@@ -353,8 +357,60 @@ static napi_value OHNetConnRegisterNetConnCallback(napi_env env, napi_callback_i
         OH_NetConn_GetDefaultNet(&netHandle);
         OH_NetConn_GetNetCapabilities(&netHandle, &specifier.caps);
         ret = OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, 0, &callbackId);
+        OH_NetConn_UnregisterNetConnCallback(callbackId);
+    } else if (index == CASE_INDEX_5) {
+        NetConn_NetSpecifier specifier{};
+        NetConn_NetConnCallback netConnCallback{};
+        uint32_t callbackId;
+        specifier.caps.bearerTypesSize = 1;
+        specifier.caps.bearerTypes[0] = NETCONN_BEARER_CELLULAR;
+        ret = OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, 0, &callbackId);
+        OH_NetConn_UnregisterNetConnCallback(callbackId);
     }
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
 
+// 注册监听网络状态变化的回调，测试Timeout参数。
+static napi_value OHNetConnRegisterNetConnCallbackTimeout(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t index;
+    napi_get_value_int32(env, args[PARAM_INDEX_0], &index);
+    NetConn_NetConnCallback netConnCallback{};
+    uint32_t callbackId;
+    int ret = -1;
+    NetConn_NetSpecifier specifier{};
+    specifier.caps.bearerTypesSize = 1;
+    if (index == CASE_INDEX_1) {
+        specifier.caps.bearerTypes[0] = NETCONN_BEARER_CELLULAR;
+        ret = OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, TIMEOUT_3000, &callbackId);
+        OH_NetConn_UnregisterNetConnCallback(callbackId);
+    } else if (index == CASE_INDEX_2) {
+        specifier.caps.bearerTypes[0] = NETCONN_BEARER_CELLULAR;
+        ret = OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, UINT32_MAX, &callbackId);
+        OH_NetConn_UnregisterNetConnCallback(callbackId);
+    } else if (index == CASE_INDEX_3) {
+        specifier.caps.bearerTypes[0] = NETCONN_BEARER_WIFI;
+        ret = OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, 0, &callbackId);
+        OH_NetConn_UnregisterNetConnCallback(callbackId);
+    } else if (index == CASE_INDEX_4) {
+        specifier.caps.bearerTypes[0] = NETCONN_BEARER_WIFI;
+        ret = OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, TIMEOUT_3000, &callbackId);
+        OH_NetConn_UnregisterNetConnCallback(callbackId);
+    } else if (index == CASE_INDEX_5) {
+        specifier.caps.bearerTypes[0] = NETCONN_BEARER_WIFI;
+        ret = OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, UINT32_MAX, &callbackId);
+        OH_NetConn_UnregisterNetConnCallback(callbackId);
+    } else if (index == CASE_INDEX_6) {
+        specifier.caps.bearerTypes[0] = NETCONN_BEARER_WIFI;
+        specifier.bearerPrivateIdentifier = "wifi";
+        ret = OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, UINT32_MAX, &callbackId);
+        OH_NetConn_UnregisterNetConnCallback(callbackId);
+    }
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -380,6 +436,7 @@ static napi_value OHNetConnRegisterDefaultNetConnCallback(napi_env env, napi_cal
         NetConn_NetConnCallback netConnCallback{};
         uint32_t callbackId;
         ret = OH_NetConn_RegisterDefaultNetConnCallback(&netConnCallback, &callbackId);
+        OH_NetConn_UnregisterNetConnCallback(callbackId);
     }
 
     napi_value result = nullptr;
@@ -405,6 +462,36 @@ static napi_value OHNetConnUnregisterNetConnCallback(napi_env env, napi_callback
         uint32_t callbackId;
         (void)OH_NetConn_RegisterDefaultNetConnCallback(&netConnCallback, &callbackId);
         ret = OH_NetConn_UnregisterNetConnCallback(callbackId);
+    } else if (index == CASE_INDEX_3) {
+        NetConn_NetConnCallback netConnCallback{};
+        uint32_t callbackId;
+        (void)OH_NetConn_RegisterDefaultNetConnCallback(&netConnCallback, &callbackId);
+        OH_NetConn_UnregisterNetConnCallback(callbackId);
+        ret = OH_NetConn_UnregisterNetConnCallback(callbackId);
+    } else if (index == CASE_INDEX_4) {
+        NetConn_NetSpecifier specifier{};
+        NetConn_NetConnCallback netConnCallback{};
+        uint32_t callbackId;
+        specifier.caps.bearerTypesSize = 1;
+        specifier.caps.bearerTypes[0] = NETCONN_BEARER_CELLULAR;
+        OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, 0, &callbackId);
+        ret = OH_NetConn_UnregisterNetConnCallback(callbackId);
+    } else if (index == CASE_INDEX_5) {
+        NetConn_NetSpecifier specifier{};
+        NetConn_NetConnCallback netConnCallback{};
+        uint32_t callbackId;
+        specifier.caps.bearerTypesSize = 1;
+        specifier.caps.bearerTypes[0] = NETCONN_BEARER_WIFI;
+        OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, 0, &callbackId);
+        ret = OH_NetConn_UnregisterNetConnCallback(callbackId);
+    } else if (index == CASE_INDEX_6) {
+        NetConn_NetSpecifier specifier{};
+        NetConn_NetConnCallback netConnCallback{};
+        uint32_t callbackId;
+        specifier.caps.bearerTypesSize = 1;
+        specifier.caps.bearerTypes[0] = NETCONN_BEARER_WIFI;
+        OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, TIMEOUT_3000, &callbackId);
+        ret = OH_NetConn_UnregisterNetConnCallback(callbackId);
     }
 
     napi_value result = nullptr;
@@ -428,8 +515,12 @@ static napi_value OHNetConnSetAppHttpProxy(napi_env env, napi_callback_info info
         ret = OH_NetConn_SetAppHttpProxy(&httpProxy);
     } else if (index == CASE_INDEX_2) {
         ret = OH_NetConn_SetAppHttpProxy(nullptr);
+    } else if (index == CASE_INDEX_3) {
+        NetConn_HttpProxy httpProxy;
+        OH_NetConn_GetDefaultHttpProxy(&httpProxy);
+        ret = OH_NetConn_SetAppHttpProxy(&httpProxy);
+        ret = OH_NetConn_SetAppHttpProxy(&httpProxy);
     }
-
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -463,6 +554,14 @@ static napi_value OHOSNetConnRegisterAppHttpProxyCallback(napi_env env, napi_cal
         ret = OH_NetConn_RegisterAppHttpProxyCallback(nullptr, &callbackId);
     } else if (index == CASE_INDEX_4) {
         ret = OH_NetConn_RegisterAppHttpProxyCallback(nullptr, nullptr);
+    } else if (index == CASE_INDEX_5) {
+        NetConn_HttpProxy httpProxy;
+        OH_NetConn_GetDefaultHttpProxy(&httpProxy);
+        ret = OH_NetConn_SetAppHttpProxy(&httpProxy);
+        OH_NetConn_AppHttpProxyChange proxyChange = HandleHttpProxyChange;
+        uint32_t callbackId;
+        ret = OH_NetConn_RegisterAppHttpProxyCallback(proxyChange, &callbackId);
+        OH_NetConn_UnregisterAppHttpProxyCallback(callbackId);
     }
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
@@ -488,6 +587,24 @@ static napi_value OHOSNetConnUnregisterAppHttpProxyCallback(napi_env env, napi_c
         uint32_t callbackId;
         ret = OH_NetConn_RegisterAppHttpProxyCallback(nullptr, &callbackId);
         OH_NetConn_UnregisterAppHttpProxyCallback(callbackId);
+    } else if (index == CASE_INDEX_3) {
+        OH_NetConn_AppHttpProxyChange proxyChange = HandleHttpProxyChange;
+        uint32_t callbackId;
+        ret = OH_NetConn_RegisterAppHttpProxyCallback(proxyChange, &callbackId);
+        OH_NetConn_UnregisterAppHttpProxyCallback(callbackId);
+        NetConn_HttpProxy httpProxy;
+        OH_NetConn_GetDefaultHttpProxy(&httpProxy);
+        ret = OH_NetConn_SetAppHttpProxy(&httpProxy);
+    } else if (index == CASE_INDEX_4) {
+        OH_NetConn_AppHttpProxyChange proxyChange = HandleHttpProxyChange;
+        uint32_t callbackId;
+        ret = OH_NetConn_RegisterAppHttpProxyCallback(proxyChange, &callbackId);
+        OH_NetConn_UnregisterAppHttpProxyCallback(callbackId);
+        OH_NetConn_UnregisterAppHttpProxyCallback(callbackId);
+    } else if (index == CASE_INDEX_5) {
+        uint32_t callbackIdNotExist = 20202020;
+        OH_NetConn_UnregisterAppHttpProxyCallback(callbackIdNotExist);
+        ret = 0;
     }
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
@@ -524,6 +641,8 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"OHNetConnRegisterNetConnCallback", nullptr, OHNetConnRegisterNetConnCallback, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"OHNetConnRegisterNetConnCallbackTimeout", nullptr, OHNetConnRegisterNetConnCallbackTimeout, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
         {"OHNetConnRegisterDefaultNetConnCallback", nullptr, OHNetConnRegisterDefaultNetConnCallback, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"OHNetConnUnregisterNetConnCallback", nullptr, OHNetConnUnregisterNetConnCallback, nullptr, nullptr,
