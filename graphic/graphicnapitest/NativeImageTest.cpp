@@ -811,10 +811,10 @@ HWTEST_F(NativeImageTest, OH_NativeImage_AcquireNativeWindowBufferNormal, Functi
     OHNativeWindow* nativewindow = OH_NativeImage_AcquireNativeWindow(image);
     ASSERT_NE(nativewindow, nullptr); 
     int code = SET_BUFFER_GEOMETRY; 
-    int32_t width_=0x100; 
-    int32_t height_=0x100;
-    int32_t res = OH_NativeWindow_NativeWindowHandleOpt(nativewindow,code,width_,height_); 
-    ASSERT_EQ(res,NATIVE_ERROR_OK); 
+    int32_t width_ = 0x100; 
+    int32_t height_ = 0x100;
+    int32_t res = OH_NativeWindow_NativeWindowHandleOpt(nativewindow, code, width_, height_); 
+    ASSERT_EQ(res, NATIVE_ERROR_OK); 
     code = SET_USAGE; 
     int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA; 
     res = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, usage); 
@@ -838,8 +838,8 @@ HWTEST_F(NativeImageTest, OH_NativeImage_AcquireNativeWindowBufferCalls, Functio
     OHNativeWindow* nativewindow = OH_NativeImage_AcquireNativeWindow (image);
     ASSERT_NE(nativewindow, nullptr); 
     int code = SET_BUFFER_GEOMETRY; 
-    int32_t width_=0x100; 
-    int32_t height_=0x100; 
+    int32_t width_ = 0x100; 
+    int32_t height_ = 0x100; 
     int32_t res = OH_NativeWindow_NativeWindowHandleOpt(nativewindow, code, width_, height_); 
     ASSERT_EQ(res, NATIVE_ERROR_OK); 
     code = SET_USAGE;
@@ -850,7 +850,7 @@ HWTEST_F(NativeImageTest, OH_NativeImage_AcquireNativeWindowBufferCalls, Functio
     int32_t ret0;
     for (int i = 0; i < 10; i++)
     { 
-        ret0 = OH_NativeImage_AcquireNativeWindowBuffer(image,&nativeWindowBuffer,&fenceFd); 
+        ret0 = OH_NativeImage_AcquireNativeWindowBuffer(image, &nativeWindowBuffer, &fenceFd); 
     }
     int32_t ret = OH_NativeImage_AcquireNativeWindowBuffer(image, &nativeWindowBuffer, &fenceFd);
     int32_t ret1 = OH_NativeImage_ReleaseNativeWindowBuffer(image, nativeWindowBuffer, fenceFd);
