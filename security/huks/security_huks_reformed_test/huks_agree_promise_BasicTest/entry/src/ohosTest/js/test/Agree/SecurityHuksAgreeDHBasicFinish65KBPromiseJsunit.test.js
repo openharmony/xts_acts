@@ -12,9 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import huks from '@ohos.security.huks';
 import { describe, it, beforeAll, expect } from '@ohos/hypium';
 import * as Data from '../../../../../../../utils/data.json';
-import { stringToUint8Array } from '../../../../../../../utils/param/publicFunc';
+import { stringToUint8Array, checkSoftware } from '../../../../../../../utils/param/publicFunc';
 import { HuksAgreeDH } from '../../../../../../../utils/param/agree/publicAgreeParam';
 import { publicAgreeFunc } from '../../../../../../../utils/param/agree/publicAgreePromise';
 import { HksTag } from '../../../../../../../utils/param/publicParam';
@@ -201,10 +202,19 @@ export default function SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() {
           HuksAgreeDH.HuksKeyBLOCKMODECBC,
         ),
       };
-      await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'finish', false);
-      //AES check
-      let res = await checkAESChiper(srcKeyAliesFirst + 'final', srcKeyAliesSecond + 'final', huksOptionsCipher);
-      expect(res).assertTrue();
+      if (await checkSoftware()) {
+        await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'finish', false);
+        //AES check
+        let res = await checkAESChiper(srcKeyAliesFirst + 'final', srcKeyAliesSecond + 'final', huksOptionsCipher);
+        expect(res).assertTrue();
+      } else {
+        try {
+          await huks.generateKeyItem(srcKeyAliesFirst, HuksOptions63kb);
+          expect(null).assertFail();
+        } catch (error) {
+          expect(error.code).assertEqual(12000012);
+        }
+      }
       done();
     });
 
@@ -230,10 +240,19 @@ export default function SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() {
           HuksAgreeDH.HuksKeyBLOCKMODECBC,
         ),
       };
-      await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'finish', false);
-      //AES check
-      let res = await checkAESChiper(srcKeyAliesFirst + 'final', srcKeyAliesSecond + 'final', huksOptionsCipher);
-      expect(res).assertTrue();
+      if (await checkSoftware()) {
+        await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'finish', false);
+        //AES check
+        let res = await checkAESChiper(srcKeyAliesFirst + 'final', srcKeyAliesSecond + 'final', huksOptionsCipher);
+        expect(res).assertTrue();
+      } else {
+        try {
+          await huks.generateKeyItem(srcKeyAliesFirst, HuksOptions63kb);
+          expect(null).assertFail();
+        } catch (error) {
+          expect(error.code).assertEqual(12000012);
+        }
+      }
       done();
     });
 
