@@ -48,7 +48,8 @@ OH_PixelmapNative *TEST_PIXELMAP = nullptr;
 const char *LOG_APP = "ImageNDK";
 const char* VPE_SO_NAME = "/sys_prod/lib64/VideoProcessingEngine/libaihdr_engine.so";
 
-static void OHLog(const char *module, const char *format, ...) {
+static void OHLog(const char *module, const char *format, ...)
+{
 
     char buffer[MAX_BUFFER_SIZE];
 
@@ -71,21 +72,20 @@ static void OHLog(const char *module, const char *format, ...) {
         OHLog(module, format, ##__VA_ARGS__);                                                                          \
     } while (false)
 
-napi_value getJsResult(napi_env env, int result) {
+napi_value getJsResult(napi_env env, int result)
+{
     napi_value resultNapi = nullptr;
     napi_create_int32(env, result, &resultNapi);
     return resultNapi;
 }
 
-static napi_value TestInitializationOptionsSetRowStrideNormal(napi_env env, napi_callback_info info) {
+static napi_value TestInitializationOptionsSetRowStrideNormal(napi_env env, napi_callback_info info)
+{
     napi_value argValue[NUM_1] = {0};
     size_t argCount = NUM_1;
     if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1 ||
         argValue[NUM_0] == nullptr) {
-        OH_LOG_ERROR(
-            LOG_APP,
-            "ImagePixelmapNativeCTest TestInitializationOptionsSetRowStrideNormal napi_get_cb_info failed, "
-            "argCount: %{public}zu.", argCount);
+        OH_LOG_ERROR(LOG_APP, "napi_get_cb_info failed, argCount: %{public}zu.", argCount);
         return getJsResult(env, IMAGE_BAD_PARAMETER);
     }
     int32_t rowStride = 0;
@@ -93,10 +93,7 @@ static napi_value TestInitializationOptionsSetRowStrideNormal(napi_env env, napi
     OH_Pixelmap_InitializationOptions *opts = nullptr;
     Image_ErrorCode errCode = OH_PixelmapInitializationOptions_Create(&opts);
     if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP,
-                     "ImagePixelmapNativeCTest TestInitializationOptionsSetRowStrideNormal "
-                     "OH_PixelmapInitializationOptions_Create failed, errCode: %{public}d.",
-                     errCode);
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapInitializationOptions_Create failed, errCode: %{public}d.", errCode);
         return getJsResult(env, errCode);
     }
     errCode = OH_PixelmapInitializationOptions_SetRowStride(opts, rowStride);
@@ -113,28 +110,26 @@ static napi_value TestInitializationOptionsSetRowStrideNormal(napi_env env, napi
     }
     errCode = OH_PixelmapInitializationOptions_Release(opts);
     if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP,
-                     "ImagePixelmapNativeCTest TestInitializationOptionsSetRowStrideNormal "
-                     "OH_PixelmapInitializationOptions_Release  failed, errCode: %{public}d.",
-                     errCode);
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapInitializationOptions_Release failed, errCode: %{public}d.", errCode);
         return getJsResult(env, errCode);
     }
     OH_LOG_INFO(LOG_APP, "ImagePixelmapNativeCTest TestInitializationOptionsSetRowStrideNormal success.");
     return getJsResult(env, IMAGE_SUCCESS);
 }
 
-Image_ErrorCode releaseTestPixelmap() {
+Image_ErrorCode releaseTestPixelmap()
+{
     Image_ErrorCode errCode = OH_PixelmapNative_Release(TEST_PIXELMAP);
     if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "ImagePixelmapNativeCTest release OH_PixelmapNative_Release failed, errCode: %{public}d.",
-                     errCode);
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_Release failed, errCode: %{public}d.", errCode);
         return errCode;
     }
     TEST_PIXELMAP = nullptr;
     return IMAGE_SUCCESS;
 }
 
-Image_ErrorCode createPixelMap(uint32_t width, uint32_t height, int32_t pixelFormat, int32_t alphaType) {
+Image_ErrorCode createPixelMap(uint32_t width, uint32_t height, int32_t pixelFormat, int32_t alphaType)
+{
     OH_Pixelmap_InitializationOptions *createOpts;
     Image_ErrorCode errCode = OH_PixelmapInitializationOptions_Create(&createOpts);
     if (errCode != IMAGE_SUCCESS) {
@@ -186,7 +181,8 @@ Image_ErrorCode createPixelMap(uint32_t width, uint32_t height, int32_t pixelFor
     return IMAGE_SUCCESS;
 }
 
-static napi_value TestCreatePixelMapWithStrideAbnormal(napi_env env, napi_callback_info info) {
+static napi_value TestCreatePixelMapWithStrideAbnormal(napi_env env, napi_callback_info info)
+{
     OH_LOG_INFO(LOG_APP, "ImagePixelmapNativeCTest Test OH_Pixelmap_CreatePixelMapWithStride will call.");
     void* buffer = nullptr;
     size_t bufferSize = 0;
@@ -204,15 +200,14 @@ static napi_value TestCreatePixelMapWithStrideAbnormal(napi_env env, napi_callba
     return getJsResult(env, 0);
 }
 
-static napi_value TestCreatePixelmap(napi_env env, napi_callback_info info) {
+static napi_value TestCreatePixelmap(napi_env env, napi_callback_info info)
+{
     napi_value argValue[NUM_4] = {0};
     size_t argCount = NUM_4;
     if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_4 ||
         argValue[NUM_0] == nullptr || argValue[NUM_1] == nullptr || argValue[NUM_2] == nullptr ||
         argValue[NUM_3] == nullptr) {
-        OH_LOG_ERROR(LOG_APP,
-                     "ImagePixelmapNativeCTest TestCreatePixelmap napi_get_cb_info failed, argCount: %{public}zu.",
-                     argCount);
+        OH_LOG_ERROR(LOG_APP, "napi_get_cb_info failed, argCount: %{public}zu.", argCount);
         return getJsResult(env, IMAGE_BAD_PARAMETER);
     }
     uint32_t width;
@@ -232,14 +227,13 @@ static napi_value TestCreatePixelmap(napi_env env, napi_callback_info info) {
     return getJsResult(env, IMAGE_SUCCESS);
 }
 
-static napi_value TestNativeScaleWithAntiAliasingNormal(napi_env env, napi_callback_info info) {
+static napi_value TestNativeScaleWithAntiAliasingNormal(napi_env env, napi_callback_info info)
+{
     napi_value argValue[NUM_2] = {0};
     size_t argCount = NUM_2;
     if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2 ||
         argValue[NUM_0] == nullptr || argValue[NUM_1] == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "ImagePixelmapNativeCTest TestNativeScaleWithAntiAliasingNormal napi_get_cb_info failed, "
-         "argCount: %{public}zu.",
-                     argCount);
+        OH_LOG_ERROR(LOG_APP, "napi_get_cb_info failed, argCount: %{public}zu.", argCount);
         return getJsResult(env, IMAGE_BAD_PARAMETER);
     }
     double x = 0;
@@ -249,15 +243,15 @@ static napi_value TestNativeScaleWithAntiAliasingNormal(napi_env env, napi_callb
     Image_ErrorCode errCode = OH_PixelmapNative_ScaleWithAntiAliasing(TEST_PIXELMAP, (float)x, (float)y,
      OH_PixelmapNative_AntiAliasing_HIGH);
     if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "ImagePixelmapNativeCTest TestNativeScaleWithAntiAliasingNormal "
-         "OH_PixelmapNative_ScaleWithAntiAliasing failed, errCode: %{public}d.", errCode);
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_ScaleWithAntiAliasing failed, errCode: %{public}d.", errCode);
         return getJsResult(env, errCode);
     }
     OH_LOG_INFO(LOG_APP, "ImagePixelmapNativeCTest TestNativeScaleWithAntiAliasingNormal success.");
     return getJsResult(env, IMAGE_SUCCESS);
 }
 
-static napi_value TestScaleWithAntiAliasingAbnormal(napi_env env, napi_callback_info info) {
+static napi_value TestScaleWithAntiAliasingAbnormal(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     napi_value thisVar = nullptr;
     napi_value argValue[NUM_2] = {0};
@@ -276,21 +270,20 @@ static napi_value TestScaleWithAntiAliasingAbnormal(napi_env env, napi_callback_
         return result;
     }
 
-    int32_t errCode = OH_PixelMap_ScaleWithAntiAliasing(native, static_cast<float>(x), static_cast<float>(y),
-        OH_PixelMap_AntiAliasing_HIGH);
+    int32_t errCode = OH_PixelMap_ScaleWithAntiAliasing(
+        native, static_cast<float>(x), static_cast<float>(y), OH_PixelMap_AntiAliasing_HIGH);
     if (errCode != IMAGE_RESULT_BAD_PARAMETER) {
-        OH_LOG_ERROR(LOG_APP, "ImagePixelmapNativeCTest TestScaleWithAntiAliasingAbnormal "
-         "OH_Pixelmap_ScaleWithAntiAliasing failed, errCode: %{public}d.", errCode);
+        OH_LOG_ERROR(LOG_APP, "OH_Pixelmap_ScaleWithAntiAliasing failed, errCode: %{public}d.", errCode);
         return getJsResult(env, errCode);
     }
     return getJsResult(env, IMAGE_RESULT_SUCCESS);
 }
 
-static napi_value TestReleasePixelmap(napi_env env, napi_callback_info info) {
+static napi_value TestReleasePixelmap(napi_env env, napi_callback_info info)
+{
     Image_ErrorCode errCode = releaseTestPixelmap();
     if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP,
-                     "ImagePixelmapNativeCTest TestReleasePixelmap releaseTestPixelmap failed, errCode: %{public}d.",
+        OH_LOG_ERROR(LOG_APP, "releaseTestPixelmap failed, errCode: %{public}d.",
                      errCode);
         return getJsResult(env, errCode);
     }
@@ -298,7 +291,8 @@ static napi_value TestReleasePixelmap(napi_env env, napi_callback_info info) {
     return getJsResult(env, IMAGE_SUCCESS);
 }
 
-static void setInt32NamedProperty(napi_env env, napi_value object, const char *utf8name, uint32_t value) {
+static void setInt32NamedProperty(napi_env env, napi_value object, const char *utf8name, uint32_t value)
+{
     napi_value tmp;
     napi_create_int32(env, value, &tmp);
     napi_set_named_property(env, object, utf8name, tmp);
@@ -317,7 +311,8 @@ static bool CheckVpe()
 }
 
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
+static napi_value Init(napi_env env, napi_value exports)
+{
     napi_property_descriptor desc[] = {
         {"testCreatePixelMapWithStrideAbnormal", nullptr, TestCreatePixelMapWithStrideAbnormal, nullptr, nullptr,
          nullptr, napi_default, nullptr},
