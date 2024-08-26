@@ -36,7 +36,7 @@
 #ifndef ARKUI_NATIVE_DRAWABLE_DESCRIPTOR_H
 #define ARKUI_NATIVE_DRAWABLE_DESCRIPTOR_H
 
-#include <stdint.h>
+#include <cstdint.h>
 
 #ifdef __cplusplus
 extern "C" {
