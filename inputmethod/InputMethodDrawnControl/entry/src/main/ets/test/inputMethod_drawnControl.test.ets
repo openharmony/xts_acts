@@ -2398,21 +2398,24 @@ export default function inputMethodDrawnControlJSUnit() {
       try {
         await inputMethod.getController().attach(true, ATTRIBUTE);
         console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100 keyBoardStatus start');
-        inputMethod.getController().on('sendKeyboardStatus', async (keyBoardStatus) => {
-          try {
-            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100 keyBoardStatus success: ' + keyBoardStatus);
-            //twice off() success
-            inputMethod.getController().off('sendKeyboardStatus');
-            inputMethod.getController().off('sendKeyboardStatus');
-            await inputMethod.getController().detach();
-            expect(keyBoardStatus).assertEqual(1);
-            done();
-          } catch (err) {
-            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100 sendKeyboardStatus fail: ' + JSON.stringify(err));
-            done();
-          }
-        });
-        await inputMethod.getController().hideSoftKeyboard();
+        let t = setTimeout( async () => {
+          clearTimeout(t);
+          inputMethod.getController().on('sendKeyboardStatus', async (keyBoardStatus) => {
+            try {
+              console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100 keyBoardStatus success: ' + keyBoardStatus);
+              //twice off() success
+              inputMethod.getController().off('sendKeyboardStatus');
+              inputMethod.getController().off('sendKeyboardStatus');
+              await inputMethod.getController().detach();
+              expect(keyBoardStatus).assertEqual(1);
+              done();
+            } catch (err) {
+              console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100 sendKeyboardStatus fail: ' + JSON.stringify(err));
+              done();
+            }
+          });
+          await inputMethod.getController().hideSoftKeyboard();
+        }, 500);
       } catch (err) {
         console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100 sendKeyboardStatus catch err: ' + JSON.stringify(err));
         done();
@@ -2437,36 +2440,39 @@ export default function inputMethodDrawnControlJSUnit() {
         let count = 0;
         await inputMethod.getController().attach(true, ATTRIBUTE);
         console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus start');
-        inputMethod.getController().on('sendKeyboardStatus', async (keyBoardStatus) => {
-          try {
-            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus first: ' + count);
-            count += 1;
-          } catch (err) {
-            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus fail: ' + JSON.stringify(err));
-          }
-        });
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          inputMethod.getController().on('sendKeyboardStatus', async (keyBoardStatus) => {
+            try {
+              console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus first: ' + count);
+              count += 1;
+            } catch (err) {
+              console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus fail: ' + JSON.stringify(err));
+            }
+          });
 
-        inputMethod.getController().on('sendKeyboardStatus', async (keyBoardStatus) => {
-          try {
-            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus second: ' + count);
-            count += 1;
-          } catch (err) {
-            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus fail: ' + JSON.stringify(err));
+          inputMethod.getController().on('sendKeyboardStatus', async (keyBoardStatus) => {
+            try {
+              console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus second: ' + count);
+              count += 1;
+            } catch (err) {
+              console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus fail: ' + JSON.stringify(err));
+            }
+          });
+          await inputMethod.getController().showSoftKeyboard();
+          await sleep(850);
+          if (count === 2) {
+            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus count all: ' + count);
+            inputMethod.getController().off('sendKeyboardStatus');
+            expect(true).assertTrue();
+            done();
+          } else {
+            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus count: ' + count);
+            inputMethod.getController().off('sendKeyboardStatus');
+            expect().assertFail();
+            done();
           }
-        });
-        await inputMethod.getController().showSoftKeyboard();
-        await sleep(850);
-        if (count === 2) {
-          console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus count all: ' + count);
-          inputMethod.getController().off('sendKeyboardStatus');
-          expect(true).assertTrue();
-          done();
-        } else {
-          console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus count: ' + count);
-          inputMethod.getController().off('sendKeyboardStatus');
-          expect().assertFail();
-          done();
-        }
+        }, 500);
       } catch (err) {
         console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus catch err: ' + JSON.stringify(err));
         done();
