@@ -64,7 +64,7 @@ export default function RatingContentModifier() {
       await Utils.sleep(1000);
 
       let strJson1 = getInspectorByKey('RatingContentModifier_text');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[RatingContentModifier_001] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('Rating2');

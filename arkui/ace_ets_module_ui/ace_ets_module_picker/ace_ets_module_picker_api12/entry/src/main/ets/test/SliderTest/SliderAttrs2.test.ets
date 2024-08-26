@@ -65,7 +65,7 @@ export default function SliderAttrs2() {
       await Utils.sleep(2000);
 
       let strJson1 = getInspectorByKey('SliderAttrs2_text2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SliderAttrs2_001] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('true');

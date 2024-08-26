@@ -8,13 +8,21 @@
         "shell-timeout": "600000",
         "testcase-timeout": "180000"
     },
-    "kits": [{
-        "test-file-name": [
-            "ActsAceEtsModulePickerApi12Test.hap",
-            "ActsAceEtsModulePickerApi12TestMain.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
-    }
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsAceEtsModulePickerApi12Test.hap",
+                "ActsAceEtsModulePickerApi12TestMain.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell timeout -o 864000000"
+            ]
+        }
     ]
 }

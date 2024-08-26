@@ -58,7 +58,7 @@ export default function RadioIndicatorType() {
       await Utils.sleep(1000);
 
       let strJson1 = getInspectorByKey('RadioIndicatorType_Radio1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[RadioIndicatorType_001] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.indicatorType).assertEqual('TICK');
@@ -80,7 +80,7 @@ export default function RadioIndicatorType() {
       await Utils.sleep(1000);
 
       let strJson1 = getInspectorByKey('RadioIndicatorType_Radio2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[RadioIndicatorType_002] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.indicatorType).assertEqual('DOT');
@@ -100,13 +100,13 @@ export default function RadioIndicatorType() {
       await Utils.sleep(1000);
 
       let strJson1 = getInspectorByKey('RadioIndicatorType_Radio3');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[RadioIndicatorType_003] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.indicatorType).assertEqual('CUSTOM');
 
       let strJson2 = getInspectorByKey('RadioIndicatorType_Text');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       await Utils.sleep(1000);
       console.info("[RadioIndicatorType_003] obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.content).assertEqual('Custom');

@@ -14,26 +14,25 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
 
 
 export default function dividerJsunit() {
-  describe('dividerJsunit', function () {
-    beforeEach(async function (done) {
+  describe('dividerJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("dividerJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TextPicker/divider',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TextPicker/divider',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Divider state pages: " + JSON.stringify(pages));
         if (!("divider" == pages.name)) {
           console.info("get Divider state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          let result = await router.push(options);
           await Utils.sleep(2000);
           console.info("push Divider page result: " + JSON.stringify(result));
         }
@@ -51,10 +50,10 @@ export default function dividerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_TextPicker_DividerJsunit_1000', 0, async function (done) {
+    it('ArkUI_TextPicker_DividerJsunit_1000', 0, async (done: Function) => {
       console.info('[ArkUI_TextPicker_DividerJsunit_1000] START');
       let strJson = getInspectorByKey('dividerKey0');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_TextPicker_DividerJsunit_1000] obj is: " + JSON.stringify(obj.$attrs.divider));
       expect(obj.$attrs.divider.strokeWidth).assertEqual('10.00vp');
       expect(obj.$attrs.divider.startMargin).assertEqual('11.00vp');

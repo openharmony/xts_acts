@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from "../../MainAbility/common/Common";
 
 export default function TimePickerAddApi() {
-  describe('TimePickerAddApi', function () {
-    beforeEach(async function (done) {
+  describe('TimePickerAddApi', () => {
+    beforeEach(async (done: Function) => {
       console.info("TimePickerAddApi beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TimePicker/TimePickerAddApi',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TimePicker/TimePickerAddApi',
       }
       try {
         router.clear();
@@ -50,7 +50,7 @@ export default function TimePickerAddApi() {
      * @tc.level      : Level 3
      */
 
-    it('TimePickerAddApi_001', 0, async function (done) {
+    it('TimePickerAddApi_001', 0, async (done: Function) => {
 
       console.info('[TimePickerAddApi_001] START');
       await CommonFunc.sleep(1000);
@@ -61,7 +61,7 @@ export default function TimePickerAddApi() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TimePickerAddApiText');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TimePicker_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('second');
@@ -79,13 +79,13 @@ export default function TimePickerAddApi() {
      * @tc.level      : Level 3
      */
 
-    it('TimePickerAddApi_002', 0, async function (done) {
+    it('TimePickerAddApi_002', 0, async (done: Function) => {
 
       console.info('[TimePickerAddApi_001] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TimePickerAddApi2');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TimePicker_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.label).assertEqual('TimePickerDialog');
