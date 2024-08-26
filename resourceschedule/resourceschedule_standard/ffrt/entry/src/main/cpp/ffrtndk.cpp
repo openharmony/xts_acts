@@ -42,7 +42,7 @@ const uint64_t UNIT_STACK_SIZE = 2 * 1024 * 1024;
 const uint64_t UNIT_TASK_DELAY = 200000;
 const uint32_t TASK_SUBMIT_REF = 2;
 const uint32_t TASK_RELEASE_REF = 3;
-const uint32_t TASK_DELAY_TIME = 5000;
+const uint32_t TASK_DELAY_TIME = 1000;
 
 void OnePlusForTest(void* arg)
 {
@@ -3038,14 +3038,13 @@ static napi_value ffrt_loop_abnormal_0002(napi_env env, napi_callback_info info)
 
 static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
 {
-    const uint32_t delayTime = 1000;
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
     auto loop = ffrt_loop_create(queue_handle);
     ffrt_task_attr_t task_attr;
     (void)ffrt_task_attr_init(&task_attr);
-    ffrt_task_attr_set_delay(&task_attr, delayTime);
+    ffrt_task_attr_set_delay(&task_attr, TASK_DELAY_TIME);
     int result1 = 0;
     const int loopCnt = 1000000000;
     std::function<void()>&& basicFunc1 = [&result1]() {for (int i = 0; i < loopCnt; ++i) {result1 += 1;}};
@@ -3062,24 +3061,25 @@ static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
     ffrt_queue_wait(task2);
     int result = 0;
     if (result1 != loopCnt || result2 != addnum) {
-        result += 1;
+        result = ERR_CODE_1;
     }
     int result3 = 0;
     std::function<void()>&& basicFunc3 = [&result3]() {result3 += addnum;};
-    ffrt_task_attr_t taskAttr;
-    (void)ffrt_task_attr_init(&taskAttr);
-    ffrt_task_attr_set_delay(&taskAttr, TASK_DELAY_TIME);
+    std::function<void()> &&SleepFunc = [] () {sleep(1);};
+    ffrt_task_handle_t sleepTask = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SleepFunc,
+        ffrt_function_kind_queue), nullptr);
     ffrt_task_handle_t task3 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc3,
-        ffrt_function_kind_queue), &taskAttr);
+        ffrt_function_kind_queue), nullptr);
     int ret = ffrt_queue_cancel(task3);
     if (ret != 0 || result3 != 0) {
-        result += 1;
+        result = ERR_CODE_2;
     }
+    ffrt_queue_wait(sleepTask);
     ffrt_loop_stop(loop);
     pthread_join(thread, nullptr);
     int destoryRet = ffrt_loop_destroy(loop);
     if (destoryRet != 0) {
-        result += 1;
+        result = ERR_CODE_3;
     }
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
@@ -3100,30 +3100,29 @@ static napi_value ffrt_loop_0002(napi_env env, napi_callback_info info)
     int result1 = 0;
     const int addTen = 10;
     std::function<void()>&& basicFunc1 = [&result1]() {result1 += addTen;};
-    ffrt_task_attr_t taskAttr;
-    (void)ffrt_task_attr_init(&taskAttr);
-    ffrt_task_attr_set_delay(&taskAttr, TASK_DELAY_TIME);
+    std::function<void()> &&SleepFunc = [] () {sleep(1);};
+    ffrt_task_handle_t sleepTask = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SleepFunc,
+        ffrt_function_kind_queue), nullptr);
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc1,
-        ffrt_function_kind_queue), &taskAttr);
+        ffrt_function_kind_queue), nullptr);
     int result = 0;
     int ret1 = ffrt_queue_cancel(task1);
     if (ret1 != 0) {
-        result += 1;
+        result = ERR_CODE_1;
     }
-
+    ffrt_queue_wait(sleepTask);
     int result2 = 0;
     const int addTwenty = 20;
     std::function<void()>&& basicFunc2 = [&result2]() {result2 += addTwenty;};
-    ffrt_task_attr_t taskAttr2;
-    (void)ffrt_task_attr_init(&taskAttr2);
-    ffrt_task_attr_set_delay(&taskAttr2, TASK_DELAY_TIME);
+    ffrt_task_handle_t sleepTask2 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SleepFunc,
+        ffrt_function_kind_queue), nullptr);
     ffrt_task_handle_t task2 = ffrt_queue_submit_h(queue_handle,
-        create_function_wrapper(basicFunc2, ffrt_function_kind_queue), &taskAttr2);
+        create_function_wrapper(basicFunc2, ffrt_function_kind_queue), nullptr);
     int ret2 = ffrt_queue_cancel(task2);
     if (ret2 != 0) {
-        result += 1;
+        result = ERR_CODE_2;
     }
-
+    ffrt_queue_wait(sleepTask2);
     ffrt_loop_stop(loop);
     pthread_join(thread, nullptr);
     ffrt_loop_destroy(loop);
