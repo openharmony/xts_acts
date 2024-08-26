@@ -242,8 +242,8 @@ static napi_value TestNativeScaleWithAntiAliasingNormal(napi_env env, napi_callb
                      argCount);
         return getJsResult(env, IMAGE_BAD_PARAMETER);
     }
-    double x;
-    double y;
+    double x = 0;
+    double y = 0;
     napi_get_value_double(env, argValue[NUM_0], &x);
     napi_get_value_double(env, argValue[NUM_1], &y);
     Image_ErrorCode errCode = OH_PixelmapNative_ScaleWithAntiAliasing(TEST_PIXELMAP, (float)x, (float)y,
@@ -255,6 +255,35 @@ static napi_value TestNativeScaleWithAntiAliasingNormal(napi_env env, napi_callb
     }
     OH_LOG_INFO(LOG_APP, "ImagePixelmapNativeCTest TestNativeScaleWithAntiAliasingNormal success.");
     return getJsResult(env, IMAGE_SUCCESS);
+}
+
+static napi_value TestScaleWithAntiAliasingAbnormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value thisVar = nullptr;
+    napi_value argValue[NUM_2] = {0};
+    size_t argCount = NUM_2;
+
+    napi_get_undefined(env, &result);
+    if (napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr) != napi_ok ||
+        argCount < NUM_2 || argValue[NUM_0] == nullptr || argValue[NUM_1] == nullptr) {
+        return result;
+    }
+    NativePixelMap* native = nullptr;
+    double x = 0;
+    double y = 0;
+    if (napi_get_value_double(env, argValue[NUM_0], &x) != napi_ok ||
+        napi_get_value_double(env, argValue[NUM_1], &y) != napi_ok) {
+        return result;
+    }
+
+    int32_t errCode = OH_PixelMap_ScaleWithAntiAliasing(native, static_cast<float>(x), static_cast<float>(y),
+        OH_PixelMap_AntiAliasing_HIGH);
+    if (errCode != IMAGE_RESULT_BAD_PARAMETER) {
+        OH_LOG_ERROR(LOG_APP, "ImagePixelmapNativeCTest TestScaleWithAntiAliasingAbnormal "
+         "OH_Pixelmap_ScaleWithAntiAliasing failed, errCode: %{public}d.", errCode);
+        return getJsResult(env, errCode);
+    }
+    return getJsResult(env, IMAGE_RESULT_SUCCESS);
 }
 
 static napi_value TestReleasePixelmap(napi_env env, napi_callback_info info) {
@@ -290,11 +319,13 @@ static bool CheckVpe()
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
-        {"testCreatePixelMapWithStrideAbnormal", nullptr, TestCreatePixelMapWithStrideAbnormal, nullptr, nullptr, 
+        {"testCreatePixelMapWithStrideAbnormal", nullptr, TestCreatePixelMapWithStrideAbnormal, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"testInitializationOptionsSetRowStrideNormal", nullptr, TestInitializationOptionsSetRowStrideNormal, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"testNativeScaleWithAntiAliasingNormal", nullptr, TestNativeScaleWithAntiAliasingNormal, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testScaleWithAntiAliasingAbnormal", nullptr, TestScaleWithAntiAliasingAbnormal, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"testCreatePixelmap", nullptr, TestCreatePixelmap, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testReleasePixelmap", nullptr, TestReleasePixelmap, nullptr, nullptr, nullptr, napi_default, nullptr}

@@ -62,7 +62,7 @@ export default function imageNdkTest() {
       expect(result).assertEqual(0)
       done();
     })
-  
+
     /*
      * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptionsSetRowStrideNormal_0200
      * @tc.name      : testInitializationOptionsSetRowStrideNormal
@@ -94,6 +94,21 @@ export default function imageNdkTest() {
       expect(result).assertEqual(0)
       result = ndkTest.testReleasePixelmap()
       // release success return IMAGE_SUCCESS, it's 0
+      expect(result).assertEqual(0)
+      done();
+    })
+
+    /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_ScaleWithAntiAliasing_0500
+    * @tc.name      : testScaleWithAntiAliasingAbnormal
+    * @tc.desc      : 1.testScaleWithAntiAliasingAbnormal
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_ScaleWithAntiAliasing_0500', 0, (done: Function) => {
+      // The scaling ratio is 100%
+      let result: number = ndkTest.testScaleWithAntiAliasingAbnormal(100, 100)
       expect(result).assertEqual(0)
       done();
     })
