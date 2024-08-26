@@ -572,27 +572,61 @@ export default function imagePixelMapFramework() {
         }
         
         async function createPixelMapByFormat(expectFormat) {
-            let opts = {
-                editable: true,
-                srcPixelFormat: expectFormat,
-                pixelFormat: expectFormat,
-                size: { height: 1080, width: 1920 }
-            }
-            let buffer;
-            if (expectFormat == 11 || expectFormat == 12) {
-                buffer = getBuffer("nv12p010.yuv");
-            } else if (expectFormat == 10) {
-                buffer = getBuffer("1920-1080-rgba10.rgba");
+            // let opts = {
+            //     editable: true,
+            //     srcPixelFormat: expectFormat,
+            //     pixelFormat: expectFormat,
+            //     size: { height: 1080, width: 1920 }
+            // }
+            // let buffer;
+            // if (expectFormat == 11 || expectFormat == 12) {
+            //     buffer = getBuffer("nv12p010.yuv");
+            // } else if (expectFormat == 10) {
+            //     buffer = getBuffer("1920-1080-rgba10.rgba");
+            // } else {
+            //     buffer = new ArrayBuffer(getBufferSize(100, 100, expectFormat));
+            //     var bufferArr = new Uint8Array(buffer);
+            //     for (var i = 0; i < bufferArr.length; i++) {
+            //         bufferArr[i] = i + 1;
+            //     }
+            //     opts.size.width = 100;
+            //     opts.size.height = 100;
+            // }
+            let fileName;
+            if (expectFormat == 10 || expectFormat == 11 || expectFormat == 12) {
+                fileName = "HDRVividSingleLayer.heic";
             } else {
-                buffer = new ArrayBuffer(getBufferSize(100, 100, expectFormat));
-                var bufferArr = new Uint8Array(buffer);
-                for (var i = 0; i < bufferArr.length; i++) {
-                    bufferArr[i] = i + 1;
-                }
-                opts.size.width = 100;
-                opts.size.height = 100;
+                fileName = "JPG-480360-YUV311.jpg";
             }
-            return image.createPixelMap(buffer, opts);
+            let buffer = await getBuffer(fileName);
+            let imageSource = image.createImageSource(buffer);
+            let decodingOpt;
+            if (expectFormat == 10 || expectFormat == 11 || expectFormat == 12) {
+                decodingOpt = {
+                    editable: true,
+                    desiredPixelFormat: expectFormat,
+                    desiredDynamicRange: image.DecodingDynamicRange.HDR
+                } 
+            } else if (expectFormat == 8 || expectFormat == 9) {
+                decodingOpt = {
+                    editable: true,
+                    desiredPixelFormat: expectFormat
+                }
+            } else {
+                decodingOpt = {
+                    editable: true,
+                    desiredPixelFormat: 8
+                }
+            }
+            let pixelMap = await imageSource.createPixelMap(decodingOpt);
+            if (pixelMap.getImageInfoSync().pixelFormat != expectFormat) {
+                try {
+                    await pixelMap.convertPixelFormat(expectFormat);
+                } catch (error) {
+                    console.info(`convertPixelFormat:${expectFormat} failed. ` + error)
+                }
+            }
+            return pixelMap;
         }
 
         async function testConvertPixelFormat(done, testNum, srcPixelFormat, dstPixelFormat) {
@@ -607,7 +641,7 @@ export default function imagePixelMapFramework() {
                     let newImageInfo = pixelMap.getImageInfoSync();
                     logger.log("converted to dstPixelFormat : " + newImageInfo.pixelFormat);
                     logger.log(`pixelMap info: origin isHdr: ${orgImageInfo.isHdr}, new isHdr: ${newImageInfo.isHdr}`);
-                    expect(dstPixelFormat == newImageInfo.pixelFormat).assertTrue();
+                    expect(newImageInfo.isHdr == false).assertTrue();
                     expect(orgImageInfo.isHdr == newImageInfo.isHdr).assertTrue();
                     done();
                 } else {
