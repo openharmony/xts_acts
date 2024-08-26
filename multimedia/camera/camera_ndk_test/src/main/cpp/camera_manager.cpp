@@ -1957,11 +1957,11 @@ Camera_ErrorCode NDKCamera::EnableMovingPhoto(int useCaseCode)
 Camera_ErrorCode NDKCamera::GetMainImage(int useCaseCode)
 {
     if (useCaseCode == PARAMETER_OK) {
-        ret_ = OH_PhotoNative_GetMainImage(photoNative_, mainImage_);
+        ret_ = OH_PhotoNative_GetMainImage(photoNative_, &mainImage_);
     } else if (useCaseCode == PARAMETER2_ERROR) {
         ret_ = OH_PhotoNative_GetMainImage(photoNative_, nullptr);
     } else {
-        ret_ = OH_PhotoNative_GetMainImage(nullptr, mainImage_);
+        ret_ = OH_PhotoNative_GetMainImage(nullptr, &mainImage_);
     }
     if (ret_ != CAMERA_OK) {
         LOG("OH_PhotoNative_GetMainImage failed. %d", ret_);
