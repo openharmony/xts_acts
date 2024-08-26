@@ -1895,7 +1895,7 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasuretextMultipleCalls, TestSize.Level
     }
     //3. free memory
     for (int i = 0; i < 10; i++) {
-        OH_Drawing_FontDestroy(fonts[i]); 
+        OH_Drawing_FontDestroy(fonts[i]);
     }
     OH_Drawing_RectDestroy(rect);
     OH_Drawing_RectDestroy(bounds);
