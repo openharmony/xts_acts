@@ -1,9 +1,23 @@
+/*
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #ifndef TEST_UTIL_H
 #define TEST_UTIL_H
+#include <csignal>
 #include <cstdarg>
 #include <cstdio>
 #include <cstring>
-#include <iostream>
 #include <string>
 
 #if defined(OHOS_JSVM_HAP)
@@ -18,43 +32,17 @@
 #define LOG_TAG "JSVMTEST_TAG"
 #endif
 
-[[maybe_unused]] static inline void print(const char *str) {
-    OH_LOG_INFO(LOG_APP, "%{public}s", str);
-}
-
-#else  // OHOS_JSVM_HAP
-
-[[maybe_unused]] static inline void print(const char *str) {
-    printf("%s\n", str);
-}
-
 #endif  // OHOS_JSVM_HAP
 
-static void PrintErrorMessage(const std::string &cond, const std::string &file, unsigned int line, const char *fmt,
-                              ...) {
-    constexpr uint32_t kMaxLogLen = 10000;
-    char buf[kMaxLogLen];
-    int len =
-        snprintf(buf, kMaxLogLen - 1, "CHECK/CHECK_FATAL failure: %s at [%s:%u] ", cond.c_str(), file.c_str(), line);
-    if (len == -1) {
-        return;
-    }
-    va_list l;
-    va_start(l, fmt);
-    int eNum = vsnprintf(buf + len, static_cast<size_t>(kMaxLogLen - len - 1), fmt, l);
-    if (eNum == -1) {
-        va_end(l);
-        return;
-    }
-    va_end(l);
-    print(buf);
-}
+void Print(const char *str);
+void FatalError();
+void PrintErrorMessage(const std::string &cond, const std::string &file, unsigned int line, const char *fmt, ...);
 
 #define CHECK_FATAL(cond, fmt, ...)                                                \
     do {                                                                           \
         if (!(cond)) {                                                             \
             PrintErrorMessage(#cond, __FILE__, __LINE__, fmt "\n", ##__VA_ARGS__); \
-            abort();                                                               \
+            FatalError();                                                          \
         }                                                                          \
     } while (0)
 
