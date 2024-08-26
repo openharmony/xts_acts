@@ -21,6 +21,7 @@ import display from '@ohos.display';
 import {Driver, ON, MatchPattern, Component } from '@ohos.UiTest'
 import deviceinfo from '@ohos.deviceInfo';
 import { BusinessError} from '@ohos.base'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default function inputMethodEngineKeyJSUnit() {
   describe('inputMethodEngineKeyEvent', function () {
@@ -70,6 +71,7 @@ export default function inputMethodEngineKeyJSUnit() {
 
     let dis = display.getDefaultDisplaySync();
     let driver = Driver.create();
+    const delegator:AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
     /*
     * @tc.number  SUB_Misc_InputMethod_Manage_Physical_Buttons_0010
@@ -264,7 +266,8 @@ export default function inputMethodEngineKeyJSUnit() {
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 publishCallback failed:" + JSON.stringify(err));
         } else {
           let t = setTimeout(async ()=>{
-            await driver.triggerCombineKeys(2072, 2017);
+            await delegator.executeShellCommand(`uinput -K -d 2072 -d 2017 -u 2017 -u 2072`);
+            console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t);
           }, 200)
         }
@@ -339,7 +342,8 @@ export default function inputMethodEngineKeyJSUnit() {
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 publishCallback failed:" + JSON.stringify(err));
         } else {
           let t = setTimeout(async ()=>{
-            await driver.triggerCombineKeys(2017, 2047);
+            await delegator.executeShellCommand(`uinput -K -d 2017 -d 2047 -u 2047 -u 2017`);
+            console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t);
           }, 200)
         }
@@ -414,7 +418,8 @@ export default function inputMethodEngineKeyJSUnit() {
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 publishCallback failed:" + JSON.stringify(err));
         } else {
           let t = setTimeout(async ()=>{
-            await driver.triggerCombineKeys(2047, 2017);
+            await delegator.executeShellCommand(`uinput -K -d 2047 -d 2017 -u 2017 -u 2047`);
+            console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t);
           }, 200)
 
@@ -490,7 +495,8 @@ export default function inputMethodEngineKeyJSUnit() {
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 publishCallback failed:" + JSON.stringify(err));
         } else {
           let t = setTimeout(async ()=>{
-            await driver.triggerCombineKeys(2047, 2001);
+            await delegator.executeShellCommand(`uinput -K -d 2047 -d 2001 -u 2001 -u 2047`);
+            console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t);
           }, 200)
         }
@@ -565,7 +571,8 @@ export default function inputMethodEngineKeyJSUnit() {
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 publishCallback failed:" + JSON.stringify(err));
         } else {
           let t = setTimeout(async ()=>{
-            await driver.triggerCombineKeys(2047, 2062)
+            await delegator.executeShellCommand(`uinput -K -d 2047 -d 2062 -u 2062 -u 2047`);
+            console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t)
           }, 200)
         }
