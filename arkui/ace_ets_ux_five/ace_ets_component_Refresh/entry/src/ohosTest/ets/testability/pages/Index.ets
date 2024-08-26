@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -27,9 +27,9 @@ struct Index {
   aboutToAppear() {
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
-    var abilityDelegator: any
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
+    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs;
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
@@ -47,7 +47,7 @@ struct Index {
   @State counter: number = 0
   timeout: number = 5000
 
-  build() {
+   build() {
     Column({ space: 15 }) {
       Button('DARK')
         .onClick(() => {
@@ -63,7 +63,7 @@ struct Index {
           })
         })
 
-      Column() {
+           Column() {
         Refresh({ refreshing: $$this.isRefreshingText, offset: 10, friction: 100, promptText: this.promptText1 }) {
           Text('Pull Down and Refresh With Text: ' + this.counterText)
             .margin(10)
@@ -71,7 +71,7 @@ struct Index {
         .key("ArkUX_Refresh_Visual_0010")
         .onStateChange((refreshStatus: RefreshStatus) => {
           console.info('Refresh onStatueChange state is ' + refreshStatus)
-        })
+             })
         .onRefreshing(() => {
           setTimeout(() => {
             this.counterText++
@@ -79,8 +79,8 @@ struct Index {
             this.promptText1 = "pull down and refresh: " + this.counterText
           }, this.timeout)
           console.log('onRefreshing test')
-        })
-      }
+             })
+           }
       .border({ width: 1, color: Color.Blue })
       .size({ width: "100%", height: 300 })
 
@@ -88,7 +88,7 @@ struct Index {
         Refresh({ refreshing: $$this.isRefreshingText, offset: 10, friction: 100, promptText: this.promptText2 }) {
           Text('Pull Down and Refresh With Text: ' + this.counterText)
             .margin(10)
-        }
+         }
         .key("ArkUX_Refresh_Visual_0020")
         .onStateChange((refreshStatus: RefreshStatus) => {
           console.info('Refresh onStatueChange state is ' + refreshStatus)
@@ -130,7 +130,7 @@ struct Index {
         Refresh({ refreshing: $$this.isRefreshing, offset: 10, friction: 100 }) {
           Text('Pull Down and Refresh : ' + this.counter)
             .margin(10)
-        }
+   }
         .key("ArkUX_Refresh_Visual_0040")
         .onStateChange((refreshStatus: RefreshStatus) => {
           console.info('Refresh onStatueChange state is ' + refreshStatus)
@@ -167,5 +167,5 @@ struct Index {
       .border({ width: 1, color: Color.Blue })
       .size({ width: "100%", height: 300 })
     }
-  }
+ }
 }
