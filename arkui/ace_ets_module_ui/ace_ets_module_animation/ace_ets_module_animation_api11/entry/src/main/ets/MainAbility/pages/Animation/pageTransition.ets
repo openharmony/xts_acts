@@ -48,7 +48,7 @@ struct PageTransitionExample1 {
           console.info("pageTransition start to emit action state")
           events_emitter.emit(backEvent, backData)
         } catch (err) {
-          console.info("pageTransition emit action state err: " + JSON.stringify(err.message))
+          console.info("pageTransition emit action state err: " + JSON.stringify((err as Error)?.message))
         }
       })
     }.scale({ x: this.scale1 }).opacity(this.opacity1)

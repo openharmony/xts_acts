@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../../MainAbility/common/Utils.ets';
+import Utils from '../../MainAbility/common/Utils';
 
 
 export default function pageTransitionJsunit() {
