@@ -4,11 +4,10 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "bundle-name": "com.open.harmony.aceEtsApiLack",
-	    "module-name": "entry_test",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": "180000"
     },
-    
     "kits": [
         {
             "test-file-name": [
@@ -17,15 +16,6 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "power-shell wakeup",
-                "uinput -T -c 1080 1080",
-                "uinput -T -d 654 2750 -m 654 2750 654 2284 -u 300 2284",
-                "power-shell timeout -o 864000000"
-            ]
         }
     ]
 }
