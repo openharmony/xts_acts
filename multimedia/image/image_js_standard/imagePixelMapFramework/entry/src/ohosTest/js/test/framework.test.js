@@ -572,26 +572,6 @@ export default function imagePixelMapFramework() {
         }
         
         async function createPixelMapByFormat(expectFormat) {
-            // let opts = {
-            //     editable: true,
-            //     srcPixelFormat: expectFormat,
-            //     pixelFormat: expectFormat,
-            //     size: { height: 1080, width: 1920 }
-            // }
-            // let buffer;
-            // if (expectFormat == 11 || expectFormat == 12) {
-            //     buffer = getBuffer("nv12p010.yuv");
-            // } else if (expectFormat == 10) {
-            //     buffer = getBuffer("1920-1080-rgba10.rgba");
-            // } else {
-            //     buffer = new ArrayBuffer(getBufferSize(100, 100, expectFormat));
-            //     var bufferArr = new Uint8Array(buffer);
-            //     for (var i = 0; i < bufferArr.length; i++) {
-            //         bufferArr[i] = i + 1;
-            //     }
-            //     opts.size.width = 100;
-            //     opts.size.height = 100;
-            // }
             let fileName;
             if (expectFormat == 10 || expectFormat == 11 || expectFormat == 12) {
                 fileName = "HDRVividSingleLayer.heic";
