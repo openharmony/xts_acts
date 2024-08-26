@@ -15,6 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import wantAgent, {WantAgent} from '@ohos.app.ability.wantAgent';
+import ohosWantAgent from '@ohos.wantAgent';
 
 let TAG: string;
 
@@ -46,7 +47,7 @@ export default function wantAgentInfoTest() {
             }
           }
         ],
-        operationType: wantAgent.OperationType.START_ABILITY,
+        operationType: ohosWantAgent.OperationType.START_ABILITY,
         requestCode: 0,
         wantAgentFlags: [wantAgent.WantAgentFlags.ONE_TIME_FLAG]
       }
@@ -100,7 +101,7 @@ export default function wantAgentInfoTest() {
             }
           }
         ],
-        operationType: wantAgent.OperationType.START_ABILITY,
+        operationType: ohosWantAgent.OperationType.START_ABILITY,
         requestCode: 0,
         wantAgentFlags: [wantAgent.WantAgentFlags.NO_BUILD_FLAG]
       }
@@ -154,7 +155,7 @@ export default function wantAgentInfoTest() {
             }
           }
         ],
-        operationType: wantAgent.OperationType.START_ABILITIES,
+        operationType: ohosWantAgent.OperationType.START_ABILITIES,
         requestCode: 0,
         wantAgentFlags: [wantAgent.WantAgentFlags.CANCEL_PRESENT_FLAG]
       }
@@ -208,7 +209,7 @@ export default function wantAgentInfoTest() {
             }
           }
         ],
-        operationType: wantAgent.OperationType.START_SERVICE,
+        operationType: ohosWantAgent.OperationType.START_SERVICE,
         requestCode: 0,
         wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       }
@@ -262,7 +263,7 @@ export default function wantAgentInfoTest() {
             }
           }
         ],
-        operationType: wantAgent.OperationType.SEND_COMMON_EVENT,
+        operationType: ohosWantAgent.OperationType.SEND_COMMON_EVENT,
         requestCode: 0,
         wantAgentFlags: [wantAgent.WantAgentFlags.CONSTANT_FLAG]
       }

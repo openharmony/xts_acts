@@ -14,6 +14,7 @@
 */
 
 import wantAgent from '@ohos.app.ability.wantAgent'
+import ohosWantAgent from '@ohos.wantAgent'
 
 const REQUEST_CODE: number = 0 // WantAgentInfo的请求码，默认定义成0
 class WantAgentUtil {
@@ -32,7 +33,7 @@ class WantAgentUtil {
           abilityName: abilityName
         }
       ],
-      operationType: wantAgent.OperationType.START_ABILITY,
+      operationType: ohosWantAgent.OperationType.START_ABILITY,
       requestCode: REQUEST_CODE // requestCode是WantAgentInfo的请求码，是使用者定义的一个私有值
     }
     return await wantAgent.getWantAgent(wantAgentInfo);
@@ -47,7 +48,7 @@ class WantAgentUtil {
   async createWantAgentForCommonEvent(action: string) {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
       wants: [{ action: action }],
-      operationType: wantAgent.OperationType.SEND_COMMON_EVENT,
+      operationType: ohosWantAgent.OperationType.SEND_COMMON_EVENT,
       requestCode: REQUEST_CODE // requestCode是WantAgentInfo的请求码，是使用者定义的一个私有值
     }
     return await wantAgent.getWantAgent(wantAgentInfo);

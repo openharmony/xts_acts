@@ -15,6 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import wantAgent from '@ohos.app.ability.wantAgent';
+import ohosWantAgent from '@ohos.wantAgent'
 import wantConstant from '@ohos.app.ability.wantConstant'
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
@@ -49,7 +50,7 @@ export default function wantAgentCoverTest() {
               }
             }
           ],
-          operationType: wantAgent.OperationType.START_ABILITIES,
+          operationType: ohosWantAgent.OperationType.START_ABILITIES,
           requestCode: 0,
           wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
