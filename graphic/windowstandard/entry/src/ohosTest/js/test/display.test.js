@@ -452,7 +452,7 @@ describe('display_test', function () {
 
            }).catch((err) => {
              console.error('www data Failed to check whether there is immersive window. Code: ' + JSON.stringify(err));
-             expect(err.code == 801).assertTrue();
+             expect(err.code == 202).assertTrue();
              done();
            }) 
         } catch (error) {
@@ -482,7 +482,7 @@ describe('display_test', function () {
                        const errCode = err.code;
                        if (errCode) {
                        console.error('www data Failed to check whether there is immersive window. Code: ' + JSON.stringify(err));
-                       expect(err.code == 801).assertTrue();
+                       expect(err.code == 202).assertTrue();
                        done();
                        }
                        console.info('www data Succeeded in checking whether there is immersive window. data: ' + JSON.stringify(data));
