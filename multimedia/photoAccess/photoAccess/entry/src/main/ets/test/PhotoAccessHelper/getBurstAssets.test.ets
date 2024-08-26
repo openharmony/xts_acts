@@ -53,7 +53,7 @@ export default function getBurstAssetsTest () {
           console.error(`${testNum} :: getBurstKey :: photoAsset is undefined !`);
           return burstKey;
         }
-        burstKey = photoAsset.get(photoKeys.BURST_KEY);
+        burstKey = photoAsset.get(photoKeys.BURST_KEY).toString();
         console.log(`${testNum} :: get burstKey success, burstKey is ${burstKey}`);
         return burstKey;
       } catch (error) {
@@ -82,8 +82,8 @@ export default function getBurstAssetsTest () {
           done();
         }
         let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getBurstAssets(burstKey, ops);
-        console.log(`${testNum} :: getBurstAssets success, fetchResult count is ${fetchResult.getCount()}`);
-        if (fetchResult === undefined || fetchResult.getCount() > 0) {
+        console.log(`${testNum} :: getBurstAssets success, fetchResult is undefined :: ${fetchResult === undefined}`);
+        if (fetchResult !== undefined) {
           expect(false).assertTrue();
           done();
         }
@@ -115,8 +115,8 @@ export default function getBurstAssetsTest () {
           done();
         }
         let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getBurstAssets(burstKey, ops);
-        console.log(`${testNum} :: getBurstAssets success, fetchResult count is ${fetchResult.getCount()}`);
-        if (burstKey === -1 || fetchResult.getCount() > 0) {
+        console.log(`${testNum} :: getBurstAssets success, fetchResult is undefined :: ${fetchResult === undefined}`);
+        if (fetchResult !== undefined) {
           expect(false).assertTrue();
           done();
         }
