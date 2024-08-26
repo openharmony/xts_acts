@@ -1,14 +1,31 @@
+/*
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+#ifdef TEST_ARRAY_BUFFER_BACKING_STORE
 #include <cstdlib>
 #include <random>
 
 #include "jsvmtest.h"
 
-#ifdef TEST_ARRAY_BUFFER_BACKING_STORE
 // test for Array Buffer Backing Store
-TEST(ArrayBufferBackingStore) {
+TEST(ArrayBufferBackingStore)
+{
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(1000, 2000);
+    constexpr int kMinVal = 1000;
+    constexpr int kMaxVal = 2000;
+    std::uniform_int_distribution<> distrib(kMinVal, kMaxVal);
 
     int random_number = distrib(gen);
     for (auto i = 1; i < random_number; i++) {
@@ -27,18 +44,18 @@ TEST(ArrayBufferBackingStore) {
         jsvm::SetProperty(jsvm::Global(), jsvm::Str("buffer2"), arrayBuffer2);
         jsvm::SetProperty(jsvm::Global(), jsvm::Str("buffer3"), arrayBuffer3);
         jsvm::Run(R"JS(
-      function writeBuffer(data) {
-        let view = new Uint8Array(data);
-        // Write some values to the ArrayBuffer
-        for (let i = 0; i < view.length; i++) {
-            view[i] = i % 256;
-        }
-      }
-      writeBuffer(buffer)
-      writeBuffer(buffer1)
-      writeBuffer(buffer2)
-      writeBuffer(buffer3)
-    )JS");
+            function writeBuffer(data) {
+                let view = new Uint8Array(data);
+                // Write some values to the ArrayBuffer
+                for (let i = 0; i < view.length; i++) {
+                    view[i] = i % 256;
+                }
+            }
+            writeBuffer(buffer);
+            writeBuffer(buffer1);
+            writeBuffer(buffer2);
+            writeBuffer(buffer3);
+        )JS");
         uint8_t *array = static_cast<uint8_t *>(backingStore);
         for (auto i = 0; i < 100; ++i) {
             CHECK(array[i] == i % 25 % 256);
@@ -52,7 +69,8 @@ TEST(ArrayBufferBackingStore) {
 }
 
 // test for Array Buffer Backing Store1
-TEST(ArrayBufferBackingStore1) {
+TEST(ArrayBufferBackingStore1)
+{
     for (auto i = 1; i < 1000; i++) {
         void *backingStore;
         OH_JSVM_AllocateArrayBufferBackingStoreData(100, JSVM_ZERO_INITIALIZED, &backingStore);
@@ -68,14 +86,14 @@ TEST(ArrayBufferBackingStore1) {
             std::string bufferName = "buffer" + std::to_string(j);
             jsvm::SetProperty(jsvm::Global(), jsvm::Str(bufferName.c_str()), arrayBuffer);
             jsvm::Run(R"JS(
-        function writeBuffer(data) {
-          let view = new Uint8Array(data);
-          // Write some values to the ArrayBuffer
-          for (let i = 0; i < view.length; i++) {
-            view[i] = i % 256;
-          }
-        }
-      )JS");
+                function writeBuffer(data) {
+                    let view = new Uint8Array(data);
+                    // Write some values to the ArrayBuffer
+                    for (let i = 0; i < view.length; i++) {
+                        view[i] = i % 256;
+                    }
+                }
+            )JS");
             std::string run_func = "writeBuffer(" + bufferName + ')';
             jsvm::Run(run_func.c_str());
             uint8_t *array = static_cast<uint8_t *>(backingStore);
@@ -89,7 +107,8 @@ TEST(ArrayBufferBackingStore1) {
 }
 
 // test for Free Array Buffer Backing Store Data
-TEST(FreeArrayBufferBackingStoreData) {
+TEST(FreeArrayBufferBackingStoreData)
+{
     size_t byteLength = 100;
     JSVM_InitializedFlag initialized = JSVM_UNINITIALIZED;
     void *data;

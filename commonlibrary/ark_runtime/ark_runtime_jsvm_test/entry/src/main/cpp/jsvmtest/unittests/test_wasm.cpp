@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #ifdef TEST_WASM
 #include <fstream>
 #include <iostream>
@@ -7,6 +21,7 @@
 #endif
 
 #include "jsvmtest.h"
+#include "securec.h"
 #ifdef USE_HEADER_WASM
 #include <unordered_map>
 
@@ -32,7 +47,8 @@
 static const std::string wasmPath = "";
 
 using WasmMap = std::unordered_map<std::string, std::pair<unsigned char *, unsigned int>>;
-const WasmMap &InitWasmMap() {
+const WasmMap &InitWasmMap()
+{
     static WasmMap wasmMap{};
     if (wasmMap.size() == 0) {
         wasmMap["add.wasm"] = std::pair<unsigned char *, unsigned int>(add_wasm, add_wasm_len);
@@ -62,14 +78,16 @@ static const std::string wasmPath = "/data/storage/el1/base/wasm/";
 static const std::string wasmPath = "./unittests/wasm/";
 #endif
 
-static JSVM_Value GetInstanceExports(JSVM_Value wasmInstance) {
+static JSVM_Value GetInstanceExports(JSVM_Value wasmInstance)
+{
     CHECK(jsvm::IsWebAssemblyInstance(wasmInstance));
     auto exports = jsvm::GetProperty(wasmInstance, "exports");
     CHECK(jsvm::IsObject(exports));
     return exports;
 }
 
-static void ReadBinaryFile(const char *path, std::vector<uint8_t> &buffer) {
+static void ReadBinaryFile(const char *path, std::vector<uint8_t> &buffer)
+{
 #if !defined(USE_HEADER_WASM)
     std::ifstream infile(path, std::ifstream::binary);
     CHECK_FATAL(infile.good(), "can not access file: %s\n", path);
@@ -91,16 +109,19 @@ static void ReadBinaryFile(const char *path, std::vector<uint8_t> &buffer) {
 #endif
 }
 
-static void ReadBinaryFile(const std::string &path, std::vector<uint8_t> &buffer) {
+static void ReadBinaryFile(const std::string &path, std::vector<uint8_t> &buffer)
+{
     ReadBinaryFile(path.c_str(), buffer);
 }
 
-static void WriteBinaryFile(const char *path, const uint8_t *data, size_t byteLength) {
+static void WriteBinaryFile(const char *path, const uint8_t *data, size_t byteLength)
+{
     std::ofstream outfile(path, std::ofstream::binary);
     outfile.write(reinterpret_cast<const char *>(data), byteLength);
 }
 
-static void ReadTextFile(const char *path, std::string &content) {
+static void ReadTextFile(const char *path, std::string &content)
+{
     std::ifstream infile(path);
     CHECK_FATAL(infile.good(), "can not access file: %s\n", path);
     std::ostringstream oss;
@@ -108,11 +129,13 @@ static void ReadTextFile(const char *path, std::string &content) {
     content = oss.str();
 }
 
-[[maybe_unused]] static void ReadTextFile(const std::string &path, std::string &content) {
+[[maybe_unused]] static void ReadTextFile(const std::string &path, std::string &content)
+{
     ReadTextFile(path.c_str(), content);
 }
 
-static JSVM_Value CompileWasmModule(const char *path) {
+static JSVM_Value CompileWasmModule(const char *path)
+{
     std::vector<uint8_t> buffer;
     ReadBinaryFile(path, buffer);
     CHECK(buffer.size() > 0);
@@ -122,11 +145,13 @@ static JSVM_Value CompileWasmModule(const char *path) {
     return wasmModule;
 }
 
-static JSVM_Value CompileWasmModule(const std::string &path) {
+static JSVM_Value CompileWasmModule(const std::string &path)
+{
     return CompileWasmModule(path.c_str());
 }
 
-static JSVM_Value InstantiateWasmModule(JSVM_Value wasmModule, JSVM_Value importedObject) {
+static JSVM_Value InstantiateWasmModule(JSVM_Value wasmModule, JSVM_Value importedObject)
+{
     auto globalThis = jsvm::Global();
     auto WebAssembly = jsvm::GetProperty(globalThis, "WebAssembly");
     CHECK(jsvm::IsObject(WebAssembly));
@@ -134,13 +159,15 @@ static JSVM_Value InstantiateWasmModule(JSVM_Value wasmModule, JSVM_Value import
     CHECK(jsvm::IsFunction(WebAssemblyInstance));
     JSVM_Value wasmInstance;
     JSVM_Value argv[] = {wasmModule, importedObject};
-    JSVMTEST_CALL(OH_JSVM_NewInstance(jsvm_env, WebAssemblyInstance, 2, argv, &wasmInstance));
+    constexpr size_t argc = 2;
+    JSVMTEST_CALL(OH_JSVM_NewInstance(jsvm_env, WebAssemblyInstance, argc, argv, &wasmInstance));
     CHECK(jsvm::IsWebAssemblyInstance(wasmInstance));
     return wasmInstance;
 }
 
 // [begin, end)
-static void BatchCompileWasmFunctions(JSVM_Value wasmModule, size_t begin, size_t end) {
+static void BatchCompileWasmFunctions(JSVM_Value wasmModule, size_t begin, size_t end)
+{
     CHECK(jsvm::IsWasmModuleObject(wasmModule));
     for (size_t i = begin; i < end; ++i) {
         JSVM_WasmOptLevel level = (i % 2 == 0 ? JSVM_WASM_OPT_BASELINE : JSVM_WASM_OPT_HIGH);
@@ -148,17 +175,28 @@ static void BatchCompileWasmFunctions(JSVM_Value wasmModule, size_t begin, size_
     }
 }
 
-// 注意，以下代码主要为了演示 WebAssembly 接口使用，为简化用例，其中用到了一些外部函数并未提供定义，
-// 可通过自行封装实现。这类函数包括:
-// - ReadBinaryFile, WriteBinaryFile (实现二进制文件读写)
-// - CHECK 宏 (实现 assert 功能)
-// - jsvm namespace 下的函数 (这类函数是对 JSVM C API 的自定义封装)
-static void WebAssemblyDemo() {
+// 验证 wasm instance 功能 (add 模块)
+static void VerifyAddWasmInstance(JSVM_Value instance)
+{
+    CHECK(jsvm::IsWebAssemblyInstance(instance));
+    // 实例化之后，就能使用 WebAssembly module 定义的函数了
+    auto exports = jsvm::GetProperty(instance, jsvm::Str("exports"));
+    CHECK(jsvm::IsObject(exports));
+    auto add = jsvm::GetProperty(exports, jsvm::Str("add"));
+    CHECK(jsvm::IsFunction(add));
+    auto result = jsvm::Call(add, jsvm::Undefined(), {jsvm::Run("1"), jsvm::Run("2")});
+    CHECK(jsvm::IsNumber(result));
+    constexpr int kExpectedResult = 3;
+    CHECK(jsvm::ToNumber(result) == kExpectedResult);
+}
+
+static void WebAssemblyDemo()
+{
     std::string path = wasmPath + "add.wasm";
     std::vector<uint8_t> buffer;
     // 从文件中读取 wasm 字节码
     ReadBinaryFile(path, buffer);
-    JSVM_Status status;
+    JSVM_Status status = JSVM_OK;
 
     JSVM_Value wasmModule;
     // 将 wasm 字节码编译为 WebAssembly module
@@ -177,15 +215,7 @@ static void WebAssemblyDemo() {
 
     // 实例化 WebAssembly module
     auto instance = InstantiateWasmModule(wasmModule, jsvm::Run("{}"));
-    CHECK(jsvm::IsObject(instance));
-    // 实例化之后，就能使用 WebAssembly module 定义的函数了
-    auto exports = jsvm::GetProperty(instance, jsvm::Str("exports"));
-    CHECK(jsvm::IsObject(exports));
-    auto add = jsvm::GetProperty(exports, jsvm::Str("add"));
-    CHECK(jsvm::IsFunction(add));
-    auto result = jsvm::Call(add, jsvm::Undefined(), {jsvm::Run("1"), jsvm::Run("2")});
-    CHECK(jsvm::IsNumber(result));
-    CHECK(jsvm::ToNumber(result) == 3);
+    VerifyAddWasmInstance(instance);
 
     // 对编译后的 WebAssembly moudle 进行序列化，创建 wasm cache
     const uint8_t *cacheData = NULL;
@@ -220,22 +250,12 @@ static void WebAssemblyDemo() {
     // 测试反序列化而来的 WebAssembly module 的功能
     // 实例化 WebAssembly module
     auto instance2 = InstantiateWasmModule(wasmModuleSerialized, jsvm::Run("var x = {}; x"));
-    CHECK(jsvm::IsObject(instance2));
-
-    // 实例化之后，就能使用 WebAssembly module 定义的函数了
-    auto exports2 = jsvm::GetProperty(instance2, jsvm::Str("exports"));
-    CHECK(jsvm::IsObject(exports2));
-    auto add2 = jsvm::GetProperty(exports2, jsvm::Str("add"));
-    CHECK(jsvm::IsFunction(add2));
-    auto one = jsvm::Int32(1);
-    auto two = jsvm::Int32(2);
-    auto res = jsvm::Call(add2, jsvm::Undefined(), {one, two});
-    CHECK(jsvm::IsNumber(res));
-    CHECK(jsvm::ToNumber(res) == 3);
+    VerifyAddWasmInstance(instance2);
 }
 
 // test for Wasm Is Wasm Module Object
-TEST(Wasm_IsWasmModuleObject) {
+TEST(Wasm_IsWasmModuleObject)
+{
     auto number = jsvm::Run("42");
     CHECK(!jsvm::IsWasmModuleObject(number));
     CHECK(!jsvm::IsWasmModuleObject(jsvm::Undefined()));
@@ -244,15 +264,18 @@ TEST(Wasm_IsWasmModuleObject) {
 }
 
 #ifdef OHOS_JSVMTEST_XTS
-TEST_DISABLE(Wasm_WebAssemblyDemo) {
+TEST_DISABLE(Wasm_WebAssemblyDemo)
+{
 #else
-TEST(Wasm_WebAssemblyDemo) {
+TEST(Wasm_WebAssemblyDemo)
+{
 #endif
     WebAssemblyDemo();
 }
 
 // test for Wasm Compile Wasm Module
-TEST(Wasm_CompileWasmModule) {
+TEST(Wasm_CompileWasmModule)
+{
     JSVM_Value wasmModule = CompileWasmModule(wasmPath + "add.wasm");
     JSVM_Value wasmInstance = InstantiateWasmModule(wasmModule, jsvm::Run("{}"));
     JSVM_Value exports = jsvm::GetProperty(wasmInstance, jsvm::Str("exports"));
@@ -273,7 +296,8 @@ TEST(Wasm_CompileWasmModule) {
     CHECK(cacheSize > 0);
 }
 
-[[maybe_unused]] static void RandomDeserialize(JSVM_Env env, const std::string &filename) {
+[[maybe_unused]] static void RandomDeserialize(JSVM_Env env, const std::string &filename)
+{
     static int cnt = 0;
     std::string wasmFile = wasmPath + filename;
     std::string cacheFile = wasmPath + filename + ".test.cache";
@@ -302,7 +326,8 @@ TEST(Wasm_CompileWasmModule) {
         CHECK(cacheRejected == false);
         CHECK(jsvm::IsWasmModuleObject(wasmModule));
         // 运行一定次数后，删除缓存
-        if (++cnt % 3 == 0) {
+        constexpr int kPeriodToRemoveCache = 3;
+        if (++cnt % kPeriodToRemoveCache == 0) {
             int result = remove(cacheFile.c_str());
             CHECK(result == 0);
         }
@@ -311,9 +336,11 @@ TEST(Wasm_CompileWasmModule) {
 
 // test for Wasm Random Cache Test
 #ifdef OHOS_JSVMTEST_XTS
-TEST_DISABLE(Wasm_RandomCacheTest) {
+TEST_DISABLE(Wasm_RandomCacheTest)
+{
 #else
-TEST(Wasm_RandomCacheTest) {
+TEST(Wasm_RandomCacheTest)
+{
 #endif
     static std::vector<std::string> allFiles = {
         "add.wasm",
@@ -329,7 +356,8 @@ TEST(Wasm_RandomCacheTest) {
 }
 
 // test for Wasm Compile Wasm Function Baseline
-TEST(Wasm_CompileWasmFunctionBaseline) {
+TEST(Wasm_CompileWasmFunctionBaseline)
+{
     auto wasmModule = CompileWasmModule(wasmPath + "add.wasm");
     InstantiateWasmModule(wasmModule, jsvm::Undefined());
     JSVMTEST_CALL(OH_JSVM_CompileWasmFunction(env, wasmModule, 0, JSVM_WASM_OPT_BASELINE));
@@ -339,7 +367,8 @@ TEST(Wasm_CompileWasmFunctionBaseline) {
 }
 
 // test for Wasm Compile Illegal Wasm Module
-TEST(Wasm_CompileIllegalWasmModule) {
+TEST(Wasm_CompileIllegalWasmModule)
+{
     std::vector<uint8_t> buffer;
     std::vector<std::string> pathVec = {
         wasmPath + "illegal.wasm",
@@ -355,23 +384,126 @@ TEST(Wasm_CompileIllegalWasmModule) {
     }
 }
 
+// Test import global
+static void TestImportGlobal(JSVM_Env env, JSVM_Value exports)
+{
+    JSVM_Value testFunc;
+    JSVM_Value result;
+    testFunc = jsvm::GetProperty(exports, jsvm::Str("test_global_i32"));
+    result = jsvm::Call(testFunc, jsvm::Undefined(), {});
+    CHECK(jsvm::Equals(result, jsvm::Run("100")));
+
+    testFunc = jsvm::GetProperty(exports, jsvm::Str("test_global_i64"));
+    result = jsvm::Call(testFunc, jsvm::Undefined(), {});
+    CHECK(jsvm::Equals(result, jsvm::Run("1000000000000000n")));
+
+    testFunc = jsvm::GetProperty(exports, jsvm::Str("test_global_f32"));
+    result = jsvm::Call(testFunc, jsvm::Undefined(), {});
+
+    JSVM_ValueType type;
+    OH_JSVM_Typeof(env, result, &type);
+    CHECK(jsvm::Equals(result, jsvm::Run("new Float32Array([1.3])[0]")));
+
+    testFunc = jsvm::GetProperty(exports, jsvm::Str("test_global_f64"));
+    result = jsvm::Call(testFunc, jsvm::Undefined(), {});
+    CHECK(jsvm::Equals(result, jsvm::Run("2.7")));
+}
+
+// Test import func
+static void TestImportFunc(JSVM_Env env, JSVM_Value exports)
+{
+    (void)env;
+    JSVM_Value testFunc;
+    JSVM_Value result;
+    testFunc = jsvm::GetProperty(exports, jsvm::Str("test_sub"));
+    result = jsvm::Call(testFunc, jsvm::Undefined(), {jsvm::Run("1"), jsvm::Run("2")});
+    CHECK(jsvm::Equals(result, jsvm::Run("-1")));
+}
+
+// Test import memory
+static void TestImportMemory(JSVM_Env env, JSVM_Value exports)
+{
+    JSVM_Value testFunc;
+    JSVM_Value result;
+    JSVM_Status status = JSVM_OK;
+    JSVM_Value exception;
+    testFunc = jsvm::GetProperty(exports, jsvm::Str("test_memory"));
+    result = jsvm::Call(testFunc, jsvm::Undefined(), {jsvm::Run("0")});
+    CHECK(jsvm::Equals(result, jsvm::Run("0")));
+
+    testFunc = jsvm::GetProperty(exports, jsvm::Str("test_memory"));
+    result = jsvm::Call(testFunc, jsvm::Undefined(), {jsvm::Run("10")});
+    CHECK(jsvm::Equals(result, jsvm::Run("16")));
+
+    testFunc = jsvm::GetProperty(exports, jsvm::Str("test_memory"));
+    result = jsvm::Call(testFunc, jsvm::Undefined(), {jsvm::Run("8")});
+    CHECK(jsvm::Equals(result, jsvm::Run("1048576")));
+
+    testFunc = jsvm::GetProperty(exports, jsvm::Str("test_memory"));
+    JSVM_Value argv[1] = {jsvm::Run("1000000")};
+    status = OH_JSVM_CallFunction(jsvm_env, jsvm::Undefined(), testFunc, 1, argv, &result);
+    CHECK(status == JSVM_PENDING_EXCEPTION);
+    status = OH_JSVM_GetAndClearLastException(env, &exception);
+}
+
+// Test import table
+static void TestImportTable(JSVM_Env env, JSVM_Value exports)
+{
+    JSVM_Value testFunc;
+    JSVM_Value result;
+    JSVM_Status status = JSVM_OK;
+    JSVM_Value exception;
+    {
+        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_table"));
+        JSVM_Value argv[1] = {jsvm::Run("0")};
+        status = OH_JSVM_CallFunction(jsvm_env, jsvm::Undefined(), testFunc, 1, argv, &result);
+        CHECK(status == JSVM_PENDING_EXCEPTION);
+        status = OH_JSVM_GetAndClearLastException(env, &exception);
+    }
+
+    testFunc = jsvm::GetProperty(exports, jsvm::Str("test_table"));
+    result = jsvm::Call(testFunc, jsvm::Undefined(), {jsvm::Run("1")});
+    CHECK(jsvm::Equals(result, jsvm::Run("11")));
+
+    testFunc = jsvm::GetProperty(exports, jsvm::Str("test_table"));
+    result = jsvm::Call(testFunc, jsvm::Undefined(), {jsvm::Run("2")});
+    CHECK(jsvm::Equals(result, jsvm::Run("22")));
+
+    {
+        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_table"));
+        JSVM_Value argv[1] = {jsvm::Run("3")};
+        status = OH_JSVM_CallFunction(jsvm_env, jsvm::Undefined(), testFunc, 1, argv, &result);
+        CHECK(status == JSVM_PENDING_EXCEPTION);
+        status = OH_JSVM_GetAndClearLastException(env, &exception);
+    }
+
+    {
+        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_table"));
+        JSVM_Value argv[1] = {jsvm::Run("100")};
+        status = OH_JSVM_CallFunction(jsvm_env, jsvm::Undefined(), testFunc, 1, argv, &result);
+        CHECK(status == JSVM_PENDING_EXCEPTION);
+        status = OH_JSVM_GetAndClearLastException(env, &exception);
+    }
+}
+
 // test for Wasm Compile Wasm Module With Imports
-TEST(Wasm_CompileWasmModuleWithImports) {
+TEST(Wasm_CompileWasmModuleWithImports)
+{
     JSVM_Value wasmModule = CompileWasmModule(wasmPath + "imports.wasm");
     const char *importJs = R"JS(
-    var x = {
-      test: {
-        global_i32: 100,
-        global_i64: 1000000000000000n,
-        global_f32: 1.3,
-        global_f64: 2.7,
-        sub: (a, b) => { return a - b; },
-        memory: new WebAssembly.Memory({initial: 1, maximum: 2}),
-        table: new WebAssembly.Table({initial: 10, maximum: 20, element: 'anyfunc'}),
-      }
-    };
-    x
-  )JS";
+        var x = {
+            test: {
+                global_i32: 100,
+                global_i64: 1000000000000000n,
+                global_f32: 1.3,
+                global_f64: 2.7,
+                sub: (a, b) => { return a - b; },
+                memory: new WebAssembly.Memory({initial: 1, maximum: 2}),
+                table: new WebAssembly.Table({initial: 10, maximum: 20, element: 'anyfunc'}),
+            }
+        };
+        x
+    )JS";
 
     JSVM_Value importedObj = jsvm::Run(importJs);
 
@@ -380,97 +512,24 @@ TEST(Wasm_CompileWasmModuleWithImports) {
     JSVM_Value exports = jsvm::GetProperty(wasmInstance, jsvm::Str("exports"));
     CHECK(jsvm::IsObject(exports));
 
-    JSVM_Value testFunc;
-    JSVM_Value result;
-    JSVM_Status status;
-    JSVM_Value exception;
-    {  // test import global
-        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_global_i32"));
-        result = jsvm::Call(testFunc, jsvm::Undefined(), {});
-        CHECK(jsvm::Equals(result, jsvm::Run("100")));
+    TestImportGlobal(env, exports);
+    TestImportFunc(env, exports);
+    TestImportMemory(env, exports);
+    TestImportTable(env, exports);
+}
 
-        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_global_i64"));
-        result = jsvm::Call(testFunc, jsvm::Undefined(), {});
-        CHECK(jsvm::Equals(result, jsvm::Run("1000000000000000n")));
-
-        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_global_f32"));
-        result = jsvm::Call(testFunc, jsvm::Undefined(), {});
-
-        JSVM_ValueType type;
-        OH_JSVM_Typeof(env, result, &type);
-        CHECK(jsvm::Equals(result, jsvm::Run("new Float32Array([1.3])[0]")));
-
-        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_global_f64"));
-        result = jsvm::Call(testFunc, jsvm::Undefined(), {});
-        CHECK(jsvm::Equals(result, jsvm::Run("2.7")));
-    }
-
-    {  // test import func
-        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_sub"));
-        result = jsvm::Call(testFunc, jsvm::Undefined(), {jsvm::Run("1"), jsvm::Run("2")});
-        CHECK(jsvm::Equals(result, jsvm::Run("-1")));
-    }
-
-    {  // test import memory
-        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_memory"));
-        result = jsvm::Call(testFunc, jsvm::Undefined(), {jsvm::Run("0")});
-        CHECK(jsvm::Equals(result, jsvm::Run("0")));
-
-        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_memory"));
-        result = jsvm::Call(testFunc, jsvm::Undefined(), {jsvm::Run("10")});
-        CHECK(jsvm::Equals(result, jsvm::Run("16")));
-
-        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_memory"));
-        result = jsvm::Call(testFunc, jsvm::Undefined(), {jsvm::Run("8")});
-        CHECK(jsvm::Equals(result, jsvm::Run("1048576")));
-
-        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_memory"));
-        JSVM_Value argv[1] = {jsvm::Run("1000000")};
-        status = OH_JSVM_CallFunction(jsvm_env, jsvm::Undefined(), testFunc, 1, argv, &result);
-        CHECK(status == JSVM_PENDING_EXCEPTION);
-        status = OH_JSVM_GetAndClearLastException(env, &exception);
-    }
-
-    {  // test import tabel
-        {
-            testFunc = jsvm::GetProperty(exports, jsvm::Str("test_table"));
-            JSVM_Value argv[1] = {jsvm::Run("0")};
-            status = OH_JSVM_CallFunction(jsvm_env, jsvm::Undefined(), testFunc, 1, argv, &result);
-            CHECK(status == JSVM_PENDING_EXCEPTION);
-            status = OH_JSVM_GetAndClearLastException(env, &exception);
-        }
-
-        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_table"));
-        result = jsvm::Call(testFunc, jsvm::Undefined(), {jsvm::Run("1")});
-        CHECK(jsvm::Equals(result, jsvm::Run("11")));
-
-        testFunc = jsvm::GetProperty(exports, jsvm::Str("test_table"));
-        result = jsvm::Call(testFunc, jsvm::Undefined(), {jsvm::Run("2")});
-        CHECK(jsvm::Equals(result, jsvm::Run("22")));
-
-        {
-            testFunc = jsvm::GetProperty(exports, jsvm::Str("test_table"));
-            JSVM_Value argv[1] = {jsvm::Run("3")};
-            status = OH_JSVM_CallFunction(jsvm_env, jsvm::Undefined(), testFunc, 1, argv, &result);
-            CHECK(status == JSVM_PENDING_EXCEPTION);
-            status = OH_JSVM_GetAndClearLastException(env, &exception);
-        }
-
-        {
-            testFunc = jsvm::GetProperty(exports, jsvm::Str("test_table"));
-            JSVM_Value argv[1] = {jsvm::Run("100")};
-            status = OH_JSVM_CallFunction(jsvm_env, jsvm::Undefined(), testFunc, 1, argv, &result);
-            CHECK(status == JSVM_PENDING_EXCEPTION);
-            status = OH_JSVM_GetAndClearLastException(env, &exception);
-        }
+static void CompileWasmFunctions(JSVM_Env env, JSVM_Value wasmModule,
+                                 const std::initializer_list<uint32_t> &funcIndexList, JSVM_WasmOptLevel optLevel)
+{
+    for (uint32_t funcIndex : funcIndexList) {
+        JSVM_Status status = OH_JSVM_CompileWasmFunction(jsvm_env, wasmModule, funcIndex, optLevel);
+        CHECK(status == JSVM_OK);
     }
 }
 
-// test for Wasm Compile Wasm Module With Cache And Reloc Info
-TEST(Wasm_CompileWasmModuleWithCacheAndRelocInfo) {
-    std::vector<uint8_t> buffer;
-    ReadBinaryFile(wasmPath + "reloc_info.wasm", buffer);
-    CHECK(buffer.size() > 0);
+static JSVM_Value TestCacheAndRelocInfoStep1(JSVM_Env env, const std::vector<uint8_t> &buffer,
+                                             const uint8_t *&cacheData, size_t &cacheSize)
+{
     JSVM_Value wasmModule;
     JSVMTEST_CALL(OH_JSVM_CompileWasmModule(jsvm_env, buffer.data(), buffer.size(), NULL, 0, NULL, &wasmModule));
     CHECK(jsvm::IsWasmModuleObject(wasmModule));
@@ -480,11 +539,7 @@ TEST(Wasm_CompileWasmModuleWithCacheAndRelocInfo) {
     JSVM_Value exports = jsvm::GetProperty(wasmInstance, jsvm::Str("exports"));
     CHECK(jsvm::IsObject(exports));
 
-    JSVM_Status status;
-    status = OH_JSVM_CompileWasmFunction(jsvm_env, wasmModule, 1, JSVM_WASM_OPT_HIGH);
-    CHECK(status == JSVM_OK);
-    status = OH_JSVM_CompileWasmFunction(jsvm_env, wasmModule, 2, JSVM_WASM_OPT_HIGH);
-    CHECK(status == JSVM_OK);
+    CompileWasmFunctions(env, wasmModule, {1, 2}, JSVM_WASM_OPT_HIGH);
 
     JSVM_Value testFunc;
     JSVM_Value result;
@@ -499,22 +554,28 @@ TEST(Wasm_CompileWasmModuleWithCacheAndRelocInfo) {
         result = jsvm::Call(testFunc, jsvm::Undefined(), {});
         CHECK(jsvm::Equals(result, jsvm::Run("1")));
     }
-
-    const uint8_t *cacheData = nullptr;
-    size_t cacheSize = 0;
     JSVMTEST_CALL(OH_JSVM_CreateWasmCache(env, wasmModule, &cacheData, &cacheSize));
     CHECK(cacheData != nullptr);
     CHECK(cacheSize > 0);
+    return exports;
+}
 
+static void TestCacheAndRelocInfoStep2(JSVM_Env env, const std::vector<uint8_t> &buffer, const uint8_t *cacheData,
+                                       size_t cacheSize, JSVM_Value exports)
+{
     bool cacheRejected;
-    status = OH_JSVM_CompileWasmModule(jsvm_env, buffer.data(), buffer.size(), cacheData, cacheSize, &cacheRejected,
-                                       &wasmModule);
+    JSVM_Value wasmModule;
+    JSVM_Status status = OH_JSVM_CompileWasmModule(jsvm_env, buffer.data(), buffer.size(), cacheData, cacheSize,
+                                                   &cacheRejected, &wasmModule);
     CHECK(status == JSVM_OK);
     CHECK(cacheRejected == false);
 
-    wasmInstance = InstantiateWasmModule(wasmModule, jsvm::Run("var x = { test: {func: () => { return 2; }}}; x"));
+    JSVM_Value wasmInstance =
+        InstantiateWasmModule(wasmModule, jsvm::Run("var x = { test: {func: () => { return 2; }}}; x"));
 
     JSVM_Value newExports = jsvm::GetProperty(wasmInstance, jsvm::Str("exports"));
+    JSVM_Value testFunc;
+    JSVM_Value result;
 
     {
         testFunc = jsvm::GetProperty(newExports, jsvm::Str("test_wasm_call_reloc_info"));
@@ -538,22 +599,29 @@ TEST(Wasm_CompileWasmModuleWithCacheAndRelocInfo) {
     result = jsvm::Call(testFunc, jsvm::Undefined(), {});
     CHECK(jsvm::Equals(result, jsvm::Run("2")));
 
-    status = OH_JSVM_CompileWasmFunction(jsvm_env, wasmModule, 1, JSVM_WASM_OPT_HIGH);
-    CHECK(status == JSVM_OK);
-    status = OH_JSVM_CompileWasmFunction(jsvm_env, wasmModule, 2, JSVM_WASM_OPT_HIGH);
-    CHECK(status == JSVM_OK);
-
-    status = OH_JSVM_CompileWasmFunction(jsvm_env, wasmModule, 1, JSVM_WASM_OPT_HIGH);
-    CHECK(status == JSVM_OK);
-    status = OH_JSVM_CompileWasmFunction(jsvm_env, wasmModule, 2, JSVM_WASM_OPT_HIGH);
-    CHECK(status == JSVM_OK);
+    CompileWasmFunctions(env, wasmModule, {1, 2}, JSVM_WASM_OPT_HIGH);
+    CompileWasmFunctions(env, wasmModule, {1, 2}, JSVM_WASM_OPT_HIGH);
 
     status = OH_JSVM_ReleaseCache(jsvm_env, cacheData, JSVM_CACHE_TYPE_WASM);
     CHECK(status == JSVM_OK);
 }
 
+// test for Wasm Compile Wasm Module With Cache And Reloc Info
+TEST(Wasm_CompileWasmModuleWithCacheAndRelocInfo)
+{
+    std::vector<uint8_t> buffer;
+    ReadBinaryFile(wasmPath + "reloc_info.wasm", buffer);
+    CHECK(buffer.size() > 0);
+
+    const uint8_t *cacheData = NULL;
+    size_t cacheSize = 0;
+    JSVM_Value exports = TestCacheAndRelocInfoStep1(env, buffer, cacheData, cacheSize);
+    TestCacheAndRelocInfoStep2(env, buffer, cacheData, cacheSize, exports);
+}
+
 // test for Wasm Multiple Instances
-TEST(Wasm_MultipleInstances) {
+TEST(Wasm_MultipleInstances)
+{
     auto wasmModule = CompileWasmModule(wasmPath + "add.wasm");
     {
         auto obj = jsvm::Run("var x = { foo : 'bar' }; x");
@@ -577,7 +645,8 @@ TEST(Wasm_MultipleInstances) {
 
 static std::string fakelog = "";
 
-static JSVM_Value FakeConsoleLog(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value FakeConsoleLog(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value argv[1];
     JSVMTEST_CALL(OH_JSVM_GetCbInfo(env, info, &argc, argv, NULL, NULL));
@@ -586,7 +655,8 @@ static JSVM_Value FakeConsoleLog(JSVM_Env env, JSVM_CallbackInfo info) {
     return jsvm::Undefined();
 }
 
-static void InstallFakeConsoleLog(JSVM_Env env) {
+static void InstallFakeConsoleLog(JSVM_Env env)
+{
     static JSVM_CallbackStruct cb = {FakeConsoleLog, NULL};
     JSVM_Value log;
     JSVMTEST_CALL(OH_JSVM_CreateFunction(env, "log", JSVM_AUTO_LENGTH, &cb, &log));
@@ -600,20 +670,21 @@ static void InstallFakeConsoleLog(JSVM_Env env) {
 }
 
 // test for Wasm MDN index
-TEST(Wasm_MDN_index) {
+TEST(Wasm_MDN_index)
+{
     fakelog = "";
     InstallFakeConsoleLog(env);
     auto wasmModule = CompileWasmModule(wasmPath + "simple.wasm");
     auto importObj = jsvm::Run(R"JS(
-      var importObject = {
-        my_namespace: {
-          imported_func: arg => {
-            console.log(arg);
-          }
-        }
-      };
-      importObject;
-   )JS");
+        var importObject = {
+            my_namespace: {
+                imported_func: arg => {
+                    console.log(arg);
+                }
+            }
+        };
+        importObject;
+     )JS");
     CHECK(jsvm::IsObject(importObj));
     auto instance = InstantiateWasmModule(wasmModule, importObj);
     auto exports = jsvm::GetProperty(instance, jsvm::Str("exports"));
@@ -624,7 +695,8 @@ TEST(Wasm_MDN_index) {
 }
 
 // test for Wasm MDN imports
-TEST(Wasm_MDN_imports) {
+TEST(Wasm_MDN_imports)
+{
     auto wasmModule = CompileWasmModule(wasmPath + "simple.wasm");
     auto WebAssembly = jsvm::GetProperty(jsvm::Global(), jsvm::Str("WebAssembly"));
     auto Module = jsvm::GetProperty(WebAssembly, jsvm::Str("Module"));
@@ -638,14 +710,15 @@ TEST(Wasm_MDN_imports) {
 }
 
 // test for Wasm MDN validate
-TEST(Wasm_MDN_validate) {
+TEST(Wasm_MDN_validate)
+{
     std::vector<uint8_t> buffer;
     ReadBinaryFile(wasmPath + "simple.wasm", buffer);
     CHECK(buffer.size() > 0);
     void *backingStoreData = NULL;
     JSVM_Value arraybuffer;
     JSVMTEST_CALL(OH_JSVM_CreateArraybuffer(env, buffer.size(), &backingStoreData, &arraybuffer));
-    memcpy(backingStoreData, buffer.data(), buffer.size());
+    memcpy_s(backingStoreData, buffer.size(), buffer.data(), buffer.size());
     CHECK(jsvm::IsArraybuffer(arraybuffer));
 
     auto WebAssembly = jsvm::Global("WebAssembly");
@@ -656,33 +729,34 @@ TEST(Wasm_MDN_validate) {
 }
 
 // test for Wasm MDN memory
-TEST(Wasm_MDN_memory) {
+TEST(Wasm_MDN_memory)
+{
     (void)jsvm::Run(R"JS(
-    var memory = new WebAssembly.Memory({
-      initial: 10,
-      maximum: 100,
-    });
-    memory
-  )JS");
+        var memory = new WebAssembly.Memory({
+            initial: 10,
+            maximum: 100,
+        });
+        memory
+    )JS");
     auto x = jsvm::GetProperty(jsvm::Global(), jsvm::Str("memory"));
     CHECK(jsvm::IsObject(x));
     auto importObject = jsvm::Run(R"JS(
-    var importObject = {
-      js: {
-        mem: memory
-      }
-    };
-    importObject
-  )JS");
+        var importObject = {
+            js: {
+                mem: memory
+            }
+        };
+        importObject
+    )JS");
     auto wasmModule = CompileWasmModule(wasmPath + "memory.wasm");
     auto instance = InstantiateWasmModule(wasmModule, importObject);
 
     jsvm::Run(R"JS(
-    var summands = new DataView(memory.buffer);
-    for (var i = 0; i < 10; ++i) {
-      summands.setUint32(i * 4, i, true);  // WebAssembly is little endian
-    }
-  )JS");
+        var summands = new DataView(memory.buffer);
+        for (var i = 0; i < 10; ++i) {
+            summands.setUint32(i * 4, i, true);  // WebAssembly is little endian
+        }
+    )JS");
 
     auto exports = GetInstanceExports(instance);
     auto accumulate = jsvm::GetProperty(exports, jsvm::Str("accumulate"));
@@ -693,16 +767,17 @@ TEST(Wasm_MDN_memory) {
 }
 
 // test for Wasm MDN table
-TEST(Wasm_MDN_table) {
+TEST(Wasm_MDN_table)
+{
     auto table = jsvm::Run(R"JS(
-    var table = new WebAssembly.Table({
-      element: "anyfunc",
-      initial: 1,
-      maximum: 10
-    });
-    table.grow(1);
-    table;
-  )JS");
+        var table = new WebAssembly.Table({
+            element: "anyfunc",
+            initial: 1,
+            maximum: 10
+        });
+        table.grow(1);
+        table;
+    )JS");
     CHECK(jsvm::IsWebAssemblyTable(table));
     auto wasmModule = CompileWasmModule(wasmPath + "table.wasm");
     auto instance = InstantiateWasmModule(wasmModule, jsvm::Undefined());
@@ -716,22 +791,23 @@ TEST(Wasm_MDN_table) {
 }
 
 // test for Wasm MDN table2
-TEST(Wasm_MDN_table2) {
+TEST(Wasm_MDN_table2)
+{
     auto tbl = jsvm::Run(R"JS(
-    var tbl = new WebAssembly.Table({
-      initial: 2,
-      element: "anyfunc"
-    });
-    tbl;
-  )JS");
+        var tbl = new WebAssembly.Table({
+            initial: 2,
+            element: "anyfunc"
+        });
+        tbl;
+    )JS");
     CHECK(jsvm::IsWebAssemblyTable(tbl));
 
     auto importObject = jsvm::Run(R"JS(
-    var importObject = {
-      js: { tbl }
-    };
-    importObject;
-  )JS");
+        var importObject = {
+            js: { tbl }
+        };
+        importObject;
+    )JS");
     CHECK(jsvm::IsObject(importObject));
 
     auto wasmModule = CompileWasmModule(wasmPath + "table2.wasm");
@@ -743,15 +819,16 @@ TEST(Wasm_MDN_table2) {
 }
 
 // test for Wasm MDN global
-TEST(Wasm_MDN_global) {
+TEST(Wasm_MDN_global)
+{
     (void)jsvm::Run("var global = new WebAssembly.Global({ value: 'i32', mutable: true }, 0); global");
     auto wasmModule = CompileWasmModule(wasmPath + "global.wasm");
     auto importObject = jsvm::Run(R"JS(
-    var importObject = {
-      js: { global }
-    };
-    importObject
-  )JS");
+        var importObject = {
+            js: { global }
+        };
+        importObject
+    )JS");
     auto instance = InstantiateWasmModule(wasmModule, importObject);
     auto exports = GetInstanceExports(instance);
     auto getGlobal = jsvm::GetProperty(exports, "getGlobal");
@@ -768,7 +845,8 @@ TEST(Wasm_MDN_global) {
 }
 
 // test for Wasm Multiple Modules
-TEST(Wasm_MultipleModules) {
+TEST(Wasm_MultipleModules)
+{
     auto mathModule = CompileWasmModule(wasmPath + "math.wasm");
     auto newtonModule = CompileWasmModule(wasmPath + "newton.wasm");
     auto mathInstance = InstantiateWasmModule(mathModule, jsvm::Undefined());
@@ -780,14 +858,14 @@ TEST(Wasm_MultipleModules) {
     jsvm::SetProperty(jsvm::Global(), jsvm::Str("add"), add);
     jsvm::SetProperty(jsvm::Global(), jsvm::Str("sub"), sub);
     auto mathObj = jsvm::Run(R"JS(
-    var mathObj = {
-      math: {
-        add: add,
-        sub, sub
-      }
-    };
-    mathObj
-  )JS");
+        var mathObj = {
+            math: {
+                add: add,
+                sub, sub
+            }
+        };
+        mathObj
+    )JS");
     CHECK(jsvm::IsObject(mathObj));
     auto newtonInstance = InstantiateWasmModule(newtonModule, mathObj);
     auto newtonExports = GetInstanceExports(newtonInstance);
@@ -798,7 +876,8 @@ TEST(Wasm_MultipleModules) {
     CHECK(jsvm::ToNumber(result) == 42);
 }
 
-void runCToWasm(std::string filePath) {
+void runCToWasm(JSVM_Env env, const std::string& filePath)
+{
     std::vector<uint8_t> buffer;
     ReadBinaryFile(filePath, buffer);
     CHECK(buffer.size() > 0);
@@ -811,11 +890,7 @@ void runCToWasm(std::string filePath) {
     JSVM_Value exports = jsvm::GetProperty(wasmInstance, jsvm::Str("exports"));
     CHECK(jsvm::IsObject(exports));
 
-    JSVM_Status status;
-    status = OH_JSVM_CompileWasmFunction(jsvm_env, wasmModule, 1, JSVM_WASM_OPT_HIGH);
-    CHECK(status == JSVM_OK);
-    status = OH_JSVM_CompileWasmFunction(jsvm_env, wasmModule, 2, JSVM_WASM_OPT_HIGH);
-    CHECK(status == JSVM_OK);
+    CompileWasmFunctions(env, wasmModule, {1, 2}, JSVM_WASM_OPT_HIGH);
 
     JSVM_Value testFunc;
     JSVM_Value result;
@@ -828,39 +903,41 @@ void runCToWasm(std::string filePath) {
 }
 
 // test for Wasm Run CTo Wasm Test
-TEST(Wasm_RunCToWasmTest) {
+TEST(Wasm_RunCToWasmTest)
+{
     std::vector<std::string> pathVec = {
         wasmPath + "bfs.wasm",
         wasmPath + "cJSON.wasm",
     };
 
     for (std::string &wasm : pathVec) {
-        runCToWasm(wasm);
+        runCToWasm(env, wasm);
     }
 }
 
 // test for Wasm Game Engine Ammo
-TEST(Wasm_GameEngineAmmo) {
+TEST(Wasm_GameEngineAmmo)
+{
     std::string wasmFile = wasmPath + "ammo.wasm.wasm";
     auto wasmModule = CompileWasmModule(wasmFile);
     const char *str = R"JS(
-    var obj = {
-      f: () => {},
-      c: () => {},
-      d: () => {},
-      e: () => {},
-      b: () => {},
-      g: () => {},
-      a: () => {},
-      memory: new WebAssembly.Memory({initial: 1024, maximum: 1024}),
-      table: new WebAssembly.Table({ initial: 758, element: "anyfunc" })
-    };
-    var importObj = {
-      env: obj,
-      wasi_unstable: obj
-    };
-    importObj;
-  )JS";
+        var obj = {
+            f: () => {},
+            c: () => {},
+            d: () => {},
+            e: () => {},
+            b: () => {},
+            g: () => {},
+            a: () => {},
+            memory: new WebAssembly.Memory({initial: 1024, maximum: 1024}),
+            table: new WebAssembly.Table({ initial: 758, element: "anyfunc" })
+        };
+        var importObj = {
+            env: obj,
+            wasi_unstable: obj
+        };
+        importObj;
+    )JS";
     auto importObj = jsvm::Run(str);
     auto instance = InstantiateWasmModule(wasmModule, importObj);
     CHECK(jsvm::IsWebAssemblyInstance(instance));
@@ -872,26 +949,27 @@ TEST(Wasm_GameEngineAmmo) {
 }
 
 // test for Wasm Game Engine Laya
-TEST(Wasm_GameEngineLaya) {
+TEST(Wasm_GameEngineLaya)
+{
     std::string wasmFile = wasmPath + "laya.physics3D.wasm.wasm";
     auto wasmModule = CompileWasmModule(wasmFile);
     const char *str = R"JS(
-    var importObj = {
-      env: {
-        memory: new WebAssembly.Memory({initial: 2}),
-      },
-      wasi_unstable: {
-        fd_close: () => {},
-        fd_write: () => {},
-        fd_seek: () => {},
-      },
-      LayaAirInteractive: {
-        getWorldTransform: () => {},
-        setWorldTransform: () => {},
-      }
-    };
-    importObj;
-  )JS";
+        var importObj = {
+            env: {
+                memory: new WebAssembly.Memory({initial: 2}),
+            },
+            wasi_unstable: {
+                fd_close: () => {},
+                fd_write: () => {},
+                fd_seek: () => {},
+            },
+            LayaAirInteractive: {
+                getWorldTransform: () => {},
+                setWorldTransform: () => {},
+            }
+        };
+        importObj;
+    )JS";
     auto importObj = jsvm::Run(str);
     auto instance = InstantiateWasmModule(wasmModule, importObj);
     CHECK(jsvm::IsWebAssemblyInstance(instance));

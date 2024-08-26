@@ -28,7 +28,7 @@ ohos_js_hap_suite("ActsArkRuntimeJsvmTest") {
   shared_libraries = [
     "./entry/src/main/cpp:jsvmtest",
     ":libcppsharedso",
-    ":libcppso"
+    ":libcppso",
   ]
 }
 

@@ -34,10 +34,11 @@ config("public_config") {
 
 ohos_shared_library("jsvmtest") {
   sources = [
-    "./napi/napi_test.cpp",
+    "./jsvmtest/jsvm_utils.cpp",
     "./jsvmtest/jsvmtest.cpp",
-    "./jsvmtest/unittests/test_wasm.cpp",
     "./jsvmtest/unittests/test_array_buffer_backing_store.cpp",
+    "./jsvmtest/unittests/test_wasm.cpp",
+    "./napi/napi_test.cpp",
   ]
   include_dirs = [
     "./jsvmtest",
