@@ -387,9 +387,6 @@ export default function AVSession() {
             await controller.getAVMetadata().then((data) => {
                 if (data.mediaImage === metadata7.mediaImage) {
                     expect(true).assertTrue();
-                } else if(data.mediaImage !== null){
-                    console.info('TestLog: Get mediaImage Successfully');
-                    expect(true).assertTrue();
                 } else {
                     console.info('TestLog: Get mediaImage failed');
                     expect(false).assertTrue();
@@ -3639,20 +3636,26 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_GETALLCASTDISPLAYS_0100', 2, async function (done) {
-            session.getAllCastDisplays().then((data) => {
-                if (Array.isArray(data)) {
-                        console.info(`getAllCastDisplays success: ${JSON.stringify(data)}`);
-                        expect(true).assertTrue();
-                } else {
-                    console.info('getAllCastDisplays failed');
-                    expect(false).assertTrue();
-                    done();
-                }
-            }).catch((err) => {
-                expect(err.code).assertEqual(6600101);
-                console.info(`getAllCastDisplays successfully: ${err.code}, message: ${err.message}`)
-            })
-            done();
+            try {
+                session.getAllCastDisplays().then((data) => {
+                    if (Array.isArray(data)) {
+                            console.info(`getAllCastDisplays success: ${JSON.stringify(data)}`);
+                            expect(true).assertTrue();
+                    } else {
+                        console.info('getAllCastDisplays failed');
+                        expect(false).assertTrue();
+                        done();
+                    }
+                }).catch((err) => {
+                    expect(err.code).assertEqual(6600101);
+                    console.info(`getAllCastDisplays successfully: ${err.code}, message: ${err.message}`)
+                })
+                done();
+            } catch (err) {
+                console.error(`Session getAllCastDisplays: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+            }
         })
 
     })

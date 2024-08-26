@@ -13,4 +13,8 @@
  * limitations under the License.
  */
 
-require('./image.test.js')
+
+import imageExif from "./image.test.js";
+export default function testsuite() {
+    imageExif();
+}

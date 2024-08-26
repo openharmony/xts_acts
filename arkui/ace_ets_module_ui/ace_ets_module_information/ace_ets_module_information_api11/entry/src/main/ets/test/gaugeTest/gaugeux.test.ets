@@ -17,7 +17,7 @@ import hilog from '@ohos.hilog';
 import bundle from '@ohos.bundle.bundleManager';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 let emitKey = "emitUserAgent";
 
 export default function GaugeUxTest() {
@@ -34,7 +34,7 @@ export default function GaugeUxTest() {
         if (!("gaugeUx" == pages.name)) {
           console.info("get gaugeUx state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push gaugeUx page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -44,7 +44,7 @@ export default function GaugeUxTest() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       console.info("gaugeUx after each called");
     });
 

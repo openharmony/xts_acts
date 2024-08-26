@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function setCircleShapeTest() {
-  describe('setCircleShapeTest', function () {
-    beforeEach(async function (done) {
+  describe('setCircleShapeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("setCircleShapeTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/Graphics/setCircleShape",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/Graphics/setCircleShape",
       }
       try {
         router.clear();
@@ -50,15 +50,15 @@ export default function setCircleShapeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('setCircleShapeTest_0010', 0, async function (done) {
+    it('setCircleShapeTest_0010', 0, async (done: Function) => {
       console.info('setCircleShapeTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('setCircleShape_text'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('setCircleShape_text');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('setCircleShape_text');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[setCircleShapeTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('setCircleShape succ');
       console.info('[setCircleShapeTest_0010] END');

@@ -70,7 +70,7 @@ export default function commonEventTest1() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('commonEventTest1_text1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[ObserverNavDestinationId_0100] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('setOnMouseFrameNode')
@@ -103,7 +103,7 @@ export default function commonEventTest1() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('commonEventTest1_text2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[commonEventTest1_0200] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('setOnSizeChangeFrameNode')

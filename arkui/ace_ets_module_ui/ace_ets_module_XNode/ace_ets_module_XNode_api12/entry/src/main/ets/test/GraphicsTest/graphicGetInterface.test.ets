@@ -17,8 +17,8 @@ import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 export default function graphicGetInterfaceTest() {
-  describe('graphicGetInterfaceTest', function () {
-    beforeEach(async function (done) {
+  describe('graphicGetInterfaceTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("graphicGetInterfaceTest beforeEach start");
       let options : router.RouterOptions = {
         url: "MainAbility/pages/Graphics/graphicTestInterface",
@@ -47,7 +47,7 @@ export default function graphicGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('graphicTestInterfaceTest_0100', 0, async function (done) {
+    it('graphicTestInterfaceTest_0100', 0, async (done: Function) => {
       console.info('graphicTestInterfaceTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -55,12 +55,12 @@ export default function graphicGetInterfaceTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       // get the data
-      let strJson = getInspectorByKey('overLay');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('overLay');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[graphicTestInterfaceTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('150.00vp');
       let strJson2 = getInspectorByKey('overLay2');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       expect(obj2.$attrs.content).assertEqual('150.00vp');
       console.info('[graphicTestInterfaceTest_0100 ] END');
       done();

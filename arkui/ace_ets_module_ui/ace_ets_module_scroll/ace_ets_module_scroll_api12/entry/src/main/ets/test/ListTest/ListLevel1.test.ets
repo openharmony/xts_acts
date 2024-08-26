@@ -556,11 +556,18 @@ export default function listLevel1Test() {
 
     it('listLevel1Test_1500', 0, async (done:Function) => {
       console.info('[listLevel1Test_1500] START');
-      let driver: Driver = Driver.create();
-      let listItemRect: Component = await driver.findComponent(ON.id('listitemlevel0'));
-      let rect = await listItemRect.getBounds();
+      let listItemRect = CommonFunc.getComponentRectOnScreen('listitemlevel0');
+      let top = listItemRect.top;
+      let right = listItemRect.right;
+      let left = listItemRect.left;
+      let bottom = listItemRect.bottom;
+      console.info("listLevel1Test_1500 value is" + left + " --" + right + "--" + top + "--" + bottom);
+      let height = bottom - top;
+      let width = right - left;
+      let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      await driver.swipe(rect.right, rect.top + (rect.bottom - rect.top)/2, rect.left + (rect.right - rect.left)/2, rect.top + (rect.bottom - rect.top)/2, 200);
+      await driver.swipe(Math.round(right),Math.round(bottom - height/2),Math.round(left + width/2),Math.round(bottom - height/2));
+      await CommonFunc.sleep(3000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -594,11 +601,18 @@ export default function listLevel1Test() {
 
     it('listLevel1Test_1600', 0, async (done:Function) => {
       console.info('[listLevel1Test_1600] START');
-      let driver: Driver = Driver.create();
-      let listItemRect: Component = await driver.findComponent(ON.id('listitemlevel0'));
-      let rect = await listItemRect.getBounds();
-      await CommonFunc.sleep(4800);
-      await driver.swipe(rect.left, rect.top + (rect.bottom - rect.top)/2, rect.left + (rect.right - rect.left)/2, rect.top + (rect.bottom - rect.top)/2, 200);
+      let listItemRect = CommonFunc.getComponentRectOnScreen('listitemlevel0');
+      let top = listItemRect.top;
+      let right = listItemRect.right;
+      let left = listItemRect.left;
+      let bottom = listItemRect.bottom;
+      console.info("listLevel1Test_1600 value is" + left + " --" + right + "--" + top + "--" + bottom);
+      let height = bottom - top;
+      let width = right - left;
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      await driver.swipe(Math.round(left),Math.round(bottom - height/2),Math.round(left + width/2),Math.round(bottom - height/2));
+      await CommonFunc.sleep(3000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -632,10 +646,18 @@ export default function listLevel1Test() {
 
     it('listLevel1Test_1700', 0, async (done:Function) => {
       console.info('[listLevel1Test_1700] START');
-      let listItemRect: RectValue = CommonFunc.getComponentRectOnScreen('listitemlevel0')
-      let driver: Driver = Driver.create();
-      await driver.swipe(listItemRect.left, listItemRect.top + (listItemRect.bottom - listItemRect.top)/2,
-        listItemRect.left + (listItemRect.right - listItemRect.left)/2, listItemRect.top + (listItemRect.bottom - listItemRect.top)/2, 200);
+      let listItemRect = CommonFunc.getComponentRectOnScreen('listitemlevel0');
+      let top = listItemRect.top;
+      let right = listItemRect.right;
+      let left = listItemRect.left;
+      let bottom = listItemRect.bottom;
+      console.info("listLevel1Test_1700 value is" + left + " --" + right + "--" + top + "--" + bottom);
+      let height = bottom - top;
+      let width = right - left;
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      await driver.swipe(Math.round(right),Math.round(bottom - height/2),Math.round(left + width/2),Math.round(bottom - height/2));
+      await CommonFunc.sleep(3000);
       try {
         let eventData: events_emitter.EventData = {
           data: {

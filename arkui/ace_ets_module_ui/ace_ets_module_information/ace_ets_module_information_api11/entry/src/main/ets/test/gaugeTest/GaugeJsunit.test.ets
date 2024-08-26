@@ -16,7 +16,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
+import { BusinessError } from '@ohos.base';
 
 export default function gaugeJsunit() {
   describe('gaugeTest', () => {
@@ -31,7 +32,7 @@ export default function gaugeJsunit() {
         if (!("gauge" == pages.name)) {
           console.info("get gauge state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push gauge page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,13 +42,13 @@ export default function gaugeJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       console.info("gauge after each called");
     });
 
     it('testGauge001', 0, async (done:Function) => {
       console.info('[testGauge001] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('gauge');
       console.info("[testGauge001] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$type).assertEqual('Gauge');
@@ -60,7 +61,7 @@ export default function gaugeJsunit() {
 
     it('testGauge002', 0, async (done:Function) => {
       console.info('[testGauge002] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -74,9 +75,9 @@ export default function gaugeJsunit() {
         console.info("[testGauge002] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testGauge002] change component data error: " + err.message);
+        console.log("[testGauge002] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('gauge');
 
       console.info("[testGauge002] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -86,7 +87,7 @@ export default function gaugeJsunit() {
 
     it('testGauge003', 0, async (done:Function) => {
       console.info('[testGauge003] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -100,9 +101,9 @@ export default function gaugeJsunit() {
         console.info("[testGauge003] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testGauge003] change component data error: " + err.message);
+        console.log("[testGauge003] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('gauge');
 
       console.info("[testGauge003] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -112,7 +113,7 @@ export default function gaugeJsunit() {
 
     it('testGauge004', 0, async (done:Function) => {
       console.info('[testGauge004] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -126,9 +127,9 @@ export default function gaugeJsunit() {
         console.info("[testGauge004] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testGauge004] change component data error: " + err.message);
+        console.log("[testGauge004] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('gauge');
 
       console.info("[testGauge004] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -138,7 +139,7 @@ export default function gaugeJsunit() {
 
     it('testGauge005', 0, async (done:Function) => {
       console.info('[testGauge005] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -152,9 +153,9 @@ export default function gaugeJsunit() {
         console.info("[testGauge005] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testGauge005] change component data error: " + err.message);
+        console.log("[testGauge005] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('gauge');
 
       console.info("[testGauge005] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -164,7 +165,7 @@ export default function gaugeJsunit() {
 
     it('testGauge006', 0, async (done:Function) => {
       console.info('[testGauge006] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -178,14 +179,14 @@ export default function gaugeJsunit() {
         console.info("[testGauge006] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testGauge006] change component data error: " + err.message);
+        console.log("[testGauge006] change component data error: " + (err as BusinessError).message);
       }
       done()
     });
 
     it('testGauge007', 0, async (done:Function) => {
       console.info('[testGauge007] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -199,9 +200,9 @@ export default function gaugeJsunit() {
         console.info("[testGauge007] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testGauge007] change component data error: " + err.message);
+        console.log("[testGauge007] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('gauge');
 
       console.info("[testGauge007] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -211,7 +212,7 @@ export default function gaugeJsunit() {
 
     it('testGauge008', 0, async (done:Function) => {
       console.info('[testGauge008] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -225,9 +226,9 @@ export default function gaugeJsunit() {
         console.info("[testGauge008] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testGauge008] change component data error: " + err.message);
+        console.log("[testGauge008] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('gauge');
 
       console.info("[testGauge008] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -237,7 +238,7 @@ export default function gaugeJsunit() {
 
     it('testGauge009', 0, async (done:Function) => {
       console.info('[testGauge009] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -251,9 +252,9 @@ export default function gaugeJsunit() {
         console.info("[testGauge009] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testGauge009] change component data error: " + err.message);
+        console.log("[testGauge009] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('gauge');
 
       console.info("[testGauge009] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
@@ -263,7 +264,7 @@ export default function gaugeJsunit() {
 
     it('testGauge010', 0, async (done:Function) => {
       console.info('[testGauge010] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -277,9 +278,9 @@ export default function gaugeJsunit() {
         console.info("[testGauge010] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testGauge010] change component data error: " + err.message);
+        console.log("[testGauge010] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('gauge');
       console.info("[testGauge010] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.endAngle).assertEqual('-10.00');
@@ -288,7 +289,7 @@ export default function gaugeJsunit() {
 
     it('testGauge011', 0, async (done:Function) => {
       console.info('[testGauge011] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -302,9 +303,9 @@ export default function gaugeJsunit() {
         console.info("[testGauge011] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testGauge011] change component data error: " + err.message);
+        console.log("[testGauge011] change component data error: " + (err as BusinessError).message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('gauge');
       console.info("[testGauge011] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.strokeWidth).assertEqual('121111111.00vp');

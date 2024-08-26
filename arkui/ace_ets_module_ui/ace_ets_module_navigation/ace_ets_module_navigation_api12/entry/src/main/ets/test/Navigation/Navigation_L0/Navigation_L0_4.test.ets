@@ -14,6 +14,7 @@
  */
 
 import CommonFunc from '../../../MainAbility/common/Common';
+import RectValue from '../../../MainAbility/common/Rect';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';

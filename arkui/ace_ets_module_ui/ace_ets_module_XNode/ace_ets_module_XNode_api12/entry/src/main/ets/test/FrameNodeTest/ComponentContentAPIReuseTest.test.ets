@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function ComponentContentAPIReuseTest() {
-  describe('ComponentContentAPIReuseTest', function () {
-    beforeEach(async function (done) {
+  describe('ComponentContentAPIReuseTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("ComponentContentAPIReuseTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/FrameNode/ComponentContentAPIReuse",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/FrameNode/ComponentContentAPIReuse",
       }
       try {
         router.clear();
@@ -50,15 +50,15 @@ export default function ComponentContentAPIReuseTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ComponentContentAPIReuseTest_0100', 0, async function (done) {
+    it('ComponentContentAPIReuseTest_0100', 0, async (done: Function) => {
       console.info('ComponentContentAPIReuseTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('ComponentContentAPIReuse_Button'));
       await button.click();
       await CommonFunc.sleep(2500);
-      let strJson = getInspectorByKey('ComponentContentAPIReuse_Text');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('ComponentContentAPIReuse_Text');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ComponentContentAPIReuseTest_0100] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('hello');
       await CommonFunc.sleep(500);

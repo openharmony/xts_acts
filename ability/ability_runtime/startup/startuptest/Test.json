@@ -6,7 +6,7 @@
         "bundle-name": "com.acts.startuptest",
         "module-name": "entry",
         "shell-timeout": "600000",
-        "testcase-timeout":"20000"
+        "testcase-timeout": "20000"
     },
     "kits": [
         {
@@ -16,15 +16,6 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
-          "type": "ShellKit",
-          "run-command": [
-              "power-shell wakeup",
-              "power-shell setmode 602",
-              "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100"
-          ]
-      }
+        }
     ]
 }
-

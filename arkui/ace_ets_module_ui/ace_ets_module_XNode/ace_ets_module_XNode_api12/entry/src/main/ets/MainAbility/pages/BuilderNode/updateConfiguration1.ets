@@ -96,7 +96,8 @@ const builderNodeMap: Array<BuilderNode<[Params]>> = new Array();
 function updateColorMode() {
   builderNodeMap.forEach((value, index) => {
     // 通知BuilderNode环境变量改变
-    value.updateConfiguration();
+    interface ComponentContentWithUpdateConfiguration { updateConfiguration?: () => void }
+    (value as ComponentContentWithUpdateConfiguration).updateConfiguration?.();
   })
 }
 

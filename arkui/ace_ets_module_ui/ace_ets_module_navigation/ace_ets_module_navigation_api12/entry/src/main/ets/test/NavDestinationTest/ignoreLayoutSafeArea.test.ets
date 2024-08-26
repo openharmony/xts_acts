@@ -53,7 +53,7 @@ export default function ignoreLayoutSafeArea() {
      * @tc.desc      Test NavDestination ignoreLayoutSafeArea
      * @tc.level     Level 2
      */
-    it('ignoreLayoutSafeArea_0100', 0, async function (done) {
+    it('ignoreLayoutSafeArea_0100', 0, async (done: Function) => {
       console.info('[ignoreLayoutSafeArea_0100] START');
       await CommonFunc.sleep(2000);
 

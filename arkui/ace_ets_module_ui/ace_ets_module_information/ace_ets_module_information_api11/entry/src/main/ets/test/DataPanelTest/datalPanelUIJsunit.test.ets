@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 const waitUiReadyMs = 1000;
 
 export default function  datalPanelUIJsunit() {
-  describe('datalPanelUIJsunit', function () {
-    beforeEach(async function (done) {
+  describe('datalPanelUIJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("datalPanelUIJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/DataPanel/DatalPanelUI',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/DataPanel/DatalPanelUI',
       }
       try {
         router.clear();
@@ -42,22 +42,22 @@ export default function  datalPanelUIJsunit() {
       done();
     });
 
-    it('datalPanelUIJsunit_0100', 0, async function (done) {
+    it('datalPanelUIJsunit_0100', 0, async (done: Function) => {
        console.info('datalPanelUIJsunit_0100 START');
        await CommonFunc.sleep(1000);
        // get the datelPanel component and test attribute
        let strJson = getInspectorByKey('dp1');
-       let obj = JSON.parse(strJson);
+       let obj: ESObject = JSON.parse(strJson);
        console.info("datalPanelUIJsunit_0100'] component obj is: " + JSON.stringify(obj.$attrs.values));
-       let valus = obj.$attrs.values;
-       let expectV:string = [25,1].toString();
+       let valus: string = obj.$attrs.values;
+       let expectV: string = [25,1].toString();
        expect(valus == expectV).assertTrue();
        expect(obj.$attrs.max).assertEqual('26.000000');
        expect(obj.$attrs.type).assertEqual('DataPanelType.Line');
        done();
     });
 
-   it('datalPanelUIJsunit_0200', 0, async function (done) {
+   it('datalPanelUIJsunit_0200', 0, async (done: Function) => {
       console.info('datalPanelUIJsunit_0200 START');
       await CommonFunc.sleep(1000);
       // modify the type attribute normal value of DataPanel dynamically
@@ -65,13 +65,13 @@ export default function  datalPanelUIJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('dp1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[datalPanelUIJsunit_0200'] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.type).assertEqual('DataPanelType.Line');
       done();
     });
 
-    it('datalPanelUIJsunit_0300', 0, async function (done) {
+    it('datalPanelUIJsunit_0300', 0, async (done: Function) => {
       console.info('datalPanelUIJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // modify the attribute illegal value of DataPanel dynamically
@@ -79,14 +79,14 @@ export default function  datalPanelUIJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('dp1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[datalPanelUIJsunit_0300'] component obj is: " + JSON.stringify(obj));
       // check the default value
       expect(obj.$attrs.type).assertEqual('DataPanelType.Circle');
       done();
     });
 
-    it('datalPanelUIJsunit_0400', 0, async function (done) {
+    it('datalPanelUIJsunit_0400', 0, async (done: Function) => {
       console.info('datalPanelUIJsunit_0400 START');
       await CommonFunc.sleep(1000);
       // modify the values attribute normal value of DataPanel dynamically
@@ -94,15 +94,15 @@ export default function  datalPanelUIJsunit() {
       await CommonFunc.sleep(200);
       // check the value of changed attribute
       let strJson = getInspectorByKey('dp1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[datalPanelUIJsunit_0400'] component obj is: " + JSON.stringify(obj.$attrs.values));
-      let valus = obj.$attrs.values;
-      let expectV:string = [10,10,10,10,10,10,10,10,10].toString();
+      let valus: string = obj.$attrs.values;
+      let expectV: string = [10,10,10,10,10,10,10,10,10].toString();
       expect(valus == expectV).assertTrue();
       done();
     });
 
-    it('datalPanelUIJsunit_0500', 0, async function (done) {
+    it('datalPanelUIJsunit_0500', 0, async (done: Function) => {
       console.info('datalPanelUIJsunit_0500 START');
       await CommonFunc.sleep(1000);
       // modify the values ten attribute value of DataPanel dynamically
@@ -110,16 +110,16 @@ export default function  datalPanelUIJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('dp1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[datalPanelUIJsunit_0500'] component obj is: " + JSON.stringify(obj.$attrs.values));
-      let valus = obj.$attrs.values;
-      let expectV:string = [0,33,1,22,33,33,333,21,31].toString();
+      let valus: string = obj.$attrs.values;
+      let expectV: string = [0,33,1,22,33,33,333,21,31].toString();
       expect(valus == expectV).assertTrue();
       expect(obj.$attrs.max).assertEqual('507.000000');
       done();
     });
 
-    it('datalPanelUIJsunit_0600', 0, async function (done) {
+    it('datalPanelUIJsunit_0600', 0, async (done: Function) => {
       console.info('datalPanelUIJsunit_0600 START');
       await CommonFunc.sleep(1000);
       // modify the max attribute value of DataPanel dynamically
@@ -127,13 +127,13 @@ export default function  datalPanelUIJsunit() {
       await CommonFunc.sleep(2000);
       // check the max value of changed attribute
       let strJson = getInspectorByKey('dp1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[datalPanelUIJsunit_0600'] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.max).assertEqual('27.000000');
       done();
     });
 
-    it('datalPanelUIJsunit_0700', 0, async function (done) {
+    it('datalPanelUIJsunit_0700', 0, async (done: Function) => {
       console.info('datalPanelUIJsunit_0700 START');
       await CommonFunc.sleep(1000);
       // fix value num
@@ -144,13 +144,13 @@ export default function  datalPanelUIJsunit() {
       await CommonFunc.sleep(2000);
       // check the max value of changed attribute
       let strJson = getInspectorByKey('dp1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[datalPanelUIJsunit_0700'] component obj is: " + JSON.stringify(obj.$attrs.options));
       expect(obj.$attrs.max).assertEqual('80.000000');
       done();
     });
 
-     it('datalPanelUIJsunit_0800', 0, async function (done) {
+     it('datalPanelUIJsunit_0800', 0, async (done: Function) => {
       console.info('datalPanelUIJsunit_0800 START');
       await CommonFunc.sleep(1000);
       // fix value num
@@ -161,7 +161,7 @@ export default function  datalPanelUIJsunit() {
       await CommonFunc.sleep(2000);
       // check the max value of changed attribute
       let strJson = getInspectorByKey('dp1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[datalPanelUIJsunit_0800'] component obj is: " + JSON.stringify(obj.$attrs.max));
       expect(obj.$attrs.max).assertEqual('90.000000');
       done();

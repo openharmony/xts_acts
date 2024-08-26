@@ -60,6 +60,8 @@ import fileIOMkdir11 from './members/mkdir11.test.js'
 import fileIOCopy from './members/copy.test.js'
 import fileIODfsConnect from './members/dfsconnect.test.js'
 import fscreateReadStream from './class_stream/createReadStream.test.js'
+import fileIOGetxattr from './members/getxattr.test.js'
+import fileIOSetxattr from './members/setxattr.test.js'
 export default function testsuite() {
     fileIOAccess()
     fileIOClose()
@@ -108,4 +110,6 @@ export default function testsuite() {
     fileIOCopy()
     fileIODfsConnect()
     fscreateReadStream()
+    fileIOGetxattr()
+    fileIOSetxattr()
 }

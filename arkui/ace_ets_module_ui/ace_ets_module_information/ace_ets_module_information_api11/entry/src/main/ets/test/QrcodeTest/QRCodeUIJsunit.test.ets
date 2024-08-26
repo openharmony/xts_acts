@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 import bundle from '@ohos.bundle.bundleManager';
 
 export default function QRCodeUIJsunit() {
-  describe('QRCodeUIJsunit', function () {
-    beforeEach(async function (done) {
+  describe('QRCodeUIJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("QRCodeUIJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Qrcode/QRCodePage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Qrcode/QRCodePage',
       }
       try {
         router.clear();
@@ -43,13 +43,13 @@ export default function QRCodeUIJsunit() {
       done();
     });
 
-    it('QRCodeUIJsunit_0100', 0, async function (done) {
+    it('QRCodeUIJsunit_0100', 0, async (done: Function) => {
       // Get the information of the QRCode component
       console.info('[QRCodeUIJsunit_0100] START');
       let strJson = getInspectorByKey('qr');
       let strJsonDefault = getInspectorByKey('qrDefault');
-      let obj = JSON.parse(strJson);
-      let objDefault = JSON.parse(strJsonDefault);
+      let obj: ESObject = JSON.parse(strJson);
+      let objDefault: ESObject = JSON.parse(strJsonDefault);
       console.info("[QRCodeUIJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[QRCodeUIJsunit_0100] component objDefault is: " + JSON.stringify(objDefault));
       await CommonFunc.sleep(1000);
@@ -66,42 +66,42 @@ export default function QRCodeUIJsunit() {
       done();
     });
 
-    it('QRCodeUIJsunit_0200', 0, async function (done) {
+    it('QRCodeUIJsunit_0200', 0, async (done: Function) => {
       // Modify the color of the QRCode component
       console.info('[QRCodeUIJsunit_0200] START');
       globalThis.value.message.notify({name:'QRCodeColor',value:Color.Yellow})
       await CommonFunc.sleep(2000);
       // Get the color of the QRCode component
       let strJson = getInspectorByKey('qr1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[QRCodeUIJsunit_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.color).assertEqual('#FFFFFF00');
       console.info('[QRCodeUIJsunit_0200] END');
       done();
     });
 
-    it('QRCodeUIJsunit_0300', 0, async function (done) {
+    it('QRCodeUIJsunit_0300', 0, async (done: Function) => {
       // Modify the backgroundColor of the QRCode component
       console.info('[QRCodeUIJsunit_0300] START');
       globalThis.value.message.notify({name:'backgroundColor',value:Color.Green})
       await CommonFunc.sleep(1000);
       // Get the backgroundColor of the QRCode component
       let strJson = getInspectorByKey('qr2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[QRCodeUIJsunit_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.backgroundColor).assertEqual('#FF008000');
       console.info('[QRCodeUIJsunit_0300] END');
       done();
     });
 
-    it('QRCodeUIJsunit_0400', 0, async function (done) {
+    it('QRCodeUIJsunit_0400', 0, async (done: Function) => {
       // Modify the value of the QRCode component
       console.info('[QRCodeUIJsunit_0400] START');
       globalThis.value.message.notify({name:'QRCodeValue',value:'myTest'})
       await CommonFunc.sleep(2000);
       // Get the value of the QRCode component
       let strJson = getInspectorByKey('qr1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[QRCodeUIJsunit_0400] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.value).assertEqual('myTest');
@@ -109,7 +109,7 @@ export default function QRCodeUIJsunit() {
       done();
     });
 
-    it('QRCodeUIJsunit_0500', 0, async function (done) {
+    it('QRCodeUIJsunit_0500', 0, async (done: Function) => {
       // Illegal modification of the QRCode component value
       console.info('[QRCodeUIJsunit_0500] START');
       globalThis.value.message.notify({name:'QRCodeColor',value:1})
@@ -118,7 +118,7 @@ export default function QRCodeUIJsunit() {
       await CommonFunc.sleep(1000);
       // Get the color and value of the QRCode component
       let strJson = getInspectorByKey('qr1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[QRCodeUIJsunit_0500] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.color).assertEqual('#FF000001');
       expect(obj.$attrs.value).assertEqual('-10');
@@ -128,8 +128,8 @@ export default function QRCodeUIJsunit() {
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('qr2');
       let strJsonDefault = getInspectorByKey('qrDefault');
-      let obj1 = JSON.parse(strJson1);
-      let objDefault = JSON.parse(strJsonDefault);
+      let obj1: ESObject = JSON.parse(strJson1);
+      let objDefault: ESObject = JSON.parse(strJsonDefault);
       console.info("[QRCodeUIJsunit_0500] component obj1 is: " + JSON.stringify(obj1));
       console.info("[QRCodeUIJsunit_0500] component objDefault is: " + JSON.stringify(objDefault));
       let targetVersion = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).targetVersion;
@@ -142,7 +142,7 @@ export default function QRCodeUIJsunit() {
       done();
     });
 
-    it('QRCodeUIJsunit_0600', 0, async function (done) {
+    it('QRCodeUIJsunit_0600', 0, async (done: Function) => {
       // Verify that component QRCode only supports click events
       console.info('[QRCodeUIJsunit_0600] START');
       let driver = await UiDriver.create()

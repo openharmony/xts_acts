@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function edgeWidths() {
-  describe('edgeWidths', function () {
-    beforeEach(async function (done) {
+  describe('edgeWidths', () => {
+    beforeEach(async (done: Function) => {
       console.info("edgeWidths beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Graphics/edgeWidths',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Graphics/edgeWidths',
       }
       try {
         router.clear();
@@ -51,15 +51,15 @@ export default function edgeWidths() {
      * @tc.type : 
      * @tc.size :
      */
-    it('edgeWidths_0100', 0, async function (done) {
+    it('edgeWidths_0100', 0, async (done: Function) => {
       console.info('edgeWidths_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('edgeWidthsClick'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('edgeWidthsValue');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('edgeWidthsValue');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[edgeWidths_0100] component obj is: " + JSON.stringify(obj));
       console.info("[edgeWidths_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('edgeWidthsValue:5');//0xFF0000FF转换为十进制

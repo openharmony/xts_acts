@@ -4,14 +4,15 @@
         "type": "OHJSUnitTest",
         "test-timeout": "18000000",
         "bundle-name": "com.acts.arkui.component.common.attrs.test",
-        "module-name": "phone",
+        "module-name": "entry_test",
         "shell-timeout": "60000000",
         "testcase-timeout": 6000000
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsAceEtsModuleAdvancedComponentsApi12Test.hap"
+                "ActsAceEtsModuleAdvancedComponentsApi12Test.hap",
+                "ActsAceEtsModuleAdvancedComponentsApi12TestMain.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
@@ -20,7 +21,8 @@
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
-                "power-shell setmode 602"
+                "power-shell setmode 602",
+                "power-shell timeout -o 864000000"
             ]
         }
     ]

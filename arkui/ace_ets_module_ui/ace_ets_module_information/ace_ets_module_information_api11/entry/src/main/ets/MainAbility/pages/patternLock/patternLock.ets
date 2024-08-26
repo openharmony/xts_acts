@@ -42,20 +42,20 @@ struct PatternLockExample {
     console.info("[PatternLock] page stateChangCallBack");
     if (eventData != null) {
       console.info("[PatternLock] page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.sideLength != null) {
-        this.sideLength = eventData.data.sideLength;
+      if (eventData.data?.sideLength != null) {
+        this.sideLength = eventData.data?.sideLength;
       }
-      if (eventData.data.circleRadius != null) {
-        this.circleRadius = eventData.data.circleRadius;
+      if (eventData.data?.circleRadius != null) {
+        this.circleRadius = eventData.data?.circleRadius;
       }
-      if (eventData.data.pathStrokeWidth != null) {
-        this.pathStrokeWidth = eventData.data.pathStrokeWidth;
+      if (eventData.data?.pathStrokeWidth != null) {
+        this.pathStrokeWidth = eventData.data?.pathStrokeWidth;
       }
-      if (eventData.data.backgroundColor != null) {
-        this.backgroundColor1 = eventData.data.backgroundColor;
+      if (eventData.data?.backgroundColor != null) {
+        this.backgroundColor1 = eventData.data?.backgroundColor;
       }
-      if (eventData.data.autoReset != null) {
-        this.autoReset = eventData.data.autoReset;
+      if (eventData.data?.autoReset != null) {
+        this.autoReset = eventData.data?.autoReset;
       }
     }
   }
@@ -111,7 +111,7 @@ struct PatternLockExample {
           console.info("reset button start to emit action state");
           events_emitter.emit(backEvent, backData);
         } catch (err) {
-          console.info("reset button emit action state err: " + JSON.stringify(err.message));
+          console.info("reset button emit action state err: " + JSON.stringify((err as Error)?.message));
         }
       }).key('button1')
     }

@@ -17,8 +17,8 @@ import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/common/Common';
 export default function RenderNodeDemo06Test() {
-  describe('RenderNodeDemo06Test', function () {
-    beforeEach(async function (done) {
+  describe('RenderNodeDemo06Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("RenderNodeDemo06Test beforeEach start");
       let options : router.RouterOptions = {
         url: "MainAbility/pages/renderNode/RenderNodeDemo/RenderNodeDemo06",
@@ -47,7 +47,7 @@ export default function RenderNodeDemo06Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeDemo06Test_0100', 0, async function (done) {
+    it('RenderNodeDemo06Test_0100', 0, async (done: Function) => {
       console.info('RenderNodeDemo06Test_0100 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
@@ -55,8 +55,8 @@ export default function RenderNodeDemo06Test() {
       let button1 = await driver.findComponent(ON.id('RenderNodeDemo06_Button'));
       await button1.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('RenderNodeDemo06_Text');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('RenderNodeDemo06_Text');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RenderNodeDemo06Test_0100] component obj is: ",JSON.stringify(obj),obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('true');
       console.info('[RenderNodeDemo06Test_0100] END');

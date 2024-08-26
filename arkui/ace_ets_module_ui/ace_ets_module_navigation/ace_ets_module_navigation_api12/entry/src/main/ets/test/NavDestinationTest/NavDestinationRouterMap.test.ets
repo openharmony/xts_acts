@@ -66,7 +66,7 @@ export default function NavDestinationRouterMap() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('NavDestinationRouterMap_text1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[NavDestinationRouterMap_0100] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('undefined');

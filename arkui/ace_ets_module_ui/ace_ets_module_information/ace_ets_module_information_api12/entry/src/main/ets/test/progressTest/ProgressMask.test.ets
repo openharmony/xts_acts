@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {
   UiComponent,
   UiDriver,
@@ -34,8 +34,8 @@ export default function ProgressMask() {
   describe('ProgressMask', () => {
     beforeEach(async (done: Function) => {
       console.info("ProgressMask beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/progress/ProgressMask",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/progress/ProgressMask",
       }
       try {
         router.clear();
@@ -66,7 +66,7 @@ export default function ProgressMask() {
       console.info('ProgressMask_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ProgressMaskImage');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ProgressMask_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ProgressMask_0100] mask obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content)
@@ -87,7 +87,7 @@ export default function ProgressMask() {
       console.info('ProgressMask_0200 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ProgressMaskText');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ProgressMask_0200] component obj is: " + JSON.stringify(obj));
       console.info("[ProgressMask_0200] content obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("enableBreathingAnimation success");

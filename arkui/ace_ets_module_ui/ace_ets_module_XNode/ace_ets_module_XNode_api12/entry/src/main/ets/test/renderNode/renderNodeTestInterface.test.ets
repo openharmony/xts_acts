@@ -17,8 +17,8 @@ import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 export default function renderNodeGetInterfaceTest() {
-  describe('renderNodeGetInterfaceTest', function () {
-    beforeEach(async function (done) {
+  describe('renderNodeGetInterfaceTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("renderNodeGetInterfaceTest beforeEach start");
       let options : router.RouterOptions = {
         url: "MainAbility/pages/renderNode/renderNodeSetGetInterface",
@@ -47,7 +47,7 @@ export default function renderNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('renderNodeGetInterfaceTest_0100', 0, async function (done) {
+    it('renderNodeGetInterfaceTest_0100', 0, async (done: Function) => {
       console.info('enderNodeGetInterfaceTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -56,8 +56,8 @@ export default function renderNodeGetInterfaceTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       // test the getBorderRadius data
-      let strJson = getInspectorByKey('bRadiusValue');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('bRadiusValue');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[renderNodeGetInterfaceTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('bRadiusValue:20');
       console.info('[renderNodeGetInterfaceTest_0100] END');
@@ -71,7 +71,7 @@ export default function renderNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('renderNodeGetInterfaceTest_0200', 0, async function (done) {
+    it('renderNodeGetInterfaceTest_0200', 0, async (done: Function) => {
       console.info('enderNodeGetInterfaceTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -80,8 +80,8 @@ export default function renderNodeGetInterfaceTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       // test the getBorderRadius data
-      let strJson = getInspectorByKey('bColor');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('bColor');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[renderNodeGetInterfaceTest_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('bColor:4278255598');//10进制
       console.info('[renderNodeGetInterfaceTest_0200] END');
@@ -96,7 +96,7 @@ export default function renderNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('renderNodeGetInterfaceTest_0300', 0, async function (done) {
+    it('renderNodeGetInterfaceTest_0300', 0, async (done: Function) => {
       console.info('renderNodeGetInterfaceTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -105,8 +105,8 @@ export default function renderNodeGetInterfaceTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       // test the getBorderWidth data
-      let strJson = getInspectorByKey('bWidth');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('bWidth');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[renderNodeGetInterfaceTest_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('bWidth:40');
       console.info('[renderNodeGetInterfaceTest_0300] END');
@@ -121,7 +121,7 @@ export default function renderNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('renderNodeGetInterfaceTest_0400', 0, async function (done) {
+    it('renderNodeGetInterfaceTest_0400', 0, async (done: Function) => {
       console.info('renderNodeGetInterfaceTest_0400 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -130,8 +130,8 @@ export default function renderNodeGetInterfaceTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       // test the getBorderWidth data
-      let strJson = getInspectorByKey('bStyle');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('bStyle');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[renderNodeGetInterfaceTest_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('bStyle:1');
       console.info('[renderNodeGetInterfaceTest_0400] END');

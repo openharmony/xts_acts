@@ -492,6 +492,7 @@
 #include "mouseevent/mouse_event_test.cpp"
 #include "pointerevent/pointer_event_test.cpp"
 #include "native/native.cpp"
+#include "Dialog/DialogDismissEvent.cpp"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -4729,6 +4730,9 @@ static napi_value Init(napi_env env, napi_value exports)
         {"native_012", nullptr, native_012, nullptr , nullptr, nullptr, napi_default, nullptr},
         {"native_013", nullptr, native_013, nullptr , nullptr, nullptr, napi_default, nullptr},
         {"native_014", nullptr, native_014, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"DialogModelTest_001", nullptr, DialogModelTest_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"DialogModelTest_002", nullptr, DialogModelTest_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"DialogModelTest_003", nullptr, DialogModelTest_003, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

@@ -15,7 +15,7 @@
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router';
 import { Driver, ON, Component } from '@ohos.UiTest'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 export default function abilityTest() {
   const SUITE = 'CounterComponent'
   describe('ActsAceCounterComponentTest', () => {
@@ -35,7 +35,7 @@ export default function abilityTest() {
       } catch (err) {
         console.error("push ActsAceCounterComponentTest page error " + JSON.stringify(err));
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       done();
     })
 

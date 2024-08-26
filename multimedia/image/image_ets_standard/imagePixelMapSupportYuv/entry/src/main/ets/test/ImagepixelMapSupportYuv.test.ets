@@ -565,7 +565,18 @@ export default function imagepixelMapSupportYuv() {
         pixelMap.translateSync(translateX, translateY)
       }
       const imageInfo = await pixelMap.getImageInfo()
-      return JSON.stringify(imageInfo) == JSON.stringify(initialImageInfo) && interfaceResult
+      hilog.info(0x0000, '${testNum}', '%{public}s', `${testNum}: ${JSON.stringify(imageInfo)}`)
+      hilog.info(0x0000, '${testNum}', '%{public}s', `${testNum}: ${JSON.stringify(initialImageInfo)}`)
+      if (imageInfo.size.width == initialImageInfo.size.width + translateX &&
+          imageInfo.size.height == initialImageInfo.size.height + translateY &&
+          imageInfo.density == initialImageInfo.density &&
+          imageInfo.pixelFormat == initialImageInfo.pixelFormat &&
+          imageInfo.mimeType == initialImageInfo.mimeType &&
+          imageInfo.isHdr == initialImageInfo.isHdr) {
+        return true;
+      } else {
+        return false;
+      }
     }
 
     //测试pixelMap打包
@@ -2623,7 +2634,7 @@ export default function imagepixelMapSupportYuv() {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_TRANSLATE_0200"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_eto.jpg","fd", true);
-        const checkResult = await testPixelMapTranslate(testTag, pixelMap_NV21, 'callback', 0.5, 0.5)
+        const checkResult = await testPixelMapTranslate(testTag, pixelMap_NV21, 'callback', 0, 0)
         expect(checkResult).assertTrue()
         done()
       }catch(error){

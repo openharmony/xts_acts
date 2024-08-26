@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function setMeasureSizeTest() {
-  describe('setMeasureSizeTest', function () {
-    beforeEach(async function (done) {
+  describe('setMeasureSizeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("setMeasureSizeTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/FrameNode/setMeasureSize",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/FrameNode/setMeasureSize",
       }
       try {
         router.clear();
@@ -50,15 +50,15 @@ export default function setMeasureSizeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('setMeasureSizeTest_0010', 0, async function (done) {
+    it('setMeasureSizeTest_0010', 0, async (done: Function) => {
       console.info('setMeasureSizeTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('getMeasuredSize_id'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('getMeasuredSize_id');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('getMeasuredSize_id');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[setMeasureSizeTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('105');
       console.info('[setMeasureSizeTest_0010] END');
@@ -73,15 +73,15 @@ export default function setMeasureSizeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('setMeasureSizeTest_0020', 0, async function (done) {
+    it('setMeasureSizeTest_0020', 0, async (done: Function) => {
       console.info('setMeasureSizeTest_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('APIsetOnDraw'));
       await button.click();
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('APIsetOnDraw');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('APIsetOnDraw');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[setMeasureSizeTest_0020] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('onDraw succ');
       console.info('[setMeasureSizeTest_0020] END');

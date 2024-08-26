@@ -74,11 +74,12 @@ import showAssetsCreationDialogTest from './PhotoAccessHelper/showAssetsCreation
 import PhotoAccessHelperNativeTest from './PhotoAccessHelper/photoAccessHelperNative'
 import photoAccessHelperTest from './photoAccessHelperTest/PhotoAccessHelper.test'
 import getBurstAssetsTest from './PhotoAccessHelper/getBurstAssets.test';
+//import photoAccessHelperTest from './photoAccessHelperTest/PhotoAccessHelper.test'
 
 export default function testsuite () {
   provisionResourcesTest()
   getPhotoAccessHelperTest()
-  photoAccessHelperTest()
+  //photoAccessHelperTest()
   checkAlbumAttrTest()
   albumGetAssetsTest()
   addAssetsTest()

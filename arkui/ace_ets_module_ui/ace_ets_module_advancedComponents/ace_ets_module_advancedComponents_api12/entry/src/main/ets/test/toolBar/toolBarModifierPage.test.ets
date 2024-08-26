@@ -15,26 +15,25 @@
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from '../Utils';
 
 export default function toolBarModifierPage() {
-  describe('toolBarModifierPage', function () {
-    beforeEach(async function (done) {
+  describe('toolBarModifierPage', () => {
+    beforeEach(async (done: Function) => {
       console.info("toolBarModifierPage beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/toolBar/toolBarModifierPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/toolBar/toolBarModifierPage',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get toolBarModifierPage state pages: " + JSON.stringify(pages));
         if (!('toolBarModifierPage' == pages.name)) {
           console.info("get toolBarModifierPage pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push toolBarModifierPage page result: " + JSON.stringify(result));
+          console.info("push toolBarModifierPage page result successful");
         }
       } catch (err) {
         console.error("push toolBarModifierPage page error: " + err);
@@ -45,7 +44,7 @@ export default function toolBarModifierPage() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('toolBarModifierPage after each called');
     })
@@ -58,7 +57,7 @@ export default function toolBarModifierPage() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('toolBarModifierPage_0100', 0, async function (done) {
+    it('toolBarModifierPage_0100', 0, async (done: Function) => {
       console.info('[toolBarModifierPage_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

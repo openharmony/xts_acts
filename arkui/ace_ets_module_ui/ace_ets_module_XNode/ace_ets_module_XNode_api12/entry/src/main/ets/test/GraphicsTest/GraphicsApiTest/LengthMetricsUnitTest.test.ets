@@ -18,10 +18,10 @@ import CommonFunc from "../../../MainAbility/utils/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from "@ohos.UiTest";
 
 export default function LengthMetricsUnitTest() {
-  describe("LengthMetricsUnitTest", function () {
-    beforeEach(async function (done) {
+  describe("LengthMetricsUnitTest", () => {
+    beforeEach(async (done: Function) => {
       console.info("LengthMetricsUnitTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Graphics/GraphicsApi/LengthMetricsUnit",
       }
       try {
@@ -40,7 +40,7 @@ export default function LengthMetricsUnitTest() {
       console.info("LengthMetricsUnitTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("LengthMetricsUnitTest after each called");
     });
@@ -53,7 +53,7 @@ export default function LengthMetricsUnitTest() {
      * @tc.type
     * @tc.size
      */
-    it("LengthMetricsUnitTest_001", 0, async function (done) {
+    it("LengthMetricsUnitTest_001", 0, async (done: Function) => {
       console.info("[LengthMetricsUnitTest_001] START");
       await CommonFunc.sleep(1000);
       let LengthMetricsUnit = getInspectorByKey("LengthMetricsUnit");
