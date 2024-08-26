@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,11 +20,11 @@ import events_emitter from '@ohos.events.emitter'
 struct RatingExample {
   @State rating: number = 1
   @State indicator: boolean = false
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("rating page stateChangCallBack");
     if (eventData != null) {
-      console.info("rating page state change called:" + JSON.stringify(eventData.data.rating));
-      if (eventData.data.rating != null) {
+      console.info("rating page state change called:" + JSON.stringify(eventData.data?.rating));
+      if (eventData.data?.rating != null) {
         this.rating = eventData.data.rating;
       }
     }
@@ -33,49 +32,49 @@ struct RatingExample {
 
   onPageShow() {
     console.info('rating page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 173,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
 
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 174,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
 
-    var stateChangeEventThree = {
+    let stateChangeEventThree: events_emitter.InnerEvent = {
       eventId: 175,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventThree, this.stateChangCallBack)
 
-    var stateChangeEventFour = {
+    let stateChangeEventFour: events_emitter.InnerEvent = {
       eventId: 176,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventFour, this.stateChangCallBack)
 
-    var stateChangeEventSix = {
+    let stateChangeEventSix: events_emitter.InnerEvent = {
       eventId: 177,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventSix, this.stateChangCallBack)
 
-    var stateChangeEventSeven = {
+    let stateChangeEventSeven: events_emitter.InnerEvent = {
       eventId: 178,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventSeven, this.stateChangCallBack)
 
-    var stateChangeEventSeven = {
+    stateChangeEventSeven = {
       eventId: 1027,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventSeven, this.stateChangCallBack)
 
-    var stateChangeEventSeven = {
+    stateChangeEventSeven = {
       eventId: 1028,
       priority: events_emitter.EventPriority.LOW
     }

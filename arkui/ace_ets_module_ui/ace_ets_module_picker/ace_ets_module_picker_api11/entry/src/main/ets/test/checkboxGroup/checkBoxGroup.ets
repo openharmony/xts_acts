@@ -12,15 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 export default function checkBoxGroupTest() {
-  describe('ActsCheckBoxGroupTest', function () {
+  describe('ActsCheckBoxGroupTest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
-        uri:  "MainAbility/pages/checkboxGroup/CheckBoxGroup1",
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url:  "MainAbility/pages/checkboxGroup/CheckBoxGroup1",
       }
       try {
         router.clear();
@@ -42,13 +41,13 @@ export default function checkBoxGroupTest() {
     *tc.name   Tests the unselectedColor property of the CheckboxGroup component
     *tc.desc   Set the unselectedColor property parameter to 0x00ff00
     */
-    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0100', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0100', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0100 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_unselectedColor_0100');
           console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0100 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0100 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0100 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
@@ -69,13 +68,13 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the unselectedColor property of the CheckboxGroup component
      *tc.desc   Set the unselectedColor property parameter to '#fffd0000'
      */
-    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0200', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0200', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0200 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_unselectedColor_0200');
           console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0200 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0200 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0200 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
@@ -96,13 +95,13 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the unselectedColor property of the CheckboxGroup component
      *tc.desc   Set the unselectedColor property parameter to 'rgb(138,43,226)'
      */
-    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0300', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0300', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0300 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_unselectedColor_0300');
           console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0300 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0300 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0300 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
@@ -123,13 +122,13 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the unselectedColor property of the CheckboxGroup component
      *tc.desc   Set the unselectedColor property parameter to Color.Pink
      */
-    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0400', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0400', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0400 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_unselectedColor_0400');
           console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0400 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0400 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0400 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
@@ -150,13 +149,13 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the unselectedColor property of the CheckboxGroup component
      *tc.desc   Set the unselectedColor property parameter to $r("app.color.checkbox_Color")
      */
-    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0500', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0500', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0500 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_unselectedColor_0500');
           console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0500 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0500 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0500 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
@@ -177,13 +176,13 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the unselectedColor property of the CheckboxGroup component
      *tc.desc   Set the unselectedColor property parameter to an outlier ""
      */
-    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0600', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0600', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0600 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_unselectedColor_0600');
           console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0600 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0600 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0600 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
@@ -204,13 +203,13 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the unselectedColor property of the CheckboxGroup component
      *tc.desc   Set the unselectedColor property parameter to an outlier null
      */
-    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0700', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0700', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0700 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_unselectedColor_0700');
           console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0700 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0700 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0700 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
@@ -231,13 +230,13 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the unselectedColor property of the CheckboxGroup component
      *tc.desc   Set the unselectedColor property parameter to an outlier undefined
      */
-    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0800', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0800', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0800 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_unselectedColor_0800');
           console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0800 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0800 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0800 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
@@ -259,13 +258,13 @@ export default function checkBoxGroupTest() {
      *tc.desc   Set the unselectedColor property parameter to Color.Pink
      *          and again set the unselectedColor property parameter to "#FFFD0000".
      */
-    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0900', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_unselectedColor_0900', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0900 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_unselectedColor_0900');
           console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_0900 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0900 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_0900 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
@@ -287,13 +286,13 @@ export default function checkBoxGroupTest() {
      *tc.desc   Set the unselectedColor property parameter to Color.Pink
      *          and again set the unselectedColor property parameter to the outlier value of undefined
      */
-    it('ArkUX_Stage_CheckboxGroup_unselectedColor_1000', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_unselectedColor_1000', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_1000 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_unselectedColor_1000');
           console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_1000 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_1000 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_1000 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
@@ -314,13 +313,13 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the unselectedColor property of the CheckboxGroup component
      *tc.desc   Set unselectedColor property parameter to outlier 'bgr(138,43,226)'
      */
-    it('ArkUX_Stage_CheckboxGroup_unselectedColor_1100', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_unselectedColor_1100', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_1100 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_unselectedColor_1100');
           console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_1100 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_1100 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_1100 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
@@ -342,13 +341,13 @@ export default function checkBoxGroupTest() {
      *tc.desc   Set the unselectedColor property parameter to 0x00ff00
      *          and the universal property backgroundColor property value to the outlier null
      */
-    it('ArkUX_Stage_CheckboxGroup_unselectedColor_1200', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_unselectedColor_1200', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_1200 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_unselectedColor_1200');
           console.info('ArkUX_Stage_CheckboxGroup_unselectedColor_1200 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_1200 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_unselectedColor_1200 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
@@ -369,19 +368,19 @@ export default function checkBoxGroupTest() {
     *tc.name   Tests the CheckMarkColor property of the CheckboxGroup component
     *tc.desc   Set the checkMarkColor property parameter to 0x00ff00
     */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0100', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0100', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0100 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0100');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0100 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0100 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0100 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0100 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0100 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0100 component markObj.strokeColor is: " +
@@ -401,19 +400,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkColor property of the CheckboxGroup component
      *tc.desc   Set the checkMarkColor property parameter to '#fffd0000'
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0200', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0200', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0200 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0200');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0200 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0200 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0200 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0200 component obj.$attrs.strokeColor is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0200 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0200 component markObj.strokeColor is: " +
@@ -433,19 +432,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkColor property of the CheckboxGroup component
      *tc.desc   Set the checkMarkColor property parameter to 'rgb(138,43,226)'
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0300', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0300', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0300 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0300');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0300 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0300 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0300 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0300 component obj.$attrs.strokeColor is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0300 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0300 component markObj.strokeColor is: " +
@@ -465,19 +464,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkColor property of the CheckboxGroup component
      *tc.desc   Set the checkMarkColor property parameter to Color.Pink
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0400', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0400', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0400 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0400');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0400 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0400 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0400 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0400 component obj.$attrs.strokeColor is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0400 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0400 component markObj.strokeColor is: " +
@@ -497,19 +496,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkColor property of the CheckboxGroup component
      *tc.desc   Set the checkMarkColor property parameter to $r("app.color.checkbox_Color")
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0500', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0500', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0500 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0500');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0500 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0500 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0500 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0500 component obj.$attrs.strokeColor is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0500 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0500 component markObj.strokeColor is: " +
@@ -529,19 +528,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkColor property of the CheckboxGroup component
      *tc.desc   Set the checkMarkColor property parameter to an outlier ""
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0600', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0600', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0600 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0600');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0600 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0600 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0600 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0600 component obj.$attrs.strokeColor is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0600 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0600 component markObj.strokeColor is: " +
@@ -561,19 +560,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkColor property of the CheckboxGroup component
      *tc.desc   Set the checkMarkColor property parameter to an outlier null
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0700', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0700', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0700 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0700');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0700 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0700 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0700 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0700 component obj.$attrs.strokeColor is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0700 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0700 component markObj.strokeColor is: " +
@@ -593,19 +592,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkColor property of the CheckboxGroup component
      *tc.desc   Set the checkMarkColor property parameter to an outlier undefined
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0800', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0800', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0800 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0800');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0800 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0800 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0800 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0800 component obj.$attrs.strokeColor is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0800 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0800 component markObj.strokeColor is: " +
@@ -626,19 +625,19 @@ export default function checkBoxGroupTest() {
      *tc.desc   Set the checkMarkColor property parameter to Color.Pink
      *          and again set the checkMarkColor property parameter to "#FFFD0000".
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0900', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0900', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0900 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0900');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_0900 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0900 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0900 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0900 component obj.$attrs.strokeColor is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0900 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0900 component markObj.strokeColor is: " +
@@ -659,19 +658,19 @@ export default function checkBoxGroupTest() {
      *tc.desc   Set the checkMarkColor property parameter to Color.Pink
      *          and again set the checkMarkColor property parameter to the outlier 'bgr(138,43,226)'.
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1000', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1000', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1000 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1000');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1000 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1000 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1000 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1000 component obj.$attrs.strokeColor is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1000 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1000 component markObj.strokeColor is: " +
@@ -691,19 +690,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkColor property of the CheckboxGroup component
      *tc.desc   Set checkMarkColor property parameter to outlier 'bgr(138,43,226)'
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1100', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1100', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1100 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1100');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1100 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1100 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1100 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1100 component obj.$attrs.strokeColor is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1100 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1100 component markObj.strokeColor is: " +
@@ -724,19 +723,19 @@ export default function checkBoxGroupTest() {
      *tc.desc   Set the checkMarkColor property parameter to 0x00ff00
      *          and the universal property backgroundColor property value to null outlier
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1200', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1200', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1200 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1200');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkColor_1200 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1200 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1200 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1200 component obj.$attrs.strokeColor is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1200 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1200 component markObj.strokeColor is: " +
@@ -756,19 +755,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkSize property of the CheckboxGroup component
      *tc.desc   Set the checkMarkSize property parameter to 0
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0100', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0100', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0100 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0100');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0100 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0100 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0100 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0100 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0100 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0100 component markObj.size is: " +
@@ -788,19 +787,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkSize property of the CheckboxGroup component
      *tc.desc   Set the checkMarkSize property parameter to 10
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0200', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0200', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0200 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0200');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0200 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0200 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0200 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0200 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0200 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0200 component markObj.size is: " +
@@ -820,19 +819,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkSize property of the CheckboxGroup component
      *tc.desc   Set the checkMarkSize property to string "60px".
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0300', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0300', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0300 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0300');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0300 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0300 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0300 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0300 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0300 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0300 component markObj.size is: " +
@@ -852,19 +851,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkSize property of the CheckboxGroup component
      *tc.desc   Set the checkMarkSize property parameter to the percentage string "120%".
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0400', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0400', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0400 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0400');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0400 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0400 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0400 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0400 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0400 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0400 component markObj.size is: " +
@@ -885,19 +884,19 @@ export default function checkBoxGroupTest() {
      *tc.desc   Set the checkMarkSize property parameter to
      *          the resource reference type $r("app.string.Check_Mark_Size_test")
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0500', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0500', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0500 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0500');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0500 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0500 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0500 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0500 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0500 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0500 component markObj.size is: " +
@@ -917,19 +916,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkSize property of the CheckboxGroup component
      *tc.desc   Set the checkMarkSize property parameter to an outlier ""
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0600', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0600', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0600 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0600');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0600 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0600 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0600 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0600 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0600 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0600 component markObj.size is: " +
@@ -949,19 +948,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkSize property of the CheckboxGroup component
      *tc.desc   Set the checkMarkSize property parameter to an outlier null
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0700', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0700', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0700 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0700');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0700 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0700 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0700 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0700 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0700 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0700 component markObj.size is: " +
@@ -981,19 +980,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkSize property of the CheckboxGroup component
      *tc.desc   Set the checkMarkSize property parameter to an outlier undefined
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0800', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0800', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0800 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0800');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0800 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0800 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0800 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0800 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0800 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0800 component markObj.size is: " +
@@ -1014,19 +1013,19 @@ export default function checkBoxGroupTest() {
      *tc.desc   Set the checkMarkSize property parameter to 10
      *          and again set the checkMarkSize property parameter to "40fp"
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0900', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0900', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0900 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0900');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_0900 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0900 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0900 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0900 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0900 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_0900 component markObj.size is: " +
@@ -1047,19 +1046,19 @@ export default function checkBoxGroupTest() {
      *tc.desc   Set the checkMarkSize property parameter to 10
      *          and again set the checkMarkSize property parameter to the exception value undefined
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1000', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1000', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1000 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1000');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1000 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1000 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1000 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1000 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1000 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1000 component markObj.size is: " +
@@ -1079,19 +1078,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkSize property of the CheckboxGroup component
      *tc.desc   Set the checkMarkSize property parameter to the outlier "asdf#$8".
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1100', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1100', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1100 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1100');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1100 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1100 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1100 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1100 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1100 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1100 component markObj.size is: " +
@@ -1111,19 +1110,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkSize property of the CheckboxGroup component
      *tc.desc   Set the checkMarkSize property parameter to "10.00lpx" and the generic size property value to null
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1200', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1200', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1200 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1200');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1200 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1200 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1200 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1200 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1200 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1200 component markObj.strokeWidth is: " +
@@ -1143,19 +1142,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkSize property of the CheckboxGroup component
      *tc.desc   Set the checkMarkSize property parameter to an outlier -10
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1300', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1300', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1300 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1300');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkSize_1300 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1300 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1300 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1300 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1300 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkSize_1300 component markObj.size is: " +
@@ -1175,19 +1174,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkWidth property of the CheckboxGroup component
      *tc.desc   Set the checkMarkWidth property parameter to 0
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0100', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0100', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0100 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0100');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0100 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0100 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0100 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0100 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0100 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0100 component markObj.strokeWidth is: " +
@@ -1207,19 +1206,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkWidth property of the CheckboxGroup component
      *tc.desc   Set the checkMarkWidth property parameter to 1
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0200', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0200', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0200 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0200');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0200 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0200 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0200 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0200 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0200 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0200 component markObj.strokeWidth is: " +
@@ -1239,19 +1238,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkWidth property of the CheckboxGroup component
      *tc.desc   Set the checkMarkWidth property to string "60px".
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0300', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0300', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0300 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0300');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0300 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0300 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0300 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0300 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0300 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0300 component markObj.strokeWidth is: " +
@@ -1271,19 +1270,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkWidth property of the CheckboxGroup component
      *tc.desc   Set the checkMarkWidth property argument to the percentage string "120%".
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0400', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0400', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0400 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0400');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0400 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0400 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0400 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0400 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0400 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0400 component markObj.strokeWidth is: " +
@@ -1304,19 +1303,19 @@ export default function checkBoxGroupTest() {
      *tc.desc   Set the checkMarkWidth property parameter to
      *          the resource reference type $r("app.string.Check_Mark_Size_test").
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0500', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0500', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0500 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0500');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0500 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0500 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0500 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0500 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0500 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0500 component markObj.strokeWidth is: " +
@@ -1336,19 +1335,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkWidth property of the CheckboxGroup component
      *tc.desc   Set the checkMarkWidth property parameter to an outlier ""
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0600', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0600', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0600 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0600');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0600 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0600 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0600 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0600 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0600 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0600 component markObj.strokeWidth is: " +
@@ -1368,19 +1367,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkWidth property of the CheckboxGroup component
      *tc.desc   Set the checkMarkWidth property parameter to an outlier null
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0700', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0700', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0700 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0700');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0700 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0700 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0700 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0700 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0700 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0700 component markObj.strokeWidth is: " +
@@ -1400,19 +1399,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkWidth property of the CheckboxGroup component
      *tc.desc   Set the checkMarkWidth property parameter to an outlier undefined
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0800', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0800', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0800 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0800');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0800 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0800 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0800 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0800 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0800 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0800 component markObj.strokeWidth is: " +
@@ -1432,19 +1431,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkWidth property of the CheckboxGroup component
      *tc.desc   Set the checkMarkWidth property parameter to 10 and the checkMarkWidth property parameter to "5fp" again
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0900', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0900', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0900 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0900');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0900 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0900 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0900 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0900 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0900 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0900 component markObj.strokeWidth is: " +
@@ -1465,19 +1464,19 @@ export default function checkBoxGroupTest() {
      *tc.desc   Set the checkMarkWidth property parameter to 10
      *          and again set the checkMarkWidth property parameter to the exception value undefined
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1000', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1000', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1000 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1000');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1000 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1000 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1000 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1000 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1000 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1000 component markObj.strokeWidth is: " +
@@ -1497,19 +1496,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkWidth property of the CheckboxGroup component
      *tc.desc   Set the checkMarkWidth property parameter to an exception value of "frgw*&^%".
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1100', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1100', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1100 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1100');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1100 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1100 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1100 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1100 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1100 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1100 component markObj.strokeWidth is: " +
@@ -1529,19 +1528,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkWidth property of the CheckboxGroup component
      *tc.desc   Set the checkMarkWidth property parameter to "40lpx" and the common property width property value to null
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1200', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1200', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1200 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1200');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1200 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1200 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1200 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1200 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_0100 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1200 component markObj.strokeWidth is: " +
@@ -1561,19 +1560,19 @@ export default function checkBoxGroupTest() {
      *tc.name   Tests the CheckMarkWidth property of the CheckboxGroup component
      *tc.desc   Set the checkMarkWidth property parameter to an exception value of -1.
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1300', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1300', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1300 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1300');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1300 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1300 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1300 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1300 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1300 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1300 component markObj.strokeWidth is: " +
@@ -1595,13 +1594,13 @@ export default function checkBoxGroupTest() {
      *tc.desc   Simultaneous setting checkMarkWidth(40) checkMarkSize(40)
      *          checkMarkColor(0x00ff00) unselectedColor(Color.Pink)
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1400', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1400', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1400 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1400');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1400 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1400 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1400 component obj.$attrs is: " +
           JSON.stringify(obj.$attrs));
@@ -1609,7 +1608,7 @@ export default function checkBoxGroupTest() {
           JSON.stringify(obj.$attrs.unselectedColor));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1400 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1400 component markObj is: " +
           JSON.stringify(markObj));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1400 component markObj.strokeWidth is: " +
@@ -1640,30 +1639,30 @@ export default function checkBoxGroupTest() {
      *tc.desc   Simultaneous setting checkMarkWidth(40) checkMarkSize(40)
      *          checkMarkColor(0x00ff00) unselectedColor(Color.Pink)
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1500', 0, async function (done) {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1500', 0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1500 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('checkboxNO');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1500 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1500 component markObj.strokeWidth is: " +
           JSON.stringify(obj.$attrs.unselectedColor));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1500 component obj.$attrs.mark is: " +
           JSON.stringify(obj.$attrs.mark));
-          let markObj = JSON.parse(obj.$attrs.mark);
+          let markObj: Record<string, ESObject> = JSON.parse(obj.$attrs.mark);
           expect(markObj.strokeWidth).assertEqual("2.00vp");
           expect(markObj.size).assertEqual("0.00vp");
           expect(markObj.strokeColor).assertEqual(obj.$attrs.borderColor);
           expect(obj.$attrs.unselectedColor).assertEqual(obj.$attrs.backgroundColor);
           let strJsonGroup = getInspectorByKey('checkboxGroupNO');
           console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1500 strJsonGroup  :' + JSON.stringify(strJsonGroup));
-          let objGroup = JSON.parse(strJsonGroup);
+          let objGroup: Record<string, ESObject> = JSON.parse(strJsonGroup);
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1500 objGroup markObj.strokeWidth is: " +
           JSON.stringify(objGroup.$attrs.unselectedColor));
           console.info("ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1500 objGroup obj.$attrs.mark is: " +
           JSON.stringify(objGroup.$attrs.mark));
-          let markObjGroup = JSON.parse(objGroup.$attrs.mark);
+          let markObjGroup: Record<string, ESObject> = JSON.parse(objGroup.$attrs.mark);
           expect(markObjGroup.strokeWidth).assertEqual("2.00vp");
           expect(markObjGroup.size).assertEqual("0.00vp");
           expect(markObjGroup.strokeColor).assertEqual(obj.$attrs.borderColor);

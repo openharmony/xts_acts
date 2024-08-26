@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +13,15 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function systempromptJsunit() {
-  describe('systempromptJsunit', function () {
-    beforeEach(async function (done) {
+  describe('systempromptJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("prompt beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/systemPrompt',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/systemPrompt',
       }
       try {
         router.clear();
@@ -40,11 +39,11 @@ export default function systempromptJsunit() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("prompt each called");
     });
-    it('promptTest_0100', 0, async function (done) {
+    it('promptTest_0100', 0, async (done: Function) => {
       console.info('promptTest_0100 is start');
       await Utils.sleep(1500);
       console.info("promptTest_0100 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
@@ -52,7 +51,7 @@ export default function systempromptJsunit() {
       console.info('promptTest_0100 END');
       done();
     });
-    it('promptTest_0200', 0, async function (done) {
+    it('promptTest_0200', 0, async (done: Function) => {
       console.info('promptTest_0200 is start');
       await Utils.sleep(1500);
       console.info("promptTest_0200 click result is: " + JSON.stringify(sendEventByKey('button2',10,"")));

@@ -33,11 +33,11 @@ struct CheckBoxGroupSelectAll {
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[CheckBoxGroup] page stateChangCallBack");
     if (eventData != null) {
       console.info("[CheckBoxGroup] page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.isSelect != null) {
+      if (eventData.data?.isSelect != null) {
         this.isSelect = eventData.data.isSelect;
       }
     }
@@ -51,7 +51,7 @@ struct CheckBoxGroupSelectAll {
     Log.showInfo(TAG, `aboutToDisAppear CheckBoxGroupSelectAll end`)
   }
 
-  showToast(message) {
+  showToast(message: string) {
     prompt.showToast({
       message: message,
       duration: 2000

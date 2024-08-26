@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -21,8 +21,8 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
   describe('textPickerDefaultPickerItemHeightTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TextPicker/textPicker',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TextPicker/textPicker',
       }
       try {
         router.clear();

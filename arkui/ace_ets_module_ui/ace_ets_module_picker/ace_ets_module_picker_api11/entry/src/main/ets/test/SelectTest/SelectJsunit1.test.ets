@@ -70,7 +70,7 @@ export default function selectJsunit() {
         console.info("[selectTest_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[selectTest_0200] change component data error: " + err.message);
+        console.log("[selectTest_0200] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('select');
@@ -111,7 +111,7 @@ export default function selectJsunit() {
         console.info("[selectTest_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[selectTest_0400] change component data error: " + err.message);
+        console.log("[selectTest_0400] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('select');
@@ -149,7 +149,7 @@ export default function selectJsunit() {
         console.info("[selectTest_0600] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[selectTest_0600] change component data error: " + err.message);
+        console.log("[selectTest_0600] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('select');
@@ -175,7 +175,7 @@ export default function selectJsunit() {
         console.info("[selectTest_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[selectTest_0700] change component data error: " + err.message);
+        console.log("[selectTest_0700] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('select');
@@ -200,7 +200,7 @@ export default function selectJsunit() {
         console.info("[selectTest_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[selectTest_0800] change component data error: " + err.message);
+        console.log("[selectTest_0800] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('select');
@@ -225,7 +225,7 @@ export default function selectJsunit() {
         console.info("[selectTest_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[selectTest_0900] change component data error: " + err.message);
+        console.log("[selectTest_0900] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('select');
@@ -249,7 +249,7 @@ export default function selectJsunit() {
         console.info("[selectTest_1000] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[selectTest_1000] change component data error: " + err.message);
+        console.log("[selectTest_1000] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('select');

@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -62,7 +63,7 @@ struct stageTimePickerDialog {
               console.info("showDialog start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (error) {
-              console.error("showToast emit action state err:" + JSON.stringify(error.message));
+              console.error("showToast emit action state err:" + JSON.stringify((error as Error).message));
             }
             ;
           })
@@ -152,7 +153,7 @@ struct stageTimePickerDialog {
               console.info("showActionMenu start to emit action state")
               events_emitter.emit(backEvent2, backData2)
             } catch (error) {
-              console.error(`showActionMenu args error code is ${error.code}, message is ${error.message}`);
+              console.error(`showActionMenu args error code is ${(error as BusinessError).code}, message is ${(error as Error).message}`);
             }
           })
       }

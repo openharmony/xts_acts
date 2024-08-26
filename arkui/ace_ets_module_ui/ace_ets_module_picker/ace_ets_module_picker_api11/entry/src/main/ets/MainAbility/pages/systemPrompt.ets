@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,11 +35,11 @@ struct promptExample {
                   color: this.color,
                 },
               ],
-              success: function(data) {
-                console.log('dialog success callback，click button : ' + data.tapIndex);
+              success: (tapIndex: number) => {
+                console.log('dialog success callback，click button : ' + tapIndex);
               },
-              fail: function(data) {
-                console.log('dialog fail callback' + data.errMsg);
+              fail: (errMsg: string) => {
+                console.log('dialog fail callback' + errMsg);
               },
             });
       })
@@ -59,10 +58,10 @@ struct promptExample {
               color: this.color,
             },
           ],
-          success: function(data) {
+          success: (data) => {
             console.log('dialog success callback，click button : ' + data.index);
           },
-          cancel: function() {
+          cancel: () => {
             console.log('dialog cancel callback');
           },
         });
