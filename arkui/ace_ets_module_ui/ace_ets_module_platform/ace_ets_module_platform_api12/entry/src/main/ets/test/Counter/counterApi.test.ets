@@ -76,7 +76,7 @@ export default function counterApi() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('counterApiText2');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[counterApi_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 

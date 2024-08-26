@@ -14,27 +14,26 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function composeListItemOperateItemSwitch() {
-  describe('composeListItemOperateItemSwitch', function () {
-    beforeEach(async function (done) {
+  describe('composeListItemOperateItemSwitch', () => {
+    beforeEach(async (done: Function) => {
       console.info('composeListItemOperateItemSwitch beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/composeListItem/composeListItemOperateItemSwitch',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/composeListItem/composeListItemOperateItemSwitch',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get composeListItemOperateItemSwitch state pages: ' + JSON.stringify(pages));
         if (!('composeListItemOperateItemSwitch' == pages.name)) {
           console.info('get composeListItemOperateItemSwitch pages.name: ' + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push composeListItemOperateItemSwitch page result: ' + JSON.stringify(result));
+          console.info('push composeListItemOperateItemSwitch page result successful');
         }
       } catch (err) {
         console.error('push composeListItemOperateItemSwitch page error: ' + err);
@@ -45,7 +44,7 @@ export default function composeListItemOperateItemSwitch() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('composeListItemOperateItemSwitch after each called');
     })
@@ -58,7 +57,7 @@ export default function composeListItemOperateItemSwitch() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('composeListItemOperateItemSwitch_0100', 0, async function (done) {
+    it('composeListItemOperateItemSwitch_0100', 0, async (done: Function) => {
       console.info('[composeListItemOperateItemSwitch_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

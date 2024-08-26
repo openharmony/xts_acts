@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function getPosition() {
-  describe('getPosition', function () {
-    beforeEach(async function (done) {
+  describe('getPosition', () => {
+    beforeEach(async (done: Function) => {
       console.info("getPosition beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/FrameNode/getPosition",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/FrameNode/getPosition",
       }
       try {
         router.clear();
@@ -49,15 +49,15 @@ export default function getPosition() {
      * @tc.type :
      * @tc.size :
      */
-    it('getPosition_0100', 0, async function (done) {
+    it('getPosition_0100', 0, async (done: Function) => {
       console.info('getPosition_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('getPositionToScreen'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('getPositionToScreenValue');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('getPositionToScreenValue');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getPosition_0100] component obj is: " + JSON.stringify(obj));
       expect(Math.floor(obj.$attrs.content)).assertEqual(0);
       console.info('[getPosition_0100] END');
@@ -72,15 +72,15 @@ export default function getPosition() {
      * @tc.type :
      * @tc.size :
      */
-    it('getPosition_0200', 0, async function (done) {
+    it('getPosition_0200', 0, async (done: Function) => {
       console.info('getPosition_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('getPositionToParentWithTransform'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('getPositionToParentWithTransformValue');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('getPositionToParentWithTransformValue');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getPosition_0200] component obj is: " + JSON.stringify(obj));
       expect(Math.floor(obj.$attrs.content)).assertEqual(0);
       console.info('[getPosition_0200] END');
@@ -95,15 +95,15 @@ export default function getPosition() {
      * @tc.type :
      * @tc.size :
      */
-    it('getPosition_0300', 0, async function (done) {
+    it('getPosition_0300', 0, async (done: Function) => {
       console.info('getPosition_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('getPositionToWindowWithTransform'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('getPositionToWindowWithTransformValue');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('getPositionToWindowWithTransformValue');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getPosition_0300] component obj is: " + JSON.stringify(obj));
       expect(Math.floor(obj.$attrs.content)).assertEqual(0);
       console.info('[getPosition_0300] END');
@@ -118,15 +118,15 @@ export default function getPosition() {
      * @tc.type :
      * @tc.size :
      */
-    it('getPosition_0400', 0, async function (done) {
+    it('getPosition_0400', 0, async (done: Function) => {
       console.info('getPosition_0400 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('getPositionToScreenWithTransform'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('getPositionToScreenWithTransformValue');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('getPositionToScreenWithTransformValue');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getPosition_0400] component obj is: " + JSON.stringify(obj));
       expect(Math.floor(obj.$attrs.content)).assertEqual(0);
       console.info('[getPosition_0400] END');

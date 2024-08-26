@@ -15,26 +15,25 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from '../Utils';
 
 export default function tipsDialogTest() {
-  describe('tipsDialogTest', function () {
-    beforeEach(async function (done) {
+  describe('tipsDialogTest', () => {
+    beforeEach(async (done: Function) => {
       console.info('tipsDialogTest beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/dialog/tipsDialogTest',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/dialog/tipsDialogTest',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get tipsDialogTest state pages: ' + JSON.stringify(pages));
         if (!('tipsDialogTest' == pages.name)) {
           console.info('get tipsDialogTest pages.name: ' + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push tipsDialogTest page result: ' + JSON.stringify(result));
+          console.info('push tipsDialogTest page result successful');
         }
       } catch (err) {
         console.error('push tipsDialogTest page error: ' + err);
@@ -45,7 +44,7 @@ export default function tipsDialogTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('tipsDialogTest after each called');
     })
@@ -58,7 +57,7 @@ export default function tipsDialogTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('tipsDialogTest_0100', 0, async function (done) {
+    it('tipsDialogTest_0100', 0, async (done: Function) => {
       console.info('[tipsDialogTest_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

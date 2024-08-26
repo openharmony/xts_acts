@@ -39,7 +39,7 @@ parse_target_subsystem()
         fi
         # 仓名映射target名
         jq_cmd="cat $target_subsystem_config | jq -r '.[] | select( .name == \"${repo}\") | .buildTarget'"
-        xts_target=`eval $jq_cmd`
+        xts_target=$(eval $jq_cmd)
         if [[ -z "${xts_target}" ]];then
             match_status=false
         fi
@@ -54,6 +54,12 @@ parse_target_subsystem()
 }
 
 CACHE_TYPE=""
+
+define_CACHE_TYPE() {
+    echo $CACHE_TYPE
+}
+define_CACHE_TYPE
+
 parse_args()
 {   
     while [ -n "$1" ]
@@ -75,7 +81,7 @@ remaining_params=$@
 do_make()
 {
     cd $BASE_HOME
-    if [[ ${match_status} == false || "$xts_targets" =~ "xts_acts" ]];then
+    if [[ "${match_status}" == false || "$xts_targets" =~ "xts_acts" ]];then
         if [ -z "$CACHE_TYPE" ]; then
 	        ./test/xts/acts/build.sh product_name=rk3568 system_size=standard $remaining_params
         else

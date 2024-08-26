@@ -26,9 +26,13 @@ export default function SendableChainTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_CHAIN_001
          * @tc.name: testChainedPath0
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it('testChainedPath0', 0, async (done: Function) => {
            let result = await skipConditional("testChainedPath0 in progress", true, testChainedPath0);
@@ -37,9 +41,13 @@ export default function SendableChainTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_CHAIN_002
          * @tc.name: testChainedPath1
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it('testChainedPath1', 0, async (done: Function) => {
            let result = await testChainedPath1();
@@ -48,9 +56,13 @@ export default function SendableChainTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_CHAIN_003
          * @tc.name: testChainedPath0Negative
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it('testChainedPath0Negative', 0, async (done: Function) => {
            let result = await skipConditional("testChainedPath0Negative in progress", true, testChainedPath0Negative);
@@ -59,9 +71,13 @@ export default function SendableChainTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_CHAIN_004
          * @tc.name: testChainedPath0Negative
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it('In_Progress_testChainedPath2', 0, async (done: Function) => {
            let result = await skipConditional("testChainedPath2 in progress", true, testChainedPath2);

@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function borderStyles() {
-  describe('borderStyles', function () {
-    beforeEach(async function (done) {
+  describe('borderStyles', () => {
+    beforeEach(async (done: Function) => {
       console.info("borderStyles beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Graphics/borderStyles',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Graphics/borderStyles',
       }
       try {
         router.clear();
@@ -51,15 +51,15 @@ export default function borderStyles() {
      * @tc.type : 
      * @tc.size :
      */
-    it('borderStyles_0100', 0, async function (done) {
+    it('borderStyles_0100', 0, async (done: Function) => {
       console.info('borderStyles_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('borderStylesClick'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('borderStylesValue');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('borderStylesValue');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[borderStyles_0100] component obj is: " + JSON.stringify(obj));
       console.info("[borderStyles_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('borderStyleValue:2');

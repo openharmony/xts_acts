@@ -49,6 +49,17 @@
         "MainAbility/pages/GestureRecognizer/GestureRecognizerState",
 	"MainAbility/pages/PanGesture/Gesture",
 	"MainAbility/pages/DragController/UIContextDragController",
-        "MainAbility/pages/tapGestureAddInterface/tapgestures"
+        "MainAbility/pages/tapGestureAddInterface/tapgestures",
+    
+        "MainAbility/pages/customGestureTest/btnMonoLongPress",
+        "MainAbility/pages/customGestureTest/btnMonoTouch",
+        "MainAbility/pages/customGestureTest/columnMonopolize",
+        "MainAbility/pages/customGestureTest/columnMonopolizeFalse",
+        "MainAbility/pages/customGestureTest/listMonopolize",
+        "MainAbility/pages/customGestureTest/gestureClick",
+        "MainAbility/pages/customGestureTest/buttonDragStart",
+        "MainAbility/pages/customGestureTest/dragIsSystem",
+        "MainAbility/pages/customGestureTest/clickIsSystem",
+        "MainAbility/pages/customGestureTest/gestureParallel"
     ]
 }

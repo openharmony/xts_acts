@@ -45,7 +45,7 @@ struct XComponentNodeIndex {
   @State uiContext: UIContext | undefined = this.getUIContext?.();
   @State type: XComponentType = XComponentType.SURFACE
   @State idText: string = "xcomponentId"
-  private xComponentNodeController: XComponentNodeController = new XComponentNodeController(this.uiContext, this.idText, this.type)
+  private xComponentNodeController: XComponentNodeController = new XComponentNodeController(this.uiContext!, this.idText, this.type)
   @State falg: boolean = false
 
   build() {

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function createNodeBlank() {
-  describe('createNodeBlank', function () {
-    beforeEach(async function (done) {
+  describe('createNodeBlank', () => {
+    beforeEach(async (done: Function) => {
       console.info("createNodeBlank beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/FrameNode/createNodeBlank",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/FrameNode/createNodeBlank",
       }
       try {
         router.clear();
@@ -49,15 +49,15 @@ export default function createNodeBlank() {
      * @tc.type :
      * @tc.size :
      */
-    it('createNodeBlank_0100', 0, async function (done) {
+    it('createNodeBlank_0100', 0, async (done: Function) => {
       console.info('createNodeBlank_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('createNodeBlankType'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('createNodeBlankText');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('createNodeBlankText');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[createNodeBlank_0100] component obj is: " + JSON.stringify(obj));
       console.info("[createNodeBlank_0100] content obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('"Blank"');

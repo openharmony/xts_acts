@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function typeNodeListTest() {
-  describe('typeNodeListTest', function () {
-    beforeEach(async function (done) {
+  describe('typeNodeListTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("ListTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/typeNode/List",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/typeNode/List",
       }
       try {
         router.clear();
@@ -50,15 +50,15 @@ export default function typeNodeListTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ListTest_0100', 0, async function (done) {
+    it('ListTest_0100', 0, async (done: Function) => {
       console.info('ListTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('TypeNode_List'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('TypeNode_List');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('TypeNode_List');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ListTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('List');
       console.info('[ListTest_0100] END');

@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function LengthUnitTest() {
-  describe('LengthUnitTest', function () {
-    beforeEach(async function (done) {
+  describe('LengthUnitTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("LengthUnitTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Graphics/LengthUnit",
       }
       try {
@@ -40,7 +40,7 @@ export default function LengthUnitTest() {
       console.info("LengthUnitTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("LengthUnitTest after each called");
     });
@@ -53,7 +53,7 @@ export default function LengthUnitTest() {
      * @tc.type
     * @tc.size
      */
-    it('LengthUnitTest_001', 0, async function (done) {
+    it('LengthUnitTest_001', 0, async (done: Function) => {
       console.info('[LengthUnitTest_001] START');
       await CommonFunc.sleep(1000);
       let span_px = getInspectorByKey('span_px');
@@ -72,7 +72,7 @@ export default function LengthUnitTest() {
      * @tc.type
     * @tc.size
      */
-    it('LengthUnitTest_002', 0, async function (done) {
+    it('LengthUnitTest_002', 0, async (done: Function) => {
       console.info('[LengthUnitTest_002] START');
       await CommonFunc.sleep(1000);
       let span_fp = getInspectorByKey('span_fp');
@@ -91,7 +91,7 @@ export default function LengthUnitTest() {
      * @tc.type
     * @tc.size
      */
-    it('LengthUnitTest_003', 0, async function (done) {
+    it('LengthUnitTest_003', 0, async (done: Function) => {
       console.info('[LengthUnitTest_003] START');
       await CommonFunc.sleep(1000);
       let span_percent = getInspectorByKey('span_percent');
@@ -111,7 +111,7 @@ export default function LengthUnitTest() {
      * @tc.type
     * @tc.size
      */
-    it('LengthUnitTest_004', 0, async function (done) {
+    it('LengthUnitTest_004', 0, async (done: Function) => {
       console.info('[LengthUnitTest_004] START');
       await CommonFunc.sleep(1000);
       let span_lpx = getInspectorByKey('span_lpx');

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function onAppear() {
-  describe('onAppear', function () {
-    beforeEach(async function (done) {
+  describe('onAppear', () => {
+    beforeEach(async (done: Function) => {
       console.info("onAppear beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/FrameNode/onAppear",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/FrameNode/onAppear",
       }
       try {
         router.clear();
@@ -49,11 +49,11 @@ export default function onAppear() {
      * @tc.type :
      * @tc.size :
      */
-    it('onAppear_0100', 0, async function (done) {
+    it('onAppear_0100', 0, async (done: Function) => {
       console.info('onAppear_0100 START');
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('setOnAppear');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('setOnAppear');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[onAppear_0100] component obj is: " + JSON.stringify(obj));
       console.info("[onAppear_0100] content obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("setOnAppear success");
@@ -69,15 +69,15 @@ export default function onAppear() {
      * @tc.type :
      * @tc.size :
      */
-    it('onAppear_0200', 0, async function (done) {
+    it('onAppear_0200', 0, async (done: Function) => {
       console.info('onAppear_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('setOnDisappear'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('setOnAppear');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('setOnAppear');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[onAppear_0200] component obj is: " + JSON.stringify(obj));
       console.info("[onAppear_0200] content obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("setOnDisappear success");

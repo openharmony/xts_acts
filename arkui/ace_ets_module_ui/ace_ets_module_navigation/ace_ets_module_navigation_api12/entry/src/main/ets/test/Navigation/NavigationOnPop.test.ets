@@ -71,7 +71,7 @@ export default function NavigationOnPop() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('NavigationOnPop_text1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[NavigationOnPop_0100] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('page:pageOne;param:str;result:{"value":"pageOnePop"}');

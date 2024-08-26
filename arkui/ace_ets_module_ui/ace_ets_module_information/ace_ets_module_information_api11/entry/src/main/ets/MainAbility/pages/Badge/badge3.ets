@@ -21,34 +21,34 @@ struct Badge3Example {
   @State message: string = 'new';
   @State fontSizeValue: number = 20;
   @State colorValue: Color = Color.Red;
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Badge page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.fontSizeValue != null) {
-        this.fontSizeValue = eventData.data.fontSizeValue;
+      if (eventData.data?.fontSizeValue != null) {
+        this.fontSizeValue = eventData.data?.fontSizeValue;
       }
-      if (eventData.data.colorValue != null) {
-        this.colorValue = eventData.data.colorValue;
+      if (eventData.data?.colorValue != null) {
+        this.colorValue = eventData.data?.colorValue;
       }
-      if (eventData.data.message != null) {
-        this.message = eventData.data.message;
+      if (eventData.data?.message != null) {
+        this.message = eventData.data?.message;
       }
     }
   }
 
   onPageShow() {
     console.info('Badge page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 63,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
-    var stateChangeEventOne = {
+    let stateChangeEventOne: events_emitter.InnerEvent = {
       eventId: 64,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack);
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 65,
       priority: events_emitter.EventPriority.LOW
     }

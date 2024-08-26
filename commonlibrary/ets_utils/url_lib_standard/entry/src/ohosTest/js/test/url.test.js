@@ -5547,4 +5547,59 @@ describe('UrlFunTest', function () {
         object.params.sort();
         expect(object.toString()).assertEqual('https://sssw.dasf/');
     })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_33200
+   * @tc.name: testUrlparseURL0066
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0066', 0, function () {
+        const object = Url.URL.parseURL('https://www.test.com/path?query#fagmengt😀');
+        expect(object.toString()).assertEqual('https://www.test.com/path?query#fagmengt%F0%9F%98%80');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_33300
+   * @tc.name: testUrlparseURL0067
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0067', 0, function () {
+        const object = Url.URL.parseURL('https://www.test.com/path?query#fagme🆒ngt😀');
+        expect(object.toString()).assertEqual('https://www.test.com/path?query#fagme%F0%9F%86%92ngt%F0%9F%98%80');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_33400
+   * @tc.name: testUrlparseURL0068
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0068', 0, function () {
+        const object = Url.URL.parseURL('https://www.test.com/p🤣at看ヾ(≧▽≦*)oh?query#fagmengt');
+        let str = 'https://www.test.com/p%F0%9F%A4%A3at%E7%9C' +
+                '%8B%E3%83%BE(%E2%89%A7%E2%96%BD%E2%89%A6*)oh?query#fagmengt';
+        expect(object.toString()).assertEqual(str);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_33500
+   * @tc.name: testUrlparseURL0069
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0069', 0, function () {
+        const object = Url.URL.parseURL('https://us啊🌹er:pass@www.test.com/patoh?query#fagmengt');
+        let str = 'https://us%E5%95%8A%F0%9F%8C%B9er:pass@www.test.com/patoh?query#fagmengt';
+        expect(object.toString()).assertEqual(str);
+    })
 })}

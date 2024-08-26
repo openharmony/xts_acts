@@ -26,9 +26,13 @@ export default function TaskPoolTest() {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_TASK_001
      * @tc.name: testHappyPath
      * @tc.desc: checks most basic task pool use
      * @tc.author: oleg-ignatenko
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
      */
     it('testHappyPath', 0, async (done: Function) => {
       let result: Object = await testHappyPath();
@@ -37,9 +41,13 @@ export default function TaskPoolTest() {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_TASK_002
      * @tc.name: testTwoTasks
      * @tc.desc: checks task pool with two tasks
      * @tc.author: oleg-ignatenko
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('testTwoTasks', 0, async (done: Function) => {
       let result: Object = await testTwoTasks();
@@ -48,9 +56,13 @@ export default function TaskPoolTest() {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_TASK_003
      * @tc.name: testManyTasks
      * @tc.desc: checks task pool with many tasks
      * @tc.author: oleg-ignatenko
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('testManyTasks', 0, async (done: Function) => {
       let result: Object = await testManyTasks();
@@ -59,9 +71,13 @@ export default function TaskPoolTest() {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_TASK_004
      * @tc.name: testTwoTasksChained
      * @tc.desc: checks task pool with two tasks chained
      * @tc.author: oleg-ignatenko
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('testTwoTasksChained', 0, async (done: Function) => {
       let result: Object = await testTwoTasksChained();
@@ -70,9 +86,13 @@ export default function TaskPoolTest() {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_TASK_005
      * @tc.name: testManyTasksChained
      * @tc.desc: checks task pool with many tasks chained
      * @tc.author: oleg-ignatenko
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('testManyTasksChained', 0, async (done: Function) => {
       let result: Object = await testManyTasksChained();
@@ -81,9 +101,13 @@ export default function TaskPoolTest() {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_TASK_006
      * @tc.name: testRepeats
      * @tc.desc: checks repeated use of task pool
      * @tc.author: oleg-ignatenko
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('testRepeats', 0, async (done: Function) => {
       let result: Object = await testRepeats();

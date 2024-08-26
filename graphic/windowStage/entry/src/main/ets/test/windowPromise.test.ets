@@ -302,12 +302,10 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setFullScreen(true)', done);
       });
       console.log(msgStr + 'tempWnd.setFullScreen(true) success');
-      await sleep(900);
       await tempWnd.setSystemBarEnable(['navigation']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status]) success');
-      await sleep(900);
       await tempWnd.setSystemBarEnable(['status']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status])', done);
       });
@@ -344,7 +342,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status]) success');
-      await sleep(800);
       await tempWnd.setSystemBarEnable(['navigation']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([navigation])', done);
       });
@@ -382,7 +379,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-      await sleep(900);
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
@@ -420,7 +416,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(900);
       await tempWnd.setSystemBarEnable([]).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
@@ -497,7 +492,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(900);
       let loopCount = commonRGBColorArr.length;
       for (let i = 0; i < loopCount; i++) {
         let tempColor = commonRGBColorArr[i];
@@ -552,7 +546,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(900);
       let loopCount: number = commonNUMBERColorArr.length;
       for (let i = 0; i < loopCount; i++) {
         let tempColor: string = commonNUMBERColorArr[i];
@@ -607,7 +600,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(900);
       let loopCount = commonKEYColorArr.length;
       for (let i = 0; i < loopCount; i++) {
         let tempColor = commonKEYColorArr[i];
@@ -1133,7 +1125,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let mainWin: ohosWindow.Window = tempMainWin as ohosWindow.Window;
       console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
       expect(!!mainWin).assertTrue();
-      await sleep(800)
       let snapshotData = await mainWin.snapshot().catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'mainWin.snapshot', done);
         console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
