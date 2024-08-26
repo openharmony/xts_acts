@@ -3065,8 +3065,12 @@ static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
     }
     int result3 = 0;
     std::function<void()>&& basicFunc3 = [&result3]() {result3 += addnum;};
+    const uint32_t taskDelayTime = 5000;
+    ffrt_task_attr_t taskAttr;
+    (void)ffrt_task_attr_init(&taskAttr);
+    ffrt_task_attr_set_delay(&taskAttr, taskDelayTime);
     ffrt_task_handle_t task3 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc3,
-        ffrt_function_kind_queue), nullptr);
+        ffrt_function_kind_queue), &taskAttr);
     int ret = ffrt_queue_cancel(task3);
     if (ret != 0 || result3 != 0) {
         result += 1;
@@ -3096,8 +3100,12 @@ static napi_value ffrt_loop_0002(napi_env env, napi_callback_info info)
     int result1 = 0;
     const int addTen = 10;
     std::function<void()>&& basicFunc1 = [&result1]() {result1 += addTen;};
+    const uint32_t taskDelayTime = 5000;
+    ffrt_task_attr_t taskAttr;
+    (void)ffrt_task_attr_init(&taskAttr);
+    ffrt_task_attr_set_delay(&taskAttr, taskDelayTime);
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc1,
-        ffrt_function_kind_queue), nullptr);
+        ffrt_function_kind_queue), &taskAttr);
     int result = 0;
     int ret1 = ffrt_queue_cancel(task1);
     if (ret1 != 0) {
@@ -3107,8 +3115,11 @@ static napi_value ffrt_loop_0002(napi_env env, napi_callback_info info)
     int result2 = 0;
     const int addTwenty = 20;
     std::function<void()>&& basicFunc2 = [&result2]() {result2 += addTwenty;};
+    ffrt_task_attr_t taskAttr2;
+    (void)ffrt_task_attr_init(&taskAttr2);
+    ffrt_task_attr_set_delay(&taskAttr2, taskDelayTime);
     ffrt_task_handle_t task2 = ffrt_queue_submit_h(queue_handle,
-        create_function_wrapper(basicFunc2, ffrt_function_kind_queue), nullptr);
+        create_function_wrapper(basicFunc2, ffrt_function_kind_queue), &taskAttr2);
     int ret2 = ffrt_queue_cancel(task2);
     if (ret2 != 0) {
         result += 1;
@@ -3418,15 +3429,19 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
     std::function<void()> &&SubFunc = [&res] () {SubForTest((void *)(&res));};
     std::function<void()> &&TwoPlusFunc = [&res] () {TwoPlusForTest((void *)(&res));};
     std::function<void()> &&TwoSubFunc = [&res] () {TwoSubForTest((void *)(&res));};
+    std::function<void()> &&SleepFunc = [&res] () {sleep(1);};
 
     const int taskCnt = 6;
     ffrt_task_attr_t task_attr[taskCnt];
     for (int i = 0; i < taskCnt; ++i) {
         (void)ffrt_task_attr_init(&task_attr[i]);
+        
         const ffrt_queue_priority_t pri = (ffrt_queue_priority_t)(taskCnt - i);
         ffrt_task_attr_set_queue_priority(&task_attr[i], pri);
     }
-
+    ffrt_task_attr_t task_attr_tmp;
+    ffrt_task_attr_set_queue_priority(&task_attr_tmp, ffrt_queue_priority_immediate);
+    ffrt_queue_submit(queue_handle, create_function_wrapper(SleepFunc, ffrt_function_kind_queue), &task_attr_tmp);
     ffrt_queue_submit(queue_handle, create_function_wrapper(TwoSubFunc, ffrt_function_kind_queue), &task_attr[0]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), &task_attr[1]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(DivFunc, ffrt_function_kind_queue), &task_attr[2]);
