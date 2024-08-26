@@ -15,16 +15,17 @@
 
 import { Constants } from '../../constants/Constants';
 import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export class AttrsManager {
   callBack?:Function;
 
   static change(caseName:string, setValue:ESObject) {
-    let eventData:ESObject = { 
+    let eventData:emitter.EventData = { 
       data: { 
         src: JSON.stringify({ value: setValue }) 
-      } as ESObject
-    } as ESObject
+      } 
+    } 
     AttrsManager.emitEvent(caseName, Constants.EVENT_ID_CHANGE_DATA, eventData);
   }
 
@@ -38,19 +39,19 @@ export class AttrsManager {
   }
 
   private onEvent(eventId: number) {
-    let stateChangeEvent:ESObject = {
+    let stateChangeEvent:emitter.InnerEvent = {
       eventId: eventId,
       priority: events_emitter.EventPriority.LOW
-    } as ESObject
+    } 
     events_emitter.off(eventId);
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
-  private static emitEvent(tag:string, eventId:number, eventData:ESObject) {
-    let innerEvent:ESObject = {
+  private static emitEvent(tag:string, eventId:number, eventData:emitter.EventData) {
+    let innerEvent:emitter.InnerEvent = {
       eventId: eventId,
       priority: events_emitter.EventPriority.LOW
-    } as ESObject
+    } 
     console.info(tag + ' start to publish emit');
     events_emitter.emit(innerEvent, eventData);
   }
