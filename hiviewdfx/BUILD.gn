@@ -26,6 +26,7 @@ group("hiviewdfxtestacts") {
       "hiappeventtest/hiappeventsubjstest:ActsHiAppeventSubTest",
       "hicheckertest/hicheckerjstest:hicheckerjstest",
       "hicheckertest/jsleakwatchertest:ActsJsLeakWatcherTest",
+      "hicollietest/hicolliendktest:ActsHicollieTest",
       "hidebugtest/hidebugtestcoltest:ActsHiDebugColTest",
       "hidebugtest/hidebugtestjstest:ActsHiDebugTest",
       "hilogtest/hilogdomainofftest:ActsHilogDomainOffJsTest",
