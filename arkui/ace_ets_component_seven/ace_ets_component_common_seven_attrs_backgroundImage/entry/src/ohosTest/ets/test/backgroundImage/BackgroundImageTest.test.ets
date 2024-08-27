@@ -32,7 +32,7 @@ export default function backgroundImageTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testBackgroundImage',
     pageName: 'backgroundImagePage',
     pageUrl: 'MainAbility/pages/backgroundImage/BackgroundImagePage',
@@ -47,22 +47,22 @@ export default function backgroundImageTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetBackgroundImage',
     setValue: {
       backgroundImage: 'resources/media/icon.png',
       repeat: ImageRepeat.NoRepeat
-    },
+    } as ESObject,
     expectValue: {
       backgroundImage: 'resources/media/icon.png, ImageRepeat.NoRepeat'
-    }
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('backgroundImageTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.error('[' + data.caseTag + '] backgroundImageTest.');
       console.error('[' + data.caseTag + '] backgroundImageTest. data.testValue.setValue.backgroundImage : ' + data.testValue.setValue.backgroundImage);
       console.error('[' + data.viewObj.$attrs.backgroundImage + '] backgroundImageTest. viewObj.$attrs.backgroundImage.');
