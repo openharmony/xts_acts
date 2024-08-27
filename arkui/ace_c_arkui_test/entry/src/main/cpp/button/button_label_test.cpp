@@ -17,8 +17,8 @@
 
 namespace ArkUICapiTest {
 
-static napi_value TestButtonLabel001(napi_env env, napi_callback_info info) 
-{   
+static napi_value TestButtonLabel001(napi_env env, napi_callback_info info)
+{
     NAPI_START(button, ARKUI_NODE_BUTTON);
 
     ArkUI_AttributeItem valueItem = {};

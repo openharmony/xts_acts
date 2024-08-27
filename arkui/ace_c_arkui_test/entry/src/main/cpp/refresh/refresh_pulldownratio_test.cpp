@@ -34,8 +34,8 @@ static napi_value TestRefreshPullDownRatio002(napi_env env, napi_callback_info i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_PULL_DOWN_RATIO, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(refresh, NODE_REFRESH_PULL_DOWN_RATIO)->value[PARAM_0].f32, 
-                PARAM_NEGATIVE_0_POINT_8);
+    ASSERT_NE(nodeAPI->getAttribute(refresh, NODE_REFRESH_PULL_DOWN_RATIO)->value[PARAM_0].f32,
+              PARAM_NEGATIVE_0_POINT_8);
     NAPI_END;
 }
 

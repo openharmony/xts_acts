@@ -28,9 +28,9 @@ static napi_value TestFlexOption001(napi_env env, napi_callback_info info)
     int32_t item_alignment = ARKUI_ITEM_ALIGNMENT_START;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
         {.i32 = item_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -55,10 +55,10 @@ static napi_value TestFlexOption002(napi_env env, napi_callback_info info)
     int32_t multi_flex_alignment = ARKUI_FLEX_ALIGNMENT_START;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
-        {.i32 = item_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
+        {.i32 = item_alignment},
         {.i32 = multi_flex_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -82,9 +82,9 @@ static napi_value TestFlexOption003(napi_env env, napi_callback_info info)
     int32_t item_alignment = ARKUI_ITEM_ALIGNMENT_AUTO;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
         {.i32 = item_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -109,10 +109,10 @@ static napi_value TestFlexOption004(napi_env env, napi_callback_info info)
     int32_t multi_flex_alignment = ARKUI_FLEX_ALIGNMENT_END;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
-        {.i32 = item_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
+        {.i32 = item_alignment},
         {.i32 = multi_flex_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -136,9 +136,9 @@ static napi_value TestFlexOption005(napi_env env, napi_callback_info info)
     int32_t item_alignment = ARKUI_ITEM_ALIGNMENT_AUTO;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
         {.i32 = item_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -162,9 +162,9 @@ static napi_value TestFlexOption006(napi_env env, napi_callback_info info)
     int32_t item_alignment = ARKUI_ITEM_ALIGNMENT_CENTER;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
         {.i32 = item_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -189,10 +189,10 @@ static napi_value TestFlexOption007(napi_env env, napi_callback_info info)
     int32_t multi_flex_alignment = ARKUI_FLEX_ALIGNMENT_CENTER;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
-        {.i32 = item_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
+        {.i32 = item_alignment},
         {.i32 = multi_flex_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -216,9 +216,9 @@ static napi_value TestFlexOption008(napi_env env, napi_callback_info info)
     int32_t item_alignment = ARKUI_ITEM_ALIGNMENT_AUTO;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
         {.i32 = item_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -242,9 +242,9 @@ static napi_value TestFlexOption009(napi_env env, napi_callback_info info)
     int32_t item_alignment = ARKUI_ITEM_ALIGNMENT_STRETCH;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
         {.i32 = item_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -268,9 +268,9 @@ static napi_value TestFlexOption010(napi_env env, napi_callback_info info)
     int32_t item_alignment = ARKUI_ITEM_ALIGNMENT_BASELINE;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
         {.i32 = item_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -295,10 +295,10 @@ static napi_value TestFlexOption011(napi_env env, napi_callback_info info)
     int32_t multi_flex_alignment = ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
-        {.i32 = item_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
+        {.i32 = item_alignment},
         {.i32 = multi_flex_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -323,10 +323,10 @@ static napi_value TestFlexOption012(napi_env env, napi_callback_info info)
     int32_t multi_flex_alignment = ARKUI_FLEX_ALIGNMENT_SPACE_AROUND;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
-        {.i32 = item_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
+        {.i32 = item_alignment},
         {.i32 = multi_flex_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -351,10 +351,10 @@ static napi_value TestFlexOption013(napi_env env, napi_callback_info info)
     int32_t multi_flex_alignment = ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
-        {.i32 = item_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
+        {.i32 = item_alignment},
         {.i32 = multi_flex_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -379,10 +379,10 @@ static napi_value TestFlexOption014(napi_env env, napi_callback_info info)
     int32_t multi_flex_alignment = ARKUI_FLEX_ALIGNMENT_CENTER;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
-        {.i32 = item_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
+        {.i32 = item_alignment},
         {.i32 = multi_flex_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -407,10 +407,10 @@ static napi_value TestFlexOption015(napi_env env, napi_callback_info info)
     int32_t multi_flex_alignment = ARKUI_FLEX_ALIGNMENT_START;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
-        {.i32 = item_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
+        {.i32 = item_alignment},
         {.i32 = multi_flex_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -435,10 +435,10 @@ static napi_value TestFlexOption016(napi_env env, napi_callback_info info)
     int32_t multi_flex_alignment = ARKUI_FLEX_ALIGNMENT_END;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
-        {.i32 = item_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
+        {.i32 = item_alignment},
         {.i32 = multi_flex_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -462,10 +462,10 @@ static napi_value TestFlexOption017(napi_env env, napi_callback_info info)
     int32_t multi_flex_alignment = ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN;
 
     ArkUI_NumberValue value[] = {
-        {.f32 = PARAM_50_POINT_5}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
-        {.i32 = item_alignment}, 
+        {.f32 = PARAM_50_POINT_5},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
+        {.i32 = item_alignment},
         {.i32 = multi_flex_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -491,10 +491,10 @@ static napi_value TestFlexOption018(napi_env env, napi_callback_info info)
     int32_t multi_flex_alignment = ARKUI_FLEX_ALIGNMENT_SPACE_AROUND;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.f32 = PARAM_50_POINT_5}, 
-        {.i32 = flex_alignment}, 
-        {.i32 = item_alignment}, 
+        {.i32 = direction},
+        {.f32 = PARAM_50_POINT_5},
+        {.i32 = flex_alignment},
+        {.i32 = item_alignment},
         {.i32 = multi_flex_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -520,10 +520,10 @@ static napi_value TestFlexOption019(napi_env env, napi_callback_info info)
     int32_t multi_flex_alignment = ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.f32 = PARAM_50_POINT_5}, 
-        {.i32 = item_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.f32 = PARAM_50_POINT_5},
+        {.i32 = item_alignment},
         {.i32 = multi_flex_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -548,10 +548,10 @@ static napi_value TestFlexOption020(napi_env env, napi_callback_info info)
     int32_t multi_flex_alignment = ARKUI_FLEX_ALIGNMENT_START;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
-        {.f32 = PARAM_50_POINT_5}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
+        {.f32 = PARAM_50_POINT_5},
         {.i32 = multi_flex_alignment}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
@@ -577,10 +577,10 @@ static napi_value TestFlexOption021(napi_env env, napi_callback_info info)
     int32_t item_alignment = ARKUI_ITEM_ALIGNMENT_CENTER;
 
     ArkUI_NumberValue value[] = {
-        {.i32 = direction}, 
-        {.i32 = wrap}, 
-        {.i32 = flex_alignment}, 
-        {.i32 = item_alignment}, 
+        {.i32 = direction},
+        {.i32 = wrap},
+        {.i32 = flex_alignment},
+        {.i32 = item_alignment},
         {.f32 = PARAM_50_POINT_5}
     };
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};

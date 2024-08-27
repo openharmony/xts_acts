@@ -29,7 +29,8 @@ static napi_value TestCalendarPickerHintRadius001(napi_env env, napi_callback_in
     };
     auto ret = nodeAPI->setAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS, &calendarPicker_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS)->value[PARAM_0].f32, hintRadius);
+    ASSERT_EQ(nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS)->value[PARAM_0].f32,
+              hintRadius);
     NAPI_END;
 }
 
@@ -46,7 +47,8 @@ static napi_value TestCalendarPickerHintRadius002(napi_env env, napi_callback_in
     auto ret = nodeAPI->setAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS, &calendarPicker_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS)->value[PARAM_0].f32, hintRadius);
+        ASSERT_NE(nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS)->value[PARAM_0].f32,
+                  hintRadius);
     }
     NAPI_END;
 }
@@ -63,7 +65,8 @@ static napi_value TestCalendarPickerHintRadius003(napi_env env, napi_callback_in
     };
     auto ret = nodeAPI->setAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS, &calendarPicker_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS)->value[PARAM_0].f32, hintRadius);
+    ASSERT_EQ(nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS)->value[PARAM_0].f32,
+              hintRadius);
     NAPI_END;
 }
 
