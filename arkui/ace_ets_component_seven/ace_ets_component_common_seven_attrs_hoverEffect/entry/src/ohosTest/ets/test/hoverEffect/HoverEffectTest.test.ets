@@ -33,7 +33,7 @@ export default function hoverEffectTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testHoverEffect',
     pageName: 'HoverEffectPage',
     pageUrl: 'MainAbility/pages/hoverEffect/HoverEffectPage',
@@ -48,21 +48,21 @@ export default function hoverEffectTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetHoverEffect',
     setValue: {
-      hoverEffect: HoverEffect.Scale
-    },
+     hoverEffect: HoverEffect.Scale
+    } as ESObject,
     expectValue: {
       hoverEffect: 'HoverEffect.Scale'
-    }
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('hoverEffectTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.info('[' + data.caseTag + ']' + 'hoverEffect is:' + data.viewObj.$attrs.hoverEffect);
       expect(data.viewObj.$attrs.hoverEffect)
         .assertEqual(data.testValue.expectValue.hoverEffect);
