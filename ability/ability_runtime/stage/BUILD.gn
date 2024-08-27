@@ -17,6 +17,7 @@ group("stage") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "actsbacktocallerabilitytest:ActsBackToCallerAbilityTest",
       "actscontextdirareamodetest:ActsContextDirAreaModeTest",
       "actsdebuggabletest:actsdebuggabletest",
       "actseuripermission:ActsServiceExtensionUriPermissionTest",
@@ -30,7 +31,6 @@ group("stage") {
       "actsuripermission:ActsUriPermission",
       "actswindowstagelifecyclemultihaptest:ActsWindowStageLifecycleMultiHapTest",
       "actswindowstagelifecyclesinglehaptest:ActsWindowStageLifecycleSingleHapTest",
-      "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
     ]
   }
 }

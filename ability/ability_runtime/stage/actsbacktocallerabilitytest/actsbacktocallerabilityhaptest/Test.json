@@ -11,8 +11,8 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsSEUriPermissionHapTest.hap",
-                "ActsSEUriPermissionAssistHap.hap"
+                "ActsBackToCallerAbilityHapTest.hap",
+                "ActsBackDemoHap.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
