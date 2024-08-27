@@ -17,20 +17,16 @@
 
 #define STR_TEXT  "content_test_with_no_meaning"
 
-namespace ArkUICapiTest
-{
+namespace ArkUICapiTest {
 
     static napi_value TestTextContent001(napi_env env, napi_callback_info info)
     {
         NAPI_START(text, ARKUI_NODE_TEXT);
 
-        // const char *value = TEXT_CONTENT_TEST;
         ArkUI_AttributeItem valueItem = {};
-        // valueItem.string = value;
         valueItem.string = STR_TEXT;
         auto ret = nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &valueItem);
         ASSERT_EQ(ret, SUCCESS);
-        // ASSERT_STREQ(nodeAPI->getAttribute(text, NODE_TEXT_CONTENT)->string, value);
         ASSERT_STREQ(nodeAPI->getAttribute(text, NODE_TEXT_CONTENT)->string, STR_TEXT);
         
         NAPI_END;

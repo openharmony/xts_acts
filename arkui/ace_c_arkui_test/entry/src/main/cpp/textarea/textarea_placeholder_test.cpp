@@ -17,8 +17,7 @@
 
 #define DEFAULT_TEXT  "please input here ..."
 
-namespace ArkUICapiTest
-{
+namespace ArkUICapiTest {
 
     static napi_value TestTextAreaPlaceholder001(napi_env env, napi_callback_info info)
     {

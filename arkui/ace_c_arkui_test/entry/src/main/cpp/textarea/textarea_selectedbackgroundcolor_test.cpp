@@ -37,7 +37,8 @@ static napi_value TestTextAreaSelectedBackgroundColor002(napi_env env, napi_call
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_SELECTED_BACKGROUND_COLOR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTED_BACKGROUND_COLOR)->value[PARAM_0].u32, COLOR_BLACK);
+    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTED_BACKGROUND_COLOR)->value[PARAM_0].u32, 
+                COLOR_BLACK);
     NAPI_END;
 }
 
@@ -48,7 +49,8 @@ static napi_value TestTextAreaSelectedBackgroundColor003(napi_env env, napi_call
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_SELECTED_BACKGROUND_COLOR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTED_BACKGROUND_COLOR)->value[PARAM_0].u32, COLOR_WHITE);
+    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTED_BACKGROUND_COLOR)->value[PARAM_0].u32, 
+                COLOR_WHITE);
     NAPI_END;
 }
 

@@ -39,12 +39,12 @@ static napi_value TestTextAreaSelectionMenuHidden002(napi_env env, napi_callback
 static napi_value TestTextAreaSelectionMenuHidden003(napi_env env, napi_callback_info info)
 {
     NAPI_START(textarea, ARKUI_NODE_TEXT_AREA);
-    ArkUI_NumberValue value[] = {{.i32 = -2}};
+    ArkUI_NumberValue value[] = {{.i32 = PARAM_NEGATIVE_2}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN)->value[PARAM_0].i32, -2);
+        ASSERT_NE(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN)->value[PARAM_0].i32, PARAM_NEGATIVE_2);
     }
     NAPI_END;
 }

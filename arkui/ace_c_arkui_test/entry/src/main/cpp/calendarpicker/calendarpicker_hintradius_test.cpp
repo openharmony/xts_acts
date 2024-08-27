@@ -20,27 +20,33 @@ namespace ArkUICapiTest {
 static napi_value TestCalendarPickerHintRadius001(napi_env env, napi_callback_info info)
 {
     NAPI_START(calendarPicker, ARKUI_NODE_CALENDAR_PICKER);
-    float hint_radius = 12;
+    float hintRadius = 12;
 
-    ArkUI_NumberValue calendarPicker_value[] = {{.f32 = hint_radius}};
-    ArkUI_AttributeItem calendarPicker_item = {calendarPicker_value, sizeof(calendarPicker_value) / sizeof(ArkUI_NumberValue)};
+    ArkUI_NumberValue calendarPicker_value[] = {{.f32 = hintRadius}};
+    ArkUI_AttributeItem calendarPicker_item = {
+        calendarPicker_value, 
+        sizeof(calendarPicker_value) / sizeof(ArkUI_NumberValue)
+    };
     auto ret = nodeAPI->setAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS, &calendarPicker_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS)->value[PARAM_0].f32, hint_radius);
+    ASSERT_EQ(nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS)->value[PARAM_0].f32, hintRadius);
     NAPI_END;
 }
 
 static napi_value TestCalendarPickerHintRadius002(napi_env env, napi_callback_info info)
 {
     NAPI_START(calendarPicker, ARKUI_NODE_CALENDAR_PICKER);
-    float hint_radius = -10;
+    float hintRadius = -10;
 
-    ArkUI_NumberValue calendarPicker_value[] = {{.f32 = hint_radius}};
-    ArkUI_AttributeItem calendarPicker_item = {calendarPicker_value, sizeof(calendarPicker_value) / sizeof(ArkUI_NumberValue)};
+    ArkUI_NumberValue calendarPicker_value[] = {{.f32 = hintRadius}};
+    ArkUI_AttributeItem calendarPicker_item = {
+        calendarPicker_value, 
+        sizeof(calendarPicker_value) / sizeof(ArkUI_NumberValue)
+    };
     auto ret = nodeAPI->setAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS, &calendarPicker_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS)->value[PARAM_0].f32, hint_radius);
+        ASSERT_NE(nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS)->value[PARAM_0].f32, hintRadius);
     }
     NAPI_END;
 }
@@ -48,13 +54,16 @@ static napi_value TestCalendarPickerHintRadius002(napi_env env, napi_callback_in
 static napi_value TestCalendarPickerHintRadius003(napi_env env, napi_callback_info info)
 {
     NAPI_START(calendarPicker, ARKUI_NODE_CALENDAR_PICKER);
-    float hint_radius = 16.5;
+    float hintRadius = 16.5;
 
-    ArkUI_NumberValue calendarPicker_value[] = {{.f32 = hint_radius}};
-    ArkUI_AttributeItem calendarPicker_item = {calendarPicker_value, sizeof(calendarPicker_value) / sizeof(ArkUI_NumberValue)};
+    ArkUI_NumberValue calendarPicker_value[] = {{.f32 = hintRadius}};
+    ArkUI_AttributeItem calendarPicker_item = {
+        calendarPicker_value, 
+        sizeof(calendarPicker_value) / sizeof(ArkUI_NumberValue)
+    };
     auto ret = nodeAPI->setAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS, &calendarPicker_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS)->value[PARAM_0].f32, hint_radius);
+    ASSERT_EQ(nodeAPI->getAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS)->value[PARAM_0].f32, hintRadius);
     NAPI_END;
 }
 

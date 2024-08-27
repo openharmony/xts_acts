@@ -23,7 +23,7 @@ static napi_value TestButtonType001(napi_env env, napi_callback_info info)
 
     int32_t  buttonType = ARKUI_BUTTON_TYPE_NORMAL;
     ArkUI_NumberValue  button_value[] = {{.i32 =  buttonType}};
-    ArkUI_AttributeItem  button_item = { button_value, sizeof( button_value) / sizeof(ArkUI_NumberValue)};
+    ArkUI_AttributeItem button_item = {button_value, sizeof(button_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_BUTTON_TYPE, & button_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(button, NODE_BUTTON_TYPE)->value[PARAM_0].i32,  buttonType);
@@ -37,7 +37,7 @@ static napi_value TestButtonType002(napi_env env, napi_callback_info info)
 
     int32_t  buttonType = ARKUI_BUTTON_TYPE_CAPSULE;
     ArkUI_NumberValue  button_value[] = {{.i32 =  buttonType}};
-    ArkUI_AttributeItem  button_item = { button_value, sizeof( button_value) / sizeof(ArkUI_NumberValue)};
+    ArkUI_AttributeItem button_item = {button_value, sizeof(button_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_BUTTON_TYPE, & button_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(button, NODE_BUTTON_TYPE)->value[PARAM_0].i32,  buttonType);
@@ -51,7 +51,7 @@ static napi_value TestButtonType003(napi_env env, napi_callback_info info)
 
     int32_t  buttonType = ARKUI_BUTTON_TYPE_CIRCLE;
     ArkUI_NumberValue  button_value[] = {{.i32 =  buttonType}};
-    ArkUI_AttributeItem  button_item = { button_value, sizeof( button_value) / sizeof(ArkUI_NumberValue)};
+    ArkUI_AttributeItem button_item = {button_value, sizeof(button_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_BUTTON_TYPE, & button_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(button, NODE_BUTTON_TYPE)->value[PARAM_0].i32,  buttonType);
@@ -65,7 +65,7 @@ static napi_value TestButtonType004(napi_env env, napi_callback_info info)
 
     int32_t  buttonType = SIZE_100;
     ArkUI_NumberValue  button_value[] = {{.i32 =  buttonType}};
-    ArkUI_AttributeItem  button_item = { button_value, sizeof( button_value) / sizeof(ArkUI_NumberValue)};
+    ArkUI_AttributeItem button_item = {button_value, sizeof(button_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_BUTTON_TYPE, & button_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     ASSERT_NE(nodeAPI->getAttribute(button, NODE_BUTTON_TYPE)->value[PARAM_0].i32,  buttonType);

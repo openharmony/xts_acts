@@ -19,33 +19,29 @@ namespace ArkUICapiTest {
 static napi_value TestRefreshOffset001(napi_env env, napi_callback_info info)
 {
     NAPI_START(refresh, ARKUI_NODE_REFRESH);
-    ArkUI_NumberValue value[] = {{.f32 = 80}};
+    ArkUI_NumberValue value[] = {{.f32 = PARAM_80}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_OFFSET, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(refresh, NODE_REFRESH_OFFSET)->value[PARAM_0].f32, 80);
+    ASSERT_EQ(nodeAPI->getAttribute(refresh, NODE_REFRESH_OFFSET)->value[PARAM_0].f32, PARAM_80);
     NAPI_END;
 }
 
 static napi_value TestRefreshOffset002(napi_env env, napi_callback_info info)
 {
     NAPI_START(refresh, ARKUI_NODE_REFRESH);
-    ArkUI_NumberValue value[] = {{.f32 = -100}};
+    ArkUI_NumberValue value[] = {{.f32 = PARAM_NEGATIVE_100}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_OFFSET, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(refresh, NODE_REFRESH_OFFSET)->value[PARAM_0].f32, -100);
+    ASSERT_NE(nodeAPI->getAttribute(refresh, NODE_REFRESH_OFFSET)->value[PARAM_0].f32, PARAM_NEGATIVE_100);
     NAPI_END;
 }
 
 static napi_value TestRefreshOffset003(napi_env env, napi_callback_info info)
 {
     NAPI_START(refresh, ARKUI_NODE_REFRESH);
-    // ArkUI_NumberValue value[] = {{.f32 = 0}};
-    // ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    // auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_OFFSET, &value_item);
-    // ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(refresh, NODE_REFRESH_OFFSET)->value[PARAM_0].f32, 64);
+    ASSERT_EQ(nodeAPI->getAttribute(refresh, NODE_REFRESH_OFFSET)->value[PARAM_0].f32, PARAM_64);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

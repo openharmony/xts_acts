@@ -20,12 +20,12 @@ namespace ArkUICapiTest {
 static napi_value TestTextAreaShowCounter001(napi_env env, napi_callback_info info)
 {
     NAPI_START(textarea, ARKUI_NODE_TEXT_AREA);
-    ArkUI_NumberValue value[] = {{.i32 = false}, {.f32 = 90}, {.i32 = true}};
+    ArkUI_NumberValue value[] = {{.i32 = false}, {.f32 = PARAM_90}, {.i32 = true}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER, &value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_0].i32, false);
-    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_1].f32, 90);
+    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_1].f32, PARAM_90);
     ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_2].i32, true);
     NAPI_END;
 }
@@ -33,12 +33,12 @@ static napi_value TestTextAreaShowCounter001(napi_env env, napi_callback_info in
 static napi_value TestTextAreaShowCounter002(napi_env env, napi_callback_info info)
 {
     NAPI_START(textarea, ARKUI_NODE_TEXT_AREA);
-    ArkUI_NumberValue value[] = {{.i32 = true}, {.f32 = 80}, {.i32 = false}};
+    ArkUI_NumberValue value[] = {{.i32 = true}, {.f32 = PARAM_80}, {.i32 = false}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER, &value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_0].i32, true);
-    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_1].f32, 80);
+    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_1].f32, PARAM_80);
     ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_2].i32, false);
     NAPI_END;
 }
@@ -46,24 +46,24 @@ static napi_value TestTextAreaShowCounter002(napi_env env, napi_callback_info in
 static napi_value TestTextAreaShowCounter003(napi_env env, napi_callback_info info)
 {
     NAPI_START(textarea, ARKUI_NODE_TEXT_AREA);
-    ArkUI_NumberValue value[] = {{.i32 = true}, {.f32 = 90}};
+    ArkUI_NumberValue value[] = {{.i32 = true}, {.f32 = PARAM_90}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER, &value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_0].i32, true);
-    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_1].f32, 90);
+    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_1].f32, PARAM_90);
     NAPI_END;
 }
 
 static napi_value TestTextAreaShowCounter004(napi_env env, napi_callback_info info)
 {
     NAPI_START(textarea, ARKUI_NODE_TEXT_AREA);
-    ArkUI_NumberValue value[] = {{.i32 = true}, {.f32 = 80.5}, {.i32 = true}};
+    ArkUI_NumberValue value[] = {{.i32 = true}, {.f32 = PARAM_80_POINT_5}, {.i32 = true}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER, &value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_0].i32, true);
-    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_1].f32, 80);
+    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_1].f32, PARAM_80);
     ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_2].i32, true);
     NAPI_END;
 }
@@ -82,13 +82,13 @@ static napi_value TestTextAreaShowCounter005(napi_env env, napi_callback_info in
 static napi_value TestTextAreaShowCounter006(napi_env env, napi_callback_info info)
 {
     NAPI_START(textarea, ARKUI_NODE_TEXT_AREA);
-    ArkUI_NumberValue value[] = {{.i32 = true}, {.f32 = 200}};
+    ArkUI_NumberValue value[] = {{.i32 = true}, {.f32 = PARAM_200}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER) != nullptr) {
         ASSERT_NE(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_0].i32, true);
-        ASSERT_NE(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_1].f32, 200);
+        ASSERT_NE(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_1].f32, PARAM_200);
     }
     NAPI_END;
 }
@@ -96,14 +96,14 @@ static napi_value TestTextAreaShowCounter006(napi_env env, napi_callback_info in
 static napi_value TestTextAreaShowCounter007(napi_env env, napi_callback_info info)
 {
     NAPI_START(textarea, ARKUI_NODE_TEXT_AREA);
-    ArkUI_NumberValue value[] = {{.i32 = true}, {.f32 = -100}, {.i32 = -1}};
+    ArkUI_NumberValue value[] = {{.i32 = true}, {.f32 = PARAM_NEGATIVE_100}, {.i32 = PARAM_NEGATIVE_1}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER) != nullptr) {
         ASSERT_NE(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_0].i32, true);
-        ASSERT_NE(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_1].f32, -100);
-        ASSERT_NE(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_2].i32, -1);
+        ASSERT_NE(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_1].f32, PARAM_NEGATIVE_100);
+        ASSERT_NE(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SHOW_COUNTER)->value[PARAM_2].i32, PARAM_NEGATIVE_1);
     }
     NAPI_END;
 }

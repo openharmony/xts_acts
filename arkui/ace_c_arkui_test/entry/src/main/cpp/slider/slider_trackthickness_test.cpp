@@ -19,11 +19,11 @@ namespace ArkUICapiTest {
 static napi_value TestSliderTrackThickness001(napi_env env, napi_callback_info info)
 {
     NAPI_START(slider, ARKUI_NODE_SLIDER);
-    ArkUI_NumberValue value[] = {{.f32 = 16}};
+    ArkUI_NumberValue value[] = {{.f32 = PARAM_16}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, 16);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_16);
     NAPI_END;
 }
 
