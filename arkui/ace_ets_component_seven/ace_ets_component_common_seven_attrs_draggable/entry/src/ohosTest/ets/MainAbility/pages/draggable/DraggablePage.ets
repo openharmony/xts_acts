@@ -766,18 +766,18 @@ struct DraggablePage {
 	@State _draggableWebModifier: WebModifier = new WebModifier()
 	@State _draggableWindowSceneModifier: WindowSceneModifier = new WindowSceneModifier()
 	@State _draggableXComponentModifier: XComponentModifier = new XComponentModifier()
-	@State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-	@State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-	@State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-	@State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-	@State columns: number = router.getParams() ? router.getParams()['view']['columns'] : 0
-	@State gutter: number = router.getParams() ? router.getParams()['view']['gutter'] : 0
-	@State parentBackGroundColor: string = router.getParams() ? router.getParams()['view']['parentBackGroundColor'] : ''
-	@State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
+	@State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+	@State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+	@State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+	@State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+	@State columns: number = router.getParams() ? (router.getParams() as ESObject)['view']['columns'] : 0
+	@State gutter: number = router.getParams() ? (router.getParams() as ESObject)['view']['gutter'] : 0
+	@State parentBackGroundColor: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentBackGroundColor'] : ''
+	@State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
 
 	onPageShow() {
 		console.info('draggable translate page show called ')
-		attrsManager.registerDataChange(value => {
+		attrsManager.registerDataChange((value:ESObject) => {
 			console.info('draggable [registerDataChange] ' + JSON.stringify(value.draggable))
 			this._draggableAlphabetIndexerModifier.draggable = value.draggable
 			this._draggableBadgeModifier.draggable = value.draggable
@@ -1194,7 +1194,7 @@ struct DraggablePage {
 				GridRow({ columns: 1, direction: GridRowDirection.Row }) {
 					ForEach(
 						[Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown],
-						(color) => {
+						(color:Color) => {
 							GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
 								Row()
 									.width('100%')
@@ -1316,13 +1316,13 @@ struct DraggablePage {
 			if (this.targetView == 'Scroll') {
 				Scroll() {
 					Column() {
-						ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+						ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item:number) => {
 							Text('Scroll' + item.toString())
 								.width('90%')
 								.height(50)
 								.backgroundColor(Color.White)
 								.textAlign(TextAlign.Center)
-						}, item => item)
+						}, (item:number) => item.toString())
 					}
 					.width('100%')
 				}
@@ -1333,7 +1333,7 @@ struct DraggablePage {
 			if (this.targetView == 'SideBarContainer') {
 				SideBarContainer(SideBarContainerType.Embed) {
 					Column() {
-						ForEach([1, 2, 3], (item) => {
+						ForEach([1, 2, 3], (item:number) => {
 							Column({ space: 5 }) {
 								Image($r('app.media.icon'))
 									.width(50)
@@ -1368,7 +1368,7 @@ struct DraggablePage {
 						Text('Swiper' + item)
 							.width('90%')
 							.height(50)
-					}, item => item)
+					}, (item:number) => item.toString())
 				}
 					.indicator(true)
 					.backgroundColor(Color.White)
@@ -1416,7 +1416,7 @@ struct DraggablePage {
 									.objectFit(ImageFit.Fill)
 							}
 						}
-					}, item => item)
+					}, (item:number) => item.toString())
 				}
 					.commonStyle()
 					.attributeModifier(this._draggableWaterFlowModifier)
@@ -1472,7 +1472,7 @@ struct DraggablePage {
 						.backgroundColor(Color.Yellow)
 						.commonStyle()
 						.attributeModifier(this._draggableFlowItemModifier)
-					}, item => item)
+					}, (item:number) => item.toString())
 				}
 					.backgroundColor(Color.Pink)
 					.width('100%')

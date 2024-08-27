@@ -33,7 +33,7 @@ export default function draggableTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testDraggable',
     pageName: 'DraggablePage',
     pageUrl: 'MainAbility/pages/draggable/DraggablePage',
@@ -48,21 +48,21 @@ export default function draggableTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetDraggable',
     setValue: {
       draggable: false
-    },
+    } as ESObject,
     expectValue: {
       draggable: 'false'
-    }
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('draggableTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.error('[' + data.caseTag + '] draggableTest.');
       console.error('[' + data.caseTag + '] draggableTest. data.testValue.setValue.draggable : ' + data.testValue.setValue.draggable);
       console.error('[' + data.viewObj.$attrs.draggable + '] draggableTest. viewObj.$attrs.draggable.');
