@@ -13,9 +13,8 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsAaAppDebugrely") {
+ohos_app_assist_suite("ActsAaAppDebugrely") {
   test_hap = true
-  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAaAppDebugrely"
 
