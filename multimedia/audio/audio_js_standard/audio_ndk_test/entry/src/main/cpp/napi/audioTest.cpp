@@ -4513,8 +4513,6 @@ static napi_value Init(napi_env env, napi_value exports)
             AudioSessionManagerUnregisterErro_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AudioSessionManagerUnregisterErro_002", nullptr,
             AudioSessionManagerUnregisterErro_002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"AudioSessionManagerUnregisterErro_003", nullptr,
-            AudioSessionManagerUnregisterErro_003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AudioSessionManagerReason_001", nullptr,
             AudioSessionManagerReason_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AudioSessionManagerReason_002", nullptr,
