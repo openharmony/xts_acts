@@ -50,7 +50,7 @@ export default function SecurityCryptoFwECCRfc5208TestUnit() {
      */
     it("SUB_Security_CryptoFramework_ECCRFC5915_Func_0100", 0, async (done: Function) => {
       try {
-        for (let algName of pkcs8Utils.ASY_ECC_KEY_SPEC) {
+        for (let algName of pkcs8Utils.ASY_ECC_KEY_SPEC_1) {
           let dataKeyPair: pkcs8Utils.dataKeyPair = await pkcs8Utils.generateRfc5915KeyPairEncoded(algName);
           let keyPair: cryptoFramework.KeyPair = await pkcs8Utils.convertDataKeyPairToKeyPair(algName, dataKeyPair);
           pkcs8Utils.generatePriKeyDerData(keyPair);
@@ -73,7 +73,65 @@ export default function SecurityCryptoFwECCRfc5208TestUnit() {
      */
     it("SUB_Security_CryptoFramework_ECCRFC5915_Func_0200", 0, async (done: Function) => {
       try {
-        for (let algName of pkcs8Utils.ASY_ECC_KEY_SPEC) {
+        for (let algName of pkcs8Utils.ASY_ECC_KEY_SPEC_1) {
+          let keyPair: cryptoFramework.KeyPair = await pkcs8Utils.generateRfc5915KeyPair(algName);
+          let dataDerKeyPair: cryptoFramework.DataBlob = pkcs8Utils.generatePriKeyDerData(keyPair);
+          let convertRFC5208KeyPair: cryptoFramework.KeyPair = await pkcs8Utils.generateRfc5208KeyPair(algName,
+            {dataPubKey:keyPair.pubKey.getEncoded(), dataPriKey: dataDerKeyPair});
+          let convertPubKey: cryptoFramework.DataBlob = convertRFC5208KeyPair.pubKey.getEncoded();
+          let convertPriKey: cryptoFramework.DataBlob = convertRFC5208KeyPair.priKey.getEncoded();
+          await pkcs8Utils.convertDataKeyPairToKeyPair(algName, {
+            dataPriKey: convertPriKey, dataPubKey: convertPubKey
+          });
+          expect(null).assertNull();
+        }
+      } catch (error) {
+        console.error(`ECC “${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+    
+    /**
+     * @tc.number SUB_Security_CryptoFramework_ECCRFC5915_Func_0201
+     * @tc.name Test ECC RFC5208 algorithm traversal test. Promise style. Process success
+     * @tc.desc algorithm is ECC
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_ECCRFC5915_Func_0201", 0, async (done: Function) => {
+      try {
+        for (let algName of pkcs8Utils.ASY_ECC_KEY_SPEC_2) {
+          let keyPair: cryptoFramework.KeyPair = await pkcs8Utils.generateRfc5915KeyPair(algName);
+          let dataDerKeyPair: cryptoFramework.DataBlob = pkcs8Utils.generatePriKeyDerData(keyPair);
+          let convertRFC5208KeyPair: cryptoFramework.KeyPair = await pkcs8Utils.generateRfc5208KeyPair(algName,
+            {dataPubKey:keyPair.pubKey.getEncoded(), dataPriKey: dataDerKeyPair});
+          let convertPubKey: cryptoFramework.DataBlob = convertRFC5208KeyPair.pubKey.getEncoded();
+          let convertPriKey: cryptoFramework.DataBlob = convertRFC5208KeyPair.priKey.getEncoded();
+          await pkcs8Utils.convertDataKeyPairToKeyPair(algName, {
+            dataPriKey: convertPriKey, dataPubKey: convertPubKey
+          });
+          expect(null).assertNull();
+        }
+      } catch (error) {
+        console.error(`ECC “${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+    
+    /**
+     * @tc.number SUB_Security_CryptoFramework_ECCRFC5915_Func_0202
+     * @tc.name Test ECC RFC5208 algorithm traversal test. Promise style. Process success
+     * @tc.desc algorithm is ECC
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_ECCRFC5915_Func_0202", 0, async (done: Function) => {
+      try {
+        for (let algName of pkcs8Utils.ASY_ECC_KEY_SPEC_3) {
           let keyPair: cryptoFramework.KeyPair = await pkcs8Utils.generateRfc5915KeyPair(algName);
           let dataDerKeyPair: cryptoFramework.DataBlob = pkcs8Utils.generatePriKeyDerData(keyPair);
           let convertRFC5208KeyPair: cryptoFramework.KeyPair = await pkcs8Utils.generateRfc5208KeyPair(algName,
