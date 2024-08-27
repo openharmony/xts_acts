@@ -32,7 +32,7 @@ export default function backgroundImageSizeTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testBackgroundImageSize',
     pageName: 'backgroundImageSizePage',
     pageUrl: 'MainAbility/pages/backgroundImageSize/BackgroundImageSizePage',
@@ -47,21 +47,21 @@ export default function backgroundImageSizeTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetBackgroundImageSize',
     setValue: {
-      backgroundImageSize: ({ width: '18px', height: '25.5px' })
-    },
+      backgroundImageSize: ({ width: '18px', height: '25.5px' } as ESObject)
+    } as ESObject,
     expectValue: {
       backgroundImageSize: '{\"width\":\"18.00px\",\"height\":\"25.50px\"}'
-    }
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('backgroundImageSizeTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.error('[' + data.caseTag + '] backgroundImageSizeTest.');
       console.error('[' + data.caseTag + '] backgroundImageSizeTest. data.testValue.setValue.backgroundImageSize : ' + data.testValue.setValue.backgroundImageSize);
       console.error('[' + data.viewObj.$attrs.backgroundImageSize + '] backgroundImageSizeTest. viewObj.$attrs.backgroundImageSize.');
