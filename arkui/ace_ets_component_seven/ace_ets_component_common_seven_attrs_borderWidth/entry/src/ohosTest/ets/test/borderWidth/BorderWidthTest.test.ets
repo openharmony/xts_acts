@@ -33,7 +33,7 @@ export default function borderWidthTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testBorderWidth',
     pageName: 'borderWidthPage',
     pageUrl: 'MainAbility/pages/borderWidth/BorderWidthPage',
@@ -48,21 +48,21 @@ export default function borderWidthTest() {
   }
 
   //The data type to be tested, this parameter is required.
-    let testValues = [{
+    let testValues:ESObject[]= [{
       describe: 'SetBorderWidth',
       setValue: {
         borderWidth: '10.00vp'
-      },
+      } as ESObject,
       expectValue: {
         borderWidth: '10.00vp',
-      }
-    }]
+      } as ESObject
+    } as ESObject]
 
   /**
    * Create test suite.
    */
   describe('borderWidthTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.info('[' + data.caseTag + ']' + 'borderWidth is:' + data.viewObj.$attrs.borderWidth);
       expect(data.viewObj.$attrs.borderWidth.left).assertEqual(data.testValue.expectValue.borderWidth);
       expect(data.viewObj.$attrs.borderWidth.top).assertEqual(data.testValue.expectValue.borderWidth);
