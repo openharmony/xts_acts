@@ -79,6 +79,8 @@
 #include "button/button_fontcolor_test.cpp"
 #include "button/button_fontweight_test.cpp"
 #include "button/button_backgroundcolor_test.cpp"
+#include "button/button_label_test.cpp"
+#include "button/button_type_test.cpp"
 #include "checkbox/checkbox_mark_test.cpp"
 #include "checkbox/checkbox_select_test.cpp"
 #include "checkbox/checkbox_selectedcolor_test.cpp"
@@ -317,6 +319,7 @@
 #include "text/text_borderradius_test.cpp"
 #include "text/text_borderwidth_test.cpp"
 #include "text/text_clip_test.cpp"
+#include "text/text_content_test.cpp"
 #include "text/text_copyoption_test.cpp"
 #include "text/text_decoration_test.cpp"
 #include "text/text_font_test.cpp"
@@ -397,6 +400,12 @@
 #include "imagespan/imagespan_verticalalign_test.cpp"
 #include "imagespan/imagespan_padding_test.cpp"
 #include "column/column_foregroundblurstyle_test.cpp"
+#include "textarea/textarea_bluronsubmit_test.cpp"
+#include "textarea/textarea_selectionmenuhidden_test.cpp"
+#include "textarea/textarea_showcounter_test.cpp"
+#include "textarea/textarea_selectedbackgroundcolor_test.cpp"
+#include "textarea/textarea_placeholder_test.cpp"
+#include "textarea/textarea_type_test.cpp"
 #include "textarea/textarea_width_test.cpp"
 #include "textarea/textarea_height_test.cpp"
 #include "textarea/textarea_position_test.cpp"
@@ -410,6 +419,7 @@
 #include "textinput/textinput_enterkeytype_test.cpp"
 #include "textinput/textinput_enablekeyboardonfocus_test.cpp"
 #include "calendarpicker/calendarpicker_width_test.cpp"
+#include "calendarpicker/calendarpicker_hintradius_test.cpp"
 #include "datepicker/datepicker_width_test.cpp"
 #include "checkbox/checkbox_width_test.cpp"
 #include "checkbox/checkbox_height_test.cpp"
@@ -417,6 +427,7 @@
 #include "textpicker/textpicker_height_test.cpp"
 #include "flex/flex_width_test.cpp"
 #include "flex/flex_height_test.cpp"
+#include "flex/flex_option_test.cpp"
 #include "xcomponent/xcomponent_width_test.cpp"
 #include "xcomponent/xcomponent_height_test.cpp"
 #include "row/row_height_test.cpp"
@@ -433,11 +444,18 @@
 #include "span/span_fontsize_test.cpp"
 #include "span/span_fontstyle_test.cpp"
 #include "span/span_fontweight_test.cpp"
+#include "span/span_content_test.cpp"
 #include "loadingprogress/loadingprogress_color_test.cpp"
 #include "loadingprogress/loadingprogress_enableloading_test.cpp"
 #include "progress/progress_color_test.cpp"
 #include "progress/progress_backgroundcolor_test.cpp"
 #include "progress/progress_style_test.cpp"
+#include "progress/progress_total_test.cpp"
+#include "progress/progress_value_test.cpp"
+#include "refresh/refresh_offset_test.cpp"
+#include "refresh/refresh_pulldownratio_test.cpp"
+#include "refresh/refresh_pulltorefresh_test.cpp"
+#include "refresh/refresh_refreshing_test.cpp"
 #include "textarea/textarea_backgroundcolor_test.cpp"
 #include "textarea/textarea_borderradius_test.cpp"
 #include "textarea/textarea_caretcolor_test.cpp"
@@ -473,6 +491,7 @@
 #include "slider/slider_step_test.cpp"
 #include "slider/slider_style_test.cpp"
 #include "slider/slider_trackcolor_test.cpp"
+#include "slider/slider_trackthickness_test.cpp"
 #include "slider/slider_value_test.cpp"
 #include "textinput/textinput_stopediting_test.cpp"
 #include "textinput/textinput_lineheight_test.cpp"
@@ -553,6 +572,11 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testButtonFontWeight014", nullptr, TestButtonFontWeight014, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testButtonFontWeight015", nullptr, TestButtonFontWeight015, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testButtonFontWeight016", nullptr, TestButtonFontWeight016, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonLabel001", nullptr, TestButtonLabel001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonType001", nullptr, TestButtonType001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonType002", nullptr, TestButtonType002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonType003", nullptr, TestButtonType003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonType004", nullptr, TestButtonType004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCheckboxMark001", nullptr, TestCheckboxMark001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCheckboxMark002", nullptr, TestCheckboxMark002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCheckboxMark003", nullptr, TestCheckboxMark003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1878,9 +1902,9 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testImageAniMator011", nullptr, TestImageAniMator011, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testListSwipeActionItem008", nullptr, listSwipeActionItem008, nullptr, nullptr, nullptr, napi_default,
-        nullptr},
+         nullptr},
         {"testListSwipeActionItem009", nullptr, listSwipeActionItem009, nullptr, nullptr, nullptr, napi_default,
-        nullptr},
+         nullptr},
         {"textTextStyleGraphic002", nullptr, TextTextStyleGraphic002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListItemClip001", nullptr, TestListItemClip001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListItemClip002", nullptr, TestListItemClip002, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -2090,6 +2114,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextClip010", nullptr, TestTextClip010, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextClip011", nullptr, TestTextClip011, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextClip012", nullptr, TestTextClip012, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextContent001", nullptr, TestTextContent001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextCopyOption001", nullptr, TestTextCopyOption001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextCopyOption002", nullptr, TestTextCopyOption002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextCopyOption003", nullptr, TestTextCopyOption003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -2509,6 +2534,12 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testScrollFriction002", nullptr, TestScrollFriction001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollPageEnable001", nullptr, TestScrollPageEnable001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollPageEnable002", nullptr, TestScrollPageEnable002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCalendarPickerHintRadius001", nullptr, TestCalendarPickerHintRadius001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerHintRadius002", nullptr, TestCalendarPickerHintRadius002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerHintRadius003", nullptr, TestCalendarPickerHintRadius003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"testCalendarPickerEdgeAlign001", nullptr, TestCalendarPickerEdgeAlign001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testCalendarPickerEdgeAlign002", nullptr, TestCalendarPickerEdgeAlign002, nullptr, nullptr, nullptr,
@@ -3713,6 +3744,28 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testFlexWidth001", nullptr, TestFlexWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testFlexWidth002", nullptr, TestFlexWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testFlexWidth003", nullptr, TestFlexWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption001", nullptr, TestFlexOption001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption002", nullptr, TestFlexOption002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption003", nullptr, TestFlexOption003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption004", nullptr, TestFlexOption004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption005", nullptr, TestFlexOption005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption006", nullptr, TestFlexOption006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption007", nullptr, TestFlexOption007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption008", nullptr, TestFlexOption008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption009", nullptr, TestFlexOption009, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption010", nullptr, TestFlexOption010, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption011", nullptr, TestFlexOption011, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption012", nullptr, TestFlexOption012, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption013", nullptr, TestFlexOption013, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption014", nullptr, TestFlexOption014, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption015", nullptr, TestFlexOption015, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption016", nullptr, TestFlexOption016, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption017", nullptr, TestFlexOption017, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption018", nullptr, TestFlexOption018, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption019", nullptr, TestFlexOption019, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption020", nullptr, TestFlexOption020, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption021", nullptr, TestFlexOption021, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption022", nullptr, TestFlexOption022, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testXComponentHeight001", nullptr, TestXComponentHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testXComponentHeight002", nullptr, TestXComponentHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testXComponentHeight003", nullptr, TestXComponentHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -3771,6 +3824,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testSpanFontWeight014", nullptr, TestSpanFontWeight014, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSpanFontWeight015", nullptr, TestSpanFontWeight015, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSpanFontWeight016", nullptr, TestSpanFontWeight016, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanContent001", nullptr, TestSpanContent001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testColumnHeight001", nullptr, TestColumnHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testColumnHeight002", nullptr, TestColumnHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testColumnHeight003", nullptr, TestColumnHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -3857,6 +3911,45 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextAreaHeight001", nullptr, TestTextAreaHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextAreaHeight002", nullptr, TestTextAreaHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextAreaHeight003", nullptr, TestTextAreaHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaBlurOnSubmit001", nullptr, TestTextAreaBlurOnSubmit001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaBlurOnSubmit002", nullptr, TestTextAreaBlurOnSubmit002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaBlurOnSubmit003", nullptr, TestTextAreaBlurOnSubmit003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaSelectionMenuHidden001", nullptr, TestTextAreaSelectionMenuHidden001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextAreaSelectionMenuHidden002", nullptr, TestTextAreaSelectionMenuHidden002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextAreaSelectionMenuHidden003", nullptr, TestTextAreaSelectionMenuHidden003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextAreaShowCounter001", nullptr, TestTextAreaShowCounter001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaShowCounter002", nullptr, TestTextAreaShowCounter002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaShowCounter003", nullptr, TestTextAreaShowCounter003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaShowCounter004", nullptr, TestTextAreaShowCounter004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaShowCounter005", nullptr, TestTextAreaShowCounter005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaShowCounter006", nullptr, TestTextAreaShowCounter006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaShowCounter007", nullptr, TestTextAreaShowCounter007, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaSelectedBackgroundColor001", nullptr, TestTextAreaSelectedBackgroundColor001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextAreaSelectedBackgroundColor002", nullptr, TestTextAreaSelectedBackgroundColor002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextAreaSelectedBackgroundColor003", nullptr, TestTextAreaSelectedBackgroundColor003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextAreaPlaceholder001", nullptr, TestTextAreaPlaceholder001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaType001", nullptr, TestTextAreaType001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaType002", nullptr, TestTextAreaType002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaType003", nullptr, TestTextAreaType003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaType004", nullptr, TestTextAreaType004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaType005", nullptr, TestTextAreaType005, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextAreaWidth001", nullptr, TestTextAreaWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextAreaWidth002", nullptr, TestTextAreaWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextAreaWidth003", nullptr, TestTextAreaWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -3874,12 +3967,12 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testTextInputCaretStyle003", nullptr, TestTextInputCaretStyle003, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"testTextInputSelectedBackgroundColor001", nullptr, TestTextInputSelectedBackgroundColor001, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"testTextInputSelectedBackgroundColor002", nullptr, TestTextInputSelectedBackgroundColor002, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"testTextInputSelectedBackgroundColor003", nullptr, TestTextInputSelectedBackgroundColor003, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
+        {"testTextInputSelectedBackgroundColor001", nullptr, TestTextInputSelectedBackgroundColor001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputSelectedBackgroundColor002", nullptr, TestTextInputSelectedBackgroundColor002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputSelectedBackgroundColor003", nullptr, TestTextInputSelectedBackgroundColor003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
         {"testTextInputShowPasswordIcon001", nullptr, TestTextInputShowPasswordIcon001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testTextInputShowPasswordIcon002", nullptr, TestTextInputShowPasswordIcon002, nullptr, nullptr, nullptr,
@@ -3938,6 +4031,33 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testProgressStyle004", nullptr, TestProgressStyle004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testProgressStyle005", nullptr, TestProgressStyle005, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testProgressStyle006", nullptr, TestProgressStyle006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressTotal001", nullptr, TestProgressTotal001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressTotal002", nullptr, TestProgressTotal002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressTotal003", nullptr, TestProgressTotal003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressValue001", nullptr, TestProgressValue001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressValue002", nullptr, TestProgressValue002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressValue003", nullptr, TestProgressValue003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRefreshOffset001", nullptr, TestRefreshOffset001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRefreshOffset002", nullptr, TestRefreshOffset002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRefreshOffset003", nullptr, TestRefreshOffset003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRefreshPullDownRatio001", nullptr, TestRefreshPullDownRatio001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshPullDownRatio002", nullptr, TestRefreshPullDownRatio002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshPullDownRatio003", nullptr, TestRefreshPullDownRatio003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshPullToRefresh001", nullptr, TestRefreshPullToRefresh001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshPullToRefresh002", nullptr, TestRefreshPullToRefresh002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshPullToRefresh003", nullptr, TestRefreshPullToRefresh003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshRefreshing001", nullptr, TestRefreshRefreshing001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshRefreshing002", nullptr, TestRefreshRefreshing002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshRefreshing003", nullptr, TestRefreshRefreshing003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"testTextAreaBackgroundColor001", nullptr, TestTextAreaBackGroundColor001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testTextAreaBackgroundColor002", nullptr, TestTextAreaBackGroundColor002, nullptr, nullptr, nullptr,
@@ -4226,6 +4346,14 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testSliderTrackColor004", nullptr, TestSliderTrackColor004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSliderTrackColor005", nullptr, TestSliderTrackColor005, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSliderTrackColor006", nullptr, TestSliderTrackColor006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderTrackThickness001", nullptr, TestSliderTrackThickness001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness002", nullptr, TestSliderTrackThickness002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness003", nullptr, TestSliderTrackThickness003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness004", nullptr, TestSliderTrackThickness004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
         {"testSliderValue001", nullptr, TestSliderValue001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSliderValue002", nullptr, TestSliderValue002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSliderValue003", nullptr, TestSliderValue003, nullptr, nullptr, nullptr, napi_default, nullptr},
