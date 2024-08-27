@@ -2215,5 +2215,260 @@ export default function audioNDK() {
       done()
     })
 
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0200', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0300', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0400', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategyErro_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategyErro_0200', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategyErro_0030
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategyErro_0300', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopErro_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopErro_0200', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterErro_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterErro_0200', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterErro_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterErro_0200', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterErro_0300', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0200', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
   })
 }
