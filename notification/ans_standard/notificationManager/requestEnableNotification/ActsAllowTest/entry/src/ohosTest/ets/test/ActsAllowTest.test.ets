@@ -21,6 +21,8 @@ import { logGenerator, succeedGenerator, exitGenerator, sleep, exitSpecialGenera
 
 import common from '@ohos.app.ability.common';
 
+let ctx = getContext(this) as common.UIAbilityContext;
+
 export default function ActsAllowTest() {
   describe('SUB_ACTS_ALLOW_TEST', () => {
     const TAG = 'SUB_ACTS_ALLOW_TEST ===>';
@@ -37,7 +39,6 @@ export default function ActsAllowTest() {
         let fn = async (resolve: () => void, reject: (arg1: Error) => void): Promise<void> => {
           let succeed = succeedGenerator(TAG, resolve, done);
           let exit = exitGenerator(TAG, reject);
-          let ctx: common.UIAbilityContext = globalThis.context;;
           notificationManager.requestEnableNotification(ctx).then(() => {
             succeed(`requestEnableNotification succeeded`);
           }).catch((err: Error) => {
@@ -51,6 +52,7 @@ export default function ActsAllowTest() {
           if (button !== null) {
             await sleep(1500);
             await button.click();
+            done()
           } else {
             exit('null button');
           }

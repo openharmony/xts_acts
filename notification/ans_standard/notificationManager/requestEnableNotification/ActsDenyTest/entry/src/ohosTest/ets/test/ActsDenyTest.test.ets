@@ -21,6 +21,8 @@ import { logGenerator, succeedGenerator, exitGenerator, sleep, exitSpecialGenera
 
 import common from '@ohos.app.ability.common';
 
+let ctx = getContext(this) as common.UIAbilityContext;
+
 export default function ActsDenyTest() {
   describe('SUB_ACTS_DENY_TEST', () => {
     const TAG = 'SUB_ACTS_DENY_TEST ===>';
@@ -37,7 +39,6 @@ export default function ActsDenyTest() {
         let fn = async (resolve: () => void, reject: (arg1: Error) => void): Promise<void> => {
           let succeed = succeedGenerator(TAG, resolve, done);
           let exit = exitGenerator(TAG, reject);
-          let ctx: common.UIAbilityContext = globalThis.context;
           notificationManager.requestEnableNotification(ctx).then(() => {
             exit(`requestEnableNotification should failed`);
           }).catch((err: Base.BusinessError) => {
@@ -55,6 +56,7 @@ export default function ActsDenyTest() {
           if (button !== null) {
             await sleep(1500);
             await button.click();
+            done();
           } else {
             exit('null button');
           }
