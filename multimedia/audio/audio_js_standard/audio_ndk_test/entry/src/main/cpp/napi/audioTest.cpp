@@ -4158,7 +4158,7 @@ static napi_value AudioSessionManagerReason_001(napi_env env, napi_callback_info
   OH_AudioRenderer_Release(audioRenderer1);
   OH_AudioStreamBuilder_Destroy(builder);
   OH_AudioStreamBuilder_Destroy(builder2);
-
+  sleep(1);
 
   // 取消监听音频会话停用事件
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
