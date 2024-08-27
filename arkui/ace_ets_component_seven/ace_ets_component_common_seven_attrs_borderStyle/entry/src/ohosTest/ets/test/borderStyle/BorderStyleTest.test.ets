@@ -33,7 +33,7 @@ export default function borderStyleTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testBorderStyle',
     pageName: 'borderStylePage',
     pageUrl: 'MainAbility/pages/borderStyle/BorderStylePage',
@@ -47,14 +47,14 @@ export default function borderStyleTest() {
     columns: columns
   }
 
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetBorderStyle',
     setValue: {
       borderStyle: BorderStyle.Solid,
-    },
+    } as ESObject,
     expectValue: {
       borderStyle: 'BorderStyle.Solid',
-    }
+    } as ESObject
   }]
 
   /**
@@ -62,7 +62,7 @@ export default function borderStyleTest() {
    */
   describe('borderStyleTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data:ESObject) => {
       console.info('[' + data.caseTag + '] borderStyleTest');
       console.info('[' + data.caseTag + '] check borderStyle.' + ` ${data.testValue.setValue.borderStyle}`);
       console.info('[' + data.testValue.expectValue.borderStyle + '] expectValue');
