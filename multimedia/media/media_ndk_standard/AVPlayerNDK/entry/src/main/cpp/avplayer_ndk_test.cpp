@@ -29,6 +29,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <vector>
+#include <thread>
 #define PARAM_1F (1.0f)
 #define INITSUCCESS 0
 #define PARAM_0 0
@@ -43,7 +44,6 @@
 #define KNUMBER4 4
 #define KNUMBER5 5
 
-#include <thread>
 static int32_t g_gPlaytime = 100;
 static bool g_av_info_type_state_change = true;
 
@@ -82,6 +82,7 @@ static void OhAvPlayerSetFdSource()
     napi_value result = nullptr;
     int64_t fileSize = GetFileSize(PATH.c_str());
     OH_AVErrCode avErrCode = OH_AVPlayer_SetFDSource(mainPlayer, fileDescribe, PARAM_0, fileSize);
+    g_av_info_type_state_change = false;
 }
 
 static void AVPlayerOnError(OH_AVPlayer *player, int32_t, const char *errorMsg)
