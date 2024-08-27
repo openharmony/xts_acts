@@ -43,7 +43,7 @@ interface GeneratedObjectLiteralInterface_6 {
   "score": null;
 }
 
-export default function UtilFunTest() {
+export default function utilTest() {
   describe('utilTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
