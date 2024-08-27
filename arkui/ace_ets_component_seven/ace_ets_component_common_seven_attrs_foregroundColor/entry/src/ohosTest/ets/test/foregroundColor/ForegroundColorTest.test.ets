@@ -32,7 +32,7 @@ export default function foregroundColorTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testForegroundColor',
     pageName: 'foregroundColorPage',
     pageUrl: 'MainAbility/pages/foregroundColor/ForegroundColorPage',
@@ -47,21 +47,21 @@ export default function foregroundColorTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetForegroundColor',
     setValue: {
-      foregroundColor: '#FF123456'
-    },
+     foregroundColor: '#FF123456'
+    } as ESObject,
     expectValue: {
       foregroundColor: '#FF123456'
-    }
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('foregroundColorTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.error('[' + data.caseTag + '] foregroundColorTest.');
       console.error('[' + data.caseTag + '] foregroundColorTest. data.testValue.setValue.foregroundColor : ' + data.testValue.setValue.foregroundColor);
       console.error('[' + data.viewObj.$attrs.foregroundColor + '] foregroundColorTest. viewObj.$attrs.foregroundColor.');
