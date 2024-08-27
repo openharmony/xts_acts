@@ -18,12 +18,13 @@ import connection from '@ohos.net.connection';
 import cloudSync from '@ohos.file.cloudSync';
 import fileUri from '@ohos.file.fileuri';
 import featureAbility from '@ohos.ability.featureAbility';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import fs from '@ohos.file.fs';
 
 export default function cloudFileDownloadTest(){
     let uri_ ="file://media/image/7";
     let cloudSyncDownload;
     let isConnect:Boolean;
+    let gallerySync;
 
 describe('cloud_file_download_test',async function(){
   async function getNetId(){
@@ -49,6 +50,7 @@ beforeAll(async function(){
         }
         console.info('网络状态：${isConnect}');
         cloudSyncDownload =new cloudSync.Download();
+        gallerySync = new cloudSync.GallerySync();
     }catch (err){
       console.error("beforeAll case err :" + err);
     }
@@ -716,91 +718,6 @@ function errHandle(err,tag){
       console.info("test_CloudSync_NotifyType_002 has failed for " + e.message + ",code:"+e.code);
       expect(false).assertTrue();
     }
-  });
-
-   /**
-   * @tc.number SUB_STORAGE_DOWNLOAD_CHANGEDATA_TEST_0100
-   * @tc.name test_ChangeData_IsDirectory_001
-   * @tc.desc function of API, Test ChangeData isDirectory interfaces.
-   * @tc.size MediumTest
-   * @tc.type Function
-   * @tc.level Level 3
-   * @tc.require
-   */
-  it('test_ChangeData_IsDirectory_001', 3,function (done){
-    let TAG = "test_ChangeData_IsDirectory_001::";
-    let fpath = await featureAbility.getContext().getFilesDir() + '/test_ChangeData_IsDirectory_001';
-    let uri = fileUri.getUriFromPath(fpath);
-    try {
-      let onCallback1 = (changeData) => {
-        console.log('test_ChangeData_IsDirectory_001 changedata:' + changeData.isDirectory);
-        expect(changeData.isDirectory == false).assertTrue();
-      }
-      cloudSync.registerChange(uri, false, onCallback1);
-      cloudSync.unRegisterChange(uri);
-    } catch (err) {
-      errHandle(err,TAG);
-    }
-    done();
-  });
-
-   /**
-   * @tc.number SUB_STORAGE_DOWNLOAD_CHANGEDATA_TEST_0200
-   * @tc.name test_ChangeData_IsDirectory_002
-   * @tc.desc function of API, Test ChangeData isDirectory interfaces.
-   * @tc.size MediumTest
-   * @tc.type Function
-   * @tc.level Level 3
-   * @tc.require
-   */
-  it('test_ChangeData_IsDirectory_002', 3,function (done){
-    let TAG = "test_ChangeData_IsDirectory_002::";
-    let dpath = await featureAbility.getContext().getFilesDir() + '/test_ChangeData_IsDirectory_002';
-    fs.mkdirSync(dpath);
-    let uri = fileUri.getUriFromPath(dpath);
-    try {
-      let onCallback1 = (changeData) => {
-        console.log('test_ChangeData_IsDirectory_002 changedata:' + changeData.isDirectory);
-        expect(changeData.isDirectory == true).assertTrue();
-      }
-      cloudSync.registerChange(uri, false, onCallback1);
-      cloudSync.unRegisterChange(uri);
-      } catch (err) {
-      errHandle(err,TAG);
-    }
-    done();
-  });
-
-  /**
-   * @tc.number SUB_STORAGE_DOWNLOAD_CHANGEDATA_TEST_0300
-   * @tc.name test_ChangeData_Uris_003
-   * @tc.desc function of API, Test ChangeData Uris interfaces.
-   * @tc.size MediumTest
-   * @tc.type Function
-   * @tc.level Level 3
-   * @tc.require
-   */
-  it('test_ChangeData_Uris_003', 3,function (done){
-    let TAG = "test_ChangeData_Uris_003::";
-    let dpath = await featureAbility.getContext().getFilesDir() + '/test_ChangeData_Uris_003';
-    fs.mkdirSync(dpath);
-    let uri = fileUri.getUriFromPath(dpath);
-    fs.rmdirSync(dpath);
-    try {
-      let onCallback1 = (changeData) => {
-        if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-          console.log('test_ChangeData_Uris_003 added changeData:' + changeData.uri)
-        } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-          console.log('test_ChangeData_Uris_003 removed changeData:' + changeData.uri)
-        }
-      }
-      expect(true).assertTrue();
-      cloudSync.registerChange(uri, false, onCallback1);
-      cloudSync.unRegisterChange(uri);
-    } catch (err) {
-      errHandle(err,TAG);
-    }
-    done();
   });
 
   /**
