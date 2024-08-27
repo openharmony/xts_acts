@@ -1081,7 +1081,7 @@ export default function imageWebp() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0200
-         * @tc.name      : packing - promise-webp-no format
+         * @tc.name      : packing - promise-webp
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
          *                 3.return array
@@ -1090,8 +1090,14 @@ export default function imageWebp() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0200", 0, async function (done) {
-            let packOpts = { quality: 90 };
-            packingPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0200", packOpts);
+            if (image.createImagePacker().supportedFormats.includes("image/gif")) {
+                console.info("SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200: The device support gif encode")
+                expect(true).assertTrue();
+                done();
+            } else {
+                let packOpts = { format: ["image/gif"], quality: 90 };
+                packingPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0200", packOpts);
+            }
         });
 
         /**
@@ -1105,13 +1111,28 @@ export default function imageWebp() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0300", 0, async function (done) {
-            let packOpts = { format: ["image/jpeg"] };
+            let packOpts = { quality: 90 };
             packingPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0300", packOpts);
         });
 
         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0400
+         * @tc.name      : packing - promise-webp-no format
+         * @tc.desc      : 1.create ImageSource
+         *                 2.call packing
+         *                 3.return array
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0400", 0, async function (done) {
+            let packOpts = { format: ["image/jpeg"] };
+            packingPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0400", packOpts);
+        });
+
+        /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0100
-         * @tc.name      : packing - callback-webp-wrong quality
+         * @tc.name      : packing - callback-webp-wrong format
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
          *                 3.return array
@@ -1120,8 +1141,14 @@ export default function imageWebp() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0100", 0, async function (done) {
-            let packOpts = { format: ["image/jpeg"], quality: 112 };
-            packingCbErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0100", packOpts);
+            if (image.createImagePacker().supportedFormats.includes("image/gif")) {
+                console.info("SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200: The device support gif encode")
+                expect(true).assertTrue();
+                done();
+            } else {
+                let packOpts = { format: ["image/gif"], quality: 100 };
+                packingCbErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0100", packOpts);
+            }
         });
 
         /**
@@ -1135,7 +1162,7 @@ export default function imageWebp() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0200", 0, async function (done) {
-            let packOpts = { format: ["image/jpeg"] };
+            let packOpts = { format: ["image/jpeg"], quality: 112 };
             packingCbErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0200", packOpts);
         });
 
@@ -1150,13 +1177,13 @@ export default function imageWebp() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0300", 0, async function (done) {
-            let packOpts = { quality: 90 };
+            let packOpts = { format: ["image/jpeg"] };
             packingCbErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0300", packOpts);
         });
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0400
-         * @tc.name      : packing - callback-webp-quality -1
+         * @tc.name      : packing - callback-webp-no format
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
          *                 3.return array
@@ -1165,8 +1192,23 @@ export default function imageWebp() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0400", 0, async function (done) {
-            let packOpts = { format: ["image/jpeg"], quality: -1 };
+            let packOpts = { quality: 90 };
             packingCbErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0400", packOpts);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0500
+         * @tc.name      : packing - callback-webp-quality -1
+         * @tc.desc      : 1.create ImageSource
+         *                 2.call packing
+         *                 3.return array
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0500", 0, async function (done) {
+            let packOpts = { format: ["image/jpeg"], quality: -1 };
+            packingCbErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0500", packOpts);
         });
 
         /**

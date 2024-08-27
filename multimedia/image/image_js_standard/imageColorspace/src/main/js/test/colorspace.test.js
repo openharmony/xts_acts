@@ -307,6 +307,27 @@ export default function imageColorSpace() {
         })
 
         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_0200
+         * @tc.name      : Encode -callback-
+         * @tc.desc      : 1.create imagesource
+         *                 2.createImagePacker
+         *                 3.packing
+         * @tc.size      : MEDIUM 
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_0200', 0, async function (done) {
+            if (image.createImagePacker().supportedFormats.includes("image/gif")) {
+                console.info("SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_0200: The device support gif encode")
+                expect(true).assertTrue();
+                done();
+            } else {
+                let packOpts = { format: ["image/gif"], quality: 90 }
+                packingCbFail(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_0200', packOpts)
+            }
+        })
+
+        /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_ERROR_FORMAT_0100
          * @tc.name      : Encode -callback-wrong format
          * @tc.desc      : 1.create imagesource
@@ -362,8 +383,29 @@ export default function imageColorSpace() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200', 0, async function (done) {
+            if (image.createImagePacker().supportedFormats.includes("image/gif")) {
+                console.info("SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200: The device support gif encode")
+                expect(true).assertTrue();
+                done();
+            } else {
+                let packOpts = { format: ["image/gif"], quality: 90 }
+                packingPromiseFail(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200', packOpts)
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0300
+         * @tc.name      : Encode -promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.createImagePacker
+         *                 3.packing
+         * @tc.size      : MEDIUM 
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0300', 0, async function (done) {
             let packOpts = { format: ["image/jpeg"], quality: 101 }
-            packingPromiseFail(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200', packOpts)
+            packingPromiseFail(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0300', packOpts)
         })
 
         /**
