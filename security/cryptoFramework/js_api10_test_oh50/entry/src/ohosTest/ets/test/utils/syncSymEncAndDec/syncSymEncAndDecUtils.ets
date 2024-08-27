@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import cryptoFramework from '@ohos.security.cryptoFramework';
+import * as rsa from '../pkcs1Topkcs8/pkcs1topkcs8';
 
 function genGcmOrCcmParamsSpec(iv: number[], aad: number[], tag: number[], algName: string): cryptoFramework.GcmParamsSpec {
   let dataIv = new Uint8Array(iv);
@@ -127,7 +128,20 @@ async function createSymKeyPromise(algName: string): Promise<cryptoFramework.Sym
 async function createAsymKeySync(algName: string): Promise<cryptoFramework.KeyPair> {
   try {
     let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName)
-    let keyPair: cryptoFramework.KeyPair = await generator.generateKeyPair();
+    let keyPair: cryptoFramework.KeyPair = {} as cryptoFramework.KeyPair;
+    if (algName === "RSA1024") {
+      keyPair = await generator.convertPemKey(rsa.pubKeyPkcs1Str1024, rsa.priKeyPkcs1Str1024);
+    } else if (algName === "RSA2048") {
+      keyPair = await generator.convertPemKey(rsa.pubKeyPkcs1Str2048, rsa.priKeyPkcs1Str2048);
+    } else if (algName === "RSA3072") {
+      keyPair = await generator.convertPemKey(rsa.pubKeyPkcs1Str3072, rsa.priKeyPkcs1Str3072);
+    } else if (algName === "RSA4096") {
+      keyPair = await generator.convertPemKey(rsa.pubKeyPkcs1Str4096, rsa.priKeyPkcs1Str4096);
+    } else if (algName === "RSA8192") {
+      keyPair = await generator.convertPemKey(rsa.pubKeyPkcs1Str8192, rsa.priKeyPkcs1Str8192);
+    } else {
+      keyPair = await generator.generateKeyPair();
+    }
 
     return keyPair;
   } catch (error) {

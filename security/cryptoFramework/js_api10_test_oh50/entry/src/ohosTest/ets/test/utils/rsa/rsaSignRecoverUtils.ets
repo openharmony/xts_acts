@@ -14,7 +14,8 @@
  */
 
 import cryptoFramework from '@ohos.security.cryptoFramework';
-import * as commonUtil from '../common/commonUtils'
+import * as commonUtil from '../common/commonUtils';
+import * as rsa from '../pkcs1Topkcs8/pkcs1topkcs8';
 
 async function signPromise(signAlg: string, priKey: cryptoFramework.PriKey, rawData: cryptoFramework.DataBlob) {
   try {
@@ -100,7 +101,19 @@ async function createSignRecover(algName: string, paddingName: string, mdName: s
   try {
     rawData = await commonUtil.createData(dataLen);
     let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
-    keyPair = await generator.generateKeyPair();
+    if (algName === "RSA1024") {
+      keyPair = await generator.convertPemKey(rsa.pubKeyPkcs1Str1024, rsa.priKeyPkcs1Str1024);
+    } else if (algName === "RSA2048") {
+      keyPair = await generator.convertPemKey(rsa.pubKeyPkcs1Str2048, rsa.priKeyPkcs1Str2048);
+    } else if (algName === "RSA3072") {
+      keyPair = await generator.convertPemKey(rsa.pubKeyPkcs1Str3072, rsa.priKeyPkcs1Str3072);
+    } else if (algName === "RSA4096") {
+      keyPair = await generator.convertPemKey(rsa.pubKeyPkcs1Str4096, rsa.priKeyPkcs1Str4096);
+    } else if (algName === "RSA8192") {
+      keyPair = await generator.convertPemKey(rsa.pubKeyPkcs1Str8192, rsa.priKeyPkcs1Str8192);
+    } else {
+      keyPair = await generator.generateKeyPair();
+    }
   } catch (error) {
     console.error('sync error, ' + error.code + " errorMsg " + error.message);
     throw error as Error;
