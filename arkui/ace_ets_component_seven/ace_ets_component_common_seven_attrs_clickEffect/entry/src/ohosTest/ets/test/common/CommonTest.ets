@@ -26,18 +26,18 @@ export default class CommonTest {
    * @param testValues   : test values
    * @param functions    : [0]:executeTest, [last] checkTestResult
    */
-  static initTest(pageConfig, supportView, testValues, ...functions) {
+  static initTest(pageConfig:ESObject, supportView:string[], testValues:ESObject, ...functions:(Function|null)[]) {
     for (let i = 0, j = supportView.length; i < j; ++i) {
       const targetView = supportView[i]
       //Obtain the last index of cases that need to be executed.
       let lastIndex = 0;
-      testValues.forEach((temp, index) => {
+      testValues.forEach((temp:ESObject, index:number) => {
         if (temp.exceptView == undefined || temp.exceptView.indexOf(targetView) < 0) {
           lastIndex = index;
         }
       });
-      for (let x = 0, y = testValues.length; x < y; ++x) {
-        const testValue = testValues[x]
+      for (let x:number = 0, y:number = testValues.length; x < y; ++x) {
+        const testValue:ESObject = testValues[x]
         const index = x;
         //If there are components that need to be excluded, do not generate cases.
         if (testValue.exceptView == undefined || testValue.exceptView.indexOf(targetView) < 0) {
@@ -48,7 +48,7 @@ export default class CommonTest {
           }
 
           //Create case name.
-          let caseTag = pageConfig.testName + targetView + testValue.describe;
+          let caseTag:string = pageConfig.testName + targetView + testValue.describe;
 
           //If there is a specified container view.
           let containerView = '';
@@ -63,7 +63,7 @@ export default class CommonTest {
            * @tc.desc   Test whether the state of different components
            *            after modifying their properties meets expectations
            */
-          it(caseTag, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done) => {
+          it(caseTag, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
             console.info('[' + caseTag + '] START');
             //Push page.
             console.info('[' + caseTag + ']' + ' test start, push page.');
@@ -81,14 +81,14 @@ export default class CommonTest {
               }
 
               //Execute test
-              let data = {
+              let data:ESObject = {
                 pageConfig: pageConfig,
                 caseTag: caseTag,
                 testValue: testValue,
-              }
+              } as ESObject
               if (functions.length > 1) {
                 if (functions[0] instanceof Function) {
-                  let customParams = await functions[0](data);
+                  let customParams:ESObject = await functions[0](data);
                   //Set custom params to data, can be used by check test result.
                   if (customParams) {
                     data['customParams'] = customParams;
@@ -105,7 +105,7 @@ export default class CommonTest {
 
               //Check test result
               data['viewObj'] = Utils.getComponentByKey(pageConfig['componentKey']);
-              await functions[functions.length - 1](data);
+              await functions[functions.length - 1]!(data);
 
             } catch (err) {
               let msg = 'CommonTest.initTest execute ' + caseTag + ' error:' + err
@@ -125,18 +125,18 @@ export default class CommonTest {
         }
       }
 
-      // testValues.forEach((testValue, index) => {
+      // testValues.forEach((testValue:ESObject, index:number) => {
 
 
       // })
     }
-    // supportView.forEach(targetView => {
+    // supportView.forEach((targetView:string) => {
 
 
     // });
   }
 
-  static async back(caseTag, sharePage, currentIndex, lastIndex) {
+  static async back(caseTag:string, sharePage:boolean, currentIndex:number, lastIndex:number) {
     if (sharePage) {
       if (currentIndex == lastIndex) {
         console.info('[' + caseTag + ']' + ' last case, close page.');
@@ -151,10 +151,10 @@ export default class CommonTest {
     }
   }
 
-  static initTestByContainerView(pageConfig, containerView, supportView, testValues, ...functions) {
-    containerView.forEach(container => {
+  static initTestByContainerView(pageConfig:ESObject, containerView:ESObject, supportView:string[], testValues:ESObject, ...functions:Function[]) {
+    containerView.forEach((container:ESObject) => {
       pageConfig['containerView'] = container;
-      CommonTest.initTest(pageConfig, supportView, testValues, functions);
+      CommonTest.initTest(pageConfig, supportView, testValues, ...functions);
     });
   }
 }

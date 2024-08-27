@@ -34,7 +34,7 @@ export default function clickEffectTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testClickEffect',
     pageName: 'clickEffectPage',
     pageUrl: 'MainAbility/pages/clickEffect/ClickEffectPage',
@@ -49,21 +49,21 @@ export default function clickEffectTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetClickEffect',
     setValue: {
-      clickEffect: { level: ClickEffectLevel.LIGHT , scale: 0.5 }
-    },
+      clickEffect: { level: ClickEffectLevel.LIGHT , scale: 0.5 } as ESObject
+    } as ESObject,
     expectValue: {
-      clickEffect: { level: '0' , scale: '0.500000' }
-    }
+      clickEffect: { level: '0' , scale: '0.500000' } as ESObject
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('clickEffectTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
        console.info('[' + data.caseTag + ']' + 'clickEffect is:' + data.viewObj.$attrs.clickEffect.level);
       console.info('[' + data.caseTag + ']' + 'clickEffect is:' + data.viewObj.$attrs.clickEffect.scale);
        expect(data.viewObj.$attrs.clickEffect.scale)
