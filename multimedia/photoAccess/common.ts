@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
@@ -116,7 +116,7 @@ export async function getPermission(name = 'ohos.acts.multimedia.photoaccess') :
   try {
     console.info('getPermission start', name);
     let permissionState = new Map();
-    const permissions = [
+    const permissions: Array<Permissions> = [
       'ohos.permission.MEDIA_LOCATION',
       'ohos.permission.READ_IMAGEVIDEO',
       'ohos.permission.WRITE_IMAGEVIDEO',
@@ -392,7 +392,7 @@ export function createSandboxFileUri(extension) {
   return fileuri.getUriFromPath(path);
 }
 
-export async function getBurstKey(testNum: string, fetchOps: photoAccessHelper.FetchOptions): string | number {
+export async function getBurstKey(testNum: string, fetchOps: photoAccessHelper.FetchOptions): Promise<string | number> {
   let burstKey: string | number | undefined = -1;
   try {
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOps);
