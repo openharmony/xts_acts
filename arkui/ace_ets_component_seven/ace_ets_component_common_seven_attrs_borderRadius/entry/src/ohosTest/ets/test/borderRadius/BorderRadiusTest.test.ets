@@ -33,7 +33,7 @@ export default function BorderRadiusTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testBorderRadius',
     pageName: 'BorderRadiusPage',
     pageUrl: 'MainAbility/pages/borderRadius/BorderRadiusPage',
@@ -48,21 +48,21 @@ export default function BorderRadiusTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetBorderRadius',
     setValue: {
       borderRadius: '30.00vp'
-    },
+    } as ESObject,
     expectValue: {
       borderRadius: '30.00vp',
-    }
+    } as ESObject
     }]
 
   /**
    * Create test suite.
    */
   describe('borderRadiusTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.info('[' + data.caseTag + '] borderRadiusTest.');
       console.info('[' + data.caseTag + '] borderRadiusTest. data.testValue.setValue.borderRadius : ' + data.testValue.setValue.borderRadius);
       console.info('[' + data.viewObj.$attrs.borderRadius + '] borderRadiusTest. viewObj.$attrs.borderRadius.');
