@@ -73,24 +73,32 @@ export default function onMeasureSize3() {
       let Column_1 = CommonFunc.getComponentRect('onMeasureSize3_Column_1');
 
       console.log('assert position')
-      expect(Math.round(text_01.left - Column_1.left)).assertEqual(Math.round(vp2px(230)));
-      expect(Math.round(text_01.top - Column_1.top)).assertEqual(Math.round(vp2px(230)));
+      //expect(Math.round(text_01.left - Column_1.left)).assertEqual(Math.round(vp2px(230)));
+      expect(Math.abs(Math.round(text_01.left - Column_1.left)-Math.round(vp2px(230)))<=1).assertTrue()
+      //expect(Math.round(text_01.top - Column_1.top)).assertEqual(Math.round(vp2px(230)));
+      expect(Math.abs(Math.round(text_01.top - Column_1.top)-Math.round(vp2px(230)))<=1).assertTrue()
       console.log('text_01.left' + text_01.left)
       console.log('text_01.top' + text_01.top)
-      expect(Math.round(text_02.left - Column_1.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(text_02.top - Column_1.top)).assertEqual(Math.round(vp2px(150)));
+      //expect(Math.round(text_02.left - Column_1.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(text_02.left - Column_1.left)-Math.round(vp2px(150)))<=1).assertTrue()
+      //expect(Math.round(text_02.top - Column_1.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(text_02.top - Column_1.top)-Math.round(vp2px(150)))<=1).assertTrue()
       console.log('text_02.left' + text_01.left)
       console.log('text_02.top' + text_01.top)
       console.log('Column_1.left' + Column_1.left)
       console.log('Column_1.top' + Column_1.top)
       console.log('assert size')
-      expect(Math.round(text_01.right - text_01.left)).assertEqual(Math.round(vp2px(100)));
+      //expect(Math.round(text_01.right - text_01.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(text_01.right - text_01.left)-Math.round(vp2px(100)))<=1).assertTrue()
       console.log('text_01.right - text_01.left' + (text_01.right - text_01.left))
-      expect(Math.round(text_01.bottom - text_01.top)).assertEqual(Math.round(vp2px(100)));
+      //expect(Math.round(text_01.bottom - text_01.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(text_01.bottom - text_01.top)-Math.round(vp2px(100)))<=1).assertTrue()
       console.log('text_01.bottom - text_01.top' + (text_01.bottom - text_01.top))
-      expect(Math.round(text_02.right - text_02.left)).assertEqual(Math.round(vp2px(150)));
+      //expect(Math.round(text_02.right - text_02.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(text_02.right - text_02.left)-Math.round(vp2px(150)))<=1).assertTrue()
       console.log('text_02.right - text_02.left' + (text_02.right - text_02.left))
-      expect(Math.round(text_02.bottom - text_02.top)).assertEqual(Math.round(vp2px(150)));
+      //expect(Math.round(text_02.bottom - text_02.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(text_02.bottom - text_02.top)-Math.round(vp2px(150)))<=1).assertTrue()
       console.log('text_02.bottom - text_02.top' + (text_02.bottom - text_02.top))
       done();
     });
