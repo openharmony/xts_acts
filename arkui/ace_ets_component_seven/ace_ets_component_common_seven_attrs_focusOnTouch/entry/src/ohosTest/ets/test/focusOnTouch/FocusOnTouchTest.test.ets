@@ -33,7 +33,7 @@ export default function focusOnTouchTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testFocusOnTouch',
     pageName: 'FocusOnTouchPage',
     pageUrl: 'MainAbility/pages/focusOnTouch/FocusOnTouchPage',
@@ -48,21 +48,21 @@ export default function focusOnTouchTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetFocusOnTouch',
     setValue: {
       focusOnTouch: true
-    },
+    } as ESObject,
     expectValue: {
       focusOnTouch: true
-    }
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('focusOnTouchTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.info('[' + data.caseTag + ']' + 'focusOnTouch is:' + data.viewObj.$attrs.focusOnTouch);
       expect(data.viewObj.$attrs.focusOnTouch)
         .assertEqual(data.testValue.expectValue.focusOnTouch);
