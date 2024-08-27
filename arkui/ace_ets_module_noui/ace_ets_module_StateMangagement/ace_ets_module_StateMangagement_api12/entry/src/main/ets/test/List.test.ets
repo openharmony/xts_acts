@@ -46,6 +46,13 @@ import Monitor2Jsunit from './ComponentV2Test/Monitor2Jsunit.test';
 import Monitor3Jsunit from './ComponentV2Test/Monitor3Jsunit.test';
 import Monitor4Jsunit from './ComponentV2Test/Monitor4Jsunit.test';
 import repeatCountJsunit from './RepeatTest/repeatCountJsunit.test';
+import getTarget1Test from './getTargetTest/getTarget1.test';
+import getTarget2Test from './getTargetTest/getTarget2.test';
+import getTarget3Test from './getTargetTest/getTarget3.test';
+import getTarget4Test from './getTargetTest/getTarget4.test';
+import getTarget5Test from './getTargetTest/getTarget5.test';
+import getTarget6Test from './getTargetTest/getTarget6.test';
+import makeObservedTest from './makeObservedTest/makeObserved.test';
 export default function testsuite() {
   ExtendTrackTest();
   NestTrackTest();
@@ -81,4 +88,11 @@ export default function testsuite() {
   Monitor3Jsunit();
   Monitor4Jsunit();
   repeatCountJsunit();
+  getTarget1Test();
+  getTarget2Test();
+  getTarget3Test();
+  getTarget4Test();
+  getTarget5Test();
+  getTarget6Test();
+  makeObservedTest();
 }

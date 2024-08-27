@@ -34,6 +34,13 @@
 		"MainAbility/pages/ComponentV2/Monitor2",
 		"MainAbility/pages/ComponentV2/Monitor3",
 		"MainAbility/pages/ComponentV2/Monitor4",
-		"MainAbility/pages/Repeat/repeatCount"
+		"MainAbility/pages/Repeat/repeatCount",
+        "MainAbility/pages/getTarget/getTarget1",
+        "MainAbility/pages/getTarget/getTarget2",
+        "MainAbility/pages/getTarget/getTarget3",
+        "MainAbility/pages/getTarget/getTarget4",
+        "MainAbility/pages/getTarget/getTarget5",
+        "MainAbility/pages/getTarget/getTarget6",
+        "MainAbility/pages/makeObserved/makeObserved"
     ]
 }
