@@ -21,7 +21,6 @@ import {
   genGcmOrCcmParamsSpec,
   encryptDecryptMessageSync,
   tagEncryptDecryptMessageSync,
-  tagEncryptDecryptMessagePromise,
   dataGcmOrCCMSpec,
   dataSpec,
 } from './utils/syncSymEncAndDec/syncSymEncAndDecUtils'
