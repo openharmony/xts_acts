@@ -1,43 +1,27 @@
-/*
-* Copyright (c) 2024 SwanLink (Jiangsu) Technology Development Co., LTD.
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
-
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import process from '@ohos.process'
-let TAG = "testGetStartRealtime0001";
-export default function ProcessTest() {
-  describe('processTest', () => {
-      // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-      beforeAll(() => {
-        // Presets an action, which is performed only once before all test cases of the test suite start.
-        // This API supports only one parameter: preset action function.
-      })
-      beforeEach(() => {
-        // Presets an action, which is performed before each unit test case starts.
-        // The number of execution times is the same as the number of test cases defined by **it**.
-        // This API supports only one parameter: preset action function.
-      })
-      afterEach(() => {
-        // Presets a clear action, which is performed after each unit test case ends.
-        // The number of execution times is the same as the number of test cases defined by **it**.
-        // This API supports only one parameter: clear action function.
-      })
-      afterAll(() => {
-        // Presets a clear action, which is performed after all test cases of the test suite end.
-        // This API supports only one parameter: clear action function.
-      })
 
+export default function processTest() {
+  describe('processTest', () => {
+    // Defines a test suite. Two parameters are supported: test suite name and test suite function.
+    beforeAll(() => {
+      // Presets an action, which is performed only once before all test cases of the test suite start.
+      // This API supports only one parameter: preset action function.
+    })
+    beforeEach(() => {
+      // Presets an action, which is performed before each unit test case starts.
+      // The number of execution times is the same as the number of test cases defined by **it**.
+      // This API supports only one parameter: preset action function.
+    })
+    afterEach(() => {
+      // Presets a clear action, which is performed after each unit test case ends.
+      // The number of execution times is the same as the number of test cases defined by **it**.
+      // This API supports only one parameter: clear action function.
+    })
+    afterAll(() => {
+      // Presets a clear action, which is performed after all test cases of the test suite end.
+      // This API supports only one parameter: clear action function.
+    })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_GETUID_0100
      * @tc.name       : testGetUid0001
@@ -47,14 +31,14 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetUid0001', 0, () => {
-        TAG = "testGetUid0001";
-        try {
-            let userId = process.uid;
-            expect(userId>0).assertTrue();
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err}`);
-            expect().assertFail();
-        }
+      const TAG = "testGetUid0001";
+      try {
+        let userId = process.uid;
+        expect(userId > 0).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -66,14 +50,14 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetPid0001', 0, () => {
-        const TAG = "testGetPid0001";
-        try {
-            let processId = process.pid;
-            expect(processId > 0).assertTrue();
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err}`);
-            expect().assertFail();
-        }
+      const TAG = "testGetPid0001";
+      try {
+        let processId = process.pid;
+        expect(processId > 0).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -85,17 +69,16 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetTid0001', 0, () => {
-        const TAG = "testGetTid0001";
-        try {
-            // 获取当前线程的线程ID
-            let threadId = process.tid;
-
-            // 断言线程ID应大于0
-            expect(threadId > 0).assertTrue();
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err}`);
-            expect().assertFail();
-        }
+      const TAG = "testGetTid0001";
+      try {
+        // 获取当前线程的线程ID
+        let threadId = process.tid;
+        // 断言线程ID应大于0
+        expect(threadId > 0).assertTrue();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -107,14 +90,14 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testisIsolatedProcess0001', 0, () => {
-        TAG = "testisIsolatedProcess0001";
-        try {
-            const pres = process.isIsolatedProcess();
-            expect(pres).assertEqual(true);
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err}`);
-            expect().assertFail();
-        }
+      const TAG = "testisIsolatedProcess0001";
+      try {
+        const pres = process.isIsolatedProcess();
+        expect(pres).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -126,14 +109,14 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testIs64Bit0001', 0, () => {
-        TAG = "testIs64Bit0001";
-        try {
-            const isorno = process.is64Bit();
-            expect(isorno === true || isorno === false).assertEqual(true);
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err}`);
-            expect().assertFail();
-        }
+      const TAG = "testIs64Bit0001";
+      try {
+        const isorno = process.is64Bit();
+        expect(isorno === true || isorno === false).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -145,20 +128,20 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetStartRealtime0001', 0, () => {
-        TAG = "testGetStartRealtime0001";
-        try {
-            let flag = false;
-            for (let i = 0; i < 3; i++) {
-                const pri = process.getStartRealtime();
-                if (pri !== null) {
-                    flag = true;
-                }
-            }
-            expect(flag).assertEqual(true);
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err}`);
-            expect().assertFail();
+      const TAG = "testGetStartRealtime0001";
+      try {
+        let flag = false;
+        for (let i = 0; i < 3; i++) {
+          const pri = process.getStartRealtime();
+          if (pri !== null) {
+            flag = true;
+          }
         }
+        expect(flag).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -170,20 +153,20 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetPastCpuTime0001', 0, () => {
-        TAG = "testGetPastCpuTime0001";
-        try {
-            let flag = false;
-            for (let i = 0; i < 3; i++) {
-                const pri = process.getPastCpuTime();
-                if (pri > 0) {
-                    flag = true;
-                }
-            }
-            expect(flag).assertEqual(true);
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err}`);
-            expect().assertFail();
+      const TAG = "testGetPastCpuTime0001";
+      try {
+        let flag = false;
+        for (let i = 0; i < 3; i++) {
+          const pri = process.getPastCpuTime();
+          if (pri > 0) {
+            flag = true;
+          }
         }
+        expect(flag).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -195,18 +178,18 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testUptime0001', 0, () => {
-        TAG = "testUptime0001";
-        const result1 = process.uptime();
-        setTimeout(() => {
-            try {
-                const result2 = process.uptime();
-                const flag = (result2 - result1) >= 3;
-                expect(flag).assertEqual(true);
-            } catch (err) {
-                console.error(`${TAG} failed, error: ${err}`);
-                expect().assertFail();
-            }
-        }, 3000);
+      const TAG = "testUptime0001";
+      const result1 = process.uptime();
+      setTimeout(() => {
+        try {
+          const result2 = process.uptime();
+          const flag = (result2 - result1) >= 3;
+          expect(flag).assertEqual(true);
+        } catch (err) {
+          console.error(`${TAG} failed, error: ${err.code}`);
+          expect().assertFail();
+        }
+      }, 3000);
     });
 
     /**
@@ -218,14 +201,14 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetUidForName0001', 0, () => {
-        TAG = "testGetUidForName0001";
-        try {
-            const pres = process.getUidForName("root");
-            expect(pres).assertEqual(0);
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err}`);
-            expect().assertFail();
-        }
+      const TAG = "testGetUidForName0001";
+      try {
+        const pres = process.getUidForName("root");
+        expect(pres).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -237,16 +220,16 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetUidForName0002', 0, () => {
-        TAG = "testGetUidForName0002";
-        try {
-            for (let i = 0; i < 3; i++) {
-                const pres = process.getUidForName("root12356");
-                expect(pres).assertEqual(-1);
-            }
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err}`);
-            expect().assertFail();
+      const TAG = "testGetUidForName0002";
+      try {
+        for (let i = 0; i < 3; i++) {
+          const pres = process.getUidForName("root12356");
+          expect(pres).assertEqual(-1);
         }
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -258,12 +241,14 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetUidForName0003', 0, () => {
-        try {
-            process.getUidForName(undefined);
-            expect().assertFail();
-        } catch (err) {
-            expect(err.name).assertEqual('Error');
-        }
+      const TAG = "testGetUidForName0003";
+      try {
+        process.getUidForName(undefined);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect(err.name).assertEqual('Error');
+      }
     });
 
     /**
@@ -275,16 +260,16 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testProcessManagerKill0001', 0, () => {
-        TAG = "testProcessManagerKill0001";
-        try {
-            const pro = new process.ProcessManager();
-            const pres = process.pid;
-            const result = pro.kill(23, pres);
-            expect(result).assertEqual(true);
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err}`);
-            expect().assertFail();
-        }
+      const TAG = "testProcessManagerKill0001";
+      try {
+        const pro = new process.ProcessManager();
+        const pres = process.pid;
+        const result = pro.kill(23, pres);
+        expect(result).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -296,15 +281,15 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testProcessManagerKill0002', 0, () => {
-        TAG = "testProcessManagerKill0002";
-        try {
-            const pro = new process.ProcessManager();
-            const result = pro.kill(3, 123);
-            expect(result).assertEqual(false);
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err}`);
-            expect().assertFail();
-        }
+      const TAG = "testProcessManagerKill0002";
+      try {
+        const pro = new process.ProcessManager();
+        const result = pro.kill(3, 123);
+        expect(result).assertEqual(false);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -316,14 +301,15 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testProcessManagerKill0004', 0, () => {
-        TAG = "testProcessManagerKill0004";
-        try {
-            const pro = new process.ProcessManager();
-            pro.kill(undefined, undefined);
-            expect().assertFail();
-        } catch (err) {
-            expect(err.code).assertEqual(401);
-        }
+      const TAG = "testProcessManagerKill0004";
+      try {
+        const pro = new process.ProcessManager();
+        pro.kill(undefined, undefined);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect(err.code).assertEqual(401);
+      }
     })
 
     /**
@@ -335,19 +321,19 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetThreadPriority0001', 0, () => {
-        TAG = "testGetThreadPriority0001";
-        const pro = new process.ProcessManager();
-        const tid = process.tid;
-        for (let i = 0; i < 5; i++) {
-            try {
-                const priority = pro.getThreadPriority(tid);
-                console.info(`Attempt ${i + 1}: Thread priority is ${priority}`);
-                expect(priority >= -20 && priority <= 19).assertTrue();
-            } catch (err) {
-                console.error(`${TAG} failed, error: ${err}`);
-                expect().assertFail();
-            }
+      const TAG = "testGetThreadPriority0001";
+      const pro = new process.ProcessManager();
+      const tid = process.tid;
+      for (let i = 0; i < 5; i++) {
+        try {
+          const priority = pro.getThreadPriority(tid);
+          console.info(`Attempt ${i + 1}: Thread priority is ${priority}`);
+          expect(priority >= -20 && priority <= 19).assertTrue();
+        } catch (err) {
+          console.error(`${TAG} failed, error: ${err.code}`);
+          expect().assertFail();
         }
+      }
     });
 
     /**
@@ -359,14 +345,15 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetThreadPriority0003', 0, () => {
-        TAG = "testGetThreadPriority0003";
-        try {
-            const pro = new process.ProcessManager();
-            pro.getThreadPriority(undefined);
-            expect().assertFail();
-        } catch (err) {
-            expect(err.code).assertEqual(401);
-        }
+      const TAG = "testGetThreadPriority0003";
+      try {
+        const pro = new process.ProcessManager();
+        pro.getThreadPriority(undefined);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect(err.code).assertEqual(401);
+      }
     });
 
     /**
@@ -379,16 +366,16 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testIsappuid0001', 0, () => {
-        TAG = "testIsappuid0001";
-        try {
-            const uid = process.uid;
-            const isorno = process.isAppUid(uid);
-            console.info(`${TAG} - UID ${uid} belongs to the current app: ${isorno}`);
-            expect(isorno).assertEqual(true);
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err.message}`);
-            expect().assertFail();
-        }
+      const TAG = "testIsappuid0001";
+      try {
+        const uid = process.uid;
+        const isorno = process.isAppUid(uid);
+        console.info(`${TAG} - UID ${uid} belongs to the current app: ${isorno}`);
+        expect(isorno).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -401,16 +388,16 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testIsappuid0002', 0, () => {
-        TAG = "testIsappuid0002";
-        try {
-            const uid = process.getUidForName("root");
-            const isorno = process.isAppUid(uid);
-            console.info(`${TAG} - UID ${uid} belongs to the current app: ${isorno}`);
-            expect(isorno).assertEqual(false);
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err.message}`);
-            expect().assertFail();
-        }
+      const TAG = "testIsappuid0002";
+      try {
+        const uid = process.getUidForName("root");
+        const isorno = process.isAppUid(uid);
+        console.info(`${TAG} - UID ${uid} belongs to the current app: ${isorno}`);
+        expect(isorno).assertEqual(false);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -422,13 +409,14 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testIsappuid0003', 0, () => {
-        TAG = "testIsappuid0003";
-        try {
-            process.isAppUid(undefined);
-            expect().assertFail();
-        } catch (err) {
-            expect(err.name).assertEqual('Error')
-        }
+      const TAG = "testIsappuid0003";
+      try {
+        process.isAppUid(undefined);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.name}`);
+        expect(err.name).assertEqual('Error')
+      }
     });
 
     /**
@@ -440,24 +428,24 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetSystemConfig0001', 0, () => {
-        const TAG = "testGetSystemConfig0001";
-        const SYSTEM_CONFIG_ARG_MAX = 0;
-        const MAX_RETRIES = 5;
-        let flag = false;
-        try {
-            for (let i = 0; i < MAX_RETRIES; i++) {
-                let configValue = process.getSystemConfig(SYSTEM_CONFIG_ARG_MAX);
+      const TAG = "testGetSystemConfig0001";
+      const SYSTEM_CONFIG_ARG_MAX = 0;
+      const MAX_RETRIES = 5;
+      let flag = false;
+      try {
+        for (let i = 0; i < MAX_RETRIES; i++) {
+          let configValue = process.getSystemConfig(SYSTEM_CONFIG_ARG_MAX);
 
-                if (configValue > 0) {
-                    flag = true;
-                    break;
-                }
-            }
-            expect(flag).assertEqual(true);
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err.message}`);
-            expect().assertFail();
+          if (configValue > 0) {
+            flag = true;
+            break;
+          }
         }
+        expect(flag).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -469,15 +457,15 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetSystemConfig0002', 0, () => {
-        const TAG = "testGetSystemConfig0002";
-        const NON_EXISTENT_PARAM = 111111;
-        try {
-            const configValue = process.getSystemConfig(NON_EXISTENT_PARAM);
-            expect(configValue).assertEqual(-1);
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err.message}`);
-            expect().assertFail();
-        }
+      const TAG = "testGetSystemConfig0002";
+      const NON_EXISTENT_PARAM = 111111;
+      try {
+        const configValue = process.getSystemConfig(NON_EXISTENT_PARAM);
+        expect(configValue).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -489,14 +477,15 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetSystemConfig0003', 0, () => {
-        const TAG = "testGetSystemConfig0003";
-        const NON_EXISTENT_PARAM = undefined;
-        try {
-            process.getSystemConfig(NON_EXISTENT_PARAM);
-            expect().assertFail();
-        } catch (err) {
-            expect(err.name).assertEqual('Error')
-        }
+      const TAG = "testGetSystemConfig0003";
+      const NON_EXISTENT_PARAM = undefined;
+      try {
+        process.getSystemConfig(NON_EXISTENT_PARAM);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect(err.name).assertEqual('Error')
+      }
     });
 
     /**
@@ -508,25 +497,23 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetEnvironmentVar0001', 0, () => {
-        const TAG = "testGetEnvironmentVar0001";
-        const MAX_RETRIES = 5;
-        let isPathVarPresent = false;
-
-        try {
-            // 尝试多次获取环境变量 PATH
-            for (let i = 0; i < MAX_RETRIES; i++) {
-                const environmentVar = process.getEnvironmentVar("PATH")
-                console.log("testGetEnvironmentVar0001 PATH is",environmentVar)
-                if (environmentVar) {
-                    isPathVarPresent = true;
-                    break;
-                }
-            }
-            expect(isPathVarPresent).assertEqual(true);
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err.message}`);
-            expect().assertFail();
+      const TAG = "testGetEnvironmentVar0001";
+      const MAX_RETRIES = 5;
+      let isPathVarPresent = false;
+      try {
+        for (let i = 0; i < MAX_RETRIES; i++) {
+          const environmentVar = process.getEnvironmentVar("PATH")
+          console.log("testGetEnvironmentVar0001 PATH is", environmentVar)
+          if (environmentVar) {
+            isPathVarPresent = true;
+            break;
+          }
         }
+        expect(isPathVarPresent).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -538,15 +525,15 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetEnvironmentVar0002', 0, () => {
-        const TAG = "testGetEnvironmentVar0002";
-        try {
-            const environmentVar = process.getEnvironmentVar("PATH1111")
-            console.log("testGetEnvironmentVar0002 PATH is",environmentVar)
-            expect(environmentVar).assertEqual(undefined)
-        } catch (err) {
-            console.error(`${TAG} failed, error: ${err.message}`);
-            expect().assertFail();
-        }
+      const TAG = "testGetEnvironmentVar0002";
+      try {
+        const environmentVar = process.getEnvironmentVar("PATH1111")
+        console.log("testGetEnvironmentVar0002 PATH is", environmentVar)
+        expect(environmentVar).assertEqual(undefined)
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect().assertFail();
+      }
     });
 
     /**
@@ -558,13 +545,14 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testGetEnvironmentVar0003', 0, () => {
-        const TAG = "testGetEnvironmentVar0003";
-        try {
-            process.getEnvironmentVar(undefined)
-            expect().assertFail();
-        } catch (err) {
-            expect(err.name).assertEqual('Error')
-        }
+      const TAG = "testGetEnvironmentVar0003";
+      try {
+        process.getEnvironmentVar(undefined)
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.code}`);
+        expect(err.name).assertEqual('Error')
+      }
     });
 
     /**
@@ -576,13 +564,14 @@ export default function ProcessTest() {
      * @tc.level      : Level 1
      */
     it('testExit0001', 0, () => {
-        const TAG = "testExit0001";
-        try {
-            process.exit(undefined)
-            expect().assertFail();
-        } catch (err) {
-            expect(err.name).assertEqual('Error')
-        }
+      const TAG = "testExit0001";
+      try {
+        process.exit(undefined)
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.name}`);
+        expect(err.name).assertEqual('Error')
+      }
     });
-})
+  })
 }
