@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import cryptoFramework from '@ohos.security.cryptoFramework';
+import * as rsa from '../pkcs1Topkcs8/pkcs1topkcs8';
 
 function genGcmOrCcmParamsSpec(iv: number[], aad: number[], tag: number[], algName: string): cryptoFramework.GcmParamsSpec {
   let dataIv = new Uint8Array(iv);
