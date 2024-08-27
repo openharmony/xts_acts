@@ -515,6 +515,7 @@
 #include "drag/drag_getDragEvent.cpp"
 #include "drag/drag_getDataTypes.cpp"
 #include "drag/drag_setGetUdmfData.cpp"
+#include "gestureScroll/gesture_interfaceParameterTest.cpp"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -4870,6 +4871,15 @@ static napi_value Init(napi_env env, napi_value exports)
         {"drag_setGetUdmfData_001", nullptr, drag_setGetUdmfData_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"drag_setGetUdmfData_002", nullptr, drag_setGetUdmfData_002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"drag_setGetUdmfData_003", nullptr, drag_setGetUdmfData_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+		{"gestureTestParaMeter001", nullptr, gestureTestParaMeter001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"gestureTestParaMeter002", nullptr, gestureTestParaMeter002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"gestureTestParaMeter003", nullptr, gestureTestParaMeter003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"gestureTestParaMeter004", nullptr, gestureTestParaMeter004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"gestureTestParaMeter005", nullptr, gestureTestParaMeter005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"gestureTestParaMeter006", nullptr, gestureTestParaMeter006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"gestureTestParaMeter007", nullptr, gestureTestParaMeter007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"gestureTestParaMeter008", nullptr, gestureTestParaMeter008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"gestureTestParaMeter009", nullptr, gestureTestParaMeter009, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

@@ -250,3 +250,5 @@ export const setDragResultTest: (a: string) => void;
 export const getDataTypesCountTest: (a: string) => void;
 
 export const getDragResultTest: (a: string) => void;
+
+export const gestureNestScrollTest: (a: string) => void;
