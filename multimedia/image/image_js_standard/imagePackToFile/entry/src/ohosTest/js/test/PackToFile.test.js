@@ -34,9 +34,11 @@ export default function imagePackToFile() {
         let pixelMapList;
         let packingOptions;
         let testFile;
+        let isSupportGifEncode;
 
         beforeAll(async function () {
             console.info("beforeAll case");
+            isSupportGifEncode = image.createImagePacker().supportedFormats.includes("image/gif");
         });
 
         beforeEach(function () {
@@ -948,9 +950,15 @@ export default function imagePackToFile() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0100", 0, async function (done) {
-            testFile = { fileName: "moving_test.gif", packTarget: "pack_multiFrames.gif", size: { width: 198, height: 202 } };
-            packingOptions = { frameCount: 3, delayTimeList: [10, 10, 10], disposalTypes: [3,1,0], loopCount: 5};
-            await testPackGifMultiFramesToFile(done, "SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0100");
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0100: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                testFile = { fileName: "moving_test.gif", packTarget: "pack_multiFrames.gif", size: { width: 198, height: 202 } };
+                packingOptions = { frameCount: 3, delayTimeList: [10, 10, 10], disposalTypes: [3,1,0], loopCount: 5};
+                await testPackGifMultiFramesToFile(done, "SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0100");
+            }
         });
 
         /**
@@ -965,9 +973,15 @@ export default function imagePackToFile() {
          * @tc.level     : level 0
          */
          it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0200", 0, async function (done) {
-            testFile = { fileName: "test.png", packTarget: "pack_oneFrame.gif", size: { width: 472, height: 75 } };
-            packingOptions = { frameCount: 1, delayTimeList: [100], disposalTypes: [3], loopCount: 5};
-            await testPackGifMultiFramesToFile(done, "SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0200");
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0200: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                testFile = { fileName: "test.png", packTarget: "pack_oneFrame.gif", size: { width: 472, height: 75 } };
+                packingOptions = { frameCount: 1, delayTimeList: [100], disposalTypes: [3], loopCount: 5};
+                await testPackGifMultiFramesToFile(done, "SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0200");
+            }
         });
 
         /**
@@ -982,9 +996,15 @@ export default function imagePackToFile() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0300", 0, async function (done) {
-            testFile = { fileName: "moving_test.gif", packTarget: "pack_no_loop.gif", size: { width: 198, height: 202 } };
-            packingOptions = { frameCount: 1, delayTimeList: [200], disposalTypes: [3, 1, 0]};
-            await testPackGifMultiFramesToFile(done, "SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0300");
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0300: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                testFile = { fileName: "moving_test.gif", packTarget: "pack_no_loop.gif", size: { width: 198, height: 202 } };
+                packingOptions = { frameCount: 1, delayTimeList: [200], disposalTypes: [3, 1, 0]};
+                await testPackGifMultiFramesToFile(done, "SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0300");
+            }
         });
 
         /**
@@ -999,9 +1019,15 @@ export default function imagePackToFile() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0400", 0, async function (done) {
-            testFile = { fileName: "test.png", packTarget: "pack_no_disposalTypes.gif", size: { width: 472, height: 75 } }
-            packingOptions = { frameCount: 1, delayTimeList: [100], loopCount: 4};
-            await testPackGifMultiFramesToFile(done, "SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0400");
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0400: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                testFile = { fileName: "test.png", packTarget: "pack_no_disposalTypes.gif", size: { width: 472, height: 75 } }
+                packingOptions = { frameCount: 1, delayTimeList: [100], loopCount: 4};
+                await testPackGifMultiFramesToFile(done, "SUB_MULTIMEDIA_IMAGE_PACKTOFILEMULTIFRAMES_0400");
+            }
         });
 
         /**
@@ -1016,12 +1042,18 @@ export default function imagePackToFile() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0100", 0, async function (done) {
-            testFile = { 
-                fileName: "moving_test.gif", packTarget: "pack_imagesource_to_file_callback.gif", 
-                size: { width: 198, height: 202 }, packSource: "ImageSource"
-            };
-            packingOptions = { format: "image/gif", quality: 100};
-            await testPackGifToFile(done, "SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0100", "callback");
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0100: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                testFile = { 
+                    fileName: "moving_test.gif", packTarget: "pack_imagesource_to_file_callback.gif", 
+                    size: { width: 198, height: 202 }, packSource: "ImageSource"
+                };
+                packingOptions = { format: "image/gif", quality: 100};
+                await testPackGifToFile(done, "SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0100", "callback");
+            }
         });
 
         /**
@@ -1036,12 +1068,18 @@ export default function imagePackToFile() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0200", 0, async function (done) {
-            testFile = { 
-                fileName: "moving_test.gif", packTarget: "pack_pixelmap_to_file_callback.gif", 
-                size: { width: 198, height: 202 }, packSource: "PixelMap"
-            };
-            packingOptions = { format: "image/gif", quality: 100};
-            await testPackGifToFile(done, "SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0200", "callback");
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0200: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                testFile = { 
+                    fileName: "moving_test.gif", packTarget: "pack_pixelmap_to_file_callback.gif", 
+                    size: { width: 198, height: 202 }, packSource: "PixelMap"
+                };
+                packingOptions = { format: "image/gif", quality: 100};
+                await testPackGifToFile(done, "SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0200", "callback");
+            }
         });
 
         /**
@@ -1056,12 +1094,18 @@ export default function imagePackToFile() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0300", 0, async function (done) {
-            testFile = { 
-                fileName: "moving_test.gif", packTarget: "pack_imagesource_to_file_promise.gif", 
-                size: { width: 198, height: 202 }, packSource: "ImageSource"
-            };
-            packingOptions = { format: "image/gif", quality: 100};
-            await testPackGifToFile(done, "SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0300", "promise");
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0300: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                testFile = { 
+                    fileName: "moving_test.gif", packTarget: "pack_imagesource_to_file_promise.gif", 
+                    size: { width: 198, height: 202 }, packSource: "ImageSource"
+                };
+                packingOptions = { format: "image/gif", quality: 100};
+                await testPackGifToFile(done, "SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0300", "promise");
+            }
         });
 
         /**
@@ -1076,12 +1120,18 @@ export default function imagePackToFile() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0400", 0, async function (done) {
-            testFile = { 
-                fileName: "moving_test.gif", packTarget: "pack_pixelmap_to_file_promise.gif", 
-                size: { width: 198, height: 202 }, packSource: "PixelMap"
-            };
-            packingOptions = { format: "image/gif", quality: 100};
-            await testPackGifToFile(done, "SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0400", "promise");
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0400: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                testFile = { 
+                    fileName: "moving_test.gif", packTarget: "pack_pixelmap_to_file_promise.gif", 
+                    size: { width: 198, height: 202 }, packSource: "PixelMap"
+                };
+                packingOptions = { format: "image/gif", quality: 100};
+                await testPackGifToFile(done, "SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0400", "promise");
+            }
         });
     });
 }

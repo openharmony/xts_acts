@@ -22,8 +22,10 @@ export default function imageColorSpace() {
         let globalpixelmap;
         let globalImagesource;
         let globalPacker;
+        let isSupportGifEncode;
         beforeAll(async function () {
             console.info('beforeAll case');
+            isSupportGifEncode = image.createImagePacker().supportedFormats.includes("image/gif");
         })
 
         beforeEach(function () {
@@ -317,7 +319,7 @@ export default function imageColorSpace() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_0200', 0, async function (done) {
-            if (image.createImagePacker().supportedFormats.includes("image/gif")) {
+            if (isSupportGifEncode) {
                 console.info("SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_0200: The device support gif encode")
                 expect(true).assertTrue();
                 done();
@@ -383,7 +385,7 @@ export default function imageColorSpace() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200', 0, async function (done) {
-            if (image.createImagePacker().supportedFormats.includes("image/gif")) {
+            if (isSupportGifEncode) {
                 console.info("SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200: The device support gif encode")
                 expect(true).assertTrue();
                 done();

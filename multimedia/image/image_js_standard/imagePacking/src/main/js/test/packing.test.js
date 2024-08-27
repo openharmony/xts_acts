@@ -28,6 +28,7 @@ export default function imagePacking() {
         let fdNumber;
         let pixelMapList;
         let packingOptions;
+        let isSupportGifEncode;
         async function getFd(fileName) {
             let context = await featureAbility.getContext();
             await context.getFilesDir().then((data) => {
@@ -52,6 +53,7 @@ export default function imagePacking() {
 
         beforeAll(async function () {
             console.info("beforeAll case");
+            isSupportGifEncode = image.createImagePacker().supportedFormats.includes("image/gif");
         });
 
         beforeEach(function () {
@@ -1339,9 +1341,15 @@ export default function imagePacking() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0100", 0, async function (done) {
-            await createPixelMapList(done, "moving_test.gif");
-            packingOptions = { frameCount: 3, delayTimeList: [10, 10, 10], disposalTypes: [4,1,0], loopCount: 5};
-            packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0100", { width: 198, height: 202 })
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0100: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await createPixelMapList(done, "moving_test.gif");
+                packingOptions = { frameCount: 3, delayTimeList: [10, 10, 10], disposalTypes: [4,1,0], loopCount: 5};
+                packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0100", { width: 198, height: 202 })
+            }
         });
 
         /**
@@ -1356,9 +1364,15 @@ export default function imagePacking() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0200", 0, async function (done) {
-            await createPixelMapList(done, "test.png");
-            packingOptions = { frameCount: 1, delayTimeList: [10], disposalTypes: [3], loopCount: 5};
-            packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0200", { width: 472, height: 75 })
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0200: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await createPixelMapList(done, "test.png");
+                packingOptions = { frameCount: 1, delayTimeList: [10], disposalTypes: [3], loopCount: 5};
+                packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0200", { width: 472, height: 75 })
+            }
         });
 
         /**
@@ -1373,9 +1387,15 @@ export default function imagePacking() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0300", 0, async function (done) {
-            await createPixelMapList(done, "moving_test.gif");
-            packingOptions = { frameCount: 1, delayTimeList: [10], disposalTypes: [3,2,3]};
-            packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0300", { width: 198, height: 202 })
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0300: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await createPixelMapList(done, "moving_test.gif");
+                packingOptions = { frameCount: 1, delayTimeList: [10], disposalTypes: [3,2,3]};
+                packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0300", { width: 198, height: 202 })
+            }
         });
 
         /**
@@ -1390,9 +1410,15 @@ export default function imagePacking() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0400", 0, async function (done) {
-            await createPixelMapList(done, "test.png");
-            packingOptions = { frameCount: 1, delayTimeList: [10], loopCount: 2};
-            packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0400", { width: 472, height: 75 })
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0400: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await createPixelMapList(done, "test.png");
+                packingOptions = { frameCount: 1, delayTimeList: [10], loopCount: 2};
+                packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0400", { width: 472, height: 75 })
+            }
         });
 
         /**
@@ -1407,14 +1433,20 @@ export default function imagePacking() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0100", 0, async function (done) {
-            await testPackGifToData(
-                done, 
-                "SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0100", 
-                "moving_test.gif", 
-                "PixelMap", 
-                { width: 198, height: 202 }, 
-                "callback"
-            );
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0100: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testPackGifToData(
+                    done, 
+                    "SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0100", 
+                    "moving_test.gif", 
+                    "PixelMap", 
+                    { width: 198, height: 202 }, 
+                    "callback"
+                );
+            }
         });
 
         /**
@@ -1428,14 +1460,20 @@ export default function imagePacking() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0200", 0, async function (done) {
-            await testPackGifToData(
-                done, 
-                "SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0200", 
-                "moving_test.gif", 
-                "ImageSource", 
-                { width: 198, height: 202 }, 
-                "callback"
-            );
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0200: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testPackGifToData(
+                    done, 
+                    "SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0200", 
+                    "moving_test.gif", 
+                    "ImageSource", 
+                    { width: 198, height: 202 }, 
+                    "callback"
+                );
+            }
         });
 
         /**
@@ -1450,14 +1488,20 @@ export default function imagePacking() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0300", 0, async function (done) {
-            await testPackGifToData(
-                done, 
-                "SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0300", 
-                "moving_test.gif", 
-                "PixelMap", 
-                { width: 198, height: 202 }, 
-                "promise"
-            );
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0300: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testPackGifToData(
+                    done, 
+                    "SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0300", 
+                    "moving_test.gif", 
+                    "PixelMap", 
+                    { width: 198, height: 202 }, 
+                    "promise"
+                );
+            }
         });
 
         /**
@@ -1471,14 +1515,20 @@ export default function imagePacking() {
          * @tc.level     : level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0400", 0, async function (done) {
-            await testPackGifToData(
-                done, 
-                "SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0400", 
-                "moving_test.gif", 
-                "ImageSource", 
-                { width: 198, height: 202 }, 
-                "promise"
-            );
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0400: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testPackGifToData(
+                    done, 
+                    "SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0400", 
+                    "moving_test.gif", 
+                    "ImageSource", 
+                    { width: 198, height: 202 }, 
+                    "promise"
+                );
+            }
         });
     });
 }
