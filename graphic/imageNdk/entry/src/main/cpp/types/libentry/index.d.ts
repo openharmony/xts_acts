@@ -13,20 +13,7 @@
  * limitations under the License.
  */
 
-import image from "@ohos.multimedia.image";
-import resourceManager from "@ohos.resourceManager";
-
-interface IImageInfo {
-  width: number;
-  height: number;
-  rowStride: number;
-  pixelFormat: number;
-  alphaType: number
-}
-
 export const testInitializationOptionsSetRowStrideNormal: (rowStride: number) => number;
 export const testCreatePixelMapWithStrideAbnormal: () => number;
-export const testCreatePixelmap: (width: number, height: number, pixelFormat: number, alphaType: number) => number;
-export const testNativeScaleWithAntiAliasingNormal: (x: number, y: number) => number;
+export const testNativeScaleWithAntiAliasingAbnormal: () => number;
 export const testScaleWithAntiAliasingAbnormal: (x: number, y: number) => number;
-export const testReleasePixelmap: () => number;

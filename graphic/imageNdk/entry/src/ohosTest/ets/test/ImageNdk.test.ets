@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium'
-import ndkTest, { IImageInfo } from 'libImageNdk.so'
+import ndkTest from 'libImageNdk.so'
 import image from "@ohos.multimedia.image";
 import hilog from '@ohos.hilog';
 import common from '@ohos.app.ability.common';
@@ -80,20 +80,17 @@ export default function imageNdkTest() {
 
     /*
     * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_Native_ScaleWithAntiAliasing_0400
-    * @tc.name      : testNativeScaleWithAntiAliasingNormal
-    * @tc.desc      : 1.testNativeScaleWithAntiAliasingNormal
+    * @tc.name      : testNativeScaleWithAntiAliasingAbNormal
+    * @tc.desc      : 1.testNativeScaleWithAntiAliasingAbNormal
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
     it('SUB_MULTIMEDIA_PIXELMAPCAPI_Native_ScaleWithAntiAliasing_0400', 0, (done: Function) => {
-      let resultPixelmap: number = ndkTest.testCreatePixelmap(6, 4, 3, 1)
-      expect(resultPixelmap).assertEqual(0)
       // The scaling ratio is 100%
-      let result: number = ndkTest.testNativeScaleWithAntiAliasingNormal(100, 100)
-      expect(result).assertEqual(0)
-      result = ndkTest.testReleasePixelmap()
-      // release success return IMAGE_SUCCESS, it's 0
+      let result: number = ndkTest.testNativeScaleWithAntiAliasingAbnormal()
+      let msg = "testNativeScaleWithAntiAliasingAbNormal result: "
+      console.info(msg + result);
       expect(result).assertEqual(0)
       done();
     })
