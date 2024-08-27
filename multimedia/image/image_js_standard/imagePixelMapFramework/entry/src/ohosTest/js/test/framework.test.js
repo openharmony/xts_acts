@@ -17,6 +17,11 @@ import image from '@ohos.multimedia.image'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { base64Image, scale2x1, translate3x1, rotate90, flipH, testBmp, testGif, crop3x3, scale1x4, setAlpha8, translate1x3 } from './testImg2'
 import { testPng, testJpg } from './testImg'
+import fs from "@ohos.file.fs";
+import featureAbility from '@ohos.ability.featureAbility'
+import hdrCapability from '@ohos.graphics.hdrCapability';
+import display from '@ohos.display';
+
 export default function imagePixelMapFramework() {
     describe('imagePixelMapFramework', function () {
         let globalpixelmap;
@@ -27,8 +32,15 @@ export default function imagePixelMapFramework() {
         const CAPACITY = 8;
         const DEVICE_CODE = 801;
         const { JPEG: FORMATJPEG } = image.ImageFormat;
+        const { RGB_565, RGBA_8888, BGRA_8888, RGB_888, ALPHA_8, RGBA_F16, NV21, NV12,
+            RGBA_1010102, YCBCR_P010, YCRCB_P010 } = image.PixelMapFormat;
+        const CONVERTPIXELFOMAT_ERRORCODE = 62980115;
+        let context;
+        let filesDir;
         beforeAll(async function () {
             console.info('beforeAll case');
+            context = await featureAbility.getContext();
+            filesDir = await context.getFilesDir();
         })
 
         beforeEach(function () {
@@ -83,6 +95,7 @@ export default function imagePixelMapFramework() {
                 }
             }
         }
+
         function fNumber(num) {
             if (num > 99) {
                 return "" + num;
@@ -92,6 +105,7 @@ export default function imagePixelMapFramework() {
             }
             return " " + num;
         }
+
         function dumpArray(logger, arr, row) {
             var tmpS = ''
             for (var i = 0; i < arr.length; i++) {
@@ -152,7 +166,6 @@ export default function imagePixelMapFramework() {
             }
         }
 
-
         async function checkAlphaPixelmap(done, logger, alphaPixelMap) {
             logger.log("AlphaPixelMap " + alphaPixelMap);
             if (alphaPixelMap != undefined) {
@@ -167,6 +180,7 @@ export default function imagePixelMapFramework() {
                 done();
             }
         }
+
         async function createAlphaPixelmapTest(done, testNum, type, imageData) {
             let logger = loger(testNum)
             try {
@@ -225,6 +239,7 @@ export default function imagePixelMapFramework() {
                 done();
             }
         }
+
         async function createStridePixelmapTest(done, testNum, imageData) {
             let logger = loger(testNum);
             try {
@@ -520,6 +535,133 @@ export default function imagePixelMapFramework() {
             await pixelmap.readPixelsToBuffer(readBuffer);
             var bufferArr = new Uint8Array(readBuffer);
             dumpArray(logger, bufferArr, imageInfo.size.width * 4);
+        }
+
+        function getBufferSize(height, width, format) {
+            switch (format) {
+                case RGBA_1010102:
+                case RGBA_8888:
+                case BGRA_8888:
+                    return height * width * 4;
+                case RGBA_F16:
+                    return height * width * 8;
+                case RGB_565:
+                    return height * width * 2;
+                case RGB_888:
+                    return height * width * 3;
+                case NV12:
+                case NV21:
+                    return height * width + ((height + 1) / 2) * ((width + 1) / 2) * 2;
+                case YCBCR_P010:
+                case YCRCB_P010:
+                    return (height * width + (((height + 1) / 2) * ((width + 1) / 2) * 2)) * 2;
+                default:
+                    return 0;
+            }
+        }
+
+        function getBuffer(fileName) {
+            let filePath = filesDir + '/' + fileName;
+            console.log('filePath:', filePath)
+            let file = fs.openSync(filePath);
+            const stats = fs.statSync(filePath);
+            const fileSize = stats.size;
+            const bufferRead = new ArrayBuffer(fileSize)
+            fs.readSync(file.fd, bufferRead)
+            return bufferRead;
+        }
+        
+        async function createPixelMapByFormat(expectFormat) {
+            let fileName;
+            if (expectFormat == 10 || expectFormat == 11 || expectFormat == 12) {
+                fileName = "HDRVividSingleLayer.heic";
+            } else {
+                fileName = "JPG-480360-YUV311.jpg";
+            }
+            let buffer = await getBuffer(fileName);
+            let imageSource = image.createImageSource(buffer);
+            let decodingOpt;
+            if (expectFormat == 10 || expectFormat == 11 || expectFormat == 12) {
+                decodingOpt = {
+                    editable: true,
+                    desiredPixelFormat: expectFormat,
+                    desiredDynamicRange: image.DecodingDynamicRange.HDR
+                } 
+            } else if (expectFormat == 8 || expectFormat == 9) {
+                decodingOpt = {
+                    editable: true,
+                    desiredPixelFormat: expectFormat
+                }
+            } else {
+                decodingOpt = {
+                    editable: true,
+                    desiredPixelFormat: 8
+                }
+            }
+            let pixelMap = await imageSource.createPixelMap(decodingOpt);
+            if (pixelMap.getImageInfoSync().pixelFormat != expectFormat) {
+                try {
+                    await pixelMap.convertPixelFormat(expectFormat);
+                } catch (error) {
+                    console.info(`convertPixelFormat:${expectFormat} failed. ` + error)
+                }
+            }
+            return pixelMap;
+        }
+
+        async function testConvertPixelFormat(done, testNum, srcPixelFormat, dstPixelFormat) {
+            let logger = loger(testNum);
+            try {
+                let pixelMap = await createPixelMapByFormat(srcPixelFormat);
+                if (pixelMap != undefined) {
+                    globalpixelmap = pixelMap;
+                    let orgImageInfo = pixelMap.getImageInfoSync();
+                    expect(orgImageInfo.pixelFormat == srcPixelFormat).assertTrue();
+                    await pixelMap.convertPixelFormat(dstPixelFormat);
+                    let newImageInfo = pixelMap.getImageInfoSync();
+                    logger.log("converted to dstPixelFormat : " + newImageInfo.pixelFormat);
+                    logger.log(`pixelMap info: origin isHdr: ${orgImageInfo.isHdr}, new isHdr: ${newImageInfo.isHdr}`);
+                    expect(newImageInfo.isHdr == false).assertTrue();
+                    expect(orgImageInfo.isHdr == newImageInfo.isHdr).assertTrue();
+                    done();
+                } else {
+                    logger.log("pixelmap is undefined.");
+                    expect().assertFail();
+                    done();
+                }
+            } catch (error) {
+                logger.log("failed. " + error);
+                expect().assertFail();
+                done();
+            }
+        }
+
+        async function testConvertPixelFormatErr(done, testNum, srcPixelFormat, dstPixelFormat) {
+            let logger = loger(testNum);
+            try {
+                let pixelMap = await createPixelMapByFormat(srcPixelFormat);
+                if (pixelMap != undefined) {
+                    globalpixelmap = pixelMap;
+                    let orgImageInfo = pixelMap.getImageInfoSync();
+                    expect(orgImageInfo.pixelFormat == srcPixelFormat).assertTrue();
+                    await pixelMap.convertPixelFormat(dstPixelFormat);
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    logger.log("pixelmap is undefined.");
+                    expect(false).assertTrue();
+                    done();
+                }
+            } catch (error) {
+                logger.log("failed. " + JSON.stringify(error));
+                expect(error.code == CONVERTPIXELFOMAT_ERRORCODE).assertTrue();
+                done();
+            }
+        }
+
+        const isSupportHdr = () => {
+            return !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
+              display.getDefaultDisplaySync().hdrFormats.length != 0
         }
 
         /**
@@ -2088,6 +2230,985 @@ export default function imagePixelMapFramework() {
                 expect(pass).assertTrue();
                 done();
                 return;
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0100
+         * @tc.name      : test convert pixelformat RGBA_1010102 to NV21
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
+         *                 2.call convertPixelFormat(NV21)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0100', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0100')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+              await testConvertPixelFormat(
+                  done,
+                  "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0100",
+                  RGBA_1010102,
+                  NV21
+              );
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200
+         * @tc.name      : test convert pixelformat RGBA_1010102 to NV12
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
+         *                 2.call convertPixelFormat(NV12)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200",
+                    RGBA_1010102,
+                    NV12
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0300
+         * @tc.name      : test convert pixelformat RGBA_1010102 to YCRCB_P010
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
+         *                 2.call convertPixelFormat(YCRCB_P010)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0300', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0300')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0300",
+                    RGBA_1010102,
+                    YCRCB_P010
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0400
+         * @tc.name      : test convert pixelformat RGBA_1010102 to YCBCR_P010
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
+         *                 2.call convertPixelFormat(YCBCR_P010)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0400', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0400')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0400",
+                    RGBA_1010102,
+                    YCBCR_P010
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0500
+         * @tc.name      : test convert pixelformat YCBCR_P010 to RGB_565
+         * @tc.desc      : 1.create YCBCR_P010 pixelmap
+         *                 2.call convertPixelFormat(RGB_565)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0500', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0500')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0500",
+                    YCBCR_P010,
+                    RGB_565
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0600
+         * @tc.name      : test convert pixelformat YCBCR_P010 to RGBA_8888
+         * @tc.desc      : 1.create YCBCR_P010 pixelmap
+         *                 2.call convertPixelFormat(RGBA_8888)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0600', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0600')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0600",
+                    YCBCR_P010,
+                    RGBA_8888
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0700
+         * @tc.name      : test convert pixelformat YCBCR_P010 to BGRA_8888
+         * @tc.desc      : 1.create YCBCR_P010 pixelmap
+         *                 2.call convertPixelFormat(BGRA_8888)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0700', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0700')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0700",
+                    YCBCR_P010,
+                    BGRA_8888
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0800
+         * @tc.name      : test convert pixelformat YCBCR_P010 to RGB_888
+         * @tc.desc      : 1.create YCBCR_P010 pixelmap
+         *                 2.call convertPixelFormat(RGB_888)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0800', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0800')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0800",
+                    YCBCR_P010,
+                    RGB_888
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0900
+         * @tc.name      : test convert pixelformat YCBCR_P010 to RGBA_F16
+         * @tc.desc      : 1.create YCBCR_P010 pixelmap
+         *                 2.call convertPixelFormat(RGBA_F16)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0900', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0900')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0900",
+                    YCBCR_P010,
+                    RGBA_F16
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1000
+         * @tc.name      : test convert pixelformat YCRCB_P010 to RGB_565
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(RGB_565)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1000', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1000')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1000",
+                    YCRCB_P010,
+                    RGB_565
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1100
+         * @tc.name      : test convert pixelformat YCRCB_P010 to RGBA_8888
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(RGBA_8888)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1100', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1100')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1100",
+                    YCRCB_P010,
+                    RGBA_8888
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1200
+         * @tc.name      : test convert pixelformat YCRCB_P010 to BGRA_8888
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(BGRA_8888)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1200', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1200')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1200",
+                    YCRCB_P010,
+                    BGRA_8888
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1300
+         * @tc.name      : test convert pixelformat YCRCB_P010 to RGB_888
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(RGB_888)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1300', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1300')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1300",
+                    YCRCB_P010,
+                    RGB_888
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1400
+         * @tc.name      : test convert pixelformat YCRCB_P010 to RGBA_F16
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(RGBA_F16)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1400', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1400')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1400",
+                    YCRCB_P010,
+                    RGBA_F16
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500
+         * @tc.name      : test convert pixelformat NV21 to RGBA_1010102
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
+         *                 2.call convertPixelFormat(NV21)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500",
+                    NV21,
+                    RGBA_1010102
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600
+         * @tc.name      : test convert pixelformat NV12 to RGBA_1010102
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
+         *                 2.call convertPixelFormat(NV12)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600",
+                    NV12,
+                    RGBA_1010102
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700
+         * @tc.name      : test convert pixelformat YCRCB_P010 to RGBA_1010102
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
+         *                 2.call convertPixelFormat(YCRCB_P010)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700",
+                    YCRCB_P010,
+                    RGBA_1010102
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800
+         * @tc.name      : test convert pixelformat YCBCR_P010 to RGBA_1010102
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
+         *                 2.call convertPixelFormat(YCBCR_P010)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800",
+                    YCBCR_P010,
+                    RGBA_1010102
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900
+         * @tc.name      : test convert pixelformat RGB_565 to YCBCR_P010
+         * @tc.desc      : 1.create YCBCR_P010 pixelmap
+         *                 2.call convertPixelFormat(RGB_565)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900",
+                    RGB_565,
+                    YCBCR_P010
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000
+         * @tc.name      : test convert pixelformat RGBA_8888 to YCBCR_P010
+         * @tc.desc      : 1.create YCBCR_P010 pixelmap
+         *                 2.call convertPixelFormat(RGBA_8888)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000",
+                    RGBA_8888,
+                    YCBCR_P010
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100
+         * @tc.name      : test convert pixelformat BGRA_8888 to YCBCR_P010
+         * @tc.desc      : 1.create YCBCR_P010 pixelmap
+         *                 2.call convertPixelFormat(BGRA_8888)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100",
+                    BGRA_8888,
+                    YCBCR_P010
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200
+         * @tc.name      : test convert pixelformat RGB_888 to YCBCR_P010
+         * @tc.desc      : 1.create YCBCR_P010 pixelmap
+         *                 2.call convertPixelFormat(RGB_888)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200",
+                    RGB_888,
+                    YCBCR_P010
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300
+         * @tc.name      : test convert pixelformat RGBA_F16 to YCBCR_P010
+         * @tc.desc      : 1.create YCBCR_P010 pixelmap
+         *                 2.call convertPixelFormat(RGBA_F16)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300",
+                    RGBA_F16,
+                    YCBCR_P010
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400
+         * @tc.name      : test convert pixelformat RGB_565 to YCRCB_P010
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(RGB_565)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400",
+                    RGB_565,
+                    YCRCB_P010
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500
+         * @tc.name      : test convert pixelformat RGBA_8888 to YCRCB_P010
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(RGBA_8888)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500",
+                    RGBA_8888,
+                    YCRCB_P010
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600
+         * @tc.name      : test convert pixelformat BGRA_8888 to YCRCB_P010
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(BGRA_8888)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600",
+                    BGRA_8888,
+                    YCRCB_P010
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700
+         * @tc.name      : test convert pixelformat RGB_888 to YCRCB_P010
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(RGB_888)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700",
+                    RGB_888,
+                    YCRCB_P010
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800
+         * @tc.name      : test convert pixelformat RGBA_F16 to YCRCB_P010
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(RGBA_F16)
+         *                 3.get pixelformat
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormat(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800",
+                    RGBA_F16,
+                    YCRCB_P010
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0100
+         * @tc.name      : test convert pixelformat RGBA_1010102 to RGB_565
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
+         *                 2.call convertPixelFormat(RGB_565)
+         *                 3.check error code
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0100', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0100')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0100",
+                    RGBA_1010102,
+                    RGB_565
+                );
+            }
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200
+         * @tc.name      : test convert pixelformat RGBA_1010102 to RGBA_8888
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
+         *                 2.call convertPixelFormat(RGBA_8888)
+         *                 3.check error code
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200",
+                    RGBA_1010102,
+                    RGBA_8888
+                );
+            }
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300
+         * @tc.name      : test convert pixelformat RGBA_1010102 to BGRA_8888
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
+         *                 2.call convertPixelFormat(BGRA_8888)
+         *                 3.check error code
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300",
+                    RGBA_1010102,
+                    BGRA_8888
+                );
+            }
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400
+         * @tc.name      : test convert pixelformat RGBA_1010102 to RGB_888
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
+         *                 2.call convertPixelFormat(RGB_888)
+         *                 3.check error code
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400",
+                    RGBA_1010102,
+                    RGB_888
+                );
+            }
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500
+         * @tc.name      : test convert pixelformat RGBA_1010102 to RGBA_F16
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
+         *                 2.call convertPixelFormat(RGBA_F16)
+         *                 3.check error code
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500",
+                    RGBA_1010102,
+                    RGBA_F16
+                );
+            }
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600
+         * @tc.name      : test convert pixelformat YCBCR_P010 to NV21
+         * @tc.desc      : 1.create YCBCR_P010 pixelmap
+         *                 2.call convertPixelFormat(NV21)
+         *                 3.check error code
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600",
+                    YCBCR_P010,
+                    NV21
+                );
+            }
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700
+         * @tc.name      : test convert pixelformat YCBCR_P010 to NV12
+         * @tc.desc      : 1.create YCBCR_P010 pixelmap
+         *                 2.call convertPixelFormat(NV12)
+         *                 3.check error code
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700",
+                    YCBCR_P010,
+                    NV12
+                );
+            }
+        });
+         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800
+         * @tc.name      : test convert pixelformat YCRCB_P010 to NV21
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(NV21)
+         *                 3.check error code
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800",
+                    YCRCB_P010,
+                    NV21
+                );
+            }
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900
+         * @tc.name      : test convert pixelformat YCRCB_P010 to NV12
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(NV12)
+         *                 3.check error code
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900",
+                    YCRCB_P010,
+                    NV12
+                );
+            }
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000
+         * @tc.name      : test convert pixelformat YCRCB_P010 to YCBCR_P010
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(YCBCR_P010)
+         *                 3.check error code
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000')
+            if (!isSupportHdr()) {
+                logger.log('device is not support hdr');
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testConvertPixelFormatErr(
+                    done,
+                    "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000",
+                    YCRCB_P010,
+                    YCBCR_P010
+                );
             }
         });
     })
