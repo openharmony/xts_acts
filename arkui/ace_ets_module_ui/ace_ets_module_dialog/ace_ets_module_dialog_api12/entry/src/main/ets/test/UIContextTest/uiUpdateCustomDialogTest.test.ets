@@ -16,25 +16,25 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-export default function updateCustomDialogTest() {
-  describe('updateCustomDialogTest', () => {
+export default function uiUpdateCustomDialogTest() {
+  describe('uiUpdateCustomDialogTest', () => {
     beforeEach(async (done: Function) => {
-      console.info("updateCustomDialogTest beforeEach start");
+      console.info("uiUpdateCustomDialogTest beforeEach start");
       let options: router.RouterOptions = {
         url: "MainAbility/pages/UIContext/updateCustomDialog",
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get updateCustomDialogTest state pages: " + JSON.stringify(pages));
+        console.info("get uiUpdateCustomDialogTest state pages: " + JSON.stringify(pages));
         if (!("updateCustomDialog" == pages.name)) {
-          console.info("get updateCustomDialogTest state pages.name: " + JSON.stringify(pages.name));
+          console.info("get uiUpdateCustomDialogTest state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push updateCustomDialogTest success: " + JSON.stringify(result));
+          console.info("push uiUpdateCustomDialogTest success: " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push updateCustomDialogTest page error: " + err);
+        console.error("push uiUpdateCustomDialogTest page error: " + err);
         expect().assertFail();
       }
       done();
@@ -42,23 +42,23 @@ export default function updateCustomDialogTest() {
 
     /**
      * @tc.number    updateCustomDialog
-     * @tc.name      updateCustomDialogTest_0100
+     * @tc.name      uiUpdateCustomDialogTest_0100
      * @tc.desc      api
      * @tc.level:    Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('updateCustomDialogTest_0100', 0, async (done: Function) => {
-      console.info('updateCustomDialogTest_0100 START');
+    it('uiUpdateCustomDialogTest_0100', 0, async (done: Function) => {
+      console.info('uiUpdateCustomDialogTest_0100 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
       let btn: Component = await driver.findComponent(ON.id('btn'));
       await btn.click();
       await CommonFunc.sleep(4500);
       let updateCustomDialog = getInspectorByKey('updateCustomDialog');
-      console.info("[updateCustomDialogTest_0100] attrs is: " + JSON.stringify(JSON.parse(updateCustomDialog).$attrs));
+      console.info("[uiUpdateCustomDialogTest_0100] attrs is: " + JSON.stringify(JSON.parse(updateCustomDialog).$attrs));
       expect(JSON.parse(updateCustomDialog).$attrs.content).assertEqual('updateCustomDialog');
-      console.info('[updateCustomDialogTest_0100] END');
+      console.info('[uiUpdateCustomDialogTest_0100] END');
       done();
     });
   })
