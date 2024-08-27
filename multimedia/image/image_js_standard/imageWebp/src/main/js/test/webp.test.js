@@ -1153,7 +1153,7 @@ export default function imageWebp() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0200
-         * @tc.name      : packing - callback-webp-no quality
+         * @tc.name      : packing - callback-webp-wrong quality
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
          *                 3.return array
@@ -1168,7 +1168,7 @@ export default function imageWebp() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0300
-         * @tc.name      : packing - callback-webp-no format
+         * @tc.name      : packing - callback-webp-no quality
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
          *                 3.return array
