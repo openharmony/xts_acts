@@ -185,7 +185,7 @@ export default function OhAVPlayerNDKTest() { // L2
         
         let player :number = await avplayer.OhAvPlayerPlay();
         expect(player).assertEqual(AV_ERR_OK);
-        let state: number = avplayer.OhAvPlayerGetState();
+        state = avplayer.OhAvPlayerGetState();
         expect(state).assertEqual(AV_PLAYING);
         hilog.info(0x0000, 'testTag', '%{public}s', `testOhAvPlayerPlay001:${player}`);
       } catch (error) {
@@ -216,7 +216,7 @@ export default function OhAVPlayerNDKTest() { // L2
         Utils.sleep(sleep500);
         player = await avplayer.OhAvPlayerIsPlaying();
         expect(player).assertEqual(numberTrue);
-        let state: number = avplayer.OhAvPlayerGetState();
+        state = avplayer.OhAvPlayerGetState();
         expect(state).assertEqual(AV_PLAYING);
         hilog.info(0x0000, 'testTag', '%{public}s', `testOhAvPlayerIsPlaying001:${player}`);
       } catch (error) {
@@ -242,7 +242,7 @@ export default function OhAVPlayerNDKTest() { // L2
         console.info(`testOhAvPlayerNDK test state :${state}`);
         
         await avplayer.OhAvPlayerPlay();
-        let state: number = avplayer.OhAvPlayerGetState();
+        state = avplayer.OhAvPlayerGetState();
         console.info(`testOhAvPlayerNDK test state :${state}`);
         
         let player : number = await avplayer.OhAvPlayerPause();

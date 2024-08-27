@@ -567,7 +567,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
       expect(result).assertEqual(AV_ERR_OK);
-      state = avplayer.OhAvPlayerGetState();
+      let state: number = avplayer.OhAvPlayerGetState();
       console.info(`testOhAvPlayerNDK test state :${state}`);
 
       result = await avplayer.OhAvPlayerPlay();
@@ -597,7 +597,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
       expect(result).assertEqual(AV_ERR_OK);
-      state = avplayer.OhAvPlayerGetState();
+      let state: number = avplayer.OhAvPlayerGetState();
       console.info(`testOhAvPlayerNDK test state :${state}`);
 
       result = avplayer.OhAvPlayerPrepare();
@@ -632,7 +632,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
       expect(result).assertEqual(AV_ERR_OK);
-      state = avplayer.OhAvPlayerGetState();
+      let state: number = avplayer.OhAvPlayerGetState();
       console.info(`testOhAvPlayerNDK test state :${state}`);
 
       result = avplayer.OhAvPlayerPrepare();
@@ -676,7 +676,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
       expect(result).assertEqual(AV_ERR_OK);
-      state = avplayer.OhAvPlayerGetState();
+      let state: number = avplayer.OhAvPlayerGetState();
       console.info(`testOhAvPlayerNDK test state :${state}`);
 
       result = avplayer.OhAvPlayerPrepare();
@@ -711,7 +711,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
       expect(result).assertEqual(AV_ERR_OK);
-      state = avplayer.OhAvPlayerGetState();
+      let state: number = avplayer.OhAvPlayerGetState();
       console.info(`testOhAvPlayerNDK test state :${state}`);
 
       result = avplayer.OhAvPlayerPause();
@@ -741,7 +741,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
       expect(result).assertEqual(AV_ERR_OK);
-      state = avplayer.OhAvPlayerGetState();
+      let state: number = avplayer.OhAvPlayerGetState();
       console.info(`testOhAvPlayerNDK test state :${state}`);
 
       result = avplayer.OhAvPlayerStop();
@@ -771,7 +771,7 @@ export default function OhAVPlayerNDKOtherTest() {
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
       expect(result).assertEqual(AV_ERR_OK);
-      state = avplayer.OhAvPlayerGetState();
+      let state: number = avplayer.OhAvPlayerGetState();
       console.info(`testOhAvPlayerNDK test state :${state}`);
 
       result = avplayer.OhAvPlayerPrepare();
@@ -792,7 +792,7 @@ export default function OhAVPlayerNDKOtherTest() {
       result = avplayer.OhAvPlayerSetFdPathSource();
       expect(result).assertEqual(AV_ERR_INVALID_VAL);
 
-      let state: number = avplayer.OhAvPlayerGetState();
+      state = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_STOPPED);
 
       result = avplayer.OhCloseFile();
