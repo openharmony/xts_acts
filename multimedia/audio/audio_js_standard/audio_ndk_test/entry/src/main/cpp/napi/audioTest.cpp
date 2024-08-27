@@ -91,6 +91,7 @@ static int32_t StatusJudgment(OH_AudioCommon_Result result, OH_AudioCommon_Resul
     default:
       outCome = TEST_FAIL;
   }
+  LOG(false, "StatusJudgmentresult, result is %d", result);
   return outCome;
 }
 
@@ -3424,6 +3425,7 @@ static napi_value AudioSessionManagerStrategy_001(napi_env env, napi_callback_in
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultManager, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3433,6 +3435,7 @@ static napi_value AudioSessionManagerStrategy_001(napi_env env, napi_callback_in
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3441,12 +3444,14 @@ static napi_value AudioSessionManagerStrategy_001(napi_env env, napi_callback_in
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
+    LOG(false, "isActivated, result is: %d", res);
     return res;
   }
   
   // 监听音频会话停用事件
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultRegister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultRegister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3458,6 +3463,7 @@ static napi_value AudioSessionManagerStrategy_001(napi_env env, napi_callback_in
   // 取消监听音频会话停用事件
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultUnregister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultUnregister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3465,6 +3471,7 @@ static napi_value AudioSessionManagerStrategy_001(napi_env env, napi_callback_in
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3473,6 +3480,7 @@ static napi_value AudioSessionManagerStrategy_001(napi_env env, napi_callback_in
   isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
+    LOG(false, "isActivated, result is: %d", res);
     return res;
   }
   napi_create_int32(env, TEST_PASS, &res);
@@ -3487,6 +3495,7 @@ static napi_value AudioSessionManagerStrategy_002(napi_env env, napi_callback_in
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultManager, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3496,6 +3505,7 @@ static napi_value AudioSessionManagerStrategy_002(napi_env env, napi_callback_in
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3504,12 +3514,14 @@ static napi_value AudioSessionManagerStrategy_002(napi_env env, napi_callback_in
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
+    LOG(false, "isActivated, result is: %d", res);
     return res;
   }
 
   // 监听音频会话停用事件
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultRegister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultRegister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3519,6 +3531,7 @@ static napi_value AudioSessionManagerStrategy_002(napi_env env, napi_callback_in
   // 取消监听音频会话停用事件
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultUnregister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultUnregister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3528,6 +3541,7 @@ static napi_value AudioSessionManagerStrategy_002(napi_env env, napi_callback_in
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3544,6 +3558,7 @@ static napi_value AudioSessionManagerStrategy_003(napi_env env, napi_callback_in
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3553,6 +3568,7 @@ static napi_value AudioSessionManagerStrategy_003(napi_env env, napi_callback_in
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3561,11 +3577,13 @@ static napi_value AudioSessionManagerStrategy_003(napi_env env, napi_callback_in
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
+    LOG(false, "isActivated, result is: %d", res);
     return res;
   }
   // 监听音频会话停用事件
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultRegister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3575,6 +3593,7 @@ static napi_value AudioSessionManagerStrategy_003(napi_env env, napi_callback_in
   // 取消监听音频会话停用事件
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultUnregister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultUnregister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3583,6 +3602,7 @@ static napi_value AudioSessionManagerStrategy_003(napi_env env, napi_callback_in
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3599,6 +3619,7 @@ static napi_value AudioSessionManagerStrategy_004(napi_env env, napi_callback_in
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultManager, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3608,6 +3629,7 @@ static napi_value AudioSessionManagerStrategy_004(napi_env env, napi_callback_in
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3616,12 +3638,14 @@ static napi_value AudioSessionManagerStrategy_004(napi_env env, napi_callback_in
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
+    LOG(false, "isActivated, result is: %d", res);
     return res;
   }
 
   // 监听音频会话停用事件
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultRegister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultRegister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3631,6 +3655,7 @@ static napi_value AudioSessionManagerStrategy_004(napi_env env, napi_callback_in
   // 取消监听音频会话停用事件
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultUnregister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultUnregister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3640,6 +3665,7 @@ static napi_value AudioSessionManagerStrategy_004(napi_env env, napi_callback_in
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3659,6 +3685,7 @@ static napi_value AudioSessionManagerStrategyErro_001(napi_env env, napi_callbac
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultManager, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3668,6 +3695,7 @@ static napi_value AudioSessionManagerStrategyErro_001(napi_env env, napi_callbac
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(nullptr, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3685,6 +3713,7 @@ static napi_value AudioSessionManagerActivatedErro_001(napi_env env, napi_callba
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultManager, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3694,6 +3723,7 @@ static napi_value AudioSessionManagerActivatedErro_001(napi_env env, napi_callba
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3701,11 +3731,13 @@ static napi_value AudioSessionManagerActivatedErro_001(napi_env env, napi_callba
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(nullptr);
   if (isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
+    LOG(false, "isActivated, result is: %d", res);
     return res;
   }
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3722,6 +3754,7 @@ static napi_value AudioSessionManagerStopErro_001(napi_env env, napi_callback_in
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultManager, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3731,6 +3764,7 @@ static napi_value AudioSessionManagerStopErro_001(napi_env env, napi_callback_in
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3738,12 +3772,14 @@ static napi_value AudioSessionManagerStopErro_001(napi_env env, napi_callback_in
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(nullptr);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
     return res;
   }
   // 停用音频会话
   resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3761,6 +3797,7 @@ static napi_value AudioSessionManagerStopErro_002(napi_env env, napi_callback_in
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultManager, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3770,6 +3807,7 @@ static napi_value AudioSessionManagerStopErro_002(napi_env env, napi_callback_in
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3777,12 +3815,14 @@ static napi_value AudioSessionManagerStopErro_002(napi_env env, napi_callback_in
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
   }
   resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3799,6 +3839,7 @@ static napi_value AudioSessionManagerRegisterErro_001(napi_env env, napi_callbac
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultManager, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3808,6 +3849,7 @@ static napi_value AudioSessionManagerRegisterErro_001(napi_env env, napi_callbac
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3816,11 +3858,13 @@ static napi_value AudioSessionManagerRegisterErro_001(napi_env env, napi_callbac
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
+    LOG(false, "isActivated, result is: %d", res);
     return res;
   }
   // 监听音频会话停用事件
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(nullptr,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultRegister, AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM);
+  LOG(false, "resultRegister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3830,6 +3874,7 @@ static napi_value AudioSessionManagerRegisterErro_001(napi_env env, napi_callbac
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3845,6 +3890,7 @@ static napi_value AudioSessionManagerRegisterErro_002(napi_env env, napi_callbac
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultManager, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3854,6 +3900,7 @@ static napi_value AudioSessionManagerRegisterErro_002(napi_env env, napi_callbac
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3862,11 +3909,13 @@ static napi_value AudioSessionManagerRegisterErro_002(napi_env env, napi_callbac
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
+    LOG(false, "isActivated, result is: %d", res);
     return res;
   }
   // 监听音频会话停用事件
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,nullptr);
   result = StatusJudgment(resultRegister, AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM);
+  LOG(false, "resultRegister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3876,6 +3925,7 @@ static napi_value AudioSessionManagerRegisterErro_002(napi_env env, napi_callbac
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3892,6 +3942,7 @@ static napi_value AudioSessionManagerUnregisterErro_001(napi_env env, napi_callb
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultManager, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3901,6 +3952,7 @@ static napi_value AudioSessionManagerUnregisterErro_001(napi_env env, napi_callb
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3909,11 +3961,13 @@ static napi_value AudioSessionManagerUnregisterErro_001(napi_env env, napi_callb
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
+    LOG(false, "isActivated, result is: %d", res);
     return res;
   }
   // 监听音频会话停用事件
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultRegister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultRegister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3922,6 +3976,7 @@ static napi_value AudioSessionManagerUnregisterErro_001(napi_env env, napi_callb
   // 取消监听音频会话停用事件
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(nullptr, MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultUnregister, AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM);
+  LOG(false, "resultUnregister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3930,6 +3985,7 @@ static napi_value AudioSessionManagerUnregisterErro_001(napi_env env, napi_callb
   // 取消监听音频会话停用事件
   resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultUnregister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultUnregister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3939,6 +3995,7 @@ static napi_value AudioSessionManagerUnregisterErro_001(napi_env env, napi_callb
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3955,6 +4012,7 @@ static napi_value AudioSessionManagerUnregisterErro_002(napi_env env, napi_callb
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultManager, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3964,6 +4022,7 @@ static napi_value AudioSessionManagerUnregisterErro_002(napi_env env, napi_callb
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3972,11 +4031,13 @@ static napi_value AudioSessionManagerUnregisterErro_002(napi_env env, napi_callb
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
+    LOG(false, "isActivated, result is: %d", res);
     return res;
   }
   // 监听音频会话停用事件
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultRegister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultRegister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3985,6 +4046,7 @@ static napi_value AudioSessionManagerUnregisterErro_002(napi_env env, napi_callb
   // 取消监听音频会话停用事件
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager, nullptr);
   result = StatusJudgment(resultUnregister, AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM);
+  LOG(false, "resultUnregister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -3993,6 +4055,7 @@ static napi_value AudioSessionManagerUnregisterErro_002(napi_env env, napi_callb
   // 取消监听音频会话停用事件
   resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultUnregister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultUnregister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -4002,6 +4065,7 @@ static napi_value AudioSessionManagerUnregisterErro_002(napi_env env, napi_callb
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -4018,6 +4082,7 @@ static napi_value AudioSessionManagerReason_001(napi_env env, napi_callback_info
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultManager, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -4027,6 +4092,7 @@ static napi_value AudioSessionManagerReason_001(napi_env env, napi_callback_info
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -4035,6 +4101,7 @@ static napi_value AudioSessionManagerReason_001(napi_env env, napi_callback_info
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
+    LOG(false, "isActivated, result is: %d", res);
     return res;
   }
   // 1. create builder
@@ -4044,27 +4111,45 @@ static napi_value AudioSessionManagerReason_001(napi_env env, napi_callback_info
   OH_AudioStreamBuilder_Create(&builder, type);
   OH_AudioStreamBuilder_SetRendererInfo(builder, usage);
   OH_AudioRenderer* audioRenderer1;
-  OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer1);
+  OH_AudioStream_Result createResult = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer1);
+  if (createResult != AUDIOSTREAM_SUCCESS) {
+    napi_create_int32(env, TEST_FAIL, &res);
+    return res;
+  }
   // 3. create audioRenderer1 audioRenderer2
+  
 
   OH_AudioStreamBuilder* builder2;
   OH_AudioStreamBuilder_Create(&builder2, type);
   OH_AudioStreamBuilder_SetRendererInfo(builder2, usage);
   OH_AudioRenderer* audioRenderer2;
-  OH_AudioStreamBuilder_GenerateRenderer(builder2, &audioRenderer2);
+  createResult = OH_AudioStreamBuilder_GenerateRenderer(builder2, &audioRenderer2);
+  if (createResult != AUDIOSTREAM_SUCCESS) {
+    napi_create_int32(env, TEST_FAIL, &res);
+    return res;
+  }
 
   // 监听音频会话停用事件
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultRegister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultRegister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
   }
   // 音频会话激活后应用在此处正常执行音频播放、暂停、停止、释放等操作即可。 
   // 4. start
-  OH_AudioRenderer_Start(audioRenderer1);
+  createResult = OH_AudioRenderer_Start(audioRenderer1);
+  if (createResult != AUDIOSTREAM_SUCCESS) {
+    napi_create_int32(env, TEST_FAIL, &res);
+    return res;
+  }
   sleep(1);
-  OH_AudioRenderer_Start(audioRenderer2);
+  createResult = OH_AudioRenderer_Start(audioRenderer2);
+  if (createResult != AUDIOSTREAM_SUCCESS) {
+    napi_create_int32(env, TEST_FAIL, &res);
+    return res;
+  }
   sleep(1); // 2:sleep 2 seconds
 
   // 5. stop and release client
@@ -4077,6 +4162,7 @@ static napi_value AudioSessionManagerReason_001(napi_env env, napi_callback_info
   // 取消监听音频会话停用事件
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultUnregister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultUnregister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -4086,6 +4172,7 @@ static napi_value AudioSessionManagerReason_001(napi_env env, napi_callback_info
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -4104,6 +4191,7 @@ static napi_value AudioSessionManagerReason_002(napi_env env, napi_callback_info
   OH_AudioSessionManager *audioSessionManager;
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   result = StatusJudgment(resultManager, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultManager, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -4113,6 +4201,7 @@ static napi_value AudioSessionManagerReason_002(napi_env env, napi_callback_info
   // 设置音频并发模式并激活音频会话
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   result = StatusJudgment(resultActivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultActivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -4121,6 +4210,7 @@ static napi_value AudioSessionManagerReason_002(napi_env env, napi_callback_info
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
+    LOG(false, "isActivated, result is: %d", res);
     return res;
   }
   // 1. create builder
@@ -4130,21 +4220,30 @@ static napi_value AudioSessionManagerReason_002(napi_env env, napi_callback_info
   OH_AudioStreamBuilder_Create(&builder, type);
   OH_AudioStreamBuilder_SetRendererInfo(builder, usage);
   OH_AudioRenderer* audioRenderer1;
-  OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer1);
+  OH_AudioStream_Result createResult = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer1);
+  if (createResult != AUDIOSTREAM_SUCCESS) {
+    napi_create_int32(env, TEST_FAIL, &res);
+    return res;
+  }
 
   // 监听音频会话停用事件
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultRegister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultRegister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
   }
   // 音频会话激活后应用在此处正常执行音频播放、暂停、停止、释放等操作即可。 
   // 4. start
-  OH_AudioRenderer_Start(audioRenderer1);
+  createResult = OH_AudioRenderer_Start(audioRenderer1);
+  if (createResult != AUDIOSTREAM_SUCCESS) {
+    napi_create_int32(env, TEST_FAIL, &res);
+    return res;
+  }
   sleep(1);
   OH_AudioRenderer_Stop(audioRenderer1);
-  sleep(5);
+  sleep(65);
   // 5. stop and release client
   OH_AudioRenderer_Release(audioRenderer1);
   OH_AudioStreamBuilder_Destroy(builder);
@@ -4153,6 +4252,7 @@ static napi_value AudioSessionManagerReason_002(napi_env env, napi_callback_info
   // 取消监听音频会话停用事件
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   result = StatusJudgment(resultUnregister, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultUnregister, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -4162,6 +4262,7 @@ static napi_value AudioSessionManagerReason_002(napi_env env, napi_callback_info
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
