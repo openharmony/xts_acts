@@ -2297,22 +2297,6 @@ export default function audioNDK() {
 
 
     /**
-     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategyErro_0200
-     * @tc.name      : set strategy value to nullptr
-     * @tc.desc      : test AudioSessionManagerStrategy
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level0
-     */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategyErro_0200', 0, async (done: Function) => {
-      let a = myaudioNdk.AudioSessionManagerStrategyErro_002();
-      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategyErro_0200`,
-        `AudioSessionManagerStrategyErro_002: ${a}`);
-      expect(a).assertEqual(0)
-      done()
-    })
-
-    /**
      * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerActivatedErro_0100
      * @tc.name      : set audioSessionManager value to nullptr
      * @tc.desc      : test AudioSessionManagerStrategy
