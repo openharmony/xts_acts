@@ -133,27 +133,23 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrameWithMultiCallbackNormal, Fu
     int ret1 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data); 
     ASSERT_EQ(ret, NATIVE_ERROR_OK); 
     ASSERT_EQ(ret1, NATIVE_ERROR_OK); 
-    for (int i = 0; i < 5; i++) 
-    { 
+    for (int i = 0; i < 5; i++) { 
         int ret2 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
         ASSERT_EQ(ret2, NATIVE_ERROR_OK); 
     } 
-    for (int i = 0; i < 5; i++) 
-    {
-        int ret3 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data+i); 
+    for (int i = 0; i < 5; i++) {
+        int ret3 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data + i); 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
         ASSERT_EQ(ret3, NATIVE_ERROR_OK);
     }
-    for (int i = 0; i < 100; i++) 
-    {
+    for (int i = 0; i < 100; i++) {
         int ret_100 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
         ASSERT_EQ(ret_100, NATIVE_ERROR_OK);
     }
-    for (int i = 0; i < 1000; i++)
-    {
-        int ret_1000 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback , data);
+    for (int i = 0; i < 1000; i++) {
+        int ret_1000 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
         ASSERT_EQ(ret_1000, NATIVE_ERROR_OK);
     }
