@@ -24,7 +24,7 @@ static napi_value TestCalendarPickerHintRadius001(napi_env env, napi_callback_in
 
     ArkUI_NumberValue calendarPicker_value[] = {{.f32 = hintRadius}};
     ArkUI_AttributeItem calendarPicker_item = {
-        calendarPicker_value, 
+        calendarPicker_value,
         sizeof(calendarPicker_value) / sizeof(ArkUI_NumberValue)
     };
     auto ret = nodeAPI->setAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS, &calendarPicker_item);
@@ -41,7 +41,7 @@ static napi_value TestCalendarPickerHintRadius002(napi_env env, napi_callback_in
 
     ArkUI_NumberValue calendarPicker_value[] = {{.f32 = hintRadius}};
     ArkUI_AttributeItem calendarPicker_item = {
-        calendarPicker_value, 
+        calendarPicker_value,
         sizeof(calendarPicker_value) / sizeof(ArkUI_NumberValue)
     };
     auto ret = nodeAPI->setAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS, &calendarPicker_item);
@@ -60,7 +60,7 @@ static napi_value TestCalendarPickerHintRadius003(napi_env env, napi_callback_in
 
     ArkUI_NumberValue calendarPicker_value[] = {{.f32 = hintRadius}};
     ArkUI_AttributeItem calendarPicker_item = {
-        calendarPicker_value, 
+        calendarPicker_value,
         sizeof(calendarPicker_value) / sizeof(ArkUI_NumberValue)
     };
     auto ret = nodeAPI->setAttribute(calendarPicker, NODE_CALENDAR_PICKER_HINT_RADIUS, &calendarPicker_item);

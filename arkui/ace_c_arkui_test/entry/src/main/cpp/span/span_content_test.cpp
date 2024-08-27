@@ -17,12 +17,12 @@
 
 namespace ArkUICapiTest {
 
-static napi_value TestSpanContent001(n_env env, napi_callback_info info)
+static napi_value TestSpanContent001(napi_env env, napi_callback_info info)
 {
     NAPI_START(span, ARKUI_NODE_SPAN);
 
     ArkUI_AttributeItem valueItem = {};
-    valueItem.string = STR;
+    valueItem.string = STR_TEXT;
     auto ret = nodeAPI->setAttribute(span, NODE_SPAN_CONTENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(span, NODE_SPAN_CONTENT)->string, STR_TEXT);

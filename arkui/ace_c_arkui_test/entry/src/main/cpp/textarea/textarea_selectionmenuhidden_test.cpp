@@ -44,7 +44,8 @@ static napi_value TestTextAreaSelectionMenuHidden003(napi_env env, napi_callback
     auto ret = nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN)->value[PARAM_0].i32, PARAM_NEGATIVE_2);
+        ASSERT_NE(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN)->value[PARAM_0].i32,
+                  PARAM_NEGATIVE_2);
     }
     NAPI_END;
 }
