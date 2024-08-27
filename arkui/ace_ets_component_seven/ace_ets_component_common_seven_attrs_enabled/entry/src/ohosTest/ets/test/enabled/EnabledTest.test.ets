@@ -33,7 +33,7 @@ export default function enabledTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testEnabled',
     pageName: 'EnabledPage',
     pageUrl: 'MainAbility/pages/enabled/EnabledPage',
@@ -48,21 +48,21 @@ export default function enabledTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'Setenabled',
     setValue: {
-      enabled: false
-    },
+     enabled: false
+    } as ESObject,
     expectValue: {
-      enabled: false
-    }
+     enabled: false
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('enabledTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.info('[' + data.caseTag + ']' + 'enabled is:' + data.viewObj.$attrs.enabled);
       expect(data.viewObj.$attrs.enabled)
         .assertEqual(data.testValue.expectValue.enabled);
