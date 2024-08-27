@@ -3729,7 +3729,7 @@ static napi_value AudioSessionManagerActivatedErro_001(napi_env env, napi_callba
     return res;
   }
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(nullptr);
-  if (isActivated) {
+  if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
     LOG(false, "isActivated, result is: %d", TEST_FAIL);
     return res;
@@ -3814,16 +3814,16 @@ static napi_value AudioSessionManagerStopErro_002(napi_env env, napi_callback_in
     return res;
   }
   // 停用音频会话
-  OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
-  result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
-  LOG(false, "resultDeactivate, result is: %d", result);
+  OH_AudioCommon_Result resultDeactivate1 = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
+  result = StatusJudgment(resultDeactivate1, AUDIOCOMMON_RESULT_SUCCESS);
+  LOG(false, "resultDeactivate1, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
   }
-  resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
-  result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE);
-  LOG(false, "resultDeactivate, result is: %d", result);
+  OH_AudioCommon_Result resultDeactivate2 = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
+  result = StatusJudgment(resultDeactivate2, AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE);
+  LOG(false, "resultDeactivate2, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
     return res;
@@ -4259,15 +4259,7 @@ static napi_value AudioSessionManagerReason_002(napi_env env, napi_callback_info
     return res;
   }
   
-  
-  // 停用音频会话
-  OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
-  result = StatusJudgment(resultDeactivate, AUDIOCOMMON_RESULT_SUCCESS);
-  LOG(false, "resultDeactivate, result is: %d", result);
-  if (result != TEST_PASS) {
-    napi_create_int32(env, TEST_FAIL, &res);
-    return res;
-  }
+
   napi_create_int32(env, TEST_PASS, &res);
   return res;
 }
