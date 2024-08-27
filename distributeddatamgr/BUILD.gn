@@ -23,7 +23,6 @@ group("distributeddatamgr") {
       "dataObjecttest:dataObjecttest",
       "dataSharejstest/hap:dataShare_js_test",
       "distributedKVStoretest:distributedKVStoretest",
-      "distributedNdktest:ActsDistributedNdkTest",
       "kvStoretest:kvStoretest",
       "preferencesEtstest:ActsPreferencesEtsTest",
       "preferencesSendabletest:preferencesSendable_ets_test",
