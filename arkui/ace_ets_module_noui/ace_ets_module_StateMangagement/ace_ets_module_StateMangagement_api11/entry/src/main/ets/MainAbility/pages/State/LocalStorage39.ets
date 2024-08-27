@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 AppStorage.clear()
-let storage139 = new LocalStorage({"PropA":47})
-let storage39 = new LocalStorage();
+let storage139: LocalStorage = new LocalStorage({"PropA":47} as Record<string, number>)
+let storage39: LocalStorage = new LocalStorage();
 storage39['PropA'] = 47;
 storage39['PropB'] = 1;
 

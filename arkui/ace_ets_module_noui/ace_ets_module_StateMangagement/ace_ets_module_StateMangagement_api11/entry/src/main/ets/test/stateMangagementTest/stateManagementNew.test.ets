@@ -16,7 +16,7 @@
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function stateManagementGetSharedJsunit() {
   describe('stateManagementGetSharedTest', () => {
@@ -32,7 +32,7 @@ export default function stateManagementGetSharedJsunit() {
         if (!("stateManagement" == pages.name)) {
           console.info("get stateManagement state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push stateManagement page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,7 +41,7 @@ export default function stateManagementGetSharedJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("stateManagementGetShared after each called");
     });
 
@@ -52,15 +52,15 @@ export default function stateManagementGetSharedJsunit() {
      */
     it('teststateManagementGetShared0001', 0, async () => {
       console.info('stateManagementGetShared teststateManagementGetShared0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       try {
         let EventOne: events_emitter.InnerEvent = {
           eventId: 60223,
           priority: events_emitter.EventPriority.LOW
         }
-        let callbackOne = (eventData) => {
+        let callbackOne = (eventData: events_emitter.EventData) => {
           console.info("teststateManagementGetShared_0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual(false);
+          expect(eventData.data?.Result).assertEqual(false);
 
         }
         console.info("GetShared_0001 click result is: " + JSON.stringify(sendEventByKey('GetSharedText', 10, "")));
@@ -78,15 +78,15 @@ export default function stateManagementGetSharedJsunit() {
      */
     it('teststateManagementsetAndLink0001', 0, async () => {
       console.info('stateManagementsetAndLink teststateManagementsetAndLink0001 START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let EventTwo: events_emitter.InnerEvent = {
           eventId: 60224,
           priority: events_emitter.EventPriority.LOW
         }
-        let callbackTwo = (eventData) => {
+        let callbackTwo = (eventData: events_emitter.EventData) => {
           console.info("teststateManagementsetAndLink_0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual("callback2");
+          expect(eventData.data?.Result).assertEqual("callback2");
 
         }
         console.info("setAndLink_0001 click result is: " + JSON.stringify(sendEventByKey('setAndLinkText', 10, "")));
@@ -104,15 +104,15 @@ export default function stateManagementGetSharedJsunit() {
      */
     it('teststateManagementsetOrCreate0001', 0, async () => {
       console.info('stateManagementsetOrCreate teststateManagementsetOrCreate0001 START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let EventThree: events_emitter.InnerEvent = {
           eventId: 60225,
           priority: events_emitter.EventPriority.LOW
         }
-        let callbackThree = (eventData) => {
+        let callbackThree = (eventData: events_emitter.EventData) => {
           console.info("teststateManagementsetOrCreate_0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual("callback3");
+          expect(eventData.data?.Result).assertEqual("callback3");
 
         }
         console.info("setOrCreate_0001 click result is: " + JSON.stringify(sendEventByKey('setOrCreateText', 10, "")));
@@ -131,15 +131,15 @@ export default function stateManagementGetSharedJsunit() {
      */
     it('teststateManagementsetAndProp0001', 0, async () => {
       console.info('stateManagementsetAndProp teststateManagementsetAndProp0001 START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let EventFour: events_emitter.InnerEvent = {
           eventId: 60226,
           priority: events_emitter.EventPriority.LOW
         }
-        let callbackFour = (eventData) => {
+        let callbackFour = (eventData: events_emitter.EventData) => {
           console.info("teststateManagementsetAndProp_0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual("callback4");
+          expect(eventData.data?.Result).assertEqual("callback4");
 
         }
         console.info("setAndProp_0001 click result is: " + JSON.stringify(sendEventByKey('setAndPropText', 10, "")));
@@ -157,7 +157,7 @@ export default function stateManagementGetSharedJsunit() {
      */
     it('test_staticClear_0001', 0, async () => {
       console.info('test_staticClear_0001 Register a customized font in the FontManagerSTART');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       try {
         let simple = AppStorage.staticClear();
         expect(simple).assertFalse();
@@ -176,7 +176,7 @@ export default function stateManagementGetSharedJsunit() {
     */
     it('test_setAndLink_0001', 0, async () => {
       console.info('test_setAndLink_0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       try {
         let storage = new LocalStorage()
         storage.setAndLink<string>('storageSimpleProp', '121');
@@ -197,7 +197,7 @@ export default function stateManagementGetSharedJsunit() {
      */
     it('test_setAndProp_0002', 0, async () => {
       console.info('test_setAndProp_0002 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       try {
         let storage = new LocalStorage()
         storage.setAndProp<string>("setAndProp", '12');

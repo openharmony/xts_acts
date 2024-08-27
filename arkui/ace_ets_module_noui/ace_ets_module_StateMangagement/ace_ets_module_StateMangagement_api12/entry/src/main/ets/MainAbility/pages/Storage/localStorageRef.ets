@@ -22,8 +22,8 @@ storageBK.setAndRef("PropBKK", 30)
 @Component
 struct localStorageRef {
   private content: string = "LocalStorage";
-  @State refA1Value: AbstractProperty<number> = storageBK.ref("PropBBK")
-  @State refA2Value: AbstractProperty<number> = storageBK.get("PropBKK")
+  @State refA1Value?: AbstractProperty<number> = storageBK.ref("PropBBK")
+  @State refA2Value?: AbstractProperty<number> = storageBK.get("PropBKK")
 
   build() {
     Column() {

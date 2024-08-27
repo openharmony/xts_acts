@@ -29,7 +29,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import Utils from '../../MainAbility/common/Utils.ets'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function PropSet() {
   describe('PropSet', () => {
@@ -45,7 +45,7 @@ export default function PropSet() {
         if (!("PropSet" == pages.name)) {
           console.info("get PropSet state pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push PropSet success: " + JSON.stringify(result));
         }
       } catch (err) {
@@ -65,13 +65,13 @@ export default function PropSet() {
     it('PropSet_0100', 0, async (done: Function) => {
       console.info('PropSet_0100 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('propSet_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('propSet_set'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('propSet_value_5');
       console.info("[PropSet_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[PropSet_0100] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -90,13 +90,13 @@ export default function PropSet() {
     it('PropSet_0200', 0, async (done: Function) => {
       console.info('PropSet_0200 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('propSet_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('propSet_clear'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('propSet_value_0');
       console.info("[PropSet_0200] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[PropSet_0200] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -115,13 +115,13 @@ export default function PropSet() {
     it('PropSet_0300', 0, async (done: Function) => {
       console.info('PropSet_0300 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('propSet_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('propSet_delete'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('propSet_value_2');
       console.info("[PropSet_0300] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
       expect(JSON.parse(strJson).$attrs.content).assertEqual('2');

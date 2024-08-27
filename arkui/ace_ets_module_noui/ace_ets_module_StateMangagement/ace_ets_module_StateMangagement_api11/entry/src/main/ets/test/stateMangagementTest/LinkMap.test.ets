@@ -29,7 +29,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import Utils from '../../MainAbility/common/Utils.ets'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function LinkMap() {
   describe('LinkMap', () => {
@@ -45,7 +45,7 @@ export default function LinkMap() {
         if (!("LinkMap" == pages.name)) {
           console.info("get LinkMap state pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push LinkMap success: " + JSON.stringify(result));
         }
       } catch (err) {
@@ -65,13 +65,13 @@ export default function LinkMap() {
     it('LinkMap_0100', 0, async (done: Function) => {
       console.info('LinkMap_0100 START');
       let driver: Driver = Driver.create();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('LinkMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('LinkMap_set'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('LinkMap_value_d');
 
       console.info("[LinkMap_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -91,13 +91,13 @@ export default function LinkMap() {
     it('LinkMap_0200', 0, async (done: Function) => {
       console.info('LinkMap_0200 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('LinkMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('LinkMap_clear'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('LinkMap_value_K');
       console.info("[LinkMap_0200] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[LinkMap_0200] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -116,13 +116,13 @@ export default function LinkMap() {
     it('LinkMap_0300', 0, async (done: Function) => {
       console.info('LinkMap_0300 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('LinkMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('LinkMap_replace'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('LinkMap_value_aa');
       console.info("[LinkMap_0300] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[LinkMap_0300] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -141,13 +141,13 @@ export default function LinkMap() {
     it('LinkMap_0400', 0, async (done: Function) => {
       console.info('LinkMap_0400 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('LinkMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('LinkMap_delete'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('LinkMap_value_b');
       console.info("[LinkMap_0400] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[LinkMap_0400] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));

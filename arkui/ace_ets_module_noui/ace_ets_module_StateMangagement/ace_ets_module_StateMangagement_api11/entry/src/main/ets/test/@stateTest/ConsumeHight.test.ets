@@ -27,8 +27,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 export default function ConsumeHight() {
   describe('ConsumeHight', () => {
@@ -67,7 +67,7 @@ export default function ConsumeHight() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ConsumeHeight1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ConsumeHight_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ConsumeHight_0100] title: " + JSON.stringify(obj.$attrs.height));
       expect(obj.$attrs.height).assertEqual('100.00vp');
@@ -88,7 +88,7 @@ export default function ConsumeHight() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ConsumeHeight2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ConsumeHight_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ConsumeHight_0100] title: " + JSON.stringify(obj.$attrs.height));
       expect(obj.$attrs.height).assertEqual('200.00vp');
@@ -109,7 +109,7 @@ export default function ConsumeHight() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ConsumeHeight3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ConsumeHight_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ConsumeHight_0100] title: " + JSON.stringify(obj.$attrs.height));
       expect(obj.$attrs.height).assertEqual('200.00vp');

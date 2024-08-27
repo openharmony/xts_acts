@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function bindSheetTest() {
-  describe('bindSheetTest', function () {
-    beforeEach(async function (done) {
+  describe('bindSheetTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("bindSheetTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/twoWayBind/bindSheet',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/twoWayBind/bindSheet',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function bindSheetTest() {
      * @tc.type :    FUNC
      * @tc.size :    MEDIUM
      */
-    it('bindSheetTest_0100', 0, async function (done) {
+    it('bindSheetTest_0100', 0, async (done: Function) => {
       console.info('bindSheetTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -58,7 +58,7 @@ export default function bindSheetTest() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('bindSheetText');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[bindSheetTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isShow: true');
 
@@ -73,7 +73,7 @@ export default function bindSheetTest() {
      * @tc.type :    FUNC
      * @tc.size :    MEDIUM
      */
-    it('bindSheetTest_0200', 0, async function (done) {
+    it('bindSheetTest_0200', 0, async (done: Function) => {
       console.info('bindSheetTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -83,7 +83,7 @@ export default function bindSheetTest() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('bindSheetText');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[bindSheetTest_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isShow: false');
 

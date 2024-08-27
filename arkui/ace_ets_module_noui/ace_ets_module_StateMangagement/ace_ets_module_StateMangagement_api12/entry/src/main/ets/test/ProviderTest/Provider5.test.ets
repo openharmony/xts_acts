@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function Provider5Test() {
-  describe('Provider5Test', function () {
-    beforeEach(async function (done) {
+  describe('Provider5Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("Provider5Test beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Provider/Provider5',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Provider/Provider5',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function Provider5Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Provider5Test_0100', 0, async function (done) {
+    it('Provider5Test_0100', 0, async (done: Function) => {
       console.info('Provider5Test_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -56,7 +56,7 @@ export default function Provider5Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Provider5Test_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('varObject name: Jack0 age: 24');
 
@@ -76,7 +76,7 @@ export default function Provider5Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Provider5Test_0200', 0, async function (done) {
+    it('Provider5Test_0200', 0, async (done: Function) => {
       console.info('Provider5Test_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -84,7 +84,7 @@ export default function Provider5Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Provider5Test_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('varOnceObject name: Tom0 age: 25');
 
@@ -104,7 +104,7 @@ export default function Provider5Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Provider5Test_0300', 0, async function (done) {
+    it('Provider5Test_0300', 0, async (done: Function) => {
       console.info('Provider5Test_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -112,7 +112,7 @@ export default function Provider5Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Provider5Test_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('varOnceObject name: Lucy age: 18');
 
@@ -132,7 +132,7 @@ export default function Provider5Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Provider5Test_0400', 0, async function (done) {
+    it('Provider5Test_0400', 0, async (done: Function) => {
       console.info('Provider5Test_0400 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -140,7 +140,7 @@ export default function Provider5Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Provider5Test_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('varObject name: Jack01 age: 24');
 
@@ -160,7 +160,7 @@ export default function Provider5Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Provider5Test_0500', 0, async function (done) {
+    it('Provider5Test_0500', 0, async (done: Function) => {
       console.info('Provider5Test_0500 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -168,7 +168,7 @@ export default function Provider5Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Provider5Test_0500] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('varOnceObject name: Lucy1 age: 18');
 

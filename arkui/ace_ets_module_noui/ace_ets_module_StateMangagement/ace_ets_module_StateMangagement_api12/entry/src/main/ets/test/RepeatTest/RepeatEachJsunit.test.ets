@@ -15,12 +15,12 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 export default function RepeatEachJsunit() {
-  describe('RepeatEachJsunit', function () {
-    beforeEach(async function (done) {
+  describe('RepeatEachJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("RepeatEachJsunit beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Repeat/RepeatEach',
@@ -42,7 +42,7 @@ export default function RepeatEachJsunit() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -59,7 +59,7 @@ export default function RepeatEachJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('RepeatEachJsunit_0100', 0, async function (done) {
+    it('RepeatEachJsunit_0100', 0, async (done: Function) => {
       console.info('RepeatEachJsunit_0100 START');
       await CommonFunc.sleep(1000);
 
@@ -71,7 +71,7 @@ export default function RepeatEachJsunit() {
       console.info("[RepeatEachJsunit_0100] repeat_modify success");
 
       let strJson = getInspectorByKey('mess_repeat');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RepeatEachJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('message: new three');
       console.info('[RepeatEachJsunit_0100] END');
@@ -86,7 +86,7 @@ export default function RepeatEachJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('RepeatEachJsunit_0200', 0, async function (done) {
+    it('RepeatEachJsunit_0200', 0, async (done: Function) => {
       console.info('RepeatEachJsunit_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -95,7 +95,7 @@ export default function RepeatEachJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('length_repeat');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RepeatEachJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[RepeatEachJsunit_0200] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("length: 4");
@@ -111,7 +111,7 @@ export default function RepeatEachJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('RepeatEachJsunit_0300', 0, async function (done) {
+    it('RepeatEachJsunit_0300', 0, async (done: Function) => {
       console.info('RepeatEachJsunit_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -120,7 +120,7 @@ export default function RepeatEachJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('mess_repeat');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RepeatEachJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[RepeatEachJsunit_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("message: two");
@@ -136,7 +136,7 @@ export default function RepeatEachJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('RepeatEachJsunit_0400', 0, async function (done) {
+    it('RepeatEachJsunit_0400', 0, async (done: Function) => {
       console.info('RepeatEachJsunit_0400 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -145,7 +145,7 @@ export default function RepeatEachJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('length_repeat');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RepeatEachJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[RepeatEachJsunit_0400] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("length: 2");
@@ -161,7 +161,7 @@ export default function RepeatEachJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('RepeatEachJsunit_0500', 0, async function (done) {
+    it('RepeatEachJsunit_0500', 0, async (done: Function) => {
       console.info('RepeatEachJsunit_0500 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -170,13 +170,13 @@ export default function RepeatEachJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('length_repeat');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RepeatEachJsunit_0500] component obj is: " + JSON.stringify(obj));
       console.info("[RepeatEachJsunit_0500] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("length: 3");
 
       let strJson2 = getInspectorByKey('mess_repeat');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[RepeatEachJsunit_0500] component obj2 is: " + JSON.stringify(obj2));
       console.info("[RepeatEachJsunit_0500] text2: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("message: 我");
@@ -193,7 +193,7 @@ export default function RepeatEachJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('RepeatEachJsunit_0600', 0, async function (done) {
+    it('RepeatEachJsunit_0600', 0, async (done: Function) => {
       console.info('RepeatEachJsunit_0600 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -202,13 +202,13 @@ export default function RepeatEachJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('length_repeat');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RepeatEachJsunit_0600] component obj is: " + JSON.stringify(obj));
       console.info("[RepeatEachJsunit_0600] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("length: 4");
 
       let strJson2 = getInspectorByKey('mess_repeat');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[RepeatEachJsunit_0600] component obj2 is: " + JSON.stringify(obj2));
       console.info("[RepeatEachJsunit_0600] text2: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("message: 你");

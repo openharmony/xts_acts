@@ -28,8 +28,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function LinkSonJsunit() {
@@ -72,37 +72,37 @@ export default function LinkSonJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('str_parText');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LinkSonJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[LinkSonJsunit_0100] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Parent str: Link Parent");
 
       let strJson2 = getInspectorByKey('str1_tSon1');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LinkSonJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       console.info("[LinkSonJsunit_0100] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("@Link str1: Link Parent");
 
       let strJson3 = getInspectorByKey('str2_tSon2');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[LinkSonJsunit_0100] component obj3 is: " + JSON.stringify(obj3));
       console.info("[LinkSonJsunit_0100] text: " + JSON.stringify(obj3.$attrs.content));
       expect(obj3.$attrs.content).assertEqual("@Link str2: Link Parent");
 
       let strJson4 = getInspectorByKey('num_parText');
-      let obj4 = JSON.parse(strJson4);
+      let obj4: ESObject = JSON.parse(strJson4);
       console.info("[LinkSonJsunit_0300] component obj4 is: " + JSON.stringify(obj4));
       console.info("[LinkSonJsunit_0300] text: " + JSON.stringify(obj4.$attrs.content));
       expect(obj4.$attrs.content).assertEqual("Parent num: 0");
 
       let strJson5 = getInspectorByKey('num1_tSon1');
-      let obj5 = JSON.parse(strJson5);
+      let obj5: ESObject = JSON.parse(strJson5);
       console.info("[LinkSonJsunit_0300] component obj5 is: " + JSON.stringify(obj5));
       console.info("[LinkSonJsunit_0300] text: " + JSON.stringify(obj5.$attrs.content));
       expect(obj5.$attrs.content).assertEqual("@Link num1: 0");
 
       let strJson6 = getInspectorByKey('num2_tSon2');
-      let obj6 = JSON.parse(strJson6);
+      let obj6: ESObject = JSON.parse(strJson6);
       console.info("[LinkSonJsunit_0300] component obj6 is: " + JSON.stringify(obj6));
       console.info("[LinkSonJsunit_0300] text: " + JSON.stringify(obj6.$attrs.content));
       expect(obj6.$attrs.content).assertEqual("@Link num2: 0");
@@ -119,37 +119,37 @@ export default function LinkSonJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('str1_tSon1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LinkSonJsunit_0200] component obj1 is: " + JSON.stringify(obj1));
       console.info("[LinkSonJsunit_0200] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("@Link str1: Link Son1");
 
       let strJson2 = getInspectorByKey('str_parText');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LinkSonJsunit_0200] component obj2 is: " + JSON.stringify(obj2));
       console.info("[LinkSonJsunit_0200] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("Parent str: Link Son1");
 
       let strJson3 = getInspectorByKey('str2_tSon2');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[LinkSonJsunit_0200] component obj3 is: " + JSON.stringify(obj3));
       console.info("[LinkSonJsunit_0200] text: " + JSON.stringify(obj3.$attrs.content));
       expect(obj3.$attrs.content).assertEqual("@Link str2: Link Son1");
 
       let strJson4 = getInspectorByKey('num_parText');
-      let obj4 = JSON.parse(strJson4);
+      let obj4: ESObject = JSON.parse(strJson4);
       console.info("[LinkSonJsunit_0200] component obj4 is: " + JSON.stringify(obj4));
       console.info("[LinkSonJsunit_0200] text: " + JSON.stringify(obj4.$attrs.content));
       expect(obj4.$attrs.content).assertEqual("Parent num: 0");
 
       let strJson5 = getInspectorByKey('num1_tSon1');
-      let obj5 = JSON.parse(strJson5);
+      let obj5: ESObject = JSON.parse(strJson5);
       console.info("[LinkSonJsunit_0200] component obj5 is: " + JSON.stringify(obj5));
       console.info("[LinkSonJsunit_0200] text: " + JSON.stringify(obj5.$attrs.content));
       expect(obj5.$attrs.content).assertEqual("@Link num1: 0");
 
       let strJson6 = getInspectorByKey('num2_tSon2');
-      let obj6 = JSON.parse(strJson6);
+      let obj6: ESObject = JSON.parse(strJson6);
       console.info("[LinkSonJsunit_0200] component obj6 is: " + JSON.stringify(obj6));
       console.info("[LinkSonJsunit_0200] text: " + JSON.stringify(obj6.$attrs.content));
       expect(obj6.$attrs.content).assertEqual("@Link num2: 0");
@@ -166,37 +166,37 @@ export default function LinkSonJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('str2_tSon2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LinkSonJsunit_0300] component obj1 is: " + JSON.stringify(obj1));
       console.info("[LinkSonJsunit_0300] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("@Link str2: Link Son2");
 
       let strJson2 = getInspectorByKey('str1_tSon1');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LinkSonJsunit_0300] component obj2 is: " + JSON.stringify(obj2));
       console.info("[LinkSonJsunit_0300] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("@Link str1: Link Son2");
 
       let strJson3 = getInspectorByKey('str_parText');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[LinkSonJsunit_0300] component obj3 is: " + JSON.stringify(obj3));
       console.info("[LinkSonJsunit_0300] text: " + JSON.stringify(obj3.$attrs.content));
       expect(obj3.$attrs.content).assertEqual("Parent str: Link Son2");
 
       let strJson4 = getInspectorByKey('num_parText');
-      let obj4 = JSON.parse(strJson4);
+      let obj4: ESObject = JSON.parse(strJson4);
       console.info("[LinkSonJsunit_0300] component obj4 is: " + JSON.stringify(obj4));
       console.info("[LinkSonJsunit_0300] text: " + JSON.stringify(obj4.$attrs.content));
       expect(obj4.$attrs.content).assertEqual("Parent num: 0");
 
       let strJson5 = getInspectorByKey('num1_tSon1');
-      let obj5 = JSON.parse(strJson5);
+      let obj5: ESObject = JSON.parse(strJson5);
       console.info("[LinkSonJsunit_0300] component obj5 is: " + JSON.stringify(obj5));
       console.info("[LinkSonJsunit_0300] text: " + JSON.stringify(obj5.$attrs.content));
       expect(obj5.$attrs.content).assertEqual("@Link num1: 0");
 
       let strJson6 = getInspectorByKey('num2_tSon2');
-      let obj6 = JSON.parse(strJson6);
+      let obj6: ESObject = JSON.parse(strJson6);
       console.info("[LinkSonJsunit_0300] component obj6 is: " + JSON.stringify(obj6));
       console.info("[LinkSonJsunit_0300] text: " + JSON.stringify(obj6.$attrs.content));
       expect(obj6.$attrs.content).assertEqual("@Link num2: 0");
@@ -213,37 +213,37 @@ export default function LinkSonJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('num_parText');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LinkSonJsunit_0400] component obj1 is: " + JSON.stringify(obj1));
       console.info("[LinkSonJsunit_0400] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Parent num: 3");
 
       let strJson2 = getInspectorByKey('num1_tSon1');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LinkSonJsunit_0400] component obj2 is: " + JSON.stringify(obj2));
       console.info("[LinkSonJsunit_0400] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("@Link num1: 3");
 
       let strJson3 = getInspectorByKey('num2_tSon2');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[LinkSonJsunit_0400] component obj3 is: " + JSON.stringify(obj3));
       console.info("[LinkSonJsunit_0400] text: " + JSON.stringify(obj3.$attrs.content));
       expect(obj3.$attrs.content).assertEqual("@Link num2: 3");
 
       let strJson4 = getInspectorByKey('str_parText');
-      let obj4 = JSON.parse(strJson4);
+      let obj4: ESObject = JSON.parse(strJson4);
       console.info("[LinkSonJsunit_0400] component obj4 is: " + JSON.stringify(obj4));
       console.info("[LinkSonJsunit_0400] text: " + JSON.stringify(obj4.$attrs.content));
       expect(obj4.$attrs.content).assertEqual("Parent str: before");
 
       let strJson5 = getInspectorByKey('str1_tSon1');
-      let obj5 = JSON.parse(strJson5);
+      let obj5: ESObject = JSON.parse(strJson5);
       console.info("[LinkSonJsunit_0400] component obj5 is: " + JSON.stringify(obj5));
       console.info("[LinkSonJsunit_0400] text: " + JSON.stringify(obj5.$attrs.content));
       expect(obj5.$attrs.content).assertEqual("@Link str1: before");
 
       let strJson6 = getInspectorByKey('str2_tSon2');
-      let obj6 = JSON.parse(strJson6);
+      let obj6: ESObject = JSON.parse(strJson6);
       console.info("[LinkSonJsunit_0400] component obj6 is: " + JSON.stringify(obj6));
       console.info("[LinkSonJsunit_0400] text: " + JSON.stringify(obj6.$attrs.content));
       expect(obj6.$attrs.content).assertEqual("@Link str2: before");
@@ -259,37 +259,37 @@ export default function LinkSonJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('num1_tSon1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LinkSonJsunit_0500] component obj1 is: " + JSON.stringify(obj1));
       console.info("[LinkSonJsunit_0500] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("@Link num1: 2");
 
       let strJson2 = getInspectorByKey('num_parText');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LinkSonJsunit_0500] component obj2 is: " + JSON.stringify(obj2));
       console.info("[LinkSonJsunit_0500] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("Parent num: 2");
 
       let strJson3 = getInspectorByKey('num2_tSon2');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[LinkSonJsunit_0500] component obj3 is: " + JSON.stringify(obj3));
       console.info("[LinkSonJsunit_0500] text: " + JSON.stringify(obj3.$attrs.content));
       expect(obj3.$attrs.content).assertEqual("@Link num2: 2");
 
       let strJson4 = getInspectorByKey('str_parText');
-      let obj4 = JSON.parse(strJson4);
+      let obj4: ESObject = JSON.parse(strJson4);
       console.info("[LinkSonJsunit_0500] component obj4 is: " + JSON.stringify(obj4));
       console.info("[LinkSonJsunit_0500] text: " + JSON.stringify(obj4.$attrs.content));
       expect(obj4.$attrs.content).assertEqual("Parent str: before");
 
       let strJson5 = getInspectorByKey('str1_tSon1');
-      let obj5 = JSON.parse(strJson5);
+      let obj5: ESObject = JSON.parse(strJson5);
       console.info("[LinkSonJsunit_0500] component obj5 is: " + JSON.stringify(obj5));
       console.info("[LinkSonJsunit_0500] text: " + JSON.stringify(obj5.$attrs.content));
       expect(obj5.$attrs.content).assertEqual("@Link str1: before");
 
       let strJson6 = getInspectorByKey('str2_tSon2');
-      let obj6 = JSON.parse(strJson6);
+      let obj6: ESObject = JSON.parse(strJson6);
       console.info("[LinkSonJsunit_0500] component obj6 is: " + JSON.stringify(obj6));
       console.info("[LinkSonJsunit_0500] text: " + JSON.stringify(obj6.$attrs.content));
       expect(obj6.$attrs.content).assertEqual("@Link str2: before");
@@ -306,37 +306,37 @@ export default function LinkSonJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('num2_tSon2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LinkSonJsunit_0600] component obj1 is: " + JSON.stringify(obj1));
       console.info("[LinkSonJsunit_0600] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("@Link num2: 1");
 
       let strJson2 = getInspectorByKey('num1_tSon1');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LinkSonJsunit_0600] component obj2 is: " + JSON.stringify(obj2));
       console.info("[LinkSonJsunit_0600] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("@Link num1: 1");
 
       let strJson3 = getInspectorByKey('num_parText');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[LinkSonJsunit_0600] component obj3 is: " + JSON.stringify(obj3));
       console.info("[LinkSonJsunit_0600] text: " + JSON.stringify(obj3.$attrs.content));
       expect(obj3.$attrs.content).assertEqual("Parent num: 1");
 
       let strJson4 = getInspectorByKey('str_parText');
-      let obj4 = JSON.parse(strJson4);
+      let obj4: ESObject = JSON.parse(strJson4);
       console.info("[LinkSonJsunit_0600] component obj4 is: " + JSON.stringify(obj4));
       console.info("[LinkSonJsunit_0600] text: " + JSON.stringify(obj4.$attrs.content));
       expect(obj4.$attrs.content).assertEqual("Parent str: before");
 
       let strJson5 = getInspectorByKey('str1_tSon1');
-      let obj5 = JSON.parse(strJson5);
+      let obj5: ESObject = JSON.parse(strJson5);
       console.info("[LinkSonJsunit_0600] component obj5 is: " + JSON.stringify(obj5));
       console.info("[LinkSonJsunit_0600] text: " + JSON.stringify(obj5.$attrs.content));
       expect(obj5.$attrs.content).assertEqual("@Link str1: before");
 
       let strJson6 = getInspectorByKey('str2_tSon2');
-      let obj6 = JSON.parse(strJson6);
+      let obj6: ESObject = JSON.parse(strJson6);
       console.info("[LinkSonJsunit_0600] component obj6 is: " + JSON.stringify(obj6));
       console.info("[LinkSonJsunit_0600] text: " + JSON.stringify(obj6.$attrs.content));
       expect(obj6.$attrs.content).assertEqual("@Link str2: before");

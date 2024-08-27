@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function Storage11Jsunit() {
@@ -64,7 +64,7 @@ export default function Storage11Jsunit() {
       await Storage11Button1.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0100] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('47');
       console.info('[Storage11Jsunit_0100] END');
@@ -79,7 +79,7 @@ export default function Storage11Jsunit() {
       await Storage11Button2.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0200] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('undefined');
       console.info('[Storage11Jsunit_0200] END');
@@ -94,7 +94,7 @@ export default function Storage11Jsunit() {
       await Storage11Button3.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0300] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('47');
       console.info('[Storage11Jsunit_0300] END');
@@ -109,7 +109,7 @@ export default function Storage11Jsunit() {
       await Storage11Button4.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0400] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('5');
       console.info('[Storage11Jsunit_0400] END');
@@ -124,7 +124,7 @@ export default function Storage11Jsunit() {
       await Storage11Button5.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0500] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('47');
       console.info('[Storage11Jsunit_0500] END');
@@ -139,7 +139,7 @@ export default function Storage11Jsunit() {
       await Storage11Button6.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0600] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('undefined');
       console.info('[Storage11Jsunit_0600] END');
@@ -154,7 +154,7 @@ export default function Storage11Jsunit() {
       await Storage11Button7.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0700] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('47');
       console.info('[Storage11Jsunit_0700] END');
@@ -169,7 +169,7 @@ export default function Storage11Jsunit() {
       await Storage11Button8.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0800] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('5');
       console.info('[Storage11Jsunit_0800] END');

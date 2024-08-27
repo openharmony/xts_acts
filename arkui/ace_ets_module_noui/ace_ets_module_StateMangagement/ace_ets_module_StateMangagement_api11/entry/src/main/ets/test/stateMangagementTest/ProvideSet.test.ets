@@ -29,7 +29,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import Utils from '../../MainAbility/common/Utils.ets'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function ProvideSet() {
   describe('ProvideSet', () => {
@@ -45,7 +45,7 @@ export default function ProvideSet() {
         if (!("ProvideSet" == pages.name)) {
           console.info("get ProvideSet state pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push ProvideSet success: " + JSON.stringify(result));
         }
       } catch (err) {
@@ -65,13 +65,13 @@ export default function ProvideSet() {
     it('ProvideSet_0100', 0, async (done: Function) => {
       console.info('ProvideSet_0100 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('consumeSet_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('consumeSet_set'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('provideSet_value_5');
       console.info("[ProvideSet_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ProvideSet_0100] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -90,13 +90,13 @@ export default function ProvideSet() {
     it('ProvideSet_0200', 0, async (done: Function) => {
       console.info('ProvideSet_0200 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('consumeSet_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('consumeSet_clear'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('provideSet_value_0');
       console.info("[ProvideSet_0200] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ProvideSet_0200] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -115,13 +115,13 @@ export default function ProvideSet() {
     it('ProvideSet_0300', 0, async (done: Function) => {
       console.info('ProvideSet_0300 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('consumeSet_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('consumeSet_delete'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('provideSet_value_2');
       console.info("[ProvideSet_0300] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ProvideSet_0300] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -140,13 +140,13 @@ export default function ProvideSet() {
     it('ProvideSet_0400', 0, async (done: Function) => {
       console.info('ProvideSet_0400 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('consumeSet_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('provideSet_add'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('provideSet_value_4');
       console.info("[ProvideSet_0400] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ProvideSet_0400] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));

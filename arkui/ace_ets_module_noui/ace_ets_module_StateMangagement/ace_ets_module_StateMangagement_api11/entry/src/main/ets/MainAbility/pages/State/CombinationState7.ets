@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-let storage007 = new LocalStorage({"PropA7":47})
+let storage007: LocalStorage = new LocalStorage({"PropA7":47} as Record<string, number>)
 storage007['PropA7'] = 47;
 
 

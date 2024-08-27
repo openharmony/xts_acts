@@ -14,17 +14,17 @@
  */
 AppStorage.clear()
 AppStorage.setOrCreate('PropA',47)
-let storage22 = new LocalStorage({"PropA":47})
-let s = new LocalStorage({"PropB":32})
+let storage22: LocalStorage = new LocalStorage({"PropA":47} as Record<string, number>)
+let s: LocalStorage = new LocalStorage({"PropB":32} as Record<string, number>)
 
 @Entry(storage22)
 @Component
 struct StorageProp22 {
   @LocalStorageProp('PropA') storProp: number = 12;
-  @State ku: number = storage22.get('PropA')
+  @State ku?: number = storage22.get('PropA')
 
   @LocalStorageProp('PropB') storPropB: number = 4;
-  @State kuB: number = storage22.get('PropB')
+  @State kuB?: number = storage22.get('PropB')
 
 
   build() {

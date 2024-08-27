@@ -69,7 +69,7 @@ struct ObjectLinkSetNestedChild {
         ForEach(Array.from(this.mySet.entries()), (item: number) => {
           Text(`${item}`)
             .fontSize(20)
-            .id("ObtLinkSet_value_" + item[0])
+            .id(`ObtLinkSet_value_${item}`)
           Divider()
         })
         Button('set new one').id("ObtLinkSet_set")

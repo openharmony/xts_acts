@@ -12,9 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from "../../../MainAbility/common/Common";
+
 class Num2 {
-  public pages:number;
-  constructor(pages: number) {
+  public pages: number | string;
+  constructor(pages: number | string) {
     this.pages = pages;
   }
 }
@@ -41,7 +43,7 @@ struct Ancestors_AR {
 
   build() {
     Column() {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.count)) + " number is " + JSON.stringify(this.count))
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.count)) + " number is " + JSON.stringify(this.count))
         .fontSize(20).margin(30).key('ProvideNumber')
       Text("变量赋值number类型")
       Button('change')
@@ -53,14 +55,14 @@ struct Ancestors_AR {
       Text("切换变量赋值Object")
       Button('change')
         .onClick(() => {
-          this.count = { pages: 20 };
+          this.count = new Num2(20);
         })
         .key('state2')
 
       Text("切换变量赋值string")
       Button('change')
         .onClick(() => {
-          this.count = { number: '30' };
+          this.count = new Num2('30');
         })
         .key('state3')
 

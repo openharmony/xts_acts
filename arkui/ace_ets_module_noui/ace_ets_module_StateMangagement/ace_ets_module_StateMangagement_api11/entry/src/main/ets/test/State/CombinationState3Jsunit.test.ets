@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function CombinationState3Jsunit() {
@@ -69,13 +69,13 @@ export default function CombinationState3Jsunit() {
       await qrComponent.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ChildPropState1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[CombinationState3Jsunit_0100] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('子组件ChildPropState1: 1');
 
       let strJson1 = getInspectorByKey('ChildPropState2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[CombinationState3Jsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('子组件ChildPropState2: 5');
@@ -92,13 +92,13 @@ export default function CombinationState3Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('ChildProvide1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[CombinationState3Jsunit_0200] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('子组件ChildProvide1: 1');
 
       let strJson1 = getInspectorByKey('ChildProvide2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[CombinationState3Jsunit_0200] component obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('子组件ChildProvide2: 5');
@@ -114,13 +114,13 @@ export default function CombinationState3Jsunit() {
       await qrComponent.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ChildLink1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[CombinationState3Jsunit_0300] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('子组件ChildLink1: 2');
 
       let strJson1 = getInspectorByKey('ChildLink2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[CombinationState3Jsunit_0300] component obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('子组件ChildLink2: 6');
@@ -136,13 +136,13 @@ export default function CombinationState3Jsunit() {
       await qrComponent.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ChildProp1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[CombinationState3Jsunit_0400] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('子组件ChildProp1: 2');
 
       let strJson1 = getInspectorByKey('ChildProp2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[CombinationState3Jsunit_0400] component obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('子组件ChildProp2: 6');

@@ -27,8 +27,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function ProvideArray() {
@@ -68,7 +68,7 @@ export default function ProvideArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ProvideArray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ProvideArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ProvideArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [10]');
@@ -89,7 +89,7 @@ export default function ProvideArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ProvideArray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ProvideArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ProvideArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [true]');
@@ -110,7 +110,7 @@ export default function ProvideArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ProvideArray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ProvideArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ProvideArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Boolean]" number is true');
@@ -131,7 +131,7 @@ export default function ProvideArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ProvideArrayNew');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ProvideArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ProvideArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is 200');

@@ -29,7 +29,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import Utils from '../../MainAbility/common/Utils.ets'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function StateMap() {
   describe('StateMap', () => {
@@ -45,7 +45,7 @@ export default function StateMap() {
         if (!("StateMap" == pages.name)) {
           console.info("get StateMap state pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push StateMap success: " + JSON.stringify(result));
         }
       } catch (err) {
@@ -56,7 +56,7 @@ export default function StateMap() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("StateMap after each called");
     });
     /* *
@@ -70,13 +70,13 @@ export default function StateMap() {
     it('StateMap_0100', 0, async (done: Function) => {
       console.info('StateMap_0100 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('stateMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('stateMap_set'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('stateMap_value_d');
       console.info("[StateMap_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[StateMap_0100] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -95,13 +95,13 @@ export default function StateMap() {
     it('StateMap_0200', 0, async (done: Function) => {
       console.info('StateMap_0200 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('stateMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('stateMap_clear'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('stateMap_value_K');
       console.info("[StateMap_0200] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[StateMap_0200] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -120,13 +120,13 @@ export default function StateMap() {
     it('StateMap_0300', 0, async (done: Function) => {
       console.info('StateMap_0300 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('stateMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('stateMap_replace'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('stateMap_value_aa');
       console.info("[StateMap_0300] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[StateMap_0300] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -145,13 +145,13 @@ export default function StateMap() {
     it('StateMap_0400', 0, async (done: Function) => {
       console.info('StateMap_0400 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('stateMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('stateMap_delete'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('stateMap_value_b');
       console.info("[StateMap_0400] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[StateMap_0400] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));

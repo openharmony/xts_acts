@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common'
+import CommonFunc from '../../MainAbility/common/Common'
 
 
 export default function PropNumberJsunit() {
@@ -69,13 +69,13 @@ export default function PropNumberJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropNumber_A');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropNumberJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[PropNumberJsunit_0200] content: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Father State:11");
 
       let strJson1 = getInspectorByKey('ChildPropNumber_A');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PropNumberJsunit_0200] component obj is: " + JSON.stringify(obj1));
       console.info("[PropNumberJsunit_0200] content: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Child Prop:11");
@@ -90,13 +90,13 @@ export default function PropNumberJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ChildPropNumber_A');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropNumberJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[PropNumberJsunit_0300] content: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Child Prop:12");
 
       let strJson1 = getInspectorByKey('PropNumber_A');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PropNumberJsunit_0300] component obj1 is: " + JSON.stringify(obj1));
       console.info("[PropNumberJsunit_0300] content: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Father State:11");

@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function Storage36Jsunit() {
@@ -58,7 +58,7 @@ export default function Storage36Jsunit() {
     afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back({
-        uri: "MainAbility/pages/index/index"
+        url: "MainAbility/pages/index/index"
       });
     });
 
@@ -69,7 +69,7 @@ export default function Storage36Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text36_link1Date');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Storage36Jsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[Storage36Jsunit_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("160");
@@ -84,7 +84,7 @@ export default function Storage36Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text36_link1Date2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Storage36Jsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[Storage36Jsunit_0400] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("48");
