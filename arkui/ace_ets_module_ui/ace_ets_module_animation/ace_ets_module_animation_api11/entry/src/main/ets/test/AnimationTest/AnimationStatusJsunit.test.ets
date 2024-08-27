@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +13,15 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter';
 
 export default function  animationStatusJsunit() {
-  describe('animationStatusJsunit', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Animation/animationStatus',
+  describe('animationStatusJsunit', async () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Animation/animationStatus',
       }
       try {
         router.clear();
@@ -40,43 +39,43 @@ export default function  animationStatusJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("animationStatus after each called");
     });
 
-    it('animationStatus01', 0, async function (done) {
+    it('animationStatus01', 0, async (done: Function) => {
       console.info('[animationStatus01] START');
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('ImageAnimator');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[animationStatus01] obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('ImageAnimator');
       console.info('[animationStatus01] END');
       done();
     });
 
-    it('animationStatus02', 0, async function (done) {
+    it('animationStatus02', 0, async (done: Function) => {
       console.info('[animationStatus02] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ImageAnimator');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[animationStatus02] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.state).assertEqual('AnimationStatus.Initial');
       console.info('[animationStatus02] END');
       done();
     });
 
-    it('animationStatus03', 0, async function (done) {
+    it('animationStatus03', 0, async (done: Function) => {
       console.info('animationStatus03 START');
       await CommonFunc.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: ESObject) => {
         console.info("animationStatus03 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.animationStatus).assertEqual(AnimationStatus.Paused);
         done();
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 56,
         priority: events_emitter.EventPriority.LOW
       }
@@ -90,15 +89,15 @@ export default function  animationStatusJsunit() {
       console.info('animationStatus03 END');
     });
 
-    it('animationStatus04', 0, async function (done) {
+    it('animationStatus04', 0, async (done: Function) => {
       console.info('animationStatus04 START');
       await CommonFunc.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: ESObject) => {
         console.info("animationStatus04 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.animationStatus).assertEqual(AnimationStatus.Stopped);
         done();
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 57,
         priority: events_emitter.EventPriority.LOW
       }

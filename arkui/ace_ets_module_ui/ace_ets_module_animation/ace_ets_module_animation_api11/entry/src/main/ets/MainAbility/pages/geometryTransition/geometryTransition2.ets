@@ -42,7 +42,7 @@ struct geometryTransitionExample {
             console.info("geometryTransitionTest_0100 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("geometryTransitionTest_0100 emit action state err: " + JSON.stringify(err.message))
+            console.info("geometryTransitionTest_0100 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           animateTo({ duration: 1000 }, () => {
             this.btn1 = !this.btn1
@@ -55,7 +55,7 @@ struct geometryTransitionExample {
         })
       if (this.btn1) {
         Button() {
-          Image($rawfile('ic_health_heart.png'))
+          Image($rawfile('test.png'))
             .width("80%")
             .height(300)
         }.geometryTransition('geometryTransition')
