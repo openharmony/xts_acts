@@ -16,49 +16,49 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-export default function openCustomDialogTest() {
-  describe('openCustomDialogTest', () => {
+export default function uiCloseCustomDialogTest() {
+  describe('uiCloseCustomDialogTest', () => {
     beforeEach(async (done: Function) => {
-      console.info("openCustomDialogTest beforeEach start");
+      console.info("uiCloseCustomDialogTest beforeEach start");
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/UIContext/openCustomDialog",
+        url: "MainAbility/pages/UIContext/closeCustomDialog",
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get openCustomDialogTest state pages: " + JSON.stringify(pages));
-        if (!("openCustomDialog" == pages.name)) {
-          console.info("get openCustomDialogTest state pages.name: " + JSON.stringify(pages.name));
+        console.info("get uiCloseCustomDialogTest state pages: " + JSON.stringify(pages));
+        if (!("closeCustomDialog" == pages.name)) {
+          console.info("get uiCloseCustomDialogTest state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push openCustomDialogTest success: " + JSON.stringify(result));
+          console.info("push uiCloseCustomDialogTest success: " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push openCustomDialogTest page error: " + err);
+        console.error("push uiCloseCustomDialogTest page error: " + err);
         expect().assertFail();
       }
       done();
     });
 
     /**
-     * @tc.number    openCustomDialog
-     * @tc.name      openCustomDialogTest_0100
+     * @tc.number    closeCustomDialog
+     * @tc.name      uiCloseCustomDialogTest_0100
      * @tc.desc      api
      * @tc.level:    Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('openCustomDialogTest_0100', 0, async (done: Function) => {
-      console.info('openCustomDialogTest_0100 START');
+    it('uiCloseCustomDialogTest_0100', 0, async (done: Function) => {
+      console.info('uiCloseCustomDialogTest_0100 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
       let btn: Component = await driver.findComponent(ON.id('btn'));
       await btn.click();
       await CommonFunc.sleep(3500);
-      let openCustomDialog = getInspectorByKey('openCustomDialog');
-      console.info("[openCustomDialogTest_0100] attrs is: " + JSON.stringify(JSON.parse(openCustomDialog).$attrs));
-      expect(JSON.parse(openCustomDialog).$attrs.content).assertEqual('openCustomDialog');
-      console.info('[openCustomDialogTest_0100] END');
+      let closeCustomDialog = getInspectorByKey('closeCustomDialog');
+      console.info("[uiCloseCustomDialogTest_0100] attrs is: " + JSON.stringify(JSON.parse(closeCustomDialog).$attrs));
+      expect(JSON.parse(closeCustomDialog).$attrs.content).assertEqual('closeCustomDialog');
+      console.info('[uiCloseCustomDialogTest_0100] END');
       done();
     });
   })
