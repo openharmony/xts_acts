@@ -681,7 +681,7 @@ export default function nfcTagABFVTest() {
          */
         it('SUB_Communication_NFC_nfctage_js_2300', 0, function ()  {
             let elementName = {
-                "bundleName": "com.test.cardemulation",
+                "bundleName": "ohos.acts.communication.nfc.nfcdevice",
                 "abilityName": "MainAbility",
                 "moduleName": "entry"
             };
