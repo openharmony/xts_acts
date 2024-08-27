@@ -14,6 +14,10 @@
  */
 import CommonFunc from "../../../MainAbility/common/Common";
 
+interface Num2info {
+  number: string | number;
+}
+
 class Num2 {
   public pages: number | string;
   constructor(pages: number | string) {
@@ -28,8 +32,6 @@ struct Child_AR {
 
   build() {
     Column({ space: 20 }) {
-
-
     }
   }
 }
@@ -62,7 +64,7 @@ struct Ancestors_AR {
       Text("切换变量赋值string")
       Button('change')
         .onClick(() => {
-          this.count = new Num2('30');
+          this.count = { number: '30' } as Num2info;
         })
         .key('state3')
 

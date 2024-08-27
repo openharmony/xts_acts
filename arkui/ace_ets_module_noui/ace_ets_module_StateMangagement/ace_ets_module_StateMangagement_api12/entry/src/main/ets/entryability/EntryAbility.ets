@@ -15,9 +15,12 @@
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
+  para:Record<string, number> = { 'propAM': 42 ,'propBM':40};
+  storage: LocalStorage = new LocalStorage(this.para);
+
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     globalThis.abilityWant = want;
@@ -34,12 +37,22 @@ export default class EntryAbility extends UIAbility {
     globalThis.windowStage = windowStage
     globalThis.abilityContext = this.context
 
-    windowStage.loadContent('MainAbility/pages/index/index', (err: BusinessError, data) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      let errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+      windowClass = data;
+      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      
+      let promise = windowClass.loadContent('MainAbility/pages/index/index', this.storage);
+      promise.then(() => {
+        console.info('Succeeded in loading the content.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+      });
     });
   }
 

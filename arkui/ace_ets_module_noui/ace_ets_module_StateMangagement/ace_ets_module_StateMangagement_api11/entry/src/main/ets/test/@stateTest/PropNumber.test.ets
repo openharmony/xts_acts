@@ -110,10 +110,10 @@ export default function PropNumber() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropNumber');
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[PropNumber_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[PropNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
+      console.info("[PropNumber_0300] component obj is: " + JSON.stringify(obj));
+      console.info("[PropNumber_0300] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Object]" number is {"number":"30"}');
-      console.info('[PropNumber_0100] END');
+      console.info('[PropNumber_0300] END');
       done();
     });
     /* *
