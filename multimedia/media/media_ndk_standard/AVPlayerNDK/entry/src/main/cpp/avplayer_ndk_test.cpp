@@ -245,7 +245,6 @@ static napi_value OhAvPlayerGetDuration(napi_env env, napi_callback_info info)
     } else {
         napi_create_int32(env, FAIL, &result);
     }
-    g_av_info_type_state_change = false;
     return result;
 }
 
@@ -409,6 +408,7 @@ static napi_value OhAvPlayerRelease(napi_env env, napi_callback_info info)
     mainPlayer = nullptr;
     OH_AVErrCode errCode = OH_AVPlayer_Release(temmpPlayer);
     napi_create_int32(env, errCode, &result);
+    g_av_info_type_state_change = false;
     return result;
 }
 
