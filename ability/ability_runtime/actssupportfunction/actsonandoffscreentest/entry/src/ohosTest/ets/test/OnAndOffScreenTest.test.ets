@@ -194,7 +194,7 @@ export default function OnAndOffScreenTest() {
         bundleName: "ohos.acts.aafwk.test.faonandoffscreen",
         abilityName: "ohos.acts.aafwk.test.faonandoffscreen.MainAbility"
       }
-      await globalThis.abilityTestContext.startAbility(wantNum).then((data:BusinessError) => {
+      await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
         console.log(TAG + "startAbility data = " + JSON.stringify(data));
       }).catch((error: BusinessError) => {
         console.log(TAG + "startAbility error = " + JSON.stringify(error));
@@ -284,7 +284,7 @@ export default function OnAndOffScreenTest() {
         bundleName: "ohos.acts.aafwk.test.stageonandoffscreen",
         abilityName: "MainAbility"
       }
-      await globalThis.abilityTestContext.startAbility(wantNum).then((data:BusinessError) => {
+      await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
         console.log(TAG + "startAbility data = " + JSON.stringify(data));
       }).catch((error: BusinessError) => {
         console.log(TAG + "startAbility error = " + JSON.stringify(error));
@@ -380,7 +380,7 @@ export default function OnAndOffScreenTest() {
         bundleName: "ohos.acts.aafwk.test.stageonandoffscreen",
         abilityName: "MainAbility"
       }
-      await globalThis.abilityTestContext.startAbility(wantNum).then((data:BusinessError) => {
+      await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
         console.log(TAG + "startAbility data = " + JSON.stringify(data));
       }).catch((error: BusinessError) => {
         console.log(TAG + "startAbility error = " + JSON.stringify(error));
@@ -501,7 +501,7 @@ export default function OnAndOffScreenTest() {
         bundleName: "ohos.acts.aafwk.test.stageonandoffscreen",
         abilityName: "MainAbility2"
       }
-      await globalThis.abilityTestContext.startAbility(wantNum).then((data:BusinessError) => {
+      await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
         console.log(TAG + "startAbility data = " + JSON.stringify(data));
       }).catch((error: BusinessError) => {
         console.log(TAG + "startAbility error = " + JSON.stringify(error));
@@ -631,8 +631,8 @@ export default function OnAndOffScreenTest() {
         bundleName: "ohos.acts.aafwk.test.stageonandoffscreen",
         abilityName: "MainAbility2"
       }
-      console.log(TAG + "shitijun-globalThis.abilityTestContext=" + globalThis.abilityTestContext);
-      await globalThis.abilityTestContext.startAbility(wantNum).then((data:BusinessError) => {
+
+      await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
         console.log(TAG + "startAbility data = " + JSON.stringify(data));
       }).catch((error: BusinessError) => {
         console.log(TAG + "startAbility error = " + JSON.stringify(error));
@@ -662,7 +662,7 @@ export default function OnAndOffScreenTest() {
       let wantNum: Want = {
         action: "ohos.acts.aafwk.aafwk.aafwk",
       }
-      await globalThis.abilityTestContext.startAbility(wantNum).then((data:BusinessError) => {
+      await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
         console.log(TAG + "startAbility data = " + JSON.stringify(data));
         expect().assertFail();
         done();
