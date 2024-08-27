@@ -15,5 +15,5 @@
 import pipWindowTest from './pipwindow.test'
 
 export default function testsuite() {
-  pipWindowTest(globalThis.abilityContext)
+  pipWindowTest(globalThis.abilityContext, globalThis.windowStage)
 }
