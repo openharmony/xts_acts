@@ -32,7 +32,7 @@ export default function groupDefaultFocusTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testGroupDefaultFocus',
     pageName: 'groupDefaultFocusPage',
     pageUrl: 'MainAbility/pages/groupDefaultFocus/GroupDefaultFocusPage',
@@ -47,21 +47,21 @@ export default function groupDefaultFocusTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetGroupDefaultFocus',
     setValue: {
       groupDefaultFocus: false
-    },
+    } as ESObject,
     expectValue: {
       groupDefaultFocus: false
-    }
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('groupDefaultFocusTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.error('[' + data.caseTag + '] groupDefaultFocusTest.');
       console.error('[' + data.caseTag + '] groupDefaultFocusTest. data.testValue.setValue.groupDefaultFocus : ' + data.testValue.setValue.groupDefaultFocus);
       console.error('[' + data.viewObj.$attrs.groupDefaultFocus + '] groupDefaultFocusTest. viewObj.$attrs.groupDefaultFocus.');
