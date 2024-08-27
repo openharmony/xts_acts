@@ -37,6 +37,16 @@
 #include <string>
 #include <vector>
 
+#define COLOR_SPACE_NOT_SUPPORTED 3
+#define TARGET_ZOOM 1.5
+#define ALL_CALLBACK_IS_NULL 1
+#define ONLY_ON_ERROR 2
+#define ONLY_ON_FOCUS_STATE_CHANGE 3
+#define INVALID_SURFACE_ID 4
+#define SET_OH_COLORSPACE_SRGB_FULL 2
+#define INVALID_MIN_FPS 1
+#define INVALID_MAX_FPS 5
+
 typedef enum CameraCallbackCode {
     CameraInput_Status = 1,
     Preview_OnFrameStart = 2,
@@ -99,12 +109,26 @@ public:
     uint64_t secureSeqId_;
     bool canPreconfig_;
     uint32_t sceneModesSize_;
+    bool isNormalPhoto_;
+    bool isNormalVideo_;
+    bool isSecurePhoto_;
     bool isMovingPhotoSupported_;
-    inline static bool isCalledPhotoAvailable_ = false;
-    inline static bool isCalledPhotoAssetAvailable_ = false;
-    inline static OH_PhotoNative *photoNative_ = nullptr;
+    OH_PhotoNative *photoNative_;
     OH_ImageNative *mainImage_;
-    
+    bool isTorchSupported_;
+    bool isTorchSupportedByTorchMode_;
+    Camera_TorchMode torchMode_;
+    uint32_t frameRatesSize_;
+    uint32_t videoFrameRatesSize_;
+    uint32_t colorSpacesSize_;
+    OH_NativeBuffer_ColorSpace* colorSpace_;
+    OH_NativeBuffer_ColorSpace activeColorSpace_;
+    OH_NativeBuffer_ColorSpace setcolorSpace_;
+    Camera_FrameRateRange* frameRateRange_;
+    Camera_FrameRateRange activeFrameRateRange_;
+    Camera_FrameRateRange* videoFrameRateRange_;
+    Camera_FrameRateRange videoActiveFrameRateRange_;
+
     //callback
     static CameraCallbackCode cameraCallbackCode_;
 
@@ -227,7 +251,6 @@ public:
     Camera_ErrorCode GetSupportedSceneModes(int useCaseCode);
     Camera_ErrorCode DeleteSceneModes(int useCaseCode);
     Camera_ErrorCode GetSupportedCameraOutputCapabilityWithSceneMode(int useCaseCode);
-
     Camera_ErrorCode SetSessionMode(int useCaseCode);
     Camera_ErrorCode CanAddInput(int useCaseCode);
     Camera_ErrorCode CanAddPreviewOutput(int useCaseCode);
@@ -249,23 +272,56 @@ public:
     Camera_ErrorCode PreviewOutputDeleteProfile(int useCaseCode);
     Camera_ErrorCode PhotoOutputGetActiveProfile(int useCaseCode);
     Camera_ErrorCode PhotoOutputDeleteProfile(int useCaseCode);
-
-    Camera_ErrorCode SetSceneMode(int useCaseCode);
-    Camera_ErrorCode GetCameraFromCameras(Camera_Device* cameras, Camera_Device** camera);
-
+    
     Camera_ErrorCode RegisterPhotoAvailableCallback(int useCaseCode);
     Camera_ErrorCode UnregisterPhotoAvailableCallback(int useCaseCode);
     Camera_ErrorCode RegisterPhotoAssetAvailableCallback(int useCaseCode);
     Camera_ErrorCode UnregisterPhotoAssetAvailableCallback(int useCaseCode);
     Camera_ErrorCode IsMovingPhotoSupported(int useCaseCode);
-    Camera_ErrorCode EnableMovingPhoto(int useCaseCode);
+    Camera_ErrorCode EnableMovingPhoto(int useCaseCode, bool enable);
     Camera_ErrorCode GetMainImage(int useCaseCode);
     Camera_ErrorCode PhotoNativeRelease(int useCaseCode);
     Camera_ErrorCode CreatePhotoOutputWithoutSurface(int useCaseCode);
+	
+    Camera_ErrorCode TorchMode(int useCaseCode);
+    Camera_ErrorCode IsTorchSupported(int useCaseCode);
+    Camera_ErrorCode IsTorchSupportedByTorchMode(int useCaseCode);
+    Camera_ErrorCode SetTorchMode(int useCaseCode);
+    Camera_ErrorCode GetExposureValue(int useCaseCode);
+    Camera_ErrorCode GetFocalLength(int useCaseCode);
+    Camera_ErrorCode SetSmoothZoom(int useCaseCode);
+    Camera_ErrorCode GetSupportedColorSpaces(int useCaseCode);
+    Camera_ErrorCode DeleteColorSpaces(int useCaseCode);
+    Camera_ErrorCode GetActiveColorSpace(int useCaseCode);
+    Camera_ErrorCode SetColorSpace(int useCaseCode);
+    Camera_ErrorCode GetSupportedFrameRates(int useCaseCode);
+    Camera_ErrorCode DeleteFrameRates(int useCaseCode);
+    Camera_ErrorCode SetFrameRate(int useCaseCode);
+    Camera_ErrorCode GetActiveFrameRate(int useCaseCode);
+    Camera_ErrorCode VideoOutputGetSupportedFrameRates(int useCaseCode);
+    Camera_ErrorCode VideoOutputSetFrameRate(int useCaseCode);
+    Camera_ErrorCode VideoOutputGetActiveFrameRate(int useCaseCode);
+    Camera_ErrorCode CameraManagerRegisterTorchStatusCallback(int useCaseCode);
+    Camera_ErrorCode CameraManagerUnregisterTorchStatusCallback(int useCaseCode);
+    Camera_ErrorCode CaptureSessionRegisterSmoothZoomInfoCallback(int useCaseCode);
+    Camera_ErrorCode CaptureSessionUnregisterSmoothZoomInfoCallback(int useCaseCode);
+    Camera_ErrorCode PhotoOutputRegisterCaptureStartWithInfoCallback(int useCaseCode);
+    Camera_ErrorCode PhotoOutputUnregisterCaptureStartWithInfoCallback(int useCaseCode);
+    Camera_ErrorCode PhotoOutputRegisterCaptureEndCallback(int useCaseCode);
+    Camera_ErrorCode PhotoOutputUnregisterCaptureEndCallback(int useCaseCode);
+    Camera_ErrorCode PhotoOutputRegisterFrameShutterEndCallback(int useCaseCode);
+    Camera_ErrorCode PhotoOutputUnregisterFrameShutterEndCallback(int useCaseCode);
+    Camera_ErrorCode PhotoOutputRegisterCaptureReadyCallback(int useCaseCode);
+    Camera_ErrorCode PhotoOutputUnregisterCaptureReadyCallback(int useCaseCode);
+    Camera_ErrorCode PhotoOutputRegisterEstimatedCaptureDurationCallback(int useCaseCode);
+    Camera_ErrorCode PhotoOutputUnregisterEstimatedCaptureDurationCallback(int useCaseCode);
+    int32_t ColorSpace(void);
 
-    Camera_ErrorCode Capture(void);
-    static void PhotoOutputOnPhotoAvailable(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo);
-    static void PhotoOutputOnPhotoAssetAvailable(Camera_PhotoOutput* photoOutput, OH_MediaAsset* photoAsset);
+    // test aid
+    Camera_ErrorCode SetSceneMode(int useCaseCode);
+    Camera_ErrorCode GetCameraFromCameras(Camera_Device* cameras,
+        Camera_Device** camera);
+    Camera_ErrorCode ReleaseCamera(void);
 
 private:
     NDKCamera(const NDKCamera&) = delete;
