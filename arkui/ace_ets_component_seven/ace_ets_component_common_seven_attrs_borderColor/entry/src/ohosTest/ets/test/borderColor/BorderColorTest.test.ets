@@ -33,7 +33,7 @@ export default function borderColorTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testBorderColor',
     pageName: 'borderColorPage',
     pageUrl: 'MainAbility/pages/borderColor/BorderColorPage',
@@ -47,21 +47,21 @@ export default function borderColorTest() {
     columns: columns
   }
 
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetBorderColor',
     setValue: {
       borderColor: '#FFFF0012'
-    },
+    } as ESObject,
     expectValue: {
       borderColor: '#FFFF0012'
-    }
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('borderColorTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.info('[' + data.caseTag + '] borderColorTest.');
       console.info('[' + data.caseTag + '] borderColorTest. data.testValue.setValue.borderColor : ' + data.testValue.setValue.borderColor);
       console.info('[' + data.viewObj.$attrs.borderColor + '] borderColorTest. viewObj.$attrs.borderColor.');
