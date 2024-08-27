@@ -801,13 +801,13 @@ HWTEST_F(NativeImageTest, OHNativeImageDestroy002, Function | MediumTest | Level
  * @tc.level : Level 1
  */
  
-HWTEST_F(NativeImageTest, OH_NativeImage_AcquireNativeWindowBufferNormal, Function | MediumTest | Level1) 
+HWTEST_F(NativeImageTest, OHNativeImageAcquireNativeWindowBufferNormal, Function | MediumTest | Level1) 
 {
     if (image == nullptr)
-        { 
-            image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
-            ASSERT_NE(image, nullptr); 
-        } 
+    { 
+        image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
+        ASSERT_NE(image, nullptr); 
+    } 
     OHNativeWindow* nativewindow = OH_NativeImage_AcquireNativeWindow(image);
     ASSERT_NE(nativewindow, nullptr); 
     int code = SET_BUFFER_GEOMETRY; 
@@ -828,14 +828,14 @@ HWTEST_F(NativeImageTest, OH_NativeImage_AcquireNativeWindowBufferNormal, Functi
     OH_NativeWindow_DestroyNativeWindow(nativewindow);
 }
 
-HWTEST_F(NativeImageTest, OH_NativeImage_AcquireNativeWindowBufferCalls, Function | MediumTest | Level1) 
+HWTEST_F(NativeImageTest, OHNativeImageAcquireNativeWindowBufferCalls, Function | MediumTest | Level1) 
 { 
     if (image == nullptr) 
     {
         image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D); 
         ASSERT_NE(image, nullptr);
     } 
-    OHNativeWindow* nativewindow = OH_NativeImage_AcquireNativeWindow (image);
+    OHNativeWindow* nativewindow = OH_NativeImage_AcquireNativeWindow(image);
     ASSERT_NE(nativewindow, nullptr); 
     int code = SET_BUFFER_GEOMETRY; 
     int32_t width_ = 0x100; 
