@@ -102,6 +102,8 @@ export function photoFetchOption(testNum, key, value) : photoAccessHelper.FetchO
       photoKeys.DYNAMIC_RANGE_TYPE,
       photoKeys.COVER_POSITION,
       photoKeys.BURST_KEY,
+      photoKeys.LCD_SIZE,
+      photoKeys.THM_SIZE,
       'all_exif',
     ],
     predicates: predicates
@@ -388,6 +390,28 @@ export function createSandboxFileUri(extension) {
   let path = pathDir + '/test' + new Date().getTime() + '.' + extension;
   fs.openSync(path, fs.OpenMode.CREATE)
   return fileuri.getUriFromPath(path);
+}
+
+export async function getBurstKey(testNum: string, fetchOps: photoAccessHelper.FetchOptions): string | number {
+  let burstKey: string | number | undefined = -1;
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOps);
+    if (fetchResult === undefined) {
+      console.error(`${testNum} :: getBurstKey :: fetchResult is undefined !`);
+      return burstKey;
+    }
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error(`${testNum} :: getBurstKey :: photoAsset is undefined !`);
+      return burstKey;
+    }
+    burstKey = photoAsset.get(photoKeys.BURST_KEY).toString();
+    console.log(`${testNum} :: get burstKey success, burstKey is ${burstKey}`);
+    return burstKey;
+  } catch (error) {
+    console.error(`${testNum} :: getBurstKey failed, msg is ${error}`);
+    return burstKey;
+  }
 }
 
 export {

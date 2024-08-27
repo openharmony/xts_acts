@@ -15,10 +15,12 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import {
   sleep,
   photoKeys,
   getPermission,
+  getBurstKey,
   pushCreateAsset,
   photoFetchOption,
   fetchAllOption
@@ -39,28 +41,6 @@ export default function getBurstAssetsTest () {
       await sleep()
       await pushCreateAsset(fileNameList);
     });
-
-    const getBurstKey = async (testNum: string, fetchOps: photoAccessHelper.FetchOptions): string | number | string => {
-      let burstKey: string | number | undefined = -1;
-      try {
-        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOps);
-        if (fetchResult === undefined) {
-          console.error(`${testNum} :: getBurstKey :: fetchResult is undefined !`);
-          return burstKey;
-        }
-        let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-        if (photoAsset === undefined) {
-          console.error(`${testNum} :: getBurstKey :: photoAsset is undefined !`);
-          return burstKey;
-        }
-        burstKey = photoAsset.get(photoKeys.BURST_KEY).toString();
-        console.log(`${testNum} :: get burstKey success, burstKey is ${burstKey}`);
-        return burstKey;
-      } catch (error) {
-        console.error(`${testNum} :: getBurstKey failed, msg is ${error}`);
-        return burstKey;
-      }
-    }
 
     /**
      * @tc.number    : Sub_PhotoAccess_Helper_Get_BurstAssets_001
@@ -153,5 +133,34 @@ export default function getBurstAssetsTest () {
         done();
       }
     })
+
+    /**
+     * @tc.number    : Sub_PhotoAccess_Helper_Get_BurstAssets_004
+     * @tc.name      : get_burst_asset_by_subtype_001
+     * @tc.desc      : getBurstAssets by subtype
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("get_burst_asset_by_subtype_001", 0, async (done: Function) => {
+      const testNum = "get_burst_asset_by_subtype_001";
+      try {
+        let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        predicates.equalTo(photoAccessHelper.PhotoKeys.PHOTO_SUBTYPE, photoAccessHelper.PhotoSubtype.BURST);
+        let fetchOptions: photoAccessHelper.FetchOptions = {
+          fetchColumns: [],
+          predicates: predicates
+        };
+        let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+        console.log(`${testNum} :: assetResult's count:: count = ${assetResult.getCount()}`);
+        expect(assetResult.getCount() >= 0).assertTrue();
+        done();
+      } catch(error) {
+        console.error(`${testNum} :: getBurstAssets failed, error is ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
   });
 }
