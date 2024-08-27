@@ -18,7 +18,6 @@ import window from '@ohos.window'
 import display from '@ohos.display'
 import hdrCapability from '@ohos.graphics.hdrCapability'
 
-
 export default function display_test() {
 describe('display_test', function () {
 
