@@ -32,7 +32,7 @@ export default function backgroundImagePositionTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testBackgroundImagePosition',
     pageName: 'backgroundImagePositionPage',
     pageUrl: 'MainAbility/pages/backgroundImagePosition/BackgroundImagePositionPage',
@@ -47,21 +47,21 @@ export default function backgroundImagePositionTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetBackgroundImagePosition',
     setValue: {
-      backgroundImagePosition: ({ x: 11, y: 13 })
-    },
+      backgroundImagePosition: ({ x: 11, y: 13 } as ESObject)
+    } as ESObject,
     expectValue: {
       backgroundImagePosition: '{\"x\":11,\"y\":13}'
-    }
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('backgroundImagePositionTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.error('[' + data.caseTag + '] backgroundImagePositionTest.');
       console.error('[' + data.caseTag + '] backgroundImagePositionTest. data.testValue.setValue.backgroundImagePosition : ' + data.testValue.setValue.backgroundImagePosition);
       console.error('[' + data.viewObj.$attrs.backgroundImagePosition + '] backgroundImagePositionTest. viewObj.$attrs.backgroundImagePosition.');
