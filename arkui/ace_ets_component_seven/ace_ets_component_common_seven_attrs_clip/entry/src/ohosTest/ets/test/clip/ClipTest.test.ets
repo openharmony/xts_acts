@@ -32,7 +32,7 @@ export default function clipTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testClip',
     pageName: 'clipPage',
     pageUrl: 'MainAbility/pages/clip/ClipPage',
@@ -47,21 +47,21 @@ export default function clipTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetClip',
     setValue: {
       clip: true
-    },
+    } as ESObject,
     expectValue: {
-      clip: 'true'
-    }
+     clip: 'true'
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('clipTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.error('[' + data.caseTag + '] clipTest.');
       console.error('[' + data.caseTag + '] clipTest. data.testValue.setValue.clip : ' + data.testValue.setValue.clip);
       console.error('[' + data.viewObj.$attrs.clip + '] clipTest. viewObj.$attrs.clip.');
