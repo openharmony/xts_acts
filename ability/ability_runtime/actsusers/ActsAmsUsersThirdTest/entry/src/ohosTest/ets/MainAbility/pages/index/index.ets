@@ -28,6 +28,7 @@ struct Index {
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
 
   }
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('MainAbility')
