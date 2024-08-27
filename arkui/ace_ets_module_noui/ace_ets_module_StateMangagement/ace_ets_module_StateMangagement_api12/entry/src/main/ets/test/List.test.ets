@@ -68,6 +68,12 @@ import ComputedTest from './ComputedTest/Computed.test';
 import makeObservedTest from './makeObservedTest/makeObserved.test';
 import ParamTest from './ParamTest/Param.test';
 import twoWayBindTest from './twoWayBindTest/twoWayBind.test';
+import IfElse001Test from './IfElseTest/IfElse001.test';
+import IfElse002Test from './IfElseTest/IfElse002.test';
+import IfElse003Test from './IfElseTest/IfElse003.test';
+import IfElse004Test from './IfElseTest/IfElse004.test';
+import IfElse005Test from './IfElseTest/IfElse005.test';
+
 export default function testsuite() {
   ExtendTrackTest();
   NestTrackTest();
@@ -125,4 +131,9 @@ export default function testsuite() {
   makeObservedTest();
   ParamTest();
   twoWayBindTest();
+  IfElse001Test();
+  IfElse002Test();
+  IfElse003Test();
+  IfElse004Test();
+  IfElse005Test();
 }

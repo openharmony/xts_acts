@@ -56,6 +56,11 @@
         "MainAbility/pages/Param/Param",
         "MainAbility/pages/Computed/computed",
         "MainAbility/pages/makeObserved/makeObserved",
-        "MainAbility/pages/twoWayBind/bind"
+        "MainAbility/pages/twoWayBind/bind",
+        "MainAbility/pages/IfElse/IfElse001",
+        "MainAbility/pages/IfElse/IfElse002",
+        "MainAbility/pages/IfElse/IfElse003",
+        "MainAbility/pages/IfElse/IfElse004",
+        "MainAbility/pages/IfElse/IfElse005"
     ]
 }
