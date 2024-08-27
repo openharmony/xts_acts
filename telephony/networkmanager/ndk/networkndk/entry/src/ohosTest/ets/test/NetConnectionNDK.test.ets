@@ -20,6 +20,8 @@ const CASE_INDEX_1 = 1;
 const CASE_INDEX_2 = 2;
 const CASE_INDEX_3 = 3;
 const CASE_INDEX_4 = 4;
+const CASE_INDEX_5 = 5;
+const CASE_INDEX_6 = 6;
 // 成功
 const NETCONNECTION_OK = 0;
 // 参数错误
@@ -604,13 +606,111 @@ export default function NetConnectionNDKTest() {
     /**
      * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterNetConnCallback_0400
      * @tc.name   ：TestOHNetConnRegisterNetConnCallback_0400
-     * @tc.desc   ：Register net connection callback.
+     * @tc.desc   ：Register net connection callback with default netspecifier.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
     it('testOHNetConnRegisterNetConnCallback_0400', 0, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallback(CASE_INDEX_4);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterNetConnCallback_0500
+     * @tc.name   ：TestOHNetConnRegisterNetConnCallback_0500
+     * @tc.desc   ：Register net connection callback with cellular netspecifier, and timeout 0ms.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterNetConnCallback_0500', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterNetConnCallback(CASE_INDEX_5);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterNetConnCallback_0600
+     * @tc.name   ：TestOHNetConnRegisterNetConnCallback_0600
+     * @tc.desc   ：Register net connection callback with cellular netspecifier, and timeout 3000ms.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterNetConnCallback_0600', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterNetConnCallbackTimeout(CASE_INDEX_1);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterNetConnCallback_0700
+     * @tc.name   ：TestOHNetConnRegisterNetConnCallback_0700
+     * @tc.desc   ：Register net connection callback with cellular netspecifier, and timeout UINT32_MAX ms.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterNetConnCallback_0700', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterNetConnCallbackTimeout(CASE_INDEX_2);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterNetConnCallback_0800
+     * @tc.name   ：TestOHNetConnRegisterNetConnCallback_0800
+     * @tc.desc   ：Register net connection callback with wifi netspecifier, and timeout 0ms.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterNetConnCallback_0800', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterNetConnCallbackTimeout(CASE_INDEX_3);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterNetConnCallback_0900
+     * @tc.name   ：TestOHNetConnRegisterNetConnCallback_0900
+     * @tc.desc   ：Register net connection callback with wifi netspecifier, and timeout 3000ms.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterNetConnCallback_0900', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterNetConnCallbackTimeout(CASE_INDEX_4);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterNetConnCallback_1000
+     * @tc.name   ：TestOHNetConnRegisterNetConnCallback_1000
+     * @tc.desc   ：Register net connection callback with wifi netspecifier, and timeout UINT32_MAX ms.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterNetConnCallback_1000', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterNetConnCallbackTimeout(CASE_INDEX_5);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnRegisterNetConnCallback_1100
+     * @tc.name   ：TestOHNetConnRegisterNetConnCallback_1100
+     * @tc.desc   ：Register net connection callback with wifi ident netspecifier, and timeout UINT32_MAX ms.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterNetConnCallback_1100', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterNetConnCallbackTimeout(CASE_INDEX_6);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -660,7 +760,7 @@ export default function NetConnectionNDKTest() {
     /**
      * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnUnregisterNetConnCallback_0100
      * @tc.name   ：TestOHNetConnUnregisterNetConnCallback_0100
-     * @tc.desc   ：Unregister net connection callback with invalid arg.
+     * @tc.desc   ：Unregister default net connection callback with invalid arg.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
@@ -674,13 +774,69 @@ export default function NetConnectionNDKTest() {
     /**
      * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnUnregisterNetConnCallback_0200
      * @tc.name   ：TestOHNetConnUnregisterNetConnCallback_0200
-     * @tc.desc   ：Unregister net connection callback.
+     * @tc.desc   ：Unregister default net connection callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
     it('testOHNetConnUnregisterNetConnCallback_0200', 0, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterNetConnCallback(CASE_INDEX_2);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnUnregisterNetConnCallback_0300
+     * @tc.name   ：TestOHNetConnUnregisterNetConnCallback_0300
+     * @tc.desc   ：Unregister default net connection callback twice.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnUnregisterNetConnCallback_0300', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnUnregisterNetConnCallback(CASE_INDEX_3);
+      expect(re).assertEqual(ERROR_CODE_2101007);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnUnregisterNetConnCallback_0400
+     * @tc.name   ：TestOHNetConnUnregisterNetConnCallback_0400
+     * @tc.desc   ：Unregister cellular net connection callback.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnUnregisterNetConnCallback_0400', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnUnregisterNetConnCallback(CASE_INDEX_4);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnUnregisterNetConnCallback_0500
+     * @tc.name   ：TestOHNetConnUnregisterNetConnCallback_0500
+     * @tc.desc   ：Unregister wifi net connection callback.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnUnregisterNetConnCallback_0500', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnUnregisterNetConnCallback(CASE_INDEX_5);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNetConnUnregisterNetConnCallback_0600
+     * @tc.name   ：TestOHNetConnUnregisterNetConnCallback_0600
+     * @tc.desc   ：Unregister wifi net connection callback with 3000ms timeout.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnUnregisterNetConnCallback_0600', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnUnregisterNetConnCallback(CASE_INDEX_6);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -710,6 +866,20 @@ export default function NetConnectionNDKTest() {
     it('testOHNetConnSetAppHttpProxy_0200', 0, async (done: Function) => {
       let re: number = ncAPI.OHNetConnSetAppHttpProxy(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNSETAPPHTTPPROXY_0300
+     * @tc.name   ：OHNetConnSetAppHttpProxy_0300
+     * @tc.desc   ：Sets http proxy information to current application.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnSetAppHttpProxy_0300', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnSetAppHttpProxy(CASE_INDEX_3);
+      expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
     
@@ -770,6 +940,20 @@ export default function NetConnectionNDKTest() {
     });
 
     /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNREGISTERAPPHTTPPROXYCALLBACK_0500
+     * @tc.name   ：OHOSNetConnRegisterAppHttpProxyCallback_0500
+     * @tc.desc   ：Registers callback to listen for changes to the application-level http proxy.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHOSNetConnRegisterAppHttpProxyCallback_0500', 0, async (done: Function) => {
+      let re: number = ncAPI.OHOSNetConnRegisterAppHttpProxyCallback(CASE_INDEX_5);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
      * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNUNREGISTERAPPHTTPPROXYCALLBACK_0100
      * @tc.name   ：OHOSNetConnUnregisterAppHttpProxyCallback_0100
      * @tc.desc   ：Unregisters a callback function that listens for application-level proxy changes.
@@ -794,6 +978,48 @@ export default function NetConnectionNDKTest() {
     it('testOHOSNetConnUnregisterAppHttpProxyCallback_0200', 0, async (done: Function) => {
       let re: number = ncAPI.OHOSNetConnUnregisterAppHttpProxyCallback(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNUNREGISTERAPPHTTPPROXYCALLBACK_0300
+     * @tc.name   ：OHOSNetConnUnregisterAppHttpProxyCallback_0300
+     * @tc.desc   ：Unregisters a callback function that listens for application-level proxy changes.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHOSNetConnUnregisterAppHttpProxyCallback_0300', 0, async (done: Function) => {
+      let re: number = ncAPI.OHOSNetConnUnregisterAppHttpProxyCallback(CASE_INDEX_3);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNUNREGISTERAPPHTTPPROXYCALLBACK_0400
+     * @tc.name   ：OHOSNetConnUnregisterAppHttpProxyCallback_0400
+     * @tc.desc   ：Unregisters a callback function that listens for application-level proxy changes.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHOSNetConnUnregisterAppHttpProxyCallback_0400', 0, async (done: Function) => {
+      let re: number = ncAPI.OHOSNetConnUnregisterAppHttpProxyCallback(CASE_INDEX_4);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNUNREGISTERAPPHTTPPROXYCALLBACK_0500
+     * @tc.name   ：OHOSNetConnUnregisterAppHttpProxyCallback_0500
+     * @tc.desc   ：Unregisters a callback function that listens for application-level proxy changes.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHOSNetConnUnregisterAppHttpProxyCallback_0500', 0, async (done: Function) => {
+      let re: number = ncAPI.OHOSNetConnUnregisterAppHttpProxyCallback(CASE_INDEX_5);
+      expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
 
