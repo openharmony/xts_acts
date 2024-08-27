@@ -5491,3 +5491,11 @@ export const native_014: () => number;
 export const DialogModelTest_001: () => number;
 export const DialogModelTest_002: () => number;
 export const DialogModelTest_003: () => number;
+
+export const drag_getDragEvent_001: () => number;
+
+export const drag_getDataTypes_001: () => number;
+
+export const drag_setGetUdmfData_001: () => number;
+export const drag_setGetUdmfData_002: () => number;
+export const drag_setGetUdmfData_003: () => number;

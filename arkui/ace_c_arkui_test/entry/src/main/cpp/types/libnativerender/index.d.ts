@@ -236,3 +236,17 @@ export const textInputOnCutTest: (a: string) => void;
 export const textInputOnPasteTest: (a: string) => void;
 
 export const gestureTest: (a: string) => void;
+
+export const dragTest: (a: string) => void;
+
+export const disableDefaultDropAnimationTest: (a: string) => void;
+
+export const getPreDragStatusTest: (a: string) => void;
+
+export const setSuggestedDropOperationTest: (a: string) => void;
+
+export const setDragResultTest: (a: string) => void;
+
+export const getDataTypesCountTest: (a: string) => void;
+
+export const getDragResultTest: (a: string) => void;
