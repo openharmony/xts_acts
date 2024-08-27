@@ -32,7 +32,7 @@ export default function focusableTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testFocusable',
     pageName: 'focusablePage',
     pageUrl: 'MainAbility/pages/focusable/FocusablePage',
@@ -47,21 +47,21 @@ export default function focusableTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetFocusable',
     setValue: {
       focusable: false
-    },
+    } as ESObject,
     expectValue: {
       focusable: false
-    }
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('focusableTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.error('[' + data.caseTag + '] focusableTest.');
       console.error('[' + data.caseTag + '] focusableTest. data.testValue.setValue.focusable : ' + data.testValue.setValue.focusable);
       console.error('[' + data.viewObj.$attrs.focusable + '] focusableTest. viewObj.$attrs.focusable.');
