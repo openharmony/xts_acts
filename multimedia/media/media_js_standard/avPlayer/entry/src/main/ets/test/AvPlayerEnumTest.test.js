@@ -124,13 +124,8 @@ export default function AvPlayerEnumTest() {
             * @tc.level     : Level0
         */
          it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0600', 0, async function (done) {
-            try {
-                if (media.HdrType.AV_HDR_TYPE_NONE != 0 || media.HdrType.AV_HDR_TYPE_VIVID != 1) {
-                    expect(false).assertTrue();
-                }
-            } catch(error) {
-                console.info('Please update the SDK to the latest version')
-            }
+            expect(media.HdrType.AV_HDR_TYPE_NONE).assertEqual(0);
+            expect(media.HdrType.AV_HDR_TYPE_VIVID).assertEqual(1);
             done();
         })
 
