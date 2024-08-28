@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter'
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -49,7 +50,7 @@ struct TransitionExample {
             console.info("transitionTest_0200 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("transitionTest_0200 emit action state err: " + JSON.stringify(err.message))
+            console.info("transitionTest_0200 emit action state err: " + JSON.stringify((err as BusinessError).message))
           }
           animateTo({ duration: 3000 }, () => {
             this.btn1 = !this.btn1
@@ -71,7 +72,7 @@ struct TransitionExample {
   }
 
   onPageShow() {
-    console.info('transition page show called');``
+    console.info('transition page show called');
     let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 234,
       priority: events_emitter.EventPriority.LOW

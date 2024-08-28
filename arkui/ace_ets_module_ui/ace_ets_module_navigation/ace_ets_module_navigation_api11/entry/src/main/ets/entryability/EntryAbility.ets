@@ -16,7 +16,6 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { AtomicServiceBar } from '@ohos.arkui.UIContext';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-import { BusinessError } from '@ohos.base';
 
 
 export default class EntryAbility extends UIAbility {

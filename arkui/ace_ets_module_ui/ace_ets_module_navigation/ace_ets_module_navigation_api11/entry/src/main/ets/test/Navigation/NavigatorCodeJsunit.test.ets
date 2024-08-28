@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
+import { BusinessError } from '@ohos.base';
 
 export default function navigatorCodeJsunit() {
   describe('navigatorCodeJsunit', () => {
@@ -72,7 +73,7 @@ export default function navigatorCodeJsunit() {
         console.info("[test_NavigatorClick_002] start to publish emit" + JSON.stringify(eventData));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[test_NavigatorClick_002] change component error: " + err.message);
+        console.log("[test_NavigatorClick_002] change component error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('NavigatorType');

@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import Utils from '../Utils';
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 export default function StepperJsunit11() {
   describe('StepperJsunit11', () => {
@@ -75,7 +76,7 @@ export default function StepperJsunit11() {
         console.info("stepperTest_0200 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("stepperTest_0200 change component data error: " + err.message);
+        console.log("stepperTest_0200 change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(3000);
       let strJsonNew: string = getInspectorByKey('stepper');
@@ -131,7 +132,7 @@ export default function StepperJsunit11() {
         console.info("stepperTest_0300 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("stepperTest_0300 change component data error: " + err.message);
+        console.log("stepperTest_0300 change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(3000);
       let strJsonNew: string = getInspectorByKey('stepper');

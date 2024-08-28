@@ -18,6 +18,7 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/utils/Common';
 import router from '@ohos.router';
+import { BusinessError } from '@ohos.base';
 
 export default function sidebar() {
   describe('ActsAceSideBarTest',  () =>{
@@ -74,7 +75,7 @@ export default function sidebar() {
         console.info("[ArkUI_SideBarContainer_Divider] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_SideBarContainer_Divider] change component data error: " + err.message);
+        console.log("[ArkUI_SideBarContainer_Divider] change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
       done();
@@ -170,7 +171,7 @@ export default function sidebar() {
         console.info("ArkUI_SideBarContainer_Divider_0400 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("ArkUI_SideBarContainer_Divider_0400 change component data error: " + err.message);
+        console.log("ArkUI_SideBarContainer_Divider_0400 change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
 
@@ -216,7 +217,7 @@ export default function sidebar() {
         console.info("ArkUI_SideBarContainer_Divider_0500 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("ArkUI_SideBarContainer_Divider_0500 change component data error: " + err.message);
+        console.log("ArkUI_SideBarContainer_Divider_0500 change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
 
@@ -262,7 +263,7 @@ export default function sidebar() {
         console.info("ArkUI_SideBarContainer_Divider_0600 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("ArkUI_SideBarContainer_Divider_0600 change component data error: " + err.message);
+        console.log("ArkUI_SideBarContainer_Divider_0600 change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
 
@@ -361,7 +362,7 @@ export default function sidebar() {
         console.info("[ArkUI_SideBarContainer_Divider_1000] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_SideBarContainer_Divider_1000] change component data error: " + err.message);
+        console.log("[ArkUI_SideBarContainer_Divider_1000] change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
       let newJson: string = getInspectorByKey('sideBarTest2');
@@ -403,7 +404,7 @@ export default function sidebar() {
         console.info("[ArkUI_SideBarContainer_Divider_1100] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_SideBarContainer_Divider_1100] change component data error: " + err.message);
+        console.log("[ArkUI_SideBarContainer_Divider_1100] change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
       let newJson: string = getInspectorByKey('sideBarTest2');
@@ -445,7 +446,7 @@ export default function sidebar() {
         console.info("[ArkUI_SideBarContainer_Divider_1200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_SideBarContainer_Divider_1200] change component data error: " + err.message);
+        console.log("[ArkUI_SideBarContainer_Divider_1200] change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
       let newJson: string = getInspectorByKey('sideBarTest3');
@@ -487,7 +488,7 @@ export default function sidebar() {
         console.info("[ArkUI_SideBarContainer_Divider_1300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_SideBarContainer_Divider_1300] change component data error: " + err.message);
+        console.log("[ArkUI_SideBarContainer_Divider_1300] change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
       let newJson: string = getInspectorByKey('sideBarTest2');
@@ -529,7 +530,7 @@ export default function sidebar() {
         console.info("[ArkUI_SideBarContainer_Divider_1400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_SideBarContainer_Divider_1400] change component data error: " + err.message);
+        console.log("[ArkUI_SideBarContainer_Divider_1400] change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
       let newJson: string = getInspectorByKey('sideBarTest2');

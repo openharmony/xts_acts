@@ -16,6 +16,7 @@ import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
+import { BusinessError } from '@ohos.base';
 
 export default function sharedTransitionJsunit() {
   describe('sharedTransitionJsunit', () => {
@@ -94,7 +95,7 @@ export default function sharedTransitionJsunit() {
         events_emitter.emit(indexEvent, eventData);
         await Utils.sleep(2500);
       } catch (err) {
-        console.log("sharedTransitionTest_0400 change component data error: " + err.message);
+        console.log("sharedTransitionTest_0400 change component data error: " + (err as BusinessError).message);
       }
       let callback = (indexEventOne: events_emitter.EventData) => {
         console.info("sharedTransitionTest_0400 get state result is: " + JSON.stringify(indexEventOne));
@@ -103,7 +104,7 @@ export default function sharedTransitionJsunit() {
           expect(indexEventOne.data?.delay).assertEqual(5);
           expect(indexEventOne.data?.type).assertEqual(SharedTransitionEffectType.Exchange);
         } catch (err) {
-          console.info("sharedTransitionTest_0400 error: " + err.message);
+          console.info("sharedTransitionTest_0400 error: " + (err as BusinessError).message);
         }
 
       }

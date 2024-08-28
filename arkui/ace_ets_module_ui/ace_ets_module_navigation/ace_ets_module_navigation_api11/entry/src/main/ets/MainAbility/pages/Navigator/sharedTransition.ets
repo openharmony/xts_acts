@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter'
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -50,7 +51,7 @@ struct SharedTransitionExample {
               console.info("SharedTransition start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("SharedTransition emit action state err: " + JSON.stringify(err.message))
+              console.info("SharedTransition emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
 
