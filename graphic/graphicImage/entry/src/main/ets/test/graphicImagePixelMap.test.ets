@@ -70,7 +70,7 @@ export default function graphicImagePixelMapTest(context, windowStage, abilitySt
               done();
           }catch (error){
               console.log(msg + ' receiver surfaceId Failed in createPixelMapFromSurfaceSync')
-              console.log(msg + ' Counterexamples end !')
+              console.log(msg + ' Example end !')
               expect(true).assertTrue();
               done();
           }
@@ -110,7 +110,7 @@ export default function graphicImagePixelMapTest(context, windowStage, abilitySt
           console.info( msg + ' Succeeded in setTransferDetached pixelMap.');
           pixelMap.rotate(180)
           console.info( msg + ' Succeeded in rotate pixelMap.');
-          console.log(msg + ' The main process can still invoke pixelmap attributes. Counterexamples end !')
+          console.log(msg + ' The main process can still invoke pixelmap attributes. Example end !')
           expect(true).assertTrue();
           done();
         }catch(error: BusinessError){
@@ -158,7 +158,7 @@ export default function graphicImagePixelMapTest(context, windowStage, abilitySt
           console.info( msg + ' Succeeded in setTransferDetached pixelMap.');
           pixelMap.rotate(180)
           console.info( msg + ' Succeeded in rotate pixelMap.');
-          console.log(msg + ' The main process can still invoke pixelmap attributes. Counterexamples end !')
+          console.log(msg + ' The main process can still invoke pixelmap attributes. Example end !')
           expect(true).assertTrue();
           done();
         }catch(error: BusinessError){
@@ -172,5 +172,173 @@ export default function graphicImagePixelMapTest(context, windowStage, abilitySt
         done();
       }
     });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_032
+     * @tc.name      : testHdrMetadataKey_enum
+     * @tc.desc      : test Detection Enumeration Values
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testHdrMetadataKey_enum", 0, async function (done) {
+      let msg = '=====testHdrMetadataKey_enum====='
+      console.log(msg + " Example begin! ")
+      try{
+        console.log(msg + " image.HdrMetadataKey.HDR_METADATA_TYPE " + image.HdrMetadataKey.HDR_METADATA_TYPE)
+        console.log(msg + " image.HdrMetadataKey.HDR_STATIC_METADATA " + image.HdrMetadataKey.HDR_STATIC_METADATA)
+        console.log(msg + " image.HdrMetadataKey.HDR_DYNAMIC_METADATA " + image.HdrMetadataKey.HDR_DYNAMIC_METADATA)
+        console.log(msg + " image.HdrMetadataKey.HDR_GAINMAP_METADATA " + image.HdrMetadataKey.HDR_GAINMAP_METADATA)
+        expect(image.HdrMetadataKey.HDR_METADATA_TYPE).assertEqual(0)
+        expect(image.HdrMetadataKey.HDR_STATIC_METADATA).assertEqual(1)
+        expect(image.HdrMetadataKey.HDR_DYNAMIC_METADATA).assertEqual(2)
+        expect(image.HdrMetadataKey.HDR_GAINMAP_METADATA).assertEqual(3)
+        console.log(msg + " Example end! ")
+        done();
+      }catch(error: BusinessError){
+        console.log( msg + ' Faild to HdrMetadataKey enum ' + error)
+        console.log( msg + ' Faild to HdrMetadataKey enum ' + JSON.stringify(error))
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_033
+     * @tc.name      : testHdrMetadataType_enum
+     * @tc.desc      : test Detection Enumeration Values
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testHdrMetadataType_enum", 0, async function (done) {
+      let msg = '=====testHdrMetadataType_enum====='
+      console.log(msg + " Example begin! ")
+      try{
+        console.log(msg + " image.HdrMetadataType.NONE " + image.HdrMetadataType.NONE)
+        console.log(msg + " image.HdrMetadataType.BASE " + image.HdrMetadataType.BASE)
+        console.log(msg + " image.HdrMetadataType.GAINMAP " + image.HdrMetadataType.GAINMAP)
+        console.log(msg + " image.HdrMetadataType.ALTERNATE " + image.HdrMetadataType.ALTERNATE)
+        expect(image.HdrMetadataType.NONE).assertEqual(0)
+        expect(image.HdrMetadataType.BASE).assertEqual(1)
+        expect(image.HdrMetadataType.GAINMAP).assertEqual(2)
+        expect(image.HdrMetadataType.ALTERNATE).assertEqual(3)
+        console.log(msg + " Example end! ")
+        done();
+      }catch(error: BusinessError){
+        console.log( msg + ' Faild to HdrMetadataType enum ' + error)
+        console.log( msg + ' Faild to HdrMetadataType enum ' + JSON.stringify(error))
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_034
+     * @tc.name      : testSetMetadata_1
+     * @tc.desc      :  1.create PixelMap
+                        2.use SetMetadata
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testSetMetadata_1", 0, async function (done) {
+      let msg = '=====testSetMetadata_1====='
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      let staticMe: image.HdrStaticMetadata = {
+        displayPrimariesX: [1.1, 2.1, 3.1],
+        displayPrimariesY: [4.1, 5.1, 6.1],
+        whitePointX: 1.1,
+        whitePointY: 1.2,
+        maxLuminance: 2.1,
+        minLuminance: 2.2,
+        maxContentLightLevel: 3.1,
+        maxFrameAverageLightLevel: 3.2
+      }
+      
+      console.log(msg + " Example begin! ")
+
+      await image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMap.');
+        try{
+          pixelMap.setMetadata(1, staticMe)
+          console.info( msg + ' Succeeded in pixelMap.setMetadata.');
+          console.log(msg + ' Example end !')
+          expect(true).assertTrue();
+          done();
+        }catch(error){
+          console.info( msg + ' Faild in pixelMap.setMetadata.' + error);
+          console.info( msg + ' Faild in pixelMap.setMetadata.' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }).catch((error: BusinessError) => {
+        console.error( msg + ` Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+        expect().assertFail();
+        done();
+      })
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_035
+     * @tc.name      : testSetMetadata_2
+     * @tc.desc      :  1.create PixelMap
+                        2.use SetMetadata
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testSetMetadata_2", 0, async function (done) {
+      let msg = '=====testSetMetadata_2====='
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      let channels1: image.GainmapChannel = {
+        gainmapMax: 7.1,
+        gainmapMin: 7.2,
+        gamma: 7.3,
+        baseOffset: 7.4, 
+        alternateOffset: 7.5 
+      }
+      let channels2: image.GainmapChannel = {
+        gainmapMax: 8.1,
+        gainmapMin: 8.2,
+        gamma: 8.3,
+        baseOffset: 8.4, 
+        alternateOffset: 8.5 
+      }
+      let gain: image.HdrGainmapMetadata = {
+        writerVersion: 10,
+        miniVersion: 11,
+        gainmapChannelCount: 12,
+        useBaseColorFlag: true,
+        baseHeadroom: 5.1,
+        alternateHeadroom: 5.2,
+        channels: [ channels1, channels2 ]
+      }
+
+      console.log(msg + " Example begin! ")
+
+      await image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMap.');
+        try{
+          pixelMap.setMetadata(3, gain)
+          console.info( msg + ' Succeeded in pixelMap.setMetadata.');
+          console.log(msg + ' Example end !')
+          expect(true).assertTrue();
+          done();
+        }catch(error){
+          console.info( msg + ' Faild in pixelMap.setMetadata.' + error);
+          console.info( msg + ' Faild in pixelMap.setMetadata.' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }).catch((error: BusinessError) => {
+        console.error( msg + ` Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+        expect().assertFail();
+        done();
+      })
+    });
+
   })
 }
