@@ -13,38 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("FormSupplyAppB") {
-  hap_profile = "entry/src/main/module.json"
-  hap_name = "FormSupplyAppB"
-  js_build_mode = "debug"
+ohos_app_assist_suite("FormSupplyAppB") {
   testonly = true
-  deps = [
-    ":FormOfFaEts_form_js_assets",
-    ":FormOfFaEts_js_assets",
-    ":FormOfFaEts_resources",
-  ]
+  hap_name = "FormSupplyAppB"
   certificate_profile = "signature/openharmony_sx.p7b"
   subsystem_name = "ability"
   part_name = "form_fwk"
-}
-
-ohos_app_scope("FormOfFaEts_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("FormOfFaEts_js_assets") {
-  ets2abc = true
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_js_assets("FormOfFaEts_form_js_assets") {
-  js2abc = true
-  source_dir = "entry/src/main/js"
-}
-
-ohos_resources("FormOfFaEts_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":FormOfFaEts_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
 }

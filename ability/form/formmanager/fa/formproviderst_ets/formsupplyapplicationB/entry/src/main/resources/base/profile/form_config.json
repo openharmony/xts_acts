@@ -9,7 +9,6 @@
         "autoDesignWidth": true
       },
       "colorMode": "auto",
-      "type": "JS",
       "formVisibleNotify": true,
       "isDefault": true,
       "updateEnabled": true,
@@ -29,7 +28,6 @@
         "autoDesignWidth": true
       },
       "colorMode": "auto",
-      "type": "JS",
       "formVisibleNotify": true,
       "isDefault": false,
       "updateEnabled": true,
