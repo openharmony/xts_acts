@@ -3678,7 +3678,7 @@ static napi_value AudioSessionManagerStrategy_004(napi_env env, napi_callback_in
 
 
 
-static napi_value AudioSessionManagerStrategyErro_001(napi_env env, napi_callback_info info)
+static napi_value AudioSessionManagerStrategyError_001(napi_env env, napi_callback_info info)
 {
   napi_value res;
   int32_t result;
@@ -3705,7 +3705,7 @@ static napi_value AudioSessionManagerStrategyErro_001(napi_env env, napi_callbac
 }
 
 
-static napi_value AudioSessionManagerActivatedErro_001(napi_env env, napi_callback_info info)
+static napi_value AudioSessionManagerActivatedError_001(napi_env env, napi_callback_info info)
 {
   //3
   napi_value res;
@@ -3729,7 +3729,7 @@ static napi_value AudioSessionManagerActivatedErro_001(napi_env env, napi_callba
     return res;
   }
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(nullptr);
-  if (!isActivated) {
+  if (isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
     LOG(false, "isActivated, result is: %d", TEST_FAIL);
     return res;
@@ -3746,7 +3746,7 @@ static napi_value AudioSessionManagerActivatedErro_001(napi_env env, napi_callba
   return res;
 }
 
-static napi_value AudioSessionManagerStopErro_001(napi_env env, napi_callback_info info)
+static napi_value AudioSessionManagerStopError_001(napi_env env, napi_callback_info info)
 {
     //3
   napi_value res;
@@ -3790,7 +3790,7 @@ static napi_value AudioSessionManagerStopErro_001(napi_env env, napi_callback_in
 }
 
 
-static napi_value AudioSessionManagerStopErro_002(napi_env env, napi_callback_info info)
+static napi_value AudioSessionManagerStopError_002(napi_env env, napi_callback_info info)
 {
     //3
   napi_value res;
@@ -3815,7 +3815,7 @@ static napi_value AudioSessionManagerStopErro_002(napi_env env, napi_callback_in
   }
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate1 = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
-  result = StatusJudgment(resultDeactivate1, AUDIOCOMMON_RESULT_SUCCESS);
+  result = StatusJudgment(resultDeactivate1, AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE);
   LOG(false, "resultDeactivate1, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
@@ -3833,7 +3833,7 @@ static napi_value AudioSessionManagerStopErro_002(napi_env env, napi_callback_in
 }
 
 
-static napi_value AudioSessionManagerRegisterErro_001(napi_env env, napi_callback_info info)
+static napi_value AudioSessionManagerRegisterError_001(napi_env env, napi_callback_info info)
 {
   napi_value res;
   int32_t result;
@@ -3884,7 +3884,7 @@ static napi_value AudioSessionManagerRegisterErro_001(napi_env env, napi_callbac
   return res;
 }
 
-static napi_value AudioSessionManagerRegisterErro_002(napi_env env, napi_callback_info info)
+static napi_value AudioSessionManagerRegisterError_002(napi_env env, napi_callback_info info)
 {
   napi_value res;
   int32_t result;
@@ -3936,7 +3936,7 @@ static napi_value AudioSessionManagerRegisterErro_002(napi_env env, napi_callbac
 }
 
 
-static napi_value AudioSessionManagerUnregisterErro_001(napi_env env, napi_callback_info info)
+static napi_value AudioSessionManagerUnregisterError_001(napi_env env, napi_callback_info info)
 {
   napi_value res;
   int32_t result;
@@ -4006,7 +4006,7 @@ static napi_value AudioSessionManagerUnregisterErro_001(napi_env env, napi_callb
 }
 
 
-static napi_value AudioSessionManagerUnregisterErro_002(napi_env env, napi_callback_info info)
+static napi_value AudioSessionManagerUnregisterError_002(napi_env env, napi_callback_info info)
 {
   napi_value res;
   int32_t result;
@@ -4550,22 +4550,22 @@ static napi_value Init(napi_env env, napi_value exports)
             AudioSessionManagerStrategy_003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AudioSessionManagerStrategy_004", nullptr,
             AudioSessionManagerStrategy_004, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"AudioSessionManagerStrategyErro_001", nullptr,
-            AudioSessionManagerStrategyErro_001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"AudioSessionManagerActivatedErro_001", nullptr,
-            AudioSessionManagerActivatedErro_001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"AudioSessionManagerStopErro_001", nullptr,
-            AudioSessionManagerStopErro_001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"AudioSessionManagerStopErro_002", nullptr,
-            AudioSessionManagerStopErro_002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"AudioSessionManagerRegisterErro_001", nullptr,
-            AudioSessionManagerRegisterErro_001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"AudioSessionManagerRegisterErro_002", nullptr,
-            AudioSessionManagerRegisterErro_002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"AudioSessionManagerUnregisterErro_001", nullptr,
-            AudioSessionManagerUnregisterErro_001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"AudioSessionManagerUnregisterErro_002", nullptr,
-            AudioSessionManagerUnregisterErro_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AudioSessionManagerStrategyError_001", nullptr,
+            AudioSessionManagerStrategyError_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AudioSessionManagerActivatedError_001", nullptr,
+            AudioSessionManagerActivatedError_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AudioSessionManagerStopError_001", nullptr,
+            AudioSessionManagerStopError_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AudioSessionManagerStopError_002", nullptr,
+            AudioSessionManagerStopError_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AudioSessionManagerRegisterError_001", nullptr,
+            AudioSessionManagerRegisterError_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AudioSessionManagerRegisterError_002", nullptr,
+            AudioSessionManagerRegisterError_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AudioSessionManagerUnregisterError_001", nullptr,
+            AudioSessionManagerUnregisterError_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AudioSessionManagerUnregisterError_002", nullptr,
+            AudioSessionManagerUnregisterError_002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AudioSessionManagerReason_001", nullptr,
             AudioSessionManagerReason_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AudioSessionManagerReason_002", nullptr,
