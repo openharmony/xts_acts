@@ -45,7 +45,7 @@
 #define KNUMBER5 5
 
 static int32_t g_gPlaytime = 100;
-static bool g_av_info_type_state_change = true;
+static bool g_avInfoTypeStateChange = true;
 
 std::string PREPATH = "/data/storage/el2/base/files/";
 std::string PATH = "/data/storage/el2/base/files/testAV.mp4";
@@ -82,7 +82,7 @@ static void OhAvPlayerSetFdSource()
     napi_value result = nullptr;
     int64_t fileSize = GetFileSize(PATH.c_str());
     OH_AVErrCode avErrCode = OH_AVPlayer_SetFDSource(mainPlayer, fileDescribe, PARAM_0, fileSize);
-    g_av_info_type_state_change = false;
+    g_avInfoTypeStateChange = false;
 }
 
 static void AVPlayerOnError(OH_AVPlayer *player, int32_t, const char *errorMsg)
@@ -93,12 +93,12 @@ static void AVPlayerOnInfo(OH_AVPlayer *player, AVPlayerOnInfoType infoType, int
 {
     switch (infoType)
     {
-    case AV_INFO_TYPE_STATE_CHANGE:
-        g_av_info_type_state_change = true;
-        break;
+        case AV_INFO_TYPE_STATE_CHANGE:
+            g_avInfoTypeStateChange = true;
+            break;
     
-    default:
-        break;
+        default:
+            break;
     }
 }
     
@@ -162,7 +162,7 @@ static napi_value OhAvPlayerSetFdPathIndex(napi_env env, napi_callback_info info
     int64_t fileSize = GetFileSize(filePath.c_str());
     OH_AVErrCode avErrCode = OH_AVPlayer_SetFDSource(mainPlayer, fileDescribe, PARAM_0, fileSize);
     napi_create_int32(env, avErrCode, &result);
-    g_av_info_type_state_change = false;
+    g_avInfoTypeStateChange = false;
     g_fileDesc = fileDescribe;
     return result;
 }
@@ -190,7 +190,7 @@ static napi_value OhAvPlayerSetFdPathSource(napi_env env, napi_callback_info inf
     int64_t fileSize = GetFileSize(PATH.c_str());
     OH_AVErrCode avErrCode = OH_AVPlayer_SetFDSource(mainPlayer, fileDescribe, PARAM_0, fileSize);
     napi_create_int32(env, avErrCode, &result);
-    g_av_info_type_state_change = false;
+    g_avInfoTypeStateChange = false;
     g_fileDesc = fileDescribe;
     return result;
 }
@@ -206,7 +206,7 @@ static napi_value OhAvPlayerSetFdPathSourceTwo(napi_env env, napi_callback_info 
     int64_t fileSize = GetFileSize(OHERPATH.c_str());
     OH_AVErrCode avErrCode = OH_AVPlayer_SetFDSource(mainPlayer, fileDescribe, PARAM_0, fileSize);
     napi_create_int32(env, avErrCode, &result);
-    g_av_info_type_state_change = false;
+    g_avInfoTypeStateChange = false;
     g_fileDesc = fileDescribe;
     return result;
 }
@@ -231,7 +231,7 @@ static napi_value OhAvPlayerPrepare(napi_env env, napi_callback_info info)
     
     OH_AVErrCode avErrCode = OH_AVPlayer_Prepare(mainPlayer);
     napi_create_int32(env, avErrCode, &result);
-    g_av_info_type_state_change = false;
+    g_avInfoTypeStateChange = false;
     return result; // 返回0
 }
 
@@ -255,7 +255,7 @@ static napi_value OhAvPlayerPlay(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_AVErrCode errCode = OH_AVPlayer_Play(mainPlayer);
     napi_create_int32(env, errCode, &result);
-    g_av_info_type_state_change = false;
+    g_avInfoTypeStateChange = false;
     return result;
 }
 
@@ -293,7 +293,7 @@ static napi_value OhAvPlayerPause(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_AVErrCode errCode = OH_AVPlayer_Pause(mainPlayer);
     napi_create_int32(env, errCode, &result);
-    g_av_info_type_state_change = false;
+    g_avInfoTypeStateChange = false;
     return result;
 }
 
@@ -302,7 +302,7 @@ static napi_value OhAvPlayerGetState(napi_env env, napi_callback_info info)
 {
     const int32_t kMaxSleepAttempts = 4;
     int32_t gSleepTotalTime = 0;
-    while (!g_av_info_type_state_change)
+    while (!g_avInfoTypeStateChange)
     {
         gSleepTotalTime ++;
         if (gSleepTotalTime > kMaxSleepAttempts)
@@ -409,7 +409,7 @@ static napi_value OhAvPlayerRelease(napi_env env, napi_callback_info info)
     mainPlayer = nullptr;
     OH_AVErrCode errCode = OH_AVPlayer_Release(temmpPlayer);
     napi_create_int32(env, errCode, &result);
-    g_av_info_type_state_change = false;
+    g_avInfoTypeStateChange = false;
     return result;
 }
 
@@ -430,7 +430,7 @@ static napi_value OhAvPlayerReset(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_AVErrCode avErrCode = OH_AVPlayer_Reset(mainPlayer); // 将播放器恢复到初始状态
     napi_create_int32(env, avErrCode, &result);
-    g_av_info_type_state_change = false;
+    g_avInfoTypeStateChange = false;
     return result;
 }
 
@@ -586,7 +586,7 @@ static napi_value OhAvPlayerStop(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_AVErrCode oH_AVErrCode = OH_AVPlayer_Stop(mainPlayer);
     napi_create_int32(env, oH_AVErrCode, &result);
-    g_av_info_type_state_change = false;
+    g_avInfoTypeStateChange = false;
     return result;
 }
 
