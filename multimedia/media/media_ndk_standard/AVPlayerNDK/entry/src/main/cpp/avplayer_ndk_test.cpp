@@ -300,12 +300,12 @@ static napi_value OhAvPlayerPause(napi_env env, napi_callback_info info)
  //获取当前播放状态
 static napi_value OhAvPlayerGetState(napi_env env, napi_callback_info info)
 {
-    
-    int32_t g_sleepTotalTime = 0;
+    const int32_t kMaxSleepAttempts = 4;
+    int32_t gSleepTotalTime = 0;
     while (!g_av_info_type_state_change)
     {
-        g_sleepTotalTime ++;
-        if (g_sleepTotalTime > 4)
+        gSleepTotalTime ++;
+        if (gSleepTotalTime > kMaxSleepAttempts)
         {
            break;
         }
