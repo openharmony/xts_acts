@@ -5499,3 +5499,23 @@ export const drag_getDataTypes_001: () => number;
 export const drag_setGetUdmfData_001: () => number;
 export const drag_setGetUdmfData_002: () => number;
 export const drag_setGetUdmfData_003: () => number;
+export const drag_setDragEventStrictReportWidthNode_001: () => number;
+export const drag_setDragEventStrictReportWidthNode_002: () => number;
+export const drag_setDragEventStrictReportWidthContext_003: () => number;
+export const drag_setDragEventStrictReportWidthContext_004: () => number;
+
+export const drag_setNodeAllowedDropDataTypes_001: () => number;
+export const drag_disallowNodeAnyDropDataTypes_002: () => number;
+export const drag_allowNodeAllDropDataTypes_003: () => number;
+export const drag_setNodeDraggable_004: () => number;
+
+export const drag_SetNodeDragPreview_001: () => number;
+
+export const drag_DragPreviewOption_Dispose_001: () => number;
+export const drag_DragPreviewOption_SetScaleMode_002: () => number;
+export const drag_DragPreviewOption_SetDefaultShadowEnabled_003: () => number;
+export const drag_DragPreviewOption_SetDefaultRadiusEnabled_004: () => number;
+export const drag_DragPreviewOption_SetNumberBadgeEnabled_005: () => number;
+export const drag_DragPreviewOption_SetBadgeNumber_006: () => number;
+export const drag_DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled_007: () => number;
+export const drag_DragPreviewOption_SetNodeDragPreviewOption_008: () => number;

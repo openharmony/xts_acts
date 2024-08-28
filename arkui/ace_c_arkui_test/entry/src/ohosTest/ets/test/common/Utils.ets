@@ -27,7 +27,7 @@ export default class Utils {
   static rect_right: number;
   static rect_bottom: number;
   static rect_value: RectValue;
-
+  
   static sleep(time: number) {
     return new Promise<string>((resolve, reject) => {
       setTimeout(() => {
@@ -273,7 +273,7 @@ export default class Utils {
     });
   }
 
-static getDragComponentRect(key: string) {
+  static getDragComponentRect(key: string) {
     let strJson: string = getInspectorByKey(key);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
     console.info("[getInspectorByKey] rectInfo is: " + JSON.parse('[' + JSON.parse(strJson).$rect + ']'));
