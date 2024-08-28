@@ -202,7 +202,7 @@ export default function avVideoRecorderTestOne() {
             }
         }
 	
-	 let avConfigOnlyAac = {
+	    let avConfigOnlyAac = {
             audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
             profile: avProfileH264Aac,
             url: 'fd://35',
@@ -9885,5 +9885,174 @@ export default function avVideoRecorderTestOne() {
             eventEmitter.emit(mySteps[0], avRecorder, avmetaConfig, recorderTime, mySteps, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0200 end')
         })
+        
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0100
+            * @tc.name      : 01.AVRecorder set AudioSourceType 
+            * @tc.desc      : AudioSourceType set AUDIO_SOURCE_TYPE_VOICE_RECOGNITION
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0100', 0, async function (done) {
+            if (!isSupportCameraVideoProfiles) {
+                console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
+                expect(true).assertTrue();
+                done();
+            }
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0100 start')
+            let avNewConfig = {
+                audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_VOICE_RECOGNITION,
+                videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
+                profile : avProfile,
+                url : 'fd://35',
+                rotation : 0,
+                location : { latitude : 30, longitude : 130 }
+            }
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getFd(fileName);
+            fdPath = "fd://" + fdObject.fdNumber;
+            avNewConfig.url = fdPath;
+            checkDevice(avNewConfig)
+            let mySteps = new Array(
+                // setAvRecorderCallback
+                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
+                // prepareErrPromise
+                PREPARE_PROMISE_EVENT,
+                // AVRecorderTestBase.releasePromise
+                RELEASECORDER_PROMISE_EVENT,
+                // end
+                END_EVENT
+            );
+            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0100 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0200
+            * @tc.name      : 02.AVRecorder set AudioSourceType 
+            * @tc.desc      : AudioSourceType set AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0200', 0, async function (done) {
+            if (!isSupportCameraVideoProfiles) {
+                console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
+                expect(true).assertTrue();
+                done();
+            }
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0200 start')
+            let avNewConfig = {
+                audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION,
+                videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
+                profile : avProfile,
+                url : 'fd://35',
+                rotation : 0,
+                location : { latitude : 30, longitude : 130 }
+            }
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getFd(fileName);
+            fdPath = "fd://" + fdObject.fdNumber;
+            avNewConfig.url = fdPath;
+            checkDevice(avNewConfig)
+            let mySteps = new Array(
+                // setAvRecorderCallback
+                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
+                // prepareErrPromise
+                PREPARE_PROMISE_EVENT,
+                // AVRecorderTestBase.releasePromise
+                RELEASECORDER_PROMISE_EVENT,
+                // end
+                END_EVENT
+            );
+            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0200 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0300
+            * @tc.name      : 03.AVRecorder set AudioSourceType 
+            * @tc.desc      : AudioSourceType set AUDIO_SOURCE_TYPE_VOICE_MESSAGE
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0300', 0, async function (done) {
+            if (!isSupportCameraVideoProfiles) {
+                console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
+                expect(true).assertTrue();
+                done();
+            }
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0300 start')
+            let avNewConfig = {
+                audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_VOICE_MESSAGE,
+                videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
+                profile : avProfile,
+                url : 'fd://35',
+                rotation : 0,
+                location : { latitude : 30, longitude : 130 }
+            }
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getFd(fileName);
+            fdPath = "fd://" + fdObject.fdNumber;
+            avNewConfig.url = fdPath;
+            checkDevice(avNewConfig)
+            let mySteps = new Array(
+                // setAvRecorderCallback
+                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
+                // prepareErrPromise
+                PREPARE_PROMISE_EVENT,
+                // AVRecorderTestBase.releasePromise
+                RELEASECORDER_PROMISE_EVENT,
+                // end
+                END_EVENT
+            );
+            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0300 end')
+        })
+   
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0400
+            * @tc.name      : 04.AVRecorder set AudioSourceType 
+            * @tc.desc      : AudioSourceType set AUDIO_SOURCE_TYPE_VOICE_CAMCORDER
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0400', 0, async function (done) {
+            if (!isSupportCameraVideoProfiles) {
+                console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
+                expect(true).assertTrue();
+                done();
+            }
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0400 start')
+            let avNewConfig = {
+                audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_VOICE_CAMCORDER,
+                videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
+                profile : avProfile,
+                url : 'fd://35',
+                rotation : 0,
+                location : { latitude : 30, longitude : 130 }
+            }
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getFd(fileName);
+            fdPath = "fd://" + fdObject.fdNumber;
+            avNewConfig.url = fdPath;
+            checkDevice(avNewConfig)
+            let mySteps = new Array(
+                // setAvRecorderCallback
+                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
+                // prepareErrPromise
+                PREPARE_PROMISE_EVENT,
+                // AVRecorderTestBase.releasePromise
+                RELEASECORDER_PROMISE_EVENT,
+                // end
+                END_EVENT
+            );
+            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0400 end')
+        })
+
     })
 }
