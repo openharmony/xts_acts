@@ -475,11 +475,10 @@ export default function saveComponentTest_1() {
       }
     });
 
-    ---------------------
     /**
      * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Save_3100
      * @tc.name Test_Security_Button_Save_3100
-     * @tc.desc Test SecurityComponent The text describes EXPORT_TO_GALLERY and Authorization is successful
+     * @tc.desc Test SecurityComponent The text describes export to gallery and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -491,7 +490,7 @@ export default function saveComponentTest_1() {
       let strJsonNew = getInspectorByKey('keySave10');
       let obj = JSON.parse(strJsonNew);
       console.info("====>component obj.$attrs.text:" + obj.$attrs.text);
-      expect(obj.$attrs.text).assertEqual(8);
+      expect(obj.$attrs.text).assertEqual(9);
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
@@ -524,7 +523,7 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_3100] button is:" + JSON.stringify(button));
-        await button[7].click();
+        await button[8].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_3100] clickSecComponent err : " + JSON.stringify(err));
@@ -533,10 +532,10 @@ export default function saveComponentTest_1() {
       }
     });
 
-            /**
+    /**
      * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Save_3200
      * @tc.name Test_Security_Button_Save_3200
-     * @tc.desc Test SecurityComponent The text describes QUICK_SAVE_TO_GALLERY and Authorization is successful
+     * @tc.desc Test SecurityComponent The text describes quick save to gallery and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -581,7 +580,7 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_3200] button is:" + JSON.stringify(button));
-        await button[7].click();
+        await button[9].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_3200] clickSecComponent err : " + JSON.stringify(err));
@@ -593,7 +592,7 @@ export default function saveComponentTest_1() {
 	  /**
      * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Save_3300
      * @tc.name Test_Security_Button_Save_3300
-     * @tc.desc Test SecurityComponent The text describes RESAVE_TO_GALLERY and Authorization is successful
+     * @tc.desc Test SecurityComponent The text describes resave to gallery and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -638,7 +637,7 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_3300] button is:" + JSON.stringify(button));
-        await button[7].click();
+        await button[10].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_3300] clickSecComponent err : " + JSON.stringify(err));

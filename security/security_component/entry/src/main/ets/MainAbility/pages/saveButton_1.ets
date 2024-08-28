@@ -391,7 +391,7 @@ struct saveButton_1 {
           .textIconSpace(this.middle)
           .key("keySave10")
       }.width('100%').height(this.heightValue).margin(this.marginValue)
-            Row() {
+      Row() {
         SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: this.bgType })
           .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
             try {
