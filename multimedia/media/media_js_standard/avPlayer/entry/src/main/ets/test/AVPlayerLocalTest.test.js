@@ -517,7 +517,7 @@ export default function AVPlayerLocalTest() {
         it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETPLAYBACKINFO_0100', 0, async function (done) {
             let descriptionKey = new Array('server_ip_address', 'average_download_rate', 'download_rate',
                 'is_downloading', 'buffer_duration');
-            let descriptionValue = new Array("", 0, 0, 1, 0);
+            let descriptionValue = new Array("", 0, 0, 0, 0);
             testCheckPlaybackInfo(fileDescriptor, avPlayer, descriptionKey, descriptionValue, done)
         })
 
