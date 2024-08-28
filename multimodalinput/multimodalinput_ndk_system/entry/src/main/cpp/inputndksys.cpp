@@ -347,20 +347,20 @@ static napi_value Init(napi_env env, napi_value exports)
         {"GetAxisEventType", nullptr, GetAxisEventType, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetAxisEventSourceType", nullptr, GetAxisEventSourceType, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"DestroyAxisEvent", nullptr, DestroyAxisEvent, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"AddKeyEventMonitor", nullptr, AddKeyEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},    
-        {"RemoveKeyEventMonitor", nullptr, RemoveKeyEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},    
-        {"AddMouseEventMonitor", nullptr, AddMouseEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},    
-        {"RemoveMouseEventMonitor", nullptr, RemoveMouseEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},    
-        {"AddTouchEventMonitor", nullptr, AddTouchEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},    
-        {"RemoveTouchEventMonitor", nullptr, RemoveTouchEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},    
-        {"AddAxisEventMonitorForAll", nullptr, AddAxisEventMonitorForAll, nullptr, nullptr, nullptr, napi_default, nullptr},    
-        {"RemoveAxisEventMonitorForAll", nullptr, RemoveAxisEventMonitorForAll, nullptr, nullptr, nullptr, napi_default, nullptr},    
-        {"AddAxisEventMonitor", nullptr, AddAxisEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},    
-        {"RemoveAxisEventMonitor", nullptr, RemoveAxisEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},    
-        {"AddKeyEventInterceptor", nullptr, AddKeyEventInterceptor, nullptr, nullptr, nullptr, napi_default, nullptr},    
-        {"RemoveKeyEventInterceptor", nullptr, RemoveKeyEventInterceptor, nullptr, nullptr, nullptr, napi_default, nullptr},    
-        {"AddInputEventInterceptor", nullptr, AddInputEventInterceptor, nullptr, nullptr, nullptr, napi_default, nullptr},    
-        {"RemoveInputEventInterceptor", nullptr, RemoveInputEventInterceptor, nullptr, nullptr, nullptr, napi_default, nullptr},    
+        {"AddKeyEventMonitor", nullptr, AddKeyEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"RemoveKeyEventMonitor", nullptr, RemoveKeyEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AddMouseEventMonitor", nullptr, AddMouseEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"RemoveMouseEventMonitor", nullptr, RemoveMouseEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AddTouchEventMonitor", nullptr, AddTouchEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"RemoveTouchEventMonitor", nullptr, RemoveTouchEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AddAxisEventMonitorForAll", nullptr, AddAxisEventMonitorForAll, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"RemoveAxisEventMonitorForAll", nullptr, RemoveAxisEventMonitorForAll, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AddAxisEventMonitor", nullptr, AddAxisEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"RemoveAxisEventMonitor", nullptr, RemoveAxisEventMonitor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AddKeyEventInterceptor", nullptr, AddKeyEventInterceptor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"RemoveKeyEventInterceptor", nullptr, RemoveKeyEventInterceptor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AddInputEventInterceptor", nullptr, AddInputEventInterceptor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"RemoveInputEventInterceptor", nullptr, RemoveInputEventInterceptor, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
@@ -379,5 +379,5 @@ static napi_module demoModule = {
 
 extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 {
-	napi_module_register(&demoModule); 
+    napi_module_register(&demoModule); 
 }
