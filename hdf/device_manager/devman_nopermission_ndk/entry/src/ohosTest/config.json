@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "ohos.acts.device_manager.device_manager.function",
+    "bundleName": "ohos.acts.device_manager.nopermission.function",
     "vendor": "example",
     "version": {
       "code": 1000000,
@@ -9,7 +9,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "ohos.acts.device_manager.device_manager.function",
+    "package": "ohos.acts.device_manager.nopermission.function",
     "name": ".entry_test",
     "mainAbility": ".TestAbility",
     "deviceType": [
@@ -63,6 +63,7 @@
     "testRunner": {
       "name": "OpenHarmonyTestRunner",
       "srcPath": "TestRunner"
-    }
+    },
+    "reqPermissions": []
   }
 }

@@ -59,6 +59,7 @@
           "autoDesignWidth": false
         }
       }
-    ]
+    ],
+    "reqPermissions": []
   }
 }
