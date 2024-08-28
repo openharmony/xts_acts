@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import { describe, beforeAll,beforeEach,afterEach,afterAll,it,expect } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 import cloudSync from '@ohos.file.cloudSync';
@@ -88,17 +88,13 @@ function errHandle(err,tag){
 
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_STATE_TEST_0100
-   * @tc.name download_state_test_001
    * @tc.name test_Download_State_001
    * @tc.desc function of API, Test State RUNNING
-   * @tc.size MEDIUM
    * @tc.size MediumTest
    * @tc.type Function
    * @tc.level Level 3
    * @tc.require
    */
-   it('download_state_test_001', 3,function (done){
-     let TAG = "download_state_test_001::";
    it('test_Download_State_001', 3,function (done){
      let TAG = "test_Download_State_001::";
      try {
@@ -121,17 +117,13 @@ function errHandle(err,tag){
 
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_STATE_TEST_0200
-   * @tc.name download_state_test_002
    * @tc.name test_Download_State_002
    * @tc.desc function of API, Test State FAILED
-   * @tc.size MEDIUM
    * @tc.size MediumTest
    * @tc.type Function
    * @tc.level Level 3
    * @tc.require
    */
-   it('download_state_test_002', 3,function (done){
-     let TAG = "download_state_test_002::";
    it('test_Download_State_002', 3,function (done){
      let TAG = "test_Download_State_002::";
      try {
@@ -267,17 +259,13 @@ function errHandle(err,tag){
 
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_PROCESSED_TEST_0100
-   * @tc.name download_processed_test_001
    * @tc.name test_Download_Processed_001
    * @tc.desc function of API, Test State processed
-   * @tc.size MEDIUM
    * @tc.size MediumTest
    * @tc.type Function
    * @tc.level Level 3
    * @tc.require
    */
-   it('download_processed_test_001', 3,function (done){
-     let TAG = "download_processed_test_001::";
    it('test_Download_Processed_001', 3,function (done){
      let TAG = "test_Download_Processed_001::";
      try {
@@ -300,17 +288,13 @@ function errHandle(err,tag){
 
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0100
-   * @tc.name download_error_test_001
    * @tc.name test_Download_Error_001
    * @tc.desc function of API, Test DownloadErrorType NO_ERROR
-   * @tc.size MEDIUM
    * @tc.size MediumTest
    * @tc.type Function
    * @tc.level Level 3
    * @tc.require
    */
-   it('download_error_test_001', 3,function (done){
-     let TAG = "error_test_001::";
    it('test_Download_Error_001', 3,function (done){
      let TAG = "test_Download_Error_001::";
      try {
@@ -333,17 +317,13 @@ function errHandle(err,tag){
 
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0200
-   * @tc.name download_error_test_002
    * @tc.name test_Download_Error_002
    * @tc.desc function of API, Test DownloadErrorType UNKNOWN_ERROR
-   * @tc.size MEDIUM
    * @tc.size MediumTest
    * @tc.type Function
    * @tc.level Level 3
    * @tc.require
    */
-   it('download_error_test_002', 3,function (done){
-     let TAG = "error_test_002::";
    it('test_Download_Error_002', 3,function (done){
      let TAG = "test_Download_Error_002::";
      try {
@@ -366,17 +346,13 @@ function errHandle(err,tag){
 
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0300
-   * @tc.name download_error_test_003
    * @tc.name test_Download_Error_003
    * @tc.desc function of API, Test DownloadErrorType NETWORK_UNAVAILABLE
-   * @tc.size MEDIUM
    * @tc.size MediumTest
    * @tc.type Function
    * @tc.level Level 3
    * @tc.require
    */
-   it('download_error_test_003', 3,function (done){
-     let TAG = "error_test_003::";
    it('test_Download_Error_003', 3,function (done){
      let TAG = "test_Download_Error_003::";
      try {
@@ -399,17 +375,13 @@ function errHandle(err,tag){
 
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0400
-   * @tc.name download_error_test_004
    * @tc.name test_Download_Error_004
    * @tc.desc function of API, Test DownloadErrorType LOCAL_STORAGE_FULL
-   * @tc.size MEDIUM
    * @tc.size MediumTest
    * @tc.type Function
    * @tc.level Level 3
    * @tc.require
    */
-   it('download_error_test_004', 3,function (done){
-     let TAG = "error_test_004::";
    it('test_Download_Error_004', 3,function (done){
      let TAG = "test_Download_Error_004::";
      try {
@@ -429,22 +401,16 @@ function errHandle(err,tag){
      }
      done();
    });
- 
-   /**
 
     /**
     * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0500
-    * @tc.name download_error_test_005
     * @tc.name test_Download_Error_005
     * @tc.desc function of API, Test DownloadErrorType CONTENT_NOT_FOUND
-    * @tc.size MEDIUM
     * @tc.size MediumTest
     * @tc.type Function
     * @tc.level Level 3
     * @tc.require
     */
-   it('download_error_test_005', 3,function (done){
-     let TAG = "error_test_005::";
    it('test_Download_Error_005', 3,function (done){
      let TAG = "test_Download_Error_005::";
      try {
@@ -465,20 +431,15 @@ function errHandle(err,tag){
      done();
    });
 
-   /**
     /**
     * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0600
-    * @tc.name download_error_test_006
     * @tc.name test_Download_Error_006
     * @tc.desc function of API, Test DownloadErrorType FREQUENT_USER_REQUESTS
-    * @tc.size MEDIUM
     * @tc.size MediumTest
     * @tc.type Function
     * @tc.level Level 3
     * @tc.require
     */
-   it('download_error_test_006', 3,function (done){
-     let TAG = "error_test_006::";
    it('test_Download_Error_006', 3,function (done){
      let TAG = "test_Download_Error_006::";
      try {
@@ -498,21 +459,16 @@ function errHandle(err,tag){
      }
      done();
    });
- 
 
    /**
     * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0700
-    * @tc.name download_error_test_007
     * @tc.name test_Download_Error_007
     * @tc.desc function of API, Test Test_error on() interfaces.
-    * @tc.size MEDIUM
     * @tc.size MediumTest
     * @tc.type Function
     * @tc.level Level 3
     * @tc.require
     */
-   it('download_error_test_007', 3,function (done){
-     let TAG = "error_test_007::";
    it('test_Download_Error_007', 3,function (done){
      let TAG = "test_Download_Error_007::";
      try {
