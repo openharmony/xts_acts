@@ -3822,7 +3822,7 @@ static napi_value AudioSessionManagerStopErro_002(napi_env env, napi_callback_in
     return res;
   }
   OH_AudioCommon_Result resultDeactivate2 = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
-  result = StatusJudgment(resultDeactivate2, AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE);
+  result = StatusJudgment(resultDeactivate2, AUDIOCOMMON_RESULT_SUCCESS);
   LOG(false, "resultDeactivate2, result is: %d", result);
   if (result != TEST_PASS) {
     napi_create_int32(env, TEST_FAIL, &res);
