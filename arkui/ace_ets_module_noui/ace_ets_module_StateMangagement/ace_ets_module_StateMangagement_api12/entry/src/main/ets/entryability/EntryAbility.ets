@@ -19,7 +19,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   para:Record<string, number> = { 'propAM': 42 ,'propBM':40};
-  storage: LocalStorage = new LocalStorage(this.para);
+  private storage: LocalStorage = new LocalStorage(this.para);
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');

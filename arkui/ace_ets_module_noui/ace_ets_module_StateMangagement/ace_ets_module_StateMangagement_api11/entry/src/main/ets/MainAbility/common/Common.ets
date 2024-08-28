@@ -75,7 +75,7 @@ export default class CommonFunc {
         const o: ObjectWithToString = Object(value);
         const origin = o.toObjectString;
         o.toObjectString = (new BaseObject()).toString;
-        result = o.toObjectString() ?? "";
+        result = o.toObjectString() ?? '';
         o.toObjectString = origin;
     }
     return result;

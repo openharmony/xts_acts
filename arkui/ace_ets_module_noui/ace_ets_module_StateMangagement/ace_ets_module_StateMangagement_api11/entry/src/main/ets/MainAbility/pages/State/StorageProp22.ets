@@ -15,7 +15,7 @@
 AppStorage.clear()
 AppStorage.setOrCreate('PropA',47)
 let storage22: LocalStorage = new LocalStorage({"PropA":47} as Record<string, number>)
-let s: LocalStorage = new LocalStorage({"PropB":32} as Record<string, number>)
+let s: LocalStorage = new LocalStorage({'PropB':32} as Record<string, number>)
 
 @Entry(storage22)
 @Component
@@ -47,7 +47,7 @@ struct StorageProp22 {
       Text(`当前值为${this.storPropB}`).margin(10)
         .key('text_spb')
 
-      Button(`button2`).margin(10).width("100%")
+      Button(`button2`).margin(10).width('100%')
         .key('btn_lse2')
         .onClick(() => {
           this.storPropB += 1

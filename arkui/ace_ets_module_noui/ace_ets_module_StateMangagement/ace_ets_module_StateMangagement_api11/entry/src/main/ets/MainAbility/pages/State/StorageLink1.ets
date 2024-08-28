@@ -26,7 +26,7 @@ interface ModelLink1 {
   value: string
 }
 class Model implements ModelLink1 {
-  value: string = ""
+  value: string = ''
   
   constructor(value: string) {
     this.value = value

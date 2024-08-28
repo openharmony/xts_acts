@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import CommonFunc from "../../../MainAbility/common/Common";
+import CommonFunc from '../../../MainAbility/common/Common';
 
 @Component
 struct Child_CA {

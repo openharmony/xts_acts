@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import CommonFunc from "../../../MainAbility/common/Common";
+import CommonFunc from '../../../MainAbility/common/Common';
 
 @Component
 struct Child_CA1 {
