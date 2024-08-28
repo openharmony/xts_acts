@@ -66,7 +66,7 @@ export default function gestureNestScrollTest() {
       let x = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect));
       let y = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
       console.info("gestureNestScrollTest  x= " +  x  + ", y = " + y);
-      await driver.swipe(x, y, x , y - vp2px(200));
+      await driver.swipe(x, y, x, Math.round(y - vp2px(200)));
       await Utils.sleep(3000);
       console.info("test");
       let button = await driver.findComponent(ON.text('flowItem8'));
@@ -76,7 +76,7 @@ export default function gestureNestScrollTest() {
       let x0 = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(recto));
       let y0 = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(recto));
       console.info("gestureNestScrollTest  xo= " +  x0  + ", y = " + y0);
-      await driver.swipe(x0, y0, x0 , vp2px(50));
+      await driver.swipe(x0, y0, x0 , Math.round(vp2px(50)));
       await Utils.sleep(3000);
       let button2 = await driver.findComponent(ON.text('flowItem11'));
       expect(button2 != null).assertTrue();
