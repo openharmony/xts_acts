@@ -32,7 +32,7 @@ export default function radialGradientTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testRadialGradient',
     pageName: 'radialGradientPage',
     pageUrl: 'MainAbility/pages/radialGradient/RadialGradientPage',
@@ -47,7 +47,7 @@ export default function radialGradientTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetRadialGradient',
     setValue: {
       radialGradient: ({
@@ -55,23 +55,23 @@ export default function radialGradientTest() {
 			radius: 60,
 			repeating: true,
 			colors: [[0xff0000, 0.0], [0x0000ff, 0.3], [0xffff00, 1.0]]
-		})
-    },
+		} as ESObject)
+    } as ESObject,
     expectValue: {
       radialGradient: ({
 			center: ['50.00vp','50.00vp'],
 			radius: '60.00vp',
 			repeating: 'true',
 			colors: []
-		})
-    }
+		} as ESObject)
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('radialGradientTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.error('[' + data.caseTag + '] radialGradientTest.');
       console.error('[' + data.caseTag + '] radialGradientTest. data.testValue.setValue.radialGradient : ' + data.testValue.setValue.radialGradient);
       console.info('[' + JSON.stringify(data.testValue.expectValue.radialGradient) + '] expectValue');
