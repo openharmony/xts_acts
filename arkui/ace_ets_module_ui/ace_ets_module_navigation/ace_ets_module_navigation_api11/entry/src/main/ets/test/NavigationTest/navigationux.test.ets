@@ -14,9 +14,9 @@
  */
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-let emitKey = "emitUserAgent";
 import router from '@ohos.router';
 import Utils from '../Utils';
+let emitKey = "emitUserAgent";
 
 export default function navigationuxtest() {
   describe('navigationuxtest',  () =>{
