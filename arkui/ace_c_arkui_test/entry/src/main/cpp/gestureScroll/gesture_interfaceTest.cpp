@@ -26,8 +26,10 @@ namespace {
        if (!outerRecognizer) {
            return ArkUI_GestureInterruptResult::GESTURE_INTERRUPT_RESULT_CONTINUE;
        }
-       char *nodeId = (char *)malloc(sizeof(char) *  nodeIdNumber);
-       int *result = (int *)malloc(sizeof(int));
+       
+       char *nodeId = static_cast<char*>(malloc(nodeIdNumber));  
+       int  *result = static_cast<int*>(malloc(sizeof(int)));
+     
        OH_ArkUI_GetGestureBindNodeId(outerRecognizer, nodeId,  nodeIdNumber, result);
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                          "GestureInterruptFunc  current nodeId %{public}s", nodeId);
@@ -56,8 +58,10 @@ namespace {
                 if (!item) {
                     continue;
                 }
-                char *childNodeId = (char *)malloc(sizeof(char) * nodeIdNumber);
-                int *childResult = (int *)malloc(sizeof(int));
+              
+                char* childNodeId = static_cast<char*>(malloc(nodeIdNumber)); 
+                int* childResult = static_cast<int*>(malloc(sizeof(int))); 
+               
                 OH_ArkUI_GetGestureBindNodeId(item, childNodeId, nodeIdNumber, childResult);
                 if (strcmp(childNodeId, "inner") == 0) {
                     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
@@ -79,9 +83,11 @@ namespace {
                     ArkUI_GestureEventTargetInfo *targetInfo;
                     OH_ArkUI_GetGestureEventTargetInfo(childRecognizer, &targetInfo);
                     if (targetInfo) {
-                        bool *childIsEnd = (bool *)malloc(sizeof(bool));
+                       
+                        bool* childIsEnd = static_cast<bool*>(malloc(sizeof(bool))); 
                         OH_ArkUI_GestureEventTargetInfo_IsScrollEnd(targetInfo, childIsEnd);
-                        bool *childIsBegin = (bool *)malloc(sizeof(bool));
+                       
+                        bool* childIsBegin = static_cast<bool*>(malloc(sizeof(bool)));
                         OH_ArkUI_GestureEventTargetInfo_IsScrollBegin(targetInfo, childIsBegin);
                         if (*childIsEnd) {
                             if (offsetY < 0) {
@@ -125,8 +131,9 @@ namespace {
             if (!item) {
                 continue;
             }
-            char *nodeId = (char *)malloc(sizeof(char) *  nodeIdNumber);
-            int *result = (int *)malloc(sizeof(int));
+     
+            char *nodeId = static_cast<char*>(malloc(nodeIdNumber)); 
+            int  *result = static_cast<int*>(malloc(sizeof(int)));
             OH_ArkUI_GetGestureBindNodeId(item, nodeId,  nodeIdNumber, result);
             if (strcmp(nodeId, "inner") == 0) {
                 OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",

@@ -515,14 +515,11 @@
 #include "drag/drag_getDragEvent.cpp"
 #include "drag/drag_getDataTypes.cpp"
 #include "drag/drag_setGetUdmfData.cpp"
-<<<<<<< HEAD
 #include "gestureScroll/gesture_interfaceParameterTest.cpp"
-=======
 #include "drag/drag_setDragEventStrictReport.cpp"
 #include "drag/drag_allowDropDataTypes.cpp"
 #include "drag/drag_setNodeDragPreview.cpp"
 #include "drag/drag_dragPreviewOption.cpp"
->>>>>>> 9098c70b19b359512586e3e241df61d28be6c5e3
 
 namespace ArkUICapiTest {
 EXTERN_C_START
