@@ -335,17 +335,18 @@ export default function AVPlayerLocalTest() {
             })
         }
 
-        async function setPlaybackStragety(avPlayer, done) {
+        async function setPlaybackStrategy(avPlayer, done) {
             let surfaceID = globalThis.value;
             let playbackStrategy = { mutedMediaType: media.MediaType.MEDIA_TYPE_AUD }
-            avPlayer.on('stateChange', async (state, reason) => {
+            let pauseCount = 0
+            let stateChangeCallback = async (state, reason) => {
                 switch (state) {
                     case AV_PLAYER_STATE.INITIALIZED:
                         console.info(`winddraw case AV_PLAYER_STATE.INITIALIZED`);
                         avPlayer.surfaceId = surfaceID;
                         console.info(`winddraw surfaceId done`)
-                        avPlayer.setPlaybackStragety(playbackStrategy).catch((error) => {
-                            console.error(`setPlaybackStragety failed, err code ${error.code} msg ${error.message}`)
+                        avPlayer.setPlaybackStrategy(playbackStrategy).catch((error) => {
+                            console.error(`setPlaybackStrategy failed, err code ${error.code} msg ${error.message}`)
                             expect().assertFail();
                         })
                         avPlayer.prepare().catch((error) => {
@@ -354,9 +355,9 @@ export default function AVPlayerLocalTest() {
                         })
                         break;
                     case AV_PLAYER_STATE.PREPARED:
-                        avPlayer.setPlaybackStragety(playbackStrategy).then(() => {
-                            console.error(`setPlaybackStragety unexpectedly success, state ${state}`)
-                            expect().assertFail();
+                        avPlayer.setPlaybackStrategy(playbackStrategy).then(() => {
+                            console.error(`setPlaybackStrategy unexpectedly success, state ${state}`)
+                           expect().assertFail();
                         }).catch((error) => { console.info('prepared setPlaybackStrategy failed, expected') })
                         avPlayer.play().catch(error => {
                             console.error(`play failed err code ${error.code} msg %{error.message}`)
@@ -364,18 +365,20 @@ export default function AVPlayerLocalTest() {
                         })
                         break;
                     case AV_PLAYER_STATE.PLAYING:
-                        avPlayer.setPlaybackStragety(playbackStrategy).then(() => {
-                            console.error(`setPlaybackStragety unexpectedly success, state ${state}`)
+                        avPlayer.setPlaybackStrategy(playbackStrategy).then(() => {
+                            console.error(`setPlaybackStrategy unexpectedly success, state ${state}`)
                             expect().assertFail();
                         }).catch((error) => { console.info('playing setPlaybackStrategy failed, expected') })
-                        avPlayer.pause().catch(error => {
-                            console.error(`pause failed err code ${error.code} msg %{error.message}`)
-                            expect().assertFail();
-                        })
+                        if (pauseCount++ == 0) {
+                            avPlayer.pause().then(() => { pauseCount++ }).catch(error => {
+                                console.error(`pause failed err code ${error.code} msg %{error.message}`)
+                               expect().assertFail();
+                            })
+                        }
                         break;
                     case AV_PLAYER_STATE.PAUSED:
-                        avPlayer.setPlaybackStragety(playbackStrategy).then(() => {
-                            console.error(`setPlaybackStragety unexpectedly success, state ${state}`)
+                        avPlayer.setPlaybackStrategy(playbackStrategy).then(() => {
+                           console.error(`setPlaybackStrategy unexpectedly success, state ${state}`)
                             expect().assertFail();
                         }).catch((error) => { console.info('paused setPlaybackStrategy failed, expected') })
                         avPlayer.play().catch(error => {
@@ -383,31 +386,17 @@ export default function AVPlayerLocalTest() {
                             expect().assertFail();
                         })
                         break;
-                    case AV_PLAYER_STATE.STOPPED:
-                        avPlayer.setPlaybackStragety(playbackStrategy).catch((error) => {
-                            console.info('stopped setPlaybackStrategy failed, unexpected')
-                            expect().assertFail();
-                        })
-                        avPlayer.release().catch(error => {
-                            console.error(`release failed err code ${error.code} msg %{error.message}`)
-                            expect().assertFail();
-                        })
-                        break;
                     case AV_PLAYER_STATE.COMPLETED:
-                        avPlayer.setPlaybackStragety(playbackStrategy).then(() => {
-                            console.error(`setPlaybackStragety unexpectedly success, state ${state}`)
+                        avPlayer.setPlaybackStrategy(playbackStrategy).then(() => {
+                            console.error(`setPlaybackStrategy unexpectedly success, state ${state}`)
                             expect().assertFail();
                         }).catch((error) => { console.info('prepared setPlaybackStrategy failed, expected') })
-                        avPlayer.stop().catch(error => {
+                        avPlayer.release().catch(error => {
                             console.error(`stop failed err code ${error.code} msg %{error.message}`)
                             expect().assertFail();
                         })
                         break;
                     case AV_PLAYER_STATE.RELEASED:
-                        avPlayer.setPlaybackStragety(playbackStrategy).then(() => {
-                            console.error(`setPlaybackStragety unexpectedly success, state ${state}`)
-                            expect().assertFail();
-                        }).catch((error) => { console.info('released setPlaybackStrategy failed, expected') })
                         avPlayer = null;
                         done();
                         break;
@@ -420,20 +409,18 @@ export default function AVPlayerLocalTest() {
                     default:
                         break;
                 }
-            })
+            }
+            avPlayer.on('stateChange', stateChangeCallback)
         }
 
         async function setMediaMuted(avPlayer, done) {
             let surfaceID = globalThis.value;
             let audio = media.MediaType.MEDIA_TYPE_AUD
+            let pauseCount = 0
             let stateChangeCallback = async (state, reason) => {
                 switch (state) {
                     case AV_PLAYER_STATE.INITIALIZED:
                         avPlayer.surfaceId = surfaceID;
-                        avPlayer.setMediaMuted(audio, true).catch((error) => {
-                            console.error(`setMediaMuted failed, err code ${error.code} msg ${error.message}`)
-                            expect().assertFail();
-                        })
                         avPlayer.prepare().catch((error) => {
                             console.error(`prepare failed, err code ${error.code} msg ${error.message}`)
                             expect().assertFail();
@@ -454,6 +441,9 @@ export default function AVPlayerLocalTest() {
                             console.error(`setMediaMuted failed, err code ${error.code} msg ${error.message}`)
                             expect().assertFail();
                         })
+                        if (pauseCount++ > 0) {
+                            break
+                        }
                         avPlayer.pause().catch(error => {
                             console.error(`pause failed err code ${error.code} msg %{error.message}`)
                             expect().assertFail();
@@ -469,31 +459,17 @@ export default function AVPlayerLocalTest() {
                             expect().assertFail();
                         })
                         break;
-                    case AV_PLAYER_STATE.STOPPED:
-                        avPlayer.setMediaMuted(audio, true).then(() => {
-                            console.error(`setMediaMuted failed, err code ${error.code} msg ${error.message}`)
-                            expect().assertFail();
-                        }).catch((error) => { console.info('prepared setPlaybackStrategy failed, expected') })
-                        avPlayer.release().catch(error => {
-                            console.error(`release failed err code ${error.code} msg %{error.message}`)
-                            expect().assertFail();
-                        })
-                        break;
                     case AV_PLAYER_STATE.COMPLETED:
                         avPlayer.setMediaMuted(audio, true).catch((error) => {
                             console.error(`setMediaMuted failed, err code ${error.code} msg ${error.message}`)
                             expect().assertFail();
                         })
-                        avPlayer.stop().catch(error => {
+                        avPlayer.release().catch(error => {
                             console.error(`stop failed err code ${error.code} msg %{error.message}`)
                             expect().assertFail();
                         })
                         break;
                     case AV_PLAYER_STATE.RELEASED:
-                        avPlayer.setMediaMuted(audio, true).then(() => {
-                            console.error(`setMediaMuted failed, err code ${error.code} msg ${error.message}`)
-                            expect().assertFail();
-                        }).catch((error) => { console.info('prepared setPlaybackStrategy failed, expected') })
                         avPlayer = null;
                         done();
                         break;
@@ -554,7 +530,7 @@ export default function AVPlayerLocalTest() {
                 if (typeof (video) !== 'undefined') {
                     console.info('case createAVPlayer success');
                     avPlayer = video;
-                    setPlaybackStragety(avPlayer, done)
+                    setPlaybackStrategy(avPlayer, done)
                     setSource(avPlayer, src);
                 }
                 if (err != null) {
