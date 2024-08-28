@@ -40,25 +40,17 @@ describe('btGattAdvertTest', function() {
  }
 
  async function clickTheWindow() {
-     console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
-        await driver.delayMs(3000);
-        try {
-            let button = await driver.findComponent(ON.text("开启"));
-            await button.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 开启 end');
-        } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
-        }
+     try {
+          console.info('[bluetooth_js] clickRequestPermission start');
+          let driver = Driver.create();
+          await driver.delayMs(3000);
+          let button = await driver.findComponent(ON.text("开启"));
+          await button.click();
+          await driver.delayMs(3000);
+          console.info('[bluetooth_js] clickRequestPermission end');
+      } catch (err) {
+          console.info('[bluetooth_js] clickRequestPermission failed');
+      }
  }
 
     async function tryToEnableBt() {
@@ -116,7 +108,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_0100', 0, async function (done) {
@@ -171,7 +162,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_0200', 0, async function (done) {
@@ -226,7 +216,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_0300', 0, async function (done) { 
@@ -281,7 +270,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_0400', 0, async function (done) {
@@ -336,7 +324,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_0500', 0, async function (done) {
@@ -390,8 +377,7 @@ describe('btGattAdvertTest', function() {
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_0800
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
-     * @tc.type Function
-     * @tc.size MediumTest
+     * @tc.size MEDIUM
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_0800', 0, async function (done) {
@@ -446,7 +432,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_0900', 0, async function (done) {
@@ -501,7 +486,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_1000', 0, async function (done) {
@@ -556,7 +540,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_1100', 0, async function (done) {
@@ -611,7 +594,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_1200', 0, async function (done) {
@@ -666,7 +648,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_1400', 0, async function (done) {
@@ -721,7 +702,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_1500', 0, async function (done) {
@@ -776,7 +756,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_1600', 0, async function (done) {
@@ -831,7 +810,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_1800', 0, async function (done) {
@@ -886,7 +864,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_1900', 0, async function (done) {
@@ -936,7 +913,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_2100', 0, async function (done) {
@@ -985,7 +961,6 @@ describe('btGattAdvertTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTADVERT_2200', 0, function () {

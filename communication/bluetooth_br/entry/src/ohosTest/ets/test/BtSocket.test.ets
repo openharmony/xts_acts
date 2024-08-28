@@ -39,24 +39,16 @@ import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPatter
     let OPEN_BT_TEXT:string = "开启";
 
     async function clickRequestPermission(text:string) {
-        console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
-        await driver.delayMs(3000);
         try {
+            console.info('[bluetooth_js] clickRequestPermission start');
+            let driver = Driver.create();
+            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text(text));
             await button.click();
             await driver.delayMs(3000);
             console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
+            console.info('[bluetooth_js] clickRequestPermission failed');
         }
     }
 
@@ -143,10 +135,9 @@ describe('btSocketTest', () =>  {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0100
-     * @tc.name testSppListen
+     * @tc.name test  SppListen
      * @tc.desc Test  SppListen api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0100', 0, async (done : Function) =>  {
@@ -174,7 +165,6 @@ describe('btSocketTest', () =>  {
      * @tc.name testSppAccept
      * @tc.desc Test SppAccept api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0200', 0, async (done : Function) =>  {
@@ -201,10 +191,9 @@ describe('btSocketTest', () =>  {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0300
-     * @tc.name testSppConnect
+     * @tc.name test SppConnect
      * @tc.desc Test SppConnect api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0300', 0, async (done : Function) =>  {
@@ -236,10 +225,9 @@ describe('btSocketTest', () =>  {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0400
-     * @tc.name testSppReadOn 
+     * @tc.name test sppReadOn 
      * @tc.desc Test On and Off api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0400', 0, async (done : Function) =>  {
@@ -268,10 +256,9 @@ describe('btSocketTest', () =>  {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0800
-     * @tc.name testSppReadOn 
+     * @tc.name test sppReadOn 
      * @tc.desc Test On and Off api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
      it('SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0800', 0, async (done : Function) =>  {
@@ -300,10 +287,9 @@ describe('btSocketTest', () =>  {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0500
-     * @tc.name testSppCloseServerSocket
+     * @tc.name testsppCloseServerSocket
      * @tc.desc Test sppCloseServerSocket api10 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0500', 0, async (done : Function) =>  {
@@ -327,10 +313,9 @@ describe('btSocketTest', () =>  {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0600
-     * @tc.name testSppCloseClientSocket
+     * @tc.name testsppCloseClientSocket
      * @tc.desc Test sppCloseClientSocket api10 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0600', 0, async (done : Function) =>  {
@@ -361,7 +346,6 @@ describe('btSocketTest', () =>  {
      * @tc.name testSppWrite
      * @tc.desc Test sppWrite api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_0700', 0, async (done : Function) =>  {

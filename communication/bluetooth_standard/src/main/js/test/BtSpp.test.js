@@ -38,24 +38,16 @@ describe('btSppTest', function() {
     }
 
     async function clickTheWindow() {
-        console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
-        await driver.delayMs(3000);
         try {
+            console.info('[bluetooth_js] clickRequestPermission start');
+            let driver = Driver.create();
+            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text("开启"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 开启 end');
+            console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
+            console.info('[bluetooth_js] clickRequestPermission failed');
         }
     }
 
@@ -107,7 +99,6 @@ describe('btSppTest', function() {
      * @tc.name testSppListen
      * @tc.desc Test secure SppListen 
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SPP_0100', 0, async function (done) {
@@ -123,12 +114,7 @@ describe('btSppTest', function() {
             }
             done();
         }
-        try {
-            bluetooth.sppListen('server1', SppOption, serverSocket);
-        } catch (err) {
-            console.info('[bluetooth_js] fail message. ' + err);
-            expect(true).assertEqual(err == null);
-        }
+        bluetooth.sppListen('server1', SppOption, serverSocket);
         done();
     })
 
@@ -137,7 +123,6 @@ describe('btSppTest', function() {
      * @tc.name testSppListen
      * @tc.desc Test SppListen api 8 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SPP_0200', 0, async function (done) {
@@ -153,12 +138,7 @@ describe('btSppTest', function() {
              }
              done();
         }
-        try {
-            bluetooth.sppListen('server1', sppOption, serverSocket);
-        } catch (err) {
-            console.info('[bluetooth_js] fail message. ' + err);
-            expect(true).assertEqual(err == null);
-        }
+        bluetooth.sppListen('server1', sppOption, serverSocket);
         done();
     })
 
@@ -167,7 +147,6 @@ describe('btSppTest', function() {
      * @tc.name testSppListen
      * @tc.desc Test SppListen api 8 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SPP_0300', 0, async function (done) {
@@ -182,12 +161,7 @@ describe('btSppTest', function() {
                 serverNumber = number;
             }
         }
-        try {
-            bluetooth.sppListen('server1', sppOption, serverSocket);
-        } catch (err) {
-            console.info('[bluetooth_js] fail message. ' + err);
-            expect(true).assertEqual(err == null);
-        }
+        await bluetooth.sppListen('server1', sppOption, serverSocket);
         done();
     })
 
@@ -196,7 +170,6 @@ describe('btSppTest', function() {
      * @tc.name testSppListen
      * @tc.desc Test SppListen api 8 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SPP_0400', 0, async function (done) {
@@ -213,12 +186,7 @@ describe('btSppTest', function() {
              }
              done();
         }
-        try {
-            bluetooth.sppListen('server1', sppOption, serverSocket);
-        } catch (err) {
-            console.info('[bluetooth_js] fail message. ' + err);
-            expect(true).assertEqual(err == null);
-        }
+        bluetooth.sppListen('server1', sppOption, serverSocket);
         done();
     })
 
@@ -227,7 +195,6 @@ describe('btSppTest', function() {
      * @tc.name testSppAccept
      * @tc.desc Test SppAccept api 8 by callbck.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SPP_0500', 0, async function (done) {
@@ -272,14 +239,12 @@ describe('btSppTest', function() {
      * @tc.name testSppAccept
      * @tc.desc Test SppAccept api 8 by callbck.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SPP_0600', 0, async function (done) {
-        await bluetooth.sppAccept(-1, function(code, clientSocketNumber) {
+        await bluetooth.sppAccept(-1, function(code, clientSocketNumber) {           
             if (code) {
                 console.info('[bluetooth_js] code is: ' + JSON.stringify(code));
-                expect(true).assertEqual(code != null);
             } else {
                 console.log('[bluetooth_js]sppAccept Number:' 
                             + JSON.stringify(clientSocketNumber));
@@ -293,7 +258,6 @@ describe('btSppTest', function() {
      * @tc.name testSppConnect
      * @tc.desc Test SppConnect api 8 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SPP_0700', 0, async function (done) {
@@ -302,7 +266,6 @@ describe('btSppTest', function() {
         await bluetooth.sppConnect('00:11:22:33:44:55', sppOption, function(code, number) {
             if (code) {
                 console.info('[bluetooth_js] code is: ' + JSON.stringify(code));
-                expect(true).assertEqual(code != null);
             } else {
                 console.log('[bluetooth_js]sppConnect Number:'
                     + JSON.stringify(number));
@@ -316,7 +279,6 @@ describe('btSppTest', function() {
      * @tc.name testSppConnect
      * @tc.desc Test SppConnect api 8 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SPP_0800', 0, async function (done) {
@@ -325,7 +287,6 @@ describe('btSppTest', function() {
         await bluetooth.sppConnect('ABC', sppOption, function(code, clientSocketNumber) {
             if (code) {
                 console.info('[bluetooth_js] code is: ' + JSON.stringify(code));
-                expect(true).assertEqual(code != null);
             } else {
                 console.log('[bluetooth_js]sppConnect Number' 
                     + JSON.stringify(clientSocketNumber));
@@ -339,7 +300,6 @@ describe('btSppTest', function() {
      * @tc.name testSppConnect
      * @tc.desc Test SppConnect api 8 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
       it('SUB_COMMUNICATION_BLUETOOTH_SPP_0900', 0, async function (done) {
@@ -348,7 +308,6 @@ describe('btSppTest', function() {
         await bluetooth.sppConnect('BT', sppOption, function(code, clientSocketNumber) {
             if (code) {
                 console.info('[bluetooth_js] code is: ' + JSON.stringify(code));
-                expect(true).assertEqual(code != null);
             } else {
                 console.log('[bluetooth_js]sppConnect Number' 
                     + JSON.stringify(clientSocketNumber));
@@ -359,10 +318,9 @@ describe('btSppTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_SPP_1000
-     * @tc.name testSppCloseServerSocket
+     * @tc.name testsppCloseServerSocket
      * @tc.desc Test sppCloseServerSocket api 8 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SPP_1000', 0, async function (done) {
@@ -378,22 +336,16 @@ describe('btSppTest', function() {
         }
         let SppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
             secure: true, type: 0};
-            try {
-                bluetooth.sppListen('server1', SppOption, serverSocket);
-            } catch (err) {
-                console.info('[bluetooth_js] fail message. ' + err);
-                expect(true).assertEqual(err == null);
-            }
+        await bluetooth.sppListen('server1', SppOption, serverSocket);
         bluetooth.sppCloseServerSocket(serverNumber);
         done();
     })
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_SPP_1100
-     * @tc.name testSppCloseClientSocket
+     * @tc.name testsppCloseClientSocket
      * @tc.desc Test sppCloseClientSocket api 8 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
      it('SUB_COMMUNICATION_BLUETOOTH_SPP_1100', 0, async function (done) {
@@ -401,7 +353,6 @@ describe('btSppTest', function() {
         await bluetooth.sppAccept(-1, function(code, clientSocketNumber) {
             if (code) {
                 console.info('[bluetooth_js] code is: ' + JSON.stringify(code));
-                expect(true).assertEqual(code != null);
             } else {
                 console.log('[bluetooth_js]sppAccept Number:' 
                     + JSON.stringify(clientSocketNumber));
@@ -417,7 +368,6 @@ describe('btSppTest', function() {
      * @tc.name testSppWrite
      * @tc.desc Test sppWrite 
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SPP_1200', 0, async function (done) {
@@ -442,10 +392,9 @@ describe('btSppTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_SPP_1300
-     * @tc.name testSppReadOn 
+     * @tc.name test sppReadOn 
      * @tc.desc Test On and Off Api
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SPP_1300', 0, async function (done) {
@@ -453,7 +402,6 @@ describe('btSppTest', function() {
         function acceptClientSocket(code, number) {   
             if (code) {
                 console.log('[bluetooth_js] error code13: ' + JSON.stringify(code));
-                expect(true).assertEqual(code != null);
             }else{
                 console.log('[bluetooth_js]clientSocke Number:' + JSON.stringify(number));
                 clientNumber = number;
