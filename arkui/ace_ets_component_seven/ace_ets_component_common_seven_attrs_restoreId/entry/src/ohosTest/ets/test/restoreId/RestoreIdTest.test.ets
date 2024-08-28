@@ -33,7 +33,7 @@ export default function restoreIdTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testRestoreId',
     pageName: 'RestoreIdPage',
     pageUrl: 'MainAbility/pages/restoreId/RestoreIdPage',
@@ -48,21 +48,21 @@ export default function restoreIdTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetRestoreId',
     setValue: {
-      restoreId: 1
-    },
+     restoreId: 1
+    } as ESObject,
     expectValue: {
-      restoreId: 1
-    }
+     restoreId: 1
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('restoreIdTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       expect(true).assertTrue();
     });
   })
