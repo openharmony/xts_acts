@@ -387,9 +387,6 @@ export default function AVSession() {
             await controller.getAVMetadata().then((data) => {
                 if (data.mediaImage === metadata7.mediaImage) {
                     expect(true).assertTrue();
-                } else if(data.mediaImage !== null){
-                    console.info('TestLog: Get mediaImage Successfully');
-                    expect(true).assertTrue();
                 } else {
                     console.info('TestLog: Get mediaImage failed');
                     expect(false).assertTrue();
