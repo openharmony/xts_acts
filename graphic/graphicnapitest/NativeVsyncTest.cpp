@@ -27,20 +27,14 @@ public:
     static void SetUpTestCase();
     static void TearDownTestCase();
 
-    static inline OH_NativeVSync* native_vsync = nullptr;
+    static inline OH_NativeVSync *native_vsync = nullptr;
 };
 
-void NativeVsyncTest::SetUpTestCase()
-{
-}
+void NativeVsyncTest::SetUpTestCase() {}
 
-void NativeVsyncTest::TearDownTestCase()
-{
-}
+void NativeVsyncTest::TearDownTestCase() {}
 
-static void OnVSync(long long timestamp, void* data)
-{
-}
+static void OnVSync(long long timestamp, void *data) {}
 
 namespace {
 /*
@@ -48,8 +42,7 @@ namespace {
  * @tc.desc: test for call OH_NativeVSync_Create by abnormal input and check ret
  * @tc.type: FUNC
  */
-HWTEST_F(NativeVsyncTest, OH_NativeVSync_Create001, Function | MediumTest | Level2)
-{
+HWTEST_F(NativeVsyncTest, OH_NativeVSync_Create001, Function | MediumTest | Level2) {
     ASSERT_EQ(OH_NativeVSync_Create(nullptr, 0), nullptr);
 }
 
@@ -58,8 +51,7 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_Create001, Function | MediumTest | Leve
  * @tc.desc: test for call OH_NativeVSync_Create and check ret
  * @tc.type: FUNC
  */
-HWTEST_F(NativeVsyncTest, OH_NativeVSync_Create002, Function | MediumTest | Level2)
-{
+HWTEST_F(NativeVsyncTest, OH_NativeVSync_Create002, Function | MediumTest | Level2) {
     char name[] = "test";
     native_vsync = OH_NativeVSync_Create(name, sizeof(name));
     ASSERT_NE(native_vsync, nullptr);
@@ -70,8 +62,7 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_Create002, Function | MediumTest | Leve
  * @tc.desc: test for call OH_NativeVSync_RequestFrame by abnormal input and check ret
  * @tc.type: FUNC
  */
-HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame001, Function | MediumTest | Level2)
-{
+HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame001, Function | MediumTest | Level2) {
     ASSERT_NE(OH_NativeVSync_RequestFrame(nullptr, nullptr, nullptr), 0);
 }
 
@@ -80,8 +71,7 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame001, Function | MediumTest 
  * @tc.desc: test for call OH_NativeVSync_RequestFrame by abnormal input and check ret
  * @tc.type: FUNC
  */
-HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame002, Function | MediumTest | Level2)
-{
+HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame002, Function | MediumTest | Level2) {
     ASSERT_NE(OH_NativeVSync_RequestFrame(native_vsync, nullptr, nullptr), 0);
 }
 
@@ -90,8 +80,7 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame002, Function | MediumTest 
  * @tc.desc: test for call OH_NativeVSync_RequestFrame and check ret
  * @tc.type: FUNC
  */
-HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame003, Function | MediumTest | Level2)
-{
+HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame003, Function | MediumTest | Level2) {
     OH_NativeVSync_FrameCallback callback = OnVSync;
     ASSERT_EQ(OH_NativeVSync_RequestFrame(native_vsync, callback, nullptr), 0);
 }
@@ -101,8 +90,7 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame003, Function | MediumTest 
  * @tc.desc: test for call OH_NativeVSync_Destroy by abnormal input and check ret
  * @tc.type: FUNC
  */
-HWTEST_F(NativeVsyncTest, OH_NativeVSync_Destroy001, Function | MediumTest | Level2)
-{
+HWTEST_F(NativeVsyncTest, OH_NativeVSync_Destroy001, Function | MediumTest | Level2) {
     OH_NativeVSync_Destroy(nullptr);
 }
 
@@ -111,8 +99,7 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_Destroy001, Function | MediumTest | Lev
  * @tc.desc: test for call OH_NativeVSync_Destroy and check ret
  * @tc.type: FUNC
  */
-HWTEST_F(NativeVsyncTest, OH_NativeVSync_Destroy002, Function | MediumTest | Level2)
-{
+HWTEST_F(NativeVsyncTest, OH_NativeVSync_Destroy002, Function | MediumTest | Level2) {
     OH_NativeVSync_Destroy(native_vsync);
 }
 /*
@@ -120,8 +107,7 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_Destroy002, Function | MediumTest | Lev
  * @tc.desc: test for call OH_NativeVSync_RequestFrameWithMultiCallback and check ret
  * @tc.type: FUNC
  */
-HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrameWithMultiCallbackNormal, Function | MediumTest | Level2)
-{
+HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrameWithMultiCallbackNormal, Function | MediumTest | Level2) {
     char name[] = "test";
     native_vsync = OH_NativeVSync_Create(name, sizeof(name));
     ASSERT_NE(native_vsync, nullptr);
@@ -137,27 +123,26 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrameWithMultiCallbackNormal, Fu
         int ret2 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
         ASSERT_EQ(ret2, NATIVE_ERROR_OK);
-    } 
+    }
     for (int i = 0; i < 5; i++) {
         int ret3 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data + i);
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
         ASSERT_EQ(ret3, NATIVE_ERROR_OK);
     }
     for (int i = 0; i < 100; i++) {
-        int ret_100 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
+        int ret100 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        ASSERT_EQ(ret_100, NATIVE_ERROR_OK);
+        ASSERT_EQ(ret100, NATIVE_ERROR_OK);
     }
     for (int i = 0; i < 1000; i++) {
-        int ret_1000 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
+        int ret1000 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        ASSERT_EQ(ret_1000, NATIVE_ERROR_OK);
+        ASSERT_EQ(ret1000, NATIVE_ERROR_OK);
     }
     OH_NativeVSync_Destroy(native_vsync);
 }
 
-HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrameWithMultiCallbackAbnormal, Function | MediumTest | Level3)
-{
+HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrameWithMultiCallbackAbnormal, Function | MediumTest | Level3) {
     char name[] = "test";
     native_vsync = OH_NativeVSync_Create(name, sizeof(name));
     ASSERT_NE(native_vsync, nullptr);
