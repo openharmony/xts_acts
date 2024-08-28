@@ -426,7 +426,8 @@ HWTEST_F(NativeImageTest, OHNativeImageGetTransformMatrix002, Function | MediumT
     ASSERT_EQ(ret, NATIVE_ERROR_OK);
 }
 
-bool CheckMatricIsSame(float matrixOld[MATRIX_SIZE], float matrixNew[MATRIX_SIZE]) {
+bool CheckMatricIsSame(float matrixOld[MATRIX_SIZE], float matrixNew[MATRIX_SIZE])
+{
     for (int32_t i = 0; i < MATRIX_SIZE; i++) {
         if (fabs(matrixOld[i] - matrixNew[i]) > 1e-6) {
             return false;
