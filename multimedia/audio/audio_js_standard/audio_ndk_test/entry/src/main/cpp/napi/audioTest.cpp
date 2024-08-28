@@ -28,12 +28,12 @@
 #include "native_audio_device_base.h"
 #include "native_audio_session_manager.h"
 
-
+#define DEBUG
 
 #ifdef DEBUG
-  #define LOGD(fmt, ...) printf(fmt, ##__VA_ARGS__);
+  #define LOG(fmt, ...) printf(fmt, ##__VA_ARGS__);
 #else
- #define LOGD(fmt, ...);
+ #define LOG(fmt, ...);
 #endif
 
 
@@ -73,11 +73,11 @@ static int32_t MyAudioSessionDeactivatedCallback(OH_AudioSession_DeactivatedEven
   switch(event.reason) {
     case DEACTIVATED_LOWER_PRIORITY:
       // 应用焦点被抢占
-      LOGD("MyAudioSessionDeactivatedCallback, event is %d", event.reason);
+      LOG("MyAudioSessionDeactivatedCallback, event is %d", event.reason);
       return 0;
     case DEACTIVATED_TIMEOUT:
       // 超时
-      LOGD("MyAudioSessionDeactivatedCallback, event is %d", event.reason);
+      LOG("MyAudioSessionDeactivatedCallback, event is %d", event.reason);
       return 0;
     }
 }
@@ -1010,7 +1010,7 @@ static napi_value AudioRendererGetVolume_01(napi_env env, napi_callback_info inf
     OH_AudioRenderer* audioRenderer = nullptr;
     float volume;
     OH_AudioStream_Result result = OH_AudioRenderer_GetVolume(audioRenderer, &volume);
-    LOGD("OH_AudioRenderer_GetVolume, volumeGet is %f, result %d", volume, result);
+    LOG("OH_AudioRenderer_GetVolume, volumeGet is %f, result %d", volume, result);
     napi_value res;
     if (result != AUDIOSTREAM_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
@@ -1032,14 +1032,14 @@ static napi_value AudioRendererSetVolume_01(napi_env env, napi_callback_info inf
     }
     float volumeSet = 1.0;
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume 1.0, result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume 1.0, result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
     float volumeGet;
     result = OH_AudioRenderer_GetVolume(audioRenderer, &volumeGet);
-    LOGD("OH_AudioRenderer_GetVolume, volumeGet is %f, %d", volumeGet, result);
+    LOG("OH_AudioRenderer_GetVolume, volumeGet is %f, %d", volumeGet, result);
     if (result != AUDIOSTREAM_SUCCESS || volumeGet != volumeSet) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1061,14 +1061,14 @@ static napi_value AudioRendererSetVolume_02(napi_env env, napi_callback_info inf
     }
     float volumeSet = 0.0;
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume 0.0, result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume 0.0, result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
     float volumeGet;
     result = OH_AudioRenderer_GetVolume(audioRenderer, &volumeGet);
-    LOGD("OH_AudioRenderer_GetVolume, volumeGet is %f, %d", volumeGet, result);
+    LOG("OH_AudioRenderer_GetVolume, volumeGet is %f, %d", volumeGet, result);
     if (result != AUDIOSTREAM_SUCCESS || volumeGet != volumeSet) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1090,21 +1090,21 @@ static napi_value AudioRendererSetVolume_03(napi_env env, napi_callback_info inf
     }
     float volumeSet = 0.3; // 0.3:value of volumeSet
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume 0.3, result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume 0.3, result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
     volumeSet = 0.8; // 0.8:value of volumeSet
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume 0.8, result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume 0.8, result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
     float volumeGet;
     result = OH_AudioRenderer_GetVolume(audioRenderer, &volumeGet);
-    LOGD("OH_AudioRenderer_GetVolume, volumeGet is %f, %d", volumeGet, result);
+    LOG("OH_AudioRenderer_GetVolume, volumeGet is %f, %d", volumeGet, result);
     if (result != AUDIOSTREAM_SUCCESS || volumeGet != volumeSet) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1126,7 +1126,7 @@ static napi_value AudioRendererSetVolume_04(napi_env env, napi_callback_info inf
     }
     float volumeSet = -1.0;
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume -1.0 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume -1.0 result is %d", result);
     if (result != AUDIOSTREAM_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1148,7 +1148,7 @@ static napi_value AudioRendererSetVolume_05(napi_env env, napi_callback_info inf
     }
     float volumeSet = 1.5; // 1.5:value of volumeSet
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume 1.5 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume 1.5 result is %d", result);
     if (result != AUDIOSTREAM_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1169,7 +1169,7 @@ static napi_value AudioRendererSetVolume_06(napi_env env, napi_callback_info inf
     } else {
         napi_create_int32(env, TEST_PASS, &res);
     }
-    LOGD("OH_AudioRenderer_GetVolume, volumeGet is %f, %d", volumeSet, result);
+    LOG("OH_AudioRenderer_GetVolume, volumeGet is %f, %d", volumeSet, result);
     return res;
 }
 
@@ -1185,7 +1185,7 @@ static napi_value AudioRendererSetVolumeWithRamp_01(napi_env env, napi_callback_
     }
     float volumeSet = 0.0;
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume 0.0 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume 0.0 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1193,7 +1193,7 @@ static napi_value AudioRendererSetVolumeWithRamp_01(napi_env env, napi_callback_
     int32_t durationMs = 1000; // 1000:value of durationMs
     volumeSet = 1.0;
     result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
-    LOGD("OH_AudioRenderer_SetVolumeWithRamp 0.0->1.0 1000 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolumeWithRamp 0.0->1.0 1000 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1215,7 +1215,7 @@ static napi_value AudioRendererSetVolumeWithRamp_02(napi_env env, napi_callback_
     }
     float volumeSet = 1.0;
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume 1.0 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume 1.0 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1223,7 +1223,7 @@ static napi_value AudioRendererSetVolumeWithRamp_02(napi_env env, napi_callback_
     int32_t durationMs = 100; // 100:value of durationMs
     volumeSet = 0.0;
     result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
-    LOGD("OH_AudioRenderer_SetVolumeWithRamp 1.0->0.0 100 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolumeWithRamp 1.0->0.0 100 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1245,7 +1245,7 @@ static napi_value AudioRendererSetVolumeWithRamp_03(napi_env env, napi_callback_
     }
     float volumeSet = 0.0;
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume 0.0 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume 0.0 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1253,7 +1253,7 @@ static napi_value AudioRendererSetVolumeWithRamp_03(napi_env env, napi_callback_
     int32_t durationMs = 10; // 10:value of durationMs
     volumeSet = 0.5; // 0.5:value of volumeSet
     result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
-    LOGD("OH_AudioRenderer_SetVolumeWithRamp 0.0->0.5 10 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolumeWithRamp 0.0->0.5 10 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1275,7 +1275,7 @@ static napi_value AudioRendererSetVolumeWithRamp_04(napi_env env, napi_callback_
     }
     float volumeSet = 1.0;
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume 1.0 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume 1.0 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1283,7 +1283,7 @@ static napi_value AudioRendererSetVolumeWithRamp_04(napi_env env, napi_callback_
     int32_t durationMs = 10; // 10:value of durationMs
     volumeSet = 0.5; // 0.5:value of volumeSet
     result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
-    LOGD("OH_AudioRenderer_SetVolumeWithRamp 1.0->0.5 10 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolumeWithRamp 1.0->0.5 10 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1305,7 +1305,7 @@ static napi_value AudioRendererSetVolumeWithRamp_05(napi_env env, napi_callback_
     }
     float volumeSet = 0.0;
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume 0.0 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume 0.0 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1313,7 +1313,7 @@ static napi_value AudioRendererSetVolumeWithRamp_05(napi_env env, napi_callback_
     int32_t durationMs = 10; // 10:value of durationMs
     volumeSet = 0.0;
     result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
-    LOGD("OH_AudioRenderer_SetVolumeWithRamp 0.0->0.0 10 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolumeWithRamp 0.0->0.0 10 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1335,7 +1335,7 @@ static napi_value AudioRendererSetVolumeWithRamp_06(napi_env env, napi_callback_
     }
     float volumeSet = 1.0;
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume 1.0 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume 1.0 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1343,7 +1343,7 @@ static napi_value AudioRendererSetVolumeWithRamp_06(napi_env env, napi_callback_
     int32_t durationMs = 10; // 10:value of durationMs
     volumeSet = 1.0;
     result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
-    LOGD("OH_AudioRenderer_SetVolumeWithRamp 1.0->1.0 10 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolumeWithRamp 1.0->1.0 10 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1365,7 +1365,7 @@ static napi_value AudioRendererSetVolumeWithRamp_07(napi_env env, napi_callback_
     }
     float volumeSet = 1.0;
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume 1.0 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume 1.0 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1373,7 +1373,7 @@ static napi_value AudioRendererSetVolumeWithRamp_07(napi_env env, napi_callback_
     int32_t durationMs = 100; // 100:value of durationMs
     volumeSet = 1.2; // 1.2:value of volumeSet
     result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
-    LOGD("OH_AudioRenderer_SetVolumeWithRamp 1.0->1.2 100 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolumeWithRamp 1.0->1.2 100 result is %d", result);
     if (result != AUDIOSTREAM_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1395,7 +1395,7 @@ static napi_value AudioRendererSetVolumeWithRamp_08(napi_env env, napi_callback_
     }
     float volumeSet = 0.0;
     result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
-    LOGD("OH_AudioRenderer_SetVolume 0.0 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolume 0.0 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1403,7 +1403,7 @@ static napi_value AudioRendererSetVolumeWithRamp_08(napi_env env, napi_callback_
     int32_t durationMs = 100; // 100:value of durationMs
     volumeSet = -0.2; // -0.2:invalid value of volumeSet
     result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
-    LOGD("OH_AudioRenderer_SetVolumeWithRamp 0.0->-0.2 100 result is %d", result);
+    LOG("OH_AudioRenderer_SetVolumeWithRamp 0.0->-0.2 100 result is %d", result);
     if (result != AUDIOSTREAM_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1447,7 +1447,7 @@ static napi_value AudioRendererSetOnMarkReached_01(napi_env env, napi_callback_i
     uint32_t samplePos = 1;
     OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
-    LOGD("OH_Audio_Renderer_SetOnMarkReached_01 result is: %d", result);
+    LOG("OH_Audio_Renderer_SetOnMarkReached_01 result is: %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1470,7 +1470,7 @@ static napi_value AudioRendererSetOnMarkReached_02(napi_env env, napi_callback_i
     uint32_t samplePos = 0;
     OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
-    LOGD("OH_Audio_Renderer_SetOnMarkReached_02 result is: %d", result);
+    LOG("OH_Audio_Renderer_SetOnMarkReached_02 result is: %d", result);
     if (result != AUDIOSTREAM_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1504,7 +1504,7 @@ static napi_value AudioRendererSetOnMarkReached_03(napi_env env, napi_callback_i
     uint32_t samplePos = 1;
     OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
-    LOGD("OH_Audio_Renderer_SetOnMarkReached_03 result is: %d", result);
+    LOG("OH_Audio_Renderer_SetOnMarkReached_03 result is: %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1547,7 +1547,7 @@ static napi_value AudioRendererSetOnMarkReached_05(napi_env env, napi_callback_i
     uint32_t samplePos = 4294967295; // 4294967295:uint32_t 2^32 - 1
     OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
     OH_AudioStream_Result result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
-    LOGD("OH_Audio_Renderer_SetOnMarkReached_05 result is: %d", result);
+    LOG("OH_Audio_Renderer_SetOnMarkReached_05 result is: %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1562,7 +1562,7 @@ static napi_value AudioRendererSetOnMarkReached_06(napi_env env, napi_callback_i
     g_flag = false;
     g_file = fopen(g_filePath.c_str(), "rb");
     if (g_file == nullptr) {
-        LOGD("fopen fail. g_file: %p\n", g_file);
+        LOG("fopen fail. g_file: %p\n", g_file);
     }
     OH_AudioStreamBuilder *builder = CreateRenderBuilder();
     napi_value res;
@@ -1585,7 +1585,7 @@ static napi_value AudioRendererSetOnMarkReached_06(napi_env env, napi_callback_i
     uint32_t samplePos = 10538568; // 10538568:Test_44100_2.wav The total number of frames in the audio file
     OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
-    LOGD("OH_Audio_Renderer_SetOnMarkReached_06 result is: %d", result);
+    LOG("OH_Audio_Renderer_SetOnMarkReached_06 result is: %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1609,7 +1609,7 @@ static napi_value AudioRendererSetOnMarkReached_07(napi_env env, napi_callback_i
     g_flag = false;
     g_file = fopen(g_filePath.c_str(), "rb");
     if (g_file == nullptr) {
-        LOGD("fopen fail. g_file: %p\n", g_file);
+        LOG("fopen fail. g_file: %p\n", g_file);
     }
     OH_AudioStreamBuilder *builder = CreateRenderBuilder();
     napi_value res;
@@ -1632,7 +1632,7 @@ static napi_value AudioRendererSetOnMarkReached_07(napi_env env, napi_callback_i
     uint32_t samplePos = 10538570; // 10538570:Test_44100_2.wav The total number of frames in the audio file + 2
     OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
-    LOGD("OH_Audio_Renderer_SetOnMarkReached_07 result is: %d", result);
+    LOG("OH_Audio_Renderer_SetOnMarkReached_07 result is: %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1675,19 +1675,19 @@ static napi_value AudioRendererSetOnMarkReached_08(napi_env env, napi_callback_i
     uint32_t samplePos = 1;
     OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
-    LOGD("OH_AudioRenderer_SetMarkPosition result1 is: %d", result);
+    LOG("OH_AudioRenderer_SetMarkPosition result1 is: %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
-    LOGD("OH_AudioRenderer_SetMarkPosition result2 is: %d", result);
+    LOG("OH_AudioRenderer_SetMarkPosition result2 is: %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
-    LOGD("OH_Audio_Renderer_SetOnMarkReached_08 result is: %d", result);
+    LOG("OH_Audio_Renderer_SetOnMarkReached_08 result is: %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1734,7 +1734,7 @@ static napi_value AudioRendererCancelMark_01(napi_env env, napi_callback_info in
     uint32_t samplePos = 1;
     OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
-    LOGD("OH_Audio_Renderer_SetOnMarkReached_03 result is: %d", result);
+    LOG("OH_Audio_Renderer_SetOnMarkReached_03 result is: %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1748,7 +1748,7 @@ static napi_value AudioRendererCancelMark_01(napi_env env, napi_callback_info in
     sleep(waitTime); // 2:sleep 2 seconds
     // CancelMark
     result = OH_AudioRenderer_CancelMark(audioRenderer);
-    LOGD("OH_AudioRenderer_CancelMark result is %d", result);
+    LOG("OH_AudioRenderer_CancelMark result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1775,7 +1775,7 @@ static napi_value AudioRendererCancelMark_02(napi_env env, napi_callback_info in
         return res;
     }
     result = OH_AudioRenderer_CancelMark(audioRenderer);
-    LOGD("OH_AudioRenderer_CancelMark result is %d", result);
+    LOG("OH_AudioRenderer_CancelMark result is %d", result);
     OH_AudioStreamBuilder_Destroy(builder);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
@@ -1790,7 +1790,7 @@ static napi_value AudioRendererCancelMark_03(napi_env env, napi_callback_info in
     OH_AudioRenderer* audioRenderer = nullptr;
     OH_AudioStream_Result result = OH_AudioRenderer_CancelMark(audioRenderer);
     napi_value res;
-    LOGD("OH_AudioRenderer_CancelMark result is %d", result);
+    LOG("OH_AudioRenderer_CancelMark result is %d", result);
     if (result != AUDIOSTREAM_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -1837,13 +1837,13 @@ static napi_value AudioRendererSetInterruptMode_01(napi_env env, napi_callback_i
 
     OH_AudioInterrupt_Mode mode = AUDIOSTREAM_INTERRUPT_MODE_SHARE;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder1, mode);
-    LOGD("OH_AudioStreamBuilder_SetRendererInterruptMode builder1 result is %d", result);
+    LOG("OH_AudioStreamBuilder_SetRendererInterruptMode builder1 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
     result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder2, mode);
-    LOGD("OH_AudioStreamBuilder_SetRendererInterruptMode builder2 result is %d", result);
+    LOG("OH_AudioStreamBuilder_SetRendererInterruptMode builder2 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1917,13 +1917,13 @@ static napi_value AudioRendererSetInterruptMode_02(napi_env env, napi_callback_i
 
     OH_AudioInterrupt_Mode mode = AUDIOSTREAM_INTERRUPT_MODE_INDEPENDENT;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder, mode);
-    LOGD("OH_AudioStreamBuilder_SetRendererInterruptMode builder1 result is %d", result);
+    LOG("OH_AudioStreamBuilder_SetRendererInterruptMode builder1 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
     result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder2, mode);
-    LOGD("OH_AudioStreamBuilder_SetRendererInterruptMode builder2 result is %d", result);
+    LOG("OH_AudioStreamBuilder_SetRendererInterruptMode builder2 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1979,7 +1979,7 @@ static napi_value AudioRendererSetInterruptMode_03(napi_env env, napi_callback_i
     OH_AudioStreamBuilder* builder = nullptr;
     OH_AudioInterrupt_Mode mode = AUDIOSTREAM_INTERRUPT_MODE_SHARE;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder, mode);
-    LOGD("OH_AudioRenderer_SetInterruptMode_03, result is: %d", result);
+    LOG("OH_AudioRenderer_SetInterruptMode_03, result is: %d", result);
     OH_AudioStreamBuilder_Destroy(builder);
     if (result != AUDIOSTREAM_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
@@ -1995,7 +1995,7 @@ static napi_value AudioRendererSetInterruptMode_04(napi_env env, napi_callback_i
     OH_AudioStreamBuilder* builder = nullptr;
     OH_AudioInterrupt_Mode mode = static_cast<OH_AudioInterrupt_Mode>(-2);
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder, mode);
-    LOGD("OH_AudioRenderer_SetInterruptMode_04, result is: %d", result);
+    LOG("OH_AudioRenderer_SetInterruptMode_04, result is: %d", result);
     OH_AudioStreamBuilder_Destroy(builder);
     if (result != AUDIOSTREAM_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
@@ -2030,7 +2030,7 @@ static napi_value AudioManagerGetAudioRoutingManager_01(napi_env env, napi_callb
     napi_value res;
     OH_AudioRoutingManager *audioRoutingManager = nullptr;
     OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
-    LOGD("AudioManagerGetAudioRoutingManager_01, result is: %d", result);
+    LOG("AudioManagerGetAudioRoutingManager_01, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_SUCCESS || audioRoutingManager == nullptr) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2051,7 +2051,7 @@ static napi_value AudioRoutingManagerGetDevices_01(napi_env env, napi_callback_i
     OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_NONE;
     OH_AudioDeviceDescriptorArray *array = nullptr;
     result = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
-    LOGD("AudioRoutingManagerGetDevices_01, result is: %d", result);
+    LOG("AudioRoutingManagerGetDevices_01, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_NO_MEMORY || array != nullptr) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2072,7 +2072,7 @@ static napi_value AudioRoutingManagerGetDevices_02(napi_env env, napi_callback_i
     OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
     OH_AudioDeviceDescriptorArray *array = nullptr;
     result = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
-    LOGD("AudioRoutingManagerGetDevices_02, result is: %d", result);
+    LOG("AudioRoutingManagerGetDevices_02, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_SUCCESS || array == nullptr) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2094,7 +2094,7 @@ static napi_value AudioRoutingManagerGetDevices_03(napi_env env, napi_callback_i
     OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_INPUT;
     OH_AudioDeviceDescriptorArray *array = nullptr;
     result = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
-    LOGD("AudioRoutingManagerGetDevices_03, result is: %d", result);
+    LOG("AudioRoutingManagerGetDevices_03, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_SUCCESS || array == nullptr) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2116,7 +2116,7 @@ static napi_value AudioRoutingManagerGetDevices_04(napi_env env, napi_callback_i
     OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
     OH_AudioDeviceDescriptorArray *array = nullptr;
     result = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
-    LOGD("AudioRoutingManagerGetDevices_04, result is: %d", result);
+    LOG("AudioRoutingManagerGetDevices_04, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_SUCCESS || array == nullptr) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2139,7 +2139,7 @@ static napi_value AudioRoutingManagerGetDevices_05(napi_env env, napi_callback_i
     OH_AudioDevice_Flag deviceFlag = (OH_AudioDevice_Flag)flag;
     OH_AudioDeviceDescriptorArray *array = nullptr;
     result = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
-    LOGD("AudioRoutingManagerGetDevices_05, result is: %d", result);
+    LOG("AudioRoutingManagerGetDevices_05, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM || array != nullptr) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2155,7 +2155,7 @@ static napi_value AudioRoutingManagerGetDevices_06(napi_env env, napi_callback_i
     OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
     OH_AudioDeviceDescriptorArray *array = nullptr;
     OH_AudioCommon_Result result = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
-    LOGD("AudioRoutingManagerGetDevices_06, result is: %d", result);
+    LOG("AudioRoutingManagerGetDevices_06, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM || array != nullptr) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2177,7 +2177,7 @@ static napi_value AudioRoutingManagerGetDevices_07(napi_env env, napi_callback_i
     OH_AudioDevice_Flag deviceFlag = (OH_AudioDevice_Flag)flag;
     OH_AudioDeviceDescriptorArray *array = nullptr;
     result = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
-    LOGD("AudioRoutingManagerGetDevices_07, result is: %d", result);
+    LOG("AudioRoutingManagerGetDevices_07, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM || array != nullptr) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2198,7 +2198,7 @@ static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_001(napi_env e
     OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_NONE;
     OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
     result = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
-    LOGD("AudioRoutingManagerRegisterDeviceChangeCallback_001, result is: %d", result);
+    LOG("AudioRoutingManagerRegisterDeviceChangeCallback_001, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2219,7 +2219,7 @@ static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_002(napi_env e
     OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
     OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
     result = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
-    LOGD("AudioRoutingManagerRegisterDeviceChangeCallback_002, result is: %d", result);
+    LOG("AudioRoutingManagerRegisterDeviceChangeCallback_002, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2240,7 +2240,7 @@ static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_003(napi_env e
     OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_INPUT;
     OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
     result = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
-    LOGD("AudioRoutingManagerRegisterDeviceChangeCallback_003, result is: %d", result);
+    LOG("AudioRoutingManagerRegisterDeviceChangeCallback_003, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2261,7 +2261,7 @@ static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_004(napi_env e
     OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
     OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
     result = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
-    LOGD("AudioRoutingManagerRegisterDeviceChangeCallback_004, result is: %d", result);
+    LOG("AudioRoutingManagerRegisterDeviceChangeCallback_004, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2278,7 +2278,7 @@ static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_005(napi_env e
     OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
     OH_AudioCommon_Result result =
         OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
-    LOGD("AudioRoutingManagerRegisterDeviceChangeCallback_005, result is: %d", result);
+    LOG("AudioRoutingManagerRegisterDeviceChangeCallback_005, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2299,7 +2299,7 @@ static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_006(napi_env e
     OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
     OH_AudioRoutingManager_OnDeviceChangedCallback callback = nullptr;
     result = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
-    LOGD("AudioRoutingManagerRegisterDeviceChangeCallback_006, result is: %d", result);
+    LOG("AudioRoutingManagerRegisterDeviceChangeCallback_006, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2321,7 +2321,7 @@ static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_007(napi_env e
     OH_AudioDevice_Flag deviceFlag = (OH_AudioDevice_Flag)flag;
     OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
     result = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
-    LOGD("AudioRoutingManagerRegisterDeviceChangeCallback_007, result is: %d", result);
+    LOG("AudioRoutingManagerRegisterDeviceChangeCallback_007, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2343,7 +2343,7 @@ static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_008(napi_env e
     OH_AudioDevice_Flag deviceFlag = (OH_AudioDevice_Flag)flag;
     OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
     result = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
-    LOGD("AudioRoutingManagerRegisterDeviceChangeCallback_008, result is: %d", result);
+    LOG("AudioRoutingManagerRegisterDeviceChangeCallback_008, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2363,7 +2363,7 @@ static napi_value AudioRoutingManagerUnregisterDeviceChangeCallback_001(napi_env
     }
     OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
     result = OH_AudioRoutingManager_UnregisterDeviceChangeCallback(audioRoutingManager, callback);
-    LOGD("AudioRoutingManagerUnregisterDeviceChangeCallback_001, result is: %d", result);
+    LOG("AudioRoutingManagerUnregisterDeviceChangeCallback_001, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2379,7 +2379,7 @@ static napi_value AudioRoutingManagerUnregisterDeviceChangeCallback_002(napi_env
     OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
     OH_AudioCommon_Result result = OH_AudioRoutingManager_UnregisterDeviceChangeCallback(
         audioRoutingManager, callback);
-    LOGD("AudioRoutingManagerUnregisterDeviceChangeCallback_002, result is: %d", result);
+    LOG("AudioRoutingManagerUnregisterDeviceChangeCallback_002, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2399,7 +2399,7 @@ static napi_value AudioRoutingManagerUnregisterDeviceChangeCallback_003(napi_env
     }
     OH_AudioRoutingManager_OnDeviceChangedCallback callback = nullptr;
     result = OH_AudioRoutingManager_UnregisterDeviceChangeCallback(audioRoutingManager, callback);
-    LOGD("AudioRoutingManagerUnregisterDeviceChangeCallback_003, result is: %d", result);
+    LOG("AudioRoutingManagerUnregisterDeviceChangeCallback_003, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2415,7 +2415,7 @@ static napi_value AudioRoutingManagerReleaseDevices_001(napi_env env, napi_callb
     OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray = nullptr;
     OH_AudioCommon_Result result =
         OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, audioDeviceDescriptorArray);
-    LOGD("AudioRoutingManagerReleaseDevices_001, result is: %d", result);
+    LOG("AudioRoutingManagerReleaseDevices_001, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2435,7 +2435,7 @@ static napi_value AudioRoutingManagerReleaseDevices_002(napi_env env, napi_callb
     }
     OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray = nullptr;
     result = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, audioDeviceDescriptorArray);
-    LOGD("AudioRoutingManagerReleaseDevices_002, result is: %d", result);
+    LOG("AudioRoutingManagerReleaseDevices_002, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2469,7 +2469,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceType_001(napi_env env, napi
         }
         OH_AudioDevice_Type deviceType = AUDIO_DEVICE_TYPE_INVALID;
         result = OH_AudioDeviceDescriptor_GetDeviceType(descriptor, &deviceType);
-        LOGD("AudioAudioDeviceDescriptorGetDeviceType_001, result is: %d", result);
+        LOG("AudioAudioDeviceDescriptorGetDeviceType_001, result is: %d", result);
         if (result != AUDIOCOMMON_RESULT_SUCCESS) {
             napi_create_int32(env, TEST_FAIL, &res);
             break;
@@ -2500,7 +2500,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceType_002(napi_env env, napi
     }
 
     result = OH_AudioDeviceDescriptor_GetDeviceType(descriptor, nullptr);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceType_002, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceType_002, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2514,7 +2514,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceType_003(napi_env env, napi
     OH_AudioDeviceDescriptor *descriptor = nullptr;
     OH_AudioDevice_Type deviceType = AUDIO_DEVICE_TYPE_INVALID;
     OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceType(descriptor, &deviceType);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceType_003, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceType_003, result is: %d", result);
     napi_value res;
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
@@ -2550,7 +2550,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceRole_001(napi_env env, napi
         }
         OH_AudioDevice_Role deviceRole = AUDIO_DEVICE_ROLE_OUTPUT;
         result = OH_AudioDeviceDescriptor_GetDeviceRole(descriptor, &deviceRole);
-        LOGD("AudioAudioDeviceDescriptorGetDeviceRole_001, result is: %d", result);
+        LOG("AudioAudioDeviceDescriptorGetDeviceRole_001, result is: %d", result);
         if (result != AUDIOCOMMON_RESULT_SUCCESS) {
             napi_create_int32(env, TEST_FAIL, &res);
             break;
@@ -2581,7 +2581,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceRole_002(napi_env env, napi
     }
 
     result = OH_AudioDeviceDescriptor_GetDeviceRole(descriptor, nullptr);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceRole_002, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceRole_002, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2596,7 +2596,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceRole_003(napi_env env, napi
     OH_AudioDeviceDescriptor *descriptor = nullptr;
     OH_AudioDevice_Role deviceRole = AUDIO_DEVICE_ROLE_OUTPUT;
     OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceRole(descriptor, &deviceRole);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceRole_003, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceRole_003, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2631,7 +2631,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceId_001(napi_env env, napi_c
     }
     uint32_t id = 0;
     result = OH_AudioDeviceDescriptor_GetDeviceId(descriptor, &id);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceId_001, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceId_001, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
             break;
@@ -2662,7 +2662,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceId_002(napi_env env, napi_c
     }
 
     result = OH_AudioDeviceDescriptor_GetDeviceId(descriptor, nullptr);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceId_002, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceId_002, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2677,7 +2677,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceId_003(napi_env env, napi_c
     OH_AudioDeviceDescriptor *descriptor = nullptr;
     uint32_t id = 0;
     OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceId(descriptor, &id);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceId_003, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceId_003, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2712,7 +2712,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceName_001(napi_env env, napi
         }
         char* deviceName;
         result = OH_AudioDeviceDescriptor_GetDeviceName(descriptor, &deviceName);
-        LOGD("AudioAudioDeviceDescriptorGetDeviceName_001, result is: %d", result);
+        LOG("AudioAudioDeviceDescriptorGetDeviceName_001, result is: %d", result);
         if (result != AUDIOCOMMON_RESULT_SUCCESS) {
             napi_create_int32(env, TEST_FAIL, &res);
             break;
@@ -2743,7 +2743,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceName_002(napi_env env, napi
     }
 
     result = OH_AudioDeviceDescriptor_GetDeviceName(descriptor, nullptr);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceName_002, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceName_002, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2758,7 +2758,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceName_003(napi_env env, napi
     OH_AudioDeviceDescriptor *descriptor = nullptr;
     char* deviceName;
     OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceName(descriptor, &deviceName);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceName_003, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceName_003, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2793,7 +2793,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceAddress_001(napi_env env, n
         }
         char *address;
         result = OH_AudioDeviceDescriptor_GetDeviceAddress(descriptor, &address);
-        LOGD("AudioAudioDeviceDescriptorGetDeviceAddress_001, result is: %d", result);
+        LOG("AudioAudioDeviceDescriptorGetDeviceAddress_001, result is: %d", result);
         if (result != AUDIOCOMMON_RESULT_SUCCESS) {
             napi_create_int32(env, TEST_FAIL, &res);
             break;
@@ -2824,7 +2824,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceAddress_002(napi_env env, n
     }
 
     result = OH_AudioDeviceDescriptor_GetDeviceAddress(descriptor, nullptr);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceAddress_002, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceAddress_002, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2839,7 +2839,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceAddress_003(napi_env env, n
     OH_AudioDeviceDescriptor *descriptor = nullptr;
     char *address;
     OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceAddress(descriptor, &address);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceAddress_003, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceAddress_003, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2875,7 +2875,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceSampleRates_001(napi_env en
         uint32_t *sampleRates;
         uint32_t size = 0;
         result = OH_AudioDeviceDescriptor_GetDeviceSampleRates(descriptor, &sampleRates, &size);
-        LOGD("AudioAudioDeviceDescriptorGetDeviceSampleRates_001, result is: %d", result);
+        LOG("AudioAudioDeviceDescriptorGetDeviceSampleRates_001, result is: %d", result);
         if (result != AUDIOCOMMON_RESULT_SUCCESS) {
             napi_create_int32(env, TEST_FAIL, &res);
             break;
@@ -2907,7 +2907,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceSampleRates_002(napi_env en
 
     uint32_t size = 0;
     result = OH_AudioDeviceDescriptor_GetDeviceSampleRates(descriptor, nullptr, &size);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceSampleRates_002, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceSampleRates_002, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2936,7 +2936,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceSampleRates_003(napi_env en
 
     uint32_t *sampleRates;
     result = OH_AudioDeviceDescriptor_GetDeviceSampleRates(descriptor, &sampleRates, nullptr);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceSampleRates_003, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceSampleRates_003, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2952,7 +2952,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceSampleRates_004(napi_env en
     uint32_t *sampleRates;
     uint32_t size = 0;
     OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceSampleRates(descriptor, &sampleRates, &size);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceSampleRates_004, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceSampleRates_004, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -2988,7 +2988,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceChannelCounts_001(napi_env 
         uint32_t *channelCounts;
         uint32_t channelSize = 0;
         result = OH_AudioDeviceDescriptor_GetDeviceChannelCounts(descriptor, &channelCounts, &channelSize);
-        LOGD("AudioAudioDeviceDescriptorGetDeviceChannelCounts_001, result is: %d", result);
+        LOG("AudioAudioDeviceDescriptorGetDeviceChannelCounts_001, result is: %d", result);
         if (result != AUDIOCOMMON_RESULT_SUCCESS) {
             napi_create_int32(env, TEST_FAIL, &res);
             break;
@@ -3020,7 +3020,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceChannelCounts_002(napi_env 
 
     uint32_t channelSize = 0;
     result = OH_AudioDeviceDescriptor_GetDeviceChannelCounts(descriptor, nullptr, &channelSize);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceChannelCounts_002, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceChannelCounts_002, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -3049,7 +3049,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceChannelCounts_003(napi_env 
 
     uint32_t *channelCounts;
     result = OH_AudioDeviceDescriptor_GetDeviceChannelCounts(descriptor, &channelCounts, nullptr);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceChannelCounts_003, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceChannelCounts_003, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -3066,7 +3066,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceChannelCounts_004(napi_env 
     uint32_t channelSize = 0;
     OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceChannelCounts(
         descriptor, &channelCounts, &channelSize);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceChannelCounts_004, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceChannelCounts_004, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -3101,7 +3101,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceDisplayName_001(napi_env en
         }
         char *displayName;
         result = OH_AudioDeviceDescriptor_GetDeviceDisplayName(descriptor, &displayName);
-        LOGD("AudioAudioDeviceDescriptorGetDeviceDisplayName_001, result is: %d", result);
+        LOG("AudioAudioDeviceDescriptorGetDeviceDisplayName_001, result is: %d", result);
         if (result != AUDIOCOMMON_RESULT_SUCCESS) {
             napi_create_int32(env, TEST_FAIL, &res);
             break;
@@ -3132,7 +3132,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceDisplayName_002(napi_env en
     }
 
     result = OH_AudioDeviceDescriptor_GetDeviceDisplayName(descriptor, nullptr);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceDisplayName_002, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceDisplayName_002, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -3147,7 +3147,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceDisplayName_003(napi_env en
     OH_AudioDeviceDescriptor *descriptor = nullptr;
     char *displayName;
     OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceDisplayName(descriptor, &displayName);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceDisplayName_003, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceDisplayName_003, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -3183,7 +3183,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceEncodingTypes_001(napi_env 
         OH_AudioStream_EncodingType *encodingTypes;
         uint32_t encodingTypeSize = 0;
         result = OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(descriptor, &encodingTypes, &encodingTypeSize);
-        LOGD("AudioAudioDeviceDescriptorGetDeviceEncodingTypes_001, result is: %d", result);
+        LOG("AudioAudioDeviceDescriptorGetDeviceEncodingTypes_001, result is: %d", result);
         if (result != AUDIOCOMMON_RESULT_SUCCESS) {
             napi_create_int32(env, TEST_FAIL, &res);
             break;
@@ -3215,7 +3215,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceEncodingTypes_002(napi_env 
 
     uint32_t encodingTypeSize = 0;
     result = OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(descriptor, nullptr, &encodingTypeSize);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceEncodingTypes_002, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceEncodingTypes_002, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -3244,7 +3244,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceEncodingTypes_003(napi_env 
 
     OH_AudioStream_EncodingType *encodingTypes;
     result = OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(descriptor, &encodingTypes, nullptr);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceEncodingTypes_003, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceEncodingTypes_003, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -3261,7 +3261,7 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceEncodingTypes_004(napi_env 
     uint32_t encodingTypeSize = 0;
     OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(
         descriptor, &encodingTypes, &encodingTypeSize);
-    LOGD("AudioAudioDeviceDescriptorGetDeviceEncodingTypes_004, result is: %d", result);
+    LOG("AudioAudioDeviceDescriptorGetDeviceEncodingTypes_004, result is: %d", result);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -3398,7 +3398,7 @@ static napi_value AudioSessionManagerStrategy_001(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultManager, result is: %d", TEST_FAIL);
+    LOG("resultManager, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
@@ -3406,7 +3406,7 @@ static napi_value AudioSessionManagerStrategy_001(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3414,7 +3414,7 @@ static napi_value AudioSessionManagerStrategy_001(napi_env env, napi_callback_in
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("isActivated, result is: %d", TEST_FAIL);
+    LOG("isActivated, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3422,7 +3422,7 @@ static napi_value AudioSessionManagerStrategy_001(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultRegister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3433,7 +3433,7 @@ static napi_value AudioSessionManagerStrategy_001(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultUnregister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultUnregister, result is: %d", TEST_FAIL);
+    LOG("resultUnregister, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3441,7 +3441,7 @@ static napi_value AudioSessionManagerStrategy_001(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   if (resultDeactivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3449,7 +3449,7 @@ static napi_value AudioSessionManagerStrategy_001(napi_env env, napi_callback_in
   isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("isActivated, result is: %d", TEST_FAIL);
+    LOG("isActivated, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3465,7 +3465,7 @@ static napi_value AudioSessionManagerStrategy_002(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultManager, result is: %d", TEST_FAIL);
+    LOG("resultManager, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_DEFAULT};
@@ -3474,7 +3474,7 @@ static napi_value AudioSessionManagerStrategy_002(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3482,7 +3482,7 @@ static napi_value AudioSessionManagerStrategy_002(napi_env env, napi_callback_in
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("isActivated, result is: %d", TEST_FAIL);
+    LOG("isActivated, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3490,7 +3490,7 @@ static napi_value AudioSessionManagerStrategy_002(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultRegister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultRegister, result is: %d", TEST_FAIL);
+    LOG("resultRegister, result is: %d", TEST_FAIL);
     return res;
   }
   // sleep 1 seconds
@@ -3500,7 +3500,7 @@ static napi_value AudioSessionManagerStrategy_002(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultUnregister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultUnregister, result is: %d", TEST_FAIL);
+    LOG("resultUnregister, result is: %d", TEST_FAIL);
     return res;
   }
   
@@ -3508,7 +3508,7 @@ static napi_value AudioSessionManagerStrategy_002(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   if (resultDeactivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3524,7 +3524,7 @@ static napi_value AudioSessionManagerStrategy_003(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_DUCK_OTHERS};
@@ -3533,7 +3533,7 @@ static napi_value AudioSessionManagerStrategy_003(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3541,7 +3541,7 @@ static napi_value AudioSessionManagerStrategy_003(napi_env env, napi_callback_in
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("isActivated, result is: %d", TEST_FAIL);
+    LOG("isActivated, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3549,7 +3549,7 @@ static napi_value AudioSessionManagerStrategy_003(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultRegister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
   // sleep 1 seconds
@@ -3559,7 +3559,7 @@ static napi_value AudioSessionManagerStrategy_003(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultUnregister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultUnregister, result is: %d", TEST_FAIL);
+    LOG("resultUnregister, result is: %d", TEST_FAIL);
     return res;
   }
   
@@ -3567,7 +3567,7 @@ static napi_value AudioSessionManagerStrategy_003(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   if (resultDeactivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3583,7 +3583,7 @@ static napi_value AudioSessionManagerStrategy_004(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultManager, result is: %d", TEST_FAIL);
+    LOG("resultManager, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_PAUSE_OTHERS};
@@ -3592,7 +3592,7 @@ static napi_value AudioSessionManagerStrategy_004(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3600,7 +3600,7 @@ static napi_value AudioSessionManagerStrategy_004(napi_env env, napi_callback_in
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("isActivated, result is: %d", TEST_FAIL);
+    LOG("isActivated, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3608,7 +3608,7 @@ static napi_value AudioSessionManagerStrategy_004(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultRegister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultRegister, result is: %d", TEST_FAIL);
+    LOG("resultRegister, result is: %d", TEST_FAIL);
     return res;
   }
   // sleep 1 seconds
@@ -3618,7 +3618,7 @@ static napi_value AudioSessionManagerStrategy_004(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultUnregister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultUnregister, result is: %d", TEST_FAIL);
+    LOG("resultUnregister, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3626,7 +3626,7 @@ static napi_value AudioSessionManagerStrategy_004(napi_env env, napi_callback_in
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   if (resultDeactivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3642,7 +3642,7 @@ static napi_value AudioSessionManagerStrategyError_001(napi_env env, napi_callba
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultManager, result is: %d", TEST_FAIL);
+    LOG("resultManager, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
@@ -3651,7 +3651,7 @@ static napi_value AudioSessionManagerStrategyError_001(napi_env env, napi_callba
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(nullptr, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3667,7 +3667,7 @@ static napi_value AudioSessionManagerActivatedError_001(napi_env env, napi_callb
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultManager, result is: %d", TEST_FAIL);
+    LOG("resultManager, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
@@ -3676,7 +3676,7 @@ static napi_value AudioSessionManagerActivatedError_001(napi_env env, napi_callb
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3684,7 +3684,7 @@ static napi_value AudioSessionManagerActivatedError_001(napi_env env, napi_callb
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(nullptr);
   if (isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("isActivated, result is: %d", TEST_FAIL);
+    LOG("isActivated, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3692,7 +3692,7 @@ static napi_value AudioSessionManagerActivatedError_001(napi_env env, napi_callb
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   if (resultDeactivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3708,7 +3708,7 @@ static napi_value AudioSessionManagerStopError_001(napi_env env, napi_callback_i
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultManager, result is: %d", TEST_FAIL);
+    LOG("resultManager, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
@@ -3717,7 +3717,7 @@ static napi_value AudioSessionManagerStopError_001(napi_env env, napi_callback_i
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3725,7 +3725,7 @@ static napi_value AudioSessionManagerStopError_001(napi_env env, napi_callback_i
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(nullptr);
   if (resultDeactivate != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3733,7 +3733,7 @@ static napi_value AudioSessionManagerStopError_001(napi_env env, napi_callback_i
   resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   if (resultDeactivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3749,7 +3749,7 @@ static napi_value AudioSessionManagerStopError_002(napi_env env, napi_callback_i
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultManager, result is: %d", TEST_FAIL);
+    LOG("resultManager, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
@@ -3758,21 +3758,21 @@ static napi_value AudioSessionManagerStopError_002(napi_env env, napi_callback_i
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate1 = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   if (resultDeactivate1 != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate1, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate1, result is: %d", TEST_FAIL);
     return res;
   }
   // 停用音频会话
   OH_AudioCommon_Result resultDeactivate2 = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   if (resultDeactivate2 != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate2, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate2, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3788,7 +3788,7 @@ static napi_value AudioSessionManagerRegisterError_001(napi_env env, napi_callba
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultManager, result is: %d", TEST_FAIL);
+    LOG("resultManager, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
@@ -3797,7 +3797,7 @@ static napi_value AudioSessionManagerRegisterError_001(napi_env env, napi_callba
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3805,7 +3805,7 @@ static napi_value AudioSessionManagerRegisterError_001(napi_env env, napi_callba
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("isActivated, result is: %d", TEST_FAIL);
+    LOG("isActivated, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3813,7 +3813,7 @@ static napi_value AudioSessionManagerRegisterError_001(napi_env env, napi_callba
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(nullptr,MyAudioSessionDeactivatedCallback);
   if (resultRegister != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultRegister, result is: %d", TEST_FAIL);
+    LOG("resultRegister, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3821,7 +3821,7 @@ static napi_value AudioSessionManagerRegisterError_001(napi_env env, napi_callba
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   if (resultDeactivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3837,7 +3837,7 @@ static napi_value AudioSessionManagerRegisterError_002(napi_env env, napi_callba
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultManager, result is: %d", TEST_FAIL);
+    LOG("resultManager, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
@@ -3846,7 +3846,7 @@ static napi_value AudioSessionManagerRegisterError_002(napi_env env, napi_callba
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3854,7 +3854,7 @@ static napi_value AudioSessionManagerRegisterError_002(napi_env env, napi_callba
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("isActivated, result is: %d", TEST_FAIL);
+    LOG("isActivated, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3862,7 +3862,7 @@ static napi_value AudioSessionManagerRegisterError_002(napi_env env, napi_callba
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,nullptr);
   if (resultRegister != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultRegister, result is: %d", TEST_FAIL);
+    LOG("resultRegister, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3870,7 +3870,7 @@ static napi_value AudioSessionManagerRegisterError_002(napi_env env, napi_callba
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   if (resultDeactivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3886,7 +3886,7 @@ static napi_value AudioSessionManagerUnregisterError_001(napi_env env, napi_call
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultManager, result is: %d", TEST_FAIL);
+    LOG("resultManager, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
@@ -3895,7 +3895,7 @@ static napi_value AudioSessionManagerUnregisterError_001(napi_env env, napi_call
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3903,7 +3903,7 @@ static napi_value AudioSessionManagerUnregisterError_001(napi_env env, napi_call
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("isActivated, result is: %d", TEST_FAIL);
+    LOG("isActivated, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3911,7 +3911,7 @@ static napi_value AudioSessionManagerUnregisterError_001(napi_env env, napi_call
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultRegister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultRegister, result is: %d", TEST_FAIL);
+    LOG("resultRegister, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3919,7 +3919,7 @@ static napi_value AudioSessionManagerUnregisterError_001(napi_env env, napi_call
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(nullptr, MyAudioSessionDeactivatedCallback);
   if (resultUnregister != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultUnregister, result is: %d", TEST_FAIL);
+    LOG("resultUnregister, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3927,7 +3927,7 @@ static napi_value AudioSessionManagerUnregisterError_001(napi_env env, napi_call
   resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultUnregister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultUnregister, result is: %d", TEST_FAIL);
+    LOG("resultUnregister, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3935,7 +3935,7 @@ static napi_value AudioSessionManagerUnregisterError_001(napi_env env, napi_call
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   if (resultDeactivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3951,7 +3951,7 @@ static napi_value AudioSessionManagerUnregisterError_002(napi_env env, napi_call
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultManager, result is: %d", TEST_FAIL);
+    LOG("resultManager, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
@@ -3960,7 +3960,7 @@ static napi_value AudioSessionManagerUnregisterError_002(napi_env env, napi_call
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3968,7 +3968,7 @@ static napi_value AudioSessionManagerUnregisterError_002(napi_env env, napi_call
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("isActivated, result is: %d", TEST_FAIL);
+    LOG("isActivated, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3976,7 +3976,7 @@ static napi_value AudioSessionManagerUnregisterError_002(napi_env env, napi_call
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultRegister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultRegister, result is: %d", TEST_FAIL);
+    LOG("resultRegister, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3984,7 +3984,7 @@ static napi_value AudioSessionManagerUnregisterError_002(napi_env env, napi_call
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager, nullptr);
   if (resultUnregister != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultUnregister, result is: %d", TEST_FAIL);
+    LOG("resultUnregister, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -3992,7 +3992,7 @@ static napi_value AudioSessionManagerUnregisterError_002(napi_env env, napi_call
   resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultUnregister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultUnregister, result is: %d", TEST_FAIL);
+    LOG("resultUnregister, result is: %d", TEST_FAIL);
     return res;
   }
   
@@ -4000,7 +4000,7 @@ static napi_value AudioSessionManagerUnregisterError_002(napi_env env, napi_call
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   if (resultDeactivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -4016,7 +4016,7 @@ static napi_value AudioSessionManagerReason_001(napi_env env, napi_callback_info
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultManager, result is: %d", TEST_FAIL);
+    LOG("resultManager, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
@@ -4025,7 +4025,7 @@ static napi_value AudioSessionManagerReason_001(napi_env env, napi_callback_info
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -4033,7 +4033,7 @@ static napi_value AudioSessionManagerReason_001(napi_env env, napi_callback_info
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("isActivated, result is: %d", TEST_FAIL);
+    LOG("isActivated, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -4065,7 +4065,7 @@ static napi_value AudioSessionManagerReason_001(napi_env env, napi_callback_info
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultRegister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultRegister, result is: %d", TEST_FAIL);
+    LOG("resultRegister, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -4096,7 +4096,7 @@ static napi_value AudioSessionManagerReason_001(napi_env env, napi_callback_info
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultUnregister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultUnregister, result is: %d", TEST_FAIL);
+    LOG("resultUnregister, result is: %d", TEST_FAIL);
     return res;
   }
   
@@ -4104,7 +4104,7 @@ static napi_value AudioSessionManagerReason_001(napi_env env, napi_callback_info
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   if (resultDeactivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultDeactivate, result is: %d", TEST_FAIL);
+    LOG("resultDeactivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -4120,7 +4120,7 @@ static napi_value AudioSessionManagerReason_002(napi_env env, napi_callback_info
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
   if (resultManager != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultManager, result is: %d", TEST_FAIL);
+    LOG("resultManager, result is: %d", TEST_FAIL);
     return res;
   }
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
@@ -4129,7 +4129,7 @@ static napi_value AudioSessionManagerReason_002(napi_env env, napi_callback_info
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   if (resultActivate != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultActivate, result is: %d", TEST_FAIL);
+    LOG("resultActivate, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -4137,7 +4137,7 @@ static napi_value AudioSessionManagerReason_002(napi_env env, napi_callback_info
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
   if (!isActivated) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("isActivated, result is: %d", TEST_FAIL);
+    LOG("isActivated, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -4158,7 +4158,7 @@ static napi_value AudioSessionManagerReason_002(napi_env env, napi_callback_info
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultRegister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultRegister, result is: %d", TEST_FAIL);
+    LOG("resultRegister, result is: %d", TEST_FAIL);
     return res;
   }
 
@@ -4181,7 +4181,7 @@ static napi_value AudioSessionManagerReason_002(napi_env env, napi_callback_info
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,MyAudioSessionDeactivatedCallback);
   if (resultUnregister != AUDIOCOMMON_RESULT_SUCCESS) {
     napi_create_int32(env, TEST_FAIL, &res);
-    LOGD("resultUnregister, result is: %d", TEST_FAIL);
+    LOG("resultUnregister, result is: %d", TEST_FAIL);
     return res;
   }
   
