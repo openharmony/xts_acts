@@ -43,7 +43,8 @@ struct TEST_IMAGE {
     bool b;
 };
 
-static bool CheckEglExtension(const char *extensions, const char *extension) {
+static bool CheckEglExtension(const char *extensions, const char *extension)
+{
     size_t extlen = strlen(extension);
     const char *end = extensions + strlen(extensions);
 
@@ -65,7 +66,8 @@ static bool CheckEglExtension(const char *extensions, const char *extension) {
     return false;
 }
 
-static EGLDisplay GetPlatformEglDisplay(EGLenum platform, void *native_display, const EGLint *attrib_list) {
+static EGLDisplay GetPlatformEglDisplay(EGLenum platform, void *native_display, const EGLint *attrib_list)
+{
     static GetPlatformDisplayExt eglGetPlatformDisplayExt = NULL;
 
     if (!eglGetPlatformDisplayExt) {
@@ -101,25 +103,29 @@ public:
     static void OnFrameAvailable(void *context);
 };
 
-void NativeImageTest::OnFrameAvailable(void *context) {
+void NativeImageTest::OnFrameAvailable(void *context)
+{
     (void)context;
     cout << "OnFrameAvailable is called" << endl;
 }
 
-void NativeImageTest::SetUpTestCase() {
+void NativeImageTest::SetUpTestCase()
+{
     image = nullptr;
     nativeWindow = nullptr;
     glGenTextures(1, &textureId);
     glGenTextures(1, &textureId2);
 }
 
-void NativeImageTest::TearDownTestCase() {
+void NativeImageTest::TearDownTestCase()
+{
     image = nullptr;
     nativeWindow = nullptr;
     Deinit();
 }
 
-void NativeImageTest::InitEglContext() {
+void NativeImageTest::InitEglContext()
+{
     if (eglContext_ != EGL_NO_DISPLAY) {
         return;
     }
@@ -180,7 +186,8 @@ void NativeImageTest::InitEglContext() {
     BLOGW("Create EGL context successfully, version %{public}d.%{public}d", major, minor);
 }
 
-void NativeImageTest::Deinit() {
+void NativeImageTest::Deinit()
+{
     if (eglDisplay_ == EGL_NO_DISPLAY) {
         return;
     }
@@ -412,7 +419,8 @@ HWTEST_F(NativeImageTest, OHNativeImageGetTransformMatrix001, Function | MediumT
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeImageTest, OHNativeImageGetTransformMatrix002, Function | MediumTest | Level1) {
+HWTEST_F(NativeImageTest, OHNativeImageGetTransformMatrix002, Function | MediumTest | Level1)
+{
     float matrix[MATRIX_SIZE];
     int32_t ret = OH_NativeImage_GetTransformMatrix(image, matrix);
     ASSERT_EQ(ret, NATIVE_ERROR_OK);
