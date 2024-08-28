@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,15 +17,15 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct PageTransitionExample1 {
-  @State scale: number = 1;
-  @State opacity: number = 1;
+  @State scale1: number = 1;
+  @State opacity1: number = 1;
   @State active: boolean = false;
-  @State type: RouteType = NavigationType.Push;
+  @State type: RouteType = RouteType.Push;
 
   build() {
     Column() {
-      Navigator({ target: 'pages/pageTransition2', type: this.type }) {
-        Image($rawfile('ic_health_heart.png'))
+      Navigator({ target: 'pages/pageTransition2', type: NavigationType.Push }) {
+        Image($rawfile('test.png'))
           .width("100%")
           .height("100%")
       }
@@ -37,8 +36,8 @@ struct PageTransitionExample1 {
         try {
           let backData: events_emitter.EventData = {
             data: {
-              "scale": this.scale,
-              "opacity": this.opacity,
+              "scale": this.scale1,
+              "opacity": this.opacity1,
               "type": this.type
             }
           }
@@ -49,22 +48,22 @@ struct PageTransitionExample1 {
           console.info("pageTransition start to emit action state")
           events_emitter.emit(backEvent, backData)
         } catch (err) {
-          console.info("pageTransition emit action state err: " + JSON.stringify(err.message))
+          console.info("pageTransition emit action state err: " + JSON.stringify((err as Error)?.message))
         }
       })
-    }.scale({ x: this.scale }).opacity(this.opacity)
+    }.scale({ x: this.scale1 }).opacity(this.opacity1)
   }
 
   pageTransition() {
     PageTransitionEnter({ duration: 1200, curve: Curve.Linear })
       .onEnter((type: RouteType, progress: number) => {
-        this.scale = 1
-        this.opacity = progress
+        this.scale1 = 1
+        this.opacity1 = progress
       })
     PageTransitionExit({ duration: 1500, curve: Curve.Ease })
       .onExit((type: RouteType, progress: number) => {
-        this.scale = 1 - progress
-        this.opacity = 1
+        this.scale1 = 1 - progress
+        this.opacity1 = 1
       })
   }
 
@@ -81,11 +80,11 @@ struct PageTransitionExample1 {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("active page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.scale != null) {
-        this.scale = Number.parseInt(eventData.data.scale);
+      if (eventData.data?.scale != null) {
+        this.scale1 = Number.parseInt(eventData.data?.scale);
       }
-      if (eventData.data.opacity != null) {
-        this.opacity = Number.parseInt(eventData.data.opacity);
+      if (eventData.data?.opacity != null) {
+        this.opacity1 = Number.parseInt(eventData.data?.opacity);
       }
     }
   }
