@@ -35,7 +35,7 @@ struct StorageProp25 {
       Text(`当前PropB值为${this.storPropB}`).margin(10)
         .key("sPropB")
 
-      Button(`button1`).margin(10).width("100%")
+      Button(`button1`).margin(10).width('100%')
         .key('btn1_sto')
         .onClick(() => {
           this.storPropA += 1
