@@ -1,9 +1,5 @@
 {
-    "src": [
-        "MainAbility/pages/Index",
-        "MainAbility/pages/webViewSdkSchemeHandlerDidFail",
-        "MainAbility/pages/webViewSdkSchemeHandlerDidFailWan2",
-        "MainAbility/pages/webViewSdkSchemeHandlerDidFail3"
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }
-
