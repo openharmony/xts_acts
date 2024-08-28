@@ -32,7 +32,7 @@ export default function opacityTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testOpacity',
     pageName: 'opacityPage',
     pageUrl: 'MainAbility/pages/opacity/OpacityPage',
@@ -48,21 +48,21 @@ export default function opacityTest() {
 
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetOpacity',
     setValue: {
       opacity: 0.7,
-    },
+    } as ESObject,
     expectValue: {
       opacity: 0.7,
-    }
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('opacityTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.info('[' + data.caseTag + '] opacityTest.');
       console.info('[' + data.caseTag + '] opacityTest. data.testValue.setValue.opacity : ' + data.testValue.setValue.opacity);
       console.info('[' + data.viewObj.$attrs.opacity + '] opacityTest. viewObj.$attrs.opacity.');
