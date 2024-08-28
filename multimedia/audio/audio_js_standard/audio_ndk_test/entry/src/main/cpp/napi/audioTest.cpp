@@ -31,8 +31,7 @@
 
 
 #ifdef DEBUG
-  #define LOGD(fmt, ...)
-    printf(fmt, ##__VA_ARGS__);
+  #define LOGD(fmt, ...) printf(fmt, ##__VA_ARGS__);
 #else
  #define LOGD(fmt, ...);
 #endif
