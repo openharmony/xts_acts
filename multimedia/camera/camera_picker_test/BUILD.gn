@@ -13,27 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("camera_picker_ets_hap") {
-  hap_profile = "./src/main/module.json"
-  deps = [
-    ":camera_ets_resources",
-    ":camera_ets_test_assets",
-  ]
-  ets2abc = true
+ohos_js_app_suite("camera_picker_ets_hap") {
+  test_hap = true
+  testonly = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsCameraPickerETSTest"
   subsystem_name = "multimedia"
   part_name = "camera_framework"
-}
-ohos_app_scope("camera_ets_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-ohos_js_assets("camera_ets_test_assets") {
-  source_dir = "./src/main/ets"
-}
-ohos_resources("camera_ets_resources") {
-  sources = [ "./src/main/resources" ]
-  deps = [ ":camera_ets_app_profile" ]
-  hap_profile = "./src/main/module.json"
 }
