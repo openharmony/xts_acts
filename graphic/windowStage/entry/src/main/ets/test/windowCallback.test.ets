@@ -852,7 +852,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         done();
       });
       (tempWnd as ohosWindow.Window).on('systemAvoidAreaChange', (avoidAreaData) => {
-        if (listenerOnFlag === true) {
+        if (listenerOnFlag == true) {
           console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, listenerOnFlag : ' + listenerOnFlag);
           try {
             expect(!!avoidAreaData).assertTrue();
@@ -864,13 +864,15 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         }
       })
       listenerOnFlag = true;
+      await sleep(800)
       await tempWnd.setWindowLayoutFullScreen(false).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(false) success');
-      await tempWnd.setSystemBarEnable([], (err, data) => {
+      await sleep(800)
+      await tempWnd.setSystemBarEnable([], (err) => {
         if (err.code) {
           console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
           expect().assertFail();
@@ -879,14 +881,15 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
           console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
         }
       })
+      await sleep(800)
       await tempWnd.setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(true) success');
-
-      await tempWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
+      await sleep(800)
+      await tempWnd.setSystemBarEnable(['status', 'navigation'], (err) => {
         if (err.code) {
           console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
           expect().assertFail();
