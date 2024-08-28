@@ -39,11 +39,14 @@ constexpr OHOS::HiviewDFX::HiLogLabel LABEL = {LOG_CORE, LOG_ID, "MediaLibraryND
 #define DEBUG_LOG(fmt, ...) MY_HILOG(OHOS::HiviewDFX::HiLog::Info, fmt, ##__VA_ARGS__)
 
 typedef enum UseCaseCode {
-    PARAMETER_OK = 0,     // 参数正常
-    PARAMETER1_ERROR = 1, // 参数1异常
-    PARAMETER2_ERROR = 2, // 参数2异常
-    PARAMETER3_ERROR = 3, // 参数3异常
-    PARAMETER4_ERROR = 4, // 参数4异常
+    TEST_PARAMETER_OK = 0,
+    TEST_FIRST_PARAMETER_ERROR = 1,
+    TEST_SECOND_PARAMETER_ERROR = 2,
+    TEST_THIRD_PARAMETER_ERROR = 3,
+    TEST_FOURTH_PARAMETER_ERROR = 4,
+    TEST_FIFTH_PARAMETER_ERROR = 5,
+    TEST_FIRST_ENUM_PARAMETER = 6,
+    TEST_SECOND_ENUM_PARAMETER = 7,
 } UseCaseCode;
 
 class NDKMediaLibrary {
@@ -73,22 +76,19 @@ public:
     MediaLibrary_ErrorCode MediaAccessHelperApplyChanges(int useCaseCode);
 
 private:
-    OH_MediaAsset* mediaAsset_; // mediaAsset实例。
+    OH_MediaAsset* mediaAsset_;
     OH_MediaAssetChangeRequest* changeRequest_;
-    // OH_MovingPhoto* movingPhoto_;
     OH_ImageSourceNative* imageSourceNaive_;
     OH_MediaAssetManager* manager_;
 
-    //mediaAsset photo keys
-    const char* uri_; // mediaAsset URI
-    const char* displayName_; // mediaAsset displayName
+    const char* uri_;
+    const char* displayName_;
     uint32_t size_;
     uint32_t dateModifiedMs_;
     uint32_t width_;
     uint32_t height_;
     uint32_t orientation_;
 
-    //mediaAssetManager
     MediaLibrary_RequestOptions requestOptions_;
     OH_MediaLibrary_OnImageDataPrepared callback_;
     MediaLibrary_RequestId requestId_;
