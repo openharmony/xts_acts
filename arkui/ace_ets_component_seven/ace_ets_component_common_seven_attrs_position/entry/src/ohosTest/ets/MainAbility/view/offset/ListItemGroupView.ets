@@ -16,13 +16,13 @@
 @Component
 export struct ListItemGroupView {
   @Link _offset: Position;
-  private componentKey: string = "";
+  private componentKey: string = '';
   private parentWidth: number = 0;
   private parentHeight: number = 0;
   private subassemblyWidth: number;
   private subassemblyHeight: number;
-  private parentComponentKey: string = "";
-  private referenceComponentKey: string = "";
+  private parentComponentKey: string = '';
+  private referenceComponentKey: string = '';
   private projects: string[] = ['Chinese', 'mathematics', 'English']
 
   @Builder itemHead(text: string) {

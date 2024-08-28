@@ -38,7 +38,7 @@ export struct StepperView {
   @State secondState: ItemState = ItemState.Normal
   @State thirdState: ItemState = ItemState.Normal
   @Link _offset: Position;
-  private componentKey: string = "";
+  private componentKey: string = '';
 
   build() {
     Stepper({

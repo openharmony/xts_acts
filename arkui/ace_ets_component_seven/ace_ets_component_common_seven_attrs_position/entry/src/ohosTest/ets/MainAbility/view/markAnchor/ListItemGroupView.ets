@@ -16,7 +16,7 @@
 @Component
 export struct ListItemGroupView {
   @Link _markAnchor: Position;
-  private componentKey: string = "";
+  private componentKey: string = '';
   private parentWidth: number = 0;
   private parentHeight: number = 0;
   private subassemblyWidth: number;
