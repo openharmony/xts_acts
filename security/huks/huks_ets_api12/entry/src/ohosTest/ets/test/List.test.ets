@@ -15,9 +15,11 @@
 import SecurityHuksAccessControlAsUserTest from './SecurityHuksAccessControlAsUser.test';
 import SecurityHuksCipherSM4Test from './SecurityHuksCipherSM4.test';
 import SecurityHUKSKeyGenerateListAliasesTest from './SecurityHuksKeyGenerateListAliases.test';
+import SecurityHuksnewtest from './SecurityHuksnew.test';
 
 export default function testsuite() {
   SecurityHuksAccessControlAsUserTest();
   SecurityHuksCipherSM4Test();
   SecurityHUKSKeyGenerateListAliasesTest();
+  SecurityHuksnewtest();
 }
