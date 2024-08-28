@@ -33,7 +33,7 @@ export default function responseRegionTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testResponseRegion',
     pageName: 'ResponseRegionPage',
     pageUrl: 'MainAbility/pages/responseRegion/ResponseRegionPage',
@@ -48,21 +48,21 @@ export default function responseRegionTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetResponseRegion',
     setValue: {
-      responseRegion: [{ x: 1.0, y: 2.0, width: '70%', height: '30%' }]
-    },
+      responseRegion: [{ x: 1.0, y: 2.0, width: '70%', height: '30%' } as ESObject]
+    } as ESObject,
     expectValue: {
-      responseRegion: [{ x: '1.00vp', y: '2.00vp', width: '70.00%', height: '30.00%' }]
-    }
+      responseRegion: [{ x: '1.00vp', y: '2.00vp', width: '70.00%', height: '30.00%' } as ESObject]
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('responseRegionTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.info('[' + data.caseTag + ']' + 'responseRegion is:' + data.viewObj.$attrs.responseRegion);
       expect(JSON.parse(data.viewObj.$attrs.responseRegion[0]).x)
         .assertEqual(data.testValue.expectValue.responseRegion[0].x);
