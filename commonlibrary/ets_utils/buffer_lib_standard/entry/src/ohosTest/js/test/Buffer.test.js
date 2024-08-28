@@ -5624,4 +5624,85 @@ describe('BufferTest', function () {
       let res = buf.toString('hex');
       expect(res).assertEqual('0000');
     });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32700
+     * @tc.name: testfrom0275
+     * @tc.desc: Create a new buffer containing parameter is non integer
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testfrom0275", 0, function () {
+      let buf = buffer.from('this buffer is a buffer');
+      expect(buf.lastIndexOf('buffer', -4)).assertEqual(17);
+      expect(buf.lastIndexOf('buffer', -5)).assertEqual(17);
+      expect(buf.lastIndexOf('buffer', -6)).assertEqual(17);
+      expect(buf.lastIndexOf('buffer', -7)).assertEqual(5);
+      expect(buf.lastIndexOf('buffer', 1)).assertEqual(-1);
+      expect(buf.lastIndexOf('buffer', 5)).assertEqual(5);
+      expect(buf.lastIndexOf('buffer', 6)).assertEqual(5);
+      expect(buf.lastIndexOf('buffer', 15)).assertEqual(5);
+      expect(buf.lastIndexOf('buffer', 19)).assertEqual(17);
+      expect(buf.lastIndexOf('buffer', 20)).assertEqual(17);
+      expect(buf.lastIndexOf('buffer', 23)).assertEqual(17);
+      expect(buf.lastIndexOf('buffer', 9999)).assertEqual(17);
+      expect(buf.lastIndexOf('buffer', -20)).assertEqual(-1);
+      expect(buf.lastIndexOf('buffer', -999)).assertEqual(-1);
+      expect(buf.lastIndexOf('buffer', -1)).assertEqual(17);
+      expect(buf.lastIndexOf('buffer', -22)).assertEqual(-1);
+      expect(buf.lastIndexOf('buffer')).assertEqual(17);
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32800
+     * @tc.name: testfrom0276
+     * @tc.desc: Create a new buffer containing parameter is non integer
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testfrom0276", 0, function () {
+      let buf = buffer.from('this buffer is a buffer');
+      expect(buf.lastIndexOf('is',undefined)).assertEqual(12);
+      expect(buf.lastIndexOf('is', null, 'utf8')).assertEqual(-1);
+      expect(buf.lastIndexOf('is', 20, 'utf16le')).assertEqual(-1);
+      expect(buf.lastIndexOf('is', 1)).assertEqual(-1);
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32900
+     * @tc.name: testfrom0277
+     * @tc.desc: Create a new buffer containing parameter is non integer
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testfrom0277", 0, function () {
+      let buf = buffer.from([11,12,13,14,15,16,17,18,19])
+      expect(buf.lastIndexOf(13,-1)).assertEqual(2);
+      expect(buf.lastIndexOf(13,-999)).assertEqual(-1);
+      expect(buf.lastIndexOf(13,2)).assertEqual(2);
+      expect(buf.lastIndexOf(13,3)).assertEqual(2);
+      expect(buf.lastIndexOf(14,8)).assertEqual(3);
+      expect(buf.lastIndexOf(20,15)).assertEqual(-1);
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_33000
+     * @tc.name: testfrom0278
+     * @tc.desc: Create a new buffer containing parameter is non integer
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testfrom0278", 0, function () {
+      try {
+        let buf = buffer.from([11,12,13,14,15,16,17,18,19]);
+        let buf1 = buffer.from([1,2,3,4,5,6,8,9,19])
+        buf.compare(buf1, 2, 9, -8, 8);
+      } catch (err) {
+        expect(err.code).assertEqual(10200001);
+      }
+    });
 })}

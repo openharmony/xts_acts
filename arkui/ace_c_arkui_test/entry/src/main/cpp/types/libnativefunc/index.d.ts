@@ -5509,3 +5509,23 @@ export const gestureTestParaMeter006: () => number;
 export const gestureTestParaMeter007: () => number;
 export const gestureTestParaMeter008: () => number;
 export const gestureTestParaMeter009: () => number;
+export const drag_setDragEventStrictReportWidthNode_001: () => number;
+export const drag_setDragEventStrictReportWidthNode_002: () => number;
+export const drag_setDragEventStrictReportWidthContext_003: () => number;
+export const drag_setDragEventStrictReportWidthContext_004: () => number;
+
+export const drag_setNodeAllowedDropDataTypes_001: () => number;
+export const drag_disallowNodeAnyDropDataTypes_002: () => number;
+export const drag_allowNodeAllDropDataTypes_003: () => number;
+export const drag_setNodeDraggable_004: () => number;
+
+export const drag_SetNodeDragPreview_001: () => number;
+
+export const drag_DragPreviewOption_Dispose_001: () => number;
+export const drag_DragPreviewOption_SetScaleMode_002: () => number;
+export const drag_DragPreviewOption_SetDefaultShadowEnabled_003: () => number;
+export const drag_DragPreviewOption_SetDefaultRadiusEnabled_004: () => number;
+export const drag_DragPreviewOption_SetNumberBadgeEnabled_005: () => number;
+export const drag_DragPreviewOption_SetBadgeNumber_006: () => number;
+export const drag_DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled_007: () => number;
+export const drag_DragPreviewOption_SetNodeDragPreviewOption_008: () => number;

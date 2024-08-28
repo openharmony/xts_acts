@@ -1,0 +1,114 @@
+/*
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium'
+import ndkTest from 'libImageNdk.so'
+import image from "@ohos.multimedia.image";
+import hilog from '@ohos.hilog';
+import common from '@ohos.app.ability.common';
+import fs from '@ohos.file.fs';
+import resourceManager from '@ohos.resourceManager';
+import { BusinessError } from '@ohos.base';
+
+export default function imageNdkTest() {
+  describe('ImageNdkTest', () => {
+    let globalpixelmap: image.PixelMap;
+    let outBuffer: ArrayBuffer = new ArrayBuffer(1200000)
+    let testContext: common.UIAbilityContext;
+    afterEach(async () => {
+      if (globalpixelmap != undefined) {
+        console.info('globalpixelmap release start');
+        try {
+          await globalpixelmap.release();
+        } catch (error) {
+          console.info('globalpixelmap release fail');
+        }
+      }
+      console.info('afterEach case');
+    })
+
+    beforeAll(async () => {
+      filesDir = AppStorage.get('pathDir')
+      testContext = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext;
+    })
+
+    let filePath: string;
+    let fileFd: number;
+    let buffer: ArrayBuffer;
+    let filesDir: string | undefined
+
+    /*
+     * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmapWithStride_0100
+     * @tc.name      : testCreatePixelMapWithStrideAbnormal
+     * @tc.desc      : 1.testCreatePixelMapWithStrideAbnormal
+     * @tc.size      : MediumTest
+     * @tc.type      : FunctioXn
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelMapWithStride_0100', 0, (done: Function) => {
+      let result: number = ndkTest.testCreatePixelMapWithStrideAbnormal()
+      expect(result).assertEqual(0)
+      done();
+    })
+
+    /*
+     * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptionsSetRowStrideNormal_0200
+     * @tc.name      : testInitializationOptionsSetRowStrideNormal
+     * @tc.desc      : 1.testInitializationOptionsSetRowStrideNormal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptionsSetRowStrideNormal_0200', 0, (done: Function) => {
+      // Set a number 16, that is a multiple of 1 byte
+      let result: number = ndkTest.testInitializationOptionsSetRowStrideNormal(16)
+      expect(result).assertEqual(0)
+      done();
+    })
+
+    /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_Native_ScaleWithAntiAliasing_0400
+    * @tc.name      : testNativeScaleWithAntiAliasingAbNormal
+    * @tc.desc      : 1.testNativeScaleWithAntiAliasingAbNormal
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Native_ScaleWithAntiAliasing_0400', 0, (done: Function) => {
+      // The scaling ratio is 100%
+      let result: number = ndkTest.testNativeScaleWithAntiAliasingAbnormal()
+      let msg = "testNativeScaleWithAntiAliasingAbNormal result: "
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
+    /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_ScaleWithAntiAliasing_0500
+    * @tc.name      : testScaleWithAntiAliasingAbnormal
+    * @tc.desc      : 1.testScaleWithAntiAliasingAbnormal
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_ScaleWithAntiAliasing_0500', 0, (done: Function) => {
+      // The scaling ratio is 100%
+      let result: number = ndkTest.testScaleWithAntiAliasingAbnormal(100, 100)
+      expect(result).assertEqual(0)
+      done();
+    })
+
+  })
+}

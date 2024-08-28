@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../../MainAbility/common/Utils.ets';
+import Utils from '../../MainAbility/common/Utils';
 
 
 export default function pageTransitionJsunit() {
@@ -86,7 +85,7 @@ export default function pageTransitionJsunit() {
             "opacity": 5
           }
         }
-        let indexEvent: events_emitter.EventPriority = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 145,
           priority: events_emitter.EventPriority.LOW
         }
@@ -99,14 +98,14 @@ export default function pageTransitionJsunit() {
       let callback = (indexEventOne: events_emitter.EventData) => {
         try {
           console.info("pageTransitionTest_0400 get state result is: " + JSON.stringify(indexEventOne));
-          expect(indexEventOne.data.scale).assertEqual(6);
-          expect(indexEventOne.data.opacity).assertEqual(5);
-          expect(indexEventOne.data.type).assertEqual(RouteType.Push);
+          expect(indexEventOne.data?.scale).assertEqual(6);
+          expect(indexEventOne.data?.opacity).assertEqual(5);
+          expect(indexEventOne.data?.type).assertEqual(RouteType.Push);
         } catch (err) {
           console.info("pageTransitionTest_0400 get state result is err:  " + JSON.stringify(err));
         }
       }
-      let indexEventOne: events_emitter.EventPriority = {
+      let indexEventOne: events_emitter.InnerEvent = {
         eventId: 144,
         priority: events_emitter.EventPriority.LOW
       }

@@ -97,6 +97,9 @@
 #include "drag/drag_setDragResult.h"
 #include "drag/drag_getDataTypesCount.h"
 #include "drag/drag_getDragResult.h"
+#include "drag/drag_getXY.h"
+#include "drag/drag_getWidthHeight.h"
+#include "drag/drag_getModifierKeyStates.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -349,6 +352,12 @@ static napi_value Init(napi_env env, napi_value exports)
         {"getDataTypesCountTest", nullptr, GetDataTypesCountTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"getDragResultTest", nullptr, GetDragResultTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"getXYTest", nullptr, GetXYTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"getWidthHeightTest", nullptr, GetWidthHeightTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"getModifierKeyStatesTest", nullptr, GetModifierKeyStatesTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
