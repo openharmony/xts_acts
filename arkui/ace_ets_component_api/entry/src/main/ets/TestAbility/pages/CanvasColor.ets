@@ -61,7 +61,7 @@ struct CanvasColor {
 
   fillStyle_CanvasPattern() {
     let pattern = this.context.createPattern(this.img, 'repeat')
-    this.context.fillStyle = pattern
+    this.context.fillStyle = pattern as CanvasPattern
     this.context.fillRect(0, 0, px2vp(276 * 2), px2vp(183))
   }
 
@@ -87,7 +87,7 @@ struct CanvasColor {
   strokeStyle_CanvasPattern() {
     let pattern = this.context.createPattern(this.img, 'repeat')
     this.context.lineWidth = 5
-    this.context.strokeStyle = pattern
+    this.context.strokeStyle = pattern as CanvasPattern
     this.context.strokeRect(0, 0, px2vp(276 * 2), px2vp(183))
   }
 }

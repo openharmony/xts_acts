@@ -220,49 +220,49 @@ struct CanvasShader {
   }
 
   clamp1() {
-    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'clamp')
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'clamp') as CanvasPattern
     this.context1.fillStyle = pattern
     this.context1.fillRect(0, 0, px2vp(276 * 2), px2vp(183))
   }
 
   clamp2() {
-    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'clamp')
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'clamp') as CanvasPattern
     this.context1.fillStyle = pattern
     this.context1.fillRect(0, 0, px2vp(276), px2vp(183 * 2))
   }
 
   clamp3() {
-    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'clamp')
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'clamp') as CanvasPattern
     this.context1.fillStyle = pattern
     this.context1.fillRect(0, 0, px2vp(276 * 2), px2vp(183 * 2))
   }
 
   clamp4() {
-    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'clamp')
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'clamp') as CanvasPattern
     this.context1.fillStyle = pattern
     this.context1.fillRect(0, 0, px2vp(276), px2vp(183))
   }
 
   mirror1() {
-    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'mirror')
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'mirror') as CanvasPattern
     this.context1.fillStyle = pattern
     this.context1.fillRect(0, 0, px2vp(150 * 2), px2vp(150))
   }
 
   mirror2() {
-    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'mirror')
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'mirror') as CanvasPattern
     this.context1.fillStyle = pattern
     this.context1.fillRect(0, 0, px2vp(150), px2vp(150 * 2))
   }
 
   mirror3() {
-    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'mirror')
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'mirror') as CanvasPattern
     this.context1.fillStyle = pattern
     this.context1.fillRect(0, 0, px2vp(150 * 2), px2vp(150 * 2))
   }
 
   mirror4() {
-    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'mirror')
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'mirror') as CanvasPattern
     this.context1.fillStyle = pattern
     this.context1.fillRect(0, 0, px2vp(150), px2vp(150))
   }
