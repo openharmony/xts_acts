@@ -25,7 +25,7 @@ export default function ActsAceWebSetNetErrorCodeChen1() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webSetNetErrorCodeChen1',
+        url: 'testability/pages/webSetNetErrorCodeChen1',
       }
 
       try {

@@ -25,7 +25,7 @@ export default function ActsAceWebSetNetErrorCode() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webSetNetErrorCode',
+        url: 'testability/pages/webSetNetErrorCode',
       }
 
       try {
