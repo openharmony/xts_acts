@@ -67,7 +67,9 @@ import updateCustomDialogTest from './UIContextTest/updateCustomDialogTest.test'
 import subMenuExpandingModeTest_STACK_EXPAND from './MenuTest/MenuApiTest/subMenuExpandingModeTest_STACK_EXPAND.test';
 import interstitialDialogActionTest from './Dialog/InterstitialDialogAction.test';
 import showToastTest from './promptActionTest/showToast.test';
-
+import BaseDialogTest from './CustomDialogTest/KeyboardAvoidMode/BaseDialogTest.test';
+import CustomDialogTest from './CustomDialogTest/KeyboardAvoidMode/CustomDialogTest.test';
+import PromptActionTest from './CustomDialogTest/KeyboardAvoidMode/PromptActionTest.test';
 export default function testsuite() {
   dialogApi();
   TextPickerDialog();
@@ -123,4 +125,7 @@ export default function testsuite() {
   subMenuExpandingModeTest_STACK_EXPAND();
   interstitialDialogActionTest();
   showToastTest();
+  BaseDialogTest();
+  CustomDialogTest();
+  PromptActionTest();
 }
