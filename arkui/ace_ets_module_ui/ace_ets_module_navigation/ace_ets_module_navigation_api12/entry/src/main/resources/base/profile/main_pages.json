@@ -181,6 +181,7 @@
         "MainAbility/pages/Navigation/NavigationLevel/NavigationLevelTest20",
         "MainAbility/pages/Navigation/NavigationLevel/NavigationLevelTest21",
         "MainAbility/pages/Navigation/NavigationLevel/NavigationLevelTest22",
-        "MainAbility/pages/Navigation/NavigationLevel/NavigationLevelTest23"
+        "MainAbility/pages/Navigation/NavigationLevel/NavigationLevelTest23",
+        "MainAbility/pages/Navigation/NavPathInfoIsEntry"
     ]
 }
