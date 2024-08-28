@@ -32,7 +32,7 @@ export default function linearGradientTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testLinearGradient',
     pageName: 'linearGradientPage',
     pageUrl: 'MainAbility/pages/linearGradient/LinearGradientPage',
@@ -47,7 +47,7 @@ export default function linearGradientTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetLinearGradient',
     setValue: {
       linearGradient: ({
@@ -55,23 +55,23 @@ export default function linearGradientTest() {
         repeating: true,
         colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
         angle: 10
-        })
-    },
+        } as ESObject)
+    } as ESObject,
     expectValue: {
       linearGradient: ({
         direction: 'GradientDirection.Right',
         repeating: 'true',
         colors: [['#FF0000FF','0.300000'],['#FFFFFF00','0.500000']],
         angle: '10.00px'
-        })
-    }
-  }]
+        } as ESObject)
+    } as ESObject
+  } as ESObject]
 
   /**
    * Create test suite.
    */
   describe('linearGradientTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.info('[' + data.caseTag + '] linearGradientTest.');
       console.info('[' + data.caseTag + '] linearGradientTest. : ' + ` ${data.testValue.setValue.linearGradient.direction}`);
       console.info('[' + data.caseTag + '] linearGradientTest. : ' + ` ${data.testValue.setValue.linearGradient.repeating}`);
