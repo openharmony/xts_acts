@@ -38,7 +38,7 @@ export default function OnAndOffScreenTest() {
     let TAG1 = "SUB_AA_OpenHarmony == OnAndOffScreenTest : ";
     let sleepTimeOne = 1000;
     let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-    let id: number = undefined;
+    let id: number | undefined = undefined;
     beforeAll(async (done: Function) => {
       console.log(TAG1 + "beforeAll called");
       let myReason = 'test FaShowOnLockTest';
@@ -62,7 +62,17 @@ export default function OnAndOffScreenTest() {
       }, sleepTimeOne);
     })
 
-    let slideScreen = async (TAG) => {
+   let executeShellCommand = async(cmd:string, TAG:string):Promise<void> => {
+      console.log(TAG + "executeShellCommand start : " + JSON.stringify(cmd));
+      await abilityDelegator.executeShellCommand(cmd).then((data) => {
+        console.log(TAG + "executeShellCommand : data : " + data.stdResult);
+        console.log(TAG + "executeShellCommand : data : " + data.exitCode);
+      }).catch((error:BusinessError) => {
+        console.log(TAG + "executeShellCommand error : " + JSON.stringify(error));
+      })
+    }
+
+    let slideScreen = async (TAG:string):Promise<void> => {
       await sleep(1500)
       console.log(TAG + "slideScreen start");
       let cmd = '';
@@ -76,19 +86,9 @@ export default function OnAndOffScreenTest() {
       console.log(TAG + "slideScreen end");
     }
 
-    let executeShellCommand = async (cmd: string, TAG: string) => {
-      console.log(TAG + "executeShellCommand start : " + JSON.stringify(cmd));
-      await abilityDelegator.executeShellCommand(cmd).then((data) => {
-        console.log(TAG + "executeShellCommand : data : " + data.stdResult);
-        console.log(TAG + "executeShellCommand : data : " + data.exitCode);
-      }).catch((error: BusinessError) => {
-        console.log(TAG + "executeShellCommand error : " + JSON.stringify(error));
-      })
-    }
-
     beforeEach(async (done: Function) => {
       console.log(TAG1 + "beforeEach called");
-      let status: boolean = undefined;
+      let status: boolean | undefined = undefined;
       await power.isScreenOn().then((data) => {
         console.log(TAG1 + "isScreenOn data = " + JSON.stringify(data));
         status = data;
@@ -131,7 +131,7 @@ export default function OnAndOffScreenTest() {
       TAG = 'SUB_AA_OpenHarmony_OnAndOffScreen_0100 == ';
       console.log(TAG + "begin");
 
-      let status1: boolean = undefined;
+      let status1: boolean | undefined = undefined;
       let lifeList: string[] = [];
       let listCheck = ["onCreate", "onActive", "onInactive", "onHide"];
       let onActive = "FaOnAndOffScreen_MainAbility_onActive";
@@ -164,7 +164,7 @@ export default function OnAndOffScreenTest() {
           }
 
           if (data.event == onHide) {
-            lifeList = data.parameters.lifeList;
+            lifeList = data.parameters!.lifeList;
             setTimeout(async () => {
               commonEventManager.unsubscribe(subscriber, async (err, data) => {
                 console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
@@ -194,7 +194,7 @@ export default function OnAndOffScreenTest() {
         bundleName: "ohos.acts.aafwk.test.faonandoffscreen",
         abilityName: "ohos.acts.aafwk.test.faonandoffscreen.MainAbility"
       }
-      await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
+      await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
         console.log(TAG + "startAbility data = " + JSON.stringify(data));
       }).catch((error: BusinessError) => {
         console.log(TAG + "startAbility error = " + JSON.stringify(error));
@@ -221,7 +221,7 @@ export default function OnAndOffScreenTest() {
       TAG = 'SUB_AA_OpenHarmony_OnAndOffScreen_0300 == ';
       console.log(TAG + "begin");
 
-      let status1: boolean = undefined;
+      let status1: boolean | undefined = undefined;
       let lifeList: string[] = [];
       let listCheck = ["onCreate", "onForeground", "onBackground"];
       let onForeground = "StageOnAndOffScreen_MainAbility_onForeground";
@@ -254,7 +254,7 @@ export default function OnAndOffScreenTest() {
           }
 
           if (data.event == onBackground) {
-            lifeList = data.parameters.lifeList;
+            lifeList = data.parameters!.lifeList;
             setTimeout(async () => {
               commonEventManager.unsubscribe(subscriber, async (err, data) => {
                 console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
@@ -284,7 +284,7 @@ export default function OnAndOffScreenTest() {
         bundleName: "ohos.acts.aafwk.test.stageonandoffscreen",
         abilityName: "MainAbility"
       }
-      await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
+      await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
         console.log(TAG + "startAbility data = " + JSON.stringify(data));
       }).catch((error: BusinessError) => {
         console.log(TAG + "startAbility error = " + JSON.stringify(error));
@@ -312,7 +312,7 @@ export default function OnAndOffScreenTest() {
       console.log(TAG + "begin");
 
       let flag = false;
-      let status1: boolean = undefined;
+      let status1: boolean | undefined = undefined;
       let lifeList: string[] = [];
       let listCheck = ["onCreate", "onForeground", "onBackground", "onForeground"];
       let onForeground = "StageOnAndOffScreen_MainAbility_onForeground";
@@ -344,7 +344,7 @@ export default function OnAndOffScreenTest() {
               flag = true;
             }
           } else if (data.event == onForeground && flag) {
-            lifeList = data.parameters.lifeList;
+            lifeList = data.parameters!.lifeList;
             setTimeout(async () => {
               commonEventManager.unsubscribe(subscriber, async (err, data) => {
                 console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
@@ -380,7 +380,7 @@ export default function OnAndOffScreenTest() {
         bundleName: "ohos.acts.aafwk.test.stageonandoffscreen",
         abilityName: "MainAbility"
       }
-      await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
+      await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
         console.log(TAG + "startAbility data = " + JSON.stringify(data));
       }).catch((error: BusinessError) => {
         console.log(TAG + "startAbility error = " + JSON.stringify(error));
@@ -407,7 +407,7 @@ export default function OnAndOffScreenTest() {
       TAG = 'SUB_AA_OpenHarmony_OnAndOffScreen_0500 == ';
       console.log(TAG + "begin");
 
-      let status1: boolean = undefined;
+      let status1: boolean | undefined = undefined;
       let lifeList: string[] = [];
       let listCheck = ["onCreate", "onWindowStageCreate", "onForeground", "onBackground"];
       let onCreate = "StageOnAndOffScreen_MainAbility2_onCreate";
@@ -501,7 +501,7 @@ export default function OnAndOffScreenTest() {
         bundleName: "ohos.acts.aafwk.test.stageonandoffscreen",
         abilityName: "MainAbility2"
       }
-      await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
+      await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
         console.log(TAG + "startAbility data = " + JSON.stringify(data));
       }).catch((error: BusinessError) => {
         console.log(TAG + "startAbility error = " + JSON.stringify(error));
@@ -529,7 +529,7 @@ export default function OnAndOffScreenTest() {
       console.log(TAG + "begin");
 
       let flag = false;
-      let status1: boolean = undefined;
+      let status1: boolean | undefined = undefined;
       let lifeSet: Set<string> = new Set();
       let listCheck = ["onCreate", "onWindowStageCreate", "onForeground", "onBackground"];
       let onCreate = "StageOnAndOffScreen_MainAbility2_onCreate";
@@ -631,7 +631,8 @@ export default function OnAndOffScreenTest() {
         bundleName: "ohos.acts.aafwk.test.stageonandoffscreen",
         abilityName: "MainAbility2"
       }
-      await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
+
+      await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
         console.log(TAG + "startAbility data = " + JSON.stringify(data));
       }).catch((error: BusinessError) => {
         console.log(TAG + "startAbility error = " + JSON.stringify(error));
@@ -661,7 +662,7 @@ export default function OnAndOffScreenTest() {
       let wantNum: Want = {
         action: "ohos.acts.aafwk.aafwk.aafwk",
       }
-      await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
+      await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
         console.log(TAG + "startAbility data = " + JSON.stringify(data));
         expect().assertFail();
         done();
