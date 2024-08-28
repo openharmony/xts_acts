@@ -177,24 +177,19 @@ export default function AVPlayerLocalTest() {
                         });
                         break;
                     case AV_PLAYER_STATE.PREPARED:
-                        await avPlayer.getPlaybackInfo().then(arrayList => {
+                        await avPlayer.getPlaybackInfo().then(res => {
                             console.info('case getPlaybackInfo called!!');
-                            if (typeof (arrayList) != 'undefined') {
-                                arrayDescription = arrayList;
+                            if (typeof (res) != 'undefined') {
+                                arrayDescription = res;
                             } else {
                                 console.info('case getPlaybackInfo is failed');
                                 expect().assertFail();
                             }
                         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-                        expect(descriptionKey.length).assertEqual(arrayDescription.length);
-                        for (let i = 0; i < arrayDescription.length; i++) {
-                            mediaTestBase.checkPlaybackInfo(arrayDescription[i], descriptionKey[i], descriptionValue[i]);
-                        }
-                        avPlayer.getPlaybackInfo((error, arrayList) => {
+                        mediaTestBase.checkPlaybackInfo(arrayDescription, descriptionKey, descriptionValue);
+                        avPlayer.getPlaybackInfo((error, res) => {
                             if (error == null) {
-                                for (let i = 0; i < arrayList.length; i++) {
-                                    mediaTestBase.checkPlaybackInfo(arrayList[i], descriptionKey[i], descriptionValue[i]);
-                                }
+                                mediaTestBase.checkPlaybackInfo(res, descriptionKey, descriptionValue);
                             } else {
                                 console.info('getPlaybackInfo failed, message is:' + error.message);
                             }
