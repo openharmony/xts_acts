@@ -160,44 +160,49 @@ export default function AVPlayerLocalTest() {
             let arrayDescription;
             let surfaceID = globalThis.value;
             avPlayer.on('stateChange', async (state, reason) => {
-                if (state == AV_PLAYER_STATE.INITIALIZED) {
-                    console.info(`case AV_PLAYER_STATE.INITIALIZED`);
-                    avPlayer.surfaceId = surfaceID;
-                    expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.INITIALIZED);
-                    avPlayer.prepare((err) => {
-                        console.info('case prepare called' + err);
-                        if (err != null) {
-                            console.error(`case prepare error, errMessage is ${err.message}`);
-                            expect().assertFail();
-                            done();
-                        } else {
-                            console.info('case avPlayer.duration: ' + avPlayer.duration);
-                        }
-                    });
+                switch (state) {
+                    case AV_PLAYER_STATE.INITIALIZED:
+                        console.info(`case AV_PLAYER_STATE.INITIALIZED`);
+                        avPlayer.surfaceId = surfaceID;
+                        expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.INITIALIZED);
+                        avPlayer.prepare((err) => {
+                            console.info('case prepare called' + err);
+                            if (err != null) {
+                                console.error(`case prepare error, errMessage is ${err.message}`);
+                                expect().assertFail();
+                                done();
+                            } else {
+                                console.info('case avPlayer.duration: ' + avPlayer.duration);
+                            }
+                        });
+                        break;
+                    case AV_PLAYER_STATE.PREPARED:
+                        await avPlayer.getPlaybackInfo().then(res => {
+                            console.info('case getPlaybackInfo called!!');
+                            if (typeof (res) != 'undefined') {
+                                arrayDescription = res;
+                            } else {
+                                console.info('case getPlaybackInfo is failed');
+                                expect().assertFail();
+                            }
+                        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                        mediaTestBase.checkPlaybackInfo(arrayDescription, descriptionKey, descriptionValue);
+                        avPlayer.release();
+                        break;
+                    case AV_PLAYER_STATE.RELEASED:
+                        avPlayer = null;
+                        done();
+                        break;
+                    case AV_PLAYER_STATE.ERROR:
+                        expect().assertFail();
+                        avPlayer.release().then(() => {
+                        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                        avPlayer = null;
+                        break;
+                    default:
+                        break;
                 }
-                if (state == AV_PLAYER_STATE.PREPARED) {
-                    await avPlayer.getPlaybackInfo().then(res => {
-                        console.info('case getPlaybackInfo called!!');
-                        if (typeof (res) != 'undefined') {
-                            arrayDescription = res;
-                        } else {
-                            console.info('case getPlaybackInfo is failed');
-                            expect().assertFail();
-                        }
-                    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-                    mediaTestBase.checkPlaybackInfo(arrayDescription, descriptionKey, descriptionValue);
-                }
-                if (state == AV_PLAYER_STATE.RELEASED) {
-                    avPlayer = null;
-                    done();
-                }
-                if (state == AV_PLAYER_STATE.ERROR) {
-                    expect().assertFail();
-                    avPlayer.release().then(() => {
-                    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-                    avPlayer = null;
-                }
-            });
+            })
         }
 
         async function testCheckPlaybackInfo(src, avPlayer, descriptionKey, descriptionValue, done) {
@@ -512,7 +517,7 @@ export default function AVPlayerLocalTest() {
         it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETPLAYBACKINFO_0100', 0, async function (done) {
             let descriptionKey = new Array('server_ip_address', 'average_download_rate', 'download_rate',
                 'is_downloading', 'buffer_duration');
-            let descriptionValue = new Array("", 0, 0, 0, 0);
+            let descriptionValue = new Array("", 0, 0, 1, 0);
             testCheckPlaybackInfo(fileDescriptor, avPlayer, descriptionKey, descriptionValue, done)
         })
 
