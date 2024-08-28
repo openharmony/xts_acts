@@ -474,5 +474,176 @@ export default function saveComponentTest_1() {
         done();
       }
     });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Save_3100
+     * @tc.name Test_Security_Button_Save_3100
+     * @tc.desc Test SecurityComponent The text describes export to gallery and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('Test_Security_Button_Save_3100', 0, async function (done) {
+      console.info('====>[Test_Security_Button_Save_3100] START====');
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keySave15');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>component obj.$attrs.text:" + obj.$attrs.text);
+      expect(obj.$attrs.text).assertEqual(9);
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_Save_3100] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Save_3100] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_Save_3100] 设置权限成功");
+            expect(clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_Save_3100] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_Save_3100] 设置权限失败");
+            expect(false).assertTrue();
+            console.info("====>[Test_Security_Button_Save_3100] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Save_3100] once clickEvent err : " + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponents(ON.type('SaveButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_Save_3100] button is:" + JSON.stringify(button));
+        await button[8].click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Save_3100] clickSecComponent err : " + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Save_3200
+     * @tc.name Test_Security_Button_Save_3200
+     * @tc.desc Test SecurityComponent The text describes quick save to gallery and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('Test_Security_Button_Save_3200', 0, async function (done) {
+      console.info('====>[Test_Security_Button_Save_3200] START====');
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keySave16');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>component obj.$attrs.text:" + obj.$attrs.text);
+      expect(obj.$attrs.text).assertEqual(10);
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_Save_3200] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Save_3200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_Save_3200] 设置权限成功");
+            expect(clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_Save_3200] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_Save_3200] 设置权限失败");
+            expect(false).assertTrue();
+            console.info("====>[Test_Security_Button_Save_3200] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Save_3200] once clickEvent err : " + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponents(ON.type('SaveButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_Save_3200] button is:" + JSON.stringify(button));
+        await button[9].click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Save_3200] clickSecComponent err : " + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
+      }
+    });
+	
+	  /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Save_3300
+     * @tc.name Test_Security_Button_Save_3300
+     * @tc.desc Test SecurityComponent The text describes resave to gallery and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('Test_Security_Button_Save_3300', 0, async function (done) {
+      console.info('====>[Test_Security_Button_Save_3300] START====');
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keySave17');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>component obj.$attrs.text:" + obj.$attrs.text);
+      expect(obj.$attrs.text).assertEqual(11);
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_Save_3300] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Save_3300] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_Save_3300] 设置权限成功");
+            expect(clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_Save_3300] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_Save_3300] 设置权限失败");
+            expect(false).assertTrue();
+            console.info("====>[Test_Security_Button_Save_3300] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Save_3300] once clickEvent err : " + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponents(ON.type('SaveButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_Save_3300] button is:" + JSON.stringify(button));
+        await button[10].click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Save_3300] clickSecComponent err : " + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
+      }
+    });
   })
 }
