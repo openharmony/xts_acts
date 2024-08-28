@@ -91,7 +91,7 @@ static void AVPlayerOnError(OH_AVPlayer *player, int32_t, const char *errorMsg)
 
 static void AVPlayerOnInfo(OH_AVPlayer *player, AVPlayerOnInfoType infoType, int32_t extra)
 {
-    switch (infoType){
+    switch (infoType) {
         case AV_INFO_TYPE_STATE_CHANGE:
             g_avInfoTypeStateChange = true;
             break;
@@ -301,10 +301,9 @@ static napi_value OhAvPlayerGetState(napi_env env, napi_callback_info info)
 {
     const int32_t kMaxSleepAttempts = 4;
     int32_t gSleepTotalTime = 0;
-    while (!g_avInfoTypeStateChange)
-    {
+    while (!g_avInfoTypeStateChange) {
         gSleepTotalTime++;
-        if (gSleepTotalTime > kMaxSleepAttempts){
+        if (gSleepTotalTime > kMaxSleepAttempts) {
             break;
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(g_gPlaytime));
