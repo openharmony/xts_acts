@@ -17,6 +17,7 @@ import image from "@ohos.multimedia.image";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import featureAbility from "@ohos.ability.featureAbility";
 import fileio from "@ohos.fileio";
+import resourceManager from '@ohos.resourceManager';
 
 export default function imagePacking() {
     describe("imagePacking", function () {
@@ -25,6 +26,9 @@ export default function imagePacking() {
         let globalImagesource;
         let filePath;
         let fdNumber;
+        let pixelMapList;
+        let packingOptions;
+        let isSupportGifEncode;
         async function getFd(fileName) {
             let context = await featureAbility.getContext();
             await context.getFilesDir().then((data) => {
@@ -49,6 +53,7 @@ export default function imagePacking() {
 
         beforeAll(async function () {
             console.info("beforeAll case");
+            isSupportGifEncode = image.createImagePacker().supportedFormats.includes("image/gif");
         });
 
         beforeEach(function () {
@@ -78,6 +83,15 @@ export default function imagePacking() {
                     await globalPacker.release();
                 } catch (error) {
                     console.info("globalPacker release fail");
+                }
+            }
+            if (pixelMapList != undefined) {
+                try {
+                    pixelMapList.forEach(async (item) => {
+                        await item.release();
+                    })
+                } catch(error) {
+                    console.info("pixelMapList release fail");
                 }
             }
             console.info("afterEach case");
@@ -263,6 +277,182 @@ export default function imagePacking() {
                     expect().assertFail();
                     done();
                 });
+        }
+
+        async function getImageSourceData(fileName) {
+            try {
+                let resMgr = await resourceManager.getResourceManager();
+                let value = await resMgr.getRawFileContent(fileName)
+                globalImagesource = image.createImageSource(value.buffer);
+                console.log('image source ' + (globalImagesource != undefined))
+            } catch (error) {
+                console.info("getRawFileContent case"+error);
+            }
+        }
+
+        async function createPixelMapList(done, picName) {
+            console.info("createPixelMapList start");
+            await getImageSourceData(picName);
+            let imageSourceApi = globalImagesource;
+            if (imageSourceApi == undefined) {
+                console.info("createImageSource failed");
+                expect(false).assertTrue();
+                done();
+            } else {
+                try {
+                    pixelMapList = await imageSourceApi.createPixelMapList();
+                    if (pixelMapList != undefined) {
+                        console.info("createPixelMapList success");
+                    } else {
+                        console.info("createPixelMapList failed");
+                        expect(false).assertTrue();
+                        done();
+                    }
+                } catch (error) {
+                    console.info("createPixelMapList error = " + error);
+                    expect(false).assertTrue();
+                    done();
+                }
+            }
+        }
+
+        async function checkPackingMultiFramesResult(buffer, pictureSize) {
+            let imgSource = image.createImageSource(buffer);
+            if (imgSource == undefined) {
+                console.log(`imgSource create failed.`);
+                expect(false).assertTrue();
+            } else {
+                let delayTimes = await imgSource.getDelayTimeList();
+                let disposalTypes = await imgSource.getDisposalTypeList();
+                let loopcount = await imgSource.getImageProperties(image.PropertyKey.GIF_LOOP_COUNT);
+                let imageInfo = imgSource.getImageInfoSync();
+                console.log(`packingMultiFramesPromise delayTimes ${delayTimes}`);
+                console.log(`packingMultiFramesPromise disposalTypes ${disposalTypes}`);
+                console.log(`packingMultiFramesPromise loopcount ${loopcount}`);
+                console.log(`packingMultiFramesPromise height ${imageInfo.size.height}`);
+                console.log(`packingMultiFramesPromise width ${imageInfo.size.width}`);
+                expect(imageInfo.size.width == pictureSize.width).assertTrue();
+                expect(imageInfo.size.height == pictureSize.height).assertTrue();
+                expect(imageInfo.mimeType == "image/gif").assertTrue();
+                if (packingOptions.loopCount) {
+                    expect(loopcount == packingOptions.loopCount).assertTrue();
+                } else {
+                    expect(loopcount == 0).assertTrue();
+                }
+                for (let i = 0; i < delayTimes.length; i++) {
+                    if (packingOptions.delayTimeList[i]) {
+                        // delayTimes 的值编码和解码的单位差10倍
+                        expect(delayTimes[i] == packingOptions.delayTimeList[i] * 10).assertTrue();
+                    } else {
+                        // delayTimes 的默认值1000
+                        expect(delayTimes[i] == 1000).assertTrue();
+                    }
+                }
+                // disposalTypes的有效值是0～3，大于3变成0，解码的时候0会变成1
+                if (packingOptions.disposalTypes != undefined) {
+                    for (let i = 0; i < packingOptions.disposalTypes.length; i++) {
+                        if (packingOptions.disposalTypes[i] > 3 || packingOptions.disposalTypes[i] == 0) {
+                            expect(disposalTypes[i] == 1).assertTrue();
+                        } else {
+                            expect(disposalTypes[i] == packingOptions.disposalTypes[i]).assertTrue();
+                        }
+                    }
+                }
+            }
+        }
+
+        function packingMultiFramesPromise(done, testNum, pictureSize) {
+            globalPacker = image.createImagePacker();
+            if (globalPacker == undefined) {
+                console.log(`${testNum} createImagePacker failed`);
+                expect(false).assertTrue();
+                done();
+                return;
+            }
+            globalPacker.packing(pixelMapList, packingOptions).then(async (data) => {
+                try {
+                    console.log(`${testNum} packToFileMultiFrames success`);
+                    await checkPackingMultiFramesResult(data, pictureSize);
+                    done();
+                } catch (e1) {
+                    console.log("packingMultiFrames e1: " + e1);
+                    expect().assertFail();
+                    done();
+                }
+            }).catch((error) => {
+                console.log(`${testNum} error: ` + error.toString());
+                expect().assertFail();
+                done();
+            });
+        }
+
+        async function checkPackToDataResult(buffer, picSize) {
+            let imageSource = image.createImageSource(buffer);
+            if (imageSource == undefined) {
+                console.log(`create pack file imageSource failed.`);
+                return false;
+            } else {
+                let delayTimes = await imageSource.getDelayTimeList();
+                let disposalTypes = await imageSource.getDisposalTypeList();
+                let loopCount = await imageSource.getImageProperties(image.PropertyKey.GIF_LOOP_COUNT);
+                let imageInfo = imageSource.getImageInfoSync();
+                console.log(`packGifToData delayTimes ${delayTimes}`);
+                console.log(`packGifToData disposalTypes ${disposalTypes}`);
+                console.log(`packGifToData loopCount ${loopCount}`);
+                console.log(`packGifToData width ${imageInfo.size.width}`);
+                console.log(`packGifToData height ${imageInfo.size.height}`);
+                let result = delayTimes == 1000 && disposalTypes == 1 && loopCount == 0 &&
+                    imageInfo.size.width == picSize.width && imageInfo.size.height == picSize.height &&
+                    imageInfo.mimeType == "image/gif"
+                await imageSource.release();
+                return result;
+            }
+            
+        }
+
+        async function packGifToData(done, testNum, source, picSize, type) {
+            globalPacker = image.createImagePacker();
+            if (globalPacker == undefined) {
+                console.log(`${testNum} createImagePacker failed`);
+                expect(false).assertTrue();
+                done();
+            }
+            packingOptions = { format: "image/gif", quality: 100};
+            if (type == "callback") {
+                globalPacker.packing(source, packingOptions, async (err, data) => {
+                    if (err != undefined) {
+                        console.info(`${testNum} pack fail: ${JSON.stringify(err)}`);
+                        expect(false).assertTrue();
+                        done();
+                    } else {
+                        let result = await checkPackToDataResult(data, picSize);
+                        expect(result).assertTrue();
+                        done();
+                    }
+                })
+            } else {
+                try {
+                    let data = await globalPacker.packing(source, packingOptions);
+                    console.info(`${testNum} packTodata test success`);
+                    let result = await checkPackToDataResult(data, picSize);
+                    expect(result).assertTrue();
+                    done();
+                } catch (error) {
+                    console.log(`${testNum} packTodata error: ` + JSON.stringify(error));
+                    expect(false).assertTrue();
+                    done();
+                }
+            }
+        }
+        
+        async function testPackGifToData(done, testNum, fileName, packSource, picSize, type) {
+            await getImageSourceData(fileName);
+            let source = globalImagesource;
+            if (packSource == "PixelMap") {
+                globalpixelmap = await globalImagesource.createPixelMap();
+                source = globalpixelmap;
+            }
+            await packGifToData(done, testNum, source, picSize, type);
         }
 
         /**
@@ -660,9 +850,8 @@ export default function imagePacking() {
             }
         });
 
-
         /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200
          * @tc.name      : packing ImageSource - callback - wrong quality
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -672,26 +861,26 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200", 0, async function (done) {
             try {
                 await getFd("test.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 create image source failed");
+                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
                     globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 create image packer failed");
+                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalPacker = imagePackerApi;
                         let packOpts = { format: "image/jpeg", quality: 101 };
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
-                            console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 success");
+                            console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 success");
                             expect(data == undefined).assertTrue();
                             console.info(data);
                             done();
@@ -699,7 +888,7 @@ export default function imagePacking() {
                     }
                 }
             } catch (error) {
-                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
@@ -1138,6 +1327,208 @@ export default function imagePacking() {
         it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0300", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 99, bufferSize: 20000000 };
             packingCb(done, "SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0300", 5, packOpts);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0100
+         * @tc.name      : test the packingMultiFrames interface uses many PixelMaps
+         * @tc.desc      : 1.create PixelMap List
+         *               : 2.get writefd
+         *               : 3.create ImagePacker
+         *               : 4.packingMultiFrames
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0100", 0, async function (done) {
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0100: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await createPixelMapList(done, "moving_test.gif");
+                packingOptions = { frameCount: 3, delayTimeList: [10, 10, 10], disposalTypes: [4,1,0], loopCount: 5};
+                packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0100", { width: 198, height: 202 })
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0200
+         * @tc.name      : test the packingMultiFrames interface uses PixelMap
+         * @tc.desc      : 1.create PixelMap List
+         *               : 2.get writefd
+         *               : 3.create ImagePacker
+         *               : 4.packingMultiFrames
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0200", 0, async function (done) {
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0200: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await createPixelMapList(done, "test.png");
+                packingOptions = { frameCount: 1, delayTimeList: [10], disposalTypes: [3], loopCount: 5};
+                packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0200", { width: 472, height: 75 })
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0300
+         * @tc.name      : test the packingMultiFrames interface configuration delaytimes
+         * @tc.desc      : 1.create PixelMap List
+         *               : 2.get writefd
+         *               : 3.create ImagePacker
+         *               : 4.packingMultiFrames
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0300", 0, async function (done) {
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0300: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await createPixelMapList(done, "moving_test.gif");
+                packingOptions = { frameCount: 1, delayTimeList: [10], disposalTypes: [3,2,3]};
+                packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0300", { width: 198, height: 202 })
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0400
+         * @tc.name      : test the packingMultiFrames interface configuration loop
+         * @tc.desc      : 1.create PixelMap List
+         *               : 2.get writefd
+         *               : 3.create ImagePacker
+         *               : 4.packingMultiFrames
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0400", 0, async function (done) {
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0400: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await createPixelMapList(done, "test.png");
+                packingOptions = { frameCount: 1, delayTimeList: [10], loopCount: 2};
+                packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0400", { width: 472, height: 75 })
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0100
+         * @tc.name      : test pack gif PixelMap to buffer --callback
+         * @tc.desc      : 1.create imagesource
+         *               : 2.create PixelMap
+         *               : 3.create ImagePacker
+         *               : 4.call packing
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0100", 0, async function (done) {
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0100: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testPackGifToData(
+                    done, 
+                    "SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0100", 
+                    "moving_test.gif", 
+                    "PixelMap", 
+                    { width: 198, height: 202 }, 
+                    "callback"
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0200
+         * @tc.name      : test pack gif ImageSource to buffer --callback
+         * @tc.desc      : 1.create imagesource
+         *               : 2.create ImagePacker
+         *               : 3.call packing
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0200", 0, async function (done) {
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0200: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testPackGifToData(
+                    done, 
+                    "SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0200", 
+                    "moving_test.gif", 
+                    "ImageSource", 
+                    { width: 198, height: 202 }, 
+                    "callback"
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0300
+         * @tc.name      : test pack gif PixelMap to buffer --promise
+         * @tc.desc      : 1.create imagesource
+         *               : 2.create PixelMap
+         *               : 3.create ImagePacker
+         *               : 4.call packing
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0300", 0, async function (done) {
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0300: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testPackGifToData(
+                    done, 
+                    "SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0300", 
+                    "moving_test.gif", 
+                    "PixelMap", 
+                    { width: 198, height: 202 }, 
+                    "promise"
+                );
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0400
+         * @tc.name      : test pack gif ImageSource to buffer --promise
+         * @tc.desc      : 1.create imagesource
+         *               : 2.create ImagePacker
+         *               : 3.call packing
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0400", 0, async function (done) {
+            if (!isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0400: This device does not support GIF encoding.")
+                expect(true).assertTrue();
+                done();
+            } else {
+                await testPackGifToData(
+                    done, 
+                    "SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0400", 
+                    "moving_test.gif", 
+                    "ImageSource", 
+                    { width: 198, height: 202 }, 
+                    "promise"
+                );
+            }
         });
     });
 }

@@ -25,6 +25,7 @@ export default function imageWebp() {
         let globalImagesource;
         let globalPacker;
         let filePath;
+        let isSupportGifEncode;
         async function getFd(fileName) {
             let context = await featureAbility.getContext();
             await context.getFilesDir().then((data) => {
@@ -35,6 +36,7 @@ export default function imageWebp() {
 
         beforeAll(async function () {
             console.info("beforeAll case");
+            isSupportGifEncode = image.createImagePacker().supportedFormats.includes("image/gif");
         });
 
         beforeEach(function () {
@@ -1090,8 +1092,14 @@ export default function imageWebp() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0200", 0, async function (done) {
-            let packOpts = { format: ["image/gif"], quality: 90 };
-            packingPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0200", packOpts);
+            if (isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200: The device support gif encode")
+                expect(true).assertTrue();
+                done();
+            } else {
+                let packOpts = { format: ["image/gif"], quality: 90 };
+                packingPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0200", packOpts);
+            }
         });
 
         /**
@@ -1135,8 +1143,14 @@ export default function imageWebp() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0100", 0, async function (done) {
-            let packOpts = { format: ["image/gif"], quality: 100 };
-            packingCbErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0100", packOpts);
+            if (isSupportGifEncode) {
+                console.info("SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200: The device support gif encode")
+                expect(true).assertTrue();
+                done();
+            } else {
+                let packOpts = { format: ["image/gif"], quality: 100 };
+                packingCbErr(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0100", packOpts);
+            }
         });
 
         /**
