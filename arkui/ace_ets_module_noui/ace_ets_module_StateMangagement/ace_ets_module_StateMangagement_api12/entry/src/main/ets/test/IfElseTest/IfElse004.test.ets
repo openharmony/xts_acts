@@ -16,8 +16,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import { UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager,Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager,Callback } from '../../MainAbility/common/MessageManager';
 
 export default function IfElse004Test() {
   describe('IfElse004Test', () => {
@@ -54,7 +54,7 @@ export default function IfElse004Test() {
       console.info('[IfElse004Test_01] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);
-      let text_11 = JSON.parse(getInspectorByKey('text_11'));
+      let text_11: ESObject = JSON.parse(getInspectorByKey('text_11'));
       expect(text_11.$attrs.content).assertEqual('0');
       expect(text_11.$attrs.backgroundColor).assertEqual('#FF00AAAA');
       let btn_1 = await driver.findComponent(ON.id('btn_1'));
@@ -62,7 +62,7 @@ export default function IfElse004Test() {
       await btn_1.click();
       await btn_1.click();
       await CommonFunc.sleep(1000);
-      let text_12 = JSON.parse(getInspectorByKey('text_12'));
+      let text_12: ESObject = JSON.parse(getInspectorByKey('text_12'));
       expect(text_12.$attrs.content).assertEqual('2');
       expect(text_12.$attrs.backgroundColor).assertEqual('#FFAAAAFF');
 
@@ -70,7 +70,7 @@ export default function IfElse004Test() {
       await btn_1.click();
       await btn_1.click();
       await CommonFunc.sleep(1000);
-      let text_13 = JSON.parse(getInspectorByKey('text_13'));
+      let text_13: ESObject = JSON.parse(getInspectorByKey('text_13'));
       expect(text_13.$attrs.content).assertEqual('5');
       expect(text_13.$attrs.backgroundColor).assertEqual('#FFFFAAAA');
 
@@ -80,7 +80,7 @@ export default function IfElse004Test() {
       await btn_1.click();
       await btn_1.click();
       await CommonFunc.sleep(1000);
-      let text_14 = JSON.parse(getInspectorByKey('text_14'));
+      let text_14: ESObject = JSON.parse(getInspectorByKey('text_14'));
       expect(text_14.$attrs.content).assertEqual('out of range!');
       await CommonFunc.sleep(1000);
 
@@ -91,7 +91,7 @@ export default function IfElse004Test() {
       console.info('[IfElse004Test_02] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);
-      let text_21 = JSON.parse(getInspectorByKey('text_21'));
+      let text_21: ESObject = JSON.parse(getInspectorByKey('text_21'));
       expect(text_21.$attrs.content).assertEqual('0');
       expect(text_21.$attrs.backgroundColor).assertEqual('#FF00AAAA');
       let btn_2 = await driver.findComponent(ON.id('btn_2'));
@@ -99,7 +99,7 @@ export default function IfElse004Test() {
       await btn_2.click();
       await btn_2.click();
       await CommonFunc.sleep(1000);
-      let text_22 = JSON.parse(getInspectorByKey('text_22'));
+      let text_22: ESObject = JSON.parse(getInspectorByKey('text_22'));
       expect(text_22.$attrs.content).assertEqual('2');
       expect(text_22.$attrs.backgroundColor).assertEqual('#FFAAAAFF');
 
@@ -107,7 +107,7 @@ export default function IfElse004Test() {
       await btn_2.click();
       await btn_2.click();
       await CommonFunc.sleep(1000);
-      let text_23 = JSON.parse(getInspectorByKey('text_23'));
+      let text_23: ESObject = JSON.parse(getInspectorByKey('text_23'));
       expect(text_23.$attrs.content).assertEqual('5');
       expect(text_23.$attrs.backgroundColor).assertEqual('#FFFFAAAA');
 
@@ -117,7 +117,7 @@ export default function IfElse004Test() {
       await btn_2.click();
       await btn_2.click();
       await CommonFunc.sleep(1000);
-      let text_24 = JSON.parse(getInspectorByKey('text_24'));
+      let text_24: ESObject = JSON.parse(getInspectorByKey('text_24'));
       expect(text_24.$attrs.content).assertEqual('out of range!');
       await CommonFunc.sleep(1000);
 

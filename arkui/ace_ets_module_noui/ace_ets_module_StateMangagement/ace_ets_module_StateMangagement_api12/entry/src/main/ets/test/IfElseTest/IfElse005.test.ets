@@ -16,8 +16,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import { UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager,Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager,Callback } from '../../MainAbility/common/MessageManager';
 
 export default function IfElse005Test() {
   describe('IfElse005Test', () => {
@@ -55,7 +55,7 @@ export default function IfElse005Test() {
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(ON.id('btn'));
-      let text = JSON.parse(getInspectorByKey('text'));
+      let text: ESObject = JSON.parse(getInspectorByKey('text'));
       expect(text.$attrs.content).assertEqual('this.flag = false.');
       await btn.click();
       await CommonFunc.sleep(1000);

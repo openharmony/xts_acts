@@ -16,8 +16,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import { UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager,Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager,Callback } from '../../MainAbility/common/MessageManager';
 
 export default function IfElse002Test() {
   describe('IfElse002Test', () => {
@@ -74,20 +74,20 @@ export default function IfElse002Test() {
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);
       let val_btn = await driver.findComponent(ON.id('val_btn'));
-      let val_text_1 = JSON.parse(getInspectorByKey('val_text_1'));
+      let val_text_1: ESObject = JSON.parse(getInspectorByKey('val_text_1'));
       expect(val_text_1.$attrs.content).assertEqual('0');
       expect(val_text_1.$attrs.backgroundColor).assertEqual('#FF00AAAA');
       await val_btn.click();
       await val_btn.click();
       await CommonFunc.sleep(1000);
-      let val_text_2 = JSON.parse(getInspectorByKey('val_text_2'));
+      let val_text_2: ESObject = JSON.parse(getInspectorByKey('val_text_2'));
       expect(val_text_2.$attrs.content).assertEqual('2');
       expect(val_text_2.$attrs.backgroundColor).assertEqual('#FFAAAAFF');
       await val_btn.click();
       await val_btn.click();
       await val_btn.click();
       await CommonFunc.sleep(1000);
-      let val_text_3 = JSON.parse(getInspectorByKey('val_text_3'));
+      let val_text_3: ESObject = JSON.parse(getInspectorByKey('val_text_3'));
       expect(val_text_3.$attrs.content).assertEqual('5');
       expect(val_text_3.$attrs.backgroundColor).assertEqual('#FFFFAAAA');
       await val_btn.click();
@@ -96,7 +96,7 @@ export default function IfElse002Test() {
       await val_btn.click();
       await val_btn.click();
       await CommonFunc.sleep(1000);
-      let val_text_4 = JSON.parse(getInspectorByKey('val_text_4'));
+      let val_text_4: ESObject = JSON.parse(getInspectorByKey('val_text_4'));
       expect(val_text_4.$attrs.content).assertEqual('out of range!');
       await CommonFunc.sleep(1000);
 
