@@ -487,7 +487,7 @@ export default function saveComponentTest_1() {
     it('Test_Security_Button_Save_3100', 0, async function (done) {
       console.info('====>[Test_Security_Button_Save_3100] START====');
       await Utils.sleep(1000);
-      let strJsonNew = getInspectorByKey('keySave10');
+      let strJsonNew = getInspectorByKey('keySave15');
       let obj = JSON.parse(strJsonNew);
       console.info("====>component obj.$attrs.text:" + obj.$attrs.text);
       expect(obj.$attrs.text).assertEqual(9);
@@ -544,7 +544,7 @@ export default function saveComponentTest_1() {
     it('Test_Security_Button_Save_3200', 0, async function (done) {
       console.info('====>[Test_Security_Button_Save_3200] START====');
       await Utils.sleep(1000);
-      let strJsonNew = getInspectorByKey('keySave11');
+      let strJsonNew = getInspectorByKey('keySave16');
       let obj = JSON.parse(strJsonNew);
       console.info("====>component obj.$attrs.text:" + obj.$attrs.text);
       expect(obj.$attrs.text).assertEqual(10);
@@ -601,7 +601,7 @@ export default function saveComponentTest_1() {
     it('Test_Security_Button_Save_3300', 0, async function (done) {
       console.info('====>[Test_Security_Button_Save_3300] START====');
       await Utils.sleep(1000);
-      let strJsonNew = getInspectorByKey('keySave12');
+      let strJsonNew = getInspectorByKey('keySave17');
       let obj = JSON.parse(strJsonNew);
       console.info("====>component obj.$attrs.text:" + obj.$attrs.text);
       expect(obj.$attrs.text).assertEqual(11);

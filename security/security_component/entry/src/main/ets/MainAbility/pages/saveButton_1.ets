@@ -389,7 +389,7 @@ struct saveButton_1 {
           .borderRadius(this.borderRad)
           .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
           .textIconSpace(this.middle)
-          .key("keySave10")
+          .key("keySave15")
       }.width('100%').height(this.heightValue).margin(this.marginValue)
       Row() {
         SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: this.bgType })
@@ -427,7 +427,7 @@ struct saveButton_1 {
           .borderRadius(this.borderRad)
           .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
           .textIconSpace(this.middle)
-          .key("keySave11")
+          .key("keySave16")
       }.width('100%').height(this.heightValue).margin(this.marginValue)
       Row() {
         SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.RESAVE_TO_GALLERY, buttonType: this.bgType })
@@ -465,7 +465,7 @@ struct saveButton_1 {
           .borderRadius(this.borderRad)
           .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
           .textIconSpace(this.middle)
-          .key("keySave12")
+          .key("keySave17")
       }.width('100%').height(this.heightValue).margin(this.marginValue)
     }
   }
