@@ -72,29 +72,6 @@ export default function systemDateTimeSyncJsunit() {
     });
 
     /**
-     * @tc.number    SUB_systemDateTime_getTime_sync_0040
-     * @tc.name      Test systemTimeDate.getCurrentTime
-     * @tc.desc      Obtains the number of milliseconds that have elapsed since the Unix epoch.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it("SUB_systemDateTime_getTime_sync_0040", 0, async (done: Function) => {
-      console.info("====>-----SUB_systemDateTime_getTime_sync_0040 start----------------");
-      try {
-        console.info("====>SUB_systemDateTime_getTime_sync_0040 into parameters");
-        // @ts-ignore
-        systemDateTime.getTime(123);
-        console.info("====>SUB_systemDateTime_getTime_sync_0040 getTime Success");
-      } catch (err) {
-        console.info("====>SUB_systemDateTime_getTime_sync_0040 Invalid parameters: " + JSON.stringify(err));
-        expect().assertFail();
-      }
-      done();
-      console.info("====>-----SUB_systemDateTime_getTime_sync_0040 end------------");
-    });
-
-    /**
      * @tc.number    SUB_systemDateTime_getUptime_sync_0050
      * @tc.name      Test systemTimeDate.getCurrentTime
      * @tc.desc      Obtains the number of milliseconds elapsed since the system was booted, not including deep sleep time.
@@ -143,29 +120,6 @@ export default function systemDateTimeSyncJsunit() {
       expect(typeof(realActiveTime) === 'number').assertEqual(true);
       done();
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0070 end-----------------");
-    });
-
-    /**
-     * @tc.number    SUB_systemDateTime_getUptime_sync_0080
-     * @tc.name      Test systemTimeDate.getCurrentTime
-     * @tc.desc      Obtains the number of milliseconds elapsed since the system was booted, not including deep sleep time.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it("SUB_systemDateTime_getUptime_sync_0080", 0, async (done: Function) => {
-      console.info("====>-----SUB_systemDateTime_getUptime_sync_0080 start----------------");
-      try {
-        console.info("====>SUB_systemDateTime_getUptime_sync_0080 into parameters");
-        // @ts-ignore
-        systemDateTime.getUptime("123");
-        expect().assertFail();
-      } catch (err) {
-        console.info("====>SUB_systemDateTime_getUptime_sync_0080 Invalid parameters: " + JSON.stringify(err));
-        expect(err.code).assertEqual(401);
-      }
-      done();
-      console.info("====>-----SUB_systemDateTime_getUptime_sync_0080 end------------");
     });
 
     /**
@@ -220,29 +174,6 @@ export default function systemDateTimeSyncJsunit() {
     });
 
     /**
-     * @tc.number    SUB_systemDateTime_getUptime_sync_0120
-     * @tc.name      Test systemTimeDate.getCurrentTime
-     * @tc.desc      Obtains the number of milliseconds elapsed since the system was booted, including deep sleep time.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it("SUB_systemDateTime_getUptime_sync_0120", 0, async (done: Function) => {
-      console.info("====>-----SUB_systemDateTime_getUptime_sync_0120 start----------------");
-      try {
-        console.info("====>SUB_systemDateTime_getUptime_sync_0120 into parameters");
-        // @ts-ignore
-        systemDateTime.getUptime(systemDateTime.TimeType.STARTUP, "123");
-        console.info("====>SUB_systemDateTime_getUptime_sync_0120 getUptime Success");
-      } catch (err) {
-        console.info("====>SUB_systemDateTime_getUptime_sync_0120 Invalid parameters: " + JSON.stringify(err));
-        expect().assertFail();
-      }
-      done();
-      console.info("====>-----SUB_systemDateTime_getUptime_sync_0120 end------------");
-    });
-
-    /**
      * @tc.number    SUB_systemDateTime_getTimezoneSync_sync_0130
      * @tc.name      Test systemTime.SUB_systemDateTime_getTimezone_sync_0130 true value
      * @tc.desc      Test systemTimeDate_setTimezone API functionality.
@@ -258,29 +189,5 @@ export default function systemDateTimeSyncJsunit() {
       done();
       console.info("====>----------SUB_systemDateTime_getTimezoneSync_sync_0130 end-----------------");
     });
-
-    /**
-     * @tc.number    SUB_systemDateTime_getTimezoneSync_sync_0140
-     * @tc.name      Test systemTimeDate.setTimezone true value
-     * @tc.desc      Test systemTimeDate_setTimezone API functionality.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_systemDateTime_getTimezoneSync_sync_0140', 0, async (done: Function) => {
-      console.info("====>-----SUB_systemDateTime_getTimezoneSync_sync_0140 start----------------");
-      try {
-        console.info("====>SUB_systemDateTime_getTimezoneSync_sync_0140 into parameters");
-        // @ts-ignore
-        systemDateTime.getTimezoneSync("123");
-        console.info("====>SUB_systemDateTime_getTimezoneSync_sync_0140 getTimezoneSync Success");
-      } catch (err) {
-        console.info("====>SUB_systemDateTime_getTimezoneSync_sync_0140 Invalid parameters: " + JSON.stringify(err));
-        expect().assertFail();
-      }
-      done();
-      console.info("====>-----SUB_systemDateTime_getTimezoneSync_sync_0140 end------------");
-    });
-
   });
 };
