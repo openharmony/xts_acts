@@ -5499,6 +5499,16 @@ export const drag_getDataTypes_001: () => number;
 export const drag_setGetUdmfData_001: () => number;
 export const drag_setGetUdmfData_002: () => number;
 export const drag_setGetUdmfData_003: () => number;
+
+export const gestureTestParaMeter001: () => number;
+export const gestureTestParaMeter002: () => number;
+export const gestureTestParaMeter003: () => number;
+export const gestureTestParaMeter004: () => number;
+export const gestureTestParaMeter005: () => number;
+export const gestureTestParaMeter006: () => number;
+export const gestureTestParaMeter007: () => number;
+export const gestureTestParaMeter008: () => number;
+export const gestureTestParaMeter009: () => number;
 export const drag_setDragEventStrictReportWidthNode_001: () => number;
 export const drag_setDragEventStrictReportWidthNode_002: () => number;
 export const drag_setDragEventStrictReportWidthContext_003: () => number;
