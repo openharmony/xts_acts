@@ -50,7 +50,7 @@
 	"MainAbility/pages/PanGesture/Gesture",
 	"MainAbility/pages/DragController/UIContextDragController",
         "MainAbility/pages/tapGestureAddInterface/tapgestures",
-    
+        "MainAbility/pages/onAccessibilityHover/accessibilityHover",
         "MainAbility/pages/customGestureTest/btnMonoLongPress",
         "MainAbility/pages/customGestureTest/btnMonoTouch",
         "MainAbility/pages/customGestureTest/columnMonopolize",
