@@ -113,29 +113,28 @@ export default function windowPromiseTest(context: common.UIAbilityContext) {
       try {
         win = await ohosWindow.createWindow(windowConfig);
         expect(!!win).assertTrue();
-      } catch (err: BusinessError) {
+      } catch (err) {
         console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
         done()
       }
       try {
-        win.setWindowPrivacyMode(true, async (err: BusinessError) => {
+        win!.setWindowPrivacyMode(true, async (err: BusinessError) => {
+          await win!.destroyWindow()
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to set the window to privacy mode. Cause:' + JSON.stringify(err));
-            await win.destroyWindow()
             expect(err.code).assertEqual(201);
             done()
             return;
           }
           console.info(msgStr + 'Succeeded in setting the window to privacy mode.');
           expect().assertFail();
-          await win.destroyWindow()
           done();
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to set the window to privacy mode. Cause:' + JSON.stringify(exception));
-        await win.destroyWindow()
+        await win!.destroyWindow()
         expect(exception.code).assertEqual(201);
         done()
       }
@@ -161,24 +160,22 @@ export default function windowPromiseTest(context: common.UIAbilityContext) {
       try {
         win = await ohosWindow.createWindow(windowConfig);
         expect(!!win).assertTrue();
-      } catch (err: BusinessError) {
+      } catch (err) {
         console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
       }
       try {
-        await win.setWindowPrivacyMode(true).then(async () => {
+        await win!.setWindowPrivacyMode(true).then(async () => {
           console.info(msgStr + 'Succeeded in setting the window to privacy mode.');
-          await win.destroyWindow()
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to set the window to privacy mode. Cause: ' + JSON.stringify(err));
-          await win.destroyWindow()
           expect(err.code).assertEqual(201);
         });
+        await win!.destroyWindow()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the window to privacy mode. Cause:' + JSON.stringify(exception));
-        await win.destroyWindow()
+        await win!.destroyWindow()
         expect(exception.code).assertEqual(201);
       }
     })
