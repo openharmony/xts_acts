@@ -340,5 +340,69 @@ export default function graphicImagePixelMapTest(context, windowStage, abilitySt
       })
     });
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_036
+     * @tc.name      : testAntiAliasingLevel_enum
+     * @tc.desc      :  1.create PixelMap
+                        2.scale the pixelMap by three parameter, key is AntiAliasingLevel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testAntiAliasingLevel_enum", 0, async function (done) {
+      let msg = '=====testAntiAliasingLevel_enum====='
+      console.log(msg + " Example begin! ")
+      try{
+        console.log(msg + " image.AntiAliasingLevel.NONE " + image.AntiAliasingLevel.NONE)
+        console.log(msg + " image.AntiAliasingLevel.LOW " + image.AntiAliasingLevel.LOW)
+        console.log(msg + " image.AntiAliasingLevel.MEDIUM " + image.AntiAliasingLevel.MEDIUM)
+        console.log(msg + " image.AntiAliasingLevel.HIGH " + image.AntiAliasingLevel.HIGH)
+        expect(image.AntiAliasingLevel.NONE).assertEqual(0)
+        expect(image.AntiAliasingLevel.LOW).assertEqual(1)
+        expect(image.AntiAliasingLevel.MEDIUM).assertEqual(2)
+        expect(image.AntiAliasingLevel.HIGH).assertEqual(3)
+        console.log(msg + ' Example end !')
+        done();
+      }catch(error: BusinessError){
+        console.error( msg + ` Failed to AntiAliasingLevel enum. code is ${error.code}, message is ${error.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_037
+     * @tc.name      : testAntiAliasingLevel
+     * @tc.desc      :  1.create PixelMap
+                        2.scale the pixelMap by three parameter, key is AntiAliasingLevel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testAntiAliasingLevel", 0, async function (done) {
+      let msg = '=====testAntiAliasingLevel====='
+      console.log(msg + " Example begin! ")
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      await image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMap.');
+        try{
+          pixelMap.scale( 1, 2, image.AntiAliasingLevel.MEDIUM)
+          console.info( msg + ' Succeeded in scale pixelMap.');
+          console.log(msg + ' Example end !')
+          expect(true).assertTrue();
+          done();
+        }catch(error: BusinessError){
+          console.error( msg + ` Failed to scale pixelMap. code is ${error.code}, message is ${error.message}`);
+          expect().assertFail();
+          done();
+        }
+      }).catch((error: BusinessError) => {
+        console.error( msg + ` Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+        expect().assertFail();
+        done();
+      })
+    });
+
   })
 }
