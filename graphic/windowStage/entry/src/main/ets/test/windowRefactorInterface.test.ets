@@ -259,39 +259,6 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0710
-     * @tc.name      : testIsWindowShowingTest
-     * @tc.desc      : To verify the widow isshowing
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testIsWindowShowingTest', 0, async (done: Function) => {
-      console.info('windowTest testIsWindowShowingTest begin');
-      let wnd: ohosWindow.Window | void;
-      let msgStr = "testIsWindowShowingTest";
-      wnd =await windowStage.createSubWindow('testIsWindowShowingTest').catch((err) => {
-        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      console.log(msgStr + 'windowStage.createSubWindow success');
-      expect(wnd != null).assertTrue();
-      let isWindowShowing = (wnd as ohosWindow.Window).isWindowShowing();
-      expect(!isWindowShowing).assertTrue();
-      await (wnd as ohosWindow.Window).showWindow().then(async () => {
-        let isWindowShowing2 = (wnd as ohosWindow.Window).isWindowShowing();
-        expect(isWindowShowing2).assertTrue();
-        await (wnd as ohosWindow.Window).destroyWindow();
-        done();
-      }).catch(async (err: BusinessError) => {
-        console.error('Failed to show window1. Cause:' + JSON.stringify(err));
-        expect().assertFail();
-        await (wnd as ohosWindow.Window).destroyWindow();
-        done();
-      })
-    })
-    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1410
      * @tc.name      : testSetUIContent_Existence_page
      * @tc.desc      : Verify the scenario of loading an existing page

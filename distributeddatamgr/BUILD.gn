@@ -25,6 +25,7 @@ group("distributeddatamgr") {
       "distributedKVStoretest:distributedKVStoretest",
       "kvStoretest:kvStoretest",
       "preferencesEtstest:ActsPreferencesEtsTest",
+      "preferencesSendabletest:preferencesSendable_ets_test",
       "preferencesdatagroupidtest:ActsPreferencesDataGroupIdTest",
       "preferencesjstest/hap:preferences_js_test",
       "relationalStoretest:relationalStoretest",

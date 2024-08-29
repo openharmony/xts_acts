@@ -26,10 +26,9 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrintTest001', 0, async (done: Function) => {
-      let result: number = entry.oHPrintInit();
+    it('testOHPrint001', 0, async () => {
+      let result: number = await entry.oHPrintInit();
       expect(result).assertEqual(0);
-      done();
     });
 
     /**
@@ -40,10 +39,9 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint002', 0, async (done: Function) => {
-      let result: number = entry.oHPrintListener();
+    it('testOHPrint002', 0, async () => {
+      let result: number = await entry.oHPrintListener();
       expect(result).assertEqual(0);
-      done();
     });
 
     /**
@@ -54,10 +52,9 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint003', 0, async (done: Function) => {
-      let result: number = entry.oHPrintDiscovery();
+    it('testOHPrint003', 0, async () => {
+      let result: number = await entry.oHPrintDiscovery();
       expect(result).assertEqual(0);
-      done();
     });
 
     /**
@@ -68,10 +65,9 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint004', 0, async (done: Function) => {
-      let result: number = entry.oHPrintConnect();
+    it('testOHPrint004', 0, async () => {
+      let result: number = await entry.oHPrintConnect();
       expect(result).assertEqual(0);
-      done();
     });
 
     /**
@@ -82,10 +78,9 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint005', 0, async (done: Function) => {
-      let result: number = entry.oHPrintJob();
+    it('testOHPrint005', 0, async () => {
+      let result: number = await entry.oHPrintJob();
       expect(result).assertEqual(0);
-      done();
     });
 
     /**
@@ -96,10 +91,9 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint006', 0, async (done: Function) => {
-      let result: number = entry.oHPrintList();
+    it('testOHPrint006', 0, async () => {
+      let result: number = await entry.oHPrintList();
       expect(result).assertEqual(0);
-      done();
     });
 
     /**
@@ -110,10 +104,9 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint007', 0, async (done: Function) => {
-      let result: number = entry.oHPrintInfo();
+    it('testOHPrint007', 0, async () => {
+      let result: number = await entry.oHPrintInfo();
       expect(result).assertEqual(0);
-      done();
     });
 
     /**
@@ -124,10 +117,9 @@ export default function oHPrintTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPrint008', 0, async (done: Function) => {
-      let result: number = entry.oHPrintProperty();
+    it('testOHPrint008', 0, async () => {
+      let result: number = await entry.oHPrintProperty();
       expect(result).assertEqual(0);
-      done();
     });
   })
 }

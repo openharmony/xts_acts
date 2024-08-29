@@ -14,6 +14,7 @@
 import("//build/config/ohos/config.gni")
 import("//build/ohos.gni")
 import("//foundation/arkui/napi/napi.gni")
+import("//foundation/multimedia/media_library/media_library.gni")
 
 MEDIA_ROOT_DIR = "//foundation/multimedia/media_library/"
 config("config") {
@@ -32,13 +33,46 @@ config("public_config") {
 
 ohos_shared_library("mediaAssetManager") {
   sources = [ "./napi/mediaAssetManager.cpp" ]
-  include_dirs = [ "../cpp" ]
+  include_dirs = [
+    "../cpp",
+    "${MEDIALIB_IMAGE_FRAMEWORK_PATH}/frameworks/kits/js/common/ndk/include/",
+    "${MEDIALIB_IMAGE_FRAMEWORK_PATH}/interfaces/kits/native/include/image",
+  ]
   configs = [ ":config" ]
 
   external_deps = [
     "c_utils:utils",
     "hilog:libhilog",
+    "image_framework:image",
+    "image_framework:image_source",
     "napi:ace_napi",
+    "resource_management:librawfile",
+  ]
+  deps = [ "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_asset_manager" ]
+  output_extension = "so"
+  subsystem_name = "multimedia"
+  part_name = "media_library"
+}
+
+ohos_shared_library("photoAccessHelperTest") {
+  sources = [
+    "./napi/main.cpp",
+    "./napi/photoAccessHelper.cpp",
+  ]
+  include_dirs = [
+    "../cpp",
+    "${MEDIALIB_IMAGE_FRAMEWORK_PATH}/frameworks/kits/js/common/ndk/include/",
+    "${MEDIALIB_IMAGE_FRAMEWORK_PATH}/interfaces/kits/native/include/image",
+  ]
+  configs = [ ":config" ]
+
+  external_deps = [
+    "c_utils:utils",
+    "hilog:libhilog",
+    "image_framework:image",
+    "image_framework:image_source",
+    "napi:ace_napi",
+    "resource_management:librawfile",
   ]
   deps = [ "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_asset_manager" ]
   output_extension = "so"

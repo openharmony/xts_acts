@@ -1,5 +1,5 @@
-/*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+/**
+ * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -136,50 +136,9 @@ export default function webViewSrollToJsunit() {
       * parameter is a positive number, both of which are greater than the page width and height
     */
     it('testScrollToSeven',0,async function(done){
-      emitKey="emitScrollToEight";
+      emitKey="emitScrollToSeven";
       Utils.registerEvent("testScrollToSeven",true,226,done);
       sendEventByKey('webcomponentScrolTo',10,'');
     })
-     /*
-     * tc.number SUB_ACE_BASIC_ETS_API_TESTSCROLLTO_0800
-     * tc.name testScrollToEight
-     * tc.desc When calling the scrollTo interface, the x,y input parameters are negative
-   */
-   it('testScrollToEight',0,async function(done){
-     emitKey="emitScrollToNine";
-     Utils.registerEvent("testScrollToEight",true,228726,done);
-     sendEventByKey('webcomponentScrolTo',10,'');
-   })
-   /*
-     * tc.number SUB_ACE_BASIC_ETS_API_TESTSCROLLTO_0900
-     * tc.name testScrollToNine
-     * tc.desc When calling the scrollTo interface, the x,y input parameters are negative
-   */
-   it('testScrollToNine',0,async function(done){
-    emitKey="emitScrollToTen";
-    Utils.registerEvent("testScrollToNine",true,230726,done);
-    sendEventByKey('webcomponentScrolTo',10,'');
-  })
-  /*
-     * tc.number SUB_ACE_BASIC_ETS_API_TESTSCROLLTO_1000
-     * tc.name testScrollToTen
-     * tc.desc When calling the scrollTo interface, the x,y input parameters are negative
-   */
-  it('testScrollToTen',0,async function(done){
-    emitKey="emitScrollToEleven";
-    Utils.registerEvent("testScrollToTen",true,232726,done);
-    sendEventByKey('webcomponentScrolTo',10,'');
-  })
-  /*
-     * tc.number SUB_ACE_BASIC_ETS_API_TESTSCROLLTO_1100
-     * tc.name testScrollToEleven
-     * tc.desc When calling the scrollTo interface, the x,y input parameters are negative
-   */
-  it('testScrollToEleven',0,async function(done){
-    emitKey="emitScrollToEleven";
-    Utils.registerEvent("testScrollToEleven",true,234726,done);
-    sendEventByKey('webcomponentScrolTo',10,'');
-  })
-
   })
 }

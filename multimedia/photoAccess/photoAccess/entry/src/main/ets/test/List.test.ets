@@ -71,6 +71,7 @@ import requestVideoTest from './MediaAssetManager/requestVideo'
 import groupAlbumsTest from './PhotoAccessHelper/groupAlbums'
 import handleCameraPhotoTest from './MediaAssetChangeRequest/handleCameraPhoto.test'
 import showAssetsCreationDialogTest from './PhotoAccessHelper/showAssetsCreationDialog.test'
+import PhotoAccessHelperNativeTest from './PhotoAccessHelper/photoAccessHelperNative'
 import getBurstAssetsTest from './PhotoAccessHelper/getBurstAssets.test'
 
 export default function testsuite () {
@@ -133,5 +134,6 @@ export default function testsuite () {
   groupAlbumsTest()
   handleCameraPhotoTest()
   showAssetsCreationDialogTest()
+  PhotoAccessHelperNativeTest()
   getBurstAssetsTest()
 }

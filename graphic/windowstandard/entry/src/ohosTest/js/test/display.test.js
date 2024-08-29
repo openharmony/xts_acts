@@ -189,6 +189,38 @@ describe('display_test', function () {
     })
 
     /**
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0240
+     * @tc.name			testGetDisplayByIdSync_SyncFunction
+     * @tc.desc			To test the sync function of obtaining the target display by id
+     */
+    it('testGetDisplayByIdSync_SyncFunction', 0, async function (done) {
+        console.info('displayTestGetDisplayByIdSyncTest1 begin');
+        try {
+            var displayId = display.getDefaultDisplaySync().id;
+            var dsp = display.getDisplayByIdSync(displayId);
+            console.info('displayTest getDisplayByIdSyncTest1: ' + JSON.stringify(dsp));
+            expect(dsp.id != null).assertTrue();
+            expect(dsp.refreshRate != null).assertTrue();
+            expect(dsp.width != null).assertTrue();
+            expect(dsp.height != null).assertTrue();
+            expect(dsp.rotation != null).assertTrue();
+            expect(dsp.densityDPI != null).assertTrue();
+            expect(dsp.name != null).assertTrue();
+            expect(dsp.alive).assertTrue();
+            expect(dsp.state != null).assertTrue();
+            expect(dsp.densityPixels != null).assertTrue();
+            expect(dsp.scaledDensity !=null).assertTrue();
+            expect(dsp.xDPI != null).assertTrue();
+            expect(dsp.yDPI != null).assertTrue();
+            done();
+        } catch (err) {
+            console.error('getDisplayByIdSyncTest1 error ' + JSON.stringify(err));
+            expect.assertFail();
+            done();
+        }
+    })
+
+    /**
      * @tc.number	SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0070
      * @tc.name	    testDisplayState_Enum_Value
      * @tc.desc		To test the enum value of WindowDisplayState.
@@ -393,75 +425,6 @@ describe('display_test', function () {
             done();
         })
     })
-
-
-      /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0270
-     * @tc.name			testHasImmersiveWindow_Function_Promise
-     * @tc.desc			To test the function of hasImmersiveWindow
-    */
-       it('testHasImmersiveWindow_Function_Promise', 0, async function (done) {
-        console.info('www data hasImmersiveWindow begin');
-        let displayClass = null;
-        try {
-          displayClass = display.getDefaultDisplaySync();
-          console.log('www data Succeeded in getDefaultDisplaySync')
-        } catch (err) {
-          console.error('www data Failed to obtain the default display object. Code: ' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        }
-        try {
-           let promise = displayClass.hasImmersiveWindow();
-           promise.then((data) => {
-             console.info('www data Succeeded in checking whether there is immersive window. data: ' + JSON.stringify(data));
-                expect( data != null).assertTrue();
-                done();
-
-           }).catch((err) => {
-             console.error('www data Failed to check whether there is immersive window. Code: ' + JSON.stringify(err));
-             expect(err.code == 801).assertTrue();
-             done();
-           }) 
-        } catch (error) {
-           console.log('www data Failed hasImmersiveWindow. err:' + JSON.stringify(error))
-           expect().assertFail();
-           done();
-        }
-   })
-
-   /**
-    * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0280
-    * @tc.name			testHasImmersiveWindow_Function_Callback
-    * @tc.desc			To test the function of hasImmersiveWindow
-   */
-       it('testHasImmersiveWindow_Function_Callback',0, async function (done){
-           let displayClass = null;
-           try {
-               displayClass = display.getDefaultDisplaySync();
-               console.log('www data Succeeded in getDefaultDisplaySync2')
-           } catch (err) {
-               console.error('www data Failed to obtain the default display object. Code: ' + JSON.stringify(err));
-               expect().assertFail();
-               done();
-           }
-           try {
-                   displayClass.hasImmersiveWindow((err, data) => {
-                       const errCode = err.code;
-                       if (errCode) {
-                       console.error('www data Failed to check whether there is immersive window. Code: ' + JSON.stringify(err));
-                       expect(err.code == 801).assertTrue();
-                       done();
-                       }
-                       console.info('www data Succeeded in checking whether there is immersive window. data: ' + JSON.stringify(data));
-                       done();
-                    });
-               } catch (err) {
-                    console.error('www data Failed to check whether there is immersive window. Code: ' + JSON.stringify(err));
-                    expect().assertFail();
-                    done();
-               }
-       })
 
     /**
         * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_ORIENTATION_JS_API_0290

@@ -310,7 +310,7 @@ export default function bluetoothAdvertisingTest() {
         });
       } catch (err) {
         console.info("04errCode:" + err.code + ",04errMessage:" + err.message);
-        expect(err.code).assertEqual(401);
+        expect(Number(err.code)).assertEqual(401);
       }
       await sleep(2000);
       done();
@@ -343,7 +343,7 @@ export default function bluetoothAdvertisingTest() {
         });
       } catch (err) {
         console.info("05errCode:" + err.code + ",05errMessage:" + err.message);
-        expect(err.code).assertEqual(401);
+        expect(Number(err.code)).assertEqual(401);
       }
       await sleep(2000);
       done();
@@ -376,7 +376,7 @@ export default function bluetoothAdvertisingTest() {
         });
       } catch (err) {
         console.info("07errCode:" + err.code + ",07errMessage:" + err.message);
-        expect(err.code).assertEqual(401);
+        expect(Number(err.code)).assertEqual(401);
       }
       await sleep(2000);
       done();
@@ -573,7 +573,7 @@ export default function bluetoothAdvertisingTest() {
       }
       catch (err) {
         console.info("12errCode:" + err.code + ",12errMessage:" + err.message);
-        expect(err.code).assertEqual(401);
+        expect(Number(err.code)).assertEqual(401);
       }
       await bluetooth.stopAdvertising(advHandle).then((data) => {
         console.info('[bluetooth_js] stopAdvertising promise result:' + JSON.stringify(data));
@@ -728,7 +728,7 @@ export default function bluetoothAdvertisingTest() {
       }
       catch (err) {
         console.info("15errCode:" + err.code + ",15errMessage:" + err.message);
-        expect(err.code).assertEqual(2900003);
+        expect(Number(err.code)).assertEqual(2900003);
       }
       await sleep(2000);
       done();
@@ -752,7 +752,7 @@ export default function bluetoothAdvertisingTest() {
           console.info('[bluetooth_js] enableAdvertising promise result16:' + JSON.stringify(data));
         }).catch(err => {
           console.info('bluetooth enableAdvertising has error: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(2900099);
+          expect(Number(err.code)).assertEqual(2900099);
         });
         await bluetooth.stopAdvertising(advHandle).then((data) => {
           console.info('[bluetooth_js] stopAdvertising promise result16:' + JSON.stringify(data));

@@ -177,7 +177,7 @@ describe('btConnectionTest', () => {
         } catch (error) {
             console.info(`[bluetooth_js]pinRequired error, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
         }
         done();
     })
@@ -196,7 +196,7 @@ describe('btConnectionTest', () => {
             expect(true).assertEqual(ret.length >= 0);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })
@@ -214,7 +214,7 @@ describe('btConnectionTest', () => {
             console.info('[bluetooth_js] getRemoteDeviceName ret2:' + JSON.stringify(ret));
          } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })
@@ -238,7 +238,7 @@ describe('btConnectionTest', () => {
             expect(bluetooth.BondState.BOND_STATE_BONDED == 2).assertTrue();
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off('bondStateChange', BondStateParam);
         done();
@@ -258,7 +258,7 @@ describe('btConnectionTest', () => {
             bluetooth.off('pinRequired', PinRequiredParam);
         } catch (err) {
             console.info("setDevicePairingConfirmation errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })
@@ -278,7 +278,7 @@ describe('btConnectionTest', () => {
             console.info('[bluetooth_js]getRemoteDeviceClass classOfDevice:' + DeviceClass.classOfDevice);
         } catch (err) {
             console.info("getRemoteDeviceClass errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })
@@ -297,7 +297,7 @@ describe('btConnectionTest', () => {
             });
         } catch (err) {
             console.info("setDevicePinCode callback errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })
@@ -318,7 +318,7 @@ describe('btConnectionTest', () => {
             })
         } catch (err) {
             console.info("setDevicePinCode promise errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })
@@ -344,7 +344,7 @@ describe('btConnectionTest', () => {
             expect(bluetooth.BondState.BOND_STATE_BONDED == 2).assertTrue();
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off('bondStateChange', BondStateParam1);
         done();
@@ -666,7 +666,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
         }
     } catch (err) {
         console.info("errCode:" + err.code + ",errMessage:" + err.message);
-        expect(err.code).assertEqual(2900099);
+        expect(Number(err.code)).assertEqual(2900099);
     }
     done();
     
@@ -688,7 +688,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
         bluetooth.stopBluetoothDiscovery();
     } catch (error) {
         console.info(`[bluetooth_js]bluetoothDeviceFin error, code is ${error.code},message is ${error.message}`);
-        expect(error.code).assertEqual(2900099);
+        expect(Number(error.code)).assertEqual(2900099);
     }
     bluetooth.off('bluetoothDeviceFind', onReceiveEvent2);
     done(); 
@@ -712,7 +712,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(Btname.LETTERS_TEST == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -733,7 +733,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(Btname.CHINESES_TEST2 == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -754,7 +754,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(Btname.NUM_TEST == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -775,7 +775,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(Btname.SYMBOL_TEST == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -797,7 +797,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(newName == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -819,7 +819,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(newName == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -841,7 +841,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(newName == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -862,7 +862,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(Btname.MIXES4 == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -883,7 +883,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(Btname.MIXES2 == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -904,7 +904,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(Btname.MIXES3 == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -926,7 +926,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(newName == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -948,7 +948,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(newName == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -969,7 +969,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(Btname.MIXES6 == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -990,7 +990,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(Btname.MIXES == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -1011,7 +1011,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(Btname.MIXES5 == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -1032,7 +1032,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(Btname.NUM_TEST1 == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -1053,7 +1053,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(false).assertEqual(Btname.MIXES7 == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -1075,7 +1075,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             console.info('[bluetooth_js] getLocalName1800 = ' + JSON.stringify(localName));
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -1105,7 +1105,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(localName == getLocalName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(801);
+            expect(Number(err.code)).assertEqual(801);
         }
         done();
     })
@@ -1123,7 +1123,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(connectionState == 0 || connectionState == 1 || connectionState == 2 || connectionState == 3);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })
@@ -1141,7 +1141,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(result == 0 || result == 1 || result == 2 || result == 3);
         } catch (err) {
             console.info("getProfileConnectionState errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(401);
+            expect(Number(err.code)).assertEqual(401);
         }
         done();
     })
@@ -1230,7 +1230,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(state == 0 || state == 1 || state == 2);
         } catch (err) {
             console.info("getPairState errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })
@@ -1248,7 +1248,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             console.log('[bluetooth_js] isBluetoothDiscovering: ' + result);
             expect(result).assertEqual(false);
         } catch (err) {
-            console.info("getPairState errCode:" + err.code + ",errMessage:" + err.message);
+            console.info("isBluetoothDiscovering errCode:" + err.code + ",errMessage:" + err.message);
             expect().assertFail();
         }
         done();
@@ -1268,7 +1268,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             });
         } catch (err) {
             console.info("setRemoteDeviceName errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(401);
+            expect(Number(err.code)).assertEqual(401);
         }
         done();
     })
@@ -1294,7 +1294,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             });
         } catch (err) {
             console.info("getRemoteDeviceBatteryInfo errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })
@@ -1325,11 +1325,12 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             await getRemoProUid().then((data) => {
                 console.info("[bluetooth_js]09 connection done" + data);
                 done();
-            }, (err: BusinessError) => {
-                    console.info("[bluetooth_js]getRemoteProfileUuids failed" + err.code);
-                    expect(2900099).assertEqual(err);
-                    done();
-                })
+            },
+            (e: BusinessError) => {
+                console.info("[bluetooth_js]09 connection done" + e);
+                expect(2900099).assertEqual(e);
+                done();
+            })
         } catch (error) {
             console.info("[bluetooth_js] error code connection -> " + error.code + " error info connection  -> " + error.message);
         }
@@ -1350,7 +1351,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             });
         } catch (error) {
             console.info("[bluetooth_js] error code connection -> " + error.code + " error info connection  -> " + error.message);
-            expect(error.code).assertEqual(2900099);
+            expect(Number(error.code)).assertEqual(2900099);
         }
         done();
     })
