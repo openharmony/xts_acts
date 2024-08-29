@@ -73,7 +73,7 @@ struct BaseDialog_CustomDialogUser {
             let promptAction = uiContext.getPromptAction();
             let contentNode = new ComponentContent(uiContext, wrapBuilder(BaseDialog_CustomDialogExample), new Params(this.message));
             promptAction.openCustomDialog(contentNode, {
-              keyboardAvoidMode: this.keyboardAvoidMode1
+              keyboardAvoidMode: KeyboardAvoidMode.DEFAULT,
             })
             this.mText1 = this.keyboardAvoidMode1 + ''
             setTimeout(() => {
@@ -90,7 +90,7 @@ struct BaseDialog_CustomDialogUser {
             let promptAction = uiContext.getPromptAction();
             let contentNode = new ComponentContent(uiContext, wrapBuilder(BaseDialog_CustomDialogExample), new Params(this.message));
             promptAction.openCustomDialog(contentNode, {
-              keyboardAvoidMode: this.keyboardAvoidMode2
+              keyboardAvoidMode: KeyboardAvoidMode.NONE,
             })
             this.mText2 = this.keyboardAvoidMode2 + ''
             setTimeout(() => {

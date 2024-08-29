@@ -66,7 +66,7 @@ struct Index {
               builder: () => {
                 this.customDialogComponent()
               },
-              keyboardAvoidMode: this.keyboardAvoidMode1,
+              keyboardAvoidMode: KeyboardAvoidMode.DEFAULT,
               onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
                 console.info("reason" + JSON.stringify(dismissDialogAction.reason))
                 console.log("dialog onWillDismiss")
@@ -95,7 +95,7 @@ struct Index {
               builder: () => {
                 this.customDialogComponent()
               },
-              keyboardAvoidMode: this.keyboardAvoidMode2,
+              keyboardAvoidMode: KeyboardAvoidMode.NONE,
               onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
                 console.info("reason" + JSON.stringify(dismissDialogAction.reason))
                 console.log("dialog onWillDismiss")
