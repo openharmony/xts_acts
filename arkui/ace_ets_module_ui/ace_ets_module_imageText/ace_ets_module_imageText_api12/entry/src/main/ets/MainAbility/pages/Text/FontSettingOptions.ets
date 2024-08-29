@@ -14,7 +14,7 @@
  */
 @Entry
 @Component
-struct FontSettingOptions {
+struct FontSettingOptions1 {
   @State text1: string = 'This is test text1'
   @State text2: string = 'This is test text2'
 
