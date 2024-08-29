@@ -3626,7 +3626,7 @@ export default function AVSession() {
                 done();
             } 
         })
-        
+
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETALLCASTDISPLAYS_0100
          * @tc.name      : getAllCastDisplays
