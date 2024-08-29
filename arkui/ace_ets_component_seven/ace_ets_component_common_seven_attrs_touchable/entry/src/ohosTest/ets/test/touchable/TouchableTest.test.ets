@@ -33,7 +33,7 @@ export default function touchableTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testTouchable',
     pageName: 'TouchablePage',
     pageUrl: 'MainAbility/pages/touchable/TouchablePage',
@@ -48,21 +48,21 @@ export default function touchableTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetTouchable',
     setValue: {
       touchable: true
-    },
+    } as ESObject,
     expectValue: {
-      touchable: true
-    }
+     touchable: true
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('touchableTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.info('[' + data.caseTag + ']' + 'touchable is:' + data.viewObj.$attrs.touchable);
       expect(data.viewObj.$attrs.touchable)
         .assertEqual(data.testValue.expectValue.touchable);
