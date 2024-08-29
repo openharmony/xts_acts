@@ -27,7 +27,7 @@ namespace { static const uint32_t MAX_NAME_LENGTH = 1024; }
 static napi_value GetTimezone_0100(napi_env env, napi_callback_info info)
 {
     int  len = 35;
-    char *bufTmp = NULL;
+    char *bufTmp = nullptr;
     TimeService_ErrCode returnValue = OH_TimeService_GetTimeZone(bufTmp, len);
     //正常
     if (returnValue == TimeService_ErrCode::TIMESERVICE_ERR_OK) {
