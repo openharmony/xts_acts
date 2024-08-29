@@ -33,7 +33,7 @@ export default function getSendableBurstAssetsTest () {
 
   let sendablePhAccessHelper = sendablePhotoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext);
 
-  describe('getBurstAssetsTest', () => {
+  describe('getSendableBurstAssetsTest', () => {
     beforeAll(async () => {
       console.info('getBurstAssetsTest beforeAll case');
       await getPermission();
