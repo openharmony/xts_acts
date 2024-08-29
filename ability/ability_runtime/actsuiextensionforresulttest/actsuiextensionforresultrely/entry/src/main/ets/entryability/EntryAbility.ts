@@ -38,28 +38,40 @@ export default class EntryAbility extends UIAbility {
       AppStorage.SetOrCreate('want', {
         action: 'AsyncCallback_0100',
         bundleName: 'com.example.mainhap',
-        abilityName: 'UIExtAbility'
+        abilityName: 'UIExtAbility',
+        parameters:{
+          'ability.want.params.uiExtensionType': 'sys/commonUI'
+        }
       });
     } else if (want.action === 'AsyncCallback_0300') {
       console.info("====>EntryAbility want.action == 'AsyncCallback_0300':");
       AppStorage.SetOrCreate('want', {
         action: 'AsyncCallback_0300',
         bundleName: 'com.example.mainhap',
-        abilityName: 'UIExtAbility'
+        abilityName: 'UIExtAbility',
+        parameters:{
+          'ability.want.params.uiExtensionType': 'sys/commonUI'
+        }
       });
     } else if (want.action === 'AsyncCallback_0400') {
       console.info("====>EntryAbility want.action == 'AsyncCallback_0400':");
       AppStorage.SetOrCreate('want', {
         action: 'AsyncCallback_0400',
         bundleName: 'com.example.mainhap',
-        abilityName: 'UIExtAbility'
+        abilityName: 'UIExtAbility',
+        parameters:{
+          'ability.want.params.uiExtensionType': 'sys/commonUI'
+        }
       });
     } else if (want.action === 'AsyncCallback_0500') {
       console.info("====>EntryAbility want.action == 'AsyncCallback_0500':");
       AppStorage.SetOrCreate('want', {
         action: 'AsyncCallback_0500',
         bundleName: 'com.example.mainhap',
-        abilityName: 'UIExtAbility'
+        abilityName: 'UIExtAbility',
+        parameters:{
+          'ability.want.params.uiExtensionType': 'sys/commonUI'
+        }
       });
     }
 
@@ -68,28 +80,40 @@ export default class EntryAbility extends UIAbility {
       AppStorage.SetOrCreate('want', {
         action: 'Promise_0100',
         bundleName: 'com.example.mainhap',
-        abilityName: 'UIExtAbility'
+        abilityName: 'UIExtAbility',
+        parameters:{
+          'ability.want.params.uiExtensionType': 'sys/commonUI'
+        }
       });
     } else if (want.action === 'Promise_0300') {
       console.info("====>EntryAbility want.action == 'Promise_0300':");
       AppStorage.SetOrCreate('want', {
         action: 'Promise_0300',
         bundleName: 'com.example.mainhap',
-        abilityName: 'UIExtAbility'
+        abilityName: 'UIExtAbility',
+        parameters:{
+          'ability.want.params.uiExtensionType': 'sys/commonUI'
+        }
       });
     } else if (want.action === 'Promise_0400') {
       console.info("====>EntryAbility want.action == 'Promise_0400':");
       AppStorage.SetOrCreate('want', {
         action: 'Promise_0400',
         bundleName: 'com.example.mainhap',
-        abilityName: 'UIExtAbility'
+        abilityName: 'UIExtAbility',
+        parameters:{
+          'ability.want.params.uiExtensionType': 'sys/commonUI'
+        }
       });
     } else if (want.action === 'Promise_0500') {
       console.info("====>EntryAbility want.action == 'Promise_0500':");
       AppStorage.SetOrCreate('want', {
         action: 'Promise_0500',
         bundleName: 'com.example.mainhap',
-        abilityName: 'UIExtAbility'
+        abilityName: 'UIExtAbility',
+        parameters:{
+          'ability.want.params.uiExtensionType': 'sys/commonUI'
+        }
       });
     }
   }

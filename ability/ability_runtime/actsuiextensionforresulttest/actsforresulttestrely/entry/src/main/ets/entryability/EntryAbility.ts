@@ -27,7 +27,10 @@ export default class EntryAbility extends UIAbility {
       AppStorage.SetOrCreate('want', {
         action: 'AsyncCallback_0200',
         bundleName: 'com.example.forresulttestsecond',
-        abilityName: 'UIExtAbility'
+        abilityName: 'UIExtAbility',
+        parameters:{
+          'ability.want.params.uiExtensionType': 'sys/commonUI'
+        }
       });
     }
 
@@ -36,7 +39,10 @@ export default class EntryAbility extends UIAbility {
       AppStorage.SetOrCreate('want', {
         action: 'AsyncCallback_0300',
         bundleName: 'com.example.forresulttestsecond',
-        abilityName: 'UIExtAbility'
+        abilityName: 'UIExtAbility',
+        parameters:{
+          'ability.want.params.uiExtensionType': 'sys/commonUI'
+        }
       });
     }
 
@@ -45,7 +51,10 @@ export default class EntryAbility extends UIAbility {
       AppStorage.SetOrCreate('want', {
         action: 'Promise_0200',
         bundleName: 'com.example.forresulttestsecond',
-        abilityName: 'UIExtAbility'
+        abilityName: 'UIExtAbility',
+        parameters:{
+          'ability.want.params.uiExtensionType': 'sys/commonUI'
+        }
       });
     }
     if (want.action === 'Promise_0300') {
@@ -53,7 +62,10 @@ export default class EntryAbility extends UIAbility {
       AppStorage.SetOrCreate('want', {
         action: 'Promise_0300',
         bundleName: 'com.example.forresulttestsecond',
-        abilityName: 'UIExtAbility'
+        abilityName: 'UIExtAbility',
+        parameters:{
+          'ability.want.params.uiExtensionType': 'sys/commonUI'
+        }
       });
     }
   }
