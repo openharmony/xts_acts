@@ -17,23 +17,18 @@
 @rem
 @rem  Required ENV vars:
 @rem  ------------------
-@rem    NODE_HOME - location of a Node home dir 
+@rem    NODE_HOME - location of a Node home dir
 @rem    or
 @rem    Add %NODE_HOME%/bin to the PATH environment variable
 @rem  -------------------------------------------------------------------
 @rem
 
-@rem Set local scope for the variables with windows NT shell
-if "%OS%"=="Windows_NT" setlocal
-
 set DIRNAME=%~dp0
-if "%DIRNAME%" == "" set DIRNAME=.
 set APP_BASE_NAME=%~n0
-set APP_HOME=%DIRNAME%
-
+set NODE_EXE_PATH=""
+set APP_HOME=.
 set WRAPPER_MODULE_PATH=%APP_HOME%\hvigor\hvigor-wrapper.js
 set NODE_EXE=node.exe
-
 @rem set NODE_OPTS="--max-old-space-size=4096"
 
 @rem Resolve any "." and ".." in APP_HOME to make it shorter.
@@ -47,6 +42,7 @@ if defined NODE_HOME (
     set "PATH=%PATH%;%NODE_HOME%"
     set NODE_EXE_PATH=%NODE_HOME%/%NODE_EXE%
 )
+
 %NODE_EXE% --version >NUL 2>&1
 if "%ERRORLEVEL%" == "0" (
     "%NODE_EXE%" "%NODE_OPTS%" "%WRAPPER_MODULE_PATH%" %*
