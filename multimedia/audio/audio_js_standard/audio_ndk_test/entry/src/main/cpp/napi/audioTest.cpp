@@ -3402,7 +3402,6 @@ static napi_value AudioRendererSetDefaultOutputDevice_01(napi_env env, napi_call
 
     // 5. OH_AudioRenderer_SetDefaultOutputDevice
     result = OH_AudioRenderer_SetDefaultOutputDevice(audioRenderer, deviceType);
-    LOG(false, "AudioRendererSetDefaultOutputDevice_01 result is %d", result);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -3447,7 +3446,6 @@ static napi_value AudioRendererSetDefaultOutputDevice_02(napi_env env, napi_call
 
     // 5. OH_AudioRenderer_SetDefaultOutputDevice
     result = OH_AudioRenderer_SetDefaultOutputDevice(audioRenderer, deviceType);
-    LOG(false, "AudioRendererSetDefaultOutputDevice_02 result is %d", result);
     if (result != AUDIOSTREAM_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -3492,7 +3490,6 @@ static napi_value AudioRendererSetDefaultOutputDevice_03(napi_env env, napi_call
 
     // 5. OH_AudioRenderer_SetDefaultOutputDevice
     result = OH_AudioRenderer_SetDefaultOutputDevice(audioRenderer, deviceType);
-    LOG(false, "AudioRendererSetDefaultOutputDevice_03 result is %d", result);
     if (result != AUDIOSTREAM_ERROR_ILLEGAL_STATE) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
@@ -3537,7 +3534,6 @@ static napi_value AudioRendererSetDefaultOutputDevice_04(napi_env env, napi_call
 
     // 5. OH_AudioRenderer_SetDefaultOutputDevice
     result = OH_AudioRenderer_SetDefaultOutputDevice(nullptr, deviceType);
-    LOG(false, "AudioRendererSetDefaultOutputDevice_04 result is %d", result);
     if (result != AUDIOSTREAM_ERROR_INVALID_PARAM) {
         napi_create_int32(env, TEST_FAIL, &res);
     } else {
