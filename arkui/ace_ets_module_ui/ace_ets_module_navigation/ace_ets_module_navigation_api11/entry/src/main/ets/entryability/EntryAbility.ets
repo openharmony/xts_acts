@@ -53,7 +53,7 @@ export default class EntryAbility extends UIAbility {
         console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
         try {
           let properties : window.WindowProperties = windowClass.getWindowProperties();
-          let wRect : window.Rect =  properties.windowRect;
+          let wRect : window.Rect = properties.windowRect;
           globalThis.winLeft = wRect.left;
           globalThis.winTop = wRect.top;
           console.info('Succeeded get winLeft:' + globalThis.winLeft + ',winTop:' + globalThis.winTop );
