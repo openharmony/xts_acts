@@ -446,6 +446,14 @@ struct MyComponent {
     video_height: number = 0;
     
     fullscreen: boolean = false;
+
+    @Builder static ButtonBuilder(params: Params) {
+        MyComponent({ params: params })
+            .backgroundColor(Color.Green)
+            .border({ width: 1, color: Color.Brown })
+            .width('100%')
+            .height('100%')
+    }
     
     onSizeChanged(width: number, height: number) {
         this.video_width = width;
@@ -571,15 +579,6 @@ struct MyComponent {
     }
 }
 
-@Builder
-function ButtonBuilder(params: Params) {
-    MyComponent({ params: params })
-        .backgroundColor(Color.Green)
-        .border({ width: 1, color: Color.Brown })
-        .width('100%')
-        .height('100%')
-}
-
 class MyNodeController extends NodeController {
     private rootNode: BuilderNode<[Params]> | undefined;
     private isRemove = false;
@@ -613,7 +612,7 @@ class MyNodeController extends NodeController {
     }
     build() {
         if (this.rootNode) {
-            this.rootNode.build(wrapBuilder(ButtonBuilder), 
+            this.rootNode.build(new WrappedBuilder(MyComponent.ButtonBuilder),
                                 {'text': 'play', 'text2': 'pause', web_tab:this.web_tab, handler: this.listener, player: this.player})
         }
     }
@@ -636,6 +635,7 @@ struct WebComponent {
   @State node_width : number = 300;
   @State node_height : number = 150;
   @State isNoCallback : boolean = true;
+  @State shouldOverlay : boolean = true;
   //@State node_offset : Position = {x: 0, y: 0};
   
   area?: Area
@@ -693,9 +693,19 @@ struct WebComponent {
                 switch (this.emitKey) {
                     case 'emitWebViewNativeMediaPlayerEnableFalse': {
                         this.isNoCallback = true
+                        this.shouldOverlay = true
                         await Utils.sleep(2000)
                         if( this.isNoCallback ) {
                             Utils.emitEvent(true, 1539)
+                        }
+                        break;
+                    }
+                    case 'emitWebViewNativeMediaPlayerEnableFalseShouldOverlayFalse': {
+                        this.isNoCallback = true
+                        this.shouldOverlay = false
+                        await Utils.sleep(2000)
+                        if( this.isNoCallback ) {
+                            Utils.emitEvent(true, 15392)
                         }
                         break;
                     }
@@ -704,7 +714,7 @@ struct WebComponent {
           }
           Stack() {
               Web({ src: this.page_url, controller: this.controller })
-                .enableNativeMediaPlayer({ enable: false, shouldOverlay: true })
+                .enableNativeMediaPlayer({ enable: false, shouldOverlay: this.shouldOverlay })
                 .onPageBegin((event: PageBeginParam) => {
                     console.error('enter onPageBegin, url:' + event.url);
                     console.error(' in onPageBegin, onCreateNativeMediaPlayer:' + this.controller.onCreateNativeMediaPlayer);
