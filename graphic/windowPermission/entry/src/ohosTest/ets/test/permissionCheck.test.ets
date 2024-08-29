@@ -19,21 +19,12 @@ import display from '@ohos.display';
 import screenshot from '@ohos.screenshot';
 import { BusinessError } from '@ohos.base';
 import { Callback } from '@ohos.base';
+import common from '@ohos.app.ability.common';
 
-export default function windowPromiseTest(context, windowStage, abilityStorage) {
-  describe('windowPermissionCheck_test', function () {
+export default function windowPromiseTest(context: common.UIAbilityContext) {
+  describe('windowPermissionCheck_test', () => {
     console.log('describe windowPermissionCheck_test start!!!')
 
-    async function sleep(time) {
-      let timeoutId = null;
-      let promise = new Promise(resolve => {
-        timeoutId = setTimeout(() => {
-          resolve('sleep finished');
-        }, time);
-      })
-      let result = await promise;
-      clearTimeout(timeoutId)
-    }
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_PERMISSION_JS_API_0010
      * @tc.name      : testCreateFloatWindowPermission_Promise
@@ -42,25 +33,25 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateFloatWindowPermission_Promise', 0, async function () {
+    it('testCreateFloatWindowPermission_Promise', 0, async () => {
       let caseName = 'testCreateFloatWindowPermission_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
+      let windowConfig: ohosWindow.Configuration = {
         name: "testCreateFloatWindowPermission_Promise",
         windowType: ohosWindow.WindowType.TYPE_FLOAT,
         ctx: context,
       };
       try {
         await ohosWindow.createWindow(windowConfig).then((data) => {
-          console.info(msgStr +'Succeeded in creating the window. Data:' + JSON.stringify(data));
+          console.info(msgStr + 'Succeeded in creating the window. Data:' + JSON.stringify(data));
           expect().assertFail();
         }).catch((err: BusinessError) => {
-          console.error(msgStr +'Failed to create the Window. Cause:' + JSON.stringify(err));
+          console.error(msgStr + 'Failed to create the Window. Cause:' + JSON.stringify(err));
           expect(err.code).assertEqual(201);
         });
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
         expect(exception.code).assertEqual(201);
       }
     })
@@ -73,11 +64,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateFloatWindowPermission_Callback', 0, async function (done) {
+    it('testCreateFloatWindowPermission_Callback', 0, async (done: Function) => {
       let caseName = 'testCreateFloatWindowPermission_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
+      let windowConfig: ohosWindow.Configuration = {
         name: "testCreateFloatWindowPermission_Callback",
         windowType: ohosWindow.WindowType.TYPE_FLOAT,
         ctx: context,
@@ -86,17 +77,17 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         ohosWindow.createWindow(windowConfig, (err: BusinessError, data) => {
           const errCode: number = err.code;
           if (errCode) {
-            console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(err));
+            console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(err));
             expect(err.code).assertEqual(201);
             done()
             return;
           }
-          console.info(msgStr +'Succeeded in creating the window. Data: ' + JSON.stringify(data));
+          console.info(msgStr + 'Succeeded in creating the window. Data: ' + JSON.stringify(data));
           expect().assertFail();
           done();
         });
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
         expect(exception.code).assertEqual(201);
         done()
       }
@@ -109,39 +100,41 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowPrivacyModePermission_Callback', 0, async function (done) {
+    it('testSetWindowPrivacyModePermission_Callback', 0, async (done: Function) => {
       let caseName = 'testSetWindowPrivacyModePermission_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
+      let windowConfig: ohosWindow.Configuration = {
         name: "testSetWindowPrivacyModePermission_Callback",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err: BusinessError) {
         console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
         done()
-      });
-      expect(!!win).assertTrue();
+      }
       try {
-        win.setWindowPrivacyMode(true, async(err: BusinessError) => {
+        win.setWindowPrivacyMode(true, async (err: BusinessError) => {
           const errCode: number = err.code;
           if (errCode) {
-            console.error(msgStr +'Failed to set the window to privacy mode. Cause:' + JSON.stringify(err));
+            console.error(msgStr + 'Failed to set the window to privacy mode. Cause:' + JSON.stringify(err));
             await win.destroyWindow()
             expect(err.code).assertEqual(201);
             done()
             return;
           }
-          console.info(msgStr +'Succeeded in setting the window to privacy mode.');
+          console.info(msgStr + 'Succeeded in setting the window to privacy mode.');
           expect().assertFail();
           await win.destroyWindow()
           done();
         });
       } catch (exception) {
-        console.error(msgStr +'Failed to set the window to privacy mode. Cause:' + JSON.stringify(exception));
+        console.error(msgStr + 'Failed to set the window to privacy mode. Cause:' + JSON.stringify(exception));
         await win.destroyWindow()
         expect(exception.code).assertEqual(201);
         done()
@@ -155,33 +148,36 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowPrivacyModePermission_Promise', 0, async function () {
+    it('testSetWindowPrivacyModePermission_Promise', 0, async () => {
       let caseName = 'testSetWindowPrivacyModePermission_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
+      let windowConfig: ohosWindow.Configuration = {
         name: "testSetWindowPrivacyModePermission_Promise",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err: BusinessError) {
         console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
-      });
-      expect(!!win).assertTrue();
+        done()
+      }
       try {
-        await win.setWindowPrivacyMode(true).then(async() => {
-          console.info(msgStr +'Succeeded in setting the window to privacy mode.');
+        await win.setWindowPrivacyMode(true).then(async () => {
+          console.info(msgStr + 'Succeeded in setting the window to privacy mode.');
           await win.destroyWindow()
           expect().assertFail();
-        }).catch(async(err: BusinessError) => {
-          console.error(msgStr +'Failed to set the window to privacy mode. Cause: ' + JSON.stringify(err));
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to set the window to privacy mode. Cause: ' + JSON.stringify(err));
           await win.destroyWindow()
           expect(err.code).assertEqual(201);
         });
       } catch (exception) {
-        console.error(msgStr +'Failed to set the window to privacy mode. Cause:' + JSON.stringify(exception));
+        console.error(msgStr + 'Failed to set the window to privacy mode. Cause:' + JSON.stringify(exception));
         await win.destroyWindow()
         expect(exception.code).assertEqual(201);
       }
