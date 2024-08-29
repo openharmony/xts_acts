@@ -5539,3 +5539,13 @@ export const drag_DragAction_RegisterStatusListener_007: () => number;
 export const drag_DragAction_UnregisterStatusListener_008: () => number;
 export const drag_DragAction_StartDrag_009: () => number;
 export const drag_DragAction_DragAndDropInfo_0010: () => number;
+
+export const textCustomSpanTest001: () => number;
+export const textCustomSpanTest002: () => number;
+export const textCustomSpanTest003: () => number;
+export const textCustomSpanTest004: () => number;
+export const textCustomSpanTest005: () => number;
+export const textCustomSpanTest006: () => number;
+export const textCustomSpanTest007: () => number;
+export const textCustomSpanTest008: () => number;
+export const textCustomSpanTest009: () => number;
