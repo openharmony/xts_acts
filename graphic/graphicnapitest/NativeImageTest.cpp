@@ -792,4 +792,155 @@ HWTEST_F(NativeImageTest, OHNativeImageDestroy002, Function | MediumTest | Level
     OH_NativeImage_Destroy(&image);
     ASSERT_EQ(image, nullptr);
 }
+/*
+ * @tc.name: OH_NativeImage_AcquireNativeWindowBuffer
+ * @tc.desc: test for call OH_NativeImage_AcquireNativeWindowBuffer and check ret.
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+
+HWTEST_F(NativeImageTest, OHNativeImageAcquireNativeWindowBufferNormal, Function | MediumTest | Level1) {
+    if (image == nullptr) {
+        image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
+        ASSERT_NE(image, nullptr);
+    }
+    OHNativeWindow *nativewindow = OH_NativeImage_AcquireNativeWindow(image);
+    ASSERT_NE(nativewindow, nullptr);
+    int code = SET_BUFFER_GEOMETRY;
+    int32_t width = 0x100;
+    int32_t height = 0x100;
+    int32_t res = OH_NativeWindow_NativeWindowHandleOpt(nativewindow, code, width, height);
+    ASSERT_EQ(res, NATIVE_ERROR_OK);
+    code = SET_USAGE;
+    int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
+    res = OH_NativeWindow_NativeWindowHandleOpt(nativewindow, code, usage);
+    OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
+    int fenceFd = -1;
+    int32_t retq = OH_NativeWindow_NativeWindowRequestBuffer(nativewindow, &nativeWindowBuffer, &fenceFd);
+    struct Region *region = new Region();
+    struct Region::Rect *rect = new Region::Rect();
+    rect->x = 0x100;
+    rect->y = 0x100;
+    rect->w = 0x100;
+    rect->h = 0x100;
+    region->rects = rect;
+    retq = OH_NativeWindow_NativeWindowFlushBuffer(nativewindow, nativeWindowBuffer, fenceFd, *region);
+    int32_t ret = OH_NativeImage_AcquireNativeWindowBuffer(image, &nativeWindowBuffer, &fenceFd);
+    int32_t ret1 = OH_NativeImage_ReleaseNativeWindowBuffer(image, nativeWindowBuffer, fenceFd);
+    ASSERT_EQ(ret, NATIVE_ERROR_OK);
+    ASSERT_EQ(ret1, NATIVE_ERROR_OK);
+    OH_NativeImage_Destroy(&image);
+    OH_NativeWindow_DestroyNativeWindow(nativewindow);
+}
+
+HWTEST_F(NativeImageTest, OHNativeImageAcquireNativeWindowBufferCalls, Function | MediumTest | Level1) {
+    if (image == nullptr) {
+        image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
+        ASSERT_NE(image, nullptr);
+    }
+    OHNativeWindow *nativewindow = OH_NativeImage_AcquireNativeWindow(image);
+    ASSERT_NE(nativewindow, nullptr);
+    int code = SET_BUFFER_GEOMETRY;
+    int32_t width = 0x100;
+    int32_t height = 0x100;
+    int32_t res = OH_NativeWindow_NativeWindowHandleOpt(nativewindow, code, width, height);
+    ASSERT_EQ(res, NATIVE_ERROR_OK);
+    code = SET_USAGE;
+    int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
+    res = OH_NativeWindow_NativeWindowHandleOpt(nativewindow, code, usage);
+    OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
+    int fenceFd = -1;
+    int32_t retq = OH_NativeWindow_NativeWindowRequestBuffer(nativewindow, &nativeWindowBuffer, &fenceFd);
+    struct Region *region = new Region();
+    struct Region::Rect *rect = new Region::Rect();
+    rect->x = 0x100;
+    rect->y = 0x100;
+    rect->w = 0x100;
+    rect->h = 0x100;
+    region->rects = rect;
+    retq = OH_NativeWindow_NativeWindowFlushBuffer(nativewindow, nativeWindowBuffer, fenceFd, *region);
+    int32_t ret0;
+    for (int i = 0; i < 10; i++) {
+        ret0 = OH_NativeImage_AcquireNativeWindowBuffer(image, &nativeWindowBuffer, &fenceFd);
+    }
+    int32_t ret = OH_NativeImage_AcquireNativeWindowBuffer(image, &nativeWindowBuffer, &fenceFd);
+    int32_t ret1 = OH_NativeImage_ReleaseNativeWindowBuffer(image, nativeWindowBuffer, fenceFd);
+    ASSERT_EQ(ret0, NATIVE_ERROR_NO_BUFFER);
+    ASSERT_EQ(ret, NATIVE_ERROR_NO_BUFFER);
+    ASSERT_EQ(ret1, NATIVE_ERROR_OK);
+    OH_NativeImage_Destroy(&image);
+    OH_NativeWindow_DestroyNativeWindow(nativewindow);
+}
+/*
+ * @tc.name: OH_ConsumerSurface_Create_Normal
+ * @tc.desc: test for call OH_ConsumerSurface_Create and check ret.
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeImageTest, OHConsumerSurfaceCreateNormal, Function | MediumTest | Level1) {
+    OH_NativeImage *newImage = nullptr;
+    newImage = OH_ConsumerSurface_Create();
+    ASSERT_NE(newImage, nullptr);
+    OHNativeWindow *newNativeWindow = OH_NativeImage_AcquireNativeWindow(newImage);
+    ASSERT_NE(newNativeWindow, nullptr);
+    int code = SET_BUFFER_GEOMETRY;
+    int32_t width = 0x100;
+    int32_t height = 0x100;
+    int32_t res = OH_NativeWindow_NativeWindowHandleOpt(newNativeWindow, code, width, height);
+    ASSERT_EQ(res, NATIVE_ERROR_OK);
+    code = SET_USAGE;
+    int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
+    res = OH_NativeWindow_NativeWindowHandleOpt(newNativeWindow, code, usage);
+    OHNativeWindowBuffer *newNativeWindowBuffer = nullptr;
+    int fenceFd;
+    int32_t ret = OH_NativeWindow_NativeWindowRequestBuffer(newNativeWindow, &newNativeWindowBuffer, &fenceFd);
+    struct Region *region = new Region();
+    struct Region::Rect *rect = new Region::Rect();
+    rect->x = 0x100;
+    rect->y = 0x100;
+    rect->w = 0x100;
+    rect->h = 0x100;
+    region->rects = rect;
+    ret = OH_NativeWindow_NativeWindowFlushBuffer(newNativeWindow, newNativeWindowBuffer, fenceFd, *region);
+    ret = OH_NativeImage_AcquireNativeWindowBuffer(newImage, &newNativeWindowBuffer, &fenceFd);
+    ASSERT_EQ(ret, NATIVE_ERROR_OK);
+    ASSERT_NE(newNativeWindowBuffer, nullptr);
+    ret = OH_NativeImage_ReleaseNativeWindowBuffer(newImage, newNativeWindowBuffer, fenceFd);
+    ASSERT_EQ(ret, NATIVE_ERROR_OK);
+    uint64_t surfaceId = 999999999;
+    ret = OH_NativeImage_GetSurfaceId(newImage, &surfaceId);
+    ASSERT_NE(surfaceId, 999999999);
+    OH_OnFrameAvailableListener listener;
+    listener.context = this;
+    listener.onFrameAvailable = NativeImageTest::OnFrameAvailable;
+    ret = OH_NativeImage_SetOnFrameAvailableListener(newImage, listener);
+    ASSERT_EQ(ret, NATIVE_ERROR_OK);
+    ret = OH_NativeImage_UnsetOnFrameAvailableListener(newImage);
+    ASSERT_EQ(ret, NATIVE_ERROR_OK);
+    OH_NativeImage_Destroy(&newImage);
+    ASSERT_EQ(newImage, nullptr);
+    OH_NativeWindow_DestroyNativeWindow(newNativeWindow);
+}
+
+/*
+ * @tc.name: OH_ConsumerSurface_Create_Much
+ * @tc.desc: test for call OH_ConsumerSurface_Create and check ret.
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeImageTest, OHConsumerSurfaceCreateMuch, Function | MediumTest | Level1) {
+    OH_NativeImage *newImage[500];
+    for (int i = 0; i < 500; ++i) {
+        newImage[i] = nullptr;
+        newImage[i] = OH_ConsumerSurface_Create();
+        ASSERT_NE(newImage[i], nullptr);
+    }
+    for (int i = 0; i < 500; ++i) {
+        OH_NativeImage_Destroy(&newImage[i]);
+        ASSERT_EQ(newImage[i], nullptr);
+    }
+}
 }
