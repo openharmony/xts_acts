@@ -16,8 +16,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode,
   PointerMatrix, UIElementInfo, UIEventObserver} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function LifeCycle0120TestJsunit() {
   describe('LifeCycle0120TestJsunit', () => {
     beforeEach(async (done: Function) => {
