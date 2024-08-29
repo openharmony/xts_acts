@@ -73,6 +73,24 @@ import IfElse002Test from './IfElseTest/IfElse002.test';
 import IfElse003Test from './IfElseTest/IfElse003.test';
 import IfElse004Test from './IfElseTest/IfElse004.test';
 import IfElse005Test from './IfElseTest/IfElse005.test';
+import LifeCycle0120TestJsunit from './lifecycle/LifeCycle0120TestJsunit.test';
+import LifeCycle0050TestJsunit from './lifecycle/LifeCycle0050TestJsunit.test';
+import WrapBuilder0010TestJsunit from './wrap_builder/WrapBuilder0010TestJsunit.test';
+import Builder0080TestJsunit from './builder/Builder0080TestJsunit.test';
+import Builder0070TestJsunit from './builder/Builder0070TestJsunit.test';
+import Builder0050TestJsunit from './builder/Builder0050TestJsunit.test';
+import Builder0120TestJsunit from './builder/Builder0120TestJsunit.test';
+import LocalBuilder0040TestJsunit from './local_builder/LocalBuilder0040TestJsunit.test';
+import Styles0010TestJsunit from './styles/Styles0010TestJsunit.test';
+import Link0100TestJsunit from './link/Link0100TestJsunit.test';
+import ProvideConsume0020TestJsunit from './provide_consume/ProvideConsume0020TestJsunit.test';
+import ProvideConsume0030TestJsunit from './provide_consume/ProvideConsume0030TestJsunit.test';
+import ProvideConsume0040TestJsunit from './provide_consume/ProvideConsume0040TestJsunit.test';
+import ProvideConsume0080TestJsunit from './provide_consume/ProvideConsume0080TestJsunit.test';
+import ProvideConsume0360TestJsunit from './provide_consume/ProvideConsume0360TestJsunit.test';
+import StateMap0010TestJsunit from './state/StateMap0010TestJsunit.test';
+import StateSet0010TestJsunit from './state/StateSet0010TestJsunit.test';
+import Observed0060TestJsunit from './observed_object/Observed0060TestJsunit.test';
 
 export default function testsuite() {
   ExtendTrackTest();
@@ -136,4 +154,21 @@ export default function testsuite() {
   IfElse003Test();
   IfElse004Test();
   IfElse005Test();
+  LifeCycle0050TestJsunit();
+  Builder0080TestJsunit();
+  Builder0120TestJsunit();
+  Builder0050TestJsunit();
+  Builder0070TestJsunit();
+  LocalBuilder0040TestJsunit();
+  Styles0010TestJsunit();
+  Link0100TestJsunit();
+  WrapBuilder0010TestJsunit();
+  ProvideConsume0020TestJsunit();
+  ProvideConsume0030TestJsunit();
+  ProvideConsume0040TestJsunit();
+  ProvideConsume0080TestJsunit();
+  ProvideConsume0360TestJsunit();
+  StateMap0010TestJsunit();
+  StateSet0010TestJsunit();
+  Observed0060TestJsunit();
 }
