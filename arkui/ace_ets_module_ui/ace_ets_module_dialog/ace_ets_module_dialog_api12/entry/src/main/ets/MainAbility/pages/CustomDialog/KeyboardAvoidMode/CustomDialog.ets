@@ -126,7 +126,7 @@ struct CustomDialogUser {
             }),
             width: 350,
             height: 600,
-            keyboardAvoidMode: this.keyboardAvoidMode1,
+            keyboardAvoidMode: KeyboardAvoidMode.DEFAULT,
           })
           if (this.dialogController != null) {
             this.dialogController.open()
@@ -149,7 +149,7 @@ struct CustomDialogUser {
             }),
             width: 350,
             height: 600,
-            keyboardAvoidMode: this.keyboardAvoidMode2,
+            keyboardAvoidMode: KeyboardAvoidMode.NONE,
           })
           if (this.dialogController != null) {
             this.dialogController.open()
