@@ -53,7 +53,7 @@ export default function FontSettingOptions() {
     it('FontSettingOptions_0010', 0, async (done: Function) => {
       console.info('FontSettingOptions_0010 START');
       let FontSettingOptions_1 = getInspectorByKey('FontTestText_01');
-      console.info('zhangweiwei--------------'+JSON.parse(FontSettingOptions_1).$attrs.font)
+      console.info('--------------'+JSON.parse(FontSettingOptions_1).$attrs.font)
       expect(""+JSON.parse(FontSettingOptions_1).$type).assertEqual('Text');
       console.info('FontSettingOptions_0010 END');
       done();
@@ -70,7 +70,7 @@ export default function FontSettingOptions() {
     it('FontSettingOptions_0020', 0, async (done: Function) => {
       console.info('FontSettingOptions_0020 START');
       let FontSettingOptions_2 = getInspectorByKey('FontTestText_02');
-      console.info('zhangweiwei--------------'+JSON.parse(FontSettingOptions_2).$attrs.fontWeight)
+      console.info('--------------'+JSON.parse(FontSettingOptions_2).$attrs.fontWeight)
       expect(""+JSON.parse(FontSettingOptions_2).$type).assertEqual('Text');
       console.info('FontSettingOptions_0020 END');
       done();
