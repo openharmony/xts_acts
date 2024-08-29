@@ -88,6 +88,29 @@ export async function closeFileDescriptor(fileName) {
     });
 }
 
+export async function getStageFd(fileName) {
+    let fileDescriptor = undefined;
+    let mgr = globalThis.abilityContext.resourceManager;
+    await mgr.getRawFd(fileName).then(value => {
+        fileDescriptor = {fd: value.fd, offset: value.offset, length: value.length};
+        console.log('case getRawFd success fileName: ' + fileName);
+    }).catch(error => {
+        console.log('case getRawFd err: ' + fileName);
+        console.log('case getRawFd err: ' + error);
+    });
+    return fileDescriptor;
+}
+
+export async function closeStageFd(fileName) {
+    await resourceManager.getResourceManager().then(async (mgr) => {
+        await mgr.closeRawFd(fileName).then(()=> {
+            console.log('case closeRawFd ' + fileName);
+        }).catch(error => {
+            console.log('case closeRawFd err: ' + error);
+        });
+    });
+}
+
 export function isFileOpen(fileDescriptor, done) {
     if (fileDescriptor == undefined) {
         expect().assertFail();
