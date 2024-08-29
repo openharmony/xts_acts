@@ -47,5 +47,36 @@ describe('fileIO_test_getxattr', function () {
       expect(false).assertTrue();
     }
    });
+
+  /**
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIo_GETXATTR_ASync_0100
+   * @tc.name test_FileIO_Getxattr_ASync_001
+   * @tc.desc Test getxattr() interface.
+   * This interface shall work properly in normal case.
+   * @tc.size MediumTest
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */  
+  it('test_FileIO_Getxattr_ASync_001', 3, async function (done) {
+   let fpath = await nextFileName('test_FileIO_Getxattr_ASync_001');
+   let attrKey = 'user.comment';
+   let attrValue = 'Test file.';
+   expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+   fs.setxattrSync(fpath, attrKey, attrValue);
+   
+   try {
+     fs.getxattr(fpath, attrKey).then((attrValue) => {
+       console.info("test_FileIO_Getxattr_ASync_001 value is: " + attrValue);
+       expect(attrValue).assertEqual('Test file.');
+       done();
+     }).catch((err) => {
+       console.error("test_FileIO_Getxattr_ASync_001 get extended attribute with error message: " + err.message + ", error code: " + err.code);
+     });
+   } catch (e) {
+     console.log('test_FileIO_Getxattr_ASync_001 has failed for ' + e.message + ', code: ' + e.code);
+     expect(false).assertTrue();
+   }
+  });
 });
 }
