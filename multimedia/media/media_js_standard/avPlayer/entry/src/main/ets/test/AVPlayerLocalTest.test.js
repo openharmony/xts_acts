@@ -401,7 +401,6 @@ export default function AVPlayerLocalTest() {
                 }
             })
         }
-
         async function testOffCallback(src, avPlayer, done) {
             console.info(`case media source: ${src}`)
             media.createAVPlayer((err, video) => {
