@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#include <native_huks_api.h>
-#include <native_huks_param.h>
+#include <huks/native_huks_api.h>
+#include <huks/native_huks_param.h>
 
 #include <cstring>
 #include <string>

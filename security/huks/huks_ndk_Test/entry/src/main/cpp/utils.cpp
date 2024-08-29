@@ -14,8 +14,8 @@
  */
 #include <algorithm>
 
-#include "native_huks_api.h"
-#include "native_huks_param.h"
+#include "huks/native_huks_api.h"
+#include "huks/native_huks_param.h"
 #define FOO_MAX_LEN 4096
 enum {
     FAIL = -1,
