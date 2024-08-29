@@ -351,7 +351,6 @@ export default function AVSessionJsTest() {
 			done();
 		})
 
-        
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0100
          * @tc.name      : session castDisplayChange
@@ -375,6 +374,5 @@ export default function AVSessionJsTest() {
             }
             done();
         })
-        
 	})
 }
