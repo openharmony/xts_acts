@@ -73,6 +73,7 @@ import gestureDefine2 from './customGestureTest/buttonDragStart.test'
 import gestureDefine3 from './customGestureTest/dragIsSystem.test'
 import gestureDefine4 from './customGestureTest/clickIsSystem.test'
 import gestureDefine6 from './customGestureTest/gestureParallel.test'
+import gestureDefine10 from './GestureRecognizer/GestureRecognizerIsValid.test'
 
 export default function testsuite() {
   APIshouldBuiltInRecognizerParallelWith();
@@ -136,6 +137,7 @@ export default function testsuite() {
   gestureDefine3();
   gestureDefine4();
   gestureDefine6();
+  gestureDefine10();
   
   accessibilityHoverTest();
 }

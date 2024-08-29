@@ -60,6 +60,7 @@
         "MainAbility/pages/customGestureTest/buttonDragStart",
         "MainAbility/pages/customGestureTest/dragIsSystem",
         "MainAbility/pages/customGestureTest/clickIsSystem",
-        "MainAbility/pages/customGestureTest/gestureParallel"
+        "MainAbility/pages/customGestureTest/gestureParallel",
+        "MainAbility/pages/GestureRecognizer/GestureRecognizerIsValid"
     ]
 }
