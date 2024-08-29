@@ -35,7 +35,7 @@ export default function transformTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testTransform',
     pageName: 'transformPage',
     pageUrl: 'MainAbility/pages/transform/TransformPage',
@@ -50,24 +50,24 @@ export default function transformTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetTransform',
     setValue: {
-      transform: matrix1
-    },
+     transform: matrix1
+    } as ESObject,
     expectValue: {
       transform: {
         type: "matrix",
         matrix: "1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,"
-      }
-    }
+      } as ESObject
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('transformTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.info('[' + data.caseTag + '] transformTest.');
       console.info('[' + data.caseTag + '] transformTest. data.testValue.setValue.transform : ' + data.testValue.setValue.transform);
       console.info('[' + data.viewObj.$attrs.transform + '] transformTest. viewObj.$attrs.transform.');
