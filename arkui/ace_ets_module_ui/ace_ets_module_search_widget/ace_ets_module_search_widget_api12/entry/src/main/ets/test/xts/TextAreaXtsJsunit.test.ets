@@ -15,24 +15,23 @@
 import { describe, beforeEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function textAreaXtsJsunit() {
-  describe('textAreaXtsJsunit', function () {
-    beforeEach(async function (done) {
+  describe('textAreaXtsJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info('TextAreaXtsJsunit beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/xts/TextAreaXts',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/xts/TextAreaXts',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get TextAreaXts state pages: ' + JSON.stringify(pages));
         if (!('TextAreaXts' == pages.name)) {
           console.info('get TextAreaXts state pages.name: ' + JSON.stringify(pages.name));
-          result = await router.push(options);
+          let result = await router.push(options);
           await Utils.sleep(2000);
           console.info('push TextAreaXts page result: ' + JSON.stringify(result));
         }
@@ -50,10 +49,10 @@ export default function textAreaXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextAreaXtsJsunit_0101', 0, async function (done) {
+    it('TextAreaXtsJsunit_0101', 0, async (done: Function) => {
       console.info('[TextAreaXtsJsunit_0101] START');
       let strJson = getInspectorByKey('key_textarea_selectedBackgroundColor');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[TextAreaXtsJsunit_0101] obj is: ' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.selectedBackgroundColor).assertEqual('#F5F5F5F5');
       console.info('[TextAreaXtsJsunit_0101] END');
@@ -68,12 +67,12 @@ export default function textAreaXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextAreaXtsJsunit_0102', 0, async function (done) {
+    it('TextAreaXtsJsunit_0102', 0, async (done: Function) => {
       console.info('[TextAreaXtsJsunit_0102] START');
       let strJson = getInspectorByKey('key_textarea_caretStyle');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[TextAreaXtsJsunit_0102] obj is: ' + JSON.stringify(obj.$attrs));
-      let caretstyle_obj = JSON.parse(obj.$attrs.caretStyle);
+      let caretstyle_obj: ESObject = JSON.parse(obj.$attrs.caretStyle);
       expect(caretstyle_obj.width).assertEqual('5.00vp');
       expect(caretstyle_obj.color).assertEqual('#F5F5F5F5');
       console.info('[TextAreaXtsJsunit_0102] END');
@@ -88,10 +87,10 @@ export default function textAreaXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextAreaXtsJsunit_0103', 0, async function (done) {
+    it('TextAreaXtsJsunit_0103', 0, async (done: Function) => {
       console.info('[TextAreaXtsJsunit_0103] START');
       let strJson = getInspectorByKey('key_textarea_textIndent');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[TextAreaXtsJsunit_0103] obj is: ' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.textIndent).assertEqual('5.00vp');
       console.info('[TextAreaJsunit_0103] END');
@@ -106,10 +105,10 @@ export default function textAreaXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextAreaXtsJsunit_0104', 0, async function (done) {
+    it('TextAreaXtsJsunit_0104', 0, async (done: Function) => {
       console.info('[TextAreaXtsJsunit_0104] START');
       let strJson = getInspectorByKey('key_textarea_textOverflow');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[TextAreaXtsJsunit_0104] obj is: ' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.textOverflow).assertEqual('TextOverflow.Clip');
       console.info('[TextAreaXtsJsunit_0104] END');

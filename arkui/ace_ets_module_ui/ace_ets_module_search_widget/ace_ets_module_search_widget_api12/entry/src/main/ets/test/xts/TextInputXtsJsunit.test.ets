@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeEach, it, expect } from '@ohos/hypium';
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function textInputXtsJsunit() {
-  describe('textInputXtsJsunit', function () {
-    beforeEach(async function (done) {
+  describe('textInputXtsJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info('TextInputXtsJsunit beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/xts/TextInputXts',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/xts/TextInputXts',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -48,10 +48,10 @@ export default function textInputXtsJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('TextInputXtsJsunit_0101', 0, async function (done) {
+    it('TextInputXtsJsunit_0101', 0, async (done: Function) => {
       console.info('[TextInputXtsJsunit_0103] START');
       let strJson = getInspectorByKey('key_textinput_textIndent');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[TextInputXtsJsunit_0101] obj is: ' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.textIndent).assertEqual('5.00vp');
       console.info('[TextInputXtsJsunit_0101] END');
@@ -66,10 +66,10 @@ export default function textInputXtsJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('TextInputXtsJsunit_0102', 0, async function (done) {
+    it('TextInputXtsJsunit_0102', 0, async (done: Function) => {
       console.info('[TextInputXtsJsunit_0102] START');
       let strJson = getInspectorByKey('key_textinput_textOverflow');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[TextInputXtsJsunit_0102] obj is: ' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.textOverflow).assertEqual('TextOverflow.Clip');
       console.info('[TextInputXtsJsunit_0102] END');
@@ -83,12 +83,12 @@ export default function textInputXtsJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('TextInputXtsJsunit_0103', 0, async function (done) {
+    it('TextInputXtsJsunit_0103', 0, async (done: Function) => {
       console.info('[TextInputXtsJsunit_0103] START');
       let strJson = getInspectorByKey('key_textinput_caretStyle');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[TextInputXtsJsunit_0103] obj is: ' + JSON.stringify(obj.$attrs));
-      let caretstyle_obj = JSON.parse(obj.$attrs.caretStyle);
+      let caretstyle_obj: ESObject = JSON.parse(obj.$attrs.caretStyle);
       expect(caretstyle_obj.width).assertEqual('5.00vp');
       expect(caretstyle_obj.color).assertEqual('#F5F5F5F5');
       console.info('[TextInputXtsJsunit_0103] END');
