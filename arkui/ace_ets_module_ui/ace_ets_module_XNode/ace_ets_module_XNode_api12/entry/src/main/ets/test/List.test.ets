@@ -89,7 +89,7 @@ import setShapeClipTest from './renderNode/setShapeClip.test';
 import attachNodeAdapterTest from './FrameNodeTest/attachNodeAdapter.test';
 import updateConfigurationTest1 from './BuilderNodeTest/updateConfigurationTest1';
 import updateConfigurationTest2 from './ComponentContentTest/updateConfigurationTest2';
-import getAttachedFrameNodeById from './ComponentContentTest/getAttachedFrameNodeById.test';
+import getAttachedFrameNodeById from './FrameNodeTest/getAttachedFrameNodeById.test';
 
 export default function testsuite() {
   APIdisposeTreeTest();

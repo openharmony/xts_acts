@@ -20,7 +20,7 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
 
-    let frameNode :FrameNode | undifined = new FrameNode(uiContext);
+    let frameNode = new FrameNode(uiContext);
     let childList = new Array<FrameNode>();
     let y = 100;
     for (let i = 0; i < 5; i++) {
@@ -65,7 +65,7 @@ struct GetAttachedFramenodeByID {
         .onClick(() => {
           let frame = this.getUIContext().getAttachedFrameNodeById('sallychild1')
           if (frame != null && JSON.stringify(frame.getUserConfigSize().width) == '{"unit":1,"value":100}'
-            && JSON.stringify(frame.getUserConfigSize().height) == '{"unit":1,"value":110}' && frame.getParent().getChildrenCount() == 5) {
+            && JSON.stringify(frame.getUserConfigSize().height) == '{"unit":1,"value":110}' && frame.getParent()!.getChildrenCount() == 5) {
             this.message = 'Hello Sally'
             console.log(`sally----- getAttachedFrameNodeById('sallychild1') is ` + frame.getNodeType())
             console.log(`sally----- getAttachedFrameNodeById('sallychild1') getUserConfigSize is ` + JSON.stringify(frame.getUserConfigSize()))
