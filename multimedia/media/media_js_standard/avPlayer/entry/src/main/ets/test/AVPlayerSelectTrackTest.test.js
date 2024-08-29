@@ -70,10 +70,10 @@ export default function AVPlayerSelectTrackTest() {
                 }
                 console.info('case arrayList.length is  ' + arrayList.length);
                 for (let i = 0; i < arrayList.length; i++) {
-                    console.info('case track_name is  ' + arrayList[i]['track_name']);
-                    console.info('case hdr_type is  ' + arrayList[i]['hdr_type']);
-                    if (arrayList[i]['track_type'] == 0) {
-                        audioTrackList.push(arrayList[i]['track_index']);
+                    console.info('case track_name is  ' + arrayList[i][media.MediaDescriptionKey.MD_KEY_TRACK_NAME]);
+                    console.info('case hdr_type is  ' + arrayList[i][media.MediaDescriptionKey.MD_KEY_HDR_TYPE]);
+                    if (arrayList[i][media.MediaDescriptionKey.MD_KEY_HDR_TYPE] == 0) {
+                        audioTrackList.push(arrayList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEXTRACK_INDEX]);
                     }
                 }
             })
@@ -228,7 +228,7 @@ export default function AVPlayerSelectTrackTest() {
 
             async function playedOperation() {
                 await changeAudioTrack();
-                avPlayer.selectTrack(selectedTrack, 1);
+                avPlayer.selectTrack(selectedTrack, media.SwitchMode.SEGMENT);
                 await mediaTestBase.msleepAsync(2000);
                 await getCurrentAudioTrack();
                 expect(currentTrack).assertEqual(selectedTrack);
@@ -255,7 +255,7 @@ export default function AVPlayerSelectTrackTest() {
                 await getAudioTracks();
                 await getCurrentSelectedTrack();
                 await getCurrentAudioTrack();
-                avPlayer.selectTrack(currentTrack);
+                avPlayer.selectTrack(currentTrack, media.SwitchMode.SMOOTH);
                 await mediaTestBase.msleepAsync(2000);
                 avPlayer.deselectTrack(currentTrack);
                 expect(currentTrack!=selectedTrack).assertTrue();
@@ -263,7 +263,7 @@ export default function AVPlayerSelectTrackTest() {
 
             async function playedOperation() {
                 await changeAudioTrack();
-                avPlayer.selectTrack(selectedTrack, 2);
+                avPlayer.selectTrack(selectedTrack, media.SwitchMode.CLOSEST);
                 await mediaTestBase.msleepAsync(2000);
                 await getCurrentAudioTrack();
                 expect(currentTrack).assertEqual(selectedTrack);
