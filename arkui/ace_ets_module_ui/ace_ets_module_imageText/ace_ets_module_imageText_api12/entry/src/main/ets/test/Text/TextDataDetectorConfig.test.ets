@@ -52,8 +52,7 @@ export default function TextDataDetectorConfig() {
      */
     it('TextDataDetectorConfig_0010', 0, async (done: Function) => {
       console.info('TextDataDetectorConfig_0010 START');
-      let TextDataDetectorConfig_1 = getInspectorByKey('TextDataDetectorConfig');
-      console.info('wangguanglong--------------'+JSON.parse(TextDataDetectorConfig_1).$attrs.dataDetectorConfig)
+      let TextDataDetectorConfig_1 = getInspectorByKey('text_dataDetectorConfig');
       expect(""+JSON.parse(TextDataDetectorConfig_1).$type).assertEqual('Text');
       console.info('TextDataDetectorConfig_0010 END');
       done();
