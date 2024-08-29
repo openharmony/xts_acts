@@ -15,7 +15,7 @@
 
 @Entry
 @Component
-struct TextDataDetectorConfig {
+struct TextDataDetectorConfig1 {
   @State phoneNumber: string = '(86) (755) ********';
   @State url: string = 'www.********.com';
   @State email: string = '2495218076@qq.com';
@@ -44,8 +44,7 @@ struct TextDataDetectorConfig {
           color: Color.Blue,
           decoration: {
             type: TextDecorationType.Underline,
-            color: Color.Red,
-            style: TextDecorationStyle.SOLID
+            color: Color.Red
           }
         })
         .textAlign(TextAlign.Center)
