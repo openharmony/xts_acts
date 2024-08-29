@@ -22,6 +22,7 @@ import {
   photoKeys,
   genRadomStr,
   getPermission,
+  albumFetchOption,
   pushCreateAsset,
 } from '../../../../../../../common'
 
