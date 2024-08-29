@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,28 +24,26 @@ struct DatePickerExample01 {
       DatePicker({
         start: new Date('1970-1-1'),
         end: new Date('2200-1-1'),
-        selected: this.selectedDate,
-        type: DatePickerType.Date
+        selected: this.selectedDate
       })
         .key('datePicker')
         .lunar(true)
-        .useMilitaryTime(this.useMilitaryTime)
         .onChange((date: DatePickerResult) => {
           console.info('select current date is: ' + JSON.stringify(date));
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "useMilitaryTime" : this.useMilitaryTime,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 80,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("DatePicker start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("DatePicker emit action state err: " + JSON.stringify(err.message))
+            console.info("DatePicker emit action state err: " + JSON.stringify((err as Error).message))
           }
         })
     }.width('100%')
@@ -54,17 +51,17 @@ struct DatePickerExample01 {
 
   onPageShow() {
     console.info('DatePicker page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 81,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("DatePicker page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.useMilitaryTime != null) {
+      if (eventData.data?.useMilitaryTime != null) {
         this.useMilitaryTime = eventData.data.useMilitaryTime;
       }
     }

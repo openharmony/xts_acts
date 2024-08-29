@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function triggerSelect() {
-  describe('triggerSelect', function () {
-    beforeEach(async function (done) {
+  describe('triggerSelect', () => {
+    beforeEach(async (done: Function) => {
       console.info("triggerSelect beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/select/triggerSelect',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/select/triggerSelect',
       }
       try {
         router.clear();
@@ -51,7 +51,7 @@ export default function triggerSelect() {
      * @tc.type : 
      * @tc.size :
      */
-    it('triggerSelect_0100', 0, async function (done) {
+    it('triggerSelect_0100', 0, async (done: Function) => {
       console.info('triggerSelect_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -64,7 +64,7 @@ export default function triggerSelect() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('triggerSelectValue');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[triggerSelect_0100] component obj is: " + JSON.stringify(obj));
       console.info("[triggerSelect_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Select index:0Select text:item1');

@@ -59,7 +59,7 @@ export default function ToggleContentIsOn() {
       await Utils.sleep(1000);
 
       let strJson = getInspectorByKey('ToggleContentModifier_isOn');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info("[ArkUI_Stage_Toggle_Content_0100] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isOn status is: false');

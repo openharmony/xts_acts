@@ -14,7 +14,7 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -22,8 +22,8 @@ export default function checkBoxGroupSelectAllJsunit() {
   describe('checkBoxGroupSelectAllTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/checkboxGroup/checkBoxGroup2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/checkboxGroup/checkBoxGroup2',
       }
       try {
         router.clear();
@@ -82,7 +82,7 @@ export default function checkBoxGroupSelectAllJsunit() {
         console.info("[testcheckBoxGroupSelectAll0002] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testcheckBoxGroupSelectAll0002] change component data error: " + err.message);
+        console.log("[testcheckBoxGroupSelectAll0002] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
 

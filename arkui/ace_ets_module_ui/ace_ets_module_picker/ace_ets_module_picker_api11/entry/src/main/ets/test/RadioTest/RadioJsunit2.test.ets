@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,14 +14,14 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from '../Utils';
 
 export default function radioJsunit2() {
-  describe('radioJsunit2', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Radio/radio2',
+  describe('radioJsunit2', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Radio/radio2',
       }
       try {
         router.clear();
@@ -40,16 +39,16 @@ export default function radioJsunit2() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("radio after each called");
     });
 
-    it('testRadio_100', 0, async function (done) {
+    it('testRadio_100', 0, async (done: Function) => {
       console.info('[testRadio_100] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('radio1');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("testRadio_100_component obj is: " + JSON.stringify(obj));
       console.info("testRadio_100_obj.$attrs.value: " + obj.$attrs.value);
       expect(obj.$type).assertEqual('Radio');
@@ -58,11 +57,11 @@ export default function radioJsunit2() {
       done();
     });
 
-    it('testRadio_200', 0, async function (done) {
+    it('testRadio_200', 0, async (done: Function) => {
       console.info('[testRadio_200] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('radio2');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("testRadio_200_component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Radio');
       expect(obj.$attrs.checked).assertEqual('false');
@@ -70,11 +69,11 @@ export default function radioJsunit2() {
       done();
     });
 
-    it('testRadio_300', 0, async function (done) {
+    it('testRadio_300', 0, async (done: Function) => {
       console.info('[testRadio_300] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('radio3');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("testRadio_300_component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Radio');
       expect(obj.$attrs.checked).assertEqual('false');

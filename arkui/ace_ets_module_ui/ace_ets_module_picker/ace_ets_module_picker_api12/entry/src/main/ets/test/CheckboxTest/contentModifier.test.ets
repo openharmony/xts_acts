@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils';
 
 export default function contentModifier() {
-  describe('contentModifier', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Checkbox/contentModifier',
+  describe('contentModifier', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Checkbox/contentModifier',
       }
       try {
         router.clear();
@@ -39,16 +39,16 @@ export default function contentModifier() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("contentModifier after each called");
     });
 
-    it('contentModifierTest_0100', 0, async function (done) {
+    it('contentModifierTest_0100', 0, async (done: Function) => {
       console.info('contentModifierText_0100 START');
       let strJson = getInspectorByKey('ContentModifierMessage');
       console.info("contentModifierText_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("contentModifierText_0100 component obj is: " + JSON.stringify(obj));
       console.info("[contentModifierText_0100] title: " + JSON.stringify(obj.$attrs.stroke));
       expect(obj.$attrs.stroke).assertEqual("#FFFF0000");

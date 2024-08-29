@@ -63,7 +63,7 @@ export default function stageTextPickerDialog() {
           }
           let callback1 = (eventData: events_emitter.EventData) => {
             console.info("testTextPickerDialog001 get event state result is: " + JSON.stringify(eventData));
-            expect(eventData.data.STATUS).assertEqual(true);
+            expect(eventData.data?.STATUS).assertEqual(true);
             done();
           }
           try {
@@ -91,7 +91,7 @@ export default function stageTextPickerDialog() {
           }
           let callback1 = (eventData: events_emitter.EventData) => {
             console.info("testTextPickerDialog002 get event state result is: " + JSON.stringify(eventData));
-            expect(eventData.data.STATUS).assertEqual(10);
+            expect(eventData.data?.STATUS).assertEqual(10);
             done();
           }
           try {
@@ -118,7 +118,7 @@ export default function stageTextPickerDialog() {
           }
           let callback1 = (eventData: events_emitter.EventData) => {
             console.info("testTextPickerDialog003 get event state result is: " + JSON.stringify(eventData));
-            expect(eventData.data.STATUS).assertEqual("STATUS");
+            expect(eventData.data?.STATUS).assertEqual("STATUS");
             done();
           }
           try {

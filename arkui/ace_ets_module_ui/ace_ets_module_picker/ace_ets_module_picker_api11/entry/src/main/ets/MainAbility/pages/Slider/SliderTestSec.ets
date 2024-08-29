@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import hilog from '@ohos.hilog';
 import { Hypium } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -21,18 +20,18 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct Index {
   onPageShow(){
-    let valueChangeEvent={
+    let valueChangeEvent: events_emitter.InnerEvent = {
       eventId:10,
       priority:events_emitter.EventPriority.LOW
     }
     events_emitter.on(valueChangeEvent,this.valueChangeCallBack)
     console.info("key==>pages res : onPageShow")
   }
-  private valueChangeCallBack=(eventData)=> {
+  private valueChangeCallBack=(eventData: events_emitter.EventData)=> {
     console.info("key==> page valueChangeCallBack");
     if (eventData != null) {
       console.info("valueChangeCallBack:" + JSON.stringify(eventData));
-      if(eventData.data.value=="true"){
+      if(eventData.data?.value=="true"){
         if( eventData.data.content=="no") {
           this.valueNo = true;
         }
@@ -49,11 +48,11 @@ struct Index {
           this.isNUll = false
         }
         if( eventData.data.content=="ResourceTest") {
-          this.Style = SliderStyle.InSet
+          this.style = SliderStyle.InSet
           this.resFalg = true
         }
       }
-      if(eventData.data.value=="false"){
+      if(eventData.data?.value=="false"){
         if( eventData.data.content=="no") {
           this.valueNo = false;
         }
@@ -70,29 +69,29 @@ struct Index {
           this.isNUll = false
         }
         if( eventData.data.content=="ResourceTest") {
-          this.Style = SliderStyle.OutSet
+          this.style = SliderStyle.OutSet
           this.resFalg = false
         }
       }
-      if(eventData.data.value=="trueStr") {
-        this.Style = SliderStyle.InSet
+      if(eventData.data?.value=="trueStr") {
+        this.style = SliderStyle.InSet
         this.isStr = true
         this.value = true
         this.content = eventData.data.content;
       }
-      if(eventData.data.value=="falseStr") {
-        this.Style = SliderStyle.OutSet
+      if(eventData.data?.value=="falseStr") {
+        this.style = SliderStyle.OutSet
         this.value = false
         this.isStr = true
         this.content = eventData.data.content;
       }
-      if(eventData.data.value=="trueNum") {
+      if(eventData.data?.value=="trueNum") {
         this.isStr = false
         this.isNum = true
         this.value = true
         this.num = Number(eventData.data.content);
       }
-      if(eventData.data.value=="falseNum") {
+      if(eventData.data?.value=="falseNum") {
         this.value = false
         this.isStr = false
         this.isNum = true
@@ -116,8 +115,9 @@ struct Index {
   @State valueNo:boolean = false;
   @State resFalg:boolean = false;
   @State content:string = "";
-  @State style:enum = SliderStyle.InSet;
-  @State direction:enum =Axis.Vertical;
+  @State style:SliderStyle = SliderStyle.InSet;
+  @State direction_:Axis =Axis.Vertical;
+  @State num: number = 0;
 
   build() {
     Row() {
@@ -126,9 +126,9 @@ struct Index {
           value: this.ValueOne,
           min: 0,
           max: 100,
-          style: this.Style
+          style: this.style
         })
-          .showTips(this.value,this.isStr?this.content:(this.isNum?this.num:(this.isNUll? null:undefined)))
+          .showTips(this.value,this.isStr?this.content:fakeString(this.isNum?this.num:(this.isNUll? null:undefined)))
           .onChange((value: number, mode: SliderChangeMode) => {
             this.ValueOne = value
             console.info('value:' + value + 'mode:' + mode.toString())
@@ -138,7 +138,7 @@ struct Index {
           value: this.ValueTwo,
           min: 0,
           max: 100,
-          style: this.Style
+          style: this.style
         })
           .showTips(this.valueNo)
           .onChange((value: number, mode: SliderChangeMode) => {
@@ -150,7 +150,7 @@ struct Index {
             Slider({
               value: this.ValueThi,
               step: 10,
-              style: this.Style,
+              style: this.style,
               direction:Axis.Vertical
             })
               .height(300)
@@ -164,7 +164,7 @@ struct Index {
             Slider({
               value: this.ValueFour,
               step: 10,
-              style: this.Style,
+              style: this.style,
               direction:Axis.Vertical
             })
               .height(300)
@@ -180,4 +180,8 @@ struct Index {
     }
     .height('100%')
   }
+}
+
+function fakeString(val: string|number|null|undefined) {
+  return val as string
 }

@@ -35,11 +35,11 @@ import checkboxJsunit from './CheckboxTest/CheckboxJsunit.test';
 import checkboxGroupJsunit from './checkboxGroup/CheckboxGroupJsunit.test';
 import selectJsunit from './SelectTest/SelectJsunit1.test';
 import sliderJsunit1 from './slider/SliderJsunit1.test';
-import menuBackgroundBlurStyle from './SelectTest/menuBackgroundBlurStyle.test.ets'
-import menuBackgroundColor from './SelectTest/menuBackgroundColor.test.ets'
+import menuBackgroundBlurStyle from './SelectTest/menuBackgroundBlurStyle.test'
+import menuBackgroundColor from './SelectTest/menuBackgroundColor.test'
 import RadioJsunit from './RadioTest/RadioJsunit.test';
-import radioJsunit2 from './RadioTest/RadioJsunit2.test.ets';
-import RatingUIJsunit from './RatingTest/RatingUIJsunit.test.ets';
+import radioJsunit2 from './RadioTest/RadioJsunit2.test';
+import RatingUIJsunit from './RatingTest/RatingUIJsunit.test';
 import select from './SelectTest/Select';
 import selectmenuTest from './SelectTest/SelectMenu';
 import calendarpicker from './CalendarPickerTest/calendarpicker';
@@ -57,12 +57,12 @@ import datePickerLunarJsunit from './DatePickerTest/datePicker3.test';
 import checkBoxGroupSelectAllJsunit from './checkboxGroup/checkBoxGroup.test';
 import selectOnSelectJsunit from './SelectTest/select3.test';
 import textPickerDefaultPickerItemHeightJsunit from './TextPicker/textPicker.test';
-import datePickerJsunit from './DatePickerTest/DatePickerJsunit.test.ets';
-import systempromptJsunit from './SystempromptJsunit.test.ets';
-import TextPickerJsunit from './TextPicker/TextPickerJsunit.test.ets';
-import TimePickerJsunit from './TimePickerTest/TimePickerJsunit.test.ets';
+import datePickerJsunit from './DatePickerTest/DatePickerJsunit.test';
+import systempromptJsunit from './SystempromptJsunit.test';
+import TextPickerJsunit from './TextPicker/TextPickerJsunit.test';
+import TimePickerJsunit from './TimePickerTest/TimePickerJsunit.test';
 import timeStampJsunit from './TimePickerTest/TimeStampJsunit.test';
-import datePickerUIJsunit from './DatePickerTest/datePickerUIJsunit.test.ets';
+import datePickerUIJsunit from './DatePickerTest/datePickerUIJsunit.test';
 
 
 export default function testsuite() {

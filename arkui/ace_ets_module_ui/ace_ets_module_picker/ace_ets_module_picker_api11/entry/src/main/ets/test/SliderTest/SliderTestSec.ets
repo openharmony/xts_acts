@@ -15,27 +15,19 @@
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
+import CommonFunc from "../../MainAbility/common/Common";
 
-function sleep(time){
-  return new Promise((resolve,reject)=>{
-    setTimeout(()=>{
-      resolve("ok")
-    },time)
-  }).then(()=>{
-    console.info(`sleep ${time} over...`)
-  })
-}
-async function forKey(Key,text) {
-  console.info("web afterEach start:"+Key);
+async function forKey(key: string, text: string) {
+  console.info("web afterEach start:" + key);
   try {
-    let backData = {
+    let backData: events_emitter.EventData = {
       data: {
-        "value": Key,
+        "value": key,
         "content": text,
       }
     }
-    let backEvent = {
+    let backEvent: events_emitter.InnerEvent = {
       eventId:10,
       priority:events_emitter.EventPriority.LOW
     }
@@ -44,14 +36,14 @@ async function forKey(Key,text) {
   } catch (err) {
     console.info("emit emitKey  err: " + JSON.stringify(err));
   }
-  sleep(2000);
+  CommonFunc.sleep(2000);
 }
 export default function SliderTestSec() {
-  describe('SliderTestSec', function () {
+  describe('SliderTestSec', () => {
 
-    beforeEach(async function (done) {
-      let options = {
-        uri:  "MainAbility/pages/Slider/SliderTestSec",
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url:  "MainAbility/pages/Slider/SliderTestSec",
       }
       try {
         router.clear();
@@ -65,7 +57,7 @@ export default function SliderTestSec() {
       } catch (err) {
         console.error("push SliderTestSec page error " + JSON.stringify(err));
       }
-      await sleep(2)
+      await CommonFunc.sleep(2)
       done()
     });
 
@@ -75,14 +67,14 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component only sets the showTips attribute value parameter 
      *               to a bubble type and no custom text
      */
-    it('ArkUX_Stage_Slider_showTips_0100',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_0100',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("true","no");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('SliderNoContent');
         console.info('ArkUX_Stage_Slider_showTips_0100 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_0100 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_0100 obj $attr :'+ JSON.stringify(obj.$attrs));
         console.info('ArkUX_Stage_Slider_showTips_0100 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
@@ -103,14 +95,14 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component only sets the showTips attribute value parameter 
      *               to a bubble free type and no custom text
      */
-    it('ArkUX_Stage_Slider_showTips_0200',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_0200',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("false","no");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('SliderNoContent');
         console.info('ArkUX_Stage_Slider_showTips_0200 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_0200 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_0200 obj $attr :'+ JSON.stringify(obj.$attrs));
         console.info('ArkUX_Stage_Slider_showTips_0200 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
@@ -131,13 +123,13 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component sets the showTips attribute value parameter to a bubble free 
      *               type, and also sets the custom text 'test'. The custom text setting is successful
      */
-    it('ArkUX_Stage_Slider_showTips_0300',0, async function (done) {
+    it('ArkUX_Stage_Slider_showTips_0300',0, async (done: Function) => {
       await forKey("falseStr","test");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_0300 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_0300 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_0300 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_0300 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -157,14 +149,14 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component has set the showTips attribute value parameter to a bubble free 
      *               type, and set the custom text 'ab $12 @'. The custom text setting was successful
      */
-    it('ArkUX_Stage_Slider_showTips_0400',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_0400',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("falseStr","ab$12@");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_0400 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_0400 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_0400 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_0400 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -184,13 +176,13 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component has set the showTips attribute value parameter to a bubble free 
      *               type, and set the resource reference type. The custom text has been successfully set
      */
-    it('ArkUX_Stage_Slider_showTips_0500',0, async function (done) {
+    it('ArkUX_Stage_Slider_showTips_0500',0, async (done: Function) => {
       await forKey("false","ResourceTest");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('SliderResourceTest');
         console.info('ArkUX_Stage_Slider_showTips_0500 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_0500 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_0500 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_0500 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -210,14 +202,14 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component showTips property parameter value is set to a bubble free type,
      *               while also setting the text to ''
      */
-    it('ArkUX_Stage_Slider_showTips_0600',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_0600',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("falseStr","");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_0600 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_0600 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_0600 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_0600 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -237,14 +229,14 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component showTips property parameter value is set to true with bubble
      *               type, and the text is custom text
      */
-     it('ArkUX_Stage_Slider_showTips_0700',0, async function (done) {
-      await sleep(1000)
+     it('ArkUX_Stage_Slider_showTips_0700',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("trueStr","test");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_0700 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_0700 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_0700 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_0700 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -264,14 +256,14 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component showTips property parameter value is of bubble 
      *               type, and the text is custom text with special symbols
      */
-    it('ArkUX_Stage_Slider_showTips_0800',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_0800',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("trueStr","ab$12@");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_0800 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_0800 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_0800 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_0800 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -291,13 +283,13 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component showTips attribute parameter value is of bubble 
      *               type and content is of reference type $r ("app. string. sliderTest")
      */
-    it('ArkUX_Stage_Slider_showTips_0900',0, async function (done) {
+    it('ArkUX_Stage_Slider_showTips_0900',0, async (done: Function) => {
       await forKey("true","ResourceTest");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('SliderResourceTest');
         console.info('ArkUX_Stage_Slider_showTips_0900 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_0900 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_0900 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_0900 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -317,14 +309,14 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component showTips attribute parameter value is of 
      *               bubble type, and the content is' '
      */
-    it('ArkUX_Stage_Slider_showTips_1000',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_1000',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("trueStr","");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_1000 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_1000 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_1000 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_1000 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -344,15 +336,15 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component showTips attribute has been passed in multiple times with normal
      *               values, and the content text is the last setting
      */
-    it('ArkUX_Stage_Slider_showTips_1100',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_1100',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("falseStr","no");
       await forKey("trueStr","test");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_1100 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_1100 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_1100 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_1100 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -372,14 +364,14 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the parameter value of the Slider component showTips attribute is of bubble free type,
      *               content is of outlier, and the result is no user-defined text
      */
-    it('ArkUX_Stage_Slider_showTips_1200',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_1200',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("false","null");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_1200 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_1200 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_1200 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_1200 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -399,14 +391,14 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the parameter value of the Slider component showTips attribute is of bubble free type,
      *               content is of outlier, and the result is no user-defined text
      */
-    it('ArkUX_Stage_Slider_showTips_1300',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_1300',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("false","undefined");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_1300 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_1300 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_1300 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_1300 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -426,14 +418,14 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the parameter value of the Slider component showTips attribute is of bubble free type,
      *               content is of outlier, and the result is no user-defined text
      */
-    it('ArkUX_Stage_Slider_showTips_1400',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_1400',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("falseNum","123");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_1400 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_1400 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_1400 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_1400 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -455,14 +447,14 @@ export default function SliderTestSec() {
      * @tc.desc      Verify and set the Slider component showTips attribute parameter value as the type with bubbles,
      *               content as the outlier, and obtain the result as no user-defined text
      */
-    it('ArkUX_Stage_Slider_showTips_1500',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_1500',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("true","null");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_1500 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_1500 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_1500 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_1500 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -482,14 +474,14 @@ export default function SliderTestSec() {
      * @tc.desc      Verify and set the Slider component showTips attribute parameter value as the type with bubbles,
      *               content as the outlier, and obtain the result as no user-defined text
      */
-    it('ArkUX_Stage_Slider_showTips_1600',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_1600',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("true","undefined");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_1600 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_1600 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_1600 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_1600 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -509,14 +501,14 @@ export default function SliderTestSec() {
      * @tc.desc      Verify and set the Slider component showTips attribute parameter value as the type with bubbles,
      *               content as the outlier, and obtain the result as no user-defined text
      */
-    it('ArkUX_Stage_Slider_showTips_1700',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_1700',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("trueNum","123");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_1700 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_1700 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_1700 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_1700 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -537,16 +529,16 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component showTips property is set continuously, and the last time it is
      *               set to an invalid value, the result obtained is no custom text.
      */
-    it('ArkUX_Stage_Slider_showTips_1800',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_1800',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("trueStr","test");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       await forKey("true","null");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_1800 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_1800 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_1800 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_1800 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -567,16 +559,16 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component showTips attribute is set continuously. After passing in the
                      outlier,the normal value is passed in. The result is the last set normal value
      */
-    it('ArkUX_Stage_Slider_showTips_1900',0, async function (done) {
-      await sleep(1000)
+    it('ArkUX_Stage_Slider_showTips_1900',0, async (done: Function) => {
+      await CommonFunc.sleep(1000)
       await forKey("true","null");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       await forKey("trueStr","test");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_1900 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_1900 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_1900 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_1900 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -596,11 +588,11 @@ export default function SliderTestSec() {
      * @tc.desc      Verify that the Slider component showTips property is not set and the
      *               result is no bubbles or text appearing
      */
-    it('ArkUX_Stage_Slider_showTips_2000',0, async function (done) {
+    it('ArkUX_Stage_Slider_showTips_2000',0, async (done: Function) => {
       try{
         let strJson = getInspectorByKey('SliderNoShowTips');
         console.info('ArkUX_Stage_Slider_showTips_2000 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_2000 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_2000 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_2000 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -619,13 +611,13 @@ export default function SliderTestSec() {
      * @tc.name      Slider custom text display
      * @tc.desc      Set the parameter to an overly long string
      */
-    it('ArkUX_Stage_Slider_showTips_2100',0, async function (done) {
+    it('ArkUX_Stage_Slider_showTips_2100',0, async (done: Function) => {
       await forKey("trueStr","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_2100 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_2100 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_2100 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_2100 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));
@@ -644,13 +636,13 @@ export default function SliderTestSec() {
      * @tc.name      Slider custom text display
      * @tc.desc      Set the parameter to a string with line breaks
      */
-    it('ArkUX_Stage_Slider_showTips_2200',0, async function (done) {
+    it('ArkUX_Stage_Slider_showTips_2200',0, async (done: Function) => {
       await forKey("trueStr","aaa\nbbb");
-      await sleep(1000)
+      await CommonFunc.sleep(1000)
       try{
         let strJson = getInspectorByKey('Slider');
         console.info('ArkUX_Stage_Slider_showTips_2200 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info('ArkUX_Stage_Slider_showTips_2200 obj  :' + JSON.stringify(obj));
         console.info('ArkUX_Stage_Slider_showTips_2200 obj $attrs.showTips :'+ JSON.stringify(obj.$attrs.showTips));
         console.info('ArkUX_Stage_Slider_showTips_2200 obj $attrs.content :'+ JSON.stringify(obj.$attrs.content));

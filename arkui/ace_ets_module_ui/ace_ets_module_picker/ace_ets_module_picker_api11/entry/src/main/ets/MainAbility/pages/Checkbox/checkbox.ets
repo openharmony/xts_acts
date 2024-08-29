@@ -22,7 +22,7 @@ struct CheckboxExample {
     console.info("Checkbox page stateChangCallBack");
     if (eventData != null) {
       console.info("Checkbox page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.select != null) {
+      if (eventData.data?.select != null) {
         this.select = eventData.data.select;
       }
     }

@@ -27,13 +27,13 @@ struct SliderExample {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("slider page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.decorationValue != null) {
+      if (eventData.data?.decorationValue != null) {
         this.decorationValue = JSON.parse(eventData.data.decorationValue);
       }
-      if (eventData.data.value != null) {
+      if (eventData.data?.value != null) {
         this.value = eventData.data.value;
       }
-      if (eventData.data.stepValue != null) {
+      if (eventData.data?.stepValue != null) {
         this.stepValue = eventData.data.stepValue;
       }
     }

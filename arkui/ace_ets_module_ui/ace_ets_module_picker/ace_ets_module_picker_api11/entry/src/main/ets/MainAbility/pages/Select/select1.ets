@@ -23,13 +23,13 @@ struct select1 {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("select page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.value != null) {
+      if (eventData.data?.value != null) {
         this.value = eventData.data.value;
       }
-      if (eventData.data.font != null) {
+      if (eventData.data?.font != null) {
         this.font = JSON.parse(eventData.data.font);
       }
-      if (eventData.data.fontColor != null) {
+      if (eventData.data?.fontColor != null) {
         this.fontColor = eventData.data.fontColor;
       }
     }

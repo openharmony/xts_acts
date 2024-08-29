@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils';
 
 export default function gradientHeight() {
-  describe('gradientHeight', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/TextPicker/gradientHeight',
+  describe('gradientHeight', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TextPicker/gradientHeight',
       }
       try {
         router.clear();
@@ -39,16 +39,16 @@ export default function gradientHeight() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("gradientHeight after each called");
     });
 
-    it('gradientHeightTest_0100', 0, async function (done) {
+    it('gradientHeightTest_0100', 0, async (done: Function) => {
       console.info('gradientHeightText_0100 START');
       let strJson = getInspectorByKey('gradientHeightXTS');
       console.info("gradientHeightText_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("gradientHeightText_0100 component obj is: " + JSON.stringify(obj));
       console.info("[gradientHeightText_0100] title: " + JSON.stringify(obj.$attrs.gradientHeight));
       expect(obj.$attrs.gradientHeight).assertEqual("100.00vp");

@@ -14,7 +14,7 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
+import Utils from './Utils';
 import router from '@ohos.router';
 
 interface FontStyleCls {
@@ -82,7 +82,7 @@ export default function textpicker() {
         console.info("[textPicker_afterEach] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[selectTest_afterEach] change component data error: " + err.message);
+        console.log("[selectTest_afterEach] change component data error: " + (err as Error).message);
       }
       done();
     })
@@ -126,7 +126,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_disappearTextStyle_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0200] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0200] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('textPicker');
@@ -162,7 +162,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_disappearTextStyle_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0300] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0300] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
@@ -198,7 +198,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_disappearTextStyle_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0400] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0400] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
@@ -234,7 +234,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_disappearTextStyle_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0500] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0500] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
@@ -270,7 +270,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_disappearTextStyle_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0600] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0600] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
@@ -310,7 +310,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_disappearTextStyle_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0700] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0700] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
@@ -350,7 +350,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_disappearTextStyle_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0800] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0800] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('textPicker');
@@ -385,7 +385,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_disappearTextStyle_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0900] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_disappearTextStyle_0900] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('textPicker');
@@ -435,7 +435,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_textStyle_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_textStyle_0200] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_textStyle_0200] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('textPicker');
@@ -471,7 +471,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_textStyle_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_textStyle_0300] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_textStyle_0300] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
@@ -507,7 +507,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_textStyle_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_textStyle_0400] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_textStyle_0400] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
@@ -543,7 +543,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_textStyle_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_textStyle_0500] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_textStyle_0500] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
@@ -579,14 +579,14 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_textStyle_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_textStyle_0600] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_textStyle_0600] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
       let obj: ESObject = JSON.parse(strJson);
 
       let strJsonDefault = getInspectorByKey('textPickerDefault');
-      let objDefault = JSON.parse(strJsonDefault);
+      let objDefault: Record<string, ESObject> = JSON.parse(strJsonDefault);
 
       console.info("[ArkUI_Stage_textpicker_textStyle_0600] disappearColor:" + obj.$attrs.textStyle.color);
       expect(obj.$attrs.textStyle.color).assertEqual(objDefault.$attrs.textStyle.color);
@@ -619,14 +619,14 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_textStyle_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_textStyle_0700] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_textStyle_0700] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
       let obj: ESObject = JSON.parse(strJson);
 
       let strJsonDefault = getInspectorByKey('textPickerDefault');
-      let objDefault = JSON.parse(strJsonDefault);
+      let objDefault: ESObject = JSON.parse(strJsonDefault);
 
       console.info("[ArkUI_Stage_textpicker_textStyle_0700] disappearColor:" + obj.$attrs.textStyle.color);
       expect(obj.$attrs.textStyle.color).assertEqual(objDefault.$attrs.textStyle.color);
@@ -659,7 +659,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_textStyle_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_textStyle_0800] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_textStyle_0800] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('textPicker');
@@ -694,7 +694,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_textStyle_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_textStyle_0900] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_textStyle_0900] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('textPicker');
@@ -744,7 +744,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_selectedTextStyle_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0200] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0200] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('textPicker');
@@ -780,7 +780,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_selectedTextStyle_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0300] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0300] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
@@ -816,7 +816,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_selectedTextStyle_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0400] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0400] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
@@ -852,7 +852,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_selectedTextStyle_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0500] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0500] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
@@ -888,7 +888,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_selectedTextStyle_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0600] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0600] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
@@ -928,7 +928,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_selectedTextStyle_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0700] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0700] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textPicker');
@@ -968,7 +968,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_selectedTextStyle_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0800] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0800] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('textPicker');
@@ -1003,7 +1003,7 @@ export default function textpicker() {
         console.info("[ArkUI_Stage_textpicker_selectedTextStyle_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0900] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_textpicker_selectedTextStyle_0900] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('textPicker');

@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function indicatorBuilderTest() {
-  describe('indicatorBuilderTest', function () {
-    beforeEach(async function (done) {
+  describe('indicatorBuilderTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("indicatorBuilderTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Checkbox/indicatorBuilder",
       }
       try {
@@ -40,7 +40,7 @@ export default function indicatorBuilderTest() {
       console.info("indicatorBuilderTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("indicatorBuilderTest after each called");
     });
@@ -53,7 +53,7 @@ export default function indicatorBuilderTest() {
      * @tc.type
      * @tc.size
      */
-    it('indicatorBuilderTest_001', 0, async function (done) {
+    it('indicatorBuilderTest_001', 0, async (done: Function) => {
       console.info('[indicatorBuilderTest_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

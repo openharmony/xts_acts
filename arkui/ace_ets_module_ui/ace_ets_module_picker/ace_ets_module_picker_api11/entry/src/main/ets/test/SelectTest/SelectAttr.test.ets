@@ -12,18 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
+import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from "../../MainAbility/common/Common";
 import { Driver, ON ,MouseButton} from '@ohos.UiTest';
 
 
 export default function SelectAttr() {
-  describe('SelectAttr', function () {
-    beforeEach(async function (done) {
+  describe('SelectAttr', () => {
+    beforeEach(async (done: Function) => {
       console.info("SelectAttr beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Select/SelectAttr',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Select/SelectAttr',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function SelectAttr() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("SelectAttr after each called");
     });
@@ -53,7 +53,7 @@ export default function SelectAttr() {
     * @tc.desc        SelectAttr OptionWidthMode.FIT_TRIGGER test
     * @tc.level       Level 2
     */
-    it('SelectAttr_001', 0, async function (done) {
+    it('SelectAttr_001', 0, async (done: Function) => {
       console.info('[SelectAttr_001] START');
       await Utils.sleep(1000);
 
@@ -64,11 +64,11 @@ export default function SelectAttr() {
       await Utils.sleep(3000);
 
       let strJson1 = getInspectorByKey('SelectAttr_Select');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: Record<string, ESObject> = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SelectAttr_001] obj1 is: " + JSON.stringify(obj1));
 
-      let obj2 = JSON.parse(JSON.stringify(getInspectorTree()));
+      let obj2: Record<string, ESObject> = JSON.parse(JSON.stringify(getInspectorTree()));
       await Utils.sleep(1000);
       console.info("[SelectAttr_001] obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$children[1].$children[0].$attrs.width).assertEqual(obj1.$attrs.width);
