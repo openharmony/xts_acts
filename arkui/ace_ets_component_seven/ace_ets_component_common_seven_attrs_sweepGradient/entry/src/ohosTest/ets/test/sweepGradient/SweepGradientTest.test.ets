@@ -32,7 +32,7 @@ export default function sweepGradientTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testSweepGradient',
     pageName: 'sweepGradientPage',
     pageUrl: 'MainAbility/pages/sweepGradient/SweepGradientPage',
@@ -47,7 +47,7 @@ export default function sweepGradientTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetSweepGradient',
     setValue: {
       sweepGradient: ({
@@ -56,8 +56,8 @@ export default function sweepGradientTest() {
           end: 35,
           colors: [['#FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
           repeating: true
-        })
-    },
+        } as ESObject)
+    } as ESObject,
     expectValue: {
       sweepGradient: ({
           center: ['20.00vp','30.00vp'],
@@ -65,15 +65,15 @@ export default function sweepGradientTest() {
           end: '35.00px',
           colors: [['#FFFF0000', '0.000000'], ['#FF0000FF', '0.300000'], ['#FFFFFF00', '0.500000']],
           repeating: 'true'
-        })
-    }
+        } as ESObject)
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('sweepGradientTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.error('[' + data.caseTag + '] sweepGradientTest.');
       console.error('[' + data.caseTag + '] sweepGradientTest. data.testValue.setValue.sweepGradient : ' + `${data.testValue.setValue.sweepGradient}`);
       console.info('[' + JSON.stringify(data.testValue.expectValue.sweepGradient) + '] expectValue');

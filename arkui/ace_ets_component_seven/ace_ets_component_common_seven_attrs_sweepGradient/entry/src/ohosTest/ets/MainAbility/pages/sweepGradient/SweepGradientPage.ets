@@ -17,7 +17,7 @@ import attrsManager from '../../common/AttrsManager'
 import router from '@ohos.router'
 
 class AlphabetIndexerModifier implements AttributeModifier<AlphabetIndexerAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -32,7 +32,7 @@ class AlphabetIndexerModifier implements AttributeModifier<AlphabetIndexerAttrib
 }
 
 class BadgeModifier implements AttributeModifier<BadgeAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -47,7 +47,7 @@ class BadgeModifier implements AttributeModifier<BadgeAttribute> {
 }
 
 class ButtonModifier implements AttributeModifier<ButtonAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -62,7 +62,7 @@ class ButtonModifier implements AttributeModifier<ButtonAttribute> {
 }
 
 class BlankModifier implements AttributeModifier<BlankAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -77,7 +77,7 @@ class BlankModifier implements AttributeModifier<BlankAttribute> {
 }
 
 class CalendarPickerModifier implements AttributeModifier<CalendarPickerAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -92,7 +92,7 @@ class CalendarPickerModifier implements AttributeModifier<CalendarPickerAttribut
 }
 
 class CanvasModifier implements AttributeModifier<CanvasAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -107,7 +107,7 @@ class CanvasModifier implements AttributeModifier<CanvasAttribute> {
 }
 
 class CheckboxModifier implements AttributeModifier<CheckboxAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -122,7 +122,7 @@ class CheckboxModifier implements AttributeModifier<CheckboxAttribute> {
 }
 
 class CheckboxGroupModifier implements AttributeModifier<CheckboxGroupAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -137,7 +137,7 @@ class CheckboxGroupModifier implements AttributeModifier<CheckboxGroupAttribute>
 }
 
 class CircleModifier implements AttributeModifier<CircleAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -152,7 +152,7 @@ class CircleModifier implements AttributeModifier<CircleAttribute> {
 }
 
 class ColumnModifier implements AttributeModifier<ColumnAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -167,7 +167,7 @@ class ColumnModifier implements AttributeModifier<ColumnAttribute> {
 }
 
 class ColumnSplitModifier implements AttributeModifier<ColumnSplitAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -182,7 +182,7 @@ class ColumnSplitModifier implements AttributeModifier<ColumnSplitAttribute> {
 }
 
 class CounterModifier implements AttributeModifier<CounterAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -197,7 +197,7 @@ class CounterModifier implements AttributeModifier<CounterAttribute> {
 }
 
 class DataPanelModifier implements AttributeModifier<DataPanelAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -212,7 +212,7 @@ class DataPanelModifier implements AttributeModifier<DataPanelAttribute> {
 }
 
 class DatePickerModifier implements AttributeModifier<DatePickerAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -227,7 +227,7 @@ class DatePickerModifier implements AttributeModifier<DatePickerAttribute> {
 }
 
 class DividerModifier implements AttributeModifier<DividerAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -242,7 +242,7 @@ class DividerModifier implements AttributeModifier<DividerAttribute> {
 }
 
 class EllipseModifier implements AttributeModifier<EllipseAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -257,7 +257,7 @@ class EllipseModifier implements AttributeModifier<EllipseAttribute> {
 }
 
 class FlexModifier implements AttributeModifier<FlexAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -272,7 +272,7 @@ class FlexModifier implements AttributeModifier<FlexAttribute> {
 }
 
 class FlowItemModifier implements AttributeModifier<FlowItemAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -287,7 +287,7 @@ class FlowItemModifier implements AttributeModifier<FlowItemAttribute> {
 }
 
 class FormLinkModifier implements AttributeModifier<FormLinkAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -302,7 +302,7 @@ class FormLinkModifier implements AttributeModifier<FormLinkAttribute> {
 }
 
 class GaugeModifier implements AttributeModifier<GaugeAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -317,7 +317,7 @@ class GaugeModifier implements AttributeModifier<GaugeAttribute> {
 }
 
 class GridModifier implements AttributeModifier<GridAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -332,7 +332,7 @@ class GridModifier implements AttributeModifier<GridAttribute> {
 }
 
 class GridColModifier implements AttributeModifier<GridColAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -347,7 +347,7 @@ class GridColModifier implements AttributeModifier<GridColAttribute> {
 }
 
 class GridItemModifier implements AttributeModifier<GridItemAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -362,7 +362,7 @@ class GridItemModifier implements AttributeModifier<GridItemAttribute> {
 }
 
 class GridRowModifier implements AttributeModifier<GridRowAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -377,7 +377,7 @@ class GridRowModifier implements AttributeModifier<GridRowAttribute> {
 }
 
 class HyperlinkModifier implements AttributeModifier<HyperlinkAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -392,7 +392,7 @@ class HyperlinkModifier implements AttributeModifier<HyperlinkAttribute> {
 }
 
 class ImageModifier implements AttributeModifier<ImageAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -407,7 +407,7 @@ class ImageModifier implements AttributeModifier<ImageAttribute> {
 }
 
 class ImageAnimatorModifier implements AttributeModifier<ImageAnimatorAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -422,7 +422,7 @@ class ImageAnimatorModifier implements AttributeModifier<ImageAnimatorAttribute>
 }
 
 class LineModifier implements AttributeModifier<LineAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -437,7 +437,7 @@ class LineModifier implements AttributeModifier<LineAttribute> {
 }
 
 class ListModifier implements AttributeModifier<ListAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -452,7 +452,7 @@ class ListModifier implements AttributeModifier<ListAttribute> {
 }
 
 class ListItemModifier implements AttributeModifier<ListItemAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -467,7 +467,7 @@ class ListItemModifier implements AttributeModifier<ListItemAttribute> {
 }
 
 class ListItemGroupModifier implements AttributeModifier<ListItemGroupAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -482,7 +482,7 @@ class ListItemGroupModifier implements AttributeModifier<ListItemGroupAttribute>
 }
 
 class LoadingProgressModifier implements AttributeModifier<LoadingProgressAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -497,7 +497,7 @@ class LoadingProgressModifier implements AttributeModifier<LoadingProgressAttrib
 }
 
 class MarqueeModifier implements AttributeModifier<MarqueeAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -512,7 +512,7 @@ class MarqueeModifier implements AttributeModifier<MarqueeAttribute> {
 }
 
 class MenuModifier implements AttributeModifier<MenuAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -527,7 +527,7 @@ class MenuModifier implements AttributeModifier<MenuAttribute> {
 }
 
 class MenuItemModifier implements AttributeModifier<MenuItemAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -542,7 +542,7 @@ class MenuItemModifier implements AttributeModifier<MenuItemAttribute> {
 }
 
 class MenuItemGroupModifier implements AttributeModifier<MenuItemGroupAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -557,7 +557,7 @@ class MenuItemGroupModifier implements AttributeModifier<MenuItemGroupAttribute>
 }
 
 class NavDestinationModifier implements AttributeModifier<NavDestinationAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -572,7 +572,7 @@ class NavDestinationModifier implements AttributeModifier<NavDestinationAttribut
 }
 
 class NavigationModifier implements AttributeModifier<NavigationAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -587,7 +587,7 @@ class NavigationModifier implements AttributeModifier<NavigationAttribute> {
 }
 
 class NavigatorModifier implements AttributeModifier<NavigatorAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -602,7 +602,7 @@ class NavigatorModifier implements AttributeModifier<NavigatorAttribute> {
 }
 
 class NavRouterModifier implements AttributeModifier<NavRouterAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -617,7 +617,7 @@ class NavRouterModifier implements AttributeModifier<NavRouterAttribute> {
 }
 
 class PanelModifier implements AttributeModifier<PanelAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -632,7 +632,7 @@ class PanelModifier implements AttributeModifier<PanelAttribute> {
 }
 
 class PathModifier implements AttributeModifier<PathAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -647,7 +647,7 @@ class PathModifier implements AttributeModifier<PathAttribute> {
 }
 
 class PolygonModifier implements AttributeModifier<PolygonAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -662,7 +662,7 @@ class PolygonModifier implements AttributeModifier<PolygonAttribute> {
 }
 
 class PolylineModifier implements AttributeModifier<PolylineAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -677,7 +677,7 @@ class PolylineModifier implements AttributeModifier<PolylineAttribute> {
 }
 
 class ProgressModifier implements AttributeModifier<ProgressAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -692,7 +692,7 @@ class ProgressModifier implements AttributeModifier<ProgressAttribute> {
 }
 
 class QRCodeModifier implements AttributeModifier<QRCodeAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -707,7 +707,7 @@ class QRCodeModifier implements AttributeModifier<QRCodeAttribute> {
 }
 
 class RadioModifier implements AttributeModifier<RadioAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -722,7 +722,7 @@ class RadioModifier implements AttributeModifier<RadioAttribute> {
 }
 
 class RatingModifier implements AttributeModifier<RatingAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -737,7 +737,7 @@ class RatingModifier implements AttributeModifier<RatingAttribute> {
 }
 
 class RectModifier implements AttributeModifier<RectAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -752,7 +752,7 @@ class RectModifier implements AttributeModifier<RectAttribute> {
 }
 
 class RefreshModifier implements AttributeModifier<RefreshAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -767,7 +767,7 @@ class RefreshModifier implements AttributeModifier<RefreshAttribute> {
 }
 
 class RelativeContainerModifier implements AttributeModifier<RelativeContainerAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -782,7 +782,7 @@ class RelativeContainerModifier implements AttributeModifier<RelativeContainerAt
 }
 
 class RemoteWindowModifier implements AttributeModifier<RemoteWindowAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -797,7 +797,7 @@ class RemoteWindowModifier implements AttributeModifier<RemoteWindowAttribute> {
 }
 
 class RichEditorModifier implements AttributeModifier<RichEditorAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -812,7 +812,7 @@ class RichEditorModifier implements AttributeModifier<RichEditorAttribute> {
 }
 
 class RichTextModifier implements AttributeModifier<RichTextAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -827,7 +827,7 @@ class RichTextModifier implements AttributeModifier<RichTextAttribute> {
 }
 
 class RowModifier implements AttributeModifier<RowAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -842,7 +842,7 @@ class RowModifier implements AttributeModifier<RowAttribute> {
 }
 
 class RowSplitModifier implements AttributeModifier<RowSplitAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -857,7 +857,7 @@ class RowSplitModifier implements AttributeModifier<RowSplitAttribute> {
 }
 
 class ScrollModifier implements AttributeModifier<ScrollAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -872,7 +872,7 @@ class ScrollModifier implements AttributeModifier<ScrollAttribute> {
 }
 
 class ScrollBarModifier implements AttributeModifier<ScrollBarAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -887,7 +887,7 @@ class ScrollBarModifier implements AttributeModifier<ScrollBarAttribute> {
 }
 
 class SearchModifier implements AttributeModifier<SearchAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -902,7 +902,7 @@ class SearchModifier implements AttributeModifier<SearchAttribute> {
 }
 
 class SelectModifier implements AttributeModifier<SelectAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -917,7 +917,7 @@ class SelectModifier implements AttributeModifier<SelectAttribute> {
 }
 
 class ShapeModifier implements AttributeModifier<ShapeAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -932,7 +932,7 @@ class ShapeModifier implements AttributeModifier<ShapeAttribute> {
 }
 
 class SideBarContainerModifier implements AttributeModifier<SideBarContainerAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -947,7 +947,7 @@ class SideBarContainerModifier implements AttributeModifier<SideBarContainerAttr
 }
 
 class SliderModifier implements AttributeModifier<SliderAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -962,7 +962,7 @@ class SliderModifier implements AttributeModifier<SliderAttribute> {
 }
 
 class SpanModifier implements AttributeModifier<SpanAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -977,7 +977,7 @@ class SpanModifier implements AttributeModifier<SpanAttribute> {
 }
 
 class StackModifier implements AttributeModifier<StackAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -992,7 +992,7 @@ class StackModifier implements AttributeModifier<StackAttribute> {
 }
 
 class StepperModifier implements AttributeModifier<StepperAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1007,7 +1007,7 @@ class StepperModifier implements AttributeModifier<StepperAttribute> {
 }
 
 class StepperItemModifier implements AttributeModifier<StepperItemAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1022,7 +1022,7 @@ class StepperItemModifier implements AttributeModifier<StepperItemAttribute> {
 }
 
 class SwiperModifier implements AttributeModifier<SwiperAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1037,7 +1037,7 @@ class SwiperModifier implements AttributeModifier<SwiperAttribute> {
 }
 
 class TabContentModifier implements AttributeModifier<TabContentAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1052,7 +1052,7 @@ class TabContentModifier implements AttributeModifier<TabContentAttribute> {
 }
 
 class TabsModifier implements AttributeModifier<TabsAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1067,7 +1067,7 @@ class TabsModifier implements AttributeModifier<TabsAttribute> {
 }
 
 class TextModifier implements AttributeModifier<TextAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1082,7 +1082,7 @@ class TextModifier implements AttributeModifier<TextAttribute> {
 }
 
 class TextAreaModifier implements AttributeModifier<TextAreaAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1097,7 +1097,7 @@ class TextAreaModifier implements AttributeModifier<TextAreaAttribute> {
 }
 
 class TextClockModifier implements AttributeModifier<TextClockAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1112,7 +1112,7 @@ class TextClockModifier implements AttributeModifier<TextClockAttribute> {
 }
 
 class TextInputModifier implements AttributeModifier<TextInputAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1127,7 +1127,7 @@ class TextInputModifier implements AttributeModifier<TextInputAttribute> {
 }
 
 class TextPickerModifier implements AttributeModifier<TextPickerAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1142,7 +1142,7 @@ class TextPickerModifier implements AttributeModifier<TextPickerAttribute> {
 }
 
 class TextTimerModifier implements AttributeModifier<TextTimerAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1157,7 +1157,7 @@ class TextTimerModifier implements AttributeModifier<TextTimerAttribute> {
 }
 
 class TimePickerModifier implements AttributeModifier<TimePickerAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1172,7 +1172,7 @@ class TimePickerModifier implements AttributeModifier<TimePickerAttribute> {
 }
 
 class ToggleModifier implements AttributeModifier<ToggleAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1187,7 +1187,7 @@ class ToggleModifier implements AttributeModifier<ToggleAttribute> {
 }
 
 class VideoModifier implements AttributeModifier<VideoAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1202,7 +1202,7 @@ class VideoModifier implements AttributeModifier<VideoAttribute> {
 }
 
 class WaterFlowModifier implements AttributeModifier<WaterFlowAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1217,7 +1217,7 @@ class WaterFlowModifier implements AttributeModifier<WaterFlowAttribute> {
 }
 
 class WebModifier implements AttributeModifier<WebAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1232,7 +1232,7 @@ class WebModifier implements AttributeModifier<WebAttribute> {
 }
 
 class WindowSceneModifier implements AttributeModifier<WindowSceneAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1247,7 +1247,7 @@ class WindowSceneModifier implements AttributeModifier<WindowSceneAttribute> {
 }
 
 class XComponentModifier implements AttributeModifier<XComponentAttribute> {
-	mSweepGradient: { center: [number, number]; start?: number | string; end?: number | string; rotation?: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean; } = {
+	mSweepGradient: ESObject = {
 		center: [20, 30],
 		start: 25,
 		end: 35,
@@ -1347,18 +1347,18 @@ struct SweepGradientPage {
 	@State _sweepGradientWebModifier: WebModifier = new WebModifier()
 	@State _sweepGradientWindowSceneModifier: WindowSceneModifier = new WindowSceneModifier()
 	@State _sweepGradientXComponentModifier: XComponentModifier = new XComponentModifier()
-	@State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-	@State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-	@State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-	@State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-	@State columns: number = router.getParams() ? router.getParams()['view']['columns'] : 0
-	@State gutter: number = router.getParams() ? router.getParams()['view']['gutter'] : 0
-	@State parentBackGroundColor: string = router.getParams() ? router.getParams()['view']['parentBackGroundColor'] : '#FFFF00'
-	@State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
+	@State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+	@State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+	@State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+	@State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+	@State columns: number = router.getParams() ? (router.getParams() as ESObject)['view']['columns'] : 0
+	@State gutter: number = router.getParams() ? (router.getParams() as ESObject)['view']['gutter'] : 0
+	@State parentBackGroundColor: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentBackGroundColor'] : '#FFFF00'
+	@State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
 
 	onPageShow() {
 		console.info('sweepGradient translate page show called ')
-		attrsManager.registerDataChange(value => {
+		attrsManager.registerDataChange((value:ESObject) => {
 			console.info('sweepGradient [registerDataChange] ' + JSON.stringify(value.sweepGradient))
 			this._sweepGradientAlphabetIndexerModifier.mSweepGradient = value.sweepGradient
 			this._sweepGradientBadgeModifier.mSweepGradient = value.sweepGradient
@@ -1775,7 +1775,7 @@ struct SweepGradientPage {
 				GridRow({ columns: 1, direction: GridRowDirection.Row }) {
 					ForEach(
 						[Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown],
-						(color) => {
+						(color:Color) => {
 							GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
 								Row()
 									.width('100%')
@@ -1897,13 +1897,13 @@ struct SweepGradientPage {
 			if (this.targetView == 'Scroll') {
 				Scroll() {
 					Column() {
-						ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+						ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item:number) => {
 							Text('Scroll' + item.toString())
 								.width('90%')
 								.height(50)
 								.backgroundColor(Color.White)
 								.textAlign(TextAlign.Center)
-						}, item => item)
+						}, (item:number) => item.toString())
 					}
 					.width('100%')
 				}
@@ -1914,7 +1914,7 @@ struct SweepGradientPage {
 			if (this.targetView == 'SideBarContainer') {
 				SideBarContainer(SideBarContainerType.Embed) {
 					Column() {
-						ForEach([1, 2, 3], (item) => {
+						ForEach([1, 2, 3], (item:number) => {
 							Column({ space: 5 }) {
 								Image($r('app.media.icon'))
 									.width(50)
@@ -1949,7 +1949,7 @@ struct SweepGradientPage {
 						Text('Swiper' + item)
 							.width('90%')
 							.height(50)
-					}, item => item)
+					}, (item:number) => item.toString())
 				}
 					.indicator(true)
 					.backgroundColor(Color.White)
@@ -1997,7 +1997,7 @@ struct SweepGradientPage {
 									.objectFit(ImageFit.Fill)
 							}
 						}
-					}, item => item)
+					}, (item:number) => item.toString())
 				}
 					.commonStyle()
 					.attributeModifier(this._sweepGradientWaterFlowModifier)
@@ -2053,7 +2053,7 @@ struct SweepGradientPage {
 						.backgroundColor(Color.Yellow)
 						.commonStyle()
 						.attributeModifier(this._sweepGradientFlowItemModifier)
-					}, item => item)
+					}, (item:number) => item.toString())
 				}
 					.backgroundColor(Color.Pink)
 					.width('100%')
