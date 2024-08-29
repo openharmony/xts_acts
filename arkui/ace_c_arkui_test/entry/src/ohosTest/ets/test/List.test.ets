@@ -1193,4 +1193,5 @@ export default function testsuite() {
   DragSetNodeDragPreviewTest()
   DragDragPreviewOptionTest()
   DragDragActionTest()
+  SystemColorFontChangeTest()
 }

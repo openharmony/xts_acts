@@ -102,6 +102,7 @@ add_library(nativerender SHARED
     drag/drag_getWidthHeight.cpp
     drag/drag_getModifierKeyStates.cpp
     text/text_CustomSpan_test.cpp
+    system/system_ColorFontChange_test.cpp
 )
 
 add_library(nativefunc SHARED
