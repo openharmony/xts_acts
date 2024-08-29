@@ -53,12 +53,10 @@ parse_target_subsystem()
         echo "xts_targets: $xts_targets"
 }
 
-CACHE_TYPE=""
-
-define_CACHE_TYPE() {
+define_cache_type() {
     echo $CACHE_TYPE
 }
-define_CACHE_TYPE
+define_cache_type
 
 parse_args()
 {   
