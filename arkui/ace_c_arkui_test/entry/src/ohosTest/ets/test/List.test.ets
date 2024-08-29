@@ -602,6 +602,7 @@ import DragAllowDropDataTypesTest from "./drag/DragAllowDropDataTypes.test"
 import DragSetNodeDragPreviewTest from "./drag/DragSetNodeDragPreview.test"
 import DragDragPreviewOptionTest from "./drag/DragDragPreviewOption.test"
 import DragDragActionTest from "./drag/DragDragAction.test"
+import SystemColorFontChangeTest from "./system/SystemColorFontChange.test"
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
