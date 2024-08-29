@@ -83,7 +83,6 @@ export default function getTest () {
     async function checkPhotoKeysValue (done, testNum, fetchOps, key, value) {
       try {
         let asset = await getFileAsset(testNum, fetchOps);
-        console.log(`${testNum} :: getFileAsset success`);
         console.info(`${testNum} key: ${key}, value: ${value}, asset.key: ${asset.get(key)}`);
         if (key === 'uri') {
           const id = getAssetId(asset.get(key));
@@ -925,7 +924,7 @@ export default function getTest () {
       await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.THM_SIZE;
       console.log(`${testNum} :: get key success, THM_SIZE is ${key}`);
-      const value = "0";
+      const value = "350:466";
       await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
@@ -944,9 +943,8 @@ export default function getTest () {
       await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.THM_SIZE;
       console.log(`${testNum} :: get key success, THM_SIZE is ${key}`);
-      const value = "0";
+      const value = "622:350";
       await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
-
   })
 }
