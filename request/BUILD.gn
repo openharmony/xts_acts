@@ -17,7 +17,6 @@ group("request") {
   deps = [
     "RequestTest_Stage:ActsRequestStageTest",
     "RequestTest_ets:ActsRequestETSApiTest",
-    "crossplatform/RequestTest_ets:ActsRequestETSApiCrossplatformTest",
     "newRequestAuthorityTest:ActsRequestAuthorityTest",
     "newRequestNormalTest:ActsRequestNormalTest",
     "newRequestTest:ActsRequestNewTest",
