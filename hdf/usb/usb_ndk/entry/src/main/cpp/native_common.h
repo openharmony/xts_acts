@@ -23,12 +23,12 @@
 
 #define GET_AND_THROW_LAST_ERROR(env)                                                                   \
     do {                                                                                                \
-        const napi_extended_error_info* errorInfo = nullptr;                                            \
+        const napi_extended_error_info *errorInfo = nullptr;                                            \
         napi_get_last_error_info((env), &errorInfo);                                                    \
         bool isPending = false;                                                                         \
         napi_is_exception_pending((env), &isPending);                                                   \
         if (!isPending && errorInfo != nullptr) {                                                       \
-            const char* errorMessage =                                                                  \
+            const char *errorMessage =                                                                  \
                 errorInfo->error_message != nullptr ? errorInfo->error_message : "empty error message"; \
             napi_throw_error((env), nullptr, errorMessage);                                             \
         }                                                                                               \
@@ -73,9 +73,9 @@
         (name), nullptr, (func), nullptr, nullptr, nullptr, napi_default, nullptr \
     }
 
-#define DECLARE_NAPI_FUNCTION_WITH_DATA(name, func, data)                         \
-    {                                                                             \
-        (name), nullptr, (func), nullptr, nullptr, nullptr, napi_default, data    \
+#define DECLARE_NAPI_FUNCTION_WITH_DATA(name, func, data)                      \
+    {                                                                          \
+        (name), nullptr, (func), nullptr, nullptr, nullptr, napi_default, data \
     }
 
 #define DECLARE_NAPI_STATIC_FUNCTION(name, func)                                 \

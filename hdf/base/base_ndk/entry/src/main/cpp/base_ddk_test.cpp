@@ -15,9 +15,9 @@
 
 #include "hilog/log.h"
 #include "napi/native_api.h"
-#include "napi/native_common.h"
-#include "ddk_api.h"
-#include "ddk_types.h"
+#include "native_common.h"
+#include "ddk/ddk_api.h"
+#include "ddk/ddk_types.h"
 #include <cstdlib>
 #include <js_native_api_types.h>
 #include <unistd.h>
