@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, it, expect, afterAll } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import statistics from '@ohos.net.statistics';
 import connection from '@ohos.net.connection';
