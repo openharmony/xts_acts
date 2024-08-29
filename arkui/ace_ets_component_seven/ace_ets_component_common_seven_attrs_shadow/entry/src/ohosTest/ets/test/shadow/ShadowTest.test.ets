@@ -33,7 +33,7 @@ export default function shadowTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testShadow',
     pageName: 'shadowPage',
     pageUrl: 'MainAbility/pages/shadow/ShadowPage',
@@ -49,14 +49,14 @@ export default function shadowTest() {
 
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetShadow',
     setValue: {
-      shadow: ({ radius: 20, color: '#FF0000FF', offsetX: 30, offsetY: 40, type: ShadowType.BLUR, fill: true }),
-    },
+      shadow: ({ radius: 20, color: '#FF0000FF', offsetX: 30, offsetY: 40, type: ShadowType.BLUR, fill: true } as ESObject),
+    } as ESObject,
     expectValue: {
-      shadow: ({ radius: '20.000000', color: '#FF0000FF', offsetX: '30.000000', offsetY: '40.000000', type: '1', fill: '1' }),
-    }
+      shadow: ({ radius: '20.000000', color: '#FF0000FF', offsetX: '30.000000', offsetY: '40.000000', type: '1', fill: '1' } as ESObject),
+    } as ESObject
   }]
 
   /**
@@ -64,7 +64,7 @@ export default function shadowTest() {
    */
   describe('shadowTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       //Modify the target component properties.
       console.info('[' + data.caseTag + '] shadowTest');
       console.info('[' + data.caseTag + '] check shadow.' + ` ${data.testValue.setValue.shadow.radius} 
