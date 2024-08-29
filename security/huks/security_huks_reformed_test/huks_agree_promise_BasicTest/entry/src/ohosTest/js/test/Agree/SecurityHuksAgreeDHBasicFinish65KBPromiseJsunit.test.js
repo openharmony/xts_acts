@@ -212,7 +212,7 @@ export default function SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() {
           await huks.generateKeyItem(srcKeyAliesFirst, HuksOptions63kb);
           expect(null).assertFail();
         } catch (error) {
-          expect(error.code).assertEqual(12000012);
+          expect(error.code).assertEqual(12000003);
         }
       }
       done();
@@ -250,7 +250,7 @@ export default function SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() {
           await huks.generateKeyItem(srcKeyAliesFirst, HuksOptions63kb);
           expect(null).assertFail();
         } catch (error) {
-          expect(error.code).assertEqual(12000012);
+          expect(error.code).assertEqual(12000003);
         }
       }
       done();
