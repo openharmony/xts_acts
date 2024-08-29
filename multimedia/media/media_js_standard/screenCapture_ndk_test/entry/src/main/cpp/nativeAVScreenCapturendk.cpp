@@ -117,6 +117,7 @@ static napi_value NormalAVScreenCaptureTest(napi_env env, napi_callback_info inf
     OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCapture, config_);
     OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCapture);
     sleep(g_recordTime);
+    OH_AVScreenCapture_ResizeCanvas(capture, 768, 1280);
     OH_AVSCREEN_CAPTURE_ErrCode result3 = OH_AVScreenCapture_StopScreenCapture(screenCapture);
     OH_AVScreenCapture_ReleaseContentFilter(contentFilter);
     OH_AVScreenCapture_Release(screenCapture);
