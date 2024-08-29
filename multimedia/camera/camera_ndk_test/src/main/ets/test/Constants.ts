@@ -102,3 +102,23 @@ export class Camera_MediaType {
   static readonly IMAGE = 0;
   static readonly VIDEO = 1;
 }
+
+export class Camera_SceneMode {
+  static readonly NORMAL_PHOTO = 0;
+  static readonly NORMAL_VIDEO = 1;
+  static readonly SECURE_PHOTO = 2;
+}
+
+export class Parameter_Setting {
+  static readonly ALL_PARAMETER_OK = 0;
+  static readonly FIRST_PARAMETER_ERROR = 1;
+  static readonly SECOND_PARAMETER_ERROR = 2;
+  static readonly THIRD_PARAMETER_ERROR = 3;
+  static readonly FOURTH_PARAMETER_ERROR = 4;
+}
+
+export class Torch_Mode {
+  static readonly OFF = 0;
+  static readonly ON = 1;
+  static readonly AUTO = 2;
+}
