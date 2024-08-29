@@ -14,6 +14,7 @@
  */
 
 import resourceManager from '@ohos.resourceManager';
+import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import {expect} from 'deccjsunit/index'
 import router from '@system.router'
 import fs from '@ohos.file.fs';
@@ -223,6 +224,20 @@ export async function toNewPage(pagePath1, pagePath2, page) {
 
 export async function clearRouter() {
     await router.clear();
+}
+
+export async function saveVideo(asset) {
+    console.info('case saveVideo start');
+    try {
+        let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(featureAbility.getContext());
+        let assetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+        assetChangeRequest.saveCameraPhoto();
+        await phAccessHelper.applyChanges(assetChangeRequest);
+        console.info('case saveVideo successfully');
+    } catch (error) {
+        console.info(`case error called,errMessage is ${error.message}`);
+    }
+    console.info('case saveVideo end');
 }
 
 export async function getFd(pathName) {

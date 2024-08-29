@@ -16,6 +16,7 @@
 import deviceInfo from '@ohos.deviceInfo'
 import media from '@ohos.multimedia.media'
 import camera from '@ohos.multimedia.camera'
+import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import display from '@ohos.display';
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import * as avRecorderTestBase from '../../../../../AVRecorderTestBase.js';
@@ -58,6 +59,16 @@ export default function avVideoRecorderTestOne() {
             customInfo : {
                 "com.hh.version" : "5",
             }
+        }
+
+        let AutoCreateConfig = {
+            audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
+            videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
+            profile: avProfile,
+            url : '',
+            rotation : 0, // 视频旋转角度，默认为0不旋转，支持的值为0、90、180、270
+            location : { latitude : 30, longitude : 130 },
+            fileGenerationMode : media.FileGenerationMode.APP_CREATE,
         }
 
         let avmetaConfig = {
@@ -216,7 +227,8 @@ export default function avVideoRecorderTestOne() {
         let eventEmitter = new events.EventEmitter();
 
         const CREATE_CALLBACK_EVENT = 'createCallback';
-        const SETONCALLBACK_EVENT = 'setAvRecorderCallback'
+        const SETONCALLBACK_EVENT = 'setAvRecorderCallback';
+        const SETPHOTOASSETCALLBACK_EVENT = 'setPhotoAssetCallback';
         const PREPARE_CALLBACK_EVENT = 'prepareCallback';
         const GETINPUTSURFACE_CALLBACK_EVENT = 'getInputSurfaceCallback';
         const INITCAMERA_EVENT = 'initCamera';
@@ -495,6 +507,18 @@ export default function avVideoRecorderTestOne() {
             });
         }
 
+        function setPhotoAssetAvailableCallback(avRecorder, done) {
+            avRecorder.on('photoAssetAvailable', (asset) => {
+                console.info(TAG + 'photoAssetAvailable called');
+                if (asset != undefined) {
+                    mediaTestBase.saveVideo(asset);
+                } else {
+                    console.error(TAG + 'asset is undefined');
+                }
+                console.info(TAG + 'photoAssetAvailable end');
+            })
+        }
+
         async function releaseRecorderPromise(avRecorder, done) {
             await avRecorderTestBase.releasePromise(avRecorder)
             if(isInitCamera == true){
@@ -539,6 +563,16 @@ export default function avVideoRecorderTestOne() {
             steps.shift();
             try{
                 setAvRecorderCallback(avRecorder, done)
+                toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+            }catch(error){
+                console.info('setAvRecorderCallback failed and catch error is ' + error.message);
+            }
+        });
+
+        eventEmitter.on(SETPHOTOASSETCALLBACK_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            try{
+                setPhotoAssetAvailableCallback(avRecorder, done)
                 toNextStep(avRecorder, avConfig, recorderTime, steps, done);
             }catch(error){
                 console.info('setAvRecorderCallback failed and catch error is ' + error.message);
@@ -10054,5 +10088,74 @@ export default function avVideoRecorderTestOne() {
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0400 end')
         })
 
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUTO_CREATE_FILE_0100
+            * @tc.name      : 09.FileGenerationMode 1 + url ''
+            * @tc.desc      : recorder
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUTO_CREATE_FILE_0100', 0, async function (done) {
+            if (!isSupportCameraVideoProfiles) {
+                console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
+                expect(true).assertTrue();
+                done();
+            }
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUTO_CREATE_FILE_0100 start')
+            AutoCreateConfig.fileGenerationMode = media.FileGenerationMode.AUTO_CREATE_CAMERA_SCENE;
+
+            checkDevice(AutoCreateConfig)
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, SETPHOTOASSETCALLBACK_EVENT, PREPARE_CALLBACK_EVENT,
+                // init camera
+                GETINPUTSURFACE_CALLBACK_EVENT, INITCAMERA_EVENT,
+                // start recorder
+                STARTCAMERA_EVENT, STARTRECORDER_CALLBACK_EVENT,
+                // pause recorder
+                PAUSERECORDER_CALLBACK_EVENT, STOPCAMERA_EVENT,
+                // resume recorder
+                STARTCAMERA_EVENT, RESUMERECORDER_CALLBACK_EVENT,
+                // stop recorder
+                STOPRECORDER_CALLBACK_EVENT, STOPCAMERA_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT, RELEASECAMERA_EVENT,
+                // end
+                END_EVENT
+            );
+            eventEmitter.emit(mySteps[0], avRecorder, AutoCreateConfig, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUTO_CREATE_FILE_0100 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUTO_CREATE_FILE_0200
+            * @tc.name      : 09.FileGenerationMode 0 + url ''
+            * @tc.desc      : recorder
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUTO_CREATE_FILE_0200', 0, async function (done) {
+            if (!isSupportCameraVideoProfiles) {
+                console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
+                expect(true).assertTrue();
+                done();
+            }
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUTO_CREATE_FILE_0200 start')
+            AutoCreateConfig.fileGenerationMode = media.FileGenerationMode.APP_CREATE;
+
+            checkDevice(AutoCreateConfig)
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, SETPHOTOASSETCALLBACK_EVENT, PREPARE_CALLBACK_EVENT,
+                // release avRecorde
+                RELEASECORDER_CALLBACK_EVENT,
+                // end
+                END_EVENT
+            );
+            eventEmitter.emit(mySteps[0], avRecorder, AutoCreateConfig, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUTO_CREATE_FILE_0200 end')
+        })
     })
 }
