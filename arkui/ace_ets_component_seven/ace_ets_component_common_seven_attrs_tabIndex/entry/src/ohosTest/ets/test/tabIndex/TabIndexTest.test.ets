@@ -32,7 +32,7 @@ export default function tabIndexTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig:ESObject = {
     testName: 'testTabIndex',
     pageName: 'tabIndexPage',
     pageUrl: 'MainAbility/pages/tabIndex/TabIndexPage',
@@ -47,21 +47,21 @@ export default function tabIndexTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues:ESObject[]= [{
     describe: 'SetTabIndex',
     setValue: {
       tabIndex: 1
-    },
+    } as ESObject,
     expectValue: {
       tabIndex: 1
-    }
+    } as ESObject
   }]
 
   /**
    * Create test suite.
    */
   describe('tabIndexTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       console.error('[' + data.caseTag + '] tabIndexTest.');
       console.error('[' + data.caseTag + '] tabIndexTest. data.testValue.setValue.tabIndex : ' + data.testValue.setValue.tabIndex);
       console.error('[' + data.viewObj.$attrs.tabIndex + '] tabIndexTest. viewObj.$attrs.tabIndex.');
