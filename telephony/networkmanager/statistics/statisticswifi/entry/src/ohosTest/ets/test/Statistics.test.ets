@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, it, expect, afterAll } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import statistics from '@ohos.net.statistics';
 import connection from '@ohos.net.connection';
@@ -46,11 +46,38 @@ async function getApplicationUid(): Promise<number> {
 
 const testUrl: string = "https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk";
 
+let networkStatisticsSocketFd: number = 0;
+let networkStatisticsSocketTcp: socket.TCPSocket;
+
+async function sendSocketMessage() {
+  console.info("sendSocketMessage");
+  networkStatisticsSocketTcp = socket.constructTCPSocketInstance();
+  let tcpconnectoptions: socket.TCPConnectOptions = {
+    address: {
+      address: '127.0.0.1',
+      port: 3060
+    },
+    timeout: 6000
+  }
+
+  networkStatisticsSocketTcp.connect(tcpconnectoptions).then(async () => {
+    console.info('socket connect success');
+    let tcpSendOptions: socket.TCPSendOptions = {
+      data: 'Hello, server!'
+    }
+    await networkStatisticsSocketTcp.send(tcpSendOptions).then(() => {
+      console.info("socket send success");
+    });
+  });
+  networkStatisticsSocketFd = await networkStatisticsSocketTcp.getSocketFd();
+  console.info("socket getSocketFd v:" + networkStatisticsSocketFd);
+}
+
 export default function NetStatisticsTest() {
 
   describe('NetStatisticsTest', () => {
 
-    beforeAll(() => {
+    beforeAll(async (done: Function) => {
       try {
         let netHandle: Array<connection.NetHandle> = connection.getAllNetsSync();
         console.info(`beforeAll ${JSON.stringify(netHandle)}`);
@@ -64,9 +91,21 @@ export default function NetStatisticsTest() {
             }
           }
         }
+        await sendSocketMessage();
+        done();
       } catch (err) {
         console.info(`beforeAll catch error ${JSON.stringify(err)}`);
       }
+    });
+
+    afterAll(() => {
+      networkStatisticsSocketTcp.close((err) => {
+        if (err) {
+          console.error("socket close failed. err: " + JSON.stringify(err));
+        } else {
+          console.info("socket close success");
+        }
+      });
     });
 
     /* *
@@ -751,23 +790,7 @@ export default function NetStatisticsTest() {
       let caseName: string = 'testNetworkMgrStatisticsGetSockfdRxBytes0100';
       console.info(`${caseName} test start`);
       try {
-        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
-        let tcpconnectoptions: socket.TCPConnectOptions = {
-          address: {
-            address: '127.0.0.1',
-            port: 3060
-          },
-          timeout: 6000
-        }
-        tcp.connect(tcpconnectoptions).then(async () => {
-          console.info('connect success');
-          let tcpSendOptions: socket.TCPSendOptions = {
-            data: 'Hello, server!'
-          }
-          await tcp.send(tcpSendOptions);
-        });
-        let sockfd: number = await tcp.getSocketFd();
-        statistics.getSockfdRxBytes(sockfd, (err: BusinessError, stats: number) => {
+        statistics.getSockfdRxBytes(networkStatisticsSocketFd, (err: BusinessError, stats: number) => {
           if (err) {
             console.info(`${caseName} err ${JSON.stringify(err)}`);
             ExpectTrue(false, caseName);
@@ -866,23 +889,7 @@ export default function NetStatisticsTest() {
       let caseName: string = 'testNetworkMgrStatisticsGetSockfdRxBytes0400';
       console.info(`${caseName} test start`);
       try {
-        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
-        let tcpconnectoptions: socket.TCPConnectOptions = {
-          address: {
-            address: '127.0.0.1',
-            port: 3060
-          },
-          timeout: 6000
-        }
-        tcp.connect(tcpconnectoptions).then(async () => {
-          console.info('connect success');
-          let tcpSendOptions: socket.TCPSendOptions = {
-            data: 'Hello, server!'
-          }
-          await tcp.send(tcpSendOptions);
-        });
-        let sockfd: number = await tcp.getSocketFd();
-        statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
+        statistics.getSockfdRxBytes(networkStatisticsSocketFd).then((stats: number) => {
           console.info(`${caseName} succes ${JSON.stringify(stats)}`);
           ExpectTrue(stats > 0, caseName);
           done();
@@ -975,17 +982,7 @@ export default function NetStatisticsTest() {
       let caseName: string = 'testNetworkMgrStatisticsGetSockfdTxBytes0100';
       console.info(`${caseName} test start`);
       try {
-        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
-        let tcpconnectoptions: socket.TCPConnectOptions = {
-          address: {
-            address: '127.0.0.1',
-            port: 3060
-          },
-          timeout: 6000
-        }
-        tcp.connect(tcpconnectoptions);
-        let sockfd: number = await tcp.getSocketFd();
-        statistics.getSockfdTxBytes(sockfd, (err: BusinessError, stats: number) => {
+        statistics.getSockfdTxBytes(networkStatisticsSocketFd, (err: BusinessError, stats: number) => {
           if (err) {
             console.info(`${caseName} err ${JSON.stringify(err)}`);
             ExpectTrue(false, caseName);
@@ -1084,23 +1081,7 @@ export default function NetStatisticsTest() {
       let caseName: string = 'testNetworkMgrStatisticsGetSockfdTxBytes0400';
       console.info(`${caseName} test start`);
       try {
-        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
-        let tcpconnectoptions: socket.TCPConnectOptions = {
-          address: {
-            address: '127.0.0.1',
-            port: 3060
-          },
-          timeout: 6000
-        }
-        tcp.connect(tcpconnectoptions).then(async () => {
-          console.info('connect success');
-          let tcpSendOptions: socket.TCPSendOptions = {
-            data: 'Hello, server!'
-          }
-          await tcp.send(tcpSendOptions);
-        });
-        let sockfd: number = await tcp.getSocketFd();
-        statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
+        statistics.getSockfdTxBytes(networkStatisticsSocketFd).then((stats: number) => {
           console.info(`${caseName} succes ${JSON.stringify(stats)}`);
           ExpectTrue(stats > 0, caseName);
           done();
