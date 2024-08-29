@@ -4305,7 +4305,7 @@ static napi_value AudioRendererSetDefaultOutputDevice_02(napi_env env, napi_call
     OH_AudioStreamBuilder* builder;
     OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
     OH_AudioStream_Usage usage = AUDIOSTREAM_USAGE_VOICE_COMMUNICATION;
-    OH_AudioDevice_Type deviceType = AUDIO_DEVICE_TYPE_HEADSET;
+    OH_AudioDevice_Type deviceType = AUDIO_DEVICE_TYPE_WIRED_HEADSET;
     OH_AudioStreamBuilder_Create(&builder, type);
 
     // 2. set builder params
