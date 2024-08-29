@@ -336,6 +336,13 @@ export default function AVPlayerLocalTest() {
             })
         }
 
+        function setPlayerPlaybackStrategy(avPlayer, playbackStrategy) {
+            avPlayer.setPlaybackStrategy(playbackStrategy).catch((error) => {
+                console.error(`setPlaybackStrategy failed, err code ${error.code} msg ${error.message}`)
+                expect().assertFail();
+            })
+        }
+
         async function setPlaybackStrategy(avPlayer, done) {
             let surfaceID = globalThis.value;
             let playbackStrategy = { mutedMediaType: media.MediaType.MEDIA_TYPE_AUD }
@@ -343,75 +350,46 @@ export default function AVPlayerLocalTest() {
             let stateChangeCallback = async (state, reason) => {
                 switch (state) {
                     case AV_PLAYER_STATE.INITIALIZED:
-                        console.info(`winddraw case AV_PLAYER_STATE.INITIALIZED`);
                         avPlayer.surfaceId = surfaceID;
-                        console.info(`winddraw surfaceId done`)
-                        avPlayer.setPlaybackStrategy(playbackStrategy).catch((error) => {
-                            console.error(`setPlaybackStrategy failed, err code ${error.code} msg ${error.message}`)
-                            expect().assertFail();
-                        })
-                        avPlayer.prepare().catch((error) => {
-                            console.error(`prepare failed, err code ${error.code} msg ${error.message}`)
-                            expect().assertFail();
-                        })
+                        setPlayerPlaybackStrategy(avPlayer, playbackStrategy)
+                        avPlayer.prepare()
                         break;
                     case AV_PLAYER_STATE.PREPARED:
-                        avPlayer.setPlaybackStrategy(playbackStrategy).then(() => {
-                            console.error(`setPlaybackStrategy unexpectedly success, state ${state}`)
-                           expect().assertFail();
-                        }).catch((error) => { console.info('prepared setPlaybackStrategy failed, expected') })
-                        avPlayer.play().catch(error => {
-                            console.error(`play failed err code ${error.code} msg %{error.message}`)
-                            expect().assertFail();
-                        })
+                        avPlayer.play()
                         break;
                     case AV_PLAYER_STATE.PLAYING:
-                        avPlayer.setPlaybackStrategy(playbackStrategy).then(() => {
-                            console.error(`setPlaybackStrategy unexpectedly success, state ${state}`)
-                            expect().assertFail();
-                        }).catch((error) => { console.info('playing setPlaybackStrategy failed, expected') })
                         if (pauseCount++ == 0) {
-                            avPlayer.pause().then(() => { pauseCount++ }).catch(error => {
-                                console.error(`pause failed err code ${error.code} msg %{error.message}`)
-                               expect().assertFail();
-                            })
+                            avPlayer.pause()
                         }
                         break;
                     case AV_PLAYER_STATE.PAUSED:
-                        avPlayer.setPlaybackStrategy(playbackStrategy).then(() => {
-                           console.error(`setPlaybackStrategy unexpectedly success, state ${state}`)
-                            expect().assertFail();
-                        }).catch((error) => { console.info('paused setPlaybackStrategy failed, expected') })
-                        avPlayer.play().catch(error => {
-                            console.error(`play failed err code ${error.code} msg %{error.message}`)
-                            expect().assertFail();
-                        })
+                        avPlayer.play()
                         break;
                     case AV_PLAYER_STATE.COMPLETED:
-                        avPlayer.setPlaybackStrategy(playbackStrategy).then(() => {
-                            console.error(`setPlaybackStrategy unexpectedly success, state ${state}`)
-                            expect().assertFail();
-                        }).catch((error) => { console.info('prepared setPlaybackStrategy failed, expected') })
-                        avPlayer.release().catch(error => {
-                            console.error(`stop failed err code ${error.code} msg %{error.message}`)
-                            expect().assertFail();
-                        })
+                        avPlayer.release()
                         break;
                     case AV_PLAYER_STATE.RELEASED:
                         avPlayer = null;
                         done();
                         break;
                     case AV_PLAYER_STATE.ERROR:
-                        expect().assertFail();
                         avPlayer.release().then(() => {},
                             mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
                         avPlayer = null;
+                        expect().assertFail();
                         break;
                     default:
                         break;
                 }
             }
             avPlayer.on('stateChange', stateChangeCallback)
+        }
+
+        function setPlayerMediaMuted(avPlayer, expectedSuccess) {
+            avPlayer.setMediaMuted(audio, true).catch((error) => {
+                console.error(`setMediaMuted failed, err code ${error.code} msg ${error.message}`)
+                expect().assertFail();
+            })
         }
 
         async function setMediaMuted(avPlayer, done) {
@@ -422,53 +400,26 @@ export default function AVPlayerLocalTest() {
                 switch (state) {
                     case AV_PLAYER_STATE.INITIALIZED:
                         avPlayer.surfaceId = surfaceID;
-                        avPlayer.prepare().catch((error) => {
-                            console.error(`prepare failed, err code ${error.code} msg ${error.message}`)
-                            expect().assertFail();
-                        })
+                        avPlayer.prepare()
                         break;
                     case AV_PLAYER_STATE.PREPARED:
-                        avPlayer.setMediaMuted(audio, true).catch((error) => {
-                            console.error(`setMediaMuted failed, err code ${error.code} msg ${error.message}`)
-                            expect().assertFail();
-                        })
-                        avPlayer.play().catch(error => {
-                            console.error(`play failed err code ${error.code} msg %{error.message}`)
-                            expect().assertFail();
-                        })
+                        setPlayerMediaMuted(avPlayer)
+                        avPlayer.play()
                         break;
                     case AV_PLAYER_STATE.PLAYING:
-                        avPlayer.setMediaMuted(audio, true).catch((error) => {
-                            console.error(`setMediaMuted failed, err code ${error.code} msg ${error.message}`)
-                            expect().assertFail();
-                        })
+                        setPlayerMediaMuted(avPlayer)
                         if (pauseCount++ > 0) {
                             break
                         }
-                        avPlayer.pause().catch(error => {
-                            console.error(`pause failed err code ${error.code} msg %{error.message}`)
-                            expect().assertFail();
-                        })
+                        avPlayer.pause()
                         break;
                     case AV_PLAYER_STATE.PAUSED:
-                        avPlayer.setMediaMuted(audio, true).catch((error) => {
-                            console.error(`setMediaMuted failed, err code ${error.code} msg ${error.message}`)
-                            expect().assertFail();
-                        })
-                        avPlayer.play().catch(error => {
-                            console.error(`play failed err code ${error.code} msg %{error.message}`)
-                            expect().assertFail();
-                        })
+                        setPlayerMediaMuted(avPlayer)
+                        avPlayer.play()
                         break;
                     case AV_PLAYER_STATE.COMPLETED:
-                        avPlayer.setMediaMuted(audio, true).catch((error) => {
-                            console.error(`setMediaMuted failed, err code ${error.code} msg ${error.message}`)
-                            expect().assertFail();
-                        })
-                        avPlayer.release().catch(error => {
-                            console.error(`stop failed err code ${error.code} msg %{error.message}`)
-                            expect().assertFail();
-                        })
+                        setPlayerMediaMuted(avPlayer)
+                        avPlayer.release()
                         break;
                     case AV_PLAYER_STATE.RELEASED:
                         avPlayer = null;
