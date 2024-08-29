@@ -923,8 +923,7 @@ export default function getTest () {
       const displayName = 'getTest.jpg';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
       await checkProvisionAsset(done, testNum, displayName);
-      // const key = photoKeys.THM_SIZE;
-      const key = "thumb_size";
+      const key = photoKeys.THM_SIZE;
       console.log(`${testNum} :: get key success, THM_SIZE is ${key}`);
       const value = "0";
       await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
@@ -943,8 +942,7 @@ export default function getTest () {
       const displayName = 'getTest.mp4';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
       await checkProvisionAsset(done, testNum, displayName);
-      // const key = photoKeys.THM_SIZE;
-      const key = "thumb_size";
+      const key = photoKeys.THM_SIZE;
       console.log(`${testNum} :: get key success, THM_SIZE is ${key}`);
       const value = "0";
       await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
