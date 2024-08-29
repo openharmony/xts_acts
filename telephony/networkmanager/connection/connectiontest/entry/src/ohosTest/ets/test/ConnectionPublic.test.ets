@@ -118,6 +118,7 @@ export default function ConnectionPublicTest() {
         ExpectTrue(isDefaultNet == true);
         console.info(`${caseName}---End`);
         done();
+
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
         ExpectFail();
@@ -7956,7 +7957,7 @@ export default function ConnectionPublicTest() {
               done();
             } else {
               console.info(`${caseName} getConnectionProperties: data->${JSON.stringify(data)}`);
-              ExpectTrue(data.routes[0].destination.address.family == (1 || 2));
+              ExpectTrue(data.routes[0].destination.address.family == 1 || data.routes[0].destination.address.family == 2);
               console.info(`${caseName}---End`);
               done();
             }
@@ -8068,7 +8069,7 @@ export default function ConnectionPublicTest() {
         connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.getConnectionProperties(netHandle).then((data: connection.ConnectionProperties) => {
             console.info(`${caseName} getConnectionProperties: success data->${JSON.stringify(data)}`);
-            ExpectTrue(data.routes[0].destination.address.family == (1 || 2));
+            ExpectTrue(data.routes[0].destination.address.family == 1 || data.routes[0].destination.address.family == 2);
             console.info(`${caseName}---End`);
             done();
           }).catch((error: BusinessError) => {
