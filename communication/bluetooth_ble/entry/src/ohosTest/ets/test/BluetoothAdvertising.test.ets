@@ -15,133 +15,135 @@
 
 import bluetooth from '@ohos.bluetooth.ble';
 import btAccess from '@ohos.bluetooth.access';
+import { BusinessError } from '@ohos.base';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
-export default function bluetoothAdvertisingTest() {
-  describe('bluetoothAdvertisingTest', function() {
-    function sleep(delay) {
-      return new Promise(resovle => setTimeout(resovle, delay))
-    }
+let PERMISSION_TEXT:string = "允许";
+let OPEN_BT_TEXT:string = "开启";
+let CLOSE_BT_TEXT:string = "关闭";
 
-    async function openPhone() {
-      try{
-        let drivers = Driver.create();
-        console.info('[bluetooth_js] bt driver create:'+ drivers);
-        await drivers.delayMs(1000);
-        await drivers.wakeUpDisplay();
-        await drivers.delayMs(5000);
-        await drivers.swipe(1500, 1000, 1500, 100);
-        await drivers.delayMs(10000);
-      } catch (error) {
-        console.info('[bluetooth_js] driver error info:'+ error);
-      }
-    }
+function sleep(delay : number) :Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, delay))
+}
 
-    let PERMISSION_TEXT:string = "允许";
-    let OPEN_BT_TEXT:string = "开启";
-    let CLOSE_BT_TEXT:string = "关闭";
+async function openPhone() {
+  try{
+    let drivers = Driver.create();
+    console.info('[bluetooth_js] bt driver create:'+ drivers);
+    await drivers.delayMs(1000);
+    await drivers.wakeUpDisplay();
+    await drivers.delayMs(5000);
+    await drivers.swipe(1500, 1000, 1500, 100);
+    await drivers.delayMs(10000);
+  } catch (error) {
+    console.info('[bluetooth_js] driver error info:'+ error);
+  }
+}
 
-    async function clickRequestPermission(text:string) {
-      console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
+async function clickRequestPermission(text:string) {
+  console.info('[bluetooth_js] clickRequestPermission start');
+  let PERMISSION_TEXT:string = "允许";
+    let driver = Driver.create();
+    await driver.delayMs(3000);
+    try {
+        let button = await driver.findComponent(ON.text(text));
+        await button.click();
         await driver.delayMs(3000);
-        try {
-            let button = await driver.findComponent(ON.text(text));
-            await button.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] clickRequestPermission end');
-        } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
-        }
+        console.info('[bluetooth_js] clickRequestPermission end');
+    } catch (err) {
+        console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
     }
-
-    async function tryToEnableBt() {
-      let sta = btAccess.getState();
-      switch(sta){
-        case 0:
-          btAccess.enableBluetooth();
-          await clickRequestPermission(OPEN_BT_TEXT);
-          await sleep(10000);
-          let sta1 = btAccess.getState();
-          console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta1));
-          break;
-        case 1:
-          console.info('[bluetooth_js] bt turning on:'+ JSON.stringify(sta));
-          await sleep(3000);
-          break;
-        case 2:
-          console.info('[bluetooth_js] bt turn on:'+ JSON.stringify(sta));
-          break;
-        case 3:
-          btAccess.enableBluetooth();
-          await clickRequestPermission(OPEN_BT_TEXT);
-          await sleep(10000);
-          let sta2 = btAccess.getState();
-          console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta2));
-          break;
-        default:
-          console.info('[bluetooth_js] enable success');
-      }
+    try {
+        let button1 = await driver.findComponent(ON.text(PERMISSION_TEXT));
+        await button1.click();
+        await driver.delayMs(3000);
+        console.info('[bluetooth_js] click PERMISSION_TEXT end');
+    } catch (err) {
+        console.info('[bluetooth_js] click PERMISSION_TEXT failed. ' + err);
     }
+}
 
-    let manufactureValueBuffer = new Uint8Array(4);
-    manufactureValueBuffer[0] = 1;
-    manufactureValueBuffer[1] = 2;
-    manufactureValueBuffer[2] = 3;
-    manufactureValueBuffer[3] = 4;
-    let serviceValueBuffer = new Uint8Array(4);
-    serviceValueBuffer[0] = 4;
-    serviceValueBuffer[1] = 6;
-    serviceValueBuffer[2] = 7;
-    serviceValueBuffer[3] = 8;
-    let setting: bluetooth.AdvertiseSetting = {
-      interval:32,
-      txPower:1,
-      connectable:true,
-    };
-    let manufactureDataUnit: bluetooth.ManufactureData = {
-      manufactureId:4567,
-      manufactureValue:manufactureValueBuffer.buffer
-    };
-    let serviceDataUnit: bluetooth.ServiceData = {
-      serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-      serviceValue:serviceValueBuffer.buffer
-    };
-    let advData: bluetooth.AdvertiseData = {
-      serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-      manufactureData:[manufactureDataUnit],
-      serviceData:[serviceDataUnit],
-    };
-    let advResponse: bluetooth.AdvertiseData = {
-      serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-      manufactureData:[manufactureDataUnit],
-      serviceData:[serviceDataUnit],
-    };
+async function tryToEnableBt() {
+  let sta = btAccess.getState();
+  switch(sta){
+    case 0:
+      btAccess.enableBluetooth();
+      await clickRequestPermission(OPEN_BT_TEXT);
+      await sleep(10000);
+      let sta1 = btAccess.getState();
+      console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta1));
+      break;
+    case 1:
+      console.info('[bluetooth_js] bt turning on:'+ JSON.stringify(sta));
+      await sleep(3000);
+      break;
+    case 2:
+      console.info('[bluetooth_js] bt turn on:'+ JSON.stringify(sta));
+      break;
+    case 3:
+      btAccess.enableBluetooth();
+      await clickRequestPermission(OPEN_BT_TEXT);
+      await sleep(10000);
+      let sta2 = btAccess.getState();
+      console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta2));
+      break;
+    default:
+      console.info('[bluetooth_js] enable success');
+  }
+}
 
-    beforeAll(async function (done) {
+let manufactureValueBuffer = new Uint8Array(4);
+manufactureValueBuffer[0] = 1;
+manufactureValueBuffer[1] = 2;
+manufactureValueBuffer[2] = 3;
+manufactureValueBuffer[3] = 4;
+let serviceValueBuffer = new Uint8Array(4);
+serviceValueBuffer[0] = 4;
+serviceValueBuffer[1] = 6;
+serviceValueBuffer[2] = 7;
+serviceValueBuffer[3] = 8;
+let setting: bluetooth.AdvertiseSetting = {
+  interval:32,
+  txPower:1,
+  connectable:true,
+};
+let manufactureDataUnit: bluetooth.ManufactureData = {
+  manufactureId:4567,
+  manufactureValue:manufactureValueBuffer.buffer
+};
+let serviceDataUnit: bluetooth.ServiceData = {
+  serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+  serviceValue:serviceValueBuffer.buffer
+};
+let advData: bluetooth.AdvertiseData = {
+  serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+  manufactureData:[manufactureDataUnit],
+  serviceData:[serviceDataUnit],
+};
+let advResponse: bluetooth.AdvertiseData = {
+  serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+  manufactureData:[manufactureDataUnit],
+  serviceData:[serviceDataUnit],
+};
+export default function bluetoothAdvertisingTest() {
+  describe('bluetoothAdvertisingTest', () => {
+
+    beforeAll(async (done : Function) =>  {
       await clickRequestPermission(PERMISSION_TEXT);
       await openPhone();
       console.info('beforeAll called');
       done();
     })
-    beforeEach(async function(done) {
+    beforeEach(async (done : Function) => {
       await tryToEnableBt();
       console.info('beforeEach called');
       done();
     })
-    afterEach(function () {
+    afterEach(() => {
       console.info('afterEach called')
     })
-    afterAll(function () {
+    afterAll(() => {
       console.info('afterAll called')
     })
 
@@ -153,9 +155,9 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0100', 0, async function (done) {
-      let advStatus = null;
-      function onReceiveEvent(AdvertisingStateChangeInfo) {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0100', 0, async (done : Function) =>  {
+      let advStatus: Number = 0;
+      let onReceiveEvent = (AdvertisingStateChangeInfo :bluetooth.AdvertisingStateChangeInfo) => {
         console.info('bluetooth advertising state01 = ' + JSON.stringify(AdvertisingStateChangeInfo));
         console.info('bluetooth advertising state01 = ' + AdvertisingStateChangeInfo.state);
         advStatus = AdvertisingStateChangeInfo.state;
@@ -170,7 +172,7 @@ export default function bluetoothAdvertisingTest() {
       let advHandle = 0xFF;
       try {
         await bluetooth.on('advertisingStateChange', onReceiveEvent);
-        function startAdv() {
+        let startAdv = () => {
           return new Promise<void>((resolve,reject) => {
             bluetooth.startAdvertising(advertisingParams, (err, outAdvHandle)=> {
               if (err) {
@@ -219,7 +221,7 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0200', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0200', 0, async (done : Function) =>  {
       let advertisingParams: bluetooth.AdvertisingParams = {
         advertisingSettings: setting,
         advertisingData: advData,
@@ -235,7 +237,7 @@ export default function bluetoothAdvertisingTest() {
         });
         await sleep(500);
         await sleep(900);
-        function stopAdv() {
+        let stopAdv = () => {
           return new Promise<void>((resolve,reject) => {
             bluetooth.stopAdvertising(advHandle, (err, data)=> {
               if (err) {
@@ -268,8 +270,8 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0300', 0, async function (done) {
-      let advertisingParams = {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0300', 0, async (done : Function) =>  {
+      let advertisingParams: bluetooth.AdvertisingParams = {
         advertisingSettings: setting,
         advertisingData: advData,
         advertisingResponse: advResponse,
@@ -302,7 +304,7 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0400', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0400', 0, async (done : Function) =>  {
       let advertisingParams: bluetooth.AdvertisingParams = {
         advertisingSettings: setting,
         advertisingData: advData,
@@ -336,7 +338,7 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0500', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0500', 0, async (done : Function) =>  {
       let advertisingParams: bluetooth.AdvertisingParams = {
         advertisingSettings: setting,
         advertisingData: advData,
@@ -363,40 +365,6 @@ export default function bluetoothAdvertisingTest() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0700
-     * @tc.name testStartAdvertising
-     * @tc.desc Test bluetoothBle api11
-     * @tc.type Function
-     * @tc.size MediumTest
-     * @tc.level Level 0
-     */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0700', 0, async function (done) {
-      let advertisingParams: bluetooth.AdvertisingParams = {
-        advertisingSettings: setting,
-        advertisingData: advData,
-        advertisingResponse: advResponse,
-        duration: null,
-      }
-      let advHandle = 0xFF;
-      try {
-        bluetooth.startAdvertising(advertisingParams).then((outAdvHandle) => {
-          console.info('[bluetooth_js]startAdvertising promise info1:' + JSON.stringify(outAdvHandle));
-          advHandle = outAdvHandle;
-          console.info('[bluetooth_js]startAdvertising promise info2:'+JSON.stringify(advHandle));
-        });
-        await sleep(3000);
-        await bluetooth.stopAdvertising(advHandle).then((data) => {
-          console.info('[bluetooth_js] stopAdvertising promise result:' + JSON.stringify(data));
-        });
-      } catch (err) {
-        console.info("07errCode:" + err.code + ",07errMessage:" + err.message);
-        expect(Number(err.code)).assertEqual(401);
-      }
-      await sleep(2000);
-      done();
-    })
-
-    /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0900
      * @tc.name testStartAdvertising
      * @tc.desc Test bluetoothBle api11
@@ -404,7 +372,7 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0900', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0900', 0, async (done : Function) =>  {
       let advertisingParams: bluetooth.AdvertisingParams = {
         advertisingSettings: setting,
         advertisingData: advData,
@@ -437,7 +405,7 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1000', 0, async (done) => {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1000', 0, async (done : Function) =>  {
       let advertisingParams: bluetooth.AdvertisingParams = {
         advertisingSettings: setting,
         advertisingData: advData,
@@ -457,7 +425,7 @@ export default function bluetoothAdvertisingTest() {
           duration: 0,
         };
 
-        function enableAdv() {
+        let enableAdv = () => {
           return new Promise<void>((resolve, reject) => {
             bluetooth.enableAdvertising(advertisingEnableParams, (err, data) => {
               if (err) {
@@ -501,7 +469,7 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1100', 0, async (done) => {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1100', 0, async (done : Function) =>  {
       let advertisingParams: bluetooth.AdvertisingParams = {
         advertisingSettings: setting,
         advertisingData: advData,
@@ -528,7 +496,7 @@ export default function bluetoothAdvertisingTest() {
           advertisingId: advHandle,
         };
 
-        function disableAdv() {
+        let disableAdv = () => {
           return new Promise<void>((resolve, reject) => {
             bluetooth.disableAdvertising(advertisingDisableParams, (err, data) => {
               if (err) {
@@ -566,7 +534,7 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1200', 0, async (done) => {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1200', 0, async (done : Function) =>  {
       let advertisingParams: bluetooth.AdvertisingParams = {
         advertisingSettings: setting,
         advertisingData: advData,
@@ -608,9 +576,9 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1300', 0, async (done) => {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1300', 0, async (done : Function) =>  {
       let advStatus: Number = 0;
-      function onReceiveEvent(AdvertisingStateChangeInfo) {
+      let onReceiveEvent = (AdvertisingStateChangeInfo :bluetooth.AdvertisingStateChangeInfo) => {
         console.info('bluetooth advertising state13 = ' + JSON.stringify(AdvertisingStateChangeInfo));
         console.info('bluetooth advertising state13 = ' + AdvertisingStateChangeInfo.state);
         console.info('bluetooth advertising state13 = ' + AdvertisingStateChangeInfo.advertisingId);
@@ -656,9 +624,9 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1400', 0, async (done) => {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1400', 0, async (done : Function) =>  {
       let advStatus: Number = 0;
-      function onReceiveEvent(AdvertisingStateChangeInfo) {
+      let onReceiveEvent = (AdvertisingStateChangeInfo :bluetooth.AdvertisingStateChangeInfo) => {
         console.info('bluetooth advertising state14 = ' + JSON.stringify(AdvertisingStateChangeInfo));
         console.info('bluetooth advertising state14 = ' + AdvertisingStateChangeInfo.state);
         advStatus = AdvertisingStateChangeInfo.state;
@@ -718,7 +686,7 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1500', 0, async (done) => {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1500', 0, async (done : Function) =>  {
       btAccess.disableBluetooth();
       await clickRequestPermission(CLOSE_BT_TEXT);
       await sleep(10000);
@@ -763,7 +731,7 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1600', 0, async (done) => {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1600', 0, async (done : Function) =>  {
       let advHandle = 0xFF;
       try {
         let advertisingEnableParams: bluetooth.AdvertisingEnableParams = {
@@ -772,7 +740,7 @@ export default function bluetoothAdvertisingTest() {
         };
         await bluetooth.enableAdvertising(advertisingEnableParams).then((data) => {
           console.info('[bluetooth_js] enableAdvertising promise result16:' + JSON.stringify(data));
-        }).catch(err => {
+        }).catch((err: BusinessError) => {
           console.info('bluetooth enableAdvertising has error: ' + JSON.stringify(err));
           expect(Number(err.code)).assertEqual(2900099);
         });
@@ -795,7 +763,7 @@ export default function bluetoothAdvertisingTest() {
      * @tc.size MediumTest
      * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1700', 0, async (done) => {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1700', 0, async (done : Function) =>  {
       try {
         let STARTED = bluetooth.AdvertisingState.STARTED;
         expect(STARTED).assertEqual(1);

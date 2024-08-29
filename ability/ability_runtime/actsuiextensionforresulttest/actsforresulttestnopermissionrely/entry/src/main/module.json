@@ -51,7 +51,7 @@
         "name": "UIExtAbility",
         "icon": "$media:icon",
         "description": "UIExtAbility",
-        "type": "ui",
+        "type": "sys/commonUI",
         "visible": true,
         "srcEntrance": "./ets/UIExtensionAbility/UIExtAbility.ts"
       }
