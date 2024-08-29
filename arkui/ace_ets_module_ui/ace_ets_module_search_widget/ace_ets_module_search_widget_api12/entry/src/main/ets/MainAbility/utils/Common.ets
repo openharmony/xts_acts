@@ -38,12 +38,12 @@ export default class CommonFunc {
     console.info('[getInspectorByKey] current component obj is: ' + JSON.stringify(obj));
     let rectInfo = JSON.parse('[' + obj.$rect + ']')
     console.info('[getInspectorByKey] rectInfo is: ' + rectInfo);
-    this.rectLeft = JSON.parse('[' + rectInfo[0] + ']')[0]
-    this.rectTop = JSON.parse('[' + rectInfo[0] + ']')[1]
-    this.rectRight = JSON.parse('[' + rectInfo[1] + ']')[0]
-    this.rectBottom = JSON.parse('[' + rectInfo[1] + ']')[1]
-    return this.rectValue = {
-      'left': this.rectLeft, 'top': this.rectTop, 'right': this.rectRight, 'bottom': this.rectBottom
+    CommonFunc.rectLeft = JSON.parse('[' + rectInfo[0] + ']')[0]
+    CommonFunc.rectTop = JSON.parse('[' + rectInfo[0] + ']')[1]
+    CommonFunc.rectRight = JSON.parse('[' + rectInfo[1] + ']')[0]
+    CommonFunc.rectBottom = JSON.parse('[' + rectInfo[1] + ']')[1]
+    return CommonFunc.rectValue = {
+      'left': CommonFunc.rectLeft, 'top': CommonFunc.rectTop, 'right': CommonFunc.rectRight, 'bottom': CommonFunc.rectBottom
     }
   }
 
