@@ -124,6 +124,7 @@
         "MainAbility/pages/MultiNavigation/MultiNavigation32",
         "MainAbility/pages/Navigation/NavigationLaunchMode",
         "MainAbility/pages/Navigation/NavigationTitleTest1",
-        "MainAbility/pages/Navigation/removeByNavDestinationIdTest"
+        "MainAbility/pages/Navigation/removeByNavDestinationIdTest",
+        "MainAbility/pages/Navigation/NavPathInfoIsEntry"
     ]
 }
