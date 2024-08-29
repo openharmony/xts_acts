@@ -287,6 +287,10 @@ HWTEST_F(DrawingNativePathTest, testPathOpNormal, TestSize.Level0) {
     // 7. Perform a path operation on the two paths according to the specified path operation mode. The third parameter
     // enumerates the possible path operation modes.
     OH_Drawing_PathOp(path, src, OH_Drawing_PathOpMode::PATH_OP_MODE_INTERSECT);
+    OH_Drawing_PathOp(path, src, OH_Drawing_PathOpMode::PATH_OP_MODE_DIFFERENCE);
+    OH_Drawing_PathOp(path, src, OH_Drawing_PathOpMode::PATH_OP_MODE_UNION);
+    OH_Drawing_PathOp(path, src, OH_Drawing_PathOpMode::PATH_OP_MODE_XOR);
+    OH_Drawing_PathOp(path, src, OH_Drawing_PathOpMode::PATH_OP_MODE_REVERSE_DIFFERENCE);
     // 8. Free the memory
     OH_Drawing_PathDestroy(path);
 }

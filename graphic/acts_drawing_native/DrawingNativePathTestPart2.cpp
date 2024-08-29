@@ -661,6 +661,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddCircleNormal, TestSize.Level0) {
     OH_Drawing_PathLineTo(path, 100, 100);
     // 4. Add a circle to the path with the specified direction.
     OH_Drawing_PathAddCircle(path, 50, 50, 10, OH_Drawing_PathDirection::PATH_DIRECTION_CCW);
+    OH_Drawing_PathAddCircle(path, 50, 50, 10, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
     // 5. Free the memory.
     OH_Drawing_PathDestroy(path);
 }
@@ -1058,6 +1059,9 @@ HWTEST_F(DrawingNativePathTest, testPathSetFillTypeNormal, TestSize.Level0) {
     // 7. Set the fill type of the path using OH_Drawing_PathSetFillType, with the second parameter iterating through
     // the enumeration.
     OH_Drawing_PathSetFillType(path, OH_Drawing_PathFillType::PATH_FILL_TYPE_WINDING);
+    OH_Drawing_PathSetFillType(path, OH_Drawing_PathFillType::PATH_FILL_TYPE_EVEN_ODD);
+    OH_Drawing_PathSetFillType(path, OH_Drawing_PathFillType::PATH_FILL_TYPE_INVERSE_WINDING);
+    OH_Drawing_PathSetFillType(path, OH_Drawing_PathFillType::PATH_FILL_TYPE_INVERSE_EVEN_ODD);
     // 8. Free the memory.
     OH_Drawing_PathDestroy(path);
 }

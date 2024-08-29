@@ -486,9 +486,13 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMapPointsNormal, TestSize.Level0) {
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     OH_Drawing_Point2D src[] = {{0, 0}, {100, 0}, {100, 100}, {0, 100}, {0, 100}};
     OH_Drawing_Point2D dst[] = {{0, 0}, {100, 30}, {100, 70}, {0, 100}, {0, 100}};
-    // 2. OH_Drawing_MatrixMapPoints, pass integer 5 as count
+    // 2. OH_Drawing_MatrixMapPoints, pass the float value 1.52 as count
+    double value = 1.52;
+    uint32_t count = static_cast<uint32_t>(value);
+    OH_Drawing_MatrixSetPolyToPoly(matrix, src, dst, count);
+    // 3. OH_Drawing_MatrixMapPoints, pass integer 5 as count
     OH_Drawing_MatrixSetPolyToPoly(matrix, src, dst, 5);
-    // 3. Free memory
+    // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
 
