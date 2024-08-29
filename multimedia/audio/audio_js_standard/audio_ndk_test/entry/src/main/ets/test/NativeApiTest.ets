@@ -2215,5 +2215,230 @@ export default function audioNDK() {
       done()
     })
 
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0100
+     * @tc.name      : set OH_AudioSession_Strategy value to CONCURRENCY_MIX_WITH_OTHERS  
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerStrategy_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0100`,
+        `AudioSessionManagerStrategy_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0200
+     * @tc.name      : set OH_AudioSession_Strategy value to CONCURRENCY_DEFAULT   
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0200', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerStrategy_002();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0200`,
+        `AudioSessionManagerStrategy_002: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0300
+     * @tc.name      : set OH_AudioSession_Strategy value to CONCURRENCY_DUCK_OTHERS   
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0300', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerStrategy_003();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0300`,
+        `AudioSessionManagerStrategy_003: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0400
+     * @tc.name      : set OH_AudioSession_Strategy value to CONCURRENCY_PAUSE_OTHERS   
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0400', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerStrategy_004();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0400`,
+        `AudioSessionManagerStrategy_004: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategyError_0100
+     * @tc.name      : set audioSessionManager value to nullptr
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategyError_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerStrategyError_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategyError_0100`,
+        `AudioSessionManagerStrategyError_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerActivatedError_0100
+     * @tc.name      : set audioSessionManager value to nullptr
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerActivatedError_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerActivatedError_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerActivatedError_0100`,
+        `AudioSessionManagerActivatedError_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopError_0100
+     * @tc.name      : set audioSessionManager value to nullptr
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopError_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerStopError_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopError_0100`,
+        `AudioSessionManagerStopError_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+     /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopError_0200
+     * @tc.name      : stpo AudioSessionManager twice
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopError_0200', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerStopError_002();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopError_0200`,
+        `AudioSessionManagerStopError_002: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterError_0100
+     * @tc.name      : set audioSessionManager value to nullptr
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterError_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerRegisterError_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterError_0100`,
+        `AudioSessionManagerRegisterError_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterError_0200
+     * @tc.name      : set callback value to nullptr
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterError_0200', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerRegisterError_002();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterError_0200`,
+        `AudioSessionManagerRegisterError_002: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterError_0100
+     * @tc.name      : set audioSessionManager value to nullptr
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterError_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerUnregisterError_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterError_0100`,
+        `AudioSessionManagerUnregisterError_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterError_0200
+     * @tc.name      : set callback value to nullptr
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterError_0200', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerUnregisterError_002();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterError_0200`,
+        `AudioSessionManagerUnregisterError_002: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0100
+     * @tc.name      : set OH_AudioSession_DeactivatedReason value to DEACTIVATED_LOWER_PRIORITY 
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerReason_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0100`,
+        `AudioSessionManagerReason_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0200
+     * @tc.name      : set OH_AudioSession_DeactivatedReason value to DEACTIVATED_TIMEOUT  
+     * @tc.desc      : test AudioSessionManagerStrategy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0200', 0, async (done: Function) => {
+      let a = myaudioNdk.AudioSessionManagerReason_002();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0200`,
+        `AudioSessionManagerReason_002: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
   })
 }
