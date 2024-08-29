@@ -117,7 +117,7 @@ export default function ConnectionPublicTest() {
         let isDefaultNet: boolean = connection.hasDefaultNetSync();
         ExpectTrue(isDefaultNet == true);
         console.info(`${caseName}---End`);
-        done();telephony/networkmanager/noNet/statisticstest/entry/src/ohosTest/ets/test/Empty.test.ets
+        done();
 
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
