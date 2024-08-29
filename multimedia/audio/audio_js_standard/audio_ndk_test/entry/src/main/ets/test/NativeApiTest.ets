@@ -2215,5 +2215,68 @@ export default function audioNDK() {
       done()
     })
 
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0100
+     * @tc.name      : set  set default output device success
+     * @tc.desc      : test OH_AudioRenderer_SetDefaultOutputDevice
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0100', 0, async (done: Function) => {
+        let a = myaudioNdk.audioRendererSetDefaultOutputDevice_01();
+        console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0100`,
+          `audioRendererSetDefaultOutputDevice_01: ${a}`);
+        expect(a).assertEqual(0)
+        done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0200
+     * @tc.name      : set  set default output device with invalid devicetype
+     * @tc.desc      : test OH_AudioRenderer_SetDefaultOutputDevice
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0200', 0, async (done: Function) => {
+        let a = myaudioNdk.audioRendererSetDefaultOutputDevice_02();
+        console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0200`,
+          `audioRendererSetDefaultOutputDevice_02: ${a}`);
+        expect(a).assertEqual(0)
+        done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0300
+     * @tc.name      : set  set default output device with invalid streamusage
+     * @tc.desc      : test OH_AudioRenderer_SetDefaultOutputDevice
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0300', 0, async (done: Function) => {
+        let a = myaudioNdk.audioRendererSetDefaultOutputDevice_03();
+        console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0300`,
+          `audioRendererSetDefaultOutputDevice_03: ${a}`);
+        expect(a).assertEqual(0)
+        done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0400
+     * @tc.name      : set  set default output device with invalid renderer
+     * @tc.desc      : test OH_AudioRenderer_SetDefaultOutputDevice
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0400', 0, async (done: Function) => {
+        let a = myaudioNdk.audioRendererSetDefaultOutputDevice_04();
+        console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0400`,
+          `audioRendererSetDefaultOutputDevice_04: ${a}`);
+        expect(a).assertEqual(0)
+        done()
+    })
   })
 }
