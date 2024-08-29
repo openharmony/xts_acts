@@ -109,7 +109,7 @@ static napi_value NormalAVScreenCaptureTest(napi_env env, napi_callback_info inf
     vector<int> windowidsExclude = { -111 };
     struct OH_AVScreenCapture_ContentFilter *contentFilter = OH_AVScreenCapture_CreateContentFilter();
     OH_AVScreenCapture_ContentFilter_AddAudioContent(contentFilter, OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO);
-    OH_AVScreenCapture_ContentFilter_AddWindowContent(contentFilter, 
+    OH_AVScreenCapture_ContentFilter_AddWindowContent(contentFilter,
         &windowidsExclude[0], static_cast<int32_t>(windowidsExclude.size()));
     OH_AVScreenCapture_ExcludeContent(screenCapture, contentFilter);
     OH_AVScreenCapture_SkipPrivacyMode(screenCapture,
@@ -117,7 +117,7 @@ static napi_value NormalAVScreenCaptureTest(napi_env env, napi_callback_info inf
     OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCapture, config_);
     OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCapture);
     sleep(g_recordTime);
-    OH_AVScreenCapture_ResizeCanvas(capture, 768, 1280);
+    OH_AVScreenCapture_ResizeCanvas(capture, 768, 1280); // 768 width 1280 height
     OH_AVSCREEN_CAPTURE_ErrCode result3 = OH_AVScreenCapture_StopScreenCapture(screenCapture);
     OH_AVScreenCapture_ReleaseContentFilter(contentFilter);
     OH_AVScreenCapture_Release(screenCapture);
@@ -328,7 +328,6 @@ void ScreenCaptureNdkTestCallback::OnAudioBufferAvailable(bool isReady, OH_Audio
             return;
         }
         if (OH_AVScreenCapture_AcquireAudioBuffer(screenCapture_, &audioBuffer, type) == AV_SCREEN_CAPTURE_ERR_OK) {
-
             if ((aFile != nullptr) && (audioBuffer->buf != nullptr) && (type == OH_MIC)) {
                 int32_t ret = fwrite(audioBuffer->buf, 1, audioBuffer->size, aFile);
                 free(audioBuffer->buf);
