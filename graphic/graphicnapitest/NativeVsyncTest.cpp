@@ -113,6 +113,66 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_Destroy002, Function | MediumTest | Lev
 {
     OH_NativeVSync_Destroy(native_vsync);
 }
+/*
+ * @tc.name: OH_NativeVSync_RequestFrameWithMultiCallback
+ * @tc.desc: test for call OH_NativeVSync_RequestFrameWithMultiCallback and check ret
+ * @tc.type: FUNC
+ */
+HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrameWithMultiCallbackNormal, Function | MediumTest | Level2) {
+    char name[] = "test";
+    native_vsync = OH_NativeVSync_Create(name, sizeof(name));
+    ASSERT_NE(native_vsync, nullptr);
+    OH_NativeVSync_FrameCallback callback = OnVSync;
+    auto *data = new std::string("hello");
+    OH_NativeVSync_RequestFrame(native_vsync, callback, data);
+    int ret = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
+    OH_NativeVSync_RequestFrame(native_vsync, callback, nullptr);
+    int ret1 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
+    ASSERT_EQ(ret, NATIVE_ERROR_OK);
+    ASSERT_EQ(ret1, NATIVE_ERROR_OK);
+    for (int i = 0; i < 5; i++) {
+        int ret2 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        ASSERT_EQ(ret2, NATIVE_ERROR_OK);
+    }
+    for (int i = 0; i < 5; i++) {
+        int ret3 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data + i);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        ASSERT_EQ(ret3, NATIVE_ERROR_OK);
+    }
+    for (int i = 0; i < 100; i++) {
+        int ret100 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        ASSERT_EQ(ret100, NATIVE_ERROR_OK);
+    }
+    for (int i = 0; i < 1000; i++) {
+        int ret1000 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        ASSERT_EQ(ret1000, NATIVE_ERROR_OK);
+    }
+    OH_NativeVSync_Destroy(native_vsync);
+}
+
+HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrameWithMultiCallbackAbnormal, Function | MediumTest | Level3) {
+    char name[] = "test";
+    native_vsync = OH_NativeVSync_Create(name, sizeof(name));
+    ASSERT_NE(native_vsync, nullptr);
+    OH_NativeVSync_FrameCallback callback = OnVSync;
+    auto *data = new std::string("hello");
+    int ret3 = OH_NativeVSync_RequestFrameWithMultiCallback(nullptr, callback, data);
+    ASSERT_EQ(ret3, NATIVE_ERROR_INVALID_ARGUMENTS);
+    int ret4 = OH_NativeVSync_RequestFrameWithMultiCallback(0, callback, data);
+    ASSERT_EQ(ret4, NATIVE_ERROR_INVALID_ARGUMENTS);
+    int ret5 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, nullptr, data);
+    ASSERT_EQ(ret5, NATIVE_ERROR_INVALID_ARGUMENTS);
+    int ret6 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, 0, data);
+    ASSERT_EQ(ret6, NATIVE_ERROR_INVALID_ARGUMENTS);
+    int ret7 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, nullptr);
+    ASSERT_EQ(ret7, NATIVE_ERROR_OK);
+    int ret8 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, 0);
+    ASSERT_EQ(ret8, NATIVE_ERROR_OK);
+    OH_NativeVSync_Destroy(native_vsync);
+}
 } // namespace
 } // namespace Rosen
 } // namespace OHOS
