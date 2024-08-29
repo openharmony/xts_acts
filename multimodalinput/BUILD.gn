@@ -23,6 +23,7 @@ group("multimodalinput") {
       "multimodalinput_ets/PointerEts:ActsMMIPointerEtsTest",
       "multimodalinput_ets_standard:ActsMultimodalInputEtsTest",
       "multimodalinput_ndk:ActsMultimodalInputNdkTest",
+      "multimodalinput_ndk_system:ActsMultimodalInputNdkSystemTest",
     ]
   }
 }
