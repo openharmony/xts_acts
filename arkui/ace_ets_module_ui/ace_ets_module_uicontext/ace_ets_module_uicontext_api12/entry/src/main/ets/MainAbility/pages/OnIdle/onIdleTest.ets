@@ -15,7 +15,6 @@
 import { FrameCallback } from "@ohos.arkui.UIContext"
 let message = "init"
 class CallBack extends FrameCallback {
-  static switch: boolean = false
   private uiContext: UIContext
   private tag: string
 
@@ -26,7 +25,7 @@ class CallBack extends FrameCallback {
   }
 
   onIdle(idleTimeInNano: number): void {
-    message = "onIdle"
+    message = 'onIdle'
   }
 }
 
@@ -35,14 +34,14 @@ class CallBack extends FrameCallback {
 struct onIdleTest {
   @State message: string = message
   @State switch: boolean = false
-  callBack: CallBack = new CallBack("normTask", this.getUIContext())
+  callBack: CallBack = new CallBack('normTask', this.getUIContext())
 
   build() {
     Column() {
       Text(this.message)
         .id("OnIdleText")
       Button("OnIdle CallBack")
-        .id("OnIdle")
+        .id('OnIdle')
         .onClick(() => {
           this.switch = !this.switch
           if (this.switch) {
