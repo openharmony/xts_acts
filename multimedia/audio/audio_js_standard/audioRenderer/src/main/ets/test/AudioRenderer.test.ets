@@ -13011,5 +13011,375 @@ export default function audioRendererTest() {
       console.info('afterAll called')
       done();
     })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0001
+     *@tc.name      : AudioRenderer_setDefaultOutputDevice_true
+     *@tc.desc      : setDefaultOutputDevice and getPreferOutputDeviceForRendererinfo success
+     *@tc.size      : MediumTest
+     *@tc.type      : Function
+     *@tc.level     : Level1
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0001", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        rendererFlags: 0
+      }
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer;
+      try {
+        audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        console.info(`AudioRenderer create : SUCCESS`);
+      } catch (err) {
+        console.info(`AudioRenderer create : ERROR`);
+        expect(false).assertTrue();
+      }
+      try {
+        audioRenderer.start();
+        console.info(`AudioRenderer start : SUCCESS`);
+      } catch (err) {
+        console.info(`AudioRenderer start : ERROR`);
+        expect(false).assertTrue();
+      }
+      try {
+        audioRenderer.setDefaultOutputDevice(2);
+        let rendererInfo: audio.AudioRendererInfo = {
+          usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+          rendererFlags: 0
+        }
+        this.audioRoutingManager = audio.getAudioManager().getRoutingManager()
+        this.audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((desc: audio.AudioDeviceDescriptors) => {
+          let flag = false;
+          for (const it of desc) {
+            if (it.deviceType === 2) {
+              flag = true;
+              break;
+            }
+          }
+        })
+        expect(flag).assertEqual(true);
+      } catch (err) {
+        console.info(`setDefaultOutputDevice ERROR or getPreferOutputDeviceForRendererInfo ERROR`);
+        expect(false).assertTrue();
+      }
+      audioRenderer.release().then(() => {
+        console.info(`AudioRenderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`AudioRenderer release :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+      });
+      console.info('afterAll called')
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0002
+     *@tc.name      : AudioRenderer_setDefaultOutputDevice_true
+     *@tc.desc      : setDefaultOutputDevice and getPreferOutputDeviceForRendererinfo success
+     *@tc.size      : MediumTest
+     *@tc.type      : Function
+     *@tc.level     : Level1
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0002", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_MESSAGE,
+        rendererFlags: 0
+      }
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer;
+      try {
+        audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        console.info(`AudioRenderer create : SUCCESS`);
+      } catch (err) {
+        console.info(`AudioRenderer create : ERROR`);
+        expect(false).assertTrue();
+      }
+      try {
+        audioRenderer.start();
+        console.info(`AudioRenderer start : SUCCESS`);
+      } catch (err) {
+        console.info(`AudioRenderer start : ERROR`);
+        expect(false).assertTrue();
+      }
+      try {
+        audioRenderer.setDefaultOutputDevice(1);
+        let rendererInfo: audio.AudioRendererInfo = {
+          usage: audio.StreamUsage.STREAM_USAGE_VOICE_MESSAGE,
+          rendererFlags: 0
+        }
+        this.audioRoutingManager = audio.getAudioManager().getRoutingManager()
+        this.audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((desc: audio.AudioDeviceDescriptors) => {
+          let flag = false;
+          for (const it of desc) {
+            if (it.deviceType === 1) {
+              flag = true;
+              break;
+            }
+          }
+        })
+        expect(flag).assertEqual(true);
+      } catch (err) {
+        console.info(`setDefaultOutputDevice ERROR or getPreferOutputDeviceForRendererInfo ERROR`);
+        expect(false).assertTrue();
+      }
+      audioRenderer.release().then(() => {
+        console.info(`AudioRenderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`AudioRenderer release :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+      });
+      console.info('afterAll called')
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0003
+     *@tc.name      : AudioRenderer_setDefaultOutputDevice_true
+     *@tc.desc      : setDefaultOutputDevice and getPreferOutputDeviceForRendererinfo success
+     *@tc.size      : MediumTest
+     *@tc.type      : Function
+     *@tc.level     : Level1
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0003", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        rendererFlags: 0
+      }
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer;
+      try {
+        audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        console.info(`AudioRenderer create : SUCCESS`);
+      } catch (err) {
+        console.info(`AudioRenderer create : ERROR`);
+        expect(false).assertTrue();
+      }
+      try {
+        audioRenderer.start();
+        console.info(`AudioRenderer start : SUCCESS`);
+      } catch (err) {
+        console.info(`AudioRenderer start : ERROR`);
+        expect(false).assertTrue();
+      }
+      try {
+        audioRenderer.setDefaultOutputDevice(2);
+        audioRenderer.setDefaultOutputDevice(1000);
+        let rendererInfo: audio.AudioRendererInfo = {
+          usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+          rendererFlags: 0
+        }
+        this.audioRoutingManager = audio.getAudioManager().getRoutingManager()
+        this.audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((desc: audio.AudioDeviceDescriptors) => {
+          let flag = false;
+          for (const it of desc) {
+            if (it.deviceType === 1) {
+              flag = true;
+              break;
+            }
+          }
+        })
+        expect(flag).assertEqual(true);
+      } catch (err) {
+        console.info(`setDefaultOutputDevice ERROR or getPreferOutputDeviceForRendererInfo ERROR`);
+        expect(false).assertTrue();
+      }
+      audioRenderer.release().then(() => {
+        console.info(`AudioRenderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`AudioRenderer release :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+      });
+      console.info('afterAll called')
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0004
+     *@tc.name      : AudioRenderer_setDefaultOutputDevice_false
+     *@tc.desc      : setDefaultOutputDevice input usage invalid return 6800103
+     *@tc.size      : MediumTest
+     *@tc.type      : Function
+     *@tc.level     : Level2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0004", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+        rendererFlags: 0
+      }
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer;
+      try {
+        audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        console.info(`AudioRenderer create : SUCCESS`);
+      } catch (err) {
+        console.info(`AudioRenderer create : ERROR`);
+        expect(false).assertTrue();
+      }
+      try {
+        audioRenderer.start(); 
+        console.info(`AudioRenderer start : SUCCESS`);
+      } catch (err) {
+        console.info(`AudioRenderer start : ERROR`);
+        expect(false).assertTrue();
+      }
+      try {
+        audioRenderer.setDefaultOutputDevice(1);
+      } catch (err) {
+        let data = err.code;
+        expect(data).asserEqual('6800103');
+      };
+      audioRenderer.release().then(() => {
+        console.info(`AudioRenderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`AudioRenderer release :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+      });
+      console.info('afterAll called')
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0005
+     *@tc.name      : AudioRenderer_setDefaultOutputDevice_false
+     *@tc.desc      : setDefaultOutputDevice input devicetype invalid return 6800101
+     *@tc.size      : MediumTest
+     *@tc.type      : Function
+     *@tc.level     : Level2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0005", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        rendererFlags: 0
+      }
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer;
+      try {
+        audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        console.info(`AudioRenderer create : SUCCESS`);
+      } catch (err) {
+        console.info(`AudioRenderer create : ERROR`);
+        expect(false).assertTrue();
+      }
+      try {
+        audioRenderer.start();
+        console.info(`AudioRenderer start : SUCCESS`);
+      } catch (err) {
+        console.info(`AudioRenderer start : ERROR`);
+        expect(false).assertTrue();
+      }
+      try {
+        audioRenderer.setDefaultOutputDevice(1101);
+      } catch (err) {
+        let data = err.code;
+        expect(data).asserEqual('6800101');
+      };
+      audioRenderer.release().then(() => {
+        console.info(`AudioRenderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`AudioRenderer release :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+      });
+      console.info('afterAll called')
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0006
+     *@tc.name      : AudioRenderer_setDefaultOutputDevice_false
+     *@tc.desc      : setDefaultOutputDevice input invalid_type return 401
+     *@tc.size      : MediumTest
+     *@tc.type      : Function
+     *@tc.level     : Level1
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0006", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        rendererFlags: 0
+      }
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer;
+      try {
+        audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        console.info(`AudioRenderer create : SUCCESS`);
+      } catch (err) {
+        console.info(`AudioRenderer create : ERROR`);
+        expect(false).assertTrue();
+      }
+      try {
+        audioRenderer.start();
+        console.info(`AudioRenderer start : SUCCESS`);
+      } catch (err) {
+        console.info(`AudioRenderer start : ERROR`);
+        expect(false).assertTrue();
+      }
+      try {
+        audioRenderer.setDefaultOutputDevice(undefined);
+      } catch (err) {
+        let data = err.code;
+        expect(data).asserEqual('401');
+      };
+      audioRenderer.release().then(() => {
+        console.info(`AudioRenderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`AudioRenderer release :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+      });
+      console.info('afterAll called')
+      done();
+    })
   })
 }
