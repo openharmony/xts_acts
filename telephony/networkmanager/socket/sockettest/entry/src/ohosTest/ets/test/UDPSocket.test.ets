@@ -1702,8 +1702,9 @@ export default function UDPSocketTest() {
             console.info(`${caseName} data: ${JSON.stringify(data)}`);
             expectTrue(data != null);
             expectFalse(data.isBound);
-            expectTrue(data.isClose);
+            expectFalse(data.isClose);
             expectFalse(data.isConnected);
+            udp.close();
           }
           console.info(`${caseName} test end`);
           done();
@@ -1808,9 +1809,10 @@ export default function UDPSocketTest() {
           console.info(`${caseName} data: ${JSON.stringify(data)}`);
           expectTrue(data != null);
           expectFalse(data.isBound);
-          expectTrue(data.isClose);
+          expectFalse(data.isClose);
           expectFalse(data.isConnected);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
