@@ -61,6 +61,24 @@
         "MainAbility/pages/IfElse/IfElse002",
         "MainAbility/pages/IfElse/IfElse003",
         "MainAbility/pages/IfElse/IfElse004",
-        "MainAbility/pages/IfElse/IfElse005"
+        "MainAbility/pages/IfElse/IfElse005",
+        "MainAbility/pages/lifecycle/LifeCycle0120",
+        "MainAbility/pages/lifecycle/LifeCycle0050",
+        "MainAbility/pages/wrap_builder/WrapBuilder0010",
+        "MainAbility/pages/builder/Builder0050",
+        "MainAbility/pages/builder/Builder0070",
+        "MainAbility/pages/builder/Builder0080",
+        "MainAbility/pages/builder/Builder0120",
+        "MainAbility/pages/link/Link0100",
+        "MainAbility/pages/local_builder/LocalBuilder0040",
+        "MainAbility/pages/styles/Styles0010",
+        "MainAbility/pages/provide_consume/ProvideConsume0020",
+        "MainAbility/pages/provide_consume/ProvideConsume0030",
+        "MainAbility/pages/provide_consume/ProvideConsume0040",
+        "MainAbility/pages/provide_consume/ProvideConsume0080",
+        "MainAbility/pages/provide_consume/ProvideConsume0360",
+        "MainAbility/pages/state/StateMap0010",
+        "MainAbility/pages/state/StateSet0010",
+        "MainAbility/pages/observed_object/Observed0060"
     ]
 }
