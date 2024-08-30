@@ -23,7 +23,7 @@ export default function webViewNativeMediaPlayerProps() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webViewNativeMediaPlayerProps',
+        url: 'testability/pages/webViewNativeMediaPlayerProps',
       }
 
       try {
