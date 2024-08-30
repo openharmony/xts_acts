@@ -55,7 +55,7 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].id != null).assertTrue();
         expect(devices[0].name).assertEqual("");
         expect(devices[0].address).assertEqual("");
-		expect(devices[0].networkId).assertEqual(''); // networkid属于system，不对public开放
+		expect(devices[0].networkId).assertEqual('');
         expect(devices[0].displayName != "").assertTrue();
         expect(devices[0].interruptGroupId != null).assertTrue();
         expect(devices[0].volumeGroupId != null).assertTrue();
@@ -87,7 +87,7 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].id != null).assertTrue();
         expect(devices[0].name).assertEqual("");
         expect(devices[0].address).assertEqual("");
-		expect(devices[0].networkId).assertEqual(''); // networkid属于system，不对public开放
+		expect(devices[0].networkId).assertEqual('');
         expect(devices[0].displayName != "").assertTrue();
         expect(devices[0].interruptGroupId != null).assertTrue();
         expect(devices[0].volumeGroupId != null).assertTrue();
@@ -116,11 +116,11 @@ export default function AudioRoutingManagerTest() {
         console.info(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
         expect(devices[0].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
         expect(devices[0].deviceType).assertEqual(audio.DeviceType.SPEAKER);
-		expect(devices[0].networkId).assertEqual(''); // networkid属于system，不对public开放
+		expect(devices[0].networkId).assertEqual('');
         expect(devices[0].displayName != "").assertTrue();
         expect(devices[1].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
         expect(devices[1].deviceType).assertEqual(audio.DeviceType.MIC);
-        expect(devices[1].networkId).assertEqual(''); // networkid属于system，不对public开放
+        expect(devices[1].networkId).assertEqual('');
         expect(devices[1].displayName != "").assertTrue();
         done();
       } catch (error) {
@@ -143,11 +143,11 @@ export default function AudioRoutingManagerTest() {
         console.info(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
         expect(devices[0].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
         expect(devices[0].deviceType).assertEqual(audio.DeviceType.SPEAKER);
-        expect(devices[0].networkId).assertEqual(''); // networkid属于system，不对public开放
+        expect(devices[0].networkId).assertEqual('');
         expect(devices[0].displayName != "").assertTrue();
         expect(devices[1].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
         expect(devices[1].deviceType).assertEqual(audio.DeviceType.EARPIECE);
-		expect(devices[0].networkId).assertEqual(''); // networkid属于system，不对public开放
+		expect(devices[0].networkId).assertEqual('');
         expect(devices[1].displayName != "").assertTrue();
         expect(devices[1].interruptGroupId != null).assertTrue();
         expect(devices[1].volumeGroupId != null).assertTrue();
@@ -179,7 +179,7 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].id != null).assertTrue();
         expect(devices[0].name).assertEqual("");
         expect(devices[0].address).assertEqual("");
-		expect(devices[0].networkId).assertEqual(''); // networkid属于system，不对public开放
+		expect(devices[0].networkId).assertEqual('');
         expect(devices[0].displayName != "").assertTrue();
         expect(devices[0].interruptGroupId != null).assertTrue();
         expect(devices[0].volumeGroupId != null).assertTrue();
@@ -211,11 +211,11 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].displayName != "").assertTrue();
         expect(devices[1].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
         expect(devices[1].deviceType).assertEqual(audio.DeviceType.MIC);
-        expect(devices[1].networkId).assertEqual(''); // networkid属于system，不对public开放
+        expect(devices[1].networkId).assertEqual('');
         expect(devices[1].displayName != "").assertTrue();
         expect(devices[2].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
         expect(devices[2].deviceType).assertEqual(audio.DeviceType.EARPIECE);
-        expect(devices[2].networkId).assertEqual(''); // networkid属于system，不对public开放
+        expect(devices[2].networkId).assertEqual('');
         expect(devices[2].displayName != "").assertTrue();
         done();
       } catch (error) {
