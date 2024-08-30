@@ -82,6 +82,7 @@ add_library(nativerender SHARED
     textarea/textarea_key_test.cpp
     textinput/textinput_key_test.cpp
     textarea/textarea_onchange_test.cpp
+    textarea/textarea_onpaste_test.cpp
     slider/slider_onchange_test.cpp
     textinput/textinput_onfocus_test.cpp
     textinput/textinput_onblur_test.cpp

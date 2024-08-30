@@ -83,6 +83,7 @@
 #include "textarea/textarea_key_test.h"
 #include "textinput/textinput_key_test.h"
 #include "textarea/textarea_onchange_test.h"
+#include "textarea/textarea_onpaste_test.h"
 #include "slider/slider_onchange_test.h"
 #include "textinput/textinput_onblur_test.h"
 #include "textinput/textinput_onfocus_test.h"
@@ -261,6 +262,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"textInputKeyTest", nullptr, TextInputKeyTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"textAreaOnChangeTest", nullptr, TextAreaOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textAreaOnPasteTest", nullptr, TextAreaOnPasteTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"sliderOnChangeTest", nullptr, SliderOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},

@@ -104,6 +104,7 @@
     "MainAbility/pages/textarea/TextAreaKeyTest",
     "MainAbility/pages/textinput/TextInputKeyTest",
     "MainAbility/pages/textarea/TextAreaOnChangeTest",
+    "MainAbility/pages/textarea/TextAreaOnPasteTest",
     "MainAbility/pages/slider/SliderOnChangeTest",
     "MainAbility/pages/textinput/TextInputOnBlurTest",
     "MainAbility/pages/textinput/TextInputOnFocusTest",

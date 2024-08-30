@@ -217,6 +217,8 @@ export const textAreaOnFocusTest: (a: string) => void;
 
 export const textAreaOnBlurTest: (a: string) => void;
 
+export const textAreaOnPasteTest: (a: string) => void;
+
 export const textAreaKeyTest: (a: string) => void;
 
 export const textInputKeyTest: (a: string) => void;
