@@ -3375,50 +3375,6 @@ static napi_value AudioRendererSetDefaultOutputDevice_01(napi_env env, napi_call
     OH_AudioStreamBuilder* builder;
     OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
     OH_AudioStream_Usage usage = AUDIOSTREAM_USAGE_VOICE_COMMUNICATION;
-    OH_AudioDevice_Type deviceType = AUDIO_DEVICE_TYPE_SPEAKER;
-    OH_AudioStreamBuilder_Create(&builder, type);
-
-    // 2. set builder params
-    OH_AudioStreamBuilder_SetRendererInfo(builder, usage);
-
-    OH_AudioRenderer_Callbacks callbacks;
-    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
-    OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
-
-    // 3. generate audiorendere
-    OH_AudioRenderer* audioRenderer;
-    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
-    if (result != AUDIOSTREAM_SUCCESS) {
-        napi_create_int32(env, TEST_FAIL, &res);
-        return res;
-    }
-
-    // 4. start
-    result = OH_AudioRenderer_Start(audioRenderer);
-    if (result != AUDIOSTREAM_SUCCESS) {
-        napi_create_int32(env, TEST_FAIL, &res);
-        return res;
-    }
-
-    // 5. OH_AudioRenderer_SetDefaultOutputDevice
-    result = OH_AudioRenderer_SetDefaultOutputDevice(audioRenderer, deviceType);
-    if (result != AUDIOSTREAM_SUCCESS) {
-        napi_create_int32(env, TEST_FAIL, &res);
-    } else {
-        napi_create_int32(env, TEST_PASS, &res);
-    }
-
-    OH_AudioRenderer_Release(audioRenderer);
-    OH_AudioStreamBuilder_Destroy(builder);
-    return res;
-}
-
-static napi_value AudioRendererSetDefaultOutputDevice_02(napi_env env, napi_callback_info info)
-{
-    napi_value res;
-    OH_AudioStreamBuilder* builder;
-    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
-    OH_AudioStream_Usage usage = AUDIOSTREAM_USAGE_VOICE_COMMUNICATION;
     OH_AudioDevice_Type deviceType = AUDIO_DEVICE_TYPE_WIRED_HEADSET;
     OH_AudioStreamBuilder_Create(&builder, type);
 
@@ -3429,7 +3385,7 @@ static napi_value AudioRendererSetDefaultOutputDevice_02(napi_env env, napi_call
     callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
     OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
 
-    // 3. generate audiorendere
+    // 3. generate audiorenderer
     OH_AudioRenderer* audioRenderer;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
     if (result != AUDIOSTREAM_SUCCESS) {
@@ -3457,7 +3413,7 @@ static napi_value AudioRendererSetDefaultOutputDevice_02(napi_env env, napi_call
     return res;
 }
 
-static napi_value AudioRendererSetDefaultOutputDevice_03(napi_env env, napi_callback_info info)
+static napi_value AudioRendererSetDefaultOutputDevice_02(napi_env env, napi_callback_info info)
 {
     napi_value res;
     OH_AudioStreamBuilder* builder;
@@ -3473,7 +3429,7 @@ static napi_value AudioRendererSetDefaultOutputDevice_03(napi_env env, napi_call
     callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
     OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
 
-    // 3. generate audiorendere
+    // 3. generate audiorenderer
     OH_AudioRenderer* audioRenderer;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
     if (result != AUDIOSTREAM_SUCCESS) {
@@ -3501,7 +3457,7 @@ static napi_value AudioRendererSetDefaultOutputDevice_03(napi_env env, napi_call
     return res;
 }
 
-static napi_value AudioRendererSetDefaultOutputDevice_04(napi_env env, napi_callback_info info)
+static napi_value AudioRendererSetDefaultOutputDevice_03(napi_env env, napi_callback_info info)
 {
     napi_value res;
     OH_AudioStreamBuilder* builder;
@@ -3517,7 +3473,7 @@ static napi_value AudioRendererSetDefaultOutputDevice_04(napi_env env, napi_call
     callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
     OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
 
-    // 3. generate audiorendere
+    // 3. generate audiorenderer
     OH_AudioRenderer* audioRenderer;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
     if (result != AUDIOSTREAM_SUCCESS) {
@@ -3829,8 +3785,6 @@ static napi_value Init(napi_env env, napi_value exports)
             AudioRendererSetDefaultOutputDevice_02, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRendererSetDefaultOutputDevice_03", nullptr,
             AudioRendererSetDefaultOutputDevice_03, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"audioRendererSetDefaultOutputDevice_04", nullptr,
-            AudioRendererSetDefaultOutputDevice_04, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
