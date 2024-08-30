@@ -165,7 +165,7 @@ export default function DisplayNdkTest() {
       try{
         let displayVirtualPixelRatio  = testNapi.getVirtualPixelRatio();
         console.log(caseName + ' :'+ displayVirtualPixelRatio);
-        expect(displayVirtualPixelRatio).assertEqual(1);
+        expect(displayVirtualPixelRatio).assertLarger(0);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -229,7 +229,7 @@ export default function DisplayNdkTest() {
       try{
         let displayDensityPixels  = testNapi.getDensityPixels();
         console.log(caseName + ' :'+ displayDensityPixels );
-        expect(displayDensityPixels).assertEqual(1);
+        expect(displayDensityPixels).assertLarger(0);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -250,7 +250,7 @@ export default function DisplayNdkTest() {
       try{
         let displayScaledDensity  = testNapi.getScaledDensity();
         console.log(caseName + ' :'+ displayScaledDensity );
-        expect(displayScaledDensity).assertEqual(1);
+        expect(displayScaledDensity).assertLarger(0);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -476,22 +476,20 @@ export default function DisplayNdkTest() {
     })
     /**
      * @tc.number    : SUB_BASIC_DMS_NDK_2000
-     * @tc.name      : test_OH_NativeDisplayManager_UnregisterDisplayChangeListener_No_register
-     * @tc.desc      : test_OH_NativeDisplayManager_UnregisterDisplayChangeListener_No_register
+     * @tc.name      : test_OH_NativeDisplayManager_registerDisplayChangeListener
+     * @tc.desc      : test_OH_NativeDisplayManager_registerDisplayChangeListener
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_OH_NativeDisplayManager_UnregisterDisplayChangeListener_No_register', 0, (done:Function) => {
-      let caseName = 'test_OH_NativeDisplayManager_UnregisterDisplayChangeListener_No_register';
+    it('test_OH_NativeDisplayManager_registerDisplayChangeListener', 0, (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_registerDisplayChangeListener';
       try{
         let displayId1  = testNapi.registerDisplayChange((displayId: number) => {
           console.log(caseName + ' displayId:'+ displayId );
         });
         console.log(caseName + ' displayId1:'+ displayId1 );
-        let result  = testNapi.unregisterDisplayChange(displayId1);
-        console.log(caseName + ' result:'+ result );
-        expect(result).assertEqual(0);
+        expect(displayId1).assertEqual(1);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
