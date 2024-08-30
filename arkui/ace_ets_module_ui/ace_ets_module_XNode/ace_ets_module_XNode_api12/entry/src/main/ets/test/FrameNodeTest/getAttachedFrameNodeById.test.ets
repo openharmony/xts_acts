@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -31,7 +31,7 @@ export default function getAttachedFrameNodeById() {
         console.info("get getAttachedFrameNodeById state pages: " + JSON.stringify(pages));
         if (!("getAttachedFrameNodeById" == pages.name)) {
           console.info("get getAttachedFrameNodeById state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push getAttachedFrameNodeById success: " + JSON.stringify(result));
         }
