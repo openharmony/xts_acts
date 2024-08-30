@@ -25,6 +25,7 @@ group("graphic") {
       "acts_windowCompatibilityTest:ActsWindowCompatibilityTest",
       "component3D:ActsComponent3DTest",
       "displayManager:ActsDisplayManagerTest",
+      "displayNdk:ActsDisplayNdkTest",
       "effectKit:ActsEffectKitTest",
       "graphic3D:ActsGraphic3DTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
