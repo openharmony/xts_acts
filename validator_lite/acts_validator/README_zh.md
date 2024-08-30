@@ -69,7 +69,7 @@
        },
      ~~~
 
-  2. 使用IDE打开工程，IDE[下载地址](https://developer.huawei.com/consumer/cn/download/deveco-studio)。
+  2. 使用开发工具打开工程，开发工具[下载地址](https://developer.huawei.com/consumer/cn/download/deveco-studio)。
 
   3. 配置自动签名，选择菜单项 File -> Project Structure... ，在弹出的 Project Structure 窗口中 Signing Configs 项，启用 Automatically generate signature 选项以实现签名自动生成，完成设置后，依次点击 Apply 和 OK 按钮。
 
@@ -77,11 +77,11 @@
 
 - ## 安装说明
 
-  使用标准工具将bin包推设备上，例如：`/user`目录下，通过串口或其他标准通讯接口安装bin包
+  使用标准工具将bin包传输至设备，例如放置在`/usr`目录下，通过串口或其他标准通讯接口进行bin包的安装
   
 - ## 测试方法
 
-  于每项测试，点击`？`按钮查详细项测试说明，测试结束后，需首页点击`生成报告`按钮才能生成测试文件
+  对于每项测试，点击`？`按钮查详细项测试说明，测试结束后，需在首页点击`生成报告`按钮以生成测试文件
   
 - ## 报告说明
 
