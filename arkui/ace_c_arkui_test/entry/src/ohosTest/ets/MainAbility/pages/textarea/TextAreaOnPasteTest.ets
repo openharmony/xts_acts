@@ -21,7 +21,7 @@ import { CommonView } from '../../componet/CommonView';
 struct TextAreaOnPasteTest {
   PAGE_TAG: string = 'TextAreaOnPasteTest';
 
-  build() {
+  build(){
     Column() {
       CommonView({
         pageTag: this.PAGE_TAG,
