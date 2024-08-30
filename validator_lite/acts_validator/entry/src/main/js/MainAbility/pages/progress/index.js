@@ -21,8 +21,7 @@ export default {
         arcVal: 10,
         horizontalVal: 10,
         str: '',
-        title: 'progress;',
-        txtName: 'compent.txt',
+        title: 'progress',
         pass: 'true ;',
         fail: 'false;'
     },

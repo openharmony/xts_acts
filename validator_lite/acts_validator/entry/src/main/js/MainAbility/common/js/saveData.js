@@ -14,49 +14,107 @@
  */
 
 import file from '@system.file';
-
+import storage from '@system.storage';
+let strData = '';
 export const saveTxtData = function (obj, str) {
-    let writeData = () => {
-        console.info('write  obj.str: ' + obj.str);
-        file.writeText({
-            uri: 'internal://app/' + obj.txtName,
-            text: obj.str,
-            success: function() {
-                console.log('call writeText success.');
-            },
-            fail: function(data, code) {
-                console.error('write call fail callback fail, code: ' + code + ', data: ' + data);
-            },
-        });
-    };
 
-    let checkStr = () => {
-        console.info('checkStr obj.str: ' + obj.str + ', obj.title: ' + obj.title);
-        if (!obj.str.includes(obj.title)) {
-            obj.str += obj.title + str;
-        } else {
-            return;
-        }
+    console.info('saveTxtData key= ' + obj.title + ', str= ' + str);
+    let keyStr = obj.title;
+    storage.set({
+       key: keyStr,
+       value: str,
+       success: function () {
+           console.info('storage set success, key= ' + keyStr + 'value= ' + str);
+       },
+       fail: function () {
+           console.info('storage set fail, key= ' + keyStr + 'value= ' + str);
+       },
+       complete: function () {
+           console.info('storage set call complete');
+       }
+    });
 
-        if (str === 'false;') {
-            obj.str.replace(obj.title + 'true ;', obj.title + 'false;');
-        } else if (str === 'true ;') {
-            obj.str.replace(obj.title + 'false;', obj.title + 'true ;');
-        }
-    };
+};
 
-    file.readText({
-        uri: 'internal://app/' + obj.txtName,
-        success: function(data) {
-            obj.str = data.text;
-            console.log('call readText success: ' + data.text);
-            checkStr();
-            writeData();
+export const getTxtData = function () {
+    let keyList = [
+        'chart(bar)',
+        'chart(line)',
+        'image-animator',
+        'input',
+        'list-item',
+        'longpress',
+        'marquee',
+        'opacity',
+        'picker-view',
+        'progress',
+        'qrcode',
+        'slider',
+        'swipe',
+        'swiper',
+        'switch',
+        'transition',
+        'app',
+        'configuration',
+        'timer(timeout)',
+        'timer(interval)',
+        'storage',
+        'file',
+        'vibrator',
+        'stepCounter',
+        'barometer',
+        'heartRate',
+        'onBodyState',
+        'accelerometer',
+        'gyroscope',
+        'location(info)',
+        'location(subscribe)',
+        'deviceInfo',
+        'brightness(value)',
+        'brightness(mode)',
+        'battery',
+        'nfc'
+    ];
+
+    for (let index = 0; index < keyList.length; index++) {
+        const element = keyList[index];
+        getStorageData(element, index, keyList.length);
+    }
+};
+
+export const getStorageData = function (element, index, totalLength) {
+
+    storage.get({
+        key: element,
+        success: function (data) {
+            console.info('storage get call success, key= ' + element + ', value= ' + data);
+            if (data !== '') {
+                strData += element + ':' + data;
+            }
+            if (index === totalLength - 1) {
+                console.info('get data complete strData= ' + strData);
+                saveTxtFile(strData);
+            }
+        },
+        fail: function (data, code) {
+            console.info('storage get call fail, key= ' + element);
+        },
+        complete: function () {
+            console.info('storage get call complete');
+        },
+    });
+};
+
+export const saveTxtFile = function (str) {
+    console.info('write str= ' + str);
+    file.writeText({
+        uri: 'internal://app/summary_report.json',
+        text: str,
+        success: function() {
+            console.log('call writeText success.');
         },
         fail: function(data, code) {
-            console.error('read call fail callback fail, code: ' + code + ', data: ' + data);
-            checkStr();
-            writeData();
+            console.error('write call fail callback fail, code: ' + code + ', data: ' + data);
         },
     });
 };

@@ -21,8 +21,7 @@ export default {
     data: {
         heartRate: 0,
         str: '',
-        title: 'heartRate;',
-        txtName: 'api.txt',
+        title: 'heartRate',
         pass: 'true ;',
         fail: 'false;'
     },
@@ -58,8 +57,8 @@ export default {
         router.replace({
             uri: 'pages/help/index',
             params: {
-                step: '操作步骤：点击订阅计步和取消订阅',
-                result: '预期结果：订阅计步后会实时更新当前步数，取消订阅后步数不再更新',
+                step: '操作步骤：点击订阅心率和取消订阅',
+                result: '预期结果：订阅心率后会实时更新当前心率值，取消订阅后心率不再更新',
                 url: 'pages/sensor/heartRate/index'
             }
         });

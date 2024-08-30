@@ -49,77 +49,77 @@ export default {
         url: 'pages/file/index/index'
       },
       {
-        id: 8,
+        id: 6,
         title: '振动',
         url: 'pages/vibrator/index'
       },
       {
-        id: 9,
+        id: 7,
         title: '传感器(计步)',
         url: 'pages/sensor/stepCounter/index'
       },
       {
-        id: 10,
+        id: 8,
         title: '传感器(气压)',
         url: 'pages/sensor/barometer/index'
       },
       {
-        id: 11,
+        id: 9,
         title: '传感器(心率)',
         url: 'pages/sensor/heartRate/index'
       },
       {
-        id: 12,
+        id: 10,
         title: '传感器(佩戴)',
         url: 'pages/sensor/onBodyState/index'
       },
       {
-        id: 13,
+        id: 11,
         title: '传感器(加速度)',
         url: 'pages/sensor/accelerometer/index'
       },
       {
-        id: 14,
+        id: 12,
         title: '传感器(陀螺仪)',
         url: 'pages/sensor/gyroscope/index'
       },
       {
-        id: 15,
+        id: 13,
         title: '地理位置(info)',
         url: 'pages/location/info/index'
       },
       {
-        id: 16,
+        id: 14,
         title: '地理位置(订阅)',
         url: 'pages/location/subscribe/index'
       },
       {
-        id: 17,
+        id: 15,
         title: '设备信息',
         url: 'pages/deviceInfo/index'
       },
       {
-        id: 18,
+        id: 16,
         title: '屏幕亮度(value)',
         url: 'pages/brightness/value/index'
       },
       {
-        id: 19,
+        id: 17,
         title: '屏幕亮度(Mode)',
         url: 'pages/brightness/mode/index'
       },
       {
-        id: 20,
+        id: 18,
         title: '电量信息',
         url: 'pages/battery/index'
       },
       {
-        id: 21,
+        id: 19,
         title: 'NFC卡片',
         url: 'pages/nfc/index'
       },
       {
-        id: 22,
+        id: 20,
         title: '返回首页',
         url: 'pages/index/index'
       }

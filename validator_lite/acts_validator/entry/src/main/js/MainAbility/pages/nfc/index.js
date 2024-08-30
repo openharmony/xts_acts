@@ -22,8 +22,7 @@ export default {
         hceService: null,
         value: '',
         str: '',
-        title: 'nfc;',
-        txtName: 'api.txt',
+        title: 'nfc',
         pass: 'true ;',
         fail: 'false;'
     },

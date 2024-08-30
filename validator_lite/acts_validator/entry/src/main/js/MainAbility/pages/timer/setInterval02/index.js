@@ -16,14 +16,13 @@
 import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
-var index = 0;
+let index = 0;
 export default {
     data:{
         index:0,
         intervalID: -1,
         str: '',
-        title: 'timer(interval);',
-        txtName: 'api.txt',
+        title: 'timer(interval)',
         pass: 'true ;',
         fail: 'false;'
     },

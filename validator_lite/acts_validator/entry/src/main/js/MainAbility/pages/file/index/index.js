@@ -20,8 +20,7 @@ import file from '@system.file';
 export default {
     data: {
         str: '',
-        title: 'file;',
-        txtName: 'api.txt',
+        title: 'file',
         pass: 'true ;',
         fail: 'false;',
 
@@ -92,7 +91,7 @@ export default {
     },
 
     fileRead() {
-        var obj = this;
+        let obj = this;
         file.readText({
             uri: 'internal://app/testfile1',
             success: function(data) {
@@ -112,7 +111,7 @@ export default {
     },
 
     fileWriteArray() {
-        var obj = this;
+        let obj = this;
         file.writeArrayBuffer({
             uri: 'internal://app/testfile3',
             buffer: new Uint8Array(8),
@@ -133,7 +132,7 @@ export default {
     },
 
     fileReadArray() {
-        var obj = this;
+        let obj = this;
         file.readArrayBuffer({
             uri: 'internal://app/testfile3',
             success: function(data) {
@@ -153,7 +152,7 @@ export default {
     },
 
     fileMkdir() {
-        var obj = this;
+        let obj = this;
         file.mkdir({
             uri: 'internal://app/testDirectory',
             success: function(data) {
@@ -173,7 +172,7 @@ export default {
     },
 
     fileRmdir() {
-        var obj = this;
+        let obj = this;
         file.rmdir({
             uri: 'internal://app/testDirectory',
             recursive: true,
@@ -194,7 +193,7 @@ export default {
     },
 
     fileList() {
-        var obj = this;
+        let obj = this;
         file.list({
             uri: 'internal://app',
             success: function(data) {
@@ -214,7 +213,7 @@ export default {
     },
 
     fileGet() {
-        var obj = this;
+        let obj = this;
         file.get({
             uri: 'internal://app/testfile1',
             success: function(data) {
@@ -297,7 +296,7 @@ export default {
     },
 
     fileAccess() {
-        var obj = this;
+        let obj = this;
         file.access({
             uri: 'internal://app/testfile4',
             success: function(data) {

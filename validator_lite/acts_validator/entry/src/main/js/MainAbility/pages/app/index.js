@@ -20,8 +20,7 @@ import app from '@system.app';
 export default {
     data: {
         str: '',
-        title: 'app;',
-        txtName: 'api.txt',
+        title: 'app',
         pass: 'true ;',
         fail: 'false;',
         todolist:[{
@@ -48,23 +47,19 @@ export default {
     },
 
     getInfo() {
-        var info = app.getInfo();
+        let info = app.getInfo();
         console.log(JSON.stringify(info));
         this.todolist[0].title = '名称: ' + info.appName;
         this.todolist[1].title = '版本名称: ' + info.versionName;
         this.todolist[2].title = '版本号: ' + info.versionCode;
     },
 
-    exitApp() {
-        app.terminate();
-    },
-
     help() {
         router.replace({
             uri: 'pages/help/index',
             params: {
-                step: '操作步骤：点击获取信息、退出应用按钮',
-                result: '预期结果：获取信息按钮正确显示应用信息，退出应用按钮可以退出应用',
+                step: '操作步骤：点击获取信息按钮',
+                result: '预期结果：获取信息按钮正确显示应用信息',
                 url: 'pages/app/index'
             }
         });

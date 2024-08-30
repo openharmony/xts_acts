@@ -21,8 +21,7 @@ export default {
     data: {
         pressure: 0,
         str: '',
-        title: 'barometer;',
-        txtName: 'api.txt',
+        title: 'barometer',
         pass: 'true ;',
         fail: 'false;'
     },
@@ -58,7 +57,7 @@ export default {
             uri: 'pages/help/index',
             params: {
                 step: '操作步骤：点击订阅气压和取消订阅',
-                result: '预期结果：订阅计步后会实时更新当前气压，取消订阅后气压值不再更新',
+                result: '预期结果：订阅气压后会实时更新当前气压，取消订阅后气压值不再更新',
                 url: 'pages/sensor/barometer/index'
             }
         });

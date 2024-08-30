@@ -14,12 +14,12 @@ limitations under the License.
 -->
 
 <div
-  style="width: 90%;left:5%;height: 454px;flex-direction: column;align-items: center;margin-top: 1px;"
+  style="width: 100%;height: 530px;flex-direction: column;align-items: center;margin-top: 1px;"
 >
   <text style="width:80%;height:50px;text-align: center;margin: 10px;">操作说明</text>
-  <text style="width:90%;height:78px;text-align: left;">{{step}}</text>
-  <text style="width:90%;height:192px;text-align: left">{{result}}</text>
-  <text style="width:90%;height:38px;text-align: left">通过点pass，失败点fail</text>
+  <text style="width:90%;text-align: left;">{{step}} 。</text>
+  <text style="width:90%;text-align: left;">{{result}} 。</text>
+  <text style="width:90%;height:38px;text-align: left">通过点pass，失败点fail。</text>
   <div class="bottom-bt">
     <input type="button" value="返回" class="backBtn" onclick="back" />
   </div>

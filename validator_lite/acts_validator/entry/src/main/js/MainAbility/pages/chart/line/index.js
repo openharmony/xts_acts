@@ -19,8 +19,7 @@ import router from '@system.router';
 export default {
     data: {
         str: '',
-        title: 'char-line;',
-        txtName: 'compent.txt',
+        title: 'chart(line)',
         pass: 'true ;',
         fail: 'false;',
         lineData: [

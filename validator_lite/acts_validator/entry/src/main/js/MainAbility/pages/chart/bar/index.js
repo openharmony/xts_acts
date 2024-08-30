@@ -19,8 +19,7 @@ import router from '@system.router';
 export default {
     data: {
         str: '',
-        title: 'char-bar;',
-        txtName: 'compent.txt',
+        title: 'chart(bar)',
         pass: 'true ;',
         fail: 'false;',
         barData: [

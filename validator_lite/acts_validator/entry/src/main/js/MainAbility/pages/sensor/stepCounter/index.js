@@ -21,8 +21,7 @@ export default {
     data: {
         steps: 0,
         str: '',
-        title: 'stepCounter;',
-        txtName: 'api.txt',
+        title: 'stepCounter',
         pass: 'true ;',
         fail: 'false;'
     },

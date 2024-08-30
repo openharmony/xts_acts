@@ -23,15 +23,16 @@ limitations under the License.
     </qrcode>
 
     <div class="container-div">
-        <input onclick="changeValue" class="container-bt" value="修改值"></input>
-        <input onclick="changeColor" class="container-bt" value="修改颜色"></input>
-        <input onclick="changeBackgroundColor" class="container-bt" value="修改背景颜色"></input>
+        <text style="width:60px;height:50px;text-align: left;">修改</text>
+        <input onclick="changeValue" class="container-bt" value="值"></input>
+        <input onclick="changeColor" class="container-bt" value="颜色"></input>
+        <input onclick="changeBackgroundColor" class="container-bt" value="背景色"></input>
     </div>
 
     <div class="bottom-bt">
         <input type="button" value="pass" class="button" onclick="changeResult(pass)" />
-        <input type="button" value="返回" class="button" onclick="back" />
         <input type="button" value="fail" class="button" onclick="changeResult(fail)" />
+        <input type="button" value="返回" class="button" onclick="back" />
     </div>
 </div>
 

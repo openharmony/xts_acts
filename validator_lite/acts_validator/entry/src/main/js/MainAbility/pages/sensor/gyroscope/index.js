@@ -24,8 +24,7 @@ export default {
         speedZ: 0,
         states: '',
         str: '',
-        title: 'gyroscope;',
-        txtName: 'api.txt',
+        title: 'gyroscope',
         pass: 'true ;',
         fail: 'false;'
     },

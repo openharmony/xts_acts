@@ -21,8 +21,7 @@ export default {
         state: '',
         isChecked: false,
         str: '',
-        title: 'switch;',
-        txtName: 'compent.txt',
+        title: 'switch',
         pass: 'true ;',
         fail: 'false;'
     },

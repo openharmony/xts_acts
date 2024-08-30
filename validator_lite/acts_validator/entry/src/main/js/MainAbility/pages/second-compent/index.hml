@@ -15,7 +15,7 @@ limitations under the License.
 
 <div class="container">
   <text class="titleTextStyle">
-    组件手动测试
+    组件测试
   </text>
   <list class="todo-wraper">
     <list-item for="{{todolist}}" class="listItem" key="idx">

@@ -21,8 +21,7 @@ export default {
   data: {
     ...dataCommon,
     str: '',
-    title: 'longpress;',
-    txtName: 'compent.txt',
+    title: 'longpress',
     pass: 'true ;',
     fail: 'false;'
   },

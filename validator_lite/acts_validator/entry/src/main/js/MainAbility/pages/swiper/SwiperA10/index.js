@@ -21,8 +21,7 @@ export default {
     data: {
         index: 0,
         str: '',
-        title: 'swiper;',
-        txtName: 'compent.txt',
+        title: 'swiper',
         pass: 'true ;',
         fail: 'false;'
     },

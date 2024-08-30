@@ -19,8 +19,7 @@ import router from '@system.router';
 export default {
     data: {
         str: '',
-        title: 'opacity;',
-        txtName: 'compent.txt',
+        title: 'opacity',
         pass: 'true ;',
         fail: 'false;'
     },

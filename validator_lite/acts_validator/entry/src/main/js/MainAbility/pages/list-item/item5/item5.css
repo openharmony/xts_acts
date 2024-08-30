@@ -14,8 +14,7 @@
  */
 
 .container {
-  width: 90%;
-  left:5%;
+  width: 100%;
   height: 454px;
   flex-direction: column;
   align-items: center;
@@ -53,4 +52,8 @@
 .itemStyle {
   width:240px;
   height:120px;
+}
+
+.button:active {
+  background-color: blueviolet;
 }

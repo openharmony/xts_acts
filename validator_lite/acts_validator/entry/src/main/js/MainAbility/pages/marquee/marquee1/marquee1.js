@@ -22,8 +22,7 @@ export default {
     speed: 1,
     flag: true,
     str: '',
-    title: 'marquee;',
-    txtName: 'compent.txt',
+    title: 'marquee',
     pass: 'true ;',
     fail: 'false;'
   },

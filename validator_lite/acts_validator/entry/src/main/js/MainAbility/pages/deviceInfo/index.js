@@ -20,8 +20,7 @@ import device from '@system.device';
 export default {
     data: {
         str: '',
-        title: 'deviceInfo;',
-        txtName: 'api.txt',
+        title: 'deviceInfo',
         pass: 'true ;',
         fail: 'false;',
 

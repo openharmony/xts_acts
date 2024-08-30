@@ -17,7 +17,7 @@ limitations under the License.
   <list-item style="height: 40px; width: 100%;"> </list-item>
   <list-item class="titleContainerStyle">
     <text class="titleTextStyle">
-      运动表手动测试
+      {{$t('strings.appTitle')}}
     </text>
   </list-item>
 
@@ -37,12 +37,19 @@ limitations under the License.
             onclick="changeAPI"
             />
   </list-item>
-
   <list-item class="listItem">
     <input
             type="button"
             class="buttonStyle"
-            value="quitApp"
+            value="生成报告"
+            onclick="changeSaveFile"
+            />
+  </list-item>
+  <list-item class="listItem">
+    <input
+            type="button"
+            class="buttonStyle"
+            value="退出应用"
             onclick="changeQuit"
             />
   </list-item>

@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 .container {
-    left:0px;
-    top:0px;
     width:100%;
     height:454px;
     justify-content: center;
@@ -88,8 +86,12 @@
     align-items: center;
 }
 
-.button{
+.button {
     width:100px;
     height:50px;
     margin-top: 10px;
+}
+
+.button:active {
+    background-color: blueviolet;
 }
