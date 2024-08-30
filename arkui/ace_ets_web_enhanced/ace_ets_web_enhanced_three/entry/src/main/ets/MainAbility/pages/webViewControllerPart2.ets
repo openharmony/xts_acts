@@ -24,6 +24,7 @@ import business_error from '@ohos.base'
 @Component
 struct webViewControllerPart2 {
   controller: webView.WebviewController = new webView.WebviewController();
+  controllerone: webView.WebviewController = new webView.WebviewController();
   @State str: string = ""
   @State onScrollCallBack: boolean = false
   @State javaScriptAccess: boolean = true
@@ -459,6 +460,31 @@ struct webViewControllerPart2 {
                 Utils.emitEvent(NativeEmbedStatus.LEAVE_BFCACHE, 37022);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+              }
+              break;
+            }
+
+            case "testScrollType001": {
+              try {
+                console.log('testScrollType001 :'+webView.ScrollType.EVENT)
+                Utils.emitEvent(webView.ScrollType.EVENT, 37023);
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+              }
+              break;
+            }
+
+            case "testscrollByWithResult001": {
+              try {
+                this.controller.loadUrl($rawfile('theScrolltwo.html'))
+                await Utils.sleep(4000);
+                let result = this.controllerone.scrollByWithResult(200, 200);
+                await Utils.sleep(2000);
+                console.log("original result: " + result);
+                Utils.emitEvent(result, 37024);
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+                Utils.emitEvent("error", 37024);
               }
               break;
             }
