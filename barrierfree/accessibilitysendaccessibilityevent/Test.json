@@ -3,9 +3,9 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "240000",
-        "bundle-name": "com.example.accessibilitysendaccessibilityevent",
-        "module-name": "phone",
         "shell-timeout": "600000",
+        "bundle-name": "com.example.accessibilitysendaccessibilityevent",
+        "module-name": "entry_test",
         "testcase-timeout": 70000
     },
     "kits": [
@@ -15,8 +15,7 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
+        },{
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
