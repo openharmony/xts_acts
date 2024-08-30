@@ -73,6 +73,7 @@
         "MainAbility/pages/renderNode/setShapeClip",
         "MainAbility/pages/typeNode/XComponent1",
         "MainAbility/pages/ComponentContent/updateConfiguration2",
-        "MainAbility/pages/BuilderNode/updateConfiguration1"
+        "MainAbility/pages/BuilderNode/updateConfiguration1",
+        "MainAbility/pages/FrameNode/getAttachedFrameNodeById"
     ]
 }
