@@ -15,7 +15,7 @@
 
 import file from '@system.file';
 import storage from '@system.storage';
-
+let strData = '';
 export const saveTxtData = function (obj, str) {
 
     console.info('saveTxtData key= ' + obj.title + ', str= ' + str);
@@ -83,7 +83,7 @@ export const getTxtData = function () {
 };
 
 export const getStorageData = function (element, index, totalLength) {
-    var strData = '';
+
     storage.get({
         key: element,
         success: function (data) {
@@ -93,7 +93,7 @@ export const getStorageData = function (element, index, totalLength) {
             }
             if (index === totalLength - 1) {
                 console.info('get data complete strData= ' + strData);
-                saveTxtFile();
+                saveTxtFile(strData);
             }
         },
         fail: function (data, code) {
@@ -103,7 +103,7 @@ export const getStorageData = function (element, index, totalLength) {
             console.info('storage get call complete');
         },
     });
-}
+};
 
 export const saveTxtFile = function (str) {
     console.info('write str= ' + str);

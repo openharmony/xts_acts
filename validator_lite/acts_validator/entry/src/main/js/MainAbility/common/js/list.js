@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 export const addData = function() {
-  for (var i = 0; i < 50; i++) {
+  for (let i = 0; i < 50; i++) {
     this.listData.push('common/left.png');
     this.listData.push('common/right.png');
     this.listData.push('common/music_prev.png');

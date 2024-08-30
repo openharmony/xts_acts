@@ -16,7 +16,7 @@
 import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
-var index = 0;
+let index = 0;
 export default {
     data:{
         index:0,

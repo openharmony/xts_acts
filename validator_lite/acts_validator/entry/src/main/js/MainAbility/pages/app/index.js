@@ -47,7 +47,7 @@ export default {
     },
 
     getInfo() {
-        var info = app.getInfo();
+        let info = app.getInfo();
         console.log(JSON.stringify(info));
         this.todolist[0].title = '名称: ' + info.appName;
         this.todolist[1].title = '版本名称: ' + info.versionName;

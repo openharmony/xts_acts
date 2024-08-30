@@ -63,7 +63,7 @@ export default {
   },
 
   storageGet() {
-    var obj = this;
+    let obj = this;
     storage.get({
       key: 'Storage1',
       success: function(data) {
@@ -121,7 +121,7 @@ export default {
   },
 
   storageClear() {
-    var obj = this;
+    let obj = this;
     storage.clear({
       success: function(data) {
         console.log('storageClear call success');

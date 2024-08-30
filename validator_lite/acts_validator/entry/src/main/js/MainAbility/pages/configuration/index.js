@@ -48,7 +48,7 @@ export default {
     },
 
     getInfo() {
-        var info = configuration.getLocale();
+        let info = configuration.getLocale();
         console.log(JSON.stringify(info));
         this.todolist[0].title = '语言: ' + info.language;
         this.todolist[1].title = '国家: ' + info.countryOrRegion;

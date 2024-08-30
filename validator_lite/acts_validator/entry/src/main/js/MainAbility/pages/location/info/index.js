@@ -51,7 +51,7 @@ export default {
     },
 
     getLocationInfo() {
-        var obj = this;
+        let obj = this;
         geolocation.getLocation({
             success: function (data) {
                 obj.todolist[0].title = '经 - 度: ' + data.longitude;
@@ -80,7 +80,7 @@ export default {
     },
 
     getSupportedCoordType() {
-        var types = geolocation.getSupportedCoordTypes();
+        let types = geolocation.getSupportedCoordTypes();
         this.todolist[6].title = '坐标系： ' + '[';
         for (let i = 0; i < types.length; i++) {
             this.todolist[6].title += types[i];

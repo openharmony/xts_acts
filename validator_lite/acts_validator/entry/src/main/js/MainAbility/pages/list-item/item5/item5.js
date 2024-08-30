@@ -25,7 +25,7 @@ export default {
     fail: 'false;'
   },
   onInit() {
-    for (var i = 0; i < 100; i++) {
+    for (let i = 0; i < 100; i++) {
       this.listData.push('common/left.png');
       this.listData.push('common/right.png');
       this.listData.push('common/music_prev.png');
