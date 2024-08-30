@@ -207,18 +207,23 @@ export default function AVPlayerLocalTest() {
         async function testCheckPlaybackInfo(src, avPlayer, descriptionKey, descriptionValue, done) {
             console.info(`case media source: ${src}`)
             media.createAVPlayer((err, video) => {
-                console.info(`case media err: ${err}`)
-                if (typeof (video) != 'undefined') {
-                    console.info('case createAVPlayer success');
-                    avPlayer = video;
-                    setPlaybackInfoCb(avPlayer, descriptionKey, descriptionValue, done)
-                    setSource(avPlayer, src);
-                }
                 if (err != null) {
                     console.error(`case createAVPlayer error, errMessage is ${err.message}`);
                     expect().assertFail();
                     done();
+                } else {
+                    console.info(`case media err: ${err}`)
+                    if (typeof (video) != 'undefined') {
+                        console.info('case createAVPlayer success');
+                        avPlayer = video;
+                        setPlaybackInfoCb(avPlayer, descriptionKey, descriptionValue, done)
+                        setSource(avPlayer, src);
+                    } else {
+                        console.error(`case createAVPlayer failed`);
+                        expect().assertFail();
+                    }
                 }
+                done();
             });
         }
 
