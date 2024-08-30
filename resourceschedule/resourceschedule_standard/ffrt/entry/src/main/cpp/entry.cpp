@@ -849,6 +849,7 @@ static napi_value MutexAbnormalParamTest001(napi_env env, napi_callback_info inf
     if (ret != ffrt_error_inval) {
         result = 1;
     }
+    ffrt_mutexattr_init(&attr);
     ret = ffrt_mutex_init(&mtx, &attr);
     if (ret != ffrt_success) {
         result = 2;
@@ -1935,6 +1936,7 @@ static napi_value QueueTest002(napi_env env, napi_callback_info info)
     }
     for (int num = 0; num < maxNum; num++) {
         ffrt_queue_wait(task[num][9]);
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT QUEUE", "result in queue %{public}d is %{public}d", num, result[num]);
         if (result[num] != 10) {
             a = 1;
         }
@@ -1945,6 +1947,8 @@ static napi_value QueueTest002(napi_env env, napi_callback_info info)
         }
     }
     for (int num = 0; num < maxNum; num++) {
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT QUEUE", "qos in queue task %{public}d is %{public}d", num,
+            ffrt_queue_attr_get_qos(&queue_attr[num]));
         if (ffrt_queue_attr_get_qos(&queue_attr[num]) != num) {
             a = 1;
         }
@@ -3064,7 +3068,7 @@ static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
     std::function<void()>&& basicFunc3 = [&result3]() {result3 += addnum;};
     std::function<void()> &&SleepFunc = [] () {sleep(1);};
     ffrt_task_handle_t sleepTask = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SleepFunc,
-            ffrt_function_kind_queue), nullptr);
+        ffrt_function_kind_queue), nullptr);
     ffrt_task_handle_t task3 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc3,
         ffrt_function_kind_queue), nullptr);
     int ret = ffrt_queue_cancel(task3);
@@ -3099,25 +3103,25 @@ static napi_value ffrt_loop_0002(napi_env env, napi_callback_info info)
     std::function<void()>&& basicFunc1 = [&result1]() {result1 += addTen;};
     std::function<void()> &&SleepFunc = [] () {sleep(1);};
     ffrt_task_handle_t sleepTask = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SleepFunc,
-            ffrt_function_kind_queue), nullptr);
+        ffrt_function_kind_queue), nullptr);
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc1,
         ffrt_function_kind_queue), nullptr);
     int result = 0;
     int ret1 = ffrt_queue_cancel(task1);
     if (ret1 != 0) {
-        result = 1;
+        result = ERR_CODE_1;
     }
     ffrt_queue_wait(sleepTask);
     int result2 = 0;
     const int addTwenty = 20;
     std::function<void()>&& basicFunc2 = [&result2]() {result2 += addTwenty;};
     ffrt_task_handle_t sleepTask2 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SleepFunc,
-            ffrt_function_kind_queue), nullptr);
+        ffrt_function_kind_queue), nullptr);
     ffrt_task_handle_t task2 = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(basicFunc2, ffrt_function_kind_queue), nullptr);
     int ret2 = ffrt_queue_cancel(task2);
     if (ret2 != 0) {
-        result = 2;
+        result = ERR_CODE_2;
     }
     ffrt_queue_wait(sleepTask2);
     ffrt_loop_stop(loop);
@@ -3834,7 +3838,7 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "ffrtndk",
+    .nm_modname = "entry",
     .nm_priv = ((void*)0),
     .reserved = { 0 },
 };
