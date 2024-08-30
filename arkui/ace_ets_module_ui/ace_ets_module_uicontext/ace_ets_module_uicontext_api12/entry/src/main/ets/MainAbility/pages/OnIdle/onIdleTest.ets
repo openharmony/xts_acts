@@ -12,44 +12,45 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { FrameCallback } from "@ohos.arkui.UIContext"
-let message = "init"
-class CallBack extends FrameCallback {
-  private uiContext: UIContext
-  private tag: string
+import { FrameCallback } from '@ohos.arkui.UIContext';
 
-  constructor(tag: string, context: UIContext) {
+let para: Record<string, string> = { 'Storage': 'init' }
+let storage: LocalStorage = new LocalStorage(para);
+
+class IdleCallback extends FrameCallback {
+  static str: string = 'init'
+  link: SubscribedAbstractProperty<string> = storage.link('Storage')
+
+  constructor() {
     super()
-    this.tag = tag
-    this.uiContext = context
   }
 
   onIdle(idleTimeInNano: number): void {
-    message = 'onIdle'
+    this.link.set('OnIdle')
   }
 }
 
 @Entry
 @Component
 struct onIdleTest {
-  @State message: string = message
+  callback: IdleCallback = new IdleCallback();
   @State switch: boolean = false
-  callBack: CallBack = new CallBack('normTask', this.getUIContext())
+  @LocalStorageLink('Storage') str: string | undefined = storage.get('Storage')
 
   build() {
     Column() {
-      Text(this.message)
-        .id("OnIdleText")
-      Button("OnIdle CallBack")
+      Text(this.str)
+        .id('OnIdleText')
+
+      Button('idle callback')
         .id('OnIdle')
         .onClick(() => {
           this.switch = !this.switch
           if (this.switch) {
-            this.getUIContext().postFrameCallback(this.callBack)
+            (this.getUIContext().postFrameCallback(this.callback))
           }
+          this.str = storage.get('Storage')
         })
     }
-    .height('100%')
-    .width('100%')
   }
 }
