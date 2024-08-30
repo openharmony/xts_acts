@@ -13,34 +13,33 @@
  * limitations under the License.
  */
 import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
-import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
-// @ts-nocheck
-let emitKey = "emitWebViewOnOverrideUrlLoading"
 
-export default function webViewOnOverrideUrlLoading() {
-  describe('ActsAceWebViewOnOverrideUrlLoading', () => {
+let emitKey = "emitJsBridgeLastJsProxyCallingFrameUrl"
+
+export default function webViewJsBridgeLastJsProxyCallingFrameUrl() {
+  describe('ActsAceWebDevWebViewJsBridgeLastJsProxyCallingFrameUrl', () => {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewOnOverrideUrlLoading',
+            url: 'testability/pages/webViewJsBridgeLastJsProxyCallingFrameUrl',
         }
         
         try {
             await Utils.sleep(1000)
             router.clear();
             let pages = router.getState();
-            console.info("get webViewOnOverrideUrlLoading state success " + JSON.stringify(pages));
-            if (!("webViewOnOverrideUrlLoading" == pages.name)) {
-                console.info("get webViewOnOverrideUrlLoading state success " + JSON.stringify(pages.name));
+            console.info("get webViewJsBridgeLastJsProxyCallingFrameUrl state success " + JSON.stringify(pages));
+            if (!("webViewJsBridgeLastJsProxyCallingFrameUrl" == pages.name)) {
+                console.info("get webViewJsBridgeLastJsProxyCallingFrameUrl state success " + JSON.stringify(pages.name));
                 let result = await router.pushUrl(options);
                 await Utils.sleep(1000);
-                console.info("push webViewOnOverrideUrlLoading page success " + JSON.stringify(result));
+                console.info("push webViewJsBridgeLastJsProxyCallingFrameUrl state success " + JSON.stringify(result));
             }
         } catch (err) {
-            console.error("push webViewOnOverrideUrlLoading page error:" + err);
+            console.error("push webViewJsBridgeLastJsProxyCallingFrameUrl page error:" + err);
         }
         done()
     });
@@ -52,17 +51,17 @@ export default function webViewOnOverrideUrlLoading() {
     
     afterEach(async (done: Function) => {
         try {
-            let backData: events_emitter.EventData = {
+            let backData: emitter.EventData = {
                 data: {
                     "ACTION": emitKey
                 }
             }
-            let backEvent : events_emitter.InnerEvent = {
+            let backEvent : emitter.InnerEvent = {
                 eventId: 10,
-                priority: events_emitter.EventPriority.LOW
+                priority: emitter.EventPriority.LOW
             }
             console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+            emitter.emit(backEvent, backData);
         } catch (err) {
             console.error("emit emitKey error:" + JSON.stringify(err));
         }
@@ -71,19 +70,21 @@ export default function webViewOnOverrideUrlLoading() {
     })
     
     /*
-     *@tc.number SUB_ACE_SUB_ONOVERRIDEURLLOADING_API_0600
-     *@tc.name testWebViewwebViewOnOverrideUrlLoading
-     *@tc.desc test interface of OnOverrideUrlLoading with runjavascript jump
+     *@tc.number SUB_ACE_WEB_getLastJavascriptProxyCallingFrameUrl_API_0200
+     *@tc.name testJsBridgeGetLastJavascriptProxyCallingFrameUrl
+     *@tc.desc test GetLastJavascriptProxyCallingFrameUrl
      *@tc.size MediumTest
      *@tc.type Function
      *@tc.level 1
      */
-    it('testWebViewwebViewOnOverrideUrlLoading', 0, async (done: Function) => {
-        Utils.registerBaseEvent("emitWebViewwebViewOnOverrideUrlLoading", "true", 10007,
-          done, (backData: events_emitter.EventData, expected: Object) => {
-            expect(backData?.data?.ACTION).assertEqual(expected);
-          });
-        sendEventByKey('webViewOnOverrideUrlLoading', 10, '');
+    it('testJsBridgeGetLastJavascriptProxyCallingFrameUrl', 0, async (done: Function) => {
+      let emitKey = "emitJsBridgeGetLastJavascriptProxyCallingFrameUrl";
+      Utils.emitEvent(emitKey, 10)
+      Utils.registerBaseEvent("testJsBridgeGetLastJavascriptProxyCallingFrameUrl", "success", 1277,
+        done, (backData: emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
+      sendEventByKey('webViewJsBridgeLastJsProxyCallingFrameUrl', 10, '');
     })
   })
 }

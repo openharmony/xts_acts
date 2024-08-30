@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
-import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
@@ -25,7 +24,7 @@ export default function ActsAceWebViewAnrCallback() {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewAnrCallback',
+            url: 'testability/pages/webViewAnrCallback',
         }
         
         try {
@@ -52,17 +51,17 @@ export default function ActsAceWebViewAnrCallback() {
 
       afterEach(async (done: Function) => {
         try {
-            let backData: events_emitter.EventData = {
+            let backData: emitter.EventData = {
                 data: {
                     "ACTION": emitKey
                 }
             }
-            let backEvent : events_emitter.InnerEvent = {
+            let backEvent : emitter.InnerEvent = {
                 eventId: 10,
-                priority: events_emitter.EventPriority.LOW
+                priority: emitter.EventPriority.LOW
             }
             console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+            emitter.emit(backEvent, backData);
         } catch (err) {
             console.error("emit emitKey error:" + JSON.stringify(err));
         }
@@ -82,7 +81,7 @@ export default function ActsAceWebViewAnrCallback() {
         emitKey = "emitWebViewOnRenderProcessResponding"
         Utils.emitEvent(emitKey, 10);
         Utils.registerBaseEvent("testWebViewOnRenderProcessResponding", true, 1336,
-          done, (backData: events_emitter.EventData, expected: Object) => {
+          done, (backData: emitter.EventData, expected: Object) => {
             expect(backData?.data?.ACTION).assertEqual(expected);
           });
         sendEventByKey('webViewAnrCallback', 10, '');
@@ -100,7 +99,7 @@ export default function ActsAceWebViewAnrCallback() {
         emitKey = "emitWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT"
         Utils.emitEvent(emitKey, 10);
         Utils.registerBaseEvent("testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT", true, 1338,
-          done, (backData: events_emitter.EventData, expected: Object) => {
+          done, (backData: emitter.EventData, expected: Object) => {
             expect(backData?.data?.ACTION).assertEqual(expected);
           });
         sendEventByKey('webViewAnrCallback', 10, '');

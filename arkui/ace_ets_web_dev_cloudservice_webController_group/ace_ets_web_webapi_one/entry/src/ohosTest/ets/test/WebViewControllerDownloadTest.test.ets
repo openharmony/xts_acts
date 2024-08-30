@@ -13,16 +13,17 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import webView from '@ohos.web.webview';
+import events_emitter from '@ohos.events.emitter';
 
 export default function webViewControllerDownloadTest() {
   describe('WebViewControllerDownloadTest', () => {
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/WebViewControllerDownloadTest',
+        url: 'testability/pages/WebViewControllerDownloadTest',
       }
       try {
         await Utils.sleep(1000);

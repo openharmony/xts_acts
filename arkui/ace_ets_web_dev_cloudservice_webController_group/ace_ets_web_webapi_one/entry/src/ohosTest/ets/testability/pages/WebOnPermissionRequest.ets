@@ -155,7 +155,7 @@ struct WebOnPermissionRequest {
           .height('50%')
           .width('100%')
           .javaScriptAccess(true)
-          .onPermissionRequest((event) => {
+          .onPermissionRequest((event: OnPermissionRequestEventType) => {
             if (event) {
               console.info('onPermissionRequest ====>' + event.request.getOrigin())
               if (this.deny) {
@@ -166,7 +166,7 @@ struct WebOnPermissionRequest {
               }
             }
           })
-          .onConsole((event) => {
+          .onConsole((event: OnConsoleEventType) => {
             if (event) {
               console.info('onConsole ====>' + event.message.getMessage())
             }
@@ -178,4 +178,12 @@ struct WebOnPermissionRequest {
 
     .height('100%')
   }
+}
+
+interface OnPermissionRequestEventType { 
+  request: PermissionRequest;
+}
+
+interface OnConsoleEventType { 
+  message: ConsoleMessage;
 }

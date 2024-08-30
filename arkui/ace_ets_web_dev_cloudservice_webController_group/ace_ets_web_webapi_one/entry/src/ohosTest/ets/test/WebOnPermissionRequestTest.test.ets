@@ -12,7 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import { expect } from '@ohos/hypium';
+import events_emitter from '@ohos.events.emitter';
 import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
@@ -22,7 +23,7 @@ export default function webOnPermissionRequest() {
   describe('WebOnPermissionRequestTest', () => {
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/WebOnPermissionRequest',
+        url: 'testability/pages/WebOnPermissionRequest',
       }
       try {
         await Utils.sleep(1000);
