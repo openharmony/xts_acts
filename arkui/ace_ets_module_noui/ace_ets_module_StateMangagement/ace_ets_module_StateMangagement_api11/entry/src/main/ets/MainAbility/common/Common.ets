@@ -65,11 +65,11 @@ export default class CommonFunc {
   // Instead of CommonFunc.getType
   // Function.call is not supported (arkts-no-func-apply-call)
   // Prototype assignment is not supported (arkts-no-prototype-assignment)
-  static getType<T>(value: T): string {
+  static getType<T>( value: T ): string {
     let result: string;
-    if (value === undefined) {
+    if ( value === undefined ) {
         result = '[object Undefined]';
-    } else if (value === null) {
+    } else if ( value === null ) {
         result = '[object Null]';
     } else {
         const o: ObjectWithToString = Object(value);

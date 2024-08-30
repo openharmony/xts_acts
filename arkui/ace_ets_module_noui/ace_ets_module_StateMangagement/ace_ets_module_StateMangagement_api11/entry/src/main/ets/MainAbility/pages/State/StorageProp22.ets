@@ -26,8 +26,7 @@ struct StorageProp22 {
   @LocalStorageProp('propB') storPropB: number = 4;
   @State kuB?: number = storage22.get('propB')
 
-
-  build() {
+  build(){
     Column({space: 20}) {
       Text(`LocalStorage值为${this.ku}`).key('lse1')
       // 测试localstorage单向数据绑定
