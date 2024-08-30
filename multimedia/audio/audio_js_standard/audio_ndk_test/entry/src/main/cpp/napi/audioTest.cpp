@@ -23,6 +23,7 @@
 #include "native_audiostream_base.h"
 #include "native_audiostreambuilder.h"
 #include "unistd.h"
+#include "native_audio_manager.h"
 #include "native_audio_routing_manager.h"
 #include "native_audio_common.h"
 #include "native_audio_device_base.h"
@@ -2183,6 +2184,163 @@ static napi_value AudioRoutingManagerGetDevices_07(napi_env env, napi_callback_i
     } else {
         napi_create_int32(env, TEST_PASS, &res);
     }
+    return res;
+}
+
+static napi_value AudioManagerGetManager_01(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioManager **audioManager = nullptr;
+    OH_AudioCommon_Result result = OH_GetAudioManager(audioManager);
+    if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioManagerGetManager_02(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioManager *audioManager = nullptr;
+    OH_AudioCommon_Result result = OH_GetAudioManager(&audioManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS || audioManager == nullptr) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioManagerGetAudioScene_01(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioManager *audioManager = nullptr;
+    OH_AudioCommon_Result result = OH_GetAudioManager(&audioManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS || audioManager == nullptr) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    OH_AudioScene scene = AUDIO_SCENE_DEFAULT;
+    result = OH_GetAudioScene(audioManager, &scene);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioManagerGetAudioScene_02(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+
+    OH_AudioScene scene = AUDIO_SCENE_DEFAULT;
+    OH_AudioCommon_Result result = OH_GetAudioScene(nullptr, &scene);
+    if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    result = OH_GetAudioScene(nullptr, nullptr);
+    if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    OH_AudioManager *audioManager = nullptr;
+    result = OH_GetAudioManager(&audioManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS || audioManager == nullptr) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    result = OH_GetAudioScene(audioManager, nullptr);
+    if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerGetAvailableDevices001(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS || audioRoutingManager == nullptr) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    OH_AudioDevice_Usage deviceUsage = AUDIO_DEVICE_USAGE_MEDIA_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array;
+    result = OH_AudioRoutingManager_GetAvailableDevices(audioRoutingManager, deviceUsage, &array);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    result = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerGetPreferredOutputDevice001(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS || audioRoutingManager == nullptr) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    OH_AudioStream_Usage streamUsage = AUDIOSTREAM_USAGE_MUSIC;
+    OH_AudioDeviceDescriptorArray *array;
+    result = OH_AudioRoutingManager_GetPreferredOutputDevice(audioRoutingManager, streamUsage, &array);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    result = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerGetPreferredInputDevice001(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS || audioRoutingManager == nullptr) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    OH_AudioStream_SourceType sourceType = AUDIOSTREAM_SOURCE_TYPE_MIC;
+    OH_AudioDeviceDescriptorArray *array;
+    result = OH_AudioRoutingManager_GetPreferredInputDevice(audioRoutingManager, sourceType, &array);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    result = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    napi_create_int32(env, TEST_PASS, &res);
     return res;
 }
 
@@ -4434,6 +4592,20 @@ static napi_value Init(napi_env env, napi_value exports)
         {"audioRoutingManagerGetDevices_06", nullptr, AudioRoutingManagerGetDevices_06,
             nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRoutingManagerGetDevices_07", nullptr, AudioRoutingManagerGetDevices_07,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioManagerGetManager_01", nullptr, AudioManagerGetManager_01, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
+        {"audioManagerGetManager_02", nullptr, AudioManagerGetManager_02, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
+        {"audioManagerGetAudioScene_01", nullptr, AudioManagerGetAudioScene_01, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
+        {"audioManagerGetAudioScene_02", nullptr, AudioManagerGetAudioScene_02, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
+        {"audioRoutingManagerGetAvailableDevices001", nullptr, AudioRoutingManagerGetAvailableDevices001, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerGetPreferredOutputDevice001", nullptr, AudioRoutingManagerGetPreferredOutputDevice001,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerGetPreferredInputDevice001", nullptr, AudioRoutingManagerGetPreferredInputDevice001,
             nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRoutingManagerRegisterDeviceChangeCallback_001", nullptr,
             AudioRoutingManagerRegisterDeviceChangeCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
