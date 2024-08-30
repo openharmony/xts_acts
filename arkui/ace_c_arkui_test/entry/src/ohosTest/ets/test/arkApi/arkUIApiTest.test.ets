@@ -989,6 +989,18 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
+    it('testArkUI089', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI089()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
     it('testArkUI084', 0, async (done: Function) => {
       expect(nativeFunc.testArkUI084()).assertEqual(0)
       done()

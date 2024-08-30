@@ -730,5 +730,12 @@ static napi_value testArkUI086(napi_env env, napi_callback_info info) {
     NAPI_END;
 }
 
+static napi_value testArkUI089(napi_env env, napi_callback_info info)
+{
+    auto ret = OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange(nullptr);
+    ASSERT_OBJ(ret, nullptr);
+    NAPI_END;
+}
+
 } // namespace ArkUICapiTest
 
