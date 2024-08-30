@@ -14,12 +14,12 @@
  */
 import { FrameCallback } from '@ohos.arkui.UIContext';
 
-let para: Record<string, string> = { 'Storage': 'init' }
+let para: Record<string, string> = { 'message': 'init' }
 let storage: LocalStorage = new LocalStorage(para);
 
 class IdleCallback extends FrameCallback {
   static str: string = 'init'
-  link: SubscribedAbstractProperty<string> = storage.link('Storage')
+  link: SubscribedAbstractProperty<string> = storage.link('message')
 
   constructor() {
     super()
@@ -35,7 +35,7 @@ class IdleCallback extends FrameCallback {
 struct onIdleTest {
   callback: IdleCallback = new IdleCallback();
   @State switch: boolean = false
-  @LocalStorageLink('Storage') str: string | undefined = storage.get('Storage')
+  @LocalStorageLink('message') str: string | undefined = storage.get('message')
 
   build() {
     Column() {
@@ -49,7 +49,7 @@ struct onIdleTest {
           if (this.switch) {
             (this.getUIContext().postFrameCallback(this.callback))
           }
-          this.str = storage.get('Storage')
+          this.str = storage.get('message')
         })
     }
   }
