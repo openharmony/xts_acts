@@ -22,8 +22,7 @@ export default {
         index:0,
         intervalID: -1,
         str: '',
-        title: 'timer(interval);',
-        txtName: 'api.txt',
+        title: 'timer(interval)',
         pass: 'true ;',
         fail: 'false;'
     },

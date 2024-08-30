@@ -20,8 +20,7 @@ import geolocation from '@system.geolocation';
 export default {
     data: {
         str: '',
-        title: 'location(info);',
-        txtName: 'api.txt',
+        title: 'location(info)',
         pass: 'true ;',
         fail: 'false;',
         todolist:[{

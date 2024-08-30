@@ -21,8 +21,7 @@ export default {
         value:'show',
         timeoutId: -1,
         str: '',
-        title: 'timer(timeout);',
-        txtName: 'api.txt',
+        title: 'timer(timeout)',
         pass: 'true ;',
         fail: 'false;'
     },

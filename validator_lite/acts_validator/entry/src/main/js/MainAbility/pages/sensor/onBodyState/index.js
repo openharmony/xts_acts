@@ -21,8 +21,7 @@ export default {
     data: {
         value: 0,
         str: '',
-        title: 'onBodyState;',
-        txtName: 'api.txt',
+        title: 'onBodyState',
         pass: 'true ;',
         fail: 'false;'
     },

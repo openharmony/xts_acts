@@ -29,10 +29,9 @@ limitations under the License.
           />
   <text style="width:100%;height:50px;text-align: center;margin: 20px;">{{dynamicValue}} - {{sliderValue}}</text>
 
-
   <div class="bottom-bt">
     <input type="button" value="pass" class="button" onclick="changeResult(pass)" />
-    <input type="button" value="返回" class="button" onclick="back" />
     <input type="button" value="fail" class="button" onclick="changeResult(fail)" />
+    <input type="button" value="返回" class="button" onclick="back" />
   </div>
 </div>

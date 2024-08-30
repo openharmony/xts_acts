@@ -22,8 +22,7 @@ export default {
         strStates: ['短振动', '长振动'],
         state: '',
         str: '',
-        title: 'vibrator;',
-        txtName: 'api.txt',
+        title: 'vibrator',
         pass: 'true ;',
         fail: 'false;'
     },

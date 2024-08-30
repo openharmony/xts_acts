@@ -22,8 +22,11 @@
 }
 
 .backBtn{
-  width:100px;
+  width:150px;
   height:50px;
   margin-top: 10px;
 }
 
+.backBtn:active {
+  background-color: blueviolet;
+}

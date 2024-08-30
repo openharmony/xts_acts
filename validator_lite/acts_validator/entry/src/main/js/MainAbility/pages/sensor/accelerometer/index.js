@@ -24,8 +24,7 @@ export default {
         speedZ: 0,
         states: '',
         str: '',
-        title: 'accelerometer;',
-        txtName: 'api.txt',
+        title: 'accelerometer',
         pass: 'true ;',
         fail: 'false;'
     },

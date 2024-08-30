@@ -21,8 +21,7 @@ export default {
     data: {
         level: 0,
         str: '',
-        title: 'battery;',
-        txtName: 'api.txt',
+        title: 'battery',
         pass: 'true ;',
         fail: 'false;'
     },

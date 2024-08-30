@@ -14,6 +14,7 @@
  */
 
 import { routePage } from '../../common/js/general';
+import { getTxtData } from '../../common/js/saveData';
 import app from '@system.app';
 
 export default {
@@ -23,4 +24,8 @@ export default {
   },
   changeCompent: routePage('pages/second-compent/index').changePage,
   changeAPI: routePage('pages/second-api/index').changePage,
+  changeSaveFile() {
+    console.info('save data to json');
+    getTxtData();
+  },
 };

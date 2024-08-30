@@ -29,15 +29,11 @@ limitations under the License.
 
   <div class="bottom-bt">
     <input type="button" value="测试storage" style="width:180px;height:50px;margin-bottom: 10px;" onclick="checkStorage"/>
-<!--    <input type="button" value="set" style="width:100px;height:50px;margin-bottom: 10px;" onclick="storageSet"/>-->
-<!--    <input type="button" value="get" style="width:100px;height:50px;margin-bottom: 10px;" onclick="storageGet"/>-->
-<!--    <input type="button" value="clear" style="width:100px;height:50px;margin-bottom: 10px;" onclick="storageClear"/>-->
-<!--    <input type="button" value="delete" style="width:100px;height:50px;margin-bottom: 10px;" onclick="storageDelete"/>-->
   </div>
 
   <div class="bottom-bt">
     <input type="button" value="pass" class="button" onclick="changeResult(pass)" />
-    <input type="button" value="返回" class="button" onclick="back" />
     <input type="button" value="fail" class="button" onclick="changeResult(fail)" />
+    <input type="button" value="返回" class="button" onclick="back" />
   </div>
 </div>

@@ -21,8 +21,7 @@ export default {
   data: {
     ...dataCommon,
     str: '',
-    title: 'swipe;',
-    txtName: 'compent.txt',
+    title: 'swipe',
     pass: 'true ;',
     fail: 'false;'
   },

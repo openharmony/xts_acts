@@ -21,8 +21,7 @@ export default {
         sliderValue: '',
         dynamicValue: 150,
         str: '',
-        title: 'slider;',
-        txtName: 'compent.txt',
+        title: 'slider',
         pass: 'true ;',
         fail: 'false;'
     },

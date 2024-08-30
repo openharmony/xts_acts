@@ -18,8 +18,7 @@ limitations under the License.
     <text style="width:80%;height:50px;text-align: center;">image-animator</text>
     <input type="button" value="?" class="backBtnHelp" onclick="help" />
   </div>
-
-  <text style="width: 60%;height: 50px;text-align: center;">{{state}}</text>
+  <text style="width: 60%;height: 40px;text-align: center;">{{state}}</text>
   <image-animator
     ref="animator"
     class="image-animator"
@@ -37,7 +36,7 @@ limitations under the License.
 
   <div class="bottom-bt">
     <input type="button" value="pass" class="button" onclick="changeResult(pass)" />
-    <input type="button" value="返回" class="button" onclick="back" />
     <input type="button" value="fail" class="button" onclick="changeResult(fail)" />
+    <input type="button" value="返回" class="button" onclick="back" />
   </div>
 </div>

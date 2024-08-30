@@ -21,10 +21,8 @@ export default {
     data: {
         value: 0,
         getValue : 0,
-
         str: '',
-        title: 'brightness(value);',
-        txtName: 'api.txt',
+        title: 'brightness(value)',
         pass: 'true ;',
         fail: 'false;'
     },

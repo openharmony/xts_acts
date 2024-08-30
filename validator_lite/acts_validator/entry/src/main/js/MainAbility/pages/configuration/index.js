@@ -21,8 +21,7 @@ export default {
     data: {
         localeInfo: '',
         str: '',
-        title: 'configuration;',
-        txtName: 'api.txt',
+        title: 'configuration',
         pass: 'true ;',
         fail: 'false;',
         todolist:[{

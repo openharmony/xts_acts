@@ -20,8 +20,7 @@ import file from '@system.file';
 export default {
     data: {
         str: '',
-        title: 'file;',
-        txtName: 'api.txt',
+        title: 'file',
         pass: 'true ;',
         fail: 'false;',
 

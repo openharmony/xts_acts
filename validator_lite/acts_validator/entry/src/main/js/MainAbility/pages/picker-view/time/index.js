@@ -21,8 +21,7 @@ export default {
         defaultTime: '',
         time: '',
         str: '',
-        title: 'picker-view;',
-        txtName: 'compent.txt',
+        title: 'picker-view',
         pass: 'true ;',
         fail: 'false;'
     },

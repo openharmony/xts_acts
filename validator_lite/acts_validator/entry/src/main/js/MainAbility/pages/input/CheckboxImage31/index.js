@@ -19,8 +19,7 @@ import router from '@system.router';
 export default {
     data: {
         str: '',
-        title: 'input;',
-        txtName: 'compent.txt',
+        title: 'input',
         pass: 'true ;',
         fail: 'false;'
     },

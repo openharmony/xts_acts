@@ -22,8 +22,7 @@ export default {
         qrBackgroundColor: '#f0ffff',
         qrValue: 'value',
         str: '',
-        title: 'qrcode;',
-        txtName: 'compent.txt',
+        title: 'qrcode',
         pass: 'true ;',
         fail: 'false;'
     },
@@ -61,8 +60,8 @@ export default {
         router.replace({
             uri: 'pages/help/index',
             params: {
-                step: '操作步骤：点击修改值，修改颜色，修改背景色按钮',
-                result: '预期结果：修改值时二维码会变化，修改颜色时二维码颜色变化，修改背景色时背景颜色变化',
+                step: '操作步骤：点击值，颜色，背景色按钮',
+                result: '预期结果：值时二维码会变化，颜色时二维码颜色变化，背景色时背景颜色变化',
                 url: 'pages/qrcode/index/index'
             }
         });

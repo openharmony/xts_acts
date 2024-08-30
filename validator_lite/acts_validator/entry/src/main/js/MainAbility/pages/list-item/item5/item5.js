@@ -20,8 +20,7 @@ export default {
   data: {
     listData: [],
     str: '',
-    title: 'list-item;',
-    txtName: 'compent.txt',
+    title: 'list-item',
     pass: 'true ;',
     fail: 'false;'
   },

@@ -23,8 +23,7 @@ export default {
         modeStr: ['手动调', '自动调'],
         keepScreen: true,
         str: '',
-        title: 'brightness(value);',
-        txtName: 'api.txt',
+        title: 'brightness(mode)',
         pass: 'true ;',
         fail: 'false;'
     },

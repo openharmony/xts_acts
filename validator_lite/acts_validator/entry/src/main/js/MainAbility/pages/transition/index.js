@@ -21,8 +21,7 @@ export default {
         animationName: 'animationTest',
         animationName2: 'animation2',
         str: '',
-        title: 'transition;',
-        txtName: 'compent.txt',
+        title: 'transition',
         pass: 'true ;',
         fail: 'false;'
     },
