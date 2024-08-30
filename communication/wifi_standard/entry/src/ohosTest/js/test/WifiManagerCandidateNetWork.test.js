@@ -14,6 +14,7 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 import wifiMg from '@ohos.wifiManager'
 import osaccount from '@ohos.account.osAccount'
@@ -69,6 +70,19 @@ async function checkSavedNet()
         }
     }
 }
+
+async function clickTest() {
+      let driver = Driver.create();
+      await driver.delayMs(1500);
+      try {
+          let button = await driver.findComponent(ON.text("取消"));
+          await button.click();
+          await driver.delayMs(1500);
+      } catch (err) {
+          console.info('err info: ' + err);
+      }
+}
+
 export default function actsWifiManagerCandidateNetWorkTest() {
     describe('actsWifiManagerCandidateNetWorkTest', function () {
         beforeAll(async function (done) {
@@ -80,7 +94,9 @@ export default function actsWifiManagerCandidateNetWorkTest() {
         beforeEach(function () {
             checkWifiPowerOn();
         })
-        afterEach(function () {
+        afterEach(async function (done) {
+            await clickTest();
+            done();
         })
 
         /**
