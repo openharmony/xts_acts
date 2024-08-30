@@ -25,7 +25,7 @@ export default function webViewNativeMediaSetVolume() {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewNativeMediaSetVolume',
+            url: 'testability/pages/webViewNativeMediaSetVolume',
         }
         
         try {

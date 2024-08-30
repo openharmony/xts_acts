@@ -18,29 +18,29 @@ import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
 // @ts-nocheck
-let emitKey = "emitWebViewNativeMediaSetSeek"
+let emitKey = "emitWebViewNativeMediaMediaInfo"
 
-export default function webViewNativeMediaSetSeek() {
-  describe('ActsAceWebViewNativeMediaSetSeek', () => {
+export default function webViewNativeMediaMediaInfo() {
+  describe('ActsAceWebViewNativeMediaMediaInfo', () => {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewNativeMediaSetSeek',
+            url: 'testability/pages/webViewNativeMediaMediaInfo',
         }
         
         try {
             await Utils.sleep(1000);
             router.clear();
             let pages = router.getState();
-            console.info("get webViewNativeMediaSetSeek state success " + JSON.stringify(pages));
-            if (!("webViewNativeMediaSetSeek" == pages.name)) {
-                console.info("get webViewNativeMediaSetSeek state success " + JSON.stringify(pages.name));
+            console.info("get webViewNativeMediaMediaInfo state success " + JSON.stringify(pages));
+            if (!("webViewNativeMediaMediaInfo" == pages.name)) {
+                console.info("get webViewNativeMediaMediaInfo state success " + JSON.stringify(pages.name));
                 let result = await router.pushUrl(options);
                 await Utils.sleep(1000);
-                console.info("push webViewNativeMediaSetSeek state success " + JSON.stringify(result));
+                console.info("push webViewNativeMediaMediaInfo state success " + JSON.stringify(result));
             }
         } catch (err) {
-            console.error("push webViewNativeMediaSetSeek page error:" + err);
+            console.error("push webViewNativeMediaMediaInfo page error:" + err);
         }
         done()
     });
@@ -71,16 +71,18 @@ export default function webViewNativeMediaSetSeek() {
     })
     
     /*
-     *@tc.number SUB_ACE_WEB_seek_API_0001
-     *@tc.name testWebViewNativeMediaSetSeek
-     *@tc.desc test seek
-     *@tc.size MediumTest
+     *@tc.number SUB_ACE_WEB_mediaInfo_API_0001
+     *@tc.name testWebViewNativeMediaMediaInfo
+     *@tc.desc test embedID,mediaType,mediaSrcList,surfaceInfo,controlsShown,controlList,posterUrl,preload,attributes
      *@tc.type Function
+     *@tc.size MediumTest
      *@tc.level 1
      */
-    it('testWebViewNativeMediaSetSeek', 0, async (done: Function) => {
-        Utils.registerEvent("testWebViewNativeMediaSetSeek", true, 1293, done);
-        sendEventByKey('webViewNativeMediaSetSeek', 10, '');
+    it('testWebViewNativeMediaMediaInfo', 0, async (done: Function) => {
+        let emitKey="emitWebViewNativeMediaMediaInfo"
+        Utils.emitEvent(emitKey,10)
+        Utils.registerEvent("testWebViewNativeMediaMediaInfo", true, 1289, done);
+        sendEventByKey('webViewNativeMediaMediaInfo', 10, '');
     })
   })
 }
