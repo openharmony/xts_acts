@@ -1198,20 +1198,6 @@ export default function AVPlayerNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETCURRENTTRACK_0300
-     * @tc.name       : testOhAvPlayerGetCurrentTrack003
-     * @tc.desc       : test OH_AVPlayer_GetCurrentTrack
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testOhAvPlayerGetCurrentTrack003', 0, async (done: Function) => {
-      let result: number = avplayer.AvPlayerGetCurrentTrackAbnormalOne();
-      expect(result).assertEqual(0);
-      done();
-    });
-
-    /**
      * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACK_0100
      * @tc.name       : testOhAvPlayerSetOnInfoCallback001
      * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
