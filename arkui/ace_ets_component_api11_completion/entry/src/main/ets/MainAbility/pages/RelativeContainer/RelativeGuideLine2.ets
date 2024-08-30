@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-interface linePosition2 {
-  start?:Dimension,
-  end?:Dimension
+interface LinePosition2 {
+  start?: Dimension
+  end?: Dimension
 }
 @Entry
 @Component
@@ -25,7 +25,7 @@ struct RelativeGuideLine2 {
   @State buttonAlign: VerticalAlign = VerticalAlign.Top
   @State buttonPosition: Axis = Axis.Horizontal
   @State anchor1: string = 'guideLine1'
-  @State linePosition: linePosition2 = { end: 50 }
+  @State linePosition: LinePosition2 = { end: 50 }
 
   build() {
     Column() {

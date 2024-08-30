@@ -14,7 +14,8 @@
  */
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../Utils'
+import CommonFunc from '../../MainAbility/common/Common'
+import RectValue from '../../MainAbility/common/Rect';
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
 
 export default function TextSelectionMenu() {
@@ -31,7 +32,7 @@ export default function TextSelectionMenu() {
         if (!("TextSelectionMenu" == pages.name)) {
           console.info("get TextSelectionMenu state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push TextSelectionMenu page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,7 +42,7 @@ export default function TextSelectionMenu() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("TextSelectionMenu after each called");
     });
 
@@ -53,19 +54,19 @@ export default function TextSelectionMenu() {
        */
     it('TextSelectionMenu_001', 0, async (done: Function) => {
       console.info('[TextSelectionMenu_001] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await Utils.sleep(1000);
-      let text3 = Utils.getComponentRect('Text_bindSelectionMenu_test')
+      await CommonFunc.sleep(1000);
+      let text3: RectValue = CommonFunc.getComponentRect('Text_bindSelectionMenu_test')
       await driver.mouseClick({
-        x: parseInt((text3.right - text3.left) * 0.5 + text3.left),
-        y: parseInt((text3.bottom - text3.top) * 0.5 + text3.top)
+        x: ((text3.right - text3.left) * 0.5 + text3.left),
+        y: ((text3.bottom - text3.top) * 0.5 + text3.top)
       }, MouseButton.MOUSE_BUTTON_RIGHT)
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('textApi_text1_test');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("[TextSelectionMenu_001] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content).assertEqual('TextResponseType.RIGHT_CLICK');
       console.info('[TextSelectionMenu_001] END');
@@ -82,17 +83,17 @@ export default function TextSelectionMenu() {
     */
     it('TextSelectionMenu_002', 0, async (done: Function) => {
       console.info('[TextSelectionMenu_002] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await Utils.sleep(1000);
-      let test4 = Utils.getComponentRect('text_TextResponseType')
-      await driver.longClick(parseInt((test4.right - test4.left) * 0.2 + test4.left),
-        parseInt((test4.bottom - test4.top) * 0.5 + test4.top))
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(1000);
+      let test4 = CommonFunc.getComponentRect('text_TextResponseType')
+      await driver.longClick(((test4.right - test4.left) * 0.2 + test4.left),
+        ((test4.bottom - test4.top) * 0.5 + test4.top))
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('textApi_text2');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("[TextSelectionMenu_002] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content).assertEqual('TextResponseType.LONG_PRESS');
       console.info('[TextSelectionMenu_002] END');
