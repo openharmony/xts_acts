@@ -85,7 +85,7 @@
   
 - ## 报告说明
 
-  取应用沙箱路径下的compent.txt 和 api.txt 两个文件，具体路径例如：`/user/app/user/ace/data/com.examplemini.actsvalidator`下
+  取应用沙箱路径下的`summary_report.json`文件，具体路径例如：`/user/app/user/ace/data/com.examplemini.actsvalidator`下
   
   文件格式如下：
   
