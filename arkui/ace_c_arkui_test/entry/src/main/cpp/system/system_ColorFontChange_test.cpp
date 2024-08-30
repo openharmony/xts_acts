@@ -45,7 +45,7 @@ static napi_value testRegisterSystemColorModeChangeEvent_001(napi_env env, napi_
     nodeAPI->addChild(column, image);
 
     auto onColorChange = [](ArkUI_SystemColorMode sysColorMode, void *userData) -> void {
-        if(sysColorMode == ArkUI_SystemColorMode::ARKUI_SYSTEM_COLOR_MODE_DARK) {
+        if (sysColorMode == ArkUI_SystemColorMode::ARKUI_SYSTEM_COLOR_MODE_DARK) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk onColorChange dark");
         } else {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk onColorChange light");
