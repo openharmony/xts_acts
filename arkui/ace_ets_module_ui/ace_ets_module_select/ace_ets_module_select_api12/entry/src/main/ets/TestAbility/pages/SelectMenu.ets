@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@ts-nocheck
+
 import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
@@ -22,7 +22,7 @@ import testsuite from '../../test/List.test'
 @Entry
 @Component
 struct SelectMenuTest {
-  @State font: object = { size: 30, weight: 400, family: 'serif', style: FontStyle.Normal }
+  @State font: Font = { size: 30, weight: 400, family: 'serif', style: FontStyle.Normal }
   @State fontColor: Color = 0xCCCCCC
 
   aboutToAppear() {
@@ -206,7 +206,7 @@ struct SelectMenuTest {
               .selectedOptionFont({ size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
               .optionFont({ size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
               .key('selectTest10')
-              .menuAlign('menuAlign')
+              .menuAlign(undefined)
               .onSelect((index: number) => {
                 console.info("Select:" + index)
               })
@@ -224,7 +224,7 @@ struct SelectMenuTest {
               .selectedOptionFont({ size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
               .optionFont({ size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
               .key('selectTest11')
-              .menuAlign()
+              .menuAlign(undefined)
               .onSelect((index: number) => {
                 console.info("Select:" + index)
               })
@@ -307,5 +307,12 @@ struct SelectMenuTest {
       }.width('100%')
     }.height('100%')
   }
+}
+
+interface Font {
+  size: number;
+  weight: number;
+  family: string;
+  style: FontStyle;
 }
  

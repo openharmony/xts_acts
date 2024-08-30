@@ -21,7 +21,7 @@ import testsuite from '../../test/List.test'
 @Entry
 @Component
 struct SelectExample {
-  @State font: object = { size: 30, weight: 400, family: 'serif', style: FontStyle.Normal }
+  @State font: Font = { size: 30, weight: 400, family: 'serif', style: FontStyle.Normal }
   @State fontColor: Color = 0xCCCCCC
   @State spaceValue: number = 8
   @State spaceValueString: string = '50.00vp'
@@ -30,18 +30,18 @@ struct SelectExample {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("selectTest stateChangCallBack before:" + JSON.stringify(eventData));
     if (eventData != null) {
-      this.spaceValue = eventData.data.spaceValue;
+      this.spaceValue = eventData.data?.spaceValue;
       console.info("select page state change called after spaceValue:" + this.spaceValue);
-      this.arrowPosition = eventData.data.arrowPosition;
+      this.arrowPosition = eventData.data?.arrowPosition;
       console.info("select page eventData:" + this.arrowPosition);
 
-      if (eventData.data.spaceValueString != null) {
-        this.spaceValueString = eventData.data.spaceValueString;
+      if (eventData.data?.spaceValueString != null) {
+        this.spaceValueString = eventData.data?.spaceValueString;
         console.info("select page state change called after spaceValue:" + this.spaceValueString);
       }
 
-      if (eventData.data.spaceValueResource != null) {
-        this.spaceValueResource = eventData.data.spaceValueResource;
+      if (eventData.data?.spaceValueResource != null) {
+        this.spaceValueResource = eventData.data?.spaceValueResource;
         console.info("select page state change called after spaceValue:" + this.spaceValueResource);
       }
     }
@@ -129,3 +129,11 @@ struct SelectExample {
     }
   }
 }
+
+interface Font {
+  size: number;
+  weight: number;
+  family: string;
+  style: FontStyle;
+}
+
