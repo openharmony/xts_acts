@@ -21,7 +21,7 @@ export default function navigatorTargetJsunit() {
   describe('navigatorTargetTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation/navigator2',
       }
       try {
@@ -52,7 +52,7 @@ export default function navigatorTargetJsunit() {
     it('testnavigatorTarget0001', 0, async () => {
       console.info('navigatorTarget testnavigatorTarget0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Navigator');
+      let strJson: string = getInspectorByKey('Navigator');
       console.info("[testnavigatorTarget0001] component strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Navigator');

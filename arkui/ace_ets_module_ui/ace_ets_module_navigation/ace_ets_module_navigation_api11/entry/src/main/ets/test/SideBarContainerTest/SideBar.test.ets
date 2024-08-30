@@ -18,6 +18,7 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/utils/Common';
 import router from '@ohos.router';
+import { BusinessError } from '@ohos.base';
 
 export default function sidebar() {
   describe('ActsAceSideBarTest',  () =>{
@@ -45,7 +46,7 @@ export default function sidebar() {
     afterEach(async  (done:Function) =>{
       console.info("sidebar afterEach start");
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": '10px',
             "dividerColorStr": '#000000',
@@ -67,14 +68,14 @@ export default function sidebar() {
             "endMarginRes": $r('app.string.Divider_endMargin'),
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[ArkUI_SideBarContainer_Divider] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_SideBarContainer_Divider] change component data error: " + err.message);
+        console.log("[ArkUI_SideBarContainer_Divider] change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
       done();
@@ -87,11 +88,11 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_0100', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0100 start");
-      let strJson = getInspectorByKey('sideBarTest1');
+      let strJson: string = getInspectorByKey('sideBarTest1');
       console.info("ArkUI_SideBarContainer_Divider_0100: " + JSON.stringify(strJson))
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ArkUI_SideBarContainer_Divider_0100] divider:" + obj.$attrs.divider);
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("1.00vp");
       expect(dividerObject.color).assertEqual("#08000000");
       expect(dividerObject.startMargin).assertEqual("0.00vp");
@@ -107,11 +108,11 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_0200', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0200 start");
-      let strJson = getInspectorByKey('sideBarTest2');
+      let strJson: string = getInspectorByKey('sideBarTest2');
       console.info("ArkUI_SideBarContainer_Divider_0200: " + JSON.stringify(strJson))
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ArkUI_SideBarContainer_Divider_0200] divider:" + obj.$attrs.divider);
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("10.00vp");
       expect(dividerObject.color).assertEqual("#FF000000");
       expect(dividerObject.startMargin).assertEqual("5.00vp");
@@ -128,11 +129,11 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_0300', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0300 start");
-      let strJson = getInspectorByKey('sideBarTest3');
+      let strJson: string = getInspectorByKey('sideBarTest3');
       console.info("ArkUI_SideBarContainer_Divider_0300: " + JSON.stringify(strJson))
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ArkUI_SideBarContainer_Divider_0300] divider:" + obj.$attrs.divider);
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("10.00px");
       expect(dividerObject.color).assertEqual("#FF000000");
       expect(dividerObject.startMargin).assertEqual("5.00px");
@@ -149,36 +150,36 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_0400', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0400 start");
-      let strJson = getInspectorByKey('sideBarTest3');
+      let strJson: string = getInspectorByKey('sideBarTest3');
       console.info("ArkUI_SideBarContainer_Divider_0400: " + JSON.stringify(strJson))
 
       let strokeWidthStr = '10vp';
       let startMarginStr = '5vp';
       let endMarginStr = '5vp';
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": strokeWidthStr,
             "startMarginStr": startMarginStr,
             "endMarginStr": endMarginStr
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("ArkUI_SideBarContainer_Divider_0400 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("ArkUI_SideBarContainer_Divider_0400 change component data error: " + err.message);
+        console.log("ArkUI_SideBarContainer_Divider_0400 change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
 
-      let newJson = getInspectorByKey('sideBarTest3');
+      let newJson: string = getInspectorByKey('sideBarTest3');
       console.info("ArkUI_SideBarContainer_Divider_0400: " + JSON.stringify(newJson))
-      let obj = JSON.parse(newJson);
+      let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_SideBarContainer_Divider_0400] divider:" + obj.$attrs.divider);
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("10.00vp");
       expect(dividerObject.color).assertEqual("#FF000000");
       expect(dividerObject.startMargin).assertEqual("5.00vp");
@@ -195,36 +196,36 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_0500', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0500 start");
-      let strJson = getInspectorByKey('sideBarTest3');
+      let strJson: string = getInspectorByKey('sideBarTest3');
       console.info("ArkUI_SideBarContainer_Divider_0500: " + JSON.stringify(strJson))
 
       let strokeWidthStr = '10fp';
       let startMarginStr = '5fp';
       let endMarginStr = '5fp';
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": strokeWidthStr,
             "startMarginStr": startMarginStr,
             "endMarginStr": endMarginStr
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("ArkUI_SideBarContainer_Divider_0500 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("ArkUI_SideBarContainer_Divider_0500 change component data error: " + err.message);
+        console.log("ArkUI_SideBarContainer_Divider_0500 change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
 
-      let newJson = getInspectorByKey('sideBarTest3');
+      let newJson: string = getInspectorByKey('sideBarTest3');
       console.info("ArkUI_SideBarContainer_Divider_0500: " + JSON.stringify(newJson))
-      let obj = JSON.parse(newJson);
+      let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_SideBarContainer_Divider_0500] divider:" + obj.$attrs.divider);
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("10.00fp");
       expect(dividerObject.color).assertEqual("#FF000000");
       expect(dividerObject.startMargin).assertEqual("5.00fp");
@@ -241,36 +242,36 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_0600', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0600 start");
-      let strJson = getInspectorByKey('sideBarTest3');
+      let strJson: string = getInspectorByKey('sideBarTest3');
       console.info("ArkUI_SideBarContainer_Divider_0600: " + JSON.stringify(strJson))
 
       let strokeWidthStr = '10lpx';
       let startMarginStr = '5lpx';
       let endMarginStr = '5lpx';
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": strokeWidthStr,
             "startMarginStr": startMarginStr,
             "endMarginStr": endMarginStr
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("ArkUI_SideBarContainer_Divider_0600 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("ArkUI_SideBarContainer_Divider_0600 change component data error: " + err.message);
+        console.log("ArkUI_SideBarContainer_Divider_0600 change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
 
-      let newJson = getInspectorByKey('sideBarTest3');
+      let newJson: string = getInspectorByKey('sideBarTest3');
       console.info("ArkUI_SideBarContainer_Divider_0600: " + JSON.stringify(newJson))
-      let obj = JSON.parse(newJson);
+      let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_SideBarContainer_Divider_0600] divider:" + obj.$attrs.divider);
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("10.00lpx");
       expect(dividerObject.color).assertEqual("#FF000000");
       expect(dividerObject.startMargin).assertEqual("5.00lpx");
@@ -286,11 +287,11 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_0700', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0700 start");
-      let strJson = getInspectorByKey('sideBarTest4');
+      let strJson: string = getInspectorByKey('sideBarTest4');
       console.info("ArkUI_SideBarContainer_Divider_0700: " + JSON.stringify(strJson))
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ArkUI_SideBarContainer_Divider_0700] divider:" + obj.$attrs.divider);
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("10.00px");
       expect(dividerObject.color).assertEqual("#FF000000");
       expect(dividerObject.startMargin).assertEqual("5.00px");
@@ -306,11 +307,11 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_0800', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0800 start");
-      let strJson = getInspectorByKey('sideBarTest5');
+      let strJson: string = getInspectorByKey('sideBarTest5');
       console.info("ArkUI_SideBarContainer_Divider_0800: " + JSON.stringify(strJson))
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ArkUI_SideBarContainer_Divider_0800] divider:" + obj.$attrs.divider);
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("10.00vp");
       expect(dividerObject.color).assertEqual("#FFFF0000");
       expect(dividerObject.startMargin).assertEqual("5.00vp");
@@ -326,11 +327,11 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_0900', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0900 start");
-      let strJson = getInspectorByKey('sideBarTest6');
+      let strJson: string = getInspectorByKey('sideBarTest6');
       console.info("ArkUI_SideBarContainer_Divider_0900: " + JSON.stringify(strJson))
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ArkUI_SideBarContainer_Divider_0900] divider:" + obj.$attrs.divider);
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("10.00vp");
       expect(dividerObject.color).assertEqual("#08000000");
       expect(dividerObject.startMargin).assertEqual("0.00vp");
@@ -346,28 +347,28 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_1000', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_1000 start");
-      let strJson = getInspectorByKey('sideBarTest2');
+      let strJson: string = getInspectorByKey('sideBarTest2');
       console.info("ArkUI_SideBarContainer_Divider_1000: " + JSON.stringify(strJson))
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[ArkUI_SideBarContainer_Divider_1000] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_SideBarContainer_Divider_1000] change component data error: " + err.message);
+        console.log("[ArkUI_SideBarContainer_Divider_1000] change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
-      let newJson = getInspectorByKey('sideBarTest2');
-      let obj = JSON.parse(newJson);
+      let newJson: string = getInspectorByKey('sideBarTest2');
+      let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_SideBarContainer_Divider_1000] divider:" + JSON.stringify(obj.$attrs.divider));
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("0.00vp");
       done();
     });
@@ -380,36 +381,36 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_1100', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_1100 start");
-      let strJson = getInspectorByKey('sideBarTest2');
+      let strJson: string = getInspectorByKey('sideBarTest2');
       console.info("ArkUI_SideBarContainer_Divider_1100: " + JSON.stringify(strJson))
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ArkUI_SideBarContainer_Divider_1100] divider:" + obj.$attrs.divider);
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("10.00vp");
       expect(dividerObject.color).assertEqual("#FF000000");
       expect(dividerObject.startMargin).assertEqual("5.00vp");
       expect(dividerObject.endMargin).assertEqual("5.00vp");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthNum": -1,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[ArkUI_SideBarContainer_Divider_1100] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_SideBarContainer_Divider_1100] change component data error: " + err.message);
+        console.log("[ArkUI_SideBarContainer_Divider_1100] change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
-      let newJson = getInspectorByKey('sideBarTest2');
-      let newobj = JSON.parse(newJson);
+      let newJson: string = getInspectorByKey('sideBarTest2');
+      let newobj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_SideBarContainer_Divider_1100] divider:" + JSON.stringify(newobj.$attrs.divider));
-      let newdividerObject = JSON.parse(newobj.$attrs.divider);
+      let newdividerObject: ESObject = JSON.parse(newobj.$attrs.divider);
       expect(newdividerObject.strokeWidth).assertEqual("1.00vp");
       done();
     });
@@ -422,36 +423,36 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_1200', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_1200 start");
-      let strJson = getInspectorByKey('sideBarTest3');
+      let strJson: string = getInspectorByKey('sideBarTest3');
       console.info("ArkUI_SideBarContainer_Divider_1200: " + JSON.stringify(strJson))
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ArkUI_SideBarContainer_Divider_1200] divider:" + obj.$attrs.divider);
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("10.00px");
       expect(dividerObject.color).assertEqual("#FF000000");
       expect(dividerObject.startMargin).assertEqual("5.00px");
       expect(dividerObject.endMargin).assertEqual("5.00px");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "dividerColorStr": 'aaaaa',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[ArkUI_SideBarContainer_Divider_1200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_SideBarContainer_Divider_1200] change component data error: " + err.message);
+        console.log("[ArkUI_SideBarContainer_Divider_1200] change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
-      let newJson = getInspectorByKey('sideBarTest3');
-      let newobj = JSON.parse(newJson);
+      let newJson: string = getInspectorByKey('sideBarTest3');
+      let newobj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_SideBarContainer_Divider_1200] divider:" + JSON.stringify(newobj.$attrs.divider));
-      let newdividerObject = JSON.parse(newobj.$attrs.divider);
+      let newdividerObject: ESObject = JSON.parse(newobj.$attrs.divider);
       expect(newdividerObject.color).assertEqual("#08000000");
       done();
     });
@@ -464,36 +465,36 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_1300', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_1300 start");
-      let strJson = getInspectorByKey('sideBarTest2');
+      let strJson: string = getInspectorByKey('sideBarTest2');
       console.info("ArkUI_SideBarContainer_Divider_1300: " + JSON.stringify(strJson))
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ArkUI_SideBarContainer_Divider_1300] divider:" + obj.$attrs.divider);
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("10.00vp");
       expect(dividerObject.color).assertEqual("#FF000000");
       expect(dividerObject.startMargin).assertEqual("5.00vp");
       expect(dividerObject.endMargin).assertEqual("5.00vp");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "startMarginNum": -1,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[ArkUI_SideBarContainer_Divider_1300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_SideBarContainer_Divider_1300] change component data error: " + err.message);
+        console.log("[ArkUI_SideBarContainer_Divider_1300] change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
-      let newJson = getInspectorByKey('sideBarTest2');
-      let newobj = JSON.parse(newJson);
+      let newJson: string = getInspectorByKey('sideBarTest2');
+      let newobj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_SideBarContainer_Divider_1300] divider:" + JSON.stringify(newobj.$attrs.divider));
-      let newdividerObject = JSON.parse(newobj.$attrs.divider);
+      let newdividerObject: ESObject = JSON.parse(newobj.$attrs.divider);
       expect(newdividerObject.startMargin).assertEqual("0.00vp");
       done();
     });
@@ -506,36 +507,36 @@ export default function sidebar() {
      */
     it('ArkUI_SideBarContainer_Divider_1400', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_1400 start");
-      let strJson = getInspectorByKey('sideBarTest2');
+      let strJson: string = getInspectorByKey('sideBarTest2');
       console.info("ArkUI_SideBarContainer_Divider_1400: " + JSON.stringify(strJson))
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[ArkUI_SideBarContainer_Divider_1400] divider:" + obj.$attrs.divider);
-      let dividerObject = JSON.parse(obj.$attrs.divider);
+      let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
       expect(dividerObject.strokeWidth).assertEqual("10.00vp");
       expect(dividerObject.color).assertEqual("#FF000000");
       expect(dividerObject.startMargin).assertEqual("5.00vp");
       expect(dividerObject.endMargin).assertEqual("5.00vp");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "endMarginNum": -1,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[ArkUI_SideBarContainer_Divider_1400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_SideBarContainer_Divider_1400] change component data error: " + err.message);
+        console.log("[ArkUI_SideBarContainer_Divider_1400] change component data error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
-      let newJson = getInspectorByKey('sideBarTest2');
-      let newobj = JSON.parse(newJson);
+      let newJson: string = getInspectorByKey('sideBarTest2');
+      let newobj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_SideBarContainer_Divider_1400] divider:" + JSON.stringify(newobj.$attrs.divider));
-      let newdividerObject = JSON.parse(newobj.$attrs.divider);
+      let newdividerObject: ESObject = JSON.parse(newobj.$attrs.divider);
       expect(newdividerObject.endMargin).assertEqual("0.00vp");
       done();
     });

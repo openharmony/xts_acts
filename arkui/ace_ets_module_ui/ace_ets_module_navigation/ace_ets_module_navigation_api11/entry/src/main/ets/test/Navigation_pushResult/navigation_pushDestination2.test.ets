@@ -62,7 +62,7 @@ export default function navigation_pushDestination2() {
       await CommonFunc.sleep(2000);
 
       let text1 = getInspectorByKey('navigation_pushDestination2_text_code');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: Record<string, ESObject> = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('100006NavDestination not found.');
 
       console.info('[navigation_pushDestination2_0100] END');

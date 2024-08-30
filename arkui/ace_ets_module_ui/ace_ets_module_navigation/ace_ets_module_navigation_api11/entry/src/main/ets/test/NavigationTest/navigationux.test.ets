@@ -14,9 +14,9 @@
  */
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-let emitKey = "emitUserAgent";
 import router from '@ohos.router';
 import Utils from '../Utils';
+let emitKey = "emitUserAgent";
 
 export default function navigationuxtest() {
   describe('navigationuxtest',  () =>{
@@ -50,9 +50,9 @@ export default function navigationuxtest() {
       console.info('ArkUX_Stage_Navigation_0100 START');
       setTimeout(() => {
         try {
-          let strJson = getInspectorByKey('ArkUX_Stage_Navigation_0100');
+          let strJson: string = getInspectorByKey('ArkUX_Stage_Navigation_0100');
           console.info('ArkUX_Stage_Navigation_0100 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
           console.info("ArkUX_Stage_Navigation_0100 component obj.$attrs.toolbarConfiguration is: " +
           JSON.stringify(obj.$attrs.toolbarConfiguration));
           console.info('ArkUX_Stage_Navigation_0100 END ');

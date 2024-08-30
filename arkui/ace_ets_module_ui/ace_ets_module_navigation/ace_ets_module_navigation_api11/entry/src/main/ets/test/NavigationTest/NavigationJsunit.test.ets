@@ -68,7 +68,7 @@ export default function navigationJsunit() {
      */
     it('testNavigation010', 0, async (done: Function) => {
       console.info('testNavigation010 START');
-      let strJson = getInspectorByKey('navigation1');
+      let strJson: string = getInspectorByKey('navigation1');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[navigation1] get inspector value is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Navigation');
@@ -87,7 +87,7 @@ export default function navigationJsunit() {
      */
     it('testNavigation020', 0, async (done: Function) => {
       console.info('testNavigation020 START');
-      let strJson = getInspectorByKey('navigation2');
+      let strJson: string = getInspectorByKey('navigation2');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[navigation2] get inspector value is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Navigation');

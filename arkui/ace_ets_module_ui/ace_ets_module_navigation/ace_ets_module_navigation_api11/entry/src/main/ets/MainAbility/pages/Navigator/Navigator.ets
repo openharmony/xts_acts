@@ -17,7 +17,7 @@
 @Component
 struct navigator_testcase {
   @State active: boolean = false
-  @State params: Object = { text: 'news' }
+  @State params: ESObject = { text: 'news' }
 
   build() {
     Column() {

@@ -48,9 +48,9 @@ export default function pageRouteTest() {
 
     it('testOnPageHide01', 0, async () => {
       console.info('[testOnPageHide01] START');
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         console.info("[testOnPageHide01] get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.value).assertEqual('onPageHide')
+        expect(eventData.data?.value).assertEqual('onPageHide')
 
       }
       let innerEvent: events_emitter.InnerEvent = {

@@ -86,7 +86,6 @@
         "MainAbility/pages/Navigator/sharedTransition",
         "MainAbility/pages/Navigator/sharedTransition2",
 	"MainAbility/pages/SideBarContainer/sideBar",
-        "MainAbility/pages/Navigation/navigationType",
         "MainAbility/pages/Navigation/NavigationApiFirst",
         "MainAbility/pages/SideBarContainer/sidebar2",
         "MainAbility/pages/stepper/stepperItem",
