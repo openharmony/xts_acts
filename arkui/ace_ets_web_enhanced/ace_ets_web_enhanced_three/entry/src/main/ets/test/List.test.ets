@@ -36,6 +36,7 @@ import webViewControllerPostUrlTest from './WebViewControllerPostUrlTest.test'
 import webViewControllerSetConnectionTimeoutTest from './WebViewControllerSetConnectionTimeoutTest.test'
 import webJavaScriptOnDocumentStartTest from './WebJavaScriptOnDocumentStartTest.test'
 import setPathAllowingUniversalAccess from './setPathAllowingUniversalAccess.test'
+import EmbedVisibilityChange from './EmbedVisibilityChange.test'
 
 export default function testsuite() {
   webResourceResponseGet()
@@ -61,4 +62,5 @@ export default function testsuite() {
   webViewControllerPostUrlTest()
   webViewControllerSetConnectionTimeoutTest()
   webJavaScriptOnDocumentStartTest()
+  EmbedVisibilityChange()
 }
