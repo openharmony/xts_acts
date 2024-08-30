@@ -4759,15 +4759,15 @@ static napi_value Init(napi_env env, napi_value exports)
 
         {"testRegisterSystemColorModeChangeEvent_001", nullptr, testRegisterSystemColorModeChangeEvent_001,
                 nullptr, nullptr, nullptr, napi_default, nullptr},
-		{"testUnregisterSystemColorModeChangeEvent_002", nullptr, testUnregisterSystemColorModeChangeEvent_002,
+        {"testUnregisterSystemColorModeChangeEvent_002", nullptr, testUnregisterSystemColorModeChangeEvent_002,
                 nullptr, nullptr, nullptr, napi_default, nullptr},
-		{"testRegisterSystemFontStyleChangeEvent_003", nullptr, testRegisterSystemFontStyleChangeEvent_003,
+        {"testRegisterSystemFontStyleChangeEvent_003", nullptr, testRegisterSystemFontStyleChangeEvent_003,
                 nullptr, nullptr, nullptr, napi_default, nullptr},
-		{"testUnregisterSystemFontStyleChangeEvent_004", nullptr, testUnregisterSystemFontStyleChangeEvent_004,
+        {"testUnregisterSystemFontStyleChangeEvent_004", nullptr, testUnregisterSystemFontStyleChangeEvent_004,
                 nullptr, nullptr, nullptr, napi_default, nullptr},
-		{"testSystemFontStyleEvent_GetFontSizeScale_005", nullptr, testSystemFontStyleEvent_GetFontSizeScale_005,
+        {"testSystemFontStyleEvent_GetFontSizeScale_005", nullptr, testSystemFontStyleEvent_GetFontSizeScale_005,
                 nullptr, nullptr, nullptr, napi_default, nullptr},
-		{"testSystemFontStyleEvent_GetFontWeightScale_006", nullptr, testSystemFontStyleEvent_GetFontWeightScale_006,
+        {"testSystemFontStyleEvent_GetFontWeightScale_006", nullptr, testSystemFontStyleEvent_GetFontWeightScale_006,
                 nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
