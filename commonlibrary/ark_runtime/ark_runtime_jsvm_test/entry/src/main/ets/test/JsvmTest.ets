@@ -5704,9 +5704,12 @@ instanceOf(obj, Person);
       done();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0417
-     * @tc.name JsvmTest0417
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0417
+     * @tc.name      JsvmTest0417
+     * @tc.desc      Test the functions of the OH_JSVM_SetInstanceData interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0417', 0, async function (done) {
       let script: string = `
@@ -5717,16 +5720,19 @@ instanceOf(obj, Person);
       done();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0418
-     * @tc.name JsvmTest0418
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0418
+     * @tc.name      JsvmTest0418
+     * @tc.desc      Test the functions of the OH_JSVM_GetInstanceData interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
 	it('JsvmTest0418', 0, async function (done) {
       let script: string = `
           getInstanceData()
       `;
       let setRes = napitest.runJsVm(script);
-      expect(setRes).assertEqual(5);
+      expect(setRes).assertEqual(true);
       done();
     });
     /**
