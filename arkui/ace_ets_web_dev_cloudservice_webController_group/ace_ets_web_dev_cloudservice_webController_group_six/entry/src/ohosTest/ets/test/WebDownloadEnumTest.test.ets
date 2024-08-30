@@ -22,7 +22,7 @@ export default function webDownloadEnumTest() {
   describe('WebDownloadEnumTest', () => {
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/WebDownloadEnumTest',
+        url: 'testability/pages/WebDownloadEnumTest',
       }
       try {
         await Utils.sleep(1000)

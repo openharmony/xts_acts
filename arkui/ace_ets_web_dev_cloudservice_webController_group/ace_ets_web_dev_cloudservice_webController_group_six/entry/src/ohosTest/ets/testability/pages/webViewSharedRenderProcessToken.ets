@@ -35,9 +35,9 @@ class TestClass {
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   @State emitKey: string = '';
-  webOptions: WebOptions = { src: 'www.example.com', controller: this.controller, sharedRenderProcessToken: '111' }
-  webOptions2: WebOptions = { src: 'www.w3.org', controller: this.controller, sharedRenderProcessToken: '111' }
-  webOptions3: WebOptions = { src: 'www.baidu.com', controller: this.controller, sharedRenderProcessToken: '111' }
+  webOptions: MyWebOptions = { src: 'www.example.com', controller: this.controller, sharedRenderProcessToken: '111' }
+  webOptions2: MyWebOptions = { src: 'www.w3.org', controller: this.controller, sharedRenderProcessToken: '111' }
+  webOptions3: MyWebOptions = { src: 'www.baidu.com', controller: this.controller, sharedRenderProcessToken: '111' }
   @State testObj: TestClass = new TestClass();
 
 
@@ -84,15 +84,7 @@ struct WebComponent {
                 try {
                   this.controller.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
                     // 可选参数, asyncMethodList
-                    [],
-                    // 可选参数, permission
-                    '{"javascriptProxyPermission":{"urlPermissionList":[{"scheme":"resource","host":"rawfile",' +
-                      '"port":"","path":""},{"scheme":"e","host":"f","port":"g","path":"h"}],' +
-                      '"methodList":[{"methodName":"test","urlPermissionList":' +
-                      '[{"scheme":"https","host":"xxx.com","port":"","path":""},' +
-                      '{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
-                      '{"methodName":"test11","urlPermissionList":[{"scheme":"q","host":"r","port":"","path":"t"},' +
-                      '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
+                    []
                   );
                   Utils.emitEvent(true,1601)
                 } catch (error) {
@@ -113,16 +105,18 @@ struct WebComponent {
         methodList: ['test'],
         controller: this.controller,
         // 可选参数
-        asyncMethodList: [],
-        permission: '{"javascriptProxyPermission":{"urlPermissionList":[{"scheme":"resource",' +
-          '"host":"rawfile","port":"","path":""},' +
-          '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":[{"methodName":"test","urlPermissionList":' +
-          '[{"scheme":"https","host":"xxx.com","port":"","path":""},{"scheme":"resource","host":"rawfile","port":""' +
-          ',"path":""}]},{"methodName":"test11","urlPermissionList":[{"scheme":"q","host":"r","port":"","path":"t"},' +
-          '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
+        asyncMethodList: []
       })
       Web(this.webOptions2)
       Web(this.webOptions3)
     }
   }
+}
+
+interface MyWebOptions {
+  src: ResourceStr;
+  controller: WebviewController | WebController;
+  renderMode?: RenderMode;
+  incognitoMode?: boolean;
+  sharedRenderProcessToken?: string;
 }

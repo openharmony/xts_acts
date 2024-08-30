@@ -25,7 +25,7 @@ export default function ActsAcewebViewCookieTrackEnhance() {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewCookieTrackEnhance',
+            url: 'testability/pages/webViewCookieTrackEnhance',
         }
         
         try {

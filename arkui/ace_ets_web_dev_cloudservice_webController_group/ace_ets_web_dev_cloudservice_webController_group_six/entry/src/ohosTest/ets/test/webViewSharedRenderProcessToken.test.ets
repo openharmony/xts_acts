@@ -25,7 +25,7 @@ export default function ActsAcewebViewSharedRenderProcessToken() {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewSharedRenderProcessToken',
+            url: 'testability/pages/webViewSharedRenderProcessToken',
         }
         
         try {

@@ -25,7 +25,7 @@ export default function webViewOnFullScreenEnterInfoAudio() {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewOnFullScreenEnterAudio',
+            url: 'testability/pages/webViewOnFullScreenEnterAudio',
         }
         
         try {

@@ -174,7 +174,7 @@ struct webViewCookieTrack {
                         console.log('onIntelligentTrackingPreventionResult ->' + this.cookie)
                     }
                 })
-                .onInterceptRequest((event=>{
+                .onInterceptRequest((event: OnInterceptRequestEventType) =>{
                   if(event){
                     console.info('url:'+event.request.getRequestUrl());
 
@@ -190,7 +190,11 @@ struct webViewCookieTrack {
                     this.responseResource.setReasonMessage('OK');
                     return this.responseResource;
 
-                }))
+                })
       }
   }
+}
+
+interface OnInterceptRequestEventType { 
+  request: WebResourceRequest
 }
