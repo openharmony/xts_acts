@@ -27,8 +27,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function objectLinkNumber() {
@@ -68,7 +68,7 @@ export default function objectLinkNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('objectLinkNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[objectLinkNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[objectLinkNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Object]" number is {"a":100}');
@@ -89,7 +89,7 @@ export default function objectLinkNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('objectLinkNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[objectLinkNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[objectLinkNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Object]" number is {"b":100}');
@@ -110,7 +110,7 @@ export default function objectLinkNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('objectLinkNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[objectLinkNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[objectLinkNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Undefined]" number is undefined');
@@ -131,7 +131,7 @@ export default function objectLinkNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('objectLinkNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[objectLinkNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[objectLinkNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Null]" number is null');

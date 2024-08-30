@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function persistStorageATest() {
-  describe('persistStorageATest', function () {
-    beforeEach(async function (done) {
+  describe('persistStorageATest', () => {
+    beforeEach(async (done: Function) => {
       console.info("persistStorageATest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/GetSharedLocal/persistStorageA',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/GetSharedLocal/persistStorageA',
       }
       try {
         router.clear();
@@ -48,12 +48,12 @@ export default function persistStorageATest() {
      * @tc.type :
      * @tc.size :
      */
-    it('persistStorageATest_0100', 0, async function (done) {
+    it('persistStorageATest_0100', 0, async (done: Function) => {
       console.info('persistStorageATest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('persistStorageA_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('PropAX:47');
       done();
     });

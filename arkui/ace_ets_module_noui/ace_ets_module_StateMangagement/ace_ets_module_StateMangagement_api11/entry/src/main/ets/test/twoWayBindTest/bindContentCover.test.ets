@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function bindContentCoverTest() {
-  describe('bindContentCoverTest', function () {
-    beforeEach(async function (done) {
+  describe('bindContentCoverTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("bindContentCoverTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/twoWayBind/bindContentCover',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/twoWayBind/bindContentCover',
       }
       try {
         router.clear();
@@ -48,13 +48,13 @@ export default function bindContentCoverTest() {
      * @tc.type :    FUNC
      * @tc.size :    MEDIUM
      */
-    it('bindContentCoverTest_0100', 0, async function (done) {
+    it('bindContentCoverTest_0100', 0, async (done: Function) => {
       console.info('bindContentCoverTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('bindContentText');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[bindContentCoverTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isShow: false');
 

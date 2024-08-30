@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function state2() {
@@ -65,7 +65,7 @@ export default function state2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stBtn1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[state2_0100] component obj is: " + JSON.stringify(obj));
       console.info("[state2_0100] title: " + JSON.stringify(obj.$attrs.type));
       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
@@ -81,7 +81,7 @@ export default function state2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stBtn2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[state2_0200] component obj is: " + JSON.stringify(obj));
       console.info("[state2_0200] title: " + JSON.stringify(obj.$attrs.type));
       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
@@ -98,7 +98,7 @@ export default function state2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stBtn3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[state2_0300] component obj is: " + JSON.stringify(obj));
       console.info("[state2_0300] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('16.00fp');
@@ -114,7 +114,7 @@ export default function state2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stBtn4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[state2_0400] component obj is: " + JSON.stringify(obj));
       console.info("[state2_0400] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('16.00fp');

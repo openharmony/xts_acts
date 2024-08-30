@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter'
 
 
@@ -60,7 +60,7 @@ export default function LocalStoagePropFourJsunit() {
 
       console.info('[LocalStoagePropFourJsunit_0200] START');
       let strJson1 = getInspectorByKey('text_state');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStoagePropFourJsunit_0200] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('State:1,Link:1,Prop:1,Provide:1');
 
@@ -73,7 +73,7 @@ export default function LocalStoagePropFourJsunit() {
     it('LocalStoagePropFourJsunit_0200', 0, async (done: Function) => {
       console.info('[LocalStoagePropFourJsunit_0200] START');
       let strJson1 = getInspectorByKey('text_getValue3');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStoagePropFourJsunit_0200] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('localstorage:1,storProp1:1');
 
@@ -83,7 +83,7 @@ export default function LocalStoagePropFourJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson2 = getInspectorByKey('text_getValue3');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LocalStoagePropFourJsunit_0200] obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.content).assertEqual('localstorage:1,storProp1:11');
 
@@ -93,7 +93,7 @@ export default function LocalStoagePropFourJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson3 = getInspectorByKey('text_getValue3');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[LocalStoagePropFourJsunit_0100] obj3 is: " + JSON.stringify(obj3));
       expect(obj3.$attrs.content).assertEqual('localstorage:666,storProp1:666');
 

@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common'
+import CommonFunc from '../../MainAbility/common/Common'
 
 
 export default function PropArrayJsunit() {
@@ -59,7 +59,7 @@ export default function PropArrayJsunit() {
 
       console.info('StateArrayJsunit_0100 START');
       let strJson = getInspectorByKey('initial_Array');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayJsunit_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('title：[{"value":1},{"value":2},{"value":3}]');
@@ -75,7 +75,7 @@ export default function PropArrayJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('initial_Array');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayJsunit_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('title：[{"value":8},{"value":2},{"value":3}]');
@@ -87,7 +87,7 @@ export default function PropArrayJsunit() {
 
       console.info('StateArrayJsunit_0300 START');
       let strJson = getInspectorByKey('sub_prop');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayJsunit_0300] title: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual('子组件Prop:[{"value":8},{"value":2},{"value":3}]');
@@ -102,7 +102,7 @@ export default function PropArrayJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sub_prop');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayJsunit_0400] title: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual('子组件Prop:[{"value":7},{"value":2},{"value":3}]');

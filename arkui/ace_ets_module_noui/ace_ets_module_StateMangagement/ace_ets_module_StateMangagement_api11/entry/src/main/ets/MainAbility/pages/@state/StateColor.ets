@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from '../../../MainAbility/common/Common';
+
 @Entry
 @Component
 struct MyComponent_AX {
@@ -21,7 +23,7 @@ struct MyComponent_AX {
 
   build() {
     Column({ space: 20 }) {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.color)) + " number is " + JSON.stringify(this.color))
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.color)) + " number is " + JSON.stringify(this.color))
         .fontSize(20).margin(30).key('StateColor')
       Text("设置变量color类型pink-->Orange")
       Button('change')

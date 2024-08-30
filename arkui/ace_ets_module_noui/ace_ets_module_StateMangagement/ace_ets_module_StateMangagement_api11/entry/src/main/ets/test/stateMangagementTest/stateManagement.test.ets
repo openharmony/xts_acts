@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils.ets'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function stateManagementDARKJsunit() {
   describe('stateManagementDARKTest', () => {
@@ -31,7 +31,7 @@ export default function stateManagementDARKJsunit() {
         if (!("stateManagement" == pages.name)) {
           console.info("get stateManagement state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push stateManagement page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,7 +41,7 @@ export default function stateManagementDARKJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("stateManagementDARK after each called");
     });
 
@@ -52,7 +52,7 @@ export default function stateManagementDARKJsunit() {
      */
     it('teststateManagementDARK001', 0, async (done: Function) => {
       console.info('stateManagementDARK teststateManagementDARK001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('DARKText');
       console.info("[teststateManagementDARK001] component textAlign strJson:" + strJson);
       expect(JSON.parse(strJson).$type).assertEqual('Text');

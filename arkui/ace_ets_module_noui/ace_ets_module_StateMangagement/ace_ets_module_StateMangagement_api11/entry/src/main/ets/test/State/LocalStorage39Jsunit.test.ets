@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function LocalStorage39Jsunit() {
@@ -64,7 +64,7 @@ export default function LocalStorage39Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('sizeText');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStorage39Jsunit_0200] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('size是：2');
@@ -80,7 +80,7 @@ export default function LocalStorage39Jsunit() {
       await Storage12Button1.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('keysText1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStorage39Jsunit_0400] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('Keys：["storage_","PropA","PropB"]');
@@ -96,7 +96,7 @@ export default function LocalStorage39Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('getText1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStorage39Jsunit_0600] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('get PropA：1');
@@ -112,7 +112,7 @@ export default function LocalStorage39Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('getText2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStorage39Jsunit_0800] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('get PropE：undefined');

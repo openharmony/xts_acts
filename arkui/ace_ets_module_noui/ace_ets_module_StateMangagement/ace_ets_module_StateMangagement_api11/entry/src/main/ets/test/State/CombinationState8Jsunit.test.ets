@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function CombinationState8Jsunit() {
@@ -58,7 +58,7 @@ export default function CombinationState8Jsunit() {
     it('CombinationState8Jsunit_0100', 0, async (done: Function) => {
       console.info('[CombinationState8Jsunit_0100] START');
       let strJson = getInspectorByKey('SubState1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[CombinationState8Jsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[CombinationState8Jsunit_0100] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("@State:1");
@@ -69,7 +69,7 @@ export default function CombinationState8Jsunit() {
     it('CombinationState8Jsunit_0200', 0, async (done: Function) => {
       console.info('[CombinationState8Jsunit_0200] START');
       let strJson = getInspectorByKey('SubProp1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[CombinationState8Jsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[CombinationState8Jsunit_0200] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("@Prop:1");
@@ -80,7 +80,7 @@ export default function CombinationState8Jsunit() {
     it('CombinationState8Jsunit_0300', 0, async (done: Function) => {
       console.info('[CombinationState8Jsunit_0300] START');
       let strJson = getInspectorByKey('SubProvide1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[CombinationState8Jsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[CombinationState8Jsunit_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("@Provide:1");
@@ -91,7 +91,7 @@ export default function CombinationState8Jsunit() {
     it('CombinationState8Jsunit_0400', 0, async (done: Function) => {
       console.info('[CombinationState8Jsunit_0400] START');
       let strJson = getInspectorByKey('SubLink1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[CombinationState8Jsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[CombinationState8Jsunit_0400] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("@Link:1");

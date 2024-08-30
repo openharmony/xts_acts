@@ -16,12 +16,12 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 export default function localStorageRefJsunit() {
-  describe('localStorageRefJsunit', function () {
-    beforeEach(async function (done) {
+  describe('localStorageRefJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("localStorageRefJsunit beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Storage/localStorageRef',
@@ -53,13 +53,13 @@ export default function localStorageRefJsunit() {
     it('localStorageRefJsunit_0100', 0, async () => {
       console.info('localStorageRefJsunit001 START');
       let strJson = getInspectorByKey('local_ref_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[localStorageRefJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[localStorageRefJsunit_0100] ref: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("ref:47");
 
       let strJson2 = getInspectorByKey('local_ref_2');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[localStorageRefJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       console.info("[localStorageRefJsunit_0100] setAndRef: " + JSON.stringify(obj2.$attrs.label));
       expect(obj2.$attrs.label).assertEqual("setAndRef:30");

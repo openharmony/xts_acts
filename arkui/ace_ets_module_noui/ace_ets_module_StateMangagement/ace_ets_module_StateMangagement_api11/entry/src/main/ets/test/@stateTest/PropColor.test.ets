@@ -27,8 +27,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function PropColor() {
@@ -68,7 +68,7 @@ export default function PropColor() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('state1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFA500');
@@ -89,7 +89,7 @@ export default function PropColor() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('state2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FF0000FF');
@@ -110,7 +110,7 @@ export default function PropColor() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropColor_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Undefined]" number is undefined');
@@ -131,7 +131,7 @@ export default function PropColor() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('state4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFA52A2A');
@@ -152,7 +152,7 @@ export default function PropColor() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropColor_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Null]" number is null');
@@ -173,7 +173,7 @@ export default function PropColor() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('state6');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FF008000');

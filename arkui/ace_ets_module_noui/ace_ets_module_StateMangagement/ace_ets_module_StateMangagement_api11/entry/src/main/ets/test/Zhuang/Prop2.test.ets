@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function Prop2() {
@@ -66,7 +66,7 @@ export default function Prop2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('prop2Btn1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Prop2_0100] component obj is: " + JSON.stringify(obj));
       console.info("[Prop2_0100] title: " + JSON.stringify(obj.$attrs.type));
       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
@@ -82,7 +82,7 @@ export default function Prop2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('prop2Btn2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Prop2_0200] component obj is: " + JSON.stringify(obj));
       console.info("[Prop2_0200] title: " + JSON.stringify(obj.$attrs.type));
       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
@@ -99,7 +99,7 @@ export default function Prop2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('prop2Btn3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Prop2_0300] component obj is: " + JSON.stringify(obj));
       console.info("[Prop2_0300] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('16.00fp');
@@ -115,7 +115,7 @@ export default function Prop2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('prop2Btn4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Prop2_0400] component obj is: " + JSON.stringify(obj));
       console.info("[Prop2_0400] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('16.00fp');
@@ -132,7 +132,7 @@ export default function Prop2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ziProp2Btn1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Prop2_0500] component obj is: " + JSON.stringify(obj));
       console.info("[Prop2_0500] title: " + JSON.stringify(obj.$attrs.type));
       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
@@ -150,7 +150,7 @@ export default function Prop2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ziProp2Btn2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Prop2_0600] component obj is: " + JSON.stringify(obj));
       console.info("[Prop2_0600] title: " + JSON.stringify(obj.$attrs.type));
       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
@@ -169,7 +169,7 @@ export default function Prop2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ziProp2Btn3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Prop2_0700] component obj is: " + JSON.stringify(obj));
       console.info("[Prop2_0700] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('16.00fp');
@@ -187,7 +187,7 @@ export default function Prop2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ziProp2Btn4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Prop2_0800] component obj is: " + JSON.stringify(obj));
       console.info("[Prop2_0800] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('16.00fp');

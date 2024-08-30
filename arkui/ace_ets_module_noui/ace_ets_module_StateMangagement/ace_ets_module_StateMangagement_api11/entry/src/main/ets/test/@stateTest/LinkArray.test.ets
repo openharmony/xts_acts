@@ -27,8 +27,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 export default function LinkArray() {
   describe('LinkArray', () => {
@@ -67,7 +67,7 @@ export default function LinkArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LinkArray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[LinkArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[LinkArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [10]');
@@ -88,7 +88,7 @@ export default function LinkArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LinkArray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[LinkArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[LinkArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [true]');
@@ -109,7 +109,7 @@ export default function LinkArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LinkArray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[LinkArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[LinkArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Boolean]" number is true');
@@ -130,7 +130,7 @@ export default function LinkArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LinkArrayNew');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[LinkArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[LinkArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is 200');

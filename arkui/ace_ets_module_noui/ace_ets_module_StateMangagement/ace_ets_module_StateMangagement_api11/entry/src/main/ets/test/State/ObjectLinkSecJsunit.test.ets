@@ -28,8 +28,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function ObjectLinkSecJsunit() {
@@ -58,7 +58,7 @@ export default function ObjectLinkSecJsunit() {
     afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back({
-        uri: "MainAbility/pages/index/index"
+        url: "MainAbility/pages/index/index"
       });
     });
 
@@ -66,7 +66,7 @@ export default function ObjectLinkSecJsunit() {
 
       console.info('ObjectLinkSecJsunit_0100 START');
       let strJson = getInspectorByKey('sec_state');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkSecJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkSecJsunit_0100] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("5");
@@ -82,7 +82,7 @@ export default function ObjectLinkSecJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sec_state');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkSecJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkSecJsunit_0200] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("5");
@@ -94,7 +94,7 @@ export default function ObjectLinkSecJsunit() {
 
       console.info('ObjectLinkSecJsunit_0300 START');
       let strJson = getInspectorByKey('sec_provide');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkSecJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkSecJsunit_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("5");
@@ -110,7 +110,7 @@ export default function ObjectLinkSecJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sec_provide');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkSecJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkSecJsunit_0400] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("5");

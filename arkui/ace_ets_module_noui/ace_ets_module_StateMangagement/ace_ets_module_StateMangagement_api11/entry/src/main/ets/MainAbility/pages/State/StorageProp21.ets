@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 AppStorage.clear()
-enum KFC{D = 1,H,Y}
+enum KFC21{D = 1,H,Y}
 Environment.envProps([
   { key: 'stringCode', defaultValue: 'en'},
   { key: 'numberCode', defaultValue: 2},
   { key: 'booleanCode', defaultValue: true},
-  { key: 'enumCode', defaultValue: KFC.D},
+  { key: 'enumCode', defaultValue: KFC21.D},
 ])
 
 
@@ -28,7 +28,7 @@ struct StorageProp21 {
   @StorageProp('stringCode') stringCode: string = 'ab';
   @StorageProp('numberCode') numberCode: number = 1;
   @StorageProp('booleanCode') booleanCode: boolean = false;
-  @StorageProp('enumCode') enumCode: KFC = KFC.H;
+  @StorageProp('enumCode') enumCode: KFC21 = KFC21.H;
 
 
   build() {
@@ -54,7 +54,7 @@ struct StorageProp21 {
       Button(`button4: ${this.enumCode}`).margin(10).width("100%")
         .key("button4")
         .onClick(() => {
-          this.enumCode = KFC.Y
+          this.enumCode = KFC21.Y
         })
 
     }

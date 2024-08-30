@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from '../../../MainAbility/common/Common';
+
 @Component
 struct Child_AU {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Ancestors内的@Provide装饰的变量
@@ -34,10 +36,10 @@ struct Ancestors_AU {
 
   build() {
     Column() {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array1)) + " number is " + JSON.stringify(this.Array1))
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array1)) + " number is " + JSON.stringify(this.Array1))
         .fontSize(20).margin(30).key('ProvideArray1')
 
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array1)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array1)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
         .fontSize(20).margin(30).key('ProvideArray1New')
 
 

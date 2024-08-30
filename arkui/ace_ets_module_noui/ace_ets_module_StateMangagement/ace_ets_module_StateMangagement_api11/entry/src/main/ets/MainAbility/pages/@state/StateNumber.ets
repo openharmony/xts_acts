@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from '../../../MainAbility/common/Common';
+
 class Num1 {
   public pages:number;
   constructor(pages: number) {
@@ -26,7 +28,7 @@ struct MyComponent_AL {
 
   build() {
     Column({ space: 20 }) {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.count)) + " number is " + JSON.stringify(this.count))
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.count)) + " number is " + JSON.stringify(this.count))
         .fontSize(20).margin(30).key('StateNumber')
 
 
@@ -40,7 +42,7 @@ struct MyComponent_AL {
       Text("切换变量赋值Object")
       Button('change')
         .onClick(() => {
-          this.count = { pages: 20 };
+          this.count = new Num1(20);
         })
         .key('state2')
 

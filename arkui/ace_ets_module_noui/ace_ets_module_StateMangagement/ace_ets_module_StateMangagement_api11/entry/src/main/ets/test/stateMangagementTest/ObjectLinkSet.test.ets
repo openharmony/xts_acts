@@ -29,7 +29,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import Utils from '../../MainAbility/common/Utils.ets'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function ObjectLinkSet() {
   describe('ObjectLinkSet', () => {
@@ -45,7 +45,7 @@ export default function ObjectLinkSet() {
         if (!("ObjectLinkSet" == pages.name)) {
           console.info("get ObjectLinkSet state pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push ObjectLinkSet success: " + JSON.stringify(result));
         }
       } catch (err) {
@@ -65,13 +65,13 @@ export default function ObjectLinkSet() {
     it('ObjectLinkSet_0100', 0, async (done: Function) => {
       console.info('ObjectLinkSet_0100 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('ObtLinkSet_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('ObtLinkSet_set'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('ObtLinkSet_value_5');
       console.info("[ObjectLinkSet_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ObjectLinkSet_0100] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -90,13 +90,13 @@ export default function ObjectLinkSet() {
     it('ObjectLinkSet_0200', 0, async (done: Function) => {
       console.info('ObjectLinkSet_0200 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('ObtLinkSet_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('ObtLinkSet_clear'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('ObtLinkSet_value_0');
       console.info("[ObjectLinkSet_0200] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ObjectLinkSet_0200] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -115,13 +115,13 @@ export default function ObjectLinkSet() {
     it('ObjectLinkSet_0300', 0, async (done: Function) => {
       console.info('ObjectLinkSet_0300 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('ObtLinkSet_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('ObtLinkSet_delete'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('ObtLinkSet_value_2');
       console.info("[ObjectLinkSet_0300] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ObjectLinkSet_0300] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));

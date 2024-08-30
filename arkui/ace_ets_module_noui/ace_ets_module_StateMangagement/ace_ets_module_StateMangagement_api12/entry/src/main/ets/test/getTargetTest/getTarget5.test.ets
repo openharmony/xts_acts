@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function getTarget5Test() {
-  describe('getTarget5Test', function () {
-    beforeEach(async function (done) {
+  describe('getTarget5Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("getTarget5Test beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/getTarget/getTarget5',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/getTarget/getTarget5',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function getTarget5Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('getTarget5Test_0100', 0, async function (done) {
+    it('getTarget5Test_0100', 0, async (done: Function) => {
       console.info('getTarget5Test_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -57,7 +57,7 @@ export default function getTarget5Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('useGetTarget5_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[getTarget5Test_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('Tom');
 

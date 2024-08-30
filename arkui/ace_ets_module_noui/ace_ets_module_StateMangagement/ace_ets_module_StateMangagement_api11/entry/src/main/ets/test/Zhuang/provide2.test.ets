@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function provide2() {
@@ -65,7 +65,7 @@ export default function provide2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('prBtn1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide2_0100] component obj is: " + JSON.stringify(obj));
       console.info("[provide2_0100] title: " + JSON.stringify(obj.$attrs.type));
       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
@@ -81,7 +81,7 @@ export default function provide2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('prBtn2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide2_0200] component obj is: " + JSON.stringify(obj));
       console.info("[provide2_0200] title: " + JSON.stringify(obj.$attrs.type));
       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
@@ -98,7 +98,7 @@ export default function provide2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('prBtn3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide2_0300] component obj is: " + JSON.stringify(obj));
       console.info("[provide2_0300] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('16.00fp');
@@ -114,7 +114,7 @@ export default function provide2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('prBtn4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide2_0400] component obj is: " + JSON.stringify(obj));
       console.info("[provide2_0400] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('16.00fp');
@@ -131,7 +131,7 @@ export default function provide2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('coBtn1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide2_0500] component obj is: " + JSON.stringify(obj));
       console.info("[provide2_0500] title: " + JSON.stringify(obj.$attrs.type));
       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
@@ -149,7 +149,7 @@ export default function provide2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('coBtn2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide2_0600] component obj is: " + JSON.stringify(obj));
       console.info("[provide2_0600] title: " + JSON.stringify(obj.$attrs.type));
       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
@@ -168,7 +168,7 @@ export default function provide2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('coBtn3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide2_0700] component obj is: " + JSON.stringify(obj));
       console.info("[provide2_0700] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('16.00fp');
@@ -186,7 +186,7 @@ export default function provide2() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('coBtn4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide2_0800] component obj is: " + JSON.stringify(obj));
       console.info("[provide2_0800] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('16.00fp');

@@ -16,8 +16,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import { UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager,Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager,Callback } from '../../MainAbility/common/MessageManager';
 
 export default function IfElse003Test() {
   describe('IfElse003Test', () => {
@@ -54,24 +54,24 @@ export default function IfElse003Test() {
       console.info('IfElse003Test_01 START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);
-      let text_2 = JSON.parse(getInspectorByKey('text_2'));
+      let text_2: ESObject = JSON.parse(getInspectorByKey('text_2'));
       expect(text_2.$attrs.content).assertEqual('状态1为假');
-      let text_22 = JSON.parse(getInspectorByKey('text_22'));
+      let text_22: ESObject = JSON.parse(getInspectorByKey('text_22'));
       expect(text_22.$attrs.content).assertEqual('状态1为假，状态2为假');
 
       let btn_1 = await driver.findComponent(ON.id('btn_1'));
       await btn_1.click();
       await CommonFunc.sleep(1000);
-      let text_1 = JSON.parse(getInspectorByKey('text_1'));
+      let text_1: ESObject = JSON.parse(getInspectorByKey('text_1'));
       expect(text_1.$attrs.content).assertEqual('状态1为真');
-      let text_12 = JSON.parse(getInspectorByKey('text_12'));
+      let text_12: ESObject = JSON.parse(getInspectorByKey('text_12'));
       expect(text_12.$attrs.content).assertEqual('状态1为真，状态2为假');
 
       let btn_2 = await driver.findComponent(ON.id('btn_2'));
       await btn_2.click();
       await CommonFunc.sleep(1000);
       expect(text_1.$attrs.content).assertEqual('状态1为真');
-      let text_11 = JSON.parse(getInspectorByKey('text_11'));
+      let text_11: ESObject = JSON.parse(getInspectorByKey('text_11'));
       expect(text_11.$attrs.content).assertEqual('状态1为真，状态2为真');
 
       console.info('[IfElse003Test_01] END');

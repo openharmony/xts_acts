@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from '../../../MainAbility/common/Common';
+
 @Component
 struct Child_CJ {
   @Link hight: ResourceStr | Length;
@@ -54,7 +56,7 @@ struct Index_CJ {
 
   build() {
     Column() {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.hight)) + " number is " + JSON.stringify(this.hight))
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.hight)) + " number is " + JSON.stringify(this.hight))
         .fontSize(20).margin(30).key('LinkHight')
       Child_CJ({hight: this.hight})
 
