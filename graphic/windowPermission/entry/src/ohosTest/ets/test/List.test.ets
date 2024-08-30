@@ -15,5 +15,5 @@
 import permissionCheck from './permissionCheck.test'
 
 export default function testsuite() {
-  permissionCheck(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
+  permissionCheck(globalThis.abilityContext)
 }
