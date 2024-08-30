@@ -18,17 +18,17 @@
 
 namespace ArkUICapiTest {
 
-static napi_value testRegisterSystemColorModeChangeEvent_001(napi_env env,napi_callback_info info)
+static napi_value testRegisterSystemColorModeChangeEvent_001(napi_env env, napi_callback_info info)
 {
 	ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
-	OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1,nodeAPI);
+	OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
 	
 	ArkUI_NodeHandle column = nodeAPI -> createNode(ARKUI_NODE_COLUMN);
 	ArkUI_NumberValue value[] = {480};
 	ArkUI_AttributeItem item = {value, 1};
-	nodeAPI->setAttribute(column, NODE_WIDTH,&item);
+	nodeAPI->setAttribute(column, NODE_WIDTH, &item);
 	value[0].f32 = 720;
-	nodeAPI -> setAttribute(column, NODE_HEIGHT,&item);
+	nodeAPI -> setAttribute(column, NODE_HEIGHT, &item);
 
 	ArkUI_NodeHandle image = nodeAPI -> createNode(ARKUI_NODE_IMAGE);
 	value[0].f32 = 200;
@@ -40,16 +40,16 @@ static napi_value testRegisterSystemColorModeChangeEvent_001(napi_env env,napi_c
     
 	nodeAPI->addChild(column, image);
 
-	auto onColorChange = [](ArkUI_SystemColorMode sysColorMode, void *userData)->void {
+	auto onColorChange = [](ArkUI_SystemColorMode sysColorMode, void *userData) -> void {
 
-		if(sysColorMode == ArkUI_SystemColorMode::ARKUI_SYSTEM_COLOR_MODE_DARK) {
-			OH_LOG_Print(LOG_APP,LOG_ERROR,LOG_PRINT_DOMAIN, "Manager", "kkk onColorChange dark");
+	    if ( sysColorMode == ArkUI_SystemColorMode:: ARKUI_SYSTEM_COLOR_MODE_DARK ) {
+		    OH_LOG_Print(LOG_APP,LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk onColorChange dark");
 		} else {
-			OH_LOG_Print(LOG_APP,LOG_ERROR,LOG_PRINT_DOMAIN, "Manager", "kkk onColorChange light");
+		    OH_LOG_Print(LOG_APP,LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk onColorChange light");
 		}
 
 		auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-			OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1");
+		    OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1");
 		);
 
 		auto node =(ArkUI_NodeHandle)userData;
@@ -81,21 +81,21 @@ static napi_value testUnregisterSystemColorModeChangeEvent_002(napi_env env, nap
 	nodeAPI -> setAttribute(image, NODE_WIDTH, &item);
 	value[0].f32 = 200;
 	nodeAPI -> setAttribute(image, NODE_HEIGHT, &item);
-	ArkUI_AttributeItem itemSrc = {nullptr,0,"xxxxx_1.img"};
+	ArkUI_AttributeItem itemSrc = {nullptr, 0, "xxxxx_1.img"};
 
 	nodeAPI -> setAttribute(image, NODE_IMAGE_SRC, &itemSrc);
 	nodeAPI -> addChild(column, image);
 
 	auto onColorChange = [](ArkUI_SystemColorMode sysColorMode, void *userData) -> void {
 
-		if(sysColorMode == ArkUI_SystemColorMode::ARKUI_SYSTEM_COLOR_MODE_DARK) {
-			OH_LOG_Print(LOG_APP, LOG_ERROR,LOG_PRINT_DOMAIN, "Manager", "kkk onColorChange dark");
+	    if(sysColorMode == ArkUI_SystemColorMode::ARKUI_SYSTEM_COLOR_MODE_DARK) {
+		    OH_LOG_Print(LOG_APP, LOG_ERROR,LOG_PRINT_DOMAIN, "Manager", "kkk onColorChange dark");
 		} else {
-			OH_LOG_Print(LOG_APP, LOG_ERROR,LOG_PRINT_DOMAIN, "Manager", "kkk onColorChange light");
+		    OH_LOG_Print(LOG_APP, LOG_ERROR,LOG_PRINT_DOMAIN, "Manager", "kkk onColorChange light");
 		}
 
 		auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-			OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")
+		    OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")
 		);
 
 		auto node = (ArkUI_NodeHandle)userData;
@@ -133,11 +133,11 @@ static napi_value testRegisterSystemFontStyleChangeEvent_003(napi_env env, napi_
 
 	auto onFontChange = [](ArkUI_SystemFontStyleEvent *fontStyle, void *userData) -> void {
 	
-		OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk onFontChange fontChange");
-		auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1*>(OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-		auto node = (ArkUI_NodeHandle)userData;
+	    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk onFontChange fontChange");
+	    auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1*>(OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+	    auto node = (ArkUI_NodeHandle)userData;
 
-		OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk onFontChange %{public}f", nodeAPI -> getAttribute(node, NODE_HEIGHT)->value[0].f32);
+	    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk onFontChange %{public}f", nodeAPI -> getAttribute(node, NODE_HEIGHT) -> value[0].f32);
 	};
 
 	auto ref = OH_ArkUI_RegisterSystemFontStyleChangeEvent(text, text, onFontChange);
@@ -160,7 +160,7 @@ static napi_value testUnregisterSystemFontStyleChangeEvent_004(napi_env env, nap
 
 	ArkUI_NodeHandle text = nodeAPI -> createNode(ARKUI_NODE_TEXT);
 	value[0].f32 = 100;
-	nodeAPI -> setAttribute(text, NODE_WIDTH,&item);
+	nodeAPI -> setAttribute(text, NODE_WIDTH, &item);
 	value[0].f32 = 30;
 	nodeAPI -> setAttribute(text, NODE_HEIGHT, &item);
 	ArkUI_AttributeItem itemString = {nullptr, 0, "人生得意须尽欢"};
@@ -168,12 +168,12 @@ static napi_value testUnregisterSystemFontStyleChangeEvent_004(napi_env env, nap
 	nodeAPI -> addChild(column, text);
 
 	auto onFontChange = [](ArkUI_SystemFontStyleEvent *fontStyle, void *userData) -> void {
-		OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,"Manager","kkk onFontChange fontChange");
-		auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1*>(OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+	    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk onFontChange fontChange");
+	    auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1*>(OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
         
-		auto node = (ArkUI_NodeHandle)userData;
+	    auto node = (ArkUI_NodeHandle)userData;
 
-		OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager","kkk onFontChange %{public}f", nodeAPI -> getAttribute(node, NODE_HEIGHT) -> value[0].f32);
+	    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk onFontChange %{public}f", nodeAPI -> getAttribute(node, NODE_HEIGHT) -> value[0].f32);
 	};
 
 	auto ref = OH_ArkUI_RegisterSystemFontStyleChangeEvent(text, text, onFontChange);
@@ -190,7 +190,7 @@ static napi_value testSystemFontStyleEvent_GetFontSizeScale_005(napi_env env, na
 	ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
 	OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
 
-	ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+	ArkUI_NodeHandle column = nodeAPI -> createNode(ARKUI_NODE_COLUMN);
 	ArkUI_NumberValue value[] = {480};
 	ArkUI_AttributeItem item = {value, 1};
 	nodeAPI -> setAttribute(column, NODE_WIDTH, &item);
@@ -225,14 +225,14 @@ static napi_value testSystemFontStyleEvent_GetFontWeightScale_006(napi_env env, 
 
 	ArkUI_NodeHandle column = nodeAPI -> createNode(ARKUI_NODE_COLUMN);
 	ArkUI_NumberValue value[] = {480};
-	ArkUI_AttributeItem item = {value,1};
+	ArkUI_AttributeItem item = {value, 1};
 	nodeAPI -> setAttribute(column, NODE_WIDTH, &item);
-	value[0].f32=720;
+	value[0].f32 = 720;
 	nodeAPI -> setAttribute(column, NODE_HEIGHT, &item);
 
 	ArkUI_NodeHandle text = nodeAPI -> createNode(ARKUI_NODE_TEXT);
 	value[0].f32 = 100;
-	nodeAPI -> setAttribute(text, NODE_WIDTH,&item);
+	nodeAPI -> setAttribute(text, NODE_WIDTH, &item);
 	value[0].f32 = 30;
 	nodeAPI -> setAttribute(text, NODE_HEIGHT, &item);
 	ArkUI_AttributeItem itemString = {nullptr, 0, "人生得意须尽欢"};
@@ -249,5 +249,4 @@ static napi_value testSystemFontStyleEvent_GetFontWeightScale_006(napi_env env, 
 	ASSERT_EQ(ref, ARKUI_ERROR_CODE_NO_ERROR);
 	NAPI_END;
 }
-
 }
