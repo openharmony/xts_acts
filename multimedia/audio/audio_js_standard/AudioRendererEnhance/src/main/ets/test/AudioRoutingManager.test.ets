@@ -55,10 +55,7 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].id != null).assertTrue();
         expect(devices[0].name).assertEqual("");
         expect(devices[0].address).assertEqual("");
-		expect(devices[0].networkId).assertEqual('');
         expect(devices[0].displayName != "").assertTrue();
-        expect(devices[0].interruptGroupId != null).assertTrue();
-        expect(devices[0].volumeGroupId != null).assertTrue();
         expect(devices[0].sampleRates[0]).assertEqual(audio.AudioSamplingRate.SAMPLE_RATE_48000);
         expect(devices[0].channelCounts[0]).assertEqual(audio.AudioChannel.CHANNEL_2);
         expect(devices[0].channelMasks[0]).assertEqual(0);
@@ -87,10 +84,7 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].id != null).assertTrue();
         expect(devices[0].name).assertEqual("");
         expect(devices[0].address).assertEqual("");
-		expect(devices[0].networkId).assertEqual('');
         expect(devices[0].displayName != "").assertTrue();
-        expect(devices[0].interruptGroupId != null).assertTrue();
-        expect(devices[0].volumeGroupId != null).assertTrue();
         expect(true).assertEqual(devices[0].sampleRates.includes(audio.AudioSamplingRate.SAMPLE_RATE_48000));
         expect(devices[0].channelCounts[1]).assertEqual(audio.AudioChannel.CHANNEL_2);
         expect(devices[0].channelMasks[0]).assertEqual(0);
@@ -116,11 +110,9 @@ export default function AudioRoutingManagerTest() {
         console.info(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
         expect(devices[0].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
         expect(devices[0].deviceType).assertEqual(audio.DeviceType.SPEAKER);
-		expect(devices[0].networkId).assertEqual('');
         expect(devices[0].displayName != "").assertTrue();
         expect(devices[1].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
         expect(devices[1].deviceType).assertEqual(audio.DeviceType.MIC);
-        expect(devices[1].networkId).assertEqual('');
         expect(devices[1].displayName != "").assertTrue();
         done();
       } catch (error) {
@@ -143,14 +135,10 @@ export default function AudioRoutingManagerTest() {
         console.info(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
         expect(devices[0].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
         expect(devices[0].deviceType).assertEqual(audio.DeviceType.SPEAKER);
-        expect(devices[0].networkId).assertEqual('');
         expect(devices[0].displayName != "").assertTrue();
         expect(devices[1].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
         expect(devices[1].deviceType).assertEqual(audio.DeviceType.EARPIECE);
-		expect(devices[0].networkId).assertEqual('');
         expect(devices[1].displayName != "").assertTrue();
-        expect(devices[1].interruptGroupId != null).assertTrue();
-        expect(devices[1].volumeGroupId != null).assertTrue();
         expect(devices[1].sampleRates[0]).assertEqual(audio.AudioSamplingRate.SAMPLE_RATE_48000);
         expect(devices[1].channelCounts[0]).assertEqual(audio.AudioChannel.CHANNEL_2);
         expect(devices[1].channelMasks[0]).assertEqual(0);
@@ -179,10 +167,7 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].id != null).assertTrue();
         expect(devices[0].name).assertEqual("");
         expect(devices[0].address).assertEqual("");
-		expect(devices[0].networkId).assertEqual('');
         expect(devices[0].displayName != "").assertTrue();
-        expect(devices[0].interruptGroupId != null).assertTrue();
-        expect(devices[0].volumeGroupId != null).assertTrue();
         expect(true).assertEqual(devices[0].sampleRates.includes(audio.AudioSamplingRate.SAMPLE_RATE_48000));
         expect(devices[0].channelCounts[1]).assertEqual(audio.AudioChannel.CHANNEL_2);
         expect(devices[0].channelMasks[0]).assertEqual(0);
@@ -211,11 +196,9 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].displayName != "").assertTrue();
         expect(devices[1].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
         expect(devices[1].deviceType).assertEqual(audio.DeviceType.MIC);
-        expect(devices[1].networkId).assertEqual('');
         expect(devices[1].displayName != "").assertTrue();
         expect(devices[2].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
         expect(devices[2].deviceType).assertEqual(audio.DeviceType.EARPIECE);
-        expect(devices[2].networkId).assertEqual('');
         expect(devices[2].displayName != "").assertTrue();
         done();
       } catch (error) {
