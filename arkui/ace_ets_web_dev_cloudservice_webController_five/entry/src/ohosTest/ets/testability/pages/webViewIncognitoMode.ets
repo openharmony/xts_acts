@@ -224,7 +224,7 @@ struct webViewIncognitoMode {
                       if (result) {
                         Utils.emitEvent('success', 8027);
                       }
-                    }).catch((error) => {
+                    }).catch(() => {
                       Utils.emitEvent('fail', 8027);
                     });
                 } catch (error) {
@@ -267,7 +267,7 @@ struct webViewIncognitoMode {
                     .then(result => {
                       console.log('getAccessibleGeolocationPromise result: ' + result);
                       Utils.emitEvent('success', 8029);
-                    }).catch((error) => {
+                    }).catch(() => {
                       Utils.emitEvent('fail', 8029);
                     });
                 } catch (error) {
@@ -315,7 +315,7 @@ struct webViewIncognitoMode {
                       } else {
                         Utils.emitEvent('fail', 8031);
                       }
-                    }).catch((error) => {
+                    }).catch(() => {
                     });
                 } catch (error) {
                   let e:business_error.BusinessError = error as business_error.BusinessError;
@@ -364,7 +364,7 @@ struct webViewIncognitoMode {
                       } else {
                         Utils.emitEvent('fail', 8033);
                       }
-                    }).catch((error) => {
+                    }).catch(() => {
                   });
                 } catch (error) {
                   let e:business_error.BusinessError = error as business_error.BusinessError;

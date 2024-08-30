@@ -25,7 +25,7 @@ export default function ActsAceWebViewSdkSchemeHandler2() {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewSdkSchemeHandler2',
+            url: 'testability/pages/webViewSdkSchemeHandler2',
         }
         
         try {

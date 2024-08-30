@@ -25,7 +25,7 @@ export default function ActsAceWebViewOnNavigationEntryCommitted() {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewOnNavigationEntryCommitted',
+            url: 'testability/pages/webViewOnNavigationEntryCommitted',
         }
         
         try {

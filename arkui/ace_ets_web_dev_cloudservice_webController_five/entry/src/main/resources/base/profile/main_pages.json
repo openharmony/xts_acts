@@ -1,12 +1,5 @@
 {
-    "src": [
-        "MainAbility/pages/Index",
-        "MainAbility/pages/webViewSdkSchemeHandler",
-        "MainAbility/pages/webViewSdkSchemeHandler2",
-        "MainAbility/pages/webViewSetConnectionTimeout",
-        "MainAbility/pages/webViewGetAndSetRenderProcessMode",
-        "MainAbility/pages/webViewOnNavigationEntryCommitted",
-        "MainAbility/pages/webViewIncognitoMode"
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }
-

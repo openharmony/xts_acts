@@ -122,7 +122,7 @@ struct webViewSetConnectionTimeout {
                 .domStorageAccess(this.domStorageAccess)
                 .onlineImageAccess(this.onlineImageAccess)
                 .databaseAccess(this.databaseAccess)
-                .onErrorReceive((event) => {
+                .onErrorReceive((event: ErrorReceiveEventType) => {
                   if (event) {
                     console.log('getErrorInfo:' + event.error.getErrorInfo())
                     console.log('getErrorCode:' + event.error.getErrorCode())
@@ -137,4 +137,9 @@ struct webViewSetConnectionTimeout {
                 })
       }
   }
+}
+
+interface ErrorReceiveEventType { 
+  request: WebResourceRequest;
+  error: WebResourceError;
 }
