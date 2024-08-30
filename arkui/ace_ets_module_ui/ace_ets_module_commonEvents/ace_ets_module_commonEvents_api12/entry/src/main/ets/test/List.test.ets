@@ -61,6 +61,9 @@ import GestureRecognizerState from './GestureRecognizer/GestureRecognizerState.t
 import APIshouldBuiltInRecognizerParallelWith from './APIshouldBuiltInRecognizerParallelWith.test';
 import typeNodeGestureTest from './PanGesture/Gesture.test';
 import UIContextDragControllerTest from './DragController/UIContextDragController.test';
+import tapGestureAddInterfaceTest from './tapGestureAddInterface/tapGestureAddInterfaceTest.test';
+
+
 export default function testsuite() {
   APIshouldBuiltInRecognizerParallelWith();
   APIPreDragStatusTest();
@@ -111,4 +114,8 @@ export default function testsuite() {
   GestureRecognizerState();
   typeNodeGestureTest();
   UIContextDragControllerTest();
+  tapGestureAddInterfaceTest();
+
+
+
 }

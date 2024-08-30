@@ -49,6 +49,8 @@
         "MainAbility/pages/onAttach/onAttach",
         "MainAbility/pages/GestureRecognizer/GestureRecognizerState",
 	"MainAbility/pages/PanGesture/Gesture",
-	"MainAbility/pages/DragController/UIContextDragController"
+	"MainAbility/pages/DragController/UIContextDragController",
+        "MainAbility/pages/tapGestureAddInterface/tapgestures"
+       
     ]
 }
