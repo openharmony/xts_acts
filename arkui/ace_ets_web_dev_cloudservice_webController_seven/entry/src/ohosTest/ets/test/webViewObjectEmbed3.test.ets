@@ -20,27 +20,27 @@ import emitter from '@ohos.events.emitter';
 // @ts-nocheck
 let emitKey = ""
 
-export default function ActsAceWebViewObjectEmbed2() {
-  describe('ActsAceWebViewObjectEmbed2', () => {
+export default function ActsAceWebViewObjectEmbed3() {
+  describe('ActsAceWebViewObjectEmbed3', () => {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webViewObjectEmbed2',
+        url: 'testability/pages/webViewObjectEmbed3',
       }
 
       try {
         await Utils.sleep(1000)
         router.clear();
         let pages = router.getState();
-        console.info("get webViewObjectEmbed2 state success " + JSON.stringify(pages));
-        if (!("webViewObjectEmbed2" == pages.name)) {
-          console.info("get webViewObjectEmbed2 state success " + JSON.stringify(pages.name));
+        console.info("get webViewObjectEmbed3 state success " + JSON.stringify(pages));
+        if (!("webViewObjectEmbed3" == pages.name)) {
+          console.info("get webViewObjectEmbed3 state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push webViewObjectEmbed2 state success " + JSON.stringify(result));
+          console.info("push webViewObjectEmbed3 state success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push webViewObjectEmbed2 page error:" + err);
+        console.error("push webViewObjectEmbed3 page error:" + err);
       }
       done()
     });
@@ -53,18 +53,18 @@ export default function ActsAceWebViewObjectEmbed2() {
 
 
     /*
-     *@tc.number SUB_ACE_WEB_OBJECTEMBED2_API_0002
-     *@tc.name testWebViewObjectEmbed2
-     *@tc.desc test objectEmbed2
+     *@tc.number SUB_ACE_WEB_OBJECTEMBED3_API_0003
+     *@tc.name testWebViewObjectEmbed3
+     *@tc.desc test objectEmbed3
      *@tc.size MediumTest
      *@tc.type Function
      *@tc.level 1
      */
-    it('testWebViewObjectEmbed02', 0, async (done: Function) => {
-      emitKey = "emitWebViewObjectEmbed02"
+    it('testWebViewObjectEmbed03', 0, async (done: Function) => {
+      emitKey = "emitWebViewObjectEmbed03"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewObjectEmbed02", 'success', 8015, done);
-      sendEventByKey('webViewObjectEmbedButton2', 10, '');
+      Utils.registerEvent("testWebViewObjectEmbed03", 'error', 8016, done);
+      sendEventByKey('webViewObjectEmbedButton3', 10, '');
     })
 
 

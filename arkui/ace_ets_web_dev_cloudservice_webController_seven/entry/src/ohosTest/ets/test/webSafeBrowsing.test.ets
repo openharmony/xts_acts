@@ -25,7 +25,7 @@ export default function ActsAceWebSafeBrowsing() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webSafeBrowsing',
+        url: 'testability/pages/webSafeBrowsing',
       }
 
       try {

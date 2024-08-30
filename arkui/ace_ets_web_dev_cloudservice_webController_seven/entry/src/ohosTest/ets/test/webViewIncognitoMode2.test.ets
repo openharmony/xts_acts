@@ -25,7 +25,7 @@ export default function ActsAceWebViewIncognitoMode2() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webViewIncognitoMode2',
+        url: 'testability/pages/webViewIncognitoMode2',
       }
 
       try {

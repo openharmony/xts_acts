@@ -25,7 +25,7 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webViewObjectEmbedEnhance',
+        url: 'testability/pages/webViewObjectEmbedEnhance',
       }
 
       try {

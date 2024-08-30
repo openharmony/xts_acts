@@ -25,7 +25,7 @@ export default function ActsAceWebViewGetSecurityLevel() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webViewGetSecurityLevel',
+        url: 'testability/pages/webViewGetSecurityLevel',
       }
 
       try {

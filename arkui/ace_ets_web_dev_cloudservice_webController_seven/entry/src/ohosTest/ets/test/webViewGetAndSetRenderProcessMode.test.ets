@@ -25,7 +25,7 @@ export default function ActsAceWebViewGetAndSetRenderProcessMode() {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewGetAndSetRenderProcessMode',
+            url: 'testability/pages/webViewGetAndSetRenderProcessMode',
         }
         
         try {

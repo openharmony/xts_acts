@@ -1,15 +1,5 @@
 {
-    "src": [
-        "MainAbility/pages/Index",
-        "MainAbility/pages/webSafeBrowsing",
-        "MainAbility/pages/webViewObjectEmbedEnhance",
-        "MainAbility/pages/webViewGetAndSetRenderProcessMode",
-        "MainAbility/pages/webViewGetSecurityLevel",
-        "MainAbility/pages/webViewObjectEmbed",
-        "MainAbility/pages/webViewObjectEmbed2",
-        "MainAbility/pages/webViewObjectEmbed3",
-        "MainAbility/pages/webViewIncognitoMode1",
-        "MainAbility/pages/webViewIncognitoMode2"
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }
-
