@@ -259,19 +259,47 @@ export default function graphicImagePixelMapTest(context, windowStage, abilitySt
       
       console.log(msg + " Example begin! ")
 
-      await image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+      image.createPixelMap(color, opts).then(async (pixelMap: image.PixelMap) => {
         console.info( msg + ' Succeeded in creating pixelMap.');
         try{
-          pixelMap.setMetadata(1, staticMe)
+          let context1 = getContext()
+          console.info( msg + ' 0 ');
+          const resourceMgr = context1.resourceManager
+          console.info( msg + ' 1 ');
+          console.info( msg + ' 1 resourceMgr: ' + resourceMgr);
+          console.info( msg + ' 1 resourceMgr: ' + JSON.stringify(resourceMgr));
+          // const fileData = await resourceMgr.getRawFileContent('icon.png')
+          const fileData = await resourceMgr.getMediaContent($r('app.media.icon'))
+          console.info( msg + ' 2 ');
+          const buffer = fileData.buffer
+          console.info( msg + ' 3 ');
+          const imageSource = image.createImageSource(buffer)
+          console.info( msg + ' 4 ');
+          let decodingOptions: image.DecodingOptions = {
+            desiredSize: { width: 512, height:512 },
+            desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+            desiredDynamicRange: image.DecodingDynamicRange.HDR
+          }
+          console.info( msg + ' 5 ');
+          pixelMap = imageSource.createPixelMapSync(decodingOptions)
+          console.info( msg + ' 6 ');
+          await pixelMap.setMetadata(1, staticMe)
           console.info( msg + ' Succeeded in pixelMap.setMetadata.');
           console.log(msg + ' Example end !')
           expect(true).assertTrue();
           done();
         }catch(error){
-          console.info( msg + ' Faild in pixelMap.setMetadata.' + error);
-          console.info( msg + ' Faild in pixelMap.setMetadata.' + JSON.stringify(error));
-          expect().assertFail();
-          done();
+          if(error == 62980173){
+            console.info( msg + ' The DMA memory does not exist. ');
+            console.log(msg + ' Example end !')
+            expect(true).assertTrue();
+            done();
+          }else{
+            console.info( msg + ' Faild in pixelMap.setMetadata.' + error);
+            console.info( msg + ' Faild in pixelMap.setMetadata.' + JSON.stringify(error));
+            expect().assertFail();
+            done();
+          }
         }
       }).catch((error: BusinessError) => {
         console.error( msg + ` Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
@@ -319,19 +347,47 @@ export default function graphicImagePixelMapTest(context, windowStage, abilitySt
 
       console.log(msg + " Example begin! ")
 
-      await image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+      image.createPixelMap(color, opts).then(async (pixelMap: image.PixelMap) => {
         console.info( msg + ' Succeeded in creating pixelMap.');
         try{
-          pixelMap.setMetadata(3, gain)
+          let context1 = getContext()
+          console.info( msg + ' 0 ');
+          const resourceMgr = context1.resourceManager
+          console.info( msg + ' 1 ');
+          console.info( msg + ' 1 resourceMgr: ' + resourceMgr);
+          console.info( msg + ' 1 resourceMgr: ' + JSON.stringify(resourceMgr));
+          // const fileData = await resourceMgr.getRawFileContent('icon.png')
+          const fileData = await resourceMgr.getMediaContent($r('app.media.icon'))
+          console.info( msg + ' 2 ');
+          const buffer = fileData.buffer
+          console.info( msg + ' 3 ');
+          const imageSource = image.createImageSource(buffer)
+          console.info( msg + ' 4 ');
+          let decodingOptions: image.DecodingOptions = {
+            desiredSize: { width: 512, height:512 },
+            desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+            desiredDynamicRange: image.DecodingDynamicRange.HDR
+          }
+          console.info( msg + ' 5 ');
+          pixelMap = imageSource.createPixelMapSync(decodingOptions)
+          console.info( msg + ' 6 ');
+          await pixelMap.setMetadata(3, gain)
           console.info( msg + ' Succeeded in pixelMap.setMetadata.');
           console.log(msg + ' Example end !')
           expect(true).assertTrue();
           done();
         }catch(error){
-          console.info( msg + ' Faild in pixelMap.setMetadata.' + error);
-          console.info( msg + ' Faild in pixelMap.setMetadata.' + JSON.stringify(error));
-          expect().assertFail();
-          done();
+          if(error == 62980173){
+            console.info( msg + ' The DMA memory does not exist. ');
+            console.log(msg + ' Example end !')
+            expect(true).assertTrue();
+            done();
+          }else{
+            console.info( msg + ' Faild in pixelMap.setMetadata.' + error);
+            console.info( msg + ' Faild in pixelMap.setMetadata.' + JSON.stringify(error));
+            expect().assertFail();
+            done();
+          }
         }
       }).catch((error: BusinessError) => {
         console.error( msg + ` Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
@@ -477,6 +533,7 @@ export default function graphicImagePixelMapTest(context, windowStage, abilitySt
         }catch(error){
           if(error == 62980173){
             console.info( msg + ' The DMA memory does not exist. ');
+            console.log(msg + ' Example end !')
             expect(true).assertTrue();
             done();
           }else{
@@ -489,6 +546,7 @@ export default function graphicImagePixelMapTest(context, windowStage, abilitySt
       }).catch((error: BusinessError) => {
           if(error.code == 62980173){
             console.info( msg + ' RK The DMA memory does not exist. ');
+            console.log(msg + ' Example end !')
             expect(true).assertTrue();
             done();
           }else{
