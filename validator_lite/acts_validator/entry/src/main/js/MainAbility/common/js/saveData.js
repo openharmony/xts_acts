@@ -89,7 +89,7 @@ export const getStorageData = function (element, index, totalLength) {
         success: function (data) {
             console.info('storage get call success, key= ' + element + ', value= ' + data);
             if (data !== '') {
-                strData += element + ';' + data;
+                strData += element + ':' + data;
             }
             if (index === totalLength - 1) {
                 console.info('get data complete strData= ' + strData);
