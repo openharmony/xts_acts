@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -90,37 +90,38 @@ struct GridColExample {
   @State mspan: number | GridColColumnOption = 1
   @State morder1: number | GridColColumnOption = 1
   @State morder2: number | GridColColumnOption = 2
+  @State currentBp: string = ''
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Gridcol page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.gridColOffsetNum != null) {
-        this.modOffsetRed.isNum = eventData.data.gridColOffsetNum;
+      if (eventData.data!.gridColOffsetNum != null) {
+        this.modOffsetRed.isNum = eventData.data!.gridColOffsetNum;
         //old test
-        if (eventData.data.gridColOffsetNum === 0) {
+        if (eventData.data!.gridColOffsetNum === 0) {
           this.redOffset = 0;
-        } else if (eventData.data.gridColOffsetNum === 1) {
+        } else if (eventData.data!.gridColOffsetNum === 1) {
           this.redOffset = 1;
-        } else if (eventData.data.gridColOffsetNum === 2) {
+        } else if (eventData.data!.gridColOffsetNum === 2) {
           this.redOffset = { xs: 1, sm: 2, md: 3 };
         }
-      } else if (eventData.data.spanNum != null) {
-        this.modSpan.isNum = eventData.data.spanNum;
+      } else if (eventData.data!.spanNum != null) {
+        this.modSpan.isNum = eventData.data!.spanNum;
 
         //old test
-        if (eventData.data.spanNum === 0) {
+        if (eventData.data!.spanNum === 0) {
           this.mspan = 1;
-        } else if (eventData.data.spanNum === 1) {
+        } else if (eventData.data!.spanNum === 1) {
           this.mspan = { xs: 1, sm: 2, md: 3 };
         }
-      } else if (eventData.data.orderNum != null) {
-        this.modOrder1.isNum = eventData.data.orderNum;
-        this.modOrder2.isNum = eventData.data.orderNum;
+      } else if (eventData.data!.orderNum != null) {
+        this.modOrder1.isNum = eventData.data!.orderNum;
+        this.modOrder2.isNum = eventData.data!.orderNum;
 
         //old test
-        if (eventData.data.orderNum === 0) {
+        if (eventData.data!.orderNum === 0) {
           this.morder1 = 1;
           this.morder2 = 2;
-        } else if (eventData.data.orderNum === 1) {
+        } else if (eventData.data!.orderNum === 1) {
           this.morder1 = 2;
           this.morder2 = 1;
         }
