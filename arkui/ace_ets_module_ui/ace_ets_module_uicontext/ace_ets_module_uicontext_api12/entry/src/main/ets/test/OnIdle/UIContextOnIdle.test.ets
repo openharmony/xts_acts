@@ -72,7 +72,7 @@ export default function UIContextOnIdle() {
       await CommonFunc.sleep(1000);
       let obj: ESObject = JSON.parse(getInspectorByKey("OnIdleText"))
       console.info("UIContextApi1_0100 component obj is: " + JSON.stringify(obj))
-      expect(obj.$attrs.content).assertEqual("onIdle")
+      expect(obj.$attrs.content).assertEqual("OnIdle")
 
     });
   })
