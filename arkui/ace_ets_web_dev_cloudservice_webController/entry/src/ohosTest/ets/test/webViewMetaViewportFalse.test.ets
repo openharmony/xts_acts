@@ -18,29 +18,29 @@ import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
 // @ts-nocheck
-let emitKey = "emitWebViewMetaViewportTrue"
+let emitKey = "emitWebViewMetaViewportFalse"
 
-export default function webViewMetaViewportTrue() {
-  describe('ActsAceWebViewMetaViewportTrue', () => {
+export default function webViewMetaViewportFalse() {
+  describe('ActsAceWebViewMetaViewportFalse', () => {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewMetaViewportTrue',
+            url: 'testability/pages/webViewMetaViewportFalse',
         }
         
         try {
             await Utils.sleep(1000)
             router.clear();
             let pages = router.getState();
-            console.info("get webViewMetaViewportTrue state success " + JSON.stringify(pages));
-            if (!("webViewMetaViewportTrue" == pages.name)) {
-                console.info("get webViewMetaViewportTrue state success " + JSON.stringify(pages.name));
+            console.info("get webViewMetaViewportFalse state success " + JSON.stringify(pages));
+            if (!("webViewMetaViewportFalse" == pages.name)) {
+                console.info("get webViewMetaViewportFalse state success " + JSON.stringify(pages.name));
                 let result = await router.pushUrl(options);
                 await Utils.sleep(1000);
-                console.info("push webViewMetaViewportTrue state success " + JSON.stringify(result));
+                console.info("push webViewMetaViewportFalse state success " + JSON.stringify(result));
             }
         } catch (err) {
-            console.error("push webViewMetaViewportTrue page error:" + err);
+            console.error("push webViewMetaViewportFalse page error:" + err);
         }
         done()
     });
@@ -71,16 +71,16 @@ export default function webViewMetaViewportTrue() {
     })
     
     /*
-     *@tc.number SUB_ACE_WEB_METAAVIEWPORT_API_0100
-     *@tc.name testWebViewMetaViewportTrue
+     *@tc.number SUB_ACE_WEB_METAAVIEWPORT_API_0200
+     *@tc.name testWebViewMetaViewportFalse
      *@tc.desc test interface of metaViewport with runjavascript
      *@tc.size MediumTest
      *@tc.type Function
      *@tc.level 1
      */
-    it('emitWebViewMetaViewportTrue', 0, async (done: Function) => {
-        Utils.registerEvent("emitWebViewMetaViewportTrue", "true", 10001, done);
-        sendEventByKey('webViewMetaViewportTrue', 10, '');
+    it('emitWebViewMetaViewportFalse', 0, async (done: Function) => {
+        Utils.registerEvent("emitWebViewMetaViewportFalse", "false", 10002, done);
+        sendEventByKey('webViewMetaViewportFalse', 10, '');
     })
   })
 }

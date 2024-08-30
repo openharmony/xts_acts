@@ -18,29 +18,29 @@ import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
 // @ts-nocheck
-let emitKey = "emitWebViewMetaViewportFalse"
+let emitKey = "emitWebViewNativeVideoUpdateRect"
 
-export default function webViewMetaViewportFalse() {
-  describe('ActsAceWebViewMetaViewportFalse', () => {
+export default function webViewNativeMediaUpdateRect() {
+  describe('ActsAceWebViewNativeMediaUpdateRect', () => {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewMetaViewportFalse',
+            url: 'testability/pages/webViewNativeMediaUpdateRect',
         }
         
         try {
             await Utils.sleep(1000)
             router.clear();
             let pages = router.getState();
-            console.info("get webViewMetaViewportFalse state success " + JSON.stringify(pages));
-            if (!("webViewMetaViewportFalse" == pages.name)) {
-                console.info("get webViewMetaViewportFalse state success " + JSON.stringify(pages.name));
+            console.info("get webViewNativeMediaUpdateRect state success " + JSON.stringify(pages));
+            if (!("webViewNativeMediaUpdateRect" == pages.name)) {
+                console.info("get webViewNativeMediaUpdateRect state success " + JSON.stringify(pages.name));
                 let result = await router.pushUrl(options);
                 await Utils.sleep(1000);
-                console.info("push webViewMetaViewportFalse state success " + JSON.stringify(result));
+                console.info("push webViewNativeMediaUpdateRect state success " + JSON.stringify(result));
             }
         } catch (err) {
-            console.error("push webViewMetaViewportFalse page error:" + err);
+            console.error("push webViewNativeMediaUpdateRect page error:" + err);
         }
         done()
     });
@@ -71,16 +71,16 @@ export default function webViewMetaViewportFalse() {
     })
     
     /*
-     *@tc.number SUB_ACE_WEB_METAAVIEWPORT_API_0200
-     *@tc.name testWebViewMetaViewportFalse
-     *@tc.desc test interface of metaViewport with runjavascript
+     *@tc.number SUB_ACE_WEB_UpdateRect_API_0001
+     *@tc.name testWebViewNativeMediaUpdateRect
+     *@tc.desc test UpdateRect
      *@tc.size MediumTest
      *@tc.type Function
      *@tc.level 1
      */
-    it('emitWebViewMetaViewportFalse', 0, async (done: Function) => {
-        Utils.registerEvent("emitWebViewMetaViewportFalse", "false", 10002, done);
-        sendEventByKey('webViewMetaViewportFalse', 10, '');
+    it('testWebViewNativeMediaUpdateRect', 0, async (done: Function) => {
+        Utils.registerEvent("emitWebViewNativeMediaUpdateRect", true, 1291, done);
+        sendEventByKey('webViewNativeMediaUpdateRect', 10, '');
     })
   })
 }

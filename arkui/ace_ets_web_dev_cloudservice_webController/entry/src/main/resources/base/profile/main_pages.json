@@ -1,14 +1,5 @@
 {
-    "src": [
-        "MainAbility/pages/Index",
-        "MainAbility/pages/webViewCookieTrack",
-        "MainAbility/pages/webViewJsBridgeLastJsProxyCallingFrameUrl",
-        "MainAbility/pages/webViewMetaViewportFalse",
-        "MainAbility/pages/webViewMetaViewportTrue",
-        "MainAbility/pages/webViewNativeMediaUpdateRect",
-        "MainAbility/pages/webViewOnFullScreenEnterVideoInfo",
-        "MainAbility/pages/webViewOnOverrideUrlLoading",
-        "MainAbility/pages/webViewRegisterNativeEmbedRule",
-        "MainAbility/pages/webViewSetRenderProcessMode"
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }

@@ -18,35 +18,32 @@ import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
 // @ts-nocheck
-let emitKey = "emitJsBridgeLastJsProxyCallingFrameUrl"
+let emitKey = "emitWebViewCookieTrack"
 
-export default function webViewJsBridgeLastJsProxyCallingFrameUrl() {
-  describe('ActsAceWebDevWebViewJsBridgeLastJsProxyCallingFrameUrl', () => {
+export default function ActsAcewebViewCookieTrack() {
+  describe('ActsAcewebViewCookieTrack', () => {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewJsBridgeLastJsProxyCallingFrameUrl',
+            url: 'testability/pages/webViewCookieTrack',
         }
         
         try {
             await Utils.sleep(1000)
             router.clear();
             let pages = router.getState();
-            console.info("get webViewJsBridgeLastJsProxyCallingFrameUrl state success " + JSON.stringify(pages));
-            if (!("webViewJsBridgeLastJsProxyCallingFrameUrl" == pages.name)) {
-                console.info("get webViewJsBridgeLastJsProxyCallingFrameUrl state success " + JSON.stringify(pages.name));
+            if (!("webViewCookieTrack" == pages.name)) {
                 let result = await router.pushUrl(options);
                 await Utils.sleep(1000);
-                console.info("push webViewJsBridgeLastJsProxyCallingFrameUrl state success " + JSON.stringify(result));
             }
         } catch (err) {
-            console.error("push webViewJsBridgeLastJsProxyCallingFrameUrl page error:" + err);
+            console.error("push webViewCookieTrack page error:" + err);
         }
         done()
     });
     
     beforeEach(async (done: Function) => {
-        await Utils.sleep(1000);
+        await Utils.sleep(2000);
       done();
     })
     
@@ -71,18 +68,49 @@ export default function webViewJsBridgeLastJsProxyCallingFrameUrl() {
     })
     
     /*
-     *@tc.number SUB_ACE_WEB_getLastJavascriptProxyCallingFrameUrl_API_0200
-     *@tc.name testJsBridgeGetLastJavascriptProxyCallingFrameUrl
-     *@tc.desc test GetLastJavascriptProxyCallingFrameUrl
+     *@tc.number SUB_ACE_WEB_enableIntelligentTrackingPrevention_API_0001
+     *@tc.name testWebViewCookieTrackEnableTrue
+     *@tc.desc test enableIntelligentTrackingPrevention true
      *@tc.size MediumTest
      *@tc.type Function
      *@tc.level 1
      */
-    it('testJsBridgeGetLastJavascriptProxyCallingFrameUrl', 0, async (done: Function) => {
-      let emitKey = "emitJsBridgeGetLastJavascriptProxyCallingFrameUrl";
+    it('testWebViewCookieTrackEnableTrue', 0, async (done: Function) => {
+      let emitKey = "emitWebViewCookieTrackEnableTrue";
       Utils.emitEvent(emitKey, 10)
-      Utils.registerEvent("testJsBridgeGetLastJavascriptProxyCallingFrameUrl", "success", 1277, done);
-      sendEventByKey('webViewJsBridgeLastJsProxyCallingFrameUrl', 10, '');
+      Utils.registerEvent("testWebViewCookieTrackEnableTrue", true, 7701, done);
+      sendEventByKey('webViewCookieTrackTriggerButton', 10, '');
     })
+    
+    /*
+     *@tc.number SUB_ACE_WEB_enableIntelligentTrackingPrevention_API_0002
+     *@tc.name testWebViewCookieTrackEnableFalse
+     *@tc.desc test enableIntelligentTrackingPrevention false
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testWebViewCookieTrackEnableFalse', 0, async (done: Function) => {
+      let emitKey = "emitWebViewCookieTrackEnableFalse";
+      Utils.emitEvent(emitKey, 10)
+      Utils.registerEvent("testWebViewCookieTrackEnableFalse", true, 1278, done);
+      sendEventByKey('webViewCookieTrackTriggerButton', 10, '');
+    })
+
+    /*
+     *@tc.number SUB_ACE_WEB_clearIntelligentTrackingPreventionByPassingList_API_0005
+     *@tc.name testCookieTrackClearTrackingPrevention
+     *@tc.desc test clearIntelligentTrackingPreventionByPassingList
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testCookieTrackClearTrackingPrevention', 0, async (done: Function) => {
+      let emitKey = "emitCookieTrackClearTrackingPrevention";
+      Utils.emitEvent(emitKey, 10)
+      Utils.registerEvent("testCookieTrackClearTrackingPrevention", true, 1282, done);
+      sendEventByKey('webViewCookieTrackTriggerButton', 10, '');
+    })
+
   })
 }

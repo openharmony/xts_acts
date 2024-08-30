@@ -18,29 +18,29 @@ import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
 // @ts-nocheck
-let emitKey = "emitWebViewRegisterNativeEmbedRule"
+let emitKey = "emitJsBridgeLastJsProxyCallingFrameUrl"
 
-export default function webViewRegisterNativeEmbedRule() {
-  describe('ActsAceRegisterNativeEmbedRule', () => {
+export default function webViewJsBridgeLastJsProxyCallingFrameUrl() {
+  describe('ActsAceWebDevWebViewJsBridgeLastJsProxyCallingFrameUrl', () => {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewRegisterNativeEmbedRule',
+            url: 'testability/pages/webViewJsBridgeLastJsProxyCallingFrameUrl',
         }
         
         try {
             await Utils.sleep(1000)
             router.clear();
             let pages = router.getState();
-            console.info("get webViewRegisterNativeEmbedRule state success " + JSON.stringify(pages));
-            if (!("webViewRegisterNativeEmbedRule" == pages.name)) {
-                console.info("get webViewRegisterNativeEmbedRule state success " + JSON.stringify(pages.name));
+            console.info("get webViewJsBridgeLastJsProxyCallingFrameUrl state success " + JSON.stringify(pages));
+            if (!("webViewJsBridgeLastJsProxyCallingFrameUrl" == pages.name)) {
+                console.info("get webViewJsBridgeLastJsProxyCallingFrameUrl state success " + JSON.stringify(pages.name));
                 let result = await router.pushUrl(options);
                 await Utils.sleep(1000);
-                console.info("push webViewRegisterNativeEmbedRule page success " + JSON.stringify(result));
+                console.info("push webViewJsBridgeLastJsProxyCallingFrameUrl state success " + JSON.stringify(result));
             }
         } catch (err) {
-            console.error("push webViewRegisterNativeEmbedRule page error:" + err);
+            console.error("push webViewJsBridgeLastJsProxyCallingFrameUrl page error:" + err);
         }
         done()
     });
@@ -52,7 +52,7 @@ export default function webViewRegisterNativeEmbedRule() {
     
     afterEach(async (done: Function) => {
         try {
-            let backData: events_emitter.EventData = {
+            let backData: emitter.EventData = {
                 data: {
                     "ACTION": emitKey
                 }
@@ -71,16 +71,18 @@ export default function webViewRegisterNativeEmbedRule() {
     })
     
     /*
-     *@tc.number SUB_ACE_WEB_REGISTERNATIVEEMBEDRULE_API_0500
-     *@tc.name testWebViewRegisterNativeEmbedRule
-     *@tc.desc test registerNativeEmbedRule
+     *@tc.number SUB_ACE_WEB_getLastJavascriptProxyCallingFrameUrl_API_0200
+     *@tc.name testJsBridgeGetLastJavascriptProxyCallingFrameUrl
+     *@tc.desc test GetLastJavascriptProxyCallingFrameUrl
      *@tc.size MediumTest
      *@tc.type Function
      *@tc.level 1
      */
-    it('emitWebViewRegisterNativeEmbedRule', 0, async (done: Function) => {
-        Utils.registerEvent("emitWebViewRegisterNativeEmbedRule", true, 10003, done);
-        sendEventByKey('webViewRegisterNativeEmbedRule', 10, '');
+    it('testJsBridgeGetLastJavascriptProxyCallingFrameUrl', 0, async (done: Function) => {
+      let emitKey = "emitJsBridgeGetLastJavascriptProxyCallingFrameUrl";
+      Utils.emitEvent(emitKey, 10)
+      Utils.registerEvent("testJsBridgeGetLastJavascriptProxyCallingFrameUrl", "success", 1277, done);
+      sendEventByKey('webViewJsBridgeLastJsProxyCallingFrameUrl', 10, '');
     })
   })
 }

@@ -18,29 +18,29 @@ import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
 // @ts-nocheck
-let emitKey = "emitWebViewOnOverrideUrlLoading"
+let emitKey = "emitWebViewRegisterNativeEmbedRule"
 
-export default function webViewOnOverrideUrlLoading() {
-  describe('ActsAceWebViewOnOverrideUrlLoading', () => {
+export default function webViewRegisterNativeEmbedRule() {
+  describe('ActsAceRegisterNativeEmbedRule', () => {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewOnOverrideUrlLoading',
+            url: 'testability/pages/webViewRegisterNativeEmbedRule',
         }
         
         try {
             await Utils.sleep(1000)
             router.clear();
             let pages = router.getState();
-            console.info("get webViewOnOverrideUrlLoading state success " + JSON.stringify(pages));
-            if (!("webViewOnOverrideUrlLoading" == pages.name)) {
-                console.info("get webViewOnOverrideUrlLoading state success " + JSON.stringify(pages.name));
+            console.info("get webViewRegisterNativeEmbedRule state success " + JSON.stringify(pages));
+            if (!("webViewRegisterNativeEmbedRule" == pages.name)) {
+                console.info("get webViewRegisterNativeEmbedRule state success " + JSON.stringify(pages.name));
                 let result = await router.pushUrl(options);
                 await Utils.sleep(1000);
-                console.info("push webViewOnOverrideUrlLoading page success " + JSON.stringify(result));
+                console.info("push webViewRegisterNativeEmbedRule page success " + JSON.stringify(result));
             }
         } catch (err) {
-            console.error("push webViewOnOverrideUrlLoading page error:" + err);
+            console.error("push webViewRegisterNativeEmbedRule page error:" + err);
         }
         done()
     });
@@ -71,16 +71,16 @@ export default function webViewOnOverrideUrlLoading() {
     })
     
     /*
-     *@tc.number SUB_ACE_SUB_ONOVERRIDEURLLOADING_API_0600
-     *@tc.name testWebViewwebViewOnOverrideUrlLoading
-     *@tc.desc test interface of OnOverrideUrlLoading with runjavascript jump
+     *@tc.number SUB_ACE_WEB_REGISTERNATIVEEMBEDRULE_API_0500
+     *@tc.name testWebViewRegisterNativeEmbedRule
+     *@tc.desc test registerNativeEmbedRule
      *@tc.size MediumTest
      *@tc.type Function
      *@tc.level 1
      */
-    it('testWebViewwebViewOnOverrideUrlLoading', 0, async (done: Function) => {
-        Utils.registerEvent("emitWebViewwebViewOnOverrideUrlLoading", "true", 10007, done);
-        sendEventByKey('webViewOnOverrideUrlLoading', 10, '');
+    it('emitWebViewRegisterNativeEmbedRule', 0, async (done: Function) => {
+        Utils.registerEvent("emitWebViewRegisterNativeEmbedRule", true, 10003, done);
+        sendEventByKey('webViewRegisterNativeEmbedRule', 10, '');
     })
   })
 }
