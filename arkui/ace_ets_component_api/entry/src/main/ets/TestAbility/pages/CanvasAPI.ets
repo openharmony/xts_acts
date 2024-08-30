@@ -23,7 +23,7 @@ struct CanvasAPI {
   private context5: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
   private context6: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
   private img: ImageBitmap = new ImageBitmap("pages/images/img1.png")
-  private canvasPattern: CanvasPattern | null = null ;
+  private canvasPattern: CanvasPattern | undefined = undefined;
   private path2Da: Path2D = new Path2D("M250 0 L350 0 L350 200 L250 200 L250 0")
   private path2Db: Path2D = new Path2D()
 

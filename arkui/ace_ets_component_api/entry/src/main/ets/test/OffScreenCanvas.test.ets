@@ -16,6 +16,7 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 export default function OffScreenCanvasTest() {
 
@@ -32,8 +33,8 @@ export default function OffScreenCanvasTest() {
         if (pages == null || !("OffScreenCanvas" == pages.name)) {
           await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch((err: Record<string, Object>) => {
-            console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          }).catch((err) => {
+            console.error(`${SUITE} router.pushUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
           })
         }
       } catch (err) {
