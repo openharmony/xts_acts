@@ -18,10 +18,10 @@ import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function getAttachedFrameNodeById() {
-  describe('getAttachedFrameNodeById', function () {
-    beforeEach(async function (done) {
+  describe('getAttachedFrameNodeById', () => {
+    beforeEach(async (done: Function) => {
       console.info("getAttachedFrameNodeById beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         uri: "MainAbility/pages/FrameNode/getAttachedFrameNodeById",
       }
       try {
@@ -49,7 +49,7 @@ export default function getAttachedFrameNodeById() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAttachedFrameNodeById_0100', 0, async function (done) {
+    it('getAttachedFrameNodeById_0100', 0, async (done: Function) => {
       console.info('getAttachedFrameNodeById_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -57,7 +57,7 @@ export default function getAttachedFrameNodeById() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('GetAttachedFramenodeByIDText');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAttachedFrameNodeById_0100] component obj is: " + JSON.stringify(obj));
       console.info("[getAttachedFrameNodeById_0100] content obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Hello Sally');
@@ -73,7 +73,7 @@ export default function getAttachedFrameNodeById() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAttachedFrameNodeById_0200', 0, async function (done) {
+    it('getAttachedFrameNodeById_0200', 0, async (done: Function) => {
       console.info('getAttachedFrameNodeById_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -81,7 +81,7 @@ export default function getAttachedFrameNodeById() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('GetAttachedFramenodeByIDText');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAttachedFrameNodeById_0200] component obj is: " + JSON.stringify(obj));
       console.info("[getAttachedFrameNodeById_0200] content obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Hello Null');
