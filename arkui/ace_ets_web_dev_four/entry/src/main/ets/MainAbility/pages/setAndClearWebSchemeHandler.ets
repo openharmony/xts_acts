@@ -19,6 +19,7 @@ import web_webview from '@ohos.web.webview';
 import business_error from '@ohos.base';
 import buffer from '@ohos.buffer'
 import { WebNetErrorList } from '@ohos.web.netErrorList'
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -74,7 +75,7 @@ struct setAndClearWebSchemeHandler {
                 Utils.emitEvent(this.getReferrerResult, 8826)
                 Utils.emitEvent(this.hasGestureResult, 8830)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -95,7 +96,7 @@ struct setAndClearWebSchemeHandler {
                 Utils.emitEvent(this.isMainFrameResult, 8838)
                 Utils.emitEvent(this.hasGestureResult, 8840)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -116,7 +117,7 @@ struct setAndClearWebSchemeHandler {
                 Utils.emitEvent(this.getReferrerResult, 8846)
                 Utils.emitEvent(this.hasGestureResult, 8850)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }

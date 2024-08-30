@@ -16,6 +16,7 @@
 import Utils from '../../test/Utils';
 import webView from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -64,7 +65,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("StopAllMedia0100 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -86,7 +87,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("StopAllMedia0200 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -112,7 +113,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("StopAllMedia0300 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -138,7 +139,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("StopAllMedia0400 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -164,7 +165,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("StopAllMedia0500 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -189,7 +190,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("StopAllMedia0600 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -216,7 +217,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("StopAllMedia0700 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -242,7 +243,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("StopAllMedia0800 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -268,7 +269,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("ResumeAllMedia0100 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -290,7 +291,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("ResumeAllMedia0200 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -314,7 +315,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("ResumeAllMedia0300 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -340,7 +341,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("ResumeAllMedia0400 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -366,7 +367,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("ResumeAllMedia0500 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -393,7 +394,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("ResumeAllMedia0600 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -421,7 +422,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("ResumeAllMedia0700 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -445,7 +446,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("PauseAllMedia0100 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -467,7 +468,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("PauseAllMedia0200 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -493,7 +494,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("PauseAllMedia0300 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -519,7 +520,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("PauseAllMedia0400 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -545,7 +546,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("PauseAllMedia0500 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -570,7 +571,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("PauseAllMedia0600 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -597,7 +598,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("PauseAllMedia0700 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -623,7 +624,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("PauseAllMedia0800 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -643,7 +644,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0100 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -665,7 +666,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0200 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -689,7 +690,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0300 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -713,7 +714,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0400 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -737,7 +738,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0500 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -761,7 +762,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0600 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -781,7 +782,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0700 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -803,7 +804,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0800 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -826,7 +827,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0900 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -851,7 +852,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState1000 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -877,7 +878,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState1100 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -902,7 +903,7 @@ struct WebViewControllerAudioMedia {
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState1200 res: " + res);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();

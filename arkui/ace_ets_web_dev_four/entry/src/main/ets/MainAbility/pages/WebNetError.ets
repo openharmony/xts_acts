@@ -19,6 +19,8 @@ import web_webview from '@ohos.web.webview';
 import business_error from '@ohos.base';
 import buffer from '@ohos.buffer'
 import { WebNetErrorList } from '@ohos.web.netErrorList'
+import { BusinessError } from '@ohos.base';
+
 
 @Entry
 @Component
@@ -62,7 +64,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6600)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -73,7 +75,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6601)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -84,7 +86,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6602)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -95,7 +97,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6603)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -106,7 +108,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6604)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -117,7 +119,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6605)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -128,7 +130,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6606)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -139,7 +141,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6607)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -150,7 +152,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6608)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -161,7 +163,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6609)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -172,7 +174,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6610)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -183,7 +185,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6611)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -194,7 +196,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6612)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -205,7 +207,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6613)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -216,7 +218,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6614)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -227,7 +229,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6615)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -238,7 +240,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6616)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -249,7 +251,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6617)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -260,7 +262,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6618)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -271,7 +273,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6619)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -282,7 +284,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6620)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -293,7 +295,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6621)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -304,7 +306,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6622)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -315,7 +317,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6623)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -326,7 +328,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6624)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -337,7 +339,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6625)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -348,7 +350,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6626)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -359,7 +361,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6627)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -370,7 +372,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6628)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -381,7 +383,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6629)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -392,7 +394,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6630)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -403,7 +405,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6631)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -414,7 +416,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6632)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -425,7 +427,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6633)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -436,7 +438,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6634)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -447,7 +449,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6635)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -458,7 +460,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6636)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -469,7 +471,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6637)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -480,7 +482,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6638)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -491,7 +493,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6639)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -502,7 +504,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6640)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -513,7 +515,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6641)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -524,7 +526,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6642)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -535,7 +537,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6643)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -546,7 +548,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6644)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -557,7 +559,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6645)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -568,7 +570,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6646)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -579,7 +581,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6647)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -590,7 +592,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6648)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -601,7 +603,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6649)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -612,7 +614,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6650)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -623,7 +625,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6651)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -634,7 +636,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6652)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -645,7 +647,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6653)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -656,7 +658,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6654)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -667,7 +669,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6654)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -678,7 +680,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6655)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -689,7 +691,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6656)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -700,7 +702,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6657)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -711,7 +713,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6658)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -722,7 +724,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6659)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -733,7 +735,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6660)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -744,7 +746,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6661)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -755,7 +757,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6662)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -766,7 +768,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6663)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -777,7 +779,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6664)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -788,7 +790,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6665)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -799,7 +801,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6666)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -810,7 +812,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6668)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -821,7 +823,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6669)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -832,7 +834,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6670)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -843,7 +845,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6671)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -854,7 +856,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6672)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -865,7 +867,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6673)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -876,7 +878,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6674)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -887,7 +889,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6675)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -898,7 +900,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6676)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -909,7 +911,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6677)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -920,7 +922,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6678)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -931,7 +933,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6679)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -942,7 +944,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6680)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -953,7 +955,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6681)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -964,7 +966,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6682)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -975,7 +977,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6683)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -986,7 +988,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6684)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -997,7 +999,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6685)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1008,7 +1010,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6686)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1019,7 +1021,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6687)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1030,7 +1032,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6688)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1041,7 +1043,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6689)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1052,7 +1054,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6690)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1063,7 +1065,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6691)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1074,7 +1076,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6692)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1085,7 +1087,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6693)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1096,7 +1098,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6694)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1107,7 +1109,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6695)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1118,7 +1120,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6696)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1129,7 +1131,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6697)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1140,7 +1142,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6698)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1151,7 +1153,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6699)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1162,7 +1164,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6700)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1173,7 +1175,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6701)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1184,7 +1186,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6702)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1195,7 +1197,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6703)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1206,7 +1208,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6704)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1217,7 +1219,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6705)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1228,7 +1230,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6706)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1239,7 +1241,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6707)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1250,7 +1252,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6708)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1261,7 +1263,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6709)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1272,7 +1274,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6710)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1283,7 +1285,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6711)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1294,7 +1296,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6712)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1305,7 +1307,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6713)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1316,7 +1318,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6714)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1327,7 +1329,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6715)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1338,7 +1340,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6716)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1349,7 +1351,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6717)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1360,7 +1362,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6718)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1371,7 +1373,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6719)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1382,7 +1384,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6720)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1393,7 +1395,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6721)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1404,7 +1406,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6722)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1415,7 +1417,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6723)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1426,7 +1428,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6724)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1437,7 +1439,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6725)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1448,7 +1450,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6726)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1459,7 +1461,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6727)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1470,7 +1472,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6728)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1481,7 +1483,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6729)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1492,7 +1494,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6730)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1503,7 +1505,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6731)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1514,7 +1516,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6732)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1525,7 +1527,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6733)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1536,7 +1538,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6734)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1547,7 +1549,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6735)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1558,7 +1560,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6736)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1569,7 +1571,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6737)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1580,7 +1582,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6738)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1591,7 +1593,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6739)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1602,7 +1604,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6740)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1613,7 +1615,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6741)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1624,7 +1626,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6742)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1635,7 +1637,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6743)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1646,7 +1648,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6744)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1657,7 +1659,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6745)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1668,7 +1670,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6746)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1679,7 +1681,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6747)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1690,7 +1692,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6748)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1701,7 +1703,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6749)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1712,7 +1714,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6750)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1723,7 +1725,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6751)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1734,7 +1736,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6752)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1745,7 +1747,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6753)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1756,7 +1758,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6754)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1767,7 +1769,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6755)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1778,7 +1780,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6756)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1789,7 +1791,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6757)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1800,7 +1802,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6758)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1811,7 +1813,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6759)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1822,7 +1824,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6760)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1833,7 +1835,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6761)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1844,7 +1846,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6762)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1855,7 +1857,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6763)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1866,7 +1868,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6764)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1877,7 +1879,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6765)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1888,7 +1890,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6766)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1899,7 +1901,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6767)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1910,7 +1912,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6768)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1921,7 +1923,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6769)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1932,7 +1934,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6770)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1943,7 +1945,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6771)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1954,7 +1956,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6772)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1965,7 +1967,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6773)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1976,7 +1978,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6774)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1987,7 +1989,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6775)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -1998,7 +2000,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6776)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2009,7 +2011,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6777)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2020,7 +2022,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6778)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2031,7 +2033,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6779)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2042,7 +2044,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6780)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2053,7 +2055,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6781)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2064,7 +2066,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6782)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2075,7 +2077,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6783)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2086,7 +2088,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6784)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2097,7 +2099,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6785)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2108,7 +2110,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6786)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2119,7 +2121,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6787)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2130,7 +2132,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6788)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2141,7 +2143,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6789)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2152,7 +2154,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6790)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2163,7 +2165,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6791)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2174,7 +2176,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6792)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2185,7 +2187,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6793)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2196,7 +2198,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6794)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2207,7 +2209,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6795)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2218,7 +2220,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6796)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2229,7 +2231,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6797)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2240,7 +2242,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6798)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2251,7 +2253,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6799)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2262,7 +2264,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6800)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2273,7 +2275,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6801)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2284,7 +2286,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6802)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2295,7 +2297,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6803)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2306,7 +2308,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6804)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2317,7 +2319,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6805)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2328,7 +2330,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6806)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2339,7 +2341,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6807)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2350,7 +2352,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6808)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2361,7 +2363,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6809)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2372,7 +2374,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6810)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2383,7 +2385,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6811)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2394,7 +2396,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6812)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2405,7 +2407,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6813)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2416,7 +2418,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6814)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2427,7 +2429,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6815)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2438,7 +2440,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6816)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2449,7 +2451,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6817)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2460,7 +2462,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6818)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2471,7 +2473,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6819)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2482,7 +2484,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6820)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2493,7 +2495,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6821)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2504,7 +2506,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6822)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2515,7 +2517,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6823)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2526,7 +2528,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6824)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2537,7 +2539,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6825)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2548,7 +2550,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6826)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2559,7 +2561,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6827)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2570,7 +2572,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6828)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2581,7 +2583,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6829)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2592,7 +2594,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6830)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2603,7 +2605,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6831)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2614,7 +2616,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6832)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2625,7 +2627,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6833)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2636,7 +2638,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6834)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2647,7 +2649,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6835)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2658,7 +2660,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6836)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2669,7 +2671,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6837)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2680,7 +2682,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6838)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2691,7 +2693,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6839)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -2702,7 +2704,7 @@ struct WebNetError {
                 console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
                 Utils.emitEvent(response.getNetErrorCode(), 6840)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }

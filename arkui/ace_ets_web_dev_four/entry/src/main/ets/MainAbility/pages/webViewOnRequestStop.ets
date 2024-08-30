@@ -19,6 +19,7 @@ import web_webview from '@ohos.web.webview';
 import business_error from '@ohos.base';
 import buffer from '@ohos.buffer'
 import { WebNetErrorList } from '@ohos.web.netErrorList'
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -68,7 +69,7 @@ struct webViewOnRequestStop {
                 this.webviewcontroller.loadUrl('https://www.baidu.com/')
                 await Utils.sleep(2000);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -78,7 +79,7 @@ struct webViewOnRequestStop {
                 this.webviewcontroller.loadUrl('https://www.baidu.com/')
                 await Utils.sleep(2000);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -90,7 +91,7 @@ struct webViewOnRequestStop {
                 this.webviewcontroller.loadUrl('https://www.baidu.com/')
                 await Utils.sleep(2000);
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }

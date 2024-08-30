@@ -20,6 +20,7 @@ import business_error from '@ohos.base';
 import buffer from '@ohos.buffer'
 import { WebNetErrorList } from '@ohos.web.netErrorList'
 import common from '@ohos.app.ability.common'
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -75,7 +76,7 @@ struct setAndClearServiceWorkerWebSchemeHandler {
                 Utils.emitEvent(this.getRequestMethodResult, 8854)
                 Utils.emitEvent(this.hasGestureResult, 8860)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -98,7 +99,7 @@ struct setAndClearServiceWorkerWebSchemeHandler {
                 Utils.emitEvent(this.isMainFrameResult, 8868)
                 Utils.emitEvent(this.hasGestureResult, 8870)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }

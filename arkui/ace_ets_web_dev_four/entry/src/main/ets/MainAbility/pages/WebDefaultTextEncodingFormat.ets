@@ -17,6 +17,7 @@
 import Utils from '../../test/Utils';
 import webView from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -65,7 +66,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -89,7 +90,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -113,7 +114,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -137,7 +138,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -161,7 +162,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -185,7 +186,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -209,7 +210,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -233,7 +234,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -257,7 +258,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -281,7 +282,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -305,7 +306,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -329,7 +330,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -353,7 +354,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
 
               setTimeout(() => {
@@ -378,7 +379,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
 
               setTimeout(() => {
@@ -403,7 +404,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -427,7 +428,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -451,7 +452,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
@@ -475,7 +476,7 @@ struct WebDefaultTextEncodingFormat {
                   value = res.substring(1, res.length - 1);
                 })
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();

@@ -15,6 +15,7 @@
 import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview'
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -83,7 +84,7 @@ struct WebTextAutosizing {
                   value = true;
                 }
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
 
               setTimeout(() => {
@@ -128,7 +129,7 @@ struct WebTextAutosizing {
                   value = true;
                 }
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
 
               setTimeout(() => {
@@ -173,7 +174,7 @@ struct WebTextAutosizing {
                   value = true;
                 }
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
 
               setTimeout(() => {
@@ -217,7 +218,7 @@ struct WebTextAutosizing {
                   value = true;
                 }
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
 
               setTimeout(() => {

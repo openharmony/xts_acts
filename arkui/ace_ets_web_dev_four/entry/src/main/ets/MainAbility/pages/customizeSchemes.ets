@@ -20,6 +20,7 @@ import business_error from '@ohos.base';
 import buffer from '@ohos.buffer'
 import { WebNetErrorList } from '@ohos.web.netErrorList'
 import common from '@ohos.app.ability.common'
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -97,7 +98,7 @@ struct customizeSchemes {
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.titleReceive, 8872)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -107,7 +108,7 @@ struct customizeSchemes {
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.titleReceive, 8874)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -146,9 +147,9 @@ struct customizeSchemes {
                   arrayBuffer = buf;
                   size = arrayBuffer.byteLength;
                   console.log("[schemeHandler] read" + fileName + " size:" +size);
-                  this.fileValue = fileName
+                  this.fileValue = fileName as string;
                 } catch (error) {
-                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 }
 
                 let response = new web_webview.WebSchemeHandlerResponse();
