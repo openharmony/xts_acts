@@ -19,7 +19,6 @@ import fileUri from '@ohos.file.fileuri';
 import fs from '@ohos.file.fs'
 import wantConstant from '@ohos.ability.wantConstant';
 
-globalThis.fs = fs;
 let caseNumber = 0;
 export default class Hap2MainAbility1 extends Ability {
   onCreate(want, launchParam) {
