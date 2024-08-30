@@ -19,6 +19,7 @@ import APIgetFrameNodeByUniqueId from './MeasureSizeTest/APIgetFrameNodeByUnique
 import PageInfo1 from './PageInfo/PageInfo1.test';
 import APIcomponentSnapshotGetSync from './componentSnapshot/APIcomponentSnapshotGetSync.test';
 import APIUIContextGetSync from './componentSnapshot/APIUIContextGetSync.test';
+import UIContextOnIdle from './OnIdle/UIContextOnIdle.test';
 
 export default function testsuite() {
   APIcomponentSnapshotGetSync();
@@ -27,4 +28,5 @@ export default function testsuite() {
   APIsetDragEventStrictReportingEnabled();
   APIgetFrameNodeByUniqueId();
   PageInfo1();
+  UIContextOnIdle();
 }
