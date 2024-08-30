@@ -1196,5 +1196,285 @@ export default function AVPlayerNdkTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETCURRENTTRACK_0300
+     * @tc.name       : testOhAvPlayerGetCurrentTrack003
+     * @tc.desc       : test OH_AVPlayer_GetCurrentTrack
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerGetCurrentTrack003', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerGetCurrentTrackAbnormalOne();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACK_0100
+     * @tc.name       : testOhAvPlayerSetOnInfoCallback001
+     * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnInfoCallback001', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnInfoCallback(1, 1);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACK_0200
+     * @tc.name       : testOhAvPlayerSetOnInfoCallback002
+     * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnInfoCallback002', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnInfoCallback(1, 0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACK_0300
+     * @tc.name       : testOhAvPlayerSetOnInfoCallback003
+     * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnInfoCallback003', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnInfoCallback(0, 1);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACK_0400
+     * @tc.name       : testOhAvPlayerSetOnInfoCallback004
+     * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnInfoCallback004', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnInfoCallback(0, 0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACKABNORMAL_0100
+     * @tc.name       : testOhAvPlayerSetOnInfoCallbackAbnormal001
+     * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnInfoCallbackAbnormal001', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnInfoCallbackAbnormal(0, 1, 1, 0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACKABNORMAL_0200
+     * @tc.name       : testOhAvPlayerSetOnInfoCallbackAbnormal002
+     * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnInfoCallbackAbnormal002', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnInfoCallbackAbnormal(1, 1, 1, 1);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACKABNORMAL_0300
+     * @tc.name       : testOhAvPlayerSetOnInfoCallbackAbnormal003
+     * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnInfoCallbackAbnormal003', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnInfoCallbackAbnormal(1, 0, 1, 1);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACKABNORMAL_0400
+     * @tc.name       : testOhAvPlayerSetOnInfoCallbackAbnormal004
+     * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnInfoCallbackAbnormal004', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnInfoCallbackAbnormal(1, 1, 0, 0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACKABNORMAL_0500
+     * @tc.name       : testOhAvPlayerSetOnInfoCallbackAbnormal005
+     * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnInfoCallbackAbnormal005', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnInfoCallbackAbnormal(1, 0, 0, 0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACKWITHPREPARE_0100
+     * @tc.name       : testOhAvPlayerSetOnInfoCallbackWithPrepare001
+     * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnInfoCallbackWithPrepare001', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnInfoCallbackWithPrepare();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACK_0100
+     * @tc.name       : testOhAvPlayerSetOnErrorCallback001
+     * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnErrorCallback001', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnErrorCallback(1, 1);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACK_0200
+     * @tc.name       : testOhAvPlayerSetOnErrorCallback002
+     * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnErrorCallback002', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnErrorCallback(1, 0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACK_0300
+     * @tc.name       : testOhAvPlayerSetOnErrorCallback003
+     * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnErrorCallback003', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnErrorCallback(0, 1);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACK_0400
+     * @tc.name       : testOhAvPlayerSetOnErrorCallback004
+     * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnErrorCallback004', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnErrorCallback(0, 0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACKABNORMAL_0100
+     * @tc.name       : testOhAvPlayerSetOnErrorCallbackAbnormal001
+     * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnErrorCallbackAbnormal001', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnErrorCallbackAbnormal(0, 1, 1, 0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACKABNORMAL_0200
+     * @tc.name       : testOhAvPlayerSetOnErrorCallbackAbnormal002
+     * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnErrorCallbackAbnormal002', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnErrorCallbackAbnormal(1, 1, 1, 1);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACKABNORMAL_0300
+     * @tc.name       : testOhAvPlayerSetOnErrorCallbackAbnormal003
+     * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnErrorCallbackAbnormal003', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnErrorCallbackAbnormal(1, 0, 1, 1);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACKABNORMAL_0400
+     * @tc.name       : testOhAvPlayerSetOnErrorCallbackAbnormal004
+     * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnErrorCallbackAbnormal004', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnErrorCallbackAbnormal(1, 1, 0, 0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACKABNORMAL_0500
+     * @tc.name       : testOhAvPlayerSetOnErrorCallbackAbnormal005
+     * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetOnErrorCallbackAbnormal005', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetOnErrorCallbackAbnormal(1, 0, 0, 0);
+      expect(result).assertEqual(0);
+      done();
+    });
   })
 }
