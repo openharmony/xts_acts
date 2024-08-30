@@ -4,6 +4,7 @@
         "MainAbility/pages/APIshouldBuiltInRecognizerParallelWith",
         "MainAbility/pages/PanGesture/PanGestureExampleTemplate",
         "MainAbility/pages/TapGesture/TapGestureTemplate",
+          "MainAbility/pages/GestureRecognizer/GestureRecognizerIsValid",
         "MainAbility/pages/LongPressGesture/LongPressGestureTemplate",
         "MainAbility/pages/SwipeGesture/SwipeGestureTemplate",
         "MainAbility/pages/PanGesture/PanGestureUpdate",

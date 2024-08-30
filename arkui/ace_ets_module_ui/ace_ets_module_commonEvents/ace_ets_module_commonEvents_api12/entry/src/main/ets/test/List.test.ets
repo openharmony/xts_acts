@@ -16,6 +16,7 @@ import APIPreDragStatusTest from './DragController/APIPreDragStatusTest.test';
 import addGestureApplyGesture from './addGestureApplyGesture.test';
 import ShortcutKeyTABTest from './keyboardShortcutTest/ShortcutKeyTABTest.test';
 import ShortcutKeyDPADUPTest from './keyboardShortcutTest/ShortcutKeyDPADUPTest.test';
+import gestureDefine10 from './GestureRecognizer/GestureRecognizerIsValid.test';
 import ShortcutKeyDPADDOWNTest from './keyboardShortcutTest/ShortcutKeyDPADDOWNTest.test';
 import ShortcutKeyDPADLEFTTest from './keyboardShortcutTest/ShortcutKeyDPADLEFTTest.test';
 import ShortcutKeyDPADRIGHTTest from './keyboardShortcutTest/ShortcutKeyDPADRIGHTTest.test';
@@ -66,6 +67,7 @@ export default function testsuite() {
   addGestureApplyGesture();
   ShortcutKeyTABTest();
   ShortcutKeyDPADUPTest();
+  gestureDefine10();
   ShortcutKeyDPADDOWNTest();
   ShortcutKeyDPADLEFTTest();
   ShortcutKeyDPADRIGHTTest();
