@@ -1804,9 +1804,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"AvPlayerGetPlaybackSpeedNormalThree", nullptr, OhAvPlayerGetPlaybackSpeedNormalThree, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"AvPlayerGetPlaybackSpeedAbnormalThree", nullptr, OhAvPlayerGetPlaybackSpeedAbnormalThree, nullptr,
-            nullptr, nullptr, napi_default, nullptr},
-        {"AvPlayerSetAudioEffectMode", nullptr, OhAvPlayerSetAudioEffectMode, nullptr, nullptr, nullptr,
-            napi_default, nullptr}
+            nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
