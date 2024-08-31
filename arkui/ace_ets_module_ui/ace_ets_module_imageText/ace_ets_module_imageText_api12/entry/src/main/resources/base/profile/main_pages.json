@@ -123,6 +123,7 @@
     "MainAbility/pages/StyledString/StyledStringKeyTest1",
     "MainAbility/pages/Text/editMeunOptions",
     "MainAbility/pages/RichEditor/onDidIMEInput",
-    "MainAbility/pages/Text/TextHalfLeading"
+    "MainAbility/pages/Text/TextHalfLeading",
+    "MainAbility/pages/Image/ImageResizable"
   ]
 }
