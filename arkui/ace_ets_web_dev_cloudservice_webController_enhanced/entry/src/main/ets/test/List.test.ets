@@ -16,9 +16,21 @@ import webViewSdkTestFrameUrl from './webViewSdkTestFrameUrl.test';
 import webViewNativeMediaPlayerEnableFalse from './webViewNativeMediaPlayerEnableFalse.test';
 import webViewNativeMediaPlayerHandlerEnhanced from './webViewNativeMediaPlayerHandlerEnhanced.test';
 import webViewWebResourceTypeProps2 from './webViewWebResourceTypeProps2.test';
+import webViewNativeMediaPlayerHandler3 from './webViewNativeMediaPlayerHandler3.test';
+import webViewNativeMediaPlayerHandler4 from './webViewNativeMediaPlayerHandler4.test';
+import webViewNativeMediaPlayerHandlerEnhanced2 from './webViewNativeMediaPlayerHandlerEnhanced2.test';
+import webViewNativeMediaPlayerHandlerEnhancedHandleVolume from './webViewNativeMediaPlayerHandlerEnhancedHandleVolume.test';
+import webViewNativeMediaPlayerHandlerEnhancedHandleCallback from './webViewNativeMediaPlayerHandlerEnhancedHandleCallback.test';
+import webViewNativeMediaPlayerHandlerEnhancedSetMuted from './webViewNativeMediaPlayerHandlerEnhancedSetMuted.test';
 export default function testsuite() {
   webViewSdkTestFrameUrl()
   webViewWebResourceTypeProps2()
   webViewNativeMediaPlayerEnableFalse()
   webViewNativeMediaPlayerHandlerEnhanced()
+  webViewNativeMediaPlayerHandlerEnhanced2()
+  webViewNativeMediaPlayerHandlerEnhancedHandleCallback()
+  webViewNativeMediaPlayerHandlerEnhancedHandleVolume()
+  webViewNativeMediaPlayerHandlerEnhancedSetMuted()
+  webViewNativeMediaPlayerHandler3()
+  webViewNativeMediaPlayerHandler4()
 }
