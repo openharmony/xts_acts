@@ -14,6 +14,7 @@
  */
 
 import * as mediaTestBase from '../../../../../../MediaTestBase';
+import * as AVPlayerTestBase from '../../../../../../AVPlayerTestBase.js';
 import media from '@ohos.multimedia.media';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import fs from '@ohos.file.fs';
@@ -70,6 +71,7 @@ export default function AVTransCoderTest() {
 
         beforeEach(async function () {
             console.info('beforeEach case');
+            await AVPlayerTestBase.sleep(1000);
             avTranscoder = null;
             outputFdObject = null;
             outputName = '';
@@ -91,6 +93,7 @@ export default function AVTransCoderTest() {
             } catch (error) {
                 console.info('closeRawFd' + error)
             }
+            await AVPlayerTestBase.sleep(1000);
         })
 
         afterAll(async function () {
