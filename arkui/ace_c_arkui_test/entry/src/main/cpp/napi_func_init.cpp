@@ -4740,6 +4740,15 @@ static napi_value Init(napi_env env, napi_value exports)
         {"gestureTestParaMeter007", nullptr, gestureTestParaMeter007, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"gestureTestParaMeter008", nullptr, gestureTestParaMeter008, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"gestureTestParaMeter009", nullptr, gestureTestParaMeter009, nullptr, nullptr, nullptr, napi_default, nullptr},
+		{"textCustomSpanTest001", nullptr, textCustomSpanTest001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textCustomSpanTest002", nullptr, textCustomSpanTest002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textCustomSpanTest003", nullptr, textCustomSpanTest003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textCustomSpanTest004", nullptr, textCustomSpanTest004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textCustomSpanTest005", nullptr, textCustomSpanTest005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textCustomSpanTest006", nullptr, textCustomSpanTest006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textCustomSpanTest007", nullptr, textCustomSpanTest007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textCustomSpanTest008", nullptr, textCustomSpanTest008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textCustomSpanTest009", nullptr, textCustomSpanTest009, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
