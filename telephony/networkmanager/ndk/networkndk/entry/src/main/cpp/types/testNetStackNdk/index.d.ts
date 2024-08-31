@@ -14,6 +14,11 @@
  */
 
 export const OHNetStackCertVerification: (a: number, b: string, c: string) => number;
+export const OHNetStackGetPinSetForHostName: (a: number, b: string) => number;
+export const OHNetStackGetCertificatesForHostName: (a: number, b: string) => number;
+export const OHNetStackGetPinSetForHostName2: (a: string) => string;
+export const OHNetStackGetCertificatesForHostName2: (a: string) => Array<string>
+export const OHNetStackDestroyCertificatesContent: () => void
 export const OHWebSocketClientConstruct: (a: number) => number;
 export const OHWebSocketClientAddHeader: (a: number) => number;
 export const OHWebSocketClientConnect: (a: number) => number;

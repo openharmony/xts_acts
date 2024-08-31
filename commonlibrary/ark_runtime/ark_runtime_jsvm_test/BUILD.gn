@@ -28,11 +28,18 @@ ohos_js_hap_suite("ActsArkRuntimeJsvmTest") {
   shared_libraries = [
     "./entry/src/main/cpp:jsvmtest",
     ":libcppsharedso",
+    ":libcppso",
   ]
 }
 
 ohos_prebuilt_shared_library("libcppsharedso") {
   source = rebase_path(libcxx_ndk_shared_file)
+  subsystem_name = "arkui"
+  part_name = "napi"
+}
+
+ohos_prebuilt_shared_library("libcppso") {
+  source = rebase_path("${clang_base_path}/../llvm/lib/${abi_target}/libc++.so")
   subsystem_name = "arkui"
   part_name = "napi"
 }

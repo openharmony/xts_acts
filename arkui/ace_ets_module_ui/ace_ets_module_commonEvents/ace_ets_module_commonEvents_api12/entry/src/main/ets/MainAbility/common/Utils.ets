@@ -119,6 +119,53 @@ export default class Utils {
     sendTouchEvent(upPoint)
     Utils.sleep(500)
   }
+
+    static performTouchComponentCenter(id: string, type: TouchType): boolean {
+    console.info('performTouchComponent id : ' + id);
+    return Utils.performTouchRectCenter(0, 0, Utils.getComponentRect(id), type);
+  }
+
+
+  static performTouchRectCenter(rootX: number, rootY: number, rect: RectValue, type: TouchType): boolean {
+    console.info('performTouchRectCenter parentX : ' + rootX);
+    console.info('performTouchRectCenter parentY : ' + rootY);
+    console.info('performTouchRectCenter rect.left : ' + rect.left);
+    console.info('performTouchRectCenter rect.top : ' + rect.top);
+    console.info('performTouchRectCenter rect.right : ' + rect.right);
+    console.info('performTouchRectCenter rect.bottom : ' + rect.bottom);
+
+    let screenX = (rect.right + rect.left) * 0.5;
+    let screenY = (rect.bottom + rect.top) * 0.5;
+    let x = (rect.right + rect.left) * 0.5 - rootX;
+    let y = (rect.bottom + rect.top) * 0.5 - rootY;
+
+    return Utils.performTouch(screenX, screenY, x, y, type);
+  }
+
+  static performTouch(screenX: number, screenY: number, x: number, y: number, type: TouchType): boolean {
+    console.info('performTouch type : ' + type);
+    console.info('performTouch screenX : ' + screenX);
+    console.info('performTouch screenY : ' + screenY);
+    console.info('performTouch x : ' + x);
+    console.info('performTouch y : ' + y);
+
+    let result = sendTouchEvent({
+      windowX: screenX,
+      windowY: screenX,
+      displayX: screenX,
+      displayY: screenX,
+      type: type,
+      id: 0,
+      screenX: screenX,
+      screenY: screenX,
+      x: x,
+      y: y,
+    })
+
+    console.info('performTouch result : ' + result);
+
+    return result;
+  }
 }
 
 
