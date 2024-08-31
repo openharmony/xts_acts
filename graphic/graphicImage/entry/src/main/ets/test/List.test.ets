@@ -15,8 +15,10 @@
 import graphicSendableImageInterfaceTest from './graphicSendableImageInterface.test'
 import graphicImagePixelMapTest from './graphicImagePixelMap.test'
 import graphicImageInterfaceTest from './graphicImageInterface.test'
+import imagePixelMapTest from './pixelMap'
 
 export default function testsuite() {
+  imagePixelMapTest()
   graphicSendableImageInterfaceTest()
   graphicImagePixelMapTest()
   graphicImageInterfaceTest()

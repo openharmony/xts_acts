@@ -16,6 +16,7 @@ import APIPreDragStatusTest from './DragController/APIPreDragStatusTest.test';
 import addGestureApplyGesture from './addGestureApplyGesture.test';
 import ShortcutKeyTABTest from './keyboardShortcutTest/ShortcutKeyTABTest.test';
 import ShortcutKeyDPADUPTest from './keyboardShortcutTest/ShortcutKeyDPADUPTest.test';
+import gestureDefine10 from './GestureRecognizer/GestureRecognizerIsValid.test';
 import ShortcutKeyDPADDOWNTest from './keyboardShortcutTest/ShortcutKeyDPADDOWNTest.test';
 import ShortcutKeyDPADLEFTTest from './keyboardShortcutTest/ShortcutKeyDPADLEFTTest.test';
 import ShortcutKeyDPADRIGHTTest from './keyboardShortcutTest/ShortcutKeyDPADRIGHTTest.test';
@@ -60,12 +61,19 @@ import GestureRecognizerState from './GestureRecognizer/GestureRecognizerState.t
 import APIshouldBuiltInRecognizerParallelWith from './APIshouldBuiltInRecognizerParallelWith.test';
 import typeNodeGestureTest from './PanGesture/Gesture.test';
 import UIContextDragControllerTest from './DragController/UIContextDragController.test';
+
+import accessibilityHoverTest from './onAccessibilityHover/onhoverAccessbility.test';
+
+import tapGestureAddInterfaceTest from './tapGestureAddInterface/tapGestureAddInterfaceTest.test';
+
+
 export default function testsuite() {
   APIshouldBuiltInRecognizerParallelWith();
   APIPreDragStatusTest();
   addGestureApplyGesture();
   ShortcutKeyTABTest();
   ShortcutKeyDPADUPTest();
+  gestureDefine10();
   ShortcutKeyDPADDOWNTest();
   ShortcutKeyDPADLEFTTest();
   ShortcutKeyDPADRIGHTTest();
@@ -109,4 +117,14 @@ export default function testsuite() {
   GestureRecognizerState();
   typeNodeGestureTest();
   UIContextDragControllerTest();
+
+
+
+
+  
+  accessibilityHoverTest();
+  tapGestureAddInterfaceTest();
+
+
+
 }

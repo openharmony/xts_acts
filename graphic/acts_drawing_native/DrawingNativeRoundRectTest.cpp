@@ -341,6 +341,81 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectDestroyNull, TestSize.Level3) 
     OH_Drawing_RoundRectDestroy(nullptr);
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_ROUND_RECT_0400
+ * @tc.name: testRoundRectOffsetNormal
+ * @tc.desc: test for testRoundRectOffsetNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNormal, TestSize.Level0) {
+    //1. OH_Drawing_RoundRectCreate with the second parameter as integar values
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    //2. OH_Drawing_RoundRectCreate with the second parameter as floating-point values
+    OH_Drawing_RoundRect *roundRect1 = OH_Drawing_RoundRectCreate(rect, 20.f, 20);
+    //3. OH_Drawing_RoundRectCreate with the first parameter as integar values
+    OH_Drawing_RoundRect *roundRect2 = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    //4. OH_Drawing_RoundRectCreate with the first parameter as floating-point values
+    OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(0.f, 0.f, 100.f, 100.f);
+    OH_Drawing_RoundRect *roundRect3 = OH_Drawing_RoundRectCreate(rect1, 20, 20);
+    OH_Drawing_RoundRectDestroy(roundRect);
+    OH_Drawing_RoundRectDestroy(roundRect1);
+    OH_Drawing_RoundRectDestroy(roundRect2);
+    OH_Drawing_RoundRectDestroy(roundRect3);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_ROUND_RECT_0401
+ * @tc.name: testRoundRectOffsetNull
+ * @tc.desc: test for testRoundRectOffsetNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNull, TestSize.Level3) {
+    // 1. Call OH_Drawing_RoundRectOffset with nullptr as the first parameter, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    OH_Drawing_RoundRectOffset(nullptr, 1.0f, 1.0f);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 2. Call OH_Drawing_RoundRectOffset with 0 as the second parameter, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_RoundRectOffset(roundRect, 0, 1.0f);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. Call OH_Drawing_RoundRectOffset with 0 as the third parameter, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_RoundRectOffset(roundRect, 1.0f, 0);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    //4. free memory
+    OH_Drawing_RoundRectDestroy(roundRect);
+    OH_Drawing_RectDestroy(rect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_ROUND_RECT_0402
+ * @tc.name: testRoundRectOffsetMultipleCalls
+ * @tc.desc: test for testRoundRectOffsetMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetMultipleCalls, TestSize.Level3) {
+    //1. Call OH_Drawing_RoundRectCreate with random values
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> dis(0, 100);
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, dis(gen), dis(gen));
+        OH_Drawing_RoundRectDestroy(roundRect);
+    }
+    //2. free memory
+    OH_Drawing_RectDestroy(rect);
+}
+
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

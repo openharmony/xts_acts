@@ -555,6 +555,8 @@ import accessibilityStateTest from './accessibilityState/accessibilityStateTest.
 import relativecontaineAlignmentRuleOptionTest from './relativecontaine/RelativeContaineAlignmentRuleOptionTest.test'
 import relativecontaineBarrierOptionTest from './relativecontaine/RelativeContaineBarrierOptionTest.test'
 import testGesture from './gesture/GestureTest.test'
+import gestureNestScrollTest from './gestureScroll/GestureNestScollTest.test'
+
 import customComponentEventTest from './customcomponent/CustomComponentEventTest.test'
 import commonAttrsAnimateTest from './commonattrs/CommonAttrsAnimateTest.test'
 import drawableDescriptorCreateTest from './drawabledescriptor/DrawableDescriptorCreateTest.test'
@@ -563,7 +565,7 @@ import nativeXComponentTest from './nativexcomponent/NativeXComponentTest.test'
 import mouseEventTest from './mouseevent/MouseEventTest.test'
 import pointerEventTest from './pointerevent/PointerEventTest.test'
 import nativeTest from './native/nativeTest.test'
-
+import DialogDismissEventTest from './Dialog/DialogDismissEvent.test'
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
@@ -1108,6 +1110,7 @@ export default function testsuite() {
   relativecontaineAlignmentRuleOptionTest()
   relativecontaineBarrierOptionTest()
   testGesture()
+  gestureNestScrollTest()
   customComponentEventTest()
   commonAttrsAnimateTest()
   drawableDescriptorCreateTest()
@@ -1116,5 +1119,5 @@ export default function testsuite() {
   mouseEventTest()
   pointerEventTest()
   nativeTest()
-
+  DialogDismissEventTest()
 }

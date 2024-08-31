@@ -3,6 +3,10 @@
     {
       "name":"app_name",
       "value":"ohosProject"
+    },
+    {
+      "name": "reason",
+      "value": "MyApplication"
     }
   ]
 }      

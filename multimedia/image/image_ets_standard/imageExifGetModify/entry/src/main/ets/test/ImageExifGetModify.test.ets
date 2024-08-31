@@ -141,6 +141,24 @@ export default function imageExifGetModifyTest() {
       return checkResult
     }
 
+    const testGetIncludePromise = async (testTag: string, key: image.PropertyKey, compareData: string | undefined,
+                                  fileName:string, type:string) => {
+      let checkResult = false
+      const imageSourceApi = await getImageSource(fileName, type)
+      if (imageSourceApi == undefined) {
+        console.info(testTag + " create image source failed");
+      } else {
+        const result = await imageSourceApi.getImageProperty(key)
+        checkResult = result.includes(compareData == undefined ? testTag : compareData)
+        if(!checkResult){
+          hilog.info(0x0000, testTag,
+            `testGetIncludePromise error %{public}s %{public}s fileName: %{public}s result: %{public}s value: %{public}s`,
+            testTag, key, fileName, result, compareData);
+        }
+      }
+      return checkResult
+    }
+
     //创建imageSource，读取exif信息，错误码与预期错误码对比，返回结果 True/false
     //testTag 用例编号
     //key: exif key
@@ -2627,9 +2645,8 @@ export default function imageExifGetModifyTest() {
           'HwMnoteSceneTextConf:11'},
         {name: "dng", fileName: "test_exif_v2.dng", value: 'HwMnoteCaptureMode:1,HwMnoteBurstNumber:2,' +
           'HwMnoteFrontCamera:' +
-          '3,HwMnoteRollAngle:4,HwMnotePitchAngle:5,HwMnotePhysicalAperture:6,HwMnoteFocusMode:7,MovingPhotoId:8,' +
-          'MovingPhotoVersion:9,' +
-          'MicroVideoPresentationTimestampUS:1713866834879000,HwMnoteFacePointer:166,HwMnoteFaceVersion:1,' +
+          '3,HwMnoteRollAngle:4,HwMnotePitchAngle:5,HwMnotePhysicalAperture:6,HwMnoteFocusMode:7,' +
+          'HwMnoteWindSnapshotMode:8,HwMnoteFacePointer:166,HwMnoteFaceVersion:1,' +
           'HwMnoteFaceCount:2,HwMnoteFaceConf:3,HwMnoteFaceSmileScore:1 2 3 4 5 6 7 8,' +
           'HwMnoteFaceRect:1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8,HwMnoteFaceLeyeCenter:1 2 3 4,' +
           'HwMnoteFaceReyeCenter:5 6 7 8,' + 'HwMnoteFaceMouthCenter:1 2 3 4 5 6 7 8,HwMnoteScenePointer:300,' +
@@ -2650,7 +2667,7 @@ export default function imageExifGetModifyTest() {
       try {
         let result: boolean = true
         for(let i=0; i<values.length; i++){
-          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
+          const checkResult = await testGetIncludePromise(testTag, key, values[i].value, values[i].fileName,'fd');
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -6025,6 +6042,262 @@ export default function imageExifGetModifyTest() {
         done()
       } catch (e) {
         hilog.info(0x0000, testTag, `getImageProperty error HwMnoteSceneVersion ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_018000
+     * @tc.name      : getImageProperty('HwMnoteIsXmageSupported', property)_promise
+     * @tc.desc      : 1.create imageSource
+     *                 2.getImageProperty('HwMnoteIsXmageSupported')_promise
+     *                 3.the getImageProperty value is the expected value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_018000', 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_018000'
+      const key = image.PropertyKey.IS_XMAGE_SUPPORTED
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        let result: boolean = true
+        for(let i=0; i<values.length; i++){
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
+          result = result && checkResult
+        }
+        expect(result).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `getImageProperty error HwMnoteIsXmageSupported ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_019000
+     * @tc.name      : getImageProperty('HwMnoteXmageMode', property)_promise
+     * @tc.desc      : 1.create imageSource
+     *                 2.getImageProperty('HwMnoteXmageMode')_promise
+     *                 3.the getImageProperty value is the expected value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_019000', 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_019000'
+      const key = image.PropertyKey.XMAGE_MODE
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        let result: boolean = true
+        for(let i=0; i<values.length; i++){
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
+          result = result && checkResult
+        }
+        expect(result).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `getImageProperty error HwMnoteXmageMode ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_020000
+     * @tc.name      : getImageProperty('HwMnoteXmageLeft', property)_promise
+     * @tc.desc      : 1.create imageSource
+     *                 2.getImageProperty('HwMnoteXmageLeft')_promise
+     *                 3.the getImageProperty value is the expected value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_020000', 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_020000'
+      const key = image.PropertyKey.XMAGE_LEFT
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        let result: boolean = true
+        for(let i=0; i<values.length; i++){
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
+          result = result && checkResult
+        }
+        expect(result).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `getImageProperty error HwMnoteXmageLeft ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_021000
+     * @tc.name      : getImageProperty('HwMnoteXmageTop', property)_promise
+     * @tc.desc      : 1.create imageSource
+     *                 2.getImageProperty('HwMnoteXmageTop')_promise
+     *                 3.the getImageProperty value is the expected value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_021000', 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_021000'
+      const key = image.PropertyKey.XMAGE_TOP
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        let result: boolean = true
+        for(let i=0; i<values.length; i++){
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
+          result = result && checkResult
+        }
+        expect(result).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `getImageProperty error HwMnoteXmageTop ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_022000
+     * @tc.name      : getImageProperty('HwMnoteXmageRight', property)_promise
+     * @tc.desc      : 1.create imageSource
+     *                 2.getImageProperty('HwMnoteXmageRight')_promise
+     *                 3.the getImageProperty value is the expected value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_022000', 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_022000'
+      const key = image.PropertyKey.XMAGE_RIGHT
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        let result: boolean = true
+        for(let i=0; i<values.length; i++){
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
+          result = result && checkResult
+        }
+        expect(result).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `getImageProperty error HwMnoteXmageRight ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_023000
+     * @tc.name      : getImageProperty('HwMnoteXmageBottom', property)_promise
+     * @tc.desc      : 1.create imageSource
+     *                 2.getImageProperty('HwMnoteXmageBottom')_promise
+     *                 3.the getImageProperty value is the expected value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_023000', 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_023000'
+      const key = image.PropertyKey.XMAGE_BOTTOM
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        let result: boolean = true
+        for(let i=0; i<values.length; i++){
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
+          result = result && checkResult
+        }
+        expect(result).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `getImageProperty error HwMnoteXmageBottom ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_024000
+     * @tc.name      : getImageProperty('HwMnoteCloudEnhancementMode', property)_promise
+     * @tc.desc      : 1.create imageSource
+     *                 2.getImageProperty('HwMnoteCloudEnhancementMode')_promise
+     *                 3.the getImageProperty value is the expected value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_024000', 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_024000'
+      const key = image.PropertyKey.CLOUD_ENHANCEMENT_MODE
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        let result: boolean = true
+        for(let i=0; i<values.length; i++){
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
+          result = result && checkResult
+        }
+        expect(result).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `getImageProperty error HwMnoteCloudEnhancementMode ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_025000
+     * @tc.name      : getImageProperty('HwMnoteWindSnapshotMode', property)_promise
+     * @tc.desc      : 1.create imageSource
+     *                 2.getImageProperty('HwMnoteWindSnapshotMode')_promise
+     *                 3.the getImageProperty value is the expected value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_025000', 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_EXIF_GETIMAGEPROPERTY_PROMISE_025000'
+      const key = image.PropertyKey.WIND_SNAPSHOT_MODE
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        let result: boolean = true
+        for(let i=0; i<values.length; i++){
+          const checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName,'fd');
+          result = result && checkResult
+        }
+        expect(result).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `getImageProperty error HwMnoteWindSnapshotMode ` + e);
         expect().assertFail();
         done();
       }

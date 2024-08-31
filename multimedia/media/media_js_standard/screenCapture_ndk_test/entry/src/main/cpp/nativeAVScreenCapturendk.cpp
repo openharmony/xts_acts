@@ -106,10 +106,20 @@ static napi_value NormalAVScreenCaptureTest(napi_env env, napi_callback_info inf
     OH_AVScreenCapture_SetErrorCallback(screenCapture, OnError, nullptr);
     OH_AVScreenCapture_SetStateCallback(screenCapture, OnStateChange, nullptr);
     OH_AVScreenCapture_SetDataCallback(screenCapture, OnBufferAvailable, nullptr);
+    vector<int> windowidsExclude = { -111 };
+    struct OH_AVScreenCapture_ContentFilter *contentFilter = OH_AVScreenCapture_CreateContentFilter();
+    OH_AVScreenCapture_ContentFilter_AddAudioContent(contentFilter, OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO);
+    OH_AVScreenCapture_ContentFilter_AddWindowContent(contentFilter,
+        &windowidsExclude[0], static_cast<int32_t>(windowidsExclude.size()));
+    OH_AVScreenCapture_ExcludeContent(screenCapture, contentFilter);
+    OH_AVScreenCapture_SkipPrivacyMode(screenCapture,
+        &windowidsExclude[0], static_cast<int32_t>(windowidsExclude.size()));
     OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCapture, config_);
     OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCapture);
     sleep(g_recordTime);
+    OH_AVScreenCapture_ResizeCanvas(screenCapture, 768, 1280); // 768 width 1280 height
     OH_AVSCREEN_CAPTURE_ErrCode result3 = OH_AVScreenCapture_StopScreenCapture(screenCapture);
+    OH_AVScreenCapture_ReleaseContentFilter(contentFilter);
     OH_AVScreenCapture_Release(screenCapture);
 
     OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
@@ -318,8 +328,6 @@ void ScreenCaptureNdkTestCallback::OnAudioBufferAvailable(bool isReady, OH_Audio
             return;
         }
         if (OH_AVScreenCapture_AcquireAudioBuffer(screenCapture_, &audioBuffer, type) == AV_SCREEN_CAPTURE_ERR_OK) {
-            OH_LOG_INFO(LOG_APP, "AcquireAudioBuffer, audioBufferLen: %d, timestamp: %ld, audioSourceType: %d",
-                audioBuffer->size, audioBuffer->timestamp, audioBuffer->type);
             if ((aFile != nullptr) && (audioBuffer->buf != nullptr) && (type == OH_MIC)) {
                 int32_t ret = fwrite(audioBuffer->buf, 1, audioBuffer->size, aFile);
                 free(audioBuffer->buf);
@@ -353,8 +361,7 @@ void ScreenCaptureNdkTestCallback::OnVideoBufferAvailable(bool isReady)
         if (nativeBuffer != nullptr) {
             OH_NativeBuffer_GetConfig(nativeBuffer, &config);
             int32_t length = config.height * config.width * size;
-            OH_LOG_INFO(LOG_APP, "AcquireVideoBuffer, videoBufferLen: %d, timestamp: %ld, size: %d",
-                length, timestamp, length);
+
             OH_NativeBuffer_Unreference(nativeBuffer);
             if (g_vFlag == 1) {
                 OH_AVScreenCapture_ReleaseVideoBuffer(screenCapture_);
@@ -464,20 +471,11 @@ static napi_value OriginAVScreenCaptureTest(napi_env env, napi_callback_info inf
     bool isMicrophone = true;
     OH_AVScreenCapture_SetMicrophoneEnabled(screenCapture, isMicrophone);
 
-    vector<int> windowidsExclude0 = {-111};
-    struct OH_AVScreenCapture_ContentFilter *contentFilter = OH_AVScreenCapture_CreateContentFilter();
-    OH_AVScreenCapture_ContentFilter_AddAudioContent(contentFilter, OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO);
-    OH_AVScreenCapture_ContentFilter_AddWindowContent(contentFilter, 
-        &windowidsExclude0[0], static_cast<int32_t>(windowidsExclude0.size()));
-    OH_AVScreenCapture_ExcludeContent(screenCapture, contentFilter);
-
     SetScreenCaptureCallback(screenCapture, screenCaptureCb);
     OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCapture, config_);
     OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCapture);
-    sleep(g_recordTime);
-    OH_AVSCREEN_CAPTURE_ErrCode result3 = OH_AVScreenCapture_StopScreenCapture(screenCapture);
+    OH_AVScreenCapture_StopScreenCapture(screenCapture);
     DelCallback(screenCapture);
-    OH_AVScreenCapture_ReleaseContentFilter(contentFilter);
     OH_AVScreenCapture_Release(screenCapture);
     CloseFile(audioFile, nullptr);
     screenCaptureCb = nullptr;
@@ -486,7 +484,7 @@ static napi_value OriginAVScreenCaptureTest(napi_env env, napi_callback_info inf
     if (result1 == AV_SCREEN_CAPTURE_ERR_OK) {
         result = AV_SCREEN_CAPTURE_ERR_OK;
     } else {
-        OH_LOG_INFO(LOG_APP, "init/start/stop failed, init: %d, start: %d, stop: %d", result1, result2, result3);
+        OH_LOG_INFO(LOG_APP, "init/start/stop failed, init: %d, start: %d", result1, result2);
         result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
     }
     napi_create_int32(env, result, &res);

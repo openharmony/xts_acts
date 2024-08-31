@@ -14,6 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import appManager from '@ohos.app.ability.appManager';
 import common from '@ohos.app.ability.common'
 import commonEventManager from '@ohos.commonEventManager'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
@@ -1049,36 +1050,58 @@ export default function abilityTest() {
     it('ACTS_UIExtension_StartAbilityByType001',0, async function (done) {
       TAG = 'ACTS_UIExtension_StartAbilityByType001 == ';
       console.log(TAG + "begin");
-      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
-      let failStartAbilityByTypeEvent = 'ACTS_UIExtension_FailStartAbilityByType';
-      let startAbilityByTypeEvent001 = 'ACTS_UIExtension_StartAbilityByType001';
-      var subscriber;
-      var subscribeInfo = {
-        events: [appearEvent, failStartAbilityByTypeEvent]
+      router.back()
+      await Utils.sleep(500);
+      let options = {
+        url: 'TestAbility/pages/p1',
       }
-      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
-        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
-        globalscribe = data;
-        commonEventManager.subscribe(globalscribe, async (err, data) => {
-          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+      let result;
+      try {
+        result = await router.pushUrl(options);
+        await Utils.sleep(500);
+        console.info(TAG + "push page result: " + JSON.stringify(result));
+      } catch (err) {
+        console.error(TAG + "push page error: " + err);
+      }
 
-          if (data.event == appearEvent) {
-            commonEventManager.publish(startAbilityByTypeEvent001, (err) => {
-              if (err) {
-                console.log(TAG + `publish startAbilityByTypeEvent failed, code is ${err.code}, message is ${err.message}`);
-              } else {
-                console.log(TAG + 'publish startAbilityByTypeEvent success');
-              }
-            });
-          } else if (data.event == failStartAbilityByTypeEvent) {
-            done();
-          }
-        });
-      }).catch((error) => {
-        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
-        expect().assertFail();
+      let processInfo = await appManager.getRunningProcessInfoByBundleName('com.example.uiextensiontest');
+      console.log(TAG + JSON.stringify(processInfo));
+      if (processInfo[0].state === appManager.ProcessState.STATE_FOREGROUND ||
+        processInfo[0].state === appManager.ProcessState.STATE_ACTIVE) {
+        let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+        let failStartAbilityByTypeEvent = 'ACTS_UIExtension_FailStartAbilityByType';
+        let startAbilityByTypeEvent001 = 'ACTS_UIExtension_StartAbilityByType001';
+        var subscriber;
+        var subscribeInfo = {
+          events: [appearEvent, failStartAbilityByTypeEvent]
+        }
+        await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+          console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+          globalscribe = data;
+          commonEventManager.subscribe(globalscribe, async (err, data) => {
+            console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+            if (data.event == appearEvent) {
+              commonEventManager.publish(startAbilityByTypeEvent001, (err) => {
+                if (err) {
+                  console.log(TAG + `publish startAbilityByTypeEvent failed, code is ${err.code}, message is ${err.message}`);
+                } else {
+                  console.log(TAG + 'publish startAbilityByTypeEvent success');
+                }
+              });
+            } else if (data.event == failStartAbilityByTypeEvent) {
+              done();
+            }
+          });
+        }).catch((error) => {
+          console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        })
+      } else {
+        console.log(TAG + 'Current app is not foreground');
         done();
-      })
+      }
     })
 
     /*

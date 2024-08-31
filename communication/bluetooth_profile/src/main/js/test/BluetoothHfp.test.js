@@ -38,24 +38,16 @@ describe('btHfpConnTest', function () {
     }
 
     async function clickTheWindow() {
-        console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
-        await driver.delayMs(3000);
         try {
+            console.info('[bluetooth_js] clickRequestPermission start');
+            let driver = Driver.create();
+            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text("开启"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 开启 end');
+            console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
+            console.info('[bluetooth_js] clickRequestPermission failed');
         }
     }
 
@@ -106,10 +98,9 @@ describe('btHfpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1100
-     * @tc.name testGetProfileConnState
+     * @tc.name test Get HFP ConnectionState
      * @tc.desc Test getProfileConnState api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1100', 0, async function (done) {
@@ -122,10 +113,9 @@ describe('btHfpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1200
-     * @tc.name testGetDeviceState
+     * @tc.name test getDevice HFP State.
      * @tc.desc Test getDeviceState api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1200', 0, async function (done) {
@@ -138,10 +128,9 @@ describe('btHfpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1300
-     * @tc.name testGetDeviceState
+     * @tc.name test getDevice HFP State.
      * @tc.desc Test getDeviceState api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1300', 0, async function (done) {
@@ -154,10 +143,9 @@ describe('btHfpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1400
-     * @tc.name testConnect
+     * @tc.name test HFP Connect
      * @tc.desc Test connect api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1400', 0, async function (done) {
@@ -178,10 +166,9 @@ describe('btHfpConnTest', function () {
     
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1500
-     * @tc.name testDisconnect
+     * @tc.name test HFP disconnect
      * @tc.desc Test disconnect api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
       it('SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1500', 0, async function (done) {
@@ -202,10 +189,9 @@ describe('btHfpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1600
-     * @tc.name testConnect
+     * @tc.name test a invaild HFP Connect
      * @tc.desc Test connect api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1600', 0, async function (done) {
@@ -218,10 +204,9 @@ describe('btHfpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1700
-     * @tc.name testDisconnect
+     * @tc.name test a invaild HFP disconnect
      * @tc.desc Test disconnect api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1700', 0, async function (done) {
@@ -235,10 +220,9 @@ describe('btHfpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1800
-     * @tc.name testGetConnectionDevices
+     * @tc.name test getDevice HFP State.
      * @tc.desc Test getDeviceState api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_HFPCONN_1800', 0, async function (done) {

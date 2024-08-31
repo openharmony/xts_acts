@@ -46,7 +46,13 @@ interface recurrenceRuleObj {
   expire?: number,
   count?: number,
   interval?: number,
-  excludedDates?: number[]
+   excludedDates?: number[],
+  daysOfWeek?: number[],
+  daysOfMonth?: number[],
+  daysOfYear?: number[],
+  weeksOfMonth?: number[],
+  weeksOfYear?: number[],
+  monthsOfYear?: number[]
 }
 
 interface serviceObj {
@@ -1517,11 +1523,17 @@ export default function CalendarManagerTest() {
         identifier: "1aa96c08-d732-443b-aa0a-6eb1559dfb19",
         isLunar: true,
         recurrenceRule: {
-          recurrenceFrequency: calendarManager.RecurrenceFrequency.DAILY,
+          recurrenceFrequency: calendarManager.RecurrenceFrequency.YEARLY,
           count: 100,
           interval: 2,
           expire: date.getTime() + 60 * 60 * 1000 * 3,
-          excludedDates: [date.getTime() + 60 * 60 * 1000 * 2]
+          excludedDates: [date.getTime() + 60 * 60 * 1000 * 2],
+          daysOfWeek: [1, 2],
+          daysOfMonth: [1, 3],
+          daysOfYear: [1, 2],
+          weeksOfMonth: [3],
+          weeksOfYear: [1, 2],
+          monthsOfYear: [2]
         },
       }
 
