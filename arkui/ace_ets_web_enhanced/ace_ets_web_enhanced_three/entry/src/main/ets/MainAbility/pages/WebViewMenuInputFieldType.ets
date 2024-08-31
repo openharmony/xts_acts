@@ -13,52 +13,88 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.events.emitter';
+
 import Utils from '../../test/Utils';
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { Hypium } from '@ohos/hypium';
-import testsuite from '../../test/List.test';
+import webView from '@ohos.web.webview';
+import events_emitter from '@ohos.events.emitter';
+import { Driver, MouseButton } from '@ohos.UiTest';
+import inputMethodEngine from '@ohos.inputMethodEngine'
+import { CustomKeyboard } from '../../test/CustomKeyboard';
+
+import {
+  EKeyType,
+  EKeyboardType,
+  IKeyAttribute,
+  lowerCaseKeyData,
+  numericKeyData,
+  specialKeyData,
+  upperCaseKeyData
+} from '../../test/Constants';
+
 
 @Entry
 @Component
-struct webResourceResponseGet {
-  controller: WebController = new WebController();
-  heads: Header[] = new Array()
-  @State webdata: string = "<!DOCTYPE html>\n" +
-    "<html>\n" +
-    "<head>\n" +
-    "<title>intercept test</title>\n" +
-    "</head>\n" +
-    "<body>\n" +
-    "<h1>intercept test</h1>\n" +
-    "<script>" +
-    "function gettitle(){ return document.write(document.title); }" +
-    "gettitle()" +
-    "</script>" +
-    "</body>\n" +
-    "</html>"
-  @State str: string = "emitOnHttpErrorReceiveByExampleWebc";
-  @State javaScriptAccess: boolean = true;
-  @State fileAccess: boolean = true;
-  @State domStorageAccess: boolean = false;
-  @State imageAccess: boolean = true;
-  @State onlineImageAccess: boolean = true;
-  @State databaseAccess: boolean = true;
-  @State userAgent: string = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 " +
-    "(KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
-  @State title: string = "test";
-  @State getRequestHeaderValue: number = 0
-  @State getResponseHeaderValue: number = 0
-  @State getRequestUrlValue: string = ''
-  @State isRequestGestureValue: boolean = true
-  @State isMainFrameValue: boolean = true
-  @State isRedirectValue: boolean = true
-  @State getRequestMethodValue: string = ''
-  @State getResponseDataValue: string = ''
-  @State getResponseEncodingValue: string = ''
-  @State getResponseMimeTypeValue: string = ''
-  @State getReasonMessageValue: string = ''
-  @State getResponseCodeValue: number = 10000
+struct WebViewMenuInputFieldType {
+  @State str: string = ""
+  @State items: IKeyAttribute[] = numericKeyData;
+  @State ResultKey: number = 1;
+  @State inputValue: string = ""
+  @State curKeyboardType: EKeyboardType = EKeyboardType.NUMERIC;
+  @State userAgentPC: string = "";
+  @State i: number = 0;
+  webKeyboardController: WebKeyboardController = new WebKeyboardController()
+  inputAttributeMap: Map<string, number> = new Map([
+      ['UNSPECIFIED', inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED],
+      ['GO', inputMethodEngine.ENTER_KEY_TYPE_GO],
+      ['SEARCH', inputMethodEngine.ENTER_KEY_TYPE_SEARCH],
+      ['SEND', inputMethodEngine.ENTER_KEY_TYPE_SEND],
+      ['NEXT', inputMethodEngine.ENTER_KEY_TYPE_NEXT],
+      ['DONE', inputMethodEngine.ENTER_KEY_TYPE_DONE],
+      ['PREVIOUS', inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS]
+    ])
+
+    onKeyboardEvent(item: IKeyAttribute) {
+    switch (item.type) {
+    // 输入类型，更新输入内容
+      case EKeyType.INPUT:
+        console.log("WebCustomKeyboard text input : " + item.value);
+        this.webKeyboardController.insertText(item.value);
+        break;
+    // 删除一个已输入的末尾字符
+      case EKeyType.DELETE:
+        this.webKeyboardController.deleteForward(1);
+        break;
+      case EKeyType.DELETEBACKWARD:
+        this.webKeyboardController.deleteBackward(1);
+        break;
+      case EKeyType.SENDENTER:
+        this.webKeyboardController.sendFunctionKey(1);
+        break;
+      default:
+    // logger.info('Sorry, we are out of input type.')
+    }
+  }
+
+    /**
+     * 自定义键盘组件Builder
+     */
+    @Builder
+    customKeyboardBuilder() {
+    CustomKeyboard({
+      items: this.items,
+      curKeyboardType: this.curKeyboardType,
+      onKeyboardEvent: this.onKeyboardEvent,
+      webKeyboardController: this.webKeyboardController,
+    })
+      .onAppear(()=> {
+        console.log('WebCustomKeyboard custom keyboard appear');
+      })
+      .onDisAppear(() => {
+        console.log('WebCustomKeyboard custom keyboard disappear');
+      })
+
+  }
+  controller: webView.WebviewController = new webView.WebviewController();
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -66,10 +102,6 @@ struct webResourceResponseGet {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
-  }
-
-  onPageHide() {
-    events_emitter.off(10)
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
@@ -82,235 +114,386 @@ struct webResourceResponseGet {
     }
   }
 
-  aboutToAppear() {
-    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-    console.info('start run testcase!!!')
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-  }
-
   build() {
     Column() {
       Row() {
-        Button("WebResourceResponseGet click").key('WebResourceResponseGetButton').onClick(async () => {
+        Button('WebViewMenuInputFieldTypeTestButton').key('WebViewMenuInputFieldTypeTestButton').onClick(async () => {
           console.info("key==>" + this.str)
           switch (this.str) {
-
-            case "testGetRequestHeader001": {
-              try {
-                this.getRequestHeaderValue = 0
-                this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(4000);
-                if (this.getRequestHeaderValue > 0) {
-                  Utils.emitEvent(true, 35010);
-                  return
-                }
-                Utils.emitEvent(false, 35010);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            case "emitInputFieldTypeNumber001": {
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                this.controller.loadUrl("resource://rawfile/InputFieldTypeTestNumberPC.html")
+              } else {
+                this.controller.loadUrl("resource://rawfile/InputFieldTypeTestNumber.html")
               }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
               break;
             }
-
-            case "testGetRequestUrl001": {
-              try {
-                this.getRequestUrlValue = ' '
-                this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(4000);
-                Utils.emitEvent(this.getRequestUrlValue, 35011);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            case "emitInputFieldTypeText001": {
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                this.controller.loadUrl("resource://rawfile/InputFieldTypeTestTextPC.html")
+              } else {
+                this.controller.loadUrl("resource://rawfile/InputFieldTypeTestText.html")
               }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
               break;
             }
-
-            case "testIsRequestGesture001": {
-              try {
-                this.isRequestGestureValue = true
-                this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(4000);
-                Utils.emitEvent(this.isRequestGestureValue, 35012);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            case "emitInputFieldTypePassWord001": {
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                this.controller.loadUrl("resource://rawfile/InputFieldTypeTestPassWordPC.html")
+              } else {
+                this.controller.loadUrl("resource://rawfile/InputFieldTypeTestPassWord.html")
               }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
               break;
             }
-
-            case "testIsMainFrame001": {
-              try {
-                this.controller.clearHistory()
-                await Utils.sleep(2000);
-                this.isMainFrameValue = false
-                this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(4000);
-                Utils.emitEvent(this.isMainFrameValue, 35013);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            case "emitInputFieldTypeTelephone001": {
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                this.controller.loadUrl("resource://rawfile/InputFieldTypeTestTelPC.html")
+              } else {
+                this.controller.loadUrl("resource://rawfile/InputFieldTypeTestTel.html")
               }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
               break;
             }
-
-            case "testIsRedirect001": {
-              try {
-                this.isRedirectValue = false
-                this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(4000);
-                Utils.emitEvent(this.isRedirectValue, 35014);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            case "emitInputFieldTypeOther001": {
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                this.controller.loadUrl("resource://rawfile/InputFieldTypeTestOtherPC.html")
+              } else {
+                this.controller.loadUrl("resource://rawfile/InputFieldTypeTestOther.html")
               }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
               break;
             }
-
-            case "testGetRequestMethod001": {
-              try {
-                this.isRedirectValue = false
-                this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(4000);
-                Utils.emitEvent(this.getRequestMethodValue, 35015);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            case "onInterceptKeyboardAttach0100": {
+              this.ResultKey = 1
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(true, 2893)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach.html")
               }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              
               break;
             }
-
-            case "testGetResponseData001": {
-              try {
-                this.getResponseDataValue = ''
-                this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(4000);
-                Utils.emitEvent(this.getResponseDataValue, 35016);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            case "onInterceptKeyboardAttach0200": {
+              this.ResultKey = 2
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(true, 2894)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttachDefault.html")
               }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
               break;
             }
-
-            case "testGetResponseEncoding001": {
-              try {
-                this.getResponseEncodingValue = ''
-                this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(4000);
-                Utils.emitEvent(this.getResponseEncodingValue, 35017);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            case "onInterceptKeyboardAttach0300": {
+              this.ResultKey = 3
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(6, 2895)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_DONE.html")
               }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
               break;
             }
-
-            case "testGetResponseMimeType001": {
-              try {
-                this.getResponseMimeTypeValue = ''
-                this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(4000);
-                Utils.emitEvent(this.getResponseMimeTypeValue, 35018);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            case "onInterceptKeyboardAttach0400": {
+              this.ResultKey = 4
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(2, 2896)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_GO.html")
               }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
               break;
             }
-
-            case "testGetReasonMessage001": {
-              try {
-                this.getReasonMessageValue = ''
-                this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(4000);
-                Utils.emitEvent(this.getReasonMessageValue, 35019);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            case "onInterceptKeyboardAttach0500": {
+              this.ResultKey = 5
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(5, 2897)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_NEXT.html")
               }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              
               break;
             }
-
-            case "testGetResponseHeader001": {
-              try {
-                this.getResponseHeaderValue = 0
-                this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(4000);
-                if (this.getResponseHeaderValue > 0) {
-                  Utils.emitEvent(true, 35020);
-                  return;
-                }
-                Utils.emitEvent(false, 35020);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            case "onInterceptKeyboardAttach0600": {
+              this.ResultKey = 6
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(7, 2898)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_PREVIOUS.html")
               }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
               break;
             }
-
-            case "testGetResponseCode001": {
-              try {
-                this.getResponseCodeValue = 0
-                this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(4000);
-                Utils.emitEvent(this.getResponseCodeValue, 35021);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            case "onInterceptKeyboardAttach0700": {
+              this.ResultKey = 7
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(3, 2899)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_SEARCH.html")
               }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
               break;
             }
-
-
+            case "onInterceptKeyboardAttach0800": {
+              this.ResultKey = 8
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(4, 2880)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_SEND.html")
+              }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              break;
+            }
+            case "onInterceptKeyboardAttach0900": {
+              this.ResultKey = 9
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(0, 2881)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_UNSPECIFIED.html")
+              }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              break;
+            }
+            case "onInterceptKeyboardAttach1000": {
+              this.ResultKey = 10
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(true, 2893)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach.html")
+              }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(10000);
+              Utils.emitEvent(this.i, 2882)
+              break;
+            }
           }
         })
       }
 
-
-      Web({ src: $rawfile('index.html'), controller: this.controller })
-        .javaScriptAccess(this.javaScriptAccess)
-        .fileAccess(this.fileAccess)
-        .imageAccess(this.imageAccess)
-        .domStorageAccess(this.domStorageAccess)
-        .onlineImageAccess(this.onlineImageAccess)
-        .databaseAccess(this.databaseAccess)
-        .userAgent(this.userAgent)
-        .onHttpErrorReceive((event) => {
+      Web({ src: $rawfile("second.html"), controller: this.controller })
+        .key("WebViewMenuInputFieldTypeTestWebView")
+        .onContextMenuShow((event) => {
           if (event) {
-            console.log('GetRequest url:' + event.request.getRequestUrl());
-            this.getRequestUrlValue = event.request.getRequestUrl()
-            console.log('GetRequest isMainFrame:' + event.request.isMainFrame());
-            this.isMainFrameValue = event.request.isMainFrame()
-            console.log('GetRequest isRedirect:' + event.request.isRedirect());
-            this.isRedirectValue = event.request.isRedirect()
-            console.log('GetRequest isRequestGesture:' + event.request.isRequestGesture());
-            this.isRequestGestureValue = event.request.isRequestGesture()
-            console.log('GetRequest getRequestMethod:' + event.request.getRequestMethod());
-            this.getRequestMethodValue = event.request.getRequestMethod()
-            console.log('GetRequest getResponseData:' + JSON.stringify(event.response.getResponseData()));
-            this.getResponseDataValue = JSON.stringify(event.response.getResponseData())
-            console.log('GetRequest getResponseEncoding:' + event.response.getResponseEncoding());
-            this.getResponseEncodingValue = event.response.getResponseEncoding()
-            console.log('GetRequest getResponseMimeType:' + event.response.getResponseMimeType());
-            this.getResponseMimeTypeValue = event.response.getResponseMimeType()
-            console.log('GetRequest getResponseCode:' + event.response.getResponseCode());
-            this.getResponseCodeValue = event.response.getResponseCode()
-            console.log("GetRequest this.title result is :" + this.title);
-            console.log('GetRequest getReasonMessage:' + event.response.getReasonMessage());
-            this.getReasonMessageValue = event.response.getReasonMessage()
-            let result = event.request.getRequestHeader()
-            this.getRequestHeaderValue = result.length
-            console.log('GetRequest The request header result size is ' + result.length)
-            for (let i of result) {
-              console.log('GetRequest The request header key is : ' + i.headerKey +
-                ' , value is : ' + i.headerValue);
+            if (event.param.getInputFieldType() == 3) {
+              Utils.emitEvent(true, 2901)
             }
-            let respHeader = event.response.getResponseHeader()
-            this.getResponseHeaderValue = respHeader.length
-            console.log('GetRequest The response header result size is ' + respHeader.length)
-            for (let i of respHeader) {
-              console.log('GetRequest The response header key is : ' + i.headerKey +
-                ' , value is : ' + i.headerValue);
+            if (event.param.getInputFieldType() == 1) {
+              Utils.emitEvent(true, 2902)
             }
+            if (event.param.getInputFieldType() == 2) {
+              Utils.emitEvent(true, 2903)
+            }
+            if (event.param.getInputFieldType() == 4) {
+              Utils.emitEvent(true, 2904)
+            }
+            if (event.param.getInputFieldType() == 5) {
+              Utils.emitEvent(true, 2905)
+            }
+            event.result.closeContextMenu()
           }
+          return true
         })
-        .onTitleReceive((event) => {
-          if (event) {
-            console.log('title:' + event.title);
-            this.title = event.title
-            Utils.emitEvent(this.title, 492);
+        .onInterceptKeyboardAttach((KeyboardCallbackInfo) => {
+        if(this.ResultKey == 10){
+          this.i=this.i + 1;
+          console.log('count'+this.i)
+        }
+        let option: WebKeyboardOptions = {
+          useSystemKeyboard: true,
+        };
+        if (!KeyboardCallbackInfo) {
+          return option;
+        }
+
+        this.webKeyboardController = KeyboardCallbackInfo.controller
+        let attributes: Record<string, string> = KeyboardCallbackInfo.attributes
+        // 遍历attributes
+        let attributeKeys = Object.keys(attributes)
+        for (let i = 0; i < attributeKeys.length; i++) {
+          console.log('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
+        }
+
+        if (attributes) {
+          if (attributes['data-keyboard'] == 'customKeyboard') {
+            console.log('WebCustomKeyboard use custom keyboard')
+            option.useSystemKeyboard = false;
+            option.customKeyboard = () => {
+              this.customKeyboardBuilder()
+            }
+            if(this.ResultKey == 1){
+              Utils.emitEvent(true, 2893)
+            }
+            return option;
           }
 
-        })
+          if (attributes['keyboard-return'] != undefined) {
+            option.useSystemKeyboard = true;
+            let enterKeyType: number | undefined = this.inputAttributeMap.get(attributes['keyboard-return'])
+            console.log('keyboard-return'+enterKeyType)
+            if (enterKeyType != undefined) {
+              option.enterKeyType = enterKeyType
+            }
+            if(this.ResultKey == 3){
+              Utils.emitEvent(enterKeyType+"", 2895)
+            }
+            if(this.ResultKey == 4){
+              Utils.emitEvent(enterKeyType+"", 2896)
+            }
+            if(this.ResultKey == 5){
+              Utils.emitEvent(enterKeyType+"", 2897)
+            }
+            if(this.ResultKey == 6){
+              Utils.emitEvent(enterKeyType+"", 2898)
+            }
+            if(this.ResultKey == 7){
+              Utils.emitEvent(enterKeyType+"", 2899)
+            }
+            if(this.ResultKey == 8){
+              Utils.emitEvent(enterKeyType+"", 2880)
+            }
+            if(this.ResultKey == 9){
+              Utils.emitEvent(enterKeyType+"", 2881)
+            }
+            return option;
+          }
+        }
+        if(this.ResultKey == 2){
+          Utils.emitEvent(true, 2894)
+        }
+        return option;
+      })
     }
   }
 }
