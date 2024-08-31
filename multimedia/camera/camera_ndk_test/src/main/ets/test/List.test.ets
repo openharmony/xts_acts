@@ -29,6 +29,7 @@ import CameraManagerTest from './CameraManager.test';
 import SessionTest from './Session.test';
 import SecureCameraTest from './SecureCamera.test';
 import PhotoTest from './PhotoTest.test';
+import CameraSessionCameraRotationTest from './CameraSessionCameraRotationTest.test';
 
 let voice = call.hasVoiceCapability()
 
@@ -43,10 +44,14 @@ export default function testsuite() {
           CameraImageProcessingTest();
           CameraErrorCodeUsecaseTest();
           cameraJSUnitOutput();
+<<<<<<< HEAD
           SessionTest();
           PhotoTest();
           SecureCameraTest();
           CameraManagerTest();
+=======
+          CameraSessionCameraRotationTest;
+>>>>>>> e92aadc83c (修改xts)
     }else{
           CameraFunctionTest();
           CameraInputTest();
