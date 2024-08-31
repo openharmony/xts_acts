@@ -563,7 +563,7 @@ static napi_value SessionGetPhotoRotation(napi_env env, napi_callback_info info)
 
     int32_t rotation;
     napi_get_value_int32(env, args[0], &rotation);
-    Camera_ErrorCode ret = ndkCamera_->SessionSetFlashMode(rotation);
+    Camera_ErrorCode ret = ndkCamera_->SessionGetPhotoRotation(rotation);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -578,7 +578,7 @@ static napi_value SessionGetVideoRotation(napi_env env, napi_callback_info info)
 
     int32_t rotation;
     napi_get_value_int32(env, args[0], &rotation);
-    Camera_ErrorCode ret = ndkCamera_->SessionSetFlashMode(rotation);
+    Camera_ErrorCode ret = ndkCamera_->SessionGetVideoRotation(rotation);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -593,7 +593,7 @@ static napi_value SessionGetPreviewRotation(napi_env env, napi_callback_info inf
 
     int32_t rotation;
     napi_get_value_int32(env, args[0], &rotation);
-    Camera_ErrorCode ret = ndkCamera_->SessionSetFlashMode(rotation);
+    Camera_ErrorCode ret = ndkCamera_->SessionGetPreviewRotation(rotation);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -610,7 +610,7 @@ static napi_value SessionSetPreviewRotation(napi_env env, napi_callback_info inf
     napi_get_value_int32(env, args[0], &rotation);
     bool isDisplayLocked;
     napi_get_value_bool(env, args[1], &isDisplayLocked);
-    Camera_ErrorCode ret = ndkCamera_->SessionSetFlashMode(rotation, isDisplayLocked);
+    Camera_ErrorCode ret = ndkCamera_->SessionSetPreviewRotation(rotation, isDisplayLocked);
     napi_create_int32(env, ret, &result);
     return result;
 }
