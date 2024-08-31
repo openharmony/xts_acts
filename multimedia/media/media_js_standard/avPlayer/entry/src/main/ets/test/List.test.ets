@@ -26,7 +26,6 @@ import AVPlayerAmr from './AVPlayerAmrTest.test.js'
 import AVPlayerMediaSource from './AVPlayerMediaSource.test.js'
 import AVPlayerSelectTrackTest from './AVPlayerSelectTrackTest.test.js'
 
-
 export default function testsuite() {
   // AVPlayerHlsFuncTest()
   // AVPlayerHttpCompatibilityTest();
