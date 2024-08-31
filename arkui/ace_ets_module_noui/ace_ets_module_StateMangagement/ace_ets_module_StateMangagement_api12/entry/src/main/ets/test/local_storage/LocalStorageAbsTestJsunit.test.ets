@@ -41,7 +41,7 @@ export default function LocalStorageAbsTestJsunit() {
       done();
     });
     afterEach(async () => {
-      await CommonFunc.sleep(LocalStorageAbsTestJsunit);
+      await CommonFunc.sleep(1000);
       console.info("LocalStorageAbsTestJsunit after each called");
     });
 
