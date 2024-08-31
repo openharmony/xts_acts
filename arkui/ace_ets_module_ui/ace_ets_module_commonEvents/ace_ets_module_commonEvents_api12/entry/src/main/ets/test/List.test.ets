@@ -16,6 +16,7 @@ import APIPreDragStatusTest from './DragController/APIPreDragStatusTest.test';
 import addGestureApplyGesture from './addGestureApplyGesture.test';
 import ShortcutKeyTABTest from './keyboardShortcutTest/ShortcutKeyTABTest.test';
 import ShortcutKeyDPADUPTest from './keyboardShortcutTest/ShortcutKeyDPADUPTest.test';
+import gestureDefine10 from './GestureRecognizer/GestureRecognizerIsValid.test';
 import ShortcutKeyDPADDOWNTest from './keyboardShortcutTest/ShortcutKeyDPADDOWNTest.test';
 import ShortcutKeyDPADLEFTTest from './keyboardShortcutTest/ShortcutKeyDPADLEFTTest.test';
 import ShortcutKeyDPADRIGHTTest from './keyboardShortcutTest/ShortcutKeyDPADRIGHTTest.test';
@@ -63,6 +64,7 @@ import UIContextDragControllerTest from './DragController/UIContextDragControlle
 
 import accessibilityHoverTest from './onAccessibilityHover/onhoverAccessbility.test';
 
+import tapGestureAddInterfaceTest from './tapGestureAddInterface/tapGestureAddInterfaceTest.test';
 
 
 export default function testsuite() {
@@ -71,6 +73,7 @@ export default function testsuite() {
   addGestureApplyGesture();
   ShortcutKeyTABTest();
   ShortcutKeyDPADUPTest();
+  gestureDefine10();
   ShortcutKeyDPADDOWNTest();
   ShortcutKeyDPADLEFTTest();
   ShortcutKeyDPADRIGHTTest();
@@ -120,4 +123,8 @@ export default function testsuite() {
 
   
   accessibilityHoverTest();
+  tapGestureAddInterfaceTest();
+
+
+
 }

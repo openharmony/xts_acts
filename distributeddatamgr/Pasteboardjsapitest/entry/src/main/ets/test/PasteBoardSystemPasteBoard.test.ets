@@ -651,5 +651,57 @@ export default function pasteBoardSystemPasteBoardTest() {
       console.info(TAG + "SUB_PASTEBOARD_GETDATASOURCE_0100 end")
     })
 
+
+    /**
+     * @tc.number SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_9900
+     * @tc.name getData
+     * @tc.desc get the pastedata from system pasteBoard success
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0800', 0, async (done: Function) => {
+      console.info("SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0800 start")
+      let uri = "www.baidu.com"
+      let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, uri)
+      let systemPasteBoard = pasteboard.getSystemPasteboard();
+      await systemPasteBoard.setData(pasteData).then(async () => {
+        systemPasteBoard.getData(async (err, data) => {
+          if (err != null) {
+            console.info("Get the pastedata from system pasteboard failed" + err)
+            expect().assertFail();
+          } else {
+            let recordCount = data.getRecordCount()
+            expect(recordCount).assertEqual(1)
+            expect(data.getRecord(0).uri).assertEqual(uri)
+            try{
+              data.pasteStart()
+              console.info("pasteStart success")
+            } catch (err) {
+              expect().assertFail();
+              console.info("pasteStart fail "+ err)
+            }
+
+            await sleep(10000);
+
+            try{
+              data.pasteComplete()
+              console.info("pasteComplete success")
+            } catch (err) {
+              expect().assertFail();
+              console.info("pasteComplete fail "+ err)
+            }
+
+          }
+        })
+      }).catch((err: Error) => {
+        console.info("System pasteBoard set pastedata error,error: " + err)
+        expect(false).assertTrue();
+      })
+      console.info("SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0800 end")
+      done();
+    })
+
+
   });
 }

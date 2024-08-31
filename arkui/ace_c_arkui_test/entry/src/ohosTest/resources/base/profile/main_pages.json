@@ -109,6 +109,7 @@
     "MainAbility/pages/textinput/TextInputOnFocusTest",
     "MainAbility/pages/textinput/TextInputOnSubmitTest",
     "MainAbility/pages/textinput/TextInputOnCutTest",
-    "MainAbility/pages/textinput/TextInputOnPasteTest"
+    "MainAbility/pages/textinput/TextInputOnPasteTest",
+    "MainAbility/pages/gesturenestScroll/gestureNestScrollTest"
   ]
 }
