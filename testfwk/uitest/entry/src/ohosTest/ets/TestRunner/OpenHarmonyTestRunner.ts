@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+/*
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -58,11 +58,11 @@ export default class OpenHarmonyTestRunner implements TestRunner {
             abilityName: testAbilityName,
             onAbilityCreate: onAbilityCreateCallback,
         };
-        var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility'
+        var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.TestAbility'
         abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
         var cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName
-        cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters)
-        console.info('cmd : ' + cmd)
+        cmd += ' '+translateParamsToString(abilityDelegatorArguments.parameters)
+        console.info('cmd : '+cmd)
         abilityDelegator.executeShellCommand(cmd,
             (err: any, d: any) => {
                 console.info('executeShellCommand : err : ' + JSON.stringify(err));
