@@ -110,5 +110,21 @@ export default function imageNdkTest() {
       done();
     })
 
+    /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetNativeBuffer_0600
+    * @tc.name      : testNativeGetNativeBufferAbnormal
+    * @tc.desc      : 1.testNativeGetNativeBufferAbnormal
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetNativeBuffer_0600', 0, (done: Function) => {
+      let result: number = ndkTest.testNativeGetNativeBufferAbnormal()
+      let msg = "testNativeGetNativeBufferAbnormal result: "
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
   })
 }

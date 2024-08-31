@@ -181,6 +181,19 @@ static napi_value TestScaleWithAntiAliasingAbnormal(napi_env env, napi_callback_
     return getJsResult(env, IMAGE_RESULT_SUCCESS);
 }
 
+static napi_value TestNativeGetNativeBufferAbnormal(napi_env env, napi_callback_info info)
+{
+    OH_PixelmapNative *pixelmapNative = nullptr;
+    OH_NativeBuffer **nativeBUffer = nullptr;
+    Image_ErrorCode errCode = OH_PixelmapNative_GetNativeBuffer(pixelmapNative, nativeBUffer);
+    if (errCode != IMAGE_BAD_PARAMETER) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_GetNativeBuffer failed, errCode: %{public}d.", errCode);
+        return getJsResult(env, errCode);
+    }
+    OH_LOG_INFO(LOG_APP, "ImagePixelmapNativeCTest TestNativeGetNativeBufferAbnormal success.");
+    return getJsResult(env, IMAGE_SUCCESS);
+}
+
 static void setInt32NamedProperty(napi_env env, napi_value object, const char *utf8name, uint32_t value)
 {
     napi_value tmp;
@@ -211,6 +224,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testNativeScaleWithAntiAliasingAbnormal", nullptr, TestNativeScaleWithAntiAliasingAbnormal, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"testScaleWithAntiAliasingAbnormal", nullptr, TestScaleWithAntiAliasingAbnormal, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testNativeGetNativeBufferAbnormal", nullptr, TestNativeGetNativeBufferAbnormal, nullptr, nullptr,
          nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
