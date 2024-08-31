@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 #include "napi/native_api.h"
-#include "asset_api.h"
+#include "asset/asset_api.h"
 #include <bits/alltypes.h>
 #include <cstring>
 

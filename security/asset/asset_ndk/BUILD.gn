@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,41 +11,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAssetNDKFuncTest") {
-  hap_profile = "./src/main/module.json"
-  deps = [
-    ":windowStage_js_assets",
-    ":windowStage_resources",
-  ]
-  ets2abc = true
+ohos_app_assist_suite("ActsAsset_ndk_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAssetNdkMainTest"
+  subsystem_name = "security"
+  part_name = "asset"
+}
+
+ohos_js_app_suite("ActsAssetNDKFuncTest") {
+  test_hap = true
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAssetNDKFuncTest"
   subsystem_name = "security"
   part_name = "asset"
-  shared_libraries = [
-    "./src/main/cpp:assetNdkTest",
-    ":libcppsharedso",
-  ]
-}
-
-ohos_prebuilt_shared_library("libcppsharedso") {
-  source = rebase_path(libcxx_ndk_shared_file)
-  subsystem_name = "security"
-  part_name = "asset"
-}
-
-ohos_app_scope("windowStage_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-ohos_js_assets("windowStage_js_assets") {
-  source_dir = "src/main/ets"
-}
-ohos_resources("windowStage_resources") {
-  sources = [ "./src/main/resources" ]
-  deps = [ ":windowStage_app_profile" ]
-  hap_profile = "./src/main/module.json"
+  deps = [ ":ActsAsset_ndk_main" ]
 }
