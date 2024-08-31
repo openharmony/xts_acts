@@ -353,6 +353,7 @@
 #include "text/text_visibility_test.cpp"
 #include "text/text_width_test.cpp"
 #include "text/text_StyleGraphic_test.cpp"
+#include "text/text_CustomSpan_test.cpp"
 #include "textinput/textinput_backgroundcolor_test.cpp"
 #include "textinput/textinput_backgroundimage_test.cpp"
 #include "textinput/textinput_caretcolor_test.cpp"
