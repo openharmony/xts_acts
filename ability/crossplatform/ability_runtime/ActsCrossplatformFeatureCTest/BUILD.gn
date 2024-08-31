@@ -13,27 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("ActsCrossplatformFeatureCTest") {
-  hap_profile = "src/main/module.json"
-  deps = [
-    ":windowStage_js_assets",
-    ":windowStage_resources",
-  ]
-  ets2abc = true
+ohos_app_assist_suite("ActsCrossplatformFeatureCTest") {
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsCrossplatformFeatureCTest"
   subsystem_name = "ability"
   part_name = "ability_runtime"
-}
-ohos_app_scope("windowStage_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-ohos_js_assets("windowStage_js_assets") {
-  source_dir = "src/main/ets"
-}
-ohos_resources("windowStage_resources") {
-  sources = [ "src/main/resources" ]
-  deps = [ ":windowStage_app_profile" ]
-  hap_profile = "src/main/module.json"
 }
