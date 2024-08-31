@@ -452,5 +452,35 @@ export default function webViewControllerPart2() {
       sendEventByKey('WebViewControllerPart2Button', 10, '');
     })
 
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_SCROLLTYPE_0100
+    * @tc.name       : testScrollType001
+    * @tc.desc       : test ScrollType
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testScrollType001', 0, async (done: Function) => {
+      Utils.emitEvent("testScrollType001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testScrollType001", 0, 37023, done);
+      sendEventByKey('WebViewControllerPart2Button', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_SCROLLBYWITHRESULT_0100
+    * @tc.name       : testscrollByWithResult001
+    * @tc.desc       : test ScrollByWithResult
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testscrollByWithResult001', 0, async (done: Function) => {
+      Utils.emitEvent("testscrollByWithResult001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testscrollByWithResult001", "error", 37024, done);
+      sendEventByKey('WebViewControllerPart2Button', 10, '');
+    })
+
   })
 }

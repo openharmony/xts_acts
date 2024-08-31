@@ -17,10 +17,16 @@ import MeasureJsunit from './MeasureSizeTest/MeasureJsunit.test';
 import APIsetDragEventStrictReportingEnabled from './MeasureSizeTest/APIsetDragEventStrictReportingEnabled.test';
 import APIgetFrameNodeByUniqueId from './MeasureSizeTest/APIgetFrameNodeByUniqueId.test';
 import PageInfo1 from './PageInfo/PageInfo1.test';
+import UIContextOnIdle from './OnIdle/UIContextOnIdle.test';
+import APIcomponentSnapshotGetSync from './componentSnapshot/APIcomponentSnapshotGetSync.test';
+import APIUIContextGetSync from './componentSnapshot/APIUIContextGetSync.test';
 
 export default function testsuite() {
+  APIcomponentSnapshotGetSync();
+  APIUIContextGetSync();
   MeasureJsunit();
   APIsetDragEventStrictReportingEnabled();
   APIgetFrameNodeByUniqueId();
   PageInfo1();
+  UIContextOnIdle();
 }

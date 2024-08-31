@@ -94,6 +94,21 @@ Note:If the text contains special characters, please escape them according to th
                 <filteritem type="filename" name="*.spv" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.ktx" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.gltf" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.mp4" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.srt" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.ts" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.m3u8" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.aac" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.h264" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.h265" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.pcm" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.flac" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.flv" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.m4a" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.rgba" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.yuv" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.raw" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.ape" desc="all bin file have check"/>
             </filefilter>
             <filefilter name="defaultFilter" desc="Filters for default" >
                 <filteritem type="filepath" name="global/global_stage/entry/src/main/resources/rawfile/rawfiletest.xml" desc="resource files do not to be added"/>
