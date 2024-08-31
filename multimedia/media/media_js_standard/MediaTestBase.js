@@ -14,6 +14,7 @@
  */
 
 import resourceManager from '@ohos.resourceManager';
+import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import {expect} from 'deccjsunit/index'
 import router from '@system.router'
 import fs from '@ohos.file.fs';
@@ -83,6 +84,29 @@ export async function closeFileDescriptor(fileName) {
             console.log('case closeRawFileDescriptor ' + fileName);
         }).catch(error => {
             console.log('case closeRawFileDescriptor err: ' + error);
+        });
+    });
+}
+
+export async function getStageFd(fileName) {
+    let fileDescriptor = undefined;
+    let mgr = globalThis.abilityContext.resourceManager;
+    await mgr.getRawFd(fileName).then(value => {
+        fileDescriptor = {fd: value.fd, offset: value.offset, length: value.length};
+        console.log('case getRawFd success fileName: ' + fileName);
+    }).catch(error => {
+        console.log('case getRawFd err: ' + fileName);
+        console.log('case getRawFd err: ' + error);
+    });
+    return fileDescriptor;
+}
+
+export async function closeStageFd(fileName) {
+    await resourceManager.getResourceManager().then(async (mgr) => {
+        await mgr.closeRawFd(fileName).then(()=> {
+            console.log('case closeRawFd ' + fileName);
+        }).catch(error => {
+            console.log('case closeRawFd err: ' + error);
         });
     });
 }
@@ -223,6 +247,20 @@ export async function toNewPage(pagePath1, pagePath2, page) {
 
 export async function clearRouter() {
     await router.clear();
+}
+
+export async function saveVideo(asset) {
+    console.info('case saveVideo start');
+    try {
+        let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(featureAbility.getContext());
+        let assetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+        assetChangeRequest.saveCameraPhoto();
+        await phAccessHelper.applyChanges(assetChangeRequest);
+        console.info('case saveVideo successfully');
+    } catch (error) {
+        console.info(`case error called,errMessage is ${error.message}`);
+    }
+    console.info('case saveVideo end');
 }
 
 export async function getFd(pathName) {

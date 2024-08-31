@@ -24,8 +24,10 @@ export default function avRecorderTest() {
         const RECORDER_TIME = 3000;
         const FORMAT_M4A = media.ContainerFormatType.CFT_MPEG_4A;
         const FORMAT_MP3 = media.ContainerFormatType.CFT_MP3;
+        const FORMAT_WAV = media.ContainerFormatType.CFT_WAV;
         const ENCORDER_AAC = media.CodecMimeType.AUDIO_AAC;
         const ENCORDER_MP3 = media.CodecMimeType.AUDIO_MP3;
+        const ENCORDER_WAV = media.CodecMimeType.AUDIO_G711MU;
         let fdObject;
         let fdPath;
 
@@ -1927,16 +1929,41 @@ export default function avRecorderTest() {
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_MP3_0100', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_MP3_0100 start')
             let timestamp = Date.now();
-            let fileName = `avRecorder_${timestamp}.mp3`;
-            fdObject = await mediaTestBase.getFd(fileName);
+            let filename = `avRecorder_${timestamp}.mp3`;
+            fdObject = await mediaTestBase.getFd(filename);
             fdPath = "fd://" + fdObject.fdNumber;
             console.info('case fdPath is: ' + fdPath);
             avConfig.url = fdPath;
             console.info('avConfig.url ' + avConfig.url);
-            avProfile.fileFormat = FORMAT_MP3;
-            avProfile.audioCodec = ENCORDER_MP3;
+            avConfig.profile.fileFormat = FORMAT_MP3;
+            avConfig.profile.audioCodec = ENCORDER_MP3;
             avRecorderTestBase.avRecorderWithCallBack3(avConfig, avRecorder, RECORDER_TIME, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_MP3_0100 end')
+        })
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_WAV_0100
+            * @tc.name      : 003.test recording WAV 3 seconds to stop
+            * @tc.desc      : Local Video recording WAV 3 seconds to stop
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_WAV_0100', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_WAV_0100 start')
+            let timestamp = Date.now();
+            let filename = `avRecorder_${timestamp}.wav`;
+            fdObject = await mediaTestBase.getFd(filename);
+            fdPath = "fd://" + fdObject.fdNumber;
+            console.info('case fdPath is: ' + fdPath);
+            avConfig.url = fdPath;
+            console.info('avConfig.url ' + avConfig.url);
+            avConfig.profile.fileFormat = FORMAT_WAV;
+            avConfig.profile.audioCodec = ENCORDER_WAV;
+            avConfig.profile.audioBitrate = 64000;
+            avConfig.profile.audioChannels = 1;
+            avConfig.profile.audioSampleRate = 8000;
+            avRecorderTestBase.avRecorderWithCallBack3(avConfig, avRecorder, RECORDER_TIME, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_WAV_0100 end')
         })
     })
 }
