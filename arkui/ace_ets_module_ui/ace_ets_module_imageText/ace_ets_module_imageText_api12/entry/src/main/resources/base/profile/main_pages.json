@@ -124,6 +124,7 @@
     "MainAbility/pages/Text/editMeunOptions",
     "MainAbility/pages/RichEditor/onDidIMEInput",
     "MainAbility/pages/Text/TextHalfLeading",
+    "MainAbility/pages/Text/FontSettingOptions",
     "MainAbility/pages/Image/ImageResizable"
   ]
 }
