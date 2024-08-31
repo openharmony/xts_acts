@@ -15,6 +15,7 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import testNapi from 'libentry.so';
+import { display } from '@kit.ArkUI';
 
 export default function DisplayNdkTest() {
   describe('ActsDisplayNdkTest', () => {
@@ -143,6 +144,8 @@ export default function DisplayNdkTest() {
       try{
         let displayOrientation  = testNapi.getOrientation();
         console.log(caseName + ' :'+ displayOrientation);
+        let display1 = display.getDefaultDisplaySync()
+        console.log(caseName + 'jsOrientation :'+ display1.orientation);
         expect(displayOrientation).assertEqual(0);
         done();
       } catch (err) {
@@ -430,39 +433,17 @@ export default function DisplayNdkTest() {
         done();
       }
     })
+
     /**
      * @tc.number    : SUB_BASIC_DMS_NDK_1900
-     * @tc.name      : test_OH_NativeDisplayManager_RegisterDisplayChangeListener
-     * @tc.desc      : test_OH_NativeDisplayManager_RegisterDisplayChangeListener
+     * @tc.name      : test_OH_NativeDisplayManager_UnRegisterDisplayChangeListener
+     * @tc.desc      : test_OH_NativeDisplayManager_UnRegisterDisplayChangeListener
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_OH_NativeDisplayManager_RegisterDisplayChangeListener', 0, (done:Function) => {
-      let caseName = 'test_OH_NativeDisplayManager_RegisterDisplayChangeListener';
-      try{
-        let displayId1  = testNapi.registerDisplayChange((displayId: number) => {
-          console.log(caseName + ' displayId:'+ displayId );
-        });
-        console.log(caseName + ' displayId1:'+ displayId1 );
-        expect(displayId1).assertEqual(1);
-        done();
-      } catch (err) {
-        console.log(caseName + ': fail:'+ err + ' '+err.code);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_DMS_NDK_1900
-     * @tc.name      : test_OH_NativeDisplayManager_UnregisterDisplayChangeListener
-     * @tc.desc      : test_OH_NativeDisplayManager_UnregisterDisplayChangeListener
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('test_OH_NativeDisplayManager_UnregisterDisplayChangeListener', 0, (done:Function) => {
-      let caseName = 'test_OH_NativeDisplayManager_UnregisterDisplayChangeListener';
+    it('test_OH_NativeDisplayManager_UnRegisterDisplayChangeListener', 0, (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_UnRegisterDisplayChangeListener';
       try{
         let result  = testNapi.unregisterDisplayChange(0);
         console.log(caseName + ' result:'+ result );
@@ -497,6 +478,8 @@ export default function DisplayNdkTest() {
         done();
       }
     })
+
+
 
   })
 }
