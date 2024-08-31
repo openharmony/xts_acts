@@ -1104,6 +1104,6 @@ export {
   certUft8WithChineseSubject,
   certUft8WithSpecialSubject,
   certUft8WithNullSubject,
-  certUft8WithSubject
+  certUft8WithSubject,
   checkGetX509CRLEntryExtensionsStabilityPromise
 };
