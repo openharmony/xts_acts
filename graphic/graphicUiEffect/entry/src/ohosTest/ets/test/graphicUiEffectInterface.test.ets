@@ -17,11 +17,11 @@ import { BusinessError } from '@ohos.base';
 import buffer from '@ohos.buffer';
 import uiEffect from "@ohos.graphics.uiEffect"
 
-export default function graphicUiEffectInterfaceTest(context, windowStage, abilityStorage) {
-  describe('graphicUiEffectInterfaceTest', function () {
+export default function graphicUiEffectInterfaceTest() {
+  describe('graphicUiEffectInterfaceTest', ()=> {
     console.log('describe graphicUiEffectInterfaceTest start!!!')
 
-    beforeAll(async function () {
+    beforeAll(async ()=> {
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICUIEFFECT_JS_API_001
@@ -31,7 +31,7 @@ export default function graphicUiEffectInterfaceTest(context, windowStage, abili
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateFilter', 1, async function (done) {
+    it('testCreateFilter', 1, async (done:Function)=> {
       let msg = " =====testCreateFilter==== "
       try {
         let filter : uiEffect.Filter = uiEffect.createFilter()
