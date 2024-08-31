@@ -480,6 +480,9 @@ import textAreaWidthTest from './textarea/TextAreaWidthTest.test'
 import textAreaHeightTest from './textarea/TextAreaHeightTest.test'
 import textAreaPositionTest from './textarea/TextAreaPositionTest.test'
 import textAreaEnabledTest from './textarea/TextAreaEnabledTest.test'
+import textInputBlurOnSubmitTest from './textinput/TextInputBlurOnSubmitTest.test'
+import textInputSelectionMenuHiddenTest from './textinput/TextInputSelectionMenuHiddenTest.test'
+import textInputPlaceholderTest from './textinput/TextInputPlaceholderTest.test'
 import textInputWidthTest from './textinput/TextInputWidthTest.test'
 import textInputHeightTest from './textinput/TextInputHeightTest.test'
 import textInputPositionTest from './textinput/TextInputPositionTest.test'
@@ -537,6 +540,7 @@ import textAreaOnBlurTest from './textarea/TextAreaOnBlurTest'
 import textAreaKeyTest from './textarea/TextAreaKeyTest'
 import textInputKeyTest from './textinput/TextInputKeyTest'
 import textAreaOnChangeTest from './textarea/TextAreaOnChangeTest'
+import textAreaOnPasteTest from './textarea/TextAreaOnPasteTest.test'
 import progressStyleTest from './progress/ProgressStyleTest'
 import progressTotalTest from './progress/ProgressTotalTest.test'
 import progressValueTest from './progress/ProgressValueTest.test'
@@ -1062,6 +1066,9 @@ export default function testsuite() {
   textAreaWidthTest()
   textAreaHeightTest()
   textAreaPositionTest()
+  textInputBlurOnSubmitTest()
+  textInputSelectionMenuHiddenTest()
+  textInputPlaceholderTest()
   textInputWidthTest()
   textInputHeightTest()
   textInputPositionTest()
@@ -1142,6 +1149,7 @@ export default function testsuite() {
   textAreaOnFocusTest()
   textAreaOnBlurTest()
   textAreaOnChangeTest()
+  textAreaOnPasteTest()
   textAreaDefaultFocusTest()
   textAreaResponseRegionTest()
   refreshOnStateChangeTest()

@@ -410,6 +410,9 @@
 #include "textarea/textarea_width_test.cpp"
 #include "textarea/textarea_height_test.cpp"
 #include "textarea/textarea_position_test.cpp"
+#include "textinput/textinput_bluronsubmit_test.cpp"
+#include "textinput/textinput_selectionmenuhidden_test.cpp"
+#include "textinput/textinput_placeholder_test.cpp"
 #include "textinput/textinput_width_test.cpp"
 #include "textinput/textinput_height_test.cpp"
 #include "textinput/textinput_position_test.cpp"
@@ -3972,6 +3975,20 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextInputHeight001", nullptr, TestTextInputHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextInputHeight002", nullptr, TestTextInputHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextInputHeight003", nullptr, TestTextInputHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputBlurOnSubmit001", nullptr, TestTextInputBlurOnSubmit001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputBlurOnSubmit002", nullptr, TestTextInputBlurOnSubmit002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputBlurOnSubmit003", nullptr, TestTextInputBlurOnSubmit003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputSelectionMenuHidden001", nullptr, TestTextInputSelectionMenuHidden001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextInputSelectionMenuHidden002", nullptr, TestTextInputSelectionMenuHidden002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextInputSelectionMenuHidden003", nullptr, TestTextInputSelectionMenuHidden003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextInputPlaceholder001", nullptr, TestTextInputPlaceholder001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"testTextInputCaretStyle001", nullptr, TestTextInputCaretStyle001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testTextInputCaretStyle002", nullptr, TestTextInputCaretStyle002, nullptr, nullptr, nullptr, napi_default,

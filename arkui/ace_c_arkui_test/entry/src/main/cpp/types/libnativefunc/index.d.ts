@@ -4197,6 +4197,20 @@ export const testTextAreaPosition001: () => number;
 
 export const testTextAreaPosition002: () => number;
 
+export const testTextInputBlurOnSubmit001: () => number;
+
+export const testTextInputBlurOnSubmit002: () => number;
+
+export const testTextInputBlurOnSubmit003: () => number;
+
+export const testTextInputSelectionMenuHidden001: () => number;
+
+export const testTextInputSelectionMenuHidden002: () => number;
+
+export const testTextInputSelectionMenuHidden003: () => number;
+
+export const testTextInputPlaceholder001: () => number;
+
 export const testTextInputWidth001: () => number;
 
 export const testTextInputWidth002: () => number;

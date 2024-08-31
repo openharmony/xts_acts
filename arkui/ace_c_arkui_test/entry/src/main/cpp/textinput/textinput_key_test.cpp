@@ -55,7 +55,7 @@ static void BasicSet()
     nodeAPI->setAttribute(textInput, NODE_HEIGHT, &height_item);
     ArkUI_AttributeItem place_holder_item;
     place_holder_item.string = "TARGET";
-    nodeAPI->setAttribute(textInput, NODE_TEXT_AREA_TEXT, &place_holder_item);
+    nodeAPI->setAttribute(textInput, NODE_TEXT_INPUT_TEXT, &place_holder_item);
 
     textInputCompare = nodeAPI->createNode(ARKUI_NODE_TEXT_INPUT);
     ArkUI_NumberValue compare_width_value[] = {{.f32 = PARAM_LENGTH}};
@@ -73,7 +73,7 @@ static void BasicSet()
 
     ArkUI_AttributeItem compare_place_holder_item;
     compare_place_holder_item.string = "COMPARE";
-    nodeAPI->setAttribute(textInputCompare, NODE_TEXT_AREA_TEXT, &compare_place_holder_item);
+    nodeAPI->setAttribute(textInputCompare, NODE_TEXT_INPUT_TEXT, &compare_place_holder_item);
 
     ArkUI_NumberValue value[] = {{.i32 = true}};
     ArkUI_AttributeItem item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
