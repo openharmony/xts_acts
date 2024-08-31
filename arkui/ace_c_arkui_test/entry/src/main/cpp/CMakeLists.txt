@@ -90,7 +90,9 @@ add_library(nativerender SHARED
     textinput/textinput_onpaste_test.cpp
     arkApi/arkApi.cpp
     gesture/gesture_test.cpp
+    gestureScroll/gesture_interfaceTest.cpp
     customcomponent/customcomponent_event_test.cpp
+    text/text_CustomSpan_test.cpp
 )
 
 add_library(nativefunc SHARED

@@ -16,6 +16,7 @@
 #include "jsvm.h"
 #include "jsvm_common.h"
 #include "native_common.h"
+#include "test_entry.h"
 #include "securec.h"
 #include <stdint.h>
 #include <stdio.h>
@@ -9662,6 +9663,22 @@ static napi_value RunJsVm(napi_env nEnv, napi_callback_info nInfo)
     return nResult;
 }
 
+#include <iostream>
+
+[[maybe_unused]] static napi_value WasmTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_wasm.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value ArrayBufferBackingStoreTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_array_buffer_backing_store.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -9721,6 +9738,8 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testCompileWithOption", testCompileWithOption),
         DECLARE_NAPI_FUNCTION("testRetainScript", testRetainScript),
         DECLARE_NAPI_FUNCTION("testOpenInspectorWithName", testOpenInspectorWithName),
+        DECLARE_NAPI_FUNCTION("wasmTest", WasmTest),
+        DECLARE_NAPI_FUNCTION("arrayBufferBackingStoreTest", ArrayBufferBackingStoreTest),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;

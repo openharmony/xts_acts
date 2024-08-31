@@ -36,6 +36,8 @@ import waterFlowLayoutMode from './WaterFlowTest/waterFlowLayoutMode.test';
 import ListAddApi from './ListTest/ListAddApi.test';
 import listOffsetJsunit from './ListTest/listOffsetJsunit.test';
 import swiperSyncType from './SwiperTest/swiperSyncType.test';
+import listVisibleContent from './ListTest/listVisibleContent.test';
+import RefreshingContent from './RefreshTest/RefreshingContent.test';
 
 export default function testsuite() {
   ListScrollTest1()
@@ -62,4 +64,6 @@ export default function testsuite() {
   ListAddApi()
   listOffsetJsunit()
   swiperSyncType()
+  listVisibleContent()
+  RefreshingContent()
 }

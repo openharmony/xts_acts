@@ -5,7 +5,8 @@
         "test-timeout": "600000",
         "shell-timeout": "600000",
         "bundle-name": "com.example.avplayerndk",
-        "module-name": "entry_test"
+        "module-name": "entry_test",
+        "testcase-timeout": 30000
     },
     "kits": [
         {

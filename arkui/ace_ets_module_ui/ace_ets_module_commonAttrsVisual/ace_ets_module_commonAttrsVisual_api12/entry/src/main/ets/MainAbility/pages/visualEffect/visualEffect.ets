@@ -37,7 +37,7 @@ struct visualEffect1 {
         .height(100)
         .backgroundColor('#ADD8E6')
         .backgroundImage($r("app.media.icon"))
-        .foregroundFilter(this.filterTest.pixelStretch([0.3, 0.1, 0.1, 0.1], uiEffect.TileMode.REPEAT)) // 通过 foregroundFilter 进行像素扩展
+        .foregroundFilter(this.filterTest.blur(10)) // by foregroundFilter pixelExpand
 
       Text('backgroundFilter').fontSize(20).width('75%').fontColor('#DCDCDC')
       Text().id("backgroundFilter_text")
