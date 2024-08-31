@@ -91,6 +91,9 @@ import ProvideConsume0360TestJsunit from './provide_consume/ProvideConsume0360Te
 import StateMap0010TestJsunit from './state/StateMap0010TestJsunit.test';
 import StateSet0010TestJsunit from './state/StateSet0010TestJsunit.test';
 import Observed0060TestJsunit from './observed_object/Observed0060TestJsunit.test';
+import LocalStorageLink0310TestJsunit from './local_storage/LocalStorageLink0310TestJsunit.test';
+import LocalStorageProp0320TestJsunit from './local_storage/LocalStorageProp0320TestJsunit.test';
+import LocalStorageAbsTestJsunit from './local_storage/LocalStorageAbsTestJsunit.test';
 
 export default function testsuite() {
   ExtendTrackTest();
@@ -171,4 +174,7 @@ export default function testsuite() {
   StateMap0010TestJsunit();
   StateSet0010TestJsunit();
   Observed0060TestJsunit();
+  LocalStorageLink0310TestJsunit();
+  LocalStorageProp0320TestJsunit();
+  LocalStorageAbsTestJsunit();
 }

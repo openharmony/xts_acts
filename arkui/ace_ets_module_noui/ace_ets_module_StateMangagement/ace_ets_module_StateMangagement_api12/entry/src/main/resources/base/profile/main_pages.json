@@ -79,6 +79,9 @@
         "MainAbility/pages/provide_consume/ProvideConsume0360",
         "MainAbility/pages/state/StateMap0010",
         "MainAbility/pages/state/StateSet0010",
-        "MainAbility/pages/observed_object/Observed0060"
+        "MainAbility/pages/observed_object/Observed0060",
+        "MainAbility/pages/local_storage/LocalStorageLink0310",
+        "MainAbility/pages/local_storage/LocalStorageProp0320",
+        "MainAbility/pages/local_storage/LocalStorageAbs"
     ]
 }
