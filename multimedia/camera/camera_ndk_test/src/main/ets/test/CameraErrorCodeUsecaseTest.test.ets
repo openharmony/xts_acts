@@ -1120,5 +1120,24 @@ export default function CameraErrorCodeUsecaseTest() {
         expect(true).assertTrue();
       }
     });
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_ORIENTATION_0100
+     * @tc.name      : capturesession beginConfig api
+     * @tc.desc      : capturesession beginConfig api
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_ORIENTATION_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_ORIENTATION_0100--------------");
+      cameraObj.createSession();
+      let ret = cameraObj.getCameraOrientation();
+      if (ret != 0) {
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_ORIENTATION_0100 FAILED");
+        console.info(TAG + "ERRORCODE: " + ret);
+        expect(ret == Camera_ErrorCode.CAMERA_SERVICE_FATAL_ERROR).assertTrue();
+        expect(true).assertTrue();
+      }
+    });
   })
 }

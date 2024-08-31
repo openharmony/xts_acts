@@ -95,6 +95,8 @@ export const initCamera: (surfaceId: string) => number;
 
 export const getSupportedCameras: () => cameraInfo;
 
+export const getCameraOrientation: () => number;
+
 export const createCameraInput: () => number;
 
 export const createCameraInputWithPositionAndType: (position: number, type: number) => number;
