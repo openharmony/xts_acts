@@ -954,21 +954,12 @@ describe('fileIO_fs_stat', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      fileIO.stat(fpath).then((stat) => {
-        expect(stat !== null).assertTrue();
-      }).catch((err) => {
-        console.log('fileIO_stat_async_000 error package1: ' + JSON.stringify(err));
-        expect(false).assertTrue();
-      });
+      let stat = await fileIO.stat(fpath);
+      expect(stat !== null).assertTrue();
 
       let file = fileIO.openSync(fpath);
-      fileIO.stat(file.fd).then((stat2) => {
-        expect(stat2 !== null).assertTrue();
-        fileIO.closeSync(file);
-      }).catch((err) => {
-        console.log('fileIO_stat_async_000 error package2: ' + JSON.stringify(err));
-        expect(false).assertTrue();
-      });
+      let stat2 = await fileIO.stat(file.fd);
+      expect(stat2 !== null).assertTrue();
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
