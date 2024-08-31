@@ -553,6 +553,68 @@ static napi_value SessionGetFlashMode(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value SessionGetPhotoRotation(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+
+    int32_t rotation;
+    napi_get_value_int32(env, args[0], &rotation);
+    Camera_ErrorCode ret = ndkCamera_->SessionSetFlashMode(rotation);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value SessionGetVideoRotation(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+
+    int32_t rotation;
+    napi_get_value_int32(env, args[0], &rotation);
+    Camera_ErrorCode ret = ndkCamera_->SessionSetFlashMode(rotation);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value SessionGetPreviewRotation(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+
+    int32_t rotation;
+    napi_get_value_int32(env, args[0], &rotation);
+    Camera_ErrorCode ret = ndkCamera_->SessionSetFlashMode(rotation);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value SessionSetPreviewRotation(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+
+    int32_t rotation;
+    napi_get_value_int32(env, args[0], &rotation);
+    bool isDisplayLocked;
+    napi_get_value_bool(env, args[1], &isDisplayLocked);
+    Camera_ErrorCode ret = ndkCamera_->SessionSetFlashMode(rotation, isDisplayLocked);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
 static napi_value SessionSetFlashMode(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
@@ -565,7 +627,7 @@ static napi_value SessionSetFlashMode(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], &flashMode);
     Camera_ErrorCode ret = ndkCamera_->SessionSetFlashMode(flashMode);
     napi_create_int32(env, ret, &result);
-    return result;
+    return result;    
 }
 
 static napi_value SessionIsExposureModeSupported(napi_env env, napi_callback_info info)
@@ -2327,6 +2389,14 @@ static napi_value Init(napi_env env, napi_value exports)
             napi_default, nullptr },
         { "getCameraCallbackCode", nullptr, GetCameraCallbackCode, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "takePictureWithSettings", nullptr, TakePictureWithSettings, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "sessionGetPhotoRotation", nullptr, SessionGetPhotoRotation, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "sessionGetVideoRotation", nullptr, SessionGetVideoRotation, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "sessionGetPreviewRotation", nullptr, SessionGetPreviewRotation, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "sessionSetPreviewRotation", nullptr, SessionSetPreviewRotation, nullptr, nullptr, nullptr,
             napi_default, nullptr },
     };
     napi_property_descriptor desc1[] = {
