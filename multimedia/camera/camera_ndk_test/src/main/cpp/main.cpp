@@ -627,7 +627,7 @@ static napi_value SessionSetFlashMode(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], &flashMode);
     Camera_ErrorCode ret = ndkCamera_->SessionSetFlashMode(flashMode);
     napi_create_int32(env, ret, &result);
-    return result;    
+    return result;
 }
 
 static napi_value SessionIsExposureModeSupported(napi_env env, napi_callback_info info)
