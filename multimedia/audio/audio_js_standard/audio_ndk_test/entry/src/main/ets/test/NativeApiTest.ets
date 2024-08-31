@@ -1508,6 +1508,111 @@ export default function audioNDK() {
     })
 
     /**
+        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETMANAGER_0001
+        * @tc.name      : get AudioManager with nullptr
+        * @tc.desc      : test OH_GetAudioManager
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETMANAGER_0001', 0, async function (done) {
+        let a = myaudioNdk.audioManagerGetManager_01();
+        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETMANAGER_0001 audioManagerGetManager_01: ${a}`);
+        expect(a).assertEqual(TEST_PASS)
+        done()
+    })
+
+    /**
+        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETMANAGER_0002
+        * @tc.name      : get AudioManager
+        * @tc.desc      : test OH_GetAudioManager
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETMANAGER_0002', 0, async function (done) {
+        let a = myaudioNdk.audioManagerGetManager_02();
+        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETMANAGER_0002 audioManagerGetManager_02: ${a}`);
+        expect(a).assertEqual(TEST_PASS)
+        done()
+    })
+
+    /**
+        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOSCENE_0001
+        * @tc.name      : get AudioScene
+        * @tc.desc      : test OH_GetAudioScene
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOSCENE_0001', 0, async function (done) {
+        let a = myaudioNdk.audioManagerGetAudioScene_01();
+        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOSCENE_0001 audioManagerGetAudioScene_01: ${a}`);
+        expect(a).assertEqual(TEST_PASS)
+        done()
+    })
+
+    /**
+        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOSCENE_0002
+        * @tc.name      : get AudioScene with invalid param
+        * @tc.desc      : test OH_GetAudioScene
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOSCENE_0002', 0, async function (done) {
+        let a = myaudioNdk.audioManagerGetAudioScene_02();
+        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOSCENE_0002 audioManagerGetAudioScene_02: ${a}`);
+        expect(a).assertEqual(TEST_PASS)
+        done()
+    })
+
+    /**
+        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETAVAILABLEDEVICE_0001
+        * @tc.name      : get available device
+        * @tc.desc      : test OH_AudioRoutingManager_GetAvailableDevices
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETAVAILABLEDEVICE_0001', 0, async function (done) {
+        let a = myaudioNdk.audioRoutingManagerGetAvailableDevices001();
+        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETAVAILABLEDEVICE_0001 audioRoutingManagerGetAvailableDevices001: ${a}`);
+        expect(a).assertEqual(TEST_PASS)
+        done()
+    })
+
+    /**
+        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDOUTPUTDEVICE_0001
+        * @tc.name      : GetPreferredOutputDevice
+        * @tc.desc      : test OH_AudioRoutingManager_GetPreferredOutputDevice
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDOUTPUTDEVICE_0001', 0, async function (done) {
+        let a = myaudioNdk.audioRoutingManagerGetPreferredOutputDevice001();
+        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDOUTPUTDEVICE_0001 audioRoutingManagerGetPreferredOutputDevice001: ${a}`);
+        expect(a).assertEqual(TEST_PASS)
+        done()
+    })
+
+    /**
+        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDINPUTDEVICE_0001
+        * @tc.name      : GetPreferredInputDevice
+        * @tc.desc      : test OH_AudioRoutingManager_GetPreferredInputDevice
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDINPUTDEVICE_0001', 0, async function (done) {
+        let a = myaudioNdk.audioRoutingManagerGetPreferredInputDevice001();
+        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDINPUTDEVICE_0001 audioRoutingManagerGetPreferredInputDevice001: ${a}`);
+        expect(a).assertEqual(TEST_PASS)
+        done()
+    })
+
+    /**
         * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0100
         * @tc.name      : registerDeviceChangeCallback with none device flag
         * @tc.desc      : test OH_AudioRoutingManager_RegisterDeviceChangeCallback
