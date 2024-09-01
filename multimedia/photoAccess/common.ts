@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
@@ -101,6 +101,9 @@ export function photoFetchOption(testNum, key, value) : photoAccessHelper.FetchO
       photoKeys.DATE_MODIFIED_MS,
       photoKeys.DYNAMIC_RANGE_TYPE,
       photoKeys.COVER_POSITION,
+      photoKeys.BURST_KEY,
+      photoKeys.LCD_SIZE,
+      photoKeys.THM_SIZE,
       'all_exif',
     ],
     predicates: predicates
@@ -113,7 +116,7 @@ export async function getPermission(name = 'ohos.acts.multimedia.photoaccess') :
   try {
     console.info('getPermission start', name);
     let permissionState = new Map();
-    const permissions = [
+    const permissions: Array<Permissions> = [
       'ohos.permission.MEDIA_LOCATION',
       'ohos.permission.READ_IMAGEVIDEO',
       'ohos.permission.WRITE_IMAGEVIDEO',
@@ -387,6 +390,28 @@ export function createSandboxFileUri(extension) {
   let path = pathDir + '/test' + new Date().getTime() + '.' + extension;
   fs.openSync(path, fs.OpenMode.CREATE)
   return fileuri.getUriFromPath(path);
+}
+
+export async function getBurstKey(testNum: string, fetchOps: photoAccessHelper.FetchOptions): Promise<string | number> {
+  let burstKey: string | number | undefined = -1;
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOps);
+    if (fetchResult === undefined) {
+      console.error(`${testNum} :: getBurstKey :: fetchResult is undefined !`);
+      return burstKey;
+    }
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error(`${testNum} :: getBurstKey :: photoAsset is undefined !`);
+      return burstKey;
+    }
+    burstKey = photoAsset.get(photoKeys.BURST_KEY).toString();
+    console.log(`${testNum} :: get burstKey success, burstKey is ${burstKey}`);
+    return burstKey;
+  } catch (error) {
+    console.error(`${testNum} :: getBurstKey failed, msg is ${error}`);
+    return burstKey;
+  }
 }
 
 export {

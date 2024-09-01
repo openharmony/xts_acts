@@ -72,6 +72,9 @@ import groupAlbumsTest from './PhotoAccessHelper/groupAlbums'
 import handleCameraPhotoTest from './MediaAssetChangeRequest/handleCameraPhoto.test'
 import showAssetsCreationDialogTest from './PhotoAccessHelper/showAssetsCreationDialog.test'
 import PhotoAccessHelperNativeTest from './PhotoAccessHelper/photoAccessHelperNative'
+import getBurstAssetsTest from './PhotoAccessHelper/getBurstAssets.test'
+import convertToCommonTest from './Sendable/convertToCommon.test'
+import getSendableBurstAssetsTest from './Sendable/getSendableBurstAssets.test'
 
 export default function testsuite () {
   provisionResourcesTest()
@@ -134,4 +137,7 @@ export default function testsuite () {
   handleCameraPhotoTest()
   showAssetsCreationDialogTest()
   PhotoAccessHelperNativeTest()
+  getBurstAssetsTest()
+  convertToCommonTest()
+  getSendableBurstAssetsTest()
 }
