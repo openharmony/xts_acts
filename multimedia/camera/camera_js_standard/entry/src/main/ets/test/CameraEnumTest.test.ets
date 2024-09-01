@@ -364,8 +364,8 @@ export default function cameraEnumTest() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_PRECONFIG_0100
-         * @tc.name      : test preconfig enum
-         * @tc.desc      : assert all preconfig enums
+         * @tc.name      : test preconfig type enum
+         * @tc.desc      : assert all preconfig type enums
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
@@ -379,6 +379,24 @@ export default function cameraEnumTest() {
             console.info(`${TAG} PreconfigType.PRECONFIG_4K:${camera.PreconfigType.PRECONFIG_4K}`);
             expect(camera.PreconfigType.PRECONFIG_HIGH_QUALITY == 3).assertTrue();
             console.info(`${TAG} PreconfigType.PRECONFIG_HIGH_QUALITY:${camera.PreconfigType.PRECONFIG_HIGH_QUALITY}`);
+            done();
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_PRECONFIG_0101
+         * @tc.name      : test preconfig ratio enum
+         * @tc.desc      : assert all preconfig ratio enums
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_PRECONFIG_0101', 0, async function (done) {
+            expect(camera.PreconfigRatio.PRECONFIG_RATIO_1_1 == 0).assertTrue();
+            console.info(`${TAG} PreconfigRatio.PRECONFIG_RATIO_1_1:${camera.PreconfigRatio.PRECONFIG_RATIO_1_1}`);
+            expect(camera.PreconfigRatio.PRECONFIG_RATIO_4_3 == 1).assertTrue();
+            console.info(`${TAG} PreconfigRatio.PRECONFIG_RATIO_4_3:${camera.PreconfigRatio.PRECONFIG_RATIO_4_3}`);
+            expect(camera.PreconfigRatio.PRECONFIG_RATIO_16_9 == 2).assertTrue();
+            console.info(`${TAG} PreconfigRatio.PRECONFIG_RATIO_16_9:${camera.PreconfigRatio.PRECONFIG_RATIO_16_9}`);
             done();
         })
     })
