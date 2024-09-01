@@ -91,6 +91,7 @@
 #include "textinput/textinput_oncut_test.h"
 #include "textinput/textinput_onpaste_test.h"
 #include "gesture/gesture_test.h"
+#include "gestureScroll/gesture_interfaceTest.h"
 #include "customcomponent/customcomponent_event_test.h"
 #include "drag/drag_setSuggestedDropOperation.h"
 #include "drag/drag_disableDefaultDropAnimation.h"
@@ -329,6 +330,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"scrollCurrentOffsetSharpTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeSharp, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"scrollCurrentOffsetSmoothTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeSmooth, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"gestureNestScrollTest", nullptr, GestureInterfaceTest::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"longPressGestureTest", nullptr, GestureTest::CreateLongPressNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
