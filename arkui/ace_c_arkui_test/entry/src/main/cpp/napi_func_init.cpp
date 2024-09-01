@@ -494,10 +494,11 @@
 #include "pointerevent/pointer_event_test.cpp"
 #include "native/native.cpp"
 #include "Dialog/DialogDismissEvent.cpp"
-
 #include "gestureScroll/gesture_interfaceParameterTest.cpp"
 #include "system/system_ColorFontChange_test.cpp"
-
+#include "drag/drag_getDragEvent.cpp"
+#include "drag/drag_getDataTypes.cpp"
+#include "drag/drag_setGetUdmfData.cpp"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -4767,6 +4768,11 @@ static napi_value Init(napi_env env, napi_value exports)
                 nullptr, nullptr, nullptr,
                 napi_default, nullptr},
 
+        {"drag_getDragEvent_001", nullptr, drag_getDragEvent_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"drag_getDataTypes_001", nullptr, drag_getDataTypes_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"drag_setGetUdmfData_001", nullptr, drag_setGetUdmfData_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"drag_setGetUdmfData_002", nullptr, drag_setGetUdmfData_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"drag_setGetUdmfData_003", nullptr, drag_setGetUdmfData_003, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
