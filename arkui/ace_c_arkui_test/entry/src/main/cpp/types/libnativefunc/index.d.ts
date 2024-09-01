@@ -5006,6 +5006,8 @@ export const testArkUI082: () => number;
 
 export const testArkUI083: () => number;
 
+export const testArkUI089: () => number;
+
 export const testArkUI084: () => number;
 
 export const testArkUI085: () => number;
