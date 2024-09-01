@@ -93,6 +93,7 @@ add_library(nativerender SHARED
     gestureScroll/gesture_interfaceTest.cpp
     customcomponent/customcomponent_event_test.cpp
     text/text_CustomSpan_test.cpp
+    system/system_ColorFontChange_test.cpp
 )
 
 add_library(nativefunc SHARED

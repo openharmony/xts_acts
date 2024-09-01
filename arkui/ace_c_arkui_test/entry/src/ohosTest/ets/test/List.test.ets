@@ -566,6 +566,8 @@ import mouseEventTest from './mouseevent/MouseEventTest.test'
 import pointerEventTest from './pointerevent/PointerEventTest.test'
 import nativeTest from './native/nativeTest.test'
 import DialogDismissEventTest from './Dialog/DialogDismissEvent.test'
+import SystemColorFontChangeTest from "./system/SystemColorFontChange.test"
+
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
@@ -1120,4 +1122,5 @@ export default function testsuite() {
   pointerEventTest()
   nativeTest()
   DialogDismissEventTest()
+  SystemColorFontChangeTest()
 }
