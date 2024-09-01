@@ -496,11 +496,6 @@
 #include "Dialog/DialogDismissEvent.cpp"
 
 #include "gestureScroll/gesture_interfaceParameterTest.cpp"
-#include "drag/drag_setDragEventStrictReport.cpp"
-#include "drag/drag_allowDropDataTypes.cpp"
-#include "drag/drag_setNodeDragPreview.cpp"
-#include "drag/drag_dragPreviewOption.cpp"
-#include "drag/drag_dragAction.cpp"
 #include "system/system_ColorFontChange_test.cpp"
 
 

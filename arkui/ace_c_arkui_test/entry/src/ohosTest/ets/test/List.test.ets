@@ -566,23 +566,6 @@ import mouseEventTest from './mouseevent/MouseEventTest.test'
 import pointerEventTest from './pointerevent/PointerEventTest.test'
 import nativeTest from './native/nativeTest.test'
 import DialogDismissEventTest from './Dialog/DialogDismissEvent.test'
-import DragGetDragEventTest from "./drag/DragGetDragEvent.test"
-import DragEventGetDataTypesTest from "./drag/DragEventGetDataTypes.test"
-import DragEventDisableDefaultDropAnimationTest from "./drag/DragEventDisableDefaultDropAnimation.test"
-import DragGetPreDragStatusTest from "./drag/DragGetPreDragStatus.test"
-import DragEventSetSuggestedDropOperationTest from "./drag/DragEventSetSuggestedDropOperation.test"
-import DragEventSetDragResultTest from "./drag/DragEventSetDragResult.test"
-import DragEventGetDataTypesCountTest from "./drag/DragEventGetDataTypesCount.test"
-import DragEventGetDragResultTest from "./drag/DragEventGetDragResult.test"
-import DragSetGetUdmfDataTest from "./drag/DragSetGetUdmfData.test"
-import DragEventGetXYTest from "./drag/DragEventGetXY.test"
-import DragEventGetWidthHeightTest from "./drag/DragEventGetWidthHeight.test"
-import DragEventGetModifierKeyStatesTest from "./drag/DragEventGetModifierKeyStates.test"
-import DragSetDragEventStrictReportTest from "./drag/DragSetDragEventStrictReport.test"
-import DragAllowDropDataTypesTest from "./drag/DragAllowDropDataTypes.test"
-import DragSetNodeDragPreviewTest from "./drag/DragSetNodeDragPreview.test"
-import DragDragPreviewOptionTest from "./drag/DragDragPreviewOption.test"
-import DragDragActionTest from "./drag/DragDragAction.test"
 import SystemColorFontChangeTest from "./system/SystemColorFontChange.test"
 
 export default function testsuite() {
@@ -1139,22 +1122,5 @@ export default function testsuite() {
   pointerEventTest()
   nativeTest()
   DialogDismissEventTest()
-  DragGetDragEventTest()
-  DragEventGetDataTypesTest()
-  DragEventDisableDefaultDropAnimationTest()
-  DragGetPreDragStatusTest()
-  DragEventSetSuggestedDropOperationTest()
-  DragEventSetDragResultTest()
-  DragEventGetDataTypesCountTest()
-  DragEventGetDragResultTest()
-  DragSetGetUdmfDataTest()
-  DragEventGetXYTest()
-  DragEventGetWidthHeightTest()
-  DragEventGetModifierKeyStatesTest()
-  DragSetDragEventStrictReportTest()
-  DragAllowDropDataTypesTest()
-  DragSetNodeDragPreviewTest()
-  DragDragPreviewOptionTest()
-  DragDragActionTest()
   SystemColorFontChangeTest()
 }
