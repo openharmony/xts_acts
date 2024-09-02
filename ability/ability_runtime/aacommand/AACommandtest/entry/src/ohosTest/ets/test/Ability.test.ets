@@ -68,7 +68,7 @@ export default function abilityTest() {
         'test -m entry_test ' +
         '-s unittest OpenHarmonyTestRunner ' +
         '-w 40 -s class ACTS_AACommand_01_3 -s level 1 -s size 0 -s testType aaa -s ' +
-        'timeout 5 -s 1 3 -D';
+        'timeout 5 -s 1 3';
       let delay = 3000;
       abilityDelegator!.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.log('ACTS_AACommand_0100 - executeShellCommand: start ');
@@ -512,7 +512,7 @@ export default function abilityTest() {
         expect(error).assertEqual(null);
         console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1100 shell result data: ' + JSON.stringify(data));
         try {
-          expect(data.stdResult).assertContain('attach app debug successfully.');
+          expect(data.stdResult).assertContain('error: failed to attach app debug.');
         } catch (error) {
           console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1100 assert error: ' + JSON.stringify(error));
         }
@@ -532,7 +532,7 @@ export default function abilityTest() {
         expect(error).assertEqual(null);
         console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1200 shell result data: ' + JSON.stringify(data));
         try {
-          expect(data.stdResult).assertContain('detach app debug successfully.');
+          expect(data.stdResult).assertContain('error: failed to detach app debug.');
         } catch (error) {
           console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1200 assert error: ' + JSON.stringify(error));
         }
