@@ -83,10 +83,9 @@ export default function cryptoSymOptAADJsTestUnit() {
     it("Security_CryptoFramework_SymOptAAD_Func_0300", 0, async (done: Function) => {
       try {
         await symCallback.encryptAndDecryptNormalProcess("AES128", "AES128|GCM|PKCS7", "genGcmParamsSpecAADNullData");
-        expect(null).assertFail();
       } catch (err) {
         console.error(`Security_CryptoFramework_SymOptAAD_Func_0300 catch error: “${err}“, error code: ${err.code}`);
-        expect(err.code).assertEqual(401);
+        expect(null).assertFail();
       }
       done();
     });
@@ -101,10 +100,9 @@ export default function cryptoSymOptAADJsTestUnit() {
     it("Security_CryptoFramework_SymOptAAD_Func_0400", 0, async (done: Function) => {
       try {
         await symCallback.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|PKCS7", "genGcmParamsSpecWithoutAAD");
-        expect(null).assertFail();
       } catch (err) {
         console.error(`Security_CryptoFramework_SymOptAAD_Func_0400 catch error: “${err}“, error code: ${err.code}`);
-        expect(err.code).assertEqual(401);
+        expect(null).assertFail();
       }
       done();
     });
@@ -119,10 +117,9 @@ export default function cryptoSymOptAADJsTestUnit() {
     it("Security_CryptoFramework_SymOptAAD_Func_0500", 0, async (done: Function) => {
       try {
         await symCallback.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|PKCS7", "genGcmParamsSpecWithoutAADData");
-        expect(null).assertFail();
       } catch (err) {
         console.error(`Security_CryptoFramework_SymOptAAD_Func_0500 catch error: “${err}“, error code: ${err.code}`);
-        expect(err.code).assertEqual(401);
+        expect(null).assertFail();
       }
       done();
     });
@@ -313,10 +310,9 @@ export default function cryptoSymOptAADJsTestUnit() {
     it("Security_CryptoFramework_SymOptAAD_Func_1100", 0, async (done: Function) => {
       try {
         await symPromise.encryptAndDecryptNormalProcess("AES128", "AES128|GCM|PKCS5", "genGcmParamsSpecAADNullData");
-        expect(null).assertFail();
       } catch (err) {
         console.error(`Security_CryptoFramework_SymOptAAD_Func_1100 catch error: “${err}“, error code: ${err.code}`);
-        expect(err.code).assertEqual(401);
+        expect(null).assertFail();
       }
       done();
     });
@@ -331,10 +327,9 @@ export default function cryptoSymOptAADJsTestUnit() {
     it("Security_CryptoFramework_SymOptAAD_Func_1200", 0, async (done: Function) => {
       try {
         await symPromise.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|NoPadding", "genGcmParamsSpecWithoutAAD");
-        expect(null).assertFail();
       } catch (err) {
         console.error(`Security_CryptoFramework_SymOptAAD_Func_1200 catch error: “${err}“, error code: ${err.code}`);
-        expect(err.code).assertEqual(401);
+        expect(null).assertFail();
       }
       done();
     });
@@ -349,10 +344,9 @@ export default function cryptoSymOptAADJsTestUnit() {
     it("Security_CryptoFramework_SymOptAAD_Func_1300", 0, async (done: Function) => {
       try {
         await symPromise.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|PKCS5", "genGcmParamsSpecWithoutAADData");
-        expect(null).assertFail();
       } catch (err) {
         console.error(`Security_CryptoFramework_SymOptAAD_Func_1300 catch error: “${err}“, error code: ${err.code}`);
-        expect(err.code).assertEqual(401);
+        expect(null).assertFail();
       }
       done();
     });
