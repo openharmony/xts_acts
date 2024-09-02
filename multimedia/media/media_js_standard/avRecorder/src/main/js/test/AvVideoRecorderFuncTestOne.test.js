@@ -10119,7 +10119,7 @@ export default function avVideoRecorderTestOne() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0400
             * @tc.name      : 04.AVRecorder set AudioSourceType 
-            * @tc.desc      : AudioSourceType set AUDIO_SOURCE_TYPE_VOICE_CAMCORDER
+            * @tc.desc      : AudioSourceType set AUDIO_SOURCE_TYPE_CAMCORDER
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
@@ -10132,7 +10132,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0400 start')
             let avNewConfig = {
-                audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_VOICE_CAMCORDER,
+                audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_CAMCORDER,
                 videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
                 profile : avProfile,
                 url : 'fd://35',
