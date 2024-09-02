@@ -14,7 +14,7 @@
  */
 export class Callback {
   // message 方法接受一个字符串或数字类型的参数，并返回 void
-  message(message: string | number): void {
+  message(message: string | number): void{
     // 在这里实现回调逻辑
     console.log(`Callback received message: ${message}`);
   }
