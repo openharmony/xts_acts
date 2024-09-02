@@ -551,7 +551,7 @@ export default function CameraSessionCameraRotationTest() {
     
                     await startCameraSession(i);
     
-                    let cameraVideoRotation = mVideoOutput.getPhotoRotation(cameraObj.ImageRotation.ROTATION_0);
+                    let cameraVideoRotation = mVideoOutput.getVideoRotation(cameraObj.ImageRotation.ROTATION_0);
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100 finish");
                     if (cameraVideoRotation == cameraObj.ImageRotation.ROTATION_90 || cameraVideoRotation == cameraObj.ImageRotation.ROTATION_270) {
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100 PASSED with cameraVideoRotation is: " + cameraVideoRotation);
