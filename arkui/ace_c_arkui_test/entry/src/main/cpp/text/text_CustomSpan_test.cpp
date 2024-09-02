@@ -59,7 +59,7 @@ static napi_value textCustomSpanTest005(napi_env env, napi_callback_info info)
 {
     NAPI_START(customSpan, ARKUI_NODE_CUSTOM_SPAN);  
     ArkUI_CustomSpanMetrics *customSpanMetrics = OH_ArkUI_CustomSpanMetrics_Create();
-    auto ret = OH_ArkUI_CustomSpanMetrics_SetWidth(customSpanMetrics, 50.0f);
+    auto ret = OH_ArkUI_CustomSpanMetrics_SetHeight(customSpanMetrics, 50.0f);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
