@@ -466,25 +466,25 @@ struct WebViewMenuInputFieldType {
               option.enterKeyType = enterKeyType
             }
             if(this.ResultKey == 3){
-              Utils.emitEvent(enterKeyType, 2895)
+              Utils.emitEvent(enterKeyType+"", 2895)
             }
             if(this.ResultKey == 4){
-              Utils.emitEvent(enterKeyType, 2896)
+              Utils.emitEvent(enterKeyType+"", 2896)
             }
             if(this.ResultKey == 5){
-              Utils.emitEvent(enterKeyType, 2897)
+              Utils.emitEvent(enterKeyType+"", 2897)
             }
             if(this.ResultKey == 6){
-              Utils.emitEvent(enterKeyType, 2898)
+              Utils.emitEvent(enterKeyType+"", 2898)
             }
             if(this.ResultKey == 7){
-              Utils.emitEvent(enterKeyType, 2899)
+              Utils.emitEvent(enterKeyType+"", 2899)
             }
             if(this.ResultKey == 8){
-              Utils.emitEvent(enterKeyType, 2880)
+              Utils.emitEvent(enterKeyType+"", 2880)
             }
             if(this.ResultKey == 9){
-              Utils.emitEvent(enterKeyType, 2881)
+              Utils.emitEvent(enterKeyType+"", 2881)
             }
             return option;
           }
