@@ -30,6 +30,7 @@ export default function avScreenCaptureTest() {
         const CREATE_EVENT = 'create';
         const INIT_EVENT = 'init';
         const STARTRECORDER_EVENT = 'start';
+        const SKIPPRIVACYMODE_EVENT = 'skipPrivacyMode';
         const STOPRECORDER_EVENT = 'stop';
         const RELEASECORDER_EVENT = 'release';
         const END_EVENT = 'end';
@@ -182,6 +183,24 @@ export default function avScreenCaptureTest() {
             })
         });
 
+        eventEmitter.on(SKIPPRIVACYMODE_EVENT, (avScreenCaptureRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            let windowAllIds = [];
+            avScreenCaptureRecorder.skipPrivacyMode(windowAllIds).then(() => {
+                console.info('avScreenCaptureRecorder skipPrivacyMode success');
+                toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
+            }).catch((err) => {
+                console.info('avScreenCaptureRecorder skipPrivacyMode failed, error: ' + err.message);
+                let failedSteps = new Array(
+                    // release avScreenCaptureRecorder
+                    RELEASECORDER_EVENT,
+                    // failed
+                    FAIL_EVENT
+                )
+                toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, failedSteps, done);
+            })
+        });
+
         eventEmitter.on(STOPRECORDER_EVENT, (avScreenCaptureRecorder, avConfig, recorderTime, steps, done) => {
             steps.shift();
             avScreenCaptureRecorder.stopRecording().then(() => {
@@ -250,6 +269,8 @@ export default function avScreenCaptureTest() {
                 SET_MIC_ENABLE_EVENT,
                 // start recorder
                 STARTRECORDER_EVENT,
+                // skip PrivacyMode
+                SKIPPRIVACYMODE_EVENT,
                 // stop recorder
                 STOPRECORDER_EVENT,
                 END_EVENT
@@ -315,7 +336,7 @@ export default function avScreenCaptureTest() {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 end')
         })
 
-                /* *
+        /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0300
             * @tc.name      : 03.AvScreenCaptureRecorder
             * @tc.desc      : AvScreenCaptureRecorder
@@ -323,17 +344,16 @@ export default function avScreenCaptureTest() {
             * @tc.type      : Performance test
             * @tc.level     : Level 1
         */
-                it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0300', 0, async function (done) {
-                    console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0300 start')
-                    try {
-                        media.reportAVScreenCaptureUserChoice(-1, "-1")
-                    } catch (error) {
-                        console.info(TAG + 'reportAVScreenCaptureUserChoice error:')
-                        expect().assertFail()
-                    }
-                    console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 end')
-                    done();
-                })
+        it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0300', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0300 start')
+            try {
+                media.reportAVScreenCaptureUserChoice(-1, "-1")
+            } catch (error) {
+                console.info(TAG + 'reportAVScreenCaptureUserChoice error:')
+                expect().assertFail()
+            }
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 end')
+            done();
+        })
     })
 }
-
