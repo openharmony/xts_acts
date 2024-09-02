@@ -36,7 +36,7 @@ export default function testsuite() {
   // AVPlayerMultiTrackTest();
   // AVPlayerStabilityTest();
   AVMetadata();
-  AVTransCoderTest()
+  AVTransCoderTest();
   AVPlayerAmr();
   AVPlayerMediaSource();
   AVPlayerSelectTrackTest();
