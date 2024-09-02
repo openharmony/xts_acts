@@ -376,6 +376,8 @@ export const oHVideoOutputSetFrameRate: (index:number) => number;
 
 export const oHVideoOutputGetActiveFrameRate: (index:number) => FrameRateRange;
 
+export const oHVideoOutputDeleteFrameRates: (index:number) => number;
+
 export const oHCameraManagerRegisterTorchStatusCallback: (index:number) => number;
 
 export const oHCameraManagerUnregisterTorchStatusCallback: (index:number) => number;

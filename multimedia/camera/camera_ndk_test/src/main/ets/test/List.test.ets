@@ -48,7 +48,7 @@ export default function testsuite() {
           CameraInputTest();
     }
     SessionTest();
-    PhotoTest();
     SecureCameraTest();
     CameraManagerTest();
+    PhotoTest();
 }
