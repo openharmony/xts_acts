@@ -737,15 +737,13 @@ export default function cryptoPbkdf2JsTestUnit() {
       let kdfObj: crypto.Kdf = crypto.createKdf("PBKDF2|SHA224");
       try {
         await kdfObj.generateSecret(dataSpec);
-        expect(null).assertFail();
       } catch (err) {
-        expect(err.code).assertEqual(401);
+        expect(null).assertFail();
       }
       try {
         await pbkCallback.kdfGenerateSecret(kdfObj, dataSpec);
-        expect(null).assertFail();
       } catch (err) {
-        expect(err.code).assertEqual(401);
+        expect(null).assertFail();
       }
       done();
     });
