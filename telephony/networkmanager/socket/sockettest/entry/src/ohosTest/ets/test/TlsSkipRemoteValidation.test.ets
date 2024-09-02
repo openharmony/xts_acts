@@ -17,18 +17,6 @@ import { describe, it, expect} from '@ohos/hypium';
 import socket from '@ohos.net.socket';
 import { BusinessError} from '@ohos.base';
 
-let bindAddr: socket.NetAddress = {
-  address: '127.0.0.1',
-  port: 12221,
-  family: 1
-}
-
-let netAddr: socket.NetAddress = {
-  address: '127.0.0.1',
-  port: 12345,
-  family: 1
-}
-
 let client_ca: string =
   "-----BEGIN CERTIFICATE-----\n" +
     "MIIDazCCAlOgAwIBAgIURbEi4CXEaH9XNkI5fYJaET0/TtQwDQYJKoZIhvcNAQEL\n" +
@@ -135,109 +123,6 @@ let server_key: string =
     "Tjm6Um0WJONczsIiZq9M6Q==\n" +
     "-----END PRIVATE KEY-----"
 
-let tlsConnectOptions_server: socket.TLSConnectOptions = {
-  address: netAddr,
-  secureOptions: {
-    ca: client_ca,
-    key:  server_key,
-    cert: server_ca,
-    protocols: socket.Protocol.TLSv12,
-    useRemoteCipherPrefer: true,
-    signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-    cipherSuite: "AES256-SHA256",
-  },
-  ALPNProtocols: ["spdy/1", "http/1.1"],
-  skipRemoteValidation:false
-}
-
-let tlsConnectOptions_client_wrongCA: socket.TLSConnectOptions = {
-  address: netAddr,
-  secureOptions: {
-    ca: client_ca,
-    key:  client_key,
-    cert: client_ca,
-    protocols: socket.Protocol.TLSv12,
-    useRemoteCipherPrefer: true,
-    signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-    cipherSuite: "AES256-SHA256",
-  },
-  ALPNProtocols: ["spdy/1", "http/1.1"],
-}
-
-let tlsConnectOptions_client_rightCA: socket.TLSConnectOptions = {
-  address: netAddr,
-  secureOptions: {
-    ca: server_ca,
-    key:  client_key,
-    cert: client_ca,
-    protocols: socket.Protocol.TLSv12,
-    useRemoteCipherPrefer: true,
-    signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-    cipherSuite: "AES256-SHA256",
-  },
-  ALPNProtocols: ["spdy/1", "http/1.1"],
-}
-
-let tlsConnectOptions_client_wrongCA_noSkip: socket.TLSConnectOptions = {
-  address: netAddr,
-  secureOptions: {
-    ca: client_ca,
-    key:  client_key,
-    cert: client_ca,
-    protocols: socket.Protocol.TLSv12,
-    useRemoteCipherPrefer: true,
-    signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-    cipherSuite: "AES256-SHA256",
-  },
-  ALPNProtocols: ["spdy/1", "http/1.1"],
-  skipRemoteValidation:false
-}
-
-let tlsConnectOptions_client_rightCA_noSkip: socket.TLSConnectOptions = {
-  address: netAddr,
-  secureOptions: {
-    ca: server_ca,
-    key:  client_key,
-    cert: client_ca,
-    protocols: socket.Protocol.TLSv12,
-    useRemoteCipherPrefer: true,
-    signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-    cipherSuite: "AES256-SHA256",
-  },
-  ALPNProtocols: ["spdy/1", "http/1.1"],
-  skipRemoteValidation:false
-}
-
-let tlsConnectOptions_client_wrongCA_skip: socket.TLSConnectOptions = {
-  address: netAddr,
-  secureOptions: {
-    ca: client_ca,
-    key:  client_key,
-    cert: client_ca,
-    protocols: socket.Protocol.TLSv12,
-    useRemoteCipherPrefer: true,
-    signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-    cipherSuite: "AES256-SHA256",
-  },
-  ALPNProtocols: ["spdy/1", "http/1.1"],
-  skipRemoteValidation:true
-}
-
-let tlsConnectOptions_client_rightCA_skip: socket.TLSConnectOptions = {
-  address: netAddr,
-  secureOptions: {
-    ca: server_ca,
-    key:  client_key,
-    cert: client_ca,
-    protocols: socket.Protocol.TLSv12,
-    useRemoteCipherPrefer: true,
-    signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-    cipherSuite: "AES256-SHA256",
-  },
-  ALPNProtocols: ["spdy/1", "http/1.1"],
-  skipRemoteValidation:true
-}
-
 function expectFail(params: boolean) {
   try {
     if (params === true) {
@@ -262,17 +147,55 @@ export default function TlsSkipRemoteValidationTest() {
      * @tc.level :  level 2
      */
     it('testNetworkMgrTlsSkipRemoteValidation0100', 0, async (done: Function) => {
-      const caseName: string = 'testNetworkMgrTlsSkipRemoteValidation0200';
+      const caseName: string = 'testNetworkMgrTlsSkipRemoteValidation0100';
       console.info(`${caseName}---Start`);
       let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
       let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+      let bindAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 9000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+      let netAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 9000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+
+      let tlsConnectOptions_server: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: client_ca,
+          key:  server_key,
+          cert: server_ca,
+          protocols: socket.Protocol.TLSv12,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"]
+      }
+      let tlsConnectOptions_client_rightCA: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: server_ca,
+          key:  client_key,
+          cert: client_ca,
+          protocols: socket.Protocol.TLSv12,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"]
+      }
+
       try {
         tlsServer.listen(tlsConnectOptions_server).then(() => {
           console.log("listen success!");
           tls.bind(bindAddr).then(() => {
-            console.log('bind success!');
             tls.connect(tlsConnectOptions_client_rightCA).then(() => {
-              console.log("connect successfully");
+              console.log("connect success!");
+              tls.close();
               expectFail(true);
               done();
             }).catch((err: BusinessError) => {
@@ -281,7 +204,7 @@ export default function TlsSkipRemoteValidationTest() {
               done();
             });
           }).catch((err: BusinessError) => {
-            console.log('bind fail' + JSON.stringify(err));
+            console.log("bind failed " + JSON.stringify(err));
             expectFail(false);
             done();
           });
@@ -291,12 +214,26 @@ export default function TlsSkipRemoteValidationTest() {
           done();
         });
       } catch (err) {
-        console.info(`${caseName} err: ${JSON.stringify(err)}`);
         expectFail(false);
         done();
       }
-      console.info(`${caseName} test end`);
-    });
+      let tcpExtraOptions: socket.TCPExtraOptions = {
+        keepAlive: true,
+        OOBInline: true,
+        TCPNoDelay: true,
+        socketLinger: { on: true, linger: 10 },
+        receiveBufferSize: 1000,
+        sendBufferSize: 1000,
+        reuseAddress: true,
+        socketTimeout: 3000
+      }
+      tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
+        console.log('setExtraOptions success');
+      }).catch((err: BusinessError) => {
+        console.log('setExtraOptions fail' + JSON.stringify(err));
+      });
+      console.info(`${caseName} test end `);
+    })
 
     /* *
      * @tc.number:  SUB_NetworkMgr_Socket_TlsSkipRemoteValidationTest0200
@@ -311,36 +248,82 @@ export default function TlsSkipRemoteValidationTest() {
       console.info(`${caseName}---Start`);
       let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
       let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+      let bindAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 8000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+      let netAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 8000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+
+      let tlsConnectOptions_server: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: client_ca,
+          key:  server_key,
+          cert: server_ca,
+          protocols: socket.Protocol.TLSv12,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"]
+      }
+      let tlsConnectOptions_client_wrongCA: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: client_ca,
+          key:  client_key,
+          cert: client_ca,
+          protocols: socket.Protocol.TLSv12,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"]
+      }
+
       try {
-        tlsServer.listen(tlsConnectOptions_server).then(() => {
-          console.log("listen success!");
-          tls.bind(bindAddr).then(() => {
-            console.log('bind success!');
-            tls.connect(tlsConnectOptions_client_wrongCA).then(() => {
-              console.log("connect successfully");
-              expectFail(false);
-              done();
-            }).catch((err: BusinessError) => {
-              console.log("connect failed " + JSON.stringify(err));
-              expectFail(true);
-              done();
-            });
-          }).catch((err: BusinessError) => {
-            console.log('bind fail' + JSON.stringify(err));
+        await tlsServer.listen(tlsConnectOptions_server);
+        tls.bind(bindAddr).then(() => {
+          tls.connect(tlsConnectOptions_client_wrongCA).then(() => {
+            console.log("connect success!");
             expectFail(false);
+            done();
+          }).catch((err: BusinessError) => {
+            console.log("connect failed " + JSON.stringify(err));
+            tls.close();
+            expectFail(true);
             done();
           });
         }).catch((err: BusinessError) => {
-          console.log("listen fail: " + JSON.stringify(err));
+          console.log("bind failed " + JSON.stringify(err));
           expectFail(false);
           done();
         });
       } catch (err) {
-        console.info(`${caseName} err: ${JSON.stringify(err)}`);
         expectFail(false);
         done();
       }
-      console.info(`${caseName} test end`);
+      let tcpExtraOptions: socket.TCPExtraOptions = {
+        keepAlive: true,
+        OOBInline: true,
+        TCPNoDelay: true,
+        socketLinger: { on: true, linger: 10 },
+        receiveBufferSize: 1000,
+        sendBufferSize: 1000,
+        reuseAddress: true,
+        socketTimeout: 3000
+      }
+      tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
+        console.log('setExtraOptions success');
+      }).catch((err: BusinessError) => {
+        console.log('setExtraOptions fail' + JSON.stringify(err));
+      });
+      console.info(`${caseName} test end `);
     });
 
     /* *
@@ -356,36 +339,83 @@ export default function TlsSkipRemoteValidationTest() {
       console.info(`${caseName}---Start`);
       let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
       let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+      let bindAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 8000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+      let netAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 8000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+
+      let tlsConnectOptions_server: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: client_ca,
+          key:  server_key,
+          cert: server_ca,
+          protocols: socket.Protocol.TLSv12,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"]
+      }
+      let tlsConnectOptions_client_wrongCA_noSkip: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: client_ca,
+          key:  client_key,
+          cert: client_ca,
+          protocols: socket.Protocol.TLSv12,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"],
+        skipRemoteValidation: false
+      }
+
       try {
-        tlsServer.listen(tlsConnectOptions_server).then(() => {
-          console.log("listen success!");
-          tls.bind(bindAddr).then(() => {
-            console.log('bind success!');
-            tls.connect(tlsConnectOptions_client_wrongCA_noSkip).then(() => {
-              console.log("connect successfully");
-              expectFail(false);
-              done();
-            }).catch((err: BusinessError) => {
-              console.log("connect failed " + JSON.stringify(err));
-              expectFail(true);
-              done();
-            });
-          }).catch((err: BusinessError) => {
-            console.log('bind fail' + JSON.stringify(err));
+        await tlsServer.listen(tlsConnectOptions_server);
+        tls.bind(bindAddr).then(() => {
+          tls.connect(tlsConnectOptions_client_wrongCA_noSkip).then(() => {
+            console.log("connect success!");
             expectFail(false);
+            done();
+          }).catch((err: BusinessError) => {
+            console.log("connect failed " + JSON.stringify(err));
+            tls.close();
+            expectFail(true);
             done();
           });
         }).catch((err: BusinessError) => {
-          console.log("listen fail: " + JSON.stringify(err));
+          console.log("bind failed " + JSON.stringify(err));
           expectFail(false);
           done();
         });
       } catch (err) {
-        console.info(`${caseName} err: ${JSON.stringify(err)}`);
         expectFail(false);
         done();
       }
-      console.info(`${caseName} test end`);
+      let tcpExtraOptions: socket.TCPExtraOptions = {
+        keepAlive: true,
+        OOBInline: true,
+        TCPNoDelay: true,
+        socketLinger: { on: true, linger: 10 },
+        receiveBufferSize: 1000,
+        sendBufferSize: 1000,
+        reuseAddress: true,
+        socketTimeout: 3000
+      }
+      tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
+        console.log('setExtraOptions success');
+      }).catch((err: BusinessError) => {
+        console.log('setExtraOptions fail' + JSON.stringify(err));
+      });
+      console.info(`${caseName} test end `);
     });
 
     /* *
@@ -401,36 +431,82 @@ export default function TlsSkipRemoteValidationTest() {
       console.info(`${caseName}---Start`);
       let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
       let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+      let bindAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 8000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+      let netAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 8000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+
+      let tlsConnectOptions_server: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: client_ca,
+          key:  server_key,
+          cert: server_ca,
+          protocols: socket.Protocol.TLSv12,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"]
+      }
+      let tlsConnectOptions_client_rightCA_noSkip: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: server_ca,
+          key:  client_key,
+          cert: client_ca,
+          protocols: socket.Protocol.TLSv12,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"],
+        skipRemoteValidation: false
+      }
       try {
-        tlsServer.listen(tlsConnectOptions_server).then(() => {
-          console.log("listen success!");
-          tls.bind(bindAddr).then(() => {
-            console.log('bind success!');
-            tls.connect(tlsConnectOptions_client_rightCA_noSkip).then(() => {
-              console.log("connect successfully");
-              expectFail(true);
-              done();
-            }).catch((err: BusinessError) => {
-              console.log("connect failed " + JSON.stringify(err));
-              expectFail(false);
-              done();
-            });
+        await tlsServer.listen(tlsConnectOptions_server);
+        tls.bind(bindAddr).then(() => {
+          tls.connect(tlsConnectOptions_client_rightCA_noSkip).then(() => {
+            console.log("connect success!");
+            tls.close();
+            expectFail(true);
+            done();
           }).catch((err: BusinessError) => {
-            console.log('bind fail' + JSON.stringify(err));
+            console.log("connect failed " + JSON.stringify(err));
             expectFail(false);
             done();
           });
         }).catch((err: BusinessError) => {
-          console.log("listen fail: " + JSON.stringify(err));
+          console.log("bind failed " + JSON.stringify(err));
           expectFail(false);
           done();
         });
       } catch (err) {
-        console.info(`${caseName} err: ${JSON.stringify(err)}`);
         expectFail(false);
         done();
       }
-      console.info(`${caseName} test end`);
+      let tcpExtraOptions: socket.TCPExtraOptions = {
+        keepAlive: true,
+        OOBInline: true,
+        TCPNoDelay: true,
+        socketLinger: { on: true, linger: 10 },
+        receiveBufferSize: 1000,
+        sendBufferSize: 1000,
+        reuseAddress: true,
+        socketTimeout: 3000
+      }
+      tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
+        console.log('setExtraOptions success');
+      }).catch((err: BusinessError) => {
+        console.log('setExtraOptions fail' + JSON.stringify(err));
+      });
+      console.info(`${caseName} test end `);
     });
 
     /* *
@@ -446,42 +522,88 @@ export default function TlsSkipRemoteValidationTest() {
       console.info(`${caseName}---Start`);
       let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
       let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+      let bindAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 8000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+      let netAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 8000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+
+      let tlsConnectOptions_server: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: client_ca,
+          key:  server_key,
+          cert: server_ca,
+          protocols: socket.Protocol.TLSv12,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"]
+      }
+      let tlsConnectOptions_client_wrongCA_skip: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: client_ca,
+          key:  client_key,
+          cert: client_ca,
+          protocols: socket.Protocol.TLSv12,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"],
+        skipRemoteValidation: true
+      }
       try {
-        tlsServer.listen(tlsConnectOptions_server).then(() => {
-          console.log("listen success!");
-          tls.bind(bindAddr).then(() => {
-            console.log('bind success!');
-            tls.connect(tlsConnectOptions_client_wrongCA_skip).then(() => {
-              console.log("connect successfully");
-              expectFail(true);
-              done();
-            }).catch((err: BusinessError) => {
-              console.log("connect failed " + JSON.stringify(err));
-              expectFail(false);
-              done();
-            });
+        await tlsServer.listen(tlsConnectOptions_server);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          keepAlive: true,
+          OOBInline: true,
+          TCPNoDelay: true,
+          socketLinger: { on: true, linger: 10 },
+          receiveBufferSize: 1000,
+          sendBufferSize: 1000,
+          reuseAddress: true,
+          socketTimeout: 3000
+        }
+        tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
+          console.log('setExtraOptions success');
+        }).catch((err: BusinessError) => {
+          console.log('setExtraOptions fail' + JSON.stringify(err));
+        });
+        tls.bind(bindAddr).then(() => {
+          tls.connect(tlsConnectOptions_client_wrongCA_skip).then(() => {
+            console.log("connect success!");
+            tls.close();
+            expectFail(true);
+            done();
           }).catch((err: BusinessError) => {
-            console.log('bind fail' + JSON.stringify(err));
+            console.log("connect failed " + JSON.stringify(err));
             expectFail(false);
             done();
           });
         }).catch((err: BusinessError) => {
-          console.log("listen fail: " + JSON.stringify(err));
+          console.log("bind failed " + JSON.stringify(err));
           expectFail(false);
           done();
         });
       } catch (err) {
-        console.info(`${caseName} err: ${JSON.stringify(err)}`);
         expectFail(false);
         done();
       }
-      console.info(`${caseName} test end`);
+      console.info(`${caseName} test end `);
     });
 
     /* *
      * @tc.number:  SUB_NetworkMgr_Socket_TlsSkipRemoteValidationTest0600
      * @tc.name  :  testNetworkMgrSocketGetLocalAddressTest0600
-     * @tc.desc  :  test Tls with right CA and skip.
+     * @tc.desc  :  test Tls with wrong CA and skip TLS13.
      * @tc.size  :  SmallTest
      * @tc.type  :  Function
      * @tc.level :  level 2
@@ -491,37 +613,175 @@ export default function TlsSkipRemoteValidationTest() {
       console.info(`${caseName}---Start`);
       let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
       let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+      let bindAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 8000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+      let netAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 8000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+
+      let tlsConnectOptions_server_TLS13: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: client_ca,
+          key:  server_key,
+          cert: server_ca,
+          protocols: socket.Protocol.TLSv13,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"]
+      }
+      let tlsConnectOptions_client_wrongCA_skip_TLS13: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: client_ca,
+          key:  client_key,
+          cert: client_ca,
+          protocols: socket.Protocol.TLSv13,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"],
+        skipRemoteValidation: true
+      }
+
       try {
-        tlsServer.listen(tlsConnectOptions_server).then(() => {
-          console.log("listen success!");
-          tls.bind(bindAddr).then(() => {
-            console.log('bind success!');
-            tls.connect(tlsConnectOptions_client_rightCA_skip).then(() => {
-              console.log("connect successfully");
-              expectFail(true);
-              done();
-            }).catch((err: BusinessError) => {
-              console.log("connect failed " + JSON.stringify(err));
-              expectFail(false);
-              done();
-            });
+        await tlsServer.listen(tlsConnectOptions_server_TLS13);
+        tls.bind(bindAddr).then(() => {
+          tls.connect(tlsConnectOptions_client_wrongCA_skip_TLS13).then(() => {
+            console.log("connect success!");
+            tls.close();
+            expectFail(true);
+            done();
           }).catch((err: BusinessError) => {
-            console.log('bind fail' + JSON.stringify(err));
+            console.log("connect failed " + JSON.stringify(err));
             expectFail(false);
             done();
           });
         }).catch((err: BusinessError) => {
-          console.log("listen fail: " + JSON.stringify(err));
+          console.log("bind failed " + JSON.stringify(err));
           expectFail(false);
           done();
         });
       } catch (err) {
-        console.info(`${caseName} err: ${JSON.stringify(err)}`);
         expectFail(false);
         done();
       }
-      console.info(`${caseName} test end`);
+      let tcpExtraOptions: socket.TCPExtraOptions = {
+        keepAlive: true,
+        OOBInline: true,
+        TCPNoDelay: true,
+        socketLinger: { on: true, linger: 10 },
+        receiveBufferSize: 1000,
+        sendBufferSize: 1000,
+        reuseAddress: true,
+        socketTimeout: 3000
+      }
+      tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
+        console.log('setExtraOptions success');
+      }).catch((err: BusinessError) => {
+        console.log('setExtraOptions fail' + JSON.stringify(err));
+      });
+      console.info(`${caseName} test end `);
     });
 
+    /* *
+     * @tc.number:  SUB_NetworkMgr_Socket_TlsSkipRemoteValidationTest0700
+     * @tc.name  :  testNetworkMgrSocketGetLocalAddressTest0700
+     * @tc.desc  :  test Tls with right CA and skip.
+     * @tc.size  :  SmallTest
+     * @tc.type  :  Function
+     * @tc.level :  level 2
+     */
+    it('testNetworkMgrTlsSkipRemoteValidation0700', 0, async (done: Function) => {
+      const caseName: string = 'testNetworkMgrTlsSkipRemoteValidation0700';
+      console.info(`${caseName}---Start`);
+      let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
+      let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+      let bindAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 8000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+      let netAddr: socket.NetAddress = {
+        address: '127.0.0.1',
+        port: 8000 + Math.floor(Math.random() * 10000),
+        family: 1
+      }
+
+      let tlsConnectOptions_server: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: client_ca,
+          key:  server_key,
+          cert: server_ca,
+          protocols: socket.Protocol.TLSv12,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"]
+      }
+      let tlsConnectOptions_client_rightCA_skip: socket.TLSConnectOptions = {
+        address: netAddr,
+        secureOptions: {
+          ca: server_ca,
+          key:  client_key,
+          cert: client_ca,
+          protocols: socket.Protocol.TLSv12,
+          useRemoteCipherPrefer: true,
+          signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+          cipherSuite: "AES256-SHA256"
+        },
+        ALPNProtocols: ["spdy/1", "http/1.1"],
+        skipRemoteValidation: true
+      }
+
+      try {
+        await tlsServer.listen(tlsConnectOptions_server);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          keepAlive: true,
+          OOBInline: true,
+          TCPNoDelay: true,
+          socketLinger: { on: true, linger: 10 },
+          receiveBufferSize: 1000,
+          sendBufferSize: 1000,
+          reuseAddress: true,
+          socketTimeout: 3000
+        }
+        tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
+          console.log('setExtraOptions success');
+        }).catch((err: BusinessError) => {
+          console.log('setExtraOptions fail' + JSON.stringify(err));
+        });
+        tls.bind(bindAddr).then(() => {
+          tls.connect(tlsConnectOptions_client_rightCA_skip).then(() => {
+            console.log("connect success!");
+            tls.close();
+            expectFail(true);
+            done();
+          }).catch((err: BusinessError) => {
+            console.log("connect failed " + JSON.stringify(err));
+            expectFail(false);
+            done();
+          });
+        }).catch((err: BusinessError) => {
+          console.log("bind failed " + JSON.stringify(err));
+          expectFail(false);
+          done();
+        });
+      } catch (err) {
+        expectFail(false);
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
   })
 }
