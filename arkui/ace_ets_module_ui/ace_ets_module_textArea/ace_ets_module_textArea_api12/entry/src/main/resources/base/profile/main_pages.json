@@ -6,6 +6,7 @@
     "MainAbility/pages/component/textAreaMinFontSize",
     "MainAbility/pages/component/textAreaDecoration",
     "MainAbility/pages/component/textAreaLetterSpacing",
-    "MainAbility/pages/component/textAreaLineHeight"
+    "MainAbility/pages/component/textAreaLineHeight",
+    "MainAbility/pages/component/textAreaNode" 
   ]
 }
