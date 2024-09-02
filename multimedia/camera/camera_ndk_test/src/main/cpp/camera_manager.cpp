@@ -2353,6 +2353,20 @@ Camera_ErrorCode NDKCamera::VideoOutputSetFrameRate(int useCaseCode)
     }
     return ret_;
 }
+Camera_ErrorCode NDKCamera::VideoOutputDeleteFrameRates(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_VideoOutput_DeleteFrameRates(videoOutput_, videoFrameRateRange_);
+    } else if (useCaseCode == PARAMETER1_ERROR) {
+        ret_ = OH_VideoOutput_DeleteFrameRates(nullptr, videoFrameRateRange_);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        ret_ = OH_VideoOutput_DeleteFrameRates(videoOutput_, nullptr);
+    }
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_VideoOutput_DeleteFrameRates failed.");
+    }
+    return ret_;
+}
 void CameraManagerTorchStatusCallback(Camera_Manager *cameraManager, Camera_TorchStatusInfo *status)
 {
     LOG("CameraManagerTorchStatusCallback");

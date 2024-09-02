@@ -1963,6 +1963,23 @@ static napi_value OHVideoOutputGetActiveFrameRate(napi_env env, napi_callback_in
     return videoActiveFrameRateRange;
 }
 
+static napi_value OHVideoOutputDeleteFrameRates(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->VideoOutputDeleteFrameRates(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
 static napi_value OHPreviewOutputDeleteFrameRates(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -2424,6 +2441,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHVideoOutputSetFrameRate", nullptr, OHVideoOutputSetFrameRate, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"oHVideoOutputGetActiveFrameRate", nullptr, OHVideoOutputGetActiveFrameRate, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHVideoOutputDeleteFrameRates", nullptr, OHVideoOutputDeleteFrameRates, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"oHPreviewOutputDeleteFrameRates", nullptr, OHPreviewOutputDeleteFrameRates, nullptr, nullptr, nullptr,
          napi_default, nullptr},

@@ -301,6 +301,7 @@ public:
     Camera_ErrorCode VideoOutputGetSupportedFrameRates(int useCaseCode);
     Camera_ErrorCode VideoOutputSetFrameRate(int useCaseCode);
     Camera_ErrorCode VideoOutputGetActiveFrameRate(int useCaseCode);
+    Camera_ErrorCode VideoOutputDeleteFrameRates(int useCaseCode);
     Camera_ErrorCode CameraManagerRegisterTorchStatusCallback(int useCaseCode);
     Camera_ErrorCode CameraManagerUnregisterTorchStatusCallback(int useCaseCode);
     Camera_ErrorCode CaptureSessionRegisterSmoothZoomInfoCallback(int useCaseCode);

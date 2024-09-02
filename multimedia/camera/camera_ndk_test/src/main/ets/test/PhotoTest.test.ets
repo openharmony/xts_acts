@@ -1533,6 +1533,56 @@ export default function PhotoTest() {
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
     })
     /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHVideoOutputDeleteFrameRates0100
+     * @tc.name       : testOHVideoOutputDeleteFrameRates0100
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_VideoOutput_DeleteFrameRates in normal condition.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHVideoOutputDeleteFrameRates0100', 0, () => {
+      videoOutputFrameRate();
+      if (getVideoOutputSupportedFrameRates() != 0) {
+        let ret = cameraObj.oHVideoOutputDeleteFrameRates(Parameter_Setting.ALL_PARAMETER_OK);
+        console.info(TAG+"testOHVideoOutputDeleteFrameRates0100:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
+      } else {
+        console.error(TAG+"getSupportedFrameRates not supported!");
+      }
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHVideoOutputDeleteFrameRates0200
+     * @tc.name       : testOHVideoOutputDeleteFrameRates0200
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_VideoOutput_DeleteFrameRates in abnormal condition,
+     *                  the first parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHVideoOutputDeleteFrameRates0200', 0, () => {
+      videoOutputFrameRate();
+      getVideoOutputSupportedFrameRates();
+      let ret = cameraObj.oHVideoOutputDeleteFrameRates(Parameter_Setting.FIRST_PARAMETER_ERROR);
+      console.info(TAG+"testOHVideoOutputDeleteFrameRates0200:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHVideoOutputDeleteFrameRates0300
+     * @tc.name       : testOHVideoOutputDeleteFrameRates0300
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_VideoOutput_DeleteFrameRates in abnormal condition,
+     *                  the second parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHVideoOutputDeleteFrameRates0300', 0, () => {
+      videoOutputFrameRate();
+      getVideoOutputSupportedFrameRates();
+      let ret = cameraObj.oHVideoOutputDeleteFrameRates(Parameter_Setting.SECOND_PARAMETER_ERROR);
+      console.info(TAG+"testOHVideoOutputDeleteFrameRates0300:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHVideoOutputGetActiveFrameRate0100
      * @tc.name       : testOHVideoOutputGetActiveFrameRate0100
      * @tc.size       : MediumTest
