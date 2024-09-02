@@ -18,3 +18,5 @@ export const testCreatePixelMapWithStrideAbnormal: () => number;
 export const testNativeScaleWithAntiAliasingAbnormal: () => number;
 export const testScaleWithAntiAliasingAbnormal: (x: number, y: number) => number;
 export const testNativeGetNativeBufferAbnormal: () => number;
+export const testNativeSetMetaDataNull: () => number;
+export const testNativeGetMetaDataNull: () => number;
