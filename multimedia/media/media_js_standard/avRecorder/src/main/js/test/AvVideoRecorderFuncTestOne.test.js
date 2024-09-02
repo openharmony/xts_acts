@@ -10049,7 +10049,7 @@ export default function avVideoRecorderTestOne() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0400
             * @tc.name      : 04.AVRecorder set AudioSourceType 
-            * @tc.desc      : AudioSourceType set AUDIO_SOURCE_TYPE_VOICE_CAMCORDER
+            * @tc.desc      : AudioSourceType set AUDIO_SOURCE_TYPE_CAMCORDER
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
