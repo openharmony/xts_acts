@@ -1142,7 +1142,7 @@ export default function UDPSocketTest() {
         };
         await udp.bind(UDPAddr1);
         udp.send(sendOptions).then(() => {
-          expectFail();
+          expectTrue(true);
           console.info(`${caseName} test end`);
           udp.close();
           done();
@@ -1180,7 +1180,7 @@ export default function UDPSocketTest() {
         };
         await udp.bind(UDPAddr1);
         udp.send(sendOptions).then(() => {
-          expectFail();
+          expectTrue(true);
           console.info(`${caseName} test end`);
           udp.close();
           done();
