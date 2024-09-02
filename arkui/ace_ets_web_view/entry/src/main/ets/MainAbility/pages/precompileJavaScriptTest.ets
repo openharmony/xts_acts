@@ -392,13 +392,13 @@ struct PrecompileJavaScriptTest {
                       headerValue: "68ZpTzuAFdm85xPNtr3EOzySP8Q"
                     }
                   ]
-                }).then((res) => {
+                }).then((res: number) => {
                   console.info(msg + " precompile result: " + res);
                 }).catch((err: number) => {
                   console.error(msg + " precompile error: " + err);
                   Utils.emitEvent(err, 10110)
                 })
-              }).catch((err) => {
+              }).catch((err: BusinessError) => {
                 console.error(`${msg} getRawFileContent ErrorCode: ${err.code},  Message: ${err.message}`);
               })
               break;
