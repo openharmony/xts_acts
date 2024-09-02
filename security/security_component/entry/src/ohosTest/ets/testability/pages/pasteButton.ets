@@ -202,7 +202,7 @@ struct pasteButton {
         PasteButton({ icon: PasteIconStyle.LINES, text: PasteDescription.PASTE, buttonType: this.bgType })
           .onClick((event: ClickEvent, result: PasteButtonOnClickResult) => {
             try {
-              let clickData:events_emitter.EventData= {
+              let clickData:events_emitter.EventData = {
                 data: {
                   "clickResult": result
                 }
