@@ -376,7 +376,7 @@ struct CanvasAPI {
     let canvasPattern = this.context2.createPattern(this.img, 'no-repeat');
     let matrix2d = this.createMatrix2D(1, 0, 0, 1, -75, -75);
     canvasPattern?.setTransform(matrix2d);
-    this.context2.fillStyle = canvasPattern  as CanvasPattern;
+    this.context2.fillStyle = canvasPattern as CanvasPattern;
     this.context2.fillRect(0, 0, 400, 350)
 
     let path2Db = new Path2D()

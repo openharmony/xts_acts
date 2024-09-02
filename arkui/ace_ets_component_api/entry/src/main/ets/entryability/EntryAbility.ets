@@ -36,31 +36,30 @@ export default class EntryAbility extends UIAbility {
     globalThis.abilityContext = this.context
 
     windowStage.loadContent('TestAbility/pages/Index', (err: BusinessError, data) => {
-        if (err.code) {
-            hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-            return;
-        }
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
 
-        let windowClass: Window.Window | undefined = undefined;
-        windowStage.getMainWindow((err: BusinessError, data) => {
-        let errCode: number = err.code;
-        if (errCode) {
-            console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
-            return;
+      let windowClass: Window.Window | undefined = undefined;
+      windowStage.getMainWindow((err: BusinessError, data) => {
+      let errCode: number = err.code;
+      if (errCode) {
+        console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+        return;
+      }
+      windowClass = data;
+      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      try {
+        let properties : Window.WindowProperties = windowClass.getWindowProperties();
+        let wRect : Window.Rect = properties.windowRect;
+        globalThis.winLeft = wRect.left;
+        globalThis.winTop = wRect.top;
+        console.info('Succeeded get winLeft:' + globalThis.winLeft + ',winTop:' + globalThis.winTop );
+      } catch (exception) {
+          console.error('Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
         }
-        windowClass = data;
-        console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-        try {
-            let properties : Window.WindowProperties = windowClass.getWindowProperties();
-            let wRect : Window.Rect =  properties.windowRect;
-            globalThis.winLeft = wRect.left;
-            globalThis.winTop = wRect.top;
-            console.info('Succeeded get winLeft:' + globalThis.winLeft + ',winTop:' + globalThis.winTop );
-        } catch (exception) {
-            console.error('Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
-        }
-        })   
-    
+      }) 
     });
   }
 
