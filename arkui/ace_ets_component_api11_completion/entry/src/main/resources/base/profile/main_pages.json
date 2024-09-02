@@ -57,7 +57,6 @@
         "MainAbility/pages/commonApi/blendMode",
         "MainAbility/pages/commonApi/monopolize",
 	    "MainAbility/pages/arkuinode/arkui_node",
-        "MainAbility/pages/arkuinode/arkui_node",
         "MainAbility/pages/button/buttonControlSize",
         "MainAbility/pages/dymaticattribute/attribute",
         "MainAbility/pages/list/listTest",

@@ -56,9 +56,9 @@ export default function popup() {
       await Utils.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("popup_0100 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.arrowWidth).assertEqual('20px');
-        expect(indexEvent.data.arrowHeight).assertEqual('20px');
-        expect(indexEvent.data.arrowPointPosition).assertEqual('Start');
+        expect(indexEvent.data?.arrowWidth).assertEqual('20px');
+        expect(indexEvent.data?.arrowHeight).assertEqual('20px');
+        expect(indexEvent.data?.arrowPointPosition).assertEqual('Start');
       }
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 65,

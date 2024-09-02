@@ -23,15 +23,15 @@ import window from "@ohos.window";
 export default function atomicServiceBarTest() {
 
   let windowStage: window.WindowStage = globalThis.windowStage;
-  let uiContext: UIContext = null;
+  let uiContext: UIContext | undefined = undefined;
   describe('atomicServiceBarTest', () => {
 
     beforeAll(() => {
       console.info("atomicServiceBar beforeEach start");
       windowStage.loadContent('MainAbility/pages/arkuinode/arkui_node', (err, data) => {
         uiContext = windowStage.getMainWindowSync().getUIContext();
-        if (uiContext != null) {
-          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+        if (uiContext != undefined) {
+          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext?.getAtomicServiceBar();
           if (atomicServiceBar != undefined) {
             hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
             atomicServiceBar.setVisible(false);
@@ -56,7 +56,7 @@ export default function atomicServiceBarTest() {
       console.info('ArkuiContext_0100 START');
       setTimeout(() => {
         try {
-          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext?.getAtomicServiceBar();
           if (atomicServiceBar != undefined) {
             // support service
             hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
@@ -83,7 +83,7 @@ export default function atomicServiceBarTest() {
       console.info('ArkuiContext_0200 START');
       setTimeout(() => {
         try {
-          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext?.getAtomicServiceBar();
           if (atomicServiceBar != undefined) {
             hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
             atomicServiceBar.setBackgroundColor(0x88888888);
@@ -109,7 +109,7 @@ export default function atomicServiceBarTest() {
       console.info('ArkuiContext_0300 START');
       setTimeout(() => {
         try {
-          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext?.getAtomicServiceBar();
           if (atomicServiceBar != undefined) {
             hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
             atomicServiceBar.setTitleContent('text2');
@@ -136,7 +136,7 @@ export default function atomicServiceBarTest() {
       console.info('ArkuiContext_0500 START');
       setTimeout(() => {
         try {
-          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext?.getAtomicServiceBar();
           if (atomicServiceBar != undefined) {
             hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
             atomicServiceBar.setTitleFontStyle(FontStyle.Normal);
@@ -163,7 +163,7 @@ export default function atomicServiceBarTest() {
       console.info('ArkuiContext_0600 START');
       setTimeout(() => {
         try {
-          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext?.getAtomicServiceBar();
           if (atomicServiceBar != undefined) {
             hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
             atomicServiceBar.setIconColor(0x12345678);
@@ -189,15 +189,15 @@ export default function atomicServiceBarTest() {
       console.info('ArkuiContext_0700 START');
       setTimeout(() => {
         try {
-          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+          let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext?.getAtomicServiceBar();
           if (atomicServiceBar != undefined) {
             hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
-            uiContext.setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
-            let keyboardAvoidMode: KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
-            expect(keyboardAvoidMode != null).assertTrue();
-            uiContext.setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
-            let keyboardAvoidMode2: KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
-            expect(keyboardAvoidMode2 != null).assertTrue();
+            uiContext?.setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+            let keyboardAvoidMode: KeyboardAvoidMode | undefined = uiContext?.getKeyboardAvoidMode();
+            expect(keyboardAvoidMode != undefined).assertTrue();
+            uiContext?.setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
+            let keyboardAvoidMode2: KeyboardAvoidMode | undefined = uiContext?.getKeyboardAvoidMode();
+            expect(keyboardAvoidMode2 != undefined).assertTrue();
           } else {
             // no support AtomServiceBar
             expect(atomicServiceBar == undefined).assertTrue();

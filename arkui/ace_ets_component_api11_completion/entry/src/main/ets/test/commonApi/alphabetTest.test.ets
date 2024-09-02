@@ -15,7 +15,7 @@
 import { beforeEach, describe, expect, it } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Driver } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function alphabetTest() {
   describe('alphabetTest', () => {

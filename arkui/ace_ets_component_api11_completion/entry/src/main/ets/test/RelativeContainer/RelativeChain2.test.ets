@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function RelativeChain2 () {
-  describe('RelativeChain2', function () {
-    beforeEach(async function (done) {
+  describe('RelativeChain2', () => {
+    beforeEach(async (done: Function) => {
       console.info("RelativeChain2 beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function RelativeChain2 () {
       console.info("RelativeChain2 foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("RelativeChain2 after each called");
     });
@@ -50,7 +50,7 @@ export default function RelativeChain2 () {
     * @tc.size
      */
 
-    it('RelativeChain2_001', 0, async function (done) {
+    it('RelativeChain2_001', 0, async (done: Function) => {
       console.info('[RelativeChain2_001] START');
 
       await CommonFunc.sleep(1000);
@@ -77,7 +77,7 @@ export default function RelativeChain2 () {
     * @tc.size
      */
 
-    it('RelativeChain2_002', 0, async function (done) {
+    it('RelativeChain2_002', 0, async (done: Function) => {
       console.info('[RelativeChain2_002] START');
 
       await CommonFunc.sleep(1000);
@@ -110,7 +110,7 @@ export default function RelativeChain2 () {
     * @tc.size
      */
 
-    it('RelativeChain2_003', 0, async function (done) {
+    it('RelativeChain2_003', 0, async (done: Function) => {
       console.info('[RelativeChain2_003] START');
 
       await CommonFunc.sleep(1000);
@@ -143,7 +143,7 @@ export default function RelativeChain2 () {
     * @tc.size
      */
 
-    it('RelativeChain2_004', 0, async function (done) {
+    it('RelativeChain2_004', 0, async (done: Function) => {
       console.info('[RelativeChain2_004] START');
 
       await CommonFunc.sleep(1000);

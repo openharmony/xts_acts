@@ -60,7 +60,7 @@ struct PopupExample12 {
             console.info("button2 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button2 emit action state err: " + JSON.stringify(err.message))
+            console.info("button2 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .bindPopup(this.noHandlePopup, {
@@ -84,7 +84,7 @@ struct PopupExample12 {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("customPopupOption page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.enableArrow != null) {
+      if (eventData.data?.enableArrow != null) {
         this.enableArrow = eventData.data.enableArrow;
       }
     }
