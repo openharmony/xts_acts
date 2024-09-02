@@ -198,10 +198,10 @@ public:
     Camera_ErrorCode SessionGetExposureBiasRange(void);
     Camera_ErrorCode SessionSetExposureBias(float exposureBias);
     Camera_ErrorCode SessionGetExposureBias(void);
-    Camera_ErrorCode SessionGetPhotoRotation(int32_t rotation);
-    Camera_ErrorCode SessionGetVideoRotation(int32_t rotation);
-    Camera_ErrorCode SessionGetPreviewRotation(int32_t rotation);
-    Camera_ErrorCode SessionSetPreviewRotation(int32_t rotation, bool isDisplayLocked);
+    Camera_ErrorCode SessionGetPhotoRotation(int rotation);
+    Camera_ErrorCode SessionGetVideoRotation(int rotation);
+    Camera_ErrorCode SessionGetPreviewRotation(int rotation);
+    Camera_ErrorCode SessionSetPreviewRotation(int rotation, bool isDisplayLocked);
 
     Camera_ErrorCode SessionIsFocusModeSupported(uint32_t mode);
     Camera_ErrorCode SessionGetFocusMode(void);

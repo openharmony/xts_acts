@@ -861,10 +861,11 @@ Camera_ErrorCode NDKCamera::SessionSetFlashMode(uint32_t mode)
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionGetPhotoRotation(int32_t rotation)
+Camera_ErrorCode NDKCamera::SessionGetPhotoRotation(int rotation)
 {
     LOG("GetVideoRotation begin.");
-    Camera_ErrorCode ret = OH_PhotoOutput_GetPhotoRotation(photoOutput_, rotation, &imageRotation_);
+    int32_t testRotation =  static_cast<int32_t>rotation;
+    Camera_ErrorCode ret = OH_PhotoOutput_GetPhotoRotation(photoOutput_, testRotation, &imageRotation_);
     if (ret == CAMERA_OK) {
         LOG("OH_PhotoOutput_GetPhotoRotation success.");
     } else {
@@ -873,10 +874,11 @@ Camera_ErrorCode NDKCamera::SessionGetPhotoRotation(int32_t rotation)
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionGetVideoRotation(int32_t rotation)
+Camera_ErrorCode NDKCamera::SessionGetVideoRotation(int rotation)
 {
     LOG("GetVideoRotation begin.");
-    Camera_ErrorCode ret = OH_VideoOutput_GetVideoRotation(videoOutput_, rotation, &imageRotation_);
+    int32_t testRotation =  static_cast<int32_t>rotation;
+    Camera_ErrorCode ret = OH_VideoOutput_GetVideoRotation(videoOutput_, testRotation, &imageRotation_);
     if (ret == CAMERA_OK) {
         LOG("OH_VideoOutput_GetVideoRotation success.");
     } else {
@@ -885,10 +887,11 @@ Camera_ErrorCode NDKCamera::SessionGetVideoRotation(int32_t rotation)
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionGetPreviewRotation(int32_t rotation)
+Camera_ErrorCode NDKCamera::SessionGetPreviewRotation(int rotation)
 {
     LOG("GetPreviewRotation begin.");
-    Camera_ErrorCode ret = OH_PreviewOutput_GetPreviewRotation(previewOutput_, rotation, &imageRotation_);
+    int32_t testRotation =  static_cast<int32_t>rotation;
+    Camera_ErrorCode ret = OH_PreviewOutput_GetPreviewRotation(previewOutput_, testRotation, &imageRotation_);
     if (ret == CAMERA_OK) {
         LOG("OH_PreviewOutput_GetPreviewRotation success.");
     } else {
@@ -897,10 +900,11 @@ Camera_ErrorCode NDKCamera::SessionGetPreviewRotation(int32_t rotation)
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionSetPreviewRotation(int32_t rotation, bool isDisplayLocked)
+Camera_ErrorCode NDKCamera::SessionSetPreviewRotation(int rotation, bool isDisplayLocked)
 {
     LOG("SetPreviewRotation begin.");
-    Camera_ErrorCode ret = OH_PreviewOutput_SetPreviewRotation(previewOutput_, rotation, isDisplayLocked);
+    int32_t testRotation =  static_cast<int32_t>rotation;
+    Camera_ErrorCode ret = OH_PreviewOutput_SetPreviewRotation(previewOutput_, testRotation, isDisplayLocked);
     if (ret == CAMERA_OK) {
         LOG("SessionSetPreviewRotation success.");
     } else {
