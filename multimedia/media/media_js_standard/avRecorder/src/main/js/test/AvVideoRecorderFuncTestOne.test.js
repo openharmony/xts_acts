@@ -10132,7 +10132,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AUDIO_SOURCE_TYPE_0400 start')
             let avNewConfig = {
-                audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_VOICE_CAMCORDER,
+                audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_CAMCORDER,
                 videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
                 profile : avProfile,
                 url : 'fd://35',
