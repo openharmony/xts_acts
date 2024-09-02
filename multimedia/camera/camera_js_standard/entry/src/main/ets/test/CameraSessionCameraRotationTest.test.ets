@@ -282,7 +282,7 @@ export default function CameraSessionCameraRotationTest() {
         return true;
     }
 
-    function createOutput(idx:any) {
+    async function createOutput(idx:any) {
         console.info('Enter createOutput');
 
         let cameraOutputCap = mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]);
@@ -370,7 +370,7 @@ export default function CameraSessionCameraRotationTest() {
         console.info(TAG + "Enter startCameraSession");
 
         await createInput(idx);
-        createOutput(idx);
+        await createOutput(idx);
 
         await sleep(1);
 
