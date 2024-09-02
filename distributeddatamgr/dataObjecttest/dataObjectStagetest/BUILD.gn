@@ -13,31 +13,15 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("dataObject_ets_test") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":dataObjectStage_js_assets",
-    ":dataObjectStage_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_js_app_suite("dataObject_ets_test") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsdataObjectStageTest"
-  subsystem_name = "distributeddatamgr"
+
+  # 部件名称，真实数据，需要子系统对应
   part_name = "data_object"
-}
 
-ohos_app_scope("dataObjectStage_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("dataObjectStage_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("dataObjectStage_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":dataObjectStage_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  # 子系统名称，真实数据，需要部件对应
+  subsystem_name = "distributeddatamgr"
 }
