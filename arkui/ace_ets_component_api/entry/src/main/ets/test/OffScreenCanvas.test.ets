@@ -33,7 +33,7 @@ export default function OffScreenCanvasTest() {
         if (pages == null || !("OffScreenCanvas" == pages.name)) {
           await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch((err) => {
+          }).catch((err: BusinessError) => {
             console.error(`${SUITE} router.pushUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
           })
         }
