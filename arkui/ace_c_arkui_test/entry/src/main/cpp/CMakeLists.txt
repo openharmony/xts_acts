@@ -99,6 +99,7 @@ add_library(nativerender SHARED
     drag/drag_setDragResult.cpp
     drag/drag_getDataTypesCount.cpp
     drag/drag_getDragResult.cpp
+    drag/drag_getDropOperation.cpp
     drag/drag_getXY.cpp
     drag/drag_getWidthHeight.cpp
     drag/drag_getModifierKeyStates.cpp
