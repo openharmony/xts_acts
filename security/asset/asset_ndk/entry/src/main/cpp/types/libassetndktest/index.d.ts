@@ -27,3 +27,4 @@ export const asset_removeLabel: (alias:string) => number;
 export const asset_removeError: (alias:string,secret:string) => number;
 export const asset_preAndPostQueryNormal: (alias:string,secret:string) => number;
 export const asset_preAndPostQueryError: (alias:string,secret:string) => number;
+export const asset_addCE: (alias:string,secret:string) => number;

@@ -238,5 +238,20 @@ export default function AssetNdkTest() {
         .assertEqual(3);
     })
 
+    /**
+     * @tc.number :SUB_Security_DataSecurity_Asset_CE_Func_0200
+     * @tc.name  :assetAddCE
+     * @tc.desc  :test error cases
+     * @tc.size  :Medium
+     * @tc.type  :Func
+     * @tc.level  :Level3
+     */
+    it('SUB_Security_DataSecurity_Asset_CE_Func_0200', 0, () => {
+      expect(myAssetNdk.asset_addCE(aw.aliasLong, aw.secLong))
+        .assertEqual(aw.assetQueryTrue);
+      expect(myAssetNdk.asset_queryAll(aw.aliasLong, aw.secLong))
+        .assertEqual(-1);
+    })
+
   })
 }
