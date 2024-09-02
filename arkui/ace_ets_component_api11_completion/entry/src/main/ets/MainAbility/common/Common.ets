@@ -64,7 +64,7 @@ export default class CommonFunc {
 
   static setScreenOrientation(orientation: number) {
     screen.getAllScreens().then(data => {
-        console.log('Succeeded in getting all screens. Data:'+ JSON.stringify(data));
+        console.log('Succeeded in getting all screens. Data:' + JSON.stringify(data));
         return data[0];
     }).then(screenClass => {
         return screenClass.setOrientation(orientation);

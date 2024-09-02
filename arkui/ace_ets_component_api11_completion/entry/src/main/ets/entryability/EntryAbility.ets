@@ -49,7 +49,7 @@ export default class EntryAbility extends UIAbility {
         hilog.info(0x0000, 'testTag', 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
         try {
           let properties : window.WindowProperties = windowClass.getWindowProperties();
-          let wRect : window.Rect =  properties.windowRect;
+          let wRect : window.Rect = properties.windowRect;
           globalThis.winLeft = wRect.left;
           globalThis.winTop = wRect.top;
           hilog.info(0x0000, 'testTag', 'Succeeded get winLeft:' + globalThis.winLeft + ',winTop:' + globalThis.winTop );
