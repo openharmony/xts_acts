@@ -18,6 +18,7 @@ group("inputmethod") {
     "InputMethodAuthorityTest:ActsInputMethodAuthorityTest",
     "InputMethodDrawnControl:ActsInputMethodDrawnControlTest",
     "InputMethodEngine:ActsInputMethodEngineTest",
+    "InputMethodNDKTest:ActsInputMethodNDKTest",
     "InputMethodTest_Stage:ActsImeAbilityTest",
     "InputMethodTest_ets:ActsInputMethodEtsTest",
     "InputMethodWindManage:ActsInputMethodWindManageTest",
