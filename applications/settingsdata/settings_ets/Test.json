@@ -1,23 +1,26 @@
 {
-    "description": "Configuration for settings Tests",
+    "description": "Configuration for ActsMindSporeNdkTest Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
+        "test-timeout": "600000",
+        "shell-timeout": "600000",
         "bundle-name": "com.open.harmony.settings",
-        "module-name": "phone",
-        "shell-timeout": "600000"
+        "module-name": "phone"
     },
-    "kits": [{
-        "test-file-name": [
-            "ActsSettingsEtsTest.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
-    }, {
-        "type": "ShellKit",
-        "run-command": [
-            "power-shell wakeup",
-            "power-shell setmode 602"
-        ]       
-    }]
+    "kits": [
+        {
+            "test-file-name": [
+              "ActsSettingsEtsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
+        }
+    ]
 }
