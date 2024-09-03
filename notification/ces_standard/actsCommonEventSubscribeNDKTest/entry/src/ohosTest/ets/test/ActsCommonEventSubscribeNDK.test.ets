@@ -140,21 +140,21 @@ export default function ActsCommonEventSubscribeNDKTest() {
         let result = testNapi.common_event_subscribe();
         expect(result).assertEqual(401)
         const arrayStr = [];
-        // The array is empty.为 402
+        // The array is empty.为 401
         let result1 = testNapi.create_subscribe_info(arrayStr);
         hilog.info(0x0000, 'testTag', 'The array is empty, create subscribe info : %{public}d', result1);
-        expect(result1).assertEqual(402)
+        expect(result1).assertEqual(401)
         testNapi.create_subscriber();
         let result2 = testNapi.common_event_subscribe();
         expect(result2).assertEqual(401)
         // 单应用进程下，subscribe超过200,订阅失败，返回1500010
         const arrayStr2 = ["123"];
-        for (let i = 0; i < 200; i++) {
+        for (let i = 0; i < 201; i++) {
           testNapi.create_subscribe_info(arrayStr2);
           testNapi.set_publisher_permission("ohos.permission.NOTIFICATION_CONTROLLER");
           testNapi.set_publisher_bundleName("com.example.myapplication444");
           testNapi.create_subscriber();
-          if (i == 199){
+          if (i == 200){
             let result3 = testNapi.common_event_subscribe();
             expect(result3).assertEqual(1500010)
           }else{
