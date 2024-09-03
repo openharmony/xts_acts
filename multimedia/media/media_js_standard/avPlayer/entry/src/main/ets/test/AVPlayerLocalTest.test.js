@@ -223,7 +223,6 @@ export default function AVPlayerLocalTest() {
                         expect().assertFail();
                     }
                 }
-                done();
             });
         }
 
