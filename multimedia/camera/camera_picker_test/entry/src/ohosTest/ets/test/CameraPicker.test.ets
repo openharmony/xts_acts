@@ -101,9 +101,9 @@ export default function cameraPicker() {
       console.info(`button is ${JSON.stringify(button)}`);
       await button.click();
       if (videoDuration > 0) {
-        await sleep(videoDuration * 1000 + 2000);
+        await sleep(videoDuration * 1000);
       } else {
-        await sleep(5000);
+        await sleep(2000);
         let button2 = await driver.findComponent(BY.key("COMPONENT_ID_SHUTTER_VIDEO_END_1"));
         console.info(`button is ${JSON.stringify(button2)}`);
         await button2.click();
@@ -125,9 +125,9 @@ export default function cameraPicker() {
       console.info(`button is ${JSON.stringify(button)}`);
       await button.click();
       if (videoDuration > 0) {
-        await sleep(videoDuration * 1000 + 2000);
+        await sleep(videoDuration * 1000);
       } else {
-        await sleep(5000);
+        await sleep(2000);
         let button2 = await driver.findComponent(BY.key("COMPONENT_ID_SHUTTER_VIDEO_END_1"));
         console.info(`button is ${JSON.stringify(button2)}`);
         await button2.click();
@@ -301,7 +301,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100--------------");
-      let videoDuration = 5;
+      let videoDuration = 2;
       let videoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
         videoDuration: videoDuration
@@ -367,7 +367,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102--------------");
-      let videoDuration = 5;
+      let videoDuration = 2;
       let videoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_FRONT,
         videoDuration: videoDuration
