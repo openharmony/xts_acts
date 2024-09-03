@@ -52,7 +52,7 @@ struct stagePrompt {
               console.info("showDialog start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (error) {
-              console.error("showToast emit action state err:" + JSON.stringify(error.message));
+              console.error("showToast emit action state err:" + JSON.stringify((error as BusinessError).message));
             }
             ;
           })
@@ -105,7 +105,7 @@ struct stagePrompt {
               console.info("showActionMenu start to emit action state")
               events_emitter.emit(backEvent1, backData1)
             } catch (error) {
-              console.error("showDialog emit action state err:" + JSON.stringify(error.message));
+              console.error("showDialog emit action state err:" + JSON.stringify((error as BusinessError).message));
             }
             ;
           })
@@ -157,7 +157,7 @@ struct stagePrompt {
               console.info("showActionMenu start to emit action state")
               events_emitter.emit(backEvent2, backData2)
             } catch (error) {
-              console.error(`showActionMenu args error code is ${error.code}, message is ${error.message}`);
+              console.error(`showActionMenu args error code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`);
             }
             ;
           })
@@ -208,7 +208,7 @@ struct stagePrompt {
               console.info("showActionMenu start to emit action state")
               events_emitter.emit(backEvent3, backData3)
             } catch (error) {
-              console.error("showDialog emit action state err:" + JSON.stringify(error.message));
+              console.error("showDialog emit action state err:" + JSON.stringify((error as BusinessError).message));
             }
             ;
           })
@@ -258,7 +258,7 @@ struct stagePrompt {
               console.info("showActionMenu start to emit action state")
               events_emitter.emit(backEvent4, backData4)
             } catch (error) {
-              console.error(`showActionMenu args error code is ${error.code}, message is ${error.message}`);
+              console.error(`showActionMenu args error code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`);
             }
             ;
           })

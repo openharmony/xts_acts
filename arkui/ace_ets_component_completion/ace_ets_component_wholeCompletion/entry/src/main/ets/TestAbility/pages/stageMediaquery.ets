@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -68,7 +69,7 @@ struct stageMediaquery {
               console.info("onSelect start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("onSelect emit action state err: " + JSON.stringify(err.message))
+              console.info("onSelect emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
         })
@@ -101,7 +102,7 @@ struct stageMediaquery {
             console.info("onSelect start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("onSelect emit action state err: " + JSON.stringify(err.message))
+            console.info("onSelect emit action state err: " + JSON.stringify((err as BusinessError).message))
           }
 
         })

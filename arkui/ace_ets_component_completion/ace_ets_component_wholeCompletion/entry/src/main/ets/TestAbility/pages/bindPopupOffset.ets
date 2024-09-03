@@ -14,6 +14,7 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -68,7 +69,7 @@ struct bindPopupOffset {
               console.info("PopupOptions start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("PopupOptions emit action state err: " + JSON.stringify(err.message))
+              console.info("PopupOptions emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
           .bindPopup(this.handlePopup, {
@@ -103,7 +104,7 @@ struct bindPopupOffset {
               console.info("PopupOptions00 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("PopupOptions00 emit action state err: " + JSON.stringify(err.message))
+              console.info("PopupOptions00 emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
           .bindPopup(this.handlePopup01, {
@@ -138,7 +139,7 @@ struct bindPopupOffset {
               console.info("PopupOptions050 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("PopupOptions050 emit action state err: " + JSON.stringify(err.message))
+              console.info("PopupOptions050 emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
           .bindPopup(this.handlePopup01, {
@@ -172,7 +173,7 @@ struct bindPopupOffset {
               console.info("PopupOptionsnull start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("PopupOptionsnull emit action state err: " + JSON.stringify(err.message))
+              console.info("PopupOptionsnull emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
           .bindPopup(this.handlePopup03, {
@@ -206,7 +207,7 @@ struct bindPopupOffset {
               console.info("PopupOptions10 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("PopupOptions10 emit action state err: " + JSON.stringify(err.message))
+              console.info("PopupOptions10 emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
           .bindPopup(this.handlePopup04, {
@@ -241,7 +242,7 @@ struct bindPopupOffset {
               console.info("customPopup start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("customPopup emit action state err: " + JSON.stringify(err.message))
+              console.info("customPopup emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
           .bindPopup(this.customPopup, {
@@ -276,7 +277,7 @@ struct bindPopupOffset {
               console.info("customPopup10 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("customPopup10 emit action state err: " + JSON.stringify(err.message))
+              console.info("customPopup10 emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
           .bindPopup(this.customPopup01, {
@@ -311,7 +312,7 @@ struct bindPopupOffset {
               console.info("customPopup00 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("customPopup00 emit action state err: " + JSON.stringify(err.message))
+              console.info("customPopup00 emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
           .bindPopup(this.customPopup02, {
@@ -346,7 +347,7 @@ struct bindPopupOffset {
               console.info("customPopup050 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("customPopup050 emit action state err: " + JSON.stringify(err.message))
+              console.info("customPopup050 emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
           .bindPopup(this.customPopup03, {
@@ -381,7 +382,7 @@ struct bindPopupOffset {
               console.info("customPopupnull start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("customPopupnull emit action state err: " + JSON.stringify(err.message))
+              console.info("customPopupnull emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
           .bindPopup(this.customPopup04, {

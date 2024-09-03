@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -66,7 +67,7 @@ struct stageAlertDialog {
               console.info("showDialog start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (error) {
-              console.error("showToast emit action state err:" + JSON.stringify(error.message));
+              console.error("showToast emit action state err:" + JSON.stringify((error as BusinessError).message));
             }
             ;
           })
@@ -168,7 +169,7 @@ struct stageAlertDialog {
               console.info("showActionMenu start to emit action state")
               events_emitter.emit(backEvent2, backData2)
             } catch (error) {
-              console.error(`showActionMenu args error code is ${error.code}, message is ${error.message}`);
+              console.error(`showActionMenu args error code is ${error.code}, message is ${(error as BusinessError).message}`);
             }
           })
       }

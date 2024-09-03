@@ -59,7 +59,7 @@ export default function stageRouterTest() {
       console.info('testrouterstage0001 START');
       let result: ESObject;
       let options: router.RouterOptions = {
-        url: '../TestAbility/pages/pushUrl.ets',
+        url: '../TestAbility/pages/pushUrl',
         params: {
           data1: 'message',
           data2: {
@@ -84,7 +84,7 @@ export default function stageRouterTest() {
       let result: ESObject;
       try {
         result = router.pushUrl({
-          url: '../TestAbility/pages/pushUrl.ets',
+          url: '../TestAbility/pages/pushUrl',
           params: {
             data1: 'message',
             data2: {
@@ -114,7 +114,7 @@ export default function stageRouterTest() {
       let result: ESObject;
       try {
         result = router.pushUrl({
-          url: '../TestAbility/pages/pushUrl.ets',
+          url: '../TestAbility/pages/pushUrl',
           params: {
             data1: 'message',
             data2: {
@@ -142,7 +142,7 @@ export default function stageRouterTest() {
       let result: ESObject;
       try {
         result = router.pushUrl({
-          url: '../TestAbility/pages/pushUrl.ets',
+          url: '../TestAbility/pages/pushUrl',
           params: {
             data1: 'message',
             data2: {
@@ -165,7 +165,7 @@ export default function stageRouterTest() {
       let result: ESObject;
       try {
         result = router.replaceUrl({
-          url: '../TestAbility/pages/pushUrl.ets',
+          url: '../TestAbility/pages/pushUrl',
           params: {
             data1: 'message'
           }
@@ -190,7 +190,7 @@ export default function stageRouterTest() {
       let result: ESObject;
       try {
         result = router.replaceUrl({
-          url: '../TestAbility/pages/pushUrl.ets',
+          url: '../TestAbility/pages/pushUrl',
           params: {
             data1: 'message'
           }
@@ -216,7 +216,7 @@ export default function stageRouterTest() {
       let result: ESObject;
       try {
         result = router.replaceUrl({
-          url: '../TestAbility/pages/pushUrl.ets',
+          url: '../TestAbility/pages/pushUrl',
           params: {
             data1: 'message'
           }
@@ -241,7 +241,7 @@ export default function stageRouterTest() {
       let result: ESObject;
       try {
         result = router.replaceUrl({
-          url: '../TestAbility/pages/pushUrl.ets',
+          url: '../TestAbility/pages/pushUrl',
           params: {
             data1: 'message'
           }
@@ -267,7 +267,7 @@ export default function stageRouterTest() {
       let result: ESObject;
       try {
         result = router.back({
-          url: '../TestAbility/pages/pushUrl.ets'
+          url: '../TestAbility/pages/pushUrl'
         })
         expect(result).assertUndefined();
         console.info("push button page success " + JSON.stringify(result));
