@@ -3,9 +3,9 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
+        "shell-timeout": "600000",
         "bundle-name": "com.example.commoneventtest",
         "module-name": "entry_test",
-        "shell-timeout": "600000",
         "testcase-timeout": "10000"
     },
     "kits": [
@@ -17,8 +17,7 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
+        },{
             "type": "ShellKit",
             "run-command": [
                 "setenforce 0"
