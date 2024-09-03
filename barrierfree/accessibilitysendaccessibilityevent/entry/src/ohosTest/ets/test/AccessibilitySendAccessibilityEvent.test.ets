@@ -2549,7 +2549,7 @@ export default function abilityTest() {
                 type : eventType,
                 bundleName : bundleName,
                 triggerAction : triggerAction,
-                elementId : elementId
+                elementId : elementId,
                 customId : customId
             }
 
