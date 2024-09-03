@@ -72,8 +72,8 @@ export default function AVPlayerSelectTrackTest() {
                 for (let i = 0; i < arrayList.length; i++) {
                     console.info('case track_name is  ' + arrayList[i][media.MediaDescriptionKey.MD_KEY_TRACK_NAME]);
                     console.info('case hdr_type is  ' + arrayList[i][media.MediaDescriptionKey.MD_KEY_HDR_TYPE]);
-                    if (arrayList[i][media.MediaDescriptionKey.MD_KEY_HDR_TYPE] == 0) {
-                        audioTrackList.push(arrayList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEXTRACK_INDEX]);
+                    if (arrayList[i][media.MediaDescriptionKey.MD_KEY_TRACK_TYPE] == 0) {
+                        audioTrackList.push(arrayList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX]);
                     }
                 }
             })
