@@ -134,7 +134,7 @@ struct RichEditorExample {
             let TextSpanResult: RichEditorTextSpanResult = {
               spanPosition: { spanIndex: 10, spanRange: [10, 10] },
               value: "aaaaa",
-              textStyle: (null),
+              textStyle: (null!),
               offsetInSpan: [10, 100]
             }
             let SpanPosition: RichEditorSpanPosition = { spanIndex: 20, spanRange: [20, 20] }
@@ -145,12 +145,13 @@ struct RichEditorExample {
             TextSpanResult.offsetInSpan.toString()
             RichEditorTextSpanResult.offsetInSpan.toString()
             console.log("wxh test app onIMEInputComplete")
-            return ({
+            let result: RichEditorTextSpanResult = {
               spanPosition: { spanIndex: 10, spanRange: [10, 10] },
               value: "aaaaa",
-              textStyle: (null),
+              textStyle: (null!),
               offsetInSpan: [10, 100]
-            })
+            }
+            return result
           })
           .key('Stage_RichEditor_Test_2400')
           .aboutToDelete((RichEditorDeleteValue) => {
@@ -249,7 +250,8 @@ struct RichEditorExample {
             console.log("mim_log: onSelect selection start: " + value.selection[0])
             console.log("mim_log: onSelect selection end: " + value.selection[1])
             console.log("mim_log: onSelect spans length: " + value.spans.length);
-            return { selection: [10, 10], spans: (null) }
+            let selection: RichEditorSelection = { selection: [10, 10], spans: (null!) }
+            return selection
           })
           .borderWidth(1)
           .borderColor(Color.Green)

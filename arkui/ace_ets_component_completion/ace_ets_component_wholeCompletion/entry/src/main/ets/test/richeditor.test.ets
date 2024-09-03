@@ -421,7 +421,7 @@ export default function ActsRichEditorTest() {
           let RichEditorTextSpanResult: RichEditorTextSpanResult = {
             spanPosition: {
               spanIndex: 10, spanRange: [10, 10]
-            }, value: "aaaaa", textStyle: (null), offsetInSpan: [10, 100]
+            }, value: "aaaaa", textStyle: (null!), offsetInSpan: [10, 100]
           }
           let RichEditorImageSpanStyleResult: RichEditorImageSpanStyleResult = {
             size: [10, 10], verticalAlign: (ImageSpanAlignment.BASELINE), objectFit: (ImageFit.Cover)
@@ -527,7 +527,7 @@ export default function ActsRichEditorTest() {
           let RichEditorTextSpanResult: RichEditorTextSpanResult = {
             spanPosition: {
               spanIndex: 10, spanRange: [10, 10]
-            }, value: "aaaaa", textStyle: (null), offsetInSpan: [10, 100]
+            }, value: "aaaaa", textStyle: (null!), offsetInSpan: [10, 100]
           }
           let RichEditorSpanPosition: RichEditorSpanPosition = {
             spanIndex: 20, spanRange: [20, 20]
