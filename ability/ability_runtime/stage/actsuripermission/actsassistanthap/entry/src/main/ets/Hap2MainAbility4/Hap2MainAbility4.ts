@@ -14,6 +14,7 @@
  */
 import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent';
+import fs from '@ohos.file.fs'
 
 function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time))
@@ -45,7 +46,7 @@ export default class Hap2MainAbility4 extends Ability {
     }
     let eventName1 : string = 'Temp_UriPermissionTest_0300_Read_Successfully';
     let eventName2 : string = 'Temp_UriPermissionTest_0300_Read_Failed';
-    globalThis.fs.open(uri, globalThis.fs.OpenMode.READ_ONLY).then((file) => {
+    fs.open(uri, fs.OpenMode.READ_ONLY).then((file) => {
       console.info('file fd: ' + file.fd);
       commonEvent.publish(eventName1, (err) => {
         console.log('Hap2MainAbility4' + eventName1);
@@ -59,7 +60,7 @@ export default class Hap2MainAbility4 extends Ability {
 
     let eventName3 : string = 'Temp_UriPermissionTest_0300_Write_Successfully';
     let eventName4 : string = 'Temp_UriPermissionTest_0300_Write_Failed';
-    globalThis.fs.open(uri, globalThis.fs.OpenMode.READ_WRITE).then((file) => {
+    fs.open(uri, fs.OpenMode.READ_WRITE).then((file) => {
       console.info('file fd: ' + file.fd);
       commonEvent.publish(eventName3, (err) => {
         console.log('Hap2MainAbility4' + eventName3);
@@ -82,7 +83,7 @@ export default class Hap2MainAbility4 extends Ability {
       console.log(' Subscribe CallBack data:' + JSON.stringify(data));
       if (data.event === eventName5) {
         await sleep(1000);
-        globalThis.fs.open(uri, globalThis.fs.OpenMode.READ_ONLY).then((file) => {
+        fs.open(uri, fs.OpenMode.READ_ONLY).then((file) => {
           console.info('file fd: ' + file.fd);
           commonEvent.publish(eventName6, (err) => {
             console.log('Hap2MainAbility4' + eventName6);

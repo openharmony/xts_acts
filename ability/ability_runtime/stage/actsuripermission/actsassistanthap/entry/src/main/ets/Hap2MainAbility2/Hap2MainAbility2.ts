@@ -15,6 +15,7 @@
 
 import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent';
+import fs from '@ohos.file.fs'
 
 export default class Hap2MainAbility2 extends Ability {
     onCreate(want, launchParam) {
@@ -50,7 +51,7 @@ export default class Hap2MainAbility2 extends Ability {
                 }
                 let eventName20_1 : string = 'Temp_UriPermissionTest_0200_Read_Successfully';
                 let eventName20_2 : string = 'Temp_UriPermissionTest_0200_Read_Failed';
-                globalThis.fs.open(uri, globalThis.fs.OpenMode.READ_ONLY).then((file) => {
+                fs.open(uri, fs.OpenMode.READ_ONLY).then((file) => {
                     console.info('read file fd: ' + file.fd);
                     commonEvent.publish(eventName20_1, (err) => {
                         console.log('Hap2MainAbility2' + eventName20_1);
@@ -64,7 +65,7 @@ export default class Hap2MainAbility2 extends Ability {
 
                 let eventName20_3 : string = 'Temp_UriPermissionTest_0200_Write_Successfully';
                 let eventName20_4 : string = 'Temp_UriPermissionTest_0200_Write_Failed';
-                globalThis.fs.open(uri, globalThis.fs.OpenMode.READ_WRITE).then((file) => {
+                fs.open(uri, fs.OpenMode.READ_WRITE).then((file) => {
                     console.info('write file fd: ' + file.fd);
                     commonEvent.publish(eventName20_3, (err) => {
                         console.log('Hap2MainAbility2' + eventName20_3);
