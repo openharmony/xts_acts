@@ -83,19 +83,19 @@ export default function cameraManagerTest() {
         });
         
         let file = fs.openSync(pathName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-        fileAsset = file;
-        fdNumber = file.fd;
-        fdPath = "fd://" + fdNumber.toString();
-        console.info('case getFd number is: ' + fdObject.fdNumber);
-        }
+        mFileAsset = file;
+        mFdNumber = file.fd;
+        mFdPath = "fd://" + mFdNumber.toString();
+        console.info('case getFd number is: ' + fdNumber);
     }
     
     async function closeFd() {
         console.info('case come in closeFd')
-        if (fdNumber != null) {
-            fs.closeSync(fdNumber);
+        if (mFdNumber != null) {
+            fs.closeSync(mFdNumber);
         } else {
             console.info('[fs.closeSync] case fdNumber is null');
+        }
     }
 
     async function getVideoReceiveSurface() {
@@ -914,6 +914,37 @@ describe('CameraManagerTest', function () {
                     done()
                 }
             }
+    })
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ON_FOLD_STATUS_0100
+      * @tc.name      : camera manager on fold status api
+      * @tc.desc      : camera manager on fold status api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+    it('SUB_MULTIMEDIA_CAMERA_ON_FOLD_STATUS_0100', 1, async function (done) {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_ON_FOLD_STATUS_0100--------------");
+      if (isEmpty(mCameraManager)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ON_FOLD_STATUS_0100 mCameraManager == null || undefined")
+        expect().assertFail();
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ON_FOLD_STATUS_0100 to operate");
+        mCameraManager.on('foldStatusChange', async (err, foldStatusInfo) => {
+          if (!err) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ON_FOLD_STATUS_0100 supportedCameras:" + JSON.stringify(foldStatusInfo.supportedCameras));
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ON_FOLD_STATUS_0100 foldStatus:" + JSON.stringify(foldStatusInfo.foldStatus));
+            expect(true).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ON_FOLD_STATUS_0100 success");
+          } else {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ON_FOLD_STATUS_0100 failed");
+            expect(false).assertTrue();
+          }
+        })
+        mCameraManager.off('foldStatusChange');
+      }
+      done();
     })
 })
 }
