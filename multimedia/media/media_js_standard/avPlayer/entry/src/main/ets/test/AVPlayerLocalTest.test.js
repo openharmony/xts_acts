@@ -16,7 +16,6 @@
 import * as mediaTestBase from '../../../../../../MediaTestBase';
 import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio';
-import drm from '@ohos.multimedia.drm';
 import { testAVPlayerFun, AV_PLAYER_STATE, setSource, setSubtitle } from '../../../../../../AVPlayerTestBase.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
