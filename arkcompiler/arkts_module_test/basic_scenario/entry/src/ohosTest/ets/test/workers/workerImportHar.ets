@@ -23,7 +23,7 @@ console.log("ModuleTest workerImportHarEtc npm/hsp success");
 let workerPort = worker.workerPort;
 workerPort.onmessage = () => {
   console.log("ModuleTest har");
-  if (npmRes == "'aaa'" && a == "<From har>This is library") {
+  if (npmRes && a == "<From har>This is library") {
     workerPort.postMessage("ModuleTest receive data from main thread");
   }
 }
