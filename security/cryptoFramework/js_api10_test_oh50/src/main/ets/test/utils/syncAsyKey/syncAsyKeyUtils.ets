@@ -13,11 +13,23 @@
  * limitations under the License.
  */
 import cryptoFramework from '@ohos.security.cryptoFramework';
+import * as rsa from '../pkcs1Topkcs8/pkcs1topkcs8';
 
 function createAsyKeySync(algName: string): cryptoFramework.KeyPair {
   try {
     let asyKeyGenerator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
-    let syncAsyKey: cryptoFramework.KeyPair = asyKeyGenerator.generateKeyPairSync();
+    let syncAsyKey: cryptoFramework.KeyPair = {} as cryptoFramework.KeyPair;
+    if (algName === "RSA2048") {
+      syncAsyKey = asyKeyGenerator.convertPemKeySync(rsa.pubKeyPkcs1Str2048, rsa.priKeyPkcs1Str2048);
+    } else if (algName === "RSA3072") {
+      syncAsyKey = asyKeyGenerator.convertPemKeySync(rsa.pubKeyPkcs1Str3072, rsa.priKeyPkcs1Str3072);
+    } else if (algName === "RSA4096") {
+      syncAsyKey = asyKeyGenerator.convertPemKeySync(rsa.pubKeyPkcs1Str4096, rsa.priKeyPkcs1Str4096);
+    } else if (algName === "RSA8192") {
+      syncAsyKey = asyKeyGenerator.convertPemKeySync(rsa.pubKeyPkcs1Str8192, rsa.priKeyPkcs1Str8192);
+    } else {
+      syncAsyKey = asyKeyGenerator.generateKeyPairSync();
+    }
 
     return syncAsyKey;
   } catch (error) {
@@ -229,15 +241,28 @@ let ASY_RSA_KEY_SPEC = [
   [["RSA1024"], ["PRIMES_2", "PRIMES_3"]],
 ]
 
-let ASY_ECC_KEY_SPEC = [
+let ASY_ECC_KEY_SPEC_1 = [
   "ECC224", "ECC256", "ECC384", "ECC521", "ECC_BrainPoolP160r1", "ECC_BrainPoolP160t1",
-  "ECC_BrainPoolP192r1", "ECC_BrainPoolP192t1", "ECC_BrainPoolP224r1", "ECC_BrainPoolP224t1",
-  "ECC_BrainPoolP256r1", "ECC_BrainPoolP256t1", "ECC_BrainPoolP320r1", "ECC_BrainPoolP320t1",
-  "ECC_BrainPoolP384r1", "ECC_BrainPoolP384t1", "ECC_BrainPoolP512r1", "ECC_BrainPoolP512t1",
 ]
 
-let ASY_DSA_KEY_SPEC = [
-  "DSA1024", "DSA2048"
+let ASY_ECC_KEY_SPEC_2 = [
+  "ECC_BrainPoolP192r1", "ECC_BrainPoolP224r1",
+  "ECC_BrainPoolP256r1", "ECC_BrainPoolP320r1",
+  "ECC_BrainPoolP384r1", "ECC_BrainPoolP512r1",
+]
+
+let ASY_ECC_KEY_SPEC_3 = [
+  "ECC_BrainPoolP192t1", "ECC_BrainPoolP224t1",
+  "ECC_BrainPoolP256t1", "ECC_BrainPoolP320t1",
+  "ECC_BrainPoolP384t1", "ECC_BrainPoolP512t1",
+]
+
+let ASY_DSA_KEY_SPEC_1 = [
+  "DSA1024"
+]
+
+let ASY_DSA_KEY_SPEC_2 = [
+  "DSA2048"
 ]
 
 let ASY_SM2_KEY_SPEC = [
@@ -248,9 +273,15 @@ let ASY_25519_KEY_SPEC = [
   "Ed25519", "X25519"
 ]
 
-let ASY_DH_KEY_SPEC = [
+let ASY_DH_KEY_SPEC_1 = [
   "DH_modp1536", "DH_modp2048", "DH_modp3072", "DH_modp4096",
+]
+
+let ASY_DH_KEY_SPEC_2 = [
   "DH_modp6144", "DH_modp8192", "DH_ffdhe2048", "DH_ffdhe3072",
+]
+
+let ASY_DH_KEY_SPEC_3 = [
   "DH_ffdhe4096", "DH_ffdhe6144", "DH_ffdhe8192"
 ]
 
@@ -266,9 +297,14 @@ export {
   genEccPriKeySpec,
   showEccSpecDetailInfo,
   ASY_RSA_KEY_SPEC,
-  ASY_ECC_KEY_SPEC,
-  ASY_DSA_KEY_SPEC,
+  ASY_ECC_KEY_SPEC_1,
+  ASY_ECC_KEY_SPEC_2,
+  ASY_ECC_KEY_SPEC_3,
+  ASY_DSA_KEY_SPEC_1,
+  ASY_DSA_KEY_SPEC_2,
   ASY_SM2_KEY_SPEC,
   ASY_25519_KEY_SPEC,
-  ASY_DH_KEY_SPEC
+  ASY_DH_KEY_SPEC_1,
+  ASY_DH_KEY_SPEC_2,
+  ASY_DH_KEY_SPEC_3,
 }

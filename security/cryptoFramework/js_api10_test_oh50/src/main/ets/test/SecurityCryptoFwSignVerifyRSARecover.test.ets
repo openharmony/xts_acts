@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as rsaTest from './utils/rsa/rsaSignRecoverUtils'
 import * as commonUtil from './utils/common/commonUtils';
+import * as rsa from './utils/pkcs1Topkcs8/pkcs1topkcs8';
 
 
 export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
@@ -630,7 +631,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
       let algName: string = "RSA4096"
       let rawData: cryptoFramework.DataBlob = await commonUtil.createData(dataLen);
       let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName)
-      let keyPair: cryptoFramework.KeyPair = await generator.generateKeyPair();
+      let keyPair: cryptoFramework.KeyPair = await generator.convertPemKey(rsa.pubKeyPkcs1Str4096, rsa.priKeyPkcs1Str4096);
       let signAlg: string = algName + "|PSS|MD5|MGF1_MD5";
       let signData: cryptoFramework.DataBlob = await rsaTest.signPromiseWithUpdate(signAlg, keyPair.priKey, rawData);
       let verifyAlg: string = algName + "|PSS|MD5|MGF1_MD5|Recover";
