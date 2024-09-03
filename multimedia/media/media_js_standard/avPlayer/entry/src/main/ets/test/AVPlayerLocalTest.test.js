@@ -221,6 +221,7 @@ export default function AVPlayerLocalTest() {
                     } else {
                         console.error(`case createAVPlayer failed`);
                         expect().assertFail();
+                        done();
                     }
                 }
             });
