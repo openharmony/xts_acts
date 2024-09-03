@@ -597,6 +597,7 @@ import DragEventSetSuggestedDropOperationTest from "./drag/DragEventSetSuggested
 import DragEventSetDragResultTest from "./drag/DragEventSetDragResult.test"
 import DragEventGetDataTypesCountTest from "./drag/DragEventGetDataTypesCount.test"
 import DragEventGetDragResultTest from "./drag/DragEventGetDragResult.test"
+import DragEventGetDropOperationTest from "./drag/DragEventGetDropOperation.test"
 import DragSetGetUdmfDataTest from "./drag/DragSetGetUdmfData.test"
 import DragEventGetXYTest from "./drag/DragEventGetXY.test"
 import DragEventGetWidthHeightTest from "./drag/DragEventGetWidthHeight.test"
@@ -1193,6 +1194,7 @@ export default function testsuite() {
   DragEventSetDragResultTest()
   DragEventGetDataTypesCountTest()
   DragEventGetDragResultTest()
+  DragEventGetDropOperationTest()
   DragSetGetUdmfDataTest()
   DragEventGetXYTest()
   DragEventGetWidthHeightTest()
