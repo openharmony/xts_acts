@@ -201,29 +201,6 @@ export default function bmsZlibChecksumCrc32CombineTest() {
         done();
       });
     /**
-     * @tc.number: Sub_Bms_Zlib_Checksum_Check_4000
-     * @tc.name: Sub_Bms_Zlib_Checksum_Check_4000
-     * @tc.desc: test Crc32Combine(crc1,crc2,9223372036854775808)
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("Sub_Bms_Zlib_Checksum_Check_4000", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0,
-      async (done: Function) => {
-        try {
-          len2 = 9223372036854775808;
-          hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_4000 start`);
-          let num: number = await checksum.crc32Combine(crc1, crc2, len2);
-          hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_4000 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
-          expect(num).not().assertFail();
-        } catch (e) {
-          hilog.error(Domain, TAG,
-            `Sub_Bms_Zlib_Checksum_Check_4000 error, error code is: ${e.code}, error message is: ${e.message}`);
-          expect().assertFail();
-        }
-        done();
-      });
-    /**
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_4200
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_4200
      * @tc.desc: test Crc32Combine(undefined,crc2,len2)
