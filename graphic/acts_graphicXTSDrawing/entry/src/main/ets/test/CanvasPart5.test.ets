@@ -1205,13 +1205,13 @@ export default function drawingTsCanvasPart5Test() {
         let matrix1 = new drawing.Matrix();
         canvas.setMatrix(matrix1)
         let matrixResult1 = canvas.getTotalMatrix();
-        expect(matrixResult1).assertDeepEquals(matrix1);
+        expect(matrixResult1.getAll()).assertDeepEquals(matrix1.getAll());
 
         let matrix2 = new drawing.Matrix();
         matrix2.setMatrix([1, 2, 3, 4, 5, 6, 7, 8, 9]);
         canvas.setMatrix(matrix2);
         let matrixResult2 = canvas.getTotalMatrix();
-        expect(matrixResult2).assertDeepEquals(matrix2);
+        expect(matrixResult2.getAll()).assertDeepEquals(matrix2.getAll());
 
         console.info(msg + 'test successes');
       } catch (e) {
@@ -1238,7 +1238,7 @@ export default function drawingTsCanvasPart5Test() {
           let matrix = new drawing.Matrix();
           canvas.setMatrix(matrix)
           let matrixResult = canvas.getTotalMatrix();
-          expect(matrixResult).assertDeepEquals(matrix);
+          expect(matrixResult.getAll()).assertDeepEquals(matrix.getAll());
         }
         console.info(msg + 'test successes');
       } catch (e) {
