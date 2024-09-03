@@ -63,7 +63,7 @@ export default function stageTimePickerDialog() {
           }
           let callback1 = (eventData: events_emitter.EventData) => {
             console.info("TimePickerDialog001 get event state result is: " + JSON.stringify(eventData));
-            expect(eventData.data.STATUS).assertEqual(true);
+            expect(eventData.data?.STATUS).assertEqual(true);
             done();
           }
           try {
@@ -91,7 +91,7 @@ export default function stageTimePickerDialog() {
           }
           let callback1 = (eventData: events_emitter.EventData) => {
             console.info("TimePickerDialog002 get event state result is: " + JSON.stringify(eventData));
-            expect(eventData.data.STATUS).assertEqual(10);
+            expect(eventData.data?.STATUS).assertEqual(10);
             done();
           }
           try {
@@ -118,7 +118,7 @@ export default function stageTimePickerDialog() {
           }
           let callback1 = (eventData: events_emitter.EventData) => {
             console.info("TimePickerDialog003 get event state result is: " + JSON.stringify(eventData));
-            expect(eventData.data.STATUS).assertEqual("STATUS");
+            expect(eventData.data?.STATUS).assertEqual("STATUS");
             done();
           }
           try {

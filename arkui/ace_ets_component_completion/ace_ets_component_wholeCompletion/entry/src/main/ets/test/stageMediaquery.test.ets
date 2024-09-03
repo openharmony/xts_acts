@@ -196,7 +196,7 @@ export default function stageMediaquery() {
         }
         let callback1 = (eventData: events_emitter.EventData) => {
           console.info("testmediaQueryOff0011 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(true);
+          expect(eventData.data?.STATUS).assertEqual(true);
         }
         console.info("testmediaQueryOff0011 click result is: " + JSON.stringify(sendEventByKey('offText', 10, "")));
         events_emitter.on(innerEventOne, callback1);
@@ -215,7 +215,7 @@ export default function stageMediaquery() {
         }
         let callback1 = (eventData: events_emitter.EventData) => {
           console.info("testmediaQueryOff0012 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(true);
+          expect(eventData.data?.STATUS).assertEqual(true);
         }
         console.info("testmediaQueryOff0012 click result is: " + JSON.stringify(sendEventByKey('matchMediaSyncText', 10, "")));
         events_emitter.on(innerEventOne, callback1);

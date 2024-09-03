@@ -245,7 +245,7 @@ export default function stageRouterTest() {
           params: {
             data1: 'message'
           }
-        }, router.RouterMode.Standard, (err) => {
+        }, router.RouterMode.Standard, (err: BusinessError) => {
           if (err) {
             console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
             return;
