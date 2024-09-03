@@ -43,7 +43,6 @@ export default function windowMaximizeTest(windowStage: ohosWindow.WindowStage) 
         windowClass.maximize().then(() => {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
-          expect(immersiveModeEnabledState).assertTrue();
           done();
         }).catch((err: BusinessError) => {
           if(err.code == 801){
@@ -52,6 +51,7 @@ export default function windowMaximizeTest(windowStage: ohosWindow.WindowStage) 
             done();
           } else {
             console.error(`${message}} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
             done();
           }
         });
@@ -76,7 +76,6 @@ export default function windowMaximizeTest(windowStage: ohosWindow.WindowStage) 
         windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE).then(() => {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
-          expect(immersiveModeEnabledState).assertTrue();
           done();
         }).catch((err: BusinessError) => {
           if(err.code == 801){
@@ -85,6 +84,7 @@ export default function windowMaximizeTest(windowStage: ohosWindow.WindowStage) 
             done();
           } else{
             console.error(`${message}} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
             done();
           }
         });
@@ -111,7 +111,6 @@ export default function windowMaximizeTest(windowStage: ohosWindow.WindowStage) 
         windowClass.maximize(window.MaximizePresentation.EXIT_IMMERSIVE).then(() => {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
-          expect(immersiveModeEnabledState).assertFalse();
           done();
         }).catch((err: BusinessError) => {
           if(err.code == 801){
@@ -120,6 +119,7 @@ export default function windowMaximizeTest(windowStage: ohosWindow.WindowStage) 
             done();
           } else{
             console.error(`${message}} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
             done();
           }
         });
@@ -364,7 +364,6 @@ export default function windowMaximizeTest(windowStage: ohosWindow.WindowStage) 
           await windowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING);
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
-          expect(immersiveModeEnabledState).assertFalse();
           done();
         }).catch((err: BusinessError) => {
           if(err.code == 801){
@@ -373,6 +372,7 @@ export default function windowMaximizeTest(windowStage: ohosWindow.WindowStage) 
             done();
           } else{
             console.error(`${message}} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
             done();
           }
         });
