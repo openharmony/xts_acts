@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,34 +16,34 @@ import request from "@ohos.request";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function requestDownloadJSUnit() {
-  describe('requestDownloadJSUnit', function () {
+  describe('requestDownloadJSUnit', () => {
     console.info('====>################################request download Test start');
 
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
-    beforeAll(function () {
+    beforeAll(() => {
       console.info('====>beforeAll: Prerequisites are executed.');
     });
 
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
      */
-    beforeEach(function () {
+    beforeEach(() => {
       console.info('====>beforeEach: Prerequisites is executed.');
     });
 
     /**
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
-    afterEach(function () {
+    afterEach(() => {
       console.info('====>afterEach: Test case-level clearance conditions is executed.');
     });
 
     /**
      * afterAll: Test suite-level cleanup condition, which is executed after the test suite is executed.
      */
-    afterAll(function () {
+    afterAll(() => {
       console.info('====>afterAll: Test suite-level cleanup condition is executed');
     });
 
@@ -55,7 +55,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MISC_REQUEST_DOWNLOAD_state_0010', 0, async function (done) {
+    it('SUB_MISC_REQUEST_DOWNLOAD_state_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_state_0010 is starting-----------------------");
       try {
         console.info("====>SUB_MISC_REQUEST_DOWNLOAD_state_0010 request.agent.State.INITIALIZED:" + request.agent.State.INITIALIZED);
@@ -92,7 +92,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MISC_REQUEST_DOWNLOAD_faults_0010', 0, async function (done) {
+    it('SUB_MISC_REQUEST_DOWNLOAD_faults_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_faults_0010 is starting-----------------------");
       try {
         console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.OTHERS: " + request.agent.Faults.OTHERS);
@@ -131,9 +131,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Create_Download_Callback_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Create_Download_Callback_0010', 0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Download_Callback_0010 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -170,9 +170,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Create_Download_Promise_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Create_Download_Promise_0010', 0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Download_Promise_0010 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -181,15 +181,17 @@ export default function requestDownloadJSUnit() {
         network: request.agent.Network.WIFI,
         mode:request.agent.Mode.BACKGROUND
       };
-
+      let task: request.agent.Task | undefined;
       try {
-        var task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(globalThis.abilityContext, config);
         expect(task !== undefined).assertEqual(true);
         await request.agent.remove(task.tid);
         console.info("====>SUB_Misc_REQUEST_Create_Download_Promise_0010 create success: " + task);
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Create_Download_Promise_0010 catch error: " + JSON.stringify(err));
-        await request.agent.remove(task.tid);
+        if(task !== undefined){
+          await request.agent.remove(task.tid);
+        }
         expect().assertFail();
       }
       console.info("-----------------------SUB_Misc_REQUEST_Create_Download_Promise_0010 end-----------------------");
@@ -204,9 +206,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Download_Callback_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Remove_Download_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Download_Callback_0010 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -245,9 +247,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Download_Promise_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Remove_Download_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Download_Promise_0010 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -277,9 +279,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Start_Download_Callback_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Start_Download_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Start_Download_Callback_0010 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -317,9 +319,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Start_Download_Promise_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Start_Download_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Start_Download_Promise_0010 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -328,15 +330,18 @@ export default function requestDownloadJSUnit() {
         network: request.agent.Network.ANY,
       };
 
+      let task: request.agent.Task| undefined;
       try {
-        var task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(globalThis.abilityContext, config);
         await task.start();
         expect(true).assertEqual(true);
         await request.agent.remove(task.tid);
         console.info("====>SUB_Misc_REQUEST_Start_Download_Promise_0010 download start success: " + task);
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Start_Download_Promise_0010 download start err: " + JSON.stringify(err));
-        await request.agent.remove(task.tid);
+        if(task !== undefined){
+          await request.agent.remove(task.tid);
+        }
         expect().assertFail();
       }
       console.info("-----------------------SUB_Misc_REQUEST_Start_Download_Promise_0010 end-----------------------");
@@ -351,9 +356,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Pause_Download_Callback_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Pause_Download_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Pause_Download_Callback_0010 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -393,9 +398,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Pause_Download_Promise_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Pause_Download_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Pause_Download_Promise_0010 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -430,9 +435,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Resume_Download_Callback_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Resume_Download_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Resume_Download_Callback_0010 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -475,9 +480,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Resume_Download_Promise_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Resume_Download_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Resume_Download_Promise_0010 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -515,9 +520,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Stop_Download_Callback_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Stop_Download_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Stop_Download_Callback_0010 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -557,9 +562,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Stop_Download_Promise_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Stop_Download_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Stop_Download_Promise_0010 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -592,9 +597,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_On_Download_Progress_0040', 0, async function (done) {
+    it('SUB_Misc_REQUEST_On_Download_Progress_0040', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Download_Progress_0040 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -607,7 +612,7 @@ export default function requestDownloadJSUnit() {
 
       try {
         request.agent.create(globalThis.abilityContext, config, async (err, task) => {
-          let on_progressCallback = async (pro) => {
+          let on_progressCallback = async (pro: request.agent.Progress) => {
             task.off('progress', on_progressCallback);
             console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.state: " + pro.state);
             console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.index: " + pro.index);
@@ -648,9 +653,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Download_Progress_0040', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Off_Download_Progress_0040', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Progress_0040 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -664,7 +669,7 @@ export default function requestDownloadJSUnit() {
       try {
         let flag = true;
         request.agent.create(globalThis.abilityContext, config, async (err, task) => {
-          let on_progressCallback = (pro) => {
+          let on_progressCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Download_Progress_0040 on_progressCallback flag: " + flag);
           }
@@ -707,9 +712,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_On_Download_Completed_0040', 0, async function (done) {
+    it('SUB_Misc_REQUEST_On_Download_Completed_0040', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Download_Completed_0040 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
         title: 'reeateTest',
@@ -721,7 +726,7 @@ export default function requestDownloadJSUnit() {
       };
       try {
         request.agent.create(globalThis.abilityContext, config, async (err, task) => {
-          let on_completedCallback =async (pro) => {
+          let on_completedCallback = async (pro: request.agent.Progress) => {
             task.off('completed', on_completedCallback);
             console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.state: " + pro.state);
             console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.index: " + pro.index);
@@ -758,9 +763,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Download_Completed_0040', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Off_Download_Completed_0040', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Completed_0040 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
         title: 'reeateTest',
@@ -774,7 +779,7 @@ export default function requestDownloadJSUnit() {
       try {
         let flag = true;
         request.agent.create(globalThis.abilityContext, config, async (err, task) => {
-          let on_offCompletedCallback = (pro) => {
+          let on_offCompletedCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Download_Completed_0040 on_offCompletedCallback flag: " + flag);
           }
@@ -817,9 +822,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_On_Download_Failed_0040', 0, async function (done) {
+    it('SUB_Misc_REQUEST_On_Download_Failed_0040', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Download_Failed_0040 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/xxxxxxxxxxx/test.apk',
         title: 'reeateTest',
@@ -831,12 +836,12 @@ export default function requestDownloadJSUnit() {
       };
       try {
         request.agent.create(globalThis.abilityContext, config, async (err, task) => {
-          let on_failedCallback = async (pro) => {
+          let on_failedCallback = async (pro: request.agent.Progress) => {
             task.off('failed', on_failedCallback);
             console.info("====>SUB_Misc_REQUEST_On_Download_Failed_0040 pro.state: " + pro.state);
             console.info("====>SUB_Misc_REQUEST_On_Download_Failed_0040 pro.index: " + pro.index);
             console.info("====>SUB_Misc_REQUEST_On_Download_Failed_0040 pro.processed: " + pro.processed);
-            console.info("====>SUB_Misc_REQUEST_On_Download_Failed_0040 pro.size: " + pro.size);
+            console.info("====>SUB_Misc_REQUEST_On_Download_Failed_0040 pro.size: " + pro.sizes);
             console.info("====>SUB_Misc_REQUEST_On_Download_Failed_0040 pro.extras: " + JSON.stringify(pro.extras));
             expect(true).assertTrue();
             done();
@@ -868,9 +873,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Download_Failed_0040', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Off_Download_Failed_0040', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Failed_0040 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/xxxxxxxxxxx/test.apk',
         title: 'reeateTest',
@@ -884,7 +889,7 @@ export default function requestDownloadJSUnit() {
       try {
         let flag = true;
         request.agent.create(globalThis.abilityContext, config, async (err, task) => {
-          let on_failedCallback = (pro) => {
+          let on_failedCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Download_Failed_0040 on_failedCallback flag: " + flag);
           }
@@ -927,9 +932,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Create_Download_Callback_0060', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Create_Download_Callback_0060', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Create_Download_Callback_0060 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -981,9 +986,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Create_Download_Promise_0060', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Create_Download_Promise_0060', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Create_Download_Promise_0060 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',
@@ -1019,9 +1024,9 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Agent_GetTask_Promise_0100', 0, async function (done) {
+    it('SUB_REQUEST_Agent_GetTask_Promise_0100', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_GetTask_Promise_0100 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'reeateTest',

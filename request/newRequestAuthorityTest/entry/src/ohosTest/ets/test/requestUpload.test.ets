@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -19,22 +19,21 @@ import request from "@ohos.request";
 import commonEvent from '@ohos.commonEventManager';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function requestUploadJSUnit() {
-  describe('requestUploadJSUnit', function () {
+  describe('requestUploadJSUnit', () => {
     console.info('====>################################request upload Test start');
-
-
 
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
-    beforeAll(function (done) {      
+    beforeAll((done: Function) => {
       try {
         console.info('====>beforeAll: startServer');
         new Server().startServer();
         console.info('====>beforeAll: startServer success!');
-        let pathDir = globalThis.abilityContext.cacheDir;
+        let pathDir: string = globalThis.abilityContext.cacheDir;
         let filePath = pathDir + `/test.txt`;
         let fd = fileio.openSync(filePath, 0o100 | 0o2, 0o666);
         let content = ''.padEnd(1 * 1024, 'Hello world');
@@ -51,34 +50,34 @@ export default function requestUploadJSUnit() {
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
      */
-    beforeEach(function () {
+    beforeEach(() => {
       console.info('====>beforeEach: Prerequisites is executed.');
     });
 
     /**
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
-    afterEach(function () {
+    afterEach(() => {
       console.info('====>afterEach: Test case-level clearance conditions is executed.');
     });
 
     /**
      * afterAll: Test suite-level cleanup condition, which is executed after the test suite is executed.
      */
-    afterAll(function () {
+    afterAll(() => {
       console.info('====>afterAll: Test suite-level cleanup condition is executed');
     });
 
-    let attachments = [{
+    let attachments: Array<request.agent.FormItem> = [{
       name: "uploadTest",
       value: {
         path: "./test.txt",
         filename: "test.txt",
-        mimetype: "application/octet-stream"
+        mimeType: "application/octet-stream"
       }
     }];
 
-    let config = {
+    let config: request.agent.Config = {
       action: request.agent.Action.UPLOAD,
       url: 'http://127.0.0.1:8080',
       title: 'uploadTest',
@@ -101,11 +100,11 @@ export default function requestUploadJSUnit() {
       token: "it is a secret"
     };
 
-    let sleep = function (timeout) {
+    let sleep = (timeout: number): Promise<null> => {
       return new Promise(resolve => {
         const st = setTimeout(() => {
-          clearTimeout(st);
           resolve(null);
+          clearTimeout(st);
         }, timeout);
       });
     };
@@ -117,7 +116,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Create_Upload_Callback_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Create_Upload_Callback_0010', 0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Upload_Callback_0010 is starting-----------------------");
       request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Callback_0010 uploadTask: " + task);
@@ -134,9 +133,9 @@ export default function requestUploadJSUnit() {
         }catch(error){
           console.info("====>SUB_Misc_REQUEST_Create_Upload_Callback_0010 create fail: " + JSON.stringify(error));
           await request.agent.remove(task.tid);
-          done();          
+          done();
         }
-        
+
       });
     });
 
@@ -147,10 +146,11 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Create_Upload_Promise_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Create_Upload_Promise_0010', 0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Upload_Promise_0010 is starting-----------------------");
+      let task: request.agent.Task | undefined;
       try {
-        var task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(globalThis.abilityContext, config);
         expect(task !== undefined).assertEqual(true);
         await request.agent.remove(task.tid);
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0010 create success: " + task);
@@ -158,7 +158,10 @@ export default function requestUploadJSUnit() {
         done();
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0010 catch error: " + JSON.stringify(err));
-        await request.agent.remove(task.tid);
+        if(task !== undefined){
+          await request.agent.remove(task.tid);
+          console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0010 agent.remove success");
+        }
         expect().assertFail();
         done();
       }
@@ -171,7 +174,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Upload_Callback_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Remove_Upload_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Callback_0010 is starting-----------------------");
       try {
         let task = await request.agent.create(globalThis.abilityContext, config);
@@ -195,7 +198,7 @@ export default function requestUploadJSUnit() {
         expect().assertFail();
         done();
       }
-      
+
     });
 
     /**
@@ -205,7 +208,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Upload_Promise_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Remove_Upload_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Promise_0010 is starting-----------------------");
       try {
         let task = await request.agent.create(globalThis.abilityContext, config);
@@ -228,7 +231,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Start_Upload_Callback_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Start_Upload_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Start_Upload_Callback_0010 is starting-----------------------");
       request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Start_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
@@ -239,7 +242,7 @@ export default function requestUploadJSUnit() {
               expect().assertFail();
             }
             expect(true).assertEqual(true);
-            console.info("====>SUB_Misc_REQUEST_Start_Upload_Callback_0010 upload start success: " + task);            
+            console.info("====>SUB_Misc_REQUEST_Start_Upload_Callback_0010 upload start success: " + task);
             console.info("-----------------------SUB_Misc_REQUEST_Start_Upload_Callback_0010 end-----------------------");
             await sleep(100);
             done();
@@ -258,10 +261,10 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Start_Upload_Promise_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Start_Upload_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Start_Upload_Promise_0010 is starting-----------------------");
       try {
-        var task = await request.agent.create(globalThis.abilityContext, config);
+        let task = await request.agent.create(globalThis.abilityContext, config);
         await task.start();
         expect(true).assertEqual(true);
         console.info("====>SUB_Misc_REQUEST_Start_Upload_Promise_0010 upload start success: " + JSON.stringify(task));
@@ -282,7 +285,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Pause_Upload_Callback_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Pause_Upload_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Pause_Upload_Callback_0010 is starting-----------------------");
       request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Pause_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
@@ -315,7 +318,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Pause_Upload_Promise_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Pause_Upload_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Pause_Upload_Promise_0010 is starting-----------------------");
       let task = await request.agent.create(globalThis.abilityContext, config);
       console.info("====>SUB_Misc_REQUEST_Pause_Upload_Promise_0010 create task: " + JSON.stringify(task));
@@ -342,7 +345,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Resume_Upload_Callback_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Resume_Upload_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Resume_Upload_Callback_0010 is starting-----------------------");
       request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Resume_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
@@ -357,7 +360,7 @@ export default function requestUploadJSUnit() {
                   expect().assertFail();
                 }
                 expect(true).assertEqual(true);
-                console.info("====>SUB_Misc_REQUEST_Resume_Upload_Callback_0010 upload resume success: " + task);                
+                console.info("====>SUB_Misc_REQUEST_Resume_Upload_Callback_0010 upload resume success: " + task);
                 console.info("-----------------------SUB_Misc_REQUEST_Resume_Upload_Callback_0010 end-----------------------");
                 await sleep(100);
                 done();
@@ -378,7 +381,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Resume_Upload_Promise_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Resume_Upload_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Resume_Upload_Promise_0010 is starting-----------------------");
       let task = await request.agent.create(globalThis.abilityContext, config);
       console.info("====>SUB_Misc_REQUEST_Resume_Upload_Promise_0010 create task: " + JSON.stringify(task));
@@ -408,7 +411,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Stop_Upload_Callback_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Stop_Upload_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Stop_Upload_Callback_0010 is starting-----------------------");
       request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Stop_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
@@ -430,7 +433,7 @@ export default function requestUploadJSUnit() {
               done();
             }
           });
-        });        
+        });
       });
     });
 
@@ -441,7 +444,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Stop_Upload_Promise_0010', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Stop_Upload_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Stop_Upload_Promise_0010 is starting-----------------------");
       let task = await request.agent.create(globalThis.abilityContext, config);
       console.info("====>SUB_Misc_REQUEST_Stop_Upload_Promise_0010 create task: " + JSON.stringify(task));
@@ -470,14 +473,17 @@ export default function requestUploadJSUnit() {
     */
     it('SUB_REQUEST_Agent_UploadConfig_1700', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_1700 is starting-----------------------");
-      let att = [{
+      let value: ESObject = {
+        path: undefined,
+        filename: 'el1BaseNormal.txt'
+      }
+
+      let att: Array<ESObject> = [{
         name: 'uploadTest',
-        value: {
-          path: undefined,
-          filename: 'el1BaseNormal.txt'
-        }
+        value: value
       }]
-      let config_ = config
+
+      let config_: request.agent. Config = JSON.parse(JSON.stringify(config));
       config_.data = att
       console.info("====>SUB_REQUEST_Agent_UploadConfig_1700 config: " + JSON.stringify(config_));
       try {
@@ -529,7 +535,7 @@ export default function requestUploadJSUnit() {
       };
 
       let task: request.agent.Task;
-      let unSubscriberCallback = (err) => {
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_REQUEST_Upload_broadcastEvent_0100 unSubscriberCallback start");
         if (err){
           console.info("====>SUB_REQUEST_Upload_broadcastEvent_0100 unSubscriberCallback failed:" +
@@ -539,7 +545,7 @@ export default function requestUploadJSUnit() {
         }
       }
 
-      let subscriberCallback = (err, data) =>{
+      let subscriberCallback = (err: BusinessError, data: ESObject) =>{
         try {
           console.info("====>SUB_REQUEST_Upload_broadcastEvent_0100 subscriberCallback data:"
             + JSON.stringify(data));
@@ -552,10 +558,10 @@ export default function requestUploadJSUnit() {
           done();
         }
       }
-      var commonEventSubscribeInfo: commonEvent.CommonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: [ request.agent.BroadcastEvent.COMPLETE ]
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEvent.createSubscriber(commonEventSubscribeInfo).then((data)=>{
         subscriber = data;
         console.info("====>SUB_REQUEST_Upload_broadcastEvent_0100 subscriber data:" + data);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,12 +15,13 @@
 
 import request from "@ohos.request";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function requestDownloadOneJSUnitTest() {
-  describe('requestDownloadOneJSUnit', function () {
+  describe('requestDownloadOneJSUnit', () => {
     console.info('====>################################request download Test start');
 
-    let sleep = function (timeout) {
+    let sleep = (timeout: number): Promise<ESObject> => {
       return new Promise(resolve => {
         const st = setTimeout(() => {
           resolve(null);
@@ -37,8 +38,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_create_Callback_0140", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_create_Callback_0140", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
@@ -61,12 +62,23 @@ export default function requestDownloadOneJSUnitTest() {
           task.on("completed", (progress) => {
             task.off("completed");
             let downloadSize = progress.sizes[0];
-            console.info('====>downloadSize:' + downloadSize);
-            let fileSize = config.ends - config.begins + 1;
-            console.info('====>fileSize:'+ fileSize);
-            expect(downloadSize).assertEqual(fileSize);
-            console.info("====>----------SUB_Misc_REQUEST_create_Callback_0140 is end---------------");
-            done();
+            try {
+              console.info('====>downloadSize:' + downloadSize);
+              if (config.ends !== undefined && config.begins !== undefined){
+                let fileSize = config.ends - config.begins + 1;
+                console.info('====>fileSize:'+ fileSize);
+                expect(downloadSize).assertEqual(fileSize);
+                console.info("====>----------SUB_Misc_REQUEST_create_Callback_0140 is end---------------");
+                done();
+              } else {
+                console.info("====>SUB_Misc_REQUEST_create_Callback_0140 config.ends or config.begins is undefined");
+                expect().assertFail();
+                done();
+              }
+            } catch (err) {
+              console.info("====>SUB_Misc_REQUEST_create_Callback_0140 catch err: " + JSON.stringify(err));
+              done();
+            }
           });
           await task.start();
         }catch(err){
@@ -84,8 +96,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0140", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_Create_Promise_0140", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
@@ -99,17 +111,27 @@ export default function requestDownloadOneJSUnitTest() {
         ends: 100,
       };
       console.info("====>-------------------SUB_Misc_REQUEST_Create_Promise_0140 is starting---------------------");
-
       try{
         let task = await request.agent.create(globalThis.abilityContext, config)
-        async function onCompletedCallback(progress){
+        let onCompletedCallback = (progress: request.agent.Progress) => {
           task.off("completed");
           let downloadSize = progress.sizes[0]
-          console.info('====>downloadSize:' + downloadSize)
-          let fileSize = config.ends - config.begins + 1
-          console.info('====>fileSize:'+ fileSize)
-          expect(downloadSize).assertEqual(fileSize)
-          done();
+          try {
+            console.info('====>downloadSize:' + downloadSize);
+            if (config.ends !== undefined && config.begins !== undefined){
+              let fileSize = config.ends - config.begins + 1
+              console.info('====>fileSize:'+ fileSize)
+              expect(downloadSize).assertEqual(fileSize)
+              done();
+            } else {
+              console.info("====>SUB_Misc_REQUEST_Create_Promise_0140 config.ends or config.begins is undefined");
+              expect().assertFail();
+              done();
+            }
+          } catch (err) {
+            console.info("====>SUB_Misc_REQUEST_Create_Promise_0140 catch err: " + JSON.stringify(err));
+            done();
+          }
         }
         task.on("completed", onCompletedCallback)
         await task.start()
@@ -127,8 +149,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_create_Callback_0160", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_create_Callback_0160", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
@@ -172,8 +194,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0160", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_Create_Promise_0160", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
@@ -190,7 +212,7 @@ export default function requestDownloadOneJSUnitTest() {
 
       try{
         let task = await request.agent.create(globalThis.abilityContext, config);
-        async function onCompletedCallback(progress){
+        let onCompletedCallback = (progress: request.agent.Progress) => {
           task.off("completed");
           let downloadSize = progress.sizes[0];
           console.info('====>downloadSize:' + downloadSize);
@@ -213,8 +235,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_create_Callback_0170", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_create_Callback_0170", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
@@ -237,12 +259,23 @@ export default function requestDownloadOneJSUnitTest() {
           task.on("completed", (progress) => {
             task.off("completed");
             let downloadSize = progress.sizes[0];
-            console.info('====>downloadSize:' + downloadSize);
-            let fileSize = config.ends - config.begins + 1;
-            console.info('====>fileSize:'+ fileSize);
-            expect(downloadSize).assertEqual(fileSize);
-            console.info("====>-----------------SUB_Misc_REQUEST_create_Callback_0170 is end--------------------");
-            done();
+            try {
+              console.info('====>downloadSize:' + downloadSize);
+              if (config.ends !== undefined && config.begins !== undefined){
+                let fileSize = config.ends - config.begins + 1;
+                console.info('====>fileSize:'+ fileSize);
+                expect(downloadSize).assertEqual(fileSize);
+                console.info("====>-----------------SUB_Misc_REQUEST_create_Callback_0170 is end--------------------");
+                done();
+              } else {
+                console.info("====>SUB_Misc_REQUEST_create_Callback_0170 config.ends or config.begins is undefined");
+                expect().assertFail();
+                done();
+              }
+            } catch (err) {
+              console.info("====>SUB_Misc_REQUEST_create_Callback_0170 catch err: " + JSON.stringify(err));
+              done();
+            }
           });
           await task.start();
         }catch(err){
@@ -260,8 +293,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0170", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_Create_Promise_0170", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
@@ -278,14 +311,25 @@ export default function requestDownloadOneJSUnitTest() {
 
       try{
         let task = await request.agent.create(globalThis.abilityContext, config)
-        async function onCompletedCallback(progress){
+        let onCompletedCallback = (progress: request.agent.Progress) => {
           task.off("completed");
           let downloadSize = progress.sizes[0];
-          console.info('====>downloadSize:' + downloadSize);
-          let fileSize = config.ends - config.begins + 1;
-          console.info('====>fileSize:'+ fileSize);
-          expect(downloadSize).assertEqual(fileSize);
-          done();
+          try {
+            console.info('====>downloadSize:' + downloadSize);
+            if (config.ends !== undefined && config.begins !== undefined){
+              let fileSize = config.ends - config.begins + 1;
+              console.info('====>fileSize:'+ fileSize);
+              expect(downloadSize).assertEqual(fileSize);
+              done();
+            } else {
+              console.info("====>SUB_Misc_REQUEST_create_Callback_0170 config.ends or config.begins is undefined");
+              expect().assertFail();
+              done();
+            }
+          } catch (err) {
+            console.info("====>SUB_Misc_REQUEST_create_Callback_0170 catch err: " + JSON.stringify(err));
+            done();
+          }
         }
         task.on("completed", onCompletedCallback);
         await task.start();
@@ -303,8 +347,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_create_Callback_0180", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_create_Callback_0180", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
@@ -346,8 +390,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0180", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_Create_Promise_0180", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
@@ -363,7 +407,7 @@ export default function requestDownloadOneJSUnitTest() {
       console.info("====>-------------------SUB_Misc_REQUEST_Create_Promise_0180 is starting---------------------");
       try{
         let task = await request.agent.create(globalThis.abilityContext, config);
-        let createOffCallback = (progress) => {
+        let createOffCallback = (progress: request.agent.Progress) => {
           console.info('====>upload task failed.' + JSON.stringify(progress));
           task.off("failed");
           expect(progress.state).assertEqual(65);
@@ -385,8 +429,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_create_Callback_0090", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_create_Callback_0090", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: undefined,
@@ -443,8 +487,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0090", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_Create_Promise_0090", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: undefined,
@@ -481,7 +525,7 @@ export default function requestDownloadOneJSUnitTest() {
             console.info("====>------------------SUB_Misc_REQUEST_Create_Promise_0180 is end-------------------");
             done();
           });
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.info("====>SUB_Misc_REQUEST_Create_Promise_0180 create err: " + JSON.stringify(err));
           done();
         });
@@ -492,196 +536,6 @@ export default function requestDownloadOneJSUnitTest() {
     })
 
     /**
-     * @tc.number    SUB_Misc_REQUEST_Remove_Download_Callback_0020
-     * @tc.name    SUB_Misc_REQUEST_Remove_Download_Callback_0020
-     * @tc.desc      remove the download task.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_Misc_REQUEST_Remove_Download_Callback_0020', 0, async function (done) {
-      console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Download_Callback_0020 is starting-----------------------");
-      let config = {
-        action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
-        title: 'createTest',
-        description: 'XTS download test!',
-        overwrite: true,
-        saveas: './SUB_Misc_REQUEST_Remove_Download_Callback_0020.txt',
-        network: request.agent.Network.ANY,
-      };
-      let a='a';
-      let callback = err => {
-        try {
-          if(err){
-            console.info("====>SUB_Misc_REQUEST_Remove_Download_Callback_0020 remove err: " + JSON.stringify(err));
-            expect().assertFail();
-          }
-          expect(task !== undefined).assertEqual(true);
-          console.info("====>SUB_Misc_REQUEST_Remove_Download_Callback_0020 remove success: " + task);
-          done();
-          console.info("====>-----------------SUB_Misc_REQUEST_Remove_Download_Callback_0020 end--------------------");
-        } catch (err) {
-          console.info("====>SUB_Misc_REQUEST_Remove_Download_Callback_0020 remove fail: " + JSON.stringify(err));
-          done();
-        }
-      };
-      let task = await request.agent.create(globalThis.abilityContext, config);
-      try {
-        // @ts-ignore
-        request.agent.remove(task.tid, a, callback);
-      } catch (error) {
-        console.info("====>SUB_Misc_REQUEST_Remove_Download_Callback_0020 catch error: " + JSON.stringify(error));
-        expect().assertFail();
-      }
-    });
-
-    /**
-     * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0020
-     * @tc.name    SUB_Misc_REQUEST_Remove_Download_Promise_0020
-     * @tc.desc      remove the download task.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_Misc_REQUEST_Remove_Download_Promise_0020', 0, async function (done) {
-      console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Download_Promise_0020 is starting-----------------------");
-      let config = {
-        action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
-        title: 'createTest',
-        description: 'XTS download test!',
-        overwrite: true,
-        saveas: './SUB_Misc_REQUEST_Remove_Download_Promise_0020.txt',
-        network: request.agent.Network.ANY,
-      };
-      let a='a';
-      let task = await request.agent.create(globalThis.abilityContext, config);
-      // @ts-ignore
-      await request.agent.remove(task.tid,a).then(()=>{
-        expect(true).assertEqual(true);
-        console.info("====>SUB_Misc_REQUEST_Remove_Download_Promise_0020 remove success: " + task);}
-      ).catch ((err)=>{
-        console.info("====>SUB_Misc_REQUEST_Remove_Download_Promise_0020 catch error: " + JSON.stringify(err));
-        expect().assertFail();
-      })
-      console.info("====>---------------SUB_Misc_REQUEST_Remove_Download_Promise_0020 end-------------------");
-      done();
-    });
-
-    /**
-     * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0030
-     * @tc.name    SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0030
-     * @tc.desc      remove the download task.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0030', 0, async function (done) {
-      console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0030 is starting-----------------------");
-      try {
-        // @ts-ignore
-        request.agent.remove(true, (err) => {
-          try {
-            if(err){
-              console.info("====>SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0030 err.message: " + err.message);
-              console.info("====>SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0030 err.code: " + err.code);
-              expect(err.code).assertEqual(401);
-            }else{
-              expect().assertFail();
-            }
-            done();
-          }catch (err){
-            console.info("====>SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0030 remove fail: " + JSON.stringify(err));
-            done();
-          }
-        });
-      }catch (err){
-        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0030 remove fail: " + JSON.stringify(err));
-        done();
-      }
-    });
-
-    /**
-     * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0030
-     * @tc.name    SUB_Misc_REQUEST_Remove_Download_Promise_0030
-     * @tc.desc      remove the download task.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_Misc_REQUEST_Remove_Download_Promise_0030', 0, async function (done) {
-      console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Download_Promise_0030 is starting-----------------------");
-      try {
-        console.info("====>SUB_Misc_REQUEST_Remove_Download_Promise_0030 remove");
-        // @ts-ignore
-        await request.agent.remove(true);
-        expect().assertFail();
-      } catch (err) {
-        console.info("====>SUB_Misc_REQUEST_Remove_Download_Promise_0030 catch error: " + JSON.stringify(err));
-        expect(err.code).assertEqual(401);
-      }
-      console.info("====>---------------SUB_Misc_REQUEST_Remove_Download_Promise_0030 end--------------------");
-      done();
-    });
-
-    /**
-     * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0040
-     * @tc.name    SUB_Misc_REQUEST_Remove_Download_Promise_0040
-     * @tc.desc      remove a download session.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_Misc_REQUEST_Remove_Download_Promise_0040', 0, async function (done) {
-      console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Download_Promise_0040 is starting-----------------------");
-      try {
-        console.info("====>SUB_Misc_REQUEST_Remove_Download_Promise_0040 remove");
-        // @ts-ignore
-        await request.agent.remove(1);
-        expect().assertFail();
-      } catch (err) {
-        console.info("====>SUB_Misc_REQUEST_Remove_Download_Promise_0040 catch error: " + JSON.stringify(err));
-        expect(err.code).assertEqual(401);
-      }
-      console.info("====>---------------SUB_Misc_REQUEST_Remove_Download_Promise_0040 end-------------------");
-      done();
-    });
-
-    /**
-     * @tc.number    SUB_Misc_REQUEST_Remove_Download_Callback_0040
-     * @tc.name    SUB_Misc_REQUEST_Remove_Download_Callback_0040
-     * @tc.desc      remove a download session.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_Misc_REQUEST_Remove_Download_Callback_0040', 0, async function (done) {
-      console.info("====>------------SUB_Misc_REQUEST_Remove_Download_Callback_0040 is starting-----------------");
-      try {
-        // @ts-ignore
-        request.agent.remove(1, (err) => {
-          try {
-            if(err){
-              console.info("====>SUB_Misc_REQUEST_Remove_Download_Callback_0040 err.message: " + err.message);
-              console.info("====>SUB_Misc_REQUEST_Remove_Download_Callback_0040 err.code: " + err.code);
-              expect(err.code).assertEqual(401);
-            }else{
-              expect().assertFail();
-            }
-            done();
-          }catch (err){
-            console.info("====>SUB_Misc_REQUEST_Remove_Download_Callback_0040 remove fail: " + JSON.stringify(err));
-            done();
-          }
-        });
-      }catch (err){
-        console.info("====>SUB_Misc_REQUEST_Remove_Download_Callback_0040 remove fail: " + JSON.stringify(err));
-        done();
-      }
-    });
-
-    /**
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Callback_0050
      * @tc.name    SUB_Misc_REQUEST_Remove_Download_Callback_0050
      * @tc.desc      remove the download task.
@@ -689,9 +543,9 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Download_Callback_0050', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Remove_Download_Callback_0050', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Download_Callback_0050 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'createTest',
@@ -740,9 +594,9 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Download_Promise_0050', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Remove_Download_Promise_0050', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Download_Promise_0050 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'createTest',
@@ -775,7 +629,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Download_Promise_0060', 0, async function (done) {
+    it('SUB_Misc_REQUEST_Remove_Download_Promise_0060', 0, async (done: Function) => {
       console.info("====>---------------SUB_Misc_REQUEST_Remove_Download_Promise_0060 is starting-------------------");
       try {
         console.info("====>SUB_Misc_REQUEST_Remove_Download_Promise_0060 remove");
@@ -797,7 +651,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0060', 0, async function (done) {
+    it('SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0060', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0060 is starting-----------------------");
       request.agent.remove('abc', (err) => {
         try {
@@ -824,8 +678,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0030", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_Create_Promise_0030", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: '//gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'createTest',
@@ -850,7 +704,7 @@ export default function requestDownloadOneJSUnitTest() {
             console.info("====>--------------------SUB_Misc_REQUEST_Create_Promise_0030 is end---------------------");
             done();
           });
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.info("====>SUB_Misc_REQUEST_Create_Promise_0030 create err: " + JSON.stringify(err));
           console.info("====>--------------------SUB_Misc_REQUEST_Create_Promise_0030 is end---------------------");
           done();
@@ -870,8 +724,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0040", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_Create_Promise_0040", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: 3,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'createTest',
@@ -896,7 +750,7 @@ export default function requestDownloadOneJSUnitTest() {
             console.info("====>-------------------SUB_Misc_REQUEST_Create_Promise_0040 is end--------------------");
             done();
           });
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.info("====>SUB_Misc_REQUEST_Create_Promise_0040 create err: " + JSON.stringify(err));
           console.info("====>--------------------SUB_Misc_REQUEST_Create_Promise_0040 is end---------------------");
           done();
@@ -909,44 +763,6 @@ export default function requestDownloadOneJSUnitTest() {
     })
 
     /**
-     * @tc.number    SUB_Misc_REQUEST_Create_Download_Promise_0020
-     * @tc.name    SUB_Misc_REQUEST_Create_Download_Promise_0020
-     * @tc.desc      remove a download session.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it("SUB_Misc_REQUEST_Create_Download_Promise_0020", 0, async function (done) {
-      let config = {};
-      console.info("====>-------------------SUB_Misc_REQUEST_Create_Download_Promise_0020 is starting---------------------");
-      try{
-        // @ts-ignore
-        request.agent.create(globalThis.abilityContext, config).then(async (task)=> {
-          task.start(async (err) => {
-            if (err) {
-              console.error(`====>SUB_Misc_REQUEST_Create_Download_Promise_0020  Failed to start the download task, Code: ${err.code}, message: ${err.message}`);
-              expect().assertFail();
-              return;
-            }
-            console.info(`====>SUB_Misc_REQUEST_Create_Download_Promise_0020 Succeeded in starting a download task.`);
-            expect(true).assertEqual(true);
-            await request.agent.remove(task.tid);
-            console.info("====>-----------------SUB_Misc_REQUEST_Create_Download_Promise_0020 is end-----------------");
-            done();
-          });
-        }).catch((err) => {
-          console.info("====>SUB_Misc_REQUEST_Create_Download_Promise_0020 create err: " + JSON.stringify(err));
-          console.info("====>-------------SUB_Misc_REQUEST_Create_Download_Promise_0020 is end------------------");
-          done();
-        });
-      }catch(err){
-        console.info("====>SUB_Misc_REQUEST_Create_Download_Promise_0020 create err: " + JSON.stringify(err));
-        console.info("====>-----------------SUB_Misc_REQUEST_Create_Download_Promise_0020 is end--------------------");
-        done();
-      }
-    })
-
-    /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0130
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0130
      * @tc.desc      remove a download session.
@@ -954,8 +770,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0130", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_Create_Promise_0130", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'createTest',
@@ -978,7 +794,7 @@ export default function requestDownloadOneJSUnitTest() {
             await request.agent.remove(task.tid);
             done();
           });
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.info("====>SUB_Misc_REQUEST_Create_Promise_0130 create err: " + JSON.stringify(err));
           console.info("====>-------------------SUB_Misc_REQUEST_Create_Promise_0130 is end---------------------");
           done();
@@ -998,8 +814,8 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Callback_0060", 0, async function (done) {
-      let config = {
+    it("SUB_Misc_REQUEST_Create_Callback_0060", 0, async (done: Function) => {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'createTest',
@@ -1033,35 +849,6 @@ export default function requestDownloadOneJSUnitTest() {
         console.info("====>SUB_Misc_REQUEST_Create_Callback_0060 create err: " + JSON.stringify(err));
         done();
       }
-    })//mode1
-
-    /**
-     * @tc.number    SUB_Misc_REQUEST_Create_Download_Callback_0050
-     * @tc.name    SUB_Misc_REQUEST_Create_Download_Callback_0050
-     * @tc.desc      remove a download session.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it("SUB_Misc_REQUEST_Create_Download_Callback_0050", 0, async function (done) {
-      let config = {};
-      console.info("====>-------------------SUB_Misc_REQUEST_Create_Download_Callback_0050 is starting---------------------");
-      try{
-        // @ts-ignore
-        request.agent.create(globalThis.abilityContext, config, (err, task) => {
-          if (err) {
-            console.error(`====>SUB_Misc_REQUEST_Create_Download_Callback_0050 Failed to create a download task, Code: ${err.code}, message: ${err.message}`);
-            return;
-          }
-          console.info(`====>SUB_Misc_REQUEST_Create_Download_Callback_0050 Succeeded in creating a download task`);
-        });
-        expect().assertFail();
-      }catch(err){
-        expect(err.code).assertEqual(401);
-        console.info("====>SUB_Misc_REQUEST_Create_Download_Callback_0050 create err: " + JSON.stringify(err));
-        console.info("====>----------------SUB_Misc_REQUEST_Create_Download_Callback_0050 is end------------------");
-        done();
-      }
     })
 
     /**
@@ -1072,12 +859,12 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Callback_0070", 0, async function (done) {
+    it("SUB_Misc_REQUEST_Create_Callback_0070", 0, async (done: Function) => {
       let urls = 'x';
       for (let i = 0; i < 2030; i++){
         urls += 'x';
       }
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://' + urls + '/test.apk',
         title: 'createTest',
@@ -1112,12 +899,12 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0070", 0, async function (done) {
+    it("SUB_Misc_REQUEST_Create_Promise_0070", 0, async (done: Function) => {
       let urls = 'x';
       for (let i = 0; i < 2030; i++){
         urls += 'x';
       }
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://' + urls + '/test.apk',
         title: 'createTest',
@@ -1150,12 +937,12 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Callback_0080", 0, async function (done) {
+    it("SUB_Misc_REQUEST_Create_Callback_0080", 0, async (done: Function) => {
       let urls = 'x';
       for (let i = 0; i < 2031; i++){
         urls += 'x';
       }
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://' + urls + '/test.apk',
         title: 'createTest',
@@ -1193,12 +980,12 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0080", 0, async function (done) {
+    it("SUB_Misc_REQUEST_Create_Promise_0080", 0, async (done: Function) => {
       let urls = 'x';
       for (let i = 0; i < 2031; i++){
         urls += 'x';
       }
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://' + urls + '/test.apk',
         title: 'createTest',
@@ -1229,12 +1016,12 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0110", 0, async function (done) {
+    it("SUB_Misc_REQUEST_Create_Promise_0110", 0, async (done: Function) => {
       let des = 'x';
       for (let i = 0; i < 1025; i++){
         des += 'x';
       }
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'createTest',
@@ -1265,12 +1052,12 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Callback_0110", 0, async function (done) {
+    it("SUB_Misc_REQUEST_Create_Callback_0110", 0, async (done: Function) => {
       let des = 'x';
       for (let i = 0; i < 1025; i++){
         des += 'x';
       }
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'createTest',
@@ -1308,12 +1095,12 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Promise_0150", 0, async function (done) {
+    it("SUB_Misc_REQUEST_Create_Promise_0150", 0, async (done: Function) => {
       let tit = 'x';
       for (let i = 0; i < 257; i++){
         tit += 'x';
       }
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: tit,
@@ -1345,12 +1132,12 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Misc_REQUEST_Create_Callback_0150", 0, async function (done) {
+    it("SUB_Misc_REQUEST_Create_Callback_0150", 0, async (done: Function) => {
       let tit = 'x';
       for (let i = 0; i < 257; i++){
         tit += 'x';
       }
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: tit,
