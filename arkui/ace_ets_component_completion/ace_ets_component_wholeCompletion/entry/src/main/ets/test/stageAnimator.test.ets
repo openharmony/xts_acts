@@ -16,6 +16,7 @@
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import router from '@ohos.router';
+import { UIContext } from '@ohos.arkui.UIContext';
 
 export default function stageAnimatorTest() {
   describe('stageAnimatorTest', () => {
@@ -73,10 +74,9 @@ export default function stageAnimatorTest() {
     });
 
     it('testanimatorstage0002', 0, async (done: Function) => {
-      let animator = globalThis.uiContent;
       console.info('testanimatorstage0002 START');
       try {
-        let options: ESObject = animator.createAnimator({
+        let options: ESObject = globalThis.uiContent.createAnimator({
           duration: 1500,
           easing: "friction",
           delay: 0,
@@ -95,10 +95,9 @@ export default function stageAnimatorTest() {
     });
 
     it('testanimatorstage0003', 0, async (done: Function) => {
-      let animator = globalThis.uiContent;
       console.info('testanimatorstage0003 START');
       try {
-        let options: ESObject = animator.createAnimator()
+        let options: ESObject = globalThis.uiContent.createAnimator()
         expect(typeof (options)).assertEqual('object');
       } catch (err) {
         console.error("push button page error " + JSON.stringify(err));
@@ -108,10 +107,9 @@ export default function stageAnimatorTest() {
     });
 
     it('testanimatorstage0004', 0, async (done: Function) => {
-      let animator = globalThis.uiContent;
       console.info('testanimatorstage0004 START');
       try {
-        let options: ESObject = animator.createAnimator(null)
+        let options: ESObject = globalThis.uiContent.createAnimator(null)
         expect(typeof (options)).assertEqual('object');
       } catch (err) {
         console.error("push button page error " + JSON.stringify(err));
@@ -121,10 +119,9 @@ export default function stageAnimatorTest() {
     });
 
     it('testanimatorstage0005', 0, async (done: Function) => {
-      let animator = globalThis.uiContent;
       console.info('testanimatorstage0005 START');
       try {
-        let options: ESObject = animator.createAnimator({
+        let options: ESObject = globalThis.uiContent.createAnimator({
           duration: 1500,
           easing: "friction",
           delay: 0
@@ -138,10 +135,9 @@ export default function stageAnimatorTest() {
     });
 
     it('testanimatorstage0006', 0, async (done: Function) => {
-      let animator = globalThis.uiContent;
       console.info('testanimatorstage0006 START');
       try {
-        let options: ESObject = animator.createAnimator({
+        let options: ESObject = globalThis.uiContent.createAnimator({
           duration: 1500
         })
         expect(typeof (options)).assertEqual('object');

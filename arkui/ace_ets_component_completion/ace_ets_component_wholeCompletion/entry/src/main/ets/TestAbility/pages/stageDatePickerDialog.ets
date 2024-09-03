@@ -43,7 +43,7 @@ struct stageDatePickerDialog {
                 end: new Date("2100-12-31"),
                 selected: this.selectedDate,
                 onAccept: (value: DatePickerResult) => {
-                  this.selectedDate.setFullYear(value.year, value.month, value.day)
+                  this.selectedDate.setFullYear(value.year ?? 0, value.month, value.day)
                   console.info("DatePickerDialog:onAccept()" + JSON.stringify(value))
                 },
                 onCancel: () => {
@@ -90,7 +90,7 @@ struct stageDatePickerDialog {
                 end: new Date("2100-12-31"),
                 selected: this.selectedDate,
                 onAccept: (value: DatePickerResult) => {
-                  this.selectedDate.setFullYear(value.year, value.month, value.day)
+                  this.selectedDate.setFullYear(value.year ?? 0, value.month, value.day)
                   console.info("DatePickerDialog:onAccept()" + JSON.stringify(value))
                 },
                 onCancel: () => {
@@ -137,7 +137,7 @@ struct stageDatePickerDialog {
                 end: new Date("2100-12-31"),
                 selected: this.selectedDate,
                 onAccept: (value: DatePickerResult) => {
-                  this.selectedDate.setFullYear(value.year, value.month, value.day)
+                  this.selectedDate.setFullYear(value.year ?? 0, value.month, value.day)
                   console.info("DatePickerDialog:onAccept()" + JSON.stringify(value))
                 },
                 onCancel: () => {

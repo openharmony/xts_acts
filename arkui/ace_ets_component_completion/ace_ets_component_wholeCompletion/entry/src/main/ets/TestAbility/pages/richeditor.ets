@@ -158,13 +158,13 @@ struct RichEditorExample {
               offset: 10,
               direction: (RichEditorDeleteDirection.BACKWARD),
               length: 10,
-              richEditorDeleteSpans: (null)
+              richEditorDeleteSpans: []
             }
             let DeleteValue1: RichEditorDeleteValue = {
               offset: 10,
               direction: (RichEditorDeleteDirection.FORWARD),
               length: 10,
-              richEditorDeleteSpans: (null)
+              richEditorDeleteSpans: []
             }
             DeleteValue.richEditorDeleteSpans.toString()
             DeleteValue1.richEditorDeleteSpans.toString()
@@ -178,17 +178,17 @@ struct RichEditorExample {
               offset: 10,
               direction: (RichEditorDeleteDirection.BACKWARD),
               length: 10,
-              richEditorDeleteSpans: (null)
+              richEditorDeleteSpans: []
             }
             let DeleteValue1: RichEditorDeleteValue = {
               offset: 10,
               direction: (RichEditorDeleteDirection.FORWARD),
               length: 10,
-              richEditorDeleteSpans: (null)
+              richEditorDeleteSpans: []
             }
             let ImageSpanResult: RichEditorImageSpanResult = {
               spanPosition: { spanIndex: 10, spanRange: [10, 10] },
-              valuePixelMap: (null),
+              valuePixelMap: (undefined),
               valueResourceStr: ("aaa"),
               imageStyle: { size: [10, 10], verticalAlign: (ImageSpanAlignment.TOP), objectFit: (ImageFit.Auto) },
               offsetInSpan: [10, 100]
@@ -196,8 +196,8 @@ struct RichEditorExample {
             ImageSpanResult.offsetInSpan.toString()
             ImageSpanResult.spanPosition.spanIndex.toString()
             ImageSpanResult.spanPosition.spanRange.toString()
-            ImageSpanResult.valuePixelMap.isEditable.valueOf()
-            ImageSpanResult.valueResourceStr.toString()
+            ImageSpanResult.valuePixelMap?.isEditable.valueOf()
+            ImageSpanResult.valueResourceStr?.toString()
             ImageSpanResult.imageStyle.size.toString()
             ImageSpanResult.imageStyle.verticalAlign.toString()
             ImageSpanResult.imageStyle.objectFit.toString()
@@ -240,7 +240,7 @@ struct RichEditorExample {
           })
           .key('Stage_RichEditor_Test_2500')
           .onSelect((value: RichEditorSelection) => {
-            let Selection: RichEditorSelection = { selection: [10, 10], spans: (null) }
+            let Selection: RichEditorSelection = { selection: [10, 10], spans: [] }
             Selection.selection.toString()
             Selection.spans.toString()
             this.spanStart = value.selection[0]

@@ -14,7 +14,7 @@
  */
 class MyDataSourceSwiper implements IDataSource {
   private list: string[] = []
-  private listener: DataChangeListener
+  private listener: DataChangeListener | null = null
 
   constructor(list: string[]) {
     this.list = list

@@ -413,7 +413,7 @@ export default function ActsRichEditorTest() {
           let RichEditorTextSpan: RichEditorTextSpan = {
             spanPosition: {
               spanIndex: 10, spanRange: [10, 10]
-            }, value: "aaaaa", textStyle: {}
+            }, value: "aaaaa"
           }
           let RichEditorImageSpanStyle: RichEditorImageSpanStyle = {
             size: [10, 10], verticalAlign: (ImageSpanAlignment.CENTER), objectFit: (ImageFit.Contain)
@@ -430,7 +430,7 @@ export default function ActsRichEditorTest() {
             spanPosition: {
               spanIndex: 10, spanRange: [10, 10]
             },
-            valuePixelMap: (null),
+            valuePixelMap: (undefined),
             valueResourceStr: ("aaa"),
             imageStyle: {
               size: [10, 10], verticalAlign: (ImageSpanAlignment.TOP), objectFit: (ImageFit.Auto)
@@ -455,13 +455,13 @@ export default function ActsRichEditorTest() {
             }
           }
           let RichEditorSelection: RichEditorSelection = {
-            selection: [10, 10], spans: (null)
+            selection: [10, 10], spans: []
           }
           let RichEditorDeleteValue: RichEditorDeleteValue = {
-            offset: 10, direction: (0), length: 10, richEditorDeleteSpans: (null)
+            offset: 10, direction: (0), length: 10, richEditorDeleteSpans: []
           }
           let RichEditorDeleteValue1: RichEditorDeleteValue = {
-            offset: 10, direction: (1), length: 10, richEditorDeleteSpans: (null)
+            offset: 10, direction: (1), length: 10, richEditorDeleteSpans: []
           }
           console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorInsertValue))
           console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorSpanPosition))
@@ -559,10 +559,10 @@ export default function ActsRichEditorTest() {
       setTimeout(() => {
         try {
           let RichEditorDeleteValue: RichEditorDeleteValue = {
-            offset: 10, direction: (0), length: 10, richEditorDeleteSpans: (null)
+            offset: 10, direction: (0), length: 10, richEditorDeleteSpans: []
           }
           let RichEditorDeleteValue1: RichEditorDeleteValue = {
-            offset: 10, direction: (1), length: 10, richEditorDeleteSpans: (null)
+            offset: 10, direction: (1), length: 10, richEditorDeleteSpans: []
           }
           console.info("Stage_RichEditor_Test_2400 InsertValue is: " + JSON.stringify(RichEditorDeleteValue))
           console.info("Stage_RichEditor_Test_2400 InsertValue is: " + JSON.stringify(RichEditorDeleteValue1))
@@ -585,7 +585,7 @@ export default function ActsRichEditorTest() {
       setTimeout(() => {
         try {
           let RichEditorSelection: RichEditorSelection = {
-            selection: [10, 10], spans: (null)
+            selection: [10, 10], spans: []
           }
           console.info("Stage_RichEditor_Test_2500 InsertValue is: " + JSON.stringify(RichEditorSelection))
           expect(typeof RichEditorSelection).assertEqual("object")
@@ -609,7 +609,7 @@ export default function ActsRichEditorTest() {
             spanPosition: {
               spanIndex: 10, spanRange: [10, 10]
             },
-            valuePixelMap: (null),
+            valuePixelMap: (undefined),
             valueResourceStr: ("aaa"),
             imageStyle: {
               size: [10, 10], verticalAlign: (ImageSpanAlignment.TOP), objectFit: (ImageFit.Auto)

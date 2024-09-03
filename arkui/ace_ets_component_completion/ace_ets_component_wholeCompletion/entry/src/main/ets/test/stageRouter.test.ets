@@ -124,7 +124,7 @@ export default function stageRouterTest() {
         }, router.RouterMode.Standard)
           .then(() => {
           })
-          .catch(err => {
+          .catch((err: BusinessError) => {
             console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         expect(typeof (result)).assertEqual('object');
