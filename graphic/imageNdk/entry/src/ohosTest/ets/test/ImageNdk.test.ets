@@ -15,12 +15,8 @@
 
 import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium'
 import ndkTest from 'libImageNdk.so'
-import image from "@ohos.multimedia.image";
-import hilog from '@ohos.hilog';
+import image from '@ohos.multimedia.image';
 import common from '@ohos.app.ability.common';
-import fs from '@ohos.file.fs';
-import resourceManager from '@ohos.resourceManager';
-import { BusinessError } from '@ohos.base';
 
 export default function imageNdkTest() {
   describe('ImageNdkTest', () => {
@@ -120,7 +116,39 @@ export default function imageNdkTest() {
     */
     it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetNativeBuffer_0600', 0, (done: Function) => {
       let result: number = ndkTest.testNativeGetNativeBufferAbnormal()
-      let msg = "testNativeGetNativeBufferAbnormal result: "
+      let msg = 'testNativeGetNativeBufferAbnormal result: '
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
+    /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetMetaData_0700
+    * @tc.name      : testNativeSetMetaDataNull
+    * @tc.desc      : 1.testNativeSetMetaDataNull
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetMetaData_0700', 0, (done: Function) => {
+      let result: number = ndkTest.testNativeSetMetaDataNull()
+      let msg = 'testNativeSetMetaDataNull result: '
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
+    /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetMetaData_0800
+    * @tc.name      : testNativeGetMetaDataNull
+    * @tc.desc      : 1.testNativeGetMetaDataNull
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetMetaData_0800', 0, (done: Function) => {
+      let result: number = ndkTest.testNativeGetMetaDataNull()
+      let msg = 'testNativeGetMetaDataNull result: '
       console.info(msg + result);
       expect(result).assertEqual(0)
       done();
