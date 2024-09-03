@@ -1730,7 +1730,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         done();
       } catch (error) {
         console.log(msgStr + 'Failed to get the area of title buttons. Cause: ' + JSON.stringify(error));
-        if (error.code == 1300002) {
+        if (error.code == 801) {
           expect(true).assertTrue()
           done()
         } else {
