@@ -1,11 +1,5 @@
 {
   "src": [
-    "MainAbility/pages/Index",
-    "MainAbility/pages/WebOnPermissionRequest",
-    "MainAbility/pages/WebViewControllerDownloadTest",
-    "MainAbility/pages/webViewAnrCallback",
-    "MainAbility/pages/webViewJsBridgeLastJsProxyCallingFrameUrl",
-    "MainAbility/pages/webViewOnOverrideUrlLoading"
+    "pages/Index"
   ]
 }
-
