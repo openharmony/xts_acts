@@ -28,7 +28,7 @@ export default class MainAbility5 extends Ability {
     globalThis.abilityContext = this.context;
     setTimeout(() => {
       globalThis.abilityContext.terminateSelf().then(() => {
-        console.log('====>in terminateSelf====>');
+        console.log('====>MainAbility5 in terminateSelf====>');
       });
     }, EVENT_TIME);
   }
