@@ -139,6 +139,15 @@ Image_ErrorCode ImageReceiverModuleTest::GetImageReceiverLatestImage(OH_ImageNat
         return ret;
     }
     IMG_TST_LOGI("GetImageReceiverLatestImage end.");
+
+    int64_t timestamp = 0;
+    ret = OH_ImageNative_GetTimestamp(*image, &timestamp);
+    if (ret != IMAGE_SUCCESS) {
+        IMG_TST_LOGE("Get imageReceiverLatestImage failed : timestamp is : %{public}lld., err = %{public}d.",
+            timestamp, ret);
+        return ret;
+    }
+    IMG_TST_LOGI("GetImageReceiverLatestImage %{public}s timestamp is : %{public}lld.", __func__, timestamp);
     return ret;
 }
 
@@ -151,6 +160,15 @@ Image_ErrorCode ImageReceiverModuleTest::GetImageReceiverNextImage(OH_ImageNativ
         return ret;
     }
     IMG_TST_LOGI("GetImageReceiverNextImage end.");
+    
+    int64_t timestamp = 0;
+    ret = OH_ImageNative_GetTimestamp(*image, &timestamp);
+    if (ret != IMAGE_SUCCESS) {
+        IMG_TST_LOGE("Get imageReceiverNextImage failed : timestamp is : %{public}lld., err = %{public}d.",
+            timestamp, ret);
+        return ret;
+    }
+    IMG_TST_LOGI("GetImageReceiverNextImage %{public}s timestamp is : %{public}lld.", __func__, timestamp);
     return ret;
 }
 
