@@ -55,6 +55,12 @@ if __name__ == '__main__':
     tasklogpath = tasklogfile
     mustpasspath = "testcases/vulkandata/vk-default/"+mustpassfile
     curtime = ""
+    if os.path.exists(tasklogpath):
+        size = os.path.getsize(tasklogpath)
+        if size == 0:
+            os.remove(tasklogpath)
+    else:
+        raise Exception('qpa文件不存在')
     if sys.platform.startswith('linux'):
         print('os is Linux')
     elif sys.platform.startswith('win'):
