@@ -19,7 +19,7 @@ import testsuite from '../test/List.test'
 
 export default class MainAbility extends Ability {
   onCreate(want, launchParam) {
-    console.log('MainAbility onCreate')
+    console.log('[Demo] MainAbility onCreate')
     globalThis.abilityWant = want;
     globalThis.abilityWant.parameters.timeout = 15000;
     var abilityDelegator: any
@@ -31,23 +31,23 @@ export default class MainAbility extends Ability {
   }
 
   onDestroy() {
-    console.log('MainAbility onDestroy')
+    console.log('[Demo] MainAbility onDestroy')
   }
 
   onWindowStageCreate(windowStage) {
-    console.log('MainAbility onWindowStageCreate')
+    console.log('[Demo] MainAbility onWindowStageCreate')
     windowStage.setUIContent(this.context, 'MainAbility/pages/index', null)
   }
 
   onWindowStageDestroy() {
-    console.log('MainAbility onWindowStageDestroy')
+    console.log('[Demo] MainAbility onWindowStageDestroy')
   }
 
   onForeground() {
-    console.log('MainAbility onForeground')
+    console.log('[Demo] MainAbility onForeground')
   }
 
   onBackground() {
-    console.log('MainAbility onBackground')
+    console.log('[Demo] MainAbility onBackground')
   }
 };

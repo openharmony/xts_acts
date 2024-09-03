@@ -82,7 +82,7 @@ export default function abilityTest() {
             bundleName: 'com.example.abilitymonitortest',
             abilityName: 'MainAbility2'
           }).then(async () => {
-          console.info(TAG + "====>ACTS_AddAbilityMonitor_0100 success");
+          console.info(TAG + "====>0100startAbility success");
         });
       }));
     })
@@ -182,7 +182,7 @@ export default function abilityTest() {
             bundleName: 'com.example.abilitymonitortest',
             abilityName: 'MainAbility3'
           }).then(async () => {
-          console.log(TAG + "====>startAbility success====>");
+          console.log(TAG + "====>0300startAbility success====>");
         })
       })
     })
@@ -446,7 +446,7 @@ export default function abilityTest() {
             bundleName: 'com.example.abilitymonitortest',
             abilityName: 'MainAbility3'
           }).then(async () => {
-          console.log(TAG + "====>startAbility success====>");
+          console.log(TAG + "====>1000startAbility success====>");
         })
       })
     })
@@ -622,7 +622,7 @@ export default function abilityTest() {
               bundleName: 'com.example.abilitymonitortest',
               abilityName: 'MainAbility2'
             }).then(async () => {
-            console.log(TAG + "====> startAbility end====>");
+            console.log(TAG + "====>remove0100 startAbility end====>");
             setTimeout(() => {
               done();
             }, 2500)
@@ -723,7 +723,7 @@ export default function abilityTest() {
       console.log(TAG + " start");
 
       let onAbilityDestroy = () => {
-        console.log("====>onAbilityDestroy ====>");
+        console.log(TAG + "====>onAbilityDestroy ====>");
         expect().assertFail();
         done();
       }
@@ -763,7 +763,7 @@ export default function abilityTest() {
       console.log(TAG + " start");
 
       let onWindowStageCreate = () => {
-        console.log("====>onWindowStageCreate ====>");
+        console.log(TAG + "====>onWindowStageCreate ====>");
         expect().assertFail();
         done();
       }
@@ -772,9 +772,9 @@ export default function abilityTest() {
         abilityName: 'MainAbility2',
         onWindowStageCreate: onWindowStageCreate
       }
-      console.log("====>start addAbilityMonitor====>");
+      console.log(TAG + "====>start addAbilityMonitor====>");
       delegator.addAbilityMonitor(monitor, (async (err) => {
-        console.log("====>remove0500-addAbilityMonitor success====>" + err.code);
+        console.log(TAG + "====>remove0500-addAbilityMonitor success====>" + err.code);
         await delegator.removeAbilityMonitor(monitor, (err) => {
           console.log(TAG + "====>0500removeAbilityMonitor success====>" + err.code);
           globalThis.abilitydelegator.startAbility(
@@ -871,7 +871,7 @@ export default function abilityTest() {
       console.log(TAG + " start");
 
       let onAbilityCreate = () => {
-        console.log("====>onAbilityCreate ====>");
+        console.log(TAG + "====>onAbilityCreate ====>");
         expect().assertFail();
         done();
       }
@@ -882,7 +882,7 @@ export default function abilityTest() {
       }
       console.log(TAG + " waitAbilityMonitor start");
       delegator.waitAbilityMonitor(monitor, (async (err) => {
-        console.log("====>remove0800-waitAbilityMonitor success====>" + err.code);
+        console.log(TAG + "====>remove0800-waitAbilityMonitor success====>" + err.code);
       }))
       await sleep(500);
       delegator.removeAbilityMonitor(monitor, (err) => {
@@ -925,7 +925,7 @@ export default function abilityTest() {
       delegator.addAbilityMonitor(monitor, (async (err) => {
         console.log(TAG + "====>remove0100-addAbilityMonitor success====>" + err.code);
         await delegator.removeAbilityMonitor(monitor).then(() => {
-          console.log("====>0100removeAbilityMonitor success====>");
+          console.log("TAG + ====>0100removeAbilityMonitor success====>");
           globalThis.abilitydelegator.startAbility(
             {
               bundleName: 'com.example.abilitymonitortest',
@@ -992,7 +992,7 @@ export default function abilityTest() {
       console.log(TAG + " start");
 
       let onAbilityBackground = () => {
-        console.log("====>onAbilityBackground ====>");
+        console.log(TAG + "====>onAbilityBackground ====>");
         expect().assertFail();
         done();
       }
@@ -1072,7 +1072,7 @@ export default function abilityTest() {
       console.log(TAG + " start");
 
       let onWindowStageCreate = () => {
-        console.log("====>onAbilityCreate ====>");
+        console.log(TAG + "====>onAbilityCreate ====>");
         expect().assertFail();
         done();
       }
@@ -1281,7 +1281,7 @@ export default function abilityTest() {
             bundleName: 'com.example.abilitymonitortest',
             abilityName: 'MainAbility2'
           }).then(() => {
-          console.log(TAG + "====> startAbility end====>");
+          console.log(TAG + "====>ACTS_WaitAbilityMonitor_Callback_0200 startAbility end====>");
         })
       }, 5500)
     })
@@ -1356,7 +1356,7 @@ export default function abilityTest() {
             bundleName: 'com.example.abilitymonitortest',
             abilityName: 'MainAbility2'
           }).then(() => {
-          console.log(TAG + "====> startAbility end====>");
+          console.log(TAG + "====>ACTS_WaitAbilityMonitor_Callback_0400 startAbility end====>");
         })
       }, 1500)
     })
@@ -1493,7 +1493,7 @@ export default function abilityTest() {
       }
       console.log(TAG + " waitAbilityMonitor start");
       delegator.waitAbilityMonitor(monitor).then((data) => {
-        console.log(TAG + "====>ACTS_WaitAbilityMonitor_Callback_0200 success====>");
+        console.log(TAG + "====>ACTS_WaitAbilityMonitor_Promise_0200 success====>");
       })
       setTimeout(() => {
         console.log(TAG + " startAbility start");
@@ -1576,7 +1576,7 @@ export default function abilityTest() {
             bundleName: 'com.example.abilitymonitortest',
             abilityName: 'MainAbility2'
           }).then(() => {
-          console.log(TAG + "====> startAbility end====>");
+          console.log(TAG + "====>ACTS_WaitAbilityMonitor_Promise_0400 startAbility end====>");
           setTimeout(() => {
             done();
           }, 2500)
@@ -1627,7 +1627,7 @@ export default function abilityTest() {
      *           5s (promise).
      */
     it('ACTS_WaitAbilityMonitor_Promise_0600', 0, async (done: Function) => {
-      TAG = "ACTS_WaitAbilityMonitor_Promise_0500";
+      TAG = "ACTS_WaitAbilityMonitor_Promise_0600";
       console.log(TAG + " start");
 
       let onAbilityCreate = (ability: UIAbility) => {

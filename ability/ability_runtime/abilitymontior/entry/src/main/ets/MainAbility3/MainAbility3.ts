@@ -41,7 +41,7 @@ export default class MainAbility3 extends Ability {
     windowStage.setUIContent(this.context, "pages/index", null)
     setTimeout(() => {
       globalThis.abilityContext.terminateSelf().then(() => {
-        console.log("====>in terminateSelf====>");
+        console.log("====>MainAbility3 in terminateSelf====>");
       })
     }, TERMINATE_SELF_TIME);
   }
@@ -55,7 +55,7 @@ export default class MainAbility3 extends Ability {
     // Ability has brought to foreground
     console.log("[Demo] MainAbility3 onForeground")
     setTimeout(() => {
-      commonEvent.publish("commonEvent_foreground", PublishCallBack);
+      commonEvent.publish("MainAbility3_foreground", PublishCallBack);
     }, EVENT_TIME);
   }
 
