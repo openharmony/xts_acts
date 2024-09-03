@@ -609,21 +609,32 @@ export default function imagePixelMapFramework() {
             return pixelMap;
         }
 
+        const checkConvertResult = (newInfo, dstPixelFormat) => {
+            console.info("converted to dstPixelFormat : " + newInfo.pixelFormat);
+            console.info(`pixelMap isHdr: ${newInfo.isHdr}`);
+            let ret = newInfo.pixelFormat == dstPixelFormat;
+            if (dstPixelFormat == RGBA_1010102 || dstPixelFormat == YCBCR_P010 || dstPixelFormat == YCRCB_P010) {
+                ret = ret && (newInfo.isHdr == true);
+            } else {
+                ret = ret && (newInfo.isHdr == false);
+            }
+            return ret;
+        }
+
         async function testConvertPixelFormat(done, testNum, srcPixelFormat, dstPixelFormat) {
             let logger = loger(testNum);
             try {
                 let pixelMap = await createPixelMapByFormat(srcPixelFormat);
+
                 if (pixelMap != undefined) {
                     globalpixelmap = pixelMap;
                     let orgImageInfo = pixelMap.getImageInfoSync();
                     expect(orgImageInfo.pixelFormat == srcPixelFormat).assertTrue();
                     await pixelMap.convertPixelFormat(dstPixelFormat);
                     let newImageInfo = pixelMap.getImageInfoSync();
-                    logger.log("converted to dstPixelFormat : " + newImageInfo.pixelFormat);
-                    logger.log(`pixelMap info: origin isHdr: ${orgImageInfo.isHdr}, new isHdr: ${newImageInfo.isHdr}`);
-                    expect(newImageInfo.isHdr == false).assertTrue();
-                    expect(orgImageInfo.isHdr == newImageInfo.isHdr).assertTrue();
+                    expect(checkConvertResult(newImageInfo, dstPixelFormat)).assertTrue();
                     done();
+
                 } else {
                     logger.log("pixelmap is undefined.");
                     expect().assertFail();
