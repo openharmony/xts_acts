@@ -13,11 +13,21 @@
 
 import("//test/xts/tools/build/suite.gni")
 
+ohos_app_assist_suite("ActsCommonEventSubscribe_ndk_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsCommonEventSubscribemainNDKTest"
+  subsystem_name = "notification"
+  part_name = "common_event_service"
+}
+
 ohos_js_app_suite("ActsCommonEventSubscribeNDKTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsCommonEventSubscribeNDKTest"
-  part_name = "common_event_service"
+
   subsystem_name = "notification"
+  part_name = "common_event_service"
+  deps = [ ":ActsCommonEventSubscribe_ndk_main" ]
 }
