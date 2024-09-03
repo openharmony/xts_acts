@@ -53,8 +53,56 @@ export default function TextDataDetectorConfig() {
     it('TextDataDetectorConfig_0010', 0, async (done: Function) => {
       console.info('TextDataDetectorConfig_0010 START');
       let TextDataDetectorConfig_1 = getInspectorByKey('text_dataDetectorConfig');
-      expect(""+JSON.parse(TextDataDetectorConfig_1).$type).assertEqual('Text');
+      expect(""+JSON.parse(JSON.parse(TextDataDetectorConfig_1).$attrs.dataDetectorConfig).color).assertEqual('#FF0000FF');
       console.info('TextDataDetectorConfig_0010 END');
+      done();
+    });
+	
+	/**
+     * @tc.number: TextDataDetectorConfig_0020
+     * @tc.name  : TextDataDetectorConfig_0020
+     * @tc.desc  : set Text: TextDataDetectorConfig
+     * @tc.level : Level 1
+     * @tc.type :
+     * @tc.size :
+     */
+    it('TextDataDetectorConfig_0020', 0, async (done: Function) => {
+      console.info('TextDataDetectorConfig_0020 START');
+      let TextDataDetectorConfig_1 = getInspectorByKey('text_dataDetectorConfig');
+      expect(""+JSON.parse(JSON.parse(TextDataDetectorConfig_1).$attrs.dataDetectorConfig).decoration.type).assertEqual('1');
+      console.info('TextDataDetectorConfig_0020 END');
+      done();
+    });
+	
+	/**
+     * @tc.number: TextDataDetectorConfig_0030
+     * @tc.name  : TextDataDetectorConfig_0030
+     * @tc.desc  : set Text: TextDataDetectorConfig
+     * @tc.level : Level 1
+     * @tc.type :
+     * @tc.size :
+     */
+    it('TextDataDetectorConfig_0030', 0, async (done: Function) => {
+      console.info('TextDataDetectorConfig_0030 START');
+      let TextDataDetectorConfig_1 = getInspectorByKey('text_dataDetectorConfig');
+      expect(""+JSON.parse(JSON.parse(TextDataDetectorConfig_1).$attrs.dataDetectorConfig).decoration.color).assertEqual('#FFFF0000');
+      console.info('TextDataDetectorConfig_0030 END');
+      done();
+    });
+	
+	/**
+     * @tc.number: TextDataDetectorConfig_0040
+     * @tc.name  : TextDataDetectorConfig_0040
+     * @tc.desc  : set Text: TextDataDetectorConfig
+     * @tc.level : Level 1
+     * @tc.type :
+     * @tc.size :
+     */
+    it('TextDataDetectorConfig_0040', 0, async (done: Function) => {
+      console.info('TextDataDetectorConfig_0040 START');
+      let TextDataDetectorConfig_1 = getInspectorByKey('text_dataDetectorConfig');
+      expect(""+JSON.parse(JSON.parse(TextDataDetectorConfig_1).$attrs.dataDetectorConfig).decoration.style).assertEqual('0');
+      console.info('TextDataDetectorConfig_0040 END');
       done();
     });
   })
