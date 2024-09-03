@@ -55,6 +55,57 @@ static napi_value Asset_Add(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value Asset_AddCE(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    char aliasBuffer[BUFF_MAX];
+    size_t bufferSize = BUFF_MAX;
+    size_t copied = 0;
+
+    napi_get_value_string_utf8(env, args[0], aliasBuffer, bufferSize, &copied);
+
+    char secretBuffer[BUFF_MAX];
+    bufferSize = BUFF_MAX;
+    copied = 0;
+
+    napi_get_value_string_utf8(env, args[1], secretBuffer, bufferSize, &copied);
+
+    Asset_Blob secret = {static_cast<uint32_t>(strlen(secretBuffer)), reinterpret_cast<uint8_t *>(secretBuffer)};
+    Asset_Blob alias = {static_cast<uint32_t>(strlen(aliasBuffer)), reinterpret_cast<uint8_t *>(aliasBuffer)};
+
+    Asset_Attr attr[] = {
+        {.tag = ASSET_TAG_SECRET, .value.blob = secret},
+        {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
+        {.tag = ASSET_TAG_REQUIRE_ATTR_ENCRYPTED, .value.boolean = true},
+    };
+    OH_Asset_Add(attr, sizeof(attr) / sizeof(attr[0]));
+
+    Asset_Attr attr2[] = {
+        {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
+        {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL},
+        {.tag = ASSET_TAG_REQUIRE_ATTR_ENCRYPTED, .value.boolean = true},
+    };
+    Asset_ResultSet resultSet = {0};
+    int32_t ret = OH_Asset_Query(attr2, sizeof(attr2) / sizeof(attr2[0]), &resultSet);
+    if (ret == ASSET_SUCCESS) {
+        Asset_Attr *secret = OH_Asset_ParseAttr(resultSet.results + 0, ASSET_TAG_SECRET);
+        if (memcmp(secret->value.blob.data, reinterpret_cast<uint8_t *>(secretBuffer), secret->value.blob.size) == 0) {
+            ret = MAGIC_RET;
+        } else {
+            ret = -1;
+        }
+    } else {
+        ret = -1;
+    }
+    napi_value result;
+    napi_create_int32(env, ret, &result);
+    OH_Asset_FreeResultSet(&resultSet);
+    return result;
+}
 
 static napi_value Asset_Add_Auth(napi_env env, napi_callback_info info)
 {
@@ -483,7 +534,7 @@ static napi_value Asset_QueryAll(napi_env env, napi_callback_info info)
         ret = -1;
     }
     napi_value result;
-    napi_create_uint32(env, ret, &result);
+    napi_create_int32(env, ret, &result);
     OH_Asset_FreeResultSet(&resultSet);
     return result;
 }
@@ -800,6 +851,7 @@ static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         {"asset_add", nullptr, Asset_Add, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"asset_addCE", nullptr, Asset_AddCE, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_queryNum", nullptr, Asset_QueryNum, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_queryAll", nullptr, Asset_QueryAll, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_removeAll", nullptr, Asset_RemoveAll, nullptr, nullptr, nullptr, napi_default, nullptr},
