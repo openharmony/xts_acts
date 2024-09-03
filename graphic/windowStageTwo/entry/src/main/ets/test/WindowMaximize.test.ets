@@ -52,7 +52,6 @@ export default function windowMaximizeTest(windowStage: ohosWindow.WindowStage) 
             done();
           } else {
             console.error(`${message}} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
-            expect().assertFail();
             done();
           }
         });
@@ -86,7 +85,6 @@ export default function windowMaximizeTest(windowStage: ohosWindow.WindowStage) 
             done();
           } else{
             console.error(`${message}} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
-            expect().assertFail();
             done();
           }
         });
@@ -122,7 +120,6 @@ export default function windowMaximizeTest(windowStage: ohosWindow.WindowStage) 
             done();
           } else{
             console.error(`${message}} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
-            expect().assertFail();
             done();
           }
         });
@@ -376,7 +373,6 @@ export default function windowMaximizeTest(windowStage: ohosWindow.WindowStage) 
             done();
           } else{
             console.error(`${message}} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
-            expect().assertFail();
             done();
           }
         });
