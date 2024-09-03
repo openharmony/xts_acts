@@ -17,3 +17,4 @@ export const testInitializationOptionsSetRowStrideNormal: (rowStride: number) =>
 export const testCreatePixelMapWithStrideAbnormal: () => number;
 export const testNativeScaleWithAntiAliasingAbnormal: () => number;
 export const testScaleWithAntiAliasingAbnormal: (x: number, y: number) => number;
+export const testNativeGetNativeBufferAbnormal: () => number;
