@@ -189,7 +189,7 @@ struct RichEditorExample {
             }
             let ImageSpanResult: RichEditorImageSpanResult = {
               spanPosition: { spanIndex: 10, spanRange: [10, 10] },
-              valuePixelMap: (undefined),
+              valuePixelMap: (null!),
               valueResourceStr: ("aaa"),
               imageStyle: { size: [10, 10], verticalAlign: (ImageSpanAlignment.TOP), objectFit: (ImageFit.Auto) },
               offsetInSpan: [10, 100]

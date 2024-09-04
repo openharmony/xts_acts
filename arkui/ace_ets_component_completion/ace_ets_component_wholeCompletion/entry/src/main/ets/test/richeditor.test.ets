@@ -430,7 +430,7 @@ export default function ActsRichEditorTest() {
             spanPosition: {
               spanIndex: 10, spanRange: [10, 10]
             },
-            valuePixelMap: (undefined),
+            valuePixelMap: (null!),
             valueResourceStr: ("aaa"),
             imageStyle: {
               size: [10, 10], verticalAlign: (ImageSpanAlignment.TOP), objectFit: (ImageFit.Auto)
@@ -609,7 +609,7 @@ export default function ActsRichEditorTest() {
             spanPosition: {
               spanIndex: 10, spanRange: [10, 10]
             },
-            valuePixelMap: (undefined),
+            valuePixelMap: (null!),
             valueResourceStr: ("aaa"),
             imageStyle: {
               size: [10, 10], verticalAlign: (ImageSpanAlignment.TOP), objectFit: (ImageFit.Auto)

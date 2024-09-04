@@ -33,7 +33,7 @@ struct bindPopupOffset {
   @State offset10: Position = { x: -10, y: -10 };
   @State offset00: Position = { x: 0, y: 0 };
   @State offset050: Position = { x: 0, y: 50 };
-  @State offsetnull: Position = { x: 0, y: 0 };
+  @State offsetnull: Position = null!;
 
   @Builder
   popupBuilder() {
