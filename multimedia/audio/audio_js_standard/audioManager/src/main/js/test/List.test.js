@@ -13,14 +13,16 @@
  * limitations under the License.
  */
 
- import audioFramework from './AudioFramework.test.js'
- import audioManagerApi9 from './AudioManagerApi9.test.js'
- import audioRoutingManager from './AudioRoutingManager.test.js'
- 
- export default function testsuite() {
+import audioFramework from './AudioFramework.test.js'
+import audioManagerApi9 from './AudioManagerApi9.test.js'
+import audioRoutingManager from './AudioRoutingManager.test.js'
+import getAudioSceneApi12 from './GetAudioScene.test.js'
+
+export default function testsuite() {
     audioFramework()
     audioManagerApi9()
     audioRoutingManager()
- }
+    getAudioSceneApi12()
+}
 
 
