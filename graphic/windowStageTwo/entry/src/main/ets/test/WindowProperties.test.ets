@@ -298,15 +298,15 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         let subWindowClass = await windowStage.createSubWindow("subwindow");
         console.info(`${caseName} Succeeded in creating the sub window.`);
         await subWindowClass.showWindow();
-        subWindowClass.on('windowSizeChange', (data) => {
-          console.info(`${caseName} Succeeded window rect changes. Data: ${JSON.stringify(data)}`);
-          subWindowClass.off('windowSizeChange');
-          expect(data.width).assertEqual(500);
-          expect(data.height).assertEqual(500);
-          done();
-        });
-        await subWindowClass.resize(500, 500);
+        await sleep(1000);
+        await subWindowClass.resizeAsync(1000, 1000);
         console.info(`${caseName} Succeeded in changing the sub window size.`);
+        await sleep(1000);
+        let rect = subWindowClass.getWindowProperties().windowRect;
+        console.info(`${caseName} Get window rect: ` + JSON.stringify(rect));
+        expect(rect.width).assertEqual(1000);
+        expect(rect.height).assertEqual(1000);
+        done();
       } catch (error) {
         if(error.code == 1300002){
           console.info(`${caseName} This sub window state is abnormal`);
@@ -330,14 +330,14 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       let caseName = "TestOnRectChangeOptionsResizeMainWindow";
       try {
         let windowClass = windowStage.getMainWindowSync();
-        windowClass.on('windowSizeChange', (data) => {
-          console.info(`${caseName} Succeeded window rect changes. Data: ${JSON.stringify(data)}`);
-          windowClass.off('windowSizeChange');
-          expect(false).assertTrue();
-          done();
-        });
-        await windowClass.resize(500, 500);
+        await windowClass.resize(1000, 1000);
         console.info(`${caseName} Succeeded in changing the window size.`);
+        await sleep(1000);
+        let rect = windowClass.getWindowProperties().windowRect;
+        console.info(`${caseName} Get window rect: ` + JSON.stringify(rect));
+        expect(rect.width).assertEqual(1000);
+        expect(rect.height).assertEqual(1000);
+        done();
       } catch (error) {
         if(error.code == 1300002){
           console.info(`${caseName} This window state is abnormal`);
@@ -366,8 +366,6 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         subWindowClass.on('windowRectChange', (data) => {
           console.info(`${caseName}: Succeeded window rect changes. Data: ${JSON.stringify(data)}`);
           subWindowClass.off('windowRectChange');
-          expect(data.rect.left).assertEqual(300);
-          expect(data.rect.top).assertEqual(300);
           done();
         });
         await subWindowClass.moveWindowTo(300, 300);

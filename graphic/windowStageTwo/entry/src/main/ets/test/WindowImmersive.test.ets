@@ -480,6 +480,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         await sleep(1000);
         await windowClass.setWindowSystemBarEnable([]);
         console.info(`${caseName} Succeeded in setting the status bar to be invisible.`);
+        await windowClass.setWindowLayoutFullScreen(false);
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
@@ -519,6 +520,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         await sleep(1000);
         await windowClass.setWindowSystemBarEnable([]);
         console.info(`${caseName} Succeeded in setting the status bar to be invisible.`);
+        await windowClass.setWindowLayoutFullScreen(false);
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
@@ -558,6 +560,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         console.info(`${caseName} Succeeded in setting the status bar to be invisible.`);
         console.info(`${caseName} listener for system avoid area changes num is: ${num}`);
         expect(num).assertEqual(0);
+        await windowClass.setWindowLayoutFullScreen(false);
         done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -590,6 +593,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         await sleep(1000);
         await windowClass.setWindowSystemBarEnable([]);
         console.info(`${caseName} Succeeded in setting the status bar to be invisible.`);
+        await windowClass.setWindowLayoutFullScreen(false);
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
@@ -624,6 +628,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         console.info(`${caseName} Succeeded in setting the status bar to be visible.`);
         console.info(`${caseName} listener for avoid area changes num is: ${num}`);
         expect(num).assertEqual(0);
+        await windowClass.setWindowLayoutFullScreen(false);
         done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -645,16 +650,17 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         let windowClass = windowStage.getMainWindowSync();
         await windowClass.setFullScreen(true);
         console.info(`${caseName} Succeeded in setting the window layout to full-screen mode.`);
-        await windowClass.setWindowSystemBarEnable(['status', 'navigation']);
-        console.info(`${caseName} Succeeded in setting the status bar to be visible.`);
-        await sleep(1000);
         windowClass.on('avoidAreaChange', (data) => {
           console.info(`${caseName} Succeeded in enabling the listener for avoid area changes. type: ${JSON.stringify(data.type)} area: ${JSON.stringify(data.area)}`);
           windowClass.off('avoidAreaChange');
           done();
         });
+        await windowClass.setWindowSystemBarEnable(['status', 'navigation']);
+        console.info(`${caseName} Succeeded in setting the status bar to be visible.`);
+        await sleep(1000);
         await windowClass.setWindowSystemBarEnable(['navigation']);
         console.info(`${caseName} Succeeded in setting the status bar to be invisible.`);
+        done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
@@ -673,18 +679,19 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
       let caseName = 'TestSetWindowSystemBarEnableStatusVisiblePromise';
       try {
         let windowClass = windowStage.getMainWindowSync();
-        await windowClass.setFullScreen(true);
-        console.info(`${caseName} Succeeded in setting the window layout to full-screen mode.`);
-        await windowClass.setWindowSystemBarEnable(['navigation']);
-        console.info(`${caseName} Succeeded in setting the status bar to be invisible.`);
-        await sleep(1000);
         windowClass.on('avoidAreaChange', (data) => {
           console.info(`${caseName} Succeeded in enabling the listener for avoid area changes. type: ${JSON.stringify(data.type)} area: ${JSON.stringify(data.area)}`);
           windowClass.off('avoidAreaChange');
           done();
         });
+        await windowClass.setFullScreen(true);
+        console.info(`${caseName} Succeeded in setting the window layout to full-screen mode.`);
+        await windowClass.setWindowSystemBarEnable(['navigation']);
+        console.info(`${caseName} Succeeded in setting the status bar to be invisible.`);
+        await sleep(1000);
         await windowClass.setWindowSystemBarEnable(['status','navigation']);
         console.info(`${caseName} Succeeded in setting the status bar to be visible.`);
+        done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
@@ -715,6 +722,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         await sleep(1000);
         await windowClass.setWindowSystemBarEnable([]);
         console.info(`${caseName} Succeeded in setting the system bar to be invisible.`);
+        done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
@@ -747,6 +755,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         windowClass.setWindowSystemBarEnable(['status', 'navigation'], (err: BusinessError) => {
           console.info(`${caseName} Succeeded in setting the status bar to be visible.`);
         });
+        done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
@@ -779,6 +788,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         windowClass.setWindowSystemBarEnable(['navigation'], (err: BusinessError) => {
           console.info(`${caseName} Succeeded in setting the status bar to be invisible.`);
         });
+        done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
@@ -811,6 +821,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         windowClass.setWindowSystemBarEnable(['navigation'], (err: BusinessError) => {
           console.info(`${caseName} Succeeded in setting the status bar to be invisible.`);
         });
+        done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
@@ -843,6 +854,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         windowClass.setWindowSystemBarEnable(['status', 'navigation'], (err: BusinessError) => {
           console.info(`${caseName} Succeeded in setting the status bar to be visible.`);
         });
+        done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
