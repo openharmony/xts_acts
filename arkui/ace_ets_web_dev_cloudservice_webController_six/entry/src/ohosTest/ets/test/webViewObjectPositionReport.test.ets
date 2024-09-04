@@ -25,7 +25,7 @@ export default function ActsAceWebViewObjectPositionReport() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webViewObjectPositionReport',
+        url: 'testability/pages/webViewObjectPositionReport',
       }
 
       try {

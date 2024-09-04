@@ -25,7 +25,7 @@ export default function ActsAceWebViewAvoidArea() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webViewAvoidArea',
+        url: 'testability/pages/webViewAvoidArea',
       }
 
       try {

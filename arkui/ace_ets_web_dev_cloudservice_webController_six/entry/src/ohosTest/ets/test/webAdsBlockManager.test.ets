@@ -25,7 +25,7 @@ export default function ActsAceWebAdsBlockManager() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webAdsBlockManager',
+        url: 'testability/pages/webAdsBlockManager',
       }
 
       try {
