@@ -26,6 +26,7 @@ import provideParent5 from './ProvideTest/provideParent5.test.ets'
 import provideParent6 from './ProvideTest/provideParent6.test.ets'
 import LocalStoageLinkOneJsunit from './State/LocalStoageLinkOneJsunit.test.ets';
 import LocalStoageLinkTwoJsunit from './State/LocalStoageLinkTwoJsunit.test.ets';
+import LocalStoageLinkThreeJsunit from './State/LocalStoageLinkThreeJsunit.test.ets';  
 import LocalStoagePropFourJsunit from './State/LocalStoagePropFourJsunit.test.ets';
 import LocalStoagePropTwoJsunit from './State/LocalStoagePropTwoJsunit.test.ets';
 import LocalStorage39Jsunit from './State/LocalStorage39Jsunit.test.ets';
@@ -155,6 +156,7 @@ export default function testsuite() {
   provideParent6();
   LocalStoageLinkOneJsunit();
   LocalStoageLinkTwoJsunit();
+  LocalStoageLinkThreeJsunit();
   LocalStoagePropFourJsunit();
   LocalStoagePropTwoJsunit();
   LocalStorage39Jsunit();
