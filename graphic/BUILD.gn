@@ -29,7 +29,6 @@ group("graphic") {
       "effectKit:ActsEffectKitTest",
       "graphic3D:ActsGraphic3DTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
-      "graphicDrawing:ActsGraphicDrawingTest",
       "graphicDrawingFont:ActsGraphicDrawingFontTest",
       "graphicEGL:ActsGraphicEglTest",
       "graphicEffectFliterTest:ActsGraphicEffectFliterTest",
