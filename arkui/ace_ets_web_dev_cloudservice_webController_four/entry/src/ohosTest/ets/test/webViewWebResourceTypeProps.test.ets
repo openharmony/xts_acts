@@ -25,7 +25,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewWebResourceTypeProps',
+            url: 'testability/pages/webViewWebResourceTypeProps',
         }
         
         try {

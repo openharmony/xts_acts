@@ -25,7 +25,7 @@ export default function ActsAceWebViewWarmupServiceWorker() {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewWarmupServiceWorker',
+            url: 'testability/pages/webViewWarmupServiceWorker',
         }
         
         try {

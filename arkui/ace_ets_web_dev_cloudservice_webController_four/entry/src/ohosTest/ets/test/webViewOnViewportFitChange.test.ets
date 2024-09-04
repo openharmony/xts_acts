@@ -20,27 +20,27 @@ import emitter from '@ohos.events.emitter';
 // @ts-nocheck
 let emitKey = ""
 
-export default function ActsAceWebViewGetFrameUrlResourceType() {
-  describe('ActsAceWebViewGetFrameUrlResourceType', () => {
+export default function webViewOnViewportFitChange() {
+  describe('ActsAceWebViewOnViewportFitChange', () => {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewGetFrameUrlResourceType',
+            url: 'testability/pages/webViewOnViewportFitChange',
         }
         
         try {
             await Utils.sleep(1000)
             router.clear();
             let pages = router.getState();
-            console.info("get webViewGetFrameUrlResourceType state success " + JSON.stringify(pages));
-            if (!("webViewGetFrameUrlResourceType" == pages.name)) {
-                console.info("get webViewGetFrameUrlResourceType state success " + JSON.stringify(pages.name));
+            console.info("get webViewOnViewportFitChange state success " + JSON.stringify(pages));
+            if (!("webViewOnViewportFitChange" == pages.name)) {
+                console.info("get webViewOnViewportFitChange state success " + JSON.stringify(pages.name));
                 let result = await router.pushUrl(options);
                 await Utils.sleep(1000);
-                console.info("push webViewGetFrameUrlResourceType state success " + JSON.stringify(result));
+                console.info("push webViewOnViewportFitChange state success " + JSON.stringify(result));
             }
         } catch (err) {
-            console.error("push webViewGetFrameUrlResourceType page error:" + err);
+            console.error("push webViewOnViewportFitChange page error:" + err);
         }
         done()
     });
@@ -71,18 +71,33 @@ export default function ActsAceWebViewGetFrameUrlResourceType() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_getFrameUrl_resourceType_API_0001
-     *@tc.name testWebViewGetFrameUrlResourceType
-     *@tc.desc test getFrameUrl getResourceType
+     *@tc.number SUB_ACE_WEB_OnViewportFitChange_API_0001
+     *@tc.name testWebViewOnViewportFitChange
+     *@tc.desc test OnViewportFitChange
      *@tc.size MediumTest
      *@tc.type Function
      *@tc.level 1
      */
-    it('testWebViewGetFrameUrlResourceType', 0, async (done: Function) => {
-        emitKey = "emitWebViewGetFrameUrlResourceType"
+    it('testWebViewOnViewportFitChange', 0, async (done: Function) => {
+        emitKey = "emitWebViewOnViewportFitChange"
         Utils.emitEvent(emitKey, 10);
-        Utils.registerEvent("testWebViewGetFrameUrlResourceType", true, 1330, done);
-        sendEventByKey('webViewGetFrameUrlResourceType', 10, '');
+        Utils.registerEvent("testWebViewOnViewportFitChange", true, 1340, done);
+        sendEventByKey('webViewOnViewportFitChange', 10, '');
+    })
+
+    /*
+     *@tc.number SUB_ACE_WEB_ViewportFit_COVER_API_0002
+     *@tc.name testWebView_ViewportFit_COVER
+     *@tc.desc ViewportFit_COVER
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testWebView_ViewportFit_COVER', 0, async (done: Function) => {
+        emitKey = "emitWebView_ViewportFit_COVER"
+        Utils.emitEvent(emitKey, 10);
+        Utils.registerEvent("testWebView_ViewportFit_COVER", true, 1341, done);
+        sendEventByKey('webViewOnViewportFitChange', 10, '');
     })
   })
 }

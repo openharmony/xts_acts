@@ -25,7 +25,7 @@ export default function ActsAceWebViewAnrCallback() {
       
     beforeAll(async (done: Function) => {
         let options : router.RouterOptions = {
-            url: 'MainAbility/pages/webViewAnrCallback',
+            url: 'testability/pages/webViewAnrCallback',
         }
         
         try {
