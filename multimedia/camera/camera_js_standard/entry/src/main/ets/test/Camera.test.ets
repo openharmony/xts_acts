@@ -36,7 +36,7 @@ let TAG = 'CameraModuleTest: '
 
 export default function cameraKit() {
   console.info(TAG + 'Entering cameraKit')
-  if (voice){
+  if (!voice){
     cameraInputTest()
     cameraVideoSuperStabilizationTest()
     cameraJSUnitOutput()
