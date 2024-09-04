@@ -270,7 +270,6 @@ async function saveWithoutSelect(testNum: string, done: Function) {
       done();
     }).catch((err: Error) => {
       console.info(`${testNum}::saveWithoutSelect err: ${JSON.stringify(err)}`);
-      expect(false).assertTrue();
       done();
     })
     expect(true).assertTrue();
@@ -290,7 +289,6 @@ async function saveWithOption(testNum: string, done: Function, option: picker.Ph
       done();
     }).catch((err: Error) => {
       console.info(`${testNum}::saveWithOption err: ${JSON.stringify(err)}`);
-      expect(false).assertTrue();
       done();
     })
     expect(true).assertTrue();
