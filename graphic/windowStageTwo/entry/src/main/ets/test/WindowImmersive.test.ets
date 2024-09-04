@@ -660,6 +660,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         await sleep(1000);
         await windowClass.setWindowSystemBarEnable(['navigation']);
         console.info(`${caseName} Succeeded in setting the status bar to be invisible.`);
+        await sleep(1000);
         done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -691,6 +692,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         await sleep(1000);
         await windowClass.setWindowSystemBarEnable(['status','navigation']);
         console.info(`${caseName} Succeeded in setting the status bar to be visible.`);
+        await sleep(1000);
         done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -722,6 +724,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         await sleep(1000);
         await windowClass.setWindowSystemBarEnable([]);
         console.info(`${caseName} Succeeded in setting the system bar to be invisible.`);
+        await sleep(1000);
         done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -755,6 +758,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         windowClass.setWindowSystemBarEnable(['status', 'navigation'], (err: BusinessError) => {
           console.info(`${caseName} Succeeded in setting the status bar to be visible.`);
         });
+        await sleep(1000);
         done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -788,6 +792,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         windowClass.setWindowSystemBarEnable(['navigation'], (err: BusinessError) => {
           console.info(`${caseName} Succeeded in setting the status bar to be invisible.`);
         });
+        await sleep(1000);
         done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -821,6 +826,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         windowClass.setWindowSystemBarEnable(['navigation'], (err: BusinessError) => {
           console.info(`${caseName} Succeeded in setting the status bar to be invisible.`);
         });
+        await sleep(1000);
         done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -854,6 +860,7 @@ export default function windowImmersiveTest(windowStage: ohosWindow.WindowStage)
         windowClass.setWindowSystemBarEnable(['status', 'navigation'], (err: BusinessError) => {
           console.info(`${caseName} Succeeded in setting the status bar to be visible.`);
         });
+        await sleep(1000);
         done();
       } catch (exception) {
         console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
