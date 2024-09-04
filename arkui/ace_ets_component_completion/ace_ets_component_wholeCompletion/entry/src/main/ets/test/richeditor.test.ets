@@ -455,13 +455,13 @@ export default function ActsRichEditorTest() {
             }
           }
           let RichEditorSelection: RichEditorSelection = {
-            selection: [10, 10], spans: []
+            selection: [10, 10], spans: (null!)
           }
           let RichEditorDeleteValue: RichEditorDeleteValue = {
-            offset: 10, direction: (0), length: 10, richEditorDeleteSpans: []
+            offset: 10, direction: (0), length: 10, richEditorDeleteSpans: (null!)
           }
           let RichEditorDeleteValue1: RichEditorDeleteValue = {
-            offset: 10, direction: (1), length: 10, richEditorDeleteSpans: []
+            offset: 10, direction: (1), length: 10, richEditorDeleteSpans: (null!)
           }
           console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorInsertValue))
           console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorSpanPosition))
@@ -559,10 +559,10 @@ export default function ActsRichEditorTest() {
       setTimeout(() => {
         try {
           let RichEditorDeleteValue: RichEditorDeleteValue = {
-            offset: 10, direction: (0), length: 10, richEditorDeleteSpans: []
+            offset: 10, direction: (0), length: 10, richEditorDeleteSpans: null!
           }
           let RichEditorDeleteValue1: RichEditorDeleteValue = {
-            offset: 10, direction: (1), length: 10, richEditorDeleteSpans: []
+            offset: 10, direction: (1), length: 10, richEditorDeleteSpans: null!
           }
           console.info("Stage_RichEditor_Test_2400 InsertValue is: " + JSON.stringify(RichEditorDeleteValue))
           console.info("Stage_RichEditor_Test_2400 InsertValue is: " + JSON.stringify(RichEditorDeleteValue1))
@@ -585,7 +585,7 @@ export default function ActsRichEditorTest() {
       setTimeout(() => {
         try {
           let RichEditorSelection: RichEditorSelection = {
-            selection: [10, 10], spans: []
+            selection: [10, 10], spans: (null!)
           }
           console.info("Stage_RichEditor_Test_2500 InsertValue is: " + JSON.stringify(RichEditorSelection))
           expect(typeof RichEditorSelection).assertEqual("object")

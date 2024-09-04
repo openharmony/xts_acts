@@ -159,13 +159,13 @@ struct RichEditorExample {
               offset: 10,
               direction: (RichEditorDeleteDirection.BACKWARD),
               length: 10,
-              richEditorDeleteSpans: []
+              richEditorDeleteSpans: (null!)
             }
             let DeleteValue1: RichEditorDeleteValue = {
               offset: 10,
               direction: (RichEditorDeleteDirection.FORWARD),
               length: 10,
-              richEditorDeleteSpans: []
+              richEditorDeleteSpans: (null!)
             }
             DeleteValue.richEditorDeleteSpans.toString()
             DeleteValue1.richEditorDeleteSpans.toString()
@@ -179,13 +179,13 @@ struct RichEditorExample {
               offset: 10,
               direction: (RichEditorDeleteDirection.BACKWARD),
               length: 10,
-              richEditorDeleteSpans: []
+              richEditorDeleteSpans: (null!)
             }
             let DeleteValue1: RichEditorDeleteValue = {
               offset: 10,
               direction: (RichEditorDeleteDirection.FORWARD),
               length: 10,
-              richEditorDeleteSpans: []
+              richEditorDeleteSpans: (null!)
             }
             let ImageSpanResult: RichEditorImageSpanResult = {
               spanPosition: { spanIndex: 10, spanRange: [10, 10] },
@@ -241,7 +241,7 @@ struct RichEditorExample {
           })
           .key('Stage_RichEditor_Test_2500')
           .onSelect((value: RichEditorSelection) => {
-            let Selection: RichEditorSelection = { selection: [10, 10], spans: [] }
+            let Selection: RichEditorSelection = { selection: [10, 10], spans: (null!) }
             Selection.selection.toString()
             Selection.spans.toString()
             this.spanStart = value.selection[0]
