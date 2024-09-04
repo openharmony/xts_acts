@@ -17,6 +17,7 @@ import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
 import business_error from '@ohos.base';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -95,7 +96,7 @@ struct WebViewControllerResumeAllTimers {
                   isResume = true;
                 }
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               console.info("isPause" +isPause )
               console.info("isResume" +isResume )
