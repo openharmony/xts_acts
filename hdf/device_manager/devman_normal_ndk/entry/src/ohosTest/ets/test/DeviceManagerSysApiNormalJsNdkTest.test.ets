@@ -27,7 +27,7 @@ export default function DeviceManagerSysApiNormalJsNdkTest() {
     const TEST_DRIVER_UID = 'testDriverUid';
 
     let deviceNum = 0;
-    const isDeviceConnected = done => {
+    const isDeviceConnected = (done:Function) => {
       if (deviceNum > 0) {
         console.info("Test USB device is connected");
           return true;
@@ -52,7 +52,7 @@ export default function DeviceManagerSysApiNormalJsNdkTest() {
         }
     })
 
-    afterAll(function () {
+    afterAll( ()=> {
       console.log('*************DeviceManager Unit DeviceManagerSysApiNormalJsNdkTest End*************');
     })
 

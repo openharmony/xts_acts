@@ -13,31 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsDeviceManagerNormalAPPJSApiNdkTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":deviceManager_js_normal_assets",
-    ":deviceManager_js_normal_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_js_app_suite("ActsDeviceManagerNormalAPPJSApiNdkTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsDeviceManagerNormalAPPJSApiNdkTest"
   subsystem_name = "hdf"
   part_name = "external_device_manager"
-}
-
-ohos_app_scope("acts_js_normal_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("deviceManager_js_normal_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("deviceManager_js_normal_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":acts_js_normal_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
 }
