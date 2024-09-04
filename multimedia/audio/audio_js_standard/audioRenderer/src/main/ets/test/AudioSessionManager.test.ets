@@ -288,5 +288,35 @@ export default function audioSessionManagerTest() {
       isAudioSessionActivatedTrue(done, isDone);
     })
 
+    /* *
+    * @tc.number    : SUB_AUDIO_AUDIOSESSIONMANAGER_API_10
+    * @tc.name      : test AudioSessionManager basic API by promise
+    * @tc.desc      : test AudioSessionManager operation:调用AudioSessionManager注册事件和关闭注册事件覆盖参数
+    * @tc.size      : AudioTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_10', 10, async (done: Function) => {
+      sessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
+        if(audioSessionDeactivatedEvent.reason === AudioSessionDeactivatedReason.DEACTIVATED_LOWER_PRIORITY){
+          console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+        }else if(audioSessionDeactivatedEvent.reason === AudioSessionDeactivatedReason.DEACTIVATED_TIMEOUT){
+          console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+        }
+      });
+      let strategy: audio.AudioSessionStrategy = {
+        concurrencyMode: AudioConcurrencyMode.CONCURRENCY_DEFAULT
+      }
+      await activateAudioSession(strategy, done, !isDone);
+      sessionManager.off('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
+        if(audioSessionDeactivatedEvent.reason === AudioSessionDeactivatedReason.DEACTIVATED_LOWER_PRIORITY){
+          console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+        }else if(audioSessionDeactivatedEvent.reason === AudioSessionDeactivatedReason.DEACTIVATED_TIMEOUT){
+          console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+        }
+      });
+      isAudioSessionActivatedTrue(done, isDone);
+    })
+
   })
 }
