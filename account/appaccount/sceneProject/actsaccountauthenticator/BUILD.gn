@@ -13,31 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("ActsAccountAuthenticator") {
-  hap_profile = "entry/src/main/module.json"
-  subsystem_name = "account"
-  part_name = "os_account"
-  hap_name = "ActsAccountAuthenticator"
+ohos_app_assist_suite("ActsAccountAuthenticator") {
   testonly = true
-  deps = [
-    ":authenticator_js_assets",
-    ":authenticator_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
-}
-
-ohos_app_scope("authenticator_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("authenticator_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("authenticator_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":authenticator_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAccountAuthenticator"
+  part_name = "os_account"
+  subsystem_name = "account"
 }

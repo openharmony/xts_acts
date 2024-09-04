@@ -12,20 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <string>
 
-#include "errors.h"
-#include "hilog/log.h"
 #include "napi/native_api.h"
 #include "native_common.h"
-#include "os_account.h"
-#include "os_account_common.h"
-#include "os_account_manager.h"
-#include <cstdlib>
+#include "BasicServicesKit/os_account.h"
 #include <js_native_api_types.h>
-#include <tuple>
-#include <unistd.h>
-#include <vector>
 
 namespace {
     static const uint32_t MAX_NAME_LENGTH = 1024;
@@ -95,7 +86,7 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "libosaccountndk",
+    .nm_modname = "osaccountndk",
     .nm_priv = ((void *)0),
     .reserved = {0},
 };
