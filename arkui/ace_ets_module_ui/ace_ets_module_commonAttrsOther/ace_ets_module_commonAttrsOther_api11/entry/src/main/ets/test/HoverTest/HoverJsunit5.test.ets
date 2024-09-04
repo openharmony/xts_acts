@@ -50,7 +50,7 @@ export default function HoverJsunit5() {
       console.info('HoverJsunit_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      await driver.mouseMoveTo({x: globalThis.winLeft + vp2px(100), y:globalThis.winTop + vp2px(100)})
+      await driver.mouseMoveTo({x: Math.round(globalThis.winLeft + vp2px(100)), y: Math.round(globalThis.winTop + vp2px(100))})
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('hover5');
       let obj: ESObject = JSON.parse(strJson);

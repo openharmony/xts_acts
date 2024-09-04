@@ -28,8 +28,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 export default function StateTrackTest() {
   describe('StateTrackTest', () => {
@@ -81,10 +81,10 @@ export default function StateTrackTest() {
       let strJson1 = getInspectorByKey('Track_objectlink');
       let strJson2 = getInspectorByKey('Track_link');
       let strJson3 = getInspectorByKey('Track_state');
-      let obj = JSON.parse(strJson);
-      let obj1 = JSON.parse(strJson1);
-      let obj2 = JSON.parse(strJson2);
-      let obj3 = JSON.parse(strJson3);
+      let obj: ESObject = JSON.parse(strJson);
+      let obj1: ESObject = JSON.parse(strJson1);
+      let obj2: ESObject = JSON.parse(strJson2);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[StateTrackTest_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateTrackTest_0100] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('memberA=21');
@@ -113,10 +113,10 @@ export default function StateTrackTest() {
       let strJson1 = getInspectorByKey('Track_objectlink1');
       let strJson2 = getInspectorByKey('Track_link1');
       let strJson3 = getInspectorByKey('Track_state1');
-      let obj = JSON.parse(strJson);
-      let obj1 = JSON.parse(strJson1);
-      let obj2 = JSON.parse(strJson2);
-      let obj3 = JSON.parse(strJson3);
+      let obj: ESObject = JSON.parse(strJson);
+      let obj1: ESObject = JSON.parse(strJson1);
+      let obj2: ESObject = JSON.parse(strJson2);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[StateTrackTest_0200] component obj is: " + JSON.stringify(obj));
       console.info("[StateTrackTest_0200] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('memberC=31');

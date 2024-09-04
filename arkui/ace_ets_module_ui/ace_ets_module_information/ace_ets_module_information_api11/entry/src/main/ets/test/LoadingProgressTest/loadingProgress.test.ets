@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils.ets'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function loadingProgressCircularJsunit() {
   describe('loadingProgressCircularTest', () => {
@@ -31,7 +31,7 @@ export default function loadingProgressCircularJsunit() {
         if (!("loadingProgress" == pages.name)) {
           console.info("get loadingProgress state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push loadingProgress page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,7 +41,7 @@ export default function loadingProgressCircularJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("loadingProgressCircular after each called");
     });
 
@@ -52,7 +52,7 @@ export default function loadingProgressCircularJsunit() {
      */
     it('testloadingProgressCircular0011', 0, async (done: Function) => {
       console.info('loadingProgressCircular testloadingProgressCircular0010 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('CircularText');
       console.info("[testloadingProgressCircular0011] component textAlign strJson:" + strJson);
       expect(JSON.parse(strJson).$type).assertEqual('Text');
@@ -72,7 +72,7 @@ export default function loadingProgressCircularJsunit() {
      */
     it('testloadingProgressOrbital0001', 0, async (done: Function) => {
       console.info('loadingProgressOrbital testloadingProgressCircular0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('OrbitalText');
       console.info("[testloadingProgressOrbital0001] component textAlign strJson:" + strJson);
       expect(JSON.parse(strJson).$type).assertEqual('Text');

@@ -848,6 +848,194 @@ export default function search() {
     });
 
     /**
+     * @tc.number ArkUI_Stage_Search_CaretStyle_2100
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of caretStyle.color as rgb(0, 0, 255)
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2100', 0, async (done: Function) => {
+      console.info("[ArkUI_Stage_Search_CaretStyle_2100] start");
+      let newJson = getInspectorByKey('searchTestString');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2100]: " + JSON.stringify(newJson));
+
+      let caretColorString = 'rgb(0, 0, 255)';
+      try {
+        let eventData: events_emitter.EventData = {
+          data: {
+            "caretColorString": caretColorString
+          }
+        }
+        let innerEvent: events_emitter.InnerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Search_CaretStyle_2100] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Search_CaretStyle_2100] change component data error: " + err.message);
+      }
+      await CommonFunc.sleep(2000);
+
+      let strJson = getInspectorByKey('searchTestString');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2100]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2100]: " + JSON.stringify(obj.$attrs.caretStyle));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2100]: " + JSON.stringify(obj.$attrs.caretStyle.color));
+      expect(obj.$attrs.caretStyle.color).assertEqual("#FF0000FF");
+      console.info("[ArkUI_Stage_Search_CaretStyle_2100] end");
+      done();
+    });
+
+    /**
+     * @tc.number ArkUI_Stage_Search_CaretStyle_2200
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of caretStyle.color as rgba(0, 255, 0, 0)
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2200', 0, async (done: Function) => {
+      console.info("[ArkUI_Stage_Search_CaretStyle_2200] start");
+      let newJson = getInspectorByKey('searchTestString');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2200]: " + JSON.stringify(newJson));
+
+      let caretColorString = 'rgba(0, 255, 0, 0)';
+      try {
+        let eventData: events_emitter.EventData = {
+          data: {
+            "caretColorString": caretColorString
+          }
+        }
+        let innerEvent: events_emitter.InnerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Search_CaretStyle_2200] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Search_CaretStyle_2200] change component data error: " + err.message);
+      }
+      await CommonFunc.sleep(2000);
+
+      let strJson = getInspectorByKey('searchTestString');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2200]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2200]: " + JSON.stringify(obj.$attrs.caretStyle));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2200]: " + JSON.stringify(obj.$attrs.caretStyle.color));
+      expect(obj.$attrs.caretStyle.color).assertEqual("#0000FF00");
+      console.info("[ArkUI_Stage_Search_CaretStyle_2200] end");
+      done();
+    });
+
+    /*
+     *tc.number ArkUI_Stage_Search_CaretStyle_2300
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of caretStyle.color as $r('app.color.Caretcolor')
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2300', 0, async (done: Function) => {
+      console.info('ArkUI_Stage_Search_CaretStyle_2300 START');
+      let strJson = getInspectorByKey('searchTestDefaultapp');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2300]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2300]: " + JSON.stringify(obj.$attrs.caretStyle));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2300]: " + JSON.stringify(obj.$attrs.caretStyle.color));
+      expect(obj.$attrs.caretStyle.color).assertEqual("#FFFF0000");
+      console.info("[ArkUI_Stage_Search_CaretStyle_2300] end");
+      done();
+    });
+
+    /*
+     *tc.number ArkUI_Stage_Search_CaretStyle_2400
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of caretStyle.color as $r('app.float.Caretwidth')
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2400', 0, async (done: Function) => {
+      console.info('ArkUI_Stage_Search_CaretStyle_2400 START');
+      let strJson = getInspectorByKey('searchTestDefaultapp');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2400]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2400]: " + JSON.stringify(obj.$attrs.caretStyle));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2400]: " + JSON.stringify(obj.$attrs.caretStyle.width));
+      expect(obj.$attrs.caretStyle.width).assertEqual("10.00vp");
+      console.info("[ArkUI_Stage_Search_CaretStyle_2400] end");
+      done();
+    });
+
+    /*
+     *tc.number ArkUI_Stage_Search_CaretStyle_2500
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of caretStyle.color as $r('app.string.Caretwidth001')
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2500', 0, async (done: Function) => {
+      console.info('ArkUI_Stage_Search_CaretStyle_2500 START');
+      let strJson = getInspectorByKey('searchTestDefaultapp001');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2500]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2500]: " + JSON.stringify(obj.$attrs.caretStyle));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2500]: " + JSON.stringify(obj.$attrs.caretStyle.width));
+      expect(obj.$attrs.caretStyle.width).assertEqual("5.00vp");
+      console.info("[ArkUI_Stage_Search_CaretStyle_2500] end");
+      done();
+    });
+
+    /*
+     *tc.number ArkUI_Stage_Search_CaretStyle_2600
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of caretStyle.color as $r('app.integer.Caretwidth')
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2600', 0, async (done: Function) => {
+      console.info('ArkUI_Stage_Search_CaretStyle_2600 START');
+      let strJson = getInspectorByKey('searchTestDefaultapp002');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2600]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2600]: " + JSON.stringify(obj.$attrs.caretStyle));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2600]: " + JSON.stringify(obj.$attrs.caretStyle.width));
+      expect(obj.$attrs.caretStyle.width).assertEqual("10.00vp");
+      console.info("[ArkUI_Stage_Search_CaretStyle_2600] end");
+      done();
+    });
+
+    /*
+     *tc.number ArkUI_Stage_Search_CaretStyle_2700
+     * @tc.name Tests the caretStyle property of the search component
+     * @tc.desc Set the value of fontcolor as 0xff0000, assert caretStyle.caretColor
+     */
+    it('ArkUI_Stage_Search_CaretStyle_2700', 0, async (done: Function) => {
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700] start");
+      let newJson = getInspectorByKey('searchTestfontcaretcolor');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700]: " + JSON.stringify(newJson));
+
+      let textColorNumber = 0xff0000;
+      try {
+        let eventData: events_emitter.EventData = {
+          data: {
+            "textColorNumber": textColorNumber
+          }
+        }
+        let innerEvent: events_emitter.InnerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Search_CaretStyle_2700] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Search_CaretStyle_2700] change component data error: " + err.message);
+      }
+      await CommonFunc.sleep(2000);
+
+      let strJson = getInspectorByKey('searchTestfontcaretcolor');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700]: " + JSON.stringify(strJson))
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700]: " + JSON.stringify(obj.$attrs.fontColor));
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700]: " + JSON.stringify(obj.$attrs.caretStyle.color));
+      expect(obj.$attrs.fontColor).assertEqual("#FFFF0000");
+
+      let newJson1 = getInspectorByKey('searchTestDefault');
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700]: " + JSON.stringify(newJson1));
+      let newJsonDefault = getInspectorByKey('searchTestDefaultValue');
+      let obj1: ESObject = JSON.parse(newJson1);
+      expect(obj.$attrs.caretStyle.color).assertEqual(obj1.$attrs.caretStyle.color);
+      console.info("[ArkUI_Stage_Search_CaretStyle_2700] end");
+      done();
+    });
+
+    /**
      * @tc.number ArkUI_Stage_Search_SearchIcon_0100
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Get the default value of searchIcon.size
@@ -940,7 +1128,9 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchIcon_0300]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_0300]: " + JSON.stringify(obj.$attrs.searchIcon.size));
-      expect(obj.$attrs.searchIcon.size).assertEqual("50.00px");
+      let result: string = px2vp(50) > 32 ? vp2px(32).toFixed(2) + "px" : '50.00px' ;
+      console.info("[ArkUI_Stage_Search_SearchIcon_0300]: " + result);
+      expect(obj.$attrs.searchIcon.size).assertEqual(result);
       console.info("[ArkUI_Stage_Search_SearchIcon_0300] end");
       done();
     });
@@ -978,7 +1168,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchIcon_0400]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_0400]: " + JSON.stringify(obj.$attrs.searchIcon.size));
-      let result: number = 50;
+      let result: number = 32;
       console.info("[ArkUI_Stage_Search_SearchIcon_0400]: " + fp2px(result).toFixed(2));
       expect(obj.$attrs.searchIcon.size).assertEqual(fp2px(result).toFixed(2) + "px");
       console.info("[ArkUI_Stage_Search_SearchIcon_0400] end");
@@ -1018,9 +1208,9 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchIcon_0500]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_0500]: " + JSON.stringify(obj.$attrs.searchIcon.size));
-      let result: number = 50;
-      console.info("[ArkUI_Stage_Search_SearchIcon_0500]: " + lpx2px(result).toFixed(2));
-      expect(Math.abs(Number((obj.$attrs.searchIcon.size).slice(0,-3)) - Number(lpx2px(result).toFixed(2))) <= 1).assertTrue();
+      let result = px2vp(lpx2px(50)) > 32 ? vp2px(32).toFixed(2) : lpx2px(50).toFixed(2) ;
+      console.info("[ArkUI_Stage_Search_SearchIcon_0500]: " + result);
+      expect(Math.abs(Number((obj.$attrs.searchIcon.size).slice(0,-3)) - Number(result)) <= 1).assertTrue();
       expect((obj.$attrs.searchIcon.size).slice(-2)).assertEqual("px");
       console.info("[ArkUI_Stage_Search_SearchIcon_0500] end");
       done();
@@ -1099,7 +1289,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchIcon_0700]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_0700]: " + JSON.stringify(obj.$attrs.searchIcon.size));
-      let result: number = 40;
+      let result: number = 32;
       console.info("[ArkUI_Stage_Search_SearchIcon_0700]: " + vp2px(result).toFixed(2));
       expect(obj.$attrs.searchIcon.size).assertEqual(vp2px(result).toFixed(2) + "px");
       console.info("[ArkUI_Stage_Search_SearchIcon_0700] end");
@@ -1219,7 +1409,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchIcon_1000]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_1000]: " + JSON.stringify(obj.$attrs.searchIcon.size));
-      let result: number = 10000;
+      let result: number = 32;
       console.info("[ArkUI_Stage_Search_SearchIcon_1000]: " + vp2px(result).toFixed(2));
       expect(obj.$attrs.searchIcon.size).assertEqual(vp2px(result).toFixed(2) + "px");
       console.info("[ArkUI_Stage_Search_SearchIcon_1000] end");
@@ -2207,7 +2397,9 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_CancelButton_0800]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_0800]: " + JSON.stringify(obj.$attrs.cancelButton.icon.size));
-      expect(obj.$attrs.cancelButton.icon.size).assertEqual("50.00px");
+      let result: string = px2vp(50) > 32 ? vp2px(32).toFixed(2) + "px" : '50.00px' ;
+      console.info("[ArkUI_Stage_Search_CancelButton_0800]: " + result);
+      expect(obj.$attrs.cancelButton.icon.size).assertEqual(result);
       console.info("[ArkUI_Stage_Search_CancelButton_0800] end");
       done();
     });
@@ -2245,7 +2437,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_CancelButton_0900]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_0900]: " + JSON.stringify(obj.$attrs.cancelButton.icon.size));
-      let result: number = 50;
+      let result: number = 32;
       console.info("[ArkUI_Stage_Search_CancelButton_0900]: " + fp2px(result).toFixed(2));
       expect(obj.$attrs.cancelButton.icon.size).assertEqual(fp2px(result).toFixed(2) + "px");
       console.info("[ArkUI_Stage_Search_CancelButton_0900] end");
@@ -2285,9 +2477,9 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_CancelButton_1000]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_1000]: " + JSON.stringify(obj.$attrs.cancelButton.icon.size));
-      let result: number = 50;
-      console.info("[ArkUI_Stage_Search_CancelButton_1000]: " + lpx2px(result).toFixed(2));
-      expect(Math.abs(Number((obj.$attrs.cancelButton.icon.size).slice(0,-3)) - Number(lpx2px(result).toFixed(2))) <= 1).assertTrue();
+      let result = px2vp(lpx2px(50)) > 32 ? vp2px(32).toFixed(2) : lpx2px(50).toFixed(2) ;
+      console.info("[ArkUI_Stage_Search_CancelButton_1000]: " + result);
+      expect(Math.abs(Number((obj.$attrs.cancelButton.icon.size).slice(0,-3)) - Number(result)) <= 1).assertTrue();
       expect((obj.$attrs.cancelButton.icon.size).slice(-2)).assertEqual("px");
       console.info("[ArkUI_Stage_Search_CancelButton_1000] end");
       done();
@@ -2366,7 +2558,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_CancelButton_1200]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_1200]: " + JSON.stringify(obj.$attrs.cancelButton.icon.size));
-      let result: number = 40;
+      let result: number = 32;
       console.info("[ArkUI_Stage_Search_CancelButton_1200]: " + vp2px(result).toFixed(2));
       expect(obj.$attrs.cancelButton.icon.size).assertEqual(vp2px(result).toFixed(2) + "px");
       console.info("[ArkUI_Stage_Search_CancelButton_1200] end");
@@ -2486,7 +2678,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_CancelButton_1500]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_1500]: " + JSON.stringify(obj.$attrs.cancelButton.icon.size));
-      let result: number = 10000;
+      let result: number = 32;
       console.info("[ArkUI_Stage_Search_CancelButton_1500]: " + vp2px(result).toFixed(2));
       expect(obj.$attrs.cancelButton.icon.size).assertEqual(vp2px(result).toFixed(2) + "px");
       console.info("[ArkUI_Stage_Search_CancelButton_1500] end");

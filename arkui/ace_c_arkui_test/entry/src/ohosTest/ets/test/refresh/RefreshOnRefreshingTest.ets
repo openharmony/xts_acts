@@ -34,7 +34,7 @@ export default function refreshOnRefreshingTest() {
       await Utils.pushPage(`refresh/${PAGE_TAG}`);
       await Utils.sleep(2000)
       let driver = Driver.create();
-      await driver.swipe(200, 350, 200, 600);
+      await driver.swipe(Math.round(globalThis.winLeft + vp2px(133.33)), Math.round(globalThis.winTop + vp2px(233.33)), Math.round(globalThis.winLeft + vp2px(133.33)), Math.round(globalThis.winTop + vp2px(400)));
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('RefreshOnRefreshing').$attrs.backgroundColor).assertEqual('#FF0000FF');
       done();

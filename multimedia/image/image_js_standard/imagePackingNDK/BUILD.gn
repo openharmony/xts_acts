@@ -25,7 +25,10 @@ ohos_js_hap_suite("image_packing_ndk_js_hap") {
   hap_name = "ActsImagePackingNdkJsTest"
   subsystem_name = "multimedia"
   part_name = "image_framework"
-  shared_libraries = [ "./entry/src/main/cpp:ImagePackingNDKTest" ]
+  shared_libraries = [
+    "./entry/src/main/cpp:ImagePackingNDKTest",
+    "./entry/src/main/cpp:ImagePackerTest",
+  ]
 }
 
 ohos_js_assets("ace_third_ets_assets") {

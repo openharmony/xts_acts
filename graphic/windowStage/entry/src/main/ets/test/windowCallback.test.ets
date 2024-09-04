@@ -372,7 +372,6 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         expect().assertFail()
         done();
       });
-      await sleep(800)
       await setSystemBarEnableT(mainWnd).catch((err: BusinessError) => {
         console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
         expect().assertFail();
@@ -681,7 +680,6 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         expect().assertFail();
         done();
       });
-      await sleep(800);
       let loopCount: number = commonNUMBERColorArr.length
       for (let i = 0; i < loopCount; i++) {
         console.log(msgStr + 'tempWnd.setSystemBarEnable i:' + i);
@@ -746,7 +744,6 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         expect().assertFail();
         done();
       });
-      await sleep(800);
       let loopCount: number = commonRGBColorArr.length
       for (let i = 0; i < loopCount; i++) {
         let tempColor: string = commonKEYColorArr[i];
@@ -843,33 +840,6 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       let listenerOnFlag = false;
       console.log(msgStr + 'begin');
-
-      let setSystemBarEnable: Function = (tempWnd: ohosWindow.Window) => {
-        return new Promise<boolean>((resolve, reject) => {
-          tempWnd.setSystemBarEnable([], (err, data) => {
-            if (err && err.code) {
-              reject(false)
-            } else {
-              console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-              resolve(true)
-            }
-          })
-        })
-      }
-
-      let setSystemBarEnableT: Function = (tempWnd: ohosWindow.Window) => {
-        return new Promise<boolean>((resolve, reject) => {
-          tempWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
-            if (err && err.code) {
-              reject(false)
-            } else {
-              console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-              resolve(true)
-            }
-          })
-        })
-      }
-
       let tempWnd: ohosWindow.Window | void;
       tempWnd = await windowStage.getMainWindow().catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
@@ -881,8 +851,8 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         expect().assertFail();
         done();
       });
-      (tempWnd as ohosWindow.Window).on('systemAvoidAreaChange', avoidAreaData => {
-        if (listenerOnFlag === true) {
+      (tempWnd as ohosWindow.Window).on('systemAvoidAreaChange', (avoidAreaData) => {
+        if (listenerOnFlag == true) {
           console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, listenerOnFlag : ' + listenerOnFlag);
           try {
             expect(!!avoidAreaData).assertTrue();
@@ -894,16 +864,23 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         }
       })
       listenerOnFlag = true;
+      await sleep(800)
       await tempWnd.setWindowLayoutFullScreen(false).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(false) success');
-      await setSystemBarEnable(tempWnd).catch((err: BusinessError) => {
-        console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
-        expect().assertFail();
-      });
+      await sleep(800)
+      await tempWnd.setSystemBarEnable([], (err) => {
+        if (err.code) {
+          console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
+        }
+      })
       await sleep(800)
       await tempWnd.setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
@@ -911,10 +888,16 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         done();
       });
       console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(true) success');
-      await setSystemBarEnableT(tempWnd).catch((err: BusinessError) => {
-        console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
-        expect().assertFail();
-      });
+      await sleep(800)
+      await tempWnd.setSystemBarEnable(['status', 'navigation'], (err) => {
+        if (err.code) {
+          console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
+        }
+      })
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0790
@@ -1482,7 +1465,6 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
 
       expect(!!mainWin).assertTrue();
-      await sleep(500);
       (mainWin as ohosWindow.Window).snapshot((err, data) => {
         if (err && err.code) {
           console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
@@ -1748,7 +1730,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         done();
       } catch (error) {
         console.log(msgStr + 'Failed to get the area of title buttons. Cause: ' + JSON.stringify(error));
-        if (error.code == 1300002) {
+        if (error.code == 801) {
           expect(true).assertTrue()
           done()
         } else {

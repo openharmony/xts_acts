@@ -16,6 +16,7 @@
 #include "jsvm.h"
 #include "jsvm_common.h"
 #include "native_common.h"
+#include "test_entry.h"
 #include "securec.h"
 #include <stdint.h>
 #include <stdio.h>
@@ -70,6 +71,7 @@ static bool g_threadFlag1 = false;
 static bool g_threadFlag2 = false;
 const int RUN_TEST_RETAIN_SCRIPT_VALUE = 121;
 const int TWO = 2;
+const int SIXTEEN = 16;
 
 #define EOK 0
 #define OPENCODE
@@ -3089,7 +3091,6 @@ static napi_value testSecondOperations(napi_env env1, napi_callback_info info) {
     OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
     uint16_t num = 9229;
     OH_JSVM_OpenInspector(env, "localhost", num);
-    OH_JSVM_WaitForDebugger(env, false);
     JSVM_EnvScope envScope;
     OH_JSVM_OpenEnvScope(env, &envScope);
     JSVM_HandleScope handlescope;
@@ -8272,10 +8273,10 @@ void InstanceFinalizeCallback(JSVM_Env env, void *finalizeData, void *finalizeHi
     if (finalizeData) {
         InstanceData *data = reinterpret_cast<InstanceData *>(finalizeData);
         free(data);
-        *(InstanceData **)finalizeData = nullptr;
     }
 }
 
+// If yes, true is returned. If no, false is returned.
 static JSVM_Value SetInstanceData(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -8285,8 +8286,9 @@ static JSVM_Value SetInstanceData(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetValueUint32(env, argv[0], &instanceDataValue);
     InstanceData *instanceData = reinterpret_cast<InstanceData *>(malloc(sizeof(InstanceData)));
     if (instanceData == nullptr) {
-        printf("Memory allocation failed!\n");
-        return nullptr;
+        JSVM_Value result1;
+        OH_JSVM_GetBoolean(env, false, &result1);
+        return result1;
     }
     instanceData->value = instanceDataValue;
     JSVM_Status status = OH_JSVM_SetInstanceData(env, instanceData, InstanceFinalizeCallback, nullptr);
@@ -8296,19 +8298,33 @@ static JSVM_Value SetInstanceData(JSVM_Env env, JSVM_CallbackInfo info)
     return result;
 }
 
+// If yes, true is returned. If no, false is returned.
 static JSVM_Value GetInstanceData(JSVM_Env env, JSVM_CallbackInfo info)
 {
+    JSVM_Value result;
     InstanceData *instanceData = reinterpret_cast<InstanceData *>(malloc(sizeof(InstanceData)));
     if (instanceData == nullptr) {
-        printf("Memory allocation failed!\n");
-        return nullptr;
+        OH_JSVM_GetBoolean(env, false, &result);
+        return result;
     }
     instanceData->value = DIFF_VALUE_FIVE;
     OH_JSVM_SetInstanceData(env, instanceData, InstanceFinalizeCallback, nullptr);
     InstanceData *resData = nullptr;
-    OH_JSVM_GetInstanceData(env, (void **)&resData);
-    JSVM_Value result;
-    OH_JSVM_CreateUint32(env, resData->value, &result);
+    JSVM_Status stat1 = OH_JSVM_GetInstanceData(env, (void **)&resData);
+    bool setResult = stat1 == JSVM_OK;
+    if (setResult == false) {
+        OH_JSVM_GetBoolean(env, setResult, &result);
+        return result;
+    }
+    setResult = resData->value == DIFF_VALUE_FIVE;
+    if (setResult == false) {
+        OH_JSVM_GetBoolean(env, setResult, &result);
+        return result;
+    }
+    InstanceData *resData2 = nullptr;
+    OH_JSVM_GetInstanceData(env, (void **)&resData2);
+    setResult = resData2 == resData;
+    OH_JSVM_GetBoolean(env, setResult, &result);
     return result;
 }
 
@@ -8851,6 +8867,387 @@ static napi_value testOpenInspectorWithName(napi_env env1, napi_callback_info in
     OH_JSVM_DestroyVM(vm);
     napi_value result11;
     NAPI_CALL(env1, napi_get_boolean(env1, resultFlag, &result11));
+    return result11;
+}
+
+void useArrayBuffer(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    void *backingStore;
+    JSVM_Value arrayBuffer;
+    JSVM_Status stat1 = OH_JSVM_AllocateArrayBufferBackingStoreData(100, JSVM_ZERO_INITIALIZED, &backingStore);
+    JSVM_ASSERT_RETURN_VOID(env, stat1 != JSVM_OK, "OH_JSVM_AllocateArrayBufferBackingStoreData check status");
+
+    JSVM_Status stat2 = OH_JSVM_CreateArrayBufferFromBackingStoreData(env, backingStore, 100, 30, 20, &arrayBuffer);
+    JSVM_ASSERT_RETURN_VOID(env, stat2 != JSVM_OK, "OH_JSVM_CreateArrayBufferFromBackingStoreData check status");
+
+    JSVM_Value js_global;
+    JSVM_Value name;
+    JSVM_Status stat3 = OH_JSVM_GetGlobal(env, &js_global);
+    JSVM_ASSERT_RETURN_VOID(env, stat3 != JSVM_OK, "OH_JSVM_GetGlobal check status");
+    JSVM_Status stat4 = OH_JSVM_CreateStringUtf8(env, "buffer", JSVM_AUTO_LENGTH, &name);
+    JSVM_ASSERT_RETURN_VOID(env, stat4 != JSVM_OK, "OH_JSVM_CreateStringUtf8 check status");
+    JSVM_Status stat5 = OH_JSVM_SetProperty(env, js_global, name, arrayBuffer);
+    JSVM_ASSERT_RETURN_VOID(env, stat5 != JSVM_OK, "OH_JSVM_SetProperty check status");
+
+    JSVM_Script script;
+    JSVM_Value scriptString;
+    JSVM_Value result;
+    const char *src = R"JS(
+        function writeBuffer(data) {
+            let view = new Uint8Array(data);
+            // Write some values to the ArrayBuffer
+	    for (let i = 0; i < view.length; i++) {
+                view[i] = i % 256;
+            }
+        }
+        writeBuffer(buffer)
+    )JS";
+    JSVM_Status stat6 = OH_JSVM_CreateStringUtf8(env, src, JSVM_AUTO_LENGTH, &scriptString);
+    JSVM_ASSERT_RETURN_VOID(env, stat6 != JSVM_OK, "OH_JSVM_CreateStringUtf8 check status");
+    JSVM_Status stat7 = OH_JSVM_CompileScriptWithOptions(env, scriptString, 0, nullptr, &script);
+    JSVM_ASSERT_RETURN_VOID(env, stat7 != JSVM_OK, "OH_JSVM_CompileScriptWithOption check status");
+    JSVM_Status stat8 = OH_JSVM_RunScript(env, script, &result);
+    JSVM_ASSERT_RETURN_VOID(env, stat8 != JSVM_OK, "OH_JSVM_RunScript check status");
+
+    uint8_t *array = static_cast<uint8_t*>(backingStore);
+    for (auto i = 0; i < 100; ++i) {
+        if (array[i] != i % 25 % 256) {
+            JSVM_ASSERT_RETURN_VOID(env, true, "OH_JSVM_RunScript check status");
+        }
+    }
+
+    JSVM_Status stat9 = OH_JSVM_DetachArraybuffer(env, arrayBuffer);
+    JSVM_ASSERT_RETURN_VOID(env, stat9 != JSVM_OK, "OH_JSVM_DetachArraybuffer check status");
+
+    JSVM_Status stat10 = OH_JSVM_FreeArrayBufferBackingStoreData(backingStore);
+    JSVM_ASSERT_RETURN_VOID(env, stat10 != JSVM_OK, "OH_JSVM_FreeArrayBufferBackingStoreData check status");
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+static napi_value testArrayBuffer(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].data = nullptr;
+    param[0].callback = assertEqual;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+
+    useArrayBuffer(env);
+
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+
+void useArrayBuffer2(JSVM_Env env)
+{
+    void *storeData = nullptr;
+    size_t storeLen = SIXTEEN;
+    JSVM_Status stat1 = OH_JSVM_AllocateArrayBufferBackingStoreData(storeLen, JSVM_ZERO_INITIALIZED, &storeData);
+    JSVM_ASSERT_RETURN_VOID(env, stat1 != JSVM_OK, "OH_JSVM_AllocateArrayBufferBackingStoreData check status");
+    
+    JSVM_Value arrayBuffer;
+    JSVM_Status stat2 = OH_JSVM_CreateArrayBufferFromBackingStoreData(env, storeData, storeLen, 0, storeLen, &arrayBuffer);
+    JSVM_ASSERT_RETURN_VOID(env, stat2 != JSVM_OK, "OH_JSVM_CreateArrayBufferFromBackingStoreData check status");
+    
+    void *tmpArrayBufferPtr = nullptr;
+    size_t arrayBufferLen = 0;
+    JSVM_Status stat3 = OH_JSVM_GetArraybufferInfo(env, arrayBuffer, &tmpArrayBufferPtr, &arrayBufferLen);
+    JSVM_ASSERT_RETURN_VOID(env, stat3 != JSVM_OK, "OH_JSVM_GetArraybufferInfo check status");
+    
+    size_t typedArrayLen = arrayBufferLen / sizeof(int32_t);
+    JSVM_Value typedArray;
+    JSVM_Status stat4 = OH_JSVM_CreateTypedarray(env, JSVM_TypedarrayType::JSVM_INT32_ARRAY, typedArrayLen,
+                                                 arrayBuffer, 0, &typedArray);
+    JSVM_ASSERT_RETURN_VOID(env, stat4 != JSVM_OK, "OH_JSVM_CreateTypedarray check status");
+    
+    JSVM_Status stat5 = OH_JSVM_DetachArraybuffer(env, arrayBuffer);
+    JSVM_ASSERT_RETURN_VOID(env, stat5 != JSVM_OK, "OH_JSVM_DetachArraybuffer check status");
+    
+    JSVM_Status stat6 = OH_JSVM_FreeArrayBufferBackingStoreData(storeData);
+    JSVM_ASSERT_RETURN_VOID(env, stat6 != JSVM_OK, "OH_JSVM_FreeArrayBufferBackingStoreData check status");
+}
+static napi_value testArrayBuffer2(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].data = nullptr;
+    param[0].callback = assertEqual;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+	useArrayBuffer2(env);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+
+void useArrayBuffer3(JSVM_Env env)
+{
+    void *storeData = nullptr;
+    size_t storeLen = SIXTEEN;
+    JSVM_Status stat1 = OH_JSVM_AllocateArrayBufferBackingStoreData(storeLen, JSVM_ZERO_INITIALIZED, &storeData);
+    JSVM_ASSERT_RETURN_VOID(env, stat1 != JSVM_OK, "OH_JSVM_AllocateArrayBufferBackingStoreData check status");
+ 
+    JSVM_Value arrayBuffer;
+    JSVM_Status stat2 = OH_JSVM_CreateArrayBufferFromBackingStoreData(env, storeData, storeLen, 0, storeLen, &arrayBuffer);
+    JSVM_ASSERT_RETURN_VOID(env, stat2 != JSVM_OK, "OH_JSVM_CreateArrayBufferFromBackingStoreData check status");
+ 
+    void *tmpArrayBufferPtr = nullptr;
+    size_t arrayBufferLen = 0;
+    JSVM_Status stat3 = OH_JSVM_GetArraybufferInfo(env, arrayBuffer, &tmpArrayBufferPtr, &arrayBufferLen);
+    JSVM_ASSERT_RETURN_VOID(env, stat3 != JSVM_OK, "OH_JSVM_GetArraybufferInfo check status");
+ 
+    size_t typedArrayLen = arrayBufferLen / sizeof(int32_t);
+ 
+    JSVM_Value typedArray;
+    JSVM_Status stat4 = OH_JSVM_CreateTypedarray(env, JSVM_TypedarrayType::JSVM_INT32_ARRAY, typedArrayLen, arrayBuffer, 0, &typedArray);
+    JSVM_ASSERT_RETURN_VOID(env, stat4 != JSVM_OK, "OH_JSVM_CreateTypedarray check status");
+ 
+    JSVM_Status stat5 = OH_JSVM_DetachArraybuffer(env, arrayBuffer);
+    JSVM_ASSERT_RETURN_VOID(env, stat5 != JSVM_OK, "OH_JSVM_DetachArraybuffer check status");
+ 
+    JSVM_Value arrayBuffer2;
+    JSVM_Status stat6 = OH_JSVM_CreateArrayBufferFromBackingStoreData(env, storeData, storeLen, 0, storeLen, &arrayBuffer2);
+    JSVM_ASSERT_RETURN_VOID(env, stat6 != JSVM_OK, "OH_JSVM_CreateArrayBufferFromBackingStoreData check status");
+    JSVM_Status stat7 = OH_JSVM_DetachArraybuffer(env, arrayBuffer2);
+    JSVM_ASSERT_RETURN_VOID(env, stat7 != JSVM_OK, "OH_JSVM_DetachArraybuffer check status");
+ 
+    JSVM_Status stat8 = OH_JSVM_FreeArrayBufferBackingStoreData(storeData);
+    JSVM_ASSERT_RETURN_VOID(env, stat8 != JSVM_OK, "OH_JSVM_FreeArrayBufferBackingStoreData check status");
+}
+static napi_value testArrayBuffer3(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].data = nullptr;
+    param[0].callback = assertEqual;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+	useArrayBuffer3(env);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+void test_CompileWasmModule(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value wasmModule;
+    JSVM_Status status = OH_JSVM_CompileWasmModule(env, nullptr, 0, nullptr, 0, nullptr, &wasmModule);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_CompileWasmModule check status");
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void test_CompileWasmFunctionNULL(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Status status = OH_JSVM_CompileWasmFunction(env, nullptr, 0, JSVM_WASM_OPT_BASELINE);
+    JSVM_ASSERT_RETURN_VOID(env, status == JSVM_INVALID_ARG, "OH_JSVM_CompileWasmFunction check status");
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void test_IsWasmModuleValueisNULL(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    bool result = false;
+    JSVM_Status status = OH_JSVM_IsWasmModuleObject(env, nullptr, &result);
+    JSVM_ASSERT_RETURN_VOID(env, status == JSVM_INVALID_ARG, "OH_JSVM_IsWasmModuleObject check status");
+    JSVM_ASSERT_RETURN_VOID(env, result == false, "OH_JSVM_IsWasmModuleObject check result");
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void test_CreateWarmCache_wasmmodule_is_null(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    const uint8_t *cacheData = nullptr;
+    size_t cacheLength = 0;
+    JSVM_Value wasmModule = nullptr;
+    JSVM_Status status = OH_JSVM_CreateWasmCache(env, wasmModule, &cacheData, &cacheLength);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_CreateWarmCache check status not ok");
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void test_CreateWarmCache_wasmmodule_is_not_wasmmodule(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    const uint8_t *cacheData = nullptr;
+    size_t cacheLength = 0;
+    JSVM_Value wasmModule;
+    OH_JSVM_CreateSet(env, &wasmModule);
+    JSVM_Status status = OH_JSVM_CreateWasmCache(env, wasmModule, &cacheData, &cacheLength);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_CreateWarmCache check status not ok");
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void test_ReleaseCache_cachedata_is_null(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Status status = OH_JSVM_ReleaseCache(env, nullptr, JSVM_CACHE_TYPE_JS);
+    JSVM_ASSERT_RETURN_VOID(env, status == JSVM_INVALID_ARG, "OH_JSVM_CreateWarmCache check status is invalid_arg");
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+static napi_value testWasmOperator(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].data = nullptr;
+    param[0].callback = assertEqual;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+
+    test_CompileWasmModule(env);
+    test_CompileWasmFunctionNULL(env);
+    test_IsWasmModuleValueisNULL(env);
+    test_CreateWarmCache_wasmmodule_is_null(env);
+    test_CreateWarmCache_wasmmodule_is_not_wasmmodule(env);
+    test_ReleaseCache_cachedata_is_null(env);
+
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
     return result11;
 }
 
@@ -9663,6 +10060,22 @@ static napi_value RunJsVm(napi_env nEnv, napi_callback_info nInfo)
     return nResult;
 }
 
+#include <iostream>
+
+[[maybe_unused]] static napi_value WasmTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_wasm.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value ArrayBufferBackingStoreTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_array_buffer_backing_store.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -9722,6 +10135,12 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testCompileWithOption", testCompileWithOption),
         DECLARE_NAPI_FUNCTION("testRetainScript", testRetainScript),
         DECLARE_NAPI_FUNCTION("testOpenInspectorWithName", testOpenInspectorWithName),
+        DECLARE_NAPI_FUNCTION("testArrayBuffer", testArrayBuffer),
+        DECLARE_NAPI_FUNCTION("testArrayBuffer2", testArrayBuffer2),
+        DECLARE_NAPI_FUNCTION("testArrayBuffer3", testArrayBuffer3),
+        DECLARE_NAPI_FUNCTION("testWasmOperator", testWasmOperator),
+        DECLARE_NAPI_FUNCTION("wasmTest", WasmTest),
+        DECLARE_NAPI_FUNCTION("arrayBufferBackingStoreTest", ArrayBufferBackingStoreTest),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;

@@ -2,15 +2,15 @@
   "string": [
     {
       "name": "module_desc",
-      "value": "Dynamic Style XTS Test"
+      "value": "module description"
     },
     {
       "name": "EntryAbility_desc",
-      "value": "Dynamic Style XTS Test"
+      "value": "description"
     },
     {
       "name": "EntryAbility_label",
-      "value": "Dynamic Style XTS Test"
+      "value": "label"
     }
   ]
 }

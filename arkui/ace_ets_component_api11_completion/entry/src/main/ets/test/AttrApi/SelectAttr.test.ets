@@ -64,11 +64,11 @@ export default function SelectAttr() {
       await Utils.sleep(3000);
 
       let strJson1 = getInspectorByKey('SelectAttr_Select');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SelectAttr_001] obj1 is: " + JSON.stringify(obj1));
 
-      let obj2 = JSON.parse(JSON.stringify(getInspectorTree()));
+      let obj2: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
       await Utils.sleep(1000);
       console.info("[SelectAttr_001] obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$children[1].$children[0].$attrs.width).assertEqual(obj1.$attrs.width);

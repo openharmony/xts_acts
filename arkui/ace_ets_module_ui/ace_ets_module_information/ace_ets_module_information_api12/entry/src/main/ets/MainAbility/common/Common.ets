@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import screen from '@ohos.screen';
+import { BusinessError } from '@ohos.base';
 import RectValue from './Rect';
 
 export default class CommonFunc {
@@ -22,7 +24,7 @@ export default class CommonFunc {
   static rect_value: RectValue;
 
   static sleep(time: number) {
-    return new Promise((resolve: (value: string) => void) => {
+    return new Promise<string>((resolve: (value: string) => void) => {
       setTimeout(() => {
         resolve("ok")
       }, time)
@@ -49,9 +51,9 @@ export default class CommonFunc {
 
   static getComponentRectOnScreen(key: string) {
     let strJson: string = getInspectorByKey(key);
-    let obj = JSON.parse(strJson);
+    let obj: Record<string, Object> = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
-    let rectInfo = JSON.parse('[' + obj.$rect + ']');
+    let rectInfo: Array<string> = JSON.parse('[' + obj.$rect + ']');
     console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
     console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop);
     CommonFunc.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0] + globalThis.winLeft;
@@ -65,7 +67,21 @@ export default class CommonFunc {
       "bottom": CommonFunc.rect_bottom
     }
   }
+
+  static setScreenOrientation(orientation: number) {
+    screen.getAllScreens().then(data => {
+        console.log('Succeeded in getting all screens. Data:'+ JSON.stringify(data));
+        return data[0];
+    }).then(screenClass => {
+        return screenClass.setOrientation(orientation);
+    }).then(() => {
+        console.log('Succeeded in setting the vertical orientation.');
+    }).catch((err: BusinessError) => {
+        console.error('Failed to set the vertical orientation. Cause: ' + err.toString());
+    });
+  }
 }
+
 
 
 

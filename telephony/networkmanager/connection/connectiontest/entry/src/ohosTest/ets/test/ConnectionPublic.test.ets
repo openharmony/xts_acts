@@ -118,6 +118,7 @@ export default function ConnectionPublicTest() {
         ExpectTrue(isDefaultNet == true);
         console.info(`${caseName}---End`);
         done();
+
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
         ExpectFail();
@@ -6615,6 +6616,29 @@ export default function ConnectionPublicTest() {
     });
 
     /**
+     * @tc.number     : SUB_NetworkMgr_Connection_NetCap_0700
+     * @tc.name       : testNetworkMgrConnectionNetCap0700
+     * @tc.desc       : Specific network capabilities .
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNetworkMgrConnectionNetCap0700', 0, async (done: Function) => {
+      const caseName: string = "testNetworkMgrConnectionNetCap0700";
+      console.info(`${caseName} test start`);
+      try {
+        ExpectTrue(connection.NetCap.NET_CAPABILITY_CHECKING_CONNECTIVITY == 31);
+        console.info(`${caseName}---End`);
+        done();
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        console.info(`${caseName}---End`);
+        done();
+      }
+    });
+
+    /**
      * @tc.number : SUB_NetworkMgr_Connection_HttpProxy_0100
      * @tc.name   : testNetworkMgrConnectionHttpProxy0100
      * @tc.desc   : Network proxy configuration information.
@@ -7933,7 +7957,7 @@ export default function ConnectionPublicTest() {
               done();
             } else {
               console.info(`${caseName} getConnectionProperties: data->${JSON.stringify(data)}`);
-              ExpectTrue(data.routes[0].destination.address.family == (1 || 2));
+              ExpectTrue(data.routes[0].destination.address.family == 1 || data.routes[0].destination.address.family == 2);
               console.info(`${caseName}---End`);
               done();
             }
@@ -8045,7 +8069,7 @@ export default function ConnectionPublicTest() {
         connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.getConnectionProperties(netHandle).then((data: connection.ConnectionProperties) => {
             console.info(`${caseName} getConnectionProperties: success data->${JSON.stringify(data)}`);
-            ExpectTrue(data.routes[0].destination.address.family == (1 || 2));
+            ExpectTrue(data.routes[0].destination.address.family == 1 || data.routes[0].destination.address.family == 2);
             console.info(`${caseName}---End`);
             done();
           }).catch((error: BusinessError) => {

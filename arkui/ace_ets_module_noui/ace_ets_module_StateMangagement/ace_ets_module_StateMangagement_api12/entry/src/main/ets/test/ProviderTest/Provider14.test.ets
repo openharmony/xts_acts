@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function Provider14Test() {
-  describe('Provider14Test', function () {
-    beforeEach(async function (done) {
+  describe('Provider14Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("Provider14Test beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Provider/Provider14',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Provider/Provider14',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function Provider14Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Provider14Test_0100', 0, async function (done) {
+    it('Provider14Test_0100', 0, async (done: Function) => {
       console.info('Provider14Test_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -56,7 +56,7 @@ export default function Provider14Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strBut = getInspectorByKey('Provider14');
-      let objBut = JSON.parse(strBut);
+      let objBut: ESObject = JSON.parse(strBut);
       console.info("[Provider14Test_0100] component objBut is: " + JSON.stringify(objBut));
       expect(objBut.$attrs.label).assertEqual('1');
       console.info('[Provider14Test_0100] END');

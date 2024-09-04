@@ -18,7 +18,7 @@ hcpptest_suite("ActsMediaPlayerTest") {
   suite_name = "acts"
   sources = [ "src/ActsMediaPlayerAudioTest.cpp" ]
   if (ohos_kernel_type == "liteos_a" &&
-      enable_ohos_appexecfwk_feature_ability == true) {
+      ability_lite_enable_ohos_appexecfwk_feature_ability == true) {
     sources += [ "src/ActsMediaPlayerVideoTest.cpp" ]
   }
 

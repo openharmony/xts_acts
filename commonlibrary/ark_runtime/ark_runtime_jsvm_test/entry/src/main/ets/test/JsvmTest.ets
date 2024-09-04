@@ -5704,9 +5704,12 @@ instanceOf(obj, Person);
       done();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0417
-     * @tc.name JsvmTest0417
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0417
+     * @tc.name      JsvmTest0417
+     * @tc.desc      Test the functions of the OH_JSVM_SetInstanceData interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0417', 0, async function (done) {
       let script: string = `
@@ -5717,16 +5720,19 @@ instanceOf(obj, Person);
       done();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0418
-     * @tc.name JsvmTest0418
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0418
+     * @tc.name      JsvmTest0418
+     * @tc.desc      Test the functions of the OH_JSVM_GetInstanceData interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
 	it('JsvmTest0418', 0, async function (done) {
       let script: string = `
           getInstanceData()
       `;
       let setRes = napitest.runJsVm(script);
-      expect(setRes).assertEqual(5);
+      expect(setRes).assertEqual(true);
       done();
     });
     /**
@@ -6527,6 +6533,90 @@ instanceOf(obj, Person);
         let rst = napitest.testOpenInspectorWithName();
         console.info('JsvmTest0476 testString result is:' + JSON.stringify(rst));
         expect(rst).assertEqual(true);
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0477
+     * @tc.name      JsvmTest0477
+     * @tc.desc      Test the function of ArrayBuffer interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0477', 0, async function (done) {
+        let rst = napitest.testArrayBuffer();
+        console.info('JsvmTest0477 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0478
+     * @tc.name      JsvmTest0478
+     * @tc.desc      Test the function of ArrayBuffer interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0478', 0, async function (done) {
+        let rst = napitest.testArrayBuffer2();
+        console.info('JsvmTest0478 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0479
+     * @tc.name      JsvmTest0479
+     * @tc.desc      Test the function of ArrayBuffer interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0479', 0, async function (done) {
+        let rst = napitest.testArrayBuffer3();
+        console.info('JsvmTest0479 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0480
+     * @tc.name      JsvmTest0480
+     * @tc.desc      Test the function of WasmOperator interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0480', 0, async function (done) {
+        let rst = napitest.testWasmOperator();
+        console.info('JsvmTest0480 testString result is:' + JSON.stringify(rst));
+        expect(value).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0481
+     * @tc.name      JsvmTest0481
+     * @tc.desc      Test the function of WebAssembly interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0481', 0, async function (done) {
+        let rst = napitest.wasmTest();
+        console.info('JsvmTest0481 testString result is:' + JSON.stringify(rst));
+        expect(value).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0482
+     * @tc.name      JsvmTest0482
+     * @tc.desc      Test the function of ArrayBuffer backing store interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0482', 0, async function (done) {
+        let rst = napitest.arrayBufferBackingStoreTest();
+        console.info('JsvmTest0482 testString result is:' + JSON.stringify(rst));
+        expect(value).assertEqual(0);
       done();
     });
   });

@@ -69,7 +69,7 @@ export default function sliderJsunit1() {
         console.info("[testSlider002] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testSlider002] change component data error: " + err.message);
+        console.log("[testSlider002] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('slider');
@@ -104,7 +104,7 @@ export default function sliderJsunit1() {
         console.info("[testSlider004] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testSlider004] change component data error: " + err.message);
+        console.log("[testSlider004] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('slider');
@@ -138,7 +138,7 @@ export default function sliderJsunit1() {
         console.info("testSlider006 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testSlider006 change component data error: " + err.message);
+        console.log("testSlider006 change component data error: " + (err as Error).message);
       }
       await Utils.sleep(4000);
       let strJsonNew: string = getInspectorByKey('slider');

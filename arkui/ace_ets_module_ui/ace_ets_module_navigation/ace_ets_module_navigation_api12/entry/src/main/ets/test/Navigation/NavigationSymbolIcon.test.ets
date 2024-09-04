@@ -58,7 +58,7 @@ export default function NavigationSymbolIcon() {
       console.info('NavigationSymbolIcon_0100 START');
       await CommonFunc.sleep(1000);
 
-      let obj1 = JSON.parse(JSON.stringify(getInspectorTree()));
+      let obj1: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
       await CommonFunc.sleep(1000);
 
       expect(obj1.$children[0].$children[0].$children[0].$children[1].$children[0].$children[0].$children[0].$type).assertEqual('SymbolGlyph');

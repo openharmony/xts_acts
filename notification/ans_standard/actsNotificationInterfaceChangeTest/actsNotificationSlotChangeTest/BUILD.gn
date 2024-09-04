@@ -13,31 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsNotificationSlotChangeTest") {
-  hap_profile = "src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":actsNotificationSlotChangeTest_js_assets",
-    ":actsNotificationSlotChangeTest_resources",
-  ]
-  ets2abc = true
+ohos_js_app_suite("ActsNotificationSlotChangeTest") {
+  test_hap = true
+  testonly = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsNotificationSlotChangeTest"
   subsystem_name = "notification"
   part_name = "distributed_notification_service"
-}
-
-ohos_app_scope("actsNotificationSlotChangeTest_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("actsNotificationSlotChangeTest_js_assets") {
-  source_dir = "src/main/ets"
-}
-
-ohos_resources("actsNotificationSlotChangeTest_resources") {
-  sources = [ "src/main/resources" ]
-  deps = [ ":actsNotificationSlotChangeTest_app_profile" ]
-  hap_profile = "src/main/module.json"
 }

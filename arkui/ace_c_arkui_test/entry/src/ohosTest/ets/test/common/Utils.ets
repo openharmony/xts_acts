@@ -19,8 +19,15 @@ import systemDateTime from '@ohos.systemDateTime';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import fs from '@ohos.file.fs';
 import router from '@ohos.router';
+import RectValue from './Rect';
 
 export default class Utils {
+  static rect_left: number;
+  static rect_top: number;
+  static rect_right: number;
+  static rect_bottom: number;
+  static rect_value: RectValue;
+  
   static sleep(time: number) {
     return new Promise<string>((resolve, reject) => {
       setTimeout(() => {
@@ -65,12 +72,12 @@ export default class Utils {
   static async flingComponent(key: string, isHorizontal: boolean, isForward: boolean) {
     let driver = Driver.create();
     let rect = Utils.getComponentRect(key);
-    let centerX = Utils.getRectHorizontalCenterX(rect)
-    let centerY = Utils.getRectVerticalCenterY(rect)
-    let X1 = centerX - 100;
-    let X2 = centerX + 100;
-    let Y1 = centerY - 100;
-    let Y2 = centerY + 100;
+    let centerX = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect))
+    let centerY = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect))
+    let X1 =  Math.round(centerX - vp2px(66.67));
+    let X2 =  Math.round(centerX + vp2px(66.67));
+    let Y1 = Math.round(centerY - vp2px(66.67));
+    let Y2 = Math.round(centerY + vp2px(66.67));
     let stepLen = 20;
     let speed = 10000;
     if (isHorizontal) {
@@ -141,10 +148,10 @@ export default class Utils {
 
   static async fingerZoom(key: string, isOut: boolean) {
     let rect = Utils.getComponentRect(key);
-    let centerX = Utils.getRectHorizontalCenterX(rect)
-    let centerY = Utils.getRectVerticalCenterY(rect)
-    let fingerUpCenterY = centerY - 100;
-    let fingerDownCenterY = centerY + 100;
+    let centerX =  Math.round(globalThis.winLeft +  Utils.getRectHorizontalCenterX(rect))
+    let centerY =  Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect))
+    let fingerUpCenterY = Math.round(centerY - vp2px(66.67));
+    let fingerDownCenterY = Math.round(centerY + vp2px(66.67));
     let driver: Driver = Driver.create();
     let pointers: PointerMatrix = PointerMatrix.create(2, 3);
     pointers.setPoint(0, 0, {
@@ -264,5 +271,97 @@ export default class Utils {
     await driver.mouseMoveTo({
       x: X, y: Y
     });
+  }
+
+  static getDragComponentRect(key: string) {
+    let strJson: string = getInspectorByKey(key);
+    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
+    console.info("[getInspectorByKey] rectInfo is: " + JSON.parse('[' + JSON.parse(strJson).$rect + ']'));
+    Utils.rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0]
+    Utils.rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1]
+    Utils.rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0]
+    Utils.rect_bottom = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[1]
+    return Utils.rect_value = {
+      left: Utils.rect_left, top: Utils.rect_top, right: Utils.rect_right, bottom: Utils.rect_bottom
+    }
+  }
+
+  static async drag(downX: number, downY: number, upX: number, upY: number, steps: number) {
+    console.info('start to drag')
+    Utils.drags(downX, downY, upX, upY, steps, true)
+  }
+
+  static async drags(downX: number, downY: number, upX: number, upY: number, steps: number, drag: boolean) {
+    let xStep: number;
+    let yStep: number;
+    let swipeSteps: number;
+    let ret: boolean;
+    xStep = 0;
+    yStep = 0;
+    ret = false;
+    swipeSteps = steps;
+    if (swipeSteps == 0) {
+      swipeSteps = 1;
+    }
+    xStep = (upX - downX) / swipeSteps;
+    yStep = (upY - downY) / swipeSteps;
+    console.info('move step is: ' + 'xStep: ' + xStep + '    yStep: ' + yStep)
+    let downPonit: TouchObject = {
+      id: 1,
+      x: downX,
+      y: downY,
+      type: TouchType.Down,
+      screenX: 0,
+      screenY: 0,
+      windowX: 0,
+      windowY: 0,
+      displayX: 0,
+      displayY: 0
+    }
+    console.info('down touch started: ' + JSON.stringify(downPonit))
+    sendTouchEvent(downPonit);
+    console.info('start to move')
+    if (drag) {
+      await Utils.sleep(500)
+    }
+    for (let i = 1; i <= swipeSteps; i++) {
+      let movePoint: TouchObject = {
+        id: 1,
+        x: downX + (xStep * i),
+        y: downY + (yStep * i),
+        type: TouchType.Move,
+        screenX: 0,
+        screenY: 0,
+        windowX: 0,
+        windowY: 0,
+        displayX: 0,
+        displayY: 0
+      }
+      console.info('move touch started: ' + JSON.stringify(movePoint))
+      ret = sendTouchEvent(movePoint)
+      if (ret == false) {
+        break;
+      }
+      await Utils.sleep(5)
+    }
+    console.info('start to up')
+    if (drag) {
+      await Utils.sleep(100)
+    }
+    let upPoint: TouchObject = {
+      id: 1,
+      x: upX,
+      y: upY,
+      type: TouchType.Up,
+      screenX: 0,
+      screenY: 0,
+      windowX: 0,
+      windowY: 0,
+      displayX: 0,
+      displayY: 0
+    }
+    console.info('up touch started: ' + JSON.stringify(upPoint))
+    sendTouchEvent(upPoint)
+    await Utils.sleep(500)
   }
 }

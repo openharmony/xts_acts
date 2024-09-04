@@ -14,7 +14,7 @@
  */
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../Utils'
+import CommonFunc from '../../MainAbility/common/Common'
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function tabsDemo() {
@@ -31,7 +31,7 @@ export default function tabsDemo() {
         if (!("tabsDemo" == pages.name)) {
           console.info("get tabsDemo state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push tabsDemo page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,7 +41,7 @@ export default function tabsDemo() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("tabsDemo after each called");
     });
 
@@ -53,16 +53,16 @@ export default function tabsDemo() {
      */
     it('tabsDemo_001', 0, async (done: Function) => {
       console.info('[tabsDemo_001] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(ON.text('Yellow'));
       await btn.click()
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
 
       let strJson = getInspectorByKey('tabsDemo_text1');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("[tabsDemo_001] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content).assertEqual('456');
       console.info('[tabsDemo_001] END');

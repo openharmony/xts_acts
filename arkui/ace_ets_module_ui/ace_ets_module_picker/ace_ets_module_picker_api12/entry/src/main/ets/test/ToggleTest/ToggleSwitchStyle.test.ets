@@ -58,7 +58,7 @@ export default function ToggleSwitchStyle() {
       await Utils.sleep(1000);
 
       let strJson1 = getInspectorByKey('TogglePointColor_toggle');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[ToggleSwitchStyle_001] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.pointRadius).assertEqual('15.00vp');

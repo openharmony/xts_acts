@@ -14,8 +14,9 @@
  */
 
 
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -55,7 +56,7 @@ struct PageRouteExample {
         .onClick(() => {
           console.info('to next page')
           router.push({
-            uri: 'pages/index'
+            url: 'pages/index'
           })
         })
     }
@@ -86,7 +87,7 @@ struct PageRouteExample {
       console.info("page start to emit action state")
       events_emitter.emit(eventt, eventData)
     } catch (err) {
-      console.info("page emit action state err: " + JSON.stringify(err.message))
+      console.info("page emit action state err: " + JSON.stringify((err as BusinessError).message))
     }
   }
 

@@ -78,8 +78,8 @@ export default function NavDestinationJsunit() {
       // Get backgroundColor of NavDestination component
       console.info('[NavDestinationJsunit_0200] START');
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('NavDestination1');
-      
+      let strJson: string = getInspectorByKey('NavDestination1');
+
       console.info("[NavDestinationJsunit_0200] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[NavDestinationJsunit_0200] backgroundColor: " + JSON.stringify(JSON.parse(strJson).$attrs.backgroundColor));
       expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual('#FF808080');
@@ -111,7 +111,7 @@ export default function NavDestinationJsunit() {
         name: 'backColor', value: Color.Green
       })
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('NavDestination1');
+      let strJson: string = getInspectorByKey('NavDestination1');
       
       console.info("[NavDestinationJsunit_0400] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[NavDestinationJsunit_0400] backgroundColor: " + JSON.stringify(JSON.parse(strJson).$attrs.backgroundColor));
@@ -144,7 +144,7 @@ export default function NavDestinationJsunit() {
         name: 'backColor', value: 123
       })
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('NavDestination1');
+      let strJson: string = getInspectorByKey('NavDestination1');
       
       console.info("[NavDestinationJsunit_0600] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[NavDestinationJsunit_0600] backgroundColor: " + JSON.stringify(JSON.parse(strJson).$attrs.backgroundColor));
@@ -157,7 +157,7 @@ export default function NavDestinationJsunit() {
       // Get hideTitleBar value of NavDestination component
       console.info('[NavDestinationJsunit_0700] START');
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('NavDestination1');
+      let strJson: string = getInspectorByKey('NavDestination1');
       
       console.info("[NavDestinationJsunit_0700] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[NavDestinationJsunit_0700] hideTitleBar: " + JSON.stringify(JSON.parse(strJson).$attrs.hideTitleBar));
@@ -173,7 +173,7 @@ export default function NavDestinationJsunit() {
         name: 'hideTitleBar', value: true
       })
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('NavDestination1');
+      let strJson: string = getInspectorByKey('NavDestination1');
       
       console.info("[NavDestinationJsunit_0700] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[NavDestinationJsunit_0700] hideTitleBar: " + JSON.stringify(JSON.parse(strJson).$attrs.hideTitleBar));
@@ -189,7 +189,7 @@ export default function NavDestinationJsunit() {
         name: 'hideTitleBar', value: 123
       })
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('NavDestination1');
+      let strJson: string = getInspectorByKey('NavDestination1');
       
       console.info("[NavDestinationJsunit_0900] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[NavDestinationJsunit_0900] hideTitleBar: " + JSON.stringify(JSON.parse(strJson).$attrs.hideTitleBar));

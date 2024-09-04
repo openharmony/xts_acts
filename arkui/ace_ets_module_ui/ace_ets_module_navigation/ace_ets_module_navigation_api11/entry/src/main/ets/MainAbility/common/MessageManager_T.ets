@@ -39,7 +39,9 @@ export class MessageManager<T> {
 
   notify(message: Message<T>, type?: string) {
     if (type == undefined) {
-      this.callback(message);
+      if (this.callback != undefined) {
+        this.callback(message)
+      }
       return;
     }
 
@@ -53,6 +55,6 @@ export class MessageManager<T> {
 
   clear() {
     this.callbacks.clear();
-    this.callback = null;
+    this.callback = undefined;
   }
 }

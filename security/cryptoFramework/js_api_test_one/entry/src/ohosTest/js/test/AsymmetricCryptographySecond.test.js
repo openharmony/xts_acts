@@ -711,7 +711,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
                 expect(keyPair2 != null).assertTrue();
                 let keyAgrementGenerator = cryptoFramework.createKeyAgreement("ECC521");
                 try {
-                    await keyAgrementGenerator.generateSecret(keyPair1.prikey, keyPair2.pubKey)
+                    await keyAgrementGenerator.generateSecret(keyPair1.priKey, keyPair2.pubKey)
                     expect(null).assertFail();
                 } catch (err) {
                     expect(err.code).assertEqual(401);

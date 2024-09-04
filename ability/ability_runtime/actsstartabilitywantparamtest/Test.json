@@ -15,6 +15,5 @@
             "type": "AppInstallKit",
             "cleanup-apps": true
         }
-        
     ]
 }

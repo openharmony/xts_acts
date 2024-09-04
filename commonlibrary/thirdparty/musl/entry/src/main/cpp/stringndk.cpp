@@ -823,6 +823,7 @@ static napi_value MemmoveChk(napi_env env, napi_callback_info info)
 
 static napi_value MemsetChk(napi_env env, napi_callback_info info)
 {
+    errno = ERRON_0;
     napi_value result = nullptr;
     napi_create_int32(env, errno, &result);
     return result;

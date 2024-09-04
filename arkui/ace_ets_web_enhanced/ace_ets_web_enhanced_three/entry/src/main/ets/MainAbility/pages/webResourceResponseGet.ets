@@ -256,7 +256,7 @@ struct webResourceResponseGet {
       }
 
 
-      Web({ src: $rawfile('https://gitee.com/openharmony/123'), controller: this.controller })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
         .javaScriptAccess(this.javaScriptAccess)
         .fileAccess(this.fileAccess)
         .imageAccess(this.imageAccess)

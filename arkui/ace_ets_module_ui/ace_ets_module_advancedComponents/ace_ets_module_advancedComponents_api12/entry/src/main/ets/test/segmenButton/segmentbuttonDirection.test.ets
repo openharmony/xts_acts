@@ -35,7 +35,7 @@ export default function segmentButtonDirectionTest() {
           console.info("get segmentButtonDirectionTest pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push segmentButtonDirectionTest page result: " + JSON.stringify(result));
+          console.info("push segmentButtonDirectionTest page result successful");
         }
       }
       catch (err) {

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function createNodeScroll() {
-  describe('createNodeScroll', function () {
-    beforeEach(async function (done) {
+  describe('createNodeScroll', () => {
+    beforeEach(async (done: Function) => {
       console.info("createNodeScroll beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/FrameNode/createNodeScroll",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/FrameNode/createNodeScroll",
       }
       try {
         router.clear();
@@ -49,15 +49,15 @@ export default function createNodeScroll() {
      * @tc.type :
      * @tc.size :
      */
-    it('createNodeScroll_0100', 0, async function (done) {
+    it('createNodeScroll_0100', 0, async (done: Function) => {
       console.info('createNodeScroll_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('createNodeScrollType'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('createNodeScrollText');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('createNodeScrollText');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[createNodeScroll_0100] component obj is: " + JSON.stringify(obj));
       console.info("[createNodeScroll_0100] content obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('"Scroll"');

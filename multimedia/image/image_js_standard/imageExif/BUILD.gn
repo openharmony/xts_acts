@@ -25,7 +25,9 @@ ohos_js_hap_suite("image_exif_js_hap") {
   part_name = "image_framework"
 }
 ohos_js_assets("image_exif_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("image_exif_resources") {
   sources = [ "./src/main/resources" ]

@@ -713,7 +713,6 @@ export default function drawingTsMatrixTest() {
       const msg = 'testMatrixSetAndGetMatrixNormal';
       try {
         let matrix = new drawing.Matrix();
-        // matrix.getValue(0);
         let widths : number[] = matrix.getAll();
         expect(widths.length == 9).assertTrue();
         expect(matrix != null).assertTrue();
@@ -1046,44 +1045,6 @@ export default function drawingTsMatrixTest() {
       try {
         let matrix1 = new drawing.Matrix();
         matrix1.preConcat(undefined)
-        console.info(msg + ' preConcat successed');
-      } catch (e) {
-        console.info(msg + ` preConcat errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_0602
-     * @tc.name      : testMatrixPreConcatMismatch
-     * @tc.desc      : testMatrixPreConcatMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testMatrixPreConcatMismatch', DEFAULT, () => {
-      const msg = 'testMatrixPreConcatMismatch';
-      try {
-        let matrix1 = new drawing.Matrix();
-        matrix1.preConcat(matrix,matrix)
-        console.info(msg + ' preConcat successed');
-      } catch (e) {
-        console.info(msg + ` preConcat errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let matrix1 = new drawing.Matrix();
-        matrix1.preConcat();
-        console.info(msg + ' preConcat successed');
-      } catch (e) {
-        console.info(msg + ` preConcat errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let matrix1 = new drawing.Matrix();
-        matrix1.preConcat('s');
         console.info(msg + ' preConcat successed');
       } catch (e) {
         console.info(msg + ` preConcat errorCode is:  ${e.code} + errormsg is: ${e.message}`);

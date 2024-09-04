@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- //@ts-nocheck
 import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
@@ -22,10 +21,8 @@ import hilog from '@ohos.hilog';
 struct badgeTest {
 
   aboutToAppear(){
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
   }
@@ -215,8 +212,7 @@ struct badgeTest {
               count: 1,
               maxCount: 99,
               position: BadgePosition.RightTop,
-              style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
-                       fontWeight: 200, fontWeight: 500 }
+              style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red, fontWeight: 500 }
             }) {
               Button("test")
                 .onClick((event: ClickEvent) => {
@@ -230,8 +226,7 @@ struct badgeTest {
               count: 1,
               maxCount: 99,
               position: BadgePosition.RightTop,
-              style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
-                       fontWeight: 500, fontWeight: null }
+              style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red, fontWeight: undefined }
             }) {
               Button("test")
                 .onClick((event: ClickEvent) => {
@@ -245,7 +240,7 @@ struct badgeTest {
               count: 1,
               maxCount: 99,
               position: BadgePosition.RightTop,
-              style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red ,fontWeight: 600 }
+              style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red, fontWeight: 600 }
             }) {
               Button("test")
                 .onClick((event: ClickEvent) => {
@@ -389,7 +384,7 @@ struct badgeTest {
               maxCount: 99,
               position: BadgePosition.RightTop,
               style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red, 
-                       borderColor: "rgb(138,43,226)", borderColor: Color.Pink}
+                       borderColor: Color.Pink}
             }) {
               Button("test")
                 .onClick((event: ClickEvent) => {
@@ -406,7 +401,7 @@ struct badgeTest {
               maxCount: 99,
               position: BadgePosition.RightTop,
               style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
-                       borderColor: "rgb(138,43,226)", borderColor: undefined }
+                       borderColor: undefined }
             }) {
               Button("test")
                 .onClick((event: ClickEvent) => {
@@ -558,7 +553,7 @@ struct badgeTest {
               maxCount: 99,
               position: BadgePosition.RightTop,
               style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red, 
-                       borderWidth: 5, borderWidth: "7fp" }
+                       borderWidth: "7fp" }
             }) {
               Button("test")
                 .onClick((event: ClickEvent) => {
@@ -575,7 +570,7 @@ struct badgeTest {
               maxCount: 99,
               position: BadgePosition.RightTop,
               style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red, 
-                       borderWidth: 5, borderWidth: undefined }
+                       borderWidth: undefined }
             }) {
               Button("test")
                 .onClick((event: ClickEvent) => {

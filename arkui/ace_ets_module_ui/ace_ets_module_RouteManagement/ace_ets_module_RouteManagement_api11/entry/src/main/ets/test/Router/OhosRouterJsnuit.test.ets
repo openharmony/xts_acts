@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -74,12 +73,12 @@ export default function OhosRouterJsunit() {
         let result = await router.pushUrl(options);
         console.info("[ohosRouterTest002] push page success " + JSON.stringify(result));
       } catch (err) {
-        console.error("[ohosRouterTest002] push page error " + JSON.stringify(result));
+        console.error("[ohosRouterTest002] push page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(1500);
       let callback = (paramsEvent: events_emitter.EventData) => {
         console.info("[ohosRouterTest002] get state result is: " + JSON.stringify(paramsEvent));
-        expect(paramsEvent.data.params).assertEqual('B Page');
+        expect(paramsEvent.data?.params).assertEqual('B Page');
       }
       let paramsEvent: events_emitter.InnerEvent = {
         eventId: 142,
@@ -121,7 +120,7 @@ export default function OhosRouterJsunit() {
         let result = await router.pushUrl(options);
         console.info("[ohosRouterTest004] push page success " + JSON.stringify(result));
       } catch (err) {
-        console.error("[ohosRouterTest004] push page error " + JSON.stringify(result));
+        console.error("[ohosRouterTest004] push page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
       let optionsB: router.RouterOptions = {
@@ -131,7 +130,7 @@ export default function OhosRouterJsunit() {
         let result = await router.replace(optionsB);
         console.info("[ohosRouterTest004] push page success " + JSON.stringify(result));
       } catch (err) {
-        console.error("[ohosRouterTest004] push page error " + JSON.stringify(result));
+        console.error("[ohosRouterTest004] push page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(1500);
       let size = router.getLength();
@@ -149,14 +148,14 @@ export default function OhosRouterJsunit() {
         let result = await router.pushUrl(options);
         console.info("[ohosRouterTest005] push page success " + JSON.stringify(result));
       } catch (err) {
-        console.error("[ohosRouterTest005] push page error " + JSON.stringify(result));
+        console.error("[ohosRouterTest005] push page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(1000);
       router.clear();
       await CommonFunc.sleep(1500);
       let callback = (paramsEvent: events_emitter.EventData) => {
         console.info("[ohosRouterTest005] get state result is: " + JSON.stringify(paramsEvent));
-        expect(paramsEvent.data.params).assertEqual('B Page');
+        expect(paramsEvent.data?.params).assertEqual('B Page');
       }
       let paramsEvent: events_emitter.InnerEvent = {
         eventId: 142,

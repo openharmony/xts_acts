@@ -72,7 +72,7 @@ export default function NavigationApi2() {
       await Utils.sleep(2000);
       console.info("[NavigationApi2_001] btn3")
 
-      let strJson = getInspectorByKey('NavigationApi2_text_Navigation');
+      let strJson: string = getInspectorByKey('NavigationApi2_text_Navigation');
       await Utils.sleep(1000);
       console.info("[NavigationApi2_001] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content).assertEqual('Navigation');

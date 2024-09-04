@@ -35,18 +35,18 @@ struct TimePickerExample1 {
   }
   @State selectedTextStyleDefault: PickerTextStyle = {
     color: $r("sys.color.ohos_id_color_text_primary_activated"),
-    font: { size: $r("sys.float.ohos_id_text_size_headline8"), weight: FontWeight.Bold }
+    font: { size: $r("sys.float.ohos_id_text_size_dialog_tittle"), weight: FontWeight.Bold }
   }
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("select page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.disappearTextStyle != null) {
+      if (eventData.data?.disappearTextStyle != null) {
         this.disappearTextStyle = JSON.parse(eventData.data.disappearTextStyle);
       }
-      if (eventData.data.textStyle != null) {
+      if (eventData.data?.textStyle != null) {
         this.textStyle = JSON.parse(eventData.data.textStyle);
       }
-      if (eventData.data.selectedTextStyle != null) {
+      if (eventData.data?.selectedTextStyle != null) {
         this.selectedTextStyle = JSON.parse(eventData.data.selectedTextStyle);
       }
     }

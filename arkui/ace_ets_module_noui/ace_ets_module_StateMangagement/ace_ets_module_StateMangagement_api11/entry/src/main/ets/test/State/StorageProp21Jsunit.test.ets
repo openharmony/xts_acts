@@ -29,7 +29,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function StorageProp21Jsunit() {
@@ -64,7 +64,7 @@ export default function StorageProp21Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('button1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp21Jsunit_0200] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.label).assertEqual('button1: cd');
@@ -80,7 +80,7 @@ export default function StorageProp21Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson2 = getInspectorByKey('button2');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp21Jsunit_0300] obj2 is: " + JSON.stringify(obj2));
       await CommonFunc.sleep(1000);
       expect(obj2.$attrs.label).assertEqual('button2: 3');
@@ -96,7 +96,7 @@ export default function StorageProp21Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson13 = getInspectorByKey('button3');
-      let obj13 = JSON.parse(strJson13);
+      let obj13: ESObject = JSON.parse(strJson13);
       console.info("[StorageProp21Jsunit_0400] obj13 is: " + JSON.stringify(obj13));
       await CommonFunc.sleep(1000);
       expect(obj13.$attrs.label).assertEqual('button3: false');
@@ -112,7 +112,7 @@ export default function StorageProp21Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson24 = getInspectorByKey('button4');
-      let obj24 = JSON.parse(strJson24);
+      let obj24: ESObject = JSON.parse(strJson24);
       console.info("[StorageProp21Jsunit_0500] obj24 is: " + JSON.stringify(obj24));
       await CommonFunc.sleep(1000);
       expect(obj24.$attrs.label).assertEqual('button4: 3');

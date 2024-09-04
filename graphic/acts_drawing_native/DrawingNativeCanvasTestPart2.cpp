@@ -863,6 +863,71 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapInputDestroyed, TestSize.L
 }
 
 /*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1505
+ * @tc.name: testCanvasDrawBitmapBoundary
+ * @tc.desc: test for testCanvasDrawBitmapBoundary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapBoundary, TestSize.Level0)
+{
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    EXPECT_NE(canvas, nullptr);
+
+    // 2. OH_Drawing_BitmapCreate
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    EXPECT_NE(bitmap, nullptr);
+
+    // 3. OH_Drawing_CanvasDrawBitmap
+    OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
+
+    // 4. OH_Drawing_BitmapCreateFromPixels, iterate through OH_Drawing_ColorFormat and OH_Drawing_AlphaFormat to
+    // construct OH_Drawing_Image_Info.
+    OH_Drawing_ColorFormat formats[] = {
+        COLOR_FORMAT_UNKNOWN,   COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
+        COLOR_FORMAT_ARGB_4444, COLOR_FORMAT_RGBA_8888, COLOR_FORMAT_BGRA_8888,
+    };
+
+    OH_Drawing_AlphaFormat alphaFormats[] = {
+        ALPHA_FORMAT_UNKNOWN,
+        ALPHA_FORMAT_OPAQUE,
+        ALPHA_FORMAT_PREMUL,
+        ALPHA_FORMAT_UNPREMUL,
+    };
+
+    int width = 4096;
+    int height = 2160;
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 4; j++) {
+            int rowBytes = width * height * 4;
+            OH_Drawing_Image_Info imageInfo = {width, height, formats[i], alphaFormats[j]};
+            OH_Drawing_BitmapFormat cFormat{formats[i], alphaFormats[j]};
+            OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+            void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
+            bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+            // 5. OH_Drawing_CanvasDrawBitmap
+            OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
+            OH_Drawing_BitmapDestroy(bitmap);
+        }
+    }
+
+    // 6. OH_Drawing_BitmapCreateFromPixels, initialize the Bitmap with rowBytes greater than the image.
+    OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_UNKNOWN, ALPHA_FORMAT_UNKNOWN};
+    int rowBytes = 600 * 600 * 4;
+    void *pixels = new int[width * height];
+    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+
+    // 7. OH_Drawing_CanvasDrawBitmap
+    OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
+
+    // 8. Free the memory.
+    OH_Drawing_BitmapDestroy(bitmap);
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1600
  * @tc.name: testCanvasDrawBitmapRectNormal
  * @tc.desc: test for testCanvasDrawBitmapRectNormal.
@@ -1125,6 +1190,68 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapRectMaximum, TestSize.Leve
 HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapRectInputDestroyed, TestSize.Level3)
 {
     // Deprecated
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1605
+ * @tc.name: testCanvasDrawBitmapRectBoundary
+ * @tc.desc: test for testCanvasDrawBitmapRectBoundary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapRectBoundary, TestSize.Level0)
+{
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    EXPECT_NE(canvas, nullptr);
+    // 2. OH_Drawing_BitmapCreate
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    EXPECT_NE(bitmap, nullptr);
+    // 3. OH_Drawing_RectCreate src and dst
+    OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // 4. OH_Drawing_CanvasDrawBitmap
+    OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
+    // 5. OH_Drawing_CanvasDrawBitmapRect, iterate through OH_Drawing_FilterMode and OH_Drawing_MipmapMode to construct
+    // OH_Drawing_SamplingOptions
+    OH_Drawing_FilterMode filterMode[] = {FILTER_MODE_NEAREST, FILTER_MODE_LINEAR};
+    OH_Drawing_MipmapMode mode[] = {MIPMAP_MODE_NEAREST, MIPMAP_MODE_LINEAR, MIPMAP_MODE_NONE};
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(filterMode[i], mode[j]);
+            OH_Drawing_CanvasDrawBitmapRect(canvas, bitmap, src, dst, options);
+            OH_Drawing_SamplingOptionsDestroy(options);
+        }
+    }
+    // 6. OH_Drawing_CanvasDrawBitmap
+    OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
+    OH_Drawing_BitmapDestroy(bitmap);
+    // 7. OH_Drawing_BitmapCreateFromPixels, initialize Bitmap with a rowBytes larger than the image
+    int width = 4096;
+    int height = 2160;
+    OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_UNKNOWN, ALPHA_FORMAT_UNKNOWN};
+    int rowBytes = 600 * 600 * 4;
+    void *pixels = new int[width * height];
+    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    // 8. OH_Drawing_CanvasDrawBitmapRect, iterate through OH_Drawing_FilterMode and OH_Drawing_MipmapMode to construct
+    // OH_Drawing_SamplingOptions
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(filterMode[i], mode[j]);
+            OH_Drawing_CanvasDrawBitmapRect(canvas, bitmap, src, dst, options);
+            OH_Drawing_SamplingOptionsDestroy(options);
+        }
+    }
+    // 9. CanvasDrawBitmapRect with src parameter set to nullptr
+    OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_LINEAR);
+    OH_Drawing_CanvasDrawBitmapRect(canvas, bitmap, nullptr, dst, options);
+    // 10. Free memory
+    OH_Drawing_RectDestroy(src);
+    OH_Drawing_RectDestroy(dst);
+    OH_Drawing_BitmapDestroy(bitmap);
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_SamplingOptionsDestroy(options);
 }
 
 /*

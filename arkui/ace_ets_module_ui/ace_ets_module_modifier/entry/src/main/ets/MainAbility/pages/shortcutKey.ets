@@ -27,13 +27,13 @@ struct ShortcutKey7Test {
   @State buttonModifier: ButtonAttribute = new CustomModifier()
       .keyboardShortcut('B', [ModifierKey.CTRL]);
 
-  sendEvent(message, eventId) {
-    var eventData = {
+  sendEvent(message: string, eventId: number) {
+    let eventData: events_emitter.EventData = {
       data: {
         "msg": message
       }
     }
-    let event = {
+    let event: events_emitter.InnerEvent = {
       eventId: eventId,
       priority: events_emitter.EventPriority.LOW
     }

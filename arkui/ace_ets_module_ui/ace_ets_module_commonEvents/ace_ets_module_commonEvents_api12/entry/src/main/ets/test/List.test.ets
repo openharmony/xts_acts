@@ -60,6 +60,21 @@ import GestureRecognizerState from './GestureRecognizer/GestureRecognizerState.t
 import APIshouldBuiltInRecognizerParallelWith from './APIshouldBuiltInRecognizerParallelWith.test';
 import typeNodeGestureTest from './PanGesture/Gesture.test';
 import UIContextDragControllerTest from './DragController/UIContextDragController.test';
+import tapGestureAddInterfaceTest from './tapGestureAddInterface/tapGestureAddInterfaceTest.test';
+import accessibilityHoverTest from './onAccessibilityHover/onhoverAccessbility.test';
+
+import btnMonoLongPress from './customGestureTest/btnMonoLongPress.test'
+import btnMonoTouch from './customGestureTest/btnMonoTouch.test'
+import columnMonopolize from './customGestureTest/columnMonopolize.test'
+import columnMonopolizeFalse from './customGestureTest/columnMonopolizeFalse.test'
+import listMonopolize from './customGestureTest/listMonopolize.test'
+import gestureDefine1 from './customGestureTest/gestureClick.test'
+import gestureDefine2 from './customGestureTest/buttonDragStart.test'
+import gestureDefine3 from './customGestureTest/dragIsSystem.test'
+import gestureDefine4 from './customGestureTest/clickIsSystem.test'
+import gestureDefine6 from './customGestureTest/gestureParallel.test'
+import gestureDefine10 from './GestureRecognizer/GestureRecognizerIsValid.test'
+
 export default function testsuite() {
   APIshouldBuiltInRecognizerParallelWith();
   APIPreDragStatusTest();
@@ -109,4 +124,20 @@ export default function testsuite() {
   GestureRecognizerState();
   typeNodeGestureTest();
   UIContextDragControllerTest();
+  tapGestureAddInterfaceTest();
+
+
+  btnMonoLongPress();
+  btnMonoTouch();
+  columnMonopolize();
+  columnMonopolizeFalse();
+  listMonopolize();
+  gestureDefine1();
+  gestureDefine2();
+  gestureDefine3();
+  gestureDefine4();
+  gestureDefine6();
+  gestureDefine10();
+  
+  accessibilityHoverTest();
 }

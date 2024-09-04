@@ -208,6 +208,5 @@ export default function dynamicImport() {
         expect(res).assertEqual('success');
       })
     })
-
   })
 }

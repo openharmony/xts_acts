@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils';
 
 export default function CheckBoxShape() {
-  describe('CheckBoxShape', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/CheckboxGroup/CheckBoxShape',
+  describe('CheckBoxShape', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/CheckboxGroup/CheckBoxShape',
       }
       try {
         router.clear();
@@ -39,16 +39,16 @@ export default function CheckBoxShape() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("CheckBoxShape after each called");
     });
 
-    it('CheckBoxShapeTest_0100', 0, async function (done) {
+    it('CheckBoxShapeTest_0100', 0, async (done: Function) => {
       console.info('CheckBoxShapeText_0100 START');
       let strJson = getInspectorByKey('CheckBoxShapeXTS');
       console.info("CheckBoxShapeText_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("CheckBoxShapeText_0100 component obj is: " + JSON.stringify(obj));
       console.info("[CheckBoxShapeText_0100] title: " + JSON.stringify(obj.$attrs.checkboxShape));
       expect(obj.$attrs.checkboxShape).assertEqual("1");//CheckBoxShape.ROUNDED_SQUARE

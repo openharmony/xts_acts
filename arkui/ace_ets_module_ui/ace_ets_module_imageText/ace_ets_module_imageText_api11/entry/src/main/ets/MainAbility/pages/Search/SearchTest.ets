@@ -168,6 +168,104 @@ struct SliderExample {
 
       Search({ value: '', placeholder: 'Type to search...' })
         .caretStyle({
+          color: $r('app.color.Caretcolor'),
+          width: $r('app.float.Caretwidth')
+        })
+        .searchIcon({
+          color: $r('sys.color.ohos_id_color_secondary'),
+        })
+        .cancelButton({
+          icon: {
+            color: $r('sys.color.ohos_id_color_secondary'),
+          }
+        })
+        .searchButton(
+          'Search',
+          {
+            fontSize: $r('sys.float.ohos_id_text_size_body1'),
+            fontColor: $r('sys.color.ohos_id_color_text_primary_activated')
+          }
+        )
+        .fontColor($r('sys.color.ohos_id_color_text_primary'))
+        .key('searchTestDefaultapp')
+
+      Search({ value: '', placeholder: 'Type to search...' })
+        .caretStyle({
+          color: $r('app.color.Caretcolor'),
+          width: $r('app.string.Caretwidth001')
+        })
+        .searchIcon({
+          color: $r('sys.color.ohos_id_color_secondary'),
+        })
+        .cancelButton({
+          icon: {
+            color: $r('sys.color.ohos_id_color_secondary'),
+          }
+        })
+        .searchButton(
+          'Search',
+          {
+            fontSize: $r('sys.float.ohos_id_text_size_body1'),
+            fontColor: $r('sys.color.ohos_id_color_text_primary_activated')
+          }
+        )
+        .fontColor($r('sys.color.ohos_id_color_text_primary'))
+        .key('searchTestDefaultapp001')
+
+      Search({ value: '', placeholder: 'Type to search...' })
+        .caretStyle({
+          color: $r('app.color.Caretcolor'),
+          width: $r('app.integer.Caretwidth')
+        })
+        .searchIcon({
+          color: $r('sys.color.ohos_id_color_secondary'),
+        })
+        .cancelButton({
+          icon: {
+            color: $r('sys.color.ohos_id_color_secondary'),
+          }
+        })
+        .searchButton(
+          'Search',
+          {
+            fontSize: $r('sys.float.ohos_id_text_size_body1'),
+            fontColor: $r('sys.color.ohos_id_color_text_primary_activated')
+          }
+        )
+        .fontColor($r('sys.color.ohos_id_color_text_primary'))
+        .key('searchTestDefaultapp002')
+
+      Search({ value: '', placeholder: 'Type to search...' })
+        .width(300)
+        .height(40)
+        .margin(5)
+        .searchIcon({
+          size: this.leftSearchIconSizeNumber,
+          color: this.leftSearchIconColorNumber,
+          src: this.searchSrcPath
+        })
+        .cancelButton({
+          style: this.rightButtonStyleParam,
+          icon: {
+            size: this.rightCancelIconSizeNumber,
+            color: this.rightCancelIconColorNumber,
+            src: this.rightIconSrcPath
+          }
+        })
+        .searchButton(
+          'Search',
+          {
+            fontSize: this.searchButtonFontSizeNumber,
+            fontColor: this.searchButtonFontColorNumber
+          }
+        )
+        .placeholderFont(this.placeholderFont)
+        .textFont(this.textFont)
+        .fontColor(this.textColorNumber)
+        .key('searchTestfontcaretcolor')
+
+      Search({ value: '', placeholder: 'Type to search...' })
+        .caretStyle({
           color: $r('sys.color.ohos_id_color_text_primary_activated')
         })
         .searchIcon({

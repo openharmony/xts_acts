@@ -32,7 +32,7 @@ struct NavigationPage {
   @State titleModeChange: string = ''
   @State navBarStateChange: string = ''
   @State currentIndex: number = 0
-  @State Build: Array<Object> = [
+  @State Build: Array<ESObject> = [
     {
       text: 'add',
       num: 0
@@ -53,7 +53,7 @@ struct NavigationPage {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback:Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'mainTitleName') {
         this.mainTitleName = message.value
@@ -124,7 +124,7 @@ struct NavigationPage {
 
   @Builder NavigationToolbar() {
     Row() {
-      ForEach(this.Build, item => {
+      ForEach(this.Build, (item: ESObject) => {
         Column() {
           Image(this.currentIndex == item.num ? 'resources/base/media/icon_selected.svg' : 'resources/base/media/icon_tv.svg')
             .width(24)
@@ -153,7 +153,7 @@ struct NavigationPage {
           .margin({ top: 8, left: 12 })
 
         List({ space: 12, initialIndex: 0 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: number) => {
             ListItem() {
               Text('' + item)
                 .width('90%')
@@ -164,7 +164,7 @@ struct NavigationPage {
                 .fontWeight(500)
                 .textAlign(TextAlign.Center)
             }.editable(true)
-          }, item => item)
+          }, (item: number) => item.toString())
         }
         .height(324)
         .width('100%')

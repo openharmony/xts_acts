@@ -27,8 +27,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function provideBrother2() {
@@ -67,7 +67,7 @@ export default function provideBrother2() {
       console.info('provideBrotherTwoTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('provideBrother2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provideBrotherTwoTest_0100] component obj is: " + JSON.stringify(obj));
       console.info("[provideBrotherTwoTest_0100] title: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual('reviewVotes(20), give +1');

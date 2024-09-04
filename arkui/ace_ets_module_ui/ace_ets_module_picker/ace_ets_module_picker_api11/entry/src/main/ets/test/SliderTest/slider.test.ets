@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils.ets'
+import Utils from '../../MainAbility/common/Utils'
 import events_emitter from '@ohos.events.emitter';
 
 export default function sliderMovingJsunit() {
@@ -57,7 +57,7 @@ export default function sliderMovingJsunit() {
         let callback = (eventData: events_emitter.EventData) => {
           try {
             console.info("testsliderMoving0011 get event data is: " + JSON.stringify(eventData));
-            expect(eventData.data.Mode).assertEqual(0);
+            expect(eventData.data?.Mode).assertEqual(0);
           } catch (err) {
             console.info("testsliderMoving0011 get event err data is: " + JSON.stringify(err));
           }

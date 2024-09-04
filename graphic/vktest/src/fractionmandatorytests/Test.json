@@ -40,13 +40,11 @@
             "type": "PushKit"
         },
         {
-            "type": "CommandKit",
-            "teardown": [
-                {
-                    "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanFraction_mandatory_testsTest.qpa->ActsVulkanFraction_mandatory_testsTest.qpa"
-                }
-            ]
+          "type": "CommandKit",
+          "teardown": [{
+          "name": "pull",
+          "value": "/data/local/tmp/ActsVulkanFractionmandatorytestsTest.qpa->ActsVulkanFractionmandatorytestsTest.qpa"
+          }]
         },
         {
             "type": "ShellKit",
@@ -56,7 +54,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/vulkandata/genlocal.py ActsVulkanFraction_mandatory_testsTest fraction-mandatory-tests.txt"
+            "python testcases/vulkandata/genlocal.py ActsVulkanFractionmandatorytestsTest fraction-mandatory-tests.txt"
             ]
         }
 

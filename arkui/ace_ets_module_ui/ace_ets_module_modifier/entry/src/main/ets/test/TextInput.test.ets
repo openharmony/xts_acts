@@ -51,7 +51,7 @@ export default function textInput() {
     it('textInputJsunit_0100', 0, async (done: Function) => {
       console.info('textInputJsunit_0100 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0100] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.maxLines).assertEqual('1');
       console.info('textInputJsunit_0100 END');
@@ -69,7 +69,7 @@ export default function textInput() {
     it('textInputJsunit_0101', 0, async (done: Function) => {
       console.info('textInputJsunit_0101 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0101] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.showUnderline).assertEqual(true);
       console.info('textInputJsunit_0101 END');
@@ -87,7 +87,7 @@ export default function textInput() {
     it('textInputJsunit_0102', 0, async (done: Function) => {
       console.info('textInputJsunit_0102 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0102] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.showError).assertEqual('Error');
       console.info('textInputJsunit_0102 END');
@@ -105,7 +105,7 @@ export default function textInput() {
     it('textInputJsunit_0103', 0, async (done: Function) => {
       console.info('textInputJsunit_0103 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0103] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.passwordIcon).assertEqual('{"onIconSrc":"begin","offIconSrc":"end"}');
       console.info('textInputJsunit_0103 END');
@@ -123,7 +123,7 @@ export default function textInput() {
     it('textInputJsunit_0104', 0, async (done: Function) => {
       console.info('textInputJsunit_0104 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0104] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.style).assertEqual('TextInputStyle.Inline');
       console.info('textInputJsunit_0104 END');
@@ -141,7 +141,7 @@ export default function textInput() {
     it('textInputJsunit_0105', 0, async (done: Function) => {
       console.info('textInputJsunit_0105 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0105] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.selectionMenuHidden).assertEqual(undefined);
       console.info('textInputJsunit_0105 END');
@@ -159,7 +159,7 @@ export default function textInput() {
     it('textInputJsunit_0106', 0, async (done: Function) => {
       console.info('textInputJsunit_0106 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0106] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.barState).assertEqual('BarState.AUTO');
       console.info('textInputJsunit_0106 END');
@@ -177,7 +177,7 @@ export default function textInput() {
     it('textInputJsunit_0107', 0, async (done: Function) => {
       console.info('textInputJsunit_0107 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0107] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.enableKeyboardOnFocus).assertEqual(undefined);
       console.info('textInputJsunit_0107 END');
@@ -195,9 +195,9 @@ export default function textInput() {
     it('textInputJsunit_0109', 0, async (done: Function) => {
       console.info('textInputJsunit_0109 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0109] obj is: " + JSON.stringify(obj.$attrs));
-      let caretStyle_obj = JSON.parse(obj.$attrs.caretStyle);
+      let caretStyle_obj: ESObject = JSON.parse(obj.$attrs.caretStyle);
       expect(caretStyle_obj.width).assertEqual("12.00vp");
       console.info('textInputJsunit_0109 END');
       done();
@@ -214,7 +214,7 @@ export default function textInput() {
     it('textInputJsunit_0110', 0, async (done: Function) => {
       console.info('textInputJsunit_0110 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0110] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.selectedBackgroundColor).assertEqual('#330000FF');
       console.info('textInputJsunit_0110 END');
@@ -232,7 +232,7 @@ export default function textInput() {
     it('textInputJsunit_0111', 0, async (done: Function) => {
       console.info('textInputJsunit_0111 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0111] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.caretPosition).assertEqual('0');
       console.info('textInputJsunit_0111 END');
@@ -250,7 +250,7 @@ export default function textInput() {
     it('textInputJsunit_0112', 0, async (done: Function) => {
       console.info('textInputJsunit_0112 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0112] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.caretColor).assertEqual('#FF007DFF');
       console.info('textInputJsunit_0112 END');
@@ -268,9 +268,9 @@ export default function textInput() {
     it('textInputJsunit_0113', 0, async (done: Function) => {
       console.info('textInputJsunit_0113 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0113] obj is: " + JSON.stringify(obj.$attrs));
-      let placeholderFont = JSON.parse(obj.$attrs.placeholderFont);
+      let placeholderFont: ESObject = JSON.parse(obj.$attrs.placeholderFont);
       expect(placeholderFont.size).assertEqual('14.00fp');
       expect(placeholderFont.weight).assertEqual('400');
       console.info('textInputJsunit_0113 END');
@@ -288,7 +288,7 @@ export default function textInput() {
     it('textInputJsunit_0114', 0, async (done: Function) => {
       console.info('textInputJsunit_0114 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0114] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.placeholderColor).assertEqual('#80808080');
       console.info('textInputJsunit_0114 END');
@@ -306,7 +306,7 @@ export default function textInput() {
     it('textInputJsunit_0115', 0, async (done: Function) => {
       console.info('textInputJsunit_0115 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0115] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.type).assertEqual('InputType.Password');
       console.info('textInputJsunit_0115 END');
@@ -324,7 +324,7 @@ export default function textInput() {
     it('textInputJsunit_0116', 0, async (done: Function) => {
       console.info('textInputJsunit_0116 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0116] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Done');
       console.info('textInputJsunit_0116 END');
@@ -342,7 +342,7 @@ export default function textInput() {
     it('textInputJsunit_0117', 0, async (done: Function) => {
       console.info('textInputJsunit_0117 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0117] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.maxLength).assertEqual('9');
       console.info('textInputJsunit_0117 END');
@@ -360,7 +360,7 @@ export default function textInput() {
     it('textInputJsunit_0118', 0, async (done: Function) => {
       console.info('textInputJsunit_0118 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0118] obj is: " + JSON.stringify(obj.$attrs));
       // expect(obj.$attrs.fontColor).assertEqual('#FF123456');
       expect(obj.$attrs.fontColor).assertNotNull;
@@ -379,7 +379,7 @@ export default function textInput() {
     it('textInputJsunit_0119', 0, async (done: Function) => {
       console.info('textInputJsunit_0119 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0119] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontSize).assertEqual('14.00fp');
       console.info('textInputJsunit_0119 END');
@@ -397,7 +397,7 @@ export default function textInput() {
     it('textInputJsunit_0120', 0, async (done: Function) => {
       console.info('textInputJsunit_0120 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0120] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontStyle).assertEqual('FontStyle.Normal');
       console.info('textInputJsunit_0120 END');
@@ -415,7 +415,7 @@ export default function textInput() {
     it('textInputJsunit_0121', 0, async (done: Function) => {
       console.info('textInputJsunit_0121 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0121] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontWeight).assertEqual('FontWeight.Bold');
       console.info('textInputJsunit_0121 END');
@@ -433,7 +433,7 @@ export default function textInput() {
     it('textInputJsunit_0122', 0, async (done: Function) => {
       console.info('textInputJsunit_0122 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0122] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontFamily).assertEqual('fontFamily');
       console.info('textInputJsunit_0122 END');
@@ -451,7 +451,7 @@ export default function textInput() {
     it('textInputJsunit_0123', 0, async (done: Function) => {
       console.info('textInputJsunit_0123 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0123] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.copyOption).assertEqual('CopyOptions.None');
       console.info('textInputJsunit_0123 END');
@@ -469,7 +469,7 @@ export default function textInput() {
     it('textInputJsunit_0124', 0, async (done: Function) => {
       console.info('textInputJsunit_0124 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0124] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.showPasswordIcon).assertEqual(true);
       console.info('textInputJsunit_0124 END');
@@ -487,7 +487,7 @@ export default function textInput() {
     it('textInputJsunit_0125', 0, async (done: Function) => {
       console.info('textInputJsunit_0125 START');
       let strJson = getInspectorByKey('textInputKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputJsunit_0125] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Center');
       console.info('textInputJsunit_0125 END');
@@ -509,7 +509,7 @@ export default function textInput() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('textInputKey1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textInputJsunit_0127 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontSize).assertEqual("15.00fp")
       console.info('textInputJsunit_0127 END');

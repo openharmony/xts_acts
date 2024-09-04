@@ -91,8 +91,10 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurMultipleCalls, T
         std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_real_distribution<float> dis(0, 10);
+        std::uniform_int_distribution<int> enum_dis(0, 3);
+        OH_Drawing_TileMode tileMode = static_cast<OH_Drawing_TileMode>(enum_dis(gen));
         OH_Drawing_ImageFilter *filter =
-            OH_Drawing_ImageFilterCreateBlur(dis(gen), dis(gen), OH_Drawing_TileMode::MIRROR, nullptr);
+            OH_Drawing_ImageFilterCreateBlur(dis(gen), dis(gen), tileMode, nullptr);
         EXPECT_NE(filter, nullptr);
         OH_Drawing_ImageFilterDestroy(filter);
     }

@@ -35,7 +35,7 @@ struct navigationPosition {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback:Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'navBarWidth') {
         this.navBarWidth = message.value;
@@ -89,7 +89,7 @@ struct navigationPosition {
                 this.dex = index
               })
             }
-          }, (item:number) => item.toString())
+          }, (item: number) => item.toString())
         }
         .height('100%')
         .margin({ top: 12, left: 12 })

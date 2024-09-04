@@ -137,6 +137,10 @@ import RichEditorAddApi from './RichEditor/RichEditorAddApi.test'
 import editMeunOptionsTest from './Text/editMeunOptions.test'
 import RichEditorApi13 from './RichEditor/RichEditorApi13.test'
 import onDidIMEInputTest from './RichEditor/onDidIMEInput.test';
+import TextHalfLeading from './Text/TextHalfLeading.test'
+import ImageResizable from './ImageTest/ImageResizable.test';
+import TextDataDetectorConfig from './Text/TextDataDetectorConfig.test';
+import FontSettingOptions from './Text/FontSettingOptions.test';
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -256,4 +260,8 @@ export default function testsuite() {
   RichEditorAddApi();
   editMeunOptionsTest();
   onDidIMEInputTest();
+  TextHalfLeading();
+  ImageResizable(); 
+  TextDataDetectorConfig();
+  FontSettingOptions();
 }

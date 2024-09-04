@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter'
 
 
@@ -72,7 +72,7 @@ export default function PersistentStoragePersistPropJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('text_button_Keys');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PersistentStoragePersistPropJsunit_0100] obj1 is: " + JSON.stringify(obj1));
 
       expect(obj1.$attrs.content).assertEqual('Keys:["aPropA","aPropB"]');
@@ -83,7 +83,7 @@ export default function PersistentStoragePersistPropJsunit() {
       await button_Keys2.click();
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('text_button_Keys');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[PersistentStoragePersistPropJsunit_0102] obj2 is: " + JSON.stringify(obj2));
       console.info(obj2.$attrs.content);
       expect(obj2.$attrs.content).assertEqual('Keys:["aPropA"]');
@@ -104,7 +104,7 @@ export default function PersistentStoragePersistPropJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('text_button_Keys');
-      let obj3 = JSON.parse(strJson1);
+      let obj3: ESObject = JSON.parse(strJson1);
       console.info("[PersistentStoragePersistPropJsunit_0200] obj3 is: " + JSON.stringify(obj3));
 
       expect(obj3.$attrs.content).assertEqual('Keys:["aPropA"]');

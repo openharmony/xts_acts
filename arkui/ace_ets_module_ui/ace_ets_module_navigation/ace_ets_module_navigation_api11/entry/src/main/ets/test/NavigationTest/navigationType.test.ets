@@ -42,7 +42,7 @@ export default function navigationTypeTest() {
       console.info('ArkUX_Navigation_1600 START');
       setTimeout(() => {
         try {
-          let strJson = getInspectorByKey('ArkUX_Navigation_1600');
+          let strJson: string = getInspectorByKey('ArkUX_Navigation_1600');
           console.info('ArkUX_Navigation_1600 START  :' + JSON.stringify(strJson));
           console.info("ArkUX_Navigation_1600 JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
           expect(JSON.parse(strJson).$attrs.mode).assertEqual("NavigationMode.AUTO");
@@ -62,7 +62,7 @@ export default function navigationTypeTest() {
       console.info('ArkUX_Navigation_1700 START');
       setTimeout(() => {
         try {
-          let strJson = getInspectorByKey('ArkUX_Navigation_1700');
+          let strJson: string = getInspectorByKey('ArkUX_Navigation_1700');
           console.info('ArkUX_Navigation_1700 START  :' + JSON.stringify(strJson));
           console.info("ArkUX_Navigation_1700 JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
           expect(JSON.parse(strJson).$attrs.mode).assertEqual("NavigationMode.STACK");
@@ -82,7 +82,7 @@ export default function navigationTypeTest() {
       console.info('ArkUX_Navigation_1800 START');
       setTimeout(() => {
         try {
-          let strJson = getInspectorByKey('ArkUX_Navigation_1800');
+          let strJson: string = getInspectorByKey('ArkUX_Navigation_1800');
           console.info('ArkUX_Navigation_1800 START  :' + JSON.stringify(strJson));
           console.info("ArkUX_Navigation_1800 JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
           expect(JSON.parse(strJson).$attrs.mode).assertEqual("NavigationMode.SPLIT");
@@ -102,7 +102,7 @@ export default function navigationTypeTest() {
       console.info('ArkUX_Navigation_1900 START');
       setTimeout(() => {
         try {
-          let strJson = getInspectorByKey('ArkUX_Navigation_1900');
+          let strJson: string = getInspectorByKey('ArkUX_Navigation_1900');
           console.info('ArkUX_Navigation_1900 START  :' + JSON.stringify(strJson));
           console.info("ArkUX_Navigation_1900 JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
           expect(JSON.parse(strJson).$attrs.mode).assertEqual("NavigationMode.AUTO");
@@ -122,7 +122,7 @@ export default function navigationTypeTest() {
       console.info('ArkUX_Navigation_2000 START');
       setTimeout(() => {
         try {
-          let strJson = getInspectorByKey('ArkUX_Navigation_2000');
+          let strJson: string = getInspectorByKey('ArkUX_Navigation_2000');
           console.info('ArkUX_Navigation_2000 START  :' + JSON.stringify(strJson));
           console.info("ArkUX_Navigation_2000 JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
           expect(JSON.parse(strJson).$attrs.mode).assertEqual("NavigationMode.SPLIT");
@@ -142,7 +142,7 @@ export default function navigationTypeTest() {
       console.info('ArkUX_Navigation_2100 START');
       setTimeout(() => {
         try {
-          let strJson = getInspectorByKey('ArkUX_Navigation_2100');
+          let strJson: string = getInspectorByKey('ArkUX_Navigation_2100');
           console.info('ArkUX_Navigation_2100 START  :' + JSON.stringify(strJson));
           console.info("ArkUX_Navigation_2100 JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
           expect(JSON.parse(strJson).$attrs.mode).assertEqual("NavigationMode.SPLIT");

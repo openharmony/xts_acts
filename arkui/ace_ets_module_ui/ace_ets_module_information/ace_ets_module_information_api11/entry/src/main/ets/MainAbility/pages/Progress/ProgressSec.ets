@@ -64,8 +64,8 @@ struct progressSecTest {
     color: $r('sys.color.ohos_id_color_connected'),
     offset: 0
   }, { color: $r('sys.color.ohos_id_color_background'), offset: 1 }])
-  @State progress_ring_color_linear_null: LinearGradient = null
-  @State progress_ring_color_linear_undefined: LinearGradient = undefined
+  @State progress_ring_color_linear_null: LinearGradient | null = null
+  @State progress_ring_color_linear_undefined: LinearGradient | undefined = undefined
   @State progress_ring_enableScanEffect_boolean: boolean = false
   @State progress_ring_enableSmoothEffect_boolean: boolean = false
   @State progress_linear_enableScanEffect_boolean: boolean = false
@@ -74,52 +74,55 @@ struct progressSecTest {
   @State progress_eclipse_enableSmoothEffect_boolean: boolean = false
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("progress page state change called:" + JSON.stringify(eventData));
-    console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: callback " + eventData.data.progress_capsule_borderWidth_resource);
+    console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: callback " +
+      eventData.data?.progress_capsule_borderWidth_resource);
 
-    this.progress_capsule_borderWidth_number = eventData.data.progress_capsule_borderWidth_number;
-    this.progress_capsule_borderWidth_string = eventData.data.progress_capsule_borderWidth_string;
-    this.progress_capsule_borderWidth_resource = eventData.data.progress_capsule_borderWidth_resource;
-    console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: callback2 " + this.progress_capsule_borderWidth_resource);
-    this.progress_capsule_borderColor_number = eventData.data.progress_capsule_borderColor_number;
-    this.progress_capsule_borderColor_string = eventData.data.progress_capsule_borderColor_string;
-    this.progress_capsule_borderColor_color = eventData.data.progress_capsule_borderColor_color;
-    this.progress_capsule_borderColor_resource = eventData.data.progress_capsule_borderColor_resource;
-    this.progress_capsule_fontSize_number = eventData.data.progress_capsule_fontSize_number;
-    this.progress_capsule_fontSize_string = eventData.data.progress_capsule_fontSize_string;
-    this.progress_capsule_fontSize_resource = eventData.data.progress_capsule_fontSize_resource;
-    this.progress_capsule_fontWeight_number = eventData.data.progress_capsule_fontWeight_number;
-    this.progress_capsule_fontWeight_string = eventData.data.progress_capsule_fontWeight_string;
-    this.progress_capsule_fontWeight_fontWeight = eventData.data.progress_capsule_fontWeight_fontWeight;
-    this.progress_capsule_fontStyle_fontStyle = eventData.data.progress_capsule_fontStyle_fontStyle;
-    this.progress_capsule_fontColor_number = eventData.data.progress_capsule_fontColor_number;
-    this.progress_capsule_fontColor_string = eventData.data.progress_capsule_fontColor_string;
-    this.progress_capsule_fontColor_color = eventData.data.progress_capsule_fontColor_color;
-    this.progress_capsule_fontColor_resource = eventData.data.progress_capsule_fontColor_resource;
-    this.progress_capsule_content_string = eventData.data.progress_capsule_content_string;
-    this.progress_capsule_enableScanEffect_boolean = eventData.data.progress_capsule_enableScanEffect_boolean;
-    this.progress_capsule_showDefaultPercentage_boolean = eventData.data.progress_capsule_showDefaultPercentage_boolean;
-    this.progress_capsule_enableSmoothEffect_boolean = eventData.data.progress_capsule_enableSmoothEffect_boolean;
+    this.progress_capsule_borderWidth_number = eventData.data?.progress_capsule_borderWidth_number;
+    this.progress_capsule_borderWidth_string = eventData.data?.progress_capsule_borderWidth_string;
+    this.progress_capsule_borderWidth_resource = eventData.data?.progress_capsule_borderWidth_resource;
+    console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: callback2 " +
+      this.progress_capsule_borderWidth_resource);
+    this.progress_capsule_borderColor_number = eventData.data?.progress_capsule_borderColor_number;
+    this.progress_capsule_borderColor_string = eventData.data?.progress_capsule_borderColor_string;
+    this.progress_capsule_borderColor_color = eventData.data?.progress_capsule_borderColor_color;
+    this.progress_capsule_borderColor_resource = eventData.data?.progress_capsule_borderColor_resource;
+    this.progress_capsule_fontSize_number = eventData.data?.progress_capsule_fontSize_number;
+    this.progress_capsule_fontSize_string = eventData.data?.progress_capsule_fontSize_string;
+    this.progress_capsule_fontSize_resource = eventData.data?.progress_capsule_fontSize_resource;
+    this.progress_capsule_fontWeight_number = eventData.data?.progress_capsule_fontWeight_number;
+    this.progress_capsule_fontWeight_string = eventData.data?.progress_capsule_fontWeight_string;
+    this.progress_capsule_fontWeight_fontWeight = eventData.data?.progress_capsule_fontWeight_fontWeight;
+    this.progress_capsule_fontStyle_fontStyle = eventData.data?.progress_capsule_fontStyle_fontStyle;
+    this.progress_capsule_fontColor_number = eventData.data?.progress_capsule_fontColor_number;
+    this.progress_capsule_fontColor_string = eventData.data?.progress_capsule_fontColor_string;
+    this.progress_capsule_fontColor_color = eventData.data?.progress_capsule_fontColor_color;
+    this.progress_capsule_fontColor_resource = eventData.data?.progress_capsule_fontColor_resource;
+    this.progress_capsule_content_string = eventData.data?.progress_capsule_content_string;
+    this.progress_capsule_enableScanEffect_boolean = eventData.data?.progress_capsule_enableScanEffect_boolean;
+    this.progress_capsule_showDefaultPercentage_boolean = 
+      eventData.data?.progress_capsule_showDefaultPercentage_boolean;
+    this.progress_capsule_enableSmoothEffect_boolean = eventData.data?.progress_capsule_enableSmoothEffect_boolean;
 
-    this.progress_ring_strokeWidth_number = eventData.data.progress_ring_strokeWidth_number;
-    this.progress_ring_strokeWidth_string = eventData.data.progress_ring_strokeWidth_string;
-    this.progress_ring_strokeWidth_resource = eventData.data.progress_ring_strokeWidth_resource;
-    this.progress_ring_shadow_bool = eventData.data.progress_ring_shadow_bool;
-    this.progress_ring_status_progressStatus = eventData.data.progress_ring_status_progressStatus;
-    this.progress_ring_color_purity = eventData.data.progress_ring_color_purity;
-    this.progress_ring_color_linear_number = eventData.data.progress_ring_color_linear_number;
-    this.progress_ring_color_linear_string = eventData.data.progress_ring_color_linear_string;
-    this.progress_ring_color_linear_color = eventData.data.progress_ring_color_linear_color;
-    this.progress_ring_color_linear_resource = eventData.data.progress_ring_color_linear_resource;
-    this.progress_ring_color_linear_null = eventData.data.progress_ring_color_linear_null;
-    this.progress_ring_color_linear_undefined = eventData.data.progress_ring_color_linear_undefined;
-    this.progress_ring_enableScanEffect_boolean = eventData.data.progress_ring_enableScanEffect_boolean;
-    this.progress_ring_enableSmoothEffect_boolean = eventData.data.progress_ring_enableSmoothEffect_boolean;
+    this.progress_ring_strokeWidth_number = eventData.data?.progress_ring_strokeWidth_number;
+    this.progress_ring_strokeWidth_string = eventData.data?.progress_ring_strokeWidth_string;
+    this.progress_ring_strokeWidth_resource = eventData.data?.progress_ring_strokeWidth_resource;
+    this.progress_ring_shadow_bool = eventData.data?.progress_ring_shadow_bool;
+    this.progress_ring_status_progressStatus = eventData.data?.progress_ring_status_progressStatus;
+    this.progress_ring_color_purity = eventData.data?.progress_ring_color_purity;
+    this.progress_ring_color_linear_number = eventData.data?.progress_ring_color_linear_number;
+    this.progress_ring_color_linear_string = eventData.data?.progress_ring_color_linear_string;
+    this.progress_ring_color_linear_color = eventData.data?.progress_ring_color_linear_color;
+    this.progress_ring_color_linear_resource = eventData.data?.progress_ring_color_linear_resource;
+    this.progress_ring_color_linear_null = eventData.data?.progress_ring_color_linear_null;
+    this.progress_ring_color_linear_undefined = eventData.data?.progress_ring_color_linear_undefined;
+    this.progress_ring_enableScanEffect_boolean = eventData.data?.progress_ring_enableScanEffect_boolean;
+    this.progress_ring_enableSmoothEffect_boolean = eventData.data?.progress_ring_enableSmoothEffect_boolean;
 
-    this.progress_linear_enableScanEffect_boolean = eventData.data.progress_linear_enableScanEffect_boolean;
-    this.progress_linear_enableSmoothEffect_boolean = eventData.data.progress_linear_enableSmoothEffect_boolean;
+    this.progress_linear_enableScanEffect_boolean = eventData.data?.progress_linear_enableScanEffect_boolean;
+    this.progress_linear_enableSmoothEffect_boolean = eventData.data?.progress_linear_enableSmoothEffect_boolean;
 
-    this.progress_scaleRing_enableSmoothEffect_boolean = eventData.data.progress_scaleRing_enableSmoothEffect_boolean;
-    this.progress_eclipse_enableSmoothEffect_boolean = eventData.data.progress_eclipse_enableSmoothEffect_boolean;
+    this.progress_scaleRing_enableSmoothEffect_boolean = eventData.data?.progress_scaleRing_enableSmoothEffect_boolean;
+    this.progress_eclipse_enableSmoothEffect_boolean = eventData.data?.progress_eclipse_enableSmoothEffect_boolean;
   }
   messageManager: MessageManager = new MessageManager()
 

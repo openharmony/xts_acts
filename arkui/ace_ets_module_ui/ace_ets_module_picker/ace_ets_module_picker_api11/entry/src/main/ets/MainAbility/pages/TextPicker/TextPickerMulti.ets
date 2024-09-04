@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@ts-nocheck
 
 @Entry
 @Component
@@ -99,7 +98,7 @@ struct TextPickerMultiTest {
           })
         TextPicker({ range: this.cascade })
           .key('textpicker_9')
-          .selectedIndex([1, 1, ''])
+          .selectedIndex([1, 1, fakeNumber('')])
           .width('300')
           .onChange((value: string | string[], index: number | number[]) => {
             console.info('Picker item changed1, value: ' + JSON.stringify(value))
@@ -121,4 +120,8 @@ struct TextPickerMultiTest {
     }
     .height('100%')
   }
+}
+
+function fakeNumber(val: number|string) {
+  return val as number
 }

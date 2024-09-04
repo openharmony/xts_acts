@@ -1,27 +1,22 @@
 {
   "app": {
     "bundleName": "com.ohos.st.formswithoutpermtest",
-    "vendor": "ohos",
+    "vendor": "example",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
-    },
-    "apiVersion": {
-      "compatible": 7,
-      "releaseType": "Release",
-      "target": 7
     }
   },
   "deviceConfig": {},
   "module": {
     "package": "com.ohos.st.formswithoutpermtest",
-    "name": ".FormSTApp",
+    "name": ".entry",
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
+    "default",
+    "tablet",
+    "2in1",
+    "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -29,42 +24,6 @@
       "moduleType": "entry",
       "installationFree": false
     },
-    "abilities": [
-      {
-        "skills": [
-          {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "action.system.home"
-            ]
-          }
-        ],
-        "visible": true,
-        "name": ".MainAbility",
-        "srcPath": "MainAbility",
-        "srcLanguage": "ets",
-        "icon": "$media:icon",
-        "description": "$string:description_mainability",
-        "label": "$string:entry_MainAbility",
-        "type": "page",
-        "launchType": "standard"
-      },
-      {
-        "orientation": "unspecified",
-        "formsEnabled": false,
-        "name": ".TestAbility",
-        "srcLanguage": "ets",
-        "srcPath": "TestAbility",
-        "icon": "$media:icon",
-        "description": "$string:TestAbility_desc",
-        "label": "$string:TestAbility_label",
-        "type": "page",
-        "visible": true,
-        "launchType": "singleton"
-      }
-    ],
     "defPermissions": [
       {
         "availableScope": [],
@@ -91,6 +50,31 @@
         "reason": "need use ohos.permission.CLEAN_BACKGROUND_PROCESSES"
       }
     ],
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "orientation": "unspecified",
+        "formsEnabled": false,
+        "name": ".MainAbility",
+        "srcLanguage": "ets",
+        "srcPath": "MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:MainAbility_desc",
+        "label": "$string:MainAbility_label",
+        "type": "page",
+        "visible": true,
+        "launchType": "standard"
+      }
+    ],
     "js": [
       {
         "mode": {
@@ -101,20 +85,6 @@
           "pages/index"
         ],
         "name": ".MainAbility",
-        "window": {
-          "designWidth": 720,
-          "autoDesignWidth": false
-        }
-      },
-      {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
-        "pages": [
-          "pages/index"
-        ],
-        "name": ".TestAbility",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false

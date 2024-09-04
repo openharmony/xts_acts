@@ -14,6 +14,7 @@
  */
 
 import router from '@ohos.router'
+import { BusinessError } from '@ohos.base';
 // import uiAppearance from '@ohos.uiAppearance';
 
 import Log from '../../common/Log';
@@ -34,7 +35,7 @@ struct RouterStandard {
     try {
       await router.pushUrl(options)
     } catch (err) {
-      console.info(`Standard Page fail callback, code: ${err.code}, msg: ${err.msg}`)
+      console.info(`Standard Page fail callback, code: ${(err as BusinessError).code}, msg: ${(err as BusinessError).message}`)
     }
   }
 
@@ -49,7 +50,7 @@ struct RouterStandard {
     try {
       await router.pushUrl(options)
     } catch (err) {
-      console.info(`Single Page fail callback, code: ${err.code}, msg: ${err.msg}`)
+      console.info(`Single Page fail callback, code: ${(err as BusinessError).code}, msg: ${(err as BusinessError).message}`)
     }
   }
 

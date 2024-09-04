@@ -11,29 +11,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
-ohos_js_hap_suite("ActsScreenLockETSApiTest") {
-  hap_profile = "./entry/src/main/config.json"
-  deps = [
-    ":screenLock_ets_assets",
-    ":screenLock_ets_resources",
-    ":screenLock_ets_test_assets",
-  ]
-  ets2abc = true
+
+ohos_js_app_suite("ActsScreenLockETSApiTest") {
+  test_hap = true
+  testonly = true
+  js_build_mode = "debug"
   subsystem_name = "theme"
   part_name = "screenlock_mgr"
-  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsScreenLockETSApiTest"
-}
-
-ohos_js_assets("screenLock_ets_assets") {
-  source_dir = "./entry/src/main/ets/MainAbility"
-}
-ohos_js_assets("screenLock_ets_resources") {
-  source_dir = "./entry/src/main/ets/TestAbility"
-}
-ohos_resources("screenLock_ets_test_assets") {
-  sources = [ "./entry/src/main/resources" ]
-  hap_profile = "./entry/src/main/config.json"
+  certificate_profile = "signature/openharmony_sx.p7b"
 }

@@ -23,7 +23,7 @@ export default function NavRouterJsunit() {
   describe('NavRouterJsunit',  () =>{
     beforeEach(async  (done:Function) =>{
       console.info("NavRouter beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/NavRouter/NavRouterPage',
       }
       try {

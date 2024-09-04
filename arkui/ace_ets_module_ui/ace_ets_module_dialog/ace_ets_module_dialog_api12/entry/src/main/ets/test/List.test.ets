@@ -61,13 +61,15 @@ import DateTimeOptions from './TimePickerDialogTest/DateTimeOptions.test';
 import closeBindSheetTest from './UIContextTest/closeBindSheetTest.test'
 import openBindSheetTest from './UIContextTest/openBindSheetTest.test'
 import updateBindSheetTest from './UIContextTest/updateBindSheetTest.test'
-import closeCustomDialogTest from './UIContextTest/closeCustomDialogTest.test'
-import uiOpenCustomDialogTest from './UIContextTest/openCustomDialogTest.test'
-import updateCustomDialogTest from './UIContextTest/updateCustomDialogTest.test'
+import uiCloseCustomDialogTest from './UIContextTest/uiCloseCustomDialogTest.test'
+import uiOpenCustomDialogTest from './UIContextTest/uiOpenCustomDialogTest.test'
+import uiUpdateCustomDialogTest from './UIContextTest/uiUpdateCustomDialogTest.test'
 import subMenuExpandingModeTest_STACK_EXPAND from './MenuTest/MenuApiTest/subMenuExpandingModeTest_STACK_EXPAND.test';
 import interstitialDialogActionTest from './Dialog/InterstitialDialogAction.test';
-
-
+import showToastTest from './promptActionTest/showToast.test';
+import BaseDialogTest from './CustomDialogTest/KeyboardAvoidMode/BaseDialogTest.test';
+import CustomDialogTest from './CustomDialogTest/KeyboardAvoidMode/CustomDialogTest.test';
+import PromptActionTest from './CustomDialogTest/KeyboardAvoidMode/PromptActionTest.test';
 export default function testsuite() {
   dialogApi();
   TextPickerDialog();
@@ -117,9 +119,13 @@ export default function testsuite() {
   closeBindSheetTest();
   openBindSheetTest();
   updateBindSheetTest();
-  closeCustomDialogTest();
+  uiCloseCustomDialogTest();
   uiOpenCustomDialogTest();
-  updateCustomDialogTest();
+  uiUpdateCustomDialogTest();
   subMenuExpandingModeTest_STACK_EXPAND();
   interstitialDialogActionTest();
+  showToastTest();
+  BaseDialogTest();
+  CustomDialogTest();
+  PromptActionTest();
 }

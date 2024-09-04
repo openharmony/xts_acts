@@ -51,7 +51,7 @@ export default function waterFlowView() {
     it('waterFlowViewJsunit_0200', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0200] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[waterFlowViewJsunit_0200] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.friction).assertEqual(1);
       console.info('[waterFlowViewJsunit_0200] END');
@@ -69,7 +69,7 @@ export default function waterFlowView() {
     it('waterFlowViewJsunit_0300', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0300] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[waterFlowViewJsunit_0300] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.enableScrollInteraction).assertEqual(true);
       console.info('[waterFlowViewJsunit_0300] END');
@@ -87,7 +87,7 @@ export default function waterFlowView() {
     it('waterFlowViewJsunit_0400', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0400] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[waterFlowViewJsunit_0400] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.columnsTemplate).assertEqual("1fr 1fr 1fr 1fr");
       console.info('[waterFlowViewJsunit_0400] END');
@@ -105,7 +105,7 @@ export default function waterFlowView() {
     it('waterFlowViewJsunit_0500', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0500] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[waterFlowViewJsunit_0500] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.itemConstraintSize)
         .assertEqual('{"minWidth":"1.00vp","minHeight":"1.00vp","maxWidth":"10.00vp","maxHeight":"10.00vp"}');
@@ -124,7 +124,7 @@ export default function waterFlowView() {
     it('waterFlowViewJsunit_0600', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0600] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[waterFlowViewJsunit_0600] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.columnsGap).assertEqual("1.00vp");
       console.info('[waterFlowViewJsunit_0600] END');
@@ -142,7 +142,7 @@ export default function waterFlowView() {
     it('waterFlowViewJsunit_0700', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0700] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[waterFlowViewJsunit_0700] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.rowsTemplate).assertEqual("1fr 1fr 1fr 1fr");
       console.info('[waterFlowViewJsunit_0700] END');
@@ -160,7 +160,7 @@ export default function waterFlowView() {
     it('waterFlowViewJsunit_0800', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0800] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[waterFlowViewJsunit_0800] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.rowsGap).assertEqual("1.00vp");
       console.info('[waterFlowViewJsunit_0800] END');
@@ -178,7 +178,7 @@ export default function waterFlowView() {
     it('waterFlowViewJsunit_0900', 0, async (done: Function) => {
       console.info('[waterFlowViewJsunit_0900] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[waterFlowViewJsunit_0900] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs['layoutDirection ']).assertEqual("FlexDirection.Column");
       console.info('[waterFlowViewJsunit_0900] END');
@@ -200,7 +200,7 @@ export default function waterFlowView() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('WaterFlowKey1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("waterFlowViewJsunit_1000 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.columnsGap).assertEqual('2.00vp');
       console.info('waterFlowViewJsunit_1000 END');

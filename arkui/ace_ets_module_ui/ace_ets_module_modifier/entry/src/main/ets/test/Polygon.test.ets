@@ -53,7 +53,7 @@ export default function polygonJsunit() {
       console.info('testpolygon_001 START');
 
       let strJsonNew = getInspectorByKey('polygon1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
 
       console.info("testpolygon_001 objNew component  is: " + JSON.stringify(objNew.$attrs));
 
@@ -77,7 +77,7 @@ export default function polygonJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('polygon1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       expect(objNew.$attrs.points).assertEqual(true);
       console.info('testpolygon_002 END');
       done();

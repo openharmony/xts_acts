@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common'
+import CommonFunc from '../../MainAbility/common/Common'
 
 
 export default function PropEnumJsunit() {
@@ -72,14 +72,14 @@ export default function PropEnumJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropEnum');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropEnumJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[PropEnumJsunit_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Father State: 2");
       console.info('[PropEnumJsunit_0200] END');
 
       let strJson1 = getInspectorByKey('ChildPropEnum');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PropEnumJsunit_0200] component obj is: " + JSON.stringify(obj1));
       console.info("[PropEnumJsunit_0200] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Child Prop: 2");
@@ -95,13 +95,13 @@ export default function PropEnumJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ChildPropEnum');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropEnumJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[PropEnumJsunit_0400] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Child Prop: 3");
 
       let strJson1 = getInspectorByKey('PropEnum');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PropEnumJsunit_0200] component obj is: " + JSON.stringify(obj1));
       console.info("[PropEnumJsunit_0200] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Father State: 1");

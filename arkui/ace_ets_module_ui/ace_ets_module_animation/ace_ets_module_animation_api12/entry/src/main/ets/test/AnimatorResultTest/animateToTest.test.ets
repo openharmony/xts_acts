@@ -19,8 +19,8 @@ import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY,
 import text from "@ohos.graphics.text"
 
 export default function animateToTest() {
-  describe('animateToTest', function () {
-    beforeEach(async function (done) {
+  describe('animateToTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("animateToTest beforeEach start");
       try {
         router.clear();
@@ -38,7 +38,7 @@ export default function animateToTest() {
       console.info("animateToTest foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info("animateToTest after each called");
     });
@@ -52,7 +52,7 @@ export default function animateToTest() {
      * @tc.level      : Level 3
      */
 
-    it('animateToTest_001', 0, async function (done) {
+    it('animateToTest_001', 0, async (done: Function) => {
       console.info('[animateToTest_001] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -61,7 +61,7 @@ export default function animateToTest() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('animateToTest');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[animateToTest_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 

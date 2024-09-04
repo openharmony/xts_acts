@@ -52,9 +52,9 @@ export default function listItemGroupJsunit() {
     it('testList_item_group0007', 0, async (done: Function) => {
       console.info('testList_item_group0007 START');
       let strJson = getInspectorByKey('ListItemGroupKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testList_item_group0007] obj value :" + JSON.stringify(obj.$attrs));
-      let divider = obj.$attrs.divider;
+      let divider: ESObject = obj.$attrs.divider;
       console.info("[testList_item_group0007] obj divider value :" + JSON.stringify(divider));
       expect(divider.strokeWidth).assertEqual("12.00vp");
       expect(divider.startMargin).assertEqual("2.00vp");
@@ -80,7 +80,7 @@ export default function listItemGroupJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('ListItemGroupKey1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("testList_item_group0008 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.divider.strokeWidth).assertEqual("13.00vp");
       console.info('testList_item_group0008 END');

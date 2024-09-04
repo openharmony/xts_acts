@@ -265,6 +265,53 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightInputDest
 }
 
 /*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_3004
+ * @tc.name: testCanvasGetWidthtestCanvasGetHeightMultipleCallsBoudary
+ * @tc.desc: test for testCanvasGetWidthtestCanvasGetHeightMultipleCallsBoudary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightMultipleCallsBoudary, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. Switch the binding to a bitmap canvas with different widths and heights 10 times, and verify the canvas
+    // information by calling OH_Drawing_CanvasGetHeight and OH_Drawing_CanvasGetWidth after each switch
+    constexpr uint32_t width = 4096;
+    constexpr uint32_t height = 2160;
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+        OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+        OH_Drawing_CanvasBind(canvas, bitmap);
+        int32_t canvasWidth = OH_Drawing_CanvasGetWidth(canvas);
+        int32_t canvasHeight = OH_Drawing_CanvasGetHeight(canvas);
+        EXPECT_EQ(canvasWidth, width);
+        EXPECT_EQ(canvasHeight, height);
+        OH_Drawing_BitmapDestroy(bitmap);
+    }
+    // 3. Switch the binding to different widths and heights of bitmap canvas 10 times
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+        OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+        OH_Drawing_CanvasBind(canvas, bitmap);
+        OH_Drawing_BitmapDestroy(bitmap);
+    }
+
+    // 4. Call OH_Drawing_CanvasGetHeight and OH_Drawing_CanvasGetWidth 10 times to verify the canvas
+    for (int i = 0; i < 10; i++) {
+        int32_t canvasWidth = OH_Drawing_CanvasGetWidth(canvas);
+        int32_t canvasHeight = OH_Drawing_CanvasGetHeight(canvas);
+        EXPECT_EQ(canvasWidth, width);
+        EXPECT_EQ(canvasHeight, height);
+    }
+
+    // 5. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_3100
  * @tc.name: testCanvasGetLocalClipBoundsNormal
  * @tc.desc: test for testCanvasGetLocalClipBoundsNormal.
@@ -424,6 +471,52 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsMultipleCalls, Tes
  */
 HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsInputDestroyed, TestSize.Level3) {
     // Deprecated
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_3105
+ * @tc.name: testCanvasGetLocalClipBoundsMultipleCallsBoundary
+ * @tc.desc: test for testCanvasGetLocalClipBoundsMultipleCallsBoundary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsMultipleCallsBoundary, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. Switch the binding to a bitmap canvas with different widths and heights 10 times, and verify the canvas
+    // information by calling OH_Drawing_CanvasGetLocalClipBounds after each switch
+    uint32_t width = 4096;
+    uint32_t height = 2160;
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+        OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+        OH_Drawing_CanvasBind(canvas, bitmap);
+        OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, width, height);
+        OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
+        OH_Drawing_RectDestroy(rect);
+        OH_Drawing_BitmapDestroy(bitmap);
+    }
+    // 3. Switch the binding to different widths and heights of bitmap canvas 10 times
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+        OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+        OH_Drawing_CanvasBind(canvas, bitmap);
+        OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, width, height);
+        OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
+        OH_Drawing_RectDestroy(rect);
+        OH_Drawing_BitmapDestroy(bitmap);
+    }
+    // 4. Call OH_Drawing_CanvasGetLocalClipBounds 10 times to verify the canvas
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
+    }
+    // 5. Free memory
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_CanvasDestroy(canvas);
 }
 
 /*
@@ -1380,6 +1473,31 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsMaximum, TestSize.Level3) 
 }
 
 /*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4005
+ * @tc.name: testCanvasReadPixelsBoundary
+ * @tc.desc: test for testCanvasReadPixelsBoundary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsBoundary, TestSize.Level0) {
+    // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. Call OH_Drawing_CanvasReadPixels
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    constexpr uint32_t width = 4096;
+    constexpr uint32_t height = 2160;
+    OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+    void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
+    OH_Drawing_Image_Info imageInfo;
+    OH_Drawing_CanvasReadPixels(canvas, &imageInfo, pixels, 0, 0, 0);
+    // 3. Free memory
+    OH_Drawing_BitmapDestroy(bitmap);
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4100
  * @tc.name: testCanvasReadPixelsToBitmapNormal
  * @tc.desc: test for testCanvasReadPixelsToBitmapNormal.
@@ -1559,12 +1677,13 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacterNull, TestSize.Le
     //6. OH_Drawing_CanvasDrawSingleCharacter parameter canvas is empty
     float x = 0.f;
     float y = 0.f;
-    const char *str = "0";
+    const char *str = "a";
     OH_Drawing_CanvasDrawSingleCharacter(nullptr, str, font, x, y);
     //7. OH_Drawing_CanvasDrawSingleCharacter parameter str is empty
     str = "";
     OH_Drawing_CanvasDrawSingleCharacter(canvas, str, font, x, y);
     //8. OH_Drawing_CanvasDrawSingleCharacter parameter font is empty
+    str = "a";
     OH_Drawing_CanvasDrawSingleCharacter(canvas, str, nullptr, x, y);
     //9. OH_Drawing_CanvasDrawSingleCharacter parameter str to 0 characters
     OH_Drawing_CanvasDrawSingleCharacter(canvas, str, font, x, y);
@@ -1632,28 +1751,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointNull, TestSize.Level3) {
  */
 HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointMultipleCalls, TestSize.Level3) {
     //1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_Canvas *canvases[10];
+    for (int i = 0; i < 10; i++) {
+        canvases[i]= OH_Drawing_CanvasCreate();
+    }
     //2. Call OH_Drawing_CanvasDrawPoint 10 times
     OH_Drawing_Point2D point1 = {0.0f, 0.0f};
-    OH_Drawing_CanvasDrawPoint (canvas, &point1);
-    OH_Drawing_Point2D point2 = {1.0f, 1.0f};
-    OH_Drawing_CanvasDrawPoint (canvas, &point2);
-    OH_Drawing_Point2D point3 = {2.0f, 2.0f};
-    OH_Drawing_CanvasDrawPoint (canvas, &point3);
-    OH_Drawing_Point2D point4 = {3.0f, 3.0f};
-    OH_Drawing_CanvasDrawPoint (canvas, &point4);
-    OH_Drawing_Point2D point5 = {4.0f, 4.0f};
-    OH_Drawing_CanvasDrawPoint (canvas, &point5);
-    OH_Drawing_Point2D point6 = {5.0f, 5.0f};
-    OH_Drawing_CanvasDrawPoint (canvas, &point6);
-    OH_Drawing_Point2D point7 = {6.0f, 6.0f};
-    OH_Drawing_CanvasDrawPoint (canvas, &point7);
-    OH_Drawing_Point2D point8 = {7.0f, 7.0f};
-    OH_Drawing_CanvasDrawPoint (canvas, &point8);
-    OH_Drawing_Point2D point9 = {8.0f, 8.0f};
-    OH_Drawing_CanvasDrawPoint (canvas, &point9);
-    OH_Drawing_Point2D point10 = {9.0f, 9.0f};
-    OH_Drawing_CanvasDrawPoint (canvas, &point10);
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_CanvasDrawPoint(canvases[i], &point1);
+    }
 }
 
 /*
@@ -1860,23 +1966,19 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyMultipleCalls, TestSize.L
         OH_Drawing_CanvasClipRoundRect(canvas, roundRect, clipOp, doAntiAlias[i]);
     }
     //4. Call OH_Drawing_CanvasIsClipEmpty 10 times
-    bool isClipEmpty[] = {true, false};
-    for (int i = 0; i < 2; i++) {
-        OH_Drawing_CanvasIsClipEmpty(nullptr, &isClipEmpty[i]);
+    bool isClipEmpty = true;
+    OH_Drawing_Canvas *canvases[10];
+    for (int i = 0; i < 10; i++) {
+        canvases[i]= OH_Drawing_CanvasCreate();
     }
-    for (int i = 0; i < 2; i++) {
-        OH_Drawing_CanvasIsClipEmpty(nullptr, &isClipEmpty[i]);
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_CanvasIsClipEmpty(canvases[i], &isClipEmpty);
     }
-    for (int i = 0; i < 2; i++) {
-        OH_Drawing_CanvasIsClipEmpty(canvas, &isClipEmpty[i]);
-    }
-    for (int i = 0; i < 2; i++) {
-        OH_Drawing_CanvasIsClipEmpty(canvas, &isClipEmpty[i]);
-    }
-    OH_Drawing_CanvasIsClipEmpty(canvas, nullptr);
-    OH_Drawing_CanvasIsClipEmpty(canvas, nullptr);
     //5. free memory
     OH_Drawing_CanvasDestroy(canvas);
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_CanvasDestroy(canvases[i]);
+    }
     OH_Drawing_RectDestroy(rect);
     OH_Drawing_RoundRectDestroy(roundRect);
 }
@@ -1981,20 +2083,104 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoMultipleCalls, TestSize.
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_CanvasBind(canvas, bitmap);
     //6. Call OH_Drawing_CanvasGetImageInfo 10 times
-    OH_Drawing_CanvasGetImageInfo(canvas, &imageInfo);
-    OH_Drawing_CanvasGetImageInfo(canvas, &imageInfo);
-    OH_Drawing_CanvasGetImageInfo(canvas, &imageInfo);
-    OH_Drawing_CanvasGetImageInfo(canvas, &imageInfo);
-    OH_Drawing_CanvasGetImageInfo(nullptr, &imageInfo);
-    OH_Drawing_CanvasGetImageInfo(nullptr, &imageInfo);
-    OH_Drawing_CanvasGetImageInfo(nullptr, &imageInfo);
-    OH_Drawing_CanvasGetImageInfo(canvas, nullptr);
-    OH_Drawing_CanvasGetImageInfo(canvas, nullptr);
-    OH_Drawing_CanvasGetImageInfo(canvas, nullptr);
+    OH_Drawing_Canvas *canvases[10];
+    for (int i = 0; i < 10; i++) {
+        canvases[i]= OH_Drawing_CanvasCreate();
+    }
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_CanvasGetImageInfo(canvases[i], &imageInfo);
+    }
     //7. free memory
     OH_Drawing_CanvasDestroy(canvas);
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_CanvasDestroy(canvases[i]);
+    }
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_BitmapDestroy(frompixels);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4700
+ * @tc.name: testCanvasClipRegionNormal
+ * @tc.desc: test for testCanvasClipRegionNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRegionNormal, TestSize.Level0) {
+    //1. OH_Drawing_RectCreate
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_CanvasClipOp clipOp = {OH_Drawing_CanvasClipOp::DIFFERENCE};
+    //2. OH_Drawing_RegionCreate
+    OH_Drawing_Region *region = OH_Drawing_RegionCreate();
+    //3. OH_Drawing_RegionSetRect
+    OH_Drawing_RegionSetRect(region, rect);
+    //4. OH_Drawing_CanvasClipRegion
+    OH_Drawing_CanvasClipRegion(canvas, region, clipOp);
+    //5. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RegionDestroy(region);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4701
+ * @tc.name: testCanvasClipRegionNull
+ * @tc.desc: test for testCanvasClipRegionNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRegionNull, TestSize.Level3) {
+    //1. OH_Drawing_RectCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_CanvasClipOp clipOp = {OH_Drawing_CanvasClipOp::DIFFERENCE};
+    //2. OH_Drawing_RegionCreate
+    OH_Drawing_Region *region = OH_Drawing_RegionCreate();
+    //3. OH_Drawing_RegionSetRect
+    OH_Drawing_RegionSetRect(region, rect);
+    //4. OH_Drawing_CanvasClipRegion with the first parameter as nullptr
+    OH_Drawing_CanvasClipRegion(nullptr, region, clipOp);
+    //5. OH_Drawing_CanvasClipRegion with the second parameter as nullptr
+    OH_Drawing_CanvasClipRegion(canvas, nullptr, clipOp);
+    //6. free memory
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RegionDestroy(region);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_4702
+ * @tc.name: testCanvasClipRegionMultipleCalls
+ * @tc.desc: test for testCanvasClipRegionMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRegionMultipleCalls, TestSize.Level3) {
+    //1. OH_Drawing_RectCreate
+    OH_Drawing_Canvas *canvases[10];
+    for (int i = 0; i < 10; i++) {
+        canvases[i]= OH_Drawing_CanvasCreate();
+    }
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_CanvasClipOp clipOp = {OH_Drawing_CanvasClipOp::DIFFERENCE};
+    //2. OH_Drawing_RegionCreate
+    OH_Drawing_Region *region = OH_Drawing_RegionCreate();
+    //3. OH_Drawing_RegionSetRect
+    OH_Drawing_RegionSetRect(region, rect);
+    //4. Call OH_Drawing_CanvasClipRegion 10 times
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_CanvasClipRegion(canvases[i], region, clipOp);
+    }
+    //5. free memory
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_CanvasDestroy(canvases[i]);
+    }
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RegionDestroy(region);
 }
 
 } // namespace Drawing

@@ -153,6 +153,29 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateFromGpuContextNull, TestSize
 }
 
 /*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SURFACE_0102
+ * @tc.name: testSurfaceCreateFromGpuContextBoundary
+ * @tc.desc: test for testSurfaceCreateFromGpuContextBoundary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateFromGpuContextBoundary, TestSize.Level0) {
+    OH_Drawing_GpuContextOptions options{true};
+    gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);
+    EXPECT_NE(gpuContext_, nullptr);
+    const int32_t width = 4096;
+    const int32_t height = 2160;
+    OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, true, imageInfo);
+    EXPECT_NE(surface_, nullptr);
+    OH_Drawing_SurfaceDestroy(surface_);
+    surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, false, imageInfo);
+    EXPECT_NE(surface_, nullptr);
+    OH_Drawing_SurfaceDestroy(surface_);
+}
+
+/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SURFACE_0200
  * @tc.name: testSurfaceDestroyNormal
  * @tc.desc: test for testSurfaceDestroyNormal.
@@ -235,6 +258,31 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceGetCanvasNull, TestSize.Level3) {
     OH_Drawing_SurfaceDestroy(surface_);
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SURFACE_0302
+ * @tc.name: testSurfaceGetCanvasBoundary
+ * @tc.desc: test for testSurfaceGetCanvasBoundary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeSurFaceTest, testSurfaceGetCanvasBoundary, TestSize.Level0) {
+    OH_Drawing_GpuContextOptions options{true};
+    gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);
+    EXPECT_NE(gpuContext_, nullptr);
+    // 1. OH_Drawing_SurfaceCreateFromGpuContext
+    const int32_t width = 4096;
+    const int32_t height = 2160;
+    OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, true, imageInfo);
+    EXPECT_NE(surface_, nullptr);
+    // 2. OH_Drawing_SurfaceGetCanvas, get the canvas object from the surface object, a pointer to the surface object,
+    // and call the drawing interface
+    canvas_ = OH_Drawing_SurfaceGetCanvas(surface_);
+    EXPECT_NE(canvas_, nullptr);
+    // 3. Free memory
+    OH_Drawing_SurfaceDestroy(surface_);
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

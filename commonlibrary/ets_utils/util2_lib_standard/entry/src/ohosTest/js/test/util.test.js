@@ -4540,7 +4540,7 @@ describe('LRUCacheTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-     it('testLRUCacheAfterRemoval008', 0, function () {
+    it('testLRUCacheAfterRemoval008', 0, function () {
         var arrk = [];
         var arrv = [];
         class ChildLRUCache extends util.LRUCache
@@ -4569,6 +4569,158 @@ describe('LRUCacheTest', function () {
         expect(arrv[0]).assertEqual(2)
         expect(arrv[1]).assertEqual(10)
         expect(arrv[2]).assertEqual(8)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_CONSTRUCTOR_001
+     * @tc.name: testLRUCacheConstrcutor001
+     * @tc.desc: The default constructor is used to create a new LRUCache instance with a default capacity of 64.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheConstrcutor001', 0, function () {
+        try{
+            var that = new util.LRUCache(0.1)
+        } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of 0.1 must be small integer');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error. The type of 0.1 must be small integer");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_CONSTRUCTOR_00
+     * @tc.name: testLRUCacheConstrcutor001
+     * @tc.desc: The default constructor is used to create a new LRUCache instance with a default capacity of 64.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheConstrcutor002', 0, function () {
+        try{
+            var that = new util.LRUCache(-0.1)
+        } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of -0.1 must be small integer');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error. The type of -0.1 must be small integer");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_UPDATE_GET_CAPACITY_007
+     * @tc.name: testLRUCacheUpdateGetCapacity007
+     * @tc.desc: Updates the buffer capacity to a specified capacity.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheUpdateGetCapacity007', 0, function () {
+        var that = new util.LRUCache(200)
+        try {
+            that.updateCapacity(-20);
+        } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of -20 must be small integer');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error. The type of -20 must be small integer");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_UPDATE_GET_CAPACITY_008
+     * @tc.name: testLRUCacheUpdateGetCapacity008
+     * @tc.desc: Updates the buffer capacity to a specified capacity.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheUpdateGetCapacity008', 0, function () {
+        var that = new util.LRUCache(200)
+        try {
+            that.updateCapacity(50.5);
+        } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of 50.5 must be small integer');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error. The type of 50.5 must be small integer");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_GET_007
+     * @tc.name: testLRUCacheGet007
+     * @tc.desc: Obtains the value associated with a specified key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheGet007', 0, function () {
+        var that = new util.LRUCache()
+        that.put(20,'cdjcaxb')
+        try {
+            var result1 = that.get(null);
+        } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of null must be Object');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error. The type of null must be Object");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_PUT_007
+     * @tc.name: testLRUCachePut007
+     * @tc.desc: Adds a key-value pair to the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCachePut007', 0, function () {
+        var that = new util.LRUCache()
+        try {
+            that.put(null,'bcjdshc')
+          } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of key and value must be Object');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error. The type of key and value must be Object");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_PUT_008
+     * @tc.name: testLRUCachePut008
+     * @tc.desc: Adds a key-value pair to the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCachePut008', 0, function () {
+        var that = new util.LRUCache()
+        try {
+            that.put(123, null)
+          } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of key and value must be Object');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error. The type of key and value must be Object");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_REMOVE_007
+     * @tc.name: testLRUCacheRemove007
+     * @tc.desc: Deletes a specified key and its associated value from the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheRemove007', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        try {
+            that.remove(null)
+        } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of null must be Object');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error. The type of null must be Object");
+        }
     })
 })
 

@@ -28,8 +28,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 export default function extendTrackTest() {
   describe('extendTrackTest', () => {
@@ -78,7 +78,7 @@ export default function extendTrackTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('extendTrack_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[extendTrackTest_0100] component obj is: " + JSON.stringify(obj));
       console.info("[extendTrackTest_0100] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('c1=80');
@@ -101,7 +101,7 @@ export default function extendTrackTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('extendTrack_2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[extendTrackTest_0200] component obj is: " + JSON.stringify(obj));
       console.info("[extendTrackTest_0200] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('p1=80');
@@ -124,7 +124,7 @@ export default function extendTrackTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('extendTrack_3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[extendTrackTest_0300] component obj is: " + JSON.stringify(obj));
       console.info("[extendTrackTest_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('cj1=80');
@@ -147,7 +147,7 @@ export default function extendTrackTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('extendTrack_4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[extendTrackTest_0400] component obj is: " + JSON.stringify(obj));
       console.info("[extendTrackTest_0400] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('pj1=80');

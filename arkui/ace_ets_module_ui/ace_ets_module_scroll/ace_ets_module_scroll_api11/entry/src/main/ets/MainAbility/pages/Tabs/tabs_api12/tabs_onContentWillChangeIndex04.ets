@@ -70,7 +70,7 @@ struct TabsExampleApi12I04 {
         this.currentIndex = index
       })
       .width(360)
-      .height(600)
+      .height(300)
       .backgroundColor('#F1F3F5')
       .scrollable(true)
       .onContentWillChange((currentIndex, comingIndex) => {

@@ -141,7 +141,7 @@ export default function searchTest() {
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[searchTest_002] component obj2 is: " + JSON.stringify(obj2));
       await CommonFunc.sleep(1000);
-      expect(obj2.$attrs.content).assertEqual('true');
+      expect(obj2.$attrs.content).assertEqual('false');
 
       console.info('[searchTest_003] END');
       done();

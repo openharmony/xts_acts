@@ -2,10 +2,11 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "800000",
+        "test-timeout": "180000",
+        "shell-timeout": "600000",
         "bundle-name": "com.example.threadWorkertest",
-        "module-name": "entry",
-        "shell-timeout": "800000"
+        "module-name": "entry_test",
+        "testcase-timeout": 70000
     },
     "kits": [
         {
@@ -15,5 +16,5 @@
             "type": "AppInstallKit",
             "cleanup-apps": true
         }
-    ] 
+    ]
 }

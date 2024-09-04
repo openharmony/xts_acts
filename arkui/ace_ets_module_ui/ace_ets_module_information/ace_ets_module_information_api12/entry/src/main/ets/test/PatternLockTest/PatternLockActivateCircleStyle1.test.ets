@@ -58,7 +58,7 @@ export default function PatternLockActivateCircleStyle1() {
       await CommonFunc.sleep(2000);
 
       let strJson1 = getInspectorByKey('PatternLock_activateCircleStyle');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[VideoReset1_0100] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.activeCircleColor).assertEqual('#FF90EE90');

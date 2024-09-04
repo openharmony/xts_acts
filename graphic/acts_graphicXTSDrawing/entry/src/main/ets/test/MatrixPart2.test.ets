@@ -368,44 +368,6 @@ export default function drawingTsMatrixPart2Test() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_1302
-     * @tc.name      : testMatrixPreRotateMismatch
-     * @tc.desc      : testMatrixPreRotateMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testMatrixPreRotateMismatch', DEFAULT, () => {
-      const msg = 'testMatrixPreRotateMismatch';
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.preRotate(90, 100, 100, 100);
-        console.info(msg + ' preRotate successed');
-      } catch (e) {
-        console.info(msg + ` preRotate errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.preRotate(90, 100);
-        console.info(msg + ' preRotate successed');
-      } catch (e) {
-        console.info(msg + ` preRotate errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.preRotate('s', 100,100);
-        console.info(msg + ' preRotate successed');
-      } catch (e) {
-        console.info(msg + ` preRotate errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        eexpect(e.code).assertEqual(401);
-      }
-    })
-
-    /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_1303
      * @tc.name      : testMatrixPreRotateMultipleCalls
      * @tc.desc      : testMatrixPreRotateMultipleCalls
@@ -985,45 +947,6 @@ export default function drawingTsMatrixPart2Test() {
       }
     })
 
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_1702
-     * @tc.name      : testMatrixMapPointsMismatch
-     * @tc.desc      : testMatrixMapPointsMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testMatrixMapPointsMismatch', DEFAULT, () => {
-      const msg = 'testMatrixMapPointsMismatch';
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.mapPoints([{100,100}], [{100,100}]);
-        console.info(msg + ' mapPoints successed');
-      } catch (e) {
-        console.info(msg + ` mapPoints errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.mapPoints();
-        console.info(msg + ' mapPoints successed');
-      } catch (e) {
-        console.info(msg + ` mapPoints errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.mapPoints('S');
-        console.info(msg + ' mapPoints successed');
-      } catch (e) {
-        console.info(msg + ` mapPoints errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
-
-
     /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_1703
      * @tc.name      : testMatrixMapPointsMultipleCalls
@@ -1125,48 +1048,6 @@ export default function drawingTsMatrixPart2Test() {
         expect(e.code).assertEqual(401);
       }
     })
-
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_1802
-     * @tc.name      : testMatrixMapRectMismatch
-     * @tc.desc      : testMatrixMapRectMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testMatrixMapRectMismatch', DEFAULT, () => {
-      const msg = 'testMatrixMapRectMismatch';
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.mapRect( { left: 200.1, top: 200.1, right: 300.1, bottom: 400.1},
-          { left: 100.1, top: 100.1, right: 200.1, bottom: 200.1},
-          { left: 100.1, top: 100.1, right: 200.1, bottom: 200.1});
-        console.info(msg + ' mapRect successed');
-      } catch (e) {
-        console.info(msg + ` mapRect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.mapRect( { left: 200.1, top: 200.1, right: 300.1, bottom: 400.1});
-        console.info(msg + ' mapRect successed');
-      } catch (e) {
-        console.info(msg + ` mapRect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.mapRect('a',  { left: 100.1, top: 100.1, right: 200.1, bottom: 200.1});
-        console.info(msg + ' mapRect successed');
-      } catch (e) {
-        console.info(msg + ` mapRect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        eexpect(e.code).assertEqual(401);
-      }
-    })
-
 
     /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_1803
@@ -1299,46 +1180,6 @@ export default function drawingTsMatrixPart2Test() {
         expect(e.code).assertEqual(401);
       }
     })
-
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_1902
-     * @tc.name      : testMatrixSetRectToRectMismatch
-     * @tc.desc      : testMatrixSetRectToRectMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testMatrixSetRectToRectMismatch', DEFAULT, () => {
-      const msg = 'testMatrixSetRectToRectMismatch';
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.setRectToRect( { left: 200.1, top: 200.1, right: 300.1, bottom: 400.1},  { left: 100.1, top: 100.1, right: 200.1, bottom: 200.1},  drawing.ScaleToFit.FILL_SCALE_TO_FIT , drawing.ScaleToFit.FILL_SCALE_TO_FIT )
-        console.info(msg + ' setRectToRect successed');
-      } catch (e) {
-        console.info(msg + ` setRectToRect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.setRectToRect( { left: 200.1, top: 200.1, right: 300.1, bottom: 400.1},{ left: 100.1, top: 100.1, right: 200.1, bottom: 200.1})
-        console.info(msg + ' setRectToRect successed');
-      } catch (e) {
-        console.info(msg + ` setRectToRect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let matrix = new drawing.Matrix();
-        matrix.setRectToRect('a',  { left: 100.1, top: 100.1, right: 200.1, bottom: 200.1},  drawing.ScaleToFit.FILL_SCALE_TO_FIT , drawing.ScaleToFit.FILL_SCALE_TO_FIT )
-        console.info(msg + ' setRectToRect successed');
-      } catch (e) {
-        console.info(msg + ` setRectToRect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-    })
-
 
     /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_1903
@@ -1516,51 +1357,6 @@ export default function drawingTsMatrixPart2Test() {
         expect(e.code).assertEqual(401);
       }
     })
-
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_2002
-     * @tc.name      : testMatrixSetPolyToPolyMismatch
-     * @tc.desc      : testMatrixSetPolyToPolyMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testMatrixSetPolyToPolyMismatch', DEFAULT, () => {
-      const msg = 'testMatrixSetPolyToPolyMismatch';
-      try {
-        let matrix = new drawing.Matrix();
-        let srcPoints: Array<common2D.Point> = [ {x: 200, y: 20}, {x: 200, y: 60} ];
-        let dstPoints: Array<common2D.Point> = [];
-        matrix.setPolyToPoly(srcPoints, dstPoints, 2, 2)
-        console.info(msg + ' setPolyToPoly successed');
-      } catch (e) {
-        console.info(msg + ` setPolyToPoly errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-      try {
-        let matrix = new drawing.Matrix();
-        let srcPoints: Array<common2D.Point> = [ {x: 200, y: 20}, {x: 200, y: 60} ];
-        let dstPoints: Array<common2D.Point> = [];
-        matrix.setPolyToPoly(srcPoints, dstPoints);
-        console.info(msg + ' setPolyToPoly successed');
-      } catch (e) {
-        console.info(msg + ` setPolyToPoly errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let matrix = new drawing.Matrix();
-        let srcPoints: Array<common2D.Point> = [ {x: 200, y: 20}, {x: 200, y: 60} ];
-        let dstPoints: Array<common2D.Point> = [];
-        matrix.setPolyToPoly(’s', dstPoints, 2)
-        console.info(msg + ' setPolyToPoly successed');
-      } catch (e) {
-        console.info(msg + ` setPolyToPoly errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
-
 
     /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_2003

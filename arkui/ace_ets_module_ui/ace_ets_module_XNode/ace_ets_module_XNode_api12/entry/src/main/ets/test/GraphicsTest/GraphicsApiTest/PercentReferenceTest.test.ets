@@ -18,10 +18,10 @@ import CommonFunc from "../../../MainAbility/utils/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from "@ohos.UiTest";
 
 export default function PercentReferenceTest() {
-  describe("PercentReferenceTest", function () {
-    beforeEach(async function (done) {
+  describe("PercentReferenceTest", () => {
+    beforeEach(async (done: Function) => {
       console.info("PercentReferenceTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Graphics/GraphicsApi/PercentReference"
       }
       try {
@@ -40,7 +40,7 @@ export default function PercentReferenceTest() {
       console.info("PercentReferenceTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("PercentReferenceTest after each called");
     });
@@ -53,7 +53,7 @@ export default function PercentReferenceTest() {
      * @tc.type
     * @tc.size
      */
-    it("PercentReferenceTest_001", 0, async function (done) {
+    it("PercentReferenceTest_001", 0, async (done: Function) => {
       console.info("[PercentReferenceTest_001] START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

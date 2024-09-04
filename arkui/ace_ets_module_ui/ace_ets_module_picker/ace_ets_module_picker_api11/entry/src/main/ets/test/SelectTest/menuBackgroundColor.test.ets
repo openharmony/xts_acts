@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function menuBackgroundColor() {
-  describe('menuBackgroundColor', function () {
-    beforeEach(async function (done) {
+  describe('menuBackgroundColor', () => {
+    beforeEach(async (done: Function) => {
       console.info("menuBackgroundColor beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Select/menuBackgroundColor',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Select/menuBackgroundColor',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function menuBackgroundColor() {
      * @tc.desc      To test that the menuBackgroundColor decorator.
      * @tc.level     Level 2
      */
-    it('menuBackgroundColor_0100', 0, async function (done) {
+    it('menuBackgroundColor_0100', 0, async (done: Function) => {
       console.info('menuBackgroundColor_0100 START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -57,7 +57,7 @@ export default function menuBackgroundColor() {
       await Select.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('menuBackgroundColor');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[menuBackgroundColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[menuBackgroundColor_0100] title: " + JSON.stringify(obj.$attrs.menuBackgroundColor));
       expect(obj.$attrs.menuBackgroundColor).assertEqual('#FF808080');

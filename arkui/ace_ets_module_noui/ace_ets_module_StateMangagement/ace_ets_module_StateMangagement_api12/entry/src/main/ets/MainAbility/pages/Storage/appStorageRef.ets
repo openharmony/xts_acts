@@ -19,8 +19,8 @@ AppStorage.setAndRef("PropAkk", 37)
 @Component
 struct appStorageRef {
   private content: string = "AppStorage";
-  @State refA1Value: AbstractProperty<number> = AppStorage.ref("PropAAk")
-  @State refA2Value: AbstractProperty<number> = AppStorage.get("PropAkk")
+  @State refA1Value?: AbstractProperty<number> = AppStorage.ref("PropAAk")
+  @State refA2Value?: AbstractProperty<number> = AppStorage.get("PropAkk")
 
   build() {
     Column() {

@@ -65,7 +65,7 @@ export default function toggleJsunit() {
     it('ToggleJsunit001', 0, async (done: Function) => {
       console.info('[ToggleJsunit001] START');
       let strJson = getInspectorByKey('toggleCheckbox');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ToggleJsunit001] obj: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.selectedColor).assertEqual('#FF0000FF');
       console.info('[ToggleJsunit001] END');
@@ -83,7 +83,7 @@ export default function toggleJsunit() {
     it('ToggleJsunit002', 0, async (done: Function) => {
       console.info('[ToggleJsunit002] START');
       let strJson = getInspectorByKey('toggleCheckbox');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ToggleJsunit002] obj: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.switchPointColor).assertEqual('#FF008000');
       console.info('[ToggleJsunit002] END');
@@ -105,7 +105,7 @@ export default function toggleJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('toggleCheckbox'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("ToggleJsunit003 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.selectedColor).assertEqual("#FF0000FF"); //
       console.info('ToggleJsunit003 END');

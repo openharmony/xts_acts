@@ -35,7 +35,7 @@ export default function shortcutKeyJsunit() {
         if (pages == null || !("shortcutKey" == pages.name)) {
           await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch((err:BusinessError) => {
+          }).catch((err: BusinessError) => {
             console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
@@ -56,12 +56,12 @@ export default function shortcutKeyJsunit() {
     it('ArkUI_Shortcut_Key_0100', 0, async (done: Function) => {
       let CASE = 'ArkUI_Shortcut_Key_0100'
       console.info(`${SUITE} ${CASE} START`);
-      let callback = (event) => {
-        expect(event.data.msg).assertEqual('Ctrl_B');
-        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
+      let callback = (event: events_emitter.EventData) => {
+        expect(event.data?.msg).assertEqual('Ctrl_B');
+        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data?.msg);
         done();
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: baseEvent,
         priority: events_emitter.EventPriority.LOW
       }

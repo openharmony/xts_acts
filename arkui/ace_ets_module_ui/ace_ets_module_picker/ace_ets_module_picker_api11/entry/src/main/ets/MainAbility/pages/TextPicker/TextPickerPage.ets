@@ -21,8 +21,8 @@ struct TextPickerPage {
   private select: number = 0
   @State parameterValue: string = 'orange2'
   @State defaultPickerItemHeight: number = 20
-  @State getValue: string = 'value'
-  @State getIndex: number = 0
+  @State getValue: string|string[] = 'value'
+  @State getIndex: number|number[] = 0
   messageManager:MessageManager = new MessageManager()
 
   onPageShow() {
@@ -30,7 +30,7 @@ struct TextPickerPage {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback:Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'fruits') {
         this.fruits = message.value
@@ -55,12 +55,12 @@ struct TextPickerPage {
         .width("100%")
         .height("80%")
         .defaultPickerItemHeight(this.defaultPickerItemHeight)
-        .onChange((value: string, index: number) => {
+        .onChange((value: string|string[], index: number|number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index)
           this.getValue = value
           this.getIndex = index
         })
-      Text(this.getValue + ': ' + this.getIndex.toString()).fontSize(20).key('textContent1')
+      Text(this.getValue.toString() + ': ' + this.getIndex.toString()).fontSize(20).key('textContent1')
     }
   }
 }

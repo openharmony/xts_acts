@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// import { resourceManager } from "@kit.LocalizationKit";
+
 import  resourceManager  from "@ohos.resourceManager";
 
 

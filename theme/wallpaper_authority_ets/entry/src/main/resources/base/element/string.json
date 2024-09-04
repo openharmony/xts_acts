@@ -1,19 +1,15 @@
 {
   "string": [
     {
-      "name": "entry_MainAbility",
-      "value": "ActsWallpapernAuthorityETSApiTest"
+      "name": "module_desc",
+      "value": "module description"
     },
     {
-      "name": "description_mainability",
-      "value": "ETS_Empty Ability"
-    },
-    {
-      "name": "TestAbility_desc",
+      "name": "EntryAbility_desc",
       "value": "description"
     },
     {
-      "name": "TestAbility_label",
+      "name": "EntryAbility_label",
       "value": "label"
     }
   ]

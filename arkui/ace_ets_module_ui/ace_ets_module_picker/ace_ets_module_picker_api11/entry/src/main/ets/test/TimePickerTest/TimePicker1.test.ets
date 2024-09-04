@@ -14,7 +14,7 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
+import Utils from './Utils';
 import router from '@ohos.router';
 import CommonFunc from "../../MainAbility/common/Common";
 
@@ -88,7 +88,7 @@ export default function TimePicker1Test() {
         console.info("[timepicker_afterEach] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[selectTest_afterEach] change component data error: " + err.message);
+        console.log("[selectTest_afterEach] change component data error: " + (err as Error).message);
       }
       done();
     })
@@ -132,7 +132,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_disappearTextStyle_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0200] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0200] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('timePicker');
@@ -168,7 +168,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_disappearTextStyle_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0300] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0300] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -204,7 +204,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_disappearTextStyle_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0400] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0400] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -240,7 +240,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_disappearTextStyle_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0500] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0500] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -276,7 +276,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_disappearTextStyle_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0600] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0600] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -316,7 +316,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_disappearTextStyle_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0700] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0700] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -356,7 +356,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_disappearTextStyle_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0800] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0800] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('timePicker');
@@ -391,7 +391,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_disappearTextStyle_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0900] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_disappearTextStyle_0900] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('timePicker');
@@ -441,7 +441,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_textStyle_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_textStyle_0200] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_textStyle_0200] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('timePicker');
@@ -477,7 +477,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_textStyle_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_textStyle_0300] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_textStyle_0300] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -513,7 +513,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_textStyle_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_textStyle_0400] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_textStyle_0400] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -549,7 +549,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_textStyle_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_textStyle_0500] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_textStyle_0500] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -585,7 +585,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_textStyle_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_textStyle_0600] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_textStyle_0600] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -625,7 +625,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_textStyle_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_textStyle_0700] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_textStyle_0700] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -665,7 +665,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_textStyle_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_textStyle_0800] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_textStyle_0800] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('timePicker');
@@ -700,7 +700,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_textStyle_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_textStyle_0900] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_textStyle_0900] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('timePicker');
@@ -750,7 +750,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_selectedTextStyle_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0200] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0200] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('timePicker');
@@ -786,7 +786,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_selectedTextStyle_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0300] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0300] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -822,7 +822,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_selectedTextStyle_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0400] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0400] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -858,7 +858,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_selectedTextStyle_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0500] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0500] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -894,7 +894,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_selectedTextStyle_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0600] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0600] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -934,7 +934,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_selectedTextStyle_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0700] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0700] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('timePicker');
@@ -974,7 +974,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_selectedTextStyle_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0800] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0800] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('timePicker');
@@ -1009,7 +1009,7 @@ export default function TimePicker1Test() {
         console.info("[ArkUI_Stage_timepicker_selectedTextStyle_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0900] change component data error: " + err.message);
+        console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0900] change component data error: " + (err as Error).message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('timePicker');

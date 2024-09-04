@@ -33,7 +33,7 @@ struct RouterPushOne {
 
   @State message: string = 'RouterPushUrlOne'
   @State messageUI: string = 'UIRouterPushUrlOne'
-  @State routerUI: Router = undefined
+  @State routerUI: Router|undefined = undefined
 
   build() {
     Row() {
@@ -102,7 +102,7 @@ struct RouterPushOne {
           })
           .id("turn_UIRouterPushUrlTwo_noParms")
           .onClick(() => {
-            this.routerUI.pushUrl({
+            this.routerUI?.pushUrl({
               url: 'MainAbility/pages/State/RouterPushTwo'
             })
           })
@@ -113,7 +113,7 @@ struct RouterPushOne {
           })
           .id("turn_UIRouterPushUrlTwo_hasParms")
           .onClick(() => {
-            this.routerUI.pushUrl({
+            this.routerUI?.pushUrl({
               url: 'MainAbility/pages/State/RouterPushTwo',
               params: {
                 view: "params"
@@ -128,7 +128,7 @@ struct RouterPushOne {
           })
           .id("turn_UIRouterPushReplace_noParms")
           .onClick(() => {
-            this.routerUI.replaceUrl({
+            this.routerUI?.replaceUrl({
               url: 'MainAbility/pages/State/RouterPushTwo'
             })
           })
@@ -139,7 +139,7 @@ struct RouterPushOne {
           })
           .id("turn_UIRouterPushReplace_hasParms")
           .onClick(() => {
-            this.routerUI.replaceUrl({
+            this.routerUI?.replaceUrl({
               url: 'MainAbility/pages/State/RouterPushTwo',
               params: {
                 view: "params"

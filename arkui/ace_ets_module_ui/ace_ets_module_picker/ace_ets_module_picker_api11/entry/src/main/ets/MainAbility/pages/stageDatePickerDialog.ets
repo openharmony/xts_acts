@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -42,7 +43,7 @@ struct stageDatePickerDialog {
                 end: new Date("2100-12-31"),
                 selected: this.selectedDate,
                 onAccept: (value: DatePickerResult) => {
-                  this.selectedDate.setFullYear(value.year, value.month, value.day)
+                  this.selectedDate.setFullYear(value.year ?? 0, value.month, value.day)
                   console.info("DatePickerDialog:onAccept()" + JSON.stringify(value))
                 },
                 onCancel: () => {
@@ -64,7 +65,7 @@ struct stageDatePickerDialog {
               console.info("showDialog start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (error) {
-              console.error("showToast emit action state err:" + JSON.stringify(error.message));
+              console.error("showToast emit action state err:" + JSON.stringify((error as Error).message));
             }
             ;
           })
@@ -89,7 +90,7 @@ struct stageDatePickerDialog {
                 end: new Date("2100-12-31"),
                 selected: this.selectedDate,
                 onAccept: (value: DatePickerResult) => {
-                  this.selectedDate.setFullYear(value.year, value.month, value.day)
+                  this.selectedDate.setFullYear(value.year ?? 0, value.month, value.day)
                   console.info("DatePickerDialog:onAccept()" + JSON.stringify(value))
                 },
                 onCancel: () => {
@@ -136,7 +137,7 @@ struct stageDatePickerDialog {
                 end: new Date("2100-12-31"),
                 selected: this.selectedDate,
                 onAccept: (value: DatePickerResult) => {
-                  this.selectedDate.setFullYear(value.year, value.month, value.day)
+                  this.selectedDate.setFullYear(value.year ?? 0, value.month, value.day)
                   console.info("DatePickerDialog:onAccept()" + JSON.stringify(value))
                 },
                 onCancel: () => {
@@ -158,7 +159,7 @@ struct stageDatePickerDialog {
               console.info("showActionMenu start to emit action state")
               events_emitter.emit(backEvent2, backData2)
             } catch (error) {
-              console.error(`showActionMenu args error code is ${error.code}, message is ${error.message}`);
+              console.error(`showActionMenu args error code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`);
             }
             ;
           })

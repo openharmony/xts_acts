@@ -29,7 +29,7 @@
         function checkHeight(){
             let a = document.documentElement.clientHeight;
             let b = window.visualViewport.height
-            if (a<500 && b<500) {
+            if (a<2000 && b<2000) {
                 return true;
             }
             return false;
@@ -38,7 +38,7 @@
         function checkHeightOne(){
             let a = document.documentElement.clientHeight;
             let b = window.visualViewport.height
-            if (a==500 && b<500) {
+            if (a >= 1950 && a <= 2050 && b < 2000) {
                 return true;
             }
             return false;

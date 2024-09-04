@@ -168,7 +168,7 @@ export default function imageAnimatorJsunit() {
       console.info("imageAnimatorTest_0007 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
       expect(JSON.parse(strJsonNew).$attrs.images)
-        .assertEqual('[{\"src\":\"resource:///16777256.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"},{\"src\":\"resource:///16777257.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"},{\"src\":\"resource:///16777258.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"},{\"src\":\"resource:///16777259.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"}]');
+        .assertEqual('[{\"src\":\"resource:///16777257.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"},{\"src\":\"resource:///16777258.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"},{\"src\":\"resource:///16777259.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"},{\"src\":\"resource:///16777260.jpg\",\"left\":\"0.00vp\",\"top\":\"0.00vp\",\"width\":\"0.00vp\",\"height\":\"0.00vp\",\"duration\":\"0\"}]');
       console.info('imageAnimatorTest_0007 END');
       done();
     });

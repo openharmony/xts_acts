@@ -33,7 +33,7 @@ export default class MainAbility2 extends Ability {
     windowStage.setUIContent(this.context, "pages/index", null)
     setTimeout(() => {
       globalThis.abilityContext.terminateSelf().then(() => {
-        console.log("====>in terminateSelf====>");
+        console.log("====>MainAbility2 in terminateSelf====>");
       })
     }, 2000)
   }

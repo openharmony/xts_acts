@@ -534,6 +534,9 @@ export default function inputMethodStageJSUnit() {
       let previous = inputMethod.EnterKeyType.PREVIOUS;
       console.info("====>Sub_Misc_inputMethod_EnterKeyType_0100 previous:" + previous);
       expect(previous).assertEqual(7);
+      let newline = inputMethod.EnterKeyType.NEWLINE;
+      console.info("====>Sub_Misc_inputMethod_EnterKeyType_0100 previous:" + newline);
+      expect(newline).assertEqual(8);
       done();
     });
 

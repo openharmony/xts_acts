@@ -25,7 +25,7 @@ struct NavigationModel06 {
       Navigation() {
         Column() {
           List({space:12}){
-            ForEach(this.arr, (item:number) => {
+            ForEach(this.arr, (item: number) => {
               ListItem() {
                 NavRouter(){
                   Text("NavRouter" + item)

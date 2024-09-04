@@ -44,7 +44,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanSparse_resourcesTest.qpa->ActsVulkanSparse_resourcesTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanSparseresourcesTest.qpa->ActsVulkanSparseresourcesTest.qpa"
                 }
             ]
         },
@@ -56,7 +56,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/vulkandata/genlocal.py ActsVulkanSparse_resourcesTest sparse-resources.txt"
+                "python testcases/vulkandata/genlocal.py ActsVulkanSparseresourcesTest sparse-resources.txt"
             ]
         }
 

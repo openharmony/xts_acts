@@ -82,6 +82,7 @@ add_library(nativerender SHARED
     textarea/textarea_key_test.cpp
     textinput/textinput_key_test.cpp
     textarea/textarea_onchange_test.cpp
+    textarea/textarea_onpaste_test.cpp
     slider/slider_onchange_test.cpp
     textinput/textinput_onfocus_test.cpp
     textinput/textinput_onblur_test.cpp
@@ -90,7 +91,20 @@ add_library(nativerender SHARED
     textinput/textinput_onpaste_test.cpp
     arkApi/arkApi.cpp
     gesture/gesture_test.cpp
+    gestureScroll/gesture_interfaceTest.cpp
     customcomponent/customcomponent_event_test.cpp
+    drag/drag_disableDefaultDropAnimation.cpp
+    drag/drag_getPreDragStatus.cpp
+    drag/drag_setSuggestedDropOperation.cpp
+    drag/drag_setDragResult.cpp
+    drag/drag_getDataTypesCount.cpp
+    drag/drag_getDragResult.cpp
+    drag/drag_getDropOperation.cpp
+    drag/drag_getXY.cpp
+    drag/drag_getWidthHeight.cpp
+    drag/drag_getModifierKeyStates.cpp
+    text/text_CustomSpan_test.cpp
+    system/system_ColorFontChange_test.cpp
 )
 
 add_library(nativefunc SHARED
@@ -132,4 +146,4 @@ find_library(
 target_link_libraries(nativerender PUBLIC
     libnative_drawing.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
 target_link_libraries(nativefunc PUBLIC
-libnative_drawing.so libpixelmap.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
+libnative_drawing.so libpixelmap.so libace_napi.z.so libudmf.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})

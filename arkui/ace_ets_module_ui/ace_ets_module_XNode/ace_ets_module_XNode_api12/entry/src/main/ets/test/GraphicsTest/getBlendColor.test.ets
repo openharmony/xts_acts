@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function getBlendColor() {
-  describe('getBlendColor', function () {
-    beforeEach(async function (done) {
+  describe('getBlendColor', () => {
+    beforeEach(async (done: Function) => {
       console.info("getBlendColor beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Graphics/getBlendColor',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Graphics/getBlendColor',
       }
       try {
         router.clear();
@@ -51,10 +51,10 @@ export default function getBlendColor() {
      * @tc.type : 
      * @tc.size :
      */
-    it('getBlendColor_0100', 0, async function (done) {
+    it('getBlendColor_0100', 0, async (done: Function) => {
       console.info('getBlendColor_0100 START');
-      let strJson = getInspectorByKey('getBlendColor');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('getBlendColor');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getBlendColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[getBlendColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual("#FFE6E600");

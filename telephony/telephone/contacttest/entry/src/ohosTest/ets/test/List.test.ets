@@ -24,9 +24,11 @@ import ContactTest from './Contact.test';
 import QueryGroupsTest from './QueryGroups.test';
 import EmptyTest from './Empty.test';
 import ContactsTest from './Contacts.test';
+import SelectTest from './select.test'
 
 export default function testsuite() {
   if (canIUse("SystemCapability.Applications.Contacts")){
+    SelectTest();
     AddContactTest();
     QueryKeyTest();
     QueryByEmailTest();

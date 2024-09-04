@@ -23,7 +23,7 @@ export default function NavPathStackApi1() {
   describe('NavPathStackApi1',  () =>{
     beforeEach(async  (done:Function) =>{
       console.info("flex beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation/NavPathStackApi1',
       }
       try {
@@ -64,8 +64,8 @@ export default function NavPathStackApi1() {
       await Utils.sleep(2000);
       console.info("[NavPathStackApi1_001] btn1")
 
-      let strJson = getInspectorByKey('NavPathStackApi1_text_pageOne');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('NavPathStackApi1_text_pageOne');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info("[NavPathStackApi1_001] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('pageOne');

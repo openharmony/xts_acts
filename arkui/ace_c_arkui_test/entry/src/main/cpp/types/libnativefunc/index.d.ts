@@ -64,6 +64,17 @@ export const testButtonFontWeight014: () => number;
 export const testButtonFontWeight015: () => number;
 
 export const testButtonFontWeight016: () => number;
+
+export const testButtonLabel001: () => number;
+
+export const testButtonType001: () => number;
+
+export const testButtonType002: () => number;
+
+export const testButtonType003: () => number;
+
+export const testButtonType004: () => number;
+
 export const textTextStyleGraphic001: () => number;
 
 export const testCheckboxMark001: () => number;
@@ -2150,6 +2161,8 @@ export const testTextClip011: () => number;
 
 export const testTextClip012: () => number;
 
+export const testTextContent001: () => number;
+
 export const testTextCopyOption001: () => number;
 
 export const testTextCopyOption002: () => number;
@@ -2727,6 +2740,12 @@ export const testScrollTranslate004: () => number;
 export const testScrollPageEnable001: () => number;
 
 export const testScrollPageEnable002: () => number;
+
+export const testCalendarPickerHintRadius001: () => number;
+
+export const testCalendarPickerHintRadius002: () => number;
+
+export const testCalendarPickerHintRadius003: () => number;
 
 export const testCalendarPickerEdgeAlign001: () => number;
 
@@ -4032,6 +4051,8 @@ export const testSpanFontWeight015: () => number;
 
 export const testSpanFontWeight016: () => number;
 
+export const testSpanContent001: () => number;
+
 export const testColumnHeight001: () => number;
 
 export const testColumnHeight002: () => number;
@@ -4122,6 +4143,50 @@ export const testTextAreaHeight002: () => number;
 
 export const testTextAreaHeight003: () => number;
 
+export const testTextAreaBlurOnSubmit001: () => number;
+
+export const testTextAreaBlurOnSubmit002: () => number;
+
+export const testTextAreaBlurOnSubmit003: () => number;
+
+export const testTextAreaSelectionMenuHidden001: () => number;
+
+export const testTextAreaSelectionMenuHidden002: () => number;
+
+export const testTextAreaSelectionMenuHidden003: () => number;
+
+export const testTextAreaShowCounter001: () => number;
+
+export const testTextAreaShowCounter002: () => number;
+
+export const testTextAreaShowCounter003: () => number;
+
+export const testTextAreaShowCounter004: () => number;
+
+export const testTextAreaShowCounter005: () => number;
+
+export const testTextAreaShowCounter006: () => number;
+
+export const testTextAreaShowCounter007: () => number;
+
+export const testTextAreaSelectedBackgroundColor001: () => number;
+
+export const testTextAreaSelectedBackgroundColor002: () => number;
+
+export const testTextAreaSelectedBackgroundColor003: () => number;
+
+export const testTextAreaPlaceholder001: () => number;
+
+export const testTextAreaType001: () => number;
+
+export const testTextAreaType002: () => number;
+
+export const testTextAreaType003: () => number;
+
+export const testTextAreaType004: () => number;
+
+export const testTextAreaType005: () => number;
+
 export const testTextAreaWidth001: () => number;
 
 export const testTextAreaWidth002: () => number;
@@ -4131,6 +4196,20 @@ export const testTextAreaWidth003: () => number;
 export const testTextAreaPosition001: () => number;
 
 export const testTextAreaPosition002: () => number;
+
+export const testTextInputBlurOnSubmit001: () => number;
+
+export const testTextInputBlurOnSubmit002: () => number;
+
+export const testTextInputBlurOnSubmit003: () => number;
+
+export const testTextInputSelectionMenuHidden001: () => number;
+
+export const testTextInputSelectionMenuHidden002: () => number;
+
+export const testTextInputSelectionMenuHidden003: () => number;
+
+export const testTextInputPlaceholder001: () => number;
 
 export const testTextInputWidth001: () => number;
 
@@ -4258,6 +4337,50 @@ export const testFlexHeight002: () => number;
 
 export const testFlexHeight003: () => number;
 
+export const testFlexOption001: () => number;
+
+export const testFlexOption002: () => number;
+
+export const testFlexOption003: () => number;
+
+export const testFlexOption004: () => number;
+
+export const testFlexOption005: () => number;
+
+export const testFlexOption006: () => number;
+
+export const testFlexOption007: () => number;
+
+export const testFlexOption008: () => number;
+
+export const testFlexOption009: () => number;
+
+export const testFlexOption010: () => number;
+
+export const testFlexOption011: () => number;
+
+export const testFlexOption012: () => number;
+
+export const testFlexOption013: () => number;
+
+export const testFlexOption014: () => number;
+
+export const testFlexOption015: () => number;
+
+export const testFlexOption016: () => number;
+
+export const testFlexOption017: () => number;
+
+export const testFlexOption018: () => number;
+
+export const testFlexOption019: () => number;
+
+export const testFlexOption020: () => number;
+
+export const testFlexOption021: () => number;
+
+export const testFlexOption022: () => number;
+
 export const testXComponentWidth001: () => number;
 
 export const testXComponentWidth002: () => number;
@@ -4309,6 +4432,42 @@ export const testProgressStyle004: () => number;
 export const testProgressStyle005: () => number;
 
 export const testProgressStyle006: () => number;
+
+export const testProgressTotal001: () => number;
+
+export const testProgressTotal002: () => number;
+
+export const testProgressTotal003: () => number;
+
+export const testProgressValue001: () => number;
+
+export const testProgressValue002: () => number;
+
+export const testProgressValue003: () => number;
+
+export const testRefreshOffset001: () => number;
+
+export const testRefreshOffset002: () => number;
+
+export const testRefreshOffset003: () => number;
+
+export const testRefreshPullDownRatio001: () => number;
+
+export const testRefreshPullDownRatio002: () => number;
+
+export const testRefreshPullDownRatio003: () => number;
+
+export const testRefreshPullToRefresh001: () => number;
+
+export const testRefreshPullToRefresh002: () => number;
+
+export const testRefreshPullToRefresh003: () => number;
+
+export const testRefreshRefreshing001: () => number;
+
+export const testRefreshRefreshing002: () => number;
+
+export const testRefreshRefreshing003: () => number;
 
 export const testTextAreaBackgroundColor001: () => number;
 
@@ -4665,6 +4824,14 @@ export const testSliderTrackColor004: () => number;
 export const testSliderTrackColor005: () => number;
 
 export const testSliderTrackColor006: () => number;
+
+export const testSliderTrackThickness001: () => number;
+
+export const testSliderTrackThickness002: () => number;
+
+export const testSliderTrackThickness003: () => number;
+
+export const testSliderTrackThickness004: () => number;
 
 export const testSliderValue001: () => number;
 
@@ -5334,3 +5501,72 @@ export const native_011: () => number;
 export const native_012: () => number;
 export const native_013: () => number;
 export const native_014: () => number;
+
+export const DialogModelTest_001: () => number;
+export const DialogModelTest_002: () => number;
+export const DialogModelTest_003: () => number;
+
+export const drag_getDragEvent_001: () => number;
+
+export const drag_getDataTypes_001: () => number;
+
+export const drag_setGetUdmfData_001: () => number;
+export const drag_setGetUdmfData_002: () => number;
+export const drag_setGetUdmfData_003: () => number;
+
+export const gestureTestParaMeter001: () => number;
+export const gestureTestParaMeter002: () => number;
+export const gestureTestParaMeter003: () => number;
+export const gestureTestParaMeter004: () => number;
+export const gestureTestParaMeter005: () => number;
+export const gestureTestParaMeter006: () => number;
+export const gestureTestParaMeter007: () => number;
+export const gestureTestParaMeter008: () => number;
+export const gestureTestParaMeter009: () => number;
+export const drag_setDragEventStrictReportWidthNode_001: () => number;
+export const drag_setDragEventStrictReportWidthNode_002: () => number;
+export const drag_setDragEventStrictReportWidthContext_003: () => number;
+export const drag_setDragEventStrictReportWidthContext_004: () => number;
+
+export const drag_setNodeAllowedDropDataTypes_001: () => number;
+export const drag_disallowNodeAnyDropDataTypes_002: () => number;
+export const drag_allowNodeAllDropDataTypes_003: () => number;
+export const drag_setNodeDraggable_004: () => number;
+
+export const drag_SetNodeDragPreview_001: () => number;
+
+export const drag_DragPreviewOption_Dispose_001: () => number;
+export const drag_DragPreviewOption_SetScaleMode_002: () => number;
+export const drag_DragPreviewOption_SetDefaultShadowEnabled_003: () => number;
+export const drag_DragPreviewOption_SetDefaultRadiusEnabled_004: () => number;
+export const drag_DragPreviewOption_SetNumberBadgeEnabled_005: () => number;
+export const drag_DragPreviewOption_SetBadgeNumber_006: () => number;
+export const drag_DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled_007: () => number;
+export const drag_DragPreviewOption_SetNodeDragPreviewOption_008: () => number;
+export const drag_DragAction_Dispose_001: () => number;
+export const drag_DragAction_SetPointerId_002: () => number;
+export const drag_DragAction_SetPixelMaps_003: () => number;
+export const drag_DragAction_SetTouchPointX_004: () => number;
+export const drag_DragAction_SetTouchPointY_005: () => number;
+export const drag_DragAction_SetDragPreviewOption_006: () => number;
+export const drag_DragAction_RegisterStatusListener_007: () => number;
+export const drag_DragAction_UnregisterStatusListener_008: () => number;
+export const drag_DragAction_StartDrag_009: () => number;
+export const drag_DragAction_DragAndDropInfo_0010: () => number;
+
+export const textCustomSpanTest001: () => number;
+export const textCustomSpanTest002: () => number;
+export const textCustomSpanTest003: () => number;
+export const textCustomSpanTest004: () => number;
+export const textCustomSpanTest005: () => number;
+export const textCustomSpanTest006: () => number;
+export const textCustomSpanTest007: () => number;
+export const textCustomSpanTest008: () => number;
+export const textCustomSpanTest009: () => number;
+
+export const testRegisterSystemColorModeChangeEvent_001: () => number;
+export const testUnregisterSystemColorModeChangeEvent_002: () => number;
+export const testRegisterSystemFontStyleChangeEvent_003: () => number;
+export const testUnregisterSystemFontStyleChangeEvent_004: () => number;
+export const testSystemFontStyleEvent_GetFontSizeScale_005: () => number;
+export const testSystemFontStyleEvent_GetFontWeightScale_006: () => number;

@@ -135,7 +135,10 @@
     {
       "name": "prevMarginString",
       "value": "20px"
+    },
+    {
+      "name": "module_desc",
+      "value": "module description"
     }
-    
   ]
 }

@@ -940,6 +940,26 @@ export default function PasteboardDelayCopyTest() {
 
     })
 
+    /**
+     * @tc.name fromHtmlTest001
+     * @tc.number SUB_Pasteboard_Local_SDK_FromHtml_0100
+     * @tc.desc fromHtml interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it("SUB_Pasteboard_Local_SDK_FromHtml_0100", 0, async () => {
+      console.info(TAG + "SUB_Pasteboard_Local_SDK_FromHtml_0100 ---------start")
+      let htmlStr = '<p style ="text-align:center">我是你居中对齐</p>'
+      try{
+        await StyledString.fromHtml(htmlStr);
+        console.info(TAG + "fromHtml success")
+      } catch (err) {
+        console.info(TAG + "fromHtml failed code =" + err.code + ", message =" + err.message)
+        expect().assertFail();
+      }
+      console.info(TAG + "SUB_Pasteboard_Local_SDK_FromHtml_0100 ---------end")
+    })
 
 
 

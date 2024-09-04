@@ -28,8 +28,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function StateNumberJsunit() {
@@ -58,7 +58,7 @@ export default function StateNumberJsunit() {
     afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back({
-        uri: "MainAbility/pages/index/index"
+        url: "MainAbility/pages/index/index"
       });
     });
 
@@ -66,7 +66,7 @@ export default function StateNumberJsunit() {
 
       console.info('StateNumberJsunit_0100 START');
       let strJson = getInspectorByKey('state_string');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateNumberJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateNumberJsunit_0100] label: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("string: hello");
@@ -82,7 +82,7 @@ export default function StateNumberJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('state_string');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateNumberJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[StateNumberJsunit_0200] label: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("string: world");
@@ -94,7 +94,7 @@ export default function StateNumberJsunit() {
 
       console.info('StateNumberJsunit_0300 START');
       let strJson = getInspectorByKey('state_number');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateNumberJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[StateNumberJsunit_0300] label: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("number: 0");
@@ -110,7 +110,7 @@ export default function StateNumberJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('state_number');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateNumberJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[StateNumberJsunit_0400] label: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("number: 8");
@@ -122,7 +122,7 @@ export default function StateNumberJsunit() {
 
       console.info('StateNumberJsunit_0500 START');
       let strJson = getInspectorByKey('state_Boolean');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateNumberJsunit_0500] component obj is: " + JSON.stringify(obj));
       console.info("[StateNumberJsunit_0500] label: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("Boolean: true");
@@ -138,7 +138,7 @@ export default function StateNumberJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('state_Boolean');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateNumberJsunit_0600] component obj is: " + JSON.stringify(obj));
       console.info("[StateNumberJsunit_0600] label: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("Boolean: false");
@@ -150,7 +150,7 @@ export default function StateNumberJsunit() {
 
       console.info('StateNumberJsunit_0700 START');
       let strJson = getInspectorByKey('state_enum');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateNumberJsunit_0700] component obj is: " + JSON.stringify(obj));
       console.info("[StateNumberJsunit_0700] label: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("enum: #ff0000ff");
@@ -166,7 +166,7 @@ export default function StateNumberJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('state_enum');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateNumberJsunit_0800] component obj is: " + JSON.stringify(obj));
       console.info("[StateNumberJsunit_0800] label: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("enum: #ffff0000");

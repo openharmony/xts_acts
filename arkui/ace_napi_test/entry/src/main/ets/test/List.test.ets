@@ -17,6 +17,7 @@ import napiObjectTest from './NativeApiObjectTest';
 import napiArrayBufferTest from './NativeApiArrayBufferTest';
 import napiBufferTest from './NativeApiBufferTest';
 import napiLifecycleTest from './NativeApiLifecycleTest';
+import napiSendableTest from './NativeApiSendableTest';
 
 
 export default function testsuite() {
@@ -25,4 +26,5 @@ export default function testsuite() {
   napiBufferTest();
   napiObjectTest();
   napiLifecycleTest();
+  napiSendableTest();
 }

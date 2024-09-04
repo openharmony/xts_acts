@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function getAlpha() {
-  describe('getAlpha', function () {
-    beforeEach(async function (done) {
+  describe('getAlpha', () => {
+    beforeEach(async (done: Function) => {
       console.info("getAlpha beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Graphics/getAlpha',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Graphics/getAlpha',
       }
       try {
         router.clear();
@@ -51,10 +51,10 @@ export default function getAlpha() {
      * @tc.type : 
      * @tc.size :
      */
-    it('getAlpha_0100', 0, async function (done) {
+    it('getAlpha_0100', 0, async (done: Function) => {
       console.info('getAlpha_0100 START');
-      let strJson = getInspectorByKey('getAlpha');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('getAlpha');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAlpha_0100] component obj is: " + JSON.stringify(obj));
       console.info("[getAlpha_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual("#FF00007F");

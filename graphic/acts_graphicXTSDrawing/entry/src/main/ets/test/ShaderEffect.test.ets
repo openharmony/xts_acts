@@ -247,81 +247,80 @@ export default function shadowEffectTest() {
         shaderEffect = drawing.ShaderEffect.createLinearGradient({x: 100, y: 100}, {x: 300, y: 300}, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.MIRROR);
         console.info(msg + ' createLinearGradient create successed,shaderEffect:' + JSON.stringify(shaderEffect));
         shaderEffect = drawing.ShaderEffect.createLinearGradient({x: 100, y: 100}, {x: 300, y: 300}, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.DECAL);
-        console.info(msg + ' createLinearGradient create successed,shaderEffect:' + JSON.stringify(shaderEffect));
+        console.info(msg + ' createLinearGradient1 create successed,shaderEffect:' + JSON.stringify(shaderEffect));
       } catch( e ) {
-        console.info(msg + ` createLinearGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createLinearGradient1 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createLinearGradient({x: 100.1, y: 100.1}, {x: 300.1, y: 300.1}, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,null,null);
-        console.info(msg + ' createLinearGradient create successed,shaderEffect:' + JSON.stringify(shaderEffect));
+        console.info(msg + ' createLinearGradient2 create successed,shaderEffect:' + JSON.stringify(shaderEffect));
       } catch( e ) {
-        console.info(msg + ` createLinearGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createLinearGradient2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createLinearGradient({x: 100.1, y: 100.1}, {x: 300.1, y: 300.1}, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,null);
-        console.info(msg + ' createLinearGradient create successed,shaderEffect:' + JSON.stringify(shaderEffect));
+        console.info(msg + ' createLinearGradient3 create successed,shaderEffect:' + JSON.stringify(shaderEffect));
       } catch( e ) {
-        console.info(msg + ` createLinearGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createLinearGradient3 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createLinearGradient({x: 100.1, y: 100.1}, {x: 300.1, y: 300.1}, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,[0.2,3]);
-        console.info(msg + ' createLinearGradient create successed,shaderEffect:' + JSON.stringify(shaderEffect));
+        console.info(msg + ' createLinearGradient4 create successed,shaderEffect:' + JSON.stringify(shaderEffect));
       } catch( e ) {
-        console.info(msg + ` createLinearGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createLinearGradient4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
-        matrix.setMatrix([ 1, 0, 0, 1 ])
         let shaderEffect = drawing.ShaderEffect.createLinearGradient({x: 100.1, y: 100.1}, {x: 300.1, y: 300.1}, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,[0.2,3], matrix);
-        console.info(msg + ' createLinearGradient create successed,shaderEffect:' + JSON.stringify(shaderEffect));
+        console.info(msg + ' createLinearGradient5 create successed,shaderEffect:' + JSON.stringify(shaderEffect));
       } catch( e ) {
-        console.info(msg + ` createLinearGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createLinearGradient5 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
-        matrix.setMatrix([ 1, 1, 1, 1 ])
+        matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
         let shaderEffect = drawing.ShaderEffect.createLinearGradient({x: 100.1, y: 100.1}, {x: 300.1, y: 300.1}, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,[0.2,3], matrix);
-        console.info(msg + ' createLinearGradient create successed,shaderEffect:' + JSON.stringify(shaderEffect));
+        console.info(msg + ' createLinearGradient6 create successed,shaderEffect:' + JSON.stringify(shaderEffect));
       } catch( e ) {
-        console.info(msg + ` createLinearGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createLinearGradient6 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
-        matrix.setMatrix([ 1, 1, 1, 1 ])
+        matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
         let shaderEffect = drawing.ShaderEffect.createLinearGradient({x: -100.1, y: -100.1}, {x: 300.1, y: 300.1}, [0xFF00FF00], drawing.TileMode.REPEAT,[0.2], matrix);
-        console.info(msg + ' createLinearGradient create successed,shaderEffect:' + JSON.stringify(shaderEffect));
+        console.info(msg + ' createLinearGradient7 create successed,shaderEffect:' + JSON.stringify(shaderEffect));
       } catch( e ) {
-        console.info(msg + ` createLinearGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createLinearGradient7 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
-        matrix.setMatrix([ 1, 1, 1, 1 ])
+        matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
         let shaderEffect = drawing.ShaderEffect.createLinearGradient(
           {x: Math.random() * Number.MAX_VALUE, y: Math.random() * Number.MAX_VALUE},
           {x: Math.random() * Number.MAX_VALUE, y:Math.random() * Number.MAX_VALUE},
           [0xFF00FF00,0xFF00FF00], drawing.TileMode.REPEAT,[0,2], matrix);
-        console.info(msg + ' createLinearGradient create successed,shaderEffect:' + JSON.stringify(shaderEffect));
+        console.info(msg + ' createLinearGradient8 create successed,shaderEffect:' + JSON.stringify(shaderEffect));
       } catch( e ) {
-        console.info(msg + ` createLinearGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createLinearGradient8 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
-        matrix.setMatrix([ 1, 1, 1, 1 ])
+        matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
         let shaderEffect = drawing.ShaderEffect.createLinearGradient({x: 100.1, y: -100.1}, {x: 100.1, y: -100.1}, [], drawing.TileMode.REPEAT,[], matrix);
-        console.info(msg + ' createLinearGradient create successed,shaderEffect:' + JSON.stringify(shaderEffect));
+        console.info(msg + ' createLinearGradient9 create successed,shaderEffect:' + JSON.stringify(shaderEffect));
       } catch( e ) {
-        console.info(msg + ` createLinearGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createLinearGradient9 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
     });
@@ -560,109 +559,115 @@ export default function shadowEffectTest() {
         shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100, y: 100}, 100, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.MIRROR);
         console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
         shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100, y: 100}, 100, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.DECAL);
-        console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createRadialGradient1 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createRadialGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createRadialGradient1 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100.1, y: 100.1}, 100.1, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,null,null);
-        console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createRadialGradient2 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createRadialGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createRadialGradient2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100.1, y: 100.1}, 100, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,null);
-        console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createRadialGradient3 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createRadialGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createRadialGradient3 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100.1, y: 100.1}, 50, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,[0.1,0.9]);
-        console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createRadialGradient4 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createRadialGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createRadialGradient4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
-        matrix.setMatrix([1,0,0,1])
         let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100.1, y: 100.1}, 80, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,[0.1,0.9],matrix);
-        console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createRadialGradient5 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createRadialGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createRadialGradient5 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
+        matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
         let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100.1, y: 100.1},50, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,[0.1,0.9],matrix);
-        console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createRadialGradient6 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createRadialGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createRadialGradient6 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
+        matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
         let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: -100.1, y: -100.1}, 100, [0xFF00FF00,0xFF00FF00], drawing.TileMode.REPEAT,[0.1,0.9],matrix);
-        console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createRadialGradient7 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createRadialGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createRadialGradient7 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
+        matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
         let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: Number.MAX_VALUE, y: Number.MAX_VALUE}, Number.MAX_VALUE, [0xFF00FF00,0xFF00FF00], drawing.TileMode.REPEAT,[0.1,0.9],matrix);
-        console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createRadialGradient8 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createRadialGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createRadialGradient8 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
+        matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
         let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100.1, y: 100.1},100, [0xFF00FF00,0xFF00FF00], drawing.TileMode.REPEAT,[],matrix);
-        console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createRadialGradient9 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createRadialGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createRadialGradient9 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
-        let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100.1, y: 100.1},100, [0xFF00FF00,0xFF00FF00], drawing.TileMode.REPEAT,[0.1,0.9,10],matrix);
-        console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
+        matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
+        let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100.1, y: 100.1},100, [0xFF00FF00,0xFF00FF00,0xFF00FF00], drawing.TileMode.REPEAT,[0.1,0.9,10],matrix);
+        console.info(msg + ' createRadialGradient10 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createRadialGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createRadialGradient10 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
+        matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
         let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100.1, y: 100.1}, 50, [], drawing.TileMode.REPEAT,[],matrix);
-        console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createRadialGradient11 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createRadialGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createRadialGradient11 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
+        matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
         let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100.1, y: 100.1}, 0, [0xFF00FF00,0xFF00FF00], drawing.TileMode.REPEAT,[0.1,0.9],matrix);
-        console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createRadialGradient12 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createRadialGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createRadialGradient12 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
+        matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
         let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100.1, y: 100.1}, -1, [0xFF00FF00,0xFF00FF00], drawing.TileMode.REPEAT,[0.1,0.9],matrix);
-        console.info(msg + ' createRadialGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createRadialGradient13 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createRadialGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createRadialGradient13 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
-
     });
 
     /**
@@ -767,7 +772,6 @@ export default function shadowEffectTest() {
       }
 
       try {
-        matrix.setMatrix([1,0,0,1])
         let shaderEffect = drawing.ShaderEffect.createRadialGradient({x: 100.1, y: 100.1}, 80, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,undefined,matrix);
         console.info(msg + ' createRadialGradient successed, shaderEffect:' + JSON.stringify(shaderEffect));
       } catch( e ) {
@@ -815,10 +819,8 @@ export default function shadowEffectTest() {
     it('testShaderEffectCreateSweepGradientNormal', DEFAULT, () => {
       const msg = 'testShaderEffectCreateSweepGradientNormal';
       let matrix_ = new drawing.Matrix();
-      matrix_.setMatrix([ 1, 0, 0, 1 ])
       let matrix = new drawing.Matrix();
-      matrix.setMatrix([ 1, 1, 0, 1 ])
-
+      matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
       try {
         let shaderEffect = drawing.ShaderEffect.createSweepGradient({x: 100, y: 100}, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,100,200);
         console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
@@ -827,113 +829,113 @@ export default function shadowEffectTest() {
         shaderEffect = drawing.ShaderEffect.createSweepGradient({x: 100, y: 100}, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.MIRROR,100,200);
         console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
         shaderEffect = drawing.ShaderEffect.createSweepGradient({x: 100, y: 100}, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.DECAL,100,200);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient1 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient1 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createSweepGradient({x:100.1,y:100.1},[0xFF00FF00,0xFFFF0000],drawing.TileMode.REPEAT,0,360,null,null);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient2 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createSweepGradient({x:-100.1,y:100.1},[0xFF00FF00,0xFFFF0000],drawing.TileMode.REPEAT,360,0,null,null);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient3 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient3 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createSweepGradient({x:-100.1,y:100.1},[0xFF00FF00,0xFFFF0000],drawing.TileMode.REPEAT,180.1,180.1,null);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient4 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createSweepGradient({x:100.1,y:-100.1},[0xFF00FF00,0xFFFF0000],drawing.TileMode.REPEAT,180.1,180.1,[0.1,0.9]);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient5 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient5 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createSweepGradient({x:-100.1,y:-100.1},[0xFF00FF00,0xFFFF0000],drawing.TileMode.REPEAT,30,90,[0.1,0.9],matrix_);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient6 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient6 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createSweepGradient({x:-100.1,y:100.1},[0xFF00FF00,0xFFFF0000],drawing.TileMode.REPEAT,30,90,[2,0.9],matrix);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient7 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient7 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createSweepGradient({x:100.1,y:100.1},[0xFF00FF00,0xFF00FF00],drawing.TileMode.REPEAT,30,90,[0.1,0.9,5],matrix);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient8 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient8 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createSweepGradient({x:100.1,y:100.1},[0xFF00FF00,0xFF00FF00],drawing.TileMode.REPEAT,30,90,[],matrix);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient9 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient9 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect=drawing.ShaderEffect.createSweepGradient({x:100.1,y:100.1},[0xFF00FF00,0xFF00FF00],drawing.TileMode.REPEAT,-30,90,[0.1,0.9],matrix);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient10 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient10 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createSweepGradient({x:100.1,y:100.1},[0xFF00FF00,0xFF00FF00],drawing.TileMode.REPEAT,361,90,[0.1,0.9],matrix);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient11 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient11 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createSweepGradient({x:100.1,y:100.1},[0xFF00FF00,0xFF00FF00],drawing.TileMode.REPEAT,90,-30,[0.1,0.9],matrix);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient12 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient12 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect= drawing.ShaderEffect.createSweepGradient({x:100.1,y:100.1},[0xFF00FF00,0xFF00FF00],drawing.TileMode.REPEAT,90,361,[0.1,0.9],matrix);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient13 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient13 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
 
       try {
         let shaderEffect = drawing.ShaderEffect.createSweepGradient({x:100.1,y:100.1},[],drawing.TileMode.REPEAT,90,90,[],matrix);
-        console.info(msg + ' createSweepGradient successed,shaderEffect:' + shaderEffect);
+        console.info(msg + ' createSweepGradient14 successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient14 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
     });
@@ -949,7 +951,7 @@ export default function shadowEffectTest() {
     it('testShaderEffectCreateSweepGradientMultipleCalls', DEFAULT, () => {
       const msg = 'testShaderEffectCreateSweepGradientMultipleCalls';
       let matrix_ = new drawing.Matrix();
-      matrix_.setMatrix([ 1, 0, 0, 1 ])
+
       try {
         for ( let i = 0 ; i < 20 ; i ++ ) {
           let shaderEffect = drawing.ShaderEffect.createSweepGradient(
@@ -976,101 +978,100 @@ export default function shadowEffectTest() {
     it('testShaderEffectCreateSweepGradientToNull', DEFAULT, () => {
       const msg = 'testShaderEffectCreateSweepGradientToNull';
       let matrix_ = new drawing.Matrix();
-      matrix_.setMatrix([ 1, 0, 0, 1 ])
 
       try {
         drawing.ShaderEffect.createSweepGradient(null, [0xFF00FF00,0xFFFF0000], drawing.TileMode.REPEAT, 30, 90, [0.1,0.9], matrix_);
-        console.info(msg + ' createSweepGradient successed');
+        console.info(msg + ' createSweepGradient1 successed');
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient1 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         drawing.ShaderEffect.createSweepGradient({x:100.1,y:100.1}, null, drawing.TileMode.REPEAT,30,90,[0.1,0.9], matrix_);
-        console.info(msg + ' createSweepGradient successed');
+        console.info(msg + ' createSweepGradient2 successed');
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         drawing.ShaderEffect.createSweepGradient({x:100,y:100},[0xFF00FF00,0xFFFF0000],null,30,90,[0.1,0.9],matrix_);
-        console.info(msg + ' createSweepGradient successed');
+        console.info(msg + ' createSweepGradient3 successed');
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient3 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         drawing.ShaderEffect.createSweepGradient({x:100,y:100},[0xFF00FF00,0xFFFF0000],drawing.TileMode.REPEAT,null,90,[0.1,0.9],matrix_);
-        console.info(msg + ' createSweepGradient successed');
+        console.info(msg + ' createSweepGradient4 successed');
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         drawing.ShaderEffect.createSweepGradient({x:100,y:100},[0xFF00FF00,0xFFFF0000],drawing.TileMode.REPEAT,30,null,[0.1,0.9],matrix_);
-        console.info(msg + ' createSweepGradient successed');
+        console.info(msg + ' createSweepGradient5 successed');
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient5 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         drawing.ShaderEffect.createSweepGradient(undefined,[0xFF00FF00,0xFFFF0000],drawing.TileMode.REPEAT,30,90,[0.1,0.9],matrix_);
-        console.info(msg + ' createSweepGradient successed');
+        console.info(msg + ' createSweepGradient6 successed');
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient6 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         drawing.ShaderEffect.createSweepGradient({x:100,y:100},undefined,drawing.TileMode.REPEAT,30,90,[0.1,0.9],matrix_);
-        console.info(msg + ' createSweepGradient successed');
+        console.info(msg + ' createSweepGradient7 successed');
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient7 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         drawing.ShaderEffect.createSweepGradient({x:100,y:100},[0xFF00FF00,0xFFFF0000],undefined,30,90,[0.1,0.9],matrix_);
-        console.info(msg + ' createSweepGradient successed');
+        console.info(msg + ' createSweepGradient8 successed');
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient8 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         drawing.ShaderEffect.createSweepGradient({x:100,y:100},[0xFF00FF00,0xFFFF0000],drawing.TileMode.REPEAT,undefined,90,[0.1,0.9],matrix_);
-        console.info(msg + ' createSweepGradient successed');
+        console.info(msg + ' createSweepGradient9 successed');
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient9 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         drawing.ShaderEffect.createSweepGradient({x:100,y:100},[0xFF00FF00,0xFFFF0000],drawing.TileMode.REPEAT,30,undefined,[0.1,0.9],matrix_);
-        console.info(msg + ' createSweepGradient successed');
+        console.info(msg + ' createSweepGradient10 successed');
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient10 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         drawing.ShaderEffect.createSweepGradient({x:100,y:100},[0xFF00FF00,0xFFFF0000],drawing.TileMode.REPEAT,30,90,undefined,matrix_);
-        console.info(msg + ' createSweepGradient successed');
+        console.info(msg + ' createSweepGradient11 successed');
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient11 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         drawing.ShaderEffect.createSweepGradient({x:100,y:100},[0xFF00FF00,0xFFFF0000],drawing.TileMode.REPEAT,30,90,[0.1,0.9],undefined);
-        console.info(msg + ' createSweepGradient successed');
+        console.info(msg + ' createSweepGradient12 successed');
       } catch( e ) {
-        console.info(msg + ` createSweepGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        console.info(msg + ` createSweepGradient12 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
     });
@@ -1088,7 +1089,6 @@ export default function shadowEffectTest() {
 
       try {
         let matrix_ = new drawing.Matrix();
-        matrix_.setMatrix([ 1, 0, 0, 1 ])
         drawing.ShaderEffect.createSweepGradient({
           x : - 100.1, y : - 100.1
         }, [ 0xFF00FF00, 0xFFFF0000 ], drawing.TileMode.REPEAT, 30, 90, 2, matrix_, matrix_);
@@ -1100,7 +1100,6 @@ export default function shadowEffectTest() {
 
       try {
         let matrix_ = new drawing.Matrix();
-        matrix_.setMatrix([ 1, 0, 0, 1 ])
         drawing.ShaderEffect.createSweepGradient({
           x : - 100.1, y : - 100.1
         }, [ 0xFF00FF00, 0xFFFF0000 ], drawing.TileMode.REPEAT, 30);
@@ -1112,7 +1111,6 @@ export default function shadowEffectTest() {
 
       try {
         let matrix_ = new drawing.Matrix();
-        matrix_.setMatrix([ 1, 0, 0, 1 ])
         drawing.ShaderEffect.createSweepGradient('s', [ 0xFF00FF00, 0xFFFF0000 ], drawing.TileMode.REPEAT, 30, 90, 2, matrix_);
         console.info(msg + ' createSweepGradient successed');
       } catch( e ) {
@@ -1152,9 +1150,8 @@ export default function shadowEffectTest() {
     it('testShaderEffectCreateConicalGradientNormal', DEFAULT, () => {
       const msg = 'testShaderEffectCreateConicalGradientNormal';
       let matrix_ = new drawing.Matrix();
-      matrix_.setMatrix([ 1, 0, 0, 1 ]);
       let matrix = new drawing.Matrix();
-      matrix.setMatrix([ 1, 1, 0, 1 ]);
+      matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
 
       try {
         let shaderEffect = drawing.ShaderEffect.createConicalGradient({x: 100, y: 100}, 100, {x: 200, y: 200}, 50, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT);
@@ -1227,7 +1224,7 @@ export default function shadowEffectTest() {
       }
 
       try {
-        let shaderEffect = drawing.ShaderEffect.createConicalGradient({x: 100, y: 100}, 100, {x: 200.1, y: 200.1}, 50, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,[0.12],matrix);
+        let shaderEffect = drawing.ShaderEffect.createConicalGradient({x: 100, y: 100}, 100, {x: 200.1, y: 200.1}, 50, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,[0.1,2],matrix);
         console.info(msg + ' createConicalGradient successed,shaderEffect:' + shaderEffect);
       } catch( e ) {
         console.info(msg + ` createConicalGradient errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
@@ -1280,7 +1277,6 @@ export default function shadowEffectTest() {
 
       try {
         let matrix_ = new drawing.Matrix();
-        matrix_.setMatrix([ 1, 0, 0, 1 ]);
         for ( let i = 0 ; i < 20 ; i ++ ) {
           let shaderEffect = drawing.ShaderEffect.createConicalGradient(
             {x : Math.random() * Number.MAX_VALUE, y : Math.random() * Number.MAX_VALUE},Math.random() * Number.MAX_VALUE,
@@ -1305,9 +1301,8 @@ export default function shadowEffectTest() {
     it('testShaderEffectCreateConicalGradientToNull', DEFAULT, () => {
       const msg = 'testShaderEffectCreateConicalGradientToNull';
       let matrix_ = new drawing.Matrix();
-      matrix_.setMatrix([ 1, 0, 0, 1 ]);
       let matrix = new drawing.Matrix();
-      matrix.setMatrix([ 1, 1, 0, 1 ]);
+      matrix.setMatrix([ 1, 1, 1, 1, 1, 1, 1, 1, 1])
 
       try {
         drawing.ShaderEffect.createConicalGradient(null, 100, {x: 200.1, y: 200.1}, 50, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT,[0.1,0.3,0.6],matrix);

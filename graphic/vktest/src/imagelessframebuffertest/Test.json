@@ -41,12 +41,10 @@
         },
         {
             "type": "CommandKit",
-            "teardown": [
-                {
-                    "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanImagelessframebufferTest.qpa->ActsVulkanImagelessframebufferTest.qpa"
-                }
-            ]
+            "teardown": [{
+              "name": "pull",
+              "value": "/data/local/tmp/ActsVulkanImagelessframebufferTest.qpa->ActsVulkanImagelessframebufferTest.qpa"
+            }]
         },
         {
             "type": "ShellKit",

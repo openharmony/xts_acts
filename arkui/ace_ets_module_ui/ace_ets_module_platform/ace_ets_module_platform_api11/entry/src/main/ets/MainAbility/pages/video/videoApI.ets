@@ -15,13 +15,14 @@
 
 import events_emitter from '@ohos.events.emitter';
 import Log from '../../common/Log';
+import { BusinessError } from '@ohos.base';
 
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct VideoOnFullscreenChange {
-  @State srcs: Resource = $rawfile('videoTest.mp4');
+  @State srcs: Resource = $rawfile('sucai1.mp4');
   @State currentProgressRates: number = 1;
   @State autoPlays: boolean = false;
   controller: VideoController = new VideoController();
@@ -60,14 +61,14 @@ struct VideoOnFullscreenChange {
                 "result": "success"
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60227,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("video_101 onClick start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("video_101 onClick emit action state err: " + JSON.stringify(err.message))
+            console.info("video_101 onClick emit action state err: " + JSON.stringify((err as BusinessError)?.message))
           }
         })
         .onPause(() => {

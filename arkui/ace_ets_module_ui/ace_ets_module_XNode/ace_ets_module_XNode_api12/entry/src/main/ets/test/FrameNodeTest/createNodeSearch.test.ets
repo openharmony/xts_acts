@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function createNodeSearch() {
-  describe('createNodeSearch', function () {
-    beforeEach(async function (done) {
+  describe('createNodeSearch', () => {
+    beforeEach(async (done: Function) => {
       console.info("createNodeSearch beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/FrameNode/createNodeSearch",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/FrameNode/createNodeSearch",
       }
       try {
         router.clear();
@@ -49,15 +49,15 @@ export default function createNodeSearch() {
      * @tc.type :
      * @tc.size :
      */
-    it('createNodeSearch_0100', 0, async function (done) {
+    it('createNodeSearch_0100', 0, async (done: Function) => {
       console.info('createNodeSearch_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('createNodeSearchType'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('createNodeSearchText');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('createNodeSearchText');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[createNodeSearch_0100] component obj is: " + JSON.stringify(obj));
       console.info("[createNodeSearch_0100] content obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('"Search"');

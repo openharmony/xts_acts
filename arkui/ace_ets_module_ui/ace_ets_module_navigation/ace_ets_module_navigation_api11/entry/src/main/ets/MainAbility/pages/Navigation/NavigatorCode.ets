@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +21,9 @@ struct NavigatorCode {
   @State active: boolean = false;
   @State Text: string = 'news';
   @State typeValue: NavigationType = NavigationType.Back;
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
-      var navigationTypeValue = eventData.data.typeValue;
+      let navigationTypeValue: NavigationType = eventData.data?.typeValue;
       console.info("navigationTypeValue:" + navigationTypeValue);
       if (navigationTypeValue != null) {
         this.typeValue = navigationTypeValue;
@@ -39,13 +38,13 @@ struct NavigatorCode {
 
   onPageShow() {
     console.info('navigatorCode page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 137,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEvent = {
+    stateChangeEvent = {
       eventId: 138,
       priority: events_emitter.EventPriority.LOW
     }

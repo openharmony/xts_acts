@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter'
 
 
@@ -60,7 +60,7 @@ export default function LocalStoageLinkTwoJsunit() {
 
       console.info('[LocalStoageLinkTwoJsunit_0100] START');
       let strJson1 = getInspectorByKey('text_getValue2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStoageLinkTwoJsunit_0100] obj1 is: " + JSON.stringify(obj1));
 
       expect(obj1.$attrs.content)

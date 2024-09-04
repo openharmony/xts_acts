@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <stdlib.h>
 #include "ActsVulkanFraction_mandatory_testsTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -40,9 +41,13 @@ namespace OHOS {
 
     HWTEST_F(ActsVulkanFraction_mandatory_testsTest, TestVulkanFraction_mandatory_testsTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanFraction_mandatory_testsTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/fraction-mandatory-tests.txt --deqp-log-filename=ActsVulkanFraction_mandatory_testsTest.qpa");
+        printf("------start ActsVulkanFractionmandatorytestsTest------\n");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/fraction-mandatory-tests.txt "
+                "--deqp-log-filename=ActsVulkanFractionmandatorytestsTest.qpa");
+        }
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanFraction_mandatory_testsTest------\n");
+        printf("------end ActsVulkanFractionmandatorytestsTest------\n");
     }
 }

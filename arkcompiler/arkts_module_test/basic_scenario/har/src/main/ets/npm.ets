@@ -13,5 +13,5 @@
  * limitations under the License.
  */
 
-import { JSON5 } from '@wolfx/json5';
-export let npmRes = JSON5.stringify('aaa');
+import validator from 'validator';
+export let npmRes:boolean = validator.isEmail('foo@bar.com');

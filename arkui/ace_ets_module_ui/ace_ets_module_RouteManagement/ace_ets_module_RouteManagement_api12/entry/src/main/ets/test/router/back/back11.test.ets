@@ -51,7 +51,7 @@ export default function back11() {
      * @tc.desc      Test back
      * @tc.level     Level 2
      */
-    it('back11_0100', 0, async function (done) {
+    it('back11_0100', 0, async (done: Function) => {
       console.info('[back11_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -73,7 +73,7 @@ export default function back11() {
       console.info('[back11_0100] pressBack');
 
       let text1 = getInspectorByKey('back11_text');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: Record<string, ESObject> = JSON.parse(text1);
       console.info("[back11_0100] component obj is: " + JSON.stringify(Obj1));
       expect(Obj1.$attrs.content).assertEqual('back11');
 

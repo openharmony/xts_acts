@@ -41,3 +41,26 @@ OH_PixelmapNative *GET_OH_PixelmapNative()
     OH_PixelmapInitializationOptions_Release(options);
     return pixelMap;
 }
+
+OH_PixelmapNative *GET_OH_PixelmapNative(
+    uint32_t width, uint32_t height)
+{
+    OH_Pixelmap_InitializationOptions *options = nullptr;
+    OH_PixelmapNative *pixelMap = nullptr;
+    OH_PixelmapInitializationOptions_Create(&options);
+    OH_PixelmapInitializationOptions_SetWidth(options, width);
+    OH_PixelmapInitializationOptions_SetHeight(options, height);
+    // 4 means RGBA format
+    int32_t pixelFormat = 3;
+    OH_PixelmapInitializationOptions_SetPixelFormat(options, pixelFormat);
+    // 2 means ALPHA_FORMAT_PREMUL format
+    int32_t alphaType = 2;
+    OH_PixelmapInitializationOptions_SetAlphaType(options, alphaType);
+    // 255 means rgba data
+    uint8_t data[] = {255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255};
+    // 16 means data length
+    size_t dataLength = 16;
+    OH_PixelmapNative_CreatePixelmap(data, dataLength, options, &pixelMap);
+    OH_PixelmapInitializationOptions_Release(options);
+    return pixelMap;
+}

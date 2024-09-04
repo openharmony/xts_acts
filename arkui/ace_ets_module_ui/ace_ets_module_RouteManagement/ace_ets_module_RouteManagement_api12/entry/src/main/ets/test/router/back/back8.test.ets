@@ -51,7 +51,7 @@ export default function back8() {
      * @tc.desc      Test back
      * @tc.level     Level 2
      */
-    it('back8_0100', 0, async function (done) {
+    it('back8_0100', 0, async (done: Function) => {
       console.info('[back8_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -78,7 +78,7 @@ export default function back8() {
       console.info('[back8_0100] btn3');
 
       let text1 = getInspectorByKey('back8_text');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: Record<string, ESObject> = JSON.parse(text1);
       console.info("[back8_0100] component obj is: " + JSON.stringify(Obj1));
       expect(Obj1.$attrs.content).assertEqual('back8');
 

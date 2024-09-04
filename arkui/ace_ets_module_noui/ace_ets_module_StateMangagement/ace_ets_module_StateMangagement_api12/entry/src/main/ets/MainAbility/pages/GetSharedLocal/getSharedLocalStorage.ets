@@ -16,20 +16,21 @@
 @Component
 struct getSharedLocalStorageA {
   localStorage = this.getUIContext().getSharedLocalStorage()
-  @State mes:number|undefined=0
+  @State mes: number | undefined=0
+
   build() {
     Row() {
       Column() {
-        Text('propAM:'+this.mes).id('getSharedLocalStorage_1')
+        Text('propAM:' + this.mes).id('getSharedLocalStorage_1')
         Button("Change Local Storage to 47")
           .id('getSharedLocalStorage_2')
           .onClick(() => {
-            this.localStorage?.setOrCreate("propAM",47)
+            this.localStorage?.setOrCreate("propAM", 47)
           })
         Button("Get Local Storage")
           .id('getSharedLocalStorage_3')
           .onClick(() => {
-            this.mes=this.localStorage?.get("propAM")
+            this.mes = this.localStorage?.get("propAM")
           })
       }
       .width('100%')

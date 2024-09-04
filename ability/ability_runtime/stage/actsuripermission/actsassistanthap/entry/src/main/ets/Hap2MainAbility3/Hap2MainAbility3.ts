@@ -14,6 +14,7 @@
  */
 import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent';
+import fs from '@ohos.file.fs'
 
 export default class Hap2MainAbility3 extends Ability {
     onCreate(want, launchParam) {
@@ -74,7 +75,7 @@ export default class Hap2MainAbility3 extends Ability {
                 console.log('[Demo] Hap2MainAbility3 enter 30');
                 let eventName30_1 : string = 'Temp_UriPermissionTest_0400_Read_Successfully';
                 let eventName30_2 : string = 'Temp_UriPermissionTest_0400_Read_Failed';
-                globalThis.fs.open(uri, globalThis.fs.OpenMode.READ_ONLY).then((file) => {
+                fs.open(uri, fs.OpenMode.READ_ONLY).then((file) => {
                     console.info('file fd: ' + file.fd);
                     commonEvent.publish(eventName30_1, (err) => {
                         console.log('Hap2MainAbility3' + eventName30_1);
@@ -88,7 +89,7 @@ export default class Hap2MainAbility3 extends Ability {
 
                 let eventName30_3 : string = 'Temp_UriPermissionTest_0400_Write_Successfully';
                 let eventName30_4 : string = 'Temp_UriPermissionTest_0400_Write_Failed';
-                globalThis.fs.open(uri, globalThis.fs.OpenMode.READ_WRITE).then((file) => {
+                fs.open(uri, fs.OpenMode.READ_WRITE).then((file) => {
                     console.info('file fd: ' + file.fd);
                     commonEvent.publish(eventName30_3, (err) => {
                         console.log('Hap2MainAbility3' + eventName30_3);
@@ -107,7 +108,7 @@ export default class Hap2MainAbility3 extends Ability {
                 console.log('[Demo] Hap2MainAbility3 enter 31');
                 let eventName31_1 : string = 'Temp_UriPermissionTest_0400_Read_Successfully_';
                 let eventName31_2 : string = 'Temp_UriPermissionTest_0400_Read_Failed_';
-                globalThis.fs.open(uri, globalThis.fs.OpenMode.READ_ONLY).then((file) => {
+                fs.open(uri, fs.OpenMode.READ_ONLY).then((file) => {
                     console.info('file fd: ' + file.fd);
                     commonEvent.publish(eventName31_1, (err) => {
                         console.log('Hap2MainAbility3' + eventName31_1);

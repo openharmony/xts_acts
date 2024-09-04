@@ -32,6 +32,18 @@
 using namespace std;
 using namespace std::chrono;
 
+const int ERR_CODE_1 = 1;
+const int ERR_CODE_2 = 2;
+const int ERR_CODE_3 = 3;
+const int ERR_CODE_4 = 4;
+const int ERR_CODE_5 = 5;
+const int ERR_CODE_6 = 6;
+const uint64_t UNIT_STACK_SIZE = 2 * 1024 * 1024;
+const uint64_t UNIT_TASK_DELAY = 500000;
+const uint32_t TASK_SUBMIT_REF = 2;
+const uint32_t TASK_RELEASE_REF = 3;
+const uint32_t TASK_DELAY_TIME = 1000;
+
 void OnePlusForTest(void* arg)
 {
     (*static_cast<int*>(arg)) += 1;
@@ -759,6 +771,70 @@ static napi_value FfrtYieldC0001(napi_env env, napi_callback_info info)
     }
     ffrt_task_handle_destroy(task);
     pthread_mutex_destroy(&lock);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value RecursiveMutexAbnormalParamTest001(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    int type = 0;
+    ffrt_mutexattr_t attr;
+    ffrt_mutex_t mtx;
+    int ret = ffrt_mutexattr_init(&attr);
+    if (ret != ffrt_success) {
+        result = ERR_CODE_1;
+    }
+    ret = ffrt_mutexattr_settype(&attr, ffrt_mutex_recursive);
+    if (ret != ffrt_success) {
+        result = ERR_CODE_2;
+    }
+    ret = ffrt_mutexattr_gettype(&attr, &type);
+    if (ret != ffrt_success) {
+        result = ERR_CODE_3;
+    }
+    ret = ffrt_mutex_init(&mtx, &attr);
+    if (ret != ffrt_success) {
+        result = ERR_CODE_4;
+    }
+    ret = ffrt_mutexattr_destroy(&attr);
+    if (ret != ffrt_success) {
+        result = ERR_CODE_5;
+    }
+    ret = ffrt_mutex_destroy(&mtx);
+    if (ret != ffrt_success) {
+        result = ERR_CODE_6;
+    }
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value RecursiveMutexAbnormalInvalidParamTest001(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    ffrt_mutexattr_t attr;
+    int ret = ffrt_mutexattr_init(NULL);
+    if (ret != ffrt_error_inval) {
+        result = ERR_CODE_1;
+    }
+    ret = ffrt_mutexattr_settype(NULL, ffrt_mutex_recursive);
+    if (ret != ffrt_error_inval) {
+        result = ERR_CODE_2;
+    }
+    ret = ffrt_mutexattr_settype(&attr, -1);
+    if (ret != ffrt_error_inval) {
+        result = ERR_CODE_3;
+    }
+    ret = ffrt_mutexattr_gettype(NULL, NULL);
+    if (ret != ffrt_error_inval) {
+        result = ERR_CODE_4;
+    }
+    ret = ffrt_mutexattr_destroy(NULL);
+    if (ret != ffrt_error_inval) {
+        result = ERR_CODE_5;
+    }
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
     return flag;
@@ -2962,14 +3038,13 @@ static napi_value ffrt_loop_abnormal_0002(napi_env env, napi_callback_info info)
 
 static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
 {
-    const uint32_t delayTime = 1000;
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
     auto loop = ffrt_loop_create(queue_handle);
     ffrt_task_attr_t task_attr;
     (void)ffrt_task_attr_init(&task_attr);
-    ffrt_task_attr_set_delay(&task_attr, delayTime);
+    ffrt_task_attr_set_delay(&task_attr, TASK_DELAY_TIME);
     int result1 = 0;
     const int loopCnt = 1000000000;
     std::function<void()>&& basicFunc1 = [&result1]() {for (int i = 0; i < loopCnt; ++i) {result1 += 1;}};
@@ -2986,21 +3061,25 @@ static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
     ffrt_queue_wait(task2);
     int result = 0;
     if (result1 != loopCnt || result2 != addnum) {
-        result += 1;
+        result = ERR_CODE_1;
     }
     int result3 = 0;
     std::function<void()>&& basicFunc3 = [&result3]() {result3 += addnum;};
+    std::function<void()> &&SleepFunc = [] () {sleep(1);};
+    ffrt_task_handle_t sleepTask = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SleepFunc,
+        ffrt_function_kind_queue), nullptr);
     ffrt_task_handle_t task3 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc3,
         ffrt_function_kind_queue), nullptr);
     int ret = ffrt_queue_cancel(task3);
     if (ret != 0 || result3 != 0) {
-        result += 1;
+        result = ERR_CODE_2;
     }
+    ffrt_queue_wait(sleepTask);
     ffrt_loop_stop(loop);
     pthread_join(thread, nullptr);
     int destoryRet = ffrt_loop_destroy(loop);
     if (destoryRet != 0) {
-        result += 1;
+        result = ERR_CODE_3;
     }
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
@@ -3021,24 +3100,29 @@ static napi_value ffrt_loop_0002(napi_env env, napi_callback_info info)
     int result1 = 0;
     const int addTen = 10;
     std::function<void()>&& basicFunc1 = [&result1]() {result1 += addTen;};
+    std::function<void()> &&SleepFunc = [] () {sleep(1);};
+    ffrt_task_handle_t sleepTask = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SleepFunc,
+        ffrt_function_kind_queue), nullptr);
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc1,
         ffrt_function_kind_queue), nullptr);
     int result = 0;
     int ret1 = ffrt_queue_cancel(task1);
     if (ret1 != 0) {
-        result += 1;
+        result = ERR_CODE_1;
     }
-
+    ffrt_queue_wait(sleepTask);
     int result2 = 0;
     const int addTwenty = 20;
     std::function<void()>&& basicFunc2 = [&result2]() {result2 += addTwenty;};
+    ffrt_task_handle_t sleepTask2 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SleepFunc,
+        ffrt_function_kind_queue), nullptr);
     ffrt_task_handle_t task2 = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(basicFunc2, ffrt_function_kind_queue), nullptr);
     int ret2 = ffrt_queue_cancel(task2);
     if (ret2 != 0) {
-        result += 1;
+        result = ERR_CODE_2;
     }
-
+    ffrt_queue_wait(sleepTask2);
     ffrt_loop_stop(loop);
     pthread_join(thread, nullptr);
     ffrt_loop_destroy(loop);
@@ -3343,15 +3427,19 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
     std::function<void()> &&SubFunc = [&res] () {SubForTest((void *)(&res));};
     std::function<void()> &&TwoPlusFunc = [&res] () {TwoPlusForTest((void *)(&res));};
     std::function<void()> &&TwoSubFunc = [&res] () {TwoSubForTest((void *)(&res));};
+    std::function<void()> &&SleepFunc = [] () {sleep(1);};
 
     const int taskCnt = 6;
     ffrt_task_attr_t task_attr[taskCnt];
     for (int i = 0; i < taskCnt; ++i) {
         (void)ffrt_task_attr_init(&task_attr[i]);
+        
         const ffrt_queue_priority_t pri = (ffrt_queue_priority_t)(taskCnt - i);
         ffrt_task_attr_set_queue_priority(&task_attr[i], pri);
     }
-
+    ffrt_task_attr_t task_attr_tmp;
+    ffrt_task_attr_set_queue_priority(&task_attr_tmp, ffrt_queue_priority_immediate);
+    ffrt_queue_submit(queue_handle, create_function_wrapper(SleepFunc, ffrt_function_kind_queue), &task_attr_tmp);
     ffrt_queue_submit(queue_handle, create_function_wrapper(TwoSubFunc, ffrt_function_kind_queue), &task_attr[0]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), &task_attr[1]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(DivFunc, ffrt_function_kind_queue), &task_attr[2]);
@@ -3539,6 +3627,67 @@ static napi_value ffrt_this_task_get_qos_0001(napi_env env, napi_callback_info i
     return flag;
 }
 
+static napi_value ffrt_attr_stack_size_0001(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    // 验证stack_size的set和get c接口
+    int a = 0;
+    ffrt_task_attr_t task_attr;
+    (void)ffrt_task_attr_init(&task_attr);
+    ffrt_task_attr_set_stack_size(&task_attr, UNIT_STACK_SIZE);
+
+    std::function<void()>&& OnePlusFunc = [&a]() { a += 1; };
+    ffrt_task_handle_t task = ffrt_submit_h_base(create_function_wrapper(OnePlusFunc), {}, {}, &task_attr);
+    const std::vector<ffrt_dependence_t> wait_deps = {{ffrt_dependence_task, task}};
+    ffrt_deps_t wait{static_cast<uint32_t>(wait_deps.size()), wait_deps.data()};
+    ffrt_wait_deps(&wait);
+    if (a != 1) {
+        result = ERR_CODE_1;
+    }
+
+    uint64_t stackSize = ffrt_task_attr_get_stack_size(&task_attr);
+    if (stackSize != UNIT_STACK_SIZE) {
+        result = ERR_CODE_2;
+    }
+    ffrt_task_attr_destroy(&task_attr);
+    ffrt_task_handle_destroy(task);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value ffrt_task_handle_ref_0001(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    // 验证handle的set和get c接口
+    int a = 0;
+    ffrt_task_attr_t task_attr;
+    (void)ffrt_task_attr_init(&task_attr);
+    ffrt_task_attr_set_delay(&task_attr, UNIT_TASK_DELAY);
+
+    std::function<void()>&& OnePlusFunc = [&a]() { a += 1; };
+    ffrt_task_handle_t task = ffrt_submit_h_base(create_function_wrapper(OnePlusFunc), {}, {}, &task_attr);
+    uint32_t count = ffrt_task_handle_inc_ref(task);
+    if (count != TASK_SUBMIT_REF) {
+        result = ERR_CODE_1;
+    }
+    count = ffrt_task_handle_dec_ref(task);
+    if (count != TASK_RELEASE_REF) {
+        result = ERR_CODE_2;
+    }
+    const std::vector<ffrt_dependence_t> wait_deps = {{ffrt_dependence_task, task}};
+    ffrt_deps_t wait{static_cast<uint32_t>(wait_deps.size()), wait_deps.data()};
+    ffrt_wait_deps(&wait);
+    if (a != 1) {
+        result = ERR_CODE_3;
+    }
+    ffrt_task_attr_destroy(&task_attr);
+    ffrt_task_handle_destroy(task);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -3561,6 +3710,10 @@ static napi_value Init(napi_env env, napi_value exports)
             napi_default, nullptr },
         { "delayCTest001", nullptr, DelayCTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ffrtYieldC0001", nullptr, FfrtYieldC0001, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "recursiveMutexAbnormalParamTest001", nullptr, RecursiveMutexAbnormalParamTest001, nullptr,
+            nullptr, nullptr, napi_default, nullptr },
+        { "recursiveMutexAbnormalInvalidParamTest001", nullptr, RecursiveMutexAbnormalInvalidParamTest001, nullptr,
+            nullptr, nullptr, napi_default, nullptr },
         { "mutexAbnormalParamTest001", nullptr, MutexAbnormalParamTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "mutexAbnormalParamTest002", nullptr, MutexAbnormalParamTest002, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "mutexTest006", nullptr, MutexTest006, nullptr, nullptr, nullptr, napi_default, nullptr },
@@ -3668,6 +3821,10 @@ static napi_value Init(napi_env env, napi_value exports)
         { "ffrt_get_current_queue_0001", nullptr, ffrt_get_current_queue_0001, nullptr, nullptr,
             nullptr, napi_default, nullptr },
         { "ffrt_this_task_get_qos_0001", nullptr, ffrt_this_task_get_qos_0001, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "ffrt_attr_stack_size_0001", nullptr, ffrt_attr_stack_size_0001, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "ffrt_task_handle_ref_0001", nullptr, ffrt_task_handle_ref_0001, nullptr, nullptr,
             nullptr, napi_default, nullptr },
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

@@ -98,7 +98,7 @@ export default function commonJsunit() {
 
     it('commonTest_0500', 0, async (done: Function) => {
       console.info('commonTest_0500 START');
-      let a = -800000000;
+      let a = -100000000;
       let ret = a / (dpiValue / 160);
       let b = px2vp(a);
       console.info('commonTest_0500 px2vp result:' + b);

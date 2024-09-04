@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common'
+import CommonFunc from '../../MainAbility/common/Common'
 
 
 export default function PropStringJsunit() {
@@ -62,7 +62,7 @@ export default function PropStringJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropString_A');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropStringJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[PropStringJsunit_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Father State: Hi');
@@ -78,13 +78,13 @@ export default function PropStringJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ChildPropString_A');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropStringJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[PropStringJsunit_0400] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Child Prop: World');
 
       let strJson1 = getInspectorByKey('PropString_A');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PropStringJsunit_0200] component obj is: " + JSON.stringify(obj1));
       console.info("[PropStringJsunit_0200] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('Father State: Hi');

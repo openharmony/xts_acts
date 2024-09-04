@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +13,7 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -21,25 +21,25 @@ struct NavigationExamplett {
   private arr: number[] = [0, 1, 2, 3, 4, 5]
   @State hideBar: boolean = true
   @State toolBar: boolean = true
-  @State hideToolBar: boolean = false
-  @State hideTitleBar: boolean = false
-  @State hideBackButton: boolean = false
+  @State hideToolBar: number = 0
+  @State hideTitleBar: number = 0
+  @State hideBackButton: number = 0
   @State onActionCalled: boolean = false
   @State titleMode: NavigationTitleMode = NavigationTitleMode.Free
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("tabs page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.vertical != null) {
+      if (eventData.data?.vertical != null) {
         this.titleMode = eventData.data.titleMode;
       }
-      if (eventData.data.hideToolBar != null) {
+      if (eventData.data?.hideToolBar != null) {
         this.hideToolBar = parseInt(eventData.data.hideToolBar);
       }
-      if (eventData.data.hideTitleBar != null) {
+      if (eventData.data?.hideTitleBar != null) {
         this.hideTitleBar = parseInt(eventData.data.hideTitleBar);
       }
-      if (eventData.data.hideBackButton != null) {
+      if (eventData.data?.hideBackButton != null) {
         this.hideBackButton = parseInt(eventData.data.hideBackButton);
       }
     }
@@ -47,7 +47,7 @@ struct NavigationExamplett {
 
   onPageShow() {
     console.info('progress page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 135,
       priority: events_emitter.EventPriority.LOW
     }
@@ -84,7 +84,7 @@ struct NavigationExamplett {
       Navigation() {
         Search({ value: '', placeholder: "" }).width('85%').margin(26)
         List({ space: 5, initialIndex: 0 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: number) => {
             ListItem() {
               Text('' + item)
                 .width('90%')
@@ -94,7 +94,7 @@ struct NavigationExamplett {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
             }.editable(true)
-          }, item => item)
+          }, (item: number) => item.toString())
         }
         .listDirection(Axis.Vertical)
         .key('Navigation')
@@ -109,19 +109,19 @@ struct NavigationExamplett {
             this.hideBar = !this.hideBar;
             console.info('navigationContent1 current action state is: ' + this.hideBar);
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "ACTION": this.hideBar,
                 }
               }
-              var backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 1366,
                 priority: events_emitter.EventPriority.LOW
               }
               console.info("navigationContent1 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("navigationContent1 emit action state err: " + JSON.stringify(err.message))
+              console.info("navigationContent1 emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
           .margin({ left: 135, top: 60 })

@@ -55,7 +55,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0100 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.duration == 100).assertTrue();
+          expect(indexEvent.data?.duration == 100).assertTrue();
         } catch (err) {
           console.info("animateTest_0100 get state result is err: " + JSON.stringify(err));
         }
@@ -78,7 +78,7 @@ export default function animateToTest() {
       }
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0200 get state result is: " + JSON.stringify(indexEvent))
-        expect(indexEvent.data.curve).assertEqual('Ease')
+        expect(indexEvent.data?.curve).assertEqual('Ease')
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -99,7 +99,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0300 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.iterations == 1).assertTrue();
+          expect(indexEvent.data?.iterations == 1).assertTrue();
         } catch (err) {
           console.info("animateTest_0300 get state result err is: " + JSON.stringify(err))
         }
@@ -123,7 +123,7 @@ export default function animateToTest() {
       }
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0400 get state result is: " + JSON.stringify(indexEvent))
-        expect(indexEvent.data.tempo).assertEqual(1000)
+        expect(indexEvent.data?.tempo).assertEqual(1000)
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -143,7 +143,7 @@ export default function animateToTest() {
       }
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0500 get state result is: " + JSON.stringify(indexEvent))
-        expect(indexEvent.data.playmode).assertEqual('normal')
+        expect(indexEvent.data?.playmode).assertEqual('normal')
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -168,7 +168,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0600 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.duration == 2000).assertTrue();
+          expect(indexEvent.data?.duration == 2000).assertTrue();
         } catch (err) {
           console.info("animateTest_0600 get state result err is: " + JSON.stringify(err));
         }
@@ -196,7 +196,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0700 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.curve).assertEqual('Linear');
+          expect(indexEvent.data?.curve).assertEqual('Linear');
         } catch (err) {
           console.info("animateTest_0700 get state result err is: " + JSON.stringify(err))
         }
@@ -224,7 +224,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0800 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.iterations).assertEqual(2)
+          expect(indexEvent.data?.iterations).assertEqual(2)
         } catch (err) {
           console.info("animateTest_0800 get state result err is: " + JSON.stringify(err))
         }
@@ -253,7 +253,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0900 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.tempo).assertEqual('20000');
+          expect(indexEvent.data?.tempo).assertEqual('20000');
         } catch (err) {
           console.info("animateTest_0900 get state result err is: " + JSON.stringify(err))
         }
@@ -282,7 +282,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1000 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.playmode).assertEqual('alternate');
+          expect(indexEvent.data?.playmode).assertEqual('alternate');
         } catch (err) {
           console.info("animateTest_1000 get state result err is: " + JSON.stringify(err))
         }
@@ -310,7 +310,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1100 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.duration).assertEqual(-1000);
+          expect(indexEvent.data?.duration).assertEqual(-1000);
         } catch (err) {
           console.info("animateTest_1100 get state result err is: " + JSON.stringify(err))
         }
@@ -339,7 +339,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1200 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.duration).assertEqual(100000000);
+          expect(indexEvent.data?.duration).assertEqual(100000000);
         } catch (err) {
           console.info("animateTest_1200 get state result err is: " + JSON.stringify(err))
         }
@@ -367,7 +367,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1300 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.curve).assertEqual('123');
+          expect(indexEvent.data?.curve).assertEqual('123');
         } catch (err) {
           console.info("animateTest_1300 get state result err is: " + JSON.stringify(err))
         }
@@ -396,7 +396,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1400 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.curve).assertEqual('abc')
+          expect(indexEvent.data?.curve).assertEqual('abc')
         } catch (err) {
           console.info("animateTest_1400 get state result err is: " + JSON.stringify(err))
         }
@@ -424,7 +424,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1500 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.iteration).assertEqual(121);
+          expect(indexEvent.data?.iteration).assertEqual(121);
         } catch (err) {
           console.info("animateTest_1500 get state result err is: " + JSON.stringify(err))
         }
@@ -452,7 +452,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1600 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.iteration).assertEqual(-5);
+          expect(indexEvent.data?.iteration).assertEqual(-5);
         } catch (err) {
           console.info("animateTest_1600 get state result err is: " + JSON.stringify(err))
         }
@@ -480,7 +480,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1700 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.tempo).assertEqual('12121212121212');
+          expect(indexEvent.data?.tempo).assertEqual('12121212121212');
         } catch (err) {
           console.info("animateTest_1700 get state result err is: " + JSON.stringify(err))
         }
@@ -509,7 +509,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1800 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.tempo).assertEqual('-5')
+          expect(indexEvent.data?.tempo).assertEqual('-5')
         } catch (err) {
           console.info("animateTest_1800 get state result err is: " + JSON.stringify(err))
         }
@@ -537,7 +537,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1900 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.playmode).assertEqual(-6);
+          expect(indexEvent.data?.playmode).assertEqual(-6);
         } catch (err) {
           console.info("animateTest_1900 get state result err is: " + JSON.stringify(err))
         }
@@ -566,7 +566,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_2000 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.playmode).assertEqual(123456);
+          expect(indexEvent.data?.playmode).assertEqual(123456);
         } catch (err) {
           console.info("animateTest_2000 get state result err is: " + JSON.stringify(err));
         }
@@ -598,7 +598,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_2100 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.finishCallbackType).assertEqual(FinishCallbackType.REMOVED);
+          expect(indexEvent.data?.finishCallbackType).assertEqual(FinishCallbackType.REMOVED);
         } catch (err) {
           console.info("animateTest_2100 get state result err is: " + JSON.stringify(err));
         }
@@ -626,7 +626,7 @@ export default function animateToTest() {
       }
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_2200 get state result is: " + JSON.stringify(indexEvent))
-        expect(indexEvent.data.finishCallbackType).assertEqual(FinishCallbackType.REMOVED)
+        expect(indexEvent.data?.finishCallbackType).assertEqual(FinishCallbackType.REMOVED)
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -652,7 +652,7 @@ export default function animateToTest() {
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_2300 get state result is: " + JSON.stringify(indexEvent))
         try {
-          expect(indexEvent.data.finishCallbackType).assertEqual(FinishCallbackType.LOGICALLY);
+          expect(indexEvent.data?.finishCallbackType).assertEqual(FinishCallbackType.LOGICALLY);
         } catch (err) {
           console.info("animateTest_2300 get state result err is: " + JSON.stringify(err));
         }

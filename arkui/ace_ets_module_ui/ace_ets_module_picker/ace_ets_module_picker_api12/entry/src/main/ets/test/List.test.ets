@@ -29,8 +29,8 @@ import SliderAttrs from './SliderTest/SliderAttrs.test'
 import SliderContentModifier from './SliderTest/SliderContentModifier.test'
 import ToggleContentModifier from './ToggleTest/ToggleContentModifier.test'
 import ToggleSwitchStyle from './ToggleTest/ToggleSwitchStyle.test'
-import ToggleContentIsOn from './ToggleTest/ToggleIsOn.test.ets';
-import ToggleContentEnabled from './ToggleTest/ToggleEnabled.test.ets';
+import ToggleContentIsOn from './ToggleTest/ToggleIsOn.test';
+import ToggleContentEnabled from './ToggleTest/ToggleEnabled.test';
 import selectApi1 from './select/selectApi1.test'
 import triggerSelect from './select/triggerSelect.test'
 import slideRange from './SliderTest/slideRange.test'

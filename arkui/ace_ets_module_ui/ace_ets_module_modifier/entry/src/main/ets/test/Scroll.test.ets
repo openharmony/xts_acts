@@ -52,7 +52,7 @@ export default function scrollOnScrollBeginJsunit() {
     it('testScroll0001', 0, async (done: Function) => {
       console.info('testScroll0001 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0001] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.scrollSnapAlign).assertEqual("ScrollSnapAlign.NONE");
       console.info('testScroll0001 END');
@@ -70,7 +70,7 @@ export default function scrollOnScrollBeginJsunit() {
     it('testScroll0002', 0, async (done: Function) => {
       console.info('testScroll0002 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0002] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.friction).assertEqual(1);
       console.info('testScroll0001 END');
@@ -88,7 +88,7 @@ export default function scrollOnScrollBeginJsunit() {
     it('testScroll0003', 0, async (done: Function) => {
       console.info('testScroll0003 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0003] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.enableScrollInteraction).assertEqual(true);
       console.info('testScroll0003 END');
@@ -106,7 +106,7 @@ export default function scrollOnScrollBeginJsunit() {
     it('testScroll0005', 0, async (done: Function) => {
       console.info('testScroll0005 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0005] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.scrollable).assertEqual("ScrollDirection.Vertical");
       console.info('testScroll0005 END');
@@ -124,7 +124,7 @@ export default function scrollOnScrollBeginJsunit() {
     it('testScroll0006', 0, async (done: Function) => {
       console.info('testScroll0006 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0006] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.scrollBar).assertEqual("BarState.Auto");
       console.info('testScroll0006 END');
@@ -142,7 +142,7 @@ export default function scrollOnScrollBeginJsunit() {
     it('testScroll0007', 0, async (done: Function) => {
       console.info('testScroll0007 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0007] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.scrollBarWidth).assertEqual("5.00vp");
       console.info('testScroll0007 END');
@@ -160,7 +160,7 @@ export default function scrollOnScrollBeginJsunit() {
     it('testScroll0008', 0, async (done: Function) => {
       console.info('testScroll0008 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0008] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.edgeEffect).assertEqual("EdgeEffect.None");
       console.info('testScroll0008 END');
@@ -178,7 +178,7 @@ export default function scrollOnScrollBeginJsunit() {
     it('testScroll0009', 0, async (done: Function) => {
       console.info('testScroll0009 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0009] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.scrollBarColor).assertEqual("#FF123456");
       console.info('testScroll0009 END');
@@ -196,7 +196,7 @@ export default function scrollOnScrollBeginJsunit() {
     it('testScroll0010', 0, async (done: Function) => {
       console.info('testScroll0010 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0010] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.enablePaging).assertEqual(undefined);
       console.info('testScroll0010 END');
@@ -218,7 +218,7 @@ export default function scrollOnScrollBeginJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('ScrollKey1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("testScroll0011 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.scrollBarColor).assertEqual("#FF222222");
       console.info('testScroll0011 END');

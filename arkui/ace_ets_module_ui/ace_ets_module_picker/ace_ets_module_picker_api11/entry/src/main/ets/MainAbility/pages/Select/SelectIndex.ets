@@ -30,17 +30,17 @@ struct SelectExample {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("selectTest stateChangCallBack before:" + JSON.stringify(eventData));
     if (eventData != null) {
-      this.spaceValue = eventData.data.spaceValue;
+      this.spaceValue = eventData.data?.spaceValue;
       console.info("select page state change called after spaceValue:" + this.spaceValue);
-      this.arrowPosition = eventData.data.arrowPosition;
+      this.arrowPosition = eventData.data?.arrowPosition;
       console.info("select page eventData:" + this.arrowPosition);
 
-      if (eventData.data.spaceValueString != null) {
+      if (eventData.data?.spaceValueString != null) {
         this.spaceValueString = eventData.data.spaceValueString;
         console.info("select page state change called after spaceValue:" + this.spaceValueString);
       }
 
-      if (eventData.data.spaceValueResource != null) {
+      if (eventData.data?.spaceValueResource != null) {
         this.spaceValueResource = eventData.data.spaceValueResource;
         console.info("select page state change called after spaceValue:" + this.spaceValueResource);
       }

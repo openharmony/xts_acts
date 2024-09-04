@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -49,7 +48,7 @@ struct OhosRouterB {
       console.info("[OhosRouterB] start to emit params");
       events_emitter.emit(paramsEvent, paramsData);
     } catch (err) {
-      console.info("[OhosRouterB] emit params err: " + JSON.stringify(err.message));
+      console.info("[OhosRouterB] emit params err: " + JSON.stringify((err as Error).message));
     }
   }
 }

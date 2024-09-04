@@ -26,15 +26,15 @@ struct propChild {
   @Prop prop:Member2
   build() {
     Column() {
-      Text('@Prop').fontSize(30)
+      Text('@Prop').fontSize(20)
       Text('memberA='+`${this.prop.memberA}`)
         .key('Track_prop')
-        .fontSize(30)
+        .fontSize(20)
       Text('memberC='+`${this.prop.memberC}`)
         .key('Track_prop1')
-        .fontSize(30)
+        .fontSize(20)
     }
-    .height('20%')
+    .height('10%')
   }
 }
 @Component
@@ -42,15 +42,15 @@ struct objectLinkChild {
   @ObjectLink objectlink :Member2
   build() {
     Column() {
-      Text('@ObjectLink').fontSize(30)
+      Text('@ObjectLink').fontSize(20)
       Text('memberA='+`${this.objectlink.memberA}`)
         .key('Track_objectlink')
-        .fontSize(30)
+        .fontSize(20)
       Text('memberC='+`${this.objectlink.memberC}`)
         .key('Track_objectlink1')
-        .fontSize(30)
+        .fontSize(20)
     }
-    .height('20%')
+    .height('10%')
   }
 }
 @Component
@@ -58,15 +58,15 @@ struct linkChild {
   @Link link:Member2
   build() {
     Column() {
-      Text('@Link').fontSize(30)
+      Text('@Link').fontSize(20)
       Text('memberA='+`${this.link.memberA}`)
         .key('Track_link')
-        .fontSize(30)
+        .fontSize(20)
       Text('memberC='+`${this.link.memberC}`)
         .key('Track_link1')
-        .fontSize(30)
+        .fontSize(20)
     }
-    .height('20%')
+    .height('10%')
   }
 }
 @Entry
@@ -81,16 +81,16 @@ struct stateTrack {
           this.me.memberA=30
         })
       Column(){
-        Text('@State').fontSize(30)
+        Text('@State').fontSize(20)
         Text('memberA='+`${this.me.memberA}`)
           .key('Track_state')
-          .fontSize(30)
+          .fontSize(20)
         Text('memberC='+`${this.me.memberC}`)
           .key('Track_state1')
-          .fontSize(30)
+          .fontSize(20)
       }
       .border({width:2,color:Color.Yellow})
-      .height('20%')
+      .height('10%')
       Column(){
         propChild({prop:this.me})
       }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +13,15 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function datePickerJsunit() {
-  describe('datePickerJsunit', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/DatePicker/datePickerneww',
+  describe('datePickerJsunit', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/DatePicker/datePickerneww',
       }
       try {
         router.clear();
@@ -40,44 +39,44 @@ export default function datePickerJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("datePicker after each called");
     });
 
-    it('datePickerTest_0100', 0, async function (done) {
+    it('datePickerTest_0100', 0, async (done: Function) => {
       console.info('datePickerText_0100 START');
       let strJson = getInspectorByKey('datePicker');
       console.info("datePickerText_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("datePickerText_0100 component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('DatePicker');
       console.info('datePickerTest_0200 END');
       done();
     });
 
-    it('datePickerTest_0300', 0, async function (done) {
+    it('datePickerTest_0300', 0, async (done: Function) => {
       console.info('datePickerTest_0300 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "useMilitaryTime": "false",
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 81,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("datePickerTest_0300 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("datePickerTest_0300 change component data error: " + err.message);
+        console.log("datePickerTest_0300 change component data error: " + (err as Error).message);
       }
-      let callback = (indexEventOne) => {
+      let callback = (indexEventOne: events_emitter.EventData) => {
         console.info("datePickerTest_0300 get state result is: " + JSON.stringify(indexEventOne));
-        expect(obj.$attrs.useMilitaryTime).assertEqual('false');
+        expect(indexEventOne.data?.useMilitaryTime).assertEqual('false');
       }
-      let indexEventOne = {
+      let indexEventOne: events_emitter.InnerEvent = {
         eventId: 80,
         priority: events_emitter.EventPriority.LOW
       }

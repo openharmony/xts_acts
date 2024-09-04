@@ -26,9 +26,13 @@ export default function SendableGroupWithAllocTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_GROUPWITHALLOC_001
          * @tc.name: testManySendablesToGroup
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it('testManySendablesToGroup', 0, async (done: Function) => {
            let result = await testManySendablesToGroup();
@@ -37,9 +41,13 @@ export default function SendableGroupWithAllocTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_GROUPWITHALLOC_002
          * @tc.name: testManySendablesToGroupWithAlloc
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it("testSendableToGroupAndUpdateWithAlloc", 0, async (done: Function) => {
            let result = await skipConditional(
@@ -49,9 +57,13 @@ export default function SendableGroupWithAllocTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_GROUPWITHALLOC_003
          * @tc.name: testManySendablesToGroupWithAlloc
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it("testSendablesFromOtherTaskWithAlloc", 0, async (done: Function) => {
            let result = await skipConditional(

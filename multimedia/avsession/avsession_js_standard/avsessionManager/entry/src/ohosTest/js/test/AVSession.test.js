@@ -16,7 +16,7 @@
 import avSession from '@ohos.multimedia.avsession';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
-// import WantAgent from '@ohos.wantAgent';
+import ohosWantAgent from '@ohos.wantAgent';
 import WantAgent from '@ohos.app.ability.wantAgent';
 import featureAbility from '@ohos.ability.featureAbility';
 
@@ -386,9 +386,6 @@ export default function AVSession() {
 
             await controller.getAVMetadata().then((data) => {
                 if (data.mediaImage === metadata7.mediaImage) {
-                    expect(true).assertTrue();
-                } else if(data.mediaImage !== null){
-                    console.info('TestLog: Get mediaImage Successfully');
                     expect(true).assertTrue();
                 } else {
                     console.info('TestLog: Get mediaImage failed');
@@ -1672,7 +1669,7 @@ export default function AVSession() {
                         abilityName: 'com.example.myapplication.MainAbility'
                     }
                 ],
-                operationType: WantAgent.OperationType.START_ABILITIES,
+                operationType: ohosWantAgent.OperationType.START_ABILITIES,
                 requestCode: 0,
                 wantAgentFlags: [WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
             };
@@ -3639,20 +3636,26 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_GETALLCASTDISPLAYS_0100', 2, async function (done) {
-            session.getAllCastDisplays().then((data) => {
-                if (Array.isArray(data)) {
-                        console.info(`getAllCastDisplays success: ${JSON.stringify(data)}`);
-                        expect(true).assertTrue();
-                } else {
-                    console.info('getAllCastDisplays failed');
-                    expect(false).assertTrue();
-                    done();
-                }
-            }).catch((err) => {
-                expect(err.code).assertEqual(6600101);
-                console.info(`getAllCastDisplays successfully: ${err.code}, message: ${err.message}`)
-            })
-            done();
+            try {
+                session.getAllCastDisplays().then((data) => {
+                    if (Array.isArray(data)) {
+                            console.info(`getAllCastDisplays success: ${JSON.stringify(data)}`);
+                            expect(true).assertTrue();
+                    } else {
+                        console.info('getAllCastDisplays failed');
+                        expect(false).assertTrue();
+                        done();
+                    }
+                }).catch((err) => {
+                    expect(err.code).assertEqual(6600101);
+                    console.info(`getAllCastDisplays successfully: ${err.code}, message: ${err.message}`)
+                })
+                done();
+            } catch (err) {
+                console.error(`Session getAllCastDisplays: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+            }
         })
 
     })

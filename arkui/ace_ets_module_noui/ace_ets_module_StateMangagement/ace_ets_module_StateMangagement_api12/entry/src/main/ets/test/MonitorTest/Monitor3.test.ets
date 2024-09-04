@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function Monitor3Test() {
-  describe('Monitor3Test', function () {
-    beforeEach(async function (done) {
+  describe('Monitor3Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("Monitor3Test beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Monitor/Monitor3',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Monitor/Monitor3',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function Monitor3Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Monitor3Test_0100', 0, async function (done) {
+    it('Monitor3Test_0100', 0, async (done: Function) => {
       console.info('Monitor3Test_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -56,7 +56,7 @@ export default function Monitor3Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Monitor3_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Monitor3Test_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('测试1：Success');
       console.info('[Monitor3Test_0100] END');
@@ -70,7 +70,7 @@ export default function Monitor3Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Monitor3Test_0200', 0, async function (done) {
+    it('Monitor3Test_0200', 0, async (done: Function) => {
       console.info('Monitor3Test_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -78,7 +78,7 @@ export default function Monitor3Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Monitor3_2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Monitor3Test_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('测试2：Success');
       console.info('[Monitor3Test_0200] END');
@@ -92,7 +92,7 @@ export default function Monitor3Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Monitor3Test_0300', 0, async function (done) {
+    it('Monitor3Test_0300', 0, async (done: Function) => {
       console.info('Monitor3Test_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -100,7 +100,7 @@ export default function Monitor3Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Monitor3_3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Monitor3Test_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('测试3：Success');
       console.info('[Monitor3Test_0300] END');

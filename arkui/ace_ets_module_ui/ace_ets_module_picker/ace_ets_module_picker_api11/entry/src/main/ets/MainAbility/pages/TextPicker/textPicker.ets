@@ -35,7 +35,7 @@ struct TextPickerDefaultPickerItemHeight {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       TextPicker({ range: this.fruits, selected: this.select })
-        .onChange((value: string, index: number) => {
+        .onChange((value: string|string[], index: number|number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index)
         })
         .defaultPickerItemHeight('80px')

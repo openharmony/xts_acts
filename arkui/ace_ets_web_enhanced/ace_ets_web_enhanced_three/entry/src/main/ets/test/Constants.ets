@@ -40,7 +40,7 @@ export enum EKeyType {
  * 键盘按键数据接口
  */
 export interface IKeyAttribute {
-  label: string | Resource;
+  label?: string | Resource;
   value?: string;
   type?: EKeyType;
   fontSize?: number;

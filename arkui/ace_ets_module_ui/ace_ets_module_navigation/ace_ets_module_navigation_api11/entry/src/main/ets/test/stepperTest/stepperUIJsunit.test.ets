@@ -23,7 +23,7 @@ export default function stepperUIJsunit() {
   describe('stepperUIJsunit',  () =>{
     beforeEach(async  (done:Function) =>{
       console.info("stepperUIJsunit beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/stepper/stepperUI',
       }
       try {
@@ -46,8 +46,8 @@ export default function stepperUIJsunit() {
        console.info('stepperUIJsunit_0100');
        await CommonFunc.sleep(1000);
        // get the stepperItem component and test attribute
-       let strJson = getInspectorByKey('stepperTwo');
-       let obj = JSON.parse(strJson);
+       let strJson: string = getInspectorByKey('stepperTwo');
+       let obj: Record<string, ESObject> = JSON.parse(strJson);
        console.info('stepperUIJsunit_0100 component obj is: ' + obj.$attrs.nextLabel + "---" + obj.$attrs.prevLabel + "---" + obj.$attrs.status);
        expect(obj.$attrs.nextLabel).assertEqual('下一步');
        expect(obj.$attrs.prevLabel).assertEqual('返回');
@@ -65,8 +65,8 @@ export default function stepperUIJsunit() {
       globalThis.value.message.notify({name:'status',value:ItemState.Waiting});
       await CommonFunc.sleep(2000);
       // check the parameter value
-      let strJson = getInspectorByKey('stepperTwo');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('stepperTwo');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('stepperUIJsunit_0200 component obj is: ' + obj.$attrs.nextLabel + "---" + obj.$attrs.prevLabel + "---" + obj.$attrs.status);
       expect(obj.$attrs.nextLabel).assertEqual('hhe');
       expect(obj.$attrs.prevLabel).assertEqual('hha');
@@ -80,14 +80,14 @@ export default function stepperUIJsunit() {
       // test the status of enum value dynamically
       globalThis.value.message.notify({name:'status',value:ItemState.Disabled})
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('stepperTwo');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('stepperTwo');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('stepperUIJsunit_0300 component obj is: ' + obj.$attrs.status);
       //expect(obj.$attrs.status).assertEqual('ItemState.Disabled');
       globalThis.value.message.notify({name:'status',value:ItemState.Skip})
       await CommonFunc.sleep(2000);
       let strJson2 = getInspectorByKey('stepperTwo');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: Record<string, ESObject> = JSON.parse(strJson2);
       console.info('stepperUIJsunit_0300 component obj2 is: ' + obj2.$attrs.status);
       //expect(obj2.$attrs.status).assertEqual('ItemState.Skip');
       done();   
@@ -99,8 +99,8 @@ export default function stepperUIJsunit() {
       // test the status of illegal enum value dynamically
       globalThis.value.message.notify({name:'status',value:7})
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('stepperTwo');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('stepperTwo');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('stepperUIJsunit_0400 component obj is: ' + obj.$attrs.status);
       expect(obj.$attrs.status).assertEqual('ItemState.Normal');
       done();   
@@ -111,8 +111,8 @@ export default function stepperUIJsunit() {
       // get the stepper component and test attribute
        await CommonFunc.sleep(1000);
        // get the stepperItem component and test attribute
-       let strJson = getInspectorByKey('stepkey');
-       let obj = JSON.parse(strJson);
+       let strJson: string = getInspectorByKey('stepkey');
+       let obj: Record<string, ESObject> = JSON.parse(strJson);
        console.info('stepperUIJsunit_0500 component obj is: ' + obj.$attrs.index);
        expect(obj.$attrs.index).assertEqual('0');
        done();
@@ -137,8 +137,8 @@ export default function stepperUIJsunit() {
       await button2.click();
       console.info('stepperUIJsunit_0600 button2 click succ');
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('pageThree');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('pageThree');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('stepperUIJsunit_0600 component obj is: ' + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('Page Three');
       // test the previous
@@ -147,7 +147,7 @@ export default function stepperUIJsunit() {
       await CommonFunc.sleep(1000);
       console.info('stepperUIJsunit_0600 button3 click succ');
       let strJson1 = getInspectorByKey('pageTwo');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: Record<string, ESObject> = JSON.parse(strJson1);
       console.info('stepperUIJsunit_0600 component obj1 is: ' + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertEqual('Page Two');
       done();
@@ -171,8 +171,8 @@ export default function stepperUIJsunit() {
       await button4.click();
       console.info('stepperUIJsunit_0700 button4 click succ');
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('pageOne');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('pageOne');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('stepperUIJsunit_0700 component obj is: ' + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('Page One');
       done();
@@ -186,8 +186,8 @@ export default function stepperUIJsunit() {
       let button = await driver.findComponent(BY.text('Next'));
       await button.click();
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('pageTwo');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('pageTwo');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('stepperUIJsunit_0800 component obj is: ' + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('Page Two');
       done();

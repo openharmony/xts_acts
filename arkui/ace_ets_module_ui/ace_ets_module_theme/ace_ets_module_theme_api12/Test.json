@@ -4,14 +4,15 @@
         "type": "OHJSUnitTest",
         "test-timeout": "18000000",
         "bundle-name": "com.acts.arkui.theme.test",
-        "module-name": "phone",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": 600000
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsAceEtsModuleThemeApi12Test.hap"
+                "ActsAceEtsModuleThemeApi12Test.hap",
+                "ActsAceEtsModuleThemeApi12TestMain.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

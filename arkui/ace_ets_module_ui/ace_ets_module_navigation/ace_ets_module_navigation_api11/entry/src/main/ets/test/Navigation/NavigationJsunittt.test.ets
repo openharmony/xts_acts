@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +21,7 @@ export default function navigationJsunittt() {
   describe('navigationJsunittt',  () =>{
     beforeEach(async  (done:Function) =>{
       console.info("navigation beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation/navigationtt',
       }
       try {
@@ -49,8 +48,8 @@ export default function navigationJsunittt() {
     it('testNavigation_100', 0, async  (done:Function) =>{
       console.info('[testNavigation_100] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('Navigation');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('Navigation');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[testNavigation_100] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.width).assertEqual("100.00%");
       console.info('[testNavigation_100] END');
@@ -60,12 +59,12 @@ export default function navigationJsunittt() {
     it('testNavigation_200', 0, async  (done:Function) =>{
       console.info('testNavigation_200 START');
       await Utils.sleep(1000);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testNavigation_200 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.ACTION).assertEqual(false);
+        expect(indexEvent.data?.ACTION).assertEqual(false);
         done();
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 1366,
         priority: events_emitter.EventPriority.LOW
       }
@@ -82,8 +81,8 @@ export default function navigationJsunittt() {
     it('testNavigation_300', 0, async  (done:Function) =>{
       console.info('[testNavigation_300] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('Navigation');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('Navigation');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[testNavigation_300] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.height).assertEqual("300.00vp");
       console.info('[testNavigation_300] END');
@@ -93,8 +92,8 @@ export default function navigationJsunittt() {
     it('testNavigation_400', 0, async  (done:Function) =>{
       console.info('[testNavigation_400] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('Navigation');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('Navigation');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[testNavigation_400] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.align).assertEqual("Alignment.Center");
       console.info('[testNavigation_400] END');

@@ -4,14 +4,15 @@
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "bundle-name": "com.example.datapaneltest",
-        "module-name": "phone",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": 240000
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsAceDatapanelTest.hap"
+                "ActsAceDatapanelTest.hap",
+                "ActsAceDatapanelTestMain.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

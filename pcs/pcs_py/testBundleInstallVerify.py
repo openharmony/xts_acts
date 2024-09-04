@@ -43,24 +43,24 @@ class testBundleInstallVerify(TestCase):
         if 'install bundle successfully' not in installResult.strip():
             errorList.append('install application failed')
             return errorList
-        dumpResult = self.device1.execute_shell_command("bm dump -n com.pcs.software.bundle.first|grep '\"versionCode\": 1100000'|wc -l")
-        if int(dumpResult.strip()) < 1:
+        dumpResult = self.device1.execute_shell_command("bm dump -n com.pcs.software.bundle.first")
+        if dumpResult.count('\"versionCode\": 1100000') < 1:
             errorList.append('get version code failed')
             return errorList
         installResult = self.device1.execute_shell_command("bm install -p /data/local/tmp/bundle_second.hap")
         if 'error: install version downgrade' not in installResult.strip():
             errorList.append('version code downgrade verify failed')
             return errorList
-        dumpResult = self.device1.execute_shell_command("bm dump -n com.pcs.software.bundle.first|grep '\"versionCode\": 1100000'|wc -l")
-        if int(dumpResult.strip()) < 1:
+        dumpResult = self.device1.execute_shell_command("bm dump -n com.pcs.software.bundle.first")
+        if dumpResult.count('\"versionCode\": 1100000') < 1:
             errorList.append('get version code failed')
             return errorList
         installResult = self.device1.execute_shell_command("bm install -p /data/local/tmp/bundle_third.hap")
         if 'install bundle successfully' not in installResult.strip():
             errorList.append('version code upgrade verify failed')
             return errorList
-        dumpResult = self.device1.execute_shell_command("bm dump -n com.pcs.software.bundle.first|grep '\"versionCode\": 1200000'|wc -l")
-        if int(dumpResult.strip()) < 1:
+        dumpResult = self.device1.execute_shell_command("bm dump -n com.pcs.software.bundle.first")
+        if dumpResult.count('\"versionCode\": 1200000') < 1:
             errorList.append('get version code failed')
             return errorList
         return errorList

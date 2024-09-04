@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Huawei Device Co., Ltd.
+# Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -13,31 +13,15 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsPreferencesDataGroupIdTest") {
-  hap_profile = "src/main/module.json"
-  deps = [
-    ":preferencesDataGroupId_js_assets",
-    ":preferencesDataGroupId_resources",
-  ]
-  ets2abc = true
+ohos_js_app_suite("ActsPreferencesDataGroupIdTest") {
+  test_hap = true
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-
   hap_name = "ActsPreferencesDataGroupIdTest"
-  subsystem_name = "distributeddatamgr"
+
+  # 部件名称，真实数据，需要子系统对应
   part_name = "preferences"
-}
-ohos_app_scope("preferencesDataGroupId_app_profile") {
-  app_profile = "AppScope/app.json"
 
-  sources = [ "AppScope/resources" ]
-}
-ohos_js_assets("preferencesDataGroupId_js_assets") {
-  source_dir = "src/main/ets"
-}
-ohos_resources("preferencesDataGroupId_resources") {
-  sources = [ "src/main/resources" ]
-
-  deps = [ ":preferencesDataGroupId_app_profile" ]
-
-  hap_profile = "src/main/module.json"
+  # 子系统名称，真实数据，需要部件对应
+  subsystem_name = "distributeddatamgr"
 }

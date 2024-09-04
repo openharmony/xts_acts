@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@ts-nocheck
 @Entry
 @Component
 struct SelectMenuTest {
@@ -164,7 +163,7 @@ struct SelectMenuTest {
               .selectedOptionFont({ size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
               .optionFont({ size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
               .key('selectTest8')
-              .menuAlign(null)
+              .menuAlign(fakeMenuAlignType(null))
               .onSelect((index: number) => {
                 console.info("Select:" + index)
               })
@@ -182,7 +181,7 @@ struct SelectMenuTest {
               .selectedOptionFont({ size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
               .optionFont({ size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
               .key('selectTest9')
-              .menuAlign(undefined)
+              .menuAlign(fakeMenuAlignType(undefined))
               .onSelect((index: number) => {
                 console.info("Select:" + index)
               })
@@ -200,7 +199,7 @@ struct SelectMenuTest {
               .selectedOptionFont({ size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
               .optionFont({ size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
               .key('selectTest10')
-              .menuAlign('menuAlign')
+              .menuAlign(fakeMenuAlignType('menuAlign'))
               .onSelect((index: number) => {
                 console.info("Select:" + index)
               })
@@ -218,7 +217,6 @@ struct SelectMenuTest {
               .selectedOptionFont({ size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
               .optionFont({ size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
               .key('selectTest11')
-              .menuAlign()
               .onSelect((index: number) => {
                 console.info("Select:" + index)
               })
@@ -256,7 +254,7 @@ struct SelectMenuTest {
               .optionFont({ size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
               .key('selectTest13')
               .menuAlign(MenuAlignType.CENTER)
-              .menuAlign(null)
+              .menuAlign(fakeMenuAlignType(null))
               .onSelect((index: number) => {
                 console.info("Select:" + index)
               })
@@ -274,7 +272,7 @@ struct SelectMenuTest {
               .selectedOptionFont({ size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
               .optionFont({ size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
               .key('selectTest14')
-              .menuAlign(null)
+              .menuAlign(fakeMenuAlignType(null))
               .menuAlign(MenuAlignType.CENTER, { dx: -5, dy: -5 })
               .onSelect((index: number) => {
                 console.info("Select:" + index)
@@ -302,4 +300,7 @@ struct SelectMenuTest {
     }.height('100%')
   }
 }
- 
+
+function fakeMenuAlignType(val: MenuAlignType|string|null|undefined) {
+  return val as MenuAlignType
+}

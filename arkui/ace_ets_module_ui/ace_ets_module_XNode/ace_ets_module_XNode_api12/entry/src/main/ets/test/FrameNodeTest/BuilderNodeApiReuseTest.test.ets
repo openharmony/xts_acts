@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function BuilderNodeApiReuseTest() {
-  describe('BuilderNodeApiReuseTest', function () {
-    beforeEach(async function (done) {
+  describe('BuilderNodeApiReuseTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("BuilderNodeApiReuseTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/FrameNode/BuilderNodeApiReuse",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/FrameNode/BuilderNodeApiReuse",
       }
       try {
         router.clear();
@@ -50,12 +50,12 @@ export default function BuilderNodeApiReuseTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('BuilderNodeApiReuseTest_0100', 0, async function (done) {
+    it('BuilderNodeApiReuseTest_0100', 0, async (done: Function) => {
       console.info('BuilderNodeApiReuseTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('BuilderNodeApiReuse_item1');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('BuilderNodeApiReuse_item1');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[BuilderNodeApiReuseTest_0100] component obj is: ",obj, obj.$attrs.fontSize);
       expect(obj.$attrs.fontSize).assertEqual('50.00fp');
       console.info('[BuilderNodeApiReuseTest_0100] END');

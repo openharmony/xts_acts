@@ -28,8 +28,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function StateClassObjectJsunit() {
@@ -58,7 +58,7 @@ export default function StateClassObjectJsunit() {
     afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back({
-        uri: "MainAbility/pages/index/index"
+        url: "MainAbility/pages/index/index"
       });
     });
 
@@ -66,13 +66,13 @@ export default function StateClassObjectJsunit() {
 
       console.info('StateClassObjectJsunit_0100 START');
       let strJson1 = getInspectorByKey('text_Object');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StateClassObjectJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StateClassObjectJsunit_0100] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Hello");
 
       let strJson2 = getInspectorByKey('text_Class');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StateClassObjectJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StateClassObjectJsunit_0100] title: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("World");
@@ -89,13 +89,13 @@ export default function StateClassObjectJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('text_Object');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StateClassObjectJsunit_0200] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StateClassObjectJsunit_0200] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Hi");
 
       let strJson2 = getInspectorByKey('text_Class');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StateClassObjectJsunit_0200] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StateClassObjectJsunit_0200] title: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("ArkUI");
@@ -112,7 +112,7 @@ export default function StateClassObjectJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_Object');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateClassObjectJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[StateClassObjectJsunit_0300] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Hello ArkUI");
@@ -128,7 +128,7 @@ export default function StateClassObjectJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_Class');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateClassObjectJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[StateClassObjectJsunit_0400] name: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Harmony");

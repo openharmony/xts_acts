@@ -83,6 +83,7 @@
 #include "textarea/textarea_key_test.h"
 #include "textinput/textinput_key_test.h"
 #include "textarea/textarea_onchange_test.h"
+#include "textarea/textarea_onpaste_test.h"
 #include "slider/slider_onchange_test.h"
 #include "textinput/textinput_onblur_test.h"
 #include "textinput/textinput_onfocus_test.h"
@@ -90,7 +91,18 @@
 #include "textinput/textinput_oncut_test.h"
 #include "textinput/textinput_onpaste_test.h"
 #include "gesture/gesture_test.h"
+#include "gestureScroll/gesture_interfaceTest.h"
 #include "customcomponent/customcomponent_event_test.h"
+#include "drag/drag_setSuggestedDropOperation.h"
+#include "drag/drag_disableDefaultDropAnimation.h"
+#include "drag/drag_getPreDragStatus.h"
+#include "drag/drag_setDragResult.h"
+#include "drag/drag_getDataTypesCount.h"
+#include "drag/drag_getDragResult.h"
+#include "drag/drag_getXY.h"
+#include "drag/drag_getWidthHeight.h"
+#include "drag/drag_getModifierKeyStates.h"
+#include "drag/drag_getDropOperation.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -253,6 +265,8 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"textAreaOnChangeTest", nullptr, TextAreaOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"textAreaOnPasteTest", nullptr, TextAreaOnPasteTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"sliderOnChangeTest", nullptr, SliderOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"textInputOnFocusTest", nullptr, TextInputOnFocusTest::CreateNativeNode, nullptr, nullptr, nullptr,
@@ -318,6 +332,8 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"scrollCurrentOffsetSmoothTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeSmooth, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"gestureNestScrollTest", nullptr, GestureInterfaceTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
         {"longPressGestureTest", nullptr, GestureTest::CreateLongPressNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"swipeGestureTest", nullptr, GestureTest::CreateSwipeNativeNode, nullptr, nullptr,
@@ -332,6 +348,26 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"interruptGestureTest", nullptr, GestureTest::CreateInterruptNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"disableDefaultDropAnimationTest", nullptr, DisableDefaultDropAnimationTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"getPreDragStatusTest", nullptr, GetPreDragStatusTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"setSuggestedDropOperationTest", nullptr, SetSuggestedDropOperationTest::CreateNativeNode, nullptr, nullptr,
+		 nullptr, napi_default, nullptr},
+        {"setDragResultTest", nullptr, SetDragResultTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"getDataTypesCountTest", nullptr, GetDataTypesCountTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"getDragResultTest", nullptr, GetDragResultTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"getDropOperationTest", nullptr, GetDropOperationTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"getXYTest", nullptr, GetXYTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"getWidthHeightTest", nullptr, GetWidthHeightTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"getModifierKeyStatesTest", nullptr, GetModifierKeyStatesTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

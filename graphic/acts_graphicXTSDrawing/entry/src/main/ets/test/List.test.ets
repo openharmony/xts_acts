@@ -28,13 +28,17 @@ import imageFilterTest from './ImageFilter.test'
 import typefaceTest from './Typeface.test';
 import textBlobTest from './TextBlob.test';
 import drawingTsPathTest from './Path.test';
+import drawingTsPath2Test from './Path2.test';
 import drawingTsPath3Test from './Path3.test';
 import drawingTsCanvasTest from './Canvas.test';
 import drawingTsCanvasPart2Test from './CanvasPart2.test';
 import drawingTsCanvasPart3Test from './CanvasPart3.test';
 import drawingTsCanvasPart4Test from './CanvasPart4.test';
+import drawingTsCanvasPart5Test from './CanvasPart5.test';
+import drawingTsRegionTest from './Region.test'
 import drawingTsRegionTest from './Region.test';
 import drawingTsMatrixTest from './Matrix.test';
+import drawingTsMatrixPart2Test from './MatrixPart2.test';
 import roundRectTest from './RoundRect.test';
 import shadowEffectTest from './ShaderEffect.test'
 
@@ -53,14 +57,17 @@ export default function testsuite() {
   imageFilterTest();
   latticeTest();
   drawingTsMatrixTest();
+  drawingTsMatrixPart2Test();
   typefaceTest();
   textBlobTest();
   drawingTsPathTest();
+  drawingTsPath2Test();
   drawingTsPath3Test();
   drawingTsCanvasTest();
   drawingTsCanvasPart2Test();
   drawingTsCanvasPart3Test();
   drawingTsCanvasPart4Test();
+  drawingTsCanvasPart5Test();
   drawingTsRegionTest();
   roundRectTest();
   shadowEffectTest();

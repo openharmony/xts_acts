@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common'
+import CommonFunc from '../../MainAbility/common/Common'
 
 
 export default function PropClassObjectJsunit() {
@@ -59,7 +59,7 @@ export default function PropClassObjectJsunit() {
 
       console.info('PropClassObjectJsunit_0100 START');
       let strJson = getInspectorByKey('sub_prop_AA');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropClassObjectJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropClassObjectJsunit_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("子组件Prop:Hello");
@@ -75,7 +75,7 @@ export default function PropClassObjectJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sub_prop_AA');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropClassObjectJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[PropClassObjectJsunit_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("子组件Prop:World");
@@ -87,7 +87,7 @@ export default function PropClassObjectJsunit() {
 
       console.info('PropClassObjectJsunit_0300 START');
       let strJson = getInspectorByKey('prop_Object_AA');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropClassObjectJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[PropClassObjectJsunit_0300] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Click to change Class or Object: Hello");
@@ -103,7 +103,7 @@ export default function PropClassObjectJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('prop_Object_AA');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropClassObjectJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[PropClassObjectJsunit_0400] name: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Click to change Class or Object: Hi");

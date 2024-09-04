@@ -56,7 +56,7 @@ export default function slideRange() {
     it('slideRange_001', 0, async (done: Function) => {
       console.info('[slideRange_001] START');
       let strJson = getInspectorByKey('slideRangeValue');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[slideRange_001] obj is: " + JSON.stringify(obj));
       console.info("[slideRange_001] slideRange is: " + JSON.stringify(obj.$attrs.slideRange));
       expect(JSON.stringify(obj.$attrs.slideRange)).assertEqual('{"from":"20.000000","to":"80.000000"}');
