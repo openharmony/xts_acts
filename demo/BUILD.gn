@@ -16,6 +16,15 @@ import("//build/ohos_var.gni")
 group("demo") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "hjsunit_sample:hjs_demo_test" ]
+    deps = [ 
+      "hvigor_sample/demo_assist_fa:demo_assist_fa_main",
+      "hvigor_sample/demo_entry_feature:demo_FAJS_ohosTest",
+      "hvigor_sample/demo_fa_ets:demo_ohosTest",
+      "hvigor_sample/demo_fa_js:demo_FAJS_ohosTest",
+      "hvigor_sample/demo_ndk_fa_ets:demo_FAETS_ndk_ohosTest",
+      "hvigor_sample/demo_ndk_fa_js:demo_FAJS_ndk_ohosTest",
+      "hvigor_sample/demo_ndk_stage:demo_ndk_ohosTest",
+      "hvigor_sample/demo_stage:demo_stage_ohosTest"
+       ]
   }
 }
