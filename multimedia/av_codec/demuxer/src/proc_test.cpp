@@ -1084,6 +1084,7 @@ HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3800, TestSize.Level0)
  */
 HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3700, TestSize.Level0)
 {
+    if (!strcmp(g_codecNameHEVC, "OMX.hisi.video.encoder.hevc")) {
     int tarckType = 0;
     int64_t duration;
     int64_t dts;
@@ -1118,6 +1119,7 @@ HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3700, TestSize.Level0)
             ASSERT_EQ(-80000, dts);
         }
     }
+    }
 }
  
 /**
@@ -1127,6 +1129,7 @@ HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3700, TestSize.Level0)
  */
 HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3600, TestSize.Level0)
 {
+    if (!strcmp(g_codecNameHEVC, "OMX.hisi.video.encoder.hevc")) {
     int tarckType = 0;
     double sar;
     int32_t bitsPreCodedSample;
@@ -1161,6 +1164,7 @@ HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3600, TestSize.Level0)
     ASSERT_EQ(16, bitsPreCodedSample);
     ASSERT_EQ(9, sampleFormat);
     close(fd);
+    }
 }
  
 /**
@@ -1170,6 +1174,7 @@ HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3600, TestSize.Level0)
  */
 HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3500, TestSize.Level0)
 {
+    if (!strcmp(g_codecNameHEVC, "OMX.hisi.video.encoder.hevc")) {
     int64_t startTime;
     const char *file = "/data/test/media/test_265_B_Gop25_4sec.mp4";
     int fd = open(file, O_RDONLY);
@@ -1181,5 +1186,6 @@ HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_3500, TestSize.Level0)
     ASSERT_TRUE(OH_AVFormat_GetLongValue(sourceFormat, OH_MD_KEY_START_TIME, &startTime));
     ASSERT_EQ(0, startTime);
     close(fd);
+    }
 }
 
