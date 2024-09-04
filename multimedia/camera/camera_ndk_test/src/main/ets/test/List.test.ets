@@ -33,7 +33,7 @@ import PhotoTest from './PhotoTest.test';
 let voice = call.hasVoiceCapability()
 
 export default function testsuite() {
-    if (voice){
+    if (!voice){
           CameraSessionExposureTest();
           CameraSessionBaseTest();
           CameraSessionFlashTest();
@@ -43,12 +43,13 @@ export default function testsuite() {
           CameraImageProcessingTest();
           CameraErrorCodeUsecaseTest();
           cameraJSUnitOutput();
+          SessionTest();
+          PhotoTest();
+          SecureCameraTest();
+          CameraManagerTest();
     }else{
           CameraFunctionTest();
           CameraInputTest();
     }
-    SessionTest();
-    PhotoTest();
-    SecureCameraTest();
-    CameraManagerTest();
+    
 }
