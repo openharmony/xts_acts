@@ -23,32 +23,11 @@ export const commonEventKeyChargeState: () => string;
 export const commonEventKeyPluggedType: () => string;
 
 export enum BatteryInfo_BatteryPluggedType {
-  /**
-   * Unknown type
-   *
-   * @syscap SystemCapability.PowerManager.BatteryManager.Core
-   * @since 6
-   */
   NONE,
-  /**
-   * AC charger
-   *
-   * @syscap SystemCapability.PowerManager.BatteryManager.Core
-   * @since 6
-   */
+  
   AC,
-  /**
-   * USB charger
-   *
-   * @syscap SystemCapability.PowerManager.BatteryManager.Core
-   * @since 6
-   */
+  
   USB,
-  /**
-   * Wireless charger
-   *
-   * @syscap SystemCapability.PowerManager.BatteryManager.Core
-   * @since 6
-   */
+  
   WIRELESS
 }
