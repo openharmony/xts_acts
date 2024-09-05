@@ -2,7 +2,7 @@
   "string": [
     {
       "name": "module_desc",
-      "value": "module description"
+      "value": "模块描述"
     },
     {
       "name": "EntryAbility_desc",
@@ -11,14 +11,6 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
-    },
-    {
-      "name": "TestAbilityOther_desc",
-      "value": "the test ability"
-    },
-    {
-      "name": "TestAbilityOther_label",
-      "value": "test label"
     }
   ]
 }
