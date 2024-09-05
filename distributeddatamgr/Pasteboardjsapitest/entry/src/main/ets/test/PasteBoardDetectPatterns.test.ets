@@ -23,7 +23,7 @@ export default function pasteboardDetectPatternsTest() {
   describe('pasteboardDetectPatternsTest', () => {
     beforeAll(async () => {
       console.log(tag+'beforeAll');
-
+      await systemPasteboard.clearDataSync();
     });
     afterAll(async () => {
       console.info(tag+'afterAll');
@@ -55,10 +55,12 @@ export default function pasteboardDetectPatternsTest() {
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN,textData);
       await systemPasteboard.setData(pasteData);
       let res = await systemPasteboard.hasData();
+      console.log(tag+'res'+res)
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.EMAIL_ADDRESS];
       try{
         systemPasteboard.detectPatterns(patterns).then((data) => {
+          console.log(tag+'data.sort:'+data.sort().join('')+'patterns.sort:'+patterns.sort().join(''));
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
