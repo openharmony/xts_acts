@@ -14,17 +14,17 @@
  */
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 
 export default function MenuJsunit() {
-  describe('Menu', function () {
-    beforeEach(async function (done) {
+  describe('Menu', () => {
+    beforeEach(async (done: Function) => {
       console.info("Menu beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/menu',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/menu',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,11 +49,11 @@ export default function MenuJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Menu_attrs_0100', 0, async function (done) {
+    it('ArkUX_Stage_Menu_attrs_0100', 0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_Menu_attrs_0100 START');
         let strJson = getInspectorByKey('MenuKey1');
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         console.info("ArkUX_Stage_Menu_attrs_0100 component obj is: " + JSON.stringify(obj));
         expect(obj.$attrs.fontColor).assertEqual("#FF123654");
         console.info('ArkUX_Stage_Menu_attrs_0100 END ');
@@ -71,11 +71,11 @@ export default function MenuJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Menu_attrs_0101', 0, async function (done) {
+    it('ArkUX_Stage_Menu_attrs_0101', 0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_Menu_attrs_0101 START');
         let strJson = getInspectorByKey('MenuKey1');
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         console.info("ArkUX_Stage_Menu_attrs_0101 component obj is: " + JSON.stringify(obj));
         expect(obj.$attrs.font.size).assertEqual("20.00fp");
         expect(obj.$attrs.font.weight).assertEqual("FontWeight.Normal");
@@ -96,11 +96,11 @@ export default function MenuJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Menu_attrs_0102', 0, async function (done) {
+    it('ArkUX_Stage_Menu_attrs_0102', 0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_Menu_attrs_0102 START');
         let strJson = getInspectorByKey('MenuKey1');
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         console.info("ArkUX_Stage_Menu_attrs_0102 component obj is: " + JSON.stringify(obj));
         expect(obj.$attrs.borderRadius.topLeft).assertEqual("12.00vp");
         expect(obj.$attrs.borderRadius.topRight).assertEqual("12.00vp");

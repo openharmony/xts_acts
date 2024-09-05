@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
 import { MessageManager, Callback } from '../MainAbility/utils/MessageManager';
 
 
 export default function toggleJsunit() {
-  describe('ToggleJsunit', function () {
-    beforeEach(async function (done) {
+  describe('ToggleJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("Toggle beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/toggle',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/toggle',
       }
       try {
         router.clear();
@@ -50,10 +50,10 @@ export default function toggleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ToggleJsunit001', 0, async function (done) {
+    it('ToggleJsunit001', 0, async (done: Function) => {
       console.info('[ToggleJsunit001] START');
       let strJson = getInspectorByKey('toggleCheckbox');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ToggleJsunit001] obj: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.selectedColor).assertEqual('#FF0000FF');
@@ -69,10 +69,10 @@ export default function toggleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ToggleJsunit002', 0, async function (done) {
+    it('ToggleJsunit002', 0, async (done: Function) => {
       console.info('[ToggleJsunit002] START');
       let strJson = getInspectorByKey('toggleCheckbox');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ToggleJsunit002] obj: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.switchPointColor).assertEqual('#FF008000');

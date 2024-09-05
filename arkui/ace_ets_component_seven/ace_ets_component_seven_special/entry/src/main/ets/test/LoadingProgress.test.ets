@@ -14,17 +14,17 @@
  */
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 
 export default function loadingProgressJsunit() {
-  describe('loadingProgress', function () {
-    beforeEach(async function (done) {
+  describe('loadingProgress', () => {
+    beforeEach(async (done: Function) => {
       console.info("loadingProgress beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/loadingProgress',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/loadingProgress',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,12 +49,12 @@ export default function loadingProgressJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_loadingProgress_attrs_0100', 0, async function (done) {
+    it('ArkUX_Stage_loadingProgress_attrs_0100', 0, async (done: Function) => {
       console.info('ArkUX_Stage_loadingProgress_attrs_0100 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_loadingProgress_attrs_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_Stage_loadingProgress_attrs_0100 component obj is: " + JSON.stringify(obj));
           expect(obj.$attrs.color).assertEqual("#FF0000FF");
           console.info('ArkUX_Stage_loadingProgress_attrs_0100 END ');
@@ -73,12 +73,12 @@ export default function loadingProgressJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_loadingProgress_attrs_0101', 0, async function (done) {
+    it('ArkUX_Stage_loadingProgress_attrs_0101', 0, async (done: Function) => {
       console.info('ArkUX_Stage_loadingProgress_attrs_0101 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_loadingProgress_attrs_0101');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_Stage_loadingProgress_attrs_0101 component obj is: " + JSON.stringify(obj));
           expect(obj.$attrs.enableLoading).assertEqual("true");
           console.info('ArkUX_Stage_loadingProgress_attrs_0101 END ');

@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils';
 
 export default function polyLineJsunit() {
-  describe('ActsAcepolyLineTest', function () {
-    beforeAll(async function (done) {
+  describe('ActsAcepolyLineTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/polyLine',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/polyLine',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,15 +49,15 @@ export default function polyLineJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testpolyLine', 0, async function (done) {
+    it('testpolyLine', 0, async (done: Function) => {
       console.info('[testpolyLine] START');
       let strJson = getInspectorByKey('polyLine');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testpolyLine] obj is : " + JSON.stringify(obj.$attrs));
 
       //原生数据
       let strJson1 = getInspectorByKey('polyLine1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[testpolyLine] obj is : " + JSON.stringify(obj1.$attrs));
 
       //与原生做对比

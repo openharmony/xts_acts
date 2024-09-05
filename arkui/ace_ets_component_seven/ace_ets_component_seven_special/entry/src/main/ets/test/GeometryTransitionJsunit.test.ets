@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function geometryTransitionJsunit() {
-  describe('geometryTransitionTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/geometryTransition',
+  describe('geometryTransitionTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/geometryTransition',
       }
       try {
         router.clear();
@@ -39,7 +39,7 @@ export default function geometryTransitionJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("geometryTransition after each called");
     });
@@ -52,16 +52,16 @@ export default function geometryTransitionJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('geometryTransitionTest_0100', 0, async function (done) {
+    it('geometryTransitionTest_0100', 0, async (done: Function) => {
       console.info('geometryTransitionTest_0100 START');
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 104,
         priority: events_emitter.EventPriority.LOW
       }
       await Utils.sleep(1000);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("geometryTransitionTest_0100 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.btn1).assertEqual(false);
+        expect(indexEvent.data?.btn1).assertEqual(false);
         done();
       }
       try {

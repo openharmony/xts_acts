@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function swiperJsunit() {
-  describe('swiperTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/swiper',
+  describe('swiperTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/swiper',
       }
       try {
         router.clear();
@@ -47,10 +47,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0001', 0, async function (done) {
+    it('swiperTest_0001', 0, async (done: Function) => {
       console.info('swiperTest_0001 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0001 component  is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.nextMargin).assertEqual('10.00vp');
@@ -66,10 +66,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0002', 0, async function (done) {
+    it('swiperTest_0002', 0, async (done: Function) => {
       console.info('swiperTest_0002 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0002 component  is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.prevMargin).assertEqual('2.00vp');
@@ -86,10 +86,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0003', 0, async function (done) {
+    it('swiperTest_0003', 0, async (done: Function) => {
       console.info('swiperTest_0003 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0003 component  is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.displayCount).assertEqual(2);
@@ -106,10 +106,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0004', 0, async function (done) {
+    it('swiperTest_0004', 0, async (done: Function) => {
       console.info('swiperTest_0004 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0004 component  is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.disableSwipe).assertEqual('true');
@@ -126,10 +126,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0005', 0, async function (done) {
+    it('swiperTest_0005', 0, async (done: Function) => {
       console.info('swiperTest_0005 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0005 component  is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.effectMode).assertEqual('EdgeEffect.Spring');
@@ -146,10 +146,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0006', 0, async function (done) {
+    it('swiperTest_0006', 0, async (done: Function) => {
       console.info('swiperTest_0006 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0006 component  is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.cachedCount).assertEqual(2);
@@ -166,10 +166,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0007', 0, async function (done) {
+    it('swiperTest_0007', 0, async (done: Function) => {
       console.info('swiperTest_0007 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0007 component  is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.displayMode).assertEqual('SwiperDisplayMode.Stretch');
@@ -186,10 +186,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0008', 0, async function (done) {
+    it('swiperTest_0008', 0, async (done: Function) => {
       console.info('swiperTest_0008 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0008 component  is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.itemSpace).assertEqual('10.00vp');
@@ -205,10 +205,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0009', 0, async function (done) {
+    it('swiperTest_0009', 0, async (done: Function) => {
       console.info('swiperTest_0009 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0009 component  is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.loop).assertEqual('true');
@@ -225,10 +225,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0010', 0, async function (done) {
+    it('swiperTest_0010', 0, async (done: Function) => {
       console.info('swiperTest_0010 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0010 component  is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.interval).assertEqual('4000');
@@ -245,10 +245,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0011', 0, async function (done) {
+    it('swiperTest_0011', 0, async (done: Function) => {
       console.info('swiperTest_0011 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0011 component  is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.vertical).assertEqual('true');
@@ -265,10 +265,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0012', 0, async function (done) {
+    it('swiperTest_0012', 0, async (done: Function) => {
       console.info('swiperTest_0012 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0012 component  is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.autoPlay).assertEqual('true');
@@ -285,10 +285,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0013', 0, async function (done) {
+    it('swiperTest_0013', 0, async (done: Function) => {
       console.info('swiperTest_0013 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0013 component  is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.index).assertEqual('1');
@@ -304,10 +304,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0014', 0, async function (done) {
+    it('swiperTest_0014', 0, async (done: Function) => {
       console.info('swiperTest_0014 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_0014 component  is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.indicator).assertEqual('true');
@@ -324,10 +324,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_015', 0, async function (done) {
+    it('swiperTest_015', 0, async (done: Function) => {
       console.info('swiperTest_015 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_015 component is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.curve).assertEqual('Curves.Linear');
@@ -344,10 +344,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_016', 0, async function (done) {
+    it('swiperTest_016', 0, async (done: Function) => {
       console.info('swiperTest_016 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_016 component is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.duration).assertEqual('300');
@@ -364,10 +364,10 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_017', 0, async function (done) {
+    it('swiperTest_017', 0, async (done: Function) => {
       console.info('swiperTest_017 START');
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("swiperTest_017 component  is: " + JSON.stringify(objNew.$attrs));
       
       expect(objNew.$attrs.displayArrow).assertEqual('false');

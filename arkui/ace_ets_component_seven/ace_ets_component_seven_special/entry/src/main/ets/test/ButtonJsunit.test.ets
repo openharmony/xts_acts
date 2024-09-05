@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function buttonJsunit() {
-  describe('buttonTest', function () {
-    beforeEach(async function (done) {
+  describe('buttonTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("button beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/button',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/button',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -43,7 +43,7 @@ export default function buttonJsunit() {
       done();
     });
 
-    beforeEach(async function () {
+    beforeEach(async () => {
       await Utils.sleep(1000);
       console.info("button before each called");
     })
@@ -56,11 +56,11 @@ export default function buttonJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testButton1601', 0, async function (done) {
+    it('testButton1601', 0, async (done: Function) => {
       console.info('[testButton1601] START');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('button');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[testButton1601] component testButton1601 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.type).assertEqual('ButtonType.Circle');
       done();
@@ -74,11 +74,11 @@ export default function buttonJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testButton1602', 0, async function (done) {
+    it('testButton1602', 0, async (done: Function) => {
       console.info('[testButton1602] START');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('button');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[testButton1602] component testButton1602 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.stateEffect).assertEqual('true');
       done();
@@ -92,11 +92,11 @@ export default function buttonJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testButton1603', 0, async function (done) {
+    it('testButton1603', 0, async (done: Function) => {
       console.info('[testButton1603] START');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('button');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[testButton1603] component testButton1603 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontColor).assertEqual('#FFCCCCCC');
       done();
@@ -110,11 +110,11 @@ export default function buttonJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testButton1604', 0, async function (done) {
+    it('testButton1604', 0, async (done: Function) => {
       console.info('[testButton1604] START');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('button');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[testButton1604] component testButton1604 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontSize).assertEqual('12.00fp');
       done();
@@ -128,11 +128,11 @@ export default function buttonJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testButton1605', 0, async function (done) {
+    it('testButton1605', 0, async (done: Function) => {
       console.info('[testButton1605] START');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('button');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[testButton1605] component testButton1605 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontWeight).assertEqual('FontWeight.Normal');
       done();
@@ -146,11 +146,11 @@ export default function buttonJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testButton1606', 0, async function (done) {
+    it('testButton1606', 0, async (done: Function) => {
       console.info('[testButton1606] START');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('button');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[testButton1606] component testButton1606 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontFamily).assertEqual('cursive');
       done();
@@ -164,11 +164,11 @@ export default function buttonJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testButton1607', 0, async function (done) {
+    it('testButton1607', 0, async (done: Function) => {
       console.info('[testButton1607] START');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('button');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[testButton1607] component testButton1607 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontStyle).assertEqual('FontStyle.Normal');
       done();
@@ -182,11 +182,11 @@ export default function buttonJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testButton1608', 0, async function (done) {
+    it('testButton1608', 0, async (done: Function) => {
       console.info('[testButton1608] START');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('button2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[testButton1608] component testButton1608 is: " + JSON.stringify(objNew.$attrs));
       expect(JSON.parse(objNew.$attrs.labelStyle).overflow).assertEqual('TextOverflow.Clip');
       done();

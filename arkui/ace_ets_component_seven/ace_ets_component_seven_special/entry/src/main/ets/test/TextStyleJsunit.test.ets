@@ -13,14 +13,14 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 
 export default function textStyleJsunit() {
-  describe('textStyleTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/textStyle',
+  describe('textStyleTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/textStyle',
       }
       try {
         router.clear();
@@ -46,12 +46,12 @@ export default function textStyleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextStyle001', 0, async function (done) {
+    it('testTextStyle001', 0, async (done: Function) => {
       console.info('[testTextStyle001] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('text1');
       console.info("[testTextStyle001] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
 
       expect(obj.$attrs.fontColor).assertEqual('#FFFF0000');
       done();
@@ -65,12 +65,12 @@ export default function textStyleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextStyle002', 0, async function (done) {
+    it('testTextStyle002', 0, async (done: Function) => {
       console.info('[testTextStyle002] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('text1');
       console.info("[testTextStyle002] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
 
       expect(obj.$attrs.fontSize).assertEqual('20.00fp');
       done();
@@ -84,12 +84,12 @@ export default function textStyleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextStyle003', 0, async function (done) {
+    it('testTextStyle003', 0, async (done: Function) => {
       console.info('[testTextStyle003] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('text1');
       console.info("[testTextStyle003] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
 
       expect(obj.$attrs.fontStyle).assertEqual('FontStyle.Italic');
       done();
@@ -103,12 +103,12 @@ export default function textStyleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextStyle004', 0, async function (done) {
+    it('testTextStyle004', 0, async (done: Function) => {
       console.info('[testTextStyle001] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('text1');
       console.info("[testTextStyle001] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
 
       expect(obj.$attrs.fontWeight).assertEqual('700');
       done();
@@ -122,12 +122,12 @@ export default function textStyleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-     it('testTextStyle005', 0, async function (done) {
+     it('testTextStyle005', 0, async (done: Function) => {
       console.info('[testTextStyle005] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('text1');
       console.info("[testTextStyle005] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
 
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Justify');
       done();

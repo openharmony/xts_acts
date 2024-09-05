@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function radioGroupJsunit() {
-  describe('radioGroupTest', function () {
-    beforeEach(async function (done) {
+  describe('radioGroupTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/radio',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/radio',
       }
       try {
         router.clear();
@@ -48,10 +48,10 @@ export default function radioGroupJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testRadioGroup001',0,async function (done){
+    it('testRadioGroup001',0,async (done: Function) => {
       console.info("[testRadioGroup001] START");
       let strJson = getInspectorByKey('RadioOne');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testRadioGroup001] obj  is: " + JSON.stringify(obj.$attrs));
 
       expect(JSON.parse(obj.$attrs.radioStyle).checkedBackgroundColor).assertEqual('#FF147258');
@@ -70,10 +70,10 @@ export default function radioGroupJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testRadioGroup002',0,async function (done){
+    it('testRadioGroup002',0,async (done: Function) => {
       console.info("[testRadioGroup002] START");
       let strJson = getInspectorByKey('RadioOne');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testRadioGroup002] obj  is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.checked).assertEqual('true');

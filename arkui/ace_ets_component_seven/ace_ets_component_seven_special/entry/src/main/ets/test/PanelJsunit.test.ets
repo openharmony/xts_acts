@@ -12,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import bundle from '@ohos.bundle.bundleManager';
 
 export default function panelJsunit() {
-  describe('panelTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/panel',
+  describe('panelTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/panel',
       }
       try {
         router.clear();
@@ -48,10 +48,10 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_001', 0, async function (done) {
+    it('test_panel_001', 0, async (done: Function) => {
       console.info('[test_panel_001] START');
-      var strJson = getInspectorByKey('PanelKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('PanelKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_panel_001] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.type).assertEqual("PanelType.Foldable");
@@ -68,10 +68,10 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_002', 0, async function (done) {
+    it('test_panel_002', 0, async (done: Function) => {
       console.info('[test_panel_002] START');
-      var strJson = getInspectorByKey('PanelKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('PanelKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_panel_002] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.showCloseIcon).assertEqual("true");
@@ -88,10 +88,10 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_003', 0, async function (done) {
+    it('test_panel_003', 0, async (done: Function) => {
       console.info('[test_panel_003] START');
-      var strJson = getInspectorByKey('PanelKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('PanelKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_panel_003] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.show).assertEqual("true");
@@ -108,10 +108,10 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_004', 0, async function (done) {
+    it('test_panel_004', 0, async (done: Function) => {
       console.info('[test_panel_004] START');
-      var strJson = getInspectorByKey('PanelKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('PanelKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_panel_004] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.mode).assertEqual("PanelMode.Full");
@@ -128,10 +128,10 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_005', 0, async function (done) {
+    it('test_panel_005', 0, async (done: Function) => {
       console.info('[test_panel_005] START');
-      var strJson = getInspectorByKey('PanelKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('PanelKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_panel_005] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.dragBar).assertEqual("true");
@@ -148,10 +148,10 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_006', 0, async function (done) {
+    it('test_panel_006', 0, async (done: Function) => {
       console.info('[test_panel_006] START');
-      var strJson = getInspectorByKey('PanelKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('PanelKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_panel_006] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.miniHeight).assertEqual("20.00vp");
@@ -168,10 +168,10 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_007', 0, async function (done) {
+    it('test_panel_007', 0, async (done: Function) => {
       console.info('[test_panel_007] START');
-      var strJson = getInspectorByKey('PanelKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('PanelKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_panel_007] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.halfHeight).assertEqual("300.00vp");
@@ -188,10 +188,10 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_008', 0, async function (done) {
+    it('test_panel_008', 0, async (done: Function) => {
       console.info('[test_panel_008] START');
-      var strJson = getInspectorByKey('PanelKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('PanelKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_panel_008] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.fullHeight).assertEqual("800.00vp");
@@ -208,10 +208,10 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_009', 0, async function (done) {
+    it('test_panel_009', 0, async (done: Function) => {
       console.info('[test_panel_009] START');
-      var strJson = getInspectorByKey('PanelKey2');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('PanelKey2');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_panel_009] obj  is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.customHeight).assertEqual("10.00vp");
       console.info('[test_panel_009] END');
@@ -226,14 +226,14 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_0010', 0, async function (done) {
+    it('test_panel_0010', 0, async (done: Function) => {
       console.info('[test_panel_0010] START');
-      var strJson = getInspectorByKey('PanelKey2');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('PanelKey2');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_panel_0010] obj is: " + JSON.stringify(obj.$attrs));
 
-      var strJson3 = getInspectorByKey('PanelKey3');
-      var obj3 = JSON.parse(strJson3);
+      let strJson3 = getInspectorByKey('PanelKey3');
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[test_panel_0010] obj is: " + JSON.stringify(obj3.$attrs));
       // 得到json值与 设置不一致，与原生json返回做对比
       expect(obj.$attrs.backgroundMask).assertEqual(obj3.$attrs.backgroundMask);

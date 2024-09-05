@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function lineNeJsunit() {
-  describe('lineNeTest', function () {
-    beforeAll(async function (done) {
+  describe('lineNeTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/line',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/line',
       }
       try {
         router.clear();
@@ -48,10 +48,10 @@ export default function lineNeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testLineNe00071', 0, async function (done) {
+    it('testLineNe00071', 0, async (done: Function) => {
       console.info('lineNe testLineNe00071 START');
       let strJson = getInspectorByKey('LineKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testLineNe00071] obj value :" + obj.$attrs);
       expect(obj.$attrs.startPoint[0]).assertEqual(0);
       console.info('lineNe testLineNe00071 END');
@@ -66,10 +66,10 @@ export default function lineNeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testLineNe00072', 0, async function (done) {
+    it('testLineNe00072', 0, async (done: Function) => {
       console.info('lineNe testLineNe00072 START');
       let strJson = getInspectorByKey('LineKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testLineNe00072] obj value :" + obj.$attrs);
       expect(obj.$attrs.endPoint[0]).assertEqual(200);
       console.info('lineNe testLineNe00072 END');

@@ -14,15 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function motionPathJsunit() {
-  describe('motionPathTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/motionPath',
+  describe('motionPathTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/motionPath',
       }
       try {
         router.clear();
@@ -40,7 +40,7 @@ export default function motionPathJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("motionPath after each called");
     });
@@ -53,15 +53,15 @@ export default function motionPathJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('motionPathTest_0100', 0, async function (done) {
+    it('motionPathTest_0100', 0, async (done: Function) => {
       console.info('motionPathTest_0100 START');
       await Utils.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("motionPathTest_0100 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.ACTION).assertEqual(true);
+        expect(indexEvent.data?.ACTION).assertEqual(true);
         done();
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 132,
         priority: events_emitter.EventPriority.LOW
       }

@@ -14,17 +14,17 @@
  */
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 
 export default function hyperLinkJsunit() {
-  describe('hyperLinkJsunit', function () {
-    beforeEach(async function (done) {
+  describe('hyperLinkJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("hyperLinkJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/hyperlink',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/hyperlink',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,13 +49,13 @@ export default function hyperLinkJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_hyperLink_attrs_0100', 0, async function (done) {
+    it('ArkUX_Stage_hyperLink_attrs_0100', 0, async (done: Function) => {
       console.info('ArkUX_Stage_hyperLink_attrs_0100 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('HyperlinkKey1');
           console.info('ArkUX_Stage_hyperLink_attrs_0100 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_Stage_hyperLink_attrs_0100 component obj is: " + JSON.stringify(obj));
           expect(obj.$attrs.color).assertEqual("#FF789456");
           console.info('ArkUX_Stage_hyperLink_attrs_0100 END ');

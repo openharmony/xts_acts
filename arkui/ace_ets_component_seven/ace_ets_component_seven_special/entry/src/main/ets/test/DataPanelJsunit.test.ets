@@ -14,16 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 export default function datapanelJsunit() {
-  describe('dataPanelTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/dataPanel',
+  describe('dataPanelTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/dataPanel',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         await Utils.sleep(1000);
@@ -49,10 +49,10 @@ export default function datapanelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testDataPanel01', 0, async function (done) {
+    it('testDataPanel01', 0, async (done: Function) => {
       console.info('testDataPanel01 START');
       let strJson = getInspectorByKey('DataPanelKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.log("cd DataPanel obj" + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.trackShadow.radius).assertEqual("6.000000")
       expect(obj.$attrs.trackShadow.offsetX).assertEqual("2.000000")
@@ -69,10 +69,10 @@ export default function datapanelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testDataPanel02', 0, async function (done) {
+    it('testDataPanel02', 0, async (done: Function) => {
       console.info('testDataPanel02 START');
       let strJson = getInspectorByKey('DataPanelKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.log("cd DataPanel obj" + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.strokeWidth).assertEqual("25.00vp")
       console.info('testDataPanel02 END');
@@ -87,10 +87,10 @@ export default function datapanelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testDataPanel03', 0, async function (done) {
+    it('testDataPanel03', 0, async (done: Function) => {
       console.info('testDataPanel03 START');
       let strJson = getInspectorByKey('DataPanelKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.log("cd DataPanel obj" + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.trackBackgroundColor).assertEqual("#08182431")
       console.info('testDataPanel03 END');
@@ -105,10 +105,10 @@ export default function datapanelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testDataPanel04', 0, async function (done) {
+    it('testDataPanel04', 0, async (done: Function) => {
       console.info('testDataPanel04 START');
       let strJson = getInspectorByKey('DataPanelKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.log("cd DataPanel obj" + JSON.stringify(obj.$attrs));
       expect(JSON.stringify(obj.$attrs.valueColors)).assertEqual('[[{"color":"#FF123456","offset":"0.000000"},{"color":"#FF123456","offset":"1.000000"}],[{"color":"#FF654321","offset":"0.000000"},{"color":"#FF654321","offset":"1.000000"}]]')
       console.info('testDataPanel04 END');
@@ -123,10 +123,10 @@ export default function datapanelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testDataPanel05', 0, async function (done) {
+    it('testDataPanel05', 0, async (done: Function) => {
       console.info('testDataPanel05 START');
       let strJson = getInspectorByKey('DataPanelKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.log("cd DataPanel obj" + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.closeEffect).assertEqual("true")
       console.info('testDataPanel05 END');

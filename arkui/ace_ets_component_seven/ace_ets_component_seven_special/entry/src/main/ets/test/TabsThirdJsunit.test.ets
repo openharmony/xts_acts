@@ -15,16 +15,16 @@
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import Utils from './Utils';
-import router from '@system.router';
+import router from '@ohos.router';
 
 export default function tabsThirdJsunit() {
-  describe('tabsThirdTest', function () {
-    beforeEach(async function (done) {
+  describe('tabsThirdTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabsThird beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/tabsThird',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/tabsThird',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,10 +49,10 @@ export default function tabsThirdJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_BarGridAlign_0200', 0, async function (done) {
+    it('ArkUI_Tabs_BarGridAlign_0200', 0, async (done: Function) => {
       console.info("[ArkUI_Tabs_BarGridAlign_0200] start");
       let strJson = getInspectorByKey('tabsNumberTest');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_BarGridAlign_0200]: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.barGridAlign.margin).assertEqual('0.00vp');
@@ -72,11 +72,11 @@ export default function tabsThirdJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_BarMode_0200', 0, async function (done) {
+    it('ArkUI_Tabs_BarMode_0200', 0, async (done: Function) => {
       console.info("[ArkUI_Tabs_BarMode_0200] start");
       let strJson = getInspectorByKey('tabsBarModeTest');
       console.info("[ArkUI_Tabs_BarMode_0200]: " + JSON.stringify(strJson));
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_BarMode_0200]: " + JSON.stringify(obj.$attrs.barMode));
       expect(obj.$attrs.barMode).assertEqual('BarMode.Fixed');
       console.info("[ArkUI_Tabs_BarMode_0200] end");

@@ -16,16 +16,16 @@
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-import router from '@system.router';
+import router from '@ohos.router'
 
 export default function timepickerJsunit() {
-  describe('ActsAceTimePickerTest', function () {
-    beforeEach(async function (done) {
+  describe('ActsAceTimePickerTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("timepicker beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/timePicker',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/timePicker',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -50,12 +50,12 @@ export default function timepickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Stage_timepicker_1000', 0, async function (done) {
+    it('ArkUI_Stage_timepicker_1000', 0, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_1000] obj is: " + JSON.stringify(obj.$attrs));
 
-      let textStyle = obj.$attrs.textStyle;
+      let textStyle: ESObject = obj.$attrs.textStyle;
 
       expect(textStyle.color).assertEqual('#FFFF0000');
       expect(textStyle.font.size).assertEqual('10.00px');
@@ -72,11 +72,11 @@ export default function timepickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Stage_timepicker_2000', 0, async function (done) {
+    it('ArkUI_Stage_timepicker_2000', 0, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_2000] obj is: " + JSON.stringify(obj.$attrs));
-      let selectedTextStyle = obj.$attrs.selectedTextStyle;
+      let selectedTextStyle: ESObject = obj.$attrs.selectedTextStyle;
 
       expect(selectedTextStyle.color).assertEqual('#FF0000FF');
       expect(selectedTextStyle.font.size).assertEqual('20.00px');
@@ -93,12 +93,12 @@ export default function timepickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Stage_timepicker_3000', 0, async function (done) {
+    it('ArkUI_Stage_timepicker_3000', 0, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_3000] obj is: " + JSON.stringify(obj.$attrs));
 
-      let disappearTextStyle = obj.$attrs.disappearTextStyle;
+      let disappearTextStyle: ESObject = obj.$attrs.disappearTextStyle;
      
       expect(disappearTextStyle.color).assertEqual('#FF000000');
       expect(disappearTextStyle.font.size).assertEqual('8.00fp');

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils';
 
 export default function pathNewTest() {
-  describe('pathNewTest', function () {
-    beforeAll(async function (done) {
+  describe('pathNewTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/path',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/path',
       }
       try {
         router.clear();
@@ -48,11 +48,11 @@ export default function pathNewTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testPathNe0004',0,async function (done){
+    it('testPathNe0004',0,async (done: Function) => {
       console.info('pathNe testPathNe0004 START');
       let strJson = getInspectorByKey('PathKey1');
       console.info("[testPathNe0004] component fontSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testPathNe0004] commands value :" + obj.$attrs.commands);
       expect(obj.$attrs.commands).assertEqual("M100 0 L0 100 L50 200 L150 200 L200 100 Z");
       console.info('pathNe testPathNe0004 END');

@@ -15,15 +15,15 @@
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import Utils from './Utils';
-import router from '@system.router';
+import router from '@ohos.router'
 export default function textpickerJsunit() {
-  describe('textpickerJsunit', function () {
-    beforeEach(async function (done) {
+  describe('textpickerJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("textpicker beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/textPicker',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/textPicker',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -48,14 +48,14 @@ export default function textpickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_textpicker_001', 0, async function (done) {
+    it('ArkUI_textpicker_001', 0, async (done: Function) => {
       console.info('[ArkUI_textpicker_001] START');
       let strJson = getInspectorByKey('textPickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_textpicker_001] obj:" + JSON.stringify(obj.$attrs));
 
       let strJson1 = getInspectorByKey('textPickerDefault1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[ArkUI_textpicker_001] obj1:" + JSON.stringify(obj1.$attrs));
       //得到json值与 设置不一致，与原生json返回做对比验证
       expect(JSON.stringify(obj.$attrs.selectedIndex)).assertEqual(JSON.stringify(obj1.$attrs.selectedIndex));
@@ -70,13 +70,13 @@ export default function textpickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_textpicker_002', 0, async function (done) {
+    it('ArkUI_textpicker_002', 0, async (done: Function) => {
       console.info('[ArkUI_textpicker_002] START');
       let strJson = getInspectorByKey('textPickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_textpicker_002] obj:" + JSON.stringify(obj.$attrs));
 
-      let textStyle = obj.$attrs.textStyle;
+      let textStyle: ESObject = obj.$attrs.textStyle;
 
       expect(textStyle["color"]).assertEqual('#FFFF0000');
       expect(textStyle["font"].size).assertEqual('10.00px');
@@ -93,12 +93,12 @@ export default function textpickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_textpicker_003', 0, async function (done) {
+    it('ArkUI_textpicker_003', 0, async (done: Function) => {
       console.info('[ArkUI_textpicker_003] START');
       let strJson = getInspectorByKey('textPickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_textpicker_003] obj:" + JSON.stringify(obj.$attrs));
-      let selectedTextStyle = obj.$attrs.selectedTextStyle;
+      let selectedTextStyle: ESObject = obj.$attrs.selectedTextStyle;
 
       expect(selectedTextStyle["color"]).assertEqual('#FF0000FF');
       expect(selectedTextStyle["font"].size).assertEqual('20.00px');
@@ -116,13 +116,13 @@ export default function textpickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_textpicker_004', 0, async function (done) {
+    it('ArkUI_textpicker_004', 0, async (done: Function) => {
       console.info('[ArkUI_textpicker_004] START');
       let strJson = getInspectorByKey('textPickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_textpicker_004] obj:" + JSON.stringify(obj.$attrs));
 
-      let disappearTextStyle = obj.$attrs.disappearTextStyle;
+      let disappearTextStyle: ESObject = obj.$attrs.disappearTextStyle;
 
       expect(disappearTextStyle["color"]).assertEqual('#FF000000');
       expect(disappearTextStyle["font"].size).assertEqual('8.00fp');
@@ -139,10 +139,10 @@ export default function textpickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_textpicker_005', 0, async function (done) {
+    it('ArkUI_textpicker_005', 0, async (done: Function) => {
       console.info('[ArkUI_textpicker_005] START');
       let strJson = getInspectorByKey('textPickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_textpicker_005] obj:" + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.canLoop).assertEqual("false");
@@ -158,10 +158,10 @@ export default function textpickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_textpicker_006', 0, async function (done) {
+    it('ArkUI_textpicker_006', 0, async (done: Function) => {
       console.info('[ArkUI_textpicker_006] START');
       let strJson = getInspectorByKey('textPickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_textpicker_006] obj:" + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.defaultPickerItemHeight).assertEqual('60.00px');
       done();

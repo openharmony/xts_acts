@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function datePickerJsunit() {
-  describe('ActsAceDatePickerTest', function () {
-    beforeAll(async function (done) {
+  describe('ActsAceDatePickerTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/datePicker',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/datePicker',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,10 +49,10 @@ export default function datePickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testDatePicker0021', 0, async function (done) {
+    it('testDatePicker0021', 0, async (done: Function) => {
       console.info('[testDatePicker0021] START');
       let strJson = getInspectorByKey('DatePicker');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testDatePicker] obj is : " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.lunar).assertEqual('true');
@@ -68,12 +68,12 @@ export default function datePickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testDatePicker0022', 0, async function (done) {
+    it('testDatePicker0022', 0, async (done: Function) => {
       console.info('[testDatePicker0022] START');
       let strJson = getInspectorByKey('DatePicker');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testDatePicker] obj is : " + JSON.stringify(obj.$attrs));
-      let selectedTextStyle = obj.$attrs.selectedTextStyle;
+      let selectedTextStyle: ESObject = obj.$attrs.selectedTextStyle;
 
       expect(selectedTextStyle['color']).assertEqual("#FF182431");
       expect(selectedTextStyle['font'].size).assertEqual("18.00fp");
@@ -90,12 +90,12 @@ export default function datePickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testDatePicker0023', 0, async function (done) {
+    it('testDatePicker0023', 0, async (done: Function) => {
       console.info('[testDatePicker0023] START');
       let strJson = getInspectorByKey('DatePicker');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testDatePicker] obj is : " + JSON.stringify(obj.$attrs));
-      let textStyle = obj.$attrs.textStyle;
+      let textStyle: ESObject = obj.$attrs.textStyle;
 
       expect(textStyle['color']).assertEqual("#FF0000FF");
       expect(textStyle['font'].size).assertEqual("26.00fp");
@@ -112,12 +112,12 @@ export default function datePickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testDatePicker0024', 0, async function (done) {
+    it('testDatePicker0024', 0, async (done: Function) => {
       console.info('[testDatePicker0024] START');
       let strJson = getInspectorByKey('DatePicker');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testDatePicker] obj is : " + JSON.stringify(obj.$attrs));
-      let disappearTextStyle = obj.$attrs.disappearTextStyle;
+      let disappearTextStyle: ESObject = obj.$attrs.disappearTextStyle;
 
       expect(disappearTextStyle['color']).assertEqual('#FF000000');
       expect(disappearTextStyle['font'].size).assertEqual('8.00fp');

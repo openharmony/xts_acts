@@ -16,15 +16,15 @@
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-import router from '@system.router';
+import router from '@ohos.router'
 export default function calendarPickerJsunit() {
-  describe('ActsAceCalendarPickerTest', function () {
-    beforeEach(async function (done) {
+  describe('ActsAceCalendarPickerTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("calendarpicker beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/calendarpicker',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/calendarpicker',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,13 +49,12 @@ export default function calendarPickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Stage_CalendarPicker_0100', 0, async function (done) {
+    it('ArkUI_Stage_CalendarPicker_0100', 0, async (done: Function) => {
       console.info('[ArkUI_Stage_CalendarPicker_0100] START');
       let strJson = getInspectorByKey('CalendarPickerKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_CalendarPicker_0100] obj is: " + JSON.stringify(obj.$attrs));
-      let edgeAlign = obj.$attrs.edgeAlign;
-      let textStyle = obj.$attrs.textStyle;
+      let edgeAlign: ESObject = obj.$attrs.edgeAlign;
 
       expect(edgeAlign.alignType).assertEqual("CalendarAlign.END");
       expect(edgeAlign.offset.dx).assertEqual("10.00vp");
@@ -72,13 +71,13 @@ export default function calendarPickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Stage_CalendarPicker_attributeModifier_0101', 0, async function (done) {
+    it('ArkUI_Stage_CalendarPicker_attributeModifier_0101', 0, async (done: Function) => {
       console.info('[ArkUI_Stage_CalendarPicker_attributeModifier_0101] START');
       let strJson = getInspectorByKey('CalendarPickerKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_CalendarPicker_attributeModifier_0101] obj is: " + JSON.stringify(obj.$attrs));
-      let edgeAlign = obj.$attrs.edgeAlign;
-      let textStyle = obj.$attrs.textStyle;
+
+      let textStyle: ESObject = obj.$attrs.textStyle;
 
       expect(textStyle.color).assertEqual("#FF182431");
       expect(textStyle.font.size).assertEqual("8.00fp");
