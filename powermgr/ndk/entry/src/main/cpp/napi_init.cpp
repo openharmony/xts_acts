@@ -81,7 +81,7 @@ static napi_value GetPluggedType(napi_env env, napi_callback_info info)
     return ret;
 }
 
-static napi_value CommonEventKeyCapacity(napi_env env, napi_callback_info info) 
+static napi_value CommonEventKeyCapacity(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testLog", "CommonEventKeyCapacity func called");
     size_t argc = 0;
@@ -95,7 +95,7 @@ static napi_value CommonEventKeyCapacity(napi_env env, napi_callback_info info)
     return ret;
 }
 
-static napi_value CommonEventKeyChargeState(napi_env env, napi_callback_info info) 
+static napi_value CommonEventKeyChargeState(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testLog", "CommonEventKeyChargeState func called");
     size_t argc = 0;
@@ -109,7 +109,7 @@ static napi_value CommonEventKeyChargeState(napi_env env, napi_callback_info inf
     return ret;
 }
 
-static napi_value CommonEventKeyPluggedType(napi_env env, napi_callback_info info) 
+static napi_value CommonEventKeyPluggedType(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testLog", "CommonEventKeyPluggedType func called");
     size_t argc = 0;
@@ -165,7 +165,7 @@ static napi_value CreateEnumPluggedType(napi_env env, napi_value exports)
 }
 
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) 
+static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         {"add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr},
