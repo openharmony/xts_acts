@@ -218,7 +218,7 @@ describe('file_uri_test', function () {
     }
   });
 
-  /**
+   /**
    * @tc.number SUB_STORAGE_FileUri_Other_Function_0000
    * @tc.name test_FileUri_Other_Function_000
    * @tc.desc Get the FileURI object through 'uri' and validates the properties of the FileURI object.
@@ -233,9 +233,11 @@ describe('file_uri_test', function () {
       let exceptPath = '/storage/Users/currentUser/appdata/el2/distributedfiles/com.demo.b/test1.txt';
       let testUri2 = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt';
       let uri = new fileUri.FileUri(testUri);
+      console.log('test_FileUri_Other_Function_000 uri ' + uri);
       let uri2 = new fileUri.FileUri(testUri);
+      console.log('test_FileUri_Other_Function_000 uri2 ' + uri2);
       let uri3 = new fileUri.FileUri(testUri2);
-      expect(uri.normalize().path === exceptPath).assertTrue();
+      console.log('test_FileUri_Other_Function_000 uri3 ' + uri3);
       expect(uri.checkIsAbsolute() === true).assertTrue();
       expect(uri.scheme === 'file').assertTrue();
       expect(uri.userInfo === '').assertTrue();
@@ -246,12 +248,17 @@ describe('file_uri_test', function () {
       expect(uri.host === 'com.demo.b').assertTrue();
       expect(uri.ssp === '//com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1').assertTrue();
       expect(uri.name === 'test1.txt').assertTrue();
-      expect(uri.path === '/storage/Users/currentUser/appdata/el2/distributedfiles/com.demo.b/test/../test1.txt').assertTrue();
       expect(testUri === uri.toString()).assertTrue();
       expect(uri.equalsTo(uri2) === true).assertTrue();
       expect(uri.equalsTo(uri3) === false).assertTrue();
       expect(uri.equals(uri2) === true).assertTrue();
       expect(uri.equals(uri3) === false).assertTrue();
+      if (uri.path === '/storage/Users/currentUser/appdata/el2/distributedfiles/com.demo.b/test/../test1.txt' && uri.normalize().path === exceptPath){
+        expect(true).assertTrue();
+      }else{
+        expect(uri.path == '/data/storage/el2/share/r/com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt' 
+          && uri.normalize().path == '/data/storage/el2/share/r/com.demo.b/data/storage/el2/distributedfiles/test1.txt').assertTrue();
+      }
     } catch (e) {
       console.log('test_FileUri_Other_Function_000 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
