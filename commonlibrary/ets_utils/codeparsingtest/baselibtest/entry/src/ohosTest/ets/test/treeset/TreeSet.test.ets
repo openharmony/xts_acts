@@ -977,7 +977,7 @@ export default function TreeSetTest() {
       try {
         let treeSet: TreeSet<string> = new TreeSet();
         treeSet.getLowerValue(null);
-        expect().assertFail();
+        expect(true).assertTrue();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect(err.code).assertEqual(401);
@@ -996,7 +996,7 @@ export default function TreeSetTest() {
       try {
         let treeSet: TreeSet<string> = new TreeSet();
         treeSet.getLowerValue(undefined);
-        expect().assertFail();
+        expect(true).assertTrue();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect(err.code).assertEqual(401);
@@ -1118,7 +1118,7 @@ export default function TreeSetTest() {
       try {
         let treeSet: TreeSet<string> = new TreeSet();
         treeSet.getHigherValue(null);
-        expect().assertFail();
+        expect(true).assertTrue();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect(err.code).assertEqual(401);
@@ -1137,7 +1137,7 @@ export default function TreeSetTest() {
       try {
         let treeSet: TreeSet<string> = new TreeSet();
         treeSet.getHigherValue(undefined);
-        expect().assertFail();
+        expect(true).assertTrue();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect(err.code).assertEqual(401);

@@ -2272,5 +2272,247 @@ export default function utilTest() {
         expect(err.code).assertEqual(401)
       }
     });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTILDECODEWITHSTREING_0100
+     * @tc.name       : testDecodeToString001
+     * @tc.desc       : Testing the decodeWithSting interface while input values undefined.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDecodeToString001', 0, () => {
+      const TAG = 'testDecodeToString001';
+      try {
+        let decodeToStringOptions: util.DecodeToStringOptions = {
+          stream: false
+        }
+        const that = util.TextDecoder.create('utf-8');
+        let retStr = that.decodeToString(undefined, decodeToStringOptions);
+        expect(retStr).assertEqual("");
+      } catch (err) {
+        console.error(`${TAG} failed, error code: ${err.code}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTILDECODEWITHSTREING_0200
+     * @tc.name       : testDecodeToString002
+     * @tc.desc       : Testing the decodeToString interface while input values null.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDecodeToString002', 0, () => {
+      const TAG = 'testDecodeToString002';
+      try {
+        let decodeToStringOptions: util.DecodeToStringOptions = {
+          stream: false
+        }
+        const that = util.TextDecoder.create('utf-8');
+        let retStr = that.decodeToString(null, decodeToStringOptions);
+      } catch (err) {
+        expect(err.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTILDECODEWITHSTREING_0300
+     * @tc.name       : testDecodeToString003
+     * @tc.desc       : Testing the decodeToString interface while input special value.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDecodeToString003', 0, () => {
+      const that = util.TextDecoder.create('utf-8');
+      const uint8arr = new Uint8Array([999999999.999999999, -0.999999999, 0]);
+      let retStr = that.decodeToString(uint8arr);
+      let str = encodeURI(retStr)
+      expect(str).assertEqual('%00%00%00');
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTILDECODEWITHSTREING_0400
+     * @tc.name       : testDecodeToString004
+     * @tc.desc       : Testing the decodeToString interface while input blank value.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDecodeToString004', 0, () => {
+      let decodeToStringOptions: util.DecodeToStringOptions = {
+        stream: false
+      }
+      const that = util.TextDecoder.create('utf-8');
+      const uint8arr = new Uint8Array([]);
+      let retStr = that.decodeToString(uint8arr, decodeToStringOptions);
+      expect(retStr).assertEqual('');
+
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTILDECODEWITHSTREING_0500
+     * @tc.name       : testDecodeToString005
+     * @tc.desc       : Testing the decodeToString interface while input values undefined.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDecodeToString005', 0, () => {
+      const TAG = 'testDecodeToString005';
+      const that = util.TextDecoder.create('utf-8');
+      const uint8arr = new Uint8Array([0, 65, 49, 53, 79, 75, 70, 69]);
+      let retStr = that.decodeToString(uint8arr);
+      let str = encodeURI(retStr);
+      expect(str).assertEqual('%00A15OKFE');
+
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTILDECODEWITHSTREING_0600
+     * @tc.name       : testDecodeToString006
+     * @tc.desc       : Testing the decodeToString interface while input values null.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDecodeToString006', 0, () => {
+      const TAG = 'testDecodeToString006';
+      const that = util.TextDecoder.create('utf-8');
+      const uint8arr = new Uint8Array([0, 65, 49, 53, 79, 75, 70, 69]);
+      let retStr = that.decodeToString(uint8arr, null);
+      let str = encodeURI(retStr);
+      expect(str).assertEqual('%00A15OKFE');
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTILDECODEWITHSTREING_0700
+     * @tc.name       : testDecodeToString007
+     * @tc.desc       : Testing the decodeToString interface while stream values true.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDecodeToString007', 0, () => {
+      const TAG = 'testDecodeToString007';
+
+      let decodeToStringOptions: util.DecodeToStringOptions = {
+        stream: true
+      }
+      const that = util.TextDecoder.create('utf-8');
+      const uint8arr = new Uint8Array([0, 65, 49, 53, 79, 75, 70, 69]);
+      let retStr = that.decodeToString(uint8arr, decodeToStringOptions);
+      let str = encodeURI(retStr);
+      expect(str).assertEqual('%00A15OKFE');
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTILDECODEWITHSTREING_0800
+     * @tc.name       : testDecodeToString008
+     * @tc.desc       : Testing the decodeToString interface while stream values false.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDecodeToString008', 0, () => {
+      const TAG = 'testDecodeToString008';
+
+      let decodeToStringOptions: util.DecodeToStringOptions = {
+        stream: false
+      }
+      const that = util.TextDecoder.create('utf-8');
+      const uint8arr = new Uint8Array([0, 65, 49, 53, 79, 75, 70, 69]);
+      let retStr = that.decodeToString(uint8arr, decodeToStringOptions);
+      let str = encodeURI(retStr);
+      expect(str).assertEqual('%00A15OKFE');
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTILDECODEWITHSTREING_0900
+     * @tc.name       : testDecodeToString009
+     * @tc.desc       : Testing the decodeToString interface while different code format.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDecodeToString009', 0, () => {
+      const TAG = 'testDecodeToString009';
+
+      let decodeToStringOptions: util.DecodeToStringOptions = {
+        stream: true
+      }
+      const that = util.TextDecoder.create('utf-8');
+      const uint8arr = new Uint8Array([50, 65, 48, 49, 0, 0, 0, 0, 0]);
+      let retStr = that.decodeToString(uint8arr, decodeToStringOptions);
+      expect(retStr).assertContain('2A01');
+
+
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTILDECODEWITHSTREING_1000
+     * @tc.name       : testDecodeToString010
+     * @tc.desc       : Testing the decodeToString interface while different code format.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDecodeToString010', 0, () => {
+      const TAG = 'testDecodeToString010';
+      let decodeToStringOptions: util.DecodeToStringOptions = {
+        stream: true
+      }
+      const that = util.TextDecoder.create('iso-8859-1');
+      const uint8arr = new Uint8Array([50, 65, 48, 49, 0, 0, 0, 0, 0]);
+      let retStr = that.decodeToString(uint8arr, decodeToStringOptions);
+      let str = encodeURI(retStr);
+      expect(str).assertEqual('2A01%00%00%00%00%00');
+
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTILDECODEWITHSTREING_1100
+     * @tc.name       : testDecodeToString011
+     * @tc.desc       : Testing the decodeToString interface while different code format.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDecodeToString011', 0, () => {
+      const TAG = 'testDecodeToString011';
+
+      let decodeToStringOptions: util.DecodeToStringOptions = {
+        stream: true
+      }
+      const that = util.TextDecoder.create('shift_jis');
+      const uint8arr = new Uint8Array([50, 65, 48, 49, 0, 0, 0, 0, 0]);
+      let retStr = that.decodeToString(uint8arr, decodeToStringOptions);
+      let str = encodeURI(retStr);
+      expect(str).assertEqual('2A01%00%00%00%00%00');
+
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTILDECODEWITHSTREING_1200
+     * @tc.name       : testDecodeToString012
+     * @tc.desc       : Testing the decodeToString interface while different code format.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDecodeToString012', 0, () => {
+      const TAG = 'testDecodeToString012';
+      let decodeToStringOptions: util.DecodeToStringOptions = {
+        stream: true
+      }
+      const that = util.TextDecoder.create('big5');
+      const uint8arr = new Uint8Array([50, 65, 48, 49, 0, 0, 0, 0, 0]);
+      let retStr = that.decodeToString(uint8arr, decodeToStringOptions);
+      let str = encodeURI(retStr);
+      expect(str).assertEqual('2A01%00%00%00%00%00');
+
+    });
   })
 }
