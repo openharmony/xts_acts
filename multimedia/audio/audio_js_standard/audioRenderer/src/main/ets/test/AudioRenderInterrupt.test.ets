@@ -815,7 +815,7 @@ export default function AudioRendererInterruptUnitTest() {
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       render2.on("audioInterrupt", async (eventAction) => {
         console.log("23 render2.eventAction:" + JSON.stringify(eventAction))
-        flag2 = true;
+        flag1 = true;
       })
       await start(render2, done)
 
