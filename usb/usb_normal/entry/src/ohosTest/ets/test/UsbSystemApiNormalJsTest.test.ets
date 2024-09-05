@@ -63,7 +63,7 @@ export default function UsbSystemApiNormalJsTest() {
             tokenId = tokenId.toString();
             console.info(TAG, 'testUsbAddDeviceAccessRightNormalApp001 addDeviceAccessRight begin');
 
-            let rightResult: number | string | boolean = usbManager.addDeviceAccessRight(tokenId, deviceList[0].name);
+            let rightResult: boolean = usbManager.addDeviceAccessRight(tokenId, deviceList[0].name);
             console.log(TAG, 'addDeviceAccessRight failed result: ' + rightResult);
             expect(rightResult === null).assertTrue();
         })
@@ -215,8 +215,8 @@ export default function UsbSystemApiNormalJsTest() {
      */
     it('testSetPortRoleTypesNormalApp001', 0, async (done: Function) => {
       let portId: number = 1;
-      let powerRoleTy: number = 2;
-      let dataRoleTy: number = 2;
+      let powerRoleTy: number | usbManager.PowerRoleType = 2;
+      let dataRoleTy: number | usbManager.DataRoleType = 2;
       try {
         await usbManager.setPortRoleTypes(portId, powerRoleTy, dataRoleTy)
           .then((data) => {
