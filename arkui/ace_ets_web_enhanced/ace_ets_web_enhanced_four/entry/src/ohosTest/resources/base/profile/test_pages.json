@@ -1,0 +1,16 @@
+{
+  "src": [
+    "testability/pages/Index",
+    "testability/pages/SetHeaderByName-name",
+    "testability/pages/SetHeaderByName-value",
+    "testability/pages/SetHeaderByName-overwrite",
+    "testability/pages/SetUrl",
+    "testability/pages/SetEncoding",
+    "testability/pages/SetMimeType",
+    "testability/pages/SetNetErrorCode",
+    "testability/pages/SetStatusText",
+    "testability/pages/SetStatus",
+    "testability/pages/ReadTest"
+  ]
+}
+
