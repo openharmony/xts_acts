@@ -19,5 +19,6 @@ group("powermgr") {
     "permission:powermgr_permission_test",
     "power_manager:powermgr_power_test",
     "thermal_manager:powermgr_thermal_test",
+    "ndk:powermgr_ndk_test",
   ]
 }
