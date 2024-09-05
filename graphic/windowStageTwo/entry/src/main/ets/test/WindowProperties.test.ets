@@ -78,7 +78,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0500
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0300
      * @tc.name      : testSetWindowGrayScale0
      * @tc.desc      : test setWindowGrayScale
      * @tc.size      : MediumTest
@@ -111,7 +111,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0600
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0400
      * @tc.name      : testSetWindowGrayScale0.5
      * @tc.desc      : test setWindowGrayScale
      * @tc.size      : MediumTest
@@ -122,7 +122,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       let caseName = "TestSetWindowGrayScale0.5";
       let windowClass = await windowStage.getMainWindow();
       try {
-        await windowClass.setUIContent('MainAbility/pages/index/index3');
+        await windowClass.setUIContent('MainAbility/pages/index/index2');
         console.info(`${caseName} Succeeded in loading the content.`);
         windowClass.setWindowGrayScale(0.5).then(() => {
           console.info(`${caseName}: Succeeded in setting the grayScale 0.5.`);
@@ -144,7 +144,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0700
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0500
      * @tc.name      : testSetWindowGrayScale1
      * @tc.desc      : test setWindowGrayScale
      * @tc.size      : MediumTest
@@ -177,7 +177,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0800
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0600
      * @tc.name      : testSetWindowGrayScaleNegative1
      * @tc.desc      : test setWindowGrayScale
      * @tc.size      : MediumTest
@@ -188,7 +188,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       let caseName = "TestSetWindowGrayScaleNegative1";
       let windowClass = await windowStage.getMainWindow();
       try {
-        await windowClass.setUIContent('MainAbility/pages/index/index3');
+        await windowClass.setUIContent('MainAbility/pages/index/index2');
         console.info(`${caseName} Succeeded in loading the content.`);
         windowClass.setWindowGrayScale(-1).then(() => {
           console.info(`${caseName}: Succeeded in setting the grayScale -1.`);
@@ -211,7 +211,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0900
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0700
      * @tc.name      : testSetWindowGrayScale2
      * @tc.desc      : test setWindowGrayScale
      * @tc.size      : MediumTest
@@ -222,7 +222,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       let caseName = "TestSetWindowGrayScale2";
       let windowClass = await windowStage.getMainWindow();
       try {
-        await windowClass.setUIContent('MainAbility/pages/index/index3');
+        await windowClass.setUIContent('MainAbility/pages/index/index2');
         console.info(`${caseName} Succeeded in loading the content.`);
         windowClass.setWindowGrayScale(2).then(() => {
           console.info(`${caseName}: Succeeded in setting the grayScale 2.`);
@@ -245,7 +245,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_1000
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0800
      * @tc.name      : testSubWindowSetWindowGrayScale1
      * @tc.desc      : test subWindow setWindowGrayScale
      * @tc.size      : MediumTest
@@ -285,7 +285,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1100
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0900
      * @tc.name      : testOnRectChangeOptionsResizeSubWindow
      * @tc.desc      : Test the function value of testRectChangeOptions
      * @tc.size      : MediumTest
@@ -321,7 +321,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1100
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1000
      * @tc.name      : testOnRectChangeOptionsResizeMainWindow
      * @tc.desc      : Test the function value of testRectChangeOptions
      * @tc.size      : MediumTest
@@ -353,7 +353,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1200
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1100
      * @tc.name      : testOnRectChangeOptionsMove
      * @tc.desc      : Test the function value of testRectChangeOptions
      * @tc.size      : MediumTest
@@ -389,7 +389,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1300
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1200
      * @tc.name      : testOffRectChangeOptions
      * @tc.desc      : Test the function value of testRectChangeOptions
      * @tc.size      : MediumTest
@@ -399,7 +399,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it("testOffRectChangeOptions", 0, async (done: Function) => {
       let caseName = "TestOffRectChangeOptions";
       try {
-        let subWindowClass = await windowStage.createSubWindow("subwindow4");
+        let subWindowClass = await windowStage.createSubWindow("subwindow");
         console.info(`${caseName} Succeeded in creating the sub window.`);
         await subWindowClass.showWindow();
         let count = 0;
@@ -426,7 +426,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1400
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1300
      * @tc.name      : testOffOneRectChangeOptions
      * @tc.desc      : Test the function value of testRectChangeOptions
      * @tc.size      : MediumTest
@@ -436,7 +436,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it("testOffOneRectChangeOptions", 0, async (done: Function) => {
       let caseName = "TestOffOneRectChangeOptions";
       try {
-        let subWindowClass = await windowStage.createSubWindow("subwindow5");
+        let subWindowClass = await windowStage.createSubWindow("subwindow");
         console.info(`${caseName} Succeeded in creating the sub window.`);
         await subWindowClass.showWindow();
         let count1 = 0;
@@ -472,7 +472,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1500
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1400
      * @tc.name      : testOnTwoRectChangeOptions
      * @tc.desc      : Test the function value of testRectChangeOptions
      * @tc.size      : MediumTest
@@ -482,7 +482,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it("testOnTwoRectChangeOptions", 0, async (done: Function) => {
       let caseName = "TestOnTwoRectChangeOptions";
       try {
-        let subWindowClass = await windowStage.createSubWindow("subwindow6");
+        let subWindowClass = await windowStage.createSubWindow("subwindow");
         console.info(`${caseName} Succeeded in creating the sub window.`);
         await subWindowClass.showWindow();
         let count1 = 0;
@@ -517,7 +517,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1600
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1500
      * @tc.name      : testOffTwoRectChangeOptions
      * @tc.desc      : Test the function value of testRectChangeOptions
      * @tc.size      : MediumTest
@@ -527,7 +527,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it("testOffTwoRectChangeOptions", 0, async (done: Function) => {
       let caseName = "TestOffTwoRectChangeOptions";
       try {
-        let subWindowClass = await windowStage.createSubWindow("subwindow7");
+        let subWindowClass = await windowStage.createSubWindow("subwindow");
         console.info(`${caseName} Succeeded in creating the sub window.`);
         await subWindowClass.showWindow();
         let count1 = 0;
@@ -562,7 +562,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1800
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1600
      * @tc.name      : testIsSubWindowSupportWideGamutCallback
      * @tc.desc      : Check whether the subwindow supports the wide color gamut mode
      * @tc.size      : MediumTest
@@ -572,7 +572,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testIsSubWindowSupportWideGamutCallback', 0, async (done: Function) => {
       let caseName = 'TestIsSubWindowSupportWideGamutCallback';
       try {
-        windowStage.createSubWindow('SubWindow8').then((data) => {
+        windowStage.createSubWindow('SubWindow1').then((data) => {
           let subWindowClass = data;
           console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
           subWindowClass.isWindowSupportWideGamut(async (err: BusinessError, data) => {
@@ -599,7 +599,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1900
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1700
      * @tc.name      : testIsSubWindowSupportWideGamutPromise
      * @tc.desc      : Check whether the subwindow supports the wide color gamut mode
      * @tc.size      : MediumTest
@@ -609,7 +609,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testIsSubWindowSupportWideGamutPromise', 0, async (done: Function) => {
       let caseName = 'TestIsSubWindowSupportWideGamutPromise';
       try {
-        windowStage.createSubWindow('SubWindow9').then((data) => {
+        windowStage.createSubWindow('SubWindow2').then((data) => {
           console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(data));
           let subWindowClass = data;
           subWindowClass.isWindowSupportWideGamut().then(async (data) => {
@@ -633,7 +633,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2000
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1800
      * @tc.name      : testIsMainWindowSupportWideGamutCallback
      * @tc.desc      : Check whether the mainWindow supports the wide color gamut mode
      * @tc.size      : MediumTest
@@ -662,7 +662,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2100
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1900
      * @tc.name      : testIsMainWindowSupportWideGamutPromise
      * @tc.desc      : Check whether the mainWindow supports the wide color gamut mode
      * @tc.size      : MediumTest
@@ -688,7 +688,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2200
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2000
      * @tc.name      : testSetMainWindowColorSpaceDefaultCallback
      * @tc.desc      : set window colorSpace
      * @tc.size      : MediumTest
@@ -720,7 +720,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2300
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2100
      * @tc.name      : testSetSubWindowColorSpaceDefaultCallback
      * @tc.desc      : set window colorSpace
      * @tc.size      : MediumTest
@@ -730,7 +730,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSetSubWindowColorSpaceDefaultCallback', 0, async (done: Function) => {
       let caseName = 'TestSetSubWindowColorSpaceDefaultCallback';
       try {
-        windowStage.createSubWindow('SubWindow10').then((data) => {
+        windowStage.createSubWindow('SubWindow3').then((data) => {
           console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(data));
           let subWindowClass = data;
           subWindowClass.setWindowColorSpace(window.ColorSpace.DEFAULT, async (err: BusinessError) => {
@@ -760,7 +760,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2400
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2200
      * @tc.name      : testSetMainWindowColorSpaceWideGamutPromise
      * @tc.desc      : set window colorSpace
      * @tc.size      : MediumTest
@@ -789,7 +789,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2500
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2300
      * @tc.name      : testSetSubWindowColorSpaceWideGamutCallback
      * @tc.desc      : set window colorSpace
      * @tc.size      : MediumTest
@@ -799,7 +799,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSetSubWindowColorSpaceWideGamutCallback', 0, async (done: Function) => {
       let caseName = 'TestSetSubWindowColorSpaceWideGamutCallback';
       try {
-        windowStage.createSubWindow('SubWindow11').then((data) => {
+        windowStage.createSubWindow('SubWindow4').then((data) => {
           console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(data));
           let subWindowClass = data;
           subWindowClass.setWindowColorSpace(window.ColorSpace.WIDE_GAMUT, async (err: BusinessError) => {
@@ -829,7 +829,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2600
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2400
      * @tc.name      : testSetWindowBackgroundColor
      * @tc.desc      : set main window colorSpace
      * @tc.size      : MediumTest
@@ -852,7 +852,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2700
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2500
      * @tc.name      : testSetSubWindowBackgroundColor
      * @tc.desc      : set sub window colorSpace
      * @tc.size      : MediumTest
@@ -863,7 +863,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       let caseName = 'TestSetSubWindowBackgroundColor';
       try {
         let windowClass = windowStage.getMainWindowSync();
-        windowStage.createSubWindow('SubWindow12').then(async (data) => {
+        windowStage.createSubWindow('SubWindow5').then(async (data) => {
           console.info(`${caseName} Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
           let subWindowClass = data;
           await subWindowClass.setUIContent('MainAbility/pages/index/index2');
@@ -884,7 +884,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2800
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2600
      * @tc.name      : testSetSubWindowBackgroundColorNoUIContent
      * @tc.desc      : set sub window colorSpace no set UIContent
      * @tc.size      : MediumTest
@@ -894,7 +894,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSetSubWindowBackgroundColorNoUIContent', 0, async (done: Function) => {
       let caseName = 'TestSetSubWindowBackgroundColorNoUIContent';
       try {
-        let subWindowClass = await windowStage.createSubWindow('SubWindow13');
+        let subWindowClass = await windowStage.createSubWindow('SubWindow6');
         console.info(`${caseName} Succeeded in creating the sub window.`);
         subWindowClass.setWindowBackgroundColor('#00ff33');
         console.info(`${caseName}: Succeeded in setting sub window background color.`);
@@ -907,7 +907,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2900
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2700
      * @tc.name      : testSetWindowBrightnessCallbackNegative2
      * @tc.desc      : set window brightness
      * @tc.size      : MediumTest
@@ -937,7 +937,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3000
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2800
      * @tc.name      : testSetWindowBrightnessCallback1.5
      * @tc.desc      : set window brightness
      * @tc.size      : MediumTest
@@ -967,7 +967,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3100
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2900
      * @tc.name      : testSetWindowBrightnessCallback0
      * @tc.desc      : set window brightness
      * @tc.size      : MediumTest
@@ -996,7 +996,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3200
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3000
      * @tc.name      : testSetWindowBrightnessCallback_0.5
      * @tc.desc      : set window brightness
      * @tc.size      : MediumTest
@@ -1025,7 +1025,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3300
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3100
      * @tc.name      : testSetWindowBrightnessCallback_1
      * @tc.desc      : set window brightness
      * @tc.size      : MediumTest
@@ -1054,7 +1054,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3400
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3200
      * @tc.name      : testSetWindowBrightnessCallbackDefault
      * @tc.desc      : set window brightness
      * @tc.size      : MediumTest
@@ -1083,7 +1083,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3500
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3300
      * @tc.name      : testSetWindowBrightnessPromiseNegative1.5
      * @tc.desc      : set window brightness
      * @tc.size      : MediumTest
@@ -1110,7 +1110,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3600
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3400
      * @tc.name      : testSetWindowBrightnessPromise1.5
      * @tc.desc      : set window brightness
      * @tc.size      : MediumTest
@@ -1142,7 +1142,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3700
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3500
      * @tc.name      : testSetWindowBrightnessPromise_0
      * @tc.desc      : set window brightness
      * @tc.size      : MediumTest
@@ -1168,7 +1168,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3800
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3600
      * @tc.name      : testSetWindowBrightnessPromise_0.5
      * @tc.desc      : set window brightness
      * @tc.size      : MediumTest
@@ -1194,7 +1194,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3900
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3700
      * @tc.name      : testSetWindowBrightnessPromise_1
      * @tc.desc      : set window brightness
      * @tc.size      : MediumTest
@@ -1220,7 +1220,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4000
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3800
      * @tc.name      : testSetWindowBrightnessPromiseNegative1
      * @tc.desc      : set window brightness
      * @tc.size      : MediumTest
@@ -1246,7 +1246,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4100
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3900
      * @tc.name      : testSetSubWindowBrightnessPromiseNegative1
      * @tc.desc      : set subwindow brightness
      * @tc.size      : MediumTest
@@ -1256,7 +1256,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSetSubWindowBrightnessPromiseNegative1', 0, (done: Function) => {
       let caseName = 'TestSetSubWindowBrightnessPromiseNegative1';
       try {
-        windowStage.createSubWindow('subWindow14').then((data) => {
+        windowStage.createSubWindow('subWindow6').then((data) => {
           console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(data));
           let subWindowClass = data;
           subWindowClass.setWindowBrightness(-1).then(async () => {
@@ -1280,7 +1280,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4200
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4000
      * @tc.name      : testSetSubWindowBrightnessPromiseNegative2
      * @tc.desc      : set subwindow brightness
      * @tc.size      : MediumTest
@@ -1290,7 +1290,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSetSubWindowBrightnessPromiseNegative2', 0, (done: Function) => {
       let caseName = 'TestSetSubWindowBrightnessPromiseNegative2';
       try {
-        windowStage.createSubWindow('subWindow15').then((data) => {
+        windowStage.createSubWindow('subWindow7').then((data) => {
           console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(data));
           let subWindowClass = data;
           subWindowClass.setWindowBrightness(-2).then(() => {
@@ -1315,7 +1315,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4300
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4100
      * @tc.name      : testSetSubWindowKeepScreenOnCallbackFalse
      * @tc.desc      : set subwindow screen to be always on
      * @tc.size      : MediumTest
@@ -1325,7 +1325,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSetSubWindowKeepScreenOnCallbackFalse', 0, (done: Function) => {
       let caseName = 'TestSetSubWindowKeepScreenOnCallbackFalse';
       try {
-        windowStage.createSubWindow('subWindow16').then((data) => {
+        windowStage.createSubWindow('subWindow8').then((data) => {
           console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(data));
           let subWindowClass = data;
           subWindowClass.setWindowKeepScreenOn(false, async (err: BusinessError) => {
@@ -1352,7 +1352,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4400
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4200
      * @tc.name      : testSetSubWindowKeepScreenOnCallbackTrue
      * @tc.desc      : set subwindow screen to be always on
      * @tc.size      : MediumTest
@@ -1362,7 +1362,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSetSubWindowKeepScreenOnCallbackTrue', 0, (done: Function) => {
       let caseName = 'TestSetSubWindowKeepScreenOnCallbackTrue';
       try {
-        windowStage.createSubWindow('subWindow17').then((data) => {
+        windowStage.createSubWindow('subWindow9').then((data) => {
           console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(data));
           let subWindowClass = data;
           data.setWindowKeepScreenOn(true, async (err: BusinessError) => {
@@ -1389,7 +1389,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4500
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4300
      * @tc.name      : testSetWindowKeepScreenOnCallbackFalse
      * @tc.desc      : set window screen to be always on
      * @tc.size      : MediumTest
@@ -1418,7 +1418,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4600
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4400
      * @tc.name      : testSetWindowKeepScreenOnCallbackTrue
      * @tc.desc      : set window screen to be always on
      * @tc.size      : MediumTest
@@ -1447,7 +1447,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4700
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4500
      * @tc.name      : testSetWindowKeepScreenOnPromiseTrue
      * @tc.desc      : set window screen to be always on
      * @tc.size      : MediumTest
@@ -1473,7 +1473,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4800
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4600
      * @tc.name      : testSetWindowKeepScreenOnPromiseFalse
      * @tc.desc      : set window screen to be always on
      * @tc.size      : MediumTest
@@ -1499,7 +1499,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4900
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4700
      * @tc.name      : testSetSubWindowPrivacyModeTrue
      * @tc.desc      : set subwindow screen to be privacy mode
      * @tc.size      : MediumTest
@@ -1509,7 +1509,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSetSubWindowPrivacyModeTrue', 0, async (done: Function) => {
       let caseName = 'TestSetSubWindowPrivacyModeTrue';
       try {
-        let subWindow = await windowStage.createSubWindow('subWindow18');
+        let subWindow = await windowStage.createSubWindow('subWindow10');
         console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(subWindow));
         subWindow.setWindowPrivacyMode(true, async (err: BusinessError) => {
           const errCode: number = err.code;
@@ -1535,7 +1535,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5000
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4800
      * @tc.name      : testSetSubWindowPrivacyModeFalse
      * @tc.desc      : set subwindow screen to be privacy mode
      * @tc.size      : MediumTest
@@ -1545,7 +1545,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSetSubWindowPrivacyModeFalse', 0, async (done: Function) => {
       let caseName = 'TestSetSubWindowPrivacyModeFalse';
       try {
-        let subWindow = await windowStage.createSubWindow('subWindow19');
+        let subWindow = await windowStage.createSubWindow('subWindow11');
         console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(subWindow));
         subWindow.setWindowPrivacyMode(false, async (err: BusinessError) => {
           const errCode: number = err.code;
@@ -1571,7 +1571,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5100
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4900
      * @tc.name      : testSetWindowPrivacyModeTrue
      * @tc.desc      : set window screen to be privacy mode
      * @tc.size      : MediumTest
@@ -1605,7 +1605,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5200
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5000
      * @tc.name      : testSetWindowPrivacyModeFalse
      * @tc.desc      : set window screen to be privacy mode
      * @tc.size      : MediumTest
@@ -1639,7 +1639,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5300
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5100
      * @tc.name      : testWindowSnapshotCallback
      * @tc.desc      : snapshot window
      * @tc.size      : MediumTest
@@ -1674,7 +1674,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5400
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5200
      * @tc.name      : testSubWindowSnapshotCallback
      * @tc.desc      : snapshot subwindow
      * @tc.size      : MediumTest
@@ -1684,7 +1684,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSubWindowSnapshotCallback', 0, async (done: Function) => {
       let caseName = 'TestSubWindowSnapshotCallback';
       try {
-        let subWindow = await windowStage.createSubWindow('subWindow20');
+        let subWindow = await windowStage.createSubWindow('subWindow12');
         console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(subWindow));
         subWindow.snapshot(async (err: BusinessError, pixelMap) => {
           const errCode: number = err.code;
@@ -1711,7 +1711,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5500
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5300
      * @tc.name      : testWindowSnapshotPromise
      * @tc.desc      : snapshot window
      * @tc.size      : MediumTest
@@ -1743,7 +1743,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5600
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5400
      * @tc.name      : testSubWindowSnapshotPromise
      * @tc.desc      : snapshot subwindow
      * @tc.size      : MediumTest
@@ -1753,7 +1753,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSubWindowSnapshotPromise', 0, async (done: Function) => {
       let caseName = 'TestSubWindowSnapshotPromise';
       try {
-        let subWindow = await windowStage.createSubWindow('subWindow21');
+        let subWindow = await windowStage.createSubWindow('subWindow13');
         console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(subWindow));
         subWindow.snapshot().then(async (pixelMap) => {
           console.info(`${caseName} Succeeded in snapshotting window. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
@@ -1777,7 +1777,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5700
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5500
      * @tc.name      : testWindowGetUIContext
      * @tc.desc      : get window ui context
      * @tc.size      : MediumTest
@@ -1804,7 +1804,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5800
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5600
      * @tc.name      : testSubWindowGetUIContext
      * @tc.desc      : get subwindow ui context
      * @tc.size      : MediumTest
@@ -1814,7 +1814,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSubWindowGetUIContext', 0, async (done: Function) => {
       let caseName = 'TestSubWindowGetUIContext';
       try {
-        let subWindow = await windowStage.createSubWindow('subWindow22');
+        let subWindow = await windowStage.createSubWindow('subWindow14');
         console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(subWindow));
         let uiContext = subWindow.getUIContext();
         console.info(`${caseName} Succeeded in gettting the subwindow ui context. Data: ${JSON.stringify(uiContext)}`)
@@ -1833,7 +1833,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5900
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5700
      * @tc.name      : testWindowSetUIContextCallback
      * @tc.desc      : set window ui context
      * @tc.size      : MediumTest
@@ -1862,7 +1862,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6000
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5800
      * @tc.name      : testWindowSetUIContextErrorPathCallback
      * @tc.desc      : set window ui context
      * @tc.size      : MediumTest
@@ -1892,7 +1892,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6100
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5900
      * @tc.name      : testSubWindowSetUIContextCallback
      * @tc.desc      : set subwindow ui context
      * @tc.size      : MediumTest
@@ -1902,7 +1902,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSubWindowSetUIContextCallback', 0, async (done: Function) => {
       let caseName = 'TestSubWindowSetUIContextCallback';
       try {
-        let subWindow = await windowStage.createSubWindow('subWindow23');
+        let subWindow = await windowStage.createSubWindow('subWindow15');
         console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(subWindow));
         subWindow.setUIContent('MainAbility/pages/index/index2', async (err: BusinessError) => {
           const errCode: number = err.code;
@@ -1923,7 +1923,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6200
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6000
      * @tc.name      : testSubWindowSetUIContextErrorPathCallback
      * @tc.desc      : set subwindow ui context
      * @tc.size      : MediumTest
@@ -1933,7 +1933,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testSubWindowSetUIContextErrorPathCallback', 0, async (done: Function) => {
       let caseName = 'TestSubWindowSetUIContextErrorPathCallback';
       try {
-        let subWindow = await windowStage.createSubWindow('subWindow24');
+        let subWindow = await windowStage.createSubWindow('subWindow16');
         console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(subWindow));
         subWindow.setUIContent('MainAbility/pages/index/Error', async (err: BusinessError) => {
           const errCode: number = err.code;
@@ -1955,7 +1955,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6300
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6100
      * @tc.name      : testWindowSetUIContextPromise
      * @tc.desc      : set window ui context
      * @tc.size      : MediumTest
@@ -1981,7 +1981,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6400
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6200
      * @tc.name      : testSubWindowSetUIContextErrorPathPromise
      * @tc.desc      : set subwindow ui context
      * @tc.size      : MediumTest
@@ -2009,7 +2009,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6500
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6300
      * @tc.name      : testSetDefaultDensityEnabledTrue
      * @tc.desc      : set window ui context
      * @tc.size      : MediumTest
@@ -2034,7 +2034,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6600
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6400
      * @tc.name      : testSetDefaultDensityEnabledFalse
      * @tc.desc      : set window ui context
      * @tc.size      : MediumTest
@@ -2059,7 +2059,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6700
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6500
      * @tc.name      : testSetMainWindowMask
      * @tc.desc      : set window ui context
      * @tc.size      : MediumTest
@@ -2087,7 +2087,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6800
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6600
      * @tc.name      : testSetSubWindowMask
      * @tc.desc      : set window ui context
      * @tc.size      : MediumTest
@@ -2112,6 +2112,399 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       } catch (exception) {
         console.error(`${caseName} Failed to set the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6700
+     * @tc.name      : testGetWindowStatusInDefault
+     * @tc.desc      : get the window status of current window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetWindowStatusInDefault', 0, async (done: Function) => {
+      let caseName = 'TestGetWindowStatusInDefault';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        await windowClass.setFullScreen(true);
+        console.info(`${caseName} Succeeded in enabling the full-screen mode.`);
+        await sleep(1000);
+        windowClass.recover().then(() => {
+          const windowStatus = windowClass.getWindowStatus();
+          console.info(`${caseName} windowStatus is: ${windowStatus}`);
+          expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
+          done();
+        }).catch((err: BusinessError) => {
+          try {
+            const windowStatus = windowClass.getWindowStatus();
+            console.info(`${caseName} windowStatus is: ${windowStatus}`);
+            expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
+            done();
+          } catch (exception) {
+            if(exception.code == 801) {
+              console.info(`${caseName}: The current device type does not support to get window status`);
+              done();
+            } else {
+              console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+              expect().assertFail();
+              done();
+            }
+          }
+        });
+      } catch (exception) {
+        if(exception.code == 801) {
+          console.info(`${caseName}: The current device type does not support: ${exception.message}`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6800
+     * @tc.name      : testGetWindowStatusInFullScreen
+     * @tc.desc      : get the window status of current window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetWindowStatusInFullScreen', 0, async (done: Function) => {
+      let caseName = 'TestGetWindowStatusInFullScreen';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        await windowClass.setFullScreen(true);
+        console.info(`${caseName} Succeeded in enabling the full-screen mode.`);
+        const windowStatus = windowClass.getWindowStatus();
+        console.info(`${caseName} windowStatus is: ${windowStatus}`);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
+        done();
+      } catch (exception) {
+        if(exception.code == 801) {
+          console.info(`${caseName}: The current device type does not support: ${exception.message}`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_6900
+     * @tc.name      : testGetWindowStatusInMaximize
+     * @tc.desc      : get the window status of current window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetWindowStatusInMaximize', 0, async (done: Function) => {
+      let caseName = 'TestGetWindowStatusInMaximize';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        await windowClass.maximize();
+        console.info(`${caseName} Succeeded in maximizing the window.`);
+        await sleep(1000);
+        const windowStatus = windowClass.getWindowStatus();
+        console.info(`${caseName} windowStatus is: ${windowStatus}`);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
+        done();
+      } catch (exception) {
+        if(exception.code == 801) {
+          console.info(`${caseName}: The current device type does not support: ${exception.message}`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7000
+     * @tc.name      : testGetDialogWindowStatus
+     * @tc.desc      : get the window status of current window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetDialogWindowStatus', 0, async (done: Function) => {
+      let caseName = 'TestGetDialogWindowStatus';
+      try {
+        let config: window.Configuration = {
+          name: "dialog",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        const windowClass = await window.createWindow(config);
+        console.info(`${caseName} Succeeded in creating the dialog window.`);
+        windowClass.setUIContent("MainAbility/pages/index/index2");
+        await windowClass.showWindow();
+        await sleep(1000);
+        const windowStatus = windowClass.getWindowStatus();
+        console.info(`${caseName} windowStatus is: ${windowStatus}`);
+        await windowClass.destroyWindow();
+        console.info(`${caseName} Succeeded in destroying the window.`);
+        await sleep(1000);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
+        done();
+      } catch (exception) {
+        if(exception.code == 801) {
+          console.info(`${caseName}: The current device type does not support: ${exception.message}`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7100
+     * @tc.name      : testGetDestroyedDialogWindowStatus
+     * @tc.desc      : get the window status of current window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetDestroyedDialogWindowStatus', 0, async (done: Function) => {
+      let caseName = 'TestGetDestroyedDialogWindowStatus';
+      try {
+        let config: window.Configuration = {
+          name: "destroyDialog",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        const windowClass = await window.createWindow(config);
+        console.info(`${caseName} Succeeded in creating the dialog window.`);
+        windowClass.setUIContent("MainAbility/pages/index/index2");
+        windowClass.showWindow();
+        await windowClass.destroyWindow();
+        console.info(`${caseName} Succeeded in destroying the dialog window.`);
+        await sleep(1000);
+        const windowStatus = windowClass.getWindowStatus();
+        console.info(`${caseName} windowStatus is: ${windowStatus}`);
+        expect(false).assertEqual(true);
+        done();
+      } catch (exception) {
+        if(exception.code == 801) {
+          console.info(`${caseName}: The current device type does not support: ${exception.message}`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect(exception.code).assertEqual(1300002);
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7200
+     * @tc.name      : testGetDestroyedSubWindowStatus
+     * @tc.desc      : get the sub window status of current window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetDestroyedSubWindowStatus', 0, async (done: Function) => {
+      let caseName = 'TestGetDestroyedSubWindowStatus';
+      try {
+        const windowClass = await windowStage.createSubWindow('subwindow');
+        console.info(`${caseName} Succeeded in creating the sub window.`);
+        windowClass.setUIContent("MainAbility/pages/index/index2");
+        await windowClass.destroyWindow();
+        console.info(`${caseName} Succeeded in destroying the sub window.`);
+        await sleep(1000);
+        const windowStatus = windowClass.getWindowStatus();
+        console.info(`${caseName} windowStatus is: ${windowStatus}`);
+        expect(false).assertEqual(true);
+        done();
+      } catch (exception) {
+        if(exception.code == 801) {
+          console.info(`${caseName}: The current device type does not support: ${exception.message}`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect(exception.code).assertEqual(1300002);
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7300
+     * @tc.name      : testGetSubWindowFocused
+     * @tc.desc      : get the sub window focused of current window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetSubWindowFocused', 0, async (done: Function) => {
+      let caseName = 'TestGetSubWindowFocused';
+      try {
+        const windowClass = await windowStage.createSubWindow('subwindow');
+        console.info(`${caseName} Succeeded in creating the sub window.`);
+        await windowClass.setUIContent("MainAbility/pages/index/index3");
+        await windowClass.showWindow();
+        await sleep(1000);
+        const isFocused = windowClass.isFocused();
+        console.info(`${caseName} isFocused is: ${isFocused}`);
+        await windowClass.destroyWindow();
+        console.info(`${caseName} Succeeded in destroying the window.`);
+        expect(isFocused).assertTrue();
+        done();
+      } catch (exception) {
+        if (exception.code === 1300002) {
+          console.error(`${caseName} This window state is abnormal.`);
+          done();
+        } else if (exception.code === 801) {
+          console.error(`${caseName}: The current device type does not support: ${exception.message}.`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7400
+     * @tc.name      : testGetDialogWindowFocused
+     * @tc.desc      : get the window focused of current window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetDialogWindowFocused', 0, async (done: Function) => {
+      let caseName = 'TestGetDialogWindowFocused';
+      try {
+        let config: window.Configuration = {
+          name: "dialogWindow",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        const windowClass = await window.createWindow(config);
+        console.info(`${caseName} Succeeded in creating the dialog window.`);
+        windowClass.setUIContent("MainAbility/pages/index/index3");
+        await windowClass.showWindow();
+        await sleep(1000);
+        const isFocused = windowClass.isFocused();
+        console.info(`${caseName} isFocused is: ${isFocused}`);
+        await windowClass.destroyWindow();
+        console.info(`${caseName} Succeeded in destroying the window.`);
+        expect(isFocused).assertTrue();
+        done();
+      } catch (exception) {
+        if (exception.code === 1300002) {
+          console.error(`${caseName} This window state is abnormal.`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7500
+     * @tc.name      : testGetTopSubWindowFocused
+     * @tc.desc      : get the top sub window focused of current window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetTopSubWindowFocused', 0, async (done: Function) => {
+      let caseName = 'TestGetTopSubWindowFocused';
+      try {
+        const windowClass1 = await windowStage.createSubWindow('subwindow1');
+        console.info(`${caseName} Succeeded in creating the sub window 1.`);
+        windowClass1.setUIContent("MainAbility/pages/index/index2");
+        await windowClass1.showWindow();
+        await sleep(1000);
+        const windowClass2 = await windowStage.createSubWindow('subwindow2');
+        console.info(`${caseName} Succeeded in creating the sub window 2.`);
+        windowClass2.setUIContent("MainAbility/pages/index/index3");
+        await windowClass2.showWindow();
+        await sleep(1000);
+        const isFocused1 = windowClass1.isFocused();
+        const isFocused2 = windowClass2.isFocused();
+        console.info(`${caseName} windowClass1 isFocused is: ${isFocused1}`);
+        console.info(`${caseName} windowClass2 isFocused is: ${isFocused2}`);
+        expect(isFocused1).assertFalse();
+        expect(isFocused2).assertTrue();
+        done();
+      } catch (exception) {
+        console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7600
+     * @tc.name      : testGetShiftWindowFocused
+     * @tc.desc      : get the main window focused by shift from sub window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetShiftWindowFocused', 0, async (done: Function) => {
+      let caseName = 'TestGetShiftWindowFocused';
+      try {
+        const windowClass = windowStage.getMainWindowSync();
+        const subWindowClass = await windowStage.createSubWindow('subwindow');
+        console.info(`${caseName} Succeeded in creating the sub window.`);
+        subWindowClass.setUIContent("MainAbility/pages/index/index2");
+        await subWindowClass.showWindow();
+        await sleep(1000);
+        const subWindowClassId = subWindowClass.getWindowProperties().id;
+        const windowClassId = windowClass.getWindowProperties().id;
+        await window.shiftAppWindowFocus(subWindowClassId, windowClassId);
+        console.info('Succeeded in shifting sub window focus to main window');
+        await sleep(1000);
+        const windowStatus = windowClass.isFocused();
+        const subWindowStatus = subWindowClass.isFocused();
+        console.info(`${caseName} main window isFocused is: ${windowStatus}`);
+        console.info(`${caseName} sub window isFocused is: ${subWindowStatus}`);
+        await subWindowClass.destroyWindow();
+        console.info(`${caseName} Succeeded in destroying the window.`);
+        expect(windowStatus).assertTrue();
+        expect(subWindowStatus).assertFalse();
+        done();
+      } catch (exception) {
+        if (exception.code === 1300002) {
+          console.error(`${caseName} This window state is abnormal.`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7700
+     * @tc.name      : testGetDestroyedSubWindowFocused
+     * @tc.desc      : get the sub window focused of current window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetDestroyedSubWindowFocused', 0, async (done: Function) => {
+      let caseName = 'TestGetDestroyedSubWindowFocused';
+      try {
+        const windowClass = await windowStage.createSubWindow('subwindow');
+        console.info(`${caseName} Succeeded in creating the sub window.`);
+        windowClass.setUIContent("MainAbility/pages/index/index2");
+        await windowClass.destroyWindow();
+        console.info(`${caseName} Succeeded in destroying the sub window.`);
+        await sleep(1000);
+        const isFocused = windowClass.isFocused();
+        console.info(`${caseName} isFocused is: ${isFocused}`);
+        expect(false).assertEqual(true);
+        done();
+      } catch (exception) {
+        console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect(exception.code).assertEqual(1300002);
         done();
       }
     })
