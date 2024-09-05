@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -24,9 +24,9 @@ struct Index {
   aboutToAppear() {
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
-    var abilityDelegator: any
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
+    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs;
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
@@ -36,10 +36,10 @@ struct Index {
   scroller: Scroller = new Scroller()
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
 
-  build() {
+   build() {
     Stack({ alignContent: Alignment.TopStart }) {
       Scroll(this.scroller) {
-        Column() {
+           Column() {
           ForEach(this.arr, (item: number) => {
             Text(item.toString())
               .width('90%')
@@ -61,7 +61,7 @@ struct Index {
       .edgeEffect(EdgeEffect.None)
       .onScroll((xOffset: number, yOffset: number) => {
         console.info(xOffset + ' ' + yOffset)
-      })
+             })
       .onScrollEdge((side: Edge) => {
         console.info('To the edge')
       })
@@ -70,10 +70,10 @@ struct Index {
       })
 
       Button('scroll 150')
-        .height('5%')
+             .height('5%')
         .onClick(() => {
           this.scroller.scrollBy(0, 150)
-        })
+             })
         .margin({ top: 10, left: 20 })
       Button('scroll 100')
         .height('5%')
@@ -99,13 +99,24 @@ struct Index {
       Button('next page1')
         .height('5%')
         .onClick(() => {
-          this.scroller.scrollPage({ next: false })
+          this.scroller.scrollPage({ next: false, animation: false })
         })
       Button('next page2')
         .height('5%')
         .onClick(() => {
-          this.scroller.scrollPage({ next: true })
+          this.scroller.scrollPage({ next: true, animation: true })
         })
+      Button('next page3')
+        .height('5%')
+        .onClick(() => {
+          this.scroller.scrollPage({ next: true, animation: false })
+        })
+      Button('next page4')
+        .height('5%')
+        .onClick(() => {
+          this.scroller.scrollPage({ next: false, animation: true })
+        })
+        .margin({ top: 210, left: 20 })
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
-  }
-}
+   }
+ }

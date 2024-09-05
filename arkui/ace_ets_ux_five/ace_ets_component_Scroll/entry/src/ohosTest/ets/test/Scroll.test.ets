@@ -12,15 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 export default function ScrollTest() {
-  describe('ScrollTest', function () {
-    beforeEach(async function (done) {
+  describe('ScrollTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'TestAbility/pages/Index',
+      let options: router.RouterOptions = {
+        url: 'testability/pages/Index',
       }
       try {
         router.clear();
@@ -42,15 +42,15 @@ export default function ScrollTest() {
      *@tc.name   Support modifying the scroll scrollPage hange of Scroll component
      *@tc.desc   Sets the scrollPage property parameter to true or false
      */
-    it('ArkUX_Scroll_Visual_0010', 0, async function (done) {
+    it('ArkUX_Scroll_Visual_0010', 0, async (done: Function) => {
       console.info('ArkUX_Scroll_Visual_0010 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Scroll_Visual_0010');
           console.info('ArkUX_Scroll_Visual_0010 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_Scroll_Visual_0010 obj is: " + JSON.stringify(obj));
-          let scrollable = obj.$attrs.scrollable
+          let scrollable: string = obj.$attrs.scrollable
           expect(scrollable).assertEqual("ScrollDirection.Vertical");
           console.info('ArkUX_Scroll_Visual_0010 END ');
         } catch (err) {
