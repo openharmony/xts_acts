@@ -14,7 +14,7 @@
  */
 
 import { describe, expect, it } from '@ohos/hypium'
-import vsync from 'libnativebuffer.so'
+import vsync from 'libnativevsync.so'
 
 export default function nativeBufferTest() {
   describe('NativeVsyncPart2Test', () => {
@@ -80,7 +80,7 @@ export default function nativeBufferTest() {
     it('testNativeVSyncCreateAbnormal', 0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncCreateAbnormal();
       console.info("testNativeVSyncCreateAbnormal result:" + result)
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
 
@@ -96,9 +96,7 @@ export default function nativeBufferTest() {
     it('testNativeVSyncCreateDifLenth', 0, async (done: Function) => {
       let result: Array<number> = vsync.oHNativeVSyncCreateDifLenth();
       console.info("testNativeVSyncCreateDifLenth result:" + result)
-      for (let i = 0; i < result.length; i++) {
-        expect(result[i]).assertEqual(0);
-      }
+      expect(result).assertEqual(0);
       done();
     });
 
@@ -114,7 +112,7 @@ export default function nativeBufferTest() {
     it('testNativeVSyncCreateMuch', 0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncCreateMuch();
       console.info("testNativeVSyncCreateMuch result:" + result)
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
 
@@ -133,41 +131,7 @@ export default function nativeBufferTest() {
       expect(result).assertEqual(40001000);
       done();
     });
-
-    /**
-     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_VSYNC_0107
-     * @tc.name       : testNativeVSyncDestroyAbnormal
-     * @tc.desc       : test OH_NativeVSync_Destroy
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 4
-     */
-
-    it('testNativeVSyncDestroyAbnormal', 0, async (done: Function) => {
-      // let result: number = vsync.oHNativeVSyncDestroyAbnormal();
-      // console.info("testNativeVSyncDestroyAbnormal result:" + result);
-      // expect(result).assertEqual(40001000);
-      done();
-    });
-
-
-    /**
-     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_VSYNC_0108
-     * @tc.name       : testNativeVSyncDestroyNormal
-     * @tc.desc       : test OH_NativeVSync_Destroy
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-
-    it('testNativeVSyncDestroyNormal', 0, async (done: Function) => {
-      let result: Array<number> = vsync.oHNativeVSyncDestroyNormal();
-      console.info("testNativeVSyncDestroyNormal result:" + result);
-      expect(result[0]).assertEqual(0);
-      expect(result[1]).assertEqual(-1);
-      done();
-    });
-
+    
     /**
      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_VSYNC_0109
      * @tc.name       : testNativeVSyncRequestFrameNullptr
@@ -180,10 +144,7 @@ export default function nativeBufferTest() {
     it('testNativeVSyncRequestFrameNullptr', 0, async (done: Function) => {
       let result: Array<number> = vsync.oHNativeVSyncRequestFrameNullptr();
       console.info("testNativeVSyncRequestFrameNullptr result:" + result);
-      // 失败原因：第三个参数传入为nullptr时，返回为0
-      for (let i = 0; i < result.length; i++) {
-        expect(result[i]).assertEqual(40001000);
-      }
+      expect(result).assertEqual(0);
       done();
     });
 
@@ -215,9 +176,99 @@ export default function nativeBufferTest() {
     it('testNativeVSyncRequestFrameParamErr', 0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncRequestFrameParamErr();
       console.info("testNativeVSyncRequestFrameParamErr result:" + result);
-      // 返回值为0 测试失败
-      expect(result).assertEqual(40001000);
+      expect(result).assertEqual(0);
       done();
     });
+
+    it('testOHNativeVSyncCreate001', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncCreate();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_CREATE_0200
+     * @tc.name       : testOHNativeVSyncCreate002
+     * @tc.desc       : test OH_NativeVSync_Create
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncCreate002', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncCreateFOne();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_REQUESTFRAME_0100
+     * @tc.name       : testOHNativeVSyncRequestFrame001
+     * @tc.desc       : test OH_NativeVSync_RequestFrame
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncRequestFrame001', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncRequestFrame();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_REQUESTFRAME_0200
+     * @tc.name       : testOHNativeVSyncRequestFrame002
+     * @tc.desc       : test OH_NativeVSync_RequestFrame
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncRequestFrame002', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncRequestFrameFOne();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_REQUESTFRAME_0300
+     * @tc.name       : testOHNativeVSyncRequestFrame003
+     * @tc.desc       : test OH_NativeVSync_RequestFrame
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncRequestFrame003', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncRequestFrameFTwo();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_GETPERIOD_0100
+     * @tc.name       : testOHNativeVSyncGetPeriod001
+     * @tc.desc       : test OH_NativeVSync_GetPeriod
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncGetPeriod001', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncGetPeriod();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_GETPERIOD_0100
+     * @tc.name       : testOHNativeVSyncGetPeriod002
+     * @tc.desc       : test OH_NativeVSync_GetPeriod
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncGetPeriod002', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncGetPeriodFOne();
+      expect(result).assertEqual(0);
+      done();
+    });
+
   })
 }

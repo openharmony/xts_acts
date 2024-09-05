@@ -12,10 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import nativeBufferTest from './NativeBuffer.test';
 import NativeVsyncTest from './NativeVsync.test';
 
 export default function testsuite() {
-  nativeBufferTest();
   NativeVsyncTest();
 }

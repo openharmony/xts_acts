@@ -14,7 +14,7 @@
  */
 
 {
-  "name": "libnativebuffer.so,",
+  "name": "libnativevsync.so",
   "types": "./index.d.ts",
   "version": "",
   "description": ""
