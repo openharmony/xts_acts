@@ -363,7 +363,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it("testOnRectChangeOptionsMove", 0, async (done: Function) => {
       let caseName = "TestOnRectChangeOptionsMove";
       try {
-        let subWindowClass = await windowStage.createSubWindow("subwindow3");
+        let subWindowClass = await windowStage.createSubWindow("subwindow");
         console.info(`${caseName} Succeeded in creating the sub window.`);
         await subWindowClass.showWindow();
         await sleep(1000);
