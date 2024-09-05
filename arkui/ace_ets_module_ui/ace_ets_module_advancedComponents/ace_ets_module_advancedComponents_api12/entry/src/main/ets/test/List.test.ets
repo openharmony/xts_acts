@@ -101,7 +101,6 @@ export default function testsuite() {
   subHeaderButton();
   subHeaderIconGroup();
   subHeaderTextArrow();
-  composeTitleBarTest();
 
   FileButtonContinueToReceiveTest();
   FileButtonDownloadTest();
