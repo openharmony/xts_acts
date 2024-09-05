@@ -1,3 +1,17 @@
+/*
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #include "napi/native_api.h"
 #include "BasicServicesKit/ohbattery_info.h"
 #include "native_common.h"
@@ -10,15 +24,13 @@ static napi_value Add(napi_env env, napi_callback_info info)
     size_t argc = 0;
     napi_value args[2] = {nullptr};
     
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int32_t value = OH_BatteryInfo_GetCapacity();
     int value2 = OH_BatteryInfo_GetPluggedType();
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testLog", "get value = %{public}d, %{public}d", value, value2);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testLog", "func addr = %{public}p, %{public}p", OH_BatteryInfo_GetCapacity, OH_BatteryInfo_GetPluggedType);
     napi_value ret;
     napi_create_int32(env, value, &ret);
     return ret;
-
 }
 
 static napi_value GetCapacity(napi_env env, napi_callback_info info)
@@ -27,11 +39,9 @@ static napi_value GetCapacity(napi_env env, napi_callback_info info)
     size_t argc = 0;
     napi_value args[2] = {nullptr};
     
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int32_t value = OH_BatteryInfo_GetCapacity();
-    int value2 = OH_BatteryInfo_GetPluggedType();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testLog", "get value = %{public}d, %{public}d", value, value2);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testLog", "func addr = %{public}p, %{public}p", OH_BatteryInfo_GetCapacity, OH_BatteryInfo_GetPluggedType);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testLog", "get value = %{public}d", value);
     napi_value ret;
     napi_create_int32(env, value, &ret);
     return ret;
@@ -43,7 +53,7 @@ static napi_value GetPluggedType(napi_env env, napi_callback_info info)
     size_t argc = 0;
     napi_value args[2] = {nullptr};
     
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     BatteryInfo_BatteryPluggedType type =  OH_BatteryInfo_GetPluggedType();
     std::string str;
     switch (type) {
@@ -77,7 +87,7 @@ static napi_value CommonEventKeyCapacity(napi_env env, napi_callback_info info)
     size_t argc = 0;
     napi_value args[2] = {nullptr};
     
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     std::string value = COMMON_EVENT_KEY_CAPACITY;
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testLog", "get value = %{public}s", value.c_str());
     napi_value ret;
@@ -85,12 +95,13 @@ static napi_value CommonEventKeyCapacity(napi_env env, napi_callback_info info)
     return ret;
 }
 
-static napi_value CommonEventKeyChargeState(napi_env env, napi_callback_info info) {
+static napi_value CommonEventKeyChargeState(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testLog", "CommonEventKeyChargeState func called");
     size_t argc = 0;
     napi_value args[2] = {nullptr};
     
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     std::string value = COMMON_EVENT_KEY_CHARGE_STATE;
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testLog", "get value = %{public}s", value.c_str());
     napi_value ret;
@@ -98,12 +109,13 @@ static napi_value CommonEventKeyChargeState(napi_env env, napi_callback_info inf
     return ret;
 }
 
-static napi_value CommonEventKeyPluggedType(napi_env env, napi_callback_info info) {
+static napi_value CommonEventKeyPluggedType(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testLog", "CommonEventKeyPluggedType func called");
     size_t argc = 0;
     napi_value args[2] = {nullptr};
     
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     std::string value = COMMON_EVENT_KEY_PLUGGED_TYPE;
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testLog", "get value = %{public}s", value.c_str());
     napi_value ret;
@@ -153,7 +165,8 @@ static napi_value CreateEnumPluggedType(napi_env env, napi_value exports)
 }
 
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
+static napi_value Init(napi_env env, napi_value exports) 
+{
     napi_property_descriptor desc[] = {
         {"add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getCapacity", nullptr, GetCapacity, nullptr, nullptr, nullptr, napi_default, nullptr},
