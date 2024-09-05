@@ -20,8 +20,9 @@ import CommonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import OpenLinkOptions from '@ohos.app.ability.OpenLinkOptions';
+import { common } from '@kit.AbilityKit';
 
-let context;
+let context = getContext(this) as common.UIAbilityContext;;
 let link = 'example://www.example.com';
 let linkNotExist = 'demo://www.example.com';
 let invalidParamErrNo = 401;
@@ -41,11 +42,11 @@ let paramOptions: OpenLinkOptions = {
 
 
 export default function openLinkTest() {
-  describe('ActsOpenLinkTest', function () {
-    beforeAll(function () {
+  describe('ActsOpenLinkTest', () => {
+    beforeAll(() => {
       context = globalThis.context;
     });
-    afterEach((done) => {
+    afterEach((done: Function) => {
       console.log('OpenLink afterEach start');
       setTimeout(() => {
         console.log('OpenLink afterEach end');
@@ -61,7 +62,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0100', 0, function (done) {
+    it('AbilityRuntime_OpenLink_0100', 0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0100`;
       console.log(`${tag}, it begin`);
 
@@ -70,7 +71,7 @@ export default function openLinkTest() {
           console.info(`#${tag}# open link successful`);
           expect().assertFail();
           done();
-        }).catch((error) => {
+        }).catch((error: BusinessError) => {
           console.info(`#${tag}# open link err : ${error}`);
           expect().assertFail();
           // expect(error.code == undefined).assertFalse();
@@ -92,7 +93,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0200', 0, function (done) {
+    it('AbilityRuntime_OpenLink_0200', 0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0200`;
       console.log(`${tag}, it begin`);
 
@@ -101,7 +102,7 @@ export default function openLinkTest() {
           console.info(`#${tag}# open link successful`);
           expect().assertFail();
           done();
-        }).catch((error) => {
+        }).catch((error: BusinessError) => {
           console.info(`#${tag}# open link err : ${error}`);
           expect().assertFail();
           done();
@@ -121,7 +122,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0300', 0, function (done) {
+    it('AbilityRuntime_OpenLink_0300', 0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0300`;
       console.log(`${tag}, it begin`);
 
@@ -129,7 +130,7 @@ export default function openLinkTest() {
         context.openLink(link).then(() => {
           console.info(`#${tag}# open link successful`);
           done();
-        }).catch((error) => {
+        }).catch((error: BusinessError) => {
           console.info(`#${tag}# open link err : ${error}`);
           expect().assertFail();
           done();
@@ -149,7 +150,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0400', 0, function (done) {
+    it('AbilityRuntime_OpenLink_0400', 0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0400`;
       console.log(`${tag}, it begin`);
 
@@ -158,7 +159,7 @@ export default function openLinkTest() {
           console.info(`#${tag}# open link successful`);
           expect().assertFail();
           done();
-        }).catch((error) => {
+        }).catch((error: BusinessError) => {
           console.info(`#${tag}# open link err : ${error}`);
           expect(error.code).assertEqual(componentNotExistErrNo);
           done();
@@ -178,7 +179,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0500', 0, function (done) {
+    it('AbilityRuntime_OpenLink_0500', 0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0500`;
       console.log(`${tag}, it begin`);
 
@@ -187,7 +188,7 @@ export default function openLinkTest() {
           console.info(`#${tag}# open link successful`);
           expect().assertFail();
           done();
-        }).catch((error) => {
+        }).catch((error: BusinessError) => {
           console.info(`#${tag}# open link err : ${error}`);
           expect(error.code).assertEqual(componentNotExistErrNo);
           done();
@@ -207,7 +208,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0600', 0, function (done) {
+    it('AbilityRuntime_OpenLink_0600', 0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0600`;
       console.log(`${tag}, it begin`);
 
@@ -215,7 +216,7 @@ export default function openLinkTest() {
         context.openLink(link, falseParamOptions).then(() => {
           console.info(`#${tag}# open link successful`);
           done();
-        }).catch((error) => {
+        }).catch((error: BusinessError) => {
           console.info(`#${tag}# open link err : ${error}`);
           expect().assertFail();
           done();
@@ -235,7 +236,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0700', 0, function (done) {
+    it('AbilityRuntime_OpenLink_0700', 0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0700`;
       console.log(`${tag}, it begin`);
 
@@ -243,7 +244,7 @@ export default function openLinkTest() {
         context.openLink(link, paramOptions).then(() => {
           console.info(`#${tag}# open link successful`);
           done();
-        }).catch((error) => {
+        }).catch((error: BusinessError) => {
           console.info(`#${tag}# open link err : ${error}`);
           expect().assertFail();
           done();
@@ -263,7 +264,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0800', 0, function (done) {
+    it('AbilityRuntime_OpenLink_0800', 0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0800`;
       console.log(`${tag}, it begin`);
 
@@ -276,7 +277,7 @@ export default function openLinkTest() {
                          }
           ).then(() => {
           console.info(`#${tag}# open link successful`);
-        }).catch((error) => {
+        }).catch((error: BusinessError) => {
           console.info(`#${tag}# open link err : ${error}`);
           expect().assertFail();
           done();
@@ -296,7 +297,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0900', 0, function (done) {
+    it('AbilityRuntime_OpenLink_0900', 0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0900`;
       console.log(`${tag}, it begin`);
 
@@ -310,7 +311,7 @@ export default function openLinkTest() {
           ).then(() => {
           console.info(`#${tag}# open link successful`);
           expect().assertFail();
-        }).catch((error) => {
+        }).catch((error: BusinessError) => {
           console.info(`#${tag}# open link err : ${error}`);
           expect(error.code).assertEqual(componentNotExistErrNo);
           done();
@@ -330,7 +331,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_1000', 0, function (done) {
+    it('AbilityRuntime_OpenLink_1000', 0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_1000`;
       console.log(`${tag}, it begin`);
 
@@ -343,7 +344,7 @@ export default function openLinkTest() {
                          }
           ).then(() => {
           console.info(`#${tag}# open link successful`);
-        }).catch((error) => {
+        }).catch((error: BusinessError) => {
           console.info(`#${tag}# open link err : ${error}`);
           expect().assertFail();
           done();
