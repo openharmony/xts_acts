@@ -233,11 +233,8 @@ describe('file_uri_test', function () {
       let exceptPath = '/storage/Users/currentUser/appdata/el2/distributedfiles/com.demo.b/test1.txt';
       let testUri2 = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt';
       let uri = new fileUri.FileUri(testUri);
-      console.log('test_FileUri_Other_Function_000 uri ' + uri);
       let uri2 = new fileUri.FileUri(testUri);
-      console.log('test_FileUri_Other_Function_000 uri2 ' + uri2);
       let uri3 = new fileUri.FileUri(testUri2);
-      console.log('test_FileUri_Other_Function_000 uri3 ' + uri3);
       expect(uri.checkIsAbsolute() === true).assertTrue();
       expect(uri.scheme === 'file').assertTrue();
       expect(uri.userInfo === '').assertTrue();
