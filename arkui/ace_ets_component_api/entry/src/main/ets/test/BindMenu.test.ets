@@ -55,7 +55,7 @@ export default function BindMenuTest() {
       console.info(`${SUITE} ${CASE} START`);
 
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.action).assertEqual('onAppear');
+        expect(event.data?.action).assertEqual('onAppear');
         step2(done)
       }
       let event: events_emitter.InnerEvent = {
@@ -79,7 +79,7 @@ export default function BindMenuTest() {
       console.info(`${SUITE} ${CASE} START`);
 
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.action).assertEqual('onAppear');
+        expect(event.data?.action).assertEqual('onAppear');
         done()
       }
       let event: events_emitter.InnerEvent = {
@@ -97,7 +97,7 @@ export default function BindMenuTest() {
 
 async function step2(done: Function) {
   let callback = (event: events_emitter.EventData) => {
-    expect(event.data.action).assertEqual('onDisappear');
+    expect(event.data?.action).assertEqual('onDisappear');
     done()
   }
   let event: events_emitter.InnerEvent = {
