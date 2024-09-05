@@ -17,6 +17,8 @@ import { beforeAll, afterAll, describe, it, expect } from "@ohos/hypium"
 import usbManager from "@ohos.usbManager"
 import bundleManager from '@ohos.bundle.bundleManager'
 
+const NUMBER_TWO = 2;
+const NUMBER_FOUR = 4;
 
 export default function UsbSystemApiNormalJsTest() {
   
@@ -106,7 +108,7 @@ export default function UsbSystemApiNormalJsTest() {
      * @tc.level      : Level 3
      */
     it('testGetStringFromFunctionsNormalApp001', 0, async (done: Function) => {
-      let funcs : usbManager.FunctionType = 4;
+      let funcs : usbManager.FunctionType = NUMBER_FOUR;
       try {
         let maskCode = usbManager.getStringFromFunctions(funcs);
         console.info(TAG, 'Test USB getStringFromFunctions maskCode: ' + maskCode);
@@ -128,7 +130,7 @@ export default function UsbSystemApiNormalJsTest() {
      * @tc.level      : Level 3
      */
     it('testSetDeviceFunctionsNormalApp001', 0, async (done: Function) => {
-      let funcs : usbManager.FunctionType = 4;
+      let funcs : usbManager.FunctionType = NUMBER_FOUR;
       try {
         await usbManager.setDeviceFunctions(funcs).then((data) => {
           console.info(TAG, 'Test USB setDeviceFunctions nMaskCode: ' + data);
@@ -215,8 +217,8 @@ export default function UsbSystemApiNormalJsTest() {
      */
     it('testSetPortRoleTypesNormalApp001', 0, async (done: Function) => {
       let portId: number = 1;
-      let powerRoleTy : usbManager.PowerRoleType = 2;
-      let dataRoleTy: usbManager.DataRoleType = 2;
+      let powerRoleTy : usbManager.PowerRoleType = NUMBER_TWO;
+      let dataRoleTy: usbManager.DataRoleType = NUMBER_TWO;
       try {
         await usbManager.setPortRoleTypes(portId, powerRoleTy, dataRoleTy)
           .then((data) => {
