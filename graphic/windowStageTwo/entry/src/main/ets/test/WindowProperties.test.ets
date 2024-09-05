@@ -59,7 +59,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it('testGetWindowPropertiesInSubWindow', 0, (done: Function) => {
       let caseName = 'TestGetWindowPropertiesInSubWindow';
       try {
-        windowStage.createSubWindow('subWindow1').then((data) => {
+        windowStage.createSubWindow('subWindow').then((data) => {
           console.info(`${caseName} Succeeded in creating the subWindow. Data:` + JSON.stringify(data));
           let properties = data.getWindowProperties();
           console.info(`${caseName} Succeeded get window proerties`);
@@ -295,7 +295,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
     it("testOnRectChangeOptionsResizeSubWindow", 0, async (done: Function) => {
       let caseName = "TestOnRectChangeOptionsResizeSubWindow";
       try {
-        let subWindowClass = await windowStage.createSubWindow("subwindow2");
+        let subWindowClass = await windowStage.createSubWindow("subwindow");
         console.info(`${caseName} Succeeded in creating the sub window.`);
         await subWindowClass.showWindow();
         await sleep(1000);
