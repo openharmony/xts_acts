@@ -381,7 +381,7 @@ struct WebViewMenuInputFieldType {
               this.ResultKey = 10
               this.userAgentPC = this.controller.getUserAgent();
               if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent(true, 2893)
+                Utils.emitEvent(1, 2882)
                 break;
               } else {
                 this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach.html")
