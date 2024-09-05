@@ -59,11 +59,11 @@ export default function UsbSystemApiNormalJsTest() {
         let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
         await bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
             console.info(TAG, 'getBundleInfoForSelf success Data: ', JSON.stringify(bundleInfo));
-            let tokenId: number | string = bundleInfo.appInfo.accessTokenId;
-            tokenId = tokenId.toString();
+            let tokenId = bundleInfo.appInfo.accessTokenId;
+            let tokenIdStr = tokenId.toString();
             console.info(TAG, 'testUsbAddDeviceAccessRightNormalApp001 addDeviceAccessRight begin');
 
-            let rightResult: boolean = usbManager.addDeviceAccessRight(tokenId, deviceList[0].name);
+            let rightResult = usbManager.addDeviceAccessRight(tokenIdStr, deviceList[0].name);
             console.log(TAG, 'addDeviceAccessRight failed result: ' + rightResult);
             expect(rightResult === null).assertTrue();
         })
@@ -215,8 +215,8 @@ export default function UsbSystemApiNormalJsTest() {
      */
     it('testSetPortRoleTypesNormalApp001', 0, async (done: Function) => {
       let portId: number = 1;
-      let powerRoleTy: number | usbManager.PowerRoleType = 2;
-      let dataRoleTy: number | usbManager.DataRoleType = 2;
+      let powerRoleTy: number = 2;
+      let dataRoleTy: number = 2;
       try {
         await usbManager.setPortRoleTypes(portId, powerRoleTy, dataRoleTy)
           .then((data) => {
