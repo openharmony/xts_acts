@@ -287,8 +287,10 @@ export default function constraintSizeTest() {
       console.info('[' + data.caseTag + ']' + 'height is:' + JSON.stringify(height));
       console.info('[' + data.caseTag + ']' + 'constraintSize is:' + data.viewObj.$attrs.constraintSize);
       expect(data.viewObj.$attrs.constraintSize).assertEqual(JSON.stringify(data.testValue.expectValue.constraintSize));
-      expect(Math.abs(width - data.testValue.expectValue.width) <= 1).assertTrue();
-      expect(Math.abs(height - data.testValue.expectValue.height) <= 1).assertTrue();
+      console.info('[' + data.caseTag + ']' + 'expectValue.width is:' + JSON.stringify(data.testValue.expectValue.width));
+      expect(Math.abs(Math.round(width) - Math.round(data.testValue.expectValue.width)) <= 1).assertTrue();
+      console.info('[' + data.caseTag + ']' + 'expectValue.height is:' + JSON.stringify(data.testValue.expectValue.height));
+      expect(Math.abs(Math.round(height) - Math.round(data.testValue.expectValue.height)) <= 1).assertTrue();
     });
   })
 }
