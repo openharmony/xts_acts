@@ -298,11 +298,13 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         let subWindowClass = await windowStage.createSubWindow("subwindow");
         console.info(`${caseName} Succeeded in creating the sub window.`);
         await subWindowClass.showWindow();
-        subWindowClass.on('windowSizeChange', (data) => {
+        await sleep(1000);
+        subWindowClass.on('windowSizeChange', async (data) => {
           console.info(`${caseName} Succeeded window rect changes. Data: ${JSON.stringify(data)}`);
-          subWindowClass.off('windowSizeChange');
           expect(data.width).assertEqual(500);
           expect(data.height).assertEqual(500);
+          subWindowClass.off('windowSizeChange');
+          await subWindowClass.destroyWindow();
           done();
         });
         await subWindowClass.resize(500, 500);
@@ -330,13 +332,14 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
       let caseName = "TestOnRectChangeOptionsResizeMainWindow";
       try {
         let windowClass = windowStage.getMainWindowSync();
-        windowClass.on('windowSizeChange', (data) => {
+        windowClass.on('windowSizeChange', async (data) => {
           console.info(`${caseName} Succeeded window rect changes. Data: ${JSON.stringify(data)}`);
+          expect(data.width).assertEqual(1000);
+          expect(data.height).assertEqual(500);
           windowClass.off('windowSizeChange');
-          expect(false).assertTrue();
           done();
         });
-        await windowClass.resize(500, 500);
+        await windowClass.resize(1000, 500);
         console.info(`${caseName} Succeeded in changing the window size.`);
       } catch (error) {
         if(error.code == 1300002){
@@ -363,11 +366,13 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         let subWindowClass = await windowStage.createSubWindow("subwindow");
         console.info(`${caseName} Succeeded in creating the sub window.`);
         await subWindowClass.showWindow();
-        subWindowClass.on('windowRectChange', (data) => {
+        await sleep(1000);
+        subWindowClass.on('windowRectChange', async (data) => {
           console.info(`${caseName}: Succeeded window rect changes. Data: ${JSON.stringify(data)}`);
-          subWindowClass.off('windowRectChange');
           expect(data.rect.left).assertEqual(300);
           expect(data.rect.top).assertEqual(300);
+          subWindowClass.off('windowRectChange');
+          await subWindowClass.destroyWindow();
           done();
         });
         await subWindowClass.moveWindowTo(300, 300);
@@ -407,6 +412,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         await subWindowClass.moveWindowTo(300, 300);
         console.info(`${caseName} Succeeded in moving the window.`);
         expect(count).assertEqual(0);
+        await subWindowClass.destroyWindow();
         done();
       } catch (error) {
         if(error.code == 1300002){
@@ -452,6 +458,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         expect(count1).assertEqual(0);
         expect(count2).assertLarger(0);
         subWindowClass.off('windowRectChange', callback2);
+        await subWindowClass.destroyWindow();
         done();
       } catch (error) {
         if(error.code == 1300002){
@@ -496,6 +503,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         expect(count1).assertLarger(0);
         expect(count2).assertLarger(0);
         subWindowClass.off('windowRectChange');
+        await subWindowClass.destroyWindow();
         done();
       } catch (error) {
         if(error.code == 1300002){
@@ -540,6 +548,7 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         console.info(`${caseName} Succeeded in moving the window.`);
         expect(count1).assertEqual(0);
         expect(count2).assertEqual(0);
+        await subWindowClass.destroyWindow();
         done();
       } catch (error) {
         if(error.code == 1300002){
