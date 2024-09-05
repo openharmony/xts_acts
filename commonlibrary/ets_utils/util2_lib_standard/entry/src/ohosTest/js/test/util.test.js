@@ -9211,7 +9211,7 @@ describe('DecodeEncodeTest', function () {
     it('testEncodeInto045', 0, function () {
         let that = new util.TextEncoder('utf-16be');
         let result = that.encodeInto('abc哈熠');
-        let res = new Uint8Array([97,0,98,0,99,0,200,84,160,113]);
+        let res = new Uint8Array([0,97,0,98,0,99,84,200,113,160]);
         for (let i = 0; i < result.length; i++) {
           expect(result[i]).assertEqual(res[i]);
         }
@@ -9228,7 +9228,7 @@ describe('DecodeEncodeTest', function () {
     it('testEncodeInto046', 0, function () {
         let that = new util.TextEncoder('utf-16le');
         let result = that.encodeInto('abc哈熠');
-        let res = new Uint8Array([0,97,0,98,0,99,84,200,113,160]);
+        let res = new Uint8Array([97,0,98,0,99,0,200,84,160,113]);
         for (let i = 0; i < result.length; i++) {
           expect(result[i]).assertEqual(res[i]);
         }
