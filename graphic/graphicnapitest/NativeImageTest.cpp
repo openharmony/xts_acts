@@ -1208,84 +1208,84 @@ HWTEST_F(NativeImageTest, OHConsumerSurfaceCreateMuch, Function | MediumTest | L
     }
 }
 /*
- * @tc.name: OHConsumerSufaceSetDefaultUsageNormal
+ * @tc.name: OHConsumerSurfaceSetDefaultUsageNormal
  * @tc.desc: test for Normal OH_ConsumerSuface_SetDefaultUsage and check ret.
  * @tc.size  : MediumTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeImageTest, OHConsumerSufaceSetDefaultUsageNormal, Function | MediumTest | Level1)
+HWTEST_F(NativeImageTest, OHConsumerSurfaceSetDefaultUsageNormal, Function | MediumTest | Level1)
 {
     OH_NativeImage* image = nullptr;
     image = OH_ConsumerSurface_Create();
     ASSERT_NE(image, nullptr);
-    int32_t ret = OH_ConsumerSuface_SetDefaultUsage(image, 0);
+    int32_t ret = OH_ConsumerSurface_SetDefaultUsage(image, 0);
     ASSERT_EQ(ret, NATIVE_ERROR_OK);
-    int32_t ret1 = OH_ConsumerSuface_SetDefaultUsage(image, 1000);
+    int32_t ret1 = OH_ConsumerSurface_SetDefaultUsage(image, 1000);
     ASSERT_EQ(ret1, NATIVE_ERROR_OK);
-    int32_t ret2 = OH_ConsumerSuface_SetDefaultUsage(image, UINT64_MAX - 1);
+    int32_t ret2 = OH_ConsumerSurface_SetDefaultUsage(image, UINT64_MAX - 1);
     ASSERT_EQ(ret2, NATIVE_ERROR_OK);
     
     uint64_t usage[] = {0, 1000, UINT64_MAX - 1};
     for (int i = 0; i < 3; i++) {
         usage[i] += 1;
-        int32_t ret3 = OH_ConsumerSuface_SetDefaultUsage(image, usage[i]);
+        int32_t ret3 = OH_ConsumerSurface_SetDefaultUsage(image, usage[i]);
         ASSERT_EQ(ret3, NATIVE_ERROR_OK);
     }
     for (int i = 0; i < 100000; i++) {
-        int32_t ret4 = OH_ConsumerSuface_SetDefaultUsage(image, 100);
+        int32_t ret4 = OH_ConsumerSurface_SetDefaultUsage(image, 100);
         ASSERT_EQ(ret4, NATIVE_ERROR_OK);
     }
     OH_NativeImage_Destroy(&image);
 }
 /*
- * @tc.name: OHConsumerSufaceSetDefaultUsageAbnormal
+ * @tc.name: OHConsumerSurfaceSetDefaultUsageAbnormal
  * @tc.desc: test for AbNormal OH_ConsumerSuface_SetDefaultUsage and check ret.
  * @tc.size  : MediumTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeImageTest, OHConsumerSufaceSetDefaultUsageAbnormal, Function | MediumTest | Level3)
+HWTEST_F(NativeImageTest, OHConsumerSurfaceSetDefaultUsageAbnormal, Function | MediumTest | Level3)
 {
     OH_NativeImage* image = nullptr;
     image = OH_ConsumerSurface_Create();
     ASSERT_NE(image, nullptr);
-    int32_t ret = OH_ConsumerSuface_SetDefaultUsage(image, -1);
+    int32_t ret = OH_ConsumerSurface_SetDefaultUsage(image, -1);
     ASSERT_EQ(ret, NATIVE_ERROR_OK);
-    int32_t ret1 = OH_ConsumerSuface_SetDefaultUsage(image, -1000);
+    int32_t ret1 = OH_ConsumerSurface_SetDefaultUsage(image, -1000);
     ASSERT_EQ(ret1, NATIVE_ERROR_OK);
-    int32_t ret2 = OH_ConsumerSuface_SetDefaultUsage(image, UINT64_MAX);
+    int32_t ret2 = OH_ConsumerSurface_SetDefaultUsage(image, UINT64_MAX);
     ASSERT_EQ(ret2, NATIVE_ERROR_OK);
-    int32_t ret3 = OH_ConsumerSuface_SetDefaultUsage(image, -UINT64_MAX);
+    int32_t ret3 = OH_ConsumerSurface_SetDefaultUsage(image, -UINT64_MAX);
     ASSERT_EQ(ret3, NATIVE_ERROR_OK);
-    int32_t ret4 = OH_ConsumerSuface_SetDefaultUsage(nullptr, 100);
+    int32_t ret4 = OH_ConsumerSurface_SetDefaultUsage(nullptr, 100);
     ASSERT_EQ(ret4, NATIVE_ERROR_INVALID_ARGUMENTS);
     OH_NativeImage_Destroy(&image);
 }
 /*
- * @tc.name: OHConsumerSufaceSetDefaultSizeNormal
+ * @tc.name: OHConsumerSurfaceSetDefaultSizeNormal
  * @tc.desc: test for Normal OH_ConsumerSuface_SetDefaultSize and check ret.
  * @tc.size  : MediumTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeImageTest, OHConsumerSufaceSetDefaultSizeNormal, Function | MediumTest | Level1)
+HWTEST_F(NativeImageTest, OHConsumerSurfaceSetDefaultSizeNormal, Function | MediumTest | Level1)
 {
     OH_NativeImage* image = nullptr;
     image = OH_ConsumerSurface_Create();
     ASSERT_NE(image, nullptr);
     int32_t res = 1 << 16;
-    int32_t ret = OH_ConsumerSuface_SetDefaultSize(image, 1, 1);
+    int32_t ret = OH_ConsumerSurface_SetDefaultSize(image, 1, 1);
     ASSERT_EQ(ret, NATIVE_ERROR_OK);
-    int32_t ret1 = OH_ConsumerSuface_SetDefaultSize(image, 1, res - 1);
+    int32_t ret1 = OH_ConsumerSurface_SetDefaultSize(image, 1, res - 1);
     ASSERT_EQ(ret1, NATIVE_ERROR_OK);
-    int32_t ret2 = OH_ConsumerSuface_SetDefaultSize(image, res - 1, 1);
+    int32_t ret2 = OH_ConsumerSurface_SetDefaultSize(image, res - 1, 1);
     ASSERT_EQ(ret2, NATIVE_ERROR_OK);
-    int32_t ret3 = OH_ConsumerSuface_SetDefaultSize(image, 100, 100);
+    int32_t ret3 = OH_ConsumerSurface_SetDefaultSize(image, 100, 100);
     ASSERT_EQ(ret3, NATIVE_ERROR_OK);
-    int32_t ret4 = OH_ConsumerSuface_SetDefaultSize(image, 10000, 10000);
+    int32_t ret4 = OH_ConsumerSurface_SetDefaultSize(image, 10000, 10000);
     ASSERT_EQ(ret4, NATIVE_ERROR_OK);
-    int32_t ret5 = OH_ConsumerSuface_SetDefaultSize(image, res - 1, res - 1);
+    int32_t ret5 = OH_ConsumerSurface_SetDefaultSize(image, res - 1, res - 1);
     ASSERT_EQ(ret5, NATIVE_ERROR_OK);
     
     int32_t w[] = {1, 100, 10000};
@@ -1293,47 +1293,47 @@ HWTEST_F(NativeImageTest, OHConsumerSufaceSetDefaultSizeNormal, Function | Mediu
     for (int i = 0; i < 3; i++) {
         w[i] += 1;
         h[i] += 1;
-        int32_t ret6 = OH_ConsumerSuface_SetDefaultSize(image, w[i], h[i]);
+        int32_t ret6 = OH_ConsumerSurface_SetDefaultSize(image, w[i], h[i]);
         ASSERT_EQ(ret6, NATIVE_ERROR_OK);
     }
     for (int i = 0; i < 100000; i++) {
-        int32_t ret7 = OH_ConsumerSuface_SetDefaultSize(image, 1, 1);
+        int32_t ret7 = OH_ConsumerSurface_SetDefaultSize(image, 1, 1);
         ASSERT_EQ(ret7, NATIVE_ERROR_OK);
     }
     OH_NativeImage_Destroy(&image);
 }
 /*
- * @tc.name: OHConsumerSufaceSetDefaultSizeAbNormal
+ * @tc.name: OHConsumerSurfaceSetDefaultSizeAbNormal
  * @tc.desc: test for AbNormal OH_ConsumerSuface_SetDefaultSize and check ret.
  * @tc.size  : MediumTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeImageTest, OHConsumerSufaceSetDefaultSizeAbNormal, Function | MediumTest | Level3)
+HWTEST_F(NativeImageTest, OHConsumerSurfaceSetDefaultSizeAbNormal, Function | MediumTest | Level3)
 {
     OH_NativeImage* image = nullptr;
     image = OH_ConsumerSurface_Create();
     ASSERT_NE(image, nullptr);
     int32_t res = 1 << 16;
-    int32_t ret = OH_ConsumerSuface_SetDefaultSize(image, 1, 0);
+    int32_t ret = OH_ConsumerSurface_SetDefaultSize(image, 1, 0);
     ASSERT_EQ(ret, NATIVE_ERROR_INVALID_ARGUMENTS);
-    int32_t ret1 = OH_ConsumerSuface_SetDefaultSize(image, -1, 0);
+    int32_t ret1 = OH_ConsumerSurface_SetDefaultSize(image, -1, 0);
     ASSERT_EQ(ret1, NATIVE_ERROR_INVALID_ARGUMENTS);
-    int32_t ret2 = OH_ConsumerSuface_SetDefaultSize(image, 0, -1);
+    int32_t ret2 = OH_ConsumerSurface_SetDefaultSize(image, 0, -1);
     ASSERT_EQ(ret2, NATIVE_ERROR_INVALID_ARGUMENTS);
-    int32_t ret3 = OH_ConsumerSuface_SetDefaultSize(image, -1000, -1000);
+    int32_t ret3 = OH_ConsumerSurface_SetDefaultSize(image, -1000, -1000);
     ASSERT_EQ(ret3, NATIVE_ERROR_INVALID_ARGUMENTS);
-    int32_t ret4 = OH_ConsumerSuface_SetDefaultSize(image, 1000, -1000);
+    int32_t ret4 = OH_ConsumerSurface_SetDefaultSize(image, 1000, -1000);
     ASSERT_EQ(ret4, NATIVE_ERROR_INVALID_ARGUMENTS);
-    int32_t ret5 = OH_ConsumerSuface_SetDefaultSize(image, -res, 100);
+    int32_t ret5 = OH_ConsumerSurface_SetDefaultSize(image, -res, 100);
     ASSERT_EQ(ret5, NATIVE_ERROR_INVALID_ARGUMENTS);
-    int32_t ret6 = OH_ConsumerSuface_SetDefaultSize(image, -100, res - 1);
+    int32_t ret6 = OH_ConsumerSurface_SetDefaultSize(image, -100, res - 1);
     ASSERT_EQ(ret6, NATIVE_ERROR_INVALID_ARGUMENTS);
-    int32_t ret7 = OH_ConsumerSuface_SetDefaultSize(image, -res, -res);
+    int32_t ret7 = OH_ConsumerSurface_SetDefaultSize(image, -res, -res);
     ASSERT_EQ(ret7, NATIVE_ERROR_INVALID_ARGUMENTS);
-    int32_t ret8 = OH_ConsumerSuface_SetDefaultSize(image, res + 1, res + 1);
+    int32_t ret8 = OH_ConsumerSurface_SetDefaultSize(image, res + 1, res + 1);
     ASSERT_EQ(ret8, NATIVE_ERROR_OK);
-    int32_t ret9 = OH_ConsumerSuface_SetDefaultSize(nullptr, 100, 100);
+    int32_t ret9 = OH_ConsumerSurface_SetDefaultSize(nullptr, 100, 100);
     ASSERT_EQ(ret9, NATIVE_ERROR_INVALID_ARGUMENTS);
     OH_NativeImage_Destroy(&image);
 }
