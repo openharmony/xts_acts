@@ -204,6 +204,7 @@ static napi_value OHNativeImageAttachContext(napi_env env, napi_callback_info in
     backInfo = OH_NativeImage_AttachContext(image, textureId2);
     napi_value result = nullptr;
     napi_create_int32(env, backInfo, &result);
+    OH_NativeImage_Destroy(&image);
     return result;
 }
 
@@ -397,6 +398,7 @@ static napi_value OHNativeImageCreateNormal(napi_env env, napi_callback_info inf
     }
     napi_value result = nullptr;
     napi_create_int32(env, backInfo, &result);
+    OH_NativeImage_Destroy(&image);
     return result;
 }
 
@@ -410,6 +412,7 @@ static napi_value OHNativeImageCreateAbnormal(napi_env env, napi_callback_info i
     }
     napi_value result = nullptr;
     napi_create_int32(env, backInfo, &result);
+    OH_NativeImage_Destroy(&image);
     return result;
 }
 
@@ -497,6 +500,7 @@ static napi_value OHNativeImageAcquireNativeWindowNormal(napi_env env, napi_call
     
     napi_value result = nullptr;
     napi_create_int32(env, backInfo, &result);
+    OH_NativeImage_Destroy(&nativeImage);
     return result;
 }
 
@@ -525,7 +529,7 @@ static napi_value OHNativeImageAttachContextNullptr(napi_env env, napi_callback_
         napi_create_int32(env, SUCCESS, &result2);
     }
     napi_set_element(env, result, ARR_NUMBER_1, result2);
-
+    OH_NativeImage_Destroy(&nativeImage);
     return result;
 }
 
@@ -542,6 +546,7 @@ static napi_value OHNativeImageDetachContextNullptr(napi_env env, napi_callback_
     } else {
         napi_create_int32(env, SUCCESS, &result);
     }
+    OH_NativeImage_Destroy(&nativeImage);
     return result;
 }
 
@@ -667,7 +672,7 @@ static napi_value OHNativeImageUpdateSurfaceImageNullptr(napi_env env, napi_call
     } else {
         napi_create_int32(env, SUCCESS, &result);
     }
-
+    OH_NativeImage_Destroy(&nativeImage);
     return result;
 }
 
@@ -682,7 +687,7 @@ static napi_value OHNativeImageGetTimestampNullptr(napi_env env, napi_callback_i
     } else {
         napi_create_int32(env, SUCCESS, &result);
     }
-
+    OH_NativeImage_Destroy(&nativeImage);
     return result;
 }
 
@@ -756,7 +761,7 @@ static napi_value OHNativeImageUpdateSurfaceImageNormal(napi_env env, napi_callb
     } else {
         napi_create_int32(env, FAIL, &result);
     }
-
+    OH_NativeImage_Destroy(&nativeImage);
     return result;
 }
 
@@ -972,6 +977,8 @@ static napi_value OHNativeImageSetOnFrameAvailableListenerNormal(napi_env env, n
         napi_create_int32(env, FAIL, &result4);
     }
     napi_set_element(env, result, ARR_NUMBER_3, result4);
+    OH_NativeImage_Destroy(&nativeImage1);
+    OH_NativeImage_Destroy(&nativeImage2);
     return result;
 }
 
@@ -1015,7 +1022,7 @@ static napi_value OHNativeImageUnsetOnFrameAvailableListenerNormal(napi_env env,
         napi_create_int32(env, FAIL, &result3);
     }
     napi_set_element(env, result, ARR_NUMBER_2, result3);
-
+    OH_NativeImage_Destroy(&nativeImage1);
     return result;
 }
 
