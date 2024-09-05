@@ -30,8 +30,8 @@ export default function abilityTest() {
   describe('ACTS_CreateModuleContext_Test', () => {
     /*
      * @tc.number    : SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1300
-     * @tc.name      : Create ModuleContext When Context Is Null
-     * @tc.desc      : Create a module context using the CreateModulaeCoxt method when the context is null
+     * @tc.name      : Test_CreateModuleContext_NullContext
+     * @tc.desc      : Test CreateModuleContext function when context is null
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -40,7 +40,7 @@ export default function abilityTest() {
       const TEST_CASE_NAME = 'CreateModuleContext_1300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let context = null;
-      let moduleName = 'entry';
+      let moduleName = 'entry_test';
       try {
         await application.createModuleContext(context,moduleName).then((data: Context)=>{
           hilog.info(0x0000, TAG, '%{public}s', 'createBundleContext success!');
@@ -59,8 +59,8 @@ export default function abilityTest() {
 
     /*
      * @tc.number    : SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1400
-     * @tc.name      : Create ModuleContext When Context Is Undefined
-     * @tc.desc      : Create a module context using the CreateModulaeCoxt method when the context is undefined
+     * @tc.name      : Test_CreateModuleContext_UndefinedContext
+     * @tc.desc      : Test CreateModuleContext function when context is undefined
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -88,8 +88,8 @@ export default function abilityTest() {
 
     /*
      * @tc.number    : SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1500
-     * @tc.name      : Create ModuleContext When ModuleName Is Null
-     * @tc.desc      : Create a module context using the CreateModulaeCoxt method when the moduleName is null
+     * @tc.name      : Test_CreateModuleContext_NullModuleName
+     * @tc.desc      : Test CreateModuleContext function when moduleName is null
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -117,8 +117,8 @@ export default function abilityTest() {
 
     /*
      * @tc.number    : SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1600
-     * @tc.name      : Create ModuleContext When ModuleName Is Undefined
-     * @tc.desc      : Create a module context using the CreateModulaeCoxt method when the moduleName is undefined
+     * @tc.name      : Test_CreateModuleContext_UndefinedModuleName
+     * @tc.desc      : Test CreateModuleContext function when moduleName is undefined
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -146,8 +146,8 @@ export default function abilityTest() {
 
     /*
      * @tc.number    : SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1700
-     * @tc.name      : Create ModuleContext Without ModuleName
-     * @tc.desc      : Create a module context using the CreateModulaeCoxt method without moduleName
+     * @tc.name      : Test_CreateModuleContext_WrongModuleName
+     * @tc.desc      : Test CreateModuleContext function when moduleName is wrong
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -175,8 +175,8 @@ export default function abilityTest() {
 
     /*
      * @tc.number    : SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1800
-     * @tc.name      : Create ModuleContext WhenModuleName Is ''
-     * @tc.desc      : Create a module context using the CreateModulaeCoxt method when moduleName = ''
+     * @tc.name      : Test_CreateModuleContext_EmptyModuleName
+     * @tc.desc      : Test CreateModuleContext function when moduleName is empty
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
