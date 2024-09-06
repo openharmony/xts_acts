@@ -19,7 +19,7 @@ struct Index {
   @State message: string = 'Hello World';
 
   aboutToAppear(): void {
-    console.info("============== aboutToAppear ")
+    console.info('aboutToAppear')
   }
 
   build() {

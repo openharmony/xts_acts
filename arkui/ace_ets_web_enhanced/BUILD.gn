@@ -18,7 +18,7 @@ group("webEnhancedTest") {
       "ace_ets_web_enhanced_one:ActsAceWebEnhancedTest",
       "ace_ets_web_enhanced_three:ActsAceWebEnhancedTestThree",
       "ace_ets_web_enhanced_two:ActsAceWebEnhancedTestTwo",
-      "ace_ets_web_enhanced_four:ActsAceWebEnhancedTestFour",
+      "ace_ets_web_enhanced_four:ActsAceWebEnhancedTestFour"
     ]
   }
 }

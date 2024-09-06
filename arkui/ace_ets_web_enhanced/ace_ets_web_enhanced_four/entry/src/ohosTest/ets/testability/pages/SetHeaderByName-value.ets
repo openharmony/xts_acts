@@ -19,17 +19,18 @@ import { buffer } from '@kit.ArkTS';
 import { WebNetErrorList } from '@ohos.web.netErrorList';
 import { temp } from '../../test/Const';
 import { LocalContext } from '../../test/GloablConfig';
+import { URL } from './ConstConfig';
 
 @Entry
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
-  htmlData: string = "<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>";
+  htmlData: string = '<html><body bgcolor="white">Source:<pre>source</pre></body></html>';
 
   build() {
     Column() {
-      Web({ src: 'https://www.example.com', controller: this.controller })
+      Web({ src: URL, controller: this.controller })
         .onControllerAttached(() => {
           try {
             this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest,
@@ -38,22 +39,22 @@ struct WebComponent {
               try {
                 response.setNetErrorCode(WebNetErrorList.NET_OK);
                 response.setStatus(200);
-                response.setStatusText("OK");
-                response.setMimeType("text/html");
-                response.setEncoding("utf-8");
+                response.setStatusText('OK');
+                response.setMimeType('text/html');
+                response.setEncoding('utf-8');
               } catch (error) {
                 console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               try {
-                response.setHeaderByName("temp", temp, false);
+                response.setHeaderByName('temp', temp, false);
               } catch (error) {
                 console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-                LocalContext.context.eventHub.emit("SetHeaderByName-value-error",JSON.stringify(error))
+                LocalContext.context.eventHub.emit('SetHeaderByName-value-error', JSON.stringify(error))
               }
 
               // 调用 didFinish/didFail 前需要优先调用 didReceiveResponse 将构造的响应头传递给被拦截的请求。
               let buf: buffer.Buffer = buffer.from(this.htmlData)
-              console.log("[schemeHandler] buf.length", buf.length);
+              console.log('[schemeHandler] buf.length', buf.length);
               try {
                 resourceHandler.didReceiveResponse(response);
                 resourceHandler.didReceiveResponseBody(buf.buffer);
@@ -65,7 +66,7 @@ struct WebComponent {
             })
 
             try {
-              this.schemeHandler.onRequestStop((request:  webview.WebSchemeHandlerRequest) => {
+              this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
               });
             } catch (e) {
             }
