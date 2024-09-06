@@ -14,7 +14,6 @@
 import("//build/config/ohos/config.gni")
 import("//build/ohos.gni")
 import("//foundation/arkui/napi/napi.gni")
-import("//foundation/multimedia/media_library/media_library.gni")
 
 MEDIA_ROOT_DIR = "//foundation/multimedia/media_library/"
 config("config") {
@@ -35,8 +34,8 @@ ohos_shared_library("mediaAssetManager") {
   sources = [ "./napi/mediaAssetManager.cpp" ]
   include_dirs = [
     "../cpp",
-    "${MEDIALIB_IMAGE_FRAMEWORK_PATH}/frameworks/kits/js/common/ndk/include/",
-    "${MEDIALIB_IMAGE_FRAMEWORK_PATH}/interfaces/kits/native/include/image",
+    "//foundation/multimedia/image_framework/frameworks/kits/js/common/ndk/include/",
+    "//foundation/multimedia/image_framework/interfaces/kits/native/include/image",
   ]
   configs = [ ":config" ]
 
@@ -61,8 +60,8 @@ ohos_shared_library("photoAccessHelperTest") {
   ]
   include_dirs = [
     "../cpp",
-    "${MEDIALIB_IMAGE_FRAMEWORK_PATH}/frameworks/kits/js/common/ndk/include/",
-    "${MEDIALIB_IMAGE_FRAMEWORK_PATH}/interfaces/kits/native/include/image",
+    "//foundation/multimedia/image_framework/frameworks/kits/js/common/ndk/include/",
+    "//foundation/multimedia/image_framework/interfaces/kits/native/include/image",
   ]
   configs = [ ":config" ]
 
