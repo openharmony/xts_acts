@@ -57,7 +57,7 @@ export default function AudioRoutingManagerTest() {
           expect(devices[i].name).assertEqual("");
           expect(devices[i].deviceType != "").assertTrue();
           expect(devices[i].address).assertEqual("");
-          expect(devices[i].sampleRates[0] != "").assertTrue();
+          expect(devices[i].sampleRates[0] >= 8000 && devices[i].sampleRates[0] <= 96000).assertTrue();
           expect(devices[i].displayName != "").assertTrue();
           expect(devices[i].channelCounts[0]).assertEqual(audio.AudioChannel.CHANNEL_2);
           expect(devices[i].channelMasks[0]).assertEqual(0);
@@ -88,7 +88,7 @@ export default function AudioRoutingManagerTest() {
           expect(devices[i].id != null).assertTrue();
           expect(devices[i].deviceType != "").assertTrue();
           expect(devices[i].address).assertEqual("");
-          expect(devices[i].sampleRates[0] != "").assertTrue();
+          expect(devices[i].sampleRates[0] >= 8000 && devices[i].sampleRates[0] <= 96000).assertTrue();
           expect(devices[i].displayName != "").assertTrue();
           expect(devices[i].channelCounts[1]).assertEqual(audio.AudioChannel.CHANNEL_2);
           expect(devices[i].channelMasks[0]).assertEqual(0);
@@ -143,6 +143,7 @@ export default function AudioRoutingManagerTest() {
           expect(devices[i].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
           expect(devices[i].deviceType != "").assertTrue();
           expect(devices[i].displayName != "").assertTrue();
+          expect(devices[i].sampleRates[0] >= 8000 && devices[i].sampleRates[0] <= 96000).assertTrue();
           expect(devices[i].channelCounts[0]).assertEqual(audio.AudioChannel.CHANNEL_2);
           expect(devices[i].channelMasks[0]).assertEqual(0);
           expect(devices[i].encodingTypes[0]).assertEqual(audio.AudioEncodingType.ENCODING_TYPE_RAW);
@@ -173,6 +174,7 @@ export default function AudioRoutingManagerTest() {
           expect(devices[i].displayName != "").assertTrue();
           expect(devices[i].name).assertEqual("");
           expect(devices[i].address).assertEqual("");
+          expect(devices[i].sampleRates[0] >= 8000 && devices[i].sampleRates[0] <= 96000).assertTrue();
           expect(devices[i].channelCounts[1]).assertEqual(audio.AudioChannel.CHANNEL_2);
           expect(devices[i].channelMasks[0]).assertEqual(0);
           expect(devices[i].encodingTypes[0]).assertEqual(audio.AudioEncodingType.ENCODING_TYPE_RAW);
@@ -194,11 +196,13 @@ export default function AudioRoutingManagerTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETAVAILABLEDEVICES_0600', 2, (done) => {
       try {
+        let except_deviceRole = [audio.DeviceRole.INPUT_DEVICE,  audio.DeviceRole.OUTPUT_DEVICE]
+        //Supported devicesRole
         let devices = audioRoutingManager.getAvailableDevices(audio.DeviceUsage.ALL_CALL_DEVICES);
         console.info(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
         except(devices.length > 0).assertTrue();
         for (let i = 0; i < devices.length; i++) {
-          expect(devices[i].deviceRole != "").assertTrue();
+          expect(except_deviceRole.include(devices[i].deviceRole)).assertTrue();
           expect(devices[i].deviceType != "").assertTrue();
           expect(devices[i].displayName != "").assertTrue();
         }
