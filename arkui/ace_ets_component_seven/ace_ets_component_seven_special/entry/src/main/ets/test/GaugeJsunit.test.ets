@@ -126,8 +126,9 @@ export default function gaugeJsunit() {
     it('testGauge0125', 0, async (done: Function) => {
       console.info('[testGauge0125] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
-      console.info("[testGauge0125] obj testGauge0125obj is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
-      expect(JSON.parse(strJsonNew).$attrs.colors).assertEqual('[["#FF000001",1],["#FF000002",2]]');
+      let obj: ESObject = JSON.parse(strJsonNew);
+      console.info("[testGauge0125] obj testGauge0125obj is: " + JSON.stringify(obj.$attrs));
+      expect(obj.$attrs.colors).assertEqual('[[[["#FF123456","0.000000"]],1],[[["#FF654321","0.000000"]],2]]');
 
       console.info('[testGauge0125] END');
       done();
