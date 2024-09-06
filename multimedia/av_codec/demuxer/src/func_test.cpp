@@ -2494,6 +2494,26 @@ HWTEST_F(DemuxerFuncNdkTest, SUB_MEDIA_DEMUXER_FUNCTION_1200, TestSize.Level0)
 }
 
 /**
+ * @tc.number    : DEMUXER_FUNCTION_9100
+ * @tc.name      : demuxer MP4 ,GetSourceFormat,OH_MD_KEY_TRACK_START_TIME
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFuncNdkTest, DEMUXER_FUNCTION_7100, TestSize.Level0)
+{
+    const char *file = "/data/test/media/01_video_audio.mp4";
+    int fd = open(file, O_RDONLY);
+    int64_t size = GetFileSize(file);
+    cout << file << "----------------------" << fd << "---------" << size << endl;
+    source = OH_AVSource_CreateWithFD(fd, 0, size);
+    ASSERT_NE(source, nullptr);
+
+    sourceFormat = OH_AVSource_GetSourceFormat(source);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(sourceFormat, OH_MD_KEY_TRACK_START_TIME, &g_trackCount));
+    ASSERT_EQ(g_trackCount, 2);
+    close(fd);
+}
+
+/**
  * @tc.number    : SUB_MEDIA_DEMUXER_FUNCTION_1300
  * @tc.name      : demux hevc ts video
  * @tc.desc      : function test
