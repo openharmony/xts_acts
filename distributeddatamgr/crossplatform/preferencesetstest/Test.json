@@ -5,7 +5,7 @@
         "test-timeout": "60000",
         "shell-timeout": "60000",
         "bundle-name": "ohos.acts.distributeddatamgr.crossplatform.preferences.normal",
-        "module-name": "preferences_test_normal_ets"
+        "module-name": "entry_test"
     },
     "kits": [
         {
@@ -14,6 +14,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }
