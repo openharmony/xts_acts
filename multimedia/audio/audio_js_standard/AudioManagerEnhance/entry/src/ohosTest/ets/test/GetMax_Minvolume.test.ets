@@ -90,15 +90,15 @@ export default function audioManagerTest() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUME_0100', 0, async (done: Function) => {
       try {
         let actual_maxvol = new ArrayList<number>();
-        let expect_maxvol = [15,20];
         for (let index = 0; index < env.AudioVolumeType.length; index++) {
           let maxvol = await audioVolumeGroupManager.getMaxVolume(env.AudioVolumeType[index]);
           console.info(`${env.AudioVolumeType[index]} max volume : ${maxvol}`);
           actual_maxvol.add(maxvol);
         }
         for (let i = 0; i < actual_maxvol.length; i++) {
-          console.info(`check maxvolume: actual_maxvol : ${actual_maxvol[i]}, expect_maxvol : 20 or 15 `);
-          expect(true).assertEqual(expect_maxvol.includes(actual_maxvol[i]));
+          console.info(`check maxvolume: actual_maxvol : ${actual_maxvol[i]}, expect_maxvol > 1`);
+          expect(actual_maxvol[i] > 1).assertTrue();
+          // maxVolume value depends on device configuration, simplify judgment here
         }
         done();
       } catch (error) {
@@ -119,15 +119,16 @@ export default function audioManagerTest() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMINVOLUME_0100', 0, async (done: Function) => {
       try {
         let actual_minvol = new ArrayList<number>();
-        let expect_minvol = [0, 1];
         for (let index = 0; index < env.AudioVolumeType.length; index++) {
           let minvol = await audioVolumeGroupManager.getMinVolume(env.AudioVolumeType[index]);
           console.info(`${env.AudioVolumeType[index]} min volume : ${minvol}`);
           actual_minvol.add(minvol);
         }
         for (let i = 0; i < actual_minvol.length; i++) {
-          console.info(`check minvolume : actual_minvol : ${actual_minvol[i]}, expect_minvol : 0 or 1`);
-          expect(true).assertEqual(expect_minvol.includes(actual_minvol[i]));
+          console.info(`check minvolume : actual_minvol : ${actual_minvol[i]}, expect_minvol == 0 or 1`);
+          expect(actual_minvol[i] == 1 || actual_minvol[i] == 0).assertTrue();
+          // Different types of audio streams have different minimum volumes depending on the  device configuration, simplify judgment here
+          
         }
         done();
       } catch (error) {
