@@ -183,13 +183,13 @@ struct ListLevel1 {
       .contentEndOffset(this.contentEndOffset)
 
       if (this.isShowRect) {
-        Text('itemRectY:' + this.itemRect.y).id('itemRectY')
-        Text('itemRectWidth:' + this.itemRect.width).id('itemRectWidth')
-        Text('itemRectHeight:' + this.itemRect.height).id('itemRectHeight')
+        Text('itemRectY:' + Math.round(this.itemRect.y)).id('itemRectY')
+        Text('itemRectWidth:' + Math.round(this.itemRect.width)).id('itemRectWidth')
+        Text('itemRectHeight:' + Math.round(this.itemRect.height)).id('itemRectHeight')
       }
       if (this.isShowOffset) {
-        Text('xoffset:' + this.xoffset).id('xoffset')
-        Text('yoffset:' + this.yoffset).id('yoffset')
+        Text('xoffset:' + Math.round(this.xoffset)).id('xoffset')
+        Text('yoffset:' + Math.round(this.yoffset)).id('yoffset')
       }
 
       Row() {

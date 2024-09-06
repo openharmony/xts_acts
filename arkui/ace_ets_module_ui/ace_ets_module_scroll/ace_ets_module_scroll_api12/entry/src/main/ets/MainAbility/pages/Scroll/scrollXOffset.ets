@@ -44,7 +44,7 @@ struct scrollXOffsetExample {
       .scrollBarColor(Color.Gray)
       .scrollBarWidth(10)
       .onDidScroll(() => {
-        this.message1 = 'x:' + this.scroller.currentOffset().xOffset
+        this.message1 = 'x:' + Math.round(this.scroller.currentOffset().xOffset)
       })
 
       Button('scroll x:10').id('scroll_x')
