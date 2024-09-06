@@ -30,6 +30,8 @@
 #define NUMBER_3 3
 #define TIMEOUT_FIVE 10
 #define NUMBER_256 256
+#define NUMBER_500 500
+#define NUMBER_40001000 40001000
 static bool g_flag = false;
 static void OnVSync(long long timestamp, void *data) { g_flag = true; }
 
@@ -224,7 +226,8 @@ static napi_value OHNativeVSyncCreateAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-void myFrameCallback(long long timestamp, void *data) {
+void MyFrameCallback(long long timestamp, void *data)
+{
     int *myData = static_cast<int *>(data);
     return;
 }
@@ -256,7 +259,7 @@ static napi_value OHNativeVSyncCreateDifLenth(napi_env env, napi_callback_info i
         } else {
             napi_create_int32(env, SUCCESS, &result);
             OH_NativeVSync_Destroy(nativeVSync);
-            continue;;
+            continue;
         }
     }
     return result;
@@ -267,9 +270,9 @@ static napi_value OHNativeVSyncCreateMuch(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     char name[] = "testcase";
     unsigned int length = strlen(name);
-    OH_NativeVSync *nativeVSyncArr[500];
+    OH_NativeVSync *nativeVSyncArr[NUMBER_500];
     int success = 0;
-    for (uint32_t i = 0; i < 500; i++) {
+    for (uint32_t i = 0; i < NUMBER_500; i++) {
         nativeVSyncArr[i] = OH_NativeVSync_Create(name, length);
         if (nativeVSyncArr[i] != nullptr) {
             success = success + 1;
@@ -281,7 +284,7 @@ static napi_value OHNativeVSyncCreateMuch(napi_env env, napi_callback_info info)
     } else {
         napi_create_int32(env, success, &result);
     }
-    for (uint32_t i = 0; i < 500; i++) {
+    for (uint32_t i = 0; i < NUMBER_500; i++) {
         OH_NativeVSync_Destroy(nativeVSyncArr[i]);
     }
     return result;
@@ -304,17 +307,17 @@ static napi_value OHNativeVSyncRequestFrameNullptr(napi_env env, napi_callback_i
     OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
     napi_create_array_with_length(env, NUMBER_3, &result);
     int param = 0;
-    int res = OH_NativeVSync_RequestFrame(nullptr, myFrameCallback, &param);
-    if (res != 40001000) {
+    int res = OH_NativeVSync_RequestFrame(nullptr, MyFrameCallback, &param);
+    if (res != NUMBER_40001000) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
     res = OH_NativeVSync_RequestFrame(nativeVSync, nullptr, &param);
-    if (res != 40001000) {
+    if (res != NUMBER_40001000) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
-    res = OH_NativeVSync_RequestFrame(nativeVSync, myFrameCallback, nullptr);
+    res = OH_NativeVSync_RequestFrame(nativeVSync, MyFrameCallback, nullptr);
     if (res != 0) {
         napi_create_int32(env, FAIL, &result);
         return result;
@@ -329,8 +332,8 @@ static napi_value OHNativeVSyncRequestFrameNormal(napi_env env, napi_callback_in
     char name[] = "testcase";
     unsigned int length = strlen(name);
     OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
-    int *param = 0;
-    int res = OH_NativeVSync_RequestFrame(nativeVSync, myFrameCallback, param);
+    int *param = nullptr;
+    int res = OH_NativeVSync_RequestFrame(nativeVSync, MyFrameCallback, param);
     napi_create_int32(env, res, &result);
     OH_NativeVSync_Destroy(nativeVSync);
     return result;
@@ -343,7 +346,7 @@ static napi_value OHNativeVSyncRequestFrameParamErr(napi_env env, napi_callback_
     unsigned int length = strlen(name);
     OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
     char param[] = "test";
-    int res = OH_NativeVSync_RequestFrame(nativeVSync, myFrameCallback, &param);
+    int res = OH_NativeVSync_RequestFrame(nativeVSync, MyFrameCallback, &param);
     napi_create_int32(env, res, &result);
     OH_NativeVSync_Destroy(nativeVSync);
     return result;
