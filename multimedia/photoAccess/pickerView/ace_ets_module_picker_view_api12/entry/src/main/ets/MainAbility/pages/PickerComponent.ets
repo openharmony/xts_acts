@@ -238,7 +238,7 @@ struct PickerComponent {
   }
 
   @Builder
-  buildImage() {
+  buildImage(){
     ForEach(this.selectedUris, (uri: string) => {
       Image(uri).height('10%').width('20%').onClick(() => {
         this.selectedUris = this.selectedUris.filter((item: string) => {
