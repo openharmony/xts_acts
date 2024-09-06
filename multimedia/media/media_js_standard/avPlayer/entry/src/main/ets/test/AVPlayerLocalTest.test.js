@@ -219,7 +219,7 @@ export default function AVPlayerLocalTest() {
                         setPlaybackInfoCb(avPlayer, descriptionKey, descriptionValue, done)
                         setSource(avPlayer, src);
                     } else {
-                        console.error(`case createAVPlayer failed`);
+                        console.info(`case createAVPlayer failed`);
                         expect().assertFail();
                         done();
                     }

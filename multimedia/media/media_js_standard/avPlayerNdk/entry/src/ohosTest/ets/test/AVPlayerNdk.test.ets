@@ -208,7 +208,7 @@ export default function AVPlayerNdkTest() {
       expect(result).assertEqual(0);
       done();
     });
-    
+
     /**
      * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PREPARE_0100
      * @tc.name       : testOhAvPlayerPrepare001
