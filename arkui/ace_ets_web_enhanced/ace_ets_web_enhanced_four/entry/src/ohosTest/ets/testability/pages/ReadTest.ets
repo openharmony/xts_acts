@@ -12,7 +12,7 @@ struct WebComponent {
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
   htmlData: string = '<html><body bgcolor="white">Source:<pre>source</pre></body></html>';
 
-  build() {
+  build(){
     Column() {
       Button('postUrl').key('001')
         .onClick(async () => {
@@ -32,7 +32,6 @@ struct WebComponent {
               resourceHandler: webview.WebResourceHandler) => {
               console.log('[schemeHandler] onRequestStart');
               try {
-                // let stream: webview.WebHttpBodyStream = new webview.WebHttpBodyStream()
                 let stream: webview.WebHttpBodyStream | null = request.getHttpBodyStream();
                 if (stream) {
                   stream.initialize().then(() => {
@@ -56,7 +55,7 @@ struct WebComponent {
                     })
                   }).catch((error: BusinessError) => {
                     console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                    LocalContext.context.eventHub.emit("ReadTest-error", JSON.stringify(error))
+                    LocalContext.context.eventHub.emit('ReadTest-error', JSON.stringify(error))
                   })
                 } else {
                   console.log('[schemeHandler] onRequestStart has no http body stream');
