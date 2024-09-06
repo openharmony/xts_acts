@@ -51,7 +51,7 @@ export default function AudioRoutingManagerTest() {
         let devices = audioRoutingManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
         console.log(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
         except(device.length > 0).assertTrue();
-        for (i = 0; i < device.length ; i++) {
+        for (i = 0; i < device.length; i++) {
           expect(devices[i].deviceRole).assertEqual(audio.DeviceRole.MEDIA_OUTPUT_DEVICES);
           expect(devices[i].id != null).assertTrue();
           expect(devices[i].name).assertEqual("");
@@ -83,7 +83,7 @@ export default function AudioRoutingManagerTest() {
         let devices = audioRoutingManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
         console.info(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
         except(device.length > 0).assertTrue();
-        for (i = 0; i < device.length ; i++) {
+        for (i = 0; i < device.length; i++) {
           expect(devices[i].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
           expect(devices[i].id != null).assertTrue();
           expect(devices[i].deviceType != "").assertTrue();
@@ -114,7 +114,7 @@ export default function AudioRoutingManagerTest() {
         let devices = audioRoutingManager.getAvailableDevices(audio.DeviceUsage.ALL_MEDIA_DEVICES);
         console.info(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
         except(device.length > 0).assertTrue();
-        for (i = 0; i < device.length ; i++) {
+        for (i = 0; i < device.length; i++) {
           expect(devices[i].deviceRole != "").assertTrue();
           expect(devices[i].deviceType != "").assertTrue();
           expect(devices[i].displayName != "").assertTrue();
@@ -139,7 +139,7 @@ export default function AudioRoutingManagerTest() {
         let devices = audioRoutingManager.getAvailableDevices(audio.DeviceUsage.CALL_OUTPUT_DEVICES);
         console.info(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
         except(device.length > 0).assertTrue();
-        for (i = 0; i < device.length ; i++) {
+        for (i = 0; i < device.length; i++) {
           expect(devices[i].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
           expect(devices[i].deviceType != "").assertTrue();
           expect(devices[i].displayName != "").assertTrue();
@@ -167,7 +167,7 @@ export default function AudioRoutingManagerTest() {
         let devices = audioRoutingManager.getAvailableDevices(audio.DeviceUsage.CALL_INPUT_DEVICES);
         console.info(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
         except(device.length > 0).assertTrue();
-        for (i = 0; i < device.length ; i++) {
+        for (i = 0; i < device.length; i++) {
           expect(devices[i].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
           expect(devices[i].deviceType != "").assertTrue();
           expect(devices[i].displayName != "").assertTrue();
@@ -197,7 +197,7 @@ export default function AudioRoutingManagerTest() {
         let devices = audioRoutingManager.getAvailableDevices(audio.DeviceUsage.ALL_CALL_DEVICES);
         console.info(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
         except(device.length > 0).assertTrue();
-        for (i = 0; i < device.length ; i++) {
+        for (i = 0; i < device.length; i++) {
           expect(devices[i].deviceRole != "").assertTrue();
           expect(devices[i].deviceType != "").assertTrue();
           expect(devices[i].displayName != "").assertTrue();
