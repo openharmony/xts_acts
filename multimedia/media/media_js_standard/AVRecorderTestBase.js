@@ -176,9 +176,9 @@ export async function startPromise(avRecorder, recorderTime) {
         expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.STARTED);
         console.info('start success');
         if (recorderTime != undefined) {
-            setTimeout(() => {
-                console.info('startPromise setTimeout success');
-            }, recorderTime);
+                setTimeout(() => {
+                    console.info('startPromise setTimeout success');
+                }, recorderTime);
         }
     }).catch((err) => {
         console.info('start failed and catch error is ' + err.message);
