@@ -150,7 +150,7 @@ export default function documentPickerCallback(abilityContext: Context) {
       let option: picker.DocumentSelectOptions = new picker.DocumentSelectOptions();
       console.log('test_Documentpicker_Select_Callback_008::::::');
       option.selectMode = picker.DocumentSelectMode.FILE;
-      //console.log('test_Documentpicker_Select_Callback_008::::::' + option.selectMode);
+      console.log('documentpicker_select_callback_008::::::' + option.selectMode);
       await selectWithOption(testNum, done, option);
     });
     /**
