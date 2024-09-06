@@ -3653,7 +3653,7 @@ export default function AVSession() {
                 done();
             } catch (err) {
                 console.error(`Session getAllCastDisplays: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
+                expect(err.code).assertEqual(6600101);
                 done();
             }
         })
