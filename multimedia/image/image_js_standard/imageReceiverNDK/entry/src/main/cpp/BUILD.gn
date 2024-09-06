@@ -90,9 +90,8 @@ ohos_shared_library("ImageReceiverNativeTest") {
 
   include_dirs = [
     "../cpp",
-    "$image_subsystem/frameworks/innerkitsimpl/utils/include",
-    "$image_subsystem/interfaces/innerkits/include",
-    "$image_subsystem/interfaces/kits/native/include",
+    "//interface/sdk_c/graphic/graphic_2d",
+    "//interface/sdk_c/multimedia/image_framework/include",
     "$graphic_subsystem/rosen/modules/2d_graphics/include/effect",
     "$graphic_subsystem/rosen/modules/2d_graphics/src",
     "$graphic_subsystem/rosen/modules/2d_graphics/include",
