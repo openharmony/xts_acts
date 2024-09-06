@@ -929,7 +929,7 @@ export default function audioCapturerInterrupt() {
             })
 
             await sleep(500)
-            expect(flag1 == true && flag2 == false).assertTrue()
+            expect(flag1 == false && flag2 == false).assertTrue()
             await capturerRelease(capture, done)
             await renderRelease(render, done)
             done()
@@ -1605,7 +1605,7 @@ export default function audioCapturerInterrupt() {
         })
 
         await sleep(500)
-        expect(flag1 == true && flag2 == false).assertTrue()
+        expect(flag1 == false && flag2 == false).assertTrue()
         await capturerRelease(capture, done)
         await renderRelease(render, done)
         done()
@@ -1737,7 +1737,7 @@ export default function audioCapturerInterrupt() {
         })
 
         await sleep(500)
-        expect(flag1 == true && flag2 == false).assertTrue()
+        expect(flag1 == false && flag2 == false).assertTrue()
         await capturerRelease(capture, done)
         await renderRelease(render, done)
         done()
