@@ -272,7 +272,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined)
+        expect(err.code).assertEqual(401)
       }
     });
 
@@ -1906,7 +1906,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined);
+        expect(err.code).assertEqual(401);
       }
     });
 
@@ -2005,7 +2005,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined);
+        expect(err.code).assertEqual(401);
       }
     });
 
@@ -2072,7 +2072,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined);
+        expect(err.code).assertEqual(401);
       }
     });
 
@@ -2141,7 +2141,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined);
+        expect(err.code).assertEqual(401);
       }
     });
 
@@ -2168,6 +2168,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('TypeError');
         expect(err.code).assertEqual(undefined);
       }
     });
@@ -2288,7 +2289,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined);
+        expect(err.code).assertEqual(401);
       }
     });
 
@@ -2329,7 +2330,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined);
+        expect(err.code).assertEqual(401);
       }
     });
 
@@ -2370,7 +2371,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined);
+        expect(err.code).assertEqual(401);
       }
     });
 
@@ -2490,7 +2491,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined);
+        expect(err.code).assertEqual(401);
       }
     });
 
@@ -2522,7 +2523,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined);
+        expect(err.code).assertEqual(401);
       }
     });
 
@@ -2556,7 +2557,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined);
+        expect(err.code).assertEqual(401);
       }
     });
 
@@ -4393,7 +4394,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined)
+        expect(err.code).assertEqual(401)
       }
     });
 
@@ -4696,7 +4697,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined)
+        expect(err.code).assertEqual(401)
       }
     });
 
@@ -4826,7 +4827,7 @@ export default function XmlTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(undefined);
+        expect(err.code).assertEqual(401);
       }
     });
 
