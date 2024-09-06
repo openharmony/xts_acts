@@ -278,12 +278,12 @@ export default function audioManagerApi9() {
          */
         it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0100', 3, async function (done) {
             let audioVolumeManager = audioManager.getVolumeManager();
-            audioVolumeManager.getVolumeGroupManager(-1, (err, groupManager) => {
+            audioVolumeManager.getVolumeGroupManager(123, (err, groupManager) => {
                 if (err) {
                     console.error(`audioManagerApi9Test: failed to getGroupManager: Callback:  ${err.message}`);
                     expect(false).assertTrue();
                 } else {
-                    let data = groupManager.getVolumeSync();
+                    let data = groupManager.getVolumeSync(audio.AudioVolumeType.MEDIA);
                     if ((typeof groupManager) == 'undefined' && (typeof data) == 'undefined' ) {
                         console.info('audioManagerApi9Test: Promise: getGroupManager  :  PASS');
                         expect(true).assertTrue();
@@ -305,12 +305,12 @@ export default function audioManagerApi9() {
          */
         it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0200', 3, async function (done) {
             let audioVolumeManager = audioManager.getVolumeManager();
-            audioVolumeManager.getVolumeGroupManager(-1, (err, groupManager) => {
+            audioVolumeManager.getVolumeGroupManager(123, (err, groupManager) => {
                 if (err) {
                     console.error(`audioManagerApi9Test: failed to getGroupManager: Callback:  ${err.message}`);
                     expect(false).assertTrue();
                 } else {
-                    let data = groupManager.getVolumeSync(audio.AudioVolumeType.MEDIA);
+                    let data = groupManager.getVolumeSync();
                     if ((typeof groupManager) == 'undefined' && (typeof data) == 'undefined' ) {
                         console.info('audioManagerApi9Test: Promise: getGroupManager  :  PASS');
                         expect(true).assertTrue();
