@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -45,7 +45,7 @@ struct saveButton_1 {
   @State bottom: number = 8
   @State middle: number = 4
   @State heightValue: number = 4
-  marginValue:ESObject = {top:30, bottom:30, left:10, right:10}
+  marginValue:ESObject = {top:30, bottom:20, left:10, right:10}
 
   build() {
     Column() {
