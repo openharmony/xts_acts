@@ -77,5 +77,31 @@ export default function abilityTest() {
       done();
     })
 
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVCODEC_C_API_005
+    * @tc.name      : Test_VideoDecoder_SetDecryptionConfig
+    * @tc.desc      : 图库picker
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_PICKER_C_API_005', 0, async (done: Function) => {
+	  let phAccessHelper:photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(mContext);
+      let destUri1: string = await phAccessHelper.createAssetWithShortTermPermission(photoCreationConfig1);
+	  
+	  this.pickerController.setPhotoBrowserItem(this.selectedUris[0], PhotoBrowserRange.SELECTED_ONLY);
+	  this.pickerController.setPhotoBrowserItem(uri, PhotoBrowserRange.ALL);
+	  this.pickerController.setPhotoBrowserItem(uri, PhotoBrowserRange.SELECTED_ONLY);
+	  this.pickerController.setPhotoBrowserItem(uri, PhotoBrowserRange.period);
+	  this.pickerController.setPhotoBrowserItem(uri, PhotoBrowserRange.photoSource);
+	  this.pickerController.setPhotoBrowserItem(uri, PhotoSource.ALL);
+	  this.pickerController.setPhotoBrowserItem(uri, PhotoSource.SCREENSHOT);
+	  
+      router.back();
+      console.info("testPicer21 finish");
+      events_emitter.off(event.eventId);
+      done();
+    })
+
   })
 }
