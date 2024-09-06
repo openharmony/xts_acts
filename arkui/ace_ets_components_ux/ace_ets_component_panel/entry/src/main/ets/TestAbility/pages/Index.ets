@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@ts-nocheck
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
@@ -65,7 +64,7 @@ struct PanelExample {
       Panel(true) {
         Text('空字符串')
       }
-      .showCloseIcon(" ")
+      .showCloseIcon(fakeBoolean(" "))
       .key('ArkUX_Stage_Panel_showCloseIcon_0500')
 
       Panel(true) {
@@ -77,19 +76,19 @@ struct PanelExample {
       Panel(true) {
         Text('0')
       }
-      .showCloseIcon(0)
+      .showCloseIcon(fakeBoolean(0))
       .key('ArkUX_Stage_Panel_showCloseIcon_0700')
 
       Panel(true) {
         Text('1')
       }
-      .showCloseIcon(1)
+      .showCloseIcon(fakeBoolean(1))
       .key('ArkUX_Stage_Panel_showCloseIcon_0800')
 
       Panel(true) {
         Text('100')
       }
-      .showCloseIcon(100)
+      .showCloseIcon(fakeBoolean(100))
       .key('ArkUX_Stage_Panel_showCloseIcon_0900')
 
       Panel(true) {
@@ -101,13 +100,13 @@ struct PanelExample {
       Panel(true) {
         Text('字符串true')
       }
-      .showCloseIcon("true")
+      .showCloseIcon(fakeBoolean("true"))
       .key('ArkUX_Stage_Panel_showCloseIcon_1100')
 
       Panel(true) {
         Text('不设置')
       }
-      .showCloseIcon()
+      .showCloseIcon(undefined!)
       .key('ArkUX_Stage_Panel_showCloseIcon_1200')
 
       Panel(true) {
@@ -128,9 +127,13 @@ struct PanelExample {
         Text('true -> 空字符串')
       }
       .showCloseIcon(true)
-      .showCloseIcon(" ")
+      .showCloseIcon(fakeBoolean(" "))
       .key('ArkUX_Stage_Panel_showCloseIcon_1500')
 
     }
   }
+}
+
+function fakeBoolean(val: string|number|boolean) {
+  return val as boolean;
 }

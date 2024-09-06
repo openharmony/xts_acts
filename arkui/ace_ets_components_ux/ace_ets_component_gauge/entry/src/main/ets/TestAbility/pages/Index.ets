@@ -18,6 +18,15 @@ import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import testsuite from '../../test/List.test'
 
+function fakeGaugeIndicatorOptions(val: GaugeIndicatorOptions | string | number): GaugeIndicatorOptions {
+  return val as GaugeIndicatorOptions;
+}
+
+function fakeGaugeShadowOptions(val: GaugeShadowOptions | string | number): GaugeShadowOptions {
+  return val as GaugeShadowOptions;
+}
+
+
 @Entry
 @Component
 struct gaugeTest {
@@ -283,7 +292,7 @@ struct gaugeTest {
         .startAngle(210)
         .endAngle(150)
         .colors($r('app.color.gaugeColor1'))
-        .indicator(" ")
+        .indicator(fakeGaugeIndicatorOptions(" "))
         .indicator({ icon: $r('app.media.icon1'), space: 5 })
         .strokeWidth(20)
         .width(200)
@@ -294,7 +303,7 @@ struct gaugeTest {
         .endAngle(150)
         .colors($r('app.color.gaugeColor1'))
         .indicator({ icon: 'resources/base/media/icon1.svg', space: 10 })
-        .indicator(" ")
+        .indicator(fakeGaugeIndicatorOptions(" "))
         .strokeWidth(20)
         .width(200)
         .height(200)
@@ -303,7 +312,7 @@ struct gaugeTest {
         .startAngle(210)
         .endAngle(150)
         .colors($r('app.color.gaugeColor1'))
-        .indicator(1)
+        .indicator(fakeGaugeIndicatorOptions(1))
         .strokeWidth(20)
         .width(200)
         .height(200)
@@ -312,7 +321,7 @@ struct gaugeTest {
         .startAngle(210)
         .endAngle(150)
         .colors($r('app.color.gaugeColor1'))
-        .indicator(-1)
+        .indicator(fakeGaugeIndicatorOptions(-1))
         .strokeWidth(20)
         .width(200)
         .height(200)
@@ -321,7 +330,7 @@ struct gaugeTest {
         .startAngle(210)
         .endAngle(150)
         .colors($r('app.color.gaugeColor1'))
-        .indicator(0)
+        .indicator(fakeGaugeIndicatorOptions(0))
         .strokeWidth(20)
         .width(200)
         .height(200)
@@ -330,7 +339,7 @@ struct gaugeTest {
         .startAngle(210)
         .endAngle(150)
         .colors($r('app.color.gaugeColor1'))
-        .indicator(" ")
+        .indicator(fakeGaugeIndicatorOptions(" "))
         .strokeWidth(20)
         .width(200)
         .height(200)
@@ -411,7 +420,7 @@ struct gaugeTest {
         .startAngle(210)
         .endAngle(150)
         .colors($r('app.color.gaugeColor1'))
-        .trackShadow(" ")
+        .trackShadow(fakeGaugeShadowOptions(" "))
         .trackShadow({ radius: -10, offsetX: -10, offsetY: -10 })
         .strokeWidth(20)
         .width(200)
@@ -422,7 +431,7 @@ struct gaugeTest {
         .endAngle(150)
         .colors($r('app.color.gaugeColor1'))
         .trackShadow({ radius: 10, offsetX: 10, offsetY: 10 })
-        .trackShadow(" ")
+        .trackShadow(fakeGaugeShadowOptions(" "))
         .strokeWidth(20)
         .width(200)
         .height(200)
@@ -431,7 +440,7 @@ struct gaugeTest {
         .startAngle(210)
         .endAngle(150)
         .colors($r('app.color.gaugeColor1'))
-        .trackShadow(1)
+        .trackShadow(fakeGaugeShadowOptions(1))
         .strokeWidth(20)
         .width(200)
         .height(200)
@@ -440,7 +449,7 @@ struct gaugeTest {
         .startAngle(210)
         .endAngle(150)
         .colors($r('app.color.gaugeColor1'))
-        .trackShadow(-1)
+        .trackShadow(fakeGaugeShadowOptions(-1))
         .strokeWidth(20)
         .width(200)
         .height(200)
@@ -449,7 +458,7 @@ struct gaugeTest {
         .startAngle(210)
         .endAngle(150)
         .colors($r('app.color.gaugeColor1'))
-        .trackShadow(0)
+        .trackShadow(fakeGaugeShadowOptions(0))
         .strokeWidth(20)
         .width(200)
         .height(200)
@@ -458,7 +467,7 @@ struct gaugeTest {
         .startAngle(210)
         .endAngle(150)
         .colors($r('app.color.gaugeColor1'))
-        .trackShadow(" ")
+        .trackShadow(fakeGaugeShadowOptions(" "))
         .strokeWidth(20)
         .width(200)
         .height(200)

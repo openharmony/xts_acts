@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- //@ts-nocheck
 import hilog from '@ohos.hilog';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
@@ -22,6 +21,7 @@ import { Hypium } from '@ohos/hypium';
 struct Index {
   @State select: boolean = true
   @State arrowOffset: number = 0
+  @State backgroundColorValue: ResourceColor = '#f0f0f0'
   private iconStr: ResourceStr = $r("app.media.icon")
   @Builder
   ThreeLevelMenu() {
@@ -69,9 +69,9 @@ struct Index {
     }
     Column() {
       Button('菜单preview builder')
-        .backgroundColor(this.backgroundColor)
+        .backgroundColor(this.backgroundColorValue)
         .onClick(()=>{
-          this.backgroundColor = Color.Red
+          this.backgroundColorValue = Color.Red
         })
     }
     Column() {
@@ -114,16 +114,16 @@ struct Index {
           .fontSize(30)
           .padding({ top: 20 })
           .bindContextMenu(this.MyMenu, ResponseType.LongPress, 
-          {enableArrow: true,arrowOffset:this.arrowOffset,preview: MenuPreviewMode.IMAGE})
+          {enableArrow: true, arrowOffset: this.arrowOffset, preview: MenuPreviewMode.IMAGE})
         Text('长按弹出悬浮菜单自定义')
           .key("floatingMenuBuilder")
           .fontWeight(FontWeight.Bold)
           .fontSize(30)
           .padding({ top: 20 })
           .bindContextMenu(this.MyMenu, ResponseType.LongPress, 
-          {enableArrow: true,arrowOffset:this.arrowOffset, preview:{ builder:this.MyPreview.bind(this) }})
+          {enableArrow: true, arrowOffset: this.arrowOffset, preview: this.MyPreview.bind(this)})
     }.height('100%')
     .width('100%')
-    .backgroundColor('#f0f0f0')
+    .backgroundColor(this.backgroundColorValue)
   }
  }

@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@ts-nocheck
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
@@ -108,7 +107,7 @@ struct PatternLockExample {
       Row() {
         Button('更改背板颜色')
           .onClick(() => {
-            this.bgColor = '#FEDDCC'
+            this.bgColor = Color.Orange
           }).width('40%')
 
         Button('文本超级长').onClick(() => {

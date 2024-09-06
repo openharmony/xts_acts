@@ -12,10 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
+import Utils from './Utils';
 
 let emitKey = "emitUserAgent";
 

@@ -12,12 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import hilog from '@ohos.hilog';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Curves from '@ohos.curves';
+
+function fakeListItemStyle(val: ListItemStyle | string | null ): ListItemStyle {
+  return val as ListItemStyle
+}
+
+function fakeListItemGroupStyle(val: ListItemGroupStyle | string | null ): ListItemGroupStyle {
+  return val as ListItemGroupStyle
+}
+
+function fakeScrollSnapAlign(val: ScrollSnapAlign | string | null ): ScrollSnapAlign {
+  return val as ScrollSnapAlign
+}
 
 @Entry
 @Component
@@ -60,7 +71,7 @@ struct Index {
             }
             .key("ArkUXII_List_style_0300")
 
-            ListItem({ style: null }) {
+            ListItem({ style: fakeListItemStyle(null) }) {
               Text("ListItemGroupStyle.CARD与null")
                 .fontSize(10)
                 .width('100%')
@@ -76,7 +87,7 @@ struct Index {
             }
             .key("ArkUXII_List_style_0500")
 
-            ListItem({ style: "" }) {
+            ListItem({ style: fakeListItemStyle("") }) {
               Text("ListItemGroupStyle.CARD与\"\"")
                 .fontSize(10)
                 .width('100%')
@@ -124,7 +135,7 @@ struct Index {
           }
           .key("ArkUXII_List_style_1000")
 
-          ListItemGroup({ style: "" }) {
+          ListItemGroup({ style: fakeListItemGroupStyle("") }) {
             ListItem({ style: ListItemStyle.CARD }) {
               Text("\"\"与ListItemStyle.CARD")
                 .fontSize(10)
@@ -144,8 +155,8 @@ struct Index {
           }
           .key("ArkUXII_List_style_1200")
 
-          ListItemGroup({ style: "", style: ListItemGroupStyle.CARD }) {
-            ListItem({ style: "", style: ListItemStyle.CARD }) {
+          ListItemGroup({ style: ListItemGroupStyle.CARD }) {
+            ListItem({ style: ListItemStyle.CARD }) {
               Text("\"\"之后再ListItemStyle.CARD与\"\"之后再ListItemGroupStyle.CARD")
                 .fontSize(10)
                 .width('100%')
@@ -202,7 +213,7 @@ struct Index {
         List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_0600")
-        .scrollSnapAlign("")
+        .scrollSnapAlign(fakeScrollSnapAlign(""))
 
         List() {
         }
@@ -216,7 +227,7 @@ struct Index {
         List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_0900")
-        .scrollSnapAlign("ScrollSnapAlign.START")
+        .scrollSnapAlign(fakeScrollSnapAlign("ScrollSnapAlign.START"))
 
         List() {
         }
@@ -234,12 +245,12 @@ struct Index {
         }
         .key("ArkUX_Stage_List_LimitAnimation_1200")
         .scrollSnapAlign(ScrollSnapAlign.START)
-        .scrollSnapAlign("")
+        .scrollSnapAlign(fakeScrollSnapAlign(""))
 
         List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_1300")
-        .scrollSnapAlign("")
+        .scrollSnapAlign(fakeScrollSnapAlign(""))
         .scrollSnapAlign(ScrollSnapAlign.START)
 
         List() {
