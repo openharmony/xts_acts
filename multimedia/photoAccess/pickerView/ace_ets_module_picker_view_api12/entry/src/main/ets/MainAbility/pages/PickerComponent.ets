@@ -238,16 +238,21 @@ struct PickerComponent {
   }
 
   @Builder
+  buildImage(){
+    ForEach(this.selectedUris, (uri: string) => {
+      Image(uri).height('10%').width('20%').onClick(() => {
+        this.selectedUris = this.selectedUris.filter((item: string) => {
+          return uri != item;
+        })
+        this.pickerController.setData(DataType.SET_SELECTED_URIS, this.selectedUris);
+      })
+    }, (uri: string) => JSON.stringify(uri))
+  }
+
+  @Builder
   buildAlbumPickerComponent() {
     Row() {
-      ForEach(this.selectedUris, (uri: string) => {
-        Image(uri).height('10%').width('20%').onClick(() => {
-          this.selectedUris = this.selectedUris.filter((item: string) => {
-            return uri != item;
-          })
-          this.pickerController.setData(DataType.SET_SELECTED_URIS, this.selectedUris);
-        })
-      }, (uri: string) => JSON.stringify(uri))
+      this.buildImage();
     }
 
     if (this.isShowAlbum) {
