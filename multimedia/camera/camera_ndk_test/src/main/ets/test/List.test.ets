@@ -45,6 +45,7 @@ export default function testsuite() {
           CameraErrorCodeUsecaseTest();
           cameraJSUnitOutput();
 <<<<<<< HEAD
+<<<<<<< HEAD
           SessionTest();
           PhotoTest();
           SecureCameraTest();
@@ -52,6 +53,9 @@ export default function testsuite() {
 =======
           CameraSessionCameraRotationTest;
 >>>>>>> e92aadc83c (修改xts)
+=======
+          CameraSessionCameraRotationTest();
+>>>>>>> e355e65dfa (修复ndk编译问题)
     }else{
           CameraFunctionTest();
           CameraInputTest();
