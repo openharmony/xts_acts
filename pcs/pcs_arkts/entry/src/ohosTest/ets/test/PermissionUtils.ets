@@ -34,7 +34,7 @@ export default class PermissionUtils {
   static async grantPermission() {
     let driver = Driver.create();
     await driver.delayMs(2000)
-    let button = await driver.findComponent(ON.text('允许'));
+    let button = await driver.findComponent(ON.text('允许').inWindow('com.acts.pcs.arktstest'));
     if (button == null) {
       let cmd = "hidumper -s WindowManagerService -a'-a'"
       await PermissionUtils.delegator.executeShellCommand(cmd);
@@ -42,7 +42,7 @@ export default class PermissionUtils {
     while (button) {
       await button.click();
       await driver.delayMs(500)
-      button = await driver.findComponent(ON.text('允许'));
+      button = await driver.findComponent(ON.text('允许').inWindow('com.acts.pcs.arktstest'));
     }
   }
 }
