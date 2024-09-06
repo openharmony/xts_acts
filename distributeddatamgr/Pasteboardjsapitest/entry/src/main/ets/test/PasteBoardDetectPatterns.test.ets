@@ -23,7 +23,6 @@ export default function pasteboardDetectPatternsTest() {
   describe('pasteboardDetectPatternsTest', () => {
     beforeAll(async () => {
       console.log(tag+'beforeAll');
-      await systemPasteboard.clearDataSync();
     });
     afterAll(async () => {
       console.info(tag+'afterAll');
@@ -59,7 +58,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.EMAIL_ADDRESS];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+'data.sort:'+data.sort().join('')+'patterns.sort:'+patterns.sort().join(''));
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
@@ -96,7 +95,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.URL];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
@@ -131,7 +130,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
@@ -167,7 +166,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
@@ -203,7 +202,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.EMAIL_ADDRESS];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
@@ -238,7 +237,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.URL];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
@@ -273,7 +272,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
@@ -309,7 +308,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -346,7 +345,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [null,null,undefined];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -383,7 +382,7 @@ export default function pasteboardDetectPatternsTest() {
       let res = await systemPasteboard.hasData();
       expect(res).assertEqual(true);
       try{
-        systemPasteboard.detectPatterns(null).then((data) => {
+        await systemPasteboard.detectPatterns(null).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -419,7 +418,7 @@ export default function pasteboardDetectPatternsTest() {
       let res = await systemPasteboard.hasData();
       expect(res).assertEqual(true);
       try{
-        systemPasteboard.detectPatterns(undefined).then((data) => {
+        await systemPasteboard.detectPatterns(undefined).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -456,7 +455,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [123,456];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -492,7 +491,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL,521];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -529,7 +528,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL,pasteboard.Pattern.NUMBER];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(data.sort().join('')).assertEqual('012')
           done()
@@ -565,7 +564,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,null];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -601,7 +600,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.URL,undefined];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -637,7 +636,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL,null];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -673,7 +672,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL,undefined];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -706,7 +705,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           const patterns1 = [];
           console.log(tag+data.sort().join(''))
           expect(data.sort().join('')).assertEqual(patterns1.sort().join(''));
@@ -740,7 +739,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.NUMBER];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           const patterns1 = [];
           console.log(tag+data.sort().join(''))
           expect(data.sort().join('')).assertEqual(patterns1.sort().join(''));
@@ -774,7 +773,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.URL];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           const patterns1 = [];
           console.log(tag+data.sort().join(''))
           expect(data.sort().join('')).assertEqual(patterns1.sort().join(''));
