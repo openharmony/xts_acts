@@ -489,8 +489,8 @@ export default function CameraSessionCameraRotationTest() {
 
         /**
         * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0100
-        * @tc.name      : Check capture session support preview rotation get success or not
-        * @tc.desc      : Check capture session support preview rotation get success or not
+        * @tc.name      : Check capture session support photo rotation get success or not
+        * @tc.desc      : Check capture session support photo rotation get success or not
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
