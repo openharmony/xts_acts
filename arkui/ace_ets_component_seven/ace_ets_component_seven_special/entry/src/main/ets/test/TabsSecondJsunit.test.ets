@@ -138,10 +138,8 @@ export default function tabsSecondJsunit() {
     it('ArkUI_Tabs_Attrs_0400', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0400 start");
       let strJson = getInspectorByKey('TabsOverlapTest1');
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("barWidth: "+ Math.round(obj.$attrs.barWidth));
-      expect(Math.abs(Math.round(obj.$attrs.barWidth) -350) <= 0.001).assertTrue();
-
+      console.info("barWidth: "+ Math.round(JSON.parse(strJson).$attrs.barWidth));
+      expect(Math.abs(Math.round(JSON.parse(strJson).$attrs.barWidth) -350) <= 0.001).assertTrue();
       done();
     });
 
@@ -156,10 +154,8 @@ export default function tabsSecondJsunit() {
     it('ArkUI_Tabs_Attrs_0500', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0500 start");
       let strJson = getInspectorByKey('TabsOverlapTest1');
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("barHeight: "+ Math.round(obj.$attrs.barHeight));
-      expect(Math.abs(Math.round(obj.$attrs.barHeight) -70) <= 0.001).assertTrue();
-
+      console.info("barHeight: "+ Math.round(JSON.parse(strJson).$attrs.barHeight));
+      expect(Math.abs(Math.round(JSON.parse(strJson).$attrs.barHeight) -70) <= 0.001).assertTrue();
       done();
     });
 
