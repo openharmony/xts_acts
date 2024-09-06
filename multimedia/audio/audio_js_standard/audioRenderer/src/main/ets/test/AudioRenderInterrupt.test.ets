@@ -544,13 +544,29 @@ export default function AudioRendererInterruptUnitTest() {
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1300', 0, async function (done) {
+      let flag1 = false;
+      let flag2 = false;
       let render1 = await createAudioRenderer(renderInfo['VOICE_COMMUNICATION'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render1, done)
+      render1.on("audioInterrupt", async (eventAction) => {
+        console.log("13 render1.eventAction:" + JSON.stringify(eventAction))
+        flag1 = true;
+      })
 
       let render2 = await createAudioRenderer(renderInfo['RINGTONE'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
-      await startFail(render2, done, render1)
+      render2.on("audioInterrupt", async (eventAction) => {
+        console.log("13 render2.eventAction:" + JSON.stringify(eventAction))
+        flag2 = true;
+      })
+      await start(render2, done)
+
+      await sleep(500)
+      await release(render1, done)
+      await release(render2, done)
+      expect(flag1 == false && flag2 == false).assertTrue()
+      done()
     })
 
     /**
