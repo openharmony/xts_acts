@@ -16,16 +16,16 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import cameraObj from 'libentry.so'
 import image from '@ohos.multimedia.image';
-import { Camera_Position, Camera_Type } from './Constants';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import account from '@ohos.account.osAccount';
-import { Camera_PreconfigType } from './Constants';
+import { Camera_SceneMode, Parameter_Setting, Torch_Mode } from './Constants';
 
 const TAG = "CAMERA_LOGTAG_JS ";
 const CAMERA_OK = 0;
-const CAMERA_ERROR_7400101 = 7400101; //参数错误
-const CAMERA_INVALID_ARGUMENT = 7400101; // 参数错误
+const CAMERA_INVALID_ARGUMENT = 7400101;
+const CAMERA_OPERATION_NOT_ALLOWED = 7400102;
+
 let receiver: image.ImageReceiver;
 let mPhotoSurface: string;
 function getCameraManagerInstance() {
@@ -33,7 +33,7 @@ function getCameraManagerInstance() {
   let ret = cameraObj.initCamera(mPhotoSurface);
   console.info(TAG + 'initCamera : ' + ret);
   if (ret != 0) {
-    console.info(TAG + "getCameraManager FAILED");
+    console.error(TAG + "getCameraManager FAILED");
     expect().assertFail();
   }
 }
@@ -41,18 +41,28 @@ function getCameraManagerInstance() {
 function getSupportedCamerasInstance() {
   let cameraInfo = cameraObj.getSupportedCameras();
   if (isEmpty(cameraInfo)) {
-    console.info(TAG + "getSupportedCamerasInstance FAILED");
+    console.error(TAG + "getSupportedCamerasInstance FAILED");
     expect().assertFail();
   }
 }
 
 function getSupportedSceneModes() {
-  let supportedSceneModes = cameraObj.oHCameraManagerGetSupportedSceneModes(0);
+  let supportedSceneModes = cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
   if (supportedSceneModes.errorCode != 0) {
-    console.info(TAG + "getSupportedSceneModes FAILED");
+    console.error(TAG + "getSupportedSceneModes FAILED");
     expect().assertFail();
   }
-  return supportedSceneModes.sceneModesSize;
+  if (supportedSceneModes.isNormalPhoto) {
+    console.info(TAG + "NORMAL_PHOTO is supported.");
+  }
+  if (supportedSceneModes.isNormalVideo) {
+    console.info(TAG + "NORMAL_VIDEO is supported.");
+  }
+  if (supportedSceneModes.isSecurePhoto) {
+    console.info(TAG + "SECURE_PHOTO is supported.");
+  }
+  cameraObj.oHCameraManagerDeleteSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
+  return supportedSceneModes;
 }
 
 function getSupportedCameraOutputCapability() {
@@ -64,46 +74,56 @@ function getSupportedCameraOutputCapability() {
   return true;
 }
 
-function getSupportedCameraOutputCapabilityWithSceneMode() {
-  let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(0);
+function isTorchSupported() {
+  let ret = cameraObj.oHCameraManagerIsTorchSupported(0);
+  if (ret.errorCode != 0) {
+    console.error(TAG + "isTorchSupported FAILED");
+    expect().assertFail();
+  }
+  return ret.isTorchSupported;
+}
+
+function torchMode(index: number) {
+  let ret = cameraObj.oHCameraManagerTorchMode(index);
   if (ret != 0) {
-    console.info(TAG + "getSupportedCameraOutputCapabilityWithSceneMode FAILED");
+    console.error(TAG + "torchMode FAILED");
     expect().assertFail();
   }
 }
 
-function createPreviewOutputInstance() {
-  let ret = cameraObj.createPreviewOutput();
-  if (ret != 0) {
-    console.info(TAG + "createPreviewOutputInstance FAILED");
+function isTorchSupportedByTorchMode() {
+  let ret = cameraObj.oHCameraManagerIsTorchSupportedByTorchMode(0);
+  if (ret.errorCode != 0) {
+    console.error(TAG + "isTorchSupportedByTorchMode FAILED");
     expect().assertFail();
   }
+  return ret.isTorchSupportedByTorchMode;
 }
 
 function setSceneMode(index_sceneMode: number) {
   let ret = cameraObj.oHCameraManagerSetSceneMode(index_sceneMode);
   if (ret != 0) {
-    console.info(TAG + "setSceneMode FAILED");
+    console.error(TAG + "setSceneMode FAILED");
     expect().assertFail();
   }
-  if (index_sceneMode == 0) {
+  if (index_sceneMode == Camera_SceneMode.NORMAL_PHOTO) {
     console.info(TAG + "set sceneMode: NORMAL_PHOTO");
-  } else if (index_sceneMode == 1) {
+  } else if (index_sceneMode == Camera_SceneMode.NORMAL_VIDEO) {
     console.info(TAG + "set sceneMode: NORMAL_VIDEO");
-  } else if (index_sceneMode == 2) {
+  } else if (index_sceneMode == Camera_SceneMode.SECURE_PHOTO) {
     console.info(TAG + "set sceneMode: SECURE_PHOTO");
   }
 }
 
 async function getPhotoReceiverSurface() {
-  console.log(TAG + 'createImageReceiver start.');
+  console.info(TAG + 'createImageReceiver start.');
   receiver = image.createImageReceiver({ width: 640, height: 480 }, 4, 8);
   if (receiver !== undefined) {
-    console.log(TAG + 'createImageReceiver successfully');
+    console.error(TAG + 'createImageReceiver successfully');
     mPhotoSurface = await receiver.getReceivingSurfaceId();
-    console.log(TAG + 'Photo received id: ' + JSON.stringify(mPhotoSurface));
+    console.info(TAG + 'Photo received id: ' + JSON.stringify(mPhotoSurface));
   } else {
-    console.log(TAG + 'createImageReceiver failed');
+    console.error(TAG + 'createImageReceiver failed');
   }
 }
 
@@ -116,30 +136,39 @@ function isEmpty(data: cameraObj.cameraInfo | number) {
 
 async function getPermissions() {
   console.info('getPermission start');
-  type MyPermissions = "ohos.permission.CAMERA" | "ohos.permission.READ_MEDIA" | "ohos.permission.WRITE_MEDIA";
-  let list: MyPermissions[] = ['ohos.permission.CAMERA', 'ohos.permission.READ_MEDIA', 'ohos.permission.WRITE_MEDIA'];
+  type MyPermissions = "ohos.permission.CAMERA" | "ohos.permission.READ_MEDIA" | "ohos.permission.WRITE_MEDIA"|
+      "ohos.permission.MICROPHONE";
+  let list: MyPermissions[] = ['ohos.permission.CAMERA', 'ohos.permission.READ_MEDIA', 'ohos.permission.WRITE_MEDIA',
+      'ohos.permission.MICROPHONE'];
   try {
     let userId: number = await account.getAccountManager().getOsAccountLocalId();
     let applicationFlags: number = bundleManager.ApplicationFlag.GET_APPLICATION_INFO_DEFAULT;
-    let applicationInfo: bundleManager.ApplicationInfo = await bundleManager.getApplicationInfoSync('com.example.camerandk', applicationFlags, userId);
+    let applicationInfo: bundleManager.ApplicationInfo =
+        await bundleManager.getApplicationInfoSync('com.example.camerandk', applicationFlags, userId);
     let tokenId: number = applicationInfo.accessTokenId;
     for (let index = 0; index < list.length; index++) {
       await abilityAccessCtrl.createAtManager().grantUserGrantedPermission(tokenId, list[index], 1);
     }
   } catch (err) {
-    console.info(`getPermission error ${JSON.stringify(err)}`);
+    console.error(`getPermission error ${JSON.stringify(err)}`);
   }
   console.info('getPermission end');
-};
+}
+
+function releaseCamera() {
+  let ret = cameraObj.releaseCamera();
+  if (ret != 0) {
+    console.error(TAG + "releaseCamera FAILED");
+    expect().assertFail();
+  }
+}
 
 export default function CameraManagerTest() {
   describe('CameraManagerTest', () => {
-    console.info(TAG + '----------CameraManagerTest--------------');
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async () => {
       await getPermissions();
       await getPhotoReceiverSurface();
-
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -147,6 +176,7 @@ export default function CameraManagerTest() {
       // This API supports only one parameter: preset action function.
     })
     afterEach(() => {
+      releaseCamera();
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
@@ -159,115 +189,121 @@ export default function CameraManagerTest() {
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerGetSupportedSceneModes0100
      * @tc.name       : testOHCameraManagerGetSupportedSceneModes0100
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_GetSupportedSceneModes in normal condition.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
     it('testOHCameraManagerGetSupportedSceneModes0100', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      let ret = cameraObj.oHCameraManagerGetSupportedSceneModes(0).errorCode;
-      console.log(TAG+"testOHCameraManagerGetSupportedSceneModes0100:"+ret);
+      let ret = cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK).errorCode;
+      console.info(TAG+"testOHCameraManagerGetSupportedSceneModes0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
+      cameraObj.oHCameraManagerDeleteSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerGetSupportedSceneModes0200
      * @tc.name       : testOHCameraManagerGetSupportedSceneModes0200
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_GetSupportedSceneModes in abnormal condition, the first parameter is
+     *                  null.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
     it('testOHCameraManagerGetSupportedSceneModes0200', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      let ret = cameraObj.oHCameraManagerGetSupportedSceneModes(1).errorCode;
-      console.log(TAG+"testOHCameraManagerGetSupportedSceneModes0200:"+ret);
+      let ret = cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.FIRST_PARAMETER_ERROR).errorCode;
+      console.info(TAG+"testOHCameraManagerGetSupportedSceneModes0200:"+ret);
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerGetSupportedSceneModes0300
      * @tc.name       : testOHCameraManagerGetSupportedSceneModes0300
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_GetSupportedSceneModes in abnormal condition, the second parameter is
+     *                  null.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
     it('testOHCameraManagerGetSupportedSceneModes0300', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      let ret = cameraObj.oHCameraManagerGetSupportedSceneModes(2).errorCode;
-      console.log(TAG+"testOHCameraManagerGetSupportedSceneModes0300:"+ret);
+      let ret = cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.SECOND_PARAMETER_ERROR).errorCode;
+      console.info(TAG+"testOHCameraManagerGetSupportedSceneModes0300:"+ret);
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerGetSupportedSceneModes0400
      * @tc.name       : testOHCameraManagerGetSupportedSceneModes0400
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_GetSupportedSceneModes in abnormal condition, the third parameter is
+     *                  null.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
     it('testOHCameraManagerGetSupportedSceneModes0400', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      let ret = cameraObj.oHCameraManagerGetSupportedSceneModes(3).errorCode;
-      console.log(TAG+"testOHCameraManagerGetSupportedSceneModes0400:"+ret);
+      let ret = cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.SECOND_PARAMETER_ERROR).errorCode;
+      console.info(TAG+"testOHCameraManagerGetSupportedSceneModes0400:"+ret);
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerDeleteSceneModes0100
      * @tc.name       : testOHCameraManagerDeleteSceneModes0100
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_DeleteSceneModes in normal condition.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
     it('testOHCameraManagerDeleteSceneModes0100', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      getSupportedSceneModes();
-      let ret = cameraObj.oHCameraManagerDeleteSceneModes(0);
-      console.log(TAG+"testOHCameraManagerDeleteSceneModes0100:"+ret);
+      cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
+      let ret = cameraObj.oHCameraManagerDeleteSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
+      console.info(TAG+"testOHCameraManagerDeleteSceneModes0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerDeleteSceneModes0200
      * @tc.name       : testOHCameraManagerDeleteSceneModes0200
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_DeleteSceneModes in abnormal condition, the first parameter is null.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
     it('testOHCameraManagerDeleteSceneModes0200', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      getSupportedSceneModes();
-      let ret = cameraObj.oHCameraManagerDeleteSceneModes(1);
-      console.log(TAG+"testOHCameraManagerDeleteSceneModes0200:"+ret);
+      cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
+      let ret = cameraObj.oHCameraManagerDeleteSceneModes(Parameter_Setting.FIRST_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerDeleteSceneModes0200:"+ret);
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+      cameraObj.oHCameraManagerDeleteSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerDeleteSceneModes0300
      * @tc.name       : testOHCameraManagerDeleteSceneModes0300
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_DeleteSceneModes in abnormal condition, the second parameter is null.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
     it('testOHCameraManagerDeleteSceneModes0300', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      getSupportedSceneModes();
-      let ret = cameraObj.oHCameraManagerDeleteSceneModes(2);
-      console.log(TAG+"testOHCameraManagerDeleteSceneModes0300:"+ret);
+      cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
+      let ret = cameraObj.oHCameraManagerDeleteSceneModes(Parameter_Setting.SECOND_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerDeleteSceneModes0300:"+ret);
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+      cameraObj.oHCameraManagerDeleteSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0100
      * @tc.name       : testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0100
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode in normal condition.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
@@ -275,16 +311,16 @@ export default function CameraManagerTest() {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       getSupportedSceneModes();
-      setSceneMode(0);
-      let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(0);
-      console.log(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0100:"+ret);
+      setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
+      let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(Parameter_Setting.ALL_PARAMETER_OK);
+      console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0200
      * @tc.name       : testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0200
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode in normal condition.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
@@ -292,41 +328,41 @@ export default function CameraManagerTest() {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       getSupportedSceneModes();
-      setSceneMode(1);
-      let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(0);
-      console.log(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0200:"+ret);
+      setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
+      let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(Parameter_Setting.ALL_PARAMETER_OK);
+      console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0200:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0300
      * @tc.name       : testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0300
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode in normal condition.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
     it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0300', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      let sceneModesSize = getSupportedSceneModes();
-      console.log(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+sceneModesSize);
-      if (sceneModesSize == 2) {
-        console.log(TAG+"SECURE_PHOTO is not supported");
-        console.log(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0300 end");
-        expect(true).assertTrue();
-      } else if (sceneModesSize == 3) {
-        console.log(TAG+"SECURE_PHOTO is supported");
-        setSceneMode(2);
-        let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(0);
-        console.log(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0300:"+ret);
+      let supportedSceneModes = getSupportedSceneModes();
+      console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
+      if (!supportedSceneModes.isSecurePhoto) {
+        console.error(TAG+"SECURE_PHOTO is not supported");
+        expect(supportedSceneModes.isSecurePhoto).assertEqual(false);
+      } else {
+        setSceneMode(Camera_SceneMode.SECURE_PHOTO);
+        let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(Parameter_Setting.ALL_PARAMETER_OK);
+        console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0300:"+ret);
         expect(ret).assertEqual(CAMERA_OK);
       }
+      console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0300 end");
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0400
      * @tc.name       : testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0400
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode in abnormal condition,
+     *                  the first parameter is null.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
@@ -334,16 +370,17 @@ export default function CameraManagerTest() {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       getSupportedSceneModes();
-      setSceneMode(0);
-      let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(1);
-      console.log(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0400:"+ret);
+      setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
+      let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(Parameter_Setting.FIRST_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0400:"+ret);
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0500
      * @tc.name       : testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0500
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode in abnormal condition,
+     *                  the second parameter is null.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
@@ -351,16 +388,17 @@ export default function CameraManagerTest() {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       getSupportedSceneModes();
-      setSceneMode(0);
-      let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(2);
-      console.log(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0500:"+ret);
+      setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
+      let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(Parameter_Setting.SECOND_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0500:"+ret);
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0600
      * @tc.name       : testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0600
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode in abnormal condition,
+     *                  the third parameter is null.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
@@ -368,16 +406,17 @@ export default function CameraManagerTest() {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       getSupportedSceneModes();
-      setSceneMode(0);
-      let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(3);
-      console.log(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0600:"+ret);
+      setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
+      let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(Parameter_Setting.THIRD_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0600:"+ret);
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0700
      * @tc.name       : testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0700
      * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.desc       : Test OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode in abnormal condition,
+     *                  the fourth parameter is null.
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
@@ -385,9 +424,508 @@ export default function CameraManagerTest() {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       getSupportedSceneModes();
-      setSceneMode(0);
-      let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(4);
-      console.log(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0700:"+ret);
+      setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
+      let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(Parameter_Setting.FOURTH_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0700:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerIsTorchSupported0100
+     * @tc.name       : testOHCameraManagerIsTorchSupported0100
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_IsTorchSupported in normal condition.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerIsTorchSupported0100', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance();
+      getSupportedCameraOutputCapability();
+      let ret = cameraObj.oHCameraManagerIsTorchSupported(Parameter_Setting.ALL_PARAMETER_OK).errorCode;
+      console.info(TAG+"testOHCameraManagerIsTorchSupported0100:"+ret);
+      expect(ret).assertEqual(CAMERA_OK);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerIsTorchSupported0200
+     * @tc.name       : testOHCameraManagerIsTorchSupported0200
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_IsTorchSupported in abnormal condition,
+     *                  the first parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerIsTorchSupported0200', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      let ret = cameraObj.oHCameraManagerIsTorchSupported(Parameter_Setting.FIRST_PARAMETER_ERROR).errorCode;
+      console.info(TAG+"testOHCameraManagerIsTorchSupported0200:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerIsTorchSupported0300
+     * @tc.name       : testOHCameraManagerIsTorchSupported0300
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_IsTorchSupported in abnormal condition,
+     *                  the second parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerIsTorchSupported0300', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      let ret = cameraObj.oHCameraManagerIsTorchSupported(Parameter_Setting.SECOND_PARAMETER_ERROR).errorCode;
+      console.info(TAG+"testOHCameraManagerIsTorchSupported0300:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerIsTorchSupportedByTorchMode0100
+     * @tc.name       : testOHCameraManagerIsTorchSupportedByTorchMode0100
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_IsTorchSupportedByTorchMode in normal condition.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0100', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      if(isTorchSupported() == true){
+        torchMode(Torch_Mode.OFF);
+        let ret = cameraObj.oHCameraManagerIsTorchSupportedByTorchMode(Parameter_Setting.ALL_PARAMETER_OK).errorCode;
+        console.info(TAG+"testOHCameraManagerIsTorchSupportedByTorchMode0100:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
+      } else {
+        console.error(TAG+"isTorchSupported Not Supported!");
+      }
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerIsTorchSupportedByTorchMode0200
+     * @tc.name       : testOHCameraManagerIsTorchSupportedByTorchMode0200
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_IsTorchSupportedByTorchMode in normal condition.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0200', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      if(isTorchSupported() == true){
+        torchMode(Torch_Mode.ON);
+        let ret = cameraObj.oHCameraManagerIsTorchSupportedByTorchMode(Parameter_Setting.ALL_PARAMETER_OK).errorCode;
+        console.info(TAG+"testOHCameraManagerIsTorchSupportedByTorchMode0200:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
+      } else {
+        console.error(TAG+"isTorchSupported Not Supported!");
+      }
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerIsTorchSupportedByTorchMode0300
+     * @tc.name       : testOHCameraManagerIsTorchSupportedByTorchMode0300
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_IsTorchSupportedByTorchMode in normal condition.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0300', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      if(isTorchSupported() == true){
+        torchMode(Torch_Mode.AUTO);
+        let ret = cameraObj.oHCameraManagerIsTorchSupportedByTorchMode(Parameter_Setting.ALL_PARAMETER_OK).errorCode;
+        console.info(TAG+"testOHCameraManagerIsTorchSupportedByTorchMode0300:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
+      } else {
+        console.error(TAG+"isTorchSupported Not Supported!");
+      }
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerIsTorchSupportedByTorchMode0400
+     * @tc.name       : testOHCameraManagerIsTorchSupportedByTorchMode0400
+     * @tc.size       : MediumTest
+     * @tc.desc       : test OH_CameraManager_IsTorchSupportedByTorchMode in abnormal condition,
+     *                  the first parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0400', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      isTorchSupported();
+      torchMode(Torch_Mode.AUTO);
+      let ret = cameraObj.oHCameraManagerIsTorchSupportedByTorchMode(Parameter_Setting.FIRST_PARAMETER_ERROR).errorCode;
+      console.info(TAG+"testOHCameraManagerIsTorchSupportedByTorchMode0400:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerIsTorchSupportedByTorchMode0500
+     * @tc.name       : testOHCameraManagerIsTorchSupportedByTorchMode0500
+     * @tc.size       : MediumTest
+     * @tc.desc       : test OH_CameraManager_IsTorchSupportedByTorchMode in abnormal condition,
+     *                  the second parameter is an exceptional value.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0500', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      isTorchSupported();
+      torchMode(Torch_Mode.AUTO);
+      let ret =
+        cameraObj.oHCameraManagerIsTorchSupportedByTorchMode(Parameter_Setting.SECOND_PARAMETER_ERROR).errorCode;
+      console.info(TAG+"testOHCameraManagerIsTorchSupportedByTorchMode0500:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerIsTorchSupportedByTorchMode0600
+     * @tc.name       : testOHCameraManagerIsTorchSupportedByTorchMode0600
+     * @tc.size       : MediumTest
+     * @tc.desc       : test OH_CameraManager_IsTorchSupportedByTorchMode in abnormal condition,
+     *                  the third parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0600', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      isTorchSupported();
+      torchMode(Torch_Mode.AUTO);
+      let ret =
+        cameraObj.oHCameraManagerIsTorchSupportedByTorchMode(Parameter_Setting.THIRD_PARAMETER_ERROR).errorCode;
+      console.info(TAG+"testOHCameraManagerIsTorchSupportedByTorchMode0600:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerIsTorchSupportedByTorchMode0700
+     * @tc.name       : testOHCameraManagerIsTorchSupportedByTorchMode0700
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_IsTorchSupportedByTorchMode in abnormal condition,
+     *                  torch is not supported.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0700', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      if(isTorchSupported() == false){
+        torchMode(Torch_Mode.OFF);
+        let ret = cameraObj.oHCameraManagerIsTorchSupportedByTorchMode(Parameter_Setting.ALL_PARAMETER_OK);
+        console.info(TAG+"testOHCameraManagerIsTorchSupportedByTorchMode0700.errorCode:"+ret.errorCode);
+        console.info(TAG+"testOHCameraManagerIsTorchSupportedByTorchMode0700.isTorchSupportedByTorchMode:"+
+            ret.isTorchSupportedByTorchMode);
+        expect(ret.errorCode).assertEqual(CAMERA_OK);
+      } else {
+        console.error(TAG+"isTorchSupported Supported!");
+      }
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerIsTorchSupportedByTorchMode0800
+     * @tc.name       : testOHCameraManagerIsTorchSupportedByTorchMode0700
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_IsTorchSupportedByTorchMode in abnormal condition,
+     *                  torch is not supported.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0800', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      if(isTorchSupported() == false){
+        torchMode(Torch_Mode.ON);
+        let ret = cameraObj.oHCameraManagerIsTorchSupportedByTorchMode(Parameter_Setting.ALL_PARAMETER_OK);
+        console.info(TAG+"testOHCameraManagerIsTorchSupportedByTorchMode0800.errorCode:"+ret.errorCode);
+        console.info(TAG+"testOHCameraManagerIsTorchSupportedByTorchMode0800.isTorchSupportedByTorchMode:"+
+            ret.isTorchSupportedByTorchMode);
+        expect(ret.errorCode).assertEqual(CAMERA_OK);
+      } else {
+        console.error(TAG+"isTorchSupported Supported!");
+      }
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerIsTorchSupportedByTorchMode0900
+     * @tc.name       : testOHCameraManagerIsTorchSupportedByTorchMode0900
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_IsTorchSupportedByTorchMode in abnormal condition,
+     *                  torch is not supported.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0900', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      if(isTorchSupported() == false){
+        torchMode(Torch_Mode.AUTO);
+        let ret = cameraObj.oHCameraManagerIsTorchSupportedByTorchMode(Parameter_Setting.ALL_PARAMETER_OK);
+        console.info(TAG+"testOHCameraManagerIsTorchSupportedByTorchMode0900.errorCode:"+ret.errorCode);
+        console.info(TAG+"testOHCameraManagerIsTorchSupportedByTorchMode0900.isTorchSupportedByTorchMode:"+
+            ret.isTorchSupportedByTorchMode);
+        expect(ret.errorCode).assertEqual(CAMERA_OK);
+      } else {
+        console.error(TAG+"isTorchSupported Supported!");
+      }
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerSetTorchMode0100
+     * @tc.name       : testOHCameraManagerSetTorchMode0100
+     * @tc.size       : MediumTest
+     * @tc.desc       : test OH_CameraManager_SetTorchMode in normal condition.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerSetTorchMode0100', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      if (isTorchSupported() == true) {
+        torchMode(Torch_Mode.OFF);
+        if (isTorchSupportedByTorchMode() == true) {
+          let ret = cameraObj.oHCameraManagerSetTorchMode(Parameter_Setting.ALL_PARAMETER_OK);
+          console.info(TAG+"testOHCameraManagerSetTorchMode0100:"+ret);
+          expect(ret).assertEqual(CAMERA_OK);
+        }
+      } else {
+        console.error(TAG+"isTorchSupported Not Supported!");
+      }
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerSetTorchMode0200
+     * @tc.name       : testOHCameraManagerSetTorchMode0200
+     * @tc.size       : MediumTest
+     * @tc.desc       : test OH_CameraManager_SetTorchMode in normal condition.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerSetTorchMode0200', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      if (isTorchSupported() == true) {
+        torchMode(Torch_Mode.ON);
+        if (isTorchSupportedByTorchMode() == true) {
+          let ret = cameraObj.oHCameraManagerSetTorchMode(Parameter_Setting.ALL_PARAMETER_OK);
+          console.info(TAG+"testOHCameraManagerSetTorchMode0200:"+ret);
+          expect(ret).assertEqual(CAMERA_OK);
+        }
+      } else {
+        console.error(TAG+"isTorchSupported Not Supported!");
+      }
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerSetTorchMode0300
+     * @tc.name       : testOHCameraManagerSetTorchMode0300
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_SetTorchMode in abnormal condition,
+     *                  the first parameter torchMode is AUTO.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerSetTorchMode0300', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      if (isTorchSupported() == true) {
+        torchMode(Torch_Mode.AUTO);
+        if (isTorchSupportedByTorchMode() == true) {
+          let ret = cameraObj.oHCameraManagerSetTorchMode(Parameter_Setting.ALL_PARAMETER_OK);
+          console.info(TAG+"testOHCameraManagerSetTorchMode0300:"+ret);
+          expect(ret).assertEqual(CAMERA_OPERATION_NOT_ALLOWED);
+        }
+      } else {
+        console.error(TAG+"isTorchSupported Not Supported!");
+      }
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerSetTorchMode0400
+     * @tc.name       : testOHCameraManagerSetTorchMode0400
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_SetTorchMode in abnormal condition,
+     *                  the first parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerSetTorchMode0400', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      isTorchSupported();
+      torchMode(Torch_Mode.AUTO);
+      isTorchSupportedByTorchMode();
+      let ret = cameraObj.oHCameraManagerSetTorchMode(Parameter_Setting.FIRST_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerSetTorchMode0400:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerSetTorchMode0500
+     * @tc.name       : testOHCameraManagerSetTorchMode0500
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_SetTorchMode in abnormal condition,
+     *                  the second parameter is an exceptional value.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerSetTorchMode0500', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      isTorchSupported();
+      torchMode(Torch_Mode.AUTO);
+      isTorchSupportedByTorchMode();
+      let ret = cameraObj.oHCameraManagerSetTorchMode(Parameter_Setting.SECOND_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerSetTorchMode0500:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerSetTorchMode0600
+     * @tc.name       : testOHCameraManagerSetTorchMode0600
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_SetTorchMode in abnormal condition,
+     *                  torch is not supported.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerSetTorchMode0600', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      if (isTorchSupported() == false) {
+        torchMode(Torch_Mode.AUTO);
+        isTorchSupportedByTorchMode();
+        let ret = cameraObj.oHCameraManagerSetTorchMode(Parameter_Setting.ALL_PARAMETER_OK);
+        console.info(TAG+"testOHCameraManagerSetTorchMode0600:"+ret);
+        expect(ret).assertEqual(CAMERA_OPERATION_NOT_ALLOWED);
+      } else {
+        console.error(TAG+"isTorchSupported Supported!");
+      }
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerSetTorchMode0700
+     * @tc.name       : testOHCameraManagerSetTorchMode0700
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_SetTorchMode in abnormal condition,
+     *                  torchmode ON is not supported.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerSetTorchMode0700', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      if (isTorchSupported() == true) {
+        torchMode(Torch_Mode.AUTO);
+        if (isTorchSupportedByTorchMode() == false) {
+          let ret = cameraObj.oHCameraManagerSetTorchMode(Parameter_Setting.ALL_PARAMETER_OK);
+          console.info(TAG+"testOHCameraManagerSetTorchMode0700:"+ret);
+          expect(ret).assertEqual(CAMERA_OPERATION_NOT_ALLOWED);
+        }
+      }
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerRegisterTorchStatusCallback0100
+     * @tc.name       : testOHCameraManagerRegisterTorchStatusCallback0100
+     * @tc.size       : MediumTest
+     * @tc.desc       : test OH_CameraManager_RegisterTorchStatusCallback in normal condition.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerRegisterTorchStatusCallback0100', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      let ret = cameraObj.oHCameraManagerRegisterTorchStatusCallback(Parameter_Setting.ALL_PARAMETER_OK);
+      console.info(TAG+"testOHCameraManagerRegisterTorchStatusCallback0100:"+ret);
+      expect(ret).assertEqual(CAMERA_OK);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerRegisterTorchStatusCallback0200
+     * @tc.name       : testOHCameraManagerRegisterTorchStatusCallback0200
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_RegisterTorchStatusCallback in abnormal condition,
+     *                  the first parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerRegisterTorchStatusCallback0200', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      let ret = cameraObj.oHCameraManagerRegisterTorchStatusCallback(Parameter_Setting.FIRST_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerRegisterTorchStatusCallback0200:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerRegisterTorchStatusCallback0300
+     * @tc.name       : testOHCameraManagerRegisterTorchStatusCallback0300
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_RegisterTorchStatusCallback in abnormal condition,
+     *                  the second parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerRegisterTorchStatusCallback0300', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      let ret = cameraObj.oHCameraManagerRegisterTorchStatusCallback(Parameter_Setting.SECOND_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerRegisterTorchStatusCallback0300:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerUnregisterTorchStatusCallback0100
+     * @tc.name       : testOHCameraManagerUnregisterTorchStatusCallback0100
+     * @tc.size       : MediumTest
+     * @tc.desc       : test OH_CameraManager_UnregisterTorchStatusCallback in normal condition.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerUnregisterTorchStatusCallback0100', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      let ret = cameraObj.oHCameraManagerUnregisterTorchStatusCallback(Parameter_Setting.ALL_PARAMETER_OK);
+      console.info(TAG+"testOHCameraManagerUnregisterTorchStatusCallback0100:"+ret);
+      expect(ret).assertEqual(CAMERA_OK);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerUnregisterTorchStatusCallback0200
+     * @tc.name       : testOHCameraManagerUnregisterTorchStatusCallback0200
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_UnregisterTorchStatusCallback in abnormal condition,
+     *                  the first parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerUnregisterTorchStatusCallback0200', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      let ret = cameraObj.oHCameraManagerUnregisterTorchStatusCallback(Parameter_Setting.FIRST_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerUnregisterTorchStatusCallback0200:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerUnregisterTorchStatusCallback0300
+     * @tc.name       : testOHCameraManagerUnregisterTorchStatusCallback0300
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_UnregisterTorchStatusCallback in abnormal condition,
+     *                  the second parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerUnregisterTorchStatusCallback0300', 0, () => {
+      getCameraManagerInstance();
+      getSupportedCamerasInstance()
+      getSupportedCameraOutputCapability();
+      let ret = cameraObj.oHCameraManagerUnregisterTorchStatusCallback(Parameter_Setting.SECOND_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerUnregisterTorchStatusCallback0300:"+ret);
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
     })
   })

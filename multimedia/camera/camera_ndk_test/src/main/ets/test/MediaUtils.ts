@@ -45,7 +45,7 @@ export default class MediaUtils {
     return file.fd;
   }
   
-  // ’’∆¨∏Ò Ω
+  // picture format
     onChangePhotoFormat() {
         if (globalThis.settingDataObj.photoFormat == 0) {
             return 'png';
