@@ -903,7 +903,7 @@ Camera_ErrorCode NDKCamera::SessionGetPreviewRotation(int rotation)
 Camera_ErrorCode NDKCamera::SessionSetPreviewRotation(int rotation, bool isDisplayLocked)
 {
     LOG("SetPreviewRotation begin.");
-    int32_t testRotation = static_cast<int32_t>(rotation);
+    Camera_ImageRotation testRotation = static_cast<Camera_ImageRotation>(rotation);
     Camera_ErrorCode ret = OH_PreviewOutput_SetPreviewRotation(previewOutput_, testRotation, isDisplayLocked);
     if (ret == CAMERA_OK) {
         LOG("SessionSetPreviewRotation success.");
