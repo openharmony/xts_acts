@@ -89,16 +89,16 @@ export default function audioManagerTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUME_0100', 0, async (done: Function) => {
       try {
-        let maxvol1 = new ArrayList<number>();
-        let maxvol2 = [15,20];
+        let actual_maxvol = new ArrayList<number>();
+        let expect_maxvol = [15,20];
         for (let index = 0; index < env.AudioVolumeType.length; index++) {
           let maxvol = await audioVolumeGroupManager.getMaxVolume(env.AudioVolumeType[index]);
           console.info(`${env.AudioVolumeType[index]} max volume : ${maxvol}`);
-          maxvol1.add(maxvol);
+          actual_maxvol.add(maxvol);
         }
-        for (let i = 0; i < maxvol1.length; i++) {
-          console.info(`check maxvolume: maxvol1 : ${maxvol1[i]}, maxvol2 : 20 or 15 `);
-          expect(true).assertEqual(maxvol2.includes(maxvol1[i]));
+        for (let i = 0; i < actual_maxvol.length; i++) {
+          console.info(`check maxvolume: actual_maxvol : ${actual_maxvol[i]}, expect_maxvol : 20 or 15 `);
+          expect(true).assertEqual(expect_maxvol.includes(actual_maxvol[i]));
         }
         done();
       } catch (error) {
@@ -118,16 +118,16 @@ export default function audioManagerTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMINVOLUME_0100', 0, async (done: Function) => {
       try {
-        let minvol1 = new ArrayList<number>();
-        let minvol2 = [0, 1];
+        let actual_minvol = new ArrayList<number>();
+        let expect_minvol = [0, 1];
         for (let index = 0; index < env.AudioVolumeType.length; index++) {
           let minvol = await audioVolumeGroupManager.getMinVolume(env.AudioVolumeType[index]);
           console.info(`${env.AudioVolumeType[index]} min volume : ${minvol}`);
-          minvol1.add(minvol);
+          actual_minvol.add(minvol);
         }
-        for (let i = 0; i < minvol1.length; i++) {
-          console.info(`check minvolume minvol1 : ${minvol1[i]}, minvol2 : 0 or 1`);
-          expect(true).assertEqual(minvol2.includes(minvol1[i]));
+        for (let i = 0; i < actual_minvol.length; i++) {
+          console.info(`check minvolume : actual_minvol : ${actual_minvol[i]}, expect_minvol : 0 or 1`);
+          expect(true).assertEqual(expect_minvol.includes(actual_minvol[i]));
         }
         done();
       } catch (error) {
