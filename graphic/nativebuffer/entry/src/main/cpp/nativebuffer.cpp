@@ -858,9 +858,9 @@ static napi_value OHNativeBufferGetMetadataValueFirst(napi_env env, napi_callbac
     int32_t size = 0;
     uint8_t *metadata = nullptr;
     int32_t ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata);
-	if (ret != NUMBER_50002000 && ret != NUMBER_50102000) {
+    if (ret != NUMBER_50002000 && ret != NUMBER_50102000) {
         napi_create_int32(env, NUMBER_1001, &result);
-		return result;
+        return result;
     }
     napi_create_int32(env, SUCCESS, &result);
     OH_NativeBuffer_Unreference(nativeBuffer);
@@ -1432,8 +1432,7 @@ static napi_value OHNativeBufferSetMetadataValue(napi_env env, napi_callback_inf
     OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
     
     result = OHNativeBufferSetMetadataValue1(env, nativeBuffer);
-    if (result != NULL)
-    {
+    if (result != NULL) {
         return result;
     }
     result = OHNativeBufferSetMetadataValue2(env, nativeBuffer);
