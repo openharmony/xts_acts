@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
-import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component

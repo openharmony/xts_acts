@@ -14,7 +14,6 @@
  */
 import events_emitter from '@ohos.events.emitter';
 import { MessageManager, Callback } from '../utils/MessageManager';
-import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component

@@ -413,7 +413,7 @@ export default function ActsRichEditorTest() {
           let RichEditorTextSpan: RichEditorTextSpan = {
             spanPosition: {
               spanIndex: 10, spanRange: [10, 10]
-            }, value: "aaaaa"
+            }, value: "aaaaa", textStyle: {}!
           }
           let RichEditorImageSpanStyle: RichEditorImageSpanStyle = {
             size: [10, 10], verticalAlign: (ImageSpanAlignment.CENTER), objectFit: (ImageFit.Contain)

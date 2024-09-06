@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import web_webview from '@ohos.web.webview'
-import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component

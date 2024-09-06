@@ -16,7 +16,6 @@ import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import { UIContext } from '@ohos.arkui.UIContext';
 
 export default function stageMediaquery() {
   describe('stageMediaquery', () => {
@@ -243,11 +242,10 @@ export default function stageMediaquery() {
     });
 
     it('testRunScopedTask0010', 0, async (done: Function) => {
-      let uiContent: UIContext = globalThis.uiContent
       console.info('testRunScopedTask0010 START');
       let result: ESObject;
       try {
-        result = uiContent.runScopedTask(() => {
+        result = globalThis.uiContent.runScopedTask(() => {
           console.info("success")
         });
         expect(result).assertUndefined();
