@@ -26,7 +26,7 @@
 
 #define SUCCESS 0
 #define FAIL (-1)
-#define NUMBER_MINUS_1 -1
+#define NUMBER_MINUS_1 (-1)
 #define NUMBER_0 0
 #define NUMBER_1 1
 #define NUMBER_2 2
@@ -402,7 +402,7 @@ static napi_value OHNativeBufferAllocMuch(napi_env env, napi_callback_info info)
         .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
         .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
     };
-	OH_NativeBuffer *bufferArr[NUMBER_500];
+    OH_NativeBuffer *bufferArr[NUMBER_500];
     for (uint32_t index = 0; index < NUMBER_500; index++) {
         bufferArr[index] = OH_NativeBuffer_Alloc(&nativeBufferConfig);
         if (bufferArr[index] == nullptr) {
@@ -858,14 +858,13 @@ static napi_value OHNativeBufferGetMetadataValueFirst(napi_env env, napi_callbac
     int32_t size = 0;
     uint8_t *metadata = nullptr;
     int32_t ret = OH_NativeBuffer_GetMetadataValue(nativeBuffer, metadataKey, &size, &metadata);
-	if (ret != NUMBER_50002000 && ret != NUMBER_50102000)
-    {
-		napi_create_int32(env, NUMBER_1001, &result);
+	if (ret != NUMBER_50002000 && ret != NUMBER_50102000) {
+        napi_create_int32(env, NUMBER_1001, &result);
 		return result;
-	}
+    }
     napi_create_int32(env, SUCCESS, &result);
-	OH_NativeBuffer_Unreference(nativeBuffer);
-	return result;
+    OH_NativeBuffer_Unreference(nativeBuffer);
+    return result;
 }
 
 napi_value OHNativeBufferSetDynamicMetadataValue1(napi_env env, OH_NativeBuffer *nativeBuffer)
@@ -1236,8 +1235,7 @@ static napi_value OHNativeBufferSetStaticMetadataValue(napi_env env, napi_callba
     };
     OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
     result = OHNativeBufferSetStaticMetadataValue1(env, nativeBuffer);
-    if (result != NULL)
-    {
+    if (result != NULL) {
         return result;
     }
     result = OHNativeBufferSetStaticMetadataValue2(env, nativeBuffer);
@@ -1376,7 +1374,7 @@ napi_value OHNativeBufferSetMetadataValue3(napi_env env, OH_NativeBuffer *native
         napi_create_int32(env, NUMBER_6003, &result);
         return result;
     }
-    delete[] buffer;
+    
     X = NUMBER_3001;
     uint8_t metaData4[X];
     for (int i = 0; i < X; ++i) {

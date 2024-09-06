@@ -29,6 +29,7 @@
 #define NUMBER_2 2
 #define NUMBER_3 3
 #define TIMEOUT_FIVE 10
+#define NUMBER_254 254
 #define NUMBER_256 256
 #define NUMBER_500 500
 #define NUMBER_40001000 40001000
@@ -279,7 +280,7 @@ static napi_value OHNativeVSyncCreateMuch(napi_env env, napi_callback_info info)
             continue;
         }
     }
-    if (success == 254) {
+    if (success == NUMBER_254) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, success, &result);
