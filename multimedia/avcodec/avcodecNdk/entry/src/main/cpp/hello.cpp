@@ -171,6 +171,7 @@ static napi_value Test_AVDemuxer_SetMediaKeySystemInfoCallback(napi_env env, nap
     }
     
     OH_AVDemuxer_SetMediaKeySystemInfoCallback(demuxer_ptr, callback);
+    OH_AVErrCode ret1 = OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(demuxer_ptr, callback);
     Drm_ErrCode ret4 = OH_MediaKeySession_Destroy(drmKeySession);
     Drm_ErrCode ret5 = OH_MediaKeySystem_Destroy(drmKeySystem);
     if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK  && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK) { 
