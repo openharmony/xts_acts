@@ -864,7 +864,7 @@ Camera_ErrorCode NDKCamera::SessionSetFlashMode(uint32_t mode)
 Camera_ErrorCode NDKCamera::SessionGetPhotoRotation(int rotation)
 {
     LOG("GetVideoRotation begin.");
-    int32_t testRotation =  static_cast<int32_t>rotation;
+    int32_t testRotation = static_cast<int32_t>(rotation);
     Camera_ErrorCode ret = OH_PhotoOutput_GetPhotoRotation(photoOutput_, testRotation, &imageRotation_);
     if (ret == CAMERA_OK) {
         LOG("OH_PhotoOutput_GetPhotoRotation success.");
@@ -877,7 +877,7 @@ Camera_ErrorCode NDKCamera::SessionGetPhotoRotation(int rotation)
 Camera_ErrorCode NDKCamera::SessionGetVideoRotation(int rotation)
 {
     LOG("GetVideoRotation begin.");
-    int32_t testRotation =  static_cast<int32_t>rotation;
+    int32_t testRotation = static_cast<int32_t>(rotation);
     Camera_ErrorCode ret = OH_VideoOutput_GetVideoRotation(videoOutput_, testRotation, &imageRotation_);
     if (ret == CAMERA_OK) {
         LOG("OH_VideoOutput_GetVideoRotation success.");
@@ -890,7 +890,7 @@ Camera_ErrorCode NDKCamera::SessionGetVideoRotation(int rotation)
 Camera_ErrorCode NDKCamera::SessionGetPreviewRotation(int rotation)
 {
     LOG("GetPreviewRotation begin.");
-    int32_t testRotation =  static_cast<int32_t>rotation;
+    int32_t testRotation = static_cast<int32_t>(rotation);
     Camera_ErrorCode ret = OH_PreviewOutput_GetPreviewRotation(previewOutput_, testRotation, &imageRotation_);
     if (ret == CAMERA_OK) {
         LOG("OH_PreviewOutput_GetPreviewRotation success.");
@@ -903,7 +903,7 @@ Camera_ErrorCode NDKCamera::SessionGetPreviewRotation(int rotation)
 Camera_ErrorCode NDKCamera::SessionSetPreviewRotation(int rotation, bool isDisplayLocked)
 {
     LOG("SetPreviewRotation begin.");
-    int32_t testRotation =  static_cast<int32_t>rotation;
+    int32_t testRotation = static_cast<int32_t>(rotation);
     Camera_ErrorCode ret = OH_PreviewOutput_SetPreviewRotation(previewOutput_, testRotation, isDisplayLocked);
     if (ret == CAMERA_OK) {
         LOG("SessionSetPreviewRotation success.");

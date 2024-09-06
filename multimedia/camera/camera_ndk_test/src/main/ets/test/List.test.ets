@@ -44,7 +44,7 @@ export default function testsuite() {
           CameraImageProcessingTest();
           CameraErrorCodeUsecaseTest();
           cameraJSUnitOutput();
-          CameraSessionCameraRotationTest;
+          CameraSessionCameraRotationTest();
     }else{
           CameraFunctionTest();
           CameraInputTest();

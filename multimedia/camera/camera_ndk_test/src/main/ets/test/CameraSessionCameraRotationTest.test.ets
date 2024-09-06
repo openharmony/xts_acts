@@ -302,19 +302,19 @@ export default function cameraSessionCameraRotationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-     it('SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_VIDEO_ROTATION_001', 2, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_VIDEO_ROTATION_001--------------");
+     it('SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_PREVIEW_ROTATION_001', 2, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_PREVIEW_ROTATION_001--------------");
       let cameraPreviewRotation = cameraObj.sessionGetPreviewRotation(0);
       cameraObj.sessionSetPreviewRotation(cameraPreviewRotation, false);
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_VIDEO_ROTATION_001 finish");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_PREVIEW_ROTATION_001 finish");
       if (cameraPreviewRotation != null) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_VIDEO_ROTATION_001 PASSED with cameraPreviewRotation is: " + cameraPreviewRotation);
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_PREVIEW_ROTATION_001 PASSED with cameraPreviewRotation is: " + cameraPreviewRotation);
       }
       else {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_VIDEO_ROTATION_001 FAILED with cameraPreviewRotation is: " + cameraPreviewRotation);
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_PREVIEW_ROTATION_001 FAILED with cameraPreviewRotation is: " + cameraPreviewRotation);
         expect().assertFail();
       }
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_VIDEO_ROTATION_001 ends here");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_PREVIEW_ROTATION_001 ends here");
     });
   })
 }
