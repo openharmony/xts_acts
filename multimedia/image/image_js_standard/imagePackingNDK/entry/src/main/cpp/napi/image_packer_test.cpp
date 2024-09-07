@@ -134,7 +134,7 @@ void setImageFormat(napi_env env, napi_value argValue, OH_PackingOptions *option
     format.size = mimeTypeSize;
     OH_PackingOptions_SetMimeType(options, &format);
     HiviewDFX::HiLog::Info(LABEL, "get format data success %{public}s", format.data);
-    HiviewDFX::HiLog::Info(LABEL, "get format size success %{public}u", format.size);
+    HiviewDFX::HiLog::Info(LABEL, "get format size success %{public}zu", format.size);
     free(buffer);
     return;
 }
