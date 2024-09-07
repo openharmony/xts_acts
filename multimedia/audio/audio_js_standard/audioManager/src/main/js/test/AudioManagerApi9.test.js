@@ -350,31 +350,31 @@ export default function audioManagerApi9() {
             done();
         })
          /**
-         * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0500
+         * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0400
          * @tc.name      : getVolumeGroupManager - callback - undefined
          * @tc.desc      : getVolumeGroupManager - callback - undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-         it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0500', 3, async function (done) {
-            let audioVolumeManager = audioManager.getVolumeManager();
-            audioVolumeManager.getVolumeGroupManager(undefined, (err, groupManager) => {
-                if (err) {
-                    console.error(`audioManagerApi9Test: failed to getGroupManager: Callback:  ${err.message}`);
+         it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0400', 3, async function (done) {
+            try {
+                let audioVolumeManager = audioManager.getVolumeManager();
+                let groupManager = await audioVolumeManager.getVolumeGroupManager();
+                if ((typeof groupManager) != 'undefined') {
+                    console.info('audioManagerApi9Test: Promise: getGroupManager  :  TYPE ERROR');
                     expect(false).assertTrue();
-                } else {
-                    let data = groupManager.getVolumeSync();
-                    if ((typeof groupManager) == 'undefined' && (typeof data) == 'undefined' ) {
-                        console.info('audioManagerApi9Test: Promise: getGroupManager  :  PASS');
-                        expect(true).assertTrue();
-                    } else {
-                        console.info('audioManagerApi9Test: Promise: getGroupManager  :  FAIL');
-                        expect(false).assertTrue();
-                    }
+                    done();
                 }
+                let value = await groupManager.getVolume();
+                expect(false).assertTrue();
                 done();
-            })
+            } catch (err) {
+                console.info('audioManagerApi9Test: Promise: getGroupManager  :  PASS');
+                expect(true).assertTrue();
+                done();
+            }
+            done();
         })
 
 
