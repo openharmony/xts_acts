@@ -369,7 +369,7 @@ export default function AVSessionJsTest() {
                     }
                 });
             } catch (err) {
-                expect(err.code).assertEqual(6600102);
+                expect(err.code).assertEqual(6600101);
                 console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0100 finished");
             }
             done();
