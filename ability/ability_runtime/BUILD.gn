@@ -27,6 +27,7 @@ group("ability_runtime") {
       "actsNotificationWantAgentTest:ActsNotificationWantAgentTest",
       "actsaaappdebugtest:actsaaappdebugtest",
       "actsaastartabilitytest:actsaastartabilitytest",
+      "actsabilityamstest:ActsAbilityAmsTest",
       "actsabilitydelegatorcase:ActsAbilityDelegatorCaseTest",
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "actsabilitytooltest:actsabilitytooltest",
