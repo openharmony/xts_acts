@@ -293,7 +293,6 @@ export default function audioManagerApi9() {
                 expect(true).assertTrue();
                 done();
             }
-            done();
         })
         /**
          * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0200
@@ -320,7 +319,6 @@ export default function audioManagerApi9() {
                 expect(true).assertTrue();
                 done();
             }
-            done();
         })
         /**
          * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0300
@@ -347,7 +345,6 @@ export default function audioManagerApi9() {
                 expect(true).assertTrue();
                 done();
             }
-            done();
         })
          /**
          * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0400
@@ -374,7 +371,6 @@ export default function audioManagerApi9() {
                 expect(true).assertTrue();
                 done();
             }
-            done();
         })
 
 
