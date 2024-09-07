@@ -25,7 +25,10 @@ ohos_js_hap_suite("image_pixel_map_ndk_js_hap") {
   hap_name = "ActsImagePixelMapNdkJsTest"
   subsystem_name = "multimedia"
   part_name = "image_framework"
-  shared_libraries = [ "./entry/src/main/cpp:ImagePixelMapNDKTest" ]
+  shared_libraries = [
+    "./entry/src/main/cpp:ImagePixelMapNDKTest",
+    "./entry/src/main/cpp:ImagePixelMapNativeTest",
+  ]
 }
 
 ohos_js_assets("ace_third_ets_assets") {
