@@ -277,13 +277,95 @@ export default function audioManagerApi9() {
          * @tc.level     : Level 3
          */
         it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0100', 3, async function (done) {
+            try {
+                let audioVolumeManager = audioManager.getVolumeManager();
+                let groupManager = await audioVolumeManager.getVolumeGroupManager(123);
+                if ((typeof groupManager) != 'undefined') {
+                    console.info('audioManagerApi9Test: Promise: getGroupManager  :  TYPE ERROR');
+                    expect(false).assertTrue();
+                    done();
+                }
+                let value = await groupManager.getVolume(audio.AudioVolumeType.MEDIA);
+                expect(false).assertTrue();
+                done();
+            } catch (err) {
+                console.info('audioManagerApi9Test: Promise: getGroupManager  :  PASS');
+                expect(true).assertTrue();
+                done();
+            }
+            done();
+        })
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0200
+         * @tc.name      : getVolumeGroupManager - callback - undefined
+         * @tc.desc      : getVolumeGroupManager - callback - undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 3
+         */
+        it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0200', 3, async function (done) {
+            try {
+                let audioVolumeManager = audioManager.getVolumeManager();
+                let groupManager = await audioVolumeManager.getVolumeGroupManager(123);
+                if ((typeof groupManager) != 'undefined') {
+                    console.info('audioManagerApi9Test: Promise: getGroupManager  :  TYPE ERROR');
+                    expect(false).assertTrue();
+                    done();
+                }
+                let value = await groupManager.getVolume();
+                expect(false).assertTrue();
+                done();
+            } catch (err) {
+                console.info('audioManagerApi9Test: Promise: getGroupManager  :  PASS');
+                expect(true).assertTrue();
+                done();
+            }
+            done();
+        })
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0300
+         * @tc.name      : getVolumeGroupManager - callback - undefined
+         * @tc.desc      : getVolumeGroupManager - callback - undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 3
+         */
+        it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0300', 3, async function (done) {
+            try {
+                let audioVolumeManager = audioManager.getVolumeManager();
+                let groupManager = await audioVolumeManager.getVolumeGroupManager("123");
+                if ((typeof groupManager) != 'undefined') {
+                    console.info('audioManagerApi9Test: Promise: getGroupManager  :  TYPE ERROR');
+                    expect(false).assertTrue();
+                    done();
+                }
+                let value = await groupManager.getVolume();
+                expect(false).assertTrue();
+                done();
+            } catch (err) {
+                console.info('audioManagerApi9Test: Promise: getGroupManager  :  PASS');
+                expect(true).assertTrue();
+                done();
+            }
+            done();
+        })
+         /**
+         * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0500
+         * @tc.name      : getVolumeGroupManager - callback - undefined
+         * @tc.desc      : getVolumeGroupManager - callback - undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 3
+         */
+         it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0500', 3, async function (done) {
             let audioVolumeManager = audioManager.getVolumeManager();
-            audioVolumeManager.getVolumeGroupManager(123, (err, groupManager) => {
+            audioVolumeManager.getVolumeGroupManager(undefined, (err, groupManager) => {
                 if (err) {
                     console.error(`audioManagerApi9Test: failed to getGroupManager: Callback:  ${err.message}`);
                     expect(false).assertTrue();
                 } else {
-                    if ((typeof groupManager) == 'undefined') {
+                    let data = groupManager.getVolumeSync();
+                    if ((typeof groupManager) == 'undefined' && (typeof data) == 'undefined' ) {
                         console.info('audioManagerApi9Test: Promise: getGroupManager  :  PASS');
                         expect(true).assertTrue();
                     } else {
@@ -294,6 +376,8 @@ export default function audioManagerApi9() {
                 done();
             })
         })
+
+
         /**
          * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_0100
          * @tc.name      : getVolumeGroupManager - callback
