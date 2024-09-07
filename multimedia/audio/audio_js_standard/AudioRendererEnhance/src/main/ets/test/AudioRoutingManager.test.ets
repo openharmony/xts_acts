@@ -79,7 +79,6 @@ export default function AudioRoutingManagerTest() {
       try {
         let devices = audioRoutingManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
         console.info(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
-        except(devices.length > 0).assertTrue();
         expect(devices[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
         expect(devices[0].deviceType != null).assertTrue();
         expect(devices[0].id != null).assertTrue();
