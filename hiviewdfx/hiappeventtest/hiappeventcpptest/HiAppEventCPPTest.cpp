@@ -73,6 +73,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0100, Function|M
     OH_HiAppEvent_AddBoolParam(list, "bool_key", boolean);
     EventType eventType = EventType::FAULT;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -108,6 +109,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0200, Function|M
     OH_HiAppEvent_AddBoolParam(list, "bool_key", boolean);
     EventType eventType = EventType::FAULT;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -142,6 +144,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0300, Function|M
     OH_HiAppEvent_AddBoolArrayParam(list, "bool_arr_key", booleans, sizeof(booleans) / sizeof(booleans[0]));
     EventType eventType = EventType::FAULT;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -176,6 +179,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0400, Function|M
     OH_HiAppEvent_AddStringParam(list, "str_key", str);
     EventType eventType = EventType::BEHAVIOR;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -212,6 +216,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0500, Function|M
     OH_HiAppEvent_AddStringArrayParam(list, "str_arr_key", strs, sizeof(strs) / sizeof(strs[0]));
     EventType eventType = EventType::BEHAVIOR;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -246,6 +251,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0800, Function|M
     OH_HiAppEvent_AddDoubleParam(list, "double_key", num);
     EventType eventType = EventType::FAULT;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -280,6 +286,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0900, Function|M
     OH_HiAppEvent_AddDoubleArrayParam(list, "double_arr_key", nums, sizeof(nums) / sizeof(nums[0]));
     EventType eventType = EventType::STATISTIC;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -314,6 +321,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1000, Function|M
     OH_HiAppEvent_AddFloatParam(list, "float_key", num);
     EventType eventType = EventType::STATISTIC;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -348,6 +356,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1100, Function|M
     OH_HiAppEvent_AddFloatArrayParam(list, "float_arr_key", nums, sizeof(nums) / sizeof(nums[0]));
     EventType eventType = EventType::STATISTIC;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -382,6 +391,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1200, Function|M
     OH_HiAppEvent_AddInt8Param(list, "int8_key", num);
     EventType eventType = EventType::SECURITY;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -416,6 +426,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1300, Function|M
     OH_HiAppEvent_AddInt8ArrayParam(list, "int8_arr_key", nums, sizeof(nums) / sizeof(nums[0]));
     EventType eventType = EventType::SECURITY;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -450,6 +461,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1400, Function|M
     OH_HiAppEvent_AddInt16Param(list, "int16_key", num);
     EventType eventType = EventType::SECURITY;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -484,6 +496,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1500, Function|M
     OH_HiAppEvent_AddInt16ArrayParam(list, "int16_arr_key", nums, sizeof(nums) / sizeof(nums[0]));
     EventType eventType = EventType::SECURITY;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -518,6 +531,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1600, Function|M
     OH_HiAppEvent_AddInt32Param(list, "int32_key", num);
     EventType eventType = EventType::SECURITY;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -552,6 +566,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1700, Function|M
     OH_HiAppEvent_AddInt32ArrayParam(list, "int32_arr_key", nums, sizeof(nums) / sizeof(nums[0]));
     EventType eventType = EventType::SECURITY;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -586,6 +601,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1800, Function|M
     OH_HiAppEvent_AddInt64Param(list, "int64_key", num);
     EventType eventType = EventType::SECURITY;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -620,6 +636,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1900, Function|M
     OH_HiAppEvent_AddInt64ArrayParam(list, "int64_arr_key", nums, sizeof(nums) / sizeof(nums[0]));
     EventType eventType = EventType::SECURITY;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -661,6 +678,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2100, Function|M
     OH_HiAppEvent_AddStringArrayParam(list, "str_arr_key", strs, sizeof(strs) / sizeof(strs[0]));
     EventType eventType = EventType::BEHAVIOR;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -698,6 +716,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2200, Function|M
     OH_HiAppEvent_AddStringParam(list, "str_key", strs.c_str());
     EventType eventType = EventType::BEHAVIOR;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -729,6 +748,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2300, Function|M
     OH_HiAppEvent_AddStringParam(list, "str_key", str);
     EventType eventType = EventType::FAULT;
     int ret = OH_HiAppEvent_Write(TEST_DOMAIN_NAME, NULL, eventType, list);
+    sleep(1); //等待1s
     OH_HiAppEvent_DestroyParamList(list);
     ASSERT_TRUE(ret == -1);
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_2300 end" << endl;
@@ -748,6 +768,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2400, Function|M
     OH_HiAppEvent_AddStringParam(list, "str_key", str);
     EventType eventType = EventType::FAULT;
     int ret = OH_HiAppEvent_Write(TEST_DOMAIN_NAME, "", eventType, list);
+    sleep(1); //等待1s
     OH_HiAppEvent_DestroyParamList(list);
     ASSERT_TRUE(ret == -1);
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_2400 end" << endl;
@@ -767,6 +788,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2500, Function|M
     OH_HiAppEvent_AddStringParam(list, "str_key", str);
     EventType eventType = EventType::FAULT;
     int ret = OH_HiAppEvent_Write(TEST_DOMAIN_NAME, "9527_test_event", eventType, list);
+    sleep(1); //等待1s
     OH_HiAppEvent_DestroyParamList(list);
     ASSERT_TRUE(ret == -1);
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_2500 end" << endl;
@@ -795,6 +817,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2700, Function|M
     }
     EventType eventType = EventType::FAULT;
     int ret = OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -829,6 +852,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2800, Function|M
     OH_HiAppEvent_AddStringParam(list, "", "");
     EventType eventType = EventType::FAULT;
     int ret = OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -863,6 +887,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2900, Function|M
     OH_HiAppEvent_AddStringParam(list, "", "hello");
     EventType eventType = EventType::FAULT;
     int ret = OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -897,6 +922,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3000, Function|M
     OH_HiAppEvent_AddStringParam(list, "9527_hello", "world");
     EventType eventType = EventType::FAULT;
     int ret = OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -936,6 +962,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3100, Function|M
     OH_HiAppEvent_AddStringParam(list, "str_key", strs.c_str());
     EventType eventType = EventType::FAULT;
     int ret = OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -970,6 +997,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3200, Function|M
     OH_HiAppEvent_AddStringParam(list, NULL, NULL);
     EventType eventType = EventType::FAULT;
     int ret = OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -1012,6 +1040,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3300, Function|M
     OH_HiAppEvent_AddStringArrayParam(list, "str_arr_key", strs, sizeof(strs) / sizeof(strs[0]));
     EventType eventType = EventType::BEHAVIOR;
     int ret = OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -1053,6 +1082,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3400, Function|M
     }
     EventType eventType = EventType::FAULT;
     int ret = OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -1105,6 +1135,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3500, Function|M
     }
     EventType eventType = EventType::FAULT;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -1153,6 +1184,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3600, Function|M
     }
     EventType eventType = EventType::FAULT;
     OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     getlogFile = accumulate(file.begin(), file.end(), getlogFile);
@@ -1185,6 +1217,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3700, Function|M
     OH_HiAppEvent_AddBoolParam(list, "bool_key", boolean);
     EventType eventType = EventType::FAULT;
     int ret = OH_HiAppEvent_Write(TEST_DOMAIN_NAME, TEST_EVENT_NAME, eventType, list);
+    sleep(1); //等待1s
     std::vector<std::string> file;
     file = getfileinpath(logPath);
     OH_HiAppEvent_DestroyParamList(list);
