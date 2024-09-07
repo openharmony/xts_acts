@@ -665,39 +665,25 @@ export default function pasteBoardSystemPasteBoardTest() {
       let uri = "www.baidu.com"
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, uri)
       let systemPasteBoard = pasteboard.getSystemPasteboard();
-      await systemPasteBoard.setData(pasteData).then(async () => {
-        systemPasteBoard.getData(async (err, data) => {
-          if (err != null) {
-            console.info("Get the pastedata from system pasteboard failed" + err)
-            expect().assertFail();
-          } else {
-            let recordCount = data.getRecordCount()
-            expect(recordCount).assertEqual(1)
-            expect(data.getRecord(0).uri).assertEqual(uri)
-            try{
-              data.pasteStart()
-              console.info("pasteStart success")
-            } catch (err) {
-              expect().assertFail();
-              console.info("pasteStart fail "+ err)
-            }
+      await systemPasteBoard.setData(pasteData);
+      let data = await systemPasteBoard.getData();
+      let recordCount = data.getRecordCount();
+      expect(recordCount).assertEqual(1);
+      expect(data.getRecord(0).uri).assertEqual(uri);
 
-            await sleep(10000);
+      try {
+        data.pasteStart()
+      } catch (err) {
+        console.info(TAG + "pasteStart fail" + err);
+        expect().assertFail();
+      }
 
-            try{
-              data.pasteComplete()
-              console.info("pasteComplete success")
-            } catch (err) {
-              expect().assertFail();
-              console.info("pasteComplete fail "+ err)
-            }
-
-          }
-        })
-      }).catch((err: Error) => {
-        console.info("System pasteBoard set pastedata error,error: " + err)
-        expect(false).assertTrue();
-      })
+      try {
+        data.pasteComplete()
+      } catch (err) {
+        console.info(TAG + "pasteComplete fail" + err);
+        expect().assertFail();
+      }
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0800 end")
       done();
     })
