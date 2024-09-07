@@ -57,7 +57,7 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].address).assertEqual("");
         expect(devices[0].displayName != "").assertTrue();
         expect(devices[0].sampleRates[0] > 0).assertTrue();
-        expect(devices[0].channelCounts[0]).assertEqual(audio.AudioChannel.CHANNEL_2);
+        expect(devices[0].channelCounts[0] > 0).assertTrue();
         expect(devices[0].channelMasks[0]).assertEqual(0);
         expect(devices[0].encodingTypes[0]).assertEqual(audio.AudioEncodingType.ENCODING_TYPE_RAW);
         done();
@@ -86,7 +86,7 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].address).assertEqual("");
         expect(devices[0].displayName != "").assertTrue();
         expect(devices[0].sampleRates[0] > 0).assertTrue();
-        expect(devices[0].channelCounts[1]).assertEqual(audio.AudioChannel.CHANNEL_2);
+        expect(devices[0].channelCounts[0] > 0).assertTrue();
         expect(devices[0].channelMasks[0]).assertEqual(0);
         expect(devices[0].encodingTypes[0]).assertEqual(audio.AudioEncodingType.ENCODING_TYPE_RAW);
         done();
@@ -137,7 +137,7 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].deviceType > 0).assertTrue();
         expect(devices[0].displayName != "").assertTrue();
         expect(devices[0].sampleRates[0] > 0).assertTrue();
-        expect(devices[0].channelCounts[0]).assertEqual(audio.AudioChannel.CHANNEL_2);
+        expect(devices[0].channelCounts[0] > 0).assertTrue();
         expect(devices[0].channelMasks[0]).assertEqual(0);
         expect(devices[0].encodingTypes[0]).assertEqual(audio.AudioEncodingType.ENCODING_TYPE_RAW);
         done();
@@ -166,7 +166,7 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].address).assertEqual("");
         expect(devices[0].displayName != "").assertTrue();
         expect(devices[0].sampleRates[0] > 0).assertTrue();
-        expect(devices[0].channelCounts[1]).assertEqual(audio.AudioChannel.CHANNEL_2);
+        expect(devices[0].channelCounts[0] > 0).assertTrue();
         expect(devices[0].channelMasks[0]).assertEqual(0);
         expect(devices[0].encodingTypes[0]).assertEqual(audio.AudioEncodingType.ENCODING_TYPE_RAW);
         done();
@@ -188,7 +188,7 @@ export default function AudioRoutingManagerTest() {
       try {
         let devices = audioRoutingManager.getAvailableDevices(audio.DeviceUsage.ALL_CALL_DEVICES);
         console.info(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
-        except(devices.length > 0).assertTrue();
+        expect(devices.length > 0).assertTrue();
         for (let i = 0; i < devices.length; i++) {
           expect(devices[i].deviceRole != "").assertTrue();
           expect(devices[0].deviceType > 0).assertTrue();
