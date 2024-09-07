@@ -2494,6 +2494,26 @@ HWTEST_F(DemuxerFuncNdkTest, SUB_MEDIA_DEMUXER_FUNCTION_1200, TestSize.Level0)
 }
 
 /**
+ * @tc.number    : DEMUXER_FUNCTION_9100
+ * @tc.name      : demuxer MP4 ,GetSourceFormat,OH_MD_KEY_TRACK_START_TIME
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFuncNdkTest, DEMUXER_FUNCTION_7100, TestSize.Level0)
+{
+    const char *file = "/data/test/media/01_video_audio.mp4";
+    int fd = open(file, O_RDONLY);
+    int64_t size = GetFileSize(file);
+    cout << file << "----------------------" << fd << "---------" << size << endl;
+    source = OH_AVSource_CreateWithFD(fd, 0, size);
+    ASSERT_NE(source, nullptr);
+
+    sourceFormat = OH_AVSource_GetSourceFormat(source);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(sourceFormat, OH_MD_KEY_TRACK_START_TIME, &g_trackCount));
+    ASSERT_EQ(g_trackCount, 2);
+    close(fd);
+}
+
+/**
  * @tc.number    : SUB_MEDIA_DEMUXER_FUNCTION_1300
  * @tc.name      : demux hevc ts video
  * @tc.desc      : function test
@@ -2531,5 +2551,45 @@ HWTEST_F(DemuxerFuncNdkTest, SUB_MEDIA_DEMUXER_FUNCTION_1300, TestSize.Level0)
     }
     ASSERT_EQ(videoFrame, 602);
     ASSERT_EQ(vKeyCount, 3);
+    close(fd);
+}
+
+/**
+ * @tc.number    : SUB_MEDIA_DEMUXER_VTT_6100
+ * @tc.name      : create vtt demuxer with error file -- alternating Up and Down Times
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, SUB_MEDIA_DEMUXER_VTT_6100, TestSize.Level2)
+{
+    OH_AVCodecBufferAttr attr;
+    const char* mimeType = nullptr;
+    const char *file = "/data/test/media/vtt_6100.vtt";
+    int fd = open(file, O_RDONLY);
+    int64_t size = GetFileSize(file);
+    cout << file << "----------------------" << fd << "---------" << size << endl;
+    source = OH_AVSource_CreateWithFD(fd, 0, size);
+    ASSERT_NE(source, nullptr);
+    demuxer = OH_AVDemuxer_CreateWithSource(source);
+    ASSERT_NE(demuxer, nullptr);
+    sourceFormat = OH_AVSource_GetSourceFormat(source);
+    trackFormat = OH_AVSource_GetTrackFormat(source, 0);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_CODEC_MIME, &mimeType));
+    ASSERT_EQ(0, strcmp(mimeType, OH_AVCODEC_MIMETYPE_SUBTITLE_WEBVTT));
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(sourceFormat, OH_MD_KEY_TRACK_COUNT, &g_trackCount));
+    ASSERT_EQ(1, g_trackCount);
+    ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SelectTrackByID(demuxer, 0));
+    int tarckType = 0;
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &tarckType));
+    ASSERT_EQ(tarckType, MEDIA_TYPE_SUBTITLE);
+    while (true) {
+        ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_ReadSample(demuxer, 0, memory, &attr));
+        if (attr.flags & OH_AVCodecBufferFlags::AVCODEC_BUFFER_FLAGS_EOS) {
+            cout << "   vtt is end !!!!!!!!!!!!!!!" << endl;
+            break;
+        }
+        uint8_t *data = OH_AVMemory_GetAddr(memory);
+        cout << "subtitle"<< "----------------" << data << "-----------------" << endl;
+    }
     close(fd);
 }

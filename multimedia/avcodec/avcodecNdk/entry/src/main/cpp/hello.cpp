@@ -66,7 +66,8 @@ static napi_value Test_VideoDecoder_SetDecryptionConfig(napi_env env, napi_callb
     if(strcmp(codecString," ") != 0){
         codec_ptr = OH_VideoDecoder_CreateByName("OMX.hisi.video.decoder.avc.seure");
     }
-    OH_VideoDecoder_SetDecryptionConfig(codec_ptr, session_ptr,secureVideoPath); 
+    OH_VideoDecoder_SetDecryptionConfig(codec_ptr, session_ptr,secureVideoPath);
+    OH_AudioCodec_SetDecryptionConfig(codec_ptr, session_ptr,secureVideoPath); 
     Drm_ErrCode ret4 = OH_MediaKeySession_Destroy(drmKeySession);
     Drm_ErrCode ret5 = OH_MediaKeySystem_Destroy(drmKeySystem);
     if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK  && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK) { //
@@ -170,6 +171,7 @@ static napi_value Test_AVDemuxer_SetMediaKeySystemInfoCallback(napi_env env, nap
     }
     
     OH_AVDemuxer_SetMediaKeySystemInfoCallback(demuxer_ptr, callback);
+    OH_AVErrCode ret1 = OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(demuxer_ptr, callback);
     Drm_ErrCode ret4 = OH_MediaKeySession_Destroy(drmKeySession);
     Drm_ErrCode ret5 = OH_MediaKeySystem_Destroy(drmKeySystem);
     if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK  && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK) { 
