@@ -24,22 +24,6 @@ import { ObjectUtils } from './ObjectUtils'
 export default function pasteComponentTest() {
   describe('pasteComponentTest', ( ) => {
     beforeAll(async (done:Function) => {
-      try {
-        let driver = Driver.create()
-        let dialog_usb = await driver.findComponent(ON.type('Dialog'));
-        if (dialog_usb !== null) {
-          let button = await driver.findComponent(ON.text('确定').type('button'));
-          await Utils.sleep(500);
-          console.info("====>beforeAll USB_Dialog button is : ) + JSON.stringify(button)");
-          await button.click();
-          await Utils.sleep(500);
-        } else {
-          console.info("====>beforeAll USB_Dialog not exist.");
-        }
-      } catch (err) {
-        console.info("====>beforeAll USB_Dialog err : ) + JSON.stringify(err)");
-      }
-
       let options:router.RouterOptions = {
         url: 'testability/pages/pasteButton',
       }
