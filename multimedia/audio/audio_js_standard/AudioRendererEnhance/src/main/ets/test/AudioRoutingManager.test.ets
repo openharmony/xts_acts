@@ -191,7 +191,7 @@ export default function AudioRoutingManagerTest() {
         expect(devices.length > 0).assertTrue();
         for (let i = 0; i < devices.length; i++) {
           expect(devices[i].deviceRole != "").assertTrue();
-          expect(devices[0].deviceType > 0).assertTrue();
+          expect(devices[i].deviceType > 0).assertTrue();
           expect(devices[i].displayName != "").assertTrue();
         }
         done();
