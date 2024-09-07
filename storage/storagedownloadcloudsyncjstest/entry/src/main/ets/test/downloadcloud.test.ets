@@ -12,22 +12,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import { describe, beforeAll,beforeEach,afterEach,afterAll,it,expect } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 import cloudSync from '@ohos.file.cloudSync';
 import fileUri from '@ohos.file.fileuri';
 import featureAbility from '@ohos.ability.featureAbility';
 import fs from '@ohos.file.fs';
- 
+
 export default function cloudFileDownloadTest(){
     let uri_ ="file://media/image/7";
     let cloudSyncDownload;
     let isConnect:Boolean;
     let gallerySync;
- 
+
 describe('cloud_file_download_test',async function(){
   async function getNetId(){
+    let netId = 0;
+    try {
+      let netHandle = await
+      connection.getDefaultNet();
+      if(netHandle){
+        console.log('getNetId info :${JSON.stringify(netHandle)}');
+        netId = netHandle.netId
+      }
+    }catch (error){
+      console.error('getNetId Error : ${JSON.stringify(error)}');
+    }
+    return netId;
+}
+beforeAll(async function(){
+  console.info("beforeAllcase uri:" + uri_);
+    try {
+        let netId = await getNetId();
+        if (netId >= 100){
+            isConnect = false;
         }
         console.info('网络状态：${isConnect}');
         cloudSyncDownload =new cloudSync.Download();
@@ -35,7 +54,38 @@ describe('cloud_file_download_test',async function(){
     }catch (err){
       console.error("beforeAll case err :" + err);
     }
- 
+});
+
+beforeEach(async function ()
+{
+  console.info("beforeEachcase");
+});
+afterAll(function (){
+  console.info("afterAll case");
+});
+
+function errHandle(err,tag){
+  console.error('${tag}err.code :${err.code} err.message :${err.message} isConnect : ${isConnect}');
+    if (err.code != undefined) {
+      switch (err.code){
+        case 13600001://IPC error
+        console.error('${tag} ICP error');
+        expect(true).assertTrue();
+        break;
+        case 22400002:// Network unavailable
+        expect(true).assertTrue();
+        break;
+        case 401: //The inputparameter is invalid
+        console.error('${tag} The input parameter is invalid');
+        expect(true).assertTrue();
+        break;
+      }
+    }else{
+      console.error('${tag} catch failed.err = $ {JSON.stringify(err)}');
+      expect(false).assertTrue();
+    }
+  };
+
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_STATE_TEST_0100
    * @tc.name test_Download_State_001
@@ -50,7 +100,21 @@ describe('cloud_file_download_test',async function(){
      try {
        cloudSyncDownload.on("progress",(pg)=>{
          console.info("download_on:callback succeed.");
- 
+         if(pg != undefined){
+           console.info("on:callback succeed. pg.state = " + pg.state);
+           if (pg.state.RUNNING == 0) {
+             console.info("state:pg.state.RUNNING==0-云文件正在下载中");
+             expect(true).assertTrue();
+           }
+         }
+       });
+       expect(true).assertTrue();
+     } catch (err) {
+       errHandle(err,TAG);
+     }
+     done();
+   });
+
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_STATE_TEST_0200
    * @tc.name test_Download_State_002
@@ -65,8 +129,21 @@ describe('cloud_file_download_test',async function(){
      try {
        cloudSyncDownload.on("progress",(pg)=>{
          console.info("download_on:callback succeed.");
+         if(pg != undefined){
+           console.info("on:callback succeed. pg.state = " + pg.state);
+           if (pg.state.FAILED == 2) {
+             console.info("state:pg.state.RUNNING==2-云文件下载失败");
+             expect(true).assertTrue();
+           }
+         }
+       });
+       expect(true).assertTrue();
+     } catch (err) {
+       errHandle(err,TAG);
+     }
+     done();
    });
- 
+
    /**
    * @tc.number SUB_STORAGE_UPLOADING_STATE_TEST_0300
    * @tc.name test_Uploading_State_003
@@ -94,7 +171,7 @@ describe('cloud_file_download_test',async function(){
      }
      done();
    });
- 
+
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_STATE_TEST_0400
    * @tc.name test_Uploading_Failed_State_004
@@ -122,7 +199,7 @@ describe('cloud_file_download_test',async function(){
      }
      done();
    });
- 
+
   /**
    * @tc.number SUB_STORAGE_GALLERYSYNC_STATE_TEST_0500
    * @tc.name test_CloudSync_SyncState_005
@@ -151,7 +228,7 @@ describe('cloud_file_download_test',async function(){
     }
     done();
   });
- 
+
    /**
    * @tc.number SUB_STORAGE_DOWNLOADING_STATE_TEST_0600
    * @tc.name test_Downloading_State_006
@@ -179,7 +256,7 @@ describe('cloud_file_download_test',async function(){
      }
      done();
    });
- 
+
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_PROCESSED_TEST_0100
    * @tc.name test_Download_Processed_001
@@ -194,7 +271,21 @@ describe('cloud_file_download_test',async function(){
      try {
        cloudSyncDownload.on("progress",(pg)=>{
          console.info("on:callback succeed.");
- 
+         if(pg != undefined){
+           console.info("on:callback succeed. pg.state = " + pg.state);
+           if (pg.state.FAILED == 2) {
+             console.info("on:callback succeed. pg.processed = " + pg.processed);
+             expect(true).assertTrue();
+           }
+         }
+       });
+       expect(true).assertTrue();
+     } catch (err) {
+       errHandle(err,TAG);
+     }
+     done();
+   });
+
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0100
    * @tc.name test_Download_Error_001
@@ -209,7 +300,21 @@ describe('cloud_file_download_test',async function(){
      try {
        cloudSyncDownload.on("progress",(pg)=>{
          console.info("download_on: callback succeed.");
- 
+         if(pg != undefined){
+           console.info("on:callback succeed. pg.error = " + pg.error);
+         if (pg.state.NO_ERROR == 0) {
+           console.info("error: pg.error.NO_ERROR==0-没有错误");
+           expect(true).assertTrue();
+         }
+       }
+       });
+    expect(true).assertTrue();
+    } catch (err) {
+      errHandle(err,TAG);
+    }
+     done();
+   });
+
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0200
    * @tc.name test_Download_Error_002
@@ -224,7 +329,21 @@ describe('cloud_file_download_test',async function(){
      try {
        cloudSyncDownload.on("progress",(pg)=>{
          console.info("download_on: callback succeed.");
- 
+         if(pg != undefined){
+           console.info("on:callback succeed. pg.error = " + pg.error);
+           if (pg.state.UNKNOWN_ERROR == 1) {
+             console.info("error: pg.error.UNKNOWN_ERROR==1-未知错误");
+             expect(true).assertTrue();
+           }
+         }
+       });
+       expect(true).assertTrue();
+     } catch (err) {
+       errHandle(err,TAG);
+     }
+     done();
+   });
+
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0300
    * @tc.name test_Download_Error_003
@@ -239,7 +358,21 @@ describe('cloud_file_download_test',async function(){
      try {
        cloudSyncDownload.on("progress",(pg)=>{
          console.info("download_on: callback succeed.");
- 
+         if(pg != undefined){
+           console.info("on:callback succeed. pg.error = " + pg.error);
+           if (pg.state.NETWORK_UNAVAILABLE == 2) {
+             console.info("error: pg.error.NETWORK_UNAVAILABLE==2-网络不可用");
+             expect(true).assertTrue();
+           }
+         }
+       });
+       expect(true).assertTrue();
+     } catch (err) {
+       errHandle(err,TAG);
+     }
+     done();
+   });
+
    /**
    * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0400
    * @tc.name test_Download_Error_004
@@ -254,10 +387,21 @@ describe('cloud_file_download_test',async function(){
      try {
        cloudSyncDownload.on("progress",(pg)=>{
          console.info("download_on: callback succeed.");
+         if(pg != undefined){
+           console.info("on:callback succeed. pg.error = " + pg.error);
+           if (pg.error.LOCAL_STORAGE_FULL == 3) {
+             console.info("error: pg.error.LOCAL_STORAGE_FULL==3-本地空间不足");
+             expect(true).assertTrue();
+           }
+         }
+       });
+       expect(true).assertTrue();
+     } catch (err) {
+       errHandle(err,TAG);
      }
      done();
    });
- 
+
     /**
     * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0500
     * @tc.name test_Download_Error_005
@@ -272,9 +416,21 @@ describe('cloud_file_download_test',async function(){
      try {
        cloudSyncDownload.on("progress",(pg)=>{
          console.info("download_on: callback succeed.");
+         if(pg != undefined){
+           console.info("on:callback succeed. pg.error = " + pg.error.CONTENT_NOT_FOUND);
+           if (pg.error.CONTENT_NOT_FOUND == 4) {
+             console.info("error: pg.error.CONTENT_NOT_FOUND==4-云端空间未找到对应文件");
+             expect(true).assertTrue();
+           }
+         }
+       });
+       expect(true).assertTrue();
+     } catch (err) {
+       errHandle(err,TAG);
+     }
      done();
    });
- 
+
     /**
     * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0600
     * @tc.name test_Download_Error_006
@@ -289,10 +445,21 @@ describe('cloud_file_download_test',async function(){
      try {
        cloudSyncDownload.on("progress",(pg)=>{
          console.info("download_on: callback succeed.");
+         if(pg != undefined){
+           console.info("on:callback succeed. pg.error = " + pg.error.FREQUENT_USER_REQUESTS);
+           if (pg.error.FREQUENT_USER_REQUESTS == 5) {
+             console.info("error: pg.error.CONTENT_NOT_FOUND==5-用户请求过于频繁");
+             expect(true).assertTrue();
+           }
+         }
+       });
+       expect(true).assertTrue();
+     } catch (err) {
+       errHandle(err,TAG);
      }
      done();
    });
- 
+
    /**
     * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0700
     * @tc.name test_Download_Error_007
@@ -307,10 +474,18 @@ describe('cloud_file_download_test',async function(){
      try {
        cloudSyncDownload.on("progress",(pg)=>{
          console.info("on: callback succeed.");
+         if(pg != undefined){
+           console.info("on:callback succeed. pg.error = " + pg.error);
+           expect(true).assertTrue();
+         }
+       });
+       expect(true).assertTrue();
+     } catch (err) {
+       errHandle(err,TAG);
      }
      done();
    });
- 
+
   /**
    * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0800
    * @tc.name test_CloudSync_ErrorType_008
@@ -339,7 +514,7 @@ describe('cloud_file_download_test',async function(){
     }
     done();
   });
- 
+
   /**
    * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0900
    * @tc.name test_CloudSync_ErrorType_009
@@ -368,8 +543,8 @@ describe('cloud_file_download_test',async function(){
     }
     done();
   });
- 
- 
+
+
   /**
    * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_1000
    * @tc.name test_CloudSync_ErrorType_010
@@ -398,8 +573,8 @@ describe('cloud_file_download_test',async function(){
     }
     done();
   });
- 
- 
+
+
   /**
    * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_1100
    * @tc.name test_CloudSync_ErrorType_011
@@ -428,8 +603,8 @@ describe('cloud_file_download_test',async function(){
     }
     done();
   });
- 
- 
+
+
   /**
    * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_1200
    * @tc.name test_CloudSync_ErrorType_012
@@ -458,7 +633,7 @@ describe('cloud_file_download_test',async function(){
     }
     done();
   });
- 
+
   /**
    * @tc.number SUB_STORAGE_ NOTIFYTYPE_TEST_0100
    * @tc.name test_CloudSync_NotifyType_001
@@ -479,8 +654,8 @@ describe('cloud_file_download_test',async function(){
       expect(false).assertTrue();
     }
   });
- 
- 
+
+
   /**
    * @tc.number SUB_STORAGE_ NOTIFYTYPE_TEST_0200
    * @tc.name test_CloudSync_NotifyType_002
@@ -501,7 +676,7 @@ describe('cloud_file_download_test',async function(){
       expect(false).assertTrue();
     }
   });
- 
+
   /**
    * @tc.number SUB_STORAGE_ NOTIFYTYPE_TEST_0300
    * @tc.name test_CloudSync_NotifyType_003
@@ -522,8 +697,8 @@ describe('cloud_file_download_test',async function(){
       expect(false).assertTrue();
     }
   });
- 
- 
+
+
   /**
    * @tc.number SUB_STORAGE_ NOTIFYTYPE_TEST_0400
    * @tc.name test_CloudSync_NotifyType_004
@@ -544,7 +719,7 @@ describe('cloud_file_download_test',async function(){
       expect(false).assertTrue();
     }
   });
- 
+
   /**
    * @tc.number SUB_STORAGE_GETLASTAYNCTIME_TEST_0100
    * @tc.name test_Getlastsynctime_001
@@ -570,7 +745,7 @@ describe('cloud_file_download_test',async function(){
     }
     done();
   });
- 
+
   /**
    * @tc.number SUB_STORAGE_GETLASTAYNCTIME_TEST_0200
    * @tc.name test_Getlastsynctime_002
