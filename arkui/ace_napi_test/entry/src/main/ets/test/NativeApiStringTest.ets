@@ -1846,8 +1846,6 @@ export default function nativeApiStringJsunit() {
       expect(value).assertEqual(0)
       done();
     });
-  })
-}
 
     /**
      * @tc.number SUB_ACE_BASIC_ETS_NAPI_0124
