@@ -390,12 +390,13 @@ export default function ImageReceiverTest() {
                         console.info('capture failed :' + err);
                     });
                     await waitUntilImageArrival();
+
                     nextImage = ndkTest.JsReadNextImage(myReceiver);
                     mlg.log("mTestImage 1 " + JSON.stringify(nextImage));
                     let capacityAfterOn = ndkTest.JsImageReceiverOptionsGetCapacity(options);
                     expect( capacityAfterOn == CAPACITY + 1).assertTrue();
-                    imageArrival = false;
 
+                    imageArrival = false;
                     mPhotoOutput.capture(captureSetting).then((result) => {
                         console.info('capture success :' + result);
                     }).catch((err) => {
