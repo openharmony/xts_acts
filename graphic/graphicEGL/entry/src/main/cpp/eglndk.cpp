@@ -15,9 +15,11 @@
 
 #include "napi/native_api.h"
 #include "native_common.h"
+#include <ace/xcomponent/native_interface_xcomponent.h>
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
-#include <GLES3/gl32.h>
+#include <EGL/eglplatform.h>
+#include <GLES3/gl3.h>
 #define NO_ERR 0
 #define SUCCESS 1
 #define FAIL (-1)
