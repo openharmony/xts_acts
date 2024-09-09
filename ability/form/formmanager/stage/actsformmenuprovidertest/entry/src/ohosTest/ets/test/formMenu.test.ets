@@ -45,7 +45,7 @@ export default function abilityTest() {
       await sleep(500);
       await abilityDelegator.startAbility({
         bundleName: PUBLISH_BUNDLE_NAME,
-        abilityName: 'EntryAbility'
+        abilityName: 'TestFormAbility'
       })
       await sleep(1000);
       hilog.info(DOMAIN, TAG, '%{public}s', 'test start');
@@ -60,11 +60,11 @@ export default function abilityTest() {
      * @tc.level Level 3
      */
     it('testAddFormMenuItem0100', 0, async (done: Function) => {
-      const descButton = await driver.findComponent(ON.text(await resourceManager.getStringValue($r('app.string.EntryAbility_desc'))));
+      const descButton = await driver.findComponent(ON.text(await resourceManager.getStringValue($r('app.string.TestFormAbility_desc'))));
       await sleep(200);
       await descButton?.click();
       await sleep(200);
-      const labelButton =  await driver.findComponent(ON.text(await resourceManager.getStringValue($r('app.string.EntryAbility_label'))));
+      const labelButton =  await driver.findComponent(ON.text(await resourceManager.getStringValue($r('app.string.TestFormAbility_label'))));
       await sleep(200);
       await labelButton?.click();
       await sleep(1000);
