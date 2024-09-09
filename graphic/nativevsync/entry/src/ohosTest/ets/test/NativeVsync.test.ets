@@ -16,8 +16,8 @@
 import { describe, expect, it } from '@ohos/hypium'
 import vsync from 'libnativevsync.so'
 
-export default function nativeBufferTest() {
-  describe('NativeVsyncPart2Test', () => {
+export default function nativeVsyncTest() {
+  describe('NativeVsyncTest', () => {
 
     /**
      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_VSYNC_0100

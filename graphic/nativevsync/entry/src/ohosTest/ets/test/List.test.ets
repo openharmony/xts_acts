@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import NativeVsyncTest from './NativeVsync.test';
+import nativeVsyncTest from './NativeVsync.test';
 
 export default function testsuite() {
-  NativeVsyncTest();
+  nativeVsyncTest();
 }
