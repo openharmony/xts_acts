@@ -439,7 +439,7 @@ export default function GaugeTest() {
           if (targetVersion < 11) {
             console.info("ArkUX_Gauge_Colors_InterfaceName_1400 API is not 11")
           } else {
-            expect(JSON.parse(strJson).$attrs.colors).assertEqual("#FF000000");
+            expect(JSON.parse(strJson).$attrs.colors).assertEqual("#FFE84026");
           }
           console.info('ArkUX_Gauge_Colors_InterfaceName_1400 END ');
         } catch (err) {
@@ -703,32 +703,16 @@ export default function GaugeTest() {
             expect(JSON.parse(strJson)
               .$attrs
               .indicator
-              .JSON
-              .parse(strJson)
-              .$attrs
-              .indicator
               .icon).assertEqual("resources/base/media/icon1.svg");
             expect(parseFloat(JSON.parse(strJson)
-              .$attrs
-              .indicator
-              .JSON
-              .parse(strJson)
               .$attrs
               .indicator
               .space)).assertEqual(10);
             expect(JSON.parse(strJson)
               .$attrs
               .indicator
-              .JSON
-              .parse(strJson)
-              .$attrs
-              .indicator
               .space
               .substr(JSON.parse(strJson)
-                .$attrs
-                .indicator
-                .JSON
-                .parse(strJson)
                 .$attrs
                 .indicator
                 .space
@@ -764,10 +748,6 @@ export default function GaugeTest() {
             console.info("ArkUX_Gauge_Indicator_InterfaceName_0200 component JSON.parse(strJson).$attrs.indicator.icon is: " + JSON.parse(strJson)
               .$attrs
               .indicator
-              .JSON
-              .parse(strJson)
-              .$attrs
-              .indicator
               .icon);
             console.info("ArkUX_Gauge_Indicator_InterfaceName_0200 component JSON.parse(strJson).$attrs.indicator.icon.id is: " + $r("app.media.icon1")
               .id
@@ -775,16 +755,8 @@ export default function GaugeTest() {
             console.info("ArkUX_Gauge_Indicator_InterfaceName_0200 component JSON.parse(strJson).$attrs.indicator.space is: " + JSON.parse(strJson)
               .$attrs
               .indicator
-              .JSON
-              .parse(strJson)
-              .$attrs
-              .indicator
               .space);
             expect((JSON.parse(strJson)
-              .$attrs
-              .indicator
-              .JSON
-              .parse(strJson)
               .$attrs
               .indicator
               .icon
@@ -792,24 +764,12 @@ export default function GaugeTest() {
             expect(parseFloat(JSON.parse(strJson)
               .$attrs
               .indicator
-              .JSON
-              .parse(strJson)
-              .$attrs
-              .indicator
               .space)).assertEqual(5);
             expect(JSON.parse(strJson)
               .$attrs
               .indicator
-              .JSON
-              .parse(strJson)
-              .$attrs
-              .indicator
               .space
               .substr(JSON.parse(strJson)
-                .$attrs
-                .indicator
-                .JSON
-                .parse(strJson)
                 .$attrs
                 .indicator
                 .space
@@ -1019,10 +979,6 @@ export default function GaugeTest() {
             expect(JSON.parse(strJson)
               .$attrs
               .indicator
-              .JSON
-              .parse(strJson)
-              .$attrs
-              .indicator
               .icon).assertEqual("SystemStyle");
 
             expect(parseFloat(JSON.parse(strJson).$attrs.indicator.space)).assertEqual(8);
@@ -1064,10 +1020,6 @@ export default function GaugeTest() {
             console.info("ArkUX_Gauge_Indicator_InterfaceName_0800 API is not 11")
           } else {
             expect(JSON.parse(strJson)
-              .$attrs
-              .indicator
-              .JSON
-              .parse(strJson)
               .$attrs
               .indicator
               .icon).assertEqual("SystemStyle");
@@ -1113,10 +1065,6 @@ export default function GaugeTest() {
             expect(JSON.parse(strJson)
               .$attrs
               .indicator
-              .JSON
-              .parse(strJson)
-              .$attrs
-              .indicator
               .icon).assertEqual("SystemStyle");
 
             expect(parseFloat(JSON.parse(strJson).$attrs.indicator.space)).assertEqual(8);
@@ -1158,10 +1106,6 @@ export default function GaugeTest() {
             console.info("ArkUX_Gauge_Indicator_InterfaceName_1000 API is not 11")
           } else {
             expect(JSON.parse(strJson)
-              .$attrs
-              .indicator
-              .JSON
-              .parse(strJson)
               .$attrs
               .indicator
               .icon).assertEqual("SystemStyle");
@@ -1207,10 +1151,6 @@ export default function GaugeTest() {
             expect(JSON.parse(strJson)
               .$attrs
               .indicator
-              .JSON
-              .parse(strJson)
-              .$attrs
-              .indicator
               .icon).assertEqual("SystemStyle");
 
             expect(parseFloat(JSON.parse(strJson).$attrs.indicator.space)).assertEqual(8);
@@ -1252,10 +1192,6 @@ export default function GaugeTest() {
             console.info("ArkUX_Gauge_Indicator_InterfaceName_1200 API is not 11")
           } else {
             expect(JSON.parse(strJson)
-              .$attrs
-              .indicator
-              .JSON
-              .parse(strJson)
               .$attrs
               .indicator
               .icon).assertEqual("SystemStyle");
@@ -1328,10 +1264,6 @@ export default function GaugeTest() {
             console.info("ArkUX_Gauge_Indicator_InterfaceName_1400 API is not 11")
           } else {
             expect(JSON.parse(strJson)
-              .$attrs
-              .indicator
-              .JSON
-              .parse(strJson)
               .$attrs
               .indicator
               .icon).assertEqual("SystemStyle");
