@@ -43,7 +43,7 @@ struct locationButton_1 {
   @State bottom: number = 8
   @State middle: number = 4
   @State heightValue: number = 4
-  marginValue:ESObject = {top:30, bottom:30, left:10, right:10}
+  marginValue:ESObject = {top:30, bottom:20, left:10, right:10}
 
   build() {
     Column() {
