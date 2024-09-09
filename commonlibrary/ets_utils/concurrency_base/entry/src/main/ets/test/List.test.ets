@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import AsyncLockTest from './AsyncLockTest.test.ets'
 import ConcurrencyBaseTest from './ConcurrencyBase.test.ets'
 import SendableChainTest from './SendablesChain.test.ets'
 import SendableGroupTest from './SendablesGroup.test.ets'
@@ -25,6 +26,8 @@ import SendablesTestWithAlloc from './SendablesTestWithAlloc.test.ets'
 import PixMapTest from './PixMapTest.test.ets'
 
 export default function testsuite() {
+    // test case in AsyncLockTest can only be reproduced in the first and standalone testsuite
+    AsyncLockTest();
     ConcurrencyBaseTest();
     SendableChainTest();
     SendableGroupTest();

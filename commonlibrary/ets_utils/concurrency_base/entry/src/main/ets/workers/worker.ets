@@ -75,6 +75,14 @@ async function lockHolderWorkerJob(lockName: string, timeout: number, flagBuf: U
         }, utils.locks.AsyncLockMode.EXCLUSIVE);
 }
 
+async function setDelayRequestAndCloseWorkerInstantlyTest(lockName: string, timeout: number): Promise<void>{
+    let lock = utils.locks.AsyncLock.request(lockName);
+    lock.lockAsync<void>(async () => {
+        await new Promise<void>((resolve) => setTimeout(resolve, timeout));
+        throw new Error('The current request should not be called because worker close instantly after request is created');
+    }, utils.locks.AsyncLockMode.EXCLUSIVE);
+}
+
 workerPort.onmessage = (e: MessageEvents) => {
     let result: Promise<void> | null = null;
     if (e.data['test'] == 'exclusiveMultiWorkerTest') {
@@ -85,6 +93,8 @@ workerPort.onmessage = (e: MessageEvents) => {
         result = twoThreadedDeadlockT2(e.data['lockNameL1'], e.data['lockNameL2'], e.data['flagBuf']);
     } else if (e.data['test'] == 'sequentialLockWorkerTest') {
         result = lockHolderWorkerJob(e.data['lockName'], e.data['timeout'], e.data['flagBuf']);
+    } else if (e.data['test'] == 'setDelayRequestAndCloseWorkerInstantlyTest') {
+        result = setDelayRequestAndCloseWorkerInstantlyTest(e.data['lockName'], e.data['timeout']);
     } else {
         workerPort.postMessage('FAILED: unknown test ' + e.data['test']);
         return;
