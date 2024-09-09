@@ -559,7 +559,7 @@ describe('fileIO_fs_copy', function () {
    console.log('fileIO_copy_async_015 stat1: ' + stat1.size);
    let progressListener = (progress) => {
      console.info(`progressSize15: ${progress.processedSize}, totalSize15: ${progress.totalSize}`);
-     if (progress.processedSize / progress.totalSize > 0.5) {
+     if (progress.processedSize / progress.totalSize > 0.1) {
        copySignal.cancel();
      }
    }; 
@@ -604,7 +604,7 @@ describe('fileIO_fs_copy', function () {
     console.log('fileIO_copy_async_016 stat1: ' + stat1.size);
     let progressListener = (progress) => {
       console.info(`progressSize16: ${progress.processedSize}, totalSize16: ${progress.totalSize}`);
-      if (progress.processedSize / progress.totalSize > 0.5) {
+      if (progress.processedSize / progress.totalSize > 0.1) {
         copySignal.cancel();
       }
     }; 
