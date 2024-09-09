@@ -126,6 +126,7 @@
 	  "MainAbility/pages/Text/TextHalfLeading",
     "MainAbility/pages/Image/ImageResizable",
 	"MainAbility/pages/Text/TextDataDetectorConfig",
-	"MainAbility/pages/Text/FontSettingOptions"
+	"MainAbility/pages/Text/FontSettingOptions",
+	"MainAbility/pages/Text/TextMaxLines"
   ]
 }

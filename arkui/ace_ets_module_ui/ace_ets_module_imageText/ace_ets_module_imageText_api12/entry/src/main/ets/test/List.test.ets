@@ -141,6 +141,7 @@ import TextHalfLeading from './Text/TextHalfLeading.test'
 import ImageResizable from './ImageTest/ImageResizable.test';
 import TextDataDetectorConfig from './Text/TextDataDetectorConfig.test';
 import FontSettingOptions from './Text/FontSettingOptions.test';
+import TextMaxLines from './Text/TextMaxLines.test';
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -264,4 +265,5 @@ export default function testsuite() {
   ImageResizable(); 
   TextDataDetectorConfig();
   FontSettingOptions();
+  TextMaxLines();
 }
