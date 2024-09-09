@@ -207,7 +207,7 @@ export default function registerChangeTest () {
         let count = 0;
         await album.addAssets([asset]);
         await sleep(550);
-        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = album.getAssets(fetchAllOption());
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchAllOption());
         let newAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
         helper.registerChange(album.albumUri, false, async (changeData) => {
           count++;
