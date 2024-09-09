@@ -37,8 +37,13 @@ export default function requestUploadConfigTest() {
      */
     beforeAll(async (done: Function) => {
       try {
-        baseContext = AppStorage.get('context');
-        console.info('====>beforeAll baseContext:'+JSON.stringify(baseContext))
+        let context: common.Context | undefined = AppStorage.get('context');
+        if (context !== undefined){
+          baseContext = context;
+          console.info('====>beforeAll baseContext:'+JSON.stringify(baseContext))
+        } else {
+          console.info('====>beforeAll baseContext is undefined')
+        }
         console.info('====>beforeAll: startServer');
         new Server().startServer();
         console.info('====>beforeAll: startServer success!');
@@ -585,7 +590,7 @@ export default function requestUploadConfigTest() {
         let on_completedCallback =(pro: request.agent.Progress) => {
           task.off('completed', on_completedCallback);
           console.info("====>SUB_REQUEST_Agent_UploadConfig_1400 pro: " + JSON.stringify(pro));
-        expect().assertFail();
+          expect().assertFail();
           done();
         }
 

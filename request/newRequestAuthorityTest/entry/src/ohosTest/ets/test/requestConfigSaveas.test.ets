@@ -46,9 +46,15 @@ export default function requestConfigSavesTest() {
      */
     beforeAll((done: Function) => {
       try {
-        baseContext = AppStorage.get('context');
-        console.info('====>beforeAll baseContext:'+JSON.stringify(baseContext))
-        done();
+        let context: common.Context | undefined = AppStorage.get('context');
+        if (context !== undefined){
+          baseContext = context;
+          console.info('====>beforeAll baseContext:'+JSON.stringify(baseContext))
+          done();
+        } else {
+          console.info('====>beforeAll baseContext is undefined')
+          done();
+        }
       } catch (err) {
         console.info('====>beforeAll catch err:'+JSON.stringify(err))
         done();
@@ -527,7 +533,7 @@ export default function requestConfigSavesTest() {
             try {
               task.off('completed', on_completedCallback);
               console.info("====>SUB_Request_Agent_TaskSaveas_0900 completed task.config.saveas: " + JSON.stringify(task.config.saveas));
-              let path: string = task.config.saveas;
+              let path = task.config.saveas;
               console.info("====>SUB_Request_Agent_TaskSaveas_0900 path: " + path);
               let ifExit: boolean = fs.accessSync(path);
               console.info("====>SUB_Request_Agent_TaskSaveas_0900 ifExit: " + ifExit);
@@ -917,9 +923,9 @@ export default function requestConfigSavesTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_onResponse_0400', 0, async function (done) {
+    it('SUB_Request_Agent_onResponse_0400', 0, async (done: Function) => {
       console.info('====>-----------------------SUB_Request_Agent_onResponse_0400 is starting-----------------------');
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'createTest',
@@ -929,7 +935,7 @@ export default function requestConfigSavesTest() {
         overwrite: true
       };
 
-      let arr = new Array();
+      let arr: Array<number> = new Array();
       let arr1 = [0, 1, 2];
       try {
         let task: request.agent.Task = await request.agent.create(baseContext, config);
@@ -1353,9 +1359,9 @@ export default function requestConfigSavesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_Agent_ContinueDown_0300', 0, async function (done) {
+    it('SUB_Request_Agent_ContinueDown_0300', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_ContinueDown_0300 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'createTest',
@@ -1406,9 +1412,9 @@ export default function requestConfigSavesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_Agent_ContinueDown_0500', 0, async function (done) {
+    it('SUB_Request_Agent_ContinueDown_0500', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_ContinueDown_0500 is starting-----------------------");
-      let config = {
+      let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'createTest',
