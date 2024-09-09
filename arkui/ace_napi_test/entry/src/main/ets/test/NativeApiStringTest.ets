@@ -1841,7 +1841,7 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0123', 0, async function (done) {
     console.info('aceNapiTest0123 START');
-      value = napitest.stopEventLoop()
+      value = napitest.stopEventLoop(0)
       console.info('aceNapiTest0123 testString result is: ' + value);
       expect(value).assertEqual(0)
       done();
