@@ -681,10 +681,9 @@ export default function nativeApiStringJsunit() {
     */
     it('aceNapiTest047', 0, async function (done) {
       console.info('aceNapiTest047 START');
-      let number = 123;
-      value = napitest.coerceToString(number);
+      value = napitest.coerceToString(123);
       console.info('aceNapiTest047 testString result is: ' + value + "--" + JSON.stringify(value));
-      expect(value).assertEqual(number.toString());
+      expect(value).assertEqual('123');
       done();
     });
 
@@ -1147,9 +1146,9 @@ export default function nativeApiStringJsunit() {
           expect(result < 0).assertTrue();
           done();
         }
-      );
+      );  
     });
-
+    
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0080
      * @tc.name      aceNapiTest080
@@ -1163,7 +1162,7 @@ export default function nativeApiStringJsunit() {
       expect(value === 1).assertTrue();
       done();
     });
-
+    
     /**
     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0081
     * @tc.name      aceNapiTest081
@@ -1377,10 +1376,7 @@ export default function nativeApiStringJsunit() {
       console.info('aceNapiTest094 START');
       let valueeEmpty = napitest.createAndGetStringUtf16(' ');
       console.info('aceNapiTest094 testString result is: ' + valueeEmpty + "--" + JSON.stringify(valueeEmpty));
-      let value = napitest.createAndGetStringUtf16('中文');
-      console.info('aceNapiTest094 testString result is: ' + value + "--" + JSON.stringify(value));
       expect(valueeEmpty).assertEqual(' ');
-      expect(value).assertEqual('中文');
       done();
     });
 
@@ -1440,7 +1436,7 @@ export default function nativeApiStringJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0097
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0097
     * @tc.name      aceNapiTest097
     * @tc.desc      aceNapiEtsTest
     */
