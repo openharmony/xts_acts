@@ -901,5 +901,30 @@ export default function displayTest() {
         }
       });
     })
+
+    /**
+         * @tc.number : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5180
+         * @tc.name   : testGetAvailableWidthAndHeight
+         * @tc.desc   : get display available width and height
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 3
+         */
+    it('testGetAvailableWidthAndHeight', 0, (done: Function) => {
+      let caseName = 'testGetAvailableWidthAndHeight';
+      console.info(`jsunittets ${caseName} begin`);
+      try {
+        let displayInfo = display.getDefaultDisplaySync();
+        console.info(`${caseName} availableWidth: ${displayInfo.availableWidth}`);
+        console.info(`${caseName} availableHeight: ${displayInfo.availableHeight}`);
+        expect(displayInfo.availableWidth).assertLargerOrEqual(0);
+        expect(displayInfo.availableHeight).assertLargerOrEqual(0);
+        done();
+      } catch (error) {
+        console.error(`jsunittets ${caseName} fail to get display available info :`+ error);
+        expect().assertFail();
+        done();
+      }
+    })
   })
 }
