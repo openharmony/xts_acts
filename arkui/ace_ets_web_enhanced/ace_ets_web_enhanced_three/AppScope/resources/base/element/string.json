@@ -2,11 +2,7 @@
   "string": [
     {
       "name": "app_name",
-      "value": "ActsAceWebEnhancedTestThree"
-    },
-    {
-      "name": "description_application",
-      "value": "ActsAceWebEnhancedTestThree"
+      "value": "MyApplication"
     }
   ]
 }
