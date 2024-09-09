@@ -13,48 +13,49 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
 
+// @ts-ignore
 import napitest from 'libnapitest.so'
 
 export default function napiBufferTest() {
 
-  describe('napiBufferTest', () => {
+  describe('napiBufferTest', function () {
 
     /**
-     * run after testcase
-     */
-    afterEach(async () => {
+    * run after testcase
+    */
+    afterEach(async function () {
       console.info('[napiBufferTest] after each called')
     });
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0001
-     * @tc.name napiBufferTest001
-     * @tc.desc aceNapiEtsTest
-     */
-    it('napiBufferTest001', 0, () => {
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0001
+    * @tc.name      napiBufferTest001
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('napiBufferTest001', 0, function () {
       expect(napitest.CreateBuffer().toString()).assertDeepEquals(napitest.testStr);
       expect(napitest.CreateExternalBuffer().toString()).assertDeepEquals(napitest.testStr);
     })
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0001
-     * @tc.name napiBufferTest001
-     * @tc.desc aceNapiEtsTest
-     */
-    it('napiBufferTest002', 0, () => {
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0001
+    * @tc.name      napiBufferTest001
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('napiBufferTest002', 0, function () {
       let buffer = napitest.CreateBuffer();
       expect(napitest.IsBuffer(buffer)).assertTrue();
       expect(napitest.GetBufferInfo(buffer)).assertTrue();
     })
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0001
-     * @tc.name napiBufferTest001
-     * @tc.desc aceNapiEtsTest
-     */
-    it('napiBufferTest003', 0, () => {
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0001
+    * @tc.name      napiBufferTest001
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('napiBufferTest003', 0, function () {
       expect(napitest.BufferCopy().toString()).assertDeepEquals(napitest.testStr);
     })
   })
