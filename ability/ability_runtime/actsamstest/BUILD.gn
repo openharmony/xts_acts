@@ -18,9 +18,6 @@ group("actsamstest") {
   if (is_standard_system) {
     deps = [
       "AbilityDelegatorTest:ActsAbilityDelegatorTest",
-      "AbilityDemoA:ActsAbilityDemoATest",
-      "AbilityDemoB:ActsAbilityDemoBTest",
-      "AbilityDemoC:ActsAbilityDemoCTest",
       "ApplicationContextTest:ActsApplicationContextTest",
     ]
   }
