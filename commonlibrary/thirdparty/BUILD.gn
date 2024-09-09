@@ -20,5 +20,6 @@ group("thirdparty") {
       deps += [ "musl32:ActsThirdPartyMusl32Test" ]
     }
     deps += [ "decimal:decimal" ]
+    deps += [ "ubsan:ActsThirdPartyUBSanTest" ]
   }
 }

@@ -109,7 +109,7 @@ struct LocalTest {
           })
       }
     }
-    .alignItems(HorizontalAlign.Start)
+    .alignItems(HorizontalAlign.Center)
     .justifyContent(FlexAlign.Start)
     .width('100%')
     .height('100%')

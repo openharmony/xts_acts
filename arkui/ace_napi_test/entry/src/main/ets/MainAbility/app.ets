@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,10 +20,10 @@ import testsuite from '../test/List.test'
 export default {
   onCreate() {
     console.info('Application onCreate')
-    // var abilityDelegator: any
-    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    // var abilityDelegatorArguments: any
-    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    var abilityDelegator: any
+    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    var abilityDelegatorArguments: any
+    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     console.info('start run testcase!!!')
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   },
