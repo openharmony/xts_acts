@@ -12,40 +12,43 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import Ability from '@ohos.app.ability.UIAbility';
 
 export default class MainAbility extends Ability {
   onCreate(want, launchParam) {
     // Ability is creating, initialize resources for this ability
-    console.log("[Demo] MainAbility onCreate");
+    console.log('[Demo] MainAbility onCreate');
     globalThis.abilityWant = want;
+    globalThis.abilityLaunchParam = launchParam;
+    AppStorage.setOrCreate("abilityWant", want);
   }
 
   onDestroy() {
     // Ability is destroying, release resources for this ability
-    console.log("[Demo] MainAbility onDestroy");
+    console.log('[Demo] MainAbility onDestroy');
   }
 
   onWindowStageCreate(windowStage) {
     // Main window is created, set main page for this ability
-    console.log("[Demo] MainAbility onWindowStageCreate windowStage=" + windowStage);
+    console.log('[Demo] MainAbility onWindowStageCreate windowStage=' + windowStage);
     globalThis.windowStage = windowStage;
     globalThis.abilityContext = this.context;
-    windowStage.setUIContent(this.context, "MainAbility/pages/web", null);
+    windowStage.setUIContent(this.context, 'testability/pages/web', null);
   }
 
   onWindowStageDestroy() {
     //Main window is destroyed, release UI related resources
-    console.log("[Demo] MainAbility onWindowStageDestroy");
+    console.log('[Demo] MainAbility onWindowStageDestroy');
   }
 
   onForeground() {
     // Ability has brought to foreground
-    console.log("[Demo] MainAbility onForeground");
+    console.log('[Demo] MainAbility onForeground');
   }
 
   onBackground() {
     // Ability has back to background
-    console.log("[Demo] MainAbility onBackground");
+    console.log('[Demo] MainAbility onBackground');
   }
 };
