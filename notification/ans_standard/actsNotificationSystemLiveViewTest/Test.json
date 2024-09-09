@@ -3,9 +3,9 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.example.systemliveView",
-        "module-name": "phone",
         "shell-timeout": "600000",
+        "bundle-name": "com.example.systemliveView",
+        "module-name": "entry_test",
         "testcase-timeout": 70000
     },
     "kits": [
@@ -15,13 +15,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
-            "type":"ShellKit",
-            "run-command":[
+        },{
+            "type": "ShellKit",
+            "run-command": [
                 "anm setting -e com.example.systemliveView:0:1"
             ],
             "cleanup-apps":true
         }
-    ] 
+    ]
 }
