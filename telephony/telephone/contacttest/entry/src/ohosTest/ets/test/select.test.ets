@@ -218,12 +218,21 @@ export default function SelectTest() {
                 done();
               }
             });
+            await delay(1000);
             try {
               let driver: Driver = Driver.create();
-              let onType:On = ON.text('小李');
-              let onType1:On = ON.text('完成');
-              await getComponent(driver,onType);
-              await getComponent(driver,onType1);
+              let onType:On = ON.text('知道了');
+              let onType1:On = ON.text('小李');
+              let onType2:On = ON.text('完成');
+              let item:Component = await driver.findComponent(onType);
+              if(!item) {
+                await getComponent(driver,onType1);
+                await getComponent(driver,onType2);
+              }else {
+                await getComponent(driver,onType);
+                await getComponent(driver,onType1);
+                await getComponent(driver,onType2);
+              }
             }catch (err) {
               console.info(`${caseName} get component catch: ${JSON.stringify(err)}`);
               ExpectFail();
