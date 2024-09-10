@@ -49,7 +49,10 @@ struct HomePage {
             .width('100%')
             .buttonStyle(ButtonStyleMode.NORMAL)
             .onClick(event => {
-              certManagerDialog.openCertificateManagerDialog(getContext(this), certManagerDialog.CertificateDialogPageType.PAGE_MAIN);
+              certManagerDialog.openCertificateManagerDialog(
+                getContext(this),
+                certManagerDialog.CertificateDialogPageType.PAGE_MAIN
+                );
             })
             .margin({ top: 24 })
 
@@ -57,7 +60,10 @@ struct HomePage {
             .width('100%')
             .buttonStyle(ButtonStyleMode.NORMAL)
             .onClick(event => {
-              certManagerDialog.openCertificateManagerDialog(getContext(this), certManagerDialog.CertificateDialogPageType.PAGE_CA_CERTIFICATE);
+              certManagerDialog.openCertificateManagerDialog(
+                getContext(this),
+                certManagerDialog.CertificateDialogPageType.PAGE_CA_CERTIFICATE
+                );
             })
             .margin({ top: 24 })
 
@@ -65,7 +71,10 @@ struct HomePage {
             .width('100%')
             .buttonStyle(ButtonStyleMode.NORMAL)
             .onClick(event => {
-              certManagerDialog.openCertificateManagerDialog(getContext(this), certManagerDialog.CertificateDialogPageType.PAGE_CREDENTIAL);
+              certManagerDialog.openCertificateManagerDialog(
+                getContext(this),
+                certManagerDialog.CertificateDialogPageType.PAGE_CREDENTIAL
+                );
             })
             .margin({ top: 24 })
 
@@ -73,7 +82,10 @@ struct HomePage {
             .width('100%')
             .buttonStyle(ButtonStyleMode.NORMAL)
             .onClick(event => {
-              certManagerDialog.openCertificateManagerDialog(getContext(this), certManagerDialog.CertificateDialogPageType.PAGE_INSTALL_CERTIFICATE);
+              certManagerDialog.openCertificateManagerDialog(
+                getContext(this),
+                certManagerDialog.CertificateDialogPageType.PAGE_INSTALL_CERTIFICATE
+                );
             })
             .margin({ top: 24 })
         }.width('100%')
