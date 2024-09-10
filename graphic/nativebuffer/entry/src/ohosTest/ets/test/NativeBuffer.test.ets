@@ -295,7 +295,6 @@ export default function nativeBufferTest() {
       console.info("testNativeBufferFromNativeWindowBufferNormal result: " + result)
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
-      // 第三步返回应该为非0
       expect(result[2]).assertEqual(0);
       done();
     });

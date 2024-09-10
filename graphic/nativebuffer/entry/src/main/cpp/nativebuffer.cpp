@@ -491,7 +491,6 @@ static napi_value OHNativeBufferFromNativeWindowBufferNormal(napi_env env, napi_
     }
     napi_set_element(env, result, NUMBER_1, result1);
 
-    // 第二次执行 接口执行失败，返回错误码应该非0，但实际为0
     ret = OH_NativeBuffer_FromNativeWindowBuffer(nativeWindowBuffer, &buffer);
     napi_create_int32(env, ret, &result1);
     napi_set_element(env, result, NUMBER_2, result1);
