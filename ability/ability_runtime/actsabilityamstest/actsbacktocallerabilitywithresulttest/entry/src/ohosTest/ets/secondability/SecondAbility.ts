@@ -23,7 +23,7 @@ export default class SecondAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'SecondAbility onCreate');
     let callerRequestCode: string = want?.parameters?.[wantConstant.Params.CALLER_REQUEST_CODE] as string;
     hilog.info(0x0000, 'testTag', '%{public}s', 'SecondAbility callerRequestCode' + callerRequestCode);
-    AppStorage.setOrCreate<string>("callerRequestCode", callerRequestCode)
+    AppStorage.setOrCreate<string>("callerRequestCode", callerRequestCode);
     globalThis.secondContext = this.context;
   }
 
