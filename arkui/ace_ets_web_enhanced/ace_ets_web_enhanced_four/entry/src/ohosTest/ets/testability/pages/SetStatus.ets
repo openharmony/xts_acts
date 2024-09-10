@@ -17,7 +17,7 @@ import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { buffer } from '@kit.ArkTS';
 import { WebNetErrorList } from '@ohos.web.netErrorList';
-import { temp } from '../../test/Const';
+import { temp, temps } from '../../test/Const';
 import { LocalContext } from '../../test/GloablConfig';
 import { URL } from './ConstConfig';
 
@@ -41,12 +41,12 @@ struct WebComponent {
                 response.setStatusText('OK');
                 response.setMimeType('text/html');
                 response.setEncoding('utf-8');
-                response.setHeaderByName(temp, 'value1', false);
+                response.setHeaderByName('value1', 'value1', false);
               } catch (error) {
                 console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               try {
-                response.setStatus(temp);
+                response.setStatus(temps);
               } catch (error) {
                 console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 LocalContext.context.eventHub.emit('SetStatus-error', JSON.stringify(error))

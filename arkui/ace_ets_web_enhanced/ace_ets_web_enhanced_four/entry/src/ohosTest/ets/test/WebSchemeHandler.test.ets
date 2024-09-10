@@ -57,13 +57,13 @@ export default function webSchemeHandler() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_0100
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_0100
+     * @tc.name testErrorCodeMessage0100
      * @tc.desc test onRequestStop
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_WEB_ERRORCODEANDERRORMESSAGE_0100', 0, async () => {
+    it('testErrorCodeMessage0100', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0100 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0100 start')
@@ -84,13 +84,13 @@ export default function webSchemeHandler() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_0200
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_0200
+     * @tc.name testErrorCodeMessage0200
      * @tc.desc test onRequestStart
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_WEB_ERRORCODEANDERRORMESSAGE_0200', 0, async () => {
+    it('testErrorCodeMessage0200', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0200 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0200 start')
@@ -112,13 +112,13 @@ export default function webSchemeHandler() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_0300
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_0300
+     * @tc.name testErrorCodeMessage0300
      * @tc.desc test SetHeaderByName-name
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_WEB_ERRORCODEANDERRORMESSAGE_0300', 0, async () => {
+    it('testErrorCodeMessage0300', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0300 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0300 start')
@@ -139,13 +139,13 @@ export default function webSchemeHandler() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_0400
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_0400
+     * @tc.name testErrorCodeMessage0400
      * @tc.desc test SetHeaderByName-value
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_WEB_ERRORCODEANDERRORMESSAGE_0400', 0, async () => {
+    it('testErrorCodeMessage0400', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0400 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0400 start')
@@ -165,13 +165,13 @@ export default function webSchemeHandler() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_0500
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_0500
+     * @tc.name testErrorCodeMessage0500
      * @tc.desc test SetHeaderByName-overwrite
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_WEB_ERRORCODEANDERRORMESSAGE_0500', 0, async () => {
+    it('testErrorCodeMessage0500', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0500 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0500 start')
@@ -191,13 +191,13 @@ export default function webSchemeHandler() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_0600
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_0600
+     * @tc.name testErrorCodeMessage0600
      * @tc.desc test SetEncoding
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_WEB_ERRORCODEANDERRORMESSAGE_0600', 0, async () => {
+    it('testErrorCodeMessage0600', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0600 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0600 start')
@@ -217,13 +217,13 @@ export default function webSchemeHandler() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_0700
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_0700
+     * @tc.name testErrorCodeMessage0700
      * @tc.desc test SetMimeType
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_WEB_ERRORCODEANDERRORMESSAGE_0700', 0, async () => {
+    it('testErrorCodeMessage0700', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0700 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0700 start')
@@ -243,13 +243,13 @@ export default function webSchemeHandler() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_0800
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_0800
+     * @tc.name testErrorCodeMessage0800
      * @tc.desc test SetStatusText
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_WEB_ERRORCODEANDERRORMESSAGE_0800', 0, async () => {
+    it('testErrorCodeMessage0800', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0800 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0800 start')
@@ -269,13 +269,13 @@ export default function webSchemeHandler() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_0900
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_0900
+     * @tc.name testErrorCodeMessage0900
      * @tc.desc test SetStatus
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_WEB_ERRORCODEANDERRORMESSAGE_0900', 0, async () => {
+    it('testErrorCodeMessage0900', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0900 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0900 start')
@@ -295,13 +295,13 @@ export default function webSchemeHandler() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_1000
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_1000
+     * @tc.name testErrorCodeMessage1000
      * @tc.desc test SetNetErrorCode
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_WEB_ERRORCODEANDERRORMESSAGE_1000', 0, async () => {
+    it('testErrorCodeMessage1000', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1000 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1000 start')
@@ -321,13 +321,13 @@ export default function webSchemeHandler() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_1100
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_1100
+     * @tc.name testErrorCodeMessage1100
      * @tc.desc test SetUrl
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_WEB_ERRORCODEANDERRORMESSAGE_1100', 0, async () => {
+    it('testErrorCodeMessage1100', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1100 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1100 start')
@@ -347,13 +347,13 @@ export default function webSchemeHandler() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_1200
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_1200
+     * @tc.name testErrorCodeMessage1200
      * @tc.desc test onRequestStart
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_WEB_ERRORCODEANDERRORMESSAGE_1200', 0, async () => {
+    it('testErrorCodeMessage1200', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1200 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1200 start')
@@ -376,13 +376,13 @@ export default function webSchemeHandler() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_1300
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_1300
+     * @tc.name testErrorCodeMessage1300
      * @tc.desc test onRequestStart
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_WEB_ERRORCODEANDERRORMESSAGE_1300', 0, async () => {
+    it('testErrorCodeMessage1300', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1300 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1300 start')
