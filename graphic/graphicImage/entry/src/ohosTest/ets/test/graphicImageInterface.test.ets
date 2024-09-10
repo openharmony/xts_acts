@@ -42,6 +42,7 @@ export default function graphicImageInterfaceTest() {
      */
     it('testCreatePremultipliedPixelMap_callback', 1, async (done:Function)=> {
       let msg = " =testCreatePremultipliedPixelMap_callback= "
+      console.log(" www data 1" + msg + " begin ")
       const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素buffer大小，取值为：height * width *4
       let bufferArr = new Uint8Array(color);
       for (let i = 0; i < bufferArr.length; i += 4) {
@@ -50,17 +51,21 @@ export default function graphicImageInterfaceTest() {
           bufferArr[i+2] = 122;
           bufferArr[i+3] = 122;
       }
-      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 2, width: 2 } , alphaType: 3}
+      let opts2: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 2, width: 2 } , alphaType: 2}
+      let opts3: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 2, width: 2 } , alphaType: 3}
+      console.log(" www data 1.1" + msg)
       try {
         console.log(msg + " succeed in try createPixelMapSync ")
-        let srcPixelmap = image.createPixelMapSync(color, opts);
-        let dstPixelMap = image.createPixelMapSync(opts);
-        image.createPremultipliedPixelMap(srcPixelmap, dstPixelMap, (error: BusinessError) => {
+        let srcPixelmap = image.createPixelMapSync(color, opts2);
+        let dstPixelMap = image.createPixelMapSync(opts3);
+        console.log(" www data 1.2" + msg)
+        image.createPremultipliedPixelMap(dstPixelMap, srcPixelmap, (error: BusinessError) => {
           if(error) {
               console.error(msg + ` Failed to convert pixelmap. code is ${error.code}, message is ${error.message} `);
               expect().assertFail()
               done()
           } else {
+              console.log(" www data 1.3" + msg)
               console.info(msg + ' Succeeded in converting pixelmap.');
               expect(true).assertTrue()
               done()
@@ -83,6 +88,7 @@ export default function graphicImageInterfaceTest() {
      */
     it('testCreatePremultipliedPixelMap_promise', 1, async (done:Function)=> {
       let msg = " =testCreatePremultipliedPixelMap_promise= "
+      console.log(" www data 2" + msg + " begin ")
       const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素buffer大小，取值为：height * width *4
       let bufferArr = new Uint8Array(color);
       for (let i = 0; i < bufferArr.length; i += 4) {
@@ -91,12 +97,16 @@ export default function graphicImageInterfaceTest() {
           bufferArr[i+2] = 122;
           bufferArr[i+3] = 122;
       }
-      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 2, width: 2 } , alphaType: 2}
+      let opts2: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 2, width: 2 } , alphaType: 2}
+      let opts3: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 2, width: 2 } , alphaType: 3}
+      console.log(" www data 2.1" + msg)
       try {
         console.log(msg + " succeed in try createPixelMapSync ")
-        let srcPixelmap = image.createPixelMapSync(color, opts);
-        let dstPixelMap = image.createPixelMapSync(opts);
-        image.createPremultipliedPixelMap(srcPixelmap, dstPixelMap).then(() => {
+        let srcPixelmap = image.createPixelMapSync(color, opts2);
+        let dstPixelMap = image.createPixelMapSync(opts3);
+        console.log(" www data 2.2" + msg)
+        image.createPremultipliedPixelMap(dstPixelMap, srcPixelmap).then(() => {
+            console.log(" www data 2.3" + msg)
             console.info(msg + ' Succeeded in converting pixelmap.');
             expect(true).assertTrue()
             done()
@@ -122,6 +132,7 @@ export default function graphicImageInterfaceTest() {
      */
     it('testCreateUnpremultipliedPixelMap_callback', 1, async (done:Function)=> {
       let msg = " =testCreateUnpremultipliedPixelMap_callback= "
+      console.log(" www data 3" + msg + " begin ")
       const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素buffer大小，取值为：height * width *4
       let bufferArr = new Uint8Array(color);
       for (let i = 0; i < bufferArr.length; i += 4) {
@@ -130,17 +141,21 @@ export default function graphicImageInterfaceTest() {
           bufferArr[i+2] = 122;
           bufferArr[i+3] = 122;
       }
-      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 2, width: 2 } , alphaType: 2}
+      let opts2: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 2, width: 2 } , alphaType: 2}
+      let opts3: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 2, width: 2 } , alphaType: 3}
+      console.log(" www data 3.1" + msg)
       try {
         console.log(msg + " succeed in try createPixelMapSync ")
-        let srcPixelmap = image.createPixelMapSync(color, opts);
-        let dstPixelMap = image.createPixelMapSync(opts);
+        let srcPixelmap = image.createPixelMapSync(color, opts2);
+        let dstPixelMap = image.createPixelMapSync(opts3);
+        console.log(" www data 3.2" + msg)
         image.createUnpremultipliedPixelMap(srcPixelmap, dstPixelMap, (error: BusinessError) => {
           if(error) {
               console.error(msg + ` Failed to convert pixelmap. code is ${error.code}, message is ${error.message} `);
               expect().assertFail()
               done()
           } else {
+              console.log(" www data 3.3" + msg)
               console.info(msg + ' Succeeded in converting pixelmap.');
               expect(true).assertTrue()
               done()
@@ -163,6 +178,7 @@ export default function graphicImageInterfaceTest() {
      */
     it('testCreateUnpremultipliedPixelMap_promise', 1, async (done:Function)=> {
       let msg = " =testCreateUnpremultipliedPixelMap_promise= "
+      console.log(" www data 4" + msg + " begin ")
       const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素buffer大小，取值为：height * width *4
       let bufferArr = new Uint8Array(color);
       for (let i = 0; i < bufferArr.length; i += 4) {
@@ -171,12 +187,16 @@ export default function graphicImageInterfaceTest() {
           bufferArr[i+2] = 122;
           bufferArr[i+3] = 122;
       }
-      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 2, width: 2 } , alphaType: 3}
+      let opts2: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 2, width: 2 } , alphaType: 2}
+      let opts3: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 2, width: 2 } , alphaType: 3}
+      console.log(" www data 4.1" + msg)
       try {
         console.log(msg + " succeed in try createPixelMapSync ")
-        let srcPixelmap = image.createPixelMapSync(color, opts);
-        let dstPixelMap = image.createPixelMapSync(opts);
+        let srcPixelmap = image.createPixelMapSync(color, opts2);
+        let dstPixelMap = image.createPixelMapSync(opts3);
+        console.log(" www data 4.2" + msg)
         image.createUnpremultipliedPixelMap(srcPixelmap, dstPixelMap).then(() => {
+            console.log(" www data 4.3" + msg)
             console.info(msg + ' Succeeded in converting pixelmap.');
             expect(true).assertTrue()
             done()
@@ -239,7 +259,7 @@ export default function graphicImageInterfaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testReadPixelsSync_image', 1, async ()=> {
+    it('testReadPixelsSync_image', 1, async (done:Function)=> {
       let msg = " =testReadPixelsSync_image= "
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = {
