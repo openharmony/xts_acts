@@ -16,12 +16,12 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { webview } from '@kit.ArkWeb';
-import { temp } from './Const';
 import { Driver } from '@kit.TestKit';
 import { router } from '@kit.ArkUI';
 import { LocalContext } from './GloablConfig';
 
 let driver: Driver = Driver.create();
+let flg: boolean = false
 
 export default function webSchemeHandler() {
   describe('ActsWebSchemeHandlerTest', () => {
@@ -32,11 +32,13 @@ export default function webSchemeHandler() {
       // This API supports only one parameter: preset action function.
     })
     beforeEach(() => {
+      flg = false;
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
     afterEach(() => {
+      flg = false;
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
@@ -56,61 +58,6 @@ export default function webSchemeHandler() {
     })
 
     /**
-     * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_0100
-     * @tc.name testErrorCodeMessage0100
-     * @tc.desc test onRequestStop
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 3
-     */
-    it('testErrorCodeMessage0100', 0, async () => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0100 start')
-      console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0100 start')
-      await driver.delayMs(500)
-
-      LocalContext.context.eventHub.on("OnRequestStop-error", (error: string) => {
-        let e = JSON.parse(error) as ErrorHttp
-        expect(e.code).assertEqual("401")
-        console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0100 end')
-        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0100 end')
-      })
-      router.pushUrl({
-        url: "testability/pages/OnRequestStop"
-      })
-      await driver.delayMs(1000)
-      router.clear()
-    })
-
-    /**
-     * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_0200
-     * @tc.name testErrorCodeMessage0200
-     * @tc.desc test onRequestStart
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 3
-     */
-    it('testErrorCodeMessage0200', 0, async () => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0200 start')
-      console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0200 start')
-      await driver.delayMs(500)
-
-      LocalContext.context.eventHub.on("OnRequestStartRequest-error", (error: string) => {
-        let e = JSON.parse(error) as ErrorHttp
-        expect(e.code).assertEqual("401")
-        console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0200 end')
-        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0200 end')
-      })
-      router.pushUrl({
-        url: "testability/pages/OnRequestStartRequest"
-      })
-      await driver.delayMs(10000)
-      router.clear()
-    })
-
-
-    /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_0300
      * @tc.name testErrorCodeMessage0300
      * @tc.desc test SetHeaderByName-name
@@ -123,16 +70,18 @@ export default function webSchemeHandler() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0300 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0300 start')
       await driver.delayMs(500)
-      LocalContext.context.eventHub.on("SetHeaderByName-name-error", (error: string) => {
-        let e = JSON.parse(error) as ErrorHttp
-        expect(e.code).assertEqual("401")
+      LocalContext.context.eventHub.on("SetHeaderByName-name-error", (code: string, message: string) => {
+        flg = true
+        expect(code).assertEqual("401")
+        expect(message).assertEqual("BusinessError 401: Parameter error. The type of 'name' must be string.")
         console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0300 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0300 end')
       })
       router.pushUrl({
         url: "testability/pages/SetHeaderByName-name"
       })
-      await driver.delayMs(1000)
+      await driver.delayMs(2000)
+      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -150,16 +99,18 @@ export default function webSchemeHandler() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0400 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0400 start')
       await driver.delayMs(500)
-      LocalContext.context.eventHub.on("SetHeaderByName-value-error", (error: string) => {
-        let e = JSON.parse(error) as ErrorHttp
-        expect(e.code).assertEqual("401")
+      LocalContext.context.eventHub.on("SetHeaderByName-value-error", (code: string, message: string) => {
+        flg = true
+        expect(code).assertEqual("401")
+        expect(message).assertEqual("BusinessError 401: Parameter error. The type of 'value' must be string.")
         console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0400 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0400 end')
       })
       router.pushUrl({
         url: "testability/pages/SetHeaderByName-value"
       })
-      await driver.delayMs(1000)
+      await driver.delayMs(2000)
+      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -176,16 +127,18 @@ export default function webSchemeHandler() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0500 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0500 start')
       await driver.delayMs(500)
-      LocalContext.context.eventHub.on("SetHeaderByName-overwrite-error", (error: string) => {
-        let e = JSON.parse(error) as ErrorHttp
-        expect(e.code).assertEqual("401")
+      LocalContext.context.eventHub.on("SetHeaderByName-overwrite-error", (code: string, message: string) => {
+        flg = true
+        expect(code).assertEqual("401")
+        expect(message).assertEqual("BusinessError 401: Parameter error. The type of 'overwrite' must be booleane.")
         console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0500 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0500 end')
       })
       router.pushUrl({
         url: "testability/pages/SetHeaderByName-overwrite"
       })
-      await driver.delayMs(1000)
+      await driver.delayMs(2000)
+      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -202,16 +155,18 @@ export default function webSchemeHandler() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0600 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0600 start')
       await driver.delayMs(500)
-      LocalContext.context.eventHub.on("SetEncoding-error", (error: string) => {
-        let e = JSON.parse(error) as ErrorHttp
-        expect(e.code).assertEqual("401")
+      LocalContext.context.eventHub.on("SetEncoding-error", (code: string, message: string) => {
+        flg = true
+        expect(code).assertEqual("401")
+        expect(message).assertEqual("BusinessError 401: Parameter error. The type of 'encoding' must be string.")
         console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0600 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0600 end')
       })
       router.pushUrl({
         url: "testability/pages/SetEncoding"
       })
-      await driver.delayMs(1000)
+      await driver.delayMs(2000)
+      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -228,16 +183,18 @@ export default function webSchemeHandler() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0700 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0700 start')
       await driver.delayMs(500)
-      LocalContext.context.eventHub.on("SetMimeType-error", (error: string) => {
-        let e = JSON.parse(error) as ErrorHttp
-        expect(e.code).assertEqual("401")
+      LocalContext.context.eventHub.on("SetMimeType-error", (code: string, message: string) => {
+        flg = true
+        expect(code).assertEqual("401")
+        expect(message).assertEqual("BusinessError 401: Parameter error. The type of 'type' must be string.")
         console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0700 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0700 end')
       })
       router.pushUrl({
         url: "testability/pages/SetMimeType"
       })
-      await driver.delayMs(1000)
+      await driver.delayMs(2000)
+      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -254,16 +211,18 @@ export default function webSchemeHandler() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0800 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0800 start')
       await driver.delayMs(500)
-      LocalContext.context.eventHub.on("SetStatusText-error", (error: string) => {
-        let e = JSON.parse(error) as ErrorHttp
-        expect(e.code).assertEqual("401")
+      LocalContext.context.eventHub.on("SetStatusText-error", (code: string, message: string) => {
+        flg = true
+        expect(code).assertEqual("401")
+        expect(message).assertEqual("BusinessError 401: Parameter error. The type of 'text' must be string.")
         console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0800 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0800 end')
       })
       router.pushUrl({
         url: "testability/pages/SetStatusText"
       })
-      await driver.delayMs(1000)
+      await driver.delayMs(2000)
+      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -280,16 +239,18 @@ export default function webSchemeHandler() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0900 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0900 start')
       await driver.delayMs(500)
-      LocalContext.context.eventHub.on("SetStatus-error", (error: string) => {
-        let e = JSON.parse(error) as ErrorHttp
-        expect(e.code).assertEqual("401")
+      LocalContext.context.eventHub.on("SetStatus-error", (code: string, message: string) => {
+        flg = true
+        expect(code).assertEqual("401")
+        expect(message).assertEqual("BusinessError 401: Parameter error. The type of 'code' must be int.")
         console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0900 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0900 end')
       })
       router.pushUrl({
         url: "testability/pages/SetStatus"
       })
-      await driver.delayMs(1000)
+      await driver.delayMs(2000)
+      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -306,16 +267,18 @@ export default function webSchemeHandler() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1000 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1000 start')
       await driver.delayMs(500)
-      LocalContext.context.eventHub.on("SetNetErrorCode-error", (error: string) => {
-        let e = JSON.parse(error) as ErrorHttp
-        expect(e.code).assertEqual("401")
+      LocalContext.context.eventHub.on("SetNetErrorCode-error", (code: string, message: string) => {
+        flg = true
+        expect(code).assertEqual("401")
+        expect(message).assertEqual("BusinessError 401: Parameter error. The type of 'code' must be int.")
         console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1000 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1000 end')
       })
       router.pushUrl({
         url: "testability/pages/SetNetErrorCode"
       })
-      await driver.delayMs(1000)
+      await driver.delayMs(2000)
+      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -332,16 +295,18 @@ export default function webSchemeHandler() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1100 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1100 start')
       await driver.delayMs(500)
-      LocalContext.context.eventHub.on("SetUrl-error", (error: string) => {
-        let e = JSON.parse(error) as ErrorHttp
-        expect(e.code).assertEqual("401")
+      LocalContext.context.eventHub.on("SetUrl-error", (code: string, message: string) => {
+        flg = true
+        expect(code).assertEqual("401")
+        expect(message).assertEqual("BusinessError 401: Parameter error. The type of 'url' must be string.")
         console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1100 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1100 end')
       })
       router.pushUrl({
         url: "testability/pages/SetUrl"
       })
-      await driver.delayMs(1000)
+      await driver.delayMs(2000)
+      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -357,11 +322,13 @@ export default function webSchemeHandler() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1200 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1200 start')
-      await driver.delayMs(500)
 
-      LocalContext.context.eventHub.on("ReadTest-error", (error: string) => {
-        let e = JSON.parse(error) as ErrorHttp
-        expect(e.code).assertEqual("401")
+      await driver.delayMs(500)
+      LocalContext.context.eventHub.on("ReadTest-error", (code: string, message: string) => {
+        flg = true
+        expect(code).assertEqual("401")
+        expect(message)
+          .assertEqual("BusinessError 401: Parameter error. The value of size must be a number greater than 0.")
         console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1200 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1200 end')
       })
@@ -370,41 +337,10 @@ export default function webSchemeHandler() {
       })
       await driver.delayMs(1000)
       sendEventByKey("001", 10, "")
-      await driver.delayMs(1000)
+      await driver.delayMs(2000)
+      expect(flg).assertTrue()
       router.clear()
     })
-
-    /**
-     * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_1300
-     * @tc.name testErrorCodeMessage1300
-     * @tc.desc test onRequestStart
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 3
-     */
-    it('testErrorCodeMessage1300', 0, async () => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1300 start')
-      console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1300 start')
-      await driver.delayMs(500)
-
-      LocalContext.context.eventHub.on("OnRequestStart-error", (error: string) => {
-        let e = JSON.parse(error) as ErrorHttp
-        expect(e.code).assertEqual("401")
-        console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1300 end')
-        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1300 end')
-      })
-      router.pushUrl({
-        url: "testability/pages/OnRequestStart"
-      })
-      await driver.delayMs(10000)
-      router.clear()
-    })
-
 
   })
-}
-
-interface ErrorHttp {
-  code: string
 }

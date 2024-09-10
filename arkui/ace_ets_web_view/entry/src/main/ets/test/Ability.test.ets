@@ -17,6 +17,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { webview } from '@kit.ArkWeb';
 import { temp } from './Const';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
@@ -69,8 +70,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands)
       } catch (e) {
-        let s = e as ErrorHttp
-        expect(s.code).assertEqual("17100002")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("17100002")
+        expect(e.message).assertEqual("Invalid url")
         console.info('Sub_WEB_PrefetchResource_0100 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0100 end')
         return
@@ -108,9 +110,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands)
       } catch (e) {
-        let s = e as ErrorHttp
-        
-        expect(s.code).assertEqual("401")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("401")
+        expect(e.message).assertEqual("Invalid input parameter")
         console.info('Sub_WEB_PrefetchResource_0200 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0200 end')
         return
@@ -149,9 +151,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands)
       } catch (e) {
-        let s = e as ErrorHttp
-        
-        expect(s.code).assertEqual("401")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("401")
+        expect(e.message).assertEqual("Invalid input parameter")
         console.info('Sub_WEB_PrefetchResource_0300 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0300 end')
         return
@@ -189,9 +191,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands)
       } catch (e) {
-        let s = e as ErrorHttp
-        
-        expect(s.code).assertEqual("401")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("401")
+        expect(e.message).assertEqual("Invalid input parameter")
         console.info('Sub_WEB_PrefetchResource_0400 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0400 end')
         return
@@ -230,9 +232,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands)
       } catch (e) {
-        let s = e as ErrorHttp
-        
-        expect(s.code).assertEqual("401")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("401")
+        expect(e.message).assertEqual("Invalid input parameter")
         console.info('Sub_WEB_PrefetchResource_0500 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0500 end')
         return
@@ -270,9 +272,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands, "\t")
       } catch (e) {
-        let s = e as ErrorHttp
-        
-        expect(s.code).assertEqual("401")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("401")
+        expect(e.message).assertEqual("Invalid input parameter")
         console.info('Sub_WEB_PrefetchResource_0600 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0600 end')
         return
@@ -311,9 +313,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands, "event", -1)
       } catch (e) {
-        let s = e as ErrorHttp
-        
-        expect(s.code).assertEqual("401")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("401")
+        expect(e.message).assertEqual("Invalid input parameter")
         console.info('Sub_WEB_PrefetchResource_0700 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0700 end')
         return
@@ -351,8 +353,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands)
       } catch (e) {
-        let s = e as ErrorHttp
-        expect(s.code).assertEqual("17100002")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("17100002")
+        expect(e.message).assertEqual("Invalid url")
         console.info('Sub_WEB_PrefetchResource_0900 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0900 end')
         return
@@ -390,8 +393,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands)
       } catch (e) {
-        let s = e as ErrorHttp
-        expect(s.code).assertEqual("17100002")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("17100002")
+        expect(e.message).assertEqual("Invalid url")
         console.info('Sub_WEB_PrefetchResource_1000 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1000 end')
         return
@@ -429,8 +433,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands)
       } catch (e) {
-        let s = e as ErrorHttp
-        expect(s.code).assertEqual("17100002")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("17100002")
+        expect(e.message).assertEqual("Invalid url")
         console.info('Sub_WEB_PrefetchResource_1100 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1100 end')
         return
@@ -468,9 +473,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands)
       } catch (e) {
-        let s = e as ErrorHttp
-        
-        expect(s.code).assertEqual("401")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("401")
+        expect(e.message).assertEqual("Invalid input parameter")
         console.info('Sub_WEB_PrefetchResource_1200 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1200 end')
         return
@@ -508,9 +513,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands)
       } catch (e) {
-        let s = e as ErrorHttp
-        
-        expect(s.code).assertEqual("401")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("401")
+        expect(e.message).assertEqual("Invalid input parameter")
         console.info('Sub_WEB_PrefetchResource_1300 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1300 end')
         return
@@ -548,9 +553,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands)
       } catch (e) {
-        let s = e as ErrorHttp
-        
-        expect(s.code).assertEqual("401")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("401")
+        expect(e.message).assertEqual("Invalid input parameter")
         console.info('Sub_WEB_PrefetchResource_1400 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1400 end')
         return
@@ -588,9 +593,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands)
       } catch (e) {
-        let s = e as ErrorHttp
-        
-        expect(s.code).assertEqual("401")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("401")
+        expect(e.message).assertEqual("Invalid input parameter")
         console.info('Sub_WEB_PrefetchResource_1500 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1500 end')
         return
@@ -628,9 +633,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands, temp)
       } catch (e) {
-        let s = e as ErrorHttp
-        
-        expect(s.code).assertEqual("401")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("401")
+        expect(e.message).assertEqual("Invalid input parameter")
         console.info('Sub_WEB_PrefetchResource_1600 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1600 end')
         return
@@ -668,9 +673,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands, "event", temp)
       } catch (e) {
-        let s = e as ErrorHttp
-        
-        expect(s.code).assertEqual("401")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("401")
+        expect(e.message).assertEqual("Invalid input parameter")
         console.info('Sub_WEB_PrefetchResource_1700 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1700 end')
         return
@@ -708,9 +713,9 @@ export default function abilityTest() {
       try {
         webview.WebviewController.prefetchResource(info, hands, temp)
       } catch (e) {
-        let s = e as ErrorHttp
-
-        expect(s.code).assertEqual("401")
+        console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
+        expect(e.code).assertEqual("401")
+        expect(e.message).assertEqual("Invalid input parameter")
         console.info('Sub_WEB_PrefetchResource_1800 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1800 end')
         return
@@ -720,8 +725,4 @@ export default function abilityTest() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1800 end')
     })
   })
-}
-
-interface ErrorHttp {
-  code: string
 }
