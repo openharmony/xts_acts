@@ -879,3 +879,26 @@ export function pressureTest() {
   }
   return check("pressureTest", Promise.all(promises));
 }
+
+// test entry point
+export async function setDelayRequestAndCloseWorkerInstantlyTest() {
+  let workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
+  let lockName = 'setDelayRequestAndCloseWorkerInstantlyTest';
+  let lock = utils.locks.AsyncLock.request(lockName);
+  let p = new Promise<void>((resolve, reject) => {
+    workerInstance.postMessage({ test: lockName, lockName: lockName, timeout: 3000 });
+    workerInstance.onmessage = (e: MessageEvents) => {
+      if (e.data === 'PASSED') {
+        workerInstance.terminate();
+        resolve();
+      } else {
+        reject(e.data);
+      }
+    };
+  });
+  // p0 use the same lock with worker thread, if p0 resolved, means lock request created in worker thread is skipped as expected
+  let p0 = lock.lockAsync(async () => {
+    await new Promise<void>((resolve) => setTimeout(resolve, 3000));
+  });
+  return check('setDelayRequestAndCloseWorkerInstantlyTest', Promise.all([p, p0]));
+}
