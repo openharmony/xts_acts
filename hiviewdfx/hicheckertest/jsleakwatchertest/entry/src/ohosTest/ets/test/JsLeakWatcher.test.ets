@@ -16,6 +16,7 @@
 import { describe, expect, it } from '@ohos/hypium'
 import jsLeakWatcher from '@ohos.hiviewdfx.jsLeakWatcher';
 import { BusinessError } from '@ohos.base'
+import common from '@ohos.app.ability.common';
 
 export default function JsLeakWatcherTest() {
   describe('JsLeakWatcherTest', () => {
@@ -92,7 +93,7 @@ export default function JsLeakWatcherTest() {
         expect(check).assertContain("\"name\":\"Object\"");
         expect(check).assertContain("\"msg\":\"test_watch\"");
         console.log('SUB_DFX_DFR_jsLeakWatcher_Interface_0300 check success')
-        let context = getContext();
+        let context: common.UIAbilityContext = globalThis.context;
         let path = jsLeakWatcher.dump(context.filesDir);
         console.info("SUB_DFX_DFR_jsLeakWatcher_Interface_0300 dump success");
         console.log('jsleaklist: ' + path[0] + ', heapsnapshot: ' + path[1])
