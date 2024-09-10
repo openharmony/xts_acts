@@ -33,9 +33,8 @@ export default function BackWithResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_BackWithResult_3000
-     * @tc.name      : Configure bundleName, activityName, and flags, where flags are non numeric strings
-     * @tc.desc      : Call the startAbility interface through context, where the wantAbilityName
-     *                 and bundleName are the correct values,the flag is a string, and the string is a non numeric value
+     * @tc.name      : Test backToCallerAbleWithResult when abilityResult is undefined
+     * @tc.desc      : Verify that the backToCallerAbleWithResult is invalid when abilityResult is undefined
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -49,7 +48,7 @@ export default function BackWithResultTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onForegroundCallback succ`);
         let callerRequestCode: string = AppStorage.get<string>("callerRequestCode") as string;
         try {
-          await SecondAbility.context.backToCallerAbilityWithResult(null, callerRequestCode)
+          await SecondAbility.context.backToCallerAbilityWithResult(undefined, callerRequestCode)
             .then(() => {
               hilog.info(0x0000, TAG, 'backToCallerAbilityWithResult succeed');
               expect().assertFail();
@@ -82,9 +81,11 @@ export default function BackWithResultTest() {
           await context.startAbilityForResult(want).then(async () => {
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
           }).catch((err: BusinessError) => {
+            expect().assertFail();
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
           })
         } catch (error) {
+          expect().assertFail();
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         }
       }));
@@ -92,9 +93,8 @@ export default function BackWithResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_BackWithResult_2900
-     * @tc.name      : Configure bundleName, activityName, and flags, where flags are non numeric strings
-     * @tc.desc      : Call the startAbility interface through context, where the wantAbilityName
-     *                 and bundleName are the correct values,the flag is a string, and the string is a non numeric value
+     * @tc.name      : Test backToCallerAbleWithResult when requestCode is undefined
+     * @tc.desc      : Verify that the backToCallerAbleWithResult is invalid when requestCode is undefined
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -113,7 +113,7 @@ export default function BackWithResultTest() {
           resultCode
         };
         try {
-          await SecondAbility.context.backToCallerAbilityWithResult(abilityResult, null)
+          await SecondAbility.context.backToCallerAbilityWithResult(abilityResult, undefined)
             .then(() => {
               hilog.info(0x0000, TAG, 'backToCallerAbilityWithResult succeed');
               expect().assertFail();
@@ -146,9 +146,11 @@ export default function BackWithResultTest() {
           await context.startAbilityForResult(want).then(async () => {
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
           }).catch((err: BusinessError) => {
+            expect().assertFail();
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
           })
         } catch (error) {
+          expect().assertFail();
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         }
       }));
@@ -156,9 +158,8 @@ export default function BackWithResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_BackWithResult_2900
-     * @tc.name      : Configure bundleName, activityName, and flags, where flags are non numeric strings
-     * @tc.desc      : Call the startAbility interface through context, where the wantAbilityName
-     *                 and bundleName are the correct values,the flag is a string, and the string is a non numeric value
+     * @tc.name      : Test backToCallerAbleWithResult when requestCode is undefined
+     * @tc.desc      : Verify that the backToCallerAbleWithResult is invalid when requestCode is invalid
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -209,9 +210,11 @@ export default function BackWithResultTest() {
           await context.startAbilityForResult(want).then(async () => {
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
           }).catch((err: BusinessError) => {
+            expect().assertFail();
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
           })
         } catch (error) {
+          expect().assertFail();
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         }
       }));
