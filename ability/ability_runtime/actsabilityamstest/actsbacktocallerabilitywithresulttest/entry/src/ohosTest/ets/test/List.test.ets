@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import BackWithResultTest from './BackWithResultTest.test'
+import BackWithResultTest from './BackWithResultTest.test';
 
 export default function testsuite() {
-  BackWithResultTest()
+  BackWithResultTest();
 }
