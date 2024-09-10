@@ -40,6 +40,9 @@ ohos_shared_library("napitest") {
   include_dirs = [ "../cpp" ]
   configs = [ ":config" ]
 
+  # add for third-party depend checking failed
+  testonly = true
+
   deps = [ "//third_party/bounds_checking_function:libsec_static" ]
 
   external_deps = [ "napi:ace_napi" ]
