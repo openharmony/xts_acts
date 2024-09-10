@@ -18,18 +18,6 @@ import testsuite from '../../test/List.test';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Curves from '@ohos.curves';
 
-function fakeListItemStyle(val: ListItemStyle | string | null ): ListItemStyle {
-  return val as ListItemStyle
-}
-
-function fakeListItemGroupStyle(val: ListItemGroupStyle | string | null ): ListItemGroupStyle {
-  return val as ListItemGroupStyle
-}
-
-function fakeScrollSnapAlign(val: ScrollSnapAlign | string | null ): ScrollSnapAlign {
-  return val as ScrollSnapAlign
-}
-
 @Entry
 @Component
 struct Index {
@@ -272,4 +260,16 @@ struct Index {
     }
     .height('100%')
   }
+}
+
+function fakeListItemStyle(val: ListItemStyle | string | null ):ListItemStyle{
+  return val as ListItemStyle
+}
+
+function fakeListItemGroupStyle(val: ListItemGroupStyle | string | null ):ListItemGroupStyle{
+  return val as ListItemGroupStyle
+}
+
+function fakeScrollSnapAlign(val: ScrollSnapAlign | string | null ):ScrollSnapAlign{
+  return val as ScrollSnapAlign
 }

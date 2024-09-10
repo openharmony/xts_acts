@@ -18,15 +18,6 @@ import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import testsuite from '../../test/List.test'
 
-function fakeGaugeIndicatorOptions(val: GaugeIndicatorOptions | string | number): GaugeIndicatorOptions {
-  return val as GaugeIndicatorOptions;
-}
-
-function fakeGaugeShadowOptions(val: GaugeShadowOptions | string | number): GaugeShadowOptions {
-  return val as GaugeShadowOptions;
-}
-
-
 @Entry
 @Component
 struct gaugeTest {
@@ -508,4 +499,13 @@ struct gaugeTest {
         .height(200)
     }
   }
+}
+
+
+function fakeGaugeIndicatorOptions(val: GaugeIndicatorOptions | string | number):GaugeIndicatorOptions{
+  return val as GaugeIndicatorOptions;
+}
+
+function fakeGaugeShadowOptions(val: GaugeShadowOptions | string | number):GaugeShadowOptions{
+  return val as GaugeShadowOptions;
 }

@@ -134,6 +134,6 @@ struct PanelExample {
   }
 }
 
-function fakeBoolean(val: string|number|boolean) {
+function fakeBoolean(val: string | number | boolean): boolean {
   return val as boolean;
 }
