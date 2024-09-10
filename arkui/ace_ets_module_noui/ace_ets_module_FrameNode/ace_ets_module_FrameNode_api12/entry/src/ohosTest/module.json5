@@ -23,7 +23,6 @@
     "deviceTypes": [
       "tablet",
       "default",
-      "phone",
       "2in1",
       "wearable"
     ],
@@ -43,7 +42,7 @@
         "description": "$string:phone_entry_main",
         "icon": "$media:icon",
         "label": "$string:entry_label",
-        "visible": true,
+        "exported": true,
         "orientation": "portrait",
         "skills": [
           {

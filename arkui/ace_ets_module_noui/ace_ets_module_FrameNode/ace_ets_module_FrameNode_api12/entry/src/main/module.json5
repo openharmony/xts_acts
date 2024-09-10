@@ -21,7 +21,6 @@
     "deviceTypes": [
       "tablet",
       "default",
-      "phone",
       "2in1",
       "wearable"
     ],
