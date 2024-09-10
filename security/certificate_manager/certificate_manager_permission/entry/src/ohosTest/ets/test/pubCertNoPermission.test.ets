@@ -64,42 +64,42 @@ export default function pubCertJsAPINoPermissionTestUnit() {
     });
 
     /**
-     * @tc.number Security_CertManager_GetPriCertJsApi_Func_0020
+     * @tc.number SUB_Security_CertManager_GetPriCertJsApi_Func_0020
      * @tc.name test getPublicCertificate with normal parameters
      * @tc.desc not use promise type
      * @tc.size SmallTest
      * @tc.level Level1
      * @tc.type Function
      */
-    it('Security_CertManager_GetPriCertJsApi_Func_0020', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetPriCertJsApi_Func_0020', 0, async (done: Function) => {
       console.log("Security_CertManager_GetPriCertJsApi_Func_0020: started.");
       let cmResult: certManager.CMResult = {};
       try {
         cmResult = await certManager.getPrivateCertificates();
         expect(null).assertFail();
       } catch (err) {
-        console.log("SUB_Security_CertManager_PubCertJsApi_Func_0001: e.code = " + err.code);
+        console.log("SUB_Security_CertManager_GetPriCertJsApi_Func_0020: e.code = " + err.code);
         expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_NO_PERMISSION)
       }
       done();
     });
 
     /**
-     * @tc.number Security_CertManager_OpenCertDialogCertJsApi_Func_0010
+     * @tc.number SUB_Security_CertManager_OpenCertDialogCertJsApi_Func_0010
      * @tc.name test getPublicCertificate with normal parameters
      * @tc.desc use promise type
      * @tc.size SmallTest
      * @tc.level Level1
      * @tc.type Function
      */
-    it('Security_CertManager_OpenCertDialogCertJsApi_Func_0010', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_OpenCertDialogCertJsApi_Func_0010', 0, async (done: Function) => {
       const test : common.Context = GlobalContext.getContext()
       try {
         await certManagerDialog.openCertificateManagerDialog(test, certManagerDialog.CertificateDialogPageType.PAGE_MAIN);
         expect(null).assertFail();
       } catch (err) {
-        console.log("Security_CertManager_OpenCertDialogCertJsApi_Func_0010: Context = " + JSON.stringify(test));
-        console.log("Security_CertManager_OpenCertDialogCertJsApi_Func_0010: e.code = " + err.code);
+        console.log("SUB_Security_CertManager_OpenCertDialogCertJsApi_Func_0010: Context = " + JSON.stringify(test));
+        console.log("SUB_Security_CertManager_OpenCertDialogCertJsApi_Func_0010: e.code = " + err.code);
         expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_NO_PERMISSION);
       }
       done();

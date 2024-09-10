@@ -19,6 +19,6 @@ import userAndSysCertNoPermissionJsTestUnit from './userAndSysCertNoPermission.t
 
 export default function testsuite() {
   priCertJsAPINoPermissionTestUnit();
-  pubCertJsAPINoPermissionTestUnit();
   userAndSysCertNoPermissionJsTestUnit();
+  pubCertJsAPINoPermissionTestUnit();
 }
