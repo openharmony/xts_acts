@@ -34,7 +34,7 @@ const pcUserAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKi
 @CustomDialog
 export struct NewWebViewComp {
   dialogController: CustomDialogController;
-  url: string;
+  url?: string;
   @State text: string = '日志在这里显示'
   @State javaScriptAccess: boolean = true;
   @State multitAccess: boolean = true;
@@ -82,8 +82,8 @@ struct indexTwo {
   @State javaScriptAccess: boolean = true;
   @State multitAccess: boolean = true;
   controller: web_webview.WebviewController = new web_webview.WebviewController();
-  dialogController: CustomDialogController = null;
-  popController: web_webview.WebviewController = null;
+  dialogController: CustomDialogController | null = null;
+  popController: web_webview.WebviewController | null = null;
   @State allowWindow: boolean = true;
   @State str: string = "emitAllowWindowOpenMethod";
 
@@ -148,7 +148,7 @@ struct indexTwo {
         })
         .onWindowExit(() => {
           console.info("closewindow");
-          this.dialogController.close();
+          this.dialogController!.close();
         })
     }
   }
