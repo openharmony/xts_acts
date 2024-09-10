@@ -28,8 +28,12 @@ export default function BackWithResultTest() {
 
     const TAG: string = 'BackToCallerAbilityWithResult';
     const TEST_SUITE_NAME: string = 'BackToCallerAbilityWithResultTest';
-    const PARAMETER_ERROR_CODE  = 401
-    const PARAMETER_ERROR_CODE2  = 16000074
+    const PARAMETER_ERROR_CODE  = 401;
+    const PARAMETER_ERROR_CODE2  = 16000074;
+    beforeEach(async ()=>{
+      let driver = Driver.create();
+      await driver.delayMs(1000);
+    });
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_BackWithResult_3000
@@ -48,22 +52,18 @@ export default function BackWithResultTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onForegroundCallback succ`);
         let callerRequestCode: string = AppStorage.get<string>("callerRequestCode") as string;
         try {
-          await SecondAbility.context.backToCallerAbilityWithResult(undefined, callerRequestCode)
-            .then(() => {
-              hilog.info(0x0000, TAG, 'backToCallerAbilityWithResult succeed');
-              expect().assertFail();
-            })
-            .catch((err: BusinessError) => {
-              hilog.error(0x0000, TAG, `backToCallerAbilityWithResult failed, code is ${err.code}, message is ${err.message}`);
-              expect(err.code).assertEqual(PARAMETER_ERROR_CODE);
-            });
+          await SecondAbility.context.backToCallerAbilityWithResult(undefined, callerRequestCode).then(() => {
+            hilog.info(0x0000, TAG, 'backToCallerAbilityWithResult succeed');
+            expect().assertFail();
+          }).catch((err: BusinessError) => {
+            hilog.error(0x0000, TAG, `backToCallerAbilityWithResult failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(PARAMETER_ERROR_CODE);
+          });
         } catch (err) {
           hilog.error(0x0000, TAG, `backToCallerAbilityWithResult1 failed, code is ${err.code}, message is ${err.message}`);
           expect(err.code).assertEqual(PARAMETER_ERROR_CODE);
         }
-        setTimeout(()=>{
-          done();
-        },1000)
+        done();
       }
 
       //设置监听器,监听新ability的生命周期函数
@@ -75,7 +75,7 @@ export default function BackWithResultTest() {
         let want: Want = {
           bundleName: 'com.example.backwithresulttest',
           abilityName: abilityName
-        }
+        };
         let context: common.UIAbilityContext = getContext() as common.UIAbilityContext;
         try {
           await context.startAbilityForResult(want).then(async () => {
@@ -83,7 +83,7 @@ export default function BackWithResultTest() {
           }).catch((err: BusinessError) => {
             expect().assertFail();
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          })
+          });
         } catch (error) {
           expect().assertFail();
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
@@ -113,22 +113,19 @@ export default function BackWithResultTest() {
           resultCode
         };
         try {
-          await SecondAbility.context.backToCallerAbilityWithResult(abilityResult, undefined)
-            .then(() => {
-              hilog.info(0x0000, TAG, 'backToCallerAbilityWithResult succeed');
-              expect().assertFail();
-            })
-            .catch((err: BusinessError) => {
-              hilog.error(0x0000, TAG, `backToCallerAbilityWithResult1 failed, code is ${err.code}, message is ${err.message}`);
-              expect(err.code).assertEqual(PARAMETER_ERROR_CODE);
-            });
+          await SecondAbility.context.backToCallerAbilityWithResult(abilityResult, undefined).then(() => {
+            hilog.info(0x0000, TAG, 'backToCallerAbilityWithResult succeed');
+            expect().assertFail();
+          })
+          .catch((err: BusinessError) => {
+            hilog.error(0x0000, TAG, `backToCallerAbilityWithResult1 failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(PARAMETER_ERROR_CODE);
+          });
         } catch (err) {
           hilog.error(0x0000, TAG, `backToCallerAbilityWithResult1 failed, code is ${err.code}, message is ${err.message}`);
           expect(err.code).assertEqual(PARAMETER_ERROR_CODE);
         }
-        setTimeout(()=>{
-          done();
-        },1000)
+        done();
       }
 
       //设置监听器,监听新ability的生命周期函数
@@ -179,15 +176,14 @@ export default function BackWithResultTest() {
           resultCode
         };
         try {
-          await SecondAbility.context.backToCallerAbilityWithResult(abilityResult, callerRequestCode)
-            .then(() => {
-              hilog.info(0x0000, TAG, 'backToCallerAbilityWithResult succeed');
-              expect().assertFail();
-            })
-            .catch((err: BusinessError) => {
-              hilog.error(0x0000, TAG, `backToCallerAbilityWithResult failed, code is ${err.code}, message is ${err.message}`);
-              expect(err.code).assertEqual(PARAMETER_ERROR_CODE2);
-            });
+          await SecondAbility.context.backToCallerAbilityWithResult(abilityResult, callerRequestCode).then(() => {
+            hilog.info(0x0000, TAG, 'backToCallerAbilityWithResult succeed');
+            expect().assertFail();
+          })
+          .catch((err: BusinessError) => {
+            hilog.error(0x0000, TAG, `backToCallerAbilityWithResult failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(PARAMETER_ERROR_CODE2);
+          });
         } catch (err) {
           hilog.error(0x0000, TAG, `backToCallerAbilityWithResult failed, code is ${err.code}, message is ${err.message}`);
           expect(err.code).assertEqual(PARAMETER_ERROR_CODE2);
