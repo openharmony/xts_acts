@@ -12,13 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, afterEach, it, expect } from '@ohos/hypium'
+import { describe, afterEach, it, expect, beforeEach } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import hilog from '@ohos.hilog';
 import { BusinessError } from '@ohos.base';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
 import { common, UIAbility } from '@kit.AbilityKit';
+import { Driver } from '@kit.TestKit';
 
 export default function BackWithResultTest() {
   describe('BackWithResultTest', () => {
@@ -64,7 +65,7 @@ export default function BackWithResultTest() {
           expect(err.code).assertEqual(PARAMETER_ERROR_CODE);
         }
         done();
-      }
+      };
 
       //设置监听器,监听新ability的生命周期函数
       let monitor: abilityDelegatorRegistry.AbilityMonitor = {
@@ -116,8 +117,7 @@ export default function BackWithResultTest() {
           await SecondAbility.context.backToCallerAbilityWithResult(abilityResult, undefined).then(() => {
             hilog.info(0x0000, TAG, 'backToCallerAbilityWithResult succeed');
             expect().assertFail();
-          })
-          .catch((err: BusinessError) => {
+          }).catch((err: BusinessError) => {
             hilog.error(0x0000, TAG, `backToCallerAbilityWithResult1 failed, code is ${err.code}, message is ${err.message}`);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE);
           });
@@ -126,7 +126,7 @@ export default function BackWithResultTest() {
           expect(err.code).assertEqual(PARAMETER_ERROR_CODE);
         }
         done();
-      }
+      };
 
       //设置监听器,监听新ability的生命周期函数
       let monitor: abilityDelegatorRegistry.AbilityMonitor = {
@@ -145,7 +145,7 @@ export default function BackWithResultTest() {
           }).catch((err: BusinessError) => {
             expect().assertFail();
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          })
+          });
         } catch (error) {
           expect().assertFail();
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
@@ -179,8 +179,7 @@ export default function BackWithResultTest() {
           await SecondAbility.context.backToCallerAbilityWithResult(abilityResult, callerRequestCode).then(() => {
             hilog.info(0x0000, TAG, 'backToCallerAbilityWithResult succeed');
             expect().assertFail();
-          })
-          .catch((err: BusinessError) => {
+          }).catch((err: BusinessError) => {
             hilog.error(0x0000, TAG, `backToCallerAbilityWithResult failed, code is ${err.code}, message is ${err.message}`);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE2);
           });
@@ -189,7 +188,7 @@ export default function BackWithResultTest() {
           expect(err.code).assertEqual(PARAMETER_ERROR_CODE2);
         }
         done();
-      }
+      };
 
       //设置监听器,监听新ability的生命周期函数
       let monitor: abilityDelegatorRegistry.AbilityMonitor = {
@@ -208,7 +207,7 @@ export default function BackWithResultTest() {
           }).catch((err: BusinessError) => {
             expect().assertFail();
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          })
+          });
         } catch (error) {
           expect().assertFail();
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
