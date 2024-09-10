@@ -94,6 +94,12 @@ import Observed0060TestJsunit from './observed_object/Observed0060TestJsunit.tes
 import LocalStorageLink0310TestJsunit from './local_storage/LocalStorageLink0310TestJsunit.test';
 import LocalStorageProp0320TestJsunit from './local_storage/LocalStorageProp0320TestJsunit.test';
 import LocalStorageAbsTestJsunit from './local_storage/LocalStorageAbsTestJsunit.test';
+import ComputedLocalTest from './ComputedTest/ComputedLocal.test';
+import ComputedMonitorTest from './ComputedTest/ComputedMonitor.test';
+import ComputedTraceTest from './ComputedTest/ComputedTrace.test';
+import ParamAndOnceTest from './ParamTest/ParamAndOnce.test';
+import ParamChangeTest from './ParamTest/ParamChange.test';
+import EventTest from './EventTest/Event.test';
 
 export default function testsuite() {
   ExtendTrackTest();
@@ -177,4 +183,10 @@ export default function testsuite() {
   LocalStorageLink0310TestJsunit();
   LocalStorageProp0320TestJsunit();
   LocalStorageAbsTestJsunit();
+  ComputedLocalTest();
+  ComputedMonitorTest();
+  ComputedTraceTest();
+  ParamAndOnceTest();
+  ParamChangeTest();
+  EventTest();
 }

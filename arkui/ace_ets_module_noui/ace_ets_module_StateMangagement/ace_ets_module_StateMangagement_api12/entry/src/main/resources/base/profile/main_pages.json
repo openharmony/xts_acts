@@ -82,6 +82,12 @@
         "MainAbility/pages/observed_object/Observed0060",
         "MainAbility/pages/local_storage/LocalStorageLink0310",
         "MainAbility/pages/local_storage/LocalStorageProp0320",
-        "MainAbility/pages/local_storage/LocalStorageAbs"
+        "MainAbility/pages/local_storage/LocalStorageAbs",
+        "MainAbility/pages/Event/Event",
+        "MainAbility/pages/Computed/computedMonitor",
+        "MainAbility/pages/Computed/computedTrace",
+        "MainAbility/pages/Computed/computedLocal",
+        "MainAbility/pages/Param/ParamChange",
+        "MainAbility/pages/Param/ParamAndOnce"
     ]
 }
