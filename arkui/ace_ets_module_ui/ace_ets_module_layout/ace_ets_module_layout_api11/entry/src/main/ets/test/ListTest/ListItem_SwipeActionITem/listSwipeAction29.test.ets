@@ -70,7 +70,7 @@ export default function listSwipeAction29Jsunit() {
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0290] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem to right
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(60)), Math.round(globalThis.winTop + vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(70)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionOffset
@@ -90,7 +90,7 @@ export default function listSwipeAction29Jsunit() {
 
       // swipe to left
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(240)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(230)), Math.round(globalThis.winTop + vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(240)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(220)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(4000);
       let textSwipeOffset2 = getInspectorByKey('swipe29Offset');
