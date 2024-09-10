@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function StorageLinkJsunit2() {
@@ -64,7 +64,7 @@ export default function StorageLinkJsunit2() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('button_son111');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageLinkJsunit2_0100] son1 obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.label).assertEqual('has1: true');
@@ -81,7 +81,7 @@ export default function StorageLinkJsunit2() {
       await CommonFunc.sleep(1000);
 
       let strJson2 = getInspectorByKey('button_son2');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageLinkJsunit2_0200] son2 obj2 is: " + JSON.stringify(obj2));
       await CommonFunc.sleep(1000);
       expect(obj2.$attrs.label).assertEqual('has2: false');
@@ -98,7 +98,7 @@ export default function StorageLinkJsunit2() {
       await CommonFunc.sleep(1000);
 
       let Storage12ContentJson = getInspectorByKey('text');
-      let text = JSON.parse(Storage12ContentJson);
+      let text: ESObject = JSON.parse(Storage12ContentJson);
       console.info("[StorageLinkJsunit2_0300] son3 text is: " + JSON.stringify(text));
       await CommonFunc.sleep(1000);
       expect(text.$attrs.content).assertEqual('has3: true');
@@ -115,7 +115,7 @@ export default function StorageLinkJsunit2() {
       await CommonFunc.sleep(1000);
 
       let strJson4 = getInspectorByKey('button_son4');
-      let obj4 = JSON.parse(strJson4);
+      let obj4: ESObject = JSON.parse(strJson4);
       console.info("[StorageLinkJsunit2_0400] son4 obj4 is: " + JSON.stringify(obj4));
       await CommonFunc.sleep(1000);
       expect(obj4.$attrs.label).assertEqual('has4: true');
@@ -132,7 +132,7 @@ export default function StorageLinkJsunit2() {
       await CommonFunc.sleep(2000);
 
       let strJson5 = getInspectorByKey('button_son5');
-      let obj5 = JSON.parse(strJson5);
+      let obj5: ESObject = JSON.parse(strJson5);
       console.info("[StorageLinkJsunit2_0500] son5 obj5 is: " + JSON.stringify(obj5));
       await CommonFunc.sleep(2000);
       expect(obj5.$attrs.label).assertEqual('son1: 48');
@@ -149,7 +149,7 @@ export default function StorageLinkJsunit2() {
       await CommonFunc.sleep(2000);
 
       let strJson6 = getInspectorByKey('button_son6');
-      let obj6 = JSON.parse(strJson6);
+      let obj6: ESObject = JSON.parse(strJson6);
       console.info("[StorageLinkJsunit2_0600] son6 obj6 is: " + JSON.stringify(obj6));
       await CommonFunc.sleep(1000);
       expect(obj6.$attrs.label).assertEqual('son2: 49');

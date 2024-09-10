@@ -20,6 +20,7 @@ import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview';
 import fileio from '@ohos.fileio';
 import prompt from '@system.prompt';
+import { BusinessError } from '@ohos.base';
 
 let loadedUrl: string;
 
@@ -44,7 +45,7 @@ struct Index {
     console.info("web page valueChangeCallBack");
     if (eventData != null) {
       console.info("valueChangeCallBack:" + JSON.stringify(eventData));
-      if (eventData.data.ACTION != null) {
+      if (eventData.data?.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
     }
@@ -121,7 +122,7 @@ struct Index {
             console.log("id++++++: " + this.arrid);
 
           } catch (error) {
-            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
 

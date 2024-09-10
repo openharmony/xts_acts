@@ -58,10 +58,10 @@ export default function ToastShowMode() {
       let button = await driver.findComponent(ON.id('ShowMode_p1'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('ShowMode_p1');
+      let strJson = getInspectorByKey('mess_mode');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ToastShowMode_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('DEFAULT');
+      expect(obj.$attrs.label).assertEqual('Message DEFAULT');
       console.info('[ToastShowMode_0100] END');
       done();
     });
@@ -81,11 +81,10 @@ export default function ToastShowMode() {
       let button = await driver.findComponent(ON.id('ShowMode_p2'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('ShowMode_p2');
+      let strJson = getInspectorByKey('mess_mode');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ToastShowMode_0200] component obj is: " + JSON.stringify(obj));
-      console.info("[ToastShowMode_0200] promptAction: " + JSON.stringify(obj.$attrs.promptAction));
-      expect(obj.$attrs.label).assertEqual('TOP_MOST');
+      expect(obj.$attrs.label).assertEqual('Message TOP_MOST');
       console.info('[ToastShowMode_0200] END');
       done();
     });

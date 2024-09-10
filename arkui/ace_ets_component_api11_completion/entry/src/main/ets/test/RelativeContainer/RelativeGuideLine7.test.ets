@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function RelativeGuideLine7() {
-  describe('RelativeGuideLine7', function () {
-    beforeEach(async function (done) {
+  describe('RelativeGuideLine7', () => {
+    beforeEach(async (done: Function) => {
       console.info("RelativeGuideLine7 beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function RelativeGuideLine7() {
       console.info("RelativeGuideLine7 foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("RelativeGuideLine7 after each called");
     });
@@ -50,12 +50,12 @@ export default function RelativeGuideLine7() {
     * @tc.size
      */
 
-    it('RelativeGuideLine7_001', 0, async function (done) {
+    it('RelativeGuideLine7_001', 0, async (done: Function) => {
       console.info('[RelativeGuideLine7_001] START');
 
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey("RelButton7");
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
       console.info("[RelativeGuideLine7_001] obj is: " + JSON.stringify(obj.$attrs.height) + JSON.stringify(obj.$attrs.width));
       expect(obj.$attrs.width == '200.00vp').assertTrue();
@@ -72,7 +72,7 @@ export default function RelativeGuideLine7() {
     * @tc.size
      */
 
-    it('RelativeGuideLine7_002', 0, async function (done) {
+    it('RelativeGuideLine7_002', 0, async (done: Function) => {
       console.info('[RelativeGuideLine7_002] START');
 
       await CommonFunc.sleep(1000);
@@ -83,7 +83,7 @@ export default function RelativeGuideLine7() {
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey("RelButton7");
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
       console.info("[RelativeGuideLine7_002] obj is: " + JSON.stringify(obj.$attrs.height) + JSON.stringify(obj.$attrs.width));
       expect(obj.$attrs.width == '100.00vp').assertTrue();

@@ -29,7 +29,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function StorageProp25Jsunit() {
@@ -60,13 +60,13 @@ export default function StorageProp25Jsunit() {
 
       console.info('StorageProp25Jsunit_0100 START');
       let strJson1 = getInspectorByKey('lseA');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp25Jsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StorageProp25Jsunit_0100] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("LocalStorage值为47");
 
       let strJson2 = getInspectorByKey('sPropA');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp25Jsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StorageProp25Jsunit_0100] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("当前PropA值为47");
@@ -79,13 +79,13 @@ export default function StorageProp25Jsunit() {
 
       console.info('StorageProp25Jsunit_0200 START');
       let strJson1 = getInspectorByKey('lseB');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp25Jsunit_0200] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StorageProp25Jsunit_0200] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("LocalStorage值为9");
 
       let strJson2 = getInspectorByKey('sPropB');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp25Jsunit_0200] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StorageProp25Jsunit_0200] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("当前PropB值为9");
@@ -98,13 +98,13 @@ export default function StorageProp25Jsunit() {
 
       console.info('StorageProp25Jsunit_0300 START');
       let strJson1 = getInspectorByKey('lsePropB');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp25Jsunit_0300] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StorageProp25Jsunit_0300] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("LocalStorage值PropB为0");
 
       let strJson2 = getInspectorByKey('sonPropB');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp25Jsunit_0300] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StorageProp25Jsunit_0300] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("子组件当前PropB值为11");
@@ -117,13 +117,13 @@ export default function StorageProp25Jsunit() {
 
       console.info('StorageProp25Jsunit_0400 START');
       let strJson1 = getInspectorByKey('sonPropC');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp25Jsunit_0400] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StorageProp25Jsunit_0400] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("子组件PropC: 11");
 
       let strJson2 = getInspectorByKey('sPropC');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp25Jsunit_0400] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StorageProp25Jsunit_0400] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("父组件ProC: 11");
@@ -140,13 +140,13 @@ export default function StorageProp25Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('sPropA');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp25Jsunit_0500] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StorageProp25Jsunit_0500] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("当前PropA值为48");
 
       let strJson2 = getInspectorByKey('sPropB');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp25Jsunit_0500] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StorageProp25Jsunit_0500] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("当前PropB值为10");
@@ -163,13 +163,13 @@ export default function StorageProp25Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('lsePropB');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp25Jsunit_0600] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StorageProp25Jsunit_0600] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("LocalStorage值PropB为0");
 
       let strJson2 = getInspectorByKey('sonPropB');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp25Jsunit_0600] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StorageProp25Jsunit_0600] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("子组件当前PropB值为12");
@@ -186,13 +186,13 @@ export default function StorageProp25Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('lsePropB');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp25Jsunit_0700] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StorageProp25Jsunit_0700] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("LocalStorage值PropB为123");
 
       let strJson2 = getInspectorByKey('sonPropB');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp25Jsunit_0700] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StorageProp25Jsunit_0700] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("子组件当前PropB值为123");
@@ -209,13 +209,13 @@ export default function StorageProp25Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('lsePropB');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp25Jsunit_0800] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StorageProp25Jsunit_0800] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("LocalStorage值PropB为123");
 
       let strJson2 = getInspectorByKey('sonPropB');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp25Jsunit_0800] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StorageProp25Jsunit_0800] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("子组件当前PropB值为124");

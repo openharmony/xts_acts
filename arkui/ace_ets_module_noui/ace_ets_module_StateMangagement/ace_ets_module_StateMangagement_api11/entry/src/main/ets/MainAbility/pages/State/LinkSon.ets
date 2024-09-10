@@ -20,13 +20,13 @@ struct ParentLink {
   @State num: number = 0
 
   build() {
-    Column({ space: 10 }) {
+    Column({ space: 2 }) {
       Button("Reset").id("ParentLink_reset")
         .onClick(() => {
           this.str = "before"
           this.num = 0
         })
-      Text('父组件').fontSize(24).margin({ top: 20 })
+      Text('父组件').fontSize(24).margin({ top: 5 })
       Text('Parent str: ' + this.str).key("str_parText")
       Button(`change parStr`)
         .key("str_parLink")
@@ -53,8 +53,8 @@ struct SonLink1 {
   @Link num1: number
 
   build() {
-    Column({ space: 10 }) {
-      Text('子组件Son1').fontSize(24).margin({ top: 20 })
+    Column({ space: 2 }) {
+      Text('子组件Son1').fontSize(24).margin({ top: 5 })
       Text('@Link str1: ' + this.str1).key("str1_tSon1")
       Button(`change sonStr1`)
         .key("str_son1")
@@ -70,7 +70,7 @@ struct SonLink1 {
 
       SonLink2({str2: $str1, num2: $num1})
 
-    }.margin({ top: 10 })
+    }.margin({ top: 5 })
   }
 }
 
@@ -80,8 +80,8 @@ struct SonLink2 {
   @Link num2: number
 
   build() {
-    Column({ space: 10 }) {
-      Text('子组件Son2').fontSize(24).margin({ top: 20 })
+    Column({ space: 2 }) {
+      Text('子组件Son2').fontSize(24).margin({ top: 5 })
 
       Text('@Link str2: ' + this.str2).key("str2_tSon2")
       Button(`change sonStr2`)
@@ -96,6 +96,6 @@ struct SonLink2 {
           this.num2 += 1;
         })
 
-    }.margin({ top: 10 })
+    }.margin({ top: 5 })
   }
 }

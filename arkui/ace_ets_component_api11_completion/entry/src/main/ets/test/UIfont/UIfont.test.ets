@@ -58,7 +58,7 @@ export default function UIfont() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('UIfont_Text');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[UIfont_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('1');
@@ -84,7 +84,7 @@ export default function UIfont() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('UIfont_Text');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[UIfont_002] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('3');
@@ -110,7 +110,7 @@ export default function UIfont() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('UIfont_Text');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[UIfont_003] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('1');
@@ -136,7 +136,7 @@ export default function UIfont() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('UIfont_Text');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[UIfont_004] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('5');

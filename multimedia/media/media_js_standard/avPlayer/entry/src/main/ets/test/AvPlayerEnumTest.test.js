@@ -124,13 +124,8 @@ export default function AvPlayerEnumTest() {
             * @tc.level     : Level0
         */
          it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0600', 0, async function (done) {
-            try {
-                if (media.HdrType.AV_HDR_TYPE_NONE != 0 || media.HdrType.AV_HDR_TYPE_VIVID != 1) {
-                    expect(false).assertTrue();
-                }
-            } catch(error) {
-                console.info('Please update the SDK to the latest version')
-            }
+            expect(media.HdrType.AV_HDR_TYPE_NONE).assertEqual(0);
+            expect(media.HdrType.AV_HDR_TYPE_VIVID).assertEqual(1);
             done();
         })
 
@@ -158,6 +153,23 @@ export default function AvPlayerEnumTest() {
          */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0800', 0, async function (done) {
             expect(media.PlaybackSpeed.SPEED_FORWARD_3_00_X).assertEqual(7);
+            done();
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0900
+         * @tc.name      : AVPlayer
+         * @tc.desc      : AVPlayer Enumeration test
+         * @tc.size      : MediumTest
+         * @tc.type      : Function test
+         * @tc.level     : Level0
+         */
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0900', 0, async function (done) {
+            expect(media.PlaybackInfoKey.SERVER_IP_ADDRESS).assertEqual('server_ip_address');
+            expect(media.PlaybackInfoKey.AVG_DOWNLOAD_RATE).assertEqual('average_download_rate');
+            expect(media.PlaybackInfoKey.DOWNLOAD_RATE).assertEqual('download_rate');
+            expect(media.PlaybackInfoKey.IS_DOWNLOADING).assertEqual('is_downloading');
+            expect(media.PlaybackInfoKey.BUFFER_DURATION).assertEqual('buffer_duration');
             done();
         })
     })

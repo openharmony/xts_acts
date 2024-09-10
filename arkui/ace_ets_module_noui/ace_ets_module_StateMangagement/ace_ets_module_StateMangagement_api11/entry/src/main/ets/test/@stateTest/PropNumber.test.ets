@@ -27,8 +27,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 export default function PropNumber() {
   describe('PropNumber', () => {
@@ -67,7 +67,7 @@ export default function PropNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Number]" number is 10');
@@ -88,7 +88,7 @@ export default function PropNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Object]" number is {"pages":20}');
@@ -109,11 +109,11 @@ export default function PropNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropNumber');
-      let obj = JSON.parse(strJson);
-      console.info("[PropNumber_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[PropNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[PropNumber_0300] component obj is: " + JSON.stringify(obj));
+      console.info("[PropNumber_0300] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Object]" number is {"number":"30"}');
-      console.info('[PropNumber_0100] END');
+      console.info('[PropNumber_0300] END');
       done();
     });
     /* *
@@ -130,7 +130,7 @@ export default function PropNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Date]" number is "2021-08-08T00:00:00.000Z"');
@@ -151,7 +151,7 @@ export default function PropNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Boolean]" number is true');

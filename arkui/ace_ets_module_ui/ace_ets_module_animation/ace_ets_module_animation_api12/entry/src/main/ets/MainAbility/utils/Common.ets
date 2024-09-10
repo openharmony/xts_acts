@@ -71,7 +71,7 @@ export default class CommonFunc {
       console.log('Failed to get all screens. Cause: ' + JSON.stringify(err));
     });
     try {
-      screenClass.setOrientation(orientation, (err: BusinessError) => {
+      screenClass!.setOrientation(orientation, (err: BusinessError) => {
         const errCode: number = err.code;
         if (errCode) {
           console.error('Failed to set the vertical orientation. Code: ' + JSON.stringify(err));

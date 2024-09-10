@@ -12,14 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import events_emitter from '@ohos.events.emitter';
 import Log from '../../common/Log';
 
 const TAG = 'ets_apiLack_add';
-import events_emitter from '@ohos.events.emitter';
 
-let storage1 = LocalStorage.GetShared()
-let storage2 = new LocalStorage({ "PropA": 47 });
+let storage1: LocalStorage = LocalStorage.GetShared()
+let storage2: LocalStorage = new LocalStorage({ "PropA": 47 } as Record<string, number>);
 
 @Entry(storage1)
 @Component
@@ -53,7 +52,7 @@ struct StateManagementGetShared {
             console.info("GetShared start to emit action state")
             events_emitter.emit(backEventOne, backDataOne)
           } catch (err) {
-            console.info("GetShared emit action state err: " + JSON.stringify(err.message))
+            console.info("GetShared emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
 
@@ -73,7 +72,7 @@ struct StateManagementGetShared {
             console.info("setAndLink start to emit action state")
             events_emitter.emit(backEventTwo, backDataTwo)
           } catch (err) {
-            console.info("setAndLink emit action state err: " + JSON.stringify(err.message))
+            console.info("setAndLink emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           // storage1.setAndLink("storageSimpleProp",48)
           // console.log("storage1.setAndLink('PropA',48) :" + this.simpleVarName )
@@ -95,7 +94,7 @@ struct StateManagementGetShared {
             console.info("setOrCreate start to emit action state")
             events_emitter.emit(backEventThree, backDataThree)
           } catch (err) {
-            console.info("setOrCreate emit action state err: " + JSON.stringify(err.message))
+            console.info("setOrCreate emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           // storage1.setOrCreate("storageSimpleProp",47)
           // console.log("storageSimpleProp setOrCreate is :  " + this.simpleVarName)
@@ -117,7 +116,7 @@ struct StateManagementGetShared {
             console.info("setAndProp start to emit action state")
             events_emitter.emit(backEventFour, backDataFour)
           } catch (err) {
-            console.info("setAndProp emit action state err: " + JSON.stringify(err.message))
+            console.info("setAndProp emit action state err: " + JSON.stringify((err as Error)?.message))
           }
 
           // storage1.setAndProp("storageSimpleProp",49)

@@ -128,5 +128,25 @@ export default function abilityTest() {
       done();
     });
 
+    /**
+     * @tc.number     : SUB_Security_DataSecurity_Asset_CE_Func_0100
+     * @tc.name       : testAssetCE0100
+     * @tc.desc       : 设置CE保护的数据增删改查成功
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('SUB_Security_DataSecurity_Asset_CE_Func_0100', 0, async (done: Function) => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.REQUIRE_ATTR_ENCRYPTED, true);
+      expect(await aw.basicCRUDCE(attr))
+        .assertEqual(0);
+      let attr2: asset.AssetMap = new Map();
+      attr.set(asset.Tag.REQUIRE_ATTR_ENCRYPTED, false);
+      expect(await aw.basicCRUD(attr2))
+        .assertEqual(0);
+      done();
+    });
+
   })
 }

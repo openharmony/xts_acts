@@ -17,7 +17,6 @@ group("storage") {
   if (is_standard_system) {
     deps = [
       "backupextensiontest:backupextension_js_test",
-      "crossplatform/storagefsetstest:ActsCrossplatformFsTest",
       "storagebackupextensionjstest:storagebackupextension_js_test",
       "storagedownloadcloudsyncjstest:storagedownloadcloudsync_js_test",
       "storageenvironmentjstest:storageenvironment_js_test",

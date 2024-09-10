@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter'
 
 
@@ -66,7 +66,7 @@ export default function LocalStoageLinkOneJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('button_has');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStoageLinkOneJsunit_0100] obj1 is: " + JSON.stringify(obj1));
 
       expect(obj1.$attrs.label).assertEqual('Has Has1:true,Has2:false');
@@ -84,7 +84,7 @@ export default function LocalStoageLinkOneJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('button_set');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStoageLinkOneJsunit_0200] obj1 is: " + JSON.stringify(obj1));
 
       expect(obj1.$attrs.label).assertEqual('Set Set1:true,Set2:false');
@@ -102,7 +102,7 @@ export default function LocalStoageLinkOneJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('button_setOrCreate');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStoageLinkOneJsunit_0300] obj1 is: " + JSON.stringify(obj1));
 
       expect(obj1.$attrs.label).assertEqual('setOrCreate setOrCreate1:true,setOrCreate2:true');
@@ -114,7 +114,7 @@ export default function LocalStoageLinkOneJsunit() {
     it('LocalStoageLinkOneJsunit_0400', 0, async (done: Function) => {
       console.info('[LocalStoageLinkOneJsunit_0400] START');
       let strJson1 = getInspectorByKey('text_getValue1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStoageLinkOneJsunit_0400] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('localstorage:2,storLink2:2');
 
@@ -124,7 +124,7 @@ export default function LocalStoageLinkOneJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson2 = getInspectorByKey('text_getValue1');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LocalStoageLinkOneJsunit_0400] obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.content).assertEqual('localstorage:12,storLink2:12');
 
@@ -133,7 +133,7 @@ export default function LocalStoageLinkOneJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson3 = getInspectorByKey('text_getValue1');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[LocalStoageLinkOneJsunit_0400] obj3 is: " + JSON.stringify(obj3));
       expect(obj3.$attrs.content).assertEqual('localstorage:666,storLink2:666');
       console.info('[LocalStoageLinkOneJsunit_0400] END');

@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 import ImagePixelMapNDKTest from './ImagePixelMapNDKTest';
+import PixelMapNDKTest from './PixelMapNDKTest';
 export default function testsuite() {
     ImagePixelMapNDKTest()
+    PixelMapNDKTest()
 }

@@ -13,27 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("av_image_generator_ets_hap") {
-  hap_profile = "src/main/module.json"
-  deps = [
-    ":hts_demo_ets_resources",
-    ":hts_demo_ets_test_resources",
-  ]
-  ets2abc = true
+ohos_js_app_suite("av_image_generator_ets_hap") {
+  test_hap = true
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAvImageGeneratorTest"
   subsystem_name = "multimedia"
   part_name = "player_framework"
-}
-ohos_app_scope("hts_demo_ets_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-ohos_js_assets("hts_demo_ets_resources") {
-  source_dir = "src/main/ets"
-}
-ohos_resources("hts_demo_ets_test_resources") {
-  sources = [ "src/main/resources" ]
-  deps = [ ":hts_demo_ets_app_profile" ]
-  hap_profile = "src/main/module.json"
 }

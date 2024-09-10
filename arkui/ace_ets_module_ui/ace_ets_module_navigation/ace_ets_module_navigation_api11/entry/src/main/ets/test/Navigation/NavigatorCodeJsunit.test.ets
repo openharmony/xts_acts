@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +16,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils.ets';
+import Utils from '../Utils';
+import { BusinessError } from '@ohos.base';
 
 export default function navigatorCodeJsunit() {
   describe('navigatorCodeJsunit', () => {
@@ -37,7 +37,7 @@ export default function navigatorCodeJsunit() {
           console.info("push NavigatorClick page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push NavigatorClick page error:" + JSON.stringify(result));
+        console.error("push NavigatorClick page error:" + JSON.stringify(err));
       }
       done()
     });
@@ -50,7 +50,7 @@ export default function navigatorCodeJsunit() {
     it('test_NavigatorClick_001', 0, async (done: Function) => {
       console.info('[test_NavigatorClick_001] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('NavigatorType');
+      let strJson: string = getInspectorByKey('NavigatorType');
       console.info("[test_NavigatorClick_001] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.active).assertEqual('false');
       console.info('[test_NavigatorClick_001] END');
@@ -73,10 +73,10 @@ export default function navigatorCodeJsunit() {
         console.info("[test_NavigatorClick_002] start to publish emit" + JSON.stringify(eventData));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[test_NavigatorClick_002] change component error: " + err.message);
+        console.log("[test_NavigatorClick_002] change component error: " + (err as BusinessError).message);
       }
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('NavigatorType');
+      let strJson: string = getInspectorByKey('NavigatorType');
       console.info("[test_NavigatorClick_002] component obj is: " + JSON.stringify(JSON.parse(strJson).$attrs.type));
       expect(JSON.parse(strJson).$attrs.type).assertEqual('NavigationType.Back');
       done();
@@ -86,7 +86,7 @@ export default function navigatorCodeJsunit() {
       await Utils.sleep(1000)
       let callback = (eventData: events_emitter.EventData) => {
         console.info("[test_NavigatorClick_003] get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual(10)
+        expect(eventData.data?.ACTION).assertEqual(10)
       }
       let innerEvent: events_emitter.InnerEvent = {
         eventId: 139,

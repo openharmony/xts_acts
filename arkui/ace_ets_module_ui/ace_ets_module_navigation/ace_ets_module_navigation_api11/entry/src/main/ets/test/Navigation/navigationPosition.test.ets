@@ -23,7 +23,7 @@ export default function navigationPosition() {
   describe('navigationPosition',  () =>{
     beforeEach(async  (done:Function) =>{
       console.info("navigationPosition beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation/navigationPosition',
       }
       try {
@@ -55,7 +55,7 @@ export default function navigationPosition() {
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'navBarPositionIndex', value: 0 });
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('navigationPosition');
+      let strJson: string = getInspectorByKey('navigationPosition');
       
       console.info("[navigationPosition_001] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
@@ -76,7 +76,7 @@ export default function navigationPosition() {
       console.info('[navigationPosition_002] START');
       globalThis.value.message.notify({name:'navBarPositionIndex', value: 1 });
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('navigationPosition');
+      let strJson: string = getInspectorByKey('navigationPosition');
       
       console.info("[navigationPosition_002] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);

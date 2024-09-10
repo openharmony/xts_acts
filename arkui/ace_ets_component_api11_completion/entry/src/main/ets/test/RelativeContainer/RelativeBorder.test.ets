@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function RelativeBorder() {
-  describe('RelativeBorder', function () {
-    beforeEach(async function (done) {
+  describe('RelativeBorder', () => {
+    beforeEach(async (done: Function) => {
       console.info("RelativeBorder beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function RelativeBorder() {
       console.info("RelativeBorder foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("RelativeBorder after each called");
     });
@@ -50,7 +50,7 @@ export default function RelativeBorder() {
     * @tc.size
      */
 
-    it('RelativeBorder_001', 0, async function (done) {
+    it('RelativeBorder_001', 0, async (done: Function) => {
       console.info('[RelativeBorder_001] START');
 
       await CommonFunc.sleep(1000);

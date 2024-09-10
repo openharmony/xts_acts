@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function Storage12Jsunit() {
@@ -63,7 +63,7 @@ export default function Storage12Jsunit() {
       await Storage12Button1.click();
       await CommonFunc.sleep(1000);
       let Storage12ContentJson = getInspectorByKey('Storage12Content');
-      let text = JSON.parse(Storage12ContentJson);
+      let text: ESObject = JSON.parse(Storage12ContentJson);
       console.info("[Storage12Jsunit_0100] Storage12Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('2');
       console.info('[Storage12Jsunit_0100] END');
@@ -77,7 +77,7 @@ export default function Storage12Jsunit() {
       await Storage12Button2.click();
       await CommonFunc.sleep(1000);
       let Storage12ContentJson = getInspectorByKey('Storage12Content');
-      let text = JSON.parse(Storage12ContentJson);
+      let text: ESObject = JSON.parse(Storage12ContentJson);
       console.info("[Storage12Jsunit_0200] Storage12Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('true');
       console.info('[Storage12Jsunit_0200] END');
@@ -87,7 +87,7 @@ export default function Storage12Jsunit() {
     it('Storage12Jsunit_0300', 0, async (done: Function) => {
       console.info('[Storage12Jsunit_0300] START');
       let Storage12ContentJson = getInspectorByKey('Storage12Text1');
-      let text = JSON.parse(Storage12ContentJson);
+      let text: ESObject = JSON.parse(Storage12ContentJson);
       console.info("[Storage12Jsunit_0300] Storage12Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('appKeys: storage_,PropA');
       console.info('[Storage12Jsunit_0300] END');

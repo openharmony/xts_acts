@@ -27,8 +27,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function PropHight() {
@@ -68,7 +68,7 @@ export default function PropHight() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropHeight1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropHight_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropHight_0100] title: " + JSON.stringify(obj.$attrs.height));
       expect(obj.$attrs.height).assertEqual('100.00vp');
@@ -89,7 +89,7 @@ export default function PropHight() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropHeight2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropHight_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropHight_0100] title: " + JSON.stringify(obj.$attrs.height));
       expect(obj.$attrs.height).assertEqual('200.00vp');
@@ -110,7 +110,7 @@ export default function PropHight() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropHeight3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropHight_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropHight_0100] title: " + JSON.stringify(obj.$attrs.height));
       expect(obj.$attrs.height).assertEqual('200.00vp');

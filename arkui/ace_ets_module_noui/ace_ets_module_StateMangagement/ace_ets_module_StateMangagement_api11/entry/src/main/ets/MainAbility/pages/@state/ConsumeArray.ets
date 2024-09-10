@@ -12,6 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import CommonFunc from '../../../MainAbility/common/Common';
+
 @Component
 struct Child_CA {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Ancestors内的@Provide装饰的变量
@@ -62,10 +65,10 @@ struct Ancestors_CA {
 
   build() {
     Column({ space: 20 }) {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array)) + " number is " + JSON.stringify(this.Array))
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + JSON.stringify(this.Array))
         .fontSize(20).margin(30).key('ConsumeArray')
 
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
         .fontSize(20).margin(30).key('ConsumeArrayNew')
 
       Child_CA()

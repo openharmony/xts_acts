@@ -23,6 +23,7 @@ import {
   getAssetId,
   isNum,
   photoType,
+  getBurstKey,
   pushCreateAsset,
   sleep,
   getPermission
@@ -46,12 +47,12 @@ export default function getTest () {
          const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
          let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOps);
          let fetchCount = fetchResult.getCount();
+         console.log(`${testNum} :: fetchCount is ${fetchCount}`);
          if (fetchCount <= 0) {
             console.error(`${testNum} :: checkProvisionAsset :: have no Asset displayName is ${displayName}!`);
             expect(false).assertTrue();
             done();
          }
-         done();
        } catch (error) {
          console.error(`${testNum} :: checkProvisionAsset failed, err ==> ${error}!`);
          expect(false).assertTrue();
@@ -834,5 +835,116 @@ export default function getTest () {
       await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_7003
+     * @tc.name      : get_image_burst_key_001
+     * @tc.desc      : image get photoKeys.BURST_KEY
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_image_burst_key_001', 1, async function (done) {
+      const testNum = 'get_image_burst_key_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      let burstKey = await getBurstKey(testNum, fetchOps);
+      console.log(`${testNum} :: getBurstKey :: burstKey is '' :: ${burstKey === ''}`);
+      expect(burstKey == '').assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_7004
+     * @tc.name      : get_video_burst_key_001
+     * @tc.desc      : video get photoKeys.BURST_KEY
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_video_burst_key_001', 1, async function (done) {
+      const testNum = 'get_video_burst_key_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      let burstKey = await getBurstKey(testNum, fetchOps);
+      console.log(`${testNum} :: getBurstKey :: burstKey is '' :: ${burstKey === ''}`);
+      expect(burstKey == '').assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_7005
+     * @tc.name      : get_image_lcd_size_001
+     * @tc.desc      : image get photoKeys.LCD_SIZE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_image_lcd_size_001', 1, async function (done) {
+      const testNum = 'get_image_lcd_size_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      const key = photoKeys.LCD_SIZE;
+      const value = "1279:1706";
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_7006
+     * @tc.name      : get_video_lcd_size_001
+     * @tc.desc      : video get photoKeys.LCD_SIZE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_video_lcd_size_001', 1, async function (done) {
+      const testNum = 'get_video_lcd_size_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      const key = photoKeys.LCD_SIZE;
+      const value = "1280:720";
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_7007
+     * @tc.name      : get_image_thm_size_001
+     * @tc.desc      : image get photoKeys.THM_SIZE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_image_thm_size_001', 1, async function (done) {
+      const testNum = 'get_image_thm_size_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      const key = photoKeys.THM_SIZE;
+      console.log(`${testNum} :: get key success, THM_SIZE is ${key}`);
+      const value = "350:466";
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_7008
+     * @tc.name      : get_video_thm_size_001
+     * @tc.desc      : video get photoKeys.THM_SIZE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_video_thm_size_001', 1, async function (done) {
+      const testNum = 'get_video_thm_size_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      const key = photoKeys.THM_SIZE;
+      console.log(`${testNum} :: get key success, THM_SIZE is ${key}`);
+      const value = "622:350";
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
+    });
   })
 }

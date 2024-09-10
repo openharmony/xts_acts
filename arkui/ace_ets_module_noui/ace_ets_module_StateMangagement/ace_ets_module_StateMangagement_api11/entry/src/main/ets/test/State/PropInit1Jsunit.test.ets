@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common'
+import CommonFunc from '../../MainAbility/common/Common'
 
 
 export default function PropInit1Jsunit() {
@@ -58,7 +58,7 @@ export default function PropInit1Jsunit() {
     afterEach(async () => {
       let driver = await UiDriver.create()
       router.back({
-        uri: "MainAbility/pages/index/index"
+        url: "MainAbility/pages/index/index"
       });
     });
 
@@ -70,13 +70,13 @@ export default function PropInit1Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sub_prop1_S');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropInit1Jsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[PropInit1Jsunit_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('子组件Prop:888');
 
       let strJson1 = getInspectorByKey('prop_Object1_A');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PropInit1Jsunit_0300] component obj is: " + JSON.stringify(obj1));
       console.info("[PropInit1Jsunit_0300] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('Change father: 666');
@@ -92,13 +92,13 @@ export default function PropInit1Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('prop_Object1_A');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropInit1Jsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[PropInit1Jsunit_0400] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Change father: 111');
 
       let strJson1 = getInspectorByKey('sub_prop1_S');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PropInit1Jsunit_0200] component obj is: " + JSON.stringify(obj1));
       console.info("[PropInit1Jsunit_0200] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('子组件Prop:111');

@@ -20,7 +20,7 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct FormComponentFormDimension {
-  @State target: WindowAnimationTarget = undefined // 通过windowAnimationManager获取
+  @State target: WindowAnimationTarget | undefined = undefined // 通过windowAnimationManager获取
 
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear Dimension start`);

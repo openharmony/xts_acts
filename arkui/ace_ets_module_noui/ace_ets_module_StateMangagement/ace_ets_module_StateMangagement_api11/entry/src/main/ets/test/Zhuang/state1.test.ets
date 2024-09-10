@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function state1() {
@@ -65,7 +65,7 @@ export default function state1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sBtn1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[state1_0100] component obj is: " + JSON.stringify(obj));
       console.info("[state1_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
@@ -81,7 +81,7 @@ export default function state1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sBtn2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[state1_0200] component obj is: " + JSON.stringify(obj));
       console.info("[state1_0200] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
@@ -98,7 +98,7 @@ export default function state1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sBtn3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[state1_0300] component obj is: " + JSON.stringify(obj));
       console.info("[state1_0300] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('100.00fp');
@@ -114,7 +114,7 @@ export default function state1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sBtn4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[state1_0400] component obj is: " + JSON.stringify(obj));
       console.info("[state1_0400] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('100.00fp');

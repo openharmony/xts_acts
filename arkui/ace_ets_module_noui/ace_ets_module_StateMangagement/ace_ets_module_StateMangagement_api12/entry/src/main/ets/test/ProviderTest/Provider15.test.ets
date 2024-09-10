@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function Provider15Test() {
-  describe('Provider15Test', function () {
-    beforeEach(async function (done) {
+  describe('Provider15Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("Provider15Test beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Provider/Provider15',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Provider/Provider15',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function Provider15Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Provider15Test_0100', 0, async function (done) {
+    it('Provider15Test_0100', 0, async (done: Function) => {
       console.info('Provider15Test_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -57,8 +57,8 @@ export default function Provider15Test() {
       await CommonFunc.sleep(1000);
       let strBut = getInspectorByKey('Provider15');
       let strBut1 = getInspectorByKey('Provider15-01');
-      let objBut = JSON.parse(strBut);
-      let objBut1 = JSON.parse(strBut1);
+      let objBut: ESObject = JSON.parse(strBut);
+      let objBut1: ESObject = JSON.parse(strBut1);
       console.info("[Provider15Test_0100] component objBut is: " + JSON.stringify(objBut));
       console.info("[Provider15Test_0100] component objBut1 is: " + JSON.stringify(objBut1));
       expect(objBut.$attrs.label).assertEqual('0');
@@ -74,7 +74,7 @@ export default function Provider15Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Provider15Test_0200', 0, async function (done) {
+    it('Provider15Test_0200', 0, async (done: Function) => {
       console.info('Provider15Test_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -83,8 +83,8 @@ export default function Provider15Test() {
       await CommonFunc.sleep(1000);
       let strBut = getInspectorByKey('Provider15');
       let strBut1 = getInspectorByKey('Provider15-01');
-      let objBut = JSON.parse(strBut);
-      let objBut1 = JSON.parse(strBut1);
+      let objBut: ESObject = JSON.parse(strBut);
+      let objBut1: ESObject = JSON.parse(strBut1);
       console.info("[Provider15Test_0100] component objBut is: " + JSON.stringify(objBut));
       console.info("[Provider15Test_0100] component objBut1 is: " + JSON.stringify(objBut1));
       expect(objBut.$attrs.label).assertEqual('1');

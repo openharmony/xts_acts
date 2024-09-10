@@ -217,6 +217,8 @@ export const textAreaOnFocusTest: (a: string) => void;
 
 export const textAreaOnBlurTest: (a: string) => void;
 
+export const textAreaOnPasteTest: (a: string) => void;
+
 export const textAreaKeyTest: (a: string) => void;
 
 export const textInputKeyTest: (a: string) => void;
@@ -236,3 +238,27 @@ export const textInputOnCutTest: (a: string) => void;
 export const textInputOnPasteTest: (a: string) => void;
 
 export const gestureTest: (a: string) => void;
+
+export const dragTest: (a: string) => void;
+
+export const disableDefaultDropAnimationTest: (a: string) => void;
+
+export const getPreDragStatusTest: (a: string) => void;
+
+export const setSuggestedDropOperationTest: (a: string) => void;
+
+export const setDragResultTest: (a: string) => void;
+
+export const getDataTypesCountTest: (a: string) => void;
+
+export const getDragResultTest: (a: string) => void;
+
+export const getDropOperationTest: (a: string) => void;
+
+export const gestureNestScrollTest: (a: string) => void;
+
+export const getXYTest: (a: string) => void;
+
+export const getWidthHeightTest: (a: string) => void;
+
+export const getModifierKeyStatesTest: (a: string) => void;

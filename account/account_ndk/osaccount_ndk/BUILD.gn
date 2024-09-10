@@ -11,44 +11,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsOsAccountNdkTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":acts_account_ndk_assets",
-    ":acts_account_ndk_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_app_assist_suite("ActsOsAccountNdkMainTest") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsOsAccountNdkMainTest"
+  subsystem_name = "account"
+  part_name = "os_account"
+}
+
+ohos_js_app_suite("ActsOsAccountNdkTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsOsAccountNdkTest"
   subsystem_name = "account"
   part_name = "os_account"
-  shared_libraries = [
-    "./entry/src/main/cpp:osaccountndk",
-    ":libcppsharedso",
-  ]
-}
-
-ohos_prebuilt_shared_library("libcppsharedso") {
-  source = rebase_path(libcxx_ndk_shared_file)
-  subsystem_name = "account"
-  part_name = "os_account"
-}
-
-ohos_app_scope("acts_account_ndk_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("acts_account_ndk_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("acts_account_ndk_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":acts_account_ndk_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  deps = [ ":ActsOsAccountNdkMainTest" ]
 }

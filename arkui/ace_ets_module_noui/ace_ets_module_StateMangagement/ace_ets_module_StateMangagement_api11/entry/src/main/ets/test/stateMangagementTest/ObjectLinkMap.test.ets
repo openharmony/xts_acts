@@ -29,7 +29,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import Utils from '../../MainAbility/common/Utils.ets'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function ObjectLinkMap() {
   describe('ObjectLinkMap', () => {
@@ -45,7 +45,7 @@ export default function ObjectLinkMap() {
         if (!("ObjectLinkMap" == pages.name)) {
           console.info("get ObjectLinkMap state pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push ObjectLinkMap success: " + JSON.stringify(result));
         }
       } catch (err) {
@@ -65,13 +65,13 @@ export default function ObjectLinkMap() {
     it('ObjectLinkMap_0100', 0, async (done: Function) => {
       console.info('ObjectLinkMap_0100 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('ObtLinkMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('ObtLinkMap_set'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('ObtLinkMap_value_d');
       console.info("[ObjectLinkMap_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ObjectLinkMap_0100] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -90,13 +90,13 @@ export default function ObjectLinkMap() {
     it('ObjectLinkMap_0200', 0, async (done: Function) => {
       console.info('ObjectLinkMap_0200 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('ObtLinkMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('ObtLinkMap_clear'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('ObtLinkMap_value_K');
       console.info("[ObjectLinkMap_0200] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ObjectLinkMap_0200] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -115,13 +115,13 @@ export default function ObjectLinkMap() {
     it('ObjectLinkMap_0300', 0, async (done: Function) => {
       console.info('ObjectLinkMap_0300 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('ObtLinkMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('ObtLinkMap_replace'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('ObtLinkMap_value_aa');
       console.info("[ObjectLinkMap_0300] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ObjectLinkMap_0300] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -140,13 +140,13 @@ export default function ObjectLinkMap() {
     it('ObjectLinkMap_0400', 0, async (done: Function) => {
       console.info('ObjectLinkMap_0400 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('ObtLinkMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('ObtLinkMap_delete'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('ObtLinkMap_value_b');
       console.info("[ObjectLinkMap_0400] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ObjectLinkMap_0400] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));

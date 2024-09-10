@@ -27,8 +27,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function StateNumber() {
@@ -68,7 +68,7 @@ export default function StateNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('StateNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Number]" number is 10');
@@ -89,7 +89,7 @@ export default function StateNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('StateNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Object]" number is {"pages":20}');
@@ -110,7 +110,7 @@ export default function StateNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('StateNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object String]" number is "30"');
@@ -131,7 +131,7 @@ export default function StateNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('StateNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Date]" number is "2021-08-08T00:00:00.000Z"');
@@ -152,7 +152,7 @@ export default function StateNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('StateNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Boolean]" number is true');

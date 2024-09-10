@@ -651,5 +651,43 @@ export default function pasteBoardSystemPasteBoardTest() {
       console.info(TAG + "SUB_PASTEBOARD_GETDATASOURCE_0100 end")
     })
 
+
+    /**
+     * @tc.number SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_9900
+     * @tc.name getData
+     * @tc.desc get the pastedata from system pasteBoard success
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0800', 0, async (done: Function) => {
+      console.info("SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0800 start")
+      let uri = "www.baidu.com"
+      let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, uri)
+      let systemPasteBoard = pasteboard.getSystemPasteboard();
+      await systemPasteBoard.setData(pasteData);
+      let data = await systemPasteBoard.getData();
+      let recordCount = data.getRecordCount();
+      expect(recordCount).assertEqual(1);
+      expect(data.getRecord(0).uri).assertEqual(uri);
+
+      try {
+        data.pasteStart()
+      } catch (err) {
+        console.info(TAG + "pasteStart fail" + err);
+        expect().assertFail();
+      }
+
+      try {
+        data.pasteComplete()
+      } catch (err) {
+        console.info(TAG + "pasteComplete fail" + err);
+        expect().assertFail();
+      }
+      console.info("SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0800 end")
+      done();
+    })
+
+
   });
 }

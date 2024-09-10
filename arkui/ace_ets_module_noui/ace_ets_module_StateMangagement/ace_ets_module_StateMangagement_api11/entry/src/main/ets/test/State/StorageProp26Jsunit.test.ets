@@ -29,7 +29,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function StorageProp26Jsunit() {
@@ -65,13 +65,13 @@ export default function StorageProp26Jsunit() {
       await button_son1.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('childPropA');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp26Jsunit_0200] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('childPropA: 3');
 
       let strJson2 = getInspectorByKey('fatherPropA');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp26Jsunit_0200] obj2 is: " + JSON.stringify(obj2));
       await CommonFunc.sleep(1000);
       expect(obj2.$attrs.content).assertEqual('fatherPropA: 1');
@@ -87,13 +87,13 @@ export default function StorageProp26Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('childPropA');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp26Jsunit_0300] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('childPropA: 3');
 
       let strJson2 = getInspectorByKey('fatherPropA');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp26Jsunit_0300] obj2 is: " + JSON.stringify(obj2));
       await CommonFunc.sleep(1000);
       expect(obj2.$attrs.content).assertEqual('fatherPropA: 34');

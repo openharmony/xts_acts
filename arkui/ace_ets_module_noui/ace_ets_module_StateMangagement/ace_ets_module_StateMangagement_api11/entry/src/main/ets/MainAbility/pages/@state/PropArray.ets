@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from '../../../MainAbility/common/Common';
+
 @Component
 struct Child_AD {
   @Prop Array: Array<Number> | Array<boolean> | Boolean | Array<Resource>
@@ -19,10 +21,10 @@ struct Child_AD {
 
   build() {
     Column() {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array)) + " number is " + JSON.stringify(this.Array))
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + JSON.stringify(this.Array))
         .fontSize(20).margin(30).key('PropArray')
 
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
         .fontSize(20).margin(30).key('PropArrayNew')
       Text("设置变量Array<Number>类型[1]-->[10]")
       Button('change')

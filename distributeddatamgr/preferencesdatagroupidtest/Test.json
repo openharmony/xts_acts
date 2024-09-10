@@ -5,7 +5,7 @@
         "test-timeout": "60000",
         "shell-timeout": "60000",
         "bundle-name": "ohos.acts.preferencesdatagroupidtest",
-        "module-name": "preferencesDataGroupId"
+        "module-name": "entry_test"
     },
     "kits": [
         {
@@ -14,14 +14,13 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-		{
-			"type":"ShellKit",
-			"run-command":[
-				"power-shell wakeup",
-				"uinput -T -g 100 100 500 500",
-				"power-shell setmode 602"
-			]
-		}
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "uinput -T -g 100 100 500 500",
+                "power-shell setmode 602"
+            ]
+        }
     ]
 }

@@ -98,7 +98,7 @@ export default function securityTest() {
       }
       expect(await AbilityUtils.startAbilityImplicitly(testAssistWantInfo, abilityContext)).assertTrue()
       await driver.delayMs(2000)
-      let openButton = await driver.findComponent(ON.text('打开'))
+      let openButton = await driver.findComponent(ON.text('打开').inWindow('com.acts.pcs.arktstest'))
       if(openButton != undefined) {
         await openButton.click()
         await driver.delayMs(2000)
@@ -1303,16 +1303,16 @@ export default function securityTest() {
       }
       expect(await AbilityUtils.startAbilityImplicitly(testAssistWantInfo, abilityContext)).assertTrue()
       await driver.delayMs(5000)
-      let openButton = await driver.findComponent(ON.text('打开'))
+      let openButton = await driver.findComponent(ON.text('打开').inWindow('com.acts.pcs.arktstest'))
       if(openButton != undefined && openButton != null) {
         await openButton.click()
         await driver.delayMs(2000)
       }
-      let button = await driver.findComponent(ON.id('generateKey'))
+      let button = await driver.findComponent(ON.id('generateKey').inWindow('com.acts.pcs.arkts.assist'))
       await driver.delayMs(1000)
       await button.click()
       await driver.delayMs(2000)
-      let text = await driver.findComponent(ON.id('isKeyStoraged'))
+      let text = await driver.findComponent(ON.id('isKeyStoraged').inWindow('com.acts.pcs.arkts.assist'))
       expect(await text.getText()).assertEqual('TRUE')
       let keyAlias = 'assist_key'
       try {

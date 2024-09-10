@@ -20,11 +20,11 @@ import testsuite from '../test/List.test'
 export default {
   onCreate() {
     console.info('Application onCreate')
-    globalThis.abilityContext = this.context
     var abilityDelegator: any
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
     var abilityDelegatorArguments: any
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    globalThis.abilityContext = this.context;
     console.info('start run testcase!!!')
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   },

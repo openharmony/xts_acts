@@ -22,7 +22,8 @@ group("multimodalinput") {
       "multimodalinput_ets/InputDeviceEts:ActsMMIInputDeviceEtsTest",
       "multimodalinput_ets/PointerEts:ActsMMIPointerEtsTest",
       "multimodalinput_ets_standard:ActsMultimodalInputEtsTest",
-      "multimodalinput_ndk:ActsMultimodalInputNdkTest",
+      "multimodalinput_ndk_hvigor/InputNdkNormal:ActsMultimodalInputNdkTest",
+      "multimodalinput_ndk_hvigor/InputNdkSystem:ActsMultimodalInputNdkSystemTest",
     ]
   }
 }

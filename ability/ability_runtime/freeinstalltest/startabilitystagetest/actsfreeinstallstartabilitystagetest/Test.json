@@ -22,10 +22,10 @@
                 "remount",
                 "mkdir /data/test/",
                 "param set persist.sys.abilityms.support.ecologicalrulemgrservice false",
-                "reboot",
                 "power-shell wakeup",
-                "power-shell setmode 602",
-                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100"
+                "uinput -T -m 300 2700 280 200",
+                "uinput -T -d 1070 1070 -u 1070 1070",
+                "power-shell setmode 602"
             ]
         },
         {

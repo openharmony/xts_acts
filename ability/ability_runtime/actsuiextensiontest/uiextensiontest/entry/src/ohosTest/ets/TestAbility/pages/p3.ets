@@ -30,11 +30,17 @@ struct P1 {
       Column() {
         UIExtensionComponent({
           bundleName: 'com.acts.uiextensionprovider',
-          abilityName: 'UIExtAbility'
+          abilityName: 'UIExtAbility',
+          parameters:{
+            'ability.want.params.uiExtensionType': 'sys/commonUI'
+          }
         }).width('100%').height('35%')
         UIExtensionComponent({
           bundleName: 'com.acts.uiextensionprovider2',
-          abilityName: 'UIExtAbility'
+          abilityName: 'UIExtAbility',
+          parameters:{
+            'ability.want.params.uiExtensionType': 'sys/commonUI'
+          }
         }).width('100%').height('35%')
       }
       .width('100%')

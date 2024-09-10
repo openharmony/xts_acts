@@ -16,6 +16,7 @@
 #include "jsvm.h"
 #include "jsvm_common.h"
 #include "native_common.h"
+#include "test_entry.h"
 #include "securec.h"
 #include <stdint.h>
 #include <stdio.h>
@@ -8272,10 +8273,10 @@ void InstanceFinalizeCallback(JSVM_Env env, void *finalizeData, void *finalizeHi
     if (finalizeData) {
         InstanceData *data = reinterpret_cast<InstanceData *>(finalizeData);
         free(data);
-        *(InstanceData **)finalizeData = nullptr;
     }
 }
 
+// If yes, true is returned. If no, false is returned.
 static JSVM_Value SetInstanceData(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -8285,8 +8286,9 @@ static JSVM_Value SetInstanceData(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetValueUint32(env, argv[0], &instanceDataValue);
     InstanceData *instanceData = reinterpret_cast<InstanceData *>(malloc(sizeof(InstanceData)));
     if (instanceData == nullptr) {
-        printf("Memory allocation failed!\n");
-        return nullptr;
+        JSVM_Value result1;
+        OH_JSVM_GetBoolean(env, false, &result1);
+        return result1;
     }
     instanceData->value = instanceDataValue;
     JSVM_Status status = OH_JSVM_SetInstanceData(env, instanceData, InstanceFinalizeCallback, nullptr);
@@ -8296,19 +8298,33 @@ static JSVM_Value SetInstanceData(JSVM_Env env, JSVM_CallbackInfo info)
     return result;
 }
 
+// If yes, true is returned. If no, false is returned.
 static JSVM_Value GetInstanceData(JSVM_Env env, JSVM_CallbackInfo info)
 {
+    JSVM_Value result;
     InstanceData *instanceData = reinterpret_cast<InstanceData *>(malloc(sizeof(InstanceData)));
     if (instanceData == nullptr) {
-        printf("Memory allocation failed!\n");
-        return nullptr;
+        OH_JSVM_GetBoolean(env, false, &result);
+        return result;
     }
     instanceData->value = DIFF_VALUE_FIVE;
     OH_JSVM_SetInstanceData(env, instanceData, InstanceFinalizeCallback, nullptr);
     InstanceData *resData = nullptr;
-    OH_JSVM_GetInstanceData(env, (void **)&resData);
-    JSVM_Value result;
-    OH_JSVM_CreateUint32(env, resData->value, &result);
+    JSVM_Status stat1 = OH_JSVM_GetInstanceData(env, (void **)&resData);
+    bool setResult = stat1 == JSVM_OK;
+    if (setResult == false) {
+        OH_JSVM_GetBoolean(env, setResult, &result);
+        return result;
+    }
+    setResult = resData->value == DIFF_VALUE_FIVE;
+    if (setResult == false) {
+        OH_JSVM_GetBoolean(env, setResult, &result);
+        return result;
+    }
+    InstanceData *resData2 = nullptr;
+    OH_JSVM_GetInstanceData(env, (void **)&resData2);
+    setResult = resData2 == resData;
+    OH_JSVM_GetBoolean(env, setResult, &result);
     return result;
 }
 
@@ -10044,6 +10060,22 @@ static napi_value RunJsVm(napi_env nEnv, napi_callback_info nInfo)
     return nResult;
 }
 
+#include <iostream>
+
+[[maybe_unused]] static napi_value WasmTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_wasm.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value ArrayBufferBackingStoreTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_array_buffer_backing_store.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -10107,6 +10139,8 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testArrayBuffer2", testArrayBuffer2),
         DECLARE_NAPI_FUNCTION("testArrayBuffer3", testArrayBuffer3),
         DECLARE_NAPI_FUNCTION("testWasmOperator", testWasmOperator),
+        DECLARE_NAPI_FUNCTION("wasmTest", WasmTest),
+        DECLARE_NAPI_FUNCTION("arrayBufferBackingStoreTest", ArrayBufferBackingStoreTest),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;

@@ -1,12 +1,12 @@
 {
- "string":[
+  "string": [
     {
-      "name":"app_name",
-      "value":"WantConstantTest"
+      "name": "app_name",
+      "value": "WantConstantTest"
     },
     {
       "name": "description_application",
       "value": "WantConstantTest"
     }
   ]
-}      
+}

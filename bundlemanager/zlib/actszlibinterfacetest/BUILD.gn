@@ -13,31 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsZlibInterfaceTest") {
-  hap_profile = "src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":arkui_web_enhanced_four_js_assets",
-    ":arkui_web_enhanced_four_resources",
-  ]
-  ets2abc = true
+ohos_js_app_suite("ActsZlibInterfaceTest") {
+  test_hap = true
+  testonly = true
   certificate_profile = "signature/com.actszlibinterfacetest.test.p7b"
   hap_name = "ActsZlibInterfaceTest"
   subsystem_name = "bundlemanager"
   part_name = "bundle_framework"
-}
-
-ohos_app_scope("arkui_web_enhanced_four_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("arkui_web_enhanced_four_js_assets") {
-  source_dir = "src/main/ets"
-}
-
-ohos_resources("arkui_web_enhanced_four_resources") {
-  sources = [ "src/main/resources" ]
-  deps = [ ":arkui_web_enhanced_four_profile" ]
-  hap_profile = "src/main/module.json"
 }

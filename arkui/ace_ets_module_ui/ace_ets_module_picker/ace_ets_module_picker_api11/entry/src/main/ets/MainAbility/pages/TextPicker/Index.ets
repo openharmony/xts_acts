@@ -44,13 +44,13 @@ struct TextPickerExample {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("select page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.disappearTextStyle != null) {
+      if (eventData.data?.disappearTextStyle != null) {
         this.disappearTextStyle = JSON.parse(eventData.data.disappearTextStyle);
       }
-      if (eventData.data.textStyle != null) {
+      if (eventData.data?.textStyle != null) {
         this.textStyle = JSON.parse(eventData.data.textStyle);
       }
-      if (eventData.data.selectedTextStyle != null) {
+      if (eventData.data?.selectedTextStyle != null) {
         this.selectedTextStyle = JSON.parse(eventData.data.selectedTextStyle);
       }
     }
@@ -77,7 +77,7 @@ struct TextPickerExample {
         .textStyle(this.textStyle)
         .selectedTextStyle(this.selectedTextStyle)
         .key('textPicker')
-        .onChange((value: string, index: number) => {
+        .onChange((value: string|string[], index: number|number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index)
         })
 
@@ -86,7 +86,7 @@ struct TextPickerExample {
         .textStyle(this.textStyleDefault)
         .selectedTextStyle(this.selectedTextStyleDefault)
         .key('textPickerDefault')
-        .onChange((value: string, index: number) => {
+        .onChange((value: string|string[], index: number|number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index)
         })
     }

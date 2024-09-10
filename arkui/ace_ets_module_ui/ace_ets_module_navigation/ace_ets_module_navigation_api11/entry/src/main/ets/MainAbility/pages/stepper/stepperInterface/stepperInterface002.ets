@@ -16,10 +16,10 @@
 @Entry
 @Component
 struct stepperInterface002 {
-  @State currentIndex: number = 0
+  @State currentIndex: number | undefined = 0
   build() {
     Column(){
-      Text(this.currentIndex.toString())
+      Text(this.currentIndex?.toString())
       .height(20)
       Stepper({
         index: this.currentIndex

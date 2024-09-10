@@ -27,8 +27,9 @@ let mPhotoSurface;
 let mCameraNum;
 
 let mCameraInput;
-let mPreviewOutput;
-let mPhotoOutput;
+let mPreviewOutput: camera.PreviewOutput | null = null;
+let mPhotoOutput: camera.PhotoOutput | null = null;
+let mVideoOutput: camera.VideoOutput | null = null;
 
 let receiver;
 let context = featureAbility.getContext();
@@ -104,6 +105,9 @@ export default function cameraPreconfigTest() {
             await mCameraSession.release();
             mCameraSession = null;
         }
+        mPhotoOutput = null;
+        mPreviewOutput = null;
+        mVideoOutput = null;
     }
 
     async function createInput(idx: any) {
@@ -129,14 +133,22 @@ export default function cameraPreconfigTest() {
         return true;
     }
 
-    function createOutput() {
+    function createOutput(sceneMode: camera.SceneMode) {
         console.info('Enter createOutput');
 
-        mPreviewOutput = mCameraManager.createPreviewOutput(globalThis.surfaceId);
-        if (isEmpty(mPreviewOutput)) {
-            console.info(TAG + "createPreviewOutput FAILED");
+        if(sceneMode == camera.SceneMode.NORMAL_VIDEO){
+            mVideoOutput = mCameraManager.createVideoOutput(globalThis.surfaceId);
+            if (isEmpty(mVideoOutput)) {
+                console.info(TAG + "createVideoOutput FAILED");
+            }
+            console.info(TAG + "createVideoOutput: " + mVideoOutput);
+        } else {
+            mPreviewOutput = mCameraManager.createPreviewOutput(globalThis.surfaceId);
+            if (isEmpty(mPreviewOutput)) {
+                console.info(TAG + "createPreviewOutput FAILED");
+            }
+            console.info(TAG + "createPreviewOutput: " + mPreviewOutput);
         }
-        console.info(TAG + "createPreviewOutput: " + mPreviewOutput);
 
         mPhotoOutput = mCameraManager.createPhotoOutput(mPhotoSurface);
         if (isEmpty(mPhotoOutput)) {
@@ -154,6 +166,11 @@ export default function cameraPreconfigTest() {
         if (!isEmpty(mPreviewOutput)) {
             await mPreviewOutput.release();
             mPreviewOutput = null;
+        }
+
+        if (!isEmpty(mVideoOutput)) {
+            await mVideoOutput.release();
+            mVideoOutput = null;
         }
 
         if (!isEmpty(mPhotoOutput)) {
@@ -175,7 +192,7 @@ export default function cameraPreconfigTest() {
         }
         mCameraSession.preconfig(preconfigType);
         await createInput(idx);
-        createOutput();
+        createOutput(sceneMode);
 
         await sleep(1);
 
@@ -191,6 +208,11 @@ export default function cameraPreconfigTest() {
             mCameraSession.addOutput(mPreviewOutput);
         }
 
+        if (!isEmpty(mVideoOutput)) {
+            console.info(TAG + "Start to addOutput mVideoOutput");
+            mCameraSession.addOutput(mVideoOutput);
+        }
+
         if (!isEmpty(mPhotoOutput)) {
             console.info(TAG + "Start to addOutput mPhotoOutput");
             mCameraSession.addOutput(mPhotoOutput);
@@ -202,14 +224,19 @@ export default function cameraPreconfigTest() {
 
         await sleep(50);
 
-        await mCameraSession.start(async (err) => {
-            console.info(TAG + "Entering mCameraSession start callback");
-            if (!err) {
-                console.info(TAG + "Entering mCameraSession start PASSED ");
-            } else {
-                console.info(TAG + "Entering mCameraSession start FAILED : " + err.message);
-            }
-        })
+        await mCameraSession.start();
+
+        if (!isEmpty(mPreviewOutput)) {
+            mPreviewOutput.getActiveProfile();
+        }
+
+        if (!isEmpty(mVideoOutput)) {
+            mVideoOutput.getActiveProfile();
+        }
+
+        if (!isEmpty(mPhotoOutput)) {
+            mPhotoOutput.getActiveProfile();
+        }
 
         await sleep(100);
         console.info(TAG + "Exit startCameraSession");
@@ -220,14 +247,7 @@ export default function cameraPreconfigTest() {
     async function stopCameraSession() {
         console.info(TAG + "Enter stopCameraSession");
         mCameraSession.beginConfig();
-        mCameraSession.stop(async (err) => {
-            console.info(TAG + "Entering mCameraSession stop callback");
-            if (!err) {
-                console.info(TAG + "Entering mCameraSession stop PASSED ");
-            } else {
-                console.info(TAG + "Entering mCameraSession stop FAILED : " + err.message);
-            }
-        })
+        await mCameraSession.stop();
         await sleep(100);
 
         if (!isEmpty(mCameraInput)) {
@@ -273,12 +293,12 @@ export default function cameraPreconfigTest() {
         afterEach(async function () {
             console.info('afterEach case');
             await sleep(100);
-            releaseCameraSessionInstance();
+            await releaseCameraSessionInstance();
         })
 
         afterAll(async function () {
-            releaseCameraSessionInstance();
-            sleep(1000);
+            await releaseCameraSessionInstance();
+            await sleep(1000);
             console.info('afterAll case');
         })
 
@@ -307,18 +327,18 @@ export default function cameraPreconfigTest() {
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_PRECONFIG_720P_0100
-        * @tc.name      : Photo session preconfig 720P
-        * @tc.desc      : Photo session preconfig 720P
+        * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_PRECONFIG_0100
+        * @tc.name      : Photo session preconfig
+        * @tc.desc      : Photo session preconfig
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-        it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_PRECONFIG_720P_0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_PRECONFIG_720P_0100--------------");
+        it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_PRECONFIG_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_PRECONFIG_0100--------------");
 
             if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_PRECONFIG_720P_0100 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_PRECONFIG_0100 FAILED with NoCamera");
                 expect().assertFail();
                 done();
                 return;
@@ -326,17 +346,75 @@ export default function cameraPreconfigTest() {
 
             let result = createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
             expect(result).assertTrue();
-            if (!mCameraSession.canPreconfig(camera.PreconfigType.PRECONFIG_720P)) {
+            let selectedPreconfigType: camera.PreconfigType | null = null;
+            let types: Array<camera.PreconfigType> = [camera.PreconfigType.PRECONFIG_720P,
+            camera.PreconfigType.PRECONFIG_1080P,
+            camera.PreconfigType.PRECONFIG_4K,
+            camera.PreconfigType.PRECONFIG_HIGH_QUALITY,
+            ];
+            for (let type of types) {
+                if (mCameraSession.canPreconfig(type)) {
+                    selectedPreconfigType = type;
+                    break;
+                }
+            }
+            if (selectedPreconfigType == null || !mCameraSession.canPreconfig(selectedPreconfigType)) {
                 console.info(TAG + "CameraSession.canPreconfig return fail, skip preconfig interface check");
                 expect(true).assertTrue();
                 done();
                 return;
             }
 
-            result = await startCameraSession(0, camera.SceneMode.NORMAL_PHOTO, camera.PreconfigType.PRECONFIG_720P);
+            result = await startCameraSession(0, camera.SceneMode.NORMAL_PHOTO, selectedPreconfigType);
             expect(result).assertTrue();
 
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_PRECONFIG_720P_0100 PASSED");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_PRECONFIG_0100 PASSED");
+            done();
+        })
+
+        /**
+        * @tc.number    : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_0100
+        * @tc.name      : Video session preconfig
+        * @tc.desc      : Video session preconfig
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_0100--------------");
+
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_0100 FAILED with NoCamera");
+                expect().assertFail();
+                done();
+                return;
+            }
+
+            let result = createCameraSessionInstance(camera.SceneMode.NORMAL_VIDEO);
+            expect(result).assertTrue();
+            let selectedPreconfigType: camera.PreconfigType | null = null;
+            let types: Array<camera.PreconfigType> = [camera.PreconfigType.PRECONFIG_720P,
+            camera.PreconfigType.PRECONFIG_1080P,
+            camera.PreconfigType.PRECONFIG_4K,
+            camera.PreconfigType.PRECONFIG_HIGH_QUALITY,
+            ];
+            for (let type of types) {
+                if (mCameraSession.canPreconfig(type)) {
+                    selectedPreconfigType = type;
+                    break;
+                }
+            }
+            if (selectedPreconfigType == null || !mCameraSession.canPreconfig(selectedPreconfigType)) {
+                console.info(TAG + "CameraSession.canPreconfig return fail, skip preconfig interface check");
+                expect(true).assertTrue();
+                done();
+                return;
+            }
+
+            result = await startCameraSession(0, camera.SceneMode.NORMAL_VIDEO, selectedPreconfigType);
+            expect(result).assertTrue();
+
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_0100 PASSED");
             done();
         })
     })

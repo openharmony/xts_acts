@@ -29,7 +29,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import Utils from '../../MainAbility/common/Utils.ets'
+import CommonFunc from '../../MainAbility/common/Common'
 
 export default function ProvideMap() {
   describe('ProvideMap', () => {
@@ -45,7 +45,7 @@ export default function ProvideMap() {
         if (!("ProvideMap" == pages.name)) {
           console.info("get ProvideMap state pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push ProvideMap success: " + JSON.stringify(result));
         }
       } catch (err) {
@@ -65,13 +65,13 @@ export default function ProvideMap() {
     it('ProvideMap_0100', 0, async (done: Function) => {
       console.info('ProvideMap_0100 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('consumeMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('consumeMap_set'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('provideMap_value_d');
       console.info("[ProvideMap_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ProvideMap_0100] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -90,13 +90,13 @@ export default function ProvideMap() {
     it('ProvideMap_0200', 0, async (done: Function) => {
       console.info('ProvideMap_0200 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('consumeMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('consumeMap_clear'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('provideMap_value_K');
       console.info("[ProvideMap_0200] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ProvideMap_0200] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -115,13 +115,13 @@ export default function ProvideMap() {
     it('ProvideMap_0300', 0, async (done: Function) => {
       console.info('ProvideMap_0300 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('consumeMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('consumeMap_replace'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('provideMap_value_aa');
       console.info("[ProvideMap_0300] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ProvideMap_0300] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -140,13 +140,13 @@ export default function ProvideMap() {
     it('ProvideMap_0400', 0, async (done: Function) => {
       console.info('ProvideMap_0400 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('consumeMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('consumeMap_delete'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('provideMap_value_b');
       console.info("[ProvideMap_0400] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ProvideMap_0400] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
@@ -165,13 +165,13 @@ export default function ProvideMap() {
     it('ProvideMap_0500', 0, async (done: Function) => {
       console.info('ProvideMap_0500 START');
       let driver: Driver = await Driver.create()
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('consumeMap_init'));
       await btn_init.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('provideMap_add'));
       await button.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('provideMap_value_d');
       console.info("[ProvideMap_0500] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[ProvideMap_0500] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));

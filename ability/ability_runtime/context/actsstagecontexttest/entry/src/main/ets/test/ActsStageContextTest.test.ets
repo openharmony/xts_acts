@@ -16,6 +16,11 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import bundle from '@ohos.bundle';
 import bundleManager from '@ohos.bundle.bundleManager';
+import application from '@ohos.app.ability.application';
+import common from '@ohos.app.ability.common';
+import { BusinessError } from '@ohos.base';
+
+let moduleContext:common.Context | null;
 
 export default function actsStageContextTest() {
     describe('ActsStageContextTest', function () {
@@ -343,5 +348,60 @@ export default function actsStageContextTest() {
             expect(count2).assertEqual(1);
             done();
         })
+
+
+        /*
+        * @tc.number    : ACTS_StageContext_1500
+        * @tc.name      : test CreateModuleContext
+        * @tc.desc      : test CreateModuleContext
+        */
+        it("ACTS_StageContext_1500", 0, async (done:Function) => {
+            console.info("ACTS_StageContext_1500 begin");
+
+            moduleContext = null;
+
+            try {
+                application.createModuleContext(globalThis.abilityContext, 'entryname').then((data: Context)=>{
+                moduleContext = data;
+                }).catch((error : BusinessError)=>{
+                let e:string = error.toString();
+                let errLog = "Parse param moduleName failed, moduleName must be string."
+                expect(e.indexOf(errLog) >= 0).assertTrue();
+                console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+                })
+            } catch (error) {
+                console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+            }
+
+            expect(moduleContext).assertEqual(null);
+            done();
+        });
+
+        /*
+        * @tc.number    : ACTS_StageContext_1600
+        * @tc.name      : test CreateModuleContext
+        * @tc.desc      : test CreateModuleContext
+        */
+        it("ACTS_StageContext_1600", 0, async (done:Function) => {
+            console.info("ACTS_StageContext_1600 begin");
+
+            moduleContext = null;
+
+            try {
+                application.createModuleContext(globalThis.abilityContext, 'entry').then((data: Context)=>{
+                moduleContext = data;
+                expect(createModuleContext).assertTrue();
+                }).catch((error : BusinessError)=>{
+                let e:string = error.toString();
+                let errLog = "Parse param moduleName failed, moduleName must be string."
+                expect(e.indexOf(errLog) >= 0).assertTrue();
+                console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+                })
+            } catch (error) {
+                console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+            }
+
+            done();
+        });
     })
 }

@@ -58,7 +58,7 @@ export default function ToggleContentModifier() {
       await Utils.sleep(1000);
 
       let strJson1 = getInspectorByKey('ToggleContentModifier_text');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[ToggleContentModifier_001] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('false');
@@ -70,7 +70,7 @@ export default function ToggleContentModifier() {
       await Utils.sleep(1000);
 
       let strJson2 = getInspectorByKey('ToggleContentModifier_text');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       await Utils.sleep(1000);
       console.info("[ToggleContentModifier_001] obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.content).assertEqual('true');

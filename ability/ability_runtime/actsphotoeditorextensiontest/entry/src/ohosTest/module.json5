@@ -52,7 +52,7 @@
       {
         "name": "MuseEditorExtensionAbility",
         "srcEntry": "./ets/testability/MuseEditorExtensionAbility.ets",
-        "type": "photoEditor",
+        "type": "sys/commonUI",
         "exported": true,
         "description": "MuseEditorExtensionAbility",
         "icon": "$media:icon",

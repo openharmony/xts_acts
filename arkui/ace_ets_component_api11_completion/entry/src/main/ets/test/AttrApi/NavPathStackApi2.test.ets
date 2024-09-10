@@ -14,7 +14,7 @@
  */
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/utils/Common';
+import Utils from '../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 
@@ -64,7 +64,7 @@ export default function NavPathStackApi2() {
       console.info("[NavPathStackApi2_001] btn1")
 
       let strJson = getInspectorByKey('NavPathStackApi2_text_pageOne');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info("[NavPathStackApi2_001] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('pageOne2');

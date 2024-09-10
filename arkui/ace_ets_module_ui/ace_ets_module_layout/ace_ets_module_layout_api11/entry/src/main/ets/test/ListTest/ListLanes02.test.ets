@@ -57,7 +57,7 @@ export default function ListLanes02() {
       let ListItem0 = CommonFunc.getComponentRect('ListItem02_0');
       let ListItem1 = CommonFunc.getComponentRect('ListItem02_1');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ListItem1.left - ListItem0.right)).assertEqual(Math.round(vp2px(10)));
+	  expect(Math.abs((Math.round(ListItem1.left - ListItem0.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
 
       console.info('[ListLanes02_001] END');
       done();

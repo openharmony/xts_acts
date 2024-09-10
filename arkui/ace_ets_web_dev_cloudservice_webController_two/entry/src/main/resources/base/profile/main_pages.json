@@ -1,10 +1,5 @@
 {
-    "src": [
-        "MainAbility/pages/Index",
-        "MainAbility/pages/webViewNativeMediaMediaInfo",
-        "MainAbility/pages/webViewNativeMediaPlayerHandler",
-        "MainAbility/pages/webViewNativeMediaSetSeek",
-        "MainAbility/pages/webViewNativeMediaSetVolume"
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }
-

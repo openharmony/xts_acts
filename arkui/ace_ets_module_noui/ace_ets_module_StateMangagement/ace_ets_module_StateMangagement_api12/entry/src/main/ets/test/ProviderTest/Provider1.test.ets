@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function Provider1Test() {
-  describe('Provider1Test', function () {
-    beforeEach(async function (done) {
+  describe('Provider1Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("Provider1Test beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Provider/Provider1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Provider/Provider1',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function Provider1Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Provider1Test_0100', 0, async function (done) {
+    it('Provider1Test_0100', 0, async (done: Function) => {
       console.info('Provider1Test_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -56,7 +56,7 @@ export default function Provider1Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('parent_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Provider1Test_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('变量名和变量名重名：reviewVotes(41)');
 
@@ -81,7 +81,7 @@ export default function Provider1Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Provider1Test_0200', 0, async function (done) {
+    it('Provider1Test_0200', 0, async (done: Function) => {
       console.info('Provider1Test_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -89,7 +89,7 @@ export default function Provider1Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Child1_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Provider1Test_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('别名和变量名重名：reviewVotes(12)');
 
@@ -115,7 +115,7 @@ export default function Provider1Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Provider1Test_0300', 0, async function (done) {
+    it('Provider1Test_0300', 0, async (done: Function) => {
       console.info('Provider1Test_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -123,7 +123,7 @@ export default function Provider1Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Child2_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Provider1Test_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('只有alias重名：reviewVotes(23)');
 
@@ -143,7 +143,7 @@ export default function Provider1Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('Provider1Test_0400', 0, async function (done) {
+    it('Provider1Test_0400', 0, async (done: Function) => {
       console.info('Provider1Test_0400 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -151,7 +151,7 @@ export default function Provider1Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Child1_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Provider1Test_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('别名和变量名重名：reviewVotes(16)');
 

@@ -22,7 +22,7 @@ struct CheckboxGroupExample {
     console.info("checkboxGroup page stateChangCallBack");
     if (eventData != null) {
       console.info("checkboxGroup page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.select != null) {
+      if (eventData.data?.select != null) {
         this.select = eventData.data.select;
       }
     }

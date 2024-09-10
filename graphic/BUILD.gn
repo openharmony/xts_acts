@@ -25,10 +25,10 @@ group("graphic") {
       "acts_windowCompatibilityTest:ActsWindowCompatibilityTest",
       "component3D:ActsComponent3DTest",
       "displayManager:ActsDisplayManagerTest",
+      "displayNdk:ActsDisplayNdkTest",
       "effectKit:ActsEffectKitTest",
       "graphic3D:ActsGraphic3DTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
-      "graphicDrawing:ActsGraphicDrawingTest",
       "graphicDrawingFont:ActsGraphicDrawingFontTest",
       "graphicEGL:ActsGraphicEglTest",
       "graphicEffectFliterTest:ActsGraphicEffectFliterTest",
@@ -40,6 +40,7 @@ group("graphic") {
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
       "graphicnapitest:ActsGraphicNapiTest",
       "graphicvulkannapitest:ActsGraphicVulkanTest",
+      "imageNdk:image_ndk_hap",
       "nativebuffer:ActsNativeBufferTest",
       "nativedrawing:ActsNativeDrawingTest",
       "nativeimage:ActsNativeImageTest",
@@ -54,7 +55,7 @@ group("graphic") {
     if (!(product_name == "ohcore")) {
       deps += [
         "vkgl:cpvkgl",
-        #"vktest:cpVulkan",
+        "vktest:cpVulkan",
       ]
     }
   } else {

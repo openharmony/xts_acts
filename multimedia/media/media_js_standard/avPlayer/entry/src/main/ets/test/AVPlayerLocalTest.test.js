@@ -16,7 +16,6 @@
 import * as mediaTestBase from '../../../../../../MediaTestBase';
 import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio';
-import drm from '@ohos.multimedia.drm';
 import { testAVPlayerFun, AV_PLAYER_STATE, setSource, setSubtitle } from '../../../../../../AVPlayerTestBase.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
@@ -152,6 +151,78 @@ export default function AVPlayerLocalTest() {
                     console.error(`case createAVPlayer error, errMessage is ${err.message}`);
                     expect().assertFail();
                     done();
+                }
+            });
+        }
+
+        function setPlaybackInfoCb(avPlayer, descriptionKey, descriptionValue, done) {
+            let arrayDescription;
+            let surfaceID = globalThis.value;
+            avPlayer.on('stateChange', async (state, reason) => {
+                switch (state) {
+                    case AV_PLAYER_STATE.INITIALIZED:
+                        console.info(`case AV_PLAYER_STATE.INITIALIZED`);
+                        avPlayer.surfaceId = surfaceID;
+                        expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.INITIALIZED);
+                        avPlayer.prepare((err) => {
+                            console.info('case prepare called' + err);
+                            if (err != null) {
+                                console.error(`case prepare error, errMessage is ${err.message}`);
+                                expect().assertFail();
+                                done();
+                            } else {
+                                console.info('case avPlayer.duration: ' + avPlayer.duration);
+                            }
+                        });
+                        break;
+                    case AV_PLAYER_STATE.PREPARED:
+                        await avPlayer.getPlaybackInfo().then(res => {
+                            console.info('case getPlaybackInfo called!!');
+                            if (typeof (res) != 'undefined') {
+                                arrayDescription = res;
+                            } else {
+                                console.info('case getPlaybackInfo is failed');
+                                expect().assertFail();
+                            }
+                        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                        mediaTestBase.checkPlaybackInfo(arrayDescription, descriptionKey, descriptionValue);
+                        avPlayer.release();
+                        break;
+                    case AV_PLAYER_STATE.RELEASED:
+                        avPlayer = null;
+                        done();
+                        break;
+                    case AV_PLAYER_STATE.ERROR:
+                        expect().assertFail();
+                        avPlayer.release().then(() => {
+                        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                        avPlayer = null;
+                        break;
+                    default:
+                        break;
+                }
+            })
+        }
+
+        async function testCheckPlaybackInfo(src, avPlayer, descriptionKey, descriptionValue, done) {
+            console.info(`case media source: ${src}`)
+            media.createAVPlayer((err, video) => {
+                if (err != null) {
+                    console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                } else {
+                    console.info(`case media err: ${err}`)
+                    if (typeof (video) != 'undefined') {
+                        console.info('case createAVPlayer success');
+                        avPlayer = video;
+                        setPlaybackInfoCb(avPlayer, descriptionKey, descriptionValue, done)
+                        setSource(avPlayer, src);
+                    } else {
+                        console.error(`case createAVPlayer failed`);
+                        expect().assertFail();
+                        done();
+                    }
                 }
             });
         }
@@ -335,6 +406,109 @@ export default function AVPlayerLocalTest() {
                 }
             })
         }
+
+        function setPlayerPlaybackStrategy(avPlayer, playbackStrategy) {
+            avPlayer.setPlaybackStrategy(playbackStrategy).catch((error) => {
+                console.error(`setPlaybackStrategy failed, err code ${error.code} msg ${error.message}`)
+                expect().assertFail();
+            })
+        }
+
+        async function setPlaybackStrategy(avPlayer, done) {
+            let surfaceID = globalThis.value;
+            let playbackStrategy = { mutedMediaType: media.MediaType.MEDIA_TYPE_AUD }
+            let pauseCount = 0
+            let stateChangeCallback = async (state, reason) => {
+                switch (state) {
+                    case AV_PLAYER_STATE.INITIALIZED:
+                        avPlayer.surfaceId = surfaceID;
+                        setPlayerPlaybackStrategy(avPlayer, playbackStrategy)
+                        avPlayer.prepare()
+                        break;
+                    case AV_PLAYER_STATE.PREPARED:
+                        avPlayer.play()
+                        break;
+                    case AV_PLAYER_STATE.PLAYING:
+                        if (pauseCount++ == 0) {
+                            avPlayer.pause()
+                        }
+                        break;
+                    case AV_PLAYER_STATE.PAUSED:
+                        avPlayer.play()
+                        break;
+                    case AV_PLAYER_STATE.COMPLETED:
+                        avPlayer.release()
+                        break;
+                    case AV_PLAYER_STATE.RELEASED:
+                        avPlayer = null;
+                        done();
+                        break;
+                    case AV_PLAYER_STATE.ERROR:
+                        avPlayer.release().then(() => {},
+                            mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                        avPlayer = null;
+                        expect().assertFail();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            avPlayer.on('stateChange', stateChangeCallback)
+        }
+
+        function setPlayerMediaMuted(avPlayer, expectedSuccess) {
+            avPlayer.setMediaMuted(audio, true).catch((error) => {
+                console.error(`setMediaMuted failed, err code ${error.code} msg ${error.message}`)
+                expect().assertFail();
+            })
+        }
+
+        async function setMediaMuted(avPlayer, done) {
+            let surfaceID = globalThis.value;
+            let audio = media.MediaType.MEDIA_TYPE_AUD
+            let pauseCount = 0
+            let stateChangeCallback = async (state, reason) => {
+                switch (state) {
+                    case AV_PLAYER_STATE.INITIALIZED:
+                        avPlayer.surfaceId = surfaceID;
+                        avPlayer.prepare()
+                        break;
+                    case AV_PLAYER_STATE.PREPARED:
+                        setPlayerMediaMuted(avPlayer)
+                        avPlayer.play()
+                        break;
+                    case AV_PLAYER_STATE.PLAYING:
+                        setPlayerMediaMuted(avPlayer)
+                        if (pauseCount++ > 0) {
+                            break
+                        }
+                        avPlayer.pause()
+                        break;
+                    case AV_PLAYER_STATE.PAUSED:
+                        setPlayerMediaMuted(avPlayer)
+                        avPlayer.play()
+                        break;
+                    case AV_PLAYER_STATE.COMPLETED:
+                        setPlayerMediaMuted(avPlayer)
+                        avPlayer.release()
+                        break;
+                    case AV_PLAYER_STATE.RELEASED:
+                        avPlayer = null;
+                        done();
+                        break;
+                    case AV_PLAYER_STATE.ERROR:
+                        expect().assertFail();
+                        avPlayer.release().then(() => {},
+                            mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                        avPlayer = null;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            avPlayer.on('stateChange', stateChangeCallback)
+        }
+
         async function testOffCallback(src, avPlayer, done) {
             console.info(`case media source: ${src}`)
             media.createAVPlayer((err, video) => {
@@ -363,6 +537,42 @@ export default function AVPlayerLocalTest() {
                     setOnCallback(avPlayer, done)
                     setSource(avPlayer, src);
                     setSubtitle(avPlayer, subtitleSrc)
+                }
+                if (err != null) {
+                    console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                }
+            });
+        }
+
+        async function testSetPlaybackStrategy(src, avPlayer, done) {
+            console.info(`case media source: ${src}`)
+            media.createAVPlayer((err, video) => {
+                console.info(`case media err: ${err}`)
+                if (typeof (video) !== 'undefined') {
+                    console.info('case createAVPlayer success');
+                    avPlayer = video;
+                    setPlaybackStrategy(avPlayer, done)
+                    setSource(avPlayer, src);
+                }
+                if (err != null) {
+                    console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                }
+            });
+        }
+
+        async function testSetMediaMuted(src, avPlayer, done) {
+            console.info(`case media source: ${src}`)
+            media.createAVPlayer((err, video) => {
+                console.info(`case media err: ${err}`)
+                if (typeof (video) !== 'undefined') {
+                    console.info('case createAVPlayer success');
+                    avPlayer = video;
+                    setMediaMuted(avPlayer, done)
+                    setSource(avPlayer, src);
                 }
                 if (err != null) {
                     console.error(`case createAVPlayer error, errMessage is ${err.message}`);
@@ -440,6 +650,21 @@ export default function AVPlayerLocalTest() {
         })
 
         /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETPLAYBACKINFO_0100
+            * @tc.name      : 003.test getPlaybackInfo
+            * @tc.desc      : Local Video playback control test
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level1
+        */
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETPLAYBACKINFO_0100', 0, async function (done) {
+            let descriptionKey = new Array('server_ip_address', 'average_download_rate', 'download_rate',
+                'is_downloading', 'buffer_duration');
+            let descriptionValue = new Array("", 0, 0, 0, 0);
+            testCheckPlaybackInfo(fileDescriptor, avPlayer, descriptionKey, descriptionValue, done)
+        })
+
+        /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_VIDEOSCALETYPE_0100
             * @tc.name      : 001.test video player videoScaleTpe
             * @tc.desc      : Local Video playback control test
@@ -485,6 +710,30 @@ export default function AVPlayerLocalTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_0200', 0, async function (done) {
             testSubtitle(fileDescriptor, `fd://${subtitleFdSrc.fd}`, avPlayer, done);
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_0100
+            * @tc.name      : 001.test setPlaybackStrategy Function
+            * @tc.desc      : Local Video subtitle control test
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level1
+        */
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_0100', 0, async function (done) {
+            testSetPlaybackStrategy(fileDescriptor, avPlayer, done);
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_MUTE_0100
+            * @tc.name      : 001.test setMediaMuted Function
+            * @tc.desc      : Local Video subtitle control test
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level1
+        */
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_MUTE_0100', 0, async function (done) {
+            testSetMediaMuted(fileDescriptor, avPlayer, done);
         })
     })
 }

@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@ts-nocheck
 import hilog from '@ohos.hilog';
 import events_emitter from '@ohos.events.emitter';
 
@@ -30,33 +29,33 @@ struct Index {
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("key==> page valueChangeCallBack");
-    if (eventData.data.type == "TextPicker" && eventData.data.text == "true") {
+    if (eventData.data?.type == "TextPicker" && eventData.data.text == "true") {
       this.flag = true
       this.canLoop = true
       console.info("valueChangeCallBack this.flag:" + JSON.stringify(this.flag));
       console.info("valueChangeCallBack this.canLoop:" + JSON.stringify(this.canLoop));
       console.info("valueChangeCallBack:" + JSON.stringify(eventData));
     }
-    if (eventData.data.type == "TextPicker" && eventData.data.text == "false") {
+    if (eventData.data?.type == "TextPicker" && eventData.data.text == "false") {
       this.canLoop = false
       this.flag = true
       console.info("valueChangeCallBack this.flag:" + JSON.stringify(this.flag));
       console.info("valueChangeCallBack this.canLoop:" + JSON.stringify(this.canLoop));
       console.info("valueChangeCallBack:" + JSON.stringify(eventData));
     }
-    if (eventData.data.type == "TextPicker" && eventData.data.text == "") {
+    if (eventData.data?.type == "TextPicker" && eventData.data.text == "") {
       this.flag = true
     }
-    if (eventData.data.type == "TextPicker" && eventData.data.text == "0") {
+    if (eventData.data?.type == "TextPicker" && eventData.data.text == "0") {
       this.flag = false
     }
-    if (eventData.data.type == "TextPickerErr" && eventData.data.text == "null") {
+    if (eventData.data?.type == "TextPickerErr" && eventData.data.text == "null") {
       console.info("valueChangeCallBack:" + JSON.stringify(eventData));
       console.info("valueChangeCallBack this.canLoop:" + JSON.stringify(this.canLoop));
       this.flag = false
       this.errFlag = true
     }
-    if (eventData.data.type == "TextPickerErr" && eventData.data.text == "undefined") {
+    if (eventData.data?.type == "TextPickerErr" && eventData.data.text == "undefined") {
       console.info("valueChangeCallBack:" + JSON.stringify(eventData));
       console.info("valueChangeCallBack this.canLoop:" + JSON.stringify(this.canLoop));
       this.flag = false
@@ -75,7 +74,7 @@ struct Index {
   private select: number = 1
   private select2: number = 1
   private select3: number = 1
-  private select4: number = 1
+  private select4: number|number[] = 1
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4']
   private fruits2: string[] = ['apple1', 'orange2', 'peach3', 'grape4']
 
@@ -88,18 +87,18 @@ struct Index {
           .key("TextPicker")
           .margin({ bottom: 10 })
           .canLoop(this.flag ? this.canLoop : (this.errFlag ? null : undefined))
-          .onChange((value: string, index: number) => {
+          .onChange((value: string|string[], index: number|number[]) => {
             console.info('Picker item changed, value: ' + value + ', index: ' + index)
           })
         TextPicker({ range: this.fruits, selected: this.select2 })
           .key("TextPickerErr")
-          .canLoop(this.flag ? "" : 0)
-          .onChange((value: string, index: number) => {
+          .canLoop(fakeBoolean(this.flag ? "" : 0))
+          .onChange((value: string|string[], index: number|number[]) => {
             console.info('Picker item changed, value: ' + value + ', index: ' + index)
           })
         TextPicker({ range: this.fruits, selected: this.select3 })
           .key("TextPickerNoCanLoop")
-          .onChange((value: string, index: number) => {
+          .onChange((value: string|string[], index: number|number[]) => {
             console.info('Picker item changed, value: ' + value + ', index: ' + index)
           })
 
@@ -128,4 +127,8 @@ struct Index {
       .width('100%')
     }.height('100%')
   }
+}
+
+function fakeBoolean(val: string|number|boolean) {
+  return val as boolean;
 }

@@ -11,29 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
-ohos_js_hap_suite("ActsWallpaperETSApiTest") {
-  hap_profile = "./entry/src/main/config.json"
-  deps = [
-    ":wallPaper_ets_assets",
-    ":wallPaper_ets_resources",
-    ":wallPaper_ets_test_assets",
-  ]
-  ets2abc = true
-  subsystem_name = "theme"
-  part_name = "wallpaper_mgr"
+
+ohos_js_app_suite("ActsWallpaperETSApiTest") {
+  test_hap = true
+  testonly = true
   certificate_profile = "./signature/ActsWallpaperEtsAPITest.p7b"
   hap_name = "ActsWallpaperETSApiTest"
-}
-
-ohos_js_assets("wallPaper_ets_assets") {
-  source_dir = "./entry/src/main/ets/MainAbility"
-}
-ohos_js_assets("wallPaper_ets_resources") {
-  source_dir = "./entry/src/main/ets/TestAbility"
-}
-ohos_resources("wallPaper_ets_test_assets") {
-  sources = [ "./entry/src/main/resources" ]
-  hap_profile = "./entry/src/main/config.json"
+  part_name = "wallpaper_mgr"
+  subsystem_name = "theme"
 }

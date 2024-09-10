@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function StorageProp20Jsunit() {
@@ -58,7 +58,7 @@ export default function StorageProp20Jsunit() {
     it('StorageProp20Jsunit_0100', 0, async (done: Function) => {
       console.info('[StorageProp20Jsunit_0100] START');
       let strJson1 = getInspectorByKey('text_state');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp20Jsunit_0100] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('State:10');
       console.info('[StorageProp20Jsunit_0100] END');
@@ -68,7 +68,7 @@ export default function StorageProp20Jsunit() {
     it('StorageProp20Jsunit_0200', 0, async (done: Function) => {
       console.info('[StorageProp20Jsunit_0200] START');
       let strJson1 = getInspectorByKey('text_Link');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp20Jsunit_0200] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('Link:10');
       console.info('[StorageProp20Jsunit_0200] END');
@@ -78,7 +78,7 @@ export default function StorageProp20Jsunit() {
     it('StorageProp20Jsunit_0300', 0, async (done: Function) => {
       console.info('[StorageProp20Jsunit_0300] START');
       let strJson1 = getInspectorByKey('text_Prop');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp20Jsunit_0300] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('Prop:10');
       console.info('[StorageProp20Jsunit_0300] END');
@@ -88,7 +88,7 @@ export default function StorageProp20Jsunit() {
     it('StorageProp20Jsunit_0400', 0, async (done: Function) => {
       console.info('[StorageProp20Jsunit_0400] START');
       let strJson1 = getInspectorByKey('text_Provide');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp20Jsunit_0400] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('Provide:10');
       console.info('[StorageProp20Jsunit_0400] END');

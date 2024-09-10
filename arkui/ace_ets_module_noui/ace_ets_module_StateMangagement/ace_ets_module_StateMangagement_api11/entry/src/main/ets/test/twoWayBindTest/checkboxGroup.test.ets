@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function checkboxGroupTest() {
-  describe('checkboxGroupTest', function () {
-    beforeEach(async function (done) {
+  describe('checkboxGroupTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("checkboxGroupTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/twoWayBind/checkboxGroup',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/twoWayBind/checkboxGroup',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function checkboxGroupTest() {
      * @tc.type :    FUNC
      * @tc.size :    MEDIUM
      */
-    it('checkboxGroupTest_0100', 0, async function (done) {
+    it('checkboxGroupTest_0100', 0, async (done: Function) => {
       console.info('checkboxGroupTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -62,7 +62,7 @@ export default function checkboxGroupTest() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('checkboxGroupText');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[checkboxGroupTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('checkgroupselectAll: true');
 
@@ -77,7 +77,7 @@ export default function checkboxGroupTest() {
      * @tc.type :    FUNC
      * @tc.size :    MEDIUM
      */
-    it('checkboxGroupTest_0200', 0, async function (done) {
+    it('checkboxGroupTest_0200', 0, async (done: Function) => {
       console.info('checkboxGroupTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -87,7 +87,7 @@ export default function checkboxGroupTest() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('checkboxGroupText');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[checkboxGroupTest_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('checkgroupselectAll: false');
 

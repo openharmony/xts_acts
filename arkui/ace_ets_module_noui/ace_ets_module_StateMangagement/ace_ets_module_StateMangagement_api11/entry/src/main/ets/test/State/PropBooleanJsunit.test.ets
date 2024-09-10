@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common'
+import CommonFunc from '../../MainAbility/common/Common'
 
 
 export default function PropBooleanJsunit() {
@@ -58,7 +58,7 @@ export default function PropBooleanJsunit() {
 
       console.info('PropBooleanJsunit_0100 START');
       let strJson = getInspectorByKey('Boolean_Prop');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropBooleanJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropBooleanJsunit_0100] label: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("父组件State:true");
@@ -74,7 +74,7 @@ export default function PropBooleanJsunit() {
       await CommonFunc.sleep(1000);
       console.info('PropBooleanJsunit_0200 START');
       let strJson = getInspectorByKey('Boolean_Prop');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropBooleanJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[PropBooleanJsunit_0200] label: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual(undefined);
@@ -85,7 +85,7 @@ export default function PropBooleanJsunit() {
 
       console.info('PropBooleanJsunit_0300 START');
       let strJson = getInspectorByKey('ChildPropBoolean');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropBooleanJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[PropBooleanJsunit_0300] label: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("子组件Prop: false");
@@ -100,7 +100,7 @@ export default function PropBooleanJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ChildPropBoolean');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropBooleanJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[PropBooleanJsunit_0400] label: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("子组件Prop: true");

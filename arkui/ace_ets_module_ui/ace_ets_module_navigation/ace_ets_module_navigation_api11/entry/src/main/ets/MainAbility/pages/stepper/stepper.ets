@@ -104,7 +104,7 @@ struct StepperExample {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback = (message) => {
+    let callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'index') {
         this.currentIndex = message.value
@@ -142,11 +142,11 @@ struct StepperExample {
     console.info("stepper page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData != null) {
       console.info("stepper page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.currentIndex != null) {
+      if (eventData.data?.currentIndex != null) {
         this.currentIndex = eventData.data.currentIndex;
         console.info("stepper page.." + this.currentIndex);
       }
-      if (eventData.data.disabled != null) {
+      if (eventData.data?.disabled != null) {
         this.disabled = eventData.data.disabled;
       }
     }

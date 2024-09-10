@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 export default function getSharedLocalStorageTest() {
-  describe('getSharedLocalStorageTest', function () {
-    beforeEach(async function (done) {
+  describe('getSharedLocalStorageTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("getSharedLocalStorageTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/GetSharedLocal/getSharedLocalStorage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/GetSharedLocal/getSharedLocalStorage',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function getSharedLocalStorageTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getSharedLocalStorageTest_0100', 0, async function (done) {
+    it('getSharedLocalStorageTest_0100', 0, async (done: Function) => {
       console.info('getSharedLocalStorageTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -59,7 +59,7 @@ export default function getSharedLocalStorageTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('getSharedLocalStorage_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[getSharedLocalStorageTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('propAM:47');
       console.info('[getSharedLocalStorageTest_0100] END');

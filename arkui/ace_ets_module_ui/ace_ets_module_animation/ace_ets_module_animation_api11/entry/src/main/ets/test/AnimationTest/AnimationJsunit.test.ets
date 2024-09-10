@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 import events_emitter from '@ohos.events.emitter'
 
 export default function AnimationJsunit() {
-  describe('AnimationJsunit', function () {
-    beforeEach(async function (done) {
+  describe('AnimationJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("AnimationJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Animation/Animation',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Animation/Animation',
       }
       try {
         router.clear();
@@ -42,7 +42,7 @@ export default function AnimationJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("overlay after each called");
     });
@@ -53,7 +53,7 @@ export default function AnimationJsunit() {
      * @tc.desc : Does the component size change after playback
      */
 	 
-    it('AnimationJsunit_0100', 0, async function (done) {
+    it('AnimationJsunit_0100', 0, async (done: Function) => {
       console.info('[AnimationJsunit_0100] START');
       let driver = await Driver.create()
 	  await CommonFunc.sleep(1000);
@@ -67,7 +67,7 @@ export default function AnimationJsunit() {
       await button_Bottom3.click();
 	  await CommonFunc.sleep(1000);
 	  let strJson = getInspectorByKey('onframe-value');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[AnimationJsunit_0100] obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content>'100').assertTrue();
       console.info('[AnimationJsunit_0100] END');
@@ -80,7 +80,7 @@ export default function AnimationJsunit() {
      * @tc.desc : Does the component size reach the set value after animation cancellation
      */
 	 
-	 it('AnimationJsunit_0200', 0, async function (done) {
+	 it('AnimationJsunit_0200', 0, async (done: Function) => {
       console.info('[AnimationJsunit_0200] START');
       let driver = await Driver.create()
 	  await CommonFunc.sleep(1000);
@@ -97,7 +97,7 @@ export default function AnimationJsunit() {
       await button_Bottom4.click();
 	  await CommonFunc.sleep(1000);
 	  let strJson = getInspectorByKey('onframe-value');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[AnimationJsunit_0200] obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content==='200').assertTrue();
       console.info('[AnimationJsunit_0200] END');
@@ -110,7 +110,7 @@ export default function AnimationJsunit() {
      * @tc.desc : Is there no change in component size after animation pause
      */
 	
-	it('AnimationJsunit_0300', 0, async function (done) {
+	it('AnimationJsunit_0300', 0, async (done: Function) => {
       console.info('[AnimationJsunit_0300] START');
       let driver = await Driver.create()
 	  await CommonFunc.sleep(1000);
@@ -127,11 +127,11 @@ export default function AnimationJsunit() {
       await button_Bottom4.click();
 	  await CommonFunc.sleep(1000);
 	  let strJson = getInspectorByKey('onframe-value');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[AnimationJsunit_0300] obj is: " + JSON.stringify(obj.$attrs.content));
 	  await CommonFunc.sleep(1000);
 	  let strJson2 = getInspectorByKey('onframe-value');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: Record<string, ESObject> = JSON.parse(strJson2);
 	  console.info("[AnimationJsunit_0300] obj2 is: " + JSON.stringify(obj2.$attrs.content));
       expect(obj.$attrs.content===obj2.$attrs.content).assertTrue();
       console.info('[AnimationJsunit_0300] END');
@@ -144,7 +144,7 @@ export default function AnimationJsunit() {
      * @tc.desc : Is the component size at the set value after the animation ends
      */
 	
-	it('AnimationJsunit_0400', 0, async function (done) {
+	it('AnimationJsunit_0400', 0, async (done: Function) => {
       console.info('[AnimationJsunit_0400] START');
       let driver2 = await Driver.create()
 	  await CommonFunc.sleep(1000);
@@ -174,7 +174,7 @@ export default function AnimationJsunit() {
      * @tc.desc : Does the animation setting parameters take effect
      */
 	
-	it('AnimationJsunit_0500', 0, async function (done) {
+	it('AnimationJsunit_0500', 0, async (done: Function) => {
       console.info('[AnimationJsunit_0500] START');
       let driver = await Driver.create()
 	  await CommonFunc.sleep(1000);
@@ -207,7 +207,7 @@ export default function AnimationJsunit() {
      * @tc.desc : Print callback after animation cancellation
      */
 	
-	it('AnimationJsunit_0600', 0, async function (done) {
+	it('AnimationJsunit_0600', 0, async (done: Function) => {
       console.info('[AnimationJsunit_0600] START');
       let driver = await Driver.create()
 	  await CommonFunc.sleep(1000);
@@ -237,7 +237,7 @@ export default function AnimationJsunit() {
      * @tc.desc : Whether to print the callback after the animation ends
      */
 	
-	it('AnimationJsunit_0700', 0, async function (done) {
+	it('AnimationJsunit_0700', 0, async (done: Function) => {
       console.info('[AnimationJsunit_0700] START');
       let driver = await Driver.create()
 	  await CommonFunc.sleep(1000);

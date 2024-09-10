@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function provide1() {
@@ -66,7 +66,7 @@ export default function provide1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('pBtn1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0100] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
@@ -82,7 +82,7 @@ export default function provide1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('pBtn2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0200] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0200] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
@@ -99,7 +99,7 @@ export default function provide1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('pBtn3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0300] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0300] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('100.00fp');
@@ -115,7 +115,7 @@ export default function provide1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('pBtn4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0400] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0400] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('100.00fp');
@@ -132,7 +132,7 @@ export default function provide1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('cBtn1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0500] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0500] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
@@ -150,7 +150,7 @@ export default function provide1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('cBtn2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0600] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0600] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
@@ -169,7 +169,7 @@ export default function provide1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('cBtn3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0700] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0700] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('100.00fp');
@@ -187,7 +187,7 @@ export default function provide1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('cBtn4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0800] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0800] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('100.00fp');

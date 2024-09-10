@@ -27,8 +27,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 export default function ConsumeArray1() {
   describe('ConsumeArray1', () => {
@@ -68,7 +68,7 @@ export default function ConsumeArray1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ConsumeArray1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ConsumeArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ConsumeArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [10]');
@@ -89,7 +89,7 @@ export default function ConsumeArray1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ConsumeArray1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ConsumeArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ConsumeArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Date]" number is "2021-08-08T00:00:00.000Z"');
@@ -110,7 +110,7 @@ export default function ConsumeArray1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ConsumeArray1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ConsumeArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ConsumeArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is ["20"]');
@@ -131,7 +131,7 @@ export default function ConsumeArray1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ConsumeArray1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ConsumeArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ConsumeArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [{"number":30}]');
@@ -152,7 +152,7 @@ export default function ConsumeArray1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ConsumeArray1New');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is 200');

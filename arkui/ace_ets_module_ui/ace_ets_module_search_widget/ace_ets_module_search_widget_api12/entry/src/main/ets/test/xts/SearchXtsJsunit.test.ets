@@ -15,25 +15,24 @@
 import { describe, beforeEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 export default function searchXtsJsunit() {
-  describe('searchXtsJsunit', function () {
-    beforeEach(async function (done) {
+  describe('searchXtsJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info('SearchXtsJsunit beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/xts/SearchXts',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/xts/SearchXts',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get SearchXts state pages: ' + JSON.stringify(pages));
         if (!('SearchXts' == pages.name)) {
           console.info('get SearchXts state pages.name: ' + JSON.stringify(pages.name));
-          result = await router.push(options);
+          let result = await router.push(options);
           await Utils.sleep(2000);
           console.info('push SearchXts page result: ' + JSON.stringify(result));
         }
@@ -51,13 +50,10 @@ export default function searchXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('SearchXtsJsunit_0101', 0, async function (done) {
+    it('SearchXtsJsunit_0101', 0, async (done: Function) => {
       console.info('[SearchXtsJsunit_0101] START');
       let strJson = getInspectorByKey('key_search_inputFilter');
-      let obj = JSON.parse(strJson);
-      for (let key in obj.$attrs) {
-          console.log('obj key is:' + key) // name age
-      }
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[SearchXtsJsunit_0101] inputFilter ========== : ' + JSON.stringify(obj.$attrs.inputFilter));
       expect(obj.$attrs.inputFilter).assertEqual('2');
       console.info('[SearchXtsJsunit_0101] END');
@@ -72,10 +68,10 @@ export default function searchXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('SearchXtsJsunit_0102', 0, async function (done) {
+    it('SearchXtsJsunit_0102', 0, async (done: Function) => {
       console.info('[SearchXtsJsunit_0102] START');
       let strJson = getInspectorByKey('key_search_selectedBackgroundColor');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[SearchXtsJsunit_0102] obj is: ' + JSON.stringify(obj.$attrs));
       console.info('[SearchJsunit_0102] selectedBackgroundColor ========== : ' + JSON.stringify(obj.$attrs.selectedBackgroundColor));
       expect(obj.$attrs.selectedBackgroundColor).assertEqual('#F5F5F5F5');
@@ -91,10 +87,10 @@ export default function searchXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('SearchXtsJsunit_0103', 0, async function (done) {
+    it('SearchXtsJsunit_0103', 0, async (done: Function) => {
       console.info('[SearchXtsJsunit_0103] START');
       let strJson = getInspectorByKey('key_search_textIndent');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[SearchXtsJsunit_0103] obj is: ' + JSON.stringify(obj.$attrs));
       console.info('[SearchXtsJsunit_0103] textIndent ========== : ' + JSON.stringify(obj.$attrs.textIndent));
       expect(obj.$attrs.textIndent).assertEqual('5.00vp');
@@ -110,14 +106,14 @@ export default function searchXtsJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('SearchXtsTest_0105', 0, async function (done) {
+    it('SearchXtsTest_0105', 0, async (done: Function) => {
       console.info('SearchXtsTest_0105 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('key_search_onEditChange'));
       await button.click();
       await CommonFunc.sleep(1000);
       let text1 = getInspectorByKey('key_search_onEditChange_text1');
-      let Obj = JSON.parse(text1);
+      let Obj: Record<string, ESObject> = JSON.parse(text1);
       expect(Obj.$attrs.content).assertEqual('onEditChange');
       console.info('SearchXtsTest_0105 END');
       done();
@@ -131,7 +127,7 @@ export default function searchXtsJsunit() {
     //  * @tc.type Function
     //  * @tc.level 0
     //  */
-    // it('SearchXtsTest_0106', 0, async function (done) {
+    // it('SearchXtsTest_0106', 0, async (done: Function) => {
     //   console.info('SearchXtsTest_0106 START');
     //   let driver1 = Driver.create();
     //   let button = await driver1.findComponent(ON.id('key_search_setTextSelection'));

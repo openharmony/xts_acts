@@ -14,7 +14,7 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -22,8 +22,8 @@ export default function selectOnSelectJsunit() {
   describe('selectOnSelectTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Select/select3',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Select/select3',
       }
       try {
         router.clear();

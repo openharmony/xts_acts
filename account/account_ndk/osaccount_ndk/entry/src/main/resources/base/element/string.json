@@ -11,10 +11,6 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
-    },
-    {
-      "name": "reason_hid_ddk",
-      "value": "account ndk test"
     }
   ]
 }

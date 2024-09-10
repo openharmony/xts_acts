@@ -19,6 +19,8 @@ import web_webview from '@ohos.web.webview';
 import business_error from '@ohos.base';
 import buffer from '@ohos.buffer'
 import { WebNetErrorList } from '@ohos.web.netErrorList'
+import { BusinessError } from '@ohos.base';
+
 
 @Entry
 @Component
@@ -74,7 +76,7 @@ struct webViewOnRequestStartTwo {
                 Utils.emitEvent(this.isMainFrameResult, 3306)
                 Utils.emitEvent(this.hasGestureResult, 3308)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }

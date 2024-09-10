@@ -1,0 +1,13 @@
+{
+  "src": [
+    "testability/pages/index/index",
+    "testability/pages/pasteButton",
+    "testability/pages/pasteButton_1",
+    "testability/pages/locationButton",
+    "testability/pages/locationButton_1",
+    "testability/pages/locationButton_2",
+    "testability/pages/saveButton",
+    "testability/pages/saveButton_1",
+    "testability/pages/saveButton_2"
+  ]
+}

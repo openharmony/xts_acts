@@ -38,11 +38,11 @@ export default function AVSessionManager() {
         })
 
         afterEach(async function () {
-            await currentAVSession.destroy().tnen(() => {
+            await currentAVSession.destroy().then(() => {
                 console.info('TestLog: Session destroy success');  
             }).catch((err) => {
                 console.info(`TestLog: Session destroy error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTure();
+                expect(false).assertTrue();
             });
             console.info('TestLog: End testing testcase');
         })

@@ -19,6 +19,8 @@ import business_error from '@ohos.base';
 import cert from '@ohos.security.cert';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import print from '@ohos.print';
+import { BusinessError } from '@ohos.base';
+
 
 class TestObj {
   constructor() {
@@ -188,7 +190,7 @@ struct Second {
     console.info("web page valueChangeCallBack");
     if (eventData != null) {
       console.info("valueChangeCallBack:" + JSON.stringify(eventData));
-      if (eventData.data.ACTION != null) {
+      if (eventData.data?.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
     }
@@ -209,7 +211,7 @@ struct Second {
                   Utils.emitEvent(this.outputStr, 4);
                 })
               } catch (error) {
-                this.outputStr = 'getCertificate failed: ' + error.code + ", errMsg: " + error.message;
+                this.outputStr = 'getCertificate failed: ' + (error as BusinessError).code + ", errMsg: " + (error as BusinessError).message;
               }
               break;
             }
@@ -300,7 +302,7 @@ struct Second {
                 }, 2000);
 
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }
@@ -322,7 +324,7 @@ struct Second {
                   }
                 }, 2000)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             }

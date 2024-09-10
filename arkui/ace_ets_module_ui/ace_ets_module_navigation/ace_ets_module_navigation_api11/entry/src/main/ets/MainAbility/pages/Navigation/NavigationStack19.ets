@@ -26,7 +26,7 @@ struct NavigationStack19 {
       Navigation(this.pageInfos) {
         Column() {
           List({space:12}){
-            ForEach(this.arr, (item:number) => {
+            ForEach(this.arr, (item: number) => {
               ListItem() {
                 NavRouter(){
                   Text("NavRouter" + item).key(`NavigationStack19ListItemText${item}`)

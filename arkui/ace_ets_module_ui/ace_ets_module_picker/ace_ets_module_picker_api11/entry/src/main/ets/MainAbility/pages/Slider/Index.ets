@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@ts-nocheck
 import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
@@ -22,10 +21,6 @@ import hilog from '@ohos.hilog';
 @Component
 struct SliderTest {
   aboutToAppear(){
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
   }
@@ -946,7 +941,7 @@ struct SliderTest {
               style: SliderStyle.InSet
             })
               .key('ArkUX_Stage_Slider_blockStyle_1000')
-              .blockStyle(" ")
+              .blockStyle(fakeSliderBlockStyle(" "))
 
             Slider({
               value: this.inSetValueOne,
@@ -955,7 +950,7 @@ struct SliderTest {
               style: SliderStyle.InSet
             })
               .key('ArkUX_Stage_Slider_blockStyle_1100')
-              .blockStyle(null)
+              .blockStyle(fakeSliderBlockStyle(null))
 
             Slider({
               value: this.inSetValueOne,
@@ -964,7 +959,7 @@ struct SliderTest {
               style: SliderStyle.InSet
             })
               .key('ArkUX_Stage_Slider_blockStyle_1200')
-              .blockStyle(undefined)
+              .blockStyle(fakeSliderBlockStyle(undefined))
 
             Slider({
               value: this.inSetValueOne,
@@ -973,7 +968,7 @@ struct SliderTest {
               style: SliderStyle.InSet
             })
               .key('ArkUX_Stage_Slider_blockStyle_1300')
-              .blockStyle(-1)
+              .blockStyle(fakeSliderBlockStyle(-1))
 
             Slider({
               value: this.inSetValueOne,
@@ -989,4 +984,8 @@ struct SliderTest {
     }
     .height('100%')
   }
+}
+
+function fakeSliderBlockStyle(val: SliderBlockStyle|string|number|null|undefined) {
+  return val as SliderBlockStyle
 }

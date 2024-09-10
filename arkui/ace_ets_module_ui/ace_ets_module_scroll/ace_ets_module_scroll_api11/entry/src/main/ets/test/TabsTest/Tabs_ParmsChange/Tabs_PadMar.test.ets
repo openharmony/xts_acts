@@ -210,16 +210,16 @@ export default function tabs_PadMarTest() {
       console.info(`[testTabsMar] vertical: ${JSON.stringify(JSON.parse(strJson).$attrs.vertical)}`);
       console.info(`[testTabsMar] barMode: ${JSON.stringify(JSON.parse(strJson).$attrs.barMode)}`);
       let driver = Driver.create();
-      await driver.swipe(Math.round(Tabs_PadMar_011.right - 30),
+      await driver.swipe(Math.round(Tabs_PadMar_011.right - vp2px(30)),
         Math.round(Tabs_PadMar_011.top + ((Tabs_PadMar_011.bottom - Tabs_PadMar_011.top) / 2)),
-        Math.round(Tabs_PadMar_011.left + 30),
+        Math.round(Tabs_PadMar_011.left + vp2px(30)),
         Math.round(Tabs_PadMar_011.top + ((Tabs_PadMar_011.bottom - Tabs_PadMar_011.top) / 2)));
       await CommonFunc.sleep(1000);
       let Tabs_PadMar_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_002');
       let Tabs_PadMar_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_012');
-      await driver.swipe(Math.round(Tabs_PadMar_011.right - 30),
+      await driver.swipe(Math.round(Tabs_PadMar_011.right - vp2px(30)),
         Math.round(Tabs_PadMar_012.top + ((Tabs_PadMar_012.bottom - Tabs_PadMar_012.top) / 2)),
-        Math.round(Tabs_PadMar_012.left + 30),
+        Math.round(Tabs_PadMar_012.left + vp2px(30)),
         Math.round(Tabs_PadMar_012.top + ((Tabs_PadMar_012.bottom - Tabs_PadMar_012.top) / 2)));
       await CommonFunc.sleep(1000);
       let Tabs_PadMar_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_003');
@@ -315,16 +315,16 @@ export default function tabs_PadMarTest() {
       console.info(`[testTabsPadMar] vertical: ${JSON.stringify(JSON.parse(strJson).$attrs.vertical)}`);
       console.info(`[testTabsPadMar] barMode: ${JSON.stringify(JSON.parse(strJson).$attrs.barMode)}`);
       let driver = Driver.create();
-      await driver.swipe(Math.round(Tabs_PadMar_011.right - 30),
+      await driver.swipe(Math.round(Tabs_PadMar_011.right - vp2px(30)),
         Math.round(Tabs_PadMar_011.top + ((Tabs_PadMar_011.bottom - Tabs_PadMar_011.top) / 2)),
-        Math.round(Tabs_PadMar_011.left + 30),
+        Math.round(Tabs_PadMar_011.left + vp2px(30)),
         Math.round(Tabs_PadMar_011.top + ((Tabs_PadMar_011.bottom - Tabs_PadMar_011.top) / 2)));
       await CommonFunc.sleep(1000);
       let Tabs_PadMar_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_002');
       let Tabs_PadMar_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_012');
-      await driver.swipe(Math.round(Tabs_PadMar_011.right - 30),
+      await driver.swipe(Math.round(Tabs_PadMar_011.right - vp2px(30)),
         Math.round(Tabs_PadMar_012.top + ((Tabs_PadMar_012.bottom - Tabs_PadMar_012.top) / 2)),
-        Math.round(Tabs_PadMar_012.left + 30),
+        Math.round(Tabs_PadMar_012.left + vp2px(30)),
         Math.round(Tabs_PadMar_012.top + ((Tabs_PadMar_012.bottom - Tabs_PadMar_012.top) / 2)));
       await CommonFunc.sleep(1000);
       let Tabs_PadMar_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_003');

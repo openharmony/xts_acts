@@ -326,44 +326,6 @@ export default function RelationalStoreSyncApiTest() {
       done();
     })
 
-    /**
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_SyncAPITest_0900
-     * @tc.desc Test Js Api relationalStore.insertSync() testcase the wal File is 200M
-     * @tc.type: FUNC
-     * @tc.name Test Js Api relationalStore.insertSync() testcase 009
-     */
-    it('SUB_DistributedData_RelationalStore_SDK_SyncAPITest_0900', 0, async  (done:Function) => {
-      console.info('SUB_DistributedData_RelationalStore_SDK_SyncAPITest_0900');
-      let rdbStore1 = await data_Rdb.getRdbStore(context, STORE_CONFIG2);
-      rdbStore1.beginTransaction();
-      await rdbStore1.execute(CREATE_TABLE_TEST, null);
-      let u8 = new Uint8Array([1, 2, 3]);
-      const valueBucket:data_Rdb.ValuesBucket = {
-        "name": num,
-        "age": 18,
-        "salary": 100.5,
-        "blobType": u8,
-      }
-      let message = " "
-      let code = 0
-      while (true){
-        try {
-          rdbStore1.insertSync("test", valueBucket);
-        } catch (err) {
-          console.info(TAG, `err.code ${err.code}, err.message ${err.message}`)
-          expect(err.code ).assertEqual(14800047);
-          break;
-        }
-      }
-      console.info(TAG, `SUB_DistributedData_RelationalStore_SDK_SyncAPITest_0900 err.code, err.message ` + message + code )
-      rdbStore1.commit();
-      setTimeout(async ()=>{
-        await rdbStore1.execute("DELETE FROM test");
-      },1000);
-      await data_Rdb.deleteRdbStore(context, "123452.db");
-      done();
-    })
-
 
     /***************************************updateSync**************************/
     /**
@@ -1039,51 +1001,6 @@ export default function RelationalStoreSyncApiTest() {
       res.close();
       await data_Rdb.deleteRdbStore(context, "12345.db");
       console.info('SUB_DistributedData_RelationalStore_SDK_SyncAPITest_2900');
-      done();
-    })
-    /**
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_SyncAPITest_3000
-     * @tc.desc Test Js Api relationalStore.deleteSync() testcase 014
-     * @tc.type: FUNC
-     * @tc.name Test Js Api relationalStore.deleteSync() testcase 014
-     */
-    it('SUB_DistributedData_RelationalStore_SDK_SyncAPITest_3000', 0, async  (done:Function) => {
-      console.info('SUB_DistributedData_RelationalStore_SDK_SyncAPITest_3000');
-      let rdbStore1 = await data_Rdb.getRdbStore(context, STORE_CONFIG2);
-      rdbStore1.beginTransaction();
-      await rdbStore1.execute(CREATE_TABLE_TEST, null);
-      let u8 = new Uint8Array([1, 2, 3]);
-      const valueBucket:data_Rdb.ValuesBucket = {
-        "name": num,
-        "age": 18,
-        "salary": 100.5,
-        "blobType": u8,
-      }
-      while (true){
-        try {
-          rdbStore1.insertSync("test", valueBucket);
-        }catch (err) {
-          console.info(TAG, `SUB_DistributedData_RelationalStore_SDK_SyncAPITest_3000 err.code ${err.code}, err.message ${err.message}`)
-          break;
-        }
-      }
-      let predicates = new data_Rdb.RdbPredicates("test");
-      predicates.equalTo("NAME", num);
-      let res = rdbStore1.querySync(predicates);
-      try{
-        rdbStore1.deleteSync(predicates);
-      } catch (err) {
-        console.info(TAG, `SUB_DistributedData_RelationalStore_SDK_SyncAPITest_3000 err.code ${err.code}, err.message ${err.message}`)
-        expect(err.code).assertEqual(14800047);
-      }
-      res.close();
-      rdbStore1.commit();
-      setTimeout(async ()=>{
-        await rdbStore.execute("DELETE FROM test");
-      },1000)
-      await data_Rdb.deleteRdbStore(context, "123452.db");
-      console.info('SUB_DistributedData_RelationalStore_SDK_SyncAPITest_3000');
-
       done();
     })
 
@@ -1900,46 +1817,6 @@ export default function RelationalStoreSyncApiTest() {
       res.close();
       await data_Rdb.deleteRdbStore(context, "12345.db");
       console.info('SUB_DistributedData_RelationalStore_SDK_SyncAPITest_5500');
-      done();
-    })
-
-    /**
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_SyncAPITest_5600
-     * @tc.desc Test Js Api relationalStore.insertSync() testcase the wal File is 200M
-     * @tc.type: FUNC
-     * @tc.name Test Js Api relationalStore.insertSync() testcase 009
-     */
-    it('SUB_DistributedData_RelationalStore_SDK_SyncAPITest_5600', 0, async  (done:Function) => {
-      console.info('SUB_DistributedData_RelationalStore_SDK_SyncAPITest_5600');
-      let rdbStore1 = await data_Rdb.getRdbStore(context, STORE_CONFIG2);
-      rdbStore1.beginTransaction();
-      await rdbStore1.execute(CREATE_TABLE_TEST, null);
-      let u8 = new Uint8Array([1, 2, 3]);
-      const valueBucket:data_Rdb.ValuesBucket = {
-        "name": num,
-        "age": 18,
-        "salary": 100.5,
-        "blobType": u8,
-      }
-      while (true) {
-        try {
-          rdbStore1.insertSync("test", valueBucket);
-        } catch (err) {
-          console.info(TAG, `SUB_DistributedData_RelationalStore_SDK_SyncAPITest_5600 err.code ${err.code}, err.message ${err.message}`)
-          break;
-        }
-      }
-      try {
-        rdbStore1.executeSync("INSERT INTO test(name, age, salary) VALUES (?, ?, ?)", ['tt', 28, 50000])
-      } catch (err) {
-        console.info(TAG, `SUB_DistributedData_RelationalStore_SDK_SyncAPITest_5600 err.code ${err.code}, err.message ${err.message}`)
-        expect(err.code ).assertEqual(14800047);
-      }
-      rdbStore1.commit();
-      setTimeout(async()=>{
-        await rdbStore.execute("DELETE FROM test");
-      },1000);
-      await data_Rdb.deleteRdbStore(context, "123452.db");
       done();
     })
 

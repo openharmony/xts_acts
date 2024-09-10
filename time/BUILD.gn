@@ -16,6 +16,7 @@ group("time") {
   testonly = true
   deps = [
     "dateTimeTest:ActsDateTimeAPITest",
+    "timeNDKTest:ActsTimeNdkTest",
     "timeTest:ActsTimeAPITest",
     "timeauthorityTest:ActsTimeAuthorityAPITest",
   ]

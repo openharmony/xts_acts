@@ -2,11 +2,7 @@
   "string": [
     {
       "name": "app_name",
-      "value": "ActsDriversExternaldevicemanagerNdkTest"
-    },
-    {
-      "name": "description_application",
-      "value": "ActsDriversExternaldevicemanagerNdkTest"
+      "value": "MyApplication"
     }
   ]
 }

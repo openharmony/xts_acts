@@ -16,8 +16,8 @@
 #include "hilog/log.h"
 #include "napi/native_api.h"
 #include "native_common.h"
-#include "hid_ddk_api.h"
-#include "hid_ddk_types.h"
+#include "hid/hid_ddk_api.h"
+#include "hid/hid_ddk_types.h"
 #include <cstdlib>
 #include <js_native_api_types.h>
 #include <tuple>

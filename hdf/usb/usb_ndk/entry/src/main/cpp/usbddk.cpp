@@ -15,9 +15,9 @@
 
 #include "napi/native_api.h"
 #include "native_common.h"
-#include "usb_ddk_api.h"
-#include "usb_ddk_types.h"
-#include "ddk_api.h"
+#include "usb/usb_ddk_api.h"
+#include "usb/usb_ddk_types.h"
+#include "ddk/ddk_api.h"
 #include <cstdlib>
 #include <js_native_api_types.h>
 #include <tuple>

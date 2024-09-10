@@ -39,8 +39,8 @@ struct SXvalueResource {
       Button('get').key('SXvalueResourceButton')
         .onClick(() => {
           this.controller.getSpans({ start: 0, end: 6 }).forEach((item) => {
-            let a: string = (item as RichEditorTextSpanResult).valueResource?.bundleName
-            if (a !== '') {
+            let a: string | undefined = (item as RichEditorTextSpanResult).valueResource?.bundleName
+            if (a !== undefined && a !== '') {
               this.text2 = 'DTS'
             }
           })

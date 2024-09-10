@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function Storage35Jsunit() {
@@ -58,14 +58,14 @@ export default function Storage35Jsunit() {
     afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back({
-        uri: "MainAbility/pages/index/index"
+        url: "MainAbility/pages/index/index"
       });
     });
 
     it('Storage35Jsunit_0100', 0, async (done: Function) => {
       console.info('Storage35Jsunit_0100 START');
       let strJson = getInspectorByKey('text35_link');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Storage35Jsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[Storage35Jsunit_0100] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("121");
@@ -76,7 +76,7 @@ export default function Storage35Jsunit() {
     it('Storage35Jsunit_0200', 0, async (done: Function) => {
       console.info('Storage35Jsunit_0200 START');
       let strJson = getInspectorByKey('text35_link2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Storage35Jsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[Storage35Jsunit_0200] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("undefined");
@@ -87,7 +87,7 @@ export default function Storage35Jsunit() {
     it('Storage35Jsunit_0300', 0, async (done: Function) => {
       console.info('Storage35Jsunit_0300 START');
       let strJson = getInspectorByKey('text35_link1Date2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Storage35Jsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[Storage35Jsunit_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("0");
@@ -102,7 +102,7 @@ export default function Storage35Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text35_link1Date2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[Storage35Jsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[Storage35Jsunit_0400] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("121");

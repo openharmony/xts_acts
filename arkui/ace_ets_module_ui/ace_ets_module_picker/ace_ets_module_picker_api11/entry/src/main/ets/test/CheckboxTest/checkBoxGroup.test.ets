@@ -16,7 +16,7 @@
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../../MainAbility/common/Utils.ets'
+import Utils from '../../MainAbility/common/Utils'
 
 export default function checkBoxGroupPartJsunit() {
   describe('checkBoxGroupPartTest', () => {
@@ -54,7 +54,7 @@ export default function checkBoxGroupPartJsunit() {
         await Utils.sleep(2000);
         let strJson: string = getInspectorByKey('Checkbox2');
         console.info("[testcheckBoxGroupPart0011] component select strJson:" + strJson);
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
         expect(obj.$type).assertEqual('Checkbox');
         expect(obj.$attrs.select).assertEqual("false");
       } catch (err) {
@@ -77,7 +77,7 @@ export default function checkBoxGroupPartJsunit() {
         }
         let callback = (eventData: events_emitter.EventData) => {
           console.info("testcheckBoxGroup0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(2);
+          expect(eventData.data?.STATUS).assertEqual(2);
 
         }
         events_emitter.on(innerEvent, callback);

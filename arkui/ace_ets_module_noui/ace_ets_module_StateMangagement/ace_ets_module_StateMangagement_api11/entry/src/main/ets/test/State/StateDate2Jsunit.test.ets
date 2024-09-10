@@ -28,8 +28,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function StateDate2Jsunit() {
@@ -68,7 +68,7 @@ export default function StateDate2Jsunit() {
 
       console.info('StateDate1Jsunit_0100 START');
       let strJson = getInspectorByKey('date2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateDate1Jsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateDate1Jsunit_0100] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("\"2021-08-08T00:00:00.000Z\"");
@@ -84,7 +84,7 @@ export default function StateDate2Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('date2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateDate2Jsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[StateDate1Jsunit_0200] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("\"2021-08-08T00:00:00.001Z\"");
@@ -100,7 +100,7 @@ export default function StateDate2Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('date2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateDate2Jsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[StateDate1Jsunit_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("\"2022-08-08T00:00:00.000Z\"");
@@ -116,7 +116,7 @@ export default function StateDate2Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('date2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateDate2Jsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[StateDate1Jsunit_0400] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("\"2021-09-08T00:00:00.000Z\"");
@@ -132,7 +132,7 @@ export default function StateDate2Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('date2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateDate2Jsunit_0500] component obj is: " + JSON.stringify(obj));
       console.info("[StateDate1Jsunit_0500] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("\"2021-08-09T00:00:00.000Z\"");
@@ -148,7 +148,7 @@ export default function StateDate2Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('date2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateDate2Jsunit_0600] component obj is: " + JSON.stringify(obj));
       console.info("[StateDate1Jsunit_0600] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("\"2021-08-08T01:00:00.000Z\"");
@@ -164,7 +164,7 @@ export default function StateDate2Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('date2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateDate2Jsunit_0700] component obj is: " + JSON.stringify(obj));
       console.info("[StateDate1Jsunit_0700] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("\"2021-08-08T00:01:00.000Z\"");
@@ -180,7 +180,7 @@ export default function StateDate2Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('date2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateDate2Jsunit_0800] component obj is: " + JSON.stringify(obj));
       console.info("[StateDate1Jsunit_0800] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("\"2021-08-08T00:00:01.000Z\"");
@@ -196,7 +196,7 @@ export default function StateDate2Jsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('date2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateDate2Jsunit_0900] component obj is: " + JSON.stringify(obj));
       console.info("[StateDate1Jsunit_0900] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("\"2021-08-08T00:00:00.001Z\"");

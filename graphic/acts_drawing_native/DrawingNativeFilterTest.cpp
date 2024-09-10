@@ -84,6 +84,16 @@ HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyMultipleCalls, TestSize
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
         EXPECT_NE(filter, nullptr);
+    }
+
+    OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_FilterDestroy(filter);
+    }
+
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+        EXPECT_NE(filter, nullptr);
         OH_Drawing_FilterDestroy(filter);
     }
 }
@@ -232,6 +242,7 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNormal, TestSize.Level
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateCompose(outerFilter, innerFilter);
     // 2. Set color filter using OH_Drawing_FilterSetColorFilter
     OH_Drawing_FilterSetColorFilter(filter, colorFilter);
+    OH_Drawing_FilterGetColorFilter(filter, colorFilter);
     // 3. Destroy objects, should be successful
     OH_Drawing_FilterDestroy(filter);
     OH_Drawing_ColorFilterDestroy(outerFilter);

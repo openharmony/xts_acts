@@ -16,10 +16,8 @@
 #include "photoAccessHelper.h"
 #include "napi/native_api.h"
 #include "hilog/log.h"
-#include "photoAccessHelper.h"
 
 static NDKMediaLibrary *ndkMediaLibrary = nullptr;
-std::string ERROR_REQUEST_ID = "00000000-0000-0000-0000-000000000000";
 
 /*-----media asset start-----*/
 static napi_value TestMediaAssetGetUri(napi_env env, napi_callback_info info)

@@ -24,13 +24,13 @@ struct CalendarPickerExample {
     @State TextStyleDefault: PickerTextStyle = {color:$r("sys.color.ohos_id_color_text_primary"),font:{size:$r("sys.float.ohos_id_text_size_body1"),weight:FontWeight.Lighter}}
     private selectedDate: Date = new Date('2026-02-11')
 
-    private stateChangCallBack = (eventData) => {
+    private stateChangCallBack = (eventData: events_emitter.EventData) => {
         console.info("select page state change called:" + JSON.stringify(eventData));
         if (eventData != null) {
-            if (eventData.data.textStyle != null) {
+            if (eventData.data?.textStyle != null) {
                 this.textStyle = JSON.parse(eventData.data.textStyle);
             }
-            if (eventData.data.edgeAlign != null) {
+            if (eventData.data?.edgeAlign != null) {
                 this.edgeAlign = eventData.data.edgeAlign;
                 console.info("eventData.data.edgeAlign:" + this.edgeAlign);
             }
@@ -38,16 +38,12 @@ struct CalendarPickerExample {
     }
 
     aboutToAppear(){        
-        var stateChangeEvent = {
+        let stateChangeEvent: events_emitter.InnerEvent = {
             eventId: 185,
             priority: events_emitter.EventPriority.LOW
         }
         events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-	    var abilityDelegator: any
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        var abilityDelegatorArguments: any
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
     }

@@ -22,10 +22,12 @@ import UpdateContactTest from './UpdateContact.test';
 import IsMyCardTest from './IsMyCard.test';
 import ContactTest from './Contact.test';
 import QueryGroupsTest from './QueryGroups.test';
+import SelectTest from './select.test'
 import EmptyTest from './Empty.test'
 
 export default function testsuite() {
   if (canIUse("SystemCapability.Applications.Contacts")){
+    SelectTest();
     AddContactTest();
     QueryKeyTest();
     QueryByEmailTest();

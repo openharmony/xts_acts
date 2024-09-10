@@ -64,7 +64,7 @@ export default function RadioContentModifier() {
       await Utils.sleep(1000);
 
       let strJson1 = getInspectorByKey('RadioContentModifier_btn');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[RadioContentModifier_001] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.label).assertEqual('off');

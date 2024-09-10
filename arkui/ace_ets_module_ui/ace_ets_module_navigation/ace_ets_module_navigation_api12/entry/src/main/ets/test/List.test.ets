@@ -195,6 +195,8 @@ import NavigationLevelTest20 from './Navigation/NavigationLevel/NavigationLevelT
 import NavigationLevelTest21 from './Navigation/NavigationLevel/NavigationLevelTest21.test'
 import NavigationLevelTest22 from './Navigation/NavigationLevel/NavigationLevelTest22.test'
 import NavigationLevelTest23 from './Navigation/NavigationLevel/NavigationLevelTest23.test'
+import NavPathInfoIsEntry from './Navigation/NavPathInfoIsEntry.test'
+
 export default function testsuite() {
   NavigationApi1();
   NavigationApi2();
@@ -378,5 +380,6 @@ export default function testsuite() {
   NavigationLevelTest21();
   NavigationLevelTest22();
   NavigationLevelTest23();
+  NavPathInfoIsEntry();
 
 }

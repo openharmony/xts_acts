@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import Log from '../../common/Log.ets';
-import Utils from '../../common/Utils.ets';
+import Log from '../../common/Log';
+import Utils from '../../common/Utils';
 import events_emitter from '@ohos.events.emitter';
 import RectValue from '../../common/Rect';
 
@@ -85,7 +85,7 @@ struct SliderMoving {
             console.info("Slider start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("Slider emit action state err: " + JSON.stringify(err.message))
+            console.info("Slider emit action state err: " + JSON.stringify((err as Error).message))
           }
         })
         .onClick(() => {

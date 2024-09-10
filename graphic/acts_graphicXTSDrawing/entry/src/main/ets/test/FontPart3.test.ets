@@ -136,9 +136,13 @@ export default function fontPart3Test() {
     it('testFontTextToGlyphsMultipleCalls' , DEFAULT , () => {
       const msg = 'testFontTextToGlyphsMultipleCalls';
       let font = new drawing.Font();
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-      for ( let i = 0 ; i < 20 ; i ++ ) {
-        const randomString = Math.random().toString(36).substring(2 , 12);
+      for ( let i = 0 ; i < 20 ; i ++ ) {  
+        let randomString = ''
+        for(let j = 0; j < 10 ; j++){
+          randomString += characters.charAt(Math.floor(Math.random()*characters.length));
+        }
         try {
           let glyphs : number[] = font.textToGlyphs(randomString, 10);
           expect(glyphs.length == 10).assertTrue();

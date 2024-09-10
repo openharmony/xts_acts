@@ -1,8 +1,5 @@
 {
-    "src": [
-        "MainAbility/pages/Index",
-        "MainAbility/pages/webViewNativeMediaPlayerProps",
-        "MainAbility/pages/webViewNativeMediaPlayerProps2"
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }
-

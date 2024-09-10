@@ -1,6 +1,5 @@
 {
   "src": [
-    "MainAbility/pages/index/Index",
-    "MainAbility/pages/pixelStretchEffect/PixelStretchEffectPage"
+    "pages/Index"
   ]
 }

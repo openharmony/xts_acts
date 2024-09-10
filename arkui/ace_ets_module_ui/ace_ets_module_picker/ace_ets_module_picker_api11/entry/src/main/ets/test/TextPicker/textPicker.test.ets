@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -21,8 +21,8 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
   describe('textPickerDefaultPickerItemHeightTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TextPicker/textPicker',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TextPicker/textPicker',
       }
       try {
         router.clear();
@@ -73,7 +73,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
       console.info("[testtextPickerDefaultPickerItemHeight0002] component height strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      let numberValue = vp2px(parseInt(JSON.parse(strJson).$attrs.height)) - parseInt(JSON.parse(strJson).$attrs.defaultPickerItemHeight) * 5
+      let numberValue = vp2px(parseFloat(JSON.parse(strJson).$attrs.height)) - parseFloat(JSON.parse(strJson).$attrs.defaultPickerItemHeight) * 5
       expect(Math.abs(numberValue) <= 1).assertTrue();
       console.info("[testtextPickerDefaultPickerItemHeight0002] height value :" + JSON.parse(strJson).$attrs.height);
 

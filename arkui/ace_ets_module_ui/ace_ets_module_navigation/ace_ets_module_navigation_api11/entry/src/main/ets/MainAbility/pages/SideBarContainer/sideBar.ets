@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,9 +16,9 @@
 import events_emitter from '@ohos.events.emitter';
 
 class IconsValue {
-  shown: number;
-  hidden: number;
-  switching: number;
+  shown: number = 10;
+  hidden: number = 10;
+  switching: number = 10;
 }
 
 @Entry
@@ -31,21 +30,21 @@ struct SideBarExample {
   @State current: number = 1;
   @State widthValue: number = 10;
   @State heightValue: number = 10;
-  @State controlButton: ButtonStyle = ButtonStyle.left
+  @State controlButton: ButtonStyle = {};
   @State iconsValue: IconsValue = { shown: 10, hidden: 10, switching: 10 };
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("sideBar page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.widthValue != null) {
+      if (eventData.data?.widthValue != null) {
         this.widthValue = eventData.data.widthValue;
       }
-      if (eventData.data.heightValue != null) {
+      if (eventData.data?.heightValue != null) {
         this.heightValue = JSON.parse(eventData.data.heightValue);
       }
-      if (eventData.data.iconsValue != null) {
+      if (eventData.data?.iconsValue != null) {
         this.iconsValue = eventData.data.iconsValue;
       }
-      if (eventData.data.controlButton != null) {
+      if (eventData.data?.controlButton != null) {
         this.controlButton = eventData.data.controlButton;
       }
     }

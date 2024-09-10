@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import bundle from '@ohos.bundle.bundleManager';
 
 export default function blendMode1Jsunit() {
@@ -66,7 +66,7 @@ export default function blendMode1Jsunit() {
       // Get the information of the blendMode component
       console.info('[blendMode1Jsunit_0100] START');
       let strJson = getInspectorByKey('blendMode11_DESTINATION_IN');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[blendMode1Jsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.blendMode).assertEqual(1);
       console.info('[blendMode1Jsunit_0100] END');

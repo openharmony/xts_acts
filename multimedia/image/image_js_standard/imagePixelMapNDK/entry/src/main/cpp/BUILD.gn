@@ -14,6 +14,7 @@
 import("//build/config/ohos/config.gni")
 import("//build/ohos.gni")
 import("//foundation/arkui/napi/napi.gni")
+import("//foundation/multimedia/image_framework/ide/image_decode_config.gni")
 
 config("config") {
   visibility = [ ":*" ]
@@ -36,6 +37,35 @@ ohos_shared_library("ImagePixelMapNDKTest") {
   external_deps = [
     "image_framework:pixelmap_ndk",
     "napi:ace_napi",
+  ]
+
+  output_extension = "so"
+  subsystem_name = "multimedia"
+  part_name = "image_framework"
+}
+
+ohos_shared_library("ImagePixelMapNativeTest") {
+  sources = [
+    "./napi/pixel_map_module_test.cpp",
+    "./napi/pixel_map_native_test.cpp",
+  ]
+
+  include_dirs = [
+    "../cpp",
+    "${resource_management_subsystem}/interfaces/native/resource/include",
+    "$image_subsystem/interfaces/kits/native/include",
+  ]
+  configs = [ ":config" ]
+
+  external_deps = [
+    "c_utils:utils",
+    "hilog:libhilog",
+    "napi:ace_napi",
+  ]
+
+  deps = [
+    "$image_subsystem/frameworks/kits/js/common/ndk:image_source",
+    "$image_subsystem/frameworks/kits/js/common/pixelmap_ndk:pixelmap",
   ]
 
   output_extension = "so"

@@ -20,6 +20,7 @@ import common from '@ohos.app.ability.common';
 import fileUri from '@ohos.file.fileuri';
 import commonEvent from '@ohos.commonEventManager';
 import base from '@ohos.base';
+import resourceManager from '@ohos.resourceManager';
 
 function log(info: string) {
   console.info("[ShareAppTest]:: " + info);
@@ -260,6 +261,18 @@ export default function abilityTest() {
       log("========================= UriPermissionTest_0300 Begin ===================");
       log("step1. Create bundleName file.");
       abilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext")!;
+      try {
+        let deviceCapability = abilityContext.resourceManager.getDeviceCapabilitySync();
+        log('deviceType is ' + deviceCapability.deviceType);
+        if (deviceCapability.deviceType !== resourceManager.DeviceType.DEVICE_TYPE_PHONE) {
+          log('skip deviceType is not phone');
+          done();
+        }
+      } catch (error) {
+        log("getDeviceCapabilitySync failed, error: " + JSON.stringify(error));
+        expect().assertFail();
+      }
+
       let uri: string = createBundleNameFile(abilityContext);
       if (uri === "") {
         expect().assertFail();

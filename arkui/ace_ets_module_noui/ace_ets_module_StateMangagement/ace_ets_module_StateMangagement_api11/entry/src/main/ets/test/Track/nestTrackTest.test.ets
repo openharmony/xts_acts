@@ -28,8 +28,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 export default function nestTrackTest() {
   describe('nestTrackTest', () => {
@@ -82,7 +82,7 @@ export default function nestTrackTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('nestTrack_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[nestTrackTest_0100] component obj is: " + JSON.stringify(obj));
       console.info("[nestTrackTest_0100] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('a1=30');
@@ -109,7 +109,7 @@ export default function nestTrackTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('nestTrack_2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[nestTrackTest_0200] component obj is: " + JSON.stringify(obj));
       console.info("[nestTrackTest_0200] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('a1=50');
@@ -137,7 +137,7 @@ export default function nestTrackTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('nestTrack_3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[nestTrackTest_0300] component obj is: " + JSON.stringify(obj));
       console.info("[nestTrackTest_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('b1=30');
@@ -164,7 +164,7 @@ export default function nestTrackTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('nestTrack_4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[nestTrackTest_0400] component obj is: " + JSON.stringify(obj));
       console.info("[nestTrackTest_0400] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('b1=50');
