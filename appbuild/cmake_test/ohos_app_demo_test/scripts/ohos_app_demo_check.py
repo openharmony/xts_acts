@@ -29,8 +29,8 @@ def get_names(path: str, names: []):
             get_names(full_path, names)
 
 
-def endswith_check(list: [], suffix: str):
-    return any(s.endswith(suffix) for s in list)
+def endswith_check(names: [], suffix: str):
+    return any(name.endswith(suffix) for name in names)
 
 
 def main():
