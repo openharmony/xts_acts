@@ -823,7 +823,7 @@ async function getPhotoSession(abilityContext: common.UIAbilityContext, applicat
   }
   let driver = Driver.create()
   await driver.delayMs(1000)
-  let component = await driver.findComponent(ON.id('surfaceId'))
+  let component = await driver.findComponent(ON.id('surfaceId').inWindow('com.acts.pcs.arktstest'))
   let surfaceId: string = await component.getText()
   let cameraManager = camera.getCameraManager(applicationContext)
   let supportedCameras = cameraManager.getSupportedCameras()
