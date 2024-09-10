@@ -18,8 +18,19 @@ import { afterEach, beforeAll, describe, expect, it } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import UIAbility from '@ohos.app.ability.UIAbility';
+import { emitter } from '@kit.BasicServicesKit';
 
 let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
+let eventData: emitter.EventData = {
+  data: {
+    "content": "close",
+  }
+};
+
+let innerEvent: emitter.InnerEvent = {
+  eventId: 1,
+  priority: emitter.EventPriority.HIGH
+};
 
 export default function abilityDelegatorStage() {
   describe('abilityDelegatorStage', () => {
@@ -30,7 +41,7 @@ export default function abilityDelegatorStage() {
     });
 
     afterEach(async (done: Function) => {
-      console.log("SUB_AA_AbilityStageMonitor afterEach called");
+      emitter.emit(innerEvent, eventData);
       setTimeout(() => {
         console.log("SUB_AA_AbilityStageMonitor afterEach called");
         done();

@@ -3,12 +3,22 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import { emitter } from '@kit.BasicServicesKit';
 
 export default class AbilityA extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityA onCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
     hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
+    let innerEvent: emitter.InnerEvent = {
+      eventId: 1
+    };
+
+    // 收到eventId为1的事件后执行回调函数
+    emitter.once(innerEvent, () => {
+      this.context.terminateSelf();
+      console.info('emitter terminateSelf');
+    });
   }
 
   onDestroy() {

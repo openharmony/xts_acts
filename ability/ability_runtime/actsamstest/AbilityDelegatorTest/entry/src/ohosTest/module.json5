@@ -38,36 +38,6 @@
             entities: ["entity.system.home"],
           },
         ]
-      },
-      {
-        "name": "AbilityA",
-        "srcEntry": "./ets/testability/AbilityA/AbilityA.ets",
-        "description": "$string:TestAbility_desc_A",
-        "icon": "$media:icon",
-        "label": "$string:TestAbility_label_A",
-        "visible": true,
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
-      },
-      {
-        "name": "AbilityB",
-        "srcEntry": "./ets/testability/AbilityB/AbilityB.ets",
-        "description": "$string:TestAbility_desc_B",
-        "icon": "$media:icon",
-        "label": "$string:TestAbility_label_B",
-        "visible": true,
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
-      },
-      {
-        "name": "AbilityC",
-        "srcEntry": "./ets/testability/AbilityC/AbilityC.ets",
-        "description": "$string:TestAbility_desc_C",
-        "icon": "$media:icon",
-        "label": "$string:TestAbility_label_C",
-        "visible": true,
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
       }
     ]
   },

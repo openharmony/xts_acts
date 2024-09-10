@@ -3,20 +3,30 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import { emitter } from '@kit.BasicServicesKit';
 
-export default class AbilityC extends UIAbility {
+export default class AbilityB extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityC onCreate');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityB onCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
     hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
+    let innerEvent: emitter.InnerEvent = {
+      eventId: 1
+    };
+
+    // 收到eventId为1的事件后执行回调函数
+    emitter.once(innerEvent, () => {
+      this.context.terminateSelf();
+      console.info('emitter terminateSelf');
+    });
   }
 
   onDestroy() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityC onDestroy');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityB onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityC onWindowStageCreate');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityB onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -28,14 +38,14 @@ export default class AbilityC extends UIAbility {
   }
 
   onWindowStageDestroy() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityC onWindowStageDestroy');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityB onWindowStageDestroy');
   }
 
   onForeground() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityC onForeground');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityB onForeground');
   }
 
   onBackground() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityC onBackground');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityB onBackground');
   }
 }
