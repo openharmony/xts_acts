@@ -143,21 +143,15 @@ export default function abilityDelegatorStage() {
         expect(true).assertTrue();
       });
       await sleep(1000);
-      abilityDelegator.getCurrentTopAbility().then((ability: UIAbility) => {
+      await abilityDelegator.getCurrentTopAbility().then((ability: UIAbility) => {
         console.info('enter getCurrentTopAbility')
         let context = ability.context;
         hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
           'SUB_Ability_AbilityTools_AbilityDelegator_Stage_12900 getCurrentTopAbility ' +
           JSON.stringify(context.abilityInfo.bundleName));
         let name: string = context.abilityInfo.name;
-        if (name === 'AbilityA') {
-          expect(false).assertTrue();
-          console.info('enter getCurrentTopAbility')
-          done();
-        } else {
-          expect(true).assertTrue();
-          done();
-        }
+        expect(name).assertEquals('AbilityC');
+        done();
       }).catch((err: BusinessError) => {
         hilog.error(0x0000, 'abilityDelegatorStageTag', '%{public}s',
           'SUB_Ability_AbilityTools_AbilityDelegator_Stage_12900 failed ' + JSON.stringify(err));
@@ -176,7 +170,7 @@ export default function abilityDelegatorStage() {
      */
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_13000', 0, async (done: Function) => {
       hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
-        'SUB_Ability_AbilityTools_AbilityDelegator_Stage_12900 begin');
+        'SUB_Ability_AbilityTools_AbilityDelegator_Stage_13000 begin');
       await sleep(1000);
       await abilityDelegator.startAbility({
         bundleName: 'com.acts.abilitydelegatortest',
@@ -217,14 +211,8 @@ export default function abilityDelegatorStage() {
             'SUB_Ability_AbilityTools_AbilityDelegator_Stage_13000 getCurrentTopAbility ' +
             JSON.stringify(context.abilityInfo.bundleName));
           let name: string = context.abilityInfo.name;
-          if (name === 'AbilityA') {
-            expect(false).assertTrue();
-            console.info('enter getCurrentTopAbility')
-            done();
-          } else {
-            expect(true).assertTrue();
-            done();
-          }
+          expect(name).assertEquals('AbilityC');
+          done();
         }
       });
     })
@@ -258,7 +246,8 @@ export default function abilityDelegatorStage() {
         } else {
           let context = ability.context;
           hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
-            'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21900 getCurrentTopAbility ' + JSON.stringify(context.abilityInfo.bundleName));
+            'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21900 getCurrentTopAbility ' +
+            JSON.stringify(context.abilityInfo.bundleName));
           expect(context.abilityInfo.name).assertEqual('AbilityA');
           done();
         }
@@ -286,11 +275,12 @@ export default function abilityDelegatorStage() {
         expect(true).assertTrue();
       })
       await sleep(1000);
-      abilityDelegator.getCurrentTopAbility().then((ability: UIAbility) => {
+      await abilityDelegator.getCurrentTopAbility().then((ability: UIAbility) => {
         console.info('enter getCurrentTopAbility')
         let context = ability.context;
         hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
-          'SUB_Ability_AbilityTools_AbilityDelegator_Stage_22000 getCurrentTopAbility ' + JSON.stringify(context.abilityInfo.name));
+          'SUB_Ability_AbilityTools_AbilityDelegator_Stage_22000 getCurrentTopAbility ' +
+          JSON.stringify(context.abilityInfo.name));
         expect(context.abilityInfo.name).assertEqual('AbilityA');
         done();
       }).catch((err: BusinessError) => {
