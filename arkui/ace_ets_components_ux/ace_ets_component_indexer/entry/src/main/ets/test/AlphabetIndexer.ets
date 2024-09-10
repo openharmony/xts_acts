@@ -14,6 +14,7 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
+import bundle from '@ohos.bundle.bundleManager';
 import Utils from './Utils';
 
 let emitKey = "emitUserAgent";
@@ -77,7 +78,12 @@ export default function AlphabetIndexer() {
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       expect(JSON.parse(strJson).$attrs.popupSelectedColor).assertEqual(JSON.parse(strJson).$attrs.backgroundColor);
       expect(JSON.parse(strJson).$attrs.popupUnselectedColor).assertEqual(JSON.parse(strJson).$attrs.backgroundColor);
-      expect(JSON.parse(strJson).$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
+      let targetVersion = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).targetVersion;
+      if (targetVersion >= 12) {
+        expect(JSON.parse(strJson).$attrs.popupItemBackground).assertEqual("#00000000");
+      } else {
+        expect(JSON.parse(strJson).$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
+      }
       expect(JSON.parse(strJson).$attrs.popupItemFontSize).assertEqual("24.00vp");
       expect(JSON.parse(strJson).$attrs.popupItemFontWeight).assertEqual("FontWeight.Medium");
       expect(JSON.parse(strJson).$attrs.popupHorizontalSpace).assertEqual("-1.00vp");
@@ -166,7 +172,12 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest2');
-      expect(JSON.parse(newJson).$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
+      let targetVersion = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).targetVersion;
+      if (targetVersion >= 12) {
+        expect(JSON.parse(newJson).$attrs.popupItemBackground).assertEqual("#00000000");
+      } else {
+        expect(JSON.parse(newJson).$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
+      }
       done();
     });
 
@@ -316,7 +327,12 @@ export default function AlphabetIndexer() {
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest3');
 
-      expect(JSON.parse(newJson).$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
+      let targetVersion = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).targetVersion;
+      if (targetVersion >= 12) {
+        expect(JSON.parse(newJson).$attrs.popupItemBackground).assertEqual("#00000000");
+      } else {
+        expect(JSON.parse(newJson).$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
+      }
       done();
     });
 
@@ -465,8 +481,12 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest4');
-
-      expect(JSON.parse(newJson).$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
+      let targetVersion = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).targetVersion;
+      if (targetVersion >= 12) {
+        expect(JSON.parse(newJson).$attrs.popupItemBackground).assertEqual("#00000000");
+      } else {
+        expect(JSON.parse(newJson).$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
+      }
       done();
     });
 
