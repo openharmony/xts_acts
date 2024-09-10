@@ -15,7 +15,7 @@
 {
   "license": "",
   "devDependencies": {
-    "@types/libnativebuffer.so": "file:./src/main/cpp/types/libnativebuffer.so"
+    "@types/libnativevsync.so": "file:./src/main/cpp/types/libnativevsync.so"
   },
   "author": "",
   "name": "entry",

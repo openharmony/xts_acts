@@ -8,4 +8,4 @@ include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
 add_library(nativebuffer SHARED nativebuffer.cpp)
-target_link_libraries(nativebuffer PUBLIC libace_napi.z.so  libnative_buffer.so)
+target_link_libraries(nativebuffer PUBLIC libace_napi.z.so  libnative_buffer.so libnative_window.so libnative_image.so libEGL.so libGLESv3.so libipc_capi.so)
