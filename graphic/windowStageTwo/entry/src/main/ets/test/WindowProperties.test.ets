@@ -2110,9 +2110,14 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         console.info(`${caseName} Succeeded in setting the window mask.`);
         done();
       } catch (exception) {
-        console.error(`${caseName} Failed to set the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
-        expect().assertFail();
-        done();
+        if (exception.code === 801) {
+          console.info(`${caseName} The current device not support to set sub window mask`)
+          done();
+        } else {
+          console.error(`Failed to set sub window mask. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
       }
     })
     /**
