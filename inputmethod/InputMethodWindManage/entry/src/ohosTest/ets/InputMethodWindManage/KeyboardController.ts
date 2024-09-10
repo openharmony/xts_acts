@@ -54,7 +54,6 @@ export class KeyboardController {
   }
 
   public onCreate(): void {
-    // this.initWindow();
     let that = this; 
     let subscriber;    
 
