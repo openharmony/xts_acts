@@ -20,11 +20,13 @@ ohos_js_app_suite("ActsAbilityDelegatorTest") {
   hap_name = "ActsAbilityDelegatorTest"
   part_name = "ability_runtime"
   subsystem_name = "ability"
+  deps = [ ":ActsAbilityDelegatorEntryTest" ]
 }
-
-ohos_js_app_suite("ActsAbilityDelegatorHapTest") {
+ActsAbilityDelegatorEntryTest
+ohos_js_assist_suite("ActsAbilityDelegatorEntryTest") {
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAbilityDelegatorHapTest"
+  hap_name = "ActsAbilityDelegatorEntryTest"
   part_name = "ability_runtime"
   subsystem_name = "ability"
 }
