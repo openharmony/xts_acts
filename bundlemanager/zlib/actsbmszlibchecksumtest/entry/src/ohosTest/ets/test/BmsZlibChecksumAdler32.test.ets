@@ -54,17 +54,17 @@ export default function bmsZlibChecksumAdler32Test() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_0400
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_0400
      * @tc.desc: test adler32(0,bufEmpty)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_0400", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let adler = 0;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0400 start`);
         let num: number = await checksum.adler32(adler, bufEmpty);
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0400 adler ${adler} ret: ${num}`);
-        expect(num).not().assertFail();
+        expect().assertTrue();
       } catch (e) {
         hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0400 error, error code is: ${e.code}, error message is: ${e.message}`);
         expect().assertFail();
@@ -75,17 +75,17 @@ export default function bmsZlibChecksumAdler32Test() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_0500
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_0500
      * @tc.desc: test adler32(-1,buf)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_0500", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let adler = -1;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0500 start`);
         let num: number = await checksum.adler32(adler, buf);
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0500 adler=${adler} buf=${str}, ret=${num}`);
-        expect(num).not().assertFail();
+        expect().assertTrue();
       } catch (e) {
         hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0500 error, error code is: ${e.code}, error message is: ${e.message}`);
         expect().assertFail();
@@ -96,17 +96,17 @@ export default function bmsZlibChecksumAdler32Test() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_0600
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_0600
      * @tc.desc: test adler32(9223372036854775808,buf)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_0600", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let adler = 9223372036854775808;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0600 start`);
         let num: number = await checksum.adler32(adler, buf);
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0600 adler=${adler} buf=${str}, ret=${num}`);
-        expect(num).not().assertFail();
+        expect().assertTrue();
       } catch (e) {
         hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0600 error, error code is: ${e.code}, error message is: ${e.message}`);
         expect().assertFail();
@@ -117,11 +117,11 @@ export default function bmsZlibChecksumAdler32Test() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_0800
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_0800
      * @tc.desc: test adler32(undefined,buf)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_0800", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let adler = undefined;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0800 start`);
@@ -138,11 +138,11 @@ export default function bmsZlibChecksumAdler32Test() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_0900
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_0900
      * @tc.desc: test adler32(0,null)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_0900", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let adler = 0;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0900 start`);
@@ -159,11 +159,11 @@ export default function bmsZlibChecksumAdler32Test() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_1000
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_1000
      * @tc.desc: test adler32(0,undefined)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_1000", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let adler = 0;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1000 start`);

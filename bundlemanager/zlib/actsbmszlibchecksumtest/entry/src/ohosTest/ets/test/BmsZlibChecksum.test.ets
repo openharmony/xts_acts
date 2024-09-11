@@ -45,11 +45,11 @@ export default function bmsZlibChecksumTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_0100
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_0100
      * @tc.desc: test createChecksum
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_0100", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0100 start`);
         let checksum: zlib.Checksum = await zlib.createChecksum();
@@ -64,11 +64,11 @@ export default function bmsZlibChecksumTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_0200
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_0200
      * @tc.desc: test createChecksumSync
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_0200", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0200 start`);
         let checksum: zlib.Checksum = zlib.createChecksumSync();

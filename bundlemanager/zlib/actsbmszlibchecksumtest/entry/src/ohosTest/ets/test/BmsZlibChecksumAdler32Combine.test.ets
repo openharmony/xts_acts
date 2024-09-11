@@ -66,11 +66,11 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_1200
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_1200
      * @tc.desc: test adler32Combine(adler1,adler2,123)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_1200", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0,
+    it("Sub_Bms_Zlib_Checksum_Check_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: Function) => {
         try {
           len2 = 123;
@@ -78,7 +78,7 @@ export default function bmsZlibChecksumAdler32CombineTest() {
           let num: number = await checksum.adler32Combine(adler1, adler2, len2);
           hilog.info(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1200 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-          expect(num).not().assertFail();
+          expect().assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1200 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -90,11 +90,11 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_1300
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_1300
      * @tc.desc: test adler32Combine(-1,adler2,len2)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_1300", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0,
+    it("Sub_Bms_Zlib_Checksum_Check_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: Function) => {
         try {
           adler1 = -1;
@@ -102,7 +102,7 @@ export default function bmsZlibChecksumAdler32CombineTest() {
           let num: number = await checksum.adler32Combine(adler1, adler2, len2);
           hilog.info(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1300 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-          expect(num).not().assertFail();
+          expect().assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1300 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -114,11 +114,11 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_1400
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_1400
      * @tc.desc: test adler32Combine(9223372036854775808,adler2,len2)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_1400", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0,
+    it("Sub_Bms_Zlib_Checksum_Check_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: Function) => {
         try {
           adler1 = 9223372036854775808;
@@ -126,7 +126,7 @@ export default function bmsZlibChecksumAdler32CombineTest() {
           let num: number = await checksum.adler32Combine(adler1, adler2, len2);
           hilog.info(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1400 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-          expect(num).not().assertFail();
+          expect().assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1400 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -138,11 +138,11 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_1500
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_1500
      * @tc.desc: test adler32Combine(adler1,-1,len2)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_1500", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0,
+    it("Sub_Bms_Zlib_Checksum_Check_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: Function) => {
         try {
           adler2 = -1;
@@ -150,7 +150,7 @@ export default function bmsZlibChecksumAdler32CombineTest() {
           let num: number = await checksum.adler32Combine(adler1, adler2, len2);
           hilog.info(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1500 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-          expect(num).not().assertFail();
+          expect().assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1500 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -162,11 +162,11 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_1600
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_1600
      * @tc.desc: test adler32Combine(adler1,9223372036854775808,len2)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_1600", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0,
+    it("Sub_Bms_Zlib_Checksum_Check_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: Function) => {
         try {
           adler2 = 9223372036854775808;
@@ -174,7 +174,7 @@ export default function bmsZlibChecksumAdler32CombineTest() {
           let num: number = await checksum.adler32Combine(adler1, adler2, len2);
           hilog.info(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1600 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-          expect(num).not().assertFail();
+          expect().assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1600 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -186,11 +186,11 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_1700
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_1700
      * @tc.desc: test adler32Combine(adler1,adler2,-1)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_1700", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0,
+    it("Sub_Bms_Zlib_Checksum_Check_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: Function) => {
         try {
           len2 = -1;
@@ -210,11 +210,11 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_1800
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_1800
      * @tc.desc: test adler32Combine(adler1,adler2,9223372036854775808)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_1800", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0,
+    it("Sub_Bms_Zlib_Checksum_Check_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: Function) => {
         try {
           len2 = 9223372036854775808;
@@ -222,7 +222,7 @@ export default function bmsZlibChecksumAdler32CombineTest() {
           let num: number = await checksum.adler32Combine(adler1, adler2, len2);
           hilog.info(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1800 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-          expect(num).not().assertFail();
+          expect().assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1800 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -234,11 +234,11 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_2000
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_2000
      * @tc.desc: test adler32Combine(undefined,adler2,len2)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_2000", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0,
+    it("Sub_Bms_Zlib_Checksum_Check_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: Function) => {
         try {
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2000 start`);
@@ -257,11 +257,11 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_2100
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_2100
      * @tc.desc: test adler32Combine(adler1,null,len2)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_2100", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0,
+    it("Sub_Bms_Zlib_Checksum_Check_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: Function) => {
         try {
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2100 start`);
@@ -279,11 +279,11 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_2200
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_2200
      * @tc.desc: test adler32Combine(adler1,undefined,len2)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_2200", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0,
+    it("Sub_Bms_Zlib_Checksum_Check_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: Function) => {
         try {
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2200 start`);
@@ -302,11 +302,11 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_2300
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_2300
      * @tc.desc: test adler32Combine(adler1,adler2,null)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_2300", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0,
+    it("Sub_Bms_Zlib_Checksum_Check_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: Function) => {
         try {
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2300 start`);
@@ -324,11 +324,11 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_2400
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_2400
      * @tc.desc: test adler32Combine(adler1,adler2,undefined)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_2400", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0,
+    it("Sub_Bms_Zlib_Checksum_Check_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: Function) => {
         try {
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2400 start`);

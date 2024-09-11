@@ -54,17 +54,17 @@ export default function bmsZlibChecksumCrc32Test() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_2600
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_2600
      * @tc.desc: test crc32(0,bufEmpty)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_2600", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let crc = 0;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2600 start`);
         let num: number = await checksum.crc32(crc, bufEmpty);
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2600 crc ${crc} ret: ${num}`);
-        expect(num).not().assertFail();
+        expect().assertTrue();
       } catch (e) {
         hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2600 error, error code is: ${e.code}, error message is: ${e.message}`);
         expect().assertFail();
@@ -75,17 +75,17 @@ export default function bmsZlibChecksumCrc32Test() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_2700
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_2700
      * @tc.desc: test crc32(-1,buf)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_2700", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let crc = -1;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2700 start`);
         let num: number = await checksum.crc32(crc, buf);
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2700 crc ${crc} buf ${str} ret: ${num}`);
-        expect(num).not().assertFail();
+        expect().assertTrue();
       } catch (e) {
         hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2700 error, error code is: ${e.code}, error message is: ${e.message}`);
         expect().assertFail();
@@ -96,17 +96,17 @@ export default function bmsZlibChecksumCrc32Test() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_2800
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_2800
      * @tc.desc: test crc32(9223372036854775808,buf)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_2800", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let crc = 9223372036854775808;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2800 start`);
         let num: number = await checksum.crc32(crc, buf);
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2800 crc ${crc} buf ${str} ret: ${num}`);
-        expect(num).not().assertFail();
+        expect().assertTrue();
       } catch (e) {
         hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2800 error, error code is: ${e.code}, error message is: ${e.message}`);
         expect().assertFail();
@@ -117,11 +117,11 @@ export default function bmsZlibChecksumCrc32Test() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_3000
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_3000
      * @tc.desc: test crc32(undefined,buf)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_3000", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_3000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let crc = undefined;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3000 start`);
@@ -138,11 +138,11 @@ export default function bmsZlibChecksumCrc32Test() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_3100
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_3100
      * @tc.desc: test crc32(0,null)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_3100", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_3100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let crc = 0;
         let buf = null;
@@ -160,11 +160,11 @@ export default function bmsZlibChecksumCrc32Test() {
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_3200
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_3200
      * @tc.desc: test crc32(0,undefined)
-     * @tc.size: LargeTest
+     * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_3200", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_3200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let crc = 0;
         let buf = undefined;
