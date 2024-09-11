@@ -5,7 +5,7 @@
         "test-timeout": "600000",
         "shell-timeout": "800000",
         "bundle-name": "com.example.mindsporejstest",
-        "module-name": "entry",
+        "module-name": "entry_test",
         "testcase-timeout": 40000
     },
     "kits": [
@@ -15,6 +15,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }
