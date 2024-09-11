@@ -574,7 +574,7 @@ export default function imagePixelMapFramework() {
         async function createPixelMapByFormat(expectFormat) {
             let fileName;
             if (expectFormat == 10 || expectFormat == 11 || expectFormat == 12) {
-                fileName = "HDRVividSingleLayer.heic";
+                fileName = "CUVAHdrMulti.jpg";
             } else {
                 fileName = "JPG-480360-YUV311.jpg";
             }
