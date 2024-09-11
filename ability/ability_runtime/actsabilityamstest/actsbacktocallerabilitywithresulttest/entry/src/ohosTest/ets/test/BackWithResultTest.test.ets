@@ -44,7 +44,7 @@ export default function BackWithResultTest() {
     it('SUB_Ability_AbilityRuntime_BackWithResult_3000', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_BackWithResult_3000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let callerRequestCode: string = '12347561890'
+      let callerRequestCode: string = '12347561890';
       let context: common.UIAbilityContext = getContext() as common.UIAbilityContext;
       try {
         await context.backToCallerAbilityWithResult(undefined, callerRequestCode).then(() => {
@@ -57,7 +57,7 @@ export default function BackWithResultTest() {
       } catch (err) {
         hilog.error(0x0000, TAG, `backToCallerAbilityWithResult1 failed, code is ${err.code}, message is ${err.message}`);
         expect(err.code).assertEqual(PARAMETER_ERROR_CODE);
-      }
+      };
       done();
     });
 
@@ -90,7 +90,7 @@ export default function BackWithResultTest() {
       } catch (err) {
         hilog.error(0x0000, TAG, `backToCallerAbilityWithResult1 failed, code is ${err.code}, message is ${err.message}`);
         expect(err.code).assertEqual(PARAMETER_ERROR_CODE);
-      }
+      };
       done();
     });
 
@@ -124,7 +124,7 @@ export default function BackWithResultTest() {
       } catch (err) {
         hilog.error(0x0000, TAG, `backToCallerAbilityWithResult1 failed, code is ${err.code}, message is ${err.message}`);
         expect(err.code).assertEqual(PARAMETER_ERROR_CODE2);
-      }
+      };
       done();
     });
   })
