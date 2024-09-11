@@ -403,3 +403,14 @@ export function Uint8ClampedArrayTestFunc(array: collections.Uint8ClampedArray) 
   array.set([0,1,2]);
   return array;
 }
+
+@Concurrent
+export function testWithThreeParams(a: number, b: string, c: number): string {
+  let ret = a + c;
+  return "result: " + b + " " + ret;
+}
+
+@Concurrent
+export function testWithArray(args: [number, string]): string {
+  return "result:" + JSON.stringify(args);
+}
