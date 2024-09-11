@@ -1440,7 +1440,7 @@ export default function nativeApiStringJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0097
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0097
     * @tc.name      aceNapiTest097
     * @tc.desc      aceNapiEtsTest
     */
