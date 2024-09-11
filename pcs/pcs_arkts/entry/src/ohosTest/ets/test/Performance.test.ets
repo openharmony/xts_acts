@@ -79,10 +79,10 @@ export default function performanceTest() {
       try {
         let driver = Driver.create()
         await driver.delayMs(2000)
-        let startAudio = await driver.findComponent(ON.id('StartAudio'))
+        let startAudio = await driver.findComponent(ON.id('StartAudio').inWindow('com.acts.pcs.arktstest'))
         await startAudio.click()
         await driver.delayMs(2000)
-        let audioStateText = await driver.findComponent(ON.id('AudioStateText'))
+        let audioStateText = await driver.findComponent(ON.id('AudioStateText').inWindow('com.acts.pcs.arktstest'))
         expect(await audioStateText.getText()).assertEqual(audio.AudioState.STATE_RUNNING.toString())
         await driver.delayMs(2000)
         expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
@@ -93,17 +93,17 @@ export default function performanceTest() {
         }
         expect(await AbilityUtils.startAbilityImplicitly(testAssistWantInfo, abilityContext)).assertTrue()
         await driver.delayMs(2000)
-        let button = await driver.findComponent(ON.text('打开'))
+        let button = await driver.findComponent(ON.text('打开').inWindow('com.acts.pcs.arktstest'))
         if(button != undefined) {
           await button.click()
           await driver.delayMs(2000)
         }
         expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'EntryAbility', abilityContext)).assertTrue()
         await driver.delayMs(2000)
-        audioStateText = await driver.findComponent(ON.id('AudioStateText'))
+        audioStateText = await driver.findComponent(ON.id('AudioStateText').inWindow('com.acts.pcs.arktstest'))
         expect(await audioStateText.getText()).assertEqual(audio.AudioState.STATE_RUNNING.toString())
         await driver.delayMs(2000)
-        let stopAudio = await driver.findComponent(ON.id('StopAudio'))
+        let stopAudio = await driver.findComponent(ON.id('StopAudio').inWindow('com.acts.pcs.arktstest'))
         await stopAudio.click()
         await driver.delayMs(2000)
       } catch (error) {
