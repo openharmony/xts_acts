@@ -18,7 +18,12 @@ import BackupExtensionContext from '@ohos.file.BackupExtensionContext';
 import BackupExtensionAbility, { BundleVersion } from '@ohos.application.BackupExtensionAbility';
 import contextConstant from '@ohos.app.ability.contextConstant';
 
-export default class MyBackupExtAbility extends BackupExtensionAbility {
+interface ProgressInfo {
+  progressed: number,
+  total: number
+}
+
+export class MyBackupExtAbility extends BackupExtensionAbility {
    async onBackup() {
       console.log("onBackup begin");
       this.context.area = contextConstant.AreaMode.EL1;
@@ -47,21 +52,24 @@ export default class MyBackupExtAbility extends BackupExtensionAbility {
     return info;
   }
 
-  async onRestoreEx(BundleVersion) {
-    console.log(`onRestoreEx ok ${JSON.stringify(BundleVersion)}`);
+  async onRestoreEx() {
     let info = "app diy info";
     return info;
   }
 
-   async onProcess() {
-      console.log(`onProcess ok`);
-      let info = "app diy info";
-      return info;
-   }
+  onProcess(): string {
+    console.log(`onProcess begin`);
+    let processInfo: ProgressInfo = {
+      progressed: 100,
+      total: 1000, 
+    }
+    console.log(`onProcess end`);
+    return JSON.stringify(processInfo);
+  }
 }
 
 export default function backupdirTest(){
-describe('backupdir_js_test',async function(){
+describe('backupdir_js_test',async () => {
 
    /**
    * @tc.number SUB_BASIC_FM_FileAPI_BackupDir_0100
