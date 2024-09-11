@@ -19,7 +19,6 @@ import { BusinessError } from '@ohos.base';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
 import { common, UIAbility } from '@kit.AbilityKit';
-import { Driver } from '@kit.TestKit';
 
 export default function abilityTest() {
   describe('BackWithResultTest', () => {
@@ -28,10 +27,6 @@ export default function abilityTest() {
     const TEST_SUITE_NAME: string = 'BackToCallerAbilityWithResultTest';
     const PARAMETER_ERROR_CODE  = 401;
     const PARAMETER_ERROR_CODE2  = 16000074;
-    beforeEach(async ()=>{
-      let driver = Driver.create();
-      await driver.delayMs(1000);
-    });
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_BackWithResult_3000
