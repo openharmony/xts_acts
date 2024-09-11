@@ -27,7 +27,7 @@ export default class AbilityC extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityC onWindowStageCreate');
-    windowStage.loadContent('pages/Index', (err, data) => {
+    windowStage.loadContent('testability/AbilityA/pages/Index.ets', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
