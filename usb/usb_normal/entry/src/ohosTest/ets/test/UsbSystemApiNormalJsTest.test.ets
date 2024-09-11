@@ -36,7 +36,7 @@ export default function UsbSystemApiNormalJsTest() {
       }
     })
 
-    afterAll(function () {
+    afterAll(() => {
       console.log('*************Usb Unit UsbSystemApiNormalJsTest End*************');
     })
   
@@ -60,10 +60,10 @@ export default function UsbSystemApiNormalJsTest() {
         await bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
             console.info(TAG, 'getBundleInfoForSelf success Data: ', JSON.stringify(bundleInfo));
             let tokenId = bundleInfo.appInfo.accessTokenId;
-            tokenId = tokenId.toString();
+            let tokenIdStr = tokenId.toString();
             console.info(TAG, 'testUsbAddDeviceAccessRightNormalApp001 addDeviceAccessRight begin');
 
-            let rightResult = usbManager.addDeviceAccessRight(tokenId, deviceList[0].name);
+            let rightResult = usbManager.addDeviceAccessRight(tokenIdStr, deviceList[0].name);
             console.log(TAG, 'addDeviceAccessRight failed result: ' + rightResult);
             expect(rightResult === null).assertTrue();
         })
@@ -106,7 +106,7 @@ export default function UsbSystemApiNormalJsTest() {
      * @tc.level      : Level 3
      */
     it('testGetStringFromFunctionsNormalApp001', 0, async (done: Function) => {
-      let funcs: number = usbManager.HDC;
+      let funcs: number = 4;
       try {
         let maskCode = usbManager.getStringFromFunctions(funcs);
         console.info(TAG, 'Test USB getStringFromFunctions maskCode: ' + maskCode);
@@ -128,7 +128,7 @@ export default function UsbSystemApiNormalJsTest() {
      * @tc.level      : Level 3
      */
     it('testSetDeviceFunctionsNormalApp001', 0, async (done: Function) => {
-      let funcs: number = usbManager.HDC;
+      let funcs: number = 4;
       try {
         await usbManager.setDeviceFunctions(funcs).then((data) => {
           console.info(TAG, 'Test USB setDeviceFunctions nMaskCode: ' + data);
@@ -215,8 +215,10 @@ export default function UsbSystemApiNormalJsTest() {
      */
     it('testSetPortRoleTypesNormalApp001', 0, async (done: Function) => {
       let portId: number = 1;
+      let powerRoleTy: number = 2;
+      let dataRoleTy: number = 2;
       try {
-        await usbManager.setPortRoleTypes(portId, usbManager.SINK, usbManager.DEVICE)
+        await usbManager.setPortRoleTypes(portId, powerRoleTy, dataRoleTy)
           .then((data) => {
             console.info(TAG, 'Test USB setPortRoleTypes nMaskCode: ' + data);
             expect(data === null).assertTrue();

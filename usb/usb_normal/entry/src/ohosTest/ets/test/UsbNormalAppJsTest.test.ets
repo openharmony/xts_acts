@@ -35,7 +35,7 @@ export default function UsbNormalAppJsTest() {
       }
     })
 
-    afterAll(function () {
+    afterAll( ()=> {
       console.log('*************Usb Unit UsbNormalAppJsTest End*************');
     })
   
