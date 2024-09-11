@@ -10,7 +10,8 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAceNapiEtsTest.hap"
+                "ActsAceNapiEtsTest.hap",
+                "ActsAceNapiEtsTestMain.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

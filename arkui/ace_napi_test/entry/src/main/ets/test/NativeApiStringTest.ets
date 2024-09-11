@@ -22,7 +22,7 @@ import worker from '@ohos.worker';
 
 function promiseCase() {
   let p = new Promise(function (resolve, reject) {
-      setTimeout(function () {
+      setTimeout(() => {
           resolve(0)
       }, 100)
   }).then(undefined, (error) => {
@@ -32,7 +32,7 @@ function promiseCase() {
 
 export default function nativeApiStringJsunit() {
 
-  describe('napiStringTest', function () {
+  describe('napiStringTest', () => {
     const empty = 'hh';
     let value;
     let obj;
@@ -50,7 +50,7 @@ export default function nativeApiStringJsunit() {
     /**
     * run after testcase
     */
-    afterEach(async function () {
+    afterEach(async () => {
       console.info('[napiStringTest] after each called')
       value == '';
     });
@@ -60,7 +60,7 @@ export default function nativeApiStringJsunit() {
      * @tc.name      napiRunScriptPath007
      * @tc.desc      aceNapiEtsTest
      */
-     it('napiRunScriptPath007', 0, async function (done) {
+     it('napiRunScriptPath007', 0, async (done: Function) => {
        console.info('napiRunScriptPath START');
        value = napitest.napiRunScriptPath();
        console.info('napiRunScriptPath testString result is: ' + JSON.stringify(value));
@@ -73,7 +73,7 @@ export default function nativeApiStringJsunit() {
     * @tc.name      aceNapiTest038
     * @tc.desc      aceNapiEtsTest
     */
-    it('aceNapiTest038', 0, async function (done) {
+    it('aceNapiTest038', 0, async (done: Function) => {
       console.info('aceNapiTest038 START');
       value = napitest.getPrototype();
       console.info('aceNapiTest038 testString result is: ' + value + "--" + JSON.stringify(value));
@@ -93,7 +93,7 @@ export default function nativeApiStringJsunit() {
      * @tc.name      aceNapiTest0116
      * @tc.desc      aceNapiEtsTest
      */
-    it('aceNapiTest0116', 0, async function (done) {
+    it('aceNapiTest0116', 0, async (done: Function) => {
       console.info('aceNapiTest0116 START');
       value = napitest.coerceToNativeBindingObject();
       console.info('aceNapiTest0116 testString result is: ' + value + "--" + JSON.stringify(value));
@@ -106,7 +106,7 @@ export default function nativeApiStringJsunit() {
      * @tc.name      aceNapiTest0121
      * @tc.desc      aceNapiEtsTest
      */
-    it('aceNapiTest0121', 0, async function (done) {
+    it('aceNapiTest0121', 0, async (done: Function) => {
     console.info('aceNapiTest0121 START');
       value = napitest.runEventLoop(0)
       console.info('aceNapiTest0121 testString result is: ' + value);
@@ -119,7 +119,7 @@ export default function nativeApiStringJsunit() {
      * @tc.name      aceNapiTest0122
      * @tc.desc      aceNapiEtsTest
      */
-    it('aceNapiTest0122', 0, async function (done) {
+    it('aceNapiTest0122', 0, async (done: Function) => {
     console.info('aceNapiTest0122 START');
       value = napitest.runEventLoop(1)
       console.info('aceNapiTest0122 testString result is: ' + value);
@@ -158,11 +158,11 @@ export default function nativeApiStringJsunit() {
      * @tc.name aceNapiTest0139
      * @tc.desc aceNapiEtsTest
      */
-    it('aceNapiTest0139', 0, async function (done) {
+    it('aceNapiTest0139', 0, async (done: Function) => {
       console.info('aceNapiTest0139 START');
       const workerInstance = new worker.Worker('workers/worker.js');
       let isTerminate = false;
-      workerInstance.onexit = function () {
+      workerInstance.onexit = () => {
         isTerminate = true;
       }
       expect(workerInstance != null).assertTrue();
@@ -185,11 +185,11 @@ export default function nativeApiStringJsunit() {
      * @tc.name aceNapiTest0140
      * @tc.desc aceNapiEtsTest
      */
-    it('aceNapiTest0140', 0, async function (done) {
+    it('aceNapiTest0140', 0, async (done: Function) => {
       console.info('aceNapiTest0140 START');
       const workerInstance = new worker.Worker('workers/worker.js');
       let isTerminate = false;
-      workerInstance.onexit = function () {
+      workerInstance.onexit = () => {
         isTerminate = true;
       }
       expect(workerInstance != null).assertTrue();
@@ -277,7 +277,7 @@ export default function nativeApiStringJsunit() {
      * @tc.name aceNapiTest0159
      * @tc.desc aceNapiEtsTest
      */
-    it('aceNapiTest0159', 0, async function (done) {
+    it('aceNapiTest0159', 0, async (done: Function) => {
       console.info('aceNapiTest0159 START');
       function test1() {
         "use concurrent"
@@ -315,7 +315,7 @@ export default function nativeApiStringJsunit() {
      * @tc.name aceNapiTest0167
      * @tc.desc aceNapiEtsTest
      */
-    it('aceNapiTest0167', 0, async function (done) {
+    it('aceNapiTest0167', 0, async (done: Function) => {
       console.info('aceNapiTest0167 START');
       value = napitest.createSendableArrayBufferTest();
       console.info('aceNapiTest0167 testString result is: ' + JSON.stringify(value));
@@ -328,7 +328,7 @@ export default function nativeApiStringJsunit() {
      * @tc.name aceNapiTest0168
      * @tc.desc aceNapiEtsTest
      */
-    it('aceNapiTest0168', 0, async function (done) {
+    it('aceNapiTest0168', 0, async (done: Function) => {
       console.info('aceNapiTest0168 START');
       let value = napitest.createSendableTypedArrayTest();
       console.info('aceNapiTest0168 testString result is: ' + value + "--" + JSON.stringify(value));

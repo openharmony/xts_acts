@@ -113,12 +113,12 @@ function createObject() {
 
 export default function npiObjectTest() {
 
-  describe('npiObjectTest', function () {
+  describe('npiObjectTest', () => {
 
     /**
     * run after testcase
     */
-    afterEach(async function () {
+    afterEach(async () => {
       console.info('[npiObjectTest] after each called')
     });
 
@@ -211,7 +211,7 @@ export default function npiObjectTest() {
     * @tc.name      napiObjectTest007
     * @tc.desc      aceNapiEtsTest
     */
-    it('napiObjectTest007', 0, function () {
+    it('napiObjectTest007', 0, () => {
       const obj = {
                    x: 10,
                    y: 10,
