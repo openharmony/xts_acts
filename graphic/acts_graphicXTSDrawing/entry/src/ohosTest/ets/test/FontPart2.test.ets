@@ -941,9 +941,10 @@ export default function fontPart2Test() {
     it('testFontMeasureSingleCharacterMultipleCalls' , DEFAULT , () => {
       const msg = 'testFontMeasureSingleCharacterMultipleCalls';
       let font = new drawing.Font();
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
       for ( let i = 0 ; i < 20 ; i ++ ) {
-        const randomString = Math.random().toString(36).substring(2 , 3);
+        const randomString = characters.charAt(Math.floor(Math.random()*characters.length));
         try {
           let width: number = font.measureSingleCharacter(randomString)
           console.info(msg + ' measureSingleCharacter successed,width:' + width);

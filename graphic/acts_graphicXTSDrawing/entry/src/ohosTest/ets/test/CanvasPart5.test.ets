@@ -647,9 +647,11 @@ export default function drawingTsCanvasPart5Test() {
       const msg = 'testCanvasDrawSingleCharacterMultipleCalls';
       const canvas = new drawing.Canvas(pixel);
       const font = new drawing.Font();
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
       try {
         for (let i = 0; i < 20; i += 1) {
-          const randomString = Math.random().toString(36).charAt(0);
+          const randomString = characters.charAt(Math.floor(Math.random()*characters.length));
           canvas.drawSingleCharacter(randomString, font, Math.random(), Math.random());
         }
         console.info(msg + 'test successes');
