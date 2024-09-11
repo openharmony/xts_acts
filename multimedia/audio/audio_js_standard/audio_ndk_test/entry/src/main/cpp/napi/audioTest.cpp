@@ -970,8 +970,8 @@ static napi_value AudioCaptureGetChannelCount(napi_env env, napi_callback_info i
     OH_AudioCapturer *audioCapturer;
     OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
 
-    int32_t ChannelCount;
-    OH_AudioStream_Result result = OH_AudioCapturer_GetChannelCount(audioCapturer, &ChannelCount);
+    int32_t channelCount;
+    OH_AudioStream_Result result = OH_AudioCapturer_GetChannelCount(audioCapturer, &channelCount);
     OH_AudioStreamBuilder_Destroy(builder);
     napi_value res;
     napi_create_int32(env, result, &res);
@@ -985,8 +985,8 @@ static napi_value AudioRenderGetChannelCount(napi_env env, napi_callback_info in
     OH_AudioRenderer *audioRenderer;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
 
-    int32_t ChannelCount;
-    OH_AudioStream_Result result = OH_AudioRenderer_GetChannelCount(audioRenderer, &ChannelCount);
+    int32_t channelCount;
+    OH_AudioStream_Result result = OH_AudioRenderer_GetChannelCount(audioRenderer, &channelCount);
     OH_AudioStreamBuilder_Destroy(builder);
     napi_value res;
     napi_create_int32(env, result, &res);
