@@ -17,7 +17,7 @@ import { describe, expect, it } from '@ohos/hypium'
 import nativeimage from 'libnativeimage.so'
 
 export default function nativeImageTest() {
-  describe('NativeImageTest', () => {
+    describe('NativeImageTest', () => {
     /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_IMAGE_OH_NATIVEIMAGE_CREATE001
      * @tc.name       : testOHNativeImageCreate001
@@ -115,8 +115,6 @@ export default function nativeImageTest() {
       done();
     });
 
-
-
     /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_IMAGE_OH_NATIVEIMAGE_UPDATESURFACEIMAGE001
      * @tc.name       : testOHNativeImageUpdateSurfaceImage001
@@ -127,6 +125,20 @@ export default function nativeImageTest() {
      */
     it('testOHNativeImageUpdateSurfaceImage001', 0, async (done: Function) => {
       let result: number = nativeimage.oHNativeImageUpdateSurfaceImage();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_IMAGE_OH_NATIVEIMAGE_UPDATESURFACEIMAGE
+     * @tc.name       : testOHNativeImageUpdateSurfaceImageBoundary
+     * @tc.desc       : test OH_NativeImage_UpdateSurfaceImageBoundary
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeImageUpdateSurfaceImageBoundary', 0, async (done: Function) => {
+      let result: number = nativeimage.oHNativeImageUpdateSurfaceImageBoundary();
       expect(result).assertEqual(0);
       done();
     });
