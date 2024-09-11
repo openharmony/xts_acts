@@ -89,7 +89,29 @@ export default function StyledString() {
       console.info('[StyledString_0100] END');
       done();
     });
+    /**
+     * @tc.number    StyledString_0200
+     * @tc.name      StyledString_0200
+     * @tc.desc      Each styledKey
+     * @tc.level     Level 2
+     * @tc.type
+     * @tc.size
+     */
+    it('StyledString_0200', 0, async (done: Function) => {
+      console.info('[StyledString_0200] START');
+      let driver = Driver.create();
+      await CommonFunc.sleep(1000);
+      let button1 = await driver.findComponent(ON.id('searchStyle'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
 
+      let text6 = getInspectorByKey('urlId');
+      let Obj6: ESObject = JSON.parse(text6);
+      expect(Obj6.$attrs.content).assertEqual('7');
+      await CommonFunc.sleep(500);
+      console.info('[StyledString_0200] END');
+      done();
+    });
 
 
 
