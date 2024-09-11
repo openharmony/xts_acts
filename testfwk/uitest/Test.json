@@ -5,7 +5,8 @@
         "test-timeout": "1800000",
         "bundle-name": "com.uitest.acts",
         "package-name": "com.uitest.acts",
-        "shell-timeout": "180000"
+        "shell-timeout": "180000",
+        "testcase-timeout": "1800000"
     },
     "kits": [
         {
