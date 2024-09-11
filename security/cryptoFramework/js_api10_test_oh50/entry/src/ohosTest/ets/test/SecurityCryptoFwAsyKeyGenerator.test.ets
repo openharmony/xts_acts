@@ -362,6 +362,64 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
       }
       done();
     });
+    
+    /**
+     * @tc.number SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0603
+     * @tc.name Test Generator Asymmetric Key algName with DH. Sync style. Process success
+     * @tc.desc algorithm is DH
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0603", 0, async (done: Function) => {
+      try {
+        for (let asyKeySpecs of asyKeySyncUtils.ASY_DH_KEY_SPEC_4) {
+          let algName: string = asyKeySpecs;
+          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
+          let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
+          let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
+          let conPubKeyBlob: cryptoFramework.DataBlob = convKeyPair.pubKey.getEncoded();
+          let conPriKeyBlob: cryptoFramework.DataBlob = convKeyPair.priKey.getEncoded();
+          let ret: boolean = commonUtils.compareDataBlob(pubKeyBlob, conPubKeyBlob);
+          ret = ret && commonUtils.compareDataBlob(priKeyBlob, conPriKeyBlob);
+          expect(ret).assertTrue();
+        }
+      } catch (error) {
+        console.error(`“${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+    
+    /**
+     * @tc.number SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0604
+     * @tc.name Test Generator Asymmetric Key algName with DH. Sync style. Process success
+     * @tc.desc algorithm is DH
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0604", 0, async (done: Function) => {
+      try {
+        for (let asyKeySpecs of asyKeySyncUtils.ASY_DH_KEY_SPEC_5) {
+          let algName: string = asyKeySpecs;
+          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
+          let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
+          let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
+          let conPubKeyBlob: cryptoFramework.DataBlob = convKeyPair.pubKey.getEncoded();
+          let conPriKeyBlob: cryptoFramework.DataBlob = convKeyPair.priKey.getEncoded();
+          let ret: boolean = commonUtils.compareDataBlob(pubKeyBlob, conPubKeyBlob);
+          ret = ret && commonUtils.compareDataBlob(priKeyBlob, conPriKeyBlob);
+          expect(ret).assertTrue();
+        }
+      } catch (error) {
+        console.error(`“${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
 
     /**
      * @tc.number SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0700
