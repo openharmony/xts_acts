@@ -13,10 +13,8 @@
  * limitations under the License.
  */
 import { describe, afterEach, it, expect, beforeEach } from '@ohos/hypium'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import hilog from '@ohos.hilog';
 import { BusinessError } from '@ohos.base';
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
 import { common, UIAbility } from '@kit.AbilityKit';
 import { Driver } from '@kit.TestKit';
