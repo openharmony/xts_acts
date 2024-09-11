@@ -282,7 +282,15 @@ let ASY_DH_KEY_SPEC_2 = [
 ]
 
 let ASY_DH_KEY_SPEC_3 = [
-  "DH_ffdhe4096", "DH_ffdhe6144", "DH_ffdhe8192"
+  "DH_ffdhe4096"
+]
+
+let ASY_DH_KEY_SPEC_4 = [
+  "DH_ffdhe6144"
+]
+
+let ASY_DH_KEY_SPEC_5 = [
+  "DH_ffdhe8192"
 ]
 
 export {
@@ -307,4 +315,6 @@ export {
   ASY_DH_KEY_SPEC_1,
   ASY_DH_KEY_SPEC_2,
   ASY_DH_KEY_SPEC_3,
+  ASY_DH_KEY_SPEC_4,
+  ASY_DH_KEY_SPEC_5,
 }
