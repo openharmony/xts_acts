@@ -262,5 +262,22 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
       }
       done();
     });
+
+    /**
+     * @tc.number SUB_Security_CertManager_OpenCertDialogCertJsApi_Func_0100
+     * @tc.name test Enumeration
+     * @tc.desc
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_OpenCertDialogCertJsApi_Func_0100', 0, async (done: Function) => {
+      expect(certManagerDialog.CertificateDialogErrorCode.ERROR_GENERIC).assertEqual(29700001);
+      expect(certManagerDialog.CertificateDialogPageType.PAGE_MAIN).assertEqual(1);
+      expect(certManagerDialog.CertificateDialogPageType.PAGE_CA_CERTIFICATE).assertEqual(2);
+      expect(certManagerDialog.CertificateDialogPageType.PAGE_CREDENTIAL).assertEqual(3);
+      expect(certManagerDialog.CertificateDialogPageType.PAGE_INSTALL_CERTIFICATE).assertEqual(4);
+      done();
+    });
   })
 }
