@@ -1,0 +1,65 @@
+/*
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "C:/Users/Administrator/.ohos/config/openharmony/default_actsbacktocallerabilitywithresulttest_xlF3PpsqOqKbFhpL3cYA64ixvtYAy_7orgOKYvAUAD8=.cer",
+          "storePassword": "0000001B367A71C796C8756C511766C853F5C97926CEE6F789D9999335AC879E34FAFF79CF03B21FA6D820",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BEADF09E1E9FC07D435D95D1467A776C576272ABF0A5306AA47C58BA63A589BEBCB20B02B13F44C",
+          "profile": "C:/Users/Administrator/.ohos/config/openharmony/default_actsbacktocallerabilitywithresulttest_xlF3PpsqOqKbFhpL3cYA64ixvtYAy_7orgOKYvAUAD8=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:/Users/Administrator/.ohos/config/openharmony/default_actsbacktocallerabilitywithresulttest_xlF3PpsqOqKbFhpL3cYA64ixvtYAy_7orgOKYvAUAD8=.p12"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compileSdkVersion": 12,
+        "compatibleSdkVersion": 12,
+        "targetSdkVersion": 12,
+        "runtimeOS": "OpenHarmony",
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
