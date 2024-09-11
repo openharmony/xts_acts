@@ -45,6 +45,7 @@ group("graphic") {
       "nativedrawing:ActsNativeDrawingTest",
       "nativeimage:ActsNativeImageTest",
       "nativevsync:ActsNativeVsyncTest",
+      "nativewindow:ActsNativeWindowTest",
       "webGL:webGL_hap_test",
       "windowNdk:ActsWindowNdkTest",
       "windowPermission:ActsWindowPermissionTest",
