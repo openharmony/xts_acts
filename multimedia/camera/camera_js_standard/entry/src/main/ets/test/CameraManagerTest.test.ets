@@ -86,7 +86,7 @@ export default function cameraManagerTest() {
         mFileAsset = file;
         mFdNumber = file.fd;
         mFdPath = "fd://" + mFdNumber.toString();
-        console.info('case getFd number is: ' + fdNumber);
+        console.info('case getFd number is: ' + mFdNumber);
     }
     
     async function closeFd() {
