@@ -39,7 +39,6 @@
 
 enum AVSessionError {
     AV_SESSION_ERROR_SUCCESSED = 0,
-    // OHAVMetadataBuilder 类方法失败的错误编码
     AV_META_ERROR_CREATE_BUILDER_FAILED = 1000,
     AV_META_ERROR_SET_TITLE_FAILED,
     AV_META_ERROR_SET_ARTIST_FAILED,
@@ -61,7 +60,6 @@ enum AVSessionError {
     AV_META_ERROR_DESTROY_BUILDER_FAILED,
     AV_META_ERROR_INVALID_PARA,
 
-    // OHAVSession 类方法失败的错误编码
     AV_SESSION_ERR_CREATE_FAILED = 2000,
     AV_SESSION_ERR_ACTIVATE_FAILED,
     AV_SESSION_ERR_DEACTIVATE_FAILED,
@@ -302,7 +300,6 @@ SetSessionFunctionPtr g_setSessionFunctions[] = {
     AVSessionSetLoopMode
 };
 
-/* 定义全局变量作为计数器 */
 static int g_cmdCallbackCount = 0;
 static int g_forwardCallbackCount = 0;
 static int g_rewindCallbackCount = 0;
@@ -312,7 +309,6 @@ static int g_loopCallbackCount = 0;
 static int g_favoriteCallbackCount = 0;
 static int g_fromAssetIdCallbackCount = 0;
 
-/* 定义所有回调函数 */
 static OH_AVSessionCallback_OnCommand cmd_callback = [](OH_AVSession* session,
     AVSession_ControlCommand command, void* userData) -> AVSessionCallback_Result {
     g_cmdCallbackCount++;
@@ -542,7 +538,7 @@ AVSessionError UnregisterAllCallback(OH_AVSession* session)
  *           previousAssetId, nextAssetId, intervals, tags, # build avmetadata
  *           playbackState bufferedTime, activeItemId, speed，isFavorite,
  *           loopMode, playbackPosition]  # avsession property para
- * 变量名            最终进入接口类型
+ * variable         Type
  * sessionType:     AVSession_Type;
  * sessionTag:      char*
  * bundleName:      char*
@@ -562,8 +558,8 @@ AVSessionError UnregisterAllCallback(OH_AVSession* session)
  * tags:            uint32_t
  * duration:        int64_t
  * playbackState:   AVSession_PlaybackState
- * bufferedTime:    uint64_t  开发.h文件删除
- * speed:           uint32_t  开发.h文件删除
+ * bufferedTime:    uint64_t  
+ * speed:           uint32_t  
  * isFavorite:      bool
  * loopMode:        loopMode
  * elapsedTime      int64_t
@@ -632,7 +628,7 @@ out_session:
 
 /**
  * TESTNAME : Create
- * 变量名          最终进入接口类型
+ * variable         Type
  * sessionType      AVSession_Type
  * sessionTag       char*
  * bundleName       char*
@@ -658,7 +654,7 @@ AVSessionError TestAVSessionCreate(const ParamList& params)
 /**
  * TESTNAME : SetPlaybackState
  * params = [speed]
- * 变量名            最终进入接口类型
+ * variable         Type
  * PlaybackState    AVSession_PlaybackState
 */
 AVSessionError TestAVSessionSetPlaybackState(const ParamList& params)
@@ -679,7 +675,7 @@ AVSessionError TestAVSessionSetPlaybackState(const ParamList& params)
 /**
  * TESTNAME : SetFavorite
  * params = [favorite]
- * 变量名            最终进入接口类型
+ * variable    Type
  * favorite    bool
 */
 AVSessionError TestAVSessionSetFavorite(const ParamList& params)
@@ -699,7 +695,7 @@ AVSessionError TestAVSessionSetFavorite(const ParamList& params)
 /**
  * TESTNAME : SetLoopMode
  * params = [setLoopMode]
- * 变量名            最终进入接口类型
+ * variable       Type
  * setLoopMode    AVSession_LoopMode
 */
 AVSessionError TestAVSessionSetLoopMode(const ParamList& params)
@@ -719,7 +715,7 @@ AVSessionError TestAVSessionSetLoopMode(const ParamList& params)
 /**
  * TESTNAME : SetPlaybackPosition
  * params = [elapsedTime, updateTime]
- * 变量名            最终进入接口类型
+ * variable         Type
  * elapsedTime      uint64_t
  * updateTime       uint64_t
 */
@@ -807,7 +803,6 @@ std::unordered_map<std::string, TestFunction> testFunctions = {
     {"SetPlaybackPosition", TestAVSessionSetPlaybackPosition},
     {"SetAVMetaData", TestAVSessionSetAVMetaData},
     {"TestAll", TestAVSessionTestAll}
-    // 添加其他测试函数...
 };
 
 static AVSessionError FindAndDoTest(const std::string& functionName, const ParamList& params)
