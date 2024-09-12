@@ -17,7 +17,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import commonEvent from '@ohos.commonEventManager';
-import { Driver, ON } from '@ohos.UiTest'
+import { Driver, ON } from '@ohos.UiTest';
+import Want from '@ohos.app.ability.Want';
 
 let driver = Driver.create();
 
@@ -33,7 +34,7 @@ let ACTS_OnDestroy: commonEvent.CommonEventSubscribeInfo = {
 export default function abilityTest() {
   describe('ActsAbilityStageOnDestroyTest', () => {
 
-    beforeEach(async (done) => {
+    beforeEach(async (done: Function) => {
       setTimeout(() => {
         done();
       }, 3000)
@@ -281,7 +282,7 @@ export default function abilityTest() {
         commonEvent.subscribe(subscriber, subscribeCallBack);
         console.info(TAG + '_0500 startAbility');
         let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
-        let want = {
+        let want: Want = {
           bundleName: 'com.example.abilitystageondestroytest',
           moduleName: 'entry',
           abilityName: 'EntryAbility',
@@ -292,7 +293,7 @@ export default function abilityTest() {
 
         await context.startAbility(want).then((data) => {
           console.log(TAG + "_0500 startAbility data : " + JSON.stringify(data));
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.log(TAG + "_0500 startAbility err : " + JSON.stringify(err));
         })
 

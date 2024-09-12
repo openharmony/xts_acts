@@ -3,9 +3,9 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
+        "shell-timeout": "600000",
         "bundle-name": "com.example.ondestorytest",
         "module-name": "entry_test",
-        "shell-timeout": "600000",
         "testcase-timeout": "8000"
     },
     "kits": [
@@ -17,8 +17,7 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
+        },{
             "type": "ShellKit",
             "run-command": [
                 "param set persist.sys.abilityms.support.start_other_app true"
