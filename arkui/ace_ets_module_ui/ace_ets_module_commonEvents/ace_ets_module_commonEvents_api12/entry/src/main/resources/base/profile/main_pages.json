@@ -61,6 +61,7 @@
         "MainAbility/pages/customGestureTest/dragIsSystem",
         "MainAbility/pages/customGestureTest/clickIsSystem",
         "MainAbility/pages/customGestureTest/gestureParallel",
-        "MainAbility/pages/GestureRecognizer/GestureRecognizerIsValid"
+        "MainAbility/pages/GestureRecognizer/GestureRecognizerIsValid",
+        "MainAbility/pages/onKeyEvent/unicode"
     ]
 }
