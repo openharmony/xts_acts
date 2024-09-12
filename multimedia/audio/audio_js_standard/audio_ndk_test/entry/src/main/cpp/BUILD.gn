@@ -26,7 +26,7 @@ config("config") {
   ]
 }
 
-ohos_shared_library("audioNdkTest") {
+oh os_shared_library("audioNdkTest") {
   sources = [ "./napi/audioTest.cpp" ]
   if (use_musl) {
       libs = [ rebase_path(libcxx_ndk_shared_file) ]
