@@ -24,9 +24,9 @@ struct Geolocation {
   controller: webview.WebviewController = new webview.WebviewController();
   @State src: string | Resource = 'www.example.com'
   @State incognitoMode: boolean = true
-  origin: string = "file:///";
+  origin: string = 'file:///';
 
-  onPageShow(): void {
+  onPageShow(): void{
     let valueChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
       priority: events_emitter.EventPriority.LOW

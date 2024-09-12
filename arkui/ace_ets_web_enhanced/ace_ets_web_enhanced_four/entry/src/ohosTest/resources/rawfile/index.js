@@ -55,7 +55,7 @@ window.addEventListener('message', function (event) {
                     console.log('In html got message, not support type');
                     document.getElementById('msg').innerHTML = 'not support type';
                 }
-            }
+            };
             h5Port.onmessageerror = (event) => {
                 console.error(`hwd In html Error receiving message: ${event}`);
             };

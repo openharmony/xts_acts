@@ -23,15 +23,15 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   host: string = 'www.spincast.org';
   realm: string = 'protected example';
-  username_password: string[] = [];
+  usernamePassword: string[] = [];
 
   build(){
     Column() {
       Button('getHttpAuthCredentials_host_null')
         .onClick(() => {
           try {
-            this.username_password = webview.WebDataBase.getHttpAuthCredentials(null, this.realm);
-            console.log('num: ' + this.username_password.length);
+            this.usernamePassword = webview.WebDataBase.getHttpAuthCredentials(null, this.realm);
+            console.log('num: ' + this.usernamePassword.length);
           } catch (error) {
             console.error(`ErrorCode:` + error.code);
             Utils.emitEvent(error.code + error.message, 10001)
@@ -42,8 +42,8 @@ struct WebComponent {
       Button('getHttpAuthCredentials_realm_null')
         .onClick(() => {
           try {
-            this.username_password = webview.WebDataBase.getHttpAuthCredentials(this.host, null);
-            console.log('num: ' + this.username_password.length);
+            this.usernamePassword = webview.WebDataBase.getHttpAuthCredentials(this.host, null);
+            console.log('num: ' + this.usernamePassword.length);
           } catch (error) {
             console.error(`ErrorCode:` + error.code);
             Utils.emitEvent(error.code + error.message, 10002)

@@ -20,7 +20,7 @@ import { LocalContext } from '../../test/GloablConfig';
 import { URL, URL3 } from './ConstConfig';
 
 class TestObj {
-  test(str: string): ArrayBuffer {
+  test(str: string): ArrayBuffer{
     let buf = new ArrayBuffer(str.length);
     let buff = new Uint8Array(buf);
 

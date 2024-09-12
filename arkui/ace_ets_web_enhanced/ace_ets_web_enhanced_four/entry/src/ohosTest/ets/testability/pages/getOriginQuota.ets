@@ -21,7 +21,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebMessageTest {
   controller: webview.WebviewController = new webview.WebviewController();
-  origin: string = "resource://rawfile/";
+  origin: string = 'resource://rawfile/';
 
   build(){
     Column() {

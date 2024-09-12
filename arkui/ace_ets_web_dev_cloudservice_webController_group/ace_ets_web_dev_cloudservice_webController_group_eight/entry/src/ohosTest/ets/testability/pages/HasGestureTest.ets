@@ -27,13 +27,14 @@ struct WebComponent {
       Web({ src: URL, controller: this.controller })
         .onControllerAttached(() => {
           try {
-            this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
-              console.log("[schemeHandler] onRequestStart", request.hasGesture());
+            this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest,
+              resourceHandler: webview.WebResourceHandler) => {
+              console.log('[schemeHandler] onRequestStart', request.hasGesture());
               return true;
             })
 
             this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
-              console.log("[schemeHandler] onRequestStop");
+              console.log('[schemeHandler] onRequestStop');
             });
 
             this.controller.setWebSchemeHandler('https', this.schemeHandler);

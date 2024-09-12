@@ -20,7 +20,7 @@ import { LocalContext } from '../../test/GloablConfig';
 import { URL, URL3 } from './ConstConfig';
 
 class TestObj {
-  test(str: string): ArrayBuffer {
+  test(str: string): ArrayBuffer{
     let buf = new ArrayBuffer(str.length);
     let buff = new Uint8Array(buf);
 
@@ -88,7 +88,7 @@ struct WebComponent {
         .onPageEnd(() => {
           console.log('init start');
           this.ports = this.controller.createWebMessagePorts(true);
-          this.controller.postMessage("init_web_messageport", [this.ports[1]], "*");
+          this.controller.postMessage('init_web_messageport', [this.ports[1]], '*');
           this.nativePort = this.ports[0];
           this.nativePort.onMessageEventExt((result) => {
             console.log('message');

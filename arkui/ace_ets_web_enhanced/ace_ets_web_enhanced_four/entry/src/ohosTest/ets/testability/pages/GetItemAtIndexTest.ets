@@ -33,7 +33,7 @@ struct WebComponent {
           try {
             let list = this.controller.getBackForwardEntries();
             let historyItem = list.getItemAtIndex(-1);
-            console.log("HistoryItem: " + JSON.stringify(historyItem));
+            console.log('HistoryItem: ' + JSON.stringify(historyItem));
             this.icon = historyItem.icon;
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).message}`);
@@ -47,7 +47,7 @@ struct WebComponent {
           try {
             let list = this.controller.getBackForwardEntries();
             let historyItem = list.getItemAtIndex(temps);
-            console.log("HistoryItem: " + JSON.stringify(historyItem));
+            console.log('HistoryItem: ' + JSON.stringify(historyItem));
             this.icon = historyItem.icon;
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).message}`);
@@ -61,7 +61,7 @@ struct WebComponent {
           try {
             let list = this.controller.getBackForwardEntries();
             let historyItem = list.getItemAtIndex(8);
-            console.log("HistoryItem: " + JSON.stringify(historyItem));
+            console.log('HistoryItem: ' + JSON.stringify(historyItem));
             this.icon = historyItem.icon;
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).message}`);

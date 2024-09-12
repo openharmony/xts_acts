@@ -18,7 +18,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import Utils from '../../test/Util';
 
 class TestObj {
-  test(str:string):ArrayBuffer {
+  test(str:string):ArrayBuffer{
     let buf = new ArrayBuffer(str.length);
     let buff = new Uint8Array(buf);
 
@@ -250,7 +250,7 @@ struct WebMessageExtTest {
           .onPageEnd(() => {
             console.log('In ArkTS side message onPageEnd init message channel');
             this.ports = this.controller.createWebMessagePorts(true);
-            this.controller.postMessage('init_web_messageport', [this.ports[1]], "*");
+            this.controller.postMessage('init_web_messageport', [this.ports[1]], '*');
             this.nativePort = this.ports[0];
             this.nativePort.onMessageEventExt((result) => {
               console.log('In ArkTS side got message');

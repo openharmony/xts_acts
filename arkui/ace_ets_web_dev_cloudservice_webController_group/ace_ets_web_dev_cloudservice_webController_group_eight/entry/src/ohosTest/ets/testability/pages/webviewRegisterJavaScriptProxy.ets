@@ -17,15 +17,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../test/Util';
 
-class testClass {
-  constructor() {
+class TestClass {
+  constructor(){
   }
 
-  test(): string {
+  test(): string{
     return 'ArkUI Web Component';
   }
 
-  toString(): void {
+  toString(): void{
     console.log('Web Component toString');
   }
 }
@@ -34,12 +34,12 @@ class testClass {
 @Component
 struct Index {
   @State webviewController: webview.WebviewController = new webview.WebviewController();
-  @State testObj: testClass = new testClass();
+  @State testObj: TestClass = new TestClass();
   @State str: string = 'SchemeMissed';
   @State permission: string =
     '{ "javascriptProxyPermission": { "urlPermissionList": [ { "scheme": "e","host": "f", "port": "", "path": "" } ], "methodList": [ { "methodName": "test", "urlPermissionList": [] } ] } }';
 
-  InitJavaScriptProxyTest(permission: string) {
+  InitJavaScriptProxyTest(permission: string){
     if (permission != '') {
       this.permission = permission
       try {

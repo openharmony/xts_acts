@@ -35,7 +35,7 @@ window.addEventListener('message', function (event) {
                     document.getElementById('msg').innerHTML = 'Boolean:' + result;
                 } else if (typeof (result) === 'object') {
                     if (result instanceof ArrayBuffer) {
-                        document.getElementById("msg2").innerHTML = 'ArrayBuffer:' + result.byteLength;
+                        document.getElementById('msg2').innerHTML = 'ArrayBuffer:' + result.byteLength;
                         console.log('In html got message, byteLength: ', result.byteLength);
                     } else if (result instanceof Error) {
                         console.log('In html error message, err:' + (result));
@@ -49,13 +49,13 @@ window.addEventListener('message', function (event) {
                         document.getElementById("msg2").innerHTML = 'Array len:' + result.length + ', value:' + result;
                     } else {
                         console.log('In html got message, not any instance of support type');
-                        document.getElementById("msg").innerHTML = 'not any instance of support type';
+                        document.getElementById('msg').innerHTML = 'not any instance of support type';
                     }
                 } else {
                     console.log('In html got message, not support type');
                     document.getElementById('msg').innerHTML = 'not support type';
                 }
-            }
+            };
             h5Port.onmessageerror = (event) => {
                 console.error(`hwd In html Error receiving message: ${event}`);
             };

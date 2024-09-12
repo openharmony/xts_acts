@@ -21,11 +21,11 @@ class TestObj {
   constructor(){
   }
 
-  test(): string {
+  test(): string{
     return 'ArkUI Web Component';
   }
 
-  toString(): void {
+  toString(): void{
     console.log('Web Component toString');
   }
 }
@@ -38,7 +38,7 @@ struct WebComponent {
   @State str: string = ''
   @State name: string = 'testObjName';
 
-  onPageShow(): void {
+  onPageShow(): void{
     let valueChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
       priority: events_emitter.EventPriority.LOW
@@ -56,7 +56,7 @@ struct WebComponent {
     }
   }
 
-  InitJavaScriptProxyTest() {
+  InitJavaScriptProxyTest(){
     try {
       this.controller.registerJavaScriptProxy(this.testObj, this.name, ['test', 'toString']);
       this.controller.refresh();

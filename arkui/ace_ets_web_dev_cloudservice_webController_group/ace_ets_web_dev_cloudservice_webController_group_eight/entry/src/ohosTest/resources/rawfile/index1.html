@@ -11,8 +11,8 @@
 <script>
     function objTest() {
       // This function call expects to return 'ArkUI Web Component'
-      let str=objName.test('webtest data');
-      document.getElementById('demo').innerHTML=str;
+      let str = objName.test('webtest data');
+      document.getElementById('demo').innerHTML = str;
       return str;
     }
 
@@ -22,7 +22,8 @@
 
    function fakeTest() {
     try {
-       objName.fake('webtest+data');
+       objName.fake('webtest + data');
+       return '';
     } catch (error) {
       return error.toString();
     }
@@ -30,7 +31,7 @@
 
     function webTest() {
       let webStr = objTestName.webTest();
-      document.getElementById('webDemo').innerHTML=webStr;
+      document.getElementById('webDemo').innerHTML = webStr;
       return webStr;
     }
 

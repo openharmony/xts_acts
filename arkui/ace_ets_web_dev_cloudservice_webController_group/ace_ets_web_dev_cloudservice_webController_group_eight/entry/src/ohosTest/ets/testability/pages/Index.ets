@@ -20,52 +20,52 @@ import events_emitter from '@ohos.events.emitter';
 import { JSON } from '@kit.ArkTS';
 
 class TestObj {
-  constructor() {
+  constructor(){
   }
 
-  test(testStr: string): string {
+  test(testStr: string): string{
     console.log('Web Component str' + testStr);
     return testStr;
   }
 
-  toString(): void {
+  toString(): void{
     console.log('Web Component toString');
   }
 
-  testNumber(testNum: number): number {
+  testNumber(testNum: number): number{
     console.log('Web Component number' + testNum);
     return testNum;
   }
 
-  asyncTestBool(testBol: boolean): boolean {
+  asyncTestBool(testBol: boolean): boolean{
     console.log('Web Component boolean' + testBol);
     return testBol
   }
 }
 
 class WebObj {
-  constructor() {
+  constructor(){
   }
 
-  webTest(): string {
+  webTest(): string{
     console.log('Web test');
     return 'Web test';
   }
 
-  webString(): void {
+  webString(): void{
     console.log('Web test toString');
   }
 }
 
 class AsyncObj {
-  constructor() {
+  constructor(){
   }
 
-  asyncTest(): void {
+  asyncTest(): void{
     console.log('Async test');
   }
 
-  asyncString(testStr: string): void {
+  asyncString(testStr: string): void{
     console.log('Web async string' + testStr);
   }
 }
@@ -89,7 +89,7 @@ struct Index {
   @State header: string = 'https'
   @State body: string = '://www.example.com'
 
-  onPageShow(): void {
+  onPageShow(): void{
     let valueChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
       priority: events_emitter.EventPriority.LOW
@@ -155,7 +155,7 @@ struct Index {
               });
           } catch (e) {
             Utils.emitEvent(e.code + e.massage, 1002)
-            console.error("err.code" + e.code)
+            console.error('err.code' + e.code)
           }
         })
 
@@ -216,11 +216,11 @@ struct Index {
           }
         })
 
-      Button("registerScript method null")
-        .key("005")
+      Button('registerScript method null')
+        .key('005')
         .onClick((event: ClickEvent) => {
           try {
-            this.controller.registerJavaScriptProxy(this.testObject, "objName", null, ["asyncTestBool"]);
+            this.controller.registerJavaScriptProxy(this.testObject, 'objName', null, ['asyncTestBool']);
             this.controller.refresh();
             setTimeout(() => {
               this.controller.runJavaScript(
@@ -238,7 +238,7 @@ struct Index {
             }, 300)
           } catch (e) {
             Utils.emitEvent(e.code + e.massage, 1005)
-            console.error("err.code=" + e.code)
+            console.error('err.code=' + e.code)
           }
         })
 
@@ -246,7 +246,7 @@ struct Index {
         .key('006')
         .onClick(async (event: ClickEvent) => {
           try {
-            this.controller.registerJavaScriptProxy(this.testObject, 'objName', ["test"], ["asyncTestBool"]);
+            this.controller.registerJavaScriptProxy(this.testObject, 'objName', ['test'], ['asyncTestBool']);
             this.controller.refresh();
             setTimeout(() => {
               this.controller.runJavaScript(
@@ -257,22 +257,22 @@ struct Index {
                     return;
                   }
                   if (result) {
-                    Utils.emitEvent("true", 1006)
+                    Utils.emitEvent('true', 1006)
                     this.webResult = result;
                     console.info(`The test() return value is: ${result}`);
                   }
                 });
             }, 300)
           } catch (e) {
-            console.error("err.code=" + e.code)
+            console.error('err.code=' + e.code)
           }
         })
 
-      Button("registerScript method lost")
-        .key("007")
+      Button('registerScript method lost')
+        .key('007')
         .onClick(async (event: ClickEvent) => {
           try {
-            this.controller.registerJavaScriptProxy(this.testObject, "objName", ["fake"], ["asyncTestBool"]);
+            this.controller.registerJavaScriptProxy(this.testObject, 'objName', ['fake'], ['asyncTestBool']);
             this.controller.refresh();
             setTimeout(() => {
               this.controller.runJavaScript(
@@ -284,22 +284,22 @@ struct Index {
                   }
                   if (result) {
                     this.webResult = result;
-                    Utils.emitEvent("true", 1007)
+                    Utils.emitEvent('true', 1007)
                     console.info(`The method return value is: ${result}`);
                   }
                 });
             }, 300)
           } catch (e) {
-            console.error("err.code=" + e.code)
+            console.error('err.code=' + e.code)
           }
         })
 
-      Button("registerScript methods ")
-        .key("008")
+      Button('registerScript methods ')
+        .key('008')
         .onClick(async (event: ClickEvent) => {
           try {
-            this.controller.registerJavaScriptProxy(this.testObject, "objName", ["test", "toString", "testNumber"],
-              ["asyncTestBool"]);
+            this.controller.registerJavaScriptProxy(this.testObject, 'objName', ['test', 'toString', 'testNumber'],
+              ['asyncTestBool']);
             this.controller.refresh();
             setTimeout(() => {
               this.controller.runJavaScript(
@@ -310,23 +310,23 @@ struct Index {
                     return;
                   }
                   if (result) {
-                    Utils.emitEvent("true", 1008)
+                    Utils.emitEvent('true', 1008)
                     this.webResult = result;
                     console.info(`The test() return value is: ${result}`);
                   }
                 });
             }, 300)
           } catch (e) {
-            console.error("err.code=" + e.code)
+            console.error('err.code=' + e.code)
           }
         })
 
-      Button("registerScript asyncmethodList normal ")
-        .key("009")
+      Button('registerScript asyncmethodList normal ')
+        .key('009')
         .onClick(async (event: ClickEvent) => {
           try {
-            this.controller.registerJavaScriptProxy(this.testObject, "objName", ["test", "toString", "testNumber"],
-              ["asyncTestBool"]);
+            this.controller.registerJavaScriptProxy(this.testObject, 'objName', ['test', 'toString', 'testNumber'],
+              ['asyncTestBool']);
             this.controller.refresh();
             setTimeout(() => {
               this.controller.runJavaScript(
@@ -337,23 +337,23 @@ struct Index {
                     return;
                   }
                   if (result) {
-                    Utils.emitEvent("true", 1009)
+                    Utils.emitEvent('true', 1009)
                     this.webResult = result;
                     console.info(`The test() return value is: ${result}`);
                   }
                 });
             }, 300)
           } catch (e) {
-            console.error("err.code=" + e.code)
+            console.error('err.code=' + e.code)
           }
         })
 
-      Button("registerScript asyncmethodList normal ")
-        .key("0010")
+      Button('registerScript asyncmethodList normal ')
+        .key('0010')
         .onClick(async (event: ClickEvent) => {
           try {
-            this.controller.registerJavaScriptProxy(this.asyncTestObj, "objAsyncName", [],
-              ["asyncString", "asyncTest"]);
+            this.controller.registerJavaScriptProxy(this.asyncTestObj, 'objAsyncName', [],
+              ['asyncString', 'asyncTest']);
             this.controller.refresh();
             setTimeout(() => {
               this.controller.runJavaScript(
@@ -364,23 +364,23 @@ struct Index {
                     return;
                   }
                   if (result) {
-                    Utils.emitEvent("true", 1010)
+                    Utils.emitEvent('true', 1010)
                     this.webResult = result;
                     console.info(`The test() return value is: ${result}`);
                   }
                 });
             }, 300)
           } catch (e) {
-            console.error("err.code=" + e.code)
+            console.error('err.code=' + e.code)
           }
         })
 
-      Button("registerScript asyncmethod method")
-        .key("0011")
+      Button('registerScript asyncmethod method')
+        .key('0011')
         .onClick(async (event: ClickEvent) => {
           try {
-            this.controller.registerJavaScriptProxy(this.testObject, "objName", ["test", "toString", "testNumber"],
-              ["asyncTestBool", "test", "toString"]);
+            this.controller.registerJavaScriptProxy(this.testObject, 'objName', ['test', 'toString', 'testNumber'],
+              ['asyncTestBool', 'test', 'toString']);
             this.controller.refresh();
 
             setTimeout(() => {
@@ -392,139 +392,139 @@ struct Index {
                     return;
                   }
                   if (result) {
-                    Utils.emitEvent("true", 1011)
+                    Utils.emitEvent('true', 1011)
                     this.webResult = result;
                     console.info(`The test() return value is: ${result}`);
                   }
                 });
             }, 300)
           } catch (e) {
-            console.error("err.code=" + e.code)
+            console.error('err.code=' + e.code)
           }
         })
 
-      Button("setBackForwardCacheOptions")
-        .key("setBackForwardCacheOptions")
+      Button('setBackForwardCacheOptions')
+        .key('setBackForwardCacheOptions')
         .onClick((event: ClickEvent) => {
           switch (this.str) {
-            case "SUB_ACE_WEB_BFCACHE_SDK_0005":
+            case 'SUB_ACE_WEB_BFCACHE_SDK_0005':
               try {
                 let options = new webview.BackForwardCacheOptions();
                 options.size = -1;
                 options.timeToLive = 10;
                 this.controller.setBackForwardCacheOptions(options)
-                Utils.emitEvent("true", 200)
+                Utils.emitEvent('true', 200)
               } catch (e) {
-                console.log("err:" + e.code + e.message)
+                console.log('err:' + e.code + e.message)
               }
               break;
-            case "SUB_ACE_WEB_BFCACHE_SDK_0006":
+            case 'SUB_ACE_WEB_BFCACHE_SDK_0006':
               try {
                 let options = new webview.BackForwardCacheOptions();
                 options.size = 0;
                 options.timeToLive = 10;
                 this.controller.setBackForwardCacheOptions(options)
-                Utils.emitEvent("true", 201)
+                Utils.emitEvent('true', 201)
               } catch (e) {
-                console.log("err:" + e.code + e.message)
+                console.log('err:' + e.code + e.message)
               }
               break;
-            case "SUB_ACE_WEB_BFCACHE_SDK_0007":
+            case 'SUB_ACE_WEB_BFCACHE_SDK_0007':
               try {
                 let options = new webview.BackForwardCacheOptions();
                 options.size = 1.6;
                 options.timeToLive = 10;
                 this.controller.setBackForwardCacheOptions(options)
-                Utils.emitEvent("true", 202)
+                Utils.emitEvent('true', 202)
               } catch (e) {
-                console.log("err:" + e.code + e.message)
+                console.log('err:' + e.code + e.message)
               }
               break;
-            case "SUB_ACE_WEB_BFCACHE_SDK_0008":
+            case 'SUB_ACE_WEB_BFCACHE_SDK_0008':
               try {
                 let options = new webview.BackForwardCacheOptions();
                 options.size = 1;
                 options.timeToLive = 10;
                 this.controller.setBackForwardCacheOptions(options)
-                Utils.emitEvent("true", 203)
+                Utils.emitEvent('true', 203)
               } catch (e) {
-                console.log("err:" + e.code + e.message)
+                console.log('err:' + e.code + e.message)
               }
               break;
-            case "SUB_ACE_WEB_BFCACHE_SDK_0009":
+            case 'SUB_ACE_WEB_BFCACHE_SDK_0009':
               try {
                 let options = new webview.BackForwardCacheOptions();
                 options.size = 50;
                 options.timeToLive = 10;
                 this.controller.setBackForwardCacheOptions(options)
-                Utils.emitEvent("true", 204)
+                Utils.emitEvent('true', 204)
               } catch (e) {
-                console.log("err:" + e.code + e.message)
+                console.log('err:' + e.code + e.message)
               }
               break;
-            case "SUB_ACE_WEB_BFCACHE_SDK_00010":
+            case 'SUB_ACE_WEB_BFCACHE_SDK_00010':
               try {
                 let options = new webview.BackForwardCacheOptions();
                 options.size = 51;
                 options.timeToLive = 10;
                 this.controller.setBackForwardCacheOptions(options)
-                Utils.emitEvent("true", 205)
+                Utils.emitEvent('true', 205)
               } catch (e) {
-                console.log("err:" + e.code + e.message)
+                console.log('err:' + e.code + e.message)
               }
               break;
-            case "SUB_ACE_WEB_BFCACHE_SDK_00011":
+            case 'SUB_ACE_WEB_BFCACHE_SDK_00011':
               try {
                 let options = new webview.BackForwardCacheOptions();
                 options.size = 1;
                 options.timeToLive = 0;
                 this.controller.setBackForwardCacheOptions(options)
-                Utils.emitEvent("true", 206)
+                Utils.emitEvent('true', 206)
               } catch (e) {
-                console.log("err:" + e.code + e.message)
+                console.log('err:' + e.code + e.message)
               }
               break;
-            case "SUB_ACE_WEB_BFCACHE_SDK_00012":
+            case 'SUB_ACE_WEB_BFCACHE_SDK_00012':
               try {
                 let options = new webview.BackForwardCacheOptions();
                 options.size = 1;
                 options.timeToLive = 600;
                 this.controller.setBackForwardCacheOptions(options)
-                Utils.emitEvent("true", 207)
+                Utils.emitEvent('true', 207)
               } catch (e) {
-                console.log("err:" + e.code + e.message)
+                console.log('err:' + e.code + e.message)
               }
               break;
-            case "SUB_ACE_WEB_BFCACHE_SDK_00013":
+            case 'SUB_ACE_WEB_BFCACHE_SDK_00013':
               try {
                 let options = new webview.BackForwardCacheOptions();
                 options.size = 1;
                 options.timeToLive = -20;
                 this.controller.setBackForwardCacheOptions(options)
-                Utils.emitEvent("true", 208)
+                Utils.emitEvent('true', 208)
               } catch (e) {
-                console.log("err:" + e.code + e.message)
+                console.log('err:' + e.code + e.message)
               }
               break;
-            case "SUB_ACE_WEB_BFCACHE_SDK_00014":
+            case 'SUB_ACE_WEB_BFCACHE_SDK_00014':
               try {
                 let options = new webview.BackForwardCacheOptions();
                 options.size = 1;
                 options.timeToLive = 90.5;
                 this.controller.setBackForwardCacheOptions(options)
-                Utils.emitEvent("true", 209)
+                Utils.emitEvent('true', 209)
               } catch (e) {
-                console.log("err:" + e.code + e.message)
+                console.log('err:' + e.code + e.message)
               }
               break;
-            case "SUB_ACE_WEB_BFCACHE_SDK_00015":
+            case 'SUB_ACE_WEB_BFCACHE_SDK_00015':
               try {
                 let options = new webview.BackForwardCacheOptions();
                 options.size = 1;
                 options.timeToLive = 30;
                 this.controller1.setBackForwardCacheOptions(options)
               } catch (e) {
-                console.log("err:" + e.code + e.message)
+                console.log('err:' + e.code + e.message)
                 Utils.emitEvent(e.code + e.message, 210)
               }
               break;
@@ -570,12 +570,12 @@ struct Index {
           }
         })
 
-      Button("INCOGNITO").key("INCOGNITO").onClick((event: ClickEvent) => {
+      Button('INCOGNITO').key('INCOGNITO').onClick((event: ClickEvent) => {
         switch (this.str) {
           case 'SUB_ACE_WEB_INCOGNITO_API_0006':
             try {
               webview.GeolocationPermissions.deleteAllGeolocation();
-              Utils.emitEvent("true", 213)
+              Utils.emitEvent('true', 213)
             } catch (error) {
               console.error(`ErrorCode: {(error as BusinessError).message}`);
             }
@@ -655,7 +655,7 @@ struct Index {
             setTimeout(() => {
               try {
                 let value = webview.WebCookieManager.fetchCookieSync(this.header + this.body);
-                console.log("fetchCookieSync cookie = " + value);
+                console.log('fetchCookieSync cookie = ' + value);
                 Utils.emitEvent(value, 218)
               } catch (error) {
                 console.error('fetchCookieSync  ErrorCode: ' + error.code);
@@ -669,7 +669,7 @@ struct Index {
             setTimeout(() => {
               try {
                 let value = webview.WebCookieManager.fetchCookieSync(this.header + this.body);
-                console.log("fetchCookieSync cookie = " + value);
+                console.log('fetchCookieSync cookie = ' + value);
                 Utils.emitEvent(value, 219)
               } catch (error) {
                 console.error('fetchCookieSync  ErrorCode: ' + error.code);
