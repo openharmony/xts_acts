@@ -23,7 +23,7 @@ export class GlobalContext {
   private _objects = new Map<string, Object>();
   public static getContext(): common.Context {
     if (!GlobalContext.instance) {
-      GlobalContext.instance =  getContext();
+      GlobalContext.instance = getContext();
     }
     return GlobalContext.instance;
   }
