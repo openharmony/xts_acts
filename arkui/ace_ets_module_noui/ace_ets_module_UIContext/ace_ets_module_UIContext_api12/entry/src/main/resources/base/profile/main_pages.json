@@ -1,8 +1,5 @@
 {
-    "src": [
-        "MainAbility/pages/index/index",
-        "MainAbility/pages/UIContext/UIContextApi1",
-        "MainAbility/pages/UIContext/UIcontextTestPage"
-
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }
