@@ -13,13 +13,9 @@
  * limitations under the License.
  */
 
-{
-  "modelVersion": "5.0.0",
-  "description": "Please describe the basic information.",
-  "dependencies": {
-  },
-  "devDependencies": {
-    "@ohos/hypium": "1.0.19",
-    "@ohos/hamock": "1.0.0-rc"
-  }
+import { hapTasks } from '@ohos/hvigor-ohos-plugin';
+
+export default {
+    system: hapTasks,  /* Built-in plugin of Hvigor. It cannot be modified. */
+    plugins:[]         /* Custom plugin to extend the functionality of Hvigor. */
 }
