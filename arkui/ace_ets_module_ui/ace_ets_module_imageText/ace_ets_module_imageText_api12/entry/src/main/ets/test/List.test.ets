@@ -141,6 +141,14 @@ import TextHalfLeading from './Text/TextHalfLeading.test'
 import ImageResizable from './ImageTest/ImageResizable.test';
 import TextDataDetectorConfig from './Text/TextDataDetectorConfig.test';
 import FontSettingOptions from './Text/FontSettingOptions.test';
+import imageSpanTest1 from './TextTest/imageSpan1.test';
+import imageSpanTest2 from './TextTest/imageSpan2.test';
+import imageSpanTest3 from './TextTest/imageSpan3.test';
+import imageSpanTest4 from './TextTest/imageSpan4.test';
+import imageSpanTest5 from './TextTest/imageSpan5.test';
+import imageSpanTest6 from './TextTest/imageSpan6.test';
+import imageSpanTest7 from './TextTest/imageSpan7.test';
+import imageSpanTest8 from './TextTest/imageSpan8.test';
 import TextMaxLines from './Text/TextMaxLines.test';
 
 export default function testsuite() {
@@ -265,5 +273,13 @@ export default function testsuite() {
   ImageResizable(); 
   TextDataDetectorConfig();
   FontSettingOptions();
+  imageSpanTest1();
+  imageSpanTest2();
+  imageSpanTest3();
+  imageSpanTest4();
+  imageSpanTest5();
+  imageSpanTest6();
+  imageSpanTest7();
+  imageSpanTest8();
   TextMaxLines();
 }

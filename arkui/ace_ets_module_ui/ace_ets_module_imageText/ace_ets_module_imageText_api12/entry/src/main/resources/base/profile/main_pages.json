@@ -126,7 +126,15 @@
 	  "MainAbility/pages/Text/TextHalfLeading",
     "MainAbility/pages/Image/ImageResizable",
 	"MainAbility/pages/Text/TextDataDetectorConfig",
-	"MainAbility/pages/Text/FontSettingOptions",
-	"MainAbility/pages/Text/TextMaxLines"
+    "MainAbility/pages/Text/FontSettingOptions",
+    "MainAbility/pages/Text/TextMaxLines",
+    "MainAbility/pages/Text/imageSpan1",
+    "MainAbility/pages/Text/imageSpan2",
+    "MainAbility/pages/Text/imageSpan3",
+    "MainAbility/pages/Text/imageSpan4",
+    "MainAbility/pages/Text/imageSpan5",
+    "MainAbility/pages/Text/imageSpan6",
+    "MainAbility/pages/Text/imageSpan7",
+    "MainAbility/pages/Text/imageSpan8"
   ]
 }
