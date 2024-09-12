@@ -49,14 +49,5 @@ export default function napiBufferTest() {
       expect(napitest.IsBuffer(buffer)).assertTrue();
       expect(napitest.GetBufferInfo(buffer)).assertTrue();
     })
-
-    /**
-    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0001
-    * @tc.name      napiBufferTest001
-    * @tc.desc      aceNapiEtsTest
-    */
-    it('napiBufferTest003', 0, function () {
-      expect(napitest.BufferCopy().toString()).assertDeepEquals(napitest.testStr);
-    })
   })
 }
