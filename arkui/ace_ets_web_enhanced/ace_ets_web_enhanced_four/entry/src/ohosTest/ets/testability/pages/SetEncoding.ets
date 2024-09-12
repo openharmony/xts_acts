@@ -28,7 +28,7 @@ struct WebComponent {
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
   htmlData: string = '<html><body bgcolor="white">Source:<pre>source</pre></body></html>';
 
-  build(){
+  build() {
     Column() {
       Web({ src: URL, controller: this.controller })
         .onControllerAttached(() => {
@@ -49,7 +49,7 @@ struct WebComponent {
                 response.setEncoding(temp);
               } catch (error) {
                 console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-                LocalContext.context.eventHub.emit('SetEncoding-error', JSON.stringify(error))
+                LocalContext.context.eventHub.emit('SetEncoding-error', error.code, error.message)
               }
 
               // 调用 didFinish/didFail 前需要优先调用 didReceiveResponse 将构造的响应头传递给被拦截的请求。

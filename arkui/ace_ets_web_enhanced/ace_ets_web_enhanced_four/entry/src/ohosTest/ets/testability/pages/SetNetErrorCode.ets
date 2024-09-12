@@ -17,7 +17,7 @@ import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { buffer } from '@kit.ArkTS';
 import { WebNetErrorList } from '@ohos.web.netErrorList';
-import { temps } from '../../test/Const';
+import { temp, temps } from '../../test/Const';
 import { LocalContext } from '../../test/GloablConfig';
 import { URL } from './ConstConfig';
 
@@ -28,7 +28,7 @@ struct WebComponent {
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
   htmlData: string = '<html><body bgcolor="white">Source:<pre>source</pre></body></html>';
 
-  build(){
+  build() {
     Column() {
       Web({ src: URL, controller: this.controller })
         .onControllerAttached(() => {
@@ -49,7 +49,7 @@ struct WebComponent {
                 response.setNetErrorCode(temps);
               } catch (error) {
                 console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-                LocalContext.context.eventHub.emit('SetNetErrorCode-error', JSON.stringify(error))
+                LocalContext.context.eventHub.emit('SetNetErrorCode-error', error.code, error.message)
               }
 
               // 调用 didFinish/didFail 前需要优先调用 didReceiveResponse 将构造的响应头传递给被拦截的请求。
