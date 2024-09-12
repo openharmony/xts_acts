@@ -37,6 +37,17 @@ let rendererInfo: audio.AudioRendererInfo = {
   rendererFlags : 0
 }
 
+const prame =async ()=>{
+  audioVolumeManager.getVolumeGroupManager(defaultVolumeGroupId, (err: BusinessError, value: audio.AudioVolumeGroupManager) => {
+    if (err) {
+      console.error(`Failed to obtain the volume group infos list. ${err}`);
+      return;
+    }
+    audioVolumeGroupManager = value;
+    console.info('Callback invoked to indicate that the volume group infos list is obtained.');
+  });
+}
+
 export default function maxAmplitudeFor() {
   describe('maxAmplitudeFor', function () {
    const prame =async ()=>{
