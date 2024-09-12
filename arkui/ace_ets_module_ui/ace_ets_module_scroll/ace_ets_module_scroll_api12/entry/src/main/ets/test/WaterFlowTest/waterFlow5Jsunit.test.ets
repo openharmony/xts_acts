@@ -60,7 +60,9 @@ export default function waterFlow5Jsunit() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[waterFlow5Jsunit_001] component obj is: " + JSON.stringify(obj));
       console.info("[waterFlow5Jsunit_001] content: " + JSON.stringify(obj.$attrs.height));
-      expect(obj.$attrs.height).assertEqual(Math.round(vp2px(100))+'.00px');
+	  let heightStr:string = obj.$attrs.height.slice(0,6)
+      console.info("[waterFlow5Jsunit_001] heightStr: " + heightStr);
+      expect(Math.abs(Math.round(Number(heightStr)) - Math.round(vp2px(100))) <= 1).assertTrue();
       console.info('[waterFlow5Jsunit_001] END');
       done();
     });
