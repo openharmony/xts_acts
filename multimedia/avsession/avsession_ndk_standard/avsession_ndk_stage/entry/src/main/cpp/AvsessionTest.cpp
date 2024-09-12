@@ -94,6 +94,7 @@ enum AVSessionError {
 
 using Param = std::variant<std::string, double, bool>;
 using ParamList = std::vector<Param>;
+static OH_AVSession *g_avsession = nullptr;
 
 AVSessionError AVMetadataBuilderSetAssetId(OH_AVMetadataBuilder* builder, const Param& param)
 {
@@ -793,6 +794,56 @@ clean_session:
     return returnValue;
 }
 
+static napi_value AVSessionActivate(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_LOG_INFO(LOG_APP, "OH_AVSession_Activate");
+    AVSession_ErrCode ret = OH_AVSession_Create(SESSION_TYPE_AUDIO, "oh_av_session_test_001",
+        "com.xxx.hmxx", "ndkxx", &g_avsession);
+    AVSession_ErrCode avErrCode = OH_AVSession_Activate(g_avsession);
+    napi_create_int32(env, avErrCode, &result);
+    OH_AVSession_Destroy(g_avsession);
+    return result;
+}
+
+static napi_value AVSessionDeActivate(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_LOG_INFO(LOG_APP, "OH_AVSession_Deactivate");
+    AVSession_ErrCode ret = OH_AVSession_Create(SESSION_TYPE_AUDIO, "oh_av_session_test_001",
+        "com.xxx.hmxx", "ndkxx", &g_avsession);
+    AVSession_ErrCode avErrCode = OH_AVSession_Deactivate(g_avsession);
+    napi_create_int32(env, avErrCode, &result);
+    OH_AVSession_Destroy(g_avsession);
+    return result;
+}
+
+static napi_value AVSessionGetSessionId(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_LOG_INFO(LOG_APP, "OH_AVSession_GetSessionId");
+    AVSession_ErrCode ret = OH_AVSession_Create(SESSION_TYPE_AUDIO, "oh_av_session_test_001",
+        "com.xxx.hmxx", "ndkxx", &g_avsession);
+    const char* sessionId = "123";
+    AVSession_ErrCode avErrCode = OH_AVSession_GetSessionId(g_avsession, &sessionId);
+    napi_create_int32(env, avErrCode, &result);
+    OH_AVSession_Destroy(g_avsession);
+    return result;
+}
+
+static napi_value AVSessionGetSessionType(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_LOG_INFO(LOG_APP, "OH_AVSession_GetSessionType");
+    AVSession_ErrCode ret = OH_AVSession_Create(SESSION_TYPE_AUDIO, "oh_av_session_test_001",
+        "com.xxx.hmxx", "ndkxx", &g_avsession);
+    AVSession_Type sessionType;
+    AVSession_ErrCode avErrCode = OH_AVSession_GetSessionType(g_avsession, &sessionType);
+    napi_create_int32(env, avErrCode, &result);
+    OH_AVSession_Destroy(g_avsession);
+    return result;
+}
+
 using TestFunction = AVSessionError (*)(const ParamList&);
 
 std::unordered_map<std::string, TestFunction> testFunctions = {
@@ -894,7 +945,11 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        { "runTest", nullptr, RunTest, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "runTest", nullptr, RunTest, nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"AVSessionActivate", nullptr, AVSessionActivate, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AVSessionDeActivate", nullptr, AVSessionDeActivate, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AVSessionGetSessionId", nullptr, AVSessionGetSessionId, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AVSessionGetSessionType", nullptr, AVSessionGetSessionType, nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

@@ -17,3 +17,7 @@ import { Callback } from '@ohos.base';
 
 
 export function runTest(testName: string, paraList: any[]): number;
+export const AVSessionActivate: () => number;
+export const AVSessionDeActivate: () => number;
+export const AVSessionGetSessionId: () => number;
+export const AVSessionGetSessionType: () => number;
