@@ -17,11 +17,11 @@ import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import Utils from '../../test/Util';
 
-class testOfflineResource {
-  urlList: string[] | null;
-  resource: Uint8Array | null;
-  responseHeaders: TestWebHeader[] | null;
-  type: webview.OfflineResourceType | null;
+class TestOfflineResource {
+  public urlList: string[] | null;
+  public resource: Uint8Array | null;
+  public responseHeaders: TestWebHeader[] | null;
+  public type: webview.OfflineResourceType | null;
 
   constructor(urlList: string[] | null, resource: Uint8Array | null, responseHeaders: webview.WebHeader[] | null,
     type: webview.OfflineResourceType | null){
@@ -99,7 +99,7 @@ struct Index {
   @State testObjTest: TestObj = new TestObj();
   @State webTestObj: WebObj = new WebObj();
   @State asyncTestObj: AsyncObj = new AsyncObj();
-  @State resourceMapArr: Array<testOfflineResource> = [];
+  @State resourceMapArr: Array<TestOfflineResource> = [];
   private header: string = 'https:'
   private body: string = '//www.example.com/example.js'
   private controllerTest: webview.WebviewController = new webview.WebviewController();
@@ -112,7 +112,7 @@ struct Index {
   async initData(){
     this.resourceMapArr = []
     this.buf = await readRawFile('example.html');
-    let testData: testOfflineResource = new testOfflineResource([this.header + this.body], this.buf,
+    let testData: TestOfflineResource = new TestOfflineResource([this.header + this.body], this.buf,
       [{ headerKey: 'Cross-Origin', headerValue: 'anonymous' }], webview.OfflineResourceType.CLASSIC_JS)
     this.resourceMapArr.push(testData)
   }
