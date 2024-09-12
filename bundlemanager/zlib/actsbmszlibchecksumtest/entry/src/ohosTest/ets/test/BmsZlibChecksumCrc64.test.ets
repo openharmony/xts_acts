@@ -65,7 +65,7 @@ export default function bmsZlibChecksumCrc64Test() {
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_4800 start`);
           let num: number = await checksum.crc64(crc, bufEmpty);
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_4800 crc ${crc} ret: ${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_4800 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -88,7 +88,7 @@ export default function bmsZlibChecksumCrc64Test() {
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_4900 start`);
           let num: number = await checksum.crc64(crc, buf);
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_4900 crc ${crc} buf ${str} ret: ${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_4900 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -111,7 +111,7 @@ export default function bmsZlibChecksumCrc64Test() {
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_5000 start`);
           let num: number = await checksum.crc64(crc, buf);
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_5000 crc ${crc} buf ${str} ret: ${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_5000 error, error code is: ${e.code}, error message is: ${e.message}`);

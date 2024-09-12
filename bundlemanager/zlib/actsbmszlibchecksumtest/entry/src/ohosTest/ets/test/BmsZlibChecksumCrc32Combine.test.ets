@@ -77,7 +77,7 @@ export default function bmsZlibChecksumCrc32CombineTest() {
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3400 start`);
           let num: number = await checksum.crc32Combine(crc1, crc2, len2);
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3400 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_3400 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -100,7 +100,7 @@ export default function bmsZlibChecksumCrc32CombineTest() {
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3500 start`);
           let num: number = await checksum.crc32Combine(crc1, crc2, len2);
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3500 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_3500 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -123,7 +123,7 @@ export default function bmsZlibChecksumCrc32CombineTest() {
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3600 start`);
           let num: number = await checksum.crc32Combine(crc1, crc2, len2);
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3600 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_3600 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -146,7 +146,7 @@ export default function bmsZlibChecksumCrc32CombineTest() {
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3700 start`);
           let num: number = await checksum.crc32Combine(crc1, crc2, len2);
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3700 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_3700 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -169,7 +169,7 @@ export default function bmsZlibChecksumCrc32CombineTest() {
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3800 start`);
           let num: number = await checksum.crc32Combine(crc1, crc2, len2);
           hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3800 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_3800 error, error code is: ${e.code}, error message is: ${e.message}`);

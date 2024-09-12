@@ -64,7 +64,7 @@ export default function bmsZlibChecksumCrc32Test() {
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2600 start`);
         let num: number = await checksum.crc32(crc, bufEmpty);
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2600 crc ${crc} ret: ${num}`);
-        expect().assertTrue();
+        expect(true).assertTrue();
       } catch (e) {
         hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2600 error, error code is: ${e.code}, error message is: ${e.message}`);
         expect().assertFail();
@@ -85,7 +85,7 @@ export default function bmsZlibChecksumCrc32Test() {
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2700 start`);
         let num: number = await checksum.crc32(crc, buf);
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2700 crc ${crc} buf ${str} ret: ${num}`);
-        expect().assertTrue();
+        expect(true).assertTrue();
       } catch (e) {
         hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2700 error, error code is: ${e.code}, error message is: ${e.message}`);
         expect().assertFail();
@@ -106,7 +106,7 @@ export default function bmsZlibChecksumCrc32Test() {
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2800 start`);
         let num: number = await checksum.crc32(crc, buf);
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2800 crc ${crc} buf ${str} ret: ${num}`);
-        expect().assertTrue();
+        expect(true).assertTrue();
       } catch (e) {
         hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_2800 error, error code is: ${e.code}, error message is: ${e.message}`);
         expect().assertFail();

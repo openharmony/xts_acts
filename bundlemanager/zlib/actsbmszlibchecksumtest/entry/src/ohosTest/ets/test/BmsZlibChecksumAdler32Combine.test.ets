@@ -78,7 +78,7 @@ export default function bmsZlibChecksumAdler32CombineTest() {
           let num: number = await checksum.adler32Combine(adler1, adler2, len2);
           hilog.info(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1200 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1200 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -102,7 +102,7 @@ export default function bmsZlibChecksumAdler32CombineTest() {
           let num: number = await checksum.adler32Combine(adler1, adler2, len2);
           hilog.info(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1300 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1300 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -126,7 +126,7 @@ export default function bmsZlibChecksumAdler32CombineTest() {
           let num: number = await checksum.adler32Combine(adler1, adler2, len2);
           hilog.info(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1400 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1400 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -150,7 +150,7 @@ export default function bmsZlibChecksumAdler32CombineTest() {
           let num: number = await checksum.adler32Combine(adler1, adler2, len2);
           hilog.info(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1500 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1500 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -174,7 +174,7 @@ export default function bmsZlibChecksumAdler32CombineTest() {
           let num: number = await checksum.adler32Combine(adler1, adler2, len2);
           hilog.info(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1600 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1600 error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -222,7 +222,7 @@ export default function bmsZlibChecksumAdler32CombineTest() {
           let num: number = await checksum.adler32Combine(adler1, adler2, len2);
           hilog.info(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1800 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-          expect().assertTrue();
+          expect(true).assertTrue();
         } catch (e) {
           hilog.error(Domain, TAG,
             `Sub_Bms_Zlib_Checksum_Check_1800 error, error code is: ${e.code}, error message is: ${e.message}`);

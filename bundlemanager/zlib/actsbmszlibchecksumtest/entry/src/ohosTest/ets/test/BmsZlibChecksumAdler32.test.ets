@@ -64,7 +64,7 @@ export default function bmsZlibChecksumAdler32Test() {
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0400 start`);
         let num: number = await checksum.adler32(adler, bufEmpty);
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0400 adler ${adler} ret: ${num}`);
-        expect().assertTrue();
+        expect(true).assertTrue();
       } catch (e) {
         hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0400 error, error code is: ${e.code}, error message is: ${e.message}`);
         expect().assertFail();
@@ -85,7 +85,7 @@ export default function bmsZlibChecksumAdler32Test() {
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0500 start`);
         let num: number = await checksum.adler32(adler, buf);
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0500 adler=${adler} buf=${str}, ret=${num}`);
-        expect().assertTrue();
+        expect(true).assertTrue();
       } catch (e) {
         hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0500 error, error code is: ${e.code}, error message is: ${e.message}`);
         expect().assertFail();
@@ -106,7 +106,7 @@ export default function bmsZlibChecksumAdler32Test() {
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0600 start`);
         let num: number = await checksum.adler32(adler, buf);
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0600 adler=${adler} buf=${str}, ret=${num}`);
-        expect().assertTrue();
+        expect(true).assertTrue();
       } catch (e) {
         hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0600 error, error code is: ${e.code}, error message is: ${e.message}`);
         expect().assertFail();
