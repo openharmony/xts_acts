@@ -19,7 +19,7 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.video.videoplayer/haps/entry/files",
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.video.videoplayer/haps/entry_test/files",
                 "power-shell setmode 602"
             ],
             "teardown-command": [
@@ -30,8 +30,8 @@
             "type": "PushKit",
             "pre-push": [],
             "push": [
-                "./resource/audio/H264_AAC.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.video.videoplayer/haps/entry/files/",
-                "./resource/audio/01.mp3 ->/data/app/el2/100/base/ohos.acts.multimedia.video.videoplayer/haps/entry/files/"
+                "./resource/audio/H264_AAC.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.video.videoplayer/haps/entry_test/files/",
+                "./resource/audio/01.mp3 ->/data/app/el2/100/base/ohos.acts.multimedia.video.videoplayer/haps/entry_test/files/"
             ]
         }
     ]
