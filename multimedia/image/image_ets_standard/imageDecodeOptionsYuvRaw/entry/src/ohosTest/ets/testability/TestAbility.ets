@@ -27,9 +27,6 @@ export default class TestAbility extends UIAbility {
         let pathDir: string = this.context.filesDir;
         AppStorage.setOrCreate<string>('pathDir', pathDir);
         AppStorage.setOrCreate('testContext', this.context);
-        // globalThis.testContext = this.context;
-        // globalThis.filesDir = this.context.filesDir;
-        // hilog.info(0x0000, 'testTag', 'globalThis.filesDir: %{public}s', globalThis.filesDir);
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
         let abilityDelegatorArguments: abilityDelegatorRegistry.AbilityDelegatorArgs;

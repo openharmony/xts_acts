@@ -259,9 +259,6 @@ export default function imageDecodeOptionsYuvTest() {
       })
     }
 
-   // testContext = globalThis.testContext;
-    // filesDir = globalThis.filesDir;
-
     beforeAll(() => {
       filesDir = AppStorage.get('pathDir')
       testContext = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext;
