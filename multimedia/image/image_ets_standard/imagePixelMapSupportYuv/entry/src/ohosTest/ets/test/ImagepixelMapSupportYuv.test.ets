@@ -58,7 +58,7 @@ export default function imagepixelMapSupportYuv() {
         const filePath = AppStorage.get('pathDir') + '/' + fileName
         imageSourceApi = image.createImageSource(filePath)
       }else if(type === "rawfile"){
-        const resourceMgr: resourceManager.ResourceManager = testContext.createModuleContext("entry").resourceManager
+        const resourceMgr: resourceManager.ResourceManager = testContext.createModuleContext("entry_test").resourceManager
         const rawFileDescriptor = await resourceMgr.getRawFd(fileName)
         imageSourceApi = image.createImageSource(rawFileDescriptor)
       }else if(type === "incremental") {
@@ -162,17 +162,16 @@ export default function imagepixelMapSupportYuv() {
     //pixelMap: 需要测试的pixelMap
     //testNum 用例编号
     //type:接口调用方式，包含 promise、callback、sync，默认为sync
-    //writeBuffer/readBuffer 36 = 24(Y:4(height) * 6(width)) + 12(UV:24 * 0.5)
     const testWriteBufferToPixels = async (testNum:string, pixelMap:image.PixelMap, type:string) =>{
 
       let region: image.Region = { x: 0, y: 0, size: { height: 4, width: 6 } };
       await pixelMap.crop(region)
-      const writeBuffer: ArrayBuffer = new ArrayBuffer(36);
+      const writeBuffer: ArrayBuffer = new ArrayBuffer(96);
       let bufferArr: Uint8Array = new Uint8Array(writeBuffer);
       for (let i = 0; i < bufferArr.length; i++) {
         bufferArr[i] = i + 1;
       }
-      let readBuffer = new ArrayBuffer(36)
+      let readBuffer = new ArrayBuffer(96)
       let result = false
       if(type == "promise"){
         await pixelMap.writeBufferToPixels(writeBuffer)
@@ -565,18 +564,7 @@ export default function imagepixelMapSupportYuv() {
         pixelMap.translateSync(translateX, translateY)
       }
       const imageInfo = await pixelMap.getImageInfo()
-      hilog.info(0x0000, '${testNum}', '%{public}s', `${testNum}: ${JSON.stringify(imageInfo)}`)
-      hilog.info(0x0000, '${testNum}', '%{public}s', `${testNum}: ${JSON.stringify(initialImageInfo)}`)
-      if (imageInfo.size.width == initialImageInfo.size.width + translateX &&
-          imageInfo.size.height == initialImageInfo.size.height + translateY &&
-          imageInfo.density == initialImageInfo.density &&
-          imageInfo.pixelFormat == initialImageInfo.pixelFormat &&
-          imageInfo.mimeType == initialImageInfo.mimeType &&
-          imageInfo.isHdr == initialImageInfo.isHdr) {
-        return true;
-      } else {
-        return false;
-      }
+      return JSON.stringify(imageInfo) == JSON.stringify(initialImageInfo) && interfaceResult
     }
 
     //测试pixelMap打包
@@ -2634,7 +2622,7 @@ export default function imagepixelMapSupportYuv() {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_TRANSLATE_0200"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_eto.jpg","fd", true);
-        const checkResult = await testPixelMapTranslate(testTag, pixelMap_NV21, 'callback', 0, 0)
+        const checkResult = await testPixelMapTranslate(testTag, pixelMap_NV21, 'callback', 0.5, 0.5)
         expect(checkResult).assertTrue()
         done()
       }catch(error){
