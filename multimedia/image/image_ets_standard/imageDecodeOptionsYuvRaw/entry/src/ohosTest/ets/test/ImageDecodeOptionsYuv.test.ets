@@ -21,8 +21,8 @@ import resourceManager from '@ohos.resourceManager';
 import common from '@ohos.app.ability.common';
 import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
 
-let filesDir: string | undefined;
 let testContext: common.UIAbilityContext;
+let filesDir: string | undefined;
 
 let sleep = async (delay: number): Promise<void> => {
   return new Promise((resolve, _) => {
@@ -57,7 +57,7 @@ export default function imageDecodeOptionsYuvTest() {
         const filePath = filesDir + '/' + fileName
         imageSourceApi = image.createImageSource(filePath)
       } else if (type === "rawfile") {
-        const resourceMgr: resourceManager.ResourceManager = testContext.createModuleContext("entry").resourceManager
+        const resourceMgr: resourceManager.ResourceManager = testContext.createModuleContext("entry_test").resourceManager
         const rawFileDescriptor = await resourceMgr.getRawFd(fileName)
         imageSourceApi = image.createImageSource(rawFileDescriptor)
       } else if (type === "incremental") {
@@ -258,6 +258,9 @@ export default function imageDecodeOptionsYuvTest() {
         }
       })
     }
+
+   // testContext = globalThis.testContext;
+    // filesDir = globalThis.filesDir;
 
     beforeAll(() => {
       filesDir = AppStorage.get('pathDir')
