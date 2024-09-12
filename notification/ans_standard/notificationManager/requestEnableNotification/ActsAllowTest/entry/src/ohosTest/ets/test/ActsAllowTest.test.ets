@@ -16,7 +16,7 @@
 import notificationManager from '@ohos.notificationManager';
 
 import { Driver, ON } from '@ohos.UiTest';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { logGenerator, succeedGenerator, exitGenerator, sleep, exitSpecialGenerator } from '../common/utils';
 
 import common from '@ohos.app.ability.common';
@@ -57,8 +57,43 @@ export default function ActsAllowTest() {
             exit('null button');
           }
         };
-        return new Promise<void>((resolve, reject) => { fn(resolve, reject); });
+        return new Promise<void>((resolve, reject) => {
+          fn(resolve, reject);
+        });
+      }
+    );
+
+    /*
+    * @tc.number    : Sub_Notification_Ans_OpenNotification_Settings_0004
+    * @tc.name      : 【openNotificationSettings】非系统应用调用openNotificationSettings接口拉起设置页面
+    * @tc.desc      : 非系统应用调用openNotificationSettings接口拉起设置页面
+    */
+    it('Sub_Notification_Ans_OpenNotification_Settings_0004', 0,
+      async (done: () => void) => {
+        let fn = async (resolve: () => void, reject: (arg1: Error) => void): Promise<void> => {
+          let succeed = succeedGenerator(TAG, resolve, done);
+          let exit = exitGenerator(TAG, reject);
+          notificationManager.openNotificationSettings(ctx).then(() => {
+            succeed(`openNotificationSettings succeeded`);
+          }).catch((err: Error) => {
+            exit(`openNotificationSettings err: JSON.stringify(err)`);
+          })
+          await sleep(1500);
+          let driver = Driver.create();
+          await sleep(1500)
+          let button = await driver.findComponent(ON.text('通知管理'));
+          log(`button is ${JSON.stringify(button)}`);
+          if (button !== null) {
+            done()
+          } else {
+            exit('找不到通知管理');
+          }
+        };
+        return new Promise<void>((resolve, reject) => {
+          fn(resolve, reject);
+        });
       }
     );
   });
+
 };
