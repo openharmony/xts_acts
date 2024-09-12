@@ -25,6 +25,7 @@ struct RichEditor11 {
         .onReady(()=>{
           this.controller.addTextSpan('测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试')
         })
+        .height(35)
         .id('RichEditor11_double')
       Button('getSelection')
         .onClick(()=>{
