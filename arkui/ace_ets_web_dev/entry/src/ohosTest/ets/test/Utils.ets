@@ -34,7 +34,7 @@ export default class Utils {
       let callBack = (backData: events_emitter.EventData) => {
         try {
           console.info(`${testCaseName} get result is:` + JSON.stringify(backData));
-          expect(backData.data.ACTION).assertEqual(expectedValue);
+          expect(backData.data?.ACTION).assertEqual(expectedValue);
           console.info(`[${testCaseName}] END`);
         } catch (err) {
           console.info(`[${testCaseName}] err:` + JSON.stringify(err));
@@ -75,8 +75,8 @@ export default class Utils {
       let callBack = (backData: events_emitter.EventData) => {
         try {
           console.info(`${testCaseName} get result is:` + JSON.stringify(backData));
-          expect(backData.data.actualValue).assertLarger(backData.data.expectedValue - 100);
-          expect(backData.data.actualValue).assertLess(backData.data.expectedValue - (-100));
+          expect(backData.data?.actualValue).assertLarger(backData.data?.expectedValue - 100);
+          expect(backData.data?.actualValue).assertLess(backData.data?.expectedValue - (-100));
           console.info(`[${testCaseName}] END`);
         } catch (err) {
           console.info(`[${testCaseName}] err:` + JSON.stringify(err));
@@ -118,7 +118,7 @@ export default class Utils {
       let callBack = (backData: events_emitter.EventData) => {
         try {
           console.info(`${testCaseName} get result is:` + JSON.stringify(backData));
-          expect(backData.data.ACTION).assertContain(expectedValue);
+          expect(backData.data?.ACTION).assertContain(expectedValue);
           console.info(`[${testCaseName}] END`);
         } catch (err) {
           console.info(`[${testCaseName}] err:` + JSON.stringify(err));
@@ -159,7 +159,7 @@ export default class Utils {
       let callBack = (backData: events_emitter.EventData) => {
         try {
           console.info(`${testCaseName} get result is:` + JSON.stringify(backData));
-          expect(backData.data.actualValue).assertLarger(backData.data.expectedValue);
+          expect(backData.data?.actualValue).assertLarger(backData.data?.expectedValue);
           console.info(`[${testCaseName}] END`);
         } catch (err) {
           console.info(`[${testCaseName}] err:` + JSON.stringify(err));
