@@ -27,7 +27,7 @@ struct WebComponent {
   download: webview.WebDownloadItem = new webview.WebDownloadItem();
   failedData: Uint8Array = new Uint8Array();
 
-  build() {
+  build(){
     Column() {
       Button('setDownloadDelegate')
         .key('006')

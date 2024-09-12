@@ -23,7 +23,7 @@ struct WebMessageTest {
   controller: webview.WebviewController = new webview.WebviewController();
   origin: string = "resource://rawfile/";
 
-  build() {
+  build(){
     Column() {
       Button('callBack_false_getOriginQuota')
         .key('callBack_false_getOriginQuota')

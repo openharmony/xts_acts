@@ -26,24 +26,24 @@ struct WebComponent {
   responseWeb: WebResourceResponse = new WebResourceResponse();
   htmlData: string = '<html><body bgcolor="white">Source:<pre>source</pre></body></html>';
 
-  build() {
+  build(){
     Column() {
       Web({ src: URL, controller: this.controller })
         .onControllerAttached(() => {
           try {
             this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest,
               resourceHandler: webview.WebResourceHandler) => {
-              console.log("[schemeHandler] onRequestStart");
+              console.log('[schemeHandler] onRequestStart');
 
               let response = new webview.WebSchemeHandlerResponse();
               try {
                 response.setNetErrorCode(WebNetErrorList.NET_OK);
                 response.setStatus(-12);
-                response.setStatusText("OK");
-                response.setMimeType("text/html");
-                response.setEncoding("utf-8");
-                response.setHeaderByName("header1", "value1", false);
-                console.log("[schemeHandler] onRequestStart", response.getStatus().toString());
+                response.setStatusText('OK');
+                response.setMimeType('text/html');
+                response.setEncoding('utf-8');
+                response.setHeaderByName('header1', 'value1', false);
+                console.log('[schemeHandler] onRequestStart', response.getStatus().toString());
                 LocalContext.context.eventHub.emit('SetStatusTest1', response.getStatus().toString())
               } catch (error) {
               }

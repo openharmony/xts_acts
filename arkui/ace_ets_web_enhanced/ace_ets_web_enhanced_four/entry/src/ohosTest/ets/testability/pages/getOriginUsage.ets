@@ -22,7 +22,7 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   private origin: string | null = 'resource://rawfile/'
 
-  build() {
+  build(){
     Column() {
       Button('callback_origin_error_1')
         .onClick((event: ClickEvent) => {

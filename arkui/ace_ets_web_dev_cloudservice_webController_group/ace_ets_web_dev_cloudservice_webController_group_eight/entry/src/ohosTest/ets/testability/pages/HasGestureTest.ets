@@ -14,6 +14,7 @@
 */
 
 import { webview } from '@kit.ArkWeb';
+import { URL } from '../../test/Config';
 
 @Entry
 @Component
@@ -21,9 +22,9 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
 
-  build() {
+  build(){
     Column() {
-      Web({ src: 'https://www.baidu.com', controller: this.controller })
+      Web({ src: URL, controller: this.controller })
         .onControllerAttached(() => {
           try {
             this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {

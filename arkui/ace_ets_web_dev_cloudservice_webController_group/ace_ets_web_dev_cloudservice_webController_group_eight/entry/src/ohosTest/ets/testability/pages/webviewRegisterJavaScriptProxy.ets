@@ -57,7 +57,7 @@ struct Index {
     }
   }
 
-  build() {
+  build(){
     Column() {
       Button('testWebView_registerJavaScriptProxy_0013')
         .onClick((event: ClickEvent) => {

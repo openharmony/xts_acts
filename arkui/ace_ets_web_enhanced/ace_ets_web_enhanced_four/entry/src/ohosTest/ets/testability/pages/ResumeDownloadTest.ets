@@ -26,9 +26,9 @@ struct WebComponent {
   download: webview.WebDownloadItem = new webview.WebDownloadItem();
   failedData: Uint8Array = new Uint8Array();
 
-  build() {
+  build(){
     Column() {
-      Button('resumeDownload').key("003")
+      Button('resumeDownload').key('003')
         .onClick(() => {
           try {
             webview.WebDownloadManager.resumeDownload(webview.WebDownloadItem.deserialize(this.failedData));

@@ -25,7 +25,7 @@ struct WebComponent {
   realm: string = 'protected example';
   username_password: string[] = [];
 
-  build() {
+  build(){
     Column() {
       Button('getHttpAuthCredentials_host_null')
         .onClick(() => {
@@ -34,7 +34,7 @@ struct WebComponent {
             console.log('num: ' + this.username_password.length);
           } catch (error) {
             console.error(`ErrorCode:` + error.code);
-            Utils.emitEvent(error.code+error.message, 10001)
+            Utils.emitEvent(error.code + error.message, 10001)
           }
         })
         .key('getHttpAuthCredentials_host_null')
@@ -46,7 +46,7 @@ struct WebComponent {
             console.log('num: ' + this.username_password.length);
           } catch (error) {
             console.error(`ErrorCode:` + error.code);
-            Utils.emitEvent(error.code+error.message, 10002)
+            Utils.emitEvent(error.code + error.message, 10002)
           }
         })
         .key('getHttpAuthCredentials_realm_null')

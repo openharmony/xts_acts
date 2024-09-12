@@ -25,7 +25,7 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   @State icon: image.PixelMap | undefined = undefined;
 
-  build() {
+  build(){
     Column() {
       Button('getBackForwardEntries')
         .key('008')

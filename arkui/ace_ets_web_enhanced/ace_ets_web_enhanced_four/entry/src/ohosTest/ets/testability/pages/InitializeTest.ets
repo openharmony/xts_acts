@@ -27,7 +27,7 @@ struct WebComponent {
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
   htmlData: string = '<html><body bgcolor="white">Source:<pre>source</pre></body></html>';
 
-  build() {
+  build(){
     Column() {
       Button('postUrl').key('002')
         .onClick(async () => {

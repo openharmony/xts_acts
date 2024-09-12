@@ -18,7 +18,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from '../../test/Util';
 
 class TestObj {
-  constructor() {
+  constructor(){
   }
 
   test(): string {
@@ -66,7 +66,7 @@ struct WebComponent {
     }
   }
 
-  build() {
+  build(){
     Column() {
       Button('deleteJavaScriptRegister_withRefresh')
         .onClick(() => {

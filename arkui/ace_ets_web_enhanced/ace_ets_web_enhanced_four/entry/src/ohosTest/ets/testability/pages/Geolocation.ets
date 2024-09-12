@@ -22,7 +22,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Geolocation {
   @State str: string = ''
   controller: webview.WebviewController = new webview.WebviewController();
-  @State src : string| Resource = 'www.example.com'
+  @State src: string | Resource = 'www.example.com'
   @State incognitoMode: boolean = true
   origin: string = "file:///";
 
@@ -44,24 +44,24 @@ struct Geolocation {
     }
   }
 
-  build() {
-    Column(){
+  build(){
+    Column() {
       Button('Geolocation')
         .key('Geolocation')
-        .onClick(()=>{
-          switch (this.str){
+        .onClick(() => {
+          switch (this.str) {
             case 'testErrorCodeMessage4100':
               try {
-                webview.GeolocationPermissions.getAccessibleGeolocation(this.origin,(error, origins) => {
+                webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, origins) => {
                   if (error) {
-                    console.log('error code'+error.code)
-                    Utils.emitEvent(error.code+error.message, 300)
+                    console.log('error code' + error.code)
+                    Utils.emitEvent(error.code + error.message, 300)
                     return;
                   }
-                  console.log('success  origin is:'+this.origin)
+                  console.log('success  origin is:' + this.origin)
                 })
               } catch (e) {
-                console.log('err code:'+e.code)
+                console.log('err code:' + e.code)
                 Utils.emitEvent(e.code, 300)
               }
               break;
@@ -70,12 +70,12 @@ struct Geolocation {
                 webview.GeolocationPermissions.getAccessibleGeolocation(null, (error, origins) => {
                   if (error) {
                     console.log('error code' + error.code)
-                    Utils.emitEvent(error.code+error.message, 301)
+                    Utils.emitEvent(error.code + error.message, 301)
                     return;
                   }
                 })
               } catch (e) {
-                console.log('err code:'+e.code)
+                console.log('err code:' + e.code)
                 Utils.emitEvent(e.code, 301)
               }
               break;
@@ -83,12 +83,12 @@ struct Geolocation {
               try {
                 webview.GeolocationPermissions.getAccessibleGeolocation(this.origin).then(result => {
                   console.log('getAccessibleGeolocationPromise result: ' + result);
-                }).catch((e:BusinessError)=>{
+                }).catch((e: BusinessError) => {
                   console.log('error code' + e.code)
-                  Utils.emitEvent(e.code+e.message, 302)
+                  Utils.emitEvent(e.code + e.message, 302)
                 })
               } catch (e) {
-                console.log('err code:'+e.code)
+                console.log('err code:' + e.code)
                 Utils.emitEvent(e.code, 302)
               }
               break;
@@ -96,12 +96,12 @@ struct Geolocation {
               try {
                 webview.GeolocationPermissions.getAccessibleGeolocation(this.origin).then(result => {
                   console.log('getAccessibleGeolocationPromise result: ' + result);
-                }).catch((e:BusinessError)=>{
+                }).catch((e: BusinessError) => {
                   console.log('error code' + e.code)
-                  Utils.emitEvent(e.code+e.message, 303)
+                  Utils.emitEvent(e.code + e.message, 303)
                 })
               } catch (e) {
-                console.log('err code:'+e.code)
+                console.log('err code:' + e.code)
                 Utils.emitEvent(e.code, 303)
               }
               break;
@@ -109,12 +109,12 @@ struct Geolocation {
               try {
                 webview.GeolocationPermissions.getAccessibleGeolocation(null).then(result => {
                   console.log('getAccessibleGeolocationPromise result: ' + result);
-                }).catch((e:BusinessError)=>{
+                }).catch((e: BusinessError) => {
                   console.log('error code' + e.code)
-                  Utils.emitEvent(e.code+e.message, 303)
+                  Utils.emitEvent(e.code + e.message, 303)
                 })
               } catch (e) {
-                console.log('err code:'+e.code)
+                console.log('err code:' + e.code)
                 Utils.emitEvent(e.code, 303)
               }
               break;
@@ -123,16 +123,16 @@ struct Geolocation {
                 webview.GeolocationPermissions.deleteGeolocation('你好');
                 console.log('success deleteGeolocation:')
               } catch (e) {
-                console.log('err code:'+e.code)
-                Utils.emitEvent(e.code+e.message, 304)
+                console.log('err code:' + e.code)
+                Utils.emitEvent(e.code + e.message, 304)
               }
               break;
             case 'testErrorCodeMessage4600':
               try {
                 webview.GeolocationPermissions.deleteGeolocation(null);
               } catch (e) {
-                console.log('err code:'+e.code)
-                Utils.emitEvent(e.code+e.message, 305)
+                console.log('err code:' + e.code)
+                Utils.emitEvent(e.code + e.message, 305)
               }
               break;
             case 'testErrorCodeMessage4700':
@@ -140,16 +140,16 @@ struct Geolocation {
                 webview.GeolocationPermissions.allowGeolocation('openharmony');
                 Utils.emitEvent('true', 306)
               } catch (e) {
-                console.log('err code:'+e.code)
-                Utils.emitEvent(e.code+e.message, 306)
+                console.log('err code:' + e.code)
+                Utils.emitEvent(e.code + e.message, 306)
               }
               break;
             case 'testErrorCodeMessage4800':
               try {
                 webview.GeolocationPermissions.allowGeolocation(null);
               } catch (e) {
-                console.log('err code:'+e.code)
-                Utils.emitEvent(e.code+e.message, 307)
+                console.log('err code:' + e.code)
+                Utils.emitEvent(e.code + e.message, 307)
               }
               break;
             case 'testErrorCodeMessage4900':
@@ -157,12 +157,12 @@ struct Geolocation {
                 webview.GeolocationPermissions.getAccessibleGeolocation(undefined, (error, origins) => {
                   if (error) {
                     console.log('error code' + error.code)
-                    Utils.emitEvent(error.code+error.message, 308)
+                    Utils.emitEvent(error.code + error.message, 308)
                     return;
                   }
                 })
               } catch (e) {
-                console.log('err code:'+e.code)
+                console.log('err code:' + e.code)
                 Utils.emitEvent(e.code, 308)
               }
               break;
@@ -170,12 +170,12 @@ struct Geolocation {
               try {
                 webview.GeolocationPermissions.getAccessibleGeolocation(undefined).then(result => {
                   console.log('getAccessibleGeolocationPromise result: ' + result);
-                }).catch((e:BusinessError)=>{
+                }).catch((e: BusinessError) => {
                   console.log('error code' + e.code)
-                  Utils.emitEvent(e.code+e.message, 309)
+                  Utils.emitEvent(e.code + e.message, 309)
                 })
               } catch (e) {
-                console.log('err code:'+e.code)
+                console.log('err code:' + e.code)
                 Utils.emitEvent(e.code, 309)
               }
               break;
@@ -183,16 +183,16 @@ struct Geolocation {
               try {
                 webview.GeolocationPermissions.deleteGeolocation(undefined);
               } catch (e) {
-                console.log('err code:'+e.code)
-                Utils.emitEvent(e.code+e.message, 310)
+                console.log('err code:' + e.code)
+                Utils.emitEvent(e.code + e.message, 310)
               }
               break;
             case 'testErrorCodeMessage5200':
               try {
                 webview.GeolocationPermissions.allowGeolocation(undefined);
               } catch (e) {
-                console.log('err code:'+e.code)
-                Utils.emitEvent(e.code+e.message, 311)
+                console.log('err code:' + e.code)
+                Utils.emitEvent(e.code + e.message, 311)
               }
               break;
           }

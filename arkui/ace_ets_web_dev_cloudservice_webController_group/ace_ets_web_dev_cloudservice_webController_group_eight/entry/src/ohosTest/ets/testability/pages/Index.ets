@@ -107,7 +107,7 @@ struct Index {
     }
   }
 
-  build() {
+  build(){
     Column() {
       Button('registerScript not Web')
         .key('001')

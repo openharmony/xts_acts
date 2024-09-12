@@ -18,7 +18,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import Utils from '../../test/Util';
 
 class TestObj {
-  test(str: string): ArrayBuffer {
+  test(str:string):ArrayBuffer {
     let buf = new ArrayBuffer(str.length);
     let buff = new Uint8Array(buf);
 
@@ -41,7 +41,7 @@ struct WebMessageExtTest {
   @State method: string = ''
   @State testObjtest: TestObj = new TestObj();
 
-  build() {
+  build(){
     Scroll(this.scroller) {
       Column() {
         Button('SendToH5 setBoolean_1').margin({
@@ -50,7 +50,7 @@ struct WebMessageExtTest {
           .key('setBoolean_null')
           .onClick(() => {
             try {
-              console.log("In ArkTS side send true start");
+              console.log('In ArkTS side send true start');
               if (this.nativePort) {
                 this.message.setType(3);
                 this.message.setBoolean(null);
@@ -68,7 +68,7 @@ struct WebMessageExtTest {
           .key('setBoolean_not_match')
           .onClick(() => {
             try {
-              console.log("In ArkTS side send true start");
+              console.log('In ArkTS side send true start');
               if (this.nativePort) {
                 this.message.setType(2);
                 this.message.setBoolean(true);
@@ -86,7 +86,7 @@ struct WebMessageExtTest {
           .key('setNumber_null')
           .onClick(() => {
             try {
-              console.log("In ArkTS side send true start");
+              console.log('In ArkTS side send true start');
               if (this.nativePort) {
                 this.message.setType(2);
                 this.message.setNumber(null);
@@ -104,7 +104,7 @@ struct WebMessageExtTest {
           .key('setNumber_not_match')
           .onClick(() => {
             try {
-              console.log("In ArkTS side send true start");
+              console.log('In ArkTS side send true start');
               if (this.nativePort) {
                 this.message.setType(1);
                 this.message.setNumber(123);
@@ -122,7 +122,7 @@ struct WebMessageExtTest {
           .key('setString_null')
           .onClick(() => {
             try {
-              console.log("In ArkTS side send true start");
+              console.log('In ArkTS side send true start');
               if (this.nativePort) {
                 this.message.setType(1);
                 this.message.setString(null);
@@ -140,7 +140,7 @@ struct WebMessageExtTest {
           .key('setString_not_match')
           .onClick(() => {
             try {
-              console.log("In ArkTS side send true start");
+              console.log('In ArkTS side send true start');
               if (this.nativePort) {
                 this.message.setType(2);
                 this.message.setString('test');
@@ -158,7 +158,7 @@ struct WebMessageExtTest {
           .key('setType_null')
           .onClick(() => {
             try {
-              console.log("In ArkTS side send true start");
+              console.log('In ArkTS side send true start');
               if (this.nativePort) {
                 this.message.setType(null);
                 this.nativePort.postMessageEventExt(this.message);
@@ -175,7 +175,7 @@ struct WebMessageExtTest {
           .key('setType_not_match')
           .onClick(() => {
             try {
-              console.log("In ArkTS side send true start");
+              console.log('In ArkTS side send true start');
               if (this.nativePort) {
                 this.message.setType(10);
                 this.nativePort.postMessageEventExt(this.message);
@@ -248,15 +248,15 @@ struct WebMessageExtTest {
 
         Web({ src: $rawfile('WebMessageExt.html'), controller: this.controller })
           .onPageEnd(() => {
-            console.log("In ArkTS side message onPageEnd init message channel");
+            console.log('In ArkTS side message onPageEnd init message channel');
             this.ports = this.controller.createWebMessagePorts(true);
-            this.controller.postMessage("init_web_messageport", [this.ports[1]], "*");
+            this.controller.postMessage('init_web_messageport', [this.ports[1]], "*");
             this.nativePort = this.ports[0];
             this.nativePort.onMessageEventExt((result) => {
-              console.log("In ArkTS side got message");
+              console.log('In ArkTS side got message');
               try {
                 let type = result.getType();
-                console.log("In ArkTS side getType:" + type);
+                console.log('In ArkTS side getType:' + type);
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }

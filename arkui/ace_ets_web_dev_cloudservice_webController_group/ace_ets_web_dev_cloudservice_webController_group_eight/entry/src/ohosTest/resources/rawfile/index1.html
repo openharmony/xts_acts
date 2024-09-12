@@ -10,10 +10,10 @@
 </body>
 <script>
     function objTest() {
-      // This function call expects to return "ArkUI Web Component"
-      let str=objName.test("webtest data");
-      document.getElementById("demo").innerHTML=str;
-      return str
+      // This function call expects to return 'ArkUI Web Component'
+      let str=objName.test('webtest data');
+      document.getElementById('demo').innerHTML=str;
+      return str;
     }
 
     function asyncTestBool() {
@@ -22,26 +22,26 @@
 
    function fakeTest() {
     try {
-       objName.fake("webtest+data");
+       objName.fake('webtest+data');
     } catch (error) {
-      return error.toString()
+      return error.toString();
     }
   }
 
     function webTest() {
       let webStr = objTestName.webTest();
-      document.getElementById("webDemo").innerHTML=webStr;
-      return webStr
+      document.getElementById('webDemo').innerHTML=webStr;
+      return webStr;
     }
 
      function asyncTest() {
       objAsyncName.asyncTest();
-      objAsyncName.asyncString("async test data");
+      objAsyncName.asyncString('async test data');
     }
 
      function test() {
-        console.log('Ark WebComponent')
-        return "This value is from index.html"
+        console.log('Ark WebComponent');
+        return 'This value is from index.html';
     }
 </script>
 </html>

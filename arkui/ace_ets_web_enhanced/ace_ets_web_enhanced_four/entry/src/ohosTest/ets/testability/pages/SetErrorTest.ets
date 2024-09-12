@@ -37,19 +37,19 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   ports: webview.WebMessagePort[] = [];
   nativePort: webview.WebMessagePort | null = null;
-  @State msg1: string = "";
-  @State msg2: string = "";
+  @State msg1: string = '';
+  @State msg2: string = '';
   message: webview.WebMessageExt = new webview.WebMessageExt();
   @State testObjtest: TestObj = new TestObj();
 
-  build() {
+  build(){
     Column() {
       Button('SendToH5 setError')
         .key('009')
         .onClick(() => {
-          console.log("In ArkTS side send true start");
+          console.log('In ArkTS side send true start');
           try {
-            throw new ReferenceError("ReferenceError");
+            throw new ReferenceError('ReferenceError');
           } catch (ex) {
             try {
               this.message.setType(6);
@@ -67,9 +67,9 @@ struct WebComponent {
       Button('SendToH5 setError')
         .key('0091')
         .onClick(() => {
-          console.log("In ArkTS side send true start");
+          console.log('In ArkTS side send true start');
           try {
-            throw new ReferenceError("ReferenceError");
+            throw new ReferenceError('ReferenceError');
           } catch (ex) {
             try {
               this.message.setType(6);
@@ -86,48 +86,48 @@ struct WebComponent {
 
       Web({ src: $rawfile('index.html'), controller: this.controller })
         .onPageEnd(() => {
-          console.log("init start");
+          console.log('init start');
           this.ports = this.controller.createWebMessagePorts(true);
-          this.controller.postMessage("init_web_messageport", [this.ports[1]], "*");
+          this.controller.postMessage('init_web_messageport', [this.ports[1]], '*');
           this.nativePort = this.ports[0];
           this.nativePort.onMessageEventExt((result) => {
-            console.log("message");
+            console.log('message');
             try {
               let type = result.getType();
-              console.log("type:" + type);
+              console.log('type:' + type);
               switch (type) {
                 case webview.WebMessageType.STRING: {
-                  this.msg1 = "type:" + typeof (result.getString());
-                  this.msg2 = "getString:" + ((result.getString()));
+                  this.msg1 = 'type:' + typeof (result.getString());
+                  this.msg2 = 'getString:' + ((result.getString()));
                   break;
                 }
                 case webview.WebMessageType.NUMBER: {
-                  this.msg1 = "type:" + typeof (result.getNumber());
-                  this.msg2 = "getNumber:" + ((result.getNumber()));
+                  this.msg1 = 'type:' + typeof (result.getNumber());
+                  this.msg2 = 'getNumber:' + ((result.getNumber()));
                   break;
                 }
                 case webview.WebMessageType.BOOLEAN: {
-                  this.msg1 = "type:" + typeof (result.getBoolean());
-                  this.msg2 = "getBoolean:" + ((result.getBoolean()));
+                  this.msg1 = 'type:' + typeof (result.getBoolean());
+                  this.msg2 = 'getBoolean:' + ((result.getBoolean()));
                   break;
                 }
                 case webview.WebMessageType.ARRAY_BUFFER: {
-                  this.msg1 = "result type:" + typeof (result.getArrayBuffer());
-                  this.msg2 = "result getArrayBuffer byteLength:" + ((result.getArrayBuffer().byteLength));
+                  this.msg1 = 'result type:' + typeof (result.getArrayBuffer());
+                  this.msg2 = 'result getArrayBuffer byteLength:' + ((result.getArrayBuffer().byteLength));
                   break;
                 }
                 case webview.WebMessageType.ARRAY: {
-                  this.msg1 = "type:" + typeof (result.getArray());
-                  this.msg2 = "getArray:" + result.getArray();
+                  this.msg1 = 'type:' + typeof (result.getArray());
+                  this.msg2 = 'getArray:' + result.getArray();
                   break;
                 }
                 case webview.WebMessageType.ERROR: {
-                  this.msg1 = "type:" + typeof (result.getError());
-                  this.msg2 = "getError:" + result.getError();
+                  this.msg1 = 'type:' + typeof (result.getError());
+                  this.msg2 = 'getError:' + result.getError();
                   break;
                 }
                 default: {
-                  this.msg1 = "end, type:" + type;
+                  this.msg1 = 'end, type:' + type;
                   break;
                 }
               }

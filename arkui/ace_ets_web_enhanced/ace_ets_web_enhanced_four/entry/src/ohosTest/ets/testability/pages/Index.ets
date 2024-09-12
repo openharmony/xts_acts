@@ -22,7 +22,7 @@ struct Index {
     console.info('aboutToAppear')
   }
 
-  build() {
+  build(){
     Column() {
       Text(this.message)
     }

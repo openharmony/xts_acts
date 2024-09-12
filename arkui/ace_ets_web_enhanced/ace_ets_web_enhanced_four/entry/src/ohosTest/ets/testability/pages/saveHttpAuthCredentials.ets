@@ -21,17 +21,17 @@ struct WebComponent {
   private header: string = 'www.'
   private body: string = 'example.com'
   controller: webview.WebviewController = new webview.WebviewController();
-  host: string = "www.spincast.org";
-  realm: string = "protected example";
+  host: string = 'www.spincast.org';
+  realm: string = 'protected example';
 
-  build() {
+  build(){
     Column() {
       Button('saveHttpAuthCredentials_host_abnormal_1')
         .onClick(() => {
           try {
-            webview.WebDataBase.saveHttpAuthCredentials(null, this.realm, "Stromgol", "Laroche");
+            webview.WebDataBase.saveHttpAuthCredentials(null, this.realm, 'Stromgol', 'Laroche');
           } catch (error) {
-            Utils.emitEvent(error.code+error.message, 10017)
+            Utils.emitEvent(error.code + error.message, 10017)
             console.error(`ErrorCode:` + error.code);
           }
         })
@@ -40,9 +40,9 @@ struct WebComponent {
       Button('saveHttpAuthCredentials_host_abnormal_2')
         .onClick(() => {
           try {
-            webview.WebDataBase.saveHttpAuthCredentials(undefined, this.realm, "Stromgol", "Laroche");
+            webview.WebDataBase.saveHttpAuthCredentials(undefined, this.realm, 'Stromgol', 'Laroche');
           } catch (error) {
-            Utils.emitEvent(error.code+error.message, 10018)
+            Utils.emitEvent(error.code + error.message, 10018)
             console.error(`ErrorCode:` + error.code);
           }
         })
@@ -51,9 +51,9 @@ struct WebComponent {
       Button('saveHttpAuthCredentials_realm_abnormal_1')
         .onClick(() => {
           try {
-            webview.WebDataBase.saveHttpAuthCredentials(this.host, null, "Stromgol", "Laroche");
+            webview.WebDataBase.saveHttpAuthCredentials(this.host, null, 'Stromgol', 'Laroche');
           } catch (error) {
-            Utils.emitEvent(error.code+error.message, 10019)
+            Utils.emitEvent(error.code + error.message, 10019)
             console.error(`ErrorCode:` + error.code);
           }
         })
@@ -62,9 +62,9 @@ struct WebComponent {
       Button('saveHttpAuthCredentials_realm_abnormal_2')
         .onClick(() => {
           try {
-            webview.WebDataBase.saveHttpAuthCredentials(this.host, undefined, "Stromgol", "Laroche");
+            webview.WebDataBase.saveHttpAuthCredentials(this.host, undefined, 'Stromgol', 'Laroche');
           } catch (error) {
-            Utils.emitEvent(error.code+error.message, 10020)
+            Utils.emitEvent(error.code + error.message, 10020)
             console.error(`ErrorCode:` + error.code);
           }
         })
@@ -73,9 +73,9 @@ struct WebComponent {
       Button('saveHttpAuthCredentials_username_abnormal_1')
         .onClick(() => {
           try {
-            webview.WebDataBase.saveHttpAuthCredentials(this.host, this.realm, null, "Laroche");
+            webview.WebDataBase.saveHttpAuthCredentials(this.host, this.realm, null, 'Laroche');
           } catch (error) {
-            Utils.emitEvent(error.code+error.message, 10021)
+            Utils.emitEvent(error.code + error.message, 10021)
             console.error(`ErrorCode:` + error.code);
           }
         })
@@ -84,9 +84,9 @@ struct WebComponent {
       Button('saveHttpAuthCredentials_username_abnormal_2')
         .onClick(() => {
           try {
-            webview.WebDataBase.saveHttpAuthCredentials(this.host, this.realm, undefined, "Laroche");
+            webview.WebDataBase.saveHttpAuthCredentials(this.host, this.realm, undefined, 'Laroche');
           } catch (error) {
-            Utils.emitEvent(error.code+error.message, 10022)
+            Utils.emitEvent(error.code + error.message, 10022)
             console.error(`ErrorCode:` + error.code);
           }
         })
@@ -95,9 +95,9 @@ struct WebComponent {
       Button('saveHttpAuthCredentials_password_abnormal_1')
         .onClick(() => {
           try {
-            webview.WebDataBase.saveHttpAuthCredentials(this.host, this.realm, "Stromgol", null);
+            webview.WebDataBase.saveHttpAuthCredentials(this.host, this.realm, 'Stromgol', null);
           } catch (error) {
-            Utils.emitEvent(error.code+error.message, 10023)
+            Utils.emitEvent(error.code + error.message, 10023)
             console.error(`ErrorCode:` + error.code);
           }
         })
@@ -106,9 +106,9 @@ struct WebComponent {
       Button('saveHttpAuthCredentials_password_abnormal_2')
         .onClick(() => {
           try {
-            webview.WebDataBase.saveHttpAuthCredentials(this.host, this.realm, "Stromgol", undefined);
+            webview.WebDataBase.saveHttpAuthCredentials(this.host, this.realm, 'Stromgol', undefined);
           } catch (error) {
-            Utils.emitEvent(error.code+error.message, 10024)
+            Utils.emitEvent(error.code + error.message, 10024)
             console.error(`ErrorCode:` + error.code);
           }
         })
