@@ -17,7 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import commonEvent from '@ohos.commonEventManager';
 import { BusinessError, Callback } from '@ohos.base';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { getContext } from '../common/getContext';
+import { getContext } from './common/getContext';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');

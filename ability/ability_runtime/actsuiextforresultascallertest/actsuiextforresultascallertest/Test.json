@@ -9,8 +9,8 @@
         "testcase-timeout": 25000
     },
     "kits": [
-		{
-            
+        {
+
             "test-file-name": [
                 "ActsUIExtForResultAsCallerBackground.hap",
                 "ActsUIExtForResultAsCallerOther.hap",
