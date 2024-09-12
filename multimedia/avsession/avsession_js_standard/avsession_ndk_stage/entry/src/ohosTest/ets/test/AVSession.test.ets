@@ -33,7 +33,7 @@ export default function builderAbilityTest() {
     afterAll(() => {
     })
 
-    it('CreateAVSessionTest', 0, async () => {
+    it('AVSessionNDKCreateAVSessionTest', 0, async () => {
       console.info("test SetPlaybackState ---------------");
       let ret = avSes.runTest('CreateAVSessionTest', [1, '123', '456', '789']);
       expect(ret).assertEqual(0);
@@ -42,28 +42,28 @@ export default function builderAbilityTest() {
       done();
     })
 
-    it('SetPlaybackState', 0, async () => {
+    it('AVSessionNDKSetPlaybackState', 0, async () => {
       console.info("test SetPlaybackState ---------------");
       let ret = avSes.runTest('SetPlaybackState', [1]);
       expect(ret).assertEqual(0);
       done();
     })
 
-    it('SetLoopMode', 0, async () => {
+    it('AVSessionNDKSetLoopMode', 0, async () => {
       console.info("test SetLoopMode ---------------");
       let ret = avSes.runTest('SetLoopMode', [0]);
       expect(ret).assertEqual(0);
       done();
     })
 
-    it('SetPlaybackPosition', 0, async () => {
+    it('AVSessionNDKSetPlaybackPosition', 0, async () => {
       console.info("test SetPlaybackPosition ---------------");
       let ret = avSes.runTest('SetPlaybackPosition', [123, 456]);
       expect(ret).assertEqual(0);
       done();
     })
 
-    it('SetAVMetaData', 0, async () => {
+    it('AVSessionNDKSetAVMetaData', 0, async () => {
       console.info("test SetAVMetaData ---------------");
       let ret = avSes.runTest('SetAVMetaData', ['title', 'artist', 'author', 'album', 'writer',
         'composer', 'mediaImageUri', 'subtitle', 'description', 'lyric', 'assetId', 30, 1, 4000]);
@@ -71,7 +71,7 @@ export default function builderAbilityTest() {
       done();
     })
 
-    it('TestAllPara', 0, async () => {
+    it('AVSessionNDKTestAllPara', 0, async () => {
       console.info("test setBuilderTitle ---------------");
       let ret = avSes.runTest('TestAll', [1, 'sessionTag', 'sessionTag', 'abilityName',
         'title', 'artist', 'author', 'album', 'writer', 'composer', 'mediaImageUri',
