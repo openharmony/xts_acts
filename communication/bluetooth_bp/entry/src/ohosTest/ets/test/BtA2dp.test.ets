@@ -182,6 +182,14 @@ describe('btA2dpTest', () => {
             let CODEC_TYPE_L2HC = bluetooth.CodecType.CODEC_TYPE_L2HC;
             console.info("[bluetooth_js]CODEC_TYPE_L2HC: " + CODEC_TYPE_L2HC);
             expect(CODEC_TYPE_L2HC).assertEqual(2);
+
+            let CODEC_TYPE_L2HCST = bluetooth.CodecType.CODEC_TYPE_L2HCST;
+            console.info("[bluetooth_js]CODEC_TYPE_L2HCST: " + CODEC_TYPE_L2HCST);
+            expect(CODEC_TYPE_L2HCST).assertEqual(3);
+
+            let CODEC_TYPE_LDAC = bluetooth.CodecType.CODEC_TYPE_LDAC;
+            console.info("[bluetooth_js]CODEC_TYPE_LDAC: " + CODEC_TYPE_LDAC);
+            expect(CODEC_TYPE_LDAC).assertEqual(4);
         } catch (err) {
             console.info("bluetooth a2dp CodecType errCode:" + err.code + ",bluetooth a2dp CodecType errMessage:" + err.message);
             expect().assertFail();
