@@ -220,8 +220,8 @@ function createCameraInput() {
   cameraObj.cameraInputOpen();
 }
 
-function getSupportedSceneModes() {
-  let supportedSceneModes = cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
+function getSupportedSceneModes(index: number) {
+  let supportedSceneModes = cameraObj.oHCameraManagerGetSupportedSceneModes(index);
   if (supportedSceneModes.errorCode != 0) {
     console.error(TAG + "getSupportedSceneModes FAILED");
     expect().assertFail();
@@ -373,12 +373,20 @@ function captureSessionstart() {
   createCaptureSession();
   getSupportedCamerasInstance();
   getSupportedCameraOutputCapability();
-  getSupportedSceneModes();
+  getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
   setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
   setSessionMode();
   createPreviewOutput();
   createCameraInput();
   sessionFlow();
+}
+
+function nativeBufferColorSpace() {
+  let ret = cameraObj.oHNativeBufferColorSpace();
+  console.info(TAG + "oHNativeBufferColorSpace.colorSpaceSupportSize: " + ret.colorSpaceSupportSize);
+  console.info(TAG + "oHNativeBufferColorSpace.colorSpacesSize: " + ret.colorSpacesSize);
+  console.info(TAG + "oHNativeBufferColorSpace.setcolorSpace: " + ret.setcolorSpace);
+  return ret;
 }
 
 function createPreviewOutput() {
@@ -498,6 +506,10 @@ function sessionStart() {
   }
 }
 
+function readyCreatePhotoOutputWithoutSurface() {
+  let ret = cameraObj.readyCreatePhotoOutputWithoutSurface();
+}
+
 export default function PhotoTest() {
   describe('PhotoTest', () => {
     beforeAll(async () => {
@@ -510,7 +522,7 @@ export default function PhotoTest() {
       createCaptureSession();
       getSupportedCamerasInstance();
       getSupportedCameraOutputCapability();
-      getSupportedSceneModes();
+      getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
       setSessionMode();
     })
@@ -528,6 +540,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHCameraManagerCreatePhotoOutputWithoutSurface0100', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -545,6 +558,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHCameraManagerCreatePhotoOutputWithoutSurface0200', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -562,6 +576,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHCameraManagerCreatePhotoOutputWithoutSurface0300', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -579,6 +594,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHCameraManagerCreatePhotoOutputWithoutSurface0400', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -595,6 +611,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputRegisterPhotoAvailableCallback0100', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -613,6 +630,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputRegisterPhotoAvailableCallback0200', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -631,6 +649,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputRegisterPhotoAvailableCallback0300', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -648,6 +667,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputUnregisterPhotoAvailableCallback0100', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -667,6 +687,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputUnregisterPhotoAvailableCallback0200', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -686,6 +707,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputUnregisterPhotoAvailableCallback0300', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -704,6 +726,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputRegisterPhotoAssetAvailableCallback0100', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -722,6 +745,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputRegisterPhotoAssetAvailableCallback0200', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -740,6 +764,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputRegisterPhotoAssetAvailableCallback0300', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -757,6 +782,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputUnregisterPhotoAssetAvailableCallback0100', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -776,6 +802,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputUnregisterPhotoAssetAvailableCallback0200', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -795,6 +822,7 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputUnregisterPhotoAssetAvailableCallback0300', 0, () => {
+      readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -2295,12 +2323,16 @@ export default function PhotoTest() {
      */
     it('testOHCaptureSessionSetActiveColorSpace0500', 0, () => {
       captureSessionstart();
-      if (getSupportedColorSpaces() != 0) {
-        let ret = cameraObj.oHCaptureSessionSetActiveColorSpace(COLOR_SPACE_NOT_SUPPORTED);
-        console.info(TAG+"testOHCaptureSessionSetActiveColorSpace0500:"+ret);
-        expect(ret).assertEqual(CAMERA_SESSION_NOT_CONFIG);
+      if (nativeBufferColorSpace().colorSpacesSize != 0) {
+        if (nativeBufferColorSpace().colorSpaceSupportSize == 0) {
+          let ret = cameraObj.oHCaptureSessionSetActiveColorSpace(COLOR_SPACE_NOT_SUPPORTED);
+          console.info(TAG+"testOHCaptureSessionSetActiveColorSpace0500:"+ret);
+          expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+        } else {
+          console.info(TAG+"ColorSpace all supported!" + nativeBufferColorSpace().colorSpaceSupportSize);
+        }
       } else {
-        console.error(TAG+"GetSupportedColorSpaces not supported!");
+        console.info(TAG+"ColorSpace not supported!");
       }
     })
   })
