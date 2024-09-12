@@ -17,22 +17,22 @@ import events_emitter from '@ohos.events.emitter';
 class MyDataSource implements IDataSource {
   private list: string[] = []
 
-  constructor(list: string[]) {
+  constructor(list: string[]){
     this.list = list
   }
 
-  totalCount(): number {
+  totalCount():number{
     return this.list.length
   }
 
-  getData(index: number): string {
+  getData(index: number):string{
     return this.list[index]
   }
 
-  registerDataChangeListener(listener: DataChangeListener): void {
+  registerDataChangeListener(listener: DataChangeListener):void{
   }
 
-  unregisterDataChangeListener() {
+  unregisterDataChangeListener(){
   }
 }
 
