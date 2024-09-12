@@ -33,7 +33,15 @@ export default function builderAbilityTest() {
     afterAll(() => {
     })
 
-    it('AVSessionNDKCreateAVSessionTest', 0, async () => {
+    /**
+    * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_OHAVPLAYERPREPARE_0100
+    * @tc.name       : testOhAvPlayerPrepare001
+    * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('SUB_MULTIMEIDA_AVSESSION_NDK_CREAT_0100', 2, async (done: Function) => {
       console.info("test SetPlaybackState ---------------");
       let ret = avSes.runTest('CreateAVSessionTest', [1, '123', '456', '789']);
       expect(ret).assertEqual(0);
