@@ -34,10 +34,9 @@ export default function builderAbilityTest() {
     })
 
     /**
-    * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_OHAVPLAYERPREPARE_0100
-    * @tc.name       : testOhAvPlayerPrepare001
-    * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
-    * @tc.size       : MediumTest
+    * @tc.number     : SUB_MULTIMEIDA_AVSESSION_NDK_CREAT_0100
+    * @tc.name       : CreateAVSessionTest001
+    * @tc.desc       : Create NDKAVSession.
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
@@ -50,28 +49,56 @@ export default function builderAbilityTest() {
       done();
     })
 
-    it('AVSessionNDKSetPlaybackState', 0, async () => {
+    /**
+    * @tc.number     : SUB_MULTIMEIDA_AVSESSION_NDK_SETPLAYBACKSTAGE_0100
+    * @tc.name       : SetPlaybackState001
+    * @tc.desc       : NDKAVSession SetPlaybackState.
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('SUB_MULTIMEIDA_AVSESSION_NDK_SETPLAYBACKSTAGE_0100', 2, async (done: Function) => {
       console.info("test SetPlaybackState ---------------");
       let ret = avSes.runTest('SetPlaybackState', [1]);
       expect(ret).assertEqual(0);
       done();
     })
 
-    it('AVSessionNDKSetLoopMode', 0, async () => {
+    /**
+    * @tc.number     : SUB_MULTIMEIDA_AVSESSION_NDK_SETLOOPMODE_0100
+    * @tc.name       : SetLoopMode
+    * @tc.desc       : NDKAVSession SetLoopMode.
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('SUB_MULTIMEIDA_AVSESSION_NDK_SETLOOPMODE_0100', 2, async (done: Function) => {
       console.info("test SetLoopMode ---------------");
       let ret = avSes.runTest('SetLoopMode', [0]);
       expect(ret).assertEqual(0);
       done();
     })
 
-    it('AVSessionNDKSetPlaybackPosition', 0, async () => {
+    /**
+    * @tc.number     : SUB_MULTIMEIDA_AVSESSION_NDK_SETPLAYBACKPOSITION_0100
+    * @tc.name       : SetPlaybackPosition
+    * @tc.desc       : NDKAVSession SetPlaybackPosition.
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('SUB_MULTIMEIDA_AVSESSION_NDK_SETPLAYBACKPOSITION_0100', 2, async (done: Function) => {
       console.info("test SetPlaybackPosition ---------------");
       let ret = avSes.runTest('SetPlaybackPosition', [123, 456]);
       expect(ret).assertEqual(0);
       done();
     })
 
-    it('AVSessionNDKSetAVMetaData', 0, async () => {
+    /**
+    * @tc.number     : SUB_MULTIMEIDA_AVSESSION_NDK_SETAVMETADATA_0100
+    * @tc.name       : SetAVMetaData
+    * @tc.desc       : NDKAVSession SetAVMetaData.
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('SUB_MULTIMEIDA_AVSESSION_NDK_SETAVMETADATA_0100', 0, async (done: Function) => {
       console.info("test SetAVMetaData ---------------");
       let ret = avSes.runTest('SetAVMetaData', ['title', 'artist', 'author', 'album', 'writer',
         'composer', 'mediaImageUri', 'subtitle', 'description', 'lyric', 'assetId', 30, 1, 4000]);
@@ -79,7 +106,14 @@ export default function builderAbilityTest() {
       done();
     })
 
-    it('AVSessionNDKTestAllPara', 0, async () => {
+    /**
+    * @tc.number     : SUB_MULTIMEIDA_AVSESSION_NDK_TestAllPara_0100
+    * @tc.name       : setBuilderTitle
+    * @tc.desc       : NDKAVSession setBuilderTitle.
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('SUB_MULTIMEIDA_AVSESSION_NDK_TESTAllPARA_0100', 0, async (done: Function) => {
       console.info("test setBuilderTitle ---------------");
       let ret = avSes.runTest('TestAll', [1, 'sessionTag', 'sessionTag', 'abilityName',
         'title', 'artist', 'author', 'album', 'writer', 'composer', 'mediaImageUri',
