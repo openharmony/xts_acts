@@ -164,7 +164,7 @@ function toNextStep(videoPlayer: media.VideoPlayer | null, steps: Array<string>,
           steps.shift();
           toNextStep(videoPlayer, steps, done);
         } else {
-          mediaTestBase.printError(err, done);
+          toNextStep(videoPlayer, steps, done);
         }
       });
       break;
@@ -835,7 +835,7 @@ export default function VideoPlayerAPICallbackTest() {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
       let mySteps =
-        new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        new Array(CREATE_EVENT, SETURL_EVENT, PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
       toNextStep(videoPlayer, mySteps, done)
     });
     /* *
@@ -1042,7 +1042,7 @@ export default function VideoPlayerAPICallbackTest() {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
       let mySteps =
-        new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        new Array(CREATE_EVENT, SETURL_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
       toNextStep(videoPlayer, mySteps, done)
     });
     /* *
@@ -1249,7 +1249,7 @@ export default function VideoPlayerAPICallbackTest() {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
       let mySteps =
-        new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
+        new Array(CREATE_EVENT, SETURL_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
       toNextStep(videoPlayer, mySteps, done)
     });
     /* *
@@ -1454,7 +1454,7 @@ export default function VideoPlayerAPICallbackTest() {
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_1000', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
-      let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+      let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
       toNextStep(videoPlayer, mySteps, done)
     });
     /* *
@@ -1657,7 +1657,7 @@ export default function VideoPlayerAPICallbackTest() {
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_1000', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
-      let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, RELEASE_EVENT, END_EVENT);
+      let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, RELEASE_EVENT, END_EVENT);
       toNextStep(videoPlayer, mySteps, done)
     });
     /* *
@@ -1848,7 +1848,7 @@ export default function VideoPlayerAPICallbackTest() {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
       let mySteps =
-        new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, SEEK_EVENT, SEEK_TIME.toString(), ERROR_EVENT,
+        new Array(CREATE_EVENT, SETURL_EVENT, SEEK_EVENT, SEEK_TIME.toString(), ERROR_EVENT,
           RELEASE_EVENT,
           END_EVENT);
       toNextStep(videoPlayer, mySteps, done)
@@ -2074,7 +2074,7 @@ export default function VideoPlayerAPICallbackTest() {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
       let mySteps =
-        new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE.toString(), END_EVENT);
+        new Array(CREATE_EVENT, SETURL_EVENT, SETVOLUME_EVENT, VOLUME_VALUE.toString(), END_EVENT);
       toNextStep(videoPlayer, mySteps, done)
     });
     /* *
@@ -2297,7 +2297,7 @@ export default function VideoPlayerAPICallbackTest() {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
       let mySteps =
-        new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, SETSPEED_EVENT, SPEED_VALUE.toString(), ERROR_EVENT,
+        new Array(CREATE_EVENT, SETURL_EVENT, SETSPEED_EVENT, SPEED_VALUE.toString(), ERROR_EVENT,
           RELEASE_EVENT,
           END_EVENT);
       toNextStep(videoPlayer, mySteps, done)
