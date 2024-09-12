@@ -13,28 +13,21 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("demo_ndk_main") {
+ohos_app_assist_suite("avsession_demo_ndk_main") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsDemoMainTest"
+  hap_name = "ActsAVSessionDemoMainTest"
 
-  # 部件名称，真实数据，需要子系统对应
   part_name = "av_session"
-
-  # 子系统名称，真实数据，需要部件对应
   subsystem_name = "multimedia"
 }
 
-ohos_js_app_suite("demo_ndk_ohosTest") {
+ohos_js_app_suite("avsession_demo_ndk_ohosTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsDemoNdkStageTest"
-
-  # 部件名称，真实数据，需要子系统对应
+  hap_name = "ActsAVSessionDemoNdkStageTest"
   part_name = "av_session"
-
-  # 子系统名称，真实数据，需要部件对应
   subsystem_name = "multimedia"
-  deps = [ ":demo_ndk_main" ]
+  deps = [ ":avsession_demo_ndk_main" ]
 }
