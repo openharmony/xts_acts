@@ -11,11 +11,13 @@
   "module": {
     "package": "ohos.acts.communication.nfc.nfcdevice",
     "name": ".entry_test",
-    "mainAbility": ".MainAbility",
+    "mainAbility": ".TestAbility",
     "deviceType": [
       "tablet",
       "default",
-      "phone"
+      "phone",
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
