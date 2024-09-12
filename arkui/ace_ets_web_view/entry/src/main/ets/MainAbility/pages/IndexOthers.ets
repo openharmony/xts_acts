@@ -20,7 +20,7 @@ import Utils from '../../test/Util';
 class testOfflineResource {
   urlList: string[] | null;
   resource: Uint8Array | null;
-  responseHeaders: testWebHeader[] | null;
+  responseHeaders: TestWebHeader[] | null;
   type: webview.OfflineResourceType | null;
 
   constructor(urlList: string[] | null, resource: Uint8Array | null, responseHeaders: webview.WebHeader[] | null,
@@ -32,9 +32,9 @@ class testOfflineResource {
   }
 }
 
-class testWebHeader{
-  headerKey: string | null | undefined;
-  headerValue: string | null | undefined;
+class TestWebHeader {
+  public headerKey: string | null | undefined;
+  public headerValue: string | null | undefined;
 
   constructor(headerKey: string | null | undefined, headerValue: | null | undefined){
     this.headerKey = headerKey;
@@ -273,7 +273,7 @@ struct Index {
   }
 }
 
-async function readRawFile(url: string) {
+async function readRawFile(url: string){
   try {
     return await getContext().resourceManager.getRawFileContent(url);
   } catch (err) {

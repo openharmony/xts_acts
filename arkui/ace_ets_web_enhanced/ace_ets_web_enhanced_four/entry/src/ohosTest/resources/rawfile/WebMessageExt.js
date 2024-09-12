@@ -40,7 +40,7 @@ window.addEventListener('message', function (event) {
                     } else if (result instanceof Error) {
                         console.log('In html error message, err:' + (result));
                         console.log('In html error message, typeof err:' + typeof (result));
-                        document.getElementById("msg2").innerHTML = 'Error:' + result.name + ', msg:' + result.message;
+                        document.getElementById('msg2').innerHTML = 'Error:' + result.name + ', msg:' + result.message;
                     } else if (result instanceof Array) {
                         console.log('In html got message, Array');
                         console.log('In html got message, Array length:' + result.length);
