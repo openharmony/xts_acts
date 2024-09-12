@@ -25,29 +25,12 @@ export default function builderAbilityTest() {
 
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
-      // Presets an action, which is performed only once before all test cases of the test suite start.
-      // This API supports only one parameter: preset action function.
-      // 在测试套件开始之前创建 builder
-      // builder = avmetadata_builder.createAVMetadataBuilder();
-      // console.log("Builder type:", typeof builder);
-      // console.log("Builder :", builder);
-      // expect(builder).toBeInstanceOf('object');
     })
     beforeEach(() => {
-      // Presets an action, which is performed before each unit test case starts.
-      // The number of execution times is the same as the number of test cases defined by **it**.
-      // This API supports only one parameter: preset action function.
     })
     afterEach(() => {
-      // Presets a clear action, which is performed after each unit test case ends.
-      // The number of execution times is the same as the number of test cases defined by **it**.
-      // This API supports only one parameter: clear action function.
     })
     afterAll(() => {
-      // Presets a clear action, which is performed after all test cases of the test suite end.
-      // This API supports only one parameter: clear action function.
-      // 在测试套件结束之后销毁 builder
-      // avmetadata_builder.destroyAVMetadataBuilder(builder);
     })
 
     it('CreateAVSessionTest', 0, async () => {
@@ -56,25 +39,28 @@ export default function builderAbilityTest() {
       expect(ret).assertEqual(0);
       ret = avSes.runTest('CreateAVSessionTest', [3, '1xxx', 'xxxx', 'xxx']);
       expect(ret).assertEqual(0);
+      done();
     })
 
     it('SetPlaybackState', 0, async () => {
       console.info("test SetPlaybackState ---------------");
       let ret = avSes.runTest('SetPlaybackState', [1]);
       expect(ret).assertEqual(0);
-      // 继续添加测试
+      done();
     })
 
     it('SetLoopMode', 0, async () => {
       console.info("test SetLoopMode ---------------");
       let ret = avSes.runTest('SetLoopMode', [0]);
       expect(ret).assertEqual(0);
+      done();
     })
 
     it('SetPlaybackPosition', 0, async () => {
       console.info("test SetPlaybackPosition ---------------");
       let ret = avSes.runTest('SetPlaybackPosition', [123, 456]);
       expect(ret).assertEqual(0);
+      done();
     })
 
     it('SetAVMetaData', 0, async () => {
@@ -82,6 +68,7 @@ export default function builderAbilityTest() {
       let ret = avSes.runTest('SetAVMetaData', ['title', 'artist', 'author', 'album', 'writer',
         'composer', 'mediaImageUri', 'subtitle', 'description', 'lyric', 'assetId', 30, 1, 4000]);
       expect(ret).assertEqual(0);
+      done();
     })
 
     it('TestAllPara', 0, async () => {
@@ -91,6 +78,7 @@ export default function builderAbilityTest() {
         'subtitle', 'description', 'lyric', 'assetId',
         30, 1, 1, 1, true, 1, 1, 2]);
       expect(ret).assertEqual(0);
+      done();
     })
   })
 }
