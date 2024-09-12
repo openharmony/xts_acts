@@ -15,7 +15,7 @@
 		"name":".entry_test",
 		"mainAbility":".TestAbility",
 		"deviceType":[
-			"wearable",
+      "wearable",
 			"tablet",
 			"default",
 			"phone"
