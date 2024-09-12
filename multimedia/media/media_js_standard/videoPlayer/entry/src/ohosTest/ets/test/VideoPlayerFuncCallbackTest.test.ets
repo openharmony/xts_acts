@@ -52,6 +52,8 @@ const DELTA_SEEK_TIME = 300;
 let surfaceID = '';
 let fdHead = 'fd://';
 let fileDescriptor: media.AVFileDescriptor | undefined | null = null;
+const pagePath1 = 'testability/pages/Surface';
+let pageId = 0;
 let fdPath = '';
 let fdNumber = 0;
 let mediaTestBase = new MediaTestBase()
@@ -175,7 +177,7 @@ async function toNextStep(videoPlayer: media.VideoPlayer | null, steps: Array<st
           steps.shift();
           toNextStep(videoPlayer, steps, done);
         } else {
-          toNextStep(videoPlayer, steps, done);
+          mediaTestBase.printError(err, done);
         }
       })
       break;
@@ -230,11 +232,11 @@ async function toNextStep(videoPlayer: media.VideoPlayer | null, steps: Array<st
       if (videoPlayer) {
         tmpStartTime = videoPlayer.currentTime;
       }
-      videoPlayer?.play((err) => {
+      videoPlayer?.play(async (err) => {
         if (err == null && videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           console.info('case play success!!');
-          mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleep(PLAY_TIME);
           let endTime = videoPlayer.currentTime;
           expect(Math.abs(endTime - tmpStartTime - PLAY_TIME)).assertLess(DELTA_TIME);
           toNextStep(videoPlayer, steps, done);
@@ -321,9 +323,8 @@ async function toNextStep(videoPlayer: media.VideoPlayer | null, steps: Array<st
           if (tmpSeekTime > DURATION_TIME) {
             tmpSeekTime = DURATION_TIME;
           }
-          let currentTime = videoPlayer.currentTime;
-          console.info('case seek success and seekDoneTime is ' + seekDoneTime + ' and currentTime is ' + currentTime);
-          expect(Math.abs(currentTime - tmpSeekTime)).assertLessOrEqual(DELTA_TIME)
+          checkSeekTime(videoPlayer, tmpSeekMode, tmpSeekTime, seekDoneTime);
+          console.info('case seek success and seekDoneTime is ' + seekDoneTime);
           toNextStep(videoPlayer, steps, done);
         } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
           steps.shift();
@@ -343,9 +344,8 @@ async function toNextStep(videoPlayer: media.VideoPlayer | null, steps: Array<st
           if (tmpSeekTime > DURATION_TIME) {
             tmpSeekTime = DURATION_TIME;
           }
-          let currentTime = videoPlayer.currentTime;
-          console.info('case seek success and seekDoneTime is ' + seekDoneTime + ' and currentTime is ' + currentTime);
-          expect(Math.abs(currentTime - tmpSeekTime)).assertLessOrEqual(DELTA_TIME)
+          checkSeekTime(videoPlayer, media.SeekMode.SEEK_PREV_SYNC, tmpSeekTime, seekDoneTime);
+          console.info('case seek success and seekDoneTime is ' + seekDoneTime);
           toNextStep(videoPlayer, steps, done);
         } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
           steps.shift();
@@ -381,9 +381,9 @@ async function toNextStep(videoPlayer: media.VideoPlayer | null, steps: Array<st
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
       }
-      videoPlayer?.setSpeed(speedValue, (err, speedMode) => {
+      videoPlayer?.setSpeed(speedValue, async (err, speedMode) => {
         if (err == null && videoPlayer) {
-          mediaTestBase.msleep(PLAY_TIME_1S);
+          await mediaTestBase.msleep(PLAY_TIME_1S);
           expect(speedValue).assertEqual(speedMode);
           console.info('case setSpeed success and speedMode is ' + speedMode);
           checkSpeedTime(videoPlayer, speedValue, startTime);
@@ -428,6 +428,7 @@ async function toNextStep(videoPlayer: media.VideoPlayer | null, steps: Array<st
       } else {
         console.log('videoPlayer is null')
       }
+
       steps.shift();
       toNextStep(videoPlayer, steps, done);
       break;
@@ -469,12 +470,15 @@ export default function VideoPlayerFuncCallbackTest() {
       await mediaTestBase.getFdRead(VIDEO_SOURCE, openFileFailed).then((testNumber) => {
         fdNumber = testNumber;
         fdPath = fdHead + '' + fdNumber;
-        fileDescriptor = {
-          fd: fdNumber
-        }
       });
+      await mediaTestBase.toNewPage(pagePath1, pagePath1, pageId);
+      pageId = (pageId + 1) % 2;
     });
     beforeEach(async () => {
+
+      fileDescriptor = {
+        fd: fdNumber
+      }
       await mediaTestBase.msleepAsync(PLAY_TIME_1S).then(() => {
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       surfaceID = globalThis.value;
@@ -482,10 +486,11 @@ export default function VideoPlayerFuncCallbackTest() {
       console.info('beforeEach case');
     });
     afterEach(async () => {
-      await mediaTestBase.clearRouter();
+
       console.info('afterEach case');
     });
     afterAll(async () => {
+      await mediaTestBase.clearRouter();
       await mediaTestBase.closeFdNumber(fdNumber);
       console.info('afterAll case');
     });
@@ -515,7 +520,7 @@ export default function VideoPlayerFuncCallbackTest() {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
       let mySteps =
-        new Array(CREATE_EVENT, SETSOURCE_EVENT, fdPath, PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT,
+        new Array(CREATE_EVENT, SETSOURCE_EVENT, fdPath, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT,
           '0', SETVOLUME_EVENT, '0.5', SETVOLUME_EVENT, '1', RELEASE_EVENT, END_EVENT);
       toNextStep(videoPlayer, mySteps, done)
     });
@@ -531,7 +536,7 @@ export default function VideoPlayerFuncCallbackTest() {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
       let mySteps =
-        new Array(CREATE_EVENT, SETFDSOURCE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        new Array(CREATE_EVENT, SETFDSOURCE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
           SETSPEED_EVENT, media.PlaybackSpeed.SPEED_FORWARD_0_75_X.toString(), SETSPEED_EVENT,
           media.PlaybackSpeed.SPEED_FORWARD_1_00_X.toString(), SETSPEED_EVENT,
           media.PlaybackSpeed.SPEED_FORWARD_1_25_X.toString(),
@@ -551,7 +556,7 @@ export default function VideoPlayerFuncCallbackTest() {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
       let mySteps =
-        new Array(CREATE_EVENT, SETFDSOURCE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        new Array(CREATE_EVENT, SETFDSOURCE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
           SEEK_MODE_EVENT, SEEK_TIME.toString(), media.SeekMode.SEEK_NEXT_SYNC.toString(), SEEK_MODE_EVENT,
           SEEK_TIME.toString(),
           media.SeekMode.SEEK_PREV_SYNC.toString(), RELEASE_EVENT, END_EVENT);
@@ -573,7 +578,7 @@ export default function VideoPlayerFuncCallbackTest() {
       let widthValue = -1;
       let heightValue = -1;
       let videoPlayer: media.VideoPlayer = await media.createVideoPlayer();
-      mediaTestBase.msleep(sleepTime);
+      await mediaTestBase.msleep(sleepTime);
       expect(videoPlayer.state).assertEqual('idle');
       console.info('case createVideoPlayer success!!');
 
@@ -606,10 +611,18 @@ export default function VideoPlayerFuncCallbackTest() {
         widthValue = width;
         heightValue = height;
       });
-      mediaTestBase.msleep(sleepTime)
+      await mediaTestBase.msleep(sleepTime)
 
       videoPlayer.url = fdPath;
-      mediaTestBase.msleep(sleepTime);
+      videoPlayer.setDisplaySurface(surfaceID, (err) => {
+        if (err == null) {
+          expect(videoPlayer.state).assertEqual('idle');
+          console.info('case setDisplaySurface success!!');
+        } else {
+          mediaTestBase.printError(err, done);
+        }
+      });
+      await mediaTestBase.msleep(sleepTime);
       videoPlayer.prepare((err) => {
         if (err == null) {
           expect(videoPlayer.state).assertEqual('prepared');
@@ -621,7 +634,7 @@ export default function VideoPlayerFuncCallbackTest() {
           mediaTestBase.printError(err, done);
         }
       });
-      mediaTestBase.msleep(sleepTime);
+      await mediaTestBase.msleep(sleepTime);
       videoPlayer.play((err) => {
         if (err == null) {
           expect(videoPlayer.state).assertEqual('playing');
@@ -645,7 +658,7 @@ export default function VideoPlayerFuncCallbackTest() {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
       let mySteps =
-        new Array(CREATE_EVENT, SETFDSOURCE_EVENT, PREPARE_EVENT, GETDESCRIPTION,
+        new Array(CREATE_EVENT, SETFDSOURCE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, GETDESCRIPTION,
           RELEASE_EVENT, END_EVENT);
       toNextStep(videoPlayer, mySteps, done)
     });
@@ -661,7 +674,7 @@ export default function VideoPlayerFuncCallbackTest() {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
       let mySteps =
-        new Array(CREATE_EVENT, SETFDSOURCE_EVENT, PREPARE_EVENT, SETLOOP_EVENT, 'true',
+        new Array(CREATE_EVENT, SETFDSOURCE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, SETLOOP_EVENT, 'true',
           PLAY_EVENT, SEEK_EVENT, DURATION_TIME.toString(), WAIT_EVENT, SEEK_EVENT, DURATION_TIME.toString(),
           WAIT_EVENT, SEEK_EVENT,
           DURATION_TIME.toString(), WAIT_EVENT, SEEK_EVENT, DURATION_TIME.toString(), WAIT_EVENT, SETLOOP_EVENT,
@@ -681,7 +694,7 @@ export default function VideoPlayerFuncCallbackTest() {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let videoPlayer = null;
       let mySteps =
-        new Array(CREATE_EVENT, SETFDSOURCE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        new Array(CREATE_EVENT, SETFDSOURCE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
           PAUSE_EVENT, PLAY_EVENT, STOP_EVENT, RESET_EVENT, SETSOURCE_EVENT, fdPath, PREPARE_EVENT, SETLOOP_EVENT,
           'true',
           PLAY_EVENT, SEEK_EVENT, (DURATION_TIME / 2).toString(), SEEK_EVENT, '0', SEEK_EVENT, DURATION_TIME.toString(),

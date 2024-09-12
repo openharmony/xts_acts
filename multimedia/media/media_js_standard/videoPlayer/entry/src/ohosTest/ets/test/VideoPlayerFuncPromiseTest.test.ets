@@ -31,14 +31,14 @@ const DELTA_TIME = 1500;
 const NEXT_FRAME_TIME = 8333;
 const PREV_FRAME_TIME = 4166;
 const DELTA_SEEK_TIME = 300;
-const SLEEP_TIME = 200
 let surfaceID = '';
 let fdHead = 'fd://';
 let fileDescriptor: media.AVFileDescriptor | undefined | null = null;
+const pagePath1 = 'testability/pages/Surface';
+let pageId = 0;
 let fdPath = '';
 let fdNumber = 0;
 let mediaTestBase = new MediaTestBase()
-let videoPlayer: media.VideoPlayer | undefined;
 
 function openFileFailed() {
   console.info('case file fail');
@@ -92,21 +92,21 @@ export default function VideoPlayerFuncPromiseTest() {
           fd: fdNumber
         }
       });
+      await mediaTestBase.toNewPage(pagePath1, pagePath1, pageId);
+      pageId = (pageId + 1) % 2;
     });
     beforeEach(async () => {
       await mediaTestBase.msleepAsync(PLAY_TIME_1S).then(() => {
-      });
-      videoPlayer = undefined
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       surfaceID = globalThis.value;
       console.info('case new surfaceID is ' + surfaceID);
       console.info('beforeEach case');
     });
     afterEach(async () => {
-      await mediaTestBase.clearRouter();
-      videoPlayer?.release()
       console.info('afterEach case');
     });
     afterAll(async () => {
+      await mediaTestBase.clearRouter();
       await mediaTestBase.closeFdNumber(fdNumber);
       console.info('afterAll case');
     });
@@ -120,7 +120,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_SETSOURCE_0100', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       await media.createVideoPlayer().then((video) => {
         if (video != null) {
           console.info('case createVideoPlayer success');
@@ -130,13 +130,13 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         videoPlayer?.on('error', async (error) => {
           console.info(`case error called,errMessage is ${error.message}`);
           await videoPlayer?.release().then(() => {
             console.info('case release called!!');
-          });
+          }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
           done();
         });
         videoPlayer.url = "";
@@ -152,7 +152,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_SETVOLUME_0100', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       await media.createVideoPlayer().then((video) => {
         if (video != null) {
           videoPlayer = video;
@@ -161,10 +161,16 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         videoPlayer.url = fdPath;
       }
+      await videoPlayer?.setDisplaySurface(surfaceID).then(() => {
+        if (videoPlayer) {
+          expect(videoPlayer.state).assertEqual('idle');
+        }
+        console.info('case setDisplaySurface success');
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.prepare().then(() => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('prepared');
@@ -173,35 +179,35 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
           console.info('case prepare called!!');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let startTime = 0
       if (videoPlayer) {
         videoPlayer.audioInterruptMode = audio.InterruptMode.INDEPENDENT_MODE; // 1
         startTime = videoPlayer.currentTime;
       }
-      await videoPlayer?.play().then(() => {
+      await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleep(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let endTime = 0
       if (videoPlayer) {
         endTime = videoPlayer.currentTime;
       }
-
+      expect(Math.abs(endTime - startTime - PLAY_TIME)).assertLess(DELTA_TIME);
       for (let i = 0; i < 3; i++) {
         await videoPlayer?.setVolume(i * 0.5).then(() => {
           if (videoPlayer) {
             expect(videoPlayer.state).assertEqual('playing');
           }
           console.info('case setVolume called');
-        });
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       }
       await videoPlayer?.release().then(() => {
         console.info('case release called!!');
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       done();
     });
     /* *
@@ -214,7 +220,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_SETSPEED_0100', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       await media.createVideoPlayer().then((video) => {
         if (video != null) {
           videoPlayer = video;
@@ -223,10 +229,16 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         videoPlayer.url = fdPath;
       }
+      await videoPlayer?.setDisplaySurface(surfaceID).then(() => {
+        if (videoPlayer) {
+          expect(videoPlayer.state).assertEqual('idle');
+          console.info('case setDisplaySurface success');
+        }
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.prepare().then(() => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('prepared');
@@ -235,7 +247,7 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
           console.info('case prepare called!!');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let startTime = 0
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
@@ -246,11 +258,12 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let endTime = 0;
       if (videoPlayer) {
         endTime = videoPlayer.currentTime;
       }
+      expect(Math.abs(endTime - startTime - PLAY_TIME_1S)).assertLess(DELTA_TIME);
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
       }
@@ -262,7 +275,7 @@ export default function VideoPlayerFuncPromiseTest() {
           checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_0_75_X, startTime);
           console.info('case setSpeed called and speedMode is ' + speedMode);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
       }
@@ -274,7 +287,7 @@ export default function VideoPlayerFuncPromiseTest() {
           checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_1_00_X, startTime);
           console.info('case setSpeed called and speedMode is ' + speedMode);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
       }
@@ -286,7 +299,7 @@ export default function VideoPlayerFuncPromiseTest() {
           checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_1_25_X, startTime);
           console.info('case setSpeed called and speedMode is ' + speedMode);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
       }
@@ -298,7 +311,7 @@ export default function VideoPlayerFuncPromiseTest() {
           checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_1_75_X, startTime);
           console.info('case setSpeed called and speedMode is ' + speedMode);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
       }
@@ -310,10 +323,10 @@ export default function VideoPlayerFuncPromiseTest() {
           checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_2_00_X, startTime);
           console.info('case setSpeed called and speedMode is ' + speedMode);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.release().then(() => {
         console.info('case release called!!');
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       done();
     });
     /* *
@@ -326,7 +339,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_SEEKMODE_0100', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       await media.createVideoPlayer().then((video) => {
         if (typeof (video) != 'undefined') {
           videoPlayer = video;
@@ -335,10 +348,16 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         videoPlayer.url = fdPath;
       }
+      await videoPlayer?.setDisplaySurface(surfaceID).then(() => {
+        if (videoPlayer) {
+          expect(videoPlayer.state).assertEqual('idle');
+          console.info('case setDisplaySurface success');
+        }
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.prepare().then(() => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('prepared');
@@ -347,61 +366,66 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
           console.info('case prepare called!!');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let startTime = 0;
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
       }
-      await videoPlayer?.play().then(() => {
+      await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleep(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let endTime = 0;
       if (videoPlayer) {
         endTime = videoPlayer.currentTime;
       }
-
+      expect(Math.abs(endTime - startTime - PLAY_TIME)).assertLess(DELTA_TIME);
       await videoPlayer?.seek(SEEK_TIME, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(seekDoneTime).assertEqual(SEEK_TIME);
+          expect(Math.abs(videoPlayer.currentTime - NEXT_FRAME_TIME)).assertLess(DELTA_SEEK_TIME);
           console.info('case seek called and seekDoneTime is' + seekDoneTime);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.seek(SEEK_TIME, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
-          expect(seekDoneTime).assertEqual(SEEK_TIME)
+          expect(seekDoneTime).assertEqual(SEEK_TIME);
+          expect(Math.abs(videoPlayer.currentTime - PREV_FRAME_TIME)).assertLess(DELTA_SEEK_TIME);
           console.info('case seek called and seekDoneTime is' + seekDoneTime);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.seek(PREV_FRAME_TIME - 100, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(seekDoneTime).assertEqual(PREV_FRAME_TIME - 100);
+          expect(Math.abs(videoPlayer.currentTime)).assertLess(DELTA_SEEK_TIME);
           console.info('case seek called and seekDoneTime is' + seekDoneTime);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.seek(PREV_FRAME_TIME + 100, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(seekDoneTime).assertEqual(PREV_FRAME_TIME + 100);
+          expect(Math.abs(videoPlayer.currentTime - PREV_FRAME_TIME)).assertLess(DELTA_SEEK_TIME);
           console.info('case seek called and seekDoneTime is' + seekDoneTime);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.seek(NEXT_FRAME_TIME - 100, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME - 100);
+          expect(Math.abs(videoPlayer.currentTime - NEXT_FRAME_TIME)).assertLess(DELTA_SEEK_TIME);
           console.info('case seek called and seekDoneTime is' + seekDoneTime);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.release().then(() => {
         console.info('case release called!!');
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       done();
     });
     /* *
@@ -414,7 +438,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_CALLBACK_0100', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       let frameCount = false;
       let completedCount = 0;
       let widthValue = -1;
@@ -427,15 +451,18 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
-      mediaTestBase.msleep(SLEEP_TIME);
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       videoPlayer?.on('playbackCompleted', async () => {
         console.info('case playbackCompleted success');
         completedCount++;
+        await videoPlayer?.release().then(() => {
+          console.info('case release called!!');
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         expect(widthValue).assertEqual(WIDTH_VALUE);
         expect(heightValue).assertEqual(HEIGHT_VALUE);
         expect(frameCount).assertEqual(true);
         expect(completedCount).assertEqual(1);
+        done();
       });
       videoPlayer?.on('bufferingUpdate', (infoType, value) => {
         console.info('case bufferingUpdate success infoType is ' + infoType);
@@ -453,7 +480,12 @@ export default function VideoPlayerFuncPromiseTest() {
       if (videoPlayer) {
         videoPlayer.url = fdPath;
       }
-      mediaTestBase.msleep(SLEEP_TIME);
+      await videoPlayer?.setDisplaySurface(surfaceID).then(() => {
+        if (videoPlayer) {
+          expect(videoPlayer.state).assertEqual('idle');
+          console.info('case setDisplaySurface success');
+        }
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.prepare().then(() => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('prepared');
@@ -462,21 +494,14 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
           console.info('case prepare called!!');
         }
-      });
-      mediaTestBase.msleep(SLEEP_TIME);
-      await videoPlayer?.play().then(() => {
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+      await videoPlayer?.play().then(async () => {
         if (videoPlayer) {
           console.info('case play called!!');
-          mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleep(PLAY_TIME);
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
-      mediaTestBase.msleep(SLEEP_TIME);
-      await videoPlayer?.release().then(() => {
-        console.info('case release called!!');
-      });
-      mediaTestBase.msleep(SLEEP_TIME);
-      done()
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
     });
     /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_GETTRECKDESCRIPTION_0100
@@ -488,7 +513,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_GETTRECKDESCRIPTION_0100', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       let arrayDescription: Array<media.MediaDescription> = [];
       let videoTrackKey =
         new Array('bitrate', 'codec_mime', 'frame_rate', 'height', 'track_index', 'track_type', 'width');
@@ -506,17 +531,23 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         videoPlayer.url = fdPath;
       }
 
+      await videoPlayer?.setDisplaySurface(surfaceID).then(() => {
+        if (videoPlayer) {
+          expect(videoPlayer.state).assertEqual('idle');
+          console.info('case setDisplaySurface success');
+        }
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.prepare().then(() => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('prepared');
           console.info('case prepare called!!');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.getTrackDescription().then((arrayList) => {
         console.info('case getTrackDescription called!!');
         if (typeof (arrayList) != 'undefined') {
@@ -525,13 +556,13 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case getTrackDescription is failed');
           expect().assertFail();
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       for (let i = 0; i < arrayDescription.length; i++) {
         mediaTestBase.checkOldDescription(arrayDescription[i], descriptionKey[i], descriptionValue[i]);
       }
       await videoPlayer?.release().then(() => {
         console.info('case release called!!');
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       done();
     });
     /* *
@@ -544,7 +575,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_LOOP_0100', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       await media.createVideoPlayer().then((video) => {
         if (video != null) {
           videoPlayer = video;
@@ -553,20 +584,20 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       videoPlayer?.on('playbackCompleted', async () => {
         console.info('case playbackCompleted success');
-        await videoPlayer?.play().then(() => {
+        await videoPlayer?.play().then(async () => {
           if (videoPlayer) {
             expect(videoPlayer.loop).assertEqual(false);
             console.info('case play called!!');
-            mediaTestBase.msleep(PLAY_TIME);
+            await mediaTestBase.msleep(PLAY_TIME);
             expect(videoPlayer.state).assertEqual('playing');
           }
-        });
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         await videoPlayer?.release().then(() => {
           console.info('case release called!!');
-        });
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         done();
       });
       videoPlayer?.on('bufferingUpdate', (infoType, value) => {
@@ -576,6 +607,12 @@ export default function VideoPlayerFuncPromiseTest() {
       if (videoPlayer && fileDescriptor) {
         videoPlayer.fdSrc = fileDescriptor;
       }
+      await videoPlayer?.setDisplaySurface(surfaceID).then(() => {
+        if (videoPlayer) {
+          expect(videoPlayer.state).assertEqual('idle');
+          console.info('case setDisplaySurface success');
+        }
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.prepare().then(() => {
         if (videoPlayer) {
           videoPlayer.loop = true;
@@ -585,31 +622,32 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
           console.info('case prepare called!!');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let startTime = 0;
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
       }
-      await videoPlayer?.play().then(() => {
+      await videoPlayer?.play().then(async () => {
         if (videoPlayer) {
           expect(videoPlayer.loop).assertEqual(true);
           console.info('case play called!!');
-          mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleep(PLAY_TIME);
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let endTime = 0;
       if (videoPlayer) {
         endTime = videoPlayer.currentTime;
       }
-
+      expect(Math.abs(endTime - startTime - PLAY_TIME)).assertLess(DELTA_TIME);
       for (let i = 0; i < 4; i++) {
         await videoPlayer?.seek(DURATION_TIME, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
           if (videoPlayer) {
             expect(videoPlayer.state).assertEqual('playing');
           }
+          expect(Math.abs(seekDoneTime - DURATION_TIME)).assertLess(DELTA_SEEK_TIME);
           console.info('case seek called and seekDoneTime is' + seekDoneTime);
-        });
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         mediaTestBase.msleep(3000);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
@@ -629,7 +667,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_BASE_0100', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       await media.createVideoPlayer().then((video) => {
         if (video != null) {
           console.info('case createVideoPlayer success');
@@ -639,17 +677,23 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       videoPlayer?.on('playbackCompleted', async () => {
         console.info('case playbackCompleted success');
         await videoPlayer?.release().then(() => {
           console.info('case release called!!');
-        });
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         done();
       });
       if (videoPlayer) {
         videoPlayer.url = fdPath;
       }
+      await videoPlayer?.setDisplaySurface(surfaceID).then(() => {
+        console.info('case setDisplaySurface success');
+        if (videoPlayer) {
+          expect(videoPlayer.state).assertEqual('idle');
+        }
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.prepare().then(() => {
         console.info('case prepare called!!');
         if (videoPlayer) {
@@ -658,48 +702,48 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.width).assertEqual(WIDTH_VALUE);
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let startTime = 0;
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
       }
-      await videoPlayer?.play().then(() => {
+      await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleep(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let endTime = 0;
       if (videoPlayer) {
         endTime = videoPlayer.currentTime;
       }
-
+      expect(Math.abs(endTime - startTime - PLAY_TIME)).assertLess(DELTA_TIME);
       await videoPlayer?.pause().then(() => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('paused');
           console.info('case pause called!!');
         }
-      });
-      await videoPlayer?.play().then(() => {
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+      await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleep(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.stop().then(() => {
         console.info('case stop called!!');
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('stopped');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.reset().then(() => {
         console.info('case reset called!!');
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('idle');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         videoPlayer.url = fdPath;
       }
@@ -711,43 +755,43 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.width).assertEqual(WIDTH_VALUE);
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         videoPlayer.loop = true;
         startTime = videoPlayer.currentTime;
       }
-      await videoPlayer?.play().then(() => {
+      await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleep(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         endTime = videoPlayer.currentTime;
       }
-
-      await videoPlayer?.seek(videoPlayer.duration / 2).then((seekDoneTime) => {
+      expect(Math.abs(endTime - startTime - PLAY_TIME)).assertLess(DELTA_TIME);
+      await videoPlayer?.seek(videoPlayer.duration / 2).then(async (seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-        mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleep(PLAY_TIME);
         console.info('case seek called and seekDoneTime is' + seekDoneTime);
-      });
-      await videoPlayer?.seek(0).then((seekDoneTime) => {
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+      await videoPlayer?.seek(0).then(async (seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-        mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleep(PLAY_TIME);
         console.info('case seek called and seekDoneTime is' + seekDoneTime);
-      });
-      await videoPlayer?.seek(videoPlayer.duration).then((seekDoneTime) => {
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+      await videoPlayer?.seek(videoPlayer.duration).then(async (seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-        mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleep(PLAY_TIME);
         console.info('case seek called and seekDoneTime is' + seekDoneTime);
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         videoPlayer.loop = false;
       }
@@ -762,7 +806,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_VIDEOSCALETYPE_0100', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       await media.createVideoPlayer().then((video) => {
         if (video != null) {
           console.info('case createVideoPlayer success');
@@ -772,7 +816,7 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       videoPlayer?.on('error', (error) => {
         expect().assertFail();
         console.info('case error happened :' + error.message);
@@ -781,7 +825,7 @@ export default function VideoPlayerFuncPromiseTest() {
         console.info('case playbackCompleted success');
         await videoPlayer?.release().then(() => {
           console.info('case release called!!');
-        });
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         done();
       });
       if (videoPlayer) {
@@ -789,6 +833,12 @@ export default function VideoPlayerFuncPromiseTest() {
         console.info('case set  videoScaleType : 1');
         videoPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_CROP;
       }
+      await videoPlayer?.setDisplaySurface(surfaceID).then(() => {
+        console.info('case setDisplaySurface success');
+        if (videoPlayer) {
+          expect(videoPlayer.state).assertEqual('idle');
+        }
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.prepare().then(() => {
         console.info('case prepare called!!');
         if (videoPlayer) {
@@ -797,7 +847,7 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.width).assertEqual(WIDTH_VALUE);
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         expect(videoPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_CROP);
       }
@@ -805,18 +855,18 @@ export default function VideoPlayerFuncPromiseTest() {
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
       }
-      await videoPlayer?.play().then(() => {
+      await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleep(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let endTime = 0;
       if (videoPlayer) {
         endTime = videoPlayer.currentTime;
       }
-
+      expect(Math.abs(endTime - startTime - PLAY_TIME)).assertLess(DELTA_TIME);
       console.info('case set  videoScaleType : 0');
       if (videoPlayer) {
         videoPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT;
@@ -826,23 +876,23 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.state).assertEqual('paused');
           console.info('case pause called!!');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         expect(videoPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT);
       }
-      await videoPlayer?.play().then(() => {
+      await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleep(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.stop().then(() => {
         console.info('case stop called!!');
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('stopped');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         console.info('case set  videoScaleType : 1');
         videoPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_CROP;
@@ -852,7 +902,7 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case reset called!!');
           expect(videoPlayer.state).assertEqual('idle');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         videoPlayer.url = fdPath;
         console.info('case set  videoScaleType : 1');
@@ -866,57 +916,57 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.width).assertEqual(WIDTH_VALUE);
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         expect(videoPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_CROP);
         videoPlayer.loop = true;
         startTime = videoPlayer.currentTime;
       }
-      await videoPlayer?.play().then(() => {
+      await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleep(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         endTime = videoPlayer.currentTime;
-
+        expect(Math.abs(endTime - startTime - PLAY_TIME)).assertLess(DELTA_TIME);
         console.info('case set  videoScaleType : 0');
         videoPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT;
       }
-      await videoPlayer?.seek(videoPlayer.duration / 2).then((seekDoneTime) => {
+      await videoPlayer?.seek(videoPlayer.duration / 2).then(async (seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(videoPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT);
-          mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleep(PLAY_TIME);
         }
         console.info('case seek called and seekDoneTime is' + seekDoneTime);
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       console.info('case set  videoScaleType : 1');
       if (videoPlayer) {
         videoPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_CROP;
       }
-      await videoPlayer?.seek(0).then((seekDoneTime) => {
+      await videoPlayer?.seek(0).then(async (seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(videoPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_CROP);
-          mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleep(PLAY_TIME);
         }
         console.info('case seek called and seekDoneTime is' + seekDoneTime);
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       console.info('case set  videoScaleType : 0');
       if (videoPlayer) {
         videoPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT;
       }
-      await videoPlayer?.seek(videoPlayer.duration).then((seekDoneTime) => {
+      await videoPlayer?.seek(videoPlayer.duration).then(async (seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(videoPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT);
-          mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleep(PLAY_TIME);
         }
         console.info('case seek called and seekDoneTime is' + seekDoneTime);
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         videoPlayer.loop = false;
       }
@@ -931,7 +981,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_VIDEOSCALETYPE_0200', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       let count = 0;
       await media.createVideoPlayer().then((video) => {
         if (video != null) {
@@ -941,20 +991,20 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       videoPlayer?.on('playbackCompleted', async () => {
         console.info('case playbackCompleted success');
-        await videoPlayer?.play().then(() => {
+        await videoPlayer?.play().then(async () => {
           if (videoPlayer) {
             expect(videoPlayer.loop).assertEqual(false);
             console.info('case play called!!');
-            mediaTestBase.msleep(PLAY_TIME);
+            await mediaTestBase.msleep(PLAY_TIME);
             expect(videoPlayer.state).assertEqual('playing');
           }
-        });
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         await videoPlayer?.release().then(() => {
           console.info('case release called!!');
-        });
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         done();
       });
       videoPlayer?.on('bufferingUpdate', (infoType, value) => {
@@ -964,6 +1014,12 @@ export default function VideoPlayerFuncPromiseTest() {
       if (videoPlayer) {
         videoPlayer.url = fdPath;
       }
+      await videoPlayer?.setDisplaySurface(surfaceID).then(() => {
+        if (videoPlayer) {
+          expect(videoPlayer.state).assertEqual('idle');
+        }
+        console.info('case setDisplaySurface success');
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.prepare().then(() => {
         if (videoPlayer) {
           videoPlayer.loop = true;
@@ -973,24 +1029,24 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
           console.info('case prepare called!!');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let startTime = 0;
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
       }
-      await videoPlayer?.play().then(() => {
+      await videoPlayer?.play().then(async () => {
         if (videoPlayer) {
           expect(videoPlayer.loop).assertEqual(true);
           console.info('case play called!!');
-          mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleep(PLAY_TIME);
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let endTime = 0;
       if (videoPlayer) {
         endTime = videoPlayer.currentTime;
       }
-
+      expect(Math.abs(endTime - startTime - PLAY_TIME)).assertLess(DELTA_TIME);
       for (let i = 0; i < 20; i++) {
         if (count == 0) {
           console.info('case set  videoScaleType : 1');
@@ -1021,7 +1077,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_VIDEOSCALETYPE_0300', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       let errorCount = 0;
       await media.createVideoPlayer().then((video) => {
         if (video != null) {
@@ -1031,14 +1087,14 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       videoPlayer?.on('error', async (error) => {
         errorCount++;
         console.info('case error happened :' + error.message);
         if (errorCount == 3) {
           await videoPlayer?.release().then(() => {
             console.info('case release called!!');
-          });
+          }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
           done();
         }
       });
@@ -1059,7 +1115,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0100', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       await media.createVideoPlayer().then((video) => {
         if (typeof (video) != 'undefined') {
           videoPlayer = video;
@@ -1067,7 +1123,7 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         expect(videoPlayer.state).assertEqual('idle');
         expect(videoPlayer.url).assertEqual('');
@@ -1081,12 +1137,18 @@ export default function VideoPlayerFuncPromiseTest() {
         expect(videoPlayer.loop).assertEqual(false);
         videoPlayer.url = fdPath;
       }
+      await videoPlayer?.setDisplaySurface(surfaceID).then(() => {
+        if (videoPlayer) {
+          expect(videoPlayer.state).assertEqual('idle');
+          console.info('case setDisplaySurface success');
+        }
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.prepare().then(() => {
         console.info('case prepare success');
         if (videoPlayer) {
           videoPlayer.loop = true;
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         expect(videoPlayer.state).assertEqual('prepared');
         expect(videoPlayer.url).assertEqual(fdPath);
@@ -1101,7 +1163,7 @@ export default function VideoPlayerFuncPromiseTest() {
       }
       await videoPlayer?.reset().then(() => {
         console.info('case reset success');
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         expect(videoPlayer.state).assertEqual('idle');
         expect(videoPlayer.fdSrc.fd).assertEqual(0);
@@ -1113,7 +1175,7 @@ export default function VideoPlayerFuncPromiseTest() {
       }
       await videoPlayer?.release().then(() => {
         console.info('case release called!!');
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       done();
     });
     /* *
@@ -1126,7 +1188,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0200', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       await media.createVideoPlayer().then((video) => {
         if (typeof (video) != 'undefined') {
           videoPlayer = video;
@@ -1135,8 +1197,7 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
-      mediaTestBase.msleep(SLEEP_TIME);
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       videoPlayer?.on('playbackCompleted', async () => {
         console.info('case playbackCompleted success');
         if (videoPlayer) {
@@ -1147,36 +1208,45 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.width).assertEqual(WIDTH_VALUE);
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
         }
-        await videoPlayer?.play().then(() => {
+        await videoPlayer?.play().then(async () => {
           if (videoPlayer) {
             expect(videoPlayer.loop).assertEqual(false);
             startTime = videoPlayer.currentTime;
             console.info('case play called!!');
-            mediaTestBase.msleep(PLAY_TIME);
+            await mediaTestBase.msleep(PLAY_TIME);
             expect(videoPlayer.state).assertEqual('playing');
           }
-        });
-        mediaTestBase.msleep(SLEEP_TIME);
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         if (videoPlayer) {
           endTime = videoPlayer.currentTime;
+          checkTime(PLAY_TIME * 2, (endTime - startTime), DELTA_TIME);
           startTime = videoPlayer.currentTime;
         }
-        await videoPlayer?.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_0_75_X).then((speedMode) => {
+        await videoPlayer?.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_0_75_X).then(async (speedMode) => {
           if (videoPlayer) {
             expect(videoPlayer.state).assertEqual('playing');
             expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_0_75_X);
-            mediaTestBase.msleep(PLAY_TIME);
+            await mediaTestBase.msleep(PLAY_TIME);
             endTime = videoPlayer.currentTime;
           }
           console.info('case setSpeed endTime is ' + endTime);
+          checkTime(PLAY_TIME * 0.75, (endTime - startTime), DELTA_TIME);
           console.info('case setSpeed called and speedMode is ' + speedMode);
-        });
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+        await videoPlayer?.release().then(() => {
+          console.info('case release called!!');
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+        done();
       });
-      mediaTestBase.msleep(SLEEP_TIME);
       if (videoPlayer) {
         videoPlayer.url = fdPath;
       }
-      mediaTestBase.msleep(SLEEP_TIME);
+      await videoPlayer?.setDisplaySurface(surfaceID).then(() => {
+        if (videoPlayer) {
+          expect(videoPlayer.state).assertEqual('idle');
+          console.info('case setDisplaySurface success');
+        }
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.prepare().then(() => {
         if (videoPlayer) {
           videoPlayer.loop = true;
@@ -1186,8 +1256,7 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
           console.info('case prepare called!!');
         }
-      });
-      mediaTestBase.msleep(SLEEP_TIME);
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let startTime = 0;
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
@@ -1199,48 +1268,44 @@ export default function VideoPlayerFuncPromiseTest() {
           mediaTestBase.msleep(PLAY_TIME_1S);
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
-      mediaTestBase.msleep(SLEEP_TIME);
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let endTime = 0;
       if (videoPlayer) {
         endTime = videoPlayer.currentTime;
       }
+      checkTime(PLAY_TIME_1S, (endTime - startTime), DELTA_TIME);
       if (videoPlayer) {
         expect(videoPlayer.loop).assertEqual(true);
         startTime = videoPlayer.currentTime;
       }
       console.info('case startTime is :' + startTime);
-      await videoPlayer?.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X).then((speedMode) => {
+      await videoPlayer?.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X).then(async (speedMode) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
-          mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleep(PLAY_TIME);
           endTime = videoPlayer.currentTime;
         }
+        checkTime(PLAY_TIME * 2, (endTime - startTime), DELTA_TIME);
         console.info('case setSpeed called and speedMode is ' + speedMode);
-      });
-      mediaTestBase.msleep(SLEEP_TIME);
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.seek(SEEK_TIME, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
+          expect(Math.abs(videoPlayer.currentTime - PREV_FRAME_TIME)).assertLess(DELTA_SEEK_TIME);
         }
         console.info('case seek called and seekDoneTime is' + seekDoneTime);
-      });
-      mediaTestBase.msleep(SLEEP_TIME);
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
-        mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleep(PLAY_TIME);
         endTime = videoPlayer.currentTime;
+        checkTime(PLAY_TIME * 2, (endTime - startTime), DELTA_TIME);
         expect(videoPlayer.loop).assertEqual(true);
         mediaTestBase.msleep(DURATION_TIME);
         expect(videoPlayer.loop).assertEqual(true);
         videoPlayer.loop = false;
       }
-      await videoPlayer?.release().then(() => {
-        console.info('case release called!!');
-      });
-      mediaTestBase.msleep(SLEEP_TIME);
-      done();
     });
     /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0300
@@ -1252,7 +1317,7 @@ export default function VideoPlayerFuncPromiseTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0300', 0, async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
-
+      let videoPlayer: media.VideoPlayer | undefined;
       await media.createVideoPlayer().then((video) => {
         if (typeof (video) != 'undefined') {
           videoPlayer = video;
@@ -1261,7 +1326,7 @@ export default function VideoPlayerFuncPromiseTest() {
           console.info('case createVideoPlayer is failed');
           expect().assertFail();
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       videoPlayer?.on('playbackCompleted', async () => {
         console.info('case playbackCompleted success');
         if (videoPlayer) {
@@ -1269,12 +1334,18 @@ export default function VideoPlayerFuncPromiseTest() {
         }
         await videoPlayer?.release().then(() => {
           console.info('case release called!!');
-        });
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         done();
       });
       if (videoPlayer) {
         videoPlayer.url = fdPath;
       }
+      await videoPlayer?.setDisplaySurface(surfaceID).then(() => {
+        if (videoPlayer) {
+          expect(videoPlayer.state).assertEqual('idle');
+        }
+        console.info('case setDisplaySurface success');
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.prepare().then(() => {
         if (videoPlayer) {
           videoPlayer.loop = true;
@@ -1284,7 +1355,7 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
         }
         console.info('case prepare called!!');
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let startTime = 0;
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
@@ -1296,25 +1367,27 @@ export default function VideoPlayerFuncPromiseTest() {
           mediaTestBase.msleep(PLAY_TIME_1S);
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       let endTime = 0;
       if (videoPlayer) {
         endTime = videoPlayer.currentTime;
       }
+      checkTime(PLAY_TIME_1S, (endTime - startTime), DELTA_TIME);
       if (videoPlayer) {
         expect(videoPlayer.loop).assertEqual(true);
         startTime = videoPlayer.currentTime;
       }
       console.info('case startTime is :' + startTime);
-      await videoPlayer?.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X).then((speedMode) => {
+      await videoPlayer?.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X).then(async (speedMode) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
-          mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleep(PLAY_TIME);
           endTime = videoPlayer.currentTime;
+          checkTime(PLAY_TIME * 2, (endTime - startTime), DELTA_TIME);
         }
         console.info('case setSpeed called and speedMode is ' + speedMode);
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.reset().then(() => {
         if (videoPlayer) {
           expect(videoPlayer.loop).assertEqual(false);
@@ -1322,7 +1395,7 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.duration).assertEqual(-1);
         }
         console.info('case reset called!!');
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         videoPlayer.url = fdPath;
       }
@@ -1334,22 +1407,23 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
         }
         console.info('case prepare called!!');
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
       }
 
-      await videoPlayer?.play().then(() => {
+      await videoPlayer?.play().then(async () => {
         if (videoPlayer) {
           expect(videoPlayer.loop).assertEqual(false);
           console.info('case play called!!');
-          mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleep(PLAY_TIME);
           expect(videoPlayer.state).assertEqual('playing');
         }
-      });
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         endTime = videoPlayer.currentTime;
       }
+      checkTime(PLAY_TIME * 2, (endTime - startTime), DELTA_TIME * 2);
     });
   })
 }
