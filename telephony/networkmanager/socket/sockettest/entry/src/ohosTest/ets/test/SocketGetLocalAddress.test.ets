@@ -285,26 +285,29 @@ export default function SocketGetLocalSocketTest() {
           tls.bind(bindAddr, (err: BusinessError) => {
             if (err) {
               console.info(`${caseName} err: ${JSON.stringify(err)}`);
+              tls.close();
               ExpectFail();
               done();
             } else {
               tls.connect(tlsConnectOptions_client).then(() => {
                 console.log("connect successfully");
                 tls.getLocalAddress().then((localAddress: socket.NetAddress) => {
+                  tls.close();
                   expectTrue(localAddress != null);
                   console.log("Family IP Port: " + JSON.stringify(localAddress));
                 }).catch((err: BusinessError) => {
                   console.log("TLS Client Get Family IP Port failed, error: " + JSON.stringify(err));
+                  tls.close();
                   ExpectFail();
                   done();
                 })
               }).catch((err: BusinessError) => {
+                tls.close();
                 console.log("connect failed " + JSON.stringify(err));
                 ExpectFail();
                 done();
               });
             }
-            tls.close();
             done();
           });
         })
