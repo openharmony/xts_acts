@@ -35,7 +35,7 @@ struct WebComponent {
 
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.log('will start a download.');
               // 传入一个下载路径，并开始下载。
               try {
                 webDownloadItem.start(null);

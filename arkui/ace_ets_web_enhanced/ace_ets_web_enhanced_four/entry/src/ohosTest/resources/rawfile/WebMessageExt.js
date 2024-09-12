@@ -26,7 +26,7 @@ window.addEventListener('message', function (event) {
                 console.log('In html got message, result: ', (result));
                 if (typeof (result) === 'string') {
                     console.log('In html got message, String: ', result);
-                    document.getElementById("msg").innerHTML = 'String:' + result;
+                    document.getElementById('msg').innerHTML = 'String:' + result;
                 } else if (typeof (result) === 'number') {
                     console.log('In html side got message, number: ', result);
                     document.getElementById('msg').innerHTML = 'Number:' + result;
@@ -46,7 +46,7 @@ window.addEventListener('message', function (event) {
                         console.log('In html got message, Array length:' + result.length);
                         console.log('In html got message, Array[0]:' + (result[0]));
                         console.log('In html got message, typeof Array[0]:' + typeof (result[0]));
-                        document.getElementById("msg2").innerHTML = 'Array len:' + result.length + ', value:' + result;
+                        document.getElementById('msg2').innerHTML = 'Array len:' + result.length + ', value:' + result;
                     } else {
                         console.log('In html got message, not any instance of support type');
                         document.getElementById('msg').innerHTML = 'not any instance of support type';

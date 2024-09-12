@@ -69,7 +69,7 @@ struct WebComponent {
         .onClick(() => {
           console.log('In ArkTS side send true start');
           try {
-            throw new ReferenceError("ReferenceError");
+            throw new ReferenceError('ReferenceError');
           } catch (ex) {
             try {
               this.message.setType(6);

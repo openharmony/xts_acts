@@ -3,7 +3,9 @@
     "MainAbility/pages/WebViewPrefetchResource",
     "MainAbility/pages/precompileJavaScriptTest",
     "MainAbility/pages/injectOfflineResourcesTest",
-    "MainAbility/pages/clearPrefetchedResourceTest"
+    "MainAbility/pages/clearPrefetchedResourceTest",
+    "MainAbility/pages/Index",
+    "MainAbility/pages/IndexOthers"
   ]
 }
 
