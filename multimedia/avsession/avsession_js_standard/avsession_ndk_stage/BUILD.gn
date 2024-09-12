@@ -13,21 +13,21 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("avsession_demo_ndk_main") {
+ohos_app_assist_suite("avsession_ndk_main") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAVSessionDemoMainTest"
+  hap_name = "ActsAVSessionMainTest"
 
   part_name = "av_session"
   subsystem_name = "multimedia"
 }
 
-ohos_js_app_suite("avsession_demo_ndk_ohosTest") {
+ohos_js_app_suite("avsession_ndk_ohosTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAVSessionDemoNdkStageTest"
+  hap_name = "ActsAVSessionNdkStageTest"
   part_name = "av_session"
   subsystem_name = "multimedia"
-  deps = [ ":avsession_demo_ndk_main" ]
+  deps = [ ":avsession_ndk_main" ]
 }
