@@ -10,8 +10,8 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAVSessionDemoNdkStageTest.hap",
-                "ActsAVSessionDemoMainTest.hap"
+                "ActsAVSessionNdkStageTest.hap",
+                "ActsAVSessionMainTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
