@@ -24,7 +24,7 @@ export default function webTwoJsunit() {
   describe('overviewTest', () => {
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/webTwo',
+        url: 'testability/pages/webTwo',
       }
       try {
         router.clear();

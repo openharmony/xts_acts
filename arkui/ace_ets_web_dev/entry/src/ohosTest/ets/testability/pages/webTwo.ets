@@ -27,18 +27,18 @@ struct Second {
     @State overviewScale:string="";
     @State userAgentPC:string = "";
     onPageShow(){
-        let valueChangeEvent={
+        let valueChangeEvent: events_emitter.InnerEvent={
             eventId:10,
             priority:events_emitter.EventPriority.LOW
         };
         events_emitter.on(valueChangeEvent,this.valueChangeCallBack);
     }
-    private valueChangeCallBack=(eventData)=>{
+    private valueChangeCallBack=(eventData: events_emitter.EventData)=>{
         console.info("web page valueChangeCallBack");
         if(eventData != null){
              console.info("valueChangeCallBack:"+   JSON.stringify(eventData));
-             if(eventData.data.ACTION != null){
-                 this.str = eventData.data.ACTION;
+             if(eventData.data?.ACTION != null){
+                 this.str = eventData.data?.ACTION;
              }
         }
     }
