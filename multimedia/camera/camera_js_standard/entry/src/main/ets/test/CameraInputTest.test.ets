@@ -425,7 +425,7 @@ export default function CameraInputTest() {
                             console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100 close FAILED: " + err.message);
                         }
                     });
-                    await sleep(100);
+                    await sleep(200);
                     expect(successFlag).assertEqual(true);
             }
             }
