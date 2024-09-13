@@ -13,19 +13,13 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("ActsBundleGetMainElementNameTest") {
+group("ActsBmsGetMainElementNameTestH") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsbmsgetmainelementnametesta:ActsBmsGetMainElementNameTestA",
-      "actsbmsgetmainelementnametestb:ActsBmsGetMainElementNameTestB",
-      "actsbmsgetmainelementnametestc:ActsBmsGetMainElementNameTestC",
-      "actsbmsgetmainelementnametestd:ActsBmsGetMainElementNameTestD",
-      "actsbmsgetmainelementnameteste:ActsBmsGetMainElementNameTestE",
-      "actsbmsgetmainelementnametestf:ActsBmsGetMainElementNameTestF",
-      "actsbmsgetmainelementnametestg:ActsBmsGetMainElementNameTestG",
-      "actsbmsgetmainelementnametesth:ActsBmsGetMainElementNameTestH",
-      "actsbmsgetmainelementnametesti:ActsBmsGetMainElementNameTestI",
+      "actsbmsgetmainelementnamerely:ActsBmsGetMainElementNameEnrtyRelyH",
+      "actsbmsgetmainelementnamerely:ActsBmsGetMainElementNameFeatureRelyH",
+      "actsbmsgetmainelementnametest:ActsBmsGetMainElementNameTestH",
     ]
   }
 }
