@@ -10,8 +10,9 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceTextPickerTest.hap"
-        ],
+                "ActsAceTextPickerTest.hap",
+                "ActsAceTextPickerTestMain.hap"
+            ],
         "type": "AppInstallKit",
         "cleanup-apps": true
         },
