@@ -26,7 +26,7 @@ struct InterruptGestureTest {
       CommonView({
         pageTag: this.PAGE_TAG,
       }).onAppear(() => {
-        render.panGestureTest(this.PAGE_TAG);
+        render.interruptGestureTest(this.PAGE_TAG);
       })
     }
   }
