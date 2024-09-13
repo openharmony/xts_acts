@@ -122,5 +122,77 @@ export default function builderAbilityTest() {
       expect(ret).assertEqual(0);
       done();
     })
+
+    /**
+    * @tc.number     : SUB_MULTIMEIDA_AVSESSION_NDK_ACTIVATE_0100
+    * @tc.name       : OHAVSessionActivate
+    * @tc.desc       : NDKAVSession OHAVSessionActivate.
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it("SUB_MULTIMEIDA_AVSESSION_NDK_ACTIVATE_0100", 2, async (done: Function) => {
+      try {
+        console.info("test OHAVSessionActivate ---------------");
+        let ret:number = await avSes.AVSessionActivate();
+        expect(ret).assertEqual(0);
+      } catch (error) {
+        expect(false).assertEqual(true);
+      }
+      done();
+    })
+
+    /**
+    * @tc.number     : SUB_MULTIMEIDA_AVSESSION_NDK_DEACTIVATE_0100
+    * @tc.name       : OHAVSessionDeactivate
+    * @tc.desc       : NDKAVSession OHAVSessionDeactivate.
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it("SUB_MULTIMEIDA_AVSESSION_NDK_DEACTIVATE_0100", 2, async (done: Function) => {
+      try {
+        console.info("test OHAVSessionDeactivate ---------------");
+        let ret:number = await avSes.AVSessionDeActivate();
+        expect(ret).assertEqual(0);
+      } catch (error) {
+        expect(false).assertEqual(true);
+      }
+      done();
+    })
+
+    /**
+    * @tc.number     : SUB_MULTIMEIDA_AVSESSION_NDK_GETSESSIONID_0100
+    * @tc.name       : AVSessionGetSessionId
+    * @tc.desc       : NDKAVSession AVSessionGetSessionId.
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it("SUB_MULTIMEIDA_AVSESSION_NDK_GETSESSIONID_0100", 2, async (done: Function) => {
+      try {
+        console.info("test AVSessionGetSessionId ---------------");
+        let ret:number = await avSes.AVSessionGetSessionId();
+        expect(ret).assertEqual(0);
+      } catch (error) {
+        expect(false).assertEqual(true);
+      }
+      done();
+    })
+
+    /**
+    * @tc.number     : SUB_MULTIMEIDA_AVSESSION_NDK_GETSESSIONTYPE_0100
+    * @tc.name       : AVSessionGetSessionType
+    * @tc.desc       : NDKAVSession AVSessionGetSessionType.
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it("SUB_MULTIMEIDA_AVSESSION_NDK_GETSESSIONTYPE_0100", 2, async (done: Function) => {
+      try {
+        console.info("test AVSessionGetSessionType ---------------");
+        let ret:number = await avSes.AVSessionGetSessionType();
+        expect(ret).assertEqual(0);
+      } catch (error) {
+        expect(false).assertEqual(true);
+      }
+      done();
+    })
   })
 }
