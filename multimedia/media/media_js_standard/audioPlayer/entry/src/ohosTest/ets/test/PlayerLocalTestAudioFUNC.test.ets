@@ -486,7 +486,7 @@ export default function PlayerLocalTestAudioFUNC() {
       mediaTestBase.isFileOpen(fileDescriptor, done);
 
       playAudioSource(fdPath, DURATION_TIME, PLAY_TIME, true, waitForDone);
-      await mediaTestBase.msleepAsync(1000).then(() => {
+      await mediaTestBase.msleepAsync(1500).then(() => {
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       playAudioSource(fileDescriptor, DURATION_TIME, PLAY_TIME, true, done);
     });

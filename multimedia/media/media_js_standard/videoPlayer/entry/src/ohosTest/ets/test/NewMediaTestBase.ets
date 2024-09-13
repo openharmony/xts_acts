@@ -151,8 +151,8 @@ export default class MediaTestBase {
   }
 
   printError(error: BusinessError, done: Function) {
-    expect().assertFail();
     console.info(`case error called,errMessage is ${error.message}`);
+    expect().assertFail();
     done();
   }
 

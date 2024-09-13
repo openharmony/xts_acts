@@ -64,6 +64,8 @@ function initAudioPlayer() {
 
 function nextStep(mySteps: Array<number>, done: Function) {
   if (mySteps[0] == END_STATE) {
+    audioPlayer?.release();
+    audioPlayer = null;
     done();
     console.info('case to done');
     return;
