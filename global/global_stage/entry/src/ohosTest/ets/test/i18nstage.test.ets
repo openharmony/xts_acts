@@ -131,9 +131,9 @@ export default function i18nStageTest() {
           console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].year));
           console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].month));
           console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].day));
-          for (let j = 0; j < item[i].localNames.length; j++) {
-            console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].localNames[j].language));
-            console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].localNames[j].name));
+          for (let j = 0; j < item[i].localNames!.length; j++) {
+            console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].localNames![j].language));
+            console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].localNames![j].name));
           }
         }
       }
