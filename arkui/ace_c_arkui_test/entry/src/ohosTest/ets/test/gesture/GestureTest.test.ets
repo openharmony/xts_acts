@@ -161,7 +161,7 @@ export default function gestureTest() {
       // change page to interrupt Gesture
       try {
         let options: router.RouterOptions = {
-          url: 'MainAbility/pages/gesture/RotateGestureTest',
+          url: 'MainAbility/pages/testgesture',
         }
         router.clear();
         let result = await router.pushUrl(options);
