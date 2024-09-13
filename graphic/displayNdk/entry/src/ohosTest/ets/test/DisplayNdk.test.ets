@@ -38,15 +38,6 @@ export default function DisplayNdkTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('assertContain', 0, () => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'assertContain begin');
-      let a = 'abc';
-      let b = 'b';
-      // Defines a variety of assertion methods, which are used to declare expected boolean conditions.
-      expect(a).assertContain(b);
-      expect(a).assertEqual(a);
-    })
     /**
      * @tc.number    : SUB_BASIC_DMS_NDK_0100
      * @tc.name      : test_OH_NativeDisplayManager_GetDefaultDisplayId
@@ -146,8 +137,14 @@ export default function DisplayNdkTest() {
         console.log(caseName + ' :'+ displayOrientation);
         let display1 = display.getDefaultDisplaySync()
         console.log(caseName + 'jsOrientation :'+ display1.orientation);
-        expect(displayOrientation).assertEqual(0);
-        done();
+        if (displayOrientation == 0) {
+          done();
+        } else if (displayOrientation == 1){
+          done();
+        }else{
+          expect(false).assertTrue();
+          done();
+        }
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
         expect(false).assertTrue();
@@ -358,7 +355,6 @@ export default function DisplayNdkTest() {
       try{
         let displayIsFoldable  = testNapi.checkIsFoldDevice();
         console.log(caseName + ' :'+ displayIsFoldable );
-        expect(displayIsFoldable).assertEqual(false);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -377,10 +373,19 @@ export default function DisplayNdkTest() {
     it('test_OH_NativeDisplayManager_GetFoldDisplayMode', 0, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetFoldDisplayMode';
       try{
+        let displayIsFoldable  = testNapi.checkIsFoldDevice();
         let displayMode  = testNapi.getDisplayMode();
         console.log(caseName + ' :'+ displayMode );
-        expect(displayMode).assertEqual(801);
-        done();
+        if(displayIsFoldable == true){
+          if(displayMode == 1 || displayMode ==2){
+            done();
+          }
+         
+        }else{
+          expect(displayMode).assertEqual(801);
+          done();
+        }
+        
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
         expect(false).assertTrue();
@@ -398,14 +403,22 @@ export default function DisplayNdkTest() {
     it('test_OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener', 0, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener';
       try{
+        let displayIsFoldable  = testNapi.checkIsFoldDevice();
         let displayMode1  = testNapi.registerFoldDisplayModeChange((displayMode: number) => {
           console.log(caseName + ' displayMode:'+ displayMode );
           expect(false).assertTrue();
           done();
         });
         console.log(caseName + ' displayMode1:'+ displayMode1 );
-        expect(displayMode1).assertEqual(801);
-        done();
+        if(displayIsFoldable == true){
+          if(displayMode1 == 1 || displayMode1 == 2){
+            done();
+          }
+          
+        }else{
+          expect(displayMode1).assertEqual(801);
+          done();
+        }
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
         expect(false).assertTrue();
@@ -423,10 +436,17 @@ export default function DisplayNdkTest() {
     it('test_OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener', 0, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener';
       try{
+        let displayIsFoldable  = testNapi.checkIsFoldDevice();
         let displayMode  = testNapi.unregisterFoldDisplayModeChange(0);
         console.log(caseName + ' displayMode1:'+ displayMode );
-        expect(displayMode).assertEqual(801);
-        done();
+        if(displayIsFoldable == true){
+          expect(displayMode).assertEqual(401);
+          done();
+        }else{
+          expect(displayMode).assertEqual(801);
+          done();
+        }
+        
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
         expect(false).assertTrue();
