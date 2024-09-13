@@ -1,6 +1,7 @@
 {
   "src": [
     "MainAbility/pages/XTSIndex",
+    "MainAbility/pages/testgesture",
     "MainAbility/pages/button/ButtonOnClickTest",
     "MainAbility/pages/checkbox/CheckboxOnChangeTest",
     "MainAbility/pages/commonattrs/CommonAttrsEnabledTest",
