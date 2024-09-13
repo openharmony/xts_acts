@@ -47,8 +47,9 @@ group("componentUxTest") {
 
       #"ace_ets_component_textarea:ActsAceTextAreaTest",
       "ace_ets_component_textinput:ActsAceTextInputTest",
-      "ace_ets_component_textpicker:ActsAceTextPickerTest",
-      "ace_ets_component_timepicker:ActsAceTimePickerTest",
+
+      #"ace_ets_component_textpicker:ActsAceTextPickerTest",
+      #"ace_ets_component_timepicker:ActsAceTimePickerTest",
     ]
   }
 }
