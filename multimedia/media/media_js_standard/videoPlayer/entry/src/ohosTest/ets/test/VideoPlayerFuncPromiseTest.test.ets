@@ -187,7 +187,7 @@ export default function VideoPlayerFuncPromiseTest() {
       }
       await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        await mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleepAsync(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
@@ -254,7 +254,7 @@ export default function VideoPlayerFuncPromiseTest() {
       }
       await videoPlayer?.play().then(() => {
         console.info('case play called!!');
-        mediaTestBase.msleep(PLAY_TIME_1S);
+        mediaTestBase.msleepAsync(PLAY_TIME_1S);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
@@ -271,7 +271,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_0_75_X);
-          mediaTestBase.msleep(PLAY_TIME_1S);
+          mediaTestBase.msleepAsync(PLAY_TIME_1S);
           checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_0_75_X, startTime);
           console.info('case setSpeed called and speedMode is ' + speedMode);
         }
@@ -283,7 +283,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_1_00_X);
-          mediaTestBase.msleep(PLAY_TIME_1S);
+          mediaTestBase.msleepAsync(PLAY_TIME_1S);
           checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_1_00_X, startTime);
           console.info('case setSpeed called and speedMode is ' + speedMode);
         }
@@ -295,7 +295,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_1_25_X);
-          mediaTestBase.msleep(PLAY_TIME_1S);
+          mediaTestBase.msleepAsync(PLAY_TIME_1S);
           checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_1_25_X, startTime);
           console.info('case setSpeed called and speedMode is ' + speedMode);
         }
@@ -307,7 +307,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_1_75_X);
-          mediaTestBase.msleep(PLAY_TIME_1S);
+          mediaTestBase.msleepAsync(PLAY_TIME_1S);
           checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_1_75_X, startTime);
           console.info('case setSpeed called and speedMode is ' + speedMode);
         }
@@ -319,7 +319,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
-          mediaTestBase.msleep(PLAY_TIME_1S);
+          mediaTestBase.msleepAsync(PLAY_TIME_1S);
           checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_2_00_X, startTime);
           console.info('case setSpeed called and speedMode is ' + speedMode);
         }
@@ -373,7 +373,7 @@ export default function VideoPlayerFuncPromiseTest() {
       }
       await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        await mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleepAsync(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
@@ -498,7 +498,7 @@ export default function VideoPlayerFuncPromiseTest() {
       await videoPlayer?.play().then(async () => {
         if (videoPlayer) {
           console.info('case play called!!');
-          await mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleepAsync(PLAY_TIME);
           expect(videoPlayer.state).assertEqual('playing');
         }
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -591,7 +591,7 @@ export default function VideoPlayerFuncPromiseTest() {
           if (videoPlayer) {
             expect(videoPlayer.loop).assertEqual(false);
             console.info('case play called!!');
-            await mediaTestBase.msleep(PLAY_TIME);
+            await mediaTestBase.msleepAsync(PLAY_TIME);
             expect(videoPlayer.state).assertEqual('playing');
           }
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -631,7 +631,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.loop).assertEqual(true);
           console.info('case play called!!');
-          await mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleepAsync(PLAY_TIME);
           expect(videoPlayer.state).assertEqual('playing');
         }
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -648,7 +648,7 @@ export default function VideoPlayerFuncPromiseTest() {
           expect(Math.abs(seekDoneTime - DURATION_TIME)).assertLess(DELTA_SEEK_TIME);
           console.info('case seek called and seekDoneTime is' + seekDoneTime);
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-        mediaTestBase.msleep(3000);
+        mediaTestBase.msleepAsync(3000);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
@@ -709,7 +709,7 @@ export default function VideoPlayerFuncPromiseTest() {
       }
       await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        await mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleepAsync(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
@@ -727,7 +727,7 @@ export default function VideoPlayerFuncPromiseTest() {
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        await mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleepAsync(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
@@ -762,7 +762,7 @@ export default function VideoPlayerFuncPromiseTest() {
       }
       await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        await mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleepAsync(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
@@ -775,21 +775,21 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-        await mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleepAsync(PLAY_TIME);
         console.info('case seek called and seekDoneTime is' + seekDoneTime);
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.seek(0).then(async (seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-        await mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleepAsync(PLAY_TIME);
         console.info('case seek called and seekDoneTime is' + seekDoneTime);
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       await videoPlayer?.seek(videoPlayer.duration).then(async (seekDoneTime) => {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
-        await mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleepAsync(PLAY_TIME);
         console.info('case seek called and seekDoneTime is' + seekDoneTime);
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
@@ -857,7 +857,7 @@ export default function VideoPlayerFuncPromiseTest() {
       }
       await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        await mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleepAsync(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
@@ -882,7 +882,7 @@ export default function VideoPlayerFuncPromiseTest() {
       }
       await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        await mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleepAsync(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
@@ -924,7 +924,7 @@ export default function VideoPlayerFuncPromiseTest() {
       }
       await videoPlayer?.play().then(async () => {
         console.info('case play called!!');
-        await mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleepAsync(PLAY_TIME);
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
         }
@@ -939,7 +939,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(videoPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT);
-          await mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleepAsync(PLAY_TIME);
         }
         console.info('case seek called and seekDoneTime is' + seekDoneTime);
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -951,7 +951,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(videoPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_CROP);
-          await mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleepAsync(PLAY_TIME);
         }
         console.info('case seek called and seekDoneTime is' + seekDoneTime);
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -963,7 +963,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(videoPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT);
-          await mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleepAsync(PLAY_TIME);
         }
         console.info('case seek called and seekDoneTime is' + seekDoneTime);
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -998,7 +998,7 @@ export default function VideoPlayerFuncPromiseTest() {
           if (videoPlayer) {
             expect(videoPlayer.loop).assertEqual(false);
             console.info('case play called!!');
-            await mediaTestBase.msleep(PLAY_TIME);
+            await mediaTestBase.msleepAsync(PLAY_TIME);
             expect(videoPlayer.state).assertEqual('playing');
           }
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -1038,7 +1038,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.loop).assertEqual(true);
           console.info('case play called!!');
-          await mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleepAsync(PLAY_TIME);
           expect(videoPlayer.state).assertEqual('playing');
         }
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -1061,7 +1061,7 @@ export default function VideoPlayerFuncPromiseTest() {
           }
           count = 0;
         }
-        mediaTestBase.msleep(500);
+        mediaTestBase.msleepAsync(500);
       }
       if (videoPlayer) {
         videoPlayer.loop = false;
@@ -1213,7 +1213,7 @@ export default function VideoPlayerFuncPromiseTest() {
             expect(videoPlayer.loop).assertEqual(false);
             startTime = videoPlayer.currentTime;
             console.info('case play called!!');
-            await mediaTestBase.msleep(PLAY_TIME);
+            await mediaTestBase.msleepAsync(PLAY_TIME);
             expect(videoPlayer.state).assertEqual('playing');
           }
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -1226,7 +1226,7 @@ export default function VideoPlayerFuncPromiseTest() {
           if (videoPlayer) {
             expect(videoPlayer.state).assertEqual('playing');
             expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_0_75_X);
-            await mediaTestBase.msleep(PLAY_TIME);
+            await mediaTestBase.msleepAsync(PLAY_TIME);
             endTime = videoPlayer.currentTime;
           }
           console.info('case setSpeed endTime is ' + endTime);
@@ -1265,7 +1265,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.loop).assertEqual(true);
           console.info('case play called!!');
-          mediaTestBase.msleep(PLAY_TIME_1S);
+          mediaTestBase.msleepAsync(PLAY_TIME_1S);
           expect(videoPlayer.state).assertEqual('playing');
         }
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -1283,7 +1283,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
-          await mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleepAsync(PLAY_TIME);
           endTime = videoPlayer.currentTime;
         }
         checkTime(PLAY_TIME * 2, (endTime - startTime), DELTA_TIME);
@@ -1298,11 +1298,11 @@ export default function VideoPlayerFuncPromiseTest() {
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       if (videoPlayer) {
         startTime = videoPlayer.currentTime;
-        await mediaTestBase.msleep(PLAY_TIME);
+        await mediaTestBase.msleepAsync(PLAY_TIME);
         endTime = videoPlayer.currentTime;
         checkTime(PLAY_TIME * 2, (endTime - startTime), DELTA_TIME);
         expect(videoPlayer.loop).assertEqual(true);
-        mediaTestBase.msleep(DURATION_TIME);
+        mediaTestBase.msleepAsync(DURATION_TIME);
         expect(videoPlayer.loop).assertEqual(true);
         videoPlayer.loop = false;
       }
@@ -1364,7 +1364,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.loop).assertEqual(true);
           console.info('case play called!!');
-          mediaTestBase.msleep(PLAY_TIME_1S);
+          mediaTestBase.msleepAsync(PLAY_TIME_1S);
           expect(videoPlayer.state).assertEqual('playing');
         }
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -1382,7 +1382,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
-          await mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleepAsync(PLAY_TIME);
           endTime = videoPlayer.currentTime;
           checkTime(PLAY_TIME * 2, (endTime - startTime), DELTA_TIME);
         }
@@ -1416,7 +1416,7 @@ export default function VideoPlayerFuncPromiseTest() {
         if (videoPlayer) {
           expect(videoPlayer.loop).assertEqual(false);
           console.info('case play called!!');
-          await mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleepAsync(PLAY_TIME);
           expect(videoPlayer.state).assertEqual('playing');
         }
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
