@@ -801,7 +801,8 @@ static napi_value AVSessionActivate(napi_env env, napi_callback_info info)
     AVSession_ErrCode ret = OH_AVSession_Create(SESSION_TYPE_AUDIO, "oh_av_session_test_001",
         "com.xxx.hmxx", "ndkxx", &g_avsession);
     if (ret != 0){
-        napi_create_int32(env, 4001, &result);
+        OH_LOG_INFO(LOG_APP, "OH_AVSession_Create failed");
+        napi_create_int32(env, ret, &result);
         return result;
     }
     AVSession_ErrCode avErrCode = OH_AVSession_Activate(g_avsession);
@@ -817,7 +818,8 @@ static napi_value AVSessionDeActivate(napi_env env, napi_callback_info info)
     AVSession_ErrCode ret = OH_AVSession_Create(SESSION_TYPE_AUDIO, "oh_av_session_test_001",
         "com.xxx.hmxx", "ndkxx", &g_avsession);
     if (ret != 0){
-        napi_create_int32(env, 4001, &result);
+        OH_LOG_INFO(LOG_APP, "OH_AVSession_Create failed");
+        napi_create_int32(env, ret, &result);
         return result;
     }
     AVSession_ErrCode avErrCode = OH_AVSession_Deactivate(g_avsession);
@@ -833,7 +835,8 @@ static napi_value AVSessionGetSessionId(napi_env env, napi_callback_info info)
     AVSession_ErrCode ret = OH_AVSession_Create(SESSION_TYPE_AUDIO, "oh_av_session_test_001",
         "com.xxx.hmxx", "ndkxx", &g_avsession);
     if (ret != 0){
-        napi_create_int32(env, 4001, &result);
+        OH_LOG_INFO(LOG_APP, "OH_AVSession_Create failed");
+        napi_create_int32(env, ret, &result);
         return result;
     }
     const char* sessionId = "123";
@@ -850,7 +853,8 @@ static napi_value AVSessionGetSessionType(napi_env env, napi_callback_info info)
     AVSession_ErrCode ret = OH_AVSession_Create(SESSION_TYPE_AUDIO, "oh_av_session_test_001",
         "com.xxx.hmxx", "ndkxx", &g_avsession);
     if (ret != 0){
-        napi_create_int32(env, 4001, &result);
+        OH_LOG_INFO(LOG_APP, "OH_AVSession_Create failed");
+        napi_create_int32(env, ret, &result);
         return result;
     }
     AVSession_Type sessionType;
