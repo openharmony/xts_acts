@@ -800,6 +800,10 @@ static napi_value AVSessionActivate(napi_env env, napi_callback_info info)
     OH_LOG_INFO(LOG_APP, "OH_AVSession_Activate");
     AVSession_ErrCode ret = OH_AVSession_Create(SESSION_TYPE_AUDIO, "oh_av_session_test_001",
         "com.xxx.hmxx", "ndkxx", &g_avsession);
+    if (ret != 0){
+        napi_create_int32(env, 4001, &result);
+        return result;
+    }
     AVSession_ErrCode avErrCode = OH_AVSession_Activate(g_avsession);
     napi_create_int32(env, avErrCode, &result);
     OH_AVSession_Destroy(g_avsession);
@@ -812,6 +816,10 @@ static napi_value AVSessionDeActivate(napi_env env, napi_callback_info info)
     OH_LOG_INFO(LOG_APP, "OH_AVSession_Deactivate");
     AVSession_ErrCode ret = OH_AVSession_Create(SESSION_TYPE_AUDIO, "oh_av_session_test_001",
         "com.xxx.hmxx", "ndkxx", &g_avsession);
+    if (ret != 0){
+        napi_create_int32(env, 4001, &result);
+        return result;
+    }
     AVSession_ErrCode avErrCode = OH_AVSession_Deactivate(g_avsession);
     napi_create_int32(env, avErrCode, &result);
     OH_AVSession_Destroy(g_avsession);
@@ -824,6 +832,10 @@ static napi_value AVSessionGetSessionId(napi_env env, napi_callback_info info)
     OH_LOG_INFO(LOG_APP, "OH_AVSession_GetSessionId");
     AVSession_ErrCode ret = OH_AVSession_Create(SESSION_TYPE_AUDIO, "oh_av_session_test_001",
         "com.xxx.hmxx", "ndkxx", &g_avsession);
+    if (ret != 0){
+        napi_create_int32(env, 4001, &result);
+        return result;
+    }
     const char* sessionId = "123";
     AVSession_ErrCode avErrCode = OH_AVSession_GetSessionId(g_avsession, &sessionId);
     napi_create_int32(env, avErrCode, &result);
@@ -837,6 +849,10 @@ static napi_value AVSessionGetSessionType(napi_env env, napi_callback_info info)
     OH_LOG_INFO(LOG_APP, "OH_AVSession_GetSessionType");
     AVSession_ErrCode ret = OH_AVSession_Create(SESSION_TYPE_AUDIO, "oh_av_session_test_001",
         "com.xxx.hmxx", "ndkxx", &g_avsession);
+    if (ret != 0){
+        napi_create_int32(env, 4001, &result);
+        return result;
+    }
     AVSession_Type sessionType;
     AVSession_ErrCode avErrCode = OH_AVSession_GetSessionType(g_avsession, &sessionType);
     napi_create_int32(env, avErrCode, &result);
