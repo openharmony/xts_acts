@@ -139,17 +139,6 @@ export default class MediaTestBase {
     await fileio.close(fdNumber);
   }
 
-  // wait synchronously
-  msleep(time: number) {
-    return new Promise<string>((resolve, reject) => {
-      setTimeout(() => {
-        resolve("ok");
-      }, time);
-    }).then(() => {
-      console.info(`sleep ${time} over...`);
-    });
-  }
-
   // wait asynchronously
   async msleepAsync(time: number) {
     return new Promise<string>((resolve, reject) => {

@@ -216,7 +216,7 @@ function toNextStep(videoPlayer: media.VideoPlayer | null, steps: Array<string>,
         if (err == null && videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           console.info('case play success!!');
-          await mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleepAsync(PLAY_TIME);
           toNextStep(videoPlayer, steps, done);
         } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
           steps.shift();

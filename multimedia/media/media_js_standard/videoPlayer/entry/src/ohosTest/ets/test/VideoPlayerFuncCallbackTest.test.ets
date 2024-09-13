@@ -236,7 +236,7 @@ async function toNextStep(videoPlayer: media.VideoPlayer | null, steps: Array<st
         if (err == null && videoPlayer) {
           expect(videoPlayer.state).assertEqual('playing');
           console.info('case play success!!');
-          await mediaTestBase.msleep(PLAY_TIME);
+          await mediaTestBase.msleepAsync(PLAY_TIME);
           let endTime = videoPlayer.currentTime;
           expect(Math.abs(endTime - tmpStartTime - PLAY_TIME)).assertLess(DELTA_TIME);
           toNextStep(videoPlayer, steps, done);
@@ -383,7 +383,7 @@ async function toNextStep(videoPlayer: media.VideoPlayer | null, steps: Array<st
       }
       videoPlayer?.setSpeed(speedValue, async (err, speedMode) => {
         if (err == null && videoPlayer) {
-          await mediaTestBase.msleep(PLAY_TIME_1S);
+          await mediaTestBase.msleepAsync(PLAY_TIME_1S);
           expect(speedValue).assertEqual(speedMode);
           console.info('case setSpeed success and speedMode is ' + speedMode);
           checkSpeedTime(videoPlayer, speedValue, startTime);
@@ -435,7 +435,7 @@ async function toNextStep(videoPlayer: media.VideoPlayer | null, steps: Array<st
     case WAIT_EVENT:
       console.log('case ' + steps[0] + ' event')
       steps.shift();
-      await mediaTestBase.msleep(PLAY_TIME);
+      await mediaTestBase.msleepAsync(PLAY_TIME);
       toNextStep(videoPlayer, steps, done);
       break;
     case SRC_PREPARE_EVENT:
@@ -578,7 +578,7 @@ export default function VideoPlayerFuncCallbackTest() {
       let widthValue = -1;
       let heightValue = -1;
       let videoPlayer: media.VideoPlayer = await media.createVideoPlayer();
-      await mediaTestBase.msleep(sleepTime);
+      await mediaTestBase.msleepAsync(sleepTime);
       expect(videoPlayer.state).assertEqual('idle');
       console.info('case createVideoPlayer success!!');
 
@@ -611,7 +611,7 @@ export default function VideoPlayerFuncCallbackTest() {
         widthValue = width;
         heightValue = height;
       });
-      await mediaTestBase.msleep(sleepTime)
+      await mediaTestBase.msleepAsync(sleepTime)
 
       videoPlayer.url = fdPath;
       videoPlayer.setDisplaySurface(surfaceID, (err) => {
@@ -622,7 +622,7 @@ export default function VideoPlayerFuncCallbackTest() {
           mediaTestBase.printError(err, done);
         }
       });
-      await mediaTestBase.msleep(sleepTime);
+      await mediaTestBase.msleepAsync(sleepTime);
       videoPlayer.prepare((err) => {
         if (err == null) {
           expect(videoPlayer.state).assertEqual('prepared');
@@ -634,7 +634,7 @@ export default function VideoPlayerFuncCallbackTest() {
           mediaTestBase.printError(err, done);
         }
       });
-      await mediaTestBase.msleep(sleepTime);
+      await mediaTestBase.msleepAsync(sleepTime);
       videoPlayer.play((err) => {
         if (err == null) {
           expect(videoPlayer.state).assertEqual('playing');
