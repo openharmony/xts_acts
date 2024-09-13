@@ -14,7 +14,7 @@
  */
 {
   "module": {
-    "name": "entry_test",
+    "name": "relationalstore",
     "type": "feature",
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
