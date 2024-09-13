@@ -55,7 +55,7 @@
         "icon": "$media:icon",
         "description": "UIExtAbility",
         "type": "share",
-        "visible": true,
+        "exported": true,
         "srcEntrance": "./ets/UIExtensionAbility/UIExtAbility.ts"
       }
     ]

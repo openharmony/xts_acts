@@ -52,7 +52,6 @@
         "name": "CalledAbility",
         "srcEntry": "./ets/calledability/CalledAbility.ts",
         "description": "$string:CalledAbility_desc",
-        "visible": true,
         "icon": "$media:icon",
         "label": "$string:CalledAbility_label",
         "exported": false,
@@ -67,7 +66,6 @@
         "label": "$string:ThirdAbility_label",
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
-        "visible": true,
         "exported": false
       }
     ],
@@ -77,7 +75,7 @@
         "icon": "$media:icon",
         "description": "UIExtAbility",
         "type": "share",
-        "visible": true,
+        "exported": true,
         "srcEntry": "./ets/UIExtensionAbility/UIExtAbility.ts"
       }
     ],

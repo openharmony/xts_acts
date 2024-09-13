@@ -52,7 +52,6 @@
         "name": "CalledAbility",
         "srcEntry": "./ets/calledability/CalledAbility.ts",
         "description": "$string:CalledAbility_desc",
-        "visible": true,
         "icon": "$media:icon",
         "label": "$string:CalledAbility_label",
         "exported": false,
@@ -66,7 +65,7 @@
         "icon": "$media:icon",
         "description": "UIExtAbility",
         "type": "share",
-        "visible": true,
+        "exported": true,
         "srcEntry": "./ets/UIExtensionAbility/UIExtAbility.ts"
       }
     ],
