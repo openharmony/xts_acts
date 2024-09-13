@@ -1,12 +1,12 @@
 {
-    "description": "Configuration for ActsCallDataAbilityTest Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "bundle-name": "ohos.acts.aafwk.test.fasupplement",
-        "package-name": "ohos.acts.aafwk.test.fasupplement",
         "shell-timeout": "600000",
-        "testcase-timeout": "10000"
+        "testcase-timeout": "10000",
+        "bundle-name": "ohos.acts.aafwk.test.fasupplement",
+        "package-name": "ohos.acts.aafwk.test.fasupplement_test"
     },
     "kits": [
         {
@@ -15,6 +15,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

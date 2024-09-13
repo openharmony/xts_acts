@@ -1,6 +1,5 @@
 {
-    "src": [
-        "pages/index/index",
-        "pages/second/second"
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }

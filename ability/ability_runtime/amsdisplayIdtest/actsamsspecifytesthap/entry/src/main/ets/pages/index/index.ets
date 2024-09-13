@@ -12,13 +12,14 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+import file from '@system.file';
 
 @Entry
 @Component
 struct Index {
 
   aboutToAppear() {
-    console.info("start run testcase!!!!");
+    console.info("start run testcase!!!!")
   }
 
   build() {

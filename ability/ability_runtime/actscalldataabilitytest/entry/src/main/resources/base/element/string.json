@@ -1,8 +1,8 @@
 {
   "string": [
     {
-      "name": "entry_desc",
-      "value": "description"
+      "name": "module_desc",
+      "value": "module description"
     },
     {
       "name": "MainAbility_desc",
@@ -10,35 +10,11 @@
     },
     {
       "name": "MainAbility_label",
-      "value": "FaSupplement"
-    },
-    {
-      "name": "MainAbility2_desc",
-      "value": "description"
-    },
-    {
-      "name": "MainAbility2_label",
-      "value": "label"
-    },
-    {
-      "name": "MainAbility3_desc",
-      "value": "description"
-    },
-    {
-      "name": "MainAbility3_label",
-      "value": "label"
-    },
-    {
-      "name": "PageAbility_desc",
-      "value": "description"
-    },
-    {
-      "name": "PageAbility_label",
       "value": "label"
     },
     {
       "name": "DataAbility_desc",
-      "value": "hap sample empty provider"
+      "value": "description"
     }
   ]
 }
