@@ -15,44 +15,44 @@
 @Entry
 @Component
 struct lineMetrics2 {
-  @State StartIndex: number = 0
-  @State EndIndex: number = 0
-  @State Ascent: number = 0
-  @State Descent: number = 0
-  @State Height: number = 0
-  @State Width: number = 0
-  @State Left: number = 0
-  @State Baseline: number = 0
-  @State LineNumber: number = 0
-  @State TopHeight: number = 0
+  @State startIndexA: number = 0
+  @State endIndexA: number = 0
+  @State ascentA: number = 0
+  @State descentA: number = 0
+  @State heightA: number = 0
+  @State widthA: number = 0
+  @State leftA: number = 0
+  @State baselineA: number = 0
+  @State lineNumberA: number = 0
+  @State topHeightA: number = 0
   @State flags: number = 0
   @State text: string = '点击'
   controller: TextController = new TextController()
   @State textStr: string = 'qwertyu'
 
-  build() {
-    Column() {
+  build(){
+    Column(){
       Text(this.textStr, { controller: this.controller })
-      Text(this.StartIndex + '').id('LineMetrics_1')
-      Text(this.EndIndex + '').id('LineMetrics_2')
-      Text(this.TopHeight + '').id('LineMetrics_3')
-      Text(this.Ascent + '').id('LineMetrics_5')
-      Text(this.Descent + '').id('LineMetrics_6')
+      Text(this.startIndexA + '').id('LineMetrics_1')
+      Text(this.endIndexA + '').id('LineMetrics_2')
+      Text(this.topHeightA + '').id('LineMetrics_3')
+      Text(this.ascentA + '').id('LineMetrics_5')
+      Text(this.descentA + '').id('LineMetrics_6')
       Button('getLineMetrics(1)')
       .id('LineMetrics_4')
       .onClick(() => {
         let layoutManager: LayoutManager = this.controller.getLayoutManager()
         let lineMetrics = layoutManager.getLineMetrics(0)
         lineMetrics.startIndex = 1
-        this.StartIndex = Math.round(lineMetrics.startIndex)
+        this.startIndexA = Math.round(lineMetrics.startIndex)
         lineMetrics.endIndex = 7
-        this.EndIndex = Math.round(lineMetrics.endIndex)
+        this.endIndexA = Math.round(lineMetrics.endIndex)
         lineMetrics.topHeight = 10
-        this.TopHeight = Math.round(lineMetrics.topHeight)
+        this.topHeightA = Math.round(lineMetrics.topHeight)
         lineMetrics.ascent = 5
-        this.Ascent = Math.round(lineMetrics.ascent)
+        this.ascentA = Math.round(lineMetrics.ascent)
         lineMetrics.descent = 6
-        this.Descent = Math.round(lineMetrics.descent)
+        this.descentA = Math.round(lineMetrics.descent)
         console.log('aaa_1',JSON.stringify(lineMetrics))
       })
     }
