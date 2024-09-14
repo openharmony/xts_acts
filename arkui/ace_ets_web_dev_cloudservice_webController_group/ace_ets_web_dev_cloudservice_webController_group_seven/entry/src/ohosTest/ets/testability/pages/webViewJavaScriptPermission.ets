@@ -18,8 +18,8 @@ import webview from '@ohos.web.webview';
 import Utils from '../../test/Utils';
 import JSON from '@ohos.util.json';
 
-class testClass {
-  constructor() {
+class TestClass {
+  constructor(){
   }
 
   test(): string {
@@ -32,10 +32,10 @@ class testClass {
 struct WebComponent {
   webviewController: webview.WebviewController = new webview.WebviewController();
   // 声明需要注册的对象
-  @State testObj: testClass = new testClass();
+  @State testObj: TestClass = new TestClass();
   @State emitKey: string = '';
 
-  onPageShow() {
+  onPageShow(){
     let valueChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
       priority: events_emitter.EventPriority.LOW
@@ -52,7 +52,7 @@ struct WebComponent {
     }
   }
 
-  build() {
+  build(){
     Column() {
       Row() {
         Button('web click').key('webviewJavaScriptPermissionButton').onClick(async () => {
@@ -74,8 +74,8 @@ struct WebComponent {
         // 将对象注入到web端
         .javaScriptProxy({
           object: this.testObj,
-          name: "testObjName",
-          methodList: ["test"],
+          name: 'testObjName',
+          methodList: ['test'],
           controller: this.webviewController,
           // 可选参数
           asyncMethodList: [],

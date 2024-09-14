@@ -25,7 +25,7 @@ struct WebComponent {
   webviewController: webview.WebviewController = new webview.WebviewController();
   @State emitKey: string = '';
 
-  onPageShow() {
+  onPageShow(){
     let valueChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
       priority: events_emitter.EventPriority.LOW
@@ -42,7 +42,7 @@ struct WebComponent {
     }
   }
 
-  build() {
+  build(){
     Column() {
       Row() {
         Button('web click').key('webviewPressureLevelButton').onClick(async () => {
@@ -54,24 +54,23 @@ struct WebComponent {
                 webview.PressureLevel.MEMORY_PRESSURE_LEVEL_MODERATE)
               await Utils.sleep(4000)
               if (webview.PressureLevel.MEMORY_PRESSURE_LEVEL_MODERATE === 1) {
-                console.log("MEMORY_PRESSURE_LEVEL is:" + webview.PressureLevel.MEMORY_PRESSURE_LEVEL_MODERATE);
+                console.log('MEMORY_PRESSURE_LEVEL is:' + webview.PressureLevel.MEMORY_PRESSURE_LEVEL_MODERATE);
                 Utils.emitEvent('success', 20001)
               }
             }
             case 'emitWebviewPressureLevelCritical': {
-
               webview.WebviewController.trimMemoryByPressureLevel(
                 webview.PressureLevel.MEMORY_PRESSURE_LEVEL_CRITICAL)
               await Utils.sleep(4000)
               if (webview.PressureLevel.MEMORY_PRESSURE_LEVEL_CRITICAL === 2) {
-                console.log("MEMORY_PRESSURE_LEVEL is:" + webview.PressureLevel.MEMORY_PRESSURE_LEVEL_CRITICAL);
+                console.log('MEMORY_PRESSURE_LEVEL is:' + webview.PressureLevel.MEMORY_PRESSURE_LEVEL_CRITICAL);
                 Utils.emitEvent('success', 20002)
               }
             }
           }
         })
       }
-      Web({ src: "https://www.example.com", controller: this.webviewController})
+      Web({ src: '', controller: this.webviewController})
     }
   }
 }
