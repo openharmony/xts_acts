@@ -14,7 +14,7 @@
  */
 {
   "module": {
-    "name": "entry",
+    "name": "entry_main",
     "type": "entry",
     "description": "$string:module_desc",
     "mainElement": "EntryFormAbility",
