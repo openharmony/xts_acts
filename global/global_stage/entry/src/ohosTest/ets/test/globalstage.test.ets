@@ -13,20 +13,24 @@
  * limitations under the License.
  */
 
+import resourceManager from '@ohos.resourceManager';
 import Ability from '@ohos.app.ability.UIAbility'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import sendableResourceManager from '@ohos.sendableResourceManager';
+import { GlobalContext } from '../test/global';
 
 export default function globalStageTest() {
   describe("globalStageTest", () => {
     console.log('*************start globalStageTest*************');
+    let res: Context;
 
     beforeAll(async () => {
       console.info("beforeAll case");
     });
     beforeEach(() => {
       console.info("beforeEach case");
+      res = (GlobalContext.getContext().getObject('yq') as Context)
     });
     afterEach(async () => {
       console.info("afterEach case");
@@ -44,9 +48,9 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getStringSync_stagetest_0100', 0, async (done: Function) => {
-      let mgr = globalThis.yq.resourceManager;
+      let mgr: resourceManager.ResourceManager = res.resourceManager;
       try {
-        let value = mgr.getStringSync(
+        let value: string = mgr.getStringSync(
           {
             bundleName: "ohos.acts.globalstage",
             moduleName: "phone",
@@ -71,9 +75,9 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getStringSync_stagetest_0200', 0, async (done: Function) => {
-      let mgr = globalThis.yq.resourceManager;
+      let mgr: resourceManager.ResourceManager = res.resourceManager;
       try {
-        let value = mgr.getStringSync(
+        let value: string = mgr.getStringSync(
           {
             bundleName: "ohos.acts.globalstage",
             moduleName: "phone",
@@ -99,11 +103,10 @@ export default function globalStageTest() {
      */
     it('getStringByNameSync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getStringByNameSync('app_name');
+        let value: string = res.resourceManager.getStringByNameSync('app_name');
         console.log('getStringByNameSync_stagetest_0100 1' + value);
         expect(value).assertEqual('ohosProject %d');
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getStringByNameSync_stagetest_0100 2' + e.code);
         console.log('getStringByNameSync_stagetest_0100 3' + e.message);
       }
@@ -120,11 +123,10 @@ export default function globalStageTest() {
      */
     it('getStringByNameSync_stagetest_0200', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getStringByNameSync('app_name', 100);
+        let value: string = res.resourceManager.getStringByNameSync('app_name', 100);
         console.log('getStringByNameSync_stagetest_0200 1' + value);
         expect(value).assertEqual('ohosProject 100');
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getStringByNameSync_stagetest_0200 2' + e.code);
         console.log('getStringByNameSync_stagetest_0200 3' + e.message);
       }
@@ -140,7 +142,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getStringValue_stage_test_0100', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getStringValue({
+      res.resourceManager.getStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.string.app_name').id
@@ -161,7 +163,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getStringValue_stage_test_0200', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getStringValue({
+      res.resourceManager.getStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.string.app_name').id
@@ -182,7 +184,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getStringArrayValue_stage_test_0100', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getStringArrayValue({
+      res.resourceManager.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.strarray.sizeList').id
@@ -206,7 +208,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getStringArrayValue_stage_test_0200', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getStringArrayValue({
+      res.resourceManager.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.strarray.sizeList').id
@@ -230,7 +232,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getMediaContent_stage_test_0100', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getMediaContent({
+      res.resourceManager.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.media.icon').id
@@ -250,7 +252,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getMediaContent_stage_test_0200', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getMediaContent({
+      res.resourceManager.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.media.icon').id
@@ -270,7 +272,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getMediaContent_stage_test_0300', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getMediaContent({
+      res.resourceManager.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.media.icon').id
@@ -290,7 +292,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getMediaContent_stage_test_0400', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getMediaContent({
+      res.resourceManager.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.media.icon').id
@@ -310,7 +312,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getMediaContentBase64_stage_test_0100', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getMediaContentBase64({
+      res.resourceManager.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.media.icon').id
@@ -330,7 +332,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getMediaContentBase64_stage_test_0200', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getMediaContentBase64({
+      res.resourceManager.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.media.icon').id
@@ -350,7 +352,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getMediaContentBase64_stage_test_0300', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getMediaContentBase64({
+      res.resourceManager.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.media.icon').id
@@ -370,7 +372,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getMediaContentBase64_stage_test_0400', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getMediaContentBase64({
+      res.resourceManager.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.media.icon').id
@@ -390,7 +392,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getPluralStringValue_stage_test_0100', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getPluralStringValue({
+      res.resourceManager.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.plural.plural_name').id
@@ -411,7 +413,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getPluralStringValue_stage_test_0200', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getPluralStringValue({
+      res.resourceManager.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.plural.plural_name').id
@@ -432,7 +434,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getBoolean_stage_test_0100', 0, async (done: Function) => {
-      let value = globalThis.yq.resourceManager.getBoolean({
+      let value: boolean = res.resourceManager.getBoolean({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.boolean.boolean_1').id
@@ -451,7 +453,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 0
      */
     it('getNumber_stage_test_0100', 0, async (done: Function) => {
-      let value = globalThis.yq.resourceManager.getNumber({
+      let value: number = res.resourceManager.getNumber({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.integer.integer_1').id
@@ -471,7 +473,7 @@ export default function globalStageTest() {
      */
     it('getDrawableDescriptor_stage_test_0100', 0, async (done: Function) => {
       let out = true;
-      let value = globalThis.yq.resourceManager.getDrawableDescriptor(
+      let value: DrawableDescriptor = res.resourceManager.getDrawableDescriptor(
         {
           bundleName: "ohos.acts.globalstage", moduleName: "phone", id: $r('app.media.icon').id
         });
@@ -490,7 +492,7 @@ export default function globalStageTest() {
     * @tc.desc    get the color in callback mode
     */
     it('getColor_test_0100', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getColor({
+      res.resourceManager.getColor({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.color.color_test1').id
@@ -508,7 +510,7 @@ export default function globalStageTest() {
     * @tc.desc    get the color in promise mode
     */
     it('getColor_test_0200', 0, async (done: Function) => {
-      globalThis.yq.resourceManager.getColor({
+      res.resourceManager.getColor({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.color.color_test1').id
@@ -526,7 +528,7 @@ export default function globalStageTest() {
     * @tc.desc    get the sync color in promise mode
     */
     it('getColorSync_test_0100', 0, async (done: Function) => {
-      let value = globalThis.yq.resourceManager.getColorSync({
+      let value: number = res.resourceManager.getColorSync({
         bundleName: "ohos.acts.globalstage",
         moduleName: "phone",
         id: $r('app.color.color_test1').id
@@ -547,16 +549,15 @@ export default function globalStageTest() {
      */
     it('getRawFdSync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getRawFdSync('rawfiletest.xml');
+        let value: resourceManager.RawFileDescriptor = res.resourceManager.getRawFdSync('rawfiletest.xml');
         console.log('getRawFdSync_stagetest_0100 1' + value.fd);
         console.log('getRawFdSync_stagetest_0100 1' + value.offset);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getRawFdSync_stagetest_0100 2' + e.code);
         console.log('getRawFdSync_stagetest_0100 3' + e.message);
       }
-      globalThis.yq.resourceManager.closeRawFdSync('rawfiletest.xml');
+      res.resourceManager.closeRawFdSync('rawfiletest.xml');
       done();
     })
 
@@ -570,12 +571,11 @@ export default function globalStageTest() {
      */
     it('getRawFileListSync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getRawFileListSync('');
+        let value: Array<string> = res.resourceManager.getRawFileListSync('');
         console.log('getRawFileListSync_stagetest_0100 1' + value);
         console.log('getRawFileListSync_stagetest_0100 1' + value.length);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getRawFileListSync_stagetest_0100 2' + e.code);
         console.log('getRawFileListSync_stagetest_0100 3' + e.message);
       }
@@ -592,11 +592,11 @@ export default function globalStageTest() {
      */
     it('getRawFileContentSync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getRawFileContentSync('rawfiletest.xml');
+        let value: Uint8Array =
+          res.resourceManager.getRawFileContentSync('rawfiletest.xml');
         console.log('getRawFileContentSync_stagetest_0100 1' + value);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getRawFileContentSync_stagetest_0100 2' + e.code);
         console.log('getRawFileContentSync_stagetest_0100 3' + e.message);
       }
@@ -613,11 +613,10 @@ export default function globalStageTest() {
      */
     it('getMediaContentSync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getMediaContentSync($r('app.media.icon').id);
+        let value: Uint8Array = res.resourceManager.getMediaContentSync($r('app.media.icon').id);
         console.log('getMediaContentSync_stagetest_0100 1' + value);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getMediaContentSync_stagetest_0100 2' + e.code);
         console.log('getMediaContentSync_stagetest_0100 3' + e.message);
       }
@@ -634,15 +633,14 @@ export default function globalStageTest() {
      */
     it('getMediaContentSync_stagetest_0200', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getMediaContentSync({
+        let value: Uint8Array = res.resourceManager.getMediaContentSync({
           bundleName: "ohos.acts.globalstage",
           moduleName: "phone",
           id: $r('app.media.icon').id
         });
         console.log('getMediaContentSync_stagetest_0200 1' + value);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getMediaContentSync_stagetest_0200 2' + e.code);
         console.log('getMediaContentSync_stagetest_0200 3' + e.message);
       }
@@ -659,11 +657,10 @@ export default function globalStageTest() {
      */
     it('getMediaContentBase64Sync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getMediaContentBase64Sync($r('app.media.icon').id);
+        let value: string = res.resourceManager.getMediaContentBase64Sync($r('app.media.icon').id);
         console.log('getMediaContentBase64Sync_stagetest_0100 1' + value);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getMediaContentBase64Sync_stagetest_0100 2' + e.code);
         console.log('getMediaContentBase64Sync_stagetest_0100 3' + e.message);
       }
@@ -680,15 +677,14 @@ export default function globalStageTest() {
      */
     it('getMediaContentBase64Sync_stagetest_0200', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getMediaContentBase64Sync({
+        let value: string = res.resourceManager.getMediaContentBase64Sync({
           bundleName: "ohos.acts.globalstage",
           moduleName: "phone",
           id: $r('app.media.icon').id
         });
         console.log('getMediaContentBase64Sync_stagetest_0200 1' + value);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getMediaContentBase64Sync_stagetest_0200 2' + e.code);
         console.log('getMediaContentBase64Sync_stagetest_0200 3' + e.message);
       }
@@ -705,11 +701,10 @@ export default function globalStageTest() {
      */
     it('getPluralStringValueSync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getPluralStringValueSync($r('app.plural.plural_name').id, 0);
+        let value: string = res.resourceManager.getPluralStringValueSync($r('app.plural.plural_name').id, 0);
         console.log('getPluralStringValueSync_stagetest_0100 1' + value);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getPluralStringValueSync_stagetest_0100 2' + e.code);
         console.log('getPluralStringValueSync_stagetest_0100 3' + e.message);
       }
@@ -726,15 +721,14 @@ export default function globalStageTest() {
      */
     it('getPluralStringValueSync_stagetest_0200', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getPluralStringValueSync({
+        let value: string = res.resourceManager.getPluralStringValueSync({
           bundleName: "ohos.acts.globalstage",
           moduleName: "phone",
           id: $r('app.plural.plural_name').id
-        });
+        }, 1);
         console.log('getPluralStringValueSync_stagetest_0200 1' + value);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getPluralStringValueSync_stagetest_0200 2' + e.code);
         console.log('getPluralStringValueSync_stagetest_0200 3' + e.message);
       }
@@ -751,11 +745,11 @@ export default function globalStageTest() {
      */
     it('getStringArrayValueSync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getStringArrayValueSync($r('app.strarray.sizeList').id);
+        let value: Array<string> =
+          res.resourceManager.getStringArrayValueSync($r('app.strarray.sizeList').id);
         console.log('getStringArrayValueSync_stagetest_0100 1' + value);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getStringArrayValueSync_stagetest_0100 2' + e.code);
         console.log('getStringArrayValueSync_stagetest_0100 3' + e.message);
       }
@@ -772,15 +766,14 @@ export default function globalStageTest() {
      */
     it('getStringArrayValueSync_stagetest_0200', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getStringArrayValueSync({
+        let value: Array<string> = res.resourceManager.getStringArrayValueSync({
           bundleName: "ohos.acts.globalstage",
           moduleName: "phone",
           id: $r('app.strarray.sizeList').id
         });
         console.log('getStringArrayValueSync_stagetest_0200 1' + value);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getStringArrayValueSync_stagetest_0200 2' + e.code);
         console.log('getStringArrayValueSync_stagetest_0200 3' + e.message);
       }
@@ -797,11 +790,10 @@ export default function globalStageTest() {
      */
     it('getPluralStringByNameSync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getPluralStringByNameSync('plural_name', 2);
+        let value: string = res.resourceManager.getPluralStringByNameSync('plural_name', 2);
         console.log('getPluralStringByNameSync_stagetest_0100 1' + value);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getPluralStringByNameSync_stagetest_0100 2' + e.code);
         console.log('getPluralStringByNameSync_stagetest_0100 3' + e.message);
       }
@@ -818,11 +810,10 @@ export default function globalStageTest() {
      */
     it('getMediaByNameSync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getMediaByNameSync('icon');
+        let value: Uint8Array = res.resourceManager.getMediaByNameSync('icon');
         console.log('getMediaByNameSync_stagetest_0100 1' + value);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getMediaByNameSync_stagetest_0100 2' + e.code);
         console.log('getMediaByNameSync_stagetest_0100 3' + e.message);
       }
@@ -839,11 +830,10 @@ export default function globalStageTest() {
      */
     it('getMediaBase64ByNameSync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getMediaBase64ByNameSync('icon');
+        let value: string = res.resourceManager.getMediaBase64ByNameSync('icon');
         console.log('getMediaBase64ByNameSync_stagetest_0100 1' + value);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getMediaBase64ByNameSync_stagetest_0100 2' + e.code);
         console.log('getMediaBase64ByNameSync_stagetest_0100 3' + e.message);
       }
@@ -860,11 +850,10 @@ export default function globalStageTest() {
      */
     it('getStringArrayByNameSync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getStringArrayByNameSync('sizeList');
+        let value: Array<string> = res.resourceManager.getStringArrayByNameSync('sizeList');
         console.log('getStringArrayByNameSync_stagetest_0100 1' + value);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getStringArrayByNameSync_stagetest_0100 2' + e.code);
         console.log('getStringArrayByNameSync_stagetest_0100 3' + e.message);
       }
@@ -881,12 +870,11 @@ export default function globalStageTest() {
      */
     it('getConfigurationSync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getConfigurationSync();
+        let value: resourceManager.Configuration = res.resourceManager.getConfigurationSync();
         console.log('getStringArrayByNameSync_stagetest_0100 1' + value.locale);
         console.log('getStringArrayByNameSync_stagetest_0100 1' + value.direction);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getConfigurationSync_stagetest_0100 2' + e.code);
         console.log('getConfigurationSync_stagetest_0100 3' + e.message);
       }
@@ -903,12 +891,11 @@ export default function globalStageTest() {
      */
     it('getDeviceCapabilitySync_stagetest_0100', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getDeviceCapabilitySync();
+        let value: resourceManager.DeviceCapability = res.resourceManager.getDeviceCapabilitySync();
         console.log('getDeviceCapabilitySync_stagetest_0100 1' + value.screenDensity);
         console.log('getDeviceCapabilitySync_stagetest_0100 1' + value.deviceType);
         expect(value !== null).assertTrue();
-      }
-      catch (e) {
+      } catch (e) {
         console.log('getDeviceCapabilitySync_stagetest_0100 2' + e.code);
         console.log('getDeviceCapabilitySync_stagetest_0100 3' + e.message);
       }
@@ -925,7 +912,7 @@ export default function globalStageTest() {
      */
     it('SUB_GLOBAL_GetLocales_0010', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getLocales();
+        let value: string = res.resourceManager.getLocales().toString();
         console.log('SUB_GLOBAL_GetLocales_0010' + value);
         expect(value == 'en-US,zh-CN').assertTrue();
       } catch (e) {
@@ -943,11 +930,11 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_GLOBAL_GetSymbol_0010', 0, async (done) => {
+    it('SUB_GLOBAL_GetSymbol_0010', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getSymbol(0x02000006);
+        let value: number = res.resourceManager.getSymbol($r('app.symbol.symbolTest1').id);
         console.log('SUB_GLOBAL_Getsymbol_0010_value' + value);
-        expect(value == '983043').assertTrue();
+        expect(value == 983043).assertTrue();
       } catch (e) {
         console.log('SUB_GLOBAL_GetSymbol_0010_errorCode' + e.code);
         console.log('SUB_GLOBAL_GetSymbol_0010_errorMessage' + e.message);
@@ -965,7 +952,7 @@ export default function globalStageTest() {
      */
     it('SUB_GLOBAL_GetSymbol_0130', 0, async (done: Function) => {
       try {
-        let value = globalThis.yq.resourceManager.getSymbolByName('symbolTest1');
+        let value: number = res.resourceManager.getSymbolByName('symbolTest1');
         console.log('SUB_GLOBAL_Getsymbol_0130' + value);
         expect(value == 983043).assertTrue();
       } catch (e) {
@@ -975,106 +962,111 @@ export default function globalStageTest() {
       done();
     })
 
-    it('SUB_GOLBAL_REMSGR_isRawDir_0010',0,async ()=>{
+    it('SUB_GOLBAL_REMSGR_isRawDir_0010', 0, async () => {
       try {
-        let value = globalThis.yq.resourceManager.isRawDir('rawfiletest.xml');
-        console.log('SUB_GOLBAL_REMSGR_isRawDir_0010_value'+value);
-        expect(value==false).assertTrue();
-      }catch (e){
-        console.log('SUB_GOLBAL_REMSGR_isRawDir_0010_errorCode'+e.code);
-        console.log('SUB_GOLBAL_REMSGR_isRawDir_0010_errorMessage'+e.message);
+        let value: boolean = res.resourceManager.isRawDir('rawfiletest.xml');
+        console.log('SUB_GOLBAL_REMSGR_isRawDir_0010_value' + value);
+        expect(value == false).assertTrue();
+      } catch (e) {
+        console.log('SUB_GOLBAL_REMSGR_isRawDir_0010_errorCode' + e.code);
+        console.log('SUB_GOLBAL_REMSGR_isRawDir_0010_errorMessage' + e.message);
       }
     })
 
-    it('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010',0,async ()=>{
+    it('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010', 0, async () => {
       try {
-        let value = globalThis.yq.resourceManager.getOverrideConfiguration();
-        console.log('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010_value'+value.mnc);
-        expect(value.mnc==0).assertTrue();
-      }catch (e){
-        console.log('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010_errorCode'+e.code);
-        console.log('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010_errorMessage'+e.message);
+        let value: resourceManager.Configuration = res.resourceManager.getOverrideConfiguration();
+        console.log('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010_value' + value.mnc);
+        expect(value.mnc == 0).assertTrue();
+      } catch (e) {
+        console.log('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010_errorCode' + e.code);
+        console.log('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010_errorMessage' + e.message);
       }
     })
 
-    it('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010',0,async ()=>{
+    it('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010', 0, async () => {
       try {
-        let completeOverrideConfiguration:resourceManager.Configuration= {
-          mcc : 460,
-          mnc : 101,
-          locale : 'en-US',
+        let completeOverrideConfiguration: resourceManager.Configuration = {
+          mcc: 460,
+          mnc: 101,
+          locale: 'en-US',
           direction: resourceManager.Direction.DIRECTION_HORIZONTAL,
-          deviceType:resourceManager.DeviceType.DEVICE_TYPE_PHONE,
-          colorMode:1,
-          screenDensity:resourceManager.ScreenDensity.SCREEN_SDPI
+          deviceType: resourceManager.DeviceType.DEVICE_TYPE_PHONE,
+          colorMode: 1,
+          screenDensity: resourceManager.ScreenDensity.SCREEN_SDPI
         }
-        let value = globalThis.yq.resourceManager.getOverrideResourceManager(completeOverrideConfiguration);
-        console.log('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010_value'+value.getOverrideConfiguration().mcc);
-        expect(value.getOverrideConfiguration().mcc==460).assertTrue();
-      }catch (e){
-        console.log('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010_errorCode'+e.code);
-        console.log('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010_errorMessage'+e.message);
+
+        let value =
+          res.resourceManager.getOverrideResourceManager(completeOverrideConfiguration);
+        console.log('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010_value' + value.getOverrideConfiguration().mcc);
+        expect(value.getOverrideConfiguration().mcc == 460).assertTrue();
+      } catch (e) {
+        console.log('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010_errorCode' + e.code);
+        console.log('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010_errorMessage' + e.message);
       }
     })
 
-    it('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010',0,async ()=>{
+    it('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010', 0, async () => {
       try {
-        let completeOverrideConfiguration:resourceManager.Configuration= {
-          mcc : 460,
-          mnc : 101,
-          locale : 'en-US',
+        let completeOverrideConfiguration: resourceManager.Configuration = {
+          mcc: 461,
+          mnc: 101,
+          locale: 'en-US',
           direction: resourceManager.Direction.DIRECTION_HORIZONTAL,
-          deviceType:resourceManager.DeviceType.DEVICE_TYPE_PHONE,
-          colorMode:1,
-          screenDensity:resourceManager.ScreenDensity.SCREEN_SDPI
+          deviceType: resourceManager.DeviceType.DEVICE_TYPE_PHONE,
+          colorMode: 1,
+          screenDensity: resourceManager.ScreenDensity.SCREEN_SDPI
         }
-        let value = globalThis.yq.resourceManager.getOverrideResourceManager();
-        console.log('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010_value-before'+value.getOverrideConfiguration().mcc);
-        expect(value.getOverrideConfiguration().mcc==0).assertTrue();
+
+        let value = res.resourceManager.getOverrideResourceManager();
+        console.log('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010_value-before' +
+        value.getOverrideConfiguration().mcc);
+        expect(value.getOverrideConfiguration().mcc != 461).assertTrue();
         value.updateOverrideConfiguration(completeOverrideConfiguration);
-        console.log('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010_value-after'+value.getOverrideConfiguration().mcc);
-        expect(value.getOverrideConfiguration().mcc==460).assertTrue();
-      }catch (e){
-        console.log('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010_errorCode'+e.code);
-        console.log('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010_errorMessage'+e.message);
+        console.log('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010_value-after' +
+        value.getOverrideConfiguration().mcc);
+        expect(value.getOverrideConfiguration().mcc == 461).assertTrue();
+      } catch (e) {
+        console.log('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010_errorCode' + e.code);
+        console.log('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010_errorMessage' + e.message);
       }
     })
 
-    it('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010',0,async ()=>{
+    it('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010', 0, async () => {
       try {
-        let resource:resourceManager.Resource= {
+        let resource: resourceManager.Resource = {
           bundleName: 'com.example.myapplication',
           moduleName: 'entry',
           id: $r('app.string.module_desc').id,
-          params:["sdfd",123],
-          type:10001,
+          params: ["sdfd", 123],
+          type: 10001,
         }
         let value = sendableResourceManager.resourceToSendableResource(resource);
-        console.log('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010_value'+value.type);
-        expect(value.type==10001).assertTrue();
-      }catch (e){
-        console.log('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010_errorCode'+e.code);
-        console.log('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010_errorMessage'+e.message);
+        console.log('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010_value' + value.type);
+        expect(value.type == 10001).assertTrue();
+      } catch (e) {
+        console.log('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010_errorCode' + e.code);
+        console.log('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010_errorMessage' + e.message);
       }
     })
 
-    it('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010',0,async ()=>{
+    it('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010', 0, async () => {
       try {
-        let resource:resourceManager.Resource= {
+        let resource: resourceManager.Resource = {
           bundleName: 'com.example.myapplication',
           moduleName: 'entry',
           id: $r('app.string.module_desc').id,
-          params:["sdfd",123],
-          type:10001,
+          params: ["sdfd", 123],
+          type: 10001,
         }
-        let sendableresource= sendableResourceManager.resourceToSendableResource(resource);
+        let sendableresource = sendableResourceManager.resourceToSendableResource(resource);
         let value = sendableResourceManager.sendableResourceToResource(sendableresource);
-        value.type=10002
-        console.log('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010_value'+value.type);
-        expect(value.type==10002).assertTrue();
-      }catch (e){
-        console.log('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010_errorCode'+e.code);
-        console.log('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010_errorMessage'+e.message);
+        value.type = 10002
+        console.log('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010_value' + value.type);
+        expect(value.type == 10002).assertTrue();
+      } catch (e) {
+        console.log('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010_errorCode' + e.code);
+        console.log('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010_errorMessage' + e.message);
       }
     })
 
