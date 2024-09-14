@@ -18,6 +18,7 @@ import graphicTextClass from './graphicTextClass.test'
 import graphicTextEnum from './graphicTextEnum.test'
 import graphicTextInterface from './graphicTextInterface.test'
 import LineMetricsTest from './LineMetricsTest.test'
+import LineMetricsTwoTest from './LineMetricsTwoTest.test'
 
 export default function testsuite() {
   graphicTextATest()
@@ -25,5 +26,6 @@ export default function testsuite() {
   graphicTextClass();
   graphicTextEnum();
   graphicTextInterface(); 
-  LineMetricsTest()
+  LineMetricsTest();
+  LineMetricsTwoTest()
 }
