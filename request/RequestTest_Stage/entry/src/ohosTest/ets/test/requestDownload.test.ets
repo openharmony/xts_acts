@@ -1758,5 +1758,56 @@ export default function requestDownloadJSUnit() {
       });
     });
 
+    /**
+     * @tc.number    SUB_Request_download_Default_0100
+     * @tc.name      SUB_Request_download_Default_0100
+     * @tc.desc      download pass on header task.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_download_Default_0100', 0, async (done: Function) => {
+      console.info('-----------------------SUB_Request_download_Default_0100 is starting-----------------------');
+      let downloadFilePath = `${globalThis.abilityContext.cacheDir}/test.apk`
+      console.info('====>downloadFileConfig:' + `${globalThis.abilityContext.cacheDir}/test.apk`)
+      let downloadFileConfig: request.DownloadConfig = {
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        filePath: undefined,
+        header: undefined,
+        enableMetered: undefined,
+        enableRoaming: undefined,
+        description: undefined,
+        networkType: undefined,
+        title: undefined,
+        background: undefined,
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask)=>{
+        console.info('====>SUB_Request_download_Default_0100 downloadTask: ' + downloadTask);
+        let completeProgress = async () => {
+          try {
+            downloadTask.off('complete');
+            console.info('====>SUB_Request_download_Default_0100 completeProgress success: ');
+            await deleteTask(downloadTask, downloadFilePath);
+            expect(downloadTask !== null).assertTrue();
+            done();
+          } catch (err) {
+            console.info('====>SUB_Request_download_Default_0100 completeProgress err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+
+        try{
+          if(err){
+            console.info('====>SUB_Request_download_Default_0100 downloadFile fail: ' + JSON.stringify(err));
+            expect().assertFail();
+          }
+          downloadTask.on('complete', completeProgress);
+        } catch (error) {
+          await deleteTask(downloadTask, downloadFilePath)
+          console.info('====>SUB_Request_download_Default_0100 catch error: ' + error);
+        }
+      });
+    });
+
   });
 }
