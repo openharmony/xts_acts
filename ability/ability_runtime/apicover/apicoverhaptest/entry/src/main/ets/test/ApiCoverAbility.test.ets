@@ -425,7 +425,7 @@ export default function ApiCoverTest() {
       globalThis.abilityContext.resourceManager.getConfiguration((err, data) => {
         if(err == undefined){
           console.log(`Ability: getConfiguration success: ${JSON.stringify(data)}`);
-          console.log(`Ability: getConfiguration success: JSON.stringify(data.direction)`);
+          console.log(`Ability: getConfiguration success: ${JSON.stringify(data.direction)}`);
           expect(0).assertEqual(data.direction)
           done()
         }else{
@@ -814,7 +814,7 @@ export default function ApiCoverTest() {
       await appManagerNew.getRunningProcessInformation().then((data)=>{
         console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}`);
         for (let i = 0; i < data.length; i++) {
-          console.log(`${TAG} getRunningProcessInformation${i} : JSON.stringify(data[i])`);
+          console.log(`${TAG} getRunningProcessInformation${i} : ${JSON.stringify(data[i])}`);
           expect(typeof (data[i].pid)).assertEqual("number");
           expect(data[i].pid).assertLarger(0);
           expect(typeof (data[i].uid)).assertEqual("number");
@@ -846,7 +846,7 @@ export default function ApiCoverTest() {
         console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}
         err: ${JSON.stringify(err)}`);
         for (let i = 0; i < data.length; i++) {
-          console.log(`${TAG} getRunningProcessInformation${i} : JSON.stringify(data[i])`);
+          console.log(`${TAG} getRunningProcessInformation${i} : ${JSON.stringify(data[i])}`);
           expect(typeof (data[i].pid)).assertEqual("number");
           expect(data[i].pid).assertLarger(0);
           expect(typeof (data[i].uid)).assertEqual("number");
@@ -875,7 +875,7 @@ export default function ApiCoverTest() {
       await globalThis.applicationContext.getRunningProcessInformation().then((data)=>{
         console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}`);
         for (let i = 0; i < data.length; i++) {
-          console.log(`${TAG} getRunningProcessInformation${i} : JSON.stringify(data[i])`);
+          console.log(`${TAG} getRunningProcessInformation${i} : ${JSON.stringify(data[i])}`);
           expect(typeof (data[i].pid)).assertEqual("number");
           expect(data[i].pid).assertLarger(0);
           expect(typeof (data[i].uid)).assertEqual("number");
@@ -907,7 +907,7 @@ export default function ApiCoverTest() {
         console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}
         err: ${JSON.stringify(err)}`);
         for (let i = 0; i < data.length; i++) {
-          console.log(`${TAG} getRunningProcessInformation${i} : JSON.stringify(data[i])`);
+          console.log(`${TAG} getRunningProcessInformation${i} : ${JSON.stringify(data[i])}`);
           expect(typeof (data[i].pid)).assertEqual("number");
           expect(data[i].pid).assertLarger(0);
           expect(typeof (data[i].uid)).assertEqual("number");
