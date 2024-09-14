@@ -22,7 +22,7 @@ class TestClass {
   constructor(){
   }
 
-  test(): string {
+  test(): string{
     return 'ArkTS Hello World!';
   }
 }
