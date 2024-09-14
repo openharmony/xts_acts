@@ -17,7 +17,17 @@ import rpc from '@ohos.rpc';
 import fileio from '@ohos.fileio';
 import FA from '@ohos.ability.featureAbility';
 import { describe, expect, beforeAll, it } from '@ohos/hypium';
+import assertDeepEquals from './assertDeepEquals'
 let gIRemoteObject = null;
+
+
+function assertArrayElementEqual(actual, expected) {
+    let result = assertDeepEquals(actual, expected)
+    expect(result).assertTrue();
+}
+
+
+
 export default function ActsRpcClientJsTest() {
     describe('ActsRpcClientJsTest', function () {
         console.info("-----------------------SUB_DSoftbus_IPC_API_MessageParce_Test is starting-----------------------");
@@ -778,13 +788,6 @@ export default function ActsRpcClientJsTest() {
             }
         }
 
-        function assertArrayElementEqual(actual, expected) {
-            expect(actual.byteLength).assertEqual(expected.byteLength);
-            for (let i = 0; i < actual.byteLength; i++) {
-                expect(actual[i]).assertEqual(expected[i]);
-            }
-        }
-
         /*
          * @tc.number  : SUB_DSoftbus_IPC_API_MessageSequence_0010
          * @tc.name    : test Call the writeinterfacetoken interface, write the interface descriptor, and read interfacetoken
@@ -963,7 +966,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_SHORTARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readShortArray()).assertDeepEquals(wShortArryData);
+                    assertArrayElementEqual(result.reply.readShortArray(), wShortArryData)
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1001,7 +1004,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let rShortArryData = [];
                     result.reply.readShortArray(rShortArryData);
-                    expect(rShortArryData).assertDeepEquals(wShortArryData);
+                    assertArrayElementEqual(rShortArryData, wShortArryData)
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1033,7 +1036,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_SHORTARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readShortArray()).assertDeepEquals(wShortArryData);
+                    assertArrayElementEqual(result.reply.readShortArray(), wShortArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1066,7 +1069,7 @@ export default function ActsRpcClientJsTest() {
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_SHORTARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
                     let erShortArryData = [32767, -32768];
-                    expect(result.reply.readShortArray()).assertDeepEquals(erShortArryData);
+                    assertArrayElementEqual(result.reply.readShortArray(), erShortArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1127,7 +1130,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_LONGARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readLongArray()).assertDeepEquals(wLongArryData);
+                    assertArrayElementEqual(result.reply.readLongArray(), wLongArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1165,7 +1168,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let rLongArryData = [];
                     result.reply.readLongArray(rLongArryData);
-                    expect(rLongArryData).assertDeepEquals(wLongArryData);
+                    assertArrayElementEqual(rLongArryData, wLongArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1199,7 +1202,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let rLongArryData = [];
                     result.reply.readLongArray(rLongArryData);
-                    expect(rLongArryData).assertDeepEquals(wLongArryData);
+                    assertArrayElementEqual(rLongArryData, wLongArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1295,7 +1298,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_DOUBLEARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readDoubleArray()).assertDeepEquals(wDoubleArryData);
+                    assertArrayElementEqual(result.reply.readDoubleArray(), wDoubleArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1333,7 +1336,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let rDoubleArryData = [];
                     result.reply.readDoubleArray(rDoubleArryData);
-                    expect(rDoubleArryData).assertDeepEquals(wDoubleArryData);
+                    assertArrayElementEqual(rDoubleArryData, wDoubleArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1365,7 +1368,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_DOUBLEARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readDoubleArray()).assertDeepEquals(wDoubleArryData);
+                    assertArrayElementEqual(result.reply.readDoubleArray(), wDoubleArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1460,7 +1463,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_BOOLEANARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readBooleanArray()).assertDeepEquals(wBooleanArryData);
+                    assertArrayElementEqual(result.reply.readBooleanArray(), wBooleanArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1502,7 +1505,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let rBooleanArryData = [];
                     result.reply.readBooleanArray(rBooleanArryData);
-                    expect(rBooleanArryData).assertDeepEquals(wBooleanArryData);
+                    assertArrayElementEqual(rBooleanArryData, wBooleanArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1535,7 +1538,7 @@ export default function ActsRpcClientJsTest() {
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_BOOLEANARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
                     let eCharArrayData = [true, false, false];
-                    expect(result.reply.readBooleanArray()).assertDeepEquals(eCharArrayData);
+                    assertArrayElementEqual(result.reply.readBooleanArray(), eCharArrayData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1600,7 +1603,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_CHARARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readCharArray()).assertDeepEquals(wCharArryData);
+                    assertArrayElementEqual(result.reply.readCharArray(), wCharArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1638,7 +1641,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let rCharArryData = [];
                     result.reply.readCharArray(rCharArryData);
-                    expect(rCharArryData).assertDeepEquals(wCharArryData);
+                    assertArrayElementEqual(rCharArryData, wCharArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1672,7 +1675,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let eCharArrayData = [96, 0, 97];
                     let readchardata = result.reply.readCharArray();
-                    expect(readchardata).assertDeepEquals(eCharArrayData);
+                    assertArrayElementEqual(readchardata, eCharArrayData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1733,7 +1736,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_STRINGARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readStringArray()).assertDeepEquals(wStringArryData);
+                    assertArrayElementEqual(result.reply.readStringArray(), wStringArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1770,7 +1773,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let rStringArryData = [];
                     result.reply.readStringArray(rStringArryData);
-                    expect(rStringArryData).assertDeepEquals(wStringArryData);
+                    assertArrayElementEqual(rStringArryData, wStringArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1853,7 +1856,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_BYTEARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readByteArray()).assertDeepEquals(ByteArraylet);
+                    assertArrayElementEqual(result.reply.readByteArray(), ByteArraylet);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1888,7 +1891,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let newArr = new Array(5);
                     result.reply.readByteArray(newArr);
-                    expect(newArr).assertDeepEquals(ByteArraylet);
+                    assertArrayElementEqual(newArr, ByteArraylet);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -1925,7 +1928,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let newArr = new Array(5)
                     result.reply.readByteArray(newArr);
-                    expect(newArr).assertDeepEquals(ByteArraylet);
+                    assertArrayElementEqual(newArr, ByteArraylet);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -2023,7 +2026,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_INTARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readIntArray()).assertDeepEquals(intArryData);
+                    assertArrayElementEqual(result.reply.readIntArray(), intArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -2061,7 +2064,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let newArr = new Array(3);
                     result.reply.readIntArray(newArr);
-                    expect(newArr).assertDeepEquals(intArryData);
+                    assertArrayElementEqual(newArr, intArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -2093,7 +2096,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_INTARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readIntArray()).assertDeepEquals(intArryData);
+                    assertArrayElementEqual(result.reply.readIntArray(), intArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -2189,7 +2192,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_FLOATARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readFloatArray()).assertDeepEquals(floatArryData);
+                    assertArrayElementEqual(result.reply.readFloatArray(), floatArryData)
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -2224,7 +2227,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let newArr = new Array(3);
                     result.reply.readFloatArray(newArr);
-                    expect(newArr).assertDeepEquals(floatArryData);
+                    assertArrayElementEqual(newArr, floatArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -2294,7 +2297,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_FLOATARRAY, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readFloatArray()).assertDeepEquals(floatArryData);
+                    assertArrayElementEqual(result.reply.readFloatArray(), floatArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -2355,7 +2358,7 @@ export default function ActsRpcClientJsTest() {
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_SHORT, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readShort()).assertDeepEquals(short);
+                    assertArrayElementEqual(result.reply.readShort(), short);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
@@ -4419,15 +4422,15 @@ export default function ActsRpcClientJsTest() {
                 data.writeParcelableArray(a);
                 await gIRemoteObject.sendMessageRequest(CODE_ALL_ARRAY_TYPE, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readByteArray()).assertDeepEquals([1, 2, 3]);
-                    expect(result.reply.readShortArray()).assertDeepEquals([4, 5, 6]);
-                    expect(result.reply.readIntArray()).assertDeepEquals([7, 8, 9]);
-                    expect(result.reply.readLongArray()).assertDeepEquals([10, 11, 12]);
-                    expect(result.reply.readFloatArray()).assertDeepEquals([1.1, 1.2, 1.3]);
-                    expect(result.reply.readDoubleArray()).assertDeepEquals([2.1, 2.2, 2.3]);
-                    expect(result.reply.readBooleanArray()).assertDeepEquals([true, true, false]);
-                    expect(result.reply.readCharArray()).assertDeepEquals([65, 97, 122]);
-                    expect(result.reply.readStringArray()).assertDeepEquals(['abc', 'seggg']);
+                    assertArrayElementEqual(result.reply.readByteArray(), [1, 2, 3]);
+                    assertArrayElementEqual(result.reply.readShortArray(), [4, 5, 6]);
+                    assertArrayElementEqual(result.reply.readIntArray(), [7, 8, 9]);
+                    assertArrayElementEqual(result.reply.readLongArray(), [10, 11, 12]);
+                    assertArrayElementEqual(result.reply.readFloatArray(), [1.1, 1.2, 1.3]);
+                    assertArrayElementEqual(result.reply.readDoubleArray(), [2.1, 2.2, 2.3]);
+                    assertArrayElementEqual(result.reply.readBooleanArray(), [true, true, false]);
+                    assertArrayElementEqual(result.reply.readCharArray(), [65, 97, 122]);
+                    assertArrayElementEqual(result.reply.readStringArray(), ['abc', 'seggg']);
                     let b = [new MySequenceable(null, null), new MySequenceable(null, null),
                     new MySequenceable(null, null)];
                     result.reply.readParcelableArray(b);
@@ -4479,31 +4482,31 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let ByteArray = new Array();
                     result.reply.readByteArray(ByteArray);
-                    expect(ByteArray).assertDeepEquals([1, 2, 3]);
+                    assertArrayElementEqual(ByteArray, [1, 2, 3]);
                     let ShortArray = new Array();
                     result.reply.readShortArray(ShortArray);
-                    expect(ShortArray).assertDeepEquals([4, 5, 6]);
+                    assertArrayElementEqual(ShortArray, [4, 5, 6]);
                     let IntArray = new Array();
                     result.reply.readIntArray(IntArray);
-                    expect(IntArray).assertDeepEquals([7, 8, 9]);
+                    assertArrayElementEqual(IntArray, [7, 8, 9]);
                     let LongArray = new Array();
                     result.reply.readLongArray(LongArray);
-                    expect(LongArray).assertDeepEquals([10, 11, 12]);
+                    assertArrayElementEqual(LongArray, [10, 11, 12]);
                     let FloatArray = new Array();
                     result.reply.readFloatArray(FloatArray);
-                    expect(FloatArray).assertDeepEquals([1.1, 1.2, 1.3]);
+                    assertArrayElementEqual(FloatArray,[1.1, 1.2, 1.3]);
                     let DoubleArray = new Array();
                     result.reply.readDoubleArray(DoubleArray);
-                    expect(DoubleArray).assertDeepEquals([2.1, 2.2, 2.3]);
+                    assertArrayElementEqual(DoubleArray,[2.1, 2.2, 2.3]);
                     let BooleanArray = new Array();
                     result.reply.readBooleanArray(BooleanArray);
-                    expect(BooleanArray).assertDeepEquals([true, true, false]);
+                     assertArrayElementEqual(BooleanArray,[true, true, false]);
                     let CharArray = new Array();
                     result.reply.readCharArray(CharArray);
-                    expect(CharArray).assertDeepEquals([65, 97, 122]);
+                     assertArrayElementEqual(CharArray,[65, 97, 122]);
                     let StringArray = new Array();
                     result.reply.readStringArray(StringArray);
-                    expect(StringArray).assertDeepEquals(['abc', 'seggg']);
+                     assertArrayElementEqual(StringArray,['abc', 'seggg']);
                     let b = [new MySequenceable(null, null), new MySequenceable(null, null),
                     new MySequenceable(null, null)];
                     result.reply.readParcelableArray(b);
@@ -5771,7 +5774,7 @@ export default function ActsRpcClientJsTest() {
                 let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.INT8_ARRAY);
                 let int8Array = new Int8Array(arrayBuffer);
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1490 int8Array is:" + int8Array);
-                expect(int8View).assertDeepEquals(int8Array);
+                 assertArrayElementEqual(int8View,int8Array);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1490 error is:" + error);
                 expect(error == null).assertTrue();
@@ -5804,7 +5807,7 @@ export default function ActsRpcClientJsTest() {
                 let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.UINT8_ARRAY);
                 let uInt8Array = new Uint8Array(arrayBuffer);
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1500 uInt8Array is:" + uInt8Array);
-                expect(uInt8View).assertDeepEquals(uInt8Array);
+                 assertArrayElementEqual(uInt8View,uInt8Array);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1500 error is:" + error);
                 expect(error == null).assertTrue();
@@ -5837,7 +5840,7 @@ export default function ActsRpcClientJsTest() {
                 let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.INT16_ARRAY);
                 let int16Array = new Int16Array(arrayBuffer);
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1510 int16Array is:" + int16Array);
-                expect(int16View).assertDeepEquals(int16Array);
+                assertArrayElementEqual(int16View,int16Array);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1510 error is:" + error);
                 expect(error == null).assertTrue();
@@ -5870,7 +5873,7 @@ export default function ActsRpcClientJsTest() {
                 let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.UINT16_ARRAY);
                 let uInt16Array = new Uint16Array(arrayBuffer);
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1520 uInt16Array is:" + uInt16Array);
-                expect(uInt16View).assertDeepEquals(uInt16Array);
+                assertArrayElementEqual(uInt16View,uInt16Array);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1520 error is:" + error);
                 expect(error == null).assertTrue();
@@ -5903,7 +5906,7 @@ export default function ActsRpcClientJsTest() {
                 let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.INT32_ARRAY);
                 let int32Array = new Int32Array(arrayBuffer);
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1530 Int32Array is:" + int32Array);
-                expect(int32View).assertDeepEquals(int32Array);
+                assertArrayElementEqual(int32View,int32Array);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1530 error is:" + error);
                 expect(error == null).assertTrue();
@@ -5936,7 +5939,7 @@ export default function ActsRpcClientJsTest() {
                 let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.UINT32_ARRAY);
                 let uInt32Array = new Uint32Array(arrayBuffer);
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1540 Uint32Array is:" + uInt32Array);
-                expect(uInt32View).assertDeepEquals(uInt32Array);
+                assertArrayElementEqual(uInt32View,uInt32Array);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1540 error is:" + error);
                 expect(error == null).assertTrue();
@@ -5969,7 +5972,7 @@ export default function ActsRpcClientJsTest() {
                 let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.FLOAT32_ARRAY);
                 let float32Array = new Float32Array(arrayBuffer);
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1550 float32Array is:" + float32Array);
-                expect(float32View).assertDeepEquals(float32Array);
+                assertArrayElementEqual(float32View,float32Array);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1550 error is:" + error);
                 expect(error == null).assertTrue();
@@ -6002,7 +6005,7 @@ export default function ActsRpcClientJsTest() {
                 let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.FLOAT64_ARRAY);
                 let float64Array = new Float64Array(arrayBuffer);
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1560 float64Array is:" + float64Array);
-                expect(float64View).assertDeepEquals(float64Array);
+                assertArrayElementEqual(float64View,float64Array);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1560 error is:" + error);
                 expect(error == null).assertTrue();
@@ -6258,7 +6261,7 @@ export default function ActsRpcClientJsTest() {
                 let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.INT16_ARRAY);
                 let int16Array = new Int16Array(arrayBuffer);
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1640 int16Array is:" + int16Array);
-                expect(int16View).assertDeepEquals(int16Array);
+                assertArrayElementEqual(int16View,int16Array);
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1640 readArrayBuffer second time");
                 data.rewindRead(0);
                 data.reclaim();
@@ -6307,8 +6310,8 @@ export default function ActsRpcClientJsTest() {
                     let reply1 = result.reply.readArrayBuffer(rpc.TypeCode.INT8_ARRAY);
                     let reply2 = result.reply.readArrayBuffer(rpc.TypeCode.INT16_ARRAY);
                     expect(result.errCode).assertEqual(0);
-                    expect(new Int8Array(reply1)).assertDeepEquals(int8View);
-                    expect(new Int16Array(reply2)).assertDeepEquals(int16View);
+                    assertArrayElementEqual(new Int8Array(reply1),int8View);
+                    assertArrayElementEqual(new Int16Array(reply2),int16View);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1650 error is:" + error);
@@ -6973,7 +6976,7 @@ export default function ActsRpcClientJsTest() {
                 let writeShortArrayResult = data.writeShortArray(wShortArryData);
                 expect(writeShortArrayResult).assertTrue();
                 let rShortArryData = data.readShortArray();
-                expect(rShortArryData).assertDeepEquals(wShortArryData);
+                assertArrayElementEqual(rShortArryData,wShortArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7004,7 +7007,7 @@ export default function ActsRpcClientJsTest() {
                 expect(writeShortArrayResult).assertTrue();
                 let rShortArryData = [];
                 data.readShortArray(rShortArryData);
-                expect(rShortArryData).assertDeepEquals(wShortArryData);
+                 assertArrayElementEqual(rShortArryData,wShortArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7031,7 +7034,7 @@ export default function ActsRpcClientJsTest() {
                 expect(writeShortArrayResult).assertTrue();
                 let rShortArryData = [];
                 data.readShortArray(rShortArryData);
-                expect(rShortArryData).assertDeepEquals(wShortArryData);
+                assertArrayElementEqual(rShortArryData,wShortArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7145,7 +7148,7 @@ export default function ActsRpcClientJsTest() {
                 let WriteLongArray = data.writeLongArray(LongArryData);
                 expect(WriteLongArray).assertTrue();
                 let rLongArryData = data.readLongArray();
-                expect(rLongArryData).assertDeepEquals(LongArryData);
+                assertArrayElementEqual(rLongArryData,LongArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7171,7 +7174,7 @@ export default function ActsRpcClientJsTest() {
                 let writeLongArrayResult = data.writeLongArray(wLongArryData);
                 expect(writeLongArrayResult).assertTrue();
                 let rLongArryData = data.readLongArray();
-                expect(rLongArryData).assertDeepEquals(wLongArryData);
+                assertArrayElementEqual(rLongArryData,wLongArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7197,7 +7200,7 @@ export default function ActsRpcClientJsTest() {
                 let erWriteLongArray = data.writeLongArray(errorLongArryData);
                 expect(erWriteLongArray).assertTrue();
                 let erLongArryData = data.readLongArray();
-                expect(erLongArryData).assertDeepEquals(errorLongArryData);
+                assertArrayElementEqual(erLongArryData,errorLongArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7223,7 +7226,7 @@ export default function ActsRpcClientJsTest() {
                 let erWriteLongArray = data.writeLongArray(errorLongArryData);
                 expect(erWriteLongArray).assertTrue();
                 let erLongArryData = data.readLongArray();
-                expect(erLongArryData).assertDeepEquals(errorLongArryData);
+                assertArrayElementEqual(erLongArryData,errorLongArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7277,7 +7280,7 @@ export default function ActsRpcClientJsTest() {
                 let writeDoubleArrayResult = data.writeDoubleArray(wDoubleArryData);
                 expect(writeDoubleArrayResult).assertTrue();
                 let rDoubleArryData = data.readDoubleArray();
-                expect(rDoubleArryData).assertDeepEquals(wDoubleArryData);
+                assertArrayElementEqual(rDoubleArryData,wDoubleArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7308,7 +7311,7 @@ export default function ActsRpcClientJsTest() {
                 expect(writeDoubleArrayResult).assertTrue();
                 let rDoubleArryData = [];
                 data.readDoubleArray(rDoubleArryData);
-                expect(rDoubleArryData).assertDeepEquals(wDoubleArryData);
+                assertArrayElementEqual(rDoubleArryData,wDoubleArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7334,7 +7337,7 @@ export default function ActsRpcClientJsTest() {
                 let writeDoubleArrayResult = data.writeDoubleArray(wDoubleArryData);
                 expect(writeDoubleArrayResult).assertTrue();
                 let rDoubleArryData = data.readDoubleArray();
-                expect(rDoubleArryData).assertDeepEquals(wDoubleArryData);
+                assertArrayElementEqual(rDoubleArryData,wDoubleArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7411,7 +7414,7 @@ export default function ActsRpcClientJsTest() {
                 let writeBooleanArrayResult = data.writeBooleanArray(wBooleanArryData);
                 expect(writeBooleanArrayResult).assertTrue();
                 let rBooleanArryData = data.readBooleanArray();
-                expect(rBooleanArryData).assertDeepEquals(wBooleanArryData);
+                assertArrayElementEqual(rBooleanArryData,wBooleanArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7446,7 +7449,7 @@ export default function ActsRpcClientJsTest() {
                 expect(writeBooleanArrayResult).assertTrue();
                 let rBooleanArryData = [];
                 data.readBooleanArray(rBooleanArryData);
-                expect(wBooleanArryData).assertDeepEquals(rBooleanArryData);
+                assertArrayElementEqual(wBooleanArryData,rBooleanArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7473,7 +7476,7 @@ export default function ActsRpcClientJsTest() {
                 expect(WriteBooleanArrayResult).assertTrue();
                 let rBooleanArryData = data.readBooleanArray();
                 let newboolean = [true, false, false];
-                expect(rBooleanArryData).assertDeepEquals(newboolean);
+                assertArrayElementEqual(rBooleanArryData,newboolean);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7533,7 +7536,7 @@ export default function ActsRpcClientJsTest() {
                 let writeCharArrayResult = data.writeCharArray(wCharArryData);
                 expect(writeCharArrayResult).assertTrue();
                 let rCharArryData = data.readCharArray();
-                expect(wCharArryData).assertDeepEquals(rCharArryData);
+                assertArrayElementEqual(wCharArryData,rCharArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7564,7 +7567,7 @@ export default function ActsRpcClientJsTest() {
                 expect(writeCharArrayResult).assertTrue();
                 let rCharArryData = [];
                 data.readCharArray(rCharArryData);
-                expect(wCharArryData).assertDeepEquals(rCharArryData);
+                assertArrayElementEqual(wCharArryData,rCharArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7591,7 +7594,7 @@ export default function ActsRpcClientJsTest() {
                 expect(WriteCharArrayResult).assertTrue();
                 let rCharArryData = data.readCharArray();
                 let xresult = [10, 0, 20];
-                expect(rCharArryData).assertDeepEquals(xresult);
+                assertArrayElementEqual(rCharArryData,xresult);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7618,7 +7621,7 @@ export default function ActsRpcClientJsTest() {
                 let writeStringArrayResult = data.writeStringArray(wStringArryData);
                 expect(writeStringArrayResult).assertTrue();
                 let rStringArryData = data.readStringArray();
-                expect(rStringArryData).assertDeepEquals(wStringArryData);
+                assertArrayElementEqual(rStringArryData,wStringArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7646,7 +7649,7 @@ export default function ActsRpcClientJsTest() {
                 expect(writeStringArrayResult).assertTrue();
                 let rStringArryData = [];
                 data.readStringArray(rStringArryData);
-                expect(rStringArryData).assertDeepEquals(wStringArryData);
+                 assertArrayElementEqual(rStringArryData,wStringArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7698,7 +7701,7 @@ export default function ActsRpcClientJsTest() {
                 let WriteStringArrayResult = data.writeStringArray(errorStringArryData);
                 expect(WriteStringArrayResult).assertTrue();
                 let errorStringArray = data.readStringArray();
-                expect(errorStringArray).assertDeepEquals(errorStringArryData);
+                assertArrayElementEqual(errorStringArray,errorStringArryData);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -7730,7 +7733,7 @@ export default function ActsRpcClientJsTest() {
                 await gIRemoteObject.sendRequest(CODE_WRITE_BYTEARRAY, data, reply, option).then((result) => {
                     expect(result.errCode == 0).assertTrue();
                     let shortArryDataReply = result.reply.readByteArray();
-                    expect(shortArryDataReply).assertDeepEquals(ByteArraylet);
+                    assertArrayElementEqual(shortArryDataReply,ByteArraylet);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
@@ -7765,7 +7768,7 @@ export default function ActsRpcClientJsTest() {
                 await gIRemoteObject.sendRequest(CODE_WRITE_BYTEARRAY, data, reply, option).then((result) => {
                     let newArr = new Array(5);
                     result.reply.readByteArray(newArr);
-                    expect(newArr).assertDeepEquals(ByteArraylet);
+                     assertArrayElementEqual(newArr,ByteArraylet);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
@@ -7799,7 +7802,7 @@ export default function ActsRpcClientJsTest() {
                 await gIRemoteObject.sendRequest(CODE_WRITE_BYTEARRAY, data, reply, option).then((result) => {
                     let newArr = new Array(5)
                     result.reply.readByteArray(newArr);
-                    expect(newArr).assertDeepEquals(teArraylet);
+                    assertArrayElementEqual(newArr,teArraylet);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
@@ -7910,7 +7913,7 @@ export default function ActsRpcClientJsTest() {
                 await gIRemoteObject.sendRequest(CODE_WRITE_INTARRAY, data, reply, option).then((result) => {
                     expect(result.errCode == 0).assertTrue();
                     let shortArryDataReply = result.reply.readIntArray();
-                    expect(shortArryDataReply).assertDeepEquals(intArryData);
+                     assertArrayElementEqual(shortArryDataReply,intArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
@@ -7946,7 +7949,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode == 0).assertTrue();
                     let newArr = [];
                     result.reply.readIntArray(newArr);
-                    expect(newArr).assertDeepEquals(intArryData);
+                    assertArrayElementEqual(newArr,intArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
@@ -7980,7 +7983,7 @@ export default function ActsRpcClientJsTest() {
                 await gIRemoteObject.sendRequest(CODE_WRITE_INTARRAY, data, reply, option).then((result) => {
                     expect(result.errCode == 0).assertTrue();
                     let shortArryDataReply = result.reply.readIntArray();
-                    expect(shortArryDataReply).assertDeepEquals(intArryData);
+                    assertArrayElementEqual(shortArryDataReply,intArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
@@ -8051,7 +8054,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode == 0).assertTrue();
                     let shortArryDataReply = result.reply.readIntArray();
                     let newintArryData = [0, 1, 2, 3, -2147483648];
-                    expect(shortArryDataReply).assertDeepEquals(newintArryData);
+                    assertArrayElementEqual(shortArryDataReply,newintArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
@@ -8085,7 +8088,7 @@ export default function ActsRpcClientJsTest() {
                 await gIRemoteObject.sendRequest(CODE_WRITE_FLOATARRAY, data, reply, option).then((result) => {
                     expect(result.errCode == 0).assertTrue();
                     let floatArryDataReply = result.reply.readFloatArray();
-                    expect(floatArryDataReply).assertDeepEquals(floatArryData);
+                     assertArrayElementEqual(floatArryDataReply,floatArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
@@ -8121,7 +8124,7 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode == 0).assertTrue();
                     let newArr = []
                     result.reply.readFloatArray(newArr);
-                    expect(newArr).assertDeepEquals(floatArryData);
+                     assertArrayElementEqual(newArr,floatArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
@@ -8155,7 +8158,7 @@ export default function ActsRpcClientJsTest() {
                 await gIRemoteObject.sendRequest(CODE_WRITE_FLOATARRAY, data, reply, option).then((result) => {
                     expect(result.errCode == 0).assertTrue();
                     let newArr = result.reply.readFloatArray();
-                    expect(newArr).assertDeepEquals(floatArryData);
+                    assertArrayElementEqual(newArr,floatArryData);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
@@ -9492,7 +9495,7 @@ export default function ActsRpcClientJsTest() {
                 let result = data.writeRawData(rawdata, rawdata.length);
                 expect(result == true).assertTrue();
                 let newReadResult = data.readRawData(rawdata.length);
-                expect(newReadResult).assertDeepEquals(rawdata);
+                assertArrayElementEqual(newReadResult,rawdata);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
                 expect(error == null).assertTrue();
@@ -9560,7 +9563,7 @@ export default function ActsRpcClientJsTest() {
                     let reCapacity = parcel.getRawDataCapacity();
                     expect(reCapacity).assertEqual(128 * M);
                     let newReadResult = result.reply.readRawData(size);
-                    expect(newReadResult).assertDeepEquals(arr);
+                    assertArrayElementEqual(newReadResult,arr);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
@@ -9688,7 +9691,7 @@ export default function ActsRpcClientJsTest() {
                     let reCapacity = parcel.getRawDataCapacity();
                     expect(reCapacity).assertEqual(128 * M);
                     let newReadResult = result.reply.readRawData(size);
-                    expect(newReadResult).assertDeepEquals(arr);
+                     assertArrayElementEqual(newReadResult,arr);
                 });
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
@@ -10367,15 +10370,15 @@ export default function ActsRpcClientJsTest() {
                 expect(data.writeSequenceableArray(a)).assertTrue();
                 gIRemoteObject.sendRequest(CODE_ALL_ARRAY_TYPE, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readByteArray()).assertDeepEquals([1, 2, 3]);
-                    expect(result.reply.readShortArray()).assertDeepEquals([4, 5, 6]);
-                    expect(result.reply.readIntArray()).assertDeepEquals([7, 8, 9]);
-                    expect(result.reply.readLongArray()).assertDeepEquals([10, 11, 12]);
-                    expect(result.reply.readFloatArray()).assertDeepEquals([1.1, 1.2, 1.3]);
-                    expect(result.reply.readDoubleArray()).assertDeepEquals([2.1, 2.2, 2.3]);
-                    expect(result.reply.readBooleanArray()).assertDeepEquals([true, true, false]);
-                    expect(result.reply.readCharArray()).assertDeepEquals([65, 97, 122]);
-                    expect(result.reply.readStringArray()).assertDeepEquals(['abc', 'seggg']);
+                    assertArrayElementEqual(result.reply.readByteArray(),[1, 2, 3]);
+                    assertArrayElementEqual(result.reply.readShortArray(),[4, 5, 6]);
+                    assertArrayElementEqual(result.reply.readIntArray(),[7, 8, 9]);
+                    assertArrayElementEqual(result.reply.readLongArray(),[10, 11, 12]);
+                    assertArrayElementEqual(result.reply.readFloatArray(),[1.1, 1.2, 1.3]);
+                    assertArrayElementEqual(result.reply.readDoubleArray(),[2.1, 2.2, 2.3]);
+                    assertArrayElementEqual(result.reply.readBooleanArray(),[true, true, false]);
+                    assertArrayElementEqual(result.reply.readCharArray(),[65, 97, 122]);
+                    assertArrayElementEqual(result.reply.readStringArray(),['abc', 'seggg']);
                     let b = [new MySequenceable(null, null), new MySequenceable(null, null),
                     new MySequenceable(null, null)];
                     result.reply.readSequenceableArray(b);
@@ -10429,31 +10432,31 @@ export default function ActsRpcClientJsTest() {
                     expect(result.errCode).assertEqual(0);
                     let ByteArray = new Array();
                     result.reply.readByteArray(ByteArray);
-                    expect(ByteArray).assertDeepEquals([1, 2, 3]);
+                    assertArrayElementEqual(ByteArray,[1, 2, 3]);
                     let ShortArray = new Array();
                     result.reply.readShortArray(ShortArray);
-                    expect(ShortArray).assertDeepEquals([4, 5, 6]);
+                    assertArrayElementEqual(ShortArray,[4, 5, 6]);
                     let IntArray = new Array();
                     result.reply.readIntArray(IntArray);
-                    expect(IntArray).assertDeepEquals([7, 8, 9]);
+                     assertArrayElementEqual(IntArray,[7, 8, 9]);
                     let LongArray = new Array();
                     result.reply.readLongArray(LongArray);
-                    expect(LongArray).assertDeepEquals([10, 11, 12]);
+                     assertArrayElementEqual(LongArray,[10, 11, 12]);
                     let FloatArray = new Array();
                     result.reply.readFloatArray(FloatArray);
-                    expect(FloatArray).assertDeepEquals([1.1, 1.2, 1.3]);
+                    assertArrayElementEqual(FloatArray,[1.1, 1.2, 1.3]);
                     let DoubleArray = new Array();
                     result.reply.readDoubleArray(DoubleArray);
-                    expect(DoubleArray).assertDeepEquals([2.1, 2.2, 2.3]);
+                    assertArrayElementEqual(DoubleArray,[2.1, 2.2, 2.3]);
                     let BooleanArray = new Array();
                     result.reply.readBooleanArray(BooleanArray);
-                    expect(BooleanArray).assertDeepEquals([true, true, false]);
+                    assertArrayElementEqual(BooleanArray,[true, true, false]);
                     let CharArray = new Array();
                     result.reply.readCharArray(CharArray);
-                    expect(CharArray).assertDeepEquals([65, 97, 122]);
+                    assertArrayElementEqual(CharArray,[65, 97, 122]);
                     let StringArray = new Array();
                     result.reply.readStringArray(StringArray);
-                    expect(StringArray).assertDeepEquals(['abc', 'seggg']);
+                    assertArrayElementEqual(StringArray,['abc', 'seggg']);
                     let b = [new MySequenceable(null, null), new MySequenceable(null, null),
                     new MySequenceable(null, null)];
                     result.reply.readSequenceableArray(b);
