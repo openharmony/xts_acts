@@ -14,7 +14,6 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_app_assist_suite("AppCloneHap1") {
-
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "AppCloneHap1"
