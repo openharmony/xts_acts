@@ -229,23 +229,17 @@ export default function ContextDirNormalTest() {
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
-     */
+     */ 
     it('SUB_Ability_AbilityRuntime_ModuleContext_Dir_Normal_0500', 0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_ModuleContext_Dir_Normal_0500';
       hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
       try {
         let abilityUIAbilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext;
-        hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --1111');
         let context = abilityUIAbilityContext.createModuleContext('application');
-        hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --2222');
         context.area = contextConstant.AreaMode.EL3;
-        hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --3333');
         areaMode = "el3";
-        hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --4444');
         let result = checkModuleContextDir(context);
-        hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --5555');
         expect(result).assertTrue();
-        hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --6666');
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s', TAG + " error: " + JSON.stringify(e));
