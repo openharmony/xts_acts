@@ -419,7 +419,7 @@ export default function ActsNotificationPublishTest() {
         isCountDown: true,
         isFloatingIcon: true,
         label: 'notificationPublishTestLabel',
-        badgeIconStyle: 1,
+        badgeIconStyle: 6,
         showDeliveryTime: true,
         actionButtons: [
           {
@@ -474,7 +474,7 @@ export default function ActsNotificationPublishTest() {
         isCountDown: true,
         isFloatingIcon: true,
         label: 'notificationPublishTestLabel',
-        badgeIconStyle: 2,
+        badgeIconStyle: 6,
         showDeliveryTime: true,
         actionButtons: [
           {
