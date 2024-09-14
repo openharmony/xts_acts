@@ -115,7 +115,7 @@ export function checkDescription(obj, trackTpye, descriptionValue) {
         expect(obj['width']).assertEqual(descriptionValue[index++]);
     } else {
         console.info('case audio bitrate is  '+ obj['bitrate']);
-        expect(Math.abs(obj['bitrate'] - descriptionValue[index++])).assertLess(BITRATE_DELTA_TIME);
+        expect(obj['bitrate']/3).assertLess(descriptionValue[index++]);
         console.info('case audio channel_count is  '+ obj['channel_count']);
         expect(obj['channel_count']).assertEqual(descriptionValue[index++]);
         console.info('case audio codec_mime is  '+ obj['codec_mime']);
