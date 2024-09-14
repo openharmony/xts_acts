@@ -13,10 +13,7 @@
 import("//build/config/ohos/config.gni")
 import("//build/ohos.gni")
 import("//foundation/arkui/napi/napi.gni")
-comPath =
-    "../../../../../../../../../foundation/arkui/ace_engine/interfaces/native"
-compath2 = "../../../../../../../../../foundation/graphic/graphic_2d/frameworks/opengl_wrapper"
-compath3 = "../../../../../../../../../base/hiviewdfx/hilog"
+
 config("config") {
   visibility = [ ":*" ]
 
@@ -49,24 +46,24 @@ ohos_shared_library("nativerender") {
     "./common",
     "./napi",
     "./render",
-    "$comPath",
-    "$compath3/interfaces/native/kits/include",
+    "//foundation/arkui/napi/interfaces/inner_api/napi",
+    "//foundation/arkui/ace_engine/interfaces/native",
+    "//base/hiviewdfx/hilog/interfaces/native/kits/include",
   ]
   configs = [
     ":config",
     "//third_party/EGL:libEGL_public_config",
     "//third_party/openGLES:libGLES_public_config",
   ]
-  external_deps = [
-    "hilog:hilog_ndk",
-    "napi:ace_napi",
-  ]
+
   deps = [
-    "$comPath:ace_ndk",
-    "$compath2:EGL",
-    "$compath2:GLESv3",
-    "$compath3/frameworks/hilog_ndk:hilog_ndk",
+    "//foundation/arkui/ace_engine/interfaces/native:ace_ndk",
+    "//foundation/arkui/napi:ace_napi",
+    "//foundation/graphic/graphic_2d/frameworks/opengl_wrapper:EGL",
+    "//foundation/graphic/graphic_2d/frameworks/opengl_wrapper:GLESv3",
   ]
+
+  external_deps = [ "hilog:hilog_ndk" ]
 
   output_extension = "so"
 }
