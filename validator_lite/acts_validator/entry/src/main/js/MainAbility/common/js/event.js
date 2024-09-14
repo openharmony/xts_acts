@@ -25,15 +25,7 @@ export const commonFunc = function(obj, e) {
   obj.pointY = e.globalY;
   obj.timeStamp = e.timestamp;
 };
-export const dataCommon = {
-  color: '#5265ef',
-  flag: false,
-  pointX: 0,
-  pointY: 0,
-  direction: '',
-  distance: 0,
-  timeStamp: 0,
-};
+
 export const swipeFunc = function(obj, e) {
   if (obj.flag) {
     obj.color = 16766720;

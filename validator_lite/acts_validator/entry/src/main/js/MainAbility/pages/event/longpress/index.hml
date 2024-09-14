@@ -24,12 +24,12 @@ limitations under the License.
     style="background-color:{{color}}"
     onlongpress="longPressEvent"
   ></div>
-  <text style="width:90%;height:40px;"
-    >x: {{pointX}} , y: {{pointY}}</text
-  >
-  <text style="width:90%;height:80px;"
-    >timeStamp: {{timeStamp}}</text
-  >
+  <text style="width:90%;height:40px;">
+    x: {{pointX}} , y: {{pointY}}
+  </text>
+  <text style="width:90%;height:80px;">
+    timeStamp: {{timeStamp}}
+  </text>
 
   <div class="bottom-bt">
     <input type="button" value="pass" class="button" onclick="changeResult(pass)" />

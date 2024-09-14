@@ -16,10 +16,9 @@
 import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
-let index = 0;
 export default {
     data:{
-        index:0,
+        index: 0,
         intervalID: -1,
         str: '',
         title: 'timer(interval)',
@@ -29,19 +28,18 @@ export default {
 
     onDestroy() {
         console.info('onDestroy');
-        this.clearInterval();
+        this.clearTimer();
     },
 
     startInterval() {
         this.index = 0;
         this.intervalID = setInterval(()=> {
-
-            index ++;
-            this.index = index;
+            this.index = this.index + 1;
         }, 1000);
     },
 
-    clearInterval() {
+    clearTimer() {
+        console.info('clearTimer intervalID = ' + this.intervalID);
         clearInterval(this.intervalID);
     },
 
