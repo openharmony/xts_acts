@@ -16,7 +16,7 @@ import("//foundation/arkui/napi/napi.gni")
 comPath =
     "../../../../../../../../../foundation/arkui/ace_engine/interfaces/native"
 compath2 = "../../../../../../../../../foundation/graphic/graphic_2d/frameworks/opengl_wrapper"
-compath3 = "../../../../../../../../../base/hiviewdfx/hilog"
+compath3 = "../../../../../../../../../base/hiviewdfx/hilog/"
 config("config") {
   visibility = [ ":*" ]
 
