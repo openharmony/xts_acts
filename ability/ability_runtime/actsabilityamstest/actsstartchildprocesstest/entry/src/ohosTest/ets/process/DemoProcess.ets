@@ -16,7 +16,7 @@ import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
 import hilog from '@ohos.hilog';
 
 export default class DemoProcess extends ChildProcess {
-  onStart( args?: ChildProcessArgs ) {
+  onStart(args?: ChildProcessArgs) {
     let entryParams = args?.entryParams;
     let fd = args?.fds?.key1;
     hilog.info(0x0000, 'testTag', '%{public}s', 'DemoProcess OnStart() called');
