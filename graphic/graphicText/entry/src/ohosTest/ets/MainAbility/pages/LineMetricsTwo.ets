@@ -31,7 +31,7 @@ struct lineMetrics2 {
   @State textStr: string = 'qwertyu'
 
   build(){
-    Column(){
+    Column() {
       Text(this.textStr, { controller: this.controller })
       Text(this.startIndexA + '').id('LineMetrics_1')
       Text(this.endIndexA + '').id('LineMetrics_2')
