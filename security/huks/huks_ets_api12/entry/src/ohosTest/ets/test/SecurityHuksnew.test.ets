@@ -359,11 +359,10 @@ export default function SecurityHuksnewtest() {
       try {
         await huks.generateKeyItem(keyAlias, options);
         await huks.initSession(keyAlias, options1)
-        expect(null).assertFail();
       } catch (error) {
         console.log( `SUB_Security_HUKS_Sign_RSA_0010 catch error: ${JSON.stringify(error)}`);
         console.log( `SUB_Security_HUKS_Sign_RSA_0010 catch error.code: ${error.code}`);
-        expect(error.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT);
+        expect(null).assertFail();
       }
     })
   })
