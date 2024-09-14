@@ -14,7 +14,7 @@
  */
 
 import media from '@ohos.multimedia.media'
-import MediaTestBase from './NewMediaTestBase';
+import MediaTestBase from './MediaTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import resourceManager from '@ohos.resourceManager';
 

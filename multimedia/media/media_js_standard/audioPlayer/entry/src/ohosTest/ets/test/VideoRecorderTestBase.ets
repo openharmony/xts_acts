@@ -16,7 +16,7 @@
 import { expect } from '@ohos/hypium'
 import camera from '@ohos.multimedia.camera'
 import media from '@ohos.multimedia.media'
-import MediaTestBase from './NewMediaTestBase';
+import MediaTestBase from './MediaTestBase';
 import cameraObj from '@ohos.multimedia.camera';
 
 const VIDEO_TRACK = 'video_track';

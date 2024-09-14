@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import NewMediaTestBase from './NewMediaTestBase';
-import { playAudioSource } from './NewAudioPlayerTestBase';
+import NewMediaTestBase from './MediaTestBase';
+import { playAudioSource } from './AudioPlayerTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 const PLAY_TIME = 3000;

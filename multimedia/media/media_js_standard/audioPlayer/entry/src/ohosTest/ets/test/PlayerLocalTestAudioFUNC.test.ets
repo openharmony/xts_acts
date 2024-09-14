@@ -15,8 +15,8 @@
 
 import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio'
-import { playAudioSource } from './NewAudioPlayerTestBase';
-import MediaTestBase from './NewMediaTestBase';
+import { playAudioSource } from './AudioPlayerTestBase';
+import MediaTestBase from './MediaTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { resourceManager } from '@kit.LocalizationKit';
 
