@@ -51,11 +51,11 @@ export default function webViewNativeMediaPlayerProps() {
 
     /*
      *@tc.number SUB_ACE_WEB_MediaError_NETWORK_ERROR_API_0002
-     *@tc.name testWebViewNativeMediaPlayerNetworkError0002
+     *@tc.name testWebViewNativeMediaPlayerNetworkError
      *@tc.desc test MediaError.NETWORK_ERROR
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerNetworkError', 0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerNetworkError";
@@ -66,11 +66,11 @@ export default function webViewNativeMediaPlayerProps() {
     
     /*
      *@tc.number SUB_ACE_WEB_MediaError_FORMAT_ERROR_API_0003
-     *@tc.name testWebViewNativeMediaPlayerFORMATERROR0003
+     *@tc.name testWebViewNativeMediaPlayerFORMATERROR
      *@tc.desc test MediaError.FORMAT_ERROR
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerFORMATERROR', 0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerFORMATERROR";
@@ -81,11 +81,11 @@ export default function webViewNativeMediaPlayerProps() {
     
     /*
      *@tc.number SUB_ACE_WEB_MediaError_DECODE_ERROR_API_0004
-     *@tc.name testWebViewNativeMediaPlayerDECODEERROR0004
+     *@tc.name testWebViewNativeMediaPlayerDECODEERROR
      *@tc.desc test MediaError.DECODE_ERROR
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerDECODEERROR', 0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerDECODEERROR";
@@ -96,11 +96,11 @@ export default function webViewNativeMediaPlayerProps() {
     
     /*
      *@tc.number SUB_ACE_WEB_CreateNativeMediaPlayerCallback_API_0005
-     *@tc.name testWebViewNativeMediaPlayerCreateNativeMediaPlayerCallback0005
+     *@tc.name testWebViewNativeMediaPlayerCreateNativeMediaPlayerCallback
      *@tc.desc test CreateNativeMediaPlayerCallback
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewNativeMediaPlayerCreateNativeMediaPlayerCallback', 0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerCreateNativeMediaPlayerCallback";
@@ -111,11 +111,11 @@ export default function webViewNativeMediaPlayerProps() {
     
     /*
      *@tc.number SUB_ACE_WEB_NetworkState_EMPTY_API_0006
-     *@tc.name testWebViewNativeMediaPlayerNetworkStateEmpty0006
+     *@tc.name testWebViewNativeMediaPlayerNetworkStateEmpty
      *@tc.desc test NetworkState EMPTY
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebViewNativeMediaPlayerNetworkStateEmpty', 0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerNetworkStateEmpty";
@@ -126,11 +126,11 @@ export default function webViewNativeMediaPlayerProps() {
     
     /*
      *@tc.number SUB_ACE_WEB_NetworkState_IDLE_API_0007
-     *@tc.name testWebViewNativeMediaPlayerNetworkStateIDLE0007
+     *@tc.name testWebViewNativeMediaPlayerNetworkStateIDLE
      *@tc.desc test NetworkState IDLE
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebViewNativeMediaPlayerNetworkStateIDLE', 0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerNetworkStateIDLE";
@@ -141,11 +141,11 @@ export default function webViewNativeMediaPlayerProps() {
     
     /*
      *@tc.number SUB_ACE_WEB_NetworkState_NETWORK_ERROR_API_0008
-     *@tc.name testWebViewNativeMediaPlayerNetworkStateNETWORKERROR0008
+     *@tc.name testWebViewNativeMediaPlayerNetworkStateNETWORKERROR
      *@tc.desc test NetworkState NETWORK_ERROR
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebViewNativeMediaPlayerNetworkStateNETWORKERROR', 0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerNetworkStateNETWORKERROR";
@@ -156,11 +156,11 @@ export default function webViewNativeMediaPlayerProps() {
     
     /*
      *@tc.number SUB_ACE_WEB_ReadyState_HAVE_NOTHING_API_0009
-     *@tc.name testWebViewNativeMediaPlayerReadyStateHAVENOTHING0009
+     *@tc.name testWebViewNativeMediaPlayerReadyStateHAVENOTHING
      *@tc.desc test ReadyState.HAVE_NOTHING
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebViewNativeMediaPlayerReadyStateHAVENOTHING', 0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerReadyStateHAVENOTHING";
@@ -170,14 +170,14 @@ export default function webViewNativeMediaPlayerProps() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_MediaPlayer_Props2_API_0001
-     *@tc.name testWebViewNativeMediaPlayerProps2
+     *@tc.number SUB_ACE_WEB_MediaPlayer_Preload_API_0010
+     *@tc.name testWebViewNativeMediaPlayerPreload
      *@tc.desc test MediaPlayerProps2
      *@tc.type Function
      *@tc.size MediumTest
-     *@tc.level 1
+     *@tc.level Level 0
      */
-    it('testWebViewNativeMediaPlayerProps2', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerPreload', 0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerProps2";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewNativeMediaPlayerProps2", true, 1355, done);

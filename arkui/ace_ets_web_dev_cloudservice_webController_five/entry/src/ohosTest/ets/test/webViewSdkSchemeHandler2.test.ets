@@ -72,11 +72,11 @@ export default function ActsAceWebViewSdkSchemeHandler2() {
 
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_getHttpBodyStream_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_getHttpBodyStream
+     *@tc.name testWebViewSdkSchemeHandler_getHttpBodyStream
      *@tc.desc test SdkSchemeHandler_getHttpBodyStream
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getHttpBodyStream', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getHttpBodyStream"
@@ -90,7 +90,7 @@ export default function ActsAceWebViewSdkSchemeHandler2() {
      *@tc.desc test SdkSchemeHandler_getSize
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getSize', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getSize"
@@ -100,11 +100,11 @@ export default function ActsAceWebViewSdkSchemeHandler2() {
     })
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_getPosition_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_getPosition
+     *@tc.name testWebViewSdkSchemeHandler_getPosition
      *@tc.desc test SdkSchemeHandler_getPosition
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getPosition', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getPosition"
@@ -115,11 +115,11 @@ export default function ActsAceWebViewSdkSchemeHandler2() {
 
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_isChunked_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_isChunked
+     *@tc.name testWebViewSdkSchemeHandler_isChunked
      *@tc.desc test SdkSchemeHandler_isChunked
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_isChunked', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isChunked"
@@ -131,11 +131,11 @@ export default function ActsAceWebViewSdkSchemeHandler2() {
 
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_isEof_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_isEof
+     *@tc.name testWebViewSdkSchemeHandler_isEof
      *@tc.desc test SdkSchemeHandler_isEof
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_isEof', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isEof"
@@ -145,11 +145,11 @@ export default function ActsAceWebViewSdkSchemeHandler2() {
     })
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_isInMemory_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_isInMemory
+     *@tc.name testWebViewSdkSchemeHandler_isInMemory
      *@tc.desc test SdkSchemeHandler_isInMemory
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_isInMemory', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isInMemory"

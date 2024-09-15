@@ -69,15 +69,16 @@ export default function webViewNativeMediaUpdateRect() {
         await Utils.sleep(1000);
       done();
     })
-    
+
+
     /*
-     *@tc.number SUB_ACE_WEB_UpdateRect_API_0001
-     *@tc.name testWebViewNativeMediaUpdateRect
-     *@tc.desc test UpdateRect
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
+    * @tc.number     : SUB_ACE_WEB_UpdateRect_API_0001
+    * @tc.name       : testWebViewNativeMediaUpdateRect
+    * @tc.desc       : test UpdateRect
+    * @tc.size_t     : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
     it('testWebViewNativeMediaUpdateRect', 0, async (done: Function) => {
         Utils.registerEvent("emitWebViewNativeMediaUpdateRect", true, 1291, done);
         sendEventByKey('webViewNativeMediaUpdateRect', 10, '');

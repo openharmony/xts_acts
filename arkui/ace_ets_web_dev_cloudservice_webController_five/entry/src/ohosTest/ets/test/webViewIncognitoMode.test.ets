@@ -53,11 +53,11 @@ export default function ActsAceWebViewIncognitoMode() {
 
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0001
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode01
      *@tc.desc test isIncognitoMode true
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode01', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode01'
@@ -67,11 +67,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0002
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode02
      *@tc.desc test isIncognitoMode false
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode02', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode02'
@@ -81,11 +81,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0003
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode03
      *@tc.desc test configCookieSync incognito
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode03', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode03'
@@ -95,11 +95,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0004
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode04
      *@tc.desc test configCookieSync normal
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode04', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode04'
@@ -110,11 +110,11 @@ export default function ActsAceWebViewIncognitoMode() {
 
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0007
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode07
      *@tc.desc test deleteAllData incognito
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode07', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode07'
@@ -124,11 +124,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0008
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode08
      *@tc.desc test deleteAllData normal
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode08', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode08'
@@ -138,11 +138,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0009
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode09
      *@tc.desc test getAccessibleGeolocation(promise) incognito
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode09', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode09'
@@ -152,11 +152,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0010
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode10
      *@tc.desc test getAccessibleGeolocation(callback) incognito
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode10', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode10'
@@ -166,11 +166,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
     *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0011
-    *@tc.name testWebViewIncognitoMode
+    *@tc.name testWebViewIncognitoMode11
     *@tc.desc test getAccessibleGeolocation(promise) normal
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewIncognitoMode11', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode11'
@@ -180,11 +180,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0012
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode12
      *@tc.desc test getAccessibleGeolocation(callback) normal
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode12', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode12'
@@ -194,11 +194,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0013
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode13
      *@tc.desc test getStoredGeolocation(promise) incognito
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode13', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode13'
@@ -208,11 +208,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0014
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode14
      *@tc.desc test getStoredGeolocation(callback) incognito
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode14', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode14'
@@ -222,11 +222,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0015
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode15
      *@tc.desc test getStoredGeolocation(promise) normal
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode15', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode15'
@@ -236,11 +236,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0016
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode16
      *@tc.desc test getStoredGeolocation(callback) normal
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode16', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode16'
@@ -250,11 +250,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0017
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode17
      *@tc.desc test deleteGeolocation incognito
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode17', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode17'
@@ -264,11 +264,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0018
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode18
      *@tc.desc test deleteGeolocation normal
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode18', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode18'
@@ -278,11 +278,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0019
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode19
      *@tc.desc test deleteAllGeolocation incognito
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode19', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode19'
@@ -292,11 +292,11 @@ export default function ActsAceWebViewIncognitoMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0020
-     *@tc.name testWebViewIncognitoMode
+     *@tc.name testWebViewIncognitoMode20
      *@tc.desc test deleteAllGeolocation normal
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewIncognitoMode20', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode20'

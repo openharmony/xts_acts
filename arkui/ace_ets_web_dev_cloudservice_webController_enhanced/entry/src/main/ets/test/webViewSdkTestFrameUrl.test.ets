@@ -71,12 +71,12 @@ export default function ActsAceWebViewSdkTestFrameUrl() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_SdkTestMainFrameUrl_API_0001
+     *@tc.number SUB_ACE_WEB_NET_FRAMEURL_0100
      *@tc.name testWebViewSdkTestMainFrameUrl
      *@tc.desc test SdkTestMainFrameUrl
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkTestMainFrameUrl', 0, async (done: Function) => {
         emitKey = "emitWebViewSdkTestMainFrameUrl"
@@ -87,12 +87,12 @@ export default function ActsAceWebViewSdkTestFrameUrl() {
 
 
     /*
-     *@tc.number SUB_ACE_WEB_SdkSchemeHandler_getRequestMethod_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_getRequestMethod
+     *@tc.number SUB_ACE_WEB_NET_FRAMEURL_0300
+     *@tc.name testWebViewSdkTestLoadUrlFrameUrl
      *@tc.desc test SdkSchemeHandler_getRequestMethod
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkTestLoadUrlFrameUrl', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkTestLoadUrlFrameUrl"
@@ -103,12 +103,12 @@ export default function ActsAceWebViewSdkTestFrameUrl() {
 
 
     /*
-     *@tc.number SUB_ACE_WEB_SdkSchemeHandler_getReferrer_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_getReferrer
+     *@tc.number SUB_ACE_WEB_NET_FRAMEURL_0400
+     *@tc.name testWebViewSdkTestSubFrameUrl
      *@tc.desc test SdkSchemeHandler_getReferrer
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkTestSubFrameUrl', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkTestSubFrameUrl"
@@ -118,12 +118,12 @@ export default function ActsAceWebViewSdkTestFrameUrl() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_SdkTestServiceWorkerFrameUrl_API_0001
-     *@tc.name testWebViewSdkTestMainFrameUrl
+     *@tc.number SUB_ACE_WEB_NET_FRAMEURL_0200
+     *@tc.name testWebViewSdkTestServiceWorkerFrameUrl
      *@tc.desc test SdkSchemeHandler_getRequestUrl
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkTestServiceWorkerFrameUrl', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkTestServiceWorkerFrameUrl"

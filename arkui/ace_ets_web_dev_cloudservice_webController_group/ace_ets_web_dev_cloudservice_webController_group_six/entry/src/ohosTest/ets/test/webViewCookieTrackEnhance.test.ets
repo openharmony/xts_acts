@@ -67,59 +67,63 @@ export default function ActsAcewebViewCookieTrackEnhance() {
       done();
     })
     
+
     /*
-     *@tc.number SUB_ACE_WEB_enableIntelligentTrackingPrevention_API_0001
-     *@tc.name testWebViewCookieTrackEnableTrue
-     *@tc.desc test enableIntelligentTrackingPrevention true
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewCookieTrackEnableTrue', 0, async (done: Function) => {
+    * @tc.number      : SUB_ACE_WEB_enableIntelligentTrackingPrevention_API_0003
+    * @tc.name        : testWebViewCookieTrackEnabled
+    * @tc.desc        : test enableIntelligentTrackingPrevention true
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebViewCookieTrackEnabled', 0, async (done: Function) => {
       let emitKey = "emitWebViewCookieTrackEnableTrue";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewCookieTrackEnableTrue", true, 3001, done);
       sendEventByKey('webViewCookieTrackTriggerFeiButton', 10, '');
     })
     
+
     /*
-     *@tc.number SUB_ACE_WEB_enableIntelligentTrackingPrevention_API_0002
-     *@tc.name testWebViewCookieTrackEnableFalse
-     *@tc.desc test enableIntelligentTrackingPrevention false
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewCookieTrackEnableFalse', 0, async (done: Function) => {
+    * @tc.number      : SUB_ACE_WEB_enableIntelligentTrackingPrevention_API_GROUP_0002
+    * @tc.name        : testWebViewCookieTrackEnableFalseGroup
+    * @tc.desc        : test enableIntelligentTrackingPrevention false
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebViewCookieTrackEnableFalseGroup', 0, async (done: Function) => {
       let emitKey = "emitWebViewCookieTrackEnableFalse";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewCookieTrackEnableFalse", true, 3002, done);
       sendEventByKey('webViewCookieTrackTriggerFeiButton', 10, '');
     })
 
+
     /*
-     *@tc.number SUB_ACE_WEB_clearIntelligentTrackingPreventionByPassingList_API_0003
-     *@tc.name testCookieTrackClearTrackingPrevention
-     *@tc.desc test clearIntelligentTrackingPreventionByPassingList
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewCookieTrackEnabled', 0, async (done: Function) => {
+    * @tc.number      : SUB_ACE_WEB_enableIntelligentTrackingPrevention_API_GROUP_0003
+    * @tc.name        : testWebViewCookieTrackEnabledGroup
+    * @tc.desc        : test clearIntelligentTrackingPreventionByPassingList
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebViewCookieTrackEnabledGroup', 0, async (done: Function) => {
       let emitKey = "emitWebViewCookieTrackEnabled";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewCookieTrackEnabled", true, 3003, done);
       sendEventByKey('webViewCookieTrackTriggerFeiButton', 10, '');
     })
 
+
     /*
-      *@tc.number SUB_ACE_WEB_addIntelligentTrackingPreventionByPassingList_API_0002
-      *@tc.name testCookieTrackClearTrackingPrevention
-      *@tc.desc test clearIntelligentTrackingPreventionByPassingList
-      *@tc.size MediumTest
-      *@tc.type Function
-      *@tc.level 1
-      */
+    * @tc.number      : SUB_WEB_onIntelligentTrackingPreventionCallback_noCookie_API_0001
+    * @tc.name        : testNoCookieTrackingPrevention
+    * @tc.desc        : test clearIntelligentTrackingPreventionByPassingList
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
     it('testNoCookieTrackingPrevention', 0, async (done: Function) => {
       let emitKey = "emitNoCookieTrackingPrevention";
       Utils.emitEvent(emitKey, 10)

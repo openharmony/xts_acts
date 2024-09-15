@@ -69,15 +69,16 @@ export default function ActsAceWebViewAnrCallback() {
       done();
     })
 
+
     /*
-     *@tc.number SUB_ACE_WEB_OnRenderProcessResponding_API_0001
-     *@tc.name testWebViewOnRenderProcessResponding
-     *@tc.desc OnRenderProcessResponding
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewOnRenderProcessResponding', 0, async (done: Function) => {
+    * @tc.number      : SUB_ACE_WEB_OnRenderProcessResponding_API_GROUP_0001
+    * @tc.name        : testWebViewOnRenderProcessRespondingGroup
+    * @tc.desc        : OnRenderProcessResponding
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 1
+    */
+    it('testWebViewOnRenderProcessRespondingGroup', 0, async (done: Function) => {
         emitKey = "emitWebViewOnRenderProcessResponding"
         Utils.emitEvent(emitKey, 10);
         Utils.registerBaseEvent("testWebViewOnRenderProcessResponding", true, 1336,
@@ -88,14 +89,14 @@ export default function ActsAceWebViewAnrCallback() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_NotRespondingReason_NAVIGATION_COMMIT_TIMEOUT_API_0002
-     *@tc.name testWebView_NotRespondingReason_NAVIGATION_COMMIT_TIMEOUT
-     *@tc.desc NotRespondingReason_NAVIGATION_COMMIT_TIMEOUT
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT', 0, async (done: Function) => {
+    * @tc.number      : SUB_ACE_WEB_NotRespondingReason_NAVIGATION_COMMIT_TIMEOUT_API_GROUP_0002
+    * @tc.name        : testWebViewNotRespondingReasonGroup_NAVIGATION_COMMIT_TIMEOUT
+    * @tc.desc        : NotRespondingReason_NAVIGATION_COMMIT_TIMEOUT
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 1
+    */
+    it('testWebViewNotRespondingReasonGroup_NAVIGATION_COMMIT_TIMEOUT', 0, async (done: Function) => {
         emitKey = "emitWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT"
         Utils.emitEvent(emitKey, 10);
         Utils.registerBaseEvent("testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT", true, 1338,

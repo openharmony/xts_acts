@@ -72,11 +72,11 @@ export default function ActsAceWebViewSdkSchemeHandler() {
 
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_getHeader_API_0001
-     *@tc.name testWebViewSdkSchemeHandler
+     *@tc.name testWebViewSdkSchemeHandler_getHeader
      *@tc.desc test SdkSchemeHandler_getHeader
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getHeader', 0, async (done: Function) => {
         emitKey = "emitWebViewSdkSchemeHandler_getHeader"
@@ -91,7 +91,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test SdkSchemeHandler_getRequestUrl
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getRequestUrl', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getRequestUrl"
@@ -105,7 +105,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test SdkSchemeHandler_getRequestMethod
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getRequestMethod', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getRequestMethod"
@@ -121,7 +121,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test SdkSchemeHandler_getReferrer
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getReferrer', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getReferrer"
@@ -135,7 +135,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test isMainFrame
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_isMainFrame', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isMainFrame"
@@ -150,7 +150,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test SdkSchemeHandler_hasGesture
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_hasGesture', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_hasGesture"
@@ -160,11 +160,11 @@ export default function ActsAceWebViewSdkSchemeHandler() {
     })
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_constructor_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_constructor
+     *@tc.name testWebViewSdkSchemeHandler_constructor
      *@tc.desc test SdkSchemeHandler_constructor
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_constructor', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_constructor"
@@ -174,11 +174,11 @@ export default function ActsAceWebViewSdkSchemeHandler() {
     })
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_setUrl_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_setUrl
+     *@tc.name testWebViewSdkSchemeHandler_setUrl
      *@tc.desc test SdkSchemeHandler_setUrl
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_setUrl', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setUrl"
@@ -192,7 +192,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test SdkSchemeHandler_getUrl
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getUrl', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getUrl"
@@ -206,7 +206,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc testWebViewSdkSchemeHandler_setNetErrorCode
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_setNetErrorCode', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setNetErrorCode"
@@ -217,11 +217,11 @@ export default function ActsAceWebViewSdkSchemeHandler() {
 
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_getNetErrorCode_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_getNetErrorCode
+     *@tc.name testWebViewSdkSchemeHandler_getNetErrorCode
      *@tc.desc test SdkSchemeHandler_getNetErrorCode
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getNetErrorCode', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getNetErrorCode"
@@ -235,7 +235,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test SdkSchemeHandler_setStatus
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_setStatus', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setStatus"
@@ -250,7 +250,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test SdkSchemeHandler_getStatus
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getStatus', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getStatus"
@@ -264,7 +264,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test SdkSchemeHandler_setStatusText
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_setStatusText', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setStatusText"
@@ -274,11 +274,11 @@ export default function ActsAceWebViewSdkSchemeHandler() {
     })
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_getStatusText_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_getStatusText
+     *@tc.name testWebViewSdkSchemeHandler_getStatusText
      *@tc.desc test SdkSchemeHandler_getStatusText
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getStatusText', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getStatusText"
@@ -288,11 +288,11 @@ export default function ActsAceWebViewSdkSchemeHandler() {
     })
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_setMimeType_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_setMimeType
+     *@tc.name testWebViewSdkSchemeHandler_setMimeType
      *@tc.desc test SdkSchemeHandler_setMimeType
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_setMimeType', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setMimeType"
@@ -307,7 +307,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test SdkSchemeHandler_getMimeType
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getMimeType', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getMimeType"
@@ -321,7 +321,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test SdkSchemeHandler_setEncoding
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_setEncoding', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setEncoding"
@@ -332,11 +332,11 @@ export default function ActsAceWebViewSdkSchemeHandler() {
 
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_getEncoding_API_0001
-     *@tc.name testWebViewSdkSchemeHandler
+     *@tc.name testWebViewSdkSchemeHandler_getEncoding
      *@tc.desc test SdkSchemeHandler_getEncoding
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getEncoding', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getEncoding"
@@ -346,11 +346,11 @@ export default function ActsAceWebViewSdkSchemeHandler() {
     })
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_setHeaderByName_overwrite_true_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_setHeaderByName_overwrite_true
+     *@tc.name testWebViewSdkSchemeHandler_setHeaderByName_overwrite_true
      *@tc.desc test SdkSchemeHandler_setHeaderByName_overwrite_true
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_setHeaderByName_overwrite_true', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setHeaderByName"
@@ -360,13 +360,13 @@ export default function ActsAceWebViewSdkSchemeHandler() {
     })
 
     /*
- *@tc.number SUB_ACE_WEB_SdkSchemeHandler_setHeaderByName_overwrite_false_API_0001
- *@tc.name testWebViewSdkSchemeHandler_setHeaderByName_overwrite_false
- *@tc.desc test _setHeaderByName_overwrite_false
- *@tc.size MediumTest
- *@tc.type Function
- *@tc.level 1
- */
+     *@tc.number SUB_ACE_WEB_SdkSchemeHandler_setHeaderByName_overwrite_false_API_0001
+     *@tc.name testWebViewSdkSchemeHandler_setHeaderByName_overwrite_false
+     *@tc.desc test _setHeaderByName_overwrite_false
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level Level 1
+     */
     it('testWebViewSdkSchemeHandler_setHeaderByName_overwrite_false', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setHeaderByName"
       Utils.emitEvent(emitKey, 10);
@@ -381,7 +381,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test SdkSchemeHandler_getHeaderByName
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_getHeaderByName', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getHeaderByName"
@@ -391,11 +391,11 @@ export default function ActsAceWebViewSdkSchemeHandler() {
     })
     /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didReceiveResponse_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_didReceiveResponse
+     *@tc.name testWebViewSdkSchemeHandler_didReceiveResponse
      *@tc.desc test SdkSchemeHandler_didReceiveResponse
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_didReceiveResponse', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_didReceiveResponse"
@@ -409,7 +409,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test didReceiveResponseBody
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_didReceiveResponseBody', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_didReceiveResponseBody"
@@ -423,7 +423,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test SchemeHandler_didFinish
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_didFinish', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_didFinish"
@@ -437,7 +437,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test didFail
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_didFail', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_didFail"
@@ -452,7 +452,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test SdkSchemeHandler_onRequestStart
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_onRequestStart', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_onRequestStart"
@@ -466,7 +466,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.desc test onRequestStop
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSdkSchemeHandler_onRequestStop', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_onRequestStop"

@@ -73,12 +73,12 @@ export default function webViewNativeMediaPlayerHandlerEnhanced() {
 
 
     /*
-     *@tc.number SUB_ACE_WEB_NativeMediaPlayerVideoMultiSource_API_0001
+     *@tc.number SUB_ACE_WEB_NATIVEVIDEO_INTERFACE_2150
      *@tc.name testWebViewNativeMediaPlayerVideoMultiSource
      *@tc.desc test NativeMediaPlayerVideoMultiSource
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerVideoMultiSource', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerVideoMultiSource"
@@ -88,12 +88,12 @@ export default function webViewNativeMediaPlayerHandlerEnhanced() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_NativeMediaPlayerEnterFullScreen_API_0001
+     *@tc.number SUB_ACE_WEB_NATIVEVIDEO_INTERFACE_6600
      *@tc.name testWebViewNativeMediaPlayerEnterFullScreen
      *@tc.desc test NativeMediaPlayerEnterFullScreen
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerEnterFullScreen', 0, async (done: Function) => {
         emitKey = "emitWebViewNativeMediaPlayerEnterFullScreen"
@@ -103,12 +103,12 @@ export default function webViewNativeMediaPlayerHandlerEnhanced() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_NativeMediaPlayerExitFullScreen_API_0001
+     *@tc.number SUB_ACE_WEB_NATIVEVIDEO_INTERFACE_6800
      *@tc.name testWebViewNativeMediaPlayerExitFullScreen
      *@tc.desc test NativeMediaPlayerExitFullScreen
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerExitFullScreen', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerExitFullScreen"
@@ -117,12 +117,12 @@ export default function webViewNativeMediaPlayerHandlerEnhanced() {
       sendEventByKey('webViewNativeMediaPlayerHandlerEnhanced', 10, '');
     })
     /*
-     *@tc.number SUB_ACE_WEB_HandleErrorRelease_API_0001
+     *@tc.number SUB_ACE_WEB_NATIVEVIDEO_INTERFACE_7000
      *@tc.name testWebViewNativeMediaPlayerHandleErrorRelease
      *@tc.desc test NativeMediaPlayerHandleErrorRelease
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerHandleErrorRelease', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaHandleErrorRelease"
@@ -132,12 +132,12 @@ export default function webViewNativeMediaPlayerHandlerEnhanced() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_NativeMediaPlayerShouldOverlay_false_API_0001
-     *@tc.name testWebViewNativeMediaPlayerShouldOverlay_false
+     *@tc.number SUB_ACE_WEB_NATIVEVIDEO_INTERFACE_0300
+     *@tc.name testWebViewNativeMediaPlayerShouldOverlayFalse
      *@tc.desc test NativeMediaPlayerShouldOverlay_false
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerShouldOverlayFalse', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerShouldOverlayFalse"
@@ -147,12 +147,12 @@ export default function webViewNativeMediaPlayerHandlerEnhanced() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_NativeMediaPlayerShouldOverlay_false_API_0001
-     *@tc.name testWebViewNativeMediaPlayerShouldOverlay_false
+     *@tc.number SUB_ACE_WEB_NATIVEVIDEO_INTERFACE_7500
+     *@tc.name testWebViewNativeMediaPlayerHandleNetworkStateChangedIDLE
      *@tc.desc test NativeMediaPlayerShouldOverlay_false
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerHandleNetworkStateChangedIDLE', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaHandleNetworkStateChangedIDLE"
