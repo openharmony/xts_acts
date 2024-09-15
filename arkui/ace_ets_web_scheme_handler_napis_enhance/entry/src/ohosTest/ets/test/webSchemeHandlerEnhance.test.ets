@@ -193,7 +193,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0010
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_0010
     * @tc.name       : testWeb_RequestHeaderList
     * @tc.desc       : test Web_RequestHeaderList
     * @tc.size       : MediumTest
@@ -373,7 +373,7 @@ export default function webviewApi() {
     })
 
     /*
-     * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0020
+     * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_0020
      * @tc.name       : testWebHttpBodyStream_IsEof_False
      * @tc.desc       : test WebHttpBodyStream_IsEof_False
      * @tc.size       : MediumTest
@@ -553,7 +553,7 @@ export default function webviewApi() {
     })
 
     /*
-     * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0030
+     * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_0030
      * @tc.name       : testWeb_ClearSchemeHandlers_False
      * @tc.desc       : test Web_ClearSchemeHandlers_False
      * @tc.size       : MediumTest
@@ -733,7 +733,7 @@ export default function webviewApi() {
     })
 
     /*
-     * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0040
+     * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_0040
      * @tc.name       : testWebResponse_SetCharset_False
      * @tc.desc       : test WebResponse_SetCharset_False
      * @tc.size       : MediumTest
