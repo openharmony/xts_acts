@@ -15,16 +15,25 @@
 
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect } from 'deccjsunit/index'
+import { describe, it, expect, beforeAll } from 'deccjsunit/index'
 import {
   photoKeys,
   fetchOption,
   fetchAllOption,
   getFileAsset,
+  sleep,
+  getPermission
 } from '../../../../../../../common'
 
 export default function addAssetsTest () {
   describe('addAssetsTest', function () {
+
+    beforeAll(async () => {
+      console.info('beforeAll case');
+      await getPermission();
+      await sleep();
+    });
+
     const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
 
     //callback
@@ -42,7 +51,11 @@ export default function addAssetsTest () {
         const album = await helper.createAlbum(testNum);
         const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'addCb01.jpg');
         const asset = await getFileAsset(testNum, fetchOps);
-
+        let fetchResultBefore: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await helper.getAssets(fetchAllOption());
+        let countBefore: number = fetchResultBefore.getCount();
+        fetchResultBefore.close();
+        console.log(`${testNum} :: add asset to user album :: beforeCount is ${countBefore}`);
+        // add an asset to album will create one new asset
         album.addAssets([asset], async (err) => {
           try {
             if (err) {
@@ -52,7 +65,10 @@ export default function addAssetsTest () {
               console.info(`${testNum} album.count: ${album.count}`);
               const fetchResult = await album.getAssets(fetchOps);
               expect(fetchResult.getCount()).assertEqual(1);
-              fetchResult.close()
+              let fetchResultAfter: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await helper.getAssets(fetchAllOption());
+              expect(fetchResultAfter.getCount()).assertEqual(countBefore + 1);
+              fetchResult.close();
+              fetchResultAfter.close();
             }
           } catch (error) {
             console.info(`${testNum} error: ${error}`);
@@ -210,7 +226,7 @@ export default function addAssetsTest () {
       try {
         const album = await helper.createAlbum(testNum);
         const predicates = new dataSharePredicates.DataSharePredicates();
-        predicates.in(photoKeys.DISPLAY_NAME, ['addCb03.jpg', 'addCb01.mp4']);
+        predicates.in(photoKeys.DISPLAY_NAME, ['addCb04.jpg', 'addPro01.mp4']);
         const fetchOps : photoAccessHelper.FetchOptions = {
           fetchColumns: [],
           predicates: predicates
