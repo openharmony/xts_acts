@@ -240,7 +240,7 @@ struct WebViewMenuInputFieldType {
               this.ResultKey = 3
               this.userAgentPC = this.controller.getUserAgent();
               if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent(6, 2895)
+                Utils.emitEvent('6', 2895)
                 break;
               } else {
                 this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_DONE.html")
@@ -260,7 +260,7 @@ struct WebViewMenuInputFieldType {
               this.ResultKey = 4
               this.userAgentPC = this.controller.getUserAgent();
               if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent(2, 2896)
+                Utils.emitEvent('2', 2896)
                 break;
               } else {
                 this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_GO.html")
@@ -280,7 +280,7 @@ struct WebViewMenuInputFieldType {
               this.ResultKey = 5
               this.userAgentPC = this.controller.getUserAgent();
               if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent(5, 2897)
+                Utils.emitEvent('5', 2897)
                 break;
               } else {
                 this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_NEXT.html")
@@ -301,7 +301,7 @@ struct WebViewMenuInputFieldType {
               this.ResultKey = 6
               this.userAgentPC = this.controller.getUserAgent();
               if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent(7, 2898)
+                Utils.emitEvent('7', 2898)
                 break;
               } else {
                 this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_PREVIOUS.html")
@@ -321,7 +321,7 @@ struct WebViewMenuInputFieldType {
               this.ResultKey = 7
               this.userAgentPC = this.controller.getUserAgent();
               if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent(3, 2899)
+                Utils.emitEvent('3', 2899)
                 break;
               } else {
                 this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_SEARCH.html")
@@ -341,7 +341,7 @@ struct WebViewMenuInputFieldType {
               this.ResultKey = 8
               this.userAgentPC = this.controller.getUserAgent();
               if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent(4, 2880)
+                Utils.emitEvent('4', 2880)
                 break;
               } else {
                 this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_SEND.html")
@@ -361,7 +361,7 @@ struct WebViewMenuInputFieldType {
               this.ResultKey = 9
               this.userAgentPC = this.controller.getUserAgent();
               if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent(0, 2881)
+                Utils.emitEvent('0', 2881)
                 break;
               } else {
                 this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_UNSPECIFIED.html")
@@ -381,7 +381,7 @@ struct WebViewMenuInputFieldType {
               this.ResultKey = 10
               this.userAgentPC = this.controller.getUserAgent();
               if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent(true, 2893)
+                Utils.emitEvent(1, 2882)
                 break;
               } else {
                 this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach.html")
