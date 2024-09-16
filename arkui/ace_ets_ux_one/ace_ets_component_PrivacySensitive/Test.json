@@ -4,14 +4,15 @@
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "bundle-name": "com.example.privacysensitivetest",
-        "module-name": "phone",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": 240000
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsAcePrivacySensitiveTest.hap"
+                "ActsAcePrivacySensitiveTest.hap",
+                "ActsAcePrivacySensitiveTestMain.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
