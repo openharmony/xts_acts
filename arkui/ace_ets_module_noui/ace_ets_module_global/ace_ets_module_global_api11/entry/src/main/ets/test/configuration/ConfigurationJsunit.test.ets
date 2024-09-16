@@ -45,7 +45,7 @@ export default function configurationJsunit() {
       await CommonFunc.sleep(1000);
       console.info("prompt each called");
     });
-    it('configurationTest_0100', 0, async(done: Function) {
+    it('configurationTest_0100', 0, async(done: Function) => {
       console.info('configurationTest_0100 is start');
       try {
         let callBackConfiguration = (backData) => {

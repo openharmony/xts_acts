@@ -38,7 +38,7 @@ export default function basicJsunit() {
 
 
     let errorCallback: ErrorCallback<void> = (error: BusinessError) => {
-      console.log(error);
+      console.log(JSON.stringify(error));
       expect(true).assertTrue();
     }
 
