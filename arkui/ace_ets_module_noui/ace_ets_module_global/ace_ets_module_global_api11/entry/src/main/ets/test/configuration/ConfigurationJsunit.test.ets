@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/utils/Common';
 import emitter from '@ohos.events.emitter';
@@ -22,8 +22,8 @@ export default function configurationJsunit() {
   describe('configurationJsunit', () => {
     beforeEach(async (done: Function) => {
       console.info("prompt beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/configuration/configuration',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/configuration/configuration',
       }
       try {
         router.clear();

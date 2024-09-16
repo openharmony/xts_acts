@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {
   UiComponent,
   Driver,
@@ -35,8 +35,8 @@ export default function ResourceString() {
   describe('ResourceString', () => {
     beforeEach(async (done: Function) => {
       console.info("ResourceString beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Resource/ResourceString',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Resource/ResourceString',
       }
       try {
         router.clear();
@@ -58,7 +58,7 @@ export default function ResourceString() {
     it('ResourceString_0100', 0, async (done: Function) => {
       console.info('ResourceString_0100 START');
       let strJson = getInspectorByKey('string');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourceString_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ResourceString_0100] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('1.00fp');
@@ -74,7 +74,7 @@ export default function ResourceString() {
       await button.click();
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('string');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourceString_0200] component obj is: " + JSON.stringify(obj));
       console.info("[ResourceString_0200] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('2.00fp');

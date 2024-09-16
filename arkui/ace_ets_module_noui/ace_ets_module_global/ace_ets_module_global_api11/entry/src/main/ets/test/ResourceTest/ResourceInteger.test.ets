@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {
   UiComponent,
   Driver,
@@ -35,8 +35,8 @@ export default function ResourceInteger() {
   describe('ResourceInteger', () => {
     beforeEach(async (done: Function) => {
       console.info("ResourceInteger beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Resource/ResourceInteger',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Resource/ResourceInteger',
       }
       try {
         router.clear();
@@ -58,7 +58,7 @@ export default function ResourceInteger() {
     it('ResourceInteger_0100', 0, async (done: Function) => {
       console.info('ResourceInteger_0100 START');
       let strJson = getInspectorByKey('integer');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourceInteger_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ResourceInteger_0100] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('10.00fp');
@@ -74,7 +74,7 @@ export default function ResourceInteger() {
       await button.click();
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('integer');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourceInteger_0200] component obj is: " + JSON.stringify(obj));
       console.info("[ResourceInteger_0200] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('20.00fp');
