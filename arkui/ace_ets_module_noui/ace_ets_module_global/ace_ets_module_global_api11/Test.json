@@ -4,14 +4,15 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "bundle-name": "com.arkui.ace.global.api11",
-        "module-name": "phone",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": "180000"
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceEtsModuleGlobalApi11Test.hap"
-        ],
+                "ActsAceEtsModuleGlobalApi11Test.hap",
+                "ActsAceEtsModuleGlobalApi11TestMain.hap"
+            ],
         "type": "AppInstallKit",
         "cleanup-apps": true
     },{
