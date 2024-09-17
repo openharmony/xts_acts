@@ -48,10 +48,10 @@ export default function configurationJsunit() {
     it('configurationTest_0100', 0, async(done: Function) => {
       console.info('configurationTest_0100 is start');
       try {
-        let callBackConfiguration = (backData) => {
+        let callBackConfiguration = (backData: events_emitter.EventData) => {
           console.info("configurationTest_0100 get configurationEvent result is: " + JSON.stringify(backData));
-          expect(backData.data.COUNTRY).assertEqual('CN');
-          expect(backData.data.DIR).assertEqual('ltr');
+          expect(backData.data?.COUNTRY).assertEqual('CN');
+          expect(backData.data?.DIR).assertEqual('ltr');
           done();
         }
         let configurationEvent: emitter.InnerEvent = {

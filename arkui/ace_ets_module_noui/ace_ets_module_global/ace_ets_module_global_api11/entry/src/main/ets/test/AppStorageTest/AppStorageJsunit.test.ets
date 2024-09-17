@@ -109,8 +109,8 @@ export default function AppStorageJsunit() {
         }, {
           key: "layoutDirection", defaultValue: LayoutDirection.LTR
         }]);
-        let enable: number = AppStorage.get("colorMode");
-        let enable1: number = AppStorage.get("layoutDirection");
+        let enable: number | undefined = AppStorage.get("colorMode");
+        let enable1: number | undefined = AppStorage.get("layoutDirection");
         expect(enable == ColorMode.LIGHT)
           .assertTrue;
         expect(enable1 == LayoutDirection.RTL)
