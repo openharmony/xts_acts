@@ -21,7 +21,7 @@ export default function systemAppJsunit() {
 
     it('systemAppTest_0100', 0, async (done: Function) => {
       console.info('systemAppTest_0100 START');
-      let a = app.getInfo();
+      let a: ESObject = app.getInfo();
       console.log('systemAppTest_0100 END' + JSON.stringify(a));
       if (a != null) {
         expect(a.appID == "com.open.harmony.acetestfour").assertTrue();
@@ -34,7 +34,7 @@ export default function systemAppJsunit() {
 
     it('systemAppTest_0200', 0, async (done: Function) => {
       console.info('systemAppTest_0200 START');
-      let a = app.getInfo();
+      let a: ESObject = app.getInfo();
       console.log('systemAppTest_0200 END' + JSON.stringify(a));
       if (a != null) {
         expect(a.appName == "$string:entry_MainAbility").assertTrue();
@@ -47,7 +47,7 @@ export default function systemAppJsunit() {
 
     it('systemAppTest_0300', 0, async (done: Function) => {
       console.info('systemAppTest_0300 START');
-      let a = app.getInfo();
+      let a: ESObject = app.getInfo();
       console.log('systemAppTest_0300 END' + JSON.stringify(a));
       if (a != null) {
         expect(a.versionName == "1.0.0").assertTrue();
@@ -61,8 +61,9 @@ export default function systemAppJsunit() {
     it('systemAppTest_0400', 0, async (done: Function) => {
       console.info('systemAppTest_0400 START');
       try {
-        let a = 2000;
-        app.requestFullWindow(a);
+        app.requestFullWindow({
+          duration: 2000
+        });
       } catch (err) {
         console.log("systemAppTest_0400 error: " + err);
       }

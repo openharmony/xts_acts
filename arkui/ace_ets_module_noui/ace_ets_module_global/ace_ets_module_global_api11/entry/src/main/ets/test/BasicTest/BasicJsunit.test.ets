@@ -16,7 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { BusinessError } from '@ohos.base';
 
 function callbackTest(callback: Callback<void>): void {
-  callback("callback");
+  callback();
 }
 
 function errorCallbackTest(errorCallback: ErrorCallback<void>): void {
