@@ -115,6 +115,7 @@ export class Parameter_Setting {
   static readonly SECOND_PARAMETER_ERROR = 2;
   static readonly THIRD_PARAMETER_ERROR = 3;
   static readonly FOURTH_PARAMETER_ERROR = 4;
+  static readonly SET_CAMERA_FRONT_FOR_SECURE_PHOTO = 5;
 }
 
 export class Torch_Mode {

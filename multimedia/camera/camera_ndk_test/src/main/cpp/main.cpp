@@ -1871,6 +1871,25 @@ static napi_value OHCaptureSessionGetActiveColorSpace(napi_env env, napi_callbac
     return activeColorSpace;
 }
 
+static napi_value OHNativeBufferColorSpace(napi_env env, napi_callback_info info)
+{
+    napi_value colorSpace = nullptr;
+    napi_create_object(env, &colorSpace);
+    napi_value jsValue = nullptr;
+
+    napi_create_int32(env, ndkCamera_->ColorSpace(), &jsValue);
+    napi_set_named_property(env, colorSpace, "colorSpaceSupportSize", jsValue);
+
+    napi_create_int32(env, ndkCamera_->setcolorSpace_, &jsValue);
+    napi_set_named_property(env, colorSpace, "setcolorSpace", jsValue);
+
+    napi_create_int32(env, ndkCamera_->colorSpacesSize_, &jsValue);
+    napi_set_named_property(env, colorSpace, "colorSpacesSize", jsValue);
+
+    return colorSpace;
+}
+
+
 static napi_value OHCaptureSessionSetActiveColorSpace(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -2313,6 +2332,15 @@ static napi_value OHCameraManagerTorchMode(napi_env env, napi_callback_info info
     napi_create_int32(env, code, &result);
     return result;
 }
+static napi_value ReadyCreatePhotoOutputWithoutSurface(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+
+    Camera_ErrorCode code = ndkCamera_->ReadyCreatePhotoOutputWithoutSurface();
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -2498,6 +2526,8 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"oHCaptureSessionGetActiveColorSpace", nullptr, OHCaptureSessionGetActiveColorSpace, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"oHNativeBufferColorSpace", nullptr, OHNativeBufferColorSpace, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
         {"oHCaptureSessionSetActiveColorSpace", nullptr, OHCaptureSessionSetActiveColorSpace, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"oHPreviewOutputGetSupportedFrameRates", nullptr, OHPreviewOutputGetSupportedFrameRates, nullptr, nullptr,
@@ -2565,6 +2595,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHCameraManagerCreatePhotoOutputWithoutSurface", nullptr, OHCameraManagerCreatePhotoOutputWithoutSurface,
             nullptr, nullptr, nullptr, napi_default, nullptr},
         {"releaseCamera", nullptr, ReleaseCamera, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"readyCreatePhotoOutputWithoutSurface", nullptr, ReadyCreatePhotoOutputWithoutSurface, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
     };
     size_t mergedLength = sizeof(desc) / sizeof(desc[0]) +
                           sizeof(desc1) / sizeof(desc1[0]) +
