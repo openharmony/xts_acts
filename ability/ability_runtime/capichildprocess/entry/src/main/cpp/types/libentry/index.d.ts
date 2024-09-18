@@ -21,3 +21,7 @@ export const callApiWithNullLibName: () => number;
 export const callApiWithNull: () => number;
 export const childProcessStartNewProcess: () => number;
 export const busyTest: () => number;
+
+export const startChildIsolated: () => number;
+export const startChildNormal: () => number;
+export const startChildNoArgs: () => number;
