@@ -13,31 +13,20 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAceTimePickerTest") {
-  hap_profile = "src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":ace_ets_component_timepicker_js_assets",
-    ":ace_ets_component_timepicker_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsAceTimePickerTest"
+ohos_app_assist_suite("ActsAceTimePickerTestMain") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAceTimePickerTestMain"
   part_name = "ace_engine"
   subsystem_name = "arkui"
 }
 
-ohos_app_scope("ace_ets_component_timepicker_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("ace_ets_component_timepicker_js_assets") {
-  source_dir = "src/main/ets"
-}
-
-ohos_resources("ace_ets_component_timepicker_resources") {
-  sources = [ "src/main/resources" ]
-  deps = [ ":ace_ets_component_timepicker_profile" ]
-  hap_profile = "src/main/module.json"
+ohos_js_app_suite("ActsAceTimePickerTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAceTimePickerTest"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
+  deps = [ ":ActsAceTimePickerTestMain" ]
 }
