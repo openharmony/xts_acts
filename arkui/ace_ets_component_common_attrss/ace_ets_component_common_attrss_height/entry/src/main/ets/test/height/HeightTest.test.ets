@@ -17,20 +17,20 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
 class TestValue {
-  describe: string;
+  describe: string = '';
   setValue: ESObject;
   expectValue: ESObject;
 }
 
 class PageConfig {
-  testName: string;
-  pageName: string;
-  pageUrl: string;
-  parentHeight: number;
-  parentWidth: number;
-  parentBackGroundColor: Color;
-  parentComponentKey: string;
-  BackGroundColor: Color;
+  testName: string = '';
+  pageName: string = '';
+  pageUrl: string = '';
+  parentHeight: number = 0;
+  parentWidth: number = 0;
+  parentBackGroundColor: Color = Color.White;
+  parentComponentKey: string = '';
+  BackGroundColor: Color = Color.White;
 }
 
 /**

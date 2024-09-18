@@ -17,6 +17,23 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 import Utils from '../../MainAbility/common/Utils';
 
+class PageConfig {
+  testName: string = '';
+  pageName: string = '';
+  pageUrl: string = '';
+  targetGroupView: string = '';
+  childWidth: number = 0;
+  childHeight: number = 0;
+  parentWidth: number = 0;
+  parentHeight: number = 0;
+}
+
+class TestValue {
+  describe: string = '';
+  setValue: ESObject;
+  expectValue: ESObject;
+}
+
 export default function layoutWeightTest() {
   let supportView = [
     'AlphabetIndexer',
@@ -86,7 +103,7 @@ export default function layoutWeightTest() {
   let childHeight = 100;
   let parentWidth = 400;
   let parentHeight = 600;
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testLayoutWeight',
     pageName: 'LayoutWeightPage',
     pageUrl: 'MainAbility/pages/layoutWeight/LayoutWeightPage',
@@ -97,7 +114,7 @@ export default function layoutWeightTest() {
     parentHeight: parentHeight
   }
 
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetNumber',
     setValue: {
       layoutWeight: 2
@@ -127,7 +144,7 @@ export default function layoutWeightTest() {
   }]
 
   describe('LayoutWeightTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       let rect = Utils.getComponentRect(data.pageConfig.componentKey);
       //Component width and height calculation
       let height = rect.bottom - rect.top;

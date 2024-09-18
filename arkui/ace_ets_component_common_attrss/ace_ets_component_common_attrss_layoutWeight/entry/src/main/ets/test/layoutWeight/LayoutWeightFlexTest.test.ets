@@ -17,6 +17,23 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 import Utils from '../../MainAbility/common/Utils';
 
+class PageConfig {
+  testName: string = '';
+  pageName: string = '';
+  pageUrl: string = '';
+  targetGroupView: string = '';
+  childWidth: number = 0;
+  childHeight: number = 0;
+  parentWidth: number = 0;
+  parentHeight: number = 0;
+}
+
+class TestValue {
+  describe: string = '';
+  setValue: ESObject;
+  expectValue: ESObject;
+}
+
 export default function layoutWeightFlexTest() {
   let supportView = [
     'AlphabetIndexer',
@@ -85,7 +102,7 @@ export default function layoutWeightFlexTest() {
   let childHeight = 100;
   let parentWidth = 400;
   let parentHeight = 600;
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testLayoutWeight',
     pageName: 'LayoutWeightPageFlex',
     pageUrl: 'MainAbility/pages/layoutWeight/LayoutWeightPageFlex',
@@ -96,7 +113,7 @@ export default function layoutWeightFlexTest() {
     parentHeight: parentHeight
   }
 
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'InFlex',
     setValue: {
       layoutWeight: 1
@@ -108,7 +125,7 @@ export default function layoutWeightFlexTest() {
   }]
 
   describe('LayoutWeightFlexTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       let rect = Utils.getComponentRect(data.pageConfig.componentKey);
       //Component width and height calculation
       let width = rect.right - rect.left;
