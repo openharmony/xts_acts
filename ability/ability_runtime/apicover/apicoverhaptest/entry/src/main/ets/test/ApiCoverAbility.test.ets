@@ -782,7 +782,7 @@ export default function ApiCoverTest() {
         .then((data) => {
           console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}`);
           for (let i = 0; i < data.length; i++) {
-            console.log(`${TAG} getRunningProcessInformation${i} : JSON.stringify(data[i])`);
+            console.log(`${TAG} getRunningProcessInformation${i} : ${JSON.stringify(data[i])}`);
             expect(typeof (data[i].pid)).assertEqual("number");
             expect(data[i].pid).assertLarger(0);
             expect(typeof (data[i].uid)).assertEqual("number");
@@ -814,7 +814,7 @@ export default function ApiCoverTest() {
       appManagerNew.getRunningProcessInformation((err, data) => {
         console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)} err: ${JSON.stringify(err)}`);
         for (let i = 0; i < data.length; i++) {
-          console.log(`${TAG} getRunningProcessInformation${i} : JSON.stringify(data[i])`);
+          console.log(`${TAG} getRunningProcessInformation${i} : ${JSON.stringify(data[i])}`);
           expect(typeof (data[i].pid)).assertEqual("number");
           expect(data[i].pid).assertLarger(0);
           expect(typeof (data[i].uid)).assertEqual("number");
@@ -845,7 +845,7 @@ export default function ApiCoverTest() {
         .then((data) => {
           console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}`);
           for (let i = 0; i < data.length; i++) {
-            console.log(`${TAG} getRunningProcessInformation${i} : JSON.stringify(data[i])`);
+            console.log(`${TAG} getRunningProcessInformation${i} : ${JSON.stringify(data[i])}`);
             expect(typeof (data[i].pid)).assertEqual("number");
             expect(data[i].pid).assertLarger(0);
             expect(typeof (data[i].uid)).assertEqual("number");
@@ -877,7 +877,7 @@ export default function ApiCoverTest() {
       AppStorage.get<common.ApplicationContext>("applicationContext")!.getRunningProcessInformation((err, data) => {
         console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)} err: ${JSON.stringify(err)}`);
         for (let i = 0; i < data.length; i++) {
-          console.log(`${TAG} getRunningProcessInformation${i} : JSON.stringify(data[i])`);
+          console.log(`${TAG} getRunningProcessInformation${i} : ${JSON.stringify(data[i])}`);
           expect(typeof (data[i].pid)).assertEqual("number");
           expect(data[i].pid).assertLarger(0);
           expect(typeof (data[i].uid)).assertEqual("number");
