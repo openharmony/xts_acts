@@ -4953,7 +4953,7 @@ describe('BufferTest', function () {
   });
 
   /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30110
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30200
    * @tc.name: testfrom0275
    * @tc.desc: Create a new buffer containing parameter is non integer
    * @tc.size: MediumTest
@@ -4982,7 +4982,7 @@ describe('BufferTest', function () {
   });
 
   /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30120
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30300
    * @tc.name: testfrom0276
    * @tc.desc: Create a new buffer containing parameter is non integer
    * @tc.size: MediumTest
@@ -4998,7 +4998,7 @@ describe('BufferTest', function () {
   });
 
   /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30130
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30400
    * @tc.name: testfrom0277
    * @tc.desc: Create a new buffer containing parameter is non integer
    * @tc.size: MediumTest
