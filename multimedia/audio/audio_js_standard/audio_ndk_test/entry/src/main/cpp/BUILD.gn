@@ -45,4 +45,5 @@ ohos_shared_library("audioNdkTest") {
   output_extension = "so"
   part_name = "audio_framework"
   subsystem_name = "multimedia"
+  
 }
