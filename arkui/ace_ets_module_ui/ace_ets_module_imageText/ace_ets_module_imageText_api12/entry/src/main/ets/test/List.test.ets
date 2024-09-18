@@ -150,6 +150,7 @@ import imageSpanTest6 from './TextTest/imageSpan6.test';
 import imageSpanTest7 from './TextTest/imageSpan7.test';
 import imageSpanTest8 from './TextTest/imageSpan8.test';
 import TextMaxLines from './Text/TextMaxLines.test';
+import SetFrameRateRangeTest from './Marquee/marqueeFrame.test';
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -282,4 +283,5 @@ export default function testsuite() {
   imageSpanTest7();
   imageSpanTest8();
   TextMaxLines();
+  SetFrameRateRangeTest();
 }

@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,43 +11,35 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//build/config/ohos/config.gni")
 import("//build/ohos.gni")
+import("//foundation/arkui/napi/napi.gni")
+import("//foundation/graphic/graphic_2d/graphic_config.gni")
 import("//test/xts/tools/build/suite.gni")
+import("$graphic_2d_root/rosen/modules/2d_engine/rosen_text/config.gni")
 
-ohos_js_hap_suite("ActsGraphicGles3Test") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":graphicGles3_js_assets",
-    ":graphicGles3_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_app_assist_suite("ActsGraphicGles3Test_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsGraphicGles3TestMain"
+
+  # 部件名称，真实数据，需要子系统对应
+  part_name = "graphic_2d"
+
+  # 子系统名称，真实数据，需要部件对应
+  subsystem_name = "graphic"
+}
+
+ohos_js_app_suite("ActsGraphicGles3Test") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsGraphicGles3Test"
-  subsystem_name = "graphic"
+
+  # 部件名称，真实数据，需要子系统对应
   part_name = "graphic_2d"
-  shared_libraries = [
-    "./entry/src/main/cpp:gles3ndk",
-    ":libcppsharedso",
-  ]
-}
 
-ohos_prebuilt_shared_library("libcppsharedso") {
-  source = rebase_path(libcxx_ndk_shared_file)
+  # 子系统名称，真实数据，需要部件对应
   subsystem_name = "graphic"
-  part_name = "graphic_2d"
-}
-ohos_app_scope("graphicGles3_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("graphicGles3_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("graphicGles3_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":graphicGles3_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  deps = [ ":ActsGraphicGles3Test_main" ]
 }

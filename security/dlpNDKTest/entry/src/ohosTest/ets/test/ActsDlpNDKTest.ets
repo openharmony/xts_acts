@@ -39,138 +39,138 @@ export default function ActsDlpNDKTest() {
     })
 
     /**
-     * @tc.number dlp_Permission_ndk_0100
-     * @tc.name test OH_DLP_GetDlpPermissionInfo Test Normal Scene.
+     * @tc.number getDlpPermissionInfoTest
+     * @tc.name getDlpPermissionInfoTest.
      * @tc.desc Obtains the permission info of this DLP file.
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('dlp_Permission_ndk_0100', 0, async (done: Function) => {
-      console.log("=======> dlp_Permission_ndk_0100  ==========");
+    it('getDlpPermissionInfoTest', 0, async (done: Function) => {
+      console.log("=======> getDlpPermissionInfoTest  ==========");
       
       try{
         let result = await testNapi.osGetDlpPermissionInfoA();
-        console.log("=======>dlp_Permission_ndk_0100 result：" + result);
+        console.log("=======>getDlpPermissionInfoTest result:" + result);
         expect(result).assertEqual(19100006);
         done();
       } catch (error) {
-        console.error("=======>dlp_Permission_ndk_0100 catch error：" + error);
+        console.error("=======>getDlpPermissionInfoTest error:" + error);
         expect(false).assertTrue();
         done();
       }
     })
 
     /**
-     * @tc.number dlp_Permission_ndk_0200
-     * @tc.name test OH_DLP_GetOriginalFileName Test Normal Scene.
+     * @tc.number getOriginalFileNameTest
+     * @tc.name getOriginalFileNameTest.
      * @tc.desc Obtains the original file name from a DLP file name.
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('dlp_Permission_ndk_0200', 0, async (done: Function) => {
-      console.log("=======> dlp_Permission_ndk_0200  ==========");
+    it('getOriginalFileNameTest', 0, async (done: Function) => {
+      console.log("=======> getOriginalFileNameTest  ==========");
       
       try{
         let result = await testNapi.osGetOriginalFileNameA();
-        console.log("=======>dlp_Permission_ndk_0200 result：" + result);
+        console.log("=======>getOriginalFileNameTest result:" + result);
         expect(result).assertEqual('test.txt');
         done();
       } catch (error) {
-        console.error("=======>dlp_Permission_ndk_0200 catch error：" + error);
+        console.error("=======>getOriginalFileNameTest error:" + error);
         expect(false).assertTrue();
         done();
       }
     })
     
     /**
-     * @tc.number dlp_Permission_ndk_0300
-     * @tc.name test OH_DLP_IsInSandbox Test Normal Scene.
+     * @tc.number isInSandboxTest
+     * @tc.name isInSandboxTest.
      * @tc.desc Checks whether current application is in the DLP sandbox.
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('dlp_Permission_ndk_0300', 0, async (done: Function) => {
-      console.log("=======> dlp_Permission_ndk_0300  ==========");
+    it('isInSandboxTest', 0, async (done: Function) => {
+      console.log("=======> isInSandboxTest  ==========");
       
       try{
         let result = await testNapi.osIsInSandboxA();
-        console.log("=======>dlp_Permission_ndk_0300 result：" + result);
+        console.log("=======>isInSandboxTest result:" + result);
         expect(result).assertFalse();
         done();
       } catch (error) {
-        console.error("=======>dlp_Permission_ndk_0300 catch error：" + error);
+        console.error("=======>isInSandboxTest error:" + error);
         expect(false).assertTrue();
         done();
       }
     })
     
     /**
-     * @tc.number dlp_Permission_ndk_0400
-     * @tc.name test OH_DLP_SetSandboxAppConfig Test Normal Scene.
+     * @tc.number setSandboxAppConfigTest
+     * @tc.name setSandboxAppConfigTest.
      * @tc.desc Sets sandbox application configuration.
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('dlp_Permission_ndk_0400', 0, async (done: Function) => {
-      console.log("=======> dlp_Permission_ndk_0400  ==========");
+    it('setSandboxAppConfigTest', 0, async (done: Function) => {
+      console.log("=======> setSandboxAppConfigTest  ==========");
       
       try{
         let result = await testNapi.osSetSandboxAppConfigA();
-        console.log("=======>dlp_Permission_ndk_0400 result：" + result);
+        console.log("=======>setSandboxAppConfigTest result:" + result);
         expect(result).assertEqual(0);
         done();
       } catch (error) {
-        console.error("=======>dlp_Permission_ndk_0400 catch error：" + error);
+        console.error("=======>setSandboxAppConfigTest error:" + error);
         expect(false).assertTrue();
         done();
       }
     })
     
     /**
-     * @tc.number dlp_Permission_ndk_0500
-     * @tc.name test OH_DLP_GetSandboxAppConfig Test Normal Scene.
+     * @tc.number getSandboxAppConfigTest
+     * @tc.name getSandboxAppConfigTest.
      * @tc.desc Obtains sandbox application configuration.
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('dlp_Permission_ndk_0500', 0, async (done: Function) => {
-      console.log("=======> dlp_Permission_ndk_0500  ==========");
+    it('getSandboxAppConfigTest', 0, async (done: Function) => {
+      console.log("=======> getSandboxAppConfigTest  ==========");
       
       try{
         let result = await testNapi.osGetSandboxAppConfigA();
-        console.log("=======>dlp_Permission_ndk_0500 result：" + result);
+        console.log("=======>getSandboxAppConfigTest result:" + result);
         expect(result).assertEqual('configInfo');
         done();
       } catch (error) {
-        console.error("=======>dlp_Permission_ndk_0500 catch error：" + error);
+        console.error("=======>getSandboxAppConfigTest error:" + error);
         expect(false).assertTrue();
         done();
       }
     })
 
     /**
-     * @tc.number dlp_Permission_ndk_0600
-     * @tc.name test OH_DLP_CleanSandboxAppConfig Test Normal Scene.
+     * @tc.number cleanSandboxAppConfigTest
+     * @tc.name cleanSandboxAppConfigTest.
      * @tc.desc Cleans sandbox application configuration.
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('dlp_Permission_ndk_0600', 0, async (done: Function) => {
-      console.log("=======> dlp_Permission_ndk_0600  ==========");
+    it('cleanSandboxAppConfigTest', 0, async (done: Function) => {
+      console.log("=======> cleanSandboxAppConfigTest  ==========");
       
       try{
         let result = await testNapi.osCleanSandboxAppConfigA();
-        console.log("=======>dlp_Permission_ndk_0600 result：" + result);
+        console.log("=======>cleanSandboxAppConfigTest result:" + result);
         expect(result).assertEqual(0);
         done();
       } catch (error) {
-        console.error("=======>dlp_Permission_ndk_0600 catch error：" + error);
+        console.error("=======>cleanSandboxAppConfigTest error:" + error);
         expect(false).assertTrue();
         done();
       }

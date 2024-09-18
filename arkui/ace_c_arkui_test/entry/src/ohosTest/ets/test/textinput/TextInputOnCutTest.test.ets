@@ -37,6 +37,8 @@ export default function textInputOnCutTest() {
     it('testTextInputOnCut001', 0, async (done: Function) => {
       focusControl.requestFocus('OnCutTestTextInput')
       await Utils.sleep(2000)
+      await Utils.clickComponent('OnCutTestTextInput')
+      await Utils.sleep(2000)
       await Utils.doubleClickComponent('OnCutTestTextInput')
       await Utils.sleep(2000)
       await Utils.clickComponentByText('剪切')

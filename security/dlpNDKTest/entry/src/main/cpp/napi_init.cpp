@@ -14,16 +14,15 @@
  */
 
 #include <string>
-#include <stdbool.h>
-#include <stdint.h>
+#include <cstdbool>
+#include <cstdint>
 
 #include "DataProtectionKit/dlp_permission_api.h"
 #include "hilog/log.h"
 #include "napi/native_api.h"
 #include "native_common.h"
 
-static napi_value OsGetDlpPermissionInfoA(napi_env env,
-                                         napi_callback_info info)
+static napi_value OsGetDlpPermissionInfoA(napi_env env, napi_callback_info info)
 {
     DLP_FileAccess dlpFileAccess = NO_PERMISSION; //表示DLP文件授权类型
     uint32_t flags = 0; //表示DLP文件的详细操作权限
@@ -39,8 +38,7 @@ static napi_value OsGetDlpPermissionInfoA(napi_env env,
     return result;
 }
 
-static napi_value OsGetOriginalFileNameA(napi_env env,
-                                         napi_callback_info info)
+static napi_value OsGetOriginalFileNameA(napi_env env, napi_callback_info info)
 {
     const char *fileName = "test.txt.dlp"; //表示dlp文件名，用以获取原始文件名
     char *originalFileName = NULL; //表示原始文件名
@@ -56,8 +54,7 @@ static napi_value OsGetOriginalFileNameA(napi_env env,
     return result;
 }
 
-static napi_value OsIsInSandboxA(napi_env env,
-                                         napi_callback_info info)
+static napi_value OsIsInSandboxA(napi_env env, napi_callback_info info)
 {
     bool isInSandbox = false; //true 表示当前应用在沙箱中，false 表示应用不在沙箱
     DLP_ErrCode ret = OH_DLP_IsInSandbox(&isInSandbox);
@@ -71,8 +68,7 @@ static napi_value OsIsInSandboxA(napi_env env,
     return result;
 }
 
-static napi_value OsSetSandboxAppConfigA(napi_env env,
-                                         napi_callback_info info)
+static napi_value OsSetSandboxAppConfigA(napi_env env, napi_callback_info info)
 {
     const char *configInfo = "configInfo"; //沙箱应用配置信息，用户可将配置信息json化后传入
     DLP_ErrCode ret = OH_DLP_SetSandboxAppConfig(configInfo);
@@ -82,8 +78,7 @@ static napi_value OsSetSandboxAppConfigA(napi_env env,
     return result;
 }
 
-static napi_value OsGetSandboxAppConfigA(napi_env env,
-                                         napi_callback_info info)
+static napi_value OsGetSandboxAppConfigA(napi_env env, napi_callback_info info)
 {
     char *configInfo = NULL; //输出json化后的沙箱应用配置信息
     DLP_ErrCode ret = OH_DLP_GetSandboxAppConfig(&configInfo);
@@ -98,8 +93,7 @@ static napi_value OsGetSandboxAppConfigA(napi_env env,
     return result;
 }
 
-static napi_value OsCleanSandboxAppConfigA(napi_env env,
-                                         napi_callback_info info)
+static napi_value OsCleanSandboxAppConfigA(napi_env env, napi_callback_info info)
 {
     DLP_ErrCode ret = OH_DLP_CleanSandboxAppConfig();
     

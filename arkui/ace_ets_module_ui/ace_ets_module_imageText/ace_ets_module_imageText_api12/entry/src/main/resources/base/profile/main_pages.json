@@ -135,6 +135,7 @@
     "MainAbility/pages/Text/imageSpan5",
     "MainAbility/pages/Text/imageSpan6",
     "MainAbility/pages/Text/imageSpan7",
-    "MainAbility/pages/Text/imageSpan8"
+    "MainAbility/pages/Text/imageSpan8",
+    "MainAbility/pages/Marquee/marqueeFrame"
   ]
 }
