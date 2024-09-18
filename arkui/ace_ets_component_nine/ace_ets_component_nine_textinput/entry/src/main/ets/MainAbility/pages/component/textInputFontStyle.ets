@@ -28,11 +28,11 @@ class MyTextInputFontStyleModifier  implements AttributeModifier<TextInputAttrib
 struct TextInputFontStyle {
   @State mod1: MyTextInputFontStyleModifier = new MyTextInputFontStyleModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("TextInputFontStyle page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.fontstyle != null) { 
+      if (eventData.data?.fontstyle != null) { 
         this.mod1.styleValue =  eventData.data.fontstyle;  
       }
     }
@@ -45,7 +45,7 @@ struct TextInputFontStyle {
     {
       let eventid = 990 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

@@ -94,15 +94,15 @@ export default class Utils {
 
   static getComponentRect(key) {
     let strJson = getInspectorByKey(key);
-    let obj = JSON.parse(strJson);
+    let obj: ESObject = JSON.parse(strJson);
     console.info('[getInspectorByKey] key is: ' + key);
     return Utils.getComponentRectByObj(obj);
   }
 
   static getComponentRectByObj(obj) {
     console.info('[getInspectorByKey] current component is: ' + obj.$type);
-    let rectInfo = JSON.parse('[' + obj.$rect + ']');
-    let rect_value = {
+    let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
+    let rect_value: ESObject = {
       'left': JSON.parse('[' + rectInfo[0] + ']')[0],
       'top': JSON.parse('[' + rectInfo[0] + ']')[1],
       'right': JSON.parse('[' + rectInfo[1] + ']')[0],
@@ -114,7 +114,7 @@ export default class Utils {
 
   static getComponentByKey(componentKey) {
     let strJson = getInspectorByKey(componentKey);
-    let obj = JSON.parse(strJson);
+    let obj: ESObject = JSON.parse(strJson);
     console.info('[' + componentKey + '] obj is: ' + JSON.stringify(obj));
     return obj;
   }

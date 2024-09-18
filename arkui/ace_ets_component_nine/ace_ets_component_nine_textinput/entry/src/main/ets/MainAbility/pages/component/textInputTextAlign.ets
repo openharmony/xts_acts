@@ -28,11 +28,11 @@ class MyTextInputTextAlignModifier implements AttributeModifier<TextInputAttribu
 struct TextInputCopyOption {
   @State mod1: MyTextInputTextAlignModifier = new MyTextInputTextAlignModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("MyTextInputTextAlignModifier page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.textAlign != null) {
+      if (eventData.data?.textAlign != null) {
         console.info("[MyTextInputTextAlignModifier page] textAlign change data is " + eventData.data.textAlign);
         this.mod1.textAlign =  eventData.data.textAlign;
       }
@@ -46,7 +46,7 @@ struct TextInputCopyOption {
     {
       let eventid = 960 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

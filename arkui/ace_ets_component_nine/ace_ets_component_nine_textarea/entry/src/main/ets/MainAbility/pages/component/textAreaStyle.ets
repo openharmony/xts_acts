@@ -28,10 +28,10 @@ class TextAreaStyleModifier implements AttributeModifier<TextAreaAttribute> {
 struct TextAreaStyle {
   @State message : string = 'textarea';
   @State textAreaStyleModifier: TextAreaStyleModifier = new TextAreaStyleModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[style page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.style != null) {         
+      if (eventData.data?.style != null) {         
         console.info("[style page] style change data is " + JSON.stringify(eventData.data.style));
         this.textAreaStyleModifier.styleValue =  eventData.data.style;
       }
@@ -39,12 +39,12 @@ struct TextAreaStyle {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }

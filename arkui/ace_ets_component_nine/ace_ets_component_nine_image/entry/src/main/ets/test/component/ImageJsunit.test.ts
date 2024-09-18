@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function ImageJsunit() {
-  describe('imageTest', function () {
-    beforeEach(async function (done) {
+  describe('imageTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("image beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/imagePage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/imagePage',
       }
       let result;
       try {
@@ -42,7 +42,7 @@ export default function ImageJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("image after each called");
     })
@@ -54,13 +54,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testImageAlt01', 0, async function (done) {
+    it('testImageAlt01', 0, async (done: Function) => {
       var tagName = 'testImageAlt01';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.alt).assertEqual("/test/assert/icon.png");
 
@@ -81,7 +81,7 @@ export default function ImageJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + objNew);
       
       expect(objNew.$attrs.alt).assertEqual("/test/assert/bg.png");
@@ -98,13 +98,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testImageAutoResize02', 0, async function (done) {
+    it('testImageAutoResize02', 0, async (done: Function) => {
       var tagName = 'testImageAutoResize02';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.autoResize).assertEqual("true");
 
@@ -125,7 +125,7 @@ export default function ImageJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + objNew);
       
       expect(objNew.$attrs.autoResize).assertEqual("false");
@@ -142,13 +142,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testImageColorFilter03', 0, async function (done) {
+    it('testImageColorFilter03', 0, async (done: Function) => {
       var tagName = 'testImageColorFilter03';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.alt).assertEqual("/test/assert/bg.png")
    
@@ -169,7 +169,7 @@ export default function ImageJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);
       
       expect(objNew.$attrs.colorFilter).assertEqual("1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 ");
@@ -184,13 +184,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testImageCopyOption04', 0, async function (done) {
+    it('testImageCopyOption04', 0, async (done: Function) => {
       var tagName = 'testImageCopyOption04';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.copyOption).assertEqual("CopyOptions.None");
 
@@ -211,7 +211,7 @@ export default function ImageJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + objNew);
       expect(objNew.$attrs.copyOption).assertEqual("CopyOptions.Local");
       expect(objNew.$type).assertEqual('Image');
@@ -233,7 +233,7 @@ export default function ImageJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew2 = getInspectorByKey('keyImage');
-      let objNew2 = JSON.parse(strJsonNew2);
+      let objNew2: ESObject = JSON.parse(strJsonNew2);
       console.info('[' + tagName + '] component objNew is: ' + objNew2);
       expect(objNew2.$attrs.copyOption).assertEqual("CopyOptions.Distributed");
       expect(objNew2.$type).assertEqual('Image');
@@ -249,13 +249,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testImageDraggable05', 0, async function (done) {
+    it('testImageDraggable05', 0, async (done: Function) => {
       var tagName = 'testImageDraggable05';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.draggable).assertEqual("false");
 
@@ -276,7 +276,7 @@ export default function ImageJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + objNew);
       
       expect(objNew.$attrs.draggable).assertEqual("true");
@@ -293,13 +293,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testImageFillColor06', 0, async function (done) {
+    it('testImageFillColor06', 0, async (done: Function) => {
       var tagName = 'testImageFillColor06';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.fillColor).assertEqual("#FF007DFF");
 
@@ -320,7 +320,7 @@ export default function ImageJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + objNew);
       
       expect(objNew.$attrs.fillColor).assertEqual("#FFFFA500");
@@ -337,13 +337,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testImageFitOriginalSize07', 0, async function (done) {
+    it('testImageFitOriginalSize07', 0, async (done: Function) => {
       var tagName = 'testImageFitOriginalSize07';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.fitOriginalSize).assertEqual("false");
 
@@ -364,7 +364,7 @@ export default function ImageJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + objNew);
       
       expect(objNew.$attrs.fitOriginalSize).assertEqual("true");
@@ -380,13 +380,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testImageInterpolation08', 0, async function (done) {
+    it('testImageInterpolation08', 0, async (done: Function) => {
       var tagName = 'testImageInterpolation08';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.interpolation).assertEqual("ImageInterpolation.None");
 
@@ -407,7 +407,7 @@ export default function ImageJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + objNew);
       
       expect(objNew.$attrs.interpolation).assertEqual("ImageInterpolation.Low");
@@ -430,7 +430,7 @@ export default function ImageJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew2 = getInspectorByKey('keyImage');
-      let objNew2 = JSON.parse(strJsonNew2);
+      let objNew2: ESObject = JSON.parse(strJsonNew2);
       console.info('[' + tagName + '] component objNew is: ' + objNew2);
       
       expect(objNew2.$attrs.interpolation).assertEqual("ImageInterpolation.Medium");
@@ -453,7 +453,7 @@ export default function ImageJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew3 = getInspectorByKey('keyImage');
-      let objNew3 = JSON.parse(strJsonNew3);
+      let objNew3: ESObject = JSON.parse(strJsonNew3);
       console.info('[' + tagName + '] component objNew is: ' + objNew3);
       
       expect(objNew3.$attrs.interpolation).assertEqual("ImageInterpolation.High");
@@ -469,13 +469,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testImageMatchTextDirection09', 0, async function (done) {
+    it('testImageMatchTextDirection09', 0, async (done: Function) => {
       var tagName = 'testImageMatchTextDirection09';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.matchTextDirection).assertEqual("false");
 
@@ -496,7 +496,7 @@ export default function ImageJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + objNew);
       
       expect(objNew.$attrs.matchTextDirection).assertEqual("true");
@@ -513,13 +513,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */   
-    it('testImageObjectFit10', 0, async function (done) {
+    it('testImageObjectFit10', 0, async (done: Function) => {
       var tagName = 'testImageObjectFit10';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.objectFit).assertEqual("ImageFit.Cover");
 
@@ -541,7 +541,7 @@ export default function ImageJsunit() {
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       expect(objNew.$attrs.objectFit).assertEqual("ImageFit.Contain");
       expect(objNew.$type).assertEqual('Image');
 
@@ -563,7 +563,7 @@ export default function ImageJsunit() {
       await Utils.sleep(2000);
       let strJsonNew2 = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew2);
-      let objNew2 = JSON.parse(strJsonNew2);
+      let objNew2: ESObject = JSON.parse(strJsonNew2);
       expect(objNew2.$attrs.objectFit).assertEqual("ImageFit.Auto");
       expect(objNew2.$type).assertEqual('Image');
 
@@ -585,7 +585,7 @@ export default function ImageJsunit() {
       await Utils.sleep(2000);
       let strJsonNew3 = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew3);
-      let objNew3 = JSON.parse(strJsonNew3);
+      let objNew3: ESObject = JSON.parse(strJsonNew3);
       expect(objNew3.$attrs.objectFit).assertEqual("ImageFit.Fill");
       expect(objNew3.$type).assertEqual('Image');
 
@@ -607,7 +607,7 @@ export default function ImageJsunit() {
       await Utils.sleep(2000);
       let strJsonNew4 = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew4);
-      let objNew4 = JSON.parse(strJsonNew4);
+      let objNew4: ESObject = JSON.parse(strJsonNew4);
       expect(objNew4.$attrs.objectFit).assertEqual("ImageFit.ScaleDown");
       expect(objNew4.$type).assertEqual('Image');
       
@@ -629,7 +629,7 @@ export default function ImageJsunit() {
       await Utils.sleep(2000);
       let strJsonNew5 = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew5);
-      let objNew5 = JSON.parse(strJsonNew5);
+      let objNew5: ESObject = JSON.parse(strJsonNew5);
       expect(objNew5.$attrs.objectFit).assertEqual("ImageFit.None");
       expect(objNew5.$type).assertEqual('Image');
       
@@ -644,13 +644,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */  
-    it('testImageObjectRepeat11', 0, async function (done) {
+    it('testImageObjectRepeat11', 0, async (done: Function) => {
       var tagName = 'testImageObjectRepeat11';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.objectRepeat).assertEqual("ImageRepeat.NoRepeat");
 
@@ -672,7 +672,7 @@ export default function ImageJsunit() {
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       expect(objNew.$attrs.objectRepeat).assertEqual("ImageRepeat.X");
       expect(objNew.$type).assertEqual('Image');
 
@@ -694,7 +694,7 @@ export default function ImageJsunit() {
       await Utils.sleep(2000);
       let strJsonNew2 = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew2);
-      let objNew2 = JSON.parse(strJsonNew2);
+      let objNew2: ESObject = JSON.parse(strJsonNew2);
       expect(objNew2.$attrs.objectRepeat).assertEqual("ImageRepeat.Y");
       expect(objNew2.$type).assertEqual('Image');
 
@@ -716,7 +716,7 @@ export default function ImageJsunit() {
       await Utils.sleep(2000);
       let strJsonNew3 = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew3);
-      let objNew3 = JSON.parse(strJsonNew3);
+      let objNew3: ESObject = JSON.parse(strJsonNew3);
       expect(objNew3.$attrs.objectRepeat).assertEqual("ImageRepeat.XY");      
       expect(objNew3.$type).assertEqual('Image');
       
@@ -731,13 +731,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */  
-    it('testImageRenderMode12', 0, async function (done) {
+    it('testImageRenderMode12', 0, async (done: Function) => {
       var tagName = 'testImageRenderMode12';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.renderMode).assertEqual('ImageRenderMode.Original');
 
@@ -759,7 +759,7 @@ export default function ImageJsunit() {
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       expect(objNew.$attrs.renderMode).assertEqual("ImageRenderMode.Template");
       expect(objNew.$type).assertEqual('Image');
      
@@ -774,13 +774,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */  
-    it('testImageSourceSize13', 0, async function (done) {
+    it('testImageSourceSize13', 0, async (done: Function) => {
       var tagName = 'testImageSourceSize13';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.sourceSize).assertEqual('[350.00 x 350.00]');
 
@@ -802,7 +802,7 @@ export default function ImageJsunit() {
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       expect(objNew.$attrs.sourceSize).assertEqual('[350.00 x 350.00]');
       expect(objNew.$type).assertEqual('Image');
      
@@ -817,13 +817,13 @@ export default function ImageJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */  
-    it('testImageSyncLoad14', 0, async function (done) {
+    it('testImageSyncLoad14', 0, async (done: Function) => {
       var tagName = 'testImageSyncLoad14';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Image');
       expect(obj.$attrs.syncLoad).assertEqual("false");
 
@@ -845,7 +845,7 @@ export default function ImageJsunit() {
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keyImage');
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       expect(objNew.$attrs.syncLoad).assertEqual("true");
       expect(objNew.$type).assertEqual('Image');
      

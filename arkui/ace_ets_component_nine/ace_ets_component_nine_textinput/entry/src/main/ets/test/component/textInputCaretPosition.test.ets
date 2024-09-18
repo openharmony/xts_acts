@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputCaretPositionTest() {
-  describe('textInputCaretPositionTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputCaretPositionTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputCaretPositionTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputCaretPosition',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputCaretPosition',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputcaretPosition state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputcaretPosition pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputcaretPosition page result: " + JSON.stringify(result));
+          console.info("push textInputcaretPosition page result: success");
         }
       } catch (err) {
         console.error("push textInputcaretPosition page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputCaretPositionTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputCaretPositionTest after each called");
     })
@@ -59,18 +58,18 @@ export default function textInputCaretPositionTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputcaretPosition0100', 0, async function (done) {
-      var tagName = 'textInputcaretPosition0100';
+    it('textInputcaretPosition0100', 0, async (done: Function) => {
+      let tagName = 'textInputcaretPosition0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
       try {
-        let eventData1 = {
+        let eventData1: events_emitter.EventData = {
           data: {
             "caretPosition": 10,
           }
         }
-        let innerEvent1 = {
+        let innerEvent1: events_emitter.InnerEvent = {
           eventId: 880,
           priority: events_emitter.EventPriority.LOW
         }
@@ -81,7 +80,7 @@ export default function textInputCaretPositionTest() {
       }
       await Utils.sleep(2000);
       let strJson1 = getInspectorByKey('key_textinput_caretposition');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info('[' + tagName + '] component obj1 is: ' + JSON.stringify(obj1));
       expect(obj1.$attrs.caretPosition).assertEqual('10');
       console.info('[' + tagName + '] END ===========================');
@@ -96,18 +95,18 @@ export default function textInputCaretPositionTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputcaretPosition0200', 0, async function (done) {
-      var tagName = 'textInputcaretPosition0200';
+    it('textInputcaretPosition0200', 0, async (done: Function) => {
+      let tagName = 'textInputcaretPosition0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
       try {
-        let eventData2 = {
+        let eventData2: events_emitter.EventData = {
           data: {
             "caretPosition": 5.5,
           }
         }
-        let innerEvent2 = {
+        let innerEvent2: events_emitter.InnerEvent = {
           eventId: 881,
           priority: events_emitter.EventPriority.LOW
         }
@@ -118,7 +117,7 @@ export default function textInputCaretPositionTest() {
       }
       await Utils.sleep(2000);
       let strJson2 = getInspectorByKey('key_textinput_caretposition');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info('[' + tagName + '] component obj2 is: ' + JSON.stringify(obj2));
       expect(obj2.$attrs.caretPosition).assertEqual('5');
       console.info('[' + tagName + '] END ===========================');
@@ -134,18 +133,18 @@ export default function textInputCaretPositionTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputcaretPosition0300', 0, async function (done) {
-      var tagName = 'textInputcaretPosition0300';
+    it('textInputcaretPosition0300', 0, async (done: Function) => {
+      let tagName = 'textInputcaretPosition0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
       try {
-        let eventData3 = {
+        let eventData3: events_emitter.EventData = {
           data: {
             "caretPosition": -1,
           }
         }
-        let innerEvent3 = {
+        let innerEvent3: events_emitter.InnerEvent = {
           eventId: 882,
           priority: events_emitter.EventPriority.LOW
         }
@@ -156,7 +155,7 @@ export default function textInputCaretPositionTest() {
       }
       await Utils.sleep(2000);
       let strJson3 = getInspectorByKey('key_textinput_caretposition');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info('[' + tagName + '] component obj3 is: ' + JSON.stringify(obj3));
       expect(obj3.$attrs.caretPosition).assertEqual('0');
       console.info('[' + tagName + '] END ===========================');

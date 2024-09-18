@@ -30,11 +30,11 @@ struct TextInputCopyOption {
   @State copyOption: CopyOptions = CopyOptions.None;
   @State textInputCopyOptionModifier: TextInputCopyOptionModifier = new TextInputCopyOptionModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("TextInputCopyOptionModifier page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.copyOption != null) {
+      if (eventData.data?.copyOption != null) {
         console.info("[TextInputCopyOptionModifier page] CopyOption change data is " + eventData.data.copyOption);
         this.copyOption = eventData.data.copyOption;
         this.textInputCopyOptionModifier.copyOption =  eventData.data.copyOption;
@@ -50,7 +50,7 @@ struct TextInputCopyOption {
     {
       let eventid = 810 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

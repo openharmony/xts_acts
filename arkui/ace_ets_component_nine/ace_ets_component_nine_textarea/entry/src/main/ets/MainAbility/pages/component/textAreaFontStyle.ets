@@ -29,10 +29,10 @@ struct TextAreaFontStyle {
   @State message : string = 'textarea';
   @State _fontStyle: FontStyle = FontStyle.Normal;
   @State textAreaFontStyleModifier: TextAreaFontStyleModifier = new TextAreaFontStyleModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[fontStyle page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.fontStyle != null) {    
+      if (eventData.data?.fontStyle != null) {    
         console.info("[fontStyle page] fontStyle change data is " + JSON.stringify(eventData.data.fontStyle));
         this.textAreaFontStyleModifier.fontStyleValue =  eventData.data.fontStyle;
       }
@@ -40,12 +40,12 @@ struct TextAreaFontStyle {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }

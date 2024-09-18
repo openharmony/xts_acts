@@ -30,11 +30,11 @@ struct TextInputPlaceholderFont {
    
   @State mod1: MyTextInputPlaceholderFontModifier = new MyTextInputPlaceholderFontModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("MyTextInputPlaceholderFontModifier page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.font != null && eventData.data.font != undefined) {
+      if (eventData.data?.font != null && eventData.data.font != undefined) {
         console.info("[textCase page] textIndent change data is " + eventData.data.font);
 
         let fontObj: Font =  JSON.parse( eventData.data.font );
@@ -53,7 +53,7 @@ struct TextInputPlaceholderFont {
     {
       let eventid = 840 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

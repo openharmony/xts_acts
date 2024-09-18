@@ -30,11 +30,11 @@ struct TextInputShowPasswordIcon {
    
   @State mod1: MyTextInputShowPasswordIconModifier = new MyTextInputShowPasswordIconModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("MyTextInputShowPasswordIconModifier page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.showPasswordIcon != null) {
+      if (eventData.data?.showPasswordIcon != null) {
         this.mod1.showPasswordIcon = eventData.data.showPasswordIcon;
       }
     }
@@ -47,7 +47,7 @@ struct TextInputShowPasswordIcon {
     {
       let eventid =970 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

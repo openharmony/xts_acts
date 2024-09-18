@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputFontStyleTest() {
-  describe('textInputFontStyleTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputFontStyleTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputFontStyleTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputFontStyle',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputFontStyle',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputFontStyle state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputFontStyle pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputFontStyle page result: " + JSON.stringify(result));
+          console.info("push textInputFontStyle page result: success");
         }
       } catch (err) {
         console.error("push textInputFontStyle page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputFontStyleTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputFontStyleTest after each called");
     })
@@ -59,19 +58,19 @@ export default function textInputFontStyleTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputFontStyle0100', 0, async function (done) {
-      var tagName = 'textInputFontStyle0100';
+    it('textInputFontStyle0100', 0, async (done: Function) => {
+      let tagName = 'textInputFontStyle0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontstyle":  FontStyle.Normal
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 990,
           priority: events_emitter.EventPriority.LOW
         }
@@ -83,7 +82,7 @@ export default function textInputFontStyleTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontstyle');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text fontStyle is: ' + JSON.stringify(obj.$attrs.fontStyle));
  
       expect(obj.$attrs.fontStyle).assertEqual('FontStyle.Normal');
@@ -100,19 +99,19 @@ export default function textInputFontStyleTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputFontStyle0200', 0, async function (done) {
-      var tagName = 'textInputFontStyle0200';
+    it('textInputFontStyle0200', 0, async (done: Function) => {
+      let tagName = 'textInputFontStyle0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontstyle":  FontStyle.Italic
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 991,
           priority: events_emitter.EventPriority.LOW
         }
@@ -124,7 +123,7 @@ export default function textInputFontStyleTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontstyle');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text fontStyle is: ' + JSON.stringify(obj.$attrs.fontStyle));
  
       expect(obj.$attrs.fontStyle).assertEqual('FontStyle.Italic');

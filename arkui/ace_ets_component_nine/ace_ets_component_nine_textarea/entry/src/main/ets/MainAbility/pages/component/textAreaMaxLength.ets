@@ -28,10 +28,10 @@ class TextAreaMaxLengthModifier implements AttributeModifier<TextAreaAttribute> 
 struct TextAreaMaxLength {
   @State message : string = 'textarea';
   @State textAreaMaxLengthModifier: TextAreaMaxLengthModifier = new TextAreaMaxLengthModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[maxLength page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.maxLength != null) {  
+      if (eventData.data?.maxLength != null) {  
         console.info("[maxLength page] maxLength change data is " + JSON.stringify(eventData.data.maxLength));
         this.textAreaMaxLengthModifier.maxLengthValue =  eventData.data.maxLength;
       }
@@ -39,7 +39,7 @@ struct TextAreaMaxLength {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }

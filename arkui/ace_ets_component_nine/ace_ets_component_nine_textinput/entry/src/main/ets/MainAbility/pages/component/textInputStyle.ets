@@ -30,11 +30,11 @@ struct TextInputStyle {
   @State styleValue :number = -1;
   @State textInputStyleModifier: TextInputStyleModifier = new TextInputStyleModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("TextInputStyle page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.style != null) { 
+      if (eventData.data?.style != null) { 
         this.styleValue = eventData.data.style;
         this.textInputStyleModifier.styleValue =  eventData.data.style;  
       }
@@ -48,7 +48,7 @@ struct TextInputStyle {
     {
       let eventid = 930 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

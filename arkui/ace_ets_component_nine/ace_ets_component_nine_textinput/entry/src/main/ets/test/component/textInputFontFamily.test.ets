@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputFontFamilyTest() {
-  describe('textInputFontFamilyTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputFontFamilyTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputFontFamilyTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputFontFamily',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputFontFamily',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputFontFamily state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputFontFamily pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputFontFamily page result: " + JSON.stringify(result));
+          console.info("push textInputFontFamily page result: success");
         }
       } catch (err) {
         console.error("push textInputFontFamily page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputFontFamilyTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputFontFamily after each called");
     })
@@ -59,19 +58,19 @@ export default function textInputFontFamilyTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputFontFamily0100', 0, async function (done) {
-      var tagName = 'textInputFontFamily0100';
+    it('textInputFontFamily0100', 0, async (done: Function) => {
+      let tagName = 'textInputFontFamily0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontFamily": 'HarmonyOS Sans'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 830,
           priority: events_emitter.EventPriority.LOW
         }
@@ -83,7 +82,7 @@ export default function textInputFontFamilyTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontFamily');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text textCase  obj is: ' + JSON.stringify(obj.$attrs));
  
       console.info('[' + tagName + '] Text textCase  fontFamily is: ' + JSON.stringify(obj.$attrs.fontFamily));
@@ -104,19 +103,19 @@ export default function textInputFontFamilyTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputFontFamily0200', 0, async function (done) {
-      var tagName = 'textInputFontFamily0200';
+    it('textInputFontFamily0200', 0, async (done: Function) => {
+      let tagName = 'textInputFontFamily0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontFamily":  'app.string.font_family_regular' 
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 831,
           priority: events_emitter.EventPriority.LOW
         }
@@ -128,7 +127,7 @@ export default function textInputFontFamilyTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontFamily');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text textCase  obj is: ' + JSON.stringify(obj.$attrs));
  
       console.info('[' + tagName + '] Text textCase  fontFamily is: ' + JSON.stringify(obj.$attrs.fontFamily));

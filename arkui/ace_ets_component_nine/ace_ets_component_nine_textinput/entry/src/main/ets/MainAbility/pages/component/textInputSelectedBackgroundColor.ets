@@ -27,11 +27,11 @@ class MyTextInputSelectedBackgroundColorModifier implements AttributeModifier<Te
 struct TextInputFontColor {
     @State mod1: MyTextInputSelectedBackgroundColorModifier = new MyTextInputSelectedBackgroundColorModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
         if (eventData != null) {
             console.info("TextInputFontColor page state change called:" + JSON.stringify(eventData));
 
-            if (eventData.data.selectedBackgroundColor != null) {
+            if (eventData.data?.selectedBackgroundColor != null) {
                 console.info("[TextInputFontColor page] fontColor change data is " + eventData.data.selectedBackgroundColor);
 
                 if ('app.color.color_D90013_red' === eventData.data.selectedBackgroundColor) {
@@ -49,7 +49,7 @@ struct TextInputFontColor {
         for (let i = 0; i < 2; i++) {
             let eventid = 910 + i;
 
-            var stateChangeEvent = {
+            let stateChangeEvent: events_emitter.InnerEvent = {
                 eventId: eventid,
                 priority: events_emitter.EventPriority.LOW
             }

@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaPlaceholderFont() {
-  describe('textAreaPlaceholderFontTest', function () {
-    beforeEach(async function (done) {
+  describe('textAreaPlaceholderFontTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textAreaPlaceholderFontTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaPlaceholderFont',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaPlaceholderFont',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get placeholderFont state pages: " + JSON.stringify(pages));
         if (!("textAreaPlaceholderFont" == pages.name)) {
           console.info("get textAreaPlaceholderFont pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaPlaceholderFont page result: " + JSON.stringify(result));
+          console.info("push textAreaPlaceholderFont page result: success");
         }
       } catch (err) {
         console.error("push textAreaPlaceholderFont page error: " + err);
@@ -42,7 +41,7 @@ export default function textAreaPlaceholderFont() {
       console.info("textAreaPlaceholderFont beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("placeholderFont after each called");
     });
@@ -54,12 +53,12 @@ export default function textAreaPlaceholderFont() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaPlaceholderFontAll', 0, async function (done) {
-      var tagName = 'testTextAreaPlaceholderFontAll';
+    it('testTextAreaPlaceholderFontAll', 0, async (done: Function) => {
+      let tagName = 'testTextAreaPlaceholderFontAll';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "placeholderFont": JSON.stringify({
               size: "20",
@@ -69,7 +68,7 @@ export default function textAreaPlaceholderFont() {
             })
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -80,7 +79,7 @@ export default function textAreaPlaceholderFont() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_placeholderFont');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.placeholderFont));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.placeholderFont).assertEqual("{\"style\":\"FontStyle.Italic\",\"size\":\"20.00fp\",\"weight\":\"900\",\"fontFamily\":\"HarmonyOS Sans\"}");
@@ -95,19 +94,19 @@ export default function textAreaPlaceholderFont() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaPlaceholderFontNumber', 0, async function (done) {
-      var tagName = 'testTextAreaPlaceholderFontNumber';
+    it('testTextAreaPlaceholderFontNumber', 0, async (done: Function) => {
+      let tagName = 'testTextAreaPlaceholderFontNumber';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "placeholderFont": JSON.stringify({
               weight: 500,
             })
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6802,
           priority: events_emitter.EventPriority.LOW
         }
@@ -118,7 +117,7 @@ export default function textAreaPlaceholderFont() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_placeholderFont');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.placeholderFont));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.placeholderFont).assertEqual("{\"style\":\"FontStyle.Normal\",\"size\":\"16.00fp\",\"weight\":\"500\",\"fontFamily\":\"HarmonyOS Sans\"}");
@@ -133,19 +132,19 @@ export default function textAreaPlaceholderFont() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaPlaceholderFontString', 0, async function (done) {
-      var tagName = 'testTextAreaPlaceholderFontString';
+    it('testTextAreaPlaceholderFontString', 0, async (done: Function) => {
+      let tagName = 'testTextAreaPlaceholderFontString';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "placeholderFont": JSON.stringify({
               family: 'Arial',
             })
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6803,
           priority: events_emitter.EventPriority.LOW
         }
@@ -156,7 +155,7 @@ export default function textAreaPlaceholderFont() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_placeholderFont');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.placeholderFont));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.placeholderFont).assertEqual("{\"style\":\"FontStyle.Normal\",\"size\":\"16.00fp\",\"fontWeight\":\"FontWeight.Normal\",\"fontFamily\":\"Arial\"}");
@@ -171,17 +170,17 @@ export default function textAreaPlaceholderFont() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaPlaceholderFontResource', 0, async function (done) {
-      var tagName = 'testTextAreaPlaceholderFontResource';
+    it('testTextAreaPlaceholderFontResource', 0, async (done: Function) => {
+      let tagName = 'testTextAreaPlaceholderFontResource';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "placeholderFont": "app.float.length_df",
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6804,
           priority: events_emitter.EventPriority.LOW
         }
@@ -192,7 +191,7 @@ export default function textAreaPlaceholderFont() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_placeholderFont');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.placeholderFont));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.placeholderFont).assertEqual("{\"style\":\"FontStyle.Normal\",\"size\":\"30.00fp\",\"fontWeight\":\"FontWeight.Normal\",\"fontFamily\":\"Arial\"}");

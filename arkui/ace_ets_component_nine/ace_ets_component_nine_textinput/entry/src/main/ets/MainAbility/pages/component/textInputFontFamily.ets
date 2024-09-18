@@ -30,14 +30,14 @@ struct TextInputFontFamily {
   @State fontFamily: string | Resource  = 'HarmonyOS Sans';
   @State textInputFontFamilyModifier: TextInputFontFamilyModifier = new TextInputFontFamilyModifier();
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("TextFontFamily page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.fontFamily != null) {
+      if (eventData.data?.fontFamily != null) {
         console.info("[TextFontFamily page] fontFamily change data is " + eventData.data.fontFamily);
 
-        let _fontFamily = eventData.data.fontFamily ;
+        let _fontFamily: string | Resource = eventData.data.fontFamily;
         if ( _fontFamily === 'app.string.font_family_regular'){
           _fontFamily = $r('app.string.font_family_regular');
           console.log("_fontFamily:" + _fontFamily);
@@ -55,7 +55,7 @@ struct TextInputFontFamily {
     {
       let eventid = 830 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputPlaceholderColorTest() {
-  describe('textInputPlaceholderColorTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputPlaceholderColorTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputPlaceholderColorTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputPlaceholderColor',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputPlaceholderColor',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputPlaceholderColor state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputPlaceholderColor pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputPlaceholderColor page result: " + JSON.stringify(result));
+          console.info("push textInputPlaceholderColor page result: success");
         }
       } catch (err) {
         console.error("push textInputPlaceholderColor page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputPlaceholderColorTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputPlaceholderColor after each called");
     })
@@ -59,19 +58,19 @@ export default function textInputPlaceholderColorTest() {
      * @tc.type    Function
      * @tc.level   0 
      */
-    it('textInputPlaceholderColor0100', 0, async function (done) {
-      var tagName = 'textInputPlaceholderColor0100';
+    it('textInputPlaceholderColor0100', 0, async (done: Function) => {
+      let tagName = 'textInputPlaceholderColor0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "color":  Color.Black
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 960,
           priority: events_emitter.EventPriority.LOW
         }
@@ -83,7 +82,7 @@ export default function textInputPlaceholderColorTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_placeholderColor');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text color is: ' + JSON.stringify(obj.$attrs.placeholderColor));
  
       expect(obj.$attrs.placeholderColor).assertEqual('#FF000000');
@@ -101,19 +100,19 @@ export default function textInputPlaceholderColorTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it('textInputPlaceholderColor0200', 0, async function (done) {
-      var tagName = 'textInputPlaceholderColor0200';
+    it('textInputPlaceholderColor0200', 0, async (done: Function) => {
+      let tagName = 'textInputPlaceholderColor0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "color":  'app.color.color_D90013_red'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 961,
           priority: events_emitter.EventPriority.LOW
         }
@@ -125,7 +124,7 @@ export default function textInputPlaceholderColorTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_placeholderColor');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text placeholderColor is: ' + JSON.stringify(obj.$attrs.placeholderColor));
  
       expect(obj.$attrs.placeholderColor).assertEqual('#FFD90013');

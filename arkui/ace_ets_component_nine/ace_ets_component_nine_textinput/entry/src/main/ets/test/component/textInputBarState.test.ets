@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputBarStateTest() {
-  describe('textInputBarStateTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputBarStateTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputBarStateTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputBarState',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputBarState',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputBarStateTest state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputBarStateTest pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputBarStateTest page result: " + JSON.stringify(result));
+          console.info("push textInputBarStateTest page result: success");
         }
       } catch (err) {
         console.error("push textInputBarStateTest page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputBarStateTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputBarStateTest after each called");
     })
@@ -58,19 +57,19 @@ export default function textInputBarStateTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputBarState0100', 0, async function (done) {
-      var tagName = 'textInputBarState0100';
+    it('textInputBarState0100', 0, async (done: Function) => {
+      let tagName = 'textInputBarState0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "barState":  BarState.Auto
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 850,
           priority: events_emitter.EventPriority.LOW
         }
@@ -82,7 +81,7 @@ export default function textInputBarStateTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_barstate');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text barstate is: ' + JSON.stringify(obj.$attrs.barState));
  
       expect(obj.$attrs.barState).assertEqual('BarState.AUTO');
@@ -99,19 +98,19 @@ export default function textInputBarStateTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputBarState0200', 0, async function (done) {
-      var tagName = 'textInputBarState0200';
+    it('textInputBarState0200', 0, async (done: Function) => {
+      let tagName = 'textInputBarState0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "barState":  BarState.Off
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 851,
           priority: events_emitter.EventPriority.LOW
         }
@@ -123,7 +122,7 @@ export default function textInputBarStateTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_barstate');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text barstate is: ' + JSON.stringify(obj.$attrs.barState));
  
       expect(obj.$attrs.barState).assertEqual('BarState.OFF');
@@ -141,19 +140,19 @@ export default function textInputBarStateTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputBarState0300', 0, async function (done) {
-      var tagName = 'textInputBarState0300';
+    it('textInputBarState0300', 0, async (done: Function) => {
+      let tagName = 'textInputBarState0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "barState":  BarState.On
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 852,
           priority: events_emitter.EventPriority.LOW
         }
@@ -167,7 +166,7 @@ export default function textInputBarStateTest() {
       let strJsonNew = getInspectorByKey('key_textinput_barstate');
 
       console.info(' Text Object json is:' + strJsonNew);
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text barstate is: ' + JSON.stringify(obj.$attrs.barState));
  
       expect(obj.$attrs.barState).assertEqual('BarState.ON');
@@ -185,19 +184,19 @@ export default function textInputBarStateTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputBarState0400', 0, async function (done) {
-      var tagName = 'textInputBarState0400';
+    it('textInputBarState0400', 0, async (done: Function) => {
+      let tagName = 'textInputBarState0400';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "barState":  -1
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 853,
           priority: events_emitter.EventPriority.LOW
         }
@@ -209,7 +208,7 @@ export default function textInputBarStateTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_barstate');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text barstate is: ' + JSON.stringify(obj.$attrs.barState));
  
       expect(obj.$attrs.barState).assertEqual('BarState.AUTO');

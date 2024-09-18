@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputTypeTest() {
-  describe('textInputTypeTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputTypeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputTypeTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputType',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputType',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputType state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputType pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputType page result: " + JSON.stringify(result));
+          console.info("push textInputType page result: success");
         }
       } catch (err) {
         console.error("push textInputType page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputTypeTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputTypeTest after each called");
     })
@@ -59,19 +58,19 @@ export default function textInputTypeTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputType0100', 0, async function (done) {
-      var tagName = 'textInputType0100';
+    it('textInputType0100', 0, async (done: Function) => {
+      let tagName = 'textInputType0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 0
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 100,
           priority: events_emitter.EventPriority.LOW
         }
@@ -83,7 +82,7 @@ export default function textInputTypeTest() {
       await Utils.sleep(2000);
 
       let strJsonNew = getInspectorByKey('key_textinput_type');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text type is: ' + JSON.stringify(obj.$attrs.type));
 
       expect(obj.$attrs.type).assertEqual('InputType.Normal');
@@ -100,19 +99,19 @@ export default function textInputTypeTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputType0200', 0, async function (done) {
-      var tagName = 'textInputType0200';
+    it('textInputType0200', 0, async (done: Function) => {
+      let tagName = 'textInputType0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 1
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 101,
           priority: events_emitter.EventPriority.LOW
         }
@@ -124,7 +123,7 @@ export default function textInputTypeTest() {
       await Utils.sleep(2000);
 
       let strJsonNew = getInspectorByKey('key_textinput_type');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text type is: ' + JSON.stringify(obj.$attrs.type));
 
       expect(obj.$attrs.type).assertEqual('InputType.Password');
@@ -142,19 +141,19 @@ export default function textInputTypeTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputType0300', 0, async function (done) {
-      var tagName = 'textInputType0300';
+    it('textInputType0300', 0, async (done: Function) => {
+      let tagName = 'textInputType0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 2
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 102,
           priority: events_emitter.EventPriority.LOW
         }
@@ -168,7 +167,7 @@ export default function textInputTypeTest() {
       let strJsonNew = getInspectorByKey('key_textinput_type');
 
       console.info(' Text Object json is:' + strJsonNew);
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text type is: ' + JSON.stringify(obj.$attrs.type));
 
       expect(obj.$attrs.type).assertEqual('InputType.Email');
@@ -186,19 +185,19 @@ export default function textInputTypeTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputType0400', 0, async function (done) {
-      var tagName = 'textInputType0400';
+    it('textInputType0400', 0, async (done: Function) => {
+      let tagName = 'textInputType0400';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 3
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 103,
           priority: events_emitter.EventPriority.LOW
         }
@@ -210,7 +209,7 @@ export default function textInputTypeTest() {
       await Utils.sleep(2000);
 
       let strJsonNew = getInspectorByKey('key_textinput_type');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text type is: ' + JSON.stringify(obj.$attrs.type));
 
       expect(obj.$attrs.type).assertEqual('InputType.Number');

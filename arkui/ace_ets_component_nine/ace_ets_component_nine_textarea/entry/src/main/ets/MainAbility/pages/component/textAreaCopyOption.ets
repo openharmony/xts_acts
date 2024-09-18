@@ -28,10 +28,10 @@ class TextAreaCopyOptionModifier implements AttributeModifier<TextAreaAttribute>
 struct TextAreaCopyOption {
   @State message : string = 'textarea';
   @State textAreaCopyOptionModifier: TextAreaCopyOptionModifier = new TextAreaCopyOptionModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[copyOption page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.copyOption != null) {
+      if (eventData.data?.copyOption != null) {
         console.info("[copyOption page] copyOption change data is " + JSON.stringify(eventData.data.copyOption));
         this.textAreaCopyOptionModifier.copyOptionValue =  eventData.data.copyOption;
       }
@@ -39,22 +39,22 @@ struct TextAreaCopyOption {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent02, this.stateChangCallBack);
-    var stateChangeEvent03 = {
+    let stateChangeEvent03: events_emitter.InnerEvent = {
       eventId: 6803,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent03, this.stateChangCallBack);
-    var stateChangeEvent04 = {
+    let stateChangeEvent04: events_emitter.InnerEvent = {
       eventId: 6804,
       priority: events_emitter.EventPriority.LOW
     }

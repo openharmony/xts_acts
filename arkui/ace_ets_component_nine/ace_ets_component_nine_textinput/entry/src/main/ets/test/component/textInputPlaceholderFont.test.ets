@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputPlaceholderFontTest() {
-  describe('textInputPlaceholderFontTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputPlaceholderFontTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputPlaceholderFontTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputPlaceholderFont',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputPlaceholderFont',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputPlaceholderFont state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputPlaceholderFont pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputPlaceholderFont page result: " + JSON.stringify(result));
+          console.info("push textInputPlaceholderFont page result: success");
         }
       } catch (err) {
         console.error("push textInputPlaceholderFont page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputPlaceholderFontTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputPlaceholderFont after each called");
     })
@@ -60,19 +59,19 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type    Function
      * @tc.level   0 
      */
-    it('textInputPlaceholderFontCase0100', 0, async function (done) {
-      var tagName = 'textInputPlaceholderFontCase0100';
+    it('textInputPlaceholderFontCase0100', 0, async (done: Function) => {
+      let tagName = 'textInputPlaceholderFontCase0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
       let fontJson = JSON.stringify({ size: 10, weight: 500, family: 'Arial, HarmonyOS Sans', style: FontStyle.Italic });
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "font": fontJson
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 840,
           priority: events_emitter.EventPriority.LOW
         }
@@ -84,11 +83,10 @@ export default function textInputPlaceholderFontTest() {
       await Utils.sleep(2000);
 
       let strJsonNew = getInspectorByKey('key_textinput_font');
-      let obj = JSON.parse(strJsonNew);
-      let fontAttrsJson = obj.$attrs.placeholderFont;
-      console.info('[' + tagName + '] Text textCase font is: ' + fontAttrsJson);
+      let obj: ESObject = JSON.parse(strJsonNew);
+      console.info('[' + tagName + '] Text textCase font is: ' + obj.$attrs.placeholderFont);
 
-      let fontObj = JSON.parse(fontAttrsJson)
+      let fontObj: ESObject = JSON.parse(obj.$attrs.placeholderFont)
 
       expect(fontObj.style).assertEqual('FontStyle.Italic');
       expect(fontObj.size).assertEqual('10.00fp');
@@ -108,19 +106,19 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it('textInputPlaceholderFontCase0200', 0, async function (done) {
-      var tagName = 'textInputPlaceholderFontCase0200';
+    it('textInputPlaceholderFontCase0200', 0, async (done: Function) => {
+      let tagName = 'textInputPlaceholderFontCase0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
       let fontJson = JSON.stringify({ size: 10, weight: 500, family: 'app.string.font_family_regular', style: FontStyle.Italic });
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "font": fontJson
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 841,
           priority: events_emitter.EventPriority.LOW
         }
@@ -132,11 +130,10 @@ export default function textInputPlaceholderFontTest() {
       await Utils.sleep(2000);
 
       let strJsonNew = getInspectorByKey('key_textinput_font');
-      let obj = JSON.parse(strJsonNew);
-      let fontAttrsJson = obj.$attrs.placeholderFont;
-      console.info('[' + tagName + '] Text textCase font is: ' + fontAttrsJson);
+      let obj: ESObject = JSON.parse(strJsonNew);
+      console.info('[' + tagName + '] Text textCase font is: ' + obj.$attrs.placeholderFont);
 
-      let fontObj = JSON.parse(fontAttrsJson)
+      let fontObj: ESObject = JSON.parse(obj.$attrs.placeholderFont)
 
       expect(fontObj.style).assertEqual('FontStyle.Italic');
       expect(fontObj.size).assertEqual('10.00fp');

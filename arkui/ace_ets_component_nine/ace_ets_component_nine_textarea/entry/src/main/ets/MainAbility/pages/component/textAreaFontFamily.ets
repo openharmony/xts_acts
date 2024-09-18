@@ -28,12 +28,12 @@ class TextAreaFontFamilyModifier implements AttributeModifier<TextAreaAttribute>
 struct TextAreaFontFamily {
   @State message : string = 'textarea';
   @State textAreaFontFamilyModifier: TextAreaFontFamilyModifier = new TextAreaFontFamilyModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[fontFamily page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.fontFamily != null) {
+      if (eventData.data?.fontFamily != null) {
         console.info("[fontFamily page] fontFamily change data is " + JSON.stringify(eventData.data.fontFamily));
-        if (eventData.data.fontFamily == 'app.string.font_family_arial') {
+        if (eventData.data?.fontFamily == 'app.string.font_family_arial') {
           this.textAreaFontFamilyModifier.fontFamilyValue = $r('app.string.font_family_arial');
         } else {
           this.textAreaFontFamilyModifier.fontFamilyValue =  eventData.data.fontFamily;
@@ -43,12 +43,12 @@ struct TextAreaFontFamily {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }

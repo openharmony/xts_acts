@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaEnableKeyboardOnFocus() {
-  describe('enableKeyboardOnFocusTest', function () {
-    beforeEach(async function (done) {
+  describe('enableKeyboardOnFocusTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("enableKeyboardOnFocusTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaEnableKeyboardOnFocus',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaEnableKeyboardOnFocus',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get enableKeyboardOnFocus state pages: " + JSON.stringify(pages));
         if (!("textAreaEnableKeyboardOnFocus" == pages.name)) {
           console.info("get textAreaEnableKeyboardOnFocus pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaEnableKeyboardOnFocus page result: " + JSON.stringify(result));
+          console.info("push textAreaEnableKeyboardOnFocus page result: success");
         }
       } catch (err) {
         console.error("push textAreaEnableKeyboardOnFocus page error: " + err);
@@ -42,7 +41,7 @@ export default function textAreaEnableKeyboardOnFocus() {
       console.info("textAreaEnableKeyboardOnFocus beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("enableKeyboardOnFocus after each called");
     });
@@ -54,17 +53,17 @@ export default function textAreaEnableKeyboardOnFocus() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaEnableKeyboardOnFocusFalse', 0, async function (done) {
-      var tagName = 'testTextAreaEnableKeyboardOnFocusFalse';
+    it('testTextAreaEnableKeyboardOnFocusFalse', 0, async (done: Function) => {
+      let tagName = 'testTextAreaEnableKeyboardOnFocusFalse';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enableKeyboardOnFocus": false,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,7 +74,7 @@ export default function textAreaEnableKeyboardOnFocus() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_enableKeyboardOnFocus');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.enableKeyboardOnFocus));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.enableKeyboardOnFocus).assertEqual("false");
@@ -90,17 +89,17 @@ export default function textAreaEnableKeyboardOnFocus() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaEnableKeyboardOnFocusTrue', 0, async function (done) {
-      var tagName = 'testTextAreaEnableKeyboardOnFocusTrue';
+    it('testTextAreaEnableKeyboardOnFocusTrue', 0, async (done: Function) => {
+      let tagName = 'testTextAreaEnableKeyboardOnFocusTrue';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enableKeyboardOnFocus": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6802,
           priority: events_emitter.EventPriority.LOW
         }
@@ -111,7 +110,7 @@ export default function textAreaEnableKeyboardOnFocus() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_enableKeyboardOnFocus');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.enableKeyboardOnFocus));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.enableKeyboardOnFocus).assertEqual("true");

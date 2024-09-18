@@ -30,11 +30,11 @@ struct TextInputShowUnderline {
    
   @State mod1: MyTextInputShowUnderlineModifier = new MyTextInputShowUnderlineModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("MyTextInputShowUnderlineModifier page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.showUnderline != null) {
+      if (eventData.data?.showUnderline != null) {
         this.mod1.showUnderline = eventData.data.showUnderline;
       }
     }
@@ -47,7 +47,7 @@ struct TextInputShowUnderline {
     {
       let eventid = 860 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputTextAlignTest() {
-  describe('textInputTextAlignTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputTextAlignTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputTextAlignTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputTextAlign',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputTextAlign',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputTextAlign state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputtextAlign pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputTextAlign page result: " + JSON.stringify(result));
+          console.info("push textInputTextAlign page result: success");
         }
       } catch (err) {
         console.error("push textInputTextAlign page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputTextAlignTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputTextAlignTest after each called");
     })
@@ -59,19 +58,19 @@ export default function textInputTextAlignTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputTextAlign0100', 0, async function (done) {
-      var tagName = 'textInputTextAlign0100';
+    it('textInputTextAlign0100', 0, async (done: Function) => {
+      let tagName = 'textInputTextAlign0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
            "textAlign":  TextAlign.Start
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 960,
           priority: events_emitter.EventPriority.LOW
         }
@@ -83,7 +82,7 @@ export default function textInputTextAlignTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_textalign');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text TextAlign is: ' + JSON.stringify(obj.$attrs.textAlign));
  
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
@@ -100,19 +99,19 @@ export default function textInputTextAlignTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputTextAlign0200', 0, async function (done) {
-      var tagName = 'textInputTextAlign0200';
+    it('textInputTextAlign0200', 0, async (done: Function) => {
+      let tagName = 'textInputTextAlign0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textAlign":  TextAlign.Center
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 961,
           priority: events_emitter.EventPriority.LOW
         }
@@ -124,7 +123,7 @@ export default function textInputTextAlignTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_textalign');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text textAlign is: ' + JSON.stringify(obj.$attrs.textAlign));
  
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Center');
@@ -142,19 +141,19 @@ export default function textInputTextAlignTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputTextAlign0300', 0, async function (done) {
-      var tagName = 'textInputTextAlign0300';
+    it('textInputTextAlign0300', 0, async (done: Function) => {
+      let tagName = 'textInputTextAlign0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textAlign":  TextAlign.End
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 962,
           priority: events_emitter.EventPriority.LOW
         }
@@ -168,7 +167,7 @@ export default function textInputTextAlignTest() {
       let strJsonNew = getInspectorByKey('key_textinput_textalign');
 
       console.info(' Text Object json is:' + strJsonNew);
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text textAlign is: ' + JSON.stringify(obj.$attrs.textAlign));
  
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.End');
@@ -186,19 +185,19 @@ export default function textInputTextAlignTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputTextAlign0400', 0, async function (done) {
-      var tagName = 'textInputTextAlign0400';
+    it('textInputTextAlign0400', 0, async (done: Function) => {
+      let tagName = 'textInputTextAlign0400';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textAlign":  TextAlign.JUSTIFY
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 963,
           priority: events_emitter.EventPriority.LOW
         }
@@ -210,7 +209,7 @@ export default function textInputTextAlignTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_textalign');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text textAlign is: ' + JSON.stringify(obj.$attrs.textAlign));
  
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');

@@ -16,11 +16,18 @@
 import router from '@ohos.router';
 import { AttrsManager } from './AttrsManager';
 
+interface Rect {
+  left: number,
+  top: number,
+  right: number,
+  bottom: number,
+}
+
 export default class Utils {
   public static instance;
 
-  static sleep(time) {
-    return new Promise((resolve, reject) => {
+  static sleep(time: number) {
+    return new Promise<number>((resolve, reject) => {
       try {
         setTimeout(() => {
           resolve(0)
@@ -34,7 +41,7 @@ export default class Utils {
     })
   }
 
-  static getStringFromFile(fileName): Promise<string> {
+  static getStringFromFile(fileName: string):Promise<string>{
     return globalThis.abilityContext
       .resourceManager
       .getRawFileContent(fileName)
@@ -49,7 +56,7 @@ export default class Utils {
       })
   }
 
-  static async pushPage(obj) {
+  static async pushPage(obj: ESObject) {
     try {
       let pages = router.getState();
       let pageParams = router.getParams();
@@ -92,42 +99,42 @@ export default class Utils {
     await Utils.sleep(1000);
   }
 
-  static getComponentRect(key) {
+  static getComponentRect(key: string):Rect{
     let strJson = getInspectorByKey(key);
-    let obj = JSON.parse(strJson);
+    let obj: ESObject = JSON.parse(strJson);
     console.info('[getInspectorByKey] key is: ' + key);
     return Utils.getComponentRectByObj(obj);
   }
 
-  static getComponentRectByObj(obj) {
+  static getComponentRectByObj(obj: ESObject):Rect{
     console.info('[getInspectorByKey] current component is: ' + obj.$type);
-    let rectInfo = JSON.parse('[' + obj.$rect + ']');
-    let rect_value = {
-      'left': JSON.parse('[' + rectInfo[0] + ']')[0],
-      'top': JSON.parse('[' + rectInfo[0] + ']')[1],
-      'right': JSON.parse('[' + rectInfo[1] + ']')[0],
-      'bottom': JSON.parse('[' + rectInfo[1] + ']')[1]
+    let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
+    let rect_value: Rect = {
+      left: (JSON.parse('[' + rectInfo[0] + ']') as Array<number>)[0],
+      top: (JSON.parse('[' + rectInfo[0] + ']') as Array<number>)[1],
+      right: (JSON.parse('[' + rectInfo[1] + ']') as Array<number>)[0],
+      bottom: (JSON.parse('[' + rectInfo[1] + ']') as Array<number>)[1]
     };
     console.info(JSON.stringify(rect_value));
     return rect_value;
   }
 
-  static getComponentByKey(componentKey) {
+  static getComponentByKey(componentKey):ESObject{
     let strJson = getInspectorByKey(componentKey);
-    let obj = JSON.parse(strJson);
+    let obj: ESObject = JSON.parse(strJson);
     console.info('[' + componentKey + '] obj is: ' + JSON.stringify(obj));
     return obj;
   }
 
-  static getRectHorizontalCenterX(rect) {
-    (rect.right - rect.left) / 2 + rect.left;
+  static getRectHorizontalCenterX(rect: Rect):number{
+    return (rect.right - rect.left) / 2 + rect.left;
   }
 
-  static getRectVerticalCenterY(rect) {
-    (rect.bottom - rect.top) / 2 + rect.top;
+  static getRectVerticalCenterY(rect: Rect):number{
+    return (rect.bottom - rect.top) / 2 + rect.top;
   }
 
-  static requestFocus(id): boolean {
+  static requestFocus(id: string):boolean{
     console.info('requestFocus id : ' + id);
     let result = focusControl.requestFocus(id);
     console.info('requestFocus result : ' + result);
@@ -147,7 +154,7 @@ export default class Utils {
     Utils.performTouch(x, y, x, y, TouchType.Up);
   }
 
-  static performTouchDownUp(id): boolean {
+  static performTouchDownUp(id: string):boolean{
     let down = Utils.performTouchComponentCenter(id, TouchType.Down)
     if (down) {
       let up = Utils.performTouchComponentCenter(id, TouchType.Up)
@@ -157,12 +164,12 @@ export default class Utils {
     return false;
   }
 
-  static performTouchComponentCenter(id, type: TouchType): boolean {
+  static performTouchComponentCenter(id: string, type: TouchType): boolean {
     console.info('performTouchComponent id : ' + id);
     return Utils.performTouchRectCenter(0, 0, Utils.getComponentRect(id), type);
   }
 
-  static performTouchRectCenter(rootX, rootY, rect, type: TouchType): boolean {
+  static performTouchRectCenter(rootX: number, rootY: number, rect: Rect, type: TouchType):boolean{
     console.info('performTouchRectCenter parentX : ' + rootX);
     console.info('performTouchRectCenter parentY : ' + rootY);
     console.info('performTouchRectCenter rect.left : ' + rect.left);
@@ -178,7 +185,7 @@ export default class Utils {
     return Utils.performTouch(screenX, screenY, x, y, type);
   }
 
-  static performTouch(screenX, screenY, x, y, type: TouchType): boolean {
+  static performTouch(screenX: number, screenY: number, x: number, y: number, type: TouchType): boolean {
     console.info('performTouch type : ' + type);
     console.info('performTouch screenX : ' + screenX);
     console.info('performTouch screenY : ' + screenY);
@@ -204,7 +211,7 @@ export default class Utils {
   }
 
   static performKeyEventDownUp(keyCode: number, keyText: string): boolean {
-    let down = Utils.performKeyEvent(KeyType.Down, keyCode, keyText)
+    let down: boolean = Utils.performKeyEvent(KeyType.Down, keyCode, keyText)
     if (down) {
       let up = Utils.performKeyEvent(KeyType.Up, keyCode, keyText)
       return up
@@ -233,7 +240,7 @@ export default class Utils {
     return result
   }
 
-  static performMouseEvent(id, button: MouseButton, action: MouseAction): boolean {
+  static performMouseEvent(id: string, button: MouseButton, action: MouseAction): boolean {
     console.info('performMouseEvent id : ' + id);
     console.info('performMouseEvent button : ' + button);
     console.info('performMouseEvent action : ' + action);

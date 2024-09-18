@@ -28,12 +28,12 @@ class TextAreaCaretColorModifier implements AttributeModifier<TextAreaAttribute>
 struct TextAreaCaretColor {
   @State message : string = 'textarea';
   @State textAreaCaretColorModifier: TextAreaCaretColorModifier = new TextAreaCaretColorModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[caretColor page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.caretColor != null) {
+      if (eventData.data?.caretColor != null) {
         console.info("[caretColor page] caretColor change data is " + JSON.stringify(eventData.data.caretColor));
-        if (eventData.data.caretColor == 'app.color.color_D90013_red') {
+        if (eventData.data?.caretColor == 'app.color.color_D90013_red') {
           this.textAreaCaretColorModifier.caretColorValue = $r('app.color.color_D90013_red');
         } else {
           this.textAreaCaretColorModifier.caretColorValue =  eventData.data.caretColor;
@@ -43,22 +43,22 @@ struct TextAreaCaretColor {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent02, this.stateChangCallBack);
-    var stateChangeEvent03 = {
+    let stateChangeEvent03: events_emitter.InnerEvent = {
       eventId: 6803,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent03, this.stateChangCallBack);
-    var stateChangeEvent04 = {
+    let stateChangeEvent04: events_emitter.InnerEvent = {
       eventId: 6804,
       priority: events_emitter.EventPriority.LOW
     }

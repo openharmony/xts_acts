@@ -28,12 +28,12 @@ class TextAreaFontSizeModifier implements AttributeModifier<TextAreaAttribute> {
 struct TextAreaFontSize {
   @State message : string = 'textarea';
   @State textAreaFontSizeModifier: TextAreaFontSizeModifier = new TextAreaFontSizeModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[fontSize page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.fontSize != null) {
+      if (eventData.data?.fontSize != null) {
         console.info("[fontSize page] fontSize change data is " + JSON.stringify(eventData.data.fontSize));
-        if (eventData.data.fontSize == 'app.float.length_df') {
+        if (eventData.data?.fontSize == 'app.float.length_df') {
           this.textAreaFontSizeModifier.fontSizeValue = $r('app.float.length_df');
         } else {
           this.textAreaFontSizeModifier.fontSizeValue =  eventData.data.fontSize;
@@ -43,17 +43,17 @@ struct TextAreaFontSize {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent02, this.stateChangCallBack);
-    var stateChangeEvent03 = {
+    let stateChangeEvent03: events_emitter.InnerEvent = {
       eventId: 6803,
       priority: events_emitter.EventPriority.LOW
     }

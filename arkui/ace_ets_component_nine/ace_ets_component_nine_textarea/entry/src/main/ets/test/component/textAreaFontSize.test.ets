@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaFontSize() {
-  describe('textAreaFontSizeTest', function () {
-    beforeEach(async function (done) {
+  describe('textAreaFontSizeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textAreaFontSizeTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaFontSize',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaFontSize',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get fontSize state pages: " + JSON.stringify(pages));
         if (!("textAreaFontSize" == pages.name)) {
           console.info("get textAreaFontSize pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaFontSize page result: " + JSON.stringify(result));
+          console.info("push textAreaFontSize page result: success");
         }
       } catch (err) {
         console.error("push textAreaFontSize page error: " + err);
@@ -42,7 +41,7 @@ export default function textAreaFontSize() {
       console.info("textAreaFontSize beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("fontSize after each called");
     });
@@ -54,17 +53,17 @@ export default function textAreaFontSize() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaFontSizeNumber', 0, async function (done) {
-      var tagName = 'testTextAreaFontSizeNumber';
+    it('testTextAreaFontSizeNumber', 0, async (done: Function) => {
+      let tagName = 'testTextAreaFontSizeNumber';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontSize": 10,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,7 +74,7 @@ export default function textAreaFontSize() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_fontSize');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.fontSize));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontSize).assertEqual("10.00fp");
@@ -90,17 +89,17 @@ export default function textAreaFontSize() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaFontSizeString', 0, async function (done) {
-      var tagName = 'testTextAreaFontSizeString';
+    it('testTextAreaFontSizeString', 0, async (done: Function) => {
+      let tagName = 'testTextAreaFontSizeString';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontSize": "30tx",
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6802,
           priority: events_emitter.EventPriority.LOW
         }
@@ -111,7 +110,7 @@ export default function textAreaFontSize() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_fontSize');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.fontSize));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontSize).assertEqual("16.00fp");
@@ -126,17 +125,17 @@ export default function textAreaFontSize() {
      * @tc.type   Function
      * @tc.level  0
      */
-     it('testTextAreaFontSizeResource', 0, async function (done) {
-      var tagName = 'testTextAreaFontSizeResource';
+     it('testTextAreaFontSizeResource', 0, async (done: Function) => {
+      let tagName = 'testTextAreaFontSizeResource';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontSize": "app.float.length_df",
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6803,
           priority: events_emitter.EventPriority.LOW
         }
@@ -147,7 +146,7 @@ export default function textAreaFontSize() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_fontSize');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.fontSize));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontSize).assertEqual("30.00fp");

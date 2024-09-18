@@ -29,11 +29,11 @@ struct TextInputFontWeight {
   @State fontWeight?: number | FontWeight | string = 18;
   @State textInputFontWeightModifier: TextInputFontWeightModifier = new TextInputFontWeightModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("TextInputFontWeight page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.fontWeight != null) {
+      if (eventData.data?.fontWeight != null) {
         
         console.info("[TextInputFontWeight page] fontweight change data is " + eventData.data.fontWeight); 
 
@@ -52,7 +52,7 @@ struct TextInputFontWeight {
     {
       let eventid = 940 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

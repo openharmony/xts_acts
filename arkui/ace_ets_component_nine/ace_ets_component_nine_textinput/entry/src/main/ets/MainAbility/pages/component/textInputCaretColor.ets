@@ -28,11 +28,11 @@ struct TextInputCaretColor {
   @State color?: ResourceColor = 0xCCCCCC;
   @State textInputCaretColorModifier: TextInputCaretColorModifier = new TextInputCaretColorModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("TextInputCaretColor page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.color != null) {
+      if (eventData.data?.color != null) {
         console.info("[TextInputCaretColor page] placeholderColor change data is " + eventData.data.color);
 
         if ( 'app.color.color_D90013_red' ===  eventData.data.color){
@@ -52,7 +52,7 @@ struct TextInputCaretColor {
     {
       let eventid = 810 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

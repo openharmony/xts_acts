@@ -142,10 +142,11 @@ export default class CommonTest {
     }
   }
 
-  static initTestByContainerView(pageConfig, containerView, supportView, testValues, ...functions) {
+  static initTestByContainerView(pageConfig: ESObject, containerView: string[], supportView: string[], 
+    testValues: ESObject[], ...functions: Function[]) {
     containerView.forEach(container => {
       pageConfig['containerView'] = container;
-      CommonTest.initTest(pageConfig, supportView, testValues, functions);
+      CommonTest.initTest(pageConfig, supportView, testValues, ...functions);
     });
   }
 }

@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaPlaceholderColor() {
-  describe('placeholderColorTest', function () {
-    beforeEach(async function (done) {
+  describe('placeholderColorTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("placeholderColorTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaPlaceholderColor',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaPlaceholderColor',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get placeholderColor state pages: " + JSON.stringify(pages));
         if (!("textAreaPlaceholderColor" == pages.name)) {
           console.info("get textAreaPlaceholderColor pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaPlaceholderColor page result: " + JSON.stringify(result));
+          console.info("push textAreaPlaceholderColor page result: success");
         }
       } catch (err) {
         console.error("push textAreaPlaceholderColor page error: " + err);
@@ -42,7 +41,7 @@ export default function textAreaPlaceholderColor() {
       console.info("textAreaPlaceholderColor beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("placeholderColor after each called");
     });
@@ -54,17 +53,17 @@ export default function textAreaPlaceholderColor() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaPlaceholderColorNumber', 0, async function (done) {
-      var tagName = 'testTextAreaPlaceholderColorNumber';
+    it('testTextAreaPlaceholderColorNumber', 0, async (done: Function) => {
+      let tagName = 'testTextAreaPlaceholderColorNumber';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "placeholderColor": 0xffffff,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,7 +74,7 @@ export default function textAreaPlaceholderColor() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_placeholderColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.placeholderColor));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.placeholderColor).assertEqual("#FFFFFFFF");
@@ -90,17 +89,17 @@ export default function textAreaPlaceholderColor() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaPlaceholderColorString', 0, async function (done) {
-      var tagName = 'testTextAreaPlaceholderColorString';
+    it('testTextAreaPlaceholderColorString', 0, async (done: Function) => {
+      let tagName = 'testTextAreaPlaceholderColorString';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "placeholderColor": "#079B8C",
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6802,
           priority: events_emitter.EventPriority.LOW
         }
@@ -111,7 +110,7 @@ export default function textAreaPlaceholderColor() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_placeholderColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.placeholderColor));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.placeholderColor).assertEqual("#FF079B8C");
@@ -126,17 +125,17 @@ export default function textAreaPlaceholderColor() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaPlaceholderColorColor', 0, async function (done) {
-      var tagName = 'testTextAreaPlaceholderColorColor';
+    it('testTextAreaPlaceholderColorColor', 0, async (done: Function) => {
+      let tagName = 'testTextAreaPlaceholderColorColor';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "placeholderColor": Color.Orange,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6803,
           priority: events_emitter.EventPriority.LOW
         }
@@ -147,7 +146,7 @@ export default function textAreaPlaceholderColor() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_placeholderColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.placeholderColor));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.placeholderColor).assertEqual("#FFFFA500");
@@ -162,17 +161,17 @@ export default function textAreaPlaceholderColor() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaPlaceholderColorResourceColor', 0, async function (done) {
-      var tagName = 'testTextAreaPlaceholderColorResourceColor';
+    it('testTextAreaPlaceholderColorResourceColor', 0, async (done: Function) => {
+      let tagName = 'testTextAreaPlaceholderColorResourceColor';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "placeholderColor": 'app.color.color_D90013_red',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6804,
           priority: events_emitter.EventPriority.LOW
         }
@@ -183,7 +182,7 @@ export default function textAreaPlaceholderColor() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_placeholderColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.placeholderColor));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.placeholderColor).assertEqual("#FFD90013");

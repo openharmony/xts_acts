@@ -17,6 +17,22 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string = '';
+  pageName: string = '';
+  pageUrl: string = '';
+  parentWidth: number = 0;
+  parentHeight: number = 0;
+  targetWidth: number = 0;
+  targetHeight: number = 0;
+}
+
+class TestValue {
+  describe: string = '';
+  setValue: ESObject;
+  expectValue: ESObject;
+}
+
 export default function flexBasisTest() {
   let supportView = ['Text']
   let containerView = ['Row', 'Column', 'FlexRow', 'FlexRowReverse', 'FlexColumn', 'FlexColumnReverse']
@@ -24,7 +40,7 @@ export default function flexBasisTest() {
   let parentHeight = 300;
   let targetWidth = 120;
   let targetHeight = 120;
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testFlexBasis',
     pageName: 'FlexBasisPage',
     pageUrl: 'MainAbility/pages/common/FlexBasisPage',
@@ -33,7 +49,7 @@ export default function flexBasisTest() {
     targetWidth: targetWidth,
     targetHeight: targetHeight
   }
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetNumber',
     setValue: {
       flexBasis: 100.00
@@ -67,13 +83,13 @@ export default function flexBasisTest() {
    * @tc.level  0
    */
   describe('FlexBasisTest', () => {
-    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async data => {
+    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async (data: ESObject) => {
       AttrsManager.change(data.caseTag, 1);
       await Utils.sleep(1000);
       console.info('[' + data.caseTag + '] setValue : ' + JSON.stringify(data.testValue.setValue));
       AttrsManager.change(data.caseTag, data.testValue.setValue);
       await Utils.sleep(1000);
-      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
       console.info('[' + data.caseTag + ']' + 'expectValue flexBasis is:' + data.testValue.expectValue.flexBasis);
       console.info('[' + data.caseTag + ']' + 'flexBasis is:' + viewObj.$attrs.flexBasis);
       expect(viewObj.$attrs.flexBasis).assertEqual(data.testValue.expectValue.flexBasis);    

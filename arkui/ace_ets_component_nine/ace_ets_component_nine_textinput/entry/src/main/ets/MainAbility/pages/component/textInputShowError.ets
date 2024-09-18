@@ -28,11 +28,11 @@ class MyTextInputShowErrorModifier implements AttributeModifier<TextInputAttribu
 struct TextInputShowError {
   @State mod1: MyTextInputShowErrorModifier = new MyTextInputShowErrorModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("MyTextInputShowErrorModifier page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.txtErrorInfo != null) {
+      if (eventData.data?.txtErrorInfo != null) {
         console.info("[MyTextInputShowErrorModifier page] ShowError change data is " + eventData.data.txtErrorInfo);
         this.mod1.txtErrorInfo =  eventData.data.txtErrorInfo;
       }
@@ -46,7 +46,7 @@ struct TextInputShowError {
     {
       let eventid = 870 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

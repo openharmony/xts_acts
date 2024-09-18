@@ -29,10 +29,10 @@ class TextAreaBarStateModifier implements AttributeModifier<TextAreaAttribute> {
 struct TextAreaBarState {
   @State message : string = 'textarea'
   @State textAreaBarStateModifier: TextAreaBarStateModifier = new TextAreaBarStateModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[barState page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.barState != null) {
+      if (eventData.data?.barState != null) {
         console.info("[barState page] barState change data is " + JSON.stringify(eventData.data.barState));
         this.textAreaBarStateModifier.barStateValue =  eventData.data.barState;
       }
@@ -40,17 +40,17 @@ struct TextAreaBarState {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent02, this.stateChangCallBack);
-    var stateChangeEvent03 = {
+    let stateChangeEvent03: events_emitter.InnerEvent = {
       eventId: 6803,
       priority: events_emitter.EventPriority.LOW
     }

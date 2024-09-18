@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaTextAlign() {
-  describe('textAlignTest', function () {
-    beforeEach(async function (done) {
+  describe('textAlignTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textAlignTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaTextAlign',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaTextAlign',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textAlign state pages: " + JSON.stringify(pages));
         if (!("textAreaTextAlign" == pages.name)) {
           console.info("get textAreaTextAlign pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaTextAlign page result: " + JSON.stringify(result));
+          console.info("push textAreaTextAlign page result: success");
         }
       } catch (err) {
         console.error("push textAreaTextAlign page error: " + err);
@@ -42,7 +41,7 @@ export default function textAreaTextAlign() {
       console.info("textAreaTextAlign beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textAlign after each called");
     });
@@ -54,17 +53,17 @@ export default function textAreaTextAlign() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaTextAlignStart', 0, async function (done) {
-      var tagName = 'testTextAreaTextAlignStart';
+    it('testTextAreaTextAlignStart', 0, async (done: Function) => {
+      let tagName = 'testTextAreaTextAlignStart';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textAlign": TextAlign.Start,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,7 +74,7 @@ export default function textAreaTextAlign() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_textAlign');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.textAlign));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.textAlign).assertEqual("TextAlign.Start");
@@ -90,17 +89,17 @@ export default function textAreaTextAlign() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaTextAlignCenter', 0, async function (done) {
-      var tagName = 'testTextAreaTextAlignCenter';
+    it('testTextAreaTextAlignCenter', 0, async (done: Function) => {
+      let tagName = 'testTextAreaTextAlignCenter';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textAlign": TextAlign.Center,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6802,
           priority: events_emitter.EventPriority.LOW
         }
@@ -111,7 +110,7 @@ export default function textAreaTextAlign() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_textAlign');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.textAlign));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center");
@@ -126,17 +125,17 @@ export default function textAreaTextAlign() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaTextAlignEnd', 0, async function (done) {
-      var tagName = 'testTextAreaTextAlignEnd';
+    it('testTextAreaTextAlignEnd', 0, async (done: Function) => {
+      let tagName = 'testTextAreaTextAlignEnd';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textAlign": TextAlign.End,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6803,
           priority: events_emitter.EventPriority.LOW
         }
@@ -147,7 +146,7 @@ export default function textAreaTextAlign() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_textAlign');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.textAlign));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.textAlign).assertEqual("TextAlign.End");
@@ -162,17 +161,17 @@ export default function textAreaTextAlign() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaTextAlignJUSTIFY', 0, async function (done) {
-      var tagName = 'testTextAreaTextAlignJUSTIFY';
+    it('testTextAreaTextAlignJUSTIFY', 0, async (done: Function) => {
+      let tagName = 'testTextAreaTextAlignJUSTIFY';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textAlign": TextAlign.JUSTIFY,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6804,
           priority: events_emitter.EventPriority.LOW
         }
@@ -183,7 +182,7 @@ export default function textAreaTextAlign() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_textAlign');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.textAlign));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.textAlign).assertEqual("TextAlign.Justify");

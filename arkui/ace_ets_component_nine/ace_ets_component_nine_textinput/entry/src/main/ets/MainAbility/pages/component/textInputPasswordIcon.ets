@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import events_emitter from '@ohos.events.emitter';
 
 class TextInputPasswordIconModifier implements AttributeModifier<TextInputAttribute> {
   
@@ -25,7 +26,7 @@ struct TextInputPasswordIcon {
 
   @State mod1: TextInputPasswordIconModifier = new TextInputPasswordIconModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
 
   }
 
