@@ -38,11 +38,11 @@
 #endif
 
 
-const int32_t g_samplingRate = 48000; // 48000:g_samplingRate value
-const int32_t g_channelCount = 2; // 2:g_channelCount value
-const int32_t g_latencyMode = 0;
-const int32_t g_sampleFormat = 1;
-const int32_t g_frameSize = 240; // 240:g_frameSize value
+const int32_t SAMPLING_RATE = 48000; // 48000:SAMPLING_RATE value
+const int32_t CHANNEL_COUNT = 2; // 2:CHANNEL_COUNT value
+const int32_t LATENCY_MODE = 0;
+const int32_t SAMPLE_FORMAT = 1;
+const int32_t FRAME_SIZE = 240; // 240:FRAME_SIZE value
 bool g_flag = false;
 bool g_mark = false;
 static std::string g_filePath = "/data/storage/el2/base/haps/entry/files/test_44100_2.wav";
@@ -970,8 +970,8 @@ static napi_value AudioCaptureGetChannelCount(napi_env env, napi_callback_info i
     OH_AudioCapturer *audioCapturer;
     OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
 
-    int32_t ChannelCount;
-    OH_AudioStream_Result result = OH_AudioCapturer_GetChannelCount(audioCapturer, &ChannelCount);
+    int32_t channelCount;
+    OH_AudioStream_Result result = OH_AudioCapturer_GetChannelCount(audioCapturer, &channelCount);
     OH_AudioStreamBuilder_Destroy(builder);
     napi_value res;
     napi_create_int32(env, result, &res);
@@ -985,8 +985,8 @@ static napi_value AudioRenderGetChannelCount(napi_env env, napi_callback_info in
     OH_AudioRenderer *audioRenderer;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
 
-    int32_t ChannelCount;
-    OH_AudioStream_Result result = OH_AudioRenderer_GetChannelCount(audioRenderer, &ChannelCount);
+    int32_t channelCount;
+    OH_AudioStream_Result result = OH_AudioRenderer_GetChannelCount(audioRenderer, &channelCount);
     OH_AudioStreamBuilder_Destroy(builder);
     napi_value res;
     napi_create_int32(env, result, &res);
@@ -1486,10 +1486,10 @@ static napi_value AudioRendererSetOnMarkReached_03(napi_env env, napi_callback_i
     g_flag = false;
     OH_AudioStreamBuilder *builder = CreateRenderBuilder();
     napi_value res;
-    OH_AudioStreamBuilder_SetSamplingRate(builder, g_samplingRate);
-    OH_AudioStreamBuilder_SetChannelCount(builder, g_channelCount);
-    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)g_latencyMode);
-    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLING_RATE);
+    OH_AudioStreamBuilder_SetChannelCount(builder, CHANNEL_COUNT);
+    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)LATENCY_MODE);
+    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)SAMPLE_FORMAT);
     OH_AudioRenderer_Callbacks callbacks;
     callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
@@ -1497,8 +1497,8 @@ static napi_value AudioRendererSetOnMarkReached_03(napi_env env, napi_callback_i
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
-    // set buffer size to g_frameSize
-    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+    // set buffer size to FRAME_SIZE
+    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, FRAME_SIZE);
 
     OH_AudioRenderer *audioRenderer;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
@@ -1567,10 +1567,10 @@ static napi_value AudioRendererSetOnMarkReached_06(napi_env env, napi_callback_i
     }
     OH_AudioStreamBuilder *builder = CreateRenderBuilder();
     napi_value res;
-    OH_AudioStreamBuilder_SetSamplingRate(builder, g_samplingRate);
-    OH_AudioStreamBuilder_SetChannelCount(builder, g_channelCount);
-    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)g_latencyMode);
-    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLING_RATE);
+    OH_AudioStreamBuilder_SetChannelCount(builder, CHANNEL_COUNT);
+    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)LATENCY_MODE);
+    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)SAMPLE_FORMAT);
     OH_AudioRenderer_Callbacks callbacks;
     callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnMarkReachedWriteData;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
@@ -1578,8 +1578,8 @@ static napi_value AudioRendererSetOnMarkReached_06(napi_env env, napi_callback_i
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
-    // set buffer size to g_frameSize
-    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+    // set buffer size to FRAME_SIZE
+    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, FRAME_SIZE);
 
     OH_AudioRenderer *audioRenderer;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
@@ -1614,10 +1614,10 @@ static napi_value AudioRendererSetOnMarkReached_07(napi_env env, napi_callback_i
     }
     OH_AudioStreamBuilder *builder = CreateRenderBuilder();
     napi_value res;
-    OH_AudioStreamBuilder_SetSamplingRate(builder, g_samplingRate);
-    OH_AudioStreamBuilder_SetChannelCount(builder, g_channelCount);
-    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)g_latencyMode);
-    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLING_RATE);
+    OH_AudioStreamBuilder_SetChannelCount(builder, CHANNEL_COUNT);
+    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)LATENCY_MODE);
+    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)SAMPLE_FORMAT);
     OH_AudioRenderer_Callbacks callbacks;
     callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnMarkReachedWriteData;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
@@ -1625,8 +1625,8 @@ static napi_value AudioRendererSetOnMarkReached_07(napi_env env, napi_callback_i
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
-    // set buffer size to g_frameSize
-    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+    // set buffer size to FRAME_SIZE
+    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, FRAME_SIZE);
 
     OH_AudioRenderer *audioRenderer;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
@@ -1657,10 +1657,10 @@ static napi_value AudioRendererSetOnMarkReached_08(napi_env env, napi_callback_i
     g_flag = false;
     OH_AudioStreamBuilder *builder = CreateRenderBuilder();
     napi_value res;
-    OH_AudioStreamBuilder_SetSamplingRate(builder, g_samplingRate);
-    OH_AudioStreamBuilder_SetChannelCount(builder, g_channelCount);
-    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)g_latencyMode);
-    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLING_RATE);
+    OH_AudioStreamBuilder_SetChannelCount(builder, CHANNEL_COUNT);
+    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)LATENCY_MODE);
+    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)SAMPLE_FORMAT);
     OH_AudioRenderer_Callbacks callbacks;
     callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
@@ -1668,8 +1668,8 @@ static napi_value AudioRendererSetOnMarkReached_08(napi_env env, napi_callback_i
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
-    // set buffer size to g_frameSize
-    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+    // set buffer size to FRAME_SIZE
+    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, FRAME_SIZE);
 
     OH_AudioRenderer *audioRenderer;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
@@ -1712,10 +1712,10 @@ static napi_value AudioRendererCancelMark_01(napi_env env, napi_callback_info in
     g_flag = false;
     OH_AudioStreamBuilder *builder = CreateRenderBuilder();
     napi_value res;
-    OH_AudioStreamBuilder_SetSamplingRate(builder, g_samplingRate);
-    OH_AudioStreamBuilder_SetChannelCount(builder, g_channelCount);
-    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)g_latencyMode);
-    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLING_RATE);
+    OH_AudioStreamBuilder_SetChannelCount(builder, CHANNEL_COUNT);
+    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)LATENCY_MODE);
+    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)SAMPLE_FORMAT);
     OH_AudioRenderer_Callbacks callbacks;
     callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
@@ -1723,8 +1723,8 @@ static napi_value AudioRendererCancelMark_01(napi_env env, napi_callback_info in
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
-    // set buffer size to g_frameSize
-    result = OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+    // set buffer size to FRAME_SIZE
+    result = OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, FRAME_SIZE);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -1829,12 +1829,12 @@ static napi_value AudioRendererSetInterruptMode_01(napi_env env, napi_callback_i
     callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
     callbacks.OH_AudioRenderer_OnInterruptEvent = AudioRendererInterruptEvent;
     OH_AudioStreamBuilder_SetRendererCallback(builder1, callbacks, nullptr);
-    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder1, g_frameSize);
+    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder1, FRAME_SIZE);
 
     usage = AUDIOSTREAM_USAGE_MOVIE;
     OH_AudioStreamBuilder_SetRendererInfo(builder2, usage);
     OH_AudioStreamBuilder_SetRendererCallback(builder2, callbacks, nullptr);
-    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder2, g_frameSize);
+    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder2, FRAME_SIZE);
 
     OH_AudioInterrupt_Mode mode = AUDIOSTREAM_INTERRUPT_MODE_SHARE;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder1, mode);
@@ -1909,12 +1909,12 @@ static napi_value AudioRendererSetInterruptMode_02(napi_env env, napi_callback_i
     callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
     callbacks.OH_AudioRenderer_OnInterruptEvent = AudioRendererInterruptEvent;
     OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
-    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, FRAME_SIZE);
 
     usage = AUDIOSTREAM_USAGE_MOVIE;
     OH_AudioStreamBuilder_SetRendererInfo(builder2, usage);
     OH_AudioStreamBuilder_SetRendererCallback(builder2, callbacks, nullptr);
-    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder2, g_frameSize);
+    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder2, FRAME_SIZE);
 
     OH_AudioInterrupt_Mode mode = AUDIOSTREAM_INTERRUPT_MODE_INDEPENDENT;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder, mode);
