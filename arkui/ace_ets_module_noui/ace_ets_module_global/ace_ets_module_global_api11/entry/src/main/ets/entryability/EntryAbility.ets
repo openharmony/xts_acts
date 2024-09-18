@@ -24,7 +24,7 @@ export default class EntryAbility extends UIAbility {
     globalThis.abilityWant = want;
   }
 
-  onDestroy() {
+  onDestroy(){
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
   }
   
