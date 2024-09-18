@@ -31,11 +31,11 @@ export default function webviewApi() {
     
     /*
      * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0500
-     * @tc.name       : testWebServiceWorker_SetSchemeHandler0500
+     * @tc.name       : testWebServiceWorker_SetSchemeHandler
      * @tc.desc       : test WebServiceWorker_SetSchemeHandler
-     * @tc.size_t     : MediumTest
+     * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('testWebServiceWorker_SetSchemeHandler', 0, async (done: Function) => {
         
@@ -49,11 +49,11 @@ export default function webviewApi() {
     
     /*
      * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0510
-     * @tc.name       : testWebSchemeHandler_SetOnRequestStart0510
+     * @tc.name       : testWebSchemeHandler_SetOnRequestStart
      * @tc.desc       : test WebSchemeHandler_SetOnRequestStart
-     * @tc.size_t     : MediumTest
+     * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('testWebSchemeHandler_SetOnRequestStart', 0, async (done: Function) => {
         
@@ -67,11 +67,11 @@ export default function webviewApi() {
 
     /*
      * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0520
-     * @tc.name       : testWebSchemeHandler_SetOnRequestStop0520
+     * @tc.name       : testWebSchemeHandler_SetOnRequestStop
      * @tc.desc       : test WebSchemeHandler_SetOnRequestStop
-     * @tc.size_t     : MediumTest
+     * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('testWebSchemeHandler_SetOnRequestStop', 0, async (done: Function) => {
         
@@ -85,11 +85,11 @@ export default function webviewApi() {
     
     /*
      * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0530
-     * @tc.name       : testWeb_ReleaseByteArray0530
+     * @tc.name       : testWeb_ReleaseByteArray
      * @tc.desc       : test Web_ReleaseByteArray
-     * @tc.size_t     : MediumTest
+     * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('testWeb_ReleaseByteArray', 0, async (done: Function) => {
         
@@ -104,11 +104,11 @@ export default function webviewApi() {
     
     /*
      * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0540
-     * @tc.name       : testWeb_ReleaseString0540
+     * @tc.name       : testWeb_ReleaseString
      * @tc.desc       : test Web_ReleaseString
-     * @tc.size_t     : MediumTest
+     * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('testWeb_ReleaseString', 0, async (done: Function) => {
         
@@ -122,11 +122,11 @@ export default function webviewApi() {
     
     /*
      * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0550
-     * @tc.name       : testWeb_DestroyResponse0550
+     * @tc.name       : testWeb_DestroyResponse
      * @tc.desc       : test Web_DestroyResponse
-     * @tc.size_t     : MediumTest
+     * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('testWeb_DestroyResponse', 0, async (done: Function) => {
         
@@ -140,11 +140,11 @@ export default function webviewApi() {
     
     /*
      * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0560
-     * @tc.name       : testWeb_CreateSchemeHandler0560
+     * @tc.name       : testWeb_CreateSchemeHandler
      * @tc.desc       : test Web_CreateSchemeHandler
-     * @tc.size_t     : MediumTest
+     * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('testWeb_CreateSchemeHandler', 0, async (done: Function) => {
         
@@ -158,11 +158,11 @@ export default function webviewApi() {
     
     /*
      * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0570
-     * @tc.name       : testWebResourceRequest_GetRequestHeaders0570
+     * @tc.name       : testWebResourceRequest_GetRequestHeaders
      * @tc.desc       : test WebResourceRequest_GetRequestHeaders
-     * @tc.size_t     : MediumTest
+     * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('testWebResourceRequest_GetRequestHeaders', 0, async (done: Function) => {
         
