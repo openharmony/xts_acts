@@ -19,7 +19,7 @@ import { BusinessError } from '@ohos.base';
 import { AtomicServiceBar } from '@ohos.arkui.UIContext';
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     globalThis.abilityWant = want;
   }
