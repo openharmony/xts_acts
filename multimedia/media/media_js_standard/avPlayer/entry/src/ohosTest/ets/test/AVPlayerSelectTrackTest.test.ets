@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-import MediaTestBase from './NewMediaTestBase';
+import MediaTestBase from './MediaTestBase';
 import media from '@ohos.multimedia.media'
-import { setSource } from './NewAVPlayerTestBase';
+import { setSource } from './AVPlayerTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 const VIDEO_SOURCE = 'H264_AAC_AAC_multiAudio.mp4';
@@ -37,7 +37,6 @@ let audioTrackList: Array<Object> = [];
 let selectedTrackList: Array<number> = [];
 let selectedTrack: number | undefined;
 let currentTrack: number = 0;
-let surfaceID: string = globalThis.value;
 let mediaTestBase = new MediaTestBase()
 
 async function getAudioTracks() {
@@ -66,7 +65,7 @@ async function getCurrentAudioTrack() {
     for (let i = 0; i < arrList.length; i++) {
       let propertyIndex: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX]
       let propertyType: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_TYPE]
-      if (propertyType == 0) {
+      if (propertyType == 0 && currentTrack != propertyIndex as number) {
         currentTrack = propertyIndex as number;
         console.log("currentTrack is " + currentTrack);
         break;
@@ -120,6 +119,7 @@ async function handleState(state: string, preparedOp: Function, playedOp: Functi
   switch (state) {
     case INITIALIZED:
       expect(avPlayer.state).assertEqual(INITIALIZED);
+      let surfaceID: string = globalThis.value;
       avPlayer.surfaceId = surfaceID;
       console.info(`case avPlayer.surfaceId is ${avPlayer.surfaceId}`);
       await avPlayer.prepare().then(() => {

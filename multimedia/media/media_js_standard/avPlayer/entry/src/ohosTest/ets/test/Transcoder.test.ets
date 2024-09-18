@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import MediaTestBase, { FdObject } from './NewMediaTestBase';
-import * as AVPlayerTestBase from './NewAVPlayerTestBase';
+import MediaTestBase, { FdObject } from './MediaTestBase';
+import * as AVPlayerTestBase from './AVPlayerTestBase';
 import media from '@ohos.multimedia.media';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import fs from '@ohos.file.fs';

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import MediaTestBase from './NewMediaTestBase';
+import MediaTestBase from './MediaTestBase';
 import media from '@ohos.multimedia.media';
 import resourceManager from '@ohos.resourceManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'

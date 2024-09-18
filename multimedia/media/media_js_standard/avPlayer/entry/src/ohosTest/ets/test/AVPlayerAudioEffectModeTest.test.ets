@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import MediaTestBase from './NewMediaTestBase';
+import MediaTestBase from './MediaTestBase';
 import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio';
-import { testAVPlayerFun, setSource } from './NewAVPlayerTestBase';
+import { testAVPlayerFun, setSource } from './AVPlayerTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { resourceManager } from '@kit.LocalizationKit';
 

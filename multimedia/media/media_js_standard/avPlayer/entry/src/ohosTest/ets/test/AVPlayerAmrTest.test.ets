@@ -15,8 +15,8 @@
 
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
-import MediaTestBase from './NewMediaTestBase';
-import * as AVPlayerTestBase from './NewAVPlayerTestBase';
+import MediaTestBase from './MediaTestBase';
+import * as AVPlayerTestBase from './AVPlayerTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 let TAG = "[AVPlayerAmr] ";
