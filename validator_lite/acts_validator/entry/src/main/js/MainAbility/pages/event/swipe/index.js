@@ -13,13 +13,19 @@
  * limitations under the License.
  */
 
-import {swipeFunc, dataCommon} from '../../../common/js/event';
+import { swipeFunc } from '../../../common/js/event';
 import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
   data: {
-    ...dataCommon,
+    color: '#5265ef',
+    flag: false,
+    pointX: 0,
+    pointY: 0,
+    direction: '',
+    distance: 0,
+    timeStamp: 0,
     str: '',
     title: 'swipe',
     pass: 'true ;',
