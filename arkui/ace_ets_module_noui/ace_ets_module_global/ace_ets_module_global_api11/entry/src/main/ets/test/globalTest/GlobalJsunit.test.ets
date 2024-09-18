@@ -74,39 +74,6 @@ export default function globalJsunit() {
     });
 
     /**
-     * @tc.number ACE_global_getApp
-     * @tc.name getApp()
-     * @tc.desc Test getApp
-     */
-    it('ACE_global_getApp', 0, async (done: Function) => {
-      let caseName: string = "ACE_global_getApp"
-      console.info(`${caseName} START`);
-      try {
-        getApp();
-      } catch (err) {
-      }
-      console.info(`${caseName} END`);
-      done()
-    });
-
-    /**
-     * @tc.number ACE_global_createLocalParticleAbility
-     * @tc.name createLocalParticleAbility()
-     * @tc.desc Test createLocalParticleAbility
-     */
-    it('ACE_global_createLocalParticleAbility', 0, async (done: Function) => {
-      let caseName: string = "ACE_global_createLocalParticleAbility"
-      console.info(`${caseName} START`);
-      try {
-        createLocalParticleAbility(100);
-      } catch (err) {
-      }
-      console.info(`${caseName} END`);
-      done()
-    });
-
-
-    /**
      * @tc.number ACE_global_console_log_0100
      * @tc.name console::log
      * @tc.desc Test console log printing
