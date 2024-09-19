@@ -3,9 +3,9 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-        "bundle-name": "com.acts.startappclonetest",
-        "module-name": "entry",
         "shell-timeout": "30000",
+        "bundle-name": "com.acts.startappclonetest",
+        "module-name": "entry_test",
         "testcase-timeout": 30000
     },
     "kits": [
@@ -16,8 +16,7 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
+        },{
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
