@@ -75,7 +75,7 @@ static napi_value GetFileName(napi_env env, napi_callback_info info)
     char uri[] =
 "file://com.acts.storage.fileurindk/data/storage/el2/base/haps/com.acts.storage.fileurindk/files/5.txt";
     unsigned int length = strlen(uri);
-    char *uriResult = NULL;
+    char *uriResult = nullptr;
     OH_FileUri_GetFileName(uri, length, &uriResult);
     napi_value result = nullptr;
     napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
