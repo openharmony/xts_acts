@@ -63,7 +63,7 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
     "DrawingRecordCmdUtilsDestroyTest.cpp",
     "DrawingRecordCmdUtilsFinishTest.cpp",
     "DrawingRecordCmdDestyoyTest.cpp",
-    "DrawingCanvasDrawRecordCmdTest.cpp"，
+    "DrawingCanvasDrawRecordCmdTest.cpp",
   ]
 
   cflags = [
