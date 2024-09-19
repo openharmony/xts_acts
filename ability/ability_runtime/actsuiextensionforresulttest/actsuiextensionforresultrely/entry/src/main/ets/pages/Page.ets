@@ -21,7 +21,7 @@ let storage = LocalStorage.GetShared();
 @Component
 struct Page {
   @State message: string = 'UIExtAbility';
-  private session: UIExtensionContentSession = storage.get<UIExtensionContentSession>('session');
+  private session: UIExtensionContentSession = storage.get<UIExtensionContentSession>('session')!;
 
   build() {
     Row() {
