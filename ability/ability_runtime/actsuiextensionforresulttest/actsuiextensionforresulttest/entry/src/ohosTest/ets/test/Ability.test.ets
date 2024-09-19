@@ -76,8 +76,8 @@ export default function abilityTest() {
           commonEvent.subscribe(data, (err, data) => {
             if (data.event == 'ACTS_CALL_EVENT') {
               console.info(`====>AsyncCallback_0100 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-              expect(data.parameters.str).assertEqual('ACTION');
-              expect(data.parameters.result).assertEqual(0);
+              expect(data.parameters!.str).assertEqual('ACTION');
+              expect(data.parameters!.result).assertEqual(0);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>AsyncCallback_0100 unSubscribeCallback 'ACTS_CALL_EVENT'`);
                 globalThis.terminate('AsyncCallback_0100');
@@ -115,8 +115,8 @@ export default function abilityTest() {
           commonEvent.subscribe(data, (err, data) => {
             if (data.event == 'ACTS_CALL_EVENT') {
               console.info(`====>AsyncCallback_0200 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-              expect(data.parameters.str).assertEqual('ACTION');
-              expect(data.parameters.result).assertEqual(0);
+              expect(data.parameters!.str).assertEqual('ACTION');
+              expect(data.parameters!.result).assertEqual(0);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>AsyncCallback_0200 unSubscribeCallback 'ACTS_CALL_EVENT'`);
                 setTimeout(() => {
@@ -166,18 +166,18 @@ export default function abilityTest() {
             if (deviceType === '2in1') {
               if (data.event == 'ACTS_CALL_EVENT') {
                 console.info(`====>AsyncCallback_0300 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-                expect(data.parameters.result).assertEqual(0);
+                expect(data.parameters!.result).assertEqual(0);
               }
             } else {
               if (data.event == 'ACTS_CALL_EVENT') {
                 console.info(`====>AsyncCallback_0300 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-                expect(data.parameters.result).assertEqual(-1);
+                expect(data.parameters!.result).assertEqual(-1);
               }
             }
             if (data.event == 'ACTS_CALL_EVENT_ANOTHER') {
               console.info(`====>AsyncCallback_0300 subscribeCallBack 'ACTS_CALL_EVENT_ANOTHER'  ${data}`);
-              expect(data.parameters.str).assertEqual('ACTION');
-              expect(data.parameters.result).assertEqual(0);
+              expect(data.parameters!.str).assertEqual('ACTION');
+              expect(data.parameters!.result).assertEqual(0);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>AsyncCallback_0300 unSubscribeCallback 'ACTS_CALL_EVENT'`);
                 setTimeout(() => {
@@ -236,7 +236,7 @@ export default function abilityTest() {
             console.info(`====>AsyncCallback_0400 subscribeCallBack all  ${data.event}`);
             if (data.event == 'ACTS_CALL_EVENT') {
               console.info(`====>AsyncCallback_0400 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-              expect(data.parameters.result).assertEqual(-1);
+              expect(data.parameters!.result).assertEqual(-1);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>AsyncCallback_0400 unSubscribeCallback 'ACTS_CALL_EVENT'`);
                 setTimeout(() => {
@@ -287,7 +287,7 @@ export default function abilityTest() {
             console.info(`====>AsyncCallback_0500 subscribeCallBack all  ${data.event}`);
             if (data.event == 'ACTS_CALL_EVENT') {
               console.info(`====>AsyncCallback_0500 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-              expect(data.parameters.num).assertEqual(16000001);
+              expect(data.parameters!.num).assertEqual(16000001);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>AsyncCallback_0500 unSubscribeCallback 'ACTS_CALL_EVENT'`);
                 setTimeout(() => {
@@ -328,8 +328,8 @@ export default function abilityTest() {
             console.info(`====>AsyncCallback_0600 subscribeCallBack all  ${data.event}`);
             if (data.event == 'ACTS_CALL_EVENT') {
               console.info(`====>AsyncCallback_0600 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-              console.info(`====>AsyncCallback_0600 subscribeCallBack  ${data.parameters.num}`);
-              expect(data.parameters.num).assertEqual(16000004);
+              console.info(`====>AsyncCallback_0600 subscribeCallBack  ${data.parameters!.num}`);
+              expect(data.parameters!.num).assertEqual(16000004);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>AsyncCallback_0600 unSubscribeCallback 'ACTS_CALL_EVENT'`);
                 setTimeout(() => {
@@ -377,8 +377,8 @@ export default function abilityTest() {
           commonEvent.subscribe(data, (err, data) => {
             if (data.event == 'ACTS_CALL_EVENT') {
               console.info(`====>Promise_0100 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-              expect(data.parameters.str).assertEqual('ACTION');
-              expect(data.parameters.result).assertEqual(0);
+              expect(data.parameters!.str).assertEqual('ACTION');
+              expect(data.parameters!.result).assertEqual(0);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>Promise_0100 unSubscribeCallback 'ACTS_CALL_EVENT'`);
                 globalThis.terminate('Promise_0100');
@@ -415,8 +415,8 @@ export default function abilityTest() {
           commonEvent.subscribe(data, (err, data) => {
             if (data.event == 'ACTS_CALL_EVENT') {
               console.info(`====>Promise_0200 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-              expect(data.parameters.str).assertEqual('ACTION');
-              expect(data.parameters.result).assertEqual(0);
+              expect(data.parameters!.str).assertEqual('ACTION');
+              expect(data.parameters!.result).assertEqual(0);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>Promise_0200 unSubscribeCallback 'ACTS_CALL_EVENT'`);
                 abilityDelegator.executeShellCommand('aa force-stop com.example.forresulttestsecond')
@@ -460,18 +460,18 @@ export default function abilityTest() {
             if (deviceType === '2in1') {
               if (data.event == 'ACTS_CALL_EVENT') {
                 console.info(`====>Promise_0300 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-                expect(data.parameters.result).assertEqual(0);
+                expect(data.parameters!.result).assertEqual(0);
               }
             } else {
               if (data.event == 'ACTS_CALL_EVENT') {
                 console.info(`====>Promise_0300 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-                expect(data.parameters.result).assertEqual(-1);
+                expect(data.parameters!.result).assertEqual(-1);
               }
             }
             if (data.event == 'ACTS_CALL_EVENT_ANOTHER') {
               console.info(`====>Promise_0300 subscribeCallBack 'ACTS_CALL_EVENT_ANOTHER'  ${data}`);
-              expect(data.parameters.str).assertEqual('ACTION');
-              expect(data.parameters.result).assertEqual(0);
+              expect(data.parameters!.str).assertEqual('ACTION');
+              expect(data.parameters!.result).assertEqual(0);
             }
             globalThis.terminate('Promise_0300');
             abilityDelegator.executeShellCommand('aa force-stop com.example.forresulttestsecond')
@@ -531,7 +531,7 @@ export default function abilityTest() {
             console.info(`====>Promise_0400 subscribeCallBack all  ${data.event}`);
             if (data.event == 'ACTS_CALL_EVENT') {
               console.info(`====>Promise_0400 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-              expect(data.parameters.result).assertEqual(-1);
+              expect(data.parameters!.result).assertEqual(-1);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>Promise_0400 unSubscribeCallback 'ACTS_CALL_EVENT'`);
                 setTimeout(() => {
@@ -582,7 +582,7 @@ export default function abilityTest() {
             console.info(`====>Promise_0500 subscribeCallBack all  ${data.event}`);
             if (data.event == 'ACTS_CALL_EVENT') {
               console.info(`====>Promise_0500 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-              expect(data.parameters.num).assertEqual(16000001);
+              expect(data.parameters!.num).assertEqual(16000001);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>Promise_0500 unSubscribeCallback 'ACTS_CALL_EVENT'`);
                 globalThis.terminate('Promise_0500');
@@ -623,8 +623,8 @@ export default function abilityTest() {
             console.info(`====>Promise_0600 subscribeCallBack all  ${data.event}`);
             if (data.event == 'ACTS_CALL_EVENT') {
               console.info(`====>Promise_0600 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-              console.info(`====>Promise_0600 subscribeCallBack  ${data.parameters.num}`);
-              expect(data.parameters.num).assertEqual(16000004);
+              console.info(`====>Promise_0600 subscribeCallBack  ${data.parameters!.num}`);
+              expect(data.parameters!.num).assertEqual(16000004);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>Promise_0600 unSubscribeCallback 'ACTS_CALL_EVENT'`);
                 setTimeout(() => {
