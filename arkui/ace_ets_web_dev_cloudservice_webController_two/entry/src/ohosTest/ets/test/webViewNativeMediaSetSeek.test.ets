@@ -69,14 +69,15 @@ export default function webViewNativeMediaSetSeek() {
         await Utils.sleep(1000);
       done();
     })
-    
+
+
     /*
-     *@tc.number SUB_ACE_WEB_seek_API_0001
-     *@tc.name testWebViewNativeMediaSetSeek
-     *@tc.desc test seek
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
+     * @tc.number     : SUB_ACE_WEB_seek_API_0001
+     * @tc.name       : testWebViewNativeMediaSetSeek
+     * @tc.desc       : test seek
+     * @tc.size_t     : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
      */
     it('testWebViewNativeMediaSetSeek', 0, async (done: Function) => {
         Utils.registerEvent("testWebViewNativeMediaSetSeek", true, 1293, done);

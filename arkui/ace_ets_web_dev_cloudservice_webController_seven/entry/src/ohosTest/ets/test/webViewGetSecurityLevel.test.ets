@@ -53,11 +53,11 @@ export default function ActsAceWebViewGetSecurityLevel() {
 
     /*
      *@tc.number SUB_ACE_WEB_GETSECURITYLEVEL_API_0001
-     *@tc.name testWebViewGetSecurityLevel
+     *@tc.name testWebViewGetSecurityLevelNone
      *@tc.desc test getSecurityLevel NONE 0
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewGetSecurityLevelNone', 0, async (done: Function) => {
       emitKey = "emitWebViewGetSecurityLevel01"

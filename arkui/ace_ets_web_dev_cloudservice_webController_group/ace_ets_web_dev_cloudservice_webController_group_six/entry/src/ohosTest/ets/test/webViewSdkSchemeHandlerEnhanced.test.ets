@@ -69,14 +69,15 @@ export default function ActsAceWebViewSdkSchemeHandlerEnhanced() {
         await Utils.sleep(1000);
       done();
     })
+
     /*
-     *@tc.number SUB_ACE_WEB_SdkSchemeHandler_setUrl_null_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_setUrl_null
-     *@tc.desc test SdkSchemeHandler_setUrl_null
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
+    * @tc.number      : SUB_ACE_WEB_SdkSchemeHandler_setUrl_null_API_0001
+    * @tc.name        : testWebViewSdkSchemeHandler_setUrl_null
+    * @tc.desc        : test SdkSchemeHandler_setUrl_null
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 0
+    */
     it('testWebViewSdkSchemeHandler_setUrl_null', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setUrl_null"
       Utils.emitEvent(emitKey, 10);
@@ -84,13 +85,14 @@ export default function ActsAceWebViewSdkSchemeHandlerEnhanced() {
       sendEventByKey('webViewSdkSchemeHandlerEnhanced', 10, '');
     })
 
+
     /*
-     *@tc.number SUB_ACE_WEB_SdkSchemeHandler_isChunked_false_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_isChunked_false
-     *@tc.desc test SdkSchemeHandler_isChunked_false
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
+     * @tc.number      : SUB_ACE_WEB_SdkSchemeHandler_isChunked_false_API_0001
+     * @tc.name        : testWebViewSdkSchemeHandler_isChunked_false
+     * @tc.desc        : test SdkSchemeHandler_isChunked_false
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
      */
     it('testWebViewSdkSchemeHandler_isChunked_false', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isChunked_false"
@@ -99,13 +101,14 @@ export default function ActsAceWebViewSdkSchemeHandlerEnhanced() {
       sendEventByKey('webViewSdkSchemeHandlerEnhanced', 10, '');
     })
 
+
     /*
-     *@tc.number SUB_ACE_WEB_SdkSchemeHandler_isEof_false_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_isEof_false
-     *@tc.desc test SdkSchemeHandler_isEof_false
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
+     * @tc.number      : SUB_ACE_WEB_SdkSchemeHandler_isEof_false_API_0001
+     * @tc.name        : testWebViewSdkSchemeHandler_isEof_false
+     * @tc.desc        : test SdkSchemeHandler_isEof_false
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
      */
     it('testWebViewSdkSchemeHandler_isEof_false', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isEof_false"
@@ -121,6 +124,14 @@ export default function ActsAceWebViewSdkSchemeHandlerEnhanced() {
      *@tc.type Function
      *@tc.level 1
      */
+    /*
+     * @tc.number      : SUB_ACE_WEB_SdkSchemeHandler_isInMemory_false_API_0002
+     * @tc.name        : testWebViewSdkSchemeHandler_isInMemory_false
+     * @tc.desc        : test SdkSchemeHandler_isInMemory_false
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandler_isInMemory_false', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isInMemory_false"
       Utils.emitEvent(emitKey, 10);
@@ -134,6 +145,14 @@ export default function ActsAceWebViewSdkSchemeHandlerEnhanced() {
      *@tc.size MediumTest
      *@tc.type Function
      *@tc.level 1
+     */
+    /*
+     * @tc.number      : SUB_ACE_WEB_SdkSchemeHandler_isInMemory_false_API_0003
+     * @tc.name        : testWebViewSdkSchemeHandler_isMainFrame_false
+     * @tc.desc        : test SdkSchemeHandler_isInMemory_false
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
      */
     it('testWebViewSdkSchemeHandler_isMainFrame_false', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isMainFrame_false"

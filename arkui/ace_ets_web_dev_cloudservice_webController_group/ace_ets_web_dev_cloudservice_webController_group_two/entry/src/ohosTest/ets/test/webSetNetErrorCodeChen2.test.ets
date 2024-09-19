@@ -71,12 +71,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
     })
 
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0089
     *@tc.name testWebSetNetErrorCode_ERR_SOCKS_CONNECTION_FAILED
      *@tc.desc test WebSetNetErrorCodeERR_SOCKS_CONNECTION_FAILED (-120)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SOCKS_CONNECTION_FAILED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SOCKS_CONNECTION_FAILED"
@@ -86,12 +86,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
     })
 
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0090
     *@tc.name testWebSetNetErrorCode_ERR_SOCKS_CONNECTION_HOST_UNREACHABLE
     *@tc.desc test WebSetNetErrorCode_ERR_SOCKS_CONNECTION_HOST_UNREACHABLE (-121)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SOCKS_CONNECTION_HOST_UNREACHABLE', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SOCKS_CONNECTION_HOST_UNREACHABLE"
@@ -101,12 +101,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
     })
 
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0091
     *@tc.name testWebSetNetErrorCode_ERR_ALPN_NEGOTIATION_FAILED
     *@tc.desc test WebSetNetErrorCode_ERR_ALPN_NEGOTIATION_FAILED (-122)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_ALPN_NEGOTIATION_FAILED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_ALPN_NEGOTIATION_FAILED"
@@ -115,12 +115,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0092
     *@tc.name testWebSetNetErrorCode_ERR_SSL_NO_RENEGOTIATION
     *@tc.desc test WebSetNetErrorCode_ERR_SSL_NO_RENEGOTIATION (-123)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SSL_NO_RENEGOTIATION', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_NO_RENEGOTIATION"
@@ -129,12 +129,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0093
     *@tc.name testWebSetNetErrorCode_ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES
     *@tc.desc test WebSetNetErrorCode_ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES (-124)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES"
@@ -143,12 +143,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0094
     *@tc.name testWebSetNetErrorCode_ERR_SSL_DECOMPRESSION_FAILURE_ALERT
     *@tc.desc test WebSetNetErrorCode_ERR_SSL_DECOMPRESSION_FAILURE_ALERT (-125)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SSL_DECOMPRESSION_FAILURE_ALERT', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_DECOMPRESSION_FAILURE_ALERT"
@@ -157,12 +157,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0095
     *@tc.name testWebSetNetErrorCode_ERR_SSL_BAD_RECORD_MAC_ALERT
     *@tc.desc test WebSetNetErrorCode_ERR_SSL_BAD_RECORD_MAC_ALERT (-126)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SSL_BAD_RECORD_MAC_ALERT', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_BAD_RECORD_MAC_ALERT"
@@ -171,12 +171,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0096
     *@tc.name testWebSetNetErrorCode_ERR_PROXY_AUTH_REQUESTED
     *@tc.desc test WebSetNetErrorCode_ERR_PROXY_AUTH_REQUESTED (-127)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_PROXY_AUTH_REQUESTED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_PROXY_AUTH_REQUESTED"
@@ -185,12 +185,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0097
     *@tc.name testWebSetNetErrorCode_ERR_PROXY_CONNECTION_FAILED
     *@tc.desc test WebSetNetErrorCode_ERR_PROXY_CONNECTION_FAILED (-130)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_PROXY_CONNECTION_FAILED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_PROXY_CONNECTION_FAILED"
@@ -199,12 +199,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0098
     *@tc.name testWebSetNetErrorCode_ERR_MANDATORY_PROXY_CONFIGURATION_FAILED
     *@tc.desc test WebSetNetErrorCode_ERR_MANDATORY_PROXY_CONFIGURATION_FAILED (-131)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_MANDATORY_PROXY_CONFIGURATION_FAILED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_MANDATORY_PROXY_CONFIGURATION_FAILED"
@@ -213,12 +213,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0099
     *@tc.name testWebSetNetErrorCode_ERR_PRECONNECT_MAX_SOCKET_LIMIT
     *@tc.desc test WebSetNetErrorCode_ERR_PRECONNECT_MAX_SOCKET_LIMIT (-133)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_PRECONNECT_MAX_SOCKET_LIMIT', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_PRECONNECT_MAX_SOCKET_LIMIT"
@@ -227,12 +227,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0100
     *@tc.name testWebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED
     *@tc.desc test WebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED (-134)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED"
@@ -241,12 +241,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0101
     *@tc.name testWebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY
     *@tc.desc test WebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY (-135)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY"
@@ -255,12 +255,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0102
     *@tc.name testWebSetNetErrorCode_ERR_PROXY_CERTIFICATE_INVALID
     *@tc.desc test WebSetNetErrorCode_ERR_PROXY_CERTIFICATE_INVALID (-136)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_PROXY_CERTIFICATE_INVALID', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_PROXY_CERTIFICATE_INVALID"
@@ -269,12 +269,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0103
     *@tc.name testWebSetNetErrorCode_ERR_NAME_RESOLUTION_FAILED
     *@tc.desc test WebSetNetErrorCode_ERR_NAME_RESOLUTION_FAILED (-137)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_NAME_RESOLUTION_FAILED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_NAME_RESOLUTION_FAILED"
@@ -283,12 +283,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0104
     *@tc.name testWebSetNetErrorCode_ERR_NETWORK_ACCESS_DENIED
     *@tc.desc test WebSetNetErrorCode_ERR_NETWORK_ACCESS_DENIED (-138)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_NETWORK_ACCESS_DENIED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_NETWORK_ACCESS_DENIED"
@@ -297,12 +297,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0105
     *@tc.name testWebSetNetErrorCode_ERR_TEMPORARILY_THROTTLED
     *@tc.desc test WebSetNetErrorCode_ERR_TEMPORARILY_THROTTLED (-139)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_TEMPORARILY_THROTTLED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_TEMPORARILY_THROTTLED"
@@ -311,12 +311,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0106
     *@tc.name testWebSetNetErrorCode_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT
     *@tc.desc test WebSetNetErrorCode_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT (-140)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT"
@@ -325,12 +325,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0107
     *@tc.name testWebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED
     *@tc.desc test WebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED (-141)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED"
@@ -339,12 +339,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0108
     *@tc.name testWebSetNetErrorCode_ERR_ERR_MSG_TOO_BIG
     *@tc.desc test WebSetNetErrorCode_ERR_ERR_MSG_TOO_BIG (-142)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_MSG_TOO_BIG', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_MSG_TOO_BIG"
@@ -353,12 +353,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0109
     *@tc.name testWebSetNetErrorCode_ERR_WS_PROTOCOL_ERROR
     *@tc.desc test WebSetNetErrorCode_ERR_WS_PROTOCOL_ERROR (-145)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_WS_PROTOCOL_ERROR', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_WS_PROTOCOL_ERROR"
@@ -367,12 +367,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0110
     *@tc.name testWebSetNetErrorCode_ERR_ADDRESS_IN_USE
     *@tc.desc test WebSetNetErrorCode_ERR_ADDRESS_IN_USE (-145)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_ADDRESS_IN_USE', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_ADDRESS_IN_USE"
@@ -381,12 +381,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0111
     *@tc.name testWebSetNetErrorCode_ERR_SSL_HANDSHAKE_NOT_COMPLETED
     *@tc.desc test WebSetNetErrorCode_ERR_SSL_HANDSHAKE_NOT_COMPLETED (-148)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SSL_HANDSHAKE_NOT_COMPLETED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_HANDSHAKE_NOT_COMPLETED"
@@ -395,12 +395,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0112
     *@tc.name testWebSetNetErrorCode_ERR_SSL_BAD_PEER_PUBLIC_KEY
     *@tc.desc test WebSetNetErrorCode_ERR_SSL_BAD_PEER_PUBLIC_KEY (-149)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SSL_BAD_PEER_PUBLIC_KEY', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_BAD_PEER_PUBLIC_KEY"
@@ -410,12 +410,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
     })
 
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0113
     *@tc.name testWebSetNetErrorCode_ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN
     *@tc.desc test WebSetNetErrorCode_ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN (-150)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN"
@@ -425,12 +425,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
     })
 
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0114
     *@tc.name testWebSetNetErrorCode_ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED
     *@tc.desc test WebSetNetErrorCode_ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED (-151)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED"
@@ -440,12 +440,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
     })
 
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0115
     *@tc.name testWebSetNetErrorCode_ERR_SSL_DECRYPT_ERROR_ALERT
     *@tc.desc test WebSetNetErrorCode_ERR_SSL_DECRYPT_ERROR_ALERT (-153)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SSL_DECRYPT_ERROR_ALERT', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_DECRYPT_ERROR_ALERT"
@@ -454,12 +454,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0116
     *@tc.name testWebSetNetErrorCode_ERR_WS_THROTTLE_QUEUE_TOO_LARGE
     *@tc.desc test WebSetNetErrorCode_ERR_WS_THROTTLE_QUEUE_TOO_LARGE (-154)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_WS_THROTTLE_QUEUE_TOO_LARGE', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_WS_THROTTLE_QUEUE_TOO_LARGE"
@@ -468,12 +468,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0117
     *@tc.name testWebSetNetErrorCode_ERR_SSL_SERVER_CERT_CHANGED
     *@tc.desc test WebSetNetErrorCode_ERR_SSL_SERVER_CERT_CHANGED (-156)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SSL_SERVER_CERT_CHANGED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_SERVER_CERT_CHANGED"
@@ -482,12 +482,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0118
     *@tc.name testWebSetNetErrorCode_ERR_SSL_UNRECOGNIZED_NAME_ALERT
     *@tc.desc test WebSetNetErrorCode_ERR_SSL_UNRECOGNIZED_NAME_ALERT (-159)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SSL_UNRECOGNIZED_NAME_ALERT', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_UNRECOGNIZED_NAME_ALERT"
@@ -496,12 +496,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0119
     *@tc.name testWebSetNetErrorCode_ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR
     *@tc.desc test WebSetNetErrorCode_ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR (-160)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR"
@@ -510,12 +510,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0120
     *@tc.name testWebSetNetErrorCode_ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR
     *@tc.desc test WebSetNetErrorCode_ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR (-161)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR"
@@ -524,12 +524,12 @@ export default function ActsAceWebSetNetErrorCodeChen2() {
       sendEventByKey('webSetNetErrorCodeChen2', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_0001
+    *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_API_TWO_PART_0121
     *@tc.name testWebSetNetErrorCode_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE
     *@tc.desc test WebSetNetErrorCode_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE (-162)
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebSetNetErrorCode_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE"

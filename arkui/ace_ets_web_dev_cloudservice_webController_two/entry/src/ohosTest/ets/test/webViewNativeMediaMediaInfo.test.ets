@@ -69,15 +69,16 @@ export default function webViewNativeMediaMediaInfo() {
         await Utils.sleep(1000);
       done();
     })
-    
+
+
     /*
-     *@tc.number SUB_ACE_WEB_mediaInfo_API_0001
-     *@tc.name testWebViewNativeMediaMediaInfo
-     *@tc.desc test embedID,mediaType,mediaSrcList,surfaceInfo,controlsShown,controlList,posterUrl,preload,attributes
-     *@tc.type Function
-     *@tc.size MediumTest
-     *@tc.level 1
-     */
+    * @tc.number     : SUB_ACE_WEB_mediaInfo_API_0001
+    * @tc.name       : testWebViewNativeMediaMediaInfo
+    * @tc.desc       : test embedID,mediaType,mediaSrcList,surfaceInfo,controlsShown,controlList,posterUrl,preload,attributes
+    * @tc.size_t     : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
     it('testWebViewNativeMediaMediaInfo', 0, async (done: Function) => {
         let emitKey="emitWebViewNativeMediaMediaInfo"
         Utils.emitEvent(emitKey,10)
