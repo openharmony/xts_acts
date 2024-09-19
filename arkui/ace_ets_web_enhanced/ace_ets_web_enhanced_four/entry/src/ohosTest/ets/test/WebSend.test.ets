@@ -370,13 +370,13 @@ export default function WebSendTest() {
 
     /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_2400
-     * @tc.name testErrorCodeMessage2400
+     * @tc.name testErrorCodeMessage24001
      * @tc.desc test SetErrorTest
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 0
      */
-    it('testErrorCodeMessage2400', 0, async () => {
+    it('testErrorCodeMessage24001', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_2400 start')
       console.info(TGA, 'SUB_WEB_ERRORCODEANDERRORMESSAGE_2400 start')
