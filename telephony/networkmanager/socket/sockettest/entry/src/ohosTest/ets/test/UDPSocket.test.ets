@@ -742,6 +742,44 @@ export default function UDPSocketTest() {
         done();
       }
     });
+    
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_Bind_2100
+     * @tc.name  :  testNetworkMgrSocketUDPSocketBind2100
+     * @tc.desc  :  Bind IP address and port
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
+    it('testNetworkMgrSocketUDPSocketBind2100', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketBind2100';
+      console.info(`${caseName} test start`);
+      try {
+        let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+        let addr: socket.NetAddress = {
+          address: 'www.baidu.com',
+          port: 0,
+          family: 2
+        };
+        udp.bind(addr).then(() => {
+          expectFail();
+          console.info(`${caseName} test end`);
+          udp.close();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} err: ${JSON.stringify(err)}`);
+          expectEqual(err.code, 401);
+          console.info(`${caseName} test end`);
+          udp.close();
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
 
     /*
      * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_Send_0100
