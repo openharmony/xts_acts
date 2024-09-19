@@ -19,6 +19,7 @@ import { webview } from '@kit.ArkWeb';
 import { Driver } from '@kit.TestKit';
 import { router } from '@kit.ArkUI';
 import { LocalContext } from './GloablConfig';
+import  Utils  from './Util';
 
 let driver: Driver = Driver.create();
 let flg: boolean = false
@@ -69,7 +70,7 @@ export default function webSchemeHandler() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0300 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0300 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
       LocalContext.context.eventHub.on("SetHeaderByName-name-error", (code: string, message: string) => {
         flg = true
         expect(code).assertEqual("401")
@@ -80,7 +81,7 @@ export default function webSchemeHandler() {
       router.pushUrl({
         url: "testability/pages/SetHeaderByName-name"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -98,7 +99,7 @@ export default function webSchemeHandler() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0400 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0400 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
       LocalContext.context.eventHub.on("SetHeaderByName-value-error", (code: string, message: string) => {
         flg = true
         expect(code).assertEqual("401")
@@ -109,7 +110,7 @@ export default function webSchemeHandler() {
       router.pushUrl({
         url: "testability/pages/SetHeaderByName-value"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -126,7 +127,7 @@ export default function webSchemeHandler() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0500 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0500 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
       LocalContext.context.eventHub.on("SetHeaderByName-overwrite-error", (code: string, message: string) => {
         flg = true
         expect(code).assertEqual("401")
@@ -137,7 +138,7 @@ export default function webSchemeHandler() {
       router.pushUrl({
         url: "testability/pages/SetHeaderByName-overwrite"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -154,7 +155,7 @@ export default function webSchemeHandler() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0600 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0600 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
       LocalContext.context.eventHub.on("SetEncoding-error", (code: string, message: string) => {
         flg = true
         expect(code).assertEqual("401")
@@ -165,7 +166,7 @@ export default function webSchemeHandler() {
       router.pushUrl({
         url: "testability/pages/SetEncoding"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -182,7 +183,7 @@ export default function webSchemeHandler() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0700 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0700 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
       LocalContext.context.eventHub.on("SetMimeType-error", (code: string, message: string) => {
         flg = true
         expect(code).assertEqual("401")
@@ -193,7 +194,7 @@ export default function webSchemeHandler() {
       router.pushUrl({
         url: "testability/pages/SetMimeType"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -210,7 +211,7 @@ export default function webSchemeHandler() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0800 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0800 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
       LocalContext.context.eventHub.on("SetStatusText-error", (code: string, message: string) => {
         flg = true
         expect(code).assertEqual("401")
@@ -221,7 +222,7 @@ export default function webSchemeHandler() {
       router.pushUrl({
         url: "testability/pages/SetStatusText"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -238,7 +239,7 @@ export default function webSchemeHandler() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0900 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_0900 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
       LocalContext.context.eventHub.on("SetStatus-error", (code: string, message: string) => {
         flg = true
         expect(code).assertEqual("401")
@@ -249,7 +250,7 @@ export default function webSchemeHandler() {
       router.pushUrl({
         url: "testability/pages/SetStatus"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -266,7 +267,7 @@ export default function webSchemeHandler() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1000 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1000 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
       LocalContext.context.eventHub.on("SetNetErrorCode-error", (code: string, message: string) => {
         flg = true
         expect(code).assertEqual("401")
@@ -277,7 +278,7 @@ export default function webSchemeHandler() {
       router.pushUrl({
         url: "testability/pages/SetNetErrorCode"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -294,7 +295,7 @@ export default function webSchemeHandler() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1100 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1100 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
       LocalContext.context.eventHub.on("SetUrl-error", (code: string, message: string) => {
         flg = true
         expect(code).assertEqual("401")
@@ -305,7 +306,7 @@ export default function webSchemeHandler() {
       router.pushUrl({
         url: "testability/pages/SetUrl"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -323,7 +324,7 @@ export default function webSchemeHandler() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1200 start')
       console.info("=========", 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1200 start')
 
-      await driver.delayMs(500)
+      await Utils.sleep(500)
       LocalContext.context.eventHub.on("ReadTest-error", (code: string, message: string) => {
         flg = true
         expect(code).assertEqual("401")
@@ -335,9 +336,9 @@ export default function webSchemeHandler() {
       router.pushUrl({
         url: "testability/pages/ReadTest"
       })
-      await driver.delayMs(1000)
+      await Utils.sleep(1000)
       sendEventByKey("001", 10, "")
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       expect(flg).assertTrue()
       router.clear()
     })

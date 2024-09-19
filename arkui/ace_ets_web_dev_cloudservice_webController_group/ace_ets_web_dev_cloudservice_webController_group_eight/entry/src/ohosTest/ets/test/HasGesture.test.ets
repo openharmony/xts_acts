@@ -59,12 +59,12 @@ export default function hasGesture() {
     it('testWebView_getHttpBodyStream0100', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getHttpBodyStream_0100 start')
-      console.info("=========", 'SUB_ACE_WEB_getHttpBodyStream_0100 start')
+      console.info('SUB_ACE_WEB_getHttpBodyStream_0100 start')
       await driver.delayMs(500)
 
       LocalContext.context.eventHub.on("GetHttpBodyStreamTest", () => {
         flg = true
-        console.info("=========", 'SUB_ACE_WEB_getHttpBodyStream_0100 end')
+        console.info('SUB_ACE_WEB_getHttpBodyStream_0100 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getHttpBodyStream_0100 end')
       })
       router.pushUrl({
@@ -86,12 +86,12 @@ export default function hasGesture() {
     it('testWebView_setStatus0100', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_setStatus_0100 start')
-      console.info("=========", 'SUB_ACE_WEB_setStatus_0100 start')
+      console.info('SUB_ACE_WEB_setStatus_0100 start')
       await driver.delayMs(500)
       LocalContext.context.eventHub.on("SetStatusTest", (data: string) => {
         flg = true
         expect(data).assertEqual("12")
-        console.info("=========", 'SUB_ACE_WEB_setStatus_0100 end')
+        console.info('SUB_ACE_WEB_setStatus_0100 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_setStatus_0100 end')
       })
       router.pushUrl({
@@ -113,12 +113,12 @@ export default function hasGesture() {
     it('testWebView_setStatus0200', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_setStatus_0200 start')
-      console.info("=========", 'SUB_ACE_WEB_setStatus_0200 start')
+      console.info('SUB_ACE_WEB_setStatus_0200 start')
       await driver.delayMs(500)
       LocalContext.context.eventHub.on("SetStatusTest1", (data: string) => {
         flg = true
         expect(data).assertEqual("-12")
-        console.info("=========", 'SUB_ACE_WEB_setStatus_0200 end')
+        console.info('SUB_ACE_WEB_setStatus_0200 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_setStatus_0200 end')
       })
       router.pushUrl({
@@ -140,13 +140,13 @@ export default function hasGesture() {
     it('testWebView_setStatus0300', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_setStatus_0300 start')
-      console.info("=========", 'SUB_ACE_WEB_setStatus_0300 start')
+      console.info('SUB_ACE_WEB_setStatus_0300 start')
       await driver.delayMs(500)
       LocalContext.context.eventHub.on("SetStatusTest2", (code: string, message: string) => {
         flg = true
         expect(code).assertEqual("401")
         expect(message).assertEqual("BusinessError 401: Parameter error. The type of 'code' must be int.")
-        console.info("=========", 'SUB_ACE_WEB_setStatus_0300 end')
+        console.info('SUB_ACE_WEB_setStatus_0300 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_setStatus_0300 end')
       })
       router.pushUrl({

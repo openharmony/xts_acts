@@ -19,6 +19,7 @@ import { LocalContext } from './GloablConfig';
 import { router } from '@kit.ArkUI';
 import { Driver } from '@kit.TestKit';
 import { webview } from '@kit.ArkWeb';
+import Utils from './Util';
 
 let driver: Driver = Driver.create();
 let TGA: string = 'TestWebMessageTest'
@@ -61,7 +62,7 @@ export default function WebSendTest() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1300 start')
       console.info('SUB_WEB_ERRORCODEANDERRORMESSAGE_1300 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
 
       LocalContext.context.eventHub.on("ReadTest2-error", (code: string, message: string) => {
         flg = true
@@ -74,9 +75,9 @@ export default function WebSendTest() {
       router.pushUrl({
         url: "testability/pages/ReadTest2"
       })
-      await driver.delayMs(1000)
+      await Utils.sleep(1000)
       sendEventByKey("0012", 10, "")
-      await driver.delayMs(1000)
+      await Utils.sleep(1000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -93,7 +94,7 @@ export default function WebSendTest() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1400 start')
       console.info(TGA, 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1400 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
 
       LocalContext.context.eventHub.on("ResumeDownloadTest-error", (code: string, message: string) => {
         flg = true
@@ -105,9 +106,9 @@ export default function WebSendTest() {
       router.pushUrl({
         url: "testability/pages/ResumeDownloadTest"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       sendEventByKey("003", 10, "")
-      await driver.delayMs(1000)
+      await Utils.sleep(1000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -124,7 +125,7 @@ export default function WebSendTest() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1500 start')
       console.info(TGA, 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1500 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
 
       LocalContext.context.eventHub.on("ResumeTest-error", (code: string, message: string) => {
         flg = true
@@ -136,9 +137,9 @@ export default function WebSendTest() {
       router.pushUrl({
         url: "testability/pages/ResumeTest"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       sendEventByKey("004", 10, "")
-      await driver.delayMs(1000)
+      await Utils.sleep(1000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -155,7 +156,7 @@ export default function WebSendTest() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1600 start')
       console.info(TGA, 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1600 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
 
       LocalContext.context.eventHub.on("PauseTest-error", (code: string, message: string) => {
         flg = true
@@ -167,9 +168,9 @@ export default function WebSendTest() {
       router.pushUrl({
         url: "testability/pages/PauseTest"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       sendEventByKey("005", 10, "")
-      await driver.delayMs(1000)
+      await Utils.sleep(1000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -186,7 +187,7 @@ export default function WebSendTest() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1800 start')
       console.info(TGA, 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1800 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
 
       LocalContext.context.eventHub.on("DeserializeTest-error", (code: string, message: string) => {
         flg = true
@@ -198,13 +199,13 @@ export default function WebSendTest() {
       router.pushUrl({
         url: "testability/pages/DeserializeTest"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       sendEventByKey("007", 10, "")
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       sendEventByKey("0071", 10, "")
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       sendEventByKey("0072", 10, "")
-      await driver.delayMs(1000)
+      await Utils.sleep(1000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -221,7 +222,7 @@ export default function WebSendTest() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1900 start')
       console.info(TGA, 'SUB_WEB_ERRORCODEANDERRORMESSAGE_1900 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
 
       LocalContext.context.eventHub.on("GetItemAtIndexTest-error", (code: string, message: string) => {
         flg = true
@@ -234,9 +235,9 @@ export default function WebSendTest() {
       router.pushUrl({
         url: "testability/pages/GetItemAtIndexTest"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       sendEventByKey("008", 10, "")
-      await driver.delayMs(1000)
+      await Utils.sleep(1000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -253,7 +254,7 @@ export default function WebSendTest() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_2000 start')
       console.info(TGA, 'SUB_WEB_ERRORCODEANDERRORMESSAGE_2000 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
 
       LocalContext.context.eventHub.on("GetItemAtIndexTest1-error", (code: string, message: string) => {
         flg = true
@@ -266,9 +267,9 @@ export default function WebSendTest() {
       router.pushUrl({
         url: "testability/pages/GetItemAtIndexTest"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       sendEventByKey("0081", 10, "")
-      await driver.delayMs(1000)
+      await Utils.sleep(1000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -285,7 +286,7 @@ export default function WebSendTest() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_2100 start')
       console.info(TGA, 'SUB_WEB_ERRORCODEANDERRORMESSAGE_2100 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
 
       LocalContext.context.eventHub.on("GetItemAtIndexTest2-error", (code: string, message: string) => {
         flg = true
@@ -298,9 +299,9 @@ export default function WebSendTest() {
       router.pushUrl({
         url: "testability/pages/GetItemAtIndexTest"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       sendEventByKey("0082", 10, "")
-      await driver.delayMs(1000)
+      await Utils.sleep(1000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -317,7 +318,7 @@ export default function WebSendTest() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_2200 start')
       console.info(TGA, 'SUB_WEB_ERRORCODEANDERRORMESSAGE_2200 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
 
       LocalContext.context.eventHub.on("SetErrorTest-error", (code: string, message: string) => {
         flg = true
@@ -329,9 +330,9 @@ export default function WebSendTest() {
       router.pushUrl({
         url: "testability/pages/SetErrorTest"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       sendEventByKey("009", 10, "")
-      await driver.delayMs(1000)
+      await Utils.sleep(1000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -348,7 +349,7 @@ export default function WebSendTest() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_2300 start')
       console.info(TGA, 'SUB_WEB_ERRORCODEANDERRORMESSAGE_2300 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
 
       LocalContext.context.eventHub.on("SetErrorTest-error", (code: string, message: string) => {
         flg = true
@@ -360,9 +361,9 @@ export default function WebSendTest() {
       router.pushUrl({
         url: "testability/pages/SetErrorTest"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       sendEventByKey("0091", 10, "")
-      await driver.delayMs(1000)
+      await Utils.sleep(1000)
       expect(flg).assertTrue()
       router.clear()
     })
@@ -379,7 +380,7 @@ export default function WebSendTest() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_WEB_ERRORCODEANDERRORMESSAGE_2400 start')
       console.info(TGA, 'SUB_WEB_ERRORCODEANDERRORMESSAGE_2400 start')
-      await driver.delayMs(500)
+      await Utils.sleep(500)
 
       LocalContext.context.eventHub.on("SetArrayBufferTest-error", (code: string, message: string) => {
         flg = true
@@ -391,9 +392,9 @@ export default function WebSendTest() {
       router.pushUrl({
         url: "testability/pages/SetArrayBufferTest"
       })
-      await driver.delayMs(2000)
+      await Utils.sleep(2000)
       sendEventByKey("010", 10, "")
-      await driver.delayMs(1000)
+      await Utils.sleep(1000)
       expect(flg).assertTrue()
       router.clear()
     })

@@ -19,6 +19,7 @@ import { Driver } from '@kit.TestKit';
 import { webview } from '@kit.ArkWeb';
 import { LocalContext } from './GloablConfig';
 import { router } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let driver: Driver = Driver.create();
 let flg: boolean = false
@@ -59,12 +60,12 @@ export default function webRequestHeaderList() {
     it('testWebRequestHeaderList_GetHeader_IndexParam_NotNum', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_WEBHOST_1110 start')
-      console.info("=========", 'SUB_ACE_WEB_WEBHOST_1110 start')
+      console.info('SUB_ACE_WEB_WEBHOST_1110 start')
       await driver.delayMs(500)
 
       LocalContext.context.eventHub.on("GetHttpBodyStreamTest", () => {
         flg = true
-        console.info("=========", 'SUB_ACE_WEB_WEBHOST_1110 end')
+        console.info('SUB_ACE_WEB_WEBHOST_1110 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_WEBHOST_1110 end')
       })
       router.pushUrl({
@@ -74,7 +75,5 @@ export default function webRequestHeaderList() {
       expect(flg).assertTrue()
       router.clear()
     })
-
-
   })
 }

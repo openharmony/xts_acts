@@ -13,6 +13,10 @@
 * limitations under the License.
 */
 
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { Hypium } from '@ohos/hypium';
+import testsuite from '../../test/List.test';
+
 @Entry
 @Component
 struct Index {
@@ -20,6 +24,11 @@ struct Index {
 
   aboutToAppear(): void {
     console.info('aboutToAppear')
+    let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+    abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+    let abilityDelegatorArguments: abilityDelegatorRegistry.AbilityDelegatorArgs;
+    abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
 
   build(){

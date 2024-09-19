@@ -26,9 +26,9 @@ export default function testsuite() {
   webSchemeHandler();
   WebSendTest();
   ActsAceWebMessageExt();
-  ActsAceSaveHttpAuthCredentials()
-  ActsAceGetHttpAuthCredentials()
-  ActsAcGetOriginUsage()
-  ActsAceGetOriginQuota()
-  GeolocationTest()
+  ActsAceSaveHttpAuthCredentials();
+  ActsAceGetHttpAuthCredentials();
+  ActsAcGetOriginUsage();
+  ActsAceGetOriginQuota();
+  GeolocationTest();
 }
