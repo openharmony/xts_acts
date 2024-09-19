@@ -33,7 +33,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
             router.clear();
             let pages = router.getState();
             console.info("get webViewSdkSchemeHandlerDidFailFei state success " + JSON.stringify(pages));
-            if (!("webViewSdkSchemeHandler" == pages.name)) {
+            if (!("webViewSdkSchemeHandlerDidFailFei" == pages.name)) {
                 console.info("get webViewSdkSchemeHandlerDidFailFei state success " + JSON.stringify(pages.name));
                 let result = await router.pushUrl(options);
                 await Utils.sleep(1000);
