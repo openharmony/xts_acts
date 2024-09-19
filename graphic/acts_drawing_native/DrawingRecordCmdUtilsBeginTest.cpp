@@ -46,6 +46,7 @@ namespace OHOS {
 namespace Rosen {
 namespace Drawing {
 class DrawingRecordCmdUtilsBeginRecordingTest : public testing::Test {};
+
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0102
  * @tc.name: testRecordCmdUtilsBeginRecordingAbnormal
@@ -55,11 +56,12 @@ class DrawingRecordCmdUtilsBeginRecordingTest : public testing::Test {};
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordingAbnormal, TestSize.Level3) {
-    // 1. The first and fourth parameters of the OH-Drawing-RecordCmdUtelsBeginRecording interface are not empty, with width and height being 0 and -1
+    // 1. The first and fourth parameters of the OH-Drawing-RecordCmdUtelsBeginRecording interface are not empty
+    //with width and height being 0 and -1
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
-    OH_Drawing_Canvas** canvass=&canvas;
-    OH_Drawing_RecordCmdUtils* recordcmd1=OH_Drawing_RecordCmdUtilsCreate ();
-    OH_Drawing_RecordCmdUtilsBeginRecording (nullptr,0,-1, canvass);
+    OH_Drawing_Canvas** canvass = &canvas;
+    OH_Drawing_RecordCmdUtils* recordcmd1 = OH_Drawing_RecordCmdUtilsCreate ();
+    OH_Drawing_RecordCmdUtilsBeginRecording (nullptr, 0, -1, canvass);
     // 2. free memory
     OH_Drawing_RecordCmdUtilsDestroy (recordcmd1);
     OH_Drawing_CanvasDestroy (canvas);
@@ -76,18 +78,16 @@ HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordi
 HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordingCalls, TestSize.Level2) {
     // 1. Call OH-Drawing-RecordCmdUtelsBeginRecording 10 times
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
-    OH_Drawing_Canvas** canvass=&canvas;
-    OH_Drawing_RecordCmdUtils* recordcmd1=OH_Drawing_RecordCmdUtilsCreate ();
-    for(int i=0;i<10;i++)
+    OH_Drawing_Canvas** canvass = &canvas;
+    OH_Drawing_RecordCmdUtils* recordcmd1 = OH_Drawing_RecordCmdUtilsCreate ();
+    for(int i = 0; i<10; i++)
     {
-        OH_Drawing_RecordCmdUtilsBeginRecording (nullptr,1,1, canvass);
+        OH_Drawing_RecordCmdUtilsBeginRecording (nullptr, 1, 1, canvass);
     }
     // 2. free memory
     OH_Drawing_RecordCmdUtilsDestroy (recordcmd1);
     OH_Drawing_CanvasDestroy (canvas);
 }
-
-
 
 } // namespace Drawing
 } // namespace Rosen

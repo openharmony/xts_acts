@@ -46,7 +46,6 @@ namespace OHOS {
 namespace Rosen {
 namespace Drawing {
 class DrawingRecordCmdUtilsDestroyTest : public testing::Test {};
-typedef struct OH_Drawing_RecordCmd OH_Drawing_RecordCmd;
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0200
@@ -58,12 +57,10 @@ typedef struct OH_Drawing_RecordCmd OH_Drawing_RecordCmd;
  */
 HWTEST_F(DrawingRecordCmdUtilsDestroyTest, testRecordCmdUtilsDestroyNormal, TestSize.Level0) {
     // 1. OH_Drawing_RecordCmdUtilsCreate
-    OH_Drawing_RecordCmdUtils* recordcmd1=OH_Drawing_RecordCmdUtilsCreate ();
+    OH_Drawing_RecordCmdUtils* recordcmd1 = OH_Drawing_RecordCmdUtilsCreate ();
     // 2. OH_Drawing_RecordCmdUtilsDestroy
     OH_Drawing_RecordCmdUtilsDestroy (recordcmd1);
 }
-
-
 
 } // namespace Drawing
 } // namespace Rosen

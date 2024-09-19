@@ -46,7 +46,6 @@ namespace OHOS {
 namespace Rosen {
 namespace Drawing {
 class DrawingRecordCmdUtilsFinishRecordingTest : public testing::Test {};
-typedef struct OH_Drawing_RecordCmd OH_Drawing_RecordCmd;
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0300
@@ -59,12 +58,12 @@ typedef struct OH_Drawing_RecordCmd OH_Drawing_RecordCmd;
 HWTEST_F(DrawingRecordCmdUtilsFinishRecordingTest, testRecordCmdUtilsFinishRecordingNormal, TestSize.Level0) {
     // 1. None of the OH_Drawing_RecordCmdUtilsFinishRecording parameters are empty
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
-    OH_Drawing_Canvas** canvass=&canvas;
+    OH_Drawing_Canvas** canvass = &canvas;
     OH_Drawing_RecordCmd *recordCmd;
-    OH_Drawing_RecordCmd **recordCmds=&recordCmd;
-    OH_Drawing_RecordCmdUtils* recordcmdutil1=OH_Drawing_RecordCmdUtilsCreate ();
+    OH_Drawing_RecordCmd **recordCmds = &recordCmd;
+    OH_Drawing_RecordCmdUtils* recordcmdutil1 = OH_Drawing_RecordCmdUtilsCreate ();
     OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil1, 1, 1, canvass);
-    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil1,recordCmds);
+    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil1, recordCmds);
 }
 
 /*
@@ -78,14 +77,14 @@ HWTEST_F(DrawingRecordCmdUtilsFinishRecordingTest, testRecordCmdUtilsFinishRecor
 HWTEST_F(DrawingRecordCmdUtilsFinishRecordingTest, testRecordCmdUtilsFinishRecordingNull, TestSize.Level3) {
     // 1. OH-Drawing-RecordCmdUtelsFinishRecording, RecordCmd or RecordCmdUtils parameter is empty
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
-    OH_Drawing_Canvas** canvass=&canvas;
-    OH_Drawing_RecordCmd* recordCmd=nullptr;
-    OH_Drawing_RecordCmd** recordCmds=&recordCmd;
-    OH_Drawing_RecordCmdUtils* recordcmdutil1=OH_Drawing_RecordCmdUtilsCreate ();
+    OH_Drawing_Canvas** canvass = &canvas;
+    OH_Drawing_RecordCmd* recordCmd = nullptr;
+    OH_Drawing_RecordCmd** recordCmds = &recordCmd;
+    OH_Drawing_RecordCmdUtils* recordcmdutil1 = OH_Drawing_RecordCmdUtilsCreate ();
     OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil1, 1, 1, canvass);
-    OH_Drawing_RecordCmdUtilsFinishRecording (nullptr,recordCmds);
+    OH_Drawing_RecordCmdUtilsFinishRecording (nullptr, recordCmds);
     OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil1, 1, 1, canvass);
-    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil1,nullptr);
+    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil1, nullptr);
 }
 
 } // namespace Drawing

@@ -46,7 +46,7 @@ namespace OHOS {
 namespace Rosen {
 namespace Drawing {
 class DrawingRecordCmdDestroyTest : public testing::Test {};
-typedef struct OH_Drawing_RecordCmd OH_Drawing_RecordCmd;
+
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0400
  * @tc.name: testRecordCmdDestroyNormal
@@ -57,14 +57,10 @@ typedef struct OH_Drawing_RecordCmd OH_Drawing_RecordCmd;
  */
 HWTEST_F(DrawingRecordCmdDestroyTest, testRecordCmdDestroyNormal, TestSize.Level0) {
     // 1. The OH-Drawing-RecordCmdDestroy parameter is not empty
-    OH_Drawing_RecordCmd* recordCmd=nullptr;
+    OH_Drawing_RecordCmd* recordCmd = nullptr;
     OH_Drawing_RecordCmdDestroy (recordCmd);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(),OH_DRAWING_SUCCESS);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
 }
-
-
-
-
 
 } // namespace Drawing
 } // namespace Rosen
