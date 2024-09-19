@@ -30,8 +30,8 @@
             "push": [
                 "ActsAVPlayerTest.hap->/data/test/ActsAVPlayerTest.hap",
                 "./resource/audio/H264_AAC.mp4 -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/entry_test/files/",
-                "./resource/media/H264_NONE.mp4 -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/entry_test/files/",
-                "./resource/media/srt_2800.srt -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/entry_test/files/",
+                "./resource/media/AVPlayer/H264_NONE.mp4 -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/entry_test/files/",
+                "./resource/media/codec/demuxer/srt_2800.srt -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/entry_test/files/",
                 "./resource/media/metadata/mjpeg_mp3.mp3 -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/entry_test/files/",
                 "./resource/media/H264_AAC_AAC_multiAudio.mp4 -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/entry_test/files/",
                 "./resource/media/metadata/H264_AAC_Matedata.mp4 -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/entry_test/files/",
