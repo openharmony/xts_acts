@@ -104,8 +104,7 @@
             "run-command": [
                 "chmod 644 /data/test/*.hap",
                 "scanner",
-                "param set persist.ace.testmode.enabled 1",
-                "setenforce 0"
+                "param set persist.ace.testmode.enabled 1"
             ]
         }
     ]
