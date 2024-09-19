@@ -26,13 +26,16 @@ const START_ABILITY_TIMEOUT_THOUSAND = 1000;
 
 export default function ForegroundPromise() {
   describe("ForegroundPromise", () => {
-    beforeAll(() => {
+    beforeAll((done) => {
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       abilityDelegator.startAbility({
         abilityName: "MainAbility",
         bundleName: "com.example.crossplatformpromise",
         moduleName: "entry",
       });
+      setTimeout(() => {
+        done();
+      }, START_ABILITY_TIMEOUT_TWO_THOUSAND);
     });
 
     /**
