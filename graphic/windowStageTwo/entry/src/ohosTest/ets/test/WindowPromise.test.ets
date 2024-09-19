@@ -669,9 +669,14 @@ it("testRectChangeOptions_on_moveWindowTo", 0, async (done:Function) => {
       }
     });
   } catch (error) {
-    console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
-    expect().assertFail();
-    done();
+    if (error.code === 801) {
+      console.info(`${msgStr} The current device type does not support to windowRectChange`);
+      done();
+    } else {
+      console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
   }
 })
 /**
