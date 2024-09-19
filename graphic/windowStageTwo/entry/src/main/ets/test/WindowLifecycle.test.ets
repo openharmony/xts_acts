@@ -1172,7 +1172,7 @@ export default function WindowLifecycle(context: common.UIAbilityContext, window
         expect().assertFail();
         done();
       });
-
+    });
 
 
 
@@ -1621,5 +1621,4 @@ export default function WindowLifecycle(context: common.UIAbilityContext, window
 
 
     })
-  })
 }
