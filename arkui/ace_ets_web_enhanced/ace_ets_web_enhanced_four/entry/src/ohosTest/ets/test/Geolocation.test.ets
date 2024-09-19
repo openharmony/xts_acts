@@ -86,6 +86,7 @@ export default function GeolocationTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('testErrorCodeMessage4100', 10)
+      Utils.sleep(500)
       sendEventByKey('Geolocation', 10, '');
     })
 
@@ -103,6 +104,7 @@ export default function GeolocationTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('testErrorCodeMessage4200', 10)
+      Utils.sleep(500)
       sendEventByKey('Geolocation', 10, '');
     })
 
@@ -120,6 +122,7 @@ export default function GeolocationTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('testErrorCodeMessage4300', 10)
+      Utils.sleep(500)
       sendEventByKey('Geolocation', 10, '');
     })
 
@@ -137,6 +140,7 @@ export default function GeolocationTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('testErrorCodeMessage4400', 10)
+      Utils.sleep(500)
       sendEventByKey('Geolocation', 10, '');
     })
 
@@ -154,6 +158,7 @@ export default function GeolocationTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('testErrorCodeMessage4500', 10)
+      Utils.sleep(500)
       sendEventByKey('Geolocation', 10, '');
     })
 
@@ -171,6 +176,7 @@ export default function GeolocationTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('testErrorCodeMessage4600', 10)
+      Utils.sleep(500)
       sendEventByKey('Geolocation', 10, '');
     })
 
@@ -188,6 +194,7 @@ export default function GeolocationTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('testErrorCodeMessage4700', 10)
+      Utils.sleep(500)
       sendEventByKey('Geolocation', 10, '');
     })
 
@@ -205,6 +212,7 @@ export default function GeolocationTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('testErrorCodeMessage4800', 10)
+      Utils.sleep(500)
       sendEventByKey('Geolocation', 10, '');
     })
 
@@ -222,6 +230,7 @@ export default function GeolocationTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('testErrorCodeMessage4900', 10)
+      Utils.sleep(500)
       sendEventByKey('Geolocation', 10, '');
     })
 
@@ -239,6 +248,7 @@ export default function GeolocationTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('testErrorCodeMessage5000', 10)
+      Utils.sleep(500)
       sendEventByKey('Geolocation', 10, '');
     })
 
@@ -256,6 +266,7 @@ export default function GeolocationTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('testErrorCodeMessage5100', 10)
+      Utils.sleep(500)
       sendEventByKey('Geolocation', 10, '');
     })
 
@@ -273,6 +284,7 @@ export default function GeolocationTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('testErrorCodeMessage5200', 10)
+      Utils.sleep(500)
       sendEventByKey('Geolocation', 10, '');
     })
   })
