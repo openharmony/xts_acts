@@ -45,10 +45,15 @@ static napi_value testRegisterSystemColorModeChangeEvent_001(napi_env env, napi_
     nodeAPI->addChild(column, image);
 
     auto onColorChange = [](ArkUI_SystemColorMode sysColorMode, void *userData) -> void {
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "SystemColorModeChangeEvent", "OnEventReceive");
+
         if (sysColorMode == ArkUI_SystemColorMode::ARKUI_SYSTEM_COLOR_MODE_DARK) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk onColorChange dark");
-        } else {
+        } else if (sysColorMode == ArkUI_SystemColorMode::ARKUI_SYSTEM_COLOR_MODE_LIGHT){
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk onColorChange light");
+        } else {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "SystemColorModeChangeEvent", "OnEventReceive: sysColorMode is null");
+            return;
         }
 
         auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
@@ -270,6 +275,11 @@ static napi_value testSystemFontStyleEvent_GetFontWeightScale_006(napi_env env, 
     nodeAPI -> addChild(column, text);
     
     auto onFontChange = [](ArkUI_SystemFontStyleEvent *fontStyle, void *userData)->void {
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "SystemFontStyleEvenTest", "OnEventReceive");
+        if (fontStyle == nullptr) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "SystemFontStyleEvenTest", "OnEventReceive: fontStyle is null");
+            return;
+        }
         auto fontWeight = OH_ArkUI_SystemFontStyleEvent_GetFontWeightScale(fontStyle);
         
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
