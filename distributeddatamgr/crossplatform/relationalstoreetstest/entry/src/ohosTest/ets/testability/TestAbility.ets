@@ -12,12 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
-import { Hypium } from '@ohos/hypium';
-import testsuite from '../test/List.test';
+import UIAbility from "@ohos.app.ability.UIAbility";
+import abilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
+import hilog from "@ohos.hilog";
+import { Hypium } from "@ohos/hypium";
+import testsuite from "../test/List.test";
+import window from "@ohos.window";
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import common from "@ohos.app.ability.common";
 
 export default class TestAbility extends UIAbility {
