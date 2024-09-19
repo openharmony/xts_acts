@@ -17,6 +17,7 @@ import hilog from '@ohos.hilog';
 import testNapi from "libhidebugndk.so";
 import {describe, it, expect} from '@ohos/hypium';
 
+
 export default function HidebugCTest() {
 describe('HidebugCTest', function () {
 
@@ -361,6 +362,69 @@ describe('HidebugCTest', function () {
             done();
         } catch (err) {
             console.error(`SUB_DFX_DFT_Trace_Collect_C_0700 > error code: ${err.code}, error msg: ${err.message}`);
+            expect().assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_C_0800
+     * @tc.name testHiDebugC15
+     * @tc.desc 验证OH_HiDebug_GetGraphicsMemory
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugC15', 1, async function (done) {
+        try {
+            let errCode = testNapi.getGraphicsMemory();
+            console.info(`SUB_DFX_DFT_Trace_Collect_C_0800 > start errCode : ${errCode}`);
+            expect(errCode == 0).assertTrue();
+            done();
+        } catch (err) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_C_0800 > error code: ${err.code}, error msg: ${err.message}`);
+            expect().assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_C_0900
+     * @tc.name testHiDebugC16
+     * @tc.desc 验证OH_HiDebug_GetGraphicsMemory传入一个指向数组的指针
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+      it('testHiDebugC16', 1, async function (done) {
+        try {
+            let errCode = testNapi.getGraphicsMemoryArray();
+            console.info(`SUB_DFX_DFT_Trace_Collect_C_0900 > start errCode : ${errCode}`);
+            expect(errCode == 0 ).assertTrue();
+             done();
+        } catch (err) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_C_0900 > error code: ${err.code}, error msg: ${err.message}`);
+            expect().assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_C_1100
+     * @tc.name testHiDebugC17
+     * @tc.desc 验证OH_HiDebug_GetGraphicsMemory空指针NULL，返回错误码401
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugC17', 1, async function (done) {
+        try {
+            let errCode = testNapi.getGraphicsMemoryNULL();
+            console.info(`SUB_DFX_DFT_Trace_Collect_C_1100 > start errCode : ${errCode}`);
+            expect(errCode == 401 ).assertTrue();
+            done();
+        } catch (err) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_C_1100 > error code: ${err.code}, error msg: ${err.message}`);
             expect().assertFail();
             done();
         }
