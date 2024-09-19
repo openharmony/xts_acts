@@ -25,7 +25,7 @@ export default function ActsAceWebSetResponse() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webSetResponse',
+        url: 'testability/pages/webSetResponse',
       }
 
       try {

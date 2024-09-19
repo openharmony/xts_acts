@@ -956,9 +956,9 @@ struct WebComponent {
             deviceId: '',
             bundleName: 'com.open.harmony.acewebcloudservicegroupfivetest',
             moduleName: '',
-            abilityName: 'com.example.myapplication.MainAbility2',
+            abilityName: 'com.example.myapplication.TestAbility2',
             parameters: {
-              info: 'com.example.myapplication.MainAbility2'
+              info: 'com.example.myapplication.TestAbility2'
             }
           }
           console.log('webviewBFCacheButton end');

@@ -25,7 +25,7 @@ export default function ActsAceWebviewBFCacheResumeAndSuspendPlayer() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webviewBFCacheResumeAndSuspendPlayer',
+        url: 'testability/pages/webviewBFCacheResumeAndSuspendPlayer',
       }
 
       try {

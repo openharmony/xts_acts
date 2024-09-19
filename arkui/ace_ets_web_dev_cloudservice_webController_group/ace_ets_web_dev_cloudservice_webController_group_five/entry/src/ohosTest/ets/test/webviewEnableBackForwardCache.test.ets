@@ -25,7 +25,7 @@ export default function ActsAceWebviewEnableBackForwardCache() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webviewEnableBackForwardCache',
+        url: 'testability/pages/webviewEnableBackForwardCache',
       }
 
       try {
