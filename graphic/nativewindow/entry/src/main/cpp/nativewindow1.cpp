@@ -82,7 +82,8 @@ static result InitNativeWindow()
     return result1;
 }
 
-static void DestroyNativeWindowImage(OH_NativeImage *image, OHNativeWindow *window) {
+static void DestroyNativeWindowImage(OH_NativeImage *image, OHNativeWindow *window)
+{
     OH_NativeImage_Destroy(&image);
     OH_NativeWindow_DestroyNativeWindow(window);
 }
@@ -1471,11 +1472,9 @@ napi_value testNativeWindowNativeWindowAtDetachDifferentBufferNormal(napi_env en
     return result;
 }
 
-
-napi_value testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal(napi_env env, napi_callback_info info)
+napi_value testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal1(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-
     // 0.
     OH_NativeImage *image1 = InitNativeWindow().image;
     OHNativeWindow *nativeWindow1 = InitNativeWindow().nativeWindow;
@@ -1488,9 +1487,8 @@ napi_value testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal(napi_env 
         .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
     };
     OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&config);
-
-    // 1.
     OHNativeWindowBuffer *nativeWindowBuffer1 = nullptr, *nativeWindowBuffer2 = nullptr;
+    // 1.
     int fenceFd = -1;
     nativeWindowBuffer1 = OH_NativeWindow_CreateNativeWindowBufferFromNativeBuffer(nativeBuffer);
     if (nativeWindowBuffer1 == nullptr) {
@@ -1502,7 +1500,6 @@ napi_value testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal(napi_env 
         napi_create_int32(env, CONSTANT_1000 + CONSTANT_2, &result);
         return result;
     }
-
     // 2.
     int32_t flag = OH_NativeWindow_NativeWindowAttachBuffer(nativeWindow1, nativeWindowBuffer1);
     if (flag != 0) {
@@ -1514,9 +1511,28 @@ napi_value testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal(napi_env 
         napi_create_int32(env, CONSTANT_2 * CONSTANT_1000 + CONSTANT_2, &result);
         return result;
     }
+    DestroyNativeWindowImage(image1, nativeWindow1);
+    DestroyNativeWindowImage(image2, nativeWindow2);
+    return result;
+}
 
+napi_value testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal2(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_NativeImage *image1 = InitNativeWindow().image;
+    OHNativeWindow *nativeWindow1 = InitNativeWindow().nativeWindow;
+    OH_NativeImage *image2 = InitNativeWindow().image;
+    OHNativeWindow *nativeWindow2 = InitNativeWindow().nativeWindow;
+    OH_NativeBuffer_Config config{
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&config);
+    OHNativeWindowBuffer *nativeWindowBuffer1 = nullptr, *nativeWindowBuffer2 = nullptr;
     // 3.
-    flag = OH_NativeWindow_NativeWindowAttachBuffer(nativeWindow2, nativeWindowBuffer1);
+    auto flag = OH_NativeWindow_NativeWindowAttachBuffer(nativeWindow2, nativeWindowBuffer1);
     if (flag == 0) {
         napi_create_int32(env, CONSTANT_3 * CONSTANT_1000 + CONSTANT_1, &result);
         return result;
@@ -1526,7 +1542,6 @@ napi_value testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal(napi_env 
         napi_create_int32(env, CONSTANT_3 * CONSTANT_1000 + CONSTANT_2, &result);
         return result;
     }
-
     // 4.
     flag = OH_NativeWindow_NativeWindowDetachBuffer(nativeWindow1, nativeWindowBuffer1);
     if (flag != 0) {
@@ -1538,7 +1553,6 @@ napi_value testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal(napi_env 
         napi_create_int32(env, CONSTANT_4 * CONSTANT_1000 + CONSTANT_2, &result);
         return result;
     }
-
     // 5.
     flag = OH_NativeWindow_NativeWindowAttachBuffer(nativeWindow2, nativeWindowBuffer1);
     if (flag != 0) {
@@ -1550,10 +1564,22 @@ napi_value testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal(napi_env 
         napi_create_int32(env, CONSTANT_5 * CONSTANT_1000 + CONSTANT_2, &result);
         return result;
     }
-
-    // 6.
     DestroyNativeWindowImage(image1, nativeWindow1);
     DestroyNativeWindowImage(image2, nativeWindow2);
+    return result;
+}
+
+napi_value testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    result = testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal1(env, info);
+    if (result != nullptr) {
+        return result;
+    }
+    result = testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal2(env, info);
+    if (result != nullptr) {
+        return result;
+    }
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
