@@ -495,6 +495,7 @@ struct webViewControllerPart2 {
 
       Web({ src: $rawfile('index.html'), controller: this.controller })
         .javaScriptAccess(this.javaScriptAccess)
+        .fileAccess(true)
         .key("onShowFileSelectorKey")
         .javaScriptProxy({
           object: this.jsObj,
