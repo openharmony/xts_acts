@@ -266,6 +266,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_BFCACHE_SDK_0005", 10)
+      await Utils.sleep(100)
       sendEventByKey('setBackForwardCacheOptions', 10, '');
     })
 
@@ -283,6 +284,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_BFCACHE_SDK_0006", 10)
+      await Utils.sleep(100)
       sendEventByKey('setBackForwardCacheOptions', 10, '');
     })
 
@@ -300,6 +302,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_BFCACHE_SDK_0007", 10)
+      await Utils.sleep(100)
       sendEventByKey('setBackForwardCacheOptions', 10, '');
     })
 
@@ -317,6 +320,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_BFCACHE_SDK_0008", 10)
+      await Utils.sleep(100)
       sendEventByKey('setBackForwardCacheOptions', 10, '');
     })
 
@@ -334,6 +338,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_BFCACHE_SDK_0009", 10)
+      await Utils.sleep(100)
       sendEventByKey('setBackForwardCacheOptions', 10, '');
     })
 
@@ -351,6 +356,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_BFCACHE_SDK_00010", 10)
+      await Utils.sleep(100)
       sendEventByKey('setBackForwardCacheOptions', 10, '');
     })
 
@@ -368,6 +374,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_BFCACHE_SDK_00011", 10)
+      await Utils.sleep(100)
       sendEventByKey('setBackForwardCacheOptions', 10, '');
     })
 
@@ -385,6 +392,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_BFCACHE_SDK_00012", 10)
+      await Utils.sleep(100)
       sendEventByKey('setBackForwardCacheOptions', 10, '');
     })
 
@@ -402,6 +410,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_BFCACHE_SDK_00013", 10)
+      await Utils.sleep(100)
       sendEventByKey('setBackForwardCacheOptions', 10, '');
     })
 
@@ -419,6 +428,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_BFCACHE_SDK_00014", 10)
+      await Utils.sleep(100)
       sendEventByKey('setBackForwardCacheOptions', 10, '');
     })
 
@@ -437,6 +447,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_BFCACHE_SDK_00015", 10)
+      await Utils.sleep(100)
       sendEventByKey('setBackForwardCacheOptions', 10, '');
     })
 
@@ -455,6 +466,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_setRenderProcessMode_0002", 10)
+      await Utils.sleep(100)
       sendEventByKey('setRenderProcessMode', 10, '');
     })
 
@@ -472,6 +484,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_setRenderProcessMode_0003", 10)
+      await Utils.sleep(100)
       sendEventByKey('setRenderProcessMode', 10, '');
     })
 
@@ -489,6 +502,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_INCOGNITO_API_0006", 10)
+      await Utils.sleep(100)
       sendEventByKey('INCOGNITO', 10, '');
     })
 
@@ -506,6 +520,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_INCOGNITO_API_0007", 10)
+      await Utils.sleep(100)
       sendEventByKey('INCOGNITO', 10, '');
     })
 
@@ -523,6 +538,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_INCOGNITO_API_0008", 10)
+      await Utils.sleep(100)
       sendEventByKey('INCOGNITO', 10, '');
     })
 
@@ -540,6 +556,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_INCOGNITO_API_0009", 10)
+      await Utils.sleep(100)
       sendEventByKey('INCOGNITO', 10, '');
     })
 
@@ -557,6 +574,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_INCOGNITO_API_00010", 10)
+      await Utils.sleep(100)
       sendEventByKey('INCOGNITO', 10, '');
     })
 
@@ -575,6 +593,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_INCOGNITO_API_00011", 10)
+      await Utils.sleep(100)
       sendEventByKey('INCOGNITO', 10, '');
     })
 
@@ -592,6 +611,7 @@ export default function abilityTest() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent("SUB_ACE_WEB_INCOGNITO_API_00012", 10)
+      await Utils.sleep(100)
       sendEventByKey('INCOGNITO', 10, '');
     })
 

@@ -96,12 +96,13 @@ export default function ActsAceDeleteJavaScriptRegister() {
      * @tc.type Function
      * @tc.level Level 0
      */
-    it('testWebView_deleteJavaScriptRegister_0001', 0, (done: Function) => {
+    it('testWebView_deleteJavaScriptRegister_0001', 0, async (done: Function) => {
       Utils.registerBaseEvent("testWebView_deleteJavaScriptRegister_0001", '"success"', 10072, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('deleteWithoutRefresh', 10)
+      await Utils.sleep(100)
       sendEventByKey('deleteJavaScriptRegister_withOutRefresh', 10, '');
       setTimeout(() => {
         sendEventByKey('runJavaScript', 10, '');
@@ -116,7 +117,7 @@ export default function ActsAceDeleteJavaScriptRegister() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testWebView_deleteJavaScriptRegister_0002', 0, (done: Function) => {
+    it('testWebView_deleteJavaScriptRegister_0002', 0, async (done: Function) => {
       Utils.registerBaseEvent("testWebView_deleteJavaScriptRegister_0002",
         '"ReferenceError: testObjName is not defined"', 10073,
         done,
@@ -124,6 +125,7 @@ export default function ActsAceDeleteJavaScriptRegister() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('deleteWithRefresh', 10)
+      await Utils.sleep(100)
       sendEventByKey('deleteJavaScriptRegister_withRefresh', 10, '');
       setTimeout(() => {
         sendEventByKey('runJavaScript', 10, '');
