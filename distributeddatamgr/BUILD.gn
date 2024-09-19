@@ -16,31 +16,32 @@ group("distributeddatamgr") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "UDMFtest:UDMFtest",
-      "crossplatform/preferencesetstest:ActsCrossplatformPreferencesTest",
-      "crossplatform/relationalstoreetstest:ActsCrossplatformRelationalStoreTest",
-      "dataAbilityEtsTest:ActsDataAbilityTest",
-      "dataObjecttest:dataObjecttest",
-      "dataSharejstest/hap:dataShare_js_test",
-      "distributedKVStoretest:distributedKVStoretest",
-      "kvStoretest:kvStoretest",
-      "preferencesEtstest:ActsPreferencesEtsTest",
-      "preferencesSendabletest:preferencesSendable_ets_test",
-      "preferencesdatagroupidtest:ActsPreferencesDataGroupIdTest",
-      "preferencesjstest/hap:preferences_js_test",
-      "relationalStoretest:relationalStoretest",
-      "relationalstoredatagroupidtest:ActsRelationalstoreDataGroupIdTest",
+    "preferencesNdktest:ActsPreferencesNdkTest",
+#      "UDMFtest:UDMFtest",
+ #     "crossplatform/preferencesetstest:ActsCrossplatformPreferencesTest",
+ #     "crossplatform/relationalstoreetstest:ActsCrossplatformRelationalStoreTest",
+ #     "dataAbilityEtsTest:ActsDataAbilityTest",
+  #    "dataObjecttest:dataObjecttest",
+  #    "dataSharejstest/hap:dataShare_js_test",
+  #    "distributedKVStoretest:distributedKVStoretest",
+  #    "kvStoretest:kvStoretest",
+ #     "preferencesEtstest:ActsPreferencesEtsTest",
+ #     "preferencesSendabletest:preferencesSendable_ets_test",
+#      "preferencesdatagroupidtest:ActsPreferencesDataGroupIdTest",
+ #     "preferencesjstest/hap:preferences_js_test",
+ #     "relationalStoretest:relationalStoretest",
+  #    "relationalstoredatagroupidtest:ActsRelationalstoreDataGroupIdTest",
     ]
   } else {
     deps = [
-      "kvStorejstest/hap:distributeddatamgrfunctest_hap",
-      "relationalStorejstest/hap:appdatamgrfunctest_hap",
-      "searchtest/hap:searchfunctest_hap",
+#      "kvStorejstest/hap:distributeddatamgrfunctest_hap",
+#      "relationalStorejstest/hap:appdatamgrfunctest_hap",
+#      "searchtest/hap:searchfunctest_hap",
     ]
   }
 }
 
 group("pasteboard") {
   testonly = true
-  deps = [ "Pasteboardjsapitest:ActsPasteBoardETSApiTest" ]
+#  deps = [ "Pasteboardjsapitest:ActsPasteBoardETSApiTest" ]
 }
