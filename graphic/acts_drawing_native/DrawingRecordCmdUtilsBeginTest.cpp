@@ -80,7 +80,7 @@ HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordi
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_Canvas** canvass = &canvas;
     OH_Drawing_RecordCmdUtils* recordcmd1 = OH_Drawing_RecordCmdUtilsCreate ();
-    for(int i = 0; i<10; i++)
+    for(int i = 0; i < 10; i++)
     {
         OH_Drawing_RecordCmdUtilsBeginRecording (nullptr, 1, 1, canvass);
     }
