@@ -120,6 +120,13 @@
     "MainAbility/pages/drag/DragEventGetDropOperationTest",
     "MainAbility/pages/drag/DragEventGetXYTest",
     "MainAbility/pages/drag/DragEventGetWidthHeightTest",
-    "MainAbility/pages/drag/DragEventGetModifierKeyStatesTest"
+    "MainAbility/pages/drag/DragEventGetModifierKeyStatesTest",
+    "MainAbility/pages/drag/DragActionCreateDragActionTest",
+    "MainAbility/pages/drag/DragActionSetPointerIdTest",
+    "MainAbility/pages/drag/DragActionSetDragPreviewOptionTest",
+    "MainAbility/pages/drag/DragActionSetTouchPointXYTest",
+    "MainAbility/pages/drag/DragActionRegisterStatusListenerTest"
+    
+
   ]
 }
