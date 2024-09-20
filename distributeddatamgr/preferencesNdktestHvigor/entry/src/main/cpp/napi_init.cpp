@@ -1,39 +1,25 @@
-
 #include "napi/native_api.h"
 #include "hilog/log.h"
 #include <string>
-#include <unistd.h>
 #include "database/preferences/oh_preferences_option.h"
 #include "database/preferences/oh_preferences.h"
 #include "database/preferences/oh_preferences_err_code.h"
 #include "database/preferences/oh_preferences_value.h"
-
+#include "common.h"
 #include <iostream>
 #include <map>
 #include <ctime>
-#include "common.h"
-
-#include <cctype>
 #include <condition_variable>
 #include <cstdint>
-#include <fcntl.h>
 #include <functional>
-
-#include <iostream>
 #include <list>
 #include <map>
 #include <memory>
 #include <mutex>
-#include <string>
-#include <sys/mman.h>
 #include <thread>
 #include <vector>
-
-
-#include <string>
 #include <random>
 #include <chrono>
-
 
 const char *TAG = "testLog";
 std::map<std::string, int> IntDataMap1000;
@@ -146,7 +132,7 @@ static napi_value SetInt(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func SetInt ------------- ");
     OH_PreferencesOption * option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "test.db");
+    OH_PreferencesOption_SetFileName(option, "SetInttest.db");
     OH_PreferencesOption_SetBundleName(option, "test");
     OH_PreferencesOption_SetDataGroupId(option, "");
     
@@ -178,7 +164,7 @@ static napi_value SetString(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func SetString ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "test.db");
+    OH_PreferencesOption_SetFileName(option, "SetStringtest.db");
     OH_PreferencesOption_SetBundleName(option, "test");
     OH_PreferencesOption_SetDataGroupId(option, "");
 
@@ -209,7 +195,7 @@ static napi_value SetBool(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func SetBool ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "test.db");
+    OH_PreferencesOption_SetFileName(option, "SetBooltest.db");
     OH_PreferencesOption_SetBundleName(option, "test");
     OH_PreferencesOption_SetDataGroupId(option, "");
 
@@ -241,7 +227,7 @@ static napi_value GetInt(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func GetInt ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "test.db");
+    OH_PreferencesOption_SetFileName(option, "GetInttest.db");
     OH_PreferencesOption_SetBundleName(option, "test");
     OH_PreferencesOption_SetDataGroupId(option, "");
 
@@ -278,7 +264,7 @@ static napi_value GetString(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func GetString ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "test.db");
+    OH_PreferencesOption_SetFileName(option, "GetStringtest.db");
     OH_PreferencesOption_SetBundleName(option, "test");
     OH_PreferencesOption_SetDataGroupId(option, "");
 
@@ -317,7 +303,7 @@ static napi_value GetBool(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func GetBool ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "test.db");
+    OH_PreferencesOption_SetFileName(option, "GetBooltest.db");
     OH_PreferencesOption_SetBundleName(option, "test");
     OH_PreferencesOption_SetDataGroupId(option, "");
 
@@ -355,7 +341,7 @@ static napi_value DeleteInt(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func DeleteInt ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "test.db");
+    OH_PreferencesOption_SetFileName(option, "DeleteInttest.db");
     OH_PreferencesOption_SetBundleName(option, "test");
     OH_PreferencesOption_SetDataGroupId(option, "");
 
@@ -391,7 +377,7 @@ static napi_value DeleteString(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func DeleteString ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "test.db");
+    OH_PreferencesOption_SetFileName(option, "DeleteStringtest.db");
     OH_PreferencesOption_SetBundleName(option, "test");
     OH_PreferencesOption_SetDataGroupId(option, "");
 
@@ -427,7 +413,7 @@ static napi_value DeleteBool(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func DeleteBool ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "test.db");
+    OH_PreferencesOption_SetFileName(option, "DeleteBooltest.db");
     OH_PreferencesOption_SetBundleName(option, "test");
     OH_PreferencesOption_SetDataGroupId(option, "");
 
@@ -465,7 +451,7 @@ static napi_value UpdateInt(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func UpdateInt ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "test.db");
+    OH_PreferencesOption_SetFileName(option, "UpdateInttest.db");
     OH_PreferencesOption_SetBundleName(option, "test");
     OH_PreferencesOption_SetDataGroupId(option, "");
 
@@ -503,7 +489,7 @@ static napi_value UpdateString(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func UpdateString ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "test.db");
+    OH_PreferencesOption_SetFileName(option, "UpdateStringtest.db");
     OH_PreferencesOption_SetBundleName(option, "test");
     OH_PreferencesOption_SetDataGroupId(option, "");
 
@@ -541,7 +527,7 @@ static napi_value UpdateBool(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func UpdateBool ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "test.db");
+    OH_PreferencesOption_SetFileName(option, "UpdateBooltest.db");
     OH_PreferencesOption_SetBundleName(option, "test");
     OH_PreferencesOption_SetDataGroupId(option, "");
 
@@ -1716,11 +1702,8 @@ static napi_value OH_Preferences_RegisterDataObserver_0200(napi_env env, napi_ca
      char *stringRet = nullptr;
      uint32_t stringRetLen = 0;
      bool boolRet = false;
-
-
-     //std::this_thread::sleep_for(std::chrono::milliseconds(3000));
-
-    //sleep(3);
+    
+     std::this_thread::sleep_for(std::chrono::milliseconds(5000));
 
      OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_PreferencesPair_0100 g_changeNum= %{public}d", g_changeNum);
      NAPI_ASSERT(env, g_changeNum == 2, "g_changeNum is fail.");
@@ -1919,11 +1902,6 @@ static napi_value GetBool1000(napi_env env, napi_callback_info info) {
     napi_create_int32(env, errcode, &ret);
     return ret;
 }
-
-
-//======================================================================================================
-//======================================================================================================
-//======================================================================================================
 
 
 EXTERN_C_START
