@@ -18,7 +18,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import Utils from '../../test/Util';
 
 class TestObj {
-  test(str:string):ArrayBuffer{
+  test(str: string): ArrayBuffer {
     let buf = new ArrayBuffer(str.length);
     let buff = new Uint8Array(buf);
 
@@ -44,197 +44,209 @@ struct WebMessageExtTest {
   build(){
     Scroll(this.scroller) {
       Column() {
-        Button('SendToH5 setBoolean_1').margin({
-          top: 30,
-        })
-          .key('setBoolean_null')
-          .onClick(() => {
-            try {
-              console.log('In ArkTS side send true start');
-              if (this.nativePort) {
-                this.message.setType(3);
-                this.message.setBoolean(null);
-                this.nativePort.postMessageEventExt(this.message);
+        Row() {
+          Button('Boolean_1').margin({
+            top: 30,
+          })
+            .key('setBoolean_null')
+            .onClick(() => {
+              try {
+                console.log('In ArkTS side send true start');
+                if (this.nativePort) {
+                  this.message.setType(3);
+                  this.message.setBoolean(null);
+                  this.nativePort.postMessageEventExt(this.message);
+                }
+              } catch (error) {
+                console.error('mqf' + error.code + error.message);
+                Utils.emitEvent(error.code + error.message, 10025)
               }
+            })
+
+          Button('Boolean_2').margin({
+            top: 30,
+          })
+            .key('setBoolean_not_match')
+            .onClick(() => {
+              try {
+                console.log('In ArkTS side send true start');
+                if (this.nativePort) {
+                  this.message.setType(2);
+                  this.message.setBoolean(true);
+                  this.nativePort.postMessageEventExt(this.message);
+                }
+              } catch (error) {
+                console.error('mqf' + error.code + error.message);
+                Utils.emitEvent(error.code + error.message, 10026)
+              }
+            })
+        }
+
+        Row() {
+          Button('Number_1').margin({
+            top: 30,
+          })
+            .key('setNumber_null')
+            .onClick(() => {
+              try {
+                console.log('In ArkTS side send true start');
+                if (this.nativePort) {
+                  this.message.setType(2);
+                  this.message.setNumber(null);
+                  this.nativePort.postMessageEventExt(this.message);
+                }
+              } catch (error) {
+                console.error(error.code + error.message);
+                Utils.emitEvent(error.code + error.message, 10027)
+              }
+            })
+
+          Button('Number_2').margin({
+            top: 30,
+          })
+            .key('setNumber_not_match')
+            .onClick(() => {
+              try {
+                console.log('In ArkTS side send true start');
+                if (this.nativePort) {
+                  this.message.setType(1);
+                  this.message.setNumber(123);
+                  this.nativePort.postMessageEventExt(this.message);
+                }
+              } catch (error) {
+                console.error(error.code + error.message);
+                Utils.emitEvent(error.code + error.message, 10028)
+              }
+            })
+        }
+
+        Row() {
+          Button('String_1').margin({
+            top: 30,
+          })
+            .key('setString_null')
+            .onClick(() => {
+              try {
+                console.log('In ArkTS side send true start');
+                if (this.nativePort) {
+                  this.message.setType(1);
+                  this.message.setString(null);
+                  this.nativePort.postMessageEventExt(this.message);
+                }
+              } catch (error) {
+                console.error(error.code + error.message);
+                Utils.emitEvent(error.code + error.message, 10029)
+              }
+            })
+
+          Button('String_2').margin({
+            top: 30,
+          })
+            .key('setString_not_match')
+            .onClick(() => {
+              try {
+                console.log('In ArkTS side send true start');
+                if (this.nativePort) {
+                  this.message.setType(2);
+                  this.message.setString('test');
+                  this.nativePort.postMessageEventExt(this.message);
+                }
+              } catch (error) {
+                console.error(error.code + error.message);
+                Utils.emitEvent(error.code + error.message, 10030)
+              }
+            })
+        }
+
+        Row() {
+          Button('Type_1').margin({
+            top: 30,
+          })
+            .key('setType_null')
+            .onClick(() => {
+              try {
+                console.log('In ArkTS side send true start');
+                if (this.nativePort) {
+                  this.message.setType(null);
+                  this.nativePort.postMessageEventExt(this.message);
+                }
+              } catch (error) {
+                console.error(error.code + error.message);
+                Utils.emitEvent(error.code + error.message, 10031)
+              }
+            })
+
+          Button('Type_2').margin({
+            top: 30,
+          })
+            .key('setType_not_match')
+            .onClick(() => {
+              try {
+                console.log('In ArkTS side send true start');
+                if (this.nativePort) {
+                  this.message.setType(10);
+                  this.nativePort.postMessageEventExt(this.message);
+                }
+              } catch (error) {
+                console.error(error.code + error.message);
+                Utils.emitEvent(error.code + error.message, 10032)
+              }
+            })
+        }
+
+        Row() {
+          Button('Array').onClick((event: ClickEvent) => {
+            let result: webview.WebMessageExt = new webview.WebMessageExt();
+            result.setType(1);
+            try {
+              result.getArray()
             } catch (error) {
-              console.error('mqf' + error.code + error.message);
-              Utils.emitEvent(error.code + error.message, 10025)
+              console.log(error.code + error.message)
+              Utils.emitEvent(error.code + error.message, 10033)
             }
           })
+            .key('getArray')
 
-        Button('SendToH5 setBoolean_2').margin({
-          top: 30,
-        })
-          .key('setBoolean_not_match')
-          .onClick(() => {
+          Button('ABuffer').onClick((event: ClickEvent) => {
+            let result: webview.WebMessageExt = new webview.WebMessageExt();
+            result.setType(1);
             try {
-              console.log('In ArkTS side send true start');
-              if (this.nativePort) {
-                this.message.setType(2);
-                this.message.setBoolean(true);
-                this.nativePort.postMessageEventExt(this.message);
-              }
+              result.getArrayBuffer()
             } catch (error) {
-              console.error('mqf' + error.code + error.message);
-              Utils.emitEvent(error.code + error.message, 10026)
+              console.log(error.code + error.message)
+              Utils.emitEvent(error.code + error.message, 10034)
             }
           })
+            .key('getArrayBuffer')
+        }
 
-        Button('SendToH5 setNumber_1').margin({
-          top: 30,
-        })
-          .key('setNumber_null')
-          .onClick(() => {
+        Row() {
+          Button('Boolean').onClick((event: ClickEvent) => {
+            let result: webview.WebMessageExt = new webview.WebMessageExt();
+            result.setType(1);
             try {
-              console.log('In ArkTS side send true start');
-              if (this.nativePort) {
-                this.message.setType(2);
-                this.message.setNumber(null);
-                this.nativePort.postMessageEventExt(this.message);
-              }
+              result.getBoolean()
             } catch (error) {
-              console.error(error.code + error.message);
-              Utils.emitEvent(error.code + error.message, 10027)
+              console.log(error.code + error.message)
+              Utils.emitEvent(error.code + error.message, 10035)
             }
           })
+            .key('getBoolean')
 
-        Button('SendToH5 setNumber_2').margin({
-          top: 30,
-        })
-          .key('setNumber_not_match')
-          .onClick(() => {
+          Button('Number').onClick((event: ClickEvent) => {
+            let result: webview.WebMessageExt = new webview.WebMessageExt();
+            result.setType(1);
             try {
-              console.log('In ArkTS side send true start');
-              if (this.nativePort) {
-                this.message.setType(1);
-                this.message.setNumber(123);
-                this.nativePort.postMessageEventExt(this.message);
-              }
+              result.getNumber()
             } catch (error) {
-              console.error(error.code + error.message);
-              Utils.emitEvent(error.code + error.message, 10028)
+              console.log(error.code + error.message)
+              Utils.emitEvent(error.code + error.message, 10036)
             }
           })
+            .key('getNumber')
+        }
 
-        Button('SendToH5 setString_1').margin({
-          top: 30,
-        })
-          .key('setString_null')
-          .onClick(() => {
-            try {
-              console.log('In ArkTS side send true start');
-              if (this.nativePort) {
-                this.message.setType(1);
-                this.message.setString(null);
-                this.nativePort.postMessageEventExt(this.message);
-              }
-            } catch (error) {
-              console.error(error.code + error.message);
-              Utils.emitEvent(error.code + error.message, 10029)
-            }
-          })
-
-        Button('SendToH5 setString_2').margin({
-          top: 30,
-        })
-          .key('setString_not_match')
-          .onClick(() => {
-            try {
-              console.log('In ArkTS side send true start');
-              if (this.nativePort) {
-                this.message.setType(2);
-                this.message.setString('test');
-                this.nativePort.postMessageEventExt(this.message);
-              }
-            } catch (error) {
-              console.error(error.code + error.message);
-              Utils.emitEvent(error.code + error.message, 10030)
-            }
-          })
-
-        Button('SendToH5 setType_1').margin({
-          top: 30,
-        })
-          .key('setType_null')
-          .onClick(() => {
-            try {
-              console.log('In ArkTS side send true start');
-              if (this.nativePort) {
-                this.message.setType(null);
-                this.nativePort.postMessageEventExt(this.message);
-              }
-            } catch (error) {
-              console.error(error.code + error.message);
-              Utils.emitEvent(error.code + error.message, 10031)
-            }
-          })
-
-        Button('SendToH5 setType_2').margin({
-          top: 30,
-        })
-          .key('setType_not_match')
-          .onClick(() => {
-            try {
-              console.log('In ArkTS side send true start');
-              if (this.nativePort) {
-                this.message.setType(10);
-                this.nativePort.postMessageEventExt(this.message);
-              }
-            } catch (error) {
-              console.error(error.code + error.message);
-              Utils.emitEvent(error.code + error.message, 10032)
-            }
-          })
-
-        Button('getArray').onClick((event: ClickEvent) => {
-          let result: webview.WebMessageExt = new webview.WebMessageExt();
-          result.setType(1);
-          try {
-            result.getArray()
-          } catch (error) {
-            console.log(error.code + error.message)
-            Utils.emitEvent(error.code + error.message, 10033)
-          }
-        })
-          .key('getArray')
-
-        Button('getArrayBuffer').onClick((event: ClickEvent) => {
-          let result: webview.WebMessageExt = new webview.WebMessageExt();
-          result.setType(1);
-          try {
-            result.getArrayBuffer()
-          } catch (error) {
-            console.log(error.code + error.message)
-            Utils.emitEvent(error.code + error.message, 10034)
-          }
-        })
-          .key('getArrayBuffer')
-
-        Button('getBoolean').onClick((event: ClickEvent) => {
-          let result: webview.WebMessageExt = new webview.WebMessageExt();
-          result.setType(1);
-          try {
-            result.getBoolean()
-          } catch (error) {
-            console.log(error.code + error.message)
-            Utils.emitEvent(error.code + error.message, 10035)
-          }
-        })
-          .key('getBoolean')
-
-        Button('getNumber').onClick((event: ClickEvent) => {
-          let result: webview.WebMessageExt = new webview.WebMessageExt();
-          result.setType(1);
-          try {
-            result.getNumber()
-          } catch (error) {
-            console.log(error.code + error.message)
-            Utils.emitEvent(error.code + error.message, 10036)
-          }
-        })
-          .key('getNumber')
-
-        Button('getString').onClick((event: ClickEvent) => {
+        Button('String').onClick((event: ClickEvent) => {
           let result: webview.WebMessageExt = new webview.WebMessageExt();
           result.setType(2);
           try {
