@@ -10,7 +10,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
 import("//test/xts/tools/build/suite.gni")
-TerminateSelfWithResultTestHHap
+
 ohos_app_assist_suite("TerminateSelfWithResultTestHap") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
