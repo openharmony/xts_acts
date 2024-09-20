@@ -323,13 +323,8 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnFrame_003(napi_env env, napi
     }
 
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
-
-    ArkUI_NumberValue widthValue[] = {380};
-    ArkUI_AttributeItem widthItem = {widthValue, 1};
-
     auto scroll = nodeAPI->createNode(ARKUI_NODE_SCROLL);
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-    nodeAPI->setAttribute(column, NODE_WIDTH, &widthItem);
 
     static ArkUI_NodeHandle create = nodeAPI->createNode(ARKUI_NODE_BUTTON);
     ArkUI_AttributeItem createNODE_BUTTON_LABLE_Item = {.string = "create"};
@@ -408,12 +403,8 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnFinish_004(napi_env env, nap
     }
 
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
-    ArkUI_NumberValue widthValue[] = {380};
-    ArkUI_AttributeItem widthItem = {widthValue, 1};
-
     auto scroll = nodeAPI->createNode(ARKUI_NODE_SCROLL);
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-    nodeAPI->setAttribute(column, NODE_WIDTH, &widthItem);
     auto row0 = nodeAPI->createNode(ARKUI_NODE_ROW);
 
     static ArkUI_NodeHandle play = nodeAPI->createNode(ARKUI_NODE_BUTTON);
@@ -489,13 +480,8 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnCancel_005(napi_env env, nap
     }
 
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
-    ArkUI_NumberValue widthValue[] = {380};
-    ArkUI_AttributeItem widthItem = {widthValue, 1};
-
     auto scroll = nodeAPI->createNode(ARKUI_NODE_SCROLL);
-    nodeAPI->setAttribute(scroll, NODE_WIDTH, &widthItem);
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-    nodeAPI->setAttribute(column, NODE_WIDTH, &widthItem);
     auto row0 = nodeAPI->createNode(ARKUI_NODE_ROW);
 
     static ArkUI_NodeHandle play = nodeAPI->createNode(ARKUI_NODE_BUTTON);
@@ -571,13 +557,8 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnRepeat_006(napi_env env, nap
     }
 
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
-    ArkUI_NumberValue widthValue[] = {380};
-    ArkUI_AttributeItem widthItem = {widthValue, 1};
-
     auto scroll = nodeAPI->createNode(ARKUI_NODE_SCROLL);
-    nodeAPI->setAttribute(scroll, NODE_WIDTH, &widthItem);
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-    nodeAPI->setAttribute(column, NODE_WIDTH, &widthItem);
     auto row0 = nodeAPI->createNode(ARKUI_NODE_ROW);
             
     static ArkUI_NodeHandle play = nodeAPI->createNode(ARKUI_NODE_BUTTON);
