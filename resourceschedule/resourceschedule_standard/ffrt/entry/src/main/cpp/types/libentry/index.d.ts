@@ -107,3 +107,5 @@ export const ffrt_get_current_queue_0001: () => number;
 export const ffrt_this_task_get_qos_0001: () => number;
 export const ffrt_attr_stack_size_0001: () => number;
 export const ffrt_task_handle_ref_0001: () => number;
+export const ffrtThisTaskGetId: () => number;
+export const ffrtThisTaskUpdateQos: () => number;

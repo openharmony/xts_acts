@@ -28,6 +28,9 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <sys/eventfd.h>
+#define FAIL (-1)
+#define SUCCESS 0
+#define PARAM_100 100
 
 using namespace std;
 using namespace std::chrono;
@@ -49,6 +52,13 @@ const uint32_t TASK_DELAY_TIME = 1000;
 const int MULTIPLE_RADIO = 10;
 const uint64_t PLUS_SLEEP_TIME = 200000;
 const uint64_t FUNC_SIGNAL_SLEEP = 30000;
+const uint64_t SLEEP_TIME = 2000;
+const uint64_t UNIT_TASK_DELAY_500 = 500000;
+const double COST_TIME = 0.5;
+const uint64_t COST_TIME_200 = 200;
+const uint64_t COST_TIME_300 = 300;
+const uint64_t COST_TIME_500 = 500;
+const uint64_t COST_TIME_600 = 600;
 
 void OnePlusForTest(void* arg)
 {
@@ -1093,7 +1103,7 @@ static napi_value QueueApiTest002(napi_env env, napi_callback_info info)
     ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
         ffrt_function_kind_queue), nullptr);
 
-    usleep(3000);
+    usleep(SLEEP_TIME);
     if (a != 1) {
         result = 1;
     }
@@ -1139,8 +1149,8 @@ static napi_value QueueApiTest005(napi_env env, napi_callback_info info)
     }
     
     int a = 0;
-    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
-        ffrt_function_kind_queue), nullptr);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest,
+        nullptr, &a, ffrt_function_kind_queue), nullptr);
     ffrt_queue_wait(handle);
     if (a != 1) {
         result = 1;
@@ -1172,8 +1182,8 @@ static napi_value QueueApiTest006(napi_env env, napi_callback_info info)
     }
 
     int a = 0;
-    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
-        ffrt_function_kind_queue), nullptr);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest,
+        nullptr, &a, ffrt_function_kind_queue), nullptr);
     ffrt_queue_wait(handle);
     if (a != 1) {
         result = 1;
@@ -1260,8 +1270,8 @@ static napi_value QueueApiTest008(napi_env env, napi_callback_info info)
     }
 
     int a = 0;
-    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
-        ffrt_function_kind_queue), nullptr);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest,
+        nullptr, &a, ffrt_function_kind_queue), nullptr);
     ffrt_queue_wait(handle);
     if (a != 1) {
         result = 1;
@@ -1288,8 +1298,8 @@ static napi_value QueueApiTest009(napi_env env, napi_callback_info info)
     }
 
     int a = 0;
-    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
-        ffrt_function_kind_queue), nullptr);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest,
+        nullptr, &a, ffrt_function_kind_queue), nullptr);
     ffrt_queue_wait(handle);
     if (a != 1) {
         result = 1;
@@ -1320,8 +1330,8 @@ static napi_value QueueApiTest010(napi_env env, napi_callback_info info)
     ffrt_queue_submit(nullptr, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
         ffrt_function_kind_queue), nullptr);
     ffrt_queue_submit(queue_handle, nullptr, nullptr);
-    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
-        ffrt_function_kind_queue), nullptr);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest,
+        nullptr, &a, ffrt_function_kind_queue), nullptr);
     ffrt_queue_wait(handle);
     if (a != 1) {
         result = 1;
@@ -1564,8 +1574,8 @@ static napi_value QueueDelayTest001(napi_env env, napi_callback_info info)
     ffrt_task_attr_t task_attr2;
     (void)ffrt_task_attr_init(&task_attr1);
     (void)ffrt_task_attr_init(&task_attr2);
-    ffrt_task_attr_set_delay(&task_attr1, 500000);
-    ffrt_task_attr_set_delay(&task_attr2, 200000);
+    ffrt_task_attr_set_delay(&task_attr1, UNIT_TASK_DELAY_500);
+    ffrt_task_attr_set_delay(&task_attr2, UNIT_TASK_DELAY);
 
     std::function<void()>&& MultipleFunc = [&result]() { MultipleForTest(static_cast<void*>(&result)); };
     ffrt_queue_attr_t queue_attr;
@@ -1588,7 +1598,7 @@ static napi_value QueueDelayTest001(napi_env env, napi_callback_info info)
     if (result != 1) {
         resultEnd = 1;
     }
-    if (t <= 200 || t >= 300) {
+    if (t <= COST_TIME_200 || t >= COST_TIME_300) {
         resultEnd = 2;
     }
 
@@ -1599,7 +1609,7 @@ static napi_value QueueDelayTest001(napi_env env, napi_callback_info info)
     if (result != 0) {
         resultEnd = 3;
     }
-    if (t <= 500 || t >= 600) {
+    if (t <= COST_TIME_500 || t >= COST_TIME_600) {
         resultEnd = 4;
     }
     ffrt_task_handle_destroy(handle1);
@@ -1663,7 +1673,7 @@ static napi_value QueueDelayTest005(napi_env env, napi_callback_info info)
     int a = 0;
     ffrt_task_attr_t task_attr;
     (void)ffrt_task_attr_init(&task_attr);
-    ffrt_task_attr_set_delay(&task_attr, 500000);
+    ffrt_task_attr_set_delay(&task_attr, UNIT_TASK_DELAY_500);
     std::function<void()>&& MultipleFunc = [&a]() { MultipleForTest(static_cast<void*>(&a)); };
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(MultipleFunc, ffrt_function_kind_queue), &task_attr);
@@ -1680,7 +1690,7 @@ static napi_value QueueDelayTest005(napi_env env, napi_callback_info info)
     if (a != 1) {
         result = 1;
     }
-    if (t >= 0.5) {
+    if (t >= COST_TIME) {
         result = 2;
     }
 
@@ -1689,7 +1699,7 @@ static napi_value QueueDelayTest005(napi_env env, napi_callback_info info)
         result = 3;
     }
     uint64_t delay = ffrt_task_attr_get_delay(&task_attr);
-    if (delay != 500000) {
+    if (delay != UNIT_TASK_DELAY_500) {
         result = 4;
     }
     ffrt_task_attr_destroy(&task_attr);
@@ -1909,8 +1919,9 @@ static napi_value QueueTest001(napi_env env, napi_callback_info info)
         ffrt_function_kind_queue), nullptr);
     ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(MultipleForTest, nullptr, &result,
         ffrt_function_kind_queue), nullptr);
-    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(SubForTest, nullptr, &result, ffrt_function_kind_queue), nullptr);
-        ffrt_queue_wait(handle);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle,
+        ffrt_create_function_wrapper(SubForTest, nullptr, &result, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_wait(handle);
     ffrt_task_handle_destroy(handle);
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
@@ -2020,7 +2031,7 @@ static napi_value QueueWaitTest001(napi_env env, napi_callback_info info)
     int a = 0;
     ffrt_task_attr_t task_attr;
     (void)ffrt_task_attr_init(&task_attr);
-    ffrt_task_attr_set_delay(&task_attr, 200000);
+    ffrt_task_attr_set_delay(&task_attr, UNIT_TASK_DELAY);
     std::function<void()>&& OnePlusFunc = [&a]() { OnePlusForTest(static_cast<void*>(&a)); };
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), &task_attr);
@@ -3071,7 +3082,7 @@ static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
     }
     int result3 = 0;
     std::function<void()>&& basicFunc3 = [&result3]() {result3 += addnum;};
-    std::function<void()> &&SleepFunc = [] () {usleep(2000);};
+    std::function<void()> &&SleepFunc = [] () {usleep(SLEEP_TIME);};
     ffrt_task_handle_t sleepTask = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SleepFunc,
         ffrt_function_kind_queue), nullptr);
     ffrt_task_handle_t task3 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc3,
@@ -3106,7 +3117,7 @@ static napi_value ffrt_loop_0002(napi_env env, napi_callback_info info)
     int result1 = 0;
     const int addTen = 10;
     std::function<void()>&& basicFunc1 = [&result1]() {result1 += addTen;};
-    std::function<void()> &&SleepFunc = [] () {usleep(2000);};
+    std::function<void()> &&SleepFunc = [] () {usleep(SLEEP_TIME);};
     ffrt_task_handle_t sleepTask = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SleepFunc,
         ffrt_function_kind_queue), nullptr);
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc1,
@@ -3694,6 +3705,34 @@ static napi_value ffrt_task_handle_ref_0001(napi_env env, napi_callback_info inf
     return flag;
 }
 
+inline void OnePlusForTestQos(void* arg)
+{
+    *(int*)arg = ffrt_this_task_update_qos(ffrt_qos_background);
+    *(int*)arg += PARAM_100;
+}
+
+static napi_value FfrtThisTaskGetId(napi_env env, napi_callback_info info)
+{
+    uint64_t taskId = SUCCESS;
+    std::function<void()>&& GetPidFunc = [&taskId]() { OnePlusForTest((void *)(&taskId)); };
+    ffrt_submit_base(create_function_wrapper(GetPidFunc), nullptr, nullptr, nullptr);
+    ffrt_wait();
+    napi_value result = nullptr;
+    napi_create_int32(env, taskId != SUCCESS, &result);
+    return result;
+}
+
+static napi_value FfrtThisTaskUpdateQos(napi_env env, napi_callback_info info)
+{
+    int pos = FAIL;
+    std::function<void()>&& UpdateQosFunc = [&pos]() { OnePlusForTestQos((void *)(&pos)); };
+    ffrt_submit_base(create_function_wrapper(UpdateQosFunc), nullptr, nullptr, nullptr);
+    ffrt_wait();
+    napi_value result = nullptr;
+    napi_create_int32(env, pos, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -3832,6 +3871,8 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, napi_default, nullptr },
         { "ffrt_task_handle_ref_0001", nullptr, ffrt_task_handle_ref_0001, nullptr, nullptr,
             nullptr, napi_default, nullptr },
+        { "ffrtThisTaskGetId", nullptr, FfrtThisTaskGetId, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ffrtThisTaskUpdateQos", nullptr, FfrtThisTaskUpdateQos, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

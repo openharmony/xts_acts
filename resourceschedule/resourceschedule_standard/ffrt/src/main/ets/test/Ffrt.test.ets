@@ -1351,5 +1351,33 @@ export default function ffrtTest() {
       let flag = entry.recursiveMutexAbnormalInvalidParamTest001();
       expect(flag).assertEqual(0);
     })
+
+    /**
+     * @tc.number : SUB_KERNEL_DISPATCH_entry_9500
+     * @tc.name   : ffrtThisTaskGetId001
+     * @tc.desc   : Test ffrtThisTaskGetId api
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('ffrtThisTaskGetId001', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      let flag = entry.ffrtThisTaskGetId();
+      expect(flag).assertEqual(1);
+    })
+
+    /**
+     * @tc.number : SUB_KERNEL_DISPATCH_entry_9600
+     * @tc.name   : ffrtThisTaskUpdateQos001
+     * @tc.desc   : Test ffrtThisTaskUpdateQos api
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('ffrtThisTaskUpdateQos001', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      let flag = entry.ffrtThisTaskUpdateQos();
+      expect(flag).assertEqual(100);
+    })
   })
 }
