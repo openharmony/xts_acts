@@ -25,7 +25,7 @@ export default class SecondAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'SecondAbility', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'SecondAbility', `want, 50==: ${JSON.stringify(want)}`);
-    AppStorage.SetOrCreate<boolean>('onCreate',true);
+    AppStorage.SetOrCreate<boolean>('onCreate', true);
     AppStorage.SetOrCreate<boolean>('isStart',false);
     param.setTextNme(want.action);
   }
@@ -33,14 +33,14 @@ export default class SecondAbility extends UIAbility {
   onDestroy(): void {
     hilog.info(0x0000, 'SecondAbility', '%{public}s', 'Ability onDestroy');
     let events = param.getTextNme();
-    let onCreate =  AppStorage.get<boolean>('onCreate');
-    let onWindowStageCreate =  AppStorage.get<boolean>('onWindowStageCreate');
-    let onForeground =  AppStorage.get<boolean>('onForeground');
-    let onWindowStageDestroy =  AppStorage.get<boolean>('onWindowStageDestroy');
-    let onBackground =  AppStorage.get<boolean>('onBackground');
-    let AbilityResult =  AppStorage.get<common.AbilityResult>('AbilityResult');
+    let onCreate = AppStorage.get<boolean>('onCreate');
+    let onWindowStageCreate = AppStorage.get<boolean>('onWindowStageCreate');
+    let onForeground = AppStorage.get<boolean>('onForeground');
+    let onWindowStageDestroy = AppStorage.get<boolean>('onWindowStageDestroy');
+    let onBackground = AppStorage.get<boolean>('onBackground');
+    let AbilityResult = AppStorage.get<common.AbilityResult>('AbilityResult');
     let onDestroy = true;
-    let commonEventData: commonEventManger.CommonEventPublishData  = {
+    let commonEventData: commonEventManger.CommonEventPublishData = {
       parameters:{
         data: {
           onCreate: onCreate,
@@ -62,7 +62,7 @@ export default class SecondAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'SecondAbility', '%{public}s', 'Ability onWindowStageCreate');
 
-    AppStorage.SetOrCreate<boolean>('onWindowStageCreate',true);
+    AppStorage.SetOrCreate<boolean>('onWindowStageCreate', true);
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
         hilog.error(0x0000, 'SecondAbility', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -75,20 +75,20 @@ export default class SecondAbility extends UIAbility {
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'SecondAbility', '%{public}s', 'Ability onWindowStageDestroy');
-    AppStorage.SetOrCreate<boolean>('onWindowStageDestroy',true);
+    AppStorage.SetOrCreate<boolean>('onWindowStageDestroy', true);
   }
 
   onForeground(): void {
     // Ability has brought to foreground
     hilog.info(0x0000, 'SecondAbility', '%{public}s', 'Ability onForeground');
-    AppStorage.SetOrCreate<boolean>('onForeground',true);
+    AppStorage.SetOrCreate<boolean>('onForeground', true);
     let events = param.getTextNme();
 
-    let isStart =  AppStorage.get<boolean>('isStart');
+    let isStart = AppStorage.get<boolean>('isStart');
     if (isStart) {
       return;
     };
-    AppStorage.SetOrCreate<boolean>('isStart',true);
+    AppStorage.SetOrCreate<boolean>('isStart', true);
     let want: Want = {
       bundleName: 'com.example.terminateselfwithresulttesthap2',
       abilityName: 'ThirdAbility',
@@ -130,6 +130,6 @@ export default class SecondAbility extends UIAbility {
   onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'SecondAbility', '%{public}s', 'Ability onBackground');
-    AppStorage.SetOrCreate<boolean>('onBackground',true);
+    AppStorage.SetOrCreate<boolean>('onBackground', true);
   }
 }

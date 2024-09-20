@@ -25,7 +25,7 @@ export default class MainAbility3 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'MainAbility3', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'MainAbility3', `want, 50==: ${JSON.stringify(want)}`);
-    AppStorage.SetOrCreate<boolean>('onCreate',true);
+    AppStorage.SetOrCreate<boolean>('onCreate', true);
     param.setTextNme(want.action);
   }
 
@@ -37,7 +37,7 @@ export default class MainAbility3 extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'MainAbility3', '%{public}s', 'Ability onWindowStageCreate');
 
-    AppStorage.SetOrCreate<boolean>('onWindowStageCreate',true);
+    AppStorage.SetOrCreate<boolean>('onWindowStageCreate', true);
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
         hilog.error(0x0000, 'MainAbility3', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -55,14 +55,14 @@ export default class MainAbility3 extends UIAbility {
   onForeground(): void {
     // Ability has brought to foreground
     hilog.info(0x0000, 'MainAbility3', '%{public}s', 'Ability onForeground');
-    AppStorage.SetOrCreate<boolean>('onForeground',true);
+    AppStorage.SetOrCreate<boolean>('onForeground', true);
 
     try {
       let events = param.getTextNme();
-      let onCreate =  AppStorage.get<boolean>('onCreate');
-      let onWindowStageCreate =  AppStorage.get<boolean>('onWindowStageCreate');
-      let onForeground =  AppStorage.get<boolean>('onForeground');
-      let commonEventData: commonEventManger.CommonEventPublishData  = {
+      let onCreate = AppStorage.get<boolean>('onCreate');
+      let onWindowStageCreate = AppStorage.get<boolean>('onWindowStageCreate');
+      let onForeground = AppStorage.get<boolean>('onForeground');
+      let commonEventData: commonEventManger.CommonEventPublishData = {
         parameters:{
           data: {
             onCreate: onCreate,

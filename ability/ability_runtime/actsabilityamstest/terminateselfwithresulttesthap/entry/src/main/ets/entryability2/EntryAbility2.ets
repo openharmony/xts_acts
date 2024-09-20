@@ -24,18 +24,18 @@ let param = new ParamManager();
 export default class EntryAbility2 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    hilog.info(0x0000, 'testTag', `want, 50==: ${JSON.stringify(want)}`);
+    hilog.info(0x0000, 'testTag', `want, 50 == : ${JSON.stringify(want)}`);
     param.setTextNme(want.action);
   }
 
   onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-    let onBackground =  AppStorage.get<boolean>('onBackground');
-    let onWindowStageDestroy =  AppStorage.get<boolean>('onWindowStageDestroy');
+    let onBackground = AppStorage.get<boolean>('onBackground');
+    let onWindowStageDestroy = AppStorage.get<boolean>('onWindowStageDestroy');
     let onDestroy = true;
     let events = param.getTextNme();
     if (events) {
-      let commonEventData: commonEventManger.CommonEventPublishData  = {
+      let commonEventData: commonEventManger.CommonEventPublishData = {
         parameters:{
           data: {
             onBackground: onBackground,
@@ -51,7 +51,6 @@ export default class EntryAbility2 extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err) => {
@@ -64,13 +63,11 @@ export default class EntryAbility2 extends UIAbility {
   }
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
-    AppStorage.SetOrCreate<boolean>('onWindowStageDestroy',true);
+    AppStorage.SetOrCreate<boolean>('onWindowStageDestroy', true);
   }
 
   onForeground(): void {
-    // Ability has brought to foreground
     setTimeout(async () => {
       let resultCode = param.getResultCode();
       let want: Want = {
@@ -93,8 +90,7 @@ export default class EntryAbility2 extends UIAbility {
   }
 
   onBackground(): void {
-    // Ability has back to background
-    AppStorage.SetOrCreate<boolean>('onBackground',true);
+    AppStorage.SetOrCreate<boolean>('onBackground', true);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
   }
 }

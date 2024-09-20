@@ -24,8 +24,8 @@ let param = new ParamManager();
 export default class EntryAbility3 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onCreate');
-    hilog.info(0x0000, 'EntryAbility3', `want, 50==: ${JSON.stringify(want)}`);
-    AppStorage.SetOrCreate<boolean>('onCreate',true);
+    hilog.info(0x0000, 'EntryAbility3', `want, 50 == : ${JSON.stringify(want)}`);
+    AppStorage.SetOrCreate<boolean>('onCreate', true);
     param.setTextNme(want.action);
   }
 
@@ -34,10 +34,9 @@ export default class EntryAbility3 extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onWindowStageCreate');
 
-    AppStorage.SetOrCreate<boolean>('onWindowStageCreate',true);
+    AppStorage.SetOrCreate<boolean>('onWindowStageCreate', true);
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
         hilog.error(0x0000, 'EntryAbility3', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -48,12 +47,10 @@ export default class EntryAbility3 extends UIAbility {
   }
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground(): void {
-    // Ability has brought to foreground
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onForeground');
     let events = param.getTextNme();
 
@@ -70,10 +67,10 @@ export default class EntryAbility3 extends UIAbility {
     try {
       setTimeout(() => {
         this.context.startAbilityForResult(want).then((result: common.AbilityResult) => {
-          let onCreate =  AppStorage.get<boolean>('onCreate');
-          let onWindowStageCreate =  AppStorage.get<boolean>('onWindowStageCreate');
+          let onCreate = AppStorage.get<boolean>('onCreate');
+          let onWindowStageCreate = AppStorage.get<boolean>('onWindowStageCreate');
           let onForeground = true;
-          let commonEventData: commonEventManger.CommonEventPublishData  = {
+          let commonEventData: commonEventManger.CommonEventPublishData = {
             parameters:{
               data: {
                 onCreate: onCreate,
@@ -86,8 +83,8 @@ export default class EntryAbility3 extends UIAbility {
           commonEventManger.publish(events,commonEventData,(result)=>{
             hilog.info(0x0000, 'EntryAbility3', `startAbilityForResult ok, 50==: ${JSON.stringify(result)}`);
             setTimeout(() => {
-              this.context.terminateSelf()
-            }, 500)
+              this.context.terminateSelf();
+            }, 500);
           });
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'EntryAbility3', `startAbilityForResult err, 50==: ${JSON.stringify(err)}`);
@@ -99,7 +96,6 @@ export default class EntryAbility3 extends UIAbility {
   }
 
   onBackground(): void {
-    // Ability has back to background
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onBackground');
   }
 }

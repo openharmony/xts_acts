@@ -27,9 +27,9 @@ export default class ThirdAbility extends UIAbility {
   }
 
   onDestroy() {
-    let onBackground =  AppStorage.get<boolean>('onBackground');
+    let onBackground = AppStorage.get<boolean>('onBackground');
     let returnDate = onBackground?true:false;
-    let commonEventData: commonEventManger.CommonEventPublishData  = {
+    let commonEventData: commonEventManger.CommonEventPublishData = {
       parameters:{
         data:returnDate
       }
@@ -68,7 +68,7 @@ export default class ThirdAbility extends UIAbility {
 
   onBackground() {
     // Ability has back to background
-    AppStorage.SetOrCreate<boolean>('onBackground',true);
+    AppStorage.SetOrCreate<boolean>('onBackground', true);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
   }
 }

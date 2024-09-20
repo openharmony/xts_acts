@@ -26,7 +26,7 @@ export default class MainAbility3 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'MainAbility3', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'MainAbility3', `want, 50==: ${JSON.stringify(want)}`);
-    AppStorage.SetOrCreate<boolean>('onCreate',true);
+    AppStorage.SetOrCreate<boolean>('onCreate', true);
     AppStorage.SetOrCreate<boolean>('isStart',false);
     param.setTextNme(want.action);
   }
@@ -39,7 +39,7 @@ export default class MainAbility3 extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'MainAbility3', '%{public}s', 'Ability onWindowStageCreate');
 
-    AppStorage.SetOrCreate<boolean>('onWindowStageCreate',true);
+    AppStorage.SetOrCreate<boolean>('onWindowStageCreate', true);
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
         hilog.error(0x0000, 'MainAbility3', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -59,12 +59,12 @@ export default class MainAbility3 extends UIAbility {
     hilog.info(0x0000, 'MainAbility3', '%{public}s', 'Ability onForeground');
     let events = param.getTextNme();
 
-    let isStart =  AppStorage.get<boolean>('isStart');
+    let isStart = AppStorage.get<boolean>('isStart');
     if (isStart) {
-      AppStorage.SetOrCreate<boolean>('onForegroundSecond',true);
+      AppStorage.SetOrCreate<boolean>('onForegroundSecond', true);
     } else {
-      AppStorage.SetOrCreate<boolean>('onForegroundFirst',true);
-      AppStorage.SetOrCreate<boolean>('isStart',true);
+      AppStorage.SetOrCreate<boolean>('onForegroundFirst', true);
+      AppStorage.SetOrCreate<boolean>('isStart', true);
       let want: Want = {
         bundleName: 'com.example.terminateselfwithresulttesthap',
         abilityName: 'MainAbility3',
@@ -76,12 +76,12 @@ export default class MainAbility3 extends UIAbility {
           this.context.startAbilityForResult(want).then((result: common.AbilityResult) => {
             hilog.info(0x0000, 'MainAbility3', `startAbilityForResult ok, result==: ${JSON.stringify(result)}`);
             setTimeout(async () => {
-              let onCreate =  AppStorage.get<boolean>('onCreate');
-              let onWindowStageCreate =  AppStorage.get<boolean>('onWindowStageCreate');
-              let onForegroundFirst =  AppStorage.get<boolean>('onForegroundFirst');
-              let onForegroundSecond =  AppStorage.get<boolean>('onForegroundSecond');
-              let onBackground =  AppStorage.get<boolean>('onBackground');
-              let commonEventData: commonEventManger.CommonEventPublishData  = {
+              let onCreate = AppStorage.get<boolean>('onCreate');
+              let onWindowStageCreate = AppStorage.get<boolean>('onWindowStageCreate');
+              let onForegroundFirst = AppStorage.get<boolean>('onForegroundFirst');
+              let onForegroundSecond = AppStorage.get<boolean>('onForegroundSecond');
+              let onBackground = AppStorage.get<boolean>('onBackground');
+              let commonEventData: commonEventManger.CommonEventPublishData = {
                 parameters:{
                   data: {
                     onCreate: onCreate,
@@ -111,6 +111,6 @@ export default class MainAbility3 extends UIAbility {
   onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'MainAbility3', '%{public}s', 'Ability onBackground');
-    AppStorage.SetOrCreate<boolean>('onBackground',true);
+    AppStorage.SetOrCreate<boolean>('onBackground', true);
   }
 }

@@ -29,12 +29,12 @@ export default class EntryAbility2 extends UIAbility {
   }
 
   onDestroy(): void {
-    let onBackground =  AppStorage.get<boolean>('onBackground');
-    let onWindowStageDestroy =  AppStorage.get<boolean>('onWindowStageDestroy');
+    let onBackground = AppStorage.get<boolean>('onBackground');
+    let onWindowStageDestroy = AppStorage.get<boolean>('onWindowStageDestroy');
     let onDestroy = true;
     let events = param.getTextNme();
     if (events) {
-      let commonEventData: commonEventManger.CommonEventPublishData  = {
+      let commonEventData: commonEventManger.CommonEventPublishData = {
         parameters:{
           data: {
             onBackground: onBackground,
@@ -66,7 +66,7 @@ export default class EntryAbility2 extends UIAbility {
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
-    AppStorage.SetOrCreate<boolean>('onWindowStageDestroy',true);
+    AppStorage.SetOrCreate<boolean>('onWindowStageDestroy', true);
   }
 
   onForeground(): void {
@@ -94,7 +94,7 @@ export default class EntryAbility2 extends UIAbility {
 
   onBackground(): void {
     // Ability has back to background
-    AppStorage.SetOrCreate<boolean>('onBackground',true);
+    AppStorage.SetOrCreate<boolean>('onBackground', true);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
   }
 }

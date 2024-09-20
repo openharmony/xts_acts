@@ -33,7 +33,6 @@ export default class EntryAbility4 extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
     hilog.info(0x0000, 'EntryAbility4', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err) => {
@@ -46,12 +45,10 @@ export default class EntryAbility4 extends UIAbility {
   }
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'EntryAbility4', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground(): void {
-    // Ability has brought to foreground
     hilog.info(0x0000, 'EntryAbility4', '%{public}s', 'Ability onForeground');
     let events = param.getTextNme();
 
@@ -66,7 +63,7 @@ export default class EntryAbility4 extends UIAbility {
         };
         this.context.terminateSelfWithResult(abilityResult).then(() => {
           let terminateState = true
-          let commonEventData: commonEventManger.CommonEventPublishData  = {
+          let commonEventData: commonEventManger.CommonEventPublishData = {
             parameters:{
               data: {
                 terminateState: terminateState,
@@ -86,7 +83,6 @@ export default class EntryAbility4 extends UIAbility {
   }
 
   onBackground(): void {
-    // Ability has back to background
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onBackground');
   }
 }

@@ -26,9 +26,9 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'testTag', `want, 50==: ${JSON.stringify(want)}`);
     param.setTextNme(want.action);
-    let events =  want.action;
+    let events = want.action;
     if (events) {
-      let commonEventData: commonEventManger.CommonEventPublishData  = {
+      let commonEventData: commonEventManger.CommonEventPublishData = {
         parameters:{
           data:want
         }

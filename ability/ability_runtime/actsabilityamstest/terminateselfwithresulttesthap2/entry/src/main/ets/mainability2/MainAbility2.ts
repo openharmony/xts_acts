@@ -54,11 +54,11 @@ export default class MainAbility2 extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
     let events = param.getTextNme();
 
-    let isStart =  AppStorage.get<boolean>('isStart');
+    let isStart = AppStorage.get<boolean>('isStart');
     if (isStart) {
       return;
     };
-    AppStorage.SetOrCreate<boolean>('isStart',true);
+    AppStorage.SetOrCreate<boolean>('isStart', true);
     let want: Want = {
       bundleName: 'com.example.terminateselfwithresulttesthap2',
       abilityName: 'ThirdAbility',
@@ -69,7 +69,7 @@ export default class MainAbility2 extends UIAbility {
       setTimeout(() => {
         this.context.startAbilityForResult(want).then((result: common.AbilityResult) => {
           hilog.info(0x0000, 'testTag', `startAbilityForResult ok, result==: ${JSON.stringify(result)}`);
-          let commonEventData: commonEventManger.CommonEventPublishData  = {
+          let commonEventData: commonEventManger.CommonEventPublishData = {
             parameters:{
               data: {
                 result: result
