@@ -70,12 +70,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       done();
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0056
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0056
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative341
     *@tc.desc test SdkSchemeHandler didFail code -341
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative341', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative341"
@@ -84,12 +84,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0057
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0057
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative342
     *@tc.desc test SdkSchemeHandler didFail code -342
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative342', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative342"
@@ -98,12 +98,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0058
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0058
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative343
     *@tc.desc test SdkSchemeHandler didFail code -343
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative343', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative343"
@@ -112,12 +112,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0059
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0059
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative344
     *@tc.desc test SdkSchemeHandler didFail code -344
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative344', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative344"
@@ -126,12 +126,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0060
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0060
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative345
     *@tc.desc test SdkSchemeHandler didFail code -345
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative345', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative345"
@@ -140,12 +140,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0061
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0061
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative346
     *@tc.desc test SdkSchemeHandler didFail code -346
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative346', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative346"
@@ -154,12 +154,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0062
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0062
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative347
     *@tc.desc test SdkSchemeHandler didFail code -347
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative347', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative347"
@@ -168,12 +168,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0063
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0063
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative348
     *@tc.desc test SdkSchemeHandler didFail code -348
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative348', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative348"
@@ -182,12 +182,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0064
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0064
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative349
     *@tc.desc test SdkSchemeHandler didFail code -349
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative349', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative349"
@@ -196,12 +196,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0065
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0065
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative350
     *@tc.desc test SdkSchemeHandler didFail code -350
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative350', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative350"
@@ -210,12 +210,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0066
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0066
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative351
     *@tc.desc test SdkSchemeHandler didFail code -351
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative351', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative351"
@@ -224,12 +224,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0067
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0067
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative352
     *@tc.desc test SdkSchemeHandler didFail code -352
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative352', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative352"
@@ -238,12 +238,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0068
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0068
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative354
     *@tc.desc test SdkSchemeHandler didFail code -354
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative354', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative354"
@@ -252,12 +252,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0069
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0069
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative355
     *@tc.desc test SdkSchemeHandler didFail code -355
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative355', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative355"
@@ -266,12 +266,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0070
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0070
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative356
     *@tc.desc test SdkSchemeHandler didFail code -356
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative356', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative356"
@@ -280,12 +280,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0071
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0071
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative357
     *@tc.desc test SdkSchemeHandler didFail code -357
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative357', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative357"
@@ -294,12 +294,12 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0072
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
+    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_GROUP_THREE_API_0072
+    *@tc.name testWebViewSdkSchemeHandlerDidFailNegative358
     *@tc.desc test SdkSchemeHandler didFail code -358
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSdkSchemeHandlerDidFailNegative358', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative358"

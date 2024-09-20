@@ -71,12 +71,12 @@ export default function webViewNativeMediaPlayerEnableFalse() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_NativeMediaPlayerEnableFalse_API_0001
+     *@tc.number SUB_ACE_WEB_NATIVEVIDEO_INTERFACE_0100
      *@tc.name testWebViewNativeMediaPlayerEnableFalse
      *@tc.desc test NativeMediaPlayerEnableFalse
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerEnableFalse', 0, async (done: Function) => {
         emitKey = "emitWebViewNativeMediaPlayerEnableFalse"
@@ -88,12 +88,12 @@ export default function webViewNativeMediaPlayerEnableFalse() {
         sendEventByKey('webViewNativeMediaPlayerEnableFalse', 10, '');
     })
     /*
-     *@tc.number SUB_ACE_WEB_NativeMediaPlayerEnableFalseShouldOverlayFalse_API_0001
+     *@tc.number SUB_ACE_WEB_NATIVEVIDEO_INTERFACE_0200
      *@tc.name testWebViewNativeMediaPlayerEnableFalseShouldOverlayFalse
      *@tc.desc test NativeMediaPlayerEnableFalseShouldOverlayFalse
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerEnableFalseShouldOverlayFalse', 0, async (done: Function) => {
         emitKey = "emitWebViewNativeMediaPlayerEnableFalseShouldOverlayFalse"

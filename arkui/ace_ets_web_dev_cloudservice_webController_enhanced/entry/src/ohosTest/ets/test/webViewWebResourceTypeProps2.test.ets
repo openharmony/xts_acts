@@ -71,12 +71,12 @@ export default function ActsAceWebViewWebResourceTypeProps2() {
       })
 
       /*
-       *@tc.number SUB_ACE_WEB_webResourceType_SUB_RESOURCE_0001
+       *@tc.number SUB_ACE_WEB_NET_RESOURCETYPE_0700
        *@tc.name testWebView_webResourceType_SUB_RESOURCE
        *@tc.desc test webResourceType SUB_RESOURCE
        *@tc.size MediumTest
        *@tc.type Function
-       *@tc.level 1
+       *@tc.level Level 2
        */
       it('testWebView_webResourceType_SUB_RESOURCE', 0, async (done: Function) => {
         emitKey = "emitWebView_webResourceType_SUB_RESOURCE"
@@ -85,12 +85,12 @@ export default function ActsAceWebViewWebResourceTypeProps2() {
         sendEventByKey('webViewWebResourceTypeProps2', 10, '');
       })
       /*
-       *@tc.number SUB_ACE_WEB_webResourceType_SERVICE_WORKER_0001
+       *@tc.number SUB_ACE_WEB_NET_RESOURCETYPE_1600
        *@tc.name testWebView_webResourceType_SERVICE_WORKER
        *@tc.desc test webResourceType SERVICE_WORKER
        *@tc.size MediumTest
        *@tc.type Function
-       *@tc.level 1
+       *@tc.level Level 1
        */
       it('testWebView_webResourceType_SERVICE_WORKER', 0, async (done: Function) => {
         emitKey = "emitWebView_webResourceType_SERVICE_WORKER"
@@ -100,12 +100,12 @@ export default function ActsAceWebViewWebResourceTypeProps2() {
       })
 
       /*
-       *@tc.number SUB_ACE_WEB_webResourceType_PLUGIN_RESOURCE_0001
+       *@tc.number SUB_ACE_WEB_NET_RESOURCETYPE_1800
        *@tc.name testWebView_webResourceType_PLUGIN_RESOURCE
        *@tc.desc test webResourceType PLUGIN_RESOURCE
        *@tc.size MediumTest
        *@tc.type Function
-       *@tc.level 1
+       *@tc.level Level 1
        */
       it('testWebView_webResourceType_PLUGIN_RESOURCE', 0, async (done: Function) => {
         emitKey = "emitWebView_webResourceType_PLUGIN_RESOURCE"
@@ -115,12 +115,12 @@ export default function ActsAceWebViewWebResourceTypeProps2() {
       })
 
       /*
-     *@tc.number SUB_ACE_WEB_webResourceType_NAVIGATION_PRELOAD_MAIN_FRAME_0001
+     *@tc.number SUB_ACE_WEB_NET_RESOURCETYPE_1900
      *@tc.name testWebView_webResourceType_NAVIGATION_PRELOAD_MAIN_FRAME
      *@tc.desc test webResourceType NAVIGATION_PRELOAD_MAIN_FRAME
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
       it('testWebView_webResourceType_NAVIGATION_PRELOAD_MAIN_FRAME', 0, async (done: Function) => {
         emitKey = "emitWebView_webResourceType_NAVIGATION_PRELOAD_MAIN_FRAME"
@@ -131,12 +131,12 @@ export default function ActsAceWebViewWebResourceTypeProps2() {
 
 
     /*
-    *@tc.number SUB_ACE_WEB_webResourceType_NAVIGATION_PRELOAD_SUB_FRAME_0001
+    *@tc.number SUB_ACE_WEB_NET_RESOURCETYPE_2000
     *@tc.name testWebView_webResourceType_NAVIGATION_PRELOAD_SUB_FRAME
     *@tc.desc test webResourceType NAVIGATION_PRELOAD_SUB_FRAME
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebView_webResourceType_NAVIGATION_PRELOAD_SUB_FRAME', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_NAVIGATION_PRELOAD_SUB_FRAME"

@@ -76,7 +76,7 @@ export default function ActsAceWebViewGetFrameUrlResourceType() {
      *@tc.desc test getFrameUrl getResourceType
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebViewGetFrameUrlResourceType', 0, async (done: Function) => {
         emitKey = "emitWebViewGetFrameUrlResourceType"

@@ -55,14 +55,14 @@ export default function webOnPermissionRequest() {
     })
 
     /*
-    * @tc.number      : SUB_WEB_PERMISSIONREQUESTDENY_0100
-    * @tc.name        : testPermissionRequestDeny001
+    * @tc.number      : SUB_WEB_PERMISSIONREQUESTDENY_GROUP_0100
+    * @tc.name        : testPermissionRequestDenyGroup001
     * @tc.desc        : test permissionRequest deny
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testPermissionRequestDeny001', 0, async (done: Function) => {
+    it('testPermissionRequestDenyGroup001', 0, async (done: Function) => {
       Utils.emitEvent("emitPermissionRequestDeny001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testPermissionRequestDeny001", '"deny"', 70320,
@@ -73,14 +73,14 @@ export default function webOnPermissionRequest() {
     })
 
     /*
-    * @tc.number      : SUB_WEB_PERMISSIONREQUESTGRANT_0100
-    * @tc.name        : testPermissionRequestGrant001
+    * @tc.number      : SUB_WEB_PERMISSIONREQUESTGRANT_GROUP_0100
+    * @tc.name        : testPermissionRequestGrantGroup001
     * @tc.desc        : test permissionRequest grant
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testPermissionRequestGrant001', 0, async (done: Function) => {
+    it('testPermissionRequestGrantGroup001', 0, async (done: Function) => {
       Utils.emitEvent("emitPermissionRequestGrant001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testPermissionRequestGrant001", '"grant"', 70322,

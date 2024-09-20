@@ -70,15 +70,17 @@ export default function webViewOnOverrideUrlLoading() {
       done();
     })
     
+
+
     /*
-     *@tc.number SUB_ACE_SUB_ONOVERRIDEURLLOADING_API_0600
-     *@tc.name testWebViewwebViewOnOverrideUrlLoading
-     *@tc.desc test interface of OnOverrideUrlLoading with runjavascript jump
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewwebViewOnOverrideUrlLoading', 0, async (done: Function) => {
+    * @tc.number      : SUB_ACE_SUB_ONOVERRIDEURLLOADING_API_GROUP_0600
+    * @tc.name        : testWebViewwebViewOnOverrideUrlLoadingGroup
+    * @tc.desc        : test interface of OnOverrideUrlLoading with runjavascript jump
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 1
+    */
+    it('testWebViewwebViewOnOverrideUrlLoadingGroup', 0, async (done: Function) => {
         Utils.registerBaseEvent("emitWebViewwebViewOnOverrideUrlLoading", "true", 10007,
           done, (backData: events_emitter.EventData, expected: Object) => {
             expect(backData?.data?.ACTION).assertEqual(expected);

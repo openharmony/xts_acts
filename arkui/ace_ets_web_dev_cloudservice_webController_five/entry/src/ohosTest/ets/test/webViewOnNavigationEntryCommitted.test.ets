@@ -53,11 +53,11 @@ export default function ActsAceWebViewOnNavigationEntryCommitted() {
 
     /*
      *@tc.number SUB_ACE_WEB_ONNAVIAGTIONENTRYCOMMITTED_API_0001
-     *@tc.name testWebViewOnNavigationEntryCommitted isMainFrame
+     *@tc.name testWebViewOnNavigationEntryCommitted01
      *@tc.desc test onNavigationEntryCommitted
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewOnNavigationEntryCommitted01', 0, async (done: Function) => {
         emitKey = "emitWebViewOnNavigationEntryCommitted01"
@@ -68,11 +68,11 @@ export default function ActsAceWebViewOnNavigationEntryCommitted() {
 
     /*
      *@tc.number SUB_ACE_WEB_ONNAVIAGTIONENTRYCOMMITTED_API_0002
-     *@tc.name testWebViewOnNavigationEntryCommitted isSameDocument
+     *@tc.name testWebViewOnNavigationEntryCommitted02
      *@tc.desc test onNavigationEntryCommitted
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewOnNavigationEntryCommitted02', 0, async (done: Function) => {
       emitKey = "emitWebViewOnNavigationEntryCommitted02"
@@ -83,11 +83,11 @@ export default function ActsAceWebViewOnNavigationEntryCommitted() {
 
     /*
      *@tc.number SUB_ACE_WEB_ONNAVIAGTIONENTRYCOMMITTED_API_0003
-     *@tc.name testWebViewOnNavigationEntryCommitted didReplaceEntry
+     *@tc.name testWebViewOnNavigationEntryCommitted03
      *@tc.desc test onNavigationEntryCommitted
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewOnNavigationEntryCommitted03', 0, async (done: Function) => {
       emitKey = "emitWebViewOnNavigationEntryCommitted03"
@@ -98,11 +98,11 @@ export default function ActsAceWebViewOnNavigationEntryCommitted() {
 
     /*
      *@tc.number SUB_ACE_WEB_ONNAVIAGTIONENTRYCOMMITTED_API_0004
-     *@tc.name testWebViewOnNavigationEntryCommitted navigationType
+     *@tc.name testWebViewOnNavigationEntryCommitted04
      *@tc.desc test onNavigationEntryCommitted
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewOnNavigationEntryCommitted04', 0, async (done: Function) => {
       emitKey = "emitWebViewOnNavigationEntryCommitted04"
@@ -113,11 +113,11 @@ export default function ActsAceWebViewOnNavigationEntryCommitted() {
 
     /*
      *@tc.number SUB_ACE_WEB_ONNAVIAGTIONENTRYCOMMITTED_API_0005
-     *@tc.name testWebViewOnNavigationEntryCommitted url
+     *@tc.name testWebViewOnNavigationEntryCommitted05
      *@tc.desc test onNavigationEntryCommitted
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewOnNavigationEntryCommitted05', 0, async (done: Function) => {
       emitKey = "emitWebViewOnNavigationEntryCommitted05"

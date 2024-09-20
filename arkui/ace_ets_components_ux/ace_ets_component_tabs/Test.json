@@ -10,8 +10,9 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceTabsTest.hap"
-        ],
+                "ActsAceTabsTest.hap",
+                "ActsAceTabsTestMain.hap"
+            ],
         "type": "AppInstallKit",
         "cleanup-apps": true
         },

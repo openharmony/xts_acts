@@ -71,11 +71,11 @@ export default function webViewNativeMediaPlayerHandler3() {
     })
     /*
          *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0022
-         *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+         *@tc.name testWebViewNativeMediaPlayerUpdateRect_1
          *@tc.desc test NativeMediaPlayerVSetPlayRate
          *@tc.size MediumTest
          *@tc.type Function
-         *@tc.level 1
+         *@tc.level Level 1
          */
     it('testWebViewNativeMediaPlayerUpdateRect_1', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerUpdateRect_1"
@@ -89,11 +89,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0023
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerUpdateRect_2
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerUpdateRect_2', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerUpdateRect_2"
@@ -107,11 +107,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0006
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerSetPlayRateNegative1
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerSetPlayRateNegative1', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRateNegative1"
@@ -126,11 +126,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0002
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerSetPlayRate2
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerSetPlayRate2', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate2"
@@ -144,11 +144,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0003
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerSetPlayRate2_handleRateChange
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerSetPlayRate2_handleRateChange', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate2_handleRateChange"
@@ -162,11 +162,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0004
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerSetPlayRate3
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerSetPlayRate3', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate3"
@@ -180,11 +180,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0005
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerSetPlayRate3_handleRateChange
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerSetPlayRate3_handleRateChange', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate3_handleRateChange"
@@ -198,11 +198,11 @@ export default function webViewNativeMediaPlayerHandler3() {
     
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0001
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerSetPlayRate10
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerSetPlayRate10', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate10"
@@ -215,11 +215,11 @@ export default function webViewNativeMediaPlayerHandler3() {
     })
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0007
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerSetPlayRate1_point_2
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerSetPlayRate1_point_2', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate1_point_2"
@@ -233,11 +233,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0008
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange"
@@ -251,16 +251,16 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0013
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerPreloadAuto02
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerPreloadAuto', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerPreloadAuto02', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerPreloadAuto"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerPreloadAuto", true, 1812,
+      Utils.registerBaseEvent("testWebViewNativeMediaPlayerPreloadAuto02", true, 1812,
         done, (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
@@ -268,11 +268,11 @@ export default function webViewNativeMediaPlayerHandler3() {
     })
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0014
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerTimeUpdate
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerTimeUpdate', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerTimeUpdate"
@@ -286,11 +286,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
     *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0016
-    *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+    *@tc.name testWebViewNativeMediaPlayerFormatError
     *@tc.desc test NativeMediaPlayerVSetPlayRate
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewNativeMediaPlayerFormatError', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerFormatError"
@@ -304,11 +304,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
     *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0017
-    *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+    *@tc.name testWebViewNativeMediaPlayerNetError
     *@tc.desc test NativeMediaPlayerVSetPlayRate
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewNativeMediaPlayerNetError', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNetError"
@@ -322,11 +322,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0018
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerDecodeError
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerDecodeError', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerDecodeError"
@@ -340,11 +340,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0020
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerNetworkStateIdle
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebViewNativeMediaPlayerNetworkStateIdle', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNetworkStateIdle"
@@ -358,11 +358,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0019
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerNetworkStateLoading
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebViewNativeMediaPlayerNetworkStateLoading', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNetworkStateLoading"
@@ -375,11 +375,11 @@ export default function webViewNativeMediaPlayerHandler3() {
     })
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0021
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerNetworkStateError
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebViewNativeMediaPlayerNetworkStateError', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNetworkStateError"
@@ -395,11 +395,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0027
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerReadyState_2
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebViewNativeMediaPlayerReadyState_2', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerReadyState_2"
@@ -413,11 +413,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0028
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerReadyState_3
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebViewNativeMediaPlayerReadyState_3', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerReadyState_3"
@@ -431,11 +431,11 @@ export default function webViewNativeMediaPlayerHandler3() {
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0024
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerUpdateRect_3
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerUpdateRect_3', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerUpdateRect_3"
@@ -448,11 +448,11 @@ export default function webViewNativeMediaPlayerHandler3() {
     })
     /*
       *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0029
-      *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+      *@tc.name testWebViewNativeMediaPlayerReadyState_4
       *@tc.desc test NativeMediaPlayerVSetPlayRate
       *@tc.size MediumTest
       *@tc.type Function
-      *@tc.level 1
+      *@tc.level Level 2
       */
     it('testWebViewNativeMediaPlayerReadyState_4', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerReadyState_4"
@@ -465,11 +465,11 @@ export default function webViewNativeMediaPlayerHandler3() {
     })
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0025
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerUpdateRect_4
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewNativeMediaPlayerUpdateRect_4', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerUpdateRect_4"
@@ -482,11 +482,11 @@ export default function webViewNativeMediaPlayerHandler3() {
     })
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0026
-     *@tc.name testWebViewNativeMediaPlayerSetPlayRate
+     *@tc.name testWebViewNativeMediaPlayerReadyState_1
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebViewNativeMediaPlayerReadyState_1', 0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerReadyState_1"

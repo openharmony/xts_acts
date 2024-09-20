@@ -69,13 +69,14 @@ export default function ActsAcewebViewSharedRenderProcessToken() {
         await Utils.sleep(1000);
       done();
     })
+
     /*
-     *@tc.number SUB_ACE_WEB_SharedRenderProcessToken_API_0001
-     *@tc.name testWebViewSharedRenderProcessToken
-     *@tc.desc test SharedRenderProcessToken
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
+     * @tc.number      : SUB_ACE_WEB_SharedRenderProcessToken_API_0001
+     * @tc.name        : testWebViewSharedRenderProcessToken
+     * @tc.desc        : test SharedRenderProcessToken
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
      */
     it('testWebViewSharedRenderProcessToken', 0, async (done: Function) => {
       emitKey = "emitWebViewSharedRenderProcessToken"
@@ -87,13 +88,14 @@ export default function ActsAcewebViewSharedRenderProcessToken() {
       sendEventByKey('webViewSharedRenderProcessToken', 10, '');
     })
 
+
     /*
-     *@tc.number SUB_ACE_WEB_JSBRIDGE_API_0001
-     *@tc.name testWebViewJsBridge
-     *@tc.desc test WebViewJsBridge
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
+     * @tc.number      : SUB_ACE_WEB_JSBRIDGE_API_0001
+     * @tc.name        : testWebViewWebViewJsBridge
+     * @tc.desc        : test WebViewJsBridge
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
      */
     it('testWebViewWebViewJsBridge', 0, async (done: Function) => {
       emitKey = "emitWebViewWebViewJsBridge"

@@ -551,6 +551,40 @@ export default function TLSSocketTest() {
         done();
       }
     });
+    
+        /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocket_Bind_1900
+     * @tc.name  :  testNetworkMgrSocketTLSSocketBind1900
+     * @tc.desc  :  Bind IP address and port
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
+    it('testNetworkMgrSocketTLSSocketBind1900', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTLSSocketBind1900';
+      console.info(`${caseName} test start`);
+      try {
+        let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
+        let addr: socket.NetAddress = {
+          address: 'www.baidu.com',
+        };
+        tlsSocket.bind(addr, (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} err: ${JSON.stringify(err)}`);
+            expectFail();
+          } else {
+            expectTrue(true);
+          }
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
 
     /*
      * @tc.number:  SUB_NetworkMgr_Socket_TLSSocket_GetState_0100

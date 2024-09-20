@@ -54,11 +54,11 @@ export default function ActsAceWebViewIncognitoMode1() {
 
     /*
      *@tc.number SUB_ACE_WEB_INCOGNITOMODE_API_0005
-     *@tc.name testWebViewIncognitoMode1
+     *@tc.name testWebViewClearAllCookiesSyncIncognito
      *@tc.desc test clearAllCookiesSync incognito
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewClearAllCookiesSyncIncognito', 0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode05'

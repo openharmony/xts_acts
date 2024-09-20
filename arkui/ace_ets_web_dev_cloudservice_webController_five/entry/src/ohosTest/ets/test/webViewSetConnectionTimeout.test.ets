@@ -53,11 +53,11 @@ export default function ActsAceWebViewSetConnectionTimeout() {
 
     /*
      *@tc.number SUB_ACE_WEB_SETCONNECTIONTIMEOUT_API_0001
-     *@tc.name testWebViewSetConnectionTimeout_zero_seconds
+     *@tc.name testWebViewSetConnectionTimeoutZeroSeconds
      *@tc.desc test setConnectionTimeout
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSetConnectionTimeoutZeroSeconds', 0, async (done: Function) => {
         emitKey = "emitWebViewSetConnectionTimeoutZeroSeconds"
@@ -71,11 +71,11 @@ export default function ActsAceWebViewSetConnectionTimeout() {
 
     /*
      *@tc.number SUB_ACE_WEB_SETCONNECTIONTIMEOUT_API_0002
-     *@tc.name testWebViewSetConnectionTimeout
+     *@tc.name testWebViewSetConnectionTimeoutPointFiveSeconds
      *@tc.desc test setConnectionTimeout_point_five
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSetConnectionTimeoutPointFiveSeconds', 0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionTimeoutPointFiveSeconds"
@@ -88,11 +88,11 @@ export default function ActsAceWebViewSetConnectionTimeout() {
 
     /*
      *@tc.number SUB_ACE_WEB_SETCONNECTIONTIMEOUT_API_0003
-     *@tc.name testWebViewSetConnectionTimeout
+     *@tc.name testWebViewSetConnectionTimeoutNegativeOneSeconds
      *@tc.desc test setConnectionTimeout_negative_one
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSetConnectionTimeoutNegativeOneSeconds', 0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionTimeoutNegativeOneSeconds"
@@ -105,11 +105,11 @@ export default function ActsAceWebViewSetConnectionTimeout() {
 
     /*
      *@tc.number SUB_ACE_WEB_SETCONNECTIONTIMEOUT_API_0004
-     *@tc.name testWebViewSetConnectionTimeout
+     *@tc.name testWebViewSetConnectionTimeoutWithA
      *@tc.desc test setConnectionTimeout_with_a
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSetConnectionTimeoutWithA', 0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionTimeoutWithA"
@@ -122,11 +122,11 @@ export default function ActsAceWebViewSetConnectionTimeout() {
 
     /*
      *@tc.number SUB_ACE_WEB_SETCONNECTIONTIMEOUT_API_0005
-     *@tc.name testWebViewSetConnectionTimeout
+     *@tc.name testWebViewSetConnectionTimeoutTenSeconds
      *@tc.desc test setConnectionTimeout_ten_seconds
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewSetConnectionTimeoutTenSeconds', 0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionTimeoutTenSeconds"
@@ -139,11 +139,11 @@ export default function ActsAceWebViewSetConnectionTimeout() {
 
     /*
     *@tc.number SUB_ACE_WEB_SETCONNECTIONTIMEOUT_API_0006
-    *@tc.name testWebViewSetConnectionTimeout
+    *@tc.name testWebViewSetConnectionAboutAppearTimeoutFiveSeconds
     *@tc.desc test setConnectionTimeout_aboutAppear_five_seconds
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level Level 1
     */
     it('testWebViewSetConnectionAboutAppearTimeoutFiveSeconds', 0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionAboutAppearTimeoutFiveSeconds"

@@ -69,14 +69,14 @@ export default function webViewNativeMediaSetVolume() {
         await Utils.sleep(1000);
       done();
     })
-    
+
     /*
-     *@tc.number SUB_ACE_WEB_setVolume_API_0001
-     *@tc.name testWebViewNativeMediaSetVolume
-     *@tc.desc test setVolume
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
+     * @tc.number     : SUB_ACE_WEB_setVolume_API_0001
+     * @tc.name       : testWebViewNativeMediaSetVolume
+     * @tc.desc       : test setVolume
+     * @tc.size_t     : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
      */
     it('testWebViewNativeMediaSetVolume', 0, async (done: Function) => {
         Utils.registerEvent("testWebViewNativeMediaSetVolume", true, 1290, done);
