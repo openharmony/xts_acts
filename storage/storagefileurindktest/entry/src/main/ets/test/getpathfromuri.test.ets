@@ -115,5 +115,30 @@ export default function ActsStorageFileUriNdkTest(){
             expect(false).assertTrue();
          }
       });
+
+      /**
+       * @tc.number SUB_BASIC_FM_FileAPI_getfileuri_0500
+       * @tc.name getfilename_ndktest_001
+       * @tc.desc function of API, Test GetFileName, normal function
+       * @tc.size MediumTest
+       * @tc.type Function
+       * @tc.level Level 0
+       * @tc.require
+       */
+      it('getfilename_ndktest_001', 0,async function (done){
+         try{
+            let filepath = getContext().filesDir + "/5.txt";
+            fs.openSync(filepath,0o102);
+            let uri = new fileuri.FileUri(filepath);
+            console.info("getfilename_ndktest_001 test napi uri = "+ uri);
+            let ret = getpathfromuri.GetFileName();
+            console.info("getfilename_ndktest_001 test napi ret = "+ JSON.stringify(ret));
+            expect(ret == "5.txt").assertTrue();
+            done();
+         }catch(e){
+            console.info('getfilename_ndktest_001 has failed for ' + e.message + ', code: ' + e.code);
+            expect(false).assertTrue();
+         }
+      });
    });
 }
