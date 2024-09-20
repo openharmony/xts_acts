@@ -21,7 +21,7 @@ import { CommonView } from '../../componet/CommonView';
 struct TestAnimatorRegisterOnCancel {
   PAGE_TAG: string = 'TestAnimatorRegisterOnCancel';
 
-  build() {
+  build(){
     Column() {
       CommonView({
         pageTag: this.PAGE_TAG,
