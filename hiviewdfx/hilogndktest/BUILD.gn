@@ -16,7 +16,7 @@ import("//test/xts/tools/build/suite.gni")
 ohos_app_assist_suite("demoIdna_ndk_main") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsHilogNdkTest"
+  hap_name = "ActsHilogNdkOtherTest"
   subsystem_name = "hiviewdfx"
   part_name = "hilog"
 }

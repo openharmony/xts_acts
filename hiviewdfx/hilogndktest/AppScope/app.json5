@@ -15,7 +15,7 @@
 
 {
   "app": {
-    "bundleName": "com.hicollie.test",
+    "bundleName": "ohos.acts.hiviewdfx.hilog.function",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",

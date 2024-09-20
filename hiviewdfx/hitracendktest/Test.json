@@ -1,17 +1,17 @@
 {
-    "description": "Configuration for global_idna_test Tests",
+    "description": "Configuration for hitracendk Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "shell-timeout": "600000",
-        "bundle-name": "com.hicollie.test",
+        "bundle-name": "com.hitrace.napitest",
         "module-name": "entry_test"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsHicollieTest.hap",
-                "ActsHicollieOtherTest.hap"
+                "ActsHitraceNdkTest.hap",
+                "ActsHitraceNdkOtherTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

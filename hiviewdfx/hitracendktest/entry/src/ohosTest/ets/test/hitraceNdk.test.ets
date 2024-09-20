@@ -14,7 +14,7 @@
  */
 
 import { describe, expect, it } from '@ohos/hypium'
-import hitracendk from 'libhitracendk.so'
+import hitracendk from 'libentry.so'
 
 export default function hitraceNdkTest() {
   describe('HiviewdfxHitraceTest', () => {

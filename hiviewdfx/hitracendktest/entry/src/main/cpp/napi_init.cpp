@@ -14,8 +14,8 @@
  */
 
 #include "napi/native_api.h"
-#include <trace.h>
-#include <thread>
+#include "hitrace/trace.h"
+
 
 #define FAIL (-1)
 #define SUCCESS 0
