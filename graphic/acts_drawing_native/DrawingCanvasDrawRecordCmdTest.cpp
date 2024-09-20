@@ -58,28 +58,28 @@ class DrawingCanvasDrawRecordCmdTest : public testing::Test {};
 HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdAbNormal, TestSize.Level0) {
     // 1. The OH_Drawing_CanvasDrawRecordCmd parameter is not empty, and
     //the width and height of the canvas are smaller than the recorded canvas
-    OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
-    OH_Drawing_RecordCmdUtils* recordcmdutil = OH_Drawing_RecordCmdUtilsCreate ();
-    OH_Drawing_Canvas** canvass = &canvas;
-    OH_Drawing_RecordCmd* recordCmd = nullptr;
-    OH_Drawing_RecordCmd** recordCmds = &recordCmd;
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_RecordCmdUtils *recordcmdutil = OH_Drawing_RecordCmdUtilsCreate ();
+    OH_Drawing_Canvas **canvass = &canvas;
+    OH_Drawing_RecordCmd *recordCmd = nullptr;
+    OH_Drawing_RecordCmd **recordCmds = &recordCmd;
     int a= OH_Drawing_CanvasGetWidth (canvas);
     int b= OH_Drawing_CanvasGetHeight (canvas);
-    OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil1, a-1, b-1, canvass);
-    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil1, recordCmds);
+    OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil, a-1, b-1, canvass);
+    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil, recordCmds);
     // 2. The OH_Drawing_CanvasDrawRecordCmd parameter is not empty, and the width and height
     //of the canvas are bigger than the recorded canvas
-    OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil1, a+1, b+1, canvass);
-    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil1, recordCmds);
+    OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil, a+1, b+1, canvass);
+    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil, recordCmds);
     // 3. OH_Drawing_CanvasDrawRecordCmd parameters are not empty, and recordCmd
     //has a start recording-end recording
-    OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil1, 1, 1, canvass);
-    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil1, recordCmds);
+    OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil, 1, 1, canvass);
+    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil, recordCmds);
     // 4. OH_Drawing_CanvasDrawRecordCmd parameters are not empty, and recordCmd
     //has Start Recording-Draw Operation-End Recording
-    OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil1, 1, 1, canvass);
+    OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil, 1, 1, canvass);
     OH_Drawing_CanvasDrawRecordCmd (canvas, recordCmd);
-    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil1, recordCmds);
+    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil, recordCmds);
 }
 
 } // namespace Drawing
