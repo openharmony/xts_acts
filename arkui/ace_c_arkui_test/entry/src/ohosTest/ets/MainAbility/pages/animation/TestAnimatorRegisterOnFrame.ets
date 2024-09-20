@@ -21,7 +21,7 @@ import { CommonView } from '../../componet/CommonView';
 struct TestAnimatorRegisterOnFrame {
   PAGE_TAG: string = 'TestAnimatorRegisterOnFrame';
 
-  build() {
+  build(){
     Column() {
       CommonView({
         pageTag: this.PAGE_TAG,
