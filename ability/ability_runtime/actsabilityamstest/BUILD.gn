@@ -19,6 +19,10 @@ group("ActsAbilityAmsTest") {
     deps = [
       "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
       "actscreatemodulecontexttest:ActsCreateModuleContextErrorTest",
+      "actsterminateselfwithresulttest:ActsTerminateselfWithResultEntry",
+      "actsterminateselfwithresulttest:ActsTerminateselfWithResultTest",
+      "terminateselfwithresulttesthap:TerminateSelfWithResultTestHap",
+      "terminateselfwithresulttesthap2:TerminateSelfWithResultTestHap2",
     ]
   }
 }
