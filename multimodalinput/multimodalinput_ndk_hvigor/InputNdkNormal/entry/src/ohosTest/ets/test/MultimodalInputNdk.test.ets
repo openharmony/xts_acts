@@ -1119,5 +1119,1679 @@ export default function MultimodalInputNdkTest() {
       }
       console.info(`${caseName} end to test OH_Input_InjectMouseEvent`);
     });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_RegisterDeviceListener_0100
+     * @tc.name: SUB_MMI_Api_Input_RegisterDeviceListener_0100
+     * @tc.desc: OH_Input_RegisterDeviceListener Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_RegisterDeviceListener_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_RegisterDeviceListener_0100';
+      console.info(`${caseName} start to test OH_Input_RegisterDeviceListener`);
+      try {
+        let data = input.RegisterDeviceListener();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_RegisterDeviceListener`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListener_0100
+     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListener_0100
+     * @tc.desc: OH_Input_UnregisterDeviceListener Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_UnregisterDeviceListener_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListener_0100';
+      console.info(`${caseName} start to test OH_Input_UnregisterDeviceListener`);
+      try {
+        let data = input.UnregisterDeviceListener();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_UnregisterDeviceListener`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_RegisterDeviceListener_0200
+     * @tc.name: SUB_MMI_Api_Input_RegisterDeviceListener_0200
+     * @tc.desc: OH_Input_RegisterDeviceListener Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_RegisterDeviceListener_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_RegisterDeviceListener_0200';
+      console.info(`${caseName} start to test OH_Input_RegisterDeviceListener`);
+      try {
+        let data = input.RegisterDeviceListener2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_RegisterDeviceListener`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListener_0200
+     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListener_0200
+     * @tc.desc: OH_Input_UnregisterDeviceListener Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_UnregisterDeviceListener_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListener_0200';
+      console.info(`${caseName} start to test OH_Input_UnregisterDeviceListener`);
+      try {
+        let data = input.UnregisterDeviceListener2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_UnregisterDeviceListener`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListeners_0100
+     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListeners_0100
+     * @tc.desc: OH_Input_UnregisterDeviceListeners Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_UnregisterDeviceListeners_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListeners_0100';
+      console.info(`${caseName} start to test OH_Input_UnregisterDeviceListeners`);
+      try {
+        let data = input.UnregisterDeviceListeners();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_UnregisterDeviceListeners`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_RegisterDeviceListener_0300
+     * @tc.name: SUB_MMI_Api_Input_RegisterDeviceListener_0300
+     * @tc.desc: OH_Input_RegisterDeviceListener Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_RegisterDeviceListener_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_RegisterDeviceListener_0300';
+      console.info(`${caseName} start to test OH_Input_RegisterDeviceListener`);
+      try {
+        let data = input.RegisterDeviceListener3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_RegisterDeviceListener`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListener_0300
+     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListener_0300
+     * @tc.desc: OH_Input_UnregisterDeviceListener Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_UnregisterDeviceListener_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListener_0300';
+      console.info(`${caseName} start to test OH_Input_UnregisterDeviceListener`);
+      try {
+        let data = input.UnregisterDeviceListener3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_UnregisterDeviceListener`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_RegisterDeviceListener_0400
+     * @tc.name: SUB_MMI_Api_Input_RegisterDeviceListener_0400
+     * @tc.desc: OH_Input_RegisterDeviceListener Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_RegisterDeviceListener_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_RegisterDeviceListener_0400';
+      console.info(`${caseName} start to test OH_Input_RegisterDeviceListener`);
+      try {
+        let data = input.RegisterDeviceListener4();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_RegisterDeviceListener`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListener_0400
+     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListener_0400
+     * @tc.desc: OH_Input_UnregisterDeviceListener Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_UnregisterDeviceListener_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListener_0400';
+      console.info(`${caseName} start to test OH_Input_UnregisterDeviceListener`);
+      try {
+        let data = input.UnregisterDeviceListener4();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_UnregisterDeviceListener`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_RegisterDeviceListener_0500
+     * @tc.name: SUB_MMI_Api_Input_RegisterDeviceListener_0500
+     * @tc.desc: OH_Input_RegisterDeviceListener Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_RegisterDeviceListener_0500', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_RegisterDeviceListener_0500';
+      console.info(`${caseName} start to test OH_Input_RegisterDeviceListener`);
+      try {
+        let data = input.RegisterDeviceListener5();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_RegisterDeviceListener`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListener_0500
+     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListener_0500
+     * @tc.desc: OH_Input_UnregisterDeviceListener Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_UnregisterDeviceListener_0500', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListener_0500';
+      console.info(`${caseName} start to test OH_Input_UnregisterDeviceListener`);
+      try {
+        let data = input.UnregisterDeviceListener5();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_UnregisterDeviceListener`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_RegisterDeviceListener_0600
+     * @tc.name: SUB_MMI_Api_Input_RegisterDeviceListener_0600
+     * @tc.desc: OH_Input_RegisterDeviceListener Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_RegisterDeviceListener_0600', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_RegisterDeviceListener_0600';
+      console.info(`${caseName} start to test OH_Input_RegisterDeviceListener`);
+      try {
+        let data = input.RegisterDeviceListener6();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_RegisterDeviceListener`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListener_0600
+     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListener_0600
+     * @tc.desc: OH_Input_UnregisterDeviceListener Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_UnregisterDeviceListener_0600', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListener_0600';
+      console.info(`${caseName} start to test OH_Input_UnregisterDeviceListener`);
+      try {
+        let data = input.UnregisterDeviceListener6();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_UnregisterDeviceListener`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceIds_0100
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceIds_0100
+     * @tc.desc: OH_Input_GetDeviceIds Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceIds_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceIds_0100';
+      console.info(`${caseName} start to test OH_Input_GetDeviceIds`);
+      try {
+        let data = input.GetDeviceIds();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceIds`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceIds_0200
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceIds_0200
+     * @tc.desc: OH_Input_GetDeviceIds Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceIds_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceIds_0200';
+      console.info(`${caseName} start to test OH_Input_GetDeviceIds`);
+      try {
+        let data = input.GetDeviceIds2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceIds`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceIds_0300
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceIds_0300
+     * @tc.desc: OH_Input_GetDeviceIds Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceIds_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceIds_0300';
+      console.info(`${caseName} start to test OH_Input_GetDeviceIds`);
+      try {
+        let data = input.GetDeviceIds3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceIds`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceIds_0400
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceIds_0400
+     * @tc.desc: OH_Input_GetDeviceIds Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceIds_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceIds_0400';
+      console.info(`${caseName} start to test OH_Input_GetDeviceIds`);
+      try {
+        let data = input.GetDeviceIds4();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceIds`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceIds_0500
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceIds_0500
+     * @tc.desc: OH_Input_GetDeviceIds Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceIds_0500', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceIds_0500';
+      console.info(`${caseName} start to test OH_Input_GetDeviceIds`);
+      try {
+        let data = input.GetDeviceIds5();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceIds`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetKeyboardType_0100
+     * @tc.name: SUB_MMI_Api_Input_GetKeyboardType_0100
+     * @tc.desc: OH_Input_GetKeyboardType Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetKeyboardType_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetKeyboardType_0100';
+      console.info(`${caseName} start to test OH_Input_GetKeyboardType`);
+      try {
+        let data = input.GetKeyboardType();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetKeyboardType`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetKeyboardType_0200
+     * @tc.name: SUB_MMI_Api_Input_GetKeyboardType_0200
+     * @tc.desc: OH_Input_GetKeyboardType Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetKeyboardType_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetKeyboardType_0200';
+      console.info(`${caseName} start to test OH_Input_GetKeyboardType`);
+      try {
+        let data = input.GetKeyboardType2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetKeyboardType`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetKeyboardType_0300
+     * @tc.name: SUB_MMI_Api_Input_GetKeyboardType_0300
+     * @tc.desc: OH_Input_GetKeyboardType Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetKeyboardType_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetKeyboardType_0300';
+      console.info(`${caseName} start to test OH_Input_GetKeyboardType`);
+      try {
+        let data = input.GetKeyboardType3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetKeyboardType`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetKeyboardType_0400
+     * @tc.name: SUB_MMI_Api_Input_GetKeyboardType_0400
+     * @tc.desc: OH_Input_GetKeyboardType Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetKeyboardType_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetKeyboardType_0400';
+      console.info(`${caseName} start to test OH_Input_GetKeyboardType`);
+      try {
+        let data = input.GetKeyboardType4();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetKeyboardType`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDevice_0100
+     * @tc.name: SUB_MMI_Api_Input_GetDevice_0100
+     * @tc.desc: OH_Input_GetDevice Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDevice_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDevice_0100';
+      console.info(`${caseName} start to test OH_Input_GetDevice`);
+      try {
+        let data = input.GetDevice();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDevice`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDevice_0200
+     * @tc.name: SUB_MMI_Api_Input_GetDevice_0200
+     * @tc.desc: OH_Input_GetDevice Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDevice_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDevice_0200';
+      console.info(`${caseName} start to test OH_Input_GetDevice`);
+      try {
+        let data = input.GetDevice2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDevice`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDevice_0300
+     * @tc.name: SUB_MMI_Api_Input_GetDevice_0300
+     * @tc.desc: OH_Input_GetDevice Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDevice_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDevice_0300';
+      console.info(`${caseName} start to test OH_Input_GetDevice`);
+      try {
+        let data = input.GetDevice3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDevice`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDevice_0400
+     * @tc.name: SUB_MMI_Api_Input_GetDevice_0400
+     * @tc.desc: OH_Input_GetDevice Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDevice_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDevice_0400';
+      console.info(`${caseName} start to test OH_Input_GetDevice`);
+      try {
+        let data = input.GetDevice4();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDevice`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceName_0100
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceName_0100
+     * @tc.desc: OH_Input_GetDeviceName Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceName_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceName_0100';
+      console.info(`${caseName} start to test OH_Input_GetDeviceName`);
+      try {
+        let data = input.GetDeviceName();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceName`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceName_0200
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceName_0200
+     * @tc.desc: OH_Input_GetDeviceName Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceName_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceName_0200';
+      console.info(`${caseName} start to test OH_Input_GetDeviceName`);
+      try {
+        let data = input.GetDeviceName2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceName`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceName_0300
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceName_0300
+     * @tc.desc: OH_Input_GetDeviceName Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceName_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceName_0300';
+      console.info(`${caseName} start to test OH_Input_GetDeviceName`);
+      try {
+        let data = input.GetDeviceName3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceName`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceName_0400
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceName_0400
+     * @tc.desc: OH_Input_GetDeviceName Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceName_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceName_0400';
+      console.info(`${caseName} start to test OH_Input_GetDeviceName`);
+      try {
+        let data = input.GetDeviceName4();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceName`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceAddress_0100
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceAddress_0100
+     * @tc.desc: OH_Input_GetDeviceAddress Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceAddress_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceAddress_0100';
+      console.info(`${caseName} start to test OH_Input_GetDeviceAddress`);
+      try {
+        let data = input.GetDeviceAddress();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceAddress`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceAddress_0200
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceAddress_0200
+     * @tc.desc: OH_Input_GetDeviceAddress Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceAddress_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceAddress_0200';
+      console.info(`${caseName} start to test OH_Input_GetDeviceAddress`);
+      try {
+        let data = input.GetDeviceAddress2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceAddress`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceAddress_0300
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceAddress_0300
+     * @tc.desc: OH_Input_GetDeviceAddress Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceAddress_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceAddress_0300';
+      console.info(`${caseName} start to test OH_Input_GetDeviceAddress`);
+      try {
+        let data = input.GetDeviceAddress3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceAddress`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceAddress_0400
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceAddress_0400
+     * @tc.desc: OH_Input_GetDeviceAddress Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceAddress_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceAddress_0400';
+      console.info(`${caseName} start to test OH_Input_GetDeviceAddress`);
+      try {
+        let data = input.GetDeviceAddress4();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceAddress`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceId_0100
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceId_0100
+     * @tc.desc: OH_Input_GetDeviceId Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceId_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceId_0100';
+      console.info(`${caseName} start to test OH_Input_GetDeviceId`);
+      try {
+        let data = input.GetDeviceId();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceId_0200
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceId_0200
+     * @tc.desc: OH_Input_GetDeviceId Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceId_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceId_0200';
+      console.info(`${caseName} start to test OH_Input_GetDeviceId`);
+      try {
+        let data = input.GetDeviceId2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceId_0300
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceId_0300
+     * @tc.desc: OH_Input_GetDeviceId Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceId_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceId_0300';
+      console.info(`${caseName} start to test OH_Input_GetDeviceId`);
+      try {
+        let data = input.GetDeviceId3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetCapabilities_0100
+     * @tc.name: SUB_MMI_Api_Input_GetCapabilities_0100
+     * @tc.desc: OH_Input_GetCapabilities Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetCapabilities_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetCapabilities_0100';
+      console.info(`${caseName} start to test OH_Input_GetCapabilities`);
+      try {
+        let data = input.GetCapabilities();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetCapabilities`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetCapabilities_0200
+     * @tc.name: SUB_MMI_Api_Input_GetCapabilities_0200
+     * @tc.desc: OH_Input_GetCapabilities Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetCapabilities_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetCapabilities_0200';
+      console.info(`${caseName} start to test OH_Input_GetCapabilities`);
+      try {
+        let data = input.GetCapabilities2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetCapabilities`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetCapabilities_0300
+     * @tc.name: SUB_MMI_Api_Input_GetCapabilities_0300
+     * @tc.desc: OH_Input_GetCapabilities Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetCapabilities_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetCapabilities_0300';
+      console.info(`${caseName} start to test OH_Input_GetCapabilities`);
+      try {
+        let data = input.GetCapabilities3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetCapabilities`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetCapabilities_0400
+     * @tc.name: SUB_MMI_Api_Input_GetCapabilities_0400
+     * @tc.desc: OH_Input_GetCapabilities Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetCapabilities_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetCapabilities_0400';
+      console.info(`${caseName} start to test OH_Input_GetCapabilities`);
+      try {
+        let data = input.GetCapabilities4();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetCapabilities`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceVersion_0100
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceVersion_0100
+     * @tc.desc: OH_Input_GetDeviceVersion Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceVersion_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceVersion_0100';
+      console.info(`${caseName} start to test OH_Input_GetDeviceVersion`);
+      try {
+        let data = input.GetDeviceVersion();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceVersion`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceVersion_0200
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceVersion_0200
+     * @tc.desc: OH_Input_GetDeviceVersion Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceVersion_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceVersion_0200';
+      console.info(`${caseName} start to test OH_Input_GetDeviceVersion`);
+      try {
+        let data = input.GetDeviceVersion2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceVersion`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceVersion_0300
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceVersion_0300
+     * @tc.desc: OH_Input_GetDeviceVersion Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceVersion_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceVersion_0300';
+      console.info(`${caseName} start to test OH_Input_GetDeviceVersion`);
+      try {
+        let data = input.GetDeviceVersion3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceVersion`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceVersion_0400
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceVersion_0400
+     * @tc.desc: OH_Input_GetDeviceVersion Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceVersion_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceVersion_0400';
+      console.info(`${caseName} start to test OH_Input_GetDeviceVersion`);
+      try {
+        let data = input.GetDeviceVersion4();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceVersion`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceProduct_0100
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceProduct_0100
+     * @tc.desc: OH_Input_GetDeviceProduct Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceProduct_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceProduct_0100';
+      console.info(`${caseName} start to test OH_Input_GetDeviceProduct`);
+      try {
+        let data = input.GetDeviceProduct();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceProduct`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceProduct_0200
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceProduct_0200
+     * @tc.desc: OH_Input_GetDeviceProduct Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceProduct_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceProduct_0200';
+      console.info(`${caseName} start to test OH_Input_GetDeviceProduct`);
+      try {
+        let data = input.GetDeviceProduct2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceProduct`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceProduct_0300
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceProduct_0300
+     * @tc.desc: OH_Input_GetDeviceProduct Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceProduct_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceProduct_0300';
+      console.info(`${caseName} start to test OH_Input_GetDeviceProduct`);
+      try {
+        let data = input.GetDeviceProduct3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceProduct`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceProduct_0400
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceProduct_0400
+     * @tc.desc: OH_Input_GetDeviceProduct Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceProduct_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceProduct_0400';
+      console.info(`${caseName} start to test OH_Input_GetDeviceProduct`);
+      try {
+        let data = input.GetDeviceProduct4();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceProduct`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceVendor_0100
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceVendor_0100
+     * @tc.desc: OH_Input_GetDeviceVendor Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceVendor_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceVendor_0100';
+      console.info(`${caseName} start to test OH_Input_GetDeviceVendor`);
+      try {
+        let data = input.GetDeviceVendor();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceVendor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceVendor_0200
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceVendor_0200
+     * @tc.desc: OH_Input_GetDeviceVendor Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceVendor_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceVendor_0200';
+      console.info(`${caseName} start to test OH_Input_GetDeviceVendor`);
+      try {
+        let data = input.GetDeviceVendor2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceVendor`);
+    });
+
+        /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceVendor_0300
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceVendor_0300
+     * @tc.desc: OH_Input_GetDeviceVendor Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceVendor_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceVendor_0300';
+      console.info(`${caseName} start to test OH_Input_GetDeviceVendor`);
+      try {
+        let data = input.GetDeviceVendor3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceVendor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetDeviceVendor_0400
+     * @tc.name: SUB_MMI_Api_Input_GetDeviceVendor_0400
+     * @tc.desc: OH_Input_GetDeviceVendor Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetDeviceVendor_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetDeviceVendor_0400';
+      console.info(`${caseName} start to test OH_Input_GetDeviceVendor`);
+      try {
+        let data = input.GetDeviceVendor4();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetDeviceVendor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_DestroyDeviceInfo_0100
+     * @tc.name: SUB_MMI_Api_Input_DestroyDeviceInfo_0100
+     * @tc.desc: OH_Input_DestroyDeviceInfo Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_DestroyDeviceInfo_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_DestroyDeviceInfo_0100';
+      console.info(`${caseName} start to test OH_Input_DestroyDeviceInfo`);
+      try {
+        let data = input.DestroyDeviceInfo();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_DestroyDeviceInfo`);
+    });
   });
 }
