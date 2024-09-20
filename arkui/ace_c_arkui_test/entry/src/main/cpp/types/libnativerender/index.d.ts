@@ -265,3 +265,13 @@ export const getXYTest: (a: string) => void;
 export const getWidthHeightTest: (a: string) => void;
 
 export const getModifierKeyStatesTest: (a: string) => void;
+
+export const createDragActionTest: (a: string) => void;
+
+export const setPointerIdTest: (a: string) => void;
+
+export const setTouchPointXYTest: (a: string) => void;
+
+export const setDragPreviewOptionTest: (a: string) => void;
+
+export const registerStatusListenerTest: (a: string) => void;
