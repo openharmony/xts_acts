@@ -512,7 +512,7 @@ export default function abilityTest() {
         expect(error).assertEqual(null);
         console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1100 shell result data: ' + JSON.stringify(data));
         try {
-          expect(data.stdResult).assertContain('error: failed to attach app debug.');
+          expect(data.stdResult).assertContain('attach app debug successfully.');
         } catch (error) {
           console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1100 assert error: ' + JSON.stringify(error));
         }
@@ -532,7 +532,7 @@ export default function abilityTest() {
         expect(error).assertEqual(null);
         console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1200 shell result data: ' + JSON.stringify(data));
         try {
-          expect(data.stdResult).assertContain('error: failed to detach app debug.');
+          expect(data.stdResult).assertContain('detach app debug successfully.');
         } catch (error) {
           console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1200 assert error: ' + JSON.stringify(error));
         }
