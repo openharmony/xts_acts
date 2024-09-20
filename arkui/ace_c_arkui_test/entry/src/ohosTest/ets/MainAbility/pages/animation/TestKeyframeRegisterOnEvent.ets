@@ -21,7 +21,7 @@ import { CommonView } from '../../componet/CommonView';
 struct TestKeyframeRegisterOnEvent {
   PAGE_TAG: string = 'TestKeyframeRegisterOnEvent';
 
-  build() {
+  build(){
     Column() {
       CommonView({
         pageTag: this.PAGE_TAG,
