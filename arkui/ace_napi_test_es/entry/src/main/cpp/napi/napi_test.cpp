@@ -130,17 +130,11 @@ static void add_returned_status(napi_env env,
     }
 
     NAPI_CALL_RETURN_VOID(env,
-            napi_create_string_utf8(env,
-                    (actual_status == expected_status ?
-                    expected_message :
-                    napi_message_string),
-                    NAPI_AUTO_LENGTH,
-                    &prop_value));
-    NAPI_CALL_RETURN_VOID(env,
-            napi_set_named_property(env,
-                    object,
-                    key,
-                    prop_value));
+        napi_create_string_utf8(env,
+                                (actual_status == expected_status ? expected_message : napi_message_string),
+                                NAPI_AUTO_LENGTH,
+                                &prop_value));
+    NAPI_CALL_RETURN_VOID(env, napi_set_named_property(env, object, key, prop_value));
 }
 
 static void add_last_status(napi_env env, const char* key, napi_value return_value)
@@ -150,32 +144,25 @@ static void add_last_status(napi_env env, const char* key, napi_value return_val
     NAPI_CALL_RETURN_VOID(env, napi_get_last_error_info(env, &p_last_error));
 
     NAPI_CALL_RETURN_VOID(env,
-            napi_create_string_utf8(env,
-                    (p_last_error->error_message == nullptr ?
-                    "napi_ok" :
-                    p_last_error->error_message),
-                    NAPI_AUTO_LENGTH,
-                    &prop_value));
-    NAPI_CALL_RETURN_VOID(env, napi_set_named_property(env,
-            return_value,
-            key,
-            prop_value));
+        napi_create_string_utf8(env,
+                                (p_last_error->error_message == nullptr ? "napi_ok" : p_last_error->error_message),
+                                NAPI_AUTO_LENGTH,
+                                &prop_value));
+    NAPI_CALL_RETURN_VOID(env, napi_set_named_property(env, return_value, key, prop_value));
 }
 
 static napi_value getLastErrorInfo(napi_env env, napi_callback_info info)
 {
     napi_value value;
-    NAPI_CALL(env, napi_create_string_utf8(env, "xyz", 3, &value));
+    NAPI_CALL(env, napi_create_string_utf8(env, "xyz", 3, &value)); // 3: length
     double double_value;
     napi_status status = napi_get_value_double(env, value, &double_value);
     NAPI_ASSERT(env, status != napi_ok, "Failed to produce error condition");
-    const napi_extended_error_info * error_info = 0;
+    const napi_extended_error_info *error_info = 0;
     NAPI_CALL(env, napi_get_last_error_info(env, &error_info));
 
-    NAPI_ASSERT(env, error_info->error_code == status,
-            "Last error info code should match last status");
-    NAPI_ASSERT(env, error_info->error_message,
-            "Last error info message should not be null");
+    NAPI_ASSERT(env, error_info->error_code == status, "Last error info code should match last status");
+    NAPI_ASSERT(env, error_info->error_message, "Last error info message should not be null");
     napi_value _value;
     NAPI_CALL(env, napi_create_int32(env, error_info->error_code, &_value));
     return _value;
@@ -183,7 +170,7 @@ static napi_value getLastErrorInfo(napi_env env, napi_callback_info info)
 
 static napi_value cleanUpErrorInfo(napi_env env, napi_callback_info info)
 {
-    const napi_extended_error_info * error_info = 0;
+    const napi_extended_error_info *error_info = 0;
     NAPI_CALL(env, napi_get_last_error_info(env, &error_info));
 
     napi_value result;
@@ -416,23 +403,20 @@ static napi_value createReference(napi_env env, napi_callback_info info)
 
     napi_create_int32(env, TAG_NUMBER, &result);
     NAPI_CALL(env, napi_create_reference(env, result, 1, &test_reference));
-    napi_value value;        
+    napi_value value;
     NAPI_CALL(env, napi_create_int32(env, 0, &value));
     return value;
 }
 
 static napi_value getAndDeleteReference(napi_env env, napi_callback_info info)
 {
-    NAPI_ASSERT(env, test_reference != nullptr,
-            "A reference must have been created.");
+    NAPI_ASSERT(env, test_reference != nullptr, "A reference must have been created.");
 
     napi_value refValue = nullptr;
     napi_get_reference_value(env, test_reference, &refValue);
-
     int32_t value = 0;
     napi_get_value_int32(env, refValue, &value);
-    NAPI_ASSERT(env, value == TAG_NUMBER,
-            "refValue expect equal to 666.");
+    NAPI_ASSERT(env, value == TAG_NUMBER, "refValue expect equal to 666.");
 
     NAPI_CALL(env, napi_delete_reference(env, test_reference));
     test_reference = nullptr;
@@ -449,16 +433,13 @@ static napi_value referenceRefAndUnref(napi_env env, napi_callback_info info)
     napi_create_reference(env, result, 1, &resultRef);
     
     napi_reference_ref(env, resultRef, &resultRefCount);
-    NAPI_ASSERT(env, resultRefCount == 2,
-            "resultRefCount expect equal to 2");
+    NAPI_ASSERT(env, resultRefCount == 2, "resultRefCount expect equal to 2"); // 2: resultRefCount
     napi_reference_unref(env, resultRef, &resultRefCount);
-    NAPI_ASSERT(env, resultRefCount == 1,
-            "resultRefCount expect equal to 1.");
+    NAPI_ASSERT(env, resultRefCount == 1, "resultRefCount expect equal to 1.");
 
     napi_value refValue = nullptr;
     napi_get_reference_value(env, resultRef, &refValue);
-    NAPI_ASSERT(env, refValue != nullptr,
-                "A reference must have been created.");
+    NAPI_ASSERT(env, refValue != nullptr, "A reference must have been created.");
     napi_delete_reference(env, resultRef);
 
     napi_value _value;
@@ -478,15 +459,12 @@ static napi_value createArrayAndGetLength(napi_env env, napi_callback_info info)
     napi_valuetype valuetype0;
     NAPI_CALL(env, napi_typeof(env, args[0], &valuetype0));
 
-    NAPI_ASSERT(env, valuetype0 == napi_object,
-            "Wrong type of arguments. Expects an array as first argument.");
-
+    NAPI_ASSERT(env, valuetype0 == napi_object, "Wrong type of arguments. Expects an array as first argument.");
     napi_value ret;
     NAPI_CALL(env, napi_create_array(env, &ret));
 
     uint32_t i, length;
     NAPI_CALL(env, napi_get_array_length(env, args[0], &length));
-
     for (i = 0; i < length; i++) {
         napi_value e;
         NAPI_CALL(env, napi_get_element(env, args[0], i, &e));
@@ -505,9 +483,7 @@ static napi_value getArrayWithLength(napi_env env, napi_callback_info info)
 
     napi_valuetype valuetype0;
     NAPI_CALL(env, napi_typeof(env, args[0], &valuetype0));
-
-    NAPI_ASSERT(env, valuetype0 == napi_object,
-            "Wrong type of arguments. Expects an integer the first argument.");
+    NAPI_ASSERT(env, valuetype0 == napi_object, "Wrong type of arguments. Expects an integer the first argument.");
 
     uint32_t array_length = 0;
     NAPI_CALL(env, napi_get_array_length(env, args[0], &array_length));
@@ -580,25 +556,20 @@ static napi_value createSymbol(napi_env env, napi_callback_info info)
     if (argc >= 1) {
         napi_valuetype valuetype;
         NAPI_CALL(env, napi_typeof(env, args[0], &valuetype));
-
-        NAPI_ASSERT(env, valuetype == napi_string,
-                "Wrong type of arguments. Expects a string.");
-
+        NAPI_ASSERT(env, valuetype == napi_string, "Wrong type of arguments. Expects a string.");
         description = args[0];
     }
 
     napi_value symbol;
     NAPI_CALL(env, napi_create_symbol(env, description, &symbol));
-
     napi_valuetype valuetypeSymbol;
-    NAPI_CALL(env, napi_typeof(env, symbol, &valuetypeSymbol)); 
+    NAPI_CALL(env, napi_typeof(env, symbol, &valuetypeSymbol));
 
-    NAPI_ASSERT(env, valuetypeSymbol == napi_symbol,
-                "Wrong type of arguments. Expects a string.");
+    NAPI_ASSERT(env, valuetypeSymbol == napi_symbol, "Wrong type of arguments. Expects a string.");
     napi_value _value;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
     
-    return _value;            
+    return _value;
 }
 
 static napi_value createTypeArray(napi_env env, napi_callback_info info)
@@ -708,23 +679,17 @@ static napi_value createAndGetStringLatin1(napi_env env, napi_callback_info info
     size_t argc = 1;
     napi_value args[1];
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
-
     NAPI_ASSERT(env, argc >= 1, "Wrong number of arguments");
 
     napi_valuetype valuetype;
     NAPI_CALL(env, napi_typeof(env, args[0], &valuetype));
-
-    NAPI_ASSERT(env, valuetype == napi_string,
-            "Wrong type of argment. Expects a string.");
+    NAPI_ASSERT(env, valuetype == napi_string, "Wrong type of argment. Expects a string.");
 
     char buffer[128];
     size_t bufferSize = 128;
     size_t copied = 0;
-
-    NAPI_CALL(env,
-        napi_get_value_string_latin1(env, args[0], buffer, bufferSize, &copied));
+    NAPI_CALL(env, napi_get_value_string_latin1(env, args[0], buffer, bufferSize, &copied));
     NAPI_ASSERT(env, copied == 3, "napi_get_value_string_latin1 fail");
-
     napi_value output;
     NAPI_CALL(env, napi_create_string_latin1(env, buffer, copied, &output));
 
@@ -736,23 +701,18 @@ static napi_value createAndGetStringUtf8(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value args[1];
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
-
     NAPI_ASSERT(env, argc >= 1, "Wrong number of arguments");
 
     napi_valuetype valuetype;
     NAPI_CALL(env, napi_typeof(env, args[0], &valuetype));
-
-    NAPI_ASSERT(env, valuetype == napi_string,
-            "Wrong type of argment. Expects a string.");
+    NAPI_ASSERT(env, valuetype == napi_string, "Wrong type of argment. Expects a string.");
 
     char buffer[128];
     size_t bufferSize = 128;
     size_t copied = 0;
 
-    NAPI_CALL(env,
-        napi_get_value_string_utf8(env, args[0], buffer, bufferSize, &copied));
+    NAPI_CALL(env, napi_get_value_string_utf8(env, args[0], buffer, bufferSize, &copied));
     NAPI_ASSERT(env, copied == 2, "napi_get_value_string_utf8 fail");
-
     napi_value output;
     NAPI_CALL(env, napi_create_string_utf8(env, buffer, copied, &output));
 
@@ -764,22 +724,16 @@ static napi_value StringUtf8OfLengthLeZero(napi_env env, napi_callback_info info
     size_t argc = 1;
     napi_value args[1];
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
-
     NAPI_ASSERT(env, argc == 1, "Expects one argument.");
 
     napi_valuetype valueType;
     NAPI_CALL(env, napi_typeof(env, args[0], &valueType));
-
-    NAPI_ASSERT(env, valueType == napi_string,
-            "Wrong type of argment. Expects a string.");
+    NAPI_ASSERT(env, valueType == napi_string, "Wrong type of argment. Expects a string.");
 
     char buffer[128];
     size_t bufferSize = 128;
     size_t copied = 0;
-
-    NAPI_CALL(env,
-        napi_get_value_string_utf8(env, args[0], buffer, bufferSize, &copied));
-
+    NAPI_CALL(env, napi_get_value_string_utf8(env, args[0], buffer, bufferSize, &copied));
     napi_value output;
     NAPI_CALL(env, napi_create_string_utf8(env, buffer, -1, &output));
 
@@ -947,14 +901,11 @@ static napi_value getPrototype2(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value args[1];
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
-
     NAPI_ASSERT(env, argc >= 1, "Wrong number of arguments");
 
     napi_valuetype valuetype;
     NAPI_CALL(env, napi_typeof(env, args[0], &valuetype));
-
-    NAPI_ASSERT(env, valuetype == napi_function,
-            "Wrong type of argment. Expects a napi_function.");
+    NAPI_ASSERT(env, valuetype == napi_function, "Wrong type of argment. Expects a napi_function.");
 
     napi_value customClassPrototype = nullptr;
     NAPI_CALL(env, napi_get_prototype(env, args[0], &customClassPrototype));
@@ -1039,7 +990,7 @@ static napi_value getDataViewInfo(napi_env env, napi_callback_info info)
 
     napi_value _value;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
-    return _value;  
+    return _value;
 }
 
 static napi_value getValueBool(napi_env env, napi_callback_info info)
@@ -1477,30 +1428,15 @@ static napi_value setProperty(napi_env env,
     napi_value object, key, value;
 
     NAPI_CALL(env, napi_create_object(env, &object));
-
     NAPI_CALL(env, napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &key));
-
     NAPI_CALL(env, napi_create_object(env, &value));
-
     status = napi_set_property(nullptr, object, key, value);
-
-    add_returned_status(env,
-            "envIsNull",
-            object,
-            "Invalid argument",
-            napi_invalid_arg,
-            status);
-
+    add_returned_status(env, "envIsNull", object, "Invalid argument", napi_invalid_arg, status);
     napi_set_property(env, nullptr, key, value);
-
     add_last_status(env, "objectIsNull", object);
-
     napi_set_property(env, object, nullptr, value);
-
     add_last_status(env, "keyIsNull", object);
-
     napi_set_property(env, object, key, nullptr);
-
     add_last_status(env, "valueIsNull", object);
 
     return object;
@@ -1513,30 +1449,15 @@ static napi_value getProperty(napi_env env,
     napi_value object, key, result;
 
     NAPI_CALL(env, napi_create_object(env, &object));
-
     NAPI_CALL(env, napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &key));
-
     NAPI_CALL(env, napi_create_object(env, &result));
-
     status = napi_get_property(nullptr, object, key, &result);
-
-    add_returned_status(env,
-            "envIsNull",
-            object,
-            "Invalid argument",
-            napi_invalid_arg,
-            status);
-
+    add_returned_status(env, "envIsNull", object, "Invalid argument", napi_invalid_arg, status);
     napi_get_property(env, nullptr, key, &result);
-
     add_last_status(env, "objectIsNull", object);
-
     napi_get_property(env, object, nullptr, &result);
-
     add_last_status(env, "keyIsNull", object);
-
     napi_get_property(env, object, key, nullptr);
-
     add_last_status(env, "resultIsNull", object);
 
     return object;
@@ -1603,21 +1524,20 @@ static napi_value hasProperty(napi_env env, napi_callback_info info)
 
 static napi_value setAndDeleteProperty(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
-    napi_value args[2];
+    size_t argc = 2; // 2: number of arguments
+    napi_value args[2]; // 2: number of arguments
 
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
-    NAPI_ASSERT(env, argc == 2, "Wrong number of arguments");
+    NAPI_ASSERT(env, argc == 2, "Wrong number of arguments"); // 2: number of arguments
 
     napi_valuetype valuetype0;
     NAPI_CALL(env, napi_typeof(env, args[0], &valuetype0));
-    NAPI_ASSERT(env, valuetype0 == napi_object,
-            "Wrong type of arguments. Expects an object as first argument.");
+    NAPI_ASSERT(env, valuetype0 == napi_object, "Wrong type of arguments. Expects an object as first argument.");
 
     napi_valuetype valuetype1;
     NAPI_CALL(env, napi_typeof(env, args[1], &valuetype1));
     NAPI_ASSERT(env, valuetype1 == napi_string || valuetype1 == napi_symbol,
-            "Wrong type of arguments. Expects a string or symbol as second.");
+        "Wrong type of arguments. Expects a string or symbol as second.");
 
     const char testStr[] = "cKey";
     napi_value cKey;
@@ -1644,21 +1564,17 @@ static napi_value setAndDeleteProperty(napi_env env, napi_callback_info info)
 
 static napi_value hasOwnProperty(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
-    napi_value args[2];
+    size_t argc = 2; // 2: number of arguments
+    napi_value args[2]; // 2: number of arguments
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
-
-    NAPI_ASSERT(env, argc == 2, "Wrong number of arguments");
+    NAPI_ASSERT(env, argc == 2, "Wrong number of arguments"); // 2: number of arguments
 
     napi_valuetype valuetype0;
     NAPI_CALL(env, napi_typeof(env, args[0], &valuetype0));
-
-    NAPI_ASSERT(env, valuetype0 == napi_object,
-            "Wrong type of arguments. Expects an object as first argument.");
+    NAPI_ASSERT(env, valuetype0 == napi_object, "Wrong type of arguments. Expects an object as first argument.");
 
     bool has_property;
     NAPI_CALL(env, napi_has_own_property(env, args[0], args[1], &has_property));
-
     napi_value ret;
     NAPI_CALL(env, napi_get_boolean(env, has_property, &ret));
 
@@ -1667,34 +1583,26 @@ static napi_value hasOwnProperty(napi_env env, napi_callback_info info)
 
 static napi_value setNamedProperty(napi_env env, napi_callback_info info)
 {
-    size_t argc = 3;
-    napi_value args[3];
-    char key[256] = "";
+    size_t argc = 3; // 3: number of arguments
+    napi_value args[3]; // 3: the third argument
+    char key[256] = ""; // 256: the max length
     size_t key_length;
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
-
-    NAPI_ASSERT(env, argc >= 3, "Wrong number of arguments");
+    NAPI_ASSERT(env, argc >= 3, "Wrong number of arguments"); // 3: number of arguments
 
     napi_valuetype value_type0;
     NAPI_CALL(env, napi_typeof(env, args[0], &value_type0));
-
-    NAPI_ASSERT(env, value_type0 == napi_object,
-            "Wrong type of arguments. Expects an object as first argument.");
+    NAPI_ASSERT(env, value_type0 == napi_object, "Wrong type of arguments. Expects an object as first argument.");
 
     napi_valuetype value_type1;
     NAPI_CALL(env, napi_typeof(env, args[1], &value_type1));
+    NAPI_ASSERT(env, value_type1 == napi_string, "Wrong type of arguments. Expects a string as second.");
 
-    NAPI_ASSERT(env, value_type1 == napi_string,
-            "Wrong type of arguments. Expects a string as second.");
+    NAPI_CALL(env, napi_get_value_string_utf8(env, args[1], key, 255, &key_length)); // 255: key length
+    key[255] = 0; // 255: key length
+    NAPI_ASSERT(env, key_length <= 255, "Cannot accommodate keys longer than 255 bytes"); // 255: key length
 
-    NAPI_CALL(env,
-            napi_get_value_string_utf8(env, args[1], key, 255, &key_length));
-    key[255] = 0;
-    NAPI_ASSERT(env, key_length <= 255,
-            "Cannot accommodate keys longer than 255 bytes");
-
-    NAPI_CALL(env, napi_set_named_property(env, args[0], key, args[2]));
-
+    NAPI_CALL(env, napi_set_named_property(env, args[0], key, args[2])); // 2: the second argument
     napi_value value_true;
     NAPI_CALL(env, napi_get_boolean(env, true, &value_true));
 
@@ -1703,32 +1611,25 @@ static napi_value setNamedProperty(napi_env env, napi_callback_info info)
 
 static napi_value getNamedProperty(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
-    napi_value args[2];
-    char key[256] = "";
+    size_t argc = 2; // 2: number of arguments
+    napi_value args[2]; // 2: the second argument
+    char key[256] = ""; // 256: the max length
     size_t key_length;
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
-
-    NAPI_ASSERT(env, argc >= 2, "Wrong number of arguments");
+    NAPI_ASSERT(env, argc >= 2, "Wrong number of arguments"); // 2: number of arguments
 
     napi_valuetype value_type0;
     NAPI_CALL(env, napi_typeof(env, args[0], &value_type0));
-
-    NAPI_ASSERT(env, value_type0 == napi_object,
-            "Wrong type of arguments. Expects an object as first argument.");
+    NAPI_ASSERT(env, value_type0 == napi_object, "Wrong type of arguments. Expects an object as first argument.");
 
     napi_valuetype value_type1;
     NAPI_CALL(env, napi_typeof(env, args[1], &value_type1));
-
-    NAPI_ASSERT(env, value_type1 == napi_string,
-            "Wrong type of arguments. Expects a string as second.");
+    NAPI_ASSERT(env, value_type1 == napi_string, "Wrong type of arguments. Expects a string as second.");
 
     napi_value object = args[0];
-    NAPI_CALL(env,
-            napi_get_value_string_utf8(env, args[1], key, 255, &key_length));
-    key[255] = 0;
-    NAPI_ASSERT(env, key_length <= 255,
-            "Cannot accommodate keys longer than 255 bytes");
+    NAPI_CALL(env, napi_get_value_string_utf8(env, args[1], key, 255, &key_length)); // 255: key length
+    key[255] = 0; // 255: key length
+    NAPI_ASSERT(env, key_length <= 255, "Cannot accommodate keys longer than 255 bytes"); // 255: key length
     napi_value output;
     NAPI_CALL(env, napi_get_named_property(env, object, key, &output));
 
@@ -1737,35 +1638,28 @@ static napi_value getNamedProperty(napi_env env, napi_callback_info info)
 
 static napi_value hasNamedProperty(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
-    napi_value args[2];
-    char key[256] = "";
+    size_t argc = 2; // 2: number of arguments
+    napi_value args[2]; // 2: the second argument
+    char key[256] = ""; // 256: the max length
     size_t key_length;
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
-
-    NAPI_ASSERT(env, argc >= 2, "Wrong number of arguments");
+    NAPI_ASSERT(env, argc >= 2, "Wrong number of arguments"); // 2: number of arguments
 
     napi_valuetype value_type0;
     NAPI_CALL(env, napi_typeof(env, args[0], &value_type0));
-
-    NAPI_ASSERT(env, value_type0 == napi_object,
-            "Wrong type of arguments. Expects an object as first argument.");
+    NAPI_ASSERT(env, value_type0 == napi_object, "Wrong type of arguments. Expects an object as first argument.");
 
     napi_valuetype value_type1;
     NAPI_CALL(env, napi_typeof(env, args[1], &value_type1));
-
     NAPI_ASSERT(env, value_type1 == napi_string || value_type1 == napi_symbol,
-            "Wrong type of arguments. Expects a string as second.");
+        "Wrong type of arguments. Expects a string as second.");
 
-    NAPI_CALL(env,
-            napi_get_value_string_utf8(env, args[1], key, 255, &key_length));
-    key[255] = 0;
-    NAPI_ASSERT(env, key_length <= 255,
-            "Cannot accommodate keys longer than 255 bytes");
+    NAPI_CALL(env, napi_get_value_string_utf8(env, args[1], key, 255, &key_length)); // 255: key length
+    key[255] = 0; // 255: key length
+    NAPI_ASSERT(env, key_length <= 255, "Cannot accommodate keys longer than 255 bytes"); // 255: key length
 
     bool has_property;
     NAPI_CALL(env, napi_has_named_property(env, args[0], key, &has_property));
-
     napi_value ret;
     NAPI_CALL(env, napi_get_boolean(env, has_property, &ret));
 
@@ -1778,18 +1672,11 @@ static napi_value setElement(napi_env env, napi_callback_info info)
 
     NAPI_CALL(env, napi_create_object(env, &return_value));
     NAPI_CALL(env, napi_create_object(env, &object));
-
-    add_returned_status(env,
-            "envIsNull",
-            return_value,
-            "Invalid argument",
-            napi_invalid_arg,
-            napi_set_element(nullptr, object, 0, object));
+    add_returned_status(env, "envIsNull", return_value, "Invalid argument", napi_invalid_arg,
+        napi_set_element(nullptr, object, 0, object));
 
     napi_set_element(env, nullptr, 0, object);
     add_last_status(env, "objectIsNull", return_value);
-
-
     napi_set_property(env, object, 0, nullptr);
     add_last_status(env, "valueIsNull", return_value);
 
@@ -1802,17 +1689,11 @@ static napi_value getElement(napi_env env, napi_callback_info info)
 
     NAPI_CALL(env, napi_create_object(env, &return_value));
     NAPI_CALL(env, napi_create_object(env, &object));
-
-    add_returned_status(env,
-            "envIsNull",
-            return_value,
-            "Invalid argument",
-            napi_invalid_arg,
-            napi_get_element(nullptr, object, 0, &prop));
+    add_returned_status(env, "envIsNull", return_value, "Invalid argument", napi_invalid_arg,
+        napi_get_element(nullptr, object, 0, &prop));
 
     napi_get_property(env, nullptr, 0, &prop);
     add_last_status(env, "objectIsNull", return_value);
-
     napi_get_property(env, object, 0, nullptr);
     add_last_status(env, "valueIsNull", return_value);
 
@@ -1827,17 +1708,11 @@ static napi_value TestBoolValuedElementApi(napi_env env,
 
     NAPI_CALL(env, napi_create_object(env, &return_value));
     NAPI_CALL(env, napi_create_object(env, &object));
-
-    add_returned_status(env,
-            "envIsNull",
-            return_value,
-            "Invalid argument",
-            napi_invalid_arg,
-            api(nullptr, object, 0, &result));
+    add_returned_status(env, "envIsNull", return_value, "Invalid argument", napi_invalid_arg,
+        api(nullptr, object, 0, &result));
 
     api(env, nullptr, 0, &result);
     add_last_status(env, "objectIsNull", return_value);
-
     api(env, object, 0, nullptr);
     add_last_status(env, "valueIsNull", return_value);
 
@@ -1857,18 +1732,13 @@ static napi_value deleteElement(napi_env env, napi_callback_info info)
 static napi_value defineProperties(napi_env env, napi_callback_info info)
 {
     napi_value object, return_value;
-
     napi_property_descriptor desc = {"prop", NULL, defineProperties, NULL, NULL, NULL, napi_enumerable, NULL};
 
     NAPI_CALL(env, napi_create_object(env, &object));
     NAPI_CALL(env, napi_create_object(env, &return_value));
 
-    add_returned_status(env,
-            "envIsNull",
-            return_value,
-            "Invalid argument",
-            napi_invalid_arg,
-            napi_define_properties(nullptr, object, 1, &desc));
+    add_returned_status(env, "envIsNull", return_value, "Invalid argument", napi_invalid_arg,
+        napi_define_properties(nullptr, object, 1, &desc));
 
     napi_define_properties(env, nullptr, 1, &desc);
     add_last_status(env, "objectIsNull", return_value);
@@ -2089,22 +1959,16 @@ static napi_value TestLatin1(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value args[1];
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
-
     NAPI_ASSERT(env, argc >= 1, "Wrong number of arguments");
 
     napi_valuetype valuetype;
     NAPI_CALL(env, napi_typeof(env, args[0], &valuetype));
-
-    NAPI_ASSERT(env, valuetype == napi_string,
-            "Wrong type of argment. Expects a string.");
+    NAPI_ASSERT(env, valuetype == napi_string, "Wrong type of argment. Expects a string.");
 
     char buffer[128];
     size_t bufferSize = 128;
     size_t copied;
-
-    NAPI_CALL(env,
-            napi_get_value_string_latin1(env, args[0], buffer, bufferSize, &copied));
-
+    NAPI_CALL(env, napi_get_value_string_latin1(env, args[0], buffer, bufferSize, &copied));
     napi_value output;
     NAPI_CALL(env, napi_create_string_latin1(env, buffer, copied, &output));
 
@@ -2116,22 +1980,16 @@ static napi_value TestUtf8(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value args[1];
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
-
     NAPI_ASSERT(env, argc == 1, "Expects one argument.");
 
     napi_valuetype valuetype;
     NAPI_CALL(env, napi_typeof(env, args[0], &valuetype));
-
-    NAPI_ASSERT(env, valuetype == napi_string,
-            "Wrong type of argment. Expects a string.");
+    NAPI_ASSERT(env, valuetype == napi_string, "Wrong type of argment. Expects a string.");
 
     char buffer[128];
     size_t bufferSize = 128;
     size_t copied;
-
-    NAPI_CALL(env,
-        napi_get_value_string_utf8(env, args[0], buffer, bufferSize, &copied));
-
+    NAPI_CALL(env, napi_get_value_string_utf8(env, args[0], buffer, bufferSize, &copied));
     napi_value output;
     NAPI_CALL(env, napi_create_string_utf8(env, buffer, copied, &output));
 
@@ -2143,22 +2001,16 @@ static napi_value TestUtf16(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value args[1];
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
-
     NAPI_ASSERT(env, argc == 1, "Expects one argument.");
 
     napi_valuetype valuetype;
     NAPI_CALL(env, napi_typeof(env, args[0], &valuetype));
-
-    NAPI_ASSERT(env, valuetype == napi_string,
-            "Wrong type of argment. Expects a string.");
+    NAPI_ASSERT(env, valuetype == napi_string, "Wrong type of argment. Expects a string.");
 
     char16_t buffer[128];
     size_t bufferSize = 128;
     size_t copied;
-
-    NAPI_CALL(env,
-        napi_get_value_string_utf16(env, args[0], buffer, bufferSize, &copied));
-
+    NAPI_CALL(env, napi_get_value_string_utf16(env, args[0], buffer, bufferSize, &copied));
     napi_value output;
     NAPI_CALL(env, napi_create_string_utf16(env, buffer, copied, &output));
 
@@ -2321,12 +2173,14 @@ static napi_value napiCreateThreadsafeFunction(napi_env env, napi_callback_info 
     return _value;
 }
 
-static void AddExecuteCB(napi_env env, void *data) {
+static void AddExecuteCB(napi_env env, void *data)
+{
     AddonData *addonData = (AddonData *)data;
     addonData->result = addonData->args;
 }
 
-static void AddCallbackCompleteCB(napi_env env, napi_status status, void *data) {
+static void AddCallbackCompleteCB(napi_env env, napi_status status, void *data)
+{
     AddonData *addonData = (AddonData *)data;
     napi_value callback = nullptr;
     NAPI_CALL_RETURN_VOID(env, napi_get_reference_value(env, addonData->callback, &callback));
@@ -2347,7 +2201,8 @@ static void AddCallbackCompleteCB(napi_env env, napi_status status, void *data) 
     free(addonData);
 }
 
-static napi_value testAsyncWork(napi_env env, napi_callback_info info) {
+static napi_value testAsyncWork(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value args[2];
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
@@ -2372,7 +2227,8 @@ static napi_value testAsyncWork(napi_env env, napi_callback_info info) {
     return _value;
 }
 
-static void AddPromiseCompleteCB(napi_env env, napi_status status, void *data) {
+static void AddPromiseCompleteCB(napi_env env, napi_status status, void *data)
+{
     AddonData *addonData = (AddonData *)data;
     napi_value result = nullptr;
     NAPI_CALL_RETURN_VOID(env, napi_create_double(env, addonData->result, &result));
@@ -2592,8 +2448,8 @@ static napi_value getGlobal(napi_env env, napi_callback_info info)
 
 napi_threadsafe_function tsfn;
 napi_ref functionRef;
-static void CallJs(napi_env env, napi_value jsCb, void *context, void *data) {
-    
+static void CallJs(napi_env env, napi_value jsCb, void *context, void *data)
+{
     napi_value undefined;
     NAPI_CALL_RETURN_VOID(env, napi_get_undefined(env, &undefined));
     napi_value cb;
@@ -2606,7 +2462,8 @@ static void CallJs(napi_env env, napi_value jsCb, void *context, void *data) {
     NAPI_ASSERT_RETURN_VOID(env, num == TAG_NUMBER, "CallJs fail");
 }
 
-static napi_value ThreadSafeTest(napi_env env, napi_callback_info info) {
+static napi_value ThreadSafeTest(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value jsCb, work_name;
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, &jsCb, nullptr, nullptr));
