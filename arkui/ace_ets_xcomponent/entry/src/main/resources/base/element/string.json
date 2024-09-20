@@ -13,7 +13,15 @@
       "value": "description"
     },
     {
+      "name": "module_desc",
+      "value": "description"
+    },
+    {
       "name": "TestAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "entry_label",
       "value": "label"
     }
   ]

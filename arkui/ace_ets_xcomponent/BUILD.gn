@@ -1,4 +1,4 @@
-# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Copyright (c) 2023 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,41 +11,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/config/ohos/config.gni")
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAceXComponentEtsTest") {
-  subsystem_name = "arkui"
+ohos_app_assist_suite("ActsAceXComponentEtsTestMain") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAceXComponentEtsTestMain"
   part_name = "ace_engine"
-  hap_profile = "./entry/src/main/config.json"
-  deps = [
-    ":ace_ets_xcomponent_assets",
-    ":ace_ets_xcomponent_resources",
-    ":ace_ets_xcomponent_test_assets",
-  ]
-  ets2abc = true
+  subsystem_name = "arkui"
+}
+
+ohos_js_app_suite("ActsAceXComponentEtsTest") {
+  test_hap = true
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAceXComponentEtsTest"
-  shared_libraries = [
-    "./entry/src/main/cpp:nativerender",
-    ":libcppsharedso",
-  ]
-}
-
-ohos_prebuilt_shared_library("libcppsharedso") {
-  source = rebase_path(libcxx_ndk_shared_file)
-  subsystem_name = "arkui"
   part_name = "ace_engine"
-}
-
-ohos_js_assets("ace_ets_xcomponent_assets") {
-  source_dir = "./entry/src/main/ets/MainAbility"
-}
-ohos_js_assets("ace_ets_xcomponent_resources") {
-  source_dir = "./entry/src/main/ets/TestAbility"
-}
-ohos_resources("ace_ets_xcomponent_test_assets") {
-  sources = [ "./entry/src/main/resources" ]
-  hap_profile = "./entry/src/main/config.json"
+  subsystem_name = "arkui"
+  deps = [ ":ActsAceXComponentEtsTestMain" ]
 }

@@ -13,14 +13,11 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-
-
 @Entry
 @Component
 struct XComponentTest {
-  private xcomponentContext1 = null;
-  private xcomponentContext2 = null;
+  private xcomponentContext1: ESObject | undefined = undefined;
+  private xcomponentContext2: ESObject | undefined = undefined;
   private xcomponentId1 = 'xcomponentId1';
   private xcomponentId2 = 'xcomponentId2';
   @State private isHidden:boolean = false;
@@ -28,8 +25,8 @@ struct XComponentTest {
   @State private flag:boolean = true;
   @State private xcomponentHeight:number = 300;
   @State private xcomponentWidth:number = 720;
-  private offset_x:double = 0.000;
-  private offset_y:double = 610.000;
+  private offset_x: number = 0.000;
+  private offset_y: number = 610.000;
   private index:number = 0;
   private callback_:number = 0;
   private type_:number = 5;
