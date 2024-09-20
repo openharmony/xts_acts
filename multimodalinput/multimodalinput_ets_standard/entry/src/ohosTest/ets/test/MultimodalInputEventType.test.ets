@@ -361,7 +361,6 @@ export default function MultimodalInputEventTypeTest() {
         capsLock: true,
         numLock: true,
         scrollLock: true,
-        // @ts-ignore
         toolType: mouseEvent.ToolType.MOUSE
       };
       expect(testMouseEvent.action == mouseEvent.Action.CANCEL).assertTrue();
@@ -383,7 +382,6 @@ export default function MultimodalInputEventTypeTest() {
       expect(testMouseEvent.capsLock).assertTrue();
       expect(testMouseEvent.numLock).assertTrue();
       expect(testMouseEvent.scrollLock).assertTrue();
-      // @ts-ignore
       expect(testMouseEvent.toolType == mouseEvent.ToolType.MOUSE).assertTrue();
 
       console.info(`MultimodalInput_MouseEventTypeTest_0050 exit`);
