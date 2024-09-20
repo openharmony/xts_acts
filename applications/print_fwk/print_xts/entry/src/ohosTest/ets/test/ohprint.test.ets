@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import common from '@ohos.app.ability.common';
 import { describe, expect, it } from '@ohos/hypium'
 import entry from 'libentry.so'
 
@@ -119,6 +120,20 @@ export default function oHPrintTest() {
      */
     it('testOHPrint008', 0, async () => {
       let result: number = await entry.oHPrintProperty();
+      expect(result).assertEqual(0);
+    });
+
+    /**
+     * @tc.number     : SUB_PRINT_FWK_OH_PRINT_TEST_0900
+     * @tc.name       : testOHPrint009
+     * @tc.desc       : test oHPrintStartPrintByNative
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHPrint009', 0, async () => {
+      let context = AppStorage.get<common.UIAbilityContext>("testContext") as common.UIAbilityContext;
+      let result: number = await entry.oHPrintStartPrintByNative(context);
       expect(result).assertEqual(0);
     });
   })
