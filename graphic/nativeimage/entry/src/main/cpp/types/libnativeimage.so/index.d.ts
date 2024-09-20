@@ -20,6 +20,7 @@ export const oHNativeImageAttachContextAbnormal: () => number;
 export const oHNativeImageDetachContext: () => number;
 export const oHNativeImageDetachContextAbnormal: () => number;
 export const oHNativeImageUpdateSurfaceImage: () => number;
+export const oHNativeImageUpdateSurfaceImageBoundary: () => number;
 export const oHNativeImageUpdateSurfaceImageAbnormal: () => number;
 export const oHNativeImageGetTimestamp: () => number;
 export const oHNativeImageGetTransformMatrix: () => number;
