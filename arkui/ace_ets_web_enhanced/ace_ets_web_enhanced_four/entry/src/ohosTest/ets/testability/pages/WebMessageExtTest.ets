@@ -18,7 +18,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import Utils from '../../test/Util';
 
 class TestObj {
-  test(str: string): ArrayBuffer {
+  test(str: string): ArrayBuffer{
     let buf = new ArrayBuffer(str.length);
     let buff = new Uint8Array(buf);
 
