@@ -40,7 +40,8 @@ static int NUMBER_50 = 50;
 
 namespace ArkUICapiTest {
 
-static void createAnimatorOption(){
+static void CreateAnimatorOption()
+{
     animatorOption = OH_ArkUI_AnimatorOption_Create(NUMBER_3);
     OH_ArkUI_AnimatorOption_SetDuration(animatorOption, NUMBER_3000);
     OH_ArkUI_AnimatorOption_SetBegin(animatorOption, NUMBER_100);
@@ -60,11 +61,11 @@ napi_value AnimatorEventTest::testKeyframeRegisterOnFinish_001(napi_env env, nap
     napi_get_value_string_utf8(env, args[PARAM_0], xComponentID, length, &strLength);
 
     if ((env == nullptr) || (info == nullptr)) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "KeyframeRegisterOnFinish", "GetContext env or info is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "KeyframeRegisterOnFinish",
+            "GetContext env or info is null");
         return nullptr;
     }
 
-    //ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
 
     ArkUI_NumberValue widthValue[] = {380};
@@ -81,7 +82,7 @@ napi_value AnimatorEventTest::testKeyframeRegisterOnFinish_001(napi_env env, nap
     nodeAPI->setAttribute(button, NODE_BUTTON_LABEL, &NODE_BUTTON_LABEL_Item);
 
     ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_RED}};
-    ArkUI_AttributeItem background_color_item = {background_color_value, 
+    ArkUI_AttributeItem background_color_item = {background_color_value,
         sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(button, NODE_BACKGROUND_COLOR, &background_color_item);
 
@@ -93,7 +94,8 @@ napi_value AnimatorEventTest::testKeyframeRegisterOnFinish_001(napi_env env, nap
     nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "KeyframeRegisterOnFinish", "OnEventReceive");
         if (event == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "KeyframeRegisterOnFinish", "OnEventReceive: event is null");
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "KeyframeRegisterOnFinish",
+                "OnEventReceive: event is null");
             return;
         }
         
@@ -108,14 +110,15 @@ napi_value AnimatorEventTest::testKeyframeRegisterOnFinish_001(napi_env env, nap
                 nodeAPI->getAttribute(nodeHandler, NODE_SCROLL_OFFSET)->value[PARAM_1].f32 == PARAM_10) {
                 ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
                 ArkUI_AttributeItem background_color_item = {background_color_value,
-                                                         sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+                    sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
             }
         }
 
         ArkUI_KeyframeAnimateOption *option = OH_ArkUI_KeyframeAnimateOption_Create(2);
 
-        auto onFinishCode = OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(option, nullptr, [](void *userData) {
+        auto onFinishCode = OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(option, nullptr,
+            [](void *userData) {
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "KeyframeRegisterOnFinish", "OnEventReceive");
         });
 
@@ -125,8 +128,8 @@ napi_value AnimatorEventTest::testKeyframeRegisterOnFinish_001(napi_env env, nap
     nodeAPI->registerNodeEvent(button, NODE_ON_CLICK, 1, nullptr);
     
     std::string id(xComponentID);
-    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
-        INVALID_PARAM) {
+    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id),
+        column) == INVALID_PARAM) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "KeyframeRegisterOnFinish",
                      "OH_NativeXComponent_AttachNativeRootNode failed");
     }
@@ -151,11 +154,11 @@ napi_value AnimatorEventTest::testKeyframeRegisterOnEvent_002(napi_env env, napi
     napi_get_value_string_utf8(env, args[PARAM_0], xComponentID, length, &strLength);
 
     if ((env == nullptr) || (info == nullptr)) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "KeyframeRegisterOnEvent", "GetContext env or info is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "KeyframeRegisterOnEvent",
+            "GetContext env or info is null");
         return nullptr;
     }
 
-    //ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
 
     ArkUI_NumberValue widthValue[] = {380};
@@ -184,7 +187,8 @@ napi_value AnimatorEventTest::testKeyframeRegisterOnEvent_002(napi_env env, napi
     nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
 
         if (event == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "KeyframeRegisterOnEvent", "OnEventReceive: event is null");
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "KeyframeRegisterOnEvent",
+                "OnEventReceive: event is null");
             return;
         }
 
@@ -199,7 +203,7 @@ napi_value AnimatorEventTest::testKeyframeRegisterOnEvent_002(napi_env env, napi
                 nodeAPI->getAttribute(nodeHandler, NODE_SCROLL_OFFSET)->value[PARAM_1].f32 == PARAM_10) {
                 ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
                 ArkUI_AttributeItem background_color_item = {background_color_value,
-                                                         sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+                    sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
             }
         }
@@ -214,10 +218,10 @@ napi_value AnimatorEventTest::testKeyframeRegisterOnEvent_002(napi_env env, napi
     nodeAPI->registerNodeEvent(button, NODE_ON_CLICK, 1, nullptr);
     
     std::string id(xComponentID);
-    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
-        INVALID_PARAM) {
+    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id),
+        column) == INVALID_PARAM) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "KeyframeRegisterOnEvent",
-                     "OH_NativeXComponent_AttachNativeRootNode failed");
+            "OH_NativeXComponent_AttachNativeRootNode failed");
     }
     napi_value exports;
     if (napi_create_object(env, &exports) != napi_ok) {
@@ -239,11 +243,11 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnFrame_003(napi_env env, napi
     napi_get_value_string_utf8(env, args[PARAM_0], xComponentID, length, &strLength);
 
     if ((env == nullptr) || (info == nullptr)) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnFrame", "GetContext env or info is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnFrame",
+            "GetContext env or info is null");
         return nullptr;
     }
 
-    //ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
 
     ArkUI_NumberValue widthValue[] = {380};
@@ -273,7 +277,7 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnFrame_003(napi_env env, napi
     nodeAPI->registerNodeEvent(create, NODE_ON_CLICK, 0, nullptr);
 
     ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_RED}};
-    ArkUI_AttributeItem background_color_item = {background_color_value, 
+    ArkUI_AttributeItem background_color_item = {background_color_value,
         sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(create, NODE_BACKGROUND_COLOR, &background_color_item);
             
@@ -283,13 +287,14 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnFrame_003(napi_env env, napi
     nodeAPI->registerNodeEvent(play, NODE_ON_CLICK, NUMBER_2, nullptr);
  
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
-    createAnimatorOption();
+    CreateAnimatorOption();
 
-    OH_ArkUI_AnimatorOption_RegisterOnFrameCallback(animatorOption, nullptr, [](ArkUI_AnimatorOnFrameEvent *event)
-    {
+    OH_ArkUI_AnimatorOption_RegisterOnFrameCallback(animatorOption, nullptr,
+        [](ArkUI_AnimatorOnFrameEvent *event) {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "AnimatorRegisterOnFrame", "OnEventReceive");
         if (event == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnFrame", "OnEventReceive: event is null");
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnFrame",
+                "OnEventReceive: event is null");
             return;
         }
 
@@ -321,10 +326,10 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnFrame_003(napi_env env, napi
 
     nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
         auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
-        if(targetId == 0) {
+        if (targetId == 0) {
             animatorHandle = animateApi->createAnimator(nullptr, animatorOption);
         }
-        if(targetId == NUMBER_2) {
+        if (targetId == NUMBER_2) {
             auto code = OH_ArkUI_Animator_Play(animatorHandle);
         }
     });
@@ -336,10 +341,10 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnFrame_003(napi_env env, napi
     nodeAPI->addChild(row0, create);
 
     std::string id(xComponentID);
-    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), scroll) ==
-        INVALID_PARAM) {
+    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id),
+        scroll) == INVALID_PARAM) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnFrame",
-                     "OH_NativeXComponent_AttachNativeRootNode failed");
+            "OH_NativeXComponent_AttachNativeRootNode failed");
     }
     napi_value exports;
     if (napi_create_object(env, &exports) != napi_ok) {
@@ -362,7 +367,8 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnFinish_004(napi_env env, nap
     napi_get_value_string_utf8(env, args[PARAM_0], xComponentID, length, &strLength);
 
     if ((env == nullptr) || (info == nullptr)) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnFinish", "GetContext env or info is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnFinish",
+            "GetContext env or info is null");
         return nullptr;
     }
 
@@ -400,12 +406,14 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnFinish_004(napi_env env, nap
     nodeAPI->registerNodeEvent(finish, NODE_ON_CLICK, NUMBER_3, nullptr);
 
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
-    createAnimatorOption();
+    CreateAnimatorOption();
 
-    auto codeOnFinish = OH_ArkUI_AnimatorOption_RegisterOnFinishCallback(animatorOption, nullptr, [](ArkUI_AnimatorEvent *event) {
+    auto codeOnFinish = OH_ArkUI_AnimatorOption_RegisterOnFinishCallback(animatorOption, nullptr,
+        [](ArkUI_AnimatorEvent *event) {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "AnimatorRegisterOnFinish", "OnEventReceive");
         if (event == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnFinish", "OnEventReceive: event is null");
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnFinish",
+                "OnEventReceive: event is null");
             return;
         }
         void *userData = OH_ArkUI_AnimatorEvent_GetUserData(event);
@@ -421,13 +429,13 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnFinish_004(napi_env env, nap
     nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
         auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
 
-        if(targetId == 0){
+        if (targetId == 0) {
             animatorHandle = animateApi->createAnimator(nullptr, animatorOption);
         }
-        if(targetId == NUMBER_2){
+        if (targetId == NUMBER_2) {
             auto code = OH_ArkUI_Animator_Play(animatorHandle);
         }
-        if(targetId == NUMBER_3){
+        if (targetId == NUMBER_3) {
             auto code = OH_ArkUI_Animator_Finish(animatorHandle);
         }
     });
@@ -440,8 +448,8 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnFinish_004(napi_env env, nap
     nodeAPI->addChild(row0, finish);
 
     std::string id(xComponentID);
-    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), scroll) ==
-        INVALID_PARAM) {
+    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id),
+        scroll) == INVALID_PARAM) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnFinish",
                      "OH_NativeXComponent_AttachNativeRootNode failed");
     }
@@ -465,11 +473,11 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnCancel_005(napi_env env, nap
     napi_get_value_string_utf8(env, args[PARAM_0], xComponentID, length, &strLength);
 
     if ((env == nullptr) || (info == nullptr)) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnCancel", "GetContext env or info is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnCancel",
+            "GetContext env or info is null");
         return nullptr;
     }
 
-    //ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
 
     ArkUI_NumberValue widthValue[] = {380};
@@ -504,12 +512,14 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnCancel_005(napi_env env, nap
     nodeAPI->registerNodeEvent(cancel, NODE_ON_CLICK, 1, nullptr);
    
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
-    createAnimatorOption();
+    CreateAnimatorOption();
 
-    auto codeOnFinish = OH_ArkUI_AnimatorOption_RegisterOnCancelCallback(animatorOption, nullptr, [](ArkUI_AnimatorEvent *event) {
+    auto codeOnFinish = OH_ArkUI_AnimatorOption_RegisterOnCancelCallback(animatorOption, nullptr,
+        [](ArkUI_AnimatorEvent *event) {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "AnimatorRegisterOnCancel", "OnEventReceive");
         if (event == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnCancel", "OnEventReceive: event is null");
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnCancel",
+                "OnEventReceive: event is null");
             return;
         }
         void *userData = OH_ArkUI_AnimatorEvent_GetUserData(event);
@@ -524,10 +534,10 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnCancel_005(napi_env env, nap
     });
     nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
         auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
-        if(targetId == NUMBER_2){
+        if (targetId == NUMBER_2) {
             auto code = OH_ArkUI_Animator_Play(animatorHandle);
         }
-        if(targetId == 1){
+        if (targetId == 1) {
             auto code = OH_ArkUI_Animator_Cancel(animatorHandle);
         }
     });
@@ -540,8 +550,8 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnCancel_005(napi_env env, nap
     nodeAPI->addChild(row0, cancel);
 
     std::string id(xComponentID);
-    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), scroll) ==
-        INVALID_PARAM) {
+    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id),
+        scroll) == INVALID_PARAM) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnCancel",
                      "OH_NativeXComponent_AttachNativeRootNode failed");
     }
@@ -565,11 +575,11 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnRepeat_006(napi_env env, nap
     napi_get_value_string_utf8(env, args[PARAM_0], xComponentID, length, &strLength);
 
     if ((env == nullptr) || (info == nullptr)) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnRepeat", "GetContext env or info is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnRepeat",
+            "GetContext env or info is null");
         return nullptr;
     }
 
-    //ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
 
     ArkUI_NumberValue widthValue[] = {380};
@@ -604,12 +614,14 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnRepeat_006(napi_env env, nap
     nodeAPI->registerNodeEvent(repeat, NODE_ON_CLICK, 1, nullptr);
 
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
-    createAnimatorOption();
+    CreateAnimatorOption();
 
-    auto codeOnFinish = OH_ArkUI_AnimatorOption_RegisterOnRepeatCallback(animatorOption, nullptr, [](ArkUI_AnimatorEvent *event) {
+    auto codeOnFinish = OH_ArkUI_AnimatorOption_RegisterOnRepeatCallback(animatorOption, nullptr,
+        [](ArkUI_AnimatorEvent *event) {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "AnimatorRegisterOnRepeat", "OnEventReceive");
         if (event == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnRepeat", "OnEventReceive: event is null");
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnRepeat",
+                "OnEventReceive: event is null");
             return;
         }
         void *userData = OH_ArkUI_AnimatorEvent_GetUserData(event);
@@ -624,10 +636,10 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnRepeat_006(napi_env env, nap
 
     nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
         auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
-        if(targetId == NUMBER_2){
+        if (targetId == NUMBER_2) {
             auto code = OH_ArkUI_Animator_Play(animatorHandle);
         }
-        if(targetId == 1){
+        if (targetId == 1) {
             auto code = OH_ArkUI_AnimatorOption_SetIterations(animatorOption,2);
         }
     });
@@ -640,8 +652,8 @@ napi_value AnimatorEventTest::testAnimatorRegisterOnRepeat_006(napi_env env, nap
     nodeAPI->addChild(row0, repeat);
 
     std::string id(xComponentID);
-    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), scroll) ==
-        INVALID_PARAM) {
+    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id),
+        scroll) == INVALID_PARAM) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AnimatorRegisterOnRepeat",
                      "OH_NativeXComponent_AttachNativeRootNode failed");
     }
