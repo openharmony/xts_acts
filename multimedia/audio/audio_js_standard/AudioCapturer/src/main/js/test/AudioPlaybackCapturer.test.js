@@ -270,7 +270,6 @@ export default function audioCapturer() {
                 console.log(`${Tag} release err: ${JSON.stringify(err)}`);
                 expect(false).assertTrue();
             }
-            //done();
         }
 
         async function recPromise1(AudioCapturerOptions, AudioRendererOptions1, AudioRendererOptions2, done) {
@@ -551,7 +550,6 @@ export default function audioCapturer() {
                 console.log(`${Tag} release err: ${JSON.stringify(err)}`);
                 expect(false).assertTrue();
             }
-            //done();
         }
 
 

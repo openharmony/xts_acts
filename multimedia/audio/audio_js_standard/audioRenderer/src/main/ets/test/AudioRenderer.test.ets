@@ -2674,12 +2674,11 @@ export default function audioRendererTest() {
         streamInfo: audioStreamInfo,
         rendererInfo: audioRendererInfo
       }
-      let resultFlag = true;
       let readPath = 'StarWars10s-1C-44100-2SW.wav'
       await getFdRead(readPath, done);
       await play(audioRendererOptions, filePath, done);
       await sleep(100);
-      expect(resultFlag).assertTrue();
+      expect(true).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
