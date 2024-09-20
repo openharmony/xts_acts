@@ -14,20 +14,23 @@
  */
 #include "napi/native_api.h"
 #include "hilog/log.h"
-#include "c/task.h"
-#include "c/type_def.h"
-#include "c/condition_variable.h"
-#include "c/mutex.h"
-#include "c/queue.h"
-#include "c/sleep.h"
-#include "c/loop.h"
-#include "c/timer.h"
+#include "ffrt/task.h"
+#include "ffrt/type_def.h"
+#include "ffrt/condition_variable.h"
+#include "ffrt/mutex.h"
+#include "ffrt/queue.h"
+#include "ffrt/sleep.h"
+#include "ffrt/loop.h"
+#include "ffrt/timer.h"
 #include <mutex>
 #include <thread>
 #include <string>
 #include <unistd.h>
 #include <pthread.h>
 #include <sys/eventfd.h>
+#define FAIL (-1)
+#define SUCCESS 0
+#define PARAM_100 100
 
 using namespace std;
 using namespace std::chrono;
@@ -38,11 +41,24 @@ const int ERR_CODE_3 = 3;
 const int ERR_CODE_4 = 4;
 const int ERR_CODE_5 = 5;
 const int ERR_CODE_6 = 6;
+const int ERR_CODE_7 = 7;
+const int ERR_CODE_8 = 8;
+const int ERR_CODE_9 = 9;
 const uint64_t UNIT_STACK_SIZE = 2 * 1024 * 1024;
-const uint64_t UNIT_TASK_DELAY = 500000;
+const uint64_t UNIT_TASK_DELAY = 200000;
 const uint32_t TASK_SUBMIT_REF = 2;
 const uint32_t TASK_RELEASE_REF = 3;
 const uint32_t TASK_DELAY_TIME = 1000;
+const int MULTIPLE_RADIO = 10;
+const uint64_t PLUS_SLEEP_TIME = 200000;
+const uint64_t FUNC_SIGNAL_SLEEP = 30000;
+const uint64_t SLEEP_TIME = 2000;
+const uint64_t UNIT_TASK_DELAY_500 = 500000;
+const double COST_TIME = 0.5;
+const uint64_t COST_TIME_200 = 200;
+const uint64_t COST_TIME_300 = 300;
+const uint64_t COST_TIME_500 = 500;
+const uint64_t COST_TIME_600 = 600;
 
 void OnePlusForTest(void* arg)
 {
@@ -51,7 +67,7 @@ void OnePlusForTest(void* arg)
 
 void MultipleForTest(void* arg)
 {
-    (*static_cast<int*>(arg)) *= 10;
+    (*static_cast<int*>(arg)) *= MULTIPLE_RADIO;
 }
 
 void SubForTest(void* arg)
@@ -61,7 +77,7 @@ void SubForTest(void* arg)
 
 void OnePlusSleepForTest(void* arg)
 {
-    ffrt_usleep(2000 * 1000);
+    ffrt_usleep(PLUS_SLEEP_TIME);
     (*static_cast<int*>(arg)) += 1;
 }
 
@@ -79,19 +95,19 @@ void FuncWait1(void* arg)
     CvMutex* t = static_cast<CvMutex*>(arg);
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret = 1;
+        *t->ret = ERR_CODE_1;
     }
     
     while (*t->a != 1) {
         ret = ffrt_cond_wait(t->cond, t->lock_);
         if (ret != ffrt_success) {
-            *t->ret = 2;
+            *t->ret = ERR_CODE_2;
         }
     }
     *t->b += 1;
     ret = ffrt_mutex_unlock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret = 3;
+        *t->ret = ERR_CODE_3;
     }
 }
 
@@ -100,19 +116,19 @@ void FuncWait2(void* arg)
     CvMutex* t = static_cast<CvMutex*>(arg);
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret = 1;
+        *t->ret = ERR_CODE_1;
     }
     
     while (*t->a != 1) {
         ret = ffrt_cond_wait(t->cond, t->lock_);
         if (ret != ffrt_success) {
-            *t->ret = 2;
+            *t->ret = ERR_CODE_2;
         }
     }
     *t->b += 1;
     ret = ffrt_mutex_unlock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret = 3;
+        *t->ret = ERR_CODE_3;
     }
 }
 
@@ -121,36 +137,36 @@ void FuncWaitTimeout(void* arg)
     CvMutex* t = static_cast<CvMutex*>(arg);
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret = 1;
+        *t->ret = ERR_CODE_1;
     }
     timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
-    ts.tv_sec += 1;
+    ts.tv_sec += ERR_CODE_2;
     
     ret = ffrt_cond_timedwait(t->cond, t->lock_, &ts);
     *t->ret = ret;
     if (ret == ffrt_success) {
-        *(t->a) *= 10;
+        *(t->a) *= ERR_CODE_3;
     }
     ret = ffrt_mutex_unlock(t->lock_);
 }
 
 void FuncSignal(void* arg)
 {
-    ffrt_usleep(30000);
+    ffrt_usleep(FUNC_SIGNAL_SLEEP);
     CvMutex* t = static_cast<CvMutex*>(arg);
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret = 1;
+        *t->ret = ERR_CODE_1;
     }
     *(t->a) = 1;
     ret = ffrt_cond_signal(t->cond);
     if (ret != ffrt_success) {
-        *t->ret = 2;
+        *t->ret = ERR_CODE_2;
     }
     ret = ffrt_mutex_unlock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret = 3;
+        *t->ret = ERR_CODE_3;
     }
 }
 
@@ -160,39 +176,39 @@ void FuncBroadcast(void* arg)
     CvMutex* t = static_cast<CvMutex*>(arg);
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret = 1;
+        *t->ret = ERR_CODE_1;
     }
     *(t->a) = 1;
     ret = ffrt_cond_broadcast(t->cond);
     if (ret != ffrt_success) {
-        *t->ret = 2;
+        *t->ret = ERR_CODE_2;
     }
     ret = ffrt_mutex_unlock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret = 3;
+        *t->ret = ERR_CODE_3;
     }
 }
 
 void FuncSignalApi(void* arg)
 {
-    ffrt_usleep(30000);
+    ffrt_usleep(FUNC_SIGNAL_SLEEP);
     CvMutex* t = static_cast<CvMutex*>(arg);
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret = 1;
+        *t->ret = ERR_CODE_1;
     }
     *(t->a) = 1;
     ret = ffrt_cond_signal(nullptr);
     if (ret != ffrt_error_inval) {
-        *t->ret = 4;
+        *t->ret = ERR_CODE_4;
     }
     ret = ffrt_cond_signal(t->cond);
     if (ret != ffrt_success) {
-        *t->ret = 2;
+        *t->ret = ERR_CODE_2;
     }
     ret = ffrt_mutex_unlock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret = 3;
+        *t->ret = ERR_CODE_3;
     }
 }
 
@@ -849,6 +865,7 @@ static napi_value MutexAbnormalParamTest001(napi_env env, napi_callback_info inf
     if (ret != ffrt_error_inval) {
         result = 1;
     }
+    ffrt_mutexattr_init(&attr);
     ret = ffrt_mutex_init(&mtx, &attr);
     if (ret != ffrt_success) {
         result = 2;
@@ -1086,7 +1103,7 @@ static napi_value QueueApiTest002(napi_env env, napi_callback_info info)
     ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
         ffrt_function_kind_queue), nullptr);
 
-    sleep(1);
+    usleep(SLEEP_TIME);
     if (a != 1) {
         result = 1;
     }
@@ -1115,7 +1132,6 @@ static napi_value QueueApiTest004(napi_env env, napi_callback_info info)
 {
     int result = 0;
     (void)ffrt_queue_attr_init(nullptr);
-    sleep(1);
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
     return flag;
@@ -1133,13 +1149,13 @@ static napi_value QueueApiTest005(napi_env env, napi_callback_info info)
     }
     
     int a = 0;
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
-        ffrt_function_kind_queue), nullptr);
-    sleep(1);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest,
+        nullptr, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_wait(handle);
     if (a != 1) {
         result = 1;
     }
-
+    ffrt_task_handle_destroy(handle);
     // 销毁队列
     ffrt_queue_attr_destroy(nullptr);
     ffrt_queue_attr_destroy(&queue_attr);
@@ -1166,13 +1182,13 @@ static napi_value QueueApiTest006(napi_env env, napi_callback_info info)
     }
 
     int a = 0;
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
-        ffrt_function_kind_queue), nullptr);
-
-    sleep(1);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest,
+        nullptr, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_wait(handle);
     if (a != 1) {
         result = 1;
     }
+    ffrt_task_handle_destroy(handle);
 
     // 销毁队列
     ffrt_queue_attr_destroy(&queue_attr);
@@ -1220,7 +1236,6 @@ static napi_value QueueApiTest007(napi_env env, napi_callback_info info)
     handle = ffrt_queue_submit_h(queue_handle,
         ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
 
-    usleep(2000);
     ffrt_queue_wait(handle);
     if (a != 2) {
         result = 3;
@@ -1255,12 +1270,13 @@ static napi_value QueueApiTest008(napi_env env, napi_callback_info info)
     }
 
     int a = 0;
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
-        ffrt_function_kind_queue), nullptr);
-    sleep(1);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest,
+        nullptr, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_wait(handle);
     if (a != 1) {
         result = 1;
     }
+    ffrt_task_handle_destroy(handle);
 
     // 销毁队列
     ffrt_queue_attr_destroy(&queue_attr);
@@ -1282,12 +1298,13 @@ static napi_value QueueApiTest009(napi_env env, napi_callback_info info)
     }
 
     int a = 0;
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
-        ffrt_function_kind_queue), nullptr);
-    sleep(1);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest,
+        nullptr, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_wait(handle);
     if (a != 1) {
         result = 1;
     }
+    ffrt_task_handle_destroy(handle);
 
     // 销毁队列
     ffrt_queue_attr_destroy(&queue_attr);
@@ -1313,13 +1330,13 @@ static napi_value QueueApiTest010(napi_env env, napi_callback_info info)
     ffrt_queue_submit(nullptr, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
         ffrt_function_kind_queue), nullptr);
     ffrt_queue_submit(queue_handle, nullptr, nullptr);
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
-        ffrt_function_kind_queue), nullptr);
-
-    sleep(1);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusForTest,
+        nullptr, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_wait(handle);
     if (a != 1) {
         result = 1;
     }
+    ffrt_task_handle_destroy(handle);
 
     // 销毁队列
     ffrt_queue_attr_destroy(&queue_attr);
@@ -1557,8 +1574,8 @@ static napi_value QueueDelayTest001(napi_env env, napi_callback_info info)
     ffrt_task_attr_t task_attr2;
     (void)ffrt_task_attr_init(&task_attr1);
     (void)ffrt_task_attr_init(&task_attr2);
-    ffrt_task_attr_set_delay(&task_attr1, 5000000);
-    ffrt_task_attr_set_delay(&task_attr2, 2000000);
+    ffrt_task_attr_set_delay(&task_attr1, UNIT_TASK_DELAY_500);
+    ffrt_task_attr_set_delay(&task_attr2, UNIT_TASK_DELAY);
 
     std::function<void()>&& MultipleFunc = [&result]() { MultipleForTest(static_cast<void*>(&result)); };
     ffrt_queue_attr_t queue_attr;
@@ -1581,7 +1598,7 @@ static napi_value QueueDelayTest001(napi_env env, napi_callback_info info)
     if (result != 1) {
         resultEnd = 1;
     }
-    if (t <= 2000 || t >= 3000) {
+    if (t <= COST_TIME_200 || t >= COST_TIME_300) {
         resultEnd = 2;
     }
 
@@ -1592,7 +1609,7 @@ static napi_value QueueDelayTest001(napi_env env, napi_callback_info info)
     if (result != 0) {
         resultEnd = 3;
     }
-    if (t <= 5000 || t >= 6000) {
+    if (t <= COST_TIME_500 || t >= COST_TIME_600) {
         resultEnd = 4;
     }
     ffrt_task_handle_destroy(handle1);
@@ -1656,12 +1673,11 @@ static napi_value QueueDelayTest005(napi_env env, napi_callback_info info)
     int a = 0;
     ffrt_task_attr_t task_attr;
     (void)ffrt_task_attr_init(&task_attr);
-    ffrt_task_attr_set_delay(&task_attr, 5000000);
+    ffrt_task_attr_set_delay(&task_attr, UNIT_TASK_DELAY_500);
     std::function<void()>&& MultipleFunc = [&a]() { MultipleForTest(static_cast<void*>(&a)); };
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(MultipleFunc, ffrt_function_kind_queue), &task_attr);
-
-    sleep(1);
+    
     double t;
     auto start = std::chrono::high_resolution_clock::now();
     std::function<void()>&& OnePlusFunc = [&a]() { OnePlusForTest(static_cast<void*>(&a)); };
@@ -1674,7 +1690,7 @@ static napi_value QueueDelayTest005(napi_env env, napi_callback_info info)
     if (a != 1) {
         result = 1;
     }
-    if (t >= 5) {
+    if (t >= COST_TIME) {
         result = 2;
     }
 
@@ -1683,7 +1699,7 @@ static napi_value QueueDelayTest005(napi_env env, napi_callback_info info)
         result = 3;
     }
     uint64_t delay = ffrt_task_attr_get_delay(&task_attr);
-    if (delay != 5000000) {
+    if (delay != UNIT_TASK_DELAY_500) {
         result = 4;
     }
     ffrt_task_attr_destroy(&task_attr);
@@ -1903,10 +1919,11 @@ static napi_value QueueTest001(napi_env env, napi_callback_info info)
         ffrt_function_kind_queue), nullptr);
     ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(MultipleForTest, nullptr, &result,
         ffrt_function_kind_queue), nullptr);
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(SubForTest, nullptr, &result,
-        ffrt_function_kind_queue), nullptr);
+    ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle,
+        ffrt_create_function_wrapper(SubForTest, nullptr, &result, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_wait(handle);
+    ffrt_task_handle_destroy(handle);
     napi_value flag = nullptr;
-    sleep(2);
     napi_create_double(env, result, &flag);
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
@@ -1935,7 +1952,7 @@ static napi_value QueueTest002(napi_env env, napi_callback_info info)
     }
     for (int num = 0; num < maxNum; num++) {
         ffrt_queue_wait(task[num][9]);
-        HiLogPrint(LOG_APP, LOG_INFO, 1, "FFRT QUEUE", "result in queue %{public}d is %{public}d", num, result[num]);
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT QUEUE", "result in queue %{public}d is %{public}d", num, result[num]);
         if (result[num] != 10) {
             a = 1;
         }
@@ -1946,7 +1963,7 @@ static napi_value QueueTest002(napi_env env, napi_callback_info info)
         }
     }
     for (int num = 0; num < maxNum; num++) {
-        HiLogPrint(LOG_APP, LOG_INFO, 1, "FFRT QUEUE", "qos in queue task %{public}d is %{public}d", num,
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT QUEUE", "qos in queue task %{public}d is %{public}d", num,
             ffrt_queue_attr_get_qos(&queue_attr[num]));
         if (ffrt_queue_attr_get_qos(&queue_attr[num]) != num) {
             a = 1;
@@ -2014,7 +2031,7 @@ static napi_value QueueWaitTest001(napi_env env, napi_callback_info info)
     int a = 0;
     ffrt_task_attr_t task_attr;
     (void)ffrt_task_attr_init(&task_attr);
-    ffrt_task_attr_set_delay(&task_attr, 1000000);
+    ffrt_task_attr_set_delay(&task_attr, UNIT_TASK_DELAY);
     std::function<void()>&& OnePlusFunc = [&a]() { OnePlusForTest(static_cast<void*>(&a)); };
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), &task_attr);
@@ -3046,7 +3063,7 @@ static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
     (void)ffrt_task_attr_init(&task_attr);
     ffrt_task_attr_set_delay(&task_attr, TASK_DELAY_TIME);
     int result1 = 0;
-    const int loopCnt = 1000000000;
+    const int loopCnt = 1000;
     std::function<void()>&& basicFunc1 = [&result1]() {for (int i = 0; i < loopCnt; ++i) {result1 += 1;}};
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(basicFunc1, ffrt_function_kind_queue), &task_attr);
@@ -3065,7 +3082,7 @@ static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
     }
     int result3 = 0;
     std::function<void()>&& basicFunc3 = [&result3]() {result3 += addnum;};
-    std::function<void()> &&SleepFunc = [] () {sleep(1);};
+    std::function<void()> &&SleepFunc = [] () {usleep(SLEEP_TIME);};
     ffrt_task_handle_t sleepTask = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SleepFunc,
         ffrt_function_kind_queue), nullptr);
     ffrt_task_handle_t task3 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc3,
@@ -3100,7 +3117,7 @@ static napi_value ffrt_loop_0002(napi_env env, napi_callback_info info)
     int result1 = 0;
     const int addTen = 10;
     std::function<void()>&& basicFunc1 = [&result1]() {result1 += addTen;};
-    std::function<void()> &&SleepFunc = [] () {sleep(1);};
+    std::function<void()> &&SleepFunc = [] () {usleep(SLEEP_TIME);};
     ffrt_task_handle_t sleepTask = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SleepFunc,
         ffrt_function_kind_queue), nullptr);
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc1,
@@ -3688,6 +3705,34 @@ static napi_value ffrt_task_handle_ref_0001(napi_env env, napi_callback_info inf
     return flag;
 }
 
+inline void OnePlusForTestQos(void* arg)
+{
+    *(int*)arg = ffrt_this_task_update_qos(ffrt_qos_background);
+    *(int*)arg += PARAM_100;
+}
+
+static napi_value FfrtThisTaskGetId(napi_env env, napi_callback_info info)
+{
+    uint64_t taskId = SUCCESS;
+    std::function<void()>&& GetPidFunc = [&taskId]() { OnePlusForTest((void *)(&taskId)); };
+    ffrt_submit_base(create_function_wrapper(GetPidFunc), nullptr, nullptr, nullptr);
+    ffrt_wait();
+    napi_value result = nullptr;
+    napi_create_int32(env, taskId != SUCCESS, &result);
+    return result;
+}
+
+static napi_value FfrtThisTaskUpdateQos(napi_env env, napi_callback_info info)
+{
+    int pos = FAIL;
+    std::function<void()>&& UpdateQosFunc = [&pos]() { OnePlusForTestQos((void *)(&pos)); };
+    ffrt_submit_base(create_function_wrapper(UpdateQosFunc), nullptr, nullptr, nullptr);
+    ffrt_wait();
+    napi_value result = nullptr;
+    napi_create_int32(env, pos, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -3826,6 +3871,8 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, napi_default, nullptr },
         { "ffrt_task_handle_ref_0001", nullptr, ffrt_task_handle_ref_0001, nullptr, nullptr,
             nullptr, napi_default, nullptr },
+        { "ffrtThisTaskGetId", nullptr, FfrtThisTaskGetId, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ffrtThisTaskUpdateQos", nullptr, FfrtThisTaskUpdateQos, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
@@ -3837,7 +3884,7 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "ffrtndk",
+    .nm_modname = "entry",
     .nm_priv = ((void*)0),
     .reserved = { 0 },
 };
