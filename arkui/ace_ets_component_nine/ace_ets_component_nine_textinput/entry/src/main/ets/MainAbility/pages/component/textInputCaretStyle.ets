@@ -34,10 +34,10 @@ struct TextInputCaretStyle {
 
       if (eventData.data?.caretStyleValue != null) {
         console.info("[MyTextInputCaretStyleModifier page] CopyOption change data is " + eventData.data.caretStyleValue);
-        let objCaretStyle: ESObject = JSON.parse( eventData.data.caretStyleValue );
-       if(objCaretStyle.width === "app.float.length_xl"){
-        objCaretStyle.width = $r('app.float.length_xl');
-       }
+        let objCaretStyle: Record<string, Object> = JSON.parse( eventData.data.caretStyleValue );
+        if(objCaretStyle.width === "app.float.length_xl"){
+          objCaretStyle.width = $r('app.float.length_xl');
+        }
         this.mod1.caretStyleValue =  objCaretStyle;
       }
     }
