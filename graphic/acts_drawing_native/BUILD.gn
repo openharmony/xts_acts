@@ -59,10 +59,10 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
     "DrawingNativeSurFaceTest.cpp",
     "DrawingNativeTextBlobTest.cpp",
     "DrawingNativeTypeFaceTest.cpp",
+    "DrawingRecordCmdDestroyTest.cpp",
     "DrawingRecordCmdUtilsBeginTest.cpp",
     "DrawingRecordCmdUtilsDestroyTest.cpp",
     "DrawingRecordCmdUtilsFinishTest.cpp",
-    "DrawingRecordCmdDestroyTest.cpp",
     "DrawingCanvasDrawRecordCmdTest.cpp",
   ]
 
