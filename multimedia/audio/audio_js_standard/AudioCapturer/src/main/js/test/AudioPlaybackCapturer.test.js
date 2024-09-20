@@ -14,7 +14,7 @@
  */
 
 import audio from '@ohos.multimedia.audio';
-import fileio from '@ohos.fileio';
+import fs from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility';
 import resourceManager from '@ohos.resourceManager';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
@@ -23,9 +23,8 @@ export default function audioCapturer() {
 
     describe('AudioPlaybackCapturer', function () {
         let Tag = 'AudioPlaybackCapturerTest';
-        let fdRead;
-        let readPath;
-        let fdPath;
+        const PLAY_FILE = 'pcm_48ksr_32kbr_2ch.wav';
+        let file_to_play;
         let filePath;
         let dirPath;
         const LE24 = -1;
@@ -51,8 +50,9 @@ export default function audioCapturer() {
             await button.click();
         }
         beforeAll(async function () {
-            // await getPermission();
-            // await driveFn();
+            await getFullFilePath(PLAY_FILE);
+            await getPermission();
+            await driveFn();
             console.info('TestLog: Start Testing AudioPlaybackCapturer Interfaces');
         })
 
@@ -85,28 +85,15 @@ export default function audioCapturer() {
             })
         }
 
-        async function getFdRead(pathName, done) {
+        async function getFullFilePath(filename) {
             let context = await featureAbility.getContext();
-            console.info(`case0 context is : ${context}`);
             await context.getFilesDir().then((data) => {
-                console.info(`case1 getFilesDir is path : ${data}`);
-                filePath = data + '/' + pathName;
-                console.info(`case4 filePath is : ${filePath}`);
-
+                console.info(`getFilesDir is : ${data}`);
+                file_to_play =  data + '/' + filename;
             })
-            fdPath = 'fd://';
-            await fileio.open(filePath).then((fdNumber) => {
-                fdPath = fdPath + '' + fdNumber;
-                fdRead = fdNumber;
-                console.info(`[fileIO]case open fd success,fdPath is : ${fdPath}`);
-                console.info(`[fileIO]case open fd success,fdRead is : ${fdRead}`);
-
-            }, (err) => {
-                console.info(`[fileIO]case open fd failed : ${err}`);
-            }).catch((error) => {
-                console.info(`[fileIO]case catch open fd error : ${error}`);
-            });
+            console.info(`${Tag} file_to_play: `+ file_to_play);
         }
+
         async function playbackPromise(AudioRendererOptions, pathName) {
             let resultFlag = false;
             let audioRen;
@@ -142,14 +129,14 @@ export default function audioCapturer() {
                 console.info(`${Tag}: getBufferSize :ERROR : ${err.message}`);
                 resultFlag = false;
             });
-
-            let ss = fileio.fdopenStreamSync(fdRead, 'r');
+            let musicFile = fs.openSync(file_to_play, fs.OpenMode.READ_ONLY);
+            let ss = fs.fdopenStreamSync(musicFile.fd, 'r');
             console.info(`${Tag}:case 2:AudioFrameworkRenderLog: File Path: ${ss}`);
             let discardHeader = new ArrayBuffer(44);
             console.info(`${Tag}:case 2-1:AudioFrameworkRenderLog: File Path: `);
             ss.readSync(discardHeader);
             console.info(`${Tag}:case 2-2:AudioFrameworkRenderLog: File Path: `);
-            let totalSize = fileio.fstatSync(fdRead).size;
+            let totalSize = fs.statSync(musicFile.fd).size;
             console.info(`${Tag}:case 3 : AudioFrameworkRenderLog: File totalSize size: ${totalSize}`);
             totalSize = totalSize - 44;
             console.info(`${Tag}: File size : Removing header: ${totalSize}`);
@@ -157,16 +144,17 @@ export default function audioCapturer() {
             let readSync = 0
             while (rlen < totalSize) {
                 let buf = new ArrayBuffer(bufferSize);
-                rlen += ss.readSync(buf);
                 readSync = ss.readSync(buf);
                 if (readSync <= 0) {
                     console.info(`${Tag}:BufferAudioFramework: readSync: ${readSync}`);
                     break;
                 }
+                rlen += readSync;
                 console.info(`${Tag}:BufferAudioFramework: bytes read from file: ${rlen}`);
                 await audioRen.write(buf);
             }
-
+            fs.closeSync(musicFile);
+            ss.closeSync();
             console.info(`${Tag}: Renderer after read`);
 
             await audioRen.drain().then(() => {
@@ -248,23 +236,14 @@ export default function audioCapturer() {
 
                 let bufferSize = await audioCap.getBufferSize();
                 console.log(`${Tag} bufferSize: ${JSON.stringify(bufferSize)} , dirPath: ${JSON.stringify(dirPath)}`);
-                let fd = fileio.openSync(dirPath, 0o102, 0o777);
-                console.log(`${Tag} fd: ${JSON.stringify(fd)}`);
-                if (fd !== null) {
-                    console.info(`${Tag} AudioFrameworkRecLog: file fd created`);
-                }
-                else {
-                    console.info(`${Tag} AudioFrameworkRecLog: Capturer start : ERROR `);
-                    expect(false).assertTrue();
-                }
-
-                fd = fileio.openSync(dirPath, 0o2002, 0o666);
+                let capturerFile = fs.openSync(dirPath, fs.OpenMode.WRITE_ONLY | fs.OpenMode.APPEND | fs.OpenMode.CREATE);
+                let fd = capturerFile.fd;
                 console.log(`${Tag} fd-re: ${JSON.stringify(fd)}`);
                 if (fd !== null) {
-                    console.info(`${Tag} AudioFrameworkRecLog: file fd opened : Append Mode :PASS`);
+                    console.info(`${Tag} AudioFrameworkRecLog: file fd opened : WRITE_ONLY :PASS`);
                 }
                 else {
-                    console.info(`${Tag} AudioFrameworkRecLog: file fd Open: Append Mode : FAILED`);
+                    console.info(`${Tag} AudioFrameworkRecLog: file fd Open: WRITE_ONLY : FAILED`);
                     expect(false).assertTrue();
                 }
 
@@ -273,7 +252,7 @@ export default function audioCapturer() {
                     console.info(`${Tag} AudioFrameworkRecLog: ---------READ BUFFER---------`);
                     let buffer = await audioCap.read(bufferSize, true);
                     console.info(`${Tag} AudioFrameworkRecLog: ---------WRITE BUFFER---------`);
-                    let number = fileio.writeSync(fd, buffer);
+                    let number = fs.writeSync(fd, buffer);
                     console.info(`${Tag} AudioFrameworkRecLog:BufferRecLog: data written:  ${JSON.stringify(number)}`);
                     numBuffersToCapture--;
                 }
@@ -291,10 +270,10 @@ export default function audioCapturer() {
                 console.log(`${Tag} release err: ${JSON.stringify(err)}`);
                 expect(false).assertTrue();
             }
-            done();
+            //done();
         }
 
-        async function recPromise1(AudioCapturerOptions, AudioRendererOptions1, AudioRendererOptions2, pathName, done) {
+        async function recPromise1(AudioCapturerOptions, AudioRendererOptions1, AudioRendererOptions2, done) {
             let audioCap;
             try {
                 audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
@@ -342,28 +321,20 @@ export default function audioCapturer() {
             try {
                 await audioCap.start();
                 console.log(`${Tag} start ok`);
-                playbackPromise(AudioRendererOptions1, pathName);
-                playbackPromise(AudioRendererOptions2, pathName);
+                
+                await playbackPromise(AudioRendererOptions1);
+                await playbackPromise(AudioRendererOptions2);
 
                 let bufferSize = await audioCap.getBufferSize();
                 console.log(`${Tag} bufferSize: ${JSON.stringify(bufferSize)} , dirPath: ${JSON.stringify(dirPath)}`);
-                let fd = fileio.openSync(dirPath, 0o102, 0o777);
-                console.log(`${Tag} fd: ${JSON.stringify(fd)}`);
-                if (fd !== null) {
-                    console.info(`${Tag} AudioFrameworkRecLog: file fd created`);
-                }
-                else {
-                    console.info(`${Tag} AudioFrameworkRecLog: Capturer start : ERROR `);
-                    expect(false).assertTrue();
-                }
-
-                fd = fileio.openSync(dirPath, 0o2002, 0o666);
+                let capturerFile = fs.openSync(dirPath, fs.OpenMode.WRITE_ONLY | fs.OpenMode.APPEND | fs.OpenMode.CREATE);
+                let fd = capturerFile.fd;
                 console.log(`${Tag} fd-re: ${JSON.stringify(fd)}`);
                 if (fd !== null) {
-                    console.info(`${Tag} AudioFrameworkRecLog: file fd opened : Append Mode :PASS`);
+                    console.info(`${Tag} AudioFrameworkRecLog: file fd opened : WRITE_ONLY :PASS`);
                 }
                 else {
-                    console.info(`${Tag} AudioFrameworkRecLog: file fd Open: Append Mode : FAILED`);
+                    console.info(`${Tag} AudioFrameworkRecLog: file fd Open: WRITE_ONLY : FAILED`);
                     expect(false).assertTrue();
                 }
 
@@ -372,7 +343,7 @@ export default function audioCapturer() {
                     console.info(`${Tag} AudioFrameworkRecLog: ---------READ BUFFER---------`);
                     let buffer = await audioCap.read(bufferSize, true);
                     console.info(`${Tag} AudioFrameworkRecLog: ---------WRITE BUFFER---------`);
-                    let number = fileio.writeSync(fd, buffer);
+                    let number = fs.writeSync(fd, buffer);
                     console.info(`${Tag} AudioFrameworkRecLog:BufferRecLog: data written:  ${JSON.stringify(number)}`);
                     numBuffersToCapture--;
                 }
@@ -380,7 +351,7 @@ export default function audioCapturer() {
                 await audioCap.stop();
                 console.log(`${Tag} stop ok`);
             } catch (err) {
-                console.log(`${Tag} start-read-stop err: ${JSON.stringify(err)}`);
+                console.log(`${Tag} start-read-stop err: ${err.message}`);
                 expect(false).assertTrue();
             }
             try {
@@ -390,7 +361,6 @@ export default function audioCapturer() {
                 console.log(`${Tag} release err: ${JSON.stringify(err)}`);
                 expect(false).assertTrue();
             }
-            done();
         }
 
         async function recPromise2(AudioCapturerOptions, pathName, done) {
@@ -448,29 +418,16 @@ export default function audioCapturer() {
             try {
                 await audioCap.start();
                 console.log(`${Tag} start ok`);
-                // await playbackPromise(AudioRendererOptions, pathName);
-
                 let bufferSize = await audioCap.getBufferSize();
                 console.log(`${Tag} bufferSize: ${JSON.stringify(bufferSize)} , dirPath: ${JSON.stringify(dirPath)}`);
-                let fd = fileio.openSync(dirPath, 0o102, 0o777);
-                console.log(`${Tag} fd: ${JSON.stringify(fd)}`);
-                if (fd !== null) {
-                    console.info(`${Tag} AudioFrameworkRecLog: file fd created`);
-                    expect(true).assertTrue();
-                }
-                else {
-                    console.info(`${Tag} AudioFrameworkRecLog: Capturer start : ERROR `);
-                    expect(false).assertTrue();
-                }
-
-                fd = fileio.openSync(dirPath, 0o2002, 0o666);
+                let capturerFile = fs.openSync(dirPath, fs.OpenMode.WRITE_ONLY | fs.OpenMode.APPEND | fs.OpenMode.CREATE);
+                let fd = capturerFile.fd;
                 console.log(`${Tag} fd-re: ${JSON.stringify(fd)}`);
                 if (fd !== null) {
-                    console.info(`${Tag} AudioFrameworkRecLog: file fd opened : Append Mode :PASS`);
-                    expect(true).assertTrue();
+                    console.info(`${Tag} AudioFrameworkRecLog: file fd opened : WRITE_ONLY :PASS`);
                 }
                 else {
-                    console.info(`${Tag} AudioFrameworkRecLog: file fd Open: Append Mode : FAILED`);
+                    console.info(`${Tag} AudioFrameworkRecLog: file fd Open: WRITE_ONLY : FAILED`);
                     expect(false).assertTrue();
                 }
 
@@ -479,7 +436,7 @@ export default function audioCapturer() {
                     console.info(`${Tag} AudioFrameworkRecLog: ---------READ BUFFER---------`);
                     let buffer = await audioCap.read(bufferSize, true);
                     console.info(`${Tag} AudioFrameworkRecLog: ---------WRITE BUFFER---------`);
-                    let number = fileio.writeSync(fd, buffer);
+                    let number = fs.writeSync(fd, buffer);
                     console.info(`${Tag} AudioFrameworkRecLog:BufferRecLog: data written:  ${JSON.stringify(number)}`);
                     numBuffersToCapture--;
                 }
@@ -560,23 +517,14 @@ export default function audioCapturer() {
                 })
                 let bufferSize = await audioCap.getBufferSize();
                 console.log(`${Tag} bufferSize: ${JSON.stringify(bufferSize)} , dirPath: ${JSON.stringify(dirPath)}`);
-                let fd = fileio.openSync(dirPath, 0o102, 0o777);
-                console.log(`${Tag} fd: ${JSON.stringify(fd)}`);
-                if (fd !== null) {
-                    console.info(`${Tag} AudioFrameworkRecLog: file fd created`);
-                }
-                else {
-                    console.info(`${Tag} AudioFrameworkRecLog: Capturer start : ERROR `);
-                    expect(false).assertTrue();
-                }
-
-                fd = fileio.openSync(dirPath, 0o2002, 0o666);
+                let capturerFile = fs.openSync(dirPath, fs.OpenMode.WRITE_ONLY | fs.OpenMode.APPEND | fs.OpenMode.CREATE);
+                let fd = capturerFile.fd;
                 console.log(`${Tag} fd-re: ${JSON.stringify(fd)}`);
                 if (fd !== null) {
-                    console.info(`${Tag} AudioFrameworkRecLog: file fd opened : Append Mode :PASS`);
+                    console.info(`${Tag} AudioFrameworkRecLog: file fd opened : WRITE_ONLY :PASS`);
                 }
                 else {
-                    console.info(`${Tag} AudioFrameworkRecLog: file fd Open: Append Mode : FAILED`);
+                    console.info(`${Tag} AudioFrameworkRecLog: file fd Open: WRITE_ONLY : FAILED`);
                     expect(false).assertTrue();
                 }
 
@@ -585,7 +533,7 @@ export default function audioCapturer() {
                     console.info(`${Tag} AudioFrameworkRecLog: ---------READ BUFFER---------`);
                     let buffer = await audioCap.read(bufferSize, true);
                     console.info(`${Tag} AudioFrameworkRecLog: ---------WRITE BUFFER---------`);
-                    let number = fileio.writeSync(fd, buffer);
+                    let number = fs.writeSync(fd, buffer);
                     console.info(`${Tag} AudioFrameworkRecLog:BufferRecLog: data written:  ${JSON.stringify(number)}`);
                     numBuffersToCapture--;
                 }
@@ -603,7 +551,7 @@ export default function audioCapturer() {
                 console.log(`${Tag} release err: ${JSON.stringify(err)}`);
                 expect(false).assertTrue();
             }
-            done();
+            //done();
         }
 
 
@@ -630,8 +578,6 @@ export default function audioCapturer() {
                 filterOptions: {
                     usages: [audio.StreamUsage.STREAM_USAGE_MEDIA]
                 }
-
-
             }
             let audioCapturerOptions = {
                 streamInfo: audioStreamInfo,
@@ -660,12 +606,10 @@ export default function audioCapturer() {
                 rendererInfo: AudioRendererInfo,
                 privacyType: AudioPrivacyType
             }
-            readPath = 'pcm_48ksr_32kbr_2ch.wav'
-            await getFdRead(readPath, done);
             await getFd("capture_js-48000-2C-1S32LE.pcm");
             await recPromise(audioCapturerOptions, AudioRendererOptions, filePath, done);
             await sleep(100);
-            await closeFileDescriptor(readPath);
+            await closeFileDescriptor(PLAY_FILE);
             done();
         })
 
@@ -692,7 +636,6 @@ export default function audioCapturer() {
                 filterOptions: {
                     usages: [audio.StreamUsage.STREAM_USAGE_MOVIE]
                 }
-
             }
             let audioCapturerOptions = {
                 streamInfo: audioStreamInfo,
@@ -721,12 +664,10 @@ export default function audioCapturer() {
                 rendererInfo: AudioRendererInfo,
                 privacyType: AudioPrivacyType
             }
-            readPath = 'pcm_48ksr_32kbr_2ch.wav'
-            await getFdRead(readPath, done);
             await getFd("capture_js-44100-2C-1S32LE.pcm");
             await recPromise(audioCapturerOptions, AudioRendererOptions, filePath, done);
             await sleep(100);
-            await closeFileDescriptor(readPath);
+            await closeFileDescriptor(PLAY_FILE);
             done();
         })
 
@@ -753,7 +694,6 @@ export default function audioCapturer() {
                 filterOptions: {
                     usages: [audio.StreamUsage.STREAM_USAGE_MUSIC, audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT]
                 }
-
             }
             let audioCapturerOptions = {
                 streamInfo: audioStreamInfo,
@@ -804,12 +744,11 @@ export default function audioCapturer() {
                 rendererInfo: AudioRendererInfo2,
                 privacyType: AudioPrivacyType2
             }
-            readPath = 'pcm_48ksr_32kbr_2ch.wav'
-            await getFdRead(readPath, done);
+            
             await getFd("capture_js-44100-2C-1S32LE_2.pcm");
             await recPromise1(audioCapturerOptions, AudioRendererOptions1, AudioRendererOptions2, filePath, done);
             await sleep(100);
-            await closeFileDescriptor(readPath);
+            await closeFileDescriptor(PLAY_FILE);
             done();
         })
 
@@ -836,7 +775,6 @@ export default function audioCapturer() {
                 filterOptions: {
                     usages: [audio.StreamUsage.STREAM_USAGE_ALARM, audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE]
                 }
-
             }
             let audioCapturerOptions = {
                 streamInfo: audioStreamInfo,
@@ -887,12 +825,10 @@ export default function audioCapturer() {
                 rendererInfo: AudioRendererInfo2,
                 privacyType: AudioPrivacyType2
             }
-            readPath = 'pcm_48ksr_32kbr_2ch.wav'
-            await getFdRead(readPath, done);
             await getFd("capture_js-44100-2C-1S32LE_3.pcm");
             await recPromise1(audioCapturerOptions, AudioRendererOptions1, AudioRendererOptions2, filePath, done);
             await sleep(100);
-            await closeFileDescriptor(readPath);
+            await closeFileDescriptor(PLAY_FILE);
             done();
         })
         /**
@@ -918,7 +854,6 @@ export default function audioCapturer() {
                 filterOptions: {
                     usages: [audio.StreamUsage.STREAM_USAGE_RINGTONE, audio.StreamUsage.STREAM_USAGE_NOTIFICATION]
                 }
-
             }
             let audioCapturerOptions = {
                 streamInfo: audioStreamInfo,
@@ -969,12 +904,10 @@ export default function audioCapturer() {
                 rendererInfo: AudioRendererInfo2,
                 privacyType: AudioPrivacyType2
             }
-            readPath = 'pcm_48ksr_32kbr_2ch.wav'
-            await getFdRead(readPath, done);
             await getFd("capture_js-44100-2C-1S32LE_4.pcm");
             await recPromise1(audioCapturerOptions, AudioRendererOptions1, AudioRendererOptions2, filePath, done);
             await sleep(100);
-            await closeFileDescriptor(readPath);
+            await closeFileDescriptor(PLAY_FILE);
             done();
         })
 
@@ -1001,7 +934,6 @@ export default function audioCapturer() {
                 filterOptions: {
                     usages: [audio.StreamUsage.STREAM_USAGE_RINGTONE]
                 }
-
             }
             let audioCapturerOptions = {
                 streamInfo: audioStreamInfo,
@@ -1052,12 +984,10 @@ export default function audioCapturer() {
                 rendererInfo: AudioRendererInfo2,
                 privacyType: AudioPrivacyType2
             }
-            readPath = 'pcm_48ksr_32kbr_2ch.wav'
-            await getFdRead(readPath, done);
             await getFd("capture_js-44100-2C-1S32LE_5.pcm");
             await recPromise1(audioCapturerOptions, AudioRendererOptions1, AudioRendererOptions2, filePath, done);
             await sleep(100);
-            await closeFileDescriptor(readPath);
+            await closeFileDescriptor(PLAY_FILE);
             done();
         })
 
@@ -1084,21 +1014,16 @@ export default function audioCapturer() {
                 filterOptions: {
                     usages: [audio.StreamUsage.STREAM_USAGE_MEDIA]
                 }
-
-
             }
             let audioCapturerOptions = {
                 streamInfo: audioStreamInfo,
                 capturerInfo: audioCapturerInfo,
                 playbackCaptureConfig: playbackCaptureConfig,
             }
-
-            readPath = 'pcm_48ksr_32kbr_2ch.wav'
-            await getFdRead(readPath, done);
             await getFd("capture_js-48000-2C-1S32LE.pcm");
             await recPromise2(audioCapturerOptions, filePath, done);
             await sleep(100);
-            await closeFileDescriptor(readPath);
+            await closeFileDescriptor(PLAY_FILE);
             done();
         })
 
@@ -1125,8 +1050,6 @@ export default function audioCapturer() {
                 filterOptions: {
                     usages: [audio.StreamUsage.STREAM_USAGE_MEDIA]
                 }
-
-
             }
             let audioCapturerOptions = {
                 streamInfo: audioStreamInfo,
@@ -1155,16 +1078,12 @@ export default function audioCapturer() {
                 rendererInfo: AudioRendererInfo,
                 privacyType: AudioPrivacyType
             }
-            readPath = 'pcm_48ksr_32kbr_2ch.wav'
-            await getFdRead(readPath, done);
             await getFd("capture_js-48000-2C-1S32LE.pcm");
             await recPromise3(audioCapturerOptions, AudioRendererOptions, done);
             await sleep(100);
-            await closeFileDescriptor(readPath);
+            await closeFileDescriptor(PLAY_FILE);
             done();
         })
-
-
     })
 
 }
