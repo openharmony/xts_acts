@@ -607,6 +607,11 @@ import DragAllowDropDataTypesTest from "./drag/DragAllowDropDataTypes.test"
 import DragSetNodeDragPreviewTest from "./drag/DragSetNodeDragPreview.test"
 import DragDragPreviewOptionTest from "./drag/DragDragPreviewOption.test"
 import DragDragActionTest from "./drag/DragDragAction.test"
+import DragActionCreateDragActionTest from "./drag/DragActionCreateDragAction.test"
+import DragActionSetPointerIdTest from "./drag/DragActionSetPointerId.test"
+import DragActionSetDragPreviewOptionTest from "./drag/DragActionSetDragPreviewOption.test"
+import DragActionSetTouchPointXYTest from "./drag/DragActionSetTouchPointXY.test"
+import DragActionRegisterStatusListenerTest from "./drag/DragActionRegisterStatusListener.test"
 import SystemColorFontChangeTest from "./system/SystemColorFontChange.test"
 import animatorEventTest from "./animation/AnimatorEventTest.test"
 import textCustomSpanTest from "./text/TextCustomSpan.test"
@@ -1207,6 +1212,11 @@ export default function testsuite() {
   DragSetNodeDragPreviewTest()
   DragDragPreviewOptionTest()
   DragDragActionTest()
+  DragActionCreateDragActionTest()
+  DragActionSetPointerIdTest()
+  DragActionSetDragPreviewOptionTest()
+  DragActionSetTouchPointXYTest()
+  DragActionRegisterStatusListenerTest()
   SystemColorFontChangeTest()
   animatorEventTest()
   textCustomSpanTest()

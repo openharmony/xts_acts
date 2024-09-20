@@ -103,6 +103,11 @@ add_library(nativerender SHARED
     drag/drag_getXY.cpp
     drag/drag_getWidthHeight.cpp
     drag/drag_getModifierKeyStates.cpp
+    drag/dragAction_createDragAction.cpp
+    drag/dragAction_setPointerId.cpp
+    drag/dragAction_setTouchPointXY.cpp
+    drag/dragAction_setDragPreviewOption.cpp
+    drag/dragAction_registerStatusListener.cpp
     text/text_CustomSpan_test.cpp
     system/system_ColorFontChange_test.cpp
     text/text_imageSpan_test.cpp

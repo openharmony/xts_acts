@@ -269,6 +269,16 @@ export const getWidthHeightTest: (a: string) => void;
 
 export const getModifierKeyStatesTest: (a: string) => void;
 
+export const createDragActionTest: (a: string) => void;
+
+export const setPointerIdTest: (a: string) => void;
+
+export const setTouchPointXYTest: (a: string) => void;
+
+export const setDragPreviewOptionTest: (a: string) => void;
+
+export const registerStatusListenerTest: (a: string) => void;
+
 export const animatorEventTest: (a: string) => void;
 
 export const testKeyframeRegisterOnFinish: (a: string) => void;
@@ -282,3 +292,4 @@ export const testAnimatorRegisterOnFinish: (a: string) => void;
 export const testAnimatorRegisterOnCancel: (a: string) => void;
 
 export const testAnimatorRegisterOnRepeat: (a: string) => void;
+
