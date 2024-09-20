@@ -280,7 +280,7 @@ static napi_value testSystemFontStyleEvent_GetFontWeightScale_006(napi_env env, 
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "SystemFontStyleEvenTest", "OnEventReceive");
         if (fontStyle == nullptr) {
             napi_throw_error((env1), nullptr,
-                "assertion ( fontStyle != nullptr ) failed: Failed to produce error condition"); 
+                "assertion ( fontStyle != nullptr ) failed: Failed to produce error condition");
         }
         
         auto fontWeight = OH_ArkUI_SystemFontStyleEvent_GetFontWeightScale(fontStyle);
