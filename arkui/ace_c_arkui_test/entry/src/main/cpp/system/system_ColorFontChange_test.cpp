@@ -250,6 +250,7 @@ static napi_value testSystemFontStyleEvent_GetFontSizeScale_005(napi_env env, na
 
 static napi_value testSystemFontStyleEvent_GetFontWeightScale_006(napi_env env, napi_callback_info info)
 {
+    static napi_env env1 = env;
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
 
@@ -278,12 +279,11 @@ static napi_value testSystemFontStyleEvent_GetFontWeightScale_006(napi_env env, 
     auto onFontChange = [](ArkUI_SystemFontStyleEvent *fontStyle, void *userData)->void {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "SystemFontStyleEvenTest", "OnEventReceive");
         if (fontStyle == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "SystemFontStyleEvenTest",
-                "OnEventReceive: fontStyle is null");
-            return;
+            napi_throw_error((env1), nullptr,
+                "assertion ( fontStyle != nullptr ) failed: Failed to produce error condition"); 
         }
-        auto fontWeight = OH_ArkUI_SystemFontStyleEvent_GetFontWeightScale(fontStyle);
         
+        auto fontWeight = OH_ArkUI_SystemFontStyleEvent_GetFontWeightScale(fontStyle);
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
             "kkk onFontChange fontWeight = %{public}f", fontWeight);
     };
