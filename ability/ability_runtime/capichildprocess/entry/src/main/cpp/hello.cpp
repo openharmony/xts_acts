@@ -14,11 +14,21 @@
  */
 
 #include "IpcProxy.h"
+#include <cstdlib>
+#include <cstring>
+#include <hilog/log.h>
+#include <fcntl.h>
 #include <future>
+#include <unistd.h>
 #include "napi/native_api.h"
 #include "AbilityKit/native_child_process.h"
 #include "ChildProcess.h"
 #include "loghelper.h"
+
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0x3200
+#define LOG_TAG "CHILD_TAG"
 
 static ChildProcess g_childProcess;
 static IpcProxy *g_ipcProxyPnt = nullptr;
@@ -181,6 +191,84 @@ static napi_value BusyTest(napi_env env, napi_callback_info info)
     return napiRet;
 }
 
+static Ability_NativeChildProcess_ErrCode StartChildWithArgs(NativeChildProcess_IsolationMode mode)
+{
+    int32_t pid = -1;
+    NativeChildProcess_Args args;
+    auto testParam = "testEntryParams";
+    args.entryParams = (char*)malloc(sizeof(char) * strlen(testParam) + 1);
+    (void)strcpy(args.entryParams, testParam);
+
+    auto fd1Name = "fd1";
+    args.fdList.head = (NativeChildProcess_Fd*)malloc(sizeof(NativeChildProcess_Fd));
+    args.fdList.head->fdName = (char*)malloc(sizeof(char) * strlen(fd1Name) + 1);
+    (void)strcpy(args.fdList.head->fdName, fd1Name);
+    
+    auto path = "data/storage/el2/base/files/test.txt";
+    int32_t fd = open(path, O_RDWR | O_CREAT | O_TRUNC, 0644);
+    auto testString = "test";
+    write(fd, testString, strlen(testString));
+    close(fd);
+    fd = open(path, O_RDWR | O_TRUNC, 0644);
+    args.fdList.head->fd = fd;
+    args.fdList.head->next = NULL;
+    
+    NativeChildProcess_Options options = {
+        .isolationMode = mode
+    };
+    OH_LOG_INFO(LOG_APP, "===================Ability_NativeChildProcess before");
+    Ability_NativeChildProcess_ErrCode ret = OH_Ability_StartNativeChildProcess(
+        "libentry.so:Main", args, options, &pid);
+    OH_LOG_INFO(LOG_APP, "===================Ability_NativeChildProcess_ErrCode: %{public}d", ret);
+    close(fd);
+    return ret;
+}
+
+static Ability_NativeChildProcess_ErrCode StartChildWithNoArgs()
+{
+    int32_t pid = -1;
+    NativeChildProcess_Args args;
+    args.entryParams = NULL;
+    args.fdList.head = NULL;
+    
+    NativeChildProcess_Options options = {
+        .isolationMode = NCP_ISOLATION_MODE_ISOLATED
+    };
+    OH_LOG_INFO(LOG_APP, "===================Ability_NativeChildProcess before");
+    Ability_NativeChildProcess_ErrCode ret = OH_Ability_StartNativeChildProcess(
+        "libentry.so:Main", args, options, &pid);
+    OH_LOG_INFO(LOG_APP, "===================Ability_NativeChildProcess_ErrCode: %{public}d", ret);
+    return ret;
+}
+
+static napi_value StartChildIsolated(napi_env env, napi_callback_info info)
+{
+    OH_LOG_INFO(LOG_APP, "===================StartChildIsolated");
+    int32_t ret = static_cast<int32_t>(StartChildWithArgs(NCP_ISOLATION_MODE_ISOLATED));
+    napi_value napiRet;
+    napi_create_int32(env, ret, &napiRet);
+    return napiRet;
+}
+
+static napi_value StartChildNormal(napi_env env, napi_callback_info info)
+{
+    OH_LOG_INFO(LOG_APP, "===================StartChildNormal");
+    int32_t ret = static_cast<int32_t>(StartChildWithArgs(NCP_ISOLATION_MODE_NORMAL));
+    napi_value napiRet;
+    napi_create_int32(env, ret, &napiRet);
+    return napiRet;
+}
+
+
+static napi_value StartChildNoArgs(napi_env env, napi_callback_info info)
+{
+    OH_LOG_INFO(LOG_APP, "===================StartChildWithNoArgs");
+    int32_t ret = static_cast<int32_t>(StartChildWithNoArgs());
+    napi_value napiRet;
+    napi_create_int32(env, ret, &napiRet);
+    return napiRet;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -200,6 +288,12 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "busyTest", nullptr, BusyTest,
             nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "startChildIsolated", nullptr, StartChildIsolated,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "startChildNormal", nullptr, StartChildNormal,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "startChildNoArgs", nullptr, StartChildNoArgs,
+            nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
