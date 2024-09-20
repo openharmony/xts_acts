@@ -1,12 +1,11 @@
 {
-    "description": "Configuration for multimodalinput js api Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "ohos.acts.multimodalinput.input",
-        "package-name": "ohos.acts.multimodalinput.input",
-        "test-timeout": "300000",
-        "shell-timeout": "300000",
-        "testcase-timeout": 60000
+        "package-name": "ohos.acts.multimodalinput.input"
     },
     "kits": [
         {
@@ -15,6 +14,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }
