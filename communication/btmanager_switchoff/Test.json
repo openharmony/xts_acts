@@ -1,11 +1,11 @@
 {
-    "description": "Configuration for bluetooth js api Tests",
+    "description": "Configuration for bluetooth api Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "shell-timeout": "600000",
         "bundle-name": "ohos.acts.communication.bluetooth.bluetoothhost",
-        "package-name": "ohos.acts.communication.bluetooth.bluetoothhost",
+        "module-name": "entry_test",
         "testcase-timeout": 70000
     },
     "kits": [
@@ -15,13 +15,11 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
+        },{
             "type": "ShellKit",
             "run-command": [
-                "power-shell setmode 602",
-                "svc bluetooth enable"
-                
+                "power-shell wakeup",
+                "power-shell setmode 602"
             ]
         }
     ]
