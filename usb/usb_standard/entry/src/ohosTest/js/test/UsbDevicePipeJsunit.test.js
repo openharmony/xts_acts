@@ -14,6 +14,7 @@
  */
 
 import usbManager from '@ohos.usbManager';
+import { UiDriver, BY } from '@ohos.UiTest';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
 import EventConstants from './EventConstants.js';
 import parameter from '@ohos.systemparameter';
@@ -25,15 +26,10 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
 
   let gDeviceList;
   let gPipe;
-  let usbPortList;
   let isDeviceConnected;
   const TAG = "[UsbDevicePipeJsFunctionsTest]";
 
   function deviceConnected() {
-    if (usbPortList === undefined) {
-      console.info(TAG, "Test USB device is not supported");
-      return false;
-    }
     if (gDeviceList.length > 0) {
         console.info(TAG, "Test USB device is connected");
         return true;
@@ -47,21 +43,16 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var Version = usbManager.getVersion();
     console.info(TAG, 'usb unit begin test getversion :' + Version);
     // version > 17  host currentMode = 2 device currentMode = 1
-    usbPortList = usbManager.getPortList();
     gDeviceList = usbManager.getDevices();
     isDeviceConnected = deviceConnected();
     if (isDeviceConnected) {
-      if (usbPortList.length > 0) {
-        if (usbPortList[0].status.currentMode == 1) {
-          try {
-            let data = await usbManager.setPortRoleTypes(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST);
-            console.info(TAG, 'usb case setPortRoleTypesEx  return: ' + data);
-          } catch (error) {
-            console.info(TAG, 'usb case setPortRoleTypes error : ' + error);
-          }
-          CheckEmptyUtils.sleep(4000);
-          console.log(TAG, '*************Usb Unit switch to host Begin*************');
-        }
+      let hasRight = usbManager.hasRight(gDeviceList[0].name);
+      if (!hasRight) {
+        console.info(TAG, `beforeAll: usb requestRight start`);
+        await getPermission();
+        CheckEmptyUtils.sleep(1000);
+        await driveFn();
+        CheckEmptyUtils.sleep(1000);
       }
       gPipe = usbManager.connectDevice(gDeviceList[0]);
       console.info(TAG, 'usb unit connectDevice gPipe ret : ' + JSON.stringify(gPipe));
@@ -84,6 +75,35 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     console.info(TAG, 'usb unit close gPipe ret : ' + isPipClose);
     console.log(TAG, '*************Usb Unit UsbDevicePipeJsFunctionsTest End*************');
   })
+
+  async function driveFn() {
+    console.info('**************driveFn**************');
+    try {
+        let driver = await UiDriver.create();
+        console.info(TAG, ` come in driveFn`);
+        console.info(TAG, `driver is ${JSON.stringify(driver)}`);
+        CheckEmptyUtils.sleep(1000);
+        let button = await driver.findComponent(BY.text('允许'));
+        console.info(TAG, `button is ${JSON.stringify(button)}`);
+        CheckEmptyUtils.sleep(1000);
+        await button.click();
+    } catch (err) {
+        console.info(TAG, 'err is ' + err);
+        return;
+    }
+  }
+
+  async function getPermission() {
+    console.info('**************getPermission**************');
+    try {
+      usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
+        console.info(TAG, `usb requestRight success, hasRight: ${hasRight}`);
+      })
+    } catch (err) {
+      console.info(TAG, `usb getPermission to requestRight hasRight fail: `, err);
+      return
+    }
+  }
 
   function findInitPoint(testParam, j) {
     var bfind = false;
