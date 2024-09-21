@@ -61,6 +61,8 @@ export default class Utils {
     await btn.click();
     btn = await driver.waitForComponent(ON.text("允许"), 2000);
     await btn.click();
+    btn = await driver.waitForComponent(ON.text("允许"), 2000);
+    await btn.click();
     console.info('OUT allowScreenCapture...')
   }
 }
