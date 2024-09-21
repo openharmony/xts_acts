@@ -756,7 +756,7 @@ function testAddDisallowedListForAccountPolicy() {
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_LIST_FOR_ACCOUNT_JS_0700
    * @tc.name      : test_add_disallowed_list_for_account_0700
-   * @tc.desc      : test restrictions addDisallowedListForAccount with empty accountId
+   * @tc.desc      : test restrictions addDisallowedListForAccount add and get success
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
@@ -795,6 +795,30 @@ function testAddDisallowedListForAccountPolicy() {
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_LIST_FOR_ACCOUNT_JS_0900
+   * @tc.name      : test_add_disallowed_list_for_account_0900
+   * @tc.desc      : test restrictions addDisallowedListForAccount with max limit
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_list_for_account_0900", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    let nameList:string[] = [];
+    for (let index = 0; index < 1000; index++) {
+      nameList.push("bundle.name" + index);
+    }
+    try {
+      restrictions.addDisallowedListForAccount(SELFWANT, LABEL_SNAPSHOT_SKIP_FOR_ACCOUNT, nameList, DEFAULT_USER_ID);
+    } catch (error) {
+      expect(false).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
