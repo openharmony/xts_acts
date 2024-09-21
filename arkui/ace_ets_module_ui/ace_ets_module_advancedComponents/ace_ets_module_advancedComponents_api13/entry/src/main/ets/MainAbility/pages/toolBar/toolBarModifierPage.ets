@@ -16,6 +16,8 @@
 import { ToolBar, ToolBarOptions, ToolBarModifier, ItemState } from '@ohos.arkui.advanced.ToolBar';
 import { LengthMetrics } from '@ohos.arkui.node';
 import { DividerModifier, SymbolGlyphModifier } from '@ohos.arkui.modifier';
+import { BusinessError } from '@ohos.base';
+import hilog from '@ohos.hilog';
 
 @Entry
 @Component
@@ -67,6 +69,14 @@ struct ToolBarModifierPage {
       },
       state: ItemState.ACTIVATE,
     })
+    try {
+      this.getUIContext()?.isFollowingSystemFontScale();
+      this.getUIContext()?.getMaxFontScale();
+    } catch (err) {
+      let code: number = (err as BusinessError)?.code;
+      let message: string = (err as BusinessError)?.message;
+      hilog.error(0x3900, 'Ace', `Faild to toolBar getMaxFontScale, code: ${code}, message: ${message}`);
+    }
   }
 
   build() {
