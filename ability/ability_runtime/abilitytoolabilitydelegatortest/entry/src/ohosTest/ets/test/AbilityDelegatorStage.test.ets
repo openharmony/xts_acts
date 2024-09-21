@@ -23,6 +23,7 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 const TAG: string = 'ActsAbilityDelegatorTest';
 const TEST_SUITE_NAME: string = 'ActsAbilityDelegatorStageTest';
 const CODE_ERROR = 401;
+const WAIT_TIME_500:number = 500;
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 
 function sleep(time: number) {
@@ -61,37 +62,46 @@ export default function AbilityDelegatorStageTest() {
           moduleName: AbilityDelegatorRegistry.getArguments().parameters['-m'],
           onAbilityForeground: (ability) => {
             console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ---onAbilityForegroundCallback`);
-            abilityDelegator.getCurrentTopAbility(async (err, data) => {
-              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> getCurrentTopAbility_0200 err: ${JSON.stringify(err)} data:  ${JSON.stringify(data)}`);
-              let state = abilityDelegator.getAbilityState(ability);
-              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 state --in Foregroundcallback: ${state}`);
-              expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.FOREGROUND);
-              if (deviceType === '2in1') {
-                abilityDelegator.removeAbilityMonitor(monitor)
+            setTimeout(()=>{
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ---onAbilityForegroundCallback time out`);
+              abilityDelegator.getCurrentTopAbility(async (err, data) => {
+                console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> err: ${JSON.stringify(err)} data:  ${JSON.stringify(data)}`);
+                let state = abilityDelegator.getAbilityState(ability);
+                console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> state --in Foregroundcallback: ${state}`);
+                expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.FOREGROUND);
+                if (deviceType === '2in1') {
+                  abilityDelegator.removeAbilityMonitor(monitor)
+                    .then(() => {
+                      console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
+                    })
+                  ability.context.terminateSelf();
+                  await sleep(500);
+                  done();
+                } else {
+                  abilityDelegator.doAbilityBackground(ability)
                   .then(() => {
-                    console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
+                    console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> doAbilityBackground data: -----in Foregroundcallback`);
                   })
-                await sleep(500);
-                done();
-              } else {
-                abilityDelegator.doAbilityBackground(ability)
-                .then(() => {
-                  console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> doAbilityBackground data: -----in Foregroundcallback`);
-                })
-              }
-            })
+                }
+              })
+            }, WAIT_TIME_500)
           },
           onAbilityBackground: (ability) => {
             console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>onAbilityBackgroundCallback====`);
-            let state = abilityDelegator.getAbilityState(ability);
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 -- in background callback state: ${state}`);
-            expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.BACKGROUND);
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 end====`);
-            abilityDelegator.removeAbilityMonitor(monitor)
-              .then(() => {
-                console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
-              })
-            done();
+            setTimeout(async ()=>{
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>onAbilityBackgroundCallback==== time out`);
+              let state = abilityDelegator.getAbilityState(ability);
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> -- in background callback state: ${state}`);
+              expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.BACKGROUND);
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> end====`);
+              abilityDelegator.removeAbilityMonitor(monitor)
+                .then(() => {
+                  console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
+                })
+              ability.context.terminateSelf();
+              await sleep(500);
+              done();
+            }, WAIT_TIME_500)
           }
         }
 
@@ -123,43 +133,53 @@ export default function AbilityDelegatorStageTest() {
      */
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_23600', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_23600';
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       try {
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         let monitor: AbilityDelegatorRegistry.AbilityMonitor = {
           abilityName: 'AssistantAbilityTwo',
           moduleName: AbilityDelegatorRegistry.getArguments().parameters['-m'],
           onAbilityForeground: (ability) => {
             console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ---onAbilityForegroundCallback`);
-            abilityDelegator.getCurrentTopAbility((err, data) => {
-              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> getCurrentTopAbility_0200 err: ${JSON.stringify(err)} data:  ${JSON.stringify(data)}`);
-              let state = abilityDelegator.getAbilityState(ability);
-              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 state --in Foregroundcallback: ${state}`);
-              expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.FOREGROUND);
-              if (deviceType === '2in1') {
-                abilityDelegator.removeAbilityMonitor(monitor)
+            setTimeout(()=>{
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ---onAbilityForegroundCallback time out`);
+              abilityDelegator.getCurrentTopAbility(async (err, data) => {
+                console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> err: ${JSON.stringify(err)} data:  ${JSON.stringify(data)}`);
+                let state = abilityDelegator.getAbilityState(ability);
+                console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> state --in Foregroundcallback: ${state}`);
+                expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.FOREGROUND);
+                if (deviceType === '2in1') {
+                  abilityDelegator.removeAbilityMonitor(monitor)
+                    .then(() => {
+                      console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
+                    })
+                  ability.context.terminateSelf();
+                  await sleep(500);
+                  done();
+                } else {
+                  abilityDelegator.doAbilityBackground(ability)
                   .then(() => {
-                    console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
+                    console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> doAbilityBackground data: -----in Foregroundcallback`);
                   })
-                done();
-              } else {
-                abilityDelegator.doAbilityBackground(ability)
-                .then(() => {
-                  console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> doAbilityBackground data: -----in Foregroundcallback`);
-                })
-              }
-            })
+                }
+              })
+            }, WAIT_TIME_500)
           },
           onAbilityBackground: (ability) => {
             console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>onAbilityBackgroundCallback====`);
-            let state = abilityDelegator.getAbilityState(ability);
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 state: ${state}`);
-            expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.BACKGROUND);
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 end====`);
-            abilityDelegator.removeAbilityMonitor(monitor)
-              .then(() => {
-                console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`);
-              })
-            done();
+            setTimeout(async ()=>{
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>onAbilityBackgroundCallback====time out`);
+              let state = abilityDelegator.getAbilityState(ability);
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> state: ${state}`);
+              expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.BACKGROUND);
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> end====`);
+              abilityDelegator.removeAbilityMonitor(monitor)
+                .then(() => {
+                  console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`);
+                })
+              ability.context.terminateSelf();
+              await sleep(500);
+              done();
+            }, WAIT_TIME_500)
           }
         }
 
