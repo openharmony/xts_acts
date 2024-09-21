@@ -3967,6 +3967,176 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0006
+     * @tc.name: test_createRationalFromString_006
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_006', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('123');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of 123 must be effective string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0007
+     * @tc.name: test_createRationalFromString_007
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_007', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('abc');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of abc must be effective string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0008
+     * @tc.name: test_createRationalFromString_008
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_008', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('123abc');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of 123abc must be effective string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0009
+     * @tc.name: test_createRationalFromString_009
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_009', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('abc:');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of abc: must be character string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0010
+     * @tc.name: test_createRationalFromString_010
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_010', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString(':abc');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of :abc must be character string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0011
+     * @tc.name: test_createRationalFromString_011
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_011', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('abc/');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of abc/ must be character string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0012
+     * @tc.name: test_createRationalFromString_012
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_012', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('123:abc');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of 123:abc must be character string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0013
+     * @tc.name: test_createRationalFromString_013
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_013', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('abc/123');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of abc/123 must be character string");
+      }
+    })
+  
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0014
+     * @tc.name: test_createRationalFromString_014
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_014', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('abc/abcd');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of abc/abcd must be character string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0015
+     * @tc.name: test_createRationalFromString_015
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_015', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of  must be effective string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0016
      * @tc.name: test_compareTo_001
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.size: MediumTest
@@ -3981,7 +4151,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0007
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0017
      * @tc.name: test_compareTo_002
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.size: MediumTest
@@ -3996,7 +4166,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0008
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0018
      * @tc.name: test_compareTo_003
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.size: MediumTest
@@ -4011,7 +4181,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0009
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0019
      * @tc.name: test_compareTo_004
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.size: MediumTest
@@ -4026,7 +4196,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0010
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0020
      * @tc.name: test_compareTo_005
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.size: MediumTest
@@ -4041,7 +4211,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0011
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0021
      * @tc.name: test_equals_001
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4056,7 +4226,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0012
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0022
      * @tc.name: test_equals_002
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4071,7 +4241,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0013
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0023
      * @tc.name: test_equals_003
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4086,7 +4256,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0014
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0024
      * @tc.name: test_equals_004
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4101,7 +4271,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0015
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0025
      * @tc.name: test_equals_005
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4116,7 +4286,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0016
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0026
      * @tc.name: testRationalNumberValueOf001
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
      * @tc.size: MediumTest
@@ -4130,7 +4300,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0017
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0027
      * @tc.name: testRationalNumberValueOf002
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
      * @tc.size: MediumTest
@@ -4144,7 +4314,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0018
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0028
      * @tc.name: testRationalNumberValueOf003
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
      * @tc.size: MediumTest
@@ -4158,7 +4328,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0019
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0029
      * @tc.name: testRationalNumberValueOf004
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
      * @tc.size: MediumTest
@@ -4172,7 +4342,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0020
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0030
      * @tc.name: testRationalNumberValueOf005
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
      * @tc.size: MediumTest
@@ -4186,7 +4356,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0021
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0031
      * @tc.name: testGetCommonDivisor001
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      * @tc.size: MediumTest
@@ -4200,7 +4370,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0022
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0032
      * @tc.name: testGetCommonDivisor002
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      * @tc.size: MediumTest
@@ -4214,7 +4384,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0023
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0033
      * @tc.name: testGetCommonDivisor003
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      * @tc.size: MediumTest
@@ -4228,7 +4398,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0024
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0034
      * @tc.name: testGetCommonDivisor004
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      * @tc.size: MediumTest
@@ -4242,7 +4412,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0025
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0035
      * @tc.name: testGetCommonDivisor005
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      * @tc.size: MediumTest
@@ -4256,7 +4426,101 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0026
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0036
+     * @tc.name: testGetCommonFactor001
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonFactor001', 0, function () {
+      let result = util.RationalNumber.getCommonFactor(4, 6);
+      expect(result).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0037
+     * @tc.name: testGetCommonFactor002
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonFactor002', 0, function () {
+      let result = util.RationalNumber.getCommonFactor(1, 6);
+      expect(result).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0038
+     * @tc.name: testGetCommonFactor003
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonFactor003', 0, function () {
+      try{
+        let result = util.RationalNumber.getCommonFactor(0, 6);
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The Parameter cannot be zero");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0039
+     * @tc.name: testGetCommonFactor004
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonFactor004', 0, function () {
+      try{
+        let result = util.RationalNumber.getCommonFactor(0, 0);
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The Parameter cannot be zero");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0040
+     * @tc.name: testGetCommonFactor005
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonFactor005', 0, function () {
+      try{
+        let result = util.RationalNumber.getCommonFactor(null, null);
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of null must be number");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0041
+     * @tc.name: testGetCommonFactor006
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonFactor006', 0, function () {
+      try{
+        let result = util.RationalNumber.getCommonFactor('123', 456);
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of 123 must be number");
+      }
+    })
+  
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0042
      * @tc.name: testGetDenominator001
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4270,7 +4534,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0027
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0043
      * @tc.name: testGetDenominator002
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4284,7 +4548,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0028
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0044
      * @tc.name: testGetDenominator003
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4298,7 +4562,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0029
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0045
      * @tc.name: testGetDenominator004
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4312,7 +4576,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0030
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0046
      * @tc.name: testGetDenominator005
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4326,7 +4590,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0031
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0047
      * @tc.name: testGetDenominator006
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4340,7 +4604,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0032
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0048
      * @tc.name: testGetNumerator001
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4354,7 +4618,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0033
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0049
      * @tc.name: testGetNumerator002
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4368,7 +4632,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0034
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0050
      * @tc.name: testGetNumerator003
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4382,7 +4646,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0035
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0051
      * @tc.name: testGetNumerator004
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4396,7 +4660,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0036
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0052
      * @tc.name: testGetNumerator005
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4410,7 +4674,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0037
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0053
      * @tc.name: testisFinite001
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.size: MediumTest
@@ -4424,7 +4688,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0038
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0054
      * @tc.name: testisFinite002
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.size: MediumTest
@@ -4438,7 +4702,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0039
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0055
      * @tc.name: testisFinite003
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.size: MediumTest
@@ -4452,7 +4716,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0040
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0056
      * @tc.name: testisFinite004
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.size: MediumTest
@@ -4466,7 +4730,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0041
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0057
      * @tc.name: testisFinite005
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.size: MediumTest
@@ -4480,7 +4744,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0042
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0058
      * @tc.name: testisNaN001
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.size: MediumTest
@@ -4494,7 +4758,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0043
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0059
      * @tc.name: testisNaN002
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
      * @tc.size: MediumTest
@@ -4508,7 +4772,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0044
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0060
      * @tc.name: testisNaN003
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
      * @tc.size: MediumTest
@@ -4522,7 +4786,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0045
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0061
      * @tc.name: testisNaN004
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
      * @tc.size: MediumTest
@@ -4536,7 +4800,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0046
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0062
      * @tc.name: testisNaN005
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
      * @tc.size: MediumTest
@@ -4550,7 +4814,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0047
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0063
      * @tc.name: testisZero001
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.size: MediumTest
@@ -4564,7 +4828,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0048
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0064
      * @tc.name: testisZero002
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.size: MediumTest
@@ -4578,7 +4842,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0049
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0065
      * @tc.name: testisZero003
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.size: MediumTest
@@ -4592,7 +4856,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0050
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0066
      * @tc.name: testisZero004
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.size: MediumTest
@@ -4606,7 +4870,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0051
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0067
      * @tc.name: testisZero005
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.size: MediumTest
@@ -4620,7 +4884,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0052
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0068
      * @tc.name: testRationalNumberToString001
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4634,7 +4898,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0053
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0069
      * @tc.name: testRationalNumberToString002
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4648,7 +4912,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0054
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0070
      * @tc.name: testRationalNumberToString003
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4662,7 +4926,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0055
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0071
      * @tc.name: testRationalNumberToString004
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4676,7 +4940,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0056
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0072
      * @tc.name: testRationalNumberToString005
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.size: MediumTest
