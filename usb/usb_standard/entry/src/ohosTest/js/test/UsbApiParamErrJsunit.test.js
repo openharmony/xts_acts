@@ -106,7 +106,7 @@ describe('UsbApiParamErrJsunitTest', function () {
             return;
         }
     }
-    
+
     async function getPermission() {
         console.info('**************getPermission**************');
         try {

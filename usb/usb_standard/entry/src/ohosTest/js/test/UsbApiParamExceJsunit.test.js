@@ -103,7 +103,7 @@ describe('UsbApiParamExceJsunitTest', function () {
             return;
         }
     }
-    
+
     async function getPermission() {
         console.info('**************getPermission**************');
         try {
