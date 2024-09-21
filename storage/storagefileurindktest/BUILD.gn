@@ -11,44 +11,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("storagefileuri_ndk_test") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":storagefileuri_ndk_assets",
-    ":storagefileuri_ndk_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsStorageFileUriNdkTest"
+ohos_app_assist_suite("ActsStorageFileUriNdkMainTest") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsStorageFileUriNdkMainTest"
+  part_name = "storage_service"
   subsystem_name = "filemanagement"
+}
+
+ohos_js_app_suite("ActsStorageFileUriNdk") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsStorageFileUriNdk"
   part_name = "storage_service"
-  shared_libraries = [
-    "./entry/src/main/cpp:getpathfromuri",
-    ":libcppsharedso",
-  ]
-}
-
-ohos_prebuilt_shared_library("libcppsharedso") {
-  source = rebase_path(libcxx_ndk_shared_file)
-  subsystem_name = "storage"
-  part_name = "storage_service"
-}
-
-ohos_app_scope("storagefileuri_ndk_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("storagefileuri_ndk_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("storagefileuri_ndk_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":storagefileuri_ndk_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  subsystem_name = "filemanagement"
+  deps = [ ":ActsStorageFileUriNdkMainTest" ]
 }

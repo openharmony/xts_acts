@@ -15,7 +15,8 @@
 
 #include "napi/native_api.h"
 #include "native_common.h"
-#include <environment.h>
+#include "filemanagement/environment/oh_environment.h"
+#include "filemanagement/fileio/error_code.h"
 #include <cstdlib>
 #include <js_native_api_types.h>
 #include <tuple>
@@ -76,7 +77,7 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "libenvironment",
+    .nm_modname = "environment",
     .nm_priv = ((void *)0),
     .reserved = {0},
 };
