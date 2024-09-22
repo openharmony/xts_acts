@@ -106,48 +106,48 @@ export default function preferencesNdkTest() {
       expect(res).assertEqual(0);
       done();
     });
-    // /**
-    //  * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_0700
-    //  * @tc.name OH_PreferencesOption_SetDataGroupId_0200
-    //  * @tc.desc OH_PreferencesOption_SetDataGroupId_0200
-    //  * @tc.level: Level 2
-    //  * @tc.type: Functiontion
-    //  * @tc.size: MediumTest
-    //  */
-    // it('OH_PreferencesOption_SetDataGroupId_0200', 0, async (done: Function) => {
-    //   let res = testndk.OH_PreferencesOption_SetDataGroupId_0200();
-    //   console.info(TAG + "OH_PreferencesOption_SetDataGroupId_0200 res=" + res );
-    //   expect(res).assertEqual(0);
-    //   done();
-    // });
-    // /**
-    //  * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_0800
-    //  * @tc.name OH_PreferencesOption_Destroy_0100
-    //  * @tc.desc OH_PreferencesOption_Destroy_0100
-    //  * @tc.level: Level 2
-    //  * @tc.type: Functiontion
-    //  * @tc.size: MediumTest
-    //  */
-    // it('OH_PreferencesOption_Destroy_0100', 0, async (done: Function) => {
-    //   let res = testndk.OH_PreferencesOption_Destroy_0100();
-    //   console.info(TAG + "OH_PreferencesOption_Destroy_0100 res=" + res );
-    //   expect(res).assertEqual(0);
-    //   done();
-    // });
-    // /**
-    //  * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_0900
-    //  * @tc.name OH_PreferencesOption_Destroy_0200
-    //  * @tc.desc OH_PreferencesOption_Destroy_0200
-    //  * @tc.level: Level 2
-    //  * @tc.type: Functiontion
-    //  * @tc.size: MediumTest
-    //  */
-    // it('OH_PreferencesOption_Destroy_0200', 0, async (done: Function) => {
-    //   let res = testndk.OH_PreferencesOption_Destroy_0200();
-    //   console.info(TAG + "OH_PreferencesOption_Destroy_0200 res=" + res );
-    //   expect(res).assertEqual(0);
-    //   done();
-    // });
+    /**
+     * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_0700
+     * @tc.name OH_PreferencesOption_SetDataGroupId_0200
+     * @tc.desc OH_PreferencesOption_SetDataGroupId_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_PreferencesOption_SetDataGroupId_0200', 0, async (done: Function) => {
+      let res = testndk.OH_PreferencesOption_SetDataGroupId_0200();
+      console.info(TAG + "OH_PreferencesOption_SetDataGroupId_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_0800
+     * @tc.name OH_PreferencesOption_Destroy_0100
+     * @tc.desc OH_PreferencesOption_Destroy_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_PreferencesOption_Destroy_0100', 0, async (done: Function) => {
+      let res = testndk.OH_PreferencesOption_Destroy_0100();
+      console.info(TAG + "OH_PreferencesOption_Destroy_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_0900
+     * @tc.name OH_PreferencesOption_Destroy_0200
+     * @tc.desc OH_PreferencesOption_Destroy_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_PreferencesOption_Destroy_0200', 0, async (done: Function) => {
+      let res = testndk.OH_PreferencesOption_Destroy_0200();
+      console.info(TAG + "OH_PreferencesOption_Destroy_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
     /**
      * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_1000
      * @tc.name OH_Preferences_Open_0100

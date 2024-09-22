@@ -111,7 +111,8 @@ void SetAllValuesWithCheck(OH_Preferences *pref) {
     }
 }
 
-static napi_value OH_PreferencesOption_Create_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_PreferencesOption_Create_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_Create_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -125,7 +126,8 @@ static napi_value OH_PreferencesOption_Create_0100(napi_env env, napi_callback_i
     return ret;
 }
  
-static napi_value OH_PreferencesOption_SetFilePath_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_PreferencesOption_SetFilePath_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_SetFilePath_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     int errcode = OH_PreferencesOption_SetFileName(option, "test.db");
@@ -140,7 +142,8 @@ static napi_value OH_PreferencesOption_SetFilePath_0100(napi_env env, napi_callb
     return ret;
 }
 
-static napi_value OH_PreferencesOption_SetFilePath_0200(napi_env env, napi_callback_info info) {
+static napi_value OH_PreferencesOption_SetFilePath_0200(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_SetFilePath_0200 ------------- ");
     int rettest = 0;
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
@@ -173,7 +176,8 @@ static napi_value OH_PreferencesOption_SetFilePath_0200(napi_env env, napi_callb
     return ret;
 }
 
-static napi_value OH_PreferencesOption_SetBundleName_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_PreferencesOption_SetBundleName_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_SetFilePath_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     int errcode = OH_PreferencesOption_SetBundleName(option, "test");
@@ -203,7 +207,8 @@ static napi_value OH_PreferencesOption_SetBundleName_0100(napi_env env, napi_cal
     return ret;
 }
 
-static napi_value OH_PreferencesOption_SetBundleName_0200(napi_env env, napi_callback_info info) {
+static napi_value OH_PreferencesOption_SetBundleName_0200(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_SetBundleName_0200 ------------- ");
     int rettest = 0;
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
@@ -233,7 +238,8 @@ static napi_value OH_PreferencesOption_SetBundleName_0200(napi_env env, napi_cal
     return ret;
 }
 
-static napi_value OH_PreferencesOption_SetDataGroupId_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_PreferencesOption_SetDataGroupId_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_SetDataGroupId_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
 
@@ -261,7 +267,8 @@ static napi_value OH_PreferencesOption_SetDataGroupId_0100(napi_env env, napi_ca
     return ret;
 }
 
-static napi_value OH_PreferencesOption_SetDataGroupId_0200(napi_env env, napi_callback_info info) {
+static napi_value OH_PreferencesOption_SetDataGroupId_0200(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_SetDataGroupId_0200 ------------- ");
     int rettest = 0;
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
@@ -291,7 +298,8 @@ static napi_value OH_PreferencesOption_SetDataGroupId_0200(napi_env env, napi_ca
     return ret;
 }
 
-static napi_value OH_PreferencesOption_Destroy_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_PreferencesOption_Destroy_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_Destroy_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -304,7 +312,8 @@ static napi_value OH_PreferencesOption_Destroy_0100(napi_env env, napi_callback_
     napi_create_int32(env, errcode, &ret);
     return ret;
 }
-static napi_value OH_PreferencesOption_Destroy_0200(napi_env env, napi_callback_info info) {
+static napi_value OH_PreferencesOption_Destroy_0200(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_Destroy_0200 ------------- ");
     int err = 0;
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
@@ -321,7 +330,8 @@ static napi_value OH_PreferencesOption_Destroy_0200(napi_env env, napi_callback_
     return ret;
 }
 
-static napi_value OH_Preferences_Open_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_Open_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_Open_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -346,7 +356,8 @@ static napi_value OH_Preferences_Open_0100(napi_env env, napi_callback_info info
     return ret;
 }
 
-static napi_value OH_Preferences_Open_0200(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_Open_0200(napi_env env, napi_callback_info info) 
+{
     int testry = 0;
     try{
         OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_Open_0200 ------------- ");
@@ -382,7 +393,8 @@ static napi_value OH_Preferences_Open_0200(napi_env env, napi_callback_info info
     
 }
 
-static napi_value OH_Preferences_Close_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_Close_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_Open_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -413,7 +425,8 @@ static napi_value OH_Preferences_Close_0100(napi_env env, napi_callback_info inf
     return ret;
 }
 
-static napi_value OH_Preferences_SetInt_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_SetInt_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetInt_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -467,7 +480,8 @@ static napi_value OH_Preferences_SetInt_0100(napi_env env, napi_callback_info in
     return ret;
 }
 
-static napi_value OH_Preferences_SetGetInt_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_SetGetInt_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetGetInt_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -538,7 +552,8 @@ static napi_value OH_Preferences_SetGetInt_0100(napi_env env, napi_callback_info
 }
 
 
-static napi_value OH_Preferences_SetGetString_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_SetGetString_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetGetString_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -641,7 +656,8 @@ static napi_value OH_Preferences_SetGetString_0100(napi_env env, napi_callback_i
     return ret;
 }
 
-static napi_value OH_Preferences_SetGetBool_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_SetGetBool_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetGetBool_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -687,7 +703,8 @@ static napi_value OH_Preferences_SetGetBool_0100(napi_env env, napi_callback_inf
     return ret;
 }
 
-static napi_value OH_Preferences_SetString_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_SetString_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetString_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -732,7 +749,8 @@ static napi_value OH_Preferences_SetString_0100(napi_env env, napi_callback_info
     return ret;
 }
 
-static napi_value OH_Preferences_SetBool_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_SetBool_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetBool_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -778,7 +796,8 @@ static napi_value OH_Preferences_SetBool_0100(napi_env env, napi_callback_info i
 }
 
 
-static napi_value OH_Preferences_GetInt_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_GetInt_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_GetInt_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -833,7 +852,8 @@ static napi_value OH_Preferences_GetInt_0100(napi_env env, napi_callback_info in
     return ret;
 }
 
-static napi_value OH_Preferences_GetString_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_GetString_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_GetString_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -891,7 +911,8 @@ static napi_value OH_Preferences_GetString_0100(napi_env env, napi_callback_info
     return ret;
 }
 
-static napi_value OH_Preferences_GetBool_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_GetBool_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_GetBool_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -947,7 +968,8 @@ static napi_value OH_Preferences_GetBool_0100(napi_env env, napi_callback_info i
     return ret;
 }
 
-static napi_value OH_Preferences_FreeString(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_FreeString(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_GetInt_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -981,7 +1003,8 @@ static napi_value OH_Preferences_FreeString(napi_env env, napi_callback_info inf
     return ret;
 }
 
-static napi_value OH_Preferences_Delete(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_Delete(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_GetInt_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -1004,7 +1027,8 @@ static napi_value OH_Preferences_Delete(napi_env env, napi_callback_info info) {
     return ret;
 }
 
-static napi_value OH_Preferences_RegisterDataObserver_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_RegisterDataObserver_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_RegisterDataObserver_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -1051,7 +1075,8 @@ static napi_value OH_Preferences_RegisterDataObserver_0100(napi_env env, napi_ca
     return ret;
 }
 
-static napi_value OH_Preferences_UnregisterDataObserver_0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Preferences_UnregisterDataObserver_0100(napi_env env, napi_callback_info info) 
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_UnregisterDataObserver ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
@@ -1169,7 +1194,8 @@ static napi_value OH_Preferences_ErrCode_0100(napi_env env, napi_callback_info i
 
 
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
+static napi_value Init(napi_env env, napi_value exports) 
+{
     napi_property_descriptor desc[] = {
 
         {"OH_PreferencesOption_Create_0100", nullptr, OH_PreferencesOption_Create_0100, nullptr, nullptr, nullptr,
