@@ -246,8 +246,7 @@ static napi_value OH_PreferencesOption_SetDataGroupId_0100(napi_env env, napi_ca
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open is fail.");
     NAPI_ASSERT(env, pref == nullptr, "OH_Preferences_Open is fail.");
 
-    std::string strGroupId = "123456";
-    errcode = OH_PreferencesOption_SetDataGroupId(option, strGroupId);
+    errcode = OH_PreferencesOption_SetDataGroupId(option, "123456");
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetDataGroupId is fail.");
     OH_Preferences *pref2 = OH_Preferences_Open(option, &errcode);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open is fail.");
@@ -428,35 +427,34 @@ static napi_value OH_Preferences_SetInt_0100(napi_env env, napi_callback_info in
     NAPI_ASSERT(env, pref != nullptr, "OH_Preferences_Open is fail.");
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Open 1 is fail.");
 
-    int valutInt1 = 123;
-    errcode = OH_Preferences_SetInt(pref, "key", valutInt1);
+    errcode = OH_Preferences_SetInt(pref, "key", 123);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_SetInt 2 is fail.");
     
-    errcode = OH_Preferences_SetInt(pref, " ", valutInt1);
+    errcode = OH_Preferences_SetInt(pref, " ", 123);
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_SetInt 3 errcode= %{public}d", errcode);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_SetInt 3 is fail.");
     
-    errcode = OH_Preferences_SetInt(nullptr, "key", valutInt1);
+    errcode = OH_Preferences_SetInt(nullptr, "key", 123);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_SetInt err 1 is fail.");
 
-    errcode = OH_Preferences_SetInt(NULL, "key", valutInt1);
+    errcode = OH_Preferences_SetInt(NULL, "key", 123);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_SetInt err 2  is fail.");
     
-    errcode = OH_Preferences_SetInt(pref, "", valutInt1);
+    errcode = OH_Preferences_SetInt(pref, "", 123);
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_SetInt 5 errcode= %{public}d", errcode);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "H_Preferences_SetInt err 3 is fail.");
     
-    errcode = OH_Preferences_SetInt(pref, nullptr, valutInt1);
+    errcode = OH_Preferences_SetInt(pref, nullptr, 123);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "H_Preferences_SetInt err 4 is fail.");
 
-    errcode = OH_Preferences_SetInt(pref, NULL, valutInt1);
+    errcode = OH_Preferences_SetInt(pref, NULL, 123);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "H_Preferences_SetInt err 5 is fail.");
     
     errcode = OH_Preferences_Close(pref);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
     pref = nullptr;
 
-    errcode = OH_Preferences_SetInt(pref, "keyclose", valutInt1);
+    errcode = OH_Preferences_SetInt(pref, "keyclose", 123);
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_SetInt keyclose errcode= %{public}d", errcode);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open 2 is fail.");
     
@@ -483,12 +481,11 @@ static napi_value OH_Preferences_SetGetInt_0100(napi_env env, napi_callback_info
     NAPI_ASSERT(env, pref != nullptr, "OH_Preferences_Open is fail.");
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Open 1 is fail.");
 
-    int valutInt1 = 123;
-    errcode = OH_Preferences_SetInt(pref, "key", valutInt1);
+    errcode = OH_Preferences_SetInt(pref, "key", 123);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_SetInt 2 is fail.");
     int resGet;
     errcode = OH_Preferences_GetInt(pref, "key", &resGet);
-    NAPI_ASSERT(env, resGet == valutInt1, "OH_Preferences_GetInt is fail.");
+    NAPI_ASSERT(env, resGet == 123, "OH_Preferences_GetInt is fail.");
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_GetInt3 is fail.");
     
     bool resGetbool;
@@ -496,18 +493,18 @@ static napi_value OH_Preferences_SetGetInt_0100(napi_env env, napi_callback_info
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_KEY_NOT_FOUND, "OH_Preferences_GetInt3 is fail.");
 
     //=========SetInt-GetInt
-    std::string strkey1(1024, 'a');
-    std::string strkey2(1025, 'a');
-    errcode = OH_Preferences_SetInt(pref, strkey1.c_str(), valutInt1);
+    std::string string1024Key(1024, 'a');
+    std::string string1025Key(1025, 'a');
+    errcode = OH_Preferences_SetInt(pref, string1024Key.c_str(), 123);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_SetInt 4 is fail.");
 
-    errcode = OH_Preferences_GetInt(pref, strkey1.c_str(), &resGet);
-    NAPI_ASSERT(env, resGet == valutInt1, "OH_Preferences_GetInt is fail.");
+    errcode = OH_Preferences_GetInt(pref, string1024Key.c_str(), &resGet);
+    NAPI_ASSERT(env, resGet == 123, "OH_Preferences_GetInt is fail.");
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_GetInt3 is fail.");
     
-    errcode = OH_Preferences_SetInt(pref, strkey2.c_str(), valutInt1);
+    errcode = OH_Preferences_SetInt(pref, string1025Key.c_str(), 123);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_SetInt 5 is fail.");
-    errcode = OH_Preferences_GetInt(pref, strkey2.c_str(), &resGet);
+    errcode = OH_Preferences_GetInt(pref, string1025Key.c_str(), &resGet);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_GetInt3 is fail.");
     
     errcode = OH_Preferences_SetInt(pref, "keyV0", 0);
@@ -793,17 +790,15 @@ static napi_value OH_Preferences_GetInt_0100(napi_env env, napi_callback_info in
     OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
     NAPI_ASSERT(env, pref != nullptr, "OH_Preferences_Open is fail.");
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Open1 is fail.");
- 
-    int valutInt1 = 123;
-    int valutInt2 = 12345;
-    errcode = OH_Preferences_SetInt(pref, "key", valutInt1);
+
+    errcode = OH_Preferences_SetInt(pref, "key", 123);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_SetInt2 is fail.");
-    errcode = OH_Preferences_SetInt(pref, " ", valutInt2);
+    errcode = OH_Preferences_SetInt(pref, " ", 12345);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_SetInt2 is fail.");
 
     int resGet;
     errcode = OH_Preferences_GetInt(pref, "key", &resGet);
-    NAPI_ASSERT(env, resGet == valutInt1, "OH_Preferences_GetInt is fail.");
+    NAPI_ASSERT(env, resGet == 123, "OH_Preferences_GetInt is fail.");
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_GetInt3 is fail.");
     
     errcode = OH_Preferences_GetInt(nullptr, "key", &resGet);
@@ -815,9 +810,8 @@ static napi_value OH_Preferences_GetInt_0100(napi_env env, napi_callback_info in
     errcode = OH_Preferences_GetInt(pref, "", &resGet);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_GetInt6 is fail.");
 
-    std::string strkey = "key123456";
-    errcode = OH_Preferences_GetInt(pref, strkey, &resGet);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG,"OH_Preferences_GetInt key  errcode= %{public}d",errcode);
+    errcode = OH_Preferences_GetInt(pref, "key123456", &resGet);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG,"OH_Preferences_GetInt key123456  errcode= %{public}d",errcode);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_KEY_NOT_FOUND, "OH_Preferences_GetInt61 is fail.");
     
     errcode = OH_Preferences_GetInt(pref, " ", &resGet);
@@ -873,9 +867,8 @@ static napi_value OH_Preferences_GetString_0100(napi_env env, napi_callback_info
     errcode = OH_Preferences_GetString(pref, "", &resGet, &len);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_GetInt4 is fail.");
 
-    std::string strkey = "key123456";
-    errcode = OH_Preferences_GetString(pref, strkey,  &resGet, &len);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_GetString key  errcode= %{public}d", errcode);
+    errcode = OH_Preferences_GetString(pref, "key123456",  &resGet, &len);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_GetString key123456  errcode= %{public}d", errcode);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_KEY_NOT_FOUND, "OH_Preferences_GetInt61 is fail.");
 
     errcode = OH_Preferences_GetString(pref, " ", &resGet, &len);
@@ -930,9 +923,8 @@ static napi_value OH_Preferences_GetBool_0100(napi_env env, napi_callback_info i
     errcode = OH_Preferences_GetBool(pref, "", &resGet);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_GetInt6 is fail.");
 
-    std::string strkey = "key123456";
-    errcode = OH_Preferences_GetBool(pref, strkey, &resGet);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_GetBool key  errcode= %{public}d", errcode);
+    errcode = OH_Preferences_GetBool(pref, "key123456", &resGet);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_GetBool key123456  errcode= %{public}d", errcode);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_KEY_NOT_FOUND, "OH_Preferences_GetInt61 is fail.");
     
     errcode = OH_Preferences_GetBool(pref, " ", &resGet);
@@ -1029,20 +1021,19 @@ static napi_value OH_Preferences_RegisterDataObserver_0100(napi_env env, napi_ca
 
     g_changeNum = 0;
     const char *keys[] = {"ndktest_int_key_1", "ndktest_string_key_1", "ndktest_bool_key_1"};
-    int numKey = 3;
-    errcode = OH_Preferences_RegisterDataObserver(pref, nullptr, DataChangeObserverCallback, keys, numKey);
+    errcode = OH_Preferences_RegisterDataObserver(pref, nullptr, DataChangeObserverCallback, keys, 3);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Open is fail.");
 
-    errcode = OH_Preferences_RegisterDataObserver(pref, NULL, DataChangeObserverCallback, keys, numKey);
+    errcode = OH_Preferences_RegisterDataObserver(pref, NULL, DataChangeObserverCallback, keys, 3);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Open is fail.");
 
-    errcode = OH_Preferences_RegisterDataObserver(nullptr, nullptr, DataChangeObserverCallback, keys, numKey);
+    errcode = OH_Preferences_RegisterDataObserver(nullptr, nullptr, DataChangeObserverCallback, keys, 3);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open is fail.");
-    errcode = OH_Preferences_RegisterDataObserver(NULL, nullptr, DataChangeObserverCallback, keys, numKey);
+    errcode = OH_Preferences_RegisterDataObserver(NULL, nullptr, DataChangeObserverCallback, keys, 3);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open is fail.");
-    errcode = OH_Preferences_RegisterDataObserver(pref, nullptr, nullptr, keys, numKey);
+    errcode = OH_Preferences_RegisterDataObserver(pref, nullptr, nullptr, keys, 3);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open is fail.");
-    errcode = OH_Preferences_RegisterDataObserver(pref, nullptr, NULL, keys, numKey);
+    errcode = OH_Preferences_RegisterDataObserver(pref, nullptr, NULL, keys, 3);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open is fail.");
     errcode = OH_Preferences_RegisterDataObserver(pref, nullptr, DataChangeObserverCallback, nullptr, 0);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open is fail.");
@@ -1076,21 +1067,20 @@ static napi_value OH_Preferences_UnregisterDataObserver_0100(napi_env env, napi_
     SetAllValuesWithCheck(pref);
 
     g_changeNum = 0;
-    int numKey = 3;
     const char *keys[] = {"ndktest_int_key_1", "ndktest_string_key_1", "ndktest_bool_key_1"};
-    errcode = OH_Preferences_RegisterDataObserver(pref, nullptr, DataChangeObserverCallback, keys, numKey);
+    errcode = OH_Preferences_RegisterDataObserver(pref, nullptr, DataChangeObserverCallback, keys, 3);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_RegisterDataObserver is fail.");
 
-    errcode = OH_Preferences_UnregisterDataObserver(pref, nullptr, DataChangeObserverCallback, keys, numKey);
+    errcode = OH_Preferences_UnregisterDataObserver(pref, nullptr, DataChangeObserverCallback, keys, 3);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_UnRegisterDataObserver is fail.");
 
-    errcode = OH_Preferences_UnregisterDataObserver(nullptr, nullptr, DataChangeObserverCallback, keys, numKey);
+    errcode = OH_Preferences_UnregisterDataObserver(nullptr, nullptr, DataChangeObserverCallback, keys, 3);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open is fail.");
-    errcode = OH_Preferences_UnregisterDataObserver(NULL, nullptr, DataChangeObserverCallback, keys, numKey);
+    errcode = OH_Preferences_UnregisterDataObserver(NULL, nullptr, DataChangeObserverCallback, keys, 3);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open is fail.");
-    errcode = OH_Preferences_UnregisterDataObserver(pref, nullptr, nullptr, keys, numKey);
+    errcode = OH_Preferences_UnregisterDataObserver(pref, nullptr, nullptr, keys, 3);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open is fail.");
-    errcode = OH_Preferences_UnregisterDataObserver(pref, nullptr, NULL, keys, numKey);
+    errcode = OH_Preferences_UnregisterDataObserver(pref, nullptr, NULL, keys, 3);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open is fail.");
     errcode = OH_Preferences_UnregisterDataObserver(pref, nullptr, DataChangeObserverCallback, nullptr, 0);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open is fail.");
@@ -1146,6 +1136,7 @@ static napi_value OH_PreferencesPair_0200(napi_env env, napi_callback_info info)
     napi_value ret;
     napi_create_int32(env, result, &ret);
     return ret;
+   
 }
 
 static napi_value OH_Preferences_ErrCode_0100(napi_env env, napi_callback_info info) 
@@ -1213,16 +1204,19 @@ static napi_value Init(napi_env env, napi_value exports) {
          napi_default, nullptr},
         {"OH_Preferences_SetGetBool_0100", nullptr, OH_Preferences_SetGetBool_0100, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+
         {"OH_Preferences_SetString_0100", nullptr, OH_Preferences_SetString_0100, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"OH_Preferences_SetBool_0100", nullptr, OH_Preferences_SetBool_0100, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+
         {"OH_Preferences_GetInt_0100", nullptr, OH_Preferences_GetInt_0100, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"OH_Preferences_GetString_0100", nullptr, OH_Preferences_GetString_0100, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"OH_Preferences_GetBool_0100", nullptr, OH_Preferences_GetBool_0100, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+
         {"OH_Preferences_FreeString", nullptr, OH_Preferences_FreeString, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"OH_Preferences_Delete", nullptr, OH_Preferences_Delete, nullptr, nullptr, nullptr, napi_default, nullptr},
