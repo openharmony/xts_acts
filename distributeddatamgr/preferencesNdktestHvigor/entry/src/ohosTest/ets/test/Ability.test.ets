@@ -102,7 +102,7 @@ export default function preferencesNdkTest() {
      */
     it('OH_PreferencesOption_SetDataGroupId_0100', 0, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_SetDataGroupId_0100();
-      console.info(TAG + "OH_PreferencesOption_SetFilePath_0300 res=" + res );
+      console.info(TAG + "OH_PreferencesOption_SetDataGroupId_0100 res=" + res );
       expect(res).assertEqual(0);
       done();
     });
@@ -116,7 +116,7 @@ export default function preferencesNdkTest() {
      */
     it('OH_PreferencesOption_SetDataGroupId_0200', 0, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_SetDataGroupId_0200();
-      console.info(TAG + "OH_PreferencesOption_SetFilePath_0400 res=" + res );
+      console.info(TAG + "OH_PreferencesOption_SetDataGroupId_0200 res=" + res );
       expect(res).assertEqual(0);
       done();
     });
@@ -214,7 +214,7 @@ export default function preferencesNdkTest() {
      */
     it('OH_Preferences_SetGetInt_0100', 0, async (done: Function) => {
       let res = testndk.OH_Preferences_SetGetInt_0100();
-      console.info(TAG + "OH_Preferences_SetInt_0200 res=" + res );
+      console.info(TAG + "OH_Preferences_SetGetInt_0100 res=" + res );
       expect(res).assertEqual(0);
       done();
     });
@@ -359,20 +359,6 @@ export default function preferencesNdkTest() {
       expect(res).assertEqual(0);
       done();
     });
-    /**
-     * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_2500
-     * @tc.name OH_Preferences_RegisterDataObserver_0200
-     * @tc.desc OH_Preferences_RegisterDataObserver_0200
-     * @tc.level: Level 2
-     * @tc.type: Functiontion
-     * @tc.size: MediumTest
-     */
-    // it('OH_Preferences_RegisterDataObserver_0200', 0, async (done: Function) => {
-    //   let res = testndk.OH_Preferences_RegisterDataObserver_0200();
-    //   console.info(TAG + "OH_Preferences_RegisterDataObserver_0200 res=" + res );
-    //   expect(res).assertEqual(0);
-    //   done();
-    // });
 
     /**
      * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_2600
@@ -402,49 +388,6 @@ export default function preferencesNdkTest() {
       expect(res).assertEqual(0);
       done();
     });
-
-    // /**
-    //  * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_2800
-    //  * @tc.name GetInt1000
-    //  * @tc.desc GetInt1000
-    //  * @tc.level: Level 2
-    //  * @tc.type: Functiontion
-    //  * @tc.size: MediumTest
-    //  */
-    // it('GetInt1000', 0, async (done: Function) => {
-    //   let res = testndk.GetInt1000();
-    //   console.info(TAG + "GetInt1000 res=" + res );
-    //   expect(res).assertEqual(0);
-    //   done();
-    // });
-    // /**
-    //  * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_2900
-    //  * @tc.name GetString1000
-    //  * @tc.desc GetString1000
-    //  * @tc.level: Level 2
-    //  * @tc.type: Functiontion
-    //  * @tc.size: MediumTest
-    //  */
-    // it('GetString1000', 0, async (done: Function) => {
-    //   let res = testndk.GetString1000();
-    //   console.info(TAG + "GetString1000 res=" + res );
-    //   expect(res).assertEqual(0);
-    //   done();
-    // });
-    // /**
-    //  * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_3000
-    //  * @tc.name GetBool1000
-    //  * @tc.desc GetBool1000
-    //  * @tc.level: Level 2
-    //  * @tc.type: Functiontion
-    //  * @tc.size: MediumTest
-    //  */
-    // it('GetBool1000', 0, async (done: Function) => {
-    //   let res = testndk.GetBool1000();
-    //   console.info(TAG + "GetBool1000 res=" + res );
-    //   expect(res).assertEqual(0);
-    //   done();
-    // });
 
   })
 }

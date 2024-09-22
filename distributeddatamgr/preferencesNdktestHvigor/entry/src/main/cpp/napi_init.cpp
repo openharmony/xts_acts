@@ -1,3 +1,17 @@
+/*
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #include "napi/native_api.h"
 #include "hilog/log.h"
 #include <string>
@@ -22,551 +36,7 @@
 #include <chrono>
 
 const char *TAG = "testLog";
-std::map<std::string, int> IntDataMap1000;
-std::map<std::string, std::string> stringDataMap1000;
-std::map<std::string, bool> boolDataMap1000;
 
-std::map<std::string, int> IntDataMap2;
-std::map<std::string, std::string> stringDataMap2;
-std::map<std::string, bool> boolDataMap2;
-
-int getIntDataMap1000() {
-    int intCount = IntDataMap1000.size();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "getIntDataMap1000  intCount=%{public}d", intCount);
-    if (intCount == 0){
-        // 插入1000条数据
-        for (int i = 1; i <= 1000; ++i) {
-            std::string key = "key_" + std::to_string(i); // 生成随机值
-            int value = i;
-            IntDataMap1000.insert(std::make_pair(key, value)); // 插入键值对
-        }
-    }
-    int intCount2 = IntDataMap1000.size();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "getIntDataMap1000  intCount2=%{public}d", intCount2);
-    return intCount2;
-}
-
-int getStringDataMap1000() {
-    int intCount = stringDataMap1000.size();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "getStringDataMap1000  intCount=%{public}d", intCount);
-    if (intCount == 0) {
-        // 插入1000条数据
-        for (int i = 1; i <= 1000; ++i) {
-            std::string key = "key_" + std::to_string(i); 
-            std::string value = "value_" + std::to_string(i);
-            stringDataMap1000.insert(std::make_pair(key, value)); // 插入键值对
-        }
-    }
-    int intCount2 = stringDataMap1000.size();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "getStringDataMap1000  intCount2=%{public}d", intCount2);
-    return intCount2;
-}
-
-int getBoolDataMap1000() {
-    int intCount = boolDataMap1000.size();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "getBoolDataMap1000  intCount=%{public}d", intCount);
-    if (intCount == 0) {
-        // 插入1000条数据
-        for (int i = 1; i <= 1000; ++i) {
-            std::string key = "key_" + std::to_string(i); // 生成随机值
-            bool value = true;
-            boolDataMap1000.insert(std::make_pair(key, value)); // 插入键值对
-        }
-    }
-    int intCount2 = boolDataMap1000.size();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "getBoolDataMap1000  intCount2=%{public}d", intCount2);
-    return intCount2;
-}
-
-int getIntDataMap2() {
-    int intCount = IntDataMap2.size();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "getIntDataMap2  intCount=%{public}d", intCount);
-    if (intCount == 0) {
-        // 插入1000条数据
-        for (int i = 1; i <= 1000; ++i) {
-            std::string key = "key_" + std::to_string(i); // 生成随机值
-            int value = i + 2000;
-            IntDataMap2.insert(std::make_pair(key, value)); // 插入键值对
-        }
-    }
-    int intCount2 = IntDataMap2.size();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "getIntDataMap2  intCount2=%{public}d", intCount2);
-    return intCount2;
-}
-
-int getStringDataMap2() {
-    int intCount = stringDataMap2.size();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "getStringDataMap2  intCount=%{public}d", intCount);
-    if (intCount == 0) {
-        // 插入1000条数据
-        for (int i = 1; i <= 1000; ++i) {
-            std::string key = "key_" + std::to_string(i);
-            std::string value = "value2_" + std::to_string(i);
-            stringDataMap2.insert(std::make_pair(key, value)); // 插入键值对
-        }
-    }
-    int intCount2 = stringDataMap2.size();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "getStringDataMap2  intCount2=%{public}d", intCount2);
-    return intCount2;
-}
-
-int getBoolDataMap2() {
-    int intCount = boolDataMap2.size();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "getBoolDataMap2  intCount=%{public}d", intCount);
-    if (intCount == 0) {
-        // 插入1000条数据
-        for (int i = 1; i <= 1000; ++i) {
-            std::string key = "key_" + std::to_string(i); // 生成随机值
-            bool value = false;
-            boolDataMap2.insert(std::make_pair(key, value)); // 插入键值对
-        }
-    }
-    int intCount2 = boolDataMap2.size();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "getBoolDataMap2  intCount2=%{public}d", intCount2);
-    return intCount2;
-}
-
-
-// insert =================
-static napi_value SetInt(napi_env env, napi_callback_info info)
-{
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func SetInt ------------- ");
-    OH_PreferencesOption * option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "SetInttest.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-    
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getIntDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "SetInt count= %{public}d", count);
-
-    auto start = std::chrono::system_clock::now();
-    for (auto &[key, value] : IntDataMap1000) {
-        OH_Preferences_SetInt(pref, key.c_str(), value);
-    }
-    auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
-    long time_ms = duration.count();
-    double avergeTime = time_ms*1000/1000;
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "SetInt avergeTime= %{public}f", avergeTime);
-    
-    OH_Preferences_Close(pref);
-
-    napi_value ret;
-    napi_create_int32(env, avergeTime, &ret);
-    return ret;
-
-}
-
-static napi_value SetString(napi_env env, napi_callback_info info)
-{
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func SetString ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "SetStringtest.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getStringDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "SetString count= %{public}d", count);
-
-    auto start = std::chrono::system_clock::now();
-    for (auto &[key, value] : stringDataMap1000) {
-        OH_Preferences_SetString(pref, key.c_str(), value.c_str());
-    }
-    auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    long time_ms = duration.count();
-    double avergeTime = time_ms * 1000 / 1000;
-
-    OH_Preferences_Close(pref);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "SetString avergeTime= %{public}f", avergeTime);
-
-    napi_value ret;
-    napi_create_int32(env, avergeTime, &ret);
-    return ret;
-}
-
-static napi_value SetBool(napi_env env, napi_callback_info info)
-{
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func SetBool ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "SetBooltest.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getBoolDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "SetBool count= %{public}d", count);
-
-    auto start = std::chrono::system_clock::now();
-    for (auto &[key, value] : boolDataMap1000) {
-        OH_Preferences_SetBool(pref, key.c_str(), value);
-    }
-    auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    long time_ms = duration.count();
-    double avergeTime = time_ms * 1000 / 1000;
-
-    OH_Preferences_Close(pref);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "SetBool avergeTime= %{public}f", avergeTime);
-
-    napi_value ret;
-    napi_create_int32(env, avergeTime, &ret);
-    return ret;
-}
-
-// get =================
-static napi_value GetInt(napi_env env, napi_callback_info info) 
-{
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func GetInt ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "GetInttest.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getIntDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetInt count= %{public}d", count);
-
-
-    for (auto &[key, value] : IntDataMap1000) {
-        OH_Preferences_SetInt(pref, key.c_str(), value);
-    }
-
-    int res;
-    auto start = std::chrono::system_clock::now();
-    for (auto &[key, value] : IntDataMap1000) {
-        OH_Preferences_GetInt(pref, key.c_str(), &res);
-    }
-    auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    long time_ms = duration.count();
-    double avergeTime = time_ms * 1000 / 1000;
-
-    OH_Preferences_Close(pref);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetInt avergeTime= %{public}f", avergeTime);
-
-    napi_value ret;
-    napi_create_int32(env, avergeTime, &ret);
-    return ret;
-}
-
-static napi_value GetString(napi_env env, napi_callback_info info) 
-{
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func GetString ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "GetStringtest.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getStringDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetString count= %{public}d", count);
-
-    for (auto &[key, value] : stringDataMap1000) {
-        OH_Preferences_SetString(pref, key.c_str(), value.c_str());
-    }
-
-    char *res = nullptr;
-    uint32_t len = 0;
-    auto start = std::chrono::system_clock::now();
-    for (auto &[key, value] : stringDataMap1000) {
-        OH_Preferences_GetString(pref, key.c_str(), &res, &len);
-    }
-    OH_Preferences_FreeString(res);
-
-    auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    long time_ms = duration.count();
-    double avergeTime = time_ms * 1000 / 1000;
-
-    OH_Preferences_Close(pref);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetString avergeTime= %{public}f", avergeTime);
-
-    napi_value ret;
-    napi_create_int32(env, avergeTime, &ret);
-    return ret;
-}
-
-static napi_value GetBool(napi_env env, napi_callback_info info) 
-{
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func GetBool ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "GetBooltest.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getBoolDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetBool count= %{public}d", count);
-    
-    for (auto &[key, value] : boolDataMap1000) {
-        OH_Preferences_SetBool(pref, key.c_str(), value);
-    }
-
-    bool res;
-    auto start = std::chrono::system_clock::now();
-    for (auto &[key, value] : boolDataMap1000) {
-        OH_Preferences_GetBool(pref, key.c_str(), &res);
-    }
-    
-    auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    long time_ms = duration.count();
-    double avergeTime = time_ms * 1000 / 1000;
-
-    OH_Preferences_Close(pref);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetBool avergeTime= %{public}f", avergeTime);
-
-    napi_value ret;
-    napi_create_int32(env, avergeTime, &ret);
-    return ret;
-}
-
-// delete =================
-static napi_value DeleteInt(napi_env env, napi_callback_info info) 
-{
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func DeleteInt ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "DeleteInttest.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getIntDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "DeleteInt count= %{public}d", count);
-
-
-    for (auto &[key, value] : IntDataMap1000) {
-        OH_Preferences_SetInt(pref, key.c_str(), value);
-    }
-    
-    auto start = std::chrono::system_clock::now();
-    for (auto &[key, value] : IntDataMap1000) {
-        OH_Preferences_Delete(pref, key.c_str());
-    }
-    auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    long time_ms = duration.count();
-    double avergeTime = time_ms * 1000 / 1000;
-
-    OH_Preferences_Close(pref);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "DeleteInt avergeTime= %{public}f", avergeTime);
-
-    napi_value ret;
-    napi_create_int32(env, avergeTime, &ret);
-    return ret;
-}
-
-static napi_value DeleteString(napi_env env, napi_callback_info info) 
-{
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func DeleteString ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "DeleteStringtest.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getStringDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "DeleteString count= %{public}d", count);
-
-    for (auto &[key, value] : stringDataMap1000) {
-        OH_Preferences_SetString(pref, key.c_str(), value.c_str());
-    }
-    
-    auto start = std::chrono::system_clock::now();
-    for (auto &[key, value] : stringDataMap1000) {
-        OH_Preferences_Delete(pref, key.c_str());
-    }
-
-    auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    long time_ms = duration.count();
-    double avergeTime = time_ms * 1000 / 1000;
-
-    OH_Preferences_Close(pref);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "DeleteString avergeTime= %{public}f", avergeTime);
-
-    napi_value ret;
-    napi_create_int32(env, avergeTime, &ret);
-    return ret;
-}
-
-static napi_value DeleteBool(napi_env env, napi_callback_info info) 
-{
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func DeleteBool ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "DeleteBooltest.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getBoolDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "DeleteBool count= %{public}d", count);
-
-    for (auto &[key, value] : boolDataMap1000) {
-        OH_Preferences_SetBool(pref, key.c_str(), value);
-    }
-
-    bool res;
-    auto start = std::chrono::system_clock::now();
-    for (auto &[key, value] : boolDataMap1000) {
-        OH_Preferences_Delete(pref, key.c_str());
-    }
-
-    auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    long time_ms = duration.count();
-    double avergeTime = time_ms * 1000 / 1000;
-
-    OH_Preferences_Close(pref);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "DeleteBool avergeTime= %{public}f", avergeTime);
-
-    napi_value ret;
-    napi_create_int32(env, avergeTime, &ret);
-    return ret;
-}
-
-// update ==================
-static napi_value UpdateInt(napi_env env, napi_callback_info info) 
-{
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func UpdateInt ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "UpdateInttest.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-    
-    int count = getIntDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "UpdateInt count= %{public}d", count);
-    int count2 = getIntDataMap2();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "UpdateInt count2= %{public}d", count2);
-
-
-    for (auto &[key, value] : IntDataMap1000) {
-        OH_Preferences_SetInt(pref, key.c_str(), value);
-    }
-    
-    auto start = std::chrono::system_clock::now();
-    for (auto &[key, value] : IntDataMap2) {
-        OH_Preferences_SetInt(pref, key.c_str(), value);
-    }
-    auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    long time_ms = duration.count();
-    double avergeTime = time_ms * 1000 / 1000;
-
-    OH_Preferences_Close(pref);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "UpdateInt avergeTime= %{public}f", avergeTime);
-
-    napi_value ret;
-    napi_create_int32(env, avergeTime, &ret);
-    return ret;
-}
-
-static napi_value UpdateString(napi_env env, napi_callback_info info) 
-{
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func UpdateString ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "UpdateStringtest.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getStringDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "UpdateString count= %{public}d", count);
-    int count2 = getStringDataMap2();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "UpdateString count2= %{public}d", count2);
-
-    for (auto &[key, value] : stringDataMap1000) {
-        OH_Preferences_SetString(pref, key.c_str(), value.c_str());
-    }
-    
-    auto start = std::chrono::system_clock::now();
-    for (auto &[key, value] : stringDataMap2) {
-        OH_Preferences_SetString(pref, key.c_str(), value.c_str());
-    }
-
-    auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    long time_ms = duration.count();
-    double avergeTime = time_ms * 1000 / 1000;
-
-    OH_Preferences_Close(pref);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "UpdateString avergeTime= %{public}f", avergeTime);
-
-    napi_value ret;
-    napi_create_int32(env, avergeTime, &ret);
-    return ret;
-}
-
-static napi_value UpdateBool(napi_env env, napi_callback_info info) 
-{
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func UpdateBool ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "UpdateBooltest.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getBoolDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "UpdateBool count= %{public}d", count);
-    int count2 = getBoolDataMap2();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "UpdateBool count2= %{public}d", count2);
-
-    for (auto &[key, value] : boolDataMap1000) {
-        OH_Preferences_SetBool(pref, key.c_str(), value);
-    }
-    
-    auto start = std::chrono::system_clock::now();
-    for (auto &[key, value] : boolDataMap2) {
-        OH_Preferences_SetBool(pref, key.c_str(), value);
-    }
-
-    auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    long time_ms = duration.count();
-    double avergeTime = time_ms * 1000 / 1000;
-
-    OH_Preferences_Close(pref);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "UpdateBool avergeTime= %{public}f", avergeTime);
-
-    napi_value ret;
-    napi_create_int32(env, avergeTime, &ret);
-    return ret;
-}
-
-
-
-
-//======================================================================================================
-//======================================================================================================
-//======================================================================================================
 static std::vector< OH_PreferencesPair *> changedData;
 static OH_PreferencesPair *g_pairs = nullptr;
 
@@ -626,8 +96,6 @@ void SetAllValuesWithCheck(OH_Preferences *pref) {
         OH_Preferences_SetInt(pref, key.c_str(), value);
         int res;
         OH_Preferences_GetInt(pref, key.c_str(), &res);
-        // OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_GetInt key= %{public}s",key.c_str());
-        // OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_GetInt res= %{public}d", res);
     }
     for (auto &[key, value] : stringDataMap) {
         OH_Preferences_SetString(pref, key.c_str(), value.c_str());
@@ -635,38 +103,37 @@ void SetAllValuesWithCheck(OH_Preferences *pref) {
         uint32_t len = 0;
         OH_Preferences_GetString(pref, key.c_str(), &res, &len);
         OH_Preferences_FreeString(res);
-        //   OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_GetString key= %{public}s", key.c_str());
-        //   OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_GetString res= %{public}s", res);
     }
     for (auto &[key, value] : boolDataMap) {
         OH_Preferences_SetBool(pref, key.c_str(), value);
         bool res;
         OH_Preferences_GetBool(pref, key.c_str(), &res);
-        //  OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_GetBool key= %{public}s", key.c_str());
-        //  OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_GetBool res= %{public}d", res);
     }
 }
 
 static napi_value OH_PreferencesOption_Create_0100(napi_env env, napi_callback_info info) {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "func OH_PreferencesOption_Create_0100 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_Create_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
     int errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-    
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "func OH_PreferencesOption_Destroy end ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_Create_0100 end------------- ");
+
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
     return ret;
 }
-
+ 
 static napi_value OH_PreferencesOption_SetFilePath_0100(napi_env env, napi_callback_info info) {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "func OH_PreferencesOption_SetFilePath_0100 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_SetFilePath_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     int errcode = OH_PreferencesOption_SetFileName(option, "test.db");
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
 
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_SetFilePath_0100 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
@@ -699,7 +166,8 @@ static napi_value OH_PreferencesOption_SetFilePath_0200(napi_env env, napi_callb
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_PreferencesOption_SetFilePath(NULL is fail.");
 
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_SetFilePath_0200 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, rettest, &ret);
@@ -728,7 +196,8 @@ static napi_value OH_PreferencesOption_SetBundleName_0100(napi_env env, napi_cal
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetBundleName bName3 is fail.");
     
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_SetFilePath_0100 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
@@ -759,8 +228,8 @@ static napi_value OH_PreferencesOption_SetBundleName_0200(napi_env env, napi_cal
 
 
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_SetBundleName_0200 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, rettest, &ret);
@@ -784,11 +253,12 @@ static napi_value OH_PreferencesOption_SetDataGroupId_0100(napi_env env, napi_ca
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetDataGroupId is fail.");
     OH_Preferences *pref2 = OH_Preferences_Open(option, &errcode);
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open is fail.");
-    NAPI_ASSERT(env, pref2 == nullptr, "OH_Preferences_Open is fail.");
+    NAPI_ASSERT(env, pref2 == nullptr, "OH_Preferences_Open 2 is fail.");
     
     
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetDataGroupId is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_SetDataGroupId_0100 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
@@ -809,18 +279,18 @@ static napi_value OH_PreferencesOption_SetDataGroupId_0200(napi_env env, napi_ca
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_PreferencesOption_SetDataGroupId is fail.");
 
     
-    errcode = OH_PreferencesOption_SetBundleName(nullptr, "test");
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_PreferencesOption_SetBundleName errcode= %{public}d", errcode);
-    NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_PreferencesOption_SetBundleName is fail.");
+    errcode = OH_PreferencesOption_SetDataGroupId(nullptr, "test");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_PreferencesOption_SetDataGroupId errcode= %{public}d", errcode);
+    NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_PreferencesOption_SetDataGroupId is fail.");
 
-    errcode = OH_PreferencesOption_SetBundleName(NULL, "test");
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_PreferencesOption_SetBundleName errcode= %{public}d", errcode);
-    NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_PreferencesOption_SetBundleName is fail.");
+    errcode = OH_PreferencesOption_SetDataGroupId(NULL, "test");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_PreferencesOption_SetDataGroupId errcode= %{public}d", errcode);
+    NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_PreferencesOption_SetDataGroupId is fail.");
 
 
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_SetDataGroupId_0200 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, rettest, &ret);
@@ -831,8 +301,10 @@ static napi_value OH_PreferencesOption_Destroy_0100(napi_env env, napi_callback_
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_Destroy_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
+    
     int errcode = OH_PreferencesOption_Destroy(option);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_Destroy_0100 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
@@ -844,11 +316,12 @@ static napi_value OH_PreferencesOption_Destroy_0200(napi_env env, napi_callback_
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
     int errcode = OH_PreferencesOption_Destroy(NULL);
-    NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_PreferencesOption_Destroy is fail.");
     
     errcode = OH_PreferencesOption_Destroy(nullptr);
-    NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_PreferencesOption_SetFilePath is fail.");
-    
+    NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_Destroy_0200 end------------- ");
+
     napi_value ret;
     napi_create_int32(env, err, &ret);
     return ret;
@@ -868,9 +341,12 @@ static napi_value OH_Preferences_Open_0100(napi_env env, napi_callback_info info
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Open is fail.");
 
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
     errcode = OH_Preferences_Close(pref);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Close is fail.");
+
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_Open_0100 end------------- ");
+
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
     return ret;
@@ -896,8 +372,8 @@ static napi_value OH_Preferences_Open_0200(napi_env env, napi_callback_info info
         NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open 2 is fail.");
         
         errcode = OH_PreferencesOption_Destroy(option);
-        NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-
+        NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_Open_0200 end------------- ");
     
         napi_value ret;
         napi_create_int32(env, errcode, &ret);
@@ -935,8 +411,9 @@ static napi_value OH_Preferences_Close_0100(napi_env env, napi_callback_info inf
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
     
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-    
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_Open_0100 end------------- ");
+
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
     return ret;
@@ -990,7 +467,8 @@ static napi_value OH_Preferences_SetInt_0100(napi_env env, napi_callback_info in
     
     
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetInt_0100 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
@@ -998,7 +476,7 @@ static napi_value OH_Preferences_SetInt_0100(napi_env env, napi_callback_info in
 }
 
 static napi_value OH_Preferences_SetGetInt_0100(napi_env env, napi_callback_info info) {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetInt_0100 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetGetInt_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
     OH_PreferencesOption_SetFileName(option, "test.db");
@@ -1060,9 +538,10 @@ static napi_value OH_Preferences_SetGetInt_0100(napi_env env, napi_callback_info
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_GetInt3 is fail.");
     
     errcode = OH_Preferences_Close(pref);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Close is fail.");
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetInt_0100 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
@@ -1071,7 +550,7 @@ static napi_value OH_Preferences_SetGetInt_0100(napi_env env, napi_callback_info
 
 
 static napi_value OH_Preferences_SetGetString_0100(napi_env env, napi_callback_info info) {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetInt_0100 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetGetString_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
     OH_PreferencesOption_SetFileName(option, "test.db");
@@ -1168,9 +647,10 @@ static napi_value OH_Preferences_SetGetString_0100(napi_env env, napi_callback_i
     OH_Preferences_FreeString(resGet); 
 
     errcode = OH_Preferences_Close(pref);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Close is fail.");
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetGetString_0100 -end------------ ");
 
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
@@ -1178,7 +658,7 @@ static napi_value OH_Preferences_SetGetString_0100(napi_env env, napi_callback_i
 }
 
 static napi_value OH_Preferences_SetGetBool_0100(napi_env env, napi_callback_info info) {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetInt_0100 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetGetBool_0100 ------------- ");
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
     OH_PreferencesOption_SetFileName(option, "test.db");
@@ -1215,9 +695,10 @@ static napi_value OH_Preferences_SetGetBool_0100(napi_env env, napi_callback_inf
     NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_GetBool is fail.");
 
     errcode = OH_Preferences_Close(pref);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Close is fail.");
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetGetBool_0100 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
@@ -1261,9 +742,10 @@ static napi_value OH_Preferences_SetString_0100(napi_env env, napi_callback_info
 
 
     errcode = OH_Preferences_Close(pref);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Close is fail.");
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetString_0100 ------------- ");
 
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
@@ -1308,7 +790,8 @@ static napi_value OH_Preferences_SetBool_0100(napi_env env, napi_callback_info i
     errcode = OH_Preferences_Close(pref);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_SetBool_0100 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
@@ -1329,9 +812,6 @@ static napi_value OH_Preferences_GetInt_0100(napi_env env, napi_callback_info in
     NAPI_ASSERT(env, pref != nullptr, "OH_Preferences_Open is fail.");
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Open1 is fail.");
 
-//     size_t length = 1024;
-//     std::string random_string = generate_random_string(length);
-//    
     errcode = OH_Preferences_SetInt(pref, "key", 123);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_SetInt2 is fail.");
     errcode = OH_Preferences_SetInt(pref, " ", 12345);
@@ -1368,8 +848,8 @@ static napi_value OH_Preferences_GetInt_0100(napi_env env, napi_callback_info in
     errcode = OH_Preferences_Close(pref);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_GetInt_0100 end------------- ");
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
     return ret;
@@ -1431,8 +911,8 @@ static napi_value OH_Preferences_GetString_0100(napi_env env, napi_callback_info
     errcode = OH_Preferences_Close(pref);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_GetString_0100 end------------- ");
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
     return ret;
@@ -1488,7 +968,8 @@ static napi_value OH_Preferences_GetBool_0100(napi_env env, napi_callback_info i
     errcode = OH_Preferences_Close(pref);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_GetBool_0100 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
@@ -1522,7 +1003,8 @@ static napi_value OH_Preferences_FreeString(napi_env env, napi_callback_info inf
     errcode = OH_Preferences_Close(pref);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_GetInt_0100 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
@@ -1546,8 +1028,8 @@ static napi_value OH_Preferences_Delete(napi_env env, napi_callback_info info) {
     errcode = OH_Preferences_Close(pref);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_GetInt_0100 end------------- ");
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
     return ret;
@@ -1594,7 +1076,8 @@ static napi_value OH_Preferences_RegisterDataObserver_0100(napi_env env, napi_ca
     errcode = OH_Preferences_Close(pref);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_RegisterDataObserver_0100 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
@@ -1642,79 +1125,11 @@ static napi_value OH_Preferences_UnregisterDataObserver_0100(napi_env env, napi_
     errcode = OH_Preferences_Close(pref);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
     errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_UnregisterDataObserver end------------- ");
     napi_value ret;
     napi_create_int32(env, errcode, &ret);
     return ret;
-}
-
-static napi_value OH_Preferences_RegisterDataObserver_0200(napi_env env, napi_callback_info info) {
-    
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_RegisterDataObserver_0200 ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
-    OH_PreferencesOption_SetFileName(option, "DBDataObserver003.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-    
-    int errcode = 1;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-    NAPI_ASSERT(env, pref != nullptr, "OH_Preferences_Open is fail.");
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Open is fail.");
-    
-    SetAllValuesWithCheck(pref);
-    
-    errcode = OH_Preferences_Close(pref);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-
-    pref = OH_Preferences_Open(option, &errcode);
-    NAPI_ASSERT(env, pref != nullptr, "OH_Preferences_Open is fail.");
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Open is fail.");
-
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_RegisterDataObserver begin... ");
-
-    g_changeNum = 0;
-    const char *keys[] = {"ndktest_int_key_1", "ndktest_string_key_1", "ndktest_bool_key_1"};
-    errcode = OH_Preferences_RegisterDataObserver(pref, nullptr, DataChangeObserverCallback, keys, 3);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_RegisterDataObserver is fail.");
-
-
-     for (auto &[key, value] : intDataMap) {
-         errcode = OH_Preferences_Delete(pref, key.c_str());
-         OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_Delete errcode= %{public}d", errcode);
-         NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Delete is fail.");
-     }
-
-     for (auto &[key, value] : stringDataMap) {
-         const char *newValue = "update_string_value_109uokadnf894u5";
-         errcode = OH_Preferences_SetString(pref, key.c_str(), newValue);
-         OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_SetString errcode= %{public}d", errcode);
-        NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_SetString is fail.");
-     }
-     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_Close begin---");
-     errcode = OH_Preferences_Close(pref);
-     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_Close end---");
-     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_Close end is fail.");
-
-     char *keyRet = nullptr;
-     int intRet = 0;
-     char *stringRet = nullptr;
-     uint32_t stringRetLen = 0;
-     bool boolRet = false;
-    
-     std::this_thread::sleep_for(std::chrono::milliseconds(5000));
-
-     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_PreferencesPair_0100 g_changeNum= %{public}d", g_changeNum);
-     NAPI_ASSERT(env, g_changeNum == 2, "g_changeNum is fail.");
-
-     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-     errcode = OH_PreferencesOption_Destroy(option);
-     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
-
-     napi_value ret;
-     napi_create_int32(env, errcode, &ret);
-     return ret;
 }
 
 static napi_value OH_PreferencesPair_0200(napi_env env, napi_callback_info info) 
@@ -1753,6 +1168,7 @@ static napi_value OH_PreferencesPair_0200(napi_env env, napi_callback_info info)
      NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_PreferencesValue_GetBool is fail.");
      errcode = OH_PreferencesValue_GetString(nullptr, &stringV, &len);
      NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_PreferencesValue_GetBool is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_RegisterDataObserver_0200 end------------- ");
 
     napi_value ret;
     napi_create_int32(env, result, &ret);
@@ -1782,124 +1198,9 @@ static napi_value OH_Preferences_ErrCode_0100(napi_env env, napi_callback_info i
     NAPI_ASSERT(env, errcode == 15500013, "PREFERENCES_OK is fail.");
     errcode = PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT;
     NAPI_ASSERT(env, errcode == 15500019, "PREFERENCES_OK is fail.");
-    
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_RegisterDataObserver_0200 end------------- ");
     napi_value ret;
     napi_create_int32(env, result, &ret);
-    return ret;
-}
-
-// get 1000=================
-static napi_value GetInt1000(napi_env env, napi_callback_info info) {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_RegisterDataObserver_0200 ------------- ");
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "func GetInt ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "DBGetInt1000.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getIntDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetInt count= %{public}d", count);
-
-
-    for (auto &[key, value] : IntDataMap1000) {
-        errcode = OH_Preferences_SetInt(pref, key.c_str(), value);
-        NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_SetInt 1000 is fail.");
-    }
-
-    int res;
-    for (auto &[key, value] : IntDataMap1000) {
-        errcode = OH_Preferences_GetInt(pref, key.c_str(), &res);
-        NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_SetInt 1000 is fail.");
-    }
-    
-    errcode = OH_Preferences_Close(pref);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-    errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-
-    napi_value ret;
-    napi_create_int32(env, errcode, &ret);
-    return ret;
-}
-
-static napi_value GetString1000(napi_env env, napi_callback_info info) {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_RegisterDataObserver_0200 ------------- ");
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "func GetString ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "DBGetString1000.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getStringDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetString count= %{public}d", count);
-
-    for (auto &[key, value] : stringDataMap1000) {
-        errcode =  OH_Preferences_SetString(pref, key.c_str(), value.c_str());
-        NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_SetString 1000 is fail.");
-    }
-
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetString count2= %{public}d", count);
-
-    char *res = nullptr;
-    uint32_t len = 0;
-    for (auto &[key, value] : stringDataMap1000) {
-        errcode =  OH_Preferences_GetString(pref, key.c_str(), &res, &len);
-        NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_GetString 1000 is fail.");
-        OH_Preferences_FreeString(res);  
-    }
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetString count3= %{public}d", count);
-
-    errcode = OH_Preferences_Close(pref);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetString count4= %{public}d", count);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-    errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-
-    napi_value ret;
-    napi_create_int32(env, errcode, &ret);
-    return ret;
-}
-
-static napi_value GetBool1000(napi_env env, napi_callback_info info) {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_RegisterDataObserver_0200 ------------- ");
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "func GetBool ------------- ");
-    OH_PreferencesOption *option = OH_PreferencesOption_Create();
-    OH_PreferencesOption_SetFileName(option, "DBGetBool1000.db");
-    OH_PreferencesOption_SetBundleName(option, "test");
-    OH_PreferencesOption_SetDataGroupId(option, "");
-
-    int errcode = PREFERENCES_OK;
-    OH_Preferences *pref = OH_Preferences_Open(option, &errcode);
-
-    int count = getBoolDataMap1000();
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetBool count= %{public}d", count);
-
-    for (auto &[key, value] : boolDataMap1000) {
-        errcode =  OH_Preferences_SetBool(pref, key.c_str(), value);
-        NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_SetInt 1000 is fail.");
-    }
-
-    bool res;
-    for (auto &[key, value] : boolDataMap1000) {
-        errcode =  OH_Preferences_GetBool(pref, key.c_str(), &res);
-        NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_Preferences_SetInt 1000 is fail.");
-    }
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetBool count2= %{public}d", count);
-
-    errcode = OH_Preferences_Close(pref);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "GetBool count3= %{public}d", count);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-    errcode = OH_PreferencesOption_Destroy(option);
-    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_SetFilePath is fail.");
-
-    napi_value ret;
-    napi_create_int32(env, errcode, &ret);
     return ret;
 }
 
@@ -1907,19 +1208,6 @@ static napi_value GetBool1000(napi_env env, napi_callback_info info) {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
-        {"SetInt", nullptr, SetInt, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"GetInt", nullptr, GetInt, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SetString", nullptr, SetString, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"GetString", nullptr, GetString, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SetBool", nullptr, SetBool, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"GetBool", nullptr, GetBool, nullptr, nullptr, nullptr, napi_default, nullptr},
-
-        {"DeleteInt", nullptr, DeleteInt, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"DeleteString", nullptr, DeleteString, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"DeleteBool", nullptr, DeleteBool, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"UpdateInt", nullptr, UpdateInt, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"UpdateString", nullptr, UpdateString, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"UpdateBool", nullptr, UpdateBool, nullptr, nullptr, nullptr, napi_default, nullptr},
 
         {"OH_PreferencesOption_Create_0100", nullptr, OH_PreferencesOption_Create_0100, nullptr, nullptr, nullptr,
          napi_default, nullptr},
@@ -1973,15 +1261,9 @@ static napi_value Init(napi_env env, napi_value exports) {
          nullptr, nullptr, napi_default, nullptr},
         {"OH_Preferences_UnregisterDataObserver_0100", nullptr, OH_Preferences_UnregisterDataObserver_0100, nullptr,
          nullptr, nullptr, napi_default, nullptr},
-        {"OH_Preferences_RegisterDataObserver_0200", nullptr, OH_Preferences_RegisterDataObserver_0200, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
         {"OH_PreferencesPair_0200", nullptr, OH_PreferencesPair_0200, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Preferences_ErrCode_0100", nullptr, OH_Preferences_ErrCode_0100, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"GetInt1000", nullptr, GetInt1000, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"GetString1000", nullptr, GetString1000, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"GetBool1000", nullptr, GetBool1000, nullptr, nullptr, nullptr, napi_default, nullptr}
-
+         nullptr}
 
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

@@ -12,18 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const SetInt: () => number;
-export const SetString: () => number;
-export const SetBool: () => number;
-export const GetInt: () => number;
-export const GetString: () => number;
-export const GetBool: () => number;
-export const DeleteInt: () => number;
-export const DeleteString: () => number;
-export const DeleteBool: () => number;
-export const UpdateInt: () => number;
-export const UpdateString: () => number;
-export const UpdateBool: () => number;
 
 export const OH_PreferencesOption_Create_0100: () => number;
 export const OH_PreferencesOption_SetFilePath_0100: () => number;
@@ -51,11 +39,7 @@ export const OH_Preferences_FreeString: () => number;
 export const OH_Preferences_Delete: () => number;
 export const OH_Preferences_RegisterDataObserver_0100: () => number;
 export const OH_Preferences_UnregisterDataObserver_0100: () => number;
-export const OH_Preferences_RegisterDataObserver_0200: () => number;
 export const OH_PreferencesPair_0200: () => number;
 export const OH_Preferences_ErrCode_0100: () => number;
 
-export const GetInt1000: () => number;
-export const GetString1000: () => number;
-export const GetBool1000: () => number;
 
