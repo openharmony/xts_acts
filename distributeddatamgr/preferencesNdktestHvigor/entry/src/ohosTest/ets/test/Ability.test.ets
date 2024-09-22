@@ -361,7 +361,7 @@ export default function preferencesNdkTest() {
     });
 
     /**
-     * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_2600
+     * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_2500
      * @tc.name OH_PreferencesPair_0200
      * @tc.desc OH_PreferencesPair_0200
      * @tc.level: Level 2
@@ -375,7 +375,7 @@ export default function preferencesNdkTest() {
       done();
     });
     /**
-     * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_2700
+     * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_2600
      * @tc.name OH_Preferences_ErrCode_0100
      * @tc.desc OH_Preferences_ErrCode_0100
      * @tc.level: Level 2

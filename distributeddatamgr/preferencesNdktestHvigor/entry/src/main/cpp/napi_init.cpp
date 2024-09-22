@@ -82,7 +82,7 @@ std::map<std::string, std::string> stringDataMap = {
     {"ndktest_string_key_1", "2679b2c70120214984b3aec34fc849dc996f40e3cdb60f3b3eaf8abe2559439a"},
     {"ndktest_string_key_2", "+88780079687688"},
     {"ndktest_string_key_3", "/data/storage/el2/base/files/Thumbnail_1717209543267.jpg"},
-    {"ndktest_string_key_4", "HUAWEI Mate 60 Pro"},
+    {"ndktest_string_key_4", "688"},
     {"ndktest_string_key_5", "https://upfile-drcn.platform.hicloud.com/"}};
 std::map<std::string, bool> boolDataMap = {{"ndktest_bool_key_1", true},
                                            {"ndktest_bool_key_2", false},
@@ -118,7 +118,6 @@ static napi_value OH_PreferencesOption_Create_0100(napi_env env, napi_callback_i
     NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
     int errcode = OH_PreferencesOption_Destroy(option);
     NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "func OH_PreferencesOption_Destroy end ------------- ");
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_Create_0100 end------------- ");
 
     napi_value ret;
@@ -312,6 +311,7 @@ static napi_value OH_PreferencesOption_Destroy_0100(napi_env env, napi_callback_
     napi_create_int32(env, errcode, &ret);
     return ret;
 }
+
 static napi_value OH_PreferencesOption_Destroy_0200(napi_env env, napi_callback_info info) 
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_PreferencesOption_Destroy_0200 ------------- ");
@@ -359,38 +359,29 @@ static napi_value OH_Preferences_Open_0100(napi_env env, napi_callback_info info
 static napi_value OH_Preferences_Open_0200(napi_env env, napi_callback_info info) 
 {
     int testry = 0;
-    try{
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_Open_0200 ------------- ");
-        OH_PreferencesOption *option = OH_PreferencesOption_Create();
-        NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
-        OH_PreferencesOption_SetFileName(option, "test.db");
-        OH_PreferencesOption_SetBundleName(option, "test");
-        OH_PreferencesOption_SetDataGroupId(option, "");
-        
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "func OH_Preferences_Open_0200  111------------- ");
-        int errcode = 1;
-        OH_Preferences *pref = OH_Preferences_Open(NULL, &errcode);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_OpenNULL  errcode= %{public}d", errcode);
-        NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open 1 is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_Open_0200 ------------- ");
+    OH_PreferencesOption *option = OH_PreferencesOption_Create();
+    NAPI_ASSERT(env, option != nullptr, "OH_PreferencesOption_Create is fail.");
+    OH_PreferencesOption_SetFileName(option, "test.db");
+    OH_PreferencesOption_SetBundleName(option, "test");
+    OH_PreferencesOption_SetDataGroupId(option, "");
     
-        OH_Preferences *pref2 = OH_Preferences_Open(nullptr, &errcode);
-        NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open 2 is fail.");
-        
-        errcode = OH_PreferencesOption_Destroy(option);
-        NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_Open_0200 end------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "func OH_Preferences_Open_0200  111------------- ");
+    int errcode = 1;
+    OH_Preferences *pref = OH_Preferences_Open(NULL, &errcode);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Preferences_OpenNULL  errcode= %{public}d", errcode);
+    NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open 1 is fail.");
+
+    OH_Preferences *pref2 = OH_Preferences_Open(nullptr, &errcode);
+    NAPI_ASSERT(env, errcode == PREFERENCES_ERROR_INVALID_PARAM, "OH_Preferences_Open 2 is fail.");
     
-        napi_value ret;
-        napi_create_int32(env, errcode, &ret);
-        return ret;
-        
-    }catch(const std::exception& e){
-        testry = 99;
-        napi_value ret;
-        napi_create_int32(env, testry, &ret);
-        return ret;
-    }
-    
+    errcode = OH_PreferencesOption_Destroy(option);
+    NAPI_ASSERT(env, errcode == PREFERENCES_OK, "OH_PreferencesOption_Destroy is fail.");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "------------- func OH_Preferences_Open_0200 end------------- ");
+
+    napi_value ret;
+    napi_create_int32(env, errcode, &ret);
+    return ret;
 }
 
 static napi_value OH_Preferences_Close_0100(napi_env env, napi_callback_info info) 
@@ -550,7 +541,6 @@ static napi_value OH_Preferences_SetGetInt_0100(napi_env env, napi_callback_info
     napi_create_int32(env, errcode, &ret);
     return ret;
 }
-
 
 static napi_value OH_Preferences_SetGetString_0100(napi_env env, napi_callback_info info) 
 {
@@ -794,7 +784,6 @@ static napi_value OH_Preferences_SetBool_0100(napi_env env, napi_callback_info i
     napi_create_int32(env, errcode, &ret);
     return ret;
 }
-
 
 static napi_value OH_Preferences_GetInt_0100(napi_env env, napi_callback_info info) 
 {
