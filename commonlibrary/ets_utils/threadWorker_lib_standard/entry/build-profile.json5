@@ -64,7 +64,6 @@
         "./src/ohosTest/ets/workers/newworker_0141.js",
         "./src/ohosTest/ets/workers/newworker_0151.js",
         "./src/ohosTest/ets/workers/newworker_0152.js",
-        "./src/ohosTest/ets/workers/restrictedWorker_001.js"    
       ]
     }
   },
