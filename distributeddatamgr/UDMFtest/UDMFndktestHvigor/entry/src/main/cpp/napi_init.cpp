@@ -379,12 +379,12 @@ static napi_value OH_UdmfData_GetRecord010(napi_env env, napi_callback_info info
 
     napi_value returnCode;
     napi_create_int32(
-        env, 
+        env,
         result9 != nullptr && strcmp(content, helloWorld) == PARAM_0 &&
         result10 == nullptr && result11 == nullptr && result12 != nullptr &&
         strcmp(content2, helloWorld) == PARAM_0 && result13 != nullptr &&
         strcmp(content2, helloWorld) == PARAM_0 &&
-        strcmp(content3, helloWorld2) == PARAM_0, 
+        strcmp(content3, helloWorld2) == PARAM_0,
         &returnCode);
     OH_UdmfRecord_Destroy(record);
     OH_UdmfRecord_Destroy(record2);
@@ -649,7 +649,7 @@ static napi_value OH_UdmfRecord_GetFileUri001(napi_env env, napi_callback_info i
         OH_UdmfRecord_GetTypes(reRecords[0], &recordTypeCount);
         for (unsigned int recordIdx = 0; recordIdx < recordTypeCount; ++recordIdx) {
             if (strcmp(recordTypes[recordIdx], "general.image") == 0) {
-                OH_UdsFileUri* fileUri = OH_UdsFileUri_Create();    
+                OH_UdsFileUri* fileUri = OH_UdsFileUri_Create(); 
                 getFileUriRet = OH_UdmfRecord_GetFileUri(reRecords[idx], fileUri);
             }
         }

@@ -19,7 +19,7 @@ group("UDMFtest") {
     deps = [
       "UDMFnapitest:ActsUdmfNapiEtsTest",
       "UDMFtest:UDMF_ets_test",
-      "udmfNdktestHvigor:ActsUDMFNdkTest",
+      "UDMFndktestHvigor:ActsUDMFNdkTest",
     ]
   }
 }
