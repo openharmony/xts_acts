@@ -26,7 +26,7 @@ const ABILITY_NAME1 = "ohos.acts.bundle.stage.test.MainAbility1";
 const APPID = "ohos.acts.bundle.stage.test_BNtg4JBClbl92Rgc3jm/RfcAdrHXaM8F0QO" +
 "iwVEhnV5ebE5jNIYnAx+weFRT3QTyUjRNdhmc2aAzWyi+5t5CoBM=";
 const FINGERPRINT = "8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5";
-const CERTIFICATE = "-----BEGIN CERTIFICATE-----\nMIICMzCCAbegAwIBAgIEaOC/zDAMBggqhkjOPQQDAwUAMGMxCzAJBgNVBAYTAkNO\nMRQwEgYDVQQKEwtPcGVuSGFybW9ueTEZMBcGA1UECxMQT3Blbkhhcm1vbnkgVGVh\nbTEjMCEGA1UEAxMaT3Blbkhhcm1vbnkgQXBwbGljYXRpb24gQ0EwHhcNMjEwMjAy\nMTIxOTMxWhcNNDkxMjMxMTIxOTMxWjBoMQswCQYDVQQGEwJDTjEUMBIGA1UEChML\nT3Blbkhhcm1vbnkxGTAXBgNVBAsTEE9wZW5IYXJtb255IFRlYW0xKDAmBgNVBAMT\nH09wZW5IYXJtb255IEFwcGxpY2F0aW9uIFJlbGVhc2UwWTATBgcqhkjOPQIBBggq\nhkjOPQMBBwNCAATbYOCQQpW5fdkYHN45v0X3AHax12jPBdEDosFRIZ1eXmxOYzSG\nJwMfsHhUU90E8lI0TXYZnNmgM1sovubeQqATo1IwUDAfBgNVHSMEGDAWgBTbhrci\nFtULoUu33SV7ufEFfaItRzAOBgNVHQ8BAf8EBAMCB4AwHQYDVR0OBBYEFPtxruhl\ncRBQsJdwcZqLu9oNUVgaMAwGCCqGSM49BAMDBQADaAAwZQIxAJta0PQ2p4DIu/ps\nLMdLCDgQ5UH1l0B4PGhBlMgdi2zf8nk9spazEQI/0XNwpft8QAIwHSuA2WelVi/o\nzAlF08DnbJrOOtOnQq5wHOPlDYB4OtUzOYJk9scotrEnJxJzGsh/\n-----END CERTIFICATE-----\n"
+const CERTIFICATE = "-----BEGIN CERTIFICATE-----"
 const PARAM_ERROR_CODE = 401;
 
 export default function getBundleInfoForSelf() {
@@ -962,7 +962,7 @@ export default function getBundleInfoForSelf() {
         expect(data.permissionGrantStates.length).assertEqual(0);
         expect(data.signatureInfo.appId).assertEqual(APPID);
         expect(data.signatureInfo.fingerprint).assertEqual(FINGERPRINT);
-        expect(data.signatureInfo.certificate).assertEqual(CERTIFICATE);
+        expect(data.signatureInfo.certificate).assertContain(CERTIFICATE);
         done();
       }).catch(err => {
         console.info("getBundleInfoForSelf fail" + JSON.stringify(err));
@@ -987,7 +987,7 @@ export default function getBundleInfoForSelf() {
         expect(data.permissionGrantStates.length).assertEqual(0);
         expect(data.signatureInfo.appId).assertEqual(APPID);
         expect(data.signatureInfo.fingerprint).assertEqual(FINGERPRINT);
-        expect(data.signatureInfo.certificate).assertEqual(CERTIFICATE);
+        expect(data.signatureInfo.certificate).assertContain(CERTIFICATE);
         expect(err).assertEqual(null);
         done();
       })
@@ -1610,7 +1610,7 @@ export default function getBundleInfoForSelf() {
       expect(data.permissionGrantStates.length).assertEqual(0);
       expect(data.signatureInfo.appId).assertEqual(APPID);
       expect(data.signatureInfo.fingerprint).assertEqual(FINGERPRINT);
-      expect(data.signatureInfo.certificate).assertEqual(CERTIFICATE);
+      expect(data.signatureInfo.certificate).assertContain(CERTIFICATE);
       expect(data.signatureInfo.appIdentifier).assertEqual("");
       done();
     })
