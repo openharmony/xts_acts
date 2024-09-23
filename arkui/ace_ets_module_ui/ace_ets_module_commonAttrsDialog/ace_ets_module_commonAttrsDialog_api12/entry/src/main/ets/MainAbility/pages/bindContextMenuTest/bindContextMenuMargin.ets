@@ -22,7 +22,7 @@ struct bindContextMenuMargin {
 
   @Builder
   MyMenu(){
-    Menu(){
+    Menu() {
       MenuItem({ startIcon: this.iconStr, content: '菜单选项'})
       MenuItem({ startIcon: this.iconStr, content: '菜单选项'})
       MenuItem({ startIcon: this.iconStr, content: '菜单选项'})
