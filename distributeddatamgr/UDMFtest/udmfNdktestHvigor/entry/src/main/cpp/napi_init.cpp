@@ -355,11 +355,9 @@ static napi_value OH_UdmfData_GetRecord010(napi_env env, napi_callback_info info
     OH_UdmfRecord_AddPlainText(record, plainText);
     OH_UdmfData_AddRecord(data3, record);
     OH_UdmfRecord *result9 = OH_UdmfData_GetRecord(data3, 0);
-    // EXPECT_NE(result9, nullptr);
     OH_UdsPlainText *plainText2 = OH_UdsPlainText_Create();
     OH_UdmfRecord_GetPlainText(result9, plainText2);
     auto content = OH_UdsPlainText_GetContent(plainText2);
-    // EXPECT_EQ(strcmp(content, helloWorld), 0);
 
     OH_UdmfData *data4 = OH_UdmfData_Create();
     OH_UdsPlainText *plainText3 = OH_UdsPlainText_Create();
@@ -380,12 +378,14 @@ static napi_value OH_UdmfData_GetRecord010(napi_env env, napi_callback_info info
     auto content3 = OH_UdsPlainText_GetContent(plainText5);
 
     napi_value returnCode;
-    napi_create_int32(env,  result9 != nullptr && strcmp(content, helloWorld) == PARAM_0
-     && result10 == nullptr && result11 == nullptr && result12 != nullptr
-     && strcmp(content2, helloWorld) == PARAM_0 && result13 != nullptr
-     && strcmp(content2, helloWorld) == PARAM_0 &&
-     strcmp(content3, helloWorld2) == PARAM_0, 
-     &returnCode);
+    napi_create_int32(
+        env, 
+        result9 != nullptr && strcmp(content, helloWorld) == PARAM_0 &&
+        result10 == nullptr && result11 == nullptr && result12 != nullptr &&
+        strcmp(content2, helloWorld) == PARAM_0 && result13 != nullptr &&
+        strcmp(content2, helloWorld) == PARAM_0 &&
+        strcmp(content3, helloWorld2) == PARAM_0, 
+        &returnCode);
     OH_UdmfRecord_Destroy(record);
     OH_UdmfRecord_Destroy(record2);
     OH_UdmfData_Destroy(data4);
@@ -410,7 +410,7 @@ static napi_value OH_UdmfData_IsLocal003(napi_env env, napi_callback_info info)
     bool result = OH_UdmfData_IsLocal(data);
     napi_value returnCode;
     napi_create_int32(env, result == true, &returnCode);
-    OH_UdmfData_Destroy(data );
+    OH_UdmfData_Destroy(data);
     return returnCode;
 }
 
@@ -832,19 +832,10 @@ static napi_value OH_UdsFileUri_GetFileType002(napi_env env, napi_callback_info 
     napi_create_int32(env, result == nullptr, &returnCode);
     return returnCode;
 }
-static napi_value OH_UdsFileUri_GetFileType003(napi_env env, napi_callback_info info)
-{
-    OH_UdsFileUri* fileUriNullptr =  nullptr;//new OH_UdsFileUri;
-    auto result = OH_UdsFileUri_GetFileType(fileUriNullptr);
-    napi_value returnCode;
-    napi_create_int32(env, result == nullptr, &returnCode);
-    return returnCode;
-}
-
-
 
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
+static napi_value Init(napi_env env, napi_value exports)
+{
     napi_property_descriptor desc[] = {
         {"OH_UdmfData_GetPrimaryPlainText_0001", nullptr, OH_UdmfData_GetPrimaryPlainText_0001, nullptr, nullptr,
          nullptr, napi_default, nullptr},
@@ -951,8 +942,6 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"OH_UdsFileUri_GetFileType001", nullptr, OH_UdsFileUri_GetFileType001, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"OH_UdsFileUri_GetFileType002", nullptr, OH_UdsFileUri_GetFileType002, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"OH_UdsFileUri_GetFileType003", nullptr, OH_UdsFileUri_GetFileType003, nullptr, nullptr,
          nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

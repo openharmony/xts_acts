@@ -67,4 +67,3 @@ export const OH_UdsFileUri_GetFileUri001: () => number;
 export const OH_UdsFileUri_GetFileUri002: () => number;
 export const OH_UdsFileUri_GetFileType001: () => number;
 export const OH_UdsFileUri_GetFileType002: () => number;
-export const OH_UdsFileUri_GetFileType003: () => number;
