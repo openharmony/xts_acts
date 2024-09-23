@@ -18,8 +18,9 @@ group("UDMFtest") {
   if (is_standard_system) {
     deps = [
       "UDMFnapitest:ActsUdmfNapiEtsTest",
-      "UDMFtest:UDMF_ets_test",
       "UDMFndktestHvigor:ActsUDMFNdkTest",
+      "UDMFtest:UDMF_ets_test",
+      
     ]
   }
 }
