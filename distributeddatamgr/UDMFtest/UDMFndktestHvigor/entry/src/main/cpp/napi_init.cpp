@@ -757,7 +757,6 @@ static napi_value OH_UdmfRecord_GetPixelMap003(napi_env env, napi_callback_info 
 static napi_value OH_UdsFileUri_Create001(napi_env env, napi_callback_info info)
 {
     OH_UdsFileUri *fileUri = OH_UdsFileUri_Create();
-
     OH_UdsFileUri_Destroy(fileUri);
     napi_value returnCode;
     napi_create_int32(env, fileUri != nullptr, &returnCode);
