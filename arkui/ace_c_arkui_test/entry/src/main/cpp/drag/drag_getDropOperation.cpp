@@ -56,7 +56,7 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
     auto result = OH_ArkUI_DragEvent_GetDropOperation(dragEvent, &dropOperation);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "getDropOperation",
                  "Drag getDropOperation result : %{public}d  DropOperation : %{public}d", result, dropOperation);
-    if (result == 0) {
+    if (result == 0 && dropOperation == 0) {
         ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
         ArkUI_AttributeItem background_color_item = {background_color_value,
                                                      sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
