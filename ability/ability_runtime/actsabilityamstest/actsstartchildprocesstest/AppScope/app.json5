@@ -15,7 +15,7 @@
 
 {
   "app": {
-    "bundleName": "com.example.startarkchildprocess",
+    "bundleName": "com.example.actsstartchildprocesstest",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",
