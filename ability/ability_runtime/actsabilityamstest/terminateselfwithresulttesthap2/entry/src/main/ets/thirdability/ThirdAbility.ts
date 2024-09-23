@@ -24,7 +24,7 @@ let param = new ParamManager();
 export default class ThirdAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'ThirdAbility', '%{public}s', 'Ability onCreate');
-    hilog.info(0x0000, 'ThirdAbility', `want, 50==: ${JSON.stringify(want)}`);
+    hilog.info(0x0000, 'ThirdAbility', `want, 50 == : ${JSON.stringify(want)}`);
     AppStorage.SetOrCreate<boolean>('onCreate', true);
     param.setTextNme(want.action);
   }
@@ -51,7 +51,7 @@ export default class ThirdAbility extends UIAbility {
       }
     };
     commonEventManger.publish(events,commonEventData,(result)=>{
-      hilog.info(0x0000, 'ThirdAbility', `startAbilityForResult ok, 50==: ${JSON.stringify(result)}`);
+      hilog.info(0x0000, 'ThirdAbility', `startAbilityForResult ok, 50 == : ${JSON.stringify(result)}`);
     });
   }
 
@@ -100,7 +100,7 @@ export default class ThirdAbility extends UIAbility {
         });
       }, 300);
     } catch (error) {
-      hilog.info(0x0000, 'ThirdAbility', `startAbilityForResult err, 50==: ${JSON.stringify(error)}`);
+      hilog.info(0x0000, 'ThirdAbility', `startAbilityForResult err, 50 == : ${JSON.stringify(error)}`);
     };
   }
 

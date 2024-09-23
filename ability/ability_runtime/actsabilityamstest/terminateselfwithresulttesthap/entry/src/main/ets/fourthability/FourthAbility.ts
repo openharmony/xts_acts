@@ -38,7 +38,7 @@ export default class FourthAbility extends UIAbility {
       }
     };
     commonEventManger.publish('onDestroyCallback2',commonEventData,(result)=>{
-      hilog.info(0x0000, 'testTag', `onConnect, 50==: ${JSON.stringify(result)}`);
+      hilog.info(0x0000, 'testTag', `onConnect, 50 == : ${JSON.stringify(result)}`);
     });
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
   }

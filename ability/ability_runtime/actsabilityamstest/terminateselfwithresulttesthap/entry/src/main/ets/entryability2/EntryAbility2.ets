@@ -45,7 +45,7 @@ export default class EntryAbility2 extends UIAbility {
         }
       };
       commonEventManger.publish(events,commonEventData,(result)=>{
-        hilog.info(0x0000, 'testTag', `onConnect, 50==: ${JSON.stringify(result)}`);
+        hilog.info(0x0000, 'testTag', `onConnect, 50 == : ${JSON.stringify(result)}`);
       });
     };
   }

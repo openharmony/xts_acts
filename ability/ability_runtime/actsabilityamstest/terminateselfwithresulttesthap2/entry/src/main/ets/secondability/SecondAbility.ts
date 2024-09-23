@@ -24,7 +24,7 @@ let param = new ParamManager();
 export default class SecondAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'SecondAbility', '%{public}s', 'Ability onCreate');
-    hilog.info(0x0000, 'SecondAbility', `want, 50==: ${JSON.stringify(want)}`);
+    hilog.info(0x0000, 'SecondAbility', `want, 50 == : ${JSON.stringify(want)}`);
     AppStorage.SetOrCreate<boolean>('onCreate', true);
     AppStorage.SetOrCreate<boolean>('isStart',false);
     param.setTextNme(want.action);
@@ -38,7 +38,7 @@ export default class SecondAbility extends UIAbility {
     let onForeground = AppStorage.get<boolean>('onForeground');
     let onWindowStageDestroy = AppStorage.get<boolean>('onWindowStageDestroy');
     let onBackground = AppStorage.get<boolean>('onBackground');
-    let AbilityResult = AppStorage.get<common.AbilityResult>('AbilityResult');
+    let abilityResult = AppStorage.get<common.AbilityResult>('AbilityResult');
     let onDestroy = true;
     let commonEventData: commonEventManger.CommonEventPublishData = {
       parameters:{
@@ -49,12 +49,12 @@ export default class SecondAbility extends UIAbility {
           onWindowStageDestroy: onWindowStageDestroy,
           onBackground: onBackground,
           onDestroy: onDestroy,
-          result: AbilityResult
+          result: abilityResult
         }
       }
     };
     commonEventManger.publish(events,commonEventData,(result)=>{
-      hilog.info(0x0000, 'SecondAbility', `startAbilityForResult ok, 50==: ${JSON.stringify(result)}`);
+      hilog.info(0x0000, 'SecondAbility', `startAbilityForResult ok, 50 == : ${JSON.stringify(result)}`);
     });
   }
 
@@ -119,11 +119,11 @@ export default class SecondAbility extends UIAbility {
             });
           }, 300);
         }).catch((err: BusinessError) => {
-          hilog.info(0x0000, 'SecondAbility', `startAbilityForResult err, 50==: ${JSON.stringify(err)}`);
+          hilog.info(0x0000, 'SecondAbility', `startAbilityForResult err, 50 == : ${JSON.stringify(err)}`);
         });
       }, 500);
     } catch (error) {
-      hilog.info(0x0000, 'SecondAbility', `startAbilityForResult err, 50==: ${JSON.stringify(error)}`);
+      hilog.info(0x0000, 'SecondAbility', `startAbilityForResult err, 50 == : ${JSON.stringify(error)}`);
     };
   }
 

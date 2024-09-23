@@ -24,7 +24,7 @@ let param = new ParamManager();
 export default class EntryAbility4 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'EntryAbility4', '%{public}s', 'Ability onCreate');
-    hilog.info(0x0000, 'EntryAbility4', `want, 50==: ${JSON.stringify(want)}`);
+    hilog.info(0x0000, 'EntryAbility4', `want, 50 == : ${JSON.stringify(want)}`);
     param.setTextNme(want.action);
   }
 
@@ -34,7 +34,6 @@ export default class EntryAbility4 extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'EntryAbility4', '%{public}s', 'Ability onWindowStageCreate');
-
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
         hilog.error(0x0000, 'EntryAbility4', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -71,14 +70,14 @@ export default class EntryAbility4 extends UIAbility {
             }
           };
           commonEventManger.publish(events,commonEventData,(result)=>{
-            hilog.info(0x0000, 'EntryAbility4', `startAbilityForResult ok, 50==: ${JSON.stringify(result)}`);
+            hilog.info(0x0000, 'EntryAbility4', `startAbilityForResult ok, 50 == : ${JSON.stringify(result)}`);
           });
         }).catch((err: BusinessError) => {
-          hilog.info(0x0000, 'EntryAbility4', `startAbilityForResult err, 50==: ${JSON.stringify(err)}`);
+          hilog.info(0x0000, 'EntryAbility4', `startAbilityForResult err, 50 == : ${JSON.stringify(err)}`);
         });
       }, 500)
     } catch (error) {
-      hilog.info(0x0000, 'EntryAbility4', `startAbilityForResult err, 50==: ${JSON.stringify(error)}`);
+      hilog.info(0x0000, 'EntryAbility4', `startAbilityForResult err, 50 == : ${JSON.stringify(error)}`);
     };
   }
 

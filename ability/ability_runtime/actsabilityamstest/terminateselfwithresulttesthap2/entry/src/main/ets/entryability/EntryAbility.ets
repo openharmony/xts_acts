@@ -77,17 +77,17 @@ export default class EntryAbility extends UIAbility {
             }
           };
           commonEventManger.publish(events,commonEventData,(result)=>{
-            hilog.info(0x0000, 'testTag', `startAbilityForResult ok, 50==: ${JSON.stringify(result)}`);
+            hilog.info(0x0000, 'testTag', `startAbilityForResult ok, 50 == : ${JSON.stringify(result)}`);
           });
           setTimeout(async () => {
             await this.context.terminateSelf();
           }, 300);
         }).catch((err: BusinessError) => {
-          hilog.info(0x0000, 'testTag', `startAbilityForResult err, 50==: ${JSON.stringify(err)}`);
+          hilog.info(0x0000, 'testTag', `startAbilityForResult err, 50 == : ${JSON.stringify(err)}`);
         });
       }, 500);
     } catch (error) {
-      hilog.info(0x0000, 'testTag', `startAbilityForResult err, 50==: ${JSON.stringify(error)}`);
+      hilog.info(0x0000, 'testTag', `startAbilityForResult err, 50 == : ${JSON.stringify(error)}`);
     };
   }
 
