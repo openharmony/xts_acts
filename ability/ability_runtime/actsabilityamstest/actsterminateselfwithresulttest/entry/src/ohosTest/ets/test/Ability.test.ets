@@ -1483,12 +1483,12 @@ export default function abilityTest() {
       let reburnNumber = 0;
       let event = TEST_CASE_NAME;
       let event2 = TEST_CASE_NAME + '_2';
-      let event3 = 'TestAbilityonForeground';
+      AppStorage.SetOrCreate<boolean>('TestAbilityOnForeground',false);
       let resultDate: common.AbilityResult = {"resultCode": -1,
         "want": {"deviceId": "", "bundleName": "", "abilityName": "", "moduleName": "", "uri": "", "type": "", "flags": 0, "action": "", "parameters": {}, "entities": []}};
 
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: [event, event2, event3]
+        events: [event, event2]
       };
 
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
@@ -1509,14 +1509,10 @@ export default function abilityTest() {
             expect(commonEventData.parameters?.data.onWindowStageCreate).assertTrue();
             expect(commonEventData.parameters?.data.onForeground).assertTrue();
           };
-          if (commonEventData.event == event3) {
-            expect(commonEventData.parameters?.data.onForeground).assertTrue();
-          };
           reburnNumber += 1;
-          if (reburnNumber == 3){
+          if (reburnNumber == 2){
             commonEventManager.unsubscribe(subscriber, (err, data) => {
             });
-            done();
           };
         });
 
@@ -1531,6 +1527,11 @@ export default function abilityTest() {
             // 执行正常业务
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
             expect(result).assertDeepEquals(resultDate);
+            setTimeout(() => {
+              let testAbilityOnForeground = AppStorage.get<boolean>('TestAbilityOnForeground');
+              expect(testAbilityOnForeground).assertTrue();
+              done();
+            }, 1000);
           }).catch((err: BusinessError) => {
             // 处理业务逻辑错误
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);

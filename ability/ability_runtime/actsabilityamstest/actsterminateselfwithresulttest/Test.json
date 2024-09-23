@@ -12,7 +12,7 @@
         {
             "test-file-name": [
                 "ActsTerminateselfWithResultTest.hap",
-                "ActsAbilityDelegatorEntryTest.hap",
+                "ActsTerminateselfWithResultEntry.hap",
                 "TerminateSelfWithResultTestHap.hap",
                 "TerminateSelfWithResultTestHap2.hap"
             ],
