@@ -22,10 +22,10 @@
     "testability/pages/SetArrayBufferTest",
     "testability/pages/DeserializeTest",
     "testability/pages/WebMessageExtTest",
-    "testability/pages/saveHttpAuthCredentials",
-    "testability/pages/getHttpAuthCredentials",
-    "testability/pages/getOriginUsage",
-    "testability/pages/getOriginQuota",
+    "testability/pages/SaveHttpAuthCredentials",
+    "testability/pages/GetHttpAuthCredentials",
+    "testability/pages/GetOriginUsage",
+    "testability/pages/GetOriginQuota",
     "testability/pages/Geolocation"
   ]
 }

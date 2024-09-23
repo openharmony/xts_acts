@@ -14,8 +14,8 @@
 */
 
 import hasGesture from './HasGesture.test';
-import ActsAceRegisterJavaScriptProxy from './webViewRegisterJavaScriptProxy.test'
-import DeleteJavaScriptRegisterUnitTest from './webViewDeleteJavaScriptRegister.test'
+import ActsAceRegisterJavaScriptProxy from './WebViewRegisterJavaScriptProxy.test'
+import DeleteJavaScriptRegisterUnitTest from './WebViewDeleteJavaScriptRegister.test'
 import abilityTest from './Ability.test'
 
 export default function testsuite() {
