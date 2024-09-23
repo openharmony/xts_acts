@@ -7353,5 +7353,245 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2840 end");
     });
 
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest1140
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1140
+     * @tc.desc      : parameter to getUniformDataTypesByFilenameExtension()  --parameter is ".xls"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1140', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1140 start');
+      try {
+        let result = UTD.getUniformDataTypesByFilenameExtension(".xls");
+        console.log("result=====>" + JSON.stringify(result));
+        expect(result[0]).assertEqual(UTD.UniformDataType.EXCEL)
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1140 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest1150
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1150
+     * @tc.desc      : Invalid parameter to getUniformDataTypesByFilenameExtension()  --parameter is null
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1150', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1150 start');
+      try {
+        let result = UTD.getUniformDataTypesByFilenameExtension(null);
+        console.log("result=====>" + result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1150 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest1160
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1160
+     * @tc.desc      : Invalid parameter to getUniformDataTypesByFilenameExtension()  --parameter is ".hello"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1160', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1160 start');
+      try {
+        let dynamicType = UTD.getUniformDataTypesByFilenameExtension(".hello");
+        console.log("UDMF,result=====>" + dynamicType);
+        let dynamicTypeObj = UTD.getTypeDescriptor(dynamicType[0]);
+        console.log("UDMF,typeId:" + dynamicTypeObj.typeId);
+        console.log("UDMF,belongingToTypes:" + dynamicTypeObj.belongingToTypes);
+        console.log("UDMF,filenameExtension:" + dynamicTypeObj.filenameExtensions);
+        console.log("UDMF,mimeTypes:" + dynamicTypeObj.mimeTypes);
+        expect(dynamicTypeObj.typeId).assertEqual(dynamicType[0]);
+        expect(dynamicTypeObj.belongingToTypes.length).assertEqual(0);
+        expect(dynamicTypeObj.filenameExtensions[0]).assertEqual(".hello");
+        expect(dynamicTypeObj.mimeTypes.length).assertEqual(0);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1160 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest1170
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1170
+     * @tc.desc      : Invalid parameter to getUniformDataTypesByFilenameExtension()  --parameter is ""
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1170', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1170 start');
+      try {
+        let result = UTD.getUniformDataTypesByFilenameExtension("");
+        console.log("result=====>" + result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1170 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest1180
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1180
+     * @tc.desc      : Invalid parameter to getUniformDataTypesByFilenameExtension()  --parameter is undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1180', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1180 start');
+      try {
+        let result = UTD.getUniformDataTypesByFilenameExtension(undefined);
+        console.log("result=====>" + result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1180 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest1190
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1190
+     * @tc.desc      : parameter to getUniformDataTypesByMIMEType() --"image/tiff"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1190', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1190 start');
+      try {
+        let result = UTD.getUniformDataTypesByMIMEType("image/tiff");
+        console.log("result=====>" + result);
+        expect(result[0] == "general.tiff").assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1190 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest1210
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1210
+     * @tc.desc      : Invalid  parameter to getUniformDataTypesByMIMEType() --parameter is "hello"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1210', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1210 start');
+      try {
+        let dynamicType = UTD.getUniformDataTypesByMIMEType("hello");
+        console.log("dynamicType=====>" + dynamicType);
+        let dynamicTypeObj = UTD.getTypeDescriptor(dynamicType[0]);
+        console.log("UDMF,typeId:" + dynamicTypeObj.typeId);
+        console.log("UDMF,belongingToTypes:" + dynamicTypeObj.belongingToTypes);
+        console.log("UDMF,filenameExtension:" + dynamicTypeObj.filenameExtensions);
+        console.log("UDMF,mimeTypes:" + dynamicTypeObj.mimeTypes);
+        expect(dynamicTypeObj.typeId).assertEqual(dynamicType[0]);
+        expect(dynamicTypeObj.belongingToTypes.length).assertEqual(0);
+        expect(dynamicTypeObj.mimeTypes[0]).assertEqual("hello");
+        expect(dynamicTypeObj.filenameExtensions.length).assertEqual(0);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1210 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest1220
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1220
+     * @tc.desc      : Invalid  parameter to getUniformDataTypesByMIMEType() --parameter is ""
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1220', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1220 start');
+      try {
+        let result = UTD.getUniformDataTypesByMIMEType("");
+        console.log("result=====>" + result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1220 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest1230
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1230
+     * @tc.desc      : Invalid  parameter to getUniformDataTypesByMIMEType() --parameter is null
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1230', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1230 start');
+      try {
+        let result = UTD.getUniformDataTypesByMIMEType(null);
+        console.log("result=====>" + result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1230 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest1240
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1240
+     * @tc.desc      : Invalid  parameter to getUniformDataTypesByMIMEType() --parameter is undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1240', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1240 start');
+      try {
+        let result = UTD.getUniformDataTypesByMIMEType(undefined);
+        console.log("result=====>" + result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1240 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest1250
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1250
+     * @tc.desc      : parameter to getUniformDataTypesByMIMEType()  --parameter are "image/tiff" and "general.type-script"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1250', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1250 start');
+      try {
+        let result = UTD.getUniformDataTypesByMIMEType("audio/x-ms-wma", UTD.UniformDataType.WINDOWS_MEDIA_WMA);
+        console.log("result=====>" + result);
+        expect(result[0] == UTD.UniformDataType.WINDOWS_MEDIA_WMA).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1250 end");
+    });
+
   })
 }
