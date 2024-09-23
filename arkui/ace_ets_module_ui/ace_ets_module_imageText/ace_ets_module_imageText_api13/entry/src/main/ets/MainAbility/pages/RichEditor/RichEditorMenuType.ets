@@ -121,7 +121,12 @@ struct RichEditorMenuType1 {
                 this.start = value.selection[0]
                 this.end = value.selection[1]
               })
-              .bindSelectionMenu(RichEditorSpanType.TEXT, this.panel, ResponseType.LongPress, {menuType:MenuType.PREVIEW_MENU})
+              .bindSelectionMenu(
+                  RichEditorSpanType.TEXT, 
+                  this.panel, 
+                  ResponseType.LongPress, 
+                  {menuType:MenuType.PREVIEW_MENU}
+              )
               .borderWidth(1)
               .borderColor(Color.Red)
               .width(200)
