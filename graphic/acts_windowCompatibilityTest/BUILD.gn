@@ -17,7 +17,7 @@ ohos_js_app_suite("ActsWindowCompatibilityTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActswindowCompatibilityTest"
+  hap_name = "ActsWindowCompatibilityTest"
   part_name = "window_manager"
   subsystem_name = "window"
 }
