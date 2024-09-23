@@ -20,18 +20,18 @@ import abilityManager from "@ohos.application.appManager";
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
 import { BusinessError } from '@ohos.base';
 
-const TAG_TEST_0100 = ' context_isUpdatingConfigurations_test_0100 ';
-const TAG_TEST_0200 = ' context_isUpdatingConfigurations_test_0200 ';
-const TAG_TEST_0300 = ' context_printDrawnCompleted_test_0100 ';
-const TAG_TEST_0400 = ' context_printDrawnCompleted_test_0200 ';
-const TAG_TEST_0500 = ' context_getAppMemorySize_test_0100 ';
-const TAG_TEST_0600 = ' context_getAppMemorySize_test_0200 ';
-const TAG_TEST_0700 = ' context_isRamConstrainedDevice_test_0100 ';
-const TAG_TEST_0800 = ' context_isRamConstrainedDevice_test_0200 ';
-const TAG_TEST_0900 = ' context_featureAbility_test_0100 ';
-const TAG_TEST_0010 = ' context_featureAbility_test_0200 ';
-const TAG_TEST_0011 = ' context_featureAbility_test_0300 ';
-const TAG_TEST_0012 = ' context_featureAbility_test_0400 ';
+const TAG_TEST_0100 = 'context_isUpdatingConfigurations_test_0100';
+const TAG_TEST_0200 = 'context_isUpdatingConfigurations_test_0200';
+const TAG_TEST_0300 = 'context_printDrawnCompleted_test_0100';
+const TAG_TEST_0400 = 'context_printDrawnCompleted_test_0200';
+const TAG_TEST_0500 = 'context_getAppMemorySize_test_0100';
+const TAG_TEST_0600 = 'context_getAppMemorySize_test_0200';
+const TAG_TEST_0700 = 'context_isRamConstrainedDevice_test_0100';
+const TAG_TEST_0800 = 'context_isRamConstrainedDevice_test_0200';
+const TAG_TEST_0900 = 'context_featureAbility_test_0100';
+const TAG_TEST_0010 = 'context_featureAbility_test_0200';
+const TAG_TEST_0011 = 'context_featureAbility_test_0300';
+const TAG_TEST_0012 = 'context_featureAbility_test_0400';
 
 export default function addContextAndAbilityJsunit() {
   describe('addContextTest', () => {
@@ -69,7 +69,7 @@ export default function addContextAndAbilityJsunit() {
  */
     it(TAG_TEST_0100, 0, async (done: Function) => {
       console.info(TAG_TEST_0100 + 'promise START');
-      let detailed: boolean = false;
+      let detailed: boolean;
       let startTime = Utils.getNowTime();
       let context = ability_featureAbility.getContext();
       await context.isUpdatingConfigurations()
@@ -94,7 +94,7 @@ export default function addContextAndAbilityJsunit() {
  * @tc.level   0
  */
     it(TAG_TEST_0200, 0, async (done: Function) => {
-      let detailed: boolean = false;
+      let detailed: boolean;
       console.info(TAG_TEST_0200 + 'callBack START');
       try {
         let startTime = await Utils.getNowTime();
@@ -179,7 +179,7 @@ export default function addContextAndAbilityJsunit() {
  */
     it(TAG_TEST_0500, 0, async (done: Function) => {
       console.info(TAG_TEST_0500 + 'promise START');
-      let detailed: number = 0;
+      let detailed: number;
       let startTime = await Utils.getNowTime();
       await abilityManager.getAppMemorySize()
         .then((data) => {
@@ -225,10 +225,10 @@ export default function addContextAndAbilityJsunit() {
  * @tc.level   0
  */
     it(TAG_TEST_0700, 0, async (done: Function) => {
+      let detailed: boolean;
       console.info(TAG_TEST_0700 + 'promise START');
       let startTime = Utils.getNowTime();
-      let detailed: boolean = true;
-      await abilityManager.isRamConstrainedDevice().then((data:boolean) => {
+      await abilityManager.isRamConstrainedDevice().then((data) => {
         let endTime = Utils.getNowTime();
         Utils.getDurationTime(TAG_TEST_0700, startTime, endTime)
         console.info(TAG_TEST_0700 + ' promise data is:' + JSON.stringify(data));

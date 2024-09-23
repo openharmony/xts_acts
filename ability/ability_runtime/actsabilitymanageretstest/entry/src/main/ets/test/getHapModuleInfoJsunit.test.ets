@@ -71,7 +71,7 @@ function checkHapModuleInfo(msg: string, data: ESObject) {
   console.info(msg + ' data.abilityInfo.length ' + data.abilityInfo.length)
   checkAbilityInfo(msg, data.abilityInfo[0]);
   expect(data.moduleName).assertEqual("entry")
-  expect(data.mainAbilityName).assertEqual("com.ohos.acecollaboration.TestAbility");
+  expect(data.mainAbilityName).assertEqual("com.ohos.acecollaboration.MainAbility");
   expect(data.installationFree).assertEqual(false);
   console.log(msg + "---checkHapModuleInfo End---");
 }

@@ -96,8 +96,8 @@ function checkAbilityInfo(msg: string, data: ESObject) {
 
   expect(data.bundleName).assertEqual("com.ohos.acecollaboration");
   expect(data.name).assertEqual("com.ohos.acecollaboration.TestAbility");
-  expect(data.label).assertEqual("$string:entry_MainAbility");
-  expect(data.description).assertEqual("$string:mainability_description");
+  expect(data.label).assertEqual("$string:TestAbility_label");
+  expect(data.description).assertEqual("$string:TestAbility_desc");
   expect(data.icon).assertEqual("$media:icon");
   expect(data.descriptionId > 0).assertTrue();
   expect(data.iconId > 0).assertTrue();
