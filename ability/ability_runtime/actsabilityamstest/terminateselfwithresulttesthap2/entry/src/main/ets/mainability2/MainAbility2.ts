@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 HiHope Open Source Organization
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -70,24 +70,24 @@ export default class MainAbility2 extends UIAbility {
         this.context.startAbilityForResult(want).then((result: common.AbilityResult) => {
           hilog.info(0x0000, 'testTag', `startAbilityForResult ok, result==: ${JSON.stringify(result)}`);
           let commonEventData: commonEventManger.CommonEventPublishData = {
-            parameters:{
+            parameters: {
               data: {
                 result: result
               }
             }
           };
           commonEventManger.publish(events,commonEventData,(result)=>{
-            hilog.info(0x0000, 'testTag', `startAbilityForResult ok, 50 == : ${JSON.stringify(result)}`);
+            hilog.info(0x0000, 'testTag', `startAbilityForResult ok, 50 == ${JSON.stringify(result)}`);
           });
           setTimeout(async () => {
             await this.context.terminateSelf();
           }, 300);
         }).catch((err: BusinessError) => {
-          hilog.info(0x0000, 'testTag', `startAbilityForResult err, 50 == : ${JSON.stringify(err)}`);
+          hilog.info(0x0000, 'testTag', `startAbilityForResult err, 50 == ${JSON.stringify(err)}`);
         });
       }, 500);
     } catch (error) {
-      hilog.info(0x0000, 'testTag', `startAbilityForResult err, 50 == : ${JSON.stringify(error)}`);
+      hilog.info(0x0000, 'testTag', `startAbilityForResult err, 50 == ${JSON.stringify(error)}`);
     };
   }
 

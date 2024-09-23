@@ -24,7 +24,7 @@ let param = new ParamManager();
 export default class EntryAbility4 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'EntryAbility4', '%{public}s', 'Ability onCreate');
-    hilog.info(0x0000, 'EntryAbility4', `want, 50 == : ${JSON.stringify(want)}`);
+    hilog.info(0x0000, 'EntryAbility4', `want, 50 == ${JSON.stringify(want)}`);
     AppStorage.SetOrCreate<boolean>('onCreate', true);
     param.setTextNme(want.action);
   }
@@ -37,7 +37,7 @@ export default class EntryAbility4 extends UIAbility {
     let events = param.getTextNme();
     if (events == 'EntryAbility3') {
       let commonEventData: commonEventManger.CommonEventPublishData = {
-        parameters:{
+        parameters: {
           data: {
             onBackground: onBackground,
             onDestroy: onDestroy,
@@ -46,7 +46,7 @@ export default class EntryAbility4 extends UIAbility {
         }
       };
       commonEventManger.publish(events,commonEventData,(result)=>{
-        hilog.info(0x0000, 'EntryAbility4', `onConnect, 50 == : ${JSON.stringify(result)}`);
+        hilog.info(0x0000, 'EntryAbility4', `onConnect, 50 == ${JSON.stringify(result)}`);
       });
     };
   }
@@ -78,7 +78,7 @@ export default class EntryAbility4 extends UIAbility {
     if (events == 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4300_2') {
       param.setTextNme('EntryAbility3');
       let commonEventData: commonEventManger.CommonEventPublishData = {
-        parameters:{
+        parameters: {
           data: {
             onCreate: onCreate,
             onWindowStageCreate: onWindowStageCreate,
@@ -87,7 +87,7 @@ export default class EntryAbility4 extends UIAbility {
         }
       };
       commonEventManger.publish(events,commonEventData,(result)=>{
-        hilog.info(0x0000, 'EntryAbility4', `onConnect, 50 == : ${JSON.stringify(result)}`);
+        hilog.info(0x0000, 'EntryAbility4', `onConnect, 50 == ${JSON.stringify(result)}`);
       });
     };
     if (events == 'EntryAbility3') {

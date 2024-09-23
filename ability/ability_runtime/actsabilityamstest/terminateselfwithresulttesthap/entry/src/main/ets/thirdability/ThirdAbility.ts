@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 HiHope Open Source Organization
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -30,12 +30,12 @@ export default class ThirdAbility extends UIAbility {
     let onBackground = AppStorage.get<boolean>('onBackground');
     let returnDate = onBackground?true:false;
     let commonEventData: commonEventManger.CommonEventPublishData = {
-      parameters:{
+      parameters: {
         data:returnDate
       }
     };
     commonEventManger.publish('onDestroyCallback',commonEventData,(result)=>{
-      hilog.info(0x0000, 'testTag', `onConnect, 50 == : ${JSON.stringify(result)}`);
+      hilog.info(0x0000, 'testTag', `onConnect, 50 == ${JSON.stringify(result)}`);
     });
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
   }

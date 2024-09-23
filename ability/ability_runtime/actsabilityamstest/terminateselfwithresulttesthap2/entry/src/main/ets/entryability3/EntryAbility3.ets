@@ -24,7 +24,7 @@ let param = new ParamManager();
 export default class EntryAbility3 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onCreate');
-    hilog.info(0x0000, 'EntryAbility3', `want, 50 == : ${JSON.stringify(want)}`);
+    hilog.info(0x0000, 'EntryAbility3', `want, 50 == ${JSON.stringify(want)}`);
     AppStorage.SetOrCreate<boolean>('onCreate', true);
     param.setTextNme(want.action);
   }
@@ -71,7 +71,7 @@ export default class EntryAbility3 extends UIAbility {
           let onWindowStageCreate = AppStorage.get<boolean>('onWindowStageCreate');
           let onForeground = true;
           let commonEventData: commonEventManger.CommonEventPublishData = {
-            parameters:{
+            parameters: {
               data: {
                 onCreate: onCreate,
                 onWindowStageCreate: onWindowStageCreate,
@@ -81,17 +81,17 @@ export default class EntryAbility3 extends UIAbility {
             }
           };
           commonEventManger.publish(events,commonEventData,(result)=>{
-            hilog.info(0x0000, 'EntryAbility3', `startAbilityForResult ok, 50 == : ${JSON.stringify(result)}`);
+            hilog.info(0x0000, 'EntryAbility3', `startAbilityForResult ok, 50 == ${JSON.stringify(result)}`);
             setTimeout(() => {
               this.context.terminateSelf();
             }, 500);
           });
         }).catch((err: BusinessError) => {
-          hilog.info(0x0000, 'EntryAbility3', `startAbilityForResult err, 50 == : ${JSON.stringify(err)}`);
+          hilog.info(0x0000, 'EntryAbility3', `startAbilityForResult err, 50 == ${JSON.stringify(err)}`);
         });
       }, 500)
     } catch (error) {
-      hilog.info(0x0000, 'EntryAbility3', `startAbilityForResult err, 50 == : ${JSON.stringify(error)}`);
+      hilog.info(0x0000, 'EntryAbility3', `startAbilityForResult err, 50 == ${JSON.stringify(error)}`);
     };
   }
 

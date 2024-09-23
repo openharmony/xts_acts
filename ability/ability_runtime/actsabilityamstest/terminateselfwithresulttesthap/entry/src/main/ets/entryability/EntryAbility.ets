@@ -24,17 +24,17 @@ let param = new ParamManager();
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    hilog.info(0x0000, 'testTag', `want, 50 == : ${JSON.stringify(want)}`);
+    hilog.info(0x0000, 'testTag', `want, 50 == ${JSON.stringify(want)}`);
     param.setTextNme(want.action);
     let events = want.action;
     if (events) {
       let commonEventData: commonEventManger.CommonEventPublishData = {
-        parameters:{
+        parameters: {
           data:want
         }
       };
       commonEventManger.publish(events,commonEventData,(result)=>{
-        hilog.info(0x0000, 'testTag', `onConnect, 50 == : ${JSON.stringify(result)}`);
+        hilog.info(0x0000, 'testTag', `onConnect, 50 == ${JSON.stringify(result)}`);
       });
     };
   }
