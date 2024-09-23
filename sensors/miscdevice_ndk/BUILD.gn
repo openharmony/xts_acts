@@ -11,44 +11,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsMiscdeviceNdkTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":acts_sensors_miscdevice_js_assets",
-    ":acts_sensors_miscdevice_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_app_assist_suite("demo_ndk_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsMiscdeviceNdkMainTest"
+
+  # 部件名称，真实数据，需要子系统对应
+  part_name = "miscdevice"
+
+  # 子系统名称，真实数据，需要部件对应
+  subsystem_name = "sensors"
+}
+
+ohos_js_app_suite("ActsMiscdeviceNdkTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsMiscdeviceNdkTest"
-  subsystem_name = "sensors"
+
+  # 部件名称，真实数据，需要子系统对应
   part_name = "miscdevice"
-  shared_libraries = [
-    "./entry/src/main/cpp:vibratorndk",
-    ":libcppsharedso",
-  ]
-}
 
-ohos_prebuilt_shared_library("libcppsharedso") {
-  source = rebase_path(libcxx_ndk_shared_file)
+  # 子系统名称，真实数据，需要部件对应
   subsystem_name = "sensors"
-  part_name = "miscdevice"
-}
-
-ohos_app_scope("acts_sensors_miscdevice_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("acts_sensors_miscdevice_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("acts_sensors_miscdevice_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":acts_sensors_miscdevice_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  deps = [ ":demo_ndk_main" ]
 }
