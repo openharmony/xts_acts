@@ -32,7 +32,7 @@ export default function startArkChildProcess() {
       context = getContext() as common.UIAbilityContext;
       hilog.info(0x0000, 'testTag', '%{public}s',
         `Succeeded in starting SpecifiedAbility11ww11` + JSON.stringify(context));
-      done()
+      done();
     })
     /**
      * @tc.number SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0600
@@ -53,12 +53,13 @@ export default function startArkChildProcess() {
           await childProcessManager.startArkChildProcess('entry_test/./ets/process/DemoProcess.ets', args, options);
         hilog.info(0x0000, 'testTag', '%{public}s', `startChildProcess success, pid: ${pid}`);
         expect().assertFail();
+        done();
       } catch (error) {
         expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
         hilog.info(0x0000, 'testTag', '%{public}s',
           'Test passed: startArkChildProcess returns error 401 when called with null ChildProcessArgs.');
+        done();
       }
-      done();
     });
 
     /**
@@ -80,13 +81,14 @@ export default function startArkChildProcess() {
           await childProcessManager.startArkChildProcess('entry_test/./ets/process/DemoProcess.ets', args, options);
         hilog.info(0x0000, 'testTag', '%{public}s', `startChildProcess success, pid: ${pid}`);
         expect().assertFail();
+        done();
       } catch (error) {
         expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onDestroy');
         hilog.info(0x0000, 'testTag', '%{public}s',
           'Test passed: startArkChildProcess returns error 401 when called with undefined ChildProcessArgs.');
+        done();
       }
-      done()
     });
 
     /**
@@ -113,12 +115,13 @@ export default function startArkChildProcess() {
           await childProcessManager.startArkChildProcess('entry_test/./ets/process/DemoProcess.ets', args, options);
         hilog.info(0x0000, 'testTag', '%{public}s', `startChildProcess success, pid: ${pid}`);
         expect().assertFail();
+        done();
       } catch (error) {
         expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
         hilog.info(0x0000, 'testTag', '%{public}s',
           'Test passed: startArkChildProcess returns error 401 when called with null ChildProcessOptions.');
+        done();
       }
-      done();
     });
 
     /**
@@ -144,12 +147,13 @@ export default function startArkChildProcess() {
         await childProcessManager.startArkChildProcess('entry_test/./ets/process/DemoProcess.ets', args, options);
         hilog.info(0x0000, 'testTag', '%{public}s', 'startChildProcess success');
         expect().assertFail();
+        done();
       } catch (error) {
         expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
         hilog.info(0x0000, 'testTag', '%{public}s',
           'Test passed: startArkChildProcess returns error 401 when called with undefined ChildProcessOptions.');
+        done();
       }
-      done();
     });
     /**
      * @tc.number SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0100
@@ -176,12 +180,13 @@ export default function startArkChildProcess() {
         let pid = await childProcessManager.startArkChildProcess(null, args, options);
         hilog.info(0x0000, 'testTag', '%{public}s', `startChildProcess success pid:${pid}`);
         expect().assertFail();
+        done();
       } catch (error) {
         expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
         hilog.info(0x0000, 'testTag', '%{public}s',
           'Test passed: startArkChildProcess returns error 401 when Child process source file path is null.');
+        done();
       }
-      done();
     });
     /**
      * @tc.number SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0200
@@ -208,12 +213,13 @@ export default function startArkChildProcess() {
         let pid = await childProcessManager.startArkChildProcess(undefined, args, options);
         hilog.info(0x0000, 'testTag', '%{public}s', `startChildProcess success, pid: ${pid}`);
         expect().assertFail();
+        done();
       } catch (error) {
         expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
         hilog.info(0x0000, 'testTag', '%{public}s',
           'Test passed: startArkChildProcess returns error 401 when Child process source file path is undefined.');
+        done();
       }
-      done();
     });
     /**
      * @tc.number SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0300
@@ -240,12 +246,13 @@ export default function startArkChildProcess() {
         let pid = await childProcessManager.startArkChildProcess('', args, options);
         hilog.info(0x0000, 'testTag', '%{public}s', `startChildProcess success, pid: ${pid}`);
         expect().assertFail();
+        done();
       } catch (error) {
         expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
         hilog.info(0x0000, 'testTag', '%{public}s',
           'Test passed: startArkChildProcess returns error 401  when Child process source file path is empty.');
+        done();
       }
-      done();
     });
   });
 }
