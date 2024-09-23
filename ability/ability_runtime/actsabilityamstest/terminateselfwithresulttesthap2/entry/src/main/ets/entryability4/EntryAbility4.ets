@@ -78,7 +78,7 @@ export default class EntryAbility4 extends UIAbility {
       }, 500)
     } catch (error) {
       hilog.info(0x0000, 'EntryAbility4', `startAbilityForResult err, 50 == ${JSON.stringify(error)}`);
-    };
+    }
   }
 
   onBackground(): void {

@@ -35,7 +35,6 @@ export default class EntryAbility3 extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onWindowStageCreate');
-
     AppStorage.SetOrCreate<boolean>('onWindowStageCreate', true);
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
@@ -53,7 +52,6 @@ export default class EntryAbility3 extends UIAbility {
   onForeground(): void {
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onForeground');
     let events = param.getTextNme();
-
     if (events == '') {
       return;
     };
@@ -63,7 +61,6 @@ export default class EntryAbility3 extends UIAbility {
       abilityName: 'EntryAbility4',
       action: 'EntryAbility3'
     };
-
     try {
       setTimeout(() => {
         this.context.startAbilityForResult(want).then((result: common.AbilityResult) => {
@@ -92,7 +89,7 @@ export default class EntryAbility3 extends UIAbility {
       }, 500)
     } catch (error) {
       hilog.info(0x0000, 'EntryAbility3', `startAbilityForResult err, 50 == ${JSON.stringify(error)}`);
-    };
+    }
   }
 
   onBackground(): void {

@@ -61,7 +61,6 @@ export default class MainAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'MainAbility', '%{public}s', 'Ability onWindowStageCreate');
-
     AppStorage.SetOrCreate<boolean>('onWindowStageCreate', true);
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
@@ -83,7 +82,6 @@ export default class MainAbility extends UIAbility {
     hilog.info(0x0000, 'MainAbility', '%{public}s', 'Ability onForeground');
     AppStorage.SetOrCreate<boolean>('onForeground', true);
     let events = param.getTextNme();
-
     let isStart = AppStorage.get<boolean>('isStart');
     if (isStart) {
       return;
