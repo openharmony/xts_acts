@@ -19,8 +19,8 @@ import DeleteJavaScriptRegisterUnitTest from './webViewDeleteJavaScriptRegister.
 import abilityTest from './Ability.test'
 
 export default function testsuite() {
-  hasGesture()
   abilityTest()
+  hasGesture()
   DeleteJavaScriptRegisterUnitTest()
   ActsAceRegisterJavaScriptProxy()
 }
