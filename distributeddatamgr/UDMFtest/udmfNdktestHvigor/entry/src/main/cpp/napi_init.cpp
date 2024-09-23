@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #include "napi/native_api.h"
 #include "database/udmf/udmf.h"
 #include "database/udmf/udmf_err_code.h"
@@ -61,7 +75,7 @@ static napi_value OH_UdmfData_GetPrimaryPlainText_0006(napi_env env, napi_callba
 {
     OH_UdmfData *data = OH_UdmfData_Create();
     OH_UdsHtml *html = OH_UdsHtml_Create();
-     OH_UdsPlainText *plainTextOutput = OH_UdsPlainText_Create();
+    OH_UdsPlainText *plainTextOutput = OH_UdsPlainText_Create();
     OH_UdsHtml_SetContent(html, "<p>Hello world</p>");
     OH_UdmfRecord *record = OH_UdmfRecord_Create();
     OH_UdmfRecord_AddHtml(record, html);
@@ -214,9 +228,9 @@ static napi_value OH_UdmfData_GetRecordCount005(napi_env env, napi_callback_info
     OH_UdmfData_AddRecord(data, record);
     OH_UdmfData_AddRecord(data, record2);
     int result = OH_UdmfData_GetRecordCount(data);
-    
+    int num = 2;
     napi_value returnCode;
-    napi_create_int32(env, result == 2, &returnCode);
+    napi_create_int32(env, result == num, &returnCode);
     OH_UdmfRecord_Destroy(record);
     OH_UdmfRecord_Destroy(record2);
     OH_UdmfData_Destroy(data);
@@ -281,7 +295,7 @@ static napi_value OH_UdmfData_GetRecord007(napi_env env, napi_callback_info info
     OH_UdmfRecord* record = OH_UdmfRecord_Create();
     OH_UdmfData_AddRecord(data, record);
     int result1 = OH_UdmfData_GetRecordCount(data);
-    OH_UdmfRecord *result = OH_UdmfData_GetRecord(data, 0); 
+    OH_UdmfRecord *result = OH_UdmfData_GetRecord(data, 0);
     napi_value returnCode;
     napi_create_int32(env, result1 == 1 && result != nullptr, &returnCode);
     OH_UdmfRecord_Destroy(record);
@@ -320,62 +334,73 @@ static napi_value OH_UdmfData_GetRecord009(napi_env env, napi_callback_info info
     auto content = OH_UdsPlainText_GetContent(plainText2);
 
     napi_value returnCode;
-    napi_create_int32(env, strcmp(content, helloWorld) == 0 && result != nullptr, &returnCode);
+    napi_create_int32(env, strcmp(content, helloWorld) == 0 &&
+     result != nullptr, &returnCode);
     OH_UdmfRecord_Destroy(record);
     OH_UdmfData_Destroy(data);
     OH_UdsPlainText_Destroy(plainText);
     OH_UdsPlainText_Destroy(plainText2);
     return returnCode;
-
 }
 
 static napi_value OH_UdmfData_GetRecord010(napi_env env, napi_callback_info info)
 {
+    const char *helloWorld = "Hello world";
     const char *helloWorld2 = "Hello world2";
-    
-    OH_UdmfData *data = OH_UdmfData_Create();
+
+    OH_UdmfData *data3 = OH_UdmfData_Create();
     OH_UdsPlainText *plainText = OH_UdsPlainText_Create();
-    OH_UdsPlainText_SetContent(plainText, helloWorld2);
+    OH_UdsPlainText_SetContent(plainText, helloWorld);
     OH_UdmfRecord* record = OH_UdmfRecord_Create();
-    OH_UdmfRecord* record2 = OH_UdmfRecord_Create();
-    OH_UdmfRecord_AddPlainText(record2, plainText);
-    OH_UdmfData_AddRecord(data, record);
-    OH_UdmfData_AddRecord(data, record2);
-    OH_UdmfRecord *result1 = OH_UdmfData_GetRecord(data, -1);
-
-    // OH_UdmfRecord *result2 = OH_UdmfData_GetRecord(data, 2);
-
-    // OH_UdmfRecord *result3 = OH_UdmfData_GetRecord(data, 0);
- 
-    OH_UdsPlainText *plainText1 = OH_UdsPlainText_Create();
-    // OH_UdmfRecord_GetPlainText(result3, plainText1);
-    // auto content2 = OH_UdsPlainText_GetContent(plainText1);
-
-    // OH_UdmfRecord *result4 = OH_UdmfData_GetRecord(data, 1);
-
+    OH_UdmfRecord_AddPlainText(record, plainText);
+    OH_UdmfData_AddRecord(data3, record);
+    OH_UdmfRecord *result9 = OH_UdmfData_GetRecord(data3, 0);
+    // EXPECT_NE(result9, nullptr);
     OH_UdsPlainText *plainText2 = OH_UdsPlainText_Create();
-    // OH_UdmfRecord_GetPlainText(result4, plainText2);
-    // auto content3 = OH_UdsPlainText_GetContent(plainText2);
+    OH_UdmfRecord_GetPlainText(result9, plainText2);
+    auto content = OH_UdsPlainText_GetContent(plainText2);
+    // EXPECT_EQ(strcmp(content, helloWorld), 0);
 
+    OH_UdmfData *data4 = OH_UdmfData_Create();
+    OH_UdsPlainText *plainText3 = OH_UdsPlainText_Create();
+    OH_UdsPlainText_SetContent(plainText3, helloWorld2);
+    OH_UdmfRecord* record2 = OH_UdmfRecord_Create();
+    OH_UdmfRecord_AddPlainText(record2, plainText3);
+    OH_UdmfData_AddRecord(data4, record);
+    OH_UdmfData_AddRecord(data4, record2);
+    OH_UdmfRecord *result10 = OH_UdmfData_GetRecord(data4, -1);
+    OH_UdmfRecord *result11 = OH_UdmfData_GetRecord(data4, 2);
+    OH_UdmfRecord *result12 = OH_UdmfData_GetRecord(data4, 0);
+    OH_UdsPlainText *plainText4 = OH_UdsPlainText_Create();
+    OH_UdmfRecord_GetPlainText(result12, plainText4);
+    auto content2 = OH_UdsPlainText_GetContent(plainText4);
+    OH_UdmfRecord *result13 = OH_UdmfData_GetRecord(data4, 1);
+    OH_UdsPlainText *plainText5 = OH_UdsPlainText_Create();
+    OH_UdmfRecord_GetPlainText(result13, plainText5);
+    auto content3 = OH_UdsPlainText_GetContent(plainText5);
 
     napi_value returnCode;
-    napi_create_int32(env,  result1 == nullptr, &returnCode);
+    napi_create_int32(env,  result9 != nullptr && strcmp(content, helloWorld) == PARAM_0
+     && result10 == nullptr && result11 == nullptr && result12 != nullptr
+     && strcmp(content2, helloWorld) == PARAM_0 && result13 != nullptr
+     && strcmp(content2, helloWorld) == PARAM_0 &&
+     strcmp(content3, helloWorld2) == PARAM_0, 
+     &returnCode);
     OH_UdmfRecord_Destroy(record);
     OH_UdmfRecord_Destroy(record2);
-    OH_UdmfData_Destroy(data);
-    OH_UdsPlainText_Destroy(plainText);
-    OH_UdsPlainText_Destroy(plainText2);
-    OH_UdsPlainText_Destroy(plainText1);
+    OH_UdmfData_Destroy(data4);
+    OH_UdsPlainText_Destroy(plainText3);
+    OH_UdsPlainText_Destroy(plainText4);
+    OH_UdsPlainText_Destroy(plainText5);
     return returnCode;
 }
+
 
 static napi_value OH_UdmfData_IsLocal001(napi_env env, napi_callback_info info)
 {
     bool result = OH_UdmfData_IsLocal(nullptr);
-
     napi_value returnCode;
     napi_create_int32(env, result == true, &returnCode);
-
     return returnCode;
 }
 
@@ -383,7 +408,6 @@ static napi_value OH_UdmfData_IsLocal003(napi_env env, napi_callback_info info)
 {
     OH_UdmfData *data = OH_UdmfData_Create();
     bool result = OH_UdmfData_IsLocal(data);
-
     napi_value returnCode;
     napi_create_int32(env, result == true, &returnCode);
     OH_UdmfData_Destroy(data );
@@ -589,7 +613,8 @@ static napi_value OH_UdsArrayBuffer_GetData001(napi_env env, napi_callback_info 
     int ret = OH_UdsArrayBuffer_GetData(buffer, &getData, &getLen);
 
     napi_value returnCode;
-    napi_create_int32(env, ret == UDMF_E_OK && getLen == len && CheckUnsignedChar(data, getData, getLen) == true, &returnCode);
+    napi_create_int32(env, ret == UDMF_E_OK && getLen == len &&
+     CheckUnsignedChar(data, getData, getLen) == true, &returnCode);
     OH_UdsArrayBuffer_Destroy(buffer);
     return returnCode;
 }
@@ -670,8 +695,10 @@ static napi_value OH_UdmfRecord_GetPixelMap001(napi_env env, napi_callback_info 
     }
     OH_Pixelmap_InitializationOptions *createOpts;
     OH_PixelmapInitializationOptions_Create(&createOpts);
-    OH_PixelmapInitializationOptions_SetWidth(createOpts, 6);
-    OH_PixelmapInitializationOptions_SetHeight(createOpts, 4);
+    int width = 6;
+    OH_PixelmapInitializationOptions_SetWidth(createOpts, width);
+    int height = 4;
+    OH_PixelmapInitializationOptions_SetHeight(createOpts, height);
     OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_RGBA_8888);
     OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNKNOWN);
 
