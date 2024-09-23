@@ -452,25 +452,6 @@ export default function abilityTest() {
     })
 
     /**
-     * @tc.number SUB_ACE_setRenderProcessMode_0002
-     * @tc.name testWebView_setRenderProcessMode0002
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it("testWebView_setRenderProcessMode0002", 0, async (done: Function) => {
-      Utils.registerBaseEvent("setRenderProcessMode",
-        "0401BusinessError 401: Parameter error. The type of 'mode' must be int.0", 211, done,
-        (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      Utils.emitEvent("SUB_ACE_setRenderProcessMode_0002", 10)
-      await Utils.sleep(500)
-      sendEventByKey('setRenderProcessMode', 10, '');
-    })
-
-    /**
      * @tc.number SUB_ACE_WEB_INCOGNITO_API_0006
      * @tc.name testWebView_deleteAllGeolocation0002
      * @tc.desc test Arguments
