@@ -18,7 +18,7 @@ import { NodeController, FrameNode, ComponentContent, typeNode } from '@kit.ArkU
 import common from '@ohos.app.ability.common';
 
 class Params {
-   text: string = ""
+  public text: string = ""
   public fontColor: ResourceColor = Color.Red
   public fontSize: string | number = 16
   public fontWeight: number | FontWeight | string = FontWeight.Normal
