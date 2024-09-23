@@ -128,8 +128,13 @@
     "MainAbility/pages/gesture/PanGestureTest",
     "MainAbility/pages/gesture/PinchGestureTest",
     "MainAbility/pages/gesture/RotateGestureTest",
-    "MainAbility/pages/gesture/SwipeGestureTest"
-    
+    "MainAbility/pages/gesture/SwipeGestureTest",
+    "MainAbility/pages/animation/TestKeyframeRegisterOnFinish",
+    "MainAbility/pages/animation/TestKeyframeRegisterOnEvent",
+    "MainAbility/pages/animation/TestAnimatorRegisterOnFrame",
+    "MainAbility/pages/animation/TestAnimatorRegisterOnFinish",
+    "MainAbility/pages/animation/TestAnimatorRegisterOnCancel",
+    "MainAbility/pages/animation/TestAnimatorRegisterOnRepeat"
 
   ]
 }

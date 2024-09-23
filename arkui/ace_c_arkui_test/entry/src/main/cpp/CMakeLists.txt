@@ -106,6 +106,7 @@ add_library(nativerender SHARED
     text/text_CustomSpan_test.cpp
     system/system_ColorFontChange_test.cpp
     text/text_imageSpan_test.cpp
+    animation/animator_event_test.cpp
 )
 
 add_library(nativefunc SHARED

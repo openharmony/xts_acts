@@ -608,6 +608,7 @@ import DragSetNodeDragPreviewTest from "./drag/DragSetNodeDragPreview.test"
 import DragDragPreviewOptionTest from "./drag/DragDragPreviewOption.test"
 import DragDragActionTest from "./drag/DragDragAction.test"
 import SystemColorFontChangeTest from "./system/SystemColorFontChange.test"
+import animatorEventTest from "./animation/AnimatorEventTest.test"
 import textCustomSpanTest from "./text/TextCustomSpan.test"
 import textImageSpanTest from "./text/TextImageSpan.test"
 
@@ -1207,6 +1208,7 @@ export default function testsuite() {
   DragDragPreviewOptionTest()
   DragDragActionTest()
   SystemColorFontChangeTest()
+  animatorEventTest()
   textCustomSpanTest()
   textImageSpanTest()
 }
