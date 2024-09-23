@@ -7366,7 +7366,6 @@ export default function UDMFApiDescriptorTest() {
       try {
         let result = UTD.getUniformDataTypesByFilenameExtension(".xls");
         console.log("result=====>" + JSON.stringify(result));
-        // expect(result == UTD.UniformDataType.EXCEL).assertEqual(true);
         expect(result[0]).assertEqual(UTD.UniformDataType.EXCEL)
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
