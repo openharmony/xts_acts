@@ -53,11 +53,11 @@ export default function ActsAceWebViewObjectEmbed() {
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_API_0001
-     *@tc.name testWebViewObjectEmbed
+     *@tc.name testWebViewObjectEmbed01
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbed01', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbed01"
@@ -70,11 +70,11 @@ export default function ActsAceWebViewObjectEmbed() {
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_API_0004
-     *@tc.name testWebViewObjectEmbed
+     *@tc.name testWebViewObjectEmbed04
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbed04', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbed04"
@@ -84,12 +84,12 @@ export default function ActsAceWebViewObjectEmbed() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0004
-     *@tc.name testWebViewObjectEmbed
+     *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0001
+     *@tc.name testWebViewObjectEmbedGesture01
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedGesture01', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedGesture01"
@@ -98,12 +98,12 @@ export default function ActsAceWebViewObjectEmbed() {
       sendEventByKey('webViewObjectEmbedButton', 10, '');
     })
     /*
-     *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0004
-     *@tc.name testWebViewObjectEmbed
+     *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0002
+     *@tc.name testWebViewObjectEmbedGesture02
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedGesture02', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedGesture02"
@@ -112,12 +112,12 @@ export default function ActsAceWebViewObjectEmbed() {
       sendEventByKey('webViewObjectEmbedButton', 10, '');
     })
     /*
-     *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0004
-     *@tc.name testWebViewObjectEmbed
+     *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0003
+     *@tc.name testWebViewObjectEmbedGesture03
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedGesture03', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedGesture03"

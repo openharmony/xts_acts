@@ -53,11 +53,11 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0014
-     *@tc.name testWebViewObjectEmbed
+     *@tc.name testWebViewObjectEmbedAbc
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedAbc', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedAbc"
@@ -67,12 +67,12 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_OBJECTEMBED_API_0001
-     *@tc.name testWebViewObjectEmbed
+     *@tc.number SUB_ACE_WEB_OBJECTEMBED_API_0005
+     *@tc.name testWebViewObjectEmbedId
      *@tc.desc test objectEmbedId
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedId', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedId"
@@ -83,11 +83,11 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_API_0002
-     *@tc.name testWebViewObjectEmbed
+     *@tc.name testWebViewObjectEmbedType
      *@tc.desc test objectEmbedType
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedType', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedType"
@@ -98,11 +98,11 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_API_0003
-     *@tc.name testWebViewObjectEmbed
+     *@tc.name testWebViewObjectEmbedSrc
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedSrc', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedSrc"
@@ -112,12 +112,12 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_OBJECTEMBED_API_0004
-     *@tc.name testWebViewObjectEmbed
+     *@tc.number SUB_ACE_WEB_OBJECTEMBED_ENHANCE_API_0004
+     *@tc.name testWebViewObjectEmbedWidth
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedWidth', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedWidth"
@@ -128,11 +128,11 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0005
-     *@tc.name testWebViewObjectEmbed
+     *@tc.name testWebViewObjectEmbedHeight
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedHeight', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedHeight"
@@ -143,11 +143,11 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0006
-     *@tc.name testWebViewObjectEmbed
+     *@tc.name testWebViewObjectEmbedTagEmbed
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedTagEmbed', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedTagEmbed"
@@ -158,11 +158,11 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0007
-     *@tc.name testWebViewObjectEmbed
+     *@tc.name testWebViewObjectEmbedTagObject
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedTagObject', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedTagObject"
@@ -173,11 +173,11 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0008
-     *@tc.name testWebViewObjectEmbed
+     *@tc.name testWebViewObjectEmbedPosition
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedPosition', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedPosition"
@@ -188,11 +188,11 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0009
-     *@tc.name testWebViewObjectEmbed
+     *@tc.name testWebViewObjectEmbedUrl
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedUrl', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedUrl"
@@ -203,11 +203,11 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0010
-     *@tc.name testWebViewObjectEmbed
+     *@tc.name testWebViewObjectEmbedParams
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedParams', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedParams"
@@ -218,11 +218,11 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0011
-     *@tc.name testWebViewObjectEmbed
+     *@tc.name testWebViewObjectEmbedHasParams
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedHasParams', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedHasParams"
@@ -233,11 +233,11 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0012
-     *@tc.name testWebViewObjectEmbed
+     *@tc.name testWebViewObjectEmbedTest
      *@tc.desc test objectEmbed
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectEmbedTest', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedTest"

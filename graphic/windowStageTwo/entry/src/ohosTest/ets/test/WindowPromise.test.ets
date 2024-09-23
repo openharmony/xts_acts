@@ -493,9 +493,14 @@ export default function windowPromiseTest() {
         expect(true).assertTrue();
         done();
       } catch (error) {
-        console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
-        expect().assertFail();
-        done();
+        if (error.code === 801) {
+          console.info(`${msgStr} The current device type does not support to windowRectChange`);
+          done();
+        } else {
+          console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
       }
     })
 
@@ -524,9 +529,14 @@ export default function windowPromiseTest() {
         expect(true).assertTrue();
         done();
       } catch (error) {
-        console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
-        expect().assertFail();
-        done();
+        if (error.code === 801) {
+          console.info(`${msgStr} The current device type does not support to windowRectChange`);
+          done();
+        } else {
+          console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
       }
     })
 
@@ -606,9 +616,14 @@ it("testRectChangeOptions_on_resize", 0, async (done:Function) => {
       }
     });
   } catch (error) {
-    console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
-    expect().assertFail();
-    done();
+    if (error.code === 801) {
+      console.info(`${msgStr} The current device type does not support to windowRectChange`);
+      done();
+    } else {
+      console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
   }
 })
 /**
@@ -654,9 +669,14 @@ it("testRectChangeOptions_on_moveWindowTo", 0, async (done:Function) => {
       }
     });
   } catch (error) {
-    console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
-    expect().assertFail();
-    done();
+    if (error.code === 801) {
+      console.info(`${msgStr} The current device type does not support to windowRectChange`);
+      done();
+    } else {
+      console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
   }
 })
 /**
@@ -710,9 +730,14 @@ it("testRectChangeOptions_on_TwoCallback", 0, async (done:Function) => {
       }
     });
   } catch (error) {
-    console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
-    expect().assertFail();
-    done();
+    if (error.code === 801) {
+      console.info(`${msgStr} The current device type does not support to windowRectChange`);
+      done();
+    } else {
+      console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
   }
 })
 /**
@@ -767,9 +792,14 @@ it("testRectChangeOptions_off_callback1", 0, async (done:Function) => {
       }
     });
   } catch (error) {
-    console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
-    expect().assertFail();
-    done();
+    if (error.code === 801) {
+      console.info(`${msgStr} The current device type does not support to windowRectChange`);
+      done();
+    } else {
+      console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
   }
 })
 /**
@@ -824,9 +854,14 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
       }
     });
   } catch (error) {
-    console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
-    expect().assertFail();
-    done();
+    if (error.code === 801) {
+      console.info(`${msgStr} The current device type does not support to windowRectChange`);
+      done();
+    } else {
+      console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
   }
 })
     /**
@@ -1073,9 +1108,14 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
         expect(true).assertTrue();
         done();
       } catch (error) {
-        console.log(msgStr + 'Failed to on_windowRectChange' + JSON.stringify(error.code) + error.message);
-        expect(false).assertTrue();
-        done();
+        if (error.code === 801) {
+          console.info(`${msgStr} The current device type does not support to windowRectChange`);
+          done();
+        } else {
+          console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
       }
     })
 

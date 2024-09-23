@@ -21,7 +21,6 @@ group("resourceschedule_standard") {
       "backgroundtaskmanager_nop:resourceschedule_backgroundtaskmanager_ets_nop_test",
       "deviceusagestatisticsjsunit:resourceschedule_deviceusagestatisticsjsunit_js_test",
       "ffrt:resourceschedule_ffrt_js_test",
-      "ffrtndktest:ActsFfrtNdkTest",
       "qos_manager:ActsQoSCAPITest",
       "reminderagent:resourceschedule_reminderagent_js_test",
       "reminderagentManager:resourceschedule_reminderagentmgr_js_test",

@@ -71,13 +71,13 @@ export default function ActsAceWebviewEnableBackForwardCache() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEBVIEW_ENABLEBACKFORWARDCACHE_API_0001
-     *@tc.name testWebviewEnableBackForwardCache
-     *@tc.desc test webviewEnableBackForwardCache
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
+    * @tc.number      : SUB_ACE_WEBVIEW_ENABLEBACKFORWARDCACHE_API_0001
+    * @tc.name        : testWebviewEnableBackForwardCache
+    * @tc.desc        : test webviewEnableBackForwardCache
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 0
+    */  
     it('testWebviewEnableBackForwardCache', 0, async (done: Function) => {
       emitKey = "emitWebviewEnableBackForwardCache"
       Utils.emitEvent(emitKey, 10);
@@ -87,14 +87,15 @@ export default function ActsAceWebviewEnableBackForwardCache() {
       sendEventByKey('webviewEnableBackForwardCacheButton', 10, '');
     })
 
+
     /*
-     *@tc.number SUB_ACE_WEBVIEW_ENABLEBACKFORWARDCACHE_API_0002
-     *@tc.name testWebviewBFCacheNativeEmbed
-     *@tc.desc test webviewBFCacheNativeEmbed
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
+    * @tc.number      : SUB_ACE_WEBVIEW_ENABLEBACKFORWARDCACHE_API_0002
+    * @tc.name        : testWebviewBFCacheNativeEmbed
+    * @tc.desc        : test webviewBFCacheNativeEmbed
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 0
+    */  
     it('testWebviewBFCacheNativeEmbed', 0, async (done: Function) => {
       emitKey = "emitWebviewBFCacheNativeEmbed"
       Utils.emitEvent(emitKey, 10);
@@ -104,14 +105,15 @@ export default function ActsAceWebviewEnableBackForwardCache() {
       sendEventByKey('webviewEnableBackForwardCacheButton', 10, '');
     })
 
+
     /*
-     *@tc.number SUB_ACE_WEBVIEW_ENABLEBACKFORWARDCACHE_API_0003
-     *@tc.name testWebviewBFCacheMediaTakeOver
-     *@tc.desc test webviewBFCacheMediaTakeOver
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
+    * @tc.number      : SUB_ACE_WEBVIEW_ENABLEBACKFORWARDCACHE_API_0003
+    * @tc.name        : testWebviewBFCacheMediaTakeOver
+    * @tc.desc        : test webviewBFCacheMediaTakeOver
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 0
+    */  
     it('testWebviewBFCacheMediaTakeOver', 0, async (done: Function) => {
       emitKey = "emitWebviewBFCacheMediaTakeOver"
       Utils.emitEvent(emitKey, 10);

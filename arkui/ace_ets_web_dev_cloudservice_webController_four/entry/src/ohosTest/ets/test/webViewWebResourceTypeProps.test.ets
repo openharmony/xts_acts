@@ -76,7 +76,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.desc test webResourceType MAIN_FRAME
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebView_webResourceType_MAIN_FRAME', 0, async (done: Function) => {
         emitKey = "emitWebView_webResourceType_MAIN_FRAME"
@@ -91,7 +91,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.desc test webResourceType SUB_FRAME
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebView_webResourceType_SUB_FRAME', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_SUB_FRAME"
@@ -106,7 +106,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.desc test webResourceType STYLE_SHEET
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebView_webResourceType_STYLE_SHEET', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_STYLE_SHEET"
@@ -121,7 +121,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.desc test webResourceType SCRIPT
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebView_webResourceType_SCRIPT', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_SCRIPT"
@@ -136,7 +136,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.desc test webResourceType IMAGE
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebView_webResourceType_IMAGE', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_IMAGE"
@@ -151,7 +151,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.desc test webResourceType FONT_RESOURCE
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebView_webResourceType_FONT_RESOURCE', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_FONT_RESOURCE"
@@ -161,12 +161,12 @@ export default function ActsAceWebViewWebResourceTypeProps() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_webResourceType_MEDIA_0001
+     *@tc.number SUB_ACE_WEB_webResourceType_OBJECT_0001
      *@tc.name testWebView_webResourceType_OBJECT
      *@tc.desc test webResourceType OBJECT
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebView_webResourceType_OBJECT', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_OBJECT"
@@ -181,7 +181,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.desc test webResourceType MEDIA
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebView_webResourceType_MEDIA', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_MEDIA"
@@ -196,7 +196,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.desc test webResourceType WORKER
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebView_webResourceType_WORKER', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_WORKER"
@@ -211,7 +211,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.desc test webResourceType SHARED_WORKER
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebView_webResourceType_SHARED_WORKER', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_SHARED_WORKER"
@@ -221,12 +221,12 @@ export default function ActsAceWebViewWebResourceTypeProps() {
     })
 
     /*
-     *@tc.number SUB_ACE_WEB_webResourceType_FAVICON_0001
+     *@tc.number SUB_ACE_WEB_webResourceType_PREFETCH_0001
      *@tc.name testWebView_webResourceType_PREFETCH
      *@tc.desc test webResourceType PREFETCH
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebView_webResourceType_PREFETCH', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_PREFETCH"
@@ -241,7 +241,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.desc test webResourceType FAVICON
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebView_webResourceType_FAVICON', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_FAVICON"
@@ -250,12 +250,12 @@ export default function ActsAceWebViewWebResourceTypeProps() {
       sendEventByKey('webViewWebResourceTypeProps', 10, '');
     })
     /*
-     *@tc.number SUB_ACE_WEB_webResourceType_PING_0001
+     *@tc.number SUB_ACE_WEB_webResourceType_XHR_0001
      *@tc.name testWebView_webResourceType_XHR
      *@tc.desc test webResourceType XHR
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebView_webResourceType_XHR', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_XHR"
@@ -269,7 +269,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.desc test webResourceType PING
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebView_webResourceType_PING', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_PING"
@@ -284,7 +284,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.desc test webResourceType CSP_REPORT
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebView_webResourceType_CSP_REPORT', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_CSP_REPORT"
@@ -299,7 +299,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.desc test webResourceType Other_Props
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebView_webResourceType_Other_Props', 0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_Other_Props"

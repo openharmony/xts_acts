@@ -27,13 +27,16 @@ const START_ABILITY_TIMEOUT_TWO_THOUSAND = 2000;
 
 export default function BackgroundCallback() {
   describe("BackgroundCallback", () => {
-    beforeEach(() => {
+    beforeEach((done) => {
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       abilityDelegator.startAbility({
         abilityName: "MainAbility",
         bundleName: "com.example.crossplatformcallback",
         moduleName: "entry",
       });
+      setTimeout(() => {
+        done();
+      }, START_ABILITY_TIMEOUT_TWO_THOUSAND);
     });
 
     /**

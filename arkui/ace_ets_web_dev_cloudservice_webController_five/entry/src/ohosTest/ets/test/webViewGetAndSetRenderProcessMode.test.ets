@@ -53,11 +53,11 @@ export default function ActsAceWebViewGetAndSetRenderProcessMode() {
 
     /*
      *@tc.number SUB_ACE_WEB_GETAndSetRENDERPROCESSMODE_API_0001
-     *@tc.name testWebViewGetAndSetRenderProcessMode
+     *@tc.name testWebViewGetAndSetRenderProcessMode01
      *@tc.desc test getRenderProcessMode
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewGetAndSetRenderProcessMode01', 0, async (done: Function) => {
         emitKey = "emitWebViewGetAndSetRenderProcessMode01"
@@ -67,11 +67,11 @@ export default function ActsAceWebViewGetAndSetRenderProcessMode() {
     })
     /*
      *@tc.number SUB_ACE_WEB_GETAndSetRENDERPROCESSMODE_API_0002
-     *@tc.name testWebViewGetAndSetRenderProcessMode
+     *@tc.name testWebViewGetAndSetRenderProcessMode02
      *@tc.desc test setRenderProcessMode
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebViewGetAndSetRenderProcessMode02', 0, async (done: Function) => {
       emitKey = "emitWebViewGetAndSetRenderProcessMode02"
