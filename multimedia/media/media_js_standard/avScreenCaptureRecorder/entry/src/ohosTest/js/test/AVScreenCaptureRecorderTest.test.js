@@ -14,8 +14,11 @@
  */
 
 import media from '@ohos.multimedia.media'
+import {Component, Driver, ON } from '@ohos.UiTest';
 import * as mediaTestBase from '../../../../../../MediaTestBase.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+
+const driver = Driver.create();
 
 export default function avScreenCaptureTest() {
     describe('avScreenCaptureTest', function () {
@@ -170,6 +173,8 @@ export default function avScreenCaptureTest() {
 
             avScreenCaptureRecorder.startRecording().then(() => {
                 console.info('avScreenCaptureRecorder start success');
+                btn = driver.waitForComponent(ON.text("允许"), 2000);
+                btn.click();
                 toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
             }).catch((err) => {
                 console.info('avScreenCaptureRecorder start failed, error: ' + err.message);
