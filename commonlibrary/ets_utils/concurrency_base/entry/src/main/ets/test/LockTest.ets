@@ -902,3 +902,21 @@ export async function setDelayRequestAndCloseWorkerInstantlyTest() {
   });
   return check('setDelayRequestAndCloseWorkerInstantlyTest', Promise.all([p, p0]));
 }
+
+function promiseLockAsync() {
+  let lock = new utils.locks.AsyncLock;
+  return lock.lockAsync(async () => {
+    await new Promise<void>(resolve => setTimeout(resolve, 1000));
+  })
+}
+
+declare class ArkTools {
+  static forceFullGC(): void
+}
+
+// test entry point
+export async function gcAfterLockAsyncTest() {
+  let p = promiseLockAsync();
+  ArkTools.forceFullGC();
+  return check('gcAfterLockAsyncTest', p);
+}
