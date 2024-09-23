@@ -41,6 +41,7 @@
     "pages/ArkUI/ImageAnimator",
     "pages/ArkUI/TextPickerDialog",
     "pages/ArkUI/Refresh",
+    "pages/ArkUI/AccessBilityHover",
     "pages/Camera/Camera_index",
     "pages/Camera/CameraPreviewFormat",
     "pages/Camera/CameraPhotoFormat",
