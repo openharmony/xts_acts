@@ -13,25 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsHiDebugTest") {
-  hap_profile = "./src/main/config.json"
-  deps = [
-    ":hidebug_js_assets",
-    ":hidebug_js_resources",
-  ]
-
-  #ets2abc = true
+ohos_js_app_suite("ActsHiDebugTest") {
+  test_hap = true
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsHiDebugTest"
-  part_name = "hiprofiler"
   subsystem_name = "developtools"
-}
-ohos_js_assets("hidebug_js_assets") {
-  js2abc = true
-  hap_profile = "./src/main/config.json"
-  source_dir = "./src/main/js"
-}
-ohos_resources("hidebug_js_resources") {
-  sources = [ "./src/main/resources" ]
-  hap_profile = "./src/main/config.json"
+  part_name = "hiprofiler"
 }

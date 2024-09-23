@@ -37,3 +37,6 @@ export const startAppTraceCapture: (a: number, b: number, c: number) => number;
 export const getAppTraceCaptureFile: (a: number, b: number, c: number) => string;
 export const startAppTraceCaptureTag: () => number;
 export const stopAppTraceCapture: () => number;
+export const getGraphicsMemory: () => number;
+export const getGraphicsMemoryNULL: () => number;
+export const getGraphicsMemoryArray: () => number;
