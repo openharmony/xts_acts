@@ -56,7 +56,7 @@ export default class TestAbility extends UIAbility {
 
   onForeground() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onForeground');
-    AppStorage.SetOrCreate<boolean>('TestAbilityOnForeground',true);
+    AppStorage.SetOrCreate<boolean>('TestAbilityOnForeground', true);
   }
 
   onBackground() {

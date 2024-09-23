@@ -1483,7 +1483,7 @@ export default function abilityTest() {
       let reburnNumber = 0;
       let event = TEST_CASE_NAME;
       let event2 = TEST_CASE_NAME + '_2';
-      AppStorage.SetOrCreate<boolean>('TestAbilityOnForeground',false);
+      AppStorage.SetOrCreate<boolean>('TestAbilityOnForeground', false);
       let resultDate: common.AbilityResult = {"resultCode": -1,
         "want": {"deviceId": "", "bundleName": "", "abilityName": "", "moduleName": "", "uri": "", "type": "", "flags": 0, "action": "", "parameters": {}, "entities": []}};
 
