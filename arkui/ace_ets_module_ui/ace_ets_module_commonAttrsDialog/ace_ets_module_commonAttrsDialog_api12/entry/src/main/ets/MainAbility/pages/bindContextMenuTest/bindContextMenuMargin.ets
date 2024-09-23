@@ -16,19 +16,19 @@
 @Entry
 @Component
 struct bindContextMenuMargin {
-  private iconStr: ResourceStr = $r("app.media.icon")
+  private iconStr: ResourceStr = $r('app.media.icon')
   @State isShown: boolean = false
 
 
   @Builder
-  MyMenu() {
-    Menu() {
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
+  MyMenu(){
+    Menu(){
+      MenuItem({ startIcon: this.iconStr, content: '菜单选项'})
+      MenuItem({ startIcon: this.iconStr, content: '菜单选项'})
+      MenuItem({ startIcon: this.iconStr, content: '菜单选项'})
     }
   }
-  build() {
+  build(){
     Column({ space: 50 }) {
       Column() {
         Text('bindContextMenuMargin')
