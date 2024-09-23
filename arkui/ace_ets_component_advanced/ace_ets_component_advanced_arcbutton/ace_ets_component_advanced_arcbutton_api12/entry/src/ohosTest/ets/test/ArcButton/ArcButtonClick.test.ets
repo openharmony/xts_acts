@@ -92,7 +92,7 @@ export default function ChipOnClose() {
             let strJson1 = getInspectorByKey('button01');
             let obj1: Record<string, ESObject> = JSON.parse(strJson1);
             await CommonFunc.sleep(1000);
-            expect(obj1.$attrs.height).assertEqual('5');
+            expect(obj1.$attrs.height).assertEqual('40.00vp');
             console.info('arcButtonJsunit_0200 click success');
             console.info('[arcButtonJsunit_0200] END');
             done();
