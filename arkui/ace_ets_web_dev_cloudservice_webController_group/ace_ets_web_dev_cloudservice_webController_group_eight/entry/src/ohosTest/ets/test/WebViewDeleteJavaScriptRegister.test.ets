@@ -28,7 +28,7 @@ export default function ActsAceDeleteJavaScriptRegister() {
   describe('DeleteJavaScriptRegisterUnitTest', async () => {
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'testability/pages/webviewDeleteJavaScriptRegister',
+        url: 'testability/pages/WebviewDeleteJavaScriptRegister',
       }
       try {
         await Utils.sleep(1000)

@@ -26,7 +26,7 @@ export default function ActsAceSaveHttpAuthCredentials() {
   describe('SaveHttpAuthCredentialsUnitTest', async () => {
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'testability/pages/saveHttpAuthCredentials',
+        url: 'testability/pages/SaveHttpAuthCredentials',
       }
       try {
         await Utils.sleep(1000)

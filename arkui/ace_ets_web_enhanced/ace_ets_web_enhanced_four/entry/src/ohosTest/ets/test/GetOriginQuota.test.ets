@@ -26,7 +26,7 @@ export default function ActsAceGetOriginQuota() {
   describe('WebMessageTest', async () => {
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'testability/pages/getOriginQuota',
+        url: 'testability/pages/GetOriginQuota',
       }
       try {
         await Utils.sleep(1000)

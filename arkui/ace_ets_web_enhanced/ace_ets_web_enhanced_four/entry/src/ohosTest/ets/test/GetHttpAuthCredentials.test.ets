@@ -27,7 +27,7 @@ export default function ActsAceGetHttpAuthCredentials() {
   describe('GetHttpAuthCredentialsUnitTest', async () => {
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'testability/pages/getHttpAuthCredentials',
+        url: 'testability/pages/GetHttpAuthCredentials',
       }
       try {
         await Utils.sleep(1000)

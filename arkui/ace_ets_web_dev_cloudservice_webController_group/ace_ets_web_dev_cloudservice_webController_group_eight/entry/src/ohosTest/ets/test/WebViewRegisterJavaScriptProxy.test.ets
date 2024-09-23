@@ -27,7 +27,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
   describe('RegisterJavaScriptProxyUnitTest', async () => {
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'testability/pages/webviewRegisterJavaScriptProxy',
+        url: 'testability/pages/WebviewRegisterJavaScriptProxy',
       }
       try {
         await Utils.sleep(1000)

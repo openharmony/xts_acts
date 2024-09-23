@@ -27,7 +27,7 @@ export default function ActsAcGetOriginUsage() {
   describe('GetOriginUsageUnitTest', async () => {
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'testability/pages/getOriginUsage',
+        url: 'testability/pages/GetOriginUsage',
       }
       try {
         await Utils.sleep(1000)
