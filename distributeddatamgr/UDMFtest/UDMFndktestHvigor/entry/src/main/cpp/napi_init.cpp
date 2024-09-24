@@ -649,7 +649,7 @@ static napi_value OH_UdmfRecord_GetFileUri001(napi_env env, napi_callback_info i
         OH_UdmfRecord_GetTypes(reRecords[0], &recordTypeCount);
         for (unsigned int recordIdx = 0; recordIdx < recordTypeCount; ++recordIdx) {
             if (strcmp(recordTypes[recordIdx], "general.image") == 0) {
-                OH_UdsFileUri* fileUri = OH_UdsFileUri_Create(); 
+                OH_UdsFileUri *fileUri = OH_UdsFileUri_Create();
                 getFileUriRet = OH_UdmfRecord_GetFileUri(reRecords[idx], fileUri);
             }
         }
