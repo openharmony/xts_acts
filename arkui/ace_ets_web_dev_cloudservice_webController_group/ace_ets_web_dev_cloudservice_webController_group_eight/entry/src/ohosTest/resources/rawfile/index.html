@@ -1,0 +1,21 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<body>
+<button type="button" onclick="callArkTS()">Click Me!</button>
+<p id="demo"></p>
+<script>
+    function callArkTS() {
+      try {
+        let str = testObjName.test();
+        document.getElementById('demo').innerHTML = str;
+        console.info('ArkTS Hello World! :' + str);
+        return 'success';
+      } catch (error) {
+        console.log(error);
+        return error.toString();
+      }
+    }
+</script>
+</body>
+</html>

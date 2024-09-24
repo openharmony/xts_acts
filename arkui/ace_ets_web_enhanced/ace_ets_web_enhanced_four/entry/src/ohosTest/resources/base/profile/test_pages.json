@@ -10,7 +10,22 @@
     "testability/pages/SetNetErrorCode",
     "testability/pages/SetStatusText",
     "testability/pages/SetStatus",
-    "testability/pages/ReadTest"
+    "testability/pages/ReadTest",
+    "testability/pages/ReadTest2",
+    "testability/pages/InitializeTest",
+    "testability/pages/ResumeDownloadTest",
+    "testability/pages/ResumeTest",
+    "testability/pages/PauseTest",
+    "testability/pages/StartTest",
+    "testability/pages/GetItemAtIndexTest",
+    "testability/pages/SetErrorTest",
+    "testability/pages/SetArrayBufferTest",
+    "testability/pages/DeserializeTest",
+    "testability/pages/WebMessageExtTest",
+    "testability/pages/SaveHttpAuthCredentials",
+    "testability/pages/GetHttpAuthCredentials",
+    "testability/pages/GetOriginUsage",
+    "testability/pages/GetOriginQuota",
+    "testability/pages/Geolocation"
   ]
 }
-

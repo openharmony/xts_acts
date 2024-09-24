@@ -14,7 +14,21 @@
 */
 
 import webSchemeHandler from './WebSchemeHandler.test';
+import WebSendTest from './WebSend.test';
+import ActsAceWebMessageExt from './WebMessageExtTest.test'
+import ActsAceSaveHttpAuthCredentials from './SaveHttpAuthCredentials.test'
+import ActsAceGetHttpAuthCredentials from './GetHttpAuthCredentials.test'
+import ActsAcGetOriginUsage from './GetOriginUsage.test'
+import ActsAceGetOriginQuota from './GetOriginQuota.test'
+import GeolocationTest from './Geolocation.test'
 
 export default function testsuite() {
   webSchemeHandler();
+  WebSendTest();
+  ActsAceWebMessageExt();
+  ActsAceSaveHttpAuthCredentials();
+  ActsAceGetHttpAuthCredentials();
+  ActsAcGetOriginUsage();
+  ActsAceGetOriginQuota();
+  GeolocationTest();
 }

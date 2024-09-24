@@ -41,7 +41,7 @@ struct WebComponent {
                 response.setStatusText('OK');
                 response.setMimeType('text/html');
                 response.setEncoding('utf-8');
-                response.setHeaderByName('value1', 'value1', false);
+                response.setHeaderByName('temp', 'value1', false);
               } catch (error) {
                 console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
@@ -49,7 +49,7 @@ struct WebComponent {
                 response.setStatus(temps);
               } catch (error) {
                 console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-                LocalContext.context.eventHub.emit('SetStatus-error', JSON.stringify(error))
+                LocalContext.context.eventHub.emit('SetStatus-error', error.code, error.message)
               }
 
               // 调用 didFinish/didFail 前需要优先调用 didReceiveResponse 将构造的响应头传递给被拦截的请求。

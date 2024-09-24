@@ -1,0 +1,49 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<body>
+<button type="button" onclick="htmlTest()">Click Me!</button>
+<p id="demo"></p>
+<p id="webDemo"></p>
+<p id="asyncDemo"></p>
+</body>
+<script>
+    function objTest() {
+      // This function call expects to return 'ArkUI Web Component'
+      let str = objName.test('webtest data');
+      document.getElementById('demo').innerHTML = str;
+      return str;
+    }
+
+    function asyncTestBool() {
+      return objName.asyncTestBool(true);
+    }
+
+   function fakeTest() {
+    try {
+       objName.fake('webtest + data');
+       return '';
+    } catch (error) {
+      return error.toString();
+    }
+  }
+
+    function webTest() {
+      let webStr = objTestName.webTest();
+      document.getElementById('webDemo').innerHTML = webStr;
+      return webStr;
+    }
+
+     function asyncTest() {
+      objAsyncName.asyncTest();
+      objAsyncName.asyncString('async test data');
+    }
+
+     function test() {
+        console.log('Ark WebComponent');
+        return 'This value is from index.html';
+    }
+</script>
+</html>
+
