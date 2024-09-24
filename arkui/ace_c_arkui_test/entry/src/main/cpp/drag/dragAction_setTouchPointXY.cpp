@@ -13,16 +13,17 @@
  * limitations under the License.
  */
 
-#include "drag_getModifierKeyStates.h"
+#include "dragAction_setTouchPointXY.h"
 #include "../manager/plugin_manager.h"
 #include <string>
+#define TOUCHPOINTXY 200
 
 namespace ArkUICapiTest {
 
 static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, bool enabled)
 {
     auto nodeHandle = nodeAPI->createNode(ARKUI_NODE_TEXT);
-    ArkUI_AttributeItem LABEL_Item = {.string = "drag_getModifierKeyStates Test"};
+    ArkUI_AttributeItem LABEL_Item = {.string = "dragAction_SetTouchPointXY Test"};
     ArkUI_NumberValue fontSize[] = {20};
     ArkUI_AttributeItem Font_Item = {fontSize, 1};
     ArkUI_NumberValue marginValue[] = {20};
@@ -30,48 +31,45 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, bool enabled)
     nodeAPI->setAttribute(nodeHandle, NODE_TEXT_CONTENT, &LABEL_Item);
     nodeAPI->setAttribute(nodeHandle, NODE_TEXT_FONT, &Font_Item);
     nodeAPI->setAttribute(nodeHandle, NODE_MARGIN, &marginItem);
-    nodeAPI->registerNodeEvent(nodeHandle, NODE_ON_DRAG_START, 1, nullptr);
-    OH_ArkUI_SetNodeDraggable(nodeHandle, true);
-
+    nodeAPI->registerNodeEvent(nodeHandle, NODE_ON_TOUCH_INTERCEPT, 1, nullptr);
+    
     return nodeHandle;
 }
 
 static void OnEventReceive(ArkUI_NodeEvent *event)
 {
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "getModifierKeyStates", "OnEventReceive");
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragAction_SetTouchPointXYTest", "OnEventReceive");
     if (event == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "getModifierKeyStates", "OnEventReceive: event is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "SetTouchPointXY", "OnEventReceive: event is null");
         return;
     }
-
-    auto dragEvent = OH_ArkUI_NodeEvent_GetDragEvent(event);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "getModifierKeyStates", "OnEventReceive : %{public}p",
-                 dragEvent);
 
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
 
-    uint64_t pressedKeys = 0;
-    auto result = OH_ArkUI_DragEvent_GetModifierKeyStates(dragEvent, &pressedKeys);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "getModifierKeyStates",
-                 "Drag getModifierKeyStates result : %{public}d", result);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "getModifierKeyStates",
-                 "Drag getModifierKeyStates pressedKeys : %{public}llu", pressedKeys);
-    if (result == 0 && pressedKeys == 0) {
+    auto dragAction = OH_ArkUI_CreateDragActionWithNode(nodeHandler);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragAction_SetTouchPointXY", "result:%{public}p", dragAction);
+
+    auto returnValue = OH_ArkUI_DragAction_SetTouchPointX(dragAction, TOUCHPOINTXY);
+    auto returnValue2 = OH_ArkUI_DragAction_SetTouchPointY(dragAction, TOUCHPOINTXY);
+    auto startDragReturnValue = OH_ArkUI_StartDrag(dragAction);
+
+    if (dragAction != nullptr && returnValue != INVALID_PARAM && returnValue2 != INVALID_PARAM &&
+         startDragReturnValue != INVALID_PARAM) {
         ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
         ArkUI_AttributeItem background_color_item = {background_color_value,
                                                      sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
         nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
     } else {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "getModifierKeyStates",
-                     "Drag getModifierKeyStates result : %{public}d", result);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragAction_SetTouchPointXY",
+                     "returnValue:%{public}d", returnValue);
     }
 }
 
-napi_value GetModifierKeyStatesTest::CreateNativeNode(napi_env env, napi_callback_info info)
+napi_value SetTouchPointXYTest::CreateNativeNode(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "getModifierKeyStates", "CreateNativeNode");
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragAction_SetTouchPointXYTest", "CreateNativeNode");
 
     size_t argc = PARAM_1;
     napi_value args[PARAM_1] = {nullptr};
@@ -82,7 +80,8 @@ napi_value GetModifierKeyStatesTest::CreateNativeNode(napi_env env, napi_callbac
     napi_get_value_string_utf8(env, args[PARAM_0], xComponentID, length, &strLength);
 
     if ((env == nullptr) || (info == nullptr)) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "getModifierKeyStates", "GetContext env or info is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "dragAction_SetTouchPointXY",
+                     "GetContext env or info is null");
         return nullptr;
     }
 
@@ -93,7 +92,7 @@ napi_value GetModifierKeyStatesTest::CreateNativeNode(napi_env env, napi_callbac
     auto text2 = createChildNode(nodeAPI, true);
 
     ArkUI_AttributeItem id_item = {};
-    id_item.string = "GetModifierKeyStates";
+    id_item.string = "textDragTest1";
     nodeAPI->setAttribute(text1, NODE_ID, &id_item);
     id_item.string = "textDragTest2";
     nodeAPI->setAttribute(text2, NODE_ID, &id_item);
@@ -105,8 +104,8 @@ napi_value GetModifierKeyStatesTest::CreateNativeNode(napi_env env, napi_callbac
 
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
-        INVALID_PARAM) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "getModifierKeyStates",
+         INVALID_PARAM) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "dragAction_SetTouchPointXYTest",
                      "OH_NativeXComponent_AttachNativeRootNode failed");
     }
 

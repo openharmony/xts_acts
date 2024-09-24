@@ -102,6 +102,11 @@
 #include "drag/drag_getWidthHeight.h"
 #include "drag/drag_getModifierKeyStates.h"
 #include "drag/drag_getDropOperation.h"
+#include "drag/dragAction_createDragAction.h"
+#include "drag/dragAction_setPointerId.h"
+#include "drag/dragAction_setDragPreviewOption.h"
+#include "drag/dragAction_setTouchPointXY.h"
+#include "drag/dragAction_registerStatusListener.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -364,6 +369,16 @@ static napi_value Init(napi_env env, napi_value exports)
         {"getWidthHeightTest", nullptr, GetWidthHeightTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"getModifierKeyStatesTest", nullptr, GetModifierKeyStatesTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"createDragActionTest", nullptr, CreateDragActionTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"setPointerIdTest", nullptr, SetPointerIdTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"setTouchPointXYTest", nullptr, SetTouchPointXYTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"setDragPreviewOptionTest", nullptr, SetDragPreviewOptionTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"registerStatusListenerTest", nullptr, RegisterStatusListenerTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
