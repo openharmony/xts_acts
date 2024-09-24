@@ -19,6 +19,7 @@ import textAreaMinFontSize from "./component/textAreaMinFontSize.test";
 import textAreaDecoration from "./component/textAreaDecoration.test";
 import textAreaLineHeight from "./component/textAreaLineHeight.test";
 import textAreaLetterSpacing from "./component/textAreaLetterSpacing.test";
+import textAreaNode from "./component/textAreaNode.test";
 
 export default function testsuite() {
   textAreaHeightAdaptivePolicyTest();
@@ -27,4 +28,5 @@ export default function testsuite() {
   textAreaLineHeight();
   textAreaDecoration();
   textAreaLetterSpacing();
+  textAreaNode();
 }
