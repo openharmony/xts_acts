@@ -15,7 +15,7 @@
 
 {
   "app": {
-    "bundleName": "com.acts.arkui.advancedComponents13",
+    "bundleName": "com.acts.arkui.component.common.attrs.test",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",

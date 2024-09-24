@@ -30,7 +30,7 @@
     "pages": "$profile:main_pages",
     "abilities": [
       {
-        "name": "com.acts.arkui.advancedComponents13.EntryAbility",
+        "name": "com.acts.arkui.component.common.attrs.test.EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:description_application",
         "icon": "$media:icon",
