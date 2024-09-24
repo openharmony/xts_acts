@@ -853,13 +853,13 @@ static napi_value OH_UdsFileUri_SetFileUri_0100(napi_env env, napi_callback_info
     napi_value returnCode = nullptr;
     auto fileUri = OH_UdsFileUri_Create();
     int result = OH_UdsFileUri_SetFileUri(fileUri, "file uri");
-    NAPI_ASSERT(env, result == UDMF_E_OK,"OH_UdsFileUri_SetFileUri is fail");
+    NAPI_ASSERT(env, result == UDMF_E_OK, "OH_UdsFileUri_SetFileUri is fail");
 
     result = OH_UdsFileUri_SetFileUri(nullptr, "file uri");
     NAPI_ASSERT(env, result == UDMF_E_INVALID_PARAM,"OH_UdsFileUri_SetFileUri is fail");
 
     result = OH_UdsFileUri_SetFileUri(fileUri, nullptr);
-    NAPI_ASSERT(env, result == UDMF_E_INVALID_PARAM,"OH_UdsFileUri_SetFileUri is fail");
+    NAPI_ASSERT(env, result == UDMF_E_INVALID_PARAM, "OH_UdsFileUri_SetFileUri is fail");
     
     napi_create_int32(env, result == UDMF_E_INVALID_PARAM, &returnCode);
     OH_UdsFileUri_Destroy(fileUri);
@@ -870,13 +870,13 @@ static napi_value OH_UdsFileUri_SetFileType_0100(napi_env env, napi_callback_inf
     napi_value returnCode = nullptr;
     auto fileUri = OH_UdsFileUri_Create();
     int result = OH_UdsFileUri_SetFileType(fileUri, "file type");
-    NAPI_ASSERT(env, result == UDMF_E_OK,"OH_UdsFileUri_SetFileType is fail");
+    NAPI_ASSERT(env, result == UDMF_E_OK, "OH_UdsFileUri_SetFileType is fail");
     
     result = OH_UdsFileUri_SetFileType(nullptr, "file type");
     NAPI_ASSERT(env, result == UDMF_E_INVALID_PARAM,"OH_UdsFileUri_SetFileType is fail");
     
     result = OH_UdsFileUri_SetFileType(fileUri, nullptr);
-    NAPI_ASSERT(env, result == UDMF_E_INVALID_PARAM,"OH_UdsFileUri_SetFileType is fail");
+    NAPI_ASSERT(env, result == UDMF_E_INVALID_PARAM, "OH_UdsFileUri_SetFileType is fail");
     
     napi_create_int32(env, result == UDMF_E_INVALID_PARAM, &returnCode);
     OH_UdsFileUri_Destroy(fileUri);
@@ -885,21 +885,21 @@ static napi_value OH_UdsFileUri_SetFileType_0100(napi_env env, napi_callback_inf
 static napi_value OH_UdsPixelMap_Create_0100(napi_env env, napi_callback_info info)
 {
     napi_value returnCode = nullptr;
-    auto pixelMap = OH_UdsPixelMap_Create();    
+    auto pixelMap = OH_UdsPixelMap_Create();
     napi_create_int32(env, returnCode == nullptr, &returnCode);
     OH_UdsPixelMap_Destroy(pixelMap);
-    return returnCode;
-    
+    return returnCode;    
 }
 static napi_value OH_UdsPixelMap_GetType_0100(napi_env env, napi_callback_info info)
 {
     napi_value returnCode = nullptr;
     auto pixelMap = OH_UdsPixelMap_Create();
-    NAPI_ASSERT(env, UDMF_META_OPENHARMONY_PIXEL_MAP == std::string(OH_UdsPixelMap_GetType(pixelMap)),"OH_UdsFileUri_SetFileType is fail");
+    NAPI_ASSERT(env, UDMF_META_OPENHARMONY_PIXEL_MAP == std::string(OH_UdsPixelMap_GetType(pixelMap)),
+            "OH_UdsFileUri_SetFileType is fail");
     
     OH_UdsPixelMap_Destroy(pixelMap);
     OH_UdsPixelMap* pixelMapNullptr = nullptr;
-    NAPI_ASSERT(env, OH_UdsPixelMap_GetType(pixelMapNullptr) == nullptr,"OH_UdsPixelMap_GetType is fail");
+    NAPI_ASSERT(env, OH_UdsPixelMap_GetType(pixelMapNullptr) == nullptr, "OH_UdsPixelMap_GetType is fail");
     
     napi_create_int32(env, returnCode == nullptr, &returnCode);
     
@@ -928,7 +928,7 @@ static napi_value OH_UdsPixelMap_SetPixelMap_0100(napi_env env, napi_callback_in
     OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &pixelmapNative);
     
     int result = OH_UdsPixelMap_SetPixelMap(pixelMap, pixelmapNative);
-    NAPI_ASSERT(env, result == UDMF_E_OK,"OH_UdsPixelMap_SetPixelMap is fail");
+    NAPI_ASSERT(env, result == UDMF_E_OK, "OH_UdsPixelMap_SetPixelMap is fail");
     
     uint8_t data1 [500];
     int dataSize1 = 500;
@@ -948,7 +948,7 @@ static napi_value OH_UdsPixelMap_SetPixelMap_0100(napi_env env, napi_callback_in
     OH_PixelmapNative_CreatePixelmap(data1, dataSize1, createOpts1, &pixelmapNativeGet);
     OH_UdsPixelMap_GetPixelMap(pixelMap, pixelmapNativeGet);
     
-    NAPI_ASSERT(env, pixelmapNativeGet != nullptr,"OH_OH_UdsPixelMap_GetPixelMap is fail");
+    NAPI_ASSERT(env, pixelmapNativeGet != nullptr, "OH_OH_UdsPixelMap_GetPixelMap is fail");
     napi_create_int32(env, result == UDMF_E_OK, &returnCode);
     OH_PixelmapNative_Release (pixelmapNative);
     OH_UdsPixelMap_Destroy(pixelMap);
@@ -1064,15 +1064,15 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"OH_UdsFileUri_GetFileType002", nullptr, OH_UdsFileUri_GetFileType002, nullptr, nullptr,
          nullptr, napi_default, nullptr},
-		 {"OH_UdsFileUri_SetFileUri_0100", nullptr, OH_UdsFileUri_SetFileUri_0100, nullptr, nullptr,
+         {"OH_UdsFileUri_SetFileUri_0100", nullptr, OH_UdsFileUri_SetFileUri_0100, nullptr, nullptr,
          nullptr, napi_default, nullptr},
-		 {"OH_UdsFileUri_SetFileType_0100", nullptr, OH_UdsFileUri_SetFileType_0100, nullptr, nullptr,
+         {"OH_UdsFileUri_SetFileType_0100", nullptr, OH_UdsFileUri_SetFileType_0100, nullptr, nullptr,
          nullptr, napi_default, nullptr},
-		 {"OH_UdsPixelMap_Create_0100", nullptr, OH_UdsPixelMap_Create_0100, nullptr, nullptr,
+         {"OH_UdsPixelMap_Create_0100", nullptr, OH_UdsPixelMap_Create_0100, nullptr, nullptr,
          nullptr, napi_default, nullptr},
-		 {"OH_UdsPixelMap_GetType_0100", nullptr, OH_UdsPixelMap_GetType_0100, nullptr, nullptr,
+         {"OH_UdsPixelMap_GetType_0100", nullptr, OH_UdsPixelMap_GetType_0100, nullptr, nullptr,
          nullptr, napi_default, nullptr},
-		 {"OH_UdsPixelMap_SetPixelMap_0100", nullptr, OH_UdsPixelMap_SetPixelMap_0100, nullptr, nullptr,
+         {"OH_UdsPixelMap_SetPixelMap_0100", nullptr, OH_UdsPixelMap_SetPixelMap_0100, nullptr, nullptr, 
          nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
