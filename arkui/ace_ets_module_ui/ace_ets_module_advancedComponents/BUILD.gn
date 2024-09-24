@@ -14,7 +14,7 @@
 group("ActsAceEtsModuleAdvancedComponentsTest") {
   testonly = true
   deps = [
-  "ace_ets_module_advancedComponents_api12:ActsAceEtsModuleAdvancedComponentsApi12Test",
-  "ace_ets_module_advancedComponents_api13:ActsAceEtsModuleAdvancedComponentsApi13Test",
+    "ace_ets_module_advancedComponents_api12:ActsAceEtsModuleAdvancedComponentsApi12Test",
+    "ace_ets_module_advancedComponents_api13:ActsAceEtsModuleAdvancedComponentsApi13Test",
   ]
 }
