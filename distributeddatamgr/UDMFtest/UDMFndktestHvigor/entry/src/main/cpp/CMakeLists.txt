@@ -11,6 +11,7 @@ add_library(entry SHARED napi_init.cpp)
 
 target_link_libraries(entry PUBLIC
      libace_napi.z.so
+     libhilog_ndk.z.so
      libudmf.so
      libpixelmap.so
      libpixelmap_ndk.z.so

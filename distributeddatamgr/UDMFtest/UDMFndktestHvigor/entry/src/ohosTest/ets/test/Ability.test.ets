@@ -762,5 +762,86 @@ export default function pasteboardNdkTest() {
       expect(result).assertEqual(1);
       hilog.info(0x0000, TAG, TAG + 'SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5400 key is : '+ result , 'aa');
     })
+/**
+     * @tc.number: SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5500
+     * @tc.name OH_UdsFileUri_SetFileUri_0100
+     * @tc.desc OH_UdsFileUri_SetFileUri_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5500',0, async function () {
+      hilog.info(0x0000, TAG, TAG + 'SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5500' , ' begin');
+      let result = testNapi.OH_UdsFileUri_SetFileUri_0100();
+      expect(result).assertEqual(1);
+      hilog.info(0x0000, TAG, TAG + 'SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5500 result= : ' + JSON.stringify(result));
+    })
+/**
+     * @tc.number: SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5600
+     * @tc.name OH_UdsFileUri_SetFileType_0100
+     * @tc.desc OH_UdsFileUri_SetFileType_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5600',0, async function () {
+      hilog.info(0x0000, TAG, TAG + 'SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5600' , ' begin');
+      let result = testNapi.OH_UdsFileUri_SetFileType_0100();
+      expect(result).assertEqual(1);
+      hilog.info(0x0000, TAG, TAG + 'SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5600 result= : ' + JSON.stringify(result));
+    })
+/**
+     * @tc.number: SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5700
+     * @tc.name OH_UdsPixelMap_Create_0100
+     * @tc.desc OH_UdsPixelMap_Create_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5700',0, async function () {
+      hilog.info(0x0000, TAG, TAG + 'SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5700' , ' begin');
+      let result = testNapi.OH_UdsPixelMap_Create_0100();
+      expect(result).assertEqual(1);
+      hilog.info(0x0000, TAG, TAG + 'SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5700 result= : ' + JSON.stringify(result));
+    })
+	
+	
+
+	
+	
+	
+/**
+     * @tc.number: SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5800
+     * @tc.name OH_UdsPixelMap_GetType_0100
+     * @tc.desc OH_UdsPixelMap_GetType_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5800',0, async function () {
+      hilog.info(0x0000, TAG, TAG + 'SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5800' , ' begin');
+      let result = testNapi.OH_UdsPixelMap_GetType_0100();
+      expect(result).assertEqual(1);
+      hilog.info(0x0000, TAG, TAG + 'SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5800 result= : ' + JSON.stringify(result));
+    })
+	
+	
+	
+/**
+     * @tc.number: SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5900
+     * @tc.name OH_UdsPixelMap_SetPixelMap_0100
+     * @tc.desc OH_UdsPixelMap_SetPixelMap_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5900',0, async function () {
+      hilog.info(0x0000, TAG, TAG + 'SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5900' , ' begin');
+      let result = testNapi.OH_UdsPixelMap_GetType_0100();
+      expect(result).assertEqual(1);
+      hilog.info(0x0000, TAG, TAG + 'SUB_DistributedData_Pasteboard_SDK_PasteboardUdmfNdkAPITest_5900 result= : ' + JSON.stringify(result));
+    })
+	
+	
   })
 }
