@@ -158,34 +158,34 @@ export default function drawingCodeTest() {
      * @tc.name Test CanvasConstruct
      * @tc.desc test the drawing of create
      */
-//    it('CanvasConstruct', 0, async (done: Function) => {
-//      try {
-//        const color = new ArrayBuffer(96);
-//        let opts: image.InitializationOptions = {
-//          editable: true,
-//          pixelFormat: 3,
-//          size: {
-//            height: 4,
-//            width: 6
-//          }
-//        }
-//        console.log('test enum value of CanvasConstruct Manager success1');
-//        const canvas = new drawing.Canvas(null);
-//        console.log('test enum value of CanvasConstruct Manager success');
-//        expect().assertFail();
-//        done();
-//      } catch (err) {
-//        if (err.code == 401) {
-//          console.log('test enum value of CanvasConstruct Manager error' + err.code);
-//          expect(true).assertTrue();
-//          done();
-//        } else {
-//          console.log('test enum value of CanvasConstruct Manager error1' + JSON.stringify(err))
-//          expect().assertFail();
-//          done();
-//        }
-//      }
-//    })
+    //    it('CanvasConstruct', 0, async (done: Function) => {
+    //      try {
+    //        const color = new ArrayBuffer(96);
+    //        let opts: image.InitializationOptions = {
+    //          editable: true,
+    //          pixelFormat: 3,
+    //          size: {
+    //            height: 4,
+    //            width: 6
+    //          }
+    //        }
+    //        console.log('test enum value of CanvasConstruct Manager success1');
+    //        const canvas = new drawing.Canvas(null);
+    //        console.log('test enum value of CanvasConstruct Manager success');
+    //        expect().assertFail();
+    //        done();
+    //      } catch (err) {
+    //        if (err.code == 401) {
+    //          console.log('test enum value of CanvasConstruct Manager error' + err.code);
+    //          expect(true).assertTrue();
+    //          done();
+    //        } else {
+    //          console.log('test enum value of CanvasConstruct Manager error1' + JSON.stringify(err))
+    //          expect().assertFail();
+    //          done();
+    //        }
+    //      }
+    //    })
     /**
      * @tc.number SUB_GRAPHIC_DrawingCode_FontEnableSubpixel
      * @tc.name Test FontEnableSubpixel
@@ -1004,11 +1004,11 @@ export default function drawingCodeTest() {
       }
     })
     /**
-     * @tc.number SUB_GRAPHIC_DrawingCode_RegionSetPath
+     * @tc.number SUB_GRAPHIC_DrawingCode_RegionSetPathTwo
      * @tc.name Test RegionSetPath
      * @tc.desc test the drawing of create
      */
-    it('RegionSetPath', 0, async (done: Function) => {
+    it('RegionSetPathTwo', 0, async (done: Function) => {
       try {
         let region = new drawing.Region();
         let path = new drawing.Path();
@@ -1019,11 +1019,11 @@ export default function drawingCodeTest() {
         done()
       } catch (err) {
         if (err.code == 401) {
-          console.log('test enum value of RegionSetPath Manager error' + err.code);
+          console.log('RegionSetPathTwo test enum value of RegionSetPath Manager error' + err.code);
           expect(true).assertTrue();
           done();
         } else {
-          console.log('test enum value of RegionSetPath Manager error1' + JSON.stringify(err))
+          console.log('RegionSetPathTwo test enum value of RegionSetPath Manager error1' + JSON.stringify(err))
           expect().assertFail();
           done();
         }
