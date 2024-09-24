@@ -259,4 +259,62 @@ HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTest042
     OH_Drawing_DestroyTypography(typography);
     OH_Drawing_DestroyTypographyHandler(handler);
 }
+
+/*
+ * @tc.name: OHDrawingTypographyLargeValueTestWithIndent
+ * @tc.desc: test for typography
+ * @tc.type: FUNC
+ */
+HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTestWithIndent, TestSize.Level1)
+{
+    OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
+    OH_Drawing_TextStyle* txtStyle = OH_Drawing_CreateTextStyle();
+    OH_Drawing_TypographyCreate* handler = OH_Drawing_CreateTypographyHandler(typoStyle,
+        OH_Drawing_CreateFontCollection());
+    EXPECT_TRUE(handler != nullptr);
+
+    OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+    double fontSize = 30;
+    OH_Drawing_SetTextStyleFontSize(txtStyle, fontSize);
+    OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
+    OH_Drawing_SetTextStyleBaseLine(txtStyle, TEXT_BASELINE_ALPHABETIC);
+    const char* fontFamilies[] = {"Roboto"};
+    OH_Drawing_SetTextStyleFontFamilies(txtStyle, 1, fontFamilies);
+    OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+
+    const char* text = "OpenHarmony\n";
+    OH_Drawing_TypographyHandlerAddText(handler, text);
+    OH_Drawing_TypographyHandlerPopTextStyle(handler);
+
+    OH_Drawing_Typography* typography = OH_Drawing_CreateTypography(handler);
+    const float indents[] = {1.2, 3.4};
+    OH_Drawing_TypographySetIndents(typography, 2, indents);
+    float indent = 3.4;
+    EXPECT_EQ(indent, OH_Drawing_TypographyGetIndentsWithIndex(typography, 1));
+    double maxWidth = 2160.0;
+    OH_Drawing_TypographyLayout(typography, maxWidth);
+    EXPECT_EQ(maxWidth, OH_Drawing_TypographyGetMaxWidth(typography));
+    double position[2] = {10.0, 15.0};
+    OH_Drawing_Bitmap* cBitmap = OH_Drawing_BitmapCreate();
+    OH_Drawing_BitmapFormat cFormat {COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    uint32_t width = 20;
+    uint32_t height = 40;
+    OH_Drawing_BitmapBuild(cBitmap, width, height, &cFormat);
+    EXPECT_EQ(width, OH_Drawing_BitmapGetWidth(cBitmap));
+    EXPECT_EQ(height, OH_Drawing_BitmapGetHeight(cBitmap));
+
+    OH_Drawing_Canvas* cCanvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_CanvasBind(cCanvas, cBitmap);
+    OH_Drawing_CanvasClear(cCanvas, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF));
+
+    EXPECT_EQ(OH_Drawing_TypographyGetHeight(typography) != 0.0, true);
+    EXPECT_EQ(OH_Drawing_TypographyGetLongestLineWithIndent(typography) != 0.0, true);
+    EXPECT_EQ(OH_Drawing_TypographyGetMinIntrinsicWidth(typography) <=
+        OH_Drawing_TypographyGetMaxIntrinsicWidth(typography), true);
+    EXPECT_EQ(OH_Drawing_TypographyGetAlphabeticBaseline(typography) != 0.0, true);
+    EXPECT_EQ(OH_Drawing_TypographyGetIdeographicBaseline(typography) != 0.0, true);
+    OH_Drawing_TypographyPaint(typography, cCanvas, position[0], position[1]);
+    OH_Drawing_DestroyTypography(typography);
+    OH_Drawing_DestroyTypographyHandler(handler);
+}
 }
