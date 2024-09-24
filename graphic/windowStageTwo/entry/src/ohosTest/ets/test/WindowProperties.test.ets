@@ -357,6 +357,7 @@ export default function windowPropertiesTest() {
           const windowStatus = windowClass.getWindowStatus();
           console.info(`${caseName} This window state is: ${windowStatus}. full-screen is not to support resize`);
           windowClass.off('windowSizeChange');
+          expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
           done();
         } else{
           console.error(`${caseName}: Error: ${JSON.stringify(error)}`);
