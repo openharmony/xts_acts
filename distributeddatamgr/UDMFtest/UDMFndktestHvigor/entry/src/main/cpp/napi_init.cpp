@@ -129,6 +129,7 @@ static napi_value OH_UdmfData_GetPrimaryPlainText_0007(napi_env env, napi_callba
     OH_UdmfData_Destroy(data);
     return returnCode;
 }
+
 static napi_value OH_UdmfData_GetPrimaryHtml_0001(napi_env env, napi_callback_info info)
 {
     int result = OH_UdmfData_GetPrimaryHtml(nullptr, nullptr);
@@ -865,6 +866,7 @@ static napi_value OH_UdsFileUri_SetFileUri_0100(napi_env env, napi_callback_info
     OH_UdsFileUri_Destroy(fileUri);
     return returnCode;
 }
+
 static napi_value OH_UdsFileUri_SetFileType_0100(napi_env env, napi_callback_info info)
 {
     napi_value returnCode = nullptr;
@@ -882,6 +884,7 @@ static napi_value OH_UdsFileUri_SetFileType_0100(napi_env env, napi_callback_inf
     OH_UdsFileUri_Destroy(fileUri);
     return returnCode;
 }
+
 static napi_value OH_UdsPixelMap_Create_0100(napi_env env, napi_callback_info info)
 {
     napi_value returnCode = nullptr;
@@ -890,6 +893,7 @@ static napi_value OH_UdsPixelMap_Create_0100(napi_env env, napi_callback_info in
     OH_UdsPixelMap_Destroy(pixelMap);
     return returnCode;
 }
+
 static napi_value OH_UdsPixelMap_GetType_0100(napi_env env, napi_callback_info info)
 {
     napi_value returnCode = nullptr;
@@ -905,6 +909,7 @@ static napi_value OH_UdsPixelMap_GetType_0100(napi_env env, napi_callback_info i
     OH_UdsPixelMap_Destroy(pixelMapNullptr);
     return returnCode;
 }
+
 static napi_value OH_UdsPixelMap_SetPixelMap_0100(napi_env env, napi_callback_info info)
 {
     napi_value returnCode = nullptr;
@@ -954,7 +959,6 @@ static napi_value OH_UdsPixelMap_SetPixelMap_0100(napi_env env, napi_callback_in
     return returnCode;
 }
 
-
 static napi_value OH_UdmfRecordProvider_Destroy0100(napi_env env, napi_callback_info info)
 {
     OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
@@ -971,8 +975,6 @@ static napi_value OH_UdmfRecordProvider_Destroy0100(napi_env env, napi_callback_
     return returnCode;
 }
 
-
-
 static napi_value OH_UdmfRecordProvider_Destroy0200(napi_env env, napi_callback_info info)
 {
     OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
@@ -988,9 +990,6 @@ static napi_value OH_UdmfRecordProvider_Destroy0200(napi_env env, napi_callback_
     napi_create_int32(env, res1 == UDMF_E_OK, &returnCode);
     return returnCode;
 }
-
-
-
 
 static napi_value OH_UdmfRecordProvider_Create0100(napi_env env, napi_callback_info info)
 {
@@ -1035,8 +1034,6 @@ static napi_value OH_UdmfRecordProvider_SetData0200(napi_env env, napi_callback_
     OH_UdmfRecordProvider_Destroy(provider);
     return returnCode;
 }
-
-
 
 static napi_value OH_UdmfRecord_SetProvider0100(napi_env env, napi_callback_info info)
 {
