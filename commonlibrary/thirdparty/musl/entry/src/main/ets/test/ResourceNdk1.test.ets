@@ -179,20 +179,6 @@ export default function muslResourceNdk1Test() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_PRLIMIT_0200
-     * @tc.name       : testMuslResourceprLimit002
-     * @tc.desc       : test prlimit
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslResourceprLimit002', 0, async (done: Function) => {
-      let result:number = resource.prLimit2();
-      expect(result).assertEqual(-1);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_PRLIMIT64_0100
      * @tc.name       : testMuslResourceprLimit64001
      * @tc.desc       : test prlimit64
@@ -203,20 +189,6 @@ export default function muslResourceNdk1Test() {
     it('testMuslResourceprLimit64001', 0, async (done: Function) => {
       let result:number = resource.prLimit641();
       expect(result).assertEqual(0);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_PRLIMIT64_0200
-     * @tc.name       : testMuslResourceprLimit64002
-     * @tc.desc       : test prlimit64
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslResourceprLimit64002', 0, async (done: Function) => {
-      let result:number = resource.prLimit642();
-      expect(result).assertEqual(-1);
       done()
     });
 
@@ -272,6 +244,34 @@ export default function muslResourceNdk1Test() {
      */
     it('testMuslResourceSetrlimit64002', 0, async (done: Function) => {
       let result:number = resource.setrlimit642();
+      expect(result).assertEqual(-1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_PRLIMIT_0200
+     * @tc.name       : testMuslResourceprLimit002
+     * @tc.desc       : test prlimit
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslResourceprLimit002', 0, async (done: Function) => {
+      let result:number = resource.prLimit2();
+      expect(result).assertEqual(-1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_PRLIMIT64_0200
+     * @tc.name       : testMuslResourceprLimit64002
+     * @tc.desc       : test prlimit64
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslResourceprLimit64002', 0, async (done: Function) => {
+      let result:number = resource.prLimit642();
       expect(result).assertEqual(-1);
       done()
     });
