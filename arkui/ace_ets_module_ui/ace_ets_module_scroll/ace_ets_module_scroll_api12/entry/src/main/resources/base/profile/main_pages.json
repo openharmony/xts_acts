@@ -56,6 +56,16 @@
         "MainAbility/pages/Swiper/SwiperAttribute/SwiperDisplayCount",
         "MainAbility/pages/Swiper/SwiperAttribute/SwiperLoopFalse",
         "MainAbility/pages/Refresh/RefreshingContent",
-        "MainAbility/pages/List/listVisibleContent"
+        "MainAbility/pages/List/listVisibleContent",
+        "MainAbility/pages/List/listDid",
+        "MainAbility/pages/Scroll/scrollDid",
+        "MainAbility/pages/Scroll/scrollReach",
+        "MainAbility/pages/WaterFlow/onScrollIndexFlow1",
+        "MainAbility/pages/WaterFlow/onScrollIndexFlow2",
+        "MainAbility/pages/WaterFlow/onScrollIndexFlow3",
+        "MainAbility/pages/WaterFlow/repeatWaterFlow",
+        "MainAbility/pages/WaterFlow/waterFlowScroll",
+        "MainAbility/pages/WaterFlow/waterFlowStart1",
+        "MainAbility/pages/WaterFlow/waterFlowStart2"
     ]
 }

@@ -68,6 +68,16 @@ import SwiperDisplayCount from './SwiperTest/SwiperAttributeTest/SwiperDisplayCo
 import SwiperLoopFalse from './SwiperTest/SwiperAttributeTest/SwiperLoopFalse.test';
 import RefreshingContent from './RefreshTest/RefreshingContent.test';
 import listVisibleContent from './ListTest/listVisibleContent.test';
+import listDidJsunit from './ListTest/listDidJsunit.test';
+import scrollDidJsunit from './ScrollTest/scrollDidJsunit.test';
+import scrollReachJsunit from './ScrollTest/scrollReachJsunit.test';
+import onScrollIndexFlow1 from './WaterFlowTest/onScrollIndexFlow1.test';
+import onScrollIndexFlow2 from './WaterFlowTest/onScrollIndexFlow2.test';
+import onScrollIndexFlow3 from './WaterFlowTest/onScrollIndexFlow3.test';
+import repeatWaterFlow from './WaterFlowTest/repeatWaterFlow.test';
+import waterFlowScroll from './WaterFlowTest/waterFlowScroll.test';
+import waterFlowStart1 from './WaterFlowTest/waterFlowStart1.test';
+import waterFlowStart2 from './WaterFlowTest/waterFlowStart2.test';
 
 export default function testsuite() {
   ListScrollTest1()
@@ -126,4 +136,14 @@ export default function testsuite() {
   SwiperLoopFalse()
   RefreshingContent()
   listVisibleContent()
+  listDidJsunit()
+  scrollDidJsunit()
+  scrollReachJsunit()
+  onScrollIndexFlow1()
+  onScrollIndexFlow2()
+  onScrollIndexFlow3()
+  repeatWaterFlow()
+  waterFlowScroll()
+  waterFlowStart1()
+  waterFlowStart2()
 }
