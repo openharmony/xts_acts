@@ -326,14 +326,9 @@ export default function windowPropertiesTest() {
         await subWindowClass.resize(500, 500);
         console.info(`${caseName} Succeeded in changing the sub window size.`);
       } catch (error) {
-        if(error.code == 1300002){
-          console.info(`${caseName} This sub window state is abnormal`);
-          done();
-        } else{
-          console.error(`${caseName}: Error: ${JSON.stringify(error)}`);
-          expect().assertFail();
-          done();
-        }
+        console.error(`${caseName}: Error: ${JSON.stringify(error)}`);
+        expect().assertFail();
+        done();
       }
     })
     /**
@@ -346,8 +341,8 @@ export default function windowPropertiesTest() {
      */
     it("testOnRectChangeOptionsResizeMainWindow", 0, async (done: Function) => {
       let caseName = "TestOnRectChangeOptionsResizeMainWindow";
+      let windowClass = windowStage.getMainWindowSync();
       try {
-        let windowClass = windowStage.getMainWindowSync();
         windowClass.on('windowSizeChange', async (data) => {
           console.info(`${caseName} Succeeded window rect changes. Data: ${JSON.stringify(data)}`);
           expect(data.width).assertEqual(1000);
@@ -359,10 +354,14 @@ export default function windowPropertiesTest() {
         console.info(`${caseName} Succeeded in changing the window size.`);
       } catch (error) {
         if(error.code == 1300002){
-          console.info(`${caseName} This window state is abnormal`);
+          const windowStatus = windowClass.getWindowStatus();
+          console.info(`${caseName} This window state is: ${windowStatus}. full-screen is not to support resize`);
+          windowClass.off('windowSizeChange');
+          expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
           done();
         } else{
           console.error(`${caseName}: Error: ${JSON.stringify(error)}`);
+          windowClass.off('windowSizeChange');
           expect().assertFail();
           done();
         }
