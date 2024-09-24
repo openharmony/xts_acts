@@ -104,11 +104,11 @@ HWTEST_F(DrawingNativeFontTest, testFontArgumentsAddVariationNormal, TestSize.Le
 HWTEST_F(DrawingNativeFontTest, testFontArgumentsAddVariationNull, TestSize.Level3) {
     // 1. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
-    // 2. OH_Drawing_FontArgumentsAddVariation, the first parameter is nullptr, should return OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. OH_Drawing_FontArgumentsAddVariation, the first parameter is nullptr
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_SUCCESS;
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(nullptr, "wght", NUMBER_100);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3. OH_Drawing_FontArgumentsAddVariation, the second parameter is nullptr, should return OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 3. OH_Drawing_FontArgumentsAddVariation, the second parameter is nullptr
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, nullptr, NUMBER_100);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
 }
@@ -124,11 +124,11 @@ HWTEST_F(DrawingNativeFontTest, testFontArgumentsAddVariationNull, TestSize.Leve
 HWTEST_F(DrawingNativeFontTest, testFontArgumentsAddVariationAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
-    // 2. OH_Drawing_FontArgumentsAddVariation, the second parameter is error, should return OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. OH_Drawing_FontArgumentsAddVariation, the second parameter is error
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_SUCCESS;
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "WGHT", NUMBER_100);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3. OH_Drawing_FontArgumentsAddVariation, the second parameter is error, should return OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 3. OH_Drawing_FontArgumentsAddVariation, the second parameter is error
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "w", NUMBER_100);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
 }
@@ -168,7 +168,7 @@ HWTEST_F(DrawingNativeFontTest, testFontArgumentsAddVariationMultipleCalls, Test
 HWTEST_F(DrawingNativeFontTest, testFontArgumentsDestoryNormal, TestSize.Level0) {
     // 1. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
-    // 2. OH_Drawing_FontArgumentsDestory
+    // 2. OH_Drawing_FontArgumentsDestroy
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     drawingErrorCode = OH_Drawing_FontArgumentsDestroy(fontArguments);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
@@ -185,9 +185,9 @@ HWTEST_F(DrawingNativeFontTest, testFontArgumentsDestoryNormal, TestSize.Level0)
 HWTEST_F(DrawingNativeFontTest, testFontArgumentsDestoryNull, TestSize.Level0) {
     // 1. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
-    // 2. OH_Drawing_FontArgumentsDestory, parameter is null ,renturn OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. OH_Drawing_FontArgumentsDestroy, parameter is null
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_SUCCESS;
-    drawingErrorCode = OH_Drawing_FontArgumentsDestory();
+    drawingErrorCode = OH_Drawing_FontArgumentsDestroy();
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
 }
 
@@ -209,7 +209,7 @@ HWTEST_F(DrawingNativeFontTest, testFontArgumentsDestoryMultiplieCalls, TestSize
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     for (int i = 0; i < NUMBER_10; i++)
     {
-        drawingErrorCode = OH_Drawing_FontArgumentsDestory(fontArguments);
+        drawingErrorCode = OH_Drawing_FontArgumentsDestroy(fontArguments);
         EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
     }
     // 3. OH_Drawing_FontCreate, OH_Drawing_FontArgumentsAddVariation
@@ -217,7 +217,7 @@ HWTEST_F(DrawingNativeFontTest, testFontArgumentsDestoryMultiplieCalls, TestSize
     for (size_t i = 0; i < NUMBER_10; i++)
     {
         OH_Drawing_FontArguments *fontArguments1 = OH_Drawing_FontArgumentsCreate();
-        drawingErrorCode1 = OH_Drawing_FontArgumentsDestory(fontArguments1);
+        drawingErrorCode1 = OH_Drawing_FontArgumentsDestroy(fontArguments1);
         EXPECT_EQ(drawingErrorCode1, OH_DRAWING_SUCCESS);
     }
 }

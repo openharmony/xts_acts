@@ -264,7 +264,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNorm
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", 0);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_TypefaceCreateFromFileWithArguments
-    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFileWithArguments("/system/fonts/HarmonyOS_Sans.ttf", fontArguments);
+    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFileWithArguments(
+        "/system/fonts/NotoSansBengaliUI-Regular", fontArguments);
     // 4. OH_Drawing_TypefaceDestroy
     OH_Drawing_TypefaceDestroy(typeface);
     // 5. OH_Drawing_FontArgumentsDestroy
@@ -290,7 +291,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNull
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFileWithArguments(nullptr, fontArguments);
     EXPECT_EQ(typeface, nullptr);
     // 4. OH_Drawing_TypefaceCreateFromFileWithArguments,the second parameter is nullptr,return nullptr
-    OH_Drawing_Typeface *typeface1 = OH_Drawing_TypefaceCreateFromFileWithArguments("/system/fonts/HarmonyOS_Sans.ttf", nullptr);
+    OH_Drawing_Typeface *typeface1 = OH_Drawing_TypefaceCreateFromFileWithArguments(
+        "/system/fonts/NotoSansBengaliUI-Regular", nullptr);
     EXPECT_EQ(typeface1, nullptr);
     // 5. OH_Drawing_TypefaceDestroy
     OH_Drawing_TypefaceDestroy(typeface);
@@ -343,7 +345,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsMult
     // 3. OH_Drawing_TypefaceCreateFromFileWithArguments
     for (int i = 0; i < NUMBER_10; i++)
     {
-        OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFileWithArguments("/system/fonts/HarmonyOS_Sans.ttf", fontArguments);
+        OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFileWithArguments(
+            "/system/fonts/NotoSansBengaliUI-Regular", fontArguments);
     }
     // 4. OH_Drawing_TypefaceDestroy
     OH_Drawing_TypefaceDestroy(typeface);
@@ -361,7 +364,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsMult
  */
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNormal, TestSize.Level0) {
     // 1. OH_Drawing_TypefaceCreateFromFile
-    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/HarmonyOS_Sans.ttf", 0);
+    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
     // 2. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
     // 3. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
@@ -388,7 +391,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNormal, TestSiz
  */
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNull, TestSize.Level3) {
     // 1. OH_Drawing_TypefaceCreateFromFile
-    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/HarmonyOS_Sans.ttf", 0);
+    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
     // 2. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
     // 3. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
@@ -419,7 +422,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNull, TestSize.
  */
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_TypefaceCreateFromFile
-    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/HarmonyOS_Sans.ttf", 0);
+    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
     // 2. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
     // 3. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
