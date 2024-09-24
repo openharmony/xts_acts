@@ -158,34 +158,34 @@ export default function drawingCodeTest() {
      * @tc.name Test CanvasConstruct
      * @tc.desc test the drawing of create
      */
-  //    it('CanvasConstruct', 0, async (done: Function) => {
-  //      try {
-  //        const color = new ArrayBuffer(96);
-  //        let opts: image.InitializationOptions = {
-  //          editable: true,
-  //          pixelFormat: 3,
-  //          size: {
-  //            height: 4,
-  //            width: 6
-  //          }
-  //        }
-  //        console.log('test enum value of CanvasConstruct Manager success1');
-  //        const canvas = new drawing.Canvas(null);
-  //        console.log('test enum value of CanvasConstruct Manager success');
-  //        expect().assertFail();
-  //        done();
-  //      } catch (err) {
-  //        if (err.code == 401) {
-  //          console.log('test enum value of CanvasConstruct Manager error' + err.code);
-  //          expect(true).assertTrue();
-  //          done();
-  //        } else {
-  //          console.log('test enum value of CanvasConstruct Manager error1' + JSON.stringify(err))
-  //          expect().assertFail();
-  //          done();
-  //        }
-  //      }
-  //    })
+//    it('CanvasConstruct', 0, async (done: Function) => {
+//      try {
+//        const color = new ArrayBuffer(96);
+//        let opts: image.InitializationOptions = {
+//          editable: true,
+//          pixelFormat: 3,
+//          size: {
+//            height: 4,
+//            width: 6
+//          }
+//        }
+//        console.log('test enum value of CanvasConstruct Manager success1');
+//        const canvas = new drawing.Canvas(null);
+//        console.log('test enum value of CanvasConstruct Manager success');
+//        expect().assertFail();
+//        done();
+//      } catch (err) {
+//        if (err.code == 401) {
+//          console.log('test enum value of CanvasConstruct Manager error' + err.code);
+//          expect(true).assertTrue();
+//          done();
+//        } else {
+//          console.log('test enum value of CanvasConstruct Manager error1' + JSON.stringify(err))
+//          expect().assertFail();
+//          done();
+//        }
+//      }
+//    })
     /**
      * @tc.number SUB_GRAPHIC_DrawingCode_FontEnableSubpixel
      * @tc.name Test FontEnableSubpixel
