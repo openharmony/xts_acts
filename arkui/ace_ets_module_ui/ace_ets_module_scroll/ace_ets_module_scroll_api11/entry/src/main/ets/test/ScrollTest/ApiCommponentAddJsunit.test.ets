@@ -132,7 +132,7 @@ export default function ApiCommponentAddJsunit() {
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('nexpageAdd'));
       await btn.click();
-      await CommonFunc.sleep(100);
+      await CommonFunc.sleep(1000);
       // wether if swipe
       let gridText = await driver.findComponent(ON.id('25'));
       let  text = await gridText.getText();
