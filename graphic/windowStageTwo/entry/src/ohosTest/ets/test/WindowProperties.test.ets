@@ -354,11 +354,13 @@ export default function windowPropertiesTest() {
         console.info(`${caseName} Succeeded in changing the window size.`);
       } catch (error) {
         if(error.code == 1300002){
-          console.info(`${caseName} This window state is abnormal`);
+          const windowStatus = windowClass.getWindowStatus();
+          console.info(`${caseName} This window state is: ${windowStatus}. full-screen is not to support resize`);
           windowClass.off('windowSizeChange');
           done();
         } else{
           console.error(`${caseName}: Error: ${JSON.stringify(error)}`);
+          windowClass.off('windowSizeChange');
           expect().assertFail();
           done();
         }
