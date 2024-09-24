@@ -31,7 +31,10 @@ struct TextMenuType1 {
             .verticalAlign(ImageSpanAlignment.CENTER)
         }
         .copyOption(CopyOptions.InApp)
-        .bindSelectionMenu(TextSpanType.IMAGE, this.LongPressImageCustomMenu, TextResponseType.LONG_PRESS, {menuType:MenuType.PREVIEW_MENU})
+        .bindSelectionMenu(TextSpanType.IMAGE, 
+          this.LongPressImageCustomMenu, 
+          TextResponseType.LONG_PRESS, 
+          {menuType:MenuType.PREVIEW_MENU})
         .borderWidth(1)
         .borderColor(Color.Red)
         .width(200)
@@ -54,7 +57,10 @@ struct TextMenuType1 {
                   .verticalAlign(ImageSpanAlignment.CENTER)
             }
             .copyOption(CopyOptions.InApp)
-            .bindSelectionMenu(TextSpanType.IMAGE, this.LongPressImageCustomMenu, TextResponseType.LONG_PRESS, {menuType:MenuType.SELECTION_MENU})
+            .bindSelectionMenu(TextSpanType.IMAGE, 
+              this.LongPressImageCustomMenu, 
+              TextResponseType.LONG_PRESS, 
+              {menuType:MenuType.SELECTION_MENU})
             .borderWidth(1)
             .borderColor(Color.Red)
             .width(200)
