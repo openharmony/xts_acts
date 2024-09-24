@@ -12,18 +12,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "hilog/log.h"
 #include "napi/native_api.h"
+#include <unistd.h>
 #include "database/udmf/udmf.h"
+#include "database/udmf/uds.h"
+#include "database/udmf/utd.h"
 #include "database/udmf/udmf_err_code.h"
 #include "database/udmf/udmf_meta.h"
 #include <multimedia/image_framework/image_pixel_map_mdk.h>
 #include <multimedia/image_framework/image/pixelmap_native.h>
+#include <iostream>
+#include "common.h"
+#include <string>
 #include <iostream>
 #include <string>
 
 
 #define PARAM_0 0
 #define PARAM_1 1
+void* GetDataCallbackFunc(void* context, const char* type)
+{
+    auto plainText = OH_UdsPlainText_Create();
+    OH_UdsPlainText_SetAbstract(plainText, "doing something");
+    OH_UdsPlainText_SetContent(plainText, "doing something");
+    return plainText;
+}
+void FinalizeFunc(void* context) {};
 
 bool CheckUnsignedChar(unsigned char* dst, unsigned char* src, int size)
 {
@@ -114,6 +129,7 @@ static napi_value OH_UdmfData_GetPrimaryPlainText_0007(napi_env env, napi_callba
     OH_UdmfData_Destroy(data);
     return returnCode;
 }
+
 static napi_value OH_UdmfData_GetPrimaryHtml_0001(napi_env env, napi_callback_info info)
 {
     int result = OH_UdmfData_GetPrimaryHtml(nullptr, nullptr);
@@ -832,6 +848,239 @@ static napi_value OH_UdsFileUri_GetFileType002(napi_env env, napi_callback_info 
     return returnCode;
 }
 
+
+static napi_value OH_UdsFileUri_SetFileUri_0100(napi_env env, napi_callback_info info)
+{
+    napi_value returnCode = nullptr;
+    auto fileUri = OH_UdsFileUri_Create();
+    int result = OH_UdsFileUri_SetFileUri(fileUri, "file uri");
+    NAPI_ASSERT(env, result == UDMF_E_OK, "OH_UdsFileUri_SetFileUri is fail");
+
+    result = OH_UdsFileUri_SetFileUri(nullptr, "file uri");
+    NAPI_ASSERT(env, result == UDMF_E_INVALID_PARAM, "OH_UdsFileUri_SetFileUri is fail");
+
+    result = OH_UdsFileUri_SetFileUri(fileUri, nullptr);
+    NAPI_ASSERT(env, result == UDMF_E_INVALID_PARAM, "OH_UdsFileUri_SetFileUri is fail");
+    
+    napi_create_int32(env, result == UDMF_E_INVALID_PARAM, &returnCode);
+    OH_UdsFileUri_Destroy(fileUri);
+    return returnCode;
+}
+
+static napi_value OH_UdsFileUri_SetFileType_0100(napi_env env, napi_callback_info info)
+{
+    napi_value returnCode = nullptr;
+    auto fileUri = OH_UdsFileUri_Create();
+    int result = OH_UdsFileUri_SetFileType(fileUri, "file type");
+    NAPI_ASSERT(env, result == UDMF_E_OK, "OH_UdsFileUri_SetFileType is fail");
+    
+    result = OH_UdsFileUri_SetFileType(nullptr, "file type");
+    NAPI_ASSERT(env, result == UDMF_E_INVALID_PARAM, "OH_UdsFileUri_SetFileType is fail");
+    
+    result = OH_UdsFileUri_SetFileType(fileUri, nullptr);
+    NAPI_ASSERT(env, result == UDMF_E_INVALID_PARAM, "OH_UdsFileUri_SetFileType is fail");
+    
+    napi_create_int32(env, result == UDMF_E_INVALID_PARAM, &returnCode);
+    OH_UdsFileUri_Destroy(fileUri);
+    return returnCode;
+}
+
+static napi_value OH_UdsPixelMap_Create_0100(napi_env env, napi_callback_info info)
+{
+    napi_value returnCode = nullptr;
+    auto pixelMap = OH_UdsPixelMap_Create();
+    napi_create_int32(env, returnCode == nullptr, &returnCode);
+    OH_UdsPixelMap_Destroy(pixelMap);
+    return returnCode;
+}
+
+static napi_value OH_UdsPixelMap_GetType_0100(napi_env env, napi_callback_info info)
+{
+    napi_value returnCode = nullptr;
+    auto pixelMap = OH_UdsPixelMap_Create();
+    NAPI_ASSERT(env, UDMF_META_OPENHARMONY_PIXEL_MAP == std::string(OH_UdsPixelMap_GetType(pixelMap)),
+        "OH_UdsFileUri_SetFileType is fail");
+    OH_UdsPixelMap_Destroy(pixelMap);
+    OH_UdsPixelMap* pixelMapNullptr = nullptr;
+    NAPI_ASSERT(env, OH_UdsPixelMap_GetType(pixelMapNullptr) == nullptr, "OH_UdsPixelMap_GetType is fail");
+    
+    napi_create_int32(env, returnCode == nullptr, &returnCode);
+    
+    OH_UdsPixelMap_Destroy(pixelMapNullptr);
+    return returnCode;
+}
+
+static napi_value OH_UdsPixelMap_SetPixelMap_0100(napi_env env, napi_callback_info info)
+{
+    napi_value returnCode = nullptr;
+    auto pixelMap = OH_UdsPixelMap_Create();
+    uint8_t data [500];
+    int dataSize = 500;
+    for (int i = 0; i < dataSize; i++) {
+        data[i] = i + 1;
+    }
+    OH_Pixelmap_InitializationOptions *createOpts;
+    OH_PixelmapInitializationOptions_Create(&createOpts);
+    int width = 6;
+    OH_PixelmapInitializationOptions_SetWidth(createOpts, width);
+    int height = 4;
+    OH_PixelmapInitializationOptions_SetHeight(createOpts, height);
+    OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_RGBA_8888);
+    OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNKNOWN);
+
+    OH_PixelmapNative *pixelmapNative;
+    OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &pixelmapNative);
+    
+    int result = OH_UdsPixelMap_SetPixelMap(pixelMap, pixelmapNative);
+    NAPI_ASSERT(env, result == UDMF_E_OK, "OH_UdsPixelMap_SetPixelMap is fail");
+    
+    uint8_t data1 [500];
+    int dataSize1 = 500;
+    for (int i = 0; i < dataSize1; i++) {
+        data1[i] = i + 1;
+    }
+    OH_Pixelmap_InitializationOptions *createOpts1;
+    OH_PixelmapInitializationOptions_Create(&createOpts1);
+    int width1 = 6;
+    OH_PixelmapInitializationOptions_SetWidth(createOpts1, width1);
+    int height1 = 4;
+    OH_PixelmapInitializationOptions_SetHeight(createOpts1, height1);
+    OH_PixelmapInitializationOptions_SetPixelFormat(createOpts1, PIXEL_FORMAT_RGBA_8888);
+    OH_PixelmapInitializationOptions_SetAlphaType(createOpts1, PIXELMAP_ALPHA_TYPE_UNKNOWN);
+
+    OH_PixelmapNative *pixelmapNativeGet;
+    OH_PixelmapNative_CreatePixelmap(data1, dataSize1, createOpts1, &pixelmapNativeGet);
+    OH_UdsPixelMap_GetPixelMap(pixelMap, pixelmapNativeGet);
+    
+    NAPI_ASSERT(env, pixelmapNativeGet != nullptr, "OH_OH_UdsPixelMap_GetPixelMap is fail");
+    napi_create_int32(env, result == UDMF_E_OK, &returnCode);
+    OH_PixelmapNative_Release (pixelmapNative);
+    OH_UdsPixelMap_Destroy(pixelMap);
+    return returnCode;
+}
+
+static napi_value OH_UdmfRecordProvider_Destroy0100(napi_env env, napi_callback_info info)
+{
+    OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+    NAPI_ASSERT(env, provider != nullptr, "OH_UdmfRecordProvider_Create is fail");
+    
+    int num = 1;
+    void* context = &num;
+    OH_UdmfRecordProvider_SetData(provider, context, GetDataCallbackFunc, FinalizeFunc);
+    int res1 = OH_UdmfRecordProvider_Destroy(provider);
+    NAPI_ASSERT(env, res1 == UDMF_E_OK, "OH_UdmfRecordProvider_SetData is fail");
+    
+    napi_value returnCode;
+    napi_create_int32(env, res1 == UDMF_E_OK, &returnCode);
+    return returnCode;
+}
+
+static napi_value OH_UdmfRecordProvider_Destroy0200(napi_env env, napi_callback_info info)
+{
+    OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+    NAPI_ASSERT(env, provider != nullptr, "OH_UdmfRecordProvider_Create is fail");
+    
+    int num = 1;
+    void* context = &num;
+    OH_UdmfRecordProvider_SetData(provider, context, GetDataCallbackFunc, nullptr);
+    int res1 = OH_UdmfRecordProvider_Destroy(provider);
+    NAPI_ASSERT(env, res1 == UDMF_E_OK, "OH_UdmfRecordProvider_Destroy is fail");
+    
+    napi_value returnCode;
+    napi_create_int32(env, res1 == UDMF_E_OK, &returnCode);
+    return returnCode;
+}
+
+static napi_value OH_UdmfRecordProvider_Create0100(napi_env env, napi_callback_info info)
+{
+    OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+    napi_value returnCode;
+    napi_create_int32(env, provider != nullptr, &returnCode);
+    OH_UdmfRecordProvider_Destroy(provider);
+    return returnCode;
+}
+
+
+static napi_value OH_UdmfRecordProvider_SetData0100(napi_env env, napi_callback_info info)
+{
+    napi_value returnCode;
+    OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+    NAPI_ASSERT(env, provider != nullptr, "OH_UdmfRecordProvider_Create is fail");
+    int num = 1;
+    void* context = &num;
+    int res = OH_UdmfRecordProvider_SetData(provider, context, GetDataCallbackFunc, FinalizeFunc);
+    NAPI_ASSERT(env, res == UDMF_E_OK, "OH_UdmfRecordProvider_SetData is fail");
+    napi_create_int32(env, res == UDMF_E_OK, &returnCode);
+    OH_UdmfRecordProvider_Destroy(provider);
+    return returnCode;
+}
+static napi_value OH_UdmfRecordProvider_SetData0200(napi_env env, napi_callback_info info)
+{
+    OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+    NAPI_ASSERT(env, provider != nullptr, "OH_UdmfRecordProvider_Create is fail");
+    int num = 1;
+    void* context = &num;
+    int res1 = OH_UdmfRecordProvider_SetData(provider, context, GetDataCallbackFunc, nullptr);
+    NAPI_ASSERT(env, res1 == UDMF_E_INVALID_PARAM, "OH_UdmfRecordProvider_SetData is fail");
+
+    int res2 = OH_UdmfRecordProvider_SetData(nullptr, context, GetDataCallbackFunc, nullptr);
+    NAPI_ASSERT(env, res2 == UDMF_E_INVALID_PARAM, "OH_UdmfRecordProvider_SetData is fail");
+
+    int res3 = OH_UdmfRecordProvider_SetData(provider, context, nullptr, nullptr);
+    NAPI_ASSERT(env, res3 == UDMF_E_INVALID_PARAM, "OH_UdmfRecordProvider_SetData is fail");
+    
+    napi_value returnCode;
+    napi_create_int32(env, res1 == UDMF_E_INVALID_PARAM, &returnCode);
+    OH_UdmfRecordProvider_Destroy(provider);
+    return returnCode;
+}
+
+static napi_value OH_UdmfRecord_SetProvider0100(napi_env env, napi_callback_info info)
+{
+    OH_UdmfRecord *record = OH_UdmfRecord_Create();
+    OH_UdsPlainText *plainText = OH_UdsPlainText_Create();
+    char content[] = "hello world";
+    OH_UdsPlainText_SetContent(plainText, content);
+    OH_UdmfRecord_AddPlainText(record, plainText);
+    OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+    NAPI_ASSERT(env, provider != nullptr, "OH_UdmfRecordProvider_Create is fail");
+    
+    int num = 1;
+    void* context = &num;
+    OH_UdmfRecordProvider_SetData(provider, context, GetDataCallbackFunc, FinalizeFunc);
+    const char* types[3] = { "general.plain-text", "general.hyperlink", "general.html" };
+    int res = OH_UdmfRecord_SetProvider(record, types, 3, provider);
+    NAPI_ASSERT(env, res == UDMF_E_OK, "OH_UdmfRecord_SetProvider is fail");
+    
+    napi_value returnCode;
+    napi_create_int32(env, res == UDMF_E_OK, &returnCode);
+    OH_UdmfRecordProvider_Destroy(provider);
+    return returnCode;
+}
+
+static napi_value OH_UdmfRecord_SetProvider0200(napi_env env, napi_callback_info info)
+{
+    OH_UdmfRecord *record = OH_UdmfRecord_Create();
+    OH_UdsPlainText *plainText = OH_UdsPlainText_Create();
+    char content[] = "hello world";
+    OH_UdsPlainText_SetContent(plainText, content);
+    OH_UdmfRecord_AddPlainText(record, plainText);
+    OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+    NAPI_ASSERT(env, provider != nullptr, "OH_UdmfRecordProvider_Create is fail");
+    
+    int num = 1;
+    void* context = &num;
+    OH_UdmfRecordProvider_SetData(provider, context, GetDataCallbackFunc, FinalizeFunc);
+    const char* types[3] = { "general.plain-text", "general.hyperlink", "general.html" };
+    int res = OH_UdmfRecord_SetProvider(record, types, 3, provider);
+    NAPI_ASSERT(env, res == UDMF_E_OK, "OH_UdmfRecord_SetProvider is fail");
+    
+    napi_value returnCode;
+    napi_create_int32(env, res == UDMF_E_OK, &returnCode);
+    OH_UdmfRecordProvider_Destroy(provider);
+    return returnCode;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -941,6 +1190,30 @@ static napi_value Init(napi_env env, napi_value exports)
         {"OH_UdsFileUri_GetFileType001", nullptr, OH_UdsFileUri_GetFileType001, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"OH_UdsFileUri_GetFileType002", nullptr, OH_UdsFileUri_GetFileType002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdsFileUri_SetFileUri_0100", nullptr, OH_UdsFileUri_SetFileUri_0100, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdsFileUri_SetFileType_0100", nullptr, OH_UdsFileUri_SetFileType_0100, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdsPixelMap_Create_0100", nullptr, OH_UdsPixelMap_Create_0100, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdsPixelMap_GetType_0100", nullptr, OH_UdsPixelMap_GetType_0100, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdsPixelMap_SetPixelMap_0100", nullptr, OH_UdsPixelMap_SetPixelMap_0100, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdmfRecordProvider_Destroy0100", nullptr, OH_UdmfRecordProvider_Destroy0100, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdmfRecordProvider_Destroy0200", nullptr, OH_UdmfRecordProvider_Destroy0200, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdmfRecordProvider_Create0100", nullptr, OH_UdmfRecordProvider_Create0100, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdmfRecordProvider_SetData0100", nullptr, OH_UdmfRecordProvider_SetData0100, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdmfRecordProvider_SetData0200", nullptr, OH_UdmfRecordProvider_SetData0200, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdmfRecord_SetProvider0100", nullptr, OH_UdmfRecord_SetProvider0100, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdmfRecord_SetProvider0200", nullptr, OH_UdmfRecord_SetProvider0200, nullptr, nullptr,
          nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
