@@ -82,7 +82,7 @@ export default function imageExifGetModifyTest() {
         const filePath = AppStorage.get('pathDir') + '/' + fileName
         imageSourceApi = image.createImageSource(filePath)
       }else if(type === "rawfile"){
-        const resourceMgr: resourceManager.ResourceManager = testContext.createModuleContext("entry").resourceManager
+        const resourceMgr: resourceManager.ResourceManager = testContext.createModuleContext("entry_test").resourceManager
         const rawFileDescriptor = await resourceMgr.getRawFd(fileName)
         imageSourceApi = image.createImageSource(rawFileDescriptor)
       }else if(type === "incremental") {
