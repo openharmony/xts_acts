@@ -1,8 +1,0 @@
-{
-  "src": [
-    "TestAbility/pages/Index",
-    "TestAbility/pages/ListScroll",
-    "TestAbility/pages/ListScrollToItemInGroup",
-    "TestAbility/pages/CustomDialogMask"
-  ]
-}
