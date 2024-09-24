@@ -4584,5 +4584,26 @@ export default function TaskPoolTest() {
       taskpool.cancel(periodicTask)
       done();
     })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0201
+     * @tc.name      : TaskPoolTestClass201
+     * @tc.desc      : taskpool taskGroup
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass201', 0, async (done: Function) => {
+      let task:taskpool.Task = new taskpool.Task(errorTest);
+      let task2:taskpool.Task = new taskpool.Task(printArgs, 100);
+      let taskGroup:taskpool.TaskGroup = new taskpool.TaskGroup();
+      taskGroup.addTask(task);
+      taskGroup.addTask(task2);
+      await taskpool.execute(taskGroup).catch((e: BusinessError) => {
+        console.log(e.message)
+        expect(e.message).assertContain("this is an error");
+      })
+      done();
+    })
   })
 }
