@@ -79,7 +79,8 @@ struct RichEditorMenuType1 {
   @State pasteEnable: boolean = false
   @State visibilityValue: Visibility = Visibility.Visible
   @State textStyle: RichEditorTextStyle = {}
-  private fontWeightTable: string[] = ["100", "200", "300", "400", "500", "600", "700", "800", "900", "bold", "normal", "bolder", "lighter", "medium", "regular"]
+  private fontWeightTable: string[] = ["100", "200", "300", "400", "500", "600", "700", "800",
+   "900", "bold", "normal", "bolder", "lighter", "medium", "regular"]
   private theme: SelectionMenuTheme = defaultTheme;
 
   aboutToAppear() {
@@ -146,7 +147,10 @@ struct RichEditorMenuType1 {
                 this.start = value.selection[0]
                 this.end = value.selection[1]
               })
-              .bindSelectionMenu(RichEditorSpanType.TEXT, this.panel, ResponseType.LongPress, {menuType:MenuType.SELECTION_MENU})
+              .bindSelectionMenu(RichEditorSpanType.TEXT,
+                this.panel, 
+                ResponseType.LongPress, 
+                {menuType:MenuType.SELECTION_MENU})
               .borderWidth(1)
               .borderColor(Color.Red)
               .width(200)
@@ -169,7 +173,8 @@ struct RichEditorMenuType1 {
         if ((item as RichEditorTextSpanResult)?.textStyle) {
           let span = item as RichEditorTextSpanResult
           let style = span.textStyle
-          let data = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_PLAIN, span.value.substring(span.offsetInSpan[0], span.offsetInSpan[1]))
+          let data = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_PLAIN,
+            span.value.substring(span.offsetInSpan[0], span.offsetInSpan[1]))
           let prop = pasteData.getProperty()
           let temp: Record<string, Object> = {
             'color': style.fontColor,
@@ -217,7 +222,8 @@ struct RichEditorMenuType1 {
           fontWeight: FontWeight.Normal,
           fontFamily: "HarmonyOS Sans",
           fontStyle: FontStyle.Normal,
-          decoration: { type: TextDecorationType.None, color: "#FF000000", style: TextDecorationStyle.SOLID }
+          decoration: { type: TextDecorationType.None, color: "#FF000000",
+            style: TextDecorationStyle.SOLID }
         }
         if (data.getProperty() && data.getProperty().additions[i]) {
           const tmp = data.getProperty().additions[i] as Record<string, Object | undefined>;
@@ -246,7 +252,8 @@ struct RichEditorMenuType1 {
             tex.decoration = { type: tex.decoration.type, color: tex.decoration.color }
           }
         }
-        if (element && element.plainText && element.mimeType === pasteboard.MIMETYPE_TEXT_PLAIN && this.controller) {
+        if (element && element.plainText && 
+         element.mimeType === pasteboard.MIMETYPE_TEXT_PLAIN && this.controller) {
           this.controller.addTextSpan(element.plainText,
             {
               style: tex,
@@ -283,7 +290,10 @@ struct RichEditorMenuType1 {
       Row({ space: 2 }) {
         ForEach(this.iconArr, (item:Resource, index ?: number) => {
           Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-            Image(item).fillColor(this.theme.imageFillColor).width(24).height(24).focusable(true).draggable(false)
+            Image(item)
+             .fillColor(this.theme.imageFillColor)
+             .width(24).height(24).focusable(true)
+             .draggable(false)
           }
           .borderRadius(this.theme.iconBorderRadius)
           .width(this.theme.buttonSize)
@@ -358,7 +368,10 @@ struct RichEditorMenuType1 {
                         this.textStyle.decoration.type = TextDecorationType.Underline
                       }
                     } else {
-                      this.textStyle.decoration = { type: TextDecorationType.Underline, color: Color.Black, style: TextDecorationStyle.SOLID }
+                      this.textStyle.decoration = { 
+                          type: TextDecorationType.Underline, 
+                          color: Color.Black, 
+                          style: TextDecorationStyle.SOLID }
                     }
                     this.controller.updateSpanStyle({
                       start: offset + start,
