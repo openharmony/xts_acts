@@ -19,11 +19,11 @@ group("multimodalinput") {
     deps = [
       "input_cpp_standard:ActsInputNativeTest",
       "input_js_standard:multimodalinput_js_test",
-      "multimodalinput_ets/InputDeviceEts:ActsMMIInputDeviceEtsTest",
-      "multimodalinput_ets/PointerEts:ActsMMIPointerEtsTest",
+      "multimodalinput_ets_hvigor/InputDevice:ActsMultimodalInputDeviceTest",
+      "multimodalinput_ets_hvigor/Pointer:ActsMultimodalInputPointerTest",
       "multimodalinput_ets_standard:ActsMultimodalInputEtsTest",
-      "multimodalinput_ndk:ActsMultimodalInputNdkTest",
-      "multimodalinput_ndk_system:ActsMultimodalInputNdkSystemTest",
+      "multimodalinput_ndk_hvigor/InputNdkNormal:ActsMultimodalInputNdkTest",
+      "multimodalinput_ndk_hvigor/InputNdkSystem:ActsMultimodalInputNdkSystemTest",
     ]
   }
 }
