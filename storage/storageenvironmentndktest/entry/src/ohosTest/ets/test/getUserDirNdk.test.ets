@@ -17,7 +17,7 @@ import { describe, it, expect } from '@ohos/hypium';
 import environment from 'libenvironment.so';
 
 export default function getUserDirNdkTest(){
-  describe('environment_getUserDir_NDK_test', () => {
+  describe('getUserDir_NDK_test', () => {
 
     /**
      * @tc.number SUB_BASIC_FM_FileAPI_NDK_Environment_0100
