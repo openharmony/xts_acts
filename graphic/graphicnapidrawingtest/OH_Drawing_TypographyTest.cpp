@@ -2655,7 +2655,6 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTestWithIndent, TestSiz
     const char* text = "OpenHarmony\n";
     OH_Drawing_TypographyHandlerAddText(handler, text);
     OH_Drawing_TypographyHandlerPopTextStyle(handler);
-
     OH_Drawing_Typography* typography = OH_Drawing_CreateTypography(handler);
     const float indents[] = {1.2, 3.4};
     OH_Drawing_TypographySetIndents(typography, 2, indents);
