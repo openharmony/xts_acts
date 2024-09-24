@@ -22,18 +22,18 @@ import ParamManager from '../common/Param';
 
 let param = new ParamManager();
 export default class EntryAbility3 extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam):void{
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'EntryAbility3', `want, 50 == ${JSON.stringify(want)}`);
     AppStorage.SetOrCreate<boolean>('onCreate', true);
     param.setTextNme(want.action);
   }
 
-  onDestroy(): void {
+  onDestroy():void{
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage): void {
+  onWindowStageCreate(windowStage: window.WindowStage):void{
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onWindowStageCreate');
     AppStorage.SetOrCreate<boolean>('onWindowStageCreate', true);
     windowStage.loadContent('pages/Index', (err) => {
@@ -45,11 +45,11 @@ export default class EntryAbility3 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy(): void {
+  onWindowStageDestroy():void{
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
-  onForeground(): void {
+  onForeground():void{
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onForeground');
     let events = param.getTextNme();
     if (events == '') {
@@ -92,7 +92,7 @@ export default class EntryAbility3 extends UIAbility {
     }
   }
 
-  onBackground(): void {
+  onBackground():void{
     hilog.info(0x0000, 'EntryAbility3', '%{public}s', 'Ability onBackground');
   }
 }
