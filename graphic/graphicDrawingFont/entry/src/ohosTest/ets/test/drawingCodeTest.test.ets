@@ -1004,11 +1004,11 @@ export default function drawingCodeTest() {
       }
     })
     /**
-     * @tc.number SUB_GRAPHIC_DrawingCode_RegionSetPath
+     * @tc.number SUB_GRAPHIC_DrawingCode_RegionSetPathTwo
      * @tc.name Test RegionSetPath
      * @tc.desc test the drawing of create
      */
-    it('RegionSetPath', 0, async (done: Function) => {
+    it('RegionSetPathTwo', 0, async (done: Function) => {
       try {
         let region = new drawing.Region();
         let path = new drawing.Path();
@@ -1019,11 +1019,11 @@ export default function drawingCodeTest() {
         done()
       } catch (err) {
         if (err.code == 401) {
-          console.log('test enum value of RegionSetPath Manager error' + err.code);
+          console.log('RegionSetPathTwo test enum value of RegionSetPath Manager error' + err.code);
           expect(true).assertTrue();
           done();
         } else {
-          console.log('test enum value of RegionSetPath Manager error1' + JSON.stringify(err))
+          console.log('RegionSetPathTwo test enum value of RegionSetPath Manager error1' + JSON.stringify(err))
           expect().assertFail();
           done();
         }
