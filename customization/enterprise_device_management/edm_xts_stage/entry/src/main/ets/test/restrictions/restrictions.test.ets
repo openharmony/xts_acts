@@ -27,7 +27,6 @@ const LABEL_MIC = "microphone";
 const LABEL_FINGER_PRINT = "fingerprint";
 const LABEL_USB = "usb";
 const LABEL_WIFI = "wifi";
-const LABEL_FINGERPRINT_FOR_ACCOUNT = "fingerprintForAccount";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -384,7 +383,7 @@ function testSetDisallowedForAccountPolicy() {
    */
   it("test_set_disallowed_policy_for_account_0100", Level.LEVEL2, async (done: Function) => {
     try {
-      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_FINGERPRINT_FOR_ACCOUNT, true, DEFAULT_USER_ID);
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_FINGER_PRINT, true, DEFAULT_USER_ID);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 9200001).assertTrue();
@@ -403,7 +402,7 @@ function testSetDisallowedForAccountPolicy() {
   it("test_set_disallowed_policy_for_account_0200", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
-      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_FINGERPRINT_FOR_ACCOUNT, true, DEFAULT_USER_ID);
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_FINGER_PRINT, true, DEFAULT_USER_ID);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 9200002).assertTrue();
@@ -424,7 +423,7 @@ function testSetDisallowedForAccountPolicy() {
   it("test_set_disallowed_policy_for_account_0300", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
-      restrictions.setDisallowedPolicyForAccount(INVALID_WANT, LABEL_FINGERPRINT_FOR_ACCOUNT, true, DEFAULT_USER_ID);
+      restrictions.setDisallowedPolicyForAccount(INVALID_WANT, LABEL_FINGER_PRINT, true, DEFAULT_USER_ID);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
@@ -466,7 +465,7 @@ function testSetDisallowedForAccountPolicy() {
   it("test_set_disallowed_policy_for_account_0500", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
-      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_FINGERPRINT_FOR_ACCOUNT, null, DEFAULT_USER_ID);
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_FINGER_PRINT, null, DEFAULT_USER_ID);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
@@ -487,7 +486,7 @@ function testSetDisallowedForAccountPolicy() {
   it("test_set_disallowed_policy_for_account_0600", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
-      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_FINGERPRINT_FOR_ACCOUNT, true, null);
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_FINGER_PRINT, true, null);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
@@ -508,13 +507,13 @@ function testSetDisallowedForAccountPolicy() {
   it("test_set_disallowed_policy_for_account_0700", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
-      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_FINGERPRINT_FOR_ACCOUNT, true, DEFAULT_USER_ID);
-      let res = restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_FINGERPRINT_FOR_ACCOUNT, DEFAULT_USER_ID);
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_FINGER_PRINT, true, DEFAULT_USER_ID);
+      let res = restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_FINGER_PRINT, DEFAULT_USER_ID);
       expect(res).assertTrue();
     } catch (error) {
       expect(false).assertTrue();
     } finally {
-      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_FINGERPRINT_FOR_ACCOUNT, false, DEFAULT_USER_ID);
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_FINGER_PRINT, false, DEFAULT_USER_ID);
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
@@ -532,7 +531,7 @@ function testGetDisallowedForAccountPolicy() {
    */
   it("test_get_disallowed_policy_for_account_0100", Level.LEVEL2, async (done: Function) => {
     try {
-      restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_FINGERPRINT_FOR_ACCOUNT, DEFAULT_USER_ID);
+      restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_FINGER_PRINT, DEFAULT_USER_ID);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 9200001).assertTrue();
@@ -551,7 +550,7 @@ function testGetDisallowedForAccountPolicy() {
   it("test_get_disallowed_policy_for_account_0200", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
-      restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_FINGERPRINT_FOR_ACCOUNT, DEFAULT_USER_ID);
+      restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_FINGER_PRINT, DEFAULT_USER_ID);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 9200002).assertTrue();
@@ -572,7 +571,7 @@ function testGetDisallowedForAccountPolicy() {
   it("test_get_disallowed_policy_for_account_0300", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
-      restrictions.getDisallowedPolicyForAccount(INVALID_WANT, LABEL_FINGERPRINT_FOR_ACCOUNT, DEFAULT_USER_ID);
+      restrictions.getDisallowedPolicyForAccount(INVALID_WANT, LABEL_FINGER_PRINT, DEFAULT_USER_ID);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
@@ -614,7 +613,7 @@ function testGetDisallowedForAccountPolicy() {
   it("test_get_disallowed_policy_for_account_0500", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
-      restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_FINGERPRINT_FOR_ACCOUNT, null);
+      restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_FINGER_PRINT, null);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
