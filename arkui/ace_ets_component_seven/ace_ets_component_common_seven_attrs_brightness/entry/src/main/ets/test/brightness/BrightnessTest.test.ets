@@ -30,7 +30,7 @@ export default function BrightnessTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig: ESObject = {
     testName: 'testBrightness',
     pageName: 'brightnessPage',
     pageUrl: 'MainAbility/pages/brightness/BrightnessPage',
@@ -42,24 +42,24 @@ export default function BrightnessTest() {
     parentComponentKey: 'parentComponentKey',
     gutter: gutter,
     columns: columns
-  }
+  } as ESObject
 
-  let testValues = [{
+  let testValues: ESObject[] = [{
     describe: 'SetBrightness',
     setValue: {
       brightness: 0.1
-    },
+    } as ESObject,
     expectValue: {
       brightness: 0.1
-    }
-  }]
+    } as ESObject
+  } as ESObject]
 
   /**
    * Create test suite.
    */
   describe('brightnessTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       //Modify the target component properties.
       console.info('[' + data.caseTag + '] brightnessTest');
       console.info('[' + data.caseTag + '] check brightness.' + ` ${data.testValue.setValue.brightness}`);
