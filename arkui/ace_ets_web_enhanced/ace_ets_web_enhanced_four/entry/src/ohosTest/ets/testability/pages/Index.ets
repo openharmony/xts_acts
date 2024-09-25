@@ -73,7 +73,7 @@ struct Index {
     webview.WebCookieManager.setCookie(URL, 'a=b');
     let value = webview.WebCookieManager.getCookie(URL);
     if (value) {
-      hilog.info(0x0000, 'testTag', '%{public}s', "value: " + value);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'value: ' + value);
       AppStorage.setOrCreate('getCookie10114', new ResultData(typeof (value), value));
     }
   }
@@ -82,7 +82,7 @@ struct Index {
     webview.WebCookieManager.setCookie(URL, 'a=b');
     let value = webview.WebCookieManager.fetchCookieSync(URL);
     if (value) {
-      hilog.info(0x0000, 'testTag', '%{public}s', "value: " + value);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'value: ' + value);
       AppStorage.setOrCreate('fetchCookieSync10115', new ResultData(typeof (value), value));
     }
   }
@@ -95,7 +95,7 @@ struct Index {
         return;
       }
       if (cookie) {
-        hilog.info(0x0000, 'testTag', '%{public}s', "value: " + cookie);
+        hilog.info(0x0000, 'testTag', '%{public}s', 'value: ' + cookie);
         AppStorage.setOrCreate('fetchCookieCallback10116', new ResultData(typeof (cookie), cookie));
       }
     })
@@ -106,7 +106,7 @@ struct Index {
     webview.WebCookieManager.fetchCookie(URL)
       .then(cookie => {
         if (cookie) {
-          hilog.info(0x0000, 'testTag', '%{public}s', "value: " + cookie);
+          hilog.info(0x0000, 'testTag', '%{public}s', 'value: ' + cookie);
           AppStorage.setOrCreate('fetchCookiePromise10117', new ResultData(typeof (cookie), cookie));
         }
       })
@@ -119,7 +119,7 @@ struct Index {
     webview.WebCookieManager.configCookieSync(URL, 'a=b');
     let value = webview.WebCookieManager.getCookie(URL)
     if (value) {
-      hilog.info(0x0000, 'testTag', '%{public}s', "value: " + value);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'value: ' + value);
       AppStorage.setOrCreate('configCookieSync10118', new ResultData(typeof (value), value));
     }
   }
@@ -132,7 +132,7 @@ struct Index {
     })
     let value = webview.WebCookieManager.getCookie(URL);
     if (value) {
-      hilog.info(0x0000, 'testTag', '%{public}s', "value: " + value);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'value: ' + value);
       AppStorage.setOrCreate('configCookieCallback10119', new ResultData(typeof (value), value));
     }
   }
@@ -147,7 +147,7 @@ struct Index {
       })
     let value = webview.WebCookieManager.getCookie(URL);
     if (value) {
-      hilog.info(0x0000, 'testTag', '%{public}s', "value: " + value);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'value: ' + value);
       AppStorage.setOrCreate('configCookiePromise10120', new ResultData(typeof (value), value))
     }
   }
@@ -170,10 +170,10 @@ struct Index {
     try {
       webview.WebCookieManager.saveCookieAsync()
         .then(() => {
-          console.log("saveCookieAsyncCallback success!");
+          console.log('saveCookieAsyncCallback success!');
         })
         .catch((error: BusinessError) => {
-          console.error("error: " + error);
+          console.error('error: ' + error);
         });
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -187,7 +187,7 @@ struct Index {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     let result = webview.WebCookieManager.isCookieAllowed();
-    hilog.info(0x0000, 'testTag', '%{public}s', "value: result: " + result);
+    hilog.info(0x0000, 'testTag', '%{public}s', 'value: result: ' + result);
     AppStorage.setOrCreate('putAcceptCookieEnabled10123', new ResultData(typeof (result), result));
   }
 
@@ -198,14 +198,14 @@ struct Index {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     let result = webview.WebCookieManager.isThirdPartyCookieAllowed();
-    hilog.info(0x0000, 'testTag', '%{public}s', "value: result: " + result);
+    hilog.info(0x0000, 'testTag', '%{public}s', 'value: result: ' + result);
     AppStorage.setOrCreate('putAcceptThirdPartyCookieEnabled10124', new ResultData(typeof (result), result));
   }
 
   existCookie(){
     webview.WebCookieManager.setCookie(URL, 'a=b');
     let result = webview.WebCookieManager.existCookie();
-    hilog.info(0x0000, 'testTag', '%{public}s', "value: result: " + result)
+    hilog.info(0x0000, 'testTag', '%{public}s', 'value: result: ' + result)
     AppStorage.setOrCreate('existCookie10125', new ResultData(typeof (result), result));
   }
 
@@ -214,7 +214,7 @@ struct Index {
     try {
       webview.WebCookieManager.deleteEntireCookie();
       let result = webview.WebCookieManager.existCookie();
-      hilog.info(0x0000, 'testTag', '%{public}s', "value: result: " + result);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'value: result: ' + result);
       AppStorage.setOrCreate('deleteEntireCookie10126', new ResultData(typeof (result), result));
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -226,7 +226,7 @@ struct Index {
     try {
       webview.WebCookieManager.clearAllCookiesSync();
       let result = webview.WebCookieManager.existCookie();
-      hilog.info(0x0000, 'testTag', '%{public}s', "value: result: " + result);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'value: result: ' + result);
       AppStorage.setOrCreate('clearAllCookiesSync10127', new ResultData(typeof (result), result));
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -242,7 +242,7 @@ struct Index {
         }
       })
       let result = webview.WebCookieManager.existCookie();
-      hilog.info(0x0000, 'testTag', '%{public}s', "value: result: " + result);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'value: result: ' + result);
       AppStorage.setOrCreate('clearAllCookieCallback10128', new ResultData(typeof (result), result));
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -254,13 +254,13 @@ struct Index {
     try {
       webview.WebCookieManager.clearAllCookies()
         .then(() => {
-          console.log("clearAllCookies success!");
+          console.log('clearAllCookies success!');
         })
         .catch((error: BusinessError) => {
-          console.error("error: " + error);
+          console.error('error: ' + error);
         });
       let result = webview.WebCookieManager.existCookie();
-      hilog.info(0x0000, 'testTag', '%{public}s', "value: result: " + result);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'value: result: ' + result);
       AppStorage.setOrCreate('clearAllCookiePromise10129', new ResultData(typeof (result), result));
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -272,7 +272,7 @@ struct Index {
     try {
       webview.WebCookieManager.deleteSessionCookie();
       let value = webview.WebCookieManager.getCookie(URL);
-      hilog.info(0x0000, 'testTag', '%{public}s', "value: " + value);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'value: ' + value);
       AppStorage.setOrCreate('deleteSessionCookie10130', new ResultData(typeof (value), value));
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -284,7 +284,7 @@ struct Index {
     try {
       webview.WebCookieManager.clearSessionCookieSync();
       let value = webview.WebCookieManager.getCookie(URL);
-      hilog.info(0x0000, 'testTag', '%{public}s', "value: " + value);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'value: ' + value);
       AppStorage.setOrCreate('clearSessionCookieSync10131', new ResultData(typeof (value), value));
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -300,7 +300,7 @@ struct Index {
         }
       })
       let value = webview.WebCookieManager.getCookie(URL);
-      hilog.info(0x0000, 'testTag', '%{public}s', "value: " + value);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'value: ' + value);
       AppStorage.setOrCreate('clearSessionCookieCallback10132', new ResultData(typeof (value), value));
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -312,13 +312,13 @@ struct Index {
     try {
       webview.WebCookieManager.clearSessionCookie()
         .then(() => {
-          console.log("clearSessionCookie success!");
+          console.log('clearSessionCookie success!');
         })
         .catch((error: BusinessError) => {
-          console.error("error: " + error);
+          console.error('error: ' + error);
         });
       let value = webview.WebCookieManager.getCookie(URL);
-      hilog.info(0x0000, 'testTag', '%{public}s', "value: " + value);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'value: ' + value);
       AppStorage.setOrCreate('clearSessionCookiePromise10133', new ResultData(typeof (value), value));
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);

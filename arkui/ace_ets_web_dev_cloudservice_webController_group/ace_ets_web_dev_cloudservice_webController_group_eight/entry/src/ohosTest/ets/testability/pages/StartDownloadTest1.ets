@@ -40,8 +40,6 @@ struct WebComponent {
               // 传入一个下载路径，并开始下载。
               try {
                 webDownloadItem.start(null);
-                let s: Array<webview.WebviewController> = []
-                s[9].accessForward()
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 LocalContext.context.eventHub.emit('StartTest-error1')

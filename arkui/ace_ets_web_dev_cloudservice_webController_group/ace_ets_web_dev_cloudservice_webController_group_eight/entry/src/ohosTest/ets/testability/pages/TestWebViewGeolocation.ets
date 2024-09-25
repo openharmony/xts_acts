@@ -45,7 +45,7 @@ struct testWebView_Geolocation {
       Web({ src: 'www.example.com', controller: this.controller,incognitoMode: true});
 
       Button('getAccessibleGeolocation2')
-        .key("getAccessibleGeolocation2")
+        .key('getAccessibleGeolocation2')
         .onClick(() => {
           try {
             webview.GeolocationPermissions.getAccessibleGeolocation(this.origin)
@@ -63,13 +63,13 @@ struct testWebView_Geolocation {
       Web({ src: 'www.example.com', controller: this.controller});
 
       Button('getStoredGeolocation1')
-        .key("getStoredGeolocation1")
+        .key('getStoredGeolocation1')
         .onClick(() => {
           webview.GeolocationPermissions.getStoredGeolocation()
             .then(origins => {
               let origins_str = origins.join();
               console.log('getStoredGeolocationPromise origins: ' + origins_str);
-              if (origins_str === "") {
+              if (origins_str === '') {
                 console.log('No geolocation data available');
                 Utils.emitEvent('No data', 5007);
               } else {
@@ -84,17 +84,17 @@ struct testWebView_Geolocation {
       Web({ src: 'www.example.com', controller: this.controller,incognitoMode: true});
 
       Button('getStoredGeolocation2')
-        .key("getStoredGeolocation2")
+        .key('getStoredGeolocation2')
         .onClick(() => {
           webview.GeolocationPermissions.getStoredGeolocation()
             .then(origins => {
-              let origins_str = origins.join();
-              console.log('getStoredGeolocationPromise origins: ' + origins_str);
-              if (origins_str === "") {
+              let originsStr = origins.join();
+              console.log('getStoredGeolocationPromise origins: ' + originsStr);
+              if (originsStr === '') {
                 console.log('No geolocation data available');
                 Utils.emitEvent('No data', 5008);
               } else {
-                Utils.emitEvent(origins_str, 5008);
+                Utils.emitEvent(originsStr, 5008);
               }
             })
             .catch((error:BusinessError) => {
