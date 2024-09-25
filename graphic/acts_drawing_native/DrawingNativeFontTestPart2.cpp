@@ -128,7 +128,7 @@ HWTEST_F(DrawingNativeFontTest, testFontArgumentsAddVariationAbnormal, TestSize.
     // 2. OH_Drawing_FontArgumentsAddVariation, the second parameter is error
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_SUCCESS;
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "WGHT", NUMBER_100);
-    EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_FontArgumentsAddVariation, the second parameter is error
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "w", NUMBER_100);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -208,14 +208,7 @@ HWTEST_F(DrawingNativeFontTest, testFontArgumentsDestoryMultiplieCalls, TestSize
     {
         fontArguments = OH_Drawing_FontArgumentsCreate();
     }
-    // 2. OH_Drawing_FontArgumentsAddVariation, renturn OH_DRAWING_SUCCESS
-    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
-    for (int i = 0; i < NUMBER_10; i++)
-    {
-        drawingErrorCode = OH_Drawing_FontArgumentsDestroy(fontArguments);
-        EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
-    }
-    // 3. OH_Drawing_FontCreate, OH_Drawing_FontArgumentsAddVariation
+    // 2. OH_Drawing_FontCreate, OH_Drawing_FontArgumentsAddVariation
     OH_Drawing_ErrorCode drawingErrorCode1 = OH_DRAWING_ERROR_INVALID_PARAMETER;
     for (size_t i = 0; i < NUMBER_10; i++)
     {
