@@ -64,6 +64,7 @@ class DrawingNativeFontTest : public testing::Test {};
 HWTEST_F(DrawingNativeFontTest, testFontArgumentsCreateNormal, TestSize.Level0) {
     // 1. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    OH_Drawing_FontArgumentsDestroy(fontArguments);
 }
 
 /*
@@ -150,7 +151,7 @@ HWTEST_F(DrawingNativeFontTest, testFontArgumentsAddVariationMultipleCalls, Test
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_900);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_100);
-    drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NULL);
+    drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", 0.0f);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_100);
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", -1);
@@ -187,7 +188,7 @@ HWTEST_F(DrawingNativeFontTest, testFontArgumentsDestoryNull, TestSize.Level0) {
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
     // 2. OH_Drawing_FontArgumentsDestroy, parameter is null
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_SUCCESS;
-    drawingErrorCode = OH_Drawing_FontArgumentsDestroy();
+    drawingErrorCode = OH_Drawing_FontArgumentsDestroy(nullptr);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
 }
 
@@ -201,9 +202,10 @@ HWTEST_F(DrawingNativeFontTest, testFontArgumentsDestoryNull, TestSize.Level0) {
  */
 HWTEST_F(DrawingNativeFontTest, testFontArgumentsDestoryMultiplieCalls, TestSize.Level0) {
     // 1. OH_Drawing_FontCreate
+    OH_Drawing_FontArguments *fontArguments = nullptr;
     for (int i = 0; i < NUMBER_10; i++)
     {
-        OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+        fontArguments = OH_Drawing_FontArgumentsCreate();
     }
     // 2. OH_Drawing_FontArgumentsAddVariation, renturn OH_DRAWING_SUCCESS
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;

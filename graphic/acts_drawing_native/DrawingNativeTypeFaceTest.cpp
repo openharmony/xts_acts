@@ -343,9 +343,10 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsMult
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", 0);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_TypefaceCreateFromFileWithArguments
+    OH_Drawing_Typeface *typeface = nullptr;
     for (int i = 0; i < NUMBER_10; i++)
     {
-        OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFileWithArguments(
+        typeface = OH_Drawing_TypefaceCreateFromFileWithArguments(
             "/system/fonts/NotoSansBengaliUI-Regular", fontArguments);
     }
     // 4. OH_Drawing_TypefaceDestroy
@@ -430,9 +431,10 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentMultipleCalls, 
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_100);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
     // 4. OH_Drawing_TypefaceCreateFromCurrent
+    OH_Drawing_Typeface *typeface1 = nullptr;
     for (int i = 0; i < NUMBER_10; i++)
     {
-        OH_Drawing_Typeface *typeface1 = OH_Drawing_TypefaceCreateFromCurrent(typeface, fontArguments);
+        typeface1 = OH_Drawing_TypefaceCreateFromCurrent(typeface, fontArguments);
     }
     // 5. OH_Drawing_TypefaceDestroy typeface1
     OH_Drawing_TypefaceDestroy(typeface1);
