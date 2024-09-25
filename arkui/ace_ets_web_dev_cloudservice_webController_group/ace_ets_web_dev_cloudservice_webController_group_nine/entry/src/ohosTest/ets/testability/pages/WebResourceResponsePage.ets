@@ -36,19 +36,20 @@ struct webResourceResponsePage {
   controller: webview.WebviewController = new webview.WebviewController();
   responseWeb: WebResourceResponse = new WebResourceResponse()
   heads: Header[] = []
-  @State webdata: string = "<!DOCTYPE html>\n" +
-    "<html>\n" +
-    "<head>\n" +
-    "<title>intercept test</title>\n" +
-    "</head>\n" +
-    "<body>\n" +
-    "<h1>intercept test</h1>\n" +
-    "<script>" +
-    "function gettitle(){ return document.write(document.title); }" +
-    "gettitle()" +
-    "</script>" +
-    "</body>\n" +
-    "</html>"
+  @State webdata: string = '<!DOCTYPE html>\n' +
+    '<html>\n' +
+    '<head>\n' +
+    '<title>intercept test</title>\n' +
+    '</head>\n' +
+    '<body>\n' +
+    '<h1>intercept test</h1>\n' +
+    '<script>' +
+    'function gettitle(){ return document.write(document.title); }' +
+    'gettitle()' +
+    '</script>' +
+    '</body>\n' +
+    '</html>'
+ 
   @State emitKey: string = '';
   
   @State onHttpErrorReceive: boolean = false
