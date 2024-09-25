@@ -113,10 +113,11 @@ static napi_value DlaDdr(napi_env env, napi_callback_info info)
     int backParam = PARAM_0;
     Dl_info *dlInfo = nullptr;
     errno = SUCCESS;
-    const char *path = "libotherstestndk.so";
-    void *ptr = dlopen(path, RTLD_LAZY);
+    const char *path = "/system/lib/extensionability/libstatic_subscriber_extension_module.z.so";
+    void *handle = dlopen(path, RTLD_LAZY);
+    void* ptr = dlsym(handle, "OHOS_EXTENSION_GetExtensionModule");
     backParam = dladdr(ptr, dlInfo);
-    dlclose(ptr);
+    dlclose(handle);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -888,7 +889,9 @@ static napi_value Deletemodule(napi_env env, napi_callback_info info)
     pid_t pid = fork();
     if (pid == NO_ERROR) {
         const char *put_old = "0";
-        delete_module(put_old, PARAM_5);
+        if (access(put_old, F_OK) == 0) {
+            delete_module(put_old, PARAM_5);
+        }
         exit(PARAM_0);
     }
     napi_value result = nullptr;

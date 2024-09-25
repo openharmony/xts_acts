@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import aeabiNdkTest from './AeabiNdk.test';
 import complexNdkTest from './ComplexNdk.test';
 import ctypeNdkTest from './CtypeNdk.test';
@@ -152,7 +153,6 @@ export default function testsuite() {
   mountNdk1Test();
   muslQuotaNdk1Test();
   muslRandomNdk1Test();
-  muslResourceNdk1Test();
   muslSearch1Test();
   semaphoreNdk1Test();
   muslSetJmpNdk1Test();
@@ -233,4 +233,5 @@ export default function testsuite() {
   stat1NdkTest();
   termiosNdk1Test();
   threadsNdk1Test();
+  muslResourceNdk1Test();
 }
