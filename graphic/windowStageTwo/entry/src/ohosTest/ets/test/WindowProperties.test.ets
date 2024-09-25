@@ -335,11 +335,11 @@ export default function windowPropertiesTest() {
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1000
      * @tc.name      : testOnRectChangeOptionsResizeMainWindow
      * @tc.desc      : Test the function value of testRectChangeOptions
-     * @tc.size      : MediumTest
+     * @tc.size      : MediumTestrun
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testOnRectChangeOptionsResizeMainWindow", 0, async (done: Function) => {
+    it("TestOnRectChangeOptionsResizeMainWindow", 0, async (done: Function) => {
       let caseName = "TestOnRectChangeOptionsResizeMainWindow";
       let windowClass = windowStage.getMainWindowSync();
       try {
@@ -354,11 +354,24 @@ export default function windowPropertiesTest() {
         console.info(`${caseName} Succeeded in changing the window size.`);
       } catch (error) {
         if(error.code == 1300002){
-          const windowStatus = windowClass.getWindowStatus();
-          console.info(`${caseName} This window state is: ${windowStatus}. full-screen is not to support resize`);
-          windowClass.off('windowSizeChange');
-          expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
-          done();
+          try {
+            const windowStatus = windowClass.getWindowStatus();
+            console.info(`${caseName} This window state is: ${windowStatus}. full-screen is not to support resize`);
+            windowClass.off('windowSizeChange');
+            expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
+            done();
+          } catch (error) {
+            if (error.code === 801) {
+              console.info(`${caseName} The current device type does not support to getWindowStatus`);
+              windowClass.off('windowSizeChange');
+              done();
+            } else {
+              console.error(`${caseName}: Error: ${JSON.stringify(error)}`);
+              windowClass.off('windowSizeChange');
+              expect().assertFail();
+              done();
+            }
+          }
         } else{
           console.error(`${caseName}: Error: ${JSON.stringify(error)}`);
           windowClass.off('windowSizeChange');
