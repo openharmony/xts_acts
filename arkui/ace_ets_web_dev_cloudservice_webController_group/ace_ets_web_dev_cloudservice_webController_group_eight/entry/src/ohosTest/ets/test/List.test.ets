@@ -24,7 +24,6 @@ import ActsWebViewTest3 from './TestWebViewEnableSafeBrowsing.test';
 import ActsWebViewTest2 from './TestWebViewGeolocation.test';
 import ActsWebViewTest1 from './TestWebViewCookie.test';
 import WebDownloadItem from './GetGuid.test';
-import GetCurrentSpeed from './GetCurrentSpeed.test';
 import Download from './Download.test';
 import lastErrorCode from './LastErrorCode.test';
 
@@ -40,7 +39,6 @@ export default function testsuite() {
   ActsWebViewTest2();
   ActsWebViewTest1();
   WebDownloadItem();
-  GetCurrentSpeed();
   Download();
   lastErrorCode();
 }

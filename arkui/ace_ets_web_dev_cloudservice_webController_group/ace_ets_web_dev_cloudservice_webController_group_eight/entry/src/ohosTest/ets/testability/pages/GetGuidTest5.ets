@@ -89,8 +89,8 @@ struct WebComponent {
             })
             this.delegate3.onDownloadUpdated(async (webDownloadItem: webview.WebDownloadItem) => {
               console.log('download update guid3: ' + webDownloadItem.getGuid());
-              if (webDownloadItem.getPercentComplete() > 10
-                && webDownloadItem.getState() == webview.WebDownloadState.IN_PROGRESS) {
+              if (webDownloadItem.getPercentComplete() > 10 &&
+                webDownloadItem.getState() == webview.WebDownloadState.IN_PROGRESS) {
                 webDownloadItem.pause()
                 await Utils.sleep(100)
                 webDownloadItem.resume()
