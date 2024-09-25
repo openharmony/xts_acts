@@ -15,7 +15,7 @@
 import { WaterFlowDataSource } from './WaterFlowDataSource'
 @ObservedV2
 class ArrayVehicle {
-  @Trace public arr: Array<number> = [];
+  @Trace arr: Array<number> = [];
 
   constructor(count: number) {
     for (let i = 1; i <= count; ++i) {
