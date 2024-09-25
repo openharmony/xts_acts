@@ -573,8 +573,8 @@ export default function audioRoutingManager() {
      */
     it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0500", 0, async (done: Function) => {
       let rendererInfo: audio.AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MOVIE,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
+        content: audio.ContentType.CONTENT_TYPE_MUSIC,
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
         rendererFlags: 0
       }
       let routingManager = audio.getAudioManager().getRoutingManager();
@@ -800,8 +800,8 @@ export default function audioRoutingManager() {
         JSON.stringify(AudioDeviceDescriptors));
         console.log(`get device descriptor success: ` + JSON.stringify(AudioDeviceDescriptors));
         let data: ESObject = AudioDeviceDescriptors;
-        expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(2);
-        expect(AudioDeviceDescriptors[0].deviceType).assertEqual(2);
+        expect(data[0].deviceRole).assertEqual(2);
+        expect(data[0].deviceType).assertEqual(2);
         expect(data[0].networkId).assertEqual("LocalDevice");
         expect(false).assertTrue();
         done();
@@ -848,10 +848,7 @@ export default function audioRoutingManager() {
      */
     it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0400", 0, async (done: Function) => {
       let routingManager = audio.getAudioManager().getRoutingManager();
-      let rendererInfo: ESObject = {
-        usage: '123',
-        rendererFlags: 0
-      }
+      let rendererInfo: ESObject = '123'
       try {
         let AudioDeviceDescriptors = routingManager.getPreferredOutputDeviceForRendererInfoSync(rendererInfo);
         console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0400 SUCCESS` +
@@ -860,11 +857,11 @@ export default function audioRoutingManager() {
         expect(data[0].deviceRole).assertEqual(2);
         expect(data[0].deviceType).assertEqual(2);
         expect(data[0].networkId).assertEqual("LocalDevice");
-        expect(true).assertTrue();
+        expect(false).assertTrue();
         done();
       } catch (e) {
         console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0400 ERROR: ${e.message},ErrorCode:${e.code}`);
-        expect(false).assertTrue();
+        expect(Number(e.code)).assertEqual(401);
         done();
       }
     })
@@ -889,8 +886,8 @@ export default function audioRoutingManager() {
         JSON.stringify(AudioDeviceDescriptors));
         console.log(`get device descriptor success: ` + JSON.stringify(AudioDeviceDescriptors));
         let data: ESObject = AudioDeviceDescriptors;
-        expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(2);
-        expect(AudioDeviceDescriptors[0].deviceType).assertEqual(2);
+        expect(data[0].deviceRole).assertEqual(2);
+        expect(data[0].deviceType).assertEqual(2);
         expect(data[0].networkId).assertEqual("LocalDevice");
         expect(true).assertTrue();
         done();
@@ -989,6 +986,30 @@ export default function audioRoutingManager() {
       let audioRoutingManager = audio.getAudioManager().getRoutingManager();
       try {
         let AudioDeviceDescriptors = audioRoutingManager.getPreferredInputDeviceForCapturerInfoSync(undefined);
+        console.log(`get device descriptor success: ` + JSON.stringify(AudioDeviceDescriptors));
+        expect(false).assertTrue();
+        done();
+
+      } catch (e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0400 ERROR: ${e.message},Code:${e.code}`);
+        expect(Number(e.code)).assertEqual(401);
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0500
+     * @tc.name      : Get preferred input device - String_Parameters - 401
+     * @tc.desc      : Get preferred input device - String_Parameters - 401
+
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0500", 0, async (done: Function) => {
+      let audioRoutingManager = audio.getAudioManager().getRoutingManager();
+      let data: ESObject = '123';
+      try {
+        let AudioDeviceDescriptors = audioRoutingManager.getPreferredInputDeviceForCapturerInfoSync(data);
         console.log(`get device descriptor success: ` + JSON.stringify(AudioDeviceDescriptors));
         expect(false).assertTrue();
         done();

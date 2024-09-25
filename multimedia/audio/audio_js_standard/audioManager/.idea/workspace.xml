@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c3541d7c-9671-41d1-bfb0-10b3d59f3b56" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/entry/src/ohosTest/ets/test/AudioManagerApi9.test.ets" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/ohosTest/ets/test/AudioManagerApi9.test.ets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entry/src/ohosTest/ets/test/AudioRoutingManager.test.ets" beforeDir="false" afterPath="$PROJECT_DIR$/entry/src/ohosTest/ets/test/AudioRoutingManager.test.ets" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2mWFA2kwX2Ge49DN7sRsy6ETK6U" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用级" UseSingleDictionary="true" transferred="true" />
+</project>

@@ -71,7 +71,7 @@ export function sleep(ms: number): Promise<string> {
 
 let getPermission = () => {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  let testContext:ESObject = AppStorage.get('testContext');
+  let testContext: ESObject = AppStorage.get('testContext');
   let permissions: Array<Permissions> =
     ["ohos.permission.MANAGE_AUDIO_CONFIG", "ohos.permission.MICROPHONE"];
   atManager.requestPermissionsFromUser(testContext, permissions,
@@ -261,8 +261,8 @@ export default function audioManagerApi9() {
     })
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0100
-     * @tc.name      : getVolumeGroupManager - callback - undefined
-     * @tc.desc      : getVolumeGroupManager - callback - undefined
+     * @tc.name      : getVolumeGroupManager - callback - 123
+     * @tc.desc      : getVolumeGroupManager - callback - 123
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -270,7 +270,7 @@ export default function audioManagerApi9() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0100', 3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
-        let groupManager: ESObject = await audioVolumeManager.getVolumeGroupManager(undefined);
+        let groupManager: ESObject = await audioVolumeManager.getVolumeGroupManager(123);
         if ((typeof groupManager) != 'undefined') {
           console.info('audioManagerApi9Test: Promise: getGroupManager  :  TYPE ERROR');
           expect(false).assertTrue();
@@ -338,8 +338,8 @@ export default function audioManagerApi9() {
     })
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0400
-     * @tc.name      : getVolumeGroupManager - callback - undefined
-     * @tc.desc      : getVolumeGroupManager - callback - undefined
+     * @tc.name      : getVolumeGroupManager - callback - -123
+     * @tc.desc      : getVolumeGroupManager - callback - -123
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -347,7 +347,7 @@ export default function audioManagerApi9() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0400', 3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
-        let groupManager: ESObject = await audioVolumeManager.getVolumeGroupManager(undefined);
+        let groupManager: ESObject = await audioVolumeManager.getVolumeGroupManager(-123);
         if ((typeof groupManager) != 'undefined') {
           console.info('audioManagerApi9Test: Promise: getGroupManager  :  TYPE ERROR');
           expect(false).assertTrue();
@@ -432,7 +432,7 @@ export default function audioManagerApi9() {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
-        groupManager.getVolume(audio.AudioVolumeType.RINGTONE, (err: BusinessError, value: number) => {
+        groupManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: number) => {
           if (err) {
             console.error(`audioManagerApi9Test: callback : Meida: failed to get volume ${err.message}`);
             expect(false).assertTrue();
@@ -776,7 +776,7 @@ export default function audioManagerApi9() {
       groupManager.setMicrophoneMute(true, (err, data) => {
         if (err) {
           console.error(`audioManagerApi9Test: failed to setMicrophoneMute : Callback:  ${err.message}`);
-          expect(true).assertTrue();
+          expect(false).assertTrue();
           done();
         } else {
           groupManager.isMicrophoneMute((err, data) => {
