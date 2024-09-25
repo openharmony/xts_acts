@@ -660,6 +660,33 @@ static napi_value OHDrawingTypographyGetLongestLineAbnormal(napi_env env, napi_c
     return result;
 }
 
+static napi_value OHDrawingTypographyGetLongestLineWithIndent(napi_env env, napi_callback_info info)
+{
+    OH_Drawing_TypographyStyle *typoStylee = OH_Drawing_CreateTypographyStyle();
+    OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+    OH_Drawing_TypographyCreate *handlerr =
+        OH_Drawing_CreateTypographyHandler(typoStylee, OH_Drawing_CreateFontCollection());
+
+    const char *fontFamilies[] = {"Robotoo"};
+    OH_Drawing_SetTextStyleFontFamilies(txtStyle, ONEVAL, fontFamilies);
+    const char *text = "OpenHarmonyy\n";
+    OH_Drawing_TypographyHandlerAddText(handlerr, text);
+
+    OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handlerr);
+    double maxWidth = EIGHUNVAL;
+    OH_Drawing_TypographyLayout(typography, maxWidth);
+    napi_value result = nullptr;
+
+    if (OH_Drawing_TypographyGetLongestLineWithIndent(typography) != ZEROOVAL) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    OH_Drawing_DestroyTypography(typography);
+    OH_Drawing_DestroyTypographyHandler(handlerr);
+    return result;
+}
+
 static napi_value OHDrawingTypographyGetAlphabeticBaseline(napi_env env, napi_callback_info info)
 {
     OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
@@ -1706,6 +1733,21 @@ static double TypographyGetLongestLine(OH_Drawing_TypographyCreate *handler, int
     return len;
 }
 
+static double TypographyGetLongestLineWithIndent(OH_Drawing_TypographyCreate *handler, int fontSize)
+{
+    OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+    OH_Drawing_SetTextStyleFontSize(txtStyle, fontSize);
+    OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+    const char *text = "test/n";
+    OH_Drawing_TypographyHandlerAddText(handler, text);
+    OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+    double maxWidth = 800;
+    OH_Drawing_TypographyLayout(typography, maxWidth);
+    double len = OH_Drawing_TypographyGetLongestLineWithIndent(typography);
+    OH_Drawing_DestroyTypography(typography);
+    return len;
+}
+
 static napi_value OHDrawingTypographyHandlerAddText(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -1984,6 +2026,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHDrawingTypographyGetLongestLine", nullptr, OHDrawingTypographyGetLongestLine, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"oHDrawingTypographyGetLongestLineAbnormal", nullptr, OHDrawingTypographyGetLongestLineAbnormal, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"oHDrawingTypographyGetLongestLineWithIndent", nullptr, OHDrawingTypographyGetLongestLineWithIndent, nullptr,
          nullptr, nullptr, napi_default, nullptr},
 
         {"oHDrawingTypographyGetAlphabeticBaseline", nullptr, OHDrawingTypographyGetAlphabeticBaseline, nullptr,
