@@ -43,7 +43,6 @@ struct bindContextMenuMargin {
           })
           .bindContextMenu(this.isShown, this.MyMenu,
             {
-              enableHoverMode:true,
               layoutRegionMargin:{top:10}
             })
       }.width('100%')
