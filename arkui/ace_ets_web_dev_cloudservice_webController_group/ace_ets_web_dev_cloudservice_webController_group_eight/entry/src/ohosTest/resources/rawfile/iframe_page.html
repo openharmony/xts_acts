@@ -13,21 +13,20 @@
 - limitations under the License.
 -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iFrame Page</title>
+</head>
 <body>
-<button type="button" onclick="callArkTS()">Click Me!</button>
-<p id="demo"></p>
+<h2>iFrame Page</h2>
 <script>
-    function callArkTS() {
-      try {
-        let str = testObjName.test();
-        document.getElementById('demo').innerHTML = str;
-        console.info('ArkTS Hello World! :' + str);
-        return 'success';
-      } catch (error) {
-        console.log(error);
-        return error.toString();
-      }
+    // 检测是否在主框架中
+    if (window.self !== window.top) {
+        console.log("isMainFrame: false");
+        //Util.emitEvent(false, 5010);
+    } else {
+        console.log("isMainFrame: true");
     }
 </script>
 </body>

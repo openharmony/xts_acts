@@ -13,22 +13,23 @@
 - limitations under the License.
 -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page with iframe</title>
+</head>
 <body>
-<button type="button" onclick="callArkTS()">Click Me!</button>
-<p id="demo"></p>
+<h2>Main Page</h2>
+<!-- 嵌入iframe -->
+<button onclick="loadIframePage()">Load iframe Page</button>
+<iframe id="myIframe" src="https://www.example.com" width="600" height="400"></iframe>
+
+</body>
+
 <script>
-    function callArkTS() {
-      try {
-        let str = testObjName.test();
-        document.getElementById('demo').innerHTML = str;
-        console.info('ArkTS Hello World! :' + str);
-        return 'success';
-      } catch (error) {
-        console.log(error);
-        return error.toString();
-      }
+    function loadIframePage() {
+        var iframe = document.getElementById('myIframe');
+        iframe.src = 'iframe_page.html';
     }
 </script>
-</body>
 </html>

@@ -14,21 +14,11 @@
 -->
 <!DOCTYPE html>
 <html>
+<head>
+    <title>测试网页</title>
+</head>
 <body>
-<button type="button" onclick="callArkTS()">Click Me!</button>
-<p id="demo"></p>
-<script>
-    function callArkTS() {
-      try {
-        let str = testObjName.test();
-        document.getElementById('demo').innerHTML = str;
-        console.info('ArkTS Hello World! :' + str);
-        return 'success';
-      } catch (error) {
-        console.log(error);
-        return error.toString();
-      }
-    }
-</script>
+<h1>onOverrideUrlLoading Demo</h1>
+<a href='about:blank'>Click here</a>
 </body>
 </html>

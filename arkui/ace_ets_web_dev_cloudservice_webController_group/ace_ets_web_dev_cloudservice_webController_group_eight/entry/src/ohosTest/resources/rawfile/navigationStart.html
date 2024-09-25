@@ -12,23 +12,17 @@
 - See the License for the specific language governing permissions and
 - limitations under the License.
 -->
+
 <!DOCTYPE html>
 <html>
+<meta charset="utf-8">
 <body>
-<button type="button" onclick="callArkTS()">Click Me!</button>
-<p id="demo"></p>
-<script>
-    function callArkTS() {
-      try {
-        let str = testObjName.test();
-        document.getElementById('demo').innerHTML = str;
-        console.info('ArkTS Hello World! :' + str);
-        return 'success';
-      } catch (error) {
-        console.log(error);
-        return error.toString();
-      }
+Hello world!
+</body>
+<script type="text/javascript">
+    function test() {
+        console.log('Ark WebComponent');
+        return window.performance.timing.navigationStart;
     }
 </script>
-</body>
 </html>
