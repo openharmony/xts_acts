@@ -49,14 +49,14 @@ struct webResourceResponsePage {
     "</script>" +
     "</body>\n" +
     "</html>"
-  @State emitKey: string = "";
+  @State emitKey: string = '';
   
   @State onHttpErrorReceive: boolean = false
   @State setResponseIsReady: boolean = true
   @State setResponseCode: number = 403
 
-  @State responseDataType: string = ""
-  @State responseDataString: string = ""
+  @State responseDataType: string = ''
+  @State responseDataString: string = ''
   @State responseDataArrayBuffer: Uint8Array = new Uint8Array(new ArrayBuffer(1024*1024))
   @State responseDataResource: Resource = $rawfile('index.html')
   @State getResponseDataExValue: string = ''
@@ -75,7 +75,7 @@ struct webResourceResponsePage {
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
-    console.info("web page valueChangeCallBack");
+    console.info('web page valueChangeCallBack');
     if (eventData != null) {
       console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
@@ -88,34 +88,34 @@ struct webResourceResponsePage {
   build() {
     Column() {
       Row() {
-        Button("WebResourceResponse click").key('WebResourceResponseButton').onClick(async () => {
-          console.info("key==>" + this.emitKey)
+        Button('WebResourceResponse click').key('WebResourceResponseButton').onClick(async () => {
+          console.info('key==>' + this.emitKey)
           this.responseWeb = new WebResourceResponse()
           await Utils.sleep(3000)
           switch (this.emitKey) {
 
-            case "testGetResponseDataExReturnString": {
+            case 'testGetResponseDataExReturnString': {
               try {
                 this.onHttpErrorReceive = true
-                this.responseDataType = "string"
+                this.responseDataType = 'string'
                 this.responseDataString = this.webdata
                 this.setResponseCode = 200
                 await Utils.sleep(2000) 
                 this.controller.loadUrl('www.example.com');
                 let result: boolean = false;
                 await Utils.sleep(2000);
-                console.log("testGetResponseDataExReturnString getResponseDataEx:" + this.responseWeb.getResponseDataEx())
+                console.log('testGetResponseDataExReturnString getResponseDataEx:' + this.responseWeb.getResponseDataEx())
                 if (this.responseWeb.getResponseDataEx() === this.responseDataString) {
                   result = true
                 }
-                console.log("testGetResponseDataExReturnString:" + result)
+                console.log('testGetResponseDataExReturnString:' + result)
                 Utils.emitEvent(true, 36010);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
               break;
             }
-            case "testGetResponseIsReadyReturnTrue": {
+            case 'testGetResponseIsReadyReturnTrue': {
               try {
                 this.onHttpErrorReceive = true
                 this.setResponseIsReady = true
@@ -124,12 +124,12 @@ struct webResourceResponsePage {
                 await Utils.sleep(2000)
                 this.controller.loadUrl('www.example.com');
                 await Utils.sleep(2000)
-                console.log("testGetResponseIsReadyReturnTrue getResponseIsReady:" + this.responseWeb.getResponseIsReady())
+                console.log('testGetResponseIsReadyReturnTrue getResponseIsReady:' + this.responseWeb.getResponseIsReady())
                 let result: boolean = false;
                 if(this.responseWeb.getResponseIsReady() && this.getResponseIsReady){
                   result = true
                 }
-                console.log("testGetResponseIsReadyReturnTrue:" + result)
+                console.log('testGetResponseIsReadyReturnTrue:' + result)
                 Utils.emitEvent(result, 36015);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -143,27 +143,27 @@ struct webResourceResponsePage {
       }
 
 
-      Web({ src: "www.example.com", controller: this.controller })
+      Web({ src: 'www.example.com', controller: this.controller })
         .onInterceptRequest((event) => {
           if (event) {
             console.log('url:' + event.request.getRequestUrl())
             let head1: Header = {
-              headerKey: "Connection",
-              headerValue: "keep-alive"
+              headerKey: 'Connection',
+              headerValue: 'keep-alive'
             }
             let head2: Header = {
-              headerKey: "Cache-Control",
-              headerValue: "no-cache"
+              headerKey: 'Cache-Control',
+              headerValue: 'no-cache'
             }
             this.heads.push(head1)
             this.heads.push(head2)
             this.responseWeb.setResponseHeader(this.heads)
 
-            if(this.responseDataType === "string"){
+            if(this.responseDataType === 'string'){
               this.responseWeb.setResponseData(this.responseDataString)
-            }else if(this.responseDataType === "ArrayBuffer"){
+            }else if(this.responseDataType === 'ArrayBuffer'){
               this.responseWeb.setResponseData(this.responseDataArrayBuffer) 
-            }else if(this.responseDataType === "Resource"){
+            }else if(this.responseDataType === 'Resource'){
               this.responseWeb.setResponseData(this.responseDataResource) 
             }
             this.responseWeb.setResponseEncoding('utf-8')
