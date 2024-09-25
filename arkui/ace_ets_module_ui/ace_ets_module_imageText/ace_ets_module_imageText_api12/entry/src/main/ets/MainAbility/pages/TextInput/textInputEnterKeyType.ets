@@ -20,10 +20,7 @@ class TextInputEnterKeyTypeModifier  implements AttributeModifier<TextInputAttri
       instance.enterKeyType( this.enterKeyType );
     }
   }
-interface innerEventType {
-  eventId: number,
-  priority: events_emitter.EventPriority
-}
+
 @Entry
 @Component
 struct TextInputEnterKeyType {   
@@ -49,7 +46,7 @@ struct TextInputEnterKeyType {
     {
       let eventid:number = 810 + i;
 
-      let stateChangeEvent:innerEventType = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

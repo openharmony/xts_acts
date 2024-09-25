@@ -17,18 +17,6 @@ import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
-interface DataType { 
-  typeValue?:number
-}
-
-interface EventType {
-  data: DataType
-}
-
-interface innerEventType {
-  eventId: number,
-  priority: events_emitter.EventPriority
-}
 export default function searchTest() {
   describe('searchTest',  ()=> {
     beforeEach(async (done: Function)=> {
@@ -77,12 +65,12 @@ export default function searchTest() {
     //   expect(obj.$attrs.selectionMenuHidden).assertEqual("false");
 
     //   try {
-    //     let eventData:EventType = {
+    //     let eventData: events_emitter.EventData = {
     //       data: {
     //         "typeValue": 1,
     //       }
     //     }
-    //     let innerEvent:innerEventType = {
+    //     let innerEvent: events_emitter.InnerEvent = {
     //       eventId: 1401,
     //       priority: events_emitter.EventPriority.LOW
     //     }
@@ -114,12 +102,12 @@ export default function searchTest() {
       let tagName = 'testSearchCaretStyle02';
       console.info('[' + tagName + '] START============================');
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 2,
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1501,
           priority: events_emitter.EventPriority.LOW
         }
@@ -158,12 +146,12 @@ export default function searchTest() {
     //   expect(obj.$attrs.enableKeyboardOnFocus).assertEqual("true");
 
     //   try {
-    //     let eventData:EventType = {
+    //     let eventData: events_emitter.EventData = {
     //       data: {
     //         "typeValue": 3,
     //       }
     //     }
-    //     let innerEvent:innerEventType = {
+    //     let innerEvent: events_emitter.InnerEvent = {
     //       eventId: 1601,
     //       priority: events_emitter.EventPriority.LOW
     //     }
@@ -202,12 +190,12 @@ export default function searchTest() {
       expect(obj.$attrs.placeholderFont).assertEqual("{\"style\":\"FontStyle.Normal\",\"size\":\"16.00fp\",\"weight\":\"400\",\"fontFamily\":\"sans-serif\"}");
 
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 4,
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1701,
           priority: events_emitter.EventPriority.LOW
         }
@@ -238,12 +226,12 @@ export default function searchTest() {
       let tagName = 'testSearchSearchIcon05';
       console.info('[' + tagName + '] START============================');
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 5,
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -281,12 +269,12 @@ export default function searchTest() {
       expect(obj.$attrs.searchButton).assertEqual("");
 
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 6,
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1901,
           priority: events_emitter.EventPriority.LOW
         }
@@ -317,12 +305,12 @@ export default function searchTest() {
       let tagName = 'testSearchFontColor07';
       console.info('[' + tagName + '] START============================');
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 7,
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 2001,
           priority: events_emitter.EventPriority.LOW
         }
@@ -360,12 +348,12 @@ export default function searchTest() {
       expect(obj.$attrs.copyOption).assertEqual("CopyOptions.Distributed");
 
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 8,
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 2101,
           priority: events_emitter.EventPriority.LOW
         }
@@ -403,12 +391,12 @@ export default function searchTest() {
       expect(obj.$attrs.textFont).assertEqual("{\"fontSize\":\"16.00fp\",\"fontStyle\":\"FontStyle.Normal\",\"fontWeight\":\"400\",\"fontFamily\":\"HarmonyOS Sans\"}");
 
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 9,
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 2201,
           priority: events_emitter.EventPriority.LOW
         }
@@ -439,12 +427,12 @@ export default function searchTest() {
       let tagName = 'testSearchPlaceholderColor10';
       console.info('[' + tagName + '] START============================');
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 10,
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 2301,
           priority: events_emitter.EventPriority.LOW
         }
@@ -475,12 +463,12 @@ export default function searchTest() {
       let tagName = 'testSearchCancelButton11';
       console.info('[' + tagName + '] START============================');
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 11,
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 2401,
           priority: events_emitter.EventPriority.LOW
         }
@@ -518,12 +506,12 @@ export default function searchTest() {
       expect(obj.$attrs.textAlign).assertEqual("TextAlign.Start");
 
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 12,
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 2501,
           priority: events_emitter.EventPriority.LOW
         }

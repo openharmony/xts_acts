@@ -22,10 +22,6 @@ class TextDecorationModifier  implements AttributeModifier<TextAttribute> {
       instance.decoration({type: this.textDecorationType,color:this.textDecorationColor});
     }
 }
-interface innerEventType {
-  eventId: number,
-  priority: events_emitter.EventPriority
-}
 @Entry
 @Component
 struct TextDecoration {   
@@ -55,7 +51,7 @@ struct TextDecoration {
   onPageShow() {
     for( let i = 0; i < 5; i++){
       let eventid = 610 + i;
-      let stateChangeEvent:innerEventType = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

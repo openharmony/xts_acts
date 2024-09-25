@@ -17,20 +17,6 @@ import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
-
-interface DataType { 
-  typeValue: CopyOptions
-}
-
-interface EventType {
-  data: DataType
-}
-
-interface innerEventType {
-  eventId: number,
-  priority: events_emitter.EventPriority
-}
-
 export default function richEditorTest() {
   describe('richEditorTest',() => {
     beforeEach(async (done: Function) => {
@@ -74,12 +60,12 @@ export default function richEditorTest() {
       await Utils.sleep(1000)
 
       try {
-        let eventData: EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": CopyOptions.None
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 301,
           priority: events_emitter.EventPriority.LOW
         }
@@ -116,12 +102,12 @@ export default function richEditorTest() {
       await Utils.sleep(1000)
 
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": CopyOptions.InApp
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 302,
           priority: events_emitter.EventPriority.LOW
         }
@@ -154,12 +140,12 @@ export default function richEditorTest() {
       await Utils.sleep(1000)
 
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": CopyOptions.LocalDevice
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 303,
           priority: events_emitter.EventPriority.LOW
         }
@@ -193,12 +179,12 @@ export default function richEditorTest() {
       await Utils.sleep(1000)
 
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": CopyOptions.CROSS_DEVICE
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 304,
           priority: events_emitter.EventPriority.LOW
         }

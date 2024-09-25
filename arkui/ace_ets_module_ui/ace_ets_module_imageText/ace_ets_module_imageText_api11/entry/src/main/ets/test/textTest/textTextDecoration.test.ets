@@ -17,20 +17,9 @@ import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
-interface DataType { 
-  textDecoration?:string
-}
 interface ValueType { 
   type?:TextDecorationType,
   color?:ResourceColor
-}
-interface EventType {
-  data: DataType
-}
-
-interface innerEventType {
-  eventId: number,
-  priority: events_emitter.EventPriority
 }
 export default function textTextDecorationTest() {
   describe('textTextDecorationTest', ()=> {
@@ -79,12 +68,12 @@ export default function textTextDecorationTest() {
       let value:ValueType = { type: undefined, color: undefined };
 
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textDecoration": JSON.stringify( value )
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 610,
           priority: events_emitter.EventPriority.LOW
         }
@@ -123,12 +112,12 @@ export default function textTextDecorationTest() {
       let value:ValueType = { type: TextDecorationType.Underline, color: Color.Black };
 
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textDecoration": JSON.stringify( value )
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 611,
           priority: events_emitter.EventPriority.LOW
         }
@@ -167,12 +156,12 @@ export default function textTextDecorationTest() {
       let value:ValueType = { type: TextDecorationType.Overline, color: Color.Red };
 
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textDecoration": JSON.stringify( value )
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 612,
           priority: events_emitter.EventPriority.LOW
         }
@@ -211,12 +200,12 @@ export default function textTextDecorationTest() {
       let value:ValueType = { type: TextDecorationType.None, color: Color.Blue };
 
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textDecoration": JSON.stringify( value )
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 613,
           priority: events_emitter.EventPriority.LOW
         }
@@ -257,12 +246,12 @@ export default function textTextDecorationTest() {
       let value:ValueType = { type: TextDecorationType.None, color: $r('app.color.color_D90013_red') };
 
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textDecoration": JSON.stringify( value )
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 613,
           priority: events_emitter.EventPriority.LOW
         }

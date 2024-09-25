@@ -17,17 +17,6 @@ import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
-interface DataType { 
-  enterKeyType?:EnterKeyType
-}
-interface EventType {
-  data: DataType
-}
-
-interface innerEventType {
-  eventId: number,
-  priority: events_emitter.EventPriority
-}
 export default function textInputEnterKeyTypeTest() {
   describe('textInputEnterKeyTypeTest',  ()=> {
     beforeEach(async (done: Function)=> {
@@ -73,12 +62,12 @@ export default function textInputEnterKeyTypeTest() {
       await Utils.sleep(1000) 
        
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enterKeyType":  EnterKeyType.Go
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 810,
           priority: events_emitter.EventPriority.LOW
         }
@@ -113,12 +102,12 @@ export default function textInputEnterKeyTypeTest() {
       await Utils.sleep(1000) 
        
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enterKeyType":  EnterKeyType.Search
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 811,
           priority: events_emitter.EventPriority.LOW
         }
@@ -153,12 +142,12 @@ export default function textInputEnterKeyTypeTest() {
       await Utils.sleep(1000) 
        
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enterKeyType":  EnterKeyType.Send
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 812,
           priority: events_emitter.EventPriority.LOW
         }
@@ -193,12 +182,12 @@ export default function textInputEnterKeyTypeTest() {
       await Utils.sleep(1000) 
        
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enterKeyType":  EnterKeyType.Next
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 813,
           priority: events_emitter.EventPriority.LOW
         }
@@ -233,12 +222,12 @@ export default function textInputEnterKeyTypeTest() {
       await Utils.sleep(1000) 
        
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enterKeyType":  EnterKeyType.Done
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 814,
           priority: events_emitter.EventPriority.LOW
         }

@@ -17,20 +17,6 @@ import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
-interface DataType { 
-  textCase?:TextCase
-
-}
-
-interface EventType {
-  data: DataType
-}
-
-interface innerEventType {
-  eventId: number,
-  priority: events_emitter.EventPriority
-}
-
 export default function textTextCaseTest() {
   describe('textTextCaseTest',  ()=> {
     beforeEach(async (done: Function)=> {
@@ -76,12 +62,12 @@ export default function textTextCaseTest() {
       await Utils.sleep(1000) 
        
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textCase": TextCase.Normal
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1030,
           priority: events_emitter.EventPriority.LOW
         }
@@ -116,12 +102,12 @@ export default function textTextCaseTest() {
       await Utils.sleep(1000) 
        
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textCase": TextCase.LowerCase
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1031,
           priority: events_emitter.EventPriority.LOW
         }
@@ -156,12 +142,12 @@ export default function textTextCaseTest() {
       await Utils.sleep(1000)  
         
       try {
-        let eventData:EventType = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textCase": TextCase.UpperCase
           }
         }
-        let innerEvent:innerEventType = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1032,
           priority: events_emitter.EventPriority.LOW
         }

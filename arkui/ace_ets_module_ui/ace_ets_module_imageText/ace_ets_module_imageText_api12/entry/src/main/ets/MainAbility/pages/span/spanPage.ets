@@ -44,10 +44,6 @@ class MySpanFontModifier implements AttributeModifier<SpanAttribute> {
   }
 }
 
-interface innerEventType {
-  eventId: number,
-  priority: events_emitter.EventPriority
-}
 @Entry
 @Component
 struct VideoExample {
@@ -140,62 +136,62 @@ struct VideoExample {
 
   onPageShow() {
     console.info('video page1 show called');
-    let stateChangeEvent:innerEventType = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
-    let stateChangeEvent2:innerEventType = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
-    let stateChangeEvent3:innerEventType = {
+    let stateChangeEvent3: events_emitter.InnerEvent = {
       eventId: 6803,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent3, this.stateChangCallBack);
-    let stateChangeEvent4:innerEventType = {
+    let stateChangeEvent4: events_emitter.InnerEvent = {
       eventId: 6804,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent4, this.stateChangCallBack);
-    let stateChangeEvent5:innerEventType = {
+    let stateChangeEvent5: events_emitter.InnerEvent = {
       eventId: 6805,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent5, this.stateChangCallBack);
-    let stateChangeEvent6:innerEventType = {
+    let stateChangeEvent6: events_emitter.InnerEvent = {
       eventId: 6806,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent6, this.stateChangCallBack);
-    let stateChangeEvent7:innerEventType = {
+    let stateChangeEvent7: events_emitter.InnerEvent = {
       eventId: 6807,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent7, this.stateChangCallBack);
-    let stateChangeEvent8:innerEventType = {
+    let stateChangeEvent8: events_emitter.InnerEvent = {
       eventId: 6808,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent8, this.stateChangCallBack);
-    let stateChangeEvent9:innerEventType = {
+    let stateChangeEvent9: events_emitter.InnerEvent = {
       eventId: 6809,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent9, this.stateChangCallBack);
-    let stateChangeEvent10:innerEventType = {
+    let stateChangeEvent10: events_emitter.InnerEvent = {
       eventId: 6810,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent10, this.stateChangCallBack);
-    let stateChangeEvent11:innerEventType = {
+    let stateChangeEvent11: events_emitter.InnerEvent = {
       eventId: 6811,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent11, this.stateChangCallBack);
-    let stateChangeEvent12:innerEventType = {
+    let stateChangeEvent12: events_emitter.InnerEvent = {
       eventId: 6812,
       priority: events_emitter.EventPriority.LOW
     }

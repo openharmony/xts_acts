@@ -24,10 +24,6 @@ class RichEditorModifier implements AttributeModifier<RichEditorAttribute> {
   }
 }
 
-interface innerEventType {
-  eventId: number,
-  priority: events_emitter.EventPriority
-}
 @Entry
 @Component
 struct RichEditorExample {
@@ -52,25 +48,25 @@ struct RichEditorExample {
 
 
   onPageShow() {
-    let stateChangeEvent01:innerEventType = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 301,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
 
-    let stateChangeEvent02:innerEventType = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 302,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent02, this.stateChangCallBack);
 
-     let stateChangeEvent03:innerEventType = {
+     let stateChangeEvent03: events_emitter.InnerEvent = {
       eventId: 303,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent03, this.stateChangCallBack);
 
-    let stateChangeEvent04:innerEventType = {
+    let stateChangeEvent04: events_emitter.InnerEvent = {
       eventId: 304,
       priority: events_emitter.EventPriority.LOW
     }

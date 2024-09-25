@@ -21,10 +21,6 @@ class TextCaseModifier  implements AttributeModifier<TextAttribute> {
     }
   }
 
-interface innerEventType {
-  eventId: number,
-  priority: events_emitter.EventPriority
-}
 @Entry
 @Component
 struct TextTextCase {   
@@ -48,7 +44,7 @@ struct TextTextCase {
   onPageShow() {
     for( let i = 1; i < 5; i++){
       let eventid = 1030 + i;
-      let stateChangeEvent:innerEventType = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

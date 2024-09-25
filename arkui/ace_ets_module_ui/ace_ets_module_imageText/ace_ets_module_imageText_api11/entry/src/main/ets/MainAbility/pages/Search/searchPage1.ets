@@ -16,10 +16,6 @@
 
 import events_emitter from '@ohos.events.emitter';
 
-interface innerEventType {
-  eventId: number,
-  priority: events_emitter.EventPriority
-}
 class SearchModifier implements AttributeModifier<SearchAttribute> {
   _testType: number = 0
   applyNormalAttribute(instance: SearchAttribute): void {
@@ -115,77 +111,77 @@ struct SearchExample {
 
   onPageShow() {
 
-    let stateChangeEvent01:innerEventType = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 1401,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
 
-    let stateChangeEvent02:innerEventType = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 1501,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent02, this.stateChangCallBack);
 
-     let stateChangeEvent03:innerEventType = {
+     let stateChangeEvent03: events_emitter.InnerEvent = {
       eventId: 1601,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent03, this.stateChangCallBack);
 
-    let stateChangeEvent04:innerEventType = {
+    let stateChangeEvent04: events_emitter.InnerEvent = {
       eventId: 1701,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent04, this.stateChangCallBack);
 
-    let stateChangeEvent05:innerEventType = {
+    let stateChangeEvent05: events_emitter.InnerEvent = {
       eventId: 1801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent05, this.stateChangCallBack);
 
 
-    let stateChangeEvent06:innerEventType = {
+    let stateChangeEvent06: events_emitter.InnerEvent = {
       eventId: 1901,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent06, this.stateChangCallBack);
 
-     let stateChangeEvent07:innerEventType = {
+     let stateChangeEvent07: events_emitter.InnerEvent = {
       eventId: 2001,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent07, this.stateChangCallBack);
 
 
-    let stateChangeEvent08:innerEventType = {
+    let stateChangeEvent08: events_emitter.InnerEvent = {
       eventId: 2101,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent08, this.stateChangCallBack);
 
-    let stateChangeEvent09:innerEventType = {
+    let stateChangeEvent09: events_emitter.InnerEvent = {
       eventId: 2201,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent09, this.stateChangCallBack);
 
 
-    let stateChangeEvent10:innerEventType = {
+    let stateChangeEvent10: events_emitter.InnerEvent = {
       eventId: 2301,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent10, this.stateChangCallBack);
 
-     let stateChangeEvent11:innerEventType = {
+     let stateChangeEvent11: events_emitter.InnerEvent = {
       eventId: 2401,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent11, this.stateChangCallBack);
 
 
-    let stateChangeEvent12:innerEventType = {
+    let stateChangeEvent12: events_emitter.InnerEvent = {
       eventId: 2501,
       priority: events_emitter.EventPriority.LOW
     }
