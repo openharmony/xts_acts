@@ -26,6 +26,12 @@
     "testability/pages/GetHttpAuthCredentials",
     "testability/pages/GetOriginUsage",
     "testability/pages/GetOriginQuota",
+    "testability/pages/WebTestPage",
+    "testability/pages/ConfigCookieTest_callback",
+    "testability/pages/ConfigCookieTest_promise",
+    "testability/pages/ConfigCookieTest_sync",
+    "testability/pages/SetCookieTest",
+    "testability/pages/CookieTest",
     "testability/pages/Geolocation"
   ]
 }

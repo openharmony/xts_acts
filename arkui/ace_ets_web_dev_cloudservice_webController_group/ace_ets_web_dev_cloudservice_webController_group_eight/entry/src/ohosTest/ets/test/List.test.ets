@@ -17,10 +17,30 @@ import hasGesture from './HasGesture.test';
 import ActsAceRegisterJavaScriptProxy from './WebViewRegisterJavaScriptProxy.test'
 import DeleteJavaScriptRegisterUnitTest from './WebViewDeleteJavaScriptRegister.test'
 import abilityTest from './Ability.test'
+import webRequestHeaderList from './WebRequestHeaderList.test';
+import ActsWebViewTest6 from './TestWebViewCallAPI.test';
+import ActsWebViewTest4 from './MainFrameReturnFalse.test';
+import ActsWebViewTest3 from './TestWebViewEnableSafeBrowsing.test';
+import ActsWebViewTest2 from './TestWebViewGeolocation.test';
+import ActsWebViewTest1 from './TestWebViewCookie.test';
+import WebDownloadItem from './GetGuid.test';
+import GetCurrentSpeed from './GetCurrentSpeed.test';
+import Download from './Download.test';
+import lastErrorCode from './LastErrorCode.test';
 
 export default function testsuite() {
-  abilityTest()
-  hasGesture()
-  DeleteJavaScriptRegisterUnitTest()
-  ActsAceRegisterJavaScriptProxy()
+  abilityTest();
+  hasGesture();
+  DeleteJavaScriptRegisterUnitTest();
+  ActsAceRegisterJavaScriptProxy();
+  webRequestHeaderList();
+  ActsWebViewTest6();
+  ActsWebViewTest4();
+  ActsWebViewTest3();
+  ActsWebViewTest2();
+  ActsWebViewTest1();
+  WebDownloadItem();
+  GetCurrentSpeed();
+  Download();
+  lastErrorCode();
 }
