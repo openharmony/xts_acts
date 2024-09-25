@@ -67,13 +67,13 @@ struct testWebView_Geolocation {
         .onClick(() => {
           webview.GeolocationPermissions.getStoredGeolocation()
             .then(origins => {
-              let origins_str = origins.join();
-              console.log('getStoredGeolocationPromise origins: ' + origins_str);
-              if (origins_str === '') {
+              let originsStr = origins.join();
+              console.log('getStoredGeolocationPromise origins: ' + originsStr);
+              if (originsStr === '') {
                 console.log('No geolocation data available');
                 Utils.emitEvent('No data', 5007);
               } else {
-                Utils.emitEvent(origins_str, 5007);
+                Utils.emitEvent(originsStr, 5007);
               }
             })
             .catch((error:BusinessError) => {

@@ -64,8 +64,8 @@ struct WebComponent {
             })
             this.delegate2.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
               console.log('download update guid2: ' + webDownloadItem.getGuid(), webDownloadItem.getState());
-              if (webDownloadItem.getPercentComplete() > 10
-                && webDownloadItem.getState() == webview.WebDownloadState.IN_PROGRESS) {
+              if (webDownloadItem.getPercentComplete() > 10 &&
+                webDownloadItem.getState() == webview.WebDownloadState.IN_PROGRESS) {
                 console.log('download update guid21: ' + webDownloadItem.getGuid(), webDownloadItem.getState());
                 webDownloadItem.pause()
                 LocalContext.context.eventHub.emit('BeforeDownloadGetGuidUpdatedPause', webDownloadItem.getGuid())
