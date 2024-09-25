@@ -617,6 +617,9 @@ import placementJsunit from './Flex/PlacementJsunit.test';
 import rowJsunit2 from './Row/RowJsunit2.test.ets';
 import waterFlowDemoJsunit from './waterflow/waterFlowDemo.test';
 import flexDirectionJsunit from './Flex/FlexDirectionJsunit.test.ets';
+import ColumnSplitJsunit from './Column/ColumnSplitJsunit.test.ets';
+import DividerJsunit from './DividerTest/DividerJsunit1.test.ets';
+import StackAlignContentTest from './Stack/StackAlignContentTest.test.ets';
 
 
 export default function testsuite() {
@@ -1127,4 +1130,7 @@ export default function testsuite() {
   rowJsunit2();
   flexDirectionJsunit();
   waterFlowDemoJsunit();
+  ColumnSplitJsunit();
+  DividerJsunit();
+  StackAlignContentTest();
 }
