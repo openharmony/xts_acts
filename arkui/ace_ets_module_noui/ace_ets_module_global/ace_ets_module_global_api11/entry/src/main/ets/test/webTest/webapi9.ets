@@ -223,7 +223,7 @@ struct Index {
                         let msgEvent = new WebMessageEvent();
                         msgEvent.setData("__init_port__");
                         msgEvent.setPorts(sendPortArray);
-                        this.controller.postMessage({message: msgEvent, uri: "*"});
+                        this.controller.postMessage({message: msgEvent, url: "*"});
                         break;
                     case "emitcreateWebMessagePorts":
                         this.ports = this.controller.createWebMessagePorts();

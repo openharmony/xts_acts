@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {
   UiComponent,
   Driver,
@@ -35,8 +35,8 @@ export default function ResourcePlural() {
   describe('ResourcePlural', () => {
     beforeEach(async (done: Function) => {
       console.info("ResourcePlural beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Resource/ResourcePlural',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Resource/ResourcePlural',
       }
       try {
         router.clear();
@@ -58,7 +58,7 @@ export default function ResourcePlural() {
     it('ResourcePlural_0100', 0, async (done: Function) => {
       console.info('ResourcePlural_0100 START');
       let strJson = getInspectorByKey('plural');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourcePlural_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ResourcePlural_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('100 apples1');
@@ -74,7 +74,7 @@ export default function ResourcePlural() {
       await button.click();
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('plural');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourcePlural_0200] component obj is: " + JSON.stringify(obj));
       console.info("[ResourcePlural_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('100 apples2');

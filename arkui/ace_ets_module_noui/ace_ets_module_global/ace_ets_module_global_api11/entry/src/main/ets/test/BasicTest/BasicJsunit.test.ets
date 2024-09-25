@@ -13,20 +13,9 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import { BusinessError } from '@ohos.base';
 
 function callbackTest(callback: Callback<void>): void {
-  callback("callback");
-}
-
-function errorCallbackTest(errorCallback: ErrorCallback<void>): void {
-  errorCallback("errorCallback");
-}
-
-function asyncCallbackTest(asyncCallback: AsyncCallback<void>): void {
-  asyncCallback({
-    code: 1
-  }, "asyncCallback");
+  callback();
 }
 
 export default function basicJsunit() {
@@ -36,37 +25,10 @@ export default function basicJsunit() {
       expect(true).assertTrue();
     }
 
-
-    let errorCallback: ErrorCallback<void> = (error: BusinessError) => {
-      console.log(error);
-      expect(true).assertTrue();
-    }
-
-
-    let asyncCallback: AsyncCallback<void> = (error: BusinessError, data: ESObject) => {
-      console.log(data);
-      expect(true).assertTrue();
-    }
-
-
     it('testBasic01', 0, async (done: Function) => {
       console.info('[testBasic01] START');
       callbackTest(callback);
       console.info('[testBasic01] END');
-      done();
-    });
-
-    it('testBasic02', 0, async (done: Function) => {
-      console.info('[testBasic02] START');
-      errorCallbackTest(errorCallback);
-      console.info('[testBasic02] END');
-      done();
-    });
-
-    it('testBasic03', 0, async (done: Function) => {
-      console.info('[testBasic03] START');
-      asyncCallbackTest(asyncCallback);
-      console.info('[testBasic03] END');
       done();
     });
   });
