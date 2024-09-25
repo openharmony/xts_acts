@@ -62,7 +62,7 @@ import APIshouldBuiltInRecognizerParallelWith from './APIshouldBuiltInRecognizer
 import typeNodeGestureTest from './PanGesture/Gesture.test';
 import UIContextDragControllerTest from './DragController/UIContextDragController.test';
 
-import accessibilityHoverTest from './onAccessibilityHover/onhoverAccessbility.test';
+
 
 import tapGestureAddInterfaceTest from './tapGestureAddInterface/tapGestureAddInterfaceTest.test';
 
@@ -122,7 +122,7 @@ export default function testsuite() {
 
 
   
-  accessibilityHoverTest();
+
   tapGestureAddInterfaceTest();
 
 

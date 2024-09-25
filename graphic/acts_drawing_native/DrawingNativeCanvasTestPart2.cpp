@@ -249,6 +249,54 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectMaximum, TestSize.Le
 }
 
 /*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1103
+ * @tc.name: testCanvasDrawPixelMapRect4KBoundary
+ * @tc.desc: test for testCanvasDrawPixelMapRect4KBoundary.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRect4KBoundary, TestSize.Level3)
+{
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    EXPECT_NE(canvas, nullptr);
+
+    OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative4KBoundary();
+    OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
+    EXPECT_NE(drPixelMap, nullptr);
+
+    OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(src, nullptr);
+    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(dst, nullptr);
+
+    OH_Drawing_SamplingOptions *sampleOptions =
+        OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_NEAREST);
+    // 2
+    OH_Drawing_Rect *src1 = OH_Drawing_RectCreate(FLT_MAX, FLT_MAX, 100, 100);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src1, dst, sampleOptions);
+    // 3
+    OH_Drawing_Rect *src2 = OH_Drawing_RectCreate(0, 0, FLT_MAX, FLT_MAX);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src2, dst, sampleOptions);
+    // 4
+    OH_Drawing_Rect *dst1 = OH_Drawing_RectCreate(FLT_MAX, FLT_MAX, 100, 100);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst1, sampleOptions);
+    // 5
+    OH_Drawing_Rect *dst2 = OH_Drawing_RectCreate(0, 0, FLT_MAX, FLT_MAX);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst2, sampleOptions);
+    // 6
+    OH_Drawing_RectDestroy(src1);
+    OH_Drawing_RectDestroy(src2);
+    OH_Drawing_RectDestroy(dst1);
+    OH_Drawing_RectDestroy(dst2);
+    OH_Drawing_RectDestroy(src);
+    OH_Drawing_RectDestroy(dst);
+    OH_Drawing_SamplingOptionsDestroy(sampleOptions);
+    OH_Drawing_PixelMapDissolve(drPixelMap);
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1104
  * @tc.name: testCanvasDrawPixelMapRectInputDestroyed
  * @tc.desc: test for testCanvasDrawPixelMapRectInputDestroyed.

@@ -132,6 +132,20 @@ export default function nativeImageTest() {
     });
 
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_IMAGE_OH_NATIVEIMAGE_UPDATESURFACEIMAGE
+     * @tc.name       : testOHNativeImageUpdateSurfaceImageBoundary
+     * @tc.desc       : test OH_NativeImage_UpdateSurfaceImageBoundary
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeImageUpdateSurfaceImageBoundary', 0, async (done: Function) => {
+      let result: number = nativeimage.oHNativeImageUpdateSurfaceImageBoundary();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_IMAGE_OH_NATIVEIMAGE_UPDATESURFACEIMAGE002
      * @tc.name       : testOHNativeImageUpdateSurfaceImage002
      * @tc.desc       : test OH_NativeImage_UpdateSurfaceImage

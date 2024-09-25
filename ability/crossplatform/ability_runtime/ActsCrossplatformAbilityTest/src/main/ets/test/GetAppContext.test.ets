@@ -34,7 +34,7 @@ export default function GetAppContextTest() {
           "ACTS_GET_APP_CONTENT_0001 : " + JSON.stringify(context)
         );
         expect(context.applicationInfo.name).assertEqual(
-          "com.example.delegatortest"
+          "com.example.crossplatformability"
         );
         expect(context.applicationInfo.description).assertEqual("");
         expect(context.applicationInfo.label).assertEqual("$string:app_name");
