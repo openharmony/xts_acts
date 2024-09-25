@@ -21,12 +21,13 @@ import commonEventManger from '@ohos.commonEventManager';
 import ParamManager from '../common/Param';
 
 let param = new ParamManager();
+
 export default class SecondAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'SecondAbility', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'SecondAbility', `want, 50 == ${JSON.stringify(want)}`);
     AppStorage.SetOrCreate<boolean>('onCreate', true);
-    AppStorage.SetOrCreate<boolean>('isStart',false);
+    AppStorage.SetOrCreate<boolean>('isStart', false);
     param.setTextNme(want.action);
   }
 
@@ -53,7 +54,7 @@ export default class SecondAbility extends UIAbility {
         }
       }
     };
-    commonEventManger.publish(events,commonEventData,(result)=>{
+    commonEventManger.publish(events, commonEventData, (result) => {
       hilog.info(0x0000, 'SecondAbility', `startAbilityForResult ok, 50 == ${JSON.stringify(result)}`);
     });
   }
@@ -87,7 +88,7 @@ export default class SecondAbility extends UIAbility {
     let isStart = AppStorage.get<boolean>('isStart');
     if (isStart) {
       return;
-    };
+    }
     AppStorage.SetOrCreate<boolean>('isStart', true);
     let want: Want = {
       bundleName: 'com.example.terminateselfwithresulttesthap2',
@@ -99,7 +100,7 @@ export default class SecondAbility extends UIAbility {
       setTimeout(() => {
         this.context.startAbilityForResult(want).then((result: common.AbilityResult) => {
           hilog.info(0x0000, 'SecondAbility', `startAbilityForResult ok, result==: ${JSON.stringify(result)}`);
-          AppStorage.SetOrCreate<common.AbilityResult>('AbilityResult',result);
+          AppStorage.SetOrCreate<common.AbilityResult>('AbilityResult', result);
           setTimeout(async () => {
             let resultCode = 100;
             let want: Want = {
@@ -124,7 +125,7 @@ export default class SecondAbility extends UIAbility {
       }, 500);
     } catch (error) {
       hilog.info(0x0000, 'SecondAbility', `startAbilityForResult err, 50 == ${JSON.stringify(error)}`);
-    };
+    }
   }
 
   onBackground(): void {

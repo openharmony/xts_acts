@@ -21,14 +21,15 @@ import commonEventManger from '@ohos.commonEventManager';
 import ParamManager from '../common/Param';
 
 let param = new ParamManager();
+
 export default class EntryAbility2 extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam):void{
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'testTag', `want, 50 == ${JSON.stringify(want)}`);
     param.setTextNme(want.action);
   }
 
-  onDestroy():void{
+  onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
     let onBackground = AppStorage.get<boolean>('onBackground');
     let onWindowStageDestroy = AppStorage.get<boolean>('onWindowStageDestroy');
@@ -44,13 +45,13 @@ export default class EntryAbility2 extends UIAbility {
           }
         }
       };
-      commonEventManger.publish(events,commonEventData,(result)=>{
+      commonEventManger.publish(events, commonEventData, (result) => {
         hilog.info(0x0000, 'testTag', `onConnect, 50 == ${JSON.stringify(result)}`);
       });
-    };
+    }
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage):void{
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
@@ -63,13 +64,13 @@ export default class EntryAbility2 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy():void{
+  onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
     AppStorage.SetOrCreate<boolean>('onWindowStageDestroy', true);
   }
 
-  onForeground():void{
+  onForeground(): void {
     // Ability has brought to foreground
     setTimeout(async () => {
       let resultCode = 100;
@@ -92,7 +93,7 @@ export default class EntryAbility2 extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 
-  onBackground():void{
+  onBackground(): void {
     // Ability has back to background
     AppStorage.SetOrCreate<boolean>('onBackground', true);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');

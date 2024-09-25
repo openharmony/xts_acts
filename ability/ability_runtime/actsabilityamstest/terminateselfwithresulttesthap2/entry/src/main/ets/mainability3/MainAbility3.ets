@@ -22,12 +22,13 @@ import ParamManager from '../common/Param';
 import { expect } from '@ohos/hypium';
 
 let param = new ParamManager();
+
 export default class MainAbility3 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'MainAbility3', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'MainAbility3', `want, 50 == ${JSON.stringify(want)}`);
     AppStorage.SetOrCreate<boolean>('onCreate', true);
-    AppStorage.SetOrCreate<boolean>('isStart',false);
+    AppStorage.SetOrCreate<boolean>('isStart', false);
     param.setTextNme(want.action);
   }
 
@@ -93,7 +94,7 @@ export default class MainAbility3 extends UIAbility {
                   }
                 }
               };
-              commonEventManger.publish(events,commonEventData,(result)=>{
+              commonEventManger.publish(events, commonEventData, (result) => {
                 hilog.info(0x0000, 'MainAbility3', `startAbilityForResult ok, 50 == ${JSON.stringify(result)}`);
                 this.context.terminateSelf();
               });
@@ -104,8 +105,8 @@ export default class MainAbility3 extends UIAbility {
         }, 500);
       } catch (error) {
         hilog.info(0x0000, 'MainAbility3', `startAbilityForResult err, 50 == ${JSON.stringify(error)}`);
-      };
-    };
+      }
+    }
   }
 
   onBackground(): void {

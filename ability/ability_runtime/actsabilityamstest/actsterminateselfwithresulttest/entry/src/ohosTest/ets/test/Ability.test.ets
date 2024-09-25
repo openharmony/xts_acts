@@ -64,21 +64,21 @@ export default function abilityTest() {
         bundleName: bundleName,
         abilityName: abilityName
       };
-      let options: StartOptions= {
-        windowMode : undefined
+      let options: StartOptions = {
+        windowMode: undefined
       };
       try {
         let cmd1 = `hilog -r`;
         await delegator.executeShellCommand(cmd1);
-        let cmd2= `hilog -b D`;
+        let cmd2 = `hilog -b D`;
         await delegator.executeShellCommand(cmd2);
-        setTimeout(async ()=>{
+        setTimeout(async () => {
           let cmd = `hilog -x | grep 'Window mode is 0'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
           expect(d.stdResult).assertContain('Window mode is 0');
           done();
-        },1000);
+        }, 1000);
         context.startAbilityForResult(want, options, (err: BusinessError, result: common.AbilityResult) => {
           if (err.code) {
             // 处理业务逻辑错误
@@ -86,7 +86,7 @@ export default function abilityTest() {
             expect().assertFail();
             done();
             return;
-          };
+          }
           // 执行正常业务
           hilog.info(0x0000, TAG, '%{public}s', 'startAbilityForResult succeed');
         });
@@ -97,7 +97,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `startAbilityForResult failed, code is err.code,messageis${code}, message is ${message}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -127,7 +127,7 @@ export default function abilityTest() {
             expect(err.code).assertEqual(16000050);
             done();
             return;
-          };
+          }
           // 执行正常业务
           hilog.info(0x0000, TAG, '%{public}s', 'startAbilityForResult succeed');
           expect().assertFail();
@@ -140,7 +140,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `startAbilityForResult failed, code is err.code,messageis${code}, message is ${message}`);
         expect(err.code).assertEqual(16000050);
         done();
-      };
+      }
     });
 
     /**
@@ -159,21 +159,21 @@ export default function abilityTest() {
         bundleName: bundleName,
         abilityName: abilityName
       };
-      let options: StartOptions= {
-        windowMode : 100.11
+      let options: StartOptions = {
+        windowMode: 100.11
       };
       try {
         let cmd1 = `hilog -r`;
         await delegator.executeShellCommand(cmd1);
-        let cmd2= `hilog -b D`;
+        let cmd2 = `hilog -b D`;
         await delegator.executeShellCommand(cmd2);
-        setTimeout(async ()=>{
+        setTimeout(async () => {
           let cmd = `hilog -x | grep 'Window mode is 100'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
           expect(d.stdResult).assertContain('Window mode is 100');
           done();
-        },100);
+        }, 100);
         context.startAbilityForResult(want, options, (err: BusinessError, result: common.AbilityResult) => {
           if (err.code) {
             // 处理业务逻辑错误
@@ -181,7 +181,7 @@ export default function abilityTest() {
             expect().assertFail();
             done();
             return;
-          };
+          }
           // 执行正常业务
           hilog.info(0x0000, TAG, '%{public}s', 'startAbilityForResult succeed');
         });
@@ -192,7 +192,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `startAbilityForResult failed, code is err.code,messageis${code}, message is ${message}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -203,14 +203,14 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1500', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1500', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1500';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
 
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME
+        action: TEST_CASE_NAME
       };
 
       try {
@@ -231,7 +231,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -242,14 +242,14 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1600', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1600', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
 
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME
+        action: TEST_CASE_NAME
       };
 
       try {
@@ -270,7 +270,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -281,12 +281,12 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2400', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2400', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2400';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let cmd1 = `hilog -r`;
       await delegator.executeShellCommand(cmd1);
-      let cmd2= `hilog -b D`;
+      let cmd2 = `hilog -b D`;
       await delegator.executeShellCommand(cmd2);
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['onDestroyCallback']
@@ -294,7 +294,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, async (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           expect(commonEventData.parameters?.data).assertTrue();
           let cmd = `hilog -x | grep 'Window mode is 100'`;
           let d = await delegator.executeShellCommand(cmd);
@@ -308,11 +308,11 @@ export default function abilityTest() {
           bundleName: bundleName,
           abilityName: 'ThirdAbility'
         };
-        let options: StartOptions= {
-          windowMode : 100
+        let options: StartOptions = {
+          windowMode: 100
         };
         try {
-          context.startAbility(want,options).then(async () => {
+          context.startAbility(want, options).then(async () => {
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
           }).catch((err: BusinessError) => {
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
@@ -323,7 +323,7 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
           done();
-        };
+        }
       });
     });
 
@@ -335,7 +335,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2500', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2500', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2500';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 1.1234567890123457;
@@ -346,7 +346,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data?.parameters?.keyForBigDecimal).assertEqual(testParam);
           commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -357,9 +357,9 @@ export default function abilityTest() {
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME,
+        action: TEST_CASE_NAME,
         parameters: {
-          'keyForBigDecimal':testParam
+          'keyForBigDecimal': testParam
         }
       };
 
@@ -381,7 +381,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -392,7 +392,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2600', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2600', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 123456789101112;
@@ -403,7 +403,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data?.parameters?.keyForBigteger).assertEqual(testParam);
           commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -414,9 +414,9 @@ export default function abilityTest() {
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME,
+        action: TEST_CASE_NAME,
         parameters: {
-          'keyForBigteger':testParam
+          'keyForBigteger': testParam
         }
       };
 
@@ -438,7 +438,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -449,7 +449,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2700', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2700', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = true;
@@ -460,7 +460,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data?.parameters?.keyForBigDecimal).assertEqual(testParam);
           commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -471,9 +471,9 @@ export default function abilityTest() {
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME,
+        action: TEST_CASE_NAME,
         parameters: {
-          'keyForBigDecimal':testParam
+          'keyForBigDecimal': testParam
         }
       };
 
@@ -495,7 +495,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -506,7 +506,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2800', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2800', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2800';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 99.0123456789;
@@ -517,7 +517,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data?.parameters?.keyForDouble).assertEqual(testParam);
           commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -528,9 +528,9 @@ export default function abilityTest() {
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME,
+        action: TEST_CASE_NAME,
         parameters: {
-          'keyForDouble':testParam
+          'keyForDouble': testParam
         }
       };
 
@@ -552,7 +552,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -563,7 +563,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2900', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2900', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2900';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 1.1212;
@@ -574,7 +574,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data?.parameters?.keyForInt).assertEqual(testParam);
           commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -585,9 +585,9 @@ export default function abilityTest() {
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME,
+        action: TEST_CASE_NAME,
         parameters: {
-          'keyForInt':testParam
+          'keyForInt': testParam
         }
       };
 
@@ -609,7 +609,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -620,10 +620,10 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3000', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3000', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let testParam = [100,200,300,400];
+      let testParam = [100, 200, 300, 400];
 
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: [TEST_CASE_NAME]
@@ -631,7 +631,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data?.parameters?.keyForDouble).assertDeepEquals(testParam);
           commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -642,9 +642,9 @@ export default function abilityTest() {
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME,
+        action: TEST_CASE_NAME,
         parameters: {
-          'keyForDouble':testParam
+          'keyForDouble': testParam
         }
       };
 
@@ -666,7 +666,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -677,7 +677,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3100', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3100', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3100';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
 
@@ -687,9 +687,13 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
-          expect(commonEventData.parameters?.data?.parameters?.keyForJsonArray).assertDeepEquals([{'name':'zhang','password':'123'},{'name':'yang','password':'456'}]);
+          expect(commonEventData.parameters?.data?.parameters?.keyForJsonArray).assertDeepEquals([{
+            'name': 'zhang', 'password': '123'
+          }, {
+            'name': 'yang', 'password': '456'
+          }]);
           commonEventManager.unsubscribe(subscriber, (err, data) => {
           });
         });
@@ -698,9 +702,13 @@ export default function abilityTest() {
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME,
+        action: TEST_CASE_NAME,
         parameters: {
-          'keyForJsonArray': [{'name':'zhang','password':'123'},{'name':'yang','password':'456'}]
+          'keyForJsonArray': [{
+            'name': 'zhang', 'password': '123'
+          }, {
+            'name': 'yang', 'password': '456'
+          }]
         }
       };
 
@@ -708,7 +716,11 @@ export default function abilityTest() {
         context.startAbilityForResult(want).then((result: common.AbilityResult) => {
           // 执行正常业务
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
-          expect(result.want?.parameters?.keyForJsonArray).assertDeepEquals([{'name':'zhang','password':'123'},{'name':'yang','password':'456'}]);
+          expect(result.want?.parameters?.keyForJsonArray).assertDeepEquals([{
+            'name': 'zhang', 'password': '123'
+          }, {
+            'name': 'yang', 'password': '456'
+          }]);
           expect(result.want?.bundleName).assertEqual(bundleName);
           expect(result.want?.abilityName).assertEqual(abilityName);
           done();
@@ -722,7 +734,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -733,7 +745,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3200', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3200', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3200';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
 
@@ -743,9 +755,11 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
-          expect(commonEventData.parameters?.data?.parameters?.keyForJson).assertDeepEquals({'name': '张三', 'age': 30, 'isStudent': false, 'hobbies': ['阅读', '旅行', '烹饪']});
+          expect(commonEventData.parameters?.data?.parameters?.keyForJson).assertDeepEquals({
+            'name': '张三', 'age': 30, 'isStudent': false, 'hobbies': ['阅读', '旅行', '烹饪']
+          });
           commonEventManager.unsubscribe(subscriber, (err, data) => {
           });
         });
@@ -754,9 +768,11 @@ export default function abilityTest() {
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME,
+        action: TEST_CASE_NAME,
         parameters: {
-          'keyForJson': {'name': '张三', 'age': 30, 'isStudent': false, 'hobbies': ['阅读', '旅行', '烹饪']}
+          'keyForJson': {
+            'name': '张三', 'age': 30, 'isStudent': false, 'hobbies': ['阅读', '旅行', '烹饪']
+          }
         }
       };
 
@@ -764,7 +780,9 @@ export default function abilityTest() {
         context.startAbilityForResult(want).then((result: common.AbilityResult) => {
           // 执行正常业务
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
-          expect(result.want?.parameters?.keyForJson).assertDeepEquals({'name': '张三', 'age': 30, 'isStudent': false, 'hobbies': ['阅读', '旅行', '烹饪']});
+          expect(result.want?.parameters?.keyForJson).assertDeepEquals({
+            'name': '张三', 'age': 30, 'isStudent': false, 'hobbies': ['阅读', '旅行', '烹饪']
+          });
           expect(result.want?.bundleName).assertEqual(bundleName);
           expect(result.want?.abilityName).assertEqual(abilityName);
           done();
@@ -778,7 +796,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -789,7 +807,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3300', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3300', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 'a';
@@ -800,7 +818,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data?.parameters?.keyForDouble).assertEqual(testParam);
           commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -811,9 +829,9 @@ export default function abilityTest() {
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME,
+        action: TEST_CASE_NAME,
         parameters: {
-          'keyForDouble':testParam
+          'keyForDouble': testParam
         }
       };
 
@@ -835,7 +853,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -846,7 +864,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3400', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3400', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3400';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 'str';
@@ -857,7 +875,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data?.parameters?.keyForStr).assertEqual(testParam);
           commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -868,9 +886,9 @@ export default function abilityTest() {
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME,
+        action: TEST_CASE_NAME,
         parameters: {
-          'keyForStr':testParam
+          'keyForStr': testParam
         }
       };
 
@@ -892,7 +910,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -903,10 +921,10 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3600', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3600', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let testParam = ['str1','str2','str3'];
+      let testParam = ['str1', 'str2', 'str3'];
 
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: [TEST_CASE_NAME]
@@ -914,7 +932,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data?.parameters?.keyForStrArray).assertDeepEquals(testParam);
           commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -925,9 +943,9 @@ export default function abilityTest() {
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME,
+        action: TEST_CASE_NAME,
         parameters: {
-          'keyForStrArray':testParam
+          'keyForStrArray': testParam
         }
       };
 
@@ -949,7 +967,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -960,7 +978,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3700', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3700', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 100;
@@ -971,7 +989,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data?.parameters?.keyForInt).assertEqual(testParam);
           commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -982,9 +1000,9 @@ export default function abilityTest() {
       let want: Want = {
         bundleName: bundleName,
         abilityName: abilityName,
-        action:TEST_CASE_NAME,
+        action: TEST_CASE_NAME,
         parameters: {
-          'keyForInt':testParam
+          'keyForInt': testParam
         }
       };
 
@@ -1006,7 +1024,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -1017,7 +1035,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3800', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3800', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3800';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParamInt = 100;
@@ -1030,7 +1048,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data?.parameters?.keyForInt).assertEqual(testParamInt);
           expect(commonEventData.parameters?.data?.parameters?.keyForDouble).assertEqual(testParamDouble);
@@ -1041,10 +1059,10 @@ export default function abilityTest() {
         let want: Want = {
           bundleName: bundleName,
           abilityName: abilityName,
-          action:TEST_CASE_NAME,
+          action: TEST_CASE_NAME,
           parameters: {
-            'keyForInt':testParamInt,
-            'keyForDouble':testParamDouble
+            'keyForInt': testParamInt,
+            'keyForDouble': testParamDouble
           }
         };
 
@@ -1067,7 +1085,7 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
           done();
-        };
+        }
       });
     });
 
@@ -1079,7 +1097,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4000', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4000', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let event = TEST_CASE_NAME;
@@ -1091,7 +1109,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data.terminateState).assertTrue();
           commonEventManager.unsubscribe(subscriber, (err, data) => {
@@ -1121,7 +1139,7 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
           done();
-        };
+        }
       });
     });
 
@@ -1133,14 +1151,14 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4100', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4100', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4100';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
 
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'SecondAbility',
-        action:TEST_CASE_NAME
+        action: TEST_CASE_NAME
       };
 
       try {
@@ -1161,7 +1179,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -1172,7 +1190,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4200', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4200', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4200';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let reburnNumber = 0;
@@ -1186,17 +1204,17 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
           expect(commonEventData.parameters?.data.onBackground).assertTrue();
           expect(commonEventData.parameters?.data.onDestroy).assertTrue();
           expect(commonEventData.parameters?.data.onWindowStageDestroy).assertTrue();
-          if (reburnNumber == 2){
+          if (reburnNumber == 2) {
             commonEventManager.unsubscribe(subscriber, (err, data) => {
             });
             done();
-          };
+          }
         });
 
         let want: Want = {
@@ -1240,8 +1258,7 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
           done();
-        };
-
+        }
       });
     });
 
@@ -1253,7 +1270,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4300', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4300', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let reburnNumber = 0;
@@ -1268,7 +1285,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           if (commonEventData.event == event) {
             expect(commonEventData.parameters?.data.onCreate).assertTrue();
@@ -1278,24 +1295,24 @@ export default function abilityTest() {
             expect(commonEventData.parameters?.data.result.want.abilityName).assertEqual('EntryAbility4');
             expect(commonEventData.parameters?.data.result.resultCode).assertEqual(100);
             reburnNumber += 1;
-          };
+          }
           if (commonEventData.event == event2) {
             expect(commonEventData.parameters?.data.onCreate).assertTrue();
             expect(commonEventData.parameters?.data.onWindowStageCreate).assertTrue();
             expect(commonEventData.parameters?.data.onForeground).assertTrue();
             reburnNumber += 1;
-          };
+          }
           if (commonEventData.event == event3) {
             expect(commonEventData.parameters?.data.onBackground).assertTrue();
             expect(commonEventData.parameters?.data.onDestroy).assertTrue();
             expect(commonEventData.parameters?.data.onWindowStageDestroy).assertTrue();
             reburnNumber += 1;
-          };
-          if (reburnNumber == 3){
+          }
+          if (reburnNumber == 3) {
             commonEventManager.unsubscribe(subscriber, (err, data) => {
             });
             done();
-          };
+          }
         });
 
         let want: Want = {
@@ -1333,8 +1350,7 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
           done();
-        };
-
+        }
       });
     });
 
@@ -1346,7 +1362,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4600', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4600', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let event = TEST_CASE_NAME;
@@ -1358,7 +1374,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data.onBackground).assertTrue();
           expect(commonEventData.parameters?.data.onCreate).assertTrue();
@@ -1394,8 +1410,7 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
           done();
-        };
-
+        }
       });
     });
 
@@ -1407,7 +1422,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4700', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4700', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let reburnNumber = 0;
@@ -1421,7 +1436,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data.onBackground).assertTrue();
           expect(commonEventData.parameters?.data.onCreate).assertTrue();
@@ -1433,13 +1448,13 @@ export default function abilityTest() {
             expect(commonEventData.parameters?.data.result.resultCode).assertEqual(100);
             expect(commonEventData.parameters?.data.result.want?.bundleName).assertEqual(bundleName);
             expect(commonEventData.parameters?.data.result.want?.abilityName).assertEqual('MainAbility2');
-          };
+          }
           reburnNumber += 1;
-          if (reburnNumber == 2){
+          if (reburnNumber == 2) {
             commonEventManager.unsubscribe(subscriber, (err, data) => {
             });
             done();
-          };
+          }
         });
 
         let want: Want = {
@@ -1465,7 +1480,7 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
           done();
-        };
+        }
       });
     });
 
@@ -1477,15 +1492,28 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let reburnNumber = 0;
       let event = TEST_CASE_NAME;
       let event2 = TEST_CASE_NAME + '_2';
       AppStorage.SetOrCreate<boolean>('TestAbilityOnForeground', false);
-      let resultDate: common.AbilityResult = {"resultCode": -1,
-        "want": {"deviceId": "", "bundleName": "", "abilityName": "", "moduleName": "", "uri": "", "type": "", "flags": 0, "action": "", "parameters": {}, "entities": []}};
+      let resultDate: common.AbilityResult = {
+        "resultCode": -1,
+        "want": {
+          "deviceId": "",
+          "bundleName": "",
+          "abilityName": "",
+          "moduleName": "",
+          "uri": "",
+          "type": "",
+          "flags": 0,
+          "action": "",
+          "parameters": {},
+          "entities": []
+        }
+      };
 
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: [event, event2]
@@ -1494,7 +1522,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           if (commonEventData.event == event) {
             expect(commonEventData.parameters?.data.onBackground).assertTrue();
@@ -1503,17 +1531,17 @@ export default function abilityTest() {
             expect(commonEventData.parameters?.data.onForegroundSecond).assertTrue();
             expect(commonEventData.parameters?.data.onWindowStageCreate).assertTrue();
             expect(JSON.parse(commonEventData.parameters?.data.result)).assertDeepEquals(resultDate);
-          };
+          }
           if (commonEventData.event == event2) {
             expect(commonEventData.parameters?.data.onCreate).assertTrue();
             expect(commonEventData.parameters?.data.onWindowStageCreate).assertTrue();
             expect(commonEventData.parameters?.data.onForeground).assertTrue();
-          };
+          }
           reburnNumber += 1;
-          if (reburnNumber == 2){
+          if (reburnNumber == 2) {
             commonEventManager.unsubscribe(subscriber, (err, data) => {
             });
-          };
+          }
         });
 
         let want: Want = {
@@ -1542,7 +1570,7 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
           done();
-        };
+        }
       });
     });
 
@@ -1554,22 +1582,22 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5100', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5100', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5100';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let cmd1 = `hilog -r`;
       await delegator.executeShellCommand(cmd1);
-      let cmd2= `hilog -b D`;
+      let cmd2 = `hilog -b D`;
       await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
       };
-      let options: StartOptions= {
-        windowMode : 1
+      let options: StartOptions = {
+        windowMode: 1
       };
       try {
-        context.startAbility(want,options).then(async () => {
+        context.startAbility(want, options).then(async () => {
           let cmd = `hilog -x | grep 'Window mode is 1'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
@@ -1585,7 +1613,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -1596,22 +1624,22 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5200', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5200', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5200';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let cmd1 = `hilog -r`;
       await delegator.executeShellCommand(cmd1);
-      let cmd2= `hilog -b D`;
+      let cmd2 = `hilog -b D`;
       await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
       };
-      let options: StartOptions= {
-        windowMode : 101
+      let options: StartOptions = {
+        windowMode: 101
       };
       try {
-        context.startAbility(want,options).then(async () => {
+        context.startAbility(want, options).then(async () => {
           let cmd = `hilog -x | grep 'Window mode is 101'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
@@ -1627,7 +1655,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -1638,22 +1666,22 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5300', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5300', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let cmd1 = `hilog -r`;
       await delegator.executeShellCommand(cmd1);
-      let cmd2= `hilog -b D`;
+      let cmd2 = `hilog -b D`;
       await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
       };
-      let options: StartOptions= {
-        windowMode : 100
+      let options: StartOptions = {
+        windowMode: 100
       };
       try {
-        context.startAbility(want,options).then(async () => {
+        context.startAbility(want, options).then(async () => {
           let cmd = `hilog -x | grep 'Window mode is 100'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
@@ -1669,7 +1697,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -1680,22 +1708,22 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5400', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5400', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let cmd1 = `hilog -r`;
       await delegator.executeShellCommand(cmd1);
-      let cmd2= `hilog -b D`;
+      let cmd2 = `hilog -b D`;
       await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
       };
-      let options: StartOptions= {
-        windowMode : 0
+      let options: StartOptions = {
+        windowMode: 0
       };
       try {
-        context.startAbility(want,options).then(async () => {
+        context.startAbility(want, options).then(async () => {
           let cmd = `hilog -x | grep 'Window mode is 0'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
@@ -1711,7 +1739,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -1722,22 +1750,22 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5500', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5500', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5500';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let cmd1 = `hilog -r`;
       await delegator.executeShellCommand(cmd1);
-      let cmd2= `hilog -b D`;
+      let cmd2 = `hilog -b D`;
       await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
       };
-      let options: StartOptions= {
-        windowMode : 102
+      let options: StartOptions = {
+        windowMode: 102
       };
       try {
-        context.startAbility(want,options).then(async () => {
+        context.startAbility(want, options).then(async () => {
           let cmd = `hilog -x | grep 'Window mode is 102'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
@@ -1753,7 +1781,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -1764,22 +1792,22 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5600', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5600', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let cmd1 = `hilog -r`;
       await delegator.executeShellCommand(cmd1);
-      let cmd2= `hilog -b D`;
+      let cmd2 = `hilog -b D`;
       await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
       };
-      let options: StartOptions= {
-        windowMode : 1
+      let options: StartOptions = {
+        windowMode: 1
       };
       try {
-        context.startAbilityForResult(want,options).then(async () => {
+        context.startAbilityForResult(want, options).then(async () => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
@@ -1797,7 +1825,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -1808,22 +1836,22 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5700', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5700', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let cmd1 = `hilog -r`;
       await delegator.executeShellCommand(cmd1);
-      let cmd2= `hilog -b D`;
+      let cmd2 = `hilog -b D`;
       await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
       };
-      let options: StartOptions= {
-        windowMode : 101
+      let options: StartOptions = {
+        windowMode: 101
       };
       try {
-        context.startAbilityForResult(want,options).then(async () => {
+        context.startAbilityForResult(want, options).then(async () => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
@@ -1841,7 +1869,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
 
@@ -1853,22 +1881,22 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5900', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5900', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5900';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let cmd1 = `hilog -r`;
       await delegator.executeShellCommand(cmd1);
-      let cmd2= `hilog -b D`;
+      let cmd2 = `hilog -b D`;
       await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
       };
-      let options: StartOptions= {
-        windowMode : 100
+      let options: StartOptions = {
+        windowMode: 100
       };
       try {
-        context.startAbilityForResult(want,options).then(async () => {
+        context.startAbilityForResult(want, options).then(async () => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
@@ -1886,7 +1914,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -1897,22 +1925,22 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6000', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6000', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let cmd1 = `hilog -r`;
       await delegator.executeShellCommand(cmd1);
-      let cmd2= `hilog -b D`;
+      let cmd2 = `hilog -b D`;
       await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
       };
-      let options: StartOptions= {
-        windowMode : 0
+      let options: StartOptions = {
+        windowMode: 0
       };
       try {
-        context.startAbilityForResult(want,options).then(async () => {
+        context.startAbilityForResult(want, options).then(async () => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
@@ -1930,7 +1958,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -1941,22 +1969,22 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6100', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6100', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6100';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let cmd1 = `hilog -r`;
       await delegator.executeShellCommand(cmd1);
-      let cmd2= `hilog -b D`;
+      let cmd2 = `hilog -b D`;
       await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
       };
-      let options: StartOptions= {
-        windowMode : 102
+      let options: StartOptions = {
+        windowMode: 102
       };
       try {
-        context.startAbilityForResult(want,options).then(async () => {
+        context.startAbilityForResult(want, options).then(async () => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
@@ -1974,7 +2002,7 @@ export default function abilityTest() {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
         done();
-      };
+      }
     });
 
     /**
@@ -1985,7 +2013,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6600', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6600', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let reburnNumber = 0;
@@ -2000,7 +2028,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           if (commonEventData.event == event2 || commonEventData.event == event3) {
             expect(commonEventData.parameters?.data.onBackground).assertTrue();
@@ -2009,7 +2037,7 @@ export default function abilityTest() {
             expect(commonEventData.parameters?.data.onForeground).assertTrue();
             expect(commonEventData.parameters?.data.onWindowStageCreate).assertTrue();
             expect(commonEventData.parameters?.data.onWindowStageDestroy).assertTrue();
-          };
+          }
           if (commonEventData.event == event || commonEventData.event == event2) {
             expect(commonEventData.parameters?.data.result.resultCode).assertEqual(100);
             expect(commonEventData.parameters?.data.result.want?.bundleName).assertEqual(bundleName2);
@@ -2018,13 +2046,13 @@ export default function abilityTest() {
             } else {
               expect(commonEventData.parameters?.data.result.want?.abilityName).assertEqual('ThirdAbility');
             }
-          };
+          }
           reburnNumber += 1;
-          if (reburnNumber == 3){
+          if (reburnNumber == 3) {
             commonEventManager.unsubscribe(subscriber, (err, data) => {
             });
             done();
-          };
+          }
         });
 
         let want: Want = {
@@ -2047,7 +2075,7 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
           done();
-        };
+        }
       });
     });
 
@@ -2059,7 +2087,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6700', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6700', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let reburnNumber = 0;
@@ -2073,7 +2101,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           if (commonEventData.event == event2) {
             expect(commonEventData.parameters?.data.onBackground).assertTrue();
@@ -2082,18 +2110,18 @@ export default function abilityTest() {
             expect(commonEventData.parameters?.data.onForeground).assertTrue();
             expect(commonEventData.parameters?.data.onWindowStageCreate).assertTrue();
             expect(commonEventData.parameters?.data.onWindowStageDestroy).assertTrue();
-          };
+          }
           if (commonEventData.event == event) {
             expect(commonEventData.parameters?.data.result.resultCode).assertEqual(100);
             expect(commonEventData.parameters?.data.result.want?.bundleName).assertEqual(bundleName2);
             expect(commonEventData.parameters?.data.result.want?.abilityName).assertEqual('ThirdAbility');
-          };
+          }
           reburnNumber += 1;
-          if (reburnNumber == 2){
+          if (reburnNumber == 2) {
             commonEventManager.unsubscribe(subscriber, (err, data) => {
             });
             done();
-          };
+          }
         });
 
         let want: Want = {
@@ -2116,7 +2144,7 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
           done();
-        };
+        }
       });
     });
 
@@ -2128,7 +2156,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6800', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6800', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6800';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let event = TEST_CASE_NAME;
@@ -2140,7 +2168,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           expect(commonEventData.parameters?.data.onBackground).assertTrue();
           expect(commonEventData.parameters?.data.onCreate).assertTrue();
@@ -2176,7 +2204,7 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
           done();
-        };
+        }
       });
     });
 
@@ -2188,12 +2216,12 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2300', 0,async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2300', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let cmd1 = `hilog -r`;
       await delegator.executeShellCommand(cmd1);
-      let cmd2= `hilog -b D`;
+      let cmd2 = `hilog -b D`;
       await delegator.executeShellCommand(cmd2);
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['onDestroyCallback2']
@@ -2201,7 +2229,7 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, async (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=`+ JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           expect(commonEventData.parameters?.data.onBackground).assertTrue();
           expect(commonEventData.parameters?.data.onDestroy).assertTrue();
           let cmd = `hilog -x | grep 'Window mode is 100'`;
@@ -2228,7 +2256,7 @@ export default function abilityTest() {
           expect().assertFail();
           done();
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startablility fail : ${error}`);
-        };
+        }
       });
     });
 

@@ -21,6 +21,7 @@ import commonEventManger from '@ohos.commonEventManager';
 import ParamManager from '../common/Param';
 
 let param = new ParamManager();
+
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
@@ -30,13 +31,13 @@ export default class EntryAbility extends UIAbility {
     if (events) {
       let commonEventData: commonEventManger.CommonEventPublishData = {
         parameters: {
-          data:want
+          data: want
         }
       };
-      commonEventManger.publish(events,commonEventData,(result)=>{
+      commonEventManger.publish(events, commonEventData, (result) => {
         hilog.info(0x0000, 'testTag', `onConnect, 50 == ${JSON.stringify(result)}`);
       });
-    };
+    }
   }
 
   onDestroy(): void {

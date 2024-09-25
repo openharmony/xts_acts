@@ -21,6 +21,7 @@ import commonEventManger from '@ohos.commonEventManager';
 import ParamManager from '../common/Param';
 
 let param = new ParamManager();
+
 export default class MainAbility2 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
@@ -57,7 +58,7 @@ export default class MainAbility2 extends UIAbility {
     let isStart = AppStorage.get<boolean>('isStart');
     if (isStart) {
       return;
-    };
+    }
     AppStorage.SetOrCreate<boolean>('isStart', true);
     let want: Want = {
       bundleName: 'com.example.terminateselfwithresulttesthap2',
@@ -76,7 +77,7 @@ export default class MainAbility2 extends UIAbility {
               }
             }
           };
-          commonEventManger.publish(events,commonEventData,(result)=>{
+          commonEventManger.publish(events, commonEventData, (result) => {
             hilog.info(0x0000, 'testTag', `startAbilityForResult ok, 50 == ${JSON.stringify(result)}`);
           });
           setTimeout(async () => {
@@ -88,7 +89,7 @@ export default class MainAbility2 extends UIAbility {
       }, 500);
     } catch (error) {
       hilog.info(0x0000, 'testTag', `startAbilityForResult err, 50 == ${JSON.stringify(error)}`);
-    };
+    }
   }
 
   onBackground() {

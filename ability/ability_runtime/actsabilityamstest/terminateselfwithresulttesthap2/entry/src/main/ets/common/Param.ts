@@ -16,14 +16,13 @@
 const TAG = 'ParamManager';
 
 export default class ParamManager {
-  testName:string = '';
+  testName: string = '';
 
-  public setTextNme(name: string){
+  public setTextNme(name: string) {
     this.testName = name;
   }
 
-  public getTextNme(): string{
+  public getTextNme(): string {
     return this.testName;
   }
-
 }

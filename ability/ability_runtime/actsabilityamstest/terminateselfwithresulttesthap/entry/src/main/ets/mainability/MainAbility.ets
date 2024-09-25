@@ -21,6 +21,7 @@ import commonEventManger from '@ohos.commonEventManager';
 import ParamManager from '../common/Param';
 
 let param = new ParamManager();
+
 export default class MainAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'MainAbility', '%{public}s', 'Ability onCreate');
@@ -50,7 +51,7 @@ export default class MainAbility extends UIAbility {
         }
       }
     };
-    commonEventManger.publish(events,commonEventData,(result)=>{
+    commonEventManger.publish(events, commonEventData, (result) => {
       hilog.info(0x0000, 'MainAbility', `startAbilityForResult ok, 50 == ${JSON.stringify(result)}`);
     });
   }
@@ -101,7 +102,7 @@ export default class MainAbility extends UIAbility {
       }, 300);
     } catch (error) {
       hilog.info(0x0000, 'MainAbility', `startAbilityForResult err, 50 == ${JSON.stringify(error)}`);
-    };
+    }
   }
 
   onBackground(): void {

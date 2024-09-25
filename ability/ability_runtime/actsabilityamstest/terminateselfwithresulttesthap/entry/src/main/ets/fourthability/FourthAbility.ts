@@ -37,7 +37,7 @@ export default class FourthAbility extends UIAbility {
         }
       }
     };
-    commonEventManger.publish('onDestroyCallback2',commonEventData,(result)=>{
+    commonEventManger.publish('onDestroyCallback2', commonEventData, (result) => {
       hilog.info(0x0000, 'testTag', `onConnect, 50 == ${JSON.stringify(result)}`);
     });
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
@@ -67,21 +67,21 @@ export default class FourthAbility extends UIAbility {
       bundleName: 'com.example.terminateselfwithresulttesthap2',
       abilityName: 'EntryAbility'
     };
-    let options: StartOptions= {
-      windowMode : 100
+    let options: StartOptions = {
+      windowMode: 100
     };
     try {
-      this.context.startAbility(want,options).then(async () => {
+      this.context.startAbility(want, options).then(async () => {
         hilog.info(0x0000, 'testTag', '%{public}s', 'startAbility successful');
       }).catch((err: BusinessError) => {
         hilog.info(0x0000, 'testTag', '%{public}s', 'startAbility error');
       });
     } catch (error) {
       hilog.info(0x0000, 'testTag', '%{public}s', 'startAbility error');
-    };
-    setTimeout(()=>{
+    }
+    setTimeout(() => {
       this.context.terminateSelf();
-    },300);
+    }, 300);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 

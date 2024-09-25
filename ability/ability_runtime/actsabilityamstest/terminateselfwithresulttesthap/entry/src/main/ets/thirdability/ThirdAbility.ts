@@ -28,13 +28,13 @@ export default class ThirdAbility extends UIAbility {
 
   onDestroy() {
     let onBackground = AppStorage.get<boolean>('onBackground');
-    let returnDate = onBackground?true:false;
+    let returnDate = onBackground ? true : false;
     let commonEventData: commonEventManger.CommonEventPublishData = {
       parameters: {
-        data:returnDate
+        data: returnDate
       }
     };
-    commonEventManger.publish('onDestroyCallback',commonEventData,(result)=>{
+    commonEventManger.publish('onDestroyCallback', commonEventData, (result) => {
       hilog.info(0x0000, 'testTag', `onConnect, 50 == ${JSON.stringify(result)}`);
     });
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
@@ -60,9 +60,9 @@ export default class ThirdAbility extends UIAbility {
 
   onForeground() {
     // Ability has brought to foreground
-    setTimeout(()=>{
+    setTimeout(() => {
       this.context.terminateSelf();
-    },1000);
+    }, 1000);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 
