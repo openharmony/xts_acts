@@ -1592,14 +1592,14 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
         done();
       }).catch((err: BusinessError) => {
-        if (err.code != 801) {
+        if (err.code != 1300002) {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
           expect().assertFail();
           done();
         } else {
           console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
           console.log(msgStr + JSON.stringify(err))
-          expect(err.code).assertEqual(801);
+          expect(err.code).assertEqual(1300002);
           done();
         }
       });
