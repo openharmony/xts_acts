@@ -260,6 +260,19 @@ export default function nativeApiStringJsunit() {
     });
 
     /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0148
+     * @tc.name aceNapiTest0148
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0148', 0, async (done: Function) => {
+      console.info('aceNapiTest0148 START');
+      let value = napitest.stopEventLoop(4);
+      console.info('aceNapiTest0148 testString result is: ' + value);
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number SUB_ACE_BASIC_ETS_NAPI_0159
      * @tc.name aceNapiTest0159
      * @tc.desc aceNapiEtsTest
