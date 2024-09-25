@@ -190,6 +190,7 @@ HWTEST_F(DrawingNativeFontTest, testFontArgumentsDestoryNull, TestSize.Level0) {
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_SUCCESS;
     drawingErrorCode = OH_Drawing_FontArgumentsDestroy(nullptr);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_FontArgumentsDestroy(fontArguments);
 }
 
 /*
