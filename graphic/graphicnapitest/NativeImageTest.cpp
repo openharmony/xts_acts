@@ -843,7 +843,6 @@ HWTEST_F(NativeImageTest, OHNativeImageAcquireNativeWindowBufferNormal, Function
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeImageTest, OHNativeImageAcquireNativeWindowBuffer4KBoundary, Function | MediumTest | Level1) {
 
 HWTEST_F(NativeImageTest, OHNativeImageAcquireNativeWindowBuffer4KBoundary, Function | MediumTest | Level1) {
     if (image == nullptr) {
