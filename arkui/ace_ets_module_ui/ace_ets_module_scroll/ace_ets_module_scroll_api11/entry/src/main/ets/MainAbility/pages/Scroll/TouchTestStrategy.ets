@@ -26,7 +26,7 @@ struct TouchStrategyExample {
         Text(this.testTextStr).key('listText_TouchStrategy')
           .fontSize(20)
       }
-      .height(50)
+      .height(30)
       .margin(10)
       .backgroundColor(Color.White)
 
@@ -67,12 +67,12 @@ struct TouchStrategyExample {
       .scrollable(ScrollDirection.Vertical)
       .scrollBar(BarState.Auto)
       .width('100%')
-      .height('60%')
+      .height('50%')
       .key('list_TouchStrategy')
       .backgroundColor(Color.Gray)
 
       Text().key('border_TouchStrategy')
-        .width(300).height(200)
+        .width(300).height(300)
         .borderWidth(1).margin(10)
 
     }

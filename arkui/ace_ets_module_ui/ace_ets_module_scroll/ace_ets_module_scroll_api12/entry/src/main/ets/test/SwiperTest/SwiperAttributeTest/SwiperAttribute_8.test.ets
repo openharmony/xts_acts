@@ -71,14 +71,14 @@ export default function SwiperAttribute_8() {
       console.info("SwiperAttribute_0030 swiper rect is " + rect.left + " --" + rect.right + "--" + rect.top + "--" +
       rect.bottom);
 
-      let firstColumnRect = CommonFunc.getComponentRect('swiperAttribute_801');
+      let firstColumnRect = CommonFunc.getComponentRectOnScreen('swiperAttribute_801');
       let fTop = firstColumnRect.top;
       let fRight = firstColumnRect.right;
       let fLeft = firstColumnRect.left;
       let fBottom = firstColumnRect.bottom;
       console.info("SwiperAttribute_0030 first column rect is " + fLeft + " --" + fRight + "--" + fTop + "--" + fBottom);
 
-      let firstTextRect = CommonFunc.getComponentRect('swiperAttribute_8Text01');
+      let firstTextRect = CommonFunc.getComponentRectOnScreen('swiperAttribute_8Text01');
       let ftTop = firstTextRect.top;
       let ftRight = firstTextRect.right;
       let ftLeft = firstTextRect.left;
@@ -100,7 +100,7 @@ export default function SwiperAttribute_8() {
           Number.parseInt(`${(rect.bottom - rect.top) * 0.5 + rect.top}`),
           1000);
         await CommonFunc.sleep(1000);
-        let columnRect = CommonFunc.getComponentRect('swiperAttribute_80' + i);
+        let columnRect = CommonFunc.getComponentRectOnScreen('swiperAttribute_80' + i);
         console.info("SwiperAttribute_0030 column rect is " + columnRect.left + " --" + columnRect.right + "--" +
         columnRect.top + "--" + columnRect.bottom);
         expect(Math.abs(Math.round(columnRect.top - rect.top)) <= 1).assertTrue();

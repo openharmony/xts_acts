@@ -80,7 +80,7 @@ export default function SwiperAttribute_3() {
             1000);
           await CommonFunc.sleep(1000);
         }
-        let columnRect = CommonFunc.getComponentRect('swiperAttribute_30' + i);
+        let columnRect = CommonFunc.getComponentRectOnScreen('swiperAttribute_30' + i);
         console.info("SwiperAttribute_0070 column rect is " + columnRect.left + " --" + columnRect.right + "--" +
         columnRect.top + "--" + columnRect.bottom);
         expect(Math.abs(Math.round(columnRect.top - rect.top)) <= 1).assertTrue();

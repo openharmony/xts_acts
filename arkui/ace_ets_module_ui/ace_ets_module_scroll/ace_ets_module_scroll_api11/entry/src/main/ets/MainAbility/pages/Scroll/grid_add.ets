@@ -40,7 +40,7 @@ struct GridExampleAdd {
       .rowsGap(10)
       .width('90%')
       .backgroundColor(0xFAEEE0)
-      .height(300)
+      .height('30%')
 
       Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
       Grid(this.scroller,{regularSize:[12,12],irregularIndexes:[10,5,7],onGetIrregularSizeByIndex:(index: number) => {
@@ -79,7 +79,7 @@ struct GridExampleAdd {
       })
       .width('90%')
       .backgroundColor(0xFAEEE0)
-      .height(300)
+      .height('30%')
       Button('next page')
         .onClick(() => { // 点击后滑到下一页
           this.scroller.scrollPage({ next: true })
