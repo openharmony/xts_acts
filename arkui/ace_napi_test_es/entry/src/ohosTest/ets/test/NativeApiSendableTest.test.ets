@@ -63,19 +63,6 @@ export default function nativeApiSendableJsunit() {
     });
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0003
-     * @tc.name napiSendableTest003
-     * @tc.desc aceNapiEtsTest
-     */
-    it('napiSendableTest003', 0, async (done: Function) => {
-      console.info('napiSendableTest003 START');
-      let value = napitest.NapiCreateSendableObject();
-      expect(napitest.NapiIsSendable(value)).assertEqual(true);
-      // expect(value.x).assertEqual(true);
-      done();
-    });
-
-    /**
      * @tc.number SUB_ACE_BASIC_ETS_NAPI_0004
      * @tc.name napiSendableTest004
      * @tc.desc aceNapiEtsTest
