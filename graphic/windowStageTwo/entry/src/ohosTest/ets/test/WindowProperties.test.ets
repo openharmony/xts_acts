@@ -335,11 +335,11 @@ export default function windowPropertiesTest() {
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1000
      * @tc.name      : testOnRectChangeOptionsResizeMainWindow
      * @tc.desc      : Test the function value of testRectChangeOptions
-     * @tc.size      : MediumTestrun
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("TestOnRectChangeOptionsResizeMainWindow", 0, async (done: Function) => {
+    it("testOnRectChangeOptionsResizeMainWindow", 0, async (done: Function) => {
       let caseName = "TestOnRectChangeOptionsResizeMainWindow";
       let windowClass = windowStage.getMainWindowSync();
       try {
