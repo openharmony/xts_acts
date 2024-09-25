@@ -35,7 +35,7 @@ struct webResourceResponsePage {
 
   controller: webview.WebviewController = new webview.WebviewController();
   responseWeb: WebResourceResponse = new WebResourceResponse()
-  heads: Header[] = new Array()
+  heads: Header[] = []
   @State webdata: string = "<!DOCTYPE html>\n" +
     "<html>\n" +
     "<head>\n" +
@@ -58,7 +58,7 @@ struct webResourceResponsePage {
   @State responseDataType: string = ""
   @State responseDataString: string = ""
   @State responseDataArrayBuffer: Uint8Array = new Uint8Array(new ArrayBuffer(1024*1024))
-  @State responseDataResource: Resource = $rawfile("index.html")
+  @State responseDataResource: Resource = $rawfile('index.html')
   @State getResponseDataExValue: string = ''
   @State getResponseIsReady: boolean = false
 
@@ -77,7 +77,7 @@ struct webResourceResponsePage {
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");
     if (eventData != null) {
-      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.emitKey = eventData.data.ACTION;
       }
@@ -101,7 +101,7 @@ struct webResourceResponsePage {
                 this.responseDataString = this.webdata
                 this.setResponseCode = 200
                 await Utils.sleep(2000) 
-                this.controller.loadUrl("http://www.baidu.com");
+                this.controller.loadUrl('www.example.com');
                 let result: boolean = false;
                 await Utils.sleep(2000);
                 console.log("testGetResponseDataExReturnString getResponseDataEx:" + this.responseWeb.getResponseDataEx())
@@ -122,7 +122,7 @@ struct webResourceResponsePage {
                 this.setResponseCode = 403
                 this.getResponseIsReady = false
                 await Utils.sleep(2000)
-                this.controller.loadUrl("http://www.baidu.com");
+                this.controller.loadUrl('www.example.com');
                 await Utils.sleep(2000)
                 console.log("testGetResponseIsReadyReturnTrue getResponseIsReady:" + this.responseWeb.getResponseIsReady())
                 let result: boolean = false;
@@ -165,8 +165,6 @@ struct webResourceResponsePage {
               this.responseWeb.setResponseData(this.responseDataArrayBuffer) 
             }else if(this.responseDataType === "Resource"){
               this.responseWeb.setResponseData(this.responseDataResource) 
-            }else if(this.responseDataType === "undefined"){
-              
             }
             this.responseWeb.setResponseEncoding('utf-8')
             this.responseWeb.setResponseMimeType('text/html')
