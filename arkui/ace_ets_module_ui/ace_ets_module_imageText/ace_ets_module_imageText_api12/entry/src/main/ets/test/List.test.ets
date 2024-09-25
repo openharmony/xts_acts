@@ -152,6 +152,9 @@ import imageSpanTest8 from './TextTest/imageSpan8.test';
 import TextMaxLines from './Text/TextMaxLines.test';
 import SetFrameRateRangeTest from './Marquee/marqueeFrame.test';
 import getRectsForRangeTest from './RichEditor/getRectsForRange.test'
+import textInputEnterKeyTypeTest from './TextInput/textInputEnterKeyType.test'
+import spanTest from './spanTest/SpanJsunit1.test'
+import textAreaAutoFillTest from './TextArea/TextAreaAutoFillJsUnit.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -286,4 +289,7 @@ export default function testsuite() {
   TextMaxLines();
   SetFrameRateRangeTest();
   getRectsForRangeTest();
+  textInputEnterKeyTypeTest();
+  spanTest();
+  textAreaAutoFillTest()
 }
