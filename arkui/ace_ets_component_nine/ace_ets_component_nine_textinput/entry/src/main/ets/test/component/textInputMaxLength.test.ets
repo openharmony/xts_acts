@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputMaxLengthTest() {
-  describe('textInputMaxLengthTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputMaxLengthTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputMaxLengthTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputMaxLength',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputMaxLength',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputMaxLength state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputMaxLength pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputMaxLength page result: " + JSON.stringify(result));
+          console.info("push textInputMaxLength page result: success");
         }
       } catch (err) {
         console.error("push textInputMaxLength page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputMaxLengthTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputMaxLength after each called");
     })
@@ -59,18 +58,18 @@ export default function textInputMaxLengthTest() {
      * @tc.type    Function
      * @tc.level   0 
      */
-    it('textInputMaxLength0100', 0, async function (done) {
-      var tagName = 'textInputMaxLength0100';
+    it('textInputMaxLength0100', 0, async (done: Function) => {
+      let tagName = 'textInputMaxLength0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000) 
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "maxLength": 5
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 810,
           priority: events_emitter.EventPriority.LOW
         }
@@ -82,7 +81,7 @@ export default function textInputMaxLengthTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_maxlength');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Textinput maxLength is: ' + JSON.stringify(obj.$attrs.maxLength));  
  
       expect(obj.$attrs.maxLength).assertEqual('5');
@@ -99,18 +98,18 @@ export default function textInputMaxLengthTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it('textInputMaxLength0200', 0, async function (done) {
-      var tagName = 'textInputMaxLength0200';
+    it('textInputMaxLength0200', 0, async (done: Function) => {
+      let tagName = 'textInputMaxLength0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000) 
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "maxLength": 0
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 811,
           priority: events_emitter.EventPriority.LOW
         }
@@ -122,7 +121,7 @@ export default function textInputMaxLengthTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_maxlength');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Textinput maxLength is: ' + JSON.stringify(obj.$attrs.maxLength)); 
  
       expect(obj.$attrs.maxLength).assertEqual('0');
@@ -139,18 +138,18 @@ export default function textInputMaxLengthTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it('textInputMaxLength0300', 0, async function (done) {
-      var tagName = 'textInputMaxLength0300';
+    it('textInputMaxLength0300', 0, async (done: Function) => {
+      let tagName = 'textInputMaxLength0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000) 
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "maxLength": -1
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 812,
           priority: events_emitter.EventPriority.LOW
         }
@@ -162,7 +161,7 @@ export default function textInputMaxLengthTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_maxlength');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Textinput maxLength is: ' + JSON.stringify(obj.$attrs.maxLength)); 
  
       expect(obj.$attrs.maxLength).assertEqual('INF');

@@ -30,11 +30,11 @@ struct TextInputPlaceholderColor {
   @State color?: ResourceColor = 0xCCCCCC;
   @State textInputPlaceholderColorModifier: TextInputPlaceholderColorModifier = new TextInputPlaceholderColorModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("textInputPlaceholderColorModifier page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.color != null) {
+      if (eventData.data?.color != null) {
         console.info("[textInputPlaceholderColorModifier page] placeholderColor change data is " + eventData.data.color);
 
         if ( 'app.color.color_D90013_red' ===  eventData.data.color){
@@ -55,7 +55,7 @@ struct TextInputPlaceholderColor {
     {
       let eventid = 960 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

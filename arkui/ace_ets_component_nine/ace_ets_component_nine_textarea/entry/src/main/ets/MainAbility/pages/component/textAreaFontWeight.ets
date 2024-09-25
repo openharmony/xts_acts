@@ -28,10 +28,10 @@ class TextAreaFontWeightModifier implements AttributeModifier<TextAreaAttribute>
 struct TextAreaFontWeight {
   @State message : string = 'textarea';
   @State textAreaFontWeightModifier: TextAreaFontWeightModifier = new TextAreaFontWeightModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[fontWeight page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.fontWeight != null) {
+      if (eventData.data?.fontWeight != null) {
         console.info("[fontWeight page] fontWeight change data is " + JSON.stringify(eventData.data.fontWeight));
         this.textAreaFontWeightModifier.fontWeightValue =  eventData.data.fontWeight;
       }
@@ -39,17 +39,17 @@ struct TextAreaFontWeight {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent02, this.stateChangCallBack);
-    var stateChangeEvent03 = {
+    let stateChangeEvent03: events_emitter.InnerEvent = {
       eventId: 6803,
       priority: events_emitter.EventPriority.LOW
     }

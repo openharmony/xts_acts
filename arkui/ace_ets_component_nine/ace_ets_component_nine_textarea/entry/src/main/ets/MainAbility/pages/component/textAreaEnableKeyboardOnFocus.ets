@@ -28,10 +28,10 @@ class TextAreaEnableKeyboardOnFocusModifier implements AttributeModifier<TextAre
 struct TextAreaEnableKeyboardOnFocus {
   @State message : string = 'textarea';
   @State textAreaEnableKeyboardOnFocusModifier: TextAreaEnableKeyboardOnFocusModifier = new TextAreaEnableKeyboardOnFocusModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[enableKeyboardOnFocus page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.enableKeyboardOnFocus != null) {
+      if (eventData.data?.enableKeyboardOnFocus != null) {
         console.info("[enableKeyboardOnFocus page] enableKeyboardOnFocus change data is " + JSON.stringify(eventData.data.enableKeyboardOnFocus));
         this.textAreaEnableKeyboardOnFocusModifier.enableKeyboardOnFocusValue =  eventData.data.enableKeyboardOnFocus;
       }
@@ -39,12 +39,12 @@ struct TextAreaEnableKeyboardOnFocus {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }

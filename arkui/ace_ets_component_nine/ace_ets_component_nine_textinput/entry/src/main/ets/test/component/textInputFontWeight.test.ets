@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputFontWeightTest() {
-  describe('textInputFontWeightTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputFontWeightTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputFontWeightTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputFontWeight',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputFontWeight',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputFontWeight state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputFontWeight pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputFontWeight page result: " + JSON.stringify(result));
+          console.info("push textInputFontWeight page result: success");
         }
       } catch (err) {
         console.error("push textInputFontWeight page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputFontWeightTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputFontSize after each called");
     })
@@ -59,19 +58,19 @@ export default function textInputFontWeightTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputFontWeight0100', 0, async function (done) {
-      var tagName = 'textInputFontWeight0100';
+    it('textInputFontWeight0100', 0, async (done: Function) => {
+      let tagName = 'textInputFontWeight0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontWeight": 100
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 940,
           priority: events_emitter.EventPriority.LOW
         }
@@ -83,7 +82,7 @@ export default function textInputFontWeightTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontweight');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text fontWeight is: ' + JSON.stringify(obj.$attrs.fontWeight));
  
  
@@ -101,19 +100,19 @@ export default function textInputFontWeightTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputFontWeight0200', 0, async function (done) {
-      var tagName = 'textInputFontWeight0200';
+    it('textInputFontWeight0200', 0, async (done: Function) => {
+      let tagName = 'textInputFontWeight0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontWeight": FontWeight.Normal 
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 941,
           priority: events_emitter.EventPriority.LOW
         }
@@ -125,7 +124,7 @@ export default function textInputFontWeightTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontweight');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text fontWeight is: ' + JSON.stringify(obj.$attrs.fontWeight));
  
  
@@ -143,19 +142,19 @@ export default function textInputFontWeightTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputFontWeight0300', 0, async function (done) {
-      var tagName = 'textInputFontWeight0300';
+    it('textInputFontWeight0300', 0, async (done: Function) => {
+      let tagName = 'textInputFontWeight0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontWeight": FontWeight.Lighter 
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 942,
           priority: events_emitter.EventPriority.LOW
         }
@@ -167,7 +166,7 @@ export default function textInputFontWeightTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontweight');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text fontWeight is: ' + JSON.stringify(obj.$attrs.fontWeight));
  
  
@@ -185,19 +184,19 @@ export default function textInputFontWeightTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputFontWeight0400', 0, async function (done) {
-      var tagName = 'textInputFontWeight0400';
+    it('textInputFontWeight0400', 0, async (done: Function) => {
+      let tagName = 'textInputFontWeight0400';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontWeight": FontWeight.Regular 
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 943,
           priority: events_emitter.EventPriority.LOW
         }
@@ -209,7 +208,7 @@ export default function textInputFontWeightTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontweight');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text fontWeight is: ' + JSON.stringify(obj.$attrs.fontWeight));
  
  
@@ -227,19 +226,19 @@ export default function textInputFontWeightTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputFontWeight0500', 0, async function (done) {
-      var tagName = 'textInputFontWeight0500';
+    it('textInputFontWeight0500', 0, async (done: Function) => {
+      let tagName = 'textInputFontWeight0500';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontWeight": FontWeight.Medium 
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 944,
           priority: events_emitter.EventPriority.LOW
         }
@@ -251,7 +250,7 @@ export default function textInputFontWeightTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontweight');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text fontWeight is: ' + JSON.stringify(obj.$attrs.fontWeight));
  
  
@@ -269,19 +268,19 @@ export default function textInputFontWeightTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputFontWeight0600', 0, async function (done) {
-      var tagName = 'textInputFontWeight0600';
+    it('textInputFontWeight0600', 0, async (done: Function) => {
+      let tagName = 'textInputFontWeight0600';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontWeight": FontWeight.Bold 
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 945,
           priority: events_emitter.EventPriority.LOW
         }
@@ -293,7 +292,7 @@ export default function textInputFontWeightTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontweight');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text fontWeight is: ' + JSON.stringify(obj.$attrs.fontWeight));
  
  
@@ -312,19 +311,19 @@ export default function textInputFontWeightTest() {
      * @tc.type    Function
      * @tc.level   0 
      */
-    it('textInputFontWeight0700', 0, async function (done) {
-      var tagName = 'textInputFontWeight0700';
+    it('textInputFontWeight0700', 0, async (done: Function) => {
+      let tagName = 'textInputFontWeight0700';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontWeight": FontWeight.Bolder 
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 946,
           priority: events_emitter.EventPriority.LOW
         }
@@ -336,7 +335,7 @@ export default function textInputFontWeightTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontweight');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text fontWeight is: ' + JSON.stringify(obj.$attrs.fontWeight));
  
  
@@ -355,19 +354,19 @@ export default function textInputFontWeightTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it('textInputFontWeight0800', 0, async function (done) {
-      var tagName = 'textInputFontWeight0800';
+    it('textInputFontWeight0800', 0, async (done: Function) => {
+      let tagName = 'textInputFontWeight0800';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontWeight": '1000'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 947,
           priority: events_emitter.EventPriority.LOW
         }
@@ -379,7 +378,7 @@ export default function textInputFontWeightTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontweight');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text fontWeight is: ' + JSON.stringify(obj.$attrs.fontWeight));
  
  

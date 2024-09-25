@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputPasswordIconTest() {
-  describe('textInputPasswordIconTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputPasswordIconTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputPasswordIconTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputPasswordIcon',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputPasswordIcon',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputPasswordIcon state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputPasswordIcon pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputPasswordIcon page result: " + JSON.stringify(result));
+          console.info("push textInputPasswordIcon page result: success");
         }
       } catch (err) {
         console.error("push textInputPasswordIcon page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputPasswordIconTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputPasswordIcon after each called");
     }) 
@@ -57,15 +56,15 @@ export default function textInputPasswordIconTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it('textInputPasswordIcon0100', 0, async function (done) {
+    it('textInputPasswordIcon0100', 0, async (done: Function) => {
       let tagName = 'textInputPasswordIcon0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(2000)
        
       let strJsonNew = getInspectorByKey('key_textinput_passwordIcon');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text passwordIcon is: ' + JSON.stringify(obj.$attrs.passwordIcon));
-      let objpasswordIcon = JSON.parse(obj.$attrs.passwordIcon);
+      let objpasswordIcon: ESObject = JSON.parse(obj.$attrs.passwordIcon);
       expect(objpasswordIcon.onIconSrc).assertEqual('/test/assert/icon.png');
       expect(objpasswordIcon.offIconSrc).assertEqual('/test/assert/icon.png');
        

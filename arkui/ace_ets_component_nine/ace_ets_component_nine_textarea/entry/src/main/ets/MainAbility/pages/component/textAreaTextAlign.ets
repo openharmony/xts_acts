@@ -28,10 +28,10 @@ class TextAreaTextAlignModifier implements AttributeModifier<TextAreaAttribute> 
 struct TextAreaTextAlign {
   @State message : string = 'textarea';
   @State textAreaTextAlignModifier: TextAreaTextAlignModifier = new TextAreaTextAlignModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[textAlign page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.textAlign != null) {
+      if (eventData.data?.textAlign != null) {
         console.info("[textAlign page] textAlign change data is " + JSON.stringify(eventData.data.textAlign));
         this.textAreaTextAlignModifier.textAlignValue =  eventData.data.textAlign;
       }
@@ -39,22 +39,22 @@ struct TextAreaTextAlign {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent02, this.stateChangCallBack);
-    var stateChangeEvent03 = {
+    let stateChangeEvent03: events_emitter.InnerEvent = {
       eventId: 6803,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent03, this.stateChangCallBack);
-    var stateChangeEvent04 = {
+    let stateChangeEvent04: events_emitter.InnerEvent = {
       eventId: 6804,
       priority: events_emitter.EventPriority.LOW
     }

@@ -28,17 +28,17 @@ class FlexBasisPageModifier  implements AttributeModifier<CommonAttribute> {
 @Component
 struct FlexBasisPage {
   @State flexBasisValue: number | string = 0
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State containerView: string = router.getParams() ? router.getParams()['view']['containerView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-  @State targetWidth: number = router.getParams() ? router.getParams()['view']['targetWidth'] : 0
-  @State targetHeight: number = router.getParams() ? router.getParams()['view']['targetHeight'] : 0
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State containerView: string = router.getParams() ? (router.getParams() as ESObject)['view']['containerView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+  @State targetWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetWidth'] : 0
+  @State targetHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetHeight'] : 0
   @State mod: FlexBasisPageModifier = new FlexBasisPageModifier()
   onPageShow() {
     console.info('[FlexBasis] page show called ')
-    AttrsManager.registerDataChange(value => {
+    AttrsManager.registerDataChange((value: ESObject) => {
       console.info('FlexBasis page receive value is: ' +  JSON.stringify(value) );       
       this.mod.flexBasisValue = value.flexBasis
       this.flexBasisValue = value.flexBasis

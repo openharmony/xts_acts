@@ -30,11 +30,11 @@ struct TextInputBarState {
    
   @State mod1: MyTextInputBarStateModifier = new MyTextInputBarStateModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("MyTextInputBarStateModifier page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.barState != null) {
+      if (eventData.data?.barState != null) {
         this.mod1.barState = eventData.data.barState;
       }
     }
@@ -47,7 +47,7 @@ struct TextInputBarState {
     {
       let eventid = 850 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

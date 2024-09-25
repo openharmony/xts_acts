@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputCaretStyleTest() {
-  describe('textInputCaretStyleTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputCaretStyleTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputCaretStyleTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputCaretStyle',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputCaretStyle',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputcaretStyle state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputcaretStyle pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputcaretStyle page result: " + JSON.stringify(result));
+          console.info("push textInputcaretStyle page result: success");
         }
       } catch (err) {
         console.error("push textInputcaretStyle page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputCaretStyleTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputcaretStyleTest after each called");
     })
@@ -59,20 +58,20 @@ export default function textInputCaretStyleTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputCaretStyle0100', 0, async function (done) {
-      var tagName = 'textInputCaretStyle0100';
+    it('textInputCaretStyle0100', 0, async (done: Function) => {
+      let tagName = 'textInputCaretStyle0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
 
       try {
         let defaultJson = JSON.stringify({ width: -1 })
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "caretStyleValue": defaultJson
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 890,
           priority: events_emitter.EventPriority.LOW
         }
@@ -84,10 +83,10 @@ export default function textInputCaretStyleTest() {
       await Utils.sleep(2000);
 
       let strJsonNew = getInspectorByKey('key_textinput_caretstyle');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text caretstyle is: ' + JSON.stringify(obj.$attrs.caretStyle));
 
-      let objcaretStyle = JSON.parse(obj.$attrs.caretStyle);
+      let objcaretStyle: ESObject = JSON.parse(obj.$attrs.caretStyle);
       expect(objcaretStyle.width).assertEqual('2.00vp');
       console.info('[' + tagName + '] END ===========================');
       done();
@@ -101,20 +100,20 @@ export default function textInputCaretStyleTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputCaretStyle0200', 0, async function (done) {
-      var tagName = 'textInputCaretStyle0200';
+    it('textInputCaretStyle0200', 0, async (done: Function) => {
+      let tagName = 'textInputCaretStyle0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
 
       try {
         let defaultJson = JSON.stringify({ width: '30' })
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "caretStyleValue": defaultJson
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 891,
           priority: events_emitter.EventPriority.LOW
         }
@@ -126,9 +125,9 @@ export default function textInputCaretStyleTest() {
       await Utils.sleep(2000);
 
       let strJsonNew = getInspectorByKey('key_textinput_caretstyle');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text caretstyle is: ' + JSON.stringify(obj.$attrs.caretStyle));
-      let objcaretStyle = JSON.parse(obj.$attrs.caretStyle);
+      let objcaretStyle: ESObject = JSON.parse(obj.$attrs.caretStyle);
       expect(objcaretStyle.width).assertEqual('30.00vp');
 
       console.info('[' + tagName + '] END ===========================');
@@ -144,20 +143,20 @@ export default function textInputCaretStyleTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputCaretStyle0300', 0, async function (done) {
-      var tagName = 'textInputCaretStyle0300';
+    it('textInputCaretStyle0300', 0, async (done: Function) => {
+      let tagName = 'textInputCaretStyle0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
 
       try {
         let defaultJson = JSON.stringify({ width: '10tpx' })
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "caretStyleValue": defaultJson
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 892,
           priority: events_emitter.EventPriority.LOW
         }
@@ -171,10 +170,10 @@ export default function textInputCaretStyleTest() {
       let strJsonNew = getInspectorByKey('key_textinput_caretstyle');
 
       console.info(' Text Object json is:' + strJsonNew);
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text caretstyle is: ' + JSON.stringify(obj.$attrs.caretStyle));
 
-      let objcaretStyle = JSON.parse(obj.$attrs.caretStyle);
+      let objcaretStyle: ESObject = JSON.parse(obj.$attrs.caretStyle);
       expect(objcaretStyle.width).assertEqual('2.00vp');
       console.info('[' + tagName + '] END ===========================');
       done();
@@ -189,20 +188,20 @@ export default function textInputCaretStyleTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputCaretStyle0400', 0, async function (done) {
-      var tagName = 'textInputCaretStyle0400';
+    it('textInputCaretStyle0400', 0, async (done: Function) => {
+      let tagName = 'textInputCaretStyle0400';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
 
       try {
         let defaultJson = JSON.stringify({ width: 'app.float.length_xl' })
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "caretStyleValue": defaultJson
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 893,
           priority: events_emitter.EventPriority.LOW
         }
@@ -214,10 +213,10 @@ export default function textInputCaretStyleTest() {
       await Utils.sleep(2000);
 
       let strJsonNew = getInspectorByKey('key_textinput_caretstyle');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text caretstyle is: ' + JSON.stringify(obj.$attrs.caretStyle));
 
-      let objcaretStyle = JSON.parse(obj.$attrs.caretStyle);
+      let objcaretStyle: ESObject = JSON.parse(obj.$attrs.caretStyle);
       expect(objcaretStyle.width).assertEqual('50.00fp');
       console.info('[' + tagName + '] END ===========================');
       done();

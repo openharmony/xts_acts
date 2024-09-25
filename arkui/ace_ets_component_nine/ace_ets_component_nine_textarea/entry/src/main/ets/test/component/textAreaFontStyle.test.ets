@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaFontStyle() {
-  describe('fontStyleTest', function () {
-    beforeEach(async function (done) {
+  describe('fontStyleTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("fontStyleTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaFontStyle',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaFontStyle',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get fontStyle state pages: " + JSON.stringify(pages));
         if (!("textAreaFontStyle" == pages.name)) {
           console.info("get textAreaFontStyle pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaFontStyle page result: " + JSON.stringify(result));
+          console.info("push textAreaFontStyle page result: success");
         }
       } catch (err) {
         console.error("push textAreaFontStyle page error: " + err);
@@ -42,7 +41,7 @@ export default function textAreaFontStyle() {
       console.info("textAreaFontStyle beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("fontStyle after each called");
     });
@@ -54,17 +53,17 @@ export default function textAreaFontStyle() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaFontStyleNormal', 0, async function (done) {
-      var tagName = 'testTextAreaFontStyleNormal';
+    it('testTextAreaFontStyleNormal', 0, async (done: Function) => {
+      let tagName = 'testTextAreaFontStyleNormal';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontStyle": FontStyle.Normal,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,7 +74,7 @@ export default function textAreaFontStyle() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_fontStyle');
-      let obj = JSON.parse(strJson); 
+      let obj: ESObject = JSON.parse(strJson); 
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.fontStyle));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontStyle).assertEqual("FontStyle.Normal");
@@ -90,17 +89,17 @@ export default function textAreaFontStyle() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaFontStyleItalic', 0, async function (done) {
-      var tagName = 'testTextAreaFontStyleItalic';
+    it('testTextAreaFontStyleItalic', 0, async (done: Function) => {
+      let tagName = 'testTextAreaFontStyleItalic';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontStyle": FontStyle.Italic,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6802,
           priority: events_emitter.EventPriority.LOW
         }
@@ -111,7 +110,7 @@ export default function textAreaFontStyle() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_fontStyle');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.fontStyle));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontStyle).assertEqual("FontStyle.Italic");

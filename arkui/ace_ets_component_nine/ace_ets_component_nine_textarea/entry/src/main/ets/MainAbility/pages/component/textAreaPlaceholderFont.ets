@@ -33,12 +33,12 @@ class TextAreaPlaceholderFontModifier implements AttributeModifier<TextAreaAttri
 struct TextAreaPlaceholderFont {
   @State message : string = 'textarea';
   @State textAreaPlaceholderFontModifier: TextAreaPlaceholderFontModifier = new TextAreaPlaceholderFontModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[placeholderFont page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.placeholderFont != null) {
+      if (eventData.data?.placeholderFont != null) {
         console.info("[placeholderFont page] placeholderFont change data is " + JSON.stringify(eventData.data.placeholderFont));
-        if (eventData.data.placeholderFont == 'app.float.length_df') {
+        if (eventData.data?.placeholderFont == 'app.float.length_df') {
           this.textAreaPlaceholderFontModifier.placeholderFontValue = {size: $r('app.float.length_df')};
         } else {
           this.textAreaPlaceholderFontModifier.placeholderFontValue =  JSON.parse(eventData.data.placeholderFont);
@@ -48,22 +48,22 @@ struct TextAreaPlaceholderFont {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent02, this.stateChangCallBack);
-    var stateChangeEvent03 = {
+    let stateChangeEvent03: events_emitter.InnerEvent = {
       eventId: 6803,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent03, this.stateChangCallBack);
-    var stateChangeEvent04 = {
+    let stateChangeEvent04: events_emitter.InnerEvent = {
       eventId: 6804,
       priority: events_emitter.EventPriority.LOW
     }

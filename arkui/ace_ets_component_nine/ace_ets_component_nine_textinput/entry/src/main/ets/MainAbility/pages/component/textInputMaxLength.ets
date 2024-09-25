@@ -29,11 +29,11 @@ struct TextMaxLength {
   @State  maxLength: number  = 0;
   @State textInputMaxLengthModifier: TextInputMaxLengthModifier = new TextInputMaxLengthModifier();
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("textInputMaxLengthModifier page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.maxLength != null) {
+      if (eventData.data?.maxLength != null) {
         console.info("[textInputMaxLengthModifier page] maxLength change data is " + eventData.data.maxLength);
         this.maxLength = eventData.data.maxLength;
         this.textInputMaxLengthModifier.maxLength =  eventData.data.maxLength;
@@ -45,7 +45,7 @@ struct TextMaxLength {
     for( let i = 0; i < 5; i++)
     {
       let eventid = 810 + i;
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

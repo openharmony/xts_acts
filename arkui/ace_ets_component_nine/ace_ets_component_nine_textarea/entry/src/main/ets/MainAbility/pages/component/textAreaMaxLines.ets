@@ -29,10 +29,10 @@ class TextAreaMaxLinesModifier implements AttributeModifier<TextAreaAttribute> {
 struct TextAreaMaxLines {
   @State message : string = 'textarea';
   @State textAreaMaxLinesModifier: TextAreaMaxLinesModifier = new TextAreaMaxLinesModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[maxLines page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.maxLines != null) {
+      if (eventData.data?.maxLines != null) {
         console.info("[maxLines page] maxLines change data is " + JSON.stringify(eventData.data.maxLines));
         this.textAreaMaxLinesModifier.maxLinesValue =  eventData.data.maxLines;
       }
@@ -42,7 +42,7 @@ struct TextAreaMaxLines {
 
   onPageShow() {
 
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }

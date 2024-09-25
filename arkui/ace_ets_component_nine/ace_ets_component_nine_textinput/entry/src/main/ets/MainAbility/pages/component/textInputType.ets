@@ -35,20 +35,20 @@ class MyTextInputTypeModifier implements AttributeModifier<TextInputAttribute> {
 @Component
 struct TextInputTypeExample {
   @State mod1: MyTextInputTypeModifier = new MyTextInputTypeModifier()
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("MyTextInputTypeModifier page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.typeValue != null) {
+      if (eventData.data?.typeValue != null) {
         console.info("[MyTextInputTypeModifier page] typeValue change data is " + eventData.data.typeValue);
 
-        if (eventData.data.typeValue === 0) {
+        if (eventData.data?.typeValue === 0) {
           this.mod1.typeValue = 0;
-        } else if (eventData.data.typeValue === 1) {
+        } else if (eventData.data?.typeValue === 1) {
           this.mod1.typeValue = 1;
-        } else if (eventData.data.typeValue === 2) {
+        } else if (eventData.data?.typeValue === 2) {
           this.mod1.typeValue = 2;
-        } else if (eventData.data.typeValue === 3) {
+        } else if (eventData.data?.typeValue === 3) {
           this.mod1.typeValue = 3;
         }
 
@@ -62,7 +62,7 @@ struct TextInputTypeExample {
     for (let i = 0; i < 4; i++) {
       let eventid = 100 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

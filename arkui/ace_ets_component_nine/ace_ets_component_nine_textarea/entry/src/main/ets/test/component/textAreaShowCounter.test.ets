@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaShowCounter() {
-  describe('showCounterTest', function () {
-    beforeEach(async function (done) {
+  describe('showCounterTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("showCounterTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaShowCounter',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaShowCounter',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get showCounter state pages: " + JSON.stringify(pages));
         if (!("textAreaShowCounter" == pages.name)) {
           console.info("get textAreaShowCounter pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaShowCounter page result: " + JSON.stringify(result));
+          console.info("push textAreaShowCounter page result: success");
         }
       } catch (err) {
         console.error("push textAreaShowCounter page error: " + err);
@@ -42,7 +41,7 @@ export default function textAreaShowCounter() {
       console.info("textAreaShowCounter beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("showCounter after each called");
     });
@@ -54,17 +53,17 @@ export default function textAreaShowCounter() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaShowCounterFalse', 0, async function (done) {
-      var tagName = 'testTextAreaShowCounterFalse';
+    it('testTextAreaShowCounterFalse', 0, async (done: Function) => {
+      let tagName = 'testTextAreaShowCounterFalse';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "showCounter": false,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,7 +74,7 @@ export default function textAreaShowCounter() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_showCounter');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.showCounter));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.showCounter.value).assertEqual(false);
@@ -90,17 +89,17 @@ export default function textAreaShowCounter() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaShowCounterTrue', 0, async function (done) {
-      var tagName = 'testTextAreaShowCounterTrue';
+    it('testTextAreaShowCounterTrue', 0, async (done: Function) => {
+      let tagName = 'testTextAreaShowCounterTrue';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "showCounter": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6802,
           priority: events_emitter.EventPriority.LOW
         }
@@ -111,7 +110,7 @@ export default function textAreaShowCounter() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_showCounter');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.showCounter));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.showCounter.value).assertEqual(true);

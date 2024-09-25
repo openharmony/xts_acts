@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -66,10 +65,10 @@ struct VideoExample {
   @State numFont: number = 0
   @State fontStyleValue: string = ''
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Span page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.mFontSize != null) {
+      if (eventData.data?.mFontSize != null) {
         if(eventData.data.mFontSize == 'resources50') {
           this.mod1.mFontSize = $r('app.float.50vp');
           //old test
@@ -79,49 +78,49 @@ struct VideoExample {
           //old test
           this.mFontSize = eventData.data.mFontSize;
         }
-      } else if (eventData.data.mFontFamily != null) {
+      } else if (eventData.data?.mFontFamily != null) {
         this.mod1.mFontFamily = eventData.data.mFontFamily;
         //old test
         this.mFontFamily = eventData.data.mFontFamily;
-      } else if (eventData.data.mLineHeight != null) {
+      } else if (eventData.data?.mLineHeight != null) {
         this.mod1.mLineHeight = eventData.data.mLineHeight;
         //old test
         this.mLineHeight = eventData.data.mLineHeight;
-      } else if (eventData.data.mFontStyle != null) {
+      } else if (eventData.data?.mFontStyle != null) {
         this.mod1.mFontStyle = eventData.data.mFontStyle;
         //old test
         this.mFontStyle = eventData.data.mFontStyle;
-      } else if (eventData.data.mFontWeight != null) {
+      } else if (eventData.data?.mFontWeight != null) {
         this.mod1.mFontWeight = eventData.data.mFontWeight;
         //old test
         this.mFontWeight = eventData.data.mFontWeight;
-      } else if (eventData.data.mTextCase != null) {
+      } else if (eventData.data?.mTextCase != null) {
         this.mod1.mTextCase = eventData.data.mTextCase;
         //old test
         this.mTextCase = eventData.data.mTextCase;
-      }else if (eventData.data.mDecorationType != null) {
+      }else if (eventData.data?.mDecorationType != null) {
         this.mod1.mDecorationType = eventData.data.mDecorationType;
         this.mod1.mDecorationColor = eventData.data.mDecorationColor;
         //old test
         this.mDecorationType = eventData.data.mDecorationType;
         this.mDecorationColor = eventData.data.mDecorationColor
-      } else if (eventData.data.mFontColor != null) {
+      } else if (eventData.data?.mFontColor != null) {
         this.mod1.mFontColor = eventData.data.mFontColor;
         //old test
         this.mFontColor = eventData.data.mFontColor;
-      } else if (eventData.data.mLetterSpacing != null) {
+      } else if (eventData.data?.mLetterSpacing != null) {
         this.mod1.mLetterSpacing = eventData.data.mLetterSpacing;
         //old test
         this.mLetterSpacing = eventData.data.mLetterSpacing;
-      } else if (eventData.data.numFont != null) {
+      } else if (eventData.data?.numFont != null) {
         console.log("testSpanFont10 eventData.data.numFont: " + eventData.data.numFont)
-        if (eventData.data.numFont == 0) {
+        if (eventData.data?.numFont == 0) {
           this.mFont = { size: 16, weight: FontWeight.Normal, family: 'HarmonyOS Sans', style: FontStyle.Normal }
-        } else if (eventData.data.numFont == 1) {
+        } else if (eventData.data?.numFont == 1) {
           this.mFont = { size: 32, weight: FontWeight.Normal, family: 'HarmonyOS Sans', style: FontStyle.Italic }
-        } else if (eventData.data.numFont == 2) {
+        } else if (eventData.data?.numFont == 2) {
           this.mFont = { size: 32, weight: FontWeight.Bold, family: 'HarmonyOS Sans', style: FontStyle.Italic }
-        } else if (eventData.data.numFont == 3) {
+        } else if (eventData.data?.numFont == 3) {
           this.mFont = { size: $r('app.float.50vp'), weight: FontWeight.Bold, family: $r('app.string.font_family_arial'), style: FontStyle.Italic }
         }
         console.log("testSpanFont10 stateChangCallBack ")
@@ -137,62 +136,62 @@ struct VideoExample {
 
   onPageShow() {
     console.info('video page1 show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
-    var stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
-    var stateChangeEvent3 = {
+    let stateChangeEvent3: events_emitter.InnerEvent = {
       eventId: 6803,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent3, this.stateChangCallBack);
-    var stateChangeEvent4 = {
+    let stateChangeEvent4: events_emitter.InnerEvent = {
       eventId: 6804,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent4, this.stateChangCallBack);
-    var stateChangeEvent5 = {
+    let stateChangeEvent5: events_emitter.InnerEvent = {
       eventId: 6805,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent5, this.stateChangCallBack);
-    var stateChangeEvent6 = {
+    let stateChangeEvent6: events_emitter.InnerEvent = {
       eventId: 6806,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent6, this.stateChangCallBack);
-    var stateChangeEvent7 = {
+    let stateChangeEvent7: events_emitter.InnerEvent = {
       eventId: 6807,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent7, this.stateChangCallBack);
-    var stateChangeEvent8 = {
+    let stateChangeEvent8: events_emitter.InnerEvent = {
       eventId: 6808,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent8, this.stateChangCallBack);
-    var stateChangeEvent9 = {
+    let stateChangeEvent9: events_emitter.InnerEvent = {
       eventId: 6809,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent9, this.stateChangCallBack);
-    var stateChangeEvent10 = {
+    let stateChangeEvent10: events_emitter.InnerEvent = {
       eventId: 6810,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent10, this.stateChangCallBack);
-    var stateChangeEvent11 = {
+    let stateChangeEvent11: events_emitter.InnerEvent = {
       eventId: 6811,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent11, this.stateChangCallBack);
-    var stateChangeEvent12 = {
+    let stateChangeEvent12: events_emitter.InnerEvent = {
       eventId: 6812,
       priority: events_emitter.EventPriority.LOW
     }

@@ -28,11 +28,11 @@ struct TextInputEnterKeyType {
   @State  enterKeyType: EnterKeyType | undefined = undefined;
   @State textInputEnterKeyTypeModifier: TextInputEnterKeyTypeModifier = new TextInputEnterKeyTypeModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("TextInputEnterKeyTypeModifier page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.enterKeyType != null) {
+      if (eventData.data?.enterKeyType != null) {
         console.info("[TextInputEnterKeyTypeModifier page] enterKeyType change data is " + eventData.data.enterKeyType);
         this.enterKeyType = eventData.data.enterKeyType;
         this.textInputEnterKeyTypeModifier.enterKeyType =  eventData.data.enterKeyType;
@@ -46,7 +46,7 @@ struct TextInputEnterKeyType {
     {
       let eventid = 810 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputShowUnderlineTest() {
-  describe('textInputShowUnderlineTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputShowUnderlineTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputShowUnderlineTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputShowUnderline',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputShowUnderline',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputShowUnderline state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputShowUnderline pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputShowUnderline page result: " + JSON.stringify(result));
+          console.info("push textInputShowUnderline page result: success");
         }
       } catch (err) {
         console.error("push textInputShowUnderline page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputShowUnderlineTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputShowUnderlineTest after each called");
     })
@@ -59,18 +58,18 @@ export default function textInputShowUnderlineTest() {
      * @tc.type    Function
      * @tc.level   0 
      */
-    it('textInputShowUnderline0100', 0, async function (done) {
-      var tagName = 'textInputShowUnderline0100';
+    it('textInputShowUnderline0100', 0, async (done: Function) => {
+      let tagName = 'textInputShowUnderline0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
       try {
-        let eventData1 = {
+        let eventData1: events_emitter.EventData = {
           data: {
             "showUnderline": true,
           }
         }
-        let innerEvent1 = {
+        let innerEvent1: events_emitter.InnerEvent = {
           eventId: 860,
           priority: events_emitter.EventPriority.LOW
         }
@@ -81,7 +80,7 @@ export default function textInputShowUnderlineTest() {
       }
       await Utils.sleep(2000);
       let strJson1 = getInspectorByKey('key_textinput_showUnderline');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info('[' + tagName + '] component obj1 is: ' + JSON.stringify(obj1));
       expect(obj1.$type).assertEqual('TextInput');
       expect(obj1.$attrs.showUnderline).assertEqual(true);
@@ -98,19 +97,19 @@ export default function textInputShowUnderlineTest() {
      * @tc.type    Function
      * @tc.level   0 
      */
-    it('textInputShowUnderline0200', 0, async function (done) {
-      var tagName = 'textInputShowUnderline0200';
+    it('textInputShowUnderline0200', 0, async (done: Function) => {
+      let tagName = 'textInputShowUnderline0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
 
       try {
-        let eventData2 = {
+        let eventData2: events_emitter.EventData = {
           data: {
             "showUnderline": false,
           }
         }
-        let innerEvent2 = {
+        let innerEvent2: events_emitter.InnerEvent = {
           eventId: 861,
           priority: events_emitter.EventPriority.LOW
         }
@@ -121,7 +120,7 @@ export default function textInputShowUnderlineTest() {
       }
       await Utils.sleep(2000);
       let strJson2 = getInspectorByKey('key_textinput_showUnderline');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info('[' + tagName + '] component obj2 is: ' + JSON.stringify(obj2));
       expect(obj2.$type).assertEqual('TextInput');
       expect(obj2.$attrs.showUnderline).assertEqual(false);

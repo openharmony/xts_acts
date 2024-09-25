@@ -55,8 +55,8 @@ export class AttrsManager {
     console.info('[stateChangCallBack] stateChangCallBack ');
     if (eventData != null) {
       console.info('[stateChangCallBack] state change called: ' + JSON.stringify(eventData));
-      if (eventData.data.src != null) {
-        let src = JSON.parse(eventData.data.src);
+      if (eventData.data?.src != null) {
+        let src: ESObject = JSON.parse(eventData.data.src);
         this.callBack(src.value);
       }
     }

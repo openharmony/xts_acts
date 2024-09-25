@@ -29,13 +29,13 @@ struct TextAreaPlaceholderColor {
   @State message : string = 'textarea';
   @State textAreaPlaceholderColorModifier: TextAreaPlaceholderColorModifier = new TextAreaPlaceholderColorModifier();
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[placeholderColor page] state change called: " + JSON.stringify(eventData));
 
-      if (eventData.data.placeholderColor != null) {
+      if (eventData.data?.placeholderColor != null) {
         console.info("[placeholderColor page] placeholderColor change data is " + JSON.stringify(eventData.data.placeholderColor));
-        if (eventData.data.placeholderColor == 'app.color.color_D90013_red') {
+        if (eventData.data?.placeholderColor == 'app.color.color_D90013_red') {
           this.textAreaPlaceholderColorModifier.placeholderColorValue = $r('app.color.color_D90013_red');
         } else {
           this.textAreaPlaceholderColorModifier.placeholderColorValue =  eventData.data.placeholderColor;
@@ -45,22 +45,22 @@ struct TextAreaPlaceholderColor {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent02, this.stateChangCallBack);
-    var stateChangeEvent03 = {
+    let stateChangeEvent03: events_emitter.InnerEvent = {
       eventId: 6803,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent03, this.stateChangCallBack);
-    var stateChangeEvent04 = {
+    let stateChangeEvent04: events_emitter.InnerEvent = {
       eventId: 6804,
       priority: events_emitter.EventPriority.LOW
     }

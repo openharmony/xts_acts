@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputEnterKeyTypeTest() {
-  describe('textInputEnterKeyTypeTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputEnterKeyTypeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputEnterKeyTypeTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputEnterKeyType',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputEnterKeyType',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputEnterKeyType state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputEnterKeyType pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputEnterKeyType page result: " + JSON.stringify(result));
+          console.info("push textInputEnterKeyType page result: success");
         }
       } catch (err) {
         console.error("push textInputEnterKeyType page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputEnterKeyTypeTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputEnterKeyType after each called");
     }) 
@@ -57,18 +56,18 @@ export default function textInputEnterKeyTypeTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputEnterKeyType0100', 0, async function (done) {
-      var tagName = 'textInputEnterKeyType0100';
+    it('textInputEnterKeyType0100', 0, async (done: Function) => {
+      let tagName = 'textInputEnterKeyType0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000) 
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enterKeyType":  EnterKeyType.Go
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 810,
           priority: events_emitter.EventPriority.LOW
         }
@@ -80,7 +79,7 @@ export default function textInputEnterKeyTypeTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_enterkeytype');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text EnterKeyType is: ' + JSON.stringify(obj.$attrs.enterKeyType));
  
       expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Go');
@@ -97,18 +96,18 @@ export default function textInputEnterKeyTypeTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputEnterKeyType0200', 0, async function (done) {
-      var tagName = 'textInputEnterKeyType0200';
+    it('textInputEnterKeyType0200', 0, async (done: Function) => {
+      let tagName = 'textInputEnterKeyType0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000) 
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enterKeyType":  EnterKeyType.Search
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 811,
           priority: events_emitter.EventPriority.LOW
         }
@@ -120,7 +119,7 @@ export default function textInputEnterKeyTypeTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_enterkeytype');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text EnterKeyType is: ' + JSON.stringify(obj.$attrs.enterKeyType));
  
       expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Search');
@@ -137,18 +136,18 @@ export default function textInputEnterKeyTypeTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputEnterKeyType0300', 0, async function (done) {
-      var tagName = 'textInputEnterKeyType0300';
+    it('textInputEnterKeyType0300', 0, async (done: Function) => {
+      let tagName = 'textInputEnterKeyType0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000) 
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enterKeyType":  EnterKeyType.Send
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 812,
           priority: events_emitter.EventPriority.LOW
         }
@@ -160,7 +159,7 @@ export default function textInputEnterKeyTypeTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_enterkeytype');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text EnterKeyType is: ' + JSON.stringify(obj.$attrs.enterKeyType));
  
       expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Send');
@@ -177,18 +176,18 @@ export default function textInputEnterKeyTypeTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputEnterKeyType0400', 0, async function (done) {
-      var tagName = 'textInputEnterKeyType0400';
+    it('textInputEnterKeyType0400', 0, async (done: Function) => {
+      let tagName = 'textInputEnterKeyType0400';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000) 
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enterKeyType":  EnterKeyType.Next
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 813,
           priority: events_emitter.EventPriority.LOW
         }
@@ -200,7 +199,7 @@ export default function textInputEnterKeyTypeTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_enterkeytype');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text EnterKeyType is: ' + JSON.stringify(obj.$attrs.enterKeyType));
  
       expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Next');
@@ -217,18 +216,18 @@ export default function textInputEnterKeyTypeTest() {
      * @tc.type    Function
      * @tc.level   0 
      */
-    it('textInputEnterKeyType0500', 0, async function (done) {
-      var tagName = 'textInputEnterKeyType0500';
+    it('textInputEnterKeyType0500', 0, async (done: Function) => {
+      let tagName = 'textInputEnterKeyType0500';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000) 
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enterKeyType":  EnterKeyType.Done
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 814,
           priority: events_emitter.EventPriority.LOW
         }
@@ -240,7 +239,7 @@ export default function textInputEnterKeyTypeTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_enterkeytype');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text EnterKeyType is: ' + JSON.stringify(obj.$attrs.enterKeyType));
  
       expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Done');

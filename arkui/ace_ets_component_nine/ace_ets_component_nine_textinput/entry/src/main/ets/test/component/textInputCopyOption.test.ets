@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputCopyOptionTest() {
-  describe('textCopyOptionTest', function () {
-    beforeEach(async function (done) {
+  describe('textCopyOptionTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputCopyOptionTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputCopyOption',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputCopyOption',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputCopyOption state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputCopyOption pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputCopyOption page result: " + JSON.stringify(result));
+          console.info("push textInputCopyOption page result: success");
         }
       } catch (err) {
         console.error("push textInputCopyOption page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputCopyOptionTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputCopyOption after each called");
     })
@@ -59,19 +58,19 @@ export default function textInputCopyOptionTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputCopyOption0100', 0, async function (done) {
-      var tagName = 'textInputCopyOption0100';
+    it('textInputCopyOption0100', 0, async (done: Function) => {
+      let tagName = 'textInputCopyOption0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "copyOption":  CopyOptions.None
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 810,
           priority: events_emitter.EventPriority.LOW
         }
@@ -83,7 +82,7 @@ export default function textInputCopyOptionTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_copyoption');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text copyOption is: ' + JSON.stringify(obj.$attrs.copyOption));
  
       expect(obj.$attrs.copyOption).assertEqual('CopyOptions.None');
@@ -100,19 +99,19 @@ export default function textInputCopyOptionTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputCopyOption0200', 0, async function (done) {
-      var tagName = 'textInputCopyOption0200';
+    it('textInputCopyOption0200', 0, async (done: Function) => {
+      let tagName = 'textInputCopyOption0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "copyOption":  CopyOptions.InApp
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 811,
           priority: events_emitter.EventPriority.LOW
         }
@@ -124,7 +123,7 @@ export default function textInputCopyOptionTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_copyoption');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text copyOption is: ' + JSON.stringify(obj.$attrs.copyOption));
  
       expect(obj.$attrs.copyOption).assertEqual('CopyOptions.InApp');
@@ -142,19 +141,19 @@ export default function textInputCopyOptionTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputCopyOption0300', 0, async function (done) {
-      var tagName = 'textInputCopyOption0300';
+    it('textInputCopyOption0300', 0, async (done: Function) => {
+      let tagName = 'textInputCopyOption0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "copyOption":  CopyOptions.LocalDevice
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 812,
           priority: events_emitter.EventPriority.LOW
         }
@@ -168,7 +167,7 @@ export default function textInputCopyOptionTest() {
       let strJsonNew = getInspectorByKey('key_textinput_copyoption');
 
       console.info(' Text Object json is:' + strJsonNew);
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text copyOption is: ' + JSON.stringify(obj.$attrs.copyOption));
  
       expect(obj.$attrs.copyOption).assertEqual('CopyOptions.Local');
@@ -186,19 +185,19 @@ export default function textInputCopyOptionTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputCopyOption0400', 0, async function (done) {
-      var tagName = 'textInputCopyOption0400';
+    it('textInputCopyOption0400', 0, async (done: Function) => {
+      let tagName = 'textInputCopyOption0400';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "copyOption":  CopyOptions.CROSS_DEVICE
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 813,
           priority: events_emitter.EventPriority.LOW
         }
@@ -210,7 +209,7 @@ export default function textInputCopyOptionTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_copyoption');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text copyOption is: ' + JSON.stringify(obj.$attrs.copyOption));
  
       expect(obj.$attrs.copyOption).assertEqual('CopyOptions.Distributed');

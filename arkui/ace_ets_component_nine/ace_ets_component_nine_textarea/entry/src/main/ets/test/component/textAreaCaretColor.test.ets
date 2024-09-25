@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaCaretColor() {
-  describe('caretColorTest', function () {
-    beforeEach(async function (done) {
+  describe('caretColorTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("caretColorTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaCaretColor',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaCaretColor',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get caretColor state pages: " + JSON.stringify(pages));
         if (!("textAreaCaretColor" == pages.name)) {
           console.info("get textAreaCaretColor pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaCaretColor page result: " + JSON.stringify(result));
+          console.info("push textAreaCaretColor page result: success");
         }
       } catch (err) {
         console.error("push textAreaCaretColor page error: " + err);
@@ -42,7 +41,7 @@ export default function textAreaCaretColor() {
       console.info("textAreaCaretColor beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("caretColor after each called");
     });
@@ -54,17 +53,17 @@ export default function textAreaCaretColor() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaCaretColorNumber', 0, async function (done) {
-      var tagName = 'testTextAreaCaretColorNumber';
+    it('testTextAreaCaretColorNumber', 0, async (done: Function) => {
+      let tagName = 'testTextAreaCaretColorNumber';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "caretColor": 0xffffff,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,7 +74,7 @@ export default function textAreaCaretColor() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_caretColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.caretColor));
       console.info('column obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.caretColor).assertEqual("#FFFFFFFF");
@@ -90,17 +89,17 @@ export default function textAreaCaretColor() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaCaretColorString', 0, async function (done) {
-      var tagName = 'testTextAreaCaretColorString';
+    it('testTextAreaCaretColorString', 0, async (done: Function) => {
+      let tagName = 'testTextAreaCaretColorString';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "caretColor": "#079B8C",
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6802,
           priority: events_emitter.EventPriority.LOW
         }
@@ -111,7 +110,7 @@ export default function textAreaCaretColor() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_caretColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.caretColor));
       console.info('column obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.caretColor).assertEqual("#FF079B8C");
@@ -126,17 +125,17 @@ export default function textAreaCaretColor() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaCaretColorColor', 0, async function (done) {
-      var tagName = 'testTextAreaCaretColorColor';
+    it('testTextAreaCaretColorColor', 0, async (done: Function) => {
+      let tagName = 'testTextAreaCaretColorColor';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "caretColor": Color.Orange,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6803,
           priority: events_emitter.EventPriority.LOW
         }
@@ -147,7 +146,7 @@ export default function textAreaCaretColor() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_caretColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.caretColor));
       console.info('column obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.caretColor).assertEqual("#FFFFA500");
@@ -162,17 +161,17 @@ export default function textAreaCaretColor() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaCaretColorResourceColor', 0, async function (done) {
-      var tagName = 'testTextAreaCaretColorResourceColor';
+    it('testTextAreaCaretColorResourceColor', 0, async (done: Function) => {
+      let tagName = 'testTextAreaCaretColorResourceColor';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "caretColor": 'app.color.color_D90013_red',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6804,
           priority: events_emitter.EventPriority.LOW
         }
@@ -183,7 +182,7 @@ export default function textAreaCaretColor() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_caretColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.caretColor));
       console.info('column obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.caretColor).assertEqual("#FFD90013");

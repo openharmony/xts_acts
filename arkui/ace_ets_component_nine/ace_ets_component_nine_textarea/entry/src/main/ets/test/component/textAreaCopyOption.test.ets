@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaCopyOption() {
-  describe('copyOptionTest', function () {
-    beforeEach(async function (done) {
+  describe('copyOptionTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("copyOptionTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaCopyOption',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaCopyOption',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get copyOption state pages: " + JSON.stringify(pages));
         if (!("textAreaCopyOption" == pages.name)) {
           console.info("get textAreaCopyOption pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaCopyOption page result: " + JSON.stringify(result));
+          console.info("push textAreaCopyOption page result: success");
         }
       } catch (err) {
         console.error("push textAreaCopyOption page error: " + err);
@@ -42,7 +41,7 @@ export default function textAreaCopyOption() {
       console.info("textAreaCopyOption beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("copyOption after each called");
     });
@@ -54,17 +53,17 @@ export default function textAreaCopyOption() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaCopyOptionNone', 0, async function (done) {
-      var tagName = 'testTextAreaCopyOptionNone';
+    it('testTextAreaCopyOptionNone', 0, async (done: Function) => {
+      let tagName = 'testTextAreaCopyOptionNone';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "copyOption": CopyOptions.None,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,7 +74,7 @@ export default function textAreaCopyOption() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_copyOption');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.copyOption));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.copyOption).assertEqual("CopyOptions.None");
@@ -90,17 +89,17 @@ export default function textAreaCopyOption() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaCopyOptionInApp', 0, async function (done) {
-      var tagName = 'testTextAreaCopyOptionInApp';
+    it('testTextAreaCopyOptionInApp', 0, async (done: Function) => {
+      let tagName = 'testTextAreaCopyOptionInApp';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "copyOption": CopyOptions.InApp,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6802,
           priority: events_emitter.EventPriority.LOW
         }
@@ -111,7 +110,7 @@ export default function textAreaCopyOption() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_copyOption');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.copyOption));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.copyOption).assertEqual("CopyOptions.InApp");
@@ -126,17 +125,17 @@ export default function textAreaCopyOption() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaCopyOptionLocalDevice', 0, async function (done) {
-      var tagName = 'testTextAreaCopyOptionLocalDevice';
+    it('testTextAreaCopyOptionLocalDevice', 0, async (done: Function) => {
+      let tagName = 'testTextAreaCopyOptionLocalDevice';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "copyOption": CopyOptions.LocalDevice,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6803,
           priority: events_emitter.EventPriority.LOW
         }
@@ -147,7 +146,7 @@ export default function textAreaCopyOption() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_copyOption');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.copyOption));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.copyOption).assertEqual("CopyOptions.Local");
@@ -162,17 +161,17 @@ export default function textAreaCopyOption() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaCopyOptionCROSS_DEVICE', 0, async function (done) {
-      var tagName = 'testTextAreaCopyOptionCROSS_DEVICE';
+    it('testTextAreaCopyOptionCROSS_DEVICE', 0, async (done: Function) => {
+      let tagName = 'testTextAreaCopyOptionCROSS_DEVICE';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "copyOption": CopyOptions.CROSS_DEVICE,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6804,
           priority: events_emitter.EventPriority.LOW
         }
@@ -183,7 +182,7 @@ export default function textAreaCopyOption() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_copyOption');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.copyOption));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.copyOption).assertEqual("CopyOptions.Distributed");

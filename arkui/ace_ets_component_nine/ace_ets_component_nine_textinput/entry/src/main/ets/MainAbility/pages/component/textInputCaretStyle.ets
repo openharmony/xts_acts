@@ -15,7 +15,7 @@
 import events_emitter from '@ohos.events.emitter';
 
 class MyTextInputCaretStyleModifier implements AttributeModifier<TextInputAttribute> {
-  caretStyleValue: any = { width: 20 }
+  caretStyleValue: ESObject = { width: 20 }
 
   applyNormalAttribute(instance: TextInputAttribute): void {
     instance.caretStyle(this.caretStyleValue)
@@ -28,16 +28,16 @@ class MyTextInputCaretStyleModifier implements AttributeModifier<TextInputAttrib
 struct TextInputCaretStyle {
   @State mod1: MyTextInputCaretStyleModifier = new MyTextInputCaretStyleModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("MyTextInputCaretStyleModifier page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.caretStyleValue != null) {
+      if (eventData.data?.caretStyleValue != null) {
         console.info("[MyTextInputCaretStyleModifier page] CopyOption change data is " + eventData.data.caretStyleValue);
-        let objCaretStyle :any = JSON.parse( eventData.data.caretStyleValue );
-       if(objCaretStyle.width === "app.float.length_xl"){
-        objCaretStyle.width = $r('app.float.length_xl');
-       }
+        let objCaretStyle: Record<string, Object> = JSON.parse( eventData.data.caretStyleValue );
+        if(objCaretStyle.width === "app.float.length_xl"){
+          objCaretStyle.width = $r('app.float.length_xl');
+        }
         this.mod1.caretStyleValue =  objCaretStyle;
       }
     }
@@ -50,7 +50,7 @@ struct TextInputCaretStyle {
     {
       let eventid = 890 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

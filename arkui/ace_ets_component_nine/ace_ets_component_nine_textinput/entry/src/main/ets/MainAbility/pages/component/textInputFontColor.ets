@@ -30,11 +30,11 @@ struct TextInputFontColor {
   @State fontColor?: ResourceColor = 0xCCCCCC;
   @State textInputFontColorModifier: TextInputFontColorModifier = new TextInputFontColorModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("TextInputFontColor page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.fontColor != null) {
+      if (eventData.data?.fontColor != null) {
         console.info("[TextInputFontColor page] fontColor change data is " + eventData.data.fontColor);
 
         if ( 'app.color.color_D90013_red' ===  eventData.data.fontColor){
@@ -58,7 +58,7 @@ struct TextInputFontColor {
     {
       let eventid =900 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

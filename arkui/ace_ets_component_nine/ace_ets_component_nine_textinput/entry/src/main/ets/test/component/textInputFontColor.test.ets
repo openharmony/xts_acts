@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputFontColorTest() {
-  describe('textInputFontColorTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputFontColorTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputFontColorTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputFontColor',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputFontColor',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputFontColor state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputFontColor pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputFontColor page result: " + JSON.stringify(result));
+          console.info("push textInputFontColor page result: success");
         }
       } catch (err) {
         console.error("push textInputFontColor page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputFontColorTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputFontColor after each called");
     })
@@ -59,19 +58,19 @@ export default function textInputFontColorTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputFontColor0100', 0, async function (done) {
-      var tagName = 'textInputFontColor0100';
+    it('textInputFontColor0100', 0, async (done: Function) => {
+      let tagName = 'textInputFontColor0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontColor":  Color.Black
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 900,
           priority: events_emitter.EventPriority.LOW
         }
@@ -83,7 +82,7 @@ export default function textInputFontColorTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontcolor');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text fontColor is: ' + JSON.stringify(obj.$attrs.fontColor));
  
       expect(obj.$attrs.fontColor).assertEqual('#FF000000');
@@ -101,19 +100,19 @@ export default function textInputFontColorTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputFontColor0200', 0, async function (done) {
-      var tagName = 'textInputFontColor0200';
+    it('textInputFontColor0200', 0, async (done: Function) => {
+      let tagName = 'textInputFontColor0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontColor":  'app.color.color_D90013_red'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 901,
           priority: events_emitter.EventPriority.LOW
         }
@@ -125,7 +124,7 @@ export default function textInputFontColorTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_fontcolor');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text fontColor is: ' + JSON.stringify(obj.$attrs.fontColor));
  
       expect(obj.$attrs.fontColor).assertEqual('#FFD90013');

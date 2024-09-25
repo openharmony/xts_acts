@@ -30,11 +30,11 @@ struct TextInputFontSize {
   @State fontSize?: Length = 18;
   @State textInputFontSizeModifier: TextInputFontSizeModifier = new TextInputFontSizeModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("TextInputFontSize page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.fontSize != null) {
+      if (eventData.data?.fontSize != null) {
         let fSize: Length  = eventData.data.fontSize;
         if (fSize === 'app.float.font_size') {
             fSize = $r('app.float.font_size');
@@ -56,7 +56,7 @@ struct TextInputFontSize {
     {
       let eventid = 920 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

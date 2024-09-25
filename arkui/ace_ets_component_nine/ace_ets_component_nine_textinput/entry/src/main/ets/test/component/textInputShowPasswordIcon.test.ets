@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputShowPasswordIconTest() {
-  describe('textInputShowPasswordIconTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputShowPasswordIconTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputShowPasswordIconTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputShowPasswordIcon',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputShowPasswordIcon',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputShowPasswordIcon state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputShowPasswordIcon pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputShowPasswordIcon page result: " + JSON.stringify(result));
+          console.info("push textInputShowPasswordIcon page result: success");
         }
       } catch (err) {
         console.error("push textInputShowPasswordIcon page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputShowPasswordIconTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputShowPasswordIconTest after each called");
     })
@@ -59,18 +58,18 @@ export default function textInputShowPasswordIconTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputShowPasswordIcon0100', 0, async function (done) {
-      var tagName = 'textInputShowPasswordIcon0100';
+    it('textInputShowPasswordIcon0100', 0, async (done: Function) => {
+      let tagName = 'textInputShowPasswordIcon0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
       try {
-        let eventData1 = {
+        let eventData1: events_emitter.EventData = {
           data: {
             "showPasswordIcon": true,
           }
         }
-        let innerEvent1 = {
+        let innerEvent1: events_emitter.InnerEvent = {
           eventId: 970,
           priority: events_emitter.EventPriority.LOW
         }
@@ -81,7 +80,7 @@ export default function textInputShowPasswordIconTest() {
       }
       await Utils.sleep(2000);
       let strJson1 = getInspectorByKey('key_textinput_showpasswordicon');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info('[' + tagName + '] component obj1 is: ' + JSON.stringify(obj1));
       expect(obj1.$type).assertEqual('TextInput');
       expect(obj1.$attrs.showPasswordIcon).assertEqual(true);
@@ -98,19 +97,19 @@ export default function textInputShowPasswordIconTest() {
      * @tc.type    Function
      * @tc.level   0 
      */
-    it('textInputShowPasswordIcon0200', 0, async function (done) {
-      var tagName = 'textInputShowPasswordIcon0200';
+    it('textInputShowPasswordIcon0200', 0, async (done: Function) => {
+      let tagName = 'textInputShowPasswordIcon0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
 
 
       try {
-        let eventData2 = {
+        let eventData2: events_emitter.EventData = {
           data: {
             "showPasswordIcon": false,
           }
         }
-        let innerEvent2 = {
+        let innerEvent2: events_emitter.InnerEvent = {
           eventId: 971,
           priority: events_emitter.EventPriority.LOW
         }
@@ -121,7 +120,7 @@ export default function textInputShowPasswordIconTest() {
       }
       await Utils.sleep(2000);
       let strJson2 = getInspectorByKey('key_textinput_showpasswordicon');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info('[' + tagName + '] component obj2 is: ' + JSON.stringify(obj2));
       expect(obj2.$type).assertEqual('TextInput');
       expect(obj2.$attrs.showPasswordIcon).assertEqual(false);

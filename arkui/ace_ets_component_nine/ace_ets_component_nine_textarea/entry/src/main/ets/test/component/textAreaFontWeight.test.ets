@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaFontWeight() {
-  describe('fontWeightTest', function () {
-    beforeEach(async function (done) {
+  describe('fontWeightTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("fontWeightTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaFontWeight',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaFontWeight',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get fontWeight state pages: " + JSON.stringify(pages));
         if (!("textAreaFontWeight" == pages.name)) {
           console.info("get textAreaFontWeight pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaFontWeight page result: " + JSON.stringify(result));
+          console.info("push textAreaFontWeight page result: success");
         }
       } catch (err) {
         console.error("push textAreaFontWeight page error: " + err);
@@ -42,7 +41,7 @@ export default function textAreaFontWeight() {
       console.info("textAreaFontWeight beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("fontWeight after each called");
     });
@@ -54,17 +53,17 @@ export default function textAreaFontWeight() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaFontWeightNumber', 0, async function (done) {
-      var tagName = 'testTextAreaFontWeightNumber';
+    it('testTextAreaFontWeightNumber', 0, async (done: Function) => {
+      let tagName = 'testTextAreaFontWeightNumber';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontWeight": 500,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,7 +74,7 @@ export default function textAreaFontWeight() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_fontWeight');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.fontWeight));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontWeight).assertEqual("500");
@@ -90,17 +89,17 @@ export default function textAreaFontWeight() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaFontWeightFontWeight', 0, async function (done) {
-      var tagName = 'testTextAreaFontWeightFontWeight';
+    it('testTextAreaFontWeightFontWeight', 0, async (done: Function) => {
+      let tagName = 'testTextAreaFontWeightFontWeight';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontWeight": FontWeight.Bold,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6802,
           priority: events_emitter.EventPriority.LOW
         }
@@ -111,7 +110,7 @@ export default function textAreaFontWeight() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_fontWeight');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.fontWeight));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bold");
@@ -126,17 +125,17 @@ export default function textAreaFontWeight() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaFontWeightString', 0, async function (done) {
-      var tagName = 'testTextAreaFontWeightString';
+    it('testTextAreaFontWeightString', 0, async (done: Function) => {
+      let tagName = 'testTextAreaFontWeightString';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontWeight": "lighter",
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6803,
           priority: events_emitter.EventPriority.LOW
         }
@@ -147,7 +146,7 @@ export default function textAreaFontWeight() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_fontWeight');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.fontWeight));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Lighter");

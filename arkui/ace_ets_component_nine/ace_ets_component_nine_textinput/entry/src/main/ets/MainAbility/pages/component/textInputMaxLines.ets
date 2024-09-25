@@ -32,11 +32,11 @@ struct TextInputMaxLines {
   @State maxLines: number  = 0;
   @State textInputMaxLinesModifier: TextInputMaxLinesModifier = new TextInputMaxLinesModifier();
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("maxLines page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.maxLines != null) {
+      if (eventData.data?.maxLines != null) {
         console.info("[maxLines page] textIndent change data is " + eventData.data.maxLines);
         this.maxLines = eventData.data.maxLines;
         this.textInputMaxLinesModifier.maxLines =  eventData.data.maxLines;
@@ -53,7 +53,7 @@ struct TextInputMaxLines {
     {
       let eventid = 820 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

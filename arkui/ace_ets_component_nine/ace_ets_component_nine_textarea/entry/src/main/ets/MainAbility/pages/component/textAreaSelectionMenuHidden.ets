@@ -28,10 +28,10 @@ class TextAreaSelectionMenuHiddenModifier implements AttributeModifier<TextAreaA
 struct TextAreaSelectionMenuHidden {
   @State message : string = 'textarea';
   @State textAreaSelectionMenuHiddenModifier: TextAreaSelectionMenuHiddenModifier = new TextAreaSelectionMenuHiddenModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[selectionMenuHidden page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.selectionMenuHidden != null) {         
+      if (eventData.data?.selectionMenuHidden != null) {         
         console.info("[selectionMenuHidden page] selectionMenuHidden change data is " + JSON.stringify(eventData.data.selectionMenuHidden));
         this.textAreaSelectionMenuHiddenModifier.selectionMenuHiddenValue =  eventData.data.selectionMenuHidden;
       }
@@ -39,13 +39,13 @@ struct TextAreaSelectionMenuHidden {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
 
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }

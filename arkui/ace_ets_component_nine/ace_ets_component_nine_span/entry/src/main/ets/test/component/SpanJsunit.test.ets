@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function SpanJsunit() {
-  describe('spanTest', function () {
-    beforeEach(async function (done) {
+  describe('spanTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("span beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/spanPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/spanPage',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get span state pages: " + JSON.stringify(pages));
         if (!("spanPage" == pages.name)) {
           console.info("get span pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push span page result: " + JSON.stringify(result));
+          console.info("push span page result success");
         }
       } catch (err) {
         console.error("push span page error: " + err);
@@ -42,7 +40,7 @@ export default function SpanJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("span after each called");
     })
@@ -56,23 +54,23 @@ export default function SpanJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanFontSize01', 0, async function (done) {
-      var tagName = 'testSpanFontSize01';
+    it('testSpanFontSize01', 0, async (done: Function) => {
+      let tagName = 'testSpanFontSize01';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keykeyspan');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Span');
       expect(obj.$attrs.fontSize).assertEqual("16.00fp");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "mFontSize": 68,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -83,18 +81,18 @@ export default function SpanJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keykeyspan');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);// JSON.stringify(objNew));
       
       expect(objNew.$attrs.fontSize).assertEqual("68.00fp");
 
       try {
-        var eventData2 = {
+        let eventData2: events_emitter.EventData = {
           data: {
             "mFontSize": 'resources50',
           }
         }
-        var innerEvent2 = {
+        let innerEvent2: events_emitter.InnerEvent = {
           eventId: 6802,
           priority: events_emitter.EventPriority.LOW
         }
@@ -105,7 +103,7 @@ export default function SpanJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew2 = getInspectorByKey('keykeyspan');
-      let objNew2 = JSON.parse(strJsonNew2);
+      let objNew2: ESObject = JSON.parse(strJsonNew2);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew2);// JSON.stringify(objNew));
       
       expect(objNew2.$attrs.fontSize).assertEqual("50.00vp");
@@ -122,23 +120,23 @@ export default function SpanJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanfontFamily02', 0, async function (done) {
-      var tagName = 'testSpanfontFamily02';
+    it('testSpanfontFamily02', 0, async (done: Function) => {
+      let tagName = 'testSpanfontFamily02';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keykeyspan');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Span');
       expect(obj.$attrs.fontFamily).assertEqual("HarmonyOS Sans");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "mFontFamily": 'Arial',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6803,
           priority: events_emitter.EventPriority.LOW
         }
@@ -149,7 +147,7 @@ export default function SpanJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keykeyspan');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);// JSON.stringify(objNew));
       
       expect(objNew.$attrs.fontFamily).assertEqual("Arial");
@@ -167,23 +165,23 @@ export default function SpanJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanlineHeight03', 0, async function (done) {
-      var tagName = 'testSpanlineHeight03';
+    it('testSpanlineHeight03', 0, async (done: Function) => {
+      let tagName = 'testSpanlineHeight03';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keykeyspan');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Span');
       expect(obj.$attrs.lineHeight).assertEqual("0.00fp");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "mLineHeight": '80fp',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6804,
           priority: events_emitter.EventPriority.LOW
         }
@@ -194,18 +192,18 @@ export default function SpanJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keykeyspan');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);// JSON.stringify(objNew));
       
       expect(objNew.$attrs.lineHeight).assertEqual("80.00fp");
 
       try {
-        var eventData2 = {
+        let eventData2: events_emitter.EventData = {
           data: {
             "mLineHeight": 50,
           }
         }
-        var innerEvent2 = {
+        let innerEvent2: events_emitter.InnerEvent = {
           eventId: 6805,
           priority: events_emitter.EventPriority.LOW
         }
@@ -216,7 +214,7 @@ export default function SpanJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew2 = getInspectorByKey('keykeyspan');
-      let objNew2 = JSON.parse(strJsonNew2);
+      let objNew2: ESObject = JSON.parse(strJsonNew2);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew2);// JSON.stringify(objNew));
       
       expect(objNew2.$attrs.lineHeight).assertEqual("50.00fp");
@@ -233,23 +231,23 @@ export default function SpanJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanfontStyle04', 0, async function (done) {
-      var tagName = 'testSpanfontStyle04';
+    it('testSpanfontStyle04', 0, async (done: Function) => {
+      let tagName = 'testSpanfontStyle04';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keykeyspan');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Span');
       expect(obj.$attrs.fontStyle).assertEqual("FontStyle.Normal");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "mFontStyle": FontStyle.Italic,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6806,
           priority: events_emitter.EventPriority.LOW
         }
@@ -260,7 +258,7 @@ export default function SpanJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keykeyspan');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);// JSON.stringify(objNew));
       
       expect(objNew.$attrs.fontStyle).assertEqual("FontStyle.Italic");
@@ -278,23 +276,23 @@ export default function SpanJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanfontWeight05', 0, async function (done) {
-      var tagName = 'testSpanfontWeight05';
+    it('testSpanfontWeight05', 0, async (done: Function) => {
+      let tagName = 'testSpanfontWeight05';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keykeyspan');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Span');
       expect(obj.$attrs.fontWeight).assertEqual("400");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "mFontWeight": FontWeight.Bold,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6807,
           priority: events_emitter.EventPriority.LOW
         }
@@ -305,7 +303,7 @@ export default function SpanJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keykeyspan');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);// JSON.stringify(objNew));
       
       expect(objNew.$attrs.fontWeight).assertEqual("FontWeight.Bold");
@@ -323,23 +321,23 @@ export default function SpanJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpantextCase06', 0, async function (done) {
-      var tagName = 'testSpantextCase06';
+    it('testSpantextCase06', 0, async (done: Function) => {
+      let tagName = 'testSpantextCase06';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keykeyspan');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Span');
       expect(obj.$attrs.textCase).assertEqual("TextCase.Normal");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "mTextCase": TextCase.UpperCase,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6808,
           priority: events_emitter.EventPriority.LOW
         }
@@ -350,7 +348,7 @@ export default function SpanJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keykeyspan');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);// JSON.stringify(objNew));
       
       expect(objNew.$attrs.textCase).assertEqual("TextCase.UpperCase");
@@ -368,24 +366,24 @@ export default function SpanJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpandecoration07', 0, async function (done) {
-      var tagName = 'testSpandecoration07';
+    it('testSpandecoration07', 0, async (done: Function) => {
+      let tagName = 'testSpandecoration07';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keykeyspan');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Span');
       expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.None","color":"#FFFF0000","style":"TextDecorationStyle.SOLID"}');
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "mDecorationType": TextDecorationType.Underline,
             "mDecorationColor" : Color.Red
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6809,
           priority: events_emitter.EventPriority.LOW
         }
@@ -396,7 +394,7 @@ export default function SpanJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keykeyspan');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);// JSON.stringify(objNew));
       
       expect(objNew.$attrs.decoration).assertEqual('{"type":"TextDecorationType.Underline","color":"#FFFF0000","style":"TextDecorationStyle.SOLID"}');
@@ -414,23 +412,23 @@ export default function SpanJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanfontColor08', 0, async function (done) {
-      var tagName = 'testSpanfontColor08';
+    it('testSpanfontColor08', 0, async (done: Function) => {
+      let tagName = 'testSpanfontColor08';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keykeyspan');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Span');
       expect(obj.$attrs.fontColor).assertEqual("#FF000000");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "mFontColor": 0xFF00FF
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6810,
           priority: events_emitter.EventPriority.LOW
         }
@@ -441,7 +439,7 @@ export default function SpanJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keykeyspan');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);// JSON.stringify(objNew));
       
       expect(objNew.$attrs.fontColor).assertEqual("#FFFF00FF");
@@ -459,23 +457,23 @@ export default function SpanJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanletterSpacing09', 0, async function (done) {
-      var tagName = 'testSpanletterSpacing09';
+    it('testSpanletterSpacing09', 0, async (done: Function) => {
+      let tagName = 'testSpanletterSpacing09';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keykeyspan');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Span');
       expect(obj.$attrs.letterSpacing).assertEqual("0.00fp");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "mLetterSpacing": 5
           }
         }
-        var innerEvent = {
+        let innerEvent : events_emitter.InnerEvent= {
           eventId: 6811,
           priority: events_emitter.EventPriority.LOW
         }
@@ -486,7 +484,7 @@ export default function SpanJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keykeyspan');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);// JSON.stringify(objNew));
       
       expect(objNew.$attrs.letterSpacing).assertEqual("5.00fp");
@@ -504,23 +502,23 @@ export default function SpanJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanFont10', 0, async function (done) {
-      var tagName = 'testSpanFont10';
+    it('testSpanFont10', 0, async (done: Function) => {
+      let tagName = 'testSpanFont10';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('keykeyspan2');
       console.info('[' + tagName + '] component obj is: ' + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Span');
       expect(obj.$attrs.font).assertEqual('{"style":"FontStyle.Normal","size":"16.00fp","weight":"400","family":"HarmonyOS Sans"}');
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "numFont": 3
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6812,
           priority: events_emitter.EventPriority.LOW
         }
@@ -532,7 +530,7 @@ export default function SpanJsunit() {
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('keykeyspan2');
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);// JSON.stringify(objNew));
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       
       
       expect(objNew.$attrs.font).assertEqual('{"style":"FontStyle.Italic","size":"50.00vp","weight":"FontWeight.Bold","family":"Arial"}');

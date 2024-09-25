@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaMaxLength() {
-  describe('maxLengthTest', function () {
-    beforeEach(async function (done) {
+  describe('maxLengthTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("maxLengthTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaMaxLength',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaMaxLength',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get maxLength state pages: " + JSON.stringify(pages));
         if (!("textAreaMaxLength" == pages.name)) {
           console.info("get textAreaMaxLength pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaMaxLength page result: " + JSON.stringify(result));
+          console.info("push textAreaMaxLength page result: success");
         }
       } catch (err) {
         console.error("push textAreaMaxLength page error: " + err);
@@ -42,7 +41,7 @@ export default function textAreaMaxLength() {
       console.info("textAreaMaxLength beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("maxLength after each called");
     });
@@ -54,17 +53,17 @@ export default function textAreaMaxLength() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaMaxLengthNumber', 0, async function (done) {
-      var tagName = 'testTextAreaMaxLengthNumber';
+    it('testTextAreaMaxLengthNumber', 0, async (done: Function) => {
+      let tagName = 'testTextAreaMaxLengthNumber';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "maxLength": 10,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,7 +74,7 @@ export default function textAreaMaxLength() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_maxLength');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.maxLength));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.maxLength).assertEqual("10");

@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaFontColor() {
-  describe('fontColorTest', function () {
-    beforeEach(async function (done) {
+  describe('fontColorTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("fontColorTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaFontColor',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaFontColor',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get fontColor state pages: " + JSON.stringify(pages));
         if (!("textAreaFontColor" == pages.name)) {
           console.info("get textAreaFontColor pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaFontColor page result: " + JSON.stringify(result));
+          console.info("push textAreaFontColor page result: success");
         }
       } catch (err) {
         console.error("push textAreaFontColor page error: " + err);
@@ -42,7 +41,7 @@ export default function textAreaFontColor() {
       console.info("textAreaFontColor beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("fontColor after each called");
     });
@@ -54,17 +53,17 @@ export default function textAreaFontColor() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaFontColorNumber', 0, async function (done) {
-      var tagName = 'testTextAreaFontColorNumber';
+    it('testTextAreaFontColorNumber', 0, async (done: Function) => {
+      let tagName = 'testTextAreaFontColorNumber';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontColor": 0xffffff,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6801,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,7 +74,7 @@ export default function textAreaFontColor() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_fontColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.fontColor));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontColor).assertEqual("#FFFFFFFF");
@@ -90,17 +89,17 @@ export default function textAreaFontColor() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaFontColorString', 0, async function (done) {
-      var tagName = 'testTextAreaFontColorString';
+    it('testTextAreaFontColorString', 0, async (done: Function) => {
+      let tagName = 'testTextAreaFontColorString';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontColor": "#079B8C",
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6802,
           priority: events_emitter.EventPriority.LOW
         }
@@ -111,7 +110,7 @@ export default function textAreaFontColor() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_fontColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.fontColor));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontColor).assertEqual("#FF079B8C");
@@ -126,17 +125,17 @@ export default function textAreaFontColor() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaFontColorColor', 0, async function (done) {
-      var tagName = 'testTextAreaFontColorColor';
+    it('testTextAreaFontColorColor', 0, async (done: Function) => {
+      let tagName = 'testTextAreaFontColorColor';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontColor": Color.Orange,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6803,
           priority: events_emitter.EventPriority.LOW
         }
@@ -147,7 +146,7 @@ export default function textAreaFontColor() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_fontColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.fontColor));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontColor).assertEqual("#FFFFA500");
@@ -162,17 +161,17 @@ export default function textAreaFontColor() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextAreaFontColorResourceColor', 0, async function (done) {
-      var tagName = 'testTextAreaFontColorResourceColor';
+    it('testTextAreaFontColorResourceColor', 0, async (done: Function) => {
+      let tagName = 'testTextAreaFontColorResourceColor';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontColor": 'app.color.color_D90013_red',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6804,
           priority: events_emitter.EventPriority.LOW
         }
@@ -183,7 +182,7 @@ export default function textAreaFontColor() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('key_textArea_fontColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('[' + tagName + '] component obj is: ' + JSON.stringify(obj.$attrs.fontColor));
       console.info('textarea obj.$attrs is:' + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontColor).assertEqual("#FFD90013");

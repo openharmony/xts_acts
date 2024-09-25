@@ -28,10 +28,10 @@ class TextAreaShowCounterModifier implements AttributeModifier<TextAreaAttribute
 struct TextAreaShowCounter {
   @State message : string = 'textarea';
   @State textAreaShowCounterModifier: TextAreaShowCounterModifier = new TextAreaShowCounterModifier();
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("[showCounter page] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.showCounter != null) {
+      if (eventData.data?.showCounter != null) {
         console.info("[showCounter page] showCounter change data is " + JSON.stringify(eventData.data.showCounter));
         this.textAreaShowCounterModifier.showCounterValue =  eventData.data.showCounter;
       }
@@ -39,12 +39,12 @@ struct TextAreaShowCounter {
   }
 
   onPageShow() {
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }

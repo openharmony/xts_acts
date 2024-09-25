@@ -26,11 +26,11 @@ class MyTextInputCaretPositionModifier implements AttributeModifier<TextInputAtt
 @Component
 struct TextInputCaretPosition {
   @State mod1: MyTextInputCaretPositionModifier = new MyTextInputCaretPositionModifier()
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("MyTextInputCaretPositionModifier page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.caretPosition != null) {
+      if (eventData.data?.caretPosition != null) {
         console.info("[MyTextInputCaretPositionModifier page] caretPosition change data is " + eventData.data.caretPosition);
         this.mod1.caretPosition =  eventData.data.caretPosition;
       }
@@ -43,7 +43,7 @@ struct TextInputCaretPosition {
     {
       let eventid = 880 + i;
 
-      var stateChangeEvent = {
+      let stateChangeEvent: events_emitter.InnerEvent = {
         eventId: eventid,
         priority: events_emitter.EventPriority.LOW
       }

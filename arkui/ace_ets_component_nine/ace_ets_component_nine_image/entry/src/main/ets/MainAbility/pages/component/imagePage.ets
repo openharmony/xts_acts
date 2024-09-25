@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -62,36 +61,36 @@ struct ImageExample {
   @State message : string = 'image'
   @State mod1 : MyImageComponentModifier = new MyImageComponentModifier()
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Image page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.altValue != null) {
+      if (eventData.data?.altValue != null) {
         this.mod1.altValue = eventData.data.altValue;
-      } else if (eventData.data.autoResizeValue != null) {
+      } else if (eventData.data?.autoResizeValue != null) {
         this.mod1.autoResizeValue = eventData.data.autoResizeValue;
-      } else if (eventData.data.colorFilterValue != null) {
+      } else if (eventData.data?.colorFilterValue != null) {
         this.mod1.colorFilterValueType = eventData.data.colorFilterValue;
-      } else if (eventData.data.copyOptionsValue != null) {
+      } else if (eventData.data?.copyOptionsValue != null) {
         this.mod1.copyOptionsValue = eventData.data.copyOptionsValue;
-      } else if (eventData.data.draggableValue != null) {
+      } else if (eventData.data?.draggableValue != null) {
         this.mod1.draggableValue = eventData.data.draggableValue;
-      } else if (eventData.data.fillColorValue != null) {
+      } else if (eventData.data?.fillColorValue != null) {
         this.mod1.fillColorValue = eventData.data.fillColorValue;
-      }  else if (eventData.data.fitOriginalSizeValue != null) {
+      }  else if (eventData.data?.fitOriginalSizeValue != null) {
         this.mod1.fitOriginalSizeValue = eventData.data.fitOriginalSizeValue;
-      } else if (eventData.data.interpolationValue != null) {
+      } else if (eventData.data?.interpolationValue != null) {
         this.mod1.interpolationValue = eventData.data.interpolationValue;
-      } else if (eventData.data.matchTextDirectionValue != null) {
+      } else if (eventData.data?.matchTextDirectionValue != null) {
         this.mod1.matchTextDirectionValue = eventData.data.matchTextDirectionValue;
-      }  else if (eventData.data.objectFitValue != null) {
+      }  else if (eventData.data?.objectFitValue != null) {
         this.mod1.objectFitValue = eventData.data.objectFitValue;
-      } else if (eventData.data.objectRepeatValue != null) {
+      } else if (eventData.data?.objectRepeatValue != null) {
         this.mod1.objectRepeatValue = eventData.data.objectRepeatValue;
-      } else if (eventData.data.renderModeValue != null) {
+      } else if (eventData.data?.renderModeValue != null) {
         this.mod1.renderModeValue = eventData.data.renderModeValue;
-      } else if (eventData.data.sourceSizeValue != null) {
+      } else if (eventData.data?.sourceSizeValue != null) {
         this.mod1.sourceSizeValueType = eventData.data.sourceSizeValue;
-      } else if (eventData.data.syncLoadValue != null) {
+      } else if (eventData.data?.syncLoadValue != null) {
         this.mod1.syncLoadValue = eventData.data.syncLoadValue;
       }
     }
@@ -99,117 +98,117 @@ struct ImageExample {
 
   onPageShow() {
     console.info('image page1 show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 6801,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
-    var stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 6802,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
-    var stateChangeEvent3 = {
+    let stateChangeEvent3: events_emitter.InnerEvent = {
       eventId: 6803,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent3, this.stateChangCallBack);
-    var stateChangeEvent4 = {
+    let stateChangeEvent4: events_emitter.InnerEvent = {
       eventId: 6804,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent4, this.stateChangCallBack);
-    var stateChangeEvent5 = {
+    let stateChangeEvent5: events_emitter.InnerEvent = {
       eventId: 6805,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent5, this.stateChangCallBack);
-    var stateChangeEvent6 = {
+    let stateChangeEvent6: events_emitter.InnerEvent = {
       eventId: 6806,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent6, this.stateChangCallBack);
-    var stateChangeEvent7 = {
+    let stateChangeEvent7: events_emitter.InnerEvent = {
       eventId: 6807,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent7, this.stateChangCallBack);
-    var stateChangeEvent8 = {
+    let stateChangeEvent8: events_emitter.InnerEvent = {
       eventId: 6808,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent8, this.stateChangCallBack);
-    var stateChangeEvent9 = {
+    let stateChangeEvent9: events_emitter.InnerEvent = {
       eventId: 6809,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent9, this.stateChangCallBack);
-    var stateChangeEvent10 = {
+    let stateChangeEvent10: events_emitter.InnerEvent = {
       eventId: 6810,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent10, this.stateChangCallBack);
-    var stateChangeEvent11 = {
+    let stateChangeEvent11: events_emitter.InnerEvent = {
       eventId: 6811,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent11, this.stateChangCallBack);
-    var stateChangeEvent12 = {
+    let stateChangeEvent12: events_emitter.InnerEvent = {
       eventId: 6812,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent12, this.stateChangCallBack);
-    var stateChangeEvent13 = {
+    let stateChangeEvent13: events_emitter.InnerEvent = {
       eventId: 6813,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent13, this.stateChangCallBack);
-    var stateChangeEvent14 = {
+    let stateChangeEvent14: events_emitter.InnerEvent = {
       eventId: 6814,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent14, this.stateChangCallBack);
-    var stateChangeEvent15 = {
+    let stateChangeEvent15: events_emitter.InnerEvent = {
       eventId: 6815,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent15, this.stateChangCallBack);
-    var stateChangeEvent16 = {
+    let stateChangeEvent16: events_emitter.InnerEvent = {
       eventId: 6816,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent16, this.stateChangCallBack);
-    var stateChangeEvent17 = {
+    let stateChangeEvent17: events_emitter.InnerEvent = {
       eventId: 6817,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent17, this.stateChangCallBack);
-    var stateChangeEvent18 = {
+    let stateChangeEvent18: events_emitter.InnerEvent = {
       eventId: 6818,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent18, this.stateChangCallBack);
-    var stateChangeEvent19 = {
+    let stateChangeEvent19: events_emitter.InnerEvent = {
       eventId: 6819,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent19, this.stateChangCallBack);
-    var stateChangeEvent20 = {
+    let stateChangeEvent20: events_emitter.InnerEvent = {
       eventId: 6820,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent20, this.stateChangCallBack);
-    var stateChangeEvent21 = {
+    let stateChangeEvent21: events_emitter.InnerEvent = {
       eventId: 6821,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent21, this.stateChangCallBack);
-    var stateChangeEvent22 = {
+    let stateChangeEvent22: events_emitter.InnerEvent = {
       eventId: 6822,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent22, this.stateChangCallBack);
-    var stateChangeEvent23 = {
+    let stateChangeEvent23: events_emitter.InnerEvent = {
       eventId: 6823,
       priority: events_emitter.EventPriority.LOW
     }

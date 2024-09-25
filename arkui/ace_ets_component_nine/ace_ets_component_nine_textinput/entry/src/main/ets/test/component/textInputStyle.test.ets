@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputStyleTest() {
-  describe('textStyleTest', function () {
-    beforeEach(async function (done) {
+  describe('textStyleTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputStyleTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputStyle',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputStyle',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputStyle state pages: " + JSON.stringify(pages));
         if (!("heightAdaptivePolicy" == pages.name)) {
           console.info("get textInputStyle pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputStyle page result: " + JSON.stringify(result));
+          console.info("push textInputStyle page result: success");
         }
       } catch (err) {
         console.error("push textInputStyle page error: " + err);
@@ -44,7 +43,7 @@ export default function textInputStyleTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputStyle after each called");
     })
@@ -59,19 +58,19 @@ export default function textInputStyleTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputStyle0100', 0, async function (done) {
-      var tagName = 'textInputStyle0100';
+    it('textInputStyle0100', 0, async (done: Function) => {
+      let tagName = 'textInputStyle0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "style":  TextInputStyle.Default
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 930,
           priority: events_emitter.EventPriority.LOW
         }
@@ -83,7 +82,7 @@ export default function textInputStyleTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_style');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text style is: ' + JSON.stringify(obj.$attrs.style));
  
       expect(obj.$attrs.style).assertEqual('TextInputStyle.Default');
@@ -100,19 +99,19 @@ export default function textInputStyleTest() {
      * @tc.type    Function
      * @tc.level   0  
      */
-    it('textInputStyle0200', 0, async function (done) {
-      var tagName = 'textInputStyle0200';
+    it('textInputStyle0200', 0, async (done: Function) => {
+      let tagName = 'textInputStyle0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "style":  TextInputStyle.Inline
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 931,
           priority: events_emitter.EventPriority.LOW
         }
@@ -124,7 +123,7 @@ export default function textInputStyleTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_style');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text style is: ' + JSON.stringify(obj.$attrs.style));
  
       expect(obj.$attrs.style).assertEqual('TextInputStyle.Inline');
@@ -142,19 +141,19 @@ export default function textInputStyleTest() {
      * @tc.type    Function
      * @tc.level   0 
      */
-    it('textInputStyle0300', 0, async function (done) {
-      var tagName = 'textInputStyle0300';
+    it('textInputStyle0300', 0, async (done: Function) => {
+      let tagName = 'textInputStyle0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "style":  TextContentStyle.DEFAULT
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 932,
           priority: events_emitter.EventPriority.LOW
         }
@@ -168,7 +167,7 @@ export default function textInputStyleTest() {
       let strJsonNew = getInspectorByKey('key_textinput_style');
 
       console.info(' Text Object json is:' + strJsonNew);
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text style is: ' + JSON.stringify(obj.$attrs.style));
  
       expect(obj.$attrs.style).assertEqual('TextInputStyle.Default');
@@ -186,19 +185,19 @@ export default function textInputStyleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it('textInputStyle0400', 0, async function (done) {
-      var tagName = 'textInputStyle0400';
+    it('textInputStyle0400', 0, async (done: Function) => {
+      let tagName = 'textInputStyle0400';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
  
        
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "style":  TextContentStyle.INLINE
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 933,
           priority: events_emitter.EventPriority.LOW
         }
@@ -210,7 +209,7 @@ export default function textInputStyleTest() {
       await Utils.sleep(2000);
     
       let strJsonNew = getInspectorByKey('key_textinput_style');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Text style is: ' + JSON.stringify(obj.$attrs.style));
  
       expect(obj.$attrs.style).assertEqual('TextInputStyle.Inline');
