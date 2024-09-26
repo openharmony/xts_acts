@@ -14,12 +14,13 @@
  */
 import Ability from '@ohos.app.ability.UIAbility';
 import commonEvent from '@ohos.commonEvent';
-
+let context11;
 export default class MainAbility11 extends Ability {
   onCreate(want, launchParam) {
     console.log("[Demo] MainAbility11 onCreate")
     globalThis.abilityWant11 = want;
     globalThis.ability11 = this.context;
+    context11 = this.context;
     var listKey11 = [];
     let AbilityLifecycleCallback = {
       onAbilityCreate(ability) {
@@ -116,6 +117,7 @@ export default class MainAbility11 extends Ability {
       commonEvent.publish('MainAbility11_onForground', (err, data) => {
         console.log('MainAbility11 onForeground publish succeed' + JSON.stringify(err) + JSON.stringify(data));
       })
+      context11.terminateSelf();
     }, 500);
   }
 
