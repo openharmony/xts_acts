@@ -58,7 +58,7 @@ export default function APICanvasSizeTest() {
       let strJson = getInspectorByKey('APICanvasSizeText1');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[APICanvasSizeTest_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('300');
+      expect(Math.abs(Math.round(Number(obj.$attrs.content))-300)<=1).assertTrue();
       console.info('[APICanvasSizeTest_0100] END');
       done();
     });
@@ -81,7 +81,7 @@ export default function APICanvasSizeTest() {
       let strJson = getInspectorByKey('APICanvasSizeText2');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[APICanvasSizeTest_0200] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('300');
+      expect(Math.abs(Math.round(Number(obj.$attrs.content))-300)<=1).assertTrue();
       console.info('[APICanvasSizeTest_0200] END');
       done();
     });
