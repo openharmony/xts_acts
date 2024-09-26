@@ -110,7 +110,7 @@ export function sharedSingleTest() {
   let p = lock.lockAsync<void>(async () => {
     exchange(flagBuf, 0, 1);
     await Promise.resolve();
-    lock.lockAsync<void>(async () => {
+    await lock.lockAsync<void>(async () => {
       exchange(flagBuf, 1 ,2);
     }, utils.locks.AsyncLockMode.SHARED);
     exchange(flagBuf, 2, 0);
