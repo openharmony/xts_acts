@@ -39,7 +39,8 @@ let onMicStateChangeFlag2: boolean | null = null;
 let onMicStateChangeFlag3: boolean | null = null;
 let onMicStateChangeFlag4: boolean | null = null;
 let onMicStateChangeFlag5: boolean | null = null;
-let params: ESObject = "123"
+let strParams: ESObject = "123";
+let numParams: ESObject = 123;
 
 let voice = call.hasVoiceCapability()
 
@@ -102,7 +103,7 @@ export default function audioManagerApi9() {
     beforeAll(async () => {
       console.info(`${TagFrmwk}: beforeAll: Prerequisites at the test suite level`);
       getPermission();
-      // await driveFn();
+      await driveFn();
       await sleep(100);
       await getAudioManager();
       getStreamManager();
@@ -248,7 +249,7 @@ export default function audioManagerApi9() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0300', 3, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       try {
-        let groupManager = audioVolumeManager.getVolumeGroupManagerSync(params);
+        let groupManager = audioVolumeManager.getVolumeGroupManagerSync(strParams);
         console.info(`audioManagerApi9Test: Promise: getGroupManager  :  FAIL`);
         expect(false).assertTrue();
         done();
@@ -260,9 +261,31 @@ export default function audioManagerApi9() {
 
     })
     /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0400
+     * @tc.name      : getVolumeGroupManagerSync - String_Parameter - 6800101
+     * @tc.desc      : getVolumeGroupManagerSync - String_Parameter - 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0400', 3, async (done: Function) => {
+      let audioVolumeManager = audioManager.getVolumeManager();
+      try {
+        let groupManager = audioVolumeManager.getVolumeGroupManagerSync(numParams);
+        console.info(`audioManagerApi9Test: Promise: getGroupManager  :  FAIL`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`audioManagerApi9Test: failed to getGroupManager: Callback:  ${error.message},code:${error.code}`);
+        expect(Number(error.code)).assertEqual(6800101);
+        done();
+      }
+
+    })
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0100
-     * @tc.name      : getVolumeGroupManager - callback - 123
-     * @tc.desc      : getVolumeGroupManager - callback - 123
+     * @tc.name      : getVolumeGroupManager - callback - number_Parameter
+     * @tc.desc      : getVolumeGroupManager - callback - number_Parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -270,7 +293,7 @@ export default function audioManagerApi9() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0100', 3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
-        let groupManager: ESObject = await audioVolumeManager.getVolumeGroupManager(123);
+        let groupManager: ESObject = await audioVolumeManager.getVolumeGroupManager(numParams);
         if ((typeof groupManager) != 'undefined') {
           console.info('audioManagerApi9Test: Promise: getGroupManager  :  TYPE ERROR');
           expect(false).assertTrue();
@@ -287,8 +310,8 @@ export default function audioManagerApi9() {
     })
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0200
-     * @tc.name      : getVolumeGroupManager - callback - undefined
-     * @tc.desc      : getVolumeGroupManager - callback - undefined
+     * @tc.name      : getVolumeGroupManager - callback - number_Parameter
+     * @tc.desc      : getVolumeGroupManager - callback - number_Parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -296,12 +319,13 @@ export default function audioManagerApi9() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0200', 3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
-        let groupManager = await audioVolumeManager.getVolumeGroupManager(undefined);
+        let groupManager: ESObject = await audioVolumeManager.getVolumeGroupManager(numParams);
         if ((typeof groupManager) != 'undefined') {
           console.info('audioManagerApi9Test: Promise: getGroupManager  :  TYPE ERROR');
           expect(false).assertTrue();
           done();
         }
+        let value: ESObject = await groupManager.getVolume();
         expect(false).assertTrue();
         done();
       } catch (err) {
@@ -338,8 +362,8 @@ export default function audioManagerApi9() {
     })
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0400
-     * @tc.name      : getVolumeGroupManager - callback - -123
-     * @tc.desc      : getVolumeGroupManager - callback - -123
+     * @tc.name      : getVolumeGroupManager - callback - Null_Parameter - 401
+     * @tc.desc      : getVolumeGroupManager - callback - Null_Parameter - 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -347,7 +371,7 @@ export default function audioManagerApi9() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0400', 3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
-        let groupManager: ESObject = await audioVolumeManager.getVolumeGroupManager(-123);
+        let groupManager: ESObject = await audioVolumeManager.getVolumeGroupManager(volGroupId);
         if ((typeof groupManager) != 'undefined') {
           console.info('audioManagerApi9Test: Promise: getGroupManager  :  TYPE ERROR');
           expect(false).assertTrue();
@@ -1002,7 +1026,7 @@ export default function audioManagerApi9() {
      */
     it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_SYNC_0400', 1, (done: Function) => {
       try {
-        let data = streamManager.isActiveSync(params);
+        let data = streamManager.isActiveSync(strParams);
         console.log(`${TagFrmwk}: isActiveSync data::${data}`);
         expect(false).assertTrue();
         done();
@@ -1118,7 +1142,7 @@ export default function audioManagerApi9() {
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0400', 1, async (done: Function) => {
       let AudioRoutingManager = audioManager.getRoutingManager();
       try {
-        let value = AudioRoutingManager.isCommunicationDeviceActiveSync(params);
+        let value = AudioRoutingManager.isCommunicationDeviceActiveSync(strParams);
         console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0400
                         isCommunicationDeviceActive : String_Parameters : PASS :${value}`);
         expect(false).assertTrue();

@@ -258,7 +258,7 @@ export default function audioFramework() {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETVOLUMESYNC_0600
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETVOLUMESYNC_0500
      * @tc.name      : getVolumeSync - String_Parameter - 401
      * @tc.desc      : getVolumeSync - String_Parameter - 401
      * @tc.size      : MEDIUM
