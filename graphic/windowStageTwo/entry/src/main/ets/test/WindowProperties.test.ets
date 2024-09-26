@@ -338,11 +338,24 @@ export default function windowPropertiesTest(context: common.UIAbilityContext, w
         console.info(`${caseName} Succeeded in changing the window size.`);
       } catch (error) {
         if(error.code == 1300002){
-          const windowStatus = windowClass.getWindowStatus();
-          console.info(`${caseName} This window state is: ${windowStatus}. full-screen is not to support resize`);
-          windowClass.off('windowSizeChange');
-          expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
-          done();
+          try {
+            const windowStatus = windowClass.getWindowStatus();
+            console.info(`${caseName} This window state is: ${windowStatus}. full-screen is not to support resize`);
+            windowClass.off('windowSizeChange');
+            expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
+            done();
+          } catch (error) {
+            if (error.code === 801) {
+              console.info(`${caseName} The current device type does not support to getWindowStatus`);
+              windowClass.off('windowSizeChange');
+              done();
+            } else {
+              console.error(`${caseName}: Error: ${JSON.stringify(error)}`);
+              windowClass.off('windowSizeChange');
+              expect().assertFail();
+              done();
+            }
+          }
         } else{
           console.error(`${caseName}: Error: ${JSON.stringify(error)}`);
           windowClass.off('windowSizeChange');
