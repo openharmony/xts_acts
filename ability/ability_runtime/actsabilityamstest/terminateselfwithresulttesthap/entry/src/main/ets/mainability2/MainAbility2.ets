@@ -99,7 +99,7 @@ export default class MainAbility2 extends UIAbility {
           hilog.info(0x0000, 'MainAbility2', '%{public}s', 'MainAbility2 terminateSelf errCode:' + JSON.stringify(err.code) +
             'errMessage:' + JSON.stringify(err.message));
         });
-      }, 300);
+      }, 1500);
     } catch (error) {
       hilog.info(0x0000, 'MainAbility2', `startAbilityForResult err, 50 == ${JSON.stringify(error)}`);
     }

@@ -109,7 +109,7 @@ export default class EntryAbility4 extends UIAbility {
           hilog.info(0x0000, 'EntryAbility4', '%{public}s', 'EntryAbility3 terminateSelf errCode:' + JSON.stringify(err.code) +
             'errMessage:' + JSON.stringify(err.message));
         });
-      }, 300);
+      }, 1500);
     }
   }
 

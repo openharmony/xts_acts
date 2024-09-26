@@ -62,7 +62,7 @@ export default class ThirdAbility extends UIAbility {
     // Ability has brought to foreground
     setTimeout(() => {
       this.context.terminateSelf();
-    }, 1000);
+    }, 1500);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 

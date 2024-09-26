@@ -98,7 +98,7 @@ export default class EntryAbility extends UIAbility {
           hilog.info(0x0000, 'ThirdAbility', '%{public}s', 'ThirdAbility terminateSelf errCode:' + JSON.stringify(err.code) +
             'errMessage:' + JSON.stringify(err.message));
         });
-      }, 300);
+      }, 1500);
     } catch (error) {
       hilog.info(0x0000, 'ThirdAbility', `startAbilityForResult err, 50 == ${JSON.stringify(error)}`);
     }

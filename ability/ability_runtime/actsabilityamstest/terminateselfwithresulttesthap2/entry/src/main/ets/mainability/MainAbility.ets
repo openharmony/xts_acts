@@ -110,17 +110,18 @@ export default class MainAbility extends UIAbility {
               want,
               resultCode
             };
+            hilog.info(0x0000, 'MainAbility2', '%{public}s', 'startAbilityForResult sucess');
             await this.context.terminateSelfWithResult(abilityResult).then((data) => {
               hilog.info(0x0000, 'MainAbility2', '%{public}s', 'MainAbility2 terminateSelf sucess' + JSON.stringify(data));
             }).catch((err: BusinessError) => {
               hilog.info(0x0000, 'MainAbility2', '%{public}s', 'MainAbility2 terminateSelf errCode:' + JSON.stringify(err.code) +
                 'errMessage:' + JSON.stringify(err.message));
             });
-          }, 300);
+          }, 1500);
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'MainAbility', `startAbilityForResult err, 50 == ${JSON.stringify(err)}`);
         });
-      }, 500);
+      }, 1500);
     } catch (error) {
       hilog.info(0x0000, 'EntryAbility3', `startAbilityForResult err, 50 == ${JSON.stringify(error)}`);
     }

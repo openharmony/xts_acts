@@ -98,11 +98,11 @@ export default class MainAbility3 extends UIAbility {
                 hilog.info(0x0000, 'MainAbility3', `startAbilityForResult ok, 50 == ${JSON.stringify(result)}`);
                 this.context.terminateSelf();
               });
-            }, 300);
+            }, 1500);
           }).catch((err: BusinessError) => {
             hilog.info(0x0000, 'MainAbility3', `startAbilityForResult err, 50 == ${JSON.stringify(err)}`);
           });
-        }, 500);
+        }, 1500);
       } catch (error) {
         hilog.info(0x0000, 'MainAbility3', `startAbilityForResult err, 50 == ${JSON.stringify(error)}`);
       }

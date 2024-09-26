@@ -82,11 +82,11 @@ export default class EntryAbility extends UIAbility {
           });
           setTimeout(async () => {
             await this.context.terminateSelf();
-          }, 300);
+          }, 1500);
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'testTag', `startAbilityForResult err, 50 == ${JSON.stringify(err)}`);
         });
-      }, 500);
+      }, 1500);
     } catch (error) {
       hilog.info(0x0000, 'testTag', `startAbilityForResult err, 50 == ${JSON.stringify(error)}`);
     }

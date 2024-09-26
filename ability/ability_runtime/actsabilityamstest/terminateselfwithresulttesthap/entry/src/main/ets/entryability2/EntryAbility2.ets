@@ -26,6 +26,7 @@ export default class EntryAbility2 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'testTag', `want, 50 == ${JSON.stringify(want)}`);
+    AppStorage.SetOrCreate<boolean>('onCreate', true);
     param.setTextNme(want.action);
   }
 
@@ -33,6 +34,9 @@ export default class EntryAbility2 extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
     let onBackground = AppStorage.get<boolean>('onBackground');
     let onWindowStageDestroy = AppStorage.get<boolean>('onWindowStageDestroy');
+    let onCreate = AppStorage.get<boolean>('onCreate');
+    let onWindowStageCreate = AppStorage.get<boolean>('onWindowStageCreate');
+    let onForeground = AppStorage.get<boolean>('onForeground');
     let onDestroy = true;
     let events = param.getTextNme();
     if (events) {
@@ -41,7 +45,10 @@ export default class EntryAbility2 extends UIAbility {
           data: {
             onBackground: onBackground,
             onDestroy: onDestroy,
-            onWindowStageDestroy: onWindowStageDestroy
+            onWindowStageDestroy: onWindowStageDestroy,
+            onCreate: onCreate,
+            onWindowStageCreate: onWindowStageCreate,
+            onForeground: onForeground
           }
         }
       };
@@ -53,7 +60,7 @@ export default class EntryAbility2 extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
+    AppStorage.SetOrCreate<boolean>('onWindowStageCreate', true);
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -69,6 +76,7 @@ export default class EntryAbility2 extends UIAbility {
   }
 
   onForeground(): void {
+    AppStorage.SetOrCreate<boolean>('onForeground', true);
     setTimeout(async () => {
       let resultCode = param.getResultCode();
       let want: Want = {
@@ -86,7 +94,7 @@ export default class EntryAbility2 extends UIAbility {
         hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility2 terminateSelf errCode:' + JSON.stringify(err.code) +
           'errMessage:' + JSON.stringify(err.message));
       });
-    }, 1000);
+    }, 1500);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 

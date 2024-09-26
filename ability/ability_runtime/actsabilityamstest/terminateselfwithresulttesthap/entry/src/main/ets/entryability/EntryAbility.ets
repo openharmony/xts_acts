@@ -83,7 +83,7 @@ export default class EntryAbility extends UIAbility {
         hilog.info(0x0000, 'testTag', '%{public}s', 'secondAbility terminateSelf errCode:' + JSON.stringify(err.code) +
           'errMessage:' + JSON.stringify(err.message));
       });
-    }, 300);
+    }, 1500);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 

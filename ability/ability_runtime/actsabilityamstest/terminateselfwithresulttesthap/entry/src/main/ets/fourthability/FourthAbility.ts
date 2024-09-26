@@ -81,7 +81,7 @@ export default class FourthAbility extends UIAbility {
     }
     setTimeout(() => {
       this.context.terminateSelf();
-    }, 300);
+    }, 1500);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 
