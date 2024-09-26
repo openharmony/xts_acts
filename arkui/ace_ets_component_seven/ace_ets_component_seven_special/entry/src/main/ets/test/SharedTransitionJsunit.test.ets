@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function sharedTransitionJsunit() {
-  describe('sharedTransitionTest', function () {
-    beforeEach(async function (done) {
+  describe('sharedTransitionTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("sharedTransition beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/sharedTransition',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/sharedTransition',
       }
       try {
         router.clear();
@@ -40,7 +40,7 @@ export default function sharedTransitionJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("sharedTransition after each called");
     });
@@ -53,37 +53,37 @@ export default function sharedTransitionJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('sharedTransitionTest_0100', 0, async function (done) {
+    it('sharedTransitionTest_0100', 0, async (done: Function) => {
       console.info('sharedTransitionTest_0100 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "duration": 2000,
             "delay": 5,
             "type": SharedTransitionEffectType.Exchange
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 194,
           priority: events_emitter.EventPriority.LOW
         }
         events_emitter.emit(indexEvent, eventData);
         await Utils.sleep(2500);
       } catch (err) {
-        console.log("sharedTransitionTest_0100 change component data error: " + err.message);
+        console.log("sharedTransitionTest_0100 change component data error: " + (err as Error).message);
       }
-      let callback = (indexEventOne) => {
+      let callback = (indexEventOne: events_emitter.EventData) => {
         console.info("sharedTransitionTest_0100 get state result is: " + JSON.stringify(indexEventOne));
         try {
-          expect(indexEventOne.data.duration).assertEqual(2000);
-          expect(indexEventOne.data.delay).assertEqual(5);
-          expect(indexEventOne.data.type).assertEqual(SharedTransitionEffectType.Exchange);
+          expect(indexEventOne.data?.duration).assertEqual(2000);
+          expect(indexEventOne.data?.delay).assertEqual(5);
+          expect(indexEventOne.data?.type).assertEqual(SharedTransitionEffectType.Exchange);
         } catch (err) {
-          console.info("sharedTransitionTest_0100 error: " + err.message);
+          console.info("sharedTransitionTest_0100 error: " + (err as Error).message);
         }
 
       }
-      let indexEventOne = {
+      let indexEventOne: events_emitter.InnerEvent = {
         eventId: 193,
         priority: events_emitter.EventPriority.LOW
       }

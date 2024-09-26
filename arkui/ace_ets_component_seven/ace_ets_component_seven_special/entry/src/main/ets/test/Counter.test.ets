@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils';
 
 export default function counterJsunit() {
-  describe('ActsAceCounterTest', function () {
-    beforeAll(async function (done) {
+  describe('ActsAceCounterTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/counter',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/counter',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,10 +49,10 @@ export default function counterJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testCounter01', 0, async function (done) {
+    it('testCounter01', 0, async (done: Function) => {
       console.info('[testCounter01] START');
       let strJson = getInspectorByKey('Counter');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testCounter01] obj is : " + JSON.stringify(obj.$attrs));
       // expect(obj.$attrs.enableInc).assertEqual('false');
       expect(true).assertEqual(true);
@@ -68,10 +68,10 @@ export default function counterJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testCounter02', 0, async function (done) {
+    it('testCounter02', 0, async (done: Function) => {
       console.info('[testCounter02] START');
       let strJson = getInspectorByKey('Counter');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testCounter02] obj is : " + JSON.stringify(obj.$attrs));
       // expect(obj.$attrs.enableDec).assertEqual('false');
       expect(true).assertEqual(true);

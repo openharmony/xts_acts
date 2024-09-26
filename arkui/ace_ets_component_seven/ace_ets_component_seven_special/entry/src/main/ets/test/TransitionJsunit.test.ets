@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function transitionJsunit() {
-  describe('transitionTest', function () {
-    beforeEach(async function (done) {
+  describe('transitionTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("text beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/transition',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/transition',
       }
       try {
         router.clear();
@@ -40,7 +40,7 @@ export default function transitionJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("transition after each called");
     });
@@ -53,16 +53,16 @@ export default function transitionJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('transitionTest_0200', 0, async function (done) {
+    it('transitionTest_0200', 0, async (done: Function) => {
       console.info('transitionTest_0200 START');
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 233,
         priority: events_emitter.EventPriority.LOW
       }
       await Utils.sleep(1000);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("transitionTest_0200 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.btn1).assertEqual(false);
+        expect(indexEvent.data?.btn1).assertEqual(false);
       }
       try {
         events_emitter.on(indexEvent, callback);

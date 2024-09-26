@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 
 export default function shape(){
-  describe("shapeJsunit",function (){
-    beforeEach(async function (done){
+  describe("shapeJsunit", () => {
+    beforeEach(async (done: Function) => {
       console.info("shapeJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/shape',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/shape',
       }
-      let result;
+      let result: ESObject;
       try{
         router.clear();
         let pages = router.getState();
@@ -48,10 +48,10 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_001',0,async function (done) {
+    it('ShapeJsunit_001',0,async (done: Function) => {
       console.info('[ShapeJsunit_001] START');
       let strJson = getInspectorByKey('ShapeKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ShapeJsunit_001] obj  is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.viewPort.x).assertEqual("1.00vp");
@@ -71,10 +71,10 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_002',0,async function (done) {
+    it('ShapeJsunit_002',0,async (done: Function) => {
       console.info('[ShapeJsunit_002] START');
       let strJson = getInspectorByKey('ShapeKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ShapeJsunit_002] obj  is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.stroke).assertEqual("#FFFFC0CB");
@@ -91,10 +91,10 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_003',0,async function (done) {
+    it('ShapeJsunit_003',0,async (done: Function) => {
       console.info('[ShapeJsunit_003] START');
       let strJson = getInspectorByKey('ShapeKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ShapeJsunit_003] obj  is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.fill).assertEqual("#FF317AF7");
@@ -111,10 +111,10 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_004',0,async function (done) {
+    it('ShapeJsunit_004',0,async (done: Function) => {
       console.info('[ShapeJsunit_004] START');
       let strJson = getInspectorByKey('ShapeKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ShapeJsunit_004] obj  is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.strokeDashOffset).assertEqual("15.00vp");
@@ -131,10 +131,10 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_005',0,async function (done) {
+    it('ShapeJsunit_005',0,async (done: Function) => {
       console.info('[ShapeJsunit_005] START');
       let strJson = getInspectorByKey('ShapeKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ShapeJsunit_005] obj  is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.strokeDashArray[0]).assertEqual('30.00vp');
@@ -150,10 +150,10 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_006',0,async function (done) {
+    it('ShapeJsunit_006',0,async (done: Function) => {
       console.info('[ShapeJsunit_006] START');
       let strJson = getInspectorByKey('ShapeKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ShapeJsunit_006] obj  is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.strokeLineJoin).assertEqual("LineJoinStyle.Round");
@@ -170,10 +170,10 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_007',0,async function (done) {
+    it('ShapeJsunit_007',0,async (done: Function) => {
       console.info('[ShapeJsunit_007] START');
       let strJson = getInspectorByKey('ShapeKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ShapeJsunit_007] obj  is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.strokeLineCap).assertEqual("LineCapStyle.Round");
@@ -190,10 +190,10 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_008',0,async function (done) {
+    it('ShapeJsunit_008',0,async (done: Function) => {
       console.info('[ShapeJsunit_008] START');
       let strJson = getInspectorByKey('ShapeKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ShapeJsunit_008] obj  is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.strokeOpacity).assertEqual("0.500000");
@@ -210,10 +210,10 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_009',0,async function (done) {
+    it('ShapeJsunit_009',0,async (done: Function) => {
       console.info('[ShapeJsunit_009] START');
       let strJson = getInspectorByKey('ShapeKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ShapeJsunit_009] obj  is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.strokeMiterLimit).assertEqual("5.000000");
@@ -230,10 +230,10 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_0010',0,async function (done) {
+    it('ShapeJsunit_0010',0,async (done: Function) => {
       console.info('[ShapeJsunit_0010] START');
       let strJson = getInspectorByKey('ShapeKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ShapeJsunit_0010] obj  is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.mesh.value[0]).assertEqual('10.000000');
@@ -252,10 +252,10 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_0011',0,async function (done) {
+    it('ShapeJsunit_0011',0,async (done: Function) => {
       console.info('[ShapeJsunit_0011] START');
       let strJson = getInspectorByKey('ShapeKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ShapeJsunit_0011] obj  is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.strokeWidth).assertEqual(20);
@@ -272,10 +272,10 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_0012',0,async function (done) {
+    it('ShapeJsunit_0012',0,async (done: Function) => {
       console.info('[ShapeJsunit_0012] START');
       let strJson = getInspectorByKey('ShapeKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ShapeJsunit_0012] obj  is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.fillOpacity).assertEqual("1.000000");
@@ -292,10 +292,10 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_0013',0,async function (done) {
+    it('ShapeJsunit_0013',0,async (done: Function) => {
       console.info('[ShapeJsunit_0013] START');
       let strJson = getInspectorByKey('ShapeKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ShapeJsunit_0013] obj  is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.antiAlias).assertEqual("true");

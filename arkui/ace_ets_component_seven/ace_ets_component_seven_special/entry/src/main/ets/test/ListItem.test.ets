@@ -14,16 +14,16 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function listItemJsunit() {
-  describe('listItemTest', function () {
-    beforeAll(async function (done) {
+  describe('listItemTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("listItemTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/listItem',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/listItem',
       }
       try {
         router.clear();
@@ -49,10 +49,10 @@ export default function listItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testList_itemOnSelect00051', 0, async function (done) {
+    it('testList_itemOnSelect00051', 0, async (done: Function) => {
       console.info('selectOnSelect testList_itemOnSelect00051 START');
       let strJson = getInspectorByKey('ListItemKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testList_itemOnSelect00051] obj " + JSON.stringify(obj.$attrs));
 
       // expect(obj.$attrs.selected).assertEqual("true");
@@ -69,10 +69,10 @@ export default function listItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testList_itemOnSelect00052', 0, async function (done) {
+    it('testList_itemOnSelect00052', 0, async (done: Function) => {
       console.info('selectOnSelect testList_itemOnSelect00052 START');
       let strJson = getInspectorByKey('ListItemKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testList_itemOnSelect00052] obj " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.selectable).assertEqual(true);

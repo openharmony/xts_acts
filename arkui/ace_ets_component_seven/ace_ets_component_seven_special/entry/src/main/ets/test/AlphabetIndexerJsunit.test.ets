@@ -15,16 +15,16 @@
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import Utils from './Utils';
-import router from '@system.router';
+import router from '@ohos.router';
 
 export default function alphabetIndexerJsunit() {
-  describe('alphabetIndexerJsunit', function () {
-    beforeEach(async function (done) {
+  describe('alphabetIndexerJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("alphabetIndexerJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/alphabetIndexer',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/alphabetIndexer',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,10 +49,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0101', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0101', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0101 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.font.fontSize).assertEqual("18.00fp");
       done();
     });
@@ -65,10 +65,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0102', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0102', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0102 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.selectedFont.fontSize).assertEqual("28.00fp");
       done();
     });
@@ -81,10 +81,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0103', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0103', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0103 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.color).assertEqual("#FF000000");
       done();
     });
@@ -97,10 +97,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0104', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0104', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0104 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.selectedColor).assertEqual("#FFFF1493");
       done();
     });
@@ -113,10 +113,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0105', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0105', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0105 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.selectedBackgroundColor).assertEqual("#FFBEBEBE");
       done();
     });
@@ -129,10 +129,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0106', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0106', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0106 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.itemSize).assertEqual("26.00vp");
       done();
     });
@@ -145,10 +145,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0107', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0107', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0107 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.usingPopup).assertEqual("true");
       done();
     });    /**
@@ -159,10 +159,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0108', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0108', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0108 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.alignStyle).assertEqual("IndexerAlign.Left");
       done();
     });
@@ -175,10 +175,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0109', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0109', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0109 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.popupFont.fontSize).assertEqual("28.00fp");
       done();
     });
@@ -191,10 +191,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0110', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0110', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0110 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.popupColor).assertEqual("#FFFFA500");
       done();
     });
@@ -207,10 +207,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0111', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0111', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0111 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.popupBackground).assertEqual("#FF32CD32");
       done();
     });
@@ -223,10 +223,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0112', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0112', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0112 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.selected).assertEqual("1");
       done();
     });
@@ -239,10 +239,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0113', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0113', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0113 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.popupPosition.popupPositionX).assertEqual("90.00vp");
       done();
     });
@@ -255,10 +255,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0114', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0114', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0114 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.popupSelectedColor).assertEqual("#FF00CED1");
       done();
     });
@@ -271,10 +271,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0115', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0115', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0115 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.popupUnselectedColor).assertEqual("#FFC0FF3E");
       done();
     });
@@ -287,10 +287,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0116', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0116', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0116 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.popupItemBackground).assertEqual("#FF8470FF");
       done();
     });
@@ -303,10 +303,10 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0117', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0117', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0117 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.popupItemFontSize).assertEqual("30.00fp");
       done();
     });
