@@ -14,34 +14,32 @@
  */
 import { ComponentContent, LengthMetrics, ColorMetrics, LengthUnit} from '@ohos.arkui.node';
 import {
-ArcButton,
-CommonArcButtonOptions,
+  CommonArcButtonOptions,
+  ArcButton,
   ArcButtonOptions,
   ArcButtonStatus,
   ArcButtonStyleMode,
-  ArkButtonClickEffectStyle,
-  ArcButtonTypeMode
+  ArcButtonPosition
 } from '@ohos.arkui.advanced.ArcButton';
 
 @Entry
 @ComponentV2
 struct ArcButtonDemo {
   @Local options: ArcButtonOptions = new ArcButtonOptions({
-      resourceText: 'arcbutton',
-      type: ArcButtonTypeMode.TOP_EDGE,
-      touchEffect: ArkButtonClickEffectStyle.LIGHT,
+      label: 'arcbutton',
+      position: ArcButtonPosition.TOP_EDGE,
       styleMode: ArcButtonStyleMode.NORMAL_LIGHT,
       backgroundColor: ColorMetrics.resourceColor(Color.Blue),
       shadowColor: ColorMetrics.resourceColor('#FF4151'),
       shadowEnabled: true,
-      textSize: new LengthMetrics(19, LengthUnit.FP),
-      textColor: ColorMetrics.resourceColor(Color.Green),
+      fontSize: new LengthMetrics(19, LengthUnit.FP),
+      fontColor: ColorMetrics.resourceColor(Color.Green),
       pressedTextColor: ColorMetrics.resourceColor(Color.Yellow),
-      textStyle: FontStyle.Italic,
-      textFamily: 'HarmonyOS Sans'
+      fontStyle: FontStyle.Italic,
+      fontFamily: 'Roboto'
   })
   @Local options1: ArcButtonOptions = new ArcButtonOptions({
-      resourceText: 'arcbutton1',
+      label: 'arcbutton1',
   })
   
     build() {
@@ -49,8 +47,8 @@ struct ArcButtonDemo {
             Column(){
                 ArcButton({ options: this.options })
                 Button('Click Me First').onClick(()=>{
-                  this.options.resourceText = '白色风车'
-                })
+                  this.options.label = '白色风车'
+                }).key('button01')
             }.width(200).borderWidth(5).key('ChipOnClick')
 
             Column(){
