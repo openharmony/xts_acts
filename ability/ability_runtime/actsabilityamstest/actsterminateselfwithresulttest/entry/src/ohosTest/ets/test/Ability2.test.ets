@@ -29,7 +29,6 @@ export default function abilityTest2() {
     let bundleName = 'com.example.terminateselfwithresulttesthap';
     let bundleName2 = 'com.example.terminateselfwithresulttesthap2';
     let bundleName3 = 'com.example.actsterminateselfwithresulttest';
-    let abilityName = 'EntryAbility';
 
     const TAG: string = 'TerminateselfWithResult';
     const TEST_SUITE_NAME: string = 'TerminateselfWithResultTest';
