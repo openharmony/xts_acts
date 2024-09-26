@@ -36,3 +36,59 @@ export class SimpleSendable implements lang.ISendable {
     this.digit = value;
   }
 }
+
+@Sendable
+class sendableArrayClass {
+  arr : collections.Array<number>  = new collections.Array<number>(100);
+}
+
+@Sendable
+function sendableArrayFunc() : number {
+  let arr : collections.Array<number> = new collections.Array<number>(100);
+  return arr[0];
+}
+
+@Sendable
+export async function sendableAsyncFunc() : Promise<number> {
+  return 100;
+}
+
+@Sendable
+type FuncType = () => number;
+
+@Sendable
+export class SendableClassTest {
+  constructor(func: FuncType) {
+    this.func = func;
+  }
+  func: FuncType;
+  foo() {
+    let num : number = sendableArrayFunc();
+    return num;
+  }
+}
+
+@Sendable
+function SendableFunctionTop() {
+  let num = 100;
+  return num;
+}
+
+@Sendable
+class SendableClassTop {
+  num :number = 200;
+  say() {
+    return this.num;
+  }
+}
+
+@Sendable
+export function sendableFunc() {
+  let num : number = SendableFunctionTop();
+  const class1 = new SendableClassTop();
+  num += class1.say();
+  num += sendableArrayFunc();
+  let arr = new sendableArrayClass().arr;
+  num += arr[0]
+  return num;
+}
