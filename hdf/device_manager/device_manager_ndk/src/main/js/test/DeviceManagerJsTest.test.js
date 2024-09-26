@@ -14,9 +14,26 @@
  */
 
 import deviceManager from '@ohos.driver.deviceManager'
+import usbManager from '@ohos.usbManager'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+
 export default function DeviceManagerJsTest(){
 describe("DeviceManagerJsTest", function () {
+
+    let deviceList;
+    let isDeviceConnected;
+    const PARAMETER_ERROR_CODE = 401;
+    const SERVICE_EXCEPTION_CODE = 22900001;
+
+    function deviceConnected() {
+        if (deviceList.length > 0) {
+            console.info("Test USB device is connected");
+            return true;
+        }
+        console.info("Test USB device is not connected");
+        return false;
+    }
+
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
         expect(typeof(data.x)).assertEqual("number");
@@ -28,7 +45,14 @@ describe("DeviceManagerJsTest", function () {
     }
 
     beforeAll(function() {
-        console.info('beforeAll called')
+        console.info('beforeAll called');
+        try {
+            deviceList = usbManager.getDevices();
+            console.info('beforeAll getDevices ', JSON.stringify(deviceList));
+        } catch (err) {
+            console.info('beforeAll getDevices failed, error is : ' + err);
+        }
+        isDeviceConnected = deviceConnected();
     })
 
     afterAll(function() {
@@ -43,9 +67,6 @@ describe("DeviceManagerJsTest", function () {
         console.info('afterEach called')
     })
 
-    const PARAMETER_ERROR_CODE = 401
-    const SERVICE_EXCEPTION_CODE = 22900001
-
     /*
      * @tc.number     : SUB_Driver_Ext_DeviceManagerAPIFunc_0100
      * @tc.name       : testDeviceManagerQueryDevices001
@@ -56,6 +77,10 @@ describe("DeviceManagerJsTest", function () {
      */
     it('testDeviceManagerQueryDevices001', 0, function () {
         console.info('----------------------testDeviceManagerQueryDevices001---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
         try {
             var devices = deviceManager.queryDevices(deviceManager.BusType.USB);
             expect(devices != null).assertEqual(true);
@@ -78,6 +103,10 @@ describe("DeviceManagerJsTest", function () {
      */
     it('testDeviceManagerQueryDevices002', 0, function () {
         console.info('----------------------testDeviceManagerQueryDevices002---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
         try {
             var devices = deviceManager.queryDevices();
             expect(devices != null).assertEqual(true);
@@ -96,6 +125,11 @@ describe("DeviceManagerJsTest", function () {
      */
     it('testDeviceManagerBindDevices003', 0, async function (done) {
         console.info('----------------------testDeviceManagerBindDevices003---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
         try {
             deviceManager.bindDevice('fakeid', (error, data) => {
                 expect(false).assertTrue();
@@ -122,6 +156,11 @@ describe("DeviceManagerJsTest", function () {
      */
     it('testDeviceManagerBindDevices004', 0, async function (done) {
         console.info('----------------------testDeviceManagerBindDevices004---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
         try {
             deviceManager.bindDevice(12345, (error, data) => {
                 expect(false).assertTrue();
@@ -148,6 +187,11 @@ describe("DeviceManagerJsTest", function () {
      */
     it('testDeviceManagerBindDeviceDriver005', 0, async function (done) {
         console.info('----------------------testDeviceManagerBindDeviceDriver005---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
         try {
             deviceManager.bindDeviceDriver(12345, (error, data) => {
                 expect(false).assertTrue();
@@ -174,6 +218,11 @@ describe("DeviceManagerJsTest", function () {
      */
     it('testDeviceManagerBindDevices006', 0, async function (done) {
         console.info('----------------------testDeviceManagerBindDevices006---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
         try {
             deviceManager.bindDevice();
             expect(false).assertTrue();
@@ -194,6 +243,11 @@ describe("DeviceManagerJsTest", function () {
      */
     it('testDeviceManagerBindDevices007', 0, async function (done) {
         console.info('----------------------testDeviceManagerBindDevices007---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
         try {
             deviceManager.bindDevice(12345);
             expect(false).assertTrue();
@@ -214,6 +268,11 @@ describe("DeviceManagerJsTest", function () {
      */
     it('testDeviceManagerBindDevices008', 0, async function (done) {
         console.info('----------------------testDeviceManagerBindDevices008---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
         try {
             deviceManager.bindDevice(12345, 23456);
             expect(false).assertTrue();
@@ -234,6 +293,11 @@ describe("DeviceManagerJsTest", function () {
      */
     it('testDeviceManagerBindDevices009', 0, async function (done) {
         console.info('----------------------testDeviceManagerBindDevices009---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
         try {
             deviceManager.bindDevice('fakeid', (error, data) => {
                 expect(false).assertTrue();
@@ -263,6 +327,11 @@ describe("DeviceManagerJsTest", function () {
      */
     it('testDeviceManagerBindDevices010', 0, async function (done) {
         console.info('----------------------testDeviceManagerBindDevices010---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
         try {
             deviceManager.bindDevice(12345, (error, data) => {
                 expect(false).assertTrue();
@@ -292,6 +361,11 @@ describe("DeviceManagerJsTest", function () {
      */
      it('testDeviceManagerBindDeviceDriver011', 0, async function (done) {
         console.info('----------------------testDeviceManagerBindDeviceDriver011---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
         try {
             deviceManager.bindDeviceDriver(12345, (error, data) => {
                 expect(data != null).assertTrue();
@@ -324,6 +398,11 @@ describe("DeviceManagerJsTest", function () {
      */
      it('testDeviceManagerUnbindDevices012', 0, async function (done) {
         console.info('----------------------testDeviceManagerUnbindDevices012---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
         try {
             deviceManager.unbindDevice('fakeid', (error, data) => {
                 expect(false).assertTrue();
@@ -347,6 +426,11 @@ describe("DeviceManagerJsTest", function () {
      */
     it('testDeviceManagerUnbindDevices013', 0, async function (done) {
         console.info('----------------------testDeviceManagerUnbindDevices013---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
         try {
             deviceManager.unbindDevice(12345, (error, data) => {
                 expect(false).assertTrue();
@@ -370,6 +454,11 @@ describe("DeviceManagerJsTest", function () {
      */
      it('testDeviceManagerUnbindDevices014', 0, async function (done) {
         console.info('----------------------testDeviceManagerUnbindDevices014---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
         try {
             deviceManager.unbindDevice();
             expect(false).assertTrue();
@@ -390,6 +479,11 @@ describe("DeviceManagerJsTest", function () {
      */
      it('testDeviceManagerUnbindDevices015', 0, async function (done) {
         console.info('----------------------testDeviceManagerUnbindDevices015---------------------------');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
         try {
             deviceManager.unbindDevice(12345).then(data => {
                 expect(false).assertTrue();
