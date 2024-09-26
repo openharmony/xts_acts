@@ -13,16 +13,33 @@
  * limitations under the License.
  */
 
+#include <string>
+
 #include "napi/native_api.h"
 #include <BasicServicesKit/ohprint.h>
 
 #define TEST_PRINTER "testPrinter"
+
+static constexpr size_t ARG_SIZE_ONE = 1;
+static constexpr int32_t ERROR_COMMON = -1;
 
 static void PrinterDiscoveryCallback(Print_DiscoveryEvent event, const Print_PrinterInfo *printerInfo)
 {
 }
 
 static void PrinterChangeCallback(Print_PrinterEvent event, const Print_PrinterInfo *printerInfo)
+{
+}
+
+static void OnStartLayoutWrite(const char *jobId,
+                               uint32_t fd,
+                               const Print_PrintAttributes *oldAttrs,
+                               const Print_PrintAttributes *newAttrs,
+                               Print_WriteResultCallback writeCallback)
+{
+}
+
+static void OnJobStateChanged(const char* jobId, uint32_t state)
 {
 }
 
@@ -116,6 +133,41 @@ static napi_value OHPrintProperty(napi_env env, napi_callback_info info)
     errorCode = OH_Print_RestorePrinterProperties(TEST_PRINTER, &key);
     OH_Print_ReleasePrinterProperties(&value);
     errorCode = OH_Print_Release();
+    napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
+    return result;
+}
+
+static napi_value OHPrintStartPrintByNative(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = ARG_SIZE_ONE;
+    napi_value args[ARG_SIZE_ONE] = { nullptr };
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    if (argc != ARG_SIZE_ONE) {
+        napi_create_int32(env, ERROR_COMMON, &result);
+        return result;
+    }
+    void* context = nullptr;
+    napi_status status = napi_unwrap(env, args[0], &context);
+    if (status != napi_ok) {
+        napi_create_int32(env, ERROR_COMMON, &result);
+        return result;
+    }
+
+    napi_value statgeMode = nullptr;
+    napi_get_named_property(env, args[0], "stageMode", &statgeMode);
+    bool isStageMode = false;
+    napi_get_value_bool(env, statgeMode, &isStageMode);
+    if (!isStageMode) {
+        napi_create_int32(env, ERROR_COMMON, &result);
+        return result;
+    }
+
+    std::string printJobName = "MyPrintTest";
+    Print_PrintDocCallback cb;
+    cb.startLayoutWriteCb = OnStartLayoutWrite;
+    cb.jobStateChangedCb = OnJobStateChanged;
+    Print_ErrorCode errorCode = OH_Print_StartPrintByNative(printJobName.c_str(), cb, context);
     napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
     return result;
 }
