@@ -14,6 +14,7 @@
  */
 
 import usbManager from '@ohos.usbManager';
+import { UiDriver, BY } from '@ohos.UiTest';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
@@ -29,7 +30,6 @@ describe('UsbApiParamErrJsunitTest', function () {
     const PARAM_ERRCODE = 401;
     let gDeviceList;
     let devices;
-    let usbPortList;
     let gPipe = {
         busNum: null,
         devAddress: null
@@ -37,10 +37,6 @@ describe('UsbApiParamErrJsunitTest', function () {
     let requestparam;
     let isDeviceConnected;
     function deviceConnected() {
-        if (usbPortList == undefined) {
-            console.info(TAG, "Test USB device is not supported");
-            return false;
-        }
         if (gDeviceList.length > 0) {
             console.info(TAG, "Test USB device is connected");
             return true;
@@ -55,30 +51,23 @@ describe('UsbApiParamErrJsunitTest', function () {
         console.info(TAG, 'usb unit begin test getversion :' + Version);
 
         // version > 17  host currentMode = 2 device currentMode = 1
-        usbPortList = usbManager.getPortList();
         gDeviceList = usbManager.getDevices();
         console.info(TAG, 'usb unit begin test getDevices **********', JSON.stringify(gDeviceList));
         isDeviceConnected = deviceConnected();
         if (isDeviceConnected) {
-            if (usbPortList.length > 0) {
-                if (usbPortList[0].status.currentMode == 1) {
-                    try {
-                        let data = await usbManager.setPortRoleTypes(usbPortList[0].id,
-                            usbManager.SOURCE, usbManager.HOST);
-                        console.info(TAG, 'usb case setPortRoleTypesEx return: ' + data);
-                    } catch (error) {
-                        console.info(TAG, 'usb case setPortRoleTypesEx error : ' + error);
-                    }
-                    CheckEmptyUtils.sleep(4000);
-                    console.log(TAG, '*************Usb Unit Begin switch to host*************');
-                }
+            let hasRight = usbManager.hasRight(gDeviceList[0].name);
+            if (!hasRight) {
+                console.info(TAG, `beforeAll: usb requestRight start`);
+                await getPermission();
+                CheckEmptyUtils.sleep(1000);
+                await driveFn();
+                CheckEmptyUtils.sleep(1000);
             }
 
             requestparam = getControlTransferParam(0x80, 0x06, (0x01 << 8 | 0), 0, 18);
         }
-
-        
     })
+
     beforeEach(function () {
         console.info(TAG, 'beforeEach: *************Usb Unit Test CaseEx*************');
         gDeviceList = usbManager.getDevices();
@@ -90,14 +79,45 @@ describe('UsbApiParamErrJsunitTest', function () {
             console.info(TAG, 'beforeEach return devices : ' + JSON.stringify(gPipe));
         }
     })
+
     afterEach(function () {
         console.info(TAG, 'afterEach: *************Usb Unit Test CaseEx*************');
         devices = null;
         console.info(TAG, 'beforeEach return devices : ' + JSON.stringify(devices));
     })
+
     afterAll(function () {
         console.log(TAG, '*************Usb Unit UsbApiParamErrJsunitTest End*************');
     })
+
+    async function driveFn() {
+        console.info('**************driveFn**************');
+        try {
+            let driver = await UiDriver.create();
+            console.info(TAG, ` come in driveFn`);
+            console.info(TAG, `driver is ${JSON.stringify(driver)}`);
+            CheckEmptyUtils.sleep(1000);
+            let button = await driver.findComponent(BY.text('允许'));
+            console.info(TAG, `button is ${JSON.stringify(button)}`);
+            CheckEmptyUtils.sleep(1000);
+            await button.click();
+        } catch (err) {
+            console.info(TAG, 'err is ' + err);
+            return;
+        }
+    }
+
+    async function getPermission() {
+        console.info('**************getPermission**************');
+        try {
+            usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
+                console.info(TAG, `usb requestRight success, hasRight: ${hasRight}`);
+            })
+        } catch (err) {
+            console.info(TAG, `usb getPermission to requestRight hasRight fail: `, err);
+            return
+        }
+    }
 
     function getControlTransferParam(iReqType, iReq, iValue, iIndex, iLength) {
         let tmpUint8Array = new Uint8Array(512);
