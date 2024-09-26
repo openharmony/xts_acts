@@ -878,40 +878,6 @@ HWTEST_F(NativeImageTest, OHNativeImageAcquireNativeWindowBuffer4KBoundary, Func
     OH_NativeWindow_DestroyNativeWindow(nativewindow);
 }
 
-HWTEST_F(NativeImageTest, OHNativeImageAcquireNativeWindowBufferCalls, Function | MediumTest | Level1) {
-    if (image == nullptr) {
-        image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
-        ASSERT_NE(image, nullptr);
-    }
-    OHNativeWindow *nativewindow = OH_NativeImage_AcquireNativeWindow(image);
-    ASSERT_NE(nativewindow, nullptr);
-    int code = SET_BUFFER_GEOMETRY;
-    int32_t width = 4096;
-    int32_t height = 2160;
-    int32_t res = OH_NativeWindow_NativeWindowHandleOpt(nativewindow, code, width, height);
-    ASSERT_EQ(res, NATIVE_ERROR_OK);
-    code = SET_USAGE;
-    int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
-    res = OH_NativeWindow_NativeWindowHandleOpt(nativewindow, code, usage);
-    OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
-    int fenceFd = -1;
-    int32_t retq = OH_NativeWindow_NativeWindowRequestBuffer(nativewindow, &nativeWindowBuffer, &fenceFd);
-    struct Region *region = new Region();
-    struct Region::Rect *rect = new Region::Rect();
-    rect->x = 0x100;
-    rect->y = 0x100;
-    rect->w = 0x100;
-    rect->h = 0x100;
-    region->rects = rect;
-    retq = OH_NativeWindow_NativeWindowFlushBuffer(nativewindow, nativeWindowBuffer, fenceFd, *region);
-    int32_t ret = OH_NativeImage_AcquireNativeWindowBuffer(image, &nativeWindowBuffer, &fenceFd);
-    int32_t ret1 = OH_NativeImage_ReleaseNativeWindowBuffer(image, nativeWindowBuffer, fenceFd);
-    ASSERT_EQ(ret, NATIVE_ERROR_OK);
-    ASSERT_EQ(ret1, NATIVE_ERROR_OK);
-    OH_NativeImage_Destroy(&image);
-    OH_NativeWindow_DestroyNativeWindow(nativewindow);
-}
-
 /*
  * @tc.name: OHNativeImageAcquireNativeWindowBufferCalls
  * @tc.desc: test for Calls OH_NativeImage_AcquireNativeWindowBuffer and check ret.
