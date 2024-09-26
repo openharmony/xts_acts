@@ -1,5 +1,11 @@
 {
   "src": [
-    "testability/pages/Index"
+    "testability/pages/Index",
+    "testability/pages/safeBrowser",
+    "testability/pages/illegal",
+    "testability/pages/fraud",
+    "testability/pages/risk",
+    "testability/pages/warning",
+    "testability/pages/RenderProcess"
   ]
 }
