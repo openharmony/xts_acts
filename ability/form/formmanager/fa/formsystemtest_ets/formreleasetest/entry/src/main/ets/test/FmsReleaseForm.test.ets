@@ -145,6 +145,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.log(`FMS_releaseForm_0200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.log(`FMS_releaseForm_0200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -321,6 +323,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.log(`FMS_releaseForm_0500 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.log(`FMS_releaseForm_0500 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -380,6 +384,8 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.log(`FMS_releaseForm_0600 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    expect().not().assertFail();
+                    done();
                 }).catch((err: any) => {
                     console.log(`FMS_releaseForm_0600 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                     expect().assertFail();
@@ -410,6 +416,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.log(`FMS_releaseForm_0600 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.log(`FMS_releaseForm_0600 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -486,6 +494,8 @@ export default function test() {
                         }
                     }).then((res: any) => {
                         console.log(`FMS_releaseForm_1300 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                        expect().not().assertFail();
+                        done();
                     }).catch((err: any) => {
                         console.log(`FMS_releaseForm_1300 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                         expect().assertFail();
@@ -529,6 +539,8 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.log(`FMS_releaseForm_1300 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    expect().not().assertFail();
+                    done();
                 }).catch((err: any) => {
                     console.log(`FMS_releaseForm_1300 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                     expect().assertFail();
@@ -555,6 +567,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.log(`FMS_releaseForm_1300 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.log(`FMS_releaseForm_1300 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -606,6 +620,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.log(`FMS_releaseForm_1400 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.log(`FMS_releaseForm_1400 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
