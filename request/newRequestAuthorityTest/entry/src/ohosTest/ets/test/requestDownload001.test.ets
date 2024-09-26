@@ -41,7 +41,7 @@ export default function requestDownloadOneJSUnitTest() {
     it("SUB_Misc_REQUEST_create_Callback_0140", 0, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
+        url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND ,
@@ -99,7 +99,7 @@ export default function requestDownloadOneJSUnitTest() {
     it("SUB_Misc_REQUEST_Create_Promise_0140", 0, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
+        url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -152,7 +152,7 @@ export default function requestDownloadOneJSUnitTest() {
     it("SUB_Misc_REQUEST_create_Callback_0160", 0, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
+        url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -160,7 +160,7 @@ export default function requestDownloadOneJSUnitTest() {
         saveas: "./SUB_Misc_REQUEST_create_Callback_0160.txt",
         network: request.agent.Network.WIFI,
         index: 0,
-        begins: 274619068,
+        begins: 233332586,
         ends: -1,
       };
       console.info("====>-------------------SUB_Misc_REQUEST_create_Callback_0160 is starting---------------------");
@@ -197,7 +197,7 @@ export default function requestDownloadOneJSUnitTest() {
     it("SUB_Misc_REQUEST_Create_Promise_0160", 0, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
+        url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -205,7 +205,7 @@ export default function requestDownloadOneJSUnitTest() {
         saveas: "./SUB_Misc_REQUEST_Create_Promise_0160.txt",
         network: request.agent.Network.WIFI,
         index: 0,
-        begins: 274619068,
+        begins: 233332586,
         ends: -1,
       };
       console.info("====>-------------------SUB_Misc_REQUEST_Create_Promise_0160 is starting---------------------");
@@ -238,7 +238,7 @@ export default function requestDownloadOneJSUnitTest() {
     it("SUB_Misc_REQUEST_create_Callback_0170", 0, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
+        url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -296,7 +296,7 @@ export default function requestDownloadOneJSUnitTest() {
     it("SUB_Misc_REQUEST_Create_Promise_0170", 0, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
+        url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -350,7 +350,7 @@ export default function requestDownloadOneJSUnitTest() {
     it("SUB_Misc_REQUEST_create_Callback_0180", 0, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
+        url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -393,7 +393,7 @@ export default function requestDownloadOneJSUnitTest() {
     it("SUB_Misc_REQUEST_Create_Promise_0180", 0, async (done: Function) => {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
+        url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
