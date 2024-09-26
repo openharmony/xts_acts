@@ -18,7 +18,7 @@ import { BusinessError } from '@ohos.base'
 import { StrCat, A, B, printStrArgs, printArgs } from './exportFunclist'
 import HashMap from '@ohos.util.HashMap';
 import { errorManager } from '@kit.AbilityKit';
-import { SendableClass, SimpleSendable } from './sendable';
+import { SendableClass, SimpleSendable, SendableClassTest } from './sendable';
 
 export async function currentFun(): Promise<void> {
   "use concurrent"
@@ -413,4 +413,17 @@ export function testWithThreeParams(a: number, b: string, c: number): string {
 @Concurrent
 export function testWithArray(args: [number, string]): string {
   return "result:" + JSON.stringify(args);
+}
+
+@Concurrent
+export function sendableFuncTest(func : Function) : number {
+  let num : number = func();
+  return num;
+}
+
+@Concurrent
+export function sendableClassTest(classT : SendableClassTest) : number {
+  let num = classT.foo();
+  num += classT.func();
+  return num;
 }
