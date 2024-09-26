@@ -21,7 +21,7 @@ import { router } from '@kit.ArkUI';
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController()
 
-  aboutToAppear(): void {
+  aboutToAppear(): void{
     try {
       let features = new webview.BackForwardCacheSupportedFeatures();
       features.nativeEmbed = true;

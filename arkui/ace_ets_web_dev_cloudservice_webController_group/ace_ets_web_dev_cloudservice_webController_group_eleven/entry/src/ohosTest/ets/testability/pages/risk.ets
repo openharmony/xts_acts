@@ -23,7 +23,7 @@ import { url3 } from './Const';
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController()
 
-  build() {
+  build(){
     Column() {
       Column() {
         Button('返回').onClick((event: ClickEvent) => {
