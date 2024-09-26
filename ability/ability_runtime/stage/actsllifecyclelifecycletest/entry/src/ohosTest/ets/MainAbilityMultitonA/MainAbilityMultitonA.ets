@@ -16,16 +16,20 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
-import base from '@ohos.base';
 import AbilityLifecycleCallback from '@ohos.app.ability.AbilityLifecycleCallback';
-import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import base from '@ohos.base';
 
-const TEST_TAG = "TAG_MainAbilityB"
+const TEST_TAG = "TAG_MainAbilityA"
 
-export default class MainAbilityB extends UIAbility {
+export default class MainAbilityA extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'MainAbilityB Ability onCreate' + JSON.stringify(want));
+    hilog.info(0x0000, TEST_TAG, `MainAbilityA onCreate`);
+    if (!globalThis.mainAbilityMultitionAContexts) {
+      globalThis.mainAbilityMultitionAContexts = []
+    }
+    globalThis.mainAbilityMultitionAContexts.push(this.context)
 
     let listKey: string[] = [];
     let abilityName = "";
@@ -75,18 +79,19 @@ export default class MainAbilityB extends UIAbility {
       }
     }
 
-    globalThis.ApplicationContextB = this.context.getApplicationContext();
-    let callBackId = globalThis.ApplicationContextB.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
-
-    globalThis.mainAbilityBListKey = listKey
-    globalThis.mainAbilityBCallBackId = callBackId
+    globalThis.ApplicationContextMultitonA = this.context.getApplicationContext();
+    let callBackId:number = globalThis.ApplicationContextMultitonA
+        .registerAbilityLifecycleCallback(AbilityLifecycleCallback);
+    globalThis.mainMultitonAbilityAListKey = listKey
+    globalThis.mainMultitonAbilityACallBackId = callBackId
     hilog.info(0x0000, TEST_TAG, `callBackId :${callBackId}`);
+
   }
 
   onDestroy() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-    globalThis.ApplicationContextB
-      .unregisterAbilityLifecycleCallback(globalThis.mainAbilityBCallBackId,
+    hilog.info(0x0000, TEST_TAG, '%{public}s', 'Ability onDestroy');
+    globalThis.ApplicationContextMultitonA
+      .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId,
         (error: base.BusinessError, data: ESObject) => {
           hilog.info(0x0000, TEST_TAG, 'unregisterAbilityLifecycleCallback err: %{public}s', JSON.stringify(error) ?? '');
         });
@@ -95,8 +100,8 @@ export default class MainAbilityB extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    globalThis.abilityBContext = this.context;
-    windowStage.loadContent('MainAbilityB/pages/Index', (err, data) => {
+    globalThis.abilityMultitonAContext = this.context;
+    windowStage.loadContent('MainAbilityA/pages/Index', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
