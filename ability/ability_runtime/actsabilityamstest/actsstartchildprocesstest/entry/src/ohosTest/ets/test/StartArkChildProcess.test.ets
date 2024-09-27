@@ -34,6 +34,7 @@ export default function startArkChildProcess() {
         `Succeeded in starting SpecifiedAbility11ww11` + JSON.stringify(context));
       done();
     })
+
     /**
      * @tc.number SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0600
      * @tc.name The parameter passed to the child process is null
@@ -155,6 +156,7 @@ export default function startArkChildProcess() {
         done();
       }
     });
+
     /**
      * @tc.number SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0100
      * @tc.name Child process source file path is null
@@ -188,6 +190,7 @@ export default function startArkChildProcess() {
         done();
       }
     });
+
     /**
      * @tc.number SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0200
      * @tc.name Child process source file path is undefined
@@ -221,6 +224,7 @@ export default function startArkChildProcess() {
         done();
       }
     });
+    
     /**
      * @tc.number SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0300
      * @tc.name Child process source file path is empty
