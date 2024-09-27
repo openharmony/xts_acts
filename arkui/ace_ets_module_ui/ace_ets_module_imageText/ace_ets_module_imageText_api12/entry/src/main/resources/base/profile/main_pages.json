@@ -92,7 +92,7 @@
     "MainAbility/pages/RichEditor/RichEditorGetLayoutManagerTest1",
     "MainAbility/pages/RichEditor/RichEditorStyledStringTest1",
     "MainAbility/pages/RichEditor/RichEditorStyledStringTest2",
-
+    "MainAbility/pages/RichEditor/RichEditorStyledStringTest3",
     "MainAbility/pages/Text/TextAPI/AttributeUpdater",
     "MainAbility/pages/Text/TextAPI/Unit",
     "MainAbility/pages/TextClock/TextClockApi/TextClockApi",
