@@ -45,7 +45,7 @@ struct saveButton_1 {
   @State bottom: number = 8
   @State middle: number = 4
   @State heightValue: number = 4
-  marginValue = {top:30, bottom:30, left:10, right:10}
+  marginValue = {top:30, bottom:20, left:10, right:10}
 
   build() {
     Column() {
@@ -353,7 +353,7 @@ struct saveButton_1 {
           .textIconSpace(this.middle)
           .key("keySave9")
       }.width('100%').height(this.heightValue).margin(this.marginValue)
-            Row() {
+      Row() {
         SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.EXPORT_TO_GALLERY, buttonType: this.bgType })
           .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
             try {
