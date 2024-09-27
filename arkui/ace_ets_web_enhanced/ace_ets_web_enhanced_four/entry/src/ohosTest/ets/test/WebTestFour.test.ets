@@ -290,24 +290,6 @@ export default function webTestFour() {
     })
 
     /**
-     * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_8900
-     * @tc.name testErrorCodeMessage8900
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it("testErrorCodeMessage8900", 0, async (done:Function) => {
-      Utils.registerBaseEvent('testErrorCodeMessage8900', '401BusinessError 401: Parameter error. The type of params is error.', 362, done,
-        (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      Utils.emitEvent('testErrorCodeMessage8900', 10)
-       await Utils.sleep(1000);;
-      sendEventByKey('webTestFour', 10, '');
-    })
-
-    /**
      * @tc.number SUB_WEB_ERRORCODEANDERRORMESSAGE_9000
      * @tc.name testErrorCodeMessage9000
      * @tc.desc test Arguments

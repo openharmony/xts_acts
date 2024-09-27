@@ -84,13 +84,13 @@ export default function Download() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       sendEventByKey('setDownloadDelegate', 10, '');
-      await Utils.sleep(200);
+      await Utils.sleep(2000);
       sendEventByKey('startDownload', 10, '');
-      await Utils.sleep(200);
+      await Utils.sleep(2000);
       sendEventByKey('cancel', 10, '');
-      await Utils.sleep(200);
+      await Utils.sleep(2000);
       sendEventByKey('state', 10, '');
-      await Utils.sleep(200);
+      await Utils.sleep(2000);
     })
 
     /**

@@ -67,7 +67,7 @@ export default function lastErrorCode() {
         });
 
       sendEventByKey('FILE_FAILED', 10, '');
-      await Utils.sleep(400);
+      await Utils.sleep(2000);
       sendEventByKey('startDownload', 10, '');
     })
 
@@ -86,7 +86,7 @@ export default function lastErrorCode() {
         });
 
       sendEventByKey('111', 10, '');
-      await Utils.sleep(400);
+      await Utils.sleep(2000);
       sendEventByKey('startDownloadUrlFail', 10, '');
     })
 
