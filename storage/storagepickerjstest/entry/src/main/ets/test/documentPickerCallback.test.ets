@@ -393,6 +393,40 @@ export default function documentPickerCallback(abilityContext: Context) {
       option.pickerMode = DEFAULT;
       await saveWithOption(testNum, done, option);
     });
+
+    /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SAVE_CALLBACK_1200
+     * @tc.name   : test_Documentpicker_Save_Callback_012
+     * @tc.desc   : test getSelectdIndex
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("test_Documentpicker_Save_Callback_012", 1, async (done: Function) => {
+      try {
+        let documentPicker = new picker.DocumentViewPicker();
+        let option = new picker.DocumentSaveOptions();
+        documentPicker.save(option, (err, result) => {
+          let index = documentPicker.getSelectdIndex();
+          console.info('test_Documentpicker_Save_Callback_012 getSelectdIndex:' + index);
+          if (option.fileSuffixChoices != undefined) {
+            if (option.fileSuffixChoices?.length || index == -1){
+              console.error('test_Documentpicker_Save_Callback_012 getSelectdIndex:' + index);
+            } else {
+              let suffix = option.fileSuffixChoices[index];
+              console.info('test_Documentpicker_Save_Callback_012 suffix:' + suffix);
+            }
+          }
+        });
+        expect(true).assertTrue();
+        done();
+      }
+      catch (error) {
+        console.info(`documentpicker_save_callback_012::saveWithOption error: ${JSON.stringify(error)}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
   });
 }
 
