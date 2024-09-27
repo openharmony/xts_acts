@@ -15,7 +15,6 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 
-// @ts-ignore
 import napitest from 'libnapitest.so'
 
 export default function napiBufferTest() {
@@ -45,7 +44,7 @@ export default function napiBufferTest() {
     * @tc.desc      aceNapiEtsTest
     */
     it('napiBufferTest002', 0, () => {
-      let buffer = napitest.CreateBuffer();
+      let buffer: Object = napitest.CreateBuffer();
       expect(napitest.IsBuffer(buffer)).assertTrue();
       expect(napitest.GetBufferInfo(buffer)).assertTrue();
     })

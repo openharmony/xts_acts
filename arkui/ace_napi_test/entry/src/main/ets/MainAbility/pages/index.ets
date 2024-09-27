@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,11 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { Hypium } from '@ohos/hypium';
+import testsuite from '../../test/List.test';
 
 @Entry
 @Component
 struct MyComponent {
   aboutToAppear() {
+    setTimeout(() => {
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+      let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+      console.info('start run testcase!!!')
+      Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    }, 2000)
   }
 
   build() {

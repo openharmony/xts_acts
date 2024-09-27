@@ -28,6 +28,7 @@
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
+    "pages": "$profile:main_pages",
     "abilities": [
       {
         "name": "com.acts.ace.napitest.EntryAbility",

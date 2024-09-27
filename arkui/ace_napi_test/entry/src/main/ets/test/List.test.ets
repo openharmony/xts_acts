@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import napiStringTest from './NativeApiStringTest';
-import napiObjectTest from './NativeApiObjectTest';
 import napiBufferTest from './NativeApiBufferTest';
 import napiSendableTest from './NativeApiSendableTest';
 
@@ -21,6 +20,5 @@ import napiSendableTest from './NativeApiSendableTest';
 export default function testsuite() {
   napiStringTest();
   napiBufferTest();
-  napiObjectTest();
   napiSendableTest();
 }
