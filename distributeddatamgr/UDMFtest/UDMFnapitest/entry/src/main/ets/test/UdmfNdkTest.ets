@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import testNapi from 'libUdmfNdk.so'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 const TAG = "[ UdmfNdkTest ] ------ ";
 

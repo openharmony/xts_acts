@@ -14,7 +14,7 @@
  */
 
 import bundle from '@ohos.bundle';
-import { describe, beforeAll, it, expect } from 'hypium/index';
+import { describe, beforeAll, it, expect } from '@ohos/hypium';
 
 const PATH = "/data/test/"
 const ERROR = "error.hap"

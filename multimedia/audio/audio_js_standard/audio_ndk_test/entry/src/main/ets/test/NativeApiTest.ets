@@ -16,7 +16,7 @@
 import featureAbility from '@ohos.ability.featureAbility';
 import { UiDriver, BY } from '@ohos.UiTest'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import myaudioNdk from "libaudioNdkTest.so"
 
 const Tag = 'audio_ndk_test:'
