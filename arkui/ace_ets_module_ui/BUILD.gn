@@ -31,6 +31,7 @@ group("ActsAceEtsModuleUITest") {
     "ace_ets_module_information:ActsAceEtsModuleInformationTest",
     "ace_ets_module_keyboardShortcut:ActsAceEtsModuleKeyboardShortcutTest",
     "ace_ets_module_layout:ActsAceEtsModuleLayoutTest",
+    "ace_ets_module_listItemGroup:ActsAceEtsModuleListItemGroupTest",
     "ace_ets_module_loadingProgress:ActsAceEtsModuleLoadingProgressTest",
     "ace_ets_module_marquee:ActsAceEtsModuleMarqueeTest",
     "ace_ets_module_modifier:ActsAceEtsModuleModifierTest",
