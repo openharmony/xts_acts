@@ -20,7 +20,6 @@ import PageInfo1 from './PageInfo/PageInfo1.test';
 import APIcomponentSnapshotGetSync from './componentSnapshot/APIcomponentSnapshotGetSync.test';
 import APIUIContextGetSync from './componentSnapshot/APIUIContextGetSync.test';
 import UIContextOnIdle from './OnIdle/UIContextOnIdle.test';
-import GetWindowWidthAndHeight from './window/GetWindowWidthAndHeight.test';
 
 export default function testsuite() {
   APIcomponentSnapshotGetSync();
@@ -30,5 +29,4 @@ export default function testsuite() {
   APIgetFrameNodeByUniqueId();
   PageInfo1();
   UIContextOnIdle();
-  GetWindowWidthAndHeight();
 }

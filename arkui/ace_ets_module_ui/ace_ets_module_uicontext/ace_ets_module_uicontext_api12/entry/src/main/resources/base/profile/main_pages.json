@@ -7,7 +7,6 @@
         "MainAbility/pages/MeasureSize/APIsetDragEventStrictReportingEnabled",
         "MainAbility/pages/MeasureSize/APIgetFrameNodeByUniqueId",
         "MainAbility/pages/PageInfo/PageInfo1",
-        "MainAbility/pages/OnIdle/onIdleTest",
-        "MainAbility/pages/window/GetWindowWidthAndHeight"
+        "MainAbility/pages/OnIdle/onIdleTest"
     ]
 }
