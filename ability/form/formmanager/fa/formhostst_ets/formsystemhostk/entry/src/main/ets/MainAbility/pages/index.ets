@@ -95,7 +95,8 @@ struct Index {
   async aboutToAppear() {
     const onDeleteEventSubscriber = await commonEvent.createSubscriber(this.subscriberFormDeleteEvent);
     const onTerminateEventSubscriber = await commonEvent.createSubscriber(this.subscriberFormTerminateEvent);
-    commonEvent.subscribe(onDeleteEventSubscriber, async (err:BusinessError, data:CommonEventManager.CommonEventData) => {
+    commonEvent.subscribe(onDeleteEventSubscriber,
+      async (err:BusinessError, data:CommonEventManager.CommonEventData) => {
       const formIds: string[] = data.parameters?.formIds ?? [];
       console.info(`${this.TAG} deleteCallback data: ${JSON.stringify(data)}, error: ${JSON.stringify(err)}`);
       console.info(`${this.TAG} deleteCallback formIds: ${JSON.stringify(formIds)}`);
@@ -157,12 +158,10 @@ struct Index {
         }
         if (want.parameters) {
           this.createSecondForm = want.parameters.createSecondForm;
-          //this.secondParam = want.parameters.secondParam;
           console.info(`====${this.TAG} onRequestCallback123====>` + JSON.stringify(want.parameters.secondParam));
         }
         if (want.parameters) {
           this.createTempAndNormal = want.parameters.createTempAndNormal;
-          //this.tempParam = want.parameters.tempParam;
         }
         if (want.parameters) {
           this.deleteForm = want.parameters.deleteForm;
