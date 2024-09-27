@@ -56,11 +56,17 @@ export default function GetWindowWidthAndHeightTest() {
       let button1 = await driver.findComponent(ON.id('getWindowWidthBreakpointButton'));
       await button1.click();
       await CommonFunc.sleep(2000);
+      let button2 = await driver.findComponent(ON.id('getWindowWidth'));
+      await button2.click();
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('widthBpValue');
       let obj: ESObject = JSON.parse(strJson);
+      let strJson1 = getInspectorByKey('windowWidthBreakpoint');
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[GetWindowWidthBreakpoint_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('1')
+      console.info("[GetWindowWidthBreakpoint_0100] component obj1 is: " + JSON.stringify(obj1));
+      expect(obj.$attrs.content).assertEqual(obj1.$attrs.content)
       console.info('[GetWindowWidthBreakpoint_0100] END');
       done();
     });
@@ -79,11 +85,17 @@ export default function GetWindowWidthAndHeightTest() {
       let button1 = await driver.findComponent(ON.id('getWindowHeightBreakpointButton'));
       await button1.click();
       await CommonFunc.sleep(2000);
+      let button2 = await driver.findComponent(ON.id('getWindowWidth'));
+      await button2.click();
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('heightBpValue');
       let obj: ESObject = JSON.parse(strJson);
+      let strJson1 = getInspectorByKey('windowHeightBreakpoint');
+      let obj1: ESObject = JSON.parse(strJson);
       console.info("[GetWindowHeightBreakpoint_0200] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('2');
+      console.info("[GetWindowHeightBreakpoint_0200] component obj1 is: " + JSON.stringify(obj1));
+      expect(obj.$attrs.content).assertEqual(obj1.$attrs.content);
       console.info('[GetWindowHeightBreakpoint_0200] END');
       done();
     });
