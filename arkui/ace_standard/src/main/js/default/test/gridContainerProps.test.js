@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
 describe('gridContainerPropsJsTest', function () {
@@ -756,7 +756,7 @@ describe('gridContainerPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('grid-container')
         expect(obj.$attrs.id).assertEqual('typeSizetypeXs')
-        expect(obj.$attrs.sizetype).assertEqual("xs" )
+        expect(obj.$attrs.sizetype).assertEqual("xs")
         console.info("[gridContainerProps] get size value is: " + JSON.stringify(obj.$attrs.sizetype));
         done();
     });

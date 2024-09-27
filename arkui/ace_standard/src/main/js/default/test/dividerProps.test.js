@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
 describe('dividerPropsJsTest', function () {
@@ -83,7 +83,7 @@ describe('dividerPropsJsTest', function () {
      * @tc.name      testDividerIdProp
      * @tc.desc      ACE
      */
-     it('testDividerIdProp', 0, async function (done) {
+    it('testDividerIdProp', 0, async function (done) {
         console.info('testDividerIdProp START');
         console.info("[dividerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 

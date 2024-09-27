@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import { describe, beforeAll, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
 describe('polygonPropsJsTest', function () {
@@ -702,7 +702,7 @@ describe('polygonPropsJsTest', function () {
      * @tc.name      testPolygonIdProp
      * @tc.desc      ACE
      */
-     it('testPolygonIdProp', 0, async function (done) {
+    it('testPolygonIdProp', 0, async function (done) {
         console.info('testPolygonIdProp START');
         console.info("[polygonProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
@@ -726,7 +726,7 @@ describe('polygonPropsJsTest', function () {
      * @tc.name      testPolygonPointProp
      * @tc.desc      ACE
      */
-     it('testPolygonPointProp', 0, async function (done) {
+    it('testPolygonPointProp', 0, async function (done) {
         console.info('testPolygonPointProp START');
         console.info("[polygonProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 

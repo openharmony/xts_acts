@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-//import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';

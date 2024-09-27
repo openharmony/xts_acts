@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 describe('sliderPropsJsTest', function () {
 
@@ -679,13 +679,13 @@ describe('sliderPropsJsTest', function () {
         console.info("[sliderProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
-    
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testSliderStep
      * @tc.desc      ACE
      */
-     it('testSliderStep', 0, async function (done) {
+    it('testSliderStep', 0, async function (done) {
         console.info('testSliderStep START');
         console.info("[sliderProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
@@ -799,13 +799,13 @@ describe('sliderPropsJsTest', function () {
         console.info("[sliderProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
-    
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testSliderMinicon
      * @tc.desc      ACE
      */
-     it('testSliderMinicon', 0, async function (done) {
+    it('testSliderMinicon', 0, async function (done) {
         console.info('testSliderMinicon START');
         console.info("[sliderProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
@@ -839,13 +839,13 @@ describe('sliderPropsJsTest', function () {
         console.info("[sliderProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
-    
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testSliderMaxicon
      * @tc.desc      ACE
      */
-     it('testSliderMaxicon', 0, async function (done) {
+    it('testSliderMaxicon', 0, async function (done) {
         console.info('testSliderMaxicon START');
         console.info("[sliderProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
@@ -879,13 +879,13 @@ describe('sliderPropsJsTest', function () {
         console.info("[sliderProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
-    
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testSliderModeInset
      * @tc.desc      ACE
      */
-     it('testSliderModeOutset', 0, async function (done) {
+    it('testSliderModeOutset', 0, async function (done) {
         console.info('testSliderModeOutset START');
         console.info("[sliderProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
@@ -905,7 +905,7 @@ describe('sliderPropsJsTest', function () {
      * @tc.name      testSliderModeInset
      * @tc.desc      ACE
      */
-     it('testSliderModeInset', 0, async function (done) {
+    it('testSliderModeInset', 0, async function (done) {
         console.info('testSliderModeInset START');
         console.info("[sliderProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 

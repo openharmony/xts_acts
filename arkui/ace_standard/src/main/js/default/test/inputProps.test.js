@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 describe('inputPropsJsTest', function () {
 
@@ -1152,13 +1152,13 @@ describe('inputPropsJsTest', function () {
         console.info("[inputProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
-    
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testInputTimePlaceholder
      * @tc.desc      ACE
      */
-     it('testInputTimePlaceholder', 0, async function (done) {
+    it('testInputTimePlaceholder', 0, async function (done) {
         console.info('testInputTimePlaceholder START');
         console.info("[inputProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
@@ -1194,13 +1194,13 @@ describe('inputPropsJsTest', function () {
         console.info("[inputProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
-    
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testInputNumberPlaceholder
      * @tc.desc      ACE
      */
-     it('testInputNumberPlaceholder', 0, async function (done) {
+    it('testInputNumberPlaceholder', 0, async function (done) {
         console.info('testInputNumberPlaceholder START');
         console.info("[inputProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
@@ -1236,13 +1236,13 @@ describe('inputPropsJsTest', function () {
         console.info("[inputProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
-    
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testInputPasswordPlaceholder
      * @tc.desc      ACE
      */
-     it('testInputPasswordPlaceholder', 0, async function (done) {
+    it('testInputPasswordPlaceholder', 0, async function (done) {
         console.info('testInputPasswordPlaceholder START');
         console.info("[inputProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
@@ -1561,13 +1561,13 @@ describe('inputPropsJsTest', function () {
         console.info("[inputProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
-    
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testInputSelectedendTrue
      * @tc.desc      ACE
      */
-     it('testInputSelectedendTrue', 0, async function (done) {
+    it('testInputSelectedendTrue', 0, async function (done) {
         console.info('testInputSelectedendTrue START');
         console.info("[inputProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
@@ -1601,13 +1601,13 @@ describe('inputPropsJsTest', function () {
         console.info("[inputProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
-    
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testInputSoftkeyboardenabledTrue
      * @tc.desc      ACE
      */
-     it('testInputSoftkeyboardenabledTrue', 0, async function (done) {
+    it('testInputSoftkeyboardenabledTrue', 0, async function (done) {
         console.info('testInputSoftkeyboardenabledTrue START');
         console.info("[inputProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
@@ -1661,13 +1661,13 @@ describe('inputPropsJsTest', function () {
         console.info("[inputProps] get show value is: " + JSON.stringify(obj.$attrs.show));
         done();
     });
-    
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testInputShowpasswordiconTrue
      * @tc.desc      ACE
      */
-     it('testInputShowpasswordiconTrue', 0, async function (done) {
+    it('testInputShowpasswordiconTrue', 0, async function (done) {
         console.info('testInputShowpasswordiconTrue START');
         console.info("[inputProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 

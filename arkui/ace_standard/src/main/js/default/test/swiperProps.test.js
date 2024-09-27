@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
 describe('swiperPropsJsTest', function () {
@@ -858,7 +858,7 @@ describe('swiperPropsJsTest', function () {
         expect(obj.$type).assertEqual('swiper')
         expect(obj.$attrs.id).assertEqual('indicatorDisabledPropFalse') //ID
         expect(obj.$attrs.indicatordisabled).assertEqual('false')  // prop and propValue
-        console.info("[swiperProps] get indicatordisabled value is: " 
+        console.info("[swiperProps] get indicatordisabled value is: "
             + JSON.stringify(obj.$attrs.indicatordisabled));
         done();
     });

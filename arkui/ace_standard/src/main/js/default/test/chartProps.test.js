@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
 describe('chartPropsJsTest', function () {
@@ -94,7 +94,7 @@ describe('chartPropsJsTest', function () {
         expect(obj.$attrs.id).assertEqual('idProp')
         done();
     });
-    
+
     it('testChartClassProp', 0, async function (done) {
         console.info('testChartClassProp START');
         console.info("[chartProps] get globalThis.value is: " + JSON.stringify(globalThis.value));

@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
 describe('imageAnimatorPropsJsTest', function () {
@@ -866,98 +866,98 @@ describe('imageAnimatorPropsJsTest', function () {
      * @tc.name      testimageAnimatorShowPropNone
      * @tc.desc      ACE
      */
-it('testimageAnimatorFillmodePropForwards', 0, async function (done) {
-    console.info('testimageAnimatorXsPropObject START');
-    console.info("[imageAnimatorProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
+    it('testimageAnimatorFillmodePropForwards', 0, async function (done) {
+        console.info('testimageAnimatorXsPropObject START');
+        console.info("[imageAnimatorProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
-    let obj = JSON.parse(globalThis.value.typeFillmodeForwards);
-    console.info("[imageAnimatorProps] get inspector value is: " + JSON.stringify(obj));
-    console.info("[imageAnimatorProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
+        let obj = JSON.parse(globalThis.value.typeFillmodeForwards);
+        console.info("[imageAnimatorProps] get inspector value is: " + JSON.stringify(obj));
+        console.info("[imageAnimatorProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-    expect(obj.$type).assertEqual('image-animator')
-    expect(obj.$attrs.id).assertEqual('typeFillmodeForwards')
-    expect(obj.$attrs.fillmode).assertEqual("forwards")
-    console.info("[imageAnimatorProps] get fillmode value is: " + JSON.stringify(obj.$attrs.fillmode));
-    done();
-});
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testimageAnimatorShowPropNone
-     * @tc.desc      ACE
-     */
-it('testimageAnimatorFillmodePropNone', 0, async function (done) {
-    console.info('testimageAnimatorXsPropObject START');
-    console.info("[imageAnimatorProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-    let obj = JSON.parse(globalThis.value.typeFillmodeNone);
-    console.info("[imageAnimatorProps] get inspector value is: " + JSON.stringify(obj));
-    console.info("[imageAnimatorProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-    expect(obj.$type).assertEqual('image-animator')
-    expect(obj.$attrs.id).assertEqual('typeFillmodeNone')
-    expect(obj.$attrs.fillmode).assertEqual("none")
-    console.info("[imageAnimatorProps] get fillmode value is: " + JSON.stringify(obj.$attrs.fillmode));
-    done();
-});
-
-     /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testimageAnimatorShowPropNone
-     * @tc.desc      ACE
-     */
-it('testimageAnimatorDurationPropNull', 0, async function (done) {
-    console.info('testimageAnimatorXsPropObject START');
-    console.info("[imageAnimatorProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-    let obj = JSON.parse(globalThis.value.typeDurationNull);
-    console.info("[imageAnimatorProps] get inspector value is: " + JSON.stringify(obj));
-    console.info("[imageAnimatorProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-    expect(obj.$type).assertEqual('image-animator')
-    expect(obj.$attrs.id).assertEqual('typeDurationNull')
-    expect(obj.$attrs.duration).assertEqual(undefined)
-    console.info("[imageAnimatorProps] get duration value is: " + JSON.stringify(obj.$attrs.duration));
-    done();
-});
-
-     /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testimageAnimatorShowPropNone
-     * @tc.desc      ACE
-     */
-it('testimageAnimatorDurationProp3', 0, async function (done) {
-    console.info('testimageAnimatorXsPropObject START');
-    console.info("[imageAnimatorProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-    let obj = JSON.parse(globalThis.value.typeDuration3);
-    console.info("[imageAnimatorProps] get inspector value is: " + JSON.stringify(obj));
-    console.info("[imageAnimatorProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-    expect(obj.$type).assertEqual('image-animator')
-    expect(obj.$attrs.id).assertEqual('typeDuration3')
-    expect(obj.$attrs.duration).assertEqual("3s")
-    console.info("[imageAnimatorProps] get duration value is: " + JSON.stringify(obj.$attrs.duration));
-    done();
-});
+        expect(obj.$type).assertEqual('image-animator')
+        expect(obj.$attrs.id).assertEqual('typeFillmodeForwards')
+        expect(obj.$attrs.fillmode).assertEqual("forwards")
+        console.info("[imageAnimatorProps] get fillmode value is: " + JSON.stringify(obj.$attrs.fillmode));
+        done();
+    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testimageAnimatorShowPropNone
      * @tc.desc      ACE
      */
-it('testimageAnimatorDurationProp6', 0, async function (done) {
-    console.info('testimageAnimatorXsPropObject START');
-    console.info("[imageAnimatorProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
+    it('testimageAnimatorFillmodePropNone', 0, async function (done) {
+        console.info('testimageAnimatorXsPropObject START');
+        console.info("[imageAnimatorProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
-    let obj = JSON.parse(globalThis.value.typeDuration6);
-    console.info("[imageAnimatorProps] get inspector value is: " + JSON.stringify(obj));
-    console.info("[imageAnimatorProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
+        let obj = JSON.parse(globalThis.value.typeFillmodeNone);
+        console.info("[imageAnimatorProps] get inspector value is: " + JSON.stringify(obj));
+        console.info("[imageAnimatorProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-    expect(obj.$type).assertEqual('image-animator')
-    expect(obj.$attrs.id).assertEqual('typeDuration6')
-    expect(obj.$attrs.duration).assertEqual("6s")
-    console.info("[imageAnimatorProps] get duration value is: " + JSON.stringify(obj.$attrs.duration));
-    done();
-});
+        expect(obj.$type).assertEqual('image-animator')
+        expect(obj.$attrs.id).assertEqual('typeFillmodeNone')
+        expect(obj.$attrs.fillmode).assertEqual("none")
+        console.info("[imageAnimatorProps] get fillmode value is: " + JSON.stringify(obj.$attrs.fillmode));
+        done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+    * @tc.name      testimageAnimatorShowPropNone
+    * @tc.desc      ACE
+    */
+    it('testimageAnimatorDurationPropNull', 0, async function (done) {
+        console.info('testimageAnimatorXsPropObject START');
+        console.info("[imageAnimatorProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
+
+        let obj = JSON.parse(globalThis.value.typeDurationNull);
+        console.info("[imageAnimatorProps] get inspector value is: " + JSON.stringify(obj));
+        console.info("[imageAnimatorProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
+
+        expect(obj.$type).assertEqual('image-animator')
+        expect(obj.$attrs.id).assertEqual('typeDurationNull')
+        expect(obj.$attrs.duration).assertEqual(undefined)
+        console.info("[imageAnimatorProps] get duration value is: " + JSON.stringify(obj.$attrs.duration));
+        done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+    * @tc.name      testimageAnimatorShowPropNone
+    * @tc.desc      ACE
+    */
+    it('testimageAnimatorDurationProp3', 0, async function (done) {
+        console.info('testimageAnimatorXsPropObject START');
+        console.info("[imageAnimatorProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
+
+        let obj = JSON.parse(globalThis.value.typeDuration3);
+        console.info("[imageAnimatorProps] get inspector value is: " + JSON.stringify(obj));
+        console.info("[imageAnimatorProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
+
+        expect(obj.$type).assertEqual('image-animator')
+        expect(obj.$attrs.id).assertEqual('typeDuration3')
+        expect(obj.$attrs.duration).assertEqual("3s")
+        console.info("[imageAnimatorProps] get duration value is: " + JSON.stringify(obj.$attrs.duration));
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testimageAnimatorShowPropNone
+     * @tc.desc      ACE
+     */
+    it('testimageAnimatorDurationProp6', 0, async function (done) {
+        console.info('testimageAnimatorXsPropObject START');
+        console.info("[imageAnimatorProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
+
+        let obj = JSON.parse(globalThis.value.typeDuration6);
+        console.info("[imageAnimatorProps] get inspector value is: " + JSON.stringify(obj));
+        console.info("[imageAnimatorProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
+
+        expect(obj.$type).assertEqual('image-animator')
+        expect(obj.$attrs.id).assertEqual('typeDuration6')
+        expect(obj.$attrs.duration).assertEqual("6s")
+        console.info("[imageAnimatorProps] get duration value is: " + JSON.stringify(obj.$attrs.duration));
+        done();
+    });
 });
