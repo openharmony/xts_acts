@@ -34,8 +34,8 @@ struct TouchStrategyExample {
         Column() {
           Text("Test Text Visible Change")
             .fontSize(20)
-            .height(80)
-            .margin(20)
+            .height(40)
+            .margin(5)
             .backgroundColor(Color.Green)
               // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调
             .onVisibleAreaChange([0.0, 1.0], (isVisible: boolean, currentRatio: number) => {
