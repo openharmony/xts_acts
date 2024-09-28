@@ -12,23 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import commonEvent from '@ohos.commonEventManager';
 import ability_featureAbility from '@ohos.ability.featureAbility';
-import commonEvent from '@ohos.commonEvent';
 import bundle from '@ohos.bundle';
 
 const TAG1 = "Fa:SupportFunction:MainAbility3:";
 const listPush1 = "Fa_SupportFunction_MainAbility3_";
 let lifeList: string[] = [];
 let setDisplayOrientation1 = 0;
-
-export default {
+class MainAbility {
   onCreate() {
     console.log(TAG1 + 'onCreate');
     lifeList.push('onCreate');
-  },
+  }
   onDestroy() {
     console.log(TAG1 + 'onDestroy');
-  },
+  }
   onActive() {
     console.log(TAG1 + 'onActive');
     lifeList.push('onActive');
@@ -51,7 +50,7 @@ export default {
           console.log(TAG1 + "getDisplayOrientation2 data = " + JSON.stringify(displayOrientationAfter));
           console.log(TAG1 + "getDisplayOrientation2 error = " + JSON.stringify(error));
 
-          let options = {
+          let options:commonEvent.CommonEventPublishData = {
             parameters: {
               displayOrientationBefore: displayOrientationBefore,
               displayOrientationAfter: displayOrientationAfter,
@@ -65,14 +64,15 @@ export default {
         })
       })
     })
-  },
+  }
   onInactive() {
     console.log(TAG1 + 'onInactive');
-  },
+  }
   onShow() {
     console.log(TAG1 + 'onShow');
-  },
+  }
   onHide() {
     console.log(TAG1 + 'onHide');
   }
 }
+export default new MainAbility();

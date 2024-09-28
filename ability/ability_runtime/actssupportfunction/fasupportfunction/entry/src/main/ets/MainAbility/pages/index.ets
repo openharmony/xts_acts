@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import ability_featureAbility from '@ohos.ability.featureAbility';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -39,15 +40,14 @@ struct Index {
           .width('30%')
           .height('5%')
           .onClick(() => {
-            let wntNum = {
+            ability_featureAbility.startAbility({
               want: {
                 bundleName: "ohos.acts.aafwk.test.fasupportfunction",
                 abilityName: "ohos.acts.aafwk.test.fasupportfunction.ServiceAbility"
               }
-            }
-            ability_featureAbility.startAbility(wntNum).then((data) => {
+            }).then((data) => {
               console.log('Fa:Auxiliary:MainAbility: ACTS_SerivceAbilityServer startAbility data:' + JSON.stringify(data));
-            }).catch((error) => {
+            }).catch((error: BusinessError) => {
               console.log('Fa:Auxiliary:MainAbility: ACTS_SerivceAbilityServer startAbility error:' + JSON.stringify(error));
             });
           })
