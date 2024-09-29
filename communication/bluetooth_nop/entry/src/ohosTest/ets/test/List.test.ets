@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-import btAccessNopUiJsunit from './BtAccessNopUiJsunit.test';
 import btBleNopUiJsunit from './BtBleNopUiJsunit.test';
 import btBleServerNopUiJsunit from './BtBleServerNopUiJsunit.test';
 import btConnectionNopUiJsunit from './BtConnectionNopUiJsunit.test';
