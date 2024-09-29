@@ -22,8 +22,9 @@ import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, set
   errorTest, testCancelDelayed, dependend, hashMapTest, delay, randomTest, outerTaskFunc,
   isConcurrentTest1, isConcurrentTest2, sequenceRunnerTest, sequenceRunnerPriorityTest, CancelAndExecuteDelayed,
   errorManageTest, dealHashMapTest, noUseConcurrentTest, sendDataTest, sendableClassTestFunc, Int8ArrayTestFunc,
-  SetTestFunc, MapTestFunc, simpleSendableClassTestFunc, Uint8ClampedArrayTestFunc } from './testFunclist'
-import { A, B, StrCat, printArgs } from './exportFunclist'
+  SetTestFunc, MapTestFunc, simpleSendableClassTestFunc, Uint8ClampedArrayTestFunc, testWithThreeParams, testWithArray
+  } from './testFunclist'
+import { A, B, StrCat, printArgs, printStrArgs } from './exportFunclist'
 import { SendableClass, SimpleSendable } from './sendable';
 import HashMap from '@ohos.util.HashMap';
 
@@ -4429,6 +4430,159 @@ export default function TaskPoolTest() {
       let res: collections.Uint8ClampedArray = await taskpool.execute(task) as collections.Uint8ClampedArray;
       expect(res.length).assertEqual(3);
       expect(res.at(1)).assertEqual(1);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0196
+     * @tc.name      : TaskPoolTestClass196
+     * @tc.desc      : taskpool execute
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass196', 0, async (done: Function) => {
+      let isTerminate1: boolean = false;
+      let isTerminate2: boolean = false;
+      let isTerminate3: boolean = false;
+      let ret1 = 0;
+      let ret2 = "";
+      let ret3 = "";
+      taskpool.execute<[number], number>(printArgs, 100).then((value: number) => {
+        isTerminate1 = true;
+        ret1 = value;
+      });
+      taskpool.execute<[number, string, number], string>(testWithThreeParams, 100, "test", 100).then((value: string) => {
+        isTerminate2 = true;
+        ret2 = value;
+      })
+      taskpool.execute<[[number, string]], string>(testWithArray, [100, "test"]).then((value: string) => {
+        isTerminate3 = true;
+        ret3 = value;
+      })
+
+      while (!isTerminate1 || !isTerminate2 || !isTerminate3) {
+        await promiseCase();
+      }
+
+      expect(ret1).assertEqual(100);
+      expect(ret2).assertEqual("result: test 200");
+      expect(ret3).assertEqual("result:[100,\"test\"]");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0197
+     * @tc.name      : TaskPoolTestClass197
+     * @tc.desc      : taskpool GenericsTask
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass197', 0, async (done: Function) => {
+      let isTerminate1: boolean = false;
+      let isTerminate2: boolean = false;
+      let isTerminate3: boolean = false;
+      let ret1 = 0;
+      let ret2 = 0;
+      let ret3 = 0;
+
+      let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printArgs, 100); // 100: test number
+      let task2: taskpool.Task = new taskpool.GenericsTask<[number], number>(printArgs, 200); // 200: test number
+      let task3: taskpool.Task = new taskpool.GenericsTask<[number], number>(printArgs, 300); // 300: test number
+      taskpool.execute<[number], number>(task1, taskpool.Priority.LOW).then((value: number) => {
+        isTerminate1 = true;
+        ret1 = value;
+      });
+      taskpool.execute<[number], number>(task2, taskpool.Priority.MEDIUM).then((value: number) => {
+        isTerminate2 = true;
+        ret2 = value;
+      });
+      taskpool.execute<[number], number>(task3, taskpool.Priority.HIGH).then((value: number) => {
+        isTerminate3 = true;
+        ret3 = value;
+      });
+
+      while (!isTerminate1 || !isTerminate2 || !isTerminate3) {
+        await promiseCase();
+      }
+
+      expect(ret1).assertEqual(100);
+      expect(ret2).assertEqual(200);
+      expect(ret3).assertEqual(300);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0198
+     * @tc.name      : TaskPoolTestClass198
+     * @tc.desc      : taskpool executeDelayed
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass198', 0, async (done: Function) => {
+      let isTerminate1: boolean = false;
+      let ret1 = "";
+      let task: taskpool.Task = new taskpool.GenericsTask<[string], string>(printStrArgs, "test");
+      taskpool.executeDelayed<[string], string>(1000, task).then((res: string) => {
+        isTerminate1 = true;
+        ret1 = res;
+      }).catch((e: BusinessError) => {
+        console.error(`TaskPoolTestClass198 execute: Code: ${e.code}, message: ${e.message}`);
+      })
+      while (!isTerminate1) {
+        await promiseCase();
+      }
+      expect(ret1).assertEqual("test");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0199
+     * @tc.name      : TaskPoolTestClass199
+     * @tc.desc      : taskpool executePeriodically
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass199', 0, async (done: Function) => {
+      let res: number = 0;
+      let periodicTask: taskpool.Task = new taskpool.GenericsTask<[number], void>(sendDataTest, 200);
+      periodicTask.onReceiveData((data: number) => {
+        res = data;
+        console.info("TaskPoolTestClass199: data is: " + data);
+      });
+      taskpool.executePeriodically<[number], void>(500, periodicTask);
+      while (!res) {
+        await promiseCase();
+      }
+      expect(res).assertEqual(2000);
+      taskpool.cancel(periodicTask)
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0200
+     * @tc.name      : TaskPoolTestClass200
+     * @tc.desc      : taskpool executePeriodically
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass200', 0, async (done: Function) => {
+      let res: number = 0;
+      let periodicTask: taskpool.Task = new taskpool.Task(sendDataTest, 200);
+      periodicTask.onReceiveData((data: number) => {
+        res = data;
+        console.info("TaskPoolTestClass200: data is: " + data);
+      });
+      taskpool.executePeriodically(1000, periodicTask);
+      while (!res) {
+        await promiseCase();
+      }
+      expect(res).assertEqual(2000);
+      taskpool.cancel(periodicTask)
       done();
     })
   })
