@@ -174,6 +174,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.log(`FMS_enableFormsUpdate_0300 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.log(`FMS_enableFormsUpdate_0300 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -220,6 +222,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.log(`FMS_enableFormsUpdate_0400 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.log(`FMS_enableFormsUpdate_0400 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -266,6 +270,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.log(`FMS_enableFormsUpdate_0500 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.log(`FMS_enableFormsUpdate_0500 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -349,6 +355,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.debug(`FMS_enableFormsUpdate_0600 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.debug(`FMS_enableFormsUpdate_0600 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -432,6 +440,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.debug(`FMS_enableFormsUpdate_0700 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.debug(`FMS_enableFormsUpdate_0700 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -552,6 +562,8 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    expect().not().assertFail();
+                    done();
                 }).catch((err: any) => {
                     console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                     expect().assertFail();
@@ -578,6 +590,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -728,6 +742,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -933,6 +949,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
