@@ -3,9 +3,9 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.example.myapplication",
-        "module-name": "phone",
         "shell-timeout": "600000",
+        "bundle-name": "com.example.myapplication",
+        "module-name": "entry_test",
         "testcase-timeout": "20000"
     },
     "kits": [
@@ -26,12 +26,18 @@
             ]
         },
         {
-        "test-file-name": [
-            "ActsEdmTest.hap",
-            "ExtensionZeroTest.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
+            "test-file-name": [
+                "ActsEdmTest.hap",
+                "ExtensionZeroTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }
