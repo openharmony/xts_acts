@@ -60,8 +60,10 @@ HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordi
     //with width and height being 0 and -1
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_Canvas** canvass = &canvas;
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_SUCCESS;
     OH_Drawing_RecordCmdUtils* recordcmd1 = OH_Drawing_RecordCmdUtilsCreate ();
-    OH_Drawing_RecordCmdUtilsBeginRecording (nullptr, 0, -1, canvass);
+    drawingErrorCode = OH_Drawing_RecordCmdUtilsBeginRecording (nullptr, 0, -1, canvass);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 2. free memory
     OH_Drawing_RecordCmdUtilsDestroy (recordcmd1);
     OH_Drawing_CanvasDestroy (canvas);
@@ -80,9 +82,11 @@ HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordi
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_Canvas** canvass = &canvas;
     OH_Drawing_RecordCmdUtils* recordcmd1 = OH_Drawing_RecordCmdUtilsCreate ();
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_SUCCESS;
     for (int i = 0; i < 10; i++)
     {
-        OH_Drawing_RecordCmdUtilsBeginRecording (nullptr, 1, 1, canvass);
+        drawingErrorCode = OH_Drawing_RecordCmdUtilsBeginRecording (nullptr, 1, 1, canvass);
+        EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
     }
     // 2. free memory
     OH_Drawing_RecordCmdUtilsDestroy (recordcmd1);

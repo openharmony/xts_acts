@@ -61,9 +61,11 @@ HWTEST_F(DrawingRecordCmdUtilsFinishRecordingTest, testRecordCmdUtilsFinishRecor
     OH_Drawing_Canvas** canvass = &canvas;
     OH_Drawing_RecordCmd *recordCmd;
     OH_Drawing_RecordCmd **recordCmds = &recordCmd;
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     OH_Drawing_RecordCmdUtils* recordcmdutil1 = OH_Drawing_RecordCmdUtilsCreate ();
     OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil1, 1, 1, canvass);
-    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil1, recordCmds);
+    drawingErrorCode = OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil1, recordCmds);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
 }
 
 /*
@@ -81,10 +83,13 @@ HWTEST_F(DrawingRecordCmdUtilsFinishRecordingTest, testRecordCmdUtilsFinishRecor
     OH_Drawing_RecordCmd* recordCmd = nullptr;
     OH_Drawing_RecordCmd** recordCmds = &recordCmd;
     OH_Drawing_RecordCmdUtils* recordcmdutil1 = OH_Drawing_RecordCmdUtilsCreate ();
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_SUCCESS;
     OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil1, 1, 1, canvass);
-    OH_Drawing_RecordCmdUtilsFinishRecording (nullptr, recordCmds);
+    drawingErrorCode = OH_Drawing_RecordCmdUtilsFinishRecording (nullptr, recordCmds);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
     OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil1, 1, 1, canvass);
-    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil1, nullptr);
+    drawingErrorCode = OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil1, nullptr);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
 }
 
 } // namespace Drawing
