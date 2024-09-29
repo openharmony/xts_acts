@@ -19,7 +19,6 @@ group("resourceschedule_standard") {
     deps = [
       "backgroundtaskmanager:resourceschedule_backgroundtaskmanager_js_test",
       "backgroundtaskmanager_nop:resourceschedule_backgroundtaskmanager_ets_nop_test",
-      "continuoustaskrelyhap:ContinuousTaskRelyHap",
       "deviceusagestatisticsjsunit:resourceschedule_deviceusagestatisticsjsunit_js_test",
       "ffrt:resourceschedule_ffrt_js_test",
       "ffrtndktest:ActsFfrtNdkTest",
