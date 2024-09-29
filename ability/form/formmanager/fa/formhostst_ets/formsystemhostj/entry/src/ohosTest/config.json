@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.ohos.st.formsystemhosti",
+    "bundleName": "com.ohos.st.formsystemhostj",
     "vendor": "example",
     "version": {
       "code": 1000000,
@@ -9,19 +9,17 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.ohos.st.formsystemhosti",
-    "name": ".entry",
-    "mainAbility": ".MainAbility",
+    "package": "com.ohos.st.formsystemhostj",
+    "name": ".entry_test",
+    "mainAbility": ".TestAbility",
     "deviceType": [
       "default",
-      "tablet",
-      "2in1",
-      "wearable"
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
-      "moduleName": "entry",
-      "moduleType": "entry",
+      "moduleName": "entry_test",
+      "moduleType": "feature",
       "installationFree": false
     },
     "abilities": [
@@ -37,15 +35,15 @@
           }
         ],
         "orientation": "unspecified",
-        "formsEnabled": false,
-        "name": ".MainAbility",
-        "srcLanguage": "ets",
-        "srcPath": "MainAbility",
-        "icon": "$media:icon",
-        "description": "$string:MainAbility_desc",
-        "label": "$string:MainAbility_label",
-        "type": "page",
         "visible": true,
+        "srcPath": "TestAbility",
+        "name": ".TestAbility",
+        "srcLanguage": "ets",
+        "icon": "$media:icon",
+        "description": "$string:TestAbility_desc",
+        "formsEnabled": false,
+        "label": "$string:TestAbility_label",
+        "type": "page",
         "launchType": "standard"
       }
     ],
@@ -58,7 +56,7 @@
         "pages": [
           "pages/index"
         ],
-        "name": ".MainAbility",
+        "name": ".TestAbility",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false
@@ -67,9 +65,9 @@
     ],
     "defPermissions": [
       {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "FMS_FormDelete_commonEvent"
+      "availableScope": [],
+      "grantMode": "system_grant",
+      "name": "FMS_FormDelete_commonEvent"
       },
       {
         "availableScope": [],
@@ -84,12 +82,7 @@
       {
         "availableScope": [],
         "grantMode": "system_grant",
-        "name": "FMS_FormOnDeleted_commonEvent"
-      },
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "FMS_FormOnState_commonEvent"
+        "name": "FMS_FormCast_commonEvent"
       }
     ],
     "reqPermissions": [
@@ -103,10 +96,7 @@
         "name": "FMS_FormOnError_commonEvent"
       },
       {
-        "name": "FMS_FormOnDeleted_commonEvent"
-      },
-      {
-        "name": "FMS_FormOnState_commonEvent"
+        "name": "FMS_FormCast_commonEvent"
       },
       {
         "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
