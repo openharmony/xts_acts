@@ -15,9 +15,11 @@
 
 import TextMenuType from './TextTest/TextMenuType.test';
 import RichEditorMenuType from './RichEditorTest/RichEditorMenuType.test';
+import SetFrameRateRangeTest from './Marquee/marqueeFrame.test';
 
 
 export default function testsuite() {
   TextMenuType();
   RichEditorMenuType();
+  SetFrameRateRangeTest();
 }
