@@ -12,10 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {Core, ExpectExtend} from 'deccjsunit'
-
-const injectRef = Object.getPrototypeOf(global) || global
-injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default {
     data: {
@@ -29,6 +26,6 @@ export default {
     },
     onReady() {
     },
-    onBackPress(){
+    onBackPress() {
     }
 }

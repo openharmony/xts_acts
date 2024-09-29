@@ -14,33 +14,33 @@
  */
 
 import EnterpriseAdminExtensionAbility from '@ohos.enterprise.EnterpriseAdminExtensionAbility'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import type systemManager from './@ohos.enterprise.systemManager';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAdminEnabled() {
-      console.log('EnterpriseAdminExtensionAbility onAdminEnabled');
+    console.log('EnterpriseAdminExtensionAbility onAdminEnabled');
   }
-  onAdminDisabled(){
-      console.log('EnterpriseAdminExtensionAbility onAdminDisabled');
+  onAdminDisabled() {
+    console.log('EnterpriseAdminExtensionAbility onAdminDisabled');
   }
-  onBundleAdded(bundleName: string){
+  onBundleAdded(bundleName: string) {
     console.log('EnterpriseAdminExtensionAbility onBundleAdded: ' + bundleName);
   }
-  onBundleRemoved(bundleName: string){
+  onBundleRemoved(bundleName: string) {
     console.log('EnterpriseAdminExtensionAbility onBundleRemoved: ' + bundleName);
   }
-  onAppStart(bundleName: string){
+  onAppStart(bundleName: string) {
     console.log('EnterpriseAdminExtensionAbility onAppStart: ' + bundleName);
   }
-  onAppStop(bundleName: string){
+  onAppStop(bundleName: string) {
     console.log('EnterpriseAdminExtensionAbility onAppStop: ' + bundleName);
   }
-  onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo){
+  onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo) {
     console.log(`EnterpriseAdminExtensionAbility onSystemUpdate: versionName: ${systemUpdateInfo.versionName},
       firstReceivedTime: ${systemUpdateInfo.firstReceivedTime}, packageType: ${systemUpdateInfo.packageType}`);
   }
-  onStart(){
+  onStart() {
     console.log('EnterpriseAdminExtensionAbility onStart');
   }
 }
