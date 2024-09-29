@@ -277,5 +277,29 @@ export default function abilityTest() {
       expect(arkTSByBufferView.length).assertEqual(2);
       done();
     })
+
+    /**
+     * @tc.number    : CollectionsTestClass014
+     * @tc.name      : ArkTS Sendable class implement interface
+     * @tc.desc      : ArkTS Sendable class implement interface
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('CollectionsTestClass014', 0, async (done: Function) => {
+      interface I {
+        name:string;
+      };
+      @Sendable
+      class A implements I {
+        name:string = "test";
+        getAttr() {
+          return this.name;
+        }
+      };
+      let testClass : A = new A();
+      expect(testClass.getAttr()).assertEqual("test");
+      done();
+    })
   })
 }
