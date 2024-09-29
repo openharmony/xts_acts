@@ -73,10 +73,10 @@ export default function AudioRoutingManagerTest() {
       console.info(`${Tag}: afterAll: Test suite-level cleanup condition`);
     });
 
-    function callback1() {
+    let callback1 = (): void => {
         console.info(`TestLog: micBlockStatusChange command callback1 success`);
     }
-    function callback2() {
+    let callback2 = (): void => {
         console.info(`TestLog: micBlockStatusChange command callback2 success`);
     }
 
